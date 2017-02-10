@@ -2,30 +2,34 @@
 title: Verwenden von Stammberechtigungen auf virtuellen Linux-Computern | Microsoft Docs
 description: Erfahren Sie, wie Sie Stammberechtigungen auf einem virtuellen Linux-Computer in Azure verwenden.
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: a2c106a2-dceb-43a3-9dd1-50ed77685952
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2016
+ms.date: 02/02/2017
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1c8c5f4e622863a0961bd5e1c7a915e9511c871f
+
 
 ---
-# Verwenden von Stammberechtigungen auf virtuellen Linux-Computern in Azure
+# <a name="using-root-privileges-on-linux-virtual-machines-in-azure"></a>Verwenden von Stammberechtigungen auf virtuellen Linux-Computern in Azure
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 Standardmäßig ist der Benutzer `root` auf virtuellen Linux-Computern in Azure deaktiviert. Benutzer können Befehle mit dem Befehl `sudo` mit erweiterten Rechten ausführen. Das Verhalten kann je nachdem, wie das System bereitgestellt wurde, unterschiedlich sein.
 
 1. **SSH-Schlüssel und Kennwort ODER nur Kennwort** – Der virtuelle Computer wurde mit einem Zertifikat (`.CER`-Datei) oder einem SSH-Schlüssel sowie einem Kennwort oder nur mit einem Benutzernamen und einem Kennwort bereitgestellt. In diesem Fall fordert `sudo` den Benutzer zur Eingabe des Kennworts auf, bevor der Befehl ausgeführt wird.
-2. **Nur SSH-Schlüssel** – Der virtuelle Computer wurde mit einem Zertifikat (`.cer`-, `.pem`- oder `.pub`-Datei) oder einem SSH-Schlüssel bereitgestellt, jedoch ohne Kennwort. In diesem Fall fordert `sudo` den Benutzer **nicht** zur Eingabe des Kennworts auf, bevor der Befehl ausgeführt wird.
+2. **Nur SSH-Schlüssel** – Der virtuelle Computer wurde mit einem Zertifikat (`.cer`-, `.pem`- oder `.pub`-Datei) oder einem SSH-Schlüssel bereitgestellt, jedoch ohne Kennwort.  In diesem Fall fordert `sudo` **nicht** zur Eingabe des Kennworts auf, bevor der Befehl ausgeführt wird.
 
-## SSH-Schlüssel und Kennwort oder nur Kennwort
+## <a name="ssh-key-and-password-or-password-only"></a>SSH-Schlüssel und Kennwort oder nur Kennwort
 Melden Sie sich beim virtuellen Linux-Computer mit der SSH-Schlüssel- oder Kennwortauthentifizierung an, und führen Sie dann mit `sudo` Befehle aus. Beispiel:
 
     # sudo <command>
@@ -40,11 +44,16 @@ Sie können sudo auch ohne Kennwort aktivieren, indem Sie die Datei `/etc/sudoer
 
 Diese Änderung ermöglicht das Ausführen von sudo ohne Kennwort durch den Benutzer "azureuser".
 
-## Nur SSH-Schlüssel
+## <a name="ssh-key-only"></a>Nur SSH-Schlüssel
 Melden Sie sich beim virtuellen Linux-Computer mit dem SSH-Schlüssel an, und führen Sie dann mit `sudo` Befehle aus. Beispiel:
 
     # sudo <command>
 
 In diesem Fall wird der Benutzer **nicht** zur Eingabe eines Kennworts aufgefordert. Nachdem Sie `<enter>` gedrückt haben, wird der Befehl von `sudo` mit `root`-Berechtigungen ausgeführt.
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

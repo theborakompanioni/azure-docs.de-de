@@ -1,12 +1,12 @@
 ---
-title: Erstellen einer „Hello World“-Web-App für Azure in Eclipse | Microsoft Docs
-description: In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Toolkit für Eclipse eine „Hello World“-Web-App für Azure erstellen.
+title: "Erstellen einer Hello World-Web-App für Azure in Eclipse | Microsoft-Dokumentation"
+description: "In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Toolkit für Eclipse eine „Hello World“-Web-App für Azure erstellen."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 20d41e88-9eab-462e-8ee3-89da71e7a33f
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d3549bca22266aab2deca1d9fcaabfc4034956cf
+
 
 ---
 # <a name="create-a-hello-world-web-app-for-azure-in-eclipse"></a>Erstellen einer „Hello World“-Web-App für Azure in Eclipse
@@ -26,9 +30,9 @@ Wenn Sie dieses Tutorial abgeschlossen haben, entspricht Ihre Anwendung bei der 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Java Developer Kit (JDK), Version 1.8 oder höher.
 * Eclipse IDE für Java EE-Entwickler, Luna oder höher. Dies kann von <http://www.eclipse.org/downloads/> heruntergeladen werden.
-* Eine Verteilung eines Java-basierten Webservers oder Anwendungsservers, wie z. B. Apache Tomcat oder Jetty.
+* Eine Verteilung eines Java-basierten Webservers oder Anwendungsservers, wie z. B. Apache Tomcat oder Jetty.
 * Ein Azure-Abonnement, das Sie unter <https://azure.microsoft.com/free/> oder <http://azure.microsoft.com/pricing/purchase-options/> erhalten.
-* Das Azure-Toolkit für Eclipse. Weitere Informationen finden Sie unter [Installation des Azure Toolkit für Eclipse].
+* Das Azure-Toolkit für Eclipse. Weitere Informationen finden Sie unter [Installieren des Azure-Toolkits für Eclipse].
 
 ## <a name="to-create-a-hello-world-application"></a>So erstellen Sie eine „Hello World“-Anwendung
 Zunächst beginnen wir mit der Erstellung eines Java-Projekts.
@@ -68,7 +72,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
 5. Wenn das Dialogfeld **Deploy to Azure Web App Container** (In Azure-Web-App-Container bereitstellen) angezeigt wird, werden alle Web-App-Container angezeigt, die Sie zuvor erstellt haben. Wenn Sie keine Container erstellt haben, ist die Liste leer.
    
     ![Dialogfeld zum Bereitstellen im Azure-Web-App-Container][06]
-6. Wenn Sie zuvor keinen Azure-Web-App-Container erstellt haben, oder Sie Ihre Anwendung in einem neuen Container veröffentlichen möchten, führen Sie die folgenden Schritte aus. Wählen Sie andernfalls einen vorhandenen Web-App-Container, und fahren Sie mit Schritt 7 fort.
+6. Wenn Sie zuvor keinen Azure-Web-App-Container erstellt haben, oder Sie Ihre Anwendung in einem neuen Container veröffentlichen möchten, führen Sie die folgenden Schritte aus. Wählen Sie andernfalls einen vorhandenen Web-App-Container, und fahren Sie mit Schritt 7 fort.
    
    1. Klicken Sie auf **New...**
       
@@ -83,7 +87,7 @@ Es gibt mehrere Möglichkeiten, eine Java-Webanwendung in Azure bereitzustellen.
    5. Wählen Sie im Dropdownmenü **Subscription** (Abonnement) das Abonnement aus, das Sie für diese Bereitstellung verwenden möchten.
    6. Wählen Sie im Dropdownmenü **Resource Group** (Ressourcengruppe) die Ressourcengruppe aus, der Sie Ihre Web-App zuordnen möchten. (Mithilfe von Azure-Ressourcengruppen können Sie verwandte Ressourcen gruppieren, um diese z.B. gemeinsam löschen zu können.)
       
-       Sie können eine vorhandene Ressourcengruppe auswählen (sofern vorhanden) und direkt mit Schritt g unten fortfahren oder die folgenden Schritte ausführen, um eine neue Ressourcengruppe zu erstellen:
+       Sie können eine vorhandene Ressourcengruppe auswählen (sofern vorhanden) und direkt mit Schritt g unten fortfahren oder die folgenden Schritte ausführen, um eine neue Ressourcengruppe zu erstellen:
       
       * Klicken Sie auf **New...**
       * Das Dialogfeld **New Resource Group** (Neue Ressourcengruppe) wird angezeigt:
@@ -161,7 +165,7 @@ Wenn die Ansicht **Azure Explorer** angezeigt wird, beenden Sie Ihre Web-App mit
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
 
-* [Azure-Toolkit für Eclipse]
+* [Azure-Toolkits für Eclipse]
   * [Installieren des Azure-Toolkits für Eclipse]
   * *Erstellen einer „Hello World“-Web-App für Azure in Eclipse (dieser Artikel)*
   * [Neuerungen im Azure-Toolkit für Eclipse]
@@ -178,7 +182,7 @@ Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-App
 
 <!-- URL List -->
 
-[Azure-Toolkit für Eclipse]: ../azure-toolkit-for-eclipse.md
+[Azure-Toolkits für Eclipse]: ../azure-toolkit-for-eclipse.md
 [Azure Toolkit für IntelliJ]: ../azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web-intellij-create-hello-world-web-app.md
@@ -211,6 +215,6 @@ Weitere Informationen zum Erstellen von Azure-Web-Apps finden Sie unter [Web-App
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

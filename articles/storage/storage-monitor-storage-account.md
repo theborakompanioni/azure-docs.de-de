@@ -1,19 +1,23 @@
 ---
-title: Überwachen eines Speicherkontos | Microsoft Docs
-description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird.
+title: "Überwachen eines Speicherkontos | Microsoft Docs"
+description: "Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird."
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: b83cba7b-4627-4ba7-b5d0-f1039fe30e78
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c0506fd6745c9ab04f10b60936315901ed35edbc
+
 
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
@@ -31,7 +35,7 @@ Sie können Ihr Speicherkonto im [Azure-Portal](https://portal.azure.com)überwa
 > 
 > 
 
-## <a name="how-to:-configure-monitoring-for-a-storage-account"></a>Gewusst wie: Konfigurieren der Überwachung für ein Speicherkonto
+## <a name="how-to-configure-monitoring-for-a-storage-account"></a>Gewusst wie: Konfigurieren der Überwachung für ein Speicherkonto
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **Speicher**und dann auf den Speicherkontonamen, um das Dashboard zu öffnen.
 2. Klicken Sie auf **Konfigurieren**, und blättern Sie nach unten zu den Einstellungen unter **Überwachung** für die Blob-, Tabellen- und Warteschlangendienste.
    
@@ -58,7 +62,7 @@ Nachdem Sie die Überwachungsstufen und Aufbewahrungsrichtlinien festgelegt habe
 
 Metriken werden im Speicherkonto in vier Tabellen namens $MetricsTransactionsBlob, $MetricsTransactionsTable, $MetricsTransactionsQueue und $MetricsCapacityBlob gespeichert. Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343258.aspx).
 
-## <a name="how-to:-customize-the-dashboard-for-monitoring"></a>Gewusst wie: Anpassen des Dashboards für die Überwachung
+## <a name="how-to-customize-the-dashboard-for-monitoring"></a>Gewusst wie: Anpassen des Dashboards für die Überwachung
 Im Dashboard können Sie aus neun verfügbaren Metriken bis zu sechs Metriken zum Zeichnen im Metrikendiagramm auswählen. Für jeden Dienst (Blob, Tabelle und Warteschlange) sind die Metriken "Verfügbarkeit", "Prozentsatz erfolgreich" und "Anforderungen insgesamt" verfügbar. Für minimale und ausführliche Überwachung stehen im Dashboard die gleichen Metriken zur Verfügung.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **Speicher**und dann auf den Namen des Speicherkontos, um das Dashboard zu öffnen.
@@ -71,7 +75,7 @@ Im Dashboard können Sie aus neun verfügbaren Metriken bis zu sechs Metriken zu
 3. Standardmäßig zeigt das Diagramm Trends an, da nur der aktuelle Wert der einzelnen Metriken angezeigt wird (Option **Relativ** oben im Diagramm). Um eine Y-Achse einzublenden, sodass absolute Werte angezeigt werden, wählen Sie **Absolut**aus.
 4. Wählen Sie 6 Stunden, 24 Stunden oder 7 Tage im oberen Bereich des Diagramms aus, um das Zeitintervall für das Metrikendiagramm zu ändern.
 
-## <a name="how-to:-customize-the-monitor-page"></a>Gewusst wie: Anpassen der Seite "Überwachen"
+## <a name="how-to-customize-the-monitor-page"></a>Gewusst wie: Anpassen der Seite "Überwachen"
 Auf der Seite **Überwachen** werden alle Metriken für Ihr Speicherkonto angezeigt.
 
 * Wenn für Ihr Speicherkonto die minimale Überwachung konfiguriert ist, werden Metriken wie Eingang/Ausgang, Verfügbarkeit, Latenz sowie Erfolgsprozentwerte aus den Blob-, Tabellen- und Warteschlangendiensten aggregiert.
@@ -79,7 +83,7 @@ Auf der Seite **Überwachen** werden alle Metriken für Ihr Speicherkonto angeze
 
 Mit den folgenden Vorgehensweisen können Sie wählen, welche Speichermetriken in den Metrikendiagrammen und in der Metrikentabelle auf der Seite **Überwachen** angezeigt werden sollen. Diese Einstellungen haben keine Auswirkung auf Sammlung, Aggregierung und Speicherung von Überwachungsdaten im Speicherkonto.
 
-## <a name="how-to:-add-metrics-to-the-metrics-table"></a>Hinzufügen von Metriken zur Metrikentabelle
+## <a name="how-to-add-metrics-to-the-metrics-table"></a>Hinzufügen von Metriken zur Metrikentabelle
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **Speicher**und dann auf den Namen des Speicherkontos, um das Dashboard zu öffnen.
 2. Klicken Sie auf **Überwachen**.
    
@@ -109,12 +113,12 @@ Mit den folgenden Vorgehensweisen können Sie wählen, welche Speichermetriken i
    
     ![Metrik löschen](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 
-## <a name="how-to:-customize-the-metrics-chart-on-the-monitor-page"></a>Gewusst wie: Anpassen des Metrikendiagramms auf der Seite "Überwachen"
+## <a name="how-to-customize-the-metrics-chart-on-the-monitor-page"></a>Gewusst wie: Anpassen des Metrikendiagramms auf der Seite "Überwachen"
 1. Wählen Sie auf der Seite **Überwachen** für das Speicherkonto in der Metrikentabelle bis zu sechs Metriken zum Zeichnen im Metrikendiagramm aus. Klicken Sie auf das Kontrollkästchen links von einer Metrik, um diese auszuwählen. Um eine Metrik aus dem Diagramm zu entfernen, deaktivieren Sie das Kontrollkästchen.
 2. Um die Diagrammanzeige zwischen relativen Werten (nur Endwert) und absoluten Werten (Y-Achse) umzuschalten, wählen Sie oben im Diagramm **Relativ** oder **Absolut** aus.
 3. Wählen Sie **6 Stunden**, **24 Stunden** oder **7 Tage** im oberen Bereich des Diagramms aus, um das Zeitintervall für das Metrikendiagramm zu ändern.
 
-## <a name="how-to:-configure-logging"></a>Gewusst wie: Konfigurieren der Protokollierung
+## <a name="how-to-configure-logging"></a>Gewusst wie: Konfigurieren der Protokollierung
 Für jeden der für Ihr Speicherkonto verfügbaren Speicherdienste (Blob, Warteschlange und Tabelle) können Sie Diagnoseprotokolle für Lese-, Schreib- und/oder Löschanforderungen speichern, und Sie können die Datenaufbewahrungsrichtlinie für jeden der Dienste festlegen.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **Speicher**und dann auf den Namen des Speicherkontos, um das Dashboard zu öffnen.
@@ -129,6 +133,9 @@ Für jeden der für Ihr Speicherkonto verfügbaren Speicherdienste (Blob, Wartes
 
 Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Informationen zum Zugreifen auf den Container $logs finden Sie unter [Informationen zur Protokollierung durch die Speicheranalyse](http://msdn.microsoft.com/library/azure/hh343262.aspx).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,14 +1,14 @@
 ---
-title: Erstellen einer VM-Verfügbarkeitsgruppe | Microsoft Docs
-description: Erfahren Sie, wie Sie im Azure-Portal oder über PowerShell unter Verwendung des Resource Manager-Bereitstellungsmodells eine Verfügbarkeitsgruppe für Ihre virtuellen Computer erstellen.
-keywords: Verfügbarkeitsgruppe
+title: "Erstellen einer VM-Verfügbarkeitsgruppe | Microsoft Docs"
+description: "Erfahren Sie, wie Sie im Azure-Portal oder über PowerShell unter Verwendung des Resource Manager-Bereitstellungsmodells eine Verfügbarkeitsgruppe für Ihre virtuellen Computer erstellen."
+keywords: "Verfügbarkeitsgruppe"
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a3db8659-ace8-4e78-8b8c-1e75c04c042c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,12 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 19f22b9e38e472b56fc9abecc6c14b63b521a58b
+
 
 ---
 # <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 Wenn Ihr virtueller Computer Mitglied einer Verfügbarkeitsgruppe sein soll, müssen Sie bei Verwendung des Portals zunächst die Verfügbarkeitsgruppe erstellen.
 
-Weitere Information zum Erstellen und Verwenden von Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](virtual-machines-windows-manage-availability.md).
+Weitere Information zum Erstellen und Verwenden von Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="use-the-portal-to-create-an-availability-set-before-creating-your-vms"></a>Verwenden des Portals, um vor dem Erstellen der virtuellen Computer zunächst eine Verfügbarkeitsgruppe zu erstellen
 1. Klicken Sie im Menü des Hubs auf **Durchsuchen**, und wählen Sie **Verfügbarkeitsgruppen** aus.
@@ -61,8 +65,11 @@ Weitere Informationen finden Sie unter [New-AzureRmAvailabilitySet](https://msdn
 * Wenn Sie beim Erstellen eines virtuellen Computers feststellen, dass sich die gewünschte Verfügbarkeitsgruppe nicht in der Dropdownliste im Portal befindet, haben Sie sie möglicherweise in einer anderen Ressourcengruppe erstellt. Wenn Sie die Ressourcengruppe Ihrer Verfügbarkeitsgruppe nicht kennen, wechseln Sie zum Menü des Hubs und klicken auf „Durchsuchen“ > „Verfügbarkeitsgruppen“, um eine Liste Ihrer Verfügbarkeitsgruppen und der Ressourcengruppen anzuzeigen, zu denen sie gehören.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](virtual-machines-windows-attach-disk-portal.md)hinzufügen.
+Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hinzufügen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

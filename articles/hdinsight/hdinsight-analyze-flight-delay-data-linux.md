@@ -1,13 +1,13 @@
 ---
-title: Analysieren von Daten zu Flugverspätungen mit Hive in Linux-basiertem HDInsight | Microsoft Docs
-description: Hier erfahren Sie, wie Sie Flugverspätungsdaten mithilfe von Hive in einem Linux-basierten HDInsight-Cluster analysieren und anschließend die Daten mithilfe von Sqoop in SQL-Datenbank exportieren.
+title: "Analysieren von Daten zu Flugverspätungen mit Hive in Linux-basiertem HDInsight | Microsoft Docs"
+description: "Hier erfahren Sie, wie Sie Flugverspätungsdaten mithilfe von Hive in einem Linux-basierten HDInsight-Cluster analysieren und anschließend die Daten mithilfe von Sqoop in SQL-Datenbank exportieren."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: 0c23a079-981a-4079-b3f7-ad147b4609e5
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 266891083fa0d2a33ef8fd7e533b036e99b00208
+
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analysieren von Flugverspätungsdaten mit Hive in HDInsight
@@ -69,7 +73,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
    
         unzip FILENAME.zip
    
-    Dadurch wird eine CSV-Datei extrahiert, die ungefähr 60 MB groß ist.
+    Dadurch wird eine CSV-Datei extrahiert, die ungefähr 60 MB groß ist.
 4. Erstellen Sie folgendermaßen ein neues Verzeichnis im WASB (dem von HDInsight verwendeten verteilten Datenspeicher), und kopieren Sie die Datei:
    
     hdfs dfs -mkdir -p /tutorials/flightdelays/data  hdfs dfs -put FILENAME.csv /tutorials/flightdelays/data/
@@ -166,7 +170,7 @@ Importieren Sie mit den folgenden Schritten Daten aus der CSV-Datei in eine Hive
 6. Geben Sie zum Beenden von Beeline `!quit` an der Eingabeaufforderung ein.
 
 ## <a name="create-a-sql-database"></a>Erstellen einer SQL-Datenbank
-Wenn Sie bereits über eine SQL-Datenbank verfügen, müssen Sie den Namen des Servers abrufen. Hierzu können Sie im [Azure-Portal](https://portal.azure.com)**SQL-Datenbanken__auswählen und dann nach dem Namen der Datenbank filtern, die Sie verwenden möchten. Der Name des Servers ist in der Spalte __SERVER** aufgelistet.
+Wenn Sie bereits über eine SQL-Datenbank verfügen, müssen Sie den Namen des Servers abrufen. Hierzu können Sie im [Azure-Portal](https://portal.azure.com)**SQL-Datenbanken**auswählen und dann nach dem Namen der Datenbank filtern, die Sie verwenden möchten. Der Name des Servers ist in der Spalte **SERVER** aufgelistet.
 
 Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informationen in [SQL-Datenbank-Tutorial: Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](../sql-database/sql-database-get-started.md) , um eine Datenbank zu erstellen. Sie müssen den für die Datenbank verwendeten Servernamen speichern.
 
@@ -200,7 +204,7 @@ Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informati
         ([origin_city_name] ASC))
         GO
    
-    Nach Eingabe der Anweisung `GO` werden die vorherigen Anweisungen ausgewertet. Dadurch wird eine neue Tabelle namens __delays__mit einem gruppierten Index (erforderlich für die SQL-Datenbank) erstellt.
+    Nach Eingabe der Anweisung `GO` werden die vorherigen Anweisungen ausgewertet. Dadurch wird eine neue Tabelle namens **delays**mit einem gruppierten Index (erforderlich für die SQL-Datenbank) erstellt.
    
     Stellen Sie wie folgt sicher, dass die Tabelle erstellt wurde:
    
@@ -235,8 +239,8 @@ Wenn Sie noch nicht über eine SQL-Datenbank verfügen, nutzen Sie die Informati
    
     Es sollte eine Liste der Tabellendaten angezeigt werden. Geben Sie `exit` ein, um das Dienstprogramm tsql zu beenden.
 
-## <a name="<a-id="nextsteps"></a>-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
-Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine Hive-Tabelle mit Daten aus dem Azure-Blobspeicher füllen, Hive-Abfragen ausführen und Sqoop zum Exportieren von Daten aus dem HDFS in eine Azure SQL-Datenbank verwenden können. Weitere Informationen finden Sie in den folgenden Artikeln:
+## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
+Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine Hive-Tabelle mit Daten aus dem Azure-Blobspeicher füllen, Hive-Abfragen ausführen und Sqoop zum Exportieren von Daten aus dem HDFS in eine Azure SQL-Datenbank verwenden können. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit HDInsight][hdinsight-get-started]
 * [Verwenden von Hive mit HDInsight][hdinsight-use-hive]
@@ -274,6 +278,6 @@ Jetzt wissen Sie, wie Sie eine Datei in den Azure-Blobspeicher hochladen, eine H
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

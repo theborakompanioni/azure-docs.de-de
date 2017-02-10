@@ -1,19 +1,23 @@
 ---
 title: Schreiben von Anwendungen, die Service Bus-Warteschlangen verwenden | Microsoft Docs
 description: Schreiben einer einfachen warteschlangenbasierten Anwendung, bei der Service Bus verwendet wird.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: 754d91b3-1426-405e-84b4-fd36d65b114a
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2016
 ms.author: sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2350c3e222277b6d8e837472f55a7b79346d3d21
+
 
 ---
 # <a name="create-applications-that-use-service-bus-queues"></a>Erstellen von Anwendungen, die Service Bus-Warteschlangen verwenden
@@ -25,7 +29,7 @@ Nehmen wir ein Szenario aus dem Einzelhandel, bei dem Verkaufsdaten aus einzelne
 
 Jedes POS-Terminal meldet seine Verkaufsdaten durch Senden von Nachrichten an **DataCollectionQueue**. Diese Nachrichten verbleiben in dieser Warteschlange, bis sie vom Lagerverwaltungssystem abgerufen werden. Dieses Muster wird auch als *asynchrones Messaging* bezeichnet, da die Verarbeitung des POS-Terminals auch ohne Antwort vom Lagerverwaltungssystem fortgesetzt werden kann.
 
-## <a name="why-queuing?"></a>Warum Warteschlangen?
+## <a name="why-queuing"></a>Warum Warteschlangen?
 Bevor wir uns den Code für diese Anwendung ansehen, soll zunächst auf die Vorteile der Verwendung einer Warteschlange in diesem Szenario gegenüber der direkten (synchronen) Kommunikation zwischen den POS-Terminals und dem Lagerverwaltungssystem eingegangen werden.
 
 ### <a name="temporal-decoupling"></a>Zeitliche Entkopplung
@@ -51,13 +55,13 @@ In den folgenden Abschnitten wird erläutert, wie diese Anwendung mithilfe von S
 Zur Verwendung von Service Bus benötigen Sie ein Azure-Konto. Wenn Sie über kein Abonnement verfügen, können Sie sich [hier](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF) für ein kostenloses Konto registrieren.
 
 ### <a name="create-a-namespace"></a>Erstellen eines Namespace
-Sobald Sie über ein Abonnement verfügen, können Sie [einen neuen Namespace erstellen](../service-bus/service-bus-create-namespace-portal.md). Jeder Namespace ist ein Bereichscontainer für eine Gruppe von Service Bus-Entitäten. Versehen Sie den neuen Namespace mit einem Namen, der für alle Service Bus-Konten eindeutig ist. 
+Sobald Sie über ein Abonnement verfügen, können Sie [einen neuen Namespace erstellen](service-bus-create-namespace-portal.md). Jeder Namespace ist ein Bereichscontainer für eine Gruppe von Service Bus-Entitäten. Versehen Sie den neuen Namespace mit einem Namen, der für alle Service Bus-Konten eindeutig ist. 
 
 ### <a name="install-the-nuget-package"></a>Installieren des NuGet-Pakets
 Zur Verwendung eines Service Bus-Namespaces muss eine Anwendung auf die Service Bus-Assembly (genauer: auf „Microsoft.ServiceBus.dll“) verweisen. Diese Assembly ist Bestandteil des Microsoft Azure SDK und kann auf der [Azure SDK-Downloadseite](https://azure.microsoft.com/downloads/) heruntergeladen werden. Das [NuGet-Paket für Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) stellt jedoch die einfachste Möglichkeit zum Abrufen der Service Bus-API und Konfigurieren der Anwendung mit allen Service Bus-Abhängigkeiten dar.
 
 ### <a name="create-the-queue"></a>Erstellen der Warteschlange
-Verwaltungsvorgänge für Service Bus-Nachrichtenentitäten (Warteschlangen und Veröffentlichen/Abonnieren von Themen) werden über die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse ausgeführt. Service Bus verwendet ein [SAS (Shared Access Signature)](../service-bus/service-bus-sas-overview.md)-basiertes Sicherheitsmodell. Die [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Klasse stellt einen Sicherheitstokenanbieter mit integrierten Factorymethoden dar, die einige bekannte Tokenanbieter zurückgeben. Wir verwenden die [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx)-Methode, um die SAS-Anmeldeinformationen zu speichern. Die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz wird dann mit der Basisadresse des Service Bus-Namespaces und dem Tokenanbieter erstellt.
+Verwaltungsvorgänge für Service Bus-Nachrichtenentitäten (Warteschlangen und Veröffentlichen/Abonnieren von Themen) werden über die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse ausgeführt. Service Bus verwendet ein [SAS (Shared Access Signature)](service-bus-sas-overview.md)-basiertes Sicherheitsmodell. Die [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx)-Klasse stellt einen Sicherheitstokenanbieter mit integrierten Factorymethoden dar, die einige bekannte Tokenanbieter zurückgeben. Wir verwenden die [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx)-Methode, um die SAS-Anmeldeinformationen zu speichern. Die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz wird dann mit der Basisadresse des Service Bus-Namespaces und dem Tokenanbieter erstellt.
 
 Die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Klasse enthält Methoden zum Erstellen, Aufzählen und Löschen von Nachrichtenentitäten. Mit dem folgenden Code wird gezeigt, wie die [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx)-Instanz erstellt und zum Erstellen der **DataCollectionQueue**-Warteschlange verwendet wird.
 
@@ -145,6 +149,9 @@ catch (Exception e)
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich mit den Grundlagen in Bezug auf Warteschlangen vertraut gemacht haben, finden Sie unter [Erstellen von Anwendungen, die Service Bus-Themen und -Abonnements verwenden](service-bus-create-topics-subscriptions.md) weiterführende Informationen zur Verwendung der Funktionen zum Veröffentlichen/Abonnieren der Service Bus-Themen und -Abonnements.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

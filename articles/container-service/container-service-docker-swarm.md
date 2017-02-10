@@ -3,22 +3,22 @@ title: Azure Container Service-Containerverwaltung mit Docker Swarm | Microsoft 
 description: "Bereitstellen von Containern für Docker Swarm in Azure-Container Service"
 services: container-service
 documentationcenter: 
-author: neilpeterson
-manager: timlt
+author: rgardler
+manager: madhana
 editor: 
 tags: acs, azure-container-service
 keywords: Docker, Container, Microservices, Mesos, Azure
 ms.assetid: af8f6fb2-13dc-429c-b82a-24a741168d42
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
-ms.author: timlt
+ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 99953be1a9d99cc1fdd5cd46522ccd262c09e25b
+ms.sourcegitcommit: 2c6497ebe50b3493e376a871431fe5e5471479bd
+ms.openlocfilehash: 7c3f2e06f32856aa4aa603117b7f43bb54450da7
 
 
 ---
@@ -119,6 +119,6 @@ Sie können natürlich auch `docker-compose ps` verwenden, um nur die Container 
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

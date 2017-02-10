@@ -1,11 +1,11 @@
 ---
-title: 'Tutorial: Konfigurieren von Workday für eingehende Synchronisierung | Microsoft Docs'
-description: Erfahren Sie, wie Workday als Quelle von Identitätsdaten für Azure Active Directory verwendet wird.
+title: "Tutorial: Konfigurieren von Workday für eingehende Synchronisierung | Microsoft Docs"
+description: "Erfahren Sie, wie Workday als Quelle von Identitätsdaten für Azure Active Directory verwendet wird."
 services: active-directory
 author: MarkusVi
 documentationcenter: na
 manager: femila
-
+ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2016
 ms.author: markvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a7bf2a8d093b5d314fdd08f5012f0517a45e3579
+
 
 ---
-# <a name="tutorial:-configuring-workday-for-inbound-synchronization"></a>Tutorial: Konfigurieren von Workday für eingehende Synchronisierung
+# <a name="tutorial-configuring-workday-for-inbound-synchronization"></a>Tutorial: Konfigurieren von Workday für eingehende Synchronisierung
 In diesem Tutorial werden die Schritte erläutert, die Sie in Workday und Azure AD ausführen müssen, um Personen aus Workday in Azure AD zu importieren. 
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
@@ -36,7 +40,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 ## <a name="enabling-the-application-integration-for-workday"></a>Aktivieren der Anwendungsintegration für Workday
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Workday aktivieren.
 
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-workday-inbound-tutorial/IC700993.png "Active Directory")
@@ -55,7 +59,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Wor
     ![Anwendungskatalog](./media/active-directory-saas-workday-inbound-tutorial/IC701022.png "Application gallery")
 
 ## <a name="creating-an-integration-system-user"></a>Erstellen eines Integrationssystembenutzers
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Geben Sie in der **Workday-Workbench** die Suchzeichenfolge „Benutzer erstellen“ in das Suchfeld ein, und klicken Sie dann auf den Link **Integrationssystembenutzer erstellen**. 
    
     ![Benutzer erstellen](./media/active-directory-saas-workday-inbound-tutorial/IC750979.png "Create user")
@@ -66,7 +70,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Wor
 ## <a name="creating-a-security-group"></a>Erstellen einer Sicherheitsgruppe
 Für das in diesem Tutorial beschriebene Szenario müssen Sie eine uneingeschränkte Integrationssystem-Sicherheitsgruppe erstellen und den Benutzer dieser Gruppe zuweisen.
 
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Geben Sie „Sicherheitsgruppe erstellen“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe erstellen**. 
    
     ![Sicherheitsgruppe erstellen](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity Group")
@@ -75,7 +79,7 @@ Für das in diesem Tutorial beschriebene Szenario müssen Sie eine uneingeschrä
     ![Sicherheitsgruppe erstellen](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity Group")
 
 ## <a name="assigning-the-integration-system-user-to-the-security-group"></a>Zuweisen des Integrationssystembenutzers zur Sicherheitsgruppe
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Geben Sie „Sicherheitsgruppe bearbeiten“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe bearbeiten**. 
    
     ![Sicherheitsgruppe bearbeiten](./media/active-directory-saas-workday-inbound-tutorial/IC750983.png "Edit Security Group")
@@ -95,7 +99,7 @@ In diesem Schritt gewähren Sie der neuen Sicherheitsgruppe Berechtigungen für 
 * Mitarbeiterdaten: aktuelle Personalinformationen
 * Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil
 
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Geben Sie „Domänensicherheitsrichtlinien“ in das Suchfeld ein, und klicken Sie dann auf den Link „Domänensicherheitsrichtlinien für Funktionsbereich“.  
    
     ![Domänensicherheitsrichtlinien](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "Domain Security Policies")  
@@ -111,7 +115,7 @@ In diesem Schritt gewähren Sie der neuen Sicherheitsgruppe Berechtigungen für 
 5. Wiederholen Sie Schritt 1 oben, um zum Bildschirm für die Auswahl der Funktionsbereiche zurückzukehren. Suchen Sie nun nach „Personal“, wählen Sie den Funktionsbereich „Personal“ aus, und klicken Sie auf die Schaltfläche **OK**.
    
     ![Domänensicherheitsrichtlinien](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "Domain Security Policies")  
-6. Erweitern Sie in der Liste der Sicherheitsrichtlinien für den Funktionsbereich „Personal“ den Eintrag „Mitarbeiterdaten: Personal“, und wiederholen Sie Schritt 4 für die folgenden Sicherheitsrichtlinien:
+6. Erweitern Sie in der Liste der Sicherheitsrichtlinien für den Funktionsbereich „Personal“ den Eintrag „Mitarbeiterdaten: Personal“, und wiederholen Sie Schritt 4 für die folgenden Sicherheitsrichtlinien:
    
    * Mitarbeiterdaten: öffentliche Mitarbeiterberichte
    * Mitarbeiterdaten: alle Positionen
@@ -127,7 +131,7 @@ In diesem Schritt gewähren Sie der neuen Sicherheitsgruppe Berechtigungen für 
 
 
 ## <a name="activating-security-policy-changes"></a>Aktivieren von Sicherheitsrichtlinienänderungen
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Geben Sie „aktivieren“ in das Suchfeld ein, und klicken Sie dann auf den Link „Ausstehende Sicherheitsrichtlinienänderungen aktivieren“. 
    
     ![Aktivieren](./media/active-directory-saas-workday-inbound-tutorial/IC750992.png "Activate") 
@@ -141,7 +145,7 @@ In diesem Schritt gewähren Sie der neuen Sicherheitsgruppe Berechtigungen für 
 ## <a name="configuring-user-import-in-azure-ad"></a>Konfigurieren des Benutzerimports in Azure AD
 In diesem Abschnitt wird beschrieben, wie Sie Azure AD zum Importieren von Personen aus Workday konfigurieren.
 
-### <a name="steps:"></a>Schritte:
+### <a name="steps"></a>Schritte:
 1. Klicken Sie auf der Anwendungsintegrationsseite für **Workday** auf **Benutzerimport konfigurieren**, um das Dialogfeld **Bereitstellung konfigurieren** zu öffnen.
 2. Führen Sie auf der Seite **Einstellungen und Administrator-Anmeldeinformationen** die folgenden Schritte aus, und klicken Sie anschließend auf **Weiter**: 
    
@@ -168,6 +172,9 @@ Jetzt können Sie zum Abschnitt **Benutzer** wechseln und überprüfen, ob der W
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

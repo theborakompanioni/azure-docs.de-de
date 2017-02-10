@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6c9e285834707b668086ceab7fdde582f0cd87cc
+ms.sourcegitcommit: d9f6c8c73cb7803547053ec495812f993eb44c43
+ms.openlocfilehash: b2f8683be1dea938cba84766efe32287eeebb712
 
 
 ---
@@ -108,7 +108,7 @@ Die Feeddatenströme könnten mithilfe von [Azure App Services](https://azure.mi
 
 Punkte und Likes zu einem Beitrag können mithilfe dieser Technik verzögert verarbeitet werden, um eine letztendlich konsistente Umgebung zu erstellen.
 
-Follower sind komplizierter. In DocumentDB gilt ein Grenzwert für die Dokumentgröße von 512 KB, weshalb Sie ggf. erwägen, Follower als ein Dokument mit dieser Struktur zu speichern:
+Follower sind komplizierter. DocumentDB beinhaltet eine Beschränkung für die maximale Dokumentgröße. Zudem kann das Lesen und Schreiben umfangreicher Dokumente die Skalierbarkeit Ihrer Anwendung beeinträchtigen. Daher sollten Sie gegebenenfalls erwägen, Follower als Dokument mit dieser Struktur zu speichern:
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -121,7 +121,7 @@ Follower sind komplizierter. In DocumentDB gilt ein Grenzwert für die Dokumentg
         ]
     }
 
-Dies mag für einen Benutzer mit ein paar Tausend Followern funktionieren. Doch wenn ein Prominenter in unseren Ranglisten auftaucht, wird bei diesem Ansatz die Größenbeschränkung für Dokumente letztlich erreicht.
+Das mag bei einem Benutzer mit ein paar Tausend Followern funktionieren. Doch wenn sich ein Prominenter zu uns gesellt, wird bei diesem Ansatz eine umfangreiche Dokumentgröße und letztlich möglicherweise die Größenbeschränkung für Dokumente erreicht.
 
 Um dieses Problem zu lösen, können wir einen kombinierten Ansatz wählen. Die Anzahl der Follower können wir als Teil des Dokuments mit der Benutzerstatistik speichern:
 
@@ -234,6 +234,6 @@ Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

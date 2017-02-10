@@ -17,8 +17,9 @@
 ### [Netzwerkzuordnung (VMM)](site-recovery-network-mapping.md)
 ### [Speicherzuordnung zwischen lokalen Standorten](site-recovery-storage-mapping.md)
 ## Replikat
-### [VMWare-VMs und Server in Azure](site-recovery-vmware-to-azure.md)
-### [VMware-VMs und Server an einem sekundären Standort](site-recovery-vmware-to-vmware.md)
+### [Virtuelle VMware-Computer und physische Server in Azure](site-recovery-vmware-to-azure.md)
+### [Virtuelle VMware-Computer und physische Server am sekundären Standort](site-recovery-vmware-to-vmware.md)
+### [Virtuelle VMware-Computer mit Unterstützung mehrerer Mandanten in Azure mithilfe des CSP-Programms](site-recovery-multi-tenant-support-vmware-using-csp.md)
 ### [Hyper-V-VMs in Azure (mit VMM)](site-recovery-vmm-to-azure.md)
 ### [Hyper-V-VMs in Azure (ohne VMM)](site-recovery-hyper-v-site-to-azure.md)
 ### [Hyper-V-VMs an einem sekundären Standort](site-recovery-vmm-to-vmm.md)
@@ -64,6 +65,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=site-recovery)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

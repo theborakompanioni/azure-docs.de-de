@@ -1,12 +1,12 @@
 ---
 title: Integration des Azure Mobile Engagement Android SDKs
-description: Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement
+description: "Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 9ec3fab3-35ec-458e-bf41-6cdd69e3fa44
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,20 +14,24 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fd8ba95ee1fb2703926fb35cdb49e6a503637a7d
+
 
 ---
-# Integrieren von Engagement Reach unter Android
+# <a name="how-to-integrate-engagement-reach-on-android"></a>Integrieren von Engagement Reach unter Android
 > [!IMPORTANT]
 > Bevor Sie dieser Anleitung folgen, müssen Sie das unter „Integrieren von Mobile Engagement unter Android“ beschriebene Integrationsverfahren befolgen.
 > 
 > 
 
-## Standardintegration
+## <a name="standard-integration"></a>Standardintegration
 Das Reach SDK erfordert **Android Support-Bibliothek (Version 4)**.
 
 Die schnellste Möglichkeit zum Hinzufügen der Bibliothek zum Projekt in **Eclipse** erfolgt über `Right click on your project -> Android Tools -> Add Support Library...`.
 
-Wenn Sie kein Eclipse verwenden, können Sie die entsprechenden Anweisungen [hier] lesen.
+Wenn Sie kein Eclipse verwenden, können Sie die entsprechenden Anweisungen [hier]lesen.
 
 Kopieren Sie die Reach-Ressourcendateien aus dem SDK in Ihr Projekt:
 
@@ -87,17 +91,17 @@ Bearbeiten Sie Ihre `AndroidManifest.xml`-Datei:
           <meta-data android:name="engagement:reach:notification:icon" android:value="<name_of_icon_WITHOUT_file_extension_and_WITHOUT_'@drawable/'>" />
 
 > [!IMPORTANT]
-> Dieser Abschnitt ist **obligatorisch**, wenn Sie beim Erstellen von Reach-Kampagnen die Verwendung von Systembenachrichtigungen planen. Android verhindert, dass Systembenachrichtigungen ohne Symbole angezeigt werden. Wenn Sie diesen Abschnitt daher auslassen, können Ihre Endbenutzer sie nicht empfangen.
+> Dieser Abschnitt ist **obligatorisch** , wenn Sie beim Erstellen von Reach-Kampagnen die Verwendung von Systembenachrichtigungen planen. Android verhindert, dass Systembenachrichtigungen ohne Symbole angezeigt werden. Wenn Sie diesen Abschnitt daher auslassen, können Ihre Endbenutzer sie nicht empfangen.
 > 
 > 
 
-* Wenn Sie Kampagnen mit Systembenachrichtigungen erstellen, die eine allgemeine Übersicht verwenden, müssen Sie die folgenden Berechtigungen (hinter dem `</application>`-Tag) hinzufügen, falls diese nicht vorhanden sind:
+* Wenn Sie Kampagnen mit Systembenachrichtigungen erstellen, die eine allgemeine Übersicht verwenden, müssen Sie die folgenden Berechtigungen (hinter dem `</application>` -Tag) hinzufügen, falls diese nicht vorhanden sind:
   
           <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
           <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
   
-  * Auf Android M und für Anwendungen, die auf eine Android-API mit Level 23 oder höher abzielen, erfordert die ``WRITE_EXTERNAL_STORAGE``-Berechtigung die Genehmigung des Benutzers. Lesen Sie bitte [diesen Abschnitt](mobile-engagement-android-integrate-engagement.md#android-m-permissions).
-* Für Systembenachrichtigungen können Sie in der Reach-Kampagne auch angeben, ob das Gerät klingeln und/oder vibrieren soll. Damit es funktioniert, müssen Sie sicherstellen, dass Sie die folgende Berechtigung (hinter dem `</application>`-Tag) deklariert haben:
+  * Auf Android M und für Anwendungen, die auf eine Android-API mit Level 23 oder höher abzielen, erfordert die ``WRITE_EXTERNAL_STORAGE`` -Berechtigung die Genehmigung des Benutzers. Lesen Sie bitte [diesen Abschnitt](mobile-engagement-android-integrate-engagement.md#android-m-permissions).
+* Für Systembenachrichtigungen können Sie in der Reach-Kampagne auch angeben, ob das Gerät klingeln und/oder vibrieren soll. Damit es funktioniert, müssen Sie sicherstellen, dass Sie die folgende Berechtigung (hinter dem `</application>` -Tag) deklariert haben:
   
           <uses-permission android:name="android.permission.VIBRATE" />
   
@@ -107,13 +111,13 @@ Bearbeiten Sie Ihre `AndroidManifest.xml`-Datei:
           -dontwarn android.**
           -keep class android.support.v4.** { *; }
 
-## Systemeigener Push
+## <a name="native-push"></a>Systemeigener Push
 Nachdem Sie das Reach-Modul konfiguriert haben, müssen Sie den systemeigenen Push konfigurieren, um Kampagnen auf dem Gerät empfangen zu können.
 
 Für Android werden zwei Dienste unterstützt:
 
-* Google Play-Geräte: Verwenden Sie [Google Cloud Messaging], indem Sie die [Anleitung unter Integrieren von GCM mit Engagement](mobile-engagement-android-gcm-integrate.md) befolgen.
-* Amazon-Geräte: Verwenden Sie [Amazon Device Messaging], indem Sie die [Anleitung unter Integrieren von ADM mit Engagement](mobile-engagement-android-adm-integrate.md) befolgen
+* Google Play-Geräte: Verwenden Sie [Google Cloud Messaging], indem Sie die Anleitung unter[ Integrieren von GCM mit Engagement](mobile-engagement-android-gcm-integrate.md) befolgen.
+* Amazon-Geräte: Verwenden Sie [Amazon Device Messaging], indem Sie die Anleitung unter [Integrieren von ADM mit Engagement](mobile-engagement-android-adm-integrate.md) befolgen.
 
 Wenn Sie Ihre Vorgehensweise auf Amazon- und Google Play-Geräte ausrichten möchten, ist es möglich, für die Entwicklung alles in eine „AndroidManifest.xml/APK“ zu verpacken. Bei der Übermittlung an Amazon wird die Anwendung möglicherweise zurückgewiesen, wenn der GCM-Code erkannt wird.
 
@@ -121,8 +125,8 @@ In diesem Fall sollten Sie mehrere APK-Dateien verwenden.
 
 **Ihre Anwendung ist jetzt bereit zum Empfangen und Anzeigen von Reichweitenkampagnen!**
 
-## Behandeln des Datenpush
-### Integration
+## <a name="how-to-handle-data-push"></a>Behandeln des Datenpush
+### <a name="integration"></a>Integration
 Damit Ihre Anwendung einen Reach-Datenpush empfangen kann, müssen Sie eine Unterklasse von `com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver` erstellen und darauf in der Datei `AndroidManifest.xml` verweisen (zwischen den Tags `<application>` und/oder `</application>`):
 
             <receiver android:name="<your_sub_class_of_com.microsoft.azure.engagement.reach.EngagementReachDataPushReceiver>"
@@ -152,15 +156,15 @@ Dann können Sie die Rückruffunktionen `onDataPushStringReceived` und `onDataPu
               }
             }
 
-### Kategorie
-Der category-Parameter ist optional, wenn Sie eine Datenpushkampagne erstellen und eine Filterung von Datenpushvorgängen ermöglichen. Dies ist hilfreich, wenn Sie über verschiedene Übertragungsempfänger verfügen, die unterschiedliche Datenpushtypen verarbeiten, oder Sie verschiedene Arten von `Base64`-Daten per Push übertragen und dabei vor der Analyse ihren Typ ermitteln möchten.
+### <a name="category"></a>Kategorie
+Der category-Parameter ist optional, wenn Sie eine Datenpushkampagne erstellen und eine Filterung von Datenpushvorgängen ermöglichen. Dies ist hilfreich, wenn Sie über verschiedene Übertragungsempfänger verfügen, die unterschiedliche Datenpushtypen verarbeiten, oder Sie verschiedene Arten von `Base64` -Daten per Push übertragen und dabei vor der Analyse ihren Typ ermitteln möchten.
 
-### Rückgabeparameter von Rückruffunktionen
+### <a name="callbacks-return-parameter"></a>Rückgabeparameter von Rückruffunktionen
 Hier folgen einige Richtlinien zur ordnungsgemäßen Behandlung von Rückgabeparametern von `onDataPushStringReceived` und `onDataPushBase64Received`:
 
 * Ein Übertragungsempfänger sollte in der Rückruffunktion `null` zurückgeben, wenn ihm nicht bekannt ist, wie ein Datenpush behandelt wird. Sie können die Kategorie zur Ermittlung verwenden, ob der Übertragungsempfänger den Datenpush bearbeiten soll.
 * Einer der Übertragungsempfänger sollte in der Rückruffunktion `true` zurückgeben, wenn der Datenpush akzeptiert wird.
-* Einer der Übertragungsempfänger sollte in der Rückruffunktion `false` zurückgeben, wenn er den Datenpush erkennt, ihn aber aus einem beliebigen Grund verwirft. Geben Sie z. B. `false` zurück, wenn die empfangenen Daten ungültig sind.
+* Einer der Übertragungsempfänger sollte in der Rückruffunktion `false` zurückgeben, wenn er den Datenpush erkennt, ihn aber aus einem beliebigen Grund verwirft. Geben Sie z. B. `false` zurück, wenn die empfangenen Daten ungültig sind.
 * Wenn ein Übertragungsempfänger `true` zurückgibt, während ein anderer für denselben Datenpush `false` zurückgibt, dann ist das Verhalten undefiniert. Daher sollten Sie niemals entsprechend vorgehen.
 
 Der Rückgabetyp wird nur für Reach-Statistiken verwendet:
@@ -168,28 +172,28 @@ Der Rückgabetyp wird nur für Reach-Statistiken verwendet:
 * `Replied` wird erhöht, wenn einer der Übertragungsempfänger entweder `true` oder `false` zurückgegeben hat.
 * `Actioned` wird nur erhöht, wenn einer der Übertragungsempfänger `true` zurückgegeben hat.
 
-## Anpassen von Kampagnen
+## <a name="how-to-customize-campaigns"></a>Anpassen von Kampagnen
 Sie können die im Reach-SDK bereitgestellten Layouts ändern, um Kampagnen anzupassen.
 
 Sie sollten alle in den Layouts verwendeten Bezeichner sowie die Ansichtstypen beibehalten, die einen Bezeichner verwenden, insbesondere für Text- und Bildansichten. Einige Ansichten werden nur verwendet, um Bereiche auszublenden oder anzuzeigen, daher kann ihr Typ geändert werden. Überprüfen Sie den Quellcode, wenn Sie beabsichtigen, den Typ einer Ansicht in den bereitgestellten Layouts zu ändern.
 
-### Benachrichtigungen
+### <a name="notifications"></a>Benachrichtigungen
 Es gibt zwei Arten von Benachrichtigungen: System- und In-App-Benachrichtigungen, die unterschiedliche Layoutdateien verwenden.
 
-#### Systembenachrichtigungen
-Sie müssen die **Kategorien** verwenden, um Systembenachrichtigungen anzupassen. Sie können zu [Kategorien](#categories) wechseln.
+#### <a name="system-notifications"></a>Systembenachrichtigungen
+Sie müssen die **Kategorien**verwenden, um Systembenachrichtigungen anzupassen. Sie können zu [Kategorien](#categories)wechseln.
 
-#### In-App-Benachrichtigungen
+#### <a name="in-app-notifications"></a>In-App-Benachrichtigungen
 Eine In-App-Benachrichtigung ist standardmäßig eine Ansicht, die dank der Android `addContentView()`-Methode dynamisch zur Benutzeroberfläche der aktuellen Aktivität hinzugefügt wird. Dies wird als Benachrichtigungsüberlagerung bezeichnet. Benachrichtigungsüberlagerungen sind hervorragend für eine schnelle Integration geeignet, da sie von Ihnen keine Änderung des Layouts in Ihrer Anwendung erfordern.
 
 Sie können einfach die Datei `engagement_notification_area.xml` nach Belieben ändern, um das Aussehen der Benachrichtigungsüberlagerungen zu modifizieren.
 
 > [!NOTE]
-> Die Datei `engagement_notification_overlay.xml` ist die Datei, die zum Erstellen einer Benachrichtigungsüberlagerung verwendet wird. Sie enthält die Datei `engagement_notification_area.xml`. Sie können die Datei auch anpassen, um sie gemäß Ihren Anforderungen zu ändern (z. B. zur Positionierung des Benachrichtigungsbereichs innerhalb der Überlagerung).
+> Die Datei `engagement_notification_overlay.xml` ist die Datei, die zum Erstellen einer Benachrichtigungsüberlagerung verwendet wird. Sie enthält die Datei `engagement_notification_area.xml`. Sie können die Datei auch anpassen, um sie gemäß Ihren Anforderungen zu ändern (z. B. zur Positionierung des Benachrichtigungsbereichs innerhalb der Überlagerung).
 > 
 > 
 
-##### Einbeziehen des Benachrichtigungslayouts im Rahmen einer Aktivitätsüberlagerung
+##### <a name="include-notification-layout-as-part-of-an-activity-layout"></a>Einbeziehen des Benachrichtigungslayouts im Rahmen einer Aktivitätsüberlagerung
 Überlagerungen sind hervorragend für eine schnelle Integration geeignet, aber können in besonderen Fällen ungelegen kommen oder Nebeneffekte aufweisen. Das Überlagerungssystem kann auf einer Aktivitätsebene angepasst werden, wodurch es sich einfach gestaltet, Nebeneffekte für besondere Aktivitäten zu verhindern.
 
 Sie können unser Benachrichtigungslayout dank der Android-Anweisung **include** in Ihr vorhandenes Layout einbeziehen. Nachfolgend finden Sie ein Beispiel eines geänderten `ListActivity`-Layouts, das nur ein `ListView` enthält.
@@ -231,14 +235,14 @@ Das Engagement Reach SDK erkennt automatisch, dass das Benachrichtigungslayout i
 > 
 > 
 
-##### Deaktivieren der Anwendungsbenachrichtigung durch eine Aktivität
+##### <a name="disabling-application-notification-per-activity"></a>Deaktivieren der Anwendungsbenachrichtigung durch eine Aktivität
 Wenn die Überlagerung nicht zu Ihrer Aktivität hinzugefügt werden soll, und Sie das Benachrichtigungslayout nicht in Ihr eigenes Layout einbeziehen möchten, können Sie die Überlagerung für diese Aktivität in der Datei `AndroidManifest.xml` deaktivieren, indem Sie wie im folgenden Beispiel einen `meta-data`-Abschnitt hinzufügen:
 
             <activity android:name="SplashScreenActivity">
               <meta-data android:name="engagement:notification:overlay" android:value="false"/>
             </activity>
 
-#### <a name="categories"></a> Kategorien
+#### <a name="a-namecategoriesa-categories"></a><a name="categories"></a> Kategorien
 Wenn Sie die bereitgestellten Layouts ändern, verändern Sie das Aussehen Ihrer gesamten Benachrichtigungen. Mithilfe von Kategorien können Sie verschiedene zielgerichtete Layouts (Verhaltensweisen) für Benachrichtigungen definieren. Eine Kategorie kann beim Erstellen einer Reach-Kampagne angegeben werden. Bedenken Sie, dass Sie mithilfe von Kategorien auch Ankündigungen und Umfragen anpassen können (dies wird weiter unten in diesem Dokument beschrieben).
 
 Sie müssen beim Initialisieren der Anwendung einen Aufruf hinzufügen, um einen Kategoriehandler für Ihre Benachrichtigungen zu registrieren.
@@ -248,7 +252,7 @@ Sie müssen beim Initialisieren der Anwendung einen Aufruf hinzufügen, um einen
 > 
 > 
 
-Im folgenden Beispiel wird angenommen, dass Sie die vorherige Warnung bestätigt haben und eine Unterklasse von `EngagementApplication` verwenden:
+Im folgenden Beispiel wird angenommen, dass Sie die vorherige Warnung bestätigt haben und eine Unterklasse von `EngagementApplication`verwenden:
 
             public class MyApplication extends EngagementApplication
             {
@@ -261,7 +265,7 @@ Im folgenden Beispiel wird angenommen, dass Sie die vorherige Warnung bestätigt
               }
             }
 
-Das `MyNotifier`-Objekt ist die Implementierung des Handlers für die Benachrichtigungskategorie. Es handelt sich entweder um eine Implementierung der `EngagementNotifier`-Schnittstelle oder eine Klasse der Standardimplementierung: `EngagementDefaultNotifier`.
+Das `MyNotifier` -Objekt ist die Implementierung des Handlers für die Benachrichtigungskategorie. Es handelt sich entweder um eine Implementierung der `EngagementNotifier`-Schnittstelle oder eine Klasse der Standardimplementierung: `EngagementDefaultNotifier`.
 
 Beachten Sie, dass dieselbe Benachrichtigung, die Sie wie folgt registrieren können, verschiedene Kategorien behandeln kann:
 
@@ -286,7 +290,7 @@ Er wird entweder als `String`-Parameter oder indirekt in einem `EngagementReachC
 
 Sie können den größten Teil des Erstellungsprozesses für die Benachrichtigung durch erneute Definition der Methoden für `EngagementDefaultNotifier` ändern. Für eine erweiterte Anpassung können Sie die technische Dokumentation und den Quellcode zu Rate ziehen.
 
-##### In-App-Benachrichtigungen
+##### <a name="in-app-notifications"></a>In-App-Benachrichtigungen
 Wenn Sie für eine bestimmte Kategorie alternative Layouts verwenden möchten, können Sie diese wie im folgenden Beispiel implementieren:
 
             public class MyNotifier extends EngagementDefaultNotifier
@@ -316,7 +320,7 @@ Wenn Sie für eine bestimmte Kategorie alternative Layouts verwenden möchten, k
               }
             }
 
-**Beispiel für `my_notification_overlay.xml`: **
+**Beispiel für `my_notification_overlay.xml` :**
 
             <?xml version="1.0" encoding="utf-8"?>
             <RelativeLayout
@@ -331,7 +335,7 @@ Wenn Sie für eine bestimmte Kategorie alternative Layouts verwenden möchten, k
 
 Wie Sie sehen können, unterscheidet sich der Bezeichner für die Überlagerungsansicht vom Standardbezeichner. Es ist wichtig, dass jedes Layout einen eindeutigen Bezeichner für Überlagerungen verwendet.
 
-**Beispiel für `my_notification_area.xml`: **
+**Beispiel für `my_notification_area.xml` :**
 
             <?xml version="1.0" encoding="utf-8"?>
             <merge
@@ -415,9 +419,9 @@ Wie Sie sehen können, unterscheidet sich der Bezeichner der Benachrichtigungsbe
 
 In diesem einfachen Beispiel zur Kategorie werden Anwendungsbenachrichtigungen (oder In-App-Benachrichtigungen) am oberen Bildschirmrand angezeigt. Die Standardbezeichner, die im Benachrichtigungsbereich selbst verwendet wurden, haben wir nicht geändert.
 
-Wenn Sie diese ändern möchten, müssen Sie die `EngagementDefaultNotifier.prepareInAppArea`-Methode neu definieren. Es wird empfohlen, sich die technische Dokumentation und den Quellcode von `EngagementNotifier` und `EngagementDefaultNotifier` anzusehen, wenn Sie eine derartige erweiterte Anpassung wünschen.
+Wenn Sie diese ändern möchten, müssen Sie die `EngagementDefaultNotifier.prepareInAppArea` -Methode neu definieren. Es wird empfohlen, sich die technische Dokumentation und den Quellcode von `EngagementNotifier` und `EngagementDefaultNotifier` anzusehen, wenn Sie eine derartige erweiterte Anpassung wünschen.
 
-##### Systembenachrichtigungen
+##### <a name="system-notifications"></a>Systembenachrichtigungen
 Durch die Erweiterung von `EngagementDefaultNotifier` können Sie `onNotificationPrepared` außer Kraft setzen, um die Benachrichtigung zu ändern, die von der Standardimplementierung vorbereitet wurde.
 
 Beispiel:
@@ -462,10 +466,10 @@ Hier folgt ein entsprechendes Beispiel für eine derartige Implementierung:
               return false;
             }
 
-##### Ankündigungen für ausschließliche Benachrichtigung
+##### <a name="notification-only-announcements"></a>Ankündigungen für ausschließliche Benachrichtigung
 Die Verwaltung der Ankündigung zum Klicken auf eine Benachrichtigung kann durch Außerkraftsetzung von `EngagementDefaultNotifier.onNotifAnnouncementIntentPrepared` angepasst werden, indem das vorbereitete `Intent` geändert wird. Durch die Verwendung dieser Methode können Sie die Flags ganz einfach anpassen.
 
-Gehen Sie wie folgt vor, um z. B. das Flag `SINGLE_TOP` hinzuzufügen:
+Gehen Sie wie folgt vor, um z. B. das Flag `SINGLE_TOP` hinzuzufügen:
 
             @Override
             protected Intent onNotifAnnouncementIntentPrepared(EngagementNotifAnnouncement notifAnnouncement,
@@ -479,7 +483,7 @@ Beachten Sie, dass die Systembenachrichtigungen ohne Aktions-URL jetzt die Anwen
 
 Sie können auch `EngagementNotifier.executeNotifAnnouncementAction` von Grund auf implementieren.
 
-##### Benachrichtigungslebenszyklus
+##### <a name="notification-life-cycle"></a>Benachrichtigungslebenszyklus
 Bei Verwendung der Standardkategorie werden für das `EngagementReachInteractiveContent`-Objekt einige Lebenszyklusmethoden aufgerufen, um Statistiken bereitzustellen und den Kampagnenstatus zu aktualisieren:
 
 * Wenn die Benachrichtigung in der Anwendung oder Statusleiste angezeigt wird, wird die `displayNotification`-Methode (die die Statistiken meldet) von `EngagementReachAgent` aufgerufen, wenn `handleNotification` den Wert `true` zurückgibt.
@@ -488,7 +492,7 @@ Bei Verwendung der Standardkategorie werden für das `EngagementReachInteractive
 
 Wenn Ihre Implementierung von `EngagementNotifier` das Standardverhalten umgeht, müssen Sie diese Lebenszyklusmethoden selbst aufrufen. Das folgende Beispiel zeigt einige Fälle, in denen das Standardverhalten umgangen wird:
 
-* Es erfolgt keine Erweiterung von `EngagementDefaultNotifier`, d. h. Sie haben die Kategorieverarbeitung von Grund auf implementiert.
+* Es erfolgt keine Erweiterung von `EngagementDefaultNotifier`, d. h. Sie haben die Kategorieverarbeitung von Grund auf implementiert.
 * Für die Systembenachrichtigungen haben Sie `onNotificationPrepared` außer Kraft gesetzt und `contentIntent` oder `deleteIntent` im `Notification`-Objekt geändert.
 * Für In-App-Benachrichtigungen haben Sie `prepareInAppArea` außer Kraft gesetzt. Stellen Sie sicher, dass Sie mindestens `actionNotification` zu einem Ihrer Steuerelemente der Benutzeroberfläche zuordnen.
 
@@ -497,19 +501,19 @@ Wenn Ihre Implementierung von `EngagementNotifier` das Standardverhalten umgeht,
 > 
 > 
 
-### Ankündigungen und Umfragen
-#### Layouts
+### <a name="announcements-and-polls"></a>Ankündigungen und Umfragen
+#### <a name="layouts"></a>Layouts
 Sie können die Dateien `engagement_text_announcement.xml`, `engagement_web_announcement.xml` und `engagement_poll.xml` ändern, um Textankündigungen, Webankündigungen und Umfragen anzupassen.
 
 Diese Dateien haben zwei allgemeine Layouts für den Titel- und den unteren Bereich gemeinsam. Das Layout für den Titel ist `engagement_content_title.xml` und es verwendet die gleichnamige ziehbare Datei für den Hintergrund. Das Layout für die Aktions- und Beendigungsschaltflächen ist `engagement_button_bar.xml` und es verwendet die gleichnamige ziehbare Datei für den Hintergrund.
 
 In einer Umfrage werden das Fragenlayout und ihre Optionen dynamisch durch mehrfache Verwendung der `engagement_question.xml`-Layoutdatei für die Fragen und der `engagement_choice.xml`-Datei für die Optionen gefüllt.
 
-#### Categories
-##### Alternative Layouts
+#### <a name="categories"></a>Categories
+##### <a name="alternate-layouts"></a>Alternative Layouts
 Wie Benachrichtigungen können die Kampagnenkategorien dazu verwendet werden, alternative Layouts für Ankündigungen und Umfragen bereitzustellen.
 
-Zum Erstellen einer Kategorie für eine Textankündigung können Sie z. B. `EngagementTextAnnouncementActivity` erweitern und darauf in der Datei `AndroidManifest.xml` verweisen:
+Zum Erstellen einer Kategorie für eine Textankündigung können Sie z. B. `EngagementTextAnnouncementActivity` erweitern und darauf in der Datei `AndroidManifest.xml` verweisen:
 
             <activity android:name="com.your_company.MyCustomTextAnnouncementActivity">
               <intent-filter>
@@ -557,8 +561,8 @@ Für Umfragen können Sie `EngagementPollActivity` erweitern und die Datei `Andr
               </intent-filter>
             </activity>
 
-##### Implementierung von Grund auf
-Sie können Kategorien für Ihre Ankündigungsaktivitäten (und Umfrageaktivitäten) implementieren, ohne eine der `Engagement*Activity`-Klassen zu erweitern, die vom Reach-SDK bereitgestellt werden. Dies ist zum Beispiel hilfreich, wenn Sie ein Layout definieren möchten, dass nicht dieselben Ansichten wie die Standardlayouts verwendet.
+##### <a name="implementation-from-scratch"></a>Implementierung von Grund auf
+Sie können Kategorien für Ihre Ankündigungsaktivitäten (und Umfrageaktivitäten) implementieren, ohne eine der `Engagement*Activity` -Klassen zu erweitern, die vom Reach-SDK bereitgestellt werden. Dies ist zum Beispiel hilfreich, wenn Sie ein Layout definieren möchten, dass nicht dieselben Ansichten wie die Standardlayouts verwendet.
 
 Wie bei der erweiterten Benachrichtigungsanpassung wird empfohlen, sich den Quellcode der Standardimplementierung anzusehen.
 
@@ -603,7 +607,7 @@ Für die Statistiken sollten Sie melden, dass der Inhalt im `onResume`-Ereignis 
 
 Vergessen Sie anschließend nicht, entweder `actionContent(this)` oder `exitContent(this)` für das Inhaltsobjekt aufzurufen, bevor die Aktivität in den Hintergrund wechselt.
 
-Wenn Sie weder `actionContent` noch m`exitContent` Aufrufen, werden keine Statistiken gesendet (d. h. keine Analysen zur Kampagne) und noch wichtiger ist, dass die nächsten Kampagnen nicht benachrichtigt werden, bis der Anwendungsprozess neu gestartet wurde.
+Wenn Sie weder `actionContent` noch m`exitContent` Aufrufen, werden keine Statistiken gesendet (d. h. keine Analysen zur Kampagne) und noch wichtiger ist, dass die nächsten Kampagnen nicht benachrichtigt werden, bis der Anwendungsprozess neu gestartet wurde.
 
 Die Ausrichtung oder andere Konfigurationsänderungen können die Ermittlung erschweren, ob die Aktivität in den Hintergrund wechselt. Die Standardimplementierung stellt sicher, dass der Inhalt beim Beenden gemeldet wird, wenn der Benutzer die Aktivität verlässt (durch Drücken von `HOME` oder `BACK`), jedoch nicht, wenn sich die Ausrichtung ändert.
 
@@ -631,8 +635,12 @@ Hier folgt der interessante Teil der Implementierung:
 
 Wenn Sie aufgerufen `actionContent(this)` und dann die Aktivität beendet haben, kann `exitContent(this)` ohne Auswirkungen sicher aufgerufen werden.
 
-[hier]: http://developer.android.com/tools/extras/support-library.html#Downloading
-[Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
-[Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
+[hier]:http://developer.android.com/tools/extras/support-library.html#Downloading
+[Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html
+[Amazon Device Messaging]:https://developer.amazon.com/sdk/adm.html
 
-<!-----HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

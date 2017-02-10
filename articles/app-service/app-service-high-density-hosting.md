@@ -1,22 +1,26 @@
 ---
-title: High Density-Hosting in Azure App Service | Microsoft Docs
+title: High Density-Hosting in Azure App Service | Microsoft-Dokumentation
 description: High Density-Hosting in Azure App Service
 author: btardif
 manager: wpickett
-editor: ''
+editor: 
 services: app-service\web
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/07/2016
+ms.date: 10/24/2016
 ms.author: byvinyal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
+
 
 ---
-# High Density-Hosting in Azure App Service
+# <a name="high-density-hosting-on-azure-app-service"></a>High Density-Hosting in Azure App Service
 Wenn Sie App Service verwenden, wird Ihre Anwendung von der ihr zugeordneten Kapazität entkoppelt. Dabei wird auf zwei Konzepte zurückgegriffen:
 
 * **Die Anwendung:** Stellt die App und ihre Laufzeitkonfiguration dar. Sie enthält beispielsweise die Version von .NET, die von der Laufzeit geladen werden soll, die App-Einstellungen usw.
@@ -24,18 +28,18 @@ Wenn Sie App Service verwenden, wird Ihre Anwendung von der ihr zugeordneten Kap
 
 Eine App ist immer mit einem App Service-Plan verknüpft, aber ein App Service-Plan kann Kapazitäten für eine App oder für mehrere Apps bereitstellen.
 
-Das bedeutet: Die Plattform bietet die Flexibilität, eine einzelne App in einem App Service-Plan zu isolieren oder die Ressourcen eines App Service-Plans für mehrere Apps gemeinsam zu nutzen.
+Die Plattform bietet daher die Flexibilität, eine einzelne App in einem App Service-Plan zu isolieren oder die Ressourcen eines App Service-Plans für mehrere Apps gemeinsam zu nutzen.
 
 Wenn jedoch mehrere Apps einen App Service-Plan gemeinsam nutzen, wird eine Instanz dieser App auf jeder Instanz des App Service-Plans ausgeführt.
 
-## Skalierung pro App
-Bei der *Skalierung pro App* handelt es sich um ein Feature, das auf der Ebene des App Service-Plans aktiviert werden und für jede einzelne Anwendung genutzt werden kann.
+## <a name="per-app-scaling"></a>Skalierung pro App
+*Skalierung pro App* handelt es sich um ein Feature, das auf der Ebene des App Service-Plans aktiviert werden und für jede einzelne Anwendung genutzt werden kann.
 
 Bei der Skalierung pro App wird eine App unabhängig von dem App Service-Plan skaliert, von dem sie gehostet wird. Auf diese Weise kann ein App Service-Plan beispielsweise zur Bereitstellung von zehn Instanzen konfiguriert werden, aber für eine einzelne App kann eine Skalierung auf nur fünf dieser Instanzen festgelegt werden.
 
 Mit der folgenden Azure Resource Manager-Vorlage werden ein App Service-Plan, der auf zehn Instanzen horizontal hochskaliert wird, und eine App erstellt, die für die Verwendung der Skalierung pro App konfiguriert und auf nur fünf Instanzen skaliert wird.
 
-Zu diesem Zweck wird im App Service-Plan die Eigenschaft für die **Skalierung pro Standort** auf TRUE festgelegt (`"perSiteScaling": true`), und für die App wird die **Anzahl der Worker** auf 1 festgelegt (`"properties": { "numberOfWorkers": "1" }`).
+Im App Service-Plan wird die Eigenschaft **Skalierung pro Standort** auf TRUE festgelegt (`"perSiteScaling": true`). Für die App wird die **Anzahl der Worker** auf 5 festgelegt (`"properties": { "numberOfWorkers": "5" }`).
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -77,21 +81,26 @@ Zu diesem Zweck wird im App Service-Plan die Eigenschaft für die **Skalierung p
                     "apiVersion": "2015-08-01",
                     "location": "West US",
                     "dependsOn": [ "[resourceId('Microsoft.Web/Sites', parameters('appName'))]" ],
-                    "properties": { "numberOfWorkers": "1" }
+                    "properties": { "numberOfWorkers": "5" }
              } ]
          }]
     }
 
 
-## Empfohlene Konfiguration für High Density-Hosting
-Bei der Skalierung pro App handelt es sich um ein Feature, das sowohl in öffentlichen Azure-Regionen als auch in App Service-Umgebungen aktiviert ist. Es wird jedoch empfohlen, App Service-Umgebungen mit ihren hoch entwickelten Features und größeren Kapazitätspools zu nutzen.
+## <a name="recommended-configuration-for-high-density-hosting"></a>Empfohlene Konfiguration für High Density-Hosting
+Bei der Skalierung pro App handelt es sich um ein Feature, das sowohl in öffentlichen Azure-Regionen als auch in App Service-Umgebungen aktiviert ist. Es wird jedoch empfohlen, App Service-Umgebungen mit ihren hoch entwickelten Features und größeren Kapazitätspools zu nutzen.  
 
 Führen Sie zum Konfigurieren des High Density-Hosting für Ihre Apps die folgenden Schritte aus:
 
 1. Konfigurieren Sie die App Service-Umgebung, und wählen Sie einen Workerpool aus, der ausschließlich für das Szenario mit High Density-Hosting genutzt wird.
 2. Erstellen Sie einen einzelnen App Service-Plan, und skalieren Sie ihn so, dass die gesamte verfügbare Kapazität für den Workerpool verwendet wird.
 3. Legen Sie im App Service-Plan das Flag für die Skalierung pro Standort auf TRUE fest.
-4. Es werden neue Standorte erstellt und diesem App Service-Plan zugewiesen, wobei die **numberOfWorkers**-Eigenschaft auf **1** festgelegt wird. Dadurch ergibt sich die höchstmögliche Dichte für diesen Workerpool.
+4. Neue Standorte werden erstellt und diesem App Service-Plan zugewiesen, wobei die Eigenschaft **numberOfWorkers** auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
 5. Die Anzahl der Worker kann pro Standort unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispielsweise kann für einen Standort mit hoher Nutzung für **numberOfWorkers** der Wert **3** festgelegt werden, um mehr Verarbeitungskapazität für die App bereitzustellen, während bei weniger stark genutzten Standorten **numberOfWorkers** auf **1** festgelegt wird.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

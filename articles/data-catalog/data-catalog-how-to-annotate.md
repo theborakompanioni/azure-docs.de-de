@@ -1,28 +1,33 @@
 ---
-title: Hinzufügen von Anmerkungen zu Datenquellen | Microsoft Docs
-description: Anleitungsartikel zum Hinzufügen von Anmerkungen zu Datenressourcen in Azure Data Catalog, einschließlich Anzeigenamen, Tags, Beschreibungen und Experten.
+title: "Hinzufügen von Anmerkungen zu Datenquellen | Microsoft Docs"
+description: "Anleitungsartikel zum Hinzufügen von Anmerkungen zu Datenressourcen in Azure Data Catalog, einschließlich Anzeigenamen, Tags, Beschreibungen und Experten."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/21/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ba15ebc176ada48943fb6afa5f9c723e3d906099
+
 
 ---
-# Hinzufügen von Anmerkungen zu Datenquellen
-## Einführung
+# <a name="how-to-annotate-data-sources"></a>Hinzufügen von Anmerkungen zu Datenquellen
+## <a name="introduction"></a>Einführung
 **Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Data Catalog unterstützt Benutzer also beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Daten zu ziehen. Wenn eine Datenquelle in Data Catalog registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Das ist aber noch nicht alles. Data Catalog bietet Benutzern die Möglichkeit, die aus der Datenquelle extrahierten Metadaten durch eigene beschreibende Metadaten (beispielsweise Beschreibungen und Tags) zu ergänzen, um die Datenquelle für andere Benutzer verständlicher zu machen.
 
-## Anmerkung und Crowdsourcing
-Jeder hat eine Meinung. Und das ist auch gut so. Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Stellen Sie sich folgendes Szenario vor:
+## <a name="annotation-and-crowdsourcing"></a>Anmerkung und Crowdsourcing
+Jeder hat eine Meinung. Und das ist auch gut so.
+Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Stellen Sie sich folgendes Szenario vor:
 
 * Der Systemadministrator kennt die Vereinbarung zum Servicelevel für die Server und Dienste, die die Datenquelle hosten.
 * Der Datenbankadministrator kennt den Sicherungszeitplan für jede Datenbank und die zulässigen ETL-Verarbeitungsfenster.
@@ -32,7 +37,7 @@ Jeder hat eine Meinung. Und das ist auch gut so. Data Catalog berücksichtigt di
 
 Da jede dieser Perspektiven wertvoll ist, verwendet Data Catalog einen Crowdsourcing-Ansatz für Metadaten. Auf diese Weise kann jede Perspektive berücksichtigt und ein lückenloses Bild der registrierten Datenquellen bereitgestellt werden. Mithilfe des Data Catalog-Portals kann jeder Benutzer eigene Anmerkungen hinzufügen und bearbeiten und gleichzeitig die Anmerkungen anderer Benutzer anzeigen.
 
-## Anmerkungstypen
+## <a name="different-types-of-annotations"></a>Anmerkungstypen
 Data Catalog unterstützt folgende Anmerkungstypen:
 
 | Anmerkung | Hinweise |
@@ -45,23 +50,27 @@ Data Catalog unterstützt folgende Anmerkungstypen:
 | Zugriff anfordern |Anmerkungen vom Typ „Zugriff anfordern“ können auf der Datenressourcenebene angegeben werden. Diese Anmerkung ist für Benutzer vorgesehen, die eine Datenquelle finden, für die sie noch keine Zugriffsberechtigung besitzen. Benutzer können die E-Mail-Adresse des Benutzers oder der Gruppe, der bzw. die für die Erteilung der Zugriffsberechtigung zuständig ist, die URL des für den Zugriff erforderlichen Prozesses oder Tools oder den Prozess selbst als Text eingeben. |
 | Dokumentation |Eine Dokumentation kann auf der Datenressourcenebene angegeben werden. Bei einer Ressourcendokumentation handelt es sich um Rich-Text-Informationen, die Links und Bilder enthalten und somit Informationen vermitteln können, die sich nicht über Beschreibungen und Tags bereitstellen lassen. |
 
-## Hinzufügen einer Anmerkung zu mehreren Datenressourcen
+## <a name="annotating-multiple-assets"></a>Hinzufügen einer Anmerkung zu mehreren Datenressourcen
 Benutzer können im Data Catalog-Portal mehrere Datenressourcen auswählen und allen ausgewählten Ressourcen in nur einem Arbeitsschritt eine Anmerkung hinzufügen. Da Anmerkungen für alle ausgewählten Datenressourcen gelten, ist es ganz einfach, einheitliche Beschreibungen, Tags und Experten für verwandte Datenressourcen bereitzustellen.
 
 > [!NOTE]
 > Tags und Experten können auch beim Registrieren von Datenressourcen mit dem Data Catalog-Tool zur Datenquellenregistrierung angegeben werden.
-> 
-> 
+>
+>
 
 Bei Auswahl mehrerer Tabellen und Ansichten werden im Data Catalog-Portal nur Spalten angezeigt, die in allen Datenressourcen vorhanden sind. So können Benutzer Tags und Beschreibungen für alle Spalten hinzufügen, die für alle ausgewählten Datenressourcen den gleichen Namen aufweisen.
 
-## Anmerkungen und Ermittlung
+## <a name="annotations-and-discovery"></a>Anmerkungen und Ermittlung
 Genau wie die Metadaten, die bei der Registrierung aus der Datenquelle extrahiert und dem Data Catalog-Suchindex hinzugefügt werden, werden auch die vom Benutzer angegebenen Metadaten indiziert. Anmerkungen erleichtern Benutzern somit nicht nur das Verständnis der gefundenen Daten, sondern auch die Ermittlung von Datenressourcen, da sie anhand der für sie sinnvollen Begriffe nach ihnen können.
 
-## Zusammenfassung
+## <a name="summary"></a>Zusammenfassung
 Durch die Registrierung einer Datenquelle in Data Catalog werden strukturelle und beschreibende Metadaten aus der Datenquelle in den Katalogdienst kopiert, sodass die darin enthaltenen Daten leichter auffindbar sind. Sobald eine Datenquelle registriert wurde, können Benutzer im Data Catalog-Portal Anmerkungen hinzufügen, um das Verständnis der Daten zu erleichtern und die Ermittlung zu vereinfachen.
 
-## Siehe auch
-* Eine detaillierte Anleitung zum Hinzufügen von Anmerkungen zu Datenquellen finden Sie im Tutorial [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md).
+## <a name="see-also"></a>Siehe auch
+* [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

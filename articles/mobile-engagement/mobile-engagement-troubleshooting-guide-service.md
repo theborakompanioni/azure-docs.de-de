@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement – Handbuch zur Problembehandlung – Dienste
-description: Handbücher zur Problembehandlung für Azure Mobile Engagement
+title: "Azure Mobile Engagement – Handbuch zur Problembehandlung – Dienste"
+description: "Handbücher zur Problembehandlung für Azure Mobile Engagement"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 8b4275da-c0b4-4690-824a-48e9d7a1fc6e
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
+
 
 ---
-# Handbuch zur Problembehandlung bei Dienstproblemen
+# <a name="troubleshooting-guide-for-service-issues"></a>Handbuch zur Problembehandlung bei Dienstproblemen
 Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mobile Engagement auftreten können.
 
-## Dienstausfälle
-### Problem
+## <a name="service-outages"></a>Dienstausfälle
+### <a name="issue"></a>Problem
 * Probleme, die offenbar von Dienstausfällen in Azure Mobile Engagement verursacht werden.
 
-### Ursachen
+### <a name="causes"></a>Ursachen
 * Probleme, die scheinbar von Azure Mobile Engagement-Dienstausfällen verursacht werden, können verschiedene Ursachen haben:
   * Isolierte Probleme, die ursprünglich systemisch in Azure Mobile Engagement auftreten
   * Bekannte Probleme, die durch Serverausfälle verursacht werden (nicht immer im Serverstatus angezeigt):
@@ -32,7 +36,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
   * PNS-Abhängigkeitsfehler (Push Notification Services)
   * App Store-Ausfälle
 
-1) Um zu testen, ob es sich um ein systemisches Problem handelt, können Sie dieselbe Funktion von anderer Stelle ausführen:
+1) Um zu testen, ob es sich um ein systembedingtes Problem handelt, können Sie dieselbe Funktion von anderer Stelle aus testen:
 
 * Integrierte Azure Mobile Engagement-Anwendung
 * Testgerät
@@ -54,8 +58,8 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
 4) So testen Sie, ob ein Geräteproblem vorliegt:
 
 * Testen Sie, ob Ihr Gerät mit einer anderen integrierten Azure Mobile Engagement-App eine Verbindung mit Azure Mobile Engagement herstellen kann.
-* Testen Sie, ob Sie Ereignisse, Aufträge und Abstürze über Ihr Telefon generieren können, die auf der Azure Mobile Engagement-Benutzeroberfläche angezeigt werden.
-* Testen Sie, ob Sie Pushbenachrichtigungen von der Azure Mobile Engagement-Benutzeroberfläche basierend auf der Geräte-ID an Ihr Gerät senden können.
+* Testen Sie, ob Sie Ereignisse, Aufträge und Abstürze über Ihr Telefon generieren können, die auf der Azure Mobile Engagement-Benutzeroberfläche angezeigt werden. 
+* Testen Sie, ob Sie Pushbenachrichtigungen von der Azure Mobile Engagement-Benutzeroberfläche basierend auf der Geräte-ID an Ihr Gerät senden können. 
 
 5) So testen Sie, ob ein Problem mit der App vorliegt:
 
@@ -66,8 +70,8 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
 * Testen Sie die Anwendung auf verschiedenen Geräten mit verschiedenen Versionen des Betriebssystems.
 * Vergewissern Sie sich, dass Sie die neueste Version des SDK verwenden.
 
-## Konnektivitätsprobleme und falsche Informationen
-### Problem
+## <a name="connectivity-and-incorrect-information-issues"></a>Konnektivitätsprobleme und falsche Informationen
+### <a name="issue"></a>Problem
 * Es treten bei der Anmeldung an der Azure Mobile Engagement-Benutzeroberfläche Probleme auf.
 * Verbindungsfehler mit den Azure Mobile Engagement-APIs.
 * Probleme beim Hochladen von Infotags der App über die Geräte-API.
@@ -75,7 +79,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
 * Anzeige von falschen Informationen in der Azure Mobile Engagement-Benutzeroberfläche.
 * Anzeige von falschen Informationen in Azure Mobile Engagement-Protokollen.
 
-### Ursachen
+### <a name="causes"></a>Ursachen
 * Vergewissern Sie sich, dass Ihr Benutzerkonto über ausreichende Berechtigungen zum Ausführen der Aufgabe verfügt.
 * Stellen Sie sicher, dass es sich nicht um ein isoliertes Problem mit einem Computer oder Ihrem lokalen Netzwerk handelt.
 * Vergewissern Sie sich, dass der Azure Mobile Engagement-Dienst keine Ausfälle meldet.
@@ -83,6 +87,11 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
   * Verwenden Sie ausschließlich den UTF8-Zeichensatz (der ANSI-Zeichensatz wird nicht unterstützt).
   * Verwenden Sie als Trennzeichen ein Komma "," (Sie können über eine Dienstanfrage die Änderung des CSV-Trennzeichens von einem Komma "," in ein anderes Zeichen anfordern, beispielsweise ein Semikolon ";").
   * Verwenden Sie ausschließlich Kleinbuchstaben für die booleschen Werte "true" und "false".
-  * Verwenden Sie eine Datei, die die maximale Größe von 35 MB nicht übersteigt.
+  * Verwenden Sie eine Datei, die die maximale Größe von 35 MB nicht übersteigt.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

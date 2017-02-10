@@ -1,13 +1,13 @@
 ---
-title: Richtlinien für Speicherlösungen | Microsoft Docs
-description: Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung von Speicherlösungen in Azure-Infrastrukturdiensten.
-documentationcenter: ''
+title: "Richtlinien für Speicherlösungen | Microsoft Docs"
+description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung von Speicherlösungen in Azure-Infrastrukturdiensten."
+documentationcenter: 
 services: virtual-machines-windows
 author: iainfoulds
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4ceb7d32-7a0d-4004-b701-c2bbcaff6b0b
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,14 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 589c79b9caba359ce8063c051ebe80dcbc68456c
+
 
 ---
-# Richtlinien für die Speicherinfrastruktur
+# <a name="storage-infrastructure-guidelines"></a>Richtlinien für die Speicherinfrastruktur
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel liegt das Hauptaugenmerk darauf, den Speicherbedarf und Entwurfsüberlegungen für eine optimale Leistung virtueller Computer (VMs) zu erläutern.
 
-## Implementierungsrichtlinien für Speicher
+## <a name="implementation-guidelines-for-storage"></a>Implementierungsrichtlinien für Speicher
 Entscheidungen:
 
 * Möchten Sie Standard- oder Premium-Speicher für Ihre Workload verwenden?
@@ -35,7 +39,7 @@ Aufgaben:
 * Überprüfen Sie die E/A-Anforderungen der Anwendung, die Sie bereitstellen, und planen Sie die entsprechende Anzahl und den Typ von Speicherkonten.
 * Erstellen Sie die Gruppe von Speicherkonten mit Ihrer Benennungskonvention. Sie können Azure PowerShell oder das Portal verwenden.
 
-## Speicher
+## <a name="storage"></a>Speicher
 Azure Storage ist ein wichtiger Bestandteil beim Bereitstellen und Verwalten von virtuellen Computern (VMs) und Anwendungen. Azure Storage bietet Dienste zum Speichern von Dateidaten, unstrukturierten Daten und Nachrichten und ist außerdem Teil der Infrastruktur zur Unterstützung virtueller Computer.
 
 Es sind zwei Arten von Speicherkonten zur Unterstützung virtueller Computer verfügbar:
@@ -55,14 +59,14 @@ Informieren Sie sich über [weitere Replikationsoptionen für hohe Verfügbarkei
 
 Betriebssystem-Datenträger und reine Datenträger haben eine maximale Größe von 1.023 Gigabyte (GB). Die maximale Größe eines Blobs ist 1.024 GB. Darin enthalten sein müssen die Metadaten (Fußzeile) der VHD-Datei (ein GB hat 1.024<sup>3</sup> Bytes). Mit Speicherplätzen unter Windows Server 2012 können Sie diese Beschränkung umgehen, indem Sie Datenträger für Daten zu einem Pool zusammenfassen, um dem virtuellen Computer logische Volumes mit mehr als 1023 GB bereitzustellen.
 
-Es gibt einige Skalierbarkeitsgrenzwerte beim Entwerfen der Azure Storage-Bereitstellung. Weitere Details finden Sie unter [Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#storage-limits). Informationen hierzu finden Sie auch unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md).
+Es gibt einige Skalierbarkeitsgrenzwerte beim Entwurf der Azure Storage-Bereitstellung. Weitere Details finden Sie unter [Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#storage-limits). Weitere Informationen finden Sie auch unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md).
 
-Im Hinblick auf Anwendungsspeicher können Sie unstrukturierte Objektdaten wie z.B. Dokumente, Bilder, Backups, Konfigurationsdaten, Protokolle usw. mithilfe von Blobspeicher speichern. Ihre Anwendung schreibt dann nicht auf eine virtuelle Festplatte, die dem virtuellen Computer angefügt ist, sondern direkt in den Azure-Blobspeicher. Blobspeicher bietet je nach Verfügbarkeitsanforderungen und Budget auch die Option für [„heiße“ und „kalte“ Speicherebenen](../storage/storage-blob-storage-tiers.md).
+Für Anwendungsspeicher können Sie unstrukturierte Objektdaten wie z.B. Dokumente, Bilder, Sicherungen, Konfigurationsdaten, Protokolle usw. mithilfe von Blobspeichern speichern. Ihre Anwendung schreibt dann nicht auf eine virtuelle Festplatte, die dem virtuellen Computer angefügt ist, sondern direkt in den Azure-Blobspeicher. Blobspeicher bietet je nach Verfügbarkeitsanforderungen und Budget auch die Option für [„heiße“ und „kalte“ Speicherebenen](../storage/storage-blob-storage-tiers.md).
 
-## Stripesetdatenträger
+## <a name="striped-disks"></a>Stripesetdatenträger
 Neben der Möglichkeit, Datenträger mit mehr als 1023 GB zu erstellen, wird durch Datenträgerstriping in vielen Fällen die Leistung verbessert, indem mehrere Blobs als Speicher für ein einzelnes Volume dienen können. Mit Striping läuft die erforderliche E/A zum Schreiben und Lesen von Daten aus einem einzigen logischen Datenträger parallel ab.
 
-Azure erzwingt Grenzwerte für die Anzahl von Datenträgern und die verfügbare Bandbreite, die sich nach der Größe des virtuellen Computers richten. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md).
+Azure erzwingt Grenzwerte für die Anzahl von Datenträgern und die verfügbare Bandbreite, die sich nach der Größe des virtuellen Computers richten. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Wenn Sie Datenträgerstriping für Azure-Datenträger verwenden, beachten Sie die folgenden Richtlinien:
 
@@ -71,14 +75,19 @@ Wenn Sie Datenträgerstriping für Azure-Datenträger verwenden, beachten Sie di
 * Verwenden Sie Speicherplätze.
 * Vermeiden Sie die Verwendung von Azure-Datenträger-Cachingoptionen (Cachingrichtlinie = Keine)
 
-Weitere Informationen finden Sie unter [Storage Spaces – Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx) (in englischer Sprache).
+Weitere Informationen finden Sie unter [Storage Spaces – Designing for Performance](http://social.technet.microsoft.com/wiki/contents/articles/15200.storage-spaces-designing-for-performance.aspx)(in englischer Sprache).
 
-## Mehrere Speicherkonten
+## <a name="multiple-storage-accounts"></a>Mehrere Speicherkonten
 Beim Entwerfen Ihrer Azure Storage-Umgebung können Sie mehrere Speicherkonten verwenden, wenn sich die Anzahl der bereitgestellten virtuellen Computer erhöht. Auf diese Weise werden die E/A auf die zugrunde liegende Azure Storage-Infrastruktur verteilt, um die optimale Leistung für Ihre virtuellen Computer und Anwendungen zu gewährleisten. Berücksichtigen Sie beim Entwerfen der Anwendungen, die bereitgestellt werden, die E/A-Anforderungen der einzelnen virtuellen Computer, und sorgen Sie für einen Ausgleich der virtuellen Computer über Azure-Speicherkonten. Vermeiden Sie das Gruppieren aller virtuellen Computer mit hohen E/A-Anforderungen in nur einem oder zwei Speicherkonten.
 
 Weitere Informationen zu den E/A-Funktionen verschiedener Azure Storage-Optionen und einige empfohlene Höchstwerte finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/storage-scalability-targets.md).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

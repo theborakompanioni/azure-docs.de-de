@@ -50,6 +50,10 @@
 ## [REST](/rest/api/cdn/)
 
 # Ressourcen
+##  [Rules Engine reference](cdn-rules-engine-reference.md) (Regelmodul – Referenz)
+### [Rules Engine conditional expressions](cdn-rules-engine-reference-conditional-expressions.md) (Regelmodul – Bedingte Ausdrücke)
+### [Rules Engine match conditions](cdn-rules-engine-reference-match-conditions.md) (Regelmodul – Übereinstimmungsbedingungen)
+### [Rules Engine features](cdn-rules-engine-reference-features.md) (Regelmodul – Features)
 ## [Azure CDN-POP-Standorte](cdn-pop-locations.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=cdn)
 ## [Preise](https://azure.microsoft.com/pricing/details/cdn/)
@@ -58,6 +62,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

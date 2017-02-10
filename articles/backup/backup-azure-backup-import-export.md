@@ -1,19 +1,23 @@
 ---
-title: Azure Backup – Offlinesicherung oder anfängliches Seeding mithilfe des Azure Import/Export-Diensts | Microsoft Docs
-description: Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Export-Diensts Daten aus dem Netzwerk senden können. Dieser Artikel erläutert das Offlineseeding der ersten Sicherungsdaten mit dem Azure Import/Export-Dienst.
+title: "Azure Backup – Offlinesicherung oder anfängliches Seeding mithilfe des Azure Import/Export-Diensts | Microsoft Docs"
+description: "Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Export-Diensts Daten aus dem Netzwerk senden können. Dieser Artikel erläutert das Offlineseeding der ersten Sicherungsdaten mit dem Azure Import/Export-Dienst."
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-
+editor: 
+ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/16/2016
+ms.date: 11/28/2016
 ms.author: jimpark;saurabhsensharma;nkolli;trinadhk
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 2876f3a7e8e83dc05801d914c7582a4f1fd92e98
+
 
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
@@ -61,17 +65,17 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
    
     Die Beschreibung der Eingaben lautet wie folgt:
    
-   * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Hierbei kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
-   * **Name des Azure-Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
-   * **Azure-Veröffentlichungseinstellungen**: Eine XML-Datei, die Informationen zu Ihrem Abonnementprofil enthält. Außerdem enthält sie sichere Anmeldeinformationen, die Ihrem Abonnement zugeordnet sind. Sie können die [Datei herunterladen](https://manage.windowsazure.com/publishsettings). Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
-   * **Azure-Abonnement-ID**: Die Azure-Abonnement-ID für das Abonnement, in dem Sie den Azure-Importauftrag initiieren möchten. Falls Sie über mehrere Azure-Abonnements verfügen, verwenden Sie die ID des Abonnements, das Sie dem Importauftrag zuordnen möchten.
-   * **Azure-Speicherkonto**: Das klassische Speicherkonto im angegebenen Azure-Abonnement, das dem Azure-Importauftrag zugeordnet wird.
-   * **Azure-Speichercontainer**: Der Name des Zielspeicherblobs im Azure-Speicherkonto, in das die Daten dieses Auftrags importiert werden.
+    * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Hierbei kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
+    * **Name des Azure-Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
+    * **Azure-Veröffentlichungseinstellungen**: Eine XML-Datei, die Informationen zu Ihrem Abonnementprofil enthält. Außerdem enthält sie sichere Anmeldeinformationen, die Ihrem Abonnement zugeordnet sind. Sie können die [Datei herunterladen](https://manage.windowsazure.com/publishsettings). Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
+    * **Azure-Abonnement-ID**: Die Azure-Abonnement-ID für das Abonnement, in dem Sie den Azure-Importauftrag initiieren möchten. Falls Sie über mehrere Azure-Abonnements verfügen, verwenden Sie die ID des Abonnements, das Sie dem Importauftrag zuordnen möchten.
+    * **Azure-Speicherkonto**: Das klassische Speicherkonto im angegebenen Azure-Abonnement, das dem Azure-Importauftrag zugeordnet wird.
+    * **Azure-Speichercontainer**: Der Name des Zielspeicherblobs im Azure-Speicherkonto, in das die Daten dieses Auftrags importiert werden.
      
-     > [!NOTE]
-     > Wenn Sie Ihren Server über das [Azure-Portal](https://portal.azure.com) bei einem Azure Recovery Services-Tresor für Ihre Sicherungen registriert haben und kein CSP-Abonnement (Cloud Solution Provider = Cloudlösungsanbieter) besitzen, können Sie über das Azure-Portal trotzdem ein klassisches Speicherkonto erstellen und es für den Workflow zur Offlinesicherung verwenden.
-     > 
-     > 
+    > [!NOTE]
+    > Wenn Sie Ihren Server über das [Azure-Portal](https://portal.azure.com) bei einem Azure Recovery Services-Tresor für Ihre Sicherungen registriert haben und kein CSP-Abonnement (Cloud Solution Provider = Cloudlösungsanbieter) besitzen, können Sie über das Azure-Portal trotzdem ein klassisches Speicherkonto erstellen und es für den Workflow zur Offlinesicherung verwenden.
+    > 
+    > 
      
      Speichern Sie all diese Informationen. Sie müssen sie in den folgenden Schritten erneut eingeben. Wenn Sie die Datenträger mit dem Azure-Tool für die Datenträgervorbereitung vorbereitet haben, ist nur der *Stagingspeicherort* erforderlich.    
 2. Führen Sie den Workflow durch, und wählen Sie anschließend in der Azure Backup-Verwaltungskonsole die Option **Jetzt sichern** aus, um die Offlinesicherungskopie zu initiieren. Die erste Sicherung wird bei diesem Schritt in den Stagingbereich geschrieben.
@@ -93,47 +97,49 @@ Das Azure-Tool für die Datenträgervorbereitung ist im Installationsverzeichnis
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen Kopiercomputer, auf dem die vorzubereitenden Datenträger bereitgestellt werden. Überprüfen Sie für den Kopiercomputer Folgendes:
    
-   * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
-   * BitLocker ist auf dem Computer aktiviert.
-   * Der Computer kann auf das Azure-Portal zugreifen.
+    * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
+    * BitLocker ist auf dem Computer aktiviert.
+    * Der Computer kann auf das Azure-Portal zugreifen.
      
-     Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
+    Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
 2. Öffnen Sie auf dem Kopiercomputer eine Eingabeaufforderung mit erhöhten Rechten und dem Verzeichnis des Azure-Tools für die Datenträgervorbereitung als aktuelles Verzeichnis. Führen Sie dann den folgenden Befehl aus:
    
-      *.\AzureOfflineBackupDiskPrep.exe*   s:<*Pfad zum Stagingspeicherort*>   [p:<*Pfad zu PublishSettingsFile*>]
+    `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to PublishSettingsFile*>]`
 
-| Parameter | Beschreibung |
-| --- | --- |
-| s:<*Pfad zum Stagingspeicherort*> |Obligatorische Eingabe zum Angeben des Pfads zum Stagingspeicherort, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
-| p:<*Pfad zu PublishSettingsFile*> |Optionale Eingabe zum Angeben des Pfads zur Datei **Azure-Veröffentlichungseinstellungen**, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
+    | Parameter | Beschreibung |
+    | --- | --- |
+    | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Obligatorische Eingabe zum Angeben des Pfads zum Stagingspeicherort, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
+    | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Optionale Eingabe zum Angeben des Pfads zur Datei **Azure-Veröffentlichungseinstellungen**, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
 
-> [!NOTE]
-> Der Wert &lt;Pfad zu PublishSettingFile&gt; ist obligatorisch, wenn der Kopiercomputer und der Quellcomputer nicht identisch sind.
-> 
-> 
+    > [!NOTE]
+    > Der Wert &lt;Pfad zu PublishSettingFile&gt; ist obligatorisch, wenn der Kopiercomputer und der Quellcomputer nicht identisch sind.
+    > 
+    > 
 
-Beim Ausführen des Befehls fordert das Tool die Auswahl des Azure-Importauftrags an, der den vorzubereitenden Datenträgern entspricht. Falls dem angegebenen Stagingspeicherort nur ein einzelner Importauftrag zugeordnet ist, wird ein Bildschirm wie in der folgenden Abbildung angezeigt.
+    Beim Ausführen des Befehls fordert das Tool die Auswahl des Azure-Importauftrags an, der den vorzubereitenden Datenträgern entspricht. Falls dem angegebenen Stagingspeicherort nur ein einzelner Importauftrag zugeordnet ist, wird ein Bildschirm wie in der folgenden Abbildung angezeigt.
 
-   ![Azure-Tool für die Datenträgervorbereitung – Eingabe](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
+    ![Azure-Tool für die Datenträgervorbereitung – Eingabe](./media/backup-azure-backup-import-export/azureDiskPreparationToolDriveInput.png) <br/>
+3. Geben Sie den Laufwerkbuchstaben ohne nachgestellten Doppelpunkt für den bereitgestellten Datenträger an, den Sie für die Übertragung an Azure vorbereiten möchten. Bestätigen Sie die Formatierung des Laufwerks, wenn Sie dazu aufgefordert werden.
 
-1. Geben Sie den Laufwerkbuchstaben ohne nachgestellten Doppelpunkt für den bereitgestellten Datenträger an, den Sie für die Übertragung an Azure vorbereiten möchten. Bestätigen Sie die Formatierung des Laufwerks, wenn Sie dazu aufgefordert werden.
+    Das Tool beginnt dann, den Datenträger mit den Sicherungsdaten vorzubereiten. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie unter Umständen weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
 
-Das Tool beginnt dann, den Datenträger mit den Sicherungsdaten vorzubereiten. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie unter Umständen weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
+    Nach der erfolgreichen Ausführung des Tools sind ein oder mehrere Datenträger, die Sie angegeben haben, für den Versand an Azure vorbereitet. Außerdem wird im klassischen Azure-Portal ein Importauftrag mit dem Namen erstellt, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. Zum Schluss zeigt das Tool die Lieferadresse des Azure-Datencenters an, an die die Datenträger gesendet werden müssen, und den Link, unter dem Sie den Importauftrag im klassischen Azure-Portal finden.
 
-Nach der erfolgreichen Ausführung des Tools sind ein oder mehrere Datenträger, die Sie angegeben haben, für den Versand an Azure vorbereitet. Außerdem wird im klassischen Azure-Portal ein Importauftrag mit dem Namen erstellt, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. Zum Schluss zeigt das Tool die Lieferadresse des Azure-Datencenters an, an die die Datenträger gesendet werden müssen, und den Link, unter dem Sie den Importauftrag im klassischen Azure-Portal finden.
+    ![Azure-Tool für die Datenträgervorbereitung – Abgeschlossen](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
 
-   ![Azure-Tool für die Datenträgervorbereitung – Abgeschlossen](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
+4. Senden Sie die Datenträger an die im Tool angegebene Adresse, und bewahren Sie die Nachverfolgungsnummer zur späteren Nutzung auf.<br/>
 
-1. Senden Sie die Datenträger an die im Tool angegebene Adresse, und bewahren Sie die Nachverfolgungsnummer zur späteren Nutzung auf.<br/>
-2. Wenn Sie den im Tool angezeigten Link öffnen, sehen Sie das Azure-Speicherkonto, das Sie im Workflow **Initiieren der Offlinesicherung** angegeben haben. Der neu erstellte Importauftrag wird hier auf der Registerkarte **IMPORT/EXPORT** des Speicherkontos angezeigt.
+5. Wenn Sie den im Tool angezeigten Link öffnen, sehen Sie das Azure-Speicherkonto, das Sie im Workflow **Initiieren der Offlinesicherung** angegeben haben. Der neu erstellte Importauftrag wird hier auf der Registerkarte **IMPORT/EXPORT** des Speicherkontos angezeigt.
    
-   ![Erstellter Importauftrag](./media/backup-azure-backup-import-export/ImportJobCreated.png)<br/>
-3. Klicken Sie unten auf der Seite auf **VERSANDINFORMATIONEN** , um Ihre Kontaktdetails zu aktualisieren. Microsoft verwendet diese Informationen, um die Datenträger nach der Ausführung des Importauftrags an Sie zurückzusenden.
+    ![Erstellter Importauftrag](./media/backup-azure-backup-import-export/ImportJobCreated.png)<br/>
+
+6. Klicken Sie unten auf der Seite auf **VERSANDINFORMATIONEN** , um Ihre Kontaktdetails zu aktualisieren. Microsoft verwendet diese Informationen, um die Datenträger nach der Ausführung des Importauftrags an Sie zurückzusenden.
+
+    ![Kontaktinformationen](./media/backup-azure-backup-import-export/contactInfoAddition.PNG)<br/>
+
+7. Geben Sie die Versanddetails auf dem nächsten Bildschirm wie unten gezeigt ein. Geben Sie den **Spediteur** und die **Nachverfolgungsnummer** für die Datenträger an, die Sie an das Azure-Datencenter geschickt haben.
    
-   ![Kontaktinformationen](./media/backup-azure-backup-import-export/contactInfoAddition.PNG)<br/>
-4. Geben Sie die Versanddetails auf dem nächsten Bildschirm wie unten gezeigt ein. Geben Sie den **Spediteur** und die **Nachverfolgungsnummer** für die Datenträger an, die Sie an das Azure-Datencenter geschickt haben.
-   
-   ![VERSANDINFORMATIONEN](./media/backup-azure-backup-import-export/shippingInfoAddition.PNG)<br/>
+    ![VERSANDINFORMATIONEN](./media/backup-azure-backup-import-export/shippingInfoAddition.PNG)<br/>
 
 ### <a name="complete-the-workflow"></a>Ausführen des Workflows
 Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Speicherkonto verfügbar. Der Recovery Services-Agent kopiert den Inhalt der Daten dann aus diesem Konto in den Sicherungstresor oder den Recovery Services-Tresor (je nach Verfügbarkeit). Zum nächsten geplanten Sicherungszeitpunkt führt der Azure Backup-Agent die inkrementelle Sicherung für die erste Sicherungskopie durch.
@@ -145,14 +151,15 @@ Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Spei
 
 ### <a name="prepare-a-sata-drive"></a>Vorbereiten einer SATA-Festplatte
 1. Laden Sie das [Microsoft Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?linkid=301900&clcid=0x409) auf den Kopiercomputer herunter. Stellen Sie sicher, dass der Stagingspeicherort von dem Computer aus zugänglich ist, auf dem die nächsten Befehle ausgeführt werden sollen. Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
+
 2. Entzippen Sie die Datei „WAImportExport.zip“. Führen Sie das Tool „WAImportExport“ aus. Dieses Tool formatiert die SATA-Festplatte, schreibt die Sicherungsdaten auf die SATA-Festplatte und verschlüsselt sie. Stellen Sie vor dem Ausführen des folgenden Befehls sicher, dass BitLocker auf dem Computer aktiviert ist. <br/>
    
-    *.\WAImportExport.exe PrepImport /j:<*JournalFile*>.jrn /id: <*SessionId*> /sk:<*StorageAccountKey*> /BlobType:**PageBlob** /t:<*TargetDriveLetter*> /format /encrypt /srcdir:<*staging location*> /dstdir: <*DestinationBlobVirtualDirectory*>/*
+    `*.\WAImportExport.exe PrepImport /j:<*JournalFile*>.jrn /id: <*SessionId*> /sk:<*StorageAccountKey*> /BlobType:**PageBlob** /t:<*TargetDriveLetter*> /format /encrypt /srcdir:<*staging location*> /dstdir: <*DestinationBlobVirtualDirectory*>/*`
    
-   > [!NOTE]
-   > Wenn Sie das Update vom August 2016 von Azure Backup (oder höher) installiert haben, müssen Sie sicherstellen, dass der eingegebene Stagingspeicherort dem auf dem Bildschirm **Jetzt sichern** angezeigten Speicherort entspricht und AIB- und Basisblob-Dateien enthält.
-   > 
-   > 
+    > [!NOTE]
+    > Wenn Sie das Update vom August 2016 von Azure Backup (oder höher) installiert haben, müssen Sie sicherstellen, dass der eingegebene Stagingspeicherort dem auf dem Bildschirm **Jetzt sichern** angezeigten Speicherort entspricht und AIB- und Basisblob-Dateien enthält.
+    > 
+    > 
 
 | Parameter | Beschreibung |
 | --- | --- |
@@ -177,14 +184,21 @@ Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Spei
 1. Navigieren Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) zu Ihrem Speicherkonto, klicken Sie auf **Import/Export** und dann im Aufgabenbereich auf **Importauftrag erstellen**.
    
     ![Registerkarte „Import/Export“ im Azure-Portal](./media/backup-azure-backup-import-export/azureportal.png)
+
 2. Geben Sie in Schritt 1 des Assistenten an, dass Sie Ihr Laufwerk vorbereitet und die Laufwerkprotokolldatei zur Hand haben.
+
 3. Geben Sie in Schritt 2 des Assistenten die Kontaktinformationen des Ansprechpartners für diesen Importauftrag an.
+
 4. Laden Sie in Schritt 3 die Laufwerkjournaldateien hoch, die Sie im vorherigen Abschnitt erhalten haben.
+
 5. Geben Sie in Schritt 4 einen beschreibenden Namen für den Importauftrag ein, den Sie während der Erstellung der Sicherungsrichtlinie/Schutzgruppe eingegeben haben. Der Name darf nur Kleinbuchstaben, Ziffern, Trennstriche und Unterstriche enthalten, muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten. Anhand des ausgewählten Namens können Sie Ihre Aufträge während und nach der Bearbeitung nachverfolgen.
+
 6. Wählen Sie anschließend Ihr Datencenter in der Liste aus. Die Datencenterregion gibt das Datencenter und die Adresse an, an die Sie Ihr Paket schicken müssen.
    
     ![Auswahl der Datencenterregion](./media/backup-azure-backup-import-export/dc.png)
+
 7. Wählen Sie in Schritt 5 den Spediteur für die Rücksendung in der Liste aus, und geben Sie Ihr Kundenkonto beim Spediteur an. Microsoft verwendet diese Kontodaten, um Ihre Laufwerke nach Abschluss des Importauftrags an Sie zurückzusenden.
+
 8. Versenden Sie den Datenträger, und geben Sie die Nachverfolgungsnummer ein, um den Status der Lieferung zu verfolgen. Sobald der Datenträger im Datencenter eintrifft, wird er in das Speicherkonto kopiert, und der Status wird aktualisiert.
    
     ![Status „Abgeschlossen“](./media/backup-azure-backup-import-export/complete.png)
@@ -196,6 +210,9 @@ Sobald die Daten der Erstsicherung im Speicherkonto verfügbar sind, kopiert der
 * Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/storage-import-export-service.md)weitere Informationen.
 * Bei Fragen zum Workflow finden Sie im Abschnitt zur Offlinesicherung in den [häufig gestellten Fragen](backup-azure-backup-faq.md) zu Azure Backup weitere Informationen.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

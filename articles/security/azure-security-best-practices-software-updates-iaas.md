@@ -1,34 +1,38 @@
 ---
-title: Best Practices für Softwareupdates in Microsoft Azure IaaS | Microsoft Docs
-description: In diesem Artikel werden verschiedene Best Practices für Softwareupdates in einer Microsoft Azure IaaS-Umgebung beschrieben. Er richtet sich an IT-Experten und Sicherheitsanalysten, deren tägliche Aufgaben das Änderungsmanagement, Softwareupdates und Assetverwaltung umfassen, oder die für Sicherheit und Compliance in ihrer Organisation verantwortlich sind.
+title: "Best Practices für Softwareupdates in Microsoft Azure IaaS | Microsoft Docs"
+description: "In diesem Artikel werden verschiedene Best Practices für Softwareupdates in einer Microsoft Azure IaaS-Umgebung beschrieben.  Er richtet sich an IT-Experten und Sicherheitsanalysten, deren tägliche Aufgaben das Änderungsmanagement, Softwareupdates und Assetverwaltung umfassen, oder die für  Sicherheit und Compliance in ihrer Organisation verantwortlich sind."
 services: security
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: df6598ee-de5b-48cd-b321-0b2f19d7eeaa
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2016
+ms.date: 01/04/2017
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: c52a2d6be31b1a8f581313932c0af87120ccd9fe
+
 
 ---
-# Best Practices für Softwareupdates in Microsoft Azure IaaS
+# <a name="best-practices-for-software-updates-on-microsoft-azure-iaas"></a>Best Practices für Softwareupdates in Microsoft Azure IaaS
 Bevor wir näher auf die bewährten Methoden für eine Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/)-Umgebung eingehen, soll zunächst erläutert werden, welche Szenarien für die Verwaltung von Softwareupdates und welche Zuständigkeiten es gibt. Das folgende Diagramm veranschaulicht diese Zusammenhänge:
 
 ![Cloudmodelle und Verantwortlichkeiten](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack-new.png)
 
 In der linken Spalte finden Sie sieben Zuständigkeitsbereiche (diese werden in den folgenden Abschnitten näher definiert), die Organisationen berücksichtigen sollten. All diese Bereiche tragen zur Sicherheit und zum Datenschutz in einer Computerumgebung bei.
 
-Datenklassifizierung und -verantwortlichkeit sowie Schutz von Client und Endpunkt fallen ausschließlich in den Zuständigkeitsbereich des Kunden. In PaaS- und SaaS-Modellen ist der Clouddienstanbieter für die physischen Komponenten, die Hosts und das Netzwerk verantwortlich.
+Datenklassifizierung und -verantwortlichkeit sowie Schutz von Client und Endpunkt fallen ausschließlich in den Zuständigkeitsbereich des Kunden. In PaaS- und SaaS-Modellen ist der Clouddienstanbieter für die physischen Komponenten, die Hosts und das Netzwerk verantwortlich. 
 
 Die verbleibenden Zuständigkeiten werden zwischen Kunde und Clouddienstanbieter aufgeteilt. Einige Zuständigkeiten erfordern eine Zusammenarbeit zwischen Clouddienstanbieter und Kunde, darunter die Überwachung ihrer Domänen. Betrachten wir beispielsweise die Identitäts- und Zugriffsverwaltung bei Verwendung von Azure Active Directory-Diensten: Während die Konfiguration von Diensten wie der Multi-Factor Authentication durch den Kunden erfolgt, ist Microsoft Azure dafür verantwortlich, die effektive Funktionalität zu gewährleisten.
 
 > [!NOTE]
-> Weitere Informationen zur gemeinsamen Zuständigkeit in der Cloud finden Sie unter [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) (Gemeinsame Zuständigkeiten für Cloud Computing).
+> Weitere Informationen zur gemeinsamen Zuständigkeit in der Cloud finden Sie unter [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) (Gemeinsame Zuständigkeiten für Cloud Computing). 
 > 
 > 
 
@@ -36,7 +40,7 @@ Dieselben Prinzipien gelten in einem Hybridszenario, bei der Ihr Unternehmen Azu
 
 ![Typisches Hybridszenario mit Microsoft Azure](./media/azure-security-best-practices-software-updates-iaas/sec-azconnectonpre.png)
 
-## Anfängliche Bewertung
+## <a name="initial-assessment"></a>Anfängliche Bewertung
 Selbst wenn Ihr Unternehmen bereits ein System zur Updateverwaltung verwendet und Sie über Richtlinien zur Softwareaktualisierung verfügen, müssen Sie zuvor durchgeführte Richtlinienbewertungen regelmäßig überprüfen und basierend auf Ihren aktuellen Anforderungen aktualisieren. Dies bedeutet, dass Sie dem aktuellen Status der Ressourcen in Ihrem Unternehmen kennen müssen. Um dies zu erreichen, müssen Sie Folgendes kennen:
 
 * Die physischen und virtuellen Computer in Ihrem Unternehmen.
@@ -51,47 +55,47 @@ Selbst wenn Ihr Unternehmen bereits ein System zur Updateverwaltung verwendet un
 
 Sie sollten diese Informationen regelmäßig aktualisieren, und die Informationen sollten allen Personen, die an Ihrem Prozess zur Softwareupdateverwaltung beteiligt sind, jederzeit zur Verfügung stehen.
 
-## Einrichten einer Baseline
+## <a name="establish-a-baseline"></a>Einrichten einer Baseline
 Ein wichtiger Aspekt bei der Verwaltung von Softwareupdates ist das Erstellen anfänglicher Standardinstallationen für Betriebssystemversionen, Anwendungen und Hardware für Computer in Ihrem Unternehmen. Diese Standardinstallationen werden als Baselines bezeichnet. Eine Baseline ist die Konfiguration eines Produkts oder Systems, die zu einem bestimmten Zeitpunkt eingerichtet wurde. Eine Baseline für eine Anwendung oder ein Betriebssystem beispielsweise bietet die Möglichkeit, einen Computer oder Dienst in einem bestimmten Zustand wiederherzustellen.
 
 Baselines bilden die Grundlage zum Ermitteln und Beheben potenzieller Probleme und zur Vereinfachung des Verwaltungsprozesses von Softwareupdates. Beides wird dadurch erreicht, dass einerseits die Anzahl von Softwareupdates verringert wird, die Sie in Ihrem Unternehmen bereitstellen müssen, und andererseits die Möglichkeiten verbessert werden, die Einhaltung der Vorgaben zu überwachen.
 
 Nachdem Sie eine anfängliche Überprüfung Ihres Unternehmens durchgeführt haben, sollten Sie die hierbei gewonnenen Informationen zum Definieren einer operativen Baseline für die IT-Komponenten innerhalb Ihrer Produktionsumgebung verwenden. Es können verschiedene Baselines erforderlich sein, je nach verwendeten Hardwaretypen und der Software, die in der Produktion bereitgestellt wird.
 
-Beispielsweise ist für Windows Server 2012-Server ein Softwareupdate erforderlich, um ein Aufhängen beim Herunterfahren des Servers zu verhindern. Eine Baseline für diese Server sollte dieses Softwareupdate umfassen.
+Beispielsweise ist für Windows Server 2012-Server ein Softwareupdate erforderlich, um ein Aufhängen beim Herunterfahren des Servers zu verhindern. Eine Baseline für diese Server sollte dieses Softwareupdate umfassen.
 
-In großen Organisationen ist es häufig sinnvoll, die Computer in Assetkategorien zu unterteilen und für jede Kategorie eine Standardbaseline einzuhalten, indem die selben Versionen von Software und Softwareupdates verwendet werden. Sie können diese Assetkategorien anschließend bei der Priorisierung einer Softwareupdateverteilung nutzen.
+In großen Organisationen ist es häufig sinnvoll, die Computer in Assetkategorien zu unterteilen und für jede Kategorie eine Standardbaseline einzuhalten, indem die selben Versionen von Software und Softwareupdates verwendet werden. Sie können diese Assetkategorien anschließend bei der Priorisierung einer Softwareupdateverteilung nutzen. 
 
-## Abonnieren von Benachrichtigungsdiensten für geeignete Softwareupdates
+## <a name="subscribe-to-the-appropriate-software-update-notification-services"></a>Abonnieren von Benachrichtigungsdiensten für geeignete Softwareupdates
 Nachdem Sie eine anfängliche Überprüfung der Software in Ihrem Unternehmen durchgeführt haben, sollten Sie die beste Methode zum Erhalt von Benachrichtigungen über neue Softwareupdates für alle Softwareprodukte und -versionen ermitteln. Je nach Softwareprodukt kann die Benachrichtigung per E-Mail, auf Websites oder in Form von Computerveröffentlichungen erfolgen.
 
-Beispielsweise reagiert das Microsoft Security Response Center (MSRC) auf alle sicherheitsbezogenen Bedenken zu Microsoft-Produkten und stellt den Microsoft Security Bulletin Service bereit, einen kostenlosen Dienst, bei dem Sie per E-Mail über neu identifizierte Sicherheitsrisiken und Softwareupdates benachrichtigt werden, die diese Sicherheitsrisiken beheben. Sie können diesen Dienst unter http://www.microsoft.com/technet/security/bulletin/notify.mspx abonnieren.
+Beispielsweise reagiert das Microsoft Security Response Center (MSRC) auf alle sicherheitsbezogenen Bedenken zu Microsoft-Produkten und stellt den Microsoft Security Bulletin Service bereit, einen kostenlosen Dienst, bei dem Sie per E-Mail über neu identifizierte Sicherheitsrisiken und Softwareupdates benachrichtigt werden, die diese Sicherheitsrisiken beheben. Sie können diesen Dienst unter „http://www.microsoft.com/technet/security/bulletin/notify.mspx“ abonnieren.
 
-## Überlegungen zu Softwareupdates
+## <a name="software-update-considerations"></a>Überlegungen zu Softwareupdates
 Nachdem Sie eine anfängliche Überprüfung der Software in Ihrem Unternehmen durchgeführt haben, sollten Sie die Anforderungen zum Einrichten Ihres Systems zur Softwareupdateverwaltung ermitteln. Diese hängen davon ab, welches System für die Softwareupdateverwaltung Sie verwenden. Wenn Sie WSUS einsetzen, lesen Sie [Best Practices für Windows Server Update Services](https://technet.microsoft.com/library/Cc708536), bei Verwendung von System Center finden Sie entsprechende Informationen unter [Planen von Softwareupdates in Configuration Manager](https://technet.microsoft.com/library/gg712696).
 
 Es gibt jedoch einige allgemeine Überlegungen und Best Practices, die Sie unabhängig von der eingesetzten Lösung anwenden können. Diese werden in den nächsten Abschnitten beschrieben.
 
-### Einrichten der Umgebung
+### <a name="setting-up-the-environment"></a>Einrichten der Umgebung
 Berücksichtigen Sie die folgenden Best Practices, wenn Sie die Einrichtung einer Umgebung zum Verwalten von Softwareupdates planen:
 
 * **Stellen Sie Updatesammlungen für Produktionssoftware basierend auf festen Kriterien zusammen**: Im Allgemeinen sollten feste Kriterien bei der Auswahl Ihres Softwareupdatebestands und dessen Verteilung gelten, um alle Phasen im Prozess der Softwareupdateverwaltung zu vereinfachen. Zu diesen festen Kriterien können die installierte Clientbetriebssystemversion und die Service Pack-Stufe, Systemrolle oder Zielorganisation gehören.
 * **Stellen Sie Präproduktionssammlungen zusammen, die Referenzcomputer enthalten**: Die Präproduktionssammlung sollte repräsentative Konfigurationen von Betriebssystemversionen, Branchenanwendungen und anderen Softwarekomponenten enthalten, die in Ihrem Unternehmen ausgeführt wird.
 
-Sie sollten außerdem berücksichtigen, wo der Softwareupdateserver platziert wird – beispielsweise in der Azure IaaS-Infrastruktur in der Cloud oder lokal. Dies ist eine wichtige Entscheidung, da Sie die Menge des Datenverkehrs zwischen lokalen Ressourcen und Azure-Infrastruktur auswerten müssen. Weitere Informationen zur Verbindung Ihrer lokalen Infrastruktur mit Azure finden Sie unter [Verbinden eines lokalen Netzwerks mit einem virtuellen Microsoft Azure-Netzwerk](https://technet.microsoft.com/library/Dn786406.aspx).
+Sie sollten außerdem berücksichtigen, wo der Softwareupdateserver platziert wird – beispielsweise in der Azure IaaS-Infrastruktur in der Cloud oder lokal. Dies ist eine wichtige Entscheidung, da Sie die Menge des Datenverkehrs zwischen lokalen Ressourcen und Azure-Infrastruktur auswerten müssen.  Weitere Informationen zur Verbindung Ihrer lokalen Infrastruktur mit Azure finden Sie unter [Verbinden eines lokalen Netzwerks mit einem virtuellen Microsoft Azure-Netzwerk](https://technet.microsoft.com/library/Dn786406.aspx).
 
 Die Entwurfsoptionen zur Platzierung des Updateservers richten sich auch nach Ihrer aktuellen Infrastruktur und dem Softwareupdatesystem, das Sie derzeit verwenden. Wenn Sie WSUS verwenden, lesen Sie [Bereitstellen von Windows Server Update Services in Ihrer Organisation](https://technet.microsoft.com/library/hh852340.aspx), bei Verwendung von System Center Configuration Manager finden Sie weitere Informationen unter [Planen von Standorten und Hierarchien in Configuration Manager](https://technet.microsoft.com/library/Gg712681.aspx).
 
-### Sicherung
+### <a name="backup"></a>Sicherung
 Regelmäßige Sicherungen sind nicht nur für die Plattform zur Softwareupdateverwaltung selbst wichtig, sondern auch für die Server, die aktualisiert werden. Für Organisationen, die einen [Änderungsmangementprozess](https://technet.microsoft.com/library/cc543216.aspx) einsetzen, ist es erforderlich, dass die IT Gründe für die Notwendigkeit von Serverupdates, die geschätzte Ausfallzeit und mögliche Auswirkungen benennt. Um sicherzustellen, dass Sie über eine Rollbackkonfiguration für den Fall verfügen, dass ein Update nicht erfolgreich durchgeführt werden kann, müssen Sie das System regelmäßig sichern.
 
 Für Azure IaaS stehen folgende Sicherungsoptionen zur Verfügung:
 
-* [Azure IaaS workload protection using Data Protection Manager (in englischer Sprache)](https://azure.microsoft.com/blog/2014/09/08/azure-iaas-workload-protection-using-data-protection-manager/)
+* [Azure IaaS workload protection using Data Protection Manager](https://azure.microsoft.com/blog/2014/09/08/azure-iaas-workload-protection-using-data-protection-manager/) (Azure IaaS-Workloadschutz mit Data Protection Manager)
 * [Sichern von virtuellen Azure-Computern](../backup/backup-azure-vms.md)
 
-### Überwachung
-Sie sollten regelmäßige Berichte für jedes autorisierte Softwareupdate durchführen, um die Anzahl von fehlenden oder installierten Updates sowie von Updates mit unvollständigem Status zu überwachen. Ähnlich sollten Berichte zu Softwareupdates erstellt werden, die noch nicht autorisiert sind, um spätere Bereitstellungsentscheidungen zu erleichtern.
+### <a name="monitoring"></a>Überwachung
+Sie sollten regelmäßige Berichte für jedes autorisierte Softwareupdate durchführen, um die Anzahl von fehlenden oder installierten Updates  sowie von Updates mit unvollständigem Status zu überwachen. Ähnlich sollten Berichte zu Softwareupdates erstellt werden, die noch nicht autorisiert sind, um spätere Bereitstellungsentscheidungen zu erleichtern.
 
 Sie sollen außerdem erwägen, die folgenden Aufgaben auszuführen:
 
@@ -101,7 +105,12 @@ Sie sollen außerdem erwägen, die folgenden Aufgaben auszuführen:
 
 Zusätzlich zu den allgemeinen Überlegungen, die in diesem Artikel vorgestellt wurden, sollten Sie auch die Best Practices für jedes Produkt berücksichtigen. Beispiel: Wenn Sie über einen virtuellen SQL Server-Computer in Azure verfügen, sollten Sie sicherstellen, dass die Empfehlungen für Softwareupdates für dieses Produkt eingehalten werden.
 
-## Nächste Schritte
-Verwenden Sie die in diesem Artikel beschriebenen Richtlinien, um die optimalen Optionen für Softwareupdates für virtuelle Computer in Azure IaaS zu ermitteln. Es gibt viele Ähnlichkeiten zwischen den Best Practices für Softwareupdates in einem traditionellen Datencenter und in Azure IaaS. Deshalb wird empfohlen, dass Sie Azure-VMs in Ihre aktuellen Richtlinien für Softwareupdates einbeziehen und die relevanten Best Practices aus diesem Artikel in Ihren allgemeinen Softwareupdateprozess einbinden.
+## <a name="next-steps"></a>Nächste Schritte
+Verwenden Sie die in diesem Artikel beschriebenen Richtlinien, um die optimalen Optionen für Softwareupdates für virtuelle Computer in Azure IaaS zu ermitteln.  Es gibt viele Ähnlichkeiten zwischen den Best Practices für Softwareupdates in einem traditionellen Datencenter und in Azure IaaS. Deshalb wird empfohlen, dass Sie Azure-VMs in Ihre aktuellen Richtlinien für Softwareupdates einbeziehen und die relevanten Best Practices aus diesem Artikel in Ihren allgemeinen Softwareupdateprozess einbinden.
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

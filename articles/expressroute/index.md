@@ -2,8 +2,8 @@
 layout: LandingPage
 description: Hier erfahren Sie, wie Sie in Ihrer lokalen Infrastruktur oder Kollokationsumgebung eine private ExpressRoute-Verbindung mit Microsoft Cloud Services konfigurieren und verwalten.
 translationtype: Human Translation
-ms.sourcegitcommit: e8ae00040354ca800d893bc3d73ec96fc9356b39
-ms.openlocfilehash: f27eeb74d07064c616e1a77200b56a7aee154f48
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: ecb42e7a0abc5a0438bff39bddddac25d005eb77
 
 ---
 #<a name="expressroute-documentation"></a>ExpressRoute-Dokumentation
@@ -98,13 +98,7 @@ Hier erfahren Sie, wie Sie mithilfe von ExpressRoute in Ihrer lokalen Infrastruk
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/expressroute.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der ExpressRoute-Dokumentation </div>
-    </a>
-</div>
+
 
 
 

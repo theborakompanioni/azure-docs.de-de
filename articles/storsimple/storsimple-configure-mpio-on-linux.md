@@ -1,12 +1,12 @@
 ---
 title: Konfigurieren von MPIO auf einem StorSimple-Linux-Host | Microsoft Docs
-description: Konfigurieren von MPIO auf einem StorSimple-Gerät, das mit einem Linux-Host mit CentOS 6.6 verbunden ist
+description: "Konfigurieren von MPIO auf einem StorSimple-Gerät, das mit einem Linux-Host mit CentOS 6.6 verbunden ist"
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
 editor: tysonn
-
+ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,30 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 64f6f245b86d9194a52e40ed226de9960a36f3f9
+ms.openlocfilehash: 96e0c65dd57505b816843ac6290ea19ca02c88f9
+
 
 ---
-# Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
-In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung hoher Verfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
+# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
+In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung hoher Verfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
 
-Dieses Verfahren kann auf alle Modelle der StorSimple 8000-Geräteserie angewendet werden.
+Dieses Verfahren kann auf alle Modelle der StorSimple 8000-Geräteserie angewendet werden.
 
 > [!NOTE]
 > Die Vorgehensweise gilt nicht für ein virtuelles StorSimple-Gerät. Weitere Informationen zu diesem Thema finden Sie in den Abschnitten zur Konfiguration von Hostservern für virtuelle Geräte.
 > 
 > 
 
-## Grundlegendes zu Multipfad
+## <a name="about-multipathing"></a>Grundlegendes zu Multipfad
 Mit dem Multipfadfeature können Sie mehrere E/A-Pfade zwischen einem Hostserver und einem Speichergerät konfigurieren. Diese E/A-Pfade sind physische SAN-Verbindungen, die separate Kabel, Switches, Netzwerkschnittstellen und Controller umfassen können. Multipfad aggregiert die E/A-Pfade, um ein neues Gerät zu konfigurieren, dem sämtliche dieser aggregierten Pfade zugeordnet sind.
 
 Multipfad bietet zwei Vorteile:
 
-* **Hohe Verfügbarkeit**: Es bietet einen alternativen Pfad, wenn ein beliebiges Element im E/A-Pfad (z. B. ein Kabel, Switch, eine Netzwerkschnittstelle oder ein Controller) ausfällt.
+* **Hohe Verfügbarkeit**: Es bietet einen alternativen Pfad, wenn ein beliebiges Element im E/A-Pfad (z.B. ein Kabel, Switch, eine Netzwerkschnittstelle oder ein Controller) ausfällt.
 * **Lastenausgleich**: Je nach Konfiguration Ihres Speichergeräts kann die Leistung erhöht werden, da Lasten in den E/A-Pfaden erkannt und dynamisch verteilt werden.
 
-### Grundlegendes zu Multipfadkomponenten
+### <a name="about-multipathing-components"></a>Grundlegendes zu Multipfadkomponenten
 In Linux umfasst Multipfad Kernelkomponenten und Benutzerbereichskomponenten, wie in der nachstehenden Auflistung gezeigt wird.
 
-* **Kernel**: Die Hauptkomponente ist *device-mapper*, die für eine E/A-Umleitung sorgt und ein Failover für Pfade und Pfadgruppen unterstützt.
+* **Kernel**: Die Hauptkomponente ist *device-mapper* , die für eine E/A-Umleitung sorgt und ein Failover für Pfade und Pfadgruppen unterstützt.
 
 1. **Benutzerbereich**: Hier werden über *multipath-tools* Multipfadgeräte verwaltet, indem Anweisungen an das Mutipfadmodul "device-mapper" gesendet werden. Die Tools umfassen Folgendes:
    
@@ -47,7 +51,7 @@ In Linux umfasst Multipfad Kernelkomponenten und Benutzerbereichskomponenten, wi
    * **Kpartx**: Ordnet lineare Gerätezuordnungen Gerätepartitionen zu, um Multipfadzuordnungen partitionieren zu können.
    * **Multipath.conf**: Konfigurationsdatei für Multipfaddaemon, der zum Überschreiben der integrierten Konfigurationstabelle verwendet wird.
 
-### Grundlegendes zur Konfigurationsdatei "multipath.conf"
+### <a name="about-the-multipathconf-configuration-file"></a>Grundlegendes zur Konfigurationsdatei "multipath.conf"
 Die Konfigurationsdatei `/etc/multipath.conf` ermöglicht eine Konfiguration vieler der Multipfadfunktionen durch den Benutzer. Der `multipath`-Befehl und der Kerneldaemon `multipathd` verwenden die in dieser Datei gefundenen Informationen. Die Datei wird nur während der Konfiguration der Multipfadgeräte geprüft. Stellen Sie sicher, dass alle gewünschten Änderungen vorgenommen wurden, bevor Sie den Befehl `multipath` ausführen. Wenn Sie die Datei im Anschluss ändern, müssen Sie Multipfad beenden und neu starten, damit die Änderungen wirksam werden.
 
 Die Datei "multipath.conf" enthält fünf Abschnitte:
@@ -55,19 +59,19 @@ Die Datei "multipath.conf" enthält fünf Abschnitte:
 * **Standardeinstellungen auf Systemebene** *(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
 
 1. **Gesperrte Geräte** *(blacklist)*: Sie können eine Liste der Geräte konfigurieren, die nicht über "device-mapper" gesteuert werden sollen.
-2. **Ausnahmen für schwarze Liste** *(blacklist\_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn Sie in der schwarzen Liste aufgeführt sind.
+2. **Ausnahmen für schwarze Liste** *(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der schwarzen Liste aufgeführt sind.
 3. **Einstellungen für den Speichercontroller** *(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
 4. **Gerätespezifische Einstellungen** *(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
 
-## Konfigurieren von Multipfad auf StorSimple-Geräten mit Verbindung zu einem Linux-Host
-Ein StorSimple-Gerät, das mit einem Linux-Host verbunden ist, kann für hohe Verfügbarkeit und Lastenausgleich konfiguriert werden. Angenommen, der Linux-Host ist über zwei Schnittstellen mit dem SAN verbunden, und das Gerät ist ebenfalls über zwei Schnittstellen mit dem SAN verbunden. Wenn sich diese Schnittstellen im selben Subnetz befinden, stehen 4 Pfade zur Verfügung. Wenn sich jedoch die DATA-Schnittstelle zum Gerät und die Hostschnittstelle in einem unterschiedlichen IP-Subnetz befinden (und nicht routingfähig sind), stehen nur 2 Pfade zur Verfügung. Sie können Multipfad zur automatischen Erkennung aller verfügbaren Pfade konfigurieren, einen Lastenausgleichsalgorithmus für diese Pfade auswählen, spezifische Konfigurationseinstellungen für reine StorSimple-Volumes festlegen und Multipfad anschließend aktivieren und überprüfen.
+## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurieren von Multipfad auf StorSimple-Geräten mit Verbindung zu einem Linux-Host
+Ein StorSimple-Gerät, das mit einem Linux-Host verbunden ist, kann für hohe Verfügbarkeit und Lastenausgleich konfiguriert werden. Angenommen, der Linux-Host ist über zwei Schnittstellen mit dem SAN verbunden, und das Gerät ist ebenfalls über zwei Schnittstellen mit dem SAN verbunden. Wenn sich diese Schnittstellen im selben Subnetz befinden, stehen 4 Pfade zur Verfügung. Wenn sich jedoch die DATA-Schnittstelle zum Gerät und die Hostschnittstelle in einem unterschiedlichen IP-Subnetz befinden (und nicht routingfähig sind), stehen nur 2 Pfade zur Verfügung. Sie können Multipfad zur automatischen Erkennung aller verfügbaren Pfade konfigurieren, einen Lastenausgleichsalgorithmus für diese Pfade auswählen, spezifische Konfigurationseinstellungen für reine StorSimple-Volumes festlegen und Multipfad anschließend aktivieren und überprüfen.
 
 Das folgende Verfahren beschreibt, wie Multipfad konfiguriert wird, wenn ein StorSimple-Gerät mit zwei Netzwerkschnittstellen mit einem Host mit zwei Netzwerkschnittstellen verbunden ist.
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server und Ihr StorSimple-Gerät beschrieben.
 
-### Auf dem CentOS-Host
+### <a name="on-centos-host"></a>Auf dem CentOS-Host
 1. Stellen Sie sicher, dass Ihr CentOS-Host über zwei aktivierte Netzwerkschnittstellen verfügt. Geben Sie Folgendes ein:
    
     `ifconfig`
@@ -82,7 +86,7 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
          RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
           TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
+          collisions:0 txqueuelen:1000
           RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
    
         eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
@@ -92,7 +96,7 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
           TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
+          collisions:0 txqueuelen:1000
           RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
    
         loLink encap:Local Loopback  
@@ -101,9 +105,9 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
           UP LOOPBACK RUNNING  MTU:65536  Metric:1
           RX packets:12 errors:0 dropped:0 overruns:0 frame:0
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
+          collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-2. Installieren Sie *iSCSI-initiator-utils* auf Ihrem CentOS-Server. Führen Sie die folgenden Schritte aus, um *iSCSI-initiator-utils* zu installieren.
+2. Installieren Sie *iSCSI-initiator-utils* auf Ihrem CentOS-Server. Führen Sie die folgenden Schritte aus, um *iSCSI-initiator-utils*zu installieren.
    
    1. Melden Sie sich als `root` bei Ihrem CentOS-Host an.
    2. Installieren Sie *iSCSI-initiator-utils*. Geben Sie Folgendes ein:
@@ -114,7 +118,7 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
        `service iscsid start`
       
        Gelegentlich wird `iscsid` nicht gestartet, dann ist die Option `--force` erforderlich.
-   4. Um sicherzustellen, dass Ihr iSCSI-Initiator beim Start aktiviert wird, verwenden Sie den `chkconfig`-Befehl, um den Dienst zu starten.
+   4. Um sicherzustellen, dass Ihr iSCSI-Initiator beim Start aktiviert wird, verwenden Sie den `chkconfig` -Befehl, um den Dienst zu starten.
       
        `chkconfig iscsi on`
    5. Führen Sie den folgenden Befehl aus, um die ordnungsgemäße Einrichtung zu überprüfen:
@@ -126,29 +130,29 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
            iscsi   0:off   1:off   2:on3:on4:on5:on6:off
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
-       Im obigen Beispiel können Sie sehen, dass Ihre iSCSI-Umgebung zur Startzeit auf den Ausführungsebenen 2, 3, 4 und 5 ausgeführt wird.
+       Im obigen Beispiel können Sie sehen, dass Ihre iSCSI-Umgebung zur Startzeit auf den Ausführungsebenen 2, 3, 4 und 5 ausgeführt wird.
 3. Installieren Sie *device-mapper-multipath*. Geben Sie Folgendes ein:
    
     `yum install device-mapper-multipath`
    
     Die Installation wird gestartet. Geben Sie **Y** ein, wenn Sie zur Bestätigung aufgefordert werden.
 
-### Auf dem StorSimple-Gerät
+### <a name="on-storsimple-device"></a>Auf dem StorSimple-Gerät
 Ihr StorSimple-Gerät muss folgende Anforderungen erfüllen:
 
 * Es sind mindestens zwei Schnittstellen für iSCSI aktiviert. Um sicherzustellen, dass auf Ihrem StorSimple-Gerät zwei Schnittstellen für iSCSI aktiviert sind, führen Sie die folgenden Schritte im klassischen Azure-Portal für Ihr StorSimple-Gerät aus:
   
   1. Melden Sie sich beim klassischen Portal für Ihr StorSimple-Gerät an.
-  2. Wählen Sie Ihren StorSimple-Manager-Dienst aus, klicken Sie auf **Geräte**, und wählen Sie das gewünschte StorSimple-Gerät aus. Klicken Sie auf **Konfigurieren**, und überprüfen Sie die Einstellungen für die Netzwerkschnittstellen. Nachfolgend sehen Sie einen Screenshot, der zwei für iSCSI aktivierte Netzwerkschnittstellen zeigt. In diesem Beispiel sind DATA 2 und DATA 3 – beides 10-GbE-Schnittstellen – für iSCSI aktiviert.
+  2. Wählen Sie Ihren StorSimple-Manager-Dienst aus, klicken Sie auf **Geräte** , und wählen Sie das gewünschte StorSimple-Gerät aus. Klicken Sie auf **Konfigurieren** , und überprüfen Sie die Einstellungen für die Netzwerkschnittstellen. Nachfolgend sehen Sie einen Screenshot, der zwei für iSCSI aktivierte Netzwerkschnittstellen zeigt. In diesem Beispiel sind DATA 2 und DATA 3 – beides 10-GbE-Schnittstellen – für iSCSI aktiviert.
      
-      ![MPIO-Konfiguration für StorSimple-Gerät DATA 2](./media/storsimple-configure-mpio-on-linux/IC761347.png)
+      ![MPIO-Konfiguration für StorSimple-Gerät DATA 2](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
       ![MPIO-Konfiguration für StorSimple-Gerät DATA 3](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
       Auf der Seite **Konfigurieren**
      
      1. Stellen Sie sicher, dass beide Netzwerkschnittstellen für iSCSI aktiviert sind. Das Feld **iSCSI-aktiviert** sollte auf **Ja** festgelegt sein.
-     2. Stellen Sie sicher, dass die Netzwerkschnittstellen über dieselbe Geschwindigkeit verfügen, für beide entweder 1 GbE oder 10 GbE.
+     2. Stellen Sie sicher, dass die Netzwerkschnittstellen über dieselbe Geschwindigkeit verfügen, für beide entweder 1 GbE oder 10 GbE.
      3. Notieren Sie sich die IPv4-Adressen der iSCSI-aktivierten Schnittstellen, und bewahren Sie sie für eine spätere Verwendung auf dem Host auf.
 * Die iSCSI-Schnittstellen auf Ihrem StorSimple-Gerät sollten vom CentOS-Server aus erreichbar sein.
   
@@ -158,7 +162,7 @@ Ihr StorSimple-Gerät muss folgende Anforderungen erfüllen:
         10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
         10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
 
-### Hardwarekonfiguration
+### <a name="hardware-configuration"></a>Hardwarekonfiguration
 Es wird empfohlen, die zwei iSCSI-Netzwerkschnittstellen aus Gründen der Redundanz über separate Pfade zu verbinden. Die nachstehende Abbildung zeigt die empfohlene Hardwarekonfiguration für hohe Verfügbarkeit und Lastenausgleich mit Multipfad für Ihren CentOS-Server und das StorSimple-Gerät.
 
 ![MPIO-Hardwarekonfiguration für StorSimple-Gerät mit Verbindung zu Linux-Host](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
@@ -178,13 +182,13 @@ Die Abbildung oben zeigt Folgendes:
 > 
 > 
 
-## Konfigurationsschritte
+## <a name="configuration-steps"></a>Konfigurationsschritte
 Die Konfigurationsschritte für Multipfad umfassen das Konfigurieren der verfügbaren Pfade für die automatische Erkennung, das Festlegen des gewünschten Lastenausgleichsalgorithmus, das Aktivieren von Multipfad und schließlich das Überprüfen der Konfiguration. Jeder dieser Schritte wird in den folgenden Abschnitten ausführlich erläutert.
 
-### Schritt 1: Konfigurieren von Multipfad für die automatische Erkennung
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Schritt 1: Konfigurieren von Multipfad für die automatische Erkennung
 Geräte mit Unterstützung für Multipfad können automatisch erkannt und konfiguriert werden.
 
-1. Initialisieren Sie die Datei `/etc/multipath.conf`. Geben Sie Folgendes ein:
+1. Initialisieren Sie die Datei `/etc/multipath.conf` . Geben Sie Folgendes ein:
    
      `Copy mpathconf --enable`
    
@@ -208,13 +212,13 @@ Geräte mit Unterstützung für Multipfad können automatisch erkannt und konfig
         path_grouping_policy multibus
         }
 
-### Schritt 2: Konfigurieren von Multipfad für StorSimple-Volumes
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Schritt 2: Konfigurieren von Multipfad für StorSimple-Volumes
 Standardmäßig werden in der Datei "multipath.conf" alle Geräte auf die schwarze Liste gesetzt und umgangen. Sie müssen Ausnahmen für die schwarze Liste definieren, um Multipfad für Volumes auf StorSimple-Geräten verwenden zu können.
 
-1. Bearbeiten Sie die Datei `/etc/mulitpath.conf`. Geben Sie Folgendes ein:
+1. Bearbeiten Sie die Datei `/etc/mulitpath.conf` . Geben Sie Folgendes ein:
    
     `vi /etc/multipath.conf`
-2. Suchen Sie in der Datei "multipath.con" nach dem Abschnitt "blacklist\_exceptions". Ihr StorSimple-Gerät muss in diesem Abschnitt als Ausnahme für die schwarze Liste aufgeführt sein. Sie können die Auskommentierung der relevanten Zeilen in dieser Datei aufheben, um die Datei wie nachfolgend gezeigt zu ändern (verwenden Sie nur das für Sie spezifische Gerätemodell):
+2. Suchen Sie in der Datei "multipath.con" nach dem Abschnitt "blacklist_exceptions". Ihr StorSimple-Gerät muss in diesem Abschnitt als Ausnahme für die schwarze Liste aufgeführt sein.  Sie können die Auskommentierung der relevanten Zeilen in dieser Datei aufheben, um die Datei wie nachfolgend gezeigt zu ändern (verwenden Sie nur das für Sie spezifische Gerätemodell):
    
         blacklist_exceptions {
             device {
@@ -227,10 +231,10 @@ Standardmäßig werden in der Datei "multipath.conf" alle Geräte auf die schwar
             }
            }
 
-### Schritt 3: Konfigurieren von Multipfad mit Roundrobin
+### <a name="step-3-configure-round-robin-multipathing"></a>Schritt 3: Konfigurieren von Multipfad mit Roundrobin
 Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven Controller in ausgeglichener Form (Roundrobin).
 
-1. Bearbeiten Sie die Datei `/etc/multipath.conf`. Geben Sie Folgendes ein:
+1. Bearbeiten Sie die Datei `/etc/multipath.conf` . Geben Sie Folgendes ein:
    
     `vi /etc/multipath.conf`
 2. Legen Sie im Abschnitt `defaults` den Wert für `path_grouping_policy` auf `multibus` fest. `path_grouping_policy` gibt die Standardrichtlinie für die Pfadgruppierung an, die auf nicht festgelegte Pfade angewendet wird. Der Abschnitt "defaults" sieht aus wie nachstehend gezeigt.
@@ -248,8 +252,8 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 > 
 > 
 
-### Schritt 4: Aktivieren von Multipfad
-1. Starten Sie den `multipathd`-Daemon neu. Geben Sie Folgendes ein:
+### <a name="step-4-enable-multipathing"></a>Schritt 4: Aktivieren von Multipfad
+1. Starten Sie den `multipathd` -Daemon neu. Geben Sie Folgendes ein:
    
     `service multipathd restart`
 2. Die Ausgabe sieht folgendermaßen aus:
@@ -257,69 +261,79 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
-### Schritt 5: Überprüfen von Multipfad
+### <a name="step-5-verify-multipathing"></a>Schritt 5: Überprüfen von Multipfad
 1. Stellen Sie zunächst folgendermaßen sicher, dass die iSCSI-Verbindung mit dem StorSimple-Gerät eingerichtet ist:
    
-   1. Führen Sie eine Erkennung für Ihr StorSimple-Gerät aus. Geben Sie Folgendes ein:
+   a. Führen Sie eine Erkennung für Ihr StorSimple-Gerät aus. Geben Sie Folgendes ein:
       
-       `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
-      
-       Die Ausgabe sieht folgendermaßen aus, wenn die IP-Adresse für DATA0 10.126.162.25 lautet und auf dem StorSimple-Gerät Port 3260 für ausgehenden iSCSI-Datenverkehr geöffnet ist:
-      
-           10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
-           10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
+    ```
+    iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
+    ```
+    
+    Die Ausgabe sieht folgendermaßen aus, wenn die IP-Adresse für DATA0 10.126.162.25 lautet und auf dem StorSimple-Gerät Port 3260 für ausgehenden iSCSI-Datenverkehr geöffnet ist:
+    
+    ```
+    10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
+    10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
+    ```
 
-        Kopieren Sie den IQN Ihres StorSimple-Geräts, `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`, aus der vorstehenden Ausgabe.
+    Kopieren Sie den IQN Ihres StorSimple-Geräts, `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`, aus der vorstehenden Ausgabe.
 
+   b. Stellen Sie über den Ziel-IQN eine Verbindung mit dem Gerät her. Das StorSimple-Gerät ist in diesem Fall das iSCSI-Ziel. Geben Sie Folgendes ein:
 
+    ```
+    iscsiadm -m node --login -T <IQN of iSCSI target>
+    ```
 
-    1. Stellen Sie über den Ziel-IQN eine Verbindung mit dem Gerät her. Das StorSimple-Gerät ist in diesem Fall das iSCSI-Ziel. Geben Sie Folgendes ein:
+    Das folgende Beispiel zeigt die Ausgabe bei Verwendung des Ziel-IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Die Ausgabe weist darauf hin, dass die Verbindungsherstellung mit den zwei iSCSI-aktivierten Netzwerkschnittstellen auf Ihrem Gerät erfolgreich war.
 
-        `iscsiadm -m node --login -T <IQN of iSCSI target>`
+    ```
+    Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
+    Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
+    Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
+    Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
+    Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
+    Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
+    Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
+    Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
+    ```
 
-        Das folgende Beispiel zeigt die Ausgabe bei Verwendung des Ziel-IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Die Ausgabe weist darauf hin, dass die Verbindungsherstellung mit den zwei iSCSI-aktivierten Netzwerkschnittstellen auf Ihrem Gerät erfolgreich war.
-
-            Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
-            Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
-            Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
-            Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
-            Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
-            Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
-            Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
-                Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
-
-
-        Wenn Sie hier nur eine Hostschnittstelle und zwei Pfade sehen, müssen Sie beide Schnittstellen auf dem Host für iSCSI aktivieren. Folgen Sie den [detaillierten Anweisungen in der Linux-Dokumentation](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
-
-
-    1. Das StorSimple-Gerät macht ein Volume für den CentOS-Server verfügbar. Weitere Informationen finden Sie unter [Schritt 6: Erstellen eines Volumes](storsimple-deployment-walkthrough.md#step-6-create-a-volume) mit dem klassischen Azure-Portal auf Ihrem StorSimple-Gerät.
-
-    1. Überprüfen Sie die verfügbaren Pfade. Geben Sie Folgendes ein:
-
-        `multipath –l`
-
-        Das folgende Beispiel zeigt die Ausgabe für zwei Netzwerkschnittstellen auf einem StorSimple-Gerät, das mit einer einzigen Hostnetzwerkschnittstelle mit zwei verfügbaren Pfaden verbunden ist.
-
-            mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
-            size=100G features='0' hwhandler='0' wp=rw
-            `-+- policy='round-robin 0' prio=0 status=active
-              |- 7:0:0:1 sdc 8:32 active undef running
-              `- 6:0:0:1 sdd 8:48 active undef running
-
-        Das folgende Beispiel zeigt die Ausgabe für zwei Netzwerkschnittstellen auf einem StorSimple-Gerät, das mit zwei Hostnetzwerkschnittstellen mit vier verfügbaren Pfaden verbunden ist.
-
-            mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
-            size=100G features='0' hwhandler='0' wp=rw
-            `-+- policy='round-robin 0' prio=0 status=active
-              |- 17:0:0:0 sdb 8:16 active undef running
-              |- 15:0:0:0 sdd 8:48 active undef running
-              |- 14:0:0:0 sdc 8:32 active undef running
-              `- 16:0:0:0 sde 8:64 active undef running
-
-        Nachdem Sie die Pfade konfiguriert haben, folgen Sie den Anweisungen für Ihr Hostbetriebssystem (CentOS 6.6), um das Volume einzubinden und zu formatieren.
+    Wenn Sie hier nur eine Hostschnittstelle und zwei Pfade sehen, müssen Sie beide Schnittstellen auf dem Host für iSCSI aktivieren. Folgen Sie den [detaillierten Anweisungen in der Linux-Dokumentation](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
 
-## Problembehandlung für Multipfad
+   c. Das StorSimple-Gerät macht ein Volume für den CentOS-Server verfügbar. Weitere Informationen finden Sie unter [Schritt 6: Erstellen eines Volumes](storsimple-deployment-walkthrough.md#step-6-create-a-volume) mit dem klassischen Azure-Portal auf Ihrem StorSimple-Gerät.
+
+   d. Überprüfen Sie die verfügbaren Pfade. Geben Sie Folgendes ein:
+
+   ```
+   multipath –l
+   ```
+
+   Das folgende Beispiel zeigt die Ausgabe für zwei Netzwerkschnittstellen auf einem StorSimple-Gerät, das mit einer einzigen Hostnetzwerkschnittstelle mit zwei verfügbaren Pfaden verbunden ist.
+
+   ```
+    mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+        |- 7:0:0:1 sdc 8:32 active undef running
+        `- 6:0:0:1 sdd 8:48 active undef running
+   ```
+
+   Das folgende Beispiel zeigt die Ausgabe für zwei Netzwerkschnittstellen auf einem StorSimple-Gerät, das mit zwei Hostnetzwerkschnittstellen mit vier verfügbaren Pfaden verbunden ist.
+
+   ```
+    mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+        |- 17:0:0:0 sdb 8:16 active undef running
+        |- 15:0:0:0 sdd 8:48 active undef running
+        |- 14:0:0:0 sdc 8:32 active undef running
+        `- 16:0:0:0 sde 8:64 active undef running
+   ```
+
+   Nachdem Sie die Pfade konfiguriert haben, folgen Sie den Anweisungen für Ihr Hostbetriebssystem (CentOS 6.6), um das Volume einzubinden und zu formatieren.
+
+## <a name="troubleshoot-multipathing"></a>Problembehandlung für Multipfad
 In diesem Abschnitt werden einige nützliche Tipps bereitgestellt, um mögliche Probleme bei der Konfiguration von Multipfad zu beheben.
 
 F: Änderungen, die an der Datei `multipath.conf` vorgenommen wurden, treten nicht in Kraft.
@@ -340,7 +354,7 @@ Sie sollten möglicherweise auch prüfen, ob nach der Verbindungsherstellung mit
 
 * Verwenden Sie den folgenden Befehl, um den SCSI-Bus erneut zu überprüfen:
   
-    `$ rescan-scsi-bus.sh ` (Teil des sg3\_utils-Pakets)
+    `$ rescan-scsi-bus.sh ` (Teil des sg3_utils-Pakets)
 * Geben Sie die folgenden Befehle ein:
   
     `$ dmesg | grep sd*`
@@ -355,7 +369,7 @@ Sie sollten möglicherweise auch prüfen, ob nach der Verbindungsherstellung mit
   
     Die so zurückgegebene Zeichenfolge gibt an, ob es sich um einen StorSimple-Datenträger handelt.
 
-Eine weniger wahrscheinliche Ursache könnte ein veralteter Wert für "iscsid pid" sein. Verwenden Sie den folgenden Befehl, um sich von den iSCSI-Sitzungen abzumelden:
+Eine weniger wahrscheinliche Ursache könnte ein  veralteter Wert für "iscsid pid" sein. Verwenden Sie den folgenden Befehl, um sich von den iSCSI-Sitzungen abzumelden:
 
     iscsiadm -m node --logout -p <Target_IP>
 
@@ -405,34 +419,39 @@ A: Um zu überprüfen, ob sich Ihr Gerät auf der Zulassungsliste befindet, verw
     dm-3 devnode blacklisted, unmonitored
 
 
-Weitere Informationen finden Sie unter [Verwenden interaktiver Befehle zur Problembehandlung für Multipfad](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html) (in englischer Sprache).
+Weitere Informationen finden Sie unter [Verwenden interaktiver Befehle zur Problembehandlung für Multipfad](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html)(in englischer Sprache).
 
-## Liste nützlicher Befehle
-| Typ | Befehl | Beschreibung |
+## <a name="list-of-useful-commands"></a>Liste nützlicher Befehle
+| Geben Sie  | Befehl | Beschreibung |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Starten des iSCSI-Diensts |
-| `service iscsid stop` |Beenden des iSCSI-Diensts | |
-| `service iscsid restart` |Neustarten des iSCSI-Diensts | |
-| `iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Ermitteln verfügbarer Ziele für die angegebene Adresse | |
-| `iscsiadm -m node --login -T <TARGET_IQN>` |Anmelden am iSCSI-Ziel | |
-| `iscsiadm -m node --logout -p <Target_IP>` |Abmelden vom iSCSI-Ziel | |
-| `cat /etc/iscsi/initiatorname.iscsi` |Drucken des iSCSI-Initiatornamens | |
-| `iscsiadm –m session –s <sessionid> -P 3` |Überprüfen des Status der iSCSI-Sitzung und des auf dem Host ermittelten Volumes | |
-| `iscsi –m session` |Zeigt alle iSCSI-Sitzungen zwischen dem Host und dem StorSimple-Gerät | |
+| &nbsp; |`service iscsid stop` |Beenden des iSCSI-Diensts |
+| &nbsp; |`service iscsid restart` |Neustarten des iSCSI-Diensts |
+| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Ermitteln verfügbarer Ziele für die angegebene Adresse |
+| &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |Anmelden am iSCSI-Ziel |
+| &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |Abmelden vom iSCSI-Ziel |
+| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |Drucken des iSCSI-Initiatornamens |
+| &nbsp; |`iscsiadm –m session –s <sessionid> -P 3` |Überprüfen des Status der iSCSI-Sitzung und des auf dem Host ermittelten Volumes |
+| &nbsp; |`iscsi –m session` |Zeigt alle iSCSI-Sitzungen zwischen dem Host und dem StorSimple-Gerät |
 |  | | |
 | **Multipfad** |`service multipathd start` |Starten des Multipfad-Daemons |
-| `service multipathd stop` |Beenden des Multipfad-Daemons | |
-| `service multipathd restart` |Neustarten des Multipfad-Daemons | |
-| `chkconfig multipathd on` </br> ODER </br> `mpathconf –with_chkconfig y` |Aktivieren des Multipfad-Daemons beim Systemstart | |
-| `multipathd –k` |Starten der interaktiven Konsole für die Problembehandlung | |
-| `multipath –l` |Auflisten von Multipfad-Verbindungen und -Geräten | |
-| `mpathconf --enable` |Erstellen einer Beispiel-Multipfad-Konfigurationsdatei in `/etc/mulitpath.conf` | |
+| &nbsp; |`service multipathd stop` |Beenden des Multipfad-Daemons |
+| &nbsp; |`service multipathd restart` |Neustarten des Multipfad-Daemons |
+| &nbsp; |`chkconfig multipathd on` </br> Oder </br> `mpathconf –with_chkconfig y` |Aktivieren des Multipfad-Daemons beim Systemstart |
+| &nbsp; |`multipathd –k` |Starten der interaktiven Konsole für die Problembehandlung |
+| &nbsp; |`multipath –l` |Auflisten von Multipfad-Verbindungen und -Geräten |
+| &nbsp; |`mpathconf --enable` |Erstellen einer Beispiel-Multipfad-Konfigurationsdatei in `/etc/mulitpath.conf` |
 |  | | |
 
-## Nächste Schritte
-Wenn Sie MPIO auf einem Linux-Host konfigurieren, müssen Sie möglicherweise auf die folgenden CentOS 6.6-Dokumente zurückgreifen:
+## <a name="next-steps"></a>Nächste Schritte
+Wenn Sie MPIO auf einem Linux-Host konfigurieren, müssen Sie möglicherweise auf die folgenden CentOS 6.6-Dokumente zurückgreifen:
 
 * [Einrichten von MPIO auf CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 * [Linux-Trainingshandbuch](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

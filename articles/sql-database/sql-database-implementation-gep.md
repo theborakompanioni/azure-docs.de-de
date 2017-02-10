@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da2e3e4f9a33860141d94352fd2e657b14b0d03d
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 7137d38e4e9fef7dfaa309ad81cfed94d547a393
 
 
 ---
@@ -65,7 +65,7 @@ Das Kernstück der Anwendung SMART by GEP sind die Azure SQL-Datenbankinstanzen,
 
 Dank der in Azure SQL-Datenbank integrierten Fehlertoleranzfunktionen verfügt GEP automatisch über mehr Optionen für eine Notfallwiederherstellung, als das Unternehmen mit wirtschaftlich vertretbarem Aufwand in ein lokales System hätte implementieren können. GEP verwendet die aktive Georeplikation in Azure SQL-Datenbank zusammen mit mehreren aktiven, lesbaren und online gestellten sekundären Replikaten (Always On-Verfügbarkeitsgruppen) in verschiedenen Regionen, um Hochverfügbarkeitspaare zu bilden. Die regionsübergreifende Replikation von SMART by GEP-Daten bedeutet Folgendes: Sollte einmal eine Region vollständig ausfallen, kann GEP Kundendaten über ein Minimal-RPO (Recovery-Point Objective) und ein Minimal-RTO (Recovery-Time Objective) problemlos wiederherstellen.
 
-Jeder SMART by GEP-Kunde verfügt über zwei Azure SQL-Datenbankinstanzen: eine für die Onlinetransaktionsverarbeitung (Online Transaction Processing, OLTP) und eine für Analysen (beispielsweise von Kundenausgaben und -berichten). Mit den elastischen Pools für Azure SQL-Datenbanken kann GEP problemlos Tausende von Datenbanken global verwalten, um unvorhersehbare Anforderungen an Datenbankressourcen zu verarbeiten. Dank der elastischen Pools kann GEP sicherstellen, dass sich die Kundendatenbanken ganz nach Bedarf skalieren lassen, ohne Über- oder Unterdimensionierung von Ressourcen. Gleichzeitig kann GEP die Kosten besser kontrollieren. Und da es sich um einen PaaS-Dienst handelt, erhält GEP darüber hinaus über die automatischen Upgrades alle neuen Azure SQL-Datenbankfunktionen.
+Jeder SMART by GEP-Kunde verfügt über zwei Azure SQL-Datenbankinstanzen: eine für die Onlinetransaktionsverarbeitung (Online Transaction Processing, OLTP) und eine für Analysen (beispielsweise von Kundenausgaben und -berichten). Mit den elastischen Pools für Azure SQL-Datenbank kann GEP problemlos Tausende von Datenbanken global verwalten, um unvorhersehbare Anforderungen an Datenbankressourcen zu verarbeiten. Dank der elastischen Pools kann GEP sicherstellen, dass sich die Kundendatenbanken ganz nach Bedarf skalieren lassen, ohne Über- oder Unterdimensionierung von Ressourcen. Gleichzeitig kann GEP die Kosten besser kontrollieren. Und da es sich um einen PaaS-Dienst handelt, erhält GEP darüber hinaus über die automatischen Upgrades alle neuen Azure SQL-Datenbankfunktionen.
 
 ## <a name="unstructured-and-semi-structured-data"></a>Unstrukturierte und semistrukturierte Daten
 Einige SMART by GEP-Kundendaten erfordern allerdings einen weniger strikt strukturierten Speicher. Für diese Art von Daten nutzt GEP Azure-Blobspeicher, Azure-Tabellenspeicher und Azure Redis Cache. In Azure-Blobspeichern befinden sich alle Anlagen, die SMART by GEP-Benutzer in die Anwendung hochladen. Hier speichert SMART by GEP auch statische Inhalte, wie z.B. Cascading Stylesheets (CSS-Dateien) und JavaScript-Dateien.
@@ -107,6 +107,6 @@ Seit GEP von lokalen Rechenzentren zu Azure migriert ist und die Lösung SMART b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

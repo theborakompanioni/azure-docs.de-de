@@ -1,12 +1,12 @@
 ---
-title: Anzeigen und Verwalten von StorSimple-Aufträgen | Microsoft Docs
-description: Beschreibt die Seite „Aufträge“ des StorSimple Manager-Diensts und ihre Verwendung zum Nachverfolgen kürzlich ausgeführter, aktueller und geplanter Sicherungsaufträge.
+title: "Anzeigen und Verwalten von StorSimple-Aufträgen | Microsoft Docs"
+description: "Beschreibt die Seite „Aufträge“ des StorSimple Manager-Diensts und ihre Verwendung zum Nachverfolgen kürzlich ausgeführter, aktueller und geplanter Sicherungsaufträge."
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: cdd3e9e8-7ccd-40a3-8c07-0ab1338c0e59
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d1d1f4d581721994fe7417ae970ad70f9a7b3368
+
 
 ---
-# Anzeigen und Verwalten von StorSimple-Aufträgen mithilfe des StorSimple Manager-Diensts (Update 2)
+# <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-jobs-update-2"></a>Anzeigen und Verwalten von StorSimple-Aufträgen mithilfe des StorSimple Manager-Diensts (Update 2)
 [!INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
-## Übersicht
-Die Seite **Aufträge** stellt ein zentrales Portal zum Anzeigen und Verwalten von Aufträgen bereit, die für Geräte gestartet wurden, die mit dem StorSimple Manager-Dienst verbunden sind. Sie können geplante, aktive, abgeschlossene, abgebrochene und fehlerhafte Aufträge für mehrere Geräte anzeigen. Die jeweiligen Ergebnisse werden in einem Tabellenformat angezeigt.
+## <a name="overview"></a>Übersicht
+Die Seite **Aufträge** stellt ein zentrales Portal zum Anzeigen und Verwalten von Aufträgen bereit, die für Geräte gestartet wurden, die mit dem StorSimple Manager-Dienst verbunden sind. Sie können geplante, aktive, abgeschlossene, abgebrochene und fehlerhafte Aufträge für mehrere Geräte anzeigen. Die jeweiligen Ergebnisse werden in einem Tabellenformat angezeigt. 
 
 ![Seite „Aufträge“](./media/storsimple-manage-jobs-u2/jobs.png)
 
@@ -29,7 +33,8 @@ Sie können die Aufträge, an denen Sie interessiert sind, schnell finden, indem
 * **Status** – Aufträge können einen der folgenden Status haben: „Wird ausgeführt“, „Fehler“, „Abgeschlossen“, „Wird abgebrochen“, „Abgebrochen“ oder „Mit Fehlern abgeschlossen“.
 * **Von und Bis** – Aufträge können entsprechend einem Datums- und Zeitbereich gefiltert werden.
 * **Typ** – Aufträge können einen der folgenden Typen haben: „Sicherung“, „Manuelle Sicherung“, „Wiederherstellung“, „Klon“, „Gerätefailover“, „Create locally pinned volume“, „Volume ändern“, „Aktualisieren“, „Supportpaket“ oder „Virtuelle Gerätebereitstellung“.
-* **Geräte** – Aufträge werden für ein bestimmtes Gerät ausgelöst, das mit Ihrem Dienst verbunden ist. Die gefilterten Aufträge werden dann anhand der folgenden Attribute tabellarisch aufgelistet:
+* **Geräte** – Aufträge werden für ein bestimmtes Gerät ausgelöst, das mit Ihrem Dienst verbunden ist.
+  Die gefilterten Aufträge werden dann anhand der folgenden Attribute tabellarisch aufgelistet:
   
   * **Typ** – „Sicherung“, „Manuelle Sicherung“, „Wiederherstellung“, „Klon“, „Gerätefailover“, „Create locally pinned volume“, „Volume ändern“, „Aktualisieren“, „Supportpaket“ oder „Virtuelle Gerätebereitstellung“.
   * **Status** – „Wird ausgeführt“, „Fehler“, „Abgeschlossen“, „Wird abgebrochen“, „Abgebrochen“ oder „Mit Fehlern abgeschlossen“.
@@ -45,10 +50,10 @@ Sie können auf dieser Seite die folgenden auftragsbezogenen Aktionen ausführen
 * Anzeigen von Auftragsdetails
 * Abbrechen eines Auftrags
 
-## Anzeigen von Auftragsdetails
+## <a name="view-job-details"></a>Anzeigen von Auftragsdetails
 Führen Sie die folgenden Schritte aus, um die Details eines Auftrags anzuzeigen.
 
-#### So zeigen Sie Auftragsdetails an
+#### <a name="to-view-job-details"></a>So zeigen Sie Auftragsdetails an
 1. Zeigen Sie auf der Seite **Aufträge** die Aufträge an, an denen Sie interessiert sind, indem Sie eine Abfrage mit entsprechenden Filtern ausführen. Sie können nach abgeschlossenen, ausführenden oder abgebrochenen Aufträgen suchen.
 2. Wählen Sie einen Auftrag aus.
 3. Klicken Sie unten auf der Seite auf **Details**.
@@ -56,15 +61,15 @@ Führen Sie die folgenden Schritte aus, um die Details eines Auftrags anzuzeigen
    
     ![Seite „Auftragsdetails“](./media/storsimple-manage-jobs-u2/JobDetails.png)
 
-## Abbrechen eines Auftrags
+## <a name="cancel-a-job"></a>Abbrechen eines Auftrags
 Führen Sie die folgenden Schritte aus, um einen Auftrag abzubrechen, der momentan ausgeführt wird.
 
 > [!NOTE]
-> Einige Aufträge, wie z. B. das Ändern eines Volumetyps oder das Erweitern eines Volumes, können nicht abgebrochen werden.
+> Einige Aufträge, wie z. B. das Ändern eines Volumetyps oder das Erweitern eines Volumes, können nicht abgebrochen werden.
 > 
 > 
 
-### So brechen Sie einen Auftrag ab
+### <a name="to-cancel-a-job"></a>So brechen Sie einen Auftrag ab
 1. Zeigen Sie auf der Seite **Aufträge** die Aufträge an, die momentan ausgeführt werden und die Sie abbrechen möchten. Führen Sie dazu eine Abfrage mit entsprechenden Filtern aus.
 2. Wählen Sie den Auftrag aus.
 3. Klicken Sie unten auf der Seite auf **Abbrechen**.
@@ -72,8 +77,13 @@ Führen Sie die folgenden Schritte aus, um einen Auftrag abzubrechen, der moment
 
 Dieser Auftrag wird nun abgebrochen.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Verwalten von StorSimple-Sicherungsrichtlinien](storsimple-manage-backup-policies.md).
-* Erfahren Sie mehr über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+* Erfahren Sie mehr über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

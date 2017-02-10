@@ -1,13 +1,12 @@
-
 ---
-title: Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern | Microsoft Docs
-description: Erfahren Sie, wie Sie die Sicherung von virtuellen Azure-Computern verwalten und überwachen können
+title: "Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern | Microsoft Docs"
+description: "Erfahren Sie, wie Sie die Sicherung von virtuellen Azure-Computern verwalten und überwachen können"
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: ''
-
+editor: 
+ms.assetid: 4372944e-d33a-4f6a-bd5f-d04af2842713
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -15,45 +14,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2016
 ms.author: trinadhk; jimpark; markgal;
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: 7a855e4f4af81f9316cb53be3807c6b290941bf4
+
 
 ---
-# Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern
+# <a name="manage-and-monitor-azure-virtual-machine-backups"></a>Verwalten und Überwachen der Sicherung von virtuellen Azure-Computern
 > [!div class="op_single_selector"]
 > * [Verwalten von Azure-VM-Sicherungen](backup-azure-manage-vms.md)
 > * [Verwalten von klassischen VM-Sicherungen](backup-azure-manage-vms-classic.md)
 > 
 > 
 
-Dieser Artikel enthält Informationen zu allgemeinen Verwaltungs- und Überwachungsaufgaben für nach dem klassischen Modell bereitgestellte virtuelle Computer, die in Azure geschützt werden.
+Dieser Artikel enthält Informationen zu allgemeinen Verwaltungs- und Überwachungsaufgaben für nach dem klassischen Modell bereitgestellte virtuelle Computer, die in Azure geschützt werden.  
 
 > [!NOTE]
-> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../resource-manager-deployment-model.md). Unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
+> Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md). Unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md) finden Sie ausführliche Informationen zum Arbeiten mit VMs, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden.
 > 
 > 
 
-## Verwalten geschützter virtueller Computer
+## <a name="manage-protected-virtual-machines"></a>Verwalten geschützter virtueller Computer
 So verwalten Sie geschützte virtuelle Computer
 
-1. Zum Anzeigen und Verwalten von Sicherungseinstellungen für einen virtuellen Computer klicken Sie auf die Registerkarte **Geschützte Elemente**.
+1. Zum Anzeigen und Verwalten von Sicherungseinstellungen für einen virtuellen Computer klicken Sie auf die Registerkarte **Geschützte Elemente** .
 2. Klicken Sie auf den Namen eines geschützten Elements, um die Registerkarte **Sicherungsdetails** anzuzeigen, auf der Sie Informationen zur letzten Sicherung finden.
    
     ![Sicherung virtueller Computer](./media/backup-azure-manage-vms/backup-vmdetails.png)
-3. Zum Anzeigen und Verwalten von Sicherungsrichtlinieneinstellungen für einen virtuellen Computer klicken Sie auf die Registerkarte **Richtlinien**.
+3. Zum Anzeigen und Verwalten von Sicherungsrichtlinieneinstellungen für einen virtuellen Computer klicken Sie auf die Registerkarte **Richtlinien** .
    
     ![VM-Richtlinie](./media/backup-azure-manage-vms/manage-policy-settings.png)
    
     Auf der Registerkarte **Sicherungsrichtlinien** wird die vorhandene Richtlinie angezeigt. Sie können sie nach Bedarf ändern. Wenn Sie eine neue Richtlinie erstellen müssen, klicken Sie auf der Seite **Richtlinien** auf **Erstellen**. Wenn Sie eine Richtlinie entfernen möchten, dürfen ihr keine virtuellen Computer zugeordnet sein.
    
     ![VM-Richtlinie](./media/backup-azure-manage-vms/backup-vmpolicy.png)
-4. Sie erhalten weitere Informationen zu Aktionen oder zum Status eines virtuellen Computers auf der Seite **Aufträge**. Klicken Sie in der Liste auf einen Auftrag, um weitere Details zu erhalten, oder filtern Sie die Aufträge für einen bestimmten virtuellen Computer.
+4. Sie erhalten weitere Informationen zu Aktionen oder zum Status eines virtuellen Computers auf der Seite **Aufträge** . Klicken Sie in der Liste auf einen Auftrag, um weitere Details zu erhalten, oder filtern Sie die Aufträge für einen bestimmten virtuellen Computer.
    
     ![Aufträge](./media/backup-azure-manage-vms/backup-job.png)
 
-## On-Demand-Sicherung eines virtuellen Computers
+## <a name="on-demand-backup-of-a-virtual-machine"></a>On-Demand-Sicherung eines virtuellen Computers
 Sie können eine bedarfsabhängige Sicherung eines virtuellen Computers erstellen, sobald dieser für den Schutz konfiguriert ist. Wenn die erste Sicherung für den virtuellen Computer ansteht, wird mithilfe einer bedarfsabhängigen Sicherung eine vollständige Kopie des virtuellen Computers im Azure-Sicherungstresor erstellt. Wenn die erste Sicherung abgeschlossen ist, werden bei einer bedarfsabhängigen Sicherung nur Änderungen an einer vorherigen Sicherung an den Azure-Sicherungstresor gesendet, d.h. sie ist stets inkrementell.
 
 > [!NOTE]
-> Der Aufbewahrungszeitraum einer bedarfsabhängigen Sicherung wird auf den Wert festgelegt, der in der Sicherungsrichtlinie für den virtuellen Computer für die tägliche Aufbewahrung festgelegt ist.
+> Der Aufbewahrungszeitraum einer bedarfsabhängigen Sicherung wird auf den Wert festgelegt, der in der Sicherungsrichtlinie für den virtuellen Computer für die tägliche Aufbewahrung festgelegt ist.  
 > 
 > 
 
@@ -62,7 +65,7 @@ So führen Sie die bedarfsabhängige Sicherung eines virtuellen Computers aus:
 1. Navigieren Sie zur Seite **Geschützte Elemente**, wählen Sie **Virtueller Azure-Computer** als **Typ** aus (sofern nicht bereits ausgewählt), und klicken Sie auf die Schaltfläche **Auswählen**.
    
     ![VM-Typ](./media/backup-azure-manage-vms/vm-type.png)
-2. Wählen Sie den virtuellen Computer aus, auf dem Sie die abhängige Sicherung erstellen möchten, und klicken am unteren Rand der Seite auf **Jetzt sichern**.
+2. Wählen Sie den virtuellen Computer aus, auf dem Sie die abhängige Sicherung erstellen möchten, und klicken am unteren Rand der Seite auf **Jetzt sichern** .
    
     ![Jetzt sichern](./media/backup-azure-manage-vms/backup-now.png)
    
@@ -74,12 +77,12 @@ So führen Sie die bedarfsabhängige Sicherung eines virtuellen Computers aus:
    > Zum Anzeigen der Richtlinie eines virtuellen Computers führen Sie auf der Seite **Geschützte Elemente** des virtuellen Computers eine Detailsuche durch und navigieren zur Registerkarte "Sicherungsrichtlinie".
    > 
    > 
-3. Nachdem der Auftrag erstellt wurde, klicken Sie auf der Befehlsleiste auf die Schaltfläche **Auftrag anzeigen**, um den entsprechenden Auftrag auf der Seite "Aufträge" anzuzeigen.
+3. Nachdem der Auftrag erstellt wurde, klicken Sie auf der Befehlsleiste auf die Schaltfläche **Auftrag anzeigen** , um den entsprechenden Auftrag auf der Seite "Aufträge" anzuzeigen.
    
     ![Sicherungsauftrag erstellt](./media/backup-azure-manage-vms/created-job.png)
 4. Nach erfolgreichem Abschluss des Auftrags wird ein Wiederherstellungspunkt erstellt, den Sie zum Wiederherstellen des virtuellen Computers verwenden können. Dadurch wird auch auf der Seite **Geschützte Elemente** der Wert in der Wiederherstellungspunktspalte um 1 erhöht.
 
-## Beenden des Schutzes für virtuelle Computer
+## <a name="stop-protecting-virtual-machines"></a>Beenden des Schutzes für virtuelle Computer
 Mit den folgenden Optionen können Sie künftige Sicherungen eines virtuellen Computers beenden:
 
 * Sicherungsdaten beibehalten, die dem virtuellen Computer im Azure Backup-Tresor zugeordnet sind
@@ -92,7 +95,7 @@ So beenden Sie den Schutz für einen virtuellen Computer:
 1. Navigieren Sie zur Seite **Geschützte Elemente**, wählen Sie **Virtueller Azure-Computer** als Filtertyp aus (sofern nicht bereits ausgewählt), und klicken Sie auf die Schaltfläche **Auswählen**.
    
     ![VM-Typ](./media/backup-azure-manage-vms/vm-type.png)
-2. Wählen Sie den virtuellen Computer aus, und klicken Sie am unteren Rand der Seite auf **Schutz beenden**.
+2. Wählen Sie den virtuellen Computer aus, und klicken Sie am unteren Rand der Seite auf **Schutz beenden** .
    
     ![Schutz beenden](./media/backup-azure-manage-vms/stop-protection.png)
 3. Standardmäßig löscht Azure Backup die dem virtuellen Computer zugeordneten Sicherungsdaten nicht.
@@ -104,7 +107,7 @@ So beenden Sie den Schutz für einen virtuellen Computer:
     ![Kontrollkästchen](./media/backup-azure-manage-vms/checkbox.png)
    
     Wählen Sie einen Grund für das Beenden der Sicherung. Dies ist zwar optional, hilft aber dem Azure Backup-Team beim Berücksichtigen von Feedback und Priorisieren der Kundenszenarien.
-4. Klicken Sie auf die Schaltfläche **Senden** zum Senden des Auftrags **Schutz beenden**. Klicken Sie auf **Auftrag anzeigen**, um den entsprechenden Auftrag auf der Seite **Aufträge** anzuzeigen.
+4. Klicken Sie auf die Schaltfläche **Senden**, um den Auftrag **Schutz beenden** zu senden. Klicken Sie auf **Auftrag anzeigen**, um den entsprechenden Auftrag auf der Seite **Aufträge** anzuzeigen.
    
     ![Schutz beenden](./media/backup-azure-manage-vms/stop-protect-success.png)
    
@@ -114,8 +117,8 @@ So beenden Sie den Schutz für einen virtuellen Computer:
    
     Wenn Sie die Option **Zugeordnete Sicherungsdaten löschen** ausgewählt haben, wird der virtuelle Computer nicht mehr auf der Seite **Geschützte Elemente** angezeigt.
 
-## Erneutes Schützen virtueller Computer
-Wenn Sie im Assistenten **Schutz beenden** nicht **Zugeordnete Sicherungsdaten löschen** ausgewählt haben, können Sie den virtuellen Computer erneut schützen, indem Sie ähnliche Schritte wie beim Sichern registrierter virtueller Computer ausführen. Nach Aktivierung des Schutzes werden vor Beenden des Schutzes die Sicherungsdaten dieses virtuellen Computers beibehalten und nach erneuter Aktivierung des Schutzes Wiederherstellungspunkte erstellt.
+## <a name="re-protect-virtual-machine"></a>Erneutes Schützen virtueller Computer
+Wenn Sie im Assistenten **Schutz beenden** nicht **Zugeordnete Sicherungsdaten** löschen ausgewählt haben, können Sie den virtuellen Computer erneut schützen, indem Sie ähnliche Schritte wie beim Sichern registrierter virtueller Computer ausführen. Nach Aktivierung des Schutzes werden vor Beenden des Schutzes die Sicherungsdaten dieses virtuellen Computers beibehalten und nach erneuter Aktivierung des Schutzes Wiederherstellungspunkte erstellt.
 
 Nach erneuter Aktivierung des Schutzes ändert sich der Schutzstatus des virtuellen Computers in **Geschützt**, wenn es Wiederherstellungspunkte gibt, die vor dem Zeitpunkt der Aktivierung von **Schutz beenden** liegen.
 
@@ -126,44 +129,44 @@ Nach erneuter Aktivierung des Schutzes ändert sich der Schutzstatus des virtuel
 > 
 > 
 
-## Aufheben der Registrierung virtueller Computer
+## <a name="unregister-virtual-machines"></a>Aufheben der Registrierung virtueller Computer
 So entfernen Sie den virtuellen Computer aus dem Sicherungstresor
 
-1. Klicken Sie unten auf der Seite auf die Schaltfläche **REGISTRIERUNG AUFHEBEN**.
+1. Klicken Sie unten auf der Seite auf die Schaltfläche **REGISTRIERUNG AUFHEBEN** .
    
     ![Schutz deaktivieren](./media/backup-azure-manage-vms/unregister-button.png)
    
-    In einer Popupbenachrichtigung am unteren Bildschirmrand werden Sie zur Bestätigung aufgefordert. Klicken Sie auf **JA**, um fortzufahren.
+    In einer Popupbenachrichtigung am unteren Bildschirmrand werden Sie zur Bestätigung aufgefordert. Klicken Sie auf **JA** , um fortzufahren.
    
     ![Schutz deaktivieren](./media/backup-azure-manage-vms/confirm-unregister.png)
 
-## Löschen von Sicherungsdaten
+## <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
 Sie können die Sicherungsdaten löschen, die einem virtuellen Computer zugeordnet sind, und zwar:
 
 * Während des Auftrags "Schutz beenden"
 * Nach Abschluss des Auftrags "Schutz beenden" auf einem virtuellen Computer
 
-So löschen Sie Sicherungsdaten auf einem virtuellen Computer mit dem Status *Schutz beendet* nach erfolgreichem Auftrag **Sicherung beenden**:
+So löschen Sie Sicherungsdaten auf einem virtuellen Computer mit dem Status *Schutz beendet* nach erfolgreichem Auftrag **Sicherung beenden** :
 
 1. Navigieren Sie zur Seite **Geschützte Elemente**, wählen Sie **Virtueller Azure-Computer** als *Typ* aus, und klicken Sie auf die Schaltfläche **Auswählen**.
    
     ![VM-Typ](./media/backup-azure-manage-vms/vm-type.png)
-2. Wählen Sie den virtuellen Computer aus. Der virtuelle Computer hat den Status **Schutz beendet**.
+2. Wählen Sie den virtuellen Computer aus. Der virtuelle Computer hat den Status **Schutz beendet** .
    
     ![Schutz beendet](./media/backup-azure-manage-vms/protection-stopped-b.png)
-3. Klicken Sie am unteren Rand der Seite auf die Schaltfläche **LÖSCHEN**.
+3. Klicken Sie am unteren Rand der Seite auf die Schaltfläche **LÖSCHEN** .
    
     ![Sicherung löschen](./media/backup-azure-manage-vms/delete-backup.png)
-4. Wählen Sie im **Sicherungsdaten löschen**-Assistenten einen Grund für das Löschen von Sicherungsdaten aus (dringend empfohlen), und klicken Sie auf **Senden**.
+4. Wählen Sie im Assistenten **Sicherungsdaten löschen** einen Grund für das Löschen von Sicherungsdaten aus (dringend empfohlen), und klicken Sie auf **Senden**.
    
     ![Löschen von Sicherungsdaten](./media/backup-azure-manage-vms/delete-backup-data.png)
-5. Dadurch wird ein Auftrag zum Löschen von Sicherungsdaten vom ausgewählten virtuellen Computer erstellt. Klicken Sie auf **Auftrag anzeigen**, um den entsprechenden Auftrag auf der Seite "Aufträge" anzuzeigen.
+5. Dadurch wird ein Auftrag zum Löschen von Sicherungsdaten vom ausgewählten virtuellen Computer erstellt. Klicken Sie auf **Auftrag anzeigen** , um den entsprechenden Auftrag auf der Seite "Aufträge" anzuzeigen.
    
     ![Löschen von Daten erfolgreich](./media/backup-azure-manage-vms/delete-data-success.png)
    
     Nach Abschluss des Auftrags wird der Eintrag des virtuellen Computers von der Seite **Geschützte Elemente** entfernt.
 
-## Dashboard
+## <a name="dashboard"></a>Dashboard
 Auf der Seite **Dashboard** können Sie Informationen zu virtuellen Computern in Azure, ihrer Speicherung und den ihnen in den letzten 24 Stunden zugeordneten Aufträgen prüfen. Sie können den Sicherungsstatus und alle zugehörigen Sicherungsfehler anzeigen.
 
 ![Dashboard](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
@@ -173,13 +176,13 @@ Auf der Seite **Dashboard** können Sie Informationen zu virtuellen Computern in
 > 
 > 
 
-## Überwachen von Vorgängen
+## <a name="auditing-operations"></a>Überwachen von Vorgängen
 Azure Backup bietet einen Überblick über die "Vorgangsprotokolle" der vom Kunden ausgelösten Sicherungsvorgänge, sodass leicht zu erkennen ist, welche Verwaltungsvorgänge für den Sicherungstresor ausgeführt wurden. Vorgangsprotokolle bieten eine hervorragende Grundlage für Nachbesprechungen und für die Überwachung von Sicherungsvorgängen.
 
 Die folgenden Vorgänge werden in Vorgangsprotokollen aufgezeichnet:
 
 * Registrieren
-* Aufheben der Registrierung
+* Unregister 
 * Konfigurieren der Schutzoptionen
 * Sicherung (sowohl geplante als auch bedarfsgerechte Sicherung über BackupNow)
 * Wiederherstellen
@@ -195,7 +198,7 @@ So zeigen Sie die einem Sicherungstresor entsprechenden Vorgangsprotokolle an:
 1. Navigieren Sie im Azure-Portal zu **Verwaltungsdienste**, und klicken Sie dann auf die Registerkarte **Vorgangsprotokolle**.
    
     ![Vorgangsprotokolle](./media/backup-azure-manage-vms/ops-logs.png)
-2. Wählen Sie in den Filtern **Backup** als *Typ* aus, geben Sie unter *Dienstname* den Namen des Sicherungstresors an, und klicken Sie auf **Senden**.
+2. Wählen Sie in den Filtern **Sicherung** als *Typ* aus, geben Sie unter *Dienstname* den Namen des Sicherungstresors an, und klicken Sie auf **Senden**.
    
     ![Vorgangsprotokollfilter](./media/backup-azure-manage-vms/ops-logs-filter.png)
 3. Wählen Sie in den Vorgangsprotokollen einen beliebigen Vorgang aus, und klicken Sie auf **Details**, um die Einzelheiten zu einem Vorgang anzuzeigen.
@@ -206,7 +209,7 @@ So zeigen Sie die einem Sicherungstresor entsprechenden Vorgangsprotokolle an:
    
     ![Vorgangsdetails](./media/backup-azure-manage-vms/ops-logs-details-window.png)
 
-## Warnungsbenachrichtigungen
+## <a name="alert-notifications"></a>Warnungsbenachrichtigungen
 Sie können benutzerdefinierte Warnungsbenachrichtigungen für die Aufträge im Portal abrufen. Definieren Sie hierfür auf PowerShell basierende Warnungsregeln für Vorgangsprotokollereignisse. Wir empfehlen die Verwendung von *PowerShell, Version 1.3.0 oder höher*.
 
 Der folgende Beispielbefehl dient zum Definieren einer benutzerdefinierten Benachrichtigung zur Warnung bei Sicherungsfehlern:
@@ -218,26 +221,31 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **ResourceId**: Sie erhalten diese aus dem Popup "Vorgangsprotokolle", wie im vorherigen im Abschnitt beschrieben. „ResourceUri“ im Popupdetailfenster eines Vorgangs entspricht der „ResourceId“, die für dieses Cmdlet bereitgestellt werden muss.
 
-**OperationName**: Hat das Format „Microsoft.Backup/backupvault/<EventName>“, wobei „EventName“ folgende Werte haben kann: Register, Unregister, ConfigureProtection, Backup, Restore, StopProtection, DeleteBackupData, CreateProtectionPolicy, DeleteProtectionPolicy, UpdateProtectionPolicy.
+**OperationName**: Hat das Format „Microsoft.Backup/backupvault/<EventName>“, wobei EventName folgende Werte aufweisen kann: Register, Unregister, ConfigureProtection, Backup, Restore, StopProtection, DeleteBackupData, CreateProtectionPolicy, DeleteProtectionPolicy, UpdateProtectionPolicy
 
 **Status**: Unterstützte Werte sind "Started", "Succeeded" und "Failed".
 
-**ResourceGroup**: Ressourcengruppe der Ressource, für die der Vorgang ausgelöst wird. Sie können diese aus dem ResourceId-Wert abrufen. Der Wert zwischen den Feldern */resourceGroups/* und */providers/* im ResourceId-Wert ist der Wert für "ResourceGroup".
+**ResourceGroup**: Ressourcengruppe der Ressource, für die der Vorgang ausgelöst wird. Sie können diese aus dem ResourceId-Wert abrufen. Der Wert zwischen den Feldern */resourceGroups/* und */providers/* im ResourceId-Wert ist der Wert für ResourceGroup.
 
 **Name**: Name der Warnungsregel.
 
 **CustomEmails**: Geben Sie die benutzerdefinierte E-Mail-Adresse an, an die die Warnungsbenachrichtigung gesendet werden soll.
 
-**SendToServiceOwners**: Mit dieser Option wird die Warnungsbenachrichtigung an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail**-Cmdlet verwendet werden.
+**SendToServiceOwners**: Mit dieser Option wird die Warnungsbenachrichtigung an alle Administratoren und Co-Administratoren des Abonnements gesendet. Sie kann im **New-AzureRmAlertRuleEmail** -Cmdlet verwendet werden.
 
-### Einschränkungen für Warnungen
+### <a name="limitations-on-alerts"></a>Einschränkungen für Warnungen
 Ereignisbasierte Warnungen unterliegen den folgenden Einschränkungen:
 
 1. Warnungen werden auf allen virtuellen Computern im Sicherungstresor ausgelöst. Sie können diese Einstellung nicht so anpassen, dass Sie Warnungen für eine bestimmte Gruppe von virtuellen Computern in einem Sicherungstresor erhalten.
-2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../azure-portal/insights-powershell-samples.md#create-alert-rules)
-3. Sie erhalten Warnungen von „alerts-noreply@mail.windowsazure.com“. Sie können den E-Mail-Absender derzeit nicht ändern.
+2. Dieses Feature befindet sich in der Vorschau. [Weitere Informationen](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
+3. Sie erhalten Warnungen von "alerts-noreply@mail.windowsazure.com". Zurzeit können Sie den E-Mail-Absender nicht ändern.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

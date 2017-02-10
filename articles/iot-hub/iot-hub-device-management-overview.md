@@ -76,7 +76,7 @@ IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster.  In den [Tutorials z
 * **Konfiguration:** Die Back-End-App verwendet die gewünschten Eigenschaften zum Konfigurieren der auf dem Gerät ausgeführten Software.  Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
   
     ![Konfigurationsmuster der Geräteverwaltung – Grafik][img-config_pattern]
-* **Firmwareupdate:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie ein Firmwareupdate initiiert hat.  Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwareimage herunterzuladen, das Firmwareimage anzuwenden und schließlich wieder eine Verbindung mit dem IoT Hub-Dienst herzustellen.  Während dieses gesamten Prozesses mit mehreren Schritten, verwendet das Gerät die gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
+* **Firmwareupdate:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie ein Firmwareupdate initiiert hat.  Das Gerät initiiert einen Prozess mit mehreren Schritten, um das Firmwareimage herunterzuladen, das Firmwareimage anzuwenden und schließlich wieder eine Verbindung mit dem IoT Hub-Dienst herzustellen.  Während des gesamten mehrstufigen Prozesses verwendet das Gerät die gemeldeten Eigenschaften, um die Fortschrittsanzeige und den Status des Geräts zu aktualisieren.
   
     ![Firmwareupdate-Muster der Geräteverwaltung – Grafik][img-fwupdate_pattern]
 * **Meldung von Fortschritt und Status:** Das Lösungs-Back-End führt Gerätezwillingsabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.

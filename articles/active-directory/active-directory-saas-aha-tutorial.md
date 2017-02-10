@@ -35,7 +35,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-aha-tutorial/IC798944.png "Szenario")
+![Szenario](./media/active-directory-saas-aha-tutorial/IC798944.png "Scenario")
 
 ## <a name="enabling-the-application-integration-for-aha"></a>Aktivieren der Anwendungsintegration für Aha!
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Aha! aktivieren.
@@ -47,16 +47,16 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Aha
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-aha-tutorial/IC700994.png "Anwendungen")
+   ![Anwendungen](./media/active-directory-saas-aha-tutorial/IC700994.png "Applications")
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-aha-tutorial/IC749321.png "Anwendung hinzufügen")
+   ![Anwendung hinzufügen](./media/active-directory-saas-aha-tutorial/IC749321.png "Add application")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-aha-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
+   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-aha-tutorial/IC749322.png "Add an application from gallerry")
 6. Geben Sie im **Suchfeld** als Suchbegriff **Aha!** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-aha-tutorial/IC798945.png "Anwendungskatalog")
+   ![Anwendungskatalog](./media/active-directory-saas-aha-tutorial/IC798945.png "Application Gallery")
 7. Wählen Sie im Ergebnisbereich **Aha!** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
    ![Aha!](./media/active-directory-saas-aha-tutorial/IC802746.png "Aha!")
@@ -68,32 +68,32 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Aha!** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798946.png "Einmaliges Anmelden konfigurieren")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798946.png "Configure Single Sign-On")
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Aha! anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798947.png "Einmaliges Anmelden konfigurieren")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798947.png "Configure Single Sign-On")
 3. Geben Sie auf der Seite **App-URL konfigurieren** in das Textfeld **Aha!- Anmelde-URL** den URL ein, den Ihre Benutzer zur Anmeldung bei der Aha!- Anwendung verwenden (z.B. *https://unternehmen.aha.io/session/new*), und klicken Sie dann auf **Weiter**.
    
-   ![App-URL konfigurieren](./media/active-directory-saas-aha-tutorial/IC798948.png "App-URL konfigurieren")
+   ![App-URL konfigurieren](./media/active-directory-saas-aha-tutorial/IC798948.png "Configure App URL")
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Aha!** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798949.png "Einmaliges Anmelden konfigurieren")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798949.png "Configure Single Sign-On")
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der Aha!- Unternehmenswebsite als Administrator an.
 6. Klicken Sie im oberen Menü auf das Symbol **Einstellungen**.
    
-   ![Einstellungen](./media/active-directory-saas-aha-tutorial/IC798950.png "Einstellungen")
+   ![Settings](./media/active-directory-saas-aha-tutorial/IC798950.png "Settings")
 7. Klicken Sie auf **Account**.
    
-   ![Profil](./media/active-directory-saas-aha-tutorial/IC798951.png "Profil")
+   ![Profil](./media/active-directory-saas-aha-tutorial/IC798951.png "Profile")
 8. Klicken Sie auf **Security and single sign-on**.
    
-   ![Sicherheit und einmaliges Anmelden ](./media/active-directory-saas-aha-tutorial/IC798952.png "Sicherheit und einmaliges Anmelden")
+   ![Security and single sign-on](./media/active-directory-saas-aha-tutorial/IC798952.png "Security and single sign-on")
 9. Wählen Sie im Abschnitt **Einmaliges Anmelden** als **Identitätsanbieter** die Option **SAML2.0** aus.
    
-   ![Sicherheit und einmaliges Anmelden ](./media/active-directory-saas-aha-tutorial/IC798953.png "Sicherheit und einmaliges Anmelden")
+   ![Security and single sign-on](./media/active-directory-saas-aha-tutorial/IC798953.png "Security and single sign-on")
 10. Führen Sie auf der Konfigurationsseite **Single Sign-On** die folgenden Schritte aus:
     
-    ![Einmaliges Anmelden](./media/active-directory-saas-aha-tutorial/IC798954.png "des einmaligen Anmeldens")
+    ![Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798954.png "Single Sign-On")
     
     1. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.
     2. Wählen Sie für **Konfigurieren mit** die Option **Metadatendatei** aus.
@@ -101,7 +101,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
     4. Klicken Sie auf **Aktualisieren**.
 11. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798955.png "Einmaliges Anmelden konfigurieren")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-aha-tutorial/IC798955.png "Configure Single Sign-On")
     
     ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
@@ -123,10 +123,10 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Aha!** auf **Benutzer zuweisen**.
    
-   ![Zuweisen von Benutzern](./media/active-directory-saas-aha-tutorial/IC798956.png "Zuweisen von Benutzern")
+   ![Benutzer zuweisen](./media/active-directory-saas-aha-tutorial/IC798956.png "Assign Users")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-   ![Ja](./media/active-directory-saas-aha-tutorial/IC767830.png "Ja")
+   ![Ja](./media/active-directory-saas-aha-tutorial/IC767830.png "Yes")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 

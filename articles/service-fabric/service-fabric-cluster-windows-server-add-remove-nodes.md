@@ -3,7 +3,7 @@ title: "Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service
 description: "Enthält Informationen zum Hinzufügen oder Entfernen von Knoten für einen Azure Service Fabric-Cluster auf einem physischen oder virtuellen Computer mit Windows Server, der lokal oder in einer Cloud angeordnet sein kann."
 services: service-fabric
 documentationcenter: .net
-author: dsk-2015
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
-ms.author: dkshir;chackdan
+ms.date: 12/06/2016
+ms.author: ryanwi;chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 335ab9d3746b089e9e7a8d640a89a2d381295b46
+ms.sourcegitcommit: 3f7d2861512ba02e3b158db78fbee771da1c788b
+ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 
 
 ---
@@ -29,20 +29,22 @@ Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Com
 3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen bzw. physischen Computer her, den Sie dem Cluster hinzufügen möchten.
 4. [Laden Sie das eigenständige Paket für Service Fabric für Windows Server auf den (virtuellen) Computer herunter](http://go.microsoft.com/fwlink/?LinkId=730690) (bzw. kopieren Sie es), und entzippen Sie das Paket.
 5. Führen Sie PowerShell als Administrator aus, und navigieren Sie zum Speicherort des extrahierten Pakets.
-6. Führen Sie das PowerShell-Skript *AddNode.ps1* mit den Parametern aus, die den hinzuzufügenden neuen Knoten beschreiben. Im folgenden Beispiel wird ein neuer Knoten mit dem Namen VM5, dem Typ NodeType0 und der IP-Adresse 182.17.34.52 für UD1 und FD1 hinzugefügt. *ExistingClusterConnectionEndPoint* ist ein Verbindungsendpunkt für einen Knoten, der im Cluster bereits vorhanden ist. Für diesen Endpunkt können Sie die IP-Adresse von *jedem* Knoten im Cluster auswählen.
+6. Führen Sie das PowerShell-Skript *AddNode.ps1* mit den Parametern aus, die den hinzuzufügenden neuen Knoten beschreiben. Im folgenden Beispiel wird ein neuer Knoten mit dem Namen VM5, dem Typ NodeType0 und der IP-Adresse 182.17.34.52 für UD1 und fd:/dc1/r0 hinzugefügt. *ExistingClusterConnectionEndPoint* ist ein Verbindungsendpunkt für einen Knoten, der im Cluster bereits vorhanden ist. Für diesen Endpunkt können Sie die IP-Adresse von *jedem* Knoten im Cluster auswählen.
 
 ```
-.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain FD1 -AcceptEULA
+.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
 
 ```
+Sie können überprüfen, ob der neue Knoten hinzugefügt wurde, indem Sie das Cmdlet [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/servicefabric/vlatest/Get-ServiceFabricNode) ausführen.
+
 
 ## <a name="remove-nodes-from-your-cluster"></a>Entfernen von Knoten aus dem Cluster
-1. Je nach ausgewählter Zuverlässigkeitsstufe des Clusters können Sie die ersten n (3/5/7/9) Knoten des primären Knotentyps nicht entfernen.
-2. Die Ausführung des RemoveNode-Befehls auf einem Entwicklungscluster wird nicht unterstützt.
-3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen bzw. physischen Computer her, den Sie aus dem Cluster entfernen möchten.
-4. [Laden Sie das eigenständige Paket für Service Fabric für Windows Server herunter](http://go.microsoft.com/fwlink/?LinkId=730690) (bzw. kopieren Sie es), und entpacken Sie das Paket auf diesem virtuellen bzw. physischen Computer.
-5. Führen Sie PowerShell als Administrator aus, und navigieren Sie zum Speicherort des extrahierten Pakets.
-6. Führen Sie *RemoveNode.ps1* in PowerShell aus. Im folgenden Beispiel wird der aktuelle Knoten aus dem Cluster entfernt. *ExistingClientConnectionEndpoint* ist ein Clientverbindungsendpunkt für jeden Knoten, der im Cluster verbleibt. Wählen Sie die IP-Adresse und den Endpunktport von *jedem* **anderen Knoten** im Cluster aus. Dieser **andere Knoten** aktualisiert wiederum die Clusterkonfiguration für den entfernten Knoten. 
+Je nach ausgewählter Zuverlässigkeitsstufe des Clusters können Sie die ersten n (3/5/7/9) Knoten des primären Knotentyps nicht entfernen. Beachten Sie auch, dass die Ausführung des RemoveNode-Befehls in einem Entwicklungscluster nicht unterstützt wird.
+
+1. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen bzw. physischen Computer her, den Sie aus dem Cluster entfernen möchten.
+2. [Laden Sie das eigenständige Paket für Service Fabric für Windows Server herunter](http://go.microsoft.com/fwlink/?LinkId=730690) (bzw. kopieren Sie es), und entpacken Sie das Paket auf diesem virtuellen bzw. physischen Computer.
+3. Führen Sie PowerShell als Administrator aus, und navigieren Sie zum Speicherort des extrahierten Pakets.
+4. Führen Sie *RemoveNode.ps1* in PowerShell aus. Im folgenden Beispiel wird der aktuelle Knoten aus dem Cluster entfernt. *ExistingClientConnectionEndpoint* ist ein Clientverbindungsendpunkt für jeden Knoten, der im Cluster verbleibt. Wählen Sie die IP-Adresse und den Endpunktport von *jedem* **anderen Knoten** im Cluster aus. Dieser **andere Knoten** aktualisiert wiederum die Clusterkonfiguration für den entfernten Knoten. 
 
 ```
 .\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
@@ -64,6 +66,6 @@ Ein Knoten kann auch nach dem Entfernen in Abfragen und SFX als ausgefallen ange
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

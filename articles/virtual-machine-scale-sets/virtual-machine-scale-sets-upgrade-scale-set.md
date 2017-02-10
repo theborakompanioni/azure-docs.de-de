@@ -1,13 +1,13 @@
 ---
-title: Bereitstellen einer App in VM-Skalierungsgruppen | Microsoft Docs
+title: "Bereitstellen einer App in Skalierungsgruppen für virtuelle Computer | Microsoft Docs"
 description: Bereitstellen einer App in VM-Skalierungsgruppen
 services: virtual-machine-scale-sets
-documentationcenter: ''
+documentationcenter: 
 author: gbowerman
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2016
 ms.author: guybo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: a5158c51149e75952eaf91af14f3fcf2dd1ed2af
+
 
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>Upgraden einer VM-Skalierungsgruppe
@@ -39,7 +43,7 @@ Die grundlegende Vorgehensweise zum Ändern der Betriebssystemversion/SKU eines 
 
 Behalten Sie diese Hintergrundinformationen im Kopf. Wir sehen uns nun an, wie Sie die Version einer Skalierungsgruppe in PowerShell und unter Verwendung der REST-API aktualisieren können. Diese Beispiele gelten zwar für Plattformimages, anhand der Informationen in diesem Artikel können Sie den Vorgang jedoch auch für ein benutzerdefiniertes Image anpassen.
 
-## <a name="powershell##"></a>PowerShell
+## <a name="powershell"></a>PowerShell
 Dieses Beispiel aktualisiert eine Skalierungsgruppe mit virtuellen Windows-Computern auf die neue Version 4.0.20160229. Mit dem aktualisierten Modell werden die einzelnen Instanzen der virtuellen Computer nacheinander aktualisiert.
 
 ```powershell
@@ -90,6 +94,9 @@ Nach dem Klicken auf **Upgrade** > **Get Details** (Details abrufen) werden die 
 
 ![Vmsseditor mit einer aktiven Aktualisierung](./media/virtual-machine-scale-sets-upgrade-scale-set/vmssEditor2.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

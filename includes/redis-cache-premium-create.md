@@ -1,4 +1,4 @@
-Um einen Premium-Cache zu erstellen, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Neu** > **Daten und Speicher** > **Redis Cache**.
+Zum Erstellen eines Premium-Caches melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Neu** > **Daten und Speicher** > **Redis Cache**.
 
 ![Cache erstellen](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
@@ -11,4 +11,8 @@ Zum Konfigurieren der Premium-Features wählen Sie zunächst auf dem Blatt **Tar
 
 ![Tarif auswählen](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

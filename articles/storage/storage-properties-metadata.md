@@ -1,100 +1,115 @@
 ---
-title: Festlegen und Abrufen von Eigenschaften und Metadaten für Objekte in Azure Storage | Microsoft Docs
-description: Speichern Sie benutzerdefinierten Metadaten für Objekte in Azure Storage, legen Sie Systemeigenschaften fest, und rufen Sie diese ab.
+title: "Festlegen und Abrufen von Eigenschaften und Metadaten für Objekte in Azure Storage | Microsoft Docs"
+description: "Speichern Sie benutzerdefinierten Metadaten für Objekte in Azure Storage, legen Sie Systemeigenschaften fest, und rufen Sie diese ab."
 services: storage
-documentationcenter: ''
-author: tamram
-manager: carmonm
+documentationcenter: 
+author: mmacy
+manager: timlt
 editor: tysonn
-
+ms.assetid: 036f9006-273e-400b-844b-3329045e9e1f
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
-ms.author: dineshm;tamram
+ms.date: 12/08/2016
+ms.author: marsma
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6e89921509bb273d6d97f829d4867eded20c82bc
+
 
 ---
-# Festlegen und Abrufen von Eigenschaften und Metadaten
-## Übersicht
+# <a name="set-and-retrieve-properties-and-metadata"></a>Festlegen und Abrufen von Eigenschaften und Metadaten
+## <a name="overview"></a>Übersicht
 Objekte in Azure-Speicher unterstützen zusätzlich zu den Daten, die sie enthalten, Systemeigenschaften und benutzerdefinierte Metadaten:
 
-* **Systemeigenschaften.** Systemeigenschaften sind in jeder Speicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Die Azure-Speicher-Clientbibliothek verwaltet diese für Sie.
+* **Systemeigenschaften.**  Systemeigenschaften sind in jeder Speicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Die Azure-Speicher-Clientbibliothek verwaltet diese für Sie.
 * **Benutzerdefinierte Metadaten.** Benutzerdefinierte Metadaten sind Metadaten, die für eine bestimmte Ressource in Form von Name-Wert-Paaren angegeben werden. Sie können Metadaten verwenden, um zusätzliche Werte für eine Speicherressource zu speichern. Diese Werte dienen nur den von Ihnen festgelegten Zwecken und haben keine Auswirkungen auf das Verhalten der Ressource.
 
-Das Abrufen von Eigenschafts- und Metadatenwerten einer Speicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributes**-Methode abrufen.
+Das Abrufen von Eigenschafts- und Metadatenwerten einer Speicherressource ist ein zweistufiger Prozess. Bevor Sie diese Werte lesen können, müssen Sie sie explizit durch Aufrufen der **FetchAttributes** -Methode abrufen.
 
 > [!IMPORTANT]
-> Eigenschafts- und Metadatenwerte werden bei einer Speicherressource nicht aufgefüllt, sofern Sie nicht eine der **FetchAttributes**-Methoden aufrufen.
-> 
-> 
+> Eigenschafts- und Metadatenwerte werden bei einer Speicherressource nicht aufgefüllt, sofern Sie nicht eine der **FetchAttributes** -Methoden aufrufen.
+>
+>
 
-## Festlegen und Abrufen von Eigenschaften
-Zum Abrufen von Eigenschaftswerten rufen Sie die **FetchAttributes**-Methode für das Blob oder den Container auf, um die Eigenschaften aufzufüllen, und lesen anschließend die Werte.
+## <a name="setting-and-retrieving-properties"></a>Festlegen und Abrufen von Eigenschaften
+Zum Abrufen von Eigenschaftswerten rufen Sie die **FetchAttributes** -Methode für das Blob oder den Container auf, um die Eigenschaften aufzufüllen, und lesen anschließend die Werte.
 
-Um Eigenschaften für ein Objekt festzulegen, geben Sie den Eigenschaftswert an und rufen dann die **SetProperties**-Methode auf.
+Um Eigenschaften für ein Objekt festzulegen, geben Sie den Eigenschaftswert an und rufen dann die **SetProperties** -Methode auf.
 
 Das folgende Codebeispiel erstellt einen Container und schreibt einige der zugehörigen Eigenschaftswerte in ein Konsolenfenster:
 
-    //Parse the connection string for the storage account.
-    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
+```csharp
+//Parse the connection string for the storage account.
+const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
-    //Create the service client object for credentialed access to the Blob service.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+//Create the service client object for credentialed access to the Blob service.
+CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve a reference to a container. 
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+// Retrieve a reference to a container.
+CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Create the container if it does not already exist.
-    container.CreateIfNotExists();
+// Create the container if it does not already exist.
+container.CreateIfNotExists();
 
-    // Fetch container properties and write out their values.
-    container.FetchAttributes();
-    Console.WriteLine("Properties for container {0}", container.StorageUri.PrimaryUri.ToString());
-    Console.WriteLine("LastModifiedUTC: {0}", container.Properties.LastModified.ToString());
-    Console.WriteLine("ETag: {0}", container.Properties.ETag);
-    Console.WriteLine();
+// Fetch container properties and write out their values.
+container.FetchAttributes();
+Console.WriteLine("Properties for container {0}", container.StorageUri.PrimaryUri.ToString());
+Console.WriteLine("LastModifiedUTC: {0}", container.Properties.LastModified.ToString());
+Console.WriteLine("ETag: {0}", container.Properties.ETag);
+Console.WriteLine();
+```
 
-## Festlegen und Abrufen von Metadaten
+## <a name="setting-and-retrieving-metadata"></a>Festlegen und Abrufen von Metadaten
 Sie können Metadaten als ein oder mehrere Name-Wert-Paare für ein Blob oder einen Container angeben. Fügen Sie zum Festlegen von Metadaten Name-Wert-Paare zur **Metadaten**-Auflistung der Ressource hinzu, und rufen Sie dann die **SetMetadata**-Methode auf, um die Werte für den Dienst zu speichern.
 
 > [!NOTE]
 > Der Name der Metadaten muss den Benennungskonventionen für C#-Bezeichner entsprechen.
-> 
-> 
+>
+>
 
-Das folgende Codebeispiel legt die Metadaten für einen Container fest. Mittels der **Hinzufügen**-Methode der Sammlung wird ein Wert festgelegt. Der andere Wert wird mit der impliziten Schlüssel-Wert-Syntax festgelegt. Beide eignen sich hierzu.
+Das folgende Codebeispiel legt die Metadaten für einen Container fest. Mittels der **Hinzufügen** -Methode der Sammlung wird ein Wert festgelegt. Der andere Wert wird mit der impliziten Schlüssel-Wert-Syntax festgelegt. Beide eignen sich hierzu.
 
-    public static void AddContainerMetadata(CloudBlobContainer container)
-    {
-        //Add some metadata to the container.
-        container.Metadata.Add("docType", "textDocuments");
-        container.Metadata["category"] = "guidance";
+```csharp
+public static void AddContainerMetadata(CloudBlobContainer container)
+{
+    //Add some metadata to the container.
+    container.Metadata.Add("docType", "textDocuments");
+    container.Metadata["category"] = "guidance";
 
-        //Set the container's metadata.
-        container.SetMetadata();
-    }
+    //Set the container's metadata.
+    container.SetMetadata();
+}
+```
 
 Zum Abrufen von Metadaten rufen Sie die **FetchAttributes**-Methode für das Blob oder den Container auf, um die **Metadaten**-Auflistung zu füllen, und lesen anschließend die Werte wie im unten stehenden Beispiel gezeigt.
 
-    public static void ListContainerMetadata(CloudBlobContainer container)
+```csharp
+public static void ListContainerMetadata(CloudBlobContainer container)
+{
+    //Fetch container attributes in order to populate the container's properties and metadata.
+    container.FetchAttributes();
+
+    //Enumerate the container's metadata.
+    Console.WriteLine("Container metadata:");
+    foreach (var metadataItem in container.Metadata)
     {
-        //Fetch container attributes in order to populate the container's properties and metadata.
-        container.FetchAttributes();
-
-        //Enumerate the container's metadata.
-        Console.WriteLine("Container metadata:");
-        foreach (var metadataItem in container.Metadata)
-        {
-            Console.WriteLine("\tKey: {0}", metadataItem.Key);
-            Console.WriteLine("\tValue: {0}", metadataItem.Value);
-        }
+        Console.WriteLine("\tKey: {0}", metadataItem.Key);
+        Console.WriteLine("\tValue: {0}", metadataItem.Value);
     }
+}
+```
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 * [Azure Storage-Clientbibliothek für .NET-Referenz](http://msdn.microsoft.com/library/azure/wa_storage_30_reference_home.aspx)
 * [Azure Storage-Clientbibliothek für .NET-Paket](https://www.nuget.org/packages/WindowsAzure.Storage/)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

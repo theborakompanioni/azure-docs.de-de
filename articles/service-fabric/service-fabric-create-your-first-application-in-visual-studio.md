@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/26/2016
+ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: e8b2379c750047bf2a4c7342815b5c3aab3883c6
-ms.openlocfilehash: a101ad134e15a0da5e6d3fd5cbf4ca051da34e86
+ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
+ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
 
 
 ---
@@ -41,7 +41,7 @@ Im folgenden Video werden die Schritte in diesem Lernprogramm behandelt:
 > 
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
-Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Mit dem Assistenten für neue Projekte können Sie mit Ihrem ersten Dienstprojekt ein Anwendungsprojekt erstellen. Sie können später weitere Dienste hinzufügen.
+Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jeweils eine bestimmte Rolle bei der Bereitstellung von Funktionen der Anwendung haben. Erstellen Sie mithilfe des Assistenten für neue Projekte ein Anwendungsprojekt sowie Ihr erstes Dienstprojekt. Später können Sie dann bei Bedarf weitere Dienste hinzufügen.
 
 1. Starten Sie Visual Studio als Administrator.
 2. Klicken Sie auf **Datei > Neues Projekt > Cloud > Service Fabric-Anwendung**.
@@ -64,7 +64,7 @@ Eine Service Fabric-Anwendung kann einen oder mehrere Dienste enthalten, die jew
     Das Anwendungsprojekt enthält Code nicht direkt. Stattdessen verweist es eine Reihe von Dienstprojekten. Darüber hinaus enthält es drei Arten von Inhalt:
    
    * **Veröffentlichungsprofile**: Werden zum Verwalten von Tooleinstellungen für unterschiedliche Umgebungen verwendet.
-   * **Skripts**: Umfasst ein  PowerShell-Skript für Bereitstellung/Upgrade der Anwendung. Visual Studio verwendet das Skript im Hintergrund. Es kann auch direkt an der Befehlszeile aufgerufen werden.
+   * **Skripts**: Umfasst ein PowerShell-Skript für Bereitstellung/Upgrade der Anwendung. Visual Studio verwendet das Skript im Hintergrund. Es kann auch direkt an der Befehlszeile aufgerufen werden.
    * **Anwendungsdefinition**: Enthält das Anwendungsmanifest unter *ApplicationPackageRoot*. Die zugehörigen Anwendungsparameterdateien befinden sich unter *ApplicationParameters*. Sie definieren die Anwendung und ermöglichen es Ihnen, diese speziell für eine bestimmte Umgebung zu konfigurieren.
      
      Eine Übersicht über den Inhalt des Dienstprojekts finden Sie unter [Erste Schritte mit Reliable Services](service-fabric-reliable-services-quick-start.md).
@@ -106,7 +106,7 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
    
     Der Service Fabric Explorer bietet eine visuelle Darstellung eines Clusters, einschließlich der darin bereitgestellten Anwendungen und der physischen Knoten, aus denen er besteht. Weitere Informationen zu Service Fabric Explorer finden Sie unter [Visualisieren des Clusters](service-fabric-visualizing-your-cluster.md).
 6. Erweitern Sie im linken Bereich **Cluster > Knoten**, und suchen Sie den Knoten, auf dem der Code ausgeführt wird.
-7. Klicken Sie auf **Aktionen > Deaktivieren (Neustarten)**, um einen Neustart des Computers zu simulieren. (Beachten Sie, dass Sie das Deaktivieren auch über das Kontextmenü in der Listenansicht eines Knotens im linken Bereich durchführen können.)
+7. Klicken Sie auf **Aktionen > Deaktivieren (Neustarten)**, um einen Neustart des Computers zu simulieren. (Alternativ können Sie den Knoten über die Knotenlistenansicht im linken Bereich deaktivieren.)
    
     ![Beenden eines Knotens im Service Fabric Explorer][sfx-stop-node]
    
@@ -116,14 +116,14 @@ Da jetzt eine Anwendung vorhanden ist, können Sie versuchen, sie auszuführen.
     ![Diagnoseereignisanzeige nach einem Failover][diagnostic-events-viewer-detail-post-failover]
 
 ## <a name="switch-cluster-mode"></a>Wechseln des Clustermodus
-Standardmäßig ist der lokale Entwicklungscluster als Cluster mit fünf Knoten konfiguriert. Dies ist zum Debuggen von Diensten nützlich, die auf mehreren Knoten bereitgestellt werden. Das Bereitstellen einer Anwendung im Entwicklungscluster mit fünf Knoten kann aber einige Zeit dauern. Wenn Sie möchten, dass Codeänderungen schnell durchlaufen werden, ohne dass die App auf fünf Knoten ausgeführt wird, können Sie für den Entwicklungscluster die Umstellung auf den Modus mit nur einem Knoten durchführen. Klicken Sie zum Ausführen Ihres Codes in einem Cluster mit nur einem Knoten in der Taskleiste mit der rechten Maustaste auf den Manager für den lokalen Cluster, und wählen Sie **Switch Cluster Mode > 1 Node** (Clustermodus ändern > 1 Knoten).  
+Standardmäßig ist der lokale Entwicklungscluster als Cluster mit fünf Knoten konfiguriert. Dies ist hilfreich beim Debuggen von Diensten, die auf mehreren Knoten bereitgestellt werden. Das Bereitstellen einer Anwendung im Entwicklungscluster mit fünf Knoten kann allerdings einige Zeit dauern. Wenn Sie möchten, dass Codeänderungen schnell durchlaufen werden, ohne dass die App auf fünf Knoten ausgeführt wird, können Sie den Entwicklungscluster auf den Modus mit nur einem Knoten umstellen. Klicken Sie zum Ausführen Ihres Codes in einem Cluster mit nur einem Knoten in der Taskleiste mit der rechten Maustaste auf den Manager für den lokalen Cluster, und wählen Sie **Switch Cluster Mode > 1 Node** (Clustermodus ändern > 1 Knoten).  
 
 ![Wechseln des Clustermodus][switch-cluster-mode]
 
-Wenn Sie den Clustermodus ändern, wird der Entwicklungscluster zurückgesetzt, und alle Anwendungen, die bereitgestellt oder im Cluster ausgeführt werden, werden entfernt.
+Wenn Sie den Clustermodus ändern, wird der Entwicklungscluster zurückgesetzt, und alle im Cluster bereitgestellten oder ausgeführten Anwendungen werden entfernt.
 
 ## <a name="cleaning-up"></a>Bereinigen
-  Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster sehr real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, den Cluster zu verwalten:
+Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluster real ist. Wenn Sie den Debugger beenden, wird Ihre Anwendungsinstanz entfernt, und die Registrierung des Anwendungstyps wird aufgehoben. Der Cluster wird im Hintergrund aber weiter ausgeführt. Sie haben mehrere Möglichkeiten, den Cluster zu verwalten:
 
 1. Zum Beenden des Clusters bei Beibehaltung der Anwendungsdaten und Ablaufverfolgungen klicken Sie in der Infobereichs-App auf **Lokalen Cluster beenden** .
 2. Zum vollständigen Entfernen des Clusters klicken Sie in der Infobereichs-App auf **Lokalen Cluster entfernen** . Diese Option führt zu einer weiteren langsamen Bereitstellung, wenn Sie das nächste Mal in Visual Studio F5 drücken. Löschen Sie den Cluster nur, wenn Sie nicht beabsichtigen, den lokalen Cluster einige Zeit zu verwenden, oder wenn Sie Ressourcen freigeben müssen.
@@ -131,8 +131,10 @@ Wenn Sie den Clustermodus ändern, wird der Entwicklungscluster zurückgesetzt, 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich, wie Sie einen [Cluster in Azure](service-fabric-cluster-creation-via-portal.md) oder einen [eigenständigen Cluster in Windows](service-fabric-cluster-creation-for-windows-server.md) erstellen.
 * Versuchen Sie, einen Dienst zu erstellen, indem Sie das Programmiermodell [Reliable Services](service-fabric-reliable-services-quick-start.md) oder [Reliable Actors](service-fabric-reliable-actors-get-started.md) verwenden.
-* Erfahren Sie, wie Sie Ihre Dienste über ein [Webdienst-Front-End](service-fabric-add-a-web-frontend.md)im Internet verfügbar machen können.
+* Versuchen Sie, einen [Windows-Container](service-fabric-deploy-container.md) oder eine vorhandene App als [ausführbare Gastanwendungsdatei](service-fabric-deploy-existing-app.md) bereitzustellen.
+* Erfahren Sie, wie Sie Ihre Dienste über ein [Webdienst-Front-End](service-fabric-add-a-web-frontend.md) im Internet verfügbar machen.
 * Machen Sie eine [praktische Übung](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) , und erstellen Sie einen zustandslosen Dienst, konfigurieren sie Überwachungs- und Integritätsberichte, und führen Sie ein Anwendungsupgrade durch.
+* Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 <!-- Image References -->
 
@@ -151,6 +153,6 @@ Wenn Sie den Clustermodus ändern, wird der Entwicklungscluster zurückgesetzt, 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

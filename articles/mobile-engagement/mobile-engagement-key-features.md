@@ -65,7 +65,7 @@ Dieser Artikel bietet eine grobe Übersicht über die wichtigsten Features der M
   
     ![][12]    
 
-## <a name="targeted-personalized-push-notifications"></a>**Gezielte und personalisierte Pushbenachrichtigungen**
+## <a name="targeted--personalized-push-notifications"></a>**Gezielte und personalisierte Pushbenachrichtigungen**
 * **Erstellen Sie ein Segment auf Basis der gesammelten Daten** Sie können beliebige Daten zu Ereignis/Sitzung/Aktivität/Auftrag/Absturz/Fehler/Tags dafür verwenden.
   
     ![][13]

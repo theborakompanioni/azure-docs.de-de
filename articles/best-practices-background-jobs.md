@@ -1,13 +1,13 @@
 ---
-title: Anleitungen für Hintergrundaufträge | Microsoft Docs
-description: Anleitungen für Hintergrundaufgaben, die unabhängig von der Benutzeroberfläche ausgeführt werden.
-services: ''
+title: "Anleitungen zu Hintergrundaufträgen | Microsoft-Dokumentation"
+description: "Anleitungen für Hintergrundaufgaben, die unabhängig von der Benutzeroberfläche ausgeführt werden."
+services: 
 documentationcenter: na
 author: dragon119
 manager: christb
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: f6040f8c-4cbb-4c21-a886-8d54a5868421
 ms.service: best-practice
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: masashin
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 3bc7d30a8d702fd219c7fccfc241f32147c90009
+
 
 ---
 # <a name="background-jobs-guidance"></a>Anleitungen für Hintergrundaufträge
@@ -175,13 +179,13 @@ Berücksichtigen Sie die folgenden Punkte, wenn Sie entscheiden, ob Hintergrunda
 
 ### <a name="more-information"></a>Weitere Informationen
 * [Virtuelle Computer in Azure](https://azure.microsoft.com/services/virtual-machines/)
-* [Virtuelle Computer in Azure – häufig gestellte Fragen](virtual-machines/virtual-machines-linux-classic-faq.md)
+* [Virtuelle Computer in Azure – häufig gestellte Fragen](virtual-machines/virtual-machines-linux-classic-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 ## <a name="design-considerations"></a>Überlegungen zum Entwurf
 Beim Entwerfen von Hintergrundaufgaben sollten verschiedene grundlegende Faktoren berücksichtigt werden. In den folgenden Abschnitten werden die Partitionierung, Konflikte und die Koordination besprochen.
 
 ## <a name="partitioning"></a>Partitionierung
-Wenn Sie Hintergrundaufgaben in eine vorhandene Compute-Instanz (z. B. eine Web-App, Webrolle, vorhandene Workerrolle oder einen virtuellen Computer) aufnehmen möchten, müssen Sie berücksichtigen, wie sich dies auf die Qualitätsattribute der Compute-Instanz und auf die Hintergrundaufgabe selbst auswirken wird. Anhand dieser Faktoren können Sie entscheiden, ob die Aufgaben in der vorhandenen Compute-Instanz oder in einer separaten Compute-Instanz ausgeführt werden sollen:
+Wenn Sie Hintergrundaufgaben in eine vorhandene Compute-Instanz (z. B. eine Web-App, Webrolle, vorhandene Workerrolle oder einen virtuellen Computer) aufnehmen möchten, müssen Sie berücksichtigen, wie sich dies auf die Qualitätsattribute der Compute-Instanz und auf die Hintergrundaufgabe selbst auswirken wird. Anhand dieser Faktoren können Sie entscheiden, ob die Aufgaben in der vorhandenen Compute-Instanz oder in einer separaten Compute-Instanz ausgeführt werden sollen:
 
 * **Verfügbarkeit**: Für Hintergrundaufgaben ist möglicherweise nicht dasselbe Maß an Verfügbarkeit wie für andere Teile der Anwendung erforderlich, insbesondere die Benutzeroberfläche und andere Teile, die direkt an der Interaktion mit dem Benutzer beteiligt sind. Hintergrundaufgaben können toleranter gegenüber Latenz, wiederholten Verbindungsfehlern und anderen Faktoren sein, die sich auf die Verfügbarkeit auswirken, da die Vorgänge in eine Warteschlange eingefügt werden können. Allerdings muss genügend Kapazität vorhanden sein, um die Sicherung von Anforderungen zu verhindern, wodurch Warteschlangen blockiert werden könnten und die Anwendung als Ganzes beeinträchtigt werden könnte.
 * **Skalierbarkeit**: Für Hintergrundaufgaben gelten häufig andere Anforderungen an die Skalierbarkeit als für die Benutzeroberfläche und die interaktiven Teile der Anwendung. Eine Skalierung der Benutzeroberfläche kann erforderlich sein, um Nachfragespitzen zu bedienen, während ausstehende Hintergrundaufgaben in Zeiten mit weniger starker Auslastung von einer geringeren Anzahl von Compute-Instanzen abgeschlossen werden können.
@@ -209,7 +213,7 @@ Die Koordination mehrerer Aufgaben und Schritte kann schwierig sein, aber es gib
 * **Verwalten der Ausführung der Schritte einer Aufgabe**. Eine Anwendung kann Aufgaben ausführen, die eine Reihe von Schritten umfassen (von denen einige möglicherweise Remotedienste aufrufen oder auf Remoteressourcen zugreifen). Die einzelnen Schritte können voneinander unabhängig sein, aber sie werden von der Anwendungslogik orchestriert, die die Aufgabe implementiert. Weitere Informationen finden Sie unter [Muster für Scheduler-Agent-Supervisor](http://msdn.microsoft.com/library/dn589780.aspx).
 * **Verwalten der Wiederherstellung von fehlgeschlagenen Aufgabenschritten**. Eine Anwendung muss möglicherweise die Vorgänge rückgängig machen, die für eine Reihe von Schritten ausgeführt wurden (die schlussendlich zusammen einen konsistenten Vorgang bilden), wenn mindestens einer dieser Schritte fehlschlägt. Weitere Informationen finden Sie unter [Muster für eine ausgleichende Transaktion](http://msdn.microsoft.com/library/dn589804.aspx).
 
-## <a name="lifecycle-(cloud-services)"></a>Lebenszyklus (Cloud Services)
+## <a name="lifecycle-cloud-services"></a>Lebenszyklus (Cloud Services)
  Wenn Sie sich dazu entscheiden, Hintergrundaufträge für Cloud Services-Anwendungen zu implementieren, die mithilfe der **RoleEntryPoint** -Klasse Web-und Workerrollen verwenden, müssen Sie den Lebenszyklus dieser Klasse kennen, um sie ordnungsgemäß verwenden zu können.
 
 Web- und Workerrollen durchlaufen unterschiedliche Phasen, während sie gestartet, ausgeführt und beendet werden. Die **RoleEntryPoint** -Klasse stellt eine Reihe von Ereignissen zur Verfügung, die anzeigen, wann diese Phasen auftreten. Sie können diese Ereignisse zum Initialisieren, Ausführen und Beenden von benutzerdefinierten Hintergrundaufgaben verwenden. Der vollständige Zyklus sieht so aus:
@@ -241,7 +245,7 @@ Beachten Sie die folgenden Punkte, wenn Sie planen, wie Hintergrundaufgaben in e
     if (freeze != null)
     {
      if (Boolean.Parse(freeze))
-     {
+       {
          Thread.Sleep(System.Threading.Timeout.Infinite);
      }
     }
@@ -258,7 +262,7 @@ Hintergrundaufgaben müssen stabil sein, um der Anwendung zuverlässige Dienste 
 * Hintergrundaufgaben, die durch Nachrichten ausgelöst werden oder Nachrichten verarbeiten, müssen so entworfen werden, dass sie Inkonsistenzen behandeln können. Dies sind beispielsweise Nachrichten, die nicht in der richtigen Reihenfolge eintreffen, Nachrichten, die wiederholt einen Fehler verursachen (so genannte *nicht verarbeitbare Nachrichten*), und Nachrichten, die mehrmals übermittelt werden. Beachten Sie Folgendes:
   * Nachrichten, die in einer bestimmten Reihenfolge verarbeitet werden müssen, z. B. Nachrichten, die Daten basierend auf dem vorhandenen Datenwert (z. B. durch Hinzufügen eines Werts zu einem vorhandenen Wert) ändern, treffen möglicherweise nicht in der ursprünglichen Reihenfolge ein, in der sie gesendet wurden. Stattdessen können sie auch von anderen Instanzen einer Hintergrundaufgabe in einer anderen Reihenfolge je nach Auslastung der verschiedenen Instanzen behandelt werden. Nachrichten, die in einer bestimmten Reihenfolge verarbeitet werden müssen, sollten eine Sequenznummer, einen Schlüssel oder einen anderen Indikator enthalten, damit in Hintergrundaufgaben sichergestellt werden kann, dass sie in der richtigen Reihenfolge verarbeitet werden. Bei Verwendung von Azure Service Bus können Sie mit Nachrichtensitzungen die Reihenfolge der Bereitstellung gewährleisten. Es ist in der Regel jedoch effizienter, den Prozess möglichst so zu entwerfen, dass die Reihenfolge der Nachrichten nicht von Bedeutung ist.
   * In der Regel sieht eine Hintergrundaufgabe Nachrichten in der Warteschlange ein. Dadurch sind sie vorübergehend vor anderen Nachrichtenconsumern verborgen. Dann löscht sie die Nachrichten, nachdem sie erfolgreich verarbeitet wurden. Wenn eine Hintergrundaufgabe beim Verarbeiten einer Nachricht fehlschlägt, wird die Nachricht in der Warteschlange erneut angezeigt, sobald das Timeout für das Einsehen erreicht ist. Sie wird von einer anderen Instanz der Aufgabe oder während des nächsten Verarbeitungszyklus dieser Instanz verarbeitet. Wenn die Nachricht beständig einen Fehler im Consumer verursacht, blockiert sie die Aufgabe, die Warteschlange und schließlich die Anwendung selbst, wenn die Warteschlange voll ist. Daher ist es wichtig, dass nicht verarbeitbare Nachrichten erkannt und aus der Warteschlange entfernt werden. Bei Verwendung von Azure Service Bus können Nachrichten, die einen Fehler verursachen, automatisch oder manuell an eine zugeordnete Warteschlange für unzustellbare Nachrichten verschoben werden.
-  * Warteschlangen verfügen garantiert über Übermittlungsmechanismen für eine *mindestens einmalige* Zustellung, aber sie können die gleiche Nachricht mehrmals übermitteln. Wenn eine Hintergrundaufgabe ausfällt, nachdem eine Nachricht verarbeitet, aber bevor diese aus der Warteschlange gelöscht wurde, wird die Nachricht wieder zur Verarbeitung verfügbar. Hintergrundaufgaben sollte idempotent sein, d. h. dass die mehrmalige Verarbeitung derselben Nachricht keinen Fehler oder keine Inkonsistenzen in den Daten der Anwendung verursacht. Einige Vorgänge sind naturgemäß idempotent, z. B. das Festlegen einer gespeicherten Einstellung auf einen bestimmten neuen Wert. Jedoch führen andere Vorgänge zu Inkonsistenzen, z. B. das Hinzufügen eines Werts zu einem vorhandenen gespeicherten Wert, ohne zu überprüfen, ob der gespeicherte Wert dem Wert entspricht, der in der Nachricht ursprünglich gesendet wurde. Azure Service Bus-Warteschlangen können so konfiguriert werden, dass doppelte Nachrichten automatisch entfernt werden.
+  * Warteschlangen verfügen garantiert über Übermittlungsmechanismen für eine *mindestens einmalige* Zustellung, aber sie können die gleiche Nachricht mehrmals übermitteln. Wenn eine Hintergrundaufgabe ausfällt, nachdem eine Nachricht verarbeitet, aber bevor diese aus der Warteschlange gelöscht wurde, wird die Nachricht wieder zur Verarbeitung verfügbar. Hintergrundaufgaben sollte idempotent sein, d. h. dass die mehrmalige Verarbeitung derselben Nachricht keinen Fehler oder keine Inkonsistenzen in den Daten der Anwendung verursacht. Einige Vorgänge sind naturgemäß idempotent, z. B. das Festlegen einer gespeicherten Einstellung auf einen bestimmten neuen Wert. Jedoch führen andere Vorgänge zu Inkonsistenzen, z. B. das Hinzufügen eines Werts zu einem vorhandenen gespeicherten Wert, ohne zu überprüfen, ob der gespeicherte Wert dem Wert entspricht, der in der Nachricht ursprünglich gesendet wurde. Azure Service Bus-Warteschlangen können so konfiguriert werden, dass doppelte Nachrichten automatisch entfernt werden.
   * Einige Messagingsysteme, wie z. B. Azure-Speicherwarteschlangen und Azure Service Bus-Warteschlangen unterstützen eine Eigenschaft, die angibt, wie oft eine Nachricht aus der Warteschlange gelesen wurde. Dies kann bei der Verarbeitung wiederholter und nicht verarbeitbarer Nachrichten hilfreich sein. Weitere Informationen finden Sie unter [Einführung in asynchrone Nachrichten](http://msdn.microsoft.com/library/dn589781.aspx) und [Idempotenzmuster](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/).
 
 ## <a name="scaling-and-performance-considerations"></a>Überlegungen zur Skalierung und Leistung
@@ -293,6 +297,9 @@ Hintergrundaufgaben müssen ausreichend Leistung bieten, damit sichergestellt is
 * [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 * [Aktivieren der Diagnose in einem Clouddienst](cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

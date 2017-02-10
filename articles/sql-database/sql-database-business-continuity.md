@@ -136,7 +136,7 @@ Wenn Sie automatisierte Sicherungen mit georedundanter Speicherreplikation als W
 > 
 > 
 
-### <a name="perform-post-failover-recovery-tasks"></a>Ausführen von Aufgaben nach dem Failover bzw. nach der Wiederherstellung
+### <a name="perform-post-failover--recovery-tasks"></a>Ausführen von Aufgaben nach dem Failover bzw. nach der Wiederherstellung
 Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmechanismus folgende zusätzliche Aufgaben ausführen, damit Ihre Anwendungen wieder vollständig einsatzfähig sind und von Ihren Benutzern wieder in vollem Umfang verwendet werden können:
 
 * Umleiten von Clients und Clientanwendungen an den neuen Server

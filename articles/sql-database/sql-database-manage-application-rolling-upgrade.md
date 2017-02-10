@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ed30706426271f63126905614a631961d6e5ddf8
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: d7f3d972755ec326c28fcdb95fd0600dd8ca1a91
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: ed30706426271f63126905614a631961d6e5ddf8
 > 
 > 
 
-Erfahren Sie, wie Sie die [Georeplikation](sql-database-geo-replication-overview.md) in SQL-Datenbank verwenden, um parallele Upgrades Ihrer Cloudanwendung zu aktivieren. Da ein Upgrade einen unterbrechenden Vorgang darstellt, sollte es Teil der Planung und des Designs Ihrer Geschäftskontinuität sein. In diesem Artikel betrachten wir zwei unterschiedliche Methoden zum Orchestrieren des Upgradevorgangs und erörtern die Vor- und Nachteile jeder Option. Für die Zwecke dieses Artikels verwenden wir eine einfache Anwendung, die aus einer mit einer Einzeldatenbank als Datenebene verbundenen Website besteht. Unser Ziel ist es, die Version 1 der Anwendung auf die Version 2 zu aktualisieren, ohne dass sich dies deutlich auf die Endbenutzererfahrung auswirkt. 
+Erfahren Sie, wie Sie die [Georeplikation](sql-database-geo-replication-overview.md) in SQL-Datenbank verwenden, um parallele Upgrades Ihrer Cloudanwendung zu aktivieren. Da ein Upgrade einen unterbrechenden Vorgang darstellt, sollte es Teil der Planung und des Designs Ihrer Geschäftskontinuität sein. In diesem Artikel betrachten wir zwei unterschiedliche Methoden zum Orchestrieren des Upgradevorgangs und erörtern die Vor- und Nachteile jeder Option. Für die Zwecke dieses Artikels verwenden wir eine einfache Anwendung, die aus einer mit einer eigenständigen Datenbank als Datenebene verbundenen Website besteht. Unser Ziel ist es, die Version 1 der Anwendung auf die Version 2 zu aktualisieren, ohne dass sich dies deutlich auf die Endbenutzererfahrung auswirkt. 
 
 Beim Evaluieren der Upgradeoptionen sollten Sie die folgenden Faktoren berücksichtigen:
 
@@ -155,6 +155,6 @@ Auf den folgenden Seiten können Sie sich über die speziellen Vorgänge informi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

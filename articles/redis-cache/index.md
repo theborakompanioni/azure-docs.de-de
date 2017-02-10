@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie Azure Redis Cache (einen sicheren Datencache und Messagingbroker, der Anwendungen den schnellen Zugriff auf Daten ermöglicht) verwenden. Tutorials, API-Referenzen und mehr."
 translationtype: Human Translation
-ms.sourcegitcommit: 4e66f89a5a63cafc8cc9e6af957f27172957c934
-ms.openlocfilehash: cd838fe6027f2c097850c29308630d2086243985
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 328084918199e162ad0cfa9ac67737a66fa4d021
 
 ---
 #<a name="redis-cache-documentation"></a>Dokumentation zu Redis Cache
@@ -184,13 +184,7 @@ Hier erfahren Sie, wie Sie Azure Redis Cache verwenden – einen sicheren Datenc
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/redis-cache.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Redis Cache </div>
-    </a>
-</div>
+
 
 
 

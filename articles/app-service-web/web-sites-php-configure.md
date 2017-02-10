@@ -1,12 +1,12 @@
 ---
 title: Konfigurieren von PHP in Azure App Service-Web-Apps | Microsoft Docs
-description: Erfahren Sie mehr über das Konfigurieren der PHP-Standardinstallation oder das Hinzufügen einer benutzerdefinierten PHP-Installation für Web-Apps in Azure App Service.
+description: "Erfahren Sie mehr über das Konfigurieren der PHP-Standardinstallation oder das Hinzufügen einer benutzerdefinierten PHP-Installation für Web-Apps in Azure App Service."
 services: app-service
 documentationcenter: php
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ece7ee4f0235f5677e03526cef8935809770cd93
+
 
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurieren von PHP in Azure App Service-Web-Apps
@@ -22,7 +26,7 @@ In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-builtin-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
+## <a name="how-to-change-the-built-in-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
 PHP 5.4 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-Web-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
 
 PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
@@ -49,7 +53,7 @@ PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
    
         PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
 
-### <a name="azure-commandline-interface-linux-mac-windows"></a>Azure-Befehlszeilen-Schnittstelle (Linux, Mac, Windows)
+### <a name="azure-command-line-interface-linux-mac-windows"></a>Azure-Befehlszeilen-Schnittstelle (Linux, Mac, Windows)
 Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** auf Ihrem Computer installiert sein.
 
 1. Öffnen Sie Terminal, und melden sich bei Ihrem Konto an.
@@ -62,7 +66,7 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** a
    
         azure site show {site-name}
 
-## <a name="how-to-change-the-builtin-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
+## <a name="how-to-change-the-built-in-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
 Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie folgende Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_USER, PHP\_INI\_PERDIR, PHP\_INI\_ALL
@@ -193,6 +197,6 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

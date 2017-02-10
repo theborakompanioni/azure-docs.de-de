@@ -1,36 +1,50 @@
 ---
 title: Problembehandlung bei Azure-Diagnose
-description: Behandeln von Problemen bei der Verwendung von Azure-Diagnose in Azure Cloud Services, Virtual Machines und
+description: 'Behandeln von Problemen bei der Verwendung von Azure-Diagnose in Azure Cloud Services, Virtual Machines und '
 services: multiple
 documentationcenter: .net
 author: rboucher
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
 ms.service: multiple
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/20/2016
+ms.date: 10/04/2016
 ms.author: robb
+translationtype: Human Translation
+ms.sourcegitcommit: 0aee1c31876060777c32c768e0767a39de86cb2a
+ms.openlocfilehash: 99b782a62726989c6fe2804ebf2e0f521f1cbb24
+
 
 ---
-# Problembehandlung mit Azure-Diagnose
-Informationen zur Problembehandlung mit Azure-Diagnose. Weitere Informationen zu Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](azure-diagnostics.md#cloud-services).
+# <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
+Informationen zur Problembehandlung mit Azure-Diagnose. Weitere Informationen zu Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](azure-diagnostics.md).
 
-## Die Azure-Diagnose wird nicht gestartet.
-Diagnose besteht aus zwei Komponenten: einem Gast-Agent-Plug-in und Monitoring Agent.
+## <a name="azure-diagnostics-is-not-starting"></a>Die Azure-Diagnose wird nicht gestartet.
+Diagnose besteht aus zwei Komponenten: einem Gast-Agent-Plug-in und Monitoring Agent. Sie können die Protokolldateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** auf Informationen darüber überprüfen, warum die Diagnose nicht gestartet wird.  
 
-In einer Clouddienstrolle befinden sich die Protokolldateien für das Gast-Agent-Plug-In in folgender Datei:
+In einer Clouddienstrolle befinden sich die Protokolldateien für das Gast-Agent-Plug-In in:
 
-    *%SystemDrive%\ WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>*\CommandExecution.log
+```
+C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.6.3.0\
+```
 
-Auf einem virtuellen Azure-Computer befinden sich die Protokolldateien für das Gast-Agent-Plug-In in folgender Datei:
+Auf einem virtuellen Azure-Computer befinden sich die Protokolldateien für das Gast-Agent-Plug-In in:
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics<DiagnosticsVersion>\CommandExecution.log
+```
+C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.6.3.0\Logs\
+```
 
-Die folgenden Fehlercodes werden von dem Plug-In zurückgegeben:
+Die letzte Zeile der Protokolldateien enthält den Exitcode.  
+
+```
+DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
+```
+
+Das Plug-In gibt die folgenden Exitcodes zurück:
 
 | Exitcode | Beschreibung |
 | --- | --- |
@@ -38,7 +52,7 @@ Die folgenden Fehlercodes werden von dem Plug-In zurückgegeben:
 | -1 |Allgemeiner Fehler. |
 | -2 |Die RCF-Datei konnte nicht geladen werden.<p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Startprogramm für das Gast-Agent-Plug-In auf dem virtuellen Computer auf falsche Weise manuell aufgerufen wird. |
 | -3 |Die Diagnosekonfigurationsdatei kann nicht geladen werden.<p><p>Lösung: Der Grund hierfür ist, dass eine Konfigurationsdatei die Schemaüberprüfung nicht bestanden hat. Gelöst werden kann der Fehler durch Bereitstellung einer Konfigurationsdatei, die dem Schema entspricht. |
-| -4 |Es wird bereits eine andere Instanz des Überwachungs-Agents der Diagnose unter Verwendung des lokalen Ressourcenverzeichnisses ausgeführt.<p><p>Lösung: Geben Sie für **LocalResourceDirectory** einen anderen Wert an. |
+| -4 |Es wird bereits eine andere Instanz des Überwachungs-Agents der Diagnose unter Verwendung des lokalen Ressourcenverzeichnisses ausgeführt.<p><p>Lösung: Geben Sie für **LocalResourceDirectory**. |
 | -6 |Das Startprogramm für das Gast-Agent-Plug-In hat versucht, die Diagnose mit einer ungültigen Befehlszeile zu starten.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Startprogramm für das Gast-Agent-Plug-In auf dem virtuellen Computer auf falsche Weise manuell aufgerufen wird. |
 | -10 |Das Diagnose-Plug-In wurde mit einem Ausnahmefehler beendet. |
 | -11 |Der Gast-Agent konnte den für den Start und die Überwachung des Überwachungs-Agents zuständigen Prozess nicht erstellen.<p><p>Lösung: Überprüfen Sie, ob genügend Systemressourcen zum Starten neuer Prozesse verfügbar sind.<p> |
@@ -47,27 +61,28 @@ Die folgenden Fehlercodes werden von dem Plug-In zurückgegeben:
 | -103 |Der Plug-In-Prozess kann sich nicht selbst initialisieren. Insbesondere kann das Protokollierungsobjekt nicht erstellt werden.<p><p>Lösung: Überprüfen Sie, ob genügend Systemressourcen zum Starten neuer Prozesse verfügbar sind. |
 | -104 |Die vom Gast-Agent bereitgestellte RCF-Datei konnte nicht geladen werden.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Startprogramm für das Gast-Agent-Plug-In auf dem virtuellen Computer auf falsche Weise manuell aufgerufen wird. |
 | -105 |Das Diagnose-Plug-In kann die Diagnosekonfigurationsdatei nicht öffnen.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Diagnose-Plug-In auf dem virtuellen Computer auf falsche Weise manuell aufgerufen wird. |
-| -106 |Die Diagnosekonfigurationsdatei kann nicht gelesen werden.<p><p>Lösung: Der Grund hierfür ist, dass eine Konfigurationsdatei die Schemaüberprüfung nicht bestanden hat. Gelöst werden kann der Fehler daher durch Bereitstellung einer Konfigurationsdatei, die dem Schema entspricht. Die XML-Datei, die an die Diagnose-Erweiterung übergeben wird, finden Sie im Ordner *%SystemDrive%\\WindowsAzure\\Config* auf dem virtuellen Computer. Öffnen Sie die betreffende XML-Datei, und suchen Sie nach **Microsoft.Azure.Diagnostics** und dann nach dem Feld **xmlCfg**. Die Daten sind base64-codiert und müssen daher zunächst [decodiert](http://www.bing.com/search?q=base64+decoder) werden, um die von der Diagnose geladenen XML-Daten anzuzeigen.<p> |
+| -106 |Die Diagnosekonfigurationsdatei kann nicht gelesen werden.<p><p>Lösung: Der Grund hierfür ist, dass eine Konfigurationsdatei die Schemaüberprüfung nicht bestanden hat. Gelöst werden kann der Fehler daher durch Bereitstellung einer Konfigurationsdatei, die dem Schema entspricht. Die XML-Datei, die an die Diagnoseerweiterung übergeben wird, finden Sie im Ordner *%SystemDrive%\WindowsAzure\Config* auf dem virtuellen Computer. Öffnen Sie die betreffende XML-Datei, und suchen Sie nach **Microsoft.Azure.Diagnostics** und dann nach dem Feld **xmlCfg**. Die Daten sind Base64-codiert und müssen daher zunächst [decodiert](http://www.bing.com/search?q=base64+decoder) werden, um die von der Diagnose geladenen XML-Daten anzuzeigen.<p> |
 | -107 |Das an den Überwachungs-Agent übergebene Ressourcenverzeichnis ist ungültig.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn der Überwachungs-Agent auf dem virtuellen Computer auf falsche Weise manuell aufgerufen wird.</p> |
 | -108 |Die Diagnosekonfigurationsdatei kann nicht in die Konfigurationsdatei des Überwachungs-Agents konvertiert werden.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Diagnose-Plug-In manuell mit einer ungültigen Konfigurationsdatei aufgerufen wird. |
 | -110 |Allgemeiner Fehler in der Diagnosekonfiguration.<p><p>Dies ist ein interner Fehler, der nur auftreten sollte, wenn das Diagnose-Plug-In manuell mit einer ungültigen Konfigurationsdatei aufgerufen wird. |
 | -111 |Der Überwachungs-Agent kann nicht gestartet werden.<p><p>Lösung: Überprüfen Sie, ob genügend Systemressourcen verfügbar sind. |
 | -112 |Allgemeiner Fehler |
 
-## Diagnosedaten werden nicht in Azure Storage protokolliert
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>Diagnosedaten werden nicht in Azure Storage protokolliert
 Azure-Diagnose speichert alle Daten in Azure Storage.
 
 Wenn Ereignisdaten fehlen, liegt das in den meisten Fällen an falsch definierten Speicherkontoinformationen.
 
-Lösung: Konfigurieren Sie die Diagnosekonfigurationsdatei, und installieren Sie Diagnose erneut. Wenn das Problem weiterhin auftritt, nachdem Sie die Diagnoseerweiterung neu installiert haben, müssen Sie möglicherweise das Debuggen fortsetzen und den Überwachungs-Agent auf Fehler überprüfen. Bevor Ereignisdaten in Ihr Speicherkonto hochgeladen werden, werden sie im LocalResourceDirectory gespeichert.
+Lösung: Konfigurieren Sie die Diagnosekonfigurationsdatei, und installieren Sie Diagnose erneut.
+Wenn das Problem weiterhin auftritt, nachdem Sie die Diagnoseerweiterung neu installiert haben, müssen Sie möglicherweise das Debuggen fortsetzen und den Überwachungs-Agent auf Fehler überprüfen. Bevor Ereignisdaten in Ihr Speicherkonto hochgeladen werden, werden sie im LocalResourceDirectory gespeichert.
 
 Für die Clouddienstrolle lautet das LocalResourceDirectory wie folgt:
 
-    C:\Resources\Directory<CloudServiceDeploymentID>.<RoleName>.DiagnosticStore\WAD<DiagnosticsMajorandMinorVersion>\Tables
+    C:\Resources\Directory\<CloudServiceDeploymentID>.<RoleName>.DiagnosticStore\WAD<DiagnosticsMajorandMinorVersion>\Tables
 
 Für virtuelle Computer lautet das LocalResourceDirectory wie folgt:
 
-    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics<DiagnosticsVersion>\WAD<DiagnosticsMajorandMinorVersion>\Tables
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD<DiagnosticsMajorandMinorVersion>\Tables
 
 Wenn der LocalResourceDirectory-Ordner keine Dateien enthält, kann der Überwachungs-Agent nicht gestartet werden. Der Grund ist normalerweise eine ungültige Konfigurationsdatei, ein Ereignis, für das die Datei „CommandExecution.log“ einen entsprechenden Eintrag enthalten sollte.
 
@@ -75,17 +90,17 @@ Wenn der Überwachungs-Agent erfolgreich Ereignisdaten erfasst, werden für jede
 
 Bei einer Clouddienstrolle:
 
-    %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>\Monitor\x64\table2csv maeventtable.tsf
+    %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<DiagnosticsVersion>\Monitor\x64\table2csv maeventtable.tsf
 
 *%SystemDrive%* entspricht bei einer Clouddienstrolle in der Regel dem Laufwerk D:
 
 Auf einem virtuellen Computer:
 
-    C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics<DiagnosticsVersion>\Monitor\x64\table2csv maeventtable.tsf
+    C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\Monitor\x64\table2csv maeventtable.tsf
 
-Mit den oben aufgeführten Befehlen wird die Protokolldatei *maeventtable.csv* generiert, die Sie öffnen und auf Fehlermeldungen prüfen können.
+Mit den oben aufgeführten Befehlen wird die Protokolldatei *maeventtable.csv*generiert, die Sie öffnen und auf Fehlermeldungen prüfen können.    
 
-## Tabellen mit Diagnosedaten nicht gefunden
+## <a name="diagnostics-data-tables-not-found"></a>Tabellen mit Diagnosedaten nicht gefunden
 Die Tabellen im Azure-Speicher, die Azure-Diagnosedaten enthalten, werden anhand des folgenden Codes benannt:
 
         if (String.IsNullOrEmpty(eventDestination)) {
@@ -117,4 +132,8 @@ Damit werden vier Tabellen generiert:
 | provider=”prov1” &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
 | provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt; |WADdest2 |
 
-<!---HONumber=AcomDC_0302_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

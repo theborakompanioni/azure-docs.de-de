@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7ae1803a299a5fb569ea0ca8a1ce68c33df1a769
+ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
+ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
 
 
 ---
@@ -29,6 +29,7 @@ Dieser Kommunikationsfluss ist möglich, weil Azure eine Reihe von Systemrouten 
 * Aus einem Subnetz in ein anderes Subnetz innerhalb eines VNet.
 * Von virtuellen Computern zum Internet.
 * Aus einem VNet in ein anderes VNet über ein VPN-Gateway.
+* Aus einem VNet in ein anderes VNet über VNet-Peering (Dienstverkettung).
 * Aus einem VNet in ein lokales Netzwerk über ein VPN-Gateway.
 
 Die folgende Abbildung zeigt ein einfaches Setup mit einem VNet, zwei Subnetzen und einigen virtuellen Computern sowie den Systemrouten, die den IP-Datenverkehr ermöglichen.
@@ -111,6 +112,6 @@ Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der n
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

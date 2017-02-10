@@ -46,7 +46,7 @@ Ein weiterer zu berücksichtigender Aspekt kann auch der Wert für die „maxima
 
 Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierung für Machine Learning-Webdienste](../machine-learning/machine-learning-scaling-webservice.md).
 
-## <a name="example-sentiment-analysis"></a>Beispiel: Stimmungsanalyse
+## <a name="example--sentiment-analysis"></a>Beispiel: Stimmungsanalyse
 Das folgende Beispiel enthält einen Stream Analytics-Auftrag mit der Machine Learning-Funktion für die Stimmungsanalyse, die im [Tutorial zur Machine Learning-Integration für Stream Analytics](stream-analytics-machine-learning-integration-tutorial.md)beschrieben ist.
 
 Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion **Stimmung**. Dies ist nachstehend dargestellt:

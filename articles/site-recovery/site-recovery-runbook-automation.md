@@ -1,95 +1,58 @@
 ---
-title: Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen | Microsoft Docs
-description: In diesem Artikel erfahren Sie, wie Sie mit Azure Site Recovery und Azure Automation Wiederherstellungspläne erweitern und komplexe Aufgaben bei der Wiederherstellung zu Azure durchführen können.
+title: "Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen | Microsoft Docs"
+description: "In diesem Artikel erfahren Sie, wie Sie mit Azure Site Recovery und Azure Automation Wiederherstellungspläne erweitern und komplexe Aufgaben bei der Wiederherstellung zu Azure durchführen können."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: ruturaj
-manager: mkjain
-editor: ''
-
+manager: gauravd
+editor: 
+ms.assetid: ecece14d-5f92-4596-bbaf-5204addb95c2
 ms.service: site-recovery
 ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: required
-ms.date: 08/23/2016
+ms.date: 10/23/2016
 ms.author: ruturajd@microsoft.com
+translationtype: Human Translation
+ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
+ms.openlocfilehash: 9f9a71cd7c6688dfd42dcb7ce52847f2016daf58
+
 
 ---
-# Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
-Dieses Lernprogramm beschreibt die Integration von Azure Site Recovery und Azure Automation, um die Erweiterung von Wiederherstellungsplänen zu ermöglichen. Wiederherstellungspläne können die Wiederherstellung Ihrer durch Azure Site Recovery geschützten virtuellen Computer sowohl bei der Replikation zur sekundären Cloud als auch bei der Replikation zu Azure orchestrieren. Darüber hinaus tragen sie zu einer **durchgängig exakten**, **wiederholbaren**, und **automatisierten** Wiederherstellung bei. Beim Failover virtueller Computer zu Azure erweitert die Azure Automation-Integration die Wiederherstellungspläne und ermöglicht die Ausführung von Runbooks für beeindruckende Automatisierungsaufgaben.
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
+Dieses Lernprogramm beschreibt die Integration von Azure Site Recovery und Azure Automation, um die Erweiterung von Wiederherstellungsplänen zu ermöglichen. Wiederherstellungspläne können die Wiederherstellung Ihrer durch Azure Site Recovery geschützten virtuellen Computer sowohl bei der Replikation zur sekundären Cloud als auch bei der Replikation zu Azure orchestrieren. Darüber hinaus tragen sie zu einer **durchgängig exakten**, **wiederholbaren**, und **automatisierten** Wiederherstellung bei. Beim Failover virtueller Computer zu Azure erweitert die Azure Automation-Integration die Wiederherstellungspläne und ermöglicht die Ausführung von Runbooks für beeindruckende Automatisierungsaufgaben.
 
-Falls Sie noch nicht mit Azure Automation vertraut sind, können Sie sich [hier](https://azure.microsoft.com/services/automation/) registrieren und [hier](https://azure.microsoft.com/documentation/scripts/) die entsprechenden Beispielskripts herunterladen. Weitere Informationen zu [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) sowie zur Orchestrierung der Wiederherstellung in Azure mithilfe von Wiederherstellungsplänen finden Sie [hier](https://azure.microsoft.com/blog/?p=166264).
+Falls Sie noch nicht mit Azure Automation vertraut sind, können Sie sich [hier](https://azure.microsoft.com/services/automation/) registrieren, und [hier](https://azure.microsoft.com/documentation/scripts/) die entsprechenden Beispielskripts herunterladen. Weitere Informationen zu [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) sowie zur Orchestrierung der Wiederherstellung in Azure mithilfe von Wiederherstellungsplänen finden Sie [hier](https://azure.microsoft.com/blog/?p=166264).
 
-In diesem Lernprogramm erfahren Sie, wie Sie Azure Automation-Runbooks in Wiederherstellungspläne integrieren. Wir automatisieren einfache Aufgaben, für die zuvor ein manueller Eingriff erforderlich war, und konvertieren eine Wiederherstellung mit mehreren Schritten in eine Wiederherstellungsaktion, die sich mit nur einem Klick durchführen lässt. Außerdem erfahren Sie, wie Sie Probleme in einem einfachen Skript beheben können.
+In diesem Lernprogramm erfahren Sie, wie Sie Azure Automation-Runbooks in Wiederherstellungspläne integrieren. Wir automatisieren einfache Aufgaben, für die zuvor ein manueller Eingriff erforderlich war, und konvertieren eine Wiederherstellung mit mehreren Schritten in eine Wiederherstellungsaktion, die sich mit nur einem Klick durchführen lässt. Außerdem erfahren Sie, wie Sie Probleme in einem einfachen Skript beheben können.
 
-## Schützen der Anwendung in Azure
-Wir beginnen mit einer einfachen Anwendung mit zwei virtuellen Computern. Hier haben wir eine HRweb-Anwendung von Fabrikam. „Fabrikam-Hrweb-frontend“ und „Fabrikam-Hrweb-backend“ sind die beiden virtuellen Computer, die mithilfe von Azure Site Recovery in Azure geschützt werden. Gehen Sie wie folgt vor, um die virtuellen Computer mit Azure Site Recovery zu schützen:
+## <a name="customize-the-recovery-plan"></a>Anpassen des Wiederherstellungsplans
+1. Zuerst öffnen wir das Ressourcenblatt des Wiederherstellungsplans. Sie sehen, dass für den Wiederherstellungsplan zwei virtuelle Computer zur Wiederherstellung hinzugefügt wurden.
 
-1. Aktivieren Sie den Schutz für Ihre virtuellen Computer.
-2. Vergewissern Sie sich, dass die erste Replikation der virtuellen Computer abgeschlossen ist und dass die Replikation funktioniert.
-3. Warten Sie, bis die erste Replikation abgeschlossen ist und der Replikationsstatus „Geschützt“ angezeigt wird.
+    ![](media/site-recovery-runbook-automation-new/essentials-rp.PNG)
+- - -
+1. Klicken Sie auf die Schaltfläche „Anpassen“, um mit dem Hinzufügen eines Runbooks zu beginnen. Das Blatt zum Anpassen des Wiederherstellungsplans wird geöffnet.
 
-## ![](media/site-recovery-runbook-automation/01.png)
-In diesem Lernprogramm erstellen wir einen Wiederherstellungsplan für die HRweb-Anwendung von Fabrikam, um für die Anwendung ein Failover zu Azure durchzuführen. Anschließend integrieren wir den Plan in ein Runbook, das nach dem Failover auf dem virtuellen Azure-Computer einen Endpunkt für die Bereitstellung von Webseiten über den Port 80 erstellt.
+    ![](media/site-recovery-runbook-automation-new/customize-rp.PNG)
 
-Zuerst erstellen wir einen Wiederherstellungsplan für unsere Anwendung.
 
-## Erstellen des Wiederherstellungsplans
-Für die Wiederherstellung der Anwendung in Azure müssen Sie einen Wiederherstellungsplan erstellen. In einem Wiederherstellungsplan können Sie die gewünschte Wiederherstellungsreihenfolge für die virtuellen Computer angeben. Der virtuelle Computer aus der ersten Gruppe wird als erster wiederhergestellt und gestartet. Danach folgt der virtuelle Computer aus der zweiten Gruppe.
+1. Klicken Sie mit der rechten Maustaste auf die Startgruppe 1, und wählen Sie die Option „Nachfolgende Aktion hinzufügen“.
+2. Wählen Sie auf dem neuen Blatt ein Skript aus.
+3. Geben Sie dem Skript den Namen „Hello World“.
+4. Wählen Sie einen Automation-Kontonamen aus. Dies ist das Azure Automation-Konto. Beachten Sie, dass sich dieses Konto an einem beliebigen geografischen Standort befinden kann, aber unter demselben Abonnement wie der Site Recovery-Tresor vorhanden sein muss.
+5. Wählen Sie im Automation-Konto ein Runbook aus. Dies ist das Skript, das während der Ausführung des Wiederherstellungsplans nach der Wiederherstellung der ersten Gruppe ausgeführt wird.
 
-Erstellen Sie einen Wiederherstellungsplan wie den folgenden:
+    ![](media/site-recovery-runbook-automation-new/update-rp.PNG)
+6. Wählen Sie „OK“, um das Skript zu speichern. Das Skript wird der Gruppe „Gruppe 1: Start“ für nachfolgende Aktionen hinzugefügt.
 
-![](media/site-recovery-runbook-automation/12.png)
+    ![](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
-Weitere Informationen zu Wiederherstellungsplänen finden Sie in der [Dokumentation](https://msdn.microsoft.com/library/azure/dn788799.aspx "hier").
 
-Im nächsten Schritt erstellen wir die erforderlichen Artefakte in Azure Automation.
-
-## Erstellen des Automation-Kontos und der dazugehörigen Ressourcen
-Für die Erstellung von Runbooks benötigen Sie ein Azure Automation-Konto. Falls Sie noch kein Konto besitzen, navigieren Sie zur Registerkarte für Azure Automation (![](media/site-recovery-runbook-automation/02.png)), und erstellen Sie ein neues Konto.
-
-1. Benennen Sie das Konto.
-2. Geben Sie eine geografische Region für das Konto an.
-
-Es empfiehlt sich, für das Konto die gleiche Region zu verwenden wie für den ASR-Tresor.
-
-![](media/site-recovery-runbook-automation/03.png)
-
-Erstellen Sie anschließend folgende Ressourcen in dem Konto:
-
-### Hinzufügen eines Abonnements als Ressource
-1. Fügen Sie den Azure Automation-Ressourcen eine neue Einstellung hinzu (![](media/site-recovery-runbook-automation/04.png)), und klicken Sie auf ![](media/site-recovery-runbook-automation/05.png).
-2. Wählen Sie als Variablentyp die Option **Zeichenfolge** aus.
-3. Geben Sie als Variablenname die Zeichenfolge **AzureSubscriptionName** an.
-   
-   ![](media/site-recovery-runbook-automation/06.png)
-4. Geben Sie als Wert der Variablen den tatsächlichen Namen Ihres Azure-Abonnements an.
-   
-   ![](media/site-recovery-runbook-automation/07_1.png)
-
-Sie finden den Namen Ihres Abonnements im Azure-Portal auf der Seite mit den Einstellungen für Ihr Konto.
-
-### Hinzufügen der Azure-Anmeldeinformationen als Ressource
-Azure Automation stellt mithilfe von Azure PowerShell eine Verbindung mit dem Abonnement her und verwendet die Artefakte dort. Dazu ist eine Authentifizierung mit Ihrem Microsoft-Konto oder mit einem Geschäfts- oder Schulkonto erforderlich. Sie können die Anmeldeinformationen für das Konto in einer Ressource speichern, damit das Runbook sie gefahrlos verwenden kann.
-
-1. Fügen Sie den Azure Automation-Ressourcen eine neue Einstellung hinzu (![](media/site-recovery-runbook-automation/04.png)), und klicken Sie auf ![](media/site-recovery-runbook-automation/09.png).
-2. Legen Sie den Anmeldeinformationstyp auf **Windows PowerShell-Anmeldeinformationen** fest.
-3. Geben Sie als Name die Zeichenfolge **AzureCredential** an.
-   
-   ![](media/site-recovery-runbook-automation/10.png)
-4. Geben Sie den Benutzernamen und das Kennwort für die Anmeldung an.
-
-Damit stehen die beiden Einstellungen in Ihren Ressourcen zur Verfügung.
-
-![](media/site-recovery-runbook-automation/11.png)
-
-Weitere Informationen zum Herstellen einer Verbindung mit Ihrem Abonnement über PowerShell finden Sie [hier](../powershell-install-configure.md).
-
-Im nächsten Schritt wird in Azure Automation ein Runbook erstellt, das nach dem Failover einen Endpunkt für den virtuellen Front-End-Computer hinzufügen kann.
-
-## Azure Automation-Kontext
-ASR übergibt eine Kontextvariable an das Runbook, um Sie beim Schreiben deterministischer Skripts zu unterstützen. Man könnte argumentieren, dass die Namen von Cloud-Dienst und virtuellem Computer vorhersehbar sind, dies ist aber nicht immer der Fall – beispielsweise in einem Szenario, in dem sich der Name des virtuellen Computers aufgrund von nicht unterstützten Zeichen in Azure geändert hat. Aus diesem Grund wird diese Information als Teil des *Kontexts* an den ASR-Wiederherstellungsplan übergeben.
+## <a name="salient-points-of-adding-a-script"></a>Wichtige Punkte beim Hinzufügen eines Skripts
+1. Sie können mit der rechten Maustaste auf das Skript klicken und „Schritt löschen“ oder „Skript aktualisieren“ wählen.
+2. Ein Skript kann unter Azure während des Failovers aus der lokalen Umgebung nach Azure ausgeführt werden, und die Ausführung unter Azure als Skript der primären Seite ist vor dem Herunterfahren während des Failbacks von Azure in die lokale Umgebung möglich.
+3. Wenn ein Skript ausgeführt wird, wird ein Wiederherstellungsplan-Kontext eingefügt.
 
 Hier sehen Sie ein Beispiel für die Kontextvariable:
 
@@ -124,149 +87,65 @@ Die folgende Tabelle enthält jeweils den Namen und die Beschreibung der einzeln
 | VMMap-Schlüssel |Eindeutiger Schlüssel (GUID) für jeden virtuellen Computer. Die GUID entspricht der VMM-ID des virtuellen Computers, sofern zutreffend. |
 | RoleName |Name der Azure-VM, die wiederhergestellt wird. |
 | CloudServiceName |Name des Azure Cloud-Diensts, unter dem der virtuelle Computer erstellt wird. |
+| CloudServiceName (im Resource Manager-Bereitstellungsmodell) |Name der Azure-Ressourcengruppen, unter der der virtuelle Computer erstellt wird. |
 
-Den kontextspezifischen VmMap-Schlüssel können Sie in ASR auf der Eigenschaftenseite des virtuellen Computers unter der VM-GUID-Eigenschaft ermitteln.
+## <a name="using-complex-variables-per-recovery-plan"></a>Verwenden von komplexen Variablen pro Wiederherstellungsplan
+Es kann sein, dass für ein Runbook mehr Informationen als nur der RecoveryPlanContext erforderlich sind. Es gibt zum Übergeben eines Parameters an ein Runbook keinen alleinigen Mechanismus. Falls Sie dasselbe Skript über mehrere Wiederherstellungspläne hinweg verwenden möchten, können Sie aber die Wiederherstellungsplankontext-Variable „RecoveryPlanName“ und das unten beschriebene experimentelle Verfahren einsetzen, um eine komplexe Azure Automation-Variable in einem Runbook zu nutzen. Im Beispiel unten wird veranschaulicht, wie Sie drei verschiedene komplexe Variablenassets erstellen und im Runbook basierend auf dem Namen des Wiederherstellungsplans verwenden können.
 
-![](media/site-recovery-runbook-automation/13.png)
+Stellen Sie sich vor, dass Sie drei zusätzliche Parameter in einem Runbook nutzen möchten. Wir codieren sie in einem JSON-Formular: {"Var1":"testautomation","Var2":"Unplanned","Var3":"PrimaryToSecondary"}
 
-## Erstellen eines Automation-Runbooks
-Erstellen Sie nun das Runbook, um auf dem virtuellen Front-End-Computer den Port 80 zu öffnen.
+Verwenden Sie die [komplexe AA-Variable](../automation/automation-variables.md#variable-types), um ein neues Automation-Asset zu erstellen.
+Geben Sie der Variablen den Namen „<RecoveryPlanName>-params“.
+Sie können diesen [Verweis zum Erstellen einer komplexen Variablen](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) verwenden.
 
-1. Erstellen Sie im Azure Automation-Konto ein neues Runbook mit dem Namen **OpenPort80**.
-   
-   ![](media/site-recovery-runbook-automation/14.png)
-2. Navigieren Sie zur Erstelleransicht des Runbooks, und starten Sie den Entwurfsmodus.
-3. Geben Sie zunächst die Variable für den Wiederherstellungsplankontext an.
-   
-   ```
-       param (
-           [Object]$RecoveryPlanContext
-       )
-   
-   ```
-4. Stellen Sie dann unter Angabe der Anmeldeinformationen und des Abonnementnamens eine Verbindung mit dem Abonnement her.
-   
-   ```
-       $Cred = Get-AutomationPSCredential -Name 'AzureCredential'
-   
-       # Connect to Azure
-       $AzureAccount = Add-AzureAccount -Credential $Cred
-       $AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
-       Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
-   ```
-   
-   Hinweis: Hier werden die Azure-Ressourcen **AzureCredential** und **AzureSubscriptionName** verwendet.
-5. Geben Sie die Endpunktdetails und die GUID des virtuellen Computers an, für den Sie den Endpunkt verfügbar machen möchten. In diesem Fall handelt es sich um den virtuellen Front-End-Computer.
-   
-   ```
-       # Specify the parameters to be used by the script
-       $AEProtocol = "TCP"
-       $AELocalPort = 80
-       $AEPublicPort = 80
-       $AEName = "Port 80 for HTTP"
-       $VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
-   ```
-   
-   Hierbei werden das Azure-Endpunktprotokoll, der lokale Port auf dem virtuellen Computer und der ihm zugeordnete öffentliche Port angegeben. Bei diesen Variablen handelt es sich um erforderliche Parameter für die Azure-Befehle, die virtuellen Computern Endpunkte hinzufügen. Der VMGUID-Parameter enthält die GUID des virtuellen Computers, auf dem Sie arbeiten müssen.
-6. Das Skript extrahiert nun den Kontext für die angegebene VM-GUID und erstellt einen Endpunkt auf dem entsprechenden virtuellen Computer.
-   
-   ```
-       #Read the VM GUID from the context
-       $VM = $RecoveryPlanContext.VmMap.$VMGUID
-   
-       if ($VM -ne $null)
-       {
-           # Invoke pipeline commands within an InlineScript
-   
-           $EndpointStatus = InlineScript {
-               # Invoke the necessary pipeline commands to add a Azure Endpoint to a specified Virtual Machine
-               # Commands include: Get-AzureVM | Add-AzureEndpoint | Update-AzureVM (including parameters)
-   
-               $Status = Get-AzureVM -ServiceName $Using:VM.CloudServiceName -Name $Using:VM.RoleName | `
-                   Add-AzureEndpoint -Name $Using:AEName -Protocol $Using:AEProtocol -PublicPort $Using:AEPublicPort -LocalPort $Using:AELocalPort | `
-                   Update-AzureVM
-               Write-Output $Status
-           }
-       }
-   ```
-7. Klicken Sie anschließend auf die Veröffentlichungsoption (![](media/site-recovery-runbook-automation/20.png)), um das Skript für die Ausführung verfügbar zu machen.
+Benennen Sie die Variable für unterschiedliche Wiederherstellungspläne nach dem folgenden Muster:
 
-Hier sehen Sie noch einmal das gesamte Skript:
+1. recoveryPlanName1>-params
+2. recoveryPlanName2>-params
+3. recoveryPlanName3>-params
 
-```
-  workflow OpenPort80
-  {
-    param (
-        [Object]$RecoveryPlanContext
-    )
+Verweisen Sie im Skript dann wie folgt auf die Parameter:
 
-    $Cred = Get-AutomationPSCredential -Name 'AzureCredential'
+1. Rufen Sie den Namen des Wiederherstellungsplans aus der Variablen „$rpname = $Recoveryplancontext“ ab.
+2. Rufen Sie das Asset über „$paramValue = "$($rpname)-params"“ ab.
+3. Verwenden Sie dies als komplexe Variable für den Wiederherstellungsplan, indem Sie „Get-AzureAutomationVariable [-AutomationAccountName] <String> -Name $paramValue“ aufrufen.
 
-    # Connect to Azure
-    $AzureAccount = Add-AzureAccount -Credential $Cred
-    $AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
-    Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
+Beispiel: Erstellen Sie zum Abrufen der komplexen Variablen bzw. des Parameters für den SharepointApp-Wiederherstellungsplan eine komplexe Azure Automation-Variable mit dem Namen „SharepointApp-params“.
 
-    # Specify the parameters to be used by the script
-    $AEProtocol = "TCP"
-    $AELocalPort = 80
-    $AEPublicPort = 80
-    $AEName = "Port 80 for HTTP"
-    $VMGUID = "7a1069c6-c1d6-49c5-8c5d-33bfce8dd183"
+Verwenden Sie diese im Wiederherstellungsplan, indem Sie die Variable aus dem Asset extrahieren. Nutzen Sie hierfür die folgende Anweisung: „Get-AzureAutomationVariable [-AutomationAccountName] <String> [-Name] $paramValue“. [Weitere Informationen](https://msdn.microsoft.com/library/dn913772.aspx)
 
-    #Read the VM GUID from the context
-    $VM = $RecoveryPlanContext.VmMap.$VMGUID
+Auf diese Weise kann dasselbe Skript für verschiedene Wiederherstellungspläne eingesetzt werden, indem die planspezifische komplexe Variable in den Assets gespeichert wird.
 
-    if ($VM -ne $null)
-    {
-        # Invoke pipeline commands within an InlineScript
+## <a name="sample-scripts"></a>Beispielskripts
+Ein Repository mit Skripts, die Sie direkt in Ihr Automation-Konto importieren können, finden Sie im [OMS-Repository für Skripts von Kristian Nese](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/Solutions/asrautomation).
 
-        $EndpointStatus = InlineScript {
-            # Invoke the necessary pipeline commands to add an Azure Endpoint to a specified Virtual Machine
-            # This set of commands includes: Get-AzureVM | Add-AzureEndpoint | Update-AzureVM (including necessary parameters)
+Dieses Skript ist eine Azure Resource Manager-Vorlage, mit der alle unten angegebenen Skripts bereitgestellt werden.
 
-            $Status = Get-AzureVM -ServiceName $Using:VM.CloudServiceName -Name $Using:VM.RoleName | `
-                Add-AzureEndpoint -Name $Using:AEName -Protocol $Using:AEProtocol -PublicPort $Using:AEPublicPort -LocalPort $Using:AELocalPort | `
-                Update-AzureVM
-            Write-Output $Status
-        }
-    }
-  }
-```
+* NSG
 
-## Hinzufügen des Skripts zum Wiederherstellungsplan
-Wenn das Skript bereit ist, können Sie es dem zuvor erstellten Wiederherstellungsplan hinzufügen.
+Beim NSG-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen und die virtuellen Netzwerkadapter an eine Netzwerksicherheitsgruppe angefügt, um die Standardkommunikation zu ermöglichen.
 
-1. Fügen Sie im erstellten Wiederherstellungsplan nach der zweiten Gruppe ein Skript hinzu. ![](media/site-recovery-runbook-automation/15.png)
-2. Geben Sie einen Skriptnamen an. Hierbei handelt es sich lediglich um einen Anzeigenamen für das Skript, der innerhalb des Wiederherstellungsplans verwendet wird.
-3. Wählen Sie im Bereich für das Azure-Failoverskript den Namen des Azure Automation-Kontos aus.
-4. Wählen Sie in den Azure-Runbooks das zuvor erstellte Runbook aus.
+* PublicIP
 
-![](media/site-recovery-runbook-automation/16.png)
+Mit dem PublicIP-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen. Der Zugriff auf Computer und Anwendungen hängt von den Firewalleinstellungen auf jedem Gastbetriebssystem ab.
 
-## Primäre serverseitige Skripts
-Wenn Sie ein Failover an Azure ausführen, können Sie auch auswählen, primäre serverseitige Skripts auszuführen. Diese Skripts werden während des Failovers auf dem VMM-Server ausgeführt. Primäre serverseitige Skripts sind nur für die Phasen vor und nach dem Herunterfahren verfügbar. Dies liegt daran, dass typischerweise zu erwarten ist, dass der primäre Standort nicht erreichbar ist, wenn ein Notfall eintritt. Bei einem ungeplanten Failover werden primäre serverseitige Skripts nur dann ausgeführt, wenn Sie sich für primäre serverseitige Vorgänge entscheiden. Wenn sie nicht erreichbar sind oder das Zeitlimit überschritten wurde, wird das Failover weiterhin die virtuellen Computer wiederherstellen. Primäre serverseitige Skripts stehen nicht für VMware/physische/Hyper-V-Sites ohne VMM in mit Schutz in Azure – während der Failover an Azure übergeben wird. Bei einem Failback von Azure an den lokalen Standort können primäre serverseitige Skripts (Runbooks) jedoch für alle Ziele außer VMware verwendet werden.
+* CustomScript
 
-## Testen des Wiederherstellungsplans
-Nachdem Sie dem Plan das Runbook hinzugefügt haben, können Sie ein Test-Failover initiieren, um es in Aktion zu sehen. Für die Anwendung und den Wiederherstellungsplan sollte immer ein Test-Failover durchgeführt werden, um sicherzustellen, dass alles fehlerfrei funktioniert.
+Beim CustomScript-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen, und es wird eine benutzerdefinierte Skripterweiterung installiert, mit der während der Bereitstellung der Vorlage der Pullvorgang für das Skript durchgeführt wird, auf das Sie verweisen.
 
-1. Wählen Sie den Wiederherstellungsplan aus, und initiieren Sie ein Test-Failover.
-2. Während der Planausführung gibt der Status des Runbooks Aufschluss darüber, ob das Runbook ausgeführt wurde.
-   
-   ![](media/site-recovery-runbook-automation/17.png)
-3. Auf der Auftragsseite in Azure Automation steht zudem ein detaillierter Ausführungsstatus für das Runbook zur Verfügung.
-   
-   ![](media/site-recovery-runbook-automation/18.png)
-4. Nach Abschluss des Failovers können Sie prüfen, ob die Ausführung erfolgreich war. Rufen Sie hierzu die Seite des virtuellen Azure-Computers auf, und sehen Sie sich die Endpunkte an.
+* NSGwithCustomScript
 
-![](media/site-recovery-runbook-automation/19.png)
+Mit dem NSGwithCustomScript-Runbook werden jeder VM im Wiederherstellungsplan öffentliche IP-Adressen zugewiesen und ein benutzerdefiniertes Skript per Erweiterung installiert. Außerdem wird für die virtuellen Netzwerkadapter eine Verbindung mit einer NSG hergestellt, um die eingehende und ausgehende Kommunikation für den Remotezugriff zu ermöglichen.
 
-## Beispielskripts
-In diesem Lernprogramm haben Sie gesehen, wie Sie eine häufig verwendete Aufgabe (das Hinzufügen eines Endpunkts zu einem virtuellen Azure-Computer) automatisieren können. Azure Automation bietet jedoch noch viele weitere Automatisierungsmöglichkeiten. Microsoft und die Azure Automation-Community stellen Beispiel-Runbooks, die Ihnen das Erstellen eigener Lösungen erleichtern, sowie Hilfsprogramm-Runbooks zur Verfügung, die Sie als Bausteine für umfangreichere Automatisierungen verwenden können. Erstellen Sie mithilfe des Katalogs leistungsstarke, mit nur einem Klick ausführbare Wiederherstellungspläne für Ihre Anwendungen mit Azure Site Recovery.
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+[Authentifizieren von Runbooks mit der Azure-Option „Ausführendes Konto“](../automation/automation-sec-configure-azure-runas-account.md)
 
-## Weitere Ressourcen
 [Übersicht über Azure Automation](http://msdn.microsoft.com/library/azure/dn643629.aspx "Übersicht über Azure Automation")
 
 [Beispielskripts für Azure Automation](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Beispielskripts für Azure Automation")
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie Messaging für die übergreifende Vernetzung von Anwendungen und Diensten in lokalen und cloudbasierten Umgebungen einrichten.  Tutorials, Videos, API-Referenzen und mehr."
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 0ecc51f19240ecfa49852ed1eafcf78d1227af16
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: fe4c303bb0e944e5abb26f8baa394d0df71240a5
 
 ---
 #<a name="service-bus-documentation"></a>Dokumentation zu Service Bus
 
-Service Bus bietet cloudfähige Kommunikation mit Messagingfunktionen für Unternehmen und Relaykommunikation, um Sie bei der Verbindung Ihrer lokalen Lösungen mit der Cloud zu unterstützen. 
+Hier erfahren Sie, wie Sie mithilfe von Service Bus übergreifende Verbindungen für lokale und cloudbasierte Umgebungen herstellen. Anhand von Tutorials, Videos, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cloudmessaging zwischen Anwendungen und Diensten einrichten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -234,16 +235,10 @@ Service Bus bietet cloudfähige Kommunikation mit Messagingfunktionen für Unter
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-bus.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Service Bus </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

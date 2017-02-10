@@ -16,8 +16,8 @@ ms.workload: azure-government
 ms.date: 10/31/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 722c53f819126791073575da04eded2ec5465764
-ms.openlocfilehash: 9d4ba4eff1c9768a11c18cbf531b252d767bc9f2
+ms.sourcegitcommit: 3e460dd2aaf51ef2ba9840513d236ce313320c80
+ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
 
 
 ---
@@ -44,6 +44,37 @@ Die folgenden Backup-Features sind aktuell nicht in Azure Government verfügbar:
 
 * Azure Resource Manager-Tresore
 * Verwaltung mit dem Azure-Portal (das klassische Azure-Portal wird unterstützt)
+
+Die URLs für Backup unterscheiden sich in Azure Government:
+
+## <a name="site-recovery"></a>Site Recovery
+Site Recovery (ASR) ist in Azure Government allgemein verfügbar.
+
+Weitere Informationen finden Sie in der [öffentlichen Site Recovery-Dokumentation](../site-recovery/site-recovery-overview.md).
+
+### <a name="variations"></a>Variationen
+Die folgenden Site Recovery-Features sind aktuell nicht in Azure Government verfügbar:
+
+* Azure Resource Manager-Site Recovery-Tresore
+
+| Site Recovery | Klassisch | Ressourcen-Manager | 
+| --- | --- | --- |
+| VMware/physisch  | Allgemein verfügbar | Geplant |
+| Hyper-V | Allgemein verfügbar | Geplant |
+| Standort-zu-Standort | Allgemein verfügbar | Geplant |
+
+Hinweise: Die Tabelle gilt für VA und Iowa. 
+
+Die folgenden URLs für ASR unterscheiden sich in Azure Government:
+
+| Azure – Öffentlich | Azure Government | Hinweise |
+| --- | --- | --- |
+| *.hypervrecoverymanager.windowsazure.com | *.hypervrecoverymanager.windowsazure.us | Zugriff auf den Site Recovery-Dienst |
+| *. backup.windowsazure.com  | *.backup.windowsazure.us | Zugriff auf Protection Service |
+| *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | Zum Speichern der VM-Momentaufnahmen |
+| http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | Zum Herunterladen von MySQL |
+
+
 
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics ist allgemein in Azure Government verfügbar.
@@ -111,6 +142,6 @@ Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

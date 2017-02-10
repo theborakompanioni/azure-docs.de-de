@@ -1,26 +1,30 @@
 ---
-title: Liste der Länder, in denen Azure im Handel erhältlich ist, sowie der unterstützten Währungen | Microsoft Docs
-description: Hier sind die Länder und Regionen, in denen Microsoft Azure im Handel erhältlich ist, sowie die entsprechenden Währungen aufgeführt, mit denen Sie für Azure bezahlen können.
-services: ''
-documentationcenter: ''
+title: "Liste der Länder/Regionen, in denen Azure im Handel erhältlich ist, sowie der unterstützten Währungen | Microsoft Docs"
+description: "Hier werden die Länder/Regionen, in denen Microsoft Azure im Handel erhältlich ist, sowie die entsprechenden Währungen aufgeführt, die zum Erwerb von Azure verwendet werden können."
+services: 
+documentationcenter: 
 author: genlin
-manager: msmbaldwin
-editor: ''
+manager: mbaldwin
+editor: 
 tags: billing
-
+ms.assetid: 31a5c698-2041-45b5-9299-884f305cebbc
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2016
+ms.date: 11/10/2016
 ms.author: genli
+translationtype: Human Translation
+ms.sourcegitcommit: 72d750dfd8c0044ee845a9feb9b8f4d2a4761cf0
+ms.openlocfilehash: a7d83d9d098de41a65581a5924453d311b6203f5
+
 
 ---
-# In welchen Ländern und Regionen ist Microsoft Azure im Handel erhältlich, und in welchen Währungen kann Azure erworben werden?
-Sie können Microsoft Azure in mehr als 140 Ländern weltweit erwerben, und zahlreiche verschiedene Währungen werden unterstützt. Hier finden Sie eine Liste der Länder, in denen Sie Azure erwerben können, sowie die Währungen, mit denen Sie Ihre Azure-Rechnung bezahlen können.
+# <a name="in-which-countriesregions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure"></a>In welchen Ländern/Regionen ist Microsoft Azure im Handel erhältlich, und in welchen Währungen kann Azure erworben werden?
+Sie können Microsoft Azure in mehr als 140 Ländern/Regionen weltweit erwerben, und es werden zahlreiche verschiedene Währungen unterstützt. Hier finden Sie eine Liste der Länder/Regionen, in denen Sie Azure erwerben können, sowie die Währungen, mit denen Sie Ihre Azure-Rechnung bezahlen können.
 
-| Land | Währungscode |
+| Land/Region | Währungscode |
 | --- | --- |
 | Afghanistan |USD |
 | Albanien |USD |
@@ -170,4 +174,8 @@ Sie können Microsoft Azure in mehr als 140 Ländern weltweit erwerben, und zahl
 | Sambia |USD |
 | Simbabwe |USD |
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

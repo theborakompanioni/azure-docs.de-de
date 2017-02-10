@@ -128,7 +128,6 @@
 #### [Bereitstellen eines Webdiensts](machine-learning-publish-a-machine-learning-web-service.md)
 #### [Verwenden externer Daten](machine-learning-web-services-that-use-import-export-modules.md)
 #### [Bereitstellen in mehreren Regionen](machine-learning-how-to-deploy-to-multiple-regions.md)
-#### [Veröffentlichen bei Marketplace](machine-learning-publish-web-service-to-azure-marketplace.md)
 #### [Verwenden von Webdienstparametern](machine-learning-web-service-parameters.md)
 #### [Aktivieren der Protokollierung](machine-learning-web-services-logging.md)
 ### Verwalten von Webdiensten
@@ -157,23 +156,10 @@
 #### [Verwenden von Hadoop mit 1TB](machine-learning-data-science-process-hive-criteo-walkthrough.md)
 #### [Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
 #### [Verwenden von SQL Data Warehouse](machine-learning-data-science-process-sqldw-walkthrough.md)
-### Beispiele für den Webdienst
-#### [Beispiele mit R](machine-learning-r-csharp-web-service-examples.md)
-#### [Binäre Klassifizierung](machine-learning-r-csharp-binary-classifier.md)
-#### [Clustermodell](machine-learning-r-csharp-cluster-model.md)
-#### [Multivariate lineare Regression](machine-learning-r-csharp-multivariate-linear-regression.md)
-#### [Prognose mit exponentieller Glättung](machine-learning-r-csharp-forecasting-exponential-smoothing.md)
-#### [Prognose – ETS + STL](machine-learning-r-csharp-retail-demand-forecasting.md)
-#### [Prognose – ARIMA](machine-learning-r-csharp-arima.md)
-#### [Lebensdaueranalysen](machine-learning-r-csharp-survival-analysis.md)
-#### [Lexikonbasierte Stimmungsanalyse](machine-learning-r-csharp-lexicon-based-sentiment-analysis.md)
-#### [Testen des Unterschieds zwischen Anteilen](machine-learning-r-csharp-difference-in-two-proportions.md)
-#### [Normal Distribution Suite](machine-learning-r-csharp-normal-distribution.md)
-#### [Binomial Distribution Suite](machine-learning-r-csharp-binomial-distribution.md)
-#### [Marketplace – häufig gestellte Fragen](machine-learning-marketplace-faq.md)
 
 # Referenz
-## [PowerShell](machine-learning-powershell-module.md)
+## [PowerShell-Modul (Neu)](/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning)
+## [PowerShell-Modul (Klassisch)](machine-learning-powershell-module.md)
 ## [Algorithmen und Module – Referenz](https://msdn.microsoft.com/library/azure/dn905974.aspx)
 ## [REST](/rest/api/machinelearning)
 

@@ -1,25 +1,30 @@
 ---
-title: Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite | Microsoft Docs
-description: Dieses Dokument unterstützt Sie bei der Verwendung der Option Threat Intelligence in der Sicherheits- und Überwachungslösung von OMS für das Überwachen von und Reagieren auf Sicherheitswarnungen.
+title: "Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung der Operations Management Suite | Microsoft Docs"
+description: "Dieses Dokument unterstützt Sie bei der Verwendung der Option Threat Intelligence in der Sicherheits- und Überwachungslösung von OMS für das Überwachen von und Reagieren auf Sicherheitswarnungen."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: ''
-
+editor: 
+ms.assetid: 7d45a32b-1341-4bb5-a436-1f42a8a2590a
 ms.service: operations-management-suite
+ms.custom: oms-security
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2016
+ms.date: 12/01/2016
 ms.author: yurid
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7161cacfd371aa73974e635a343793bbec76d858
+
 
 ---
 # <a name="monitoring-and-responding-to-security-alerts-in-operations-management-suite-security-and-audit-solution"></a>Überwachen von und Reagieren auf Sicherheitswarnungen in der Sicherheits- und Überwachungslösung von Operations Management Suite
 Dieses Dokument unterstützt Sie bei der Verwendung der Option Threat Intelligence in der Sicherheits- und Überwachungslösung von OMS für das Überwachen von und Reagieren auf Sicherheitswarnungen.
 
-## <a name="what-is-oms?"></a>Was ist OMS?
+## <a name="what-is-oms"></a>Was ist OMS?
 Microsoft Operations Management Suite (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer lokalen und Cloudinfrastruktur erleichtert. Weitere Informationen zu OMS finden Sie im Artikel [Operations Management Suite](https://technet.microsoft.com/library/mt484091.aspx).
 
 ## <a name="threat-intelligence"></a>Threat Intelligence
@@ -74,6 +79,11 @@ Die Karte **Informationen zu Bedrohungen** hilft Ihnen beim Auffinden der aktuel
 
 ![Threat Intelligence-Karte](./media/oms-security-responding-alerts/oms-security-responding-alerts-fig5.png)
 
+> [!NOTE]
+> Die Verwendung dieser Funktion bei der Reaktion auf einen Incident wird in der Präsentation [Mitigate datacenter security threats with guided investigation using Operations Management Suite](https://myignite.microsoft.com/videos/5000) (Minimieren von Sicherheitsrisiken im Rechenzentrum per geführter Untersuchung mithilfe der Operations Management Suite) demonstriert, die Sie auf Microsoft Ignite finden.
+> 
+> 
+
 ## <a name="see-also"></a>Siehe auch
 In diesem Dokument haben Sie erfahren, wie Sie die Option **Threat Intelligence** in der Sicherheits- und Überwachungslösung von OMS für das Reagieren auf Sicherheitswarnungen verwenden. Weitere Informationen zur Sicherheitslösung von OMS finden Sie in den folgenden Artikeln:
 
@@ -81,6 +91,9 @@ In diesem Dokument haben Sie erfahren, wie Sie die Option **Threat Intelligence*
 * [Erste Schritte mit der Sicherheits- und Überwachungslösung von Operations Management Suite](oms-security-getting-started.md)
 * [Überwachen von Ressourcen in der Sicherheits- und Überwachungslösung der Operations Management Suite](oms-security-monitoring-resources.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

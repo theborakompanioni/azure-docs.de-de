@@ -2,10 +2,10 @@
 title: Application Insights-Datenmodell
 description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in JSON exportiert und als Filter verwendet wurden.
 services: application-insights
-documentationcenter: ''
+documentationcenter: 
 author: alancameronwills
 manager: douge
-
+ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
@@ -13,10 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: e4576409641db73ad8920a1eec2eea1e3580109f
+ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
+
 
 ---
-# Application Insights-Exportdatenmodell
-In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](app-insights-overview.md) SDKs an das Portal gesendet werden. Sie sehen diese Eigenschaften in der Datenausgabe von [Fortlaufender Export](app-insights-export-telemetry.md). Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](app-insights-metrics-explorer.md) und in der [Diagnosesuche](app-insights-diagnostic-search.md) angezeigt.
+# <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
+In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](app-insights-overview.md) SDKs an das Portal gesendet werden.
+Sie sehen diese Eigenschaften in der Datenausgabe von [Fortlaufender Export](app-insights-export-telemetry.md).
+Sie werden darüber hinaus in den Eigenschaftsfiltern im [Metrik-Explorer](app-insights-metrics-explorer.md) und in der [Diagnosesuche](app-insights-diagnostic-search.md) angezeigt.
 
 Beachten Sie Folgendes:
 
@@ -24,21 +30,21 @@ Beachten Sie Folgendes:
 * Zeitspannen werden als Zehntel einer Mikrosekunde angegeben, also 10000000 == 1 Sekunde.
 * Datums- und Zeitangaben sind als UTC und im ISO-Format angegeben: `yyyy-MM-DDThh:mm:ss.sssZ`
 
-Es gibt mehrere [Beispiele](app-insights-export-telemetry.md#code-samples), die ihre Verwendung veranschaulichen.
+Es gibt mehrere [Beispiele](app-insights-export-telemetry.md#code-samples) , die ihre Verwendung veranschaulichen.
 
-## Beispiel
+## <a name="example"></a>Beispiel
     // A server report about an HTTP request
     {
-    "request": [ 
+    "request": [
       {
         "urlData": { // derived from 'url'
           "host": "contoso.org",
           "base": "/",
-          "hashTag": "" 
+          "hashTag": ""
         },
         "responseCode": 200, // Sent to client
         "success": true, // Default == responseCode<400
-        // Request id becomes the operation id of child events 
+        // Request id becomes the operation id of child events
         "id": "fCOhCdCnZ9I=",  
         "name": "GET Home/Index",
         "count": 1, // 100% / sampling rate
@@ -71,14 +77,14 @@ Es gibt mehrere [Beispiele](app-insights-export-telemetry.md#code-samples), die 
         "continent": "North America",
         "country": "United States",
         // last octagon is anonymized to 0 at portal:
-        "clientip": "168.62.177.0", 
+        "clientip": "168.62.177.0",
         "province": "",
         "city": ""
       },
       "data": {
         "isSynthetic": true, // we identified source as a bot
         // percentage of generated data sent to portal:
-        "samplingRate": 100.0, 
+        "samplingRate": 100.0,
         "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
       },
       "user": {
@@ -106,7 +112,7 @@ Es gibt mehrere [Beispiele](app-insights-export-telemetry.md#code-samples), die 
     }
   }
 
-## Kontext
+## <a name="context"></a>Kontext
 Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Felder werden mit jedem Datenpunkt übertragen.
 
 | Pfad | Typ | Hinweise |
@@ -128,7 +134,7 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.device.osVersion |string |Hostbetriebssystem |
 | context.device.roleInstance |string |ID des Serverhosts |
 | context.device.roleName |string | |
-| context.device.type |Zeichenfolge |PC, Browser, ... |
+| context.device.type |string |PC, Browser, ... |
 | context.location |object |Abgeleitet von „clientip“. |
 | context.location.city |string |Abgeleitet von „clientip“, falls bekannt |
 | context.location.clientip |string |Letztes Oktagon wird als 0 anonymisiert. |
@@ -148,24 +154,24 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | internal.data.documentVersion |string | |
 | internal.data.id |string | |
 
-## Ereignisse
-Von [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) generierte benutzerdefinierte Ereignisse.
+## <a name="events"></a>Ereignisse
+Von [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event)generierte benutzerdefinierte Ereignisse.
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
-| event [0] count |integer |100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
-| event [0] name |string |Ereignisname. Max. Länge: 250 |
+| event [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
+| event [0] name |string |Ereignisname.  Länge: 250 |
 | event [0] url |string | |
 | event [0] urlData.base |string | |
 | event [0] urlData.host |string | |
 
-## Ausnahmen
+## <a name="exceptions"></a>Ausnahmen
 Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Browser.
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
 | basicException [0] assembly |string | |
-| basicException [0] count |ganze Zahl |100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| basicException [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | basicException [0] exceptionGroup |string | |
 | basicException [0] exceptionType |string | |
 | basicException [0] failedUserCodeMethod |string | |
@@ -188,7 +194,7 @@ Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Bro
 | basicException [0] stack |string |Max. Länge: 10.000 |
 | basicException [0] typeName |string | |
 
-## Ablaufverfolgungsmeldungen
+## <a name="trace-messages"></a>Ablaufverfolgungsmeldungen
 Gesendet von [TrackTrace](app-insights-api-custom-events-metrics.md#track-trace) und über die [Protokollierungsadapter](app-insights-asp-net-trace-logs.md).
 
 | Pfad | Typ | Hinweise |
@@ -198,7 +204,7 @@ Gesendet von [TrackTrace](app-insights-api-custom-events-metrics.md#track-trace)
 | message [0] raw |string |Die Protokollmeldung, maximale Länge: 10.000. |
 | message [0] severityLevel |string | |
 
-## Remoteabhängigkeit
+## <a name="remote-dependency"></a>Remoteabhängigkeit
 Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [Aufrufen von abhängigen Komponenten](app-insights-asp-net-dependencies.md) auf dem Server sowie von AJAX-Aufrufen im Browser verwendet.
 
 | Pfad | Typ | Hinweise |
@@ -206,7 +212,7 @@ Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [A
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |string | |
 | remoteDependency [0] commandName |string |Beispiel: "home/index" |
-| remoteDependency [0] count |ganze Zahl |100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| remoteDependency [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | remoteDependency [0] dependencyTypeName |string |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |number |Zeit vom Aufruf bis zum Abschließen der Antwort durch die Abhängigkeit. |
 | remoteDependency [0] id |string | |
@@ -219,23 +225,23 @@ Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [A
 | remoteDependency [0] urlData.hashTag |string | |
 | remoteDependency [0] urlData.host |string |Max. Länge: 200 |
 
-## Anforderungen
+## <a name="requests"></a>Anforderungen
 Gesendet von [TrackRequest](app-insights-api-custom-events-metrics.md#track-request). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
-| request [0] count |ganze Zahl |100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| request [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 = &gt; 25 %. |
 | request [0] durationMetric.value |number |Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
 | request [0] id |string |Vorgangs-ID |
-| request [0] name |string |GET/POST + URL-Basis. Max. Länge: 250 |
+| request [0] name |string |GET/POST + URL-Basis.  Max. Länge: 250 |
 | request [0] responseCode |integer |HTTP-Antwort, die an den Client gesendet wird. |
-| request [0] success |boolean |Standard == (responseCode &lt; 400) |
+| request [0] success |Boolescher Wert |Standard == (responseCode &lt; 400) |
 | request [0] url |string |Host nicht eingeschlossen |
 | request [0] urlData.base |string | |
 | request [0] urlData.hashTag |string | |
 | request [0] urlData.host |string | |
 
-## Leistung der Seitenaufrufe
+## <a name="page-view-performance"></a>Leistung der Seitenaufrufe
 Gesendet vom Browser. Misst die Zeit zum Verarbeiten einer Seite, von der Initialisierung der Anforderung durch den Benutzer bis zur vollständigen Anzeige (asynchrone AJAX-Aufrufe ausgenommen).
 
 Kontextwerte zeigen Clientbetriebssystem und Browserversion.
@@ -254,27 +260,27 @@ Kontextwerte zeigen Clientbetriebssystem und Browserversion.
 | clientPerformance [0] urlData.host |string | |
 | clientPerformance [0] urlData.protocol |string | |
 
-## Seitenaufrufe
-Gesendet von trackPageView() oder [stopTrackPage](app-insights-api-custom-events-metrics.md#page-view)
+## <a name="page-views"></a>Seitenaufrufe
+Gesendet von trackPageView() oder [stopTrackPage](app-insights-api-custom-events-metrics.md#page-views)
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
-| view [0] count |ganze Zahl |100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| view [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | view [0] durationMetric.value |integer |Wert optional in trackPageView() oder über startTrackPage() - stopTrackPage() festgelegt. Ist nicht dasselbe wie die clientPerformance-Werte. |
-| view [0] name |string |Seitentitel, Max. Länge: 250 |
+| view [0] name |string |Seitentitel, Max.  Länge: 250 |
 | view [0] url |string | |
 | view [0] urlData.base |string | |
 | view [0] urlData.hashTag |string | |
 | view [0] urlData.host |string | |
 
-## Verfügbarkeit
+## <a name="availability"></a>Verfügbarkeit
 Liefert Berichtdaten zu [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md).
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
-| availability [0] availabilityMetric.name |string |availability |
-| availability [0] availabilityMetric.value |number |1\.0 oder 0.0 |
-| availability [0] count |ganze Zahl |100/([Stichproben](app-insights-sampling.md)-Prozentsatz). Beispiel: 4 =&gt; 25%. |
+| availability [0] availabilityMetric.name |string |Verfügbarkeit |
+| availability [0] availabilityMetric.value |number |1.0 oder 0.0 |
+| availability [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | availability [0] dataSizeMetric.name |string | |
 | availability [0] dataSizeMetric.value |integer | |
 | availability [0] durationMetric.name |string | |
@@ -286,7 +292,7 @@ Liefert Berichtdaten zu [Verfügbarkeitswebtests](app-insights-monitor-web-app-a
 | availability [0] testRunId |string | |
 | availability [0] testTimestamp |string | |
 
-## Metriken
+## <a name="metrics"></a>Metriken
 Generiert von TrackMetric().
 
 Der Metrikwert befindet sich in context.custom.metrics[0].
@@ -316,7 +322,7 @@ Beispiel:
          } ] }
     }
 
-## Grundlegendes zu Metrikwerten
+## <a name="about-metric-values"></a>Grundlegendes zu Metrikwerten
 Informationen zu Metrikwerten werden, sowohl in Metrikberichten als auch an anderer Stelle, mit einer Standardobjektstruktur bereitgestellt. Beispiel:
 
       "durationMetric": {
@@ -338,12 +344,16 @@ In den obigen Tabellen wurden die selten verwendeten Felder „count“, „min�
 
 Anstelle einer Vorabaggretation von Metriken können Sie die [Stichprobenerstellung](app-insights-sampling.md) nutzen, wenn Sie den Umfang der Telemetriedaten verringern möchten.
 
-### Zeitspannen
+### <a name="durations"></a>Zeitspannen
 Sofern nicht anders angegeben, wird die Dauer in Zehnteln einer Mikrosekunde angegeben, d. h. 10000000.0 entspricht 1 Sekunde.
 
-## Weitere Informationen
-* [Application Insights](app-insights-overview.md) 
+## <a name="see-also"></a>Weitere Informationen
+* [Application Insights](app-insights-overview.md)
 * [Fortlaufender Export](app-insights-export-telemetry.md)
 * [Codebeispiele](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

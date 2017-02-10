@@ -1,13 +1,13 @@
 ---
-title: Accelerated Networking für einen virtuellen Computer – PowerShell | Microsoft Docs
-description: Erfahren Sie etwas über das Konfigurieren von Accelerated Networking für einen virtuellen Azure-Computer mithilfe von PowerShell.
+title: "Accelerated Networking für einen virtuellen Computer – PowerShell | Microsoft Docs"
+description: "Erfahren Sie etwas über das Konfigurieren von Accelerated Networking für einen virtuellen Azure-Computer mithilfe von PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: a0b63599-c23b-40b5-a8ab-23af8b07dded
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 8ae59a99a8397676160c032b744460c0b2bcc1d7
+
 
 ---
 # <a name="accelerated-networking-for-a-virtual-machine"></a>Accelerated Networking für virtuelle Computer
@@ -50,7 +54,7 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 * **VM-Erstellung:** Eine Netzwerkschnittstelle, auf der Accelerated Networking aktiviert ist, kann nur an eine VM angefügt werden, während diese VM erstellt wird. Die Netzwerkschnittstelle kann nicht an vorhandene virtuelle Computer angefügt werden.
 * **Regionen:** Dieses Angebot gilt nur in den Regionen USA, Westen-Mitte und Europa, Westen. Die Anzahl der Regionen wird in Zukunft noch erweitert.
 * **Unterstützte Betriebssysteme:** Microsoft Windows Server 2012 R2 und Windows Server 2016 Technical Preview 5. Die Unterstützung für Linux und Windows Server 2012 wird in Kürze hinzugefügt.
-* **VM-Größe:** Es werden nur die VM-Instanzgrößen „Standard_D15_v2“ und „Standard_DS15_v2“ unterstützt. Weitere Informationen finden Sie im Artikel [Windows-VM-Größen](../virtual-machines/virtual-machines-windows-sizes.md) . Die Anzahl von unterstützten VM-Instanzgrößen wird in Zukunft erweitert werden.
+* **VM-Größe:** Es werden nur die VM-Instanzgrößen „Standard_D15_v2“ und „Standard_DS15_v2“ unterstützt. Weitere Informationen finden Sie im Artikel [Windows-VM-Größen](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Die Anzahl von unterstützten VM-Instanzgrößen wird in Zukunft erweitert werden.
 
 Änderungen an diesen Einschränkungen werden auf der Seite [Azure-Updates für Virtual Network](https://azure.microsoft.com/updates/accelerated-networking-in-preview) bekannt gemacht.
 
@@ -111,7 +115,7 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
 10. Wenn Sie der Schnittstelle keine öffentliche IP-Adressressource hinzufügen möchten, entfernen Sie *-PublicIPAddress $PIP1* am Ende des folgenden Befehls. Sie erstellen die Netzwerkschnittstelle mit Accelerated Networking, indem Sie den folgenden Befehl eingeben:
     
         $nic = New-AzureRmNetworkInterface -Location $locName -Name $NICName -ResourceGroupName $rgName -Subnet $Subnet -EnableAcceleratedNetworking -PublicIpAddress $PIP1 
-11. Sie weisen die Netzwerkschnittstelle einem virtuellen Computer beim Erstellen hinzu, indem Sie die Schritte 3 und 6 im Artikel [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-ps-create.md) befolgen. Ersetzen Sie in Schritt 6-2 *Standard_A1* durch eine der VM-Größen, die im Abschnitt [Einschränkungen](#limitations) dieses Artikels angegeben werden.
+11. Sie weisen die Netzwerkschnittstelle einem virtuellen Computer beim Erstellen hinzu, indem Sie die Schritte 3 und 6 im Artikel [Erstellen eines virtuellen Computers](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) befolgen. Ersetzen Sie in Schritt 6-2 *Standard_A1* durch eine der VM-Größen, die im Abschnitt [Einschränkungen](#limitations) dieses Artikels angegeben werden.
     
     > [!NOTE]
     > Wenn Sie den *Namen* der Variablen $locName, $rgName oder $nic in diesem Artikel geändert haben, schlägt Schritt 6 im Artikel „Erstellen eines virtuellen Computers“ fehl. Sie können die *Werte* der Variablen jedoch ändern.
@@ -122,6 +126,9 @@ Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
     
     ![Geräte-Manager](./media/virtual-network-accelerated-networking-powershell/image2.png)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,23 +1,27 @@
 ---
-title: Erstellen von Wiederherstellungsplänen | Microsoft Docs
-description: Erstellen von Wiederherstellungsplänen mit Azure Site Recovery, Failover und Wiederherstellung von Gruppen von virtuellen Maschinen und physischen Servern.
+title: "Erstellen von Wiederherstellungsplänen | Microsoft Docs"
+description: "Erstellen von Wiederherstellungsplänen mit Azure Site Recovery, Failover und Wiederherstellung von Gruppen von virtuellen Maschinen und physischen Servern."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 3cc2aa0ade25417a1e2a8fb96fc3a059349afa99
+
 
 ---
 # <a name="create-recovery-plans"></a>Erstellen von Wiederherstellungsplänen
-Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Datencenter repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
+Der Dienst Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden. Computer können in Azure oder in einem sekundären lokalen Rechenzentrum repliziert werden. Eine kurze Übersicht über das Gesamtthema finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Informationen zum Erstellen und Anpassen von Wiederherstellungsplänen. 
@@ -41,7 +45,7 @@ Beachten Sie Folgendes:
   * Schreiben Sie Skripts mit Windows PowerShell.
   * Achten Sie darauf, dass in Skripts try/catch-Blöcke verwendet werden, damit die Ausnahmen ordnungsgemäß behandelt werden. Falls im Skript eine Ausnahme auftritt, wird die Ausführung gestoppt, und für die Aufgabe wird ein Fehler angezeigt.  Wenn ein Fehler auftritt, wird der verbleibende Teil des Skripts nicht ausgeführt. Falls dies beim Ausführen eines ungeplanten Failovers auftritt, wird der Wiederherstellungsplan fortgesetzt. Falls dies beim Ausführen eines geplanten Failovers auftritt, wird der Wiederherstellungsplan gestoppt. Korrigieren Sie in diesem Fall das Skript, überprüfen Sie, ob es wie erwartet ausgeführt wird, und führen Sie den Wiederherstellungsplan dann erneut aus.
   * Der Write-Host-Befehl funktioniert in einem Wiederherstellungsplanskript nicht, und die Ausführung des Skripts ist nicht erfolgreich. Wenn Sie eine Ausgabe erstellen möchten, erstellen Sie ein Proxyskript, mit dem wiederum Ihr Hauptskript ausgeführt wird. Stellen Sie sicher, dass die gesamte Ausgabe mit dem Befehl „>>“ markiert wird.
-  * Die Zeitüberschreitung für das Skript wird erreicht, falls die Rückgabe nicht innerhalb von 600 Sekunden erfolgt.
+  * Die Zeitüberschreitung für das Skript wird erreicht, falls die Rückgabe nicht innerhalb von 600 Sekunden erfolgt.
   * Falls etwas in STDERR geschrieben wird, wird das Skript als nicht erfolgreich klassifiziert. Diese Informationen werden in den Details zur Skriptausführung angezeigt.
   * Beachten Sie Folgendes, wenn Sie VMM in Ihrer Bereitstellung verwenden:
     
@@ -52,7 +56,7 @@ Beachten Sie Folgendes:
       * Öffnen Sie den Registrierungseditor, und navigieren Sie zu HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration.
       * Bearbeiten Sie „ScriptLibraryPath“, indem Sie dafür den Wert „\\libserver2.contoso.com\share\.“ festlegen. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an.
       * Stellen Sie sicher, dass Sie das Skript mit einem Benutzerkonto testen, für das die gleichen Berechtigungen wie für das VMM-Dienstkonto gelten. So wird dafür gesorgt, dass eigenständige getestete Skripts genauso wie in Wiederherstellungsplänen ausgeführt werden. Legen Sie für die Ausführungsrichtlinie auf dem VMM-Server wie folgt eine Umleitung fest:
-        * Öffnen Sie die Windows PowerShell-Konsole (64 Bit) mit erweiterten Berechtigungen.
+        * Öffnen Sie die Windows PowerShell-Konsole (64 Bit) mit erweiterten Berechtigungen.
         * Geben Sie Folgendes ein: **Set-executionpolicy bypass**. [Weitere Details](https://technet.microsoft.com/library/ee176961.aspx)
 
 ## <a name="create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
@@ -79,7 +83,7 @@ Erstellen Sie einen Wiederherstellungsplan wie folgt:
 Nachdem Sie geschützte virtuelle Computer oder Replikationsgruppen der standardmäßigen Wiederherstellungsplangruppe hinzugefügt und den Plan erstellt haben, können Sie ihn anpassen:
 
 * **Hinzufügen neuer Gruppen**: Sie können weitere Wiederherstellungsplangruppen hinzufügen. Gruppen werden in der Reihenfolge nummeriert, in der sie von Ihnen hinzugefügt werden. Sie können bis zu sieben Gruppen hinzufügen. Sie können diesen neuen Gruppen weitere Computer oder Replikationsgruppen hinzufügen. Beachten Sie, dass ein virtueller Computer oder eine Replikationsgruppe nur in eine Wiederherstellungsplangruppe eingefügt werden kann.
-* **Hinzufügen eines Skripts **: Sie können Skripts für die Ausführung vor oder nach einer Wiederherstellungsplangruppe hinzufügen. Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem folgenden Namen erstellt: „Group 1: Pre-steps“. Alle Vorabschritte werden in diesem Satz aufgelistet. Beachten Sie, dass Sie am primären Standort nur dann ein Skript hinzufügen können, wenn Sie einen VMM-Server bereitgestellt haben.
+* **Hinzufügen eines Skripts **: Sie können Skripts für die Ausführung vor oder nach einer Wiederherstellungsplangruppe hinzufügen. Hierbei wird für die Gruppe ein neuer Satz mit Aktionen hinzugefügt. Eine Gruppe von Vorabschritten für „Group 1“ wird beispielsweise mit dem folgenden Namen erstellt: „Group 1: Pre-steps“. Alle Vorabschritte werden in diesem Satz aufgelistet. Beachten Sie, dass Sie am primären Standort nur dann ein Skript hinzufügen können, wenn Sie einen VMM-Server bereitgestellt haben.
 * **Hinzufügen einer manuellen Aktion**: Sie können manuelle Aktionen hinzufügen, die vor oder nach einer Wiederherstellungsplangruppe ausgeführt werden. Wenn der Wiederherstellungsplan ausgeführt wird, wird er an dem Punkt angehalten, an dem Sie die manuelle Aktion eingefügt haben. In einem Dialogfeld werden Sie aufgefordert anzugeben, dass die manuelle Aktion abgeschlossen wurde.
 
 ## <a name="extend-recovery-plans-with-scripts"></a>Erweitern von Wiederherstellungsplänen mit Skripts
@@ -92,7 +96,7 @@ Sie können Ihrem Wiederherstellungsplan ein Skript hinzufügen:
 Erstellen Sie das Skript wie folgt:
 
 1. Erstellen Sie einen neuen Ordner in der Bibliotheksfreigabe, z.B. „\<VMMServerName>\MSSCVMMLibrary\RPScripts“. Platzieren Sie diese Datei auf dem VMM-Quell- und -Zielserver.
-2. Erstellen Sie das Skript (z. B. RPScript), und überprüfen Sie, ob es wie erwartet funktioniert.
+2. Erstellen Sie das Skript (z. B. RPScript), und überprüfen Sie, ob es wie erwartet funktioniert.
 3. Platzieren Sie das Skript unter „\<VMMServerName>\MSSCVMMLibrary“ auf dem VMM-Quell- und -Zielserver.
 
 ### <a name="create-an-azure-automation-runbook"></a>Erstellen eines Azure-Automatisierungsrunbooks
@@ -107,8 +111,11 @@ Sie können Ihren Wiederherstellungsplan erweitern, indem Sie als Teil des Plans
 6. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können unterschiedliche Arten von Failover-Wiederherstellungsplänen ausführen, z. B. ein Testfailover zum Überprüfen Ihrer Umgebung. Außerdem können Sie ein geplantes oder ungeplantes Failover ausführen. [Weitere Informationen](site-recovery-failover.md).
+Sie können unterschiedliche Arten von Failover-Wiederherstellungsplänen ausführen, z. B. ein Testfailover zum Überprüfen Ihrer Umgebung. Außerdem können Sie ein geplantes oder ungeplantes Failover ausführen. [Weitere Informationen](site-recovery-failover.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Ersetzen des Gehäuses eines StorSimple-Geräts | Microsoft Docs
-description: Beschreibt das Entfernen und Ersetzen des primären StorSimple- oder EBOD-Gehäuses.
+title: "Ersetzen des Gehäuses eines StorSimple-Geräts | Microsoft Docs"
+description: "Beschreibt das Entfernen und Ersetzen des primären StorSimple- oder EBOD-Gehäuses."
 services: storsimple
-documentationcenter: ''
+documentationcenter: 
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 537659ed-4c46-49c1-b1e4-186262f2542d
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0f2568dac43a0fa870c7b3db7bde3458e7cfafd8
+
 
 ---
-# Ersetzen des Gehäuses des StorSimple-Geräts
-## Übersicht
-In diesem Tutorial wird erläutert, wie Sie das Gehäuse eines StorSimple-Geräts der 8000-Serie austauschen oder entfernen. Das StorSimple-Modell 8100 ist ein Gerät mit einem einzelnen Gehäuse, das Modell 8600 ein Gerät mit zwei Gehäusen. Beim Modell 8600 können potenziell zwei Gehäuse im Gerät ausfallen: das primäre Gehäuse oder das EBOD-Gehäuse.
+# <a name="replace-the-chassis-on-your-storsimple-device"></a>Ersetzen des Gehäuses des StorSimple-Geräts
+## <a name="overview"></a>Übersicht
+In diesem Tutorial wird erläutert, wie Sie das Gehäuse eines StorSimple-Geräts der 8000-Serie austauschen oder entfernen. Das StorSimple-Modell 8100 ist ein Gerät mit einem einzelnen Gehäuse, das Modell 8600 ein Gerät mit zwei Gehäusen. Beim Modell 8600 können potenziell zwei Gehäuse im Gerät ausfallen: das primäre Gehäuse oder das EBOD-Gehäuse.
 
 In beiden Fällen wird ein leeres Ersatzgehäuse von Microsoft ausgeliefert. Die Gehäuse enthalten keine Stromversorgungs- und Kühleinheiten (PCMs), Controllermodule, SSDs (Solid-State-Festplatten), HDDs (Festplattenlaufwerke) oder EBOD-Module.
 
@@ -27,22 +31,22 @@ In beiden Fällen wird ein leeres Ersatzgehäuse von Microsoft ausgeliefert. Die
 > 
 > 
 
-## Entfernen des Gehäuses
+## <a name="remove-the-chassis"></a>Entfernen des Gehäuses
 Führen Sie die folgenden Schritte aus, um das Gehäuse des StorSimple-Geräts zu entfernen.
 
-#### So entfernen Sie ein Gehäuse
+#### <a name="to-remove-a-chassis"></a>So entfernen Sie ein Gehäuse
 1. Stellen Sie sicher, dass das StorSimple-Gerät ausgeschaltet und von der Stromversorgung getrennt ist.
 2. Entfernen Sie ggf. alle Netzwerk- und SAS-Kabel.
 3. Entfernen Sie die Einheit aus dem Rack.
 4. Entfernen Sie alle Laufwerke, und notieren Sie sich die Steckplätze, aus denen sie entfernt werden. Weitere Informationen finden Sie unter [Entfernen der Festplatte](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
-5. Entfernen Sie die EBOD-Controllermodule aus dem EBOD-Gehäuse (falls dies das fehlerhafte Gehäuse ist). Weitere Informationen finden Sie unter [Entfernen eines EBOD-Controllers](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller).
+5. Entfernen Sie die EBOD-Controllermodule aus dem EBOD-Gehäuse (falls dies das fehlerhafte Gehäuse ist). Weitere Informationen finden Sie unter [Entfernen eines EBOD-Controllers](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
    
     Entfernen Sie die Controller aus dem primären Gehäuse (falls dies das fehlerhafte Gehäuse ist), und notieren Sie sich die Steckplätze, aus denen sie entfernt werden. Weitere Informationen finden Sie unter [Entfernen eines Controllers](storsimple-controller-replacement.md#remove-a-controller).
 
-## Installieren des Gehäuses
+## <a name="install-the-chassis"></a>Installieren des Gehäuses
 Führen Sie die folgenden Schritte aus, um das Gehäuse in Ihrem StorSimple-Gerät zu installieren.
 
-#### So installieren Sie ein Gehäuse
+#### <a name="to-install-a-chassis"></a>So installieren Sie ein Gehäuse
 1. Installieren Sie das Gehäuse im Rack. Weitere Informationen finden Sie unter [Einbauen des StorSimple 8100-Geräts in ein Rack](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) oder [Einbauen des StorSimple 8600-Geräts in ein Rack](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
 2. Nachdem Sie das Gehäuse in das Rack eingebaut haben, installieren Sie die Controllermodule an den gleichen Positionen, an denen sie sich zuvor befanden.
 3. Installieren Sie die Laufwerke an den gleichen Positionen und Steckplätzen, an denen sie zuvor installiert waren.
@@ -53,7 +57,12 @@ Führen Sie die folgenden Schritte aus, um das Gehäuse in Ihrem StorSimple-Ger�
    > 
 4. Nach dem Einbau des Geräts und der Installation der Komponenten verbinden Sie das Gerät mit den entsprechenden Stromquellen, und schalten Sie es ein. Weitere Informationen finden Sie unter [Verkabeln des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) bzw. [Verkabeln des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

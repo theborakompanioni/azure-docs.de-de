@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie Azure StorSimple (eine integrierte Speicherlösung, die Speicheraufgaben zwischen lokalen Geräten und Azure-Cloudspeicher verwaltet) verwendet."
 translationtype: Human Translation
-ms.sourcegitcommit: 87b9d22ec066108adb282606305315919b901ea0
-ms.openlocfilehash: 42f5ac0bae68b967378b5e1a090f3b17e4efad20
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: c3523cfef54f6084326b913d548449f4a9b646a9
 
 ---
 #<a name="storsimple-documentation"></a>StorSimple-Dokumentation
 
-StorSimple und Microsoft Azure bieten eine einzigartige, integrierte primäre Speicherarchivierungs- und Notfallwiederherstellungslösung, bei der Azure als Erweiterung des lokalen Speichers genutzt wird. Es wird beschrieben, wie Sie Ihre StorSimple-Lösung bereitstellen und verwalten.
+Hier erfahren Sie, wie Sie Azure StorSimple (eine integrierte Speicherlösung, die Speicheraufgaben zwischen lokalen Geräten und Azure-Cloudspeicher verwaltet) verwendet. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Speicherverwaltung, ortsunabhängige Sicherung und Notfallwiederherstellung einrichten.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -137,16 +138,10 @@ StorSimple und Microsoft Azure bieten eine einzigartige, integrierte primäre Sp
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/storsimple.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der StorSimple-Dokumentation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

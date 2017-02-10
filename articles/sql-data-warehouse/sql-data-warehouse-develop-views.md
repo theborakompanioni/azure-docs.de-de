@@ -1,33 +1,37 @@
 ---
 title: Sichten in SQL Data Warehouse | Microsoft Docs
-description: Tipps für die Verwendung von Transact-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+description: "Tipps für die Verwendung von Transact-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: b5208f32-8f4a-4056-8788-2adbb253d9fd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 07/01/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eada95920b3f539c70776964eb62ff9e4d219ddd
+
 
 ---
-# Sichten in SQL Data Warehouse
-Sichten sind in SQL Data Warehouse besonders nützlich. Sie können auf verschiedene Weisen zur Verbesserung der Qualität der Lösung verwendet werden. Dieser Artikel enthält einige Beispiele dafür, wie Sie Ihre Lösung mit Sichten bereichern können, sowie Informationen zu den Einschränkungen, die zu berücksichtigen sind.
+# <a name="views-in-sql-data-warehouse"></a>Sichten in SQL Data Warehouse
+Sichten sind in SQL Data Warehouse besonders nützlich. Sie können auf verschiedene Weisen zur Verbesserung der Qualität der Lösung verwendet werden.  Dieser Artikel enthält einige Beispiele dafür, wie Sie Ihre Lösung mit Sichten bereichern können, sowie Informationen zu den Einschränkungen, die zu berücksichtigen sind.
 
 > [!NOTE]
 > Die Syntax für `CREATE VIEW` wird in diesem Artikel nicht erörtert. Sie finden diese Informationen unter [CREATE VIEW][CREATE VIEW] auf der MSDN-Website.
 > 
 > 
 
-## Architekturabstraktion
+## <a name="architectural-abstraction"></a>Architekturabstraktion
 Ein häufig verwendetes Anwendungsmuster ist das erneute Erstellen von Tabellen mit CREATE TABLE AS SELECT (CTAS) gefolgt von einem Muster zur Objektumbenennung beim Laden von Daten.
 
-Im folgenden Beispiel werden einer Datumsdimension neue Datumsdatensätze hinzugefügt. Beachten Sie, wie eine neue Tabelle (DimDate\_New) zuerst erstellt und dann umbenannt wird, um die ursprüngliche Version der Tabelle zu ersetzen.
+Im folgenden Beispiel werden einer Datumsdimension neue Datumsdatensätze hinzugefügt. Beachten Sie, wie eine neue Tabelle (DimDate_New) zuerst erstellt und dann umbenannt wird, um die ursprüngliche Version der Tabelle zu ersetzen.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -47,13 +51,13 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Dieser Ansatz kann aber auch dazu führen, dass Tabellen in der Sicht eines Benutzers ein- und ausgeblendet und Fehlermeldungen der Art „Tabelle nicht vorhanden“ angezeigt werden. Sichten können verwendet werden, um eine konsistente Darstellungsschicht für Benutzer bereitzustellen, während die zugrunde liegenden Objekte umbenannt werden. Indem Benutzern der Zugriff auf Daten über Sichten gewährt wird, benötigen sie keine Einblicke in die zugrunde liegenden Tabellen. Dadurch wird eine einheitliche Benutzererfahrung gewährleistet, während die Data Warehouse-Designer das Datenmodell weiterentwickeln und die Leistung maximieren können, indem sie beim Datenladevorgang CTAS verwenden.
+Dieser Ansatz kann aber auch dazu führen, dass Tabellen in der Sicht eines Benutzers ein- und ausgeblendet und Fehlermeldungen der Art „Tabelle nicht vorhanden“ angezeigt werden. Sichten können verwendet werden, um eine konsistente Darstellungsschicht für Benutzer bereitzustellen, während die zugrunde liegenden Objekte umbenannt werden. Indem Benutzern der Zugriff auf Daten über Sichten gewährt wird, benötigen sie keine Einblicke in die zugrunde liegenden Tabellen. Dadurch wird eine einheitliche Benutzererfahrung gewährleistet, während die Data Warehouse-Designer das Datenmodell weiterentwickeln und die Leistung maximieren können, indem sie beim Datenladevorgang CTAS verwenden.    
 
-## Leistungsoptimierung
-Sichten können auch genutzt werden, um leistungsoptimierte Verknüpfungen zwischen Tabellen durchzusetzen. Beispielsweise kann eine Sicht einen redundanten Verteilungsschlüssel als Teil des Verknüpfungskriteriums enthalten, um die Datenverschiebung zu minimieren. Ein weiterer Vorteil einer Sicht kann beispielsweise sein, eine bestimmte Abfrage oder einen Verknüpfungshinweis zu erzwingen. Durch den Einsatz von Sichten auf diese Weise wird sichergestellt, dass Verknüpfungen immer optimal durchgeführt werden, und Benutzer müssen sich nicht mehr das richtige Konstrukt für ihre Verknüpfungen merken.
+## <a name="performance-optimization"></a>Leistungsoptimierung
+Sichten können auch genutzt werden, um leistungsoptimierte Verknüpfungen zwischen Tabellen durchzusetzen. Beispielsweise kann eine Sicht einen redundanten Verteilungsschlüssel als Teil des Verknüpfungskriteriums enthalten, um die Datenverschiebung zu minimieren.  Ein weiterer Vorteil einer Sicht kann beispielsweise sein, eine bestimmte Abfrage oder einen Verknüpfungshinweis zu erzwingen. Durch den Einsatz von Sichten auf diese Weise wird sichergestellt, dass Verknüpfungen immer optimal durchgeführt werden, und Benutzer müssen sich nicht mehr das richtige Konstrukt für ihre Verknüpfungen merken.
 
-## Einschränkungen
-Sichten in SQL Data Warehouse bestehen nur aus Metadaten Daher sind die folgenden Optionen nicht verfügbar:
+## <a name="limitations"></a>Einschränkungen
+Sichten in SQL Data Warehouse bestehen nur aus Metadaten  Daher sind die folgenden Optionen nicht verfügbar:
 
 * Es gibt keine Schemabindungsoption.
 * Basistabellen können nicht über die Ansicht aktualisiert werden.
@@ -61,17 +65,22 @@ Sichten in SQL Data Warehouse bestehen nur aus Metadaten Daher sind die folgende
 * EXPAND/NOEXPAND-Hinweise werden nicht unterstützt.
 * Es sind keine indizierten Sichten in SQL Data Warehouse verfügbar.
 
-## Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [SQL Data Warehouse-Entwicklungsübersicht][SQL Data Warehouse-Entwicklungsübersicht]. Die Syntax für `CREATE VIEW` finden Sie unter [CREATE VIEW][CREATE VIEW].
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse][Entwicklungsübersicht für SQL Data Warehouse].
+Die Syntax für `CREATE VIEW` finden Sie unter [CREATE VIEW][CREATE VIEW].
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse-Entwicklungsübersicht]: ./sql-data-warehouse-overview-develop.md
+[Entwicklungsübersicht für SQL Data Warehouse]: ./sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[CREATE VIEW]: https://msdn.microsoft.com/de-DE/library/ms187956.aspx
+[CREATE VIEW]: https://msdn.microsoft.com/en-us/library/ms187956.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

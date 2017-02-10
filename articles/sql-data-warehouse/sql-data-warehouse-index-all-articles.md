@@ -1,19 +1,23 @@
 ---
 title: Alle Themen zum SQL Data Warehouse-Dienst | Microsoft Docs
-description: Tabelle mit allen Themen für den Azure-Dienst namens „SQL Data Warehouse“ in https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung.
+description: "Tabelle mit allen Themen für den Azure-Dienst namens „SQL Data Warehouse“ in https://azure.microsoft.com/de-de/documentation/articles/, Titel und Beschreibung."
 services: sql-data-warehouse
-documentationcenter: ''
+documentationcenter: 
 author: barbkess
 manager: jhubbard
-editor: MightyPen
-
+editor: 
+ms.assetid: a26a6dec-9c08-4415-8f58-4ee1dd41f718
 ms.service: sql-data-warehouse
 ms.workload: sql-data-warehouse
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ab5b0c283d1bd3fd1b734082d5ccffa4125f6de4
+
 
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>Alle Themen für den Azure SQL Data Warehouse-Dienst
@@ -22,9 +26,9 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Data Warehouse-Dien
 ## <a name="new"></a>Neu
 | &nbsp; | Titel | Beschreibung |
 | ---:|:--- |:--- |
-| 1 |[SQL Data Warehouse-Sicherungen](sql-data-warehouse-backup.md) |Erfahren Sie, wie integrierte SQL Data Warehouse-Datenbanksicherungen Ihnen ermöglichen, ein Azure SQL Data Warehouse auf einen Wiederherstellungspunkt in einer anderen geografischen Region wiederherzustellen. |
+| 1 |[SQL Data Warehouse-Sicherungen](sql-data-warehouse-backups.md) |Erfahren Sie, wie integrierte SQL Data Warehouse-Datenbanksicherungen Ihnen ermöglichen, ein Azure SQL Data Warehouse auf einen Wiederherstellungspunkt in einer anderen geografischen Region wiederherzustellen. |
 
-## <a name="updated-articles,-sql-data-warehouse"></a>Aktualisierte Artikel zu SQL Data Warehouse
+## <a name="updated-articles-sql-data-warehouse"></a>Aktualisierte Artikel zu SQL Data Warehouse
 In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umfangreichen oder wesentlichen Update aktualisiert wurden. Für jeden aktualisierten Artikel wird ein grober Ausschnitt des hinzugefügten Markdowntexts angezeigt. Die Artikel wurden zwischen dem **22.08.2016** und dem **05.10.2016** aktualisiert.
 
 | &nbsp; | Artikel | Aktualisierter Text, Ausschnitt | Aktualisierungsdatum |
@@ -75,7 +79,7 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | 33 |[Verwalten von Computeleistung für Azure SQL Data Warehouse (PowerShell)](sql-data-warehouse-manage-compute-powershell.md) |PowerShell-Aufgaben zum Verwalten von Computeleistung. Skalieren von Computeressourcen durch Anpassen der DWUs Sie können Computeressourcen auch nach Bedarf anhalten und fortsetzen, um Kosten zu sparen. |
 | 34 |[Verwalten von Computeleistung in Azure SQL Data Warehouse (REST)](sql-data-warehouse-manage-compute-rest-api.md) |PowerShell-Aufgaben zum Verwalten von Computeleistung. Skalieren von Computeressourcen durch Anpassen der DWUs Sie können Computeressourcen auch nach Bedarf anhalten und fortsetzen, um Kosten zu sparen. |
 | 35 |[Verwalten von Computeleistung in Azure SQL Data Warehouse (T-SQL)](sql-data-warehouse-manage-compute-tsql.md) |Transact-SQL-Aufgaben (T-SQL) zur horizontalen Hochskalierung durch Anpassen der DWUs Sparen Sie Kosten, indem Sie während Nicht-Spitzenzeiten herunterskalieren. |
-| 36 |[Überwachen Ihres Workloads mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md) |Informationen zum Überwachen Ihres Workloads mit dynamischen Verwaltungssichten. |
+| 36 |[Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md) |Informationen zum Überwachen Ihrer Workload mit dynamischen Verwaltungssichten. |
 | 37 |[Verwalten von Datenbanken in Azure SQL Data Warehouse](sql-data-warehouse-overview-manage.md) |Übersicht über die Verwaltung von SQL Data Warehouse-Datenbanken. Enthält Verwaltungstools, DWUs und horizontale Leistungsskalierung, Problembehandlung für die Abfrageleistung, sinnvolle Sicherheitsrichtlinien und das Wiederherstellen einer Datenbank nach Datenbeschädigung oder einem regionalen Ausfall. |
 | 38 |[Überwachen von Benutzeranfragen in Azure SQL Data Warehouse](sql-data-warehouse-overview-manage-user-queries.md) |Übersicht über Überlegungen, bewährte Methoden und Aufgaben für die Überwachung von Benutzeranfragen in Azure SQL Data Warehouse. |
 | 11,9 |[SQL Data Warehouse-Wiederherstellung](sql-data-warehouse-restore-database-overview.md) |Übersicht über die Wiederherstellungsoptionen zur Wiederherstellung einer Datenbank in Azure SQL Data Warehouse. |
@@ -157,9 +161,12 @@ In diesem Abschnitt werden Artikel aufgelistet, die kürzlich mit einem sehr umf
 | 83 |[Installieren von Visual Studio 2015 und SSDT für SQL Data Warehouse](sql-data-warehouse-install-visual-studio.md) |Installieren von Visual Studio und SQL Server Data Tools (SSDT) für Azure SQL Data Warehouse |
 | 84 |[Details zur Migration zu Storage Premium](sql-data-warehouse-migrate-to-premium-storage.md) |Anweisungen zum Migrieren eines vorhandenen SQL Data Warehouse in Storage Premium |
 | 85 |[Erste Schritte mit der Bedrohungserkennung](sql-data-warehouse-security-threat-detection.md) |Erste Schritte mit der Bedrohungserkennung |
-| 86 |[Kapazitätsgrenzen von SQL Data Warehouse](sql-data-warehouse-service-capacity-limits.md) |Maximale Werte für Verbindungen, Datenbanken, Tabellen und Abfragen für SQL Data Warehouse. |
+| 86 |[Kapazitätsgrenzen von SQL Data Warehouse](sql-data-warehouse-service-capacity-limits.md) |Maximale Werte für Verbindungen, Datenbanken, Tabellen und Abfragen für SQL Data Warehouse. |
 | 87 |[Problembehandlung bei Azure SQL Data Warehouse](sql-data-warehouse-troubleshoot.md) |Problembehandlung bei Azure SQL Data Warehouse. |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

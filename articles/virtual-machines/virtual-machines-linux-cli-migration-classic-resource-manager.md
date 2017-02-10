@@ -1,13 +1,13 @@
 ---
 title: Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
-description: In diesem Artikel wird die plattformgestützte Migration von Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle erläutert.
+description: "In diesem Artikel wird die plattformgestützte Migration von Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle erläutert."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,23 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3fa3dacd0b5e2ad97cd751395d58ef3afe92aee3
+
 
 ---
-# Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle
-Diese Schritte zeigen, wie Sie Befehle der Azure-Befehlszeilenschnittstelle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden. Für diesen Artikel ist die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) erforderlich.
+# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle
+Diese Schritte zeigen, wie Sie Befehle der Azure-Befehlszeilenschnittstelle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden. Für diesen Artikel ist die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md)erforderlich.
 
 > [!NOTE]
 > Alle hier beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 > 
 > 
 
-## Schritt 1: Vorbereiten der Migration
+## <a name="step-1-prepare-for-migration"></a>Schritt 1: Vorbereiten der Migration
 Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie eine Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager in Erwägung ziehen:
 
 * Sehen Sie sich die [Liste mit nicht unterstützten Konfigurationen und Features](virtual-machines-windows-migration-classic-resource-manager.md) an. Verwenden Ihre virtuellen Computer nicht unterstützte Konfigurationen oder Features, empfiehlt es sich, zu warten, bis die Unterstützung für die entsprechenden Features/Konfigurationen angekündigt wird. Alternativ können Sie ggf. die betroffenen Features entfernen oder eine andere Konfiguration verwenden, um die Migration zu ermöglichen.
 * Wenn Sie derzeit über automatisierte Skripts zum Bereitstellen Ihrer Infrastruktur und Anwendungen verfügen, versuchen Sie, mithilfe dieser Skripts für die Migration eine ähnliche Testeinrichtung zu erstellen. Alternativ dazu können Sie über das Azure-Portal Beispielumgebungen einrichten.
 
-## Schritt 2: Festlegen des Abonnements und Registrieren des Anbieters
+## <a name="step-2-set-your-subscription-and-register-the-provider"></a>Schritt 2: Festlegen des Abonnements und Registrieren des Anbieters
 Für Migrationsszenarien müssen Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager einrichten. [Installieren Sie die Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), und [wählen Sie Ihr Abonnement aus](../xplat-cli-connect.md).
 
 Melden Sie sich bei Ihrem Konto an.
@@ -43,9 +47,9 @@ Führen Sie zum Auswählen des Azure-Abonnements den folgenden Befehl aus.
     azure account set "<azure-subscription-name>"
 
 > [!NOTE]
-> Die Registrierung ist ein einmaliger Schritt, der jedoch einmal ausgeführt werden muss, bevor Sie versuchen, die Migration auszuführen. Ohne Registrierung wird die folgende Fehlermeldung angezeigt:
+> Die Registrierung ist ein einmaliger Schritt, der jedoch einmal ausgeführt werden muss, bevor Sie versuchen, die Migration auszuführen. Ohne Registrierung wird die folgende Fehlermeldung angezeigt: 
 > 
-> *BadRequest : Subscription is not registered for migration.* 
+> *BadRequest: Subscription is not registered for migration.* (BadRequest: Das Abonnement ist nicht für die Migration registriert.) 
 > 
 > 
 
@@ -61,8 +65,8 @@ Wechseln Sie nun in den `asm`-Modus der Befehlszeilenschnittstelle.
 
     azure config mode asm
 
-## Schritt 3: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
-Für diesen Schritt müssen in den `arm`-Modus wechseln. Führen Sie dazu den folgenden Befehl aus.
+## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Schritt 3: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
+Für diesen Schritt müssen in den `arm` -Modus wechseln. Führen Sie dazu den folgenden Befehl aus.
 
 ```
 azure config mode arm
@@ -74,12 +78,12 @@ Mit dem folgenden CLI-Befehl können Sie Ihre aktuelle Anzahl an Kernen in Azure
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Sobald Sie diesen Schritt überprüft haben, können Sie zurück in den `asm`-Modus wechseln.
+Sobald Sie diesen Schritt überprüft haben, können Sie zurück in den `asm` -Modus wechseln.
 
     azure config mode asm
 
 
-## Schritt 4: Option 1 – Migrieren von virtuellen Computern in einem Clouddienst
+## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Schritt 4: Option 1 – Migrieren von virtuellen Computern in einem Clouddienst
 Rufen Sie mithilfe des folgenden Befehls die Liste mit den Clouddiensten auf, und wählen Sie anschließend den zu migrierenden Clouddienst aus. Beachten Sie: Falls sich die virtuellen Computer im Clouddienst in einem virtuellen Netzwerk befinden oder über Web-/Workerrollen verfügen, wird eine Fehlermeldung zurückgegeben.
 
     azure service list
@@ -112,7 +116,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
 
 
-## Schritt 4: Option 2 – Migrieren von virtuellen Computern in einem virtuellen Netzwerk
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>Schritt 4: Option 2 – Migrieren von virtuellen Computern in einem virtuellen Netzwerk
 Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten. Beachten Sie: Falls das virtuelle Netzwerk Web-/Workerrollen oder virtuelle Computer mit nicht unterstützten Konfigurationen enthält, tritt ein Validierungsfehler auf.
 
 Rufen Sie mithilfe des folgenden Befehls alle virtuellen Netzwerke im Abonnement ab.
@@ -129,7 +133,7 @@ Bereiten Sie das gewünschte virtuelle Netzwerk mithilfe des folgenden Befehls f
 
     azure network vnet prepare-migration <virtualNetworkName>
 
-Überprüfen Sie die Konfiguration der vorbereiteten virtuellen Computer mithilfe der Befehlszeilenschnittstelle oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum vorherigen Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl.
+Überprüfen Sie die Konfiguration der vorbereiteten virtuellen Computer mithilfe der Befehlszeilenschnittstelle oder im Azure-Portal. Wenn Sie noch nicht für die Migration bereit sind und zum alten Zustand zurückkehren möchten, verwenden Sie den folgenden Befehl.
 
     azure network vnet abort-migration <virtualNetworkName>
 
@@ -137,7 +141,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
     azure network vnet commit-migration <virtualNetworkName>
 
-## Schritt 5: Migrieren eines Speicherkontos
+## <a name="step-5-migrate-a-storage-account"></a>Schritt 5: Migrieren eines Speicherkontos
 Sobald Sie mit der Migration der virtuellen Computer fertig sind, sollten Sie das Speicherkonto migrieren.
 
 Bereiten Sie das Speicherkonto Netzwerk mithilfe des folgenden Befehls für die Migration vor.
@@ -152,8 +156,13 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
     azure storage account commit-migration <storageAccountName>
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Plattformgestützte Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md)
 * [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

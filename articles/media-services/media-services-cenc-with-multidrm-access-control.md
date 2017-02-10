@@ -12,43 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 12/11/2016
 ms.author: willzhan;kilroyh;yanmf;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: a4f363fcd05e8596f445ce7d40638c5e27c896e6
+ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
+ms.openlocfilehash: 32c792c097e44d46fef9d161ef8d361e97167224
 
 
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services
-## <a name="key-words"></a>Schlüsselwörter
-Azure Active Directory, Azure Media Services, Azure Media Player, Dynamische Verschlüsselung, Lizenzübermittlung, PlayReady, Widevine, FairPlay, Common Encryption (CENC), Mehrere DRM-Systeme, Axinom, DASH, EME, MSE, JSON Web Token (JWT), Ansprüche, Moderne Browser, Schlüsselrollover, Symmetrischer Schlüssel, Asymmetrischer Schlüssel, OpenID Connect, X.509-Zertifikat.
-
-## <a name="in-this-article"></a>Themen in diesem Artikel
-In diesem Artikel werden die folgenden Themen behandelt:
-
-* [Einführung](media-services-cenc-with-multidrm-access-control.md#introduction)
-  * [Übersicht über diesen Artikel](media-services-cenc-with-multidrm-access-control.md#overview-of-this-article)
-* [Ein Referenzentwurf](media-services-cenc-with-multidrm-access-control.md#a-reference-design)
-* [Zuordnen des Entwurfs zu der zu implementierenden Technologie](media-services-cenc-with-multidrm-access-control.md#mapping-design-to-technology-for-implementation)
-* [Implementierung](media-services-cenc-with-multidrm-access-control.md#implementation)
-  * [Implementierungsverfahren](media-services-cenc-with-multidrm-access-control.md#implementation-procedures)
-  * [Besondere Aspekte bei der Implementierung](media-services-cenc-with-multidrm-access-control.md#some-gotchas-in-implementation)
-* [Zusätzliche Themen für die Implementierung](media-services-cenc-with-multidrm-access-control.md#additional-topics-for-implementation)
-  * [HTTP oder HTTPS](media-services-cenc-with-multidrm-access-control.md#http-or-https)
-  * [Azure Active Directory-Rollover von Signaturschlüsseln](media-services-cenc-with-multidrm-access-control.md#azure-active-directory-signing-key-rollover)
-  * [Wo befindet sich das Zugriffstoken?](media-services-cenc-with-multidrm-access-control.md#where-is-the-access-token)
-  * [Was gilt für Livestreaming?](media-services-cenc-with-multidrm-access-control.md#what-about-live-streaming)
-  * [Was gilt für Lizenzserver außerhalb von Azure Media Services?](media-services-cenc-with-multidrm-access-control.md#what-about-license-servers-outside-of-azure-media-services)
-  * [Was geschieht, wenn ich einen benutzerdefinierten STS verwenden möchte?](media-services-cenc-with-multidrm-access-control.md#what-if-i-want-to-use-a-custom-sts)
-* [Das fertige System und Tests](media-services-cenc-with-multidrm-access-control.md#the-completed-system-and-test)
-  * [Benutzeranmeldung](media-services-cenc-with-multidrm-access-control.md#user-login)
-  * [Verwenden von Encrypted Media Extensions für PlayReady](media-services-cenc-with-multidrm-access-control.md#using-encrypted-media-extensions-for-playready)
-  * [Verwenden von EME für Widevine](media-services-cenc-with-multidrm-access-control.md#using-eme-for-widevine)
-  * [Nicht berechtigte Benutzer](media-services-cenc-with-multidrm-access-control.md#not-entitled-users)
-  * [Ausführen eines benutzerdefinierten Sicherheitstokendiensts](media-services-cenc-with-multidrm-access-control.md#running-custom-secure-token-service)
-* [Zusammenfassung](media-services-cenc-with-multidrm-access-control.md#summary)
-
+ 
 ## <a name="introduction"></a>Einführung
 Es ist allgemein bekannt, dass es ist eine komplexe Aufgabe ist, ein DRM-Subsystem für eine OTT- (Over-The-Top) oder Onlinestreaminglösung zu entwerfen und zu erstellen. Zudem es ist üblich, dass Onlinevideoanbieter diese Aufgabe spezialisierten DRM-Dienstanbietern übertragen. Ziel dieses Dokuments ist es, einen Referenzentwurf und eine Referenzimplementierung eines kompletten DRM-Subsystems in einer OTT- oder Onlinestreaminglösung zu präsentieren.
 
@@ -75,7 +48,7 @@ In diesem Artikel bezieht sich „mehrere DRM-Systeme“ auf Folgendes:
 
 1. Microsoft PlayReady
 2. Google Widevine
-3. Apple FairPlay (noch nicht von Azure Media Services unterstützt)
+3. Apple FairPlay 
 
 In der folgenden Tabelle werden die systemeigene Plattform/App und die Browser vorgestellt, die von jedem DRM-System unterstützt werden.
 
@@ -85,7 +58,7 @@ In der folgenden Tabelle werden die systemeigene Plattform/App und die Browser v
 | **Windows 10-Geräte (Windows-PC, Windows-Tablets, Windows Phone, Xbox)** |PlayReady |MS Edge/IE11/EME<br/><br/><br/>UWP |DASH (für HLS wird PlayReady nicht unterstützt)<br/><br/>DASH, Smooth Streaming (für HLS wird PlayReady nicht unterstützt) |
 | **Android-Geräte (Telefon, Tablet, TV)** |Widevine |Chrome/EME |DASH |
 | **iOS (iPhone, iPad), OS X-Clients und Apple-TV** |FairPlay |Safari 8+/EME |HLS |
-| **Plugin: Adobe Primetime** |Primetime Access |Browser-Plug-in |HDS, HLS |
+
 
 Unter Berücksichtigung des aktuellen Status der Bereitstellung für jedes DRM möchte ein Dienst in der Regel 2 oder 3 DRMs implementieren, um sicherzustellen, dass Sie alle Typen von Endpunkten auf bestmögliche Weise ansprechen.
 
@@ -386,7 +359,7 @@ Es gibt zwei Arten von Sicherheitsschlüsseln:
 #### <a name="tech-note"></a>Technische Hinweise
 Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat des asymmetrischen Schlüssels eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst:
 
-IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als 2048 Bits sein.
+IDX10630: „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“ für die Signierung darf nicht kleiner als&2048; Bits sein.
 
 ## <a name="the-completed-system-and-test"></a>Das fertige System und Tests
 Wir durchlaufen verschiedene Szenarien im fertigen System, damit sich die Leser ein grundlegendes Bild des Verhaltens machen können, bevor sie ein Anmeldekonto erhalten.
@@ -482,12 +455,9 @@ In diesem Dokument haben wir uns mit CENC mit mehreren systemeigenen DRM-Systeme
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-### <a name="acknowledgments"></a>Danksagungen
-William Zhang, Mingfei Yan, Roland Le Franc, Kilroy Hughes, Julia Kornich
+ 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

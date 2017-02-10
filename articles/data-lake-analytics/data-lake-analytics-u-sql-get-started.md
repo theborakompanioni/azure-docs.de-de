@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3ffeeb2e96510342abb0c0f8718273f41729cc2d
+ms.sourcegitcommit: 5137ccfd2c809fe17cc7fdf06941ebd797288d81
+ms.openlocfilehash: 496c3c1cc0f203a58a6f81476393b369e6a76215
 
 
 ---
 # <a name="tutorial-get-started-with-azure-data-lake-analytics-u-sql-language"></a>Tutorial: Erste Schritte mit Azure Data Lake Analytics-U-SQL-Sprache
-U-SQL ist eine Sprache, bei der die Vorteile von SQL mit der Ausdruckskraft Ihres eigenen Codes zum Verarbeiten aller Daten jedweden Umfangs vereint werden. Mit der skalierbaren verteilten Abfragefunktion von U-SQL können Sie Daten im Speicher und über relationale Speicher, z. B. Azure SQL-Datenbank, hinweg effizient analysieren.  Sie können unstrukturierte Daten verarbeiten, indem Sie Schemas auf Lesevorgänge anwenden und benutzerdefinierte Logik und UDFs einfügen. Funktionen zur Erweiterbarkeit sind vorhanden, um eine genaue Kontrolle der Ausführung in größerem Umfang zu ermöglichen. Weitere Informationen zur Entwurfsphilosophie von U-SQL finden Sie in diesem [Visual Studio-Blogbeitrag](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
+U-SQL ist eine Sprache, bei der die Vorteile von SQL mit der Ausdruckskraft Ihres eigenen Codes zum Verarbeiten von Daten jedweden Umfangs vereint werden. Mit der skalierbaren verteilten Abfragefunktion von U-SQL können Sie Daten über relationale Speicher, z.B. Azure SQL-Datenbank, hinweg effizient analysieren.  Sie können unstrukturierte Daten verarbeiten, indem Sie Schemas auf Lesevorgänge anwenden sowie benutzerdefinierte Logik und Funktionen einfügen. Funktionen zur Erweiterbarkeit sind vorhanden, um eine differenzierte Kontrolle der Ausführung nach Maß zu ermöglichen. Weitere Informationen zur Entwurfsphilosophie von U-SQL finden Sie in diesem [Visual Studio-Blogbeitrag](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 Es gibt einige Unterschiede zu ANSI SQL oder T-SQL. Beispielsweise müssen Schlüsselwörter wie SELECT in Großbuchstaben geschrieben werden.
 
 Es handelt sich um eine Typsystem- und Ausdruckssprache innerhalb von Select-Anweisungen, wobei Prädikate, usw. in C# verwendet werden.
-Dies bedeutet, dass die Datentypen die C#-Typen sind und in den Datentypen C#-NULL-Semantik verwendet wird. Die Vergleichsvorgänge innerhalb eines Prädikats basieren auf der C#-Syntax (z. B. a == "foo").  Dies bedeutet auch, dass die Werte vollständige .NET-Objekte sind und dass Sie problemlos alle Methoden für Vorgänge des Objekts verwenden können (z.B. "f o o o".Split(' ')  ).
+Dies bedeutet, dass die Datentypen die C#-Typen sind und in den Datentypen C#-NULL-Semantik verwendet wird. Die Vergleichsvorgänge innerhalb eines Prädikats basieren auf der C#-Syntax (z. B. a == "foo").  Dies bedeutet auch, dass die Werte vollständige .NET-Objekte sind und dass Sie problemlos alle Methoden für Vorgänge des Objekts verwenden können (z.B. "f o o o".Split(' ')).
 
 Weitere Informationen finden Sie unter [U-SQL-Referenz](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
 ### <a name="prerequisites"></a>Voraussetzungen
-Sie müssen das [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)abgeschlossen haben.
+Schließen Sie [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) ab.
 
 In diesem Tutorial haben Sie einen Data Lake Analytics-Auftrag mit dem folgenden U-SQL-Skript ausgeführt:
 
@@ -69,7 +69,7 @@ Einige Konzepte und Schlüsselwörter im Skript:
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
   
   > [!NOTE]
-  > Azure-BLOB-Container mit öffentlichen Blobs oder Zugriffsberechtigungen für öffentliche Container werden derzeit nicht unterstützt.
+  > Azure-Blobcontainer mit öffentlichen Blobs oder Zugriffsberechtigungen für öffentliche Container werden derzeit nicht unterstützt.
   > 
   > 
 
@@ -221,7 +221,7 @@ Die HAVING-U-SQL-Klausel kann verwendet werden, um die Ausgabe auf Gruppen zu be
         USING Outputters.Csv();
 
 ## <a name="join-data"></a>Verknüpfen von Daten
-U-SQL enthält häufig verwendete Verknüpfungsoperatoren, z. B. INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, SEMI JOIN. Damit können nicht nur Tabellen verknüpft werden, sondern auch beliebige Rowsets (auch aus Dateien erzeugte Rowsets).
+U-SQL enthält häufig verwendete Verknüpfungsoperatoren, z.B. INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, SEMI JOIN. Damit können nicht nur Tabellen verknüpft werden, sondern auch beliebige Rowsets (auch aus Dateien erzeugte Rowsets).
 
 Im folgenden Skript wird das searchlog-Element mit einem Ankündigungsaufrufprotokoll verknüpft und gibt die Ankündigungen für die Abfragezeichenfolge für ein bestimmtes Datum aus.
 
@@ -243,7 +243,7 @@ Im folgenden Skript wird das searchlog-Element mit einem Ankündigungsaufrufprot
         USING Outputters.Csv();
 
 
-U-SQL unterstützt nur die ANSI-kompatible Verknüpfungssyntax: „Rowset1 JOIN Rowset2 ON predicate“. Die alte Syntax „FROM Rowset1, Rowset2 WHERE predicate“ wird NICHT unterstützt.
+U-SQL unterstützt nur die ANSI-kompatible Verknüpfungssyntax „Rowset1 JOIN Rowset2 ON predicate“. Die alte Syntax „FROM Rowset1, Rowset2 WHERE predicate“ wird NICHT unterstützt.
 Das Prädikat in einem JOIN-Element muss eine Gleichheitsverknüpfung (kein Ausdruck) sein. Wenn Sie einen Ausdruck verwenden möchten, können Sie ihn der SELECT-Klausel eines vorherigen Rowsets hinzufügen. Wenn Sie einen anderen Vergleich durchführen möchten, können Sie ihn in die WHERE-Klausel verschieben.
 
 ## <a name="create-databases-table-valued-functions-views-and-tables"></a>Erstellen von Datenbanken, Tabellenwertfunktionen, Ansichten und Tabellen
@@ -365,7 +365,7 @@ Im folgenden Skript werden eine Datenbank und zwei Tabellen erstellt:
 
 
 ### <a name="query-tables"></a>Abfragen von Tabellen
-Sie können die (im obigen Skript erstellten) Tabellen genauso abfragen, wie Sie dies für Datendateien durchführen. Verweisen Sie einfach auf den Tabellennamen, anstatt mit EXTRACT ein Rowset zu erstellen.
+Sie können die (im obigen Skript erstellten) Tabellen genauso abfragen, wie Sie dies für Datendateien durchführen. Verweisen Sie auf den Tabellennamen, anstatt mit EXTRACT ein Rowset zu erstellen.
 
 Das Transform-Skript, das Sie zuvor verwendet haben, wird so geändert, dass aus den Tabellen gelesen wird:
 
@@ -394,7 +394,7 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 
 * Verwenden von CROSS APPLY, um Teile von Zeichenfolgen, Arrays und Zuordnungen in Zeilen zu entpacken
 * Verwenden von partitionierten Datasets (Dateisätze und partitionierte Tabellen)
-* Entwickeln von benutzerdefinierten Operatoren, z. B. Extractors, Outputters, Prozessoren, benutzerdefinierte Aggregatoren in C#
+* Entwickeln von benutzerdefinierten Operatoren, z.B. Extractors, Outputters, Prozessoren, benutzerdefinierte Aggregatoren in C#
 * Verwenden von U-SQL-Windowing-Funktionen
 * Verwalten von U-SQL-Code mit Ansichten, Tabellenwertfunktionen und gespeicherten Prozeduren
 * Ausführen von beliebigem benutzerdefiniertem Code auf Verarbeitungsknoten
@@ -404,7 +404,7 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Verwenden von U-SQL-Funktionen für Azure Data Lake Analytics-Aufträge](data-lake-analytics-use-window-functions.md)
-* [Überwachen und Problembehandeln von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [Überwachung und Problembehandlung von Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ## <a name="let-us-know-what-you-think"></a>Teilen Sie uns Ihre Meinung mit
 * [Feature anfordern](http://aka.ms/adlafeedback)
@@ -414,6 +414,6 @@ In diesem Tutorial wurde nur ein kleiner Teil von U-SQL behandelt. Aufgrund des 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

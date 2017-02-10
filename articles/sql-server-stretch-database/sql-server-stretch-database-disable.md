@@ -1,12 +1,12 @@
 ---
-title: Deaktivieren von Stretch-Datenbank und Zurückbringen von Remotedaten | Microsoft Docs
-description: Erfahren Sie, wie Sie Stretch-Datenbank für eine Tabelle deaktivieren und optional Remotedaten zurückbringen können.
+title: "Deaktivieren von Stretch-Datenbank und Zurückbringen von Remotedaten | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Stretch-Datenbank für eine Tabelle deaktivieren und optional Remotedaten zurückbringen können."
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
-manager: ''
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 08291748-0dfd-4a7d-a6a4-a5618e9c248d
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/05/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: a140e89058f6a246e80b71248b82d0f6767337cb
+
 
 ---
-# Deaktivieren von Stretch-Datenbank und Zurückbringen von Remotedaten
+# <a name="disable-stretch-database-and-bring-back-remote-data"></a>Deaktivieren von Stretch-Datenbank und Zurückbringen von Remotedaten
 Wählen Sie zum Deaktivieren von Stretch-Datenbank für eine Tabelle in SQL Server Management Studio **Stretch** für eine Tabelle aus. Wählen Sie dann eine der folgenden Optionen.
 
-* **Deaktivieren| Bring data back from Azure**. Kopieren Sie die Remotedaten für die Tabelle aus Azure, und fügen Sie sie wieder in SQL Server ein. Deaktivieren Sie dann Stretch-Datenbank für die Tabelle. Bei diesem Vorgang, der nicht abgebrochen werden kann, fallen Datenübertragungskosten an.
-* **Deaktivieren| Leave data in Azure**. Deaktivieren Sie Stretch-Datenbank für die Tabelle.  Verwerfen Sie die Remotedaten für die Tabelle in Azure.
+* **Deaktivieren | Daten aus Azure zurückbringen**. Kopieren Sie die Remotedaten für die Tabelle aus Azure, und fügen Sie sie wieder in SQL Server ein. Deaktivieren Sie dann Stretch-Datenbank für die Tabelle. Bei diesem Vorgang, der nicht abgebrochen werden kann, fallen Datenübertragungskosten an.
+* **Deaktivieren | Daten in Azure lassen**. Deaktivieren Sie Stretch-Datenbank für die Tabelle.  Verwerfen Sie die Remotedaten für die Tabelle in Azure.
 
-Sie können auch Transact-SQL verwenden, Stretch-Datenbank für eine Tabelle oder eine Datenbank zu deaktivieren.
+Sie können auch Transact\-SQL verwenden, Stretch-Datenbank für eine Tabelle oder eine Datenbank zu deaktivieren.
 
 Nach dem Deaktivieren von Stretch-Datenbank für eine Tabelle wird die Datenmigration beendet und die Abfrageergebnisse enthalten nicht mehr die Ergebnisse aus der Remotetabelle.
 
@@ -33,12 +37,12 @@ Wenn Sie die Datenmigration anhalten möchten, finden Sie weitere Informationen 
 > 
 > 
 
-## Deaktivieren von Stretch-Datenbank für eine Tabelle
-### Verwenden von SQL Server Management Studio zum Deaktivieren von Stretch-Datenbank für eine Tabelle
+## <a name="disable-stretch-database-for-a-table"></a>Deaktivieren von Stretch-Datenbank für eine Tabelle
+### <a name="use-sql-server-management-studio-to-disable-stretch-database-for-a-table"></a>Verwenden von SQL Server Management Studio zum Deaktivieren von Stretch-Datenbank für eine Tabelle
 1. Wählen Sie in SQL Server Management Studio im Objekt-Explorer die Tabelle aus, für die Stretch-Datenbank deaktiviert werden soll.
 2. Klicken Sie mit der rechten Maustaste, und wählen Sie **Stretch** aus. Wählen Sie dann eine der folgenden Optionen:
    
-   * **Deaktivieren| Bring data back from Azure**. Kopieren Sie die Remotedaten für die Tabelle aus Azure, und fügen Sie sie wieder in SQL Server ein. Deaktivieren Sie dann Stretch-Datenbank für die Tabelle. Dieser Befehl kann nicht abgebrochen werden.
+   * **Deaktivieren | Daten aus Azure zurückbringen**. Kopieren Sie die Remotedaten für die Tabelle aus Azure, und fügen Sie sie wieder in SQL Server ein. Deaktivieren Sie dann Stretch-Datenbank für die Tabelle. Dieser Befehl kann nicht abgebrochen werden.
      
      > [!NOTE]
      > Für das Kopieren der Remotedaten für die Tabelle aus Azure zurück in SQL Server fallen Datenübertragungskosten an. Weitere Informationen finden Sie unter [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -46,14 +50,14 @@ Wenn Sie die Datenmigration anhalten möchten, finden Sie weitere Informationen 
      > 
      
      Wenn alle Remotedaten aus Azure in SQL Server kopiert wurden, wird Stretch für die Tabelle deaktiviert.
-   * **Deaktivieren| Leave data in Azure**. Deaktivieren Sie Stretch-Datenbank für die Tabelle.  Verwerfen Sie die Remotedaten für die Tabelle in Azure.
+   * **Deaktivieren | Daten in Azure lassen**. Deaktivieren Sie Stretch-Datenbank für die Tabelle.  Verwerfen Sie die Remotedaten für die Tabelle in Azure.
    
    > [!NOTE]
    > Durch das Deaktivieren von Stretch-Datenbank für eine Tabelle werden die Remotedaten oder die Remotetabelle nicht gelöscht. Wenn Sie die Remotetabelle löschen möchten, müssen Sie sie mithilfe des Azure-Verwaltungsportals entfernen. Für die Remotetabelle fallen weiterhin Azure-Kosten an, bis Sie sie löschen. Weitere Informationen finden Sie unter [SQL Server Stretch-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/).
    > 
    > 
 
-### Verwenden von Transact-SQL zum Deaktivieren von Stretch-Datenbank für eine Tabelle
+### <a name="use-transact-sql-to-disable-stretch-database-for-a-table"></a>Verwenden von Transact\-SQL zum Deaktivieren von Stretch-Datenbank für eine Tabelle
 * Wenn Sie Stretch für eine Tabelle deaktivieren möchten, und die Remotedaten für die Tabelle aus Azure zurück in SQL Server kopieren möchten, führen Sie folgenden Befehl aus. Wenn alle Remotedaten aus Azure in SQL Server kopiert wurden, wird Stretch für die Tabelle deaktiviert.
   
   Dieser Befehl kann nicht abgebrochen werden.
@@ -81,19 +85,19 @@ Wenn Sie die Datenmigration anhalten möchten, finden Sie weitere Informationen 
 > 
 > 
 
-## Deaktivieren von Stretch-Datenbank für eine Datenbank
-Vor dem Deaktivieren von Stretch-Datenbank für eine Datenbank müssen Sie Stretch-Datenbank für die einzelnen Stretch-fähigen Tabellen in der Datenbank deaktivieren.
+## <a name="disable-stretch-database-for-a-database"></a>Deaktivieren von Stretch-Datenbank für eine Datenbank
+Vor dem Deaktivieren von Stretch-Datenbank für eine Datenbank müssen Sie Stretch-Datenbank für die einzelnen Stretch\-fähigen Tabellen in der Datenbank deaktivieren.
 
-### Verwenden von SQL Server Management Studio zum Deaktivieren von Stretch-Datenbank für eine Datenbank
+### <a name="use-sql-server-management-studio-to-disable-stretch-database-for-a-database"></a>Verwenden von SQL Server Management Studio zum Deaktivieren von Stretch-Datenbank für eine Datenbank
 1. Wählen Sie in SQL Server Management Studio im Objekt-Explorer die Datenbank aus, für die Stretch-Datenbank deaktiviert werden soll.
-2. Klicken Sie mit der rechten Maustaste, und wählen Sie **Aufgaben** und dann **Stretch**aus. Wählen Sie anschließend **Deaktivieren**.
+2. Klicken Sie mit der rechten Maustaste, und wählen Sie **Aufgaben** und dann **Stretch** aus. Wählen Sie anschließend **Deaktivieren** aus.
 
 > [!NOTE]
 > Durch das Deaktivieren von Stretch-Datenbank für eine Datenbank wird die Remotedatenbank nicht gelöscht. Wenn Sie die Remotedatenbank löschen möchten, müssen Sie sie mithilfe des Azure-Verwaltungsportals entfernen. Für die Remotedatenbank fallen weiterhin Azure-Kosten an, bis Sie sie löschen. Weitere Informationen finden Sie unter [SQL Server Stretch-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/).
 > 
 > 
 
-### Verwenden von Transact-SQL zum Deaktivieren von Stretch-Datenbank für eine Datenbank
+### <a name="use-transact-sql-to-disable-stretch-database-for-a-database"></a>Verwenden von Transact\-SQL zum Deaktivieren von Stretch-Datenbank für eine Datenbank
 Führen Sie den folgenden Befehl aus:
 
 ```tsql
@@ -106,9 +110,14 @@ ALTER DATABASE <database name>
 > 
 > 
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 [ALTER DATABASE SET-Optionen (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)
 
 [Anhalten und Fortsetzen von Stretch-Datenbank](sql-server-stretch-database-pause.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

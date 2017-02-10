@@ -16,8 +16,8 @@ ms.workload: azure-government
 ms.date: 10/06/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 601945c05affc350eba111dcec969e6504b91611
-ms.openlocfilehash: e26f1c182869dee58b0ab26da1aa65f99ba8faaa
+ms.sourcegitcommit: 5be95e2deda3bcc36494ba51eeb050d5c4e2894b
+ms.openlocfilehash: 3c1e610412ec043a62f3c389bd239a4225111e61
 
 
 ---
@@ -38,7 +38,7 @@ AC-1 legt z.B. fest, dass für das System, für das die Betriebsgenehmigung bean
 
 Für den Zugriff auf die CRM und die Azure Blueprint System Security Plan Template (Sicherheitsplanvorlage) wenden Sie sich bitte per E-Mail an AzureBlueprint@microsoft.com.
 
-Wir freuen uns über jedes Feedback zur CRM, da dies entscheidend zu unserer Iteration des Dokuments beiträgt, sodass dieses im Hinblick auf die Optimierung von ATO-Prozessen bei Kunden möglichst effektiv gestaltet werden kann.
+Wir freuen uns über jedes Feedback zur CRM, da Ihre Meinung entscheidend zu unserer Überarbeitung des Dokuments beiträgt, um es im Hinblick auf die Optimierung von ATO-Prozessen bei Kunden möglichst effektiv zu gestalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 <a href="https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx"> Microsoft Trust Center </a>
@@ -48,6 +48,6 @@ Wir freuen uns über jedes Feedback zur CRM, da dies entscheidend zu unserer Ite
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

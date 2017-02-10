@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 12/09/2016
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 5e182811adc29ae00d40355bb4813c30eb0b904c
-ms.openlocfilehash: 1a4a2ed7cd2b8cfe3ed328c696cd6ba4d2cc03bc
+ms.sourcegitcommit: efd154811ebbcf2170ffb001344a954be72b1d92
+ms.openlocfilehash: 93b4c7003b4b5461d34a357967b2c089a189c854
 
 
 ---
@@ -50,10 +50,14 @@ ms.openlocfilehash: 1a4a2ed7cd2b8cfe3ed328c696cd6ba4d2cc03bc
 </table></br>
 
 ## <a name="release-notes"></a>Versionsinformationen
-> [!IMPORTANT]
-> Ab Version 1.9.2 erhalten Sie beim Abfragen partitionierter Sammlungen ggf. die Ausnahme „System.NotSupportedException“. Um diesen Fehler zu vermeiden, stellen Sie sicher, dass der Hostprozess ein 64-Bit-Prozess ist. Bei ausführbaren Projekten deaktivieren Sie dazu auf der Registerkarte „Build“ im Fenster „Eigenschaften“ Ihres Projekts die Option „32-Bit bevorzugen“.
-> 
-> 
+
+### <a name="a-name11101110httpswwwnugetorgpackagesmicrosoftazuredocumentdb1110"></a><a name="1.11.0"/>[1.11.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.11.0)
+* Unterstützung für neue Klassen und Methoden zum Verarbeiten des [Änderungsfeeds](documentdb-change-feed.md) von Dokumenten in einer Sammlung.
+* Unterstützung für die partitionsübergreifende Abfragefortsetzung und einige Leistungsverbesserungen für partitionsübergreifende Abfragen.
+* Die Methoden CreateDatabaseIfNotExistsAsync und CreateDocumentCollectionIfNotExistsAsync wurden hinzugefügt.
+* LINQ-Unterstützung für Systemfunktionen: IsDefined, IsNull und IsPrimitive.
+* Behebung des Problems mit der automatischen Platzierung der Assemblys „Microsoft.Azure.Documents.ServiceInterop.dll“ und „DocumentDB.Spatial.Sql.dll“ im Ordner „bin“ der Anwendung bei Verwendung des NuGet-Pakets mit Projekten, die project.json-Tools enthalten.
+* Unterstützung für das Ausgeben clientseitiger ETW-Ablaufverfolgungen, die in Debugszenarien hilfreich sein können.
 
 ### <a name="a-name11001100httpswwwnugetorgpackagesmicrosoftazuredocumentdb1100"></a><a name="1.10.0"/>[1.10.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.10.0)
 * Unterstützung direkter Verbindungen für partitionierte Sammlungen hinzugefügt.
@@ -195,6 +199,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.11.0](#1.11.0) |8. Dezember 2016 |--- |
 | [1.10.0](#1.10.0) |27. September 2016 |--- |
 | [1.9.5](#1.9.5) |1. September 2016 |--- |
 | [1.9.4](#1.9.4) |24. August 2016 |--- |
@@ -231,6 +236,6 @@ Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microso
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

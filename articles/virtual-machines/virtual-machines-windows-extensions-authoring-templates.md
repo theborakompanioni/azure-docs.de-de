@@ -1,13 +1,13 @@
 ---
-title: Erstellen von Vorlagen mit Erweiterungen für virtuelle Windows-Computer | Microsoft Docs
-description: Hier finden Sie Informationen zum Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer.
+title: "Erstellen von Vorlagen mit Erweiterungen für virtuelle Windows-Computer | Microsoft Docs"
+description: "Hier finden Sie Informationen zum Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 418dd1f7-ded8-45ab-9a5a-a59d245e2555
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,9 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: cc2e3c234ef9219d1b836771dbbc456d73a13ac8
+
 
 ---
-# Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer
+# <a name="authoring-azure-resource-manager-templates-with-windows-vm-extensions"></a>Erstellen von Azure Resource Manager-Vorlagen mit Erweiterungen für virtuelle Windows-Computer
 [!INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
 Führen Sie über Azure PowerShell das folgende Azure PowerShell-Cmdlet aus:
@@ -38,10 +42,10 @@ Diese drei Eigenschaften sind im oben dargestellten Vorlagenausschnitt „publis
 > 
 > 
 
-## Identifizieren des Schemas für die Erweiterungskonfigurationsparameter
+## <a name="identifying-the-schema-for-the-extension-configuration-parameters"></a>Identifizieren des Schemas für die Erweiterungskonfigurationsparameter
 Im nächsten Schritt zur Erstellung einer Erweiterungsvorlage wird das Format für die Bereitstellung von Konfigurationsparametern festgelegt. Jede Erweiterung unterstützt einen eigenen Satz von Parametern.
 
-Beispielkonfigurationen für Windows-Erweiterungen finden Sie unter [Beispiele für Windows-Erweiterungen](virtual-machines-windows-extensions-configuration-samples.md).
+Beispielkonfigurationen für Windows-Erweiterungen finden Sie unter [Beispiele für Windows-Erweiterungen](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Eine vollständige Vorlage mit Erweiterungen für virtuelle Computer finden Sie hier:
 
@@ -49,4 +53,9 @@ Eine vollständige Vorlage mit Erweiterungen für virtuelle Computer finden Sie 
 
 Die erstellte Vorlage können Sie anschließend über Azure PowerShell bereitstellen.
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,22 +1,26 @@
 ---
 title: Benutzerdefinierte Schemas in SQL Data Warehouse | Microsoft Docs
-description: Tipps für die Verwendung von Transact-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+description: "Tipps für die Verwendung von Transact-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/14/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9d59ffe4b0f0d858af18f30f848a63a28ac5f9b8
+
 
 ---
-# Benutzerdefinierte Schemas in SQL Data Warehouse
+# <a name="user-defined-schemas-in-sql-data-warehouse"></a>Benutzerdefinierte Schemas in SQL Data Warehouse
 Herkömmliche Data Warehouses verwenden häufig separate Datenbanken, um Anwendungsgrenzen auf Basis von Workload, Domäne oder Sicherheit zu erstellen. Ein herkömmliches Data Warehouse in SQL Server kann z. B. eine Stagingdatenbank, eine Data Warehouse-Datenbank und einige Data Mart-Datenbanken enthalten. In dieser Topologie funktioniert jede Datenbank als Workload und Sicherheitsgrenze in der Architektur.
 
 Im Gegensatz dazu werden mit SQL Data Warehouse die gesamten Data Warehouse-Workloads innerhalb einer Datenbank ausgeführt. Datenbankübergreifende Verknüpfungen sind nicht zulässig. SQL Data Warehouse erwartet daher, dass alle vom Warehouse verwendeten Tabellen innerhalb der einen Datenbank gespeichert werden.
@@ -26,12 +30,12 @@ Im Gegensatz dazu werden mit SQL Data Warehouse die gesamten Data Warehouse-Work
 > 
 > 
 
-## Recommendations
+## <a name="recommendations"></a>Recommendations
 Hierbei handelt es sich um Empfehlungen für die Konsolidierung der Workload-, Sicherheits-, Domänen- und Funktionsgrenzen mithilfe von benutzerdefinierten Schemas.
 
 1. Verwenden Sie eine SQL Data Warehouse-Datenbank zum Ausführen Ihrer gesamten Data Warehouse-Workloads.
 2. Konsolidieren Sie Ihre vorhandene Data Warehouse-Umgebung zur Verwendung einer SQL Data Warehouse-Datenbank.
-3. Nutzen Sie **benutzerdefinierte Schemas**, um die Grenze bereitzustellen, die zuvor mithilfe von Datenbanken implementiert wurde.
+3. Nutzen Sie **benutzerdefinierte Schemas** , um die Grenze bereitzustellen, die zuvor mithilfe von Datenbanken implementiert wurde.
 
 Wenn zuvor keine benutzerdefinierten Schemas verwendet wurden, können Sie von Grund auf neu beginnen. Verwenden Sie einfach den alten Datenbanknamen als Grundlage für Ihre benutzerdefinierten Schemas in der SQL Data Warehouse-Datenbank.
 
@@ -46,7 +50,7 @@ Wenn bereits Schemas verwendet wurden, stehen Ihnen einige Optionen zur Verfügu
 > 
 > 
 
-### Beispiele:
+### <a name="examples"></a>Beispiele:
 Implementieren von benutzerdefinierten Schemas basierend auf Datenbanknamen
 
 ```sql
@@ -115,7 +119,7 @@ FROM    [edw].customer
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
@@ -127,4 +131,8 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entw
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

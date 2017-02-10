@@ -1,12 +1,12 @@
 ---
-title: Erstellen einer Brücke zwischen Android WebView und dem nativem Mobile Engagement Android SDK
-description: Beschreibt das Erstellen einer Brücke zwischen WebView unter Javascript und dem nativen Mobile Engagement Android SDK.
+title: "Erstellen einer Brücke zwischen Android WebView und dem nativem Mobile Engagement Android SDK"
+description: "Beschreibt das Erstellen einer Brücke zwischen WebView unter Javascript und dem nativen Mobile Engagement Android SDK."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: cf272f3f-2b09-41b1-b190-944cdca8bba2
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,18 +14,22 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f4fc7b3c81747ec80974a99084eeb1acc311f11f
+
 
 ---
-# Erstellen einer Brücke zwischen Android WebView und dem nativem Mobile Engagement Android SDK
+# <a name="bridge-android-webview-with-native-mobile-engagement-android-sdk"></a>Erstellen einer Brücke zwischen Android WebView und dem nativem Mobile Engagement Android SDK
 > [!div class="op_single_selector"]
 > * [Android-Brücke](mobile-engagement-bridge-webview-native-android.md)
 > * [iOS-Brücke](mobile-engagement-bridge-webview-native-ios.md)
 > 
 > 
 
-Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst wird mit der nativen Android-Entwicklung entwickelt, aber einige oder sogar alle Bildschirme werden in einer Android WebView gerendert. Sie können das Mobile Engagement Android SDK dennoch innerhalb solcher Apps nutzen, und dieses Tutorial zeigt Ihnen, wie das geht. Der unten gezeigte Beispielcode basiert auf [dieser](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript) Android-Dokumentation. Darin wird beschrieben, wie mit diesem dokumentierten Ansatz dieselbe Strategie für häufig verwendete Methoden aus dem Mobile Engagement Android SDK implementiert werden kann, sodass eine WebView aus einer Hybrid-App auch Anforderungen zum Nachverfolgen von Ereignissen, Aufträgen, Fehlern oder App-Informationen initiieren und diese über unser Android SDK weiterreichen kann.
+Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst wird mit der nativen Android-Entwicklung entwickelt, aber einige oder sogar alle Bildschirme werden in einer Android WebView gerendert. Sie können das Mobile Engagement Android SDK dennoch innerhalb solcher Apps nutzen, und dieses Tutorial zeigt Ihnen, wie das geht. Der unten gezeigte Beispielcode basiert auf [dieser](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)Android-Dokumentation. Darin wird beschrieben, wie mit diesem dokumentierten Ansatz dieselbe Strategie für häufig verwendete Methoden aus dem Mobile Engagement Android SDK implementiert werden kann, sodass eine WebView aus einer Hybrid-App auch Anforderungen zum Nachverfolgen von Ereignissen, Aufträgen, Fehlern oder App-Informationen initiieren und diese über unser Android SDK weiterreichen kann. 
 
-1. Zunächst müssen Sie sicherstellen, dass Sie unser [Erste-Schritte-Tutorial](mobile-engagement-android-get-started.md) zum Integrieren des Mobile Engagement Android SDK in der Hybrid-App durchgeführt haben. Anschließend sieht die Methode `OnCreate` wie folgt aus.
+1. Zunächst müssen Sie sicherstellen, dass Sie unser [Erste-Schritte-Tutorial](mobile-engagement-android-get-started.md) zum Integrieren des Mobile Engagement Android SDK in der Hybrid-App durchgeführt haben. Anschließend sieht die Methode `OnCreate` wie folgt aus.  
    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,7 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
             engagementConfiguration.setConnectionString("<Mobile Engagement Conn String>");
             EngagementAgent.getInstance(this).init(engagementConfiguration);
         }
-2. Stellen Sie jetzt sicher, dass die Hybrid-App einen Bildschirm mit einer WebView enthält. Der entsprechende Code sollte in etwa wie der folgende aussehen, in dem wir eine lokale HTML-Datei **Sample.html** in die WebView in die Methode `onCreate` des Bildschirms laden.
+2. Stellen Sie jetzt sicher, dass die Hybrid-App einen Bildschirm mit einer WebView enthält. Der entsprechende Code sollte in etwa wie der folgende aussehen, in dem wir eine lokale HTML-Datei **Sample.html** in die WebView in die Methode `onCreate` des Bildschirms laden. 
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -106,7 +110,7 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
                 return extras;
             }
         }  
-4. Nachdem wir die obige Brückendatei erstellt haben, müssen wir sicherstellen, dass sie unserer Webview zugeordnet wird. Zu diesem Zweck müssen Sie Ihre `SetWebview`-Methode folgendermaßen bearbeiten:
+4. Nachdem wir die obige Brückendatei erstellt haben, müssen wir sicherstellen, dass sie unserer Webview zugeordnet wird. Zu diesem Zweck müssen Sie Ihre `SetWebview` -Methode folgendermaßen bearbeiten:
    
         private void SetWebView() {
             WebView myWebView = (WebView) findViewById(R.id.webview);
@@ -115,7 +119,7 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
             webSettings.setJavaScriptEnabled(true);
             myWebView.addJavascriptInterface(new WebAppInterface(this), "EngagementJs");
         }
-5. Im oben gezeigten Codeausschnitt haben wir `addJavascriptInterface` aufgerufen, um unsere Brückenklasse unserer WebView zuzuordnen. Außerdem haben wir ein Handle namens **EngagementJs** erstellt, um die Methoden aus der Brückendatei aufzurufen.
+5. Im oben gezeigten Codeausschnitt haben wir `addJavascriptInterface` aufgerufen, um unsere Brückenklasse unserer WebView zuzuordnen. Außerdem haben wir ein Handle namens **EngagementJs** erstellt, um die Methoden aus der Brückendatei aufzurufen. 
 6. Nun erstellen Sie die folgende Datei **Sample.html** in Ihrem Projekt in einem Ordner namens **assets**, der in die Webview geladen wird und in dem wir die Methoden aus der Brückendatei aufrufen werden.
    
         <!doctype html>
@@ -195,14 +199,14 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
         </html>
 7. Beachten Sie die folgenden Hinweise zur oben gezeigten HTML-Datei:
    
-   * Sie enthält eine Reihe von Eingabefeldern, in denen Sie Daten als Namen für das Ereignis, den Auftrag, den Fehler oder die AppInfo bereitstellen können. Beim Klicken auf die Schaltfläche daneben erfolgt ein Aufruf an das JavaScript, das schließlich die Methoden aus der Brückendatei aufruft, um diesen Aufruf an das Mobile Engagement Android SDK zu übergeben.
-   * Wir versehen Ereignisse, Aufträge und sogar Fehler mit einigen statischen Zusatzinformationen, um zu veranschaulichen, wie dies zu erreichen wäre. Diese zusätzlichen Informationen werden als JSON-Zeichenfolge gesendet, die (wie in der Datei `WebAppInterface` zu sehen ist) analysiert und in ein Android `Bundle` eingefügt und beim Senden von Ereignissen, Aufträgen und Fehlern übergeben wird.
-   * Ein Mobile Engagement-Auftrag mit dem im Eingabefeld angegebenen Namen wird gestartet, für 10 Sekunden ausgeführt und beendet.
-   * Eine Mobile Engagement-AppInfo oder ein Tag wird mit „customer\_name“ als statischem Schlüssel und mit dem eingegebenen Wert als Wert für das Tag übergeben.
-8. Wenn Sie die App ausführen, erhalten Sie folgende Ausgabe. Geben Sie jetzt einen Namen für ein Testereignis wie folgt ein, und klicken Sie darunter auf **Send**.
+   * Sie enthält eine Reihe von Eingabefeldern, in denen Sie Daten als Namen für das Ereignis, den Auftrag, den Fehler oder die AppInfo bereitstellen können. Beim Klicken auf die Schaltfläche daneben erfolgt ein Aufruf an das JavaScript, das schließlich die Methoden aus der Brückendatei aufruft, um diesen Aufruf an das Mobile Engagement Android SDK zu übergeben. 
+   * Wir versehen Ereignisse, Aufträge und sogar Fehler mit einigen statischen Zusatzinformationen, um zu veranschaulichen, wie dies zu erreichen wäre. Diese zusätzlichen Informationen werden als JSON-Zeichenfolge gesendet, die (wie in der Datei `WebAppInterface` zu sehen ist) analysiert und in ein Android `Bundle` eingefügt und beim Senden von Ereignissen, Aufträgen und Fehlern übergeben wird. 
+   * Ein Mobile Engagement-Auftrag mit dem im Eingabefeld angegebenen Namen wird gestartet, für 10 Sekunden ausgeführt und beendet. 
+   * Eine Mobile Engagement-AppInfo oder ein Tag wird mit „customer_name“ als statischem Schlüssel und mit dem eingegebenen Wert als Wert für das Tag übergeben. 
+8. Wenn Sie die App ausführen, erhalten Sie folgende Ausgabe. Geben Sie jetzt einen Namen für ein Testereignis wie folgt ein, und klicken Sie darunter auf **Send** . 
    
     ![][1]
-9. Wenn Sie nun zur Registerkarte **Monitor** Ihrer App wechseln und unter **Ereignisse > Details** nachsehen, wird dieses Ereignis zusammen mit den statischen App-Informationen angezeigt, die gesendet werden.
+9. Wenn Sie nun zur Registerkarte **Monitor** Ihrer App wechseln und unter **Ereignisse > Details** nachsehen, wird dieses Ereignis zusammen mit den statischen App-Informationen angezeigt, die gesendet werden. 
    
    ![][2]
 
@@ -210,4 +214,8 @@ Einige mobile Apps werden als Hybrid-Apps konzipiert, das heißt, die App selbst
 [1]: ./media/mobile-engagement-bridge-webview-native-android/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-android/event-output.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

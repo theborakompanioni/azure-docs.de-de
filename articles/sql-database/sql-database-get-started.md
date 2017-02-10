@@ -1,6 +1,6 @@
 ---
-title: 'SQL-Datenbank-Tutorial: Erstellen eines Servers, einer Firewallregel auf Serverebene, einer Beispieldatenbank und einer Firewallregel auf Datenbankebene und Herstellen der Verbindung mit SQL Server Management Studio | Microsoft-Dokumentation'
-description: "Hier erhalten Sie Informationen zum Einrichten von logischen SQL-Datenbankservern, Serverfirewallregeln, SQL-Datenbanken und Beispieldaten. Darüber hinaus erfahren Sie, wie Sie eine Verbindung mit Clienttools herstellen, Benutzer konfigurieren und eine Datenbankfirewallregel einrichten."
+title: 'Azure-Portal: Erste Schritte mit Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: "Es wird beschrieben, wie Sie einen logischen SQL-Datenbank-Server, eine Firewallregel auf Serverebene und Datenbanken mit dem Azure-Portal erstellen. Außerdem wird beschrieben, wie Sie Datenbanken mit SQL Server Management Studio abfragen."
 keywords: Tutorial zu SQL-Datenbank, Erstellen einer SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 6b016384339f0dc943237a88787c2c86debd9016
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
 
 
 ---
-# <a name="get-started-with-azure-sql-database-servers-databases-and-firewall-rules-by-using-the-azure-portal-and-sql-server-management-studio"></a>Enthält Informationen zu den ersten Schritten mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregel mit dem Azure-Portal und SQL Server Management Studio.
+# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-the-azure-portal-and-sql-server-management-studio"></a>SQL-Datenbank-Tutorial: Enthält Informationen zu den ersten Schritten mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio.
 
 In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
 
@@ -30,7 +30,7 @@ In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie das Azure-Porta
 * Erstellen eines logischen Azure SQL-Servers
 * Anzeigen der Eigenschaften eines logischen Azure SQL-Servers
 * Erstellen einer Firewallregel auf Serverebene
-* Erstellen der Adventure Works LT-Beispieldatenbank als eigenständige Datenbank
+* Erstellen der Adventure Works LT-Beispieldatenbank als Einzeldatenbank
 * Anzeigen von Eigenschaften der Adventure Works LT-Beispieldatenbank in Azure
 
 In diesem Tutorial verwenden Sie auch die aktuelle Version von SQL Server Management Studio für folgende Aufgaben:
@@ -208,7 +208,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
     ![Serveranmeldeinformationen](./media/sql-database-get-started/server-credentials.png)
 
     > [!NOTE]
-    > Beim Hinzufügen einer Datenbank zu einem Server kann die Datenbank als eigenständige Datenbank (Standardeinstellung) oder einem elastischen Pool hinzugefügt werden. Weitere Informationen zu elastischen Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
+    > Beim Hinzufügen einer Datenbank zu einem Server kann die Datenbank als Einzeldatenbank (Standardeinstellung) oder einem elastischen Pool hinzugefügt werden. Weitere Informationen zu elastischen Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
     >
 
 7. Ändern Sie unter „Tarif“ den Tarif in **Basic**. (Sie können die Tarifstufe später wieder erhöhen, aber zu Lernzwecken ist es ratsam, hier den einfachsten Tarif zu wählen.)
@@ -299,11 +299,13 @@ Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutoria
 * Wenn Sie mit dem Erstellen von Tabellen und anderen Objekten beginnen möchten, helfen Ihnen die Informationen unter „Erstellen einer Tabelle“ im Thema [Erstellen einer Tabelle](https://msdn.microsoft.com/library/ms365315.aspx) weiter.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Was ist SQL Database?](sql-database-technical-overview.md)
+
+- Eine technische Übersicht finden Sie unter [Was ist SQL-Datenbank?](sql-database-technical-overview.md).
+- Preisinformationen finden Sie unter [Preise für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

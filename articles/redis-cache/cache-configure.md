@@ -54,7 +54,7 @@ Azure Redis Cache ermöglicht auf dem Blatt **Einstellungen** die folgenden Eins
 * [Netzwerkeinstellungen](#network-settings)
 * [Ressourcenverwaltungseinstellungen](#resource-management-settings)
 
-## <a name="support-troubleshooting-settings"></a>Einstellungen für Support und Problembehandlung
+## <a name="support--troubleshooting-settings"></a>Einstellungen für Support und Problembehandlung
 Die Einstellungen im Abschnitt **Support und Problembehandlung** bieten Optionen zur Behandlung von Problemen mit dem Cache.
 
 ![Support und Problembehandlung](./media/cache-configure/redis-cache-support-troubleshooting.png)

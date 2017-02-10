@@ -1,57 +1,62 @@
 ---
 title: 'Kurzanleitung: Machine Learning-Textanalyse-APIs | Microsoft Docs'
-description: Azure Machine Learning-Textanalyse – Kurzanleitung
+description: "Azure Machine Learning-Textanalyse – Kurzanleitung"
 services: cognitive-services
-documentationcenter: ''
+documentationcenter: 
 author: onewth
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: e8b9e98c-40e7-4425-ae16-d1eaa7d2f837
 ms.service: cognitive-services
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 10/04/2016
 ms.author: onewth
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 663b99c2491bebf49f950605152604b040ade070
+
 
 ---
-# Erste Schritte mit den Textanalyse-APIs zur Erkennung von Stimmung, Schlüsselwörtern, Themen und Sprache
+# <a name="getting-started-with-the-text-analytics-apis-to-detect-sentiment-key-phrases-topics-and-language"></a>Erste Schritte mit den Textanalyse-APIs zur Erkennung von Stimmung, Schlüsselwörtern, Themen und Sprache
 <a name="HOLTop"></a>
 
-Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung integrieren können, um die [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) zu verwenden. Verwenden Sie diese APIs, um Stimmung, Schlüsselwörter, Themen und Sprache des Textes zu erkennen. [Klicken Sie hier, um sich eine interaktive Demo der Nutzung anzuschauen.](//go.microsoft.com/fwlink/?LinkID=759712)
+Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung integrieren können, um die [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711)zu verwenden.
+Verwenden Sie diese APIs, um Stimmung, Schlüsselwörter, Themen und Sprache des Textes zu erkennen. [Klicken Sie hier, um sich eine interaktive Demo der Nutzung anzuschauen.](//go.microsoft.com/fwlink/?LinkID=759712)
 
-Technische Dokumentation für die APIs finden Sie in den [API-Definitionen](//go.microsoft.com/fwlink/?LinkID=759346).
+Technische Dokumentation für die APIs finden Sie in den [API-Definitionen](//go.microsoft.com/fwlink/?LinkID=759346) .
 
 Dieses Handbuch bezieht sich auf Version 2 der APIs. Ausführliche Informationen zu Version 1 der APIs [finden Sie in diesem Dokument](../machine-learning/machine-learning-apps-text-analytics.md).
 
 Am Ende dieses Tutorials können Sie programmgesteuert Folgendes erkennen:
 
-* **Stimmung**: Ist der Text positiv oder negativ?
-* **Schlüsselwörter**: Was wird in einem einzigen Artikel besprochen?
+* **Stimmung** : Ist der Text positiv oder negativ?
+* **Schlüsselwörter** : Was wird in einem einzigen Artikel besprochen?
 * **Themen:** Worüber diskutieren die Menschen in verschiedenen Artikeln?
-* **Sprachen**: In welcher Sprache wurde der Text geschrieben?
+* **Sprachen** : In welcher Sprache wurde der Text geschrieben?
 
 Beachten Sie, dass diese API pro übermitteltem Dokument 1 Transaktion berechnet. Wenn Sie also beispielsweise bei einem Aufruf die Stimmung für 1.000 Dokumente anfordern, fallen 1.000 Transaktionen an.
 
 <a name="Overview"></a>
 
-## Allgemeine Übersicht
+## <a name="general-overview"></a>Allgemeine Übersicht
 Dieses Dokument ist eine schrittweise Anleitung. Ziel ist es, Ihnen Schritt für Schritt die erforderlichen Schritte zum Trainieren eines Modells vorzustellen und Ihnen Ressourcen aufzuzeigen, mit denen Sie das Training umsetzen können. Diese Übung dauert ungefähr 30 Minuten.
 
 Für diese Aufgaben benötigen Sie einen Editor. Zudem müssen Sie die RESTful-Endpunkte in der Sprache Ihrer Wahl aufrufen.
 
 Lassen Sie uns anfangen.
 
-## Aufgabe 1: Registrieren für die Textanalyse-APIs
+## <a name="task-1---signing-up-for-the-text-analytics-apis"></a>Aufgabe 1: Registrieren für die Textanalyse-APIs
 In dieser Aufgabe können Sie sich für den Textanalysedienst registrieren.
 
 1. Navigieren Sie im [Azure-Portal](//go.microsoft.com/fwlink/?LinkId=761108) zu **Kognitive Dienste**, und stellen Sie sicher, dass als „API-Typ“ **Textanalyse** ausgewählt ist.
-2. Wählen Sie einen Plan. Sie können z. B. den **Free-Tarif für 5.000 Transaktionen pro Monat** auswählen. Da es sich um einen kostenlosen Plan handelt, wird die Nutzung dieses Diensts nicht berechnet. Sie müssen sich bei Ihrem Azure-Abonnement anmelden.
+2. Wählen Sie einen Plan. Sie können z.B. den **Free-Tarif für 5.000 Transaktionen pro Monat** auswählen. Da es sich um einen kostenlosen Plan handelt, wird die Nutzung dieses Diensts nicht berechnet. Sie müssen sich bei Ihrem Azure-Abonnement anmelden. 
 3. Füllen Sie die anderen Felder aus, und erstellen Sie Ihr Konto.
 4. Nach der Anmeldung bei der Textanalyse erhalten Sie Ihren **API-Schlüssel**. Kopieren Sie den Primärschlüssel, da Sie ihn für die Nutzung der API-Dienste benötigen.
 
-## Aufgabe 2: Erkennung von Stimmung, Schlüsselwörtern und Sprachen
+## <a name="task-2---detect-sentiment-key-phrases-and-languages"></a>Aufgabe 2: Erkennung von Stimmung, Schlüsselwörtern und Sprachen
 Die Erkennung von Stimmung, Schlüsselwörtern und Sprachen im Text ist einfach. Es werden programmgesteuert die gleichen Ergebnisse wie in der [Nutzungsdemo](//go.microsoft.com/fwlink/?LinkID=759712) zurückgegeben.
 
 > [!TIP]
@@ -88,7 +93,7 @@ Die folgenden Sprachen werden unterstützt:
                 }
             ]
         }
-3. Führen Sie einen **POST**-Aufruf an das System mit der Eingabe für Stimmung, Schlüsselwörter und Sprache durch. Die URLs sehen wie folgt aus:
+3. Führen Sie einen **POST** -Aufruf an das System mit der Eingabe für Stimmung, Schlüsselwörter und Sprache durch. Die URLs sehen wie folgt aus:
    
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
@@ -152,15 +157,15 @@ Die folgenden Sprachen werden unterstützt:
             ]
         }
 
-## Aufgabe 3: Erkennen von Themen in einem Textkorpus
-Diese neu veröffentlichte API gibt die am häufigsten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z.B. Kritiken und Feedback von Benutzern.
+## <a name="task-3---detect-topics-in-a-corpus-of-text"></a>Aufgabe 3: Erkennen von Themen in einem Textkorpus
+Diese neu veröffentlichte API gibt die am häufigsten erkannten Themen für eine Liste übermittelter Textdatensätze zurück. Ein Thema wird anhand eines Schlüsselausdrucks identifiziert, der aus einem oder mehreren darauf bezogenen Wörtern bestehen kann. Die API eignet sich ideal für kurzen, von Menschen geschriebenen Text, z. B. Kritiken und Feedback von Benutzern.
 
-Für diese API müssen **mindestens 100 Textdatensätze** übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als drei Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB. Die Themenerkennung ist auf fünf Übermittlungen alle fünf Minuten beschränkt.
+Dieser API müssen **mindestens 100 Datensätze** übermittelt werden, aber sie kann Themen in Hunderten bis Tausenden von Datensätzen erkennen. Alle nicht englischsprachigen Datensätze oder Datensätze mit weniger als drei Wörtern werden verworfen. Ihnen wird daher kein Thema zugewiesen. Die maximale Größe eines einzelnen Dokuments, das für die Themenerkennung übermittelt werden kann, beträgt 30 KB, und die maximale Gesamtgröße der übermittelten Eingabe beträgt 30 MB. Die Themenerkennung ist auf fünf Übermittlungen alle fünf Minuten beschränkt.
 
 Es gibt zwei zusätzliche **optionale** Eingabeparameter, die zur Verbesserung der Ergebnisqualität beitragen können:
 
-* **Stoppwörter.** Diese Wörter und deren verwandte Formen (z. B. Pluralformen) werden aus der gesamten Themenerkennungspipeline ausgeschlossen. Verwenden Sie dies für häufige Wörter. („Problem“, „Fehler“ und „Benutzer“ sind womöglich beispielsweise angemessene Optionen für Kundenbeschwerden über Software.) Jede Zeichenfolge sollte ein einzelnes Wort sein.
-* **Stoppausdrücke**: Diese Ausdrücke werden von der Liste der zurückgegebenen Themen ausgeschlossen. Verwenden Sie diese Option, um allgemeine Themen auszuschließen, die nicht in den Ergebnissen angezeigt werden sollen. „Microsoft“ und „Azure“ sind beispielsweise geeignete Optionen für Themen, die Sie ausschließen möchten. Zeichenfolgen können mehrere Wörter enthalten.
+* **Stoppwörter**.  Diese Wörter und deren verwandte Formen (z. B. Pluralformen) werden aus der gesamten Themenerkennungspipeline ausgeschlossen. Verwenden Sie dies für häufige Wörter. („Problem“, „Fehler“ und „Benutzer“ sind womöglich beispielsweise angemessene Optionen für Kundenbeschwerden über Software.) Jede Zeichenfolge sollte ein einzelnes Wort sein.
+* **Stoppausdrücke** : Diese Ausdrücke werden von der Liste der zurückgegebenen Themen ausgeschlossen. Verwenden Sie diese Option, um allgemeine Themen auszuschließen, die nicht in den Ergebnissen angezeigt werden sollen. „Microsoft“ und „Azure“ sind beispielsweise geeignete Optionen für Themen, die Sie ausschließen möchten. Zeichenfolgen können mehrere Wörter enthalten.
 
 Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
 
@@ -185,13 +190,13 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
                 "Microsoft", "Azure"
             ]
         }
-2. Richten Sie unter Verwendung der gleichen Header wie in Aufgabe 2 definiert einen **POST**-Aufruf an den Themenendpunkt:
+2. Richten Sie unter Verwendung der gleichen Header wie in Aufgabe 2 definiert einen **POST** -Aufruf an den Themenendpunkt:
    
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics
-3. Dies gibt ein `operation-location`-Element als Header in der Antwort zurück, wobei der Wert die abzufragende URL für die resultierenden Themen ist:
+3. Dies gibt ein `operation-location` -Element als Header in der Antwort zurück, wobei der Wert die abzufragende URL für die resultierenden Themen ist:
    
         'operation-location': 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>'
-4. Fragen Sie regelmäßig die zurückgegebene `operation-location` mit einer **GET**-Anforderung ab. Empfohlen ist einmal pro Minute.
+4. Fragen Sie regelmäßig die zurückgegebene `operation-location` mit einer **GET** -Anforderung ab. Empfohlen ist einmal pro Minute.
    
         GET https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>
 5. Der Endpunkt gibt eine Antwort einschließlich `{"status": "notstarted"}` vor der Verarbeitung, `{"status": "running"}` während der Verarbeitung und `{"status": "succeeded"}` mit der Ausgabe nach Abschluss dieses Vorgangs zurück. Sie können dann die Ausgabe nutzen, die das folgende Format aufweist (beachten Sie, dass Details wie Fehlerformat und Daten aus diesem Beispiel ausgeschlossen wurden):
@@ -228,7 +233,7 @@ Gehen Sie wie folgt vor, um Themen im Text zu erkennen.
             }
         }
 
-Beachten Sie, dass die erfolgreiche Antwort für Themen vom `operations`-Endpunkt das folgende Schema hat:
+Beachten Sie, dass die erfolgreiche Antwort für Themen vom `operations` -Endpunkt das folgende Schema hat:
 
     {
             "topics" : [{
@@ -272,9 +277,14 @@ Die Erläuterungen für jeden Teil dieser Antwort lauten:
 | id |Eindeutiger Bezeichner des Eingabedokuments, auf den sich der Fehler bezieht. |
 | message |Fehlermeldung. |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Glückwunsch! Sie haben nun die Nutzung der Textanalyse für Ihre Daten abgeschlossen. Sie können nun Informationen über die Nutzung eines Tools wie z.B. [Power BI](//powerbi.microsoft.com) einholen, um Ihre Daten zu visualisieren, und Ihre Erkenntnisse automatisieren, damit Sie Ihre Textdaten in Echtzeit anzeigen können.
 
-Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](http://docs.botframework.com/de-DE/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
+Wie Textanalysefunktionen, z.B. Stimmung, als Teil eines Bots verwendet werden können, zeigt Ihnen das Beispiel [Emotional Bot](http://docs.botframework.com/en-us/bot-intelligence/language/#example-emotional-bot) (Emotionaler Bot) auf der Bot-Framework-Website.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

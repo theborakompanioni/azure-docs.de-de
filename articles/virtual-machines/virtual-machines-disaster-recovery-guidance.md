@@ -2,11 +2,11 @@
 title: Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer | Microsoft Docs
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer.
 services: virtual-machines
-documentationcenter: ''
+documentationcenter: 
 author: kmouss
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
 ms.workload: virtual-machines
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: kmouss;aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e1c0a6c0b375d9f1fbc331736f6bed73c2232048
+
 
 ---
-# Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
+# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-virtual-machines"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
@@ -32,29 +36,29 @@ Dieser Artikel behandelt ein echtes Szenario der Notfallwiederherstellung für d
 
 In den folgenden Informationen zu virtuellen Azure-Computern erfahren Sie, welche Möglichkeiten Sie haben, wenn die gesamte Region, in der Ihre virtuelle Azure-Computeranwendung bereitgestellt wurde, von einer Dienstunterbrechung betroffen ist.
 
-## Option 1: Warten auf die Wiederherstellung
-In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv daran, die Verfügbarkeit des Diensts wiederherzustellen. Der aktuelle Dienststatus wird auf dem [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/) angezeigt.
+## <a name="option-1-wait-for-recovery"></a>Option 1: Warten auf die Wiederherstellung
+In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv daran, die Verfügbarkeit des Diensts wiederherzustellen. Der aktuelle Dienststatus wird auf dem [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/)angezeigt.
 
 > [!NOTE]
 > Dies ist die beste Option, wenn Sie vor der Unterbrechung nicht Azure Site Recovery, die Sicherung virtueller Computer, georedundanten Speicher mit Lesezugriff oder georedundanten Speicher eingerichtet haben. Wenn Sie den georedundanten Speicher oder den georedundanten Speicher mit Lesezugriff für das Speicherkonto eingerichtet haben, unter dem die virtuellen Festplatten (VHDs) der VM gespeichert sind, können Sie versuchen, die Festplatte mit dem Basisimage wiederherzustellen und darüber eine neue VM bereitzustellen. Dies ist nicht die bevorzugte Option, da die Synchronisierung der Daten nur dann sichergestellt ist, wenn eine Sicherung von Azure-VMs oder Azure Site Recovery verwendet wird. Daher kann nicht garantiert werden, dass diese Option funktioniert.
 > 
 > 
 
-Für Kunden, die umgehend Zugriff auf virtuelle Computer benötigen, stehen die beiden folgenden Optionen zur Verfügung.
+Für Kunden, die umgehend Zugriff auf virtuelle Computer benötigen, stehen die beiden folgenden Optionen zur Verfügung.  
 
 > [!NOTE]
-> Bei beiden Optionen besteht die Gefahr von Datenverlusten.
+> Bei beiden Optionen besteht die Gefahr von Datenverlusten.     
 > 
 > 
 
-## Option 2: Wiederherstellen eines virtuellen Computers aus einer Sicherung
+## <a name="option-2-restore-a-vm-from-a-backup"></a>Option 2: Wiederherstellen eines virtuellen Computers aus einer Sicherung
 Für Kunden, die eine VM-Sicherung konfiguriert haben, können Sie den virtuellen Computer auf der Grundlage einer Sicherung und eines Wiederherstellungspunkts wiederherstellen.
 
 Informationen zum Wiederherstellen einer neuen VM aus Azure Backup finden Sie unter [Wiederherstellen virtueller Computer in Azure](../backup/backup-azure-restore-vms.md).
 
 Informationen zum Planen der Infrastruktur für die Sicherung von virtuellen Azure-Computern finden Sie unter [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../backup/backup-azure-vms-introduction.md).
 
-## Option 3: Initiieren eines Failovers per Azure Site Recovery
+## <a name="option-3-initiate-a-failover-by-using-azure-site-recovery"></a>Option 3: Initiieren eines Failovers per Azure Site Recovery
 Wenn Sie Azure Site Recovery für Ihre betroffenen virtuellen Azure-Computer konfiguriert haben, können Sie Ihre virtuellen Computer auf der Grundlage ihrer Replikate wiederherstellen. Diese Replikate können sich entweder in Azure befinden oder lokal vorhanden sein. In diesem Fall können Sie auf der Grundlage des vorhandenen Replikats einen neuen virtuellen Computer erstellen. Informationen zum Wiederherstellen Ihrer virtuellen Computer auf der Grundlage eines Azure Site Recovery-Replikats finden Sie unter [Migrieren von virtuellen Azure-IaaS-Computern zwischen Azure-Regionen mit Azure Site Recovery](../site-recovery/site-recovery-migrate-azure-to-azure.md).
 
 > [!NOTE]
@@ -62,10 +66,10 @@ Wenn Sie Azure Site Recovery für Ihre betroffenen virtuellen Azure-Computer kon
 > 
 > 
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Implementierung einer Strategie für Notfallwiederherstellung und hohe Verfügbarkeit finden Sie unter [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Im [technischen Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md) können Sie detaillierte technische Kenntnisse hinsichtlich der Funktionen einer Cloudplattform erwerben.
+Im [technischen Leitfaden zur Resilienz in Azure](../resiliency/resiliency-technical-guidance.md)können Sie detaillierte technische Kenntnisse hinsichtlich der Funktionen einer Cloudplattform erwerben.
 
 Informationen zum Sichern von VMs finden Sie unter [Sichern von virtuellen Azure-Computern](../backup/backup-azure-vms.md).
 
@@ -73,4 +77,9 @@ Informationen zur Verwendung von Azure Site Recovery zum Orchestrieren und Autom
 
 Wenden Sie sich an den [Kundensupport](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls die Anweisungen nicht klar sein sollten oder Microsoft die Schritte für Sie ausführen soll.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

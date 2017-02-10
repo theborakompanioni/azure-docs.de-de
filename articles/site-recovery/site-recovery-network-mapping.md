@@ -1,12 +1,12 @@
 ---
-title: Vorbereiten der Netzwerkzuordnung für den Schutz virtueller Hyper-V-Maschinen mit VMM in Azure Site Recovery | Microsoft Docs
-description: Informationen zum Einrichten der Netzwerkzuordnung für die Replikation virtueller Hyper-V-Computer aus einem lokalen Datencenter in Azure oder an einen sekundären Standort.
+title: "Vorbereiten der Netzwerkzuordnung für den Schutz virtueller Hyper-V-Computer mit VMM in Azure Site Recovery | Microsoft Docs"
+description: "Informationen zum Einrichten der Netzwerkzuordnung für die Replikation virtueller Hyper-V-Computer aus einem lokalen Rechenzentrum in Azure oder an einen sekundären Standort."
 services: site-recovery
-documentationcenter: ''
+documentationcenter: 
 author: rayne-wiselman
 manager: jwhit
-editor: ''
-
+editor: 
+ms.assetid: a798580b-b166-426b-bdca-573167b0e451
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/05/2016
 ms.author: raynew
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8023643345812a9bc18dcca43cfc0ecff31a5007
+
 
 ---
 # <a name="prepare-network-mapping-for-hyper-v-virtual-machine-protection-with-vmm-in-azure-site-recovery"></a>Vorbereiten der Netzwerkzuordnung für den Schutz virtueller Hyper-V-Computer mit VMM in Azure Site Recovery
 Azure Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung, indem Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server aufeinander abgestimmt werden.
 
-In diesem Artikel wird die Netzwerkzuordnung beschrieben, die zum optimalen Konfigurieren von Netzwerkeinstellungen dient, und zwar bei Verwenden von Site Recovery zum Replizieren virtueller Hyper-V-Computer in VMM-Clouds zwischen zwei lokalen Datencentern oder zwischen einem lokalen Datencenter und Azure. Dieser Artikel ist nicht relevant, wenn Sie virtuelle Hyper-V-Computer ohne VMM-Cloud bzw. VMware-VMs oder physische Server replizieren.
+In diesem Artikel wird die Netzwerkzuordnung beschrieben, die zum optimalen Konfigurieren von Netzwerkeinstellungen dient, und zwar bei Verwenden von Site Recovery zum Replizieren virtueller Hyper-V-Computer in VMM-Clouds zwischen zwei lokalen Rechenzentren oder zwischen einem lokalen Rechenzentrum und Azure. Dieser Artikel ist nicht relevant, wenn Sie virtuelle Hyper-V-Computer ohne VMM-Cloud bzw. VMware-VMs oder physische Server replizieren.
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
 
 ## <a name="overview"></a>Übersicht
-Die Netzwerkzuordnung wird verwendet, wenn Azure Site Recovery bereitgestellt ist, um virtuelle Hyper-V-Computer mithilfe der Hyper-V-Replikat- oder SAN-Replikation in Azure oder ein sekundäres Datencenter zu replizieren.
+Die Netzwerkzuordnung wird verwendet, wenn Azure Site Recovery bereitgestellt ist, um virtuelle Hyper-V-Computer mithilfe der Hyper-V-Replikat- oder SAN-Replikation in Azure oder ein sekundäres Rechenzentrum zu replizieren.
 
-* **Replizieren virtueller Hyper-V-Computer in VMM-Clouds zwischen zwei lokalen Datencentern**: Die Netzwerkzuordnung wird zwischen VM-Netzwerken auf einem VMM-Quellserver und VM-Netzwerken auf einem VMM-Zielserver für Folgendes eingesetzt:
+* **Replizieren virtueller Hyper-V-Computer in VMM-Clouds zwischen zwei lokalen Rechenzentren**: Die Netzwerkzuordnung wird zwischen VM-Netzwerken auf einem VMM-Quellserver und VM-Netzwerken auf einem VMM-Zielserver für Folgendes eingesetzt:
   
   * **Verbinden virtueller Computer nach einem Failover**: Stellt sicher, dass die virtuellen Computer nach dem Failover mit geeigneten Netzwerken verbunden sind. Der virtuelle Replikatcomputer wird mit dem Zielnetzwerk verbunden, das dem Quellnetzwerk zugeordnet ist.
   * **Platzieren virtueller Replikatcomputer auf Hostservern**: Virtuelle Replikatcomputer werden optimal auf Hyper-V-Hostservern platziert. Virtuelle Replikatcomputer werden auf Hosts platziert, die auf die zugeordneten VM-Netzwerke zugreifen können.
@@ -106,6 +110,9 @@ Einige mögliche Szenarien mit diesen Einstellungen:
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich mit Netzwerkzuordnung vertraut gemacht haben, können Sie sich mit der [Site Recovery-Bereitstellung beginnen](site-recovery-best-practices.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

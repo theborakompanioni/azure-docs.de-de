@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/13/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 274f874ba17914b4422c06f92be3d305b3d484e0
+ms.sourcegitcommit: f9d423e87938e55daeb07268b11c930fb62755b6
+ms.openlocfilehash: 8fa7ca18fd2ea3a3f672854a0b2e0397cfdbb2bc
 
 
 ---
@@ -27,7 +27,7 @@ Das Testen von Web-Apps in der Produktionsumgebung unter Verwendung von Livedate
 Mit dem Feature für Datenverkehrsrouting in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) können Sie einen Teil des Livedatenverkehrs von Benutzern an einen oder mehrere [Bereitstellungsslots](web-sites-staged-publishing.md) weiterleiten und Ihre App mit [Azure Application Insights](/services/application-insights/), [Azure HDInsight](/services/hdinsight/) oder einem Drittanbietertool wie [New Relic](/marketplace/partners/newrelic/newrelic/) analysieren, um die Änderungen zu überprüfen. Sie können z. B. folgende Szenarien mit App Service implementieren:
 
 * Ermitteln von Bugs in Funktionen oder Leistungsengpässen in Ihren Updates vor der Bereitstellung in der gesamten Website
-* Durchführen von „kontrollierten Test-Flights“ Ihrer Änderungen durch Messen von Nutzungsmetriken in der Beta-App
+* Durchführen von kontrollierten Testläufen Ihrer Änderungen durch Messen von Nutzungsmetriken in der Beta-App
 * Sukzessives Einführen eines Updates und problemloses Zurücksetzen auf die derzeitige Version, falls ein Fehler auftritt 
 * Optimieren der Geschäftsergebnisse Ihrer App durch Ausführen von [A/B-Tests](https://en.wikipedia.org/wiki/A/B_testing) oder [multivariaten Tests](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing) in mehreren Bereitstellungsslots
 
@@ -88,6 +88,6 @@ Damit Benutzer Ihre Beta-App nutzen können, legen Sie den gleichen Abfrageparam
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,31 +1,34 @@
-
 ---
 title: Anforderungen an Azure RemoteApp-Images | Microsoft Docs
-description: Erfahren Sie, welche Anforderungen bei der Erstellung von Images für die Verwendung mit Azure RemoteApp bestehen.
+description: "Erfahren Sie, welche Anforderungen bei der Erstellung von Images für die Verwendung mit Azure RemoteApp bestehen."
 services: remoteapp
-documentationcenter: ''
-author: lizap
+documentationcenter: 
+author: msmbaldwin
 manager: mbaldwin
-
+ms.assetid: 7cbb90f4-6dc9-462c-a429-088cdb57414e
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: a37804025cbd298ef2b98c84b5cc59c0cba07dd9
+
 
 ---
-# Anforderungen für Azure RemoteApp-Images
+# <a name="requirements-for-azure-remoteapp-images"></a>Anforderungen für Azure RemoteApp-Images
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
-Azure RemoteApp verwendet ein Windows Server 2012 R2-Image, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes Image zu erstellen, beginnen Sie mit einem bestehenden Image oder [erstellen ein neues](remoteapp-create-custom-image.md).
+Azure RemoteApp verwendet ein Windows Server 2012 R2-Image, um alle Programme zu hosten, die Sie an die Benutzer freigeben möchten. Um ein benutzerdefiniertes Image zu erstellen, beginnen Sie mit einem bestehenden Image oder [erstellen ein neues](remoteapp-create-custom-image.md).
 
 > [!TIP]
-> Wussten Sie, dass Ihnen Ihr Azure RemoteApp-Abonnement Zugriff auf ein Windows Server 2012 R2-Image im Azure-VM-Katalog bietet, mit dem Sie Ihr eigenes Vorlagenimage erstellen können? [Probieren Sie es aus](remoteapp-image-on-azurevm.md).
+> Wussten Sie, dass Ihnen Ihr Azure RemoteApp-Abonnement Zugriff auf ein Windows Server 2012 R2-Image im Azure-VM-Katalog bietet, mit dem Sie Ihr eigenes Vorlagenimage erstellen können? [Probieren Sie es aus](remoteapp-image-on-azurevm.md).  
 > 
 > 
 
@@ -33,8 +36,8 @@ Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll,
 
 * Benutzerdefinierte Anwendungen speichern keine lokalen Daten im Image. Diese Images verfügen über keinen Status und sollten nur Anwendungen enthalten.
 * Das Image enthält keine Daten, die verloren gehen können.
-* Die Größe des Abbilds sollte ein Vielfaches der Einheit MB (1.024 KB) betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
-* Das Abbild darf nicht größer als 127 GB sein.
+* Die Größe des Abbilds sollte ein Vielfaches der Einheit MB (1.024 KB) betragen. Wenn Sie versuchen, ein Abbild hochzuladen, das kein exaktes Vielfaches ist, treten beim Upload Fehler auf.
+* Das Abbild darf nicht größer als 127 GB sein.
 * Es muss sich auf einer VHD-Datei befinden (VHDX-Dateien werden derzeit nicht unterstützt).
 * Die VHD darf kein virtueller Computer der 2. Generation sein.
 * Die VHD kann eine feste Größe haben oder dynamisch erweiterbar sein. Wir empfehlen eine dynamisch erweiterbare VHD, da das Hochladen dieser in Azure weniger Zeit in Anspruch nimmt.
@@ -46,6 +49,11 @@ Das Abbild, das für die Verwendung mit Azure RemoteApp hochgeladen werden soll,
 * Das Abbild muss mit SYSPREP unter Verwendung der Parameter **/oobe /generalize /shutdown** vorbereitet werden. Verwenden Sie nicht den Parameter **/mode:vm**.
 * VHD-Uploads aus einer Momentaufnahmenkette werden nicht unterstützt.
 
-Weitere Informationen zum Erstellen von Images für Azure RemoteApp finden Sie unter [Erstellen von Azure RemoteApp-Images](remoteapp-imageoptions.md).
+Weitere Informationen zum Erstellen von Images für Azure RemoteApp finden Sie unter [Erstellen von Azure RemoteApp-Images](remoteapp-imageoptions.md) .
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

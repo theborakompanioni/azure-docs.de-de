@@ -1,5 +1,5 @@
 ---
-title: " Erstellen eines Azure Media Services-Kontos über das Azure-Portal | Microsoft Docs"
+title: " Erstellen eines Azure Media Services-Kontos über das Azure-Portal | Microsoft-Dokumentations"
 description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie über das Azure-Portal ein Azure Media Services-Konto erstellen."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/10/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 312231f395f19fde98431c24b71ce7cec3061eaf
-ms.openlocfilehash: 4a1d5d706cbfb5c42a36fd03033aa361ef3d4d11
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 01c1297a6b107f91d8e6e73f17d76499d67849de
 
 
 ---
@@ -54,10 +54,10 @@ In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie auf **+Neu** > **Web und mobil** > **Media Services**.
    
-    ![Media Services – Erstellung](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![Media Services – Erstellung](./media/media-services-create-account/media-services-new1.png)
 3. Geben Sie unter **CREATE MEDIA SERVICES ACCOUNT** (MEDIA SERVICES-KONTO ERSTELLEN) die erforderlichen Werte ein.
    
-    ![Media Services – Erstellung](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    ![Media Services – Erstellung](./media/media-services-create-account/media-services-new3.png)
    
    1. Geben Sie unter **Kontoname**den Namen des neuen AMS-Kontos ein. Der Name eines Media Services-Kontos darf nur Kleinbuchstaben oder Ziffern ohne Leerzeichen enthalten und muss aus 3 bis 24 Zeichen bestehen.
    2. Wählen Sie unter „Abonnement“ das Azure-Abonnement aus, auf das Sie Zugriff haben.
@@ -69,9 +69,12 @@ In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
    6. Wählen Sie **An Dashboard anheften** aus, um den Status der Kontobereitstellung anzuzeigen.
 4. Klicken Sie unten im Formular auf **Erstellen** .
    
-    Wenn das Konto erfolgreich erstellt wurde, ändert sich der Status in **Wird ausgeführt**. 
+    Nachdem die Erstellung des Kontos erfolgreich abgeschlossen wurde, wird die Seite mit der Übersicht geladen. In der Streamingendpunkt-Tabelle ist für das Konto ein Standard-Streamingendpunkt mit dem Status **Beendet** angegeben. 
+
+    >[!NOTE]
+    >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
    
-    ![Media Services – Einstellungen](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![Media Services – Einstellungen](./media/media-services-create-account/media-services-settings.png)
    
     Verwenden Sie zum Verwalten Ihres AMS-Kontos (Hochladen von Videos, Codieren von Ressourcen, Überwachen des Auftragsstatus und Ähnliches) das Fenster **Einstellungen** .
 
@@ -86,7 +89,7 @@ Sie benötigen den Kontonamen und den Primärschlüssel, um programmgesteuert au
     Im Fenster **Schlüssel verwalten** werden der Kontoname sowie der Primär- und Sekundärschlüssel angezeigt. 
 3. Kopieren Sie die Werte mithilfe der Kopierschaltfläche.
    
-    ![Media Services – Schlüssel](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    ![Media Services – Schlüssel](./media/media-services-create-account/media-services-keys.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nun können Sie Dateien in Ihrer AMS-Konto hochladen. Weitere Informationen finden Sie unter [Upload files](media-services-portal-upload-files.md)(Hochladen von Dateien).
@@ -100,6 +103,6 @@ Nun können Sie Dateien in Ihrer AMS-Konto hochladen. Weitere Informationen find
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

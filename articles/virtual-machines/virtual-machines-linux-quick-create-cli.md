@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 09/26/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2bd363e3c22f4cf4daf2e0fa352fd4a131d1675f
-ms.openlocfilehash: 89db2c9f388b8a5496a306ba0a152ab57481ea50
+ms.sourcegitcommit: 95b924257c64a115728c66956d5ea38eb8764a35
+ms.openlocfilehash: 70592ac773aced0bfcec5c7418a6dc53555fab33
 
 
 ---
 
-# <a name="create-a-linux-vm-using-the-azure-cli-20-preview"></a>Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+# <a name="create-a-linux-vm-using-the-azure-cli-20-preview-azpy"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure-CLI 2.0 Preview (az.py)
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Befehls [az vm create](/cli/azure/vm#create) über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) im Handumdrehen einen virtuellen Linux-Computer bereitstellen. 
 
 > [!NOTE] 
-> Bei der Vorschauversion der Azure-Befehlszeilenschnittstelle 2.0 handelt es sich um die nächste Generation unserer plattformübergreifenden Befehlszeilenschnittstelle. Probieren Sie sie aus, und teilen Sie uns auf der [GitHub-Projektseite](https://github.com/Azure/azure-cli) Ihre Meinung mit.
+> Bei der Vorschauversion der Azure-Befehlszeilenschnittstelle 2.0 handelt es sich um die nächste Generation unserer plattformübergreifenden Befehlszeilenschnittstelle. [Probieren Sie sie aus.](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)
 >
-> In der übrigen Dokumentation wird die bereits vorhandene Azure-Befehlszeilenschnittstelle verwendet. Wenn Sie einen virtuellen Computer nicht mit der Vorschauversion der Befehlszeilenschnittstelle 2.0, sondern mit der bereits vorhandenen Azure-Befehlszeilenschnittstelle erstellen möchten, lesen Sie unter [Create a VM with the Azure CLI](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Erstellen eines virtuellen Computers mit der Azure-Befehlszeilenschnittstelle) weiter.
+> In der übrigen Dokumentation wird die bereits vorhandene Azure-Befehlszeilenschnittstelle verwendet. Wenn Sie einen virtuellen Computer nicht mit der Vorschauversion der Befehlszeilenschnittstelle 2.0, sondern mit der bereits vorhandenen Azure-CLI 1.0 erstellen möchten, lesen Sie unter [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
 
 Zum Erstellen eines virtuellen Computers ist Folgendes erforderlich: 
 
 * Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
-* Installierte [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](https://github.com/Azure/azure-cli#installation)
+* Installierte [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2)
 * Anmeldung bei Ihrem Azure-Konto ([az login](/cli/azure/#login))
 
 (Virtuelle Computer können auch schnell über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereitgestellt werden.)
@@ -41,10 +41,10 @@ Das folgende Beispiel zeigt, wie Sie einen virtuellen Debian-Computer bereitstel
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Geben Sie zunächst [az resource group create](/cli/azure/resource/group#create) ein, um Ihre Ressourcengruppe zu erstellen, die alle bereitgestellten Ressourcen enthält:
+Geben Sie zunächst [az group create](/cli/azure/group#create) ein, um Ihre Ressourcengruppe zu erstellen, die alle bereitgestellten Ressourcen enthält:
 
 ```azurecli
-az resource group create -n myResourceGroup -l westus
+az group create -n myResourceGroup -l westus
 ```
 
 Die Ausgabe sieht wie folgt aus. (Sie können auch eine andere `--output`-Option verwenden.)
@@ -127,6 +127,6 @@ Sie können auch [den Azure-Treiber `docker-machine` mit verschiedenen Befehlen 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,36 +1,40 @@
 ---
-title: Auswählen von Benutzernamen für Linux | Microsoft Docs
-description: Erfahren Sie, wie Sie Benutzernamen für einen virtuellen Linux-Computer in Azure auswählen.
+title: "Auswählen von Benutzernamen für Linux | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Benutzernamen für einen virtuellen Linux-Computer in Azure auswählen."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: 33b50c97-92f1-46c9-a623-e37f67459c5c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2016
+ms.date: 02/02/2017
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: eaea0ce42537789278d3a0476b261e6a750dde2b
+
 
 ---
-# Auswählen von Benutzernamen für Linux in Azure
+# <a name="selecting-user-names-for-linux-on-azure"></a>Auswählen von Benutzernamen für Linux in Azure
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 Beim Bereitstellen eines virtuellen Linux-Computers in Azure müssen Sie den Namen eines Benutzers ohne Root-Rechte angeben, den Sie später bei der Anmeldung am virtuellen Computer benutzen können. Sie können den Namen des neuen Benutzers wählen, oder Sie können den Standardnamen „azureuser“ übernehmen, wenn Sie die Bereitstellung über das klassische Azure-Portal durchführen.
 
 In den meisten Fällen ist dieser Benutzer im Basisimage nicht vorhanden und wird während des Bereitstellungsprozesses erstellt. Wenn der Benutzer im VM-Basisimage vorhanden ist, konfiguriert der Azure Linux-Agent in einigen Fällen einfach das Kennwort und/oder den SSH-Schlüssel für diesen Benutzer auf Grundlage der Informationen, die Sie beim Erstellen der VM festgelegt haben.
 
-**Allerdings** definiert Linux einen Satz von Benutzernamen, die nicht verwendet werden sollten. Der Bereitstellungsprozess **schlägt fehl**, wenn Sie versuchen, einen virtuellen Linux-Computer mithilfe eines vorhandenen Systembenutzers bereitzustellen, der als Benutzer mit einer UID zwischen 0 und 99 definiert ist. Ein typisches Beispiel ist der Benutzer `root`, der die UID 0 hat.
+**Allerdings**definiert Linux einen Satz von Benutzernamen, die nicht verwendet werden sollten. Der Bereitstellungsprozess **schlägt fehl** , wenn Sie versuchen, einen virtuellen Linux-Computer mithilfe eines vorhandenen Systembenutzers bereitzustellen, der als Benutzer mit einer UID zwischen 0 und 99 definiert ist. Ein typisches Beispiel ist der Benutzer `root` , der die UID 0 hat.
 
-* Siehe auch: [Linux-Standardbasis – Benutzer-ID-Bereiche](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
+* Siehe auch: [Linux-Standardbasis – Benutzer-ID-Bereiche](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
 Nachfolgend finden Sie eine Liste allgemeiner integrierter Systembenutzer für CentOS und Ubuntu, die Sie bei der Bereitstellung eines virtuellen Linux-Computers in Azure nicht verwenden sollten. Diese Liste ist nur ein Beispiel. Lesen Sie die Dokumentation für Ihre Verteilung, um sicherzustellen, dass der ausgewählte Benutzername nicht in Konflikt mit einem vorhandenen Systembenutzer steht.
 
-## CentOS
+## <a name="centos"></a>CentOS
 * abrt
 * adm
 * audio
@@ -86,7 +90,7 @@ Nachfolgend finden Sie eine Liste allgemeiner integrierter Systembenutzer für C
 * video
 * wheel
 
-## Ubuntu
+## <a name="ubuntu"></a>Ubuntu
 * adm
 * admin
 * audio
@@ -141,4 +145,9 @@ Nachfolgend finden Sie eine Liste allgemeiner integrierter Systembenutzer für C
 * whoopsie
 * www-data
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

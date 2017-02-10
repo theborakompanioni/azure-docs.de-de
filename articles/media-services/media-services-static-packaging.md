@@ -1,12 +1,12 @@
 ---
-title: Ausführen von Tasks zur statischen Paketerstellung mithilfe von Azure Media Packager | Microsoft Docs
-description: In diesem Thema werden verschiedene Aufgaben erläutert, die mit Azure Media Packager ausgeführt werden.
+title: "Ausführen von Tasks zur statischen Paketerstellung mithilfe von Azure Media Packager | Microsoft Docs"
+description: "In diesem Thema werden verschiedene Aufgaben erläutert, die mit Azure Media Packager ausgeführt werden."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: Juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 4f05f188633e2d5103e29ae4501f7ea9a832acba
+
 
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Ausführen von Aufgaben zur statischen Paketerstellung mithilfe von Azure Media Packager
 > [!NOTE]
-> Das Datum für das Ende der Nutzung von Microsoft Azure Media Packager und Microsoft Azure Media Encryptor wurde auf den 1. März 2017 verlegt. Vor diesem Datum werden die Funktionen dieser Prozessoren in Media Encoder Standard (MES) hinzugefügt. Kunden erhalten eine Anleitung zum Migrieren ihrer Workflows, sodass Aufträge an MES gesendet werden. Funktionen zur Formatkonvertierung und Verschlüsselung stehen außerdem über die dynamische Paketerstellung und die dynamische Verschlüsselung zur Verfügung.
+> Das Datum für das Ende der Nutzung von Microsoft Azure Media Packager und Microsoft Azure Media Encryptor wurde auf den 1. März 2017 verlegt. Vor diesem Datum werden die Funktionen dieser Prozessoren in Media Encoder Standard (MES) hinzugefügt. Kunden erhalten eine Anleitung zum Migrieren ihrer Workflows, sodass Aufträge an MES gesendet werden. Funktionen zur Formatkonvertierung und Verschlüsselung stehen außerdem über die dynamische Paketerstellung und die dynamische Verschlüsselung zur Verfügung.
 > 
 > 
 
@@ -34,7 +38,7 @@ Media Services unterstützt die dynamische und die statische Paketerstellung. Be
 
 In einigen Szenarios ist jedoch die statische Paketerstellung erforderlich: 
 
-* Überprüfen von MP4-Dateien mit adaptiver Bitrate, die mit externen Encodern codiert wurden (z. B. mit Encodern von Drittanbietern).
+* Überprüfen von MP4-Dateien mit adaptiver Bitrate, die mit externen Encodern codiert wurden (z. B. mit Encodern von Drittanbietern).
 
 Darüber hinaus können Sie mit der statischen Paketerstellung die folgenden Aufgaben ausführen. Dennoch wird empfohlen, die dynamische Verschlüsselung zu verwenden.
 
@@ -46,7 +50,7 @@ Darüber hinaus können Sie mit der statischen Paketerstellung die folgenden Auf
 Wenn Sie einen Satz MP4-Dateien mit adaptiver Bitrate (Multi-Bitrate) verwenden möchten, die nicht mit Media Services-Encodern codiert wurden, sollten Sie die Dateien vor der Weiterverarbeitung überprüfen. Mit Media Services Packager kann ein Asset, das einen Satz MP4-Dateien enthält, überprüft werden, und es kann festgestellt werden, ob das Asset in Smooth Streaming oder HLS gepackt werden kann. Wenn die Überprüfungsaufgabe fehlschlägt, wird der Auftrag, mit dem die Aufgabe verarbeitet wurde, mit einem Fehler abgeschlossen. Den XML-Code, mit dem die Voreinstellung für die Überprüfungsaufgabe definiert wird, finden Sie im Thema [Taskvoreinstellung für Azure Media Packager](http://msdn.microsoft.com/library/azure/hh973635.aspx) .
 
 > [!NOTE]
-> Verwenden Sie Media Encoder Standard zum Generieren oder Media Services Packager zum Überprüfen Ihrer Inhalte, um Laufzeitprobleme zu vermeiden. Wenn der Server für das On-Demand-Streaming Ihre Quelldateien zur Laufzeit nicht analysieren kann, wird der HTTP 1.1-Fehler "415 Unsupported Media Type" ausgegeben. Wenn der Server wiederholt Ihre Quelldateien nicht analysieren kann, wird die Leistung des Servers für das On-Demand-Streaming beeinträchtigt und möglicherweise die verfügbare Bandbreite zur Verarbeitung anderer Anforderungen reduziert. Azure Media Services bietet eine Vereinbarung zum Servicelevel (SLA) für seine On-Demand-Streamingdienste. Diese SLA kann jedoch nicht erfüllt werden, wenn der Server auf die oben beschriebene Weise missbräuchlich verwendet wird.
+> Verwenden Sie Media Encoder Standard zum Generieren oder Media Services Packager zum Überprüfen Ihrer Inhalte, um Laufzeitprobleme zu vermeiden. Wenn der Server für das On-Demand-Streaming Ihre Quelldateien zur Laufzeit nicht analysieren kann, wird der HTTP 1.1-Fehler "415 Unsupported Media Type" ausgegeben. Wenn der Server wiederholt Ihre Quelldateien nicht analysieren kann, wird die Leistung des Servers für das On-Demand-Streaming beeinträchtigt und möglicherweise die verfügbare Bandbreite zur Verarbeitung anderer Anforderungen reduziert. Azure Media Services bietet eine Vereinbarung zum Servicelevel (SLA) für seine On-Demand-Streamingdienste. Diese SLA kann jedoch nicht erfüllt werden, wenn der Server auf die oben beschriebene Weise missbräuchlich verwendet wird.
 > 
 > 
 
@@ -1455,6 +1459,9 @@ Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft P
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,19 +1,19 @@
 # Übersicht
 ## [Was ist die Überprüfung in zwei Schritten?](multi-factor-authentication-end-user.md)
-## [Welche Auswirkungen hat sie für mich?](../multi-factor-authentication-end-user-signin.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+## [Welche Auswirkungen hat sie für mich?](multi-factor-authentication-end-user-signin.md)
 
 # Erste Schritte
-## [Einrichten Ihres Kontos](../multi-factor-authentication-end-user-first-time.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+## [Einrichten Ihres Kontos](multi-factor-authentication-end-user-first-time.md)
 
 # Anleitung
-## [Verwalten von Einstellungen](../multi-factor-authentication-end-user-manage-settings.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
-## [Problembehandlung](../multi-factor-authentication-end-user-troubleshoot.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
-## [Einrichten von App-Kennwörtern](../multi-factor-authentication-end-user-app-passwords.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+## [Verwalten von Einstellungen](multi-factor-authentication-end-user-manage-settings.md)
+## [Problembehandlung](multi-factor-authentication-end-user-troubleshoot.md)
+## [Einrichten von App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md)
 ## Verwenden der Microsoft Authenticator-App
-### [Erste Schritte](../multi-factor-authentication-microsoft-authenticator.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
-### [Häufig gestellte Fragen](../multi-factor-authentication-app-faq.md?toc=%2fazure&2fmulti-factor-authentication%2fend-user%2ftoc.json)
+### [Erste Schritte](microsoft-authenticator-app-how-to.md)
+### [Häufig gestellte Fragen](microsoft-authenticator-app-faq.md)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO4-->
 
 

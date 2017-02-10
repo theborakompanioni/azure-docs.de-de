@@ -2,13 +2,13 @@
 title: Bereitstellen von S/4 HANA oder BW/4 HANA auf einem virtuellen Azure-Computer | Microsoft Docs
 description: Bereitstellen von S/4 HANA oder BW/4 HANA auf einem virtuellen Azure-Computer
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: hermanndms
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-keywords: ''
-
+keywords: 
+ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -16,9 +16,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: f653e69590ee15d272543dc58840b1ee6983e953
+
 
 ---
-# <a name="deploying-s/4-hana-or-bw/4-hana-on-microsoft-azure"></a>Bereitstellen von S/4 HANA oder BW/4 HANA unter Microsoft Azure
+# <a name="deploying-s4-hana-or-bw4-hana-on-microsoft-azure"></a>Bereitstellen von S/4 HANA oder BW/4 HANA unter Microsoft Azure
 In diesem Artikel wird beschrieben, wie Sie S/4 HANA unter Microsoft Azure über die SAP Cloud Appliance Library 3.0 bereitstellen.
 In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Das Bereitstellen von anderen SAP HANA-basierten Lösungen wie BW/4 HANA funktioniert in Bezug auf den Prozess genauso. Sie müssen lediglich eine andere Lösung auswählen.
 
@@ -89,6 +93,9 @@ Nun ist es möglich, für die Lösung über die Schaltfläche „Verbinden“ im
 
 Eine weitere Option ist die Anmeldung an der Windows-Client-VM und beispielsweise das Starten der vorkonfigurierten SAP GUI.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

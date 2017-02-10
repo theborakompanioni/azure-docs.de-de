@@ -110,7 +110,7 @@ Nach Abschluss dieser Schritte müssen Sie nur die alten Capptain-Verweise durch
         </engagement:EngagementPage>
 4. Beachten Sie, dass andere Ressourcen wie Capptain-Bilder auch für die Verwendung von „Engagement“ umbenannt wurden.
 
-### <a name="application-id-sdk-key"></a>Anwendungs-ID/SDK-Schlüssel
+### <a name="application-id--sdk-key"></a>Anwendungs-ID/SDK-Schlüssel
 Engagement verwendet eine Verbindungszeichenfolge. Sie müssen bei Mobile Engagement keine Anwendungs-ID und keinen SDK-Schlüssel angeben, sie müssen nur eine Verbindungszeichenfolge angeben. Sie können diese in der EngagementConfiguration-Datei einrichten.
 
 Die Konfiguration von Engagement kann in der `Resources\EngagementConfiguration.xml` -Datei des Projekts festgelegt werden.

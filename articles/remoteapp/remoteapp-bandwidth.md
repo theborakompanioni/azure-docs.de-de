@@ -1,24 +1,27 @@
-
 ---
-title: Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp | Microsoft Docs
-description: Lernen Sie die Anforderungen an die Netzwerkbandbreite für Azure RemoteApp-Sammlungen und -Apps kennen.
+title: "Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp | Microsoft Docs"
+description: "Lernen Sie die Anforderungen an die Netzwerkbandbreite für Azure RemoteApp-Sammlungen und -Apps kennen."
 services: remoteapp
-documentationcenter: ''
-author: lizap
+documentationcenter: 
+author: msmbaldwin
 manager: mbaldwin
-
+ms.assetid: 3127f4c7-f532-46c3-ba9b-649f647abec1
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
+translationtype: Human Translation
+ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
+ms.openlocfilehash: 045410664ec70c846abbf32a36dcc8f70ac471be
+
 
 ---
-# Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp
+# <a name="estimate-azure-remoteapp-network-bandwidth-usage"></a>Schätzen der Netzwerkbandbreiten-Nutzung von Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -34,11 +37,16 @@ Informieren Sie sich jetzt in den folgenden Artikeln über die Details, inklusiv
 * [Testen Ihrer Netzwerkbandbreiten-Nutzung mit einigen gängigen Szenarien](remoteapp-bandwidthtests.md)
 * [Kurzrichtlinien, falls Ihnen die Zeit oder die Möglichkeit zum Testen fehlt](remoteapp-bandwidthguidelines.md)
 
-## Was beziehen wir nicht ein?
+## <a name="what-are-we-not-including"></a>Was beziehen wir nicht ein?
 Beachten Sie bei der Durchsicht der vorgeschlagenen Tests und unseren gesamten (und zugegebenermaßen allgemeinen) Empfehlungen, dass wir einige Faktoren nicht berücksichtigt haben. Dazu zählen z. B. die Komplikationen hinsichtlich der Benutzerfreundlichkeit, die der asymmetrische Charakter der Upload- bzw. Downloadbandbreite mit sich bringt. Der asymmetrische Charakter der meisten Wi-Fi-Netzwerke wirkt sich außerdem auf die Leistung und die Benutzerfreundlichkeit aus. In interaktiven Szenarien kann der Downstreamdatenverkehr eine niedrigere Priorität erhalten als der Upstreamdatenverkehr. Dies kann die Anzahl der verloren gegangenen Video- oder Audioframes erhöhen und so die Benutzerfreundlichkeit beim Streaming beeinträchtigen. Sie können mit eigenen Experimenten feststellen, was für Ihren konkreten Anwendungsfall und Ihr Netzwerk gut ist.
 
 Wir behandeln zwar die Geräteumleitung, berücksichtigen jedoch nicht die Auswirkung des durch angeschlossene Geräte wie Speicher, Drucker, Scanner, Webcams und andere USB-Geräte verursachten Netzwerkverkehrs auf die Bandbreite. Diese Geräte verursachen in der Regel einen vorübergehenden Spitzenbedarf an Netzwerkbandbreite, der verschwindet, wenn der Vorgang abgeschlossen ist. Wenn dies jedoch häufig vorkommt, könnte sich dieser Bandbreitenbedarf bemerkbar machen.
 
 Wir erörtern auch nicht, wie ein Benutzer andere Benutzer im gleichen Netzwerk beeinträchtigen kann. Beispielsweise kann ein Benutzer bei der Wiedergabe von 4K-Video über ein 100-MB/s-Netzwerk andere Benutzer im gleichen Netzwerk deutlich beeinträchtigen, die versuchen, das Gleiche zu tun. Leider wird es zunehmend schwieriger, die Auswirkung der gleichzeitigen Nutzung zu bestimmen, um eine allgemeine oder allumfassende Einschätzung der Gesamtleistung des Systems abzugeben. Wir können lediglich sagen, dass die zu Grunde liegende Protokolltechnologie die verfügbare Netzwerkbandbreite zwar bestmöglich nutzt, aber ihre Grenzen hat.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

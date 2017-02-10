@@ -4,7 +4,7 @@ description: "Verbinden Sie Ihre OMS-verwalteten Geräte und Operations Manager-
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dc6cdf1630407d1c4439d89aca5a8254bb806eba
-ms.openlocfilehash: 41382ba85fee1c3f5b1570748cd3d5b0641b9593
+ms.sourcegitcommit: a3d79c2df96c21d1af77c8ea1f53a2cc4e28343e
+ms.openlocfilehash: 30b1a9144e06db92ba12030dfe37a83e79d62857
 
 
 ---
@@ -29,7 +29,7 @@ Beispielsweise können Sie in Ihrem Unternehmen oder in einer großen Organisati
 
 Anstatt dass jeder einzelne Agent Daten direkt an das OMS-Gerät sendet und eine direkte Internetverbindung benötigt, werden alle Agentdaten über einen einzelnen Computer mit Internetverbindung gesendet. Auf diesem Computer installieren und verwenden Sie das Gateway. In diesem Szenario können Sie Agents auf allen Computern installieren, auf denen Sie Daten sammeln möchten. Das Gateway überträgt Daten dann direkt von den Agents an die OMS; das Gateway analysiert die Daten nicht, die übertragen werden.
 
-Zum Überwachen des OMS-Gateways und zum Analysieren der Leistungs- oder Ereignisdaten für den Server, auf dem es installiert ist, müssen Sie den OMS-Agent auf dem Computer installieren, auf dem auch das Gateway installiert ist.
+Der OMS-Agent muss auf dem Computer installiert werden, auf dem auch das Gateway installiert ist. Dadurch können Sie das OMS-Gateway überwachen und die Leistungs- oder Ereignisdaten für den Server analysieren, auf dem es installiert ist. Außerdem unterstützt der Agent das OMS-Gateway beim Ermitteln der Dienstendpunkte, mit denen es kommunizieren muss.
 
 Das Gateway muss Zugriff auf das Internet haben, um Daten zur OMS hochzuladen. Jeder Agent benötigt außerdem auch Netzwerkkonnektivität zu seinen Gateway, damit Agents automatisch Daten zu und vom Gateway übertragen können. Für ein optimales Ergebnis installieren Sie das Gateway auf einem Computer, der auch als Domänencontroller dient.
 
@@ -41,26 +41,72 @@ Das folgende Diagramm veranschaulicht den Datenfluss von Operations Manager zur 
 
 ![Operations Manager-Diagramm](./media/log-analytics-oms-gateway/scom-mgt-server.png)
 
+## <a name="language-availability"></a>Verfügbare Sprachen
+
+Das OMS-Gateway ist in folgenden Sprachen verfügbar:
+
+- Chinesisch (vereinfacht)
+- Chinesisch (traditionell)
+- Tschechisch
+- Niederländisch
+- Deutsch
+- Französisch
+- Deutsch
+- Ungarisch
+- Italienisch
+- Japanisch
+- Koreanisch
+- Polnisch
+- Portugiesisch (Brasilien)
+- Portugiesisch (Portugal)
+- Russisch
+- Spanisch (international)
+
+## <a name="download-the-oms-gateway"></a>Herunterladen des OMS-Gateways
+
+Die Setupdatei für das OMS-Gateway kann auf drei Arten bezogen werden:
+
+### <a name="microsoft-download-center"></a>Microsoft Download Center
+
+- Laden Sie die neueste Version des OMS-Gateways vom [Microsoft Download Center](http://download.microsoft.com/download/2/5/C/25CF992A-0347-4765-BD7D-D45D5B27F92C/OMS%20Gateway.msi) herunter.
+
+### <a name="oms-portal"></a>OMS-Portal
+
+1.  Melden Sie sich bei Ihrem OMS-Arbeitsbereich an.
+2.  Wählen Sie **Einstellungen** > **Verbundene Quellen** > **Windows-Server** aus.
+3.  Klicken Sie auf **Download OMS Gateway** (OMS-Gateway herunterladen).
+
+
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. Durchsuchen Sie die Liste mit den Diensten, und wählen Sie **Log Analytics** aus.
+2. Wählen Sie einen Arbeitsbereich aus.
+3. Klicken Sie auf dem Blatt für Ihren Arbeitsbereich unter **Allgemein** auf **Schnellstart**.
+4. Klicken Sie unter **Choose a data source to connect to the workspace** (Datenquelle auswählen, die mit dem Arbeitsbereich verbunden werden soll) auf **Computer**.
+4. Klicken Sie auf dem Blatt **Direct Agent** auf **Download OMS Gateway** (OMS-Gateway herunterladen).  
+    ![Download OMS Gateway](./media/log-analytics-oms-gateway/download-gateway.png) (OMS-Gateway herunterladen)
+
+
 ## <a name="install-the-oms-gateway"></a>Installieren des OMS-Gateways
 Durch Installieren des Gateways werden frühere Versionen des Gateways, die Sie installiert haben, ersetzt (Log Analytics Forwarder).
 
 Voraussetzungen: .Net Framework 4.5, Windows Server 2012 R2 SP1 und höher
 
-1. Laden Sie die neueste Version des OMS-Gateways vom [Microsoft Download Center](http://download.microsoft.com/download/2/5/C/25CF992A-0347-4765-BD7D-D45D5B27F92C/OMS%20Gateway.msi) herunter.
-2. Starten Sie die Installation, indem Sie auf **OMS Gateway.msi** doppelklicken.
-3. Klicken Sie auf der Seite Willkommen auf **Weiter**.  
+
+1. Starten Sie die Installation, indem Sie auf **OMS Gateway.msi** doppelklicken.
+2. Klicken Sie auf der Seite Willkommen auf **Weiter**.  
     ![Gateway-Setup-Assistent](./media/log-analytics-oms-gateway/gateway-wizard01.png)
-4. Wählen Sie auf der Seite Lizenzvertrag **Ich akzeptiere die Bestimmungen des Lizenzvertrags**, um den Lizenzbestimmungen zuzustimmen, und anschließend **Weiter** aus.
-5. Auf der Port- und Proxy-Adressseite:
+3. Wählen Sie auf der Seite Lizenzvertrag **Ich akzeptiere die Bestimmungen des Lizenzvertrags**, um den Lizenzbestimmungen zuzustimmen, und anschließend **Weiter** aus.
+4. Auf der Port- und Proxy-Adressseite:
    1. Geben Sie die für das Gateway zu verwendende TCP-Portnummer ein. Setup öffnet diese Portnummer über die Windows-Firewall. Der Standardwert ist 8080.
       Der gültige Bereich der Portnummer ist 1 bis 65535. Wenn die Eingabe außerhalb dieses Bereichs liegt, wird eine Fehlermeldung angezeigt.
    2. Falls der Server, auf dem das Gateway installiert ist, einen Proxy verwenden muss, geben Sie die Proxyadresse ein, an der das Gateway eine Verbindung herstellen muss. Beispiel `http://myorgname.corp.contoso.com:80`. Wenn leer,versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen. Andernfalls stellt das Gateway eine Verbindung mit dem Proxy her. Wenn der Proxyserver eine Authentifizierung erfordert, geben Sie den Benutzernamen und das Kennwort ein.
        ![Gateway-Assistent-Proxykonfiguration](./media/log-analytics-oms-gateway/gateway-wizard02.png)  
    3. Klicken Sie auf **Weiter**
-6. Wenn Sie Microsoft-Updates nicht aktiviert haben, wird die Seite „Microsoft-Update“ angezeigt, auf der Sie angeben können, dass Microsoft-Updates aktiviert werden sollen. Treffen Sie eine Auswahl, und klicken Sie dann auf **Weiter**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
-7. Übernehmen Sie auf der Seite „Zielordner“ den Standardordner **%ProgramFiles%\OMS Gateway**, oder geben Sie den Speicherort zum Installieren des Gateways ein, und klicken Sie dann auf **Weiter**.
-8. Klicken Sie auf der Seite „Bereit zur Installation“ auf **Installieren**. Möglicherweise wird eine Benutzerkontensteuerung angezeigt, die die Berechtigung zum Installieren anfordert. Ist dies der Fall, klicken Sie auf **Ja**.
-9. Nachdem Setup abgeschlossen ist, klicken Sie auf **Fertig stellen**. Sie können überprüfen, ob der Dienst ausgeführt wird, indem Sie das Snap-In services.msc öffnen und überprüfen, ob **OMS-Gateway** in der Liste der Dienste angezeigt wird.  
+5. Wenn Sie Microsoft-Updates nicht aktiviert haben, wird die Seite „Microsoft-Update“ angezeigt, auf der Sie angeben können, dass Microsoft-Updates aktiviert werden sollen. Treffen Sie eine Auswahl, und klicken Sie dann auf **Weiter**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
+6. Übernehmen Sie auf der Seite „Zielordner“ den Standardordner **%ProgramFiles%\OMS Gateway**, oder geben Sie den Speicherort zum Installieren des Gateways ein, und klicken Sie dann auf **Weiter**.
+7. Klicken Sie auf der Seite „Bereit zur Installation“ auf **Installieren**. Möglicherweise wird eine Benutzerkontensteuerung angezeigt, die die Berechtigung zum Installieren anfordert. Ist dies der Fall, klicken Sie auf **Ja**.
+8. Nachdem Setup abgeschlossen ist, klicken Sie auf **Fertig stellen**. Sie können überprüfen, ob der Dienst ausgeführt wird, indem Sie das Snap-In services.msc öffnen und überprüfen, ob **OMS-Gateway** in der Liste der Dienste angezeigt wird.  
     ![Dienste – OMS-Gateway](./media/log-analytics-oms-gateway/gateway-service.png)
 
 ## <a name="install-an-agent-on-devices"></a>Installieren eines Agents auf Geräten
@@ -184,7 +230,7 @@ Wenn in Schritt 3 ein Fehler auftritt, wurde das Modul nicht importiert. Der Feh
 | `Get-OMSGatewayAllowedClientCertificate` | |Ruft die derzeit zulässigen Clientzertifikatantragsteller ab (nur lokal konfigurierte zulässiger Antragsteller, schließen Sie automatisch heruntergeladene zulässige Antragsteller nicht ein) |`Get-OMSGatewayAllowedClientCertificate` |
 
 ## <a name="troubleshoot"></a>Problembehandlung
-Es wird empfohlen, dass Sie den OMS-Agent auf Computern installieren, auf denen das Gateway installiert ist. Sie können mithilfe des Agents die Ereignisse sammeln, die vom Gateway protokolliert werden.
+Installieren Sie den OMS-Agent auf Computern, auf denen das Gateway installiert ist. Sie können mithilfe des Agents die Ereignisse sammeln, die vom Gateway protokolliert werden.
 
 ![Ereignisanzeige – OMS-Gatewayprotokoll](./media/log-analytics-oms-gateway/event-viewer.png)
 
@@ -234,6 +280,6 @@ Sie können auch Feedback zur OMS oder Log Analytics im [Microsoft Azure-Feedbac
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

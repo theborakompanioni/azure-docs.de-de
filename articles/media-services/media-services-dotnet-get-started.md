@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/26/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f01cd8d3a68776dd12d2930def1641411e6a4994
-ms.openlocfilehash: a9f77a58cdb13c357b6c3734bd9e3efa4ff5087b
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: e7ac4b87370b5a9fa3a063ba02a1171e6830e075
 
 
 ---
@@ -42,20 +42,8 @@ Klicken Sie auf Bild, um es in voller Größe anzeigen.
 
 <a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
 
-Sie können das gesamte Modell [hier](https://media.windows.net/API/$metadata?api-version=2.14) anzeigen.  
+Sie können das gesamte Modell [hier](https://media.windows.net/API/$metadata?api-version=2.15) anzeigen.  
 
-## <a name="what-youll-learn"></a>Sie lernen Folgendes
-
-Dieses Tutorial beschreibt die Durchführung der folgenden Aufgaben:
-
-1. Erstellen eines Media Services-Kontos (mithilfe des Azure-Portals)
-2. Konfigurieren von Streamingendpunkten (mithilfe des Azure-Portals)
-3. Erstellen und Konfigurieren eines Visual Studio-Projekts
-4. Herstellen einer Verbindung mit dem Media Services-Konto
-5. Erstellen eines neuen Medienobjekts und Hochladen einer Videodatei
-6. Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
-7. Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download
-8. Testen der Funktionalität durch Wiedergabe von Inhalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
@@ -88,39 +76,31 @@ In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
    6. Wählen Sie **An Dashboard anheften** aus, um den Status der Kontobereitstellung anzuzeigen.
 4. Klicken Sie unten im Formular auf **Erstellen** .
 
-    Wenn das Konto erfolgreich erstellt wurde, ändert sich der Status in **Wird ausgeführt**.
+    Nachdem die Erstellung des Kontos erfolgreich abgeschlossen wurde, wird die Seite mit der Übersicht geladen. In der Streamingendpunkt-Tabelle ist für das Konto ein Standard-Streamingendpunkt mit dem Status **Beendet** angegeben.
+
+    >[!NOTE]
+    >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 
     ![Media Services – Einstellungen](./media/media-services-portal-vod-get-started/media-services-settings.png)
 
     Verwenden Sie zum Verwalten Ihres AMS-Kontos (Hochladen von Videos, Codieren von Ressourcen, Überwachen des Auftragsstatus und Ähnliches) das Fenster **Einstellungen** .
 
-## <a name="configure-streaming-endpoints-using-the-azure-portal"></a>Konfigurieren von Streamingendpunkten mithilfe des Azure-Portals
-Wenn Sie mit Azure Media Services arbeiten, besteht eines der häufigsten Szenarien darin, Videos per Adaptive Bitrate Streaming an Ihre Clients zu übermitteln. Von Media Services werden die folgenden Technologien mit Adaptive Bitrate Streaming unterstützt: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH.
+## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Starten von Streamingendpunkten mithilfe des Azure-Portals
 
-Media Services bietet dynamische Paketerstellung für die Just-in-Time-Übermittlung von Daten vom Typ „MP4-codierte Inhalte mit adaptiver Bitrate“ in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming), ohne dass Sie jeweils vorab verpackte Versionen dieser Streamingformate speichern müssen.
+Wenn Sie mit Azure Media Services arbeiten, besteht eines der häufigsten Szenarien darin, Videos per Adaptive Bitrate Streaming zu übermitteln. Media Services bietet dynamische Paketerstellung für die Just-in-Time-Übermittlung von Daten vom Typ „MP4-codierte Inhalte mit adaptiver Bitrate“ in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming), ohne dass Sie jeweils vorab verpackte Versionen dieser Streamingformate speichern müssen.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 
-* Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Tutorial beschrieben)  
-* Erstellen von mindestens einer Streamingeinheit für den *Streamingendpunkt*, von dem aus Sie die Bereitstellung Ihrer Inhalte planen In den folgenden Schritten wird gezeigt, wie Sie die Anzahl von Streamingeinheiten ändern.
+Führen Sie folgende Schritte aus, um den Streamingendpunkt zu starten:
 
-Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
+1. Klicken Sie im Fenster „Einstellungen“ auf „Streamingendpunkte“. 
+2. Klicken Sie auf den standardmäßigen Streamingendpunkt. 
 
-Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
+    Das Fenster DEFAULT STREAMING ENDPOINT DETAILS (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
 
-1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**.
-2. Klicken Sie auf den standardmäßigen Streamingendpunkt.
-
-    Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
-3. Die Anzahl von Streamingeinheiten kann mithilfe des Schiebereglers **Streamingeinheiten** angegeben werden.
-
-    ![Streamingeinheiten](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
-4. Klicken Sie auf die Schaltfläche **Speichern** , um die Änderungen zu speichern.
-
-   > [!NOTE]
-   > Es kann bis zu 20 Minuten dauern, bis die Zuordnung neuer Einheiten abgeschlossen ist.
-   >
-   >
+3. Klicken Sie auf das Symbol „Start“.
+4. Klicken Sie auf die Schaltfläche „Speichern“, um die Änderungen zu speichern.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
@@ -258,15 +238,12 @@ Nach dem Erfassen der Medienobjekte in Media Services können die Medien u. a. 
 
 Wie bereits erwähnt, besteht beim Arbeiten mit Azure Media Services eines der häufigsten Szenarios darin, Adaptive Bitrate Streaming an Ihre Clients zu übermitteln. Media Services kann eine Reihe von MP4-Dateien mit adaptiver Bitrate dynamisch in eines der folgenden Formate verpacken: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
-
-* Codieren oder Transcodieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate  
-* Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen
+Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate codieren oder transcodieren.  
 
 Der folgende Code zeigt, wie Sie einen Codierungsauftrag senden. Der Auftrag enthält eine Aufgabe zum Transcodieren der Zwischendatei in eine Reihe von MP4-Dateien mit adaptiver Bitrate mithilfe von **Media Encoder Standard**. Der Code sendet den Auftrag und wartet, bis er abgeschlossen ist.
 
-Nach Abschluss des Codierungsauftrags können Sie Ihre Objekte veröffentlichen und dann die MP4-Dateien streamen oder progressiv herunterladen.
-
+Wenn der Auftrag abgeschlossen ist, sind Sie in der Lage, das Medienobjekt zu streamen oder MP4-Dateien, die als Ergebnis der Transcodierung erstellt wurden, progressiv herunterzuladen.
+ 
 Fügen Sie die folgende Methode zur Program-Klasse hinzu.
 
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -467,6 +444,6 @@ Das folgende Codebeispiel enthält den Code, den Sie in diesem Tutorial erstellt
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

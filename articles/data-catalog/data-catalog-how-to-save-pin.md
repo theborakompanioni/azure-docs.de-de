@@ -1,20 +1,24 @@
 ---
-title: 'Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen | Microsoft Docs'
-description: Anleitungsartikel zu den Funktionen in Azure Data Catalog zum Speichern von Datenquellen und von Datenressourcen für die spätere Verwendung
+title: "Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen | Microsoft Docs"
+description: "Anleitungsartikel zu den Funktionen in Azure Data Catalog zum Speichern von Datenquellen und von Datenressourcen für die spätere Verwendung"
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/10/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f017776480466979d7f2f9edec2b3ac5caca2321
+
 
 ---
 # <a name="how-to-save-searches-and-pin-data-assets"></a>Gewusst wie: Speichern von Suchvorgängen und Anheften von Datenressourcen
@@ -68,7 +72,7 @@ Wenn eine Ressource nicht mehr angeheftet sein soll, ist dies ebenfalls ganz ein
 
 ![Anheften einer Datenressource aufheben](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
-## <a name="“my-assets”"></a>„Meine Ressourcen“
+## <a name="my-assets"></a>„Meine Ressourcen“
 Die Startseite des Azure Data Catalog-Portals enthält den Bereich „Meine Ressourcen“, in dem die Ressourcen angezeigt werden, die für den aktuellen Benutzer interessant sind. Dieser Bereich beinhaltet sowohl angeheftete Ressourcen als auch gespeicherte Suchvorgänge.
 
 ![„Meine Ressourcen“ auf der Startseite](./media/data-catalog-how-to-save-pin/07-my-assets.png)
@@ -76,6 +80,8 @@ Die Startseite des Azure Data Catalog-Portals enthält den Bereich „Meine Ress
 ## <a name="summary"></a>Zusammenfassung
 Azure Data Catalog enthält Funktionen, mithilfe derer Benutzer die benötigten Datenquellen einfacher finden können, damit das Suchen nach Daten schneller geht und mehr Zeit für die Arbeit mit den Daten bleibt. Gespeicherte Suchvorgänge und angeheftete Datenressourcen funktionieren auf Grundlage dieser Funktionen, damit Benutzer häufig benötigte Datenquellen schnell identifizieren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

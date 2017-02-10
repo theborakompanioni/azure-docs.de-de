@@ -8,7 +8,7 @@ manager: drasumic
 editor: 
 ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
 ms.service: sql-database
-ms.custom: db development
+ms.custom: development
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -16,8 +16,8 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bb68239d36203e74faa54859b20a4198ce3cba91
+ms.sourcegitcommit: 239d009a1fc7273a50d335a0d55d61f414d99b11
+ms.openlocfilehash: dac4a96f9b62f390aeb84fe237788350c70ea5cd
 
 
 ---
@@ -32,7 +32,7 @@ Nachdem Sie die Aufbewahrungsrichtlinie definiert haben, prüft Azure SQL-Datenb
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ````
 
-Im obigen Beispiel wird angenommen, dass die Spalte **ValidTo** dem Ende des SYSTEM_TIME-Zeitraums entspricht.
+Im vorherigen Beispiel wird angenommen, dass die Spalte **ValidTo** dem Ende des SYSTEM_TIME-Zeitraums entspricht.
 
 ## <a name="how-to-configure-retention-policy"></a>Wie wird die Aufbewahrungsrichtlinie konfiguriert?
 Bevor Sie die Aufbewahrungsrichtlinie für eine temporale Tabelle konfigurieren, überprüfen Sie zunächst, ob die temporale Verlaufsdatenaufbewahrung *auf Datenbankebene* aktiviert ist.
@@ -42,7 +42,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-Das Datenbank-Flag **is_temporal_history_retention_enabled** ist standardmäßig auf ON gesetzt, Benutzer können es jedoch mit der ALTER DATABASE-Anweisung ändern. Nach dem Vorgang [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore-portal.md) wird es außerdem automatisch auf OFF gesetzt. Um die Bereinigung der temporalen Verlaufsdatenaufbewahrung für Ihre Datenbank zu aktivieren, führen Sie die folgende Anweisung aus:
+Das Datenbank-Flag **is_temporal_history_retention_enabled** ist standardmäßig auf ON gesetzt, Benutzer können es jedoch mit der ALTER DATABASE-Anweisung ändern. Nach dem Vorgang [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md) wird es außerdem automatisch auf OFF gesetzt. Um die Bereinigung der temporalen Verlaufsdatenaufbewahrung für Ihre Datenbank zu aktivieren, führen Sie die folgende Anweisung aus:
 
 ````
 ALTER DATABASE <myDB>
@@ -50,7 +50,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
 > [!IMPORTANT]
-> Sie können die Aufbewahrungsdauer für temporale Tabellen selbst dann konfigurieren, wenn **is_temporal_history_retention_enabled** auf OFF gesetzt ist. In diesem Fall wird jedoch keine automatische Bereinigung veralteter Zeilen ausgelöst.
+> Sie können die Aufbewahrungsdauer für temporale Tabellen selbst dann konfigurieren, wenn **is_temporal_history_retention_enabled** auf „OFF“ festgelegt ist. In diesem Fall wird jedoch keine automatische Bereinigung veralteter Zeilen ausgelöst.
 > 
 > 
 
@@ -119,11 +119,11 @@ Die hervorragende Datenkomprimierung und eine effiziente Aufbewahrungsbereinigun
 ## <a name="index-considerations"></a>Überlegungen bezüglich des Index
 Beim Bereinigungstask für Tabellen mit gruppiertem Rowstore-Index muss der Index mit der Spalte beginnen, die dem Ende des SYSTEM_TIME-Zeitraums entspricht. Wenn kein solcher Index vorhanden ist, können Sie keine begrenzte Beibehaltungsdauer konfigurieren:
 
-*Meldg. 13765, Ebene 16, Status 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. Consider creating a clustered columnstore or B-tree index starting with the column that matches end of SYSTEM_TIME period, on the history table. (Festlegen einer unbegrenzten Beibehaltungsdauer bei der temporalen Tabelle mit Systemversionsverwaltung 'temporalstagetestdb.dbo.WebsiteUserInfo' fehlgeschlagen, da die Verlaufstabelle 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' nicht den erforderlichen gruppierten Index enthält. Erstellen Sie alternativ einen gruppierten Columnstore- oder B-Strukturindex für die Verlaufstabelle, der mit der Spalte beginnt, die dem Ende des SYSTEM_TIME-Zeitraums entspricht.)*
+*Meldg. 13765, Ebene 16, Status 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. (Festlegen einer unbegrenzten Beibehaltungsdauer bei der temporalen Tabelle mit Systemversionsverwaltung 'temporalstagetestdb.dbo.WebsiteUserInfo' fehlgeschlagen, da die Verlaufstabelle 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' nicht den erforderlichen gruppierten Index enthält.) Sie könnten nun für die Verlaufstabelle einen gruppierten Columnstore- oder B-Strukturindex erstellen, der mit der Spalte beginnt, die mit dem Ende des SYSTEM_TIME-Zeitraums entspricht.*
 
-Hierbei ist zu beachten, dass die von Azure SQL-Datenbank erstellte Standardverlaufstabelle bereits einen gruppierten Index enthält, der mit der Aufbewahrungsrichtlinie kompatibel ist. Wenn Sie versuchen, diesen Index für eine Tabelle mit begrenzter Beibehaltungsdauer zu entfernen, schlägt der Vorgang fehl, und es wird folgende Fehlermeldung ausgegeben:
+Hierbei ist zu beachten, dass die von Azure SQL-Datenbank erstellte Standardverlaufstabelle bereits einen gruppierten Index enthält, der mit der Aufbewahrungsrichtlinie kompatibel ist. Wenn Sie versuchen, diesen Index für eine Tabelle mit begrenzte Beibehaltungsdauer zu entfernen, schlägt der Vorgang mit folgender Fehlermeldung fehl:
 
-*Meldg. 13766, Ebene 16, Status 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index. (Gruppierter Index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' kann nicht entfernt werden, da er für die automatische Bereinigung veralteter Daten verwendet wird. Setzen Sie alternativ HISTORY_RETENTION_PERIOD für die zugehörige temporale Tabelle mit Systemversionsverwaltung auf INFINITE, wenn Sie diesen Index entfernen müssen.)*
+*Meldg. 13766, Ebene 16, Status 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index.* (Der gruppierte Index "WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory" kann nicht entfernt werden, da er für die automatische Bereinigung veralteter Daten verwendet wird. Legen Sie ggf. "HISTORY_RETENTION_PERIOD" für die zugehörige temporale Tabelle mit Systemversionsverwaltung auf "INFINITE" fest, wenn Sie diesen Index entfernen müssen.)
 
 Die Bereinigung des gruppierten Columnstore-Index funktioniert optimal, wenn Zeilen mit Verlaufsdaten in aufsteigender Reihenfolge (geordnet nach der Periodenende-Spalte) eingefügt werden, was immer dann der Fall ist, wenn die Verlaufstabelle ausschließlich mithilfe des Mechanismus SYSTEM_VERSIONING gefüllt wird. Wenn Zeilen in der Verlaufstabelle nicht nach der Periodenende-Spalte sortiert sind (was beim Migrieren vorhandener Verlaufsdaten der Fall sein kann), sollten Sie den gruppierten Columnstore-Index auf Basis des ordnungsgemäß sortierten B-Struktur-Rowstore-Index neu erstellen, um eine optimale Leistung zu erzielen.
 
@@ -145,7 +145,7 @@ Wenn eine begrenzte Beibehaltungsdauer für die Verlaufstabelle mit dem gruppier
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 ````
 
-Der Versuch, die obige Anweisung auszuführen, schlägt fehl, und es wird folgende Fehlermeldung ausgegeben:
+Der Versuch, die obige Anweisung auszuführen, ist nicht erfolgreich, und es wird folgende Fehlermeldung ausgegeben:
 
 *Meldg. 13772, Ebene 16, Status 1 <br></br> Cannot create non-clustered index on a temporal history table 'WebsiteUserInfoHistory' since it has finite retention period and clustered columnstore index defined. (Ungruppierter Index kann für temporale Verlaufstabelle 'WebsiteUserInfoHistory' nicht erstellt werden, da sie eine begrenzte Beibehaltungsdauer hat und ein gruppierter Columnstore-Index definiert wurde.)*
 
@@ -158,7 +158,7 @@ Das folgende Bild zeigt den Abfrageplan für eine einfache Abfrage:
 SELECT * FROM dbo.WebsiteUserInfo FROM SYSTEM_TIME ALL;
 ````
 
-Der Abfrageplan enthält einen zusätzlichen Filter, der auf die Periodenende-Spalte (ValidTo) im Operator „Clustered Index Scan“ für die Verlaufstabelle angewandt wird (siehe Hervorhebung). In diesem Beispiel wird davon ausgegangen, dass in der Tabelle WebsiteUserInfo eine Beibehaltungsdauer von einem MONAT festgelegt wurde.
+Der Abfrageplan enthält einen zusätzlichen Filter, der auf die Periodenende-Spalte (ValidTo) im Operator „Clustered Index Scan“ für die Verlaufstabelle angewendet wird (siehe Hervorhebung). In diesem Beispiel wird davon ausgegangen, dass in der Tabelle „WebsiteUserInfo“ eine Beibehaltungsdauer von einem MONAT festgelegt wurde.
 
 ![Aufbewahrungsabfragefilter](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
@@ -166,10 +166,10 @@ Wenn Sie allerdings die Verlaufstabelle direkt abfragen, sehen Sie möglicherwei
 
 ![Abfragen des Verlaufs ohne Beibehaltungsfilter](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Basieren Sie Ihre Geschäftslogik nicht auf das Lesen der Verlaufstabelle nach der Beibehaltungsdauer, da Sie inkonsistente oder unerwartete Ergebnisse erhalten könnten. Es wird empfohlen, temporale Abfragen mit der Klausel FOR SYSTEM_TIME zu verwenden, um Daten in temporalen Tabellen zu analysieren.
+Basieren Sie Ihre Geschäftslogik nicht auf das Lesen der Verlaufstabelle nach der Beibehaltungsdauer, da Sie inkonsistente oder unerwartete Ergebnisse erhalten könnten. Es empfiehlt sich, temporale Abfragen mit der Klausel „FOR SYSTEM_TIME“ zu verwenden, um Daten in temporalen Tabellen zu analysieren.
 
 ## <a name="point-in-time-restore-considerations"></a>Überlegungen zur Point-in-Time-Wiederherstellung
-Wenn Sie eine neue Datenbank erstellen, indem Sie eine [vorhandene Datenbank zu einem bestimmten Zeitpunkt wiederherstellen](sql-database-point-in-time-restore-portal.md), ist die temporale Beibehaltungsdauer auf Datenbankebene deaktiviert. (Das Flag **is_temporal_history_retention_enabled** ist auf OFF gesetzt.) Mit dieser Funktion können Sie bei der Wiederherstellung alle Zeilen mit Verlaufsdaten untersuchen, ohne dass veraltete Zeilen entfernt werden, bevor Sie diese abfragen können. Sie können diese Funktion verwenden, um *Verlaufsdaten außerhalb der konfigurierten Beibehaltungsdauer zu überprüfen*.
+Wenn Sie eine neue Datenbank erstellen, indem Sie eine [vorhandene Datenbank zu einem bestimmten Zeitpunkt wiederherstellen](sql-database-point-in-time-restore.md), ist die temporale Beibehaltungsdauer auf Datenbankebene deaktiviert. (Das Flag **is_temporal_history_retention_enabled** ist auf OFF gesetzt.) Mit dieser Funktion können Sie bei der Wiederherstellung alle Zeilen mit Verlaufsdaten untersuchen, ohne dass veraltete Zeilen entfernt werden, bevor Sie diese abfragen können. Sie können diese Funktion verwenden, um *Verlaufsdaten außerhalb der konfigurierten Beibehaltungsdauer zu überprüfen*.
 
 Ein Beispiel: Für eine temporale Tabelle wurde eine Beibehaltungsdauer von einem MONAT angegeben. Wenn Ihre Datenbank im Premium-Tarif erstellt wurde, könnten Sie eine Datenbankkopie mit dem Status der Datenbank vor 35 Tagen erstellen. So könnten Sie effektiv Zeilen mit Verlaufsdaten analysieren, die bis zu 65 Tage alt sind, indem Sie die Verlaufstabelle direkt abfragen.
 
@@ -181,7 +181,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
 ## <a name="next-steps"></a>Nächste Schritte
-Um zu erfahren, wie Sie temporale Tabellen in Ihren Anwendungen verwenden, lesen Sie [Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank](sql-database-temporal-tables.md).
+Informationen zur Verwendung temporaler Tabellen in Ihren Anwendungen finden Sie unter [Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank](sql-database-temporal-tables.md).
 
 Auf Channel 9 können Sie sich einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) anhören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) ansehen.
 
@@ -190,6 +190,6 @@ Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokum
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8bfadc110b8b2e0de470185ec9d84343125c960d
+ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
+ms.openlocfilehash: cd70b0b5656bef08a8be1c1a67754b203cceb905
 
 
 ---
@@ -31,9 +31,8 @@ Klicken Sie, um den [SDK-Inhalt](mobile-engagement-ios-sdk-content.md)
 3. Tag-Plan-Implementierung: [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer iOS-App](mobile-engagement-ios-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Versionshinweise
-### <a name="400-09122016"></a>4.0.0 (12.09.2016)
-* Feste Benachrichtigung auf iOS 10-Geräten nicht umgesetzt.
-* XCode 7 als veraltet markiert.
+### <a name="401-12132016"></a>4.0.1 (13.12.2016)
+* Verbesserte Protokollübermittlung im Hintergrund.
 
 Eine frühere Version finden Sie unter [Vollständige Versionshinweise](mobile-engagement-ios-release-notes.md)
 
@@ -108,12 +107,15 @@ durch:
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-#### <a name="if-you-already-have-your-own-unusernotificationcenterdelegate-implementation"></a>Bei bereits vorhandener eigener Implementierung von „UNUserNotificationCenterDelegate“
-Das SDK hat eine eigene Implementierung des Protokolls „UNUserNotificationCenterDelegate“. Es wird vom SDK verwendet, um den Lebenszyklus der Engagement-Benachrichtigungen auf Geräten zu überwachen, die unter iOS 10 oder höher ausgeführt werden. Wenn das SDK Ihre Stellvertretung erkennt, verwendet es nicht seine eigene Implementierung, da es pro Anwendung nur eine „UNUserNotificationCenter“-Stellvertretung geben darf. Dies bedeutet, dass Sie Ihrer eigenen Stellvertretung die Engagement-Logik hinzufügen müssen.
+#### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>Lösen von Konflikten mit dem UNUserNotificationCenter-Delegaten
+
+*Wenn weder in Ihrer Anwendung noch in einer der Bibliotheken von Drittanbietern ein `UNUserNotificationCenterDelegate` implementiert wird, können Sie diesen Abschnitt überspringen.*
+
+Ein `UNUserNotificationCenter`-Delegat wird vom SDK verwendet, um den Lebenszyklus der Engagement-Benachrichtigungen auf Geräten zu überwachen, die unter iOS 10 oder höher ausgeführt werden. Das SDK verfügt über eine eigene Implementierung des `UNUserNotificationCenterDelegate`-Protokolls, pro Anwendung kann jedoch nur ein `UNUserNotificationCenter`-Delegat vorhanden sein. Jeder weitere dem `UNUserNotificationCenter`-Objekt hinzugefügte Delegat führt zu einem Konflikt mit dem Engagement-Delegaten. Wenn das SDK Ihren Delegaten oder den Delegaten eines Drittanbieters erkennt, wird die eigene Implementierung des SDK nicht verwendet, damit Sie die Konflikte lösen können. Sie müssen Ihrem eigenen Delegaten die Engagement-Logik hinzufügen, um die Konflikte lösen zu können.
 
 Hierfür gibt es zwei Möglichkeiten.
 
-Durch einfaches Weiterleiten der Stellvertretungsaufrufe an das SDK:
+Vorschlag 1: durch einfaches Weiterleiten der Delegataufrufe an das SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -140,7 +142,7 @@ Durch einfaches Weiterleiten der Stellvertretungsaufrufe an das SDK:
     }
     @end
 
-Oder durch Erben von der `AEUserNotificationHandler`-Klasse
+Oder Vorschlag 2: durch Erben von der `AEUserNotificationHandler`-Klasse
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -168,12 +170,20 @@ Oder durch Erben von der `AEUserNotificationHandler`-Klasse
 
 > [!NOTE]
 > Sie können bestimmen, ob eine Benachrichtigung von Engagement stammt oder nicht, indem das zugehörige `userInfo`-Wörterbuch an die `isEngagementPushPayload:`-Klassenmethode des Agents übergeben wird.
-> 
-> 
+
+Stellen Sie sicher, dass der `UNUserNotificationCenter`-Delegat des Objekts entweder in der `application:willFinishLaunchingWithOptions:`- oder der `application:didFinishLaunchingWithOptions:`-Methode des Anwendungsdelegaten auf Ihren Delegaten festgelegt ist.
+Wenn Sie z.B. den oben genannten Vorschlag 1 implementiert haben:
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

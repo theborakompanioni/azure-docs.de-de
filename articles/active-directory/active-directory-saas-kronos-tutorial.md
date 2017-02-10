@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/12/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e264bd5ec365e9b9aa55ef88527e34218104d663
+ms.sourcegitcommit: 69473976eb0a9b6a0e9aa929581c0a7cf0c8d188
+ms.openlocfilehash: 995086f748dbea7650ced891c8eaa49168a38b7f
 
 
 ---
@@ -61,19 +61,25 @@ Zum Konfigurieren der Integration von Kronos in Azure AD müssen Sie Kronos aus 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
    
     ![Active Directory][1]
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Anwendungen][2]
+
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
     ![Anwendungen][3]
+
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
     ![Anwendungen][4]
+
 6. Geben Sie im Suchfeld als Suchbegriff **Kronos**ein.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_01.png)
+
 7. Wählen Sie im Ergebnisbereich **Kronos** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_06.png)
@@ -104,9 +110,11 @@ Ihre Kronos-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. W
 1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Kronos** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
      ![Einmaliges Anmelden konfigurieren][6] 
+
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Kronos anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_03.png) 
+
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_04.png) 
@@ -115,7 +123,6 @@ Ihre Kronos-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. W
 
     b. Geben Sie im Textfeld „Antwort-URL“ die URL nach folgendem Muster ein: `https://<company name>.kronos.net/wfc/navigator/logonWithUID`
 
-
 1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Kronos** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_05.png) 
@@ -123,10 +130,13 @@ Ihre Kronos-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. W
     a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Next**.
+
 2. Kontaktieren Sie Ihren Kronos-Account Manager, um Informationen zum richtigen Kanal für die SSO-Konfiguration für Ihre Anwendung zu erhalten. Bitte beachten Sie, dass Sie eine E-Mail senden und die heruntergeladene Metadatendatei anfügen müssen.
+
 3. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
+
 4. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
@@ -141,13 +151,17 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_09.png) 
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_03.png) 
+
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_04.png) 
+
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_05.png) 
@@ -157,22 +171,25 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
     b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
    
     c. Klicken Sie auf **Weiter**.
+
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_06.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Klicken Sie auf **Weiter**.
+    e. Klicken Sie auf **Weiter**.
+
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_07.png) 
+
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-kronos-tutorial/create_aaduser_08.png) 
@@ -199,13 +216,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen** .
    
     ![Benutzer zuweisen][201] 
+
 2. Wählen Sie in der Anwendungsliste den Eintrag **Kronos**aus.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kronos-tutorial/tutorial_kronos_50.png) 
+
 3. Klicken Sie im oberen Menü auf **Benutzer**.
    
     ![Benutzer zuweisen][203] 
+
 4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+
 5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
    
     ![Benutzer zuweisen][205]
@@ -238,6 +259,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Kronos“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

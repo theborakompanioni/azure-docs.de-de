@@ -1,33 +1,37 @@
 ---
-title: Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM | Microsoft Docs
-description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit System Center 2012 R2 DPM sichern.
+title: Sichern eines Exchange-Servers in Azure Backup mit System Center 2012 R2 DPM | Microsoft Docs
+description: "Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit System Center 2012 R2 DPM sichern."
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: MaanasSaran
 manager: NKolli1
-editor: ''
-
+editor: 
+ms.assetid: 13f32256-888e-416e-a78b-40c2a26a5939
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 11/28/2016
 ms.author: anuragm;jimpark;delhan;trinadhk;markgal
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2ee4bfa8c7dce45c6366ddc8aa6e723fe91431a7
+
 
 ---
-# Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
-In diesem Artikel wird beschrieben, wie Sie einen System Center 2012 R2 Data Protection Manager-Server (DPM) konfigurieren, um einen Microsoft Exchange-Server unter Azure Backup zu sichern.
+# <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
+In diesem Artikel wird beschrieben, wie Sie einen Server mit System Center 2012 R2 Data Protection Manager (DPM) konfigurieren, um einen Microsoft Exchange-Server in Azure Backup zu sichern.  
 
-## Aktualisierungen
-Zum erfolgreichen Registrieren des DPM-Servers für Azure Backup müssen Sie das aktuelle Updaterollup für System Center 2012 R2 DPM und die aktuelle Version des Azure Backup-Agents installieren. Sie finden das aktuelle Updaterollup im [Microsoft-Katalog](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
+## <a name="updates"></a>Aktualisierungen
+Zum erfolgreichen Registrieren des DPM-Servers für Azure Backup müssen Sie das aktuelle Updaterollup für System Center 2012 R2 DPM und die aktuelle Version des Azure Backup-Agents installieren. Sie finden das aktuelle Updaterollup im [Microsoft-Katalog](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
-> Für die Beispiele in diesem Artikel wurde Version 2.0.8719.0 des Azure Backup-Agents installiert, und das Updaterollup 6 wurde unter System Center 2012 R2 DPM installiert.
+> Für die Beispiele in diesem Artikel wurde Version 2.0.8719.0 des Azure Backup-Agents installiert, und das Updaterollup 6 wurde unter System Center 2012 R2 DPM installiert.
 > 
 > 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsoft Azure Backup alle [Voraussetzungen](backup-azure-dpm-introduction.md#prerequisites) erfüllt sind. Zu diesen Voraussetzungen gehört Folgendes:
 
 * Auf der Azure-Website wurde ein Sicherungstresor erstellt.
@@ -36,24 +40,24 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 * Die Anmeldeinformationen für den Tresor wurden verwendet, um den DPM-Server zu registrieren.
 * Wenn Sie Exchange 2016 schützen, aktualisieren Sie auf DPM 2012 R2 UR9 oder höher.
 
-## DPM-Schutz-Agent
+## <a name="dpm-protection-agent"></a>DPM-Schutz-Agent
 Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange-Server zu installieren:
 
 1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Administratorkonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396).
+2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der DPM-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des DPM-Schutz-Agents](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
 
-## Erstellen einer Schutzgruppe für den Exchange-Server
-1. Klicken Sie in der DPM-Administratorkonsole auf **Schutz** und dann im Menüband des Tools auf **Neu**, um den Assistenten **Neue Schutzgruppe erstellen** zu öffnen.
+## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
+1. Klicken Sie in der DPM-Verwaltungskonsole auf **Schutz** und dann im Menüband des Tools auf **Neu**, um den Assistenten **Neue Schutzgruppe erstellen** zu öffnen.
 2. Klicken Sie im Assistenten auf dem Bildschirm **Willkommen** auf **Weiter**.
-3. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server**, und klicken Sie auf **Weiter**.
+3. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server** aus, und klicken Sie auf **Weiter**.
 4. Wählen Sie die Datenbank des Exchange Servers aus, die Sie schützen möchten, und klicken Sie auf **Weiter**.
    
    > [!NOTE]
-   > Wenn Sie Exchange 2013 schützen, aktivieren Sie die [Exchange 2013-Voraussetzungen](https://technet.microsoft.com/library/dn751029.aspx).
+   > Wenn Sie Exchange 2013 schützen, aktivieren Sie die [Exchange 2013-Voraussetzungen](https://technet.microsoft.com/library/dn751029.aspx).
    > 
    > 
    
-    Im folgenden Beispiel wird die Exchange 2010-Datenbank ausgewählt.
+    Im folgenden Beispiel wird die Exchange 2010-Datenbank ausgewählt.
    
     ![Gruppenmitglieder auswählen](./media/backup-azure-backup-exchange-server/select-group-members.png)
 5. Wählen Sie die Methoden zum Schützen der Daten aus.
@@ -68,10 +72,11 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
     Nach dem Auswählen dieser Option wird für den DPM-Server die Backupkonsistenz überprüft, um den generierten E/A-Datenverkehr zu vermeiden, indem der Befehl **eseutil** auf dem Exchange-Server ausgeführt wird.
    
    > [!NOTE]
-   > Zum Verwenden dieser Option müssen Sie die Dateien „Ese.dll“ und „Eseutil.exe“ auf dem DPM-Server in das Verzeichnis „C:\\Programme\\Microsoft System Center 2012 R2\\DPM\\DPM\\bin“ kopieren. Andernfalls wird der folgende Fehler ausgelöst: ![eseutil-Fehler](./media/backup-azure-backup-exchange-server/eseutil-error.png)
+   > Zum Verwenden dieser Option müssen Sie die Dateien „Ese.dll“ und „Eseutil.exe“ auf dem DPM-Server in das Verzeichnis „C:\Programme\Microsoft System Center 2012 R2\DPM\DPM\bin“ kopieren. Andernfalls wird der folgende Fehler ausgelöst:   
+   > ![eseutil-Fehler](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    > 
    > 
-8. Klicken Sie auf **Next**.
+8. Klicken Sie auf **Weiter**.
 9. Wählen Sie die Datenbank für **Kopiesicherung** aus, und klicken Sie auf **Weiter**.
    
    > [!NOTE]
@@ -96,14 +101,14 @@ Führen Sie die folgenden Schritte aus, um den DPM-Schutz-Agent auf dem Exchange
 16. Konfigurieren Sie die Aufbewahrungsrichtlinie für **Azure Backup**, und klicken Sie auf **Weiter**.
 17. Wählen Sie eine Option für die Onlinereplikation aus, und klicken Sie auf **Weiter**.
     
-    Wenn Sie über eine große Datenbank verfügen, kann es lange dauern, bis das erste Backup über das Netzwerk erstellt wird. Sie können ein Offlinebackup erstellen, um dieses Problem zu vermeiden.
+    Wenn Sie über eine große Datenbank verfügen, kann es lange dauern, bis das erste Backup über das Netzwerk erstellt wird. Sie können ein Offlinebackup erstellen, um dieses Problem zu vermeiden.  
     
     ![Online-Aufbewahrungsrichtlinie angeben](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. Bestätigen Sie die Einstellungen, und klicken Sie anschließend auf **Gruppe erstellen**.
 19. Klicken Sie auf **Schließen**.
 
-## Wiederherstellen der Exchange-Datenbank
-1. Klicken Sie zum Wiederherstellen einer Exchange-Datenbank in der DPM-Administratorkonsole auf **Wiederherstellung**.
+## <a name="recover-the-exchange-database"></a>Wiederherstellen der Exchange-Datenbank
+1. Klicken Sie zum Wiederherstellen einer Exchange-Datenbank in der DPM-Administratorkonsole auf **Wiederherstellung** .
 2. Suchen Sie nach der Exchange-Datenbank, die Sie wiederherstellen möchten.
 3. Wählen Sie in der Dropdownliste *Wiederherstellungszeit* einen Online-Wiederherstellungspunkt aus.
 4. Klicken Sie auf **Wiederherstellen**, um den **Wiederherstellungs-Assistenten** zu starten.
@@ -118,7 +123,12 @@ Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
   
     ![Onlinereplikation auswählen](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

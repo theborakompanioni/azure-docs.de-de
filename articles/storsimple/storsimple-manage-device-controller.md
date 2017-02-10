@@ -1,12 +1,12 @@
 ---
-title: Verwalten von StorSimple-Gerätecontrollern | Microsoft Docs
-description: Erfahren Sie, wie Sie StorSimple-Gerätecontroller beenden, neu starten, herunterfahren oder zurücksetzen.
+title: "Verwalten von StorSimple-Gerätecontrollern | Microsoft Doccs"
+description: "Erfahren Sie, wie Sie StorSimple-Gerätecontroller beenden, neu starten, herunterfahren oder zurücksetzen."
 services: storsimple
-documentationcenter: ''
+documentationcenter: 
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: 4ee989d0-956f-4c14-951e-fd4e490ea09d
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 815ada25a548ddf419ac073f57a5153f60a40a58
+
 
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Verwalten von StorSimple-Gerätecontrollern
@@ -63,7 +67,7 @@ Führen Sie die unten angegebenen Schritte aus, um Gerätecontroller über das k
    > 
 4. Gehen Sie im Dialogfeld **Controller-Einstellungen ändern** wie folgt vor:
    
-   1. Wählen Sie in der Dropdownliste **Controller auswählen** den Controller aus, den Sie verwalten möchten. Die Optionen sind „Controller 0“ und „Controller 1“. Es wird auch angegeben, ob es sich bei diesen Controllern um aktive oder passive Controller handelt.
+   1. Wählen Sie in der Dropdownliste **Controller auswählen** den Controller aus, den Sie verwalten möchten. Die Optionen sind „Controller 0“ und „Controller 1“. Es wird auch angegeben, ob es sich bei diesen Controllern um aktive oder passive Controller handelt.
       
       > [!NOTE]
       > Ein Controller kann nicht verwaltet werden, wenn er nicht verfügbar oder ausgeschaltet ist, und er wird dann auch nicht in der Dropdownliste angezeigt.
@@ -79,16 +83,16 @@ Der Controller wird neu gestartet bzw. heruntergefahren. In der folgenden Tabell
 | Auswahl # | Gewählte Einstellung | Ausgeführte Aktion |
 | --- | --- | --- |
 | 1. |Neustarten des passiven Controllers |Es wird ein Auftrag zum Neustarten des Controllers erstellt, und Sie werden benachrichtigt, nachdem die Erstellung erfolgreich abgeschlossen wurde. Hiermit wird der Neustart des Controllers initiiert. Sie können den Neustartprozess überwachen, indem Sie auf **Dienst > Dashboard > Vorgangsprotokolle anzeigen** zugreifen und dann nach den Parametern für Ihren Dienst filtern. |
-| 2. |Neustarten des aktiven Controllers |Die folgende Warnung wird angezeigt: „Wenn Sie den aktiven Controller neu starten, erfolgt ein Failover des Geräts auf den passiven Controller. Möchten Sie fortfahren?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
-| 3. |Herunterfahren des passiven Controllers |Die folgende Meldung wird angezeigt: „Nach dem Herunterfahren müssen Sie den Netzschalter Ihres Controllers betätigen, um ihn zu aktivieren. Sind Sie sicher, dass Sie diesen Controller herunterfahren möchten?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
-| 4. |Herunterfahren des aktiven Controllers |Die folgende Meldung wird angezeigt: „Nach dem Herunterfahren müssen Sie den Netzschalter Ihres Controllers betätigen, um ihn zu aktivieren. Sind Sie sicher, dass Sie diesen Controller herunterfahren möchten?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
+| 2. |Neustarten des aktiven Controllers |Die folgende Warnung wird angezeigt: „Wenn Sie den aktiven Controller neu starten, erfolgt ein Failover des Geräts auf den passiven Controller. Möchten Sie fortfahren?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
+| 3. |Herunterfahren des passiven Controllers |Die folgende Meldung wird angezeigt: „Nach dem Herunterfahren müssen Sie den Netzschalter Ihres Controllers betätigen, um ihn zu aktivieren. Sind Sie sicher, dass Sie diesen Controller herunterfahren möchten?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
+| 4. |Herunterfahren des aktiven Controllers |Die folgende Meldung wird angezeigt: „Nach dem Herunterfahren müssen Sie den Netzschalter Ihres Controllers betätigen, um ihn zu aktivieren. Sind Sie sicher, dass Sie diesen Controller herunterfahren möchten?“ </br>Wenn Sie sich für das Fortsetzen des Vorgangs entscheiden, sind die nächsten Schritte mit den Schritten zum Neustarten des passiven Controllers identisch (siehe Auswahl 1). |
 
 #### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>So starten Sie einen Controller in Windows PowerShell für StorSimple neu oder fahren ihn herunter
 Führen Sie die folgenden Schritte aus, um einen einzelnen Controller auf dem StorSimple-Gerät über das klassische Azure-Portal herunterzufahren oder neu zu starten.
 
-1. Greifen Sie auf das Gerät zu, indem Sie die serielle Konsole oder eine Telnet-Sitzung von einem Remotecomputer verwenden. Stellen Sie eine Verbindung mit Controller 0 oder Controller 1 her, indem Sie die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)ausführen.
+1. Greifen Sie auf das Gerät zu, indem Sie die serielle Konsole oder eine Telnet-Sitzung von einem Remotecomputer verwenden. Stellen Sie eine Verbindung mit Controller 0 oder Controller 1 her, indem Sie die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)ausführen.
 2. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d.h. die **Anmeldung mit Vollzugriff**.
-3. Notieren Sie sich in der Bannermeldung den Controller, mit dem Sie verbunden sind (Controller 0 oder Controller 1), und ob es sich um den aktiven oder den passiven Controller (Standby) handelt.
+3. Notieren Sie sich in der Bannermeldung den Controller, mit dem Sie verbunden sind (Controller 0 oder Controller 1), und ob es sich um den aktiven oder den passiven Controller (Standby) handelt.
    
    * Geben Sie zum Herunterfahren eines einzelnen Controllers an der Eingabeaufforderung Folgendes ein:
      
@@ -152,11 +156,11 @@ Führen Sie die folgenden Schritte aus, um das Microsoft Azure StorSimple-Gerät
    
     Um stattdessen einen einzelnen Controller zurückzusetzen, verwenden Sie das Cmdlet [Reset-HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) mit dem Parameter `-scope`.)
    
-    Das System wird mehrmals neu gestartet. Sie werden benachrichtigt, wenn das Zurücksetzen erfolgreich abgeschlossen wurde. Je nach Systemmodell kann es 45 bis 60 Minuten dauern, bis dieser Prozess für ein Gerät der Serie 8100 beendet ist. Für ein Gerät der Serie 8600 kann dieser Prozess 60 bis 90 Minuten dauern.
+    Das System wird mehrmals neu gestartet. Sie werden benachrichtigt, wenn das Zurücksetzen erfolgreich abgeschlossen wurde. Je nach Systemmodell kann es 45 bis 60 Minuten dauern, bis dieser Prozess für ein Gerät der Serie 8100 beendet ist. Für ein Gerät der Serie 8600 kann dieser Prozess 60 bis 90 Minuten dauern.
    
    > [!TIP]
    > * Verwenden Sie bei Update 1.2 oder einem früheren Update den Parameter `–SkipFirmwareVersionCheck` , um die Prüfung der Firmwareversion zu überspringen. (Andernfalls wird ein Fehler aufgrund eines Firmwarekonflikts angezeigt: Die Zurücksetzung auf die werkseitigen Einstellungen kann aufgrund eines Konflikts bei den Firmwareversionen nicht fortgesetzt werden.)
-   > * Der Vorgang zum Zurücksetzen auf Werkseinstellungen schlägt möglicherweise für StorSimple-Geräte fehl, auf denen Update 1 oder 1.1 im Government-Portal ausgeführt wird und für die erfolgreich ein Austausch eines Single- oder Dual-Controllers durchgeführt wurde (mit Ersatzcontrollern, die mit älterer Software als Update 1 ausgeliefert wurden). Dies geschieht, wenn überprüft wird, ob für das Image zum Zurücksetzen eine SHA1-Datei auf dem Controller vorhanden ist, die für Software vor Update 1 nicht existiert. Wenn dieser Fehler beim Zurücksetzen auf Werkseinstellungen auftritt, wenden Sie sich an den Microsoft Support, der Sie bei den nächsten Schritten unterstützt. Dieses Problem tritt nicht bei Ersatzcontrollern auf, die ab Werk mit Update 1 oder neuerer Software ausgeliefert wurden.
+   > * Der Vorgang zum Zurücksetzen auf Werkseinstellungen schlägt möglicherweise für StorSimple-Geräte fehl, auf denen Update 1 oder 1.1 im Government-Portal ausgeführt wird und für die erfolgreich ein Austausch eines Single- oder Dual-Controllers durchgeführt wurde (mit Ersatzcontrollern, die mit älterer Software als Update 1 ausgeliefert wurden). Dies geschieht, wenn überprüft wird, ob für das Image zum Zurücksetzen eine SHA1-Datei auf dem Controller vorhanden ist, die für Software vor Update 1 nicht existiert. Wenn dieser Fehler beim Zurücksetzen auf Werkseinstellungen auftritt, wenden Sie sich an den Microsoft Support, der Sie bei den nächsten Schritten unterstützt. Dieses Problem tritt nicht bei Ersatzcontrollern auf, die ab Werk mit Update 1 oder neuerer Software ausgeliefert wurden.
    > 
    > 
 
@@ -199,8 +203,11 @@ In diesem Abschnitt haben wir einige der häufig gestellten Fragen zur Verwaltun
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md), falls ein Problem mit Ihren StorSimple-Gerätecontrollern auftritt, das Sie mit den Verfahren in diesem Tutorial nicht beheben können.
-* Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+* Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

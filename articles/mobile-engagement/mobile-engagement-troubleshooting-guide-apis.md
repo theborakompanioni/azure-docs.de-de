@@ -1,54 +1,58 @@
 ---
-title: Azure Mobile Engagement – Handbuch zur Problembehandlung – APIs
-description: Handbücher zur Problembehandlung für Azure Mobile Engagement – APIs
+title: "Azure Mobile Engagement – Handbuch zur Problembehandlung – APIs"
+description: "Handbücher zur Problembehandlung für Azure Mobile Engagement – APIs"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
-manager: dwrede
-editor: ''
-
+manager: erikre
+editor: 
+ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
-ms.date: 08/19/2016
+ms.date: 10/04/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: e0bd65366ef1162a4b82c35a86fc42708226e6ed
+
 
 ---
-# Handbuch zur Problembehandlung bei APIs
+# <a name="troubleshooting-guide-for-api-issues"></a>Handbuch zur Problembehandlung bei APIs
 Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administratoren über die APIs mit Azure Mobile Engagement interagieren.
 
-## Syntaxfehler
-### Problem
+## <a name="syntax-issues"></a>Syntaxfehler
+### <a name="issue"></a>Problem
 * Syntaxfelder bei Verwendung der API (oder unerwartetes Verhalten).
 
-### Ursachen
+### <a name="causes"></a>Ursachen
 * Syntaxfehler:
   * Stellen Sie durch Prüfen der Syntax der jeweiligen API sicher, dass die Option zur Verfügung steht.
-  * Ein häufiger Fehler bei der API-Verwendung besteht darin, dass Reach-API und Push-API verwechselt werden (die meisten Aufgaben sollten nicht mit der Push-API, sondern mit der Reach-API ausgeführt werden).
+  * Ein häufiger Fehler bei der API-Verwendung besteht darin, dass Reach-API und Push-API verwechselt werden (die meisten Aufgaben sollten nicht mit der Push-API, sondern mit der Reach-API ausgeführt werden). 
   * Ein weiterer häufiger Fehler bei der SDK-Integration und der API-Verwendung ist der, dass SDK- und API-Schlüssel verwechselt werden.
-  * Skripts, die eine Verbindung zu den APIs herstellen, müssen mindestens alle 10 Minuten Daten senden, ansonsten kommt es zu einer Zeitüberschreitung (besonders häufig in API-Überwachungsskripts, die auf Daten prüfen). Um Zeitüberschreitungen zu verhindern, sollte Ihr Skript alle 10 Minuten ein XMPP-Pingsignal senden, um die Verbindung mit dem Server aufrechtzuerhalten.
+  * Skripts, die eine Verbindung zu den APIs herstellen, müssen mindestens alle 10 Minuten Daten senden, ansonsten kommt es zu einer Zeitüberschreitung (besonders häufig in API-Überwachungsskripts, die auf Daten prüfen). Um Zeitüberschreitungen zu verhindern, sollte Ihr Skript alle 10 Minuten ein XMPP-Pingsignal senden, um die Verbindung mit dem Server aufrechtzuerhalten.
 
-### Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [API-Dokumentation][Link 4]
 * [Informationen zum XMPP-Protokoll](http://xmpp.org/extensions/xep-0199.html)
 
-## Keine Möglichkeit zur Verwendung der API zur Durchführung derselben Aktion, die auch in der Azure Mobile Engagement-Benutzeroberfläche verfügbar ist
-### Problem
+## <a name="unable-to-use-the-api-to-perform-the-same-action-available-in-the-azure-mobile-engagement-ui"></a>Keine Möglichkeit zur Verwendung der API zur Durchführung derselben Aktion, die auch in der Azure Mobile Engagement-Benutzeroberfläche verfügbar ist
+### <a name="issue"></a>Problem
 * Eine Aktion, die mit der Azure Mobile Engagement-Benutzeroberfläche ausgeführt werden kann, funktioniert nicht in der entsprechenden Azure Mobile Engagement-API.
 
-### Ursachen
+### <a name="causes"></a>Ursachen
 * Wenn Sie dieselbe Aktion über die Azure Mobile Engagement-Benutzeroberfläche ausführen können, wurde diese Funktion von Azure Mobile Engagement mit dem SDK ordnungsgemäß integriert.
 
-### Siehe auch
-* [Dokumentation zur Benutzeroberfläche][Link 1]
+### <a name="see-also"></a>Siehe auch
+* [API-Dokumentation][Link 1]
 
-## Fehlermeldungen
-### Problem
+## <a name="error-messages"></a>Fehlermeldungen
+### <a name="issue"></a>Problem
 * Bei Verwendung der API werden zur Laufzeit oder in Protokollen Fehlercodes angezeigt.
 
-### Ursachen
+### <a name="causes"></a>Ursachen
 * Nachfolgend finden Sie eine Zusammenstellung häufiger API-Statuscodes als Referenz und zur ersten Problembehandlung:
   
         200        Success.
@@ -71,32 +75,32 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
         503        Analytics not available yet (the requested information is not computed yet for an application).
         504        The server was not able to handle your request in a reasonable time (if you make multiple calls to an API very quickly, try to make one call at a time and spread the calls out over time).
 
-### Siehe auch
+### <a name="see-also"></a>Siehe auch
 * [API-Dokumentation – detaillierte Fehlerinformationen zu jeder API][Link 4]
 
-## Verborgene ("stille") Fehler
-### Problem
+## <a name="silent-failures"></a>Verborgene ("stille") Fehler
+### <a name="issue"></a>Problem
 * Eine API-Aktion wird nicht ausgeführt, es wird jedoch weder zur Laufzeit noch in den Protokollen eine Fehlermeldung angezeigt.
 
-### Ursachen
+### <a name="causes"></a>Ursachen
 * In der Azure Mobile Engagement-Benutzeroberfläche werden viele Elemente deaktiviert, wenn sie nicht ordnungsgemäß integriert wurden. Bei der API hingegen treten nur "stille" Fehler (ohne Fehlermeldung) auf. Testen Sie deshalb mithilfe der Benutzeroberfläche, ob dieselbe Funktionalität dort korrekt arbeitet.
 * Azure Mobile Engagement und viele weitere Funktionen von Azure Mobile Engagement müssen einzeln mit dem SDK in Ihre App integriert werden, bevor sie genutzt werden können.
 
-### Siehe auch
+### <a name="see-also"></a>Siehe auch
 * [Handbuch zur Problembehandlung – SDK][Link 25]
 
 <!--Link references-->
-[Link 1]: mobile-engagement-user-interface.md
+[Link 1]: mobile-engagement-user-interface-home.md
 [Link 2]: mobile-engagement-troubleshooting-guide.md
 [Link 3]: mobile-engagement-how-tos.md
 [Link 4]: http://go.microsoft.com/fwlink/?LinkID=525553
 [Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
 [Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
 [Link 7]: https://account.windowsazure.com/PreviewFeatures
-[Link 8]: https://social.msdn.microsoft.com/Forums/azure/de-DE/home?forum=azuremobileengagement
-[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
-[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
-[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/en-us/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/en-us/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/en-us/pricing/details/mobile-engagement/
 [Link 12]: mobile-engagement-user-interface-navigation.md
 [Link 13]: mobile-engagement-user-interface-home.md
 [Link 14]: mobile-engagement-user-interface-my-account.md
@@ -117,4 +121,8 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 [Link 29]: mobile-engagement-user-interface-reach-content.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

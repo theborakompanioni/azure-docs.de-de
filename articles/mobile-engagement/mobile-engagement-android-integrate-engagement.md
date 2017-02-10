@@ -1,12 +1,12 @@
 ---
 title: Integration des Azure Mobile Engagement Android SDKs
-description: Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement
+description: "Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: a5487793-1a12-4f6c-a1cf-587c5a671e6b
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,9 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 09c5c2333748eeca3d6e93b62810d62c8a3e53a1
+
 
 ---
-# Integrieren von Mobile Engagement unter Android
+# <a name="how-to-integrate-engagement-on-android"></a>Integrieren von Mobile Engagement unter Android
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -32,19 +36,17 @@ In diesem Verfahren wird die einfachste Art der Aktivierung der Analyse- und Üb
 > 
 > 
 
-Mithilfe der folgenden Schritte kann der Protokollbericht aktiviert werden, der zum Berechnen aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen erforderlich ist. Der Bericht von Protokollen, die zur Berechnung anderer Statistiken wie Ereignisse, Fehler und Aufträge erforderlich ist, muss manuell mithilfe der Engagement-API erfolgen (siehe [So verwenden Sie die erweiterte Mobile Engagement API für Tags in Ihrer Android-App](mobile-engagement-android-use-engagement-api.md)), da diese Statistiken von der Anwendung abhängig sind.
+Mithilfe der folgenden Schritte kann der Protokollbericht aktiviert werden, der zum Berechnen aller Statistiken zu Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Informationen erforderlich ist. Der Bericht von Protokollen, die zur Berechnung anderer Statistiken wie Ereignisse, Fehler und Aufträge erforderlich ist, muss manuell mithilfe der Engagement-API erfolgen (siehe [So verwenden Sie die erweiterte Mobile Engagement API für Tags in Ihrer Android-App](mobile-engagement-android-use-engagement-api.md) ), da diese Statistiken von der Anwendung abhängig sind.
 
-## Einbetten des Engagement-SDKs und des Diensts in Ihr Android-Projekt
-Laden Sie das Android-SDK [hier](https://aka.ms/vq9mfn) herunter. Rufen Sie `mobile-engagement-VERSION.jar` ab, und fügen Sie dies zum `libs`-Ordner des Android-Projekts hinzu (erstellen Sie den Ordner "libs", sofern dieser noch nicht vorhanden ist).
+## <a name="embed-the-engagement-sdk-and-service-into-your-android-project"></a>Einbetten des Engagement-SDKs und des Diensts in Ihr Android-Projekt
+Laden Sie das Android-SDK [hier](https://aka.ms/vq9mfn) herunter. Rufen Sie `mobile-engagement-VERSION.jar` ab, und fügen Sie dies zum Ordner `libs` des Android-Projekts hinzu (erstellen Sie den Ordner „libs“, sofern dieser noch nicht vorhanden ist).
 
 > [!IMPORTANT]
 > Wenn Sie das Anwendungspaket mithilfe von ProGuard erstellen, müssen Sie einige Klassen behalten. Sie können den folgenden Codeausschnitt der Konfiguration verwenden:
 > 
-> -keep public class * extends android.os.IInterface
-> -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
+> -keep public class * extends android.os.IInterface -keep class com.microsoft.azure.engagement.reach.activity.EngagementWebAnnouncementActivity$EngagementReachContentJS {
 > 
-> <methods>;
-> }
+> <methods>; }
 > 
 > 
 
@@ -70,14 +72,14 @@ Die Verbindungszeichenfolge für die Anwendung wird im Azure-Portal angezeigt.
 * Ersetzen Sie `<Your application name>` durch den Namen Ihrer Anwendung.
 
 > [!TIP]
-> Das`android:label`-Attribut möglichst es Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, für dieses Attribut den Wert `"<Your application name>Service"` festzulegen (z. B. `"AcmeFunGameService"`).
+> Das`android:label`-Attribut möglichst es Ihnen, den Namen des Engagement-Diensts so auszuwählen, wie er den Endbenutzern auf dem Bildschirm für aktive Dienste ihres Mobiltelefons angezeigt wird. Es wird empfohlen, für dieses Attribut den Wert `"<Your application name>Service"` festzulegen (z. B. `"AcmeFunGameService"`).
 > 
 > 
 
 Durch die Angabe des Attributs `android:process` wird sichergestellt, dass der Engagement-Dienst im eigenen Prozess ausgeführt wird (durch Ausführen von Engagement in demselben Prozess wie die Anwendung wird der Thread „main/UI“ potenziell weniger reaktionsfähig).
 
 > [!NOTE]
-> Sämtlicher in `Application.onCreate()` hinzugefügter Code und andere Anwendungsrückruffunktionen werden für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben (z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess, doppelte Übertragungsempfänger oder -dienste).
+> Sämtlicher in `Application.onCreate()` hinzugefügter Code und andere Anwendungsrückruffunktionen werden für alle Prozesse der Anwendung ausgeführt, einschließlich des Engagement-Diensts. Dies kann unerwünschte Nebeneffekte haben (z. B. nicht erforderliche Speicherbelegungen und Threads im Engagement-Prozess, doppelte Übertragungsempfänger oder -dienste).
 > 
 > 
 
@@ -95,9 +97,9 @@ Sie können dieselben Schritte für `Application.onTerminate()`, `Application.on
 
 Sie können auch `EngagementApplication` anstelle von `Application` erweitern: Die Rückruffunktion `Application.onCreate()` übernimmt die Prozessprüfung und ruft `Application.onApplicationProcessCreate()` nur auf, wenn es sich bei dem aktuellen Prozess nicht um den Prozess handelt, der den Engagement-Dienst hostet. Dieselben Regeln gelten für die anderen Rückruffunktionen.
 
-## Grundlegende Berichterstellung
-### Empfohlene Methode: Überladen der `Activity`-Klassen
-Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken erforderlich sind, müssen Sie einfach dafür sorgen, dass all Ihre `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen abgeleitet werden (wenn z. B. Ihre Legacy-Aktivität `ListActivity` erweitert, sorgen Sie dafür, dass sie `EngagementListActivity` erweitert).
+## <a name="basic-reporting"></a>Grundlegende Berichterstellung
+### <a name="recommended-method-overload-your-activity-classes"></a>Empfohlene Methode: Überladen der `Activity`-Klassen
+Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken erforderlich sind, müssen Sie einfach dafür sorgen, dass all Ihre `*Activity`-Unterklassen von den entsprechenden `Engagement*Activity`-Klassen abgeleitet werden (wenn z. B. Ihre Legacy-Aktivität `ListActivity` erweitert, sorgen Sie dafür, dass sie `EngagementListActivity` erweitert).
 
 **Ohne Engagement:**
 
@@ -138,9 +140,9 @@ Um den Bericht für alle Protokolle zu aktivieren, die von Engagement zum Berech
 > 
 > 
 
-Sie finden diese Klassen im Ordner `src`, und Sie können sie in Ihr Projekt kopieren. Die Klassen befinden sich auch in **JavaDoc**.
+Sie finden diese Klassen im Ordner `src` , und Sie können sie in Ihr Projekt kopieren. Die Klassen befinden sich auch in **JavaDoc**.
 
-### Alternative Methode: `startActivity()` und `endActivity()` manuell aufrufen.
+### <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>Alternative Methode: `startActivity()` und `endActivity()` manuell aufrufen.
 Wenn Sie die `Activity`-Klassen nicht überladen können oder möchten, können Sie die Aktivitäten stattdessen durch direktes Aufrufen der Methoden von `EngagementAgent` starten und beenden.
 
 > [!IMPORTANT]
@@ -170,15 +172,15 @@ Beispiel:
 
 Dieses Beispiel ähnelt der `EngagementActivity`-Klasse und ihrer Varianten, deren Quellcode im Ordner `src` bereitgestellt wird.
 
-## Test
+## <a name="test"></a>Test
 Überprüfen Sie jetzt die Integration, indem Sie die mobile App in einem Emulator oder auf einem Gerät ausführen und sicherstellen, dass auf der Registerkarte "Überwachen" eine Sitzung registriert wird.
 
 Die nächsten Abschnitte sind optional.
 
-## Speicherortberichte
+## <a name="location-reporting"></a>Speicherortberichte
 Wenn Sie die Speicherorte melden möchten, müssen Sie einige Zeilen zur Konfiguration hinzufügen (zwischen den Tags `<application>` und `</application>`).
 
-### Verzögerte Bereichsspeicherortberichte
+### <a name="lazy-area-location-reporting"></a>Verzögerte Bereichsspeicherortberichte
 Die verzögerte Berichterstellung für Bereichsspeicherorte ermöglicht es Ihnen, das Land, die Region und den Ort zu melden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN). Der Gerätebereich wird höchstens einmal pro Sitzung gemeldet. Das GPS wird niemals verwendet, daher hat diese Art von Standortbericht sehr geringe (oder fast keine) Auswirkungen auf den Akku.
 
 Die gemeldeten Bereiche werden dazu verwendet, um geografische Statistiken zu Benutzern, Sitzungen, Ereignissen und Fehlern zu berechnen. Sie können auch als Kriterium für Reach-Kampagnen verwendet werden.
@@ -196,10 +198,10 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
 Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits Teil Ihrer Anwendung ist.
 
-### Echtzeit-Berichterstellung für Speicherorte
-Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
+### <a name="real-time-location-reporting"></a>Echtzeit-Berichterstellung für Speicherorte
+Mithilfe der Echtzeit-Berichterstellung für Speicherorte können der Längen- und Breitengrad gemeldet werden, die Geräten zugeordnet sind. Diese Art der Berichterstellung für Speicherorte verwendet ausschließlich Netzwerkspeicherorte (auf Basis von Zell-ID oder WLAN), und die Berichterstellung ist nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung).
 
-Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing <Reach-Audience-geofencing >Kriteriums in Reach-Kampagnen zu ermöglichen.
+Echtzeit-Speicherorte werden *NICHT* zum Berechnen von Statistiken verwendet. Ihr einziger Zweck ist es, die Verwendung des Echtzeit-Geofencing-Kriteriums \<Reach-Audience-geofencing\> in Reach-Kampagnen zu ermöglichen.
 
 Die Echtzeit-Berichterstellung für Speicherorte aktivieren Sie mithilfe der zuvor in diesem Verfahren erwähnten Konfiguration:
 
@@ -214,7 +216,7 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
 Sie können auch weiterhin ``ACCESS_FINE_LOCATION`` verwenden, wenn dies bereits Teil Ihrer Anwendung ist.
 
-#### GPS-basierte Berichterstellung
+#### <a name="gps-based-reporting"></a>GPS-basierte Berichterstellung
 Die Echtzeit-Berichterstellung für Speicherorte verwendet standardmäßig nur netzwerkbasierte Speicherorte. Verwenden Sie das Konfigurationsobjekt, um die Verwendung von GPS-basierten Speicherorten (die viel genauer sind) zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -227,8 +229,8 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-#### Berichterstellung im Hintergrund
-Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Verwenden Sie das Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
+#### <a name="background-reporting"></a>Berichterstellung im Hintergrund
+Die Echtzeit-Berichterstellung für Speicherorte ist standardmäßig nur aktiv, wenn die Anwendung im Vordergrund ausgeführt wird (d. h. während einer Sitzung). Verwenden Sie das Konfigurationsobjekt, um die Berichterstellung auch im Hintergrund zu aktivieren:
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -254,7 +256,7 @@ Sie müssen auch die folgende Berechtigung hinzufügen, sofern diese noch nicht 
 
             <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-### Android M-Berechtigungen
+### <a name="android-m-permissions"></a>Android M-Berechtigungen
 Ab Android M werden bestimmte Berechtigungen zur Laufzeit verwaltet und erfordern die Genehmigung des Benutzers.
 
 Die Laufzeitberechtigungen werden für neue App-Installationen standardmäßig deaktiviert, wenn Sie auf die Android-API-Ebene 23 abzielen. Andernfalls sind sie standardmäßig aktiviert.
@@ -267,7 +269,7 @@ Im Kontext von Mobile Engagement sind die Berechtigungen, die eine Genehmigung z
 * `ACCESS_FINE_LOCATION`
 * `WRITE_EXTERNAL_STORAGE` (nur bei Android-API-Ebene 23 als Ziel)
 
-Der externe Speicher wird nur für die Überblicksfunktion von Reach verwendet. Wenn Sie feststellen, dass es störend ist, die Benutzer nach dieser Berechtigung aufzufordern, können Sie sie entfernen, wenn sie nur für Mobile Engagement verwendet wird. Beachten Sie, dass dadurch jedoch die Überblicksfunktion deaktiviert wird.
+Der externe Speicher wird nur für die Überblicksfunktion von Reach verwendet. Wenn Sie feststellen, dass es störend ist, die Benutzer nach dieser Berechtigung  aufzufordern, können Sie sie entfernen, wenn sie nur für Mobile Engagement verwendet wird. Beachten Sie, dass dadurch jedoch die Überblicksfunktion deaktiviert wird.
 
 Für die Speicherortfunktionen sollten Sie Berechtigungen für Benutzer über ein Standarddialogfeld anfordern. Wenn der Benutzer zustimmt, müssen Sie ``EngagementAgent`` mitteilen, dass diese Änderung in Echtzeit vorgenommen wird (andernfalls wird die Änderung verarbeitet, sobald der Benutzer die Anwendung das nächste Mal startet).
 
@@ -310,36 +312,36 @@ Hier ist ein Codebeispiel, dass Sie in einer Aktivität Ihrer Anwendung verwende
         getEngagementAgent().refreshPermissions();
     }
 
-## Erweiterte Berichterstellung
-Wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge optional melden möchten, müssen Sie die Engagement-API über die Methoden der `EngagementAgent`-Klasse verwenden. Ein Objekt dieser Klasse kann durch Aufrufen der statischen `EngagementAgent.getInstance()`-Methode abgerufen werden.
+## <a name="advanced-reporting"></a>Erweiterte Berichterstellung
+Wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge optional melden möchten, müssen Sie die Engagement-API über die Methoden der `EngagementAgent` -Klasse verwenden. Ein Objekt dieser Klasse kann durch Aufrufen der statischen `EngagementAgent.getInstance()` -Methode abgerufen werden.
 
 Die Engagement-API ermöglicht es, alle erweiterten Funktionen von Engagement zu verwenden. Ausführliche Informationen finden Sie unter „Verwenden der Engagement-API unter Android (sowie in der technischen Dokumentation der `EngagementAgent`-Klasse).
 
-## Erweiterte Konfiguration (in „AndroidManifest.xml“)
-### Aktivieren von Sperren
+## <a name="advanced-configuration-in-androidmanifestxml"></a>Erweiterte Konfiguration (in „AndroidManifest.xml“)
+### <a name="wake-locks"></a>Aktivieren von Sperren
 Wenn Sie sicherstellen möchten, dass Statistiken bei der Verwendung von WLAN-Verbindungen oder bei Deaktiviertem Bildschirm in Echtzeit gesendet werden, fügen Sie die folgende optionale Berechtigung hinzu:
 
             <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
-### Absturzbericht
+### <a name="crash-report"></a>Absturzbericht
 Fügen Sie folgenden Code (zwischen den Tags `<application>` und `</application>`) hinzu, um Absturzberichte zu deaktivieren:
 
             <meta-data android:name="engagement:reportCrash" android:value="false"/>
 
-### Burstschwellenwert
+### <a name="burst-threshold"></a>Burstschwellenwert
 Standardmäßig meldet der Engagement-Dienst Protokolle in Echtzeit. Wenn Ihre Anwendung Protokolle sehr häufig meldet, ist es besser, die Protokolle zu puffern und sie in regelmäßigen Abständen alle auf einmal zu melden (dies wird als „Burstmodus“ bezeichnet). Fügen Sie dazu Folgendes (zwischen den Tags `<application>` und `</application>`) hinzu:
 
             <meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
 
 Der Burst-Modus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den Engagement-Monitor aus: Die Dauer von allen Sitzungen und Aufträgen wird auf den Burst-Schwellenwert gerundet (folglich sind eventuell Sitzungen und Aufträge, die kürzer als der Burst-Schwellenwert sind, möglicherweise nicht sichtbar). Es wird empfohlen, einen Burst-Schwellenwert von höchstens 30000 (30 s) zu verwenden.
 
-### Sitzungstimeout
+### <a name="session-timeout"></a>Sitzungstimeout
 Eine Sitzung wird standardmäßig 10 Sekunden nach dem Ende ihrer letzten Aktivität beendet (was in der Regel durch Drücken der Start- oder Zurück-Taste, durch den Wechsel des Mobiltelefons in den Leerlauf oder durch den Wechsel zu einer anderen Anwendung ausgelöst wird). Dadurch wird eine Sitzungsteilung vermieden, wenn der Benutzer die Sitzung beendet und sehr schnell zur Anwendung zurückkehrt (dies kann bei einer Bildübernahme, beim Prüfen einer Benachrichtigung usw. auftreten). Sie können diesen Parameter ändern. Fügen Sie dazu Folgendes (zwischen den Tags `<application>` und `</application>`) hinzu:
 
             <meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
-## Deaktivieren der Protokollberichterstellung
-### Verwenden eines Methodenaufrufs
+## <a name="disable-log-reporting"></a>Deaktivieren der Protokollberichterstellung
+### <a name="using-a-method-call"></a>Verwenden eines Methodenaufrufs
 Sie können Folgendes aufrufen, wenn von Engagement keine Protokolle mehr gesendet werden sollen:
 
             EngagementAgent.getInstance(context).setEnabled(false);
@@ -348,9 +350,9 @@ Dieser Aufruf ist persistent: er verwendet eine freigegebene Einstellungsdatei.
 
 Wenn Engagement beim Aufrufen dieser Funktion aktiv ist, kann es bis zu einer Minute dauern, bis der Dienst beendet wird. Beim nächsten Start der Anwendung wird der Dienst jedoch überhaupt nicht gestartet.
 
-Sie können die Protokollberichterstellung erneut aktivieren, indem Sie dieselbe Funktion mit `true` aufrufen.
+Sie können die Protokollberichterstellung erneut aktivieren, indem Sie dieselbe Funktion mit `true`aufrufen.
 
-### Integration in eigenem `PreferenceActivity`
+### <a name="integration-in-your-own-preferenceactivity"></a>Integration in eigenem `PreferenceActivity`
 Anstatt diese Funktion aufzurufen, können Sie diese Einstellung auch direkt im vorhandenen `PreferenceActivity` integrieren.
 
 Sie können Engagement für die Verwendung Ihrer Einstellungsdatei (mit gewünschtem Modus) in der Datei `AndroidManifest.xml` mithilfe von `application meta-data` konfigurieren:
@@ -381,6 +383,10 @@ Dann können Sie `CheckBoxPreference` wie folgt im Einstellungslayout hinzufüge
               android:summaryOff="Engagement is disabled." />
 
 <!-- URLs. -->
-[Device API]: http://go.microsoft.com/?linkid=9876094
+[Geräte-API]: http://go.microsoft.com/?linkid=9876094
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

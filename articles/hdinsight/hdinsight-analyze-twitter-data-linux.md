@@ -1,13 +1,13 @@
 ---
-title: Analysieren von Twitter-Daten mit Apache Hive in HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie mit Python Tweets speichern, die bestimmte Schlüsselwörter enthalten, und dann mit Hive und Hadoop in HDInsight die Twitter-Rohdaten in eine durchsuchbare Hive-Tabelle umwandeln.
+title: Analysieren von Twitter-Daten mit Apache Hive in HDInsight | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie mit Python Tweets speichern, die bestimmte Schlüsselwörter enthalten, und dann mit Hive und Hadoop in HDInsight die Twitter-Rohdaten in eine durchsuchbare Hive-Tabelle umwandeln."
 services: hdinsight
-documentationcenter: ''
+documentationcenter: 
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-
+ms.assetid: e1e249ed-5f57-40d6-b3bc-a1b4d9a871d3
 ms.service: hdinsight
 ms.workload: big-data
 ms.tgt_pltfrm: na
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: larryfr
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 660524509b523ae2edb72cb8c80d75437730c119
+
 
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analysieren von Twitter-Daten mit Hive in HDInsight
@@ -61,7 +65,7 @@ Twitter ermöglicht das Abrufen der [Daten für jeden Tweet](https://dev.twitter
 > 
 
 ### <a name="download-tweets"></a>Herunterladen von Tweets
-Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen und in einer Datei namens __tweets.txt__gespeichert.
+Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen und in einer Datei namens **tweets.txt**gespeichert.
 
 > [!NOTE]
 > Die folgenden Schritte werden auf dem HDInsight-Cluster ausgeführt, da Python bereits installiert ist.
@@ -94,7 +98,7 @@ Mit dem folgenden Python-Code werden 10.000 Tweets von Twitter heruntergeladen u
    > Mit Tweepy v3.2.0 wird [ein Fehler](https://github.com/tweepy/tweepy/issues/576) vermieden, der beim Verarbeiten von Tweets auftreten kann.
    > 
    > 
-4. Verwenden Sie den folgenden Befehl, um eine neue Datei namens __gettweets.py__zu erstellen:
+4. Verwenden Sie den folgenden Befehl, um eine neue Datei namens **gettweets.py**zu erstellen:
    
         nano gettweets.py
 5. Fügen Sie folgenden Inhalt in die Datei **gettweets.py** ein. Ersetzen Sie die Platzhalterinformationen für **consumer\_secret**, **consumer\_key**, **access/\_token** und **access\_token\_secret** durch die Informationen aus Ihrer Twitter-Anwendung.
@@ -231,7 +235,7 @@ Dabei werden die Daten an einem Speicherort gespeichert, auf den alle Knoten im 
             concat(substr (get_json_object(json_response, '$.created_at'),1,10),' ',
             substr (get_json_object(json_response, '$.created_at'),27,4)),
             substr (get_json_object(json_response, '$.created_at'),27,4),
-            case substr (get_json_object(json_response, '$.created_at'),5,3)
+            case substr (get_json_object(json_response,    '$.created_at'),5,3)
                 when "Jan" then "01"
                 when "Feb" then "02"
                 when "Mar" then "03"
@@ -294,7 +298,7 @@ Dabei werden die Daten an einem Speicherort gespeichert, auf den alle Knoten im 
             GROUP BY name,screen_name
             ORDER BY cc DESC LIMIT 10;
    
-    Dadurch werden maximal 10 Tweets zurückgegeben, die den Begriff **Azure** im Meldungstext enthalten.
+    Dadurch werden maximal 10 Tweets zurückgegeben, die den Begriff **Azure** im Meldungstext enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dataset in eine strukturierte Hive-Tabelle umwandeln und Daten aus Twitter mithilfe von Azure HDInsight abfragen, anzeigen und analysieren können. Weitere Informationen finden Sie unter:
@@ -312,6 +316,6 @@ In diesem Lernprogramm haben Sie erfahren, wie Sie ein unstrukturiertes JSON-Dat
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
