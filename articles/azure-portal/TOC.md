@@ -2,18 +2,18 @@
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
 # Erste Schritte
-## [Bereitstellen mithilfe von Resource Manager-Vorlagen](../resource-group-template-deploy.md)
+## [Bereitstellen mithilfe von Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md)
 
 # Anleitung
 ## Bereitstellen
-### [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md)
+### [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## Verwalten
-### [Verwenden des Vorschauportals zum Verwalten von Ressourcen](resource-group-portal.md)
+### [Verwenden des Vorschauportals zum Verwalten von Ressourcen](../azure-resource-manager/resource-group-portal.md)
 ### [Verwalten des Zugriffs mit RBAC](../active-directory/role-based-access-control-configure.md)
-### [Verwenden von Tags zum Organisieren von Ressourcen](../resource-group-using-tags.md)
+### [Verwenden von Tags zum Organisieren von Ressourcen](../azure-resource-manager/resource-group-using-tags.md)
 ### [Skalieren von Ressourcen](../monitoring-and-diagnostics/insights-how-to-scale.md)
-### [Erstellen eines neuen Azure-Dienstprinzipals](../resource-group-create-service-principal-portal.md)
+### [Erstellen eines neuen Azure-Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 ## Überwachen
 ### [Überwachen von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)
 ### [Aktivieren von Überwachung und Diagnose](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md)
@@ -23,7 +23,7 @@
 ### [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 # Verwandte Themen
-## [Vorlagenfunktionen in Azure Resource Manager](../resource-group-template-functions.md)
+## [Vorlagenfunktionen in Azure Resource Manager](../azure-resource-manager/resource-group-template-functions.md)
 ## [Bewährte Methoden für die automatische Skalierung](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 ## [Allgemeine Metriken für die automatische Skalierung](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)
 ## [Webhooks für Benachrichtigungen zur automatischen Skalierung](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
@@ -42,6 +42,6 @@
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 
