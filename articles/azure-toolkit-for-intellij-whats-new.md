@@ -88,6 +88,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -112,6 +112,6 @@ Informationen und Beispiele zum Herstellen einer Verbindung mit SQL Data Warehou
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

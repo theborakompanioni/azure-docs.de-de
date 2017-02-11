@@ -216,6 +216,6 @@ Wenn Sie einen virtuellen Red Hat Enterprise Linux-Computer auf der Grundlage ei
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

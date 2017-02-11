@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 02/01/2017
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -29,7 +29,7 @@ Alle Entwicklerdiensteherausgeber mit VM- oder nutzungsbasierter Abrechnung erha
 
 * **Begrüßungs-E-Mail** : Als neuer Herausgeber erhalten Sie eine Begrüßungs-E-Mail, um Sie darüber zu informieren, dass Sie von nun an monatliche Berichte über Verkäufer-Insights erhalten.
 * **Monatliche Verkaufsberichte**: Wenn eine Nutzung vorhanden ist, erhalten Sie eine zweite E-Mail, die Ihre Berichte sowie Anweisungen zum Zugreifen auf Ihr Kennwort enthält:
-  
+
   * Wenn Sie über eine Entwicklerdienste-SKU mit VM- oder nutzungsbasierter Abrechnung verfügen, die Nutzung generiert, enthält der monatliche Bericht Details zu den Aufträgen, der Nutzung und den Märkten sowie Kundendetails für Ihre Angebote.
   * Die Berichte sind mit einem Kennwort gesperrt, das nur Sie und Microsoft kennen, damit die Daten Ihrer Kunden geschützt sind.
   * Microsoft sendet keinen Bericht, wenn keines Ihrer Angebote im Verlauf des Monats Nutzung generiert hat.

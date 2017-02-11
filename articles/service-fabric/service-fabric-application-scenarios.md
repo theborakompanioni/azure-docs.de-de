@@ -64,6 +64,6 @@ Zustandsbehaftete Microservices vereinfachen Anwendungsentwürfe, da durch sie d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

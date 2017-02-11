@@ -139,6 +139,6 @@ Lesen Sie mehr über die Konzepte und APIs im [Reliable Services-Kommunkationsmo
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

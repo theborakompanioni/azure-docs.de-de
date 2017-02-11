@@ -23,6 +23,6 @@ Angenommen, dass Sie bereits einen A-Eintrag „www“ in der Zone „contoso.co
 
 Die Eintragstypen SOA und CNAME sind Ausnahmen. Die DNS-Standards lassen mehrere Datensätze mit demselben Namen für diese Typen nicht zu, daher können diese Ressourceneintragssätze nur einen Eintrag enthalten.
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

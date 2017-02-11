@@ -45,7 +45,7 @@ Im folgenden Abschnitt wird die Definition für die benutzerdefinierte Route (UD
     "name": "[parameters('frontEndRouteTableName')]",
     "location": "[resourceGroup().location]",
     "tags": {
-      "displayName": "UDR - FrontEnd"   
+      "displayName": "UDR - FrontEnd"    
     },
     "properties": {
       "routes": [
@@ -409,6 +409,6 @@ Führen Sie zum Bereitstellen der ARM-Vorlage mithilfe der Azure-Befehlszeilensc
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -22,6 +22,6 @@ In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus M
 
 [Azure portal]: https://portal.azure.com
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

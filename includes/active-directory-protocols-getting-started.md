@@ -36,6 +36,6 @@ Zuerst müssen Sie Ihre Anwendung beim Azure Active Directory-Mandanten (AAD) re
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -35,23 +35,23 @@ Sie können das Modul mit den Cmdlets für diese Vorgänge von der [Microsoft Co
 Mit diesen Schritten werden auf Verzeichnisebene Einstellungen erstellt, die für alle Office-Gruppen im Verzeichnis gelten.
 
 1. Wenn Sie nicht wissen, welches SettingsTemplate-Objekt Sie verwenden sollen, gibt dieses Cmdlet die Liste der Einstellungsvorlagen zurück:
-   
+
     `Get-MsolAllSettingTemplate`
-   
+
     ![Liste der Einstellungsvorlagen](./media/active-directory-accessmanagement-groups-settings-cmdlets/list-of-templates.png)
 2. Um eine URL zu Nutzungsrichtlinien hinzuzufügen, müssen Sie zunächst das SettingsTemplate-Objekt abrufen, das den Wert für die Nutzungsrichtlinien-URL definiert, also die Group.Unified-Vorlage:
-   
+
     `$template = Get-MsolSettingTemplate –TemplateId 62375ab9-6b52-47ed-826b-58e47e0e304b`
 3. Erstellen Sie danach basierend auf dieser Vorlage ein neues Einstellungsobjekt:
-   
+
     `$setting = $template.CreateSettingsObject()`
 4. Aktualisieren Sie dann den Wert für die Nutzungsrichtlinie:
-   
+
     `$setting["UsageGuidelinesUrl"] = "<https://guideline.com>"`
 5. Zum Schluss wenden Sie die Einstellungen an:
-   
+
     `New-MsolSettings –SettingsObject $setting`
-   
+
     ![Hinzufügen einer Nutzungsrichtlinien-URL](./media/active-directory-accessmanagement-groups-settings-cmdlets/add-usage-guideline-url.png)
 
 Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ definiert.
@@ -67,31 +67,31 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 Mit diesen Schritten werden auf Verzeichnisebene Einstellungen gelesen, die für alle Office-Gruppen im Verzeichnis gelten.
 
 1. Lesen aller vorhandenen Verzeichniseinstellungen:
-   
+
     `Get-MsolAllSettings`
 2. Lesen aller Einstellungen für eine bestimmte Gruppe:
-   
+
     `Get-MsolAllSettings -TargetType Groups -TargetObjectId <groupObjectId>`
 3. Lesen bestimmter Verzeichniseinstellungen mithilfe der SettingId-GUID:
-   
+
     `Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
-   
+
     ![SettingId-GUID](./media/active-directory-accessmanagement-groups-settings-cmdlets/settings-id-guid.png)
 
 ## <a name="update-settings-at-the-directory-level"></a>Aktualisieren von Einstellungen auf Verzeichnisebene
 Mit diesen Schritten werden auf Verzeichnisebene Einstellungen aktualisiert, die für alle Office-Gruppen im Verzeichnis gelten.
 
 1. Abrufen des vorhandenen Settings-Objekts:
-   
+
     `$setting = Get-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c`
 2. Abrufen des zu aktualisierenden Werts:
-   
+
     `$value = $Setting.GetSettingsValue()`
 3. Aktualisieren des Werts:
-   
+
     `$value["AllowToAddGuests"] = "false"`
 4. Aktualisieren der Einstellung:
-   
+
     `Set-MsolSettings –SettingId dbbcb0ea-a6ff-4b44-a1f3-9d7cef74984c –SettingsValue $value`
 
 ## <a name="remove-settings-at-the-directory-level"></a>Entfernen von Einstellungen auf Verzeichnisebene
@@ -122,7 +122,6 @@ Zusätzliche Anleitungen des Microsoft-Programmmanagers Rob de Jong stehen unter
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
 
 
 

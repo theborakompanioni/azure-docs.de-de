@@ -104,6 +104,6 @@ Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführ
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

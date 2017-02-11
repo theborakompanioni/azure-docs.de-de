@@ -66,6 +66,6 @@ Die nächste Konfigurationsaufgabe besteht darin, [ein virtuelles Azure-Netzwerk
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

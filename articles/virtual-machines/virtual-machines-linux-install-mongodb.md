@@ -186,6 +186,6 @@ Die Azure Resource Manager-Vorlagen verwenden die benutzerdefinierte Skripterwei
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
