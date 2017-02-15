@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie mithilfe von Load Balancer die Netzwerkleistung von Apps optimieren. Verwalten Sie Datenverkehr für virtuelle Computer und Cloudressourcen sowie in standortübergreifenden virtuellen Netzwerken."
 translationtype: Human Translation
-ms.sourcegitcommit: e62704476642d8a519b7bd8b9b101b47ab42e08c
-ms.openlocfilehash: 476eb9f4934d35a808fdd70b6443822eb0a7cfa7
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 53a3e534f9c93c73ef6d28696c5a9d6430a7a258
 
 ---
 #<a name="load-balancer-documentation"></a>Dokumentation zu Load Balancer
@@ -132,13 +132,7 @@ Hier erfahren Sie, wie Sie Load Balancer konfigurieren, um hohe Verfügbarkeit u
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/load-balancer.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Load Balancer </div>
-    </a>
-</div>
+
 
 
 

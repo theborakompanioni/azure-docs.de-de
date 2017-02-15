@@ -1,42 +1,47 @@
 ---
 title: Service Fabric-Reverseproxy | Microsoft Docs
-description: Verwenden Sie den Reverseproxy von Service Fabric für die Kommunikation mit Microservices innerhalb und außerhalb des Clusters.
+description: "Verwenden Sie den Reverseproxy von Service Fabric für die Kommunikation mit Microservices innerhalb und außerhalb des Clusters."
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
 manager: timlt
 editor: vturecek
-
+ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 07/26/2016
+ms.date: 10/04/2016
 ms.author: vturecek
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: fcc939fc1a70e179f714e73bc5757ed750974f17
+
 
 ---
-# Service Fabric-Reverseproxy
+# <a name="service-fabric-reverse-proxy"></a>Service Fabric-Reverseproxy
 Der Service Fabric-Reverseproxy ist ein in Service Fabric integrierter Reverseproxy, der die Adressierung von Microservices im Service Fabric-Cluster ermöglicht, die HTTP-Endpunkte verfügbar machen.
 
-## Microservices-Kommunikationsmodell
+## <a name="microservices-communication-model"></a>Microservices-Kommunikationsmodell
 Microservices werden in Service Fabric in der Regel in einer Teilmenge der VMs im Cluster ausgeführt und können aus verschiedenen Gründen aus einer VM in eine andere verschoben werden. Deshalb können sich die Endpunkte für Microservices dynamisch ändern. Das Standardmuster für die Kommunikation mit dem Microservice ist die nachstehende Auflösungsschleife.
 
 1. Lösen Sie den Speicherort des Diensts zunächst über den Naming Service auf.
 2. Stellen Sie eine Verbindung mit dem Dienst her.
 3. Ermitteln Sie die Ursache von Verbindungsfehlern, und lösen Sie den Speicherort des Diensts bei Bedarf erneut auf.
 
-Dieser Prozess umfasst im Allgemeinen das Umschließen der clientseitigen Kommunikationsbibliotheken in einer Wiederholungsschleife, die die Dienstauflösung und Wiederholungsrichtlinien implementiert. Weitere Informationen zu diesem Thema finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md).
+Dieser Prozess umfasst im Allgemeinen das Umschließen der clientseitigen Kommunikationsbibliotheken in einer Wiederholungsschleife, die die Dienstauflösung und Wiederholungsrichtlinien implementiert.
+Weitere Informationen zu diesem Thema finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md).
 
-### Kommunizieren über den Service Fabric-Reverseproxy
+### <a name="communicating-via-sf-reverse-proxy"></a>Kommunizieren über den Service Fabric-Reverseproxy
 Der Service Fabric-Reverseproxy wird auf allen Knoten im Cluster ausgeführt. Er übernimmt den gesamten Dienstauflösungsprozess im Auftrag des Clients und leitet anschließend die Clientanforderung weiter. Deshalb können im Cluster ausgeführte Clients alle clientseitigen HTTP-Kommunikationsbibliotheken nutzen, um mit dem Zieldienst über den Service Fabric-Reverseproxy zu kommunizieren, der lokal auf demselben Knoten ausgeführt wird.
 
 ![Interne Kommunikation][1]
 
-## Zugreifen auf Microservices von außerhalb des Clusters
-Das Standardmodell für die externe Kommunikation für Microservices ist **Aktivieren**, was heißt, dass externe Clients nicht direkt auf die einzelnen Dienste zugreifen können. Der [Azure Load Balancer](../load-balancer/load-balancer-overview.md) ist eine Netzwerkgrenze zwischen Microservices und externen Clients. Er übernimmt die Netzwerkadressübersetzung und leitet externe Anforderungen an interne **IP-Adresse:Port**-Endpunkte weiter. Damit externe Clients direkt auf den Endpunkt eines Microservice zugreifen können, muss der Azure Load Balancer zunächst zum Weiterleiten von Datenverkehr an die einzelnen Ports konfiguriert werden, die vom Dienst im Cluster verwendet werden. Darüber hinaus befinden sich die meisten Microservices (insbesondere zustandsbehaftete Microservices) nicht auf allen Knoten des Clusters und können bei einem Failover zwischen Knoten verschoben werden. Deshalb kann der Azure Load Balancer in solchen Fällen nicht effektiv den Zielknoten der Replikate bestimmen, zu denen der Datenverkehr geleitet werden soll.
+## <a name="reaching-microservices-from-outside-the-cluster"></a>Zugreifen auf Microservices von außerhalb des Clusters
+Das Standardmodell für die externe Kommunikation für Microservices ist **Aktivieren**, was bedeutet, dass externe Clients nicht direkt auf die einzelnen Dienste zugreifen können. Der [Azure Load Balancer](../load-balancer/load-balancer-overview.md) ist eine Netzwerkgrenze zwischen Microservices und externen Clients. Er übernimmt die Netzwerkadressübersetzung und leitet externe Anforderungen an interne **IP:Port**-Endpunkte weiter. Damit externe Clients direkt auf den Endpunkt eines Microservice zugreifen können, muss der Azure Load Balancer zunächst zum Weiterleiten von Datenverkehr an die einzelnen Ports konfiguriert werden, die vom Dienst im Cluster verwendet werden. Darüber hinaus befinden sich die meisten Microservices (insbesondere zustandsbehaftete Microservices) nicht auf allen Knoten des Clusters und können bei einem Failover zwischen Knoten verschoben werden. Deshalb kann der Azure Load Balancer in solchen Fällen nicht effektiv den Zielknoten der Replikate bestimmen, zu denen der Datenverkehr geleitet werden soll.
 
-### Zugreifen auf Microservices über den Service Fabric-Reverseproxy von außerhalb des Clusters
+### <a name="reaching-microservices-via-the-sf-reverse-proxy-from-outside-the-cluster"></a>Zugreifen auf Microservices über den Service Fabric-Reverseproxy von außerhalb des Clusters
 Anstatt Ports für einzelne Dienste im Azure Load Balancer zu konfigurieren, reicht es aus, den Port des Service Fabric-Reverseproxys im Azure Load Balancer zu konfigurieren. Dadurch können Clients außerhalb des Clusters ohne zusätzliche Konfiguration über den Reverseproxy auf Dienste innerhalb des Clusters zugreifen.
 
 ![Externe Kommunikation][0]
@@ -46,7 +51,7 @@ Anstatt Ports für einzelne Dienste im Azure Load Balancer zu konfigurieren, rei
 > 
 > 
 
-## URI-Format für die Adressierung von Diensten über den Reverseproxy
+## <a name="uri-format-for-addressing-services-via-the-reverse-proxy"></a>URI-Format für die Adressierung von Diensten über den Reverseproxy
 Der Reverseproxy verwendet ein bestimmtes URI-Format, um die Dienstpartition zu bestimmen, an die die eingehende Anforderung weitergeleitet werden soll:
 
 ```
@@ -54,7 +59,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
 * **HTTP(S):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Bei HTTPS-Datenverkehr erfolgt die SSL-Beendigung im Reverseproxy. Anforderungen, die vom Reverseproxy an Dienste im Cluster weitergeleitet werden, erfolgen über HTTP.
-* **Cluster-FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
+* **FQDN des Clusters | interne IP**: Für externe Clients kann der Reverseproxy so konfiguriert werden, dass er über die Clusterdomäne erreichbar ist (Beispiel: mycluster.eastus.cloudapp.azure.com). Der Reverseproxy wird standardmäßig auf jedem Knoten ausgeführt. Bei internen Datenverkehr ist er daher unter „localhost“ oder einer beliebigen internen Knoten-IP (z.B. 10.0.0.1) erreichbar.
 * **Port:** Der Port, der für den Reverseproxy angegeben wurde. Beispiel: 19008.
 * **ServiceInstanceName:** Der vollqualifizierte Name der bereitgestellten Dienstinstanz des Diensts, den Sie erreichen möchten (ohne das Schema „fabric:/“). Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
 * **Suffixpfad:** Der tatsächliche URL-Pfad des Diensts, mit dem Sie eine Verbindung herstellen möchten. Beispiel: *myapi/values/add/3*
@@ -62,11 +67,11 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **PartitionKind:** Das Partitionsschema des Diensts. Dies kann „Int64Range“ oder „Named“ sein. Dieser Parameter ist für Dienste, die mit einem einzelnen Partitionsschema arbeiten, nicht erforderlich.
 * **Timeout:** Gibt das Timeout für die HTTP-Anforderung an, die im Auftrag der Clientanforderung vom Reverseproxy für den Dienst erstellt wird. Der Standardwert hierfür ist 60 Sekunden. Dieser Parameter ist optional.
 
-### Beispielverwendung
-Nehmen wir als Beispiel den Dienst **fabric:/MyApp/MyService**, der einen HTTP-Listener für die folgende URL öffnet:
+### <a name="example-usage"></a>Beispielverwendung
+Nehmen wir als Beispiel den Dienst **fabric:/MyApp/MyService** , der einen HTTP-Listener für die folgende URL öffnet:
 
 ```
-http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
+http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 
 Mit den folgenden Ressourcen:
@@ -91,10 +96,10 @@ Um die vom Dienst verfügbar gemachten Ressourcen zu erreichen, fügen Sie einfa
 
 Das Gateway leitet dann diese Anfragen an die Dienst-URL weiter:
 
-* `http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
-* `http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
+* `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
+* `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## Spezielle Einrichtung für Dienste mit Portfreigabe
+## <a name="special-handling-for-port-sharing-services"></a>Spezielle Einrichtung für Dienste mit Portfreigabe
 Das Application Gateway versucht eine erneute Auflösung einer Dienstadresse und Wiederholung der Anforderung, wenn ein Dienst nicht erreicht werden kann. Dies ist einer der Hauptvorteile des Gateways, da der Clientcode keine eigene Dienstauflösung und Auflösungsschleife implementieren muss.
 
 Wenn ein Dienst nicht erreicht werden kann, bedeutet dies normalerweise, dass die Dienstinstanz oder das Replikat im Rahmen des normalen Lebenszyklus auf einen anderen Knoten verschoben wurde. In diesem Fall kann das Gateway einen Netzwerkverbindungsfehler erhalten, was bedeutet, dass ein Endpunkt in der ursprünglich aufgelösten Adresse nicht mehr geöffnet ist.
@@ -121,7 +126,7 @@ Das Gateway benötigt daher eine Möglichkeit zur Unterscheidung zwischen diesen
 
 Dieser HTTP-Antwortheader gibt eine normale HTTP 404-Situation an, in der die angeforderte Ressource nicht vorhanden ist und das Gateway nicht versucht, die Dienstadresse erneut aufzulösen.
 
-## Setup und Konfiguration
+## <a name="setup-and-configuration"></a>Setup und Konfiguration
 Der Service Fabric-Reverseproxy kann über die [Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) für den Cluster aktiviert werden.
 
 Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen möchten (entweder aus den Beispielvorlagen oder durch Erstellen einer benutzerdefinierten Resource Manager-Vorlage), kann der Reverseproxy über die folgenden Schritte in der Vorlage aktiviert werden.
@@ -137,7 +142,9 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         }
     },
     ```
-2. Geben Sie den Port für jedes der nodetype-Objekte im [Abschnitt der Ressourcentypen](../resource-group-authoring-templates.md) des **Clusters** an.
+2. Geben Sie den Port für jedes der nodetype-Objekte im **Abschnitt der Ressourcentypen** [Clusters](../resource-group-authoring-templates.md)
+   
+    Für eine ApiVersion vor „2016-09-01“ wird der Port anhand des Parameternamens ***httpApplicationGatewayEndpointPort*** identifiziert.
    
     ```json
     {
@@ -150,6 +157,27 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
           {
            ...
            "httpApplicationGatewayEndpointPort": "[parameters('SFReverseProxyPort')]",
+           ...
+          },
+        ...
+        ],
+        ...
+    }
+    ```
+   
+    Für eine ApiVersion von „2016-09-01“ oder später wird der Port anhand des Parameternamens ***reverseProxyEndpointPort*** identifiziert.
+   
+    ```json
+    {
+        "apiVersion": "2016-09-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        ...
+       "nodeTypes": [
+          {
+           ...
+           "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]",
            ...
           },
         ...
@@ -201,7 +229,9 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         ]
     }
     ```
-4. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der httpApplicationGatewayCertificate-Eigenschaft im Abschnitt der [Ressourcentypen](../resource-group-authoring-templates.md) des **Clusters** hinzu.
+4. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der httpApplicationGatewayCertificate-Eigenschaft im Abschnitt der **Abschnitt der Ressourcentypen** [Clusters](../resource-group-authoring-templates.md)
+   
+    Für eine ApiVersion vor „2016-09-01“ wird das Zertifikat anhand des Parameternamens ***httpApplicationGatewayCertificate*** identifiziert.
    
     ```json
     {
@@ -223,8 +253,30 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         }
     }
     ```
+    Für eine ApiVersion von „2016-09-01“ oder später wird das Zertifikat anhand des Parameternamens ***reverseProxyCertificate*** identifiziert.
+   
+    ```json
+    {
+        "apiVersion": "2016-09-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        "dependsOn": [
+            "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+        ],
+        "properties": {
+            ...
+            "reverseProxyCertificate": {
+                "thumbprint": "[parameters('sfReverseProxyCertificateThumbprint')]",
+                "x509StoreName": "[parameters('sfReverseProxyCertificateStoreName')]"
+            },
+            ...
+            "clusterState": "Default",
+        }
+    }
+    ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)
 * [Web-API, die OWIN in Reliable Services verwendet](service-fabric-reliable-services-communication-webapi.md)
@@ -233,4 +285,8 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

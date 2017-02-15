@@ -1,19 +1,23 @@
 ---
-title: Alert Management in Microsoft-Überwachungsprodukten | Microsoft Docs
-description: Mit einer Warnung wird auf ein Problem hingewiesen, für das die Aufmerksamkeit eines Administrators erforderlich ist.  In diesem Artikel werden die Unterschiede der Erstellung und Verwaltung von Warnungen in System Center Operations Manager (SCOM) und Log Analytics beschrieben. Außerdem enthält der Artikel die bewährten Methoden zur Nutzung der beiden Produkte für eine Alert Management-Hybridstrategie.
+title: "Warnungsverwaltung in Microsoft-Überwachungsprodukten | Microsoft Docs"
+description: "Mit einer Warnung wird auf ein Problem hingewiesen, für das die Aufmerksamkeit eines Administrators erforderlich ist.  In diesem Artikel werden die Unterschiede der Erstellung und Verwaltung von Warnungen in System Center Operations Manager (SCOM) und Log Analytics beschrieben. Außerdem enthält der Artikel die bewährten Methoden zur Nutzung der beiden Produkte für eine Alert Management-Hybridstrategie."
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: 6572c3f8-78ca-4fa9-8fe1-d0b488590788
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2016
+ms.date: 12/09/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f2b0655bdddc162c7c8ef7d478b2ce1fd1993f15
+
 
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>Verwalten von Warnungen per Microsoft-Überwachung
@@ -70,6 +74,9 @@ Wenn Sie SCOM als Datenquelle für Log Analytics verwenden, können Sie eine Log
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich näher über [Warnungen in System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh212913.aspx).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

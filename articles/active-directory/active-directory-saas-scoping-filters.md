@@ -1,12 +1,12 @@
 ---
 title: Attributbasierte App-Bereitstellung mit Bereichsfiltern | Microsoft Docs
-description: Erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung auch dann bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt.
+description: "Erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung auch dann bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: markusvi
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 003e75d1b3576a6b882c220cded0c30dea44c78f
+
 
 ---
-# <a name="attributebased-app-provisioning-with-scoping-filters"></a>Attributbasierte App-Bereitstellung mit Bereichsfiltern
+# <a name="attribute-based-app-provisioning-with-scoping-filters"></a>Attributbasierte App-Bereitstellung mit Bereichsfiltern
 In diesem Abschnitt wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer der Anwendung bereitgestellt werden.
 
 ## <a name="clauses-and-scope-groups"></a>Klauseln und Bereichsgruppen
@@ -63,6 +67,6 @@ Gemäß diesem Bereichsfilter müssen Benutzer die folgenden Kriterien erfüllen
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

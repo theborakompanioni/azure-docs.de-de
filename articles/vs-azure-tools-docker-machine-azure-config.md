@@ -5,8 +5,8 @@ services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 7a3ff6e1-fa93-4a62-b524-ab182d2fea08
 ms.service: multiple
 ms.devlang: dotnet
 ms.topic: article
@@ -14,20 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e34cb21da7d08db0cd65db211102788232ac422f
+
 
 ---
-# Erstellen von Docker-Hosts in Azure mit dem Befehl „docker-machine“
-Das Ausführen von [Docker](https://www.docker.com/)-Containern erfordert eine Host-VM, in der der Docker-Daemon ausgeführt wird. In diesem Thema wird beschrieben, wie Sie den Befehl [docker-machine](https://docs.docker.com/machine/) zum Erstellen neuer Linux-VMs verwenden, die mit dem Docker-Daemon konfiguriert sind und in Azure ausgeführt werden.
+# <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Erstellen von Docker-Hosts in Azure mit dem Befehl „docker-machine“
+Das Ausführen von [Docker](https://www.docker.com/) -Containern erfordert eine Host-VM, in der der Docker-Daemon ausgeführt wird.
+In diesem Thema wird beschrieben, wie Sie den Befehl [docker-machine](https://docs.docker.com/machine/) zum Erstellen neuer Linux-VMs verwenden, die mit dem Docker-Daemon konfiguriert sind und in Azure ausgeführt werden. 
 
-**Hinweis:**
+**Hinweis:** 
 
 * *Dieser Artikel setzt mindestens die Version 0.7.0 von docker-machine voraus.*
 * *In naher Zukunft werden auch Windows-Container von docker-machine unterstützt.*
 
-## Erstellen von virtuellen Computern mit dem Befehl „docker- machine“
-Erstellen Sie Docker-Host-VMs in Azure mit dem Befehl `docker-machine create` unter Verwendung des Treibers `azure`.
+## <a name="create-vms-with-docker-machine"></a>Erstellen von virtuellen Computern mit dem Befehl „docker- machine“
+Erstellen Sie Docker-Host-VMs in Azure mit dem Befehl `docker-machine create` unter Verwendung des Treibers `azure`. 
 
-Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) oder das [Azure-Portal](https://portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen.
+Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) oder das [Azure-Portal](https://portal.azure.com) verwenden, um Ihr Azure-Abonnement abzurufen. 
 
 **Verwenden des Azure-Portals**
 
@@ -37,23 +42,24 @@ Für den Azure-Treiber wird Ihre Abonnement-ID benötigt. Sie können die [Azure
 
 * Geben Sie ```azure account list``` ein, und kopieren Sie die Abonnement-ID.
 
-Geben Sie `docker-machine create --driver azure` ein, um die Optionen und ihre Standardwerte anzuzeigen. In der [Dokumentation für den Azure-Treiber für Docker](https://docs.docker.com/machine/drivers/azure/) finden Sie weitere Informationen.
+Geben Sie `docker-machine create --driver azure` ein, um die Optionen und ihre Standardwerte anzuzeigen.
+In der [Dokumentation für den Azure-Treiber für Docker](https://docs.docker.com/machine/drivers/azure/) finden Sie weitere Informationen. 
 
-Im folgenden Beispiel werden die Standardwerte verwendet, doch für den Internetzugriff wird in der VM optional Port 80 geöffnet.
+Im folgenden Beispiel werden die Standardwerte verwendet, doch für den Internetzugriff wird in der VM optional Port 80 geöffnet. 
 
 ```
 docker-machine create -d azure --azure-subscription-id <Your AZURE_SUBSCRIPTION_ID> --azure-open-port 80 mydockerhost
 ```
 
-## Wählen eines Docker-Hosts mit docker-maschine
+## <a name="choose-a-docker-host-with-docker-machine"></a>Wählen eines Docker-Hosts mit docker-maschine
 Sobald Sie in docker-maschine über einen Eintrag für Ihren Host verfügen, können Sie beim Ausführen von Docker-Befehlen den Standardhost festlegen.
 
-## Verwenden von PowerShell
+## <a name="using-powershell"></a>Verwenden von PowerShell
 ```powershell
 docker-machine env MyDockerHost | Invoke-Expression 
 ```
 
-## Verwenden von Bash
+## <a name="using-bash"></a>Verwenden von Bash
 ```bash
 eval $(docker-machine env MyDockerHost)
 ```
@@ -65,8 +71,9 @@ docker ps
 docker info
 ```
 
-## Ausführen eines Containers
-Bei konfiguriertem Host können Sie nun einen einfachen Webserver ausführen, um zu testen, ob der Host ordnungsgemäß konfiguriert ist. Hier verwenden wir ein standardmäßiges nginx-Image, geben an, dass es an Port 80 lauschen soll, und dass beim Neustart der Host-VM der Container ebenfalls neu starten soll (`--restart=always`).
+## <a name="run-a-container"></a>Ausführen eines Containers
+Bei konfiguriertem Host können Sie nun einen einfachen Webserver ausführen, um zu testen, ob der Host ordnungsgemäß konfiguriert ist.
+Hier verwenden wir ein standardmäßiges nginx-Image, geben an, dass es an Port 80 lauschen soll, und dass beim Neustart der Host-VM der Container ebenfalls neu starten soll (`--restart=always`). 
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -86,7 +93,7 @@ Status: Downloaded newer image for nginx:latest
 25942c35d86fe43c688d0c03ad478f14cc9c16913b0e1c2971cb32eb4d0ab721
 ```
 
-## Testen des Containers
+## <a name="test-the-container"></a>Testen des Containers
 Untersuchen Sie ausgeführte Container mit `docker ps`:
 
 ```bash
@@ -103,9 +110,15 @@ PS C:\> docker-machine ip MyDockerHost
 
 ![Ausführen des ngnix-Containers](./media/vs-azure-tools-docker-machine-azure-config/nginxsuccess.png)
 
-## Zusammenfassung
-Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfungen von Docker-Hosts bereitstellen. Informationen zum Hosten von Containern in der Produktion finden Sie unter [Azure-Containerdienst](http://aka.ms/AzureContainerService).
+## <a name="summary"></a>Zusammenfassung
+Mit docker-machine können Sie Docker-Hosts mühelos für einzelne Überprüfungen von Docker-Hosts bereitstellen.
+Informationen zum Hosten von Containern in der Produktion finden Sie unter [Azure-Containerdienst](http://aka.ms/AzureContainerService)
 
-Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS).
+Informationen zum Entwickeln von .NET Core-Anwendungen mit Visual Studio finden Sie unter [Docker-Tools für Visual Studio](http://aka.ms/DockerToolsForVS)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

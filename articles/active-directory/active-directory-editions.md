@@ -146,7 +146,7 @@ Das standardmäßige Nutzungskontingent liegt bei 150.000 Objekten. Bei einem O
 
 * [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
 
-#### <a name="connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect (Synchronisierungsmodul, mit dem lokale Verzeichnisse auf Azure Active Directory ausgeweitet werden)
+#### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Connect (Synchronisierungsmodul, mit dem lokale Verzeichnisse auf Azure Active Directory ausgeweitet werden)
 **Typ:** Gemeinsame Features
 
 **Verfügbarkeit:**
@@ -273,7 +273,7 @@ Das standardmäßige Nutzungskontingent liegt bei 150.000 Objekten. Bei einem O
 * [Was ist Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 
 
-#### <a name="a-namemim-cal-mim-serveramim-cal-mim-server"></a><a name="mim-cal-mim-server"></a>MIM-CAL und MIM-Server
+#### <a name="a-namemim-cal-mim-serveramim-cal--mim-server"></a><a name="mim-cal-mim-server"></a>MIM-CAL und MIM-Server
 Rechte an Microsoft Identity Manager Server-Software werden mit Windows Server-Lizenzen gewährt (beliebige Edition). Da Microsoft Identity Manager unter dem Betriebssystem Windows Server ausgeführt wird, kann Microsoft Identity Manager auf diesem Server installiert und verwendet werden, solange auf dem Server eine gültige, lizenzierte Kopie von Windows Server ausgeführt wird. Für Microsoft Identity Manager Server ist keine andere separate Lizenz erforderlich.
 
 **Typ:** Premium-Features
@@ -333,7 +333,7 @@ Rechte an Microsoft Identity Manager Server-Software werden mit Windows Server-L
 |:---:|:---:|:---:|:---:|
 | &nbsp; | &nbsp; | ![Prüfen][12] | &nbsp; |
 
-## <a name="azure-active-directory-join-windows-10-only-related-features"></a>Azure Active Directory Join – nur auf Windows 10 bezogene Features
+## <a name="azure-active-directory-join--windows-10-only--related-features"></a>Azure Active Directory Join – nur auf Windows 10 bezogene Features
 #### <a name="join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>Verbinden Sie ein Gerät mit Azure AD, Desktop-SSO, Microsoft Passport für Azure AD, BitLocker-Wiederherstellung (Administrator)
 **Typ:** Azure Active Directory Join – nur auf Windows 10 bezogene Features
 
@@ -387,6 +387,6 @@ Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editione
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,19 +1,23 @@
 ---
-title: Azure Mobile Engagement iOS-SDK für die Reach-Integration | Microsoft Docs
-description: Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile Engagement
+title: "Azure Mobile Engagement iOS-SDK für die Reach-Integration | Microsoft Docs"
+description: "Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: c8bb1161e874a3adda4a71ee889ca833db881e20
+ms.openlocfilehash: 7e24bbc1832c6a85181c943e4e1c705785358527
+
 
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>So integrieren Sie Engagement Reach auf iOS
@@ -129,7 +133,7 @@ Anschließend muss das Engagement-SDK darüber informiert werden, wenn Ihre Anwe
     }
 
 > [!NOTE]
-> In iOS 7 wird die oben genannte Methode eingeführt. Wenn Ihr Ziel iOS < 7 ist, implementieren Sie unbedingt die Methode `application:didReceiveRemoteNotification:` in Ihrem Anwendungsdelegaten, und rufen Sie `applicationDidReceiveRemoteNotification` auf dem EngagementAgent durch Übergeben von NULL anstelle des `handler`Arguments auf:
+> In iOS 7 wird die oben genannte Methode eingeführt. Wenn Ihr Ziel iOS <&7; ist, implementieren Sie unbedingt die Methode `application:didReceiveRemoteNotification:` in Ihrem Anwendungsdelegaten, und rufen Sie `applicationDidReceiveRemoteNotification` auf dem EngagementAgent durch Übergeben von NULL anstelle des `handler`Arguments auf:
 > 
 > 
 
@@ -178,12 +182,15 @@ Hier sehen Sie ein vollständiges Beispiel für die Integration:
         [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
     }
 
-### <a name="if-you-have-your-own-unusernotificationcenterdelegate-implementation"></a>Bei vorhandener eigener Implementierung von „UNUserNotificationCenterDelegate“
-Das SDK hat auch eine eigene Implementierung des Protokolls „UNUserNotificationCenterDelegate“. Es wird vom SDK verwendet, um den Lebenszyklus der Engagement-Benachrichtigungen auf Geräten zu überwachen, die unter iOS 10 oder höher ausgeführt werden. Wenn das SDK Ihre Stellvertretung erkennt, verwendet es nicht seine eigene Implementierung, da es pro Anwendung nur eine „UNUserNotificationCenter“-Stellvertretung geben darf. Dies bedeutet, dass Sie Ihrer eigenen Stellvertretung die Engagement-Logik hinzufügen müssen.
+### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>Lösen von Konflikten mit dem UNUserNotificationCenter-Delegaten
+
+*Wenn weder in Ihrer Anwendung noch in einer der Bibliotheken von Drittanbietern ein `UNUserNotificationCenterDelegate` implementiert wird, können Sie diesen Abschnitt überspringen.*
+
+Ein `UNUserNotificationCenter`-Delegat wird vom SDK verwendet, um den Lebenszyklus der Engagement-Benachrichtigungen auf Geräten zu überwachen, die unter iOS 10 oder höher ausgeführt werden. Das SDK verfügt über eine eigene Implementierung des `UNUserNotificationCenterDelegate`-Protokolls, pro Anwendung kann jedoch nur ein `UNUserNotificationCenter`-Delegat vorhanden sein. Jeder weitere dem `UNUserNotificationCenter`-Objekt hinzugefügte Delegat führt zu einem Konflikt mit dem Engagement-Delegaten. Wenn das SDK Ihren Delegaten oder den Delegaten eines Drittanbieters erkennt, wird die eigene Implementierung des SDK nicht verwendet, damit Sie die Konflikte lösen können. Sie müssen Ihrem eigenen Delegaten die Engagement-Logik hinzufügen, um die Konflikte lösen zu können.
 
 Hierfür gibt es zwei Möglichkeiten.
 
-Durch einfaches Weiterleiten der Stellvertretungsaufrufe an das SDK:
+Vorschlag 1: Durch einfaches Weiterleiten der Delegataufrufe an das SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -210,7 +217,7 @@ Durch einfaches Weiterleiten der Stellvertretungsaufrufe an das SDK:
     }
     @end
 
-Oder durch Erben von der `AEUserNotificationHandler`-Klasse
+Oder Vorschlag 2: Durch Erben von der `AEUserNotificationHandler`-Klasse
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -238,8 +245,16 @@ Oder durch Erben von der `AEUserNotificationHandler`-Klasse
 
 > [!NOTE]
 > Sie können bestimmen, ob eine Benachrichtigung von Engagement stammt oder nicht, indem das zugehörige `userInfo`-Wörterbuch an die `isEngagementPushPayload:`-Klassenmethode des Agents übergeben wird.
-> 
-> 
+
+Stellen Sie sicher, dass der `UNUserNotificationCenter`-Delegat des Objekts entweder in der `application:willFinishLaunchingWithOptions:`- oder der `application:didFinishLaunchingWithOptions:`-Methode des Anwendungsdelegaten auf Ihren Delegaten festgelegt ist.
+Wenn Sie beispielsweise den oben erwähnten Vorschlag 1 implementiert haben:
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
 
 ## <a name="how-to-customize-campaigns"></a>Anpassen von Kampagnen
 ### <a name="notifications"></a>Benachrichtigungen
@@ -249,7 +264,7 @@ Systembenachrichtigungen werden von iOS verarbeitet und können nicht angepasst 
 
 Anwendungsinterne Benachrichtigungen bestehen aus einer Ansicht, die dynamisch in das aktuelle Anwendungsfenster eingefügt wird. Dies wird als Benachrichtigungsüberlagerung bezeichnet. Benachrichtigungsoverlays eignen sich besonders für eine schnelle Integration, da für sie keine Änderung von Ansichten in Ihrer Anwendung erforderlich ist.
 
-#### <a name="layout"></a>Layout
+#### <a name="layout"></a>Layout 
 Um das Layout Ihrer anwendungsinternen Benachrichtigungen zu ändern, können Sie einfach die Datei `AENotificationView.xib` an Ihre Anforderungen anpassen. Sie müssen hierbei jedoch darauf achten, dass die Tagwerte und -typen der vorhandenen Unteransichten beibehalten werden.
 
 Standardmäßig werden anwendungsinterne Benachrichtigungen am unteren Bildschirmrand angezeigt. Wenn Sie eine Anzeige der Benachrichtigungen am oberen Bildschirmrand bevorzugen, bearbeiten Sie die bereitgestellte Datei `AENotificationView.xib`, und ändern Sie die Eigenschaft `AutoSizing` der Hauptansicht, sodass die Benachrichtigungen weiterhin im oberen Bereich der übergeordneten Ansicht angezeigt werden können.
@@ -314,7 +329,7 @@ Bei Verwendung der Standardkategorie werden für das `AEReachContent`-Objekt ein
 
 Wenn Ihre Implementierung von `AENotifier` das Standardverhalten umgeht, müssen Sie diese Lebenszyklusmethoden selbst aufrufen. Das folgende Beispiel zeigt einige Fälle, in denen das Standardverhalten umgangen wird:
 
-* Es erfolgt keine Erweiterung von `AEDefaultNotifier`, d. h. Sie haben die Kategorieverarbeitung von Grund auf implementiert.
+* Es erfolgt keine Erweiterung von `AEDefaultNotifier`, d. h. Sie haben die Kategorieverarbeitung von Grund auf implementiert.
 * Sie haben `prepareNotificationView:forContent:` außer Kraft gesetzt. Stellen Sie sicher, dass mindestens `onNotificationActioned` oder `onNotificationExited` einem Ihrer Benutzeroberflächen-Steuerelemente zugeordnet ist.
 
 > [!WARNING]
@@ -332,7 +347,7 @@ Sie können unser Benachrichtigungslayout in Ihre vorhandenen Ansichten einfüge
 1. Fügen Sie die Benachrichtigungsansicht mit dem Interface Builder hinzu.
    
    * Öffnen Sie den *Interface Builder*
-   * Platzieren Sie ein `UIView` -Element der Größe 320 x 60 (oder 768 x 60 für das iPad) an der Stelle, an der die Benachrichtigung angezeigt werden soll.
+   * Platzieren Sie ein `UIView` -Element der Größe 320 x 60 (oder 768 x 60 für das iPad) an der Stelle, an der die Benachrichtigung angezeigt werden soll.
    * Legen Sie den Tagwert für diese Ansicht auf diesen Wert fest: **36822491**
 2. Fügen Sie die Benachrichtigungsansicht programmatisch hinzu. Fügen Sie einfach nach dem Initialisieren Ihrer Ansicht den folgenden Code ein:
    
@@ -397,7 +412,7 @@ Umfragen können auf die gleiche Weise angepasst werden:
 Dieses Mal muss der bereitgestellte `MyCustomPollViewController` zur Erweiterung von `AEPollViewController` verwendet werden. Alternativ können Sie eine Erweiterung über den Standardcontroller durchführen: `AEDefaultPollViewController`.
 
 > [!IMPORTANT]
-> Vergessen Sie nicht, entweder `action` (`submitAnswers:` für benutzerdefinierte Ansichtencontroller für Umfragen) oder die Methode `exit` aufzurufen, bevor der Ansichtencontroller verworfen wird. Andernfalls werden keine Statistiken gesendet (z. B. Analysen der Kampagne) und – noch wichtiger – weitere Kampagnen erhalten erst eine Benachrichtigung, wenn der Anwendungsprozess neu gestartet wurde.
+> Vergessen Sie nicht, entweder `action` (`submitAnswers:` für benutzerdefinierte Ansichtencontroller für Umfragen) oder die Methode `exit` aufzurufen, bevor der Ansichtencontroller verworfen wird. Andernfalls werden keine Statistiken gesendet (z. B. Analysen der Kampagne) und – noch wichtiger – weitere Kampagnen erhalten erst eine Benachrichtigung, wenn der Anwendungsprozess neu gestartet wurde.
 > 
 > 
 
@@ -500,6 +515,6 @@ Wie bei der erweiterten Benachrichtigungsanpassung wird empfohlen, sich den Quel
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

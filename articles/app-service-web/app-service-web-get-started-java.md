@@ -1,5 +1,5 @@
 ---
-title: "Bereitstellen Ihrer ersten Java-Web-App für Azure in fünf Minuten | Microsoft Docs"
+title: "Bereitstellen Ihrer ersten Java-Web-App für Azure in fünf Minuten (CLI 2.0 Preview) | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie einfach die Ausführung von Web-Apps in App Service ist, indem Sie eine Beispiel-App bereitstellen. Sie können in kürzester Zeit mit der Entwicklung beginnen und sofort Ergebnisse erzielen."
 services: app-service\web
 documentationcenter: 
@@ -12,15 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 90c1099f7970fc490ca01f2d815679f967c46187
+ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
+ms.openlocfilehash: e15a67ee0568c52f5fb81110b0ad6d2c53ec8fae
 
 
 ---
-# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes"></a>Bereitstellen Ihrer ersten Java-Web-App für Azure in fünf Minuten
+# <a name="deploy-your-first-java-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Bereitstellen Ihrer ersten Java-Web-App für Azure in fünf Minuten (CLI 2.0 Preview)
+
+> [!div class="op_single_selector"]
+> * [Erste HTML-Website](app-service-web-get-started-html-cli-nodejs.md)
+> * [Erste .NET-App](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [Erste PHP-App](app-service-web-get-started-php-cli-nodejs.md)
+> * [Erste Node.js-App](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [Erste Python-App](app-service-web-get-started-python-cli-nodejs.md)
+> * [Erste Java-App](app-service-web-get-started-java.md)
+> 
+> 
+
 In diesem Tutorial erfahren Sie, wie Sie eine einfache Java-Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md)bereitstellen.
 Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
 
@@ -73,7 +84,7 @@ Wir stellen nun mithilfe von FTPS eine Java-App in Azure bereit.
     ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
 2. Wählen Sie unter **Java-Version** die Version **Java 8** aus, und klicken Sie auf **Speichern**.
    
-    ![](./media/app-service-web-get-started-languages/set-java-application-settings.png)
+    ![](./media/app-service-web-get-started-languages/set-java.png)
    
     Wenn die Benachrichtigung **Die Web-App-Einstellungen wurden erfolgreich aktualisiert** angezeigt wird, navigieren Sie zu „http://*&lt;App-Name>*.azurewebsites.net“, um das JSP-Standardservlet in Aktion zu sehen.
 3. Klicken Sie auf dem Blatt der Web-App auf **Anmeldeinformationen für die Bereitstellung** (scrollen Sie dazu nach unten, oder suchen Sie nach der Option).
@@ -120,6 +131,6 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

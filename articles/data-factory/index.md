@@ -1,14 +1,13 @@
 ---
 layout: LandingPage
-description: "Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten."
 translationtype: Human Translation
-ms.sourcegitcommit: 82f628be33ab24ef29a42121c577792768882eb5
-ms.openlocfilehash: ac936a317b6a68e2f0670ca9903dbbe100c82cdd
+ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
+ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory-Dokumentation
 
-Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren.
+Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das Verschieben und Transformieren von Daten automatisiert wird. Mit dem Data Factory-Dienst werden Datenintegrationslösungen erstellt, die Daten aus verschiedenen Speichern erfassen, Daten transformieren und verarbeiten und die Ergebnisdaten anschließend wieder in den Datenspeichern veröffentlichen.
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -140,6 +139,6 @@ Herunterladen der Data Factory-Dokumentation </div>
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO2-->
 
 

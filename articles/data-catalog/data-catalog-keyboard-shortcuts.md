@@ -1,25 +1,29 @@
 ---
 title: Azure Data Catalog | Microsoft Docs
-description: In diesem Artikel werden die Tastenkombinationen für Azure Data Catalog vorgestellt.
+description: "In diesem Artikel werden die Tastenkombinationen für Azure Data Catalog vorgestellt."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/13/2016
+ms.date: 01/19/2017
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 190f46f9994be1a0699488eb813955070070ee51
+
 
 ---
-# Tastenkombinationen für Azure Data Catalog
-## Tastenkombinationen für das Data Catalog-Datenquellen-Registrierungstool
-### Allgemeine Tastenkombinationen
+# <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Tastenkombinationen für Azure Data Catalog
+## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Tastenkombinationen für das Data Catalog-Datenquellen-Registrierungstool
+### <a name="general-keyboard-shortcuts"></a>Allgemeine Tastenkombinationen
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Zu den einzelnen Steuerelementen auf der Seite gelangen |TAB |
@@ -28,24 +32,24 @@ ms.author: spelluru
 | Seite wiederherstellen/minimieren |WINDOWS-TASTE+NACH-UNTEN-TASTE |
 | Seitenmenü öffnen |ALT+LEERTASTE |
 
-### Authentifizierungsseite
+### <a name="authentication-page"></a>Authentifizierungsseite
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Beim Dienst anmelden |ALT+S |
 
-### Seite zur Datenquellenauswahl
+### <a name="data-source-selection-page"></a>Seite zur Datenquellenauswahl
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Zur nächsten Seite wechseln (sofern aktiviert) |ALT+N |
 | Ausgewählten Typ ändern, wenn eine Kachel im Fokus ist |NACH-LINKS, -OBEN, -RECHTS ODER -UNTEN-TASTE |
 
-### Seite für Datenquellenverbindung
+### <a name="data-source-connection-page"></a>Seite für Datenquellenverbindung
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Zur vorherigen Seite wechseln (sofern aktiviert) |ALT+P |
 | Schaltfläche „Verbinden“ auswählen |ALT+C |
 
-### Seite mit dem Verbindungskontext
+### <a name="connection-context-page"></a>Seite mit dem Verbindungskontext
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Schaltfläche „Registrieren“ (sofern aktiviert) |ALT+R |
@@ -55,20 +59,20 @@ ms.author: spelluru
 | Serverhierarchie, Knoten einer Strukturansicht erweitern |NACH-RECHTS-TASTE |
 | Ausgewählte Elemente für **Verfügbare Objekte** oder **Zu registrierende Objekte** verschieben |LEERTASTE |
 
-### Seite „Status veröffentlichen“
+### <a name="publish-progress-page"></a>Seite „Status veröffentlichen“
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Schaltfläche „Abbrechen“ |ALT+C |
 | Schaltfläche „Weitere Objekte registrieren“ |ALT+R |
 | Schaltfläche „Portal anzeigen“ |ALT+V |
 
-### Seite „Status veröffentlichen“
+### <a name="publish-progress-page"></a>Seite „Status veröffentlichen“
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Schaltfläche „Speichern“ (sofern aktiviert) |ALT+S |
 | Schaltfläche „Abbrechen“ |ALT+C |
 
-## Tastenkombinationen für das Data Catalog-Portal
+## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Tastenkombinationen für das Data Catalog-Portal
 | Vorgang | Drücken Sie |
 | --- | --- |
 | Navigieren |TAB und UMSCHALT+TAB |
@@ -82,4 +86,9 @@ ms.author: spelluru
 | Menü **Öffnen In** ein-/ausblenden |ALT+O |
 | Container untersuchen, wenn das Objekt ein Container ist |ALT+L |
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

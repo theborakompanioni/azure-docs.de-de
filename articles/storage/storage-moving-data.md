@@ -1,19 +1,23 @@
 ---
 title: Verschieben von Daten in und aus Azure Storage | Microsoft Docs
-description: Dieser Artikel bietet eine Übersicht über die verschiedenen Methoden zum Verschieben von Daten in und aus Azure Storage.
+description: "Dieser Artikel bietet eine Übersicht über die verschiedenen Methoden zum Verschieben von Daten in und aus Azure Storage."
 services: storage
-documentationcenter: ''
+documentationcenter: 
 author: micurd
 manager: jahogg
 editor: tysonn
-
+ms.assetid: 5e3947a9-d99b-4108-9d57-3eb67c03e7ba
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 11/18/2016
 ms.author: micurd
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 26dc2d2269855bcb31bc8f6faf2277ac059b81f5
+
 
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Verschieben von Daten in und aus Azure Storage
@@ -28,7 +32,7 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mi
 
 Darüber hinaus bieten wir auch die [Azure Storage Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement) an, eine Bibliothek, die für das Kopieren von Daten zu und aus Azure mit hoher Leistung konzipiert wurde. Die [Dokumentation](https://github.com/Azure/azure-storage-net-data-movement) zu unserer Data Movement Library bietet weitere Informationen. 
 
-## <a name="quickly-viewing/interacting-with-your-data"></a>Schnelles Anzeigen/Interagieren mit den Daten
+## <a name="quickly-viewinginteracting-with-your-data"></a>Schnelles Anzeigen/Interagieren mit den Daten
 Wenn Sie Ihre Azure Storage-Daten auf einfache Weise anzeigen und gleichzeitig die Möglichkeit haben möchten, Ihre Daten hoch- und herunterzuladen, sollten Sie einen Azure-Speicher-Explorer verwenden.
 
 In der Liste der [Azure-Speicher-Explorer](storage-explorers.md) finden Sie weitere Informationen.
@@ -71,6 +75,9 @@ Wenn Sie über lokale Workloads und Anwendungen verfügen, benötigen Sie eine L
 
 Weitere Informationen finden Sie unter [Azure Site Recovery](../site-recovery/site-recovery-overview.md) .
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

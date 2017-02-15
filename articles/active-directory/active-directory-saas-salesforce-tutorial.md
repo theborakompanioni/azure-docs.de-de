@@ -1,22 +1,26 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Salesforce | Microsoft Docs'
-description: Erfahren Sie, wie Sie Salesforce mit Azure Active Directory verwenden können, um einmalige Anmeldung, automatisierte Bereitstellung und mehr zu aktivieren!
+title: 'Tutorial: Azure Active Directory-Integration mit Salesforce | Microsoft-Dokumentation'
+description: "Erfahren Sie, wie Sie Salesforce mit Azure Active Directory verwenden können, um einmalige Anmeldung, automatisierte Bereitstellung und mehr zu aktivieren!"
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: asmalser-msft
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2016
-ms.author: asmalser-msft
+ms.author: asmalser
+translationtype: Human Translation
+ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
+ms.openlocfilehash: 27857431abd965fd4f65c61874f9ecfc1730a7e6
+
 
 ---
-# <a name="tutorial:-how-to-integrate-salesforce-with-azure-active-directory"></a>Tutorial: Integrieren von Salesforce in Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Tutorial: Azure Active Directory-Integration mit Salesforce
 In diesem Tutorial erfahren Sie, wie Sie Ihre Salesforce-Umgebung mit Ihrem Azure Active Directory verbinden. Sie erfahren, wie Sie die einmalige Anmeldung bei Salesforce konfigurieren, die automatisierte Benutzerbereitstellung aktivieren und Benutzern den Zugriff auf Salesforce zuweisen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -35,19 +39,19 @@ Wenn Sie eine Salesforce Sandbox-Umgebung verwenden, rufen Sie das [Tutorial: Az
 ## <a name="video-tutorials"></a>Videotutorials
 Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
-**Videotutorial, Teil 1: Aktivieren der einmaligen Anmeldung**
+**Videotutorial, Teil&1;: Aktivieren der einmaligen Anmeldung**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-enable-Single-Sign-On-12/player]
 > 
 > 
 
-**Videotutorial, Teil 2: Automatisieren der Benutzerbereitstellung**
+**Videotutorial, Teil&2;: Automatisieren der Benutzerbereitstellung**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Integrating-Salesforce-with-Azure-AD-How-to-automate-User-Provisioning-22/player]
 > 
 > 
 
-## <a name="step-1:-add-salesforce-to-your-directory"></a>Schritt 1: Hinzufügen von Salesforce zu Ihrem Verzeichnis
+## <a name="step-1-add-salesforce-to-your-directory"></a>Schritt 1: Hinzufügen von Salesforce zu Ihrem Verzeichnis
 1. Klicken Sie im linken Navigationsbereich des [klassischen Azure-Portals](https://manage.windowsazure.com)auf **Active Directory**.
    
     ![Wählen Sie im linken Navigationsbereich "Active Directory".][0]
@@ -68,7 +72,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
    
     ![Seite "Schnellstart" für Salesforce in Azure AD][5]
 
-## <a name="step-2:-enable-single-sign-on"></a>Schritt 2: Aktivieren der einmaligen Anmeldung
+## <a name="step-2-enable-single-sign-on"></a>Schritt 2: Aktivieren der einmaligen Anmeldung
 1. Bevor Sie die einmalige Anmeldung konfigurieren können, müssen Sie eine benutzerdefinierte Domäne für Ihre Salesforce-Umgebung einrichten und bereitstellen. Anleitungen hierzu finden Sie unter [Set Up a Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_setup.htm&language=en_US)(in englischer Sprache).
 2. Klicken Sie auf der Seite "Schnellstart" von Salesforce in Azure AD auf die Schaltfläche **Einmaliges Anmelden konfigurieren** .
    
@@ -146,7 +150,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
     ![Geben Sie Ihre E-Mail-Adresse ein.][19]
 17. Klicken Sie auf **Fertig stellen** , um das Dialogfeld zu schließen. Weiter unten im Abschnitt [Zuweisen von Benutzern zu Salesforce](#step-4-assign-users-to-salesforce)erfahren Sie, wie Sie Ihre Konfiguration testen können.
 
-## <a name="step-3:-enable-automated-user-provisioning"></a>Schritt 3: Aktivieren der automatisierten Benutzerbereitstellung
+## <a name="step-3-enable-automated-user-provisioning"></a>Schritt 3: Aktivieren der automatisierten Benutzerbereitstellung
 1. Klicken Sie auf der Azure AD-Seite "Schnellstart" für Salesforce auf die Schaltfläche **Benutzerbereitstellung konfigurieren** .
    
     ![Klicken Sie auf die Schaltfläche "Benutzerbereitstellung konfigurieren"][20]
@@ -175,7 +179,7 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
    
     ![Geben Sie Ihre E-Mail-Adresse ein, um Benachrichtigungen zu erhalten.][26]
 
-## <a name="step-4:-assign-users-to-salesforce"></a>Schritt 4: Zuweisen von Benutzern zu Salesforce
+## <a name="step-4-assign-users-to-salesforce"></a>Schritt 4: Zuweisen von Benutzern zu Salesforce
 1. Um Ihre Konfiguration zu testen, beginnen Sie mit dem Erstellen eines neuen Testkontos im Verzeichnis.
 2. Klicken Sie auf der Seite "Schnellstart" für Salesforce auf die Schaltfläche **Benutzer zuweisen** .
    
@@ -184,10 +188,10 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
    
    * Wenn Sie die automatisierte Benutzerbereitstellung nicht aktiviert haben, werden Sie aufgefordert, Folgendes zu bestätigen:
      
-        ![Confirm the assignment.][28]
+        ![Zuweisung bestätigen][28]
    * Wenn Sie die automatisierte Benutzerbereitstellung aktiviert haben, werden Sie aufgefordert, zu definieren, welche Art von Salesforce-Profil der Benutzer erhalten soll. Neu bereitgestellte Benutzer sollten in Ihrer Salesforce-Umgebung nach einigen Minuten angezeigt werden.
      
-        ![Confirm the assignment.][29]
+        ![Zuweisung bestätigen][29]
      
      > [!IMPORTANT]
      > Bei der Bereitstellung in einer Salesforce-**Entwickler**umgebung steht Ihnen für jedes Profil eine sehr begrenzte Anzahl von Lizenzen zur Verfügung. Daher sollten Benutzer möglichst im **Chatter Free User**-Profil bereitgestellt werden, für das 4.999 Lizenzen verfügbar sind.
@@ -232,6 +236,6 @@ Sie können zu diesem Tutorial die folgenden Videos nutzen.
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

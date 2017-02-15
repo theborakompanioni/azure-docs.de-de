@@ -51,6 +51,6 @@ Um Amazon als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verw
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

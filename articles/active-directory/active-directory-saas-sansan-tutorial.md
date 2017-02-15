@@ -2,11 +2,11 @@
 title: 'Tutorial: Azure Active Directory-Integration mit SanSan | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SanSan konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2533338698478a4d9aa07aace93c9bbecb0b3350
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-sansan"></a>Tutorial: Azure Active Directory-Integration mit SanSan
+# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Tutorial: Azure Active Directory-Integration mit SanSan
 In diesem Tutorial erfahren Sie, wie Sie SanSan in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von SanSan in Azure AD bietet die folgenden Vorteile:
@@ -25,7 +29,7 @@ Die Integration von SanSan in Azure AD bietet die folgenden Vorteile:
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SanSan anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit SanSan konfigurieren zu können, benötigen Sie Folgendes:
@@ -113,11 +117,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Microsoft Azure AD
 
     b. Geben Sie im Textfeld **Bezeichner** die URL im folgenden Format ein: 
 
-      | Environment             | URL |
-      | :--                     | :-- |
-      | PC-Web                  | `https://ap.sansan.com/v/saml2/<company name>`|
-      | Native Mobile App       | `https://internal.api.sansan.com/saml2/<company name>` |
-      | Einstellungen für mobile Browser | `https://ap.sansan.com/s/saml2/<company name>` |
+    | Environment             | URL |
+    | :--                     | :-- |
+    | PC-Web                  | `https://ap.sansan.com/v/saml2/<company name>`|
+    | Native Mobile App       | `https://internal.api.sansan.com/saml2/<company name>` |
+    | Einstellungen für mobile Browser | `https://ap.sansan.com/s/saml2/<company name>` |
 
 
     c. Klicken Sie auf **Next**.
@@ -159,7 +163,7 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals**auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-sansan-tutorial/create_aaduser_09.png) 
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
@@ -259,6 +263,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SanSan“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

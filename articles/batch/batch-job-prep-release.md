@@ -1,28 +1,32 @@
 ---
 title: Auftragsvorbereitung und -bereinigung in Batch | Microsoft Docs
-description: Verwenden Sie Vorbereitungs- und Freigabeaufgaben auf Auftragsebene, um Datenübertragungen auf Azure Batch-Computeknoten zu minimieren und Knoten nach Abschluss des Auftrags zu bereinigen.
+description: "Verwenden Sie Vorbereitungs- und Freigabeaufgaben auf Auftragsebene, um Datenübertragungen auf Azure Batch-Computeknoten zu minimieren und Knoten nach Abschluss des Auftrags zu bereinigen."
 services: batch
 documentationcenter: .net
-author: mmacy
+author: tamram
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 09/16/2016
-ms.author: marsma
+ms.date: 01/04/2017
+ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 9b71f09611832c2a8133cc21347d612d495b70aa
+
 
 ---
-# Ausführen von Auftragsvorbereitungs- und Auftragsabschlussaufgaben auf Azure Batch-Computeknoten
+# <a name="run-job-preparation-and-completion-tasks-on-azure-batch-compute-nodes"></a>Ausführen von Auftragsvorbereitungs- und Auftragsabschlussaufgaben auf Azure Batch-Computeknoten
  Für einen Azure Batch-Auftrag ist häufig ein bestimmtes Setup erforderlich, bevor die entsprechenden Aufgaben ausgeführt werden, sowie ein Wartungsschritt nach der Durchführung der Aufgaben. Sie müssen unter Umständen allgemeine Eingabedaten für die Aufgaben auf Ihre Computeknoten herunterladen oder Ausgabedaten der Aufgaben in Azure Storage hochladen, nachdem der Auftrag abgeschlossen wurde. Sie können Aufgaben vom Typ **Auftragsvorbereitung** und **Auftragsfreigabe** verwenden, um diese Vorgänge durchzuführen.
 
-## Was sind Aufgaben zur Auftragsvorbereitung und -freigabe?
+## <a name="what-are-job-preparation-and-release-tasks"></a>Was sind Aufgaben zur Auftragsvorbereitung und -freigabe?
 Bevor die Aufgaben eines Auftrags ausgeführt werden, wird die Auftragsvorbereitungsaufgabe auf allen Computeknoten ausgeführt, für die die Ausführung von mindestens einer Aufgabe geplant ist. Nach Abschluss des Auftrags wird die Auftragsfreigabeaufgabe auf jedem Knoten im Pool ausgeführt, der mindestens eine Aufgabe ausgeführt hat. Wie bei normalen Batch-Aufgaben können Sie eine Befehlszeile angeben, die aufgerufen wird, wenn eine Aufgabe zur Auftragsvorbereitung oder -freigabe ausgeführt wird.
 
-Auftragsvorbereitungs- und -freigabeaufgaben verfügen über vertraute Batch-Aufgabenfunktionen, z.B. Herunterladen von Dateien ([Ressourcendateien][net_job_prep_resourcefiles]), Ausführen mit höheren Rechten, benutzerdefinierte Umgebungsvariablen, maximale Ausführungsdauer, Anzahl von Wiederholungsversuchen und Dateiaufbewahrungsdauer.
+Aufgaben zur Auftragsvorbereitung und -freigabe verfügen über vertraute Batch-Aufgabenfunktionen, z.B. Herunterladen von Dateien ([Ressourcendateien][net_job_prep_resourcefiles]), Ausführen mit höheren Rechten, benutzerdefinierte Umgebungsvariablen, maximale Ausführungsdauer, Anzahl von Wiederholungsversuchen und Dateiaufbewahrungsdauer.
 
 In den folgenden Abschnitten erfahren Sie, wie Sie die Klassen [JobPreparationTask][net_job_prep] und [JobReleaseTask][net_job_release] in der [Batch .NET][api_net]-Bibliothek verwenden.
 
@@ -31,7 +35,7 @@ In den folgenden Abschnitten erfahren Sie, wie Sie die Klassen [JobPreparationTa
 > 
 > 
 
-## Verwendungsmöglichkeiten für Auftragsvorbereitungs- und Auftragsfreigabeaufgaben
+## <a name="when-to-use-job-preparation-and-release-tasks"></a>Verwendungsmöglichkeiten für Auftragsvorbereitungs- und Auftragsfreigabeaufgaben
 Auftragsvorbereitungs- und Auftragsfreigabeaufgaben eignen sich gut für die folgenden Situationen:
 
 **Download von allgemeinen Aufgabendaten**
@@ -40,28 +44,28 @@ Batchaufträge erfordern oft einen gemeinsamen Satz von Daten als Eingabe für d
 
 **Löschen der Auftrags- und Aufgabenausgabe**
 
-In einer Umgebung mit einem gemeinsam genutzten Pool, in der die Computeknoten eines Pools zwischen Aufträgen nicht außer Betrieb genommen werden, müssen Sie Auftragsdaten zwischen den Ausführungen unter Umständen löschen. Es kann sein, dass Sie auf den Knoten Speicherplatz sparen oder die Sicherheitsrichtlinien Ihrer Organisation einhalten müssen. Verwenden Sie eine **Auftragsfreigabeaufgabe**, um Daten zu löschen, die von einer Auftragsvorbereitungsaufgabe heruntergeladen oder während der Aufgabenausführung generiert wurden.
+In einer Umgebung mit einem gemeinsam genutzten Pool, in der die Computeknoten eines Pools zwischen Aufträgen nicht außer Betrieb genommen werden, müssen Sie Auftragsdaten zwischen den Ausführungen unter Umständen löschen. Es kann sein, dass Sie auf den Knoten Speicherplatz sparen oder die Sicherheitsrichtlinien Ihrer Organisation einhalten müssen. Verwenden Sie eine **Auftragsfreigabeaufgabe** , um Daten zu löschen, die von einer Auftragsvorbereitungsaufgabe heruntergeladen oder während der Aufgabenausführung generiert wurden.
 
 **Protokollaufbewahrung**
 
-Eventuell wollen Sie eine Kopie der von den Aufgaben generierten Protokolle oder die von fehlerhaften Anwendungen generierten Absturzabbilddateien aufbewahren. Verwenden Sie in diesen Fällen eine **Auftragsfreigabeaufgabe**, um die Daten zu komprimieren und in ein [Azure-Speicherkonto][azure_storage] hochzuladen.
+Eventuell wollen Sie eine Kopie der von den Aufgaben generierten Protokolle oder die von fehlerhaften Anwendungen generierten Absturzabbilddateien aufbewahren. Verwenden Sie in diesen Fällen eine **Auftragsfreigabeaufgabe**, um die Daten zu komprimieren und in ein [Azure Storage][azure_storage]-Konto hochzuladen.
 
 > [!TIP]
 > Eine andere Möglichkeit zum Beibehalten von Protokollen und anderen Auftrags- und Aufgabenausgabedaten ist die Verwendung der Bibliothek [Azure Batch File Conventions](batch-task-output.md) (Azure Batch-Dateikonventionen).
 > 
 > 
 
-## Auftragsvorbereitungsaufgabe
+## <a name="job-preparation-task"></a>Auftragsvorbereitungsaufgabe
 Vor der Ausführung der Aufgaben eines Auftrags führt Batch die Auftragsvorbereitungsaufgabe auf jedem Computeknoten aus, der zum Ausführen einer Aufgabe eingeplant ist. Standardmäßig wartet der Batch-Dienst, bis die Auftragsvorbereitungsaufgabe abgeschlossen ist, bevor er die geplanten Aufgaben auf dem Knoten ausführt. Sie können den Dienst allerdings auch dahingehend konfigurieren, dass er nicht wartet. Nach dem Neustart des Knotens wird die Auftragsvorbereitungsaufgabe erneut ausgeführt, aber Sie können dieses Verhalten auch deaktivieren.
 
-Die Auftragsvorbereitungsaufgabe wird nur auf Knoten ausgeführt, die zum Ausführen einer Aufgabe eingeplant sind. Das verhindert die unnötige Ausführung von Auftragsvorbereitungsaufgaben an Knoten, denen keine Aufgaben zugewiesen sind. Dies kann eintreten, wenn die Anzahl der Aufgaben für einen Auftrag geringer ist, als die Anzahl der Knoten in einem Pool. Dies gilt auch, wenn die [gleichzeitige Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert ist. Einige Knoten bleiben unbeschäftigt, wenn die Gesamtzahl von Aufgaben geringer als die Gesamtzahl der möglichen zeitgleich ausgeführten Aufgaben ist. Indem Sie die Auftragsvorbereitungsaufgabe nicht auf Knoten im Leerlauf ausführen, können Sie bei den Gebühren für Datenübertragungen sparen.
+Die Auftragsvorbereitungsaufgabe wird nur auf Knoten ausgeführt, die zum Ausführen einer Aufgabe eingeplant sind. Das verhindert die unnötige Ausführung von Auftragsvorbereitungsaufgaben an Knoten, denen keine Aufgaben zugewiesen sind.  Dies kann eintreten, wenn die Anzahl der Aufgaben für einen Auftrag geringer ist, als die Anzahl der Knoten in einem Pool. Dies gilt auch, wenn die [gleichzeitige Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert ist. Einige Knoten bleiben unbeschäftigt, wenn die Gesamtzahl von Aufgaben geringer als die Gesamtzahl der möglichen zeitgleich ausgeführten Aufgaben ist. Indem Sie die Auftragsvorbereitungsaufgabe nicht auf Knoten im Leerlauf ausführen, können Sie bei den Gebühren für Datenübertragungen sparen.
 
 > [!NOTE]
-> [JobPreparationTask][net\_job\_prep\_cloudjob] unterscheidet sich von der [CloudPool.StartTask][pool_starttask] insofern, dass „JobPreparationTask“ beim Start jedes Auftrags ausgeführt wird, während „StartTask“ nur ausgeführt wird, wenn ein Computeknoten einem Pool erstmals hinzugefügt oder neu gestartet wird.
+> [JobPreparationTask][net_job_prep_cloudjob] unterscheidet sich vom [CloudPool.StartTask][pool_starttask] insofern, dass JobPreparationTask beim Start jedes Auftrags ausgeführt wird, während StartTask nur ausgeführt wird, wenn ein Serverknoten einem Pool erstmals hinzugefügt oder neu gestartet wird.
 > 
 > 
 
-## Auftragsfreigabeaufgabe
+## <a name="job-release-task"></a>Auftragsfreigabeaufgabe
 Nachdem ein Auftrag als abgeschlossen markiert wurde, wird die Auftragsfreigabeaufgabe auf jedem Knoten im Pool ausgeführt, der mindestens eine Aufgabe ausgeführt hat. Um einen Auftrag als abgeschlossen zu markieren, geben Sie eine Terminate-Anforderung aus. Der Batch-Dienst legt anschließend den Status des Auftrags auf *Wird beendet* fest, beendet alle aktiven bzw. ausgeführten Aufgaben im Zusammenhang mit dem Auftrag und führt die Auftragsfreigabeaufgabe aus. Danach wird der Status des Auftrags in *Abgeschlossen* geändert.
 
 > [!NOTE]
@@ -69,8 +73,8 @@ Nachdem ein Auftrag als abgeschlossen markiert wurde, wird die Auftragsfreigabea
 > 
 > 
 
-## Aufgaben zur Auftragsvorbereitung und -freigabe mit Batch .NET
-Zum Verwenden einer Auftragsvorbereitungsaufgabe weisen Sie der [CloudJob.JobPreparationTask][net_job_prep_cloudjob]-Eigenschaft des Auftrags ein [JobPreparationTask][net_job_prep]-Objekt zu. Auf ähnliche Weise initialisieren Sie eine [JobReleaseTask][net_job_release], die Sie der [CloudJob.JobReleaseTask][net_job_prep_cloudjob]-Eigenschaft zuweisen, um die Freigabeaufgabe des Auftrags festzulegen.
+## <a name="job-prep-and-release-tasks-with-batch-net"></a>Aufgaben zur Auftragsvorbereitung und -freigabe mit Batch .NET
+Zum Verwenden einer Auftragsvorbereitungsaufgabe weisen Sie der [CloudJob.JobPreparationTask][net_job_prep_cloudjob]-Eigenschaft des Auftrags ein [JobPreparationTask][net_job_prep]-Objekt zu. Auf ähnliche Weise initialisieren Sie einen [JobReleaseTask][net_job_release], den Sie der [CloudJob.JobReleaseTask][net_job_prep_cloudjob]-Eigenschaft zuweisen, um die Freigabeaufgabe des Auftrags festzulegen.
 
 In diesem Codeausschnitt ist `myBatchClient` eine Instanz von [BatchClient][net_batch_client], und `myPool` ist ein vorhandener Pool im Batch-Konto.
 
@@ -108,7 +112,7 @@ Wie oben erwähnt, wird die Freigabeaufgabe ausgeführt, wenn ein Auftrag beende
 await myBatchClient.JobOperations.TerminateJobAsy("JobPrepReleaseSampleJob");
 ```
 
-## Codebeispiel auf GitHub
+## <a name="code-sample-on-github"></a>Codebeispiel auf GitHub
 Sehen Sie sich das Beispielprojekt [JobPrepRelease][job_prep_release_sample] auf GitHub an, um Auftragsvorbereitungs- und Auftragsfreigabeaufgaben in Aktion zu erleben. Diese Konsolenanwendung führt folgende Schritte aus:
 
 1. Sie erstellt einen Pool mit zwei „kleinen“ Knoten.
@@ -170,21 +174,21 @@ Sample complete, hit ENTER to exit...
 > 
 > 
 
-### Überprüfen von Aufgaben zur Auftragsvorbereitung und -freigabe im Azure-Portal
+### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Überprüfen von Aufgaben zur Auftragsvorbereitung und -freigabe im Azure-Portal
 Wenn Sie die Beispielanwendung ausführen, können Sie die Eigenschaften des Auftrags und dessen Aufgaben im [Azure-Portal][portal] anzeigen und sogar die durch die Aufgaben des Auftrags geänderte, freigegebene Textdatei herunterladen.
 
-Der folgende Screenshot zeigt das Blatt **Vorbereitungstasks** im Azure-Portal nach der Ausführung der Beispielanwendung. Navigieren Sie nach Abschluss der Aufgaben (aber noch vor dem Löschen des Auftrags und Pools) zu den Eigenschaften für *JobPrepReleaseSampleJob*, und klicken Sie auf **Vorbereitungstasks** oder **Freigabetasks**, um die entsprechenden Eigenschaften anzeigen.
+Der folgende Screenshot zeigt das Blatt **Vorbereitungstasks** im Azure-Portal nach der Ausführung der Beispielanwendung. Navigieren Sie nach Abschluss der Aufgaben (aber noch vor dem Löschen des Auftrags und Pools) zu den Eigenschaften für *JobPrepReleaseSampleJob*, und klicken Sie auf **Vorbereitungstasks** oder **Freigabetasks**, um die entsprechenden Eigenschaften anzuzeigen.
 
 ![Aufgabenvorbereitungseigenschaften im Azure-Portal][1]
 
-## Nächste Schritte
-### Anwendungspakete
-Neben der Aufgabe zur Auftragsvorbereitung können Sie auch das Batch-Feature [Anwendungspakete](batch-application-packages.md) verwenden, um Computeknoten für die Aufgabenausführung vorzubereiten. Dieses Feature ist besonders bei der Bereitstellung von Anwendungen hilfreich, für die kein Installationsprogramm ausgeführt werden muss, sowie bei Anwendungen, die mehr als 100 Dateien umfassen oder eine strenge Versionskontrolle erfordern.
+## <a name="next-steps"></a>Nächste Schritte
+### <a name="application-packages"></a>Anwendungspakete
+Neben der Aufgabe zur Auftragsvorbereitung können Sie auch das Batch-Feature [Anwendungspakete](batch-application-packages.md) verwenden, um Computeknoten für die Aufgabenausführung vorzubereiten. Dieses Feature ist besonders bei der Bereitstellung von Anwendungen hilfreich, für die kein Installationsprogramm ausgeführt werden muss, sowie bei Anwendungen, die mehr als&100; Dateien umfassen oder eine strenge Versionskontrolle erfordern.
 
-### Installieren von Anwendungen und Bereitstellen von Daten (Staging)
+### <a name="installing-applications-and-staging-data"></a>Installieren von Anwendungen und Bereitstellen von Daten (Staging)
 Dieser Beitrag im MSDN-Forum enthält eine Übersicht über mehrere Methoden zum Vorbereiten der Knoten für die Ausführung von Aufgaben:
 
-[Installing applications and staging data on Batch compute nodes][forum_post] \(Installieren von Anwendungen und Bereitstellen von Daten auf Batch-Computeknoten)
+[Installing applications and staging data on Batch compute nodes][forum_post] (Installieren von Anwendungen und Bereitstellen von Daten auf Batch-Serverknoten)
 
 Der Beitrag wurde von einem Mitglied des Azure Batch-Teams geschrieben und enthält Beschreibungen mehrerer Verfahren, die Sie zum Bereitstellen von Anwendungen und Daten auf Computeknoten verwenden können.
 
@@ -194,12 +198,11 @@ Der Beitrag wurde von einem Mitglied des Azure Batch-Teams geschrieben und enth�
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [portal]: https://portal.azure.com
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease
-[forum_post]: https://social.msdn.microsoft.com/Forums/de-DE/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
+[forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
+[net_cloudjob]:https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_job_prep]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.aspx
 [net_job_prep_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobpreparationtask.aspx
-[net\_job\_prep\_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobpreparationtask.aspx
 [net_job_prep_resourcefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.resourcefiles.aspx
 [net_job_delete]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.deletejobasync.aspx
 [net_job_terminate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.terminatejobasync.aspx
@@ -220,4 +223,8 @@ Der Beitrag wurde von einem Mitglied des Azure Batch-Teams geschrieben und enth�
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

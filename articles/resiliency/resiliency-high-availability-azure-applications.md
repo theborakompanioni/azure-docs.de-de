@@ -1,12 +1,12 @@
 ---
-title: Hohe Verfügbarkeit für Azure-Anwendungen | Microsoft Docs
-description: Technische Übersichten und ausführliche Informationen zum Entwerfen und Erstellen von Anwendungen für hohe Verfügbarkeit in Microsoft Azure.
-services: ''
+title: "Hohe Verfügbarkeit für Azure-Anwendungen | Microsoft Docs"
+description: "Technische Übersichten und ausführliche Informationen zum Entwerfen und Erstellen von Anwendungen für hohe Verfügbarkeit in Microsoft Azure."
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: 8be4f323-ca00-4025-9356-c9bbc998eef3
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: f7289c969184b518a6ff836cbb9ed7e20841206b
+
 
 ---
 # <a name="high-availability-for-applications-built-on-microsoft-azure"></a>Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen
@@ -134,6 +138,9 @@ Es ist wichtig zu beachten, dass sich die Skalierbarkeit des Clouddiensts direkt
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-disaster-recovery-high-availability-azure-applications.md). Der nächste Artikel dieser Reihe ist [Notfallwiederherstellung für in Microsoft Azure erstellte Anwendungen](resiliency-disaster-recovery-azure-applications.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

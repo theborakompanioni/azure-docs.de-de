@@ -1,6 +1,6 @@
 ---
 title: "Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen | Microsoft Docs"
-description: "In diesem Thema wird beschrieben, wie ein Kanal eingerichtet wird, von dem ein Single-Bitrate-Livedatenstrom aus einem lokalen Encoder empfangen und eine Livecodierung zu einem Datenstrom mit adaptiver Bitrate mit Media Services ausgeführt wird. Der Stream kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Dazu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG DASH, HDS."
+description: "In diesem Thema wird beschrieben, wie ein Kanal eingerichtet wird, von dem ein Single-Bitrate-Livedatenstrom aus einem lokalen Encoder empfangen und eine Livecodierung zu einem Datenstrom mit adaptiver Bitrate mit Media Services ausgeführt wird. Der Stream kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Dazu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Stream, MPEG-DASH."
 services: media-services
 documentationcenter: 
 author: anilmur
@@ -12,14 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 12/11/2016
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42dc5d5019bfb6a4740b16c8db149718c0cf072a
+ms.sourcegitcommit: f6ce639dd0ee8386d3bd9ff48f5a05cb392d7979
+ms.openlocfilehash: 82662d0c52262ca2febc54e45a4fd497fe9cf264
 
 
 ---
+
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 ## <a name="overview"></a>Übersicht
 In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarbeitung von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von **Kanälen** empfangen werden können:
@@ -250,7 +251,7 @@ In diesem Abschnitt wird beschrieben, wie die Einstellungen für den Liveencoder
 ### <a name="ad-marker-source"></a>Quelle für AD-Marker
 Sie können die Quelle für AD-Markersignale angeben. Der Standardwert lautet **Api**, der Liveencoder im Kanal soll also eine asynchrone **AD-Marker-API** überwachen.
 
-Die andere gültige Option lautet **Scte35** (nur zulässig, wenn das Erfassungsstreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist. Wenn die Einstellung „Scte35“ lautet, werden Encoder SCTE 35-Signale aus dem RTP (MPEG TS)-Eingabedatenstrom analysiert.
+Die andere gültige Option lautet **Scte35** (nur zulässig, wenn das Erfassungsstreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist. Wenn die Einstellung „Scte35“ lautet, werden Encoder SCTE&35;-Signale aus dem RTP (MPEG TS)-Eingabedatenstrom analysiert.
 
 ### <a name="cea-708-closed-captions"></a>CEA 708-Untertitel
 Dies ist ein optionales Kennzeichen für den Liveencoder, CEA 708-Untertiteldaten, die in das eingehende Video eingebettet sind, zu ignorieren. Wenn das Kennzeichen die Einstellung „False“ (Standard) aufweist, werden CEA 708-Daten erkannt und in die Ausgabe-Videodatenströme eingefügt.
@@ -328,9 +329,12 @@ Dies ist die Dauer des Slates in Sekunden. Es muss sich um einen positiven Wert 
 Wenn für diese Einstellung der Wert „true“ festgelegt ist, wird der Liveencoder zum Einfügen eines Slatebilds während Werbepausen konfiguriert. Der Standardwert lautet „true“. 
 
 ### <a name="a-iddefaultslateadefault-slate-asset-id"></a><a id="default_slate"></a>Default slate Asset Id (ID des Slate-Standardmedienobjekts)
+
 Optional. Hier wird die ID des Media Services-Medienobjekts angegeben, welches das Slatebild enthält. Der Standardwert lautet null. 
 
-**Hinweis**: Vor dem Erstellen des Kanals muss das Slate-Bild mit den folgenden Einschränkungen als dediziertes Medienobjekt hochgeladen werden (in diesem Medienobjekt dürfen sich keine anderen Dateien befinden). 
+>
+>[!NOTE] 
+>Vor dem Erstellen des Kanals muss das Slate-Bild mit den folgenden Einschränkungen als dediziertes Medienobjekt hochgeladen werden (in diesem Medienobjekt dürfen sich keine anderen Dateien befinden). 
 
 * Auflösung von höchstens 1920 x 1080
 * Größe von maximal 3 MB
@@ -434,6 +438,6 @@ Wählen Sie **Portal**, **.NET** oder **REST API**, um auf Informationen zum Ers
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

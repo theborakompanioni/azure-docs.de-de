@@ -2,12 +2,12 @@
 title: Authentifizierung in Azure SQL Data Warehouse | Microsoft Docs
 description: Azure Active Directory- (AAD) und SQL Server-Authentifizierung in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: ''
+documentationcenter: 
 author: byham
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: fefaaa75-2d0c-4e5d-aadb-410342d1ad73
 ms.service: sql-data-warehouse
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/24/2016
 ms.author: rickbyh;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2b08b48713e98eedfd93b290491fee59729d2dcc
+
 
 ---
 # <a name="authentication-to-azure-sql-data-warehouse"></a>Authentifizierung in Azure SQL Data Warehouse
@@ -45,7 +49,7 @@ Standardmäßig wird die Verbindung mit der *Masterdatenbank* hergestellt, nicht
 * Markieren Sie die Benutzerdatenbank, bevor Sie eine Sitzung in SSDT erstellen.
 
 > [!NOTE]
-> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio][Abfragen mit Visual Studio] .
+> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio][Abfragen mit Visual Studio].
 > 
 > 
 
@@ -65,7 +69,7 @@ Azure Active Directory bietet folgende Vorteile:
 * Die Multi-Factor Authentication über die universelle Active Directory-Authentifizierung wird für SQL Server Management Studio unterstützt. Eine Beschreibung der Multi-Factor Authentication finden Sie unter [SSMS-Unterstützung für Azure AD MFA mit SQL-Datenbank und SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
 
 > [!NOTE]
-> Azure Active Directory ist immer noch relativ neu und weist einige Einschränkungen auf. Um sicherzustellen, dass Azure Active Directory für Ihre Umgebung geeignet ist, lesen Sie [Funktionen und Einschränkungen von Azure AD][Funktionen und Einschränkungen von Azure AD], und beachten Sie insbesondere den Abschnitt „Zusätzliche Überlegungen“.
+> Azure Active Directory ist immer noch relativ neu und weist einige Einschränkungen auf. Um sicherzustellen, dass Azure Active Directory für Ihre Umgebung geeignet ist, lesen Sie den Artikel [Funktionen und Einschränkungen von Azure AD][Funktionen und Einschränkungen von Azure AD], und beachten Sie insbesondere den Abschnitt „Zusätzliche Überlegungen“.
 > 
 > 
 
@@ -96,6 +100,6 @@ Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen An
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

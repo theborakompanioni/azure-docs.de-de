@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement - Benutzeroberfläche – Mein Konto
-description: Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihr Konto-Profil verwalten und Geräte testen
+title: "Azure Mobile Engagement - Benutzeroberfläche – Mein Konto"
+description: "Erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement Ihr Konto-Profil verwalten und Geräte testen"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 22832678-3959-4b8c-9fb2-f2ff5974e5d1
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,40 +14,50 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8430f80b9b2ec596d43b0de5e7ef022d4b3261bd
+
 
 ---
-# Verwalten Ihres Konto-Profils und Testen der Geräte
-In diesem Artikel wird die **Startseite** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement**-Portal, um Ihre mobilen Apps zu überwachen und zu verwalten.
+# <a name="how-to-manage-your-account-profile-and-test-devices"></a>Verwalten Ihres Konto-Profils und Testen der Geräte
+In diesem Artikel wird die **Startseite** im Portal **Mobile Engagement** beschrieben. Verwenden Sie das **Mobile Engagement** -Portal, um Ihre mobilen Apps zu überwachen und zu verwalten. 
 
 Klicken Sie oben auf der Seite auf Ihr Konto, um zur Seite **Mein Konto** zu gelangen.
 
 Im Abschnitt "Mein Konto" der Benutzeroberfläche können Sie die Einstellungen im Zusammenhang mit Ihrem Konto anzeigen und ändern, einschließlich Ihrer Profileinstellungen und Testgeräte-IDs. Diese Einstellungen enthalten Elemente, auf die auch über die Device-API zugegriffen werden kann.
 
-![MyAccount1][7]
+![MyAccount1][7]  
 
-## Profil:
-Sie können die unten angezeigten Einstellungen für das Konto anzeigen oder ändern. Sie können auf der [Startseite](mobile-engagement-user-interface-home.md) auch anderen Benutzern die Berechtigung zur Nutzung Ihrer Anwendung zuweisen, basierend auf ihrer E-Mail-Adresse.
+## <a name="profile"></a>Profil:
+Sie können die unten angezeigten Einstellungen für das Konto anzeigen oder ändern. Sie können auf der [Startseite](mobile-engagement-user-interface-home.md)auch anderen Benutzern die Berechtigung zur Nutzung Ihrer Anwendung zuweisen, basierend auf ihrer E-Mail-Adresse.
 
-![MyAccount2][8]
+![MyAccount2][8]  
 
-## Geräte:
-Sie können IDs der Testgeräte, die Sie verwenden können, um Ihre **Reach**- oder **Push**-Kampagnen zu testen, anzeigen, hinzufügen oder entfernen. Wenn Sie auf "Neues Gerät" klicken, werden kontextbezogene Anweisungen für das Bestimmen der Geräte-ID von Geräten für jede Plattform (iOS, Android, Windows Phone usw.) angezeigt.
+## <a name="devices"></a>Geräte:
+Sie können IDs der Testgeräte, die Sie zum Testen Ihrer **Reach**- oder **Push**-Kampagnen verwenden, anzeigen, hinzufügen oder entfernen. Wenn Sie auf "Neues Gerät" klicken, werden kontextbezogene Anweisungen für das Bestimmen der Geräte-ID von Geräten für jede Plattform (iOS, Android, Windows Phone usw.) angezeigt. 
 
-![MyAccount3][9]
+![MyAccount3][9]  
 
 Zum Verwenden der Push-API oder Device-API müssen Sie die eindeutige Gerätekennung (den "deviceid"-Parameter) Ihrer Benutzer kennen. Es gibt mehrere Möglichkeiten, diese abzurufen:
 
 1. In Ihrem Back-End können Sie die "Get"-Funktion der Device-API verwenden, um eine vollständige Liste der Geräte-IDs zu erhalten.
 2. In Ihrer App können Sie zum Abruf das SDK nutzen. (Rufen Sie für Android die "getDeviceID()"-Funktion der "Agent"-Klasse und für iOS die "deviceid-Eigenschaft" der "Agent"-Klasse auf.)
-3. Wenn bei einer Reach-Ankündigung die der Ankündigung zugeordnete Aktions-URL das {deviceid}-Muster enthält, wird es automatisch durch die ID des Geräts ersetzt, das die Aktion auslöst. http://<Beispiel>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata wird ersetzt durch: http://<Beispiel>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata
-4. Wenn bei einer Reach-Webankündigung der HTML-Code der Ankündigung das {deviceid}-Muster enthält, wird es automatisch durch die ID des Geräts ersetzt, das die Webankündigung auslöst. Hier ist meine Geräte-ID: {deviceid} wird ersetzt durch: Hier ist meine Geräte-ID: XXXXXXXXXXXXXXXX
-5. Öffnen Sie die Anwendung auf Ihrem Gerät, und lösen Sie ein Ereignis in Ihrer App aus, das mit einem Tag versehen wurde. In "Benutzeroberfläche - Ihre App - Überwachen - Ereignisse - Details" finden Sie das ausgelöste Ereignis in der Liste. Klicken Sie im Abschnitt "Überwachen" auf dieses Ereignis. Ihre Geräte-ID sollte in der Liste der Geräte vorhanden sein, auf denen dieses Ereignis erfolgt ist. Anschließend können Sie diese Geräte-ID kopieren und in "Benutzeroberfläche - Mein Konto - Geräte - Neues Gerät - Geräteplattform auswählen" registrieren.
+3. Wenn bei einer Reach-Ankündigung die der Ankündigung zugeordnete Aktions-URL das {deviceid}-Muster enthält, wird es automatisch durch die ID des Geräts ersetzt, das die Aktion auslöst.
+   „http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata“ wird ersetzt durch „http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata“. 
+4. Wenn bei einer Reach-Webankündigung der HTML-Code der Ankündigung das {deviceid}-Muster enthält, wird es automatisch durch die ID des Geräts ersetzt, das die Webankündigung auslöst.
+   Hier ist meine Geräte-ID: {deviceid} wird ersetzt durch: Hier ist meine Geräte-ID: XXXXXXXXXXXXXXXX
+5. Öffnen Sie die Anwendung auf Ihrem Gerät, und lösen Sie ein Ereignis in Ihrer App aus, das mit einem Tag versehen wurde.
+   In "Benutzeroberfläche - Ihre App - Überwachen - Ereignisse - Details" finden Sie das ausgelöste Ereignis in der Liste.
+   Klicken Sie im Abschnitt "Überwachen" auf dieses Ereignis.
+   Ihre Geräte-ID sollte in der Liste der Geräte vorhanden sein, auf denen dieses Ereignis erfolgt ist.
+   Anschließend können Sie diese Geräte-ID kopieren und in "Benutzeroberfläche - Mein Konto - Geräte - Neues Gerät - Geräteplattform auswählen" registrieren.
    >(Bedenken Sie, dass wenn IDFA für iOS deaktiviert ist, die Geräte-ID sich mit der Zeit ändern kann, wenn Sie die App deinstallieren und neu installieren.)
 
-## Handbuch zur Problembehandlung
-* [Handbuch zur Problembehandlung - Dienst][Link 24]
+## <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
+* [Handbuch zur Problembehandlung – Dienst][Link 24]
 
-## Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche - Startseite][Link 13]
 
 <!--Image references-->
@@ -149,4 +159,8 @@ Zum Verwenden der Push-API oder Device-API müssen Sie die eindeutige Geräteken
 
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

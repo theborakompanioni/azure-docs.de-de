@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
 ms.sourcegitcommit: 4e5568bfcc3d488ef07203b7d3ad95f44354cabc
@@ -139,6 +139,6 @@ Lesen Sie mehr über die Konzepte und APIs im [Reliable Services-Kommunkationsmo
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

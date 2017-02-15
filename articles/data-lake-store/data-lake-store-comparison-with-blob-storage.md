@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 267b281c33049e65e82a5e5b2453ff1a80983453
-ms.openlocfilehash: 744e5a093cb99463224d42a69711f41f6132a2ee
+ms.sourcegitcommit: e82cc23dac2b765ee3dc8ae2eb1e4f7f2e49675a
+ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
 
 
 ---
@@ -36,7 +36,7 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 | Datenvorgänge – Authentifizierungsprotokoll |OAuth 2.0. Aufrufe müssen ein gültiges, über Azure Active Directory ausgestelltes JWT (JSON Web Token) enthalten. |Hashbasierter Nachrichtenauthentifizierungscode (Hashed Message Authentication Code, HMAC). Aufrufe müssen einen Base64-codierten SHA-256-Hash über einen Teil der HTTP-Anforderung enthalten. |
 | Datenvorgänge – Autorisierung |POSIX-Zugriffssteuerungslisten (ACLs).  Auf Azure Active Directory-Identitäten basierende ACLs können auf Datei- und Ordnerebene festgelegt werden. |Für die Autorisierung auf Kontoebene – Verwenden Sie [Zugriffsschlüssel](../storage/storage-create-storage-account.md#manage-your-storage-account)<br>Für Konto-, Container- oder Blobautorisierung – Verwenden Sie [Shared Access Signature-Schlüssel](../storage/storage-dotnet-shared-access-signature-part-1.md) |
 | Datenvorgänge – Überwachung |Verfügbar. Weitere Informationen finden Sie [hier](data-lake-store-diagnostic-logs.md) . |Verfügbar |
-| Verschlüsselung für ruhende Daten |Transparent, serverseitig (bald verfügbar)<ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault</li></ul> |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault (bald verfügbar)</li></ul><li>clientseitiger Verschlüsselung</li></ul> |
+| Verschlüsselung für ruhende Daten |Transparent, serverseitig <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault</li></ul> |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault (bald verfügbar)</li></ul><li>clientseitiger Verschlüsselung</li></ul> |
 | Verwaltungsvorgänge (z.B. Kontoerstellung) |[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
 | Entwickler-SDKs |.NET, Java, Node.js |.Net, Java, Python, Node.js, C++, Ruby |
 | Leistung von Analyseworkloads |Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. |Nicht für Analyseworkloads optimiert. |
@@ -53,6 +53,6 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

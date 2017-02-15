@@ -1,25 +1,29 @@
 ---
 title: Partitionierte Warteschlangen und Themen | Microsoft Docs
 description: Es wird beschrieben, wie Service Bus-Warteschlangen und -Themen mit mehreren Nachrichtenbrokern partitioniert werden.
-services: service-bus
+services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: a0c7d5a2-4876-42cb-8344-a1fc988746e7
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2016
 ms.author: sethm;hillaryc
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 03e68436372414a25d87f50c2b057c2f8d193401
+
 
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
-Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichten zu verarbeiten, sowie mehrere Nachrichtenspeicher, um Nachrichten zu speichern. Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Außerdem ermöglicht Service Bus, dass Warteschlangen oder Themen über mehrere Nachrichtenbroker und -speicher partitioniert werden. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Partitionierte Warteschlangen und Themen können alle erweiterten Service Bus-Features enthalten, z. B. die Unterstützung von Transaktionen und Sitzungen.
+Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichten zu verarbeiten, sowie mehrere Nachrichtenspeicher, um Nachrichten zu speichern. Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Außerdem ermöglicht Service Bus, dass Warteschlangen oder Themen über mehrere Nachrichtenbroker und -speicher partitioniert werden. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist. Partitionierte Warteschlangen und Themen können alle erweiterten Service Bus-Features enthalten, z. B. die Unterstützung von Transaktionen und Sitzungen.
 
-Weitere Informationen zum inneren Aufbau von Service Bus finden Sie im Thema [Service Bus-Architektur][Service Bus-Architektur].
+Weitere Informationen zum inneren Aufbau von Service Bus finden Sie im Thema [Service Bus-Architektur][Service Bus-Architektur].
 
 ## <a name="how-it-works"></a>So funktioniert's
 Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Fragmenten. Jedes Fragment wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein Thema gesendet wird, weist Service Bus die Nachricht einem der Fragmente zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
@@ -31,9 +35,9 @@ Es fallen keine zusätzlichen Kosten an, wenn eine Nachricht an eine partitionie
 ## <a name="enable-partitioning"></a>Aktivieren der Partitionierung
 Setzen Sie zum Verwenden von partitionierten Warteschlangen und Themen mit Azure Service Bus die Azure SDK-Version 2.2 oder höher ein, oder geben Sie `api-version=2013-10` in Ihren HTTP-Anforderungen an.
 
-Sie können Service Bus-Warteschlangen und -Themen in Größen von 1, 2, 3, 4 oder 5GB erstellen (die Standardgröße ist 1GB). Bei aktivierter Partitionierung erstellt Service Bus 16 Partitionen für jedes angegebene GB. Wenn Sie also eine Warteschlange mit einer Größe von 5 GB erstellen, beträgt die maximale Warteschlangengröße bei 16 Partitionen 5 \* 16 = 80 GB. Die maximale Größe der partitionierten Warteschlange oder des Themas wird im zugehörigen Eintrag im [Azure-Portal][Azure-Portal] angezeigt.
+Sie können Service Bus-Warteschlangen und -Themen in Größen von 1, 2, 3, 4 oder 5GB erstellen (die Standardgröße ist 1GB). Bei aktivierter Partitionierung erstellt Service Bus 16 Partitionen für jedes angegebene GB. Wenn Sie also eine Warteschlange mit einer Größe von 5 GB erstellen, beträgt die maximale Warteschlangengröße bei 16 Partitionen 5 \* 16 = 80 GB. Die maximale Größe der partitionierten Warteschlange oder des Themas wird im zugehörigen Eintrag im [Azure-Portal][Azure-Portal] angezeigt.
 
-Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning]-Eigenschaft auf **TRUE** festlegen. Diese Eigenschaften müssen bei der Erstellung der Warteschlange oder des Themas festgelegt werden. Es ist nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
+Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema in Ihrer Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning]-Eigenschaft auf **true** festlegen. Diese Eigenschaften müssen bei der Erstellung der Warteschlange oder des Themas festgelegt werden. Es ist nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
 
 ```
 // Create partitioned topic
@@ -43,13 +47,13 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Alternativ können Sie eine partitionierte Warteschlange oder ein Thema in Visual Studio oder im [Azure-Portal][Azure-Portal] erstellen. Wenn Sie eine neue Warteschlange oder ein Thema im Portal erstellen, legen Sie die Option **Partitionierung aktivieren** auf dem Blatt **Allgemeine Einstellungen** des Warteschlangen- oder Themenfensters **Einstellungen** auf **TRUE** fest. Klicken Sie in Visual Studio im Dialogfeld **Neue Warteschlange** bzw. **Neues Thema** auf das Kontrollkästchen **Partitionierung aktivieren**.
+Alternativ dazu können Sie eine partitionierte Warteschlange oder ein Thema in Visual Studio oder im [Azure-Portal][Azure-Portal] erstellen. Wenn Sie eine neue Warteschlange oder ein Thema im Portal erstellen, legen Sie die Option **Partitionierung aktivieren** auf dem Blatt **Allgemeine Einstellungen** des Warteschlangen- oder Themenfensters **Einstellungen** auf **TRUE** fest. Klicken Sie in Visual Studio im Dialogfeld **Neue Warteschlange** bzw. **Neues Thema** auf das Kontrollkästchen **Partitionierung aktivieren**.
 
 ## <a name="use-of-partition-keys"></a>Verwenden von Partitionsschlüsseln
 Wenn eine Nachricht in eine partitionierte Warteschlange oder ein Thema eingereiht wird, wird von Service Bus das Vorhandensein eines Partitionsschlüssels überprüft. Wenn ein Schlüssel gefunden wird, wird das Fragment basierend auf diesem Schlüssel ausgewählt. Falls kein Partitionsschlüssel gefunden wird, wird das Fragment basierend auf einem internen Algorithmus ausgewählt.
 
 ### <a name="using-a-partition-key"></a>Verwendung eines Partitionsschlüssels
-Einige Szenarien, z. B. Sitzungen oder Transaktionen, erfordern es, dass Nachrichten in einem bestimmten Fragment gespeichert werden. Für all diese Szenarien ist die Verwendung eines Partitionsschlüssels erforderlich. Alle Nachrichten, für die der gleiche Partitionsschlüssel verwendet wird, sind demselben Fragment zugewiesen. Wenn das Fragment vorübergehend nicht verfügbar ist, wird von Service Bus ein Fehler zurückgegeben.
+Einige Szenarien, z. B. Sitzungen oder Transaktionen, erfordern es, dass Nachrichten in einem bestimmten Fragment gespeichert werden. Für all diese Szenarien ist die Verwendung eines Partitionsschlüssels erforderlich. Alle Nachrichten, für die der gleiche Partitionsschlüssel verwendet wird, sind demselben Fragment zugewiesen. Wenn das Fragment vorübergehend nicht verfügbar ist, wird von Service Bus ein Fehler zurückgegeben.
 
 Je nach Szenario werden verschiedene Nachrichteneigenschaften als Partitionsschlüssel verwendet:
 
@@ -57,16 +61,16 @@ Je nach Szenario werden verschiedene Nachrichteneigenschaften als Partitionsschl
 
 **PartitionKey**: Wenn für eine Nachricht die [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey]-Eigenschaft festgelegt ist, aber nicht die [BrokeredMessage.SessionId][BrokeredMessage.SessionId]-Eigenschaft, verwendet Service Bus die [PartitionKey][PartitionKey]-Eigenschaft als Partitionsschlüssel. Wenn für die Nachricht sowohl die [SessionId][SessionId]- als auch die [PartitionKey][PartitionKey]-Eigenschaft festgelegt ist, müssen beide Eigenschaften identisch sein. Falls die [PartitionKey][PartitionKey]-Eigenschaft auf einen anderen Wert als die [SessionId][SessionId]-Eigenschaft festgelegt ist, gibt Service Bus die Ausnahme **InvalidOperationException** zurück. Die [PartitionKey][PartitionKey]-Eigenschaft sollte verwendet werden, wenn ein Absender nicht sitzungsorientierte Transaktionsnachrichten sendet. Mit dem Partitionsschlüssel wird sichergestellt, dass alle Nachrichten, die innerhalb einer Transaktion gesendet werden, von demselben Nachrichtenbroker verarbeitet werden.
 
-**MessageId**: Wenn für die Warteschlange bzw. das Thema die [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection]-Eigenschaft auf **TRUE** festgelegt ist und die [BrokeredMessage.SessionId][BrokeredMessage.SessionId]- oder die [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey]-Eigenschaft nicht festgelegt wurde, dient die [BrokeredMessage.MessageId][BrokeredMessage.MessageId]-Eigenschaft als Partitionsschlüssel. (Beachten Sie, dass die Microsoft .NET- und AMQP-Bibliotheken automatisch eine Nachrichten-ID zuweisen, wenn dies von der sendenden Anwendung nicht übernommen wird.) In diesem Fall werden alle Kopien einer Nachricht von demselben Nachrichtenbroker verarbeitet. So kann Service Bus doppelte Nachrichten erkennen und verwerfen. Wenn die [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection]-Eigenschaft nicht auf **TRUE** festgelegt ist, sieht Service Bus die [MessageId][MessageId]-Eigenschaft nicht als Partitionsschlüssel an.
+**MessageId**: Wenn für die Warteschlange bzw. das Thema die [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection]-Eigenschaft auf **true** festgelegt ist und die Eigenschaften [BrokeredMessage.SessionId][BrokeredMessage.SessionId] oder [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] nicht festgelegt wurden, dient die [BrokeredMessage.MessageId][BrokeredMessage.MessageId]-Eigenschaft als Partitionsschlüssel. (Beachten Sie, dass die Microsoft .NET- und AMQP-Bibliotheken automatisch eine Nachrichten-ID zuweisen, wenn dies von der sendenden Anwendung nicht übernommen wird.) In diesem Fall werden alle Kopien einer Nachricht von demselben Nachrichtenbroker verarbeitet. So kann Service Bus doppelte Nachrichten erkennen und verwerfen. Wenn die [QueueDescription.RequiresDuplicateDetection][QueueDescription.RequiresDuplicateDetection]-Eigenschaft nicht auf **true** festgelegt ist, sieht Service Bus die [MessageId][MessageId]-Eigenschaft nicht als Partitionsschlüssel an.
 
 ### <a name="not-using-a-partition-key"></a>Keine Verwendung eines Partitionsschlüssels
 Wenn kein Partitionsschlüssel vorhanden ist, verteilt Service Bus Nachrichten gleichmäßig nacheinander auf alle Fragmente der partitionierten Warteschlange bzw. des Themas. Wenn das ausgewählte Fragment nicht verfügbar ist, weist Service Bus die Nachricht einem anderen Fragment zu. Auf diese Weise kann der Sendevorgang erfolgreich durchgeführt werden, obwohl ein Nachrichtenspeicher vorübergehend nicht verfügbar ist.
 
-Um Service Bus ausreichend Zeit zum Einreihen der Nachricht in ein anderes Fragment zu geben, muss der [MessagingFactorySettings.OperationTimeout][MessagingFactorySettings.OperationTimeout]-Wert des Clients, der die Nachricht sendet, größer als 15 Sekunden sein. Es wird empfohlen, die [OperationTimeout][OperationTimeout]-Eigenschaft auf den Standardwert von 60 Sekunden festzulegen.
+Um Service Bus ausreichend Zeit zum Einreihen der Nachricht in ein anderes Fragment der Warteschlange zu geben, muss der [MessagingFactorySettings.OperationTimeout][MessagingFactorySettings.OperationTimeout]-Wert des Clients, der die Nachricht sendet, größer als 15 Sekunden sein. Es wird empfohlen, die [OperationTimeout][OperationTimeout]-Eigenschaft auf den Standardwert von 60 Sekunden festzulegen.
 
 Beachten Sie, dass ein Partitionsschlüssel eine Nachricht an ein bestimmtes Fragment „anheftet“. Wenn der Nachrichtenspeicher, der dieses Fragment enthält, nicht verfügbar ist, wird von Service Bus ein Fehler zurückgegeben. Wenn kein Partitionsschlüssel vorhanden ist, kann Service Bus ein anderes Fragment auswählen, damit der Vorgang erfolgreich ist. Aus diesem Grund wird empfohlen, nur dann einen Partitionsschlüssel anzugeben, wenn dies erforderlich ist.
 
-## <a name="advanced-topics:-use-transactions-with-partitioned-entities"></a>Weiterführende Themen: Verwenden von Transaktionen mit partitionierten Entitäten
+## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Weiterführende Themen: Verwenden von Transaktionen mit partitionierten Entitäten
 Nachrichten, die als Teil einer Transaktion gesendet werden, müssen einen Partitionsschlüssel angeben. Dies kann eine der folgenden Eigenschaften sein: [BrokeredMessage.SessionId][BrokeredMessage.SessionId], [BrokeredMessage.PartitionKey][BrokeredMessage.PartitionKey] oder [BrokeredMessage.MessageId][BrokeredMessage.MessageId]. Für alle Nachrichten, die als Teil derselben Transaktion gesendet werden, muss derselbe Partitionsschlüssel angegeben werden. Wenn Sie versuchen, eine Nachricht innerhalb einer Transaktion ohne Partitionsschlüssel zu senden, wird von Service Bus die Ausnahme **InvalidOperationException** zurückgegeben. Wenn Sie versuchen, mehrere Nachrichten mit verschiedenen Partitionsschlüsseln innerhalb derselben Transaktion zu senden, gibt Service Bus die Ausnahme **InvalidOperationException** zurück. Beispiel:
 
 ```
@@ -101,7 +105,7 @@ committableTransaction.Commit();
 ```
 
 ## <a name="automatic-message-forwarding-with-partitioned-entities"></a>Automatische Nachrichtenweiterleitung mit partitionierten Entitäten
-Azure Service Bus unterstützt die automatische Nachrichtenweiterleitung von, an oder zwischen partitionierten Entitäten. Legen Sie zum Aktivieren der automatischen Nachrichtenweiterleitung die [QueueDescription.ForwardTo][QueueDescription.ForwardTo]-Eigenschaft für die Quellwarteschlange oder das Abonnement fest. Wenn für die Nachricht ein Partitionsschlüssel ([SessionId][SessionId], [PartitionKey][PartitionKey] oder [MessageId][MessageId]) angegeben wird, wird er für die Zielentität verwendet.
+Azure Service Bus unterstützt die automatische Nachrichtenweiterleitung von, an oder zwischen partitionierten Entitäten. Legen Sie zum Aktivieren der automatischen Nachrichtenweiterleitung die [QueueDescription.ForwardTo][QueueDescription.ForwardTo]-Eigenschaft für die Quellwarteschlange oder das Abonnement fest. Wenn die Nachricht einen Partitionsschlüssel ([SessionId][SessionId], [PartitionKey][PartitionKey] oder [MessageId][MessageId]) angibt, wird dieser für die Zielentität verwendet.
 
 ## <a name="considerations-and-guidelines"></a>Aspekte und Richtlinien
 * **Features für hohe Konsistenz**: Wenn eine Entität Features wie Sitzungen, Duplikaterkennung oder die explizite Steuerung eines Partitionierungsschlüssels verwendet, werden die Messagingvorgänge immer an bestimmte Fragmente geleitet. Wenn für ein Fragment hoher Datenverkehr auftritt oder der zugrunde liegende Speicher fehlerhaft ist, schlagen diese Vorgänge fehl, und die Verfügbarkeit wird reduziert. Insgesamt ist die Konsistenz trotzdem deutlich höher als bei nicht partitionierten Entitäten: Nur für eine Teilmenge des Datenverkehrs treten Probleme auf, und nicht für den gesamten Datenverkehr.
@@ -121,9 +125,9 @@ Derzeit gelten bei Service Bus die folgenden Einschränkungen für partitioniert
 * Service Bus erlaubt derzeit bis zu 100 partitionierte Warteschlangen oder Themen pro Namespace. Jede partitionierte Warteschlange bzw. jedes partitionierte Thema wird in das zulässige Kontingent von 10.000 Entitäten pro Namespace eingerechnet (gilt nicht für Premium-Tarif).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Partitionierung von Nachrichtenentitäten finden Sie unter [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus][AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]. 
+Weitere Informationen zur Partitionierung von Messagingentitäten finden Sie unter [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus][AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]. 
 
-[Service Bus-Architektur]: service-bus-architecture.md
+[Service Bus-Architektur]: service-bus-architecture.md
 [Azure-Portal]: https://portal.azure.com
 [QueueDescription.EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
 [TopicDescription.EnablePartitioning]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicdescription.enablepartitioning.aspx
@@ -142,6 +146,6 @@ Weitere Informationen zur Partitionierung von Nachrichtenentitäten finden Sie u
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

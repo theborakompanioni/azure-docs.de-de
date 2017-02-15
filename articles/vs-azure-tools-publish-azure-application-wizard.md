@@ -1,23 +1,27 @@
 ---
-title: Assistent zum Veröffentlichen von Azure-Anwendungen | Microsoft Docs
-description: Assistent zur Veröffentlichung einer Azure-Anwendung
+title: "Assistent zum Veröffentlichen von Azure-Anwendungen | Microsoft Docs"
+description: "Assistent zur Veröffentlichung einer Azure-Anwendung"
 services: visual-studio-online
 documentationcenter: na
 author: TomArcher
 manager: douge
-editor: ''
-
+editor: 
+ms.assetid: 7d8f1ac9-e439-47e0-a183-0642c4ea1920
 ms.service: multiple
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2016
+ms.date: 11/11/2016
 ms.author: tarcher
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 438b57ff9e6fd50b53e13be1360295ac9799e28e
+
 
 ---
-# Assistent zur Veröffentlichung einer Azure-Anwendung
-## Übersicht
+# <a name="publish-azure-application-wizard"></a>Assistent zur Veröffentlichung einer Azure-Anwendung
+## <a name="overview"></a>Übersicht
 Nachdem Sie eine Webanwendung in Visual Studio entwickelt haben, können Sie diese Anwendung mit dem **Assistenten zum Veröffentlichen einer Azure-Anwendung** leichter in einem Azure-Clouddienst veröffentlichen. Im ersten Abschnitt werden die Schritte erläutert, die Sie ausführen müssen, bevor Sie den Assistenten verwenden. In den verbleibenden Abschnitten werden die Features des Assistenten vorgestellt.
 
 > [!NOTE]
@@ -25,44 +29,44 @@ Nachdem Sie eine Webanwendung in Visual Studio entwickelt haben, können Sie die
 > 
 > 
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie Ihre Webanwendung in Azure veröffentlichen können, benötigen Sie ein Microsoft-Konto und ein Azure-Abonnement. Außerdem müssen Sie Ihre Webanwendung einem Azure-Clouddienst zuordnen. Wenn Sie diese Aufgaben bereits erledigt haben, können Sie mit dem nächsten Absatz fortfahren.
 
-1. Besorgen Sie sich ein Microsoft-Konto und ein Azure-Abonnement. [Hier](https://azure.microsoft.com/pricing/free-trial/) können Sie ein einen Monat lang kostenloses Azure-Abonnement bestellen.
-2. Erstellen Sie einen Clouddienst und ein Speicherkonto in Azure. Hierzu können Sie den Server-Explorer in Visual Studio oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885) verwenden.
-3. Aktivieren Sie Ihre Webanwendung für Azure. Damit Ihre Webanwendung aus Visual Studio in Azure veröffentlicht werden kann, müssen Sie sie einem Azure-Clouddienstprojekt in Visual Studio zuordnen. Wenn Sie das zugeordnete Clouddienstprojekt erstellen möchten, öffnen Sie das Kontextmenü für das Projekt für Ihre Webanwendung, und wählen Sie dann **Konvertieren -> In Azure-Clouddienstprojekt konvertieren** aus.
-4. Nachdem Sie das Clouddienstprojekt der Projektmappe hinzugefügt haben, öffnen Sie das Kontextmenü erneut, und wählen Sie dann **Veröffentlichen** aus. Weitere Informationen zum Aktivieren von Anwendungen für Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx).
+1. Besorgen Sie sich ein Microsoft-Konto und ein Azure-Abonnement.  [Hier](https://azure.microsoft.com/pricing/free-trial/)
+2. Erstellen Sie einen Clouddienst und ein Speicherkonto in Azure. Hierzu können Sie den Server-Explorer in Visual Studio oder das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885)verwenden.
+3. Aktivieren Sie Ihre Webanwendung für Azure. Damit Ihre Webanwendung aus Visual Studio in Azure veröffentlicht werden kann, müssen Sie sie einem Azure-Clouddienstprojekt in Visual Studio zuordnen. Wenn Sie das zugeordnete Clouddienstprojekt erstellen möchten, öffnen Sie das Kontextmenü für das Projekt für Ihre Webanwendung, und wählen Sie dann **Konvertieren -&gt; In Azure-Clouddienstprojekt konvertieren**aus.
+4. Nachdem Sie das Clouddienstprojekt der Projektmappe hinzugefügt haben, öffnen Sie das Kontextmenü erneut, und wählen Sie dann **Veröffentlichen**aus. Weitere Informationen zum Aktivieren von Anwendungen für Azure finden Sie unter [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx).
 
 > [!NOTE]
 > Sie müssen Visual Studio mit Administratorrechten aufrufen (Als Administrator ausführen).
 > 
 > 
 
-1. Wenn Sie zum Veröffentlichen der Anwendung bereit sind, öffnen Sie das Kontextmenü für das Azure-Clouddienstprojekt, und wählen Sie dann **Veröffentlichen** aus. In den folgenden Schritten wird der Assistent zum Veröffentlichen der Azure-Anwendung gezeigt.
+1. Wenn Sie zum Veröffentlichen der Anwendung bereit sind, öffnen Sie das Kontextmenü für das Azure-Clouddienstprojekt, und wählen Sie dann **Veröffentlichen**aus. In den folgenden Schritten wird der Assistent zum Veröffentlichen der Azure-Anwendung gezeigt.
 
-## Wählen des Abonnements
-### So wählen Sie ein Abonnement aus
-1. Bevor Sie den Assistenten zum ersten Mal verwenden, müssen Sie sich anmelden. Klicken Sie auf den Link **Anmelden**. Melden Sie sich bei Aufforderung am Azure-Portal an, und geben Sie Ihren Azure-Benutzernamen und Ihr Kennwort an.
+## <a name="choosing-your-subscription"></a>Wählen des Abonnements
+### <a name="to-choose-a-subscription"></a>So wählen Sie ein Abonnement aus
+1. Bevor Sie den Assistenten zum ersten Mal verwenden, müssen Sie sich anmelden. Klicken Sie auf den Link **Anmelden** . Melden Sie sich bei Aufforderung am Azure-Portal an, und geben Sie Ihren Azure-Benutzernamen und Ihr Kennwort an. 
    
     ![Dies ist einer der Bildschirme des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
    
     Die Liste der Abonnements wird mit den Abonnements aufgefüllt, die dem Konto zugeordnet sind. Möglicherweise werden auch Abonnements für alle zuvor importierten Abonnementdateien angezeigt.
 2. Wählen Sie in der Liste **Wählen Sie Ihr Abonnement** das Abonnement aus, das für diese Bereitstellung verwendet werden soll.
    
-   Wenn Sie **<Verwalten...>** auswählen, wird das Dialogfeld **Abonnements verwalten** aufgerufen, in dem Sie das gewünschte Abonnement und das Benutzerkonto auswählen können. Auf der Registerkarte **Konten** werden alle Ihre Konten angezeigt. Auf der Registerkarte **Abonnements** werden alle den Konten zugeordneten Abonnements aufgeführt. Sie können auch eine Region auswählen, aus der Sie Azure-Ressourcen verwenden möchten, sowie Zertifikate für Ihr Abonnement im Azure-Portal erstellen oder importieren. Wenn Sie Abonnements über eine Abonnementdatei importiert haben, werden die zugeordneten Zertifikate auf der Registerkarte **Zertifikate** angezeigt. Wenn Sie fertig sind, klicken Sie auf die Schaltfläche **Schließen**.
+   Wenn Sie **<Verwalten…>** auswählen, wird das Dialogfeld **Abonnements verwalten** angezeigt, in dem Sie das gewünschte Abonnement und das Benutzerkonto auswählen können. Auf der Registerkarte **Konten** werden alle Ihre Konten angezeigt. Auf der Registerkarte **Abonnements** werden alle den Konten zugeordneten Abonnements aufgeführt. Sie können auch eine Region auswählen, aus der Sie Azure-Ressourcen verwenden möchten, sowie Zertifikate für Ihr Abonnement im Azure-Portal erstellen oder importieren. Wenn Sie Abonnements über eine Abonnementdatei importiert haben, werden die zugeordneten Zertifikate auf der Registerkarte **Zertifikate** angezeigt. Wenn Sie fertig sind, klicken Sie auf die Schaltfläche **Schließen**.
    
-    ![Manage subscriptions](./media/vs-azure-tools-publish-azure-application-wizard/IC799160.png)
+    ![Verwalten von Abonnements](./media/vs-azure-tools-publish-azure-application-wizard/IC799160.png)
    
    > [!NOTE]
-   > A subscription file can contain more than one subscription.
+   > Die Abonnementdatei kann mehrere Abonnements enthalten.
    > 
    > 
-3. Klicken Sie zum Fortfahren auf die Schaltfläche **Weiter**.
+3. Klicken Sie zum Fortfahren auf die Schaltfläche **Weiter** . 
    
     Wenn keine Clouddienste in Ihrem Abonnement vorhanden sind, müssen Sie einen Clouddienst in Azure zum Hosten des Projekts erstellen. Das Dialogfeld **Clouddienst und Speicherkonto erstellen** wird angezeigt.
    
     Geben Sie einen neuen Namen für den Clouddienst an. Der Name muss in Azure eindeutig sein. Geben Sie dann eine Region oder eine Affinitätsgruppe für ein Datencenter ein, das in Ihrer Nähe oder der Nähe der meisten Ihrer Kunden liegt. Dieser Name wird auch für ein neues Speicherkonto verwendet, das Azure für Ihren Clouddienst erstellt.
-4. Ändern Sie die Einstellungen, die Sie für diese Bereitstellung verwenden möchten, und veröffentlichen Sie die Bereitstellung dann über die Schaltfläche **Veröffentlichen**. (Im nächsten Abschnitt werden weitere Details zu den verschiedenen Einstellungen erläutert.) Um die Einstellungen vor der Veröffentlichung zu überprüfen, klicken Sie auf **Weiter**.
+4. Ändern Sie die Einstellungen, die Sie für diese Bereitstellung verwenden möchten, und veröffentlichen Sie die Bereitstellung dann über die Schaltfläche **Veröffentlichen** . (Im nächsten Abschnitt werden weitere Details zu den verschiedenen Einstellungen erläutert.) Um die Einstellungen vor der Veröffentlichung zu überprüfen, klicken Sie auf **Weiter** .
    
    > [!NOTE]
    > Wenn Sie "Veröffentlichen" in diesem Schritt gewählt haben, können Sie den Status dieser Bereitstellung in Visual Studio überwachen.
@@ -73,20 +77,20 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
 
 ![Allgemeine Einstellungen](./media/vs-azure-tools-publish-azure-application-wizard/IC749013.png)
 
-## Konfigurieren der Einstellungen für die Veröffentlichung
-### So konfigurieren Sie die Einstellungen für die Veröffentlichung
+## <a name="configuring-your-publish-settings"></a>Konfigurieren der Einstellungen für die Veröffentlichung
+### <a name="to-configure-the-publish-settings"></a>So konfigurieren Sie die Einstellungen für die Veröffentlichung
 1. Führen Sie in der Liste **Clouddienst** einen der folgenden Schritte aus:
    
    1. Wählen Sie im Dropdownlistenfeld einen vorhandenen Clouddienst aus. Der Standort des Datencenters für den Dienst wird angezeigt. Sie müssen sich diesen Standort notieren und sicherstellen, dass sich der Speicherort des Speicherkontos im selben Datencenter befindet.
       
-      1. Wählen Sie **Neu erstellen**, um einen von Azure gehosteten Clouddienst zu erstellen. Geben Sie im Dialogfeld **Clouddienst erstellen** einen Namen für den Dienst an, und geben Sie dann eine Region oder eine Affinitätsgruppe an, um den Standort des Datencenters festzulegen, in dem der Clouddienst gehostet werden soll. Der Name muss in Azure eindeutig sein.
-2. Wählen Sie in der Liste **Umgebung** entweder **Produktion** oder **Staging**. Wählen Sie die Stagingumgebung, wenn Sie die Anwendung in einer Testumgebung bereitstellen möchten. Sie können Ihre Anwendung später in die Produktionsumgebung verlagern.
-3. Wählen Sie in der Liste **Buildkonfiguration** entweder **Debuggen** oder **Release**.
-4. Wählen Sie in der Liste **Dienstkonfiguration** entweder **Cloud** oder **Lokal**.
+      1. Wählen Sie **Neu erstellen** , um einen von Azure gehosteten Clouddienst zu erstellen. Geben Sie im Dialogfeld **Clouddienst erstellen** einen Namen für den Dienst an, und geben Sie dann eine Region oder eine Affinitätsgruppe an, um den Standort des Datencenters festzulegen, in dem der Clouddienst gehostet werden soll. Der Name muss in Azure eindeutig sein.
+2. Wählen Sie in der Liste **Umgebung** entweder **Produktion** oder **Staging** aus. Wählen Sie die Stagingumgebung, wenn Sie die Anwendung in einer Testumgebung bereitstellen möchten. Sie können Ihre Anwendung später in die Produktionsumgebung verlagern.
+3. Wählen Sie in der Liste **Buildkonfiguration** entweder **Debuggen** oder **Release** aus.
+4. Wählen Sie in der Liste **Dienstkonfiguration** entweder **Cloud** oder **Lokal** aus.
    
-    Aktivieren Sie das Kontrollkästchen **Remotedesktop für alle Rollen aktivieren**, wenn Sie eine Remoteverbindung mit dem Dienst herstellen möchten. Diese Option wird in erster Linie für die Problembehandlung verwendet. Ist dieses Kontrollkästchen aktiviert, wird das Dialogfeld **Remotedesktopkonfiguration** angezeigt. Wählen Sie den Link "Einstellungen", um die Konfiguration zu ändern.
+    Aktivieren Sie das Kontrollkästchen **Remotedesktop für alle Rollen aktivieren** , wenn Sie eine Remoteverbindung mit dem Dienst herstellen möchten. Diese Option wird in erster Linie für die Problembehandlung verwendet. Ist dieses Kontrollkästchen aktiviert, wird das Dialogfeld **Remotedesktopkonfiguration** angezeigt. Wählen Sie den Link "Einstellungen", um die Konfiguration zu ändern.
    
-    Wählen Sie **Web Deploy für alle Webrollen aktivieren**, um die Webbereitstellung für den Dienst zu aktivieren. Aktivieren Sie Remotedesktop, um dieses Feature zu verwenden. Weitere Informationen finden Sie unter [[Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx). Weitere Informationen zu Web Deploy finden Sie unter [[Veröffentlichen eines Clouddiensts mit Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx).
+    Wählen Sie **Web Deploy für alle Webrollen aktivieren** , um die Webbereitstellung für den Dienst zu aktivieren. Aktivieren Sie Remotedesktop, um dieses Feature zu verwenden. Weitere Informationen finden Sie unter [[Veröffentlichen eines Clouddiensts mit den Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx). Weitere Informationen zu Web Deploy finden Sie unter [[Veröffentlichen eines Clouddiensts mit den Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx).
 5. Wählen Sie die Registerkarte **Erweiterte Einstellungen** aus. Akzeptieren Sie im Feld **Bereitstellungsbezeichnung** den Standardnamen, oder geben Sie einen Namen Ihrer Wahl ein. Um der Bereitstellungsbezeichnung das Datum anzufügen, lassen Sie das Kontrollkästchen aktiviert.
    
     ![Dritter Bildschirm des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC749014.png)
@@ -96,7 +100,7 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
    > Das Azure-Speicherkonto speichert das Paket für die Bereitstellung der Anwendung. Nach der Bereitstellung der Anwendung wird das Paket aus dem Speicherkonto entfernt.
    > 
    > 
-7. Aktivieren Sie das Kontrollkästchen **Bereitstellungsaktualisierung**, wenn Sie nur aktualisierte Komponenten bereitstellen möchten. Diese Art der Bereitstellung kann schneller als eine vollständige Bereitstellung erfolgen. Wählen Sie den Link **Einstellungen**, um das Dialogfeld **Bereitstellungsaktualisierungs-Einstellungen** zu öffnen, das in der folgenden Abbildung gezeigt wird.
+7. Aktivieren Sie das Kontrollkästchen **Bereitstellungsaktualisierung** , wenn Sie nur aktualisierte Komponenten bereitstellen möchten. Diese Art der Bereitstellung kann schneller als eine vollständige Bereitstellung erfolgen. Wählen Sie den Link **Einstellungen** aus, um das Dialogfeld **Bereitstellungsaktualisierungs-Einstellungen** zu öffnen, das in der folgenden Abbildung gezeigt wird. 
    
     ![Bereitstellungseinstellungen](./media/vs-azure-tools-publish-azure-application-wizard/IC617060.png)
    
@@ -104,16 +108,16 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
    
     Sie sollten das Kontrollkästchen "Falls die Bereitstellung nicht aktualisiert werden kann, vollständige Bereitstellung durchführen" aktivieren, wenn bei einem Fehler der Bereitstellungsaktualisierung die vollständige Bereitstellung automatisch erfolgen soll. Bei einer vollständigen Bereitstellung wird die virtuelle IP-Adresse (VIP) für den Clouddienst zurückgesetzt. Weitere Informationen finden Sie unter [Vorgehensweise: Beibehalten einer konstanten virtuellen IP-Adresse für einen Clouddienst](https://msdn.microsoft.com/library/azure/jj614593.aspx).
 8. Zum Debuggen des Diensts aktivieren Sie das Kontrollkästchen **IntelliTrace aktivieren**. Wenn Sie eine **Debugkonfiguration** bereitstellen und Ihren Clouddienst in Azure debuggen möchten, aktivieren Sie das Kontrollkästchen **Remotedebugger für alle Rollen aktivieren**, um die Remotedebuggingdienste bereitzustellen.
-9. Aktivieren Sie das Kontrollkästchen **Profilerstellung aktivieren**, und wählen Sie dann den Link **Einstellungen**, um die Profilerstellungsoptionen anzuzeigen und für diese Anwendung ein Profil zu erstellen.
+9. Aktivieren Sie das Kontrollkästchen **Profilerstellung aktivieren**, und wählen Sie dann den Link **Einstellungen** aus, um die Profilerstellungsoptionen anzuzeigen und für diese Anwendung ein Profil zu erstellen. 
 
     >[AZURE.NOTE] Sie müssen Visual Studio Ultimate verwenden, um entweder IntelliTrace oder die Profilerstellung für die Ebeneninteraktion zu aktivieren. Beide können nicht gleichzeitig aktiviert werden.
 
     Weitere Informationen finden Sie unter [Debuggen eines veröffentlichten Clouddiensts mit IntelliTrace](https://msdn.microsoft.com/library/azure/ff683671.aspx) und [Visual Studio und Testen der Leistung eines Clouddiensts](https://msdn.microsoft.com/library/azure/hh369930.aspx).
 
-1. Wählen Sie **Weiter**, um die Zusammenfassungsseite für die Anwendung anzuzeigen.
+1. Wählen Sie **Weiter** , um die Zusammenfassungsseite für die Anwendung anzuzeigen.
 
-## Veröffentlichen der Anwendung
-1. Sie können auch anhand der Einstellungen, die Sie gewählt haben, ein Veröffentlichungsprofil erstellen. Sie können beispielsweise ein Profil für eine Testumgebung und ein weiteres für die Produktion verwenden. Um dieses Profil zu speichern, klicken Sie auf das Symbol **Speichern**. Der Assistent erstellt das Profil und speichert es im Visual Studio-Projekt. Um den Namen des Profils zu ändern, öffnen Sie die Liste **Zielprofil**, und wählen Sie anschließend **<Verwalten…>** aus.
+## <a name="publishing-your-application"></a>Veröffentlichen der Anwendung
+1. Sie können auch anhand der Einstellungen, die Sie gewählt haben, ein Veröffentlichungsprofil erstellen. Sie können beispielsweise ein Profil für eine Testumgebung und ein weiteres für die Produktion verwenden. Um dieses Profil zu speichern, klicken Sie auf das Symbol **Speichern** . Der Assistent erstellt das Profil und speichert es im Visual Studio-Projekt. Um den Namen des Profils zu ändern, öffnen Sie die Liste **Zielprofil**, und wählen Sie anschließend **<Verwalten…>** aus.
    
     ![Zusammenfassungsbildschirm des Veröffentlichungs-Assistenten](./media/vs-azure-tools-publish-azure-application-wizard/IC749015.png)
    
@@ -121,9 +125,9 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
    > Das Veröffentlichungsprofil wird im Projektmappen-Explorer in Visual Studio angezeigt. Die Profileinstellungen werden in eine Datei mit der Erweiterung ".azurePubxml" geschrieben. Einstellungen werden als Attribute der XML-Tags gespeichert.
    > 
    > 
-2. Wählen Sie **Veröffentlichen**, um Ihre Anwendung zu veröffentlichen. Sie können den Prozessstatus im Fenster **Ausgabe** in Visual Studio überwachen.
+2. Wählen Sie **Veröffentlichen** , um Ihre Anwendung zu veröffentlichen. Sie können den Prozessstatus im Fenster **Ausgabe** in Visual Studio überwachen.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 [Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)
 
 [Veröffentlichen eines Clouddiensts mit den Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)
@@ -132,4 +136,9 @@ Sie können die allgemeinen und erweiterten Einstellungen für eine Bereitstellu
 
 [Lokales Testen der Leistung eines Cloud-Diensts](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

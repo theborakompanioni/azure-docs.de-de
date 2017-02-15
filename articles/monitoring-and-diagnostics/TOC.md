@@ -30,7 +30,7 @@
 ### [Konfigurieren des Webhooks für eine Aktivitätsprotokollwarnung](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 ### [Archivieren des Aktivitätsprotokolls](../monitoring-and-diagnostics/monitoring-archive-activity-log.md)
 ### [Streamen des Aktivitätsprotokolls an Event Hubs](../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)
-### [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md)
+### [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md)
 ## Verwalten von Diagnoseprotokollen
 ### [Archivieren](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 ### [Stream für Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
@@ -49,6 +49,6 @@
 ## [Azure CLI 2.0 (Vorschau) – Beispiele](../monitoring-and-diagnostics/insights-cli-samples.md)
 ## [Liste der unterstützten Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD | Microsoft Docs
-description: Sichern Sie Ihre Linux-VM unter Azure durch Deaktivieren von Kennwortanmeldungen für SSH.
+title: "Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD | Microsoft Docs"
+description: "Sichern Sie Ihre Linux-VM unter Azure durch Deaktivieren von Kennwortanmeldungen für SSH."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: vlivech
 manager: timlt
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 46137640-a7d2-40e5-a1e9-9effef7eb190
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,12 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2016
 ms.author: v-livech
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 5e5eb2a4821918e88ea3f566c7f3203dab5a68b9
+
 
 ---
-# Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD
-Dieser Artikel konzentriert sich auf das Festlegen der Anmeldesicherheit Ihrer Linux-VM. Sobald der SSH-Port 22 geöffnet ist, beginnen Bots, Kennwörter zu erraten. In diesem Artikel lernen Sie, Kennwortanmeldungen über SSH zu deaktivieren. Indem wir die Möglichkeit, Kennwörter zu verwenden, vollständig unterbinden, schützen wir die Linux-VM vor dieser Form eines Brute-Force-Angriffs. Zusätzlicher Bonus: Wir konfigurieren Linux-SSHD so, dass nur Anmeldungen über öffentliche und private SSH-Schlüssel möglich sind – mit Abstand die sicherste Möglichkeit für die Anmeldung bei Linux. Aufgrund der Vielzahl möglicher Kombinationen erfordert das Erraten des privaten Schlüssels immensen Aufwand, und so werden Bots von vornherein entmutigt, auch nur zu versuchen, mit Brute-Force-Angriffen SSH-Schlüssel abzufragen.
+# <a name="disable-ssh-passwords-on-your-linux-vm-by-configuring-sshd"></a>Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD
+Dieser Artikel konzentriert sich auf das Festlegen der Anmeldesicherheit Ihrer Linux-VM.  Sobald der SSH-Port 22 geöffnet ist, beginnen Bots, Kennwörter zu erraten.  In diesem Artikel lernen Sie, Kennwortanmeldungen über SSH zu deaktivieren.  Indem wir die Möglichkeit, Kennwörter zu verwenden, vollständig unterbinden, schützen wir die Linux-VM vor dieser Form eines Brute-Force-Angriffs.  Zusätzlicher Bonus: Wir konfigurieren Linux-SSHD so, dass nur Anmeldungen über öffentliche und private SSH-Schlüssel möglich sind – mit Abstand die sicherste Möglichkeit für die Anmeldung bei Linux.  Aufgrund der Vielzahl möglicher Kombinationen erfordert das Erraten des privaten Schlüssels immensen Aufwand, und so werden Bots von vornherein entmutigt, auch nur zu versuchen, mit Brute-Force-Angriffen SSH-Schlüssel abzufragen.
 
-## Ziele
+## <a name="goals"></a>Ziele
 * Konfigurieren von SSHD, um Folgendes zu unterbinden:
   * Anmeldungen mit Kennwort
   * Anmeldungen von Root-Benutzern
@@ -30,15 +34,15 @@ Dieser Artikel konzentriert sich auf das Festlegen der Anmeldesicherheit Ihrer L
 * Neustarten von SSHD, während Sie weiterhin angemeldet sind
 * Testen der neuen SSHD-Konfiguration
 
-## Einführung
+## <a name="introduction"></a>Einführung
 [SSH definiert](https://en.wikipedia.org/wiki/Secure_Shell)
 
-SSHD ist der SSH-Server, der auf der Linux-VM ausgeführt wird. SSH ist ein Client, der von der Shell auf Ihrer MacBook- oder Linux-Arbeitsstation aus ausgeführt wird. SSH ist auch das Protokoll, das zum Sichern und Verschlüsseln der Kommunikation zwischen Ihrer Arbeitsstation und der Linux-VM verwendet wird.
+SSHD ist der SSH-Server, der auf der Linux-VM ausgeführt wird.  SSH ist ein Client, der von der Shell auf Ihrer MacBook- oder Linux-Arbeitsstation aus ausgeführt wird.  SSH ist auch das Protokoll, das zum Sichern und Verschlüsseln der Kommunikation zwischen Ihrer Arbeitsstation und der Linux-VM verwendet wird.
 
-Für diesen Artikel ist es sehr wichtig, dass Sie eine Anmeldung bei Ihrer Linux-VM für die gesamte Vorgehensweise offen halten. Aus diesem Grund werden wir zwei Terminals und eine SSH-Verbindung mit der Linux-VM für beide öffnen. Wir verwenden das erste Terminal, um die Konfigurationsdatei der SSHDs zu ändern und den SSHD-Dienst neu zu starten. Wir verwenden das zweite Terminal, um diese Änderungen zu testen, sobald der Dienst neu gestartet wurde. Da wir SSH-Kennwörter deaktivieren und uns strikt auf SSH-Schlüssel verlassen, wird die VM dauerhaft gesperrt, wenn Ihre SSH-Schlüssel nicht korrekt sind, und Sie die Verbindung mit der VM schließen, und niemand wird in der Lage sein, sich bei ihr anzumelden. Sie muss dann also gelöscht und neu erstellt werden.
+Für diesen Artikel ist es sehr wichtig, dass Sie eine Anmeldung bei Ihrer Linux-VM für die gesamte Vorgehensweise offen halten.  Aus diesem Grund werden wir zwei Terminals und eine SSH-Verbindung mit der Linux-VM für beide öffnen.  Wir verwenden das erste Terminal, um die Konfigurationsdatei der SSHDs zu ändern und den SSHD-Dienst neu zu starten.  Wir verwenden das zweite Terminal, um diese Änderungen zu testen, sobald der Dienst neu gestartet wurde.  Da wir SSH-Kennwörter deaktivieren und uns strikt auf SSH-Schlüssel verlassen, wird die VM dauerhaft gesperrt, wenn Ihre SSH-Schlüssel nicht korrekt sind, und Sie die Verbindung mit der VM schließen, und niemand wird in der Lage sein, sich bei ihr anzumelden. Sie muss dann also gelöscht und neu erstellt werden.
 
-## Voraussetzungen
-* [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](virtual-machines-linux-mac-create-ssh-keys.md)
+## <a name="prerequisites"></a>Voraussetzungen
+* [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * Azure-Konto
   * [Anmeldung für kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)
   * [Azure-Portal](http://portal.azure.com)
@@ -48,12 +52,16 @@ Für diesen Artikel ist es sehr wichtig, dass Sie eine Anmeldung bei Ihrer Linux
 * Sudo-Rechte auf der VM
 * Port 22 offen
 
-## Schnellbefehle
-*Erfahrene Linux-Administratoren, die nur die TLDR-Version wünschen, beginnen hier. Alle anderen Benutzer, die ausführliche Erläuterungen und eine exemplarische Vorgehensweise wünschen, überspringen diesen Abschnitt.*
+## <a name="quick-commands"></a>Schnellbefehle
+*Erfahrene Linux-Administratoren, die nur die TLDR-Version wünschen, beginnen hier.  Alle anderen Benutzer, die ausführliche Erläuterungen und eine exemplarische Vorgehensweise wünschen, überspringen diesen Abschnitt.*
 
+```bash
+sudo vim /etc/ssh/sshd_config
 ```
-username@macbook$ sudo vim /etc/ssh/sshd_config
 
+Bearbeiten Sie die config-Datei wie folgt:
+
+```sh
 # Change PasswordAuthentication to this:
 PasswordAuthentication no
 
@@ -65,70 +73,78 @@ PermitRootLogin no
 
 # Change ChallengeResponseAuthentication to this:
 ChallengeResponseAuthentication no
-
-# On the Debian Family
-username@macbook$ sudo service ssh restart
-
-# On the RedHat Family
-username@macbook$ sudo service sshd restart
 ```
 
-## Ausführliche exemplarische Vorgehensweise
-Melden Sie sich auf Terminal 1 (T1) bei der Linux-VM an. Melden Sie sich auf Terminal 2 (T2) bei der Linux-VM an.
+Starten Sie den SSHD-Dienst neu. In Debian-basierten Distributionen:
 
-Auf T2 werden wir die SSHD-Konfigurationsdatei bearbeiten.
-
-```
-username@macbook$ sudo vim /etc/ssh/sshd_config
+```bash
+sudo service ssh restart
 ```
 
-Von hier aus bearbeiten wir nur die Einstellungen zum Deaktivieren von Kennwörtern und Aktivieren von SSH-Schlüsselanmeldungen. Es gibt viele Einstellungen in der Datei, die Sie untersuchen sollten, und ändern, um Linux und SSH so sicher wie nötig zu machen.
+In Red Hat-basierten Distributionen:
 
-#### Deaktivieren von Anmeldungen mit Kennwort
+```bash
+sudo service sshd restart
 ```
-username@macbook$ sudo vim /etc/ssh/sshd_config
 
+## <a name="detailed-walk-through"></a>Ausführliche exemplarische Vorgehensweise
+Melden Sie sich auf Terminal 1 (T1) bei der Linux-VM an.  Melden Sie sich auf Terminal 2 (T2) bei der Linux-VM an.
+
+Auf T2 werden wir die SSHD-Konfigurationsdatei bearbeiten.  
+
+```bash
+sudo vim /etc/ssh/sshd_config
+```
+
+Von hier aus bearbeiten wir nur die Einstellungen zum Deaktivieren von Kennwörtern und Aktivieren von SSH-Schlüsselanmeldungen.  Es gibt viele Einstellungen in der Datei, die Sie untersuchen sollten, und ändern, um Linux und SSH so sicher wie nötig zu machen.
+
+#### <a name="disable-password-logins"></a>Deaktivieren von Anmeldungen mit Kennwort
+
+```sh
 # Change PasswordAuthentication to this:
 PasswordAuthentication no
 ```
 
-#### Aktivieren der Authentifizierung mit dem öffentlichen Schlüssel
-```
-username@macbook$ sudo vim /etc/ssh/sshd_config
+#### <a name="enable-public-key-authentication"></a>Aktivieren der Authentifizierung mit dem öffentlichen Schlüssel
 
+```sh
 # Change PubkeyAuthentication to this:
 PubkeyAuthentication yes
 ```
 
-#### Deaktivieren der Root-Anmeldung
-```
-username@macbook$ sudo vim /etc/ssh/sshd_config
+#### <a name="disable-root-login"></a>Deaktivieren der Root-Anmeldung
 
+```sh
 # Change PermitRootLogin to this:
 PermitRootLogin no
 ```
 
-#### Deaktivieren der Abfrage/Rückmeldung-Authentifizierung
-```
+#### <a name="disable-challenge-response-authentication"></a>Deaktivieren der Abfrage/Rückmeldung-Authentifizierung
+```sh
 # Change ChallengeResponseAuthentication to this:
 ChallengeResponseAuthentication no
 ```
 
-### Neustarten von SSHD
-Überprüfen Sie von der T1-Shell aus, ob Sie immer noch angemeldet sind. Dies ist wichtig, damit Sie nicht von Ihrer VM ausgesperrt werden, wenn Ihre SSH-Schlüssel nicht korrekt sind, da Kennwörter jetzt deaktiviert sind. Wenn eine Einstellung auf Ihrer Linux-VM falsch ist, können Sie „sshd\_config“ mit T1 korrigieren, da Sie immer noch angemeldet sind, und SSH die Verbindung aufrechterhält, während der SSHD-Dienst neu startet.
+### <a name="restart-sshd"></a>Neustarten von SSHD
+Überprüfen Sie von der T1-Shell aus, ob Sie immer noch angemeldet sind.  Dies ist wichtig, damit Sie nicht von Ihrer VM ausgesperrt werden, wenn Ihre SSH-Schlüssel nicht korrekt sind, da Kennwörter jetzt deaktiviert sind.  Wenn eine Einstellung auf Ihrer Linux-VM falsch ist, können Sie „sshd_config“ mit T1 korrigieren, da Sie immer noch angemeldet sind, und SSH die Verbindung aufrechterhält, während der SSHD-Dienst neu startet.
 
 Von T2 ausführen:
 
-##### Auf der Debian-Familie
-```
-username@macbook$ sudo service ssh restart
-```
-
-##### Auf der RedHat-Familie
-```
-username@macbook$ sudo service sshd restart
+##### <a name="on-the-debian-family"></a>Auf der Debian-Familie
+```bash
+sudo service ssh restart
 ```
 
-Kennwörter sind jetzt auf Ihrer VM deaktiviert, sodass sie vor Brute-Force-Kennwortanmeldeversuchen geschützt ist. Da nur SSH-Schlüssel zulässig sind, können Sie sich schneller und viel sicherer anmelden.
+##### <a name="on-the-redhat-family"></a>Auf der RedHat-Familie
+```bash
+sudo service sshd restart
+```
 
-<!---HONumber=AcomDC_0831_2016-->
+Kennwörter sind jetzt auf Ihrer VM deaktiviert, sodass sie vor Brute-Force-Kennwortanmeldeversuchen geschützt ist.  Da nur SSH-Schlüssel zulässig sind, können Sie sich schneller und viel sicherer anmelden.
+
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

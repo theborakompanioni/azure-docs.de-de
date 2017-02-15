@@ -1,13 +1,13 @@
 ---
-title: Beispielkonfiguration für Linux-VM-Erweiterungen | Microsoft Docs
-description: Beispielkonfiguration für das Erstellen von Vorlagen mit Erweiterungen für Linux-VMs
+title: "Beispielkonfiguration für Linux-VM-Erweiterungen | Microsoft Docs"
+description: "Beispielkonfiguration für das Erstellen von Vorlagen mit Erweiterungen für Linux-VMs"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 4f50e6b2-fce0-41ef-823d-df433957601a
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,12 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 7f08d711a7d45c48fab5aab272b0446cff61e163
+
 
 ---
 # <a name="linux-vm-extension-configuration-samples"></a>Konfigurationsbeispiele für Linux-VM-Erweiterungen
 > [!div class="op_single_selector"]
-> * [PowerShell – Vorlage](virtual-machines-windows-extensions-configuration-samples.md)
-> * [Befehlszeilenschnittstelle – Vorlage](virtual-machines-linux-extensions-configuration-samples.md)
+> * [PowerShell – Vorlage](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> * [Befehlszeilenschnittstelle – Vorlage](virtual-machines-linux-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
@@ -28,13 +32,13 @@ ms.author: kundanap
 
 Dieser Artikel enthält Beispielkonfigurationen der Azure-VM-Erweiterungen für virtuelle Linux-Computer.
 
-Weitere Informationen zu diesen Erweiterungen finden Sie unter [Azure-VM-Erweiterungen](virtual-machines-windows-extensions-features.md)
+Weitere Informationen zu diesen Erweiterungen finden Sie unter [Azure-VM-Erweiterungen](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-Weitere Informationen zum Erstellen von Erweiterungsvorlagen finden Sie unter [Erstellen von Erweiterungsvorlagen](virtual-machines-windows-extensions-authoring-templates.md)
+Weitere Informationen zum Erstellen von Erweiterungsvorlagen finden Sie unter [Erstellen von Erweiterungsvorlagen](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 Dieser Artikel führt die erwarteten Konfigurationswerte für einige der Linux-Erweiterungen auf.
 
-## <a name="sample-template-snippet-for-vm-extensions."></a>Ausschnitt einer Beispielvorlage für VM-Erweiterungen.
+## <a name="sample-template-snippet-for-vm-extensions"></a>Ausschnitt einer Beispielvorlage für VM-Erweiterungen.
 Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweiterungen gezeigt:
 
       {
@@ -55,7 +59,7 @@ Im Folgenden ist ein Ausschnitt einer Vorlage für die Bereitstellung von Erweit
       }
       }
 
-## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets"></a>Ausschnitt einer Beispielvorlage für Erweiterungen für virtuelle Computer mit VM-Skalierungsgruppen.
           {
            "type":"Microsoft.Compute/virtualMachineScaleSets",
           ....
@@ -90,7 +94,7 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erwe
             }
           }
 
-### <a name="customscript-extension-for-linux."></a>CustomScript-Erweiterung für Linux.
+### <a name="customscript-extension-for-linux"></a>CustomScript-Erweiterung für Linux.
     {
         "publisher": " Microsoft.Azure.Extensions",
         "type": "CustomScript",
@@ -127,7 +131,7 @@ Im weiteren Verlauf des Artikels sind Beispielkonfigurationen für Linux-VM-Erwe
           }
         }
 
-### <a name="vm-access-extension-(password-reset)"></a>VM-Zugriffserweiterung (Zurücksetzen des Kennworts)
+### <a name="vm-access-extension-password-reset"></a>VM-Zugriffserweiterung (Zurücksetzen des Kennworts)
 Das aktualisierte Schema finden Sie in der [VMAccessForLinux-Dokumentation](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)
 
         {
@@ -217,6 +221,9 @@ Dies ist eine vollständige VM-Vorlage zum Erstellen eines virtuellen Linux-Comp
 
 [Benutzerdefinierte Skriptserweiterung auf einem virtuellen Linux-Computer](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

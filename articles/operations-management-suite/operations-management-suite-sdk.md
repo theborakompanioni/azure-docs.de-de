@@ -1,22 +1,26 @@
 ---
-title: Operations Management Suite (OMS) SDK | Microsoft Docs
-description: Dieser Artikel führt die Dokumentation und weitere verfügbare Ressourcen für den Zugriff auf OMS-Dienste außerhalb der OMS- und Azure-Portale auf.  Hierzu gehört auch die REST-API für den Zugriff über verschiedene Programmierschnittstellen und Skriptmodule wie z.B. PowerShell.
+title: Operations Management Suite (OMS) SDK | Microsoft Azure
+description: "Dieser Artikel führt die Dokumentation und weitere verfügbare Ressourcen für den Zugriff auf OMS-Dienste außerhalb der OMS- und Azure-Portale auf.  Hierzu gehört auch die REST-API für den Zugriff über verschiedene Programmierschnittstellen und Skriptmodule wie z.B. PowerShell."
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: aac9c627-4060-4aa9-a2ea-85248e25d5ce
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2016
+ms.date: 12/08/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 5d1ace8c6dab1655b0c2b512376b69444434f1ad
+ms.openlocfilehash: 414699ef94a6679f1b3bc777669674247a3449e9
+
 
 ---
-# <a name="operations-management-suite-(oms)-sdk"></a>Operations Management Suite (OMS) SDK
+# <a name="operations-management-suite-oms-sdk"></a>Operations Management Suite (OMS) SDK
 Die [Operations Management Suite (OMS)](operations-management-suite-overview.md) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.  Dieser Artikel führt die Dokumentation und weitere verfügbare Ressourcen für den Zugriff auf OMS-Dienste außerhalb der OMS- und Azure-Portale auf.  Hierzu gehört auch die REST-API für den Zugriff über verschiedene Programmierschnittstellen und Skriptmodule wie z.B. PowerShell. 
 
 ## <a name="automation"></a>Automation
@@ -29,7 +33,7 @@ Die [Operations Management Suite (OMS)](operations-management-suite-overview.md)
 * [Dokumentation zu Azure Backup](http://azure.microsoft.com/documentation/services/backup)
 * [PowerShell-Cmdlets für Backup](https://msdn.microsoft.com/library/mt619253.aspx)
 * [Backup-REST-API](https://msdn.microsoft.com/library/azure/mt772375.aspx)
-* [Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell](../backup/backup-client-automation.md)
+* [Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell](../backup/backup-client-automation.md)
 
 ## <a name="log-analytics"></a>Log Analytics
 * [Dokumentation zu Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics)
@@ -38,6 +42,9 @@ Die [Operations Management Suite (OMS)](operations-management-suite-overview.md)
 * [Warnungs-API](../log-analytics/log-analytics-api-alerts.md)
 * [PowerShell-Cmdlets für Log Analytics](https://msdn.microsoft.com/library/mt188224.aspx)
 * [Log Analytics-.NET-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Management.OperationalInsights/0.16.0-preview)
+
+## <a name="service-map"></a>Dienstzuordnung
+* [Dokumentation zu Service Map](operations-management-suite-service-map.md)
 
 ## <a name="site-recovery"></a>Site Recovery
 * [PowerShell-Cmdlets für Site Recovery](https://msdn.microsoft.com/library/mt637930.aspx)
@@ -49,6 +56,9 @@ Die [Operations Management Suite (OMS)](operations-management-suite-overview.md)
 * Erfahren Sie mehr zu den verschiedenen Optionen für die [Integration mit OMS-Diensten](operations-management-suite-integration.md).
 * Erstellen einer benutzerdefinierten Lösung in der OMS (in Kürze verfügbar).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

@@ -28,6 +28,7 @@
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
 ### [Entwicklungs- und Testumgebungen](solution-dev-test-environments.md)
+### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Verwalten
 ### [PowerShell](powershell-azure-resource-manager.md)
 ### [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
@@ -41,7 +42,7 @@
 ### [Erstellen des Dienstprinzipals mit PowerShell](resource-group-authenticate-service-principal.md)
 ### [Erstellen des Dienstprinzipals über die Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
 ### [Erstellen des Dienstprinzipals über das Portal](resource-group-create-service-principal-portal.md)
-### [App-Zugriff auf Abonnements](resource-manager-api-authentication.md)
+### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Festlegen von Verwaltungsrichtlinien](resource-manager-policy.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
 ### [Sicherheitshinweise](best-practices-resource-manager-security.md)
@@ -69,6 +70,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,22 +1,26 @@
 ---
-title: Reliable Services – Benachrichtigungen | Microsoft Docs
+title: "Reliable Services – Benachrichtigungen | Microsoft Docs"
 description: Dokumentation zu Reliable Services-Benachrichtigungen mit Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
 manager: timlt
 editor: masnider,vturecek
-
+ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/24/2016
+ms.date: 10/18/2016
 ms.author: mcoskun
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 18c71608f7429f7c52720282ca66f44c88de2d84
+
 
 ---
-# Reliable Services – Benachrichtigungen
+# <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
 Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Arten von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
 
 Häufige Gründe für die Verwendung von Benachrichtigungen:
@@ -26,7 +30,7 @@ Häufige Gründe für die Verwendung von Benachrichtigungen:
 
 Benachrichtigungen werden während der Anwendung von Vorgängen ausgelöst. Aus diesem Grund sollten Benachrichtigungen so schnell wie möglich behandelt werden und synchrone Ereignisse keine aufwändigen Vorgänge enthalten.
 
-## Reliable State Manager-Benachrichtigungen
+## <a name="reliable-state-manager-notifications"></a>Reliable State Manager-Benachrichtigungen
 Der Reliable State Manager liefert Benachrichtigungen für folgende Ereignisse:
 
 * Transaktion
@@ -38,13 +42,14 @@ Der Reliable State Manager liefert Benachrichtigungen für folgende Ereignisse:
 
 Der Reliable State Manager verfolgt die aktuellen In-Flight-Transaktionen. Die einzige Änderung des Transaktionsstatus, bei der eine Benachrichtigung ausgelöst wird, ist der Commit einer Transaktion.
 
-Der Reliable State Manager verwaltet eine Sammlung von Reliable States, z.B. Reliable Dictionary und Reliable Queue. Der Reliable State Manager löst Benachrichtigungen aus, wenn sich diese Auflistung wie folgt verändert: Ein Reliable State wird hinzugefügt oder entfernt, oder die gesamte Sammlung wird neu erstellt. Die Sammlung des Reliable State Manager wird in drei Fällen neu erstellt:
+Der Reliable State Manager verwaltet eine Sammlung von Reliable States, z.B. Reliable Dictionary und Reliable Queue. Der Reliable State Manager löst Benachrichtigungen aus, wenn sich diese Auflistung wie folgt verändert: Ein Reliable State wird hinzugefügt oder entfernt, oder die gesamte Sammlung wird neu erstellt.
+Die Sammlung des Reliable State Manager wird in drei Fällen neu erstellt:
 
 * Zustandswiederherstellung: Wenn ein Replikat gestartet wird, stellt es den vorherigen Zustand vom Datenträger wieder her. Nach Abschluss der Wiederherstellung wird **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses verwendet, das den Satz mit den wiederhergestellten Reliable States enthält.
 * Vollständige Kopie: Bevor ein Replikat dem Konfigurationssatz hinzugefügt werden kann, muss es erstellt werden. In einigen Fällen muss eine vollständige Kopie des Reliable State Manager-Zustands vom primären Replikat auf das inaktive sekundäre Replikat angewendet werden. Reliable State Manager auf dem sekundären Replikat nutzt **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die über das primäre Replikat beschafft wurden.
-* Wiederherstellung: Bei einer Notfallwiederherstellung kann der Replikatzustand mit **RestoreAsync** aus einer Sicherung wiederhergestellt werden. In solchen Fällen nutzt Reliable State Manager auf dem primären Replikat **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die aus der Sicherung wiederhergestellt wurden.
+* Wiederherstellung: Bei einer Notfallwiederherstellung kann der Replikatzustand mit **RestoreAsync**aus einer Sicherung wiederhergestellt werden. In solchen Fällen nutzt Reliable State Manager auf dem primären Replikat **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die aus der Sicherung wiederhergestellt wurden.
 
-Um sich für Transaktionsbenachrichtigungen bzw. State Manager-Benachrichtigungen zu registrieren, müssen Sie sich bei den Ereignissen **TransactionChanged** oder **StateManagerChanged** im Reliable State Manager registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern im Konstruktor Ihres zustandsbehafteten Diensts durchgeführt. Wenn Sie sich auf dem Konstruktor registrieren, entgeht Ihnen keine Benachrichtigung, die durch eine Änderung während der Lebensdauer von **IReliableStateManager** verursacht wird.
+Um sich für Transaktionsbenachrichtigungen und/oder Zustands-Manager-Benachrichtigungen zu registrieren, müssen Sie sich bei den Ereignissen **TransactionChanged** oder **StateManagerChanged** im Reliable State Manager registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern im Konstruktor Ihres zustandsbehafteten Diensts durchgeführt. Wenn Sie sich auf dem Konstruktor registrieren, entgeht Ihnen keine Benachrichtigung, die durch eine Änderung während der Lebensdauer von **IReliableStateManager** verursacht wird.
 
 ```C#
 public MyService(StatefulServiceContext context)
@@ -58,11 +63,11 @@ public MyService(StatefulServiceContext context)
 Der **TransactionChanged**-Ereignishandler verwendet **NotifyTransactionChangedEventArgs**, um Details zum Ereignis bereitzustellen. Darin ist die Action-Eigenschaft enthalten (z.B. **NotifyTransactionChangedAction.Commit**), mit der die Art der Änderung angegeben wird. Außerdem ist die Transaction-Eigenschaft enthalten, mit der ein Verweis auf die geänderte Transaktion bereitgestellt wird.
 
 > [!NOTE]
-> **TransactionChanged**-Ereignisse werden derzeit nur ausgelöst, wenn für die Transaktion ein Commit durchgeführt wird. Die Aktion ist dann mit **NotifyTransactionChangedAction.Commit** identisch. In Zukunft können Ereignisse aber auch für andere Arten von Änderungen des Transaktionsstatus ausgelöst werden. Wir empfehlen Ihnen, die Aktion zu überprüfen und das Ereignis nur zu verarbeiten, wenn es sich um das erwartete Ereignis handelt.
+> **TransactionChanged** -Ereignisse werden derzeit nur ausgelöst, wenn für die Transaktion ein Commit durchgeführt wird. Die Aktion ist dann mit **NotifyTransactionChangedAction.Commit**identisch. In Zukunft können Ereignisse aber auch für andere Arten von Änderungen des Transaktionsstatus ausgelöst werden. Wir empfehlen Ihnen, die Aktion zu überprüfen und das Ereignis nur zu verarbeiten, wenn es sich um das erwartete Ereignis handelt.
 > 
 > 
 
-Es folgt ein Beispiel für den **TransactionChanged**-Ereignishandler.
+Es folgt ein Beispiel für den **TransactionChanged** -Ereignishandler.
 
 ```C#
 private void OnTransactionChangedHandler(object sender, NotifyTransactionChangedEventArgs e)
@@ -77,12 +82,14 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 }
 ```
 
-Der **StateManagerChanged**-Ereignishandler verwendet **NotifyStateManagerChangedEventArgs**, um Details zum Ereignis bereitzustellen. **NotifyStateManagerChangedEventArgs** verfügt über zwei Unterklassen: **NotifyStateManagerRebuildEventArgs** und **NotifyStateManagerSingleEntityChangedEventArgs**. Sie verwenden die Action-Eigenschaft in **NotifyStateManagerChangedEventArgs**, um **NotifyStateManagerChangedEventArgs** in die richtige Unterklasse umzuwandeln:
+Der **StateManagerChanged**-Ereignishandler verwendet **NotifyStateManagerChangedEventArgs**, um Details zum Ereignis bereitzustellen.
+**NotifyStateManagerChangedEventArgs** verfügt über zwei Unterklassen: **NotifyStateManagerRebuildEventArgs** und **NotifyStateManagerSingleEntityChangedEventArgs**.
+Sie verwenden die Action-Eigenschaft in **NotifyStateManagerChangedEventArgs**, um **NotifyStateManagerChangedEventArgs** in die richtige Unterklasse umzuwandeln:
 
 * **NotifyStateManagerChangedAction.Rebuild**: **NotifyStateManagerRebuildEventArgs**
 * **NotifyStateManagerChangedAction.Add** und **NotifyStateManagerChangedAction.Remove**: **NotifyStateManagerSingleEntityChangedEventArgs**
 
-Es folgt ein Beispiel für einen **StateManagerChanged**-Benachrichtigungshandler.
+Es folgt ein Beispiel für einen **StateManagerChanged** -Benachrichtigungshandler.
 
 ```C#
 public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChangedEventArgs e)
@@ -98,16 +105,17 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 }
 ```
 
-## Reliable Dictionary-Benachrichtigungen
+## <a name="reliable-dictionary-notifications"></a>Reliable Dictionary-Benachrichtigungen
 Reliable Dictionary liefert Benachrichtigungen für folgende Ereignisse:
 
 * Rebuild (Neu erstellen): Wird aufgerufen, wenn **ReliableDictionary** seinen Zustand aus einem wiederhergestellten oder kopierten lokalen Status oder einer Sicherung wiederhergestellt hat.
 * Clear (Löschen): Wird aufgerufen, wenn der Status von **ReliableDictionary** über die **ClearAsync**-Methode gelöscht wurde.
-* Add (Hinzufügen): Wird aufgerufen, wenn **ReliableDictionary** ein Element hinzugefügt wurde.
+* Add (Hinzufügen): Wird aufgerufen, wenn **ReliableDictionary**ein Element hinzugefügt wurde.
 * Update (Aktualisieren): Wird aufgerufen, wenn ein Element in **IReliableDictionary** aktualisiert wurde.
 * Remove (Entfernen): Wird aufgerufen, wenn ein Element aus **IReliableDictionary** gelöscht wurde.
 
-Um Reliable Dictionary-Benachrichtigungen zu erhalten, müssen Sie sich mit dem **DictionaryChanged**-Ereignishandler bei **IReliableDictionary** registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern in der **ReliableStateManager.StateManagerChanged**-Hinzufügungsbenachrichtigung durchgeführt. Durch die Registrierung beim Hinzufügen von **IReliableDictionary** zu **IReliableStateManager** wird sichergestellt, dass Ihnen keine Benachrichtigungen entgehen.
+Um Reliable Dictionary-Benachrichtigungen zu erhalten, müssen Sie sich mit dem **DictionaryChanged**-Ereignishandler bei **IReliableDictionary** registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern in der **ReliableStateManager.StateManagerChanged** -Hinzufügungsbenachrichtigung durchgeführt.
+Durch die Registrierung beim Hinzufügen von **IReliableDictionary** zu **IReliableStateManager** wird sichergestellt, dass Ihnen keine Benachrichtigungen entgehen.
 
 ```C#
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
@@ -154,7 +162,8 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 > 
 > 
 
-Der **DictionaryChanged**-Ereignishandler verwendet **NotifyDictionaryChangedEventArgs**, um Details zum Ereignis bereitzustellen. **NotifyDictionaryChangedEventArgs** verfügt über fünf Unterklassen. Verwenden Sie die Action-Eigenschaft in **NotifyDictionaryChangedEventArgs**, um **NotifyDictionaryChangedEventArgs** in die richtige Unterklasse umzuwandeln:
+Der **DictionaryChanged**-Ereignishandler verwendet **NotifyDictionaryChangedEventArgs**, um Details zum Ereignis bereitzustellen.
+**NotifyDictionaryChangedEventArgs** verfügt über fünf Unterklassen. Verwenden Sie die Action-Eigenschaft in **NotifyDictionaryChangedEventArgs**, um **NotifyDictionaryChangedEventArgs** in die richtige Unterklasse umzuwandeln:
 
 * **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
@@ -193,10 +202,10 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-## Empfehlungen
-* Führen Sie Benachrichtigungsereignisse *so schnell wie möglich* durch.
+## <a name="recommendations"></a>Empfehlungen
+* *so schnell wie möglich* durch.
 * Führen Sie *keine* aufwändigen Vorgänge (z.B. E/A-Vorgänge) im Rahmen von synchronen Ereignissen aus.
-* Überprüfen Sie *vor* der Bearbeitung des Ereignisses den Aktionstyp. Es kann sein, dass in Zukunft neue Aktionstypen hinzugefügt werden.
+* *so schnell wie möglich* der Bearbeitung des Ereignisses den Aktionstyp. Es kann sein, dass in Zukunft neue Aktionstypen hinzugefügt werden.
 
 Hier folgen einige Punkte, die es zu beachten gilt:
 
@@ -206,9 +215,15 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * Für Transaktionen, die mehrere Vorgänge enthalten, werden die Vorgänge in der Reihenfolge angewendet, in der sie auf dem primären Replikat vom Benutzer empfangen wurden.
 * Im Rahmen der Verarbeitung von falschen Fortschritten können einige Vorgänge rückgängig gemacht werden. Für solche Vorgänge zum Rückgängigmachen, die den Zustand des Replikats auf einen stabilen Punkt zurücksetzen, werden Benachrichtigungen ausgelöst. Ein wichtiger Unterschied bei Benachrichtigungen zu Vorgängen zum Rückgängigmachen ist, dass Ereignisse mit doppelten Schlüsseln aggregiert werden. Wird beispielsweise die Transaktion T1 rückgängig gemacht, wird eine einzelne Löschbenachrichtigung „Delete(X)“ angezeigt.
 
-## Nächste Schritte
-* [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+## <a name="next-steps"></a>Nächste Schritte
+* [Zuverlässige Auflistungen](service-fabric-work-with-reliable-collections.md)
+* [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
 * [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

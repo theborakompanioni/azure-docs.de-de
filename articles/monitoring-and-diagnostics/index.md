@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie mithilfe von Überwachungs- und Diagnosediensten die Leistung überwachen, die Sicherheit gewährleisten und Trends erkennen. API-Referenzen, bewährte Methoden und mehr."
 translationtype: Human Translation
-ms.sourcegitcommit: edf493f70b08bdf5545127a90d7a13ea49b668c1
-ms.openlocfilehash: 0ee9faf763dbedd4046547764c5ad5ad9e3d2d07
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: e59d88dbd538aad3e21a31fd721361cd9ffd4919
 
 ---
 
@@ -146,13 +146,7 @@ Hier erfahren Sie, wie Sie mithilfe der Überwachungs- und Diagnosedienste von A
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/monitoring-and-diagnostics.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Überwachung und Diagnose </div>
-    </a>
-</div>
+
 
 
 

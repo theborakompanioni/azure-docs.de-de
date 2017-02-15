@@ -10,22 +10,25 @@ tags: azure-resource-manager
 ms.assetid: 8c2a7ed2-ae5c-4e49-81f6-77cf9f2b2ac9
 ms.service: expressroute
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: 4e1d4851356950075a4803bed76e309d0b593809
+ms.sourcegitcommit: ec5e547b88bedd50f451997616c7d72b0b1b4bd4
+ms.openlocfilehash: 879207512b7c61d48dcd25342ab88121258ba853
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Azure-Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> * [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
-> * [PowerShell – klassisch](expressroute-howto-routing-classic.md)
+> * [Resource Manager – Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Resource Manager – PowerShell](expressroute-howto-routing-arm.md)
+> * [Klassisch – PowerShell](expressroute-howto-routing-classic.md)
+> * [Video – Privates Peering](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video – Öffentliches Peering](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video – Microsoft-Peering](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > 
 > 
 
@@ -190,6 +193,6 @@ Sie können Ihre Peeringkonfiguration entfernen, indem Sie das Löschsymbol wie 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

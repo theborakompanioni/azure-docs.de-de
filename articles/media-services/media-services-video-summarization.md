@@ -1,12 +1,12 @@
 ---
 title: Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung | Microsoft Docs
-description: Die Videozusammenfassung kann Ihnen dabei helfen, Zusammenfassungen von langen Videos durch das automatische Auswählen von interessanten Ausschnitten aus dem Quellvideo zu erstellen. Dies ist hilfreich, wenn Sie einen schnellen Überblick darüber bieten wollen, was man in einem langen Video zu sehen bekommt.
+description: "Die Videozusammenfassung kann Ihnen dabei helfen, Zusammenfassungen von langen Videos durch das automatische Auswählen von interessanten Ausschnitten aus dem Quellvideo zu erstellen. Dies ist hilfreich, wenn Sie einen schnellen Überblick darüber bieten wollen, was man in einem langen Video zu sehen bekommt."
 services: media-services
-documentationcenter: ''
+documentationcenter: 
 author: juliako
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: milanga;juliako;
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0c6f4a020430f464a97b0716dea2a40719c0b064
+
 
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung
@@ -33,7 +37,7 @@ Hier sind einige Beispiele für die Fähigkeiten des Azure Media Video Thumbnail
 ### <a name="video-thumbnail-result"></a>Ergebnis der Video-Miniaturansicht
 [Ergebnis der Video-Miniaturansicht](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-(preset)"></a>Aufgabenkonfiguration (Voreinstellung)
+## <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Beim Erstellen eines Video-Miniaturansichten-Tasks mit **Azure Media Video Thumbnails**müssen Sie eine Voreinstellungskonfiguration angeben. Das obige Miniaturansicht-Beispiel wurde mit der folgenden JSON-Basiskonfiguration erstellt:
 
     {"version":"1.0"}
@@ -70,7 +74,7 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 1. Sie ein Asset erstellen und eine Mediendatei in das Asset hochladen.
 2. Erstellt einen Auftrag mit einer Video-Miniaturansicht anhand einer Konfigurationsdatei, die die folgende JSON-Voreinstellung enthält. 
    
-        {               
+        {                
             "version": "1.0",
             "options": {
                 "outputAudio": "true",
@@ -80,7 +84,7 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
         }
 3. Sie die Ausgabedateien herunterladen. 
 
-### <a name=".net-code"></a>.NET code
+### <a name="net-code"></a>.NET code
     using System;
     using System.Configuration;
     using System.IO;
@@ -259,6 +263,9 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

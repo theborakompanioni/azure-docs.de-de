@@ -1,6 +1,6 @@
 ---
-title: "Bereitstellen Ihrer ersten PHP-Web-App für Azure in fünf Minuten | Microsoft Docs"
-description: "Erfahren Sie, wie einfach die Ausführung von Web-Apps in App Service ist, indem Sie eine Beispiel-App bereitstellen. Sie können in kürzester Zeit mit der Entwicklung beginnen und sofort Ergebnisse erzielen."
+title: "Bereitstellen Ihrer ersten PHP-Web-App für Azure in fünf Minuten (CLI 2.0 Preview) | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie einfach die Ausführung von Web-Apps in App Service ist, indem Sie eine PHP-Beispiel-App bereitstellen. Sie können in kürzester Zeit mit der Entwicklung beginnen und sofort Ergebnisse erzielen."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -12,15 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/13/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 2c31f12bdef63405245f43a48537a02b040248a1
+ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
+ms.openlocfilehash: 2e793ff8f2ced11365a340dab62ed019e6c37e4d
 
 
 ---
-# <a name="deploy-your-first-php-web-app-to-azure-in-five-minutes"></a>Bereitstellen Ihrer ersten PHP-Web-App für Azure in fünf Minuten
+# <a name="deploy-your-first-php-web-app-to-azure-in-five-minutes-cli-20-preview"></a>Bereitstellen Ihrer ersten PHP-Web-App für Azure in fünf Minuten (CLI 2.0 Preview)
+
+> [!div class="op_single_selector"]
+> * [Erste HTML-Website](app-service-web-get-started-html.md)
+> * [Erste .NET-App](app-service-web-get-started-dotnet.md)
+> * [Erste PHP-App](app-service-web-get-started-php.md)
+> * [Erste Node.js-App](app-service-web-get-started-nodejs.md)
+> * [Erste Python-App](app-service-web-get-started-python.md)
+> * [Erste Java-App](app-service-web-get-started-java.md)
+> 
+> 
+
 In diesem Tutorial erfahren Sie, wie Sie Ihre erste PHP-Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md)bereitstellen.
 Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
 
@@ -31,9 +42,18 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 * Anzeigen des live in der Produktion ausgeführten Codes
 * Aktualisieren Ihrer Web-App wie beim [Ausführen von Git-Commits mittels Push](https://git-scm.com/docs/git-push)
 
+[!INCLUDE [app-service-linux](../../includes/app-service-linux.md)]
+
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
+
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
+
+- [Azure CLI 1.0:](app-service-web-get-started-php-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](app-service-web-get-started-php.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Git](http://www.git-scm.com/downloads).
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
+* [Azure CLI 2.0 Preview](/cli/azure/install-az-cli2).
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
@@ -44,34 +64,57 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 ## <a name="deploy-a-php-web-app"></a>Bereitstellen einer PHP-Web-App
 1. Öffnen Sie eine neue Windows-Eingabeaufforderung, ein PowerShell-Fenster, eine Linux-Shell oder ein OS X-Terminal. Vergewissern Sie sich durch Ausführen von `git --version` und `azure --version`, dass Git und die Azure-Befehlszeilenschnittstelle auf Ihrem Computer installiert sind.
    
-    ![Testen der Installation der CLI-Tools für Ihre erste Web-App in Azure](./media/app-service-web-get-started/1-test-tools.png)
+    ![Testen der Installation der CLI-Tools für Ihre erste Web-App in Azure](./media/app-service-web-get-started-languages/1-test-tools-2.0.png)
    
     Entsprechende Downloadlinks finden Sie bei Bedarf unter [Voraussetzungen](#Prerequisites) .
 2. Melden Sie sich wie folgt bei Azure an:
    
-        azure login
+        az login
    
     Folgen Sie der Hilfemeldung, um den Anmeldeprozess fortzusetzen.
    
-    ![Anmelden bei Azure zur Erstellung Ihrer ersten Web-App](./media/app-service-web-get-started/3-azure-login.png)
-3. Wechseln Sie Azure-CLI in den ASM-Modus, und legen Sie dann den Bereitstellungsbenutzer für App Service fest. Sie werden später unter Verwendung der Anmeldeinformationen Code bereitstellen.
+    ![Anmelden bei Azure zur Erstellung Ihrer ersten Web-App](./media/app-service-web-get-started-languages/3-azure-login-2.0.png)
+
+3. Legen Sie den Bereitstellungsbenutzer für App Service fest. Später stellen Sie Code mit diesen Anmeldeinformationen bereit.
    
-        azure config mode asm
-        azure site deployment user set --username <username> --pass <password>
-4. Wechseln Sie in ein Arbeitsverzeichnis (`CD`), und klonen Sie die Beispiel-App wie folgt:
+        az appservice web deployment user set --user-name <username> --password <password>
+
+3. Erstellen Sie eine neue [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). In diesem ersten App Service-Tutorial müssen Sie nicht unbedingt wissen, worum es sich dabei genau handelt.
+
+        az group create --location "<location>" --name my-first-app-group
+
+    Welche Werte Sie für `<location>` verwenden können, erfahren Sie mithilfe des CLI-Befehls `az appservice list-locations`.
+
+3. Erstellen Sie einen neuen [App Service-Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) vom Typ „FREE“. In diesem ersten App Service-Tutorial reicht es, wenn Sie wissen, dass Ihnen für Web-Apps im Rahmen dieses Plans keine Kosten entstehen.
+
+        az appservice plan create --name my-free-appservice-plan --resource-group my-first-app-group --sku FREE
+
+4. Erstellen Sie in `<app_name>` eine neue Web-App mit einem eindeutigen Namen.
+
+        az appservice web create --name <app_name> --resource-group my-first-app-group --plan my-free-appservice-plan
+
+4. Als Nächstes erhalten Sie den PHP-Beispielcode, den Sie bereitstellen möchten. Wechseln Sie in ein Arbeitsverzeichnis (`CD`), und klonen Sie die Beispiel-App wie folgt:
    
+        cd <working_directory>
         git clone https://github.com/Azure-Samples/app-service-web-php-get-started.git
+
 5. Wechseln Sie in das Repository Ihrer Beispiel-App. Beispiel:
    
         cd app-service-web-php-get-started
-6. Erstellen Sie die App Service-App-Ressource in Azure mit einem eindeutigen App-Namen und dem zuvor konfigurierten Bereitstellungsbenutzer. Geben Sie die Zahl der gewünschten Region ein, wenn Sie dazu aufgefordert werden.
+5. Konfigurieren Sie mit dem folgenden Befehl die lokale Git-Bereitstellung für Ihre App Service-Web-App:
+
+        az appservice web source-control config-local-git --name <app_name> --resource-group my-first-app-group
+
+    Sie erhalten eine JSON-Ausgabe wie die folgende, was bedeutet, dass das Git-Remoterepository konfiguriert ist:
+
+        {
+        "url": "https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git"
+        }
+
+6. Fügen Sie die URL im JSON-Code als Git-Remotespeicherort für Ihr lokales Repository (der Einfachheit halber `azure` genannt) hinzu.
+
+        git remote add azure https://<deployment_user>@<app_name>.scm.azurewebsites.net/<app_name>.git
    
-        azure site create <app_name> --git --gitusername <username>
-   
-    ![Erstellen der Azure-Ressource für Ihre erste Web-App in Azure](./media/app-service-web-get-started-languages/php-site-create.png)
-   
-    Ihre App wird jetzt in Azure erstellt. Ihr aktuelles Verzeichnis wird außerdem für Git initialisiert und mit der neuen App Service-App als Git-Remoteelement verbunden.
-    Sie können zwar auch zur URL der App (http://&lt;app_name>.azurewebsites.net) navigieren, um die HTML-Standardseite anzuzeigen, wir möchten hier aber eigentlich Ihren eigenen Code verwenden.
 7. Gehen Sie wie bei anderen Pushübertragungen von Code mit Git vor, um Ihren Beispielcode für die Azure-App bereitzustellen. Wenn Sie aufgefordert werden, verwenden Sie das Kennwort, das Sie zuvor konfiguriert haben.
    
         git push azure master
@@ -112,6 +155,6 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

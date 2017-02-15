@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/21/2016
-ms.author: darosa,sethm
+ms.date: 1/06/2016
+ms.author: darosa,sethm,jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: d36b40444af4ba68b016351f9ff016351e9fe58c
-ms.openlocfilehash: a4ccfdbc079a989477a80af7ac701dc77dce5a4f
+ms.sourcegitcommit: ed1469b7d12af84970d0675ac2af29580e319042
+ms.openlocfilehash: 11bac0e1877fa2c1cacc9a0a6e6d7870a17a44a2
 
 
 ---
@@ -31,9 +31,9 @@ In der folgenden Tabelle sind einige allgemeine Unterschiede hervorgehoben:
 | --- | --- |
 | Hoher Durchsatz |Variabler Durchsatz |
 | Vorhersagbare Leistung |Variable Latenzzeit |
-| Vorhersagbare Preise |Variable Preisgestaltung (nutzungsbasierte Bezahlung) |
-| Möglichkeit zur Herauf- und Herunterskalierung der Arbeitslast |N/V |
-| Nachrichtengröße > 256 KB |Nachrichtengröße: 256 KB |
+| Feste Preise |Variable Preisgestaltung (nutzungsbasierte Bezahlung) |
+| Möglichkeit zur Herauf- und Herunterskalierung der Workload |N/V |
+| Nachrichtengröße bis 1 MB |Nachrichtengröße bis 256 KB |
 
 **Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2 oder 4 Messaging-Einheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messaging-Einheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Gebühren werden jedoch im 24-Stunden- bzw. Tagesrhythmus berechnet. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.
 
@@ -43,10 +43,19 @@ Diese Leistung ist nicht nur besser vorhersehbar und verfügbar, sondern auch sc
 Es folgen einige Unterschiede zwischen der Premium- und der Standard-Messagingstufe.
 
 ### <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
-Partitionierte Warteschlangen und Themen werden beim Premium-Messaging unterstützt, funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md).
+Partitionierte Warteschlangen und Themen werden beim Premium-Messaging unterstützt, funktionieren allerdings anders als in den Standard- und Basic-Tarifen des Service Bus-Messaging. Bei Premium-Messaging wird nicht SQL als Datenspeicher verwendet, und im Gegensatz zu einer gemeinsam verwendeten Plattform können Ressourcen nicht mehr gleichzeitig verwendet werden. Daher ist eine Partitionierung zur Steigerung der Leistung nicht erforderlich. Darüber hinaus wurde die Anzahl der Partitionen von 16 bei Standard-Messaging in zwei Partitionen bei Premium-Messaging geändert. Bei zwei Partitionen ist die Verfügbarkeit sichergestellt, und diese Anzahl eignet sich besser für die Premium-Laufzeitumgebung. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md).
 
 ### <a name="express-entities"></a>Expressentitäten
 Da Premium-Messaging in einer vollständig isolierten Laufzeitumgebung ausgeführt wird, werden Expressentitäten in Premium-Namespaces nicht unterstützt. Weitere Informationen zur Expressfunktion finden Sie in der [QueueDescription.EnableExpress](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress)-Eigenschaft.
+
+## <a name="get-started-with-premium-messaging"></a>Erste Schritte mit Premium-Messaging
+
+Die ersten Schritte mit Premium-Messaging sind einfach, und der Prozess ähnelt der Vorgehensweise für Standard-Messaging. Beginnen Sie, indem Sie [einen Namespace erstellen](service-bus-create-namespace-portal.md). Stellen Sie sicher, dass Sie unter „Tarif“ die Option *Premium* wählen.
+
+![create-premium-namespace][create-premium-namespace]
+
+Sie können einen [Premium-Namespace auch mit Azure Resource Manager-Vorlagen erstellen](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen:
@@ -56,9 +65,12 @@ Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen:
 * [Service Bus Messaging: Flexible Datenübermittlung in der Cloud](service-bus-messaging-overview.md)
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
+<!--Image references-->
+
+[create-premium-namespace]: ./media/service-bus-premium-messaging/select-premium-tier.png
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

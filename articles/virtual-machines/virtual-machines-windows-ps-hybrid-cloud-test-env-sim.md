@@ -1,23 +1,27 @@
 ---
 title: Simulierte Hybrid Cloud-Testumgebung | Microsoft Docs
-description: Erstellen Sie eine simulierte Hybrid Cloud-Umgebung für Tests durch IT-Spezialisten oder für Entwicklungstests, indem Sie zwei virtuelle Azure-Netzwerke und eine VNet-zu-VNet-Verbindung verwenden.
+description: "Erstellen Sie eine simulierte Hybrid Cloud-Umgebung für Tests durch IT-Spezialisten oder für Entwicklungstests, indem Sie zwei virtuelle Azure-Netzwerke und eine VNet-zu-VNet-Verbindung verwenden."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: JoeDavies-MSFT
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: ca5bf294-8172-44a9-8fed-d6f38d345364
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
+ms.date: 09/30/2016
 ms.author: josephd
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 1322af70f643bcc191e3d69fe4a174adc9cd7e8d
+
 
 ---
-# Einrichten einer simulierten Hybrid Cloud-Umgebung zu Testzwecken
+# <a name="set-up-a-simulated-hybrid-cloud-environment-for-testing"></a>Einrichten einer simulierten Hybrid Cloud-Umgebung zu Testzwecken
 In diesem Artikel lernen Sie Schritt für Schritt, wie Sie unter Verwendung von zwei virtuellen Azure-Netzwerken eine simulierte Hybrid Cloud-Umgebung mit Microsoft Azure erstellen. Die resultierende Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph4.png)
@@ -39,7 +43,7 @@ Die Einrichtung dieser Hybrid Cloud-Testumgebung besteht aus vier Hauptphasen:
 1. Konfigurieren des virtuellen Netzwerks TestLab
 2. Erstellen des standortübergreifenden virtuellen Netzwerks TestVNET
 3. Herstellen der VNet-zu-VNet-VPN-Verbindung
-4. Konfigurieren von DC2
+4. Konfigurieren von DC2 
 
 Für diese Konfiguration wird ein Azure-Abonnement benötigt. Wenn Sie ein MSDN- oder Visual Studio-Abonnement besitzen, finden Sie weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
@@ -48,13 +52,13 @@ Für diese Konfiguration wird ein Azure-Abonnement benötigt. Wenn Sie ein MSDN-
 > 
 > 
 
-## Phase 1: Konfigurieren des virtuellen Netzwerks "TestLab"
-Erstellen Sie gemäß den Anweisungen des Themas [Testumgebung für die Basiskonfiguration](https://technet.microsoft.com/library/mt771177.aspx) die Computer „DC1“, „APP1“ und „CLIENT1“ im virtuellen Azure-Netzwerk „TestLab“.
+## <a name="phase-1-configure-the-testlab-virtual-network"></a>Phase 1: Konfigurieren des virtuellen Netzwerks "TestLab"
+Erstellen Sie gemäß den Anweisungen des Themas [Testumgebung für die Basiskonfiguration](https://technet.microsoft.com/library/mt771177.aspx) die Computer „DC1“, „APP1“ und „CLIENT1“ im virtuellen Azure-Netzwerk „TestLab“. 
 
 Starten Sie als Nächstes eine Azure PowerShell-Eingabeaufforderung.
 
 > [!NOTE]
-> Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher.
+> Die folgenden Befehlssätze verwenden Azure PowerShell 1.0 und höher.
 > 
 > 
 
@@ -92,7 +96,7 @@ Erstellen Sie im nächsten Schritt Ihr Gateway.
 
 Bedenken Sie, dass die Erstellung neuer Gateways 20 Minuten oder länger dauern kann.
 
-Stellen Sie im Azure-Portal auf Ihrem lokalen Computer eine Verbindung mit DC1 her. Verwenden Sie dafür die Anmeldeinformationen für CORP\\User1. Führen Sie die folgenden Befehle an einer Windows PowerShell-Eingabeaufforderung auf DC1 aus, um die CORP-Domäne so zu konfigurieren, dass Computer und Benutzer ihren lokalen Domänencontroller zur Authentifizierung verwenden.
+Stellen Sie im Azure-Portal auf Ihrem lokalen Computer eine Verbindung mit DC1 her. Verwenden Sie dafür die Anmeldeinformationen für CORP\User1. Führen Sie die folgenden Befehle an einer Windows PowerShell-Eingabeaufforderung auf DC1 aus, um die CORP-Domäne so zu konfigurieren, dass Computer und Benutzer ihren lokalen Domänencontroller zur Authentifizierung verwenden.
 
     New-ADReplicationSite -Name "TestLab" 
     New-ADReplicationSite -Name "TestVNET"
@@ -103,7 +107,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph1.png)
 
-## Phase 2: Erstellen des virtuellen Netzwerks "TestVNET"
+## <a name="phase-2-create-the-testvnet-virtual-network"></a>Phase 2: Erstellen des virtuellen Netzwerks "TestVNET"
 Zunächst erstellen Sie das virtuelle Netzwerk „TestVNET“ und schützen es mit einer Netzwerksicherheitsgruppe.
 
     $rgName="<name of the resource group that you used for your TestLab virtual network>"
@@ -130,8 +134,8 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph2.png)
 
-## Phase 3: Erstellen der VNet-zu-VNet-Verbindung
-Besorgen Sie sich zunächst einen zufällig generierten vorinstallierten Schlüssel mit 32 Zeichen und starker Kryptografie vom Netzwerk- oder Systemadministrator. Verwenden Sie zum Abrufen eines vorinstallierten Schlüssels alternativ die Informationen im Artikel [Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (Erstellen einer zufälligen Zeichenfolge für einen vorinstallierten IPsec-Schlüssel).
+## <a name="phase-3-create-the-vnet-to-vnet-connection"></a>Phase 3: Erstellen der VNet-zu-VNet-Verbindung
+Besorgen Sie sich zunächst einen zufällig generierten vorinstallierten Schlüssel mit 32 Zeichen und starker Kryptografie vom Netzwerk- oder Systemadministrator. Verwenden Sie zum Abrufen eines vorinstallierten Schlüssels alternativ die Informationen im Artikel [Create a random string for an IPsec preshared key](http://social.technet.microsoft.com/wiki/contents/articles/32330.create-a-random-string-for-an-ipsec-preshared-key.aspx) (Erstellen einer zufälligen Zeichenfolge für einen vorinstallierten IPsec-Schlüssel).
 
 Verwenden Sie im nächsten Schritt dies folgenden Befehle, um die VNet-zu-VNet-VPN-Verbindung zu erstellen. Dies kann einige Zeit in Anspruch nehmen.
 
@@ -147,7 +151,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph3.png)
 
-## Phase 4: Konfigurieren von DC2
+## <a name="phase-4-configure-dc2"></a>Phase 4: Konfigurieren von DC2
 Erstellen Sie zunächst einen virtuellen Computer für DC2. Führen Sie in der Eingabeaufforderung von Azure PowerShell auf dem lokalen Computer die folgenden Befehle aus.
 
     $rgName="<your resource group name>"
@@ -195,22 +199,27 @@ Konfigurieren Sie als Nächstes DC2 als replizierten Domänencontroller für die
     Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
     Install-ADDSDomainController -Credential (Get-Credential CORP\User1) -DomainName "corp.contoso.com" -InstallDns:$true -DatabasePath "F:\NTDS" -LogPath "F:\Logs" -SysvolPath "F:\SYSVOL"
 
-Beachten Sie, dass Sie aufgefordert werden, sowohl das Kennwort für CORP\\User1 als auch ein Kennwort für den Verzeichnisdienste-Wiederherstellungsmodus anzugeben und DC2 neu zu starten.
+Beachten Sie, dass Sie aufgefordert werden, sowohl das Kennwort für CORP\User1 als auch ein Kennwort für den Verzeichnisdienste-Wiederherstellungsmodus anzugeben und DC2 neu zu starten.
 
 Da das virtuelle Netzwerk TestVNET nun über einen eigenen DNS-Server (DC2) verfügt, müssen Sie das virtuelle Netzwerk TestVNET zur Verwendung dieses DNS-Servers konfigurieren.
 
 1. Klicken Sie im linken Bereich des Azure-Portals auf das Symbol für virtuelle Netzwerke, und klicken Sie dann auf **TestVNET**.
 2. Klicken Sie auf der Registerkarte **Einstellungen** auf **DNS-Server**.
-3. Geben Sie unter **Primärer DNS-Server** die Adresse **192.168.0.4** ein, und ersetzen Sie dadurch die Adresse 10.0.0.4.
+3. Ersetzen Sie unter **Primärer DNS-Server** die Adresse 10.0.0.4 durch **192.168.0.4**.
 4. Klicken Sie auf **Speichern**.
 
-Die aktuelle Konfiguration sieht folgendermaßen aus.
+Die aktuelle Konfiguration sieht folgendermaßen aus. 
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-sim/virtual-machines-windows-ps-hybrid-cloud-test-env-sim-ph4.png)
 
 Die simulierte Hybrid Cloud-Umgebung kann jetzt zum Testen verwendet werden.
 
-## Nächster Schritt
-* Richten Sie in dieser Umgebung eine [webbasierte Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md) ein.
+## <a name="next-step"></a>Nächster Schritt
+* Einrichten einer [webbasierten Branchenanwendung](virtual-machines-windows-ps-hybrid-cloud-test-env-lob.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) in dieser Umgebung
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

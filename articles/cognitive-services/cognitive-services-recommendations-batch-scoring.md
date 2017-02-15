@@ -1,27 +1,31 @@
-
 ---
 title: 'Abrufen von Empfehlungen in Batches: Machine Learning-Empfehlungs-API | Microsoft Docs'
-description: Azure Machine Learning-Empfehlungen – Abrufen von Empfehlungen in Batches
+description: "Azure Machine Learning-Empfehlungen – Abrufen von Empfehlungen in Batches"
 services: cognitive-services
-documentationcenter: ''
+documentationcenter: 
 author: luiscabrer
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 325d4922-8a07-4e67-99e0-f513201f14f7
 ms.service: cognitive-services
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 11/28/2016
 ms.author: luisca
+translationtype: Human Translation
+ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
+ms.openlocfilehash: e63218d9c882d84342a3992f05e0a8c9f306d9c6
+
 
 ---
-# Abrufen von Empfehlungen in Batches
+# <a name="get-recommendations-in-batches"></a>Abrufen von Empfehlungen in Batches
 > [!NOTE]
 > Das Abrufen von Empfehlungen in Batches ist komplizierter als das Abrufen einzelner Empfehlungen. Informationen zum Abrufen von Empfehlungen für eine einzelne Anforderung finden Sie unter den APIs:
 > 
-> [Item-to-Item recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4) (Element-zu-Element-Empfehlungen)<br> [User-to-Item recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd) (Benutzer-zu-Element-Empfehlungen)
+> [Element-zu-Element-Empfehlungen](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4)<br>
+> [Benutzer-zu-Element-Empfehlungen](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd)
 > 
 > Batchbewertungen können nur für Builds verwendet werden, die nach dem 21. Juli 2016 erstellt wurden.
 > 
@@ -29,7 +33,7 @@ ms.author: luisca
 
 In bestimmten Situationen müssen Empfehlungen für mehrere Elemente gleichzeitig abgerufen werden. So können Sie beispielsweise einen Zwischenspeicher für Empfehlungen erstellen und sogar die Arten der erhaltenen Empfehlungen analysieren.
 
-Diese so genannten Batchbewertungsvorgänge sind asynchrone Vorgänge. Sie müssen die Anforderung übermitteln, auf den Abschluss des Vorgangs warten und anschließend die Ergebnisse abrufen.
+Diese so genannten Batchbewertungsvorgänge sind asynchrone Vorgänge. Sie müssen die Anforderung übermitteln, auf den Abschluss des Vorgangs warten und anschließend die Ergebnisse abrufen.  
 
 Um genau zu sein, müssen die folgenden Schritte ausgeführt werden:
 
@@ -41,12 +45,13 @@ Um genau zu sein, müssen die folgenden Schritte ausgeführt werden:
 
 Im Anschluss sehen wir uns die einzelnen Schritte genauer an.
 
-## Erstellen eines Storage-Containers, sofern noch keiner vorhanden ist
-Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein neues Speicherkonto, falls noch keines vorhanden ist. Navigieren Sie hierzu zu **Neu** > **Daten** > **Speicher** > **Speicherkonto**.
+## <a name="create-a-storage-container-if-you-dont-have-one-already"></a>Erstellen eines Storage-Containers, sofern noch keiner vorhanden ist
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein neues Speicherkonto, falls noch keines vorhanden ist. Navigieren Sie hierzu zu **Neu** > **Daten** + **Speicher** > **Speicherkonto**.
 
 Wenn Sie über ein Speicherkonto verfügen, müssen Sie die Blobcontainer erstellen, in denen die Ein- und Ausgabe der Batchausführung gespeichert wird.
 
-Laden Sie eine Eingabedatei hoch, die jede Ihrer Empfehlungsanforderungen für Blob Storage beschreibt. In diesem Beispiel nennen wir die Datei „input.json“. Wenn Sie über einen Container verfügen, müssen Sie eine Datei hochladen, in der die einzelnen Anforderungen beschrieben werden, die über den Empfehlungsdienst ausgeführt werden sollen.
+Laden Sie eine Eingabedatei hoch, die jede Ihrer Empfehlungsanforderungen für Blob Storage beschreibt. In diesem Beispiel nennen wir die Datei „input.json“.
+Wenn Sie über einen Container verfügen, müssen Sie eine Datei hochladen, in der die einzelnen Anforderungen beschrieben werden, die über den Empfehlungsdienst ausgeführt werden sollen.
 
 Ein Batch kann immer nur eine Art von Anforderung eines spezifischen Builds ausführen. Die Vorgehensweise zum Definieren dieser Informationen wird im nächsten Abschnitt erläutert. Wir gehen vorerst einfach davon aus, dass wir Elementempfehlungen über einen bestimmten Build ausführen. Die Eingabedatei enthält dann die Eingabeinformationen (in diesem Fall die Seed-Elemente) für die einzelnen Anforderungen.
 
@@ -67,7 +72,7 @@ Hier sehen Sie ein Beispiel für die Datei „input.json“:
 
 Wie Sie sehen, handelt es sich um eine JSON-Datei, und jede der Anforderungen verfügt über die Informationen, die zum Senden einer Empfehlungsanforderung benötigt werden. Erstellen Sie eine ähnliche JSON-Datei für die Anforderungen in Ihrem Szenario, und kopieren Sie sie in den soeben erstellten Container in Blob Storage.
 
-## Starten des Batchauftrags
+## <a name="kick-start-the-batch-job"></a>Starten des Batchauftrags
 Als Nächstes muss ein neuer Batchauftrag übermittelt werden. Weitere Informationen finden Sie in der [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/).
 
 Der Anforderungstext der API muss die Speicherorte für die Eingabe-, Ausgabe- und Fehlerdateien definieren. Außerdem müssen die erforderlichen Anmeldeinformationen für den Zugriff auf diese Speicherorte definiert werden. Darüber hinaus müssen einige Parameter angegeben werden, die für den gesamten Batch gelten. Hierzu zählen unter anderem die Art der anzufordernden Empfehlungen, das zu verwendende Modell/der zu verwendende Build und die Anzahl von Ergebnissen pro Aufruf.
@@ -109,10 +114,11 @@ Wichtig:
 * Sie benötigen ein SAS-Token (Shared Access Signature), um der Empfehlungs-API Lese- und Schreibzugriff für Ihr Blob-Speicherkonto zu erteilen. Weitere Informationen zum Generieren von SAS-Token finden Sie auf der [Seite für die Empfehlungs-API](../storage/storage-dotnet-shared-access-signature-part-1.md).
 * Derzeit wird für **apiName** ausschließlich **ItemRecommend** (für Element-zu-Element-Empfehlungen) unterstützt. Benutzer-zu-Element-Empfehlungen werden derzeit von der Batchverarbeitung nicht unterstützt.
 
-## Warten auf den Abschluss des asynchronen Vorgangs
-Wenn Sie den Batchvorgang starten, gibt die Antwort den operation-location-Header mit den Informationen zurück, die Sie zum Nachverfolgen des Vorgangs benötigen. Der Vorgangsstatus wird genau wie beim Nachverfolgen eines Buildvorgangs mithilfe der [API zum Abrufen des Vorgangsstatus](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3da) nachverfolgt.
+## <a name="wait-for-the-asynchronous-operation-to-finish"></a>Warten auf den Abschluss des asynchronen Vorgangs
+Wenn Sie den Batchvorgang starten, gibt die Antwort den operation-location-Header mit den Informationen zurück, die Sie zum Nachverfolgen des Vorgangs benötigen.
+Der Vorgangsstatus wird genau wie beim Nachverfolgen eines Buildvorgangs mithilfe der [API zum Abrufen des Vorgangsstatus](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3da)nachverfolgt.
 
-## Abrufen der Ergebnisse
+## <a name="get-the-results"></a>Abrufen der Ergebnisse
 Wenn der Vorgang fehlerfrei abgeschlossen wurde, können Sie die Ergebnisse aus dem Ausgabe-Blobspeicher abrufen.
 
 Im Anschluss sehen Sie eine Beispielausgabe. Zur besseren Übersichtlichkeit zeigt das Beispiel Ergebnisse für einen Batch mit nur zwei Anforderungen.
@@ -188,8 +194,13 @@ Im Anschluss sehen Sie eine Beispielausgabe. Zur besseren Übersichtlichkeit zei
     ]}
 
 
-## Einschränkungen
+## <a name="learn-about-the-limitations"></a>Einschränkungen
 * Pro Abonnement kann immer nur ein Batchauftrag aufgerufen werden.
 * Eine Eingabedatei für einen Batchauftrag darf maximal 2 MB groß sein.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

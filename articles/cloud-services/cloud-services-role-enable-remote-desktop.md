@@ -137,6 +137,6 @@ Die Datei [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

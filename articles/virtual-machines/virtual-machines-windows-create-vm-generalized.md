@@ -1,13 +1,13 @@
 ---
-title: Create VM from a generalized VHD | Microsoft Docs
-description: Learn how to create a Windows virtual machine from a generalized VHD image using Azure PowerShell, in the Resource Manager deployment model.
+title: Erstellen eines virtuellen Computers aus einer generalisierten VHD | Microsoft Docs
+description: Erfahren Sie, wie Sie einen virtuellen Windows-Computer aus einem generalisierten VHD-Image mit Azure PowerShell im Resource Manager-Bereitstellungsmodell erstellen.
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: b4808871-9ef1-49ea-a617-9154d417abb0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,66 +15,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: cb7f3a1bf44a18141294ab03677f7e733177c1b8
+
 
 ---
-# <a name="create-a-vm-from-a-generalized-vhd-image"></a>Create a VM from a generalized VHD image
-A generalized VHD image has had all of your personal account information removed using [Sysprep](virtual-machines-windows-generalize-vhd.md). You can create a generalized VHD by running Sysprep on an on-premises VM, then [uploading the VHD to Azure](virtual-machines-windows-upload-image.md) or by running Sysprep on an existing Azure VM and then [copying the VHD](virtual-machines-windows-vhd-copy.md).
+# <a name="create-a-vm-from-a-generalized-vhd-image"></a>Erstellen eines virtuellen Computers aus einem generalisierten VHD-Image
+Auf einem generalisierten VHD-Image wurden alle Ihre persönlichen Kontoinformationen mit [Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) entfernt. Sie können eine generalisierte virtuelle Festplatte erstellen, indem Sie Sysprep auf einem lokalen virtuellen Computer ausführen, dann [die VHD in Azure hochladen](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder Sysprep auf einem virtuellen Azure-VM ausführen und dann [die VHD kopieren](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-If you want to create a VM from a generalized VHD, see [Create a VM from a specialized VHD](virtual-machines-windows-create-vm-specialized.md).
+Informationen darüber, wie Sie einen virtuellen Computer aus einer speziellen VHD erstellen, finden Sie unter [Einen virtuellen Computer aus einer speziellen VHD erstellen](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-The quickest way to create a VM from a generalized VHD is to use a [quick start template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image). 
+Die schnellste Möglichkeit, einen virtuellen Computer aus einer generalisierten VHD zu erstellen, ist die Verwendung einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image). 
 
-## <a name="prerequisites"></a>Prerequisites
-If you are going to use a VHD uploaded from on on-premises VM, like one create using Hyper-V, you should make sure you followed the direction in [Prepare a Windows VHD to upload to Azure](virtual-machines-windows-prepare-for-upload-vhd-image.md). 
+## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie eine von einem lokalen virtuellen Computer hochgeladene VHD verwenden möchten, z. B. eine mit Hyper-V erstellte, stellen Sie sicher, dass Sie den Anweisungen [Vorbereiten einer Windows-VHD für das Hochladen in Azure](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) folgen. 
 
-Both uploaded VHDs and existing Azure VM VHDs need to be generalized before you can create a VM using this method. For more information, see [Generalize a Windows virtual machine using Sysprep](virtual-machines-windows-generalize-vhd.md). 
+Hochgeladene VHDs und vorhandene Azure-VM-VHDs müssen generalisiert werden, bevor Sie mit dieser Methode einen virtuellen Computer erstellen können. Weitere Informationen finden Sie unter [Generalize a Windows virtual machine using Sysprep (Generalisieren eines virtuellen Windows-Computers mit Sysprep)](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-## <a name="set-the-uri-of-the-vhd"></a>Set the URI of the VHD
-The URI for the VHD to use is in the format: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd. In this example the VHD named **myVHD** is in the storage account **mystorageaccount** in the container **mycontainer**.
+## <a name="set-the-uri-of-the-vhd"></a>Festlegen des URI der virtuellen Festplatte
+Der URI für die zu verwendende virtuelle Festplatte liegt in folgendem Format vor: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd. In diesem Beispiel befindet sich die virtuelle Festplatte mit dem Namen **myVHD** im Speicherkonto **mystorageaccount** im Container **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
 ```
 
 
-## <a name="create-a-virtual-network"></a>Create a virtual network
-Create the vNet and subNet of the [virtual network](../virtual-network/virtual-networks-overview.md).
+## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+Erstellen Sie das VNet und das Subnetz des [virtuellen Netzwerks](../virtual-network/virtual-networks-overview.md).
 
-1. Create the subnet. The following sample creates a subnet named **mySubnet** in the resource group **myResourceGroup** with the address prefix of **10.0.0.0/24**.  
+1. Erstellen Sie das Subnetz. Das folgende Beispiel erstellt ein Subnetz mit dem Namen **mySubnet** in der Ressourcengruppe **myResourceGroup** mit dem Adresspräfix **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
-    $subnetName = "mySubNet"
+    $subnetName = "mySubnet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Create the virtual network. The following sample creates a virtual network named **myVnet** in the **West US** location with the address prefix of **10.0.0.0/16**.  
+2. Erstellen des virtuellen Netzwerks Das folgende Beispiel erstellt ein virtuelles Netzwerk mit dem Namen **myVnet** im Speicherort **USA, Westen** mit dem Adresspräfix **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
     $vnetName = "myVnet"
-    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+    $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
+        -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
-## <a name="create-a-public-ip-address-and-network-interface"></a>Create a public IP address and network interface
-To enable communication with the virtual machine in the virtual network, you need a [public IP address](../virtual-network/virtual-network-ip-addresses-overview-arm.md) and a network interface.
+## <a name="create-a-public-ip-address-and-network-interface"></a>Erstellen einer öffentlichen IP-Adresse und einer Netzwerkschnittstelle
+Sie benötigen eine [öffentliche IP-Adresse](../virtual-network/virtual-network-ip-addresses-overview-arm.md) und eine Netzwerkschnittstelle, um die Kommunikation mit dem virtuellen Computer im virtuellen Netzwerk zu ermöglichen.
 
-1. Create a public IP address. This example creates a public IP address named **myPip**. 
+1. Erstellen einer öffentlichen IP-Adresse Dieses Beispiel erstellt eine öffentliche IP-Adresse mit dem Namen **myPip**. 
    
     ```powershell
     $ipName = "myPip"
-    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
+    $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
+        -AllocationMethod Dynamic
     ```       
-2. Create the NIC. This example creates a NIC named **myNic**. 
+2. Erstellen der NIC Dieses Beispiel erstellt eine NIC mit dem Namen **myNic**. 
    
     ```powershell
     $nicName = "myNic"
-    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
+    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location `
+        -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>Create the network security group and an RDP rule
-To be able to log in to your VM using RDP, you need to have a security rule that allows RDP access on port 3389. 
+## <a name="create-the-network-security-group-and-an-rdp-rule"></a>Erstellen einer Netzwerksicherheitsgruppe und einer RDP-Regel
+Damit Sie sich mit RDP an Ihrem virtuellen Computer anmelden können, benötigen Sie eine Sicherheitsregel, die RDP-Zugriff auf Port 3389 zulässt. 
 
-This example creates an NSG named **myNsg** that contains a rule called **myRdpRule** that allows RDP traffic over port 3389. For more information about NSGs, see [Opening ports to a VM in Azure using PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md).
+Dieses Beispiel erstellt eine NSG namens **myNsg**, das eine Regel namens **myRdpRule** enthält, die RDP-Datenverkehr über Port 3389 zulässt. Weitere Informationen zu NSGs finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe von PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -89,15 +96,15 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>Create a variable for the virtual network
-Create a variable for the completed virtual network. 
+## <a name="create-a-variable-for-the-virtual-network"></a>Erstellen einer Variablen für das virtuelle Netzwerk
+Erstellen einer Variablen für das abgeschlossene virtuelle Netzwerk 
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
-## <a name="create-the-vm"></a>Create the VM
-The following PowerShell script shows how to set up the virtual machine configurations and use the uploaded VM image as the source for the new installation.
+## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
+Das folgende PowerShell-Skript veranschaulicht, wie Sie die Konfiguration für den virtuellen Computer einrichten und das hochgeladene VM-Image als Quelle für die neue Installation verwenden.
 
 </br>
 
@@ -126,7 +133,9 @@ The following PowerShell script shows how to set up the virtual machine configur
     $osDiskName = "myOsDisk"
 
     # Assign a SKU name. This example sets the SKU name as "Standard_LRS"
-    # Valid values for -SkuName are: Standard_LRS - locally redundant storage, Standard_ZRS - zone redundant storage, Standard_GRS - geo redundant storage, Standard_RAGRS - read access geo redundant storage, Premium_LRS - premium locally redundant storage. 
+    # Valid values for -SkuName are: Standard_LRS - locally redundant storage, Standard_ZRS - zone redundant
+    # storage, Standard_GRS - geo redundant storage, Standard_RAGRS - read access geo redundant storage,
+    # Premium_LRS - premium locally redundant storage. 
     $skuName = "Standard_LRS"
 
     # Get the storage account where the uploaded image is stored
@@ -136,31 +145,36 @@ The following PowerShell script shows how to set up the virtual machine configur
     $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 
     #Set the Windows operating system configuration and add the NIC
-    $vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-
+    $vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName `
+        -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
     $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 
     # Create the OS disk URI
-    $osDiskUri = '{0}vhds/{1}-{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
+    $osDiskUri = '{0}vhds/{1}-{2}.vhd' `
+        -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 
     # Configure the OS disk to be created from the existing VHD image (-CreateOption fromImage).
-
-    $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $imageURI -Windows
+    $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri `
+        -CreateOption fromImage -SourceImageUri $imageURI -Windows
 
     # Create the new VM
     New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
-## <a name="verify-that-the-vm-was-created"></a>Verify that the VM was created
-When complete, you should see the newly created VM in the [Azure portal](https://portal.azure.com) under **Browse** > **Virtual machines**, or by using the following PowerShell commands:
+
+## <a name="verify-that-the-vm-was-created"></a>Stellen Sie sicher, dass der virtuelle Computer erstellt wurde
+Anschließend müsste der neu erstellte virtuelle Computer im [Azure-Portal](https://portal.azure.com) unter **Durchsuchen** > **Virtuelle Computer** angezeigt werden. Alternativ können Sie ihn auch mit den folgenden PowerShell-Befehlen anzeigen:
 
 ```powershell
     $vmList = Get-AzureRmVM -ResourceGroupName $rgName
     $vmList.Name
 ```
 
-## <a name="next-steps"></a>Next steps
-To manage your new virtual machine with Azure PowerShell, see [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md).
+## <a name="next-steps"></a>Nächste Schritte
+Informationen zum Verwalten des neuen virtuellen Computers mit Azure PowerShell finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

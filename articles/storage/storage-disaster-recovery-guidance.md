@@ -4,16 +4,20 @@ description: Vorgehensweise bei einem Ausfall von Azure Storage
 services: storage
 documentationcenter: .net
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
-
+ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 12/08/2016
 ms.author: robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 14997080496adfd363fee249c858ed9a0b553066
+
 
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
@@ -34,10 +38,10 @@ Die empfohlene Methode zum Bestimmen des Azure-Dienststatus ist die Anmeldung be
 ## <a name="what-to-do-if-a-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Storage
 Wenn eine oder mehrere Storage-Dienste in einer Region oder in mehreren Regionen vorübergehend nicht verfügbar sind, stehen Ihnen zwei Optionen zur Auswahl. Wenn Sie sofortigen Zugriff auf Ihre Daten wünschen, sollten Sie Option 2 wählen.
 
-### <a name="option-1:-wait-for-recovery"></a>Option 1: Warten auf die Wiederherstellung
+### <a name="option-1-wait-for-recovery"></a>Option 1: Warten auf die Wiederherstellung
 In diesem Fall ist keine weitere Aktion erforderlich. Wir arbeiten intensiv daran, die Verfügbarkeit des Azure-Diensts wiederherzustellen. Sie können den Dienststatus auf unserem [Azure Service Health Dashboard](https://azure.microsoft.com/status/)überwachen.
 
-### <a name="option-2:-copy-data-from-secondary"></a>Option 2: Kopieren von Daten von der sekundären Region
+### <a name="option-2-copy-data-from-secondary"></a>Option 2: Kopieren von Daten von der sekundären Region
 Wenn Sie [Read-Access Geo-Redundant-Speicher (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (empfohlen) für Ihre Speicherkonten ausgewählt haben, verfügen Sie über Lesezugriff auf Ihre Daten in der sekundären Region. Sie können Tools wie [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md) und [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) verwenden, um Daten aus der sekundären Region in ein anderes Speicherkonto oder in eine nicht betroffene Region zu kopieren. Anschließend können Sie Ihre Anwendungen jeweils für Lese- und Schreibverfügbarkeit auf dieses Speicherkonto verweisen.
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Was bei einem Storage-Failover zu erwarten ist
@@ -62,6 +66,9 @@ Es gibt einige empfohlenen Vorgehensweisen, um die Speicherdaten in regelmäßig
 * Tabellen – Verwenden Sie [AzCopy](storage-use-azcopy.md) , um die Tabellendaten in ein anderes Speicherkonto in einer anderen Region zu exportieren.
 * Dateien – Verwenden Sie [AzCopy](storage-use-azcopy.md) oder [Azure PowerShell](storage-powershell-guide-full.md), um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

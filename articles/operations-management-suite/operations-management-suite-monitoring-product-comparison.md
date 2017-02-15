@@ -1,12 +1,12 @@
 ---
-title: Vergleich von Microsoft-Überwachungsprodukten | Microsoft Docs
-description: Microsoft Operations Management Suite (OMS) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Sie beim Verwalten und Schützen Ihrer lokalen Infrastruktur und Cloudinfrastruktur unterstützt.  Dieser Artikel enthält Informationen zu den verschiedenen Diensten von OMS und Links zu Seiten mit ausführlicheren Informationen.
+title: "Vergleich von Microsoft-Überwachungsprodukten | Microsoft Docs"
+description: "Microsoft Operations Management Suite (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer lokalen und Cloudinfrastruktur erleichtert.  Dieser Artikel enthält Informationen zu den verschiedenen Diensten von OMS und Links zu Seiten mit ausführlicheren Informationen."
 services: operations-management-suite
-documentationcenter: ''
+documentationcenter: 
 author: bwren
 manager: jwhit
 editor: tysonn
-
+ms.assetid: a63ca0ad-61f8-425d-a48c-d87ba518c104
 ms.service: operations-management-suite
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d7325b0bb900dcaf789c01e1a9b534d7f72c8c43
+
 
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Vergleich von Microsoft-Überwachungsprodukten
@@ -168,6 +172,9 @@ Abfragen in Log Analytics ermöglichen nicht nur Ad-hoc-Analysen, sondern könne
 * Stellen Sie [System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh205987.aspx)bereit.
 * Registrieren Sie sich für [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics).  
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

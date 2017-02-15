@@ -2,23 +2,27 @@
 title: Verwenden von Power BI Embedded mit REST | Microsoft Docs
 description: 'Verwenden von Power BI Embedded mit REST  '
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 8bcef780-cca0-4f30-9a9b-9daa1a7ae865
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7aadb6ceba1a8c672ed9eeea8651c965e5b665fd
+
 
 ---
 # <a name="how-to-use-power-bi-embedded-with-rest"></a>Verwendung von Power BI Embedded mit REST
-## <a name="power-bi-embedded:-what-it-is-and-what-it's-for"></a>Power BI Embedded: Gegenstand und Funktionsbeschreibung
+## <a name="power-bi-embedded-what-it-is-and-what-its-for"></a>Power BI Embedded: Gegenstand und Funktionsbeschreibung
 Einen Überblick über Power BI Embedded finden Sie auf der offiziellen Website von [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/). Verschaffen wir uns zunächst einen Eindruck, bevor wir uns näher mit der Verwendung mit REST beschäftigen.
 
 Es ist wirklich ziemlich einfach. Häufig möchte ein ISV (Independent Software Vendor, unabhängiger Softwarehersteller) die dynamischen Datenvisualisierungen von [Power BI](https://powerbi.microsoft.com) in seiner eigenen Anwendung als Benutzeroberflächenbausteine verwenden.
@@ -34,29 +38,29 @@ Darüber hinaus bietet die ISV-Anwendung möglicherweise eigene Authentifizierun
 
 Sie können das SDK für .NET \(C#) oder Node.js verwenden, um Ihre Anwendung mit Power BI Embedded zu erstellen. In diesem Artikel erläutern wir allerdings den HTTP-Ablauf \(einschließlich AuthN) von Power BI ohne SDKs. Wenn Sie diesen Ablauf kennen, verstehen Sie die wesentlichen Grundzüge von Power BI Embedded und können Ihre Anwendung **mit einer beliebigen Programmiersprache** entwickeln.
 
-## <a name="create-power-bi-workspace-collection,-and-get-access-key-\(provisioning)"></a>Erstellen der Power BI-Arbeitsbereichssammlung und Abrufen des Zugriffsschlüssels \(Bereitstellung)
+## <a name="create-power-bi-workspace-collection-and-get-access-key-provisioning"></a>Erstellen der Power BI-Arbeitsbereichssammlung und Abrufen des Zugriffsschlüssels \(Bereitstellung)
 Power BI Embedded ist einer der Azure-Dienste. Nutzungsgebühren fallen nur für den ISV an, der das Azure-Portal verwendet \(die Abrechnung erfolgt pro Sitzungsstunde des Benutzers). Für den Benutzer, der den Bericht anzeigt, werden keine Gebühren erhoben, ein Azure-Abonnement ist ebenfalls nicht erforderlich.
 Bevor wir mit der Anwendungsentwicklung beginnen, müssen wir über das Azure-Portal die **Power BI-Arbeitsbereichssammlung** erstellen.
 
 Jeder Arbeitsbereich von Power BI Embedded ist der Arbeitsbereich für einen Kunden (Mandanten), und wir können jeder Arbeitsbereichssammlung zahlreiche Arbeitsbereiche hinzufügen. In jeder Arbeitsbereichssammlung wird der gleiche Zugriffsschlüssel verwendet. Die Arbeitsbereichssammlung ist die Sicherheitsgrenze für Power BI Embedded.
 
-![](media\\power-bi-embedded-iframe\\create-workspace.png)
+![](media/power-bi-embedded-iframe/create-workspace.png)
 
 Kopieren Sie den Zugriffsschlüssel aus dem Azure-Portal, wenn Sie die Erstellung der Arbeitsbereichssammlung abgeschlossen haben.
 
-![](media\\power-bi-embedded-iframe\\copy-access-key.png)
+![](media/power-bi-embedded-iframe/copy-access-key.png)
 
 > [!NOTE]
 > Sie können die Arbeitsbereichssammlung auch bereitstellen und den Zugriffsschlüssel über die REST-API beziehen. Weitere Informationen finden Sie unter [Power BI Resource Provider APIs](https://msdn.microsoft.com/library/azure/mt712306.aspx)(Power BI-Ressourcenanbieter-APIs).
 > 
 > 
 
-## <a name="create-.pbix-file-with-power-bi-desktop"></a>Erstellen einer PBIX-Datei mit Power BI Desktop
+## <a name="create-pbix-file-with-power-bi-desktop"></a>Erstellen einer PBIX-Datei mit Power BI Desktop
 Im nächsten Schritt müssen wir die Datenverbindung und die Berichte erstellen, die eingebettet werden sollen.
 Für diese Aufgabe gibt es keine Programmierung und keinen Code. Wir verwenden ausschließlich Power BI Desktop.
 In diesem Artikel werden keine Details zur Verwendung von Power BI Desktop erläutert. Falls Sie hierbei Unterstützung benötigen, finden Sie weitere Informationen unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/). In unserem Beispiel verwenden wir das [Analysebeispiel für den Einzelhandel](https://powerbi.microsoft.com/documentation/powerbi-sample-datasets/).
 
-![](media\\power-bi-embedded-iframe\\power-bi-desktop-1.png)
+![](media/power-bi-embedded-iframe/power-bi-desktop-1.png)
 
 ## <a name="create-a-power-bi-workspace"></a>Erstellen eines Power BI-Arbeitsbereichs
 Nachdem die Bereitstellung vollständig abgeschlossen ist, beginnen wir jetzt damit, mithilfe von REST-APIs einen Kundenarbeitsbereich in der Arbeitsbereichssammlung zu erstellen. Die folgende HTTP POST-Anforderung (REST) erstellt einen neuen Arbeitsbereich in unserer bestehenden Arbeitsbereichssammlung. In unserem Beispiel lautet der Name der Arbeitsbereichssammlung **mypbiapp**.
@@ -86,7 +90,7 @@ RequestId: 4220d385-2fb3-406b-8901-4ebe11a5f6da
 
 Die zurückgegebene **WorkspaceId** wird für die folgenden API-Aufrufe verwendet. Dieser Wert muss von unserer Anwendung beibehalten werden.
 
-## <a name="import-.pbix-file-into-the-workspace"></a>Importieren einer PBIX-Datei in den Arbeitsbereich
+## <a name="import-pbix-file-into-the-workspace"></a>Importieren einer PBIX-Datei in den Arbeitsbereich
 Jeder Arbeitsbereich kann eine einzelne Power BI Desktop-Datei mit einem Dataset \(einschließlich Datenquelleneinstellungen) und Berichten hosten. Wir können unsere PBIX-Datei wie in unten stehendem Code gezeigt in den Arbeitsbereich importieren. Wir können die Binärdaten der PBIX-Datei wie dargestellt mit mehrteiligem MIME in HTTP hochladen.
 
 Das URI-Fragment **32960a09-6366-4208-a8bb-9e0678cdbb9d** ist die workspaceId, und der Abfrageparameter **datasetDisplayName** ist der zu erstellende Datasetname. Das erstellte Dataset enthält alle datenbezogenen Artefakte in der PBIX-Datei, wie beispielsweise importierte Daten, den Zeiger zur Datenquelle usw.
@@ -170,7 +174,7 @@ RequestId: eb2c5a85-4d7d-4cc2-b0aa-0bafee4b1606
 }
 ```
 
-## <a name="data-source-connectivity-\(and-multi-tenancy-of-data)"></a>Datenquellenkonnektivität \(und Mehrinstanzenfähigkeit von Daten)
+## <a name="data-source-connectivity-and-multi-tenancy-of-data"></a>Datenquellenkonnektivität \(und Mehrinstanzenfähigkeit von Daten)
 Die meisten Artefakte in der PBIX-Datei werden in unseren Arbeitsbereich importiert, nicht jedoch die Anmeldeinformationen für Datenquellen. Im **DirectQuery-Modus**kann der eingebettete Bericht daher nicht ordnungsgemäß angezeigt werden. Allerdings können wir den Bericht im **Importmodus**unter Verwendung der vorhandenen importierten Daten anzeigen. In diesem Fall müssen wir die folgenden Schritte durchführen, um die Anmeldeinformationen über REST-Aufrufe festzulegen.
 
 Zunächst müssen wir die Gatewaydatenquelle ermitteln. Wir wissen, dass die **ID** des Datasets die zuvor zurückgegebene ID ist.
@@ -249,14 +253,14 @@ Alternativ können wir die Sicherheit auf Zeilenebene in Power BI Embedded verwe
 > 
 > 
 
-## <a name="authentication-and-hosting-(embedding)-reports-in-our-web-page"></a>Authentifizierung und Einbetten von Berichten in unsere Webseite
+## <a name="authentication-and-hosting-embedding-reports-in-our-web-page"></a>Authentifizierung und Einbetten von Berichten in unsere Webseite
 Bei der vorherigen REST-API können wir den Zugriffsschlüssel **AppKey** selbst als Autorisierungsheader verwenden. Da diese Aufrufe seitens des Back-End-Servers verarbeitet werden können, ist dies eine sichere Vorgehensweise.
 
 Wenn wir allerdings den Bericht in unsere Webseite einbetten, wird diese Art von Sicherheitsinformationen über JavaScript \(Front-End) verarbeitet. In diesem Fall muss der Wert des Autorisierungsheaders gesichert werden. Falls unser Zugriffsschlüssel von einem böswilligen Benutzer oder einer Schadsoftware entdeckt wird, kann der Benutzer bzw. die Software mit diesem Schlüssel sämtliche Vorgänge aufrufen.
 
 Beim Einbetten des Berichts in unsere Webseite müssen wir anstelle des **AppKey**-Zugriffsschlüssels das berechnete Token verwenden. Unsere Anwendung muss das OAuth Json Web Token \(JWT) erstellen, das aus den Ansprüchen und der berechneten digitalen Signatur besteht. Wie im Folgenden dargestellt, besteht dieses OAuth JWT aus codierten Zeichenfolgentoken, die durch Punkte getrennt sind.
 
-![](media\\power-bi-embedded-iframe\\oauth-jwt.png)
+![](media/power-bi-embedded-iframe/oauth-jwt.png)
 
 Zunächst müssen wir den Eingabewert vorbereiten, der später signiert wird. Dieser Wert ist die Base64-URL-codierte (rfc4648) Zeichenfolge der folgenden JSON. Die Trennung erfolgt durch einen Punkt \(.). Später erläutern wir, wie Sie die Berichts-ID abrufen.
 
@@ -338,7 +342,7 @@ function rfc4648_base64_encode($arg) {
 ?>
 ```
 
-## <a name="finally,-embed-the-report-into-the-web-page"></a>Einbetten des Berichts in die Webseite
+## <a name="finally-embed-the-report-into-the-web-page"></a>Einbetten des Berichts in die Webseite
 Damit wir unseren Bericht einbetten können, müssen wir mithilfe der folgenden REST-API die eingebettete URL und die Berichts- **ID** aufrufen.
 
 **HTTP-Anforderung**
@@ -457,13 +461,16 @@ Wenn Sie den nächsten Beispielcode betrachten, fällt auf, dass der Anfang mit 
 
 Das ist unser Ergebnis:
 
-![](media\\power-bi-embedded-iframe\\view-report.png)
+![](media/power-bi-embedded-iframe/view-report.png)
 
 Aktuell zeigt Power BI Embedded den Bericht nur im IFrame an. Besuchen Sie regelmäßig den [Power BI-Blog](). Zukünftige Verbesserungen beinhalten möglicherweise neue clientseitige APIs, mit denen Sie Informationen an den IFrame senden und aus diesem abrufen können. Alles sehr spannend!
 
 ## <a name="see-also"></a>Siehe auch
 * [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

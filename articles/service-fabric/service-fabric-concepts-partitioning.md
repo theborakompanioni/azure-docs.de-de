@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/22/2016
-ms.author: msfussell
+ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 05209c1c10116af665d9dbfe41ccb9e0b4c2b2bd
+ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
+ms.openlocfilehash: 41acd377d456fa5e85e3a8ff0b12f7f6eff6cdfe
 
 
 ---
@@ -242,7 +242,7 @@ Da wir eine Partition pro Buchstabe benötigen, können wir 0 als niedrigen Sch
     Dieser Dienst dient als einfache Webschnittstelle, die den Nachnamen als Abfragezeichenfolgenparameter akzeptiert, den Partitionsschlüssel bestimmt und diesen zur Verarbeitung an den Alphabet.Processing-Dienst sendet.
 11. Wählen Sie im Dialogfeld **Dienst erstellen** für den Dienst **Zustandslos** aus, und vergeben Sie, wie unten gezeigt, den Namen „Alphabet.Web“.
     
-    ![Screenshot des zustandslosen Diensts](./media/service-fabric-concepts-partitioning/createnewstateless.png) verfügbar.
+    ![Screenshot des zustandslosen Diensts](./media/service-fabric-concepts-partitioning/createnewstateless.png)verfügbar.
 12. Aktualisieren Sie die Endpunktinformationen in der Datei „ServiceManifest.xml“ des Alphabet.WebApi-Diensts, um wie unten gezeigt einen Port zu öffnen.
     
     ```xml
@@ -372,6 +372,6 @@ Informationen zu den Service Fabric-Konzepten finden Sie hier:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

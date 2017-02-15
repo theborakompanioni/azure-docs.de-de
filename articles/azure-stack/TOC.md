@@ -16,6 +16,7 @@
 ## [Erstellen Sie ein Speicherkonto](azure-stack-provision-storage-account.md)
 ## [Verbinden per CLI](azure-stack-connect-cli.md)
 ## [Verbinden mit PowerShell](azure-stack-connect-powershell.md)
+## [Installieren von Visual Studio](azure-stack-install-visual-studio.md)
 ## [Häufig gestellte Fragen](azure-stack-faq.md)
 
 # Anbieten von Diensten für Mandanten
@@ -28,6 +29,7 @@
 # Verwenden von Vorlagen
 ## [Vorlagenübersicht](azure-stack-arm-templates.md)
 ## [Entwickeln von Vorlagen](azure-stack-develop-templates.md)
+## [Überprüfen von Vorlagen](azure-stack-validate-templates.md)
 ## [Bereitstellen von Vorlagen mit dem Portal](azure-stack-deploy-template-portal.md)
 ## [Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)
 ## [Bereitstellen von Vorlagen mithilfe von Visual Studio](azure-stack-deploy-template-visual-studio.md)
@@ -86,6 +88,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stack)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

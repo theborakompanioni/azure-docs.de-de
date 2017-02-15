@@ -52,7 +52,7 @@
 ### [Webanwendung mit Visual Studio](../../virtual-machines-linux-classic-web-app-visual-studio.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [RDMA-Cluster zum Ausführen von MPI-Anwendungen](../../virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 ### [Verwenden des Azure Slave-Plug-In mit Hudson Continuous Integration](../../virtual-machines-azure-slave-plugin-for-hudson.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-### [Verwenden des Azure Slave-Plug-In mit Jenkins](../../virtual-machines-azure-slave-plugin-for-jenkins.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+
 
 ## HPC Pack
 ### [Windows RDMA-Cluster zum Ausführen von MPI-Apps](../../virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
@@ -69,7 +69,7 @@
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/vm)
 ## [Java](/java/api)
-## [Erstellen von Resource Manager-Vorlagen](../../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## [Erstellen von Resource Manager-Vorlagen](../../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ## [Communityvorlagen](https://azure.microsoft.com/documentation/templates)
 ## [Compute REST](/rest/api/compute)
 ## [Network REST](/rest/api)
@@ -83,6 +83,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

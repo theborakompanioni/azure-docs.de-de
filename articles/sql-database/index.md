@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Machen Sie sich mit SQL-Datenbank (einer Database-as-a-Service-Lösung in der Cloud) vertraut. Anhand von Tutorials, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine relationale Datenbank einrichten, eine Verbindung damit herstellen und eine relationale Datenbank verwalten."
 translationtype: Human Translation
-ms.sourcegitcommit: e4df0029db106923e3d28f16b3dfe239cae5b032
-ms.openlocfilehash: 4c148d62e435f063810c096069c4020ef78568d8
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 2dfb79cc8f2aa2e2ca63b905666f519e083aa69d
 
 ---
 
@@ -115,7 +115,7 @@ Hier erfahren Sie, wie Sie SQL-Datenbank (eine relationale, auf Microsoft SQL Se
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.sql/v2.3.0/azurerm.sql">PowerShell</a></p>
-                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell (elastische Datenbank)</a></p>
+                        <p><a href="/powershell/elasticdatabasejobs/v0.8.33/elasticdatabasejobs">PowerShell (Elastische Datenbank)</a></p>
                     </div>
                 </div>
             </div>
@@ -153,13 +153,7 @@ Hier erfahren Sie, wie Sie SQL-Datenbank (eine relationale, auf Microsoft SQL Se
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der SQL-Datenbankdokumentation </div>
-    </a>
-</div>
+
 
 
 

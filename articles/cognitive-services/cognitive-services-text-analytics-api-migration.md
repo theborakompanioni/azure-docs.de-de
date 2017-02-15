@@ -1,60 +1,64 @@
 ---
 title: Aktualisieren auf Version 2 der Text Analytics-API | Microsoft Docs
-description: Azure Machine Learning Text Analytics – Upgrade auf Version 2
+description: "Azure Machine Learning Text Analytics – Upgrade auf Version 2"
 services: cognitive-services
-documentationcenter: ''
+documentationcenter: 
 author: onewth
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: bbf86f80-f677-42f3-8c17-118b16a23c34
 ms.service: cognitive-services
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 10/04/2016
 ms.author: onewth
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9b28666e384402935ae342788afff6b6e8c7eab8
+
 
 ---
-# Aktualisieren auf Version 2 der Text Analytics-API
-In diesem Leitfaden werden Sie durch den Prozess der Aktualisierung des Codes von der [ersten Version der API](../machine-learning/machine-learning-apps-text-analytics.md) auf die zweite Version geführt.
+# <a name="upgrading-to-version-2-of-the-text-analytics-api"></a>Aktualisieren auf Version 2 der Text Analytics-API
+In diesem Leitfaden werden Sie durch den Prozess der Aktualisierung des Codes von der [ersten Version der API](../machine-learning/machine-learning-apps-text-analytics.md) auf die zweite Version geführt. 
 
 Falls Sie die API nicht verwendet haben und weitere Informationen benötigen, können Sie **[hier mehr zur API erfahren](//go.microsoft.com/fwlink/?LinkID=759711)** oder die **[Schnellstartanleitung verwenden](//go.microsoft.com/fwlink/?LinkID=760860)**. Die technische Referenz finden Sie in der **[API-Definition](//go.microsoft.com/fwlink/?LinkID=759346)**.
 
-### Teil 1: Abrufen eines neuen Schlüssels
-Zuerst müssen Sie aus dem **Azure-Portal** einen neuen API-Schlüssel abrufen:
+### <a name="part-1-get-a-new-key"></a>Teil 1: Abrufen eines neuen Schlüssels
+Zuerst müssen Sie aus dem **Azure-Portal**einen neuen API-Schlüssel abrufen:
 
-1. Navigieren Sie über den [Cortana Analytics-Katalog](//gallery.cortanaintelligence.com/MachineLearningAPI/Text-Analytics-2) zum Text Analytics-Dienst. Hier finden Sie auch Links zur Dokumentation und zu Codebeispielen.
+1. Navigieren Sie über den [Cortana Analytics-Katalog](//gallery.cortanaintelligence.com/MachineLearningAPI/Text-Analytics-2)zum Text Analytics-Dienst. Hier finden Sie auch Links zur Dokumentation und zu Codebeispielen.
 2. Klicken Sie auf **Registrieren**. Mit diesem Link gelangen Sie zum Azure-Verwaltungsportal, in dem Sie sich für den Dienst registrieren können.
-3. Wählen Sie einen Plan. Sie können z. B. den **Free-Tarif für 5.000 Transaktionen pro Monat** auswählen. Da es sich um einen kostenlosen Plan handelt, wird die Nutzung dieses Diensts nicht berechnet. Sie müssen sich bei Ihrem Azure-Abonnement anmelden.
+3. Wählen Sie einen Plan. Sie können z.B. den **Free-Tarif für 5.000 Transaktionen pro Monat** auswählen. Da es sich um einen kostenlosen Plan handelt, wird die Nutzung dieses Diensts nicht berechnet. Sie müssen sich bei Ihrem Azure-Abonnement anmelden. 
 4. Nach der Registrierung für Text Analytics erhalten Sie einen **API-Schlüssel**. Kopieren Sie diesen Schlüssel, da Sie ihn beim Verwenden der API-Dienste benötigen.
 
-### Teil 2: Aktualisieren der Header
+### <a name="part-2-update-the-headers"></a>Teil 2: Aktualisieren der Header
 Aktualisieren Sie die übermittelten Headerwerte wie unten dargestellt. Beachten Sie, dass der Kontoschlüssel nicht mehr codiert ist.
 
-**Version 1**
+**Version 1**
 
     Authorization: Basic base64encode(<your Data Market account key>)
     Accept: application/json
 
-**Version 2**
+**Version 2**
 
     Content-Type: application/json
     Accept: application/json
     Ocp-Apim-Subscription-Key: <your Azure Portal account key>
 
 
-### Teil 3: Aktualisieren der Basis-URL
-**Version 1**
+### <a name="part-3-update-the-base-url"></a>Teil 3: Aktualisieren der Basis-URL
+**Version 1**
 
     https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/
 
-**Version 2**
+**Version 2**
 
     https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/
 
-### Teil 4a: Aktualisieren der Formate für Stimmung, Schlüsselwörter und Sprachen
-#### Endpunkte
+### <a name="part-4a-update-the-formats-for-sentiment-key-phrases-and-languages"></a>Teil 4a: Aktualisieren der Formate für Stimmung, Schlüsselwörter und Sprachen
+#### <a name="endpoints"></a>Endpunkte
 GET-Endpunkte sind inzwischen veraltet, sodass alle Eingaben als POST-Anforderungen übermittelt werden sollten. Aktualisieren Sie die Endpunkte auf die unten angegebenen Endpunkte.
 
 |  | Version 1 – Einzelner Endpunkt | Version 1 – Batchendpunkt | Version 2 – Endpunkt |
@@ -64,7 +68,7 @@ GET-Endpunkte sind inzwischen veraltet, sodass alle Eingaben als POST-Anforderun
 | Schlüsselwörter |```GetKeyPhrases``` |```GetKeyPhrasesBatch``` |```keyPhrases``` |
 | Sprachen |```GetLanguage``` |```GetLanguageBatch``` |```languages``` |
 
-#### Eingabeformate
+#### <a name="input-formats"></a>Eingabeformate
 Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also alle Eingaben, für die bisher die Endpunkte mit einzelnen Dokumenten verwendet wurden, entsprechend neu formatieren. Bei den Eingaben wird die Groß-/Kleinschreibung nicht beachtet.
 
 **Version 1 (Batch)**
@@ -78,7 +82,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       ]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents": [
@@ -89,8 +93,8 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       ]
     }
 
-#### Ausgabe für Stimmung
-**Version 1**
+#### <a name="output-from-sentiment"></a>Ausgabe für Stimmung
+**Version 1**
 
     {
       "SentimentBatch":[{
@@ -103,7 +107,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents":[{
@@ -116,8 +120,8 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-#### Ausgabe für Schlüsselwörter
-**Version 1**
+#### <a name="output-from-key-phrases"></a>Ausgabe für Schlüsselwörter
+**Version 1**
 
     {
       "KeyPhrasesBatch":[{
@@ -130,7 +134,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents":[{
@@ -143,8 +147,8 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-#### Ausgabe für Sprachen
-**Version 1**
+#### <a name="output-from-languages"></a>Ausgabe für Sprachen
+**Version 1**
 
     {
       "LanguageBatch":[{
@@ -161,7 +165,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       }]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "documents":[{
@@ -179,15 +183,15 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
     }
 
 
-### Teil 4b: Aktualisieren der Formate für Themen
-#### Endpunkte
+### <a name="part-4b-update-the-formats-for-topics"></a>Teil 4b: Aktualisieren der Formate für Themen
+#### <a name="endpoints"></a>Endpunkte
 |  | Version 1 – Endpunkt | Version 2 – Endpunkt |
 | --- | --- | --- |
 | Für Themenerkennung übermitteln (POST) |```StartTopicDetection``` |```topics``` |
 | Themenergebnisse abrufen (GET) |```GetTopicDetectionResult?JobId=<jobId>``` |```operations/<operationId>``` |
 
-#### Eingabeformate
-**Version 1**
+#### <a name="input-formats"></a>Eingabeformate
+**Version 1**
 
     {
       "StopWords": [
@@ -204,7 +208,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       ]
     }
 
-**Version 2**
+**Version 2**
 
     {
       "stopWords": [
@@ -221,7 +225,7 @@ Beachten Sie, dass nur noch das POST-Format akzeptiert wird. Sie sollten also al
       ]
     }
 
-#### Übermittlungsergebnisse
+#### <a name="submission-results"></a>Übermittlungsergebnisse
 **Version 1 (POST)**
 
 Bisher haben Sie nach Abschluss des Auftrags die folgende JSON-Ausgabe erhalten, bei der die jobId zum Abrufen der Ausgabe an eine URL angefügt wurde.
@@ -237,7 +241,7 @@ Die Antwort enthält jetzt wie folgt einen Headerwert, bei dem `operation-locati
 
     'operation-location': 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>'
 
-#### Operationsergebnis
+#### <a name="operation-results"></a>Operationsergebnis
 **Version 1 (GET)**
 
     {
@@ -259,7 +263,7 @@ Die Antwort enthält jetzt wie folgt einen Headerwert, bei dem `operation-locati
 
 **Version 2 (GET)**
 
-**Rufen Sie wieder regelmäßig die Ausgabe ab** (Empfehlung: jede Minute), bis die Ausgabe zurückgegeben wird.
+**Rufen Sie wieder regelmäßig die Ausgabe ab** (Empfehlung: jede Minute), bis die Ausgabe zurückgegeben wird. 
 
 Nachdem die Themen-API den Vorgang abgeschlossen hat, wird der Status `succeeded` zurückgegeben. Dies umfasst auch die Ausgabeergebnisse im unten angegebenen Format:
 
@@ -285,7 +289,12 @@ Nachdem die Themen-API den Vorgang abgeschlossen hat, wird der Status `succeeded
         }
     }
 
-### Teil 5: Testen Sie es!
+### <a name="part-5-test-it"></a>Teil 5: Testen Sie es!
 Jetzt sollte alles startklar sein! Testen Sie Ihren Code mit einer kleinen Stichprobe, um sicherzustellen, dass Sie die Daten erfolgreich verarbeiten können.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

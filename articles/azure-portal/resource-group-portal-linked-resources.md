@@ -37,6 +37,6 @@ Wenn Sie Ressourcen im Portal oder durch Bereitstellen einer Vorlage über Azure
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

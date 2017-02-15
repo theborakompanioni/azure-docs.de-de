@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2016
+ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 206b958b4c266b9977a9beb8ffb6a0576f068a9a
-ms.openlocfilehash: cc4fbb67baf14f4a104a5de6dbf11ad195a42d15
+ms.sourcegitcommit: fc04c5f8a9cdee4b51c67b480d70678c3dca7c93
+ms.openlocfilehash: 49391b604446ae1b08d04ca42c5bdcd132f8cf31
 
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
-> * [Windows](service-fabric-get-started.md) 
+> * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
 > * [OSX](service-fabric-get-started-mac.md)
-> 
+>
 >  
 
  Zur Bereitstellung und Ausführung von [Azure Service Fabric-Anwendungen](service-fabric-application-model.md) auf Ihrem Linux-Entwicklungscomputer müssen Sie die Laufzeit und das allgemeine SDK installieren. Darüber hinaus können Sie auch optionale SDKs für Java und .NET Core installieren.
@@ -42,17 +42,17 @@ Um das SDK und das dazugehörige Laufzeitpaket über „apt-get“ installieren 
 
 1. Öffnen Sie ein Terminal.
 2. Fügen Sie der Quellenliste das Service Fabric-Repository hinzu.
-   
+
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 3. Fügen Sie Ihrem apt-Schlüsselbund den neuen GPG-Schlüssel hinzu.
-   
+
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     ```
 4. Aktualisieren Sie Ihre Paketlisten auf der Grundlage der neu hinzugefügten Repositorys.
-   
+
     ```bash
     sudo apt-get update
     ```
@@ -61,12 +61,12 @@ Um das SDK und das dazugehörige Laufzeitpaket über „apt-get“ installieren 
 Nach der Aktualisierung Ihrer Datenquellen können Sie das SDK installieren.
 
 1. Installieren Sie das Service Fabric-SDK-Paket. Sie werden aufgefordert, die Installation zu bestätigen und einem Lizenzvertrag zuzustimmen.
-   
+
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
 2. Führen Sie das SDK-Setupskript aus.
-   
+
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
@@ -76,39 +76,42 @@ Nach der Aktualisierung Ihrer Datenquellen können Sie das SDK installieren.
 Die [plattformübergreifende Azure-Befehlszeilenschnittstelle][azure-xplat-cli-github] enthält Befehle für die Interaktion mit Service Fabric-Entitäten (wie etwa Cluster und Anwendungen). Sie basiert auf Node.js. [Vergewissern Sie sich daher, dass Sie Node installiert haben][install-node], bevor Sie mit den folgenden Anweisungen fortfahren:
 
 1. Klonen Sie das GitHub-Repository auf Ihren Entwicklungscomputer.
-   
+
     ```bash
     git clone https://github.com/Azure/azure-xplat-cli.git
     ```
 2. Wechseln Sie in das geklonte Repository, und installieren Sie die Abhängigkeiten der Befehlszeilenschnittstelle mithilfe des Knotenpaket-Managers (Node Package Manager, npm).
-   
+
     ```bash
     cd azure-xplat-cli
     npm install
     ```
 3. Erstellen Sie einen Symlink zwischen dem Ordner „bin/azure“ des geklonten Repositorys und „/usr/bin/azure“, damit er Ihrem Pfad hinzugefügt wird und Befehle in jedem Verzeichnis zur Verfügung stehen.
-   
+
     ```bash
     sudo ln -s $(pwd)/bin/azure /usr/bin/azure
     ```
 4. Aktivieren Sie schließlich die automatische Vervollständigung von Service Fabric-Befehlen.
-   
+
     ```bash
     azure --completion >> ~/azure.completion.sh
     echo 'source ~/azure.completion.sh' >> ~/.bash_profile
     source ~/azure.completion.sh
     ```
 
+> [!NOTE]
+> Service Fabric-Befehle sind in Azure CLI 2.0 noch nicht verfügbar.
+
 ## <a name="set-up-a-local-cluster"></a>Einrichten eines lokalen Clusters
 Wenn alles erfolgreich installiert wurde, können Sie einen lokalen Cluster starten.
 
 1. Führen Sie das Clustersetupskript aus.
-   
+
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 2. Öffnen Sie einen Webbrowser, und navigieren Sie zu http://localhost:19080/Explorer. Der gestartete Cluster wird auf dem Dashboard von Service Fabric Explorer angezeigt.
-   
+
     ![Service Fabric Explorer unter Linux][sfx-linux]
 
 Nun können Sie vorgefertigte Service Fabric-Anwendungspakete oder neue, auf Gastcontainern oder ausführbaren Gastdateien basierende Anwendungspakete bereitstellen. Wenn Sie neue Dienste mit den Java- oder .NET Core-SDKs erstellen möchten, führen Sie die folgenden optionalen Einrichtungsschritte in den nachfolgenden Abschnitten aus.
@@ -116,19 +119,19 @@ Nun können Sie vorgefertigte Service Fabric-Anwendungspakete oder neue, auf Gas
 
 > [!NOTE]
 > Eigenständige Cluster werden unter Linux nicht unterstützt. In der Vorschau werden lediglich One-Box-Cluster und Azure Linux-Cluster mit mehreren Computern unterstützt.
-> 
-> 
+>
+>
 
 ## <a name="install-the-java-sdk-and-eclipse-neon-plugin-optional"></a>Installieren von Java SDK und Eclipse Neon-Plug-In (optional)
 Das Java SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen von Service Fabric-Diensten mit Java benötigt werden.
 
 1. Installieren Sie das Java SDK-Paket.
-   
+
     ```bash
     sudo apt-get install servicefabricsdkjava
     ```
 2. Führen Sie das SDK-Setupskript aus.
-   
+
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
@@ -139,7 +142,7 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse Neon-IDE i
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe > Neue Software installieren...** aus.
 3. Geben Sie in das Textfeld „Arbeiten mit“ ein: http://dl.windowsazure.com/eclipse/servicefabric
 4. Klicken Sie auf "Hinzufügen".
-   
+
     ![Eclipse-Plug-In][sf-eclipse-plugin]
 5. Wählen Sie das Service Fabric-Plug-In aus, und klicken Sie auf „Weiter“.
 6. Fahren Sie mit der Installation fort, und akzeptieren Sie den Endbenutzer-Lizenzvertrag.
@@ -148,13 +151,13 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse Neon-IDE i
 Das .NET Core SDK stellt die Bibliotheken und Vorlagen bereit, die zum Erstellen von Service Fabric-Diensten mit plattformübergreifendem .NET Core benötigt werden.
 
 1. Installieren Sie das .NET Core SDK-Paket.
-   
+
    ```bash
    sudo apt-get install servicefabricsdkcsharp
    ```
 
 2. Führen Sie das SDK-Setupskript aus.
-   
+
    ```bash
    sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
    ```
@@ -168,7 +171,7 @@ Führen Sie zum Aktualisieren auf die aktuelle SDK- und Laufzeitversion die folg
    sudo apt-get install servicefabric, servicefabricsdkcommon, servicefabricsdkcsharp, servicefabricsdkjava
    ```
 
-Navigieren Sie zum Aktualisieren der CLI zum Verzeichnis, in dem Sie die CLI geklont haben, und führen Sie zum Aktualisieren `git pull` aus. 
+Navigieren Sie zum Aktualisieren der CLI zum Verzeichnis, in dem Sie die CLI geklont haben, und führen Sie zum Aktualisieren `git pull` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Create your first Java application on Linux](service-fabric-create-your-first-linux-application-with-java.md)

@@ -1,5 +1,5 @@
 ---
-title: Node.js-API-App in Azure App Service | Microsoft Docs
+title: Node.js-API-App in Azure App Service | Microsoft-Dokumentation
 description: "Es wird beschrieben, wie Sie eine Node.js-RESTful-API erstellen und für eine API-App in Azure App Service bereitstellen."
 services: app-service\api
 documentationcenter: node
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e8a1ac3df5225fdcfe2717c2cf50bfc5b7cfda36
+ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
+ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
 
 
 ---
@@ -41,7 +41,7 @@ App Service unterstützt viele Wege zur Bereitstellung Ihres Codes in einer API-
    
     Die Beispiel-API stellt zwei Endpunkte bereit: Mit einer Get-Anforderung für `/contacts` wird eine Liste mit Namen und E-Mail-Adressen im JSON-Format zurückgegeben, und mit `/contacts/{id}` wird nur der ausgewählte Kontakt zurückgegeben.
 
-## <a name="scaffold-autogenerate-nodejs-code-based-on-swagger-metadata"></a>Erstellen des Node.js-Codegerüsts (automatische Generierung) basierend auf Swagger-Metadaten
+## <a name="scaffold-auto-generate-nodejs-code-based-on-swagger-metadata"></a>Erstellen des Node.js-Codegerüsts (automatische Generierung) basierend auf Swagger-Metadaten
 [Swagger](http://swagger.io/) ist ein Dateiformat für Metadaten, die eine RESTful-API beschreiben. Azure App Service verfügt über [integrierte Unterstützung für Swagger-Metadaten](app-service-api-metadata.md). In diesem Abschnitt des Tutorials wird ein API-Entwicklungsworkflow modelliert, in dem Sie zuerst Swagger-Metadaten erstellen und diese dann verwenden, um das Servercodegerüst (automatische Generierung) für die API zu erstellen. 
 
 > [!NOTE]
@@ -131,7 +131,7 @@ App Service unterstützt viele Wege zur Bereitstellung Ihres Codes in einer API-
         app.use(bodyParser.json());
    
         app.use(swaggerize({
-            api: path.resolve('./config/api.json'), // third change
+            api: path.resolve('./config/swagger.json'), // third change
             handlers: path.resolve('./handlers'),
             docspath: '/swagger' // fourth change
         }));
@@ -275,6 +275,6 @@ Sie haben nun erfolgreich eine API-App erstellt und dafür Node.js-API-Code bere
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

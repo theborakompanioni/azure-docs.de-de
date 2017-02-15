@@ -1,13 +1,13 @@
 ---
-title: Compute-Benchmarkergebnisse für virtuelle Linux-Computer | Microsoft Docs
-description: Vergleichen Sie Compute-Benchmarkergebnisse von CoreMark für Azure-VMs unter Linux
+title: "Compute-Benchmarkergebnisse für virtuelle Linux-Computer | Microsoft Docs"
+description: "Vergleichen Sie Compute-Benchmarkergebnisse von CoreMark für Azure-VMs unter Linux"
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/22/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 0cc49ad1aac612a2704827e01c9092bef14c69f9
+
 
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
-Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Ubuntu. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](virtual-machines-windows-compute-benchmark-scores.md)zur Verfügung.
+Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Ubuntu. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](virtual-machines-windows-compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)zur Verfügung.
 
 ## <a name="a-series---compute-intensive"></a>A-Serie – rechenintensiv
 | Größe | vCPUs | NUMA-Knoten | CPU | Ausführungen | Iterationen/s | Standardabweichung |
@@ -83,9 +87,12 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](http://www.eembc.org/coremark/faq.php) unter Ubuntu berechnet. CoreMark wurde so konfiguriert, dass die Anzahl der Threads auf die Anzahl der virtuellen CPUs und die Parallelität auf PThreads festgelegt waren. Die Zielanzahl von Iterationen wurde basierend auf der erwarteten Leistung angepasst, um eine Laufzeit von mindestens 20 Sekunden (in der Regel viel länger) zu ermöglichen. Das Endergebnis stellt die Anzahl der abgeschlossenen Iterationen geteilt durch die Anzahl der Sekunden für die Testausführung dar. Jeder Test wurde mindestens sieben Mal auf jedem virtuellen Computer ausgeführt. Die Tests (mit Ausnahme der H-Reihe) wurden im Oktober 2015 auf mehreren virtuellen Computern in jeder öffentlichen Azure-Region ausgeführt, in der der virtuelle Computer zum Zeitpunkt der Ausführung unterstützt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md).
+* Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Laden Sie zum Ausführen des CoreMark-Skripts auf virtuellen Linux-Computern das [CoreMark-Skriptpaket](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)herunter.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

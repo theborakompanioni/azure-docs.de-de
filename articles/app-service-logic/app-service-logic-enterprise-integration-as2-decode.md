@@ -1,12 +1,12 @@
 ---
-title: Informationen zum Enterprise Integration Pack-Connector zur Decodierung von AS2-Nachrichten | Microsoft Docs
+title: Informationen zum Enterprise Integration Pack-Connector zum Decodieren von AS2-Nachrichten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,25 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: padmavc
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 5836e0d2bb7d1d97e9f175396f51047af0f84ca5
+
 
 ---
-# Erste Schritte mit der Decodierung von AS2-Nachrichten
+# <a name="get-started-with-decode-as2-message"></a>Erste Schritte mit der Decodierung von AS2-Nachrichten
 Stellen Sie eine Verbindung mit der Decodierung von AS2-Nachrichten her, um eine sichere und zuverlässige Nachrichtenübertragung zu gewährleisten. Sie ermöglicht die digitale Signierung, Entschlüsselung und Bestätigungen über Benachrichtigungen über den Nachrichtenstatus (Message Disposition Notifications, MDNs).
 
-## Erstellen der Verbindung
-### Voraussetzungen
+## <a name="create-the-connection"></a>Erstellen der Verbindung
+### <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* Für die Verwendung des Connectors zur Decodierung von AS2-Nachrichten ist ein Integrationskonto erforderlich. Hier finden Sie Details zum Erstellen eines [Integrationskontos](app-service-logic-enterprise-integration-create-integration-account.md), zu [Partnern](app-service-logic-enterprise-integration-partners.md) und zur [AS2-Vereinbarung](app-service-logic-enterprise-integration-as2.md).
+* Für die Verwendung des Connectors zur Decodierung von AS2-Nachrichten ist ein Integrationskonto erforderlich. Hier finden Sie Details zum Erstellen eines [Integrationskontos](app-service-logic-enterprise-integration-create-integration-account.md) sowie zu [Partnern](app-service-logic-enterprise-integration-partners.md) und zur [AS2-Vereinbarung](app-service-logic-enterprise-integration-as2.md).
 
-### Stellen Sie mithilfe der folgenden Schritte eine Verbindung mit der Decodierung von AS2-Nachrichten her:
-1. Ein Beispiel finden Sie unter [Erstellen einer Logik-App](app-service-logic-create-a-logic-app.md).
-2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (etwa einen Anforderungstrigger). Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu. Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „AS2“ in das Suchfeld ein. Wählen Sie „AS2 – Decode AS2 Message“ (AS2 – AS2-Nachricht decodieren) aus.
+### <a name="connect-to-decode-as2-message-using-the-following-steps"></a>Stellen Sie mithilfe der folgenden Schritte eine Verbindung mit der Decodierung von AS2-Nachrichten her:
+1. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](app-service-logic-create-a-logic-app.md) finden Sie ein Beispiel.
+2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (beispielsweise einen Anforderungstrigger).  Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu.  Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „AS2“ in das Suchfeld ein.  Wählen Sie „AS2 – Decode AS2 Message“ (AS2 – AS2-Nachricht decodieren) aus.
    
     ![Suchen von AS2](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage1.png)
 3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto erstellt haben, werden Sie zur Eingabe der Verbindungsdetails aufgefordert:
    
     ![Erstellen der Integrationsverbindung](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage2.png)
-4. Geben Sie die Details des Integrationskontos ein. Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
+4. Geben Sie die Details des Integrationskontos ein.  Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
    
    | Eigenschaft | Details |
    | --- | --- |
@@ -42,15 +46,15 @@ Stellen Sie eine Verbindung mit der Decodierung von AS2-Nachrichten her, um eine
       Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
    
       ![Integrationsverbindung](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage3.png)
-5. Wählen Sie **Erstellen** aus.
-6. Beachten Sie, dass die Verbindung erstellt wurde. Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort.
+5. Wählen Sie **Erstellen**
+6. Beachten Sie, dass die Verbindung erstellt wurde.  Fahren Sie nun mit den weiteren Schritten in Ihrer Logik-App fort.
    
-    ![Integrationsverbindung erstellt](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage4.png)
+    ![Integrationsverbindung erstellt](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage4.png) 
 7. Wählen Sie bei den Ausgaben der Anforderung den Text und die Header aus.
    
-    ![Pflichtfelder ausfüllen](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage5.png)
+    ![Pflichtfelder ausfüllen](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage5.png) 
 
-## Die AS2-Decodierung führt folgende Schritte aus:
+## <a name="the-as2-decode-does-the-following"></a>Die AS2-Decodierung führt folgende Schritte aus:
 * Verarbeiten der AS2/HTTP-Header
 * Überprüfen der Signatur (sofern konfiguriert)
 * Entschlüsseln der Nachrichten (falls konfiguriert)
@@ -63,10 +67,15 @@ Stellen Sie eine Verbindung mit der Decodierung von AS2-Nachrichten her, um eine
 * Generieren einer synchronen oder asynchronen MDN (ausgehend von der Konfiguration in der Vereinbarung)
 * Festlegen der Korrelationstoken und Eigenschaften für die MDN
 
-## Probieren Sie es selbst aus
-Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/), um Ihre eigene voll funktionsfähige Logik-App mit den AS2-Features von Logic Apps bereitzustellen.
+## <a name="try-it-for-yourself"></a>Probieren Sie es selbst aus
+Versuchen Sie es doch einfach mal. Klicken Sie [hier](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/) , um Ihre eigene voll funktionsfähige Logik-App mit den AS2-Features von Logic Apps bereitzustellen. 
 
-## Nächste Schritte
-[Weitere Informationen zum Enterprise Integration Pack](app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
+## <a name="next-steps"></a>Nächste Schritte
+[Weitere Informationen zum Enterprise Integration Pack](app-service-logic-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

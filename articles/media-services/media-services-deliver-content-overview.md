@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/07/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0af1ca64301e2fb0a3af30e1da8b5d5277f14146
+ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
+ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
 
 
 ---
@@ -26,14 +26,14 @@ Bei der Übermittlung Ihrer Streaming- oder Video-on-Demand-Inhalte an Kunden m�
 So erreichen Sie dieses Ziel:
 
 * Codieren Sie den Datenstrom in einen Videodatenstrom mit mehreren Bitraten (adaptive Bitrate). So berücksichtigen Sie verschiedene Qualitäts- und Netzwerkbedingungen.
-* Verpacken Sie den Datenstrom mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) von Microsoft Azure Media Services neu in verschiedene Protokolle. So berücksichtigen Sie das Streaming auf verschiedene Geräte. Media Services unterstützt die Übermittlung der folgenden Streamingtechnologien mit adaptiver Bitrate: HTTP Live Streaming (HLS), Smooth Streaming, MPEG-DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
+* Verpacken Sie den Datenstrom mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) von Microsoft Azure Media Services neu in verschiedene Protokolle. So berücksichtigen Sie das Streaming auf verschiedene Geräte. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
 
 Dieser Artikel bietet eine Übersicht der wichtigen Konzepte zur Inhaltsübermittlung.
 
 Bekannte Probleme werden unter [Bekannte Probleme](media-services-deliver-content-overview.md#known-issues)behandelt.
 
-## <a name="dynamic-packaging"></a>dynamischen Paketerstellung
-Mit der dynamischen Paketerstellung von Media Services können Sie Ihre mit adaptiver Bitrate MP4- oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG-DASH, HLS, Smooth Streaming, HDS), übermitteln, ohne dass Sie diese Streamingformate erneut verpacken müssen. Wir empfehlen Ihnen, Ihre Inhalte mit dynamischer Paketerstellung zu übermitteln.
+## <a name="dynamic-packaging"></a>Dynamische Paketerstellung
+Mit der dynamischen Paketerstellung von Media Services können Sie Ihre mit adaptiver Bitrate MP4- oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG-DASH, HLS, Smooth Streaming), übermitteln, ohne dass Sie diese Streamingformate erneut packen müssen. Wir empfehlen Ihnen, Ihre Inhalte mit dynamischer Paketerstellung zu übermitteln.
 
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
 
@@ -73,7 +73,7 @@ Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzip
 Beim Erstellen eines Locators tritt möglicherweise eine Verzögerung von 30 Sekunden auf, die durch die erforderlichen Speicher- und Weitergabeprozesse in Azure Storage verursacht wird.
 
 ## <a name="adaptive-streaming"></a>Adaptives Streaming
-Bei adaptiven Bitratentechnologien können Videoplayeranwendungen die Netzwerkbedingungen ermitteln und eine Auswahl aus mehreren Bitraten treffen. Wenn die Netzwerkleistung absinkt, kann der Client eine niedrigere Bitrate auswählen, sodass die Wiedergabe des Videos mit einer geringeren Videoqualität fortgesetzt werden kann. Verbessert sich die Netzwerkleistung, kann der Client auf eine höhere Bitrate umschalten und eine verbesserte Videoqualität anbieten. Von Azure Media Services werden die folgenden Technologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming, MPEG-DASH und HDS.
+Bei adaptiven Bitratentechnologien können Videoplayeranwendungen die Netzwerkbedingungen ermitteln und eine Auswahl aus mehreren Bitraten treffen. Wenn die Netzwerkleistung absinkt, kann der Client eine niedrigere Bitrate auswählen, sodass die Wiedergabe des Videos mit einer geringeren Videoqualität fortgesetzt werden kann. Verbessert sich die Netzwerkleistung, kann der Client auf eine höhere Bitrate umschalten und eine verbesserte Videoqualität anbieten. Von Azure Media Services werden die folgenden Technologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
 
 Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt mit den Inhalten, die Sie streamen möchten. Um diese Inhalte streamen zu können, müssen Sie diesen Pfad jedoch ändern. Zum Erstellen einer vollständigen URL für die Streaming-Manifestdatei müssen Sie den Pfadwert des Locators mit dem Dateinamen des Manifests (dateiname.ism) verketten. Fügen Sie dem Locatorpfad anschließend **/Manifest** und (ggf.) ein geeignetes Format hinzu.
 
@@ -120,11 +120,6 @@ Das Smooth Streaming-Manifestformat enthält standardmäßig das Wiederholungsta
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=fmp4-v20)
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
-
-### <a name="hds-for-adobe-primetimeaccess-licensees-only"></a>HDS (nur für Lizenznehmer von Adobe PrimeTime/Access)
-{Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=f4m-f4f)
-
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f)
 
 ## <a name="progressive-download"></a>Progressiver Download
 Mit progressivem Download können Sie die Medienwiedergabe starten, bevor die gesamte Datei heruntergeladen ist. Dateien mit der Endung ISM* (ISMV, ISMA, ISMT, ISMC) können Sie nicht progressiv herunterladen.
@@ -189,6 +184,6 @@ Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

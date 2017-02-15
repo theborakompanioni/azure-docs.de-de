@@ -1,12 +1,12 @@
 ---
-title: Windows Universal Apps SDK – Upgrade-Verfahren
-description: Windows Universal Apps SDK-Upgrade-Verfahren für Azure Mobile Engagement
+title: "Windows Universal Apps SDK – Upgrade-Verfahren"
+description: "Windows Universal Apps SDK-Upgrade-Verfahren für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 4c898175-2cd6-43db-b350-bb408332f24d
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,42 +14,46 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c7b3441892484cf54e2055e9153858171d738e85
+
 
 ---
-# Windows Universal Apps SDK – Upgrade-Verfahren
+# <a name="windows-universal-apps-sdk-upgrade-procedures"></a>Windows Universal Apps SDK – Upgrade-Verfahren
 Wenn Sie bereits eine ältere Version von Engagement in Ihre Anwendung integriert haben, müssen Sie die folgenden Punkte beim Aktualisieren des SDK beachten.
 
 Möglicherweise müssen Sie mehrere Verfahren befolgen, wenn Sie mehrere Versionen des SDK übersprungen haben. Wenn Sie beispielsweise von 0.10.1 zu 0.11.0 migrieren, müssen Sie zunächst den Vorgang "von 0.9.0 zu 0.10.1" ausführen und anschließend den Vorgang "0.10.1 zu 0.11.0".
 
-## Von 3.3.0 bis 3.4.0
-### Testprotokolle
+## <a name="from-330-to-340"></a>Von 3.3.0 bis 3.4.0
+### <a name="test-logs"></a>Testprotokolle
 Vom SDK produzierte Konsolenprotokolle können jetzt aktiviert/deaktiviert/gefiltert werden. Um diese anzupassen, aktualisieren Sie die Eigenschaft `EngagementAgent.Instance.TestLogEnabled` auf einen der aus der `EngagementTestLogLevel`-Enumeration verfügbaren Werte, beispielsweise:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-### Ressourcen
+### <a name="resources"></a>Ressourcen
 Das Reach-Overlay wurde verbessert. Es ist Teil der SDK-NuGet-Paket-Ressourcen.
 
 Während der Aktualisierung auf die neue Version des SDKs können Sie auswählen, ob Sie vorhandene Dateien aus dem Overlayordner von Ihren Ressourcen beibehalten möchten oder nicht:
 
-* Wenn das vorherige Overlay bei Ihnen funktioniert, oder Sie die `WebView`-Elemente manuell integrieren, dann können Sie entscheiden, Ihre vorhandenen Dateien beizubehalten – es wird weiterhin funktionieren.
-* Wenn Sie auf das neue Overlay aktualisieren möchten, ersetzen Sie einfach den gesamten `overlay`-Ordner aus Ihren Ressourcen durch den neuen aus dem SDK-Paket (UWP-Apps: Nach dem Upgrade erhalten Sie den neuen Overlayordner aus % USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\\3.4.0\\content\\win81\\Resources).
+* Wenn das vorherige Overlay bei Ihnen funktioniert, oder Sie die `WebView` -Elemente manuell integrieren, dann können Sie entscheiden, Ihre vorhandenen Dateien beizubehalten – es wird weiterhin funktionieren. 
+* Wenn Sie auf das neue Overlay aktualisieren möchten, ersetzen Sie einfach den gesamten `overlay`-Ordner in Ihren Ressourcen durch den neuen aus dem SDK-Paket (UWP-Apps: Nach dem Upgrade erhalten Sie den neuen Overlayordner aus %USERPROFILE%\\.nuget\packages\MicrosoftAzure.MobileEngagement\3.4.0\content\win81\Resources).
 
 > [!WARNING]
 > Mithilfe des neuen Overlays werden alle an der vorherigen Version vorgenommenen Anpassungen überschrieben.
 > 
 > 
 
-## Von 3.2.0 zu 3.3.0
-### Ressourcen
+## <a name="from-320-to-330"></a>Von 3.2.0 zu 3.3.0
+### <a name="resources"></a>Ressourcen
 Dieser Schritt betrifft nur angepasste Ressourcen. Wenn Sie die Ressourcen, die vom SDK (Html, Bilder, Überlagerung) bereitgestellt werden, angepasst haben, müssen Sie diese vor dem Upgrade sichern und Ihre Anpassungen erneut auf die aktualisierten Ressourcen anwenden.
 
-## Von 3.1.0 zu 3.2.0
-### Ressourcen
+## <a name="from-310-to-320"></a>Von 3.1.0 zu 3.2.0
+### <a name="resources"></a>Ressourcen
 Dieser Schritt betrifft nur angepasste Ressourcen. Wenn Sie die Ressourcen, die vom SDK (Html, Bilder, Überlagerung) bereitgestellt werden, angepasst haben, müssen Sie diese vor dem Upgrade sichern und Ihre Anpassungen erneut auf die aktualisierten Ressourcen anwenden.
 
-### Webansicht-Integration
+### <a name="webview-integration"></a>Webansicht-Integration
 In dieser Version wurden einige Verbesserungen für unterschiedliche Geräteausführungen eingeführt. Vergewissern Sie sich, dass die Integration der Webansicht folgende Kriterien erfüllt:
 
 Auf der XAML-Seite ():
@@ -164,12 +168,12 @@ Und in der zugehörigen CS-Datei:
             }
     }
 
-## Von 2.0.0 zu 3.0.0
-### Ressourcen
+## <a name="from-200-to-300"></a>Von 2.0.0 zu 3.0.0
+### <a name="resources"></a>Ressourcen
 Dieser Schritt betrifft nur angepasste Ressourcen. Wenn Sie die Ressourcen, die vom SDK (Html, Bilder, Überlagerung) bereitgestellt werden, angepasst haben, müssen Sie diese vor dem Upgrade sichern und Ihre Anpassungen erneut auf die aktualisierten Ressourcen anwenden.
 
-## Von 1.1.1 zu 2.0.0
-Im Folgenden wird beschrieben, wie Sie die Migration einer SDK-Integration vom Capptain-Dienst, der von Capptain-SAS angeboten wird, in eine durch Azure Mobile Engagement unterstützte App durchführen.
+## <a name="from-111-to-200"></a>Von 1.1.1 zu 2.0.0
+Im Folgenden wird beschrieben, wie Sie die Migration einer SDK-Integration vom Capptain-Dienst, der von Capptain-SAS angeboten wird, in eine durch Azure Mobile Engagement unterstützte App durchführen. 
 
 > [!IMPORTANT]
 > Capptain und Mobile Engagement sind nicht dieselben Dienste, und die unten beschriebene Vorgehensweise hebt nur hervor, wie die Migration der Clientapp durchzuführen ist. Bei der Migration des SDK in die App werden Ihre Daten NICHT von den Capptain-Servern zu den Mobile Engagement-Servern migriert
@@ -178,15 +182,15 @@ Im Folgenden wird beschrieben, wie Sie die Migration einer SDK-Integration vom C
 
 Wenn Sie von einer früheren Version migrieren, ziehen Sie zunächst die Capptain-Website zurate, um zu 1.1.1 zu migrieren und wenden Sie dann das folgende Verfahren an
 
-### NuGet-Paket
+### <a name="nuget-package"></a>NuGet-Paket
 Ersetzen Sie **Capptain.WindowsPhone** durch das NuGet-Paket **MicrosoftAzure.MobileEngagement**.
 
-### Anwenden von Mobile Engagement
-Im SDK wird der Begriff `Engagement` verwendet. Sie müssen Ihr Projekt entsprechend dieser Änderung aktualisieren.
+### <a name="applying-mobile-engagement"></a>Anwenden von Mobile Engagement
+Im SDK wird der Begriff `Engagement`verwendet. Sie müssen Ihr Projekt entsprechend dieser Änderung aktualisieren.
 
 Sie müssen Ihr aktuelles Capptain-NuGet-Paket deinstallieren. Bedenken Sie, dass dadurch alle Änderungen, die Sie im Capptain-Ressourcenordner vorgenommen haben, entfernt werden. Wenn Sie diese Dateien beibehalten möchten, erstellen Sie eine Kopie davon.
 
-Danach installieren Sie das neue Microsoft Azure Engagement-NuGet-Paket für Ihr Projekt. Sie finden es direkt auf der [NuGet-Website] oder im Index. Durch diese Aktion werden alle Ressourcendateien, die von Engagement verwendet werden, ersetzt und die neue Engagement-DLL Ihren Projektverweisen hinzugefügt.
+Danach installieren Sie das neue Microsoft Azure Engagement-NuGet-Paket für Ihr Projekt. Sie finden es direkt auf [nuget website] oder hier (Index). Durch diese Aktion werden alle Ressourcendateien, die von Engagement verwendet werden, ersetzt und die neue Engagement-DLL Ihren Projektverweisen hinzugefügt.
 
 Sie müssen Ihre Projektverweise bereinigen, indem Sie die Capptain-DLL-Verweise löschen. Wenn Sie dies nicht tun, kommt es zu Konflikten mit der Capptain-Version und Fehlern.
 
@@ -266,20 +270,20 @@ Nach Abschluss dieser Schritte müssen Sie nur die alten Capptain-Verweise durch
         </engagement:EngagementPageOverlay>
 5. Beachten Sie, dass andere Ressourcen wie Capptain-Bilder und HTML-Dateien auch für die Verwendung von "Engagement" umbenannt wurden.
 
-### Projektdeklaration
+### <a name="project-declaration"></a>Projektdeklaration
 In der Datei "Package.appxmanifest" wurde `File Type Associations` aktualisiert von:
 
-* capptain\_reach\_content zu engagement\_reach\_content
-* capptain\_log\_file zu engagement\_log\_file
+* capptain\_reach\_content to engagement\_reach\_content
+* capptain\_log\_file to engagement\_log\_file
 
-### Anwendungs-ID/SDK-Schlüssel
+### <a name="application-id--sdk-key"></a>Anwendungs-ID/SDK-Schlüssel
 Engagement verwendet eine Verbindungszeichenfolge. Sie müssen bei Mobile Engagement keine Anwendungs-ID und keinen SDK-Schlüssel angeben, sie müssen nur eine Verbindungszeichenfolge angeben. Sie können diese in der EngagementConfiguration-Datei einrichten.
 
-Die Konfiguration von Engagement kann in der `Resources\EngagementConfiguration.xml`-Datei des Projekts festgelegt werden.
+Die Konfiguration von Engagement kann in der `Resources\EngagementConfiguration.xml` -Datei des Projekts festgelegt werden.
 
 Bearbeiten Sie diese Datei, um Folgendes anzugeben:
 
-* Die Verbindungszeichenfolge der Anwendung zwischen den Tags `<connectionString>` und `<\connectionString>`.
+* Die Verbindungszeichenfolge der Anwendung zwischen den Tags `<connectionString>` and `<\connectionString>`.
 
 Wenn Sie sie stattdessen zur Laufzeit angeben möchten, können Sie die folgende Methode vor der Initialisierung des Engagement-Agent aufrufen:
 
@@ -292,8 +296,8 @@ Wenn Sie sie stattdessen zur Laufzeit angeben möchten, können Sie die folgende
 
 Die Verbindungszeichenfolge für die Anwendung wird im klassischen Azure-Portal angezeigt.
 
-### Namensänderung von Elementen
-Alle Elemente namens *capptain* wurden in *engagement* umbenannt. Dasselbe gilt für die Umbenennung von *Capptain* in *Engagement*.
+### <a name="items-name-change"></a>Namensänderung von Elementen
+Alle Elemente namens *capptain* wurden in *engagement* umbenannt. Ebenso wurden alle *Capptain*-Elemente in *Engagement* umbenannt.
 
 Beispiele für häufig verwendete Capptain-Elemente:
 
@@ -305,4 +309,9 @@ Beispiele für häufig verwendete Capptain-Elemente:
 
 Beachten Sie, dass sich die Umbenennung auch auf überschriebene Methoden auswirkt.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

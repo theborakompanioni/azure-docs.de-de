@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 99dfabcfcfcef69a43b45994cb4c729bd7faecff
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 1b0f5d61753df5860c4cc934ea2aad5175a41e16
 
 
 ---
@@ -54,9 +54,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
    
     Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 5. Erstellen Sie ein Ereignis/Programm (dadurch wird auch ein Asset erstellt). 
-6. Veröffentlichen Sie das Ereignis (dadurch wird ein OnDemand-Locator für das zugehörige Medienobjekt erstellt).  
-   
-    Vergewissern Sie sich, dass auf dem Streamingendpunkt, von dem aus Inhalte gestreamt werden sollen, mindestens eine reservierte Einheit für das Streaming vorhanden ist.
+6. Veröffentlichen Sie das Ereignis (dadurch wird ein OnDemand-Locator für das zugehörige Medienobjekt erstellt).    
 7. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Ereignis.
 8. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 9. Sie können das Ereignis und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
@@ -65,13 +63,12 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
 In diesem Lernprogramm wird das Azure-Portal verwendet, um die folgenden Aufgaben auszuführen: 
 
-1. Konfigurieren von Streamingendpunkten
-2. Erstellen eines Kanals, der zum Ausführen von Livecodierung aktiviert ist
-3. Abrufen der Erfassungs-URL, um sie dem Liveencoder bereitzustellen Diese URL wird vom Liveencoder verwendet, um den Datenstrom in den Kanal zu leiten. zu erstellen und zu verwalten.
-4. Erstellen eines Ereignisses/Programms (und eines Assets)
-5. Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs  
-6. Wiedergeben Ihrer Inhalte 
-7. Bereinigen
+1. Erstellen eines Kanals, der zum Ausführen von Livecodierung aktiviert ist
+2. Abrufen der Erfassungs-URL, um sie dem Liveencoder bereitzustellen Diese URL wird vom Liveencoder verwendet, um den Datenstrom in den Kanal zu leiten.
+3. Erstellen eines Ereignisses/Programms (und eines Assets)
+4. Veröffentlichen des Medienobjekts und Abrufen von Streaming-URLs  
+5. Wiedergeben Ihrer Inhalte
+6. Bereinigen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
@@ -80,28 +77,6 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
   Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Kontos](media-services-portal-create-account.md).
 * Sie benötigen eine Webcam und einen Encoder, von dem ein Single-Bitrate-Livedatenstrom gesendet wird.
-
-## <a name="configure-streaming-endpoints"></a>Konfigurieren von Streamingendpunkten
-Media Services umfasst die dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS und Smooth Streaming. Hierbei ist es nicht erforderlich, diese Streamingformate erneut zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
-
-Um die dynamische Paketerstellung nutzen zu können, ist mindestens eine Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte geliefert werden sollen.  
-
-Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie Ihr AMS-Konto aus.
-2. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**. 
-3. Klicken Sie auf den Standard-Streamingendpunkt. 
-   
-    Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
-4. Die Anzahl von Streamingeinheiten kann mithilfe des Schiebereglers **Streamingeinheiten** angegeben werden.
-   
-    ![Streamingeinheiten](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-streaming-units.png)
-5. Klicken Sie auf die Schaltfläche **Speichern** , um die Änderungen zu speichern.
-   
-   > [!NOTE]
-   > Es kann bis zu 20 Minuten dauern, bis die Zuordnung neuer Einheiten abgeschlossen ist.
-   > 
-   > 
 
 ## <a name="create-a-channel"></a>Erstellen eines KANALS
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option „Media Services“ aus, und klicken Sie dann auf den Media Services-Kontonamen.
@@ -172,6 +147,9 @@ Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für da
 ### <a name="createstartstop-events"></a>Erstellen, Starten und Beenden von Ereignissen
 Wenn der Datenstrom in den Kanal gelangt, können Sie das Streamingereignis starten, indem Sie ein Medienobjekt, ein Programm und einen Streaminglocator erstellen. Dadurch wird der Datenstrom archiviert und über den Streamingendpunkt für die Zuschauer verfügbar gemacht. 
 
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+
 Es gibt zwei Möglichkeiten, das Ereignis zu starten: 
 
 1. Klicken Sie auf der Seite **Kanal** auf **Liveereignis**, um ein neues Ereignis hinzuzufügen.
@@ -216,7 +194,7 @@ Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf *
 
 ## <a name="considerations"></a>Überlegungen
 * Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an „AMSLiveD at Microsoft.com“, wenn Sie einen Kanal für längere Zeit laufen lassen müssen.
-* Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
+* Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet.
 
 ## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.
@@ -229,6 +207,6 @@ Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf *
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

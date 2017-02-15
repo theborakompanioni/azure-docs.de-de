@@ -101,7 +101,7 @@ Wenn Sie ein neues Projekt erstellen, wird eine Datei `App.xaml.cs` generiert. D
 > 
 
 ## <a name="basic-reporting"></a>Grundlegende Berichterstellung
-### <a name="recommended-method-overload-your-phoneapplicationpage-classes"></a>Empfohlene Methode: Überladen der `PhoneApplicationPage`-Klassen
+### <a name="recommended-method--overload-your-phoneapplicationpage-classes"></a>Empfohlene Methode: Überladen der `PhoneApplicationPage`-Klassen
 Um den Bericht über alle Protokolle zu aktivieren, die zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken durch Engagement erforderlich sind, können Sie einfach alle Ihre `PhoneApplicationPage`-Unterklassen von den `EngagementPage`-Klassen erben lassen.
 
 Hier ist ein Beispiel für eine Seite Ihrer Anwendung. Das Gleiche gilt für alle Seiten der Anwendung.

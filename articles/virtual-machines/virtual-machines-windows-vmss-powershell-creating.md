@@ -1,39 +1,44 @@
 ---
-title: Erstellen von Skalierungsgruppen virtueller Computer mit PowerShell-Cmdlets | Microsoft Docs
+title: Erstellen von VM-Skalierungsgruppe mit PowerShell-Cmdlets | Microsoft Docs
 description: Erste Schritte zum Erstellen und Verwalten von Azure-VM-Skalierungsgruppen mit Azure PowerShell-Cmdlets
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: danielsollondon
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 430d9d64-1f35-48f0-a4fd-9b69910ffa59
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2016
+ms.date: 09/29/2016
 ms.author: danielsollondon
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 14f83c6753ce37639b1b2f78a4c632f1d69f585d
+
 
 ---
-# Erstellen von Skalierungsgruppen virtueller Computer mit PowerShell-Cmdlets
+# <a name="creating-virtual-machine-scale-sets-using-powershell-cmdlets"></a>Erstellen von Skalierungsgruppen virtueller Computer mit PowerShell-Cmdlets
 Dies ist ein Beispiel für das Erstellen einer Skalierungsgruppe virtueller Computer (Virtual Machine Scale Set, VMSS), in dem eine VMSS aus 3 Knoten mit zugeordnetem Netzwerk und Speicher erstellt wird.
 
-## Erste Schritte
-Stellen Sie sicher, dass Sie das neueste Azure PowerShell-Modul installiert haben, das die erforderlichen PowerShell-Cmdlets zum Verwalten und Erstellen der VMSS enthält. Wechseln Sie [hier](http://aka.ms/webpi-azps) zu den Befehlszeilentools, um auf die aktuellen verfügbaren Azure-Module zuzugreifen.
+## <a name="first-steps"></a>Erste Schritte
+Stellen Sie sicher, dass Sie das neueste Azure PowerShell-Modul installiert haben, das die erforderlichen PowerShell-Cmdlets zum Verwalten und Erstellen der VMSS enthält.
+Wechseln Sie [hier](http://aka.ms/webpi-azps) zu den Befehlszeilentools, um auf die aktuellen verfügbaren Azure-Module zuzugreifen.
 
-Um auf VMSS bezogene Cmdlets zu suchen, verwenden Sie die Zeichenfolge *VMSS*.
+Um VMSS bezogene Cmdlets zu suchen, verwenden Sie die Zeichenfolge \*VMSS\*.
 
-## Erstellen einer VMSS
-##### Ressourcengruppe erstellen
+## <a name="creating-a-vmss"></a>Erstellen einer VMSS
+##### <a name="create-resource-group"></a>Ressourcengruppe erstellen
 ```
 $loc = 'westus';
 $rgname = 'mynewrgwu';
   New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 ```
 
-##### Speicherkonto erstellen
+##### <a name="create-storage-account"></a>Speicherkonto erstellen
 Legen Sie Typ/Namen des Speicherkontos fest.
 
 ```
@@ -44,23 +49,23 @@ $stotype = 'Standard_LRS';
 $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
 ```
 
-#### Erstellen des Netzwerks (VNET/Subnetz)
-##### Subnetzspezifikation
+#### <a name="create-networking-vnet--subnet"></a>Erstellen des Netzwerks (VNET/Subnetz)
+##### <a name="subnet-specification"></a>Subnetzspezifikation
 ```
 $subnetName = 'websubnet'
   $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
 ```
 
-##### VNET-Spezifikation
+##### <a name="vnet-specification"></a>VNET-Spezifikation
 ```
-$vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+$vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
 
 #In this case below we assume the new subnet is the only one, note difference if you have one already or have adjusted this code to more than one subnet.
 $subnetId = $vnet.Subnets[0].Id;
 ```
 
-##### Erstellen von öffentlichen IP-Ressourcen, um externen Zugriff zu ermöglichen
+##### <a name="create-public-ip-resource-to-allow-external-access"></a>Erstellen von öffentlichen IP-Ressourcen, um externen Zugriff zu ermöglichen
 Dies ist an den Load Balancer gebunden.
 
 ```
@@ -68,7 +73,7 @@ $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGr
 $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 ```
 
-##### Erstellen und Konfigurieren des Load Balancers
+##### <a name="create-and-configure-load-balancer"></a>Erstellen und Konfigurieren des Load Balancers
 ```
 $frontendName = 'fe' + $rgname
 $backendAddressPoolName = 'bepool' + $rgname
@@ -81,7 +86,7 @@ $lbName = 'vmsslb' + $rgname
 $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
 ```
 
-##### Konfigurieren des Load Balancers
+##### <a name="configure-load-balancer"></a>Konfigurieren des Load Balancers
 Erstellen Sie die Back-End-Adresspool-Konfiguration. Sie wird von den NICs der VMs in der VMSS gemeinsam genutzt.
 
 ```
@@ -131,7 +136,7 @@ $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Lo
 $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
-##### Konfigurieren und Erstellen von VMSS
+##### <a name="configure-and-create-vmss"></a>Konfigurieren und Erstellen von VMSS
 Beachten Sie, dass dieses Infrastrukturbeispiel zeigt, wie die Verteilung und Skalierung des Webdatenverkehrs über die VMSS eingerichtet wird, aber für die hier angegebenen Images der VMs werden keine Webdienste installiert.
 
 ```
@@ -164,9 +169,6 @@ $ipCfg = New-AzureRmVmssIPConfig -Name 'nic' `
 -LoadBalancerInboundNatPoolsId $actualLb.InboundNatPools[0].Id `
 -LoadBalancerBackendAddressPoolsId $actualLb.BackendAddressPools[0].Id `
 -SubnetId $subnetId;
-
-$ipCfg.LoadBalancerBackendAddressPools.Add($actualLb.BackendAddressPools[0].Id);
-$ipCfg.LoadBalancerInboundNatPools.Add($actualLb.InboundNatPools[0].Id);
 ```
 
 Erstellen der VMSS-Konfiguration
@@ -198,4 +200,8 @@ VM1 : pubipmynewrgwu.westus.cloudapp.azure.com:3361
 VM2 : pubipmynewrgwu.westus.cloudapp.azure.com:3362
 ```
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

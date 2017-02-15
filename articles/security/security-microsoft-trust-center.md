@@ -1,22 +1,26 @@
 ---
 title: Microsoft Trust Center | Microsoft Docs
-description: Im Microsoft Trust Center finden Sie die Informationen, anhand derer Sie sicher sein können, dass die Azure-Plattform, auf der Sie Ihre Dienste ausführen, auch sicher ist.
+description: "Im Microsoft Trust Center finden Sie die Informationen, anhand derer Sie sicher sein können, dass die Azure-Plattform, auf der Sie Ihre Dienste ausführen, auch sicher ist."
 services: security
 documentationcenter: na
 author: TomShinder
 manager: MBaldwin
 editor: TomSh
-
+ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/09/2016
+ms.date: 11/18/2016
 ms.author: terrylan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 8da0e117c206bfcec2f343c6d250de74fd886b02
+
 
 ---
-# Microsoft Trust Center
+# <a name="microsoft-trust-center"></a>Microsoft Trust Center
 Die Website für Informationen zur Azure-Sicherheit auf „Azure.com“ enthält die Angaben, die Sie zum sicheren Planen, Entwerfen, Bereitstellen, Konfigurieren und Verwalten Ihrer Cloudlösungen benötigen. Im Microsoft Trust Center finden Sie darüber hinaus die Informationen, mit denen Sie sicherstellen können, dass die Azure-Plattform, auf der Sie Ihre Dienste ausführen, auch sicher ist.
 
 Denn wir wissen: Wenn Sie Ihre Anwendungen und Daten Azure anvertrauen, stellen sich bestimmte Fragen. Wo befinden sie sich? Wer kann auf sie zugreifen? Wie werden sie von Microsoft geschützt? Wie können Sie überprüfen, ob Microsoft hält, was es verspricht?
@@ -36,4 +40,8 @@ Im Microsoft Trust Center finden Sie Folgendes:
 
 Im [Microsoft Trust Center](https://www.microsoft.com/trustcenter) finden Sie alle Informationen, die Sie benötigen, um zu verstehen, wie wir die Microsoft Cloud sichern.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

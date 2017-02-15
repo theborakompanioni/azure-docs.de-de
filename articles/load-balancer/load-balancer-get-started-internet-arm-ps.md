@@ -147,7 +147,7 @@ Gehen Sie dazu folgendermaßen vor:
     $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-3. Erstellen Sie eine Load Balancer-Regel.
+3. Erstellen Sie eine Load Balancer-Regel.
 
     ```powershell
     $lbrule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80

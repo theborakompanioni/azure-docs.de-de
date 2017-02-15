@@ -1,26 +1,30 @@
 ---
 title: Bereitstellen von Computeressourcen mit Azure Resource Manager-Vorlagen | Microsoft Docs
-description: .NET Core-Tutorial für virtuelle Azure-Computer
+description: ".NET Core-Tutorial für virtuelle Azure-Computer"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 1c4d419e-ba0e-45e4-a9dd-7ee9975a86f9
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/21/2016
+ms.date: 11/21/2016
 ms.author: nepeters
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 17aa03a3fef2bf3b4d933e7653656d58994321e7
+
 
 ---
 # <a name="application-architecture-with-azure-resource-manager-templates"></a>Anwendungsarchitektur mit Azure Resource Manager-Vorlagen
 Beim Entwickeln einer Azure Resource Manager-Bereitstellung müssen Computeanforderungen Azure-Ressourcen und -Diensten zugeordnet werden. Wenn eine Anwendung aus mehreren HTTP-Endpunkten, einer Datenbank und einem Cachedienst für Daten besteht, müssen die Azure-Ressourcen, auf denen diese Komponenten gehostet werden, rationalisiert werden. Die Music Store-Beispielanwendung enthält beispielsweise eine Webanwendung, die auf einem virtuellen Computer gehostet wird, sowie eine SQL-Datenbank, die in Azure SQL-Datenbank gehostet wird. 
 
-In diesem Dokument erfahren Sie, wie die Music Store-Computeressourcen in der Azure Resource Manager-Beispielvorlage konfiguriert werden. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie unter [Music Store Deployment on Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)(Music Store-Bereitstellung unter Ubuntu).
+In diesem Dokument erfahren Sie, wie die Music Store-Computeressourcen in der Azure Resource Manager-Beispielvorlage konfiguriert werden. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie unter [Music Store Deployment on Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)(Music Store-Bereitstellung unter Ubuntu). 
 
 ## <a name="virtual-machine"></a>Virtual Machine
 Die Music Store-Anwendung enthält eine Webanwendung, mit der Kunden nach Musik suchen und diese kaufen können. Es gibt mehrere Azure-Dienste, mit denen Webanwendungen gehostet werden können. In diesem Beispiel wird ein virtueller Computer verwendet. Mit der Music Store-Beispielvorlage wird ein virtueller Computer bereitgestellt, ein Webserver installiert und die Music Store-Website installiert und konfiguriert. Für diesen Artikel gehen wir nur auf die Bereitstellung des virtuellen Computers ein. Die Konfiguration des Webservers und der Anwendung wird in einem nachfolgenden Artikel beschrieben.
@@ -29,7 +33,7 @@ Ein virtueller Computer kann einer Vorlage mit dem Visual Studio-Assistenten „
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Virtual Machine JSON](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L295)(JSON-Code für virtuellen Computer).
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Compute/virtualMachines",
@@ -64,7 +68,7 @@ Speicherkonten verfügen über viele Speicheroptionen und -funktionen. Im Kontex
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Storage Account](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L109)(Speicherkonto).
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Storage/storageAccounts",
@@ -76,14 +80,14 @@ Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter
   "properties": {
     "accountType": "[variables('vhdStorageType')]"
   }
-},
+}
 ```
 
 Ein Speicherkonto ist einem virtuellen Computer in der Resource Manager-Vorlagendeklaration des virtuellen Computers zugeordnet. 
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Virtual Machine and Storage Account association](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L341)(Zuordnung von virtuellem Computer und Speicherkonto).
 
-```none
+```json
 "osDisk": {
   "name": "osdisk",
   "vhd": {
@@ -109,7 +113,7 @@ Wenn für einen virtuellen Computer eine interne Vernetzung erforderlich ist, z.
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Virtual Network and Subnets](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L136)(Virtuelles Netzwerk und Subnetze).
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/virtualNetworks",
@@ -151,7 +155,7 @@ Im Azure-Portal sieht das virtuelle Netzwerk wie in der folgenden Abbildung aus.
 
  Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Network Interface](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L166)(Netzwerkschnittstelle).
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/networkInterfaces",
@@ -200,7 +204,7 @@ Jede Ressource eines virtuellen Computers enthält ein Netzwerkprofil. Die Netzw
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Virtual Machine Network Profile](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L350)(Netzwerkprofil für virtuellen Computer).
 
-```none
+```json
 "networkProfile": {
   "networkInterfaces": [
     {
@@ -221,9 +225,9 @@ Zusätzlich zu einem virtuellen Computer, auf dem die Music Store-Website gehost
 
 Sie können eine Azure SQL-Datenbank mit dem Visual Studio-Assistenten „Neue Ressource hinzufügen“ hinzufügen, oder Sie können gültigen JSON-Code in eine Vorlage einfügen. Die SQL Server-Ressource enthält einen Benutzernamen mit Kennwort, für den Administratorrechte für die SQL-Instanz gewährt werden. Außerdem wird eine SQL-Firewallressource hinzugefügt. Standardmäßig können in Azure gehostete Anwendungen eine Verbindung mit der SQL-Instanz herstellen. Damit externe Anwendungen, z.B. SQL Server Management Studio, eine Verbindung mit der SQL-Instanz herstellen können, muss die Firewall konfiguriert werden. Für das Music Store-Demo ist die Standardkonfiguration geeignet. 
 
-Folgen Sie diesem Link, um das JSON-Beispiel innerhalb der Resource Manager-Vorlage anzuzeigen: [Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L401).
+Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie unter [Azure SQL-DB](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L401).
 
-```none
+```json
 {
   "apiVersion": "2014-04-01-preview",
   "type": "Microsoft.Sql/servers",
@@ -265,8 +269,11 @@ Weitere Informationen zum Bereitstellen von Azure SQL-Datenbank finden Sie unter
 ## <a name="next-step"></a>Nächster Schritt
 <hr>
 
-[Schritt 2: Zugriff und Sicherheit in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-3-access-security.md)
+[Schritt 2: Zugriff und Sicherheit in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

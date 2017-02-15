@@ -109,6 +109,6 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

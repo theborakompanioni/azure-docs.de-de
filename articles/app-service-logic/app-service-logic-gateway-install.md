@@ -1,12 +1,12 @@
 ---
-title: Logik-Apps installieren lokales Datengateway | Microsoft Docs
-description: Informationen zum Installieren des lokalen Datengateways für die Verwendung in einer Logik-App.
+title: "Installieren des lokalen Datengateways für Logik-Apps | Microsoft-Dokumentation"
+description: "Informationen zum Installieren des lokalen Datengateways für die Verwendung in einer Logik-App."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
 ms.devlang: multiple
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/05/2016
 ms.author: jehollan
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ddd62d3112a2c93ea3c935ce89ff387049899c09
+
 
 ---
 # <a name="install-the-on-premises-data-gateway-for-logic-apps"></a>Installieren des lokalen Datengateways für Logik-Apps
@@ -82,7 +86,7 @@ Die Firewall könnte auch die Verbindungen blockieren, die Azure Service Bus zu 
 ### <a name="configure-ports"></a>Konfigurieren von Ports
 Das Gateway stellt eine ausgehende Verbindung mit dem Azure Service Bus her. Es kommuniziert über ausgehende Ports: TCP 443 (Standard), 5671 5672, 9350 bis 9354. Das Gateway benötigt keine eingehenden Ports.
 
-Hier erfahren Sie mehr über [Hybridlösungen](../service-bus/service-bus-fundamentals-hybrid-solutions.md).
+Hier erfahren Sie mehr über [Hybridlösungen](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
 
 | DOMÄNENNAMEN | AUSGEHENDE PORTS | Beschreibung |
 | --- | --- | --- |
@@ -142,7 +146,7 @@ Sie können mithilfe des Drittanbietertools Azure Speed Test-App messen, wie hoc
 **Frage**: Wo werden meine Anmeldeinformationen gespeichert ? <br/>
 **Antwort**: Die Anmeldeinformationen, die Sie für eine Datenquelle eingeben, werden verschlüsselt im Gatewayclouddienst gespeichert. Die Anmeldeinformationen werden lokal im Gateway entschlüsselt.
 
-### <a name="high-availability/disaster-recovery"></a>Hohe Verfügbarkeit/Notfallwiederherstellung
+### <a name="high-availabilitydisaster-recovery"></a>Hohe Verfügbarkeit/Notfallwiederherstellung
 **Frage**: Gibt es Pläne, mit dem Gateway Szenarien mit hoher Verfügbarkeit zu aktivieren? <br/>
 **Antwort**: Dies ist in der Roadmap enthalten, aber wir haben dafür noch keinen Zeitplan.
 
@@ -175,7 +179,7 @@ Wenn ein Benutzer mit einem Element interagiert, das mit einer lokalen Datenquel
 ### <a name="update-to-the-latest-version"></a>Update auf die aktuelle Version
 Eine Vielzahl von Problemen kann auftreten, wenn die Gatewayversion veraltet ist.  Es hat sich allgemein bewährt, sicherzustellen, dass Sie die aktuelle Version installiert haben.  Wenn Sie das Gateway für einen Monat oder länger nicht aktualisiert haben, sollten Sie in Betracht ziehen, die neueste Version des Gateways zu installieren und festzustellen, ob Sie das Problem reproduzieren können.
 
-### <a name="error:-failed-to-add-user-to-group.-(-2147463168-pbiegwservice-performance-log-users-)"></a>Fehler: Fehler beim Hinzufügen des Benutzers zur Gruppe. (-2147463168 PBIEgwService Leistungsprotokollbenutzer)
+### <a name="error-failed-to-add-user-to-group--2147463168-pbiegwservice-performance-log-users-"></a>Fehler: Fehler beim Hinzufügen des Benutzers zur Gruppe. (-2147463168 PBIEgwService Leistungsprotokollbenutzer)
 Dieser Fehler kann angezeigt werden, wenn Sie versuchen, das Gateway auf einem Domänencontroller zu installieren, der nicht unterstützt wird. Sie müssen das Gateway auf einem Computer bereitstellen, der kein Domänencontroller ist.
 
 ## <a name="tools"></a>Tools
@@ -202,6 +206,9 @@ Datenverwaltungsgateway- und PowerBIGateway-Protokoll befinden sich unter **Anwe
 * [Unternehmensintegrationsfeatures](app-service-logic-enterprise-integration-overview.md)
 * [Logik-Apps-Connectors](../connectors/apis-list.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,23 +1,29 @@
 ---
-title: Code für XEvent-Ringpuffer für SQL-Datenbank | Microsoft Docs
-description: Zeigt ein Transact-SQL-Codebeispiel (für Azure SQL-Datenbank), das durch die Verwendung des Ringpufferziels eine einfache und schnelle Methode zum Erfassen und Ausgeben von Daten bietet.
+title: "Code für XEvent-Ringpuffer für SQL-Datenbank | Microsoft Docs"
+description: "Zeigt ein Transact-SQL-Codebeispiel (für Azure SQL-Datenbank), das durch die Verwendung des Ringpufferziels eine einfache und schnelle Methode zum Erfassen und Ausgeben von Daten bietet."
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: MightyPen
 manager: jhubbard
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 2510fb3f-c8f2-437a-8f49-9d5f6c96e75b
 ms.service: sql-database
+ms.custom: monitor and tune
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/03/2017
 ms.author: genemi
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4421506f516e6a65b7ff9207ce13dfb86e7c3540
+
 
 ---
-# Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
+
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 Sie suchen ein vollständiges Codebeispiel für die einfachste schnelle Möglichkeit zum Erfassen und Melden von Informationen für erweiterte Ereignisse während eines Tests. Das einfachste Ziel für erweiterte Ereignisdaten ist das [Ringpufferziel](http://msdn.microsoft.com/library/ff878182.aspx).
@@ -25,38 +31,41 @@ Sie suchen ein vollständiges Codebeispiel für die einfachste schnelle Möglich
 In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufgaben ausgeführt werden:
 
 1. Erstellen einer Tabelle mit Daten zur Veranschaulichung.
-2. Erstellen einer Sitzung für ein vorhandenes erweitertes Ereignis (**sqlserver.sql\_statement\_starting**).
+2. Erstellen einer Sitzung für ein vorhandenes erweitertes Ereignis (**sqlserver.sql_statement_starting**).
    
    * Das Ereignis ist auf SQL-Anweisungen beschränkt, die eine bestimmte Update-Zeichenfolge enthalten: **statement LIKE '%UPDATE tabEmployee%'**.
-   * Senden der Ausgabe des Ereignisses an ein Ziel vom Typ Ringpuffer (**package0.ring\_buffer**).
+   * Senden der Ausgabe des Ereignisses an ein Ziel vom Typ Ringpuffer (**package0.ring_buffer**).
 3. Starten der Ereignissitzung.
 4. Ausgeben einer Reihe einfacher SQL UPDATE-Anweisungen.
 5. Ausgeben einer SQL SELECT-Anweisung, um die Ereignisausgabe vom Ringpuffer abzurufen.
    
-   * **sys.dm\_xe\_database\_session\_targets** und andere dynamische Verwaltungssichten (DMVs) werden verknüpft.
+   * **sys.dm_xe_database_session_targets** und andere dynamische Verwaltungssichten (DMVs) werden verknüpft.
 6. Anhalten der Ereignissitzung.
 7. Verwerfen des Ringpufferziels, um die zugehörigen Ressourcen freizugeben.
 8. Verwerfen der Ereignissitzung und der Demotabelle.
 
-## Voraussetzungen
-* Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
   * Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](sql-database-get-started.md).
-* SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
+* SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion. 
+  Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
   
   * Im Thema [Herunterladen von SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
   * [Über diesen direkten Link zum Herunterladen.](http://go.microsoft.com/fwlink/?linkid=616025)
 
-## Codebeispiel
-Das folgende Codebeispiel für einen Ringpuffer kann mit kleineren Änderungen sowohl für Azure SQL-Datenbank als auch für Microsoft SQL Server ausgeführt werden. Der Unterschied besteht im Vorhandensein des Knotens „\_database“ im Namen einiger dynamischer Verwaltungssichten (DMVs) in der FROM-Klausel in Schritt 5. Beispiel:
+## <a name="code-sample"></a>Codebeispiel
 
-* sys.dm\_xe**\_database**\_session\_targets
-* sys.dm\_xe\_session\_targets
+Das folgende Codebeispiel für einen Ringpuffer kann mit kleineren Änderungen sowohl für Azure SQL-Datenbank als auch für Microsoft SQL Server ausgeführt werden. Der Unterschied besteht im Vorhandensein des Knotens „_database“ im Namen einiger dynamischer Verwaltungssichten (DMVs) in der FROM-Klausel in Schritt 5. Beispiel:
+
+* sys.dm_xe**_database**_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 
-```
+```tsql
 GO
 ----  Transact-SQL.
 ---- Step set 1.
@@ -209,14 +218,15 @@ GO
 
 &nbsp;
 
-## Ringpufferinhalte
+## <a name="ring-buffer-contents"></a>Ringpufferinhalte
+
 Zum Ausführen des Codebeispiels wurde "ssms.exe" verwendet.
 
-Um die Ergebnisse anzuzeigen, haben wir auf die Zelle unterhalb der Spaltenüberschrift **target\_data\_XML** geklickt.
+Um die Ergebnisse anzuzeigen, haben wir auf die Zelle unterhalb der Spaltenüberschrift **target_data_XML** geklickt.
 
-Anschließend haben wir im Ergebnisbereich auf die Zelle unterhalb der Spaltenüberschrift **target\_data\_XML** geklickt. Mit diesem Klicken wurde in „ssms.exe“ eine weitere Dateiregisterkarte erstellt, auf welcher der Inhalt der Ergebniszelle angezeigt wurde (als XML).
+Anschließend haben wir im Ergebnisbereich auf die Zelle unterhalb der Spaltenüberschrift **target_data_XML** geklickt. Mit diesem Klicken wurde in „ssms.exe“ eine weitere Dateiregisterkarte erstellt, auf welcher der Inhalt der Ergebniszelle angezeigt wurde (als XML).
 
-Der folgende Block zeigt die Ausgabe. Wenngleich die Ausgabe lang erscheint, umfasst sie lediglich zwei **<event>**-Elemente.
+Der folgende Block zeigt die Ausgabe. Wenngleich die Ausgabe lang erscheint, umfasst sie lediglich zwei **<event>** -Elemente.
 
 &nbsp;
 
@@ -308,10 +318,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### Freigeben der von Ihrem Ringpuffer verwendeten Ressourcen
+#### <a name="release-resources-held-by-your-ring-buffer"></a>Freigeben der von Ihrem Ringpuffer verwendeten Ressourcen
+
 Wenn Sie mit der Verwendung Ihres Ringpuffers fertig sind, können Sie ihn entfernen und seine Ressourcen freigeben. Verwenden Sie dazu wie nachfolgend gezeigt einen **ALTER**-Befehl:
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     DROP TARGET package0.ring_buffer;
@@ -321,7 +332,7 @@ GO
 
 Die Definition Ihrer Ereignissitzung wird aktualisiert, jedoch nicht verworfen. Sie können zu einem späteren Zeitpunkt eine weitere Instanz des Ringpuffers zu Ihrer Ereignissitzung hinzufügen.
 
-```
+```tsql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
     ON DATABASE
     ADD TARGET
@@ -332,7 +343,8 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 ```
 
 
-## Weitere Informationen
+## <a name="more-information"></a>Weitere Informationen
+
 Hauptthemen für erweiterte Ereignisse in Azure SQL-Datenbank:
 
 * [Überlegungen zu erweiterten Ereignissen in SQL-Datenbank](sql-database-xevent-db-diff-from-svr.md): In diesem Thema werden verschiedene Aspekte im Zusammenhang mit erweiterten Ereignissen gegenübergestellt, die sich bei Azure SQL-Datenbank und Microsoft SQL Server unterscheiden.
@@ -348,4 +360,8 @@ Weitere Themen mit Codebeispielen für erweiterte Ereignisse finden Sie unter de
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

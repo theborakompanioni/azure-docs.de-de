@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with Pacific Timesheet | Microsoft Docs'
-description: Learn how to configure single sign-on between Azure Active Directory and Pacific Timesheet.
+title: 'Tutorial: Azure Active Directory-Integration mit Pacific Timesheet | Microsoft Docs'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Pacific Timesheet konfigurieren.
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: jeevansd
 manager: femila
-editor: ''
-
+editor: 
+ms.assetid: e546e8ba-821a-4942-9545-c84b0670beab
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,195 +14,199 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/06/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3e6982023a40d0794ab1285302f48047e68c499d
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-pacific-timesheet"></a>Tutorial: Azure Active Directory integration with Pacific Timesheet
-In this tutorial, you learn how to integrate Pacific Timesheet with Azure Active Directory (Azure AD).
+# <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Tutorial: Azure Active Directory-Integration mit Pacific Timesheet
+In diesem Tutorial erfahren Sie, wie Sie Pacific Timesheet in Azure Active Directory (Azure AD) integrieren.
 
-Integrating Pacific Timesheet with Azure AD provides you with the following benefits:
+Die Integration von Pacific Timesheet in Azure AD bietet Ihnen folgende Vorteile:
 
-* You can control in Azure AD who has access to Pacific Timesheet
-* You can enable your users to automatically get signed-on to Pacific Timesheet (Single Sign-On) with their Azure AD accounts
-* You can manage your accounts in one central location - the Azure classic portal
+* Sie können in Azure AD steuern, wer auf Pacific Timesheet Zugriff hat
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Pacific Timesheet anzumelden (einmaliges Anmelden)
+* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Prerequisites
-To configure Azure AD integration with Pacific Timesheet, you need the following items:
+## <a name="prerequisites"></a>Voraussetzungen
+Um die Azure AD-Integration mit Pacific Timesheet konfigurieren zu können, benötigen Sie Folgendes:
 
-* An Azure AD subscription
-* A **Pacific Timesheet** single-sign on enabled subscription
+* Ein Azure AD-Abonnement
+* Ein **Pacific Timesheet-Abonnement**, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
-> To test the steps in this tutorial, we do not recommend using a production environment.
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 > 
 > 
 
-To test the steps in this tutorial, you should follow these recommendations:
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* You should not use your production environment, unless this is necessary.
-* If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
+* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Adding Pacific Timesheet from the gallery
-2. Configuring and testing Azure AD single sign-on
+1. Hinzufügen von Pacific Timesheet aus dem Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-pacific-timesheet-from-the-gallery"></a>Adding Pacific Timesheet from the gallery
-To configure the integration of Pacific Timesheet into Azure AD, you need to add Pacific Timesheet from the gallery to your list of managed SaaS apps.
+## <a name="adding-pacific-timesheet-from-the-gallery"></a>Hinzufügen von Pacific Timesheet aus dem Katalog
+Zum Konfigurieren der Integration von Pacific Timesheet in Azure AD müssen Sie Pacific Timesheet aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**To add Pacific Timesheet from the gallery, perform the following steps:**
+**Um Pacific Timesheet aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
    
     ![Active Directory][1]
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Applications][2]
-4. Click **Add** at the bottom of the page.
+    ![Anwendungen][2]
+4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Applications][3]
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+    ![Anwendungen][3]
+5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Applications][4]
-6. In the search box, type **Pacific Timesheet**.
+    ![Anwendungen][4]
+6. Geben Sie **Pacific Timesheet** in das Suchfeld ein.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_01.png)
-7. In the results pane, select **Pacific Timesheet**, and then click **Complete** to add the application.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_01.png)
+7. Wählen Sie im Ergebnisbereich die Option **Pacific Timesheet** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_02.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with Pacific Timesheet based on a test user called "Britta Simon".
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Pacific Timesheet.
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Pacific Timesheet is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Pacific Timesheet needs to be established.
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Pacific Timesheet. To configure and test Azure AD single sign-on with Pacific Timesheet, you need to complete the following building blocks:
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Pacific Timesheet als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Pacific Timesheet muss eine Linkbeziehung eingerichtet werden.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD dem **Benutzernamen** in Pacific Timesheet zuweisen. Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Pacific Timesheet müssen Sie die folgenden Schritte durchführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a Pacific Timesheet test user](#creating-a-pacific-timesheet-test-user)** - to have a counterpart of Britta Simon in Pacific Timesheet that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Pacific Timesheet-Testbenutzers](#creating-a-pacific-timesheet-test-user)**, um eine Entsprechung von Britta Simon in Pacific Timesheet zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Pacific Timesheet application.
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer Pacific Timesheet-Anwendung zu konfigurieren.
 
-**To configure Azure AD single sign-on with Pacific Timesheet, perform the following steps:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pacific Timesheet die folgenden Schritte aus:**
 
-1. In the menu on the top, click **Quick Start**.
+1. Klicken Sie im oberen Menü auf **Schnellstart**.
    
-    ![Configure Single Sign-On][6]
-2. In the classic portal, on the **Pacific Timesheet** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+    ![Einmaliges Anmelden konfigurieren][6]
+2. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Pacific Timesheet** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Configure Single Sign-On][7] 
-3. On the **How would you like users to sign on to Pacific Timesheet** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    ![Einmaliges Anmelden konfigurieren][7] 
+3. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Pacific Timesheet anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Configure Single Sign-On](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_06.png)
-4. On the **Configure App Settings** dialog page, configure the application in **IDP initiated mode**, perform the following steps:
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_06.png)
+4. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** die folgenden Schritte aus, um die Anwendung im **IDP-initiierten Modus** zu konfigurieren:
    
-    ![Configure Single Sign-On](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_07.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_07.png)
 
-    a. In the Identifier text box, type a URL using the following pattern: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`.
+    a. Geben Sie im Textfeld Bezeichner eine URL nach folgendem Muster ein: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
-    b. In the Reply URL text box, type a URL using the following pattern: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`.
+    b. Geben Sie im Textfeld für die Antwort-URL eine URL nach folgendem Muster ein: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`.
 
-    b. Click **Next**.
+    b. Klicken Sie auf **Weiter**.
 
-1. On the **Configure single sign-on at Pacific Timesheet** page. Click **Download certificate**, and then save the file on your computer.
+1. Auf der Seite **Einmaliges Anmelden an Pacific Timesheet konfigurieren**. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
-    ![Configure Single Sign-On](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_09.png)
-2. To get SSO configured for your application, contact Pacific Timesheet support team. Please note that you have to send email with the Issuer URL, the SAML SSO URL values from the **Configure single sign-on at Pacific Timesheet** page and attach downloaded certificate.
-3. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_09.png)
+2. Wenden Sie sich an das Supportteam von Pacific Timesheet, um SSO für Ihre Anwendung konfigurieren zu lassen. Bitte beachten Sie, dass Sie eine E-Mail mit der Aussteller-URL und der SAML SSO-URL von der Seite **Configure single sign-on at Pacific Timesheet** (Einmaliges Anmelden an Pacific Timesheet konfigurieren) senden und ein heruntergeladenes Zertifikat anhängen müssen.
+3. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
-    ![Azure AD Single Sign-On][10]
-4. On the **Single sign-on confirmation** page, click **Complete**.  
+    ![Azure AD – einmaliges Anmelden][10]
+4. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
-    ![Azure AD Single Sign-On][11]
+    ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-In this section, you create a test user in the classic portal called Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
-![Create Azure AD User][20]
+![Azure AD-Benutzer erstellen][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_09.png) 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To display the list of users, in the menu on the top, click **Users**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_09.png) 
+2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_03.png) 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_03.png) 
+4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_04.png) 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_04.png) 
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_05.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_05.png) 
    
-    a. As Type Of User, select New user in your organization.
+    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
    
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
    
-    c. Click **Next**.
-6. On the **User Profile** dialog page, perform the following steps:
+    c. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_06.png) 
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_06.png) 
    
-   a. In the **First Name** textbox, type **Britta**.  
+   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. In the **Last Name** textbox, type, **Simon**.
+   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. In the **Display Name** textbox, type **Britta Simon**.
+   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. In the **Role** list, select **User**.
+   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Click **Next**.
-7. On the **Get temporary password** dialog page, click **create**.
+   e. Klicken Sie auf **Weiter**.
+7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_07.png) 
-8. On the **Get temporary password** dialog page, perform the following steps:
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_07.png) 
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Creating an Azure AD test user](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_08.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-pacific-timesheet-tutorial/create_aaduser_08.png) 
    
-    a. Write down the value of the **New Password**.
+    a. Notieren Sie den Wert von **Neues Kennwort**.
    
-    b. Click **Complete**.   
+    b. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-a-pacific-timesheet-test-user"></a>Creating a Pacific Timesheet test user
-In this section, you create a user called Britta Simon in Pacific Timesheet. Please work with Pacific Timesheet support team to create a user in the application.
+### <a name="creating-a-pacific-timesheet-test-user"></a>Erstellen eines Pacific Timesheet-Testbenutzers
+In diesem Abschnitt erstellen Sie in Pacific Timesheet einen Benutzer mit dem Namen „Britta Simon“. Bitte wenden Sie sich an das Pacific Timesheet-Supportteam, um einen Benutzer in der Anwendung zu erstellen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Pacific Timesheet.
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf Pacific Timesheet gewähren.
 
-![Assign User][200] 
+![Benutzer zuweisen][200] 
 
-**To assign Britta Simon to Pacific Timesheet, perform the following steps:**
+**Um Britta Simon Pacific Timesheet zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Assign User][201] 
-2. In the applications list, select **Pacific Timesheet**.
+    ![Benutzer zuweisen][201] 
+2. Wählen Sie in der Anwendungsliste **Pacific Timesheet **aus.
    
-    ![Configure Single Sign-On](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_10.png) 
-3. In the menu on the top, click **Users**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-pacific-timesheet-tutorial/tutorial_pacific_timesheet_10.png) 
+3. Klicken Sie im oberen Menü auf **Benutzer**.
    
-    ![Assign User][203] 
-4. In the All Users list, select **Britta Simon**.
-5. In the toolbar on the bottom, click **Assign**.
+    ![Benutzer zuweisen][203] 
+4. Wählen Sie in der Liste „Alle Benutzer“ den Eintrag **Britta Simon**aus.
+5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
    
-    ![Assign User][205]
+    ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-When you click the Pacific Timesheet tile in the Access Panel, you should get automatically signed-on to your Pacific Timesheet application.
+Wenn Sie im Zugriffsbereich auf die Kachel Pacific Timesheet klicken, sollten Sie automatisch bei Ihrer Pacific Timesheet-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Additional resources
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -227,6 +231,6 @@ When you click the Pacific Timesheet tile in the Access Panel, you should get au
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

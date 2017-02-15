@@ -1,23 +1,27 @@
 ---
-title: Data Catalog – Entwicklerbeispiele | Microsoft Docs
-description: Dieser Artikel bietet eine Übersicht über die verfügbaren Entwicklerbeispiele für die REST-API für Data Catalog.
+title: "Data Catalog – Entwicklerbeispiele | Microsoft Docs"
+description: "Dieser Artikel bietet eine Übersicht über die verfügbaren Entwicklerbeispiele für die REST-API für Data Catalog."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: spelluru
-manager: ''
-editor: ''
-tags: ''
-
+manager: jhubbard
+editor: 
+tags: 
+ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/06/2016
+ms.date: 01/19/2017
 ms.author: spelluru
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 2e84eb020b46fe89426e547b389715d6190fc03c
+
 
 ---
-# Data Catalog – Entwicklerbeispiele
+# <a name="data-catalog-developer-samples"></a>Data Catalog – Entwicklerbeispiele
 Erste Schritte bei der Entwicklung von Data Catalog-Apps mittels der Data Catalog-REST-API. Die Data Catalog-REST-API ist eine REST-basierte API, die einen programmgesteuerten Zugriff auf Data Catalog-Ressourcen ermöglicht, um diese Datenressourcen programmgesteuert zu registrieren, zu kommentieren und zu durchsuchen.
 
 Hier sind die Beispiele, die auf GitHub zu finden sind:
@@ -32,4 +36,9 @@ Hier sind die Beispiele, die auf GitHub zu finden sind:
   
   Dieses Beispiel zeigt, wie Sie mithilfe der Data Catalog-REST-API Assets aus dem Azure Data Catalog abrufen und in einer Datei serialisieren. Zusätzlich veranschaulicht es, wie Sie JSON-serialisierte Assets in den Katalog schieben können. Es unterstützt das Exportieren einer Teilmenge des Katalogs mithilfe einer Suchabfrage.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

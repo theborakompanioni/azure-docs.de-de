@@ -15,8 +15,8 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 72e6b97415a0edf18c2ffcc654575dbfcd916c40
+ms.sourcegitcommit: 4fde1a22ac76306e79a68a37e110828da9a2ef13
+ms.openlocfilehash: 3cf2d8b19dd5785317a382dc429feda02d8a2f20
 
 
 ---
@@ -49,9 +49,9 @@ Sie können eine Logik-App auf verschiedene Weise über eine andere App auslöse
 * [Überwachen von Logik-Apps](app-service-logic-monitor-your-logic-apps.md)
 
 ## <a name="content-types-conversions-and-transformations"></a>Inhaltstypen, Konvertierungen und Transformationen
-Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logic Apps enthält viele Funktionen zum Konvertieren von und Arbeiten mit unterschiedlichen Inhaltstypen.  Darüber hinaus versucht das Modul, möglichst alle Inhaltstypen während des Workflows als Datenflüsse beizubehalten.
+Die [Definitionssprache für Workflows](http://aka.ms/logicappsdocs) in Logic Apps enthält viele Funktionen zum Konvertieren von und Arbeiten mit unterschiedlichen Inhaltstypen. Darüber hinaus versucht das Modul, möglichst alle Inhaltstypen während des Workflows als Datenflüsse beizubehalten.
 
-* [Behandeln von Inhaltstypen](app-service-logic-content-type.md) wie „application/json“, „application/xml“ und „plain/text“
+* [Behandeln von Inhaltstypen](app-service-logic-content-type.md) wie „application/json“, „application/xml“ und „text/plain“
 * [Erstellen von Logik-App-Definitionen](app-service-logic-author-definitions.md)
 * [Workflow Definition Language Reference (Referenz zur Definitionssprache für Workflows)](http://aka.ms/logicappsdocs)
 
@@ -74,6 +74,6 @@ Wir werden diesem Artikel weitere Beispiele und Szenarios hinzufügen. Im Bereic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,103 +1,116 @@
 ---
-title: Erstellen und Bereitstellen eines Clouddiensts| Microsoft Docs
-description: Erfahren Sie, wie Sie einen Clouddienst über das Azure-Portal erstellen und bereitstellen.
+title: Erstellen und Bereitstellen eines Clouddiensts| Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie einen Clouddienst über das Azure-Portal erstellen und bereitstellen."
 services: cloud-services
-documentationcenter: ''
+documentationcenter: 
 author: Thraka
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 11/14/2016
 ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: f57bdd0c1d8efc37b90430f829184eb3c44aede5
+ms.openlocfilehash: ea31150ef186c9bcd8c943e39a7cb51559e94bd2
+
 
 ---
-# Erstellen und Bereitstellen eines Clouddiensts
+# <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
 > [!div class="op_single_selector"]
 > * [Azure-Portal](cloud-services-how-to-create-deploy-portal.md)
-> * [Klassisches Azure-Portal](cloud-services-how-to-create-deploy.md)
-> 
-> 
+> * [klassischen Azure-Portal](cloud-services-how-to-create-deploy.md)
+>
+>
 
 Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
 
 In diesem Thema wird erläutert, wie Sie die Schnellerfassungsmethode zum Erstellen eines neuen Clouddiensts und dann **Hochladen** verwenden, um ein Clouddienstpaket in Azure hochzuladen und bereitzustellen. Wenn Sie diese Methode verwenden, werden im Azure-Portal praktische Links zum Erfüllen aller Anforderungen zur Verfügung gestellt. Wenn Sie Ihren Cloud-Dienst bei der Erstellung auch bereitstellen möchten, können Sie beides mithilfe von Benutzerdefinierte Erstellung durchführen.
 
 > [!NOTE]
-> Wenn Sie Ihren Clouddienst aus Visual Studio Team Services (VSTS) veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die VSTS-Veröffentlichung dann über Azur-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Fortlaufende Bereitstellung für Azure mithilfe von Visual Studio Team Services][TFSTutorialForCloudService] oder in der Hilfe zur **Schnellstart**-Seite.
-> 
-> 
+> Wenn Sie Ihren Clouddienst aus Visual Studio Team Services (VSTS) veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die VSTS-Veröffentlichung dann über Azur-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Continuous Delivery für Azure mithilfe von Visual Studio Team Services][TFSTutorialForCloudService] oder in der Hilfe zur **Schnellstart**-Seite.
+>
+>
 
-## Konzepte
+## <a name="concepts"></a>Konzepte
 Für die Bereitstellung einer Anwendung als Clouddienst in Azure sind drei Komponenten erforderlich:
 
-* **Dienstdefinition:** Die Clouddienst-Definitionsdatei (.csdef) definiert das Dienstmodell einschließlich der Rollenanzahl.
-* **Dienstkonfiguration:** Die Clouddienst-Konfigurationsdatei (.cscfg) enthält Konfigurationseinstellungen für den Clouddienst sowie einzelne Rollen, darunter die Anzahl der Rolleninstanzen.
-* **Dienstpaket:** Das Dienstpaket (.cspkg) enthält den Anwendungscode, die Konfigurationen und die Dienstdefinitionsdatei.
+* **Dienstdefinition:**  
+   Die Clouddienst-Definitionsdatei (.csdef) definiert das Dienstmodell einschließlich der Rollenanzahl.
+* **Dienstkonfiguration:**  
+   Die Clouddienst-Konfigurationsdatei (.cscfg) enthält Konfigurationseinstellungen für den Clouddienst sowie einzelne Rollen, darunter die Anzahl der Rolleninstanzen.
+* **Dienstpaket:**  
+   Das Dienstpaket (.cspkg) enthält den Anwendungscode, die Konfigurationen und die Dienstdefinitionsdatei.
 
 Weitere Informationen zu diesen Komponenten sowie zum Erstellen eines Pakets finden Sie [hier](cloud-services-model-and-package.md).
 
-## Vorbereiten Ihrer App
+## <a name="prepare-your-app"></a>Vorbereiten Ihrer App
 Bevor Sie einen Clouddienst bereitstellen können, müssen Sie das Clouddienstpaket (CSPKG) aus dem Anwendungscode und eine Clouddienstkonfigurationsdatei (CSCFG) erstellen. Das Azure-SDK stellt Tools zum Vorbereiten dieser erforderlichen Bereitstellungsdateien bereit. Sie können das SDK auf der Seite [Azure-Downloads](https://azure.microsoft.com/downloads/) in der Sprache herunterladen, in der Sie den Anwendungscode entwickeln möchten.
 
 Drei Clouddienstfunktionen benötigen vor dem Export eines Dienstpakets spezielle Konfigurationen:
 
-* Wenn Sie einen Clouddienst bereitstellen möchten, der Secure Sockets Layer (SSL) für die Datenverschlüsselung verwendet, [konfigurieren Sie die Anwendung für SSL](cloud-services-configure-ssl-certificate-portal.md#modify).
+* Wenn Sie einen Clouddienst bereitstellen möchten, der Secure Sockets Layer (SSL) für die Datenverschlüsselung verwendet, [konfigurieren Sie die Anwendung für SSL](cloud-services-configure-ssl-certificate-portal.md#modify) .
 * Wenn Sie Remotedesktopverbindungen zu Rolleninstanzen konfigurieren möchten, [konfigurieren Sie die Rollen](cloud-services-role-enable-remote-desktop.md) für Remotedesktop. Dies kann nur im klassischen Portal durchgeführt werden.
-* Wenn Sie die ausführliche Überwachung für den Clouddienst konfigurieren möchten, aktivieren Sie für den Clouddienst die Azure-Diagnose. *Minimale Überwachung* (die Standardüberwachungsstufe) verwendet Leistungsindikatoren, die aus den Hostbetriebssystemen für Rolleninstanzen (virtuelle Computer) erfasst wurden. Bei der *ausführlichen Überwachung* werden zusätzliche Kennzahlen basierend auf Leistungsdaten innerhalb der Rolleninstanzen erfasst, um eine genauere Analyse von Problemen zu ermöglichen, die während der Anwendungsverarbeitung auftreten. Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in Azure](cloud-services-dotnet-diagnostics.md).
+* Wenn Sie die ausführliche Überwachung für den Clouddienst konfigurieren möchten, aktivieren Sie für den Clouddienst die Azure-Diagnose. *Minimale Überwachung* (die Standardüberwachungsstufe) verwendet Leistungsindikatoren, die aus den Hostbetriebssystemen für Rolleninstanzen (virtuelle Computer) erfasst wurden. *ausführlichen Überwachung* werden zusätzliche Kennzahlen basierend auf Leistungsdaten innerhalb der Rolleninstanzen erfasst, um eine genauere Analyse von Problemen zu ermöglichen, die während der Anwendungsverarbeitung auftreten. Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in Azure](cloud-services-dotnet-diagnostics.md).
 
 Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#servicepackagecspkg), um einen Clouddienst mit Bereitstellungen von Webrollen oder Workerrollen zu erstellen.
 
-## Voraussetzungen
-* Falls Sie das Azure-SDK noch nicht installiert haben, klicken Sie auf **Azure-SDK installieren**, um die [Azure-Downloadseite](https://azure.microsoft.com/downloads/) zu öffnen. Laden Sie dann das SDK für die Sprache herunter, in der Sie den Code entwickeln möchten. (Dazu haben Sie auch später noch die Möglichkeit.)
-* Falls Rolleninstanzen ein Zertifikat erfordern, erstellen Sie die Zertifikate. Clouddienste erfordern eine PFX-Datei mit einem privaten Schlüssel. Sie können die [Zertifikate zu Azure hochladen](), wenn Sie den Clouddienst erstellen und bereitstellen.
+## <a name="before-you-begin"></a>Voraussetzungen
+* Falls Sie das Azure SDK noch nicht installiert haben, klicken Sie auf **Install Azure SDK** (Azure SDK installieren), um die [Azure-Downloadseite](https://azure.microsoft.com/downloads/) zu öffnen. Laden Sie dann das SDK für die Sprache herunter, in der Sie den Code entwickeln möchten. (Dazu haben Sie auch später noch die Möglichkeit.)
+* Falls Rolleninstanzen ein Zertifikat erfordern, erstellen Sie die Zertifikate. Clouddienste erfordern eine PFX-Datei mit einem privaten Schlüssel. [Zertifikate zu Azure hochladen]() , wenn Sie den Clouddienst erstellen und bereitstellen.
 * Wenn Sie den Clouddienst für eine Affinitätsgruppe bereitstellen möchten, erstellen Sie die Affinitätsgruppe. Sie können eine Affinitätsgruppe verwenden, um den Clouddienst und andere Azure-Dienste für den gleichen Standort in einer Region bereitzustellen. Sie können die Affinitätsgruppe im Bereich **Netzwerke** des klassischen Azure-Portals auf der Seite **Affinitätsgruppen** erstellen.
 
-## Erstellen und Bereitstellen
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+## <a name="create-and-deploy"></a>Erstellen und Bereitstellen
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie auf **Neu > Virtuelle Computer**, scrollen Sie nach unten zu **Clouddienst**, und klicken Sie auf diese Option.
-   
+
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Klicken Sie unten auf der angezeigten Informationsseite auf **Erstellen**.
 4. Geben Sie auf dem neuen Blatt **Clouddienst** einen Wert für **DNS-Name** ein.
-5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-6. Wählen Sie einen **Speicherort** aus.
-7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus.
-   
-     Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
+5. Erstellen Sie eine neue **Ressourcengruppe** , oder wählen Sie eine vorhandene Ressourcengruppe aus.
+6. Wählen Sie einen **Speicherort**aus.
+7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
+
+    > [!IMPORTANT]
+    > Clouddienste können nur [klassischen Speicherkonten](../resource-manager-deployment-model.md) zugeordnet werden. Wenn die Meldung angezeigt wird, dass keine Speicherkonten für Ihr Abonnement und den Speicherort gefunden wurden, stellen Sie sicher, dass Sie ein klassisches Speicherkonto für Ihren Clouddienst an diesem Speicherort erstellt haben.
+
 8. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
 9. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
 10. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
-    
+
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
-## Hochladen eines Zertifikats
-Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert](cloud-services-configure-ssl-certificate-portal.md#modify) wurde, können Sie das Zertifikat jetzt hochladen.
+## <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
+Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert](cloud-services-configure-ssl-certificate-portal.md#modify)wurde, können Sie das Zertifikat jetzt hochladen.
 
 1. Wählen Sie **Zertifikate**. Wählen Sie auf dem Blatt **Zertifikate hinzufügen** die PFX-Datei mit dem SSL-Zertifikat aus, und geben Sie das **Kennwort** für das Zertifikat ein.
 2. Klicken Sie auf **Zertifikat anfügen** und anschließend auf dem Blatt **Zertifikate hinzufügen** auf **OK**.
 3. Klicken Sie auf dem Blatt **Clouddienst** auf **Erstellen**. Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
-   
+
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
-## Überprüfen, ob Ihre Bereitstellung erfolgreich abgeschlossen wurde
+## <a name="verify-your-deployment-completed-successfully"></a>Überprüfen, ob Ihre Bereitstellung erfolgreich abgeschlossen wurde
 1. Klicken Sie auf die Instanz des Clouddiensts.
-   
-    Der Status sollte anzeigen, dass der Dienst **Ausgeführt** wird.
+
+    Der Status sollte anzeigen, dass der Dienst **Ausgeführt**wird.
 2. Klicken Sie unter **Essentials** auf die **Website-URL**, um den Clouddienst in einem Webbrowser zu öffnen.
-   
-    ![CloudServices\_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
+
+    ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

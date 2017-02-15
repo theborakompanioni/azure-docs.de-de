@@ -1,12 +1,12 @@
 ---
-title: Auswählen von Zeilen für die Migration mit einer Filterfunktion (Stretch-Datenbank) | Microsoft Docs
-description: Informationen zum Auswählen von Zeilen für die Migration mit einer Filterfunktion.
+title: "Auswählen von Zeilen für die Migration mit einer Filterfunktion (Stretch Database) | Microsoft Docs"
+description: "Informationen zum Auswählen von Zeilen für die Migration mit einer Filterfunktion."
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
-manager: ''
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: f5ef79d9-68ef-4394-a057-d7aac5706b72
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 76af756316523935cf04e19f12a3a1380d0f3a42
+
 
 ---
-# Auswählen von Zeilen für die Migration mit einer Filterfunktion (Stretch-Datenbank)
-Wenn Sie inaktive Daten in einer separaten Tabelle speichern, können Sie Stretch-Datenbank so konfigurieren, dass die gesamte Tabelle migriert wird. Wenn die Tabelle dagegen aktive und inaktive Daten enthält, können Sie eine Filterfunktion zum Auswählen der zu migrierenden Zeilen angeben. Das Filterprädikat ist eine Inline-Tabellenwertfunktion. In diesem Thema wird beschrieben, wie Sie eine Inline-Tabellenwertfunktion zum Auswählen von zu migrierenden Zeilen schreiben.
+# <a name="select-rows-to-migrate-by-using-a-filter-function-stretch-database"></a>Auswählen von Zeilen für die Migration mit einer Filterfunktion (Stretch-Datenbank)
+Wenn Sie inaktive Daten in einer separaten Tabelle speichern, können Sie Stretch-Datenbank so konfigurieren, dass die gesamte Tabelle migriert wird. Wenn die Tabelle dagegen aktive und inaktive Daten enthält, können Sie eine Filterfunktion zum Auswählen der zu migrierenden Zeilen angeben. Das Filterprädikat ist eine Inline\-Tabellenwertfunktion. In diesem Thema wird beschrieben, wie Sie eine Inline\-Tabellenwertfunktion zum Auswählen von zu migrierenden Zeilen schreiben.
 
 > [!NOTE]
 > Falls Sie eine Filterfunktion mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet die Filterfunktion mithilfe des CROSS APPLY-Operators auf die Tabelle an.
@@ -33,8 +37,8 @@ Wenn Sie den Assistenten zum Aktivieren einer Datenbank für Stretch ausführen,
 
 Die ALTER TABLE-Syntax für das Hinzufügen einer Funktion wird weiter unten in diesem Thema beschrieben.
 
-## Grundlegende Anforderungen für die Filterfunktion
-Die für ein Stretch-Datenbank-Filterprädikat erforderliche Inline-Tabellenwertfunktion sieht wie das folgende Beispiel aus.
+## <a name="basic-requirements-for-the-filter-function"></a>Grundlegende Anforderungen für die Filterfunktion
+Die für ein Stretch-Datenbank-Filterprädikat erforderliche Inline\-Tabellenwertfunktion sieht wie das folgende Beispiel aus.
 
 ```tsql
 CREATE FUNCTION dbo.fn_stretchpredicate(@column1 datatype1, @column2 datatype2 [, ...n])
@@ -48,10 +52,10 @@ Die Parameter für die Funktion müssen Bezeichner für Spalten der Tabelle sein
 
 Es ist eine Schemabindung erforderlich, um zu verhindern, dass die von der Filterfunktion verwendeten Spalten verworfen oder geändert werden.
 
-### Rückgabewert
+### <a name="return-value"></a>Rückgabewert
 Wenn die Funktion ein nicht leeres Ergebnis zurückgibt, ist die Zeile zur Migration berechtigt. Andernfalls – wenn die Funktion kein Ergebnis zurückgibt – ist die Zeile nicht zur Migration berechtigt.
 
-### Bedingungen
+### <a name="conditions"></a>Bedingungen
 Das &lt;*Prädikat*&gt; kann aus einer Bedingung oder mehreren Bedingungen bestehen, die mit dem logischen AND-Operator verknüpft sind.
 
 ```
@@ -63,7 +67,7 @@ Jede Bedingung kann wiederum aus einer primitiven Bedingung oder mehreren primit
 <condition> ::= <primitive_condition> [ OR <primitive_condition> ] [ ...n ]
 ```
 
-### Primitive Bedingungen
+### <a name="primitive-conditions"></a>Primitive Bedingungen
 Eine primitive Bedingung kann einen der folgenden Vergleiche ausführen.
 
 ```
@@ -96,7 +100,7 @@ Eine primitive Bedingung kann einen der folgenden Vergleiche ausführen.
 * Wenden Sie den Operator IS NULL oder IS NOT NULL auf einen Funktionsparameter an.
 * Verwenden Sie den IN-Operator, um einen Funktionsparameter mit einer Liste von konstanten Werten zu vergleichen.
   
-  Nachstehend sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *shipment\_status*-Spalte `IN (N'Completed', N'Returned', N'Cancelled')` ist.
+  Nachstehend sehen Sie ein Beispiel, in dem geprüft wird, ob der Wert einer *shipment_status\_-Spalte*`IN (N'Completed', N'Returned', N'Cancelled')` ist.
   
   ```tsql
   CREATE FUNCTION dbo.fn_stretchpredicate(@column1 nvarchar(15))
@@ -113,7 +117,7 @@ Eine primitive Bedingung kann einen der folgenden Vergleiche ausführen.
   ) )
   ```
 
-### Vergleichsoperatoren
+### <a name="comparison-operators"></a>Vergleichsoperatoren
 Die folgenden Vergleichsoperatoren werden unterstützt.
 
 `<, <=, >, >=, =, <>, !=, !<, !>`
@@ -122,7 +126,7 @@ Die folgenden Vergleichsoperatoren werden unterstützt.
 <comparison_operator> ::= { < | <= | > | >= | = | <> | != | !< | !> }
 ```
 
-### Konstante Ausdrücke
+### <a name="constant-expressions"></a>Konstante Ausdrücke
 Bei den Konstanten, die Sie in einer Filterfunktion verwenden, kann es sich um einen beliebigen deterministischen Ausdruck handeln, der beim Definieren der Funktion ausgewertet werden kann. Konstante Ausdrücke können Folgendes enthalten.
 
 * Literale. Beispiel: `N’abc’, 123`.
@@ -130,13 +134,13 @@ Bei den Konstanten, die Sie in einer Filterfunktion verwenden, kann es sich um e
 * Deterministische Funktionen. Beispiel: `SQRT(900)`.
 * Deterministische Konvertierungen, die CAST oder CONVERT verwenden. Beispiel: `CONVERT(datetime, '1/1/2016', 101)`.
 
-### Andere Ausdrücke.
+### <a name="other-expressions"></a>Andere Ausdrücke.
 Sie können die BETWEEN- und NOT BETWEEN-Operatoren verwenden, wenn die resultierende Funktion den hier beschriebenen Regeln entspricht, nachdem Sie die BETWEEN- und NOT BETWEEN-Operatoren durch die entsprechenden AND- und OR-Ausdrücke ersetzt haben.
 
 Sie können keine Unterabfragen oder nicht deterministische Funktionen wie RAND() oder GETDATE() verwenden.
 
-## Hinzufügen einer Filterfunktion zu einer Tabelle
-Fügen Sie einer Tabelle eine Filterfunktion hinzu, indem Sie die **ALTER TABLE**-Anweisung ausführen und eine vorhandene Inline-Tabellenwertfunktion als Wert des **FILTER\_PREDICATE**-Parameters angeben. Beispiel:
+## <a name="add-a-filter-function-to-a-table"></a>Hinzufügen einer Filterfunktion zu einer Tabelle
+Fügen Sie einer Tabelle eine Filterfunktion hinzu, indem Sie die **ALTER TABLE**-Anweisung ausführen und eine vorhandene Inline\-Tabellenwertfunktion als Wert des **FILTER\_PREDICATE**-Parameters angeben. Beispiel:
 
 ```tsql
 ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
@@ -149,15 +153,15 @@ Nachdem Sie die Funktion als Prädikat an die Tabelle gebunden haben, gelten die
 * Bei der nächsten Datenmigration werden nur die Zeilen migriert, für die die Funktion einen nicht leeren Wert zurückgibt.
 * Die von der Funktion verwendeten Spalten sind schemagebunden. Sie können diese Spalten nicht ändern, solange eine Tabelle die Funktion als Filterprädikat verwendet.
 
-Sie können die Inline-Tabellenwertfunktionen nicht verwerfen, solange eine Tabelle die Funktion als Filterprädikat verwendet.
+Sie können die Inline\-Tabellenwertfunktionen nicht verwerfen, solange eine Tabelle die Funktion als Filterprädikat verwendet.
 
 > [!NOTE]
 > Um die Leistung der Filterfunktion zu verbessern, erstellen Sie einen Index für die Spalten, die von der Funktion verwendet werden.
 > 
 > 
 
-### Übergeben von Spaltennamen an die Filterfunktion
-Wenn Sie einer Tabelle eine Filterfunktion zuweisen, geben Sie einteilige Namen für die Spalten an, die an die Filterfunktion übermittelt werden. Wenn Sie bei der Übergabe der Spaltennamen einen dreiteiligen Namen angeben, wird durch anschließende Abfragen der Stretch-fähigen Tabelle ein Fehler verursacht.
+### <a name="passing-column-names-to-the-filter-function"></a>Übergeben von Spaltennamen an die Filterfunktion
+Wenn Sie einer Tabelle eine Filterfunktion zuweisen, geben Sie einteilige Namen für die Spalten an, die an die Filterfunktion übermittelt werden. Wenn Sie bei der Übergabe der Spaltennamen einen dreiteiligen Namen angeben, wird durch anschließende Abfragen der Stretch\-fähigen Tabelle ein Fehler verursacht.
 
 Wenn Sie zum Beispiel einen dreiteiligen Spaltennamen angeben, wie im folgenden Beispiel dargestellt, wird die Anweisung erfolgreich ausgeführt, aber nachfolgende Abfragen der Tabelle verursachen einen Fehler.
 
@@ -179,18 +183,18 @@ ALTER TABLE SensorTelemetry
   )
 ```
 
-## <a name="addafterwiz"></a>Hinzufügen einer Filterfunktion nach dem Ausführen des Assistenten
-Wenn Sie eine Funktion verwenden möchten, die nicht im Assistenten zum **Aktivieren einer Datenbank für Stretch** erstellt werden kann, können Sie nach dem Beenden des Assistenten die Anweisung ALTER TABLE ausführen, um eine Funktion anzugeben. Bevor Sie eine Funktion anwenden können, müssen Sie jedoch die bereits gestartete Datenmigration beenden und migrierte Daten zurückholen. (Weitere Informationen über die Notwendigkeit dieses Verfahrens finden Sie unter [Ersetzen einer vorhandenen Filterfunktion](#replacePredicate).
+## <a name="a-nameaddafterwizaadd-a-filter-function-after-running-the-wizard"></a><a name="addafterwiz"></a>Hinzufügen einer Filterfunktion nach dem Ausführen des Assistenten
+Wenn Sie eine Funktion verwenden möchten, die nicht im Assistenten zum **Aktivieren einer Datenbank für Stretch** erstellt werden kann, können Sie nach dem Beenden des Assistenten die Anweisung ALTER TABLE ausführen, um eine Funktion anzugeben. Bevor Sie eine Funktion anwenden können, müssen Sie jedoch die bereits gestartete Datenmigration beenden und migrierte Daten zurückholen. (Weitere Informationen über die Notwendigkeit dieses Verfahrens finden Sie unter [Ersetzen einer vorhandenen Filterfunktion](#replacePredicate).  
 
-1. Kehren Sie die Migrationsrichtung um, und holen Sie die bereits migrierten Daten zurück. Dieser Vorgang kann nach dem Start nicht mehr abgebrochen werden. Es entstehen auch Kosten in Azure für ausgehende Datenübertragungen. Weitere Informationen finden Sie unter [Azure-Preisgestaltung](https://azure.microsoft.com/pricing/details/data-transfers/).
+1. Kehren Sie die Migrationsrichtung um, und holen Sie die bereits migrierten Daten zurück. Dieser Vorgang kann nach dem Start nicht mehr abgebrochen werden. Es entstehen auch Kosten in Azure für \(ausgehende\) Datenübertragungen. Weitere Informationen finden Sie unter [Azure-Preisgestaltung](https://azure.microsoft.com/pricing/details/data-transfers/).  
    
     ```tsql  
     ALTER TABLE <table name>  
          SET ( REMOTE_DATA_ARCHIVE ( MIGRATION_STATE = INBOUND ) ) ;   
     ```  
-2. Warten Sie, bis die Migration abgeschlossen ist. Sie können den Status in SQL Server Management Studio im **Stretch-Datenbankmonitor** überprüfen oder die Sicht **sys.dm\_db\_rda\_migration\_status** abfragen. Weitere Informationen finden Sie unter [Überwachen und Behandeln von Problemen der Datenmigration](sql-server-stretch-database-monitor.md) oder [sys.dm\_db\_rda\_migration\_status](https://msdn.microsoft.com/library/dn935017.aspx).
-3. Erstellen Sie die Filterfunktion, die auf die Tabelle angewendet werden soll.
-4. Fügen Sie die Funktion der Tabelle hinzu, und starten Sie erneut die Datenmigration zu Azure.
+2. Warten Sie, bis die Migration abgeschlossen ist. Sie können den Status in SQL Server Management Studio im **Stretch-Datenbankmonitor** überprüfen oder die Sicht **sys.dm_db_rda_migration_status** abfragen. Weitere Informationen finden Sie unter [Überwachen und Behandeln von Problemen der Datenmigration](sql-server-stretch-database-monitor.md) oder [sys.dm_db_rda_migration_status](https://msdn.microsoft.com/library/dn935017.aspx).  
+3. Erstellen Sie die Filterfunktion, die auf die Tabelle angewendet werden soll.  
+4. Fügen Sie die Funktion der Tabelle hinzu, und starten Sie erneut die Datenmigration zu Azure.  
    
     ```tsql  
     ALTER TABLE <table name>  
@@ -202,7 +206,7 @@ Wenn Sie eine Funktion verwenden möchten, die nicht im Assistenten zum **Aktivi
         );   
     ```  
 
-## Filtern von Zeilen nach Datum
+## <a name="filter-rows-by-date"></a>Filtern von Zeilen nach Datum
 Im folgenden Beispiel werden Zeilen migriert, in denen die Spalte **date** einen Wert enthält, der vor dem 1. Januar 2016 liegt.
 
 ```tsql
@@ -216,7 +220,7 @@ AS
 GO
 ```
 
-## Filtern von Zeilen nach dem Wert in einer Statusspalte
+## <a name="filter-rows-by-the-value-in-a-status-column"></a>Filtern von Zeilen nach dem Wert in einer Statusspalte
 Im folgenden Beispiel werden Zeilen migriert, in denen die Spalte **status** einen der angegebenen Werte enthält.
 
 ```tsql
@@ -230,7 +234,7 @@ AS
 GO
 ```
 
-## Filtern von Zeilen mithilfe eines gleitenden Fensters
+## <a name="filter-rows-by-using-a-sliding-window"></a>Filtern von Zeilen mithilfe eines gleitenden Fensters
 Um Zeilen mithilfe eines gleitenden Fensters zu filtern, beachten Sie die folgenden Anforderungen für die Filterfunktion.
 
 * Die Funktion muss deterministisch sein. Sie können daher keine Funktion erstellen, die das gleitende Fenster im Laufe der Zeit automatisch neu berechnet.
@@ -264,8 +268,8 @@ SET (
 Wenn Sie das gleitende Fenster aktualisieren möchten, gehen Sie folgendermaßen vor.
 
 1. Erstellen Sie eine neue Funktion, die das neue gleitende Fenster angibt. Das folgende Beispiel wählt die Datumsangaben, die vor dem 2. Januar 2016 statt dem 1. Januar 2016 liegen.
-2. Ersetzen Sie die vorherige Filterfunktion durch Aufrufen von **ALTER TABLE** durch die neue, wie im folgenden Beispiel gezeigt.
-3. Löschen Sie optional die vorherige nicht mehr verwendete Filterfunktion, indem Sie **DROP FUNCTION** aufrufen. (Dieser Schritt ist nicht im Beispiel dargestellt.)
+2. Ersetzen Sie die vorherige Filterfunktion durch Aufrufen von **ALTER TABLE**durch die neue, wie im folgenden Beispiel gezeigt.
+3. Löschen Sie optional die vorherige nicht mehr verwendete Filterfunktion, indem Sie **DROP FUNCTION**aufrufen. (Dieser Schritt ist nicht im Beispiel dargestellt.)
 
 ```tsql
 BEGIN TRAN
@@ -292,7 +296,7 @@ GO
 COMMIT ;
 ```
 
-## Weitere Beispiele für gültige Filterfunktionen
+## <a name="more-examples-of-valid-filter-functions"></a>Weitere Beispiele für gültige Filterfunktionen
 * Das folgende Beispiel kombiniert die beiden primitiven Bedingungen mithilfe des logischen AND-Operators.
   
   ```tsql
@@ -355,7 +359,7 @@ COMMIT ;
   GO
   ```
 
-## Beispiele für ungültige Filterfunktionen
+## <a name="examples-of-filter-functions-that-arent-valid"></a>Beispiele für ungültige Filterfunktionen
 * Die folgende Funktion ist ungültig, da sie eine nicht deterministische Konvertierung enthält.
   
   ```tsql
@@ -431,15 +435,15 @@ COMMIT ;
   GO
   ```
 
-## Anwenden der Filterfunktion durch Stretch-Datenbank
-Stretch-Datenbank wendet die Filterfunktion mithilfe des CROSS APPLY-Operators auf die Tabelle an und bestimmt berechtigte Zeilen. Zum Beispiel:
+## <a name="how-stretch-database-applies-the-filter-function"></a>Anwenden der Filterfunktion durch Stretch-Datenbank
+Stretch-Datenbank wendet die Filterfunktion mithilfe des CROSS APPLY-Operators auf die Tabelle an und bestimmt berechtigte Zeilen. Beispiel:
 
 ```tsql
 SELECT * FROM stretch_table_name CROSS APPLY fn_stretchpredicate(column1, column2)
 ```
 Wenn die Funktion ein nicht leeres Ergebnis für die Zeile zurückgibt, ist die Zeile für eine Migration berechtigt.
 
-## <a name="replacePredicate"></a>Ersetzen einer vorhandenen Filterfunktion
+## <a name="a-namereplacepredicateareplace-an-existing-filter-function"></a><a name="replacePredicate"></a>Ersetzen einer vorhandenen Filterfunktion
 Sie können eine zuvor angegebene Filterfunktion ersetzen, indem Sie die **ALTER TABLE**-Anweisung erneut ausführen und einen neuen Wert für den **FILTER\_PREDICATE**-Parameter angeben. Beispiel:
 
 ```tsql
@@ -447,7 +451,7 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
     FILTER_PREDICATE = dbo.fn_stretchpredicate2(column1, column2),
     MIGRATION_STATE = <desired_migration_state>
 ```
-Für die neue Inline-Tabellenwertfunktion gelten die folgenden Voraussetzungen.
+Für die neue Inline\-Tabellenwertfunktion gelten die folgenden Voraussetzungen.
 
 * Die neue Funktion muss weniger restriktiv als die vorherige Funktion sein.
 * Alle Operatoren, die in der alten Funktion vorhanden waren, müssen auch in der neuen Funktion vorhanden sein.
@@ -455,7 +459,7 @@ Für die neue Inline-Tabellenwertfunktion gelten die folgenden Voraussetzungen.
 * Der Reihenfolge der Operatorargumente darf nicht geändert werden.
 * Nur konstante Werte, die Teil eines `<, <=, >, >=`-Vergleichs sind, können so geändert werden, dass die Funktion weniger restriktiv ist.
 
-### Beispiel für einen gültigen Ersatz
+### <a name="example-of-a-valid-replacement"></a>Beispiel für einen gültigen Ersatz
 Setzen Sie voraus, dass die folgende Funktion das aktuelle Filterprädikat ist.
 
 ```tsql
@@ -481,7 +485,7 @@ RETURN    SELECT 1 AS is_eligible
 GO
 ```
 
-### Beispiele für ungültige Ersatzmöglichkeiten
+### <a name="examples-of-replacements-that-arent-valid"></a>Beispiele für ungültige Ersatzmöglichkeiten
 Die folgende Funktion ist kein gültiger Ersatz, da die neue Datumskonstante (die ein späteres Umstellungsdatum angibt) die Funktion nicht weniger restriktiv macht.
 
 ```tsql
@@ -520,7 +524,7 @@ RETURN    SELECT 1 AS is_eligible
 GO
 ```
 
-## Entfernen einer Filterfunktion aus einer Tabelle
+## <a name="remove-a-filter-function-from-a-table"></a>Entfernen einer Filterfunktion aus einer Tabelle
 Um die gesamte Tabelle anstelle der ausgewählten Zeilen zu migrieren, entfernen Sie die vorhandene Filterfunktion, indem Sie **FILTER\_PREDICATE** auf NULL festlegen. Beispiel:
 
 ```tsql
@@ -531,16 +535,21 @@ ALTER TABLE stretch_table_name SET ( REMOTE_DATA_ARCHIVE = ON (
 ```
 Nachdem Sie die Filterfunktion entfernt haben, sind alle Zeilen in der Tabelle zur Migration berechtigt. Sie können daher nicht später eine Filterfunktion für die gleiche Tabelle angeben, es sei denn, Sie holen zunächst alle Remotedaten für die Tabelle aus Azure zurück. Mit dieser Einschränkung soll die Situation vermieden werden, dass Zeilen, die durch das Angeben einer neuen Filterfunktion nicht mehr zur Migration berechtigt sind, bereits zu Azure migriert wurden.
 
-## Überprüfen der auf eine Tabelle angewendeten Filterfunktion
-Öffnen Sie die Katalogsicht **sys.remote\_data\_archive\_tables**, und überprüfen Sie den Wert der Spalte **filter\_predicate**, um die auf eine Tabelle angewendete Filterfunktion zu prüfen. Wenn der Wert null ist, ist die gesamte Tabelle für die Archivierung berechtigt. Weitere Informationen finden Sie unter [sys.remote\_data\_archive\_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
+## <a name="check-the-filter-function-applied-to-a-table"></a>Überprüfen der auf eine Tabelle angewendeten Filterfunktion
+Öffnen Sie die Katalogsicht **sys.remote\_data\_archive\_tables**, und überprüfen Sie den Wert der Spalte **filter\_predicat**, um die auf eine Tabelle angewendete Filterfunktion zu prüfen. Wenn der Wert null ist, ist die gesamte Tabelle für die Archivierung berechtigt. Weitere Informationen finden Sie unter [sys.remote_data_archive_tables (Transact-SQL)](https://msdn.microsoft.com/library/dn935003.aspx).
 
-## Sicherheitshinweise für Filterfunktionen
-Ein kompromittiertes Konto mit db\_owner-Berechtigungen kann folgende Aktionen ausführen:
+## <a name="security-notes-for-filter-functions"></a>Sicherheitshinweise für Filterfunktionen
+Ein kompromittiertes Konto mit db_owner-Berechtigungen kann folgende Aktionen ausführen:  
 
-* Erstellen und Übernehmen einer Tabellenwertfunktion, die große Mengen an Serverressourcen verbraucht oder für einen längeren Zeitraum wartet, was zu einem Denial of Service führt.
-* Erstellen und Übernehmen einer Tabellenwertfunktion, die es ermöglicht, den Inhalt einer Tabelle abzuleiten, für die dem Benutzer explizit der Lesezugriff verweigert wurde.
+* Erstellen und Übernehmen einer Tabellenwertfunktion, die große Mengen an Serverressourcen verbraucht oder für einen längeren Zeitraum wartet, was zu einem Denial of Service führt.  
+* Erstellen und Übernehmen einer Tabellenwertfunktion, die es ermöglicht, den Inhalt einer Tabelle abzuleiten, für die dem Benutzer explizit der Lesezugriff verweigert wurde.  
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

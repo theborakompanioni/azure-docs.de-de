@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/13/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ea5025cf031afb2a6d13356059d090c2d63f1665
+ms.sourcegitcommit: c4b5b8bc05365ddc63b0d7a6a3c63eaee31af957
+ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
 
 
 ---
@@ -89,12 +89,15 @@ durch:
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-### <a name="if-you-already-have-your-own-unusernotificationcenterdelegate-implementation"></a>Bei bereits vorhandener eigener Implementierung von „UNUserNotificationCenterDelegate“
-Das SDK hat auch eine eigene Implementierung des Protokolls „UNUserNotificationCenterDelegate“. Es wird vom SDK verwendet, um den Lebenszyklus der Engagement-Benachrichtigungen auf Geräten zu überwachen, die unter iOS 10 oder höher ausgeführt werden. Wenn das SDK Ihre Stellvertretung erkennt, verwendet es nicht seine eigene Implementierung, da es pro Anwendung nur eine „UNUserNotificationCenter“-Stellvertretung geben darf. Dies bedeutet, dass Sie Ihrer eigenen Stellvertretung die Engagement-Logik hinzufügen müssen.
+### <a name="resolve-unusernotificationcenter-delegate-conflicts"></a>Lösen von Konflikten mit dem UNUserNotificationCenter-Delegaten
+
+*Wenn weder in Ihrer Anwendung noch in einer der Bibliotheken von Drittanbietern ein `UNUserNotificationCenterDelegate` implementiert wird, können Sie diesen Abschnitt überspringen.*
+
+Ein `UNUserNotificationCenter`-Delegat wird vom SDK verwendet, um den Lebenszyklus der Engagement-Benachrichtigungen auf Geräten zu überwachen, die unter iOS 10 oder höher ausgeführt werden. Das SDK verfügt über eine eigene Implementierung des `UNUserNotificationCenterDelegate`-Protokolls, pro Anwendung kann jedoch nur ein `UNUserNotificationCenter`-Delegat vorhanden sein. Jeder weitere dem `UNUserNotificationCenter`-Objekt hinzugefügte Delegat führt zu einem Konflikt mit dem Engagement-Delegaten. Wenn das SDK Ihren Delegaten oder den Delegaten eines Drittanbieters erkennt, wird die eigene Implementierung des SDK nicht verwendet, damit Sie die Konflikte lösen können. Sie müssen Ihrem eigenen Delegaten die Engagement-Logik hinzufügen, um die Konflikte lösen zu können.
 
 Hierfür gibt es zwei Möglichkeiten.
 
-Durch einfaches Weiterleiten der Stellvertretungsaufrufe an das SDK:
+Vorschlag 1: Durch einfaches Weiterleiten der Delegataufrufe an das SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -121,7 +124,7 @@ Durch einfaches Weiterleiten der Stellvertretungsaufrufe an das SDK:
     }
     @end
 
-Oder durch Erben von der `AEUserNotificationHandler`-Klasse
+Oder Vorschlag 2: Durch Erben von der `AEUserNotificationHandler`-Klasse
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -149,8 +152,16 @@ Oder durch Erben von der `AEUserNotificationHandler`-Klasse
 
 > [!NOTE]
 > Sie können bestimmen, ob eine Benachrichtigung von Engagement stammt oder nicht, indem das zugehörige `userInfo`-Wörterbuch an die `isEngagementPushPayload:`-Klassenmethode des Agents übergeben wird.
-> 
-> 
+
+Stellen Sie sicher, dass der `UNUserNotificationCenter`-Delegat des Objekts entweder in der `application:willFinishLaunchingWithOptions:`- oder der `application:didFinishLaunchingWithOptions:`-Methode des Anwendungsdelegaten auf Ihren Delegaten festgelegt ist.
+Wenn Sie z.B. den oben genannten Vorschlag 1 implementiert haben:
+
+      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        // Any other code
+  
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        return YES;
+      }
 
 ## <a name="from-200-to-300"></a>Von 2.0.0 zu 3.0.0
 Unterstützung für iOS 4.X eingestellt. Ab dieser Version muss das Bereitstellungsziel Ihrer Anwendung mindestens über iOS 6 verfügen.
@@ -207,6 +218,6 @@ Beispiele:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

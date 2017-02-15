@@ -1,12 +1,12 @@
 ---
-title: 'Azure Active Directory Domain Services: Übersicht | Microsoft Docs'
-description: Übersicht über Azure Active Directory Domain Services
+title: "Azure Active Directory Domain Services: Übersicht | Microsoft Docs"
+description: "Übersicht über Azure Active Directory Domain Services"
 services: active-directory-ds
-documentationcenter: ''
+documentationcenter: 
 author: mahesh-unnikrishnan
 manager: stevenpo
 editor: curtand
-
+ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: maheshu
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2e78382b4cbfe7623eec1b2cd32a9eaea61e4709
+
 
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
@@ -79,6 +83,9 @@ Mit Azure AD-Domänendiensten kommen Sie in den Genuss der folgenden Vorteile:
 * **Kompatibel:** Die Azure AD-Domänendienste basieren auf der bewährten, für Unternehmen konzipierten Infrastruktur von Windows Server Active Directory. Aus diesem Grund sind Ihre Anwendungen in höherem Maße mit Windows Server Active Directory-Features kompatibel. Derzeit sind nicht alle in Windows Server AD verfügbaren Features in den Azure AD-Domänendiensten verfügbar. Die verfügbaren Features sind aber mit den entsprechenden Windows Server AD-Features kompatibel, die Sie in Ihrer lokalen Infrastruktur nutzen. LDAP, Kerberos, NTLM, Gruppenrichtlinie und Domänenbeitritt sind ausgereifte Features, die über mehrere Windows Server-Versionen hinweg getestet und optimiert wurde.
 * **Kosteneffektivität:** Mit Azure AD-Domänendiensten können Sie den Infrastruktur- und Verwaltungsaufwand vermeiden, der mit der Verwaltung der Identitätsinfrastruktur zur Unterstützung herkömmlicher verzeichnisorientierter Anwendungen verbunden ist. Sie können diese Anwendungen auf die Azure-Infrastrukturdienste verlagern und von höheren Einsparungen bei den Betriebskosten profitieren.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

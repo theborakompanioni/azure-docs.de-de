@@ -62,7 +62,7 @@ Basierend auf all diesen Informationen zeigt das Arbeitsblatt nun, dass physisch
 Unter [Partitionieren von Service Fabric-Diensten][10] erfahren Sie mehr über die Partitionierung Ihres Diensts.
 
 <!--Image references-->
-[Bild1]: ./media/SF-Cost.png
+[Image1]: ./media/SF-Cost.png
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-concepts-partitioning.md

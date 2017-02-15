@@ -1,19 +1,23 @@
 ---
-title: Erstellen eines Service Bus-Namespace anhand einer Resource Manager-Vorlage | Microsoft Docs
+title: Erstellen eines Service Bus-Namespace mithilfe einer Resource Manager-Vorlage | Microsoft Docs
 description: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Service Bus-Namespace
-services: service-bus
+services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
+ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sethm;shvija
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 39907193d006d6060152c9ac737a082d655c2256
+
 
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mithilfe einer Azure Resource Manager-Vorlage
@@ -21,21 +25,21 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Erstellen von Azure Resource Manager-Vorlagen].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace template][Service Bus namespace template] (Service Bus-Namespace-Vorlage) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus namespace template][Service Bus namespace template] (Service Bus-Namespacevorlage) auf GitHub.
 
 > [!NOTE]
 > Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar. 
 > 
-> * [Erstellen eines Event Hubs-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
 > * [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
 > * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 > * [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template (Erstellen einer Service Bus-Autorisierungsregel für Namespace und Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure-Schnellstartvorlagen] auf, und suchen Sie nach „Service Bus“.
+> Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure-Schnellstartvorlagen] auf und suchen nach „Service Bus“.
 > 
 > 
 
-## <a name="what-will-you-deploy?"></a>Was möchten Sie bereitstellen?
+## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
 Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer [Basic-, Standard- oder Premium-](https://azure.microsoft.com/pricing/details/service-bus/)-SKU bereitstellen.
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
@@ -79,7 +83,7 @@ Der Name der zu erstellenden Service Bus- [SKU](https://azure.microsoft.com/pric
 
 Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Basic, Standard oder Premium), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
 
-Weitere Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise und Abrechnung][Service Bus – Preise und Abrechnung].
+Weitere Informationen zur Service Bus-Preisgestaltung finden Sie unter [Service Bus – Preise und Abrechnung][Service Bus – Preise und Abrechnung].
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
 Die Service Bus-API-Version der Vorlage.
@@ -133,7 +137,7 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
 
-* [Verwalten von Service Bus mit PowerShell](../service-bus/service-bus-powershell-how-to-provision.md)
+* [Verwalten von Service Bus mit PowerShell](service-bus-powershell-how-to-provision.md)
 * [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
 [Erstellen von Azure Resource Manager-Vorlagen]: ../resource-group-authoring-templates.md
@@ -145,6 +149,6 @@ Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt hab
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

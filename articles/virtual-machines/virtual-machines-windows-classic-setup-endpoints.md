@@ -41,6 +41,6 @@ Beim Erstellen eines virtuellen Windows-Computers im klassischen Azure-Portal we
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

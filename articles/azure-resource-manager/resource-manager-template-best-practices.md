@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 049436b35346c355509398f7bb105dc1511eb8f7
+ms.sourcegitcommit: 311eeee882e64bc9fb2e7c1ecb4706de351e7753
+ms.openlocfilehash: c774a249d37c489ad53665ad6432122c8fdd1c32
 
 
 ---
@@ -52,8 +52,6 @@ Wenn Sie einen Parameter für diese Ressourcennamen angeben, müssen Sie währen
     "variables": {
         "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]"
     }
-
-Speicherkonten mit einem „uniqueString“-Präfix werden nicht in denselben Kategorien gruppiert.
 
 ### <a name="resource-names-for-identification"></a>Ressourcennamen zur Identifizierung
 Für Ressourcentypen, die Sie benennen möchten, ohne Eindeutigkeit gewährleisten zu müssen, geben Sie einen Namen an, der sowohl den Kontext als auch Ressourcentyp identifiziert. Sie sollten einen beschreibenden Namen bereitstellen, anhand dessen Sie ihn in einer Liste mit Ressourcennamen erkennen können. Wenn Sie den Namen der Ressource im Verlauf von Bereitstellungen variieren möchten, verwenden Sie einen Parameter für den Namen:
@@ -352,6 +350,6 @@ Sie können mit geschachtelten Vorlagen eine bedingte Verknüpfung erstellen, in
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

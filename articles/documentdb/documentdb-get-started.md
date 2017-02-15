@@ -1,7 +1,7 @@
 ---
-title: 'NoSQL-Tutorial: DocumentDB .NET SDK | Microsoft-Dokumentation'
+title: 'NoSQL-Tutorial: DocumentDB .NET SDK | Microsoft Docs'
 description: "Ein NoSQL-Tutorial, das eine Onlinedatenbank und eine C#-Konsolenanwendung mit dem DocumentDB .NET SDK erstellt. DocumentDB ist eine NoSQL-Datenbank für JSON."
-keywords: NoSQL-Tutorial, Onlinedatenbank, C#-Konsolenanwendung
+keywords: nosql tutorial, online database, c# console application
 services: documentdb
 documentationcenter: .net
 author: AndrewHoh
@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 12/16/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: 4ddd790efde26b6c2d2215c72e42bd9e2839e50e
+ms.sourcegitcommit: 414c41cbccb755e058fb76f10bba62bd1ffa1835
+ms.openlocfilehash: d2989a3292117ada029fb26536bfffbce83f5e1b
 
 
 ---
@@ -631,6 +631,6 @@ Das war's auch schon! Nun müssen Sie nur noch die Erstellung durchführen.
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

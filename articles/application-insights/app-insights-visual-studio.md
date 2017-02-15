@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.date: 06/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8886107f96f31f668ce55ebb4c76e58ad1f21268
+ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
+ms.openlocfilehash: 2334a85402049eb8654039e98cf2c3131a43de62
 
 
 ---
 # <a name="working-with-application-insights-in-visual-studio"></a>Arbeiten mit Application Insights in Visual Studio
-In Visual Studio (2015 und höher) können Sie mithilfe von Telemetriedaten aus [Visual Studio Application Insights](app-insights-overview.md)sowohl beim Debuggen als auch in der Produktion die Leistung analysieren und Probleme diagnostizieren.
+In Visual Studio (2015 und höher) können Sie mithilfe von Telemetriedaten aus [Azure Application Insights](app-insights-overview.md)sowohl beim Debuggen als auch in der Produktion die Leistung analysieren und Probleme diagnostizieren.
 
 [Wenn Sie Application Insights noch nicht in Ihrer App installiert haben](app-insights-asp-net.md), holen Sie das jetzt nach.
 
@@ -94,6 +94,6 @@ Wählen Sie zum Ermitteln von Anomalien in Ihren Daten in der Dropdownliste „A
 
 
 
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

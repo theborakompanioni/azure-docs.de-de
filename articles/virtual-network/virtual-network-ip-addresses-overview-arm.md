@@ -124,7 +124,7 @@ Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Hostname
 
 VMs, die mit von Azure verwalteten DNS-Servern konfiguriert wurden, können die Hostnamen aller VMs innerhalb ihres VNets in deren private IP-Adressen auflösen.
 
-### <a name="internal-load-balancers-ilb-application-gateways"></a>Interner Lastenausgleich (Internal Load Balancer, ILB) und Anwendungsgateways
+### <a name="internal-load-balancers-ilb--application-gateways"></a>Interner Lastenausgleich (Internal Load Balancer, ILB) und Anwendungsgateways
 Sie können der **Front-End**-Konfiguration eines [Azure-ILBs](../load-balancer/load-balancer-internal-overview.md) oder eines [Azure Application Gateways](../application-gateway/application-gateway-introduction.md) eine private IP-Adresse zuweisen. Diese private IP-Adresse fungiert als interner Endpunkt und steht nur den Ressourcen innerhalb des entsprechenden virtuellen Netzwerks (VNet) und der damit verbundenen Remotenetzwerke zur Verfügung. Der Front-End-Konfiguration kann eine dynamische oder eine statische private IP-Adresse zugewiesen werden.
 
 ### <a name="at-a-glance"></a>Auf einen Blick

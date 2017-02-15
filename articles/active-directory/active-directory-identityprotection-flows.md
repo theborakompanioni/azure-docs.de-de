@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e81ef1d182108114305291273227ce2ac4dacf3f
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: d264d63aeeff584fca96595f1d2f2d5a2f7ba792
 
 
 ---
@@ -58,13 +58,13 @@ Administratoren haben folgende Möglichkeiten:
 
 1. Im ersten Schritt wird der Benutzer davon in Kenntnis gesetzt, dass das Konto für die mehrstufige Authentifizierung eingerichtet werden muss. 
    
-    ![Wiederherstellung](./media/active-directory-identityprotection-flows/140.png "Wiederherstellung")
+    ![Wiederherstellung](./media/active-directory-identityprotection-flows/140.png "Remediation")
 2. Zur Einrichtung der mehrstufigen Authentifizierung müssen Sie dem System mitteilen, wie Sie kontaktiert werden möchten.
    
-    ![Wiederherstellung](./media/active-directory-identityprotection-flows/141.png "Wiederherstellung")
+    ![Wiederherstellung](./media/active-directory-identityprotection-flows/141.png "Remediation")
 3. Das System sendet Ihnen eine Abfrage, auf die Sie reagieren müssen.
    
-    ![Wiederherstellung](./media/active-directory-identityprotection-flows/142.png "Wiederherstellung")
+    ![Wiederherstellung](./media/active-directory-identityprotection-flows/142.png "Remediation")
 
 ## <a name="risky-sign-in-recovery"></a>Wiederherstellung riskanter Anmeldungen
 Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, werden die betroffenen Benutzer benachrichtigt, wenn sie versuchen, sich anzumelden. 
@@ -73,15 +73,15 @@ Wenn ein Administrator eine Richtlinie für Anmelderisiken konfiguriert hat, wer
 
 1. Der Benutzer wird informiert, dass im Zusammenhang mit seiner Anmeldung eine Unregelmäßigkeit erkannt wurde (beispielsweise eine Anmeldung an einem neuen Standort, mit einem neuen Gerät oder mit einer neuen App). 
    
-    ![Wiederherstellung](./media/active-directory-identityprotection-flows/120.png "Wiederherstellung")
+    ![Wiederherstellung](./media/active-directory-identityprotection-flows/120.png "Remediation")
 2. Der Benutzer muss eine Sicherheitsabfrage korrekt beantworten, um seine Identität zu bestätigen. Wenn der Benutzer für die mehrstufige Authentifizierung registriert ist, muss er einen Sicherheitscode eingeben, der an seine Telefonnummer gesendet wurde. Da es sich in diesem Fall nur um eine riskante Anmeldung und nicht um ein gefährdetes Konto handelt, muss der Benutzer sein Kennwort bei diesem Verfahren nicht ändern. 
    
-    ![Wiederherstellung](./media/active-directory-identityprotection-flows/121.png "Wiederherstellung")
+    ![Wiederherstellung](./media/active-directory-identityprotection-flows/121.png "Remediation")
 
 ## <a name="risky-sign-in-blocked"></a>Blockierte riskante Anmeldung
 Administratoren können auch eine Richtlinie für Anmelderisiken festlegen, um Benutzer abhängig von Risikostufe bei der Anmeldung zu blockieren. Zur Aufhebung der Blockierung muss sich der Endbenutzer an einen Administrator oder an den Helpdesk wenden oder sich an einem bekannten Standort oder mit einem bekannten Gerät anmelden. In diesem Fall ist keine selbstständige Wiederherstellung mittels mehrstufiger Authentifizierung möglich.
 
-![Wiederherstellung](./media/active-directory-identityprotection-flows/200.png "Wiederherstellung")
+![Korrektur](./media/active-directory-identityprotection-flows/200.png "Remediation")
 
 ## <a name="compromised-account-recovery"></a>Wiederherstellung gefährdeter Konten
 Wenn eine Sicherheitsrichtlinie für das Benutzerrisiko konfiguriert wurde, müssen Benutzer, die der in der Richtlinie angegebenen Risikostufe entsprechen (und somit als kompromittiert betrachtet werden), das Wiederherstellungsverfahren für kompromittierte Benutzer durchlaufen, um sich wieder anmelden zu können. 
@@ -90,31 +90,31 @@ Wenn eine Sicherheitsrichtlinie für das Benutzerrisiko konfiguriert wurde, müs
 
 1. Der Benutzer wird darüber informiert, dass die Sicherheit des Kontos aufgrund von verdächtigen Aktivitäten oder kompromittierten Anmeldeinformationen gefährdet ist.
    
-    ![Wiederherstellung](./media/active-directory-identityprotection-flows/101.png "Wiederherstellung")
+    ![Wiederherstellung](./media/active-directory-identityprotection-flows/101.png "Remediation")
 2. Der Benutzer muss eine Sicherheitsabfrage korrekt beantworten, um seine Identität zu bestätigen. Wenn der Benutzer für die mehrstufige Authentifizierung registriert ist, kann er die Wiederherstellung selbst durchführen. Hierzu muss er einen Sicherheitscode eingeben, der an seine Telefonnummer gesendet wurde. 
    
-   ![Wiederherstellung](./media/active-directory-identityprotection-flows/110.png "Wiederherstellung")
+   ![Wiederherstellung](./media/active-directory-identityprotection-flows/110.png "Remediation")
 3. Am Ende des Vorgangs muss der Benutzer sein Kennwort ändern, da unter Umständen eine andere Person Zugriff auf sein Konto hatte. 
    Im Anschluss finden Sie entsprechende Screenshots.
    
-   ![Wiederherstellung](./media/active-directory-identityprotection-flows/111.png "Wiederherstellung")
+   ![Wiederherstellung](./media/active-directory-identityprotection-flows/111.png "Remediation")
 
 ## <a name="compromised-account-blocked"></a>Blockiertes gefährdetes Konto
 Ein Benutzer, der aufgrund einer Benutzerrisiko-Sicherheitsrichtlinie blockiert wurde, muss sich zur Aufhebung der Blockierung an einen Administrator oder an den Helpdesk wenden. In diesem Fall ist keine selbstständige Wiederherstellung mittels mehrstufiger Authentifizierung möglich.
 
-![Wiederherstellung](./media/active-directory-identityprotection-flows/104.png "Wiederherstellung")
+![Wiederherstellung](./media/active-directory-identityprotection-flows/104.png "Remediation")
 
 ## <a name="reset-password"></a>Zurücksetzen des Kennworts
 Wenn die Anmeldung für einen kompromittierten Benutzer gesperrt ist, kann ein Administrator ein temporäres Kennwort für ihn generieren. Der Benutzer muss sein Kennwort dann bei der nächsten Anmeldung ändern.
 
-![Wiederherstellung](./media/active-directory-identityprotection-flows/160.png "Wiederherstellung")
+![Wiederherstellung](./media/active-directory-identityprotection-flows/160.png "Remediation")
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

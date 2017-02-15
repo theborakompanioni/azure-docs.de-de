@@ -269,6 +269,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Blackboard Learn – Shibboleth“
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,56 +1,75 @@
 ---
 title: Von Application Insights verwendete IP-Adressen | Microsoft Docs
-description: Für Application Insights erforderliche Serverfirewallausnahmen
+description: "Für Application Insights erforderliche Serverfirewallausnahmen"
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
 manager: douge
-
+ms.assetid: 44d989f8-bae9-40ff-bfd5-8343d3e59358
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2016
+ms.date: 11/01/2016
 ms.author: awills
+translationtype: Human Translation
+ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
+ms.openlocfilehash: 6e3ac58188b4b3c27880770d4b2f0116f83d30dc
+
 
 ---
-# Von Application Insights verwendete IP-Adressen
-Der Dienst [Visual Studio Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
+# <a name="ip-addresses-used-by-application-insights"></a>Von Application Insights verwendete IP-Adressen
+Der Dienst [Azure Application Insights](app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
 
 > [!NOTE]
 > Diese Adressen sind zwar statisch, müssen jedoch unter Umständen gelegentlich geändert werden.
 > 
 > 
 
-## Ausgehende Ports
+## <a name="outgoing-ports"></a>Ausgehende Ports
 In der Serverfirewall müssen einige ausgehende Ports geöffnet werden, damit das Application Insights-SDK und/oder der Statusmonitor Daten an das Portal senden kann:
 
 | Zweck | URL | IP | Ports |
 | --- | --- | --- | --- |
-| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221 |443 |
-| LiveStream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |variable |443 |
+| Telemetrie |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221 |443 |
+| Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |variable |443 |
 
-* Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen werden:
-  * `management.core.windows.net:443`
-  * `management.azure.com:443`
-  * `login.windows.net:443`
-  * `login.microsoftonline.com:443`
-  * `secure.aadcdn.microsoftonline-p.com:443`
-  * `auth.gfx.ms:443`
-  * `login.live.com:443`
-* Statusmonitorinstallation:
-  * `packages.nuget.org:443`
+## <a name="status-monitor"></a>Statusmonitor
+Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen werden.
 
-Diese Liste kann sich von Zeit zu Zeit ändern.
+| Zweck | URL | IP | Ports |
+| --- | --- | --- | --- |
+| Konfiguration |`management.core.windows.net` | |`443` |
+| Konfiguration |`management.azure.com` | |`443` |
+| Konfiguration |`login.windows.net` | |`443` |
+| Konfiguration |`login.microsoftonline.com` | |`443` |
+| Konfiguration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| Konfiguration |`auth.gfx.ms` | |`443` |
+| Konfiguration |`login.live.com` | |`443` |
+| Installation |`packages.nuget.org` | |`443` |
 
-## Verfügbarkeitstests
+## <a name="hockeyapp"></a>HockeyApp
+| Zweck | URL | IP | Ports |
+| --- | --- | --- | --- |
+| Absturzdaten |gate.hockeyapp.net |104.45.136.42 |80, 443 |
+
+## <a name="availability-tests"></a>Verfügbarkeitstests
 Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
 
 Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen:
 
 ```
-
+13.106.106.20
+13.106.106.21
+13.106.106.22
+13.106.106.23
+13.106.106.24
+13.106.106.25
+13.106.106.26
+13.106.106.27
+13.106.106.28
+13.106.106.29
 157.55.14.43
 157.55.14.44
 157.55.14.47
@@ -101,6 +120,8 @@ Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-i
 207.46.98.159
 207.46.98.160
 207.46.98.162
+207.46.98.169
+207.46.98.170
 207.46.98.171
 207.46.98.172
 213.199.178.54
@@ -123,16 +144,10 @@ Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-i
 65.54.78.54
 65.54.78.57
 65.54.78.58
-65.55.244.15
-65.55.244.16
-65.55.244.17
-65.55.244.18
-65.55.244.37
-65.55.244.40
-65.55.244.42
-65.55.244.44
-65.55.244.46
-65.55.244.47
+65.54.78.59
+65.54.78.60
+65.55.82.77
+65.55.82.78
 65.55.82.81
 65.55.82.84
 65.55.82.85
@@ -155,6 +170,8 @@ Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-i
 94.245.72.45
 94.245.72.46
 94.245.72.49
+94.245.72.52
+94.245.72.53
 94.245.78.40
 94.245.78.41
 94.245.78.42
@@ -164,12 +181,18 @@ Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](app-i
 94.245.82.37
 94.245.82.38
 
+
 ```  
 
-## Datenzugriffs-API
-| URI | IP | Ports |
-| --- | --- | --- |
-| api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13\.82.26.252<br/>40.76.213.73 |80, 443 |
-| dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13\.82.24.149<br/>40.114.82.10 |80, 443 |
+## <a name="data-access-api"></a>Datenzugriffs-API
+| Zweck | URI | IP | Ports |
+| --- | --- | --- | --- |
+| API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |13.82.26.252<br/>40.76.213.73 |80, 443 |
+| API-Dokumentation |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |13.82.24.149<br/>40.114.82.10 |80, 443 |
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

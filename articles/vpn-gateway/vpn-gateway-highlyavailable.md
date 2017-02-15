@@ -24,7 +24,7 @@ ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit hoher Verfügbarkeit
 In diesem Artikel erhalten Sie einen Überblick über Optionen zur Konfiguration der hohen Verfügbarkeit für standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit Azure-VPN-Gateways.
 
-## <a name="a-name-activestandbyaabout-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Informationen zur Redundanz von Azure-VPN-Gateways
+## <a name="a-name--activestandbyaabout-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Informationen zur Redundanz von Azure-VPN-Gateways
 Jede Azure-VPN-Gateway-Instanz umfasst zwei VM-Instanzen in einer Konfiguration mit aktivem Standbymodus. Für alle geplanten Wartungsarbeiten oder ungeplanten Störungen, die für die aktive Instanz anfallen, wird automatisch zur Standbyinstanz gewechselt (Failover), und die S2S-VPN- oder VNet-zu-VNet-Verbindungen werden wiederhergestellt. Bei diesem Wechsel kommt es zu einer kurzen Unterbrechung. Bei der geplanten Wartung sollte die Verbindung innerhalb von 10 bis 15 Sekunden wiederhergestellt werden. Bei ungeplanten Problemen dauert die Wiederherstellung der Verbindung länger, und zwar schlimmstenfalls zwischen 1 und 1,5 Minuten. Für P2S-VPN-Clientverbindungen mit dem Gateway werden die P2S-Verbindungen getrennt, und die Benutzer müssen die Verbindungen von den Clientcomputern neu herstellen.
 
 ![Aktiver Standbymodus](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -36,7 +36,7 @@ Es gibt zwei Optionen, mit denen Sie die Verfügbarkeit für standortübergreife
 * Azure-VPN-Gateway vom Typ „Aktiv/Aktiv“
 * Kombination beider Optionen
 
-### <a name="a-name-activeactiveonpremamultiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>Mehrere lokale VPN-Geräte
+### <a name="a-name--activeactiveonpremamultiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>Mehrere lokale VPN-Geräte
 Sie können mehrere VPN-Geräte in Ihrem lokalen Netzwerk verwenden, um eine Verbindung mit Ihrem Azure-VPN-Gateway herzustellen. Dies ist im folgenden Diagramm dargestellt:
 
 ![Mehrere lokale VPN-Geräte](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)

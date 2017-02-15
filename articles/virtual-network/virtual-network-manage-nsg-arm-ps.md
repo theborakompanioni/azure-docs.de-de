@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 93e806457de136d773de2c8121b91491c0cf3de1
-ms.openlocfilehash: f25daf68920c6fe54e739104233173b14bc27f84
+ms.sourcegitcommit: 8ecda7d59b3631b07e807ee018017c75b963dac5
+ms.openlocfilehash: 8eaca4e52363e577c015d9d183f200abedbf4d43
 
 
 ---
@@ -379,25 +379,19 @@ Führen Sie die folgenden Schritte aus, um die **NSG-FrontEnd**-NSG der **TestNI
 ### <a name="dissociate-an-nsg-from-a-nic"></a>Aufheben der Zuordnung einer NSG zu einer NIC
 Führen Sie die folgenden Schritte aus, um die Zuordnung der **NSG-FrontEnd**-NSG zur **TestNICWeb1**-NIC aufzuheben:
 
-1. Führen Sie den folgenden Befehl aus, um die vorhandene NSG abzurufen und in einer Variable zu speichern:
-
-    ```powershell
-    $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
-    ```
-
-2. Führen Sie den folgenden Befehl aus, um die vorhandene NIC abzurufen und in einer Variable zu speichern:
+1. Führen Sie den folgenden Befehl aus, um die vorhandene NIC abzurufen und in einer Variable zu speichern:
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-3. Setzen Sie mit dem folgenden Befehl die Eigenschaft **NetworkSecurityGroup** der Variablen **NIC** auf **$null**:
+2. Setzen Sie mit dem folgenden Befehl die Eigenschaft **NetworkSecurityGroup** der Variablen **NIC** auf **$null**:
 
     ```powershell
     $nic.NetworkSecurityGroup = $null
     ```
 
-4. Um die an der NIC vorgenommenen Änderungen zu speichern, führen Sie den folgenden Befehl aus:
+3. Um die an der NIC vorgenommenen Änderungen zu speichern, führen Sie den folgenden Befehl aus:
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
@@ -523,6 +517,6 @@ Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

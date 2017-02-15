@@ -8,23 +8,23 @@ manager: jhubbard
 editor: 
 ms.assetid: fab506b2-439d-4f1a-bdc5-d1d25c80d267
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/08/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 66360bc0a8618d250cc07e3e806af6c9a157afaf
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 40ad0b85072c3a54c7791500663c4dd88133c095
 
 
 ---
 # <a name="with-azure-snelstart-has-rapidly-expanded-its-business-services-at-a-rate-of-1000-new-azure-sql-databases-per-month"></a>Dank Azure erweiterte SnelStart seine Businessdienste schnell um 1.000 neue Azure SQL-Datenbanken pro Monat
 ![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
-SnelStart entwickelt beliebte Software für das Finanz- und Businessmanagement für kleine und mittelgroße Unternehmen in den Niederlanden. 110 Mitarbeiter (einschließlich 35 IT-Mitarbeitern) kümmern sich um 55.000 Kunden. Durch die Umstellung von Desktopsoftware zu einem auf Azure aufgebauten SaaS-Angebot (Software-as-a-Service) kann SnelStart die integrierten Dienste optimal nutzen. Die Verwaltung wird mit einer vertrauten Umgebung in C# automatisiert, und dank elastischer Datenbankpools lassen sich Leistung und Skalierbarkeit optimieren, ohne Über- oder Unterdimensionierung von Ressourcen für die Kunden. Azure bietet SnelStart die Flexibilität und Agilität, Kundendaten zwischen lokalen Systemen und der Cloud zu verschieben.
+SnelStart entwickelt beliebte Software für das Finanz- und Businessmanagement für kleine und mittelgroße Unternehmen in den Niederlanden. 110 Mitarbeiter (einschließlich 35 IT-Mitarbeitern) kümmern sich um 55.000 Kunden. Durch die Umstellung von Desktopsoftware zu einem auf Azure aufgebauten SaaS-Angebot (Software-as-a-Service) kann SnelStart die integrierten Dienste optimal nutzen. Die Verwaltung wird mit einer vertrauten Umgebung in C# automatisiert, und dank elastischer Pools lassen sich Leistung und Skalierbarkeit optimieren, ohne Ressourcen für die Kunden über- oder unterzudimensionieren. Azure bietet SnelStart die Flexibilität und Agilität, Kundendaten zwischen lokalen Systemen und der Cloud zu verschieben.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-SQL-Database-Case-Study-SnelStart/player]
 > 
@@ -55,7 +55,7 @@ SnelStart ist ein modernes, agiles High-Tech-Unternehmen, das 1964 als Herstelle
 Heute ist SnelStart ein wichtiger Anbieter einer Line-of-Business- und Businessadministrationssoftware für kleine und mittelgroße Unternehmen und Selbstständige in den Niederlanden. Carlo Kuip, IT Architect, sagt: „Unser Ziel ist eine 100-prozentige Automatisierung der Businessadministrationsdienste für unsere Kunden.“
 
 ## <a name="optimizing-performance-and-cost-with-elastic-pools"></a>Optimieren von Leistung und Kosten mit elastischen Pools
-SnelStart war eines der ersten Unternehmen, die in großem Umfang elastische Datenbankpools eingesetzt haben. Mit elastischen Pools kann das Unternehmen Kosten senken und die Leistungsanforderungen effizienter verwalten. Wie Henry Been sagt: „Durch den Einsatz von elastischen Datenbankpools können wir die Leistung je nach Anforderungen unserer Kunden ohne Überdimensionierung optimieren. Es wäre ziemlich teuer, wenn wir Ressourcen basierend auf Spitzenlasten bereitstellen müssten. Stattdessen können wir dank der Option, dass Ressourcen durch mehrere Datenbanken mit geringer Auslastung gemeinsam genutzt werden, eine Lösung erstellen, die gut funktioniert und kostengünstig ist.“
+SnelStart war eines der ersten Unternehmen, die in großem Umfang elastische Pools eingesetzt haben. Mit elastischen Pools kann das Unternehmen Kosten senken und die Leistungsanforderungen effizienter verwalten. Wie Henry Been sagt: „Durch den Einsatz von elastischen Pools können wir die Leistung je nach Anforderungen unserer Kunden ohne Überdimensionierung optimieren. Es wäre ziemlich teuer, wenn wir Ressourcen basierend auf Spitzenlasten bereitstellen müssten. Stattdessen können wir dank der Option, dass Ressourcen durch mehrere Datenbanken mit geringer Auslastung gemeinsam genutzt werden, eine Lösung erstellen, die gut funktioniert und kostengünstig ist.“
 
 ## <a name="azure-sql-databases-help-containerize-data-for-isolation-and-security"></a>Azure SQL-Datenbanken unterstützen das Packen von Daten in Container zu Isolations- und Sicherheitszwecken
 Mit Azure SQL-Datenbank kann SnelStart die lokalen Businessadministrationsdaten der Kunden schnell und transparent nach Azure verschieben. Eine Azure SQL-Datenbank ist ein praktischer Container, der für Isolation sorgt, eine Grenze für die Authentifizierung und Autorisierung bereitstellt und einfache Sicherungs- und Wiederherstellungsoptionen bietet. Datenbanken stellen ein geeignetes konzeptionelles Modell für die Businessadministration bereit. Carlo Kuip, IT Architect, erläutert: „Elemente innerhalb der Containergrenze enthalten vertrauliche Daten, die von entscheidender Bedeutung für das Business sind. Das Speichern dieser Elemente in einer isolierten Datenbank bietet einen hohen Schutz. Wir können die Autorisierung auf Datenbankebene verwalten und die Verwaltung und Skalierung dieser Datenbanken sogar automatisieren, ohne dass wir dafür Datenbankadministratoren einstellen müssten.“
@@ -63,7 +63,7 @@ Mit Azure SQL-Datenbank kann SnelStart die lokalen Businessadministrationsdaten 
 Azure SQL Data Warehouse spielt für die Sicherheit und Verwaltung bei SnelStart ebenfalls eine wichtige Rolle, denn damit kann das Unternehmen Telemetriedaten erfassen, wie beispielsweise zur Angriffserkennung, zur Protokollierung von Benutzeraktivitäten und zur Erfassung der Konnektivität.
 
 ## <a name="azure-removes-overhead-so-that-developers-can-spend-more-time-delivering-value"></a>Azure reduziert den Aufwand, damit Entwickler sich auf das Wesentliche konzentrieren können
-Das Azure-Plattformmodell eliminierte unnötigen Infrastrukturaufwand und versetzte SnelStart in die Lage, Bereitstellungen mithilfe von C#-Verwaltungsbibliotheken zu automatisieren. Kuip führt weiter aus: „Wir konnten unseren aktuellen operativen Betrieb mit einer sehr geringen Anzahl von Mitarbeitern erweitern und gleichzeitig Skalierbarkeit, Geschwindigkeit und Notfallwiederherstellungsoptionen für unsere Kunden verbessern. Durch den Umstieg auf ein dienstbasiertes Modell können sich unsere Ressourcen vermehrt auf neue Dienste und Funktionen konzentrieren und müssen sich nicht mehr damit beschäftigen, vorhandenen Code zu aktualisieren, um neue Vorschriften oder Steuerschlüssel einzupflegen.“ Er ergänzt: „Durch die Automatisierung der Verwaltung und die Nutzung des SaaS-Angebots können wir unseren Kunden mehr Nutzen bieten – ohne umfangreiche Investitionen in Betriebspersonal.“ Durch Einsatz von Azure und elastischen Datenbankpools konnte SnelStart eine Vielzahl neuer Funktionen anbieten, beispielsweise eine stabilere Integration der Kundendaten in Banksysteme, neue Abrechnungsdienste, Backgroundchecks für Kleinunternehmen und E-Mail-Dienste.
+Das Azure-Plattformmodell eliminierte unnötigen Infrastrukturaufwand und versetzte SnelStart in die Lage, Bereitstellungen mithilfe von C#-Verwaltungsbibliotheken zu automatisieren. Kuip führt weiter aus: „Wir konnten unseren aktuellen operativen Betrieb mit einer sehr geringen Anzahl von Mitarbeitern erweitern und gleichzeitig Skalierbarkeit, Geschwindigkeit und Notfallwiederherstellungsoptionen für unsere Kunden verbessern. Durch den Umstieg auf ein dienstbasiertes Modell können sich unsere Ressourcen vermehrt auf neue Dienste und Funktionen konzentrieren und müssen sich nicht mehr damit beschäftigen, vorhandenen Code zu aktualisieren, um neue Vorschriften oder Steuerschlüssel einzupflegen.“ Er ergänzt: „Durch die Automatisierung der Verwaltung und die Nutzung des SaaS-Angebots können wir unseren Kunden mehr Nutzen bieten – ohne umfangreiche Investitionen in Betriebspersonal.“ Durch Einsatz von Azure und elastischen Pools konnte SnelStart eine Vielzahl neuer Features anbieten, beispielsweise eine stabilere Integration der Kundendaten in Banksysteme, neue Abrechnungsdienste, Backgroundchecks für Kleinunternehmen und E-Mail-Dienste.
 
 > „Allein in den ersten Monaten des Jahrs 2016 konnten wir unsere Azure SQL-Datenbankbereitstellungen von etwa 5.500 auf über 12.000 erweitern, und zurzeit fügen wir jeden Monat ca. 1.000 Datenbanken hinzu.“
 > 
@@ -88,7 +88,7 @@ Darüber hinaus ermöglichen die Webdienste von SnelStart Kunden und Buchhaltung
 
 ![SnelStart-Architektur](./media/sql-database-implementation-snelstart/figure1.png)
 
-Abbildung 1. Seit Juni 2016 verwaltet SnelStart mehr als 11.000 Datenbanken und über 50 elastische Datenbankpools
+Abbildung 1. Seit Juni 2016 verwaltet SnelStart mehr als 11.000 Datenbanken und über 50 elastische Pools
 
 ## <a name="simplicity-from-the-cloud"></a>Einfachheit dank Cloud
 Seit dem Wechsel zu einer auf der Azure-Cloud basierenden Lösung konnte SnelStart das schnelle Kundenwachstum problemlos unterstützen und gleichzeitig innovative Funktionen und Dienste anbieten. Henry Been sagt: „Dank Azure können wir Updates für unsere Kunden nahezu kontinuierlich bereitstellen, ohne mehr Mitarbeiter für den Betrieb zu benötigen. Und wir bekommen all die anderen tollen Azure-Funktionen – wie z.B. Skalierbarkeit und Notfallwiederherstellung – direkt im Paket mitgeliefert.“
@@ -103,7 +103,7 @@ SnelStart schätzt die enge Partnerschaft, die das Unternehmen mit dem Microsoft
 Das unmittelbare Ziel für SnelStart ist es, den Stamm an zufriedenen Kunden ständig zu erweitern. Been sagt: „Ohne die technischen und ressourcenbezogenen Einschränkungen, mit denen wir als unabhängiger Softwarehersteller zu kämpfen hatten, steht unserem Wachstum jetzt nichts mehr im Wege.“
 
 ## <a name="more-information"></a>Weitere Informationen
-* Weitere Informationen zu elastischen Azure-Datenbankpools finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+* Weitere Informationen zu elastischen Azure-Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
 * Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu Azure SQL Data Warehouse finden Sie unter [SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)
 * Weitere Informationen zu SnelStart finden Sie unter [SnelStart](http://www.snelstart.nl).
@@ -111,6 +111,6 @@ Das unmittelbare Ziel für SnelStart ist es, den Stamm an zufriedenen Kunden st�
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

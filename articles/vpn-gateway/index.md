@@ -1,12 +1,24 @@
 ---
-layout: LandingPage
+title: "VPN Gateway-Dokumentation – Tutorials und API-Referenz | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie VPN-Gateways (virtuelles privates Netzwerk) zur Verwaltung des Datenverkehrs zwischen cloudbasierten virtuellen Netzwerken und der lokalen Umgebung oder zwischen cloudbasierten VNets konfigurieren.
+services: vpn-gateway
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: vpn-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: a826f96cd679bb26b8a6cf9bb6bf55e93ba4e346
-ms.openlocfilehash: 99843baf9989378aa3d4ff6325a399dae0b632b6
+ms.sourcegitcommit: 2e7486833ae23cdfed037aa1afb930997586a158
+ms.openlocfilehash: e3179c060380c07dde9058597b0d77861d14d848
+
 
 ---
-#<a name="vpn-gateway-documentation"></a>VPN Gateway-Dokumentation
+# <a name="vpn-gateway-documentation"></a>VPN Gateway-Dokumentation
 
 Hier erfahren Sie, wie Sie VPN Gateway (ein virtuelles privates Netzwerkgateway) konfigurieren. Die Dokumentation zeigt, wie Sie Netzwerkdatenverkehr zwischen virtuellen Azure-Netzwerken und lokalen Standorten oder anderen virtuellen Azure-Netzwerken (VNets) senden.
 
@@ -153,16 +165,10 @@ Hier erfahren Sie, wie Sie VPN Gateway (ein virtuelles privates Netzwerkgateway)
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/vpn-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Azure VPN Gateway </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Jan17_HO4-->
 
 

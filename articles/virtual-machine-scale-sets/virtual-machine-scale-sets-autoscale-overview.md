@@ -224,6 +224,6 @@ Ein Beispiel der Einrichtung der automatischen Skalierung im Azure-Portal finden
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

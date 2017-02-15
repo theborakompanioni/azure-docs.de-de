@@ -1,39 +1,43 @@
 ---
-title: 'Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault | Microsoft Docs'
-description: In diesem Lernprogramm werden Sie durch die Schritte zum Verschlüsseln und Entschlüsseln eines BLOBs mithilfe der clientseitigen Verschlüsselung für Microsoft Azure Storage mit Azure Key Vault geführt.
+title: "Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault | Microsoft Docs"
+description: "In diesem Lernprogramm werden Sie durch die Schritte zum Verschlüsseln und Entschlüsseln eines BLOBs mithilfe der clientseitigen Verschlüsselung für Microsoft Azure Storage mit Azure Key Vault geführt."
 services: storage
-documentationcenter: ''
-author: adhurwit
-manager: ''
+documentationcenter: 
+author: robinsh
+manager: carmonm
 editor: tysonn
-
+ms.assetid: 027e8631-c1bf-48c1-9d9b-f6843e88b583
 ms.service: storage
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 09/20/2016
+ms.date: 10/18/2016
 ms.author: lakasa;robinsh
+translationtype: Human Translation
+ms.sourcegitcommit: fc037886a6c78ef1052c69d71be46904401ad493
+ms.openlocfilehash: 9fd334c125c2eac9f775f9952e1438e6ba1259fc
+
 
 ---
-# Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault
-## Einführung
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault
+## <a name="introduction"></a>Einführung
 In diesem Lernprogramm erfahren Sie, wie Sie die clientseitige Speicherverschlüsselung mit Azure Key Vault verwenden. Sie werden durch die Schritte zum Verschlüsseln und Entschlüsseln eines Blobs in einer Konsolenanwendung mit dieser Technologie geführt.
 
 **Geschätzter Zeitaufwand:** 20 Minuten
 
-Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-whatis.md)
+Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](../key-vault/key-vault-whatis.md).
 
 Übersichtsinformationen zur clientseitigen Verschlüsselung für Azure Storage finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](storage-client-side-encryption.md).
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Lernprogramm benötigen Sie Folgendes:
 
 * Ein Azure-Speicherkonto
-* Visual Studio 2013 oder höher
+* Visual Studio 2013 oder höher
 * Azure PowerShell
 
-## Übersicht über die clientseitige Verschlüsselung
+## <a name="overview-of-client-side-encryption"></a>Übersicht über die clientseitige Verschlüsselung
 Eine Übersicht über die clientseitige Verschlüsselung für Azure Storage finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](storage-client-side-encryption.md).
 
 Hier eine kurze Beschreibung zur Funktionsweise der clientseitigen Verschlüsselung:
@@ -43,8 +47,8 @@ Hier eine kurze Beschreibung zur Funktionsweise der clientseitigen Verschlüssel
 3. Der CEK wird dann mit dem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) umschlossen (verschlüsselt). Der KEK wird anhand eines Schlüsselbezeichners identifiziert und kann ein asymmetrisches Schlüsselpaar oder ein symmetrischer Schlüssel sein. Er kann lokal verwaltet oder in Azure Key Vault gespeichert werden. Der Storage-Client hat selbst niemals Zugriff auf den KEK. Er ruft lediglich den Algorithmus für das Umschließen des Schlüssels aus, der vom Schlüsseltresor bereitgestellt wird. Kunden können bei Bedarf benutzerdefinierte Anbieter für das Umschließen von Schlüsseln bzw. das Aufheben dieses Zustands verwenden.
 4. Die verschlüsselten Daten werden dann in den Azure Storage-Dienst hochgeladen.
 
-## Einrichten des Azure-Schlüsseltresors
-Zum Fortsetzen dieses Lernprogramms müssen Sie die folgenden Schritte ausführen, die im Lernprogramm [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md) beschrieben sind.
+## <a name="set-up-your-azure-key-vault"></a>Einrichten des Azure-Schlüsseltresors
+Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die im Tutorial [Erste Schritte mit Azure Key Vault](../key-vault/key-vault-get-started.md) beschrieben sind.
 
 * Erstellen eines Schlüsseltresors
 * Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
@@ -55,11 +59,11 @@ Notieren Sie ClientID und ClientSecret. Diese Angaben werden generiert, wenn Sie
 
 Erstellen Sie beide Schlüssel im Schlüsseltresor. Im weiteren Verlauf des Lernprogramms setzen wir voraus, dass Sie die folgenden Namen verwendet haben: ContosoKeyVault und TestRSAKey1.
 
-## Erstellen einer Konsolenanwendung mit Paketen und AppSettings
+## <a name="create-a-console-application-with-packages-and-appsettings"></a>Erstellen einer Konsolenanwendung mit Paketen und AppSettings
 Erstellen Sie in Visual Studio eine neue Konsolenanwendung.
 
 Fügen Sie die erforderlichen NuGet-Pakete in der Paket-Manager-Konsole hinzu.
-
+```
     Install-Package WindowsAzure.Storage
 
     // This is the latest stable release for ADAL.
@@ -67,10 +71,10 @@ Fügen Sie die erforderlichen NuGet-Pakete in der Paket-Manager-Konsole hinzu.
 
     Install-Package Microsoft.Azure.KeyVault
     Install-Package Microsoft.Azure.KeyVault.Extensions
-
+```
 
 Fügen Sie der Datei „App.Config“ AppSettings hinzu.
-
+```xml
     <appSettings>
         <add key="accountName" value="myaccount"/>
         <add key="accountKey" value="theaccountkey"/>
@@ -78,9 +82,10 @@ Fügen Sie der Datei „App.Config“ AppSettings hinzu.
         <add key="clientSecret" value="theclientsecret"/>
         <add key="container" value="stuff"/>
     </appSettings>
-
+```
 Fügen Sie die folgenden `using`-Anweisungen hinzu, und stellen Sie sicher, dass Sie dem Projekt einen Verweis auf "System.Configuration" hinzufügen.
 
+```csharp
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System.Configuration;
     using Microsoft.WindowsAzure.Storage.Auth;
@@ -89,11 +94,11 @@ Fügen Sie die folgenden `using`-Anweisungen hinzu, und stellen Sie sicher, dass
     using Microsoft.Azure.KeyVault;
     using System.Threading;        
     using System.IO;
-
-
-## Hinzufügen einer Methode zum Abrufen eines Tokens für die Konsolenanwendung
+```
+## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Hinzufügen einer Methode zum Abrufen eines Tokens für die Konsolenanwendung
 Die folgende Methode wird von Schlüsseltresorklassen verwendet, für die eine Authentifizierung des Zugriffs auf den Schlüsseltresor erforderlich ist.
 
+```csharp
     private async static Task<string> GetToken(string authority, string resource, string scope)
     {
         var authContext = new AuthenticationContext(authority);
@@ -107,10 +112,11 @@ Die folgende Methode wird von Schlüsseltresorklassen verwendet, für die eine A
 
         return result.AccessToken;
     }
-
-## Zugreifen auf den Speicher und den Schlüsseltresor in Ihrem Programm
+```
+## <a name="access-storage-and-key-vault-in-your-program"></a>Zugreifen auf den Speicher und den Schlüsseltresor in Ihrem Programm
 Fügen Sie in der Main-Funktion den folgenden Code hinzu.
 
+```csharp
     // This is standard code to interact with Blob storage.
     StorageCredentials creds = new StorageCredentials(
         ConfigurationManager.AppSettings["accountName"],
@@ -123,7 +129,7 @@ Fügen Sie in der Main-Funktion den folgenden Code hinzu.
     // The Resolver object is used to interact with Key Vault for Azure Storage.
     // This is where the GetToken method from above is used.
     KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
-
+```
 
 > [!NOTE]
 > Schlüsseltresor-Objektmodelle
@@ -136,14 +142,14 @@ Fügen Sie in der Main-Funktion den folgenden Code hinzu.
 > 
 > 
 
-## Verschlüsseln des Blobs und Hochladen
+## <a name="encrypt-blob-and-upload"></a>Verschlüsseln des Blobs und Hochladen
 Fügen Sie den folgenden Code hinzu, um ein BLOB zu verschlüsseln und in Ihr Azure-Speicherkonto hochzuladen. Die **ResolveKeyAsync**-Methode, die verwendet wird, gibt einen IKey zurück.
 
+```csharp
     // Retrieve the key that you created previously.
     // The IKey that is returned here is an RsaKey.
     // Remember that we used the names contosokeyvault and testrsakey1.
     var rsa = cloudResolver.ResolveKeyAsync("https://contosokeyvault.vault.azure.net/keys/TestRSAKey1", CancellationToken.None).GetAwaiter().GetResult();
-
 
     // Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy.
     BlobEncryptionPolicy policy = new BlobEncryptionPolicy(rsa, null);
@@ -155,24 +161,25 @@ Fügen Sie den folgenden Code hinzu, um ein BLOB zu verschlüsseln und in Ihr Az
     // Upload using the UploadFromStream method.
     using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
         blob.UploadFromStream(stream, stream.Length, null, options, null);
+```
 
+Unten sehen Sie einen Screenshot aus dem [klassischen Azure-Portal](https://manage.windowsazure.com) für ein Blob, das per clientseitiger Verschlüsselung mit einem in Key Vault gespeicherten Schlüssel verschlüsselt wurde. Die **KeyId**-Eigenschaft ist der URI für den Schlüssel in Key Vault, der als KEK fungiert. Die **EncryptedKey**-Eigenschaft enthält die verschlüsselte Version des CEK.
 
-Unten sehen Sie einen Screenshot aus dem [klassischen Azure-Portal](https://manage.windowsazure.com) für ein Blob, das per clientseitiger Verschlüsselung mit einem im Schlüsseltresor gespeicherten Schlüssel verschlüsselt wurde. Die **KeyId**-Eigenschaft ist der URI für den Schlüssel im Schlüsseltresor, der als KEK fungiert. Die **EncryptedKey**-Eigenschaft enthält die verschlüsselte Version des CEK.
-
-![Screenshot mit Blob-Metadaten, die Verschlüsselungsmetadaten enthalten][1]
+![Screenshot mit Blob-Metadaten, die Verschlüsselungsmetadaten enthalten](./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png)
 
 > [!NOTE]
 > Wenn Sie sich den BlobEncryptionPolicy-Konstruktor ansehen, wird Ihnen auffallen, dass dafür ein Schlüssel und/oder ein Konfliktlöser (Resolver) verwendet werden kann. Denken Sie daran, dass Sie an diesem Punkt keinen Konfliktlöser für die Verschlüsselung verwenden können, weil dafür derzeit kein Standardschlüssel unterstützt wird.
 > 
 > 
 
-## Entschlüsseln des Blobs und Herunterladen
-Eigentlich findet Entschlüsselung statt, wenn die Verwendung der Resolver-Klassen sinnvoll ist. Die ID des Schlüssels, der für die Verschlüsselung verwendet wird, wird dem BLOB in seinen Metadaten zugeordnet. Es gibt für Sie also keinen Grund, den Schlüssel abzurufen und sich die Zuordnung zwischen Schlüssel und BLOB zu merken. Sie müssen lediglich sicherstellen, dass der Schlüssel im Schlüsseltresor erhalten bleibt.
+## <a name="decrypt-blob-and-download"></a>Entschlüsseln des Blobs und Herunterladen
+Eigentlich findet Entschlüsselung statt, wenn die Verwendung der Resolver-Klassen sinnvoll ist. Die ID des Schlüssels, der für die Verschlüsselung verwendet wird, wird dem BLOB in seinen Metadaten zugeordnet. Es gibt für Sie also keinen Grund, den Schlüssel abzurufen und sich die Zuordnung zwischen Schlüssel und BLOB zu merken. Sie müssen lediglich sicherstellen, dass der Schlüssel im Schlüsseltresor erhalten bleibt.   
 
 Der private Schlüssel eines RSA-Schlüssels verbleibt im Schlüsseltresor. Damit die Entschlüsselung durchgeführt werden kann, wird der verschlüsselte Schlüssel aus den BLOB-Metadaten, der den CEK enthält, zur Entschlüsselung an den Schlüsseltresor gesendet.
 
 Fügen Sie Folgendes hinzu, um das Blob zu entschlüsseln, das Sie gerade hochgeladen haben.
 
+```csharp
     // In this case, we will not pass a key and only pass the resolver because
     // this policy will only be used for downloading / decrypting.
     BlobEncryptionPolicy policy = new BlobEncryptionPolicy(null, cloudResolver);
@@ -180,22 +187,24 @@ Fügen Sie Folgendes hinzu, um das Blob zu entschlüsseln, das Sie gerade hochge
 
     using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
         blob.DownloadToStream(np, null, options, null);
-
+```
 
 > [!NOTE]
-> Es sind einige andere Arten von Konfliktlösern (Resolvers) vorhanden, um die Schlüsselverwaltung zu vereinfachen, z. B. AggregateKeyResolver und CachingKeyResolver.
+> Es sind einige andere Arten von Konfliktlösern (Resolvers) vorhanden, um die Schlüsselverwaltung zu vereinfachen, z. B. AggregateKeyResolver und CachingKeyResolver.
 > 
 > 
 
-## Verwenden von geheimen Schlüsseltresor-Schlüsseln
+## <a name="use-key-vault-secrets"></a>Verwenden von geheimen Schlüsseltresor-Schlüsseln
 Für die Verwendung eines geheimen Schlüssels mit clientseitiger Verschlüsselung wird die SymmetricKey-Klasse genutzt, da ein geheimer Schlüssel im Wesentlichen ein symmetrischer Schlüssel ist. Wie oben erwähnt, wird ein geheimer Schlüssel im Schlüsseltresor nicht exakt einem "SymmetricKey" zugeordnet. Hierbei sind einige Dinge zu beachten:
 
-* Der Schlüssel in einem "SymmetricKey" muss eine feste Länge haben: 128, 192, 256, 384 oder 512 Bit.
+* Der Schlüssel in einem "SymmetricKey" muss eine feste Länge haben: 128, 192, 256, 384 oder 512 Bit.
 * Der Schlüssel in einem "SymmetricKey" sollte über eine Base64-Codierung verfügen.
 * Ein geheimer Schlüsseltresor-Schlüssel, der als "SymmetricKey" verwendet wird, muss im Schlüsseltresor den Inhaltstyp "application/octet-stream" aufweisen.
 
-Hier ist ein Beispiel in PowerShell angegeben, bei dem im Schlüsseltresor ein geheimer Schlüssel erstellt wird, der als "SymmetricKey" verwendet werden kann. HINWEIS: Der hartcodierte Wert „$key“ dient nur der Veranschaulichung. In Ihrem eigenen Code sollten Sie diesen Schlüssel generieren.
+Hier ist ein Beispiel in PowerShell angegeben, bei dem im Schlüsseltresor ein geheimer Schlüssel erstellt wird, der als "SymmetricKey" verwendet werden kann.
+HINWEIS: Der hartcodierte Wert „$key“ dient nur der Veranschaulichung. In Ihrem eigenen Code sollten Sie diesen Schlüssel generieren.
 
+```csharp
     // Here we are making a 128-bit key so we have 16 characters.
     //     The characters are in the ASCII range of UTF8 so they are
     //    each 1 byte. 16 x 8 = 128.
@@ -206,23 +215,25 @@ Hier ist ein Beispiel in PowerShell angegeben, bei dem im Schlüsseltresor ein g
 
     // Substitute the VaultName and Name in this command.
     $secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
-
+```
 In Ihrer Konsolenanwendung können Sie den gleichen Aufruf wie vorher verwenden, um diesen geheimen Schlüssel als "SymmetricKey" abzurufen.
 
+```csharp
     SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
         "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
         CancellationToken.None).GetAwaiter().GetResult();
-
+```
 Das ist alles. Viel Spaß!
 
-## Nächste Schritte
-Weitere Informationen zur Verwendung von Microsoft Azure Storage mit C# finden Sie unter [Microsoft Azure-Speicherclientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zur Verwendung von Microsoft Azure Storage mit C# finden Sie unter [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) (Microsoft Azure Storage-Clientbibliothek für .NET).
 
-Weitere Informationen zur BLOB-REST-API finden Sie unter [REST-API des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+Weitere Informationen zur Blob-REST-API finden Sie unter [REST-API des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd135733.aspx).
 
 Aktuelle Informationen zu Microsoft Azure Storage finden Sie im [Microsoft Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/) (in englischer Sprache).
 
-<!--Image references-->
-[1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Nov16_HO3-->
+
+

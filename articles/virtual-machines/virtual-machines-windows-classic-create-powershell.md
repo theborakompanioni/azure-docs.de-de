@@ -2,12 +2,12 @@
 title: Erstellen eines virtuellen Windows-Computers mit PowerShell | Microsoft Docs
 description: Erstellen Sie virtuelle Windows-Computer mit Azure PowerShell und dem klassischen Bereitstellungsmodell.
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management
-
+ms.assetid: 42c0d4be-573c-45d1-b9b0-9327537702f7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,34 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: d9da484755041ca13410db84447576145bc7308f
+
 
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell-and-the-classic-deployment-model"></a>Erstellen eines virtuellen Windows-Computers mit PowerShell und dem klassischen Bereitstellungsmodell
 > [!div class="op_single_selector"]
-> * [Klassisches Azure-Portal – Windows](virtual-machines-windows-classic-tutorial.md)
-> * [PowerShell – Windows](virtual-machines-windows-classic-create-powershell.md)
+> * [Klassisches Azure-Portal – Windows](virtual-machines-windows-classic-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+> * [PowerShell – Windows](virtual-machines-windows-classic-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 > 
 > 
 
 <br>
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-ps-create.md).
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Diese Schritte zeigen, wie Sie eine Reihe von Azure PowerShell-Befehlen anpassen, mit denen ein Windows-basierter virtueller Azure-Computer mit einem Bausteinansatz erstellt und vorab konfiguriert wird. Sie können diesen Prozess verwenden, um schnell einen Befehlssatz für einen neuen Windows-basierten virtuellen Computer zu erstellen und eine vorhandene Bereitstellung zu erweitern oder mehrere Befehlssätze zu erstellen, die schnell eine benutzerdefinierte Entwicklungs-/Test- oder IT-Expertenumgebung erstellen.
 
 Diese Schritte folgen einem lückenfüllenden Ansatz zur Erstellung von Azure PowerShell-Befehlssätzen. Dieser Ansatz kann hilfreich sein, wenn Sie noch nicht mit PowerShell gearbeitet haben oder einfach wissen möchten, welche Werte Sie für die erfolgreiche Konfiguration angeben müssen. Erweiterte PowerShell-Benutzer können die Befehle verwenden und sie durch eigene Werte für die Variablen ersetzen (Zeilen, die mit "$" beginnen).
 
-Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) , um Azure PowerShell auf Ihrem lokalen Computer zu installieren. Öffnen Sie anschließend eine Windows PowerShell-Eingabeaufforderung.
+Wenn Sie dies noch nicht getan haben, verwenden Sie die Anweisungen unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) , um Azure PowerShell auf Ihrem lokalen Computer zu installieren. Öffnen Sie anschließend eine Windows PowerShell-Eingabeaufforderung.
 
-## <a name="step-1:-add-your-account"></a>Schritt 1: Hinzufügen Ihres Kontos
+## <a name="step-1-add-your-account"></a>Schritt 1: Hinzufügen Ihres Kontos
 1. Geben Sie an der PowerShell-Eingabeaufforderung **Add-AzureAccount** ein, und drücken Sie die EINGABETASTE****. 
 2. Geben Sie die mit Ihrem Azure-Abonnement verknüpfte E-Mail-Adresse ein, und klicken Sie auf **Weiter**. 
 3. Geben Sie das Kennwort für Ihr Konto ein. 
 4. Klicken Sie auf **Anmelden**.
 
-## <a name="step-2:-set-your-subscription-and-storage-account"></a>Schritt 2: Festlegen Ihres Abonnements und Speicherkontos
+## <a name="step-2-set-your-subscription-and-storage-account"></a>Schritt 2: Festlegen Ihres Abonnements und Speicherkontos
 Legen Sie Ihr Azure-Abonnement und -Speicherkonto fest, indem Sie diese Befehle in der Windows PowerShell-Eingabeaufforderung ausführen. Ersetzen Sie alles in den Anführungszeichen, einschließlich der Zeichen < und >, durch die korrekten Namen.
 
     $subscr="<subscription name>"
@@ -52,7 +55,7 @@ Legen Sie Ihr Azure-Abonnement und -Speicherkonto fest, indem Sie diese Befehle 
 
 Sie erhalten den korrekten Abonnementnamen aus der Eigenschaft "SubscriptionName" der Ausgabe des Befehls **Get-AzureSubscription** . Sie erhalten den korrekten Speicherkontonamen aus der Eigenschaft „Label“ der Ausgabe des Befehls **Get-AzureStorageAccount**, nachdem Sie den Befehl **Select-AzureSubscription** ausgeführt haben.
 
-## <a name="step-3:-determine-the-imagefamily"></a>Schritt 3: Bestimmen der ImageFamily
+## <a name="step-3-determine-the-imagefamily"></a>Schritt 3: Bestimmen der ImageFamily
 Als Nächstes müssen Sie den Wert "ImageFamily" oder "Beschriftung" für das Image bestimmen, das dem virtuellen Computer in Azure entspricht, den Sie erstellen möchten. Sie können die Liste der verfügbaren ImageFamily-Werte mit diesem Befehl abrufen.
 
     Get-AzureVMImage | select ImageFamily -Unique
@@ -78,18 +81,18 @@ Wenn Sie das richtige Image mit diesem Befehl gefunden haben, öffnen Sie eine n
     $label="<Label value>"
     $image = Get-AzureVMImage | where { $_.Label -eq $label } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
-## <a name="step-4:-build-your-command-set"></a>Schritt 4: Erstellen des Befehlssatzes
+## <a name="step-4-build-your-command-set"></a>Schritt 4: Erstellen des Befehlssatzes
 Erstellen Sie den Rest des Befehlssatzes, indem Sie den entsprechenden Satz an Blöcken unten in Ihre neue Textdatei oder ISE kopieren und dann die Variablenwerte eingeben und die Zeichen < und > entfernen. Anhand der beiden [Beispiele](#examples) am Ende dieses Artikels erhalten Sie eine Idee des Endergebnisses.
 
 Starten Sie den Befehlssatz, indem Sie einen dieser beiden Befehlssätze auswählen (erforderlich).
 
-Option 1: Geben Sie einen Namen für den virtuellen Computer und eine Größe an.
+Option 1: Geben Sie einen Namen für den virtuellen Computer und eine Größe an.
 
     $vmname="<machine name>"
     $vmsize="<Specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
     $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-Option 2: Geben Sie einen Namen, eine Größe und einen Verfügbarkeitsgruppennamen an.
+Option 2: Geben Sie einen Namen, eine Größe und einen Verfügbarkeitsgruppennamen an.
 
     $vmname="<machine name>"
     $vmsize="<Specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
@@ -156,20 +159,20 @@ Optional können Sie den virtuellen Computer einem vorhandenen Satz mit Lastenau
 
 Abschließend wählen Sie einen dieser erforderlichen Befehlsblöcke zum Erstellen des virtuellen Computers.
 
-Option 1: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst.
+Option 1: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst.
 
     New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
 Der kurze Name des Clouddiensts ist der Name in der Liste der Clouddienste im klassischen Azure-Portal oder in der Liste der Ressourcengruppen im Azure-Portal.
 
-Option 2: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst und virtuellen Netzwerk.
+Option 2: Erstellen Sie den virtuellen Computer in einem vorhandenen Clouddienst und virtuellen Netzwerk.
 
     $svcname="<short name of the cloud service>"
     $vnetname="<name of the virtual network>"
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname
 
-## <a name="step-5:-run-your-command-set"></a>Schritt 5: Ausführen des Befehlssatzes
-Überprüfen Sie den aus mehreren Blöcken von Befehlen aus Schritt 4 bestehenden Azure PowerShell-Befehlssatz in einem Texteditor oder der PowerShell ISE. Stellen Sie sicher, dass Sie alle erforderlichen Variablen angegeben haben und diese die richtigen Werte aufweisen. Stellen Sie außerdem sicher, dass Sie alle < und > entfernt haben.
+## <a name="step-5-run-your-command-set"></a>Schritt 5: Ausführen des Befehlssatzes
+Überprüfen Sie den aus mehreren Blöcken von Befehlen aus Schritt 4 bestehenden Azure PowerShell-Befehlssatz in einem Texteditor oder der PowerShell ISE. Stellen Sie sicher, dass Sie alle erforderlichen Variablen angegeben haben und diese die richtigen Werte aufweisen. Stellen Sie außerdem sicher, dass Sie alle < und > entfernt haben.
 
 Wenn Sie einen Texteditor verwenden, kopieren Sie den Befehlssatz in die Zwischenablage, und klicken Sie dann mit der rechten Maustaste auf Ihre offene Windows PowerShell-Eingabeaufforderung. Dies gibt den Befehlssatz als Serie von PowerShell-Befehlen aus und erstellt den virtuellen Azure-Computer. Führen Sie alternativ den Befehlssatz in der PowerShell ISE aus.
 
@@ -178,7 +181,7 @@ Wenn Sie diesen virtuellen Computer erneut oder einen ähnlichen Computer erstel
 * diesen Befehlssatz als PowerShell-Skriptdatei (*.ps1) speichern
 * diesen Befehlssatz als Azure Automation-Runbook im Bereich **Automatisierung** des klassischen Azure-Portals speichern
 
-## <a name="<a-id="examples"></a>examples"></a><a id="examples"></a>Beispiele
+## <a name="a-idexamplesaexamples"></a><a id="examples"></a>Beispiele
 Hier finden Sie zwei Beispiele für die Verwendung der vorangegangenen Schritte zum Erstellen von Azure PowerShell-Befehlssätzen, die Windows-basierte virtuelle Azure-Computer erstellen.
 
 ### <a name="example-1"></a>Beispiel 1
@@ -255,8 +258,11 @@ Hier finden Sie den entsprechenden Azure PowerShell-Befehlssatz zum Erstellen di
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie einen Betriebssystem-Datenträger mit mindestens 127 GB benötigen, können Sie das [Betriebssystemlaufwerk erweitern](virtual-machines-windows-expand-os-disk.md).
+Wenn Sie einen Betriebssystem-Datenträger mit mindestens 127 GB benötigen, können Sie das [Betriebssystemlaufwerk erweitern](virtual-machines-windows-expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Dec16_HO2-->
 
 

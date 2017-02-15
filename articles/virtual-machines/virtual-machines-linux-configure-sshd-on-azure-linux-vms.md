@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: fa6c9b6b60aef689568c58699eeb89d14b1ae2bf
-ms.openlocfilehash: 73c47bcfbe018947930bb23fbbcc201b91a49944
+ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
+ms.openlocfilehash: a606f06de55b1db4392d066a3e1d026eb3b54d74
 
 
 ---
@@ -77,7 +77,7 @@ ClientAliveCountMax 0
 
 SSHD ist der SSH-Server, der auf der Linux-VM ausgeführt wird.  SSH ist ein Client, der von der Shell auf Ihrer MacBook- oder Linux-Arbeitsstation oder von einem Bash unter Windows aus ausgeführt wird.  SSH ist auch das Protokoll, das zum Schützen und Verschlüsseln der Kommunikation zwischen Ihrer Arbeitsstation und der Linux-VM verwendet wird. Dadurch wird SSH zu einem virtuellen privaten Netzwerk (VPN, Virtual Private Network).
 
-Für diesen Artikel ist es sehr wichtig, dass Sie eine Anmeldung bei Ihrer Linux-VM für die gesamte Vorgehensweise offen halten.  Sobald eine SSH-Verbindung hergestellt ist, bleibt diese Sitzung offen, bis das Fenster geschlossen wird.  Wenn ein Terminal angemeldet ist, können Sie am SSHD-Dienst Änderungen vornehmen, ohne dass Sie beim Durchführen einer grundlegenden Änderung gesperrt werden.  Wenn Sie für Ihre Linux-VM aufgrund einer fehlerhaften SSHD-Konfiguration gesperrt werden, bietet Azure die Möglichkeit, die Konfiguration mit der [Azure-VMAccess-Erweiterung](virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zurückzusetzen.
+Für diesen Artikel ist es sehr wichtig, dass Sie eine Anmeldung bei Ihrer Linux-VM für die gesamte Vorgehensweise offen halten.  Sobald eine SSH-Verbindung hergestellt ist, bleibt diese Sitzung offen, bis das Fenster geschlossen wird.  Wenn ein Terminal angemeldet ist, können Sie am SSHD-Dienst Änderungen vornehmen, ohne dass Sie beim Durchführen einer grundlegenden Änderung gesperrt werden.  Wenn Sie für Ihre Linux-VM aufgrund einer fehlerhaften SSHD-Konfiguration gesperrt werden, bietet Azure die Möglichkeit, die Konfiguration mit der [Azure-VMAccess-Erweiterung](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zurückzusetzen.
 
 Aus diesem Grund werden wir zwei Terminals und eine SSH-Verbindung mit der Linux-VM für beide öffnen.  Wir verwenden das erste Terminal, um die Konfigurationsdatei der SSHDs zu ändern und den SSHD-Dienst neu zu starten.  Wir verwenden das zweite Terminal, um diese Änderungen zu testen, sobald der Dienst neu gestartet wurde.  Da wir SSH-Kennwörter deaktivieren und uns strikt auf SSH-Schlüssel verlassen, wird die VM dauerhaft gesperrt, wenn Ihre SSH-Schlüssel nicht korrekt sind, und Sie die Verbindung mit der VM schließen, und niemand wird in der Lage sein, sich bei ihr anzumelden. Sie muss dann also gelöscht und neu erstellt werden.
 
@@ -177,14 +177,14 @@ Es wird dringend empfohlen, die Open-Source-App Fail2ban zu installieren und ein
 
 Nachdem Sie den SSH-Server auf Ihrer Linux-VM konfiguriert und gesperrt haben, können Sie noch weitere bewährte Sicherheitsmethoden befolgen.  
 
-* [Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung](virtual-machines-linux-using-vmaccess-extension?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung](virtual-machines-linux-using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-encrypt-disks?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-* [Zugriff und Sicherheit in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-3-access-security?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Zugriff und Sicherheit in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

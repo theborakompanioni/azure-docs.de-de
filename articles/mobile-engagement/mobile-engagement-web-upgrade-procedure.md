@@ -1,12 +1,12 @@
 ---
-title: Upgradeverfahren für das Azure Mobile Engagement Web SDK | Microsoft Docs
-description: Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement
+title: "Upgradeverfahren für das Azure Mobile Engagement Web SDK | Microsoft Docs"
+description: "Die neuesten Updates und Verfahren für das Web SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: a20529b4-ec8d-4503-8ae9-09b5f0846d5b
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: web
@@ -14,16 +14,20 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
+
 
 ---
-# Upgradeverfahren für das Azure Mobile Engagement Web SDK
+# <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Upgradeverfahren für das Azure Mobile Engagement Web SDK
 Wenn Sie bereits eine frühere Version des Azure Mobile Engagement Web SDK in Ihre Webanwendung integriert haben, müssen Sie bei einem Upgrade des SDK die folgenden Punkte beachten.
 
 Wenn Sie mehrere Versionen des Mobile Engagement Web SDK übersprungen haben, müssen Sie während des Upgrades ggf. mehrere Verfahren ausführen. Wenn Sie beispielsweise von 1.4.0 zu 1.6.0 migrieren, führen Sie erst die Verfahren für das Upgrade von 1.4.0 auf 1.5.0 durch. Führen Sie anschließend die Verfahren für das Upgrade von 1.5.0 auf 1.6.0 durch.
 
 Ersetzen Sie unabhängig von der Ausgangsversion des Upgrades alle früheren Versionen der Datei „azure-engagement.js“ durch die neueste Version der Datei.
 
-## Upgrade von 1.2.1 auf 2.0.0
+## <a name="upgrade-from-121-to-200"></a>Upgrade von 1.2.1 auf 2.0.0
 In diesem Abschnitt wird beschrieben, wie Sie die Migration des Mobile Engagement Web SDK vom Capptain-Dienst, die von Capptain SAS angeboten wird, in eine Azure Mobile Engagement-App durchführen. Wenn eine Migration von einer früheren Version erfolgt, sehen Sie auf der Capptain-Website nach, wie zunächst eine Migration auf Version 1.2.1 erfolgt. Führen Sie anschließend die folgenden Verfahren aus.
 
 Diese Version des Mobile Engagement Web SDK unterstützt nicht Samsung Smart TV, Opera TV, webOS und das „Reach“-Feature.
@@ -33,10 +37,10 @@ Diese Version des Mobile Engagement Web SDK unterstützt nicht Samsung Smart TV,
 > 
 > 
 
-### JavaScript-Dateien
+### <a name="javascript-files"></a>JavaScript-Dateien
 Ersetzen Sie die Datei „capptain-sdk.js“ durch die Datei „Azure-engagement.js“, und aktualisieren Sie Ihre Skriptimporte entsprechend.
 
-### Entfernen von Capptain Reach
+### <a name="remove-capptain-reach"></a>Entfernen von Capptain Reach
 Diese Version des Mobile Engagement Web SDK unterstützt nicht das „Reach“-Feature. Wenn Sie Capptain Reach in Ihre Anwendung integriert haben, müssen Sie dieses Feature entfernen.
 
 Entfernen Sie den Reach-CSS-Import von Ihrer Seite, und löschen Sie die zugehörige CSS-Datei (standardmäßig „capptain-reach.css“).
@@ -73,7 +77,7 @@ Entfernen Sie die Reach-Benutzeroberfläche für Text- und Webankündigungen und
       </div>
     </div>
 
-Entfernen Sie das `reach`-Objekt aus Ihrer Konfiguration, sofern vorhanden. Es sieht folgendermaßen aus:
+Entfernen Sie das `reach` -Objekt aus Ihrer Konfiguration, sofern vorhanden. Es sieht folgendermaßen aus:
 
     window.capptain = {
       [...]
@@ -84,14 +88,14 @@ Entfernen Sie das `reach`-Objekt aus Ihrer Konfiguration, sofern vorhanden. Es s
 
 Entfernen Sie andere Reach-Anpassungen, z.B. Kategorien.
 
-### Entfernen veralteter APIs
+### <a name="remove-deprecated-apis"></a>Entfernen veralteter APIs
 Einige der APIs aus Capptain sind im Mobile Engagement Web SDK veraltet.
 
 Entfernen Sie alle Aufrufe der folgenden APIs: `agent.connect`, `agent.disconnect`, `agent.pause` und `agent.sendMessageToDevice`.
 
 Entfernen Sie allen Vorkommen der folgenden Rückrufe aus Ihrer Capptain-Konfiguration: `onConnected`, `onDisconnected`, `onDeviceMessageReceived` und `onPushMessageReceived`.
 
-### Konfiguration
+### <a name="configuration"></a>Konfiguration
 Mobile Engagement verwendet eine Verbindungszeichenfolge zum Konfigurieren der SDK-Bezeichner wie beispielsweise dem Anwendungsbezeichner.
 
 Ersetzen Sie die Anwendungs-ID durch Ihre Verbindungszeichenfolge. Beachten Sie, dass sich das globale Objekt für die SDK-Konfiguration von `capptain` in `azureEngagement` ändert.
@@ -112,9 +116,14 @@ Nach der Migration:
 
 Die Verbindungszeichenfolge für Ihre Anwendung wird im Azure-Portal angezeigt.
 
-### JavaScript-APIs
+### <a name="javascript-apis"></a>JavaScript-APIs
 Das globale JavaScript-Objekt `window.capptain` wurde in `window.azureEngagement` umbenannt. Sie können aber den `window.engagement`-Alias für API-Aufrufe verwenden. Sie können den Alias nicht zum Definieren der SDK-Konfiguration verwenden.
 
 Beispiel: `capptain.deviceId` wird `engagement.deviceId`, `capptain.agent.startActivity` wird `engagement.agent.startActivity` usw.
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

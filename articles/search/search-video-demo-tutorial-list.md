@@ -1,13 +1,13 @@
 ---
 title: Videos, Beispiele und Tutorials in Azure Search | Microsoft Docs
-description: Zentrale Liste mit allen Videos, Beispielen, Demos und Tutorials, die für Azure Search, einen in Microsoft Azure gehosteten Clouddienst, erstellt wurden.
+description: "Zentrale Liste mit allen Videos, Beispielen, Demos und Tutorials, die für Azure Search, einen in Microsoft Azure gehosteten Clouddienst, erstellt wurden."
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
-editor: ''
+editor: 
 tags: azure-portal
-
+ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -15,9 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/22/2016
 ms.author: heidist
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1011a19ae7ffae0fedee1d6202d1b00d35d948f9
+
 
 ---
-# <a name="azure-search:-code-samples,-demos,-videos-and-tutorials"></a>Azure Search: Codebeispiele, Demos, Videos und Tutorials
+# <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure Search: Codebeispiele, Demos, Videos und Tutorials
 Finden Sie mit den folgenden Videos, Demos, Tutorials und Beispiel-Apps einen schnelleren Einstieg.
 
 ## <a name="code-samples"></a>Codebeispiele
@@ -35,7 +39,7 @@ Bei diesen Websites handelt es sich um voll funktionsfähige Webanwendungen, die
 
 [**Azure Search Demo Site**](https://searchsamples.azurewebsites.net/#/) (Azure Search-Demo-Website) ist eine Sammlung von Demo-Apps für Azure Search. Testen Sie Apps für die Mediensuche, geografische Suche und Produktbestände mithilfe von Azure Search.
 
-## <a name="top-five"></a>Top 5
+## <a name="top-five"></a>Top 5
 Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufgeführt.
 
 * [Video: Microsoft Virtual Academy introduction to Azure Search](https://mva.microsoft.com/en-us/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382) (Microsoft Virtual Academy – Einführung in Azure Search) ist eine gute Ressource, um sich über die Grundlagen von Azure Search zu informieren.
@@ -57,11 +61,11 @@ Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufge
 | [Build 2015: Using Azure Search to Build Great Search Experiences in Mobile and WebApps](http://channel9.msdn.com/Events/Build/2015/2-745) |Juni 2015 |1 Stunde. Vortrag von Pablo Castro bei Microsoft Build 2015. |
 | [Ignite 2015: Adding Search Capabilities to Your Business Applications Using Microsoft Azure Search](http://channel9.msdn.com/Events/Ignite/2015/BRK2565) |Mai 2015 |1 Stunde und 16 Minuten. Vortrag von Liam Cavanagh bei Microsoft Ignite 2015. |
 | [Microsoft Virtual Academy: Adding Azure Search to your Websites and Apps](http://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps) |April 2015 |7-teilige Reihe über das Hinzufügen von Azure Search zu einer Anwendung, präsentiert von Liam Cavanagh, Janusz Lembicz und Bernardita Torres Garayar. |
-| [Elastic{ON} 2015: Powering Real-Time Search at Microsoft](https://www.elastic.co/elasticon/2015/sf/powering-real-time-search-at-microsoft) |März 2015 |16 Minuten. Vortrag von Pablo Castro bei Elastic{ON} 2015, in dem er erläutert, wie Azure Search und andere Gruppen bei Microsoft ElasticSearch verwenden. |
-| [Channel9 Data Exposed: „Azure Search General Availability and What's New“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-General-Availability-and-Whats-New) |März 2015 |12 Minuten. Azure Search wird allgemein verfügbar – präsentiert von Liam Cavanagh. |
+| [Elastic{ON} 2015: Powering Real-Time Search at Microsoft](https://www.elastic.co/elasticon/2015/sf/powering-real-time-search-at-microsoft) |März 2015 |16 Minuten. Vortrag von Pablo Castro bei Elastic{ON} 2015, in dem er erläutert, wie Azure Search und andere Gruppen bei Microsoft ElasticSearch verwenden. |
+| [Channel9 Data Exposed: „Azure Search General Availability and What's New“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-General-Availability-and-Whats-New) |März 2015 |12 Minuten. Azure Search wird allgemein verfügbar – präsentiert von Liam Cavanagh. |
 | [Channel9 Data Exposed: „Azure Search Suggestions“](https://channel9.msdn.com/Shows/Data-Exposed/DataExposedAzureSearchSuggestions) |Februar 2015 |15 Minuten. Ein Video zu Vorschlägen (auch als Eingabevorschläge oder automatisches Vervollständigen für Abfragen bekannt). Bei dieser Funktion werden mögliche Suchbegriffe angezeigt, während ein Benutzer einen Begriff eingibt. In Azure Search sind Fuzzyübereinstimmungen über Vorschläge implementiert. |
 | [Channel9 Data Exposed: „SQL Server To Azure Search Synchronization“](http://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-to-Azure-Search-Synchronization) |Dezember 2014 |16 Minuten. Synchronisieren von Datenbanktransaktionen. Laden von relationalen Azure SQL-Daten in Azure Search. |
-| [TechEd Europe: Deep Dive into Azure Search](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410) |Oktober 2014 |1 Stunde und 15 Minuten. Eine Demo zu allen Teilen von Azure Search, präsentiert von Pablo Castro. |
+| [TechEd Europe: Deep Dive into Azure Search](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410) |Oktober 2014 |1 Stunde und 15 Minuten. Eine Demo zu allen Teilen von Azure Search, präsentiert von Pablo Castro. |
 | [Channel9 Data Exposed: „GeoSpatial Data and Azure Search“](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) |September 2014 |18 Minuten. Szenarios für die Geosuche. |
 | [Connect Event: Ein Überblick in 8 Minuten](http://channel9.msdn.com/events/Visual-Studio/Connect-event-2014/421) |September 2014 |9 Minuten. Eine kurze Präsentation zu den Vorteilen von Azure Search, präsentiert von Liam Cavanagh. |
 | [Channel9 Cloud Cover: Episode 152](http://channel9.msdn.com/Shows/Cloud%20Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh) |September 2014 |25 Minuten. Eine Erörterung zu technischen Funktionen: Wie werden reguläre und geodatenbezogene Abfragen über Fiddler ausgegeben, und wie werden die zurückgegebenen Ergebnisse interpretiert? |
@@ -81,6 +85,9 @@ Hier sind einige unserer beliebtesten Tutorials und Videos zu Azure Search aufge
 | [Lernprogramm zu Bewertungsprofilen](search-get-started-scoring-profiles.md) |Testen von Bewertungsprofilen mit einer Konsolenanwendung. |
 | [Lernprogramm zur Azure Search Management-REST-API](search-get-started-management-api.md) |So verwenden Sie die Management-REST-API, um den Dienst bereitzustellen und Administrator- oder Abfrage-API-Schlüssel zu verwalten. |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

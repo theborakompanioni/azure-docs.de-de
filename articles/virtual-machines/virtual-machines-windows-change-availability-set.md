@@ -1,14 +1,14 @@
 ---
-title: Ändern der Verfügbarkeitsgruppe eines virtuellen Computers | Microsoft Docs
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell und des Resource Manager-Bereitstellungsmodells die Verfügbarkeitsgruppe für Ihre virtuellen Computer ändern.
-keywords: ''
+title: "Ändern der Verfügbarkeitsgruppe eines virtuellen Computers | Microsoft Docs"
+description: "Erfahren Sie, wie Sie mithilfe von Azure PowerShell und des Resource Manager-Bereitstellungsmodells die Verfügbarkeitsgruppe für Ihre virtuellen Computer ändern."
+keywords: 
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: Drewm3
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 44c90f90-bc9a-4260-a36f-5465e2a1ef94
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,12 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 947369fe8d93cb5a7ecf2624a0192d8aa1ea8524
+
 
 ---
-# Ändern der Verfügbarkeitsgruppe für einen virtuellen Windows-Computer
-Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virtuellen Computers über Azure PowerShell ändern. Ein virtueller Computer kann nur zum Zeitpunkt der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden. Um die Verfügbarkeitsgruppe zu ändern, müssen Sie den virtuellen Computer löschen und neu erstellen.
+# <a name="change-the-availability-set-for-a-windows-vm"></a>Ändern der Verfügbarkeitsgruppe für einen virtuellen Windows-Computer
+Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virtuellen Computers über Azure PowerShell ändern. Ein virtueller Computer kann nur zum Zeitpunkt der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden. Um die Verfügbarkeitsgruppe zu ändern, müssen Sie den virtuellen Computer löschen und neu erstellen. 
 
-## Ändern der Verfügbarkeitsgruppe über PowerShell
+## <a name="change-the-availability-set-using-powershell"></a>Ändern der Verfügbarkeitsgruppe über PowerShell
 1. Erfassen Sie die folgenden Schlüsselinformationen des virtuellen Computers, der geändert werden soll.
    
     Name des virtuellen Computers
@@ -51,14 +55,14 @@ Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virt
     $vm.StorageProfile.OsDisk.Vhd.Uri
     ```
    
-    Profile für jeden Datenträger für Daten
+    Profile für jeden Datenträger für Daten 
    
     ```powershell
     $vm.StorageProfile.DataDisks[<index>].Lun
     $vm.StorageProfile.DataDisks[<index>].Vhd.Uri
     ```
    
-    Installierte VM-Erweiterungen
+    Installierte VM-Erweiterungen 
    
     ```powershell
     $vm.Extensions
@@ -84,9 +88,9 @@ Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virt
    
     New-AzureRmVM -ResourceGroupName <resourceGroupName> -Location <location> -VM <vmConfig>
     ``` 
-5. Fügen Sie Datenträger und Erweiterungen hinzu. Weitere Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-attach-disk-portal.md) und [Konfigurationsbeispiele für Erweiterungen](virtual-machines-windows-extensions-configuration-samples.md). Datenträger und Erweiterungen können über PowerShell oder die Azure-Befehlszeilenschnittstelle zum virtuellen Computer hinzugefügt werden.
+5. Fügen Sie Datenträger und Erweiterungen hinzu. Weitere Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Computer](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Konfigurationsbeispiele für Erweiterungen](virtual-machines-windows-extensions-configuration-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Datenträger und Erweiterungen können über PowerShell oder die Azure-Befehlszeilenschnittstelle zum virtuellen Computer hinzugefügt werden.
 
-## Beispielskript
+## <a name="example-script"></a>Beispielskript
 Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Informationen, das Löschen des ursprünglichen virtuellen Computers und das erneute Erstellen des Computers in einer neuen Verfügbarkeitsgruppe.
 
 ```powershell
@@ -150,7 +154,12 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
-## Nächste Schritte
-Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](virtual-machines-windows-attach-disk-portal.md) hinzufügen.
+## <a name="next-steps"></a>Nächste Schritte
+Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hinzufügen.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

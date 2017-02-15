@@ -4,20 +4,21 @@
 ##[Erstellen eines Servers](analysis-services-create-server.md)
 
 # Anleitung 
-## [Bereitstellen](analysis-services-deploy.md)
-## Verwalten
-###[Verbinden mit einem Server](analysis-services-connect.md)
-###[Verwalten eines Servers](analysis-services-manage.md)
-## Integrieren
-###[Lokales Datengateway](analysis-services-gateway.md)
+##[Bereitstellen auf einem Server](analysis-services-deploy.md)
+##[Herstellen einer Verbindung von einem Client](analysis-services-connect.md)
+##[Verwalten eines Servers](analysis-services-manage.md)
+##[Verwalten von Benutzern](analysis-services-manage-users.md)
+##[Integrieren des lokalen Datengateways](analysis-services-gateway.md)
 
 # Referenz
-##[PowerShell](/powershell/resourcemanager)
-##[REST](/rest/api/analysisservices/)
+##[PowerShell](analysis-services-powershell.md)
+##[REST](/rest/api/analysisservices)
 
-# Verwandte Themen
+# Ressourcen
 ##[Datenquellenverbindungen](analysis-services-datasource.md)
+##[Datenanbieter](analysis-services-data-providers.md) 
 
-<!--HONumber=Dec16_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

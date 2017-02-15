@@ -1,23 +1,27 @@
 ---
-title: Ändern der StorSimple-Gerätekonfiguration | Microsoft Docs
-description: Beschreibt, wie der StorSimple Manager-Dienst dazu verwendet werden kann, ein StorSimple-Gerät neu zu konfigurieren, das bereits bereitgestellt wurde.
+title: "Ändern der StorSimple-Gerätekonfiguration | Microsoft Docs"
+description: "Beschreibt, wie der StorSimple Manager-Dienst dazu verwendet werden kann, ein StorSimple-Gerät neu zu konfigurieren, das bereits bereitgestellt wurde."
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: bb679264-8d46-429c-9ef7-630dc3b4a423
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/16/2016
+ms.date: 09/29/2016
 ms.author: v-sharos
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2dfc682fa54577ec5ab9d8a1e21ea82f035cc41e
+
 
 ---
-# Verwenden des StorSimple Manager-Diensts, um eine StorSimple-Gerätekonfiguration zu ändern
-## Übersicht
+# <a name="use-the-storsimple-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple Manager-Diensts, um eine StorSimple-Gerätekonfiguration zu ändern
+## <a name="overview"></a>Übersicht
 Die Seite **Konfigurieren** im klassischen Azure-Portal enthält alle Geräteparameter, die Sie für ein StorSimple-Gerät neu konfigurieren können, das über einen StorSimple Manager-Dienst verwaltet wird. In diesem Tutorial wird erklärt, wie Sie über die Seite **Konfigurieren** die folgenden gerätebezogenen Aufgaben ausführen:
 
 * Ändern von Geräteeinstellungen 
@@ -26,7 +30,7 @@ Die Seite **Konfigurieren** im klassischen Azure-Portal enthält alle Gerätepar
 * Ändern von Netzwerkschnittstellen
 * Austauschen oder Neuzuweisen von IP-Adressen
 
-## Ändern von Geräteeinstellungen
+## <a name="modify-device-settings"></a>Ändern von Geräteeinstellungen
 Die Geräteeinstellungen umfassen den Anzeigenamen des Geräts und die Gerätebeschreibung.
 
 Einem StorSimple-Gerät, das mit dem StorSimple-Manager-Dienst verbunden ist, ist ein Standardname zugewiesen. Der Standardname basiert üblicherweise auf der Seriennummer des Geräts. Beispielsweise kennzeichnet ein aus 15 Zeichen bestehender Standardgerätename, etwa 8600-SHX0991003G44HT, Folgendes:
@@ -34,32 +38,30 @@ Einem StorSimple-Gerät, das mit dem StorSimple-Manager-Dienst verbunden ist, is
 * **8600** – Kennzeichnet das Gerätemodell.
 * **SHX** – Kennzeichnet den Fertigungsstandort.
 * **0991003** – Kennzeichnet ein bestimmtes Produkt.
-* **G44HT** – Die letzten 5 Ziffern werden inkrementiert, um eindeutige Seriennummern zu erstellen. Dies ist möglicherweise keine sequenzielle Reihe.
+* **G44HT**– Die letzten 5 Ziffern werden inkrementiert, um eindeutige Seriennummern zu erstellen. Dies ist möglicherweise keine sequenzielle Reihe.
 
 Über das klassische Azure-Portal können Sie den Gerätenamen ändern und dem Gerät einen eindeutigen Anzeigenamen Ihrer Wahl zuweisen. Der Anzeigename kann beliebige Zeichen enthalten und darf maximal 64 Zeichen lang sein.
 
 Sie können auch eine Gerätebeschreibung angeben. Eine Gerätebeschreibung erleichtert es üblicherweise, den Besitzer und den physischen Standort des Geräts zu identifizieren. Das Beschreibungsfeld muss weniger als 256 Zeichen enthalten.
 
-## Ändern von Zeiteinstellungen
+## <a name="modify-time-settings"></a>Ändern von Zeiteinstellungen
 Ihr Gerät muss die Zeit synchronisieren, damit es sich beim Cloudspeicher-Dienstanbieter authentifizieren kann. Wählen Sie eine Zeitzone in der Dropdownliste aus, und geben Sie bis zu zwei NTP-Server (Network Time Protocol) an. Der primäre NTP-Server ist erforderlich und wird angegeben, wenn Sie das Gerät über Windows PowerShell für StorSimple konfigurieren. Sie können den standardmäßigen Windows-Server **time.windows.com** als Ihren NTP-Server angeben. Sie können die Konfiguration des primären NTP-Servers zwar über das klassische Azure-Portal anzeigen, wenn Sie die Konfiguration ändern möchten, müssen Sie aber die Windows PowerShell-Schnittstelle verwenden.
 
-Die Konfiguration des sekundären NTP-Servers ist optional. Sie können mit dem klassischen Azure-Portal einen sekundären NTP-Server konfigurieren.
+Die Konfiguration des sekundären NTP-Servers ist optional. Sie können mit dem klassischen Azure-Portal einen sekundären NTP-Server konfigurieren. 
 
 Wenn Sie den NTP-Server konfigurieren, müssen Sie sich vergewissern, dass Ihr Netzwerk zulässt, dass der NTP-Datenverkehr von Ihrem Rechenzentrum in das Internet fließt. Wenn Sie einen öffentlichen NTP-Server angeben, müssen Sie sicherstellen, dass Ihre Netzwerkfirewalls und anderen Sicherheitseinrichtungen so konfiguriert sind, dass NTP-Datenverkehr in das externe und aus dem externen Netzwerk fließen kann. Wenn bidirektionaler NTP-Datenverkehr nicht zugelassen ist, müssen Sie einen internen NTP-Server verwenden (ein Windows-Domänencontroller bietet diese Funktion). Wenn Ihr Gerät die Zeit nicht synchronisieren kann, kann es möglicherweise nicht mit Ihrem Cloudspeicheranbieter kommunizieren.
 
-Um eine Liste der öffentlichen NTP-Server anzuzeigen, wechseln Sie zu [NTP.Servers Web](http://support.ntp.org/bin/view/Servers/WebHome).
+Um eine Liste der öffentlichen NTP-Server anzuzeigen, wechseln Sie zu [NTP.Servers Web](http://support.ntp.org/bin/view/Servers/WebHome). 
 
-### Was passiert, wenn das Gerät in einer anderen Zeitzone bereitgestellt wird?
+### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Was passiert, wenn das Gerät in einer anderen Zeitzone bereitgestellt wird?
 Wenn das Gerät in einer anderen Zeitzone bereitgestellt wird, wird die Zeitzone des Geräts geändert. Angesichts der Tatsache, dass alle Sicherungsrichtlinien die Zeitzone des Geräts verwenden, werden die Sicherungsrichtlinien automatisch entsprechend der neuen Zeitzone angepasst. Es ist kein Benutzereingriff erforderlich.
 
-## Ändern von DNS-Einstellungen
+## <a name="modify-dns-settings"></a>Ändern von DNS-Einstellungen
 Ein DNS-Server wird verwendet, wenn das Gerät versucht, mit dem Cloudspeicher-Dienstanbieter zu kommunizieren. Für eine hohe Verfügbarkeit müssen bei der ersten Gerätebereitstellung sowohl den primären als auch den sekundäre DNS-Server konfigurieren. Um den primären DNS-Server neu zu konfigurieren, müssen Sie Windows PowerShell-Schnittstelle auf dem StorSimple-Gerät verwenden.
 
 Um den sekundären DNS-Server zu ändern, können Sie das klassische Azure-Portal verwenden.
 
-<!-- If a secondary DNS server is not configured, you will not be able to create volume containers or provision volumes on the device.-->
-
-## Ändern von Netzwerkschnittstellen
+## <a name="modify-network-interfaces"></a>Ändern von Netzwerkschnittstellen
 Ihr Gerät hat sechs Netzwerkschnittstellen, von denen vier 1-GbE- und zwei 10-GbE-Schnittstellen sind. Diese Schnittstellen sind mit DATA 0 bis DATA 5 gekennzeichnet. DATA 0, DATA 1, DATA 4 und DATA 5 sind 1-GbE-Netzwerkschnittstellen, DATA 2 und DATA 3 sind 10-GbE-Netzwerkschnittstellen.
 
 Konfigurieren Sie die **Netzwerkschnittstelleneinstellungen** für jede der zu verwendenden Schnittstellen. Um hohe Verfügbarkeit zu gewährleisten, sollte Ihr Gerät mindestens zwei iSCSI-Schnittstellen und zwei cloudfähige Schnittstellen haben. Es ist zwar nicht erforderlich, empfiehlt sich aber, nicht verwendete Schnittstellen zu deaktivieren.
@@ -103,17 +105,22 @@ Sie können Controller 0 und Controller 1 über das klassische Azure-Portal neu 
 > 
 > 
 
-## Austauschen oder Neuzuweisen von IP-Adressen
+## <a name="swap-or-reassign-ips"></a>Austauschen oder Neuzuweisen von IP-Adressen
 Derzeit führt ein Controller, wenn einer Netzwerkschnittstelle auf ihm eine VIP-Adresse zugeordnet ist, die verwendet wird (durch dasselbe Gerät oder ein anderes Gerät im Netzwerk), ein Failover aus. Daher müssen Sie die ordnungsgemäße Vorgehensweise befolgen, wenn Sie virtuelle IP-Adressen (VIPs) für die Netzwerkschnittstelle eines Geräts austauschen, denn andernfalls ergibt sich eine Situation mit doppelten IP-Adressen.
 
 Führen Sie die folgenden Schritte aus, wenn Sie die VIPs für eine der Netzwerkschnittstellen austauschen oder neu zuweisen möchten:
 
-#### So weisen Sie IP-Adressen zu
+#### <a name="to-reassign-ips"></a>So weisen Sie IP-Adressen zu
 1. Löschen Sie die IP-Adresse für beide Schnittstellen.
 2. Nachdem die IP-Adressen gelöscht sind, weisen Sie die neuen IP-Adressen den entsprechenden Schnittstellen zu.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-configure-mpio-windows-server.md).
-* Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+* Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

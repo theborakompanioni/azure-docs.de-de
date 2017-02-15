@@ -162,7 +162,7 @@ Nach dem Failover weist die Replikat-VM möglicherweise eine IP-Adresse auf, die
         $newrecord.RecordData[0].IPv4Address  =  $IP
         Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
-### <a name="changing-the-ip-addresses-dr-to-azure"></a>Ändern der IP-Adressen – Notfallwiederherstellung in Azure
+### <a name="changing-the-ip-addresses--dr-to-azure"></a>Ändern der IP-Adressen – Notfallwiederherstellung in Azure
 Im Blogbeitrag [Networking Infrastructure Setup for Microsoft Azure as a Disaster Recovery Site](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) (Einrichten der Netzwerkinfrastruktur für Microsoft Azure als Standort für die Notfallwiederherstellung) wird erläutert, wie die erforderliche Azure-Netzwerkinfrastruktur konfiguriert wird, wenn das Beibehalten der IP-Adressen keine Voraussetzung ist. Zuerst wird die Anwendung beschrieben, und anschließend wird erläutert, wie Sie das Netzwerk lokal und unter Azure einrichten. Am Ende geht es um die Durchführung eines Testfailovers und eines geplanten Failovers.
 
 ## <a name="next-steps"></a>Nächste Schritte

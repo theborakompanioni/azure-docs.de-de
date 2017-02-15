@@ -139,12 +139,15 @@
 
 ### [Gewähren des Remotezugriffs auf Ihre Apps](active-directory-application-proxy-get-started.md)
 #### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
-#### [Veröffentlichen von Apps](active-directory-application-proxy-publish.md)
+#### Veröffentlichen von Apps
+##### [Azure-Portal](application-proxy-publish-azure-portal.md)
+##### [Klassisches Portal](active-directory-application-proxy-publish.md)
 #### Veröffentlichen in getrennten Netzwerken
 ##### [Azure-Portal](active-directory-application-proxy-connectors-azure-portal.md)
 ##### [Klassisches Portal](active-directory-application-proxy-connectors.md)
 #### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
 #### [Einmaliges Anmelden](active-directory-application-proxy-sso-using-kcd.md)
+##### [Azure-Portal](application-proxy-sso-azure-portal.md)
 #### [Ansprüche unterstützende Apps](active-directory-application-proxy-claims-aware-apps.md)
 #### [Native Client-Apps](active-directory-application-proxy-native-client.md)
 #### [Bedingter Zugriff](active-directory-application-proxy-conditional-access.md)
@@ -202,6 +205,7 @@
 #### [Gruppenrichtlinieneinstellungen](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 #### [Windows 10-Einstellungen](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 #### [Häufig gestellte Fragen](active-directory-windows-enterprise-state-roaming-faqs.md)
+#### [Problembehandlung](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 ### [Einbinden von Partnern mit Azure AD B2B](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [Übersicht](active-directory-b2b-collaboration-overview.md)
 #### [So funktioniert's](active-directory-b2b-how-it-works.md)
@@ -211,7 +215,7 @@
 #### [CSV-Dateiformat](active-directory-b2b-references-csv-file-format.md)
 #### [Benutzerobjekte](active-directory-b2b-references-external-user-object-attribute-changes.md)
 #### [Benutzertoken](active-directory-b2b-references-external-user-token-format.md)
-### [Integrieren lokaler Identitäten mit Azure AD Connect](active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+### [Integrieren lokaler Identitäten mit Azure AD Connect](./connect/active-directory-aadconnect.md)
 
 
 ## Delegieren des Zugriffs auf Ressourcen
@@ -236,12 +240,12 @@
 ## Schützen Ihrer Identitäten
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [Aktivieren](active-directory-identityprotection-enable.md)
-#### [Anmeldevorgang](active-directory-identityprotection-flows.md)
-#### [Entsperren von Benutzern](active-directory-identityprotection-unblock-howto.md)
 #### [Erkennen von Sicherheitsrisiken](active-directory-identityprotection-vulnerabilities.md)
-#### [Risikoereignistypen](active-directory-identityprotection-risk-events-types.md)
-#### [Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md)
+#### [Risikoereignisse](active-directory-identity-protection-risk-events.md)
 #### [Notifications](active-directory-identityprotection-notifications.md)
+#### [Anmeldevorgang](active-directory-identityprotection-flows.md)
+#### [Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md)
+#### [Entsperren von Benutzern](active-directory-identityprotection-unblock-howto.md)
 #### [Glossar](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
@@ -283,7 +287,8 @@
 
 # Verwandte Themen
 ## [Multi-Factor Authentication](/azure/multi-factor-authentication/)
-## [Azure AD Connect](active-directory-aadconnect.md?toc=%2fazure%2factive-directory%2fconnect%2ftoc.json)
+## [Azure AD Connect](./connect/active-directory-aadconnect.md)
+## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
 ## [Azure AD für Entwickler](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
@@ -296,6 +301,6 @@
 ## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,22 +1,26 @@
 ---
 title: Wiederherstellen von Daten auf einem Windows-Server oder -Client von Azure unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft Docs
-description: Erfahren Sie, wie Daten auf einem Windows Server- oder Windows-Clientcomputer wiederhergestellt werden.
+description: "Erfahren Sie, wie Daten auf einem Windows Server- oder Windows-Clientcomputer wiederhergestellt werden."
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-
+editor: 
+ms.assetid: 742f4b9e-c0ab-4eeb-8e22-ee29b83c22c4
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2016
+ms.date: 11/01/2016
 ms.author: trinadhk; jimpark; markgal;
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 1ace5aa33201d9730b0708c3918597358f4dbd91
+
 
 ---
-# Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
+# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
 > [!div class="op_single_selector"]
 > * [Azure-Portal](backup-azure-restore-windows-server.md)
 > * [Klassisches Portal](backup-azure-restore-windows-server-classic.md)
@@ -32,21 +36,19 @@ In beiden Fällen werden die Daten aus dem Azure Recovery Services-Tresor abgeru
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Klassisches Bereitstellungsmodell.
-
-## Wiederherstellen von Daten auf demselben Computer
+## <a name="recover-data-to-the-same-machine"></a>Wiederherstellen von Daten auf demselben Computer
 Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer wiederherstellen möchten (auf dem die Sicherung erstellt wurde), können Sie die folgenden Schritte zum Wiederherstellen der Daten ausführen.
 
-1. Öffnen Sie das Snap-In **Microsoft Azure Backup**.
-2. Klicken Sie auf **Daten wiederherstellen**, um den Workflow zu initiieren.
+1. Öffnen Sie das Snap-In **Microsoft Azure Backup** .
+2. Klicken Sie auf **Daten wiederherstellen** , um den Workflow zu initiieren.
    
-    ![Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/recover.png)
+    ![Daten wiederherstellen](./media/backup-azure-restore-windows-server/recover.png)
 3. Wählen Sie die Option **Dieser Server (*NameIhresComputers*)**, wenn Sie die gesicherte Datei auf demselben Computer wiederherstellen möchten.
    
     ![Auf demselben Computer](./media/backup-azure-restore-windows-server/samemachine.png)
 4. Sie können entscheiden, ob Sie **Dateien durchsuchen** oder **Dateien suchen** möchten.
    
-    Behalten Sie die Standardoption bei, wenn Sie beabsichtigen, eine oder mehrere Dateien wiederherzustellen, deren Pfad bekannt ist. Wenn Sie die Ordnerstruktur nicht genau kennen und nach einer Datei suchen möchten, wählen Sie die Option **Dateien suchen**. In diesem Abschnitt verwenden wir die Standardoption.
+    Behalten Sie die Standardoption bei, wenn Sie beabsichtigen, eine oder mehrere Dateien wiederherzustellen, deren Pfad bekannt ist. Wenn Sie die Ordnerstruktur nicht genau kennen und nach einer Datei suchen möchten, wählen Sie die Option **Dateien suchen** . In diesem Abschnitt verwenden wir die Standardoption.
    
     ![Dateien durchsuchen](./media/backup-azure-restore-windows-server/browseandsearch.png)
 5. Wählen Sie das Volume aus, von dem Sie die Datei wiederherstellen möchten.
@@ -66,8 +68,8 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
    * Es wird dringend empfohlen, die Standardoption beizubehalten und die ACLs für die wiederherzustellenden Dateien ebenfalls wiederherzustellen.
 8. Sobald Sie diese Eingaben bereitgestellt haben, klicken Sie auf **Weiter**. Der Wiederherstellungsworkflow, bei dem die Dateien auf diesem Computer wiederhergestellt werden, wird gestartet.
 
-## Wiederherstellen auf einem anderen Computer
-Wenn der gesamte Server verloren geht, können Sie Daten aus Azure Backup dennoch auf einem anderen Computer wiederherstellen. Der Workflow wird in den folgenden Schritten beschrieben.
+## <a name="recover-to-an-alternate-machine"></a>Wiederherstellen auf einem anderen Computer
+Wenn der gesamte Server verloren geht, können Sie Daten aus Azure Backup dennoch auf einem anderen Computer wiederherstellen. Der Workflow wird in den folgenden Schritten beschrieben.  
 
 In diesen Schritten wird folgende Terminologie verwendet:
 
@@ -82,17 +84,17 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
 1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem *Zielcomputer*.
 2. Stellen Sie sicher, dass der *Zielcomputer* und der *Quellcomputer* bei dem gleichen Recovery Services-Tresor registriert sind.
-3. Klicken Sie auf **Daten wiederherstellen**, um den Workflow zu initiieren.
+3. Klicken Sie auf **Daten wiederherstellen** , um den Workflow zu initiieren.
    
-    ![Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/recover.png)
+    ![Daten wiederherstellen](./media/backup-azure-restore-windows-server/recover.png)
 4. Wählen Sie **Anderer Server**
    
     ![Anderer Server](./media/backup-azure-restore-windows-server/anotherserver.png)
-5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor* entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor entspricht.
+5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor*entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor entspricht.
 6. Wählen Sie den *Quellcomputer* aus der Liste der angezeigten Computer aus.
    
     ![Liste der Computer](./media/backup-azure-restore-windows-server/machinelist.png)
-7. Wählen Sie entweder die Option **Dateien suchen** oder **Dateien durchsuchen**. In diesem Abschnitt verwenden wir die Option **Dateien suchen**.
+7. Wählen Sie entweder die Option **Dateien suchen** oder **Dateien durchsuchen**. In diesem Abschnitt verwenden wir die Option **Dateien suchen** .
    
     ![Suchen,](./media/backup-azure-restore-windows-server/search.png)
 8. Wählen Sie im nächsten Bildschirm das Volume und das Datum aus. Suchen Sie nach den Ordner-/Dateinamen, die Sie wiederherstellen möchten.
@@ -106,7 +108,12 @@ In diesen Schritten wird folgende Terminologie verwendet:
     ![Verschlüsselung](./media/backup-azure-restore-windows-server/encryption.png)
 11. Klicken Sie nach dem Bereitstellen der Eingabe auf **Wiederherstellen**. Die Wiederherstellung der gesicherten Dateien am angegebenen Ziel wird ausgelöst.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

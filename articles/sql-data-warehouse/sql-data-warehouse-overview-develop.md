@@ -1,25 +1,29 @@
 ---
-title: Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse-Entwicklung | Microsoft Docs
-description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für SQL Data Warehouse.
+title: "Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse-Entwicklung | Microsoft Docs"
+description: "Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
-editor: ''
-
+editor: 
+ms.assetid: 996e3afc-c21c-4e21-b9df-997f953f6dfd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 08/16/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: d1c2255264a4240eecc51199050f8406d141ace2
+
 
 ---
-# Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
 Lesen Sie diese Entwicklungsartikel, um ein besseres Verständnis der wesentlichen Entwurfsentscheidungen, der Empfehlungen und der Programmiertechniken für SQL Data Warehouse zu erlangen.
 
-## Wesentliche Entwurfsentscheidungen
+## <a name="key-design-decisions"></a>Wesentliche Entwurfsentscheidungen
 In den folgenden Artikeln werden einige der zentralen Konzepte und Entwurfsentscheidungen hervorgehoben, die Sie für die Entwicklung Ihres verteilten Data Warehouses mit SQL Data Warehouse verstehen müssen:
 
 * [Verbindungen][Verbindungen]
@@ -32,7 +36,7 @@ In den folgenden Artikeln werden einige der zentralen Konzepte und Entwurfsentsc
 * [CTAS][CTAS]
 * [Statistiken][Statistiken]
 
-## Entwicklungsempfehlungen und Programmiertechniken
+## <a name="development-recommendations-and-coding-techniques"></a>Entwicklungsempfehlungen und Programmiertechniken
 In diesen Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung eines SQL Data Warehouse behandelt:
 
 * [Gespeicherte Prozeduren][Gespeicherte Prozeduren]
@@ -44,7 +48,7 @@ In diesen Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen
 * [Gruppierungsoptionen][Gruppierungsoptionen]
 * [Variablenzuweisung][Variablenzuweisung]
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite [Transact-SQL-Referenz][Transact-SQL-Referenz] weitere Informationen zur unterstützten Syntax für SQL Data Warehouse.
 
 <!--Image references-->
@@ -70,8 +74,12 @@ Wenn Sie die Entwicklungsartikel durchgearbeitet haben, finden Sie auf der Seite
 [Transact-SQL-Referenz]: ./sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
-[renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx
+[Umbenennen von Objekten]: https://msdn.microsoft.com/library/mt631611.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

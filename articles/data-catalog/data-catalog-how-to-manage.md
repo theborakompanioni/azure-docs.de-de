@@ -2,12 +2,12 @@
 title: Verwalten von Datenressourcen | Microsoft Docs
 description: Gewusst-wie-Artikel mit Informationen dazu, wie Sie die Sichtbarkeit und den Besitz von Datenassets steuern, die in Azure Data Catalog registriert sind.
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/04/2016
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
+
 
 ---
 # <a name="how-to-manage-data-assets"></a>Verwalten von Datenassets
@@ -70,6 +74,9 @@ Bei Data Catalog-Administratoren handelt es sich implizit um Mitbesitzer aller A
 ## <a name="summary"></a>Zusammenfassung
 Beim Crowdsourcing-Modell von Data Catalog für die Ermittlung von Metadaten und Datenassets können alle Data Catalog-Benutzer eine Beitrag leisten und die Ermittlung durchführen. Die Standard Edition von Data Catalog enthält Funktionen für Besitz und Verwaltung, damit die Sichtbarkeit und Nutzung bestimmter Datenassets eingeschränkt werden kann.
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

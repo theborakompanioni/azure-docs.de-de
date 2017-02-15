@@ -1,23 +1,27 @@
 ---
-title: Testumgebung für Branchenanwendung | Microsoft Docs
-description: Erfahren Sie, wie Sie eine webbasierte Branchenanwendung in einer Hybrid Cloud-Umgebung für Tests durch IT-Spezialisten oder zu Entwicklungszwecken erstellen.
+title: "Testumgebung für Branchenanwendung | Microsoft Docs"
+description: "Erfahren Sie, wie Sie eine webbasierte Branchenanwendung in einer Hybrid Cloud-Umgebung für Tests durch IT-Spezialisten oder zu Entwicklungszwecken erstellen."
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: JoeDavies-MSFT
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 92d2d8ce-60ed-4512-95e5-a7fe3b0ca00b
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
+ms.date: 09/30/2016
 ms.author: josephd
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: c90b3ca27877babb5b1f82aa810d0197417f7e70
+
 
 ---
-# Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken
+# <a name="set-up-a-web-based-lob-application-in-a-hybrid-cloud-for-testing"></a>Einrichten einer webbasierten Branchenanwendung in einer Hybrid Cloud zu Testzwecken
 In diesem Thema werden die Schritte zum Erstellen einer simulierten Hybrid Cloud-Umgebung zum Testen einer in Microsoft Azure gehosteten webbasierten Branchenanwendung erläutert. Die resultierende Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
@@ -44,14 +48,14 @@ Für diese Workload ist ein Azure-Abonnement nötig. Wenn Sie ein MSDN- oder Vis
 
 Ein Beispiel für eine in Azure gehostete Produktionsbranchenanwendung finden Sie in der Architekturblaupause für **Branchenanwendungen** unter [Blaupausen für Software-Architekten](http://msdn.microsoft.com/dn630664).
 
-## Phase 1: Einrichten der simulierten Hybrid Cloud-Umgebung
-Erstellen Sie die [simulierte Hybrid Cloud-Testumgebung](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md). Da das Vorhandensein des APP1-Servers im Subnetz „Corpnet“ in dieser Testumgebung nicht erforderlich ist, können Sie ihn vorerst herunterfahren.
+## <a name="phase-1-set-up-the-simulated-hybrid-cloud-environment"></a>Phase 1: Einrichten der simulierten Hybrid Cloud-Umgebung
+Erstellen Sie die [simulierte Hybrid Cloud-Testumgebung](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Da das Vorhandensein des APP1-Servers im Subnetz „Corpnet“ in dieser Testumgebung nicht erforderlich ist, können Sie ihn vorerst herunterfahren.
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph1.png)
 
-## Phase 2: Konfigurieren des SQL Server-Computers (SQL1)
+## <a name="phase-2-configure-the-sql-server-computer-sql1"></a>Phase 2: Konfigurieren des SQL Server-Computers (SQL1)
 Starten Sie gegebenenfalls den DC2-Computer über das Azure-Portal.
 
 Erstellen Sie als Nächstes über eine Azure PowerShell-Eingabeaufforderung auf dem lokalen Computer mit den folgenden Befehlen einen virtuellen Computer für SQL1. Füllen Sie vor dem Ausführen dieser Befehle die Variablenwerte aus, und entfernen Sie die Zeichen < und >.
@@ -112,7 +116,7 @@ Verknüpfen Sie SQL1 als Nächstes mit der Windows Server Active Directory-Domä
     Add-Computer -DomainName corp.contoso.com
     Restart-Computer
 
-Verwenden Sie das Konto „CORP\\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
+Verwenden Sie das Konto „CORP\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
 
 Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit SQL1 mithilfe des *lokalen Administratorkontos von SQL1*.
 
@@ -120,17 +124,17 @@ Konfigurieren Sie anschließend SQL Server 2014 so, dass das Laufwerk F: für ne
 
 1. Geben Sie auf dem Startbildschirm **SQL Server Management** ein, und klicken Sie auf **SQL Server 2014 Management Studio**.
 2. Klicken Sie unter **Mit Server verbinden** auf **Verbinden**.
-3. Klicken Sie im Strukturbereich "Objekt-Explorer" mit der rechten Maustaste auf **SQL1**, und klicken Sie anschließend auf **Eigenschaften**.
+3. Klicken Sie im Strukturbereich "Objekt-Explorer" mit der rechten Maustaste auf **SQL1** **Eigenschaften**.
 4. Klicken Sie im Fenster **Servereigenschaften** auf **Datenbankeinstellungen**.
-5. Suchen Sie den Eintrag **Standardspeicherorte für Datenbank**, und legen Sie die folgenden Werte fest:
-   * Geben Sie für **Daten** den Pfad **f:\\Data** ein.
-   * Geben Sie für **Protokoll** den Pfad **f:\\Log** ein.
-   * Geben Sie für **Sicherung** den Pfad **f:\\Backup** ein.
+5. Suchen Sie den Eintrag **Standardspeicherorte für Datenbank** , und legen Sie die folgenden Werte fest: 
+   * Geben Sie für **Daten** den Pfad **f:\Data** ein.
+   * Geben Sie für **Protokoll** den Pfad **f:\Log** ein.
+   * Geben Sie für **Sicherung** den Pfad **f:\Backup** ein.
    * Hinweis: Nur neue Datenbanken verwenden diese Speicherorte.
-6. Klicken Sie auf **OK**, um das Fenster zu schließen.
+6. Klicken Sie auf **OK** , um das Fenster zu schließen.
 7. Öffnen Sie im Strukturbereich **Objekt-Explorer** den Abschnitt **Sicherheit**.
 8. Klicken Sie mit der rechten Maustaste auf **Anmeldungen**, und klicken Sie dann auf **Neue Anmeldung**.
-9. Geben Sie in das Feld **Anmeldename** den Namen **CORP\\User1** ein.
+9. Geben Sie in das Feld **Anmeldename** den Namen **CORP\User1** ein.
 10. Klicken Sie auf der Seite **Serverrollen** auf **Sysadmin** und anschließend auf **OK**.
 11. Schließen Sie Microsoft SQL Server Management Studio.
 
@@ -138,7 +142,7 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph2.png)
 
-## Phase 3: Konfigurieren den Branchenservers (LOB1)
+## <a name="phase-3-configure-the-lob-server-lob1"></a>Phase 3: Konfigurieren den Branchenservers (LOB1)
 Führen Sie als Erstes auf dem lokalen Computer die folgenden Befehle in der Azure PowerShell-Eingabeaufforderung aus, um einen virtuellen Computer für LOB1 zu erstellen.
 
     $rgName="<your resource group name>"
@@ -173,24 +177,24 @@ Verknüpfen Sie LOB1 als Nächstes mit der Active Directory-Domäne CORP, indem 
     Add-Computer -DomainName corp.contoso.com
     Restart-Computer
 
-Verwenden Sie das Konto „CORP\\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
+Verwenden Sie das Konto „CORP\User1“, wenn Sie aufgefordert werden, für den Befehl **Add-Computer** Anmeldeinformationen für ein Domänenkonto anzugeben.
 
-Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit LOB1 mithilfe des Kontos „CORP\\User1“ und des Kennworts.
+Verwenden Sie nach dem Neustart das Azure-Portal zum Herstellen einer Verbindung mit LOB1 mithilfe des Kontos „CORP\User1“ und des Kennworts.
 
 Konfigurieren Sie dann LOB1 für IIS, und testen Sie den Zugriff von CLIENT1.
 
 1. Klicken Sie im Server-Manager auf **Rollen und Features hinzufügen**.
-2. Klicken Sie auf der Seite **Vorbereitungen** auf **Weiter**.
+2. Klicken Sie auf der Seite **Voraussetzungen** auf **Weiter**.
 3. Klicken Sie auf der Seite **Installationstyp auswählen** auf **Weiter**.
 4. Klicken Sie auf der Seite **Zielserver auswählen** auf **Weiter**.
 5. Klicken Sie auf der Seite **Serverrollen** in der Liste **Rollen** auf **Webserver (IIS)**.
 6. Klicken Sie bei der entsprechenden Aufforderung auf **Features hinzufügen** und anschließend auf **Weiter**.
 7. Klicken Sie auf der Seite **Features auswählen** auf **Weiter**.
-8. Klicken Sie auf der Seite **Webserver (IIS)** auf **Weiter**.
+8. Klicken Sie auf der Seite **Webserver (IIS)**auf **Weiter**.
 9. Aktivieren oder deaktivieren Sie auf der Seite **Rollendienste auswählen** die Kontrollkästchen für die Dienste, die Sie zum Testen der Branchenanwendung benötigen, und klicken Sie dann auf **Weiter**.
 10. Klicken Sie auf der Seite **Installationsauswahl bestätigen** auf **Installieren**.
 11. Warten Sie, bis die Installation der Komponenten abgeschlossen ist, und klicken Sie dann auf **Schließen**.
-12. Stellen Sie über das Azure-Portal eine Verbindung mit dem Computer CLIENT1 mit den Anmeldeinformationen des Kontos „CORP\\User1“ her, und starten Sie anschließend Internet Explorer.
+12. Stellen Sie über das Azure-Portal eine Verbindung mit dem Computer CLIENT1 mit den Anmeldeinformationen des Kontos „CORP\User1“ her, und starten Sie anschließend Internet Explorer.
 13. Geben Sie in die Adressleiste **http://lob1/** ein, und drücken Sie dann die EINGABETASTE. Die Standardwebseite für IIS 8 sollte angezeigt werden.
 
 Die aktuelle Konfiguration sieht folgendermaßen aus.
@@ -199,7 +203,12 @@ Die aktuelle Konfiguration sieht folgendermaßen aus.
 
 Diese Umgebung kann jetzt zum Bereitstellen der webbasierten Anwendung auf LOB1 und für Funktionstests von CLIENT1 aus dem Subnetz „Corpnet“ verwendet werden.
 
-## Nächster Schritt
-* Hinzufügen eines neuen virtuellen Computers über das [Azure-Portal](virtual-machines-windows-hero-tutorial.md)
+## <a name="next-step"></a>Nächster Schritt
+* Hinzufügen eines neuen virtuellen Computers über das [Azure-Portal](virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

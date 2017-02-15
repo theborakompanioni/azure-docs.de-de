@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: f8e9579f15c79eef6a90c6a583b3f9ba2599d55d
-ms.openlocfilehash: d51a62cd3b0320beb7996d1b472ad500cfddd1d1
+ms.sourcegitcommit: ef5c1f296a0a4ee6476db663e85c49c351f826b9
+ms.openlocfilehash: 53a2012a1d928c961cbfbdcea485ae18d776360f
 
 
 ---
@@ -80,28 +80,28 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 
 | Gebiet des Zieldatenspeichers | Region des Zieldatenspeichers | Verwendete Region für die Datenverschiebung |
 |:--- |:--- |:--- |
-| USA | USA (Ost) |USA (Ost) |
-|  verfügbar. | USA (Ost) 2 |USA (Ost) 2 |
-|  verfügbar. | USA (Mitte) |USA (Mitte) |
-|  verfügbar. | USA (Mitte/Norden) |USA (Mitte/Norden) |
-|  verfügbar. | USA (Mitte/Süden) |USA (Mitte/Süden) |
-|  verfügbar. | USA, Westen-Mitte |USA (Mitte) |
-|  verfügbar. | USA (West) |USA (West) |
-|  verfügbar. | USA, Westen 2 |USA (West) |
+| USA | USA (Ost) | USA (Ost) |
+| verfügbar. | USA (Ost) 2 | USA (Ost) 2 |
+| verfügbar. | USA (Mitte) | USA (Mitte) |
+| verfügbar. | USA (Mitte/Norden) | USA (Mitte/Norden) |
+| verfügbar. | USA (Mitte/Süden) | USA (Mitte/Süden) |
+| verfügbar. | USA, Westen-Mitte | USA, Westen-Mitte |
+| beschrieben. | USA (West) | USA (West) |
+| verfügbar. | USA, Westen 2 | USA (West) |
 | Kanada | Kanada, Osten | Kanada, Mitte |
-|  verfügbar. | Kanada, Mitte | Kanada, Mitte |
-| Brasilien | Brasilien Süd |Brasilien Süd |
-| Europa | Nordeuropa |Nordeuropa |
-|  verfügbar. | Westeuropa |Westeuropa |
-| Asien-Pazifik | Südostasien |Südostasien |
-|  verfügbar. | Ostasien |Südostasien |
-| Australien | Australien (Osten) |Australien (Osten) |
-|  verfügbar. | Australien (Südost) |Australien (Südost) |
-| Japan | Japan Ost |Japan Ost |
-|  verfügbar. | Japan (Westen) |Japan Ost |
-| Indien | Indien (Mitte) |Indien (Mitte) |
-|  verfügbar. | Indien, Westen |Indien (Mitte) |
-|  verfügbar. | Indien, Süden |Indien (Mitte) |
+| verfügbar. | Kanada, Mitte | Kanada, Mitte |
+| Brasilien | Brasilien Süd | Brasilien Süd |
+| Europa | Nordeuropa | Nordeuropa |
+| verfügbar. | Westeuropa | Westeuropa |
+| Asien-Pazifik | Südostasien | Südostasien |
+| verfügbar. | Ostasien | Südostasien |
+| Australien | Australien (Osten) | Australien (Osten) |
+| verfügbar. | Australien (Südost) | Australien (Südost) |
+| Japan | Japan Ost | Japan Ost |
+| verfügbar. | Japan (Westen) | Japan Ost |
+| Indien | Indien (Mitte) | Indien (Mitte) |
+| verfügbar. | Indien, Westen | Indien (Mitte) |
+| verfügbar. | Indien, Süden | Indien (Mitte) |
 
 
 > [!NOTE]
@@ -127,47 +127,48 @@ Bei der Kopieraktivität variiert der Abschnitt `typeProperties` je nach Art der
 
 Dies ist eine Beispiel-JSON-Definition:
 
-    {
-      "name": "ADFTutorialPipeline",
-      "properties": {
-        "description": "Copy data from Azure blob to Azure SQL table",
-        "activities": [
+```json
+{
+  "name": "ADFTutorialPipeline",
+  "properties": {
+    "description": "Copy data from Azure blob to Azure SQL table",
+    "activities": [
+      {
+        "name": "CopyFromBlobToSQL",
+        "type": "Copy",
+        "inputs": [
           {
-            "name": "CopyFromBlobToSQL",
-            "type": "Copy",
-            "inputs": [
-              {
-                "name": "InputBlobTable"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "OutputSQLTable"
-              }
-            ],
-            "typeProperties": {
-              "source": {
-                "type": "BlobSource"
-              },
-              "sink": {
-                "type": "SqlSink",
-                "writeBatchSize": 10000,
-                "writeBatchTimeout": "60:00:00"
-              }
-            },
-            "Policy": {
-              "concurrency": 1,
-              "executionPriorityOrder": "NewestFirst",
-              "retry": 0,
-              "timeout": "01:00:00"
-            }
+            "name": "InputBlobTable"
           }
         ],
-        "start": "2016-07-12T00:00:00Z",
-        "end": "2016-07-13T00:00:00Z"
+        "outputs": [
+          {
+            "name": "OutputSQLTable"
+          }
+        ],
+        "typeProperties": {
+          "source": {
+            "type": "BlobSource"
+          },
+          "sink": {
+            "type": "SqlSink",
+            "writeBatchSize": 10000,
+            "writeBatchTimeout": "60:00:00"
+          }
+        },
+        "Policy": {
+          "concurrency": 1,
+          "executionPriorityOrder": "NewestFirst",
+          "retry": 0,
+          "timeout": "01:00:00"
+        }
       }
-    }
-
+    ],
+    "start": "2016-07-12T00:00:00Z",
+    "end": "2016-07-13T00:00:00Z"
+  }
+}
+```
 Der im Ausgabedataset definierte Zeitplan legt fest, wann die Aktivität ausgeführt wird (z.B. **täglich**, Häufigkeit: **Tag**, Intervall: **1**). Die Aktivität kopiert Daten aus einem Eingabedataset (**Quelle**) in ein Ausgabedataset (**Senke**).
 
 Sie können mehr als ein Eingabedataset für die Kopieraktivität angeben. Diese werden verwendet, um die Abhängigkeiten zu überprüfen, bevor die Aktivität ausgeführt wird. Es werden allerdings nur die Daten aus dem ersten Dataset in das Zieldataset kopiert. Weitere Informationen finden Sie unter [Planung und Ausführung](data-factory-scheduling-and-execution.md).  
@@ -192,6 +193,6 @@ Die Zuordnung zwischen einem nativen Typ und einem .NET-Typ für den Datenspeich
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO2-->
 
 

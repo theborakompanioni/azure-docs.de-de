@@ -19,8 +19,6 @@ Netzwerksicherheitsgruppen sind ein neues Feature, das Ihnen eine neue Sicherhei
 
 > [!TIP]
 > Sie können Netzwerksicherheitsgruppen mehreren Subnetzen oder Netzwerkschnittstellen zuweisen. Es findet keine 1:1-Zuordnung statt. Dies bedeutet, dass Sie ein Netzwerksicherheitsgruppe mit einer gemeinsamen Gruppe von ACL-Regeln erstellen und diese auf mehrere Subnetze oder Netzwerkschnittstellen anwenden können. Außerdem kann die Netzwerksicherheitsgruppe auf Ressourcen des gesamten Abonnements angewendet werden (basierend auf der [rollenbasierten Zugriffssteuerung](../articles/active-directory/role-based-access-control-what-is.md)).
-> 
-> 
 
 ## <a name="load-balancers-overview"></a>Load Balancer – Übersicht
 Beim klassischen Bereitstellungsmodell führt Azure die gesamte Netzwerkadressübersetzung (NAT) und Portweiterleitung eines Clouddiensts für Sie durch. Bei der Erstellung eines Endpunkts geben Sie den externen Port an, der verfügbar gemacht werden soll, sowie den internen Port, an den der Datenverkehr geleitet wird. Netzwerksicherheitsgruppen selbst führen diese Art der Netzwerkadressübersetzung und Portweiterleitung nicht durch. 
@@ -60,8 +58,6 @@ Sie können eine VM anlegen, ohne eine Netzwerksicherheitsgruppe zu erstellen. I
 
 > [!NOTE]
 > Einer VM muss aber weiterhin eine öffentliche IP-Adresse zugewiesen sein, damit Remoteverbindungen verwendet werden können. Wenn keine Netzwerksicherheitsgruppe für das Subnetz oder die Netzwerkschnittstelle vorhanden ist, bedeutet dies nicht, dass die VM für jeglichen externen Datenverkehr verfügbar ist. Die Standardaktion beim Erstellen einer VM über das Portal ist das Erstellen einer neuen öffentlichen IP-Adresse. Für alle anderen Formen der Erstellung einer VM, z.B. per PowerShell, Azure-Befehlszeilenschnittstelle oder Resource Manager-Vorlage, wird nicht automatisch eine öffentliche IP-Adresse erstellt, sofern dies nicht explizit angefordert wird. Die Standardaktion über das Portal ist auch die Erstellung einer Netzwerksicherheitsgruppe. Diese Standardaktion bedeutet, dass Sie nicht in eine Situation mit einer verfügbar gemachten VM kommen sollten, für die keine Netzwerkfilterung eingerichtet wurde.
-> 
-> 
 
 ## <a name="understanding-load-balancers-and-nat-rules"></a>Grundlegendes zu Load Balancern und NAT-Regeln
 Beim klassischen Bereitstellungsmodell konnten Sie Endpunkte erstellen, die auch die Portweiterleitung durchgeführt haben. Beim Erstellen einer VM im klassischen Bereitstellungsmodell werden ACL-Regeln für RDP oder SSH automatisch erstellt. Mit diesen Regeln wird TCP-Port 3389 bzw. TCP-Port 22 aber nicht für die Außenwelt verfügbar gemacht. Stattdessen wird ein TCP-Port mit hohem Wert verfügbar gemacht, der dem entsprechenden internen Port zugeordnet ist. Auf ähnliche Weise können Sie auch Ihre eigenen ACL-Regeln erstellen, z.B. die Verfügbarmachung eines Webservers über TCP-Port 4280 für die Außenwelt. Diese ACL-Regeln und Portzuordnungen sind im folgenden Screenshot aus dem klassischen Portal dargestellt:
@@ -74,9 +70,6 @@ Bei Netzwerksicherheitsgruppen wird diese Funktion für die Portweiterleitung vo
 
 > [!NOTE]
 > Wenn Sie einen Load Balancer implementieren, weisen Sie der VM selbst normalerweise keine öffentliche IP-Adresse zu. Stattdessen wird dem Load Balancer eine öffentliche IP-Adresse zugewiesen. Sie müssen trotzdem noch die Netzwerksicherheitsgruppe und ACL-Regeln erstellen, um den ein- und ausgehenden Fluss des Datenverkehrs der VM zu definieren. Mit den NAT-Regeln des Load Balancers wird lediglich definiert, welche Ports über den Load Balancer zugelassen sind und wie sie auf die Back-End-VMs verteilt werden. Daher müssen Sie eine NAT-Regel dafür erstellen, dass der Datenverkehr durch den Load Balancer fließt. Erstellen Sie dann eine ACL-Regel für die Netzwerksicherheitsgruppe, damit der Datenverkehr die VM auch tatsächlich erreicht.
-> 
-> 
-
 
 
 <!--HONumber=Nov16_HO3-->

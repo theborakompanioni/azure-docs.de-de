@@ -1,13 +1,13 @@
 ---
-title: Exemplarische Vorgehensweise für eine Beispielinfrastruktur | Microsoft Docs
-description: Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung einer Beispielinfrastruktur in Azure.
-documentationcenter: ''
+title: "Exemplarische Vorgehensweise für eine Beispielinfrastruktur | Microsoft Docs"
+description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung einer Beispielinfrastruktur in Azure."
+documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,14 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: iainfou
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9e909f7b0c0abe9063322c40b6bdb11494952621
+
 
 ---
-# Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur
+# <a name="example-azure-infrastructure-walkthrough"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich der Namenskonventionen, Verfügbarkeit, virtuellen Netzwerke und Lastenausgleichsmodule relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
 
-## Beispielworkload
+## <a name="example-workload"></a>Beispielworkload
 Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure erstellen, die aus Folgendem besteht:
 
 * Zwei Nginx-Servern, auf denen der Client-Front-End in einer Webebene ausgeführt wird
@@ -30,7 +34,7 @@ Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure ers
 * Zwei MongoDB-Servern, die Teil eines Shardclusters sind und in denen Produktdaten und Aufträge in einer Datenbankebene gespeichert werden
 * Zwei Active Directory-Domänencontroller für Kundenkonten und Lieferanten in einer Authentifizierungsebene
 * Alle Server befinden sich in zwei Subnetzen:
-  * einem Front-End-Subnetz für die Webserver
+  * einem Front-End-Subnetz für die Webserver 
   * einem Back-End-Subnetz für die Anwendungsserver, den MongoDB-Cluster und die Domänencontroller
 
 ![Diagramm der verschiedenen Ebenen für die Anwendungsinfrastruktur](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
@@ -49,23 +53,23 @@ Der Entwurf muss Folgendes umfassen:
 Alle oben aufgeführten Elemente werden anhand der folgenden Namenskonventionen benannt:
 
 * Adventure Works Cycles verwendet **[IT-Workload]-[Standort]-[Azure-Ressource]** als Präfix.
-  * In diesem Beispiel ist **azos** (Azure-Onlineshop) der Name der IT-Workload und **use** (USA, Osten 2) der Standort
+  * In diesem Beispiel ist **azos** (Azure-Onlineshop) der Name der IT-Workload und **use** (USA, Osten 2) der Standort.
 * Speicherkonten folgen der Konvention „adventureazosusesa**[Beschreibung]**“.
   * Zur Eindeutigkeit wurde „adventure“ zum Präfix hinzugefügt. Speicherkontennamen dürfen keine Bindestriche enthalten.
 * Virtuelle Netzwerke folgen der Konvention „AZOS-USE-VN**[Nummer]**“.
 * Verfügbarkeitsgruppen folgen der Konvention „azos-use-as-**[Rolle]**“.
 * Die Namen der virtuellen Computer folgen der Konvention „azos-use-vm-**[VM-Name]**“.
 
-## Azure-Abonnements und -Konten
+## <a name="azure-subscriptions-and-accounts"></a>Azure-Abonnements und -Konten
 Adventure Works Cycles verwendet das Enterprise-Abonnement mit dem Namen „Adventure Works-Enterprise-Abonnement“ zur Abrechnung dieser IT-Workload.
 
-## Speicherkonten
+## <a name="storage-accounts"></a>Speicherkonten
 Adventure Works Cycles hat festgestellt, dass zwei Speicherkonten erforderlich sind:
 
 * **adventureazosusesawebapp** für den Standardspeicher der Webserver, Anwendungsserver und Domänencontroller und deren Datenträger
 * **adventureazosusesadbclust** für den Premium-Speicher der MongoDB-Shardclusterserver und deren Datenträger
 
-## Virtuelles Netzwerk und Subnetze
+## <a name="virtual-network-and-subnets"></a>Virtuelles Netzwerk und Subnetze
 Da das virtuelle Netzwerk keine permanente Verbindung mit dem lokalen Netzwerk von Adventure Work Cycles benötigt, fiel die Entscheidung auf ein virtuelles Netzwerk auf ausschließlicher Cloudbasis.
 
 Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folgenden Einstellungen über das Azure-Portal erstellt:
@@ -80,7 +84,7 @@ Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folge
   * Name: BackEnd
   * Adressraum: 10.0.2.0/24
 
-## Verfügbarkeitsgruppen
+## <a name="availability-sets"></a>Verfügbarkeitsgruppen
 Um hohe Verfügbarkeit für alle vier Ebenen des Onlineshops zu gewährleisten, entschied sich Adventure Works Cycles für vier Verfügbarkeitsgruppen:
 
 * **azos-use-as-web** für die Webserver
@@ -88,7 +92,7 @@ Um hohe Verfügbarkeit für alle vier Ebenen des Onlineshops zu gewährleisten, 
 * **azos-use-as-db** für die Server im MongoDB-Shardcluster
 * **azos-use-as-dc** für Domänencontroller
 
-## Virtuelle Computer
+## <a name="virtual-machines"></a>Virtuelle Computer
 Adventure Works Cycles hat sich für die folgenden Namen für die virtuellen Azure-Computer entschieden:
 
 * **azos-use-vm-web01** für den ersten Webserver
@@ -114,7 +118,12 @@ Diese Konfiguration umfasst:
 * Eine interne Lastenausgleichsgruppe für unverschlüsselten Webdatenverkehr von den Webservern an die Anwendungsserver
 * Eine einzelne Ressourcengruppe
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

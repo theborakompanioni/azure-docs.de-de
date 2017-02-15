@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 5243d31e-3241-4cb0-9470-ad488ff28572
 ms.service: sql-database
-ms.custom: app development case study; app development
+ms.custom: app development case study
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0800f04034410c3734ef0a97afd9d41cf850381b
+ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
+ms.openlocfilehash: 41334fb928b18c288f32efb0978150fa24ae14e3
 
 
 ---
@@ -54,7 +54,7 @@ Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre 
    Die Implementierung wird mithilfe von C#-Verwaltungsbibliotheken und Azure Service Bus-Warteschlangen vollständig automatisiert.
 2. Nutzung
    
-   Kunden verwenden bis zu drei Umgebungen (Produktion, Staging und/oder Entwicklung), die jeweils über eine eigene Datenbank verfügen. Die Kundendatenbanken befinden sich in elastischen Datenbankpools, sodass Umbraco eine effiziente Skalierung sicherstellen kann, ohne Ressourcen überdimensionieren zu müssen.
+   Kunden verwenden bis zu drei Umgebungen (Produktion, Staging und/oder Entwicklung), die jeweils über eine eigene Datenbank verfügen. Die Kundendatenbanken befinden sich in elastischen Pools, sodass Umbraco eine effiziente Skalierung sicherstellen kann, ohne Ressourcen überdimensionieren zu müssen.
    
    ![Umbraco-Projektübersicht](./media/sql-database-implementation-umbraco/figure2.png)
    
@@ -78,7 +78,7 @@ Mit Azure SQL-Datenbank und weiteren Azure-Diensten können Umbraco-Kunden ihre 
    Wenn eine Projektumgebung gelöscht wird, werden während der Bereinigung der Azure Service Bus-Warteschlange alle zugehörigen Datenbanken (Entwicklungs-, Staging- oder Livedatenbanken) entfernt. Dieser automatische Prozess stellt die nicht verwendeten Datenbanken im elastischen Verfügbarkeitspool von Umbraco wieder her und macht sie für eine zukünftige Bereitstellung verfügbar. Gleichzeitig wird für eine maximale Nutzung gesorgt.
 
 ## <a name="elastic-pools-allow-uaas-to-scale-with-ease"></a>Problemlose Skalierung von UaaS dank elastischer Pools
-Durch Nutzung von elastischen Azure-Datenbankpools kann Umbraco die Leistung für seine Kunden ohne Über- oder Unterdimensionierung von Ressourcen optimieren. Umbraco verfügt zurzeit über fast 3.000 Datenbanken in 19 elastischen Datenbankpools und kann diese bei Bedarf problemlos skalieren, um die Anforderungen der 325.000 Bestandskunden oder neuer Kunden zu erfüllen, die ein CMS in der Cloud bereitstellen möchten.
+Durch Nutzung von elastischen Azure-Pools kann Umbraco die Leistung für seine Kunden ohne Über- oder Unterdimensionierung von Ressourcen optimieren. Umbraco verfügt zurzeit über fast 3.000 Datenbanken in 19 elastischen Pools und kann diese bei Bedarf problemlos skalieren, um die Anforderungen der 325.000 Bestandskunden oder neuer Kunden zu erfüllen, die ein CMS in der Cloud bereitstellen möchten.
 
 Morten Christensen, Technical Lead bei Umbraco, erklärt: „UaaS wächst zurzeit um etwa 30 neue Kunden pro Tag. Unsere Kunden wissen es sehr zu schätzen, dass sie neue Projekte in Sekundenschnelle bereitstellen, Updates ihrer Livewebsites sofort mit nur einem Klick aus der Entwicklungsumgebung heraus veröffentlichen und eventuelle Fehler im Handumdrehen korrigieren können.“
 
@@ -91,7 +91,7 @@ Abbildung 3. UaaS-Bereitstellungsarchitektur in Microsoft Azure
 ## <a name="the-path-from-datacenter-to-cloud"></a>Vom Rechenzentrum in die Cloud
 Als die Entwickler bei Umbraco beschlossen, auf ein SaaS-Modell umzusteigen, wussten sie bereits, dass sie eine kostengünstige und skalierbare Möglichkeit benötigen würden, um den Dienst auszubauen.
 
-> „Elastische Datenbankpools eignen sich perfekt für unser SaaS-Angebot, da wir die Kapazität ganz nach Bedarf erweitern oder verkleinern können. Die Bereitstellung ist einfach, und mit unserem Setup können wir die Auslastung maximieren.“
+> „Elastische Pools eignen sich perfekt für unser SaaS-Angebot, da wir die Kapazität ganz nach Bedarf erweitern oder verkleinern können. Die Bereitstellung ist einfach, und mit unserem Setup können wir die Auslastung maximieren.“
 > 
 > – Morten Christensen, Technical Lead, Umbraco
 > 
@@ -110,11 +110,11 @@ Um alle Kriterien zu erfüllen, suchte Umbraco nach einem Cloudpartner mit folge
 * Präsenz in allen geografischen Märkten, in denen UaaS angeboten wird (Unternehmen müssen sicherstellen, dass sie schnell auf ihre Daten zugreifen können und dass ihre Daten an einem Ort gespeichert sind, der die regionalen gesetzlichen Vorschriften erfüllt)
 
 ## <a name="why-umbraco-chose-azure-for-uaas"></a>Darum wählte Umbraco Azure für UaaS
-Morten Christensen sagt: „Nachdem wir alle Optionen erwogen hatten, haben wir uns für Azure entschieden, da es all unsere Kriterien erfüllte – es lässt sich einfach verwalten und skalieren und bietet vertraute Tools und Kosteneffizienz. Wir richten die Umgebungen auf virtuellen Azure-Computern ein. Jede Umgebung verfügt über eine eigene Azure SQL-Datenbankinstanz, und alle Instanzen befinden sich in elastischen Datenbankpools. Durch Trennung der Datenbanken für Entwicklungs-, Staging- und Liveumgebungen können wir unseren Kunden eine stabile Leistung in Abstimmung mit der Skalierung bieten – ein großer Gewinn!“
+Morten Christensen sagt: „Nachdem wir alle Optionen erwogen hatten, haben wir uns für Azure entschieden, da es all unsere Kriterien erfüllte – es lässt sich einfach verwalten und skalieren und bietet vertraute Tools und Kosteneffizienz. Wir richten die Umgebungen auf virtuellen Azure-Computern ein. Jede Umgebung verfügt über eine eigene Azure SQL-Datenbankinstanz, und alle Instanzen befinden sich in elastischen Pools. Durch Trennung der Datenbanken für Entwicklungs-, Staging- und Liveumgebungen können wir unseren Kunden eine stabile Leistung in Abstimmung mit der Skalierung bieten – ein großer Gewinn!“
 
 Morten führt weiter aus: „Früher mussten wir die Server für Webdatenbanken manuell bereitstellen. Heute müssen wir darüber nicht einmal mehr nachdenken. Alles ist automatisiert – von der Bereitstellung bis hin zur Bereinigung.“
 
-Morten ist auch mit den Skalierungsfunktionen von Azure höchst zufrieden. „Elastische Datenbankpools eignen sich perfekt für unser SaaS-Angebot, da wir die Kapazität ganz nach Bedarf erweitern oder verkleinern können. Die Bereitstellung ist einfach, und mit unserem Setup können wir die Auslastung maximieren.“ Morten sagt weiter: „Die Einfachheit der elastischen Pools zusammen mit der Sicherheit der auf Dienstebenen basierenden DTUs ermöglicht es uns, neue Ressourcenpools ganz nach Bedarf bereitzustellen. Kürzlich erlebte einer unserer größeren Kunden eine Spitzenauslastung von 100 DTUs in seiner Liveumgebung. Dank Azure konnten unsere elastischen Pools die Datenbanken des Kunden in Echtzeit mit den notwendigen Ressourcen versorgen, ohne dass DTU-Anforderungen in irgendeiner Form vorhergesagt werden mussten. Einfach gesagt: Unsere Kunden erhalten die Reaktionszeiten, die sie erwarten, und wir können unsere Leistungs-SLAs erfüllen.“
+Morten ist auch mit den Skalierungsfunktionen von Azure höchst zufrieden. „Elastische Pools eignen sich perfekt für unser SaaS-Angebot, da wir die Kapazität ganz nach Bedarf erweitern oder verkleinern können. Die Bereitstellung ist einfach, und mit unserem Setup können wir die Auslastung maximieren.“ Morten sagt weiter: „Die Einfachheit der elastischen Pools zusammen mit der Sicherheit der auf Dienstebenen basierenden DTUs ermöglicht es uns, neue Ressourcenpools ganz nach Bedarf bereitzustellen. Kürzlich erlebte einer unserer größeren Kunden eine Spitzenauslastung von 100 DTUs in seiner Liveumgebung. Dank Azure konnten unsere elastischen Pools die Datenbanken des Kunden in Echtzeit mit den notwendigen Ressourcen versorgen, ohne dass DTU-Anforderungen in irgendeiner Form vorhergesagt werden mussten. Einfach gesagt: Unsere Kunden erhalten die Reaktionszeiten, die sie erwarten, und wir können unsere Leistungs-SLAs erfüllen.“
 
 Mikkel Madsen fasst zusammen: „Wir haben uns den leistungsstarken Azure-Algorithmus zunutze gemacht, der ein häufiges SaaS-Szenario (Onboarding eines Kunden in Echtzeit und ganz an den Bedarf des Kunden angepasst) mit unserem Anwendungsmuster verknüpft (Vorabbereitstellung von Datenbanken, sowohl für Entwicklungs- als auch für Liveumgebungen). All dies baut auf der zugrunde liegende Technologie auf (Azure Service Bus-Warteschlangen zusammen mit Azure SQL-Datenbank).“
 
@@ -122,7 +122,7 @@ Mikkel Madsen fasst zusammen: „Wir haben uns den leistungsstarken Azure-Algori
 Seitdem Umbraco sich für Azure als Cloudpartner entschieden hat, konnte das Unternehmen seinen UaaS-Kunden eine optimierte Leistung für ihre Content-Management-Systeme bieten – und zwar ohne die hohen Investitionen in IT-Ressourcen, die bei einer selbst gehosteten Lösung notwendig gewesen wären. Morten formuliert es so: „Wir schätzen die bequeme Entwicklung und die Skalierbarkeit, die Azure uns bietet. Und unsere Kunden sind ganz begeistert von der Funktionsvielfalt und Zuverlässigkeit. Insgesamt war es ein großer Gewinn für uns!“
 
 ## <a name="more-information"></a>Weitere Informationen
-* Weitere Informationen zu elastischen Azure-Datenbankpools finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
+* Weitere Informationen zu elastischen Azure-Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
 * Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
 * Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke](https://azure.microsoft.com/documentation/services/virtual-network/).    
@@ -133,6 +133,6 @@ Seitdem Umbraco sich für Azure als Cloudpartner entschieden hat, konnte das Unt
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

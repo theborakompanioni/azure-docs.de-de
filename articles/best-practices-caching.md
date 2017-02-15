@@ -1,13 +1,13 @@
 ---
-title: Anleitungen zum Caching | Microsoft Docs
+title: Anleitungen zum Caching | Microsoft-Dokumentation
 description: Anleitungen zum Caching zur Verbesserung von Leistung und Skalierbarkeit.
-services: ''
+services: 
 documentationcenter: na
 author: dragon119
 manager: christb
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: c86e2d49-066b-43b0-b0b6-f70ff4f87cdd
 ms.service: best-practice
 ms.devlang: na
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2016
 ms.author: masashin
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 27612fcd27a4d314a07982446375ac32ed1a2e4a
+
 
 ---
 # <a name="caching-guidance"></a>Anleitungen zum Caching
@@ -134,7 +138,7 @@ Je nach Art der Daten und der Wahrscheinlichkeit von Konflikten sollten Sie eine
 * **Optimistisch (vollständig):**  Die Anwendung prüft unmittelbar vor der Aktualisierung, ob sich die Daten im Cache seit deren Abruf geändert haben. Haben sich die Daten nicht geändert, kann die Aktualisierung vorgenommen werden. Andernfalls muss die Anwendung entscheiden, ob die sie die Aktualisierung vornimmt. (Die Geschäftslogik, die dieser Entscheidung zu Grunde liegt, ist die anwendungsspezifische.) Diese Strategie eignet sich für Situationen, in denen nur selten Änderungen vorgenommen werden bzw. in denen kaum mit Konflikten zu rechnen ist.
 * **Pessimistisch (eingeschränkt):**  Beim Abrufen von Daten sperrt die Anwendung die Daten im Cache, um zu verhindern, dass diese durch eine andere Anwendungsinstanz geändert werden. So werden Konflikte umgangen, allerdings werden andere Anwendungsinstanzen, die die gleichen Daten verarbeiten müssen, dabei unter Umständen blockiert. Die pessimistische Parallelität kann die Skalierbarkeit der Lösung beeinträchtigen und sollte nur für kurzlebige Prozesse verwendet werden. Diese Strategie ist eher geeignet für Situationen, in denen Konflikte wahrscheinlich sind, insbesondere dann, wenn eine Anwendung mehrere Elemente im Cache aktualisiert und sicherstellen muss, dass diese Änderungen konsistent angewendet werden.
 
-### <a name="implement-high-availability-and-scalability,-and-improve-performance"></a>Implementieren einer hohen Verfügbarkeit und Skalierbarkeit mit Verbesserung der Leistung
+### <a name="implement-high-availability-and-scalability-and-improve-performance"></a>Implementieren einer hohen Verfügbarkeit und Skalierbarkeit mit Verbesserung der Leistung
 Verwenden Sie einen Cache nicht als primäres Datenrepository. Dies sollte der ursprüngliche Datenspeicher bleiben, aus dem der Cache gefüllt wird. Der ursprüngliche Datenspeicher ist für die Persistenz der Daten verantwortlich.
 
 Achten Sie darauf, Ihre Lösungen nicht abhängig von der Verfügbarkeit eines gemeinsam genutzten Cachediensts zu machen. Eine Anwendung sollte funktionsfähig bleiben, wenn der Dienst, der den freigegebenen Cache bereitstellt, nicht verfügbar ist. Die Anwendung sollte beim Warten auf die Fortsetzung des Cachediensts auf keinen Fall nicht mehr reagieren oder fehlschlagen.
@@ -207,7 +211,7 @@ Azure Redis Cache ist eine hochleistungsfähige Lösung zum Zwischenspeichern, d
 > Der Cache wird von Instanzen einer Web- oder Workerrolle gehostet, und auf ihn können nur Rollen zugreifen, die als Teil der gleichen Clouddienst-Bereitstellungseinheit ausgeführt werden. (Eine Bereitstellungseinheit ist der Satz von Rolleninstanzen, die in einer bestimmten Region als Clouddienst bereitgestellt werden.) Der Cache ist geclustert, und alle Instanzen der Rolle innerhalb der gleichen Bereitstellungseinheit, die den Cache hostet, werden Teil des gleichen Cacheclusters. Allerdings wird diese Option nicht mehr empfohlen und dient nur noch der Unterstützung vorhandener Anwendungen, die mit diesem Cachedienst entwickelt wurden. Für alle Neuentwicklungen sollten Sie stattdessen Azure Redis Cache verwenden.
 > 
 > Sowohl Azure Managed Cache Service also auch Azure In-Role Cache sind derzeit für die Deaktivierung am 16. November 2016 vorgesehen.
-> Sie sollten zur Vorbereitung für die Einstellung dieser Dienste zu Azure Redis Cache migrieren. Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite   [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](redis-cache/cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
+> Sie sollten zur Vorbereitung für die Einstellung dieser Dienste zu Azure Redis Cache migrieren. Weitere Informationen finden Sie auf der Microsoft-Website auf der Seite [Welches Redis Cache-Angebot und welche Redis Cache-Größe sollte ich verwenden?](redis-cache/cache-faq.md#what-redis-cache-offering-and-size-should-i-use).
 > 
 > 
 
@@ -927,6 +931,9 @@ Eventuell sind auch folgende Muster für Ihr Szenario interessant, wenn Sie in I
 * Seite [Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Transaktionen in Redis) im Repository zu StackExchange.Redis
 * Seite [Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (Anleitung zur Datenpartitionierung) auf der Microsoft-Website
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

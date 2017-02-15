@@ -1,10 +1,10 @@
 ---
 title: Was ist Azure Backup? | Microsoft Docs
-description: "Mithilfe von Azure Backup und Recovery Services können Sie Daten und Anwendungen von Windows-Servern, Windows-Clientcomputern, System Center DPM-Servern oder virtuellen Azure-VMs sichern und wiederherstellen."
+description: "Mithilfe von Azure Backup und Recovery Services können Sie Daten und Anwendungen von Windows-Servern, Windows-Computern, System Center DPM-Servern oder virtuellen Azure-Computern sichern und wiederherstellen."
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: "Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen"
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/7/2016
+ms.date: 1/4/2017
 ms.author: jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 9de8032bc69b054d5d13857159ff994f505497a6
-ms.openlocfilehash: 08e7d4402ad52835d193b2083e3c9b2776e0332e
+ms.sourcegitcommit: 0eb7b5c283c95503d076da486ba08df833f1acbd
+ms.openlocfilehash: 5235a09822dc14040ca6d4353d00e938fefd0e43
 
 
 ---
@@ -53,8 +53,8 @@ Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen 
 | Komponente | Vorteile | Einschränkungen | Was wird geschützt? | Wo werden Sicherungen gespeichert? |
 | --- | --- | --- | --- | --- |
 | Azure Backup-Agent (MARS) |<li>Sicherung von Dateien und Ordnern auf physischen oder virtuellen Windows-Computern (virtuelle Computer können sich am lokalen Standort oder in Azure befinden)<li>Kein separater Sicherungsserver erforderlich |<li>Drei Sicherungen pro Tag <li>Nicht anwendungsorientiert, nur Wiederherstellung auf Datei-, Ordner- und Volumeebene <li>  Keine Unterstützung für Linux |<li>Dateien <li>Ordner |Azure Backup-Tresor |
-| System Center DPM |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung für Hyper-V- und VMware-VMs <li>Schutz von virtuellen VMware-Computern mit DPM 2012 R2 |Oracle-Workloads können nicht gesichert werden.|<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
-| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung (bei Hosting unter Hyper-V)<li>Schutz von virtuellen VMware-Computern mit DPM 2012 R2<li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger |
+| System Center DPM |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung für Hyper-V- und VMware-VMs <li>Sichern und Wiederherstellen von virtuellen VMware-Computern mit DPM 2012 R2 |Oracle-Workloads können nicht gesichert werden.|<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger<li>  Band (nur lokal) |
+| Azure Backup Server |<li>App-fähige Momentaufnahmen (VSS)<li>Vollständige Flexibilität in Bezug auf Sicherungszeitpunkt<li>Wiederherstellungsgranularität (alle)<li>Verwendung des Azure Backup-Tresors möglich<li>Linux-Unterstützung für Hyper-V- und VMware-VMs<li>Sichern und Wiederherstellen von virtuellen VMware-Computern <li>Keine System Center-Lizenz erforderlich |<li>Oracle-Workloads können nicht gesichert werden.<li>Aktives Azure-Abonnement immer erforderlich<li>Keine Unterstützung der Bandsicherung |<li>Dateien <li>Ordner<li> Volumes <li>VMs<li> Anwendungen<li> Workloads |<li>Azure Backup-Tresor<li> Lokal angefügter Datenträger |
 | Azure IaaS-VM-Sicherung |<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Azure Backup-Tresor</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Was sind die Bereitstellungsszenarien für jede Komponente?
@@ -234,6 +234,6 @@ Weitere Informationen zum Schützen anderer Workloads finden Sie in diesen Artik
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 
