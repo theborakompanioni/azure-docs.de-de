@@ -1,22 +1,26 @@
 ---
-title: Azure Notification Hubs – Benachrichtigen von Benutzern über .NET-Back-End
-description: Erfahren Sie mehr über das Senden von sicheren Pushbenachrichtigungen in Azure. Die Codebeispiele wurden in C# mithilfe der .NET-API geschrieben.
+title: "Azure Notification Hubs – Benachrichtigen von Benutzern über .NET-Back-End"
+description: "Erfahren Sie mehr über das Senden von sicheren Pushbenachrichtigungen in Azure. Die Codebeispiele wurden in C# mithilfe der .NET-API geschrieben."
 documentationcenter: windows
-author: wesmc7777
+author: ysxu
 manager: erikre
 services: notification-hubs
-editor: ''
-
+editor: 
+ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/03/2016
-ms.author: wesmc
+ms.author: yuaxu
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: c0b963ef661612b1a176dd8e5f01d56e61eb5acb
+
 
 ---
-# <a name="azure-notification-hubs-notify-users-with-.net-backend"></a>Azure Notification Hubs – Benachrichtigen von Benutzern über .NET-Back-End
+# <a name="azure-notification-hubs-notify-users-with-net-backend"></a>Azure Notification Hubs – Benachrichtigen von Benutzern über .NET-Back-End
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Übersicht
@@ -35,9 +39,11 @@ Bevor Sie mit diesem Lernprogramm beginnen, müssen Sie die folgenden Mobile Ser
 * [Erste Schritte mit Notification Hubs]<br/>In diesem Lernprogramm erstellen Sie Ihren Notification Hub, reservieren den App-Namen und führen eine Registrierung zum Empfangen von Benachrichtigungen durch. In diesem Lernprogramm wird davon ausgegangen, dass Sie diese Schritte bereits durchgeführt haben. Falls nicht, führen Sie die Schritte im Thema [Erste Schritte mit Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) durch, insbesondere die Abschnitte [Registrieren Ihrer App für den Windows Store](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#register-your-app-for-the-windows-store) und [Konfigurieren Ihres Notification Hub](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub). Vergewissern Sie sich insbesondere, dass Sie die Werte für **Paket-SID** und **Geheimer Clientschlüssel** im Portal auf der Registerkarte **Konfigurieren** für den Notification Hub eingegeben haben. Dieses Konfigurationsverfahren wird im Abschnitt [Konfigurieren Ihres Notification Hub](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md#configure-your-notification-hub)beschrieben. Dies ist ein wichtiger Schritt: Wenn die Anmeldeinformationen im Portal nicht mit denen für den gewählten App-Namen übereinstimmen, kann die Pushbenachrichtigung nicht gesendet werden.
 
 > [!NOTE]
-> Wenn Sie Mobile App Services-Apps als Back-End-Dienst verwenden, finden Sie weitere Informationen in der [Mobile Services-Version](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) dieses Lernprogramms.
+> Wenn Sie Mobile Apps in Azure App Service als Back-End-Dienst verwenden, finden Sie weitere Informationen in der [Mobile Apps-Version](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) dieses Tutorials.
 > 
 > 
+
+&nbsp;
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -337,11 +343,11 @@ In diesem Abschnitt aktualisieren Sie den Code in dem Projekt, das Sie für das 
 <!-- URLs. -->
 [Erste Schritte mit Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Sichere Pushbenachrichtigungen]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
-[Verwenden von Benachrichtigungshubs zum Übermitteln von Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Verwenden von Benachrichtigungshubs zum Senden von neuesten Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Notification Hubs-Leitfaden]: http://msdn.microsoft.com/library/jj927170.aspx
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

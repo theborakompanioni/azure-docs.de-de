@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5b7f1533aca3b5391252e4195e2edeb6443827fd
+ms.sourcegitcommit: e1f9c62765e414e194330419f26c2b7437da21b3
+ms.openlocfilehash: 79cfe90bb883b5cadf707272d31a990c8886dbe4
 
 
 ---
@@ -63,7 +63,7 @@ Sie haben das SDK installiert, das Telemetriedaten vom Server (Back-End) Ihrer A
 Fügen Sie den JavaScript-Codeausschnitt für Application Insights zu jeder Webseite hinzu, um Telemetriedaten aus Clientbrowsern zu erhalten.
 
 1. Öffnen Sie in Azure die Application Insights-Ressource für Ihre App.
-2. Öffnen Sie „Erste Schritte“ und dann die Überwachung für die Clientseite, und kopieren Sie den Codeausschnitt.
+2. Öffnen Sie in „Erste Schritte“ den Abschnitt „Überwachen und Diagnostizieren“ von Clientanwendungen, und kopieren Sie den Codeausschnitt.
 3. Fügen Sie den Ausschnitt so ein, dass er im Header jeder Webseite angezeigt wird – am besten, indem Sie den Ausschnitt auf der Masterlayoutseite einfügen.
 
 ![In Azure erweitern](./media/app-insights-asp-net-more/100.png)
@@ -133,6 +133,6 @@ Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Wenn Sie erst vor 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

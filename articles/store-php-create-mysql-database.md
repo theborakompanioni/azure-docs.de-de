@@ -1,20 +1,24 @@
 ---
 title: Erstellen einer MySQL-Datenbank und Herstellen einer Verbindung in Azure
-description: Hier erfahren Sie, wie Sie über das Azure-Portal eine MySQL-Datenbank erstellen und anschließend über eine PHP-Web-App in Azure eine Verbindung mit dieser Datenbank herstellen.
+description: "Hier erfahren Sie, wie Sie über das Azure-Portal eine MySQL-Datenbank erstellen und anschließend über eine PHP-Web-App in Azure eine Verbindung mit dieser Datenbank herstellen."
 documentationcenter: php
 services: app-service\web
 author: cephalin
-manager: wpickett
-editor: ''
+manager: erikre
+editor: 
 tags: mysql
-
+ms.assetid: 55465a9a-7e65-4fd9-8a65-dd83ee41f3e5
 ms.service: multiple
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 08/11/2016
+ms.date: 12/22/2016
 ms.author: robmcm;cephalin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b5f828f90c73f5fd0356fde4e71c11d4d27ec794
+
 
 ---
 # <a name="create-and-connect-to-a-mysql-database-in-azure"></a>Erstellen einer MySQL-Datenbank und Herstellen einer Verbindung in Azure
@@ -37,7 +41,7 @@ Gehen Sie wie folgt vor, um eine MySQL-Datenbank über das Azure-Portal zu erste
    * **Datenbankname**: Geben Sie einen eindeutigen Namen ein.
    * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
    * **Datenbanktyp**: Wählen Sie **Shared** (kostengünstige/kostenlose Tarife) oder **Dediziert** (dedizierte Ressourcen) aus. 
-   * **Ressourcengruppe**: Fügen Sie die MySQL-Datenbank einer bereits vorhandenen oder einer neuen [Ressourcengruppe](resource-group-overview.md) hinzu. Ressourcen, die sich in der gleichen Gruppe befinden, lassen sich komfortabel gemeinsam verwalten.
+   * **Ressourcengruppe**: Fügen Sie die MySQL-Datenbank einer bereits vorhandenen oder einer neuen [Ressourcengruppe](azure-resource-manager/resource-group-overview.md) hinzu. Ressourcen, die sich in der gleichen Gruppe befinden, lassen sich komfortabel gemeinsam verwalten.
    * **Standort**: Wählen Sie einen Standort in Ihrer Nähe aus. Beim Hinzufügen zu einer bereits vorhandenen Ressourcengruppe ist als Standort der Standort dieser Ressourcengruppe vorgegeben.
    * **Tarif**: Klicken Sie auf **Tarif**, wählen Sie eine Preisoption aus (**Mercury** ist kostenlos), und klicken Sie anschließend auf **Auswählen**. 
    * **Rechtliche Bedingungen**: Klicken Sie auf **Rechtliche Bedingungen**, überprüfen Sie die Details der Bestellung, und klicken Sie auf **Kaufen**.
@@ -64,7 +68,7 @@ Klicken Sie zum Anzeigen der Verbindungsinformationen für Ihre neue MySQL-Daten
 
 Die Verbindungsinformationen können in jeder beliebigen Web-App verwendet werden. Ein Beispiel zur Veranschaulichung der Verwendung von Verbindungsinformationen in einer einfachen PHP-App finden Sie [hier](https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql).
 
-## <a name="connect-a-laravel-web-app-(from-the-php-get-started-tutorial)"></a>Herstellen einer Verbindung mit einer Laravel-Web-App (aus dem Tutorial zu ersten Schritten mit PHP)
+## <a name="connect-a-laravel-web-app-from-the-php-get-started-tutorial"></a>Herstellen einer Verbindung mit einer Laravel-Web-App (aus dem Tutorial zu ersten Schritten mit PHP)
 Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer PHP-Web-App in Azure](app-service-web/app-service-web-php-get-started.md) abgeschlossen haben und über eine in Azure ausgeführte Web-App vom Typ [Larave](https://www.laravel.com/) verfügen, können Sie Ihrer Laravel-App problemlos Datenbankfunktionen hinzufügen. Gehen Sie dazu einfach wie folgt vor:
 
 > [!NOTE]
@@ -82,12 +86,13 @@ Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer 
         DB_PASSWORD=<PASSWORD_from_properties_blade>
    
    > [!NOTE]
-   > Auf dem Blatt **Eigenschaften** wird im Feld **DATENBANKNAME** möglicherweise der Name Ihrer MySQL-Datenbank angezeigt. Es empfiehlt sich allerdings, den Database-Parameter im Feld **VERBINDUNGSZEICHENFOLGE** zu prüfen. 
+   > Auf dem Blatt **Eigenschaften** wird im Feld **DATENBANKNAME** möglicherweise der Name Ihrer MySQL-Datenbank angezeigt. Es empfiehlt sich allerdings, den Database-Parameter im Feld **VERBINDUNGSZEICHENFOLGE** zu prüfen.    
    > 
    > ![Erstellen einer MySQL-Datenbank in Azure – in Bearbeitung](./media/store-php-create-mysql-database/connect-db-1-database-name.png)
    > 
    > 
-2. Der MySQL-Zugriff lässt sich am schnellsten mithilfe des [standardmäßigen Authentifizierungsgerüsts von Laravel](https://laravel.com/docs/5.2/authentication#authentication-quickstart)überprüfen. Führen Sie über das Befehlszeilenterminal die folgenden Befehle im Stammverzeichnis Ihrer Laravel-App aus:
+2. Der MySQL-Zugriff lässt sich am schnellsten mithilfe des [standardmäßigen Authentifizierungsgerüsts von Laravel](https://laravel.com/docs/5.2/authentication#authentication-quickstart)überprüfen. 
+   Führen Sie über das Befehlszeilenterminal die folgenden Befehle im Stammverzeichnis Ihrer Laravel-App aus:
    
          php artisan migrate
          php artisan make:auth
@@ -136,6 +141,9 @@ Wenn Sie bereits das Tutorial [Erstellen, Konfigurieren und Bereitstellen einer 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

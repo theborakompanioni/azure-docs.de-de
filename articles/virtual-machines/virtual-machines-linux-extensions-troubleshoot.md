@@ -1,13 +1,13 @@
 ---
-title: Problembehandlung bei Fehlern im Zusammenhang mit Erweiterungen für virtuelle Linux-Computer | Microsoft Docs
-description: Erfahren Sie mehr über die Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer.
+title: "Problembehandlung bei Fehlern im Zusammenhang mit Erweiterungen für virtuelle Linux-Computer | Microsoft Docs"
+description: "Erfahren Sie mehr über die Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: kundanap
 manager: timlt
-editor: ''
+editor: 
 tags: top-support-issue,azure-resource-manager
-
+ms.assetid: f05d93f3-42fc-4a09-9798-d92f7929c417
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: support-article
@@ -15,13 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: cdb2f59d227b3c39c4ee21bf3f383f223577bf49
+
 
 ---
-# Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer
+# <a name="troubleshooting-azure-linux-vm-extension-failures"></a>Problembehandlung für Fehler bei Azure-Erweiterungen für virtuelle Linux-Computer
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
-## Anzeigen des Erweiterungsstatus
-Vorlagen für den Azure Resource Manager können von der Azure-Befehlszeilenschnittstelle ausgeführt werden. Sobald die Vorlage ausgeführt wird, kann der Erweiterungsstatus im Azure-Ressourcen-Explorer oder in den Befehlszeilentools angezeigt werden.
+## <a name="viewing-extension-status"></a>Anzeigen des Erweiterungsstatus
+Azure Resource Manager-Vorlagen können von der Azure-Befehlszeilenschnittstelle ausgeführt werden. Sobald die Vorlage ausgeführt wird, kann der Erweiterungsstatus im Azure-Ressourcen-Explorer oder in den Befehlszeilentools angezeigt werden.
 
 Beispiel:
 
@@ -55,15 +59,21 @@ Hier ist die Beispielausgabe:
     }
   ]
 
-## Problembehandlung bei Erweiterungsfehlern:
-### Erneutes Ausführen der Erweiterung auf dem virtuellen Computer
-Wenn Sie mithilfe der benutzerdefinierten Skripterweiterung Skripts auf dem virtuellen Computer ausführen, könnten ab und an Fehler auftreten, bei denen der virtuelle Computer erfolgreich erstellt wurde, das Skript jedoch fehlgeschlagen ist. Unter diesen Bedingungen ist die empfohlene Vorgehensweise zum Beheben dieses Fehlers das Entfernen der Erweiterung und das erneute Ausführen der Vorlage. Hinweis: In Zukunft wird diese Funktionalität verbessert, damit es nicht mehr notwendig ist, die Erweiterung zu deinstallieren.
+## <a name="troubleshooting-extenson-failures"></a>Problembehandlung bei Erweiterungsfehlern:
+### <a name="re-running-the-extension-on-the-vm"></a>Erneutes Ausführen der Erweiterung auf dem virtuellen Computer
+Wenn Sie mithilfe der benutzerdefinierten Skripterweiterung Skripts auf dem virtuellen Computer ausführen, könnten ab und an Fehler auftreten, bei denen der virtuelle Computer erfolgreich erstellt wurde, das Skript jedoch fehlgeschlagen ist. Unter diesen Bedingungen ist die empfohlene Vorgehensweise zum Beheben dieses Fehlers das Entfernen der Erweiterung und das erneute Ausführen der Vorlage.
+Hinweis: In Zukunft wird diese Funktionalität verbessert, damit es nicht mehr notwendig ist, die Erweiterung zu deinstallieren.
 
-#### Entfernen der Erweiterung aus der Azure-Befehlszeilenschnittstelle
+#### <a name="remove-the-extension-from-azure-cli"></a>Entfernen der Erweiterung aus der Azure-Befehlszeilenschnittstelle
       azure vm extension set --resource-group "KPRG1" --vm-name "kundanapdemo" --publisher-name "Microsoft.Compute.CustomScriptExtension" --name "myCustomScriptExtension" --version 1.4 --uninstall
 
 Wobei "publsher-name" dem Erweiterungstyp aus der Ausgabe von "azure vm get-instance-view" entspricht und der Name der Name der Erweiterungsressource aus der Vorlage ist.
 
 Nachdem die Erweiterung entfernt wurde, kann die Vorlage erneut ausgeführt werden, um die Skripts auf dem virtuellen Computer auszuführen.
 
-<!---HONumber=AcomDC_0608_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

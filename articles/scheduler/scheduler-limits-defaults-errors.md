@@ -1,31 +1,35 @@
 ---
-title: Scheduler – Einschränkungen und Standardwerte
-description: Scheduler – Einschränkungen und Standardwerte
+title: "Scheduler – Einschränkungen und Standardwerte"
+description: "Scheduler – Einschränkungen und Standardwerte"
 services: scheduler
 documentationcenter: .NET
-author: krisragh
-manager: dwrede
-editor: ''
-
+author: derek1ee
+manager: kevinlam1
+editor: 
+ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.service: scheduler
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: krisragh
+ms.author: deli
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
+
 
 ---
-# Scheduler – Einschränkungen und Standardwerte
-## Kontingente, Einschränkungen, Standardwerte und Drosselungen für Scheduler
+# <a name="scheduler-limits-and-defaults"></a>Scheduler – Einschränkungen und Standardwerte
+## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Kontingente, Einschränkungen, Standardwerte und Drosselungen für Scheduler
 [!INCLUDE [scheduler-limits-table](../../includes/scheduler-limits-table.md)]
 
-## Der Header „x-ms-request-id“
-Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens **x-ms-request-id** zurück. Dieser Header enthält einen opaken Wert, der die Anforderung eindeutig identifiziert.
+## <a name="the-x-ms-request-id-header"></a>Der Header „x-ms-request-id“
+Jede Anforderung für den Scheduler-Dienst gibt einen Antwortheader namens**x-ms-request-id**zurück. Dieser Header enthält einen opaken Wert, der die Anforderung eindeutig identifiziert.
 
 Wenn bei einer Anforderung kontinuierlich ein Fehler auftritt, obwohl die Anforderung ordnungsgemäß formuliert ist, können Sie den Fehler unter Angabe dieses Werts an Microsoft melden. Geben Sie in Ihrem Bericht den Wert von „x-ms-request-id“, die ungefähre Anforderungszeit, die ID des Abonnements, die Auftragssammlung und/oder den Auftrag sowie die Art des Vorgangs an, den die Anforderung ausgeführt hat.
 
-## Weitere Informationen
+## <a name="see-also"></a>Weitere Informationen
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
  [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
@@ -42,4 +46,9 @@ Wenn bei einer Anforderung kontinuierlich ein Fehler auftritt, obwohl die Anford
 
  [Ausgehende Authentifizierung von Azure Scheduler](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

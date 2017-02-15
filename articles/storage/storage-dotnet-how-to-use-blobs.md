@@ -371,7 +371,7 @@ Standardmäßig sichert Azure Storage Ihre Daten, indem der Zugriff auf den Kont
 Standardmäßig können nur Sie als Speicherkontobesitzer auf die Blobdaten in Ihrem Speicherkonto zugreifen. Die Authentifizierung von Anforderungen an Blob Storage erfordert standardmäßig den Kontozugriffsschlüssel. Möglicherweise möchten Sie jedoch anderen Benutzern Zugriff auf bestimmte Blobdaten gewähren. Sie haben zwei Möglichkeiten:
 
 * **Anonymer Zugriff:** Sie können einen Container oder seine Blobs für den anonymen Zugriff öffentlich verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md) .
-* **Shared Access Signature:** Sie können für die Clients eine Shared Access Signature (SAS) bereitstellen, die delegierten Zugriff auf eine Ressource in Ihrem Speicherkonto ermöglicht. Dies ist mit von Ihnen festgelegten Berechtigungen und über einen von Ihnen angegebenen Zeitraum möglich. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) .
+* **Shared Access Signature:** Sie können für die Clients eine Shared Access Signature (SAS) bereitstellen, die delegierten Zugriff auf eine Ressource in Ihrem Speicherkonto ermöglicht. Dies ist mit von Ihnen festgelegten Berechtigungen und über einen von Ihnen angegebenen Zeitraum möglich. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) .
 
 ### <a name="encrypting-blob-data"></a>Verschlüsseln von Blobdaten
 Azure Storage unterstützt das Verschlüsseln von Blobdaten sowohl auf dem Client als auch auf dem Server:

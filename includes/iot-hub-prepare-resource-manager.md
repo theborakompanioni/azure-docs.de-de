@@ -44,6 +44,6 @@ Sie haben jetzt eine Azure AD-Anwendung fertig erstellt, mit der die Authentifiz
 [lnk-powershell-install]: /powershell/azureps-cmdlets-docs
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

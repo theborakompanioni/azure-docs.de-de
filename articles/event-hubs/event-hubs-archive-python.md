@@ -1,5 +1,5 @@
 ---
-title: "Exemplarische Vorgehensweise für Azure Event Hubs-Archiv | Microsoft Docs"
+title: "Exemplarische Vorgehensweise für Azure Event Hubs Archive | Microsoft-Dokumentation"
 description: "Enthält ein Beispiel, in dem das Azure Python SDK verwendet wird, um das Event Hubs-Archiv-Feature zu demonstrieren."
 services: event-hubs
 documentationcenter: 
@@ -12,41 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 12/13/2016
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c836558426b44633993f9f52de39d0a843039614
+ms.sourcegitcommit: 0dc22f03c114508190a8da7ae4ca385c39690d2c
+ms.openlocfilehash: ee85bfc9cfd852306a52d21772d33accdf484fdf
 
 
 ---
 # <a name="event-hubs-archive-walkthrough-python"></a>Exemplarische Vorgehensweise für Event Hubs-Archiv: Python
-Das Event Hubs-Archiv ist ein neues Feature von Event Hubs, mit dem Sie Streamingdaten in Ihrem Event Hub automatisch an ein Azure Blob Storage-Konto Ihrer Wahl übermitteln können. Dies erleichtert die Batchverarbeitung für Echtzeit-Streamingdaten. In diesem Artikel wird beschrieben, wie Sie das Event Hubs-Archiv mit Python nutzen. Weitere Informationen zum Event Hubs-Archiv finden Sie im [Übersichtsartikel](event-hubs-archive-overview.md).
+Event Hubs Archive ist ein neues Feature von Event Hubs, mit dem Sie Streamingdaten in Ihrem Event Hub automatisch an ein Azure Blob Storage-Konto Ihrer Wahl übermitteln können. Dies erleichtert die Batchverarbeitung für Echtzeit-Streamingdaten. In diesem Artikel wird beschrieben, wie Sie das Event Hubs-Archiv mit Python nutzen. Weitere Informationen zum Event Hubs-Archiv finden Sie im [Übersichtsartikel](event-hubs-archive-overview.md).
 
-In diesem Beispiel wird das Azure Python SDK verwendet, um das Archiv-Feature zu demonstrieren. Mit „sender.py“ werden simulierte Telemetriedaten der Umgebung im JSON-Format an Event Hubs gesendet. Der Event Hub ist für die Verwendung des Archiv-Features konfiguriert, damit diese Daten in Batches in den Blobspeicher geschrieben werden können. Mit „archivereader.py“ werden dieses Blobs dann gelesen, und es wird eine Anfügedatei pro Gerät erstellt. Anschließend werden die Daten in CSV-Dateien geschrieben.
+In diesem Beispiel wird das Azure Python SDK verwendet, um das Archive-Feature zu demonstrieren. Mit dem Programm „sender.py“ werden simulierte Telemetriedaten der Umgebung im JSON-Format an Event Hubs gesendet. Der Event Hub ist für die Verwendung des Archiv-Features konfiguriert, damit diese Daten in Batches in den Blobspeicher geschrieben werden können. Mit der App „archivereader.py“ werden dieses Blobs dann gelesen, und es wird eine Anfügedatei pro Gerät erstellt. Anschließend werden die Daten in CSV-Dateien geschrieben.
 
 Ziele
 
 1. Erstellen eines Azure Blob Storage-Kontos und eines darin enthaltenen Blobcontainers mit dem Azure-Portal
 2. Erstellen eines Event Hub-Namespace mit dem Azure-Portal
-3. Erstellen eines Event Hub mit aktiviertem Archiv-Feature mit dem Azure-Portal
+3. Erstellen eines Event Hub mit aktiviertem Archive-Feature mit dem Azure-Portal
 4. Senden von Daten an den Event Hub mit einem Python-Skript
 5. Auslesen der Dateien aus dem Archiv und Verarbeiten mit einem anderen Python-Skript
 
 Voraussetzungen
 
-1. Python 2.7.x
-2. Ein Azure-Abonnement
+- Python 2.7.x
+- Ein Azure-Abonnement
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
-1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an.
-2. Klicken Sie im Portal im Navigationsbereich auf der linken Seite auf „Neu“, „Daten und Speicher“ und „Speicherkonto“.
-3. Füllen Sie die Felder auf dem Blatt „Speicherkonto“ aus, und klicken Sie auf **Erstellen**.
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
+2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu**, **Daten und Speicher** und **Speicherkonto**.
+3. Füllen Sie die Felder auf dem Blatt „Speicherkonto“ aus, und klicken Sie dann auf **Erstellen**.
    
    ![][1]
-4. Klicken Sie nach dem Erscheinen der Meldung **Die Bereitstellungen waren erfolgreich** auf das neue Speicherkonto und dann auf dem Blatt **Zusammenfassung** auf **Blobs**. Klicken Sie oben auf **+ Container**, nachdem das Blatt **Blob-Dienst** geöffnet wurde. Geben Sie dem Container den Namen **archive**, und schließen Sie das Blatt **Blob-Dienst**.
+4. Klicken Sie nach dem Erscheinen der Meldung **Die Bereitstellungen waren erfolgreich** auf den Namen des neuen Speicherkontos und dann auf dem Blatt **Zusammenfassung** auf **Blobs**. Klicken Sie oben auf **+ Container**, nachdem das Blatt **Blob-Dienst** geöffnet wurde. Geben Sie dem Container den Namen **archive**, und schließen Sie das Blatt **Blob-Dienst**.
 5. Klicken Sie auf dem linken Blatt auf **Zugriffsschlüssel**, und kopieren Sie den Namen des Speicherkontos und den Wert von **key1**. Speichern Sie diese Werte im Editor oder an einem anderen temporären Speicherort.
 
 [!INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
@@ -155,27 +155,27 @@ Voraussetzungen
     python archivereader.py
     ```
 
-Dieser Archivprozessor nutzt das lokale Verzeichnis, um alle Blobs aus dem Speicherkonto/Container herunterzuladen. Er verarbeitet alle Blobs, die nicht leer sind, und schreibt die Ergebnisse als CSV-Dateien in das lokale Verzeichnis.
+    Dieser Archivprozessor nutzt das lokale Verzeichnis, um alle Blobs aus dem Speicherkonto/Container herunterzuladen. Er verarbeitet alle Blobs, die nicht leer sind, und schreibt die Ergebnisse als CSV-Dateien in das lokale Verzeichnis.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* [Übersicht über Event Hubs-Archiv][Übersicht über Event Hubs-Archiv]
-* Eine vollständige [Beispielanwendung mit Verwendung von Ereignis-Hubs][Beispielanwendung mit Verwendung von Ereignis-Hubs].
-* Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs].
-* [Übersicht über Event Hubs][Übersicht über Event Hubs]
+* [Übersicht über Event Hubs Archive][Overview of Event Hubs Archive]
+* Eine vollständige [Beispielanwendung mit Verwendung von Ereignis Hubs][sample application that uses Event Hubs].
+* Das Beispiel [Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs][Scale out Event Processing with Event Hubs]
+* [Übersicht über Event Hubs][Event Hubs overview]
 
-[Azure-Portal]: https://portal.azure.com/
-[Übersicht über Event Hubs-Archiv]: event-hubs-archive-overview.md
+[Azure portal]: https://portal.azure.com/
+[Overview of Event Hubs Archive]: event-hubs-archive-overview.md
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
-[Informationen zu Azure-Speicherkonten]: https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
+[About Azure storage accounts]: https://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
 [Visual Studio Code]: https://code.visualstudio.com/
-[Übersicht über Event Hubs]: event-hubs-overview.md
-[Beispielanwendung mit Verwendung von Ereignis-Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-[Horizontales Hochskalieren der Ereignisverarbeitung mit Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -5,8 +5,8 @@ services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: b5d615f2-02a7-4222-9867-6c0385ce748c
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,28 +14,32 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: edaacfb8e7c179ac6e4831a113656b3cf128f985
+
 
 ---
-# Klonen eines Volumes mithilfe des StorSimple Manager-Diensts
+# <a name="use-the-storsimple-manager-service-to-clone-a-volume"></a>Klonen eines Volumes mithilfe des StorSimple Manager-Diensts
 [!INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
-## Übersicht
+## <a name="overview"></a>Übersicht
 Auf der Seite **Sicherungskatalog** des StorSimple Manager-Diensts werden alle Sicherungssätze angezeigt, die mithilfe manueller oder automatisierter Sicherungen erstellt wurden. Sie können auf dieser Seite alle Sicherungen für eine Sicherungsrichtlinie oder ein Volume auflisten, Sicherungen auswählen oder löschen oder eine Sicherung zum Wiederherstellen oder Klonen eines Volumes verwenden.
 
-![Seite "Sicherungskatalog"](./media/storsimple-clone-volume/HCS_BackupCatalog.png)
+![Seite "Sicherungskatalog"](./media/storsimple-clone-volume/HCS_BackupCatalog.png)  
 
-In diesem Tutorial wird beschrieben, wie Sie einen Sicherungssatz zum Klonen eines einzelnen Volumes verwenden können. Außerdem wird der Unterschied zwischen *vorübergehenden* und *dauerhaften* Klonen beschrieben.
+In diesem Tutorial wird beschrieben, wie Sie einen Sicherungssatz zum Klonen eines einzelnen Volumes verwenden können. Außerdem wird der Unterschied zwischen *vorübergehenden* und *dauerhaften* Klonen beschrieben. 
 
-## Erstellen von Klonen von einem Volume
+## <a name="create-a-clone-of-a-volume"></a>Erstellen von Klonen von einem Volume
 Sie können einen Klon anhand einer lokalen oder einer Cloudmomentaufnahme auf dem gleichen Gerät, auf einem anderen Gerät oder sogar auf einem virtuellen Computer erstellen.
 
-#### So klonen Sie ein Volume
-1. Klicken Sie auf der Seite des StorSimple-Manager-Diensts auf die Registerkarte **Sicherungskatalog**, und wählen Sie einen Sicherungssatz.
+#### <a name="to-clone-a-volume"></a>So klonen Sie ein Volume
+1. Klicken Sie auf der Seite des StorSimple-Manager-Diensts auf die Registerkarte **Sicherungskatalog** , und wählen Sie einen Sicherungssatz.
 2. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Klicken Sie auf ein Volume im Sicherungssatz, um dieses auszuwählen.
    
-     ![Volume klonen](./media/storsimple-clone-volume/HCS_Clone.png)
-3. Klicken Sie auf **Klonen**, um mit dem Klonen des ausgewählten Volumes zu beginnen.
-4. Führen Sie im Assistenten zum Klonen von Volumes unter **Name und Pfad angeben** folgende Schritte aus:
+     ![Volume klonen](./media/storsimple-clone-volume/HCS_Clone.png) 
+3. Klicken Sie auf **Klonen** , um mit dem Klonen des ausgewählten Volumes zu beginnen.
+4. Führen Sie im Assistenten zum Klonen von Volumes unter **Name und Pfad angeben**folgende Schritte aus:
    
    1. Ermitteln Sie ein Zielgerät. Dies ist der Speicherort, an dem der Klon erstellt wird. Sie können das gleiche Gerät auswählen oder ein anderes Gerät angeben. Bei Auswahl eines Volumes, das anderen Cloud-Service Providern als Azure zugeordnet ist, werden in der Dropdownliste für das Zielgerät nur physische Geräte angezeigt. Ein Volume kann nicht auf ein virtuelles Gerät geklont werden, wenn es anderen Cloud-Service Providern zugeordnet ist.
       
@@ -43,16 +47,16 @@ Sie können einen Klon anhand einer lokalen oder einer Cloudmomentaufnahme auf d
       > Stellen Sie sicher, dass für den Klon weniger Kapazität benötigt wird, als auf dem Zielgerät zur Verfügung steht.
       > 
       > 
-   2. Geben Sie einen eindeutigen Volumenamen für Ihren Klon an. Der Name muss zwischen 3 und 127 Zeichen lang sein.
-   3. Klicken Sie auf den Pfeil ![Pfeilsymbol](./media/storsimple-clone-volume/HCS_ArrowIcon.png), um zur nächsten Seite zu wechseln.
-5. Führen Sie unter **Hosts angeben, die dieses Volume verwenden können** folgende Schritte aus:
+   2. Geben Sie einen eindeutigen Volumenamen für Ihren Klon an. Der Name muss zwischen 3 und 127 Zeichen lang sein.
+   3. Klicken Sie auf den Pfeil  ![Pfeilsymbol](./media/storsimple-clone-volume/HCS_ArrowIcon.png) , um zur nächsten Seite zu wechseln.
+5. Führen Sie unter **Hosts angeben, die dieses Volume verwenden können**folgende Schritte aus:
    
    1. Geben Sie einen Zugriffssteuerungsdatensatz (ACR) für den Klon an. Sie können einen neuen ACR hinzufügen oder diesen aus der Liste mit vorhandenen ACRs auswählen.
-   2. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-clone-volume/HCS_CheckIcon.png), um den Vorgang abzuschließen.
+   2. Klicken Sie auf das Häkchen  ![Häkchensymbol](./media/storsimple-clone-volume/HCS_CheckIcon.png), um den Vorgang abzuschließen.
 6. Es wird ein Klonauftrag initiiert. Sie werden benachrichtigt, wenn der Klon erstellt wurde. Klicken Sie auf **Auftrag anzeigen**, um den Klonauftrag auf der Seite **Aufträge** zu überwachen.
 7. Nach Abschluss des Klonauftrags:
    
-   1. Navigieren Sie zur Seite **Geräte**, und klicken Sie auf die Registerkarte **Volumecontainer**.
+   1. Navigieren Sie zur Seite **Geräte**, und klicken Sie auf die Registerkarte **Volumecontainer**. 
    2. Wählen Sie den Volumecontainer aus, der dem geklonten Ausgangsvolume zugeordnet ist. In der Liste der Volumes sollte der gerade erstellte Klon angezeigt werden.
 
 > [!NOTE]
@@ -64,26 +68,31 @@ Ein auf diese Weise erstellter Klon ist ein vorübergehender Klon. Weitere Infor
 
 Dieser Klon ist jetzt ein reguläres Volume, und jeder mit einem Volume mögliche Vorgang kann auch für den Klon durchgeführt werden. Sie müssen dieses Volume für Sicherungen konfigurieren.
 
-## Vergleich von vorübergehenden und dauerhaften Klonen
-Vorübergehende und dauerhafte Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen Gerät klonen. Ein auf diese Weise erstellter Klon ist ein *vorübergehender* Klon. Der vorübergehende Klon enthält Verweise auf das ursprüngliche Volume, und er verwendet dieses für das Lesen während des lokalen Schreibens.
+## <a name="transient-vs-permanent-clones"></a>Vergleich von vorübergehenden und dauerhaften Klonen
+Vorübergehende und dauerhafte Klone werden nur erstellt, wenn das Klonen auf einem anderen Gerät erfolgt. Sie können ein bestimmtes Volume aus einem Sicherungssatz auf einem anderen Gerät klonen. Ein auf diese Weise erstellter Klon ist ein *vorübergehender* Klon. Der vorübergehende Klon enthält Verweise auf das ursprüngliche Volume, und er verwendet dieses für das Lesen während des lokalen Schreibens. 
 
-Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Der dauerhafte Klon ist unabhängig und verfügt nicht über Verweise auf das ursprüngliche Volume, aus dem er geklont wurde.
+Nachdem Sie eine Cloudmomentaufnahme eines vorübergehenden Klons erstellt haben, wird der daraus resultierende Klon ein *dauerhafter* Klon. Der dauerhafte Klon ist unabhängig und verfügt nicht über Verweise auf das ursprüngliche Volume, aus dem er geklont wurde.  
 
-## Szenarios für vorübergehende und dauerhafte Klone
+## <a name="scenarios-for-transient-and-permanent-clones"></a>Szenarios für vorübergehende und dauerhafte Klone
 In den folgenden Abschnitten werden beispielhafte Situationen beschreiben, in denen vorübergehende und dauerhafte Klone verwendet werden können.
 
-### Wiederherstellung auf Elementebene mit einem vorübergehenden Klon
-Sie müssen eine ein Jahr alte Datei mit einer Microsoft PowerPoint-Präsentation wiederherstellen. Der IT-Administrator identifiziert die entsprechende Sicherung aus diesem Zeitraum und filtert das Volume dann. Anschließend klont der Administrator das Volume, ermittelt die Datei, nach der Sie suchen, und stellt sie Ihnen dann zur Verfügung. In diesem Szenario wird ein vorübergehender Klon verwendet.
+### <a name="item-level-recovery-with-a-transient-clone"></a>Wiederherstellung auf Elementebene mit einem vorübergehenden Klon
+Sie müssen eine ein Jahr alte Datei mit einer Microsoft PowerPoint-Präsentation wiederherstellen. Der IT-Administrator identifiziert die entsprechende Sicherung aus diesem Zeitraum und filtert das Volume dann. Anschließend klont der Administrator das Volume, ermittelt die Datei, nach der Sie suchen, und stellt sie Ihnen dann zur Verfügung. In diesem Szenario wird ein vorübergehender Klon verwendet. 
 
 ![Video verfügbar](./media/storsimple-clone-volume/Video_icon.png) **Video verfügbar**
 
 Um ein Video zu schauen, in dem gezeigt wird, wie Sie mithilfe des Klons und Wiederherstellungsfunktionen in StorSimple gelöschte Dateien wiederherstellen können, klicken Sie [hier](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/).
 
-### Testen in der Produktionsumgebung mit einem dauerhaften Klon
+### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Testen in der Produktionsumgebung mit einem dauerhaften Klon
 Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstellen einen Klon des Volumes in der Produktionsumgebung, indem Sie eine Cloudmomentaufnahme dieses Klons erstellen. Das geklonte Volume ist jetzt unabhängig. In diesem Szenario wird ein dauerhafter Klon verwendet.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set.md).
-* Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
+* Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

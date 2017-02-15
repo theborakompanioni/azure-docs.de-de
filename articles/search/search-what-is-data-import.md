@@ -59,6 +59,6 @@ Eine schnelle Möglichkeit zum Durchführen einer vorläufigen Prüfung für den
 > Viele [Azure Search-Codebeispiele](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) enthalten eingebettete bzw. sofort verfügbare Datasets, damit Sie schnell starten können. Außerdem enthält das Portal auch einen Beispielindexer und eine Datenquelle mit einem kleinen Immobiliendataset („realestate-us-sample“). Wenn Sie den vorkonfigurierten Indexer in der Beispieldatenquelle ausführen, wird ein Index erstellt und mit Dokumenten geladen, die dann im Suchexplorer oder mit von Ihnen geschriebenem Code abgefragt werden können.
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

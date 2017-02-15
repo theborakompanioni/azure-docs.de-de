@@ -1,12 +1,12 @@
 ---
-title: Konfigurieren von SSL für einen Clouddienst (klassisch) | Microsoft Docs
-description: Erfahren Sie, wie Sie einen HTTPS-Endpunkt für eine Webrolle angeben und ein SSL-Zertifikat zur Sicherung Ihrer Anwendung hochladen können.
+title: "Konfigurieren von SSL für einen Clouddienst (klassisch) | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie einen HTTPS-Endpunkt für eine Webrolle angeben und ein SSL-Zertifikat zur Sicherung Ihrer Anwendung hochladen können."
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 4cbb7f38-7994-454d-b4f0-7259b558c766
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: adegeo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 1bfb0841ce6ad151d863d4635cb10d3ef1b1e06b
+
 
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurieren von SSL für eine Anwendung in Azure
@@ -36,7 +40,7 @@ Lesen Sie zuerst [diesen](cloud-services-how-to-create-deploy.md) Artikel, wenn 
 
 [!INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
-## <a name="step-1:-get-an-ssl-certificate"></a>Schritt 1: Beziehen eines SSL-Zertifikats
+## <a name="step-1-get-an-ssl-certificate"></a>Schritt 1: Beziehen eines SSL-Zertifikats
 Sie müssen zuerst ein SSL-Zertifikat beziehen, um SSL für eine Anwendung zu konfigurieren. Dieses muss von einer Zertifizierungsstelle, einem vertrauenswürdigen Dritten, der Zertifikate für diesen Zweck ausgibt, ausgegeben werden. Wenn Sie noch kein Zertifikat haben, müssen Sie eines von einem Unternehmen erwerben, das SSL-Zertifikate verkauft.
 
 Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure erfüllen:
@@ -50,7 +54,7 @@ Zu Testzwecken können Sie ein selbst signiertes Zertifikat [erstellen](cloud-se
 
 Daraufhin müssen Sie Informationen zum Zertifikat in Ihre Definitions- und Konfigurationsdateien für den Dienst einfügen.
 
-## <a name="step-2:-modify-the-service-definition-and-configuration-files"></a>Schritt 2: Ändern der Definitions- und Konfigurationsdateien für den Dienst
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Schritt 2: Ändern der Definitions- und Konfigurationsdateien für den Dienst
 Ihre Anwendung muss so konfiguriert sein, dass das Zertifikat verwendet wird. Außerdem muss ein HTTPS-Endpunkt hinzugefügt werden. Daher müssen die Definitions- und Konfigurationsdateien für den Dienst aktualisiert werden.
 
 1. Öffnen Sie in Ihrer Entwicklungsumgebung die Dienstdefinitionsdatei (CSDEF), fügen Sie innerhalb des Bereichs **WebRole** einen Bereich **Certificates** hinzu, und geben Sie die folgenden Informationen über das Zertifikat (und Zwischenzertifikate) an:
@@ -129,10 +133,10 @@ Ihre Anwendung muss so konfiguriert sein, dass das Zertifikat verwendet wird. Au
 
 Die Definitions- und Konfigurationsdateien für den Dienst wurden aktualisiert. Erstellen Sie jetzt Ihr Bereitstellungspaket und laden Sie es in Azure hoch. Wenn Sie **cspack** verwenden, verwenden Sie nicht die Kennzeichnung **/generateConfigurationFile**, da dies die Zertifikatinformationen überschreibt, die Sie eingefügt haben.
 
-## <a name="step-3:-upload-a-certificate"></a>Schritt 3: Hochladen eines Zertifikats
+## <a name="step-3-upload-a-certificate"></a>Schritt 3: Hochladen eines Zertifikats
 Ihr Bereitstellungspaket wurde so aktualisiert, dass das Zertifikat verwendet wird. Außerdem wurde ein HTTPS-Endpunkt hinzugefügt. Jetzt können Sie das Paket und das Zertifikat in Azure über das klassische Azure-Portal hochladen.
 
-1. Melden Sie sich beim [klassischen Azure-Portal][klassischen Azure-Portal]an. 
+1. Melden Sie sich beim [klassischen Azure-Portal][klassischen Azure-Portal] an. 
 2. Klicken Sie im linken Navigationsbereich auf **Cloud Services**.
 3. Klicken Sie auf den gewünschten Clouddienst.
 4. Klicken Sie auf die Registerkarte **Zertifikate**.
@@ -143,7 +147,7 @@ Ihr Bereitstellungspaket wurde so aktualisiert, dass das Zertifikat verwendet wi
     ![Hochladen](./media/cloud-services-configure-ssl-certificate/upload-button.png)
 6. Geben Sie die **Datei** und das **Kennwort** an, und klicken Sie dann auf **Fertigstellen** (das Häkchen).
 
-## <a name="step-4:-connect-to-the-role-instance-by-using-https"></a>Schritt 4: Herstellen einer Verbindung mit der Rolleninstanz über HTTPS
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Schritt 4: Herstellen einer Verbindung mit der Rolleninstanz über HTTPS
 Jetzt wird die Bereitstellung in Azure ausgeführt, und Sie können eine HTTPS-Verbindung herstellen.
 
 1. Wählen Sie im klassischen Azure-Portal die Bereitstellung aus, und klicken Sie dann unterhalb der **Website-URL**auf den Link.
@@ -175,6 +179,6 @@ Wenn Sie SSL für eine Staging- statt für eine Produktionsbereitstellung verwen
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

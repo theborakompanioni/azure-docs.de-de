@@ -1,49 +1,53 @@
 ---
-title: Azure Batch diagnostic logging | Microsoft Docs
-description: Record and analyze diagnostic log events for Azure Batch account resources like pools and tasks.
+title: "Diagnoseprotokollierung für Azure Batch | Microsoft Docs"
+description: "Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoressourcen wie Pools und Tasks auf, und analysieren Sie sie."
 services: batch
-documentationcenter: ''
-author: mmacy
+documentationcenter: 
+author: tamram
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 10/12/2016
-ms.author: marsma
+ms.date: 01/20/2017
+ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: f1aa23d2865ec8401a59b2370c8157d2458c60f7
+
 
 ---
-# <a name="azure-batch-diagnostic-logging"></a>Azure Batch diagnostic logging
-As with many Azure services, the Batch service emits log events for certain resources during the lifetime of the resource. You can enable Azure Batch diagnostic logs to record events for resources like pools and tasks, and then use the logs for diagnostic evaluation and monitoring. Events like pool create, pool delete, task start, task complete, and others are included in Batch diagnostic logs.
+# <a name="azure-batch-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Batch
+Wie bei vielen Azure-Diensten werden vom Batch-Dienst Protokollereignisse für bestimmte Ressourcen während der Lebensdauer der Ressource ausgegeben. Sie können Azure Batch-Diagnoseprotokolle aktivieren, um für Ressourcen wie Pools und Tasks Ereignisse aufzuzeichnen und anschließend zur Diagnose auszuwerten und zu überwachen. In Batch-Diagnoseprotokollen sind Ereignisse wie das Erstellen und Löschen von Pools und das Starten und Abschließen von Tasks enthalten.
 
 > [!NOTE]
-> This article discusses logging events for Batch account resources themselves, not job and task output data. For details on storing the output data of your jobs and tasks, see [Persist Azure Batch job and task output](batch-task-output.md).
+> In diesem Artikel wird die Protokollierung von Ereignissen für Batch-Kontoressourcen beschrieben, nicht jedoch für Auftrags- und Taskausgabedaten. Informationen zum Speichern der Ausgabedaten von Aufträgen und Tasks finden Sie unter [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md).
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
-* [Azure Batch account](batch-account-create-portal.md)
-* [Azure Storage account](../storage/storage-create-storage-account.md#create-a-storage-account)
+## <a name="prerequisites"></a>Voraussetzungen
+* [Azure Batch-Konto](batch-account-create-portal.md)
+* [Azure Storage-Konto](../storage/storage-create-storage-account.md#create-a-storage-account)
   
-  To persist Batch diagnostic logs, you must create an Azure Storage account where Azure will store the logs. You specify this Storage account when you [enable diagnostic logging](#enable-diagnostic-logging) for your Batch account. The Storage account you specify when you enable log collection is not the same as a linked storage account referred to in the [application packages](batch-application-packages.md) and [task output persistence](batch-task-output.md) articles.
+  Wenn Sie Batch-Diagnoseprotokolle beibehalten möchten, müssen Sie ein Azure Storage-Konto erstellen, unter dem Azure die Protokolle speichert. Geben Sie dieses Storage-Konto an, wenn Sie die [Diagnoseprotokollierung](#enable-diagnostic-logging) für Ihr Batch-Konto aktivieren. Das Storage-Konto, das Sie beim Aktivieren der Protokollsammlung angeben, ist nicht mit dem verknüpften Speicherkonto identisch, das in den Artikeln [Anwendungspakete](batch-application-packages.md) und [Beibehalten der Ausgabe](batch-task-output.md) beschrieben wird.
   
   > [!WARNING]
-  > You are **charged** for the data stored in your Azure Storage account. This includes the diagnostic logs discussed in this article. Keep this in mind when designing your [log retention policy](../azure-portal/monitoring-archive-diagnostic-logs.md).
+  > Für die Speicherung von Daten im Azure Storage-Konto wird eine **Gebühr erhoben**. Dies gilt auch für die in diesem Artikel beschriebenen Diagnoseprotokolle. Beachten Sie dies beim Entwerfen Ihrer [Beibehaltungsrichtlinie für Protokolle](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md).
   > 
   > 
 
-## <a name="enable-diagnostic-logging"></a>Enable diagnostic logging
-Diagnostic logging is not enabled by default for your Batch account. You must explicitly enable diagnostic logging for each Batch account you want to monitor:
+## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
+Die Diagnoseprotokollierung ist für das Batch-Konto nicht standardmäßig aktiviert. Sie müssen die Diagnoseprotokollierung für jedes Batch-Konto, das Sie überwachen möchten, explizit aktivieren:
 
-[How to enable collection of Diagnostic Logs](../azure-portal/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
+[Gewusst wie: Aktivieren der Erfassung von Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
 
-We recommend that you read the full [Overview of Azure Diagnostic Logs](../azure-portal/monitoring-overview-of-diagnostic-logs.md) article to gain an understanding of not only how to enable logging, but the log categories supported by the various Azure services. For example, Azure Batch currently supports one log category: **Service Logs**.
+Es wird empfohlen, den Artikel [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) ganz zu lesen. In diesem Artikel erfahren Sie nicht nur, wie die Protokollierung aktiviert wird, sondern auch, welche Protokollkategorien von den verschiedenen Azure-Diensten unterstützt werden. So unterstützt Azure Batch beispielsweise derzeit eine Protokollkategorie: **Dienstprotokolle**.
 
-## <a name="service-logs"></a>Service Logs
-Azure Batch Service Logs contain events emitted by the Azure Batch service during the lifetime of a Batch resource like a pool or task. Each event emitted by Batch is stored in the specified Storage account in JSON format. For example, this is the body of a sample **pool create event**:
+## <a name="service-logs"></a>Dienstprotokolle
+Azure Batch-Dienstprotokolle enthalten Ereignisse, die während der Lebensdauer einer Batch-Ressource wie eines Pools oder einer Task ausgegeben werden. Jedes von Batch ausgegebene Ereignis wird im angegebenen Storage-Konto im JSON-Format gespeichert. Dies ist beispielsweise der Text eines Beispiel für ein **Poolerstellungsereignis**:
 
 ```json
 {
@@ -67,31 +71,31 @@ Azure Batch Service Logs contain events emitted by the Azure Batch service durin
 }
 ```
 
-Each event body resides in a .json file in the specified Azure Storage account. If you want to access the logs directly, you may wish to review the [schema of Diagnostic Logs in the storage account](../azure-portal/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+Alle Ereignistexte werden im angegebenen Azure Storage-Konto in einer JSON-Datei gespeichert. Wenn Sie auf die Protokolle direkt zugreifen möchten, sollten Sie das [Schema der Diagnoseprotokolle im Speicherkonto](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account) ansehen.
 
-## <a name="service-log-events"></a>Service Log events
-The Batch service currently emits the following Service Log events. This list may not be exhaustive, since additional events may have been added since this article was last updated.
+## <a name="service-log-events"></a>Dienstprotokollereignisse
+Der Batch-Dienst gibt derzeit folgende Dienstprotokollereignisse aus. Diese Liste ist unter Umständen nicht vollständig, da seit der letzten Aktualisierung dieses Artikels möglicherweise weitere Ereignisse hinzugefügt wurden.
 
-| **Service Log events** |
+| **Dienstprotokollereignisse** |
 | --- |
-| [Pool create][pool_create] |
-| [Pool delete start][pool_delete_start] |
-| [Pool delete complete][pool_delete_complete] |
-| [Pool resize start][pool_resize_start] |
-| [Pool resize complete][pool_resize_complete] |
-| [Task start][task_start] |
-| [Task complete][task_complete] |
-| [Task fail][task_fail] |
+| [Poolerstellungsereignisse][pool_create] |
+| [Ereignisse zum Starten des Löschvorgangs von Pools][pool_delete_start] |
+| [Ereignisse zum Abschluss des Löschvorgangs von Pools][pool_delete_complete] |
+| [Ereignisse zum Start der Größenänderung von Pools][pool_resize_start] |
+| [Ereignisse zum Abschluss der Größenänderung von Pools][pool_resize_complete] |
+| [Taskstartereignisse][task_start] |
+| [Taskabschlussereignisse][task_complete] |
+| [Taskfehlerereignisse][task_fail] |
 
-## <a name="next-steps"></a>Next steps
-In addition to storing diagnostic log events in an Azure Storage account, you can also stream Batch Service Log events to an [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md), and send them to [Azure Log Analytics](../log-analytics/log-analytics-overview.md).
+## <a name="next-steps"></a>Nächste Schritte
+In einem Azure Storage-Konto können Sie nicht nur Diagnoseprotokollereignisse speichern. Sie können auch Batch-Dienstprotokollereignisse an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) streamen und an [Azure Log Analytics](../log-analytics/log-analytics-overview.md) senden.
 
-* [Stream Azure Diagnostic Logs to Event Hubs](../azure-portal/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
   
-  Stream Batch diagnostic events to the highly scalable data ingress service, Event Hubs. Event Hubs can ingest millions of events per second, which you can then transform and store using any real-time analytics provider.
-* [Analyze Azure diagnostic logs using Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
+  Streamen Sie Batch-Diagnoseereignisse an Event Hubs, äußerst skalierbare Dateneingangsdienste. Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern.
+* [Analysieren von Azure-Diagnoseprotokollen mit Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
   
-  Send your diagnostic logs to Log Analytics where you can analyze them in the Operations Management Suite (OMS) portal, or export them for analysis in Power BI or Excel.
+  Senden Sie Diagnoseprotokolle an Log Analytics. Hier können Sie sie im OMS-Portal (Operations Management Suite) analysieren oder zu Analyse in Power BI oder Excel exportieren.
 
 [pool_create]: https://msdn.microsoft.com/library/azure/mt743615.aspx
 [pool_delete_start]: https://msdn.microsoft.com/library/azure/mt743610.aspx
@@ -104,6 +108,6 @@ In addition to storing diagnostic log events in an Azure Storage account, you ca
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -3,8 +3,8 @@ layout: LandingPage
 +toc_rel: breadcrumb.json
 description: Hier erfahren Sie, wie Sie ein virtuelles Netzwerk in der Cloud verwenden. Die Dokumentation zeigt, wie Sie ein VNet bereitstellen, zum Starten von Ressourcen verwenden und in ein lokales Netzwerk integrieren.
 translationtype: Human Translation
-ms.sourcegitcommit: 9a76fe5c0b518cdd95be71e0c3cf928f0ff93668
-ms.openlocfilehash: 7e2c2db7000b2ea0a4fe698e47e775cc2a7db4dd
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 2c3ce9081d456dcedd61ba85f2d023526aa5fa49
 
 ---
 # <a name="virtual-network-documentation"></a>Dokumentation zu Virtual Network
@@ -149,13 +149,7 @@ Hier erfahren Sie, wie Sie Virtual Network (VNet) – eine logische Darstellung 
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-network.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Virtual Network </div>
-    </a>
-</div>
+
 
 
 

@@ -1,12 +1,12 @@
 ---
-title: Azure Mobile Engagement-Implementierung für Spiele-App
+title: "Azure Mobile Engagement-Implementierung für Spiele-App"
 description: Spiele-App-Szenario zum Implementieren von Azure Mobile Engagement
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,22 +14,26 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 86092228c987de83cf339f76ded6d7a59efaf0f4
+
 
 ---
-# Implementieren von Mobile Engagement mit Spiele-App
-## Übersicht
+# <a name="implement-mobile-engagement-with-gaming-app"></a>Implementieren von Mobile Engagement mit Spiele-App
+## <a name="overview"></a>Übersicht
 Ein Gaming-Startup hat eine neue Rollenspiel-/Strategiespiel-App rund ums Angeln veröffentlicht. Das Spiel ist seit sechs Monate erhältlich. Das Spiel ist ein großer Erfolg und wurde Millionen Mal heruntergeladen. Die Beibehaltungsdauer ist im Vergleich zu anderen Spiele-Apps von Startups sehr hoch. Bei der vierteljährlichem Besprechung vereinbarten die Beteiligten, dass der durchschnittliche Umsatz pro Benutzer (ARPU) erhöht werden müsse. Premium-Pakete im Spiel sind als Sonderangebote verfügbar. Mit diesen Spielpaketen können Benutzer die Darstellung und Leistung ihrer Angelschnüre und Köder oder ihrer Ausrüstung im Spiel aktualisieren. Die Verkaufszahlen für Pakete sind jedoch sehr niedrig. Daher entscheiden sie sich dafür, zuerst die Kundenzufriedenheit mit einem Analysetool zu analysieren und dann ein Engagementprogramm mit erweiterter Segmentierung zu entwickeln, um die Verkaufszahlen zu erhöhen.
 
 Auf der Grundlage des [Azure Mobile Engagement – Leitfaden mit ersten Schritten und Best Practices](mobile-engagement-getting-started-best-practices.md) entwickeln sie eine Engagementstrategie.
 
-## Ziele und KPIs
-Die wichtigsten Beteiligten für das Spiel treffen sich. Alle vereinbaren ein Hauptziel: die Steigerung der Umsatzzahlen für Premium-Pakete um 15 %. Sie erstellen Business Key Performance Indicators (KPIs), um dieses Ziel zu messen und voranzutreiben.
+## <a name="objectives-and-kpis"></a>Ziele und KPIs
+Die wichtigsten Beteiligten für das Spiel treffen sich. Alle vereinbaren ein Hauptziel: die Steigerung der Umsatzzahlen für Premium-Pakete um 15 %. Sie erstellen Business Key Performance Indicators (KPIs), um dieses Ziel zu messen und voranzutreiben.
 
 * Auf welchem Level des Spiels werden diese Pakete gekauft?
 * Wie hoch ist der Umsatz pro Benutzer, pro Sitzung, pro Woche und pro Monat?
 * Was sind die bevorzugten Kauftypen?
 
-In Teil 1 des [Leitfadens mit ersten Schritten](mobile-engagement-getting-started-best-practices.md) wird erläutert, wie Sie Ziele und KPIs definieren.
+In Teil 1 des [Leitfadens mit ersten Schritten](mobile-engagement-getting-started-best-practices.md) wird erläutert, wie Sie Ziele und KPIs definieren. 
 
 Nachdem die Business-KPIs definiert wurden, kann der Mobile-Produktmanager Engagement-KPIs aufstellen, um neue Benutzertrends und die Beibehaltung zu bestimmen.
 
@@ -47,17 +51,18 @@ Basierend auf Empfehlungen vom IT-Team, wurden die folgenden technischen KPIs hi
 
 Der Mobile-Produktmanager gibt für jeden KPI die benötigten Daten sowie den Speicherort der Daten im Playbook an.
 
-## Engagementprogramm und -integration
+## <a name="engagement-program-and-integration"></a>Engagementprogramm und -integration
 Vor dem Erstellen eines erweiterten Engagementprogramms, sollte der verantwortliche Mobile-Projektleiter genau verstehen, wie und wann die Produkte von den Benutzern genutzt werden.
 
 Nach drei Monaten hat der Mobile-Projektleiter genügend Daten zur Verbesserung der App-internen Pushbenachrichtigungsumsätze erfasst. Die folgenden Daten wurden erfasst:
 
-* Der erste Kauf erfolgt in der Regel auf Level 14. In 90 % der Fälle werden neue legendäre Waffen für 3 US-Dollar gekauft.
-* In 80 % der Fälle verwenden Benutzer, die einen Kauf getätigt haben, das Produkt weiterhin und tätigen auch weitere Einkäufe.
-* Benutzer, die Level 20 abgeschlossen haben, beginnen mehr als 10 US-Dollar pro Woche auszugeben.
-* Benutzer neigen dazu Premium-Pakete auf Level 16, 24 und 32 zu kaufen.
+* Der erste Kauf erfolgt in der Regel auf Level 14. In 90 % der Fälle werden neue legendäre Waffen für 3 US-Dollar gekauft.
+* In 80 % der Fälle verwenden Benutzer, die einen Kauf getätigt haben, das Produkt weiterhin und tätigen auch weitere Einkäufe.
+* Benutzer, die Level 20 abgeschlossen haben, beginnen mehr als 10 US-Dollar pro Woche auszugeben.
+* Benutzer neigen dazu Premium-Pakete auf Level 16, 24 und 32 zu kaufen.
 
-Dank dieser Analyse beschließt der Mobile-Projektleiter, bestimmte Pushbenachrichtigungssequenzen zu erstellen, um App-interne Käufe zu erhöhen. Er erstellt drei Pushsequenzen, die er folgendermaßen nennt: Welcome Program, Sales Program und Inactive Program. Weitere Informationen finden Sie in den [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks) ![][1].
+Dank dieser Analyse beschließt der Mobile-Projektleiter, bestimmte Pushbenachrichtigungssequenzen zu erstellen, um App-interne Käufe zu erhöhen. Er erstellt drei Pushsequenzen, die er folgendermaßen nennt: Welcome Program, Sales Program und Inactive Program. Weitere Informationen finden Sie in den [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)
+    ![][1].
 
 <!--Image references-->
 
@@ -65,4 +70,8 @@ Dank dieser Analyse beschließt der Mobile-Projektleiter, bestimmte Pushbenachri
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

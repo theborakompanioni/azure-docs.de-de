@@ -1,25 +1,29 @@
 ---
 title: Migrieren von SQL-Code nach SQL Data Warehouse | Microsoft Docs
-description: Tipps für die Migration des SQL-Codes in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+description: "Tipps für die Migration des SQL-Codes in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
 services: sql-data-warehouse
 documentationcenter: NA
-author: lodipalm
-manager: barbkess
-editor: ''
-
+author: jrowlandjones
+manager: jhubbard
+editor: 
+ms.assetid: 19c252a3-0e41-4eec-9d3e-09a68c7e7add
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 08/02/2016
-ms.author: lodipalm;barbkess;sonyama;jrj
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0ff5ad648d429da433170301205eafb850be5d81
+
 
 ---
-# Migrieren von SQL-Code nach SQL Data Warehouse
+# <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrieren von SQL-Code nach SQL Data Warehouse
 Wenn Sie den Ihren Code von einer anderen Datenbank zu SQL Data Warehouse migrieren, müssen Sie höchstwahrscheinlich Änderungen an der Codebasis vornehmen. Mit einigen SQL Data Warehouse-Funktionen kann die Leistung erheblich verbessert werden, da sie speziell für eine verteilte Ausführung entwickelt wurden. Um jedoch eine gleichbleibende Leistung und Skalierung zu gewährleisten, sind einige Funktionen auch nicht verfügbar.
 
-## Allgemeine T-SQL-Einschränkungen
+## <a name="common-t-sql-limitations"></a>Allgemeine T-SQL-Einschränkungen
 Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL Data Warehouse nicht unterstützt werden. Über die Links gelangen Sie zu Problemumgehungen für die nicht unterstützten Funktionen:
 
 * [ANSI-Joins bei Aktualisierungen][ANSI-Joins bei Aktualisierungen]
@@ -33,7 +37,7 @@ Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL D
 * Benutzerdefinierte Inlinefunktionen
 * Funktionen mit mehreren Anweisungen
 * [Allgemeine Tabellenausdrücke](#Common-table-expressions)
-* [Rekursive allgemeine Tabellenausdrücke (CTE)] \(#Recursive-common-table-expressions-(CTE)
+* [Rekursive allgemeine Tabellenausdrücke (CTE)] (#Recursive-common-table-expressions-(CTE)
 * CLR-Funktionen und -Prozeduren
 * $partition-Funktion
 * Tabellenvariablen
@@ -50,11 +54,11 @@ Die folgende Aufstellung enthält die wichtigsten Funktionen, die in Azure SQL D
 
 Glücklicherweise können die meisten dieser Einschränkungen umgangen werden. Die entsprechenden Erläuterungen finden Sie in den jeweiligen oben referenzierten Artikeln.
 
-## Unterstützte CTE-Funktionen
-Allgemeine Tabellenausdrücke (CTEs) werden in SQL Data Warehouse teilweise unterstützt. Die folgenden CTE-Funktionen werden derzeit unterstützt:
+## <a name="supported-cte-features"></a>Unterstützte CTE-Funktionen
+Allgemeine Tabellenausdrücke (CTEs) werden in SQL Data Warehouse teilweise unterstützt.  Die folgenden CTE-Funktionen werden derzeit unterstützt:
 
 * Ein allgemeiner Tabellenausdruck kann in einer SELECT-Anweisung angegeben werden.
-* Ein allgemeiner Tabellenausdruck kann in einer CREATE VIEW-Anweisung angegeben werden.
+* Ein allgemeiner Tabellenausdruck kann in einer CREATE VIEW-Anweisung angegeben werden.
 * Ein allgemeiner Tabellenausdruck kann in einer CREATE TABLE AS SELECT (CTAS)-Anweisung angegeben werden.
 * Ein allgemeiner Tabellenausdruck kann in einer CREATE REMOTE TABLE AS SELECT (CRTAS)-Anweisung angegeben werden.
 * Ein allgemeiner Tabellenausdruck kann in einer CREATE EXTERNAL TABLE AS SELECT (CETAS)-Anweisung angegeben werden.
@@ -62,7 +66,7 @@ Allgemeine Tabellenausdrücke (CTEs) werden in SQL Data Warehouse teilweise unte
 * Eine externe Tabelle kann über einen allgemeinen Tabellenausdruck referenziert werden.
 * In einem allgemeinen Tabellenausdruck können mehrere Abfragedefinitionen definiert werden.
 
-## Einschränkungen bei allgemeinen Tabellenausdrücken (CTE)
+## <a name="cte-limitations"></a>Einschränkungen bei allgemeinen Tabellenausdrücken (CTE)
 Allgemeine Tabellenausdrücke weisen einige der folgenden Einschränkungen in SQL Data Warehouse auf:
 
 * Auf einen allgemeinen Tabellenausdruck muss eine einzelne SELECT-Anweisung folgen. INSERT-, UPDATE-, DELETE- und MERGE-Anweisungen werden nicht unterstützt.
@@ -70,25 +74,25 @@ Allgemeine Tabellenausdrücke weisen einige der folgenden Einschränkungen in SQ
 * Es ist maximal eine WITH-Klausel in einem allgemeinen Tabellenausdruck zulässig. Beispiel: Wenn eine Abfragedefinition für einen allgemeinen Tabellenausdruck eine Unterabfrage enthält, kann nicht diese Unterabfrage keine geschachtelte WITH-Klausel enthalten, die einen anderen allgemeinen Tabellenausdruck definiert.
 * Eine ORDER BY-Klausel kann in der Abfragedefinition für einen allgemeinen Tabellenausdruck nur verwendet werden, wenn eine TOP-Klausel angegeben wurde.
 * Wenn ein allgemeiner Tabellenausdruck in einer Anweisung verwendet wird, die Teil einer Batchinstanz ist, muss der Anweisung davor ein Semikolon folgen.
-* Bei Verwendung in Anweisungen, die mit sp\_prepare vorbereitet wurden, verhalten sich allgemeine Tabellenausdrücke genauso, wie andere SELECT-Anweisungen in PDW. Wenn CTEs jedoch als Teil von CETAS verwendet werden, die mit „sp\_prepare“ vorbereitet werden, kann das Verhalten von SQL Server- und anderen PDW-Anweisungen aufgrund der Art, wie die Bindung für „sp\_prepare“ implementiert wird, abweichen. Falls die das CTE referenzierende SELECT-Anweisung eine falsche Spalte verwendet, die im CTE nicht vorhanden ist, wird „sp\_prepare“ übergeben, ohne dass der Fehler erkannt wird. Der Fehler wird dann aber während „sp\_execute“ ausgegeben.
+* Bei Verwendung in Anweisungen, die mit sp_prepare vorbereitet wurden, verhalten sich allgemeine Tabellenausdrücke genauso, wie andere SELECT-Anweisungen in PDW. Wenn CTEs jedoch als Teil von CETAS verwendet werden, die mit „sp_prepare“ vorbereitet werden, kann das Verhalten von SQL Server- und anderen PDW-Anweisungen aufgrund der Art, wie die Bindung für „sp_prepare“ implementiert wird, abweichen. Falls die das CTE referenzierende SELECT-Anweisung eine falsche Spalte verwendet, die im CTE nicht vorhanden ist, wird „sp_prepare“ übergeben, ohne dass der Fehler erkannt wird. Der Fehler wird dann aber während „sp_execute“ ausgegeben.
 
-## Rekursive CTEs
-Rekursive CTEs werden in SQL Data Warehouse nicht unterstützt. Die Migration rekursiver CTEs kann mehr oder weniger komplex sein, und die beste Vorgehensweise besteht darin, diese in mehrere Schritte aufzuteilen. In der Regel können Sie eine Schleife verwenden und eine temporäre Tabelle auffüllen, während Sie die rekursiven Zwischenabfragen durchlaufen. Sobald die temporäre Tabelle aufgefüllt ist, können Sie die Daten als ein einzelnes Resultset zurückgeben. Ein ähnlicher Ansatz wurde als Lösung für `GROUP BY WITH CUBE` im Artikel zur [GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option][GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option] verwendet.
+## <a name="recursive-ctes"></a>Rekursive CTEs
+Rekursive CTEs werden in SQL Data Warehouse nicht unterstützt.  Die Migration rekursiver CTEs kann mehr oder weniger komplex sein, und die beste Vorgehensweise besteht darin, diese in mehrere Schritte aufzuteilen. In der Regel können Sie eine Schleife verwenden und eine temporäre Tabelle auffüllen, während Sie die rekursiven Zwischenabfragen durchlaufen. Sobald die temporäre Tabelle aufgefüllt ist, können Sie die Daten als ein einzelnes Resultset zurückgeben. Ein ähnlicher Ansatz wurde als Lösung für `GROUP BY WITH CUBE` im Artikel zur [GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option][GROUP BY-Klausel mit ROLLUP-, CUBE- oder GROUPING SETS-Option] verwendet.
 
-## Nicht unterstützte Systemfunktionen
-Es werden auch einige Systemfunktionen nicht unterstützt. Zu den wichtigsten Funktionen, die normalerweise in Data Warehousing verwendet, gehören u. a.:
+## <a name="unsupported-system-functions"></a>Nicht unterstützte Systemfunktionen
+Es werden auch einige Systemfunktionen nicht unterstützt. Zu den wichtigsten Funktionen, die normalerweise in Data Warehousing verwendet, gehören u. a.:
 
 * NEWSEQUENTIALID()
 * @@NESTLEVEL()
 * @@IDENTITY()
 * @@ROWCOUNT()
-* ROWCOUNT\_BIG
-* ERROR\_LINE()
+* ROWCOUNT_BIG
+* ERROR_LINE()
 
 Einige dieser Probleme können umgangen werden.
 
-## Problemumgehung für @@ROWCOUNT
-Um die fehlende Unterstützung für @@ROWCOUNT zu umgehen, erstellen Sie eine gespeicherte Prozedur, die die letzte Zeilenanzahl aus sys.dm\_pdw\_request\_steps auswählt und dann `EXEC LastRowCount` nach einer DML-Anweisung ausführt.
+## <a name="rowcount-workaround"></a>@@ROWCOUNT – Problemumgehung
+Um die fehlende Unterstützung für `EXEC LastRowCount` zu umgehen, erstellen Sie eine gespeicherte Prozedur, die die letzte Zeilenanzahl aus „sys.dm_pdw_request_steps“ abruft, und führen Sie dann @@ROWCOUNT, nach einer DML-Anweisung aus.
 
 ```sql
 CREATE PROCEDURE LastRowCount AS
@@ -110,7 +114,7 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ;
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Eine vollständige Liste aller unterstützten T-SQL-Anweisungen finden Sie in den [Themen zu Transact-SQL][Themen zu Transact-SQL].
 
 <!--Image references-->
@@ -134,4 +138,8 @@ Eine vollständige Liste aller unterstützten T-SQL-Anweisungen finden Sie in de
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

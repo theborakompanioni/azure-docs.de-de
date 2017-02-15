@@ -32,7 +32,7 @@ Sie müssen eine Erweiterung installieren, um die JSON-Vorlagen in VS Code verwe
 2. Führen Sie das schnelle Öffnen (Quick Open) mit STRG+P aus. 
 3. Führen Sie den folgenden Befehl aus: 
    
-        ext install azurerm-vscode-tools
+        ext install msazurermtools.azurerm-vscode-tools
 4. Starten Sie VS Code neu, wenn Sie dazu aufgefordert werden, um die Erweiterung zu aktivieren. 
    
    Fertig!

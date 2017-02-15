@@ -1,13 +1,15 @@
 ---
 layout: LandingPage
+description: "Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um kalte Daten sicher zu Azure zu migrieren, ohne Abfragen oder Anwendungen zu ändern. Tutorials und anderes Dokumentationsmaterial."
 translationtype: Human Translation
-ms.sourcegitcommit: d237f5116f81d0977a96a325ee66f2e7c3ee5c41
-ms.openlocfilehash: bf45461eafbb010d99b61f2f67a763e25f374b30
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3dad35a38c753988615a4c1f2b439de9f95baf0e
 
 ---
 #<a name="sql-server-stretch-database-documentation"></a>Dokumentation zu SQL Server Stretch-Datenbank
 
-SQL Server Stretch-Datenbank migriert Ihre inaktiven Daten transparent und sicher in die Microsoft Azure-Cloud. SQL Server Stretch-Datenbank gewährleistet die kostengünstige Verfügbarkeit nicht regelmäßig verwendeter Daten, erfordert keine Anpassung Ihrer Abfragen oder Anwendungen und schützt Ihre Daten sogar während der Migration. Stretch-Datenbank ist für Transaktionsdatenbanken mit großen Mengen an selten genutzten Daten konzipiert, die in der Regel in einer geringen Anzahl von Tabellen gespeichert werden.
+Erfahren Sie, wie Sie SQL Server Stretch-Datenbank verwenden, um Ihre kalten Daten transparent und sicher zur Azure-Cloud zu migrieren. Tutorials und anderes Dokumentationsmaterial unterstützen Sie beim Einrichten kosteneffizienter Verfügbarkeit für Datenbanken mit selten verwendeten Daten, ohne dass vorhandene Abfragen oder Anwendungen geändert werden müssen.
+
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -86,16 +88,10 @@ SQL Server Stretch-Datenbank migriert Ihre inaktiven Daten transparent und siche
 
 ---
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/sql-server-stretch-database.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu SQL Server Stretch-Datenbank </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Nov16_HO4-->
+
+<!--HONumber=Jan17_HO3-->
 
 

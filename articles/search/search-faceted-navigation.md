@@ -374,6 +374,6 @@ Auch [Azure Search Deep Dive](http://channel9.msdn.com/Events/TechEd/Europe/2014
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

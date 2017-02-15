@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 07/30/2016
 ms.author: dastrock; vittorib
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
 ms.openlocfilehash: 52a4c326c7618b9a31df539c8b0eb0ced44ce609
 
 
@@ -47,7 +47,7 @@ Erstellen Sie eine neue App unter [apps.dev.microsoft.com](https://apps.dev.micr
 * die Ihrer App zugewiesene **Anwendungs-ID** kopieren. Sie benötigen Sie in Kürze.
 * Fügen Sie die **Mobile** -Plattform Ihrer App hinzu.
 
-## <a name="install-configure-msal"></a>Installieren und Konfigurieren von MSAL
+## <a name="install--configure-msal"></a>Installieren und Konfigurieren von MSAL
 Nachdem Sie eine App bei Microsoft registriert haben, können Sie MSAL installieren und Code im Zusammenhang mit Identitätsfunktionen schreiben.  Damit MSAL mit dem v2.0-Endpunkt kommunizieren kann, müssen Sie einige Informationen zur App-Registrierung bereitstellen.
 
 * Fügen Sie dazu zunächst MSAL mithilfe der Paket-Manager-Konsole zum TodoListClient-Projekt hinzu.

@@ -73,7 +73,7 @@ Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, a
 
 Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Ressourcengruppe wie die Gruppe, die unseren Schlüsseltresor enthält. Im [Tutorial zu den ersten Schritten](key-vault-get-started.md)hat diese Ressourcengruppe den Namen **ContosoResourceGroup** , und wir nutzen auch wieder den Standort Ostasien. Ersetzen Sie diese Werte nach Bedarf durch Ihre eigenen Werte:
 
-    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
+    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 
 
 > [!NOTE]

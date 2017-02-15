@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 12/08/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9285673f77cc598d881712ef125040e103059f87
+ms.sourcegitcommit: 3c240e5f8eac50f4151a5a72bea690241597fc01
+ms.openlocfilehash: 0b912bc130ab5de3236a0e3f1f60087624b089a0
 
 
 ---
-# <a name="configure-a-webhook-on-an-azure-activity-log-alerts"></a>Konfigurieren eines Webhooks für Azure-Aktivitätsprotokollwarnungen
+# <a name="configure-a-webhook-on-an-azure-activity-log-alert"></a>Konfigurieren eines Webhooks für eine Azure-Aktivitätsprotokollwarnung
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, Fehler protokollieren, ein Team per Chat-/Messagingdienst benachrichtigen oder beliebige andere Aktionen ausführen. In diesem Artikel erfahren Sie, wie Sie einen Webhook für eine Azure-Aktivitätsprotokollwarnung festlegen und wie die Nutzlast für den an einen Webhook gerichteten HTTP POST-Vorgang aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Metrikwarnung finden Sie auf [dieser Seite](insights-webhooks-alerts.md). Sie können auch eine Aktivitätsprotokollwarnung einrichten, bei deren Aktivierung eine E-Mail gesendet wird.
 
 > [!NOTE]
-> Da sich dieses Feature momentan in der Vorschauphase befindet, ist noch mit Qualitäts- und Leistungsschwankungen zu rechnen.
+> Dieses Feature befindet sich zurzeit in der Vorschau und wird zu einem späteren Zeitpunkt entfernt.
 > 
 > 
 
@@ -127,6 +127,6 @@ Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

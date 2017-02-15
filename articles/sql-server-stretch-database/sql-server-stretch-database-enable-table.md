@@ -1,12 +1,12 @@
 ---
-title: Aktivieren von Stretch-Datenbank für eine Tabelle | Microsoft Docs
-description: Erfahren Sie, wie Sie eine Tabelle für Stretch-Datenbank konfigurieren.
+title: "Aktivieren von Stretch-Datenbank für eine Tabelle | Microsoft Docs"
+description: "Erfahren Sie, wie Sie eine Tabelle für Stretch-Datenbank konfigurieren."
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: douglaslMS
-manager: ''
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: 63724114-82c1-4b00-ac50-c3ade6a69d47
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
@@ -14,10 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/05/2016
 ms.author: douglasl
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 3c9aa9a1abb4f436cb44e67d236682ff58a92531
+
 
 ---
-# Aktivieren von Stretch-Datenbank für eine Tabelle
-Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch | Aktivieren** für eine Tabelle in SQL Server Management Studio, um den Assistenten zum **Aktivieren einer Tabelle für Stretch** zu öffnen. Sie können Transact-SQL auch verwenden, um Stretch-Datenbank für eine vorhandene Tabelle zu aktivieren, oder um eine neue Tabelle zu erstellen, in der Stretch-Datenbank aktiviert ist.
+# <a name="enable-stretch-database-for-a-table"></a>Aktivieren von Stretch-Datenbank für eine Tabelle
+Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch | Aktivieren** für eine Tabelle in SQL Server Management Studio, um den Assistenten zum **Aktivieren einer Tabelle für Stretch** zu öffnen. Sie können Transact\-SQL auch verwenden, um Stretch-Datenbank für eine vorhandene Tabelle zu aktivieren, oder um eine neue Tabelle zu erstellen, in der Stretch-Datenbank aktiviert ist.
 
 * Wenn Sie inaktive Daten in einer separaten Tabelle speichern, können Sie die ganze Tabelle migrieren.
 * Wenn die Tabelle sowohl aktive als auch inaktive Daten enthält, können Sie eine Filterfunktion zum Auswählen der zu migrierenden Zeilen angeben.
@@ -31,7 +35,7 @@ Um eine Tabelle für Stretch-Datenbank zu konfigurieren, wählen Sie **Stretch |
 > 
 > 
 
-## <a name="EnableWizardTable"></a>Verwenden des Assistenten zum Aktivieren von Stretch-Datenbank für eine Tabelle
+## <a name="a-nameenablewizardtableause-the-wizard-to-enable-stretch-database-on-a-table"></a><a name="EnableWizardTable"></a>Verwenden des Assistenten zum Aktivieren von Stretch-Datenbank für eine Tabelle
 **Assistenten starten**
 
 1. Wählen Sie in SQL Server Management Studio im Objekt-Explorer die Tabelle aus, für die Stretch aktiviert werden soll.
@@ -60,13 +64,13 @@ Die ALTER TABLE-Syntax wird weiter unten in diesem Thema beschrieben.
 
 Überprüfen Sie die Ergebnisse.
 
-## <a name="EnableTSQLTable"></a>Verwenden von Transact-SQL zum Aktivieren von Stretch-Datenbank für eine Tabelle
+## <a name="a-nameenabletsqltableause-transact-sql-to-enable-stretch-database-on-a-table"></a><a name="EnableTSQLTable"></a>Verwenden von Transact\-SQL zum Aktivieren von Stretch-Datenbank für eine Tabelle
 Sie können Stretch-Datenbank mithilfe von Transact-SQL für eine vorhandene Tabelle aktivieren oder eine neue Tabelle erstellen, in der Stretch-Datenbank aktiviert ist.
 
-### Options
+### <a name="options"></a>Options
 Verwenden Sie die folgenden Optionen beim Ausführen von CREATE TABLE oder ALTER TABLE, um Stretch-Datenbank für eine Tabelle zu aktivieren.
 
-* Geben Sie optional über die `FILTER_PREDICATE = <function>`-Klausel eine Funktion an, mit der Sie die zu migrierenden Zeilen auswählen können, wenn die Tabelle sowohl aktive als auch inaktive Daten enthält. Das Prädikat muss eine Inline-Tabellenwertfunktion aufrufen. Weitere Informationen finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md). Wenn Sie keine Filterfunktion angeben, wird die gesamte Tabelle migriert.
+* Geben Sie optional über die `FILTER_PREDICATE = <function>` -Klausel eine Funktion an, mit der Sie die zu migrierenden Zeilen auswählen können, wenn die Tabelle sowohl aktive als auch inaktive Daten enthält. Das Prädikat muss eine Inline\-Tabellenwertfunktion aufrufen. Weitere Informationen finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md). Wenn Sie keine Filterfunktion angeben, wird die gesamte Tabelle migriert.
   
   > [!NOTE]
   > Falls Sie eine Filterfunktion mit schlechter Leistung angeben, wird die Datenmigration ebenfalls mit schlechter Leistung durchgeführt. Stretch-Datenbank wendet die Filterfunktion mithilfe des CROSS APPLY-Operators auf die Tabelle an.
@@ -74,7 +78,7 @@ Verwenden Sie die folgenden Optionen beim Ausführen von CREATE TABLE oder ALTER
   > 
 * Geben Sie `MIGRATION_STATE = OUTBOUND` an, um die Datenmigration sofort zu starten, oder `MIGRATION_STATE = PAUSED`, um den Start der Datenmigration zu verschieben.
 
-### Aktivieren von Stretch-Datenbank für eine vorhandene Tabelle
+### <a name="enable-stretch-database-for-an-existing-table"></a>Aktivieren von Stretch-Datenbank für eine vorhandene Tabelle
 Um eine vorhandene Tabelle für Stretch-Datenbank zu konfigurieren, führen Sie den Befehl ALTER TABLE aus.
 
 Hier ist ein Beispiel, bei dem die gesamte Tabelle migriert wird und die Datenmigration unmittelbar beginnt.
@@ -86,7 +90,7 @@ ALTER TABLE <table name>
     SET ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;  
 GO
 ```
-Es folgt ein Beispiel, in dem nur die durch die Inline-Tabellenwertfunktion `dbo.fn_stretchpredicate` markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zur Filterfunktion finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md).
+Es folgt ein Beispiel, in dem nur die durch die Inline`dbo.fn_stretchpredicate`Tabellenwertfunktion \- markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zur Filterfunktion finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md).
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -100,7 +104,7 @@ ALTER TABLE <table name>
 
 Weitere Informationen finden Sie unter [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).
 
-### Erstellen einer neue Tabelle, für die Stretch-Datenbank aktiviert ist
+### <a name="create-a-new-table-with-stretch-database-enabled"></a>Erstellen einer neue Tabelle, für die Stretch-Datenbank aktiviert ist
 Führen Sie zum Erstellen einer neuen Tabelle, für die Stretch-Datenbank aktiviert ist, den Befehl CREATE TABLE aus.
 
 Hier ist ein Beispiel, bei dem die gesamte Tabelle migriert wird und die Datenmigration unmittelbar beginnt.
@@ -114,7 +118,7 @@ CREATE TABLE <table name>
 GO
 ```
 
-Es folgt ein Beispiel, in dem nur die durch die Inline-Tabellenwertfunktion `dbo.fn_stretchpredicate` markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zur Filterfunktion finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md).
+Es folgt ein Beispiel, in dem nur die durch die Inline`dbo.fn_stretchpredicate`Tabellenwertfunktion \- markierten Zeilen migriert werden und der Start der Datenmigration verschoben wird. Weitere Informationen zur Filterfunktion finden Sie unter [Auswählen von Zeilen für die Migration mit einer Filterfunktion](sql-server-stretch-database-predicate-function.md).
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -129,9 +133,14 @@ GO
 
 Weitere Informationen finden Sie unter [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx).
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

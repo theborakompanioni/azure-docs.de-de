@@ -4,7 +4,7 @@ description: "Die Referenz zur Log Analytics-Suche enthält eine Beschreibung de
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 402615a2-bed0-4831-ba69-53be49059718
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: d3abf62e590b5e9466c69f971f4cc6490a7e0d6e
-ms.openlocfilehash: fbbf8c75fa78bf94f0ad84401013d37327329028
+ms.sourcegitcommit: b7c13d4b4e205fda1e5ba44fbf5eb50a96601d2e
+ms.openlocfilehash: 113dd20f1a5ac42eb7155d693f66053adea57078
 
 
 ---
@@ -45,8 +45,8 @@ Diese Abfrage gibt Ergebnisse mit dem Wort "System" in jedem Feld zurück, das f
 
 > [!NOTE]
 > Nicht alle Felder sind auf diese Weise indiziert, aber die am häufigsten verwendeten Textfelder (z. B. Beschreibungen und Namen) sind es in der Regel schon.
-> 
-> 
+>
+>
 
 ```
 system error
@@ -62,8 +62,8 @@ Diese Abfrage gibt Ergebnisse zurück, die die Wörter *system* und *error* enth
 
 > [!IMPORTANT]
 > Bei allen Feldnamen und Werten für die Zeichenfolgen- und Textfelder muss die Groß-und Kleinschreibung beachtet werden.
-> 
-> 
+>
+>
 
 ## <a name="filter-expression"></a>Filtern von Ausdrücken
 In den folgenden Unterabschnitten werden Filterausdrücke erläutert.
@@ -253,6 +253,29 @@ TimeGenerated:[NOW..NOW+1DAY]
 SampleValue:[0..2]
 ```
 
+### <a name="regular-expressions"></a>Reguläre Ausdrücke
+Sie können mit dem Schlüsselwort „Regex“ eine Suchbedingung für ein Feld mit einem regulären Ausdruck angeben.
+
+**Syntax**
+
+```
+field:Regex("Regular Expression")
+```
+
+```
+field=Regex("Regular Expression")
+```
+
+**Beispiel**
+
+```
+Computer=Regex("C.*")
+```
+
+```
+Computer=Regex("^C.*")
+```
+
 ### <a name="logical-operators"></a>Logische Operatoren
 Abfragesprachen unterstützen die logischen Operatoren (*AND*, *OR* und *NOT*) und ihre Aliase im C-Format (*&&*, *||* und *!*). Sie können Klammern verwenden, um diese Operatoren zu gruppieren.
 
@@ -287,16 +310,16 @@ Type=Event Computer=*SQL*
 
 > [!NOTE]
 > Platzhalter können derzeit nicht in Anführungszeichen verwendet werden. In „Message=`"*This text*"`“ wird (\*) als literales Zeichen (\*) verwendet.
-> 
+>
 > ## <a name="commands"></a>Befehle
-> 
+>
 
 Die Befehle gelten für die von der Abfrage zurückgegebenen Ergebnisse. Verwenden Sie den senkrechten Strich (|), um einen Befehl auf die abgerufenen Ergebnisse anzuwenden. Mehrere Befehle müssen durch einen senkrechten Strich (|) getrennt werden.
 
 > [!NOTE]
 > Befehlsnamen können in Groß- oder Kleinbuchstaben geschrieben werden, im Gegensatz zu den Feldnamen und den Daten.
-> 
-> 
+>
+>
 
 ### <a name="sort"></a>Sortieren
 Syntax:
@@ -716,7 +739,7 @@ Wenn Sie die Protokollsuche verwenden, um Daten zu finden, zeigen die Ergebnisse
 | AdvisorWorkload |Empfehlung |Technologie oder "Arbeitsauslastung", auf die sich die Empfehlung bezieht. |
 | Beschreibung |ConfigurationAlert |Beschreibung der Warnung (kurz) |
 | DaysSinceLastUpdate |UpdateAgent |Vor wie vielen Tagen (in Bezug auf 'TimeGenerated' für diesen Datensatz) hat dieser Agent ein Update von WSUS oder Microsoft Update installiert? |
-| DaysSinceLastUpdateBucket |UpdateAgent | Eine Kategorisierung in "Perioden" basierend auf DaysSinceLastUpdate, wann zuletzt ein Update von WSUS/Microsoft Update installiert wurde. |
+| DaysSinceLastUpdateBucket |UpdateAgent |Eine Kategorisierung in "Perioden" basierend auf DaysSinceLastUpdate, wann zuletzt ein Update von WSUS/Microsoft Update installiert wurde. |
 | AutomaticUpdateEnabled |UpdateAgent |Ist die Überprüfung der automatischen Aktualisierung auf diesem Agent aktiviert oder deaktiviert? |
 | AutomaticUpdateValue |UpdateAgent |Ist die Überprüfung der automatischen Aktualisierung auf automatisches Herunterladen und Installieren, nur Herunterladen oder nur Überprüfen festgelegt? |
 | WindowsUpdateAgentVersion |UpdateAgent |Versionsnummer des Microsoft Update-Agents |
@@ -790,7 +813,6 @@ Weitere Informationen zu Protokollsuchen:
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -2,11 +2,11 @@
 title: Verwalten von Azure Backup-Tresoren und -Servern mit dem klassischen Bereitstellungsmodell | Microsoft Docs
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Backup-Tresore und -Server verwalten.
 services: backup
-documentationcenter: ''
+documentationcenter: 
 author: markgalioto
 manager: jwhit
 editor: tysonn
-
+ms.assetid: f175eb12-0905-437f-91fd-eaee03ab6e81
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: jimpark;markgal
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: ee95dd7f96adcb2a271f3bddf56a4b6c85c4afd5
+
 
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>Verwalten von Azure Backup-Tresoren und -Servern mit dem klassischen Bereitstellungsmodell
@@ -26,8 +30,6 @@ ms.author: jimpark;markgal
 In diesem Artikel finden Sie eine Übersicht der Aufgaben im Rahmen der Sicherungsverwaltung, die über das klassische Azure-Portal und den Microsoft Azure Backup-Agent zur Verfügung stehen.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-Ressourcen-Manager-Bereitstellungsmodell
 
 ## <a name="management-portal-tasks"></a>Aufgaben im Verwaltungsportal
 1. Melden Sie sich im [Verwaltungsportal](https://manage.windowsazure.com)an.
@@ -187,9 +189,12 @@ So aktivieren Sie die Drosselung
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
-* Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
+* Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
 * Besuchen Sie das [Azure Backup-Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

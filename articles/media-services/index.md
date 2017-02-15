@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) sicheres On-Demand- oder Livevideostreaming in Broadcastqualität verwenden. Tutorials, API-Referenzen und mehr."
 translationtype: Human Translation
-ms.sourcegitcommit: bc22da83e1683cc8be164e9ff3ed95d2fdc95d27
-ms.openlocfilehash: 7b6ff41479fdfe332148dc2366c7e547af5e98f9
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 3e029a72b1918636ede33db1445ce0550d40ede6
 
 ---
 # <a name="media-services-documentation"></a>Dokumentation zu Media Services
@@ -199,13 +199,6 @@ Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Clou
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/media-services.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Media Services-Dokumentation </div>
-    </a>
-</div>
 
 
 

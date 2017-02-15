@@ -13,21 +13,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ba2c3e6be91c517b8d96f298214d32a08abd9e7
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: 717889a476d8f3a1ceccfcff737c1c9c5259ffa1
 
 
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen
-Laden Sie diese leicht verständliche Übersicht über die Machine Learning-Grundlagen in Form einer Infografik herunter. Lernen Sie beliebte Algorithmen kennen, die zum Beantworten gängiger Fragen zum Machine Learning genutzt werden. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
+Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von Machine Learning herunter, um die gängigen Algorithmen für häufige Fragen zu Machine Learning zu identifizieren. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Beliebte Algorithmen in Machine Learning Studio
-[Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine große Bibliothek von Algorithmen für Predictive Analytics. Die Infografik zeigt beliebte Typen von Algorithmen: **Regression**, **Erkennung von Anomalien**, **Clustering** und **Klassifizierung**.
-
-[Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) zeigt, wie diese Algorithmen in praktischen Lösungen zum Einsatz kommen. Folgen Sie den Links in der Infografik, um funktionierende Beispiele anzuzeigen.
+[Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine große Bibliothek von Algorithmen für Predictive Analytics. Die Infografik identifiziert vier beliebte Algorithmusfamilien (Regression, Anomalieerkennung, Clustering und Klassifizierung) und enthält Links zu funktionierenden Beispielen im [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/). Der Katalog enthält Beispielexperimente und Tutorials, die veranschaulichen, wie diese Algorithmen in vielen realen Lösungen angewendet werden können.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Die Infografik mit Algorithmusbeispielen herunterladen
 **[Herunterladen: Infografik zu Machine Learning-Grundlagen mit Links zu Algorithmusbeispielen (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
@@ -36,9 +34,10 @@ Laden Sie diese leicht verständliche Übersicht über die Machine Learning-Grun
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Weitere Hilfe zu Algorithmen für Einsteiger und erfahrene Benutzer
 * Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Gewusst wie: Auswählen von Algorithmen für Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
-* Eine in Kategorien unterteilte Liste aller in Machine Learning verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning unter [Modell initialisieren][initialize-model].
-* Eine vollständige Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
+* Eine in Kategorien unterteilte Liste aller in Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning unter [Modell initialisieren][initialize-model].
+* Eine vollständige alphabetische Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
 * Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich einen Überblick über die Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](machine-learning-studio-overview-diagram.md).
+* Eine Übersicht über den Cortana Intelligence-Katalog und die zahlreichen von der Community erstellten verfügbaren Ressourcen finden Sie unter [Teilen und Entdecken von Lösungen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -50,6 +49,6 @@ Laden Sie diese leicht verständliche Übersicht über die Machine Learning-Grun
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

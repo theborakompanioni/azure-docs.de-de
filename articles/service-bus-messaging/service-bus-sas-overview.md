@@ -1,61 +1,65 @@
 ---
-title: Shared Access Signatures overview | Microsoft Docs
-description: What are Shared Access Signatures, how do they work, and how to use them from Node, PHP, and C#.
-services: service-bus
+title: "SAS (Shared Access Signatures) – Übersicht | Microsoft Docs"
+description: "Informieren Sie sich über SAS, deren Funktionsweise und die Verwendung in Node, PHP und C#."
+services: service-bus-messaging
 documentationcenter: na
 author: djrosanova
 manager: timlt
-editor: ''
-
-ms.service: service-bus
+editor: 
+ms.assetid: bb8ef6ca-e7df-4e46-9cf5-73b7d255ec32
+ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2016
 ms.author: darosa;sethm
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 8ddbc06a9449674ced5842e406d5a430a5c2763a
+
 
 ---
 # <a name="shared-access-signatures"></a>Shared Access Signatures
-*Shared Access Signatures* (SAS) are the primary security mechanism for Service Bus, including Event Hubs, brokered messaging (queues and topics), and relayed messaging. This article discusses Shared Access Signatures, how they work, and how to use them in a platform-agnostic way.
+*SAS (Shared Access Signatures)* sind der primäre Sicherheitsmechanismus für Service Bus mit Event Hubs, Brokermessaging (Warteschlangen und Themen) und Relaymessaging. Dieser Artikel beschreibt SAS, ihre Funktionsweise und die plattformunabhängige Verwendung.
 
-## <a name="overview-of-sas"></a>Overview of SAS
-Shared Access Signatures are an authentication mechanism based on SHA-256 secure hashes or URIs. SAS is an extremely powerful mechanism that is used by all Service Bus services. In actual use, SAS has two components: a *Shared Access Policy* and a *Shared Access Signature* (often called a *token*).
+## <a name="overview-of-sas"></a>Übersicht über SAS
+SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. SAS ist äußerst leistungsstark und wird von allen Service Bus-Diensten verwendet. In der Praxis bestehen SAS aus zwei Komponenten: einer *Richtlinie für den gemeinsamen Zugriff* und einer *Shared Access Signature* (häufig auch als *Token* bezeichnet).
 
-You can find more detailed information about Shared Access Signatures with Service Bus in [Shared Access Signature authentication with Service Bus](../service-bus/service-bus-shared-access-signature-authentication.md).
+Ausführlichere Informationen zu SAS mit Service Bus finden Sie unter [SAS-Authentifizierung mit Service Bus](service-bus-shared-access-signature-authentication.md).
 
-## <a name="shared-access-policy"></a>Shared Access Policy
-An important thing to understand about SAS is that it all starts with a policy. For every policy, you decide on three pieces of information: **name**, **scope**, and **permissions**. The **name** is just that; a unique name within that scope. The scope is easy enough: it's the URI of the resource in question. For a Service Bus namespace, the scope is the fully qualified domain name (FQDN), such as `https://<yournamespace>.servicebus.windows.net/`.
+## <a name="shared-access-policy"></a>SAS-Richtlinie
+Bei SAS beginnt alles mit einer Richtlinie. Jede Richtlinie erfordert drei Angaben: **Name**, **Bereich** und **Berechtigungen**. Der **Name** ist ein eindeutiger Name innerhalb des Bereichs. Der Bereich ist der URI der betreffenden Ressource. Für einen Service Bus-Namespace wird als Bereich der vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN) angegeben, z.B. `https://<yournamespace>.servicebus.windows.net/`.
 
-The available permissions for a policy are largely self-explanatory:
+Die verfügbaren Berechtigungen für eine Richtlinie sind größtenteils selbsterklärend:
 
-* Send
-* Listen
-* Manage
+* Senden
+* Empfangen
+* Verwalten
 
-After you create the policy, it is assigned a *Primary Key* and a *Secondary Key*. These are cryptographically strong keys. Don't lose them or leak them - they'll always be available in the [Azure portal][Azure portal]. You can use either of the generated keys, and you can regenerate them at any time. However, if you regenerate or change the primary key in the policy, any Shared Access Signatures created from it will be invalidated.
+Nach Erstellung der Richtlinie werden ihr ein *Primärschlüssel* und ein *Sekundärschlüssel* zugewiesen. Hierbei handelt es sich um kryptografisch starke Schlüssel. Achten Sie darauf, dass Sie die Schlüssel nicht verlieren oder versehentlich preisgeben – sie sind immer im [klassischen Azure-Portal][Azure-Portal] verfügbar. Sie können einen beliebigen der generierten Schlüssel verwenden und die Schlüssel jederzeit erneut generieren. Wenn Sie allerdings den Primärschlüssel neu generieren oder in der Richtlinie ändern, werden alle auf deren Grundlage erstellten SAS ungültig.
 
-When you create a Service Bus namespace, a policy is automatically created for the entire namespace called **RootManageSharedAccessKey**, and this policy has all permissions. You don't log on as **root**, so don't use this policy unless there's a really good reason. You can create additional policies in the **Configure** tab for the namespace in the portal. It's important to note that a single tree level in Service Bus (namespace, queue, Event Hub, etc.) can only have up to 12 policies attached to it.
+Wenn Sie einen Service Bus-Namespace erstellen, wird automatisch eine Richtlinie namens **RootManageSharedAccessKey**für den gesamten Namespace erstellt. Da Sie sich nicht als **Root** anmelden, verwenden Sie diese Richtlinie nur, wenn ein wirklich guter Grund dafür vorliegt. Da Sie sich nicht als **Root** anmelden, verwenden Sie diese Richtlinie nur, wenn ein wirklich guter Grund dafür vorliegt. Beachten Sie, dass pro Ebene der Service Bus-Struktur (Namespace, Warteschlange, Event Hub usw.) maximal 12 Richtlinien zugeordnet werden können.
 
-## <a name="shared-access-signature-(token)"></a>Shared Access Signature (token)
-The policy itself is not the access token for Service Bus. It is the object from which the access token is generated - using either the primary or secondary key. The token is generated by carefully crafting a string in the following format:
+## <a name="shared-access-signature-token"></a>SAS (Token)
+Die Richtlinie selbst ist nicht das Zugriffstoken für Service Bus. Sie ist vielmehr das Objekt, auf dessen Grundlage das Zugriffstoken unter Verwendung des Primär- oder Sekundärschlüssels generiert wird. Zur Tokengenerierung wird eine Zeichenfolge im folgenden Format erstellt:
 
 ```
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-Where `signature-string` is the SHA-256 hash of the scope of the token (**scope** as described in the previous section) with a CRLF appended and an expiry time (in seconds since the epoch: `00:00:00 UTC` on 1 January 1970).
+`signature-string` ist der SHA-256-Hash des Tokenbereichs (**Bereich** im Sinne der Beschreibung aus dem vorherigen Abschnitt) mit angefügtem CRLF und einer Ablaufzeit (in Sekunden seit der folgenden Epoche: `00:00:00 UTC` am 1. Januar 1970).
 
-The hash looks similar to the following pseudo code and returns 32 bytes.
+Der Hash ähnelt dem folgenden Pseudocode und gibt 32 Bytes zurück.
 
 ```
 SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 ```
 
-The non-hashed values are in the **SharedAccessSignature** string so that the recipient can compute the hash with the same parameters, to be sure that it returns the same result. The URI specifies the scope, and the key name identifies the policy to be used to compute the hash. This is important from a security standpoint. If the signature doesn't match that which the recipient (Service Bus) calculates, then access is denied. At this point you can be sure that the sender had access to the key and should be granted the rights specified in the policy.
+Die Werte ohne Hash befinden sich in der Zeichenfolge **SharedAccessSignature**, sodass der Empfänger den Hash mit den gleichen Parametern berechnen und somit sicherstellen kann, dass das gleiche Ergebnis zurückgegeben wird. Der URI gibt den Bereich und der Schlüsselname die Richtlinie an, der bzw. die bei der Hashberechnung verwendet werden soll. Dies ist ein wichtiger Sicherheitsaspekt. Stimmt die Signatur nicht mit dem Berechnungsergebnis des Empfängers (Service Bus) überein, wird der Zugriff verweigert. An diesem Punkt können Sie sicher sein, dass der Absender Zugriff auf den Schlüssel hatte und ihm die in der Richtlinie angegebenen Rechte gewährt werden sollen.
 
-## <a name="generating-a-signature-from-a-policy"></a>Generating a signature from a policy
-How do you actually do this in code? Let's take a look at a few of these.
+## <a name="generating-a-signature-from-a-policy"></a>Generieren einer Signatur auf der Grundlage einer Richtlinie
+In den folgenden Abschnitten erfahren Sie, wie Sie dies in der Praxis bewerkstelligen:
 
 ### <a name="nodejs"></a>NodeJS
 ```
@@ -128,7 +132,7 @@ public static String getHMAC256(String key, String input) {
 function generateSasToken($uri, $sasKeyName, $sasKeyValue) 
 { 
 $targetUri = strtolower(rawurlencode(strtolower($uri))); 
-$expires = time();  
+$expires = time();     
 $expiresInMins = 60; 
 $week = 60*60*24*7;
 $expires = $expires + $week; 
@@ -136,12 +140,12 @@ $toSign = $targetUri . "\n" . $expires;
 $signature = rawurlencode(base64_encode(hash_hmac('sha256',             
  $toSign, $sasKeyValue, TRUE))); 
 
-$token = "SharedAccessSignature sr=" . $targetUri . "&sig=" . $signature . "&se=" . $expires .      "&skn=" . $sasKeyName; 
+$token = "SharedAccessSignature sr=" . $targetUri . "&sig=" . $signature . "&se=" . $expires .         "&skn=" . $sasKeyName; 
 return $token; 
 }
 ```
 
-### <a name="c&#35;"></a>C&#35;
+### <a name="c35"></a>C&#35;
 ```
 private static string createToken(string resourceUri, string keyName, string key)
 {
@@ -156,8 +160,8 @@ private static string createToken(string resourceUri, string keyName, string key
 }
 ```
 
-## <a name="using-the-shared-access-signature-(at-http-level)"></a>Using the Shared Access Signature (at HTTP level)
-Now that you know how to create Shared Access Signatures for any entities in Service Bus, you are ready to perform an HTTP POST:
+## <a name="using-the-shared-access-signature-at-http-level"></a>Verwenden einer SAS (auf HTTP-Ebene)
+Nachdem Sie nun mit der SAS-Erstellung für beliebige Entitäten in Service Bus vertraut sind, können Sie einen Vorgang vom Typ „HTTP POST“ ausführen:
 
 ```
 POST https://<yournamespace>.servicebus.windows.net/<yourentity>/messages
@@ -166,18 +170,18 @@ Authorization: SharedAccessSignature sr=https%3A%2F%2F<yournamespace>.servicebus
 ContentType: application/atom+xml;type=entry;charset=utf-8
 ``` 
 
-Remember, this works for everything. You can create SAS for a queue, topic, subscription, Event Hub, or relay. If you use per-publisher identity for Event Hubs, you simply append `/publishers/< publisherid>`.
+Das funktioniert überall. Sie können SAS für eine Warteschlange, ein Thema, ein Abonnement, eine Event Hub-Instanz oder ein Relay erstellen. Wenn Sie eine Publisher-spezifische Identität für Event Hubs verwenden, fügen Sie einfach `/publishers/< publisherid>`an.
 
-If you give a sender or client a SAS token, they don't have the key directly, and they cannot reverse the hash to obtain it. As such, you have control over what they can access, and for how long. An important thing to remember is that if you change the primary key in the policy, any Shared Access Signatures created from it will be invalidated.
+Wenn Sie einem Absender oder Client ein SAS-Token zuweisen, verfügt er nicht direkt über den Schlüssel, und er kann den Hash nicht umkehren und so den Schlüssel ermitteln. Dadurch haben Sie die Kontrolle darüber, worauf er wie lange Zugriff hat. Vergessen Sie nicht: Wenn Sie den Primärschlüssel neu generieren oder in der Richtlinie ändern, werden alle auf deren Grundlage erstellten SAS ungültig.
 
-## <a name="using-the-shared-access-signature-(at-amqp-level)"></a>Using the Shared Access Signature (at AMQP level)
-In the previous section, you saw how to use the SAS token with an HTTP POST request for sending data to the Service Bus. As you know, you can access Service Bus using the Advanced Message Queuing Protocol (AMQP) that is the preferred protocol to use for performance reasons, in many scenarios. The SAS token usage with AMQP is described in the document [AMQP Claim-Based Security Version 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) that is in working draft since 2013 but well-supported by Azure today.
+## <a name="using-the-shared-access-signature-at-amqp-level"></a>Verwenden einer SAS (auf AMQP-Ebene)
+Im vorherigen Abschnitt wurde gezeigt, wie Sie das SAS-Token mit einer HTTP POST-Anforderung zum Senden von Daten an den Service Bus verwenden. Wie Sie wissen, können Sie mit dem AMQP (Advanced Message Queue Protocol) auf Service Bus zugreifen, das in zahlreichen Szenarien aus Leistungsgründen bevorzugt verwendet wird. Die Verwendung des SAS-Tokens mit AMQP wird im folgenden Dokument beschrieben: [Anspruchsbasierte Sicherheit mit AMQP Version 1.0](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc). Dieses Dokument ist seit 2013 eine funktionierende Entwurfsversion, die jedoch umfassend von Azure unterstützt wird.
 
-Before starting to send data to Service Bus, the publisher must send the SAS token inside an AMQP message to a well-defined AMQP node named **$cbs** (you can see it as a "special" queue used by the service to acquire and validate all the SAS tokens). The publisher must specify the **ReplyTo** field inside the AMQP message; this is the node in which the service replies to the publisher with the result of the token validation (a simple request/reply pattern between publisher and service). This reply node is created "on the fly," speaking about "dynamic creation of remote node" as described by the AMQP 1.0 specification. After checking that the SAS token is valid, the publisher can go forward and start to send data to the service.
+Bevor Sie beginnen, Daten an Service Bus zu senden, muss der Herausgeber das SAS-Token in einer AMQP-Nachricht an einen ordnungsgemäß definierten AMQP-Knoten mit dem Namen **$cbs** senden (dieser kann als spezielle Warteschlange betrachtet werden, die vom Dienst zum Abrufen und Überprüfen aller SAS-Token verwendet wird). Der Herausgeber muss das Feld **ReplyTo** in der AMQP-Nachricht angeben. Hierbei handelt es sich um den Knoten, den der Dienst für die Antwort an den Herausgeber mit dem Ergebnis der Tokenüberprüfung verwendet (einfaches Anforderungs-/Antwortmuster zwischen Herausgeber und Dienst). Dieser spontan erstellte Antwortknoten beschäftigt sich mit der dynamischen Erstellung von Remoteknoten (siehe AMQP 1.0-Spezifikation). Nachdem die Gültigkeit des SAS-Tokens überprüft wurde, kann der Verleger mit dem Senden von Daten an den Dienst beginnen.
 
-The following steps show how to send the SAS token with AMQP protocol using the [AMQP.Net Lite](https://github.com/Azure/amqpnetlite) library. This is useful if you can't use the official Service Bus SDK (for example on WinRT, .Net Compact Framework, .Net Micro Framework and Mono) developing in C\#. Of course, this library is useful to help understand how claims-based security works at the AMQP level, as you saw how it works at the HTTP level (with an HTTP POST request and the SAS token sent inside the "Authorization" header). If you don't need such deep knowledge about AMQP, you can use the official Service Bus SDK with .Net Framework applications, which will do it for you.
+Die folgenden Schritte zeigen, wie das SAS-Token mit AMQP anhand der [AMQP.Net Lite](https://github.com/Azure/amqpnetlite)-Bibliothek gesendet wird. Dies ist hilfreich, wenn Sie das offizielle Service Bus SDK bei der Entwicklung in C\# nicht verwenden können (z.B. bei WinRT, .NET Compact Framework, .NET Micro Framework und Mono). Dank dieser nützlichen Bibliothek können Sie nachvollziehen, wie die anspruchsbasierte Sicherheit auf AMQP-Ebene funktioniert. Wie sie auf HTTP-Ebene funktioniert, haben Sie bereits gesehen (HTTP POST-Anforderung und SAS-Token werden im Autorisierungsheader gesendet). Wenn Sie nicht so genau über AMQP Bescheid wissen müssen, können Sie für .NET Framework-Anwendungen das offizielle Service Bus-SDK, das die erforderlichen Schritte für Sie ausführt verwenden.
 
-### <a name="c&#35;"></a>C&#35;
+### <a name="c35"></a>C&#35;
 ```
 /// <summary>
 /// Send claim-based security (CBS) token
@@ -227,29 +231,30 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-The `PutCbsToken()` method receives the *connection* (AMQP connection class instance as provided by the [AMQP .NET Lite library](https://github.com/Azure/amqpnetlite)) that represents the TCP connection to the service and the *sasToken* parameter that is the SAS token to send. 
+Die `PutCbsToken()`-Methode empfängt die *Verbindung* (von der [AMQP .NET Lite-Bibliothek](https://github.com/Azure/amqpnetlite) bereitgestellte AMQP-Verbindungsklasseninstanz), die die TCP-Verbindung mit dem Dienst darstellt, und den *sasToken*-Parameter, bei dem es sich um das zu sendende SAS-Token handelt. 
 
 > [!NOTE]
-> It's important that the connection is created with **SASL authentication mechanism set to EXTERNAL** (and not the default PLAIN with username and password used when you don't need to send the SAS token).
+> Beim Erstellen der Verbindung muss der **SASL-Authentifizierungsmechanismus auf EXTERNAL festgelegt** werden (nicht auf den Standardmechanismus PLAIN mit Benutzername und Kennwort – dieser wird verwendet, wenn Sie das SAS-Token nicht senden müssen).
 > 
 > 
 
-Next, the publisher creates two AMQP links for sending the SAS token and receiving the reply (the token validation result) from the service.
+Im nächsten Schritt erstellt der Herausgeber zwei AMQP-Links zum Senden des SAS-Tokens und zum Empfangen der Antwort (Ergebnis der Tokenüberprüfung) vom Dienst.
 
-The AMQP message contains a set of properties, and more information than a simple message. The SAS token is the body of the message (using its constructor). The **"ReplyTo"** property is set to the node name for receiving the validation result on the receiver link (you can change its name if you want, and it will be created dynamically by the service). The last three application/custom properties are used by the service to indicate what kind of operation it has to execute. As described by the CBS draft specification, they must be the **operation name** ("put-token"), the **type of token** (in this case, a "servicebus.windows.net:sastoken"), and the **"name" of the audience** to which the token applies (the entire entity).
+Die AMQP-Nachricht enthält eine Reihe von Eigenschaften und mehr Informationen als eine einfache Nachricht. Das SAS-Token ist der Text der Nachricht (mit dem entsprechenden Konstruktor). Als **ReplyTo** -Eigenschaft wird der Knotenname zum Empfangen des Überprüfungsergebnisses über den Empfängerlink festgelegt. (Sie können den Namen nach Bedarf ändern, der Link wird vom Dienst dynamisch erstellt.) Anhand der letzten drei Anwendungseigenschaften/benutzerdefinierten Eigenschaften gibt der Dienst an, welche Art von Vorgang ausgeführt werden soll. Wie in der CBS-Entwurfsspezifikation beschrieben, müssen hier der **Vorgangsname** („put-token“), der **Tokentyp** (in diesem Fall „servicebus.windows.net:sastoken“) und der **„Name“ der Zielgruppe** angegeben werden, für die das Token gilt (die gesamte Entität).
 
-After sending the SAS token on the sender link, the publisher must read the reply on the receiver link. The reply is a simple AMQP message with an application property named **"status-code"** that can contain the same values as an HTTP status code. 
+Nach dem Senden des SAS-Tokens über den Senderlink muss der Herausgeber die Antwort über den Empfängerlink lesen. Bei der Antwort handelt es sich um eine einfache AMQP-Nachricht mit einer Anwendungseigenschaft namens **status-code** , die dieselben Werte wie ein HTTP-Statuscode enthalten kann. 
 
-## <a name="next-steps"></a>Next steps
-See the [Service Bus REST API reference](https://msdn.microsoft.com/library/azure/hh780717.aspx) for more information about what you can do with these SAS tokens.
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu den Verwendungsmöglichkeiten für diese SAS-Token finden Sie in der [Service Bus REST-API-Referenz](https://msdn.microsoft.com/library/azure/hh780717.aspx) .
 
-For more information about Service Bus authentication, see [Service Bus authentication and authorization](../service-bus/service-bus-authentication-and-authorization.md). 
+Weitere Informationen zur Service Bus-Authentifizierung finden Sie unter [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md). 
 
-More examples of SAS in C# and Java Script are in [this blog post](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx).
+Weitere Beispiele für SAS in C# und Java Script finden Sie in [diesem Blogbeitrag](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)(in englischer Sprache).
 
-[Azure portal]: https://portal.azure.com
+[Azure-Portal]: https://portal.azure.com
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

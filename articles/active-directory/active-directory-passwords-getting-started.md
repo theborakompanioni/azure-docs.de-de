@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 10/05/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 48821a3b2b7da4646c4569cc540d867f02a4a32f
-ms.openlocfilehash: 6dc23714a4a052c7bf0bb5162fe1568ec272b5e3
+ms.sourcegitcommit: e2e5c302d04a41386bfc98dd4e3f8546265dd9f3
+ms.openlocfilehash: e686952a7363e4758f8a3532b54cf5e7f05ce865
 
 
 ---
@@ -185,7 +185,7 @@ Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können
   > Wenn Sie eine ältere Version von Windows Server 2008 oder 2008 R2 ausführen, können Sie diese Funktion verwenden, müssen aber [KB 2386717 herunterladen und installieren](https://support.microsoft.com/kb/2386717) , bevor Sie Ihre lokale AD-Kennwortrichtlinie in der Cloud erzwingen können.
   > 
   > 
-* Sie haben Azure AD Connect installiert und Ihre AD-Umgebung für eine Synchronisierung mit der Cloud vorbereitet.  Weitere Informationen finden Sie unter [Verwenden Ihrer lokalen Identitätsinfrastruktur in der Cloud](active-directory-aadconnect.md).
+* Sie haben Azure AD Connect installiert und Ihre AD-Umgebung für eine Synchronisierung mit der Cloud vorbereitet.  Weitere Informationen finden Sie unter [Verwenden Ihrer lokalen Identitätsinfrastruktur in der Cloud](connect/active-directory-aadconnect.md).
   
   > [!NOTE]
   > Bevor Sie das Kennwortrückschreiben testen, stellen Sie sicher, dass Sie zuerst einen vollständigen Import und eine vollständige Synchronisierung aus AD und Azure AD in und mit Azure AD Connect ausführen.
@@ -199,7 +199,7 @@ Bevor Sie das Zurückschreiben von Kennwörtern aktivieren und verwenden können
   > 
 
 ### <a name="step-1-download-the-latest-version-of-azure-ad-connect"></a>Schritt 1: Herunterladen der aktuellen Version von Azure AD Connect
-Das Zurückschreiben von Kennwörtern steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0419.0911** oder höher zur Verfügung.  Das Zurückschreiben von Kennwörtern mit automatischer Entsperrung von Konten steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0485.0222** oder höher zur Verfügung. Wenn Sie eine ältere Version verwenden, führen Sie ein Upgrade auf diese oder eine höhere Version durch, bevor Sie fortfahren. [Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen](active-directory-aadconnect.md#install-azure-ad-connect).
+Das Zurückschreiben von Kennwörtern steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0419.0911** oder höher zur Verfügung.  Das Zurückschreiben von Kennwörtern mit automatischer Entsperrung von Konten steht in Versionen von Azure AD Connect oder im Azure AD Sync-Tool mit Versionsnummer **1.0.0485.0222** oder höher zur Verfügung. Wenn Sie eine ältere Version verwenden, führen Sie ein Upgrade auf diese oder eine höhere Version durch, bevor Sie fortfahren. [Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen](connect/active-directory-aadconnect.md#install-azure-ad-connect).
 
 #### <a name="to-check-the-version-of-azure-ad-sync"></a>So überprüfen Sie die Version von Azure AD Sync
 1. Navigieren Sie zu **%Programme%\Azure Active Directory Sync\**.
@@ -236,7 +236,7 @@ Nun, da Sie das Azure AD Connect-Tool heruntergeladen haben, können Sie das Zur
 #### <a name="to-enable-password-writeback-using-windows-powershell"></a>So aktivieren Sie das Zurückschreiben von Kennwörtern mithilfe von Windows PowerShell
 1. Öffnen Sie auf Ihrem **Computer für die Verzeichnissynchronisierung** ein neues **Windows PowerShell-Fenster mit erhöhten Rechten**.
 2. Wenn das Modul nicht bereits geladen ist, geben Sie den `import-module ADSync`-Befehl ein, um die Azure AD Connect-Cmdlets in Ihre aktuelle Sitzung zu laden.
-3. Rufen Sie eine Liste mit den Azure AD-Connectors in Ihrem System ab, indem Sie das `Get-ADSyncConnector`-Cmdlet ausführen und die Ergebnisse in `$aadConnectorName` speichern, z.B. `$connectors = ADSyncConnector|where-object {$\_.name -like "\*AAD"}`.
+3. Rufen Sie eine Liste mit den Azure AD-Connectors in Ihrem System ab, indem Sie das `Get-ADSyncConnector`-Cmdlet ausführen und die Ergebnisse in `$aadConnectorName` speichern, z.B. `$connectors = Get-ADSyncConnector|where-object {$\_.name -like "\*AAD"}`.
 4. Rufen Sie den aktuellen Status der Rückschreibung für den aktuellen Connector ab, indem Sie das folgende Cmdlet ausführen: `Get-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name`
 5. Aktivieren Sie das Zurückschreiben von Kennwörtern, indem Sie dieses Cmdlet ausführen: `Set-ADSyncAADPasswordResetConfiguration –Connector $aadConnectorName.name –Enable $true`
 
@@ -393,6 +393,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

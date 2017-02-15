@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.date: 07/12/2016
 ms.author: jrj;barbkess;sonyama
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 01eb26ff4528faabdbc7b4d482190148b52f67d4
+ms.sourcegitcommit: f1a24e4ee10593514f44d83ad5e9a46047dafdee
+ms.openlocfilehash: f132af2966e2ac59e77dc0fa8113eb83089c68dd
 
 
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indizieren von Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
-> * [Übersicht][Übersicht]
-> * [Datentypen][Datentypen]
-> * [Verteilen][Verteilen]
+> * [Übersicht][Overview]
+> * [Datentypen][Data Types]
+> * [Verteilen][Distribute]
 > * [Index][Index]
 > * [Partition][Partition]
-> * [Statistiken][Statistiken]
-> * [Temporär][Temporär]
+> * [Statistiken][Statistics]
+> * [Temporär][Temporary]
 > 
 > 
 
-SQL Data Warehouse bietet mehrere Indizierungsoptionen, z.B. [clustered columnstore indexes][clustered columnstore indexes], [Gruppierte und nicht gruppierte Indizes][Gruppierte und nicht gruppierte Indizes].  Außerdem ist eine Nichtindizierungsoption vorhanden, die auch als [Heap][Heap] bezeichnet wird.  In diesem Artikel werden die Vorteile der einzelnen Indextypen und Tipps zur Erzielung der besten Leistung für die Indizes behandelt. Ausführlichere Informationen zur Erstellung einer Tabelle in SQL Data Warehouse finden Sie unter [CREATE TABLE-Syntax][CREATE TABLE-Syntax].
+SQL Data Warehouse bietet mehrere Indizierungsoptionen, z.B. [gruppierte Columnstore-Indizes][clustered columnstore indexes], [gruppierte Indizes und nicht gruppierte Indizes][clustered indexes and nonclustered indexes].  Außerdem ist eine Option ohne Indizierung vorhanden, die auch als [Heap][heap] bezeichnet wird.  In diesem Artikel werden die Vorteile der einzelnen Indextypen und Tipps zur Erzielung der besten Leistung für die Indizes behandelt. Ausführlichere Informationen zur Erstellung einer Tabelle in SQL Data Warehouse finden Sie in der [Syntax von CREATE TABLE][create table syntax].
 
 ## <a name="clustered-columnstore-indexes"></a>Gruppierte Columnstore-Indizes
 SQL Data Warehouse erstellt standardmäßig einen gruppierten Columnstore-Index, wenn in einer Tabelle keine Indizierungsoptionen angegeben werden. Gruppierte Columnstore-Tabellen bieten sowohl den höchsten Grad an Datenkomprimierung als auch die beste Gesamtabfrageleistung.  Gruppierte Columnstore-Tabellen weisen normalerweise eine höhere Leistung als gruppierte Indizes oder Heaptabellen auf und stellen für große Tabellen meist die beste Wahl dar.  Aus diesen Gründen ist der gruppierte Columnstore der beste Einstieg, wenn Sie nicht sicher sind, wie Sie Ihre Tabelle indizieren sollen.  
@@ -57,7 +57,7 @@ Es gibt einige Szenarien, in denen der gruppierte Columnstore keine gute Option 
 * Kleine Tabellen mit weniger als 100 Millionen Zeilen.  Erwägen Sie die Verwendung von Heaptabellen.
 
 ## <a name="heap-tables"></a>Heaptabellen
-Wenn Sie Daten vorübergehend in SQL Data Warehouse anordnen, werden Sie wahrscheinlich merken, dass der Gesamtprozess durch die Nutzung einer Heaptabelle beschleunigt wird.  Dies liegt daran, dass Ladevorgänge für Heaps schneller als das Indizieren von Tabellen sind und der nachfolgende Lesevorgang in einigen Fällen aus dem Cache erfolgen kann.  Wenn Sie Daten nur laden, um sie vor dem Ausführen weiterer Transformationen bereitzustellen, ist das Laden der Tabelle in eine Heaptabelle deutlich schneller als das Laden der Daten in eine gruppierte Columnstore-Tabelle. Beim Laden von Daten in eine [temporäre Tabelle][Temporär] wird der Ladevorgang außerdem viel schneller als beim Laden einer Tabelle in einen dauerhaften Speicher durchgeführt.  
+Wenn Sie Daten vorübergehend in SQL Data Warehouse anordnen, werden Sie wahrscheinlich merken, dass der Gesamtprozess durch die Nutzung einer Heaptabelle beschleunigt wird.  Dies liegt daran, dass Ladevorgänge für Heaps schneller als das Indizieren von Tabellen sind und der nachfolgende Lesevorgang in einigen Fällen aus dem Cache erfolgen kann.  Wenn Sie Daten nur laden, um sie vor dem Ausführen weiterer Transformationen bereitzustellen, ist das Laden der Tabelle in eine Heaptabelle deutlich schneller als das Laden der Daten in eine gruppierte Columnstore-Tabelle. Beim Laden von Daten in eine [temporäre Tabelle][Temporary] wird der Ladevorgang außerdem viel schneller als beim Laden einer Tabelle in einen dauerhaften Speicher durchgeführt.  
 
 Für kleine Nachschlagetabellen mit weniger als 100 Millionen Zeilen ist häufig die Nutzung von Heaptabellen sinnvoll.  Für gruppierte Columnstore-Tabellen wird die optimale Komprimierung erst erreicht, wenn mehr als 100 Millionen Zeilen vorhanden sind.
 
@@ -93,11 +93,6 @@ Um einer Tabelle einen nicht gruppierten Index hinzuzufügen, verwenden Sie einf
 ```SQL
 CREATE INDEX zipCodeIndex ON t1 (zipCode);
 ```
-
-> [!NOTE]
-> Bei Verwendung von CREATE INDEX wird standardmäßig ein nicht gruppierter Index erstellt. Darüber hinaus ist ein nicht gruppierter Index nur in einer Zeilenspeichertabelle (HEAP oder CLUSTERED INDEX) zulässig. Nicht gruppierte Indizes zusätzlich zu einem CLUSTERED COLUMNSTORE INDEX sind zurzeit nicht zulässig.
-> 
-> 
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>Optimieren von gruppierten Columnstore-Indizes
 Gruppierte Columnstore-Tabellen sind in Daten in Segmenten angeordnet.  Eine hohe Segmentqualität ist entscheidend, um für eine Columnstore-Tabelle eine optimale Abfrageleistung zu erzielen.  Die Segmentqualität kann anhand der Anzahl von Zeilen in einer komprimierten Zeilengruppe gemessen werden.  Die Segmentqualität ist am besten, wenn mindestens 100.000 Zeilen pro komprimierter Zeilengruppe vorhanden sind. Die Leistung verbessert sich, je näher die Anzahl von Zeilen pro Zeilengruppe an 1.048.576 heranreicht. Dies ist der Höchstwert für Zeilen in einer Zeilengruppe.
@@ -221,7 +216,7 @@ Führen Sie nach dem Laden der Tabellen mit einigen Daten die unten angegebenen 
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Schritt 1: Identifizieren oder Erstellen eines Benutzers, der die richtige Ressourcenklasse verwendet
 Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann.  Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der der Index neu erstellt wird, genügend Arbeitsspeicher zuordnen.  Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum.  Die Ressourcenklasse des Datenbankbesitzer-Benutzers kann nicht geändert werden. Wenn Sie im System noch keinen Benutzer erstellt haben, müssen Sie dies also zuerst durchführen.  Als Minimum empfehlen wir die Verwendung von „xlargerc“ wenn Sie DW300 oder weniger verwenden, „largerc“, wenn Sie DW400 bis DW600 verwenden, und „mediumrc“, wenn Sie DW1000 oder mehr verwenden.
 
-Unten ist ein Beispiel dafür angegeben, wie Sie einem Benutzer mehr Arbeitsspeicher zuordnen, indem Sie seine Ressourcenklasse erhöhen.  Weitere Informationen zu Ressourcenklassen und zum Erstellen eines neuen Benutzers finden Sie im Artikel [Parallelitäts- und Workloadverwaltung][Parallelität].
+Unten ist ein Beispiel dafür angegeben, wie Sie einem Benutzer mehr Arbeitsspeicher zuordnen, indem Sie seine Ressourcenklasse erhöhen.  Weitere Informationen zu Ressourcenklassen und zur Erstellung eines neuen Benutzers finden Sie im Artikel [Parallelitäts- und Workloadverwaltung][Concurrency].
 
 ```sql
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
@@ -230,7 +225,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Schritt 2: Neuerstellen von gruppierten Columnstore-Indizes mit einem Benutzer mit einer höheren Ressourcenklasse
 Melden Sie sich als der Benutzer aus Schritt 1 an (z.B. LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus.  Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird.  Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
 
-Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS][CTAS] in eine neue Tabelle kopieren.  Welche Methode ist am besten geeignet? Für große Datenmengen ist [CTAS][CTAS] in der Regel schneller als [ALTER INDEX][ALTER INDEX]. Für kleinere Datenmengen ist [ALTER INDEX][ALTER INDEX] einfacher zu verwenden, und ein Auslagern der Tabelle ist nicht erforderlich.  Weitere Details zur Neuerstellung von Indizes per CTAS finden Sie unten im Abschnitt **Neuerstellen von Indizes per CTAS und Partitionswechsel** .
+Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS][CTAS] in eine neue Tabelle kopieren.  Welche Methode ist am besten geeignet? Für große Datenmengen ist [CTAS][CTAS] in der Regel schneller als [ALTER INDEX][ALTER INDEX]. Für kleinere Datenmengen ist [ALTER INDEX][ALTER INDEX] einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich.  Weitere Details zur Neuerstellung von Indizes per CTAS finden Sie unten im Abschnitt **Neuerstellen von Indizes per CTAS und Partitionswechsel** .
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +247,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang.  Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore-Indexdefragmentierung][Columnstore-Indexdefragmentierung] und im Syntaxthema [ALTER INDEX][ALTER INDEX].
+Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang.  Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore-Indexdefragmentierung][Columnstore Indexes Defragmentation] und im Syntaxthema [ALTER INDEX][ALTER INDEX].
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Schritt 3: Sicherstellen, dass sich die Qualität gruppierter Columnstore-Segmente verbessert hat
 Führen Sie die Abfrage, mit der die Tabelle mit schlechter Segmentqualität identifiziert wurde, erneut aus, und vergewissern Sie sich, dass sich die Segmentqualität verbessert hat.  Falls sich die Segmentqualität nicht verbessert hat, kann dies daran liegen, dass die Zeilen in der Tabelle besonders breit sind.  Erwägen Sie, beim Neuerstellen der Indizes eine höhere Ressourcenklasse oder DWU-Anzahl zu verwenden.
@@ -298,37 +293,37 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
 ```
 
-Weitere Informationen zum Neuerstellen von Partitionen mit `CTAS` finden Sie im Artikel [Partition][Partition].
+Weitere Informationen zum erneuten Erstellen von Partitionen mit `CTAS` finden Sie im Artikel [Partitionieren][Partition].
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Übersicht], [Tabellendatentypen][Datentypen], [Verteilen einer Tabelle][Verteilen], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistiken] und [Temporäre Tabellen][Temporär].  Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse][Bewährte Methoden für SQL Data Warehouse].
+Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary].  Weitere Informationen zu bewährten Methoden finden Sie unter [SQL Data Warehouse – Best Practices][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 
 <!--Article references-->
-[Übersicht]: ./sql-data-warehouse-tables-overview.md
-[Datentypen]: ./sql-data-warehouse-tables-data-types.md
-[Verteilen]: ./sql-data-warehouse-tables-distribute.md
+[Overview]: ./sql-data-warehouse-tables-overview.md
+[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[Distribute]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistiken]: ./sql-data-warehouse-tables-statistics.md
-[Temporär]: ./sql-data-warehouse-tables-temporary.md
-[Parallelität]: ./sql-data-warehouse-develop-concurrency.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary]: ./sql-data-warehouse-tables-temporary.md
+[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
-[Bewährte Methoden für SQL Data Warehouse]: ./sql-data-warehouse-best-practices.md
+[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 [ALTER INDEX]: https://msdn.microsoft.com/library/ms188388.aspx
-[Heap]: https://msdn.microsoft.com/library/hh213609.aspx
-[Gruppierte und nicht gruppierte Indizes]: https://msdn.microsoft.com/library/ms190457.aspx
-[CREATE TABLE-Syntax]: https://msdn.microsoft.com/library/mt203953.aspx
-[Columnstore-Indexdefragmentierung]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
+[heap]: https://msdn.microsoft.com/library/hh213609.aspx
+[clustered indexes and nonclustered indexes]: https://msdn.microsoft.com/library/ms190457.aspx
+[create table syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[Columnstore Indexes Defragmentation]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
 [clustered columnstore indexes]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

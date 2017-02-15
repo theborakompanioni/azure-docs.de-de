@@ -1,13 +1,13 @@
 ---
-title: Microsoft Power BI Embedded – Herstellen einer Verbindung mit einer Datenquelle
+title: "Microsoft Power BI Embedded – Herstellen einer Verbindung mit einer Datenquelle"
 description: Power BI Embedded, Verbinden mit Datenquellen
 services: power-bi-embedded
-documentationcenter: ''
+documentationcenter: 
 author: guyinacube
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 10/04/2016
 ms.author: asaxton
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4b827760c2095ace72831ed579b9c309b4d8991b
+
 
 ---
 # <a name="connect-to-a-data-source"></a>Herstellen einer Verbindung mit einer Datenquelle
@@ -38,7 +42,7 @@ Die Verwendung von **DirectQuery**bietet zwei wesentliche Vorteile:
    Es gibt ein paar Einschränkungen bei der Verwendung von **DirectQuery**:
 
 * Alle Tabellen müssen aus einer einzigen Datenbank stammen.
-* Wenn die Abfrage sehr komplex ist, tritt ein Fehler auf. Um den Fehler zu beheben, müssen Sie die Abfrage so umgestalten, dass sie weniger komplex ist. Wenn die Abfrage komplex sein muss, müssen Sie die Daten importieren, statt **DirectQuery**einzusetzen.
+* Wenn die Abfrage sehr komplex ist, tritt ein Fehler auf. Um den Fehler zu beheben, müssen Sie die Abfrage so umgestalten, dass sie weniger komplex ist. Wenn die Abfrage komplex sein muss, müssen Sie die Daten importieren, statt **DirectQuery** einzusetzen.
 * Das Filtern von Beziehungen ist auf eine Richtung beschränkt, es können nicht beide Richtungen verwendet werden.
 * Sie können den Datentyp einer Spalte nicht ändern.
 * Standardmäßig gelten Einschränkungen für DAX-Ausdrücke, die in Measures zulässig sind. Informationen hierzu finden Sie unter [DirectQuery und Measures](#measures).
@@ -52,6 +56,9 @@ Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abf
 * [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

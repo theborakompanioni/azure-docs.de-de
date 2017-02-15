@@ -1,13 +1,26 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie virtuelle Windows-Computer erstellen. Die Dokumentation unterstützt Sie beim Planen, Bereitstellen und Verwalten einer VM-Computerumgebung in der Cloud."
+title: "Dokumentation zu Azure Virtual Machines für Windows – Tutorials und API-Referenz | Microsoft-Dokumentation"
+services: virtual-machines
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: cd8dfa8b436cd165b3438a1823a571feebb0f4f4
-ms.openlocfilehash: 0a2b4c08e5da4d9c16e12f33c5f1a3f9ae863498
+ms.sourcegitcommit: c3b5f79fe9ee312b5f45eff460b43224b9c254fe
+ms.openlocfilehash: 927fb368a7d0e0c7c996a591dfe8536ea3509164
+
 
 ---
-#<a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
+# <a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
 
-Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsgesteuerten, skalierbaren Computerressourcen, die von Azure angeboten werden. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit der der virtuelle Computer betrieben wird. Und Sie behalten die Kontrolle über das Konfigurieren, Patchen und Installieren der Software, die auf dem virtuellen Computer ausgeführt wird.
+Hier erfahren Sie, wie Sie virtuelle Windows-Computer erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine VM-Computerumgebung in der Cloud planen, bereitstellen und verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,16 +161,10 @@ Virtuelle Azure-Computer (Virtual Machines, VMs) sind eine von mehreren bedarfsg
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/windows.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu virtuellen Windows-Computern </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

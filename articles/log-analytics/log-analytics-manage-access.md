@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 01/06/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b78199a672528c475f4f299faaf6406089e95d01
+ms.sourcegitcommit: 6862723b774951fe4cca0303ee2a39a0d5f2089d
+ms.openlocfilehash: eec688e33ff55334ebe0c1bc6d08e4753aadb85c
 
 
 ---
@@ -242,6 +242,24 @@ Zum Ändern des Azure-Abonnements, mit dem der Arbeitsbereich verknüpft ist, k�
 6. Wenn Sie die Ansicht im Azure-Portal aktualisieren, sehen Sie, dass der **Tarif** mit dem ausgewählten Plan aktualisiert wurde.  
     ![Aktualisierter Tarif](./media/log-analytics-manage-access/manage-access-change-plan04.png)
 
+## <a name="change-how-long-log-analytics-stores-data"></a>Ändern des Speicherzeitraums für Daten in Log Analytics
+
+Im Tarif „Free“ werden in Log Analytics die Daten der letzten sieben Tage verfügbar gemacht.
+Im Tarif „Standard“ werden in Log Analytics die Daten der letzten 30 Tage verfügbar gemacht.
+Im Tarif „Premium“ werden in Log Analytics die Daten der letzten 365 Tage verfügbar gemacht.
+In den Tarifen „Standalone“ und „OMS“ werden in Log Analytics standardmäßig die Daten der letzten 31 Tage verfügbar gemacht.
+
+Bei Verwendung der Tarife „Standalone“ und „OMS“ können Sie die Daten von bis zu zwei Jahren (730 Tage) aufbewahren. Wenn Daten länger als die standardmäßig verfügbaren 31 Tage gespeichert werden, wird eine Gebühr für die Aufbewahrung der Daten berechnet. Weitere Informationen zu Preisen finden Sie unter [Überschreitungsgebühren](https://azure.microsoft.com/pricing/details/log-analytics/).
+
+Gehen Sie wie folgt vor, um die Länge der Datenaufbewahrung zu ändern:
+
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+2. Suchen Sie nach **Log Analytics**, und wählen Sie diese Option aus.
+3. Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Wählen Sie einen Arbeitsbereich aus.  
+4. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Aufbewahrung**.  
+5. Verwenden Sie den Schieberegler, um die Anzahl der Aufbewahrungstage zu erhöhen oder zu verringern, und klicken Sie dann auf **Speichern**.
+![Ändern der Aufbewahrungsdauer](./media/log-analytics-manage-access/manage-access-change-retention01.png)
+
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>Ändern einer Azure Active Directory-Organisation für einen Arbeitsbereich
 
 Sie können die Azure Active Directory-Organisation eines Arbeitsbereichs ändern. Wenn Sie die Azure Active Directory-Organisation ändern, können Sie dem Arbeitsbereich Benutzer und Gruppen aus diesem Verzeichnis hinzufügen.
@@ -275,6 +293,6 @@ Wenn Sie Administrator sind und mehrere Benutzer mit dem Arbeitsbereich verknüp
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

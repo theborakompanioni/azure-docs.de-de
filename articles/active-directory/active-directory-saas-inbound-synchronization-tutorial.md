@@ -1,11 +1,11 @@
 ---
-title: 'Tutorial: Konfigurieren von Workday für eingehende Synchronisierung | Microsoft Docs'
-description: Hier erfahren Sie, wie Sie Workday mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen.
+title: "Tutorial: Konfigurieren von Workday für eingehende Synchronisierung | Microsoft Docs"
+description: "Hier erfahren Sie, wie Sie Workday mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: 8fe96f0a-f142-4d66-b53d-3ac3eb41a661
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,9 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 7f45241e96df7e0381d775afc9a5cfa36fca49c4
+
 
 ---
-# <a name="tutorial:-configuring-workday-for-inbound-synchronization"></a>Tutorial: Konfigurieren von Workday für eingehende Synchronisierung
+# <a name="tutorial-configuring-workday-for-inbound-synchronization"></a>Tutorial: Konfigurieren von Workday für eingehende Synchronisierung
 > [!NOTE]
 > Azure Active Directory (AD) Premium steht für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure AD arbeiten.    
 > Azure AD Premium wird derzeit im von 21Vianet in China betriebenen Microsoft Azure-Dienst nicht unterstützt.    
@@ -41,7 +45,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 ## <a name="enabling-the-application-integration-for-workday"></a>Aktivieren der Anwendungsintegration für Workday
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Workday aktivieren.    
 
-### <a name="to-enable-the-application-integration-for-workday,-perform-the-following-steps:"></a>So aktivieren Sie die Anwendungsintegration für Workday
+### <a name="to-enable-the-application-integration-for-workday-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Workday
 1. Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.    
    
    ![Active Directory](./media/active-directory-saas-inbound-synchronization-tutorial/IC700993.png "Active Directory")  
@@ -112,10 +116,10 @@ In diesem Schritt gewähren Sie der neuen Sicherheitsgruppe Berechtigungen für 
 4. Klicken Sie auf die Schaltfläche „Berechtigungen bearbeiten“, und fügen Sie die neue Sicherheitsgruppe auf dem Bildschirm „Berechtigungen bearbeiten“ zur Liste der Sicherheitsgruppen mit Berechtigungen für die Get- und Put-Integration hinzu.     
    
    ![Berechtigung bearbeiten](./media/active-directory-saas-inbound-synchronization-tutorial/IC750989.png "Edit Permission")  
-5. Wiederholen Sie Schritt 1 oben, um zum Bildschirm für die Auswahl der Funktionsbereiche zurückzukehren. Suchen Sie nach „Personal“, wählen Sie den Funktionsbereich „Personal“ aus, und klicken Sie auf die Schaltfläche „OK“.    
+5. Wiederholen Sie Schritt 1 oben, um zum Bildschirm für die Auswahl der Funktionsbereiche zurückzukehren. Suchen Sie nach „Personal“, wählen Sie den Funktionsbereich „Personal“ aus, und klicken Sie auf die Schaltfläche „OK“.    
    
    ![Domänensicherheitsrichtlinien](./media/active-directory-saas-inbound-synchronization-tutorial/IC750990.png "Domain Security Policies")  
-6. Erweitern Sie in der Liste der Sicherheitsrichtlinien für den Funktionsbereich „Personal“ den Eintrag „Mitarbeiterdaten: Personal“, und wiederholen Sie Schritt 4 für die folgenden Sicherheitsrichtlinien:    
+6. Erweitern Sie in der Liste der Sicherheitsrichtlinien für den Funktionsbereich „Personal“ den Eintrag „Mitarbeiterdaten: Personal“, und wiederholen Sie Schritt 4 für die folgenden Sicherheitsrichtlinien:    
    
    * Mitarbeiterdaten: öffentliche Mitarbeiterberichte  
    * Mitarbeiterdaten: alle Positionen  
@@ -138,7 +142,7 @@ In diesem Schritt gewähren Sie der neuen Sicherheitsgruppe Berechtigungen für 
 ## <a name="configuring-user-import-in-microsoft-azure-ad"></a>Konfigurieren des Benutzerimports in Microsoft Azure AD
 In diesem Abschnitt wird beschrieben, wie Sie Microsoft Azure AD zum Importieren von Personen aus Workday konfigurieren.    
 
-### <a name="to-configure-user-import-in-microsoft-azure-ad,-perform-the-following-steps:"></a>So konfigurieren Sie den Benutzerimport in Microsoft Azure AD
+### <a name="to-configure-user-import-in-microsoft-azure-ad-perform-the-following-steps"></a>So konfigurieren Sie den Benutzerimport in Microsoft Azure AD
 1. Klicken Sie auf der Anwendungsintegrationsseite für **Workday** auf **Benutzerimport konfigurieren**, um das Dialogfeld **Bereitstellung konfigurieren** zu öffnen.    
 2. Führen Sie auf der Seite **Einstellungen und Administrator-Anmeldeinformationen** die folgenden Schritte aus, und klicken Sie anschließend auf „Weiter“:    
    
@@ -159,6 +163,9 @@ In diesem Abschnitt wird beschrieben, wie Sie Microsoft Azure AD zum Importieren
 
 Jetzt können Sie zum Abschnitt **Benutzer** wechseln und überprüfen, ob der Workday-Benutzer importiert wurde.    
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

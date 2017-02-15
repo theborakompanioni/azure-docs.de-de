@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2016
+ms.date: 12/08/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fea73e15543b2d0284c94118e01415870b5396ff
+ms.sourcegitcommit: aba17fb9f7a07b4d67092875a119ab463da5d273
+ms.openlocfilehash: ffd85e1df173fdbc392339cd169281c1ae3fbb5d
 
 
 ---
@@ -29,7 +29,7 @@ In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie a
 > 
 
 ## <a name="set-up-powershell"></a>Einrichten von PowerShell
-Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ## <a name="examples-in-this-article"></a>Beispiele in diesem Artikel
 Mit den Beispielen in diesem Artikel wird veranschaulicht, wie Sie Azure Monitor-Cmdlets verwenden können. Die vollständige Liste der PowerShell-Cmdlets für Azure Monitor finden Sie unter [Azure Monitor-Cmdlets (Insights)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx).
@@ -54,7 +54,7 @@ Set-AzureRmContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-audit-logs-for-a-subscription"></a>Abrufen von Überwachungsprotokollen für ein Abonnement
+## <a name="retrieve-activity-log-for-a-subscription"></a>Abrufen des Aktivitätsprotokolls für ein Abonnement
 Verwenden Sie das Cmdlet `Get-AzureRmLog` .  Im Folgenden sind einige allgemeine Beispiele aufgeführt.
 
 Abrufen von Protokolleinträgen ab dieser Uhrzeit-/Datumsangabe bis heute:
@@ -96,7 +96,7 @@ Get-AzureRmLog -MaxEvents 1000
 `Get-AzureRmLog` unterstützt viele weitere Parameter. Weitere Informationen finden Sie in der `Get-AzureRmLog` -Referenz.
 
 > [!NOTE]
-> `Get-AzureRmLog` stellt nur den Verlauf für 15 Tage bereit. Mithilfe des **-MaxEvents** -Parameters können Sie die letzten N Ereignisse für mehr als 15 Tage abfragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK (C#-Beispiel mit dem SDK). Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime**nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
+> `Get-AzureRmLog` stellt nur den Verlauf für 15 Tage bereit. Mithilfe des **-MaxEvents** -Parameters können Sie die letzten N Ereignisse für mehr als 15 Tage abfragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK (C#-Beispiel mit dem SDK). Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus&1; Stunde. Wenn Sie **EndTime**nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
 > 
 > 
 
@@ -190,7 +190,7 @@ Das Cmdlet zum Hinzufügen einer Warnung aktualisiert die Regel auch, wenn für 
 
 ### <a name="alert-on-activity-log-event"></a>Warnung bei Aktivitätsprotokollereignis
 > [!NOTE]
-> Diese Funktion befindet sich noch in der Vorschauphase.
+> Dieses Feature befindet sich in der Vorschau und wird zu einem späteren Zeitpunkt entfernt (d.h. ersetzt).
 > 
 > 
 
@@ -356,7 +356,7 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 ```
 
 ## <a name="configure-diagnostics-logs"></a>Konfigurieren von Diagnoseprotokollen
-Viele Azure-Dienste bieten zusätzliche Protokolle und Telemetriedaten. Dazu gehören Azure-Netzwerk-Sicherheitsgruppen, Software-Lastenausgleichsmodule, Key Vault, Azure Search-Dienste und Logik-Apps. Diese Dienste können zum Speichern von Daten in Ihrem Azure-Speicherkonto konfiguriert werden. Dieser Vorgang kann nur auf Ressourcenebene ausgeführt werden, und das Speicherkonto sollte in der gleichen Region wie die Zielressource, in der die Diagnoseeinstellung konfiguriert ist, vorhanden sein.
+Viele Azure-Dienste umfassen zusätzliche Protokolle und Telemetriedaten, die so konfiguriert werden können, dass Daten in Ihrem Azure Storage-Konto gespeichert, an Event Hubs gesendet und/oder an einen OMS Log Analytics-Arbeitsbereich gesendet werden. Dieser Vorgang kann nur auf Ressourcenebene ausgeführt werden, und das Speicherkonto oder der Event Hub sollte in der gleichen Region wie die Zielressource, in der die Diagnoseeinstellung konfiguriert ist, vorhanden sein.
 
 ### <a name="get-diagnostic-setting"></a>Abrufen der Diagnoseeinstellung
 ```PowerShell
@@ -387,8 +387,21 @@ Aktivieren der Diagnoseeinstellung mit Aufbewahrung für eine bestimmte Protokol
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
+Aktivieren der Diagnoseeinstellung für Event Hubs
+
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
+```
+
+Aktivieren der Diagnoseeinstellung für OMS
+
+```PowerShell
+Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId 76d785fd-d1ce-4f50-8ca3-858fc819ca0f -Enabled $true
+
+```
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO2-->
 
 

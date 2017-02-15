@@ -1,5 +1,5 @@
 ---
-title: .NET-Anwendungen mit mehreren Ebenen | Microsoft Docs
+title: .NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen | Microsoft-Dokumentation
 description: "Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet."
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 09/01/2016
+ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9ace119de3676bcda45d524961ebea27ab093415
-ms.openlocfilehash: c90454109c2fcfe69d512b84d411e4fd4e810f65
+ms.sourcegitcommit: cab2edc0d065dc8d5ac20ed41ccd0eed7a664895
+ms.openlocfilehash: 8d0730d50330b9093734adb1c503dd975606b7c3
 
 
 ---
@@ -33,7 +33,7 @@ Sie lernen Folgendes:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-In diesem Lernprogramm werden Sie eine Anwendung mit mehreren Ebenen in einem Azure-Cloud-Dienst erstellen und ausführen. Als Front-End dient eine ASP.NET MVC-Webrolle, und als Back-End eine Workerrolle, die eine Service Bus-Warteschlange nutzt. Dieselbe Anwendung mit mehreren Ebenen kann auch mit einem Webprojekt als Front-End erstellt und auf einer Azure-Website anstelle eines Cloud-Diensts bereitgestellt werden. Hinweise zu den Unterschieden für Front-Ends mit Azure-Websites finden Sie im Abschnitt [Nächste Schritte](#nextsteps). Sie können auch das Tutorial [Hybride lokale/Cloud-.NET-Anwendung](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) ausprobieren.
+In diesem Lernprogramm werden Sie eine Anwendung mit mehreren Ebenen in einem Azure-Cloud-Dienst erstellen und ausführen. Als Front-End dient eine ASP.NET MVC-Webrolle, und als Back-End eine Workerrolle, die eine Service Bus-Warteschlange nutzt. Dieselbe Anwendung mit mehreren Ebenen kann auch mit einem Webprojekt als Front-End erstellt und auf einer Azure-Website anstelle eines Clouddiensts bereitgestellt werden. Hinweise zu den Unterschieden für Front-Ends mit Azure-Websites finden Sie im Abschnitt [Nächste Schritte](#nextsteps). Sie können auch das Tutorial [Hybride lokale/Cloud-.NET-Anwendung](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) ausprobieren.
 
 Der folgende Screenshot zeigt die fertige Anwendung.
 
@@ -57,15 +57,6 @@ Dieser Kommunikationsmechanismus bietet verschiedene Vorteile gegenüber direkte
   ![][2]
 
 In den folgenden Abschnitten wird der Code für die Implementierung dieser Architektur behandelt.
-
-## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
-Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Sie über die entsprechenden Tools verfügen und die Entwicklungsumgebung einrichten.
-
-1. Installieren Sie das Azure-SDK für .NET unter [Tools und SDK herunterladen][Tools und SDK herunterladen].
-2. Klicken Sie für Ihre Visual Studio-Version auf **Installieren des SDK**. Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet.
-3. Wenn Sie aufgefordert werden, das Installationsprogramm auszuführen oder zu speichern, klicken Sie auf **Ausführen**.
-4. Klicken Sie im **Webplattform-Installer** auf **Installieren**, und setzen Sie die Installation fort.
-5. Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können. Wenn Visual Studio nicht installiert ist, wird außerdem die kostenlose Version Visual Studio Express vom SDK installiert.
 
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
 Der nächste Schritt ist die Einrichtung des Dienstnamespace und das Abrufen eines SAS (Shared Access Signature)-Schlüssels. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
@@ -109,7 +100,7 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
 
 1. Ersetzen Sie in der Datei "OnlineOrder.cs" in Visual Studio die bestehende Namespacedefinition durch den folgenden Code:
    
-   ```
+   ```csharp
    namespace FrontendWebRole.Models
    {
        public class OnlineOrder
@@ -121,14 +112,14 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
    ```
 2. Doppelklicken Sie im **Projektmappen-Explorer** auf **Controllers\HomeController.cs**. Fügen Sie die folgenden **using**-Anweisungen am Anfang Ihrer Datei hinzu, um die Namespaces für Ihr neu erstelltes Modell sowie Service Bus einzuschließen.
    
-   ```
+   ```csharp
    using FrontendWebRole.Models;
    using Microsoft.ServiceBus.Messaging;
    using Microsoft.ServiceBus;
    ```
 3. Ersetzen Sie in der Datei "HomeController.cs" in Visual Studio die bestehende Namespacedefinition ebenfalls durch den folgenden Code. Dieser Code enthält die Methoden für die Übermittlung von Elementen in die Warteschlange.
    
-   ```
+   ```csharp
    namespace FrontendWebRole.Controllers
    {
        public class HomeController : Controller
@@ -193,7 +184,7 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
     ![][28]
 11. Erweitern Sie anschließend die Übermittlungsseite um einige Informationen zur Warteschlange. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\Home\Submit.cshtml**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie nach `<h2>Submit</h2>` die folgende Zeile hinzu. Derzeit ist `ViewBag.MessageCount` leer. Sie werden diesen Bereich später ausfüllen.
     
-    ```
+    ```html
     <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
     ```
 12. Sie haben nun Ihre GUI implementiert. Drücken Sie F5****, um Ihre Anwendung auszuführen und zu prüfen, ob diese korrekt angezeigt wird.
@@ -207,7 +198,7 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
 2. Geben Sie der Klasse den Namen **QueueConnector.cs**. Klicken Sie auf **Hinzufügen**, um die Klasse zu erstellen.
 3. Sie fügen nun den Code hinzu, der Ihre Verbindungsinformationen kapselt und die Verbindung zur Service Bus-Warteschlange initialisiert. Ersetzen Sie den gesamten Inhalt von „QueueConnector.cs“ durch den folgenden Code, und geben Sie Werte für `your Service Bus namespace` (Ihr Namespacename) und `yourKey` ein. Letzterer ist der **Primärschlüssel**, den Sie über das Azure-Portal abgerufen haben.
    
-   ```
+   ```csharp
    using System;
    using System.Collections.Generic;
    using System.Linq;
@@ -269,13 +260,13 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
 4. Stellen Sie nun sicher, dass Ihre **Initialize**-Methode aufgerufen wird. Doppelklicken Sie im **Projektmappen-Explorer** auf **Global.asax\Global.asax.cs**.
 5. Fügen Sie am Ende der **Application_Start**-Methode die folgende Codezeile hinzu.
    
-   ```
+   ```csharp
    FrontendWebRole.QueueConnector.Initialize();
    ```
 6. Zuletzt aktualisieren Sie den zuvor erstellten Webcode, um die Elemente an die Warteschlange zu übermitteln. Doppelklicken Sie im **Projektmappen-Explorer** auf **Controllers\HomeController.cs**.
 7. Aktualisieren Sie die `Submit()`-Methode (Überladung ohne Parameter) wie folgt, um die Nachrichtenanzahl für die Warteschlange abzurufen.
    
-   ```
+   ```csharp
    public ActionResult Submit()
    {
        // Get a NamespaceManager which allows you to perform management and
@@ -291,7 +282,7 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
    ```
 8. Aktualisieren Sie die `Submit(OnlineOrder order)`-Methode (Überladung mit einem Parameter) wie folgt, um Bestellinformationen an die Warteschlange zu übermitteln.
    
-   ```
+   ```csharp
    public ActionResult Submit(OnlineOrder order)
    {
        if (ModelState.IsValid)
@@ -334,18 +325,18 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 10. Durchsuchen Sie den Unterordner nach **FrontendWebRole\Models**, und doppelklicken Sie dann auf **OnlineOrder.cs**, um die Klasse dem Projekt hinzuzufügen.
 11. Ändern Sie wie im folgenden Code gezeigt in **WorkerRole.cs** den Wert der Variablen **QueueName** von `"ProcessingQueue"` in `"OrdersQueue"`.
     
-    ```
+    ```csharp
     // The name of your queue.
     const string QueueName = "OrdersQueue";
     ```
 12. Fügen Sie die folgende using-Anweisung am Anfang der Datei "WorkerRole.cs" hinzu.
     
-    ```
+    ```csharp
     using FrontendWebRole.Models;
     ```
 13. Ersetzen Sie in der Funktion `Run()` im `OnMessage()`-Aufruf den Inhalt der `try`-Klausel durch den folgenden Code.
     
-    ```
+    ```csharp
     Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
     // View the message as an OnlineOrder.
     OnlineOrder order = receivedMessage.GetBody<OnlineOrder>();
@@ -362,8 +353,8 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
 
 * [Azure Service Bus][sbmsdn]  
-* [Seite für Service Bus-Dienst][sbwacom]  
-* [Einsatz von Service Bus-Warteschlangen][sbwacomqhowto]  
+* [Service Bus-Dienstseite][sbacom]  
+* [Verwenden von Service Bus-Warteschlangen][sbacomqhowto]  
 
 Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:  
 
@@ -372,19 +363,6 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
 [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
 [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
-[Tools und SDK herunterladen]: http://go.microsoft.com/fwlink/?LinkId=271920
-
-
-[GetSetting]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.getsetting.aspx
-[Microsoft.WindowsAzure.Configuration.CloudConfigurationManager]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx
-[NamespaceMananger]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
-
-[QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
-
-[TopicClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx
-
-[EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
-
 [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
 [10]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
 [11]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
@@ -404,12 +382,12 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
 [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx  
-[sbwacom]: /documentation/services/service-bus/  
-[sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
+[sbacom]: https://azure.microsoft.com/services/service-bus/  
+[sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

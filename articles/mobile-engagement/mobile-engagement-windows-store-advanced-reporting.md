@@ -5,8 +5,8 @@ services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: ea5030bf-73ac-49b7-bc3e-c25fc10e945a
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
@@ -14,9 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
+
 
 ---
-# Erweiterte Berichterstellung Engagement-SDK für Windows Universal-Apps
+# <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>Erweiterte Berichterstellung Engagement-SDK für Windows Universal-Apps
 > [!div class="op_single_selector"]
 > * [Universal Windows](mobile-engagement-windows-store-advanced-reporting.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -25,15 +29,15 @@ ms.author: piyushjo;ricksal
 > 
 > 
 
-Dieses Thema beschreibt zusätzliche Berichterstellungsszenarien in Ihrer Windows Universal-Anwendung. Diese Szenarien umfassen Optionen, die Sie auswählen und auf die App anwenden können, die im [Erste Schritte](mobile-engagement-windows-store-dotnet-get-started.md)-Tutorial erstellt wird.
+Dieses Thema beschreibt zusätzliche Berichterstellungsszenarien in Ihrer Windows Universal-Anwendung. Diese Szenarien umfassen Optionen, die Sie auswählen und auf die App anwenden können, die im [Erste Schritte](mobile-engagement-windows-store-dotnet-get-started.md) -Tutorial erstellt wird.
 
-## Voraussetzungen
-[!INCLUDE [Voraussetzungen](../../includes/mobile-engagement-windows-store-prereqs.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
 Bevor Sie mit diesem Tutorial beginnen, müssen Sie zunächst das Tutorial [Erste Schritte](mobile-engagement-windows-store-dotnet-get-started.md) abschließen, was absichtlich direkt und einfach gehalten ist. Dieses Tutorial behandelt zusätzliche Optionen, die Sie auswählen können.
 
-## Angeben der Engagement-Konfiguration zur Laufzeit
-Die Engagement-Konfiguration befindet sich zentral in der `Resources\EngagementConfiguration.xml`-Datei Ihres Projekts, wo sie im Thema [Erste Schritte](mobile-engagement-windows-store-dotnet-get-started.md) angegeben wurde.
+## <a name="specifying-engagement-configuration-at-runtime"></a>Angeben der Engagement-Konfiguration zur Laufzeit
+Die Engagement-Konfiguration befindet sich zentral in der `Resources\EngagementConfiguration.xml` -Datei Ihres Projekts, wo sie im Thema [Erste Schritte](mobile-engagement-windows-store-dotnet-get-started.md) angegeben wurde.
 
 Doch Sie können sie auch zur Laufzeit angeben: Rufen Sie die folgende Methode vor der Initialisierung des Engagement-Agent auf:
 
@@ -48,13 +52,13 @@ Doch Sie können sie auch zur Laufzeit angeben: Rufen Sie die folgende Methode v
 
 
 
-## Empfohlene Methode: Überladen der `Page`-Klassen
+## <a name="recommended-method-overload-your-page-classes"></a>Empfohlene Methode: Überladen der `Page`-Klassen
 Um den Bericht über alle Protokolle zu aktivieren, die zum Berechnen von Benutzern, Sitzungen, Aktivitäten, Abstürzen und technischen Statistiken durch Engagement erforderlich sind, lassen Sie einfach alle Ihre `Page`-Unterklassen von den `EngagementPage`-Klassen erben.
 
 Hier ist ein Beispiel für eine Seite Ihrer Anwendung. Das Gleiche gilt für alle Seiten der Anwendung.
 
-### C#-Quelldatei
-Ändern Sie die Datei Ihrer Seite `.xaml.cs`:
+### <a name="c-source-file"></a>C#-Quelldatei
+Ändern Sie die Datei Ihrer Seite `.xaml.cs` :
 
 * Fügen Sie Ihre Anweisungen `using` hinzu:
   
@@ -88,8 +92,8 @@ Hier ist ein Beispiel für eine Seite Ihrer Anwendung. Das Gleiche gilt für all
 > 
 > 
 
-### XAML-Datei
-Ändern Sie die Datei Ihrer Seite `.xaml`:
+### <a name="xaml-file"></a>XAML-Datei
+Ändern Sie die Datei Ihrer Seite `.xaml` :
 
 * Fügen Sie Ihre Namespace-Deklarationen hinzu:
   
@@ -111,7 +115,7 @@ Hier ist ein Beispiel für eine Seite Ihrer Anwendung. Das Gleiche gilt für all
             ...
         </engagement:EngagementPage >
 
-### Überschreiben Sie das Standardverhalten
+### <a name="override-the-default-behaviour"></a>Überschreiben Sie das Standardverhalten
 Standardmäßig wird der Klassenname der Seite als der Name der Aktivität gemeldet, ohne Zusatz. Wenn die Klasse das Suffix „Page“ verwendet, löscht Engagement dieses.
 
 Um das Standardverhalten für den Namen zu überschreiben, fügen Sie diesen Code hinzu:
@@ -134,7 +138,7 @@ Um zusätzliche Informationen mit Ihrer Aktivität zu melden, fügen Sie diesen 
 
 Diese Methoden werden von innerhalb der Methode `OnNavigatedTo` Ihrer Seite aufgerufen.
 
-### Alternative Methode: Rufen Sie `StartActivity()` manuell auf
+### <a name="alternate-method-call-startactivity-manually"></a>Alternative Methode: Rufen Sie `StartActivity()` manuell auf
 Wenn Sie Ihre `Page`-Klassen nicht überladen möchten oder können, können Sie stattdessen Ihre Aktivitäten durch direktes Aufrufen der `EngagementAgent`-Methoden starten.
 
 Sie sollten `StartActivity` innerhalb Ihrer Methode `OnNavigatedTo` der Seite aufrufen.
@@ -152,9 +156,14 @@ Sie sollten `StartActivity` innerhalb Ihrer Methode `OnNavigatedTo` der Seite au
 > 
 > 
 
-## Erweiterte Berichterstellung
-Möglicherweise möchten Sie anwendungsspezifische Ereignisse, Fehler und Aufträge melden; verwenden Sie dazu die anderen Methoden in der Klasse `EngagementAgent`. Mit der Engagement-API können alle erweiterten Funktionen von Engagement verwendet werden.
+## <a name="advanced-reporting"></a>Erweiterte Berichterstellung
+Möglicherweise möchten Sie anwendungsspezifische Ereignisse, Fehler und Aufträge melden; verwenden Sie dazu die anderen Methoden in der Klasse `EngagementAgent` . Mit der Engagement-API können alle erweiterten Funktionen von Engagement verwendet werden.
 
 Weitere Informationen finden Sie unter [Verwenden der erweiterten Mobile Engagement-Tagging-API in Ihrer Windows Universal-App](mobile-engagement-windows-store-use-engagement-api.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

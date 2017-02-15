@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 12/09/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: bb64c7e5f25517477cb1f24333d10149b2e8c844
-ms.openlocfilehash: d9bb2249e41095c247d08fd75e44e0696e1d31a6
+ms.sourcegitcommit: cbc91181f2531ea5e60bb426d6b8b42e2c7684d3
+ms.openlocfilehash: 0bb6db67df25fb3c3484c819398890efef343943
 
 
 ---
@@ -34,6 +34,9 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 Der Free-Tarif von Security Center wird für Ihr Abonnement automatisch aktiviert und ermöglicht Einblicke in den Sicherheitszustand Ihrer Azure-Ressourcen. Er umfasst die grundlegende Verwaltung von Sicherheitsrichtlinien, Sicherheitsempfehlungen und die Integration in Sicherheitsprodukte und Dienste von Azure-Partnern.
 
 Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. Weitere Informationen zum Azure-Portal finden Sie in der [Dokumentation zum Portal](https://azure.microsoft.com/documentation/services/azure-portal/).
+
+## <a name="permissions"></a>Berechtigungen
+In Security Center werden Ihnen nur dann Informationen zu einer Azure-Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist. Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Permissions in Azure Security Center](security-center-permissions.md) (Berechtigungen in Azure Security Center).
 
 ## <a name="data-collection"></a>Datensammlung
 Security Center sammelt Daten von Ihren virtuellen Computern (VMs), um den Sicherheitsstatus zu bewerten, Sicherheitsempfehlungen bereitzustellen und vor Bedrohungen zu warnen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle VMs in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden.
@@ -123,6 +126,6 @@ In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüb
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

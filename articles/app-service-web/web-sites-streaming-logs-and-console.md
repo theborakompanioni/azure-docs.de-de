@@ -1,33 +1,37 @@
 ---
 title: Streamingprotokolle und Konsole
-description: Übersicht über Streamingprotokolle und die Konsole
+description: "Übersicht über Streamingprotokolle und die Konsole"
 author: btardif
 manager: wpickett
-editor: ''
+editor: 
 services: app-service\web
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 3e50a287-781b-4c6a-8c53-eec261889d7a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/26/2016
+ms.date: 10/12/2016
 ms.author: byvinyal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 7704270d7bba54577f61f3f349dc69dc6ddf08c6
+
 
 ---
-# Streamingprotokolle und die Konsole
-### Streamingprotokolle
-Das Microsoft Azure-Portal bietet ein integriertes Anzeigeprogramm für das Streamingprotokoll, über das Sie Ablaufverfolgungsereignisse von Ihren App Service-Apps in Echtzeit anzeigen können.
+# <a name="streaming-logs-and-the-console"></a>Streamingprotokolle und die Konsole
+## <a name="streaming-logs"></a>Streamingprotokolle
+Das **Azure-Portal** bietet ein integriertes Anzeigeprogramm für das Streamingprotokoll, über das Sie Ablaufverfolgungsereignisse von Ihren **App Service**-Apps in Echtzeit anzeigen können.  
 
-Gehen Sie wie folgt vor, um diese Funktion einzurichten:
+Dieses Feature kann mit einigen einfachen Schritten eingerichtet werden:
 
 * Schreiben Sie Ablaufverfolgungen in Ihren Code.
-* Aktivieren Sie die Anwendungsdiagnose über das Azure-Portal.
-* Klicken Sie auf dem Blatt der Web-App auf den Abschnitt "Streamingprotokolle".
+* Aktivieren Sie **Diagnoseprotokolle** für Ihre App.
+* Zeigen Sie den Datenstrom in der im **Azure-Portal** integrierten Benutzeroberfläche für **Streamingprotokolle** an.
 
-### So schreiben Sie Ablaufverfolgungen in den Code:
-Ablaufverfolgungen in den Code zu schreiben ist einfach. In C# könnte dieser Code z. B. wie folgt aussehen:
+### <a name="how-to-write-traces-in-your-code"></a>So schreiben Sie Ablaufverfolgungen in den Code:
+Ablaufverfolgungen in den Code zu schreiben ist einfach.  In C# könnte dieser Code z. B. wie folgt aussehen:
 
 `````````````````````````
 Trace.TraceInformation("My trace statement");
@@ -49,23 +53,26 @@ In einer node.js-App können Sie folgenden Code schreiben, um das gleiche Ergebn
 console.log("My trace statement").
 `````````````````````````
 
-### Aktivieren und Anzeigen der Streamingprotokolle
-![][BrowseSitesScreenshot] Diagnosen werden pro Web-App aktiviert. Navigieren Sie im [Portal](https://portal.azure.com) zu der Website, für die Sie dieses Feature aktivieren möchten.
+### <a name="how-to-enable-and-view-the-streaming-logs"></a>Aktivieren und Anzeigen der Streamingprotokolle
+![][BrowseSitesScreenshot] Diagnosen werden pro App aktiviert. Navigieren Sie zunächst zu der Website, für die Sie das Feature aktivieren möchten.  
 
-![][DiagnosticsLogs] Klicken Sie dann auf **Einstellungen (1)** > **Diagnoseprotokolle (2)**, und **aktivieren (3)** Sie **Anwendungsprotokollierung (Dateisystem)** oder **Anwendungsprotokollierung (Blob)**. Mit der Option **Ebene** können Sie den Schweregrad der Ablaufverfolgungen ändern, die erfasst werden sollen. Sie sollten hier **Ausführlich** festlegen, wenn es nur darum geht, sich mit der Funktion vertraut zu machen, da so sichergestellt werden kann, dass alle Ablaufverfolgungen protokolliert werden.
+![][DiagnosticsLogs] Scrollen Sie im Menü „Einstellungen“ nach unten zum Abschnitt **Überwachung**, und klicken Sie auf **(1) Diagnoseprotokolle**. **(2) Aktivieren** Sie dann **Anwendungsprotokollierung (Dateisystem)** oder **Anwendungsprotokollierung (BLOB)**. Mit der Option **Ebene** können Sie den Schweregrad der Ablaufverfolgungen ändern, die erfasst werden sollen. Legen Sie die Ebene auf **Ausführlich** fest, wenn es nur darum geht, sich mit dem Feature vertraut zu machen, um sicherzustellen, dass alle Ablaufverfolgungen erfasst werden.
 
-Klicken Sie oben auf dem Blade auf **SPEICHERN**, um die Protokolle anzuzeigen.
+Klicken Sie oben auf dem Blade auf **SPEICHERN** , um die Protokolle anzuzeigen.
 
-**HINWEIS:** Je höher Sie den **Schweregrad** einstellen, desto mehr Ressourcen werden für die Protokollierung belegt und desto mehr Ablaufverfolgungen erhalten Sie. Stellen Sie sicher, dass dieser Wert auf die angemessene Ebene festgelegt ist, wenn Sie dieses Feature für eine Website mit hohem Datenverkehr oder eine Produktionswebsite verwenden.
+> [!NOTE]
+> Je höher der **Schweregrad**, desto mehr Ressourcen werden für die Protokollierung belegt und desto mehr Ablaufverfolgungen werden generiert. Stellen Sie sicher, dass **Schweregrad** für die richtige Ausführlichkeit für eine Produktionswebsite oder eine Website mit hohem Datenverkehr konfiguriert ist. 
+> 
+> 
 
-![][StreamingLogsScreenshot] Zum Anzeigen der Streamingprotokolle im Portal klicken Sie auf **Tools (1)** > **Protokollstream (2)**. Verzeichnet Ihre App aktiv Ablaufverfolgungsmeldungen, sollten Ihnen diese nahezu in Echtzeit im Ergebnisfenster **(3)** angezeigt werden.
+![][StreamingLogsScreenshot] Zum Anzeigen der **Streamingprotokolle** im Azure-Portal klicken Sie auf **(1) Protokollstream**, ebenfalls im Abschnitt **Überwachung** des Menüs „Einstellungen“. Wenn Ihre App aktiv Ablaufverfolgungsanweisungen verzeichnet, sollten diese nahezu in Echtzeit in der **(2) Benutzeroberfläche für Streamingprotokolle** angezeigt werden.
 
-## Konsole
-Das Azure-Portal bietet Konsolenzugriff auf Ihre Web-App-Umgebung. Sie können das Dateisystem Ihrer Web-App untersuchen und PowerShell-/CMD-Skripts ausführen. Sie müssen sich beim Ausführen von Konsolenbefehlen an die gleichen Berechtigungen wie der ausgeführte Web-App-Code halten. Sie können nicht auf geschützte Verzeichnisse zugreifen oder Skripts ausführen, die erhöhte Rechte erfordern.
+## <a name="console"></a>Konsole
+Das **Azure-Portal** bietet Konsolenzugriff auf Ihre App. Sie können das Dateisystem der App untersuchen und PowerShell- und Cmd-Skripts ausführen. Sie müssen sich beim Ausführen von Konsolenbefehlen an die gleichen Berechtigungen halten, die auch für den ausgeführten App-Code gelten. Der Zugriff auf geschützte Verzeichnisse oder ausgeführte Skripts, für die erweiterte Berechtigungen erforderlich sind, ist blockiert.  
 
-![][ConsoleScreenshot] Wechseln Sie wie oben beschrieben zu einer Web-App, um auf die Konsole zuzugreifen. Klicken Sie auf **Tools (1)** > **Konsole (2)**. Daraufhin wird die Konsole geöffnet **(3)**.
+![][ConsoleScreenshot] Scrollen Sie im Menü „Einstellungen“ nach unten zum Abschnitt **Entwicklungstools**, und klicken Sie auf **(1) Konsole**. Die Benutzeroberfläche der **(2) Konsole** wird dann rechts geöffnet.
 
-Probieren Sie grundlegende Befehle wie die folgenden aus, um sich mit der Konsole vertraut zu machen:
+Testen Sie z.B. folgende Befehle, um sich mit der **Konsole** vertraut zu machen:
 
 `````````````````````````
 dir
@@ -81,4 +88,8 @@ cd
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

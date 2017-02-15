@@ -2,26 +2,30 @@
 title: Migrieren von einem RemoteApp-VNET auf ein Azure-VNET | Microsoft Docs
 description: Erfahren Sie, wie Sie von einem RemoteApp-VNET auf ein Azure-VNET migrieren
 services: remoteapp
-documentationcenter: ''
-author: lizap
+documentationcenter: 
+author: msmbaldwin
 manager: mbaldwin
-
+ms.assetid: baea5d29-353b-48f8-b47f-806f2163e067
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
-ms.author: elizapo
+ms.date: 11/23/2016
+ms.author: mbaldwin
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: dbc8a612d05f8456e55eb26c58cd4461ced4a521
+
 
 ---
-# So migrieren Sie eine Hybridsammlung von einem RemoteApp-VNET auf ein Azure-VNET
+# <a name="how-to-migrate-a-hybrid-collection-from-a-remoteapp-vnet-to-an-azure-vnet"></a>So migrieren Sie eine Hybridsammlung von einem RemoteApp-VNET auf ein Azure-VNET
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
-Gute Nachrichten! Sie können nun hybride RemoteApp-Sammlungen direkt in Ihre vorhandenen virtuellen Azure-Netzwerke (VNETs) einstellen, anstatt RemoteApp-spezifische VNETs zu erstellen. Der Vorteil hierbei ist, dass Sie die neuesten VNET-Funktionen (wie ExpressRoute) nutzen können und Ihre Hybridsammlungen direkten Netzwerkzugriff auf andere Azure-Dienste und virtuelle Computer bekommen, die auf diesem VNET bereitgestellt werden. (Dadurch erhalten Sie eine bessere Leistung und eine einfachere Einrichtung als bei VNET-zu-VNET-Konfigurationen).
+Gute Nachrichten! Sie können nun hybride RemoteApp-Sammlungen direkt in Ihre vorhandenen virtuellen Azure-Netzwerke (VNETs) einstellen, anstatt RemoteApp-spezifische VNETs zu erstellen. Der Vorteil hierbei ist, dass Sie die neuesten VNET-Funktionen (wie ExpressRoute) nutzen können und Ihre Hybridsammlungen direkten Netzwerkzugriff auf andere Azure-Dienste und virtuelle Computer bekommen, die auf diesem VNET bereitgestellt werden.  (Dadurch erhalten Sie eine bessere Leistung und eine einfachere Einrichtung als bei VNET-zu-VNET-Konfigurationen).
 
 Nehmen wir an, dass Sie bereits eine hybride RemoteApp-Sammlung namens *OriginalCollection* mit einem RemoteApp-VNET namens *RemoteAppVNET* erstellt haben. Dies sind die Schritte zum Migrieren auf ein neues Azure-VNET namens *AzureVNET*.
 
@@ -48,6 +52,11 @@ Wenn Sie jedoch Benutzerinformationen aus der ursprünglichen Sammlung in die ne
 
 Und jetzt haben Sie es geschafft!
 
-Wenn Sie Fragen haben oder besondere Unterstützung benötigen, senden Sie eine E-Mail an [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help).
+Wenn Sie Fragen haben oder besondere Unterstützung benötigen, senden Sie eine E-Mail an [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help)erstellt haben.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

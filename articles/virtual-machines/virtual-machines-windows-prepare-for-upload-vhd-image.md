@@ -1,13 +1,13 @@
 ---
-title: Vorbereiten einer Windows-VHD für das Hochladen in Azure | Microsoft Docs
+title: "Vorbereiten einer Windows-VHD für das Hochladen in Azure | Microsoft Docs"
 description: Empfohlene Vorgehensweisen zum Vorbereiten einer Windows-VHD vor dem Hochladen in Azure.
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: genlin
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2016
 ms.author: glimoli;genli
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 98aa7935322c873a9de6414090daab2e04ea19fe
+
 
 ---
 # <a name="prepare-a-windows-vhd-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD für das Hochladen in Azure
@@ -265,8 +269,8 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
    * [KB2904100](https://support.microsoft.com/kb/2904100) System friert während E/A-Vorgängen in Windows ein. <a id="step23"></a>
 2. Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere Computer bereitstellen können, müssen Sie `sysprep` ausführen, um das Image zu generalisieren, bevor Sie die VHD in Azure hochladen. Sie müssen `sysprep` nicht ausführen, um eine spezielle VHD zu verwenden. Weitere Informationen zum Erstellen eines generalisierten Images finden Sie in den folgenden Artikeln:
    
-   * [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des Resource Manager-Bereitstellungsmodells](virtual-machines-windows-capture-image.md)
-   * [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des klassischen Bereitstellungsmodells](virtual-machines-windows-classic-capture-image.md)
+   * [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des Resource Manager-Bereitstellungsmodells](virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+   * [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des klassischen Bereitstellungsmodells](virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
    * [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 ## <a name="suggested-extra-configurations"></a>Empfohlene zusätzliche Konfigurationen
@@ -293,8 +297,11 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](virtual-machines-windows-upload-image.md)
+* [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

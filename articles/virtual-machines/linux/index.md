@@ -1,9 +1,20 @@
 ---
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl einen virtuellen Computer erstellen. Die Dokumentation zeigt verschiedene Erstellungsmöglichkeiten für VM-Vorlagen."
+title: "Dokumentation zu Azure Virtual Machines für Linux – Tutorials und API-Referenz | Microsoft-Dokumentation"
+services: virtual-machines-linux
+author: carolz
+manager: carolz
+ms.assetid: 
+ms.service: virtual-machines-linux
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: eabfc16b3714006f74cdaec68efb46f651ee1b97
-ms.openlocfilehash: 4ae49635b13d564a4bf03ea12e233c1b18985cce
+ms.sourcegitcommit: 9bb4fb611c4f936317460040c4fbeff1a01f2c5c
+ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Dokumentation zu virtuellen Linux-Computern
@@ -131,16 +142,10 @@ Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl 
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/virtual-machines/linux.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu virtuellen Linux-Computern </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Jan17_HO4-->
 
 

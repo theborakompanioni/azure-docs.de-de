@@ -1,20 +1,24 @@
 ---
 title: Automatisieren der Anwendungsbereitstellung mit VM-Erweiterungen | Microsoft Docs
-description: .NET Core-Tutorial für virtuelle Azure-Computer
+description: ".NET Core-Tutorial für virtuelle Azure-Computer"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 9fc8b1ba-60f5-410b-8190-9f1ff885e50e
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/21/2016
+ms.date: 11/21/2016
 ms.author: nepeters
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: b4ddeb091c2c6d2fdfd32d0094567f9e9d8914a7
+
 
 ---
 # <a name="application-deployment-with-azure-resource-manager-templates"></a>Anwendungsbereitstellung mit Azure Resource Manager-Vorlagen
@@ -23,13 +27,17 @@ Nachdem Sie alle Infrastrukturanforderungen ermittelt und in einer Bereitstellun
 In diesem Dokument erfahren Sie, wie Sie mithilfe von VM-Erweiterungen die Anwendungsbereitstellung und -konfiguration auf virtuellen Azure-Computern automatisieren können. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ## <a name="configuration-script"></a>Konfigurationsskript
-VM-Erweiterungen sind spezielle Programme, die zur Automatisierung des Konfigurationsprozesses für virtuelle Computer ausgeführt werden. Erweiterungen stehen für verschiedenste Zwecke (etwa Virenschutz, Protokollierungskonfiguration und Docker-Konfiguration) zur Verfügung. Mit einer benutzerdefinierten Skripterweiterung können Sie ein beliebiges Skript für einen virtuellen Computer ausführen. Beim Music Store-Beispiel konfiguriert die benutzerdefinierte Skripterweiterung die virtuellen Ubuntu-Computer und installiert die Music Store-Anwendung.
+VM-Erweiterungen sind spezielle Programme, die zur Automatisierung des Konfigurationsprozesses für virtuelle Computer ausgeführt werden. Erweiterungen stehen für verschiedenste Zwecke (etwa Virenschutz, Protokollierungskonfiguration und Docker-Konfiguration) zur Verfügung. Mit einer benutzerdefinierten Skripterweiterung können Sie ein beliebiges Skript für einen virtuellen Computer ausführen. Beim Music Store-Beispiel konfiguriert die benutzerdefinierte Skripterweiterung die virtuellen Ubuntu-Computer und installiert die Music Store-Anwendung. 
 
 Machen Sie sich zunächst mit dem auszuführenden Skript vertraut, bevor Sie sich mit der Vorgehensweise zum Deklarieren von VM-Erweiterungen in einer Azure Resource Manager-Vorlage beschäftigen. Dieses Skript konfiguriert den virtuellen Ubuntu-Computer, der als Host für die Music Store-Anwendung fungiert. Wenn das Skript ausgeführt wird, installiert es sämtliche erforderliche Software sowie die Music Store-Anwendung über die Quellcodeverwaltung und bereitet die Datenbank vor. 
 
-Weitere Informationen zum Hosten einer .NET Core-Anwendung unter Linux finden Sie unter [Publish to a Linux Production Environment](https://docs.asp.net/en/latest/publishing/linuxproduction.html)(Veröffentlichen in einer Linux-Produktionsumgebung). 
+Weitere Informationen zum Hosten einer .NET Core-Anwendung unter Linux finden Sie unter [Publish to a Linux Production Environment](https://docs.asp.net/en/latest/publishing/linuxproduction.html)(Veröffentlichen in einer Linux-Produktionsumgebung).
 
-```none
+> Dieses Beispiel dient zu Demonstrationszwecken.
+> 
+> 
+
+```bash
 #!/bin/bash
 
 # install dotnet core
@@ -76,7 +84,7 @@ Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie [hier
 
 Beachten Sie, dass das Skript im folgenden JSON-Code in GitHub gespeichert ist. Dieses Skript könnte aber auch in Azure-Blobspeicher gespeichert sein. Bei Azure Resource Manager-Vorlagen kann die Zeichenfolge für die Skriptausführung außerdem so erstellt werden, dass Vorlagenparameterwerte als Parameter für die Skriptausführung verwendet werden. In diesem Fall werden Daten beim Bereitstellen der Vorlagen angegeben, und diese Werte können dann beim Ausführen des Skripts verwendet werden.
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "extensions",
@@ -105,13 +113,16 @@ Beachten Sie, dass das Skript im folgenden JSON-Code in GitHub gespeichert ist. 
 }
 ```
 
-Weitere Informationen zum Verwenden der benutzerdefinierten Skripterweiterung finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung für virtuelle Linux-Computer mit Azure Resource Manager-Vorlagen](virtual-machines-linux-extensions-customscript.md).
+Weitere Informationen zum Verwenden der benutzerdefinierten Skripterweiterung finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung für virtuelle Linux-Computer mit Azure Resource Manager-Vorlagen](virtual-machines-linux-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="next-step"></a>Nächster Schritt
 <hr>
 
 [Sehen Sie sich weitere Azure Resource Manager-Vorlagen an.](https://github.com/Azure/azure-quickstart-templates)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

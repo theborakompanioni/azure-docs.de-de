@@ -1,12 +1,12 @@
 ---
-title: Get started with Reliable Services | Microsoft Docs
-description: Introduction to creating a Microsoft Azure Service Fabric application with stateless and stateful services.
+title: Erste Schritte mit Reliable Services | Microsoft Docs
+description: "Einführung in das Erstellen einer Microsoft Azure Service Fabric-Anwendung mit zustandslosen und zustandsbehafteten Diensten."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
 ms.devlang: java
 ms.topic: article
@@ -14,37 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: vturecek
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 224538560a50f9ab24b8c2746e99de1ab87f084b
+
 
 ---
-# <a name="get-started-with-reliable-services"></a>Get started with Reliable Services
+# <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 > [!div class="op_single_selector"]
-> * [C# on Windows](service-fabric-reliable-services-quick-start.md)
-> * [Java on Linux](service-fabric-reliable-services-quick-start-java.md)
+> * [C# unter Windows](service-fabric-reliable-services-quick-start.md)
+> * [Java unter Linux](service-fabric-reliable-services-quick-start-java.md)
 > 
 > 
 
-This article explains the basics of Azure Service Fabric Reliable Services and walks you through creating and deploying a simple Reliable Service application written in Java.
+Dieser Artikel erläutert die Grundlagen von Azure Service Fabric Reliable Services und führt Sie durch das Erstellen und Bereitstellen einer einfachen in Java geschriebenen Reliable Services-Anwendung.
 
-## <a name="installation-and-setup"></a>Installation and setup
-Before you start, make sure you have the Service Fabric development environment set up on your machine.
-If you need to set it up, go to [getting started on Mac](service-fabric-get-started-mac.md) or [getting started on Linux](service-fabric-get-started-linux.md).
+## <a name="installation-and-setup"></a>Installation und Setup
+Bevor Sie beginnen, vergewissern Sie sich, dass die Entwicklungsumgebung von Service Fabric auf Ihrem Computer eingerichtet wurde.
+Wenn Sie sie einrichten müssen, wechseln Sie zu [Einrichten Ihrer Entwicklungsumgebung unter Mac OS X](service-fabric-get-started-mac.md) bzw. [Vorbereiten Ihrer Entwicklungsumgebung unter Linux](service-fabric-get-started-linux.md).
 
-## <a name="basic-concepts"></a>Basic concepts
-To get started with Reliable Services, you only need to understand a few basic concepts:
+## <a name="basic-concepts"></a>Grundlegende Konzepte
+Für den Einstieg in Reliable Services müssen Sie sich nur mit einigen grundlegenden Konzepten vertraut machen:
 
-* **Service type**: This is your service implementation. It is defined by the class you write that extends `StatelessService` and any other code or dependencies used therein, along with a name and a version number.
-* **Named service instance**: To run your service, you create named instances of your service type, much like you create object instances of a class type. Service instances are in fact object instantiations of your service class that you write. 
-* **Service host**: The named service instances you create need to run inside a host. The service host is just a process where instances of your service can run.
-* **Service registration**: Registration brings everything together. The service type must be registered with the Service Fabric runtime in a service host to allow Service Fabric to create instances of it to run.  
+* **Diensttyp**: Dies ist Ihre Dienstimplementierung. Sie wird durch die von Ihnen geschriebene Klasse definiert, mit der `StatelessService` und alle anderen darin verwendeten Codeelemente oder Abhängigkeiten erweitert werden, einschließlich eines Namens und der Versionsnummer.
+* **Instanz des benannten Diensts**: Zum Ausführen des Diensts erstellen Sie benannte Instanzen Ihres Diensttyps. Dies ähnelt der Erstellung von Objektinstanzen eines Klassentyps. Bei Dienstinstanzen handelt es sich eigentlich um Objektinstanziierungen der von Ihnen geschriebenen Dienstklasse. 
+* **Diensthost**: Die benannten Dienstinstanzen, die Sie erstellen, müssen in einem Host ausgeführt werden. Der Diensthost ist nur ein Prozess, für den Instanzen Ihres Diensts ausgeführt werden können.
+* **Dienstregistrierung**: Bei der Registrierung werden alle Elemente zusammengeführt. Der Diensttyp muss bei der Service Fabric-Laufzeit in einem Diensthost registriert werden, damit von Service Fabric Instanzen davon für die Ausführung erstellt werden können.  
 
-## <a name="create-a-stateless-service"></a>Create a stateless service
-Start by creating a new Service Fabric application. The Service Fabric SDK for Linux includes a Yeoman generator to provide the scaffolding for a Service Fabric application with a stateless service. Start by running the following Yeoman command:
+## <a name="create-a-stateless-service"></a>Erstellen eines zustandslosen Diensts
+Beginnen Sie, indem Sie eine neue Service Fabric-Anwendung erstellen. Das Service Fabric SDK für Linux enthält einen Yeoman-Generator, um das Gerüst für eine Service Fabric-Anwendung mit einem zustandslosen Dienst bereitzustellen. Beginnen Sie, indem Sie den folgenden Yeoman Befehl ausführen:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Follow the instructions to create a **Reliable Stateless Service**. For this tutorial, name the application "HelloWorldApplication" and the service "HelloWorld". The result will include directories for the `HelloWorldApplication` and `HelloWorld`.
+Befolgen Sie die Anweisungen zum Erstellen eines **zustandslosen Reliable Service**. Für dieses Tutorial nennen Sie die Anwendung „HelloWorldApplication“ und den Dienst „HelloWorld“. Das Ergebnis enthält Verzeichnisse für `HelloWorldApplication` und `HelloWorld`.
 
 ```bash
 HelloWorldApplication/
@@ -71,10 +75,10 @@ HelloWorldApplication/
 └── uninstall.sh
 ```
 
-## <a name="implement-the-service"></a>Implement the service
-Open **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. This class defines the service type, and can run any code. The service API provides two entry points for your code:
+## <a name="implement-the-service"></a>Implementieren des Diensts
+Öffnen Sie **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Diese Klasse definiert den Diensttyp und kann jeden Code ausführen. Die Dienst-API bietet zwei Einstiegspunkte für den Code:
 
-* An open-ended entry point method, called `runAsync()`, where you can begin executing any workloads, including long-running compute workloads.
+* Eine Einstiegspunktmethode mit offenem Ende namens `runAsync()`, mit der Sie die Ausführung beliebiger Workloads starten können, inklusive Computeworkloads mit langer Ausführungsdauer.
 
 ```java
 @Override
@@ -83,7 +87,7 @@ protected CompletableFuture<?> runAsync() {
 }
 ```
 
-* A communication entry point where you can plug in your communication stack of choice. This is where you can start receiving requests from users and other services.
+* Einen Einstiegspunkt für die Kommunikation, mit dem Sie mit einem beliebigen Kommunikationsstapel verbinden können. Dies ist der Punkt, an dem Sie mit dem Empfangen der Anforderungen von Benutzern und anderen Diensten beginnen können.
 
 ```java
 @Override
@@ -92,20 +96,20 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-In this tutorial, we will focus on the `runAsync()` entry point method. This is where you can immediately start running your code.
+In diesem Tutorial geht es um die Einstiegspunktmethode `runAsync()` . Hiermit können Sie sofort mit der Ausführung des Codes beginnen.
 
 ### <a name="runasync"></a>RunAsync
-The platform calls this method when an instance of a service is placed and ready to execute. The open/close cycle of a service instance can occur many times over the lifetime of the service as a whole. This can happen for various reasons, including:
+Die Plattform ruft diese Methode auf, wenn eine Instanz des Diensts platziert wurde und zur Ausführung bereit ist. Der Offen/Geschlossen-Zyklus einer Dienstinstanz kann über die gesamte Lebensdauer des Diensts häufig auftreten. Dies kann aus unterschiedlichen Gründen geschehen, z. B.:
 
-* The system moves your service instances for resource balancing.
-* Faults occur in your code.
-* The application or system is upgraded.
-* The underlying hardware experiences an outage.
+* Das System verschiebt Ihre Dienstinstanzen, um einen Lastenausgleich für Ressourcen durchzuführen.
+* In Ihrem Code treten Fehler auf.
+* Die Anwendung oder das System werden aktualisiert.
+* Die zugrunde liegende Hardware fällt aus.
 
-This orchestration is managed by Service Fabric to keep your service highly available and properly balanced.
+Diese Orchestrierung wird von Service Fabric verwaltet, um sicherzustellen, dass der Dienst hoch verfügbar bleibt und die Lasten richtig verteilt sind.
 
-#### <a name="cancellation"></a>Cancellation
-It is vital that your code in `runAsync()` can stop execution when notified by Service Fabric. The `CompletableFuture` returned from `runAsync()` is canceled when Service Fabric requires your service to stop execution. The following example demonstrates how to handle a cancellation event: 
+#### <a name="cancellation"></a>Abbruch
+Es ist von entscheidender Bedeutung, dass Ihr Code in `runAsync()` die Ausführung nach einer Benachrichtigung von Service Fabric beenden kann. Das von `runAsync()` zurückgegebene `CompletableFuture`-Element wird abgebrochen, wenn Service Fabric die Beendigung der Dienstausführung anfordert. Das folgende Beispiel zeigt, wie ein Abbruchereignis verarbeitet wird: 
 
 ```java
     @Override
@@ -141,8 +145,8 @@ It is vital that your code in `runAsync()` can stop execution when notified by S
    }
 ``` 
 
-### <a name="service-registration"></a>Service registration
-Service types must be registered with the Service Fabric runtime. The service type is defined in the `ServiceManifest.xml` and your service class that implements `StatelessService`. Service registration is performed in the process main entry point. In this example, the process main entry point is `HelloWorldServiceHost.java`:
+### <a name="service-registration"></a>Dienstregistrierung
+Diensttypen müssen bei der Service Fabric-Laufzeit registriert sein. Der Diensttyp wird in der Datei `ServiceManifest.xml` und in der Dienstklasse definiert, die `StatelessService` implementiert. Die Dienstregistrierung erfolgt im Haupteinstiegspunkt des Prozesses. In diesem Beispiel lautet der Haupteinstiegspunkt des Prozesses `HelloWorldServiceHost.java`:
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -158,14 +162,14 @@ public static void main(String[] args) throws Exception {
 }
 ```
 
-## <a name="run-the-application"></a>Run the application
-The Yeoman scaffolding includes a gradle script to build the application and bash scripts to deploy and un-deploy the application. To run the application, first build the application with gradle:
+## <a name="run-the-application"></a>Ausführen der Anwendung
+Das Yeoman-Gerüst enthält ein Gradle-Skript zum Erstellen der Anwendung sowie Bash-Skripts zum Bereitstellen und Aufheben der Bereitstellung der Anwendung. Um die Anwendung auszuführen, erstellen Sie diese zunächst mit Gradle:
 
 ```bash
 $ gradle
 ```
 
-This will produce a Service Fabric application package that can be deployed using Service Fabric Azure CLI. The install.sh script contains the necessary Azure CLI commands to deploy the application package. Simply run the install.sh script to deploy:
+Dadurch wird ein Service Fabric-Anwendungspaket generiert, das mithilfe der Service Fabric-Azure-CLI bereitgestellt werden kann. Das Skript „install.sh“ enthält die erforderlichen Befehle der Azure-Befehlszeilenschnittstelle zum Bereitstellen des Anwendungspakets. Führen Sie für die Bereitstellung einfach das Skript „install.sh“ aus:
 
 ```bask
 $ ./install.sh
@@ -173,6 +177,6 @@ $ ./install.sh
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

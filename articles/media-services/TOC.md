@@ -24,7 +24,9 @@
 ### Programmgesteuerter Verbindung
 #### [.NET](media-services-dotnet-connect-programmatically.md)
 #### [REST](media-services-rest-connect-programmatically.md)
-### [Verwalten von Streamingendpunkten im Portal](media-services-portal-manage-streaming-endpoints.md)
+### [Verwalten von Streamingendpunkten](media-services-streaming-endpoints-overview.md)
+#### [Portal](media-services-portal-manage-streaming-endpoints.md)
+#### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
 ### [Vorgehensweise: Aktualisieren von Media Services nach dem Austausch der Speicherzugriffsschlüssel](media-services-roll-storage-access-keys.md)
 ### [Kontingente und Einschränkungen](media-services-quotas-and-limitations.md)
 
@@ -44,7 +46,7 @@
 ##### [Media Encoder Standard-Schema](media-services-mes-schema.md)
 ##### [Eingeben von Metadaten](media-services-input-metadata-schema.md)
 ##### [Ausgeben von Metadaten](media-services-output-metadata-schema.md)
-#### MES-Voreinstellungen 
+#### [MES-Voreinstellungen](media-services-mes-presets-overview.md) 
 ##### [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md)
 ##### [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md)
 ##### [H264 Multiple Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-16x9-SD-Audio-5.1.md)
@@ -92,6 +94,9 @@
 
 ## [Live streamen](media-services-manage-channels-overview.md)
 ### [Lokale Encoder](media-services-live-streaming-with-onprem-encoders.md)
+#### [Portal](media-services-portal-live-passthrough-get-started.md)
+#### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+#### [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [Livestreaming mit Cloudencoder](media-services-manage-live-encoder-enabled-channels.md)
 ### Tutorials für Cloudencoder
 #### [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -134,8 +139,8 @@
 ### [Verarbeiten mit Hyperlapse](media-services-hyperlapse-content.md)
 ### [Verarbeiten mit Gesichtserkennung](media-services-face-and-emotion-detection.md)
 ### [Verarbeiten mit Bewegungserkennung](media-services-motion-detection.md)
-### [Verarbeiten mit Gesichtsbearbeitung](media-services-face-redaction.md)
-#### [Exemplarische Vorgehensweise zur Gesichtsbearbeitung](media-services-redactor-walkthrough.md)
+### [Verarbeiten mit Face Redactor](media-services-face-redaction.md)
+#### [Exemplarische Vorgehensweise für Face Redactor](media-services-redactor-walkthrough.md)
 ### [Verarbeiten mit Videominiaturansichten](media-services-video-summarization.md)
 ### [Verarbeiten mit OCR](media-services-video-optical-character-recognition.md)
 
@@ -207,6 +212,6 @@
 ## [Videos](https://azure.microsoft.com/resources/videos/index/?services=media-services)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

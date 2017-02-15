@@ -1,5 +1,5 @@
 ---
-title: " Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal | Microsoft Docs"
+title: " Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal | Microsoft-Dokumentations"
 description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Azure-Portals einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 473ca94a4b081aee69fa06718790acd61a8b51b3
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: b433c35817a0ba36003e8d506db9d2d6d97f9ff7
 
 
 ---
@@ -33,7 +33,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Azure
 Dieses Lernprogramm enthält die folgenden Aufgaben:
 
 1. Erstellen eines Azure Media Services-Kontos
-2. Konfigurieren eines Streamingendgeräts
+2. Starten des Streamingendpunkts
 3. Hochladen einer Videodatei
 4. Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
 5. Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download  
@@ -60,7 +60,7 @@ In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
    6. Wählen Sie **An Dashboard anheften** aus, um den Status der Kontobereitstellung anzuzeigen.
 4. Klicken Sie unten im Formular auf **Erstellen** .
    
-    Wenn das Konto erfolgreich erstellt wurde, ändert sich der Status in **Wird ausgeführt**. 
+    Nachdem die Erstellung des Kontos erfolgreich abgeschlossen wurde, wird die Seite mit der Übersicht geladen. In der Streamingendpunkt-Tabelle ist für das Konto ein Standard-Streamingendpunkt mit dem Status **Beendet** angegeben. Der Streamingendpunkt, von dem aus Sie unsere Inhalte streamen möchten, muss sich im Status **Wird ausgeführt** befinden. 
    
     ![Media Services – Einstellungen](./media/media-services-portal-vod-get-started/media-services-settings.png)
    
@@ -79,33 +79,22 @@ Sie benötigen den Kontonamen und den Primärschlüssel, um programmgesteuert au
    
     ![Media Services – Schlüssel](./media/media-services-portal-vod-get-started/media-services-keys.png)
 
-## <a name="configure-streaming-endpoints"></a>Konfigurieren von Streamingendpunkten
-Wenn Sie mit Azure Media Services arbeiten, besteht eines der häufigsten Szenarien darin, Videos per Adaptive Bitrate Streaming an Ihre Clients zu übermitteln. Von Media Services werden die folgenden Streamingtechnologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz).
+## <a name="start-streaming-endpoints"></a>Starten von Streamingendpunkten 
 
-Media Services bietet dynamische Paketerstellung für die Just-in-Time-Übermittlung von Daten vom Typ „MP4-codierte Inhalte mit adaptiver Bitrate“ in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming, HDS), ohne dass Sie jeweils vorab verpackte Versionen dieser Streamingformate speichern müssen.
+Wenn Sie mit Azure Media Services arbeiten, besteht eines der häufigsten Szenarien darin, Videos per Adaptive Bitrate Streaming zu übermitteln. Media Services bietet dynamische Paketerstellung für die Just-in-Time-Übermittlung von Daten vom Typ „MP4-codierte Inhalte mit adaptiver Bitrate“ in Streamingformaten, die von Media Services unterstützt werden (MPEG DASH, HLS, Smooth Streaming), ohne dass Sie jeweils vorab verpackte Versionen dieser Streamingformate speichern müssen.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 
-* Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Tutorial beschrieben)  
-* Erstellen von mindestens einer Streamingeinheit für den *Streamingendpunkt*, von dem aus Sie die Bereitstellung Ihrer Inhalte planen In den folgenden Schritten wird gezeigt, wie Sie die Anzahl von Streamingeinheiten ändern.
+Führen Sie folgende Schritte aus, um den Streamingendpunkt zu starten:
 
-Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
-
-Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
-
-1. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**. 
+1. Klicken Sie im Fenster „Einstellungen“ auf „Streamingendpunkte“. 
 2. Klicken Sie auf den standardmäßigen Streamingendpunkt. 
-   
-    Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
-3. Die Anzahl von Streamingeinheiten kann mithilfe des Schiebereglers **Streamingeinheiten** angegeben werden.
-   
-    ![Streamingeinheiten](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
-4. Klicken Sie auf die Schaltfläche **Speichern** , um die Änderungen zu speichern.
-   
-   > [!NOTE]
-   > Es kann bis zu 20 Minuten dauern, bis die Zuordnung neuer Einheiten abgeschlossen ist.
-   > 
-   > 
+
+    Das Fenster DEFAULT STREAMING ENDPOINT DETAILS (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
+
+3. Klicken Sie auf das Symbol „Start“.
+4. Klicken Sie auf die Schaltfläche „Speichern“, um die Änderungen zu speichern.
 
 ## <a name="upload-files"></a>Hochladen von Dateien
 Zum Streamen von Videos mit Azure Media Services müssen Sie die Quellvideos hochladen, in mehreren Bitraten codieren und das Ergebnis veröffentlichen. Der erste Schritt ist in diesem Abschnitt beschrieben. 
@@ -128,14 +117,11 @@ Zum Streamen von Videos mit Azure Media Services müssen Sie die Quellvideos hoc
 Nach Abschluss des Uploadvorgangs wird das neue Objekt im Fenster **Ressourcen** angezeigt. 
 
 ## <a name="encode-assets"></a>Codieren von Medienobjekten
-Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarios das Streaming mit adaptiver Bitrate an Clients. Von Media Services werden die folgenden Streamingtechnologien mit adaptiver Bitrate unterstützt: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH und HDS (nur mit Adobe PrimeTime/Access-Lizenz). Um die Videos für das Adaptive Bitrate Streaming vorzubereiten, müssen Sie das Quellvideo in Dateien mit mehreren Bitraten codieren. Videos sollten mit dem Encoder **Media Encoder Standard** codiert werden.  
+Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarios das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH. Um die Videos für das Adaptive Bitrate Streaming vorzubereiten, müssen Sie das Quellvideo in Dateien mit mehreren Bitraten codieren. Videos sollten mit dem Encoder **Media Encoder Standard** codiert werden.  
 
-Media Services bietet auch eine dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS, Smooth Streaming oder HDS. Hierbei ist es nicht erforderlich, diese Streamingformate neu zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
+Media Services bietet auch eine dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS und Smooth Streaming. Hierbei ist es nicht erforderlich, diese Streamingformate neu zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
-
-* Codieren Ihrer Quelldatei in einen Satz von MP4-Dateien mit variablen Bitraten (die Codierungsschritte werden weiter unten in diesem Abschnitt beschrieben)
-* Abrufen von mindestens einer Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen Weitere Informationen finden Sie unter [Konfigurieren von Streamingendpunkten](media-services-portal-vod-get-started.md#configure-streaming-endpoints). 
+Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Quelldatei in einen Satz von MP4-Dateien mit Mehrfachbitrate codieren (die Codierungsschritte werden weiter unten in diesem Abschnitt beschrieben).
 
 ### <a name="to-use-the-portal-to-encode"></a>So verwenden Sie das Portal zum Codieren
 In diesem Abschnitt werden die Schritte beschrieben, die Sie ausführen können, um Ihre Inhalte mit Media Encoder Standard zu codieren.
@@ -221,6 +207,6 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -35,11 +35,11 @@ Es wird empfohlen, die Anzahl der Sprachvariationen aus Wartungs- und Leistungsg
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
-   
+
    ![Öffnen der Benutzerverwaltung](./media/active-directory-branding-localize-azure-portal/user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Unternehmensbranding** aus.
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Unternehmensbranding** den Befehl **Sprache hinzufügen** aus.
-   
+
     ![Hinzufügen sprachspezifischer Brandingelemente](./media/active-directory-branding-localize-azure-portal/add-language.png)
 5. Ändern Sie die Elemente, die Sie anpassen möchten. Alle Elemente sind optional.
 6. Klicken Sie auf **Speichern**.
@@ -48,7 +48,6 @@ Es kann bis zu einer Stunde dauern, bis Änderungen übernommen werden, die Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen eines Unternehmensbrandings zu Ihrer Anmeldeseite](active-directory-branding-custom-signon-azure-portal.md)
-
 
 
 

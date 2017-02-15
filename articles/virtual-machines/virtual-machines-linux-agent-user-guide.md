@@ -1,13 +1,13 @@
 ---
-title: Benutzerhandbuch für Linux-Agent | Microsoft Docs
+title: "Benutzerhandbuch für Linux-Agent | Microsoft Docs"
 description: Erfahren Sie, wie Sie den Linux-Agent (waagent) zum Verwalten der Interaktion Ihres virtuellen Computers mit Azure Fabric Controller installieren und konfigurieren.
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager
-
+ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,6 +15,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 43d3ad9e2b50a84cb9fd70582eb03b9d7d45d788
+
 
 ---
 # <a name="azure-linux-agent-user-guide"></a>Benutzerhandbuch für Azure Linux-Agent
@@ -74,7 +78,7 @@ Folgende Systeme können nachweislich mit dem Azure Linux-Agent verwendet werden
 > 
 
 * CoreOS
-* CentOS 6.3+
+* CentOS 6.3+
 * Red Hat Enterprise Linux 6.7+
 * Debian 7.0+
 * Ubuntu 12.04+
@@ -98,7 +102,7 @@ Der Linux-Agent erfordert zur ordnungsgemäßen Funktion bestimmte Systempakete:
 * Kernel-Unterstützung für die Einbindung von UDF-Dateisystemen.
 
 ## <a name="installation"></a>Installation
-Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichkeit ein RPM- oder DEB-Paket aus dem Paketrepository Ihrer Verteilung installiert werden. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](virtual-machines-linux-endorsed-distros.md) in ihre jeweiligen Images und Repositorys integriert.
+Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichkeit ein RPM- oder DEB-Paket aus dem Paketrepository Ihrer Verteilung installiert werden. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) in ihre jeweiligen Images und Repositorys integriert.
 
 Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quellbasierten Installation, zum Installieren an benutzerdefinierten Orten oder zur Verwendung von Präfixen) finden Sie in der Dokumentation im [Azure Linux-Agent-Repository auf Github](https://github.com/Azure/WALinuxAgent).
 
@@ -178,7 +182,7 @@ Voreinstellung: j
 
 Bei aktivierter Option werden alle SSH-Hostschlüsselpaare (ecdsa, dsa und rsa) bei der Bereitstellung aus "/etc/ssh/" gelöscht. Außerdem wird ein einzelnes neues Schlüsselpaar generiert.
 
-Der Verschlüsselungstyp für das neue Schlüsselpaar kann mit dem Provisioning.SshHostKeyPairType-Eintrag konfiguriert werden. Beachten Sie, dass einige Distributionen SSH-Schlüsselpaare für alle fehlenden Verschlüsselungstypen neu erstellen, wenn der SSH-Daemon neu gestartet wird (z. B. bei einem Systemneustart).
+Der Verschlüsselungstyp für das neue Schlüsselpaar kann mit dem Provisioning.SshHostKeyPairType-Eintrag konfiguriert werden. Beachten Sie, dass einige Distributionen SSH-Schlüsselpaare für alle fehlenden Verschlüsselungstypen neu erstellen, wenn der SSH-Daemon neu gestartet wird (z. B. bei einem Systemneustart).
 
 **Provisioning.SshHostKeyPairType:**  
 Typ: Zeichenfolge  
@@ -300,8 +304,11 @@ Beachten Sie, dass Cloud Ubuntu-Images für zahlreiche Konfigurationsaufgaben, d
 * Berücksichtigen Sie zum Konfigurieren des Bereitstellungspunkts und des Auslagerungsbereichs für den Ressourcendatenträger von Ubuntu-Cloud-Images die folgenden Ressourcen:
   
   * [Ubuntu-Wiki: Konfigurieren von Swap-Partitionen](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](virtual-machines-windows-classic-inject-custom-data.md)
+  * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](virtual-machines-windows-classic-inject-custom-data.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

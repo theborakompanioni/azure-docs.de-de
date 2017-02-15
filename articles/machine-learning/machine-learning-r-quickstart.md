@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 12/05/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 120e7819535dca314ae9bc8cc266ec8771516735
+ms.sourcegitcommit: a5bd3866f3150b1c787e5f3700bdbd0b74fbaf42
+ms.openlocfilehash: 666a8031a262aef72fc8c3e73647f81d79b1c916
 
 
 ---
@@ -38,7 +38,7 @@ Zeitreihendaten sind Daten, deren Werte einen Zeitindex besitzen. Der Zeitindex 
 
 In diesem Schnellstarthandbuch arbeiten wir mit kalifornischen Milchproduktions- und -preisdaten. Diese Daten umfassen monatliche Informationen zur Produktion mehrerer Milcherzeugnisse sowie zum Preis von Milchfett, einem Vergleichsrohstoff.
 
-Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier heruntergeladen][Herunterladen] werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
+Die in diesem Artikel verwendeten Daten können zusammen mit R-Skripts [hier][download] heruntergeladen werden. Diese Daten wurden ursprünglich aus Informationen synthetisiert, die von der University of Wisconsin unter "http://future.aae.wisc.edu/tab/production.html" zur Verfügung gestellt werden.
 
 ### <a name="organization"></a>Organisation
 Wir werden mehrere Schritte durchlaufen, in denen Sie erfahren, wie Sie in der Azure Machine Learning-Umgebung R-Code zur Analyse und Datenbearbeitung erstellen, testen und ausführen.  
@@ -55,13 +55,13 @@ Dieser Abschnitt führt Sie durch einige Grundlagen der Interaktion mit der Prog
 Wir verwenden RStudio, um R-Code in geringem Umfang zu entwickeln, zu testen und zu debuggen. Dieser Code wird dann ausgeschnitten und in ein ausführbereites [Execute R Script][execute-r-script]-Modul in Machine Learning Studio eingefügt.  
 
 ### <a name="the-execute-r-script-module"></a>Das "Execute R Script"-Modul
-In Machine Learning Studio werden R-Skripts innerhalb des [Execute R Script][execute-r-script]-Moduls ausgeführt. Ein Beispiel für das [Execute R Script][execute-r-script]-Modul in Machine Learning Studio sehen Sie in Abbildung 1.
+In Machine Learning Studio werden R-Skripts innerhalb des [Execute R Script][execute-r-script]-Moduls ausgeführt. Ein Beispiel für das [Execute R Script][execute-r-script]-Modul in Machine Learning Studio sehen Sie in Abbildung 1.
 
  ![Programmiersprache R: Die Machine Learning Studio-Umgebung mit dem ausgewählten "Execute R Script"-Modul][1]
 
 *Abbildung 1: Die Machine Learning Studio-Umgebung, in der das ausgewählte "Execute R Script"-Modul angezeigt wird.*
 
-Sehen wir uns unter Bezugnahme auf Abbildung 1 einige der Hauptteile der Machine Learning Studio-Umgebung für die Arbeit mit dem [Execute R Script][execute-r-script]-Modul an.
+Sehen wir uns unter Bezugnahme auf Abbildung 1 einige der Hauptteile der Machine Learning Studio-Umgebung für die Arbeit mit dem [Execute R Script][execute-r-script]-Modul an.
 
 * Die Module in dem Experiment werden im mittleren Bereich angezeigt.
 * Der obere Teil des rechten Bereichs enthält ein Fenster zum Anzeigen und Bearbeiten Ihrer R-Skripts.  
@@ -72,7 +72,7 @@ Natürlich wird das [Execute R Script][execute-r-script]-Modul ausführlicher im
 Bei der Arbeit mit komplexen R-Funktionen empfiehlt es sich, dass Sie das Bearbeiten, Testen und Debuggen in RStudio durchführen. Wie bei jeder Softwareentwicklung erweitern Sie Ihren Code schrittweise und testen ihn mit kleinen, einfachen Testfällen. Danach schneiden Sie Ihre Funktionen aus und fügen sie in das Fenster des [Execute R Script][execute-r-script]-Moduls ein. Dieser Ansatz erlaubt es Ihnen, sowohl die RStudio-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) als auch die Leistungsfähigkeit von Azure Machine Learning zu nutzen.  
 
 #### <a name="execute-r-code"></a>Ausführen von R-Code
-Jeder R-Code im [Execute R Script][execute-r-script]-Modul wird ausgeführt, wenn Sie das Experiment ausführen, indem Sie auf die Schaltfläche **Rund** klicken. Nach Abschluss der Ausführung wird ein Häkchen auf dem Symbol [Execute R Script][execute-r-script] angezeigt.
+Jeder R-Code im [Execute R Script][execute-r-script]-Modul wird ausgeführt, wenn Sie das Experiment ausführen, indem Sie auf die Schaltfläche **Ausführen** klicken. Nach Abschluss der Ausführung wird ein Häkchen auf dem Symbol [Execute R Script][execute-r-script] angezeigt.
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Defensive R-Codierung für Azure Machine Learning
 Wenn Sie R-Code für beispielsweise einen Webdienst mithilfe von Azure Machine Learning entwickeln, sollten Sie auf jeden Fall planen, wie Ihr Code eine unerwartete Dateneingabe und Ausnahmen behandeln soll. Um Übersichtlichkeit zu gewährleisten, wurden in die meisten der dargestellten Codebeispiele kaum Testverfahren oder Verfahren zur Behandlung von Ausnahmen aufgenommen. Im weiteren Verlauf erhalten Sie jedoch einige Beispiele für Funktionen, die die Ausnahmebehandlungsfunktionen von R verwenden.  
@@ -84,9 +84,9 @@ Zu Wiederholungszwecken empfehlen wir Ihnen, Ihren R-Code in geringem Umfang in 
 
 Ausgaben der Ausführung Ihres R-Codes und von der Azure Machine Learning-Plattform finden sich hauptsächlich in der Datei "output.log". Einige zusätzliche Informationen befinden sich auch in der Datei "error.log".  
 
-Tritt in Machine Learning Studio ein Fehler während der Ausführung Ihres R-Codes auf, sollten Sie als Erstes in der Datei "error.log" nachsehen. Die Datei "error.log" kann nützliche Fehlermeldungen enthalten, die Ihnen dabei helfen, den Fehler zu verstehen und zu korrigieren. Um die Datei „error.log“ anzuzeigen, klicken Sie im Bereich **Properties** für das [Execute R Script][execute-r-script]-Modul mit dem Fehler auf **View error log**.
+Tritt in Machine Learning Studio ein Fehler während der Ausführung Ihres R-Codes auf, sollten Sie als Erstes in der Datei "error.log" nachsehen. Die Datei "error.log" kann nützliche Fehlermeldungen enthalten, die Ihnen dabei helfen, den Fehler zu verstehen und zu korrigieren. Um die Datei „error.log“ anzuzeigen, klicken Sie im Bereich **Eigenschaften** für das [Execute R Script][execute-r-script]-Modul mit dem Fehler auf **Fehlerprotokoll anzeigen**.
 
-Ich führe beispielsweise den folgenden R-Code mit einer nicht definierten Variable "y" in einem [Execute R Script][execute-r-script]-Modul aus:
+Ich führte beispielsweise den folgenden R-Code mit einer nicht definierten Variable „y“ in einem [Execute R Script][execute-r-script]-Modul aus:
 
     x <- 1.0
     z <- x + y
@@ -97,7 +97,7 @@ Die Ausführung dieses Codes schlägt fehl, was zu einem Fehlerzustand führt. W
 
 *Abbildung 2: Popupfenster mit Fehlermeldung*
 
-Sie müssen sich anscheinend in der Datei "output.log" die R-Fehlermeldung ansehen. Klicken Sie auf das [Execute R Script][execute-r-script]-Modul und dann rechts im Bereich **Properties** auf **View output.log**. Ein neues Browserfenster wird geöffnet, in dem Folgendes angezeigt wird:
+Sie müssen sich anscheinend in der Datei "output.log" die R-Fehlermeldung ansehen. Klicken Sie auf das [Execute R Script][execute-r-script]-Modul und dann rechts im Bereich **Eigenschaften** auf da Element **View output.log**. Ein neues Browserfenster wird geöffnet, in dem Folgendes angezeigt wird:
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -120,7 +120,7 @@ Azure Machine Learning verfügt über mehr als 350 vorinstallierte R-Sprachpaket
 Wenn Sie die letzte Zeile des Codes im Moment noch nicht verstehen, lesen Sie trotzdem weiter. Die Verwendung von R in der Azure Machine Learning-Umgebung wird im restlichen Teil dieses Dokuments noch ausführlich erörtert.
 
 ### <a name="introduction-to-rstudio"></a>Einführung in RStudio
-RStudio ist eine weit verbreitete IDE für R. Wir verwenden RStudio zum Bearbeiten, Testen und Debuggen einiger R-Codeabschnitte, die in diesem Schnellstarthandbuch verwendet werden. Nachdem R-Code getestet wurde und bereitet ist, schneiden Sie ihn einfach im RStudio-Editor aus und fügen ihn in ein [Execute R Script][execute-r-script]Modul in Machine Learning Studio ein.  
+RStudio ist eine weit verbreitete IDE für R. Wir verwenden RStudio zum Bearbeiten, Testen und Debuggen einiger R-Codeabschnitte, die in diesem Schnellstarthandbuch verwendet werden. Nachdem der R-Code getestet wurde und bereit ist, schneiden Sie ihn einfach im RStudio-Editor aus und fügen ihn in ein [Execute R Script][execute-r-script]-Modul in Machine Learning Studio ein.  
 
 Wenn die Programmiersprache R nicht auf Ihrem Desktopcomputer installiert ist, sollten Sie die Installation jetzt durchführen. Kostenlose Downloads der Open Source-Sprache R sind im CRAN (Comprehensive R Archive Network) unter [http://www.r-project.org/](http://www.r-project.org/)verfügbar. Es stehen dort Downloads für Windows, Mac OS und Linux/UNIX zur Verfügung. Wählen Sie einen Spiegelserver in Ihrer Nähe aus, und befolgen Sie die Downloadanweisungen. Zusätzlich finden Sie im CRAN eine Fülle von nützlichen Analyse- und Datenbearbeitungspaketen.
 
@@ -128,7 +128,7 @@ Wenn Sie noch keine Erfahrungen mit RStudio haben, sollten Sie die Desktopversio
 
 Ein Einführungslernprogramm zu RStudio finden Sie unter „https://support.rstudio.com/hc/sections/200107586-Using-RStudio“.
 
-Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][Anhang A].  
+Einige zusätzliche Informationen zur Verwendung von RStudio finden Sie in [Anhang A][appendixa].  
 
 ## <a name="a-idscriptmoduleaget-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>Durchführen von Dateneingaben und -ausgaben im "Execute R Script"-Modul
 In diesem Abschnitt wird erörtert, wie Sie Daten in das [Execute R Script][execute-r-script]-Modul ein- und daraus ausgeben können. Sie erfahren, wie verschiedene Datentypen, die vom [Execute R Script][execute-r-script]-Modul ein- und ausgelesen werden, zu handhaben sind.
@@ -153,9 +153,9 @@ Nachdem wir nun einige Daten in Machine Learning Studio geladen haben, erstellen
 * Sie können das Experiment benennen, indem Sie oben auf der Seite den Titel **Experiment erstellt am...** auswählen und bearbeiten. Ändern Sie den Titel beispielsweise zu **CA Dairy Analysis**.
 * Erweitern Sie links auf der Experimentseite die Einträge **Saved Datasets** und **My Datasets**. Hier wird die Datei **cadairydata.csv** angezeigt, die Sie zuvor hochgeladen haben.
 * Ziehen Sie das DataSet **csdairydata.csv** per Drag &amp; Drop in das Experiment.
-* Geben Sie im linken Bereich oben in das Feld **Search experiment items** als Suchbegriff [Execute R Script][execute-r-script] ein. Daraufhin wird das Modul in der Suchliste angezeigt.
+* Geben Sie im linken Bereich oben in das Feld **Search experiment items** (Experimentelemente suchen) als Suchbegriff [Execute R Script][execute-r-script] ein. Daraufhin wird das Modul in der Suchliste angezeigt.
 * Ziehen Sie das [Execute R Script][execute-r-script]-Modul per Drag & Drop auf Ihre Palette.  
-* Verbinden Sie die Ausgabe des Datasets **csdairydata.csv** mit der ganz linken Eingabe (**Dataset1**) von [Execute R Script][execute-r-script].
+* Verbinden Sie die Ausgabe von **csdairydata.csv** mit der Eingabe links außen (**Dataset1**) von [Execute R Script][execute-r-script].
 * **Vergessen Sie nicht, auf "Speichern" zu klicken.**  
 
 An diesem Punkt sollte das Experiment ungefähr wie in Abbildung 3 aussehen.
@@ -197,7 +197,7 @@ Es gibt drei mögliche Eingaben für das [Execute R Script][execute-r-script]-Mo
 Betrachten wir nun jede dieser Eingaben von links nach rechts. Sie können den Namen jeder einzelnen Eingabe anzeigen, indem Sie mit dem Mauszeiger auf die Eingabe zeigen und die QuickInfo lesen.  
 
 #### <a name="script-bundle"></a>Script Bundle
-Die Eingabe „Script Bundle“ erlaubt Ihnen, den Inhalt einer ZIP-Datei an das [Execute R Script][execute-r-script]-Modul zu übergeben. Sie können einen der folgenden Befehle verwenden, um den Inhalt der ZIP-Datei in Ihren R-Code einzulesen:
+Die Eingabe „Script Bundle“ erlaubt es Ihnen, den Inhalt einer ZIP-Datei an das [Execute R Script][execute-r-script]-Modul zu übergeben. Sie können einen der folgenden Befehle verwenden, um den Inhalt der ZIP-Datei in Ihren R-Code einzulesen:
 
     source("src/yourfile.R") # Reads a zipped R script
     load("src/yourData.rdata") # Reads a zipped R data file
@@ -224,7 +224,7 @@ Das Laden von Datasets haben wir bereits unter [Laden des Datasets](#loading) er
 2. Erstellen Sie eine ZIP-Datei, und kopieren Sie Ihr Skript in diese ZIP-Datei. Unter Windows können Sie mit der rechten Maustaste auf die Datei klicken, **Senden an** wählen und dann auf **Komprimierter Ordner** klicken. Dadurch entsteht eine neue ZIP-Datei, die die Datei „simpleplot.R“ enthält.
 3. Fügen Sie Ihre Datei den **Datasets** in Machine Learning Studio hinzu, und geben Sie dabei den Typ **zip** an. Die ZIP-Datei sollte jetzt in Ihren DataSets angezeigt werden.
 4. Ziehen Sie die ZIP-Datei aus **Datasets** auf den **ML Studio-Bereich**, und legen Sie sie dort ab.
-5. Verbinden Sie die Ausgabe des **ZIP-Daten**-Symbols mit der Eingabe **Script Bundle** des [Execute R Script][execute-r-script]-Moduls.
+5. Verbinden Sie die Ausgabe des **ZIP-Daten**-Symbols mit der Eingabe **Script Bundle** des[Execute R Script][execute-r-script]-Moduls.
 6. Geben Sie die `source()`-Funktion mit dem Namen Ihrer ZIP-Datei in das Codefenster des [Execute R Script][execute-r-script]-Moduls ein. In diesem Fall geben Sie `source("src/simpleplot.R")` ein.  
 7. Denken Sie daran, auf **Speichern**zu klicken.
 
@@ -239,7 +239,7 @@ Sie können mithilfe der Eingabe "Dataset1" eine rechteckige Datentabelle an Ihr
 
     cadairydata <- maml.mapInputPort(1)
 
-Führen Sie das Experiment aus, indem Sie auf die Schaltfläche **Ausführen** klicken. Wenn die Ausführung abgeschlossen ist, klicken Sie auf das [Execute R Script][execute-r-script]-Modul und dann im Bereich „Properties“ auf **View output log**. In Ihrem Browser sollte eine neue Seite mit dem Inhalt der Datei "Output.log" angezeigt werden. Wenn Sie nach unten scrollen, sollte etwa Folgendes angezeigt werden:
+Führen Sie das Experiment aus, indem Sie auf die Schaltfläche **Ausführen** klicken. Wenn die Ausführung abgeschlossen ist, klicken Sie auf das [Execute R Script][execute-r-script]-Modul und dann im Bereich „Eigenschaften“ auf **View output log** (Ausgabeprotokoll anzeigen). In Ihrem Browser sollte eine neue Seite mit dem Inhalt der Datei "Output.log" angezeigt werden. Wenn Sie nach unten scrollen, sollte etwa Folgendes angezeigt werden:
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -299,7 +299,7 @@ Klicken Sie nach dem Ausführen des Experiments auf den Ergebnisausgabeport "Dat
 Diese Ausgabe ist identisch mit der Eingabe, genau wie erwartet.  
 
 ### <a name="r-device-output"></a>"R Device"-Ausgabe
-Die „R Device“-Ausgabe des [Execute R Script][execute-r-script]-Moduls enthält Meldungen und Grafikausgaben. Sowohl die Standardausgabe als auch die Standardfehlermeldungen von R werden an den "R Device"-Ausgabeport gesendet.  
+Die Geräteausgabe des [Execute R Script][execute-r-script]-Moduls enthält Meldungen und Grafikausgaben. Sowohl die Standardausgabe als auch die Standardfehlermeldungen von R werden an den "R Device"-Ausgabeport gesendet.  
 
 Um die "R Device"-Ausgabe anzuzeigen, klicken Sie auf den Port und dann auf **Visualisieren**. Die Standardausgabe und Standardfehlermeldung des R-Skripts werden wie in Abbildung 7 angezeigt.
 
@@ -608,7 +608,7 @@ Die Zeitreihenklasse "POSIXct" wird häufig verwendet und ist relativ einfach. D
 <!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ### <a name="time-series-object-example"></a>Beispiel für Zeitreihenobjekte
-Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
+Beginnen wir mit unserem Beispiel. Ziehen Sie ein **neues** [Execute R Script][execute-r-script]-Modul per Drag & Drop in Ihr Experiment. Verbinden Sie den „Result Dataset1“-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem „Dataset1“-Eingabeport des neuen [Execute R Script][execute-r-script]-Moduls.
 
 Wie bei den ersten Beispielen werden auch hier beim Durchlaufen des Beispiels an einigen Stellen nur die inkrementellen, zusätzlichen R-Codezeilen im jeweiligen Schritt gezeigt.  
 
@@ -885,7 +885,7 @@ Unser Vorhersagemodell wird aus zwei Komponenten bestehen: einer Trendkomponente
 Der vollständige R-Code für diesen Abschnitt befindet sich in der ZIP-Datei, die Sie zuvor heruntergeladen haben.
 
 ### <a name="creating-the-dataframe-for-analysis"></a>Erstellen des Dataframes für die Analyse
-Beginnen Sie damit, dass Sie Ihrem Experiment ein **neues** [Execute R Script][execute-r-script]-Modul hinzufügen. Verbinden Sie den **Result Datase**t-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem **Dataset1**-Eingabeport des neuen Moduls. Das Ergebnis sollte in etwa wie in Abbildung 20 aussehen.
+Beginnen Sie damit, dass Sie Ihrem Experiment ein **neues** [Execute R Script][execute-r-script]-Modul hinzufügen. Verbinden Sie den **Result Dataset**-Ausgabeport des vorhandenen [Execute R Script][execute-r-script]-Moduls mit dem **Dataset1**-Eingabeport des neuen Moduls. Das Ergebnis sollte in etwa wie in Abbildung 20 aussehen.
 
 ![Das Experiment mit hinzugefügtem neuem "Execute R Script"-Modul][21]
 
@@ -1246,7 +1246,7 @@ Einige weitere nützliche Internetressourcen:
 
 * DataCamp: DataCamp unterrichtet R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Nutzen Sie das kostenlose interaktive R-Tutorial unter „https://www.datacamp.com/courses/introduction-to-r“.  
 * Ein R-Schnelltutorial von Kelly Black von der Clarkson University unter „http://www.cyclismo.org/tutorial/R/“.
-* Unter „http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html“ finden Sie über 60 R-Ressourcen.
+* Unter „http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html“ finden Sie über&60; R-Ressourcen.
 
 <!--Image references-->
 [1]: ./media/machine-learning-r-quickstart/fig1.png
@@ -1275,8 +1275,8 @@ Einige weitere nützliche Internetressourcen:
 [26]: ./media/machine-learning-r-quickstart/fig26.png
 
 <!--links-->
-[Anhang A]: #appendixa
-[Herunterladen]: https://azurebigdatatutorials.blob.core.windows.net/rquickstart/RFiles.zip
+[appendixa]: #appendixa
+[download]: https://azurebigdatatutorials.blob.core.windows.net/rquickstart/RFiles.zip
 
 
 <!-- Module References -->
@@ -1284,6 +1284,6 @@ Einige weitere nützliche Internetressourcen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

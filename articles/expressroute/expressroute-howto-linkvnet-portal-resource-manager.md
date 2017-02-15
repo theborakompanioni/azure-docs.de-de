@@ -13,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6a3604b95179d1a88f832ed45d9a6b85931187b1
+ms.sourcegitcommit: b3a8cdab9e609994b1c4c4d50e9571718e8091de
+ms.openlocfilehash: 8043f0d5a4c9fbd301e7565e7d62be09dd77abd8
 
 
 ---
-# <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Azure-Portal – Resource Manager](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell – Resource Manager](expressroute-howto-linkvnet-arm.md)
-> * [PowerShell – klassisch](expressroute-howto-linkvnet-classic.md)
+> * [Resource Manager – Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Resource Manager – PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [Klassisch – PowerShell](expressroute-howto-linkvnet-classic.md)
+> * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > 
-> 
+>  
 
 Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNets) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
 
@@ -77,6 +78,6 @@ Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ]
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

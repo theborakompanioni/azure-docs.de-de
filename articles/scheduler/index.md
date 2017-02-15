@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie mithilfe von Scheduler Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und aufrufen. Tutorials, API-Referenzen und mehr."
 translationtype: Human Translation
-ms.sourcegitcommit: ac4d47ff2e86906252ab93407eb6a4112d102523
-ms.openlocfilehash: 0afe27b9b7ec834ab8a2b944a164d31b7708eafe
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: 008c96351a252737178c9e45e92de3f0106a2a2b
 
 ---
 # <a name="scheduler-documentation"></a>Dokumentation zu Scheduler
@@ -97,13 +97,7 @@ Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in de
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/scheduler.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Scheduler </div>
-    </a>
-</div>
+
 
 
 

@@ -79,6 +79,6 @@ Daten, die per Enterprise State Roaming mit Azure synchronisiert werden, werden 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

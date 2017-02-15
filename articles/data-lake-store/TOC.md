@@ -29,6 +29,13 @@
 ### [Dienst-zu-Dienst-Authentifizierung](data-lake-store-authenticate-using-active-directory.md)
 ### [Authentifizierung von Endbenutzern](data-lake-store-end-user-authenticate-using-active-directory.md)
 
+## Leistung
+### [Anleitung für die Leistungsoptimierung von Azure Data Lake Store](data-lake-store-performance-tuning-guidance.md)
+### [Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Store](data-lake-store-performance-tuning-spark.md)
+### [Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Store](data-lake-store-performance-tuning-hive.md)
+### [Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Store](data-lake-store-performance-tuning-mapreduce.md)
+### [Anleitung für die Leistungsoptimierung für Storm in HDInsight und Azure Data Lake Store](data-lake-store-performance-tuning-storm.md)
+
 ## Integration in Azure-Dienste
 ### [Zugreifen von VMs in Azure VNET](data-lake-store-connectivity-from-vnets.md)
 ### [Verwenden mit Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
@@ -64,6 +71,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

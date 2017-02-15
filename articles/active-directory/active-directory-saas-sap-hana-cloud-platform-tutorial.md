@@ -1,11 +1,11 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration mit SAP HANA Cloud Platform | Microsoft Docs'
-description: Erfahren Sie, wie Sie SAP HANA Cloud Platform mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen.
+description: "Erfahren Sie, wie Sie SAP HANA Cloud Platform mit Azure Active Directory verwenden können, um einmaliges Anmelden, automatisierte Bereitstellung und vieles mehr zu ermöglichen."
 services: active-directory
 author: jeevansd
 documentationcenter: na
 manager: femila
-
+ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2016
 ms.author: jeedes
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: dae115c597e3a86c954eafcdd322954774fd55a5
+
 
 ---
-# <a name="tutorial:-azure-active-directory-integration-with-sap-hana-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA Cloud Platform
+# <a name="tutorial-azure-active-directory-integration-with-sap-hana-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA Cloud Platform
 In diesem Tutorial wird die Integration von Azure und SAP HANA Cloud Platform erläutert.  
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
 * Ein SAP HANA Cloud Platform-Konto
 
-Nach Abschluss dieses Tutorials können sich die SAP HANA Cloud Platform zugewiesenen Azure AD-Benutzer wie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)beschrieben mittels einmaliger Anmeldung bei der Anwendung anmelden.
+Nach Abschluss dieses Tutorials können sich die SAP HANA Cloud Platform zugewiesenen Azure AD-Benutzer wie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)beschrieben mittels einmaliger Anmeldung bei der Anwendung anmelden.
 
 > [!IMPORTANT]
 > Sie müssen Ihre eigene Anwendung bereitstellen oder eine Anwendung auf Ihrem SAP HANA Cloud Platform-Konto abonnieren, um sich zu Testzwecken einmalig anzumelden. In diesem Tutorial wird eine Anwendung auf dem Konto bereitgestellt.
@@ -41,7 +45,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 ## <a name="enabling-the-application-integration-for-sap-hana-cloud-platform"></a>Aktivieren der Anwendungsintegration für SAP HANA Cloud Platform
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für SAP HANA Cloud Platform aktivieren.
 
-### <a name="to-enable-the-application-integration-for-sap-hana-cloud-platform,-perform-the-following-steps:"></a>So aktivieren Sie die Anwendungsintegration für SAP HANA Cloud Platform:
+### <a name="to-enable-the-application-integration-for-sap-hana-cloud-platform-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für SAP HANA Cloud Platform:
 1. Klicken Sie im linken Navigationsbereich des Azure-Verwaltungsportals auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC700993.png "Active Directory")
@@ -68,7 +72,7 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 Im Rahmen dieses Verfahrens müssen Sie eine Base-64-codierte Zertifikatsdatei in Ihren SAP HANA Cloud Platform-Mandanten hochladen.  
 Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Konvertieren eines binären Zertifikats in eine Textdatei](http://youtu.be/PlgrzUZ-Y1o)
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>So konfigurieren Sie einmaliges Anmelden
+### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **SAP HANA Cloud Platform** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
    ![Configure single sign-on](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Configure single sign-on")
@@ -164,7 +168,7 @@ Als optionalen Schritt können Sie Assertion-Gruppen für Ihren Azure Active Dir
 ## <a name="assigning-a-role-to-a-user"></a>Zuweisen einer Rolle an einen Benutzer
 Um Azure AD-Benutzer für die Anmeldung bei SAP HANA Cloud Platform zu aktivieren, müssen Sie ihnen Rollen in der SAP HANA Cloud Platform zuweisen.
 
-### <a name="to-assign-a-role-to-a-user,-perform-the-following-steps:"></a>So weisen Sie einem Benutzer eine Rolle zu:
+### <a name="to-assign-a-role-to-a-user-perform-the-following-steps"></a>So weisen Sie einem Benutzer eine Rolle zu:
 1. Melden Sie sich bei Ihrem **SAP HANA Cloud Platform** -Cockpit an.
 2. Führen Sie die folgenden Schritte aus:
    
@@ -179,7 +183,7 @@ Um Azure AD-Benutzer für die Anmeldung bei SAP HANA Cloud Platform zu aktiviere
 ## <a name="assigning-users"></a>Zuweisen von Benutzern
 Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-sap-hana-cloud-platform,-perform-the-following-steps:"></a>So weisen Sie SAP HANA Cloud Platform Benutzer zu:
+### <a name="to-assign-users-to-sap-hana-cloud-platform-perform-the-following-steps"></a>So weisen Sie SAP HANA Cloud Platform Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **SAP HANA Cloud Platform** auf **Benutzer zuweisen**.
    
@@ -190,6 +194,9 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

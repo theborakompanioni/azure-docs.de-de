@@ -1,19 +1,23 @@
 ---
-title: Verwenden von inkrementellen Momentaufnahmen für Sicherung und Wiederherstellung von virtuellen Azure-Computern | Microsoft Docs
-description: Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Computer mithilfe inkrementeller Momentaufnahmen.
+title: "Verwenden von inkrementellen Momentaufnahmen für Sicherung und Wiederherstellung von virtuellen Azure-Computern | Microsoft Docs"
+description: "Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Computer mithilfe inkrementeller Momentaufnahmen."
 services: storage
 documentationcenter: na
 author: aungoo-msft
 manager: tadb
 editor: tysonn
-
+ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 11/17/2016
 ms.author: aungoo
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 9ade78c954ca6443354b198c7141b6fb5c88afdb
+
 
 ---
 # <a name="back-up-azure-virtual-machine-disks-with-incremental-snapshots"></a>Sichern von Azure-VM-Datenträgern mit inkrementellen Momentaufnahmen
@@ -22,7 +26,7 @@ Azure Storage bietet die Möglichkeit, Momentaufnahmen von Blobs zu erstellen. M
 
 Datenträger virtueller Azure-Computer werden als Seitenblobs in Azure Storage gespeichert. Da es in diesem Artikel um eine Sicherungsstrategie für die Datenträger des virtuellen Computers geht, beziehen wir uns im Kontext von Seitenblobs auf Momentaufnahmen. Weitere Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines BLOB](https://msdn.microsoft.com/library/azure/hh488361.aspx).
 
-## <a name="what-is-a-snapshot?"></a>Was ist eine Momentaufnahme?
+## <a name="what-is-a-snapshot"></a>Was ist eine Momentaufnahme?
 Eine Momentaufnahme eines Blobs ist eine schreibgeschützte Version eines Blobs, die zu einem bestimmten Zeitpunkt erfasst wird. Nachdem eine Momentaufnahme erstellt wurde, kann sie zwar gelesen, kopiert oder gelöscht, aber nicht geändert werden. Momentaufnahmen bieten eine Möglichkeit, um ein Blob so zu sichern, wie es zu einem bestimmten Zeitpunkt dargestellt wird. Bis zur REST-Version 2015-04-05 konnten Sie vollständige Momentaufnahmen kopieren. Mit REST-Version 2015-07-08 und höher können Sie inkrementelle Momentaufnahmen kopieren.
 
 ## <a name="full-snapshot-copy"></a>Vollständige Momentaufnahmenkopie
@@ -116,6 +120,9 @@ Mit den unten beschriebenen Schritten wird der Premium-Datenträger *mypremiumdi
 * [Erstellen einer Momentaufnahme eines Blobs](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 * [Planen der Sicherungsinfrastruktur für virtuelle Computer](../backup/backup-azure-vms-introduction.md)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 01/06/2017
 ms.author: banders;magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 16af0b801cd6955a8edc88aae5dd5199f4f2a713
+ms.sourcegitcommit: d5d86a0f7177b9a1e96e50a3e3e7d1f5800974bf
+ms.openlocfilehash: 427d5d7ed43f19611e99705dab33a0c80a8bf9f9
 
 
 ---
@@ -31,6 +31,7 @@ Damit der Microsoft Monitoring Agent eine Verbindung herstellen und sich beim OM
 | \*.ods.opinsights.azure.com |443 |Ja |
 | \*.oms.opinsights.azure.com |443 |Ja |
 | \*.blob.core.windows.net |443 |Ja |
+| \*.azure-automation.net |443 |Ja |
 | ods.systemcenteradvisor.com |443 | |
 
 Mit dem folgenden Verfahren können Sie Proxyeinstellungen für den Microsoft Monitoring Agent über die Systemsteuerung konfigurieren. Sie müssen diese Schritte für jeden Server ausführen. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie entsprechende Anweisungen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
@@ -105,6 +106,7 @@ Es folgt eine Liste der Ressourcen und Ports für Verwaltungsserver:<br>
 | data.systemcenteradvisor.com |443 | |
 | ods.systemcenteradvisor.com |443 | |
 | \*.ods.opinsights.azure.com |443 |Ja |
+| \*.azure-automation.net |443 |Ja |
 
 <br>
 Es folgt eine Liste der Ressourcen und Ports für OMS und die Operations Manager-Konsole.<br>
@@ -131,45 +133,46 @@ Verwenden Sie die folgenden Verfahren, um die Operations Manager-Verwaltungsgrup
 ### <a name="to-configure-the-proxy-server-in-the-operations-manager-console"></a>So konfigurieren Sie den Proxyserver in der Operations Manager-Konsole
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
 2. Erweitern Sie **Operational Insights**, und wählen Sie dann **Operational Insights-Verbindung** aus.<br>  
-    ![Operations Manager, OMS-Verbindung](./media/log-analytics-proxy-firewall/proxy-om01.png)
+   ![Operations Manager, OMS-Verbindung](./media/log-analytics-proxy-firewall/proxy-om01.png)
 3. Klicken Sie in der Ansicht „OMS-Verbindung“ auf **Proxyserver konfigurieren**.<br>  
-    ![Operations Manager, OMS-Verbindung, Proxyserver konfigurieren](./media/log-analytics-proxy-firewall/proxy-om02.png)
+   ![Operations Manager, OMS-Verbindung, Proxyserver konfigurieren](./media/log-analytics-proxy-firewall/proxy-om02.png)
 4. Wählen Sie unter „Operational Insights-Einstellungsassistent: Proxyserver“ die Option **Einen Proxyserver verwenden, um auf den Operational Insights-Webdienst zuzugreifen**, und geben Sie dann die URL mit der Portnummer ein, z.B. **http://myproxy:80**.<br>  
-    ![Operations Manager, OMS-Proxyadresse](./media/log-analytics-proxy-firewall/proxy-om03.png)
+   ![Operations Manager, OMS-Proxyadresse](./media/log-analytics-proxy-firewall/proxy-om03.png)
 
 ### <a name="to-specify-credentials-if-the-proxy-server-requires-authentication"></a>So geben Sie Anmeldeinformationen ein, wenn der Proxyserver eine Authentifizierung erfordert
  Anmeldeinformationen und Einstellungen von Proxyservern müssen an verwaltete Computer weitergegeben werden, die an OMS Bericht erstatten. Diese Server sollten sich in der *Microsoft System Center Advisor-Überwachungsservergruppe*befinden. Anmeldeinformationen werden in der Registrierung jedes Servers in der Gruppe verschlüsselt.
 
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
 2. Wählen Sie unter **RunAs Configuration** (RunAs-Konfiguration) die Option **Profile** aus.
-3. Öffnen Sie das Profil **System Center Advisor Run As Profile Proxy** .  
-    ![Abbildung des Profils „System Center Advisor Run As Proxy“ (System Center Advisor: ausführender Proxy)](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
-4. Klicken Sie im Assistenten für das ausführende Profil auf **Hinzufügen** , um ein ausführendes Konto zu verwenden. Sie können ein neues ausführendes Konto erstellen oder ein vorhandenes Konto verwenden. Dieses Konto muss über ausreichende Berechtigungen für die Weiterleitung über den Proxyserver verfügen.  
-    ![Abbildung des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
-5. Um das zu verwaltende Konto festzulegen, wählen Sie **Einer bestimmten Klasse oder Gruppe bzw. eines bestimmten Objekts** aus, um das Dialogfeld „Objektsuche“ zu öffnen.  
-    ![Abbildung des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
-6. Suchen Sie die **Microsoft System Center Advisor-Überwachungsservergruppe**, und wählen Sie sie dann aus.  
-    ![Abbildung des Dialogfelds „Objektsuche“](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
-7. Klicken Sie auf **OK** , um das Dialogfeld „Ausführendes Konto hinzufügen“ zu schließen.  
-    ![Abbildung des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
-8. Schließen Sie den Assistenten ab, und speichern Sie die Änderungen.  
-    ![Bild des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
+3. Öffnen Sie das Profil **System Center Advisor Run As Profile Proxy** .<br>  
+   ![Abbildung des Profils „System Center Advisor Run As Proxy“ (System Center Advisor: ausführender Proxy)](./media/log-analytics-proxy-firewall/proxy-proxyacct1.png)
+4. Klicken Sie im Assistenten für das ausführende Profil auf **Hinzufügen** , um ein ausführendes Konto zu verwenden. Sie können ein neues ausführendes Konto erstellen oder ein vorhandenes Konto verwenden. Dieses Konto muss über ausreichende Berechtigungen für die Weiterleitung über den Proxyserver verfügen.<br>   
+   ![Abbildung des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct2.png)
+5. Um das zu verwaltende Konto festzulegen, wählen Sie **Einer bestimmten Klasse oder Gruppe bzw. eines bestimmten Objekts** aus, um das Dialogfeld „Objektsuche“ zu öffnen.<br>  
+   ![Abbildung des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct2-1.png)
+6. Suchen Sie die **Microsoft System Center Advisor-Überwachungsservergruppe**, und wählen Sie sie dann aus.<br>  
+   ![Abbildung des Dialogfelds „Objektsuche“](./media/log-analytics-proxy-firewall/proxy-proxyacct3.png)
+7. Klicken Sie auf **OK** , um das Dialogfeld „Ausführendes Konto hinzufügen“ zu schließen.<br>  
+   ![Abbildung des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct4.png)
+8. Schließen Sie den Assistenten ab, und speichern Sie die Änderungen.<br>  
+   ![Bild des Assistenten für das ausführende Profil](./media/log-analytics-proxy-firewall/proxy-proxyacct5.png)
 
 ### <a name="to-validate-that-oms-management-packs-are-downloaded"></a>So überprüfen Sie, ob OMS-Management Packs heruntergeladen werden
-Wenn Sie Lösungen zu OMS hinzugefügt haben, können Sie sie in der Operations Manager-Konsole unter **Administration**als Management Packs anzeigen. Suchen Sie nach *System Center Advisor* , um sie schnell zu finden.  
-    ![Management Packs heruntergeladen](./media/log-analytics-proxy-firewall/proxy-mpdownloaded.png) Sie können auch mithilfe des folgenden Windows PowerShell-Befehls auf dem Operations Manager-Verwaltungsserver nach OMS-Management Packs suchen:
+Wenn Sie Lösungen zu OMS hinzugefügt haben, können Sie sie in der Operations Manager-Konsole unter **Administration**als Management Packs anzeigen. Suchen Sie nach *System Center Advisor* , um sie schnell zu finden.<br>  
+   ![Management Packs heruntergeladen](./media/log-analytics-proxy-firewall/proxy-mpdownloaded.png)  <br>  
+Sie können auch mithilfe des folgenden Windows PowerShell-Befehls auf dem Operations Manager-Verwaltungsserver nach OMS-Management Packs suchen:
 
-    ```
+   ```  
     Get-ScomManagementPack | where {$_.DisplayName -match 'Advisor'} | select Name,DisplayName,Version,KeyToken
-    ```
+   ```  
 
 ### <a name="to-validate-that-operations-manager-is-sending-data-to-the-oms-service"></a>So überprüfen Sie, ob Operations Manager Daten an den OMS-Dienst sendet
 1. Öffnen Sie auf dem Operations Manager-Verwaltungsserver den Systemmonitor (perfmon.exe), und wählen Sie **Systemmonitor**aus.
 2. Klicken Sie auf **Hinzufügen**, und wählen Sie **Verwaltungsgruppen des Integritätsdiensts** aus.
-3. Fügen Sie alle Leistungsindikatoren hinzu, die mit **HTTP**beginnen.  
-    ![Hinzufügen der Leistungsindikatoren](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
-4. Wenn die Operations Manager-Konfiguration in Ordnung ist, werden Aktivitäten zu Leistungsindikatoren der Integritätsdienstverwaltung für Ereignisse und andere Datenelemente angezeigt. Die Grundlage bilden die in OMS hinzugefügten Management Packs und die konfigurierten Richtlinien für die Protokollerfassung.  
-    ![Systemmonitor mit Aktivität](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
+3. Fügen Sie alle Leistungsindikatoren hinzu, die mit **HTTP**beginnen.<br>  
+   ![Hinzufügen der Leistungsindikatoren](./media/log-analytics-proxy-firewall/proxy-sendingdata1.png)
+4. Wenn die Operations Manager-Konfiguration in Ordnung ist, werden Aktivitäten zu Leistungsindikatoren der Integritätsdienstverwaltung für Ereignisse und andere Datenelemente angezeigt. Die Grundlage bilden die in OMS hinzugefügten Management Packs und die konfigurierten Richtlinien für die Protokollerfassung.<br>  
+   ![Systemmonitor mit Aktivität](./media/log-analytics-proxy-firewall/proxy-sendingdata2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md) , um Funktionen hinzuzufügen und Daten zu sammeln.
@@ -177,6 +180,6 @@ Wenn Sie Lösungen zu OMS hinzugefügt haben, können Sie sie in der Operations 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

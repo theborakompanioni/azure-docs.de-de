@@ -1,20 +1,24 @@
 ---
 title: Ermitteln von Datenquellen | Microsoft Docs
-description: Anleitungsartikel zum Ermitteln von Datenressourcen, die in Azure Data Catalog registriert wurden, einschließlich der Verwendung der Funktionen für Suchen und Filtern sowie Treffermarkierung im Azure Data Catalog-Portal.
+description: "Anleitungsartikel zum Ermitteln von Datenressourcen, die in Azure Data Catalog registriert wurden, einschließlich der Verwendung der Funktionen für Suchen und Filtern sowie Treffermarkierung im Azure Data Catalog-Portal."
 services: data-catalog
-documentationcenter: ''
+documentationcenter: 
 author: steelanddata
 manager: NA
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: f72ae3a3-6573-4710-89a7-f13555e1968c
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 0c90aff38ebe33e8c26f9e46db7e61786ea9a7dd
+
 
 ---
 # <a name="how-to-discover-data-sources"></a>Ermitteln von Datenquellen
@@ -44,14 +48,14 @@ Obwohl die standardmäßige Freitextsuche einfach und intuitiv ist, können Benu
 Weitere Informationen zur Suche in **Azure Data Catalog** finden Sie unter [https://msdn.microsoft.com/library/azure/mt267594.aspx](https://msdn.microsoft.com/library/azure/mt267594.aspx).
 
 ## <a name="hit-highlighting"></a>Treffermarkierung
-Beim Anzeigen von Suchergebnissen werden alle angezeigten Eigenschaften, die mit den angegebenen Suchbegriffen übereinstimmen (z. B. Name der Datenressource, Beschreibung und Tags), hervorgehoben, damit leichter zu erkennen ist, weshalb eine bestimmte Datenressource zurückgegeben wurde.
+Beim Anzeigen von Suchergebnissen werden alle angezeigten Eigenschaften, die mit den angegebenen Suchbegriffen übereinstimmen (z. B. Name der Datenressource, Beschreibung und Tags), hervorgehoben, damit leichter zu erkennen ist, weshalb eine bestimmte Datenressource zurückgegeben wurde.
 
 > [!NOTE]
 > Benutzer können die Treffermarkierung bei Bedarf mit der Option „Hervorheben“ im **Azure Data Catalog** -Portal deaktivieren.
-> 
-> 
+>
+>
 
-Beim Anzeigen von Suchergebnissen ist es selbst bei aktivierter Treffermarkierung u. U. nicht immer offensichtlich, warum eine Datenressource in den Ergebnissen enthalten ist. Da standardmäßig alle Eigenschaften durchsucht werden, kann eine Datenressource aufgrund einer Übereinstimmung mit einer Eigenschaft auf Spaltenebene zurückgegeben werden. Und da mehrere Benutzer registrierten Datenressourcen eigene Anmerkungen (Tags, Beschreibungen usw.) hinzufügen können, werden möglicherweise nicht alle Metadaten in der Liste der Suchergebnisse angezeigt.
+Beim Anzeigen von Suchergebnissen ist es selbst bei aktivierter Treffermarkierung u. U. nicht immer offensichtlich, warum eine Datenressource in den Ergebnissen enthalten ist. Da standardmäßig alle Eigenschaften durchsucht werden, kann eine Datenressource aufgrund einer Übereinstimmung mit einer Eigenschaft auf Spaltenebene zurückgegeben werden. Und da mehrere Benutzer registrierten Datenressourcen eigene Anmerkungen (Tags, Beschreibungen usw.) hinzufügen können, werden möglicherweise nicht alle Metadaten in der Liste der Suchergebnisse angezeigt.
 
 In der standardmäßigen Kachelansicht enthält jede in den Suchergebnissen angezeigte Kachel ein Symbol „Übereinstimmungen mit dem Suchbegriff anzeigen“, mit dem der Benutzer schnell die Anzahl von Treffern und ihre Position anzeigen und ggf. zu den Treffern springen kann.
 
@@ -63,6 +67,8 @@ Durch die Registrierung einer Datenquelle in **Azure Data Catalog** werden struk
 ## <a name="see-also"></a>Weitere Informationen
 * [Erste Schritte mit Azure Data Catalog](data-catalog-get-started.md) .
 
-<!--HONumber=Oct16_HO2-->
+
+
+<!--HONumber=Nov16_HO3-->
 
 

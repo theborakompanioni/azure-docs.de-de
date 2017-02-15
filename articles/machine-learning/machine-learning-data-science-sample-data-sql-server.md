@@ -1,12 +1,12 @@
 ---
-title: Erstellen von Datenstichproben aus SQL Server in Azure | Microsoft Docs
+title: Extrahieren von Stichproben aus Daten aus SQL Server in Azure | Microsoft Docs
 description: Erstellen von Datenstichproben aus SQL Server in Azure
 services: machine-learning
-documentationcenter: ''
+documentationcenter: 
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-
+ms.assetid: 33c030d4-5cca-4cc9-99d7-2bd13a3926af
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,9 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: fashah;garye;bradsev
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 94b109fdc2c902f1452c143a84b20356e9d58df0
+
 
 ---
-# <a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
+# <a name="a-nameheadingasample-data-in-sql-server-on-azure"></a><a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
 Dieses Dokument beschreibt die Erstellung von Stichproben für SQL Server-Daten in Azure unter Verwendung von SQL oder der Programmiersprache Python. Es wird gezeigt, wie erfasste Daten in Azure Machine Learning verschoben werden, indem Sie sie in einer Datei speichern, diese in einen Azure-Blob hochladen und anschließend in Azure Machine Learning Studio lesen.
 
 Die Python-Stichprobe verwendet die [pyodbc](https://code.google.com/p/pyodbc/)-ODBC-Bibliothek für die Verbindung mit SQL Server auf Azure und die [Pandas](http://pandas.pydata.org/)-Bibliothek zum Ausführen der Stichprobe.
@@ -26,24 +30,25 @@ Die Python-Stichprobe verwendet die [pyodbc](https://code.google.com/p/pyodbc/)-
 > 
 > 
 
-**Warum eine Datenstichprobe entnehmen?** Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des [Team Data Science-Prozesses (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
+**Warum eine Datenstichprobe entnehmen?**
+ Wenn das Dataset, das Sie analysieren möchten, groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des [Team Data Science-Prozesses (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
 
-Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden.
+Das nachstehende **Menü** enthält Links zu Themen, die beschreiben, wie Datenstichproben aus verschiedenen Speicherumgebungen erstellt werden. 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## <a name="SQL"></a>Mit SQL
+## <a name="a-namesqlausing-sql"></a><a name="SQL"></a>Mit SQL
 In diesem Abschnitt werden verschiedene Methoden beschrieben, um mit SQL einfache Stichproben der Daten in der Datenbank zu extrahieren. Wählen Sie eine Methode, die für Ihre Datengröße und -verteilung geeignet ist.
 
-Die beiden Beispiele unten zeigen, wie Sie mit "newid" in SQL Server eine Stichprobe erstellen. Die von Ihnen gewählte Methode hängt davon ab, wie zufällig die Stichprobe sein soll ("pk\_id" wird im Beispielcode unten als ein automatisch generierter Primärschlüssel angenommen).
+Die beiden Beispiele unten zeigen, wie Sie mit "newid" in SQL Server eine Stichprobe erstellen. Die von Ihnen gewählte Methode hängt davon ab, wie zufällig die Stichprobe sein soll ("pk_id" wird im Beispielcode unten als ein automatisch generierter Primärschlüssel angenommen).
 
 1. Beispiel mit geringerer Randomisierung
    
         select  * from <table_name> where <primary_key> in 
         (select top 10 percent <primary_key> from <table_name> order by newid())
-2. Beispiel mit höherer Randomisierung
+2. Beispiel mit höherer Randomisierung 
    
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
@@ -59,29 +64,29 @@ Sie können auch mit TABLESAMPLE eine Stichprobe erstellen, wie unten veranschau
 > 
 > 
 
-### <a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
+### <a name="a-namesql-amlaconnecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 Sie können die Beispielabfragen oben direkt im [Import Data][import-data]-Modul von Azure Machine Learning verwenden, um Stichproben aus den Daten dynamisch zu erstellen und in einem Azure Machine Learning-Experiment zu verwenden. Dies ist ein Screenshot der Verwendung des Reader-Moduls zum Lesen der erfassten Daten:
 
 ![reader sql][1]
 
-## <a name="python"></a>Mit der Programmiersprache Python
+## <a name="a-namepythonausing-the-python-programming-language"></a><a name="python"></a>Mit der Programmiersprache Python
 In diesem Abschnitt wird veranschaulicht, wie die [pyodbc-Bibliothek](https://code.google.com/p/pyodbc/) in Python für das Herstellen einer ODBC-Verbindung mit einer SQL Server-Datenbank verwendet wird. Die Datenbankverbindungszeichenfolge lautet wie folgt (ersetzen Sie "servername", "dbname", "username" und "password" durch die entsprechenden Werte Ihrer Konfiguration):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Die [Pandas](http://pandas.pydata.org/)-Bibliothek in Python bietet eine Vielzahl von Datenstrukturen und Datenanalysetools für die Datenbearbeitung durch Python-Programmierung. Der folgende Code liest eine Datenstichprobe von 0,1 % aus einer Tabelle in einer Azure SQL-Datenbank in ein Pandas-DataFrame:
+Die [Pandas](http://pandas.pydata.org/) -Bibliothek in Python bietet eine Vielzahl von Datenstrukturen und Datenanalysetools für die Datenbearbeitung durch Python-Programmierung. Der folgende Code liest eine Datenstichprobe von 0,1 % aus einer Tabelle in einer Azure SQL-Datenbank in ein Pandas-DataFrame:
 
     import pandas as pd
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select column1, cloumn2... from <table_name> tablesample (0.1 percent)''', conn)
 
-Sie können jetzt mit den erfassten Daten im Pandas-DataFrame arbeiten.
+Sie können jetzt mit den erfassten Daten im Pandas-DataFrame arbeiten. 
 
-### <a name="python-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
-Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem [Import Data][import-data]-Modul direkt in ein Azure Machine Learning-Experiment gelesen werden. Die Schritte lauten wie folgt:
+### <a name="a-namepython-amlaconnecting-to-azure-machine-learning"></a><a name="python-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
+Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem [Import Data][import-data]-Modul direkt in ein Azure Machine Learning-Experiment gelesen werden. Die Schritte lauten wie folgt: 
 
 1. Schreiben Sie den Pandas-DataFrame in eine lokale Datei:
    
@@ -111,7 +116,7 @@ Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei s
 
 ![Reader-Blob][2]
 
-## Der Team Data Science-Prozess in Aktion: Beispiel
+## <a name="the-team-data-science-process-in-action-example"></a>Der Team Data Science-Prozess in Aktion: Beispiel
 Eine lückenlose exemplarische Vorgehensweise zur Verwendung des Team Data Science-Prozesses mit einem öffentlichen Dataset finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
 
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
@@ -119,4 +124,8 @@ Eine lückenlose exemplarische Vorgehensweise zur Verwendung des Team Data Scien
 
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

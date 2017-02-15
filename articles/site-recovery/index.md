@@ -2,8 +2,8 @@
 layout: LandingPage
 description: "Hier erfahren Sie, wie Sie mittels Bereitstellung und Verwaltung der Replikation die cloudbasierte Notfallwiederherstellung und Geschäftskontinuität für physische Server und virtuelle Computer einrichten."
 translationtype: Human Translation
-ms.sourcegitcommit: 13d77644673b86be22bf7be40f77d6ebfb1f8baa
-ms.openlocfilehash: d815422edd036711525d8c2f1eea0348295416d5
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: b8fe2704e7c68c1fe815d204d424f28fcbdfe75c
 
 ---
 # <a name="site-recovery-documentation"></a>Site Recovery-Dokumentation
@@ -60,7 +60,7 @@ Hier erfahren Sie, wie Sie Site Recovery in einer Geschäftskontinuitäts- und N
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
                         <p><a href="/powershell/resourcemanager/azurerm.siterecovery/v3.2.0/azurerm.siterecovery">PowerShell</a></p>
-                        <p><a href="/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery">PowerShell – klassisch</a></p>
+                        <p><a href="/powershell/servicemanagement/azure.siterecovery/v3.1.0/azure.siterecovery">PowerShell (klassisch)</a></p>
                     </div>
                 </div>
             </div>
@@ -80,13 +80,7 @@ Hier erfahren Sie, wie Sie Site Recovery in einer Geschäftskontinuitäts- und N
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/site-recovery.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Site Recovery-Dokumentation </div>
-    </a>
-</div>
+
 
 
 

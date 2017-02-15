@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 7f22e8fb10f61cc0bb2e7d0a83449bf2e46a12d3
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 158a0a74c7997b28d652c3eed049daa8faf39d94
 
 
 ---
@@ -34,7 +34,7 @@ In diesem Tutorial werden Sie durch die Schritte des Azure-Portals zum Erstellen
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
 * Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
-* Media Services-Konto.    Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
+* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](http://www.telestream.net/wirecast/overview.htm).
 
 Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
@@ -46,6 +46,9 @@ Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
 ## <a name="a-idscenarioacommon-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
 In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von gängigen Livestreaming-Anwendungen mit Kanälen ausgeführt werden, die für die Pass-Through-Bereitstellung konfiguriert sind. In diesem Tutorial wird veranschaulicht, wie Sie einen Pass-Through-Kanal und Liveereignisse erstellen und verwalten.
 
+>[!NOTE]
+>Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
+    
 1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmented MP4-Datenstrom mit mehreren Bitraten ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](http://go.microsoft.com/fwlink/?LinkId=532824).
    
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
@@ -59,11 +62,7 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 5. Erstellen Sie ein Liveereignis/-programm. 
    
     Bei Verwendung des Azure-Portals wird beim Erstellen eines Liveereignisses auch ein Objekt erstellt. 
-   
-   > [!NOTE]
-   > Stellen Sie sicher, dass auf dem Streamingendpunkt, von dem Sie Inhalte streamen möchten, mindestens eine für das Streaming reservierte Einheit verfügbar ist.
-   > 
-   > 
+
 6. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Ereignis bzw. Programm.
 7. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 8. Sie können das Ereignis/Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
@@ -78,28 +77,6 @@ In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von g
 Klicken Sie auf das Symbol „Benachrichtigung“, wenn Sie Benachrichtigungen und Fehler anzeigen möchten, die vom Azure-Portal generiert wurden.
 
 ![Benachrichtigungen](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
-
-## <a name="configure-streaming-endpoints"></a>Konfigurieren von Streamingendpunkten
-Media Services bietet eine dynamische Paketerstellung, bei der Sie MP4-Dateien mit variablen Bitraten in den folgenden Streamingformaten bereitstellen können: MPEG DASH, HLS und Smooth Streaming. Hierbei ist es nicht erforderlich, diese Streamingformate neu zu verpacken. Mit der dynamischen Paketerstellung müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Media Services erstellt und verarbeitet die entsprechende Antwort basierend auf Anforderungen von einem Client.
-
-Um die dynamische Paketerstellung nutzen zu können, ist mindestens eine Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die Inhalte geliefert werden sollen.  
-
-Gehen Sie wie folgt vor, um die Anzahl von Einheiten zu erstellen und zu ändern, die für das Streaming reserviert sind:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Fenster **Einstellungen** auf **Streamingendpunkte**. 
-3. Klicken Sie auf den Standard-Streamingendpunkt. 
-   
-    Das Fenster **DEFAULT STREAMING ENDPOINT DETAILS** (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
-4. Die Anzahl von Streamingeinheiten kann mithilfe des Schiebereglers **Streamingeinheiten** angegeben werden.
-   
-    ![Streamingeinheiten](./media/media-services-portal-passthrough-get-started/media-services-streaming-units.png)
-5. Klicken Sie auf die Schaltfläche **Speichern** , um die Änderungen zu speichern.
-   
-   > [!NOTE]
-   > Es kann bis zu 20 Minuten dauern, bis die Zuordnung neuer Einheiten abgeschlossen ist.
-   > 
-   > 
 
 ## <a name="create-and-start-pass-through-channels-and-events"></a>Erstellen und Starten von Pass-Through-Kanälen und -Ereignissen
 Einem Kanal sind Ereignisse/Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livedatenstrom steuern können. Kanäle verwalten Ereignisse. 
@@ -180,6 +157,6 @@ Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf *
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

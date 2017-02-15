@@ -10,7 +10,6 @@
 
 # Erste Schritte
 ## [Einstieg in Hadoop](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [Einstieg in interaktives Hive (Preview)](hdinsight-hadoop-use-interactive-hive.md)
 ## [Einstieg in R Server](hdinsight-hadoop-r-server-get-started.md)
 ## [Einstieg in Spark](hdinsight-apache-spark-jupyter-spark-sql.md)
 ## [Einstieg in HBase und NoSQL](hdinsight-hbase-tutorial-get-started-linux.md)
@@ -62,10 +61,13 @@
 ### [Vorhersagen der HVAC-Leistung](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [Vorhersagen des Ergebnisses einer Lebensmittelüberwachung](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 ### [Analysieren von Websiteprotokollen](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+### [Verwenden von Zeppelin-Notebooks](hdinsight-apache-spark-zeppelin-notebook.md)
 ### [Jupyter Notebook-Kernel](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-### [Pakete für Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Verwenden von externen Paketen mit Jupyter mit Cell Magic](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+### [Verwenden von externen Paketen mit Jupyter mit Skriptaktion](hdinsight-apache-spark-python-package-installation.md)
 ### [Verwenden eines lokalen Jupyter Notebooks](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Remoteaufträge mit Livy](hdinsight-apache-spark-livy-rest-interface.md)
+### [Entwickeln von Apps mit Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [Entwickeln von Apps mit IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [Remotedebuggen mit IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [Verwalten von Ressourcen](hdinsight-apache-spark-resource-manager.md)
@@ -157,6 +159,7 @@
 #### [Verwenden der Azure-CLI](hdinsight-administer-use-command-line.md)
 ### [Verwalten von Clustern mit der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
 #### [Verwenden der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md)
+### [Hinzufügen von Speicherkonten](hdinsight-hadoop-add-storage.md)
 ### [Hochladen von Daten für Hadoop-Aufträge](hdinsight-upload-data.md)
 ### [Importieren und Exportieren von Daten mit Sqoop](hdinsight-use-sqoop.md)
 #### [Verbinden mit SSH](hdinsight-use-sqoop-mac-linux.md)
@@ -225,6 +228,6 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

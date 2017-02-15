@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/28/2016
+ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 69f3bd4759e879c6f3b55d8126f34e8ebf4be52d
+ms.sourcegitcommit: 05e61d2fc751c4239aef4b10ad897765c59fe928
+ms.openlocfilehash: a8fb8f7d338fa2f33b8fe6565f119e0be6419f41
 
 
 ---
@@ -58,13 +58,25 @@ Außerdem können für eine Web-App die Features verwendet werden, die von [API-
 Neben Web-Apps in App Service bietet Azure noch andere Dienste an, die zum Hosten von Websites und Webanwendungen verwendet werden können. In den meisten Fällen sind Web-Apps die beste Wahl.  Erwägen Sie für eine Microservice-Architektur die Verwendung von [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). Wenn Sie eine bessere Kontrolle über die virtuellen Computer benötigen, auf denen Ihr Code ausgeführt wird, können Sie [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) einsetzen. Weitere Informationen zur Wahl zwischen diesen Azure-Diensten finden Sie unter [Azure App Service, Azure Cloud Services, Azure Virtual Machines und Azure Service Fabric im Vergleich](choose-web-site-cloud-service-vm.md).
 
 ## <a name="getting-started"></a>Erste Schritte
-Zunächst müssen Sie Beispielcode für eine neue Web-App in App Service bereitstellen. Hierzu führen Sie die Schritte im Tutorial [Bereitstellen Ihrer ersten Web-App für Azure in fünf Minuten](app-service-web-get-started.md) aus. Sie benötigen ein kostenloses Azure-Konto.
+Zunächst müssen Sie Beispielcode für eine neue Web-App in App Service bereitstellen. Hierzu führen Sie eines der Tutorials im folgenden Dropdownfeld aus. Sie benötigen ein kostenloses Azure-Konto.
 
-Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> [!div class="op_single_selector"]
+> * [Bereitstellen Ihrer ersten HTML-Website für Azure in nur fünf Minuten](app-service-web-get-started-html-cli-nodejs.md)
+> * [Bereitstellen Ihrer ersten ASP.NET-Web-App für Azure in nur fünf Minuten](app-service-web-get-started-dotnet-cli-nodejs.md)
+> * [Bereitstellen Ihrer ersten PHP-Web-App für Azure in nur fünf Minuten](app-service-web-get-started-php-cli-nodejs.md)
+> * [Bereitstellen Ihrer ersten Node.js-Web-App für Azure in nur fünf Minuten](app-service-web-get-started-nodejs-cli-nodejs.md)
+> * [Bereitstellen Ihrer ersten Python-Web-App für Azure in nur fünf Minuten](app-service-web-get-started-python-cli-nodejs.md)
+> * [Bereitstellen Ihrer ersten Java-Web-App für Azure in nur fünf Minuten](app-service-web-get-started-java.md)
+> 
+> 
+
+> [!NOTE]
+> Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
+> 
+> 
 
 
 
-
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

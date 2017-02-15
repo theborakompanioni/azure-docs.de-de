@@ -1,26 +1,26 @@
 ---
-title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
+title: Untersuchen von Java-Ablaufverfolgungsprotokollen in Azure Application Insights | Microsoft Docs
 description: Durchsuchen von Log4J- oder Logback-Ablaufverfolgungen in Application Insights
 services: application-insights
 documentationcenter: java
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 12/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 1f16fb273261892bdcb8780c3ef1954d00951c5a
+ms.sourcegitcommit: 086091bb3be6659436ec8e371acbe4b8e86bfacb
+ms.openlocfilehash: 3ef5f6240d7e4704118b86fb0cfee8cf502859ff
 
 
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
-Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
+Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version&1;.2 bzw.&2;.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
 
 ## <a name="install-the-java-sdk"></a>Installieren des Java SDK
 
@@ -39,6 +39,8 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 
 *Logback*
 
+```XML
+
     <dependencies>
        <dependency>
           <groupId>com.microsoft.azure</groupId>
@@ -46,8 +48,11 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
-*Log4J v2. 0*
+*Log4J v2.&0;*
+
+```XML
 
     <dependencies>
        <dependency>
@@ -56,8 +61,11 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
-*Log4J v1. 2*
+*Log4J v1.&2;*
+
+```XML
 
     <dependencies>
        <dependency>
@@ -66,6 +74,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
           <version>[1.0,)</version>
        </dependency>
     </dependencies>
+```
 
 #### <a name="if-youre-using-gradle"></a>Wenn Sie Gradle verwenden...
 Wenn Ihr Projekt bereits für die Verwendung von Gradle für Buildprozesse eingerichtet ist, fügen Sie eine der folgenden Zeilen der Gruppe `dependencies` in der Datei "build.gradle" hinzu:
@@ -74,15 +83,22 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 
 **Logback**
 
+```
+
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '1.0.+'
+```
 
-**Log4J v2. 0**
+**Log4J v2.&0;**
 
+```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '1.0.+'
+```
 
-**Log4J v1. 2**
+**Log4J v1.&2;**
 
+```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '1.0.+'
+```
 
 #### <a name="otherwise-"></a>Andernfalls...
 Laden Sie den entsprechenden Appender herunter, extrahieren Sie ihn, und fügen Sie Ihrem Projekt die entsprechende Bibliothek hinzu:
@@ -90,13 +106,15 @@ Laden Sie den entsprechenden Appender herunter, extrahieren Sie ihn, und fügen 
 | Protokollierungstool | Download | Bibliothek |
 | --- | --- | --- |
 | Logback |[SDK mit Logback-Appender](https://aka.ms/xt62a4) |applicationinsights-logging-logback |
-| Log4J v2. 0 |[SDK mit Log4J-v2-Appender](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
-| Log4J v1. 2 |[SDK mit Log4J-v1. 2-Appender](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
+| Log4J v2.&0; |[SDK mit Log4J-v2-Appender](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
+| Log4J v1.&2; |[SDK mit Log4J-v1.&2;-Appender](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
 Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit der Konfigurationsdatei für Log4J oder Logback zusammen: 
 
 *Logback*
+
+```XML
 
     <appender name="aiAppender" 
       class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
@@ -104,9 +122,11 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
     <root level="trace">
       <appender-ref ref="aiAppender" />
     </root>
+```
 
+*Log4J v2.&0;*
 
-*Log4J v2. 0*
+```XML
 
     <Configuration packages="com.microsoft.applicationinsights.Log4j">
       <Appenders>
@@ -118,9 +138,11 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
         </Root>
       </Loggers>
     </Configuration>
+```
 
+*Log4J v1.&2;*
 
-*Log4J v1. 2*
+```XML
 
     <appender name="aiAppender" 
          class="com.microsoft.applicationinsights.log4j.v1_2.ApplicationInsightsAppender">
@@ -129,6 +151,7 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
       <priority value ="trace" />
       <appender-ref ref="aiAppender" />
     </root>
+```
 
 Die Application Insights-Appender können von jeder konfigurierten Protokollierung und müssen nicht unbedingt von der Stammprotokollierung referenziert werden (siehe die obigen Codebeispiele).
 
@@ -149,6 +172,6 @@ Nachdem Sie das Projekt so konfiguriert haben, dass Ablaufverfolgungen an Applic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

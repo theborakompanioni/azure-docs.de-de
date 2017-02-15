@@ -59,7 +59,7 @@ Basierend auf der Anzahl von zu schützenden VMs können Sie von unterschiedlich
 
   ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-5. Für den Recovery Services-Tresor können Sie einen vorhandenen Tresor auswählen oder einen neuen erstellen. Bei einer Neuerstellung wird der Tresor in derselben Ressourcengruppe und an demselben Standort wie für den virtuellen Computer erstellt. Gehen Sie wie folgt vor, wenn Sie einen Recovery Services-Tresor mit anderen Werten erstellen möchten: [Erstellen Sie einen Recovery Services-Tresor](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), bevor Sie in Schritt 3 auf die Option „Sicherung“ klicken, und treffen Sie auf diesem Blatt die entsprechende Auswahl.
+5. Für den Recovery Services-Tresor können Sie einen vorhandenen Tresor auswählen oder einen neuen erstellen. Bei einer Neuerstellung wird der Tresor in derselben Ressourcengruppe und an demselben Standort wie für den virtuellen Computer erstellt. Gehen Sie wie folgt vor, wenn Sie einen Recovery Services-Tresor mit anderen Werten erstellen möchten: [Erstellen Sie einen Recovery Services-Tresor](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), bevor Sie in Schritt&3; auf die Option „Sicherung“ klicken, und treffen Sie auf diesem Blatt die entsprechende Auswahl.
 
 6. Wählen Sie auf dem Blatt „Sicherungsrichtlinie“ die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten, und klicken Sie auf **OK**.
     ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)

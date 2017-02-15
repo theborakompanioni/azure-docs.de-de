@@ -273,6 +273,6 @@ Nachdem Sie sich nun mit den Grundlagen von Warteschlangenspeichern vertraut gem
 * [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,22 +1,26 @@
 ---
 title: Group By-Optionen in SQL Data Warehouse | Microsoft Docs
-description: Tipps zum Implementieren von Group By-Optionen in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+description: "Tipps zum Implementieren von Group By-Optionen in Azure SQL Data Warehouse für die Entwicklung von Lösungen"
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: barbkess
-editor: ''
-
+manager: jhubbard
+editor: 
+ms.assetid: f95a1e43-768f-4b7b-8a10-8a0509d0c871
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 06/14/2016
-ms.author: jrj;barbkess;sonyama
+ms.date: 10/31/2016
+ms.author: jrj;barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: e8c486ca190ae2af650a7fa17843c84538dde8d9
+
 
 ---
-# Group By-Optionen in SQL Data Warehouse
+# <a name="group-by-options-in-sql-data-warehouse"></a>Group By-Optionen in SQL Data Warehouse
 Die [GROUP BY][GROUP BY]-Klausel wird verwendet, um Daten zu einer Gruppe von Zeilen zusammenzufassen. Außerdem verfügt sie über einige Optionen zur Erweiterung der Funktionalität, die umgangen werden müssen, da sie von Azure SQL Data Warehouse nicht direkt unterstützt werden.
 
 Die Optionen sind:
@@ -25,10 +29,10 @@ Die Optionen sind:
 * GROUPING SETS
 * GROUP BY mit CUBE
 
-## Rollup- und Grouping Set-Optionen
-Die einfachste Möglichkeit ist hierbei die alternative Verwendung von `UNION ALL`, um das Rollup durchzuführen, anstatt sich auf die explizite Syntax zu verlassen. Das Ergebnis ist identisch.
+## <a name="rollup-and-grouping-sets-options"></a>Rollup- und Grouping Set-Optionen
+Die einfachste Möglichkeit ist hierbei die alternative Verwendung von `UNION ALL` , um das Rollup durchzuführen, anstatt sich auf die explizite Syntax zu verlassen. Das Ergebnis ist identisch.
 
-Dies ist ein Beispiel für eine Group By-Anweisung mit der `ROLLUP`-Option:
+Dies ist ein Beispiel für eine Group By-Anweisung mit der `ROLLUP` -Option:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -78,7 +82,7 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 Für GROUPING SETS müssen wir lediglich den gleichen Prinzipal übernehmen, aber wir müssen nur UNION ALL-Abschnitte für die Aggregationsebenen erstellen, die wir anzeigen möchten.
 
-## Cube-Optionen
+## <a name="cube-options"></a>Cube-Optionen
 Es ist möglich, mit dem UNION ALL-Ansatz ein GROUP BY WITH CUBE-Element zu erstellen. Das Problem ist, dass der Code schnell unübersichtlich und schwerfällig werden kann. Um dies zu vermeiden, können Sie diesen erweiterten Ansatz verwenden.
 
 Wir verwenden hierfür das obige Beispiel.
@@ -176,7 +180,7 @@ ORDER BY 1,2,3
 
 Indem wir den Code in Abschnitte unterteilen und eine Schleife generieren, wird die Verwaltung und Pflege der Codeerstellung verbessert.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entwicklungsübersicht].
 
 <!--Image references-->
@@ -191,4 +195,8 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][Entw
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

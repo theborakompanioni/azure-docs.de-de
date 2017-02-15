@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 7ab51f4834f3112d4f3379acbaa16a386276cdb8
+ms.sourcegitcommit: bbfe4dc74b9743b89ea6a7a99f5fa17672f3c706
+ms.openlocfilehash: 94db8988acacd93518e96a81e177882852379fb0
 
 
 ---
@@ -44,7 +44,9 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 2. Klicken Sie auf der linken Seite des Bildschirms mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **Frameworksupport hinzufügen**. Wählen Sie **Maven** aus, und klicken Sie auf **OK**.
 3. Öffnen Sie die neu erstellte Datei **pom.xml**, und fügen Sie den folgenden Textausschnitt zwischen dem Tag **\</version>** und dem Tag **\</project>** hinzu:
 
-    HINWEIS: Dieser Schritt ist vorläufiger Art, bis das Azure Data Lake Analytics-SDK in Maven verfügbar ist. Der Artikel wird aktualisiert, sobald das SDK in Maven verfügbar ist. Alle zukünftigen Aktualisierungen dieses SDK sind über Maven erhältlich.
+    >[!NOTE]
+    >Dieser Schritt ist vorläufig, bis das Azure Data Lake Analytics-SDK in Maven verfügbar ist. Der Artikel wird aktualisiert, sobald das SDK in Maven verfügbar ist. Alle zukünftigen Aktualisierungen dieses SDK sind über Maven erhältlich.
+    >
 
         <repositories>
             <repository>
@@ -351,6 +353,6 @@ Sie müssen Ihrer Anwendung die Berechtigung zum Erstellen von Ressourcen in Azu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

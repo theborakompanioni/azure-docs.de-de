@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d0e0354e6d949c3c0f7cc79e71c3ab898e8a844f
+ms.sourcegitcommit: 9e738c4e5f43ae6c939f7c6da90c258498943e73
+ms.openlocfilehash: ae77ce19ff009555e89645c9f02402ae6f8af518
 
 
 ---
@@ -40,7 +40,7 @@ Angenommen, Sie erstellen ein Experiment und führen Versionen dieses Experiment
 ## <a name="viewing-the-run-history"></a>Anzeigen des Ausführungsverlaufs
 Sie können alle vorherigen Testläufe eines Experiments anzeigen, indem Sie in einem geöffneten Experiment auf **View Run History** (Ausführungsverlauf anzeigen) klicken.
 
-Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linear-regression] (Lineare Regression), und Sie möchten beobachten, wie sich Änderungen des Werts von **Learning Rate** (Lernrate) auf die Ergebnisse Ihres Experiments auswirken. Sie führen das Experiment mehrmals mit unterschiedlichen Werten für diesen Parameter wie folgt aus:
+Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linear-regression], und Sie möchten beobachten, wie sich Änderungen des Werts von **Learning Rate** (Lernrate) auf die Ergebnisse Ihres Experiments auswirken. Sie führen das Experiment mehrmals mit unterschiedlichen Werten für diesen Parameter wie folgt aus:
 
 | Der Wert von "Learning Rate" | Startzeit des Testlaufs |
 | --- | --- |
@@ -86,6 +86,6 @@ Sie können diese Version  des Experiments nun weiterhin ändern und ausführen,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

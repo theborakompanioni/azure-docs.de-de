@@ -1,13 +1,13 @@
 ---
-title: Ausführen von STAR-CCM+ mit HPC Pack auf virtuellen Linux-Computern | Microsoft Docs
-description: Stellen Sie einen Microsoft HPC Pack-Cluster unter Azure bereit, und führen Sie einen StarCCM+-Auftrag auf mehreren Linux-Computeknoten in einem RDMA-Netzwerk aus.
+title: "Ausführen von STAR-CCM+ mit HPC Pack auf virtuellen Linux-Computern | Microsoft Docs"
+description: "Stellen Sie einen Microsoft HPC Pack-Cluster unter Azure bereit, und führen Sie einen StarCCM+-Auftrag auf mehreren Linux-Computeknoten in einem RDMA-Netzwerk aus."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: xpillons
 manager: timlt
-editor: ''
+editor: 
 tags: azure-service-management,azure-resource-manager,hpc-pack
-
+ms.assetid: 75523406-d268-4623-ac3e-811c7b74de4b
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,17 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: 666b9e47953674b17be6cc84dbc6aeec28e28b57
+
 
 ---
-# Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
+# <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Ausführen von STAR-CCM+ mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Microsoft HPC Pack-Cluster unter Azure bereitstellen und einen Auftrag vom Typ [CD-adapco STAR-CCM+](http://www.cd-adapco.com/products/star-ccm%C2%AE) auf mehreren Linux-Computeknoten ausführen, die per InfiniBand miteinander verbunden sind.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen Anwendungen, einschließlich MPI-Anwendungen, auf Clustern mit virtuellen Microsoft Azure-Computern. HPC Pack unterstützt auch die Ausführung von Linux-HPC-Anwendungen auf virtuellen Computern für Linux-Computeknoten, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung in die Verwendung von Linux-Computeknoten mit HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md).
+Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen Anwendungen, einschließlich MPI-Anwendungen, auf Clustern mit virtuellen Microsoft Azure-Computern. HPC Pack unterstützt auch die Ausführung von Linux-HPC-Anwendungen auf virtuellen Computern für Linux-Computeknoten, die in einem HPC Pack-Cluster bereitgestellt werden. Eine Einführung in die Verwendung von Linux-Serverknoten mit HPC Pack finden Sie unter [Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
-## Einrichten eines HPC Pack-Clusters
-Laden Sie die HPC Pack-IaaS-Bereitstellungsskripts vom [Download Center](https://www.microsoft.com/de-DE/download/details.aspx?id=44949) herunter, und extrahieren Sie sie lokal.
+## <a name="set-up-an-hpc-pack-cluster"></a>Einrichten eines HPC Pack-Clusters
+Laden Sie die HPC Pack-IaaS-Bereitstellungsskripts vom [Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=44949) herunter, und extrahieren Sie sie lokal.
 
 Azure PowerShell ist hierfür erforderlich. Sollte PowerShell auf Ihrem lokalen Computer nicht konfiguriert sein, lesen Sie den Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
 
@@ -89,7 +93,7 @@ Unter Umständen müssen Sie die DNS-Weiterleitung korrigieren. Starten Sie hier
 2. Klicken Sie auf die Schaltfläche **Bearbeiten**, entfernen Sie alle Weiterleitungen, und klicken Sie danach auf **OK**.
 3. Aktivieren Sie das Kontrollkästchen **Stammhinweise verwenden, wenn keine Weiterleitungen verfügbar sind**, und klicken Sie auf **OK**.
 
-## Einrichten von Linux-Computeknoten
+## <a name="set-up-linux-compute-nodes"></a>Einrichten von Linux-Computeknoten
 Linux-Computeknoten werden mit der gleichen Bereitstellungsvorlage bereitgestellt, die auch zum Erstellen des Hauptknotens verwendet wurde.
 
 Kopieren Sie die Datei **MyCluster.xml** von Ihrem lokalen Computer auf den Hauptknoten, und aktualisieren Sie das Tag **NodeCount** mit der Anzahl von Knoten, die Sie bereitstellen möchten (<= 20). Stellen Sie sicher, dass in Ihrem Azure-Kontingent genügend Kerne verfügbar sind, da jede A9-Instanz 16 Kerne in Ihrem Abonnement belegt. Falls Sie innerhalb des gleichen Budgets mehr virtuelle Computer verwenden möchten, können Sie anstelle von A9-Instanzen A8-Instanzen (acht Kerne) verwenden.
@@ -101,7 +105,7 @@ Führen Sie die folgenden Azure PowerShell-Befehle in einer Eingabeaufforderung 
 1. Führen Sie **Add-AzureAccount** aus, um eine Verbindung mit Ihrem Azure-Abonnement herzustellen.
 2. Sollten Sie über mehrere Abonnements verfügen, führen Sie **Get-AzureSubscription** aus, um diese aufzulisten.
 3. Führen Sie den Befehl **Select-AzureSubscription -SubscriptionName xxxx -Default** aus, um ein Standardabonnement festzulegen.
-4. Führen Sie **.\\New-HPCIaaSCluster.ps1 -ConfigFile MyCluster.xml** aus, um die Bereitstellung von Linux-Computeknoten zu starten.
+4. Führen Sie **.\New-HPCIaaSCluster.ps1 -ConfigFile MyCluster.xml** aus, um die Bereitstellung von Linux-Serverknoten zu starten.
    
    ![Hauptknotenbereitstellung][hndeploy]
 
@@ -111,14 +115,14 @@ Führen Sie die folgenden Azure PowerShell-Befehle in einer Eingabeaufforderung 
 
 Nachdem nun alle Knoten im Cluster betriebsbereit sind, müssen noch einige weitere Infrastruktureinstellungen vorgenommen werden.
 
-## Einrichten der Azure-Dateifreigabe für Windows- und Linux-Knoten
+## <a name="set-up-an-azure-file-share-for-windows-and-linux-nodes"></a>Einrichten der Azure-Dateifreigabe für Windows- und Linux-Knoten
 Sie können den Azure-Dateidienst zum Speichern von Skripts, Anwendungspaketen und Datendateien verwenden. Der Azure-Dateidienst bietet zusätzlich zum Azure-BLOB-Speicher auch CIFS-Funktionen als permanenten Speicher. Diese Lösung ist zwar nicht besonders skalierbar, dafür aber sehr einfach und erfordert keine dedizierten virtuellen Computer.
 
 Erstellen Sie eine Azure-Dateifreigabe. Eine entsprechende Anleitung finden Sie im Artikel [Erste Schritte mit Azure File Storage unter Windows](../storage/storage-dotnet-how-to-use-files.md).
 
 Lassen Sie den Namen Ihres Speicherkontos (**saname**), den Namen der Dateifreigabe (**sharename**) und den Speicherkontoschlüssel (**sakey**) unverändert.
 
-### Einbinden der Azure-Dateifreigabe auf dem Hauptknoten
+### <a name="mount-the-azure-file-share-on-the-head-node"></a>Einbinden der Azure-Dateifreigabe auf dem Hauptknoten
 Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus, um die Anmeldeinformationen im Tresor des lokalen Computers zu speichern:
 
 ```
@@ -128,11 +132,12 @@ Lassen Sie den Namen Ihres Speicherkontos (**saname**), den Namen der Dateifreig
 Führen Sie dann den folgenden Befehl aus, um die Azure-Dateifreigabe einzubinden:
 
 ```
-    net use Z: \<saname>.file.core.windows.net<sharename> /persistent:yes
+    net use Z: \\<saname>.file.core.windows.net\<sharename> /persistent:yes
 ```
 
-### Einbinden der Azure-Dateifreigabe auf Linux-Computeknoten
-HPC Pack enthält unter anderem das praktische Tool „clusrun“. Mithilfe dieses Befehlszeilentools können Sie einen Befehl gleichzeitig für eine Gruppe von Computeknoten ausführen. Wir verwenden das Tool in diesem Fall, um die Azure-Dateifreigabe einzubinden und so zu konfigurieren, dass sie auch nach einem Neustart erhalten bleibt. Führen Sie auf dem Hauptknoten in einer Eingabeaufforderung mit erhöhten Rechten folgende Befehle aus:
+### <a name="mount-the-azure-file-share-on-linux-compute-nodes"></a>Einbinden der Azure-Dateifreigabe auf Linux-Computeknoten
+HPC Pack enthält unter anderem das praktische Tool „clusrun“. Mithilfe dieses Befehlszeilentools können Sie einen Befehl gleichzeitig für eine Gruppe von Computeknoten ausführen. Wir verwenden das Tool in diesem Fall, um die Azure-Dateifreigabe einzubinden und so zu konfigurieren, dass sie auch nach einem Neustart erhalten bleibt.
+Führen Sie auf dem Hauptknoten in einer Eingabeaufforderung mit erhöhten Rechten folgende Befehle aus:
 
 Erstellen des Bereitstellungsverzeichnisses:
 
@@ -152,16 +157,16 @@ Beibehalten der eingebundenen Freigabe:
     clusrun /nodegroup:LinuxNodes "echo //<saname>.file.core.windows.net/<sharename> /hpcdata cifs vers=2.1,username=<saname>,password='<sakey>',dir_mode=0777,file_mode=0777 >> /etc/fstab"
 ```
 
-## Installieren von STAR-CCM+
+## <a name="install-star-ccm"></a>Installieren von STAR-CCM+
 Die Azure-VM-Instanzen A8 und A9 bieten InfiniBand-Unterstützung und RDMA-Funktionen. Die Kernel-Treiber, die diese Funktionen ermöglichen, stehen im Azure Marketplace für Windows Server 2012 R2-, SUSE 12-, CentOS 6.5- und CentOS 7.1-Images zur Verfügung. Microsoft MPI und Intel MPI (Version 5.x) sind die beiden MPI-Bibliotheken, die diese Treiber in Azure unterstützen.
 
 CD-adapco STAR-CCM+ der Version 11.x und höher ist mit Intel MPI der Version 5.x gebündelt, sodass InfiniBand-Unterstützung für Azure enthalten ist.
 
-Laden Sie das Linux64 STAR-CCM+-Paket vom [CD-adapco-Portal](https://steve.cd-adapco.com) herunter. Wir haben in diesem Fall Version 11.02.010 mit gemischter Genauigkeit verwendet.
+Laden Sie das Linux64 STAR-CCM+-Paket vom [CD-adapco-Portal](https://steve.cd-adapco.com)herunter. Wir haben in diesem Fall Version 11.02.010 mit gemischter Genauigkeit verwendet.
 
 Erstellen Sie auf dem Hauptknoten in der Azure-Dateifreigabe **/hpcdata** ein Shellskript namens **setupstarccm.sh** mit folgendem Inhalt. Dieses Skript wird auf jedem Computeknoten zur lokalen Einrichtung von STAR-CCM+ verwendet.
 
-#### Beispielskript für „setupstarcm.sh“
+#### <a name="sample-setupstarcmsh-script"></a>Beispielskript für „setupstarcm.sh“
 ```
     #!/bin/bash
     # setupstarcm.sh to set up STAR-CCM+ locally
@@ -190,7 +195,7 @@ Erstellen Sie auf dem Hauptknoten in der Azure-Dateifreigabe **/hpcdata** ein Sh
 
 Während der Befehlsausführung können Sie mithilfe der Heatmap des Cluster-Managers die CPU-Auslastung überwachen. Nach einigen Minuten sollten alle Knoten ordnungsgemäß eingerichtet sein.
 
-## Ausführen von STAR-CCM+-Aufträgen
+## <a name="run-star-ccm-jobs"></a>Ausführen von STAR-CCM+-Aufträgen
 HPC Pack wird wegen seiner Auftragsplanerfunktionen zum Ausführen von STAR-CCM+-Aufträgen verwendet. Zu diesem Zweck benötigen wir einige Skripts, mit denen wir den Auftrag starten und STAR-CCM+ ausführen. Die Eingabedaten werden der Einfachheit halber zunächst auf der Azure-Dateifreigabe gespeichert.
 
 Das folgende PowerShell-Skript wird verwendet, um der Warteschlange einen STAR-CCM+-Auftrag hinzuzufügen. Es verwendet drei Argumente:
@@ -205,9 +210,9 @@ Die Knoten werden exklusiv für den Auftrag zugeordnet und können nicht für an
 
 Das Eingabemodell und das Skript **runstarccm.sh** werden in der zuvor eingebundenen Freigabe **/hpcdata** gespeichert.
 
-Die Protokolldateien werden mit der Auftrags-ID benannt und zusammen mit den STAR-CCM+-Ausgabedateien in der Freigabe **/hpcdata** gespeichert.
+Die Protokolldateien werden mit der Auftrags-ID benannt und zusammen mit den STAR-CCM+-Ausgabedateien in der Freigabe **/hpcdata**gespeichert.
 
-#### Beispielskript für „SubmitStarccmJob.ps1“
+#### <a name="sample-submitstarccmjobps1-script"></a>Beispielskript für „SubmitStarccmJob.ps1“
 ```
     Add-PSSnapin Microsoft.HPC -ErrorAction silentlycontinue
     $scheduler="headnodename"
@@ -233,7 +238,7 @@ Die Protokolldateien werden mit der Auftrags-ID benannt und zusammen mit den STA
 ```
 Ersetzen Sie **runner.java** durch Ihr bevorzugtes STAR-CCM+-Javamodell-Startprogramm und Ihren bevorzugten Protokollierungscode.
 
-#### Beispielskript für „runstarccm.sh“
+#### <a name="sample-runstarccmsh-script"></a>Beispielskript für „runstarccm.sh“
 ```
     #!/bin/bash
     echo "start"
@@ -279,11 +284,11 @@ Ersetzen Sie **runner.java** durch Ihr bevorzugtes STAR-CCM+-Javamodell-Startpro
     exit ${RTNSTS}
 ```
 
-In unserem Test haben wir ein Power-On-Demand-Lizenztoken verwendet. Für dieses Token müssen Sie die Umgebungsvariable **$CDLMD\_LICENSE\_FILE** auf **1999@flex.cd-adapco.com** und außerdem den Schlüssel in der Befehlszeilenoption **-podkey** festlegen.
+In unserem Test haben wir ein Power-On-Demand-Lizenztoken verwendet. Für dieses Token müssen Sie die Umgebungsvariable **$CDLMD_LICENSE_FILE** auf **1999@flex.cd-adapco.com** und außerdem den Schlüssel in der Befehlszeilenoption **-podkey** festlegen.
 
-Nach der Initialisierung extrahiert das Skript aus den von HPC Pack festgelegten Umgebungsvariablen vom Typ **$CCP\_NODES\_CORES** eine Liste mit Knoten zum Erstellen einer Hostdatei für das MPI-Startprogramm. Diese Hostdatei enthält eine Liste mit den Computeknotennamen für den Auftrag (jeweils ein Name pro Zeile).
+Nach der Initialisierung extrahiert das Skript aus den von HPC Pack festgelegten Umgebungsvariablen **$CCP_NODES_CORES** eine Liste mit Knoten zum Erstellen einer Hostdatei für das MPI-Startprogramm. Diese Hostdatei enthält eine Liste mit den Computeknotennamen für den Auftrag (jeweils ein Name pro Zeile).
 
-Für das Format von **$CCP\_NODES\_CORES** wird das folgende Muster verwendet:
+Für das Format von **$CCP_NODES_CORES** wird das folgende Muster verwendet:
 
 ```
 <Number of nodes> <Name of node1> <Cores of node1> <Name of node2> <Cores of node2>...`
@@ -311,7 +316,7 @@ Vergewissern Sie sich vor dem Starten eines Auftrags im Cluster-Manager, dass di
     .\ SubmitStarccmJob.ps1 <model> <nbNodes> <nbCoresPerNode>
 ```
 
-## Anhalten von Knoten
+## <a name="stop-nodes"></a>Anhalten von Knoten
 Nach Abschluss der Tests können Sie Knoten mithilfe der folgenden HPC Pack-PowerShell-Befehle beenden und starten:
 
 ```
@@ -319,14 +324,18 @@ Nach Abschluss der Tests können Sie Knoten mithilfe der folgenden HPC Pack-Powe
     Start-HPCIaaSNode.ps1 -Name <prefix>-00*
 ```
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie, andere Linux-Workloads auszuführen. Siehe hierzu z.B.:
 
-* [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md)
-* [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
+* [Ausführen von NAMD mit dem Microsoft HPC Pack auf Linux-Computeknoten in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Ausführen von OpenFOAM mit Microsoft HPC Pack auf einem Linux-RDMA-Cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
 <!--Image references-->
 [hndeploy]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]: ./media/virtual-machines-linux-classic-hpcpack-cluster-starccm/ClusterManager.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie mithilfe der Service Fabric-Middlewareplattform Microservices für cloudbasierte Anwendungen verpacken und bereitstellen. Tutorials, API-Referenzen und Codebeispiele."
 translationtype: Human Translation
-ms.sourcegitcommit: 6d6459646a269212364822ef6797b5850c2b0c2a
-ms.openlocfilehash: 0598e5ea3dc95853a21a56326241a82854477cbe
+ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
+ms.openlocfilehash: d9b4e3b3df6760b15e151c5eab37c9f534784de8
 
 ---
 #<a name="service-fabric-documentation"></a>Service Fabric-Dokumentation
 
-Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. 
+Hier erfahren Sie, wie Sie mithilfe von Service Fabric skalierbare und zuverlässige Microservices verpacken, bereitstellen und verwalten. Anhand von Tutorials, API-Referenzen und Codebeispielen wird gezeigt, wie Sie mithilfe dieser Middlewareplattform cloudbasierte Anwendungen erstellen und verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -148,16 +149,10 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 </ul>   
 
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/service-fabric.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Service Fabric-Dokumentation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2016
+ms.date: 01/25/2017
 ms.author: DavidBosland
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
@@ -26,19 +26,19 @@ Am 15. März 2016 werden wir den „Reseller Incentive“ für Cloud-Lösungsa
 Um Ihren „Reseller Incentive“-Status anzuzeigen oder zu ändern, gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich bei Ihrem [Microsoft Azure-Veröffentlichungskonto](https://publish.windowsazure.com/workspace)
-   
+
    ![Landing Page des Profils][1]
 2. Klicken Sie auf **Herausgeber**
-   
+
    ![Landing Page des Profils – Herausgeberlink][2]
 3. Beachten Sie die Informationen zu CSPs in Ihrem Profil.  Es gibt einen **Schalter, um „Ja“ oder „Nein“ zu sagen** zum „Reseller Incentive“ – der Standardstatus ist „Ja“.
-   
+
    ![Profil – Herausgeber][3]
 4. Um Ihren „Reseller Incentive“-Status zu ändern, greifen Sie auf Ihr Herausgeberprofil zu, treffen Sie Ihre Wahl und speichern Sie sie:
-   
+
    * Wählen Sie **Ja** , um den CSPs 20 % Rabatt zu bieten, die die Anwendungen und Dienste verkaufen, die Sie im Azure Marketplace aufgelistet haben.  Oder wählen Sie **Nein** , um nicht an diesem Anreizprogramm teilzunehmen.  In beiden Fällen erhält der Herausgeber die gleiche Auszahlung.
    * Wenn Sie Ihre Wahl getroffen haben, klicken Sie unbedingt in der oberen rechten Ecke auf **Speichern** .
-   
+
    ![Profil – Herausgeber – Änderungsfelder][4]
 
 [1]: ./media/marketplace-publishing-csp-incentive/profile-stock.png

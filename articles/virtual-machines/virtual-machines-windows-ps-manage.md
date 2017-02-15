@@ -2,37 +2,41 @@
 title: Verwalten von virtuellen Computern mit Resource Manager und PowerShell | Microsoft Docs
 description: Verwalten Sie virtuelle Computer mit Azure Resource Manager und PowerShell
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: davidmu1
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 48930854-7888-4e4c-9efb-7d1971d4cc14
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2016
+ms.date: 09/27/2016
 ms.author: davidmu
+translationtype: Human Translation
+ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
+ms.openlocfilehash: 63e822de6ae50be33590048140e06e89526282ee
+
 
 ---
-# Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell
-## Installieren von Azure PowerShell
-Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) finden Sie Informationen dazu, wie Sie die neueste Version von Azure PowerShell installieren, das gewünschte Abonnement auswählen und sich bei Ihrem Azure-Konto anmelden.
+# <a name="manage-azure-virtual-machines-using-resource-manager-and-powershell"></a>Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell
+## <a name="install-azure-powershell"></a>Installieren von Azure Powershell
+Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 
-## Festlegen von Variablen
+## <a name="set-variables"></a>Festlegen von Variablen
 Alle Befehle in diesem Artikel benötigen den Namen der Ressourcengruppe, in der sich der virtuelle Computer befindet, und den Name des zu verwaltenden virtuellen Computers. Ersetzen Sie den Wert von **$rgName** durch den Namen der Ressourcengruppe, die den virtuellen Computer enthält. Ersetzen Sie den Wert von **$vmName** durch den Namen des virtuellen Computers. Erstellen Sie die Variablen.
 
     $rgName = "resource-group-name"
     $vmName = "VM-name"
 
-## Anzeigen von Informationen zu einem virtuellen Computer
+## <a name="display-information-about-a-virtual-machine"></a>Anzeigen von Informationen zu einem virtuellen Computer
 Rufen Sie die Informationen zum virtuellen Computers ab.
 
     Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 
-Folgendes sollte angezeigt werden:
+Die Rückgabe sollte in etwa wie das folgende Beispiel aussehen:
 
     ResourceGroupName        : rg1
     Id                       : /subscriptions/{subscription-id}/resourceGroups/
@@ -100,19 +104,8 @@ Folgendes sollte angezeigt werden:
     NetworkInterfaceIDs      : {/subscriptions/{subscription-id}/resourceGroups/
                                 rg1/providers/Microsoft.Network/networkInterfaces/nc1}
 
-## Starten eines virtuellen Computers
-Starten Sie den virtuellen Computer.
-
-    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-
-Nach ein paar Minuten sollte eine Ausgabe ähnlich der folgenden angezeigt werden:
-
-    RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
-    ---------  -------------------  ----------  ------------
-                              True          OK  OK
-
-## Beenden eines virtuellen Computers
-Beenden Sie den virtuellen Computer.
+## <a name="stop-a-virtual-machine"></a>Beenden eines virtuellen Computers
+Beenden Sie den ausgeführten virtuellen Computer.
 
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 
@@ -124,25 +117,38 @@ Sie werden aufgefordert, den Vorgang zu bestätigen:
 
 Geben Sie **Y** ein, um den virtuellen Computer zu beenden.
 
-Nach ein paar Minuten sollte eine Ausgabe ähnlich der folgenden angezeigt werden:
+Nach wenigen Minuten sollte eine Rückgabe ähnlich dem folgenden Beispiel angezeigt werden:
 
-    RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
-    ---------  -------------------  ----------  ------------
-                              True          OK  OK
+    StatusCode : Succeeded
+    StartTime  : 9/13/2016 12:11:57 PM
+    EndTime    : 9/13/2016 12:14:40 PM
 
-## Neustarten eines virtuellen Computers
-Starten Sie den virtuellen Computer neu.
+## <a name="start-a-virtual-machine"></a>Starten eines virtuellen Computers
+Starten Sie den virtuellen Computer (sofern dieser angehalten wurde).
+
+    Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+
+Nach wenigen Minuten sollte eine Rückgabe ähnlich dem folgenden Beispiel angezeigt werden:
+
+    StatusCode : Succeeded
+    StartTime  : 9/13/2016 12:32:55 PM
+    EndTime    : 9/13/2016 12:35:09 PM
+
+Wenn Sie einen virtuellen Computer neu starten möchten, der bereits ausgeführt wird, verwenden Sie **Restart-AzureRmVM**. Diese Vorgehensweise wird nachfolgend beschrieben.
+
+## <a name="restart-a-virtual-machine"></a>Neustarten eines virtuellen Computers
+Starten Sie den ausgeführten virtuellen Computer neu.
 
     Restart-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 
-Folgendes sollte angezeigt werden:
+Die Rückgabe sollte in etwa wie das folgende Beispiel aussehen:
 
-    RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
-    ---------  -------------------  ----------  ------------
-                              True          OK  OK
+    StatusCode : Succeeded
+    StartTime  : 9/13/2016 12:54:40 PM
+    EndTime    : 9/13/2016 12:55:54 PM
 
-## Löschen eines virtuellen Computers
-Löschen Sie den virtuellen Computer.
+## <a name="delete-a-virtual-machine"></a>Löschen eines virtuellen Computers
+Löschen Sie den virtuellen Computer.  
 
     Remove-AzureRmVM -ResourceGroupName $rgName –Name $vmName
 
@@ -151,19 +157,19 @@ Löschen Sie den virtuellen Computer.
 > 
 > 
 
-Wenn Sie den Parameter "-Force" nicht verwendet haben, werden Sie aufgefordert, den Vorgang zu bestätigen:
+Wenn Sie den Parameter „-Force“ nicht verwendet haben, werden Sie aufgefordert, den Vorgang zu bestätigen:
 
     Virtual machine removal operation
     This cmdlet will remove the specified virtual machine. Do you want to continue?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
-Folgendes sollte angezeigt werden:
+Die Rückgabe sollte in etwa wie das folgende Beispiel aussehen:
 
     RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
     ---------  -------------------  ----------  ------------
                               True          OK  OK
 
-## Ändern der Größe eines virtuellen Computers
+## <a name="update-a-virtual-machine"></a>Aktualisieren eines virtuellen Computers
 Dieses Beispiel zeigt, wie Sie die Größe des virtuellen Computers aktualisieren.
 
     $vmSize = "Standard_A1"
@@ -171,29 +177,29 @@ Dieses Beispiel zeigt, wie Sie die Größe des virtuellen Computers aktualisiere
     $vm.HardwareProfile.vmSize = $vmSize
     Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 
-Folgendes sollte angezeigt werden:
+Die Rückgabe sollte in etwa wie das folgende Beispiel aussehen:
 
     RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
     ---------  -------------------  ----------  ------------
                               True          OK  OK
 
-Eine Liste mit den verfügbaren Größen für einen virtuellen Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md).
+Eine Liste mit den verfügbaren Größen für einen virtuellen Computer finden Sie unter [Größen für virtuelle Computer in Azure](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
 
-## Hinzufügen eines Datenträgers zu einem virtuellen Computer
+## <a name="add-a-data-disk-to-a-virtual-machine"></a>Hinzufügen eines Datenträgers zu einem virtuellen Computer
 Dieses Beispiel zeigt, wie Sie einem vorhandenen virtuellen Computer einen Datenträger hinzufügen.
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
     Add-AzureRmVMDataDisk -VM $vm -Name "disk-name" -VhdUri "https://mystore1.blob.core.windows.net/vhds/datadisk1.vhd" -LUN 0 -Caching ReadWrite -DiskSizeinGB 1 -CreateOption Empty
     Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 
-Der hinzugefügte Datenträger ist nicht initialisiert. Wenn Sie den Datenträger initialisieren möchten, können Sie sich bei dem Datenträger anmelden und die Datenträgerverwaltung verwenden. Wenn Sie bei der Erstellung WinRM und ein Zertifikat darauf installiert haben, können Sie den Datenträger mit einem PowerShell-Remoteaufruf initialisieren. Alternativ können Sie auch eine benutzerdefinierte Skripterweiterung verwenden:
+Der hinzugefügte Datenträger ist nicht initialisiert. Wenn Sie den Datenträger initialisieren möchten, können Sie sich bei dem Datenträger anmelden und die Datenträgerverwaltung verwenden. Wenn Sie bei der Erstellung WinRM und ein Zertifikat darauf installiert haben, können Sie den Datenträger mit einem PowerShell-Remoteaufruf initialisieren. Alternativ können Sie auch eine benutzerdefinierte Skripterweiterung verwenden: 
 
     $location = "location-name"
     $scriptName = "script-name"
     $fileName = "script-file-name"
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 
-Der Skriptdateiinhalt für die Datenträgerinitialisierung kann etwa wie folgt aussehen:
+Der Skriptdateiinhalt für die Datenträgerinitialisierung kann etwa wie folgender Code aussehen:
 
     $disks = Get-Disk |   Where partitionstyle -eq 'raw' | sort number
 
@@ -211,7 +217,12 @@ Der Skriptdateiinhalt für die Datenträgerinitialisierung kann etwa wie folgt a
         $count++
     }
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Sollten bei einer Bereitstellung Probleme aufgetreten sein, helfen Ihnen ggf. die Informationen unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) weiter.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Dec16_HO2-->
+
+

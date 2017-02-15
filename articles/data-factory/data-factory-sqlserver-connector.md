@@ -621,7 +621,7 @@ Anschließend ordnen Sie Spalten aus dem Quelldataset Spalten im Zieldataset zu.
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
-### <a name="type-mapping-for-sql-server-azure-sql"></a>Typzuordnung für SQL Server und Azure SQL
+### <a name="type-mapping-for-sql-server--azure-sql"></a>Typzuordnung für SQL Server und Azure SQL
 Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
 
 1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ

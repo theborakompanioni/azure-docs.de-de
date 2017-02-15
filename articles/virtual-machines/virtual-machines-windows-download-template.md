@@ -1,13 +1,13 @@
 ---
-title: Create a VM image from an Azure VM | Microsoft Docs
-description: Learn how to create a generalized VM image from an existing Azure VM created in the Resource Manager deployment model
+title: Erstellen eines VM-Images aus einem virtuellen Azure-Computer | Microsoft Docs
+description: Es wird beschrieben, wie Sie ein generalisiertes VM-Image aus einer vorhandenen Azure-VM erstellen, die auf dem Resource Manager-Bereitstellungsmodell basiert.
 services: virtual-machines-windows
-documentationcenter: ''
+documentationcenter: 
 author: cynthn
 manager: timlt
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,18 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: cynthn
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: b6dffec166ffe8e04c5d7b701aef009bf7b72d45
+
 
 ---
-# <a name="download-the-template-for-a-vm"></a>Download the template for a VM
-When you create a VM in Azure using the portal or PowerShell, a Resource Manager template is automatically created for you. You can use this template to quickly duplicate a deployment. The template contains information about all of the resources in a resource group. For a virtual machine, this means the template containers everything that is created in support of the VM in that resource group, including the networking resources.
+# <a name="download-the-template-for-a-vm"></a>Herunterladen einer Vorlage für einen virtuellen Computer
+Wenn Sie über das Portal oder mithilfe von PowerShell einen virtuellen Computer in Azure erstellen, wird automatisch eine Resource Manager-Vorlage für Sie erstellt. Sie können diese Vorlage verwenden, um eine Bereitstellung schnell zu duplizieren. Die Vorlage enthält Informationen über alle Ressourcen in einer Ressourcengruppe. Bei virtuellen Computern bedeutet dies, dass die Vorlage alle Elemente enthält, die zur Unterstützung des virtuellen Computers in dieser Ressourcengruppe erstellt wurden – einschließlich der Netzwerkressourcen.
 
-## <a name="download-the-template-using-the-portal"></a>Download the template using the portal
-1. Log in to the [Azure portal](https://portal.azure.com/).
-2. One the hub menu, select **Virtual Machines**.
-3. Select the virtual machine from the list.
-4. Select **Automation script**.
-5. Select **Download** and save the .zip file to your local computer.
-6. Open the .zip file and extract the files to a folder. The .zip file will contain:
+## <a name="download-the-template-using-the-portal"></a>Herunterladen der Vorlage über das Portal
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Wählen Sie im Hubmenü die Option **Virtuelle Computer** aus.
+3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
+4. Wählen Sie **Automatisierungsskript** aus.
+5. Wählen Sie **Herunterladen**, und speichern Sie die ZIP-Datei auf Ihrem lokalen Computer.
+6. Öffnen Sie die ZIP-Datei, und extrahieren Sie die Dateien in einen Ordner. Die ZIP-Datei enthält Folgendes:
    
    * deploy.ps1
    * deploy.sh 
@@ -35,18 +39,21 @@ When you create a VM in Azure using the portal or PowerShell, a Resource Manager
    * parameters.json
    * template.json
 
-The .json file is the template.
+Die JSON-Datei ist die Vorlage.
 
-## <a name="download-the-template-using-powershell"></a>Download the template using PowerShell
-You can also download the .json template file using the [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) cmdlet. You can use the `-path` parameter to provide the filename and path for the .json file. This example shows how to download the template for the resource group named **myResourceGroup** to the **C:\users\public\downloads** folder on your local computer.
+## <a name="download-the-template-using-powershell"></a>Herunterladen der Vorlage mithilfe von PowerShell
+Sie können die JSON-Vorlagendatei auch mithilfe des Cmdlets [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) herunterladen. Sie können den Parameter `-path` verwenden, um den Dateinamen und den Pfad für die JSON-Datei anzugeben. Dieses Beispiel zeigt, wie Sie die Vorlage für die Ressourcengruppe mit dem Namen **myResourceGroup** in den Ordner **C:\users\public\downloads** auf Ihrem lokalen Computer herunterladen.
 
 ```powershell
     Export-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
-## <a name="next-steps"></a>Next steps
-To learn more about deploying resources using templates, see [Resource Manager template walkthrough](../resource-manager-template-walkthrough.md).
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zum Bereitstellen von Ressourcen mithilfe von Vorlagen finden Sie unter [Resource Manager-Vorlage – exemplarische Vorgehensweise](../resource-manager-template-walkthrough.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

@@ -1,12 +1,12 @@
 ---
 title: StorSimple-Systembegrenzungen | Microsoft Docs
-description: Beschreibt Systembegrenzungen und empfohlene Größen für StorSimple-Komponenten und Verbindungen der 8000 Serie.
+description: "Beschreibt Systembegrenzungen und empfohlene Größen für StorSimple-Komponenten und Verbindungen der 8000 Serie."
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: ''
-
+editor: 
+ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/06/2016
 ms.author: alkohli
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 884f9ad8cf3c0862fa0f235ee19efd0dbdadbab6
+
 
 ---
 # <a name="storsimple-system-limits"></a>StorSimple-Systemeinschränkungen
@@ -27,8 +31,8 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Maximale Anzahl von Volumes |255 | |
 | Maximale Anzahl von lokalen Volumes |32 | |
 | Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 * 7). |
-| Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
-| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br>  64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
+| Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
+| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br>  64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
 | Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |8,5 TB für 8100 <br></br>  22,5 TB für 8600 |8100 und 8600 sind physische Geräte. |
 | Maximale Anzahl von iSCSI-Verbindungen |512 | |
 | Maximale Anzahl von iSCSI-Verbindungen von Initiatoren |512 | |
@@ -53,6 +57,9 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [StorSimple-Systemanforderungen](storsimple-system-requirements.md). 
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

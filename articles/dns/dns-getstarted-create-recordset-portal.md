@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: 194da45bade88c2866aaf6066d312d125f1ac2cb
+ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
+ms.openlocfilehash: b3951106fe2e8607e65bd0ae47fa2ea3346b8ca5
 
 ---
 
@@ -28,17 +28,21 @@ ms.openlocfilehash: 194da45bade88c2866aaf6066d312d125f1ac2cb
 > * [PowerShell](dns-getstarted-create-recordset.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
 
-Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mit dem Azure-Portal. Nach dem Erstellen der DNS-Zone fügen Sie die DNS-Ressourceneinträge für Ihre Domäne hinzu. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
+Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mit dem Azure-Portal. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## <a name="create-a-record-set-and-record"></a>Erstellen eines Ressourceneintragssatzes und eines Ressourceneintrags
+In allen Beispielen auf dieser Seite werden DNS-Einträge vom Typ „A“ verwendet. Der Prozess für andere Eintragstypen ist ähnlich.
 
-Im folgenden Beispiel wird die Erstellung eines Ressourceneintragssatzes und von Einträgen mit dem Azure-Portal schrittweise erläutert. Wir verwenden den DNS-Eintragstyp „A“.
+Wenn Ihr neuer Eintrag den gleichen Namen und Typ besitzt wie ein bereits vorhandener Eintrag, müssen Sie ihn dem vorhandenen Ressourceneintragssatz hinzufügen&mdash;. Informationen finden Sie unter [Verwalten von DNS-Einträgen und -Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md). Besitzt Ihr neuer Eintrag einen anderen Namen und Typ als alle bereits vorhandenen Einträge, müssen Sie wie weiter unten beschrieben einen neuen Ressourceneintragssatz erstellen.
+
+## <a name="create-records-in-a-new-record-set"></a>Erstellen von Einträgen in einem neuen Ressourceneintragssatz
+
+Im folgenden Beispiel wird die Erstellung eines Ressourceneintragssatzes und von Einträgen mit dem Azure-Portal schrittweise erläutert.
 
 1. Melden Sie sich beim Portal an.
 2. Gehen Sie zum Blatt der **DNS-Zone** , in der Sie einen Ressourceneintragssatz erstellen möchten.
-3. Wählen Sie oben auf dem Blatt **DNS-Zone** die Option **Ressourceneintragssatz** aus, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
+3. Wählen Sie oben auf dem Blatt **DNS-Zone** die Option **+ Ressourceneintragssatz** aus, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
 
     ![Neuer Ressourceneintragssatz](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
 
@@ -48,17 +52,34 @@ Im folgenden Beispiel wird die Erstellung eines Ressourceneintragssatzes und von
 
 5. Wählen Sie den gewünschten Eintragstyp. Wählen Sie z.B. **A**.
 6. Legen Sie die **Gültigkeitsdauer**fest. Die Gültigkeitsdauer im Portal beträgt standardmäßig eine Stunde.
-7. Fügen Sie die IP-Adressen hinzu, eine IP-Adresse pro Zeile. Wenn Sie den oben vorgeschlagenen Ressourceneintragssatz-Namen und Eintragstyp wählen, wird die IPv4-IP-Adresse dem **A** -Eintrag für den „www“-Ressourceneintragssatz hinzugefügt.
+7. Fügen Sie die Details der einzelnen Einträge im Ressourceneintragssatz hinzu. Da der Eintragstyp „A“ lautet, müssen Sie in diesem Fall die IP-Adressen des A-Eintrags (eine IP-Adresse pro Zeile) hinzufügen.
 8. Nachdem Sie die IP-Adressen hinzugefügt haben, wählen Sie **OK** am unteren Rand des Blatts. Der DNS-Ressourceneintragssatz wird erstellt.
+
+### <a name="verify-name-resolution"></a>Überprüfen der Namensauflösung
+
+Mithilfe von DNS-Tools wie nslookup oder dig oder mit dem [PowerShell-Cmdlet Resolve-DnsName](https://technet.microsoft.com/library/jj590781.aspx) können Sie testen, ob Ihre DNS-Einträge auf den Azure DNS-Namenservern vorhanden sind.
+
+Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS zu verwenden, müssen Sie [die DNS-Abfrage direkt an einen der Namenserver für Ihre Zone richten](dns-getstarted-create-dnszone.md#test-name-servers). Fügen Sie im folgenden Befehl die passenden Werte für Ihre Eintragszone ein.
+
+    nslookup
+    > set type=A
+    > server ns1-01.azure-dns.com
+    > www.contoso.com
+
+    Server:  ns1-01.azure-dns.com
+    Address:  40.90.4.1
+
+    Name:    www.contoso.com
+    Address:  1.2.3.4
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Informieren Sie sich, wie Sie [Ihren Domänennamen an die Azure DNS-Namenserver delegieren](dns-domain-delegation.md).
+
 Informationen zur Verwaltung Ihrer Ressourceneintragssätze und Einträge finden Sie unter [So erstellen und verwalten Sie DNS-Einträge und Ressourceneintragssätze mit dem Azure-Portal](dns-operations-recordsets-portal.md).
 
-Weitere Informationen zu Azure DNS finden Sie unter [Azure DNS – Übersicht](dns-overview.md).
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

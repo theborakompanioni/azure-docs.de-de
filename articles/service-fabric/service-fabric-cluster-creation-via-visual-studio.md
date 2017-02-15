@@ -5,8 +5,8 @@ services: service-fabric
 documentationcenter: .net
 author: karolz-ms
 manager: adegeo
-editor: ''
-
+editor: 
+ms.assetid: bd2c0511-36c9-4828-8dc3-69e4b6a70567
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2016
 ms.author: karolz@microsoft.com
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 01498faf6d150cb0a96af150d6c9ce1ed62c26dd
+
 
 ---
 # <a name="set-up-a-service-fabric-cluster-by-using-visual-studio"></a>Einrichten eines Service Fabric-Clusters mit Visual Studio
@@ -49,12 +53,12 @@ Bevor die Vorlage bereitgestellt wird, um den Cluster zu erstellen, müssen Sie 
 
 Die Visual Studio Service Fabric-Ressourcen-Manager-Vorlage erstellt einen sicheren Cluster, der durch ein Zertifikat geschützt ist. Dieses Zertifikat wird durch die letzten drei Vorlagenparameter (`certificateThumbprint`, `sourceVaultValue` und `certificateUrlValue`) identifiziert und muss in einer **Azure Key Vault**-Instanz vorhanden sein. Weitere Informationen zum Erstellen des Sicherheitszertifikats des Clusters finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](service-fabric-cluster-security.md#x509-certificates-and-service-fabric) .
 
-## <a name="optional:-change-the-cluster-name"></a>Optional: Ändern des Clusternamens
+## <a name="optional-change-the-cluster-name"></a>Optional: Ändern des Clusternamens
 Jeder Service Fabric-Cluster verfügt über einen Namen. Wenn ein Fabric-Cluster in Azure erstellt wird, bestimmt der Clustername (zusammen mit der Azure-Region) den DNS-Namen (Domain Name System) für den Cluster. Beispiel: Wenn Sie Ihren Cluster `myBigCluster` nennen und ihn in einer Ressourcengruppe am Standort (bzw. in der Azure-Region) „USA, Osten“ hosten, lautet der DNS-Name des Clusters `myBigCluster.eastus.cloudapp.azure.com`.
 
 Standardmäßig wird der Name des Clusters automatisch generiert und durch Anfügen eines zufälligen Suffixes an das Präfix „cluster“ eindeutig festgelegt. So kann die Vorlage sehr einfach als Teil eines **Continuous Integration** -Systems (CI) verwendet werden. Wenn Sie einen bestimmten (für Sie aussagekräftigen) Namen für den Cluster verwenden möchten, legen Sie den Wert der `clusterName`-Variablen in der Resource Manager-Vorlagendatei (`ServiceFabricCluster.json`) auf Ihren ausgewählten Namen fest. Diese Variable ist die erste Variable, die in der Datei definiert ist.
 
-## <a name="optional:-add-public-application-ports"></a>Optional: Hinzufügen öffentlicher Anwendungsports
+## <a name="optional-add-public-application-ports"></a>Optional: Hinzufügen öffentlicher Anwendungsports
 Vielleicht möchten Sie auch die öffentlichen Anwendungsports für den Cluster vor seiner Bereitstellung ändern. Standardmäßig öffnet die Vorlage nur zwei öffentliche TCP-Ports (80 und 8081). Wenn Sie für Ihre Anwendungen mehr benötigen, ändern Sie die Azure-Load Balancer-Definition in der Vorlage. Die Definition ist in der Hauptvorlagendatei (`ServiceFabricCluster.json`) gespeichert. Öffnen Sie diese Datei, und suchen Sie nach `loadBalancedAppPort`. Jeder Port ist drei Artefakten zugeordnet:
 
 1. Einer Vorlagenvariablen, die den Wert für den TCP-Port definiert:
@@ -142,6 +146,6 @@ Wenn Fehler auftreten, wechseln Sie zum [Azure-Portal](https://portal.azure.com/
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

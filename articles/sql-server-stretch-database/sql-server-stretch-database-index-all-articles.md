@@ -1,12 +1,12 @@
 ---
 title: Alle Themen zum SQL Server Stretch-Datenbankdienst | Microsoft Docs
-description: Tabelle mit allen Themen für den Azure-Dienst namens „SQL Server Stretch-Datenbank“ unter „https://azure.microsoft.com/de-de/documentation/articles/“, Titel und Beschreibung
+description: "Tabelle mit allen Themen für den Azure-Dienst namens „SQL Server Stretch-Datenbank“ unter „https://azure.microsoft.com/de-de/documentation/articles/“, Titel und Beschreibung"
 services: sql-server-stretch-database
-documentationcenter: ''
+documentationcenter: 
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
-
+ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
 ms.service: sql-server-stretch-database
 ms.workload: sql-server-stretch-database
 ms.tgt_pltfrm: na
@@ -14,6 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: DouglasL
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 33f23d324a843165d7fe6016ee626e369acfc958
+
 
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Alle Themen für den SQL Server Stretch-Datenbankdienst
@@ -54,6 +58,9 @@ Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Date
 | 14 |[Sichern von Stretch-fähigen Datenbanken](sql-server-stretch-database-backup.md) |Erfahren Sie mehr über das Sichern von Stretch\-fähigen Datenbanken. |
 | 15 |[Wiederherstellen von Stretch-fähigen Datenbanken](sql-server-stretch-database-restore.md) |Erfahren Sie mehr über das Wiederherstellen von Stretch\-fähigen Datenbanken. |
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

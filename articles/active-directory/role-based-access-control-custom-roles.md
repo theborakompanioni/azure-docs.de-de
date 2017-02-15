@@ -1,12 +1,12 @@
 ---
 title: Benutzerdefinierte Rollen in Azure RBAC | Microsoft Docs
-description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung in Azure für eine präzisere Identitätsverwaltung in Ihrem Azure-Abonnement definieren.
+description: "Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung in Azure für eine präzisere Identitätsverwaltung in Ihrem Azure-Abonnement definieren."
 services: active-directory
-documentationcenter: ''
+documentationcenter: 
 author: kgremban
 manager: kgremban
-editor: ''
-
+editor: 
+ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,9 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2016
 ms.author: kgremban
+translationtype: Human Translation
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: b5ffc0f9d337c776f2702aa95d991d1b57829f3b
+
 
 ---
-# Benutzerdefinierte Rollen in Azure RBAC
+# <a name="custom-roles-in-azure-rbac"></a>Benutzerdefinierte Rollen in Azure RBAC
 Erstellen Sie eine benutzerdefinierte Rolle in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC), falls keine der integrierten Rollen Ihre speziellen Zugriffsanforderungen erfüllt. Benutzerdefinierte Rollen können mit [Azure PowerShell](role-based-access-control-manage-access-powershell.md), der [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md) (Command-Line Interface, CLI) und der [REST-API](role-based-access-control-manage-access-rest.md) erstellt werden. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Anwendungen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten gespeichert und können von allen Abonnements gemeinsam genutzt werden, die diesen Mandanten als Azure AD-Verzeichnis für das Abonnement nutzen.
 
 Es folgt ein Beispiel für eine benutzerdefinierte Rolle zum Überwachen und Neustarten virtueller Computer:
@@ -49,8 +53,8 @@ Es folgt ein Beispiel für eine benutzerdefinierte Rolle zum Überwachen und Neu
   ]
 }
 ```
-## Actions
-Mit der **Actions**-Eigenschaft einer benutzerdefinierten Rolle werden die Azure-Vorgänge angegeben, auf die mit der Rolle Zugriff gewährt wird. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Vorgangszeichenfolgen mit Platzhaltern (*) gewähren Zugriff auf alle Vorgänge, die mit der Vorgangszeichenfolge übereinstimmen. Beispiel:
+## <a name="actions"></a>Actions
+Mit der **Actions** -Eigenschaft einer benutzerdefinierten Rolle werden die Azure-Vorgänge angegeben, auf die mit der Rolle Zugriff gewährt wird. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Vorgangszeichenfolgen mit Platzhaltern (\*) gewähren Zugriff auf alle Vorgänge, die mit der Vorgangszeichenfolge übereinstimmen. Beispiel:
 
 * `*/read` gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen aller Azure-Ressourcenanbieter.
 * `Microsoft.Network/*/read` gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen im Microsoft.Network-Ressourcenanbieter von Azure.
@@ -73,17 +77,17 @@ azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js
 azure provider operations show "Microsoft.Network/*"
 ```
 
-![Azure-Befehlszeilenschnittstelle – Screenshot: azure provider operations show „Microsoft.Compute/virtualMachines/*/action“](./media/role-based-access-control-configure/1-azure-provider-operations-show.png)
+![Azure-Befehlszeilenschnittstelle – Screenshot: azure provider operations show „Microsoft.Compute/virtualMachines/\*/action“ ](./media/role-based-access-control-configure/1-azure-provider-operations-show.png)
 
-## NotActions
-Verwenden Sie die **NotActions**-Eigenschaft, wenn der Satz von Vorgängen, die Sie zulassen möchten, durch Ausschließen eingeschränkter Vorgänge leichter zu definieren ist. Der von einer benutzerdefinierten Rolle gewährte Zugriff wird berechnet, indem die **NotActions**-Vorgänge von den **Actions**-Vorgängen abgezogen werden.
+## <a name="notactions"></a>NotActions
+Verwenden Sie die **NotActions** -Eigenschaft, wenn der Satz von Vorgängen, die Sie zulassen möchten, durch Ausschließen eingeschränkter Vorgänge leichter zu definieren ist. Der von einer benutzerdefinierten Rolle gewährte Zugriff wird berechnet, indem die **NotActions**-Vorgänge von den **Actions**-Vorgängen abgezogen werden.
 
 > [!NOTE]
 > Wenn einem Benutzer eine Rolle zugewiesen wird, mit der ein Vorgang in **NotActions** ausgeschlossen wird, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf denselben Vorgang gewährt wird, kann der Benutzer den Vorgang durchführen. **NotActions** ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Vorgänge zu erstellen, wenn bestimmte Vorgänge ausgeschlossen werden müssen.
 > 
 > 
 
-## AssignableScopes
+## <a name="assignablescopes"></a>AssignableScopes
 Mit der **AssignableScopes**-Eigenschaft der benutzerdefinierten Rolle werden die Bereiche (Abonnements, Ressourcengruppen oder Ressourcen) angegeben, in denen die benutzerdefinierte Rolle für die Zuweisung verfügbar ist. Sie können die Verfügbarkeit der benutzerdefinierten Rolle für die Zuweisung auf die Abonnements oder Ressourcengruppen beschränken, für die dies erforderlich ist. Dadurch wird eine bessere Übersichtlichkeit der restlichen Abonnements oder Ressourcengruppen erzielt.
 
 Beispiele für gültige zuweisbare Bereiche:
@@ -97,19 +101,28 @@ Beispiele für gültige zuweisbare Bereiche:
 > 
 > 
 
-## Zugriffssteuerung für benutzerdefinierte Rollen
-Mit der **AssignableScopes**-Eigenschaft der benutzerdefinierten Rolle wird auch gesteuert, wer die Rolle anzeigen, ändern und löschen kann.
+## <a name="custom-roles-access-control"></a>Zugriffssteuerung für benutzerdefinierte Rollen
+Mit der **AssignableScopes** -Eigenschaft der benutzerdefinierten Rolle wird auch gesteuert, wer die Rolle anzeigen, ändern und löschen kann.
 
-* Wer kann eine benutzerdefinierte Rolle erstellen? Besitzer (und Benutzerzugriffsadministratoren) von Abonnements, Ressourcengruppen und Ressourcen können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen. Der Ersteller der Rolle muss in der Lage sein, den `Microsoft.Authorization/roleDefinition/write`-Vorgang für alle **AssignableScopes**-Elemente der Rolle auszuführen.
-* Wer kann eine benutzerdefinierte Rolle ändern? Besitzer (und Benutzerzugriffsadministratoren) von Abonnements, Ressourcengruppen und Ressourcen können benutzerdefinierte Rollen in diesen Bereichen ändern. Benutzer müssen in der Lage sein, den `Microsoft.Authorization/roleDefinition/write`-Vorgang für alle **AssignableScopes**-Elemente einer benutzerdefinierten Rolle auszuführen.
-* Wer kann benutzerdefinierte Rollen anzeigen? Alle integrierten Rollen in Azure RBAC ermöglichen das Anzeigen von Rollen, die für die Zuweisung verfügbar sind. Benutzer, die den Vorgang `Microsoft.Authorization/roleDefinition/read` für einen Bereich durchführen können, können die RBAC-Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind.
+* Wer kann eine benutzerdefinierte Rolle erstellen?
+    Besitzer (und Benutzerzugriffsadministratoren) von Abonnements, Ressourcengruppen und Ressourcen können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen.
+    Der Ersteller der Rolle muss in der Lage sein, den `Microsoft.Authorization/roleDefinition/write` -Vorgang für alle **AssignableScopes** -Elemente der Rolle auszuführen.
+* Wer kann eine benutzerdefinierte Rolle ändern?
+    Besitzer (und Benutzerzugriffsadministratoren) von Abonnements, Ressourcengruppen und Ressourcen können benutzerdefinierte Rollen in diesen Bereichen ändern. Benutzer müssen in der Lage sein, den `Microsoft.Authorization/roleDefinition/write` -Vorgang für alle **AssignableScopes** -Elemente einer benutzerdefinierten Rolle auszuführen.
+* Wer kann benutzerdefinierte Rollen anzeigen?
+    Alle integrierten Rollen in Azure RBAC ermöglichen das Anzeigen von Rollen, die für die Zuweisung verfügbar sind. Benutzer, die den Vorgang `Microsoft.Authorization/roleDefinition/read` für einen Bereich durchführen können, können die RBAC-Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind.
 
-## Siehe auch
+## <a name="see-also"></a>Siehe auch
 * [Rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md): Erste Schritte mit RBAC im Azure-Portal.
 * Informationen zur Zugriffsverwaltung mit:
   * [PowerShell](role-based-access-control-manage-access-powershell.md)
   * [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
   * [REST-API](role-based-access-control-manage-access-rest.md)
-* [Integrierte Rollen:](role-based-access-built-in-roles.md) Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
+* [Integrierte Rollen:](role-based-access-built-in-roles.md)Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

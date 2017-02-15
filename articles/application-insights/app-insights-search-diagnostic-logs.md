@@ -251,7 +251,7 @@ Telemetriedaten zu Anforderungen werden automatisch gesendet, wenn Sie [den Stat
 
 Wenn Sie zusätzliche Ereignisse senden möchten, können Sie die TrackRequest()-API verwenden.
 
-## <a name="a-namequestionsaq-a"></a><a name="questions"></a>FRAGEN UND ANTWORTEN
+## <a name="a-namequestionsaq--a"></a><a name="questions"></a>FRAGEN UND ANTWORTEN
 ### <a name="a-nameemptykeyai-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
 Anscheinend haben Sie das Protokollierungsadapter-Nuget-Paket installiert, ohne Application Insights zu installieren.
 

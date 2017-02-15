@@ -13,16 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/08/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 8c295a4207e9d12eb0cb978205a75d536d6a55e7
+ms.sourcegitcommit: 5a9b3e94faee1db7c38b9f60045637640d820208
+ms.openlocfilehash: b11d9d67234c85af8f9fcb9992864ef9e1662a79
 
 
 ---
 # <a name="import-data-to-documentdb-with-the-database-migration-tool"></a>Importieren von Daten in DocumentDB mit dem Datenbank-Migrationstool
 Dieser Artikel beschreibt, wie Sie das offizielle Open-Source-basierte DocumentDB-Datenmigrationstool verwenden, um Daten aus verschiedenen Quellen, z. B. JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und DocumentDB-Sammlungen, in [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) zu importieren.
+
+Wenn Sie Daten in ein DocumentDB-Konto mit Unterstützung für MongoDB importieren, folgen Sie den Anweisungen in [Migrieren von Daten zu DocumentDB mit Protokollunterstützung für MongoDB](documentdb-mongodb-migrate.md).
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:  
 
@@ -78,6 +80,12 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren von JSON-Dat
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
 ## <a name="a-idmongodbaimport-from-mongodb"></a><a id="MongoDB"></a>Importieren aus MongoDB
+
+> [!IMPORTANT]
+> Wenn Sie in ein DocumentDB-Konto mit Unterstützung für MongoDB importieren, befolgen Sie [diese Anweisungen](documentdb-mongodb-migrate.md).
+> 
+> 
+
 Mit der Importprogrammoption für MongoDB-Dateiquellen können Sie Dateien aus einer einzelnen MongoDB-Sammlung importieren und optional Dokumente mithilfe einer Abfrage filtern und/oder die Dokumentstruktur mithilfe einer Projektion ändern.  
 
 ![Screenshot der Optionen für MongoDB-Quellen – DocumentDB im Vergleich mit MongoDB](./media/documentdb-import-data/mongodbsource.png)
@@ -102,6 +110,12 @@ Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus MongoDB:
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<DocumentDB Endpoint>;AccountKey=<DocumentDB Key>;Database=<DocumentDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
 ## <a name="a-idmongodbexportaimport-mongodb-export-files"></a><a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien
+
+> [!IMPORTANT]
+> Wenn Sie in ein DocumentDB-Konto mit Unterstützung für MongoDB importieren, befolgen Sie [diese Anweisungen](documentdb-mongodb-migrate.md).
+> 
+> 
+
 Mit der Importprogrammoption für JSON-Dateiquellen und MongoDB-Exportdateien können Sie eine oder mehrere JSON-Dateien importieren, die mit dem mongoexport-Dienstprogramm erzeugt wurden.  
 
 ![Screenshot der Exportoptionen für MongoDB-Quellen – DocumentDB im Vergleich mit MongoDB](./media/documentdb-import-data/mongodbexportsource.png)
@@ -389,7 +403,7 @@ Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Samm
 2. Sie können eine abgekürzte Syntax verwenden: Durch Eingabe von "Sammlung[3]" wird derselbe Satz von Sammlungen ausgegeben wie in Schritt 1.
 3. Mehrere Ersetzungen können bereitgestellt werden. "Sammlung[0-1] [0-9]" generiert z. B. 20 Sammlungsnamen mit führenden Nullen (Sammlung01, ...02, ...03).
 
-Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als 10.000 RUs erfordern einen Partitionsschlüssel. Wenn Sie mehr als 250.000 RUs wählen, lesen Sie die Informationen unter [Anfordern von erhöhten DocumentDB-Kontolimits](documentdb-increase-limits.md).
+Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als&10;.000 RUs erfordern einen Partitionsschlüssel. Wenn Sie mehr als 250.000 RUs wählen, lesen Sie die Informationen unter [Anfordern von erhöhten DocumentDB-Kontolimits](documentdb-increase-limits.md).
 
 > [!NOTE]
 > Die Durchsatzeinstellung gilt nur für die Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Durchsatz nicht geändert.
@@ -512,6 +526,6 @@ Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen pro
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -84,6 +84,6 @@ Wenn Sie herausfinden möchten, wie Datenträger einem virtuellen Azure Resource
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

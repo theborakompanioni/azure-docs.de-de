@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 07/22/2016
+ms.date: 12/16/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 58ba7a82281a21d38d4c785d1d01bbd25e5aa9b3
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 4a0d72f46fada5112563d10d22f61abc439730a7
 
 
 ---
@@ -61,8 +61,8 @@ Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotn
 
 Wenn Sie lieber Visual Studio 2013 verwenden, können Sie [hier](http://go.microsoft.com/fwlink/?LinkID=324322)das aktuelle Azure SDK für Visual Studio 2013 herunterladen. Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen.
 
-## <a name="configure-a-new-web-project"></a>Konfigurieren eines neuen Webprojekts
-Der nächste Schritt besteht darin, ein Webprojekt in Visual Studio und eine Web-App in Azure App Service zu erstellen. In diesem Abschnitt des Tutorials wird das neue Webprojekt konfiguriert. 
+## <a name="create-a-web-application"></a>Erstellen einer Webanwendung
+Der nächste Schritt besteht darin, ein Webanwendngsprojekt in Visual Studio und eine Web-App in Azure App Service zu erstellen. In diesem Abschnitt des Tutorials wird das neue Webprojekt konfiguriert. 
 
 1. Öffnen Sie Visual Studio 2015.
 2. Klicken Sie auf **Datei > Neu > Projekt**.
@@ -89,7 +89,7 @@ Der nächste Schritt besteht darin, ein Webprojekt in Visual Studio und eine Web
     Mit diesen Einstellungen wird Visual Studio angewiesen, eine Azure-Web-App für das Webprojekt zu erstellen.
 10. Klicken Sie auf **OK**
 
-## <a name="configure-azure-resources-for-a-new-web-app"></a>Konfigurieren der Azure-Ressourcen für eine neue Web-App
+## <a name="create-the-azure-resources"></a>Erstellen der Azure-Ressourcen
 Als Nächstes informieren Sie Visual Studio über die Azure-Ressourcen, die Sie erstellen möchten.
 
 1. Klicken Sie im Dialogfeld **App Service erstellen** auf **Konto hinzufügen**, und melden Sie sich dann an Azure mit der ID und dem Kennwort für das Konto an, das Sie zum Verwalten Ihres Azure-Abonnements verwenden.
@@ -128,14 +128,14 @@ Als Nächstes informieren Sie Visual Studio über die Azure-Ressourcen, die Sie 
 8. Klicken Sie im Dialogfeld **App Service-Plan konfigurieren** auf **OK**.
 9. Klicken Sie im Dialogfeld **App Service erstellen** auf **Erstellen**.
 
-## <a name="visual-studio-creates-the-project-and-web-app"></a>Erstellen von Projekt und Web-App
+## <a name="inspect-the-azure-resources-in-visual-studio"></a>Überprüfen der Azure-Ressourcen in Visual Studio
 Visual Studio erstellt das Webprojekt und die Web-App innerhalb kurzer Zeit, üblicherweise in weniger als einer Minute.  
 
 Im Fenster **Projektmappen-Explorer** werden die Dateien und Ordner in dem neuen Projekt angezeigt.
 
 ![Projektmappen-Explorer](./media/web-sites-dotnet-get-started/solutionexplorer.png)
 
-Im Fenster **Azure App Service Activity** wird angegeben, dass die Web-App erstellt wurde.
+Im Fenster **Azure App Service-Aktivität** wird angegeben, dass die App Service-Ressourcen in Azure erstellt wurden. Sie können auf den Link hier klicken, um die Veröffentlichung des neuen Projekt sofort zu starten. Sie erfahren in diesem Tutorial jedoch auch noch, wie Sie Ihre Dateien jederzeit veröffentlichen können.
 
 ![Im Fenster „Azure App Service-Aktivität“ erstellte Web-App](./media/web-sites-dotnet-get-started/GS13sitecreated1.png)
 
@@ -143,8 +143,8 @@ Im Fenster **Cloud-Explorer** können Sie Azure-Ressourcen (und somit auch die s
 
 ![Im Cloud Explorer erstellte Web-App](./media/web-sites-dotnet-get-started/siteinse.png)
 
-## <a name="deploy-the-web-project-to-the-azure-web-app"></a>Bereitstellen des Webprojekts für die Azure-Web-App
-In diesem Abschnitt wird das Webprojekt für die Web-App bereitgestellt.
+## <a name="deploy-the-web-project-to-azure"></a>Bereitstellen des Webprojekts in Azure
+In diesem Abschnitt stellen Sie das Webprojekt für die in Azure App Service erstellte Web-App-Ressource bereit.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen**.
    
@@ -152,7 +152,10 @@ In diesem Abschnitt wird das Webprojekt für die Web-App bereitgestellt.
    
     Wenige Sekunden später wird der Assistent **Web veröffentlichen** geöffnet. Im Assistenten wird ein *Veröffentlichungsprofil* mit Einstellungen für die Bereitstellung des Webprojekts in der neuen Web-App angezeigt.
    
-    Das Veröffentlichungsprofil enthält einen Benutzernamen und ein Kennwort für die Bereitstellung.  Diese Anmeldeinformationen wurden für Sie generiert und müssen nicht eingegeben werden. Das Kennwort wird in einer versteckten benutzerspezifischen Datei im Ordner `Properties\PublishProfiles` verschlüsselt.
+    > [!TIP] 
+    > Das Veröffentlichungsprofil enthält einen Benutzernamen und ein Kennwort für die Bereitstellung.  Diese Anmeldeinformationen wurden für Sie generiert und müssen nicht eingegeben werden. Das Kennwort wird in einer versteckten benutzerspezifischen Datei im Ordner `Properties\PublishProfiles` verschlüsselt.
+    >
+    >
 2. Klicken Sie auf der Registerkarte **Verbindung** des Assistenten **Web veröffentlichen** auf **Weiter**.
    
     ![Im Assistenten „Web veröffentlichen“ auf der Registerkarte „Verbindung“ auf „Weiter“ klicken](./media/web-sites-dotnet-get-started/GS13ValidateConnection.png)
@@ -213,12 +216,12 @@ In diesem Lernprogramm haben Sie erfahren, wie eine einfache Webanwendung erstel
   * [Aktivieren von HTTPS für Azure-Web-Apps](web-sites-configure-ssl-certificate.md)
 * Löschen Sie die Ressourcengruppe mit Ihrer Web-App sowie alle dazugehörigen Azure-Ressourcen, wenn Sie sie nicht mehr benötigen.
   
-    Informationen zur Verwendung von Ressourcengruppen im Azure-Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../resource-group-template-deploy-portal.md).   
+    Informationen zur Verwendung von Ressourcengruppen im Azure-Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).   
 * Weitere Beispiele zum Erstellen einer ASP.NET-Web-App in App Service finden Sie unter [Create and deploy an ASP.NET web app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service) (Erstellen und Bereitstellen einer ASP.NET-Web-App in Azure App Service) und [Create and deploy a mobile app in Azure App Service](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-a-mobile-app-in-Azure-App-Service) (Erstellen und Bereitstellen einer mobilen App in Azure App Service) in der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)(Schnellstarts zu Azure-Entwicklungstools).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

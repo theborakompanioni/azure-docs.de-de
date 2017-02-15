@@ -8,11 +8,8 @@
 ### [Erste Schritte mit IoT Hub (.NET)](iot-hub-csharp-csharp-getstarted.md)
 ### [Erste Schritte mit IoT Hub (Java)](iot-hub-java-java-getstarted.md)
 ### [Erste Schritte mit IoT Hub (Node)](iot-hub-node-node-getstarted.md)
-## Erste Schritte mit dem IoT-Geräte-SDK
-### [Einführung in das Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md)
-### [IoT-Geräte-SDK für C: Weitere Informationen zu IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
-### [IoT-Geräte-SDK für C: Weitere Informationen zum Serialisierungsprogramm](iot-hub-device-sdk-c-serializer.md)
-## Erste Schritte mit einem Raspberry Pi
+
+## Erste Schritte mit einem Raspberry Pi (Node)
 ### [Erste Schritte mit Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-get-started.md)
 ### Lektion 1: Konfigurieren Ihres Geräts
 #### [Konfigurieren des Geräts](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
@@ -33,10 +30,123 @@
 #### [Ausführen der Beispielanwendung zum Empfangen von Nachrichten](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md)
 #### [Optional: Ändern des LED-Verhaltens](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
 ### [Problembehandlung](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
+
+## Erste Schritte mit einem Raspberry Pi (C)
+### [Erste Schritte mit Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-get-started.md)
+### Lektion 1: Konfigurieren Ihres Geräts
+#### [Konfigurieren des Geräts](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
+#### [Herunterladen der Tools (ab Windows 7)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
+#### [Herunterladen der Tools (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-ubuntu.md)
+#### [Herunterladen der Tools (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-mac.md)
+#### [Erstellen und Bereitstellen der Blinkanwendung](iot-hub-raspberry-pi-kit-c-lesson1-deploy-blink-app.md)
+### Lektion 2: Erstellen Sie Ihren IoT Hub
+#### [Herunterladen der Azure-Tools (ab Windows 7)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-win32.md)
+#### [Herunterladen der Azure-Tools (Ubuntu 16.04)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-ubuntu.md)
+#### [Herunterladen der Azure-Tools (macOS 10.10)](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
+#### [Erstellen eines IoT Hub und Registrieren des Raspberry Pi](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)
+### Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
+#### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md)
+#### [Ausführen der Beispielanwendung zum Senden von Nachrichten](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
+#### [Lesen von Nachrichten im Speicher](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)
+### Lektion 4: Senden von C2D-Nachrichten
+#### [Ausführen der Beispielanwendung zum Empfangen von Nachrichten](iot-hub-raspberry-pi-kit-c-lesson4-send-cloud-to-device-messages.md)
+#### [Optional: Ändern des LED-Verhaltens](iot-hub-raspberry-pi-kit-c-lesson4-change-led-behavior.md)
+### [Problembehandlung](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
+
+## Erste Schritte mit einem Intel Edison (Node)
+### [Erste Schritte mit Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
+### Lektion 1: Konfigurieren Ihres Geräts
+#### [Konfigurieren des Geräts](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
+#### [Herunterladen der Tools (ab Windows 7)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
+#### [Herunterladen der Tools (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-ubuntu.md)
+#### [Herunterladen der Tools (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-mac.md)
+#### [Erstellen und Bereitstellen der Blinkanwendung](iot-hub-intel-edison-kit-node-lesson1-deploy-blink-app.md)
+### Lektion 2: Erstellen Sie Ihren IoT Hub
+#### [Herunterladen der Azure-Tools (ab Windows 7)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-win32.md)
+#### [Herunterladen der Azure-Tools (Ubuntu 16.04)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-ubuntu.md)
+#### [Herunterladen der Azure-Tools (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
+#### [Erstellen eines IoT Hub und Registrieren des Raspberry Pi](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
+### Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
+#### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+#### [Ausführen der Beispielanwendung zum Senden von Nachrichten](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
+#### [Lesen von Nachrichten im Speicher](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
+### Lektion 4: Senden von C2D-Nachrichten
+#### [Ausführen der Beispielanwendung zum Empfangen von Nachrichten](iot-hub-intel-edison-kit-node-lesson4-send-cloud-to-device-messages.md)
+#### [Optional: Ändern des LED-Verhaltens](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
+### [Problembehandlung](iot-hub-intel-edison-kit-node-troubleshooting.md)
+
+## Erste Schritte mit einem Intel Edison (C)
+### [Erste Schritte mit Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
+### Lektion 1: Konfigurieren Ihres Geräts
+#### [Konfigurieren des Geräts](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
+#### [Herunterladen der Tools (ab Windows 7)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
+#### [Herunterladen der Tools (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-ubuntu.md)
+#### [Herunterladen der Tools (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-mac.md)
+#### [Erstellen und Bereitstellen der Blinkanwendung](iot-hub-intel-edison-kit-c-lesson1-deploy-blink-app.md)
+### Lektion 2: Erstellen Sie Ihren IoT Hub
+#### [Herunterladen der Azure-Tools (ab Windows 7)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-win32.md)
+#### [Herunterladen der Azure-Tools (Ubuntu 16.04)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-ubuntu.md)
+#### [Herunterladen der Azure-Tools (macOS 10.10)](iot-hub-intel-edison-kit-c-lesson2-get-azure-tools-mac.md)
+#### [Erstellen eines IoT Hub und Registrieren des Raspberry Pi](iot-hub-intel-edison-kit-c-lesson2-prepare-azure-iot-hub.md)
+### Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
+#### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos](iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md)
+#### [Ausführen der Beispielanwendung zum Senden von Nachrichten](iot-hub-intel-edison-kit-c-lesson3-run-azure-blink.md)
+#### [Lesen von Nachrichten im Speicher](iot-hub-intel-edison-kit-c-lesson3-read-table-storage.md)
+### Lektion 4: Senden von C2D-Nachrichten
+#### [Ausführen der Beispielanwendung zum Empfangen von Nachrichten](iot-hub-intel-edison-kit-c-lesson4-send-cloud-to-device-messages.md)
+#### [Optional: Ändern des LED-Verhaltens](iot-hub-intel-edison-kit-c-lesson4-change-led-behavior.md)
+### [Problembehandlung](iot-hub-intel-edison-kit-c-troubleshooting.md)
+
 ## [Erste Schritte mit dem Gateway-SDK (Linux)](iot-hub-linux-gateway-sdk-get-started.md)
 ## [Erste Schritte mit dem Gateway-SDK (Windows)](iot-hub-windows-gateway-sdk-get-started.md)
 
+## Erste Schritte mit dem IoT Gateway Starter Kit
+### Simuliertes Gerät
 
+#### [Erste Schritte mit einem simulierten Gerät](iot-hub-gateway-kit-c-sim-get-started.md)
+#### Lektion 1: Konfigurieren Ihres NUC-Geräts
+##### [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
+
+#### Lektion 2: Erstellen des IoT Hub
+##### [Herunterladen der Tools (ab Windows 7)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
+##### [Herunterladen der Tools (Ubuntu 16.04)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
+##### [Herunterladen der Tools (macOS 10.10)](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-mac.md)
+##### [Create an IoT hub and register your device](iot-hub-gateway-kit-c-sim-lesson2-register-device.md) (Erstellen eines IoT Hub und Registrieren Ihres Geräts)
+
+#### Lektion 3: Empfangen von Nachrichten vom simulierten Gerät
+##### [Configure and run a BLE sample application](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md) (Konfigurieren und Ausführen einer BLE-Beispielanwendung)
+##### [Read messages from your IoT hub](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub)
+
+#### Lektion 4: Speichern von Nachrichten in Azure Table Storage
+##### [Create an Azure function app and Azure Storage account](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md) (Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos)
+##### [Read messages persisted in Azure Table storage](iot-hub-gateway-kit-c-sim-lesson4-read-table-storage.md) (Lesen von Nachrichten in Azure Table Storage)
+
+#### [Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md)
+
+### SensorTag-Gerät
+#### [Erste Schritte mit einem SensorTag-Gerät](iot-hub-gateway-kit-c-get-started.md)
+#### Lektion 1: Konfigurieren Ihres NUC-Geräts
+##### [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
+
+#### Lektion 2: Erstellen des IoT Hub
+##### [Herunterladen der Tools (ab Windows 7)](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
+##### [Herunterladen der Tools (Ubuntu 16.04)](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
+##### [Herunterladen der Tools (macOS 10.10)](iot-hub-gateway-kit-c-lesson2-get-the-tools-mac.md)
+##### [Create an IoT hub and register your device](iot-hub-gateway-kit-c-lesson2-register-device.md) (Erstellen eines IoT Hub und Registrieren Ihres Geräts)
+
+#### Lektion 3: Empfangen von Nachrichten vom simulierten Gerät
+##### [Configure and run a BLE sample application](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md) (Konfigurieren und Ausführen einer BLE-Beispielanwendung)
+##### [Read messages from your IoT hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub)
+
+#### Lektion 4: Speichern von Nachrichten in Azure Table Storage
+##### [Erstellen einer Azure-Funktionen-App und eines Azure Storage-Kontos](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
+##### [Read messages persisted in Azure Table storage](iot-hub-gateway-kit-c-lesson4-read-table-storage.md) (Lesen von Nachrichten in Azure Table Storage)
+
+##### [Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md)
+## Erste Schritte mit dem IoT-Geräte-SDK
+### [Einführung in das Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md)
+### [IoT-Geräte-SDK für C: Weitere Informationen zu IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
+### [IoT-Geräte-SDK für C: Weitere Informationen zum Serialisierungsprogramm](iot-hub-device-sdk-c-serializer.md)
 # Anleitung
 ## [Tutorial zum Verarbeiten von Nachrichten, die von Geräten an die Cloud gesendet werden (.NET)](iot-hub-csharp-csharp-process-d2c.md)
 ## [Tutorial zum Verarbeiten von Nachrichten, die von Geräten an die Cloud gesendet werden (Java)](iot-hub-java-java-process-d2c.md)
@@ -130,6 +240,6 @@
 ## [Katalog mit Azure Certified for IoT-Geräten](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

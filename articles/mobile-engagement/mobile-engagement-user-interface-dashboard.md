@@ -1,12 +1,12 @@
 ---
-title: Benutzeroberfläche von Azure Mobile Engagement – Dashboard
-description: Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement
+title: "Benutzeroberfläche von Azure Mobile Engagement – Dashboard"
+description: "Informationen zum Überwachen und Verwalten von Datendiagrammen zu Ihrer Anwendung mithilfe von Azure Mobile Engagement"
 services: mobile-engagement
-documentationcenter: ''
+documentationcenter: 
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
 ms.devlang: na
 ms.topic: article
@@ -14,21 +14,25 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 835cc39ebe7cc3a6ee8fafdaad6a36ebb301a615
+
 
 ---
-# Anzeigen und Verwalten von Datendiagrammen zu Ihrer Anwendung
+# <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Anzeigen und Verwalten von Datendiagrammen zu Ihrer Anwendung
 Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen angepasster Diagramme, indem zeitsparend genau die gewünschten Informationen bereitgestellt werden, ohne dass diese im Abschnitt "Analyse" gesucht werden müssen. Ein Dashboard zeigt Trends der Anwendung und die Anzahl aktiver Benutzer für die verschiedenen Versionen der Anwendung über einen bestimmten Zeitraum (Stunde/Tag/Woche/Monat/benutzerdefiniert). Die gezeigten Trends basieren auf den letzten sieben Tagen.
 
-### Siehe auch
-* [Handbuch zur Problembehandlung - Analyse][Link 21]
+### <a name="see-also"></a>Weitere Informationen
+* [Handbuch zur Problembehandlung – Analyse][Link 21]
 
-## Dashboard
+## <a name="dashboard"></a>Dashboard
 * Sie können einem leeren Dashboard Diagramme hinzufügen, indem Sie im Abschnitt "Analyse" der Benutzeroberfläche die Aktion "An Dashboard senden" im Zahnradmenü eines Diagramms auswählen, das in einem Dashboard angezeigt werden soll.
 
-## + (Dashboard hinzufügen)
+## <a name="-add-a-dashboard"></a>+ (Dashboard hinzufügen)
 * Sie können auf dem Menüband auf das Menüelement "+" klicken, um ein neues Dashboard zu erstellen, das im Menübandmenü angezeigt wird.
 
-## Zahnradmenü
+## <a name="gear-menu"></a>Zahnradmenü
 * Im Zahnradmenü eines Dashboards können Sie Ihr Dashboard löschen, umbenennen, freigeben oder den E-Mail-Empfang planen. Mithilfe der Zeitplanoption können Sie den Zeitplan definieren, gemäß dem Sie Ihr benutzerdefiniertes Dashboard per E-Mail empfangen möchten. Sie können planen, es täglich, wöchentlich oder monatlich zu empfangen. Sie können die Tageszeit und den Wochentag oder Tag des Monats wählen, an dem Sie die E-Mail empfangen möchten. Ihre E-Mail-Adresse und Zeitzone basieren auf den Einstellungen, die Sie im Abschnitt "Mein Konto" der Benutzeroberfläche konfiguriert haben.
   
   ![dashboard1][34]
@@ -129,4 +133,8 @@ Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen a
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

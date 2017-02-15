@@ -1,12 +1,12 @@
 ---
-title: Überwachen Ihres Workloads mit dynamischen Verwaltungssichten | Microsoft Docs
-description: Informationen zum Überwachen Ihres Workloads mit dynamischen Verwaltungssichten.
+title: "Überwachen Ihrer Workload mit dynamischen Verwaltungssichten | Microsoft Docs"
+description: "Informationen zum Überwachen Ihrer Workload mit dynamischen Verwaltungssichten."
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 69ecd479-0941-48df-b3d0-cf54c79e6549
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,10 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 6877a54f77a4c0137e4f6a8b2b2fcff41664a4b5
+
 
 ---
-# <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihres Workloads mit dynamischen Verwaltungssichten
-Dieser Artikel beschreibt, wie Sie mit dynamischen Verwaltungssichten Ihren Workload überwachen und die Ausführung von Abfragen in Azure SQL Data Warehouse untersuchen.
+# <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
+Dieser Artikel beschreibt, wie Sie mit dynamischen Verwaltungssichten Ihre Workload überwachen und die Ausführung von Abfragen in Azure SQL Data Warehouse untersuchen.
 
 ## <a name="permissions"></a>Berechtigungen
 Um die DMVs in diesem Artikel abzufragen, benötigen Sie die Berechtigung VIEW DATABASE STATE oder CONTROL. Üblicherweise ist VIEW DATABASE STATE die bevorzugte Berechtigung, da sie wesentlich restriktiver ist.
@@ -67,9 +71,9 @@ WHERE   [label] = 'My Query';
 
 Notieren Sie sich aus den oben stehenden Abfrageergebnissen **die Anforderungs-ID** der Abfrage, die Sie untersuchen möchten.
 
-Abfragen im Status **Angehalten** werden aufgrund von Parallelitätseinschränkungen in die Warteschlange gestellt. Diese Abfragen werden auch in der Abfrage „sys.dm_pdw_waits“ mit dem Typ UserConcurrencyResourceType angezeigt. Weitere Informationen zu Parallelitätseinschränkungen finden Sie unter [Parallelitäts- und Workloadverwaltung in SQL Data Warehouse][Parallelitäts- und Workloadverwaltung in SQL Data Warehouse] . Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Anfragen, die auf Ressourcen warten][Untersuchen von Anfragen, die auf Ressourcen warten] weiter unten in diesem Artikel.
+Abfragen im Status **Angehalten** werden aufgrund von Parallelitätslimits in die Warteschlange gestellt. Diese Abfragen werden auch in der Abfrage „sys.dm_pdw_waits“ mit dem Typ UserConcurrencyResourceType angezeigt. Weitere Informationen zu Parallelitätslimits finden Sie unter [Parallelitäts- und Workloadverwaltung in SQL Data Warehouse][Parallelitäts- und Workloadverwaltung in SQL Data Warehouse]. Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Anfragen, die auf Ressourcen warten][Untersuchen von Anfragen, die auf Ressourcen warten] weiter unten in diesem Artikel.
 
-Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle „sys.dm_pdw_exec_requests“ mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Ansicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
+Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle „sys.dm_pdw_exec_requests“ mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Sicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
 
 ```sql
 -- Query with Label
@@ -109,7 +113,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Wenn der Abfrageschritt ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] aus dem Cache des SQL Server-Plans den berechneten SQL Server-Ausführungsplan für den in einer bestimmten Verteilung ausgeführten Schritt abrufen.
+Wenn der Abfrageschritt ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] den berechneten SQL Server-Ausführungsplan für den in einer bestimmten Verteilung ausgeführten Schritt aus dem Cache des SQL Server-Plans abrufen.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -132,7 +136,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Überprüfen Sie die Spalte *total_elapsed_time*, um festzustellen, ob das Verschieben von Daten in einer bestimmten Verteilung erheblich länger dauert als in anderen Verteilungen.
 * Überprüfen Sie für die Verteilung mit langer Laufzeit die Spalte *rows_processed*, um festzustellen, ob die Anzahl der Zeilen, die von dieser Verteilung verschoben werden, beträchtlich größer als bei den anderen ist. Falls ja, kann dies auf eine Ungleichmäßigkeit der zugrunde liegenden Daten hinweisen.
 
-Wird die Abfrage gerade ausgeführt, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] aus dem Cache des SQL Server-Plans den berechneten SQL Server-Ausführungsplan für den derzeit ausgeführten SQL-Schritt innerhalb einer bestimmten Verteilung abrufen.
+Wenn die Abfrage ausgeführt wird, können Sie mit [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] den berechneten SQL Server-Ausführungsplan für den derzeit ausgeführten SQL-Schritt innerhalb einer bestimmten Verteilung aus dem Cache des SQL Server-Plans abrufen.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -194,6 +198,6 @@ Weitere Informationen zu bewährten Methoden finden Sie unter [Bewährte Methode
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

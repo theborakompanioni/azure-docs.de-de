@@ -11,4 +11,8 @@ Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. Sobald 
 
 Sie können komplexe Netzwerkkonfigurationen zur Sicherung Ihrer Umgebung mithilfe von Netzwerksicherheitsgruppen und Regeln erstellen. In unserem Beispiel werden nur ein oder zwei Regeln verwendet, die HTTP-Datenverkehr oder Remoteverwaltung zulassen. Weitere Informationen finden Sie im folgenden Abschnitt [Weitere Informationen](#more-information-on-network-security-groups) oder unter [Was ist eine Netzwerksicherheitsgruppe?](../articles/virtual-network/virtual-networks-nsg.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

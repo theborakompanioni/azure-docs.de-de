@@ -1,12 +1,12 @@
 ---
-title: PHP web and worker roles | Microsoft Docs
-description: A guide to creating PHP web and worker roles in an Azure cloud service, and configuring the PHP runtime.
-services: ''
+title: PHP-Web- und -Workerrollen | Microsoft-Dokumentation
+description: Ein Leitfaden zum Erstellen von PHP-Web- und -Workerrollen in einem Azure-Clouddienst und zum Konfigurieren der PHP-Laufzeit.
+services: 
 documentationcenter: php
 author: rmcmurray
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,198 +14,208 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/01/2016
 ms.author: robmcm
+translationtype: Human Translation
+ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
+ms.openlocfilehash: 1f6691944205de9e59070b3ffedb3572e8eff21d
+
 
 ---
-# <a name="how-to-create-php-web-and-worker-roles"></a>How to create PHP web and worker roles
-## <a name="overview"></a>Overview
-This guide will show you how to create PHP web or worker roles in a Windows development environment, choose a specific version of PHP from the "built-in" versions available, change the PHP configuration, enable extensions, and finally, deploy to Azure. It also describes how to configure a web or worker role to use a PHP runtime (with custom configuration and extensions) that you provide.
+# <a name="how-to-create-php-web-and-worker-roles"></a>Erstellen von PHP-Web- und Workerrollen
+## <a name="overview"></a>Übersicht
+In diesem Leitfaden erfahren Sie, wie Sie PHP-Web- oder Workerrollen in einer Windows-Entwicklungsumgebung erstellen, eine bestimmte Version von PHP aus den "integrierten" verfügbaren Versionen auswählen, die PHP-Konfiguration ändern, Erweiterungen aktivieren und diese schließlich in Azure bereitstellen. Es wird zudem beschrieben, wie Sie eine Web- oder Workerrolle für die Nutzung einer PHP-Laufzeit konfigurieren (mit benutzerdefinierter Konfiguration und Erweiterungen), die Sie bereitstellen.
 
-## <a name="what-are-php-web-and-worker-roles"></a>What are PHP web and worker roles?
-Azure provides three compute models for running applications: Azure App Service, Azure Virtual Machines, and Azure Cloud Services. All three models support PHP. Cloud Services, which includes web and worker roles, provides *platform as a service (PaaS)*. Within a cloud service, a web role provides a dedicated Internet Information Services (IIS) web server to host front-end web applications. A worker role can run asynchronous, long-running or perpetual tasks independent of user interaction or input.
+## <a name="what-are-php-web-and-worker-roles"></a>Was sind PHP-Web- und Workerrollen?
+Azure bietet drei Computemodelle für das Ausführen von Anwendungen: Azure App Service, Azure Virtual Machines und Azure Cloud Services. Alle drei Modell unterstützen PHP. Cloud Services enthält Web- und Workerrollen und bietet *Platform as a Service (PaaS)*. In einem Clouddienst stellt eine Webrolle einen dedizierten Internet Information Services (IIS)-Webserver zum Hosten von Front-End-Webanwendungen bereit. Eine Workerrolle kann asynchrone, langfristige oder fortwährende Aufgaben ausführen, die von einer Benutzerinteraktion oder -eingabe unabhängig sind.
 
-For more information about these options, see [Compute hosting options provided by Azure](cloud-services/cloud-services-choose-me.md).
+Weitere Informationen zu diesen Optionen finden Sie unter [Computehostingoptionen in Azure](cloud-services/cloud-services-choose-me.md).
 
-## <a name="download-the-azure-sdk-for-php"></a>Download the Azure SDK for PHP
-The [Azure SDK for PHP] consists of several components. This article will use two of them: Azure PowerShell and the Azure emulators. These two components can be installed via the Microsoft Web Platform Installer. For more information, see [How to install and configure Azure PowerShell](powershell-install-configure.md).
+## <a name="download-the-azure-sdk-for-php"></a>Herunterladen des Azure SDK für PHP
+Das [Azure SDK für PHP] besteht aus verschiedenen Komponenten. In diesem Artikel werden zwei Komponenten verwendet: Azure PowerShell und die Azure-Emulatoren. Diese beiden Komponenten können über den Microsoft-Webplattform-Installer installiert werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
 
-## <a name="create-a-cloud-services-project"></a>Create a Cloud Services project
-The first step in creating a PHP web or worker role is to create an Azure Service project. an Azure Service project serves as a logical container for web and worker roles, and it contains the project's [service definition (.csdef)] and [service configuration (.cscfg)] files.
+## <a name="create-a-cloud-services-project"></a>Erstellen eines Cloud-Dienst-Projekts
+Der erste Schritt bei der Erstellung einer PHP-Web- oder -Workerrolle ist die Erstellung eines Azure-Dienstprojekts. Ein Azure-Dienstprojekt dient als logischer Container für Web- und Workerrollen und enthält das [Azure-Dienstdefinitionsschema (CSDEF-Datei)] und das [Azure-Dienstkonfigurationsschema (CSCFG-Datei)] des Projekts.
 
-To create a new Azure Service project, run Azure PowerShell as an administrator, and execute the following command:
+Führen Sie Azure PowerShell als Administrator sowie folgenden Befehl aus, um ein neues Azure-Dienstprojekt zu erstellen:
 
     PS C:\>New-AzureServiceProject myProject
 
-This command will create a new directory (`myProject`) to which you can add web and worker roles.
+Durch diesen Befehl wird ein neues Verzeichnis (`myProject`) erstellt, dem Sie Web- und Workerrollen hinzufügen können.
 
-## <a name="add-php-web-or-worker-roles"></a>Add PHP web or worker roles
-To add a PHP web role to a project, run the following command from within the project's root directory:
+## <a name="add-php-web-or-worker-roles"></a>Hinzufügen von PHP-Web- und Workerrollen
+Führen Sie folgenden Befehl im Stammverzeichnis des Projekts aus, um eine PHP-Webrolle zu einem Projekt hinzuzufügen:
 
     PS C:\myProject> Add-AzurePHPWebRole roleName
 
-For a worker role, use this command:
+Für eine Workerrolle verwenden Sie diesen Befehl:
 
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> The `roleName` parameter is optional. If it is omitted, the role name will be automatically generated. The first web role created will be `WebRole1`, the second will be `WebRole2`, and so on. The first worker role created will be `WorkerRole1`, the second will be `WorkerRole2`, and so on.
-> 
-> 
+> Das `roleName` ist optional. Wenn er nicht angegeben wird, wird automatisch ein Name generiert. Die erste erstellte Webrolle heißt `WebRole1`, die zweite `WebRole2` usw. Die erste erstellte Workerrolle heißt `WorkerRole1`, die zweite `WorkerRole2` usw.
+>
+>
 
-## <a name="specify-the-builtin-php-version"></a>Specify the built-in PHP version
-When you add a PHP web or worker role to a project, the project's configuration files are modified so that PHP will be installed on each web or worker instance of your application when it is deployed. To see the version of PHP that will be installed by default, run the following command:
+## <a name="specify-the-built-in-php-version"></a>Angeben der integrierten PHP-Version
+Wenn Sie eine PHP-Web- oder Workerrolle zu einem Projekt hinzugefügt haben, ändern sich die Konfigurationsdateien des Projekts, sodass PHP bei der Bereitstellung auf jeder Web- oder Workerinstanz der Anwendung installiert wird. Führen Sie folgenden Befehl aus, um die PHP-Version anzuzeigen, die standardmäßig installiert wird:
 
     PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
-The output from the command above will look similar to what is shown below. In this example, the `IsDefault` flag is set to `true` for PHP 5.3.17, indicating that it will be the default PHP version installed.
+Die Ausgabe dieses Befehls wird ähnlich wie die unten angezeigte Ausgabe aussehen. In diesem Beispiel ist das Kennzeichen `IsDefault` für PHP 5.3.17 auf `true` festgelegt, das heißt, dass dies die installierte PHP-Standardversion ist.
 
-    Runtime Version     PackageUri                      IsDefault
-    ------- -------     ----------                      ---------
-    Node 0.6.17         http://nodertncu.blob.core...   False
-    Node 0.6.20         http://nodertncu.blob.core...   True
-    Node 0.8.4          http://nodertncu.blob.core...   False
-    IISNode 0.1.21      http://nodertncu.blob.core...   True
-    Cache 1.8.0         http://nodertncu.blob.core...   True
-    PHP 5.3.17          http://nodertncu.blob.core...   True
-    PHP 5.4.0           http://nodertncu.blob.core...   False
+```
+Runtime Version     PackageUri                      IsDefault
+------- -------     ----------                      ---------
+Node 0.6.17         http://nodertncu.blob.core...   False
+Node 0.6.20         http://nodertncu.blob.core...   True
+Node 0.8.4          http://nodertncu.blob.core...   False
+IISNode 0.1.21      http://nodertncu.blob.core...   True
+Cache 1.8.0         http://nodertncu.blob.core...   True
+PHP 5.3.17          http://nodertncu.blob.core...   True
+PHP 5.4.0           http://nodertncu.blob.core...   False
+```
 
-You can set the PHP runtime version to any of the PHP versions that are listed. For example, to set the PHP version (for a role with the name `roleName`) to 5.4.0, use the following command:
+Sie können die PHP-Laufzeitversion auf alle der abgehörten PHP-Versionen festlegen. Um zum Beispiel die PHP-Version (für eine Rolle namens `roleName`) auf 5.4.0 festzulegen, verwenden Sie folgenden Befehl:
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
 > [!NOTE]
-> Available PHP versions may change in the future.
-> 
-> 
+> Die verfügbaren PHP-Versionen können sich in Zukunft ändern.
+>
+>
 
-## <a name="customize-the-builtin-php-runtime"></a>Customize the built-in PHP runtime
-You have complete control over the configuration of the PHP runtime that is installed when you follow the steps above, including modification of `php.ini` settings and enabling of extensions.
+## <a name="customize-the-built-in-php-runtime"></a>Anpassen der integrierten PHP-Laufzeit
+Sie haben vollständige Kontrolle über die Konfiguration der PHP-Laufzeit, die mit den oben beschrieben Schritten installiert wird, einschließlich der Änderung der `php.ini` -Einstellungen und Aktivierung der Erweiterungen.
 
-To customize the built-in PHP runtime, follow these steps:
+Führen Sie folgende Schritte aus, um die integrierte PHP-Laufzeit anzupassen:
 
-1. Add a new folder, named `php`, to the `bin` directory of your web role. For a worker role, add it to the role's root directory.
-2. In the `php` folder, create another folder called `ext`. Put any `.dll` extension files (e.g., `php_mongo.dll`) that you want to enable in this folder.
-3. Add a `php.ini` file to the `php` folder. Enable any custom extensions and set any PHP directives in this file. For example, if you wanted to turn `display_errors` on and enable the `php_mongo.dll` extension, the contents of your `php.ini` file would be as follows:
-   
+1. Fügen Sie dem Verzeichnis `bin` einen neuen Ordner namens `php` der Webrolle hinzu. Für eine Workerrolle fügen Sie diesen zum Stammverzeichnis der Rolle hinzu.
+2. Erstellen Sie im Ordner `php` einen weiteren Ordner namens `ext`. Legen Sie alle `.dll`-Erweiterungsdateien (z. B. `php_mongo.dll`), die Sie aktivieren möchten, in diesem Ordner ab.
+3. Fügen Sie dem Ordner `php` die Datei `php.ini` hinzu. Aktivieren Sie alle benutzerdefinierten Erweiterungen, und legen Sie alle PHP-Direktiven in dieser Datei fest. Wenn Sie zum Beispiel `display_errors` und die Erweiterung `php_mongo.dll` aktivieren möchten, sieht der Inhalt der Datei `php.ini` folgendermaßen aus:
+
         display_errors=On
         extension=php_mongo.dll
 
 > [!NOTE]
-> Any settings that you don't explicitly set in the `php.ini` file that you provide will automatically be set to their default values. However, keep in mind that you can add a complete `php.ini` file.
-> 
-> 
+> Alle Einstellungen, die Sie nicht explizit in der bereitgestellten Datei `php.ini` festlegen, werden automatisch auf die Standardwerte festgelegt. Sie können jedoch auch eine komplette `php.ini` -Datei hinzufügen.
+>
+>
 
-## <a name="use-your-own-php-runtime"></a>Use your own PHP runtime
-In some cases, instead of selecting a built-in PHP runtime and configuring it as described above, you may want to provide your own PHP runtime. For example, you can use the same PHP runtime in a web or worker role that you use in your development environment. This makes it easier to ensure that the application will not change behavior in your production environment.
+## <a name="use-your-own-php-runtime"></a>Verwenden Ihrer eigenen PHP-Laufzeit
+In einigen Fällen möchten Sie evtl. eine eigene PHP-Laufzeit angeben, anstatt eine integrierte PHP-Laufzeit auszuwählen und diese wie oben beschrieben zu konfigurieren. Sie können beispielsweise dieselbe PHP-Laufzeit in einer Web- oder Workerrolle verwenden, die Sie auch in Ihrer Entwicklungsumgebung verwenden. So lässt sich leichter sicherstellen, dass die Anwendung ihr Verhalten in der Produktionsumgebung nicht ändert.
 
-### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Configure a web role to use your own PHP runtime
-To configure a web role to use a PHP runtime that you provide, follow these steps:
+### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Konfigurieren einer Webrolle für die Verwendung Ihrer eigenen PHP-Laufzeit
+Führen Sie die folgenden Schritte aus, um eine Webrolle für die Verwendung einer von Ihnen angegebenen PHP-Laufzeit zu konfigurieren.
 
-1. Create an Azure Service project and add a PHP web role as described previously in this topic.
-2. Create a `php` folder in the `bin` folder that is in your web role's root directory, and then add your PHP runtime (all binaries, configuration files, subfolders, etc.) to the `php` folder.
-3. (OPTIONAL) If your PHP runtime uses the [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], you will need to configure your web role to install [SQL Server Native Client 2012][sql native client] when it is provisioned. To do this, add the [sqlncli.msi x64 installer] to the `bin` folder in your web role's root directory. The startup script described in the next step will silently run the installer when the role is provisioned. If your PHP runtime does not use the Microsoft Drivers for PHP for SQL Server, you can remove the following line from the script shown in the next step:
-   
+1. Erstellen Sie ein Azure-Dienstprojekt, und fügen Sie eine PHP-Webrolle hinzu, wie weiter oben in diesem Thema beschrieben.
+2. Erstellen Sie einen Ordner `php` im Ordner `bin`, der sich im Stammverzeichnis der Webrolle befindet, und fügen Sie dann die PHP-Laufzeit (alle Binärdateien, Konfigurationsdateien, Unterordner usw.) dem Ordner `php` hinzu.
+3. (OPTIONAL) Wenn Ihre PHP-Laufzeit [Microsoft-Treiber für PHP für SQL Server][SQLSRV-Treiber] verwendet, müssen Sie die Webrolle bei der Bereitstellung für die Installation von [SQL Server Native Client 2012][Nativer SQL-Client] konfigurieren. Fügen Sie dazu den [sqlncli.msi x64-Installer] dem Ordner `bin` im Stammverzeichnis der Webrolle hinzu. Das im nächsten Schritt beschriebene Startskript wird das Installationsprogramm ausführen, wenn die Rolle bereitgestellt wird. Wenn Ihre PHP-Laufzeit nicht Microsoft-Treiber für PHP für SQL Server verwendet, können Sie folgende Zeile aus dem im nächsten Schritt gezeigten Skript entfernen:
+
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Define a startup task that configures [Internet Information Services (IIS)][iis.net] to use your PHP runtime to handle requests for `.php` pages. To do this, open the `setup_web.cmd` file (in the `bin` file of your web role's root directory) in a text editor and replace its contents with the following script:
-   
-        @ECHO ON
-        cd "%~dp0"
-   
-        if "%EMULATED%"=="true" exit /b 0
-   
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-   
-        SET PHP_FULL_PATH=%~dp0php\php-cgi.exe
-        SET NEW_PATH=%PATH%;%RoleRoot%\base\x86
-   
-        %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%',maxInstances='12',idleTimeout='60000',activityTimeout='3600',requestTimeout='60000',instanceMaxRequests='10000',protocol='NamedPipe',flushNamedPipe='False']" /commit:apphost
-        %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%'].environmentVariables.[name='PATH',value='%NEW_PATH%']" /commit:apphost
-        %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']" /commit:apphost
-        %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='PHP',path='*.php',verb='GET,HEAD,POST',modules='FastCgiModule',scriptProcessor='%PHP_FULL_PATH%',resourceType='Either',requireAccess='Script']" /commit:apphost
-        %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /"[fullPath='%PHP_FULL_PATH%'].queueLength:50000"
-5. Add your application files to your web role's root directory. This will be the web server's root directory.
-6. Publish your application as described in the [Publish your application](#how-to-publish-your-application) section below.
+4. Definieren Sie eine Startaufgabe, die [Internet Information Services (IIS)][iis.net] für die Verwendung Ihrer PHP-Laufzeit konfiguriert, um Anforderungen für `.php`-Seiten zu behandeln. Öffnen Sie dazu die Datei `setup_web.cmd` (in der Datei `bin` des Stammverzeichnisses Ihrer Webrolle) in einem Texteditor, und ersetzen Sie den Inhalt durch folgendes Skript:
+
+    ```cmd
+    @ECHO ON
+    cd "%~dp0"
+
+    if "%EMULATED%"=="true" exit /b 0
+
+    msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+
+    SET PHP_FULL_PATH=%~dp0php\php-cgi.exe
+    SET NEW_PATH=%PATH%;%RoleRoot%\base\x86
+
+    %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%',maxInstances='12',idleTimeout='60000',activityTimeout='3600',requestTimeout='60000',instanceMaxRequests='10000',protocol='NamedPipe',flushNamedPipe='False']" /commit:apphost
+    %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%'].environmentVariables.[name='PATH',value='%NEW_PATH%']" /commit:apphost
+    %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_FULL_PATH%'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']" /commit:apphost
+    %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='PHP',path='*.php',verb='GET,HEAD,POST',modules='FastCgiModule',scriptProcessor='%PHP_FULL_PATH%',resourceType='Either',requireAccess='Script']" /commit:apphost
+    %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /"[fullPath='%PHP_FULL_PATH%'].queueLength:50000"
+    ```
+5. Fügen Sie die Anwendungsdateien zum Stammverzeichnis Ihrer Webrolle hinzu. Dies wird das Stammverzeichnis des Webservers sein.
+6. Veröffentlichen Sie die Anwendung entsprechend der Beschreibung im Abschnitt [Veröffentlichen der Anwendung](#publish-your-application) weiter unten.
 
 > [!NOTE]
-> The `download.ps1` script (in the `bin` folder of the web role's root directory) can be deleted after you follow the steps described above for using your own PHP runtime.
-> 
-> 
+> Das Skript `download.ps1` (im Ordner `bin` des Stammverzeichnisses der Webrolle) kann gelöscht werden, nachdem Sie die oben beschriebenen Schritte für die Verwendung Ihrer eigenen PHP-Laufzeit ausgeführt haben.
+>
+>
 
-### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Configure a worker role to use your own PHP runtime
-To configure a worker role to use a PHP runtime that you provide, follow these steps:
+### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Konfigurieren einer Workerrolle für die Verwendung Ihrer eigenen PHP-Laufzeit
+Führen Sie die folgenden Schritte aus, um eine Workerrolle für die Verwendung einer von Ihnen angegebenen PHP-Laufzeit zu konfigurieren.
 
-1. Create an Azure Service project and add a PHP worker role as described previously in this topic.
-2. Create a `php` folder in the worker role's root directory, and then add your PHP runtime (all binaries, configuration files, subfolders, etc.) to the `php` folder.
-3. (OPTIONAL) If your PHP runtime uses [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers], you will need to configure your worker role to install [SQL Server Native Client 2012][sql native client] when it is provisioned. To do this, add the [sqlncli.msi x64 installer] to the worker role's root directory. The startup script described in the next step will silently run the installer when the role is provisioned. If your PHP runtime does not use the Microsoft Drivers for PHP for SQL Server, you can remove the following line from the script shown in the next step:
-   
+1. Erstellen Sie ein Azure-Dienstprojekt, und fügen Sie eine PHP-Workerrolle hinzu, wie weiter oben in diesem Thema beschrieben.
+2. Erstellen Sie einen Ordner namens `php` im Stammverzeichnis der Workerrolle, und fügen Sie dann Ihre PHP-Laufzeit (alle Binärdateien, Konfigurationsdateien, Unterordner usw.) dem Ordner `php` hinzu.
+3. (OPTIONAL) Wenn Ihre PHP-Laufzeit [Microsoft-Treiber für PHP für SQL Server][SQLSRV-Treiber] verwendet, müssen Sie die Workerrolle bei der Bereitstellung für die Installation von [SQL Server Native Client 2012][Nativer SQL-Client] konfigurieren. Fügen Sie dazu den [sqlncli.msi x64-Installer] dem Stammverzeichnis der Workerrolle hinzu. Das im nächsten Schritt beschriebene Startskript wird das Installationsprogramm ausführen, wenn die Rolle bereitgestellt wird. Wenn Ihre PHP-Laufzeit nicht Microsoft-Treiber für PHP für SQL Server verwendet, können Sie folgende Zeile aus dem im nächsten Schritt gezeigten Skript entfernen:
+
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Define a startup task that adds your `php.exe` executable to the worker role's PATH environment variable when the role is provisioned. To do this, open the `setup_worker.cmd` file (in the worker role's root directory) in a text editor and replace its contents with the following script:
-   
-        @echo on
-   
-        cd "%~dp0"
-   
-        echo Granting permissions for Network Service to the web root directory...
-        icacls ..\ /grant "Network Service":(OI)(CI)W
-        if %ERRORLEVEL% neq 0 goto error
-        echo OK
-   
-        if "%EMULATED%"=="true" exit /b 0
-   
-        msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-   
-        setx Path "%PATH%;%~dp0php" /M
-   
-        if %ERRORLEVEL% neq 0 goto error
-   
-        echo SUCCESS
-        exit /b 0
-   
-        :error
-   
-        echo FAILED
-        exit /b -1
-5. Add your application files to your worker role's root directory.
-6. Publish your application as described in the [Publish your application](#how-to-publish-your-application) section below.
+4. Definieren Sie eine Startaufgabe, die die ausführbare Datei `php.exe` bei der Rollenbereitstellung zur PATH-Umgebungsvariable der Workerrolle hinzufügt. Öffnen Sie dazu die Datei `setup_worker.cmd` (im Stammverzeichnis der Workerrolle) in einem Texteditor, und ersetzen Sie den Inhalt durch folgendes Skript:
 
-## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Run your application in the compute and storage emulators
-The Azure emulators provide a local environment in which you can test your Azure application before you deploy it to the cloud. There are some differences between the emulators and the Azure environment. To understand this better, see [Use the Azure storage emulator for development and testing](storage/storage-use-emulator.md).
+    ```cmd
+    @echo on
 
-Note that you must have PHP installed locally to use the compute emulator. The compute emulator will use your local PHP installation to run your application.
+    cd "%~dp0"
 
-To run your project in the emulators, execute the following command from your project's root directory:
+    echo Granting permissions for Network Service to the web root directory...
+    icacls ..\ /grant "Network Service":(OI)(CI)W
+    if %ERRORLEVEL% neq 0 goto error
+    echo OK
+
+    if "%EMULATED%"=="true" exit /b 0
+
+    msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
+
+    setx Path "%PATH%;%~dp0php" /M
+
+    if %ERRORLEVEL% neq 0 goto error
+
+    echo SUCCESS
+    exit /b 0
+
+    :error
+
+    echo FAILED
+    exit /b -1
+    ```
+5. Fügen Sie die Anwendungsdateien zum Stammverzeichnis Ihrer Workerrolle hinzu.
+6. Veröffentlichen Sie die Anwendung entsprechend der Beschreibung im Abschnitt [Veröffentlichen der Anwendung](#publish-your-application) weiter unten.
+
+## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Ausführen der Anwendung in den Server- und Speicheremulatoren
+Die Azure-Emulatoren bieten eine lokale Umgebung, in der Sie Ihre Azure-Anwendung testen können, bevor Sie sie in der Cloud bereitstellen. Es gibt einige Unterschiede zwischen den Emulatoren und der Azure-Umgebung. Zum besseren Verständnis finden Sie weitere Informationen unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage/storage-use-emulator.md).
+
+PHP muss lokal installiert sein, um den Serveremulator nutzen zu können. Der Serveremulator verwendet Ihre lokale PHP-Installation, um die Anwendung auszuführen.
+
+Führen Sie folgenden Befehl im Stammverzeichnis des Projekts aus, um das Projekt in den Emulatoren auszuführen:
 
     PS C:\MyProject> Start-AzureEmulator
 
-You will see output similar to this:
+Eine Ausgabe ähnlich der folgenden wird angezeigt.
 
     Creating local package...
     Starting Emulator...
     Role is running at http://127.0.0.1:81
     Started
 
-You can see your application running in the emulator by opening a web browser and browsing to the local address shown in the output (`http://127.0.0.1:81` in the example output above).
+Wenn Sie einen Webbrowser öffnen und zur lokalen Adresse in der Ausgabe (`http://127.0.0.1:81` in der Beispielausgabe oben) navigieren, können Sie im Emulator sehen, wie die Anwendung ausgeführt wird.
 
-To stop the emulators, execute this command:
+Führen Sie folgenden Befehl aus, um die Emulatoren zu stoppen:
 
     PS C:\MyProject> Stop-AzureEmulator
 
-## <a name="publish-your-application"></a>Publish your application
-To publish your application, you need to first import your publish settings by using the [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) cmdlet. Then you can publish your application by using the [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) cmdlet. For information about signing in, see [How to install and configure Azure PowerShell](powershell-install-configure.md).
+## <a name="publish-your-application"></a>Veröffentlichen der Anwendung
+Um die Anwendung zu veröffentlichen, müssen Sie zunächst die Veröffentlichungseinstellungen mithilfe des Cmdlets [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) importieren. Anschließend können Sie die Anwendung mithilfe des Cmdlets [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) veröffentlichen. Informationen zum Anmelden finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
 
-## <a name="next-steps"></a>Next steps
-For more information, see the [PHP Developer Center](/develop/php/).
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
-[Azure SDK for PHP]: /develop/php/common-tasks/download-php-sdk/
-[install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[service definition (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[service configuration (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[Azure SDK für PHP]: /develop/php/common-tasks/download-php-sdk/
+[PS und Emulatoren installieren]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
+[Azure-Dienstdefinitionsschema (CSDEF-Datei)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[Azure-Dienstkonfigurationsschema (CSCFG-Datei)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
-[sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
-[sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 installer]: http://go.microsoft.com/fwlink/?LinkID=239648
+[Nativer SQL-Client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
+[SQLSRV-Treiber]: http://php.net/sqlsrv
+[sqlncli.msi x64-Installer]: http://go.microsoft.com/fwlink/?LinkID=239648
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

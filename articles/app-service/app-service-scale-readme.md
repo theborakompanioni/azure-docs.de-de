@@ -3,11 +3,11 @@ title: 'Azure App Service: Skalierung von App Service-Anwendungen'
 description: Erfahren Sie, wie Sie Anwendungen in App Service skalieren
 keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, App Services-Plan, App Service-Kosten
 services: app-service
-documentationcenter: ''
+documentationcenter: 
 author: btardif
 manager: wpickett
-editor: ''
-
+editor: 
+ms.assetid: f403c971-4450-432b-8cea-3eeb426c0147
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,9 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2016
 ms.author: byvinyal
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: ec043a9e01aca2e843e50cef8b90328ba1939ea5
+
 
 ---
-# <a name="azure-app-service:-scaling-app-service-applications"></a>Azure App Service: Skalierung von App Service-Anwendungen
+# <a name="azure-app-service-scaling-app-service-applications"></a>Azure App Service: Skalierung von App Service-Anwendungen
 In Azure App Service gehostete Anwendungen können [sehr groß werden](https://azure.microsoft.com/blog/canadian-broadcasting-corporation-radio-canada-leverage-azure-for-smooth-election-coverage/).
 Das Skalieren einer Anwendung ist jedoch komplex, und es gibt keine Lösung, die sich für alle Probleme eignet. 3 Faktoren spielen beim korrekten Skalieren Ihrer Anwendung eine Rolle und tragen so zum Erfolg dieser bei:
 
@@ -38,6 +42,9 @@ Dieser Abschnitt hilft Ihnen dabei, all diese Faktoren zu verstehen und eine Str
 
 [!INCLUDE [app-service-blueprint-scaling-app-service-applications](../../includes/app-service-blueprint-scaling-app-service-applications.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

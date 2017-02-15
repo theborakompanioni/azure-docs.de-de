@@ -1,22 +1,26 @@
 ---
-title: Batch-Dienst – Kontingente und Limits | Microsoft Docs
-description: Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen.
+title: "Batch-Dienst – Kontingente und Limits | Microsoft Docs"
+description: "Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen."
 services: batch
-documentationcenter: ''
-author: mmacy
+documentationcenter: 
+author: tamram
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2016
-ms.author: marsma
+ms.date: 01/05/2017
+ms.author: tamram
+translationtype: Human Translation
+ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
+ms.openlocfilehash: 1a530bf6e9afca9a7cdc1f68e8eefdbf077dc516
+
 
 ---
-# Kontingente und Limits für den Azure Batch-Dienst
+# <a name="quotas-and-limits-for-the-azure-batch-service"></a>Kontingente und Limits für den Azure Batch-Dienst
 Ebenso wie bei anderen Azure-Diensten gelten bei bestimmten Ressourcen in Verbindung mit dem Batch-Dienst Limits. Viele dieser Limits sind Standardkontingente, die von Azure auf Abonnement- oder Kontoebene angewendet werden. In diesem Artikel werden diese Standardwerte erläutert, und Sie erfahren, wie Sie Kontingenterhöhungen anfordern können.
 
 Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglicherweise ein oder mehrere Kontingente über den Standardwert erhöhen. Wenn Sie ein Kontingent erhöhen möchten, können Sie kostenlos eine [Anfrage an den Onlinekundensupport](#increase-a-quota) richten.
@@ -26,15 +30,15 @@ Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglich
 > 
 > 
 
-## Abonnementkontingente
+## <a name="subscription-quotas"></a>Abonnementkontingente
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
 | --- | --- | --- |
 | Batch-Konten pro Region und Abonnement |1 |50 |
 
-## Batch-Kontokontingente
+## <a name="batch-account-quotas"></a>Batch-Kontokontingente
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-## Andere Limits
+## <a name="other-limits"></a>Andere Limits
 | **Ressource** | **Maximales Limit** |
 | --- | --- |
 | [Gleichzeitige Aufgaben](batch-parallel-node-tasks.md) pro Computeknoten |4 x Anzahl der Kerne des Knotens |
@@ -44,7 +48,7 @@ Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglich
 
 <sup>1</sup> Azure Storage-Limit für die maximale Blockblobgröße
 
-## Anzeigen von Batch-Kontingenten
+## <a name="view-batch-quotas"></a>Anzeigen von Batch-Kontingenten
 Sie können die Kontingente Ihres Batch-Kontos im [Azure-Portal][portal] anzeigen.
 
 1. Wählen Sie **Batch-Konten** im Portal, und wählen Sie dann das Batch-Konto, das Sie interessiert.
@@ -53,7 +57,7 @@ Sie können die Kontingente Ihres Batch-Kontos im [Azure-Portal][portal] anzeige
    
     ![Batch-Kontokontingente][account_quotas]
 
-## Erhöhen eines Kontingents
+## <a name="increase-a-quota"></a>Erhöhen eines Kontingents
 Führen Sie die unten stehenden Schritte aus, um über das [Azure-Portal][portal] eine Kontingenterhöhung anzufordern.
 
 1. Wählen Sie auf Ihrem Portaldashboard die Kachel **Hilfe und Support** oder das Fragezeichen (**?**) in der oberen rechten Ecke des Portals.
@@ -66,27 +70,27 @@ Führen Sie die unten stehenden Schritte aus, um über das [Azure-Portal][portal
    
     c. **Kontingenttyp** > **Batch**
    
-    d. **Supportplan** > **Kontingentsupport - inbegriffen**
+    d. **Supportplan** > **Kontingentsupport – inbegriffen**
    
     Klicken Sie auf **Weiter**.
 4. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
    
     a. Wählen Sie einen **Schweregrad** gemäß der [geschäftlichen Auswirkung][support_sev] aus.
    
-    b. Geben Sie unter **Details** jedes Kontingent an, das Sie ändern möchten, sowie den Batch-Kontonamen und das neue Limit.
+    b. Geben Sie unter **Details**jedes Kontingent an, das Sie ändern möchten, sowie den Batch-Kontonamen und das neue Limit.
    
     Klicken Sie auf **Weiter**.
 5. Gehen Sie auf dem Blatt **Kontaktinformationen** folgendermaßen vor:
    
-    a. Wählen Sie eine **bevorzugte Kontaktmethode** aus.
+    a. Wählen Sie eine **bevorzugte Kontaktmethode**aus.
    
     b. Überprüfen Sie die erforderlichen Kontaktdetails, und geben Sie sie ein.
    
-    Klicken Sie auf **Erstellen**, um die Supportanfrage zu übermitteln.
+    Klicken Sie auf **Erstellen** , um die Supportanfrage zu übermitteln.
 
 Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support mit Ihnen in Verbindung setzen. Beachten Sie, dass die Bearbeitung der Anfrage bis zu zwei Werktage in Anspruch nehmen kann.
 
-## Verwandte Themen
+## <a name="related-topics"></a>Verwandte Themen
 * [Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal](batch-account-create-portal.md)
 * [Übersicht über Azure Batch-Features](batch-api-basics.md)
 * [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)
@@ -97,4 +101,8 @@ Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support m
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Dec16_HO2-->
+
+

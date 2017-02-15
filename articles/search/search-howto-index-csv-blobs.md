@@ -1,23 +1,27 @@
 ---
 title: Indizierung von CSV-Blobs mit Azure Search-Blobindexer | Microsoft Docs
-description: Erfahren Sie, wie Sie CSV-Blobs mit Azure Search indizieren können.
+description: "Erfahren Sie, wie Sie CSV-Blobs mit Azure Search indizieren können."
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: chaosrealm
 manager: pablocas
-editor: ''
-
+editor: 
+ms.assetid: ed3c9cff-1946-4af2-a05a-5e0b3d61eb25
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/12/2016
+ms.date: 12/15/2016
 ms.author: eugenesh
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 82c9d68bc3f1650648fac0597f4a329ef053b109
+
 
 ---
-# Indizierung von CSV-Blobs mit Azure Search-Blobindexer
-In der Standardeinstellung analysiert der [Azure Search-Blobindexer](search-howto-indexing-azure-blob-storage.md) durch Trennzeichen getrennte Blobs als ein einzelnes Textsegment. Bei Blobs mit CSV-Daten sollen die einzelnen Zeilen im Blob jedoch häufig als separates Dokument behandelt werden. Beispiel:
+# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indizierung von CSV-Blobs mit Azure Search-Blobindexer
+In der Standardeinstellung analysiert der [Azure Search-Blobindexer](search-howto-indexing-azure-blob-storage.md) durch Trennzeichen getrennte Blobs als ein einzelnes Textsegment. Bei Blobs mit CSV-Daten sollen die einzelnen Zeilen im Blob jedoch häufig als separates Dokument behandelt werden. Beispiel: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
@@ -25,15 +29,15 @@ In der Standardeinstellung analysiert der [Azure Search-Blobindexer](search-howt
 
 Es wird empfohlen, diesen durch Trennzeichen getrennten Text als zwei Dokumente zu analysieren. Dabei sollte jedes Dokument die Felder „id“, „datePublished“ und „tags“ enthalten.
 
-In diesem Artikel erfahren Sie, wie Sie CSV-Blobs mit einem Azure Search-Blobindexer analysieren.
+In diesem Artikel erfahren Sie, wie Sie CSV-Blobs mit einem Azure Search-Blobindexer analysieren. 
 
 > [!IMPORTANT]
-> Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
+> Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview**verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten. 
 > 
 > 
 
-## Einrichten der CSV-Indizierung
-Erstellen oder aktualisieren Sie zum Indizieren von CSV-Blobs eine Indexerdefinition mit dem `delimitedText`-Analysemodus:
+## <a name="setting-up-csv-indexing"></a>Einrichten der CSV-Indizierung
+Erstellen oder aktualisieren Sie zum Indizieren von CSV-Blobs eine Indexerdefinition mit dem `delimitedText` -Analysemodus:  
 
     {
       "name" : "my-csv-indexer",
@@ -43,7 +47,8 @@ Erstellen oder aktualisieren Sie zum Indizieren von CSV-Blobs eine Indexerdefini
 
 Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](search-api-indexers-2015-02-28-preview.md#create-indexer).
 
-`firstLineContainsHeaders` gibt an, dass die erste (nicht leere) Zeile der einzelnen Blobs Header enthält. Wenn Blobs am Anfang keine Headerzeile enthalten, sollten die Header in der Indexerkonfiguration angegeben werden:
+`firstLineContainsHeaders` gibt an, dass die erste (nicht leere) Zeile der einzelnen Blobs Header enthält.
+Wenn Blobs am Anfang keine Headerzeile enthalten, sollten die Header in der Indexerkonfiguration angegeben werden: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
@@ -54,10 +59,10 @@ Derzeit wird nur die UTF-8-Codierung unterstützt. Darüber hinaus wird nur das 
 > 
 > 
 
-## Beispiele für Anforderungen
-Dies alles wird an vollständigen Nutzlastbeispielen demonstriert.
+## <a name="request-examples"></a>Beispiele für Anforderungen
+Dies alles wird an vollständigen Nutzlastbeispielen demonstriert. 
 
-Datenquelle:
+Datenquelle: 
 
     POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
     Content-Type: application/json
@@ -66,7 +71,7 @@ Datenquelle:
     {
         "name" : "my-blob-datasource",
         "type" : "azureblob",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
@@ -83,7 +88,12 @@ Indexer:
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## Helfen Sie uns bei der Verbesserung von Azure Search
-Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
+## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
+Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/)mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

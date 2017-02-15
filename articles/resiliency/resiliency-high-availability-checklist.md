@@ -1,12 +1,12 @@
 ---
-title: Checkliste für hohe Verfügbarkeit | Microsoft Docs
-description: Enthält eine kurze Checkliste mit Einstellungen und möglichen Aktionen, um sicherzustellen, dass die Verfügbarkeit von Anwendungen unter Azure verbessert wird.
-services: ''
+title: "Checkliste für hohe Verfügbarkeit | Microsoft Docs"
+description: "Enthält eine kurze Checkliste mit Einstellungen und möglichen Aktionen, um sicherzustellen, dass die Verfügbarkeit von Anwendungen unter Azure verbessert wird."
+services: 
 documentationcenter: na
 author: adamglick
 manager: saladki
-editor: ''
-
+editor: 
+ms.assetid: 7e19ab40-2b63-4037-8546-e62342e6fd7f
 ms.service: resiliency
 ms.devlang: na
 ms.topic: article
@@ -14,6 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: aglick
+translationtype: Human Translation
+ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
+ms.openlocfilehash: 295dae5bd4ec7c1e899c5debe8d072b4b05d2cdd
+
 
 ---
 # <a name="high-availability-checklist"></a>Checkliste für hohe Verfügbarkeit
@@ -24,64 +28,67 @@ Einer der großen Vorteile bei der Verwendung von Azure ist die Möglichkeit, di
 > 
 > 
 
-### <a name="are-you-using-traffic-manager-in-front-of-your-resources?"></a>Haben Sie Traffic Manager Ihren Ressourcen vorgeschaltet?
+### <a name="are-you-using-traffic-manager-in-front-of-your-resources"></a>Haben Sie Traffic Manager Ihren Ressourcen vorgeschaltet?
 Mit Traffic Manager können Sie Internetdatenverkehr über Azure-Regionen hinweg bzw. über Azure- und lokale Standorte hinweg weiterleiten. Dies ist aus unterschiedlichen Gründen möglich, z.B. Latenz und Verfügbarkeit. Weitere Informationen zur Steigerung der Resilienz sowie zur Aufteilung des Datenverkehrs auf mehrere Regionen mithilfe von Traffic Manager finden Sie unter [Hohe Verfügbarkeit durch Ausführen virtueller Computer in mehreren Rechenzentren unter Azure](../guidance/guidance-compute-multiple-datacenters.md).
 
 **Was passiert, wenn Sie Traffic Manager nicht nutzen?**  Wenn Sie Ihren Anwendungen Traffic Manager nicht vorschalten, sind Sie in Bezug auf Ihre Ressourcen auf eine einzelne Region beschränkt. Dies verringert die Skalierbarkeit, erhöht die Latenz für Benutzer, die sich nicht in der Nähe der gewählten Region befinden, und verringert den Schutz im Falle einer regionsweiten Dienstunterbrechung.
 
-### <a name="have-you-avoided-using-a-single-virtual-machine-for-any-role?"></a>Haben Sie es vermieden, einen einzelnen virtuellen Computer für eine Rolle zu verwenden?
+### <a name="have-you-avoided-using-a-single-virtual-machine-for-any-role"></a>Haben Sie es vermieden, einen einzelnen virtuellen Computer für eine Rolle zu verwenden?
 Bei einem guten Entwurf wird dafür gesorgt, dass einzelne Fehlerquellen („Single Point of Failure“) vermieden werden. Dies ist bei allen Dienstentwürfen wichtig (ob lokal oder in der Cloud). Besonders nützlich ist diese Vorgehensweise aber in der Cloud, da Sie die Skalierbarkeit und Resilienz durch das horizontale Hochskalieren (Hinzufügen virtueller Computer) erhöhen können, anstatt das zentrale Hochskalieren durchzuführen (Nutzung eines virtuellen Computers mit höherer Leistung). Weitere Informationen zu skalierbaren Anwendungsentwürfen finden Sie unter [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
 **Was passiert, wenn Sie einen einzelnen virtuellen Computer für eine Rolle verwenden?** Ein einzelner Computer ist eine einzelne Fehlerquelle und für die [Vereinbarung zum Servicelevel von Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) nicht verfügbar. Im besten Fall wird Ihre Anwendung wie gewünscht ausgeführt. Dies ist aber kein robuster Entwurf, der nicht von der Vereinbarung zum Servicelevel für Azure Virtual Machines abgedeckt ist. Mit jedem Single Point of Failure steigt die Wahrscheinlichkeit von Ausfallzeiten.
 
-### <a name="are-you-using-a-load-balancer-in-front-of-your-application's-internet-facing-vms?"></a>Verwenden Sie einen Load Balancer, der den VMs mit Internetzugriff Ihrer Anwendung vorgeschaltet ist?
+### <a name="are-you-using-a-load-balancer-in-front-of-your-applications-internet-facing-vms"></a>Verwenden Sie einen Load Balancer, der den VMs mit Internetzugriff Ihrer Anwendung vorgeschaltet ist?
 Load Balancer ermöglichen Ihnen das Verteilen des eingehenden Datenverkehrs für die Anwendung auf eine beliebige Anzahl von Computern. Sie können dem Load Balancer jederzeit Computer hinzufügen oder diese entfernen. Dies funktioniert gut für virtuelle Computer (und für die automatische Skalierung mit Skalierungsgruppen für virtuelle Computer), um Ihnen das einfache Behandeln von Datenverkehrszunahmen oder VM-Ausfällen zu ermöglichen. Weitere Informationen zu Lastenausgleichsmodulen finden Sie unter [Übersicht über Azure Load Balancer](../load-balancer/load-balancer-overview.md) sowie unter [Skalierbarkeit und Verfügbarkeit durch Ausführen mehrerer virtueller Computer in Azure](../guidance/guidance-compute-multi-vm.md).
 
 **Was passiert, wenn Sie Ihren VMs mit Internetzugriff keinen Load Balancer vorschalten?**  Ohne Load Balancer können Sie nicht horizontal hochskalieren (also keine weiteren virtuellen Computer hinzufügen), sondern nur zentral hochskalieren (also den virtuellen Computer mit Internetzugriff vergrößern). Der virtuelle Computer wird außerdem zu einer einzelnen Fehlerquelle. Sie müssen auch DNS-Code schreiben, um zu ermitteln, ob ein Computer mit Internetzugriff ausgefallen ist, und Ihren DNS-Eintrag dem neuen Computer zuordnen, der stattdessen gestartet wird und den Platz einnimmt.
 
-### <a name="are-you-using-availability-sets-for-your-stateless-application-and-web-servers?"></a>Verwenden Sie Verfügbarkeitsgruppen für Ihre zustandslosen Anwendungs- und Webserver?
-Wenn Sie Ihre Computer der gleichen Anwendungsebene einer Verfügbarkeitsgruppe hinzufügen, sind Ihre virtuellen Computer für das Azure VM-SLA geeignet. Mit dem Einfügen in eine Verfügbarkeitsgruppe wird auch sichergestellt, dass die Computer in unterschiedlichen Updatedomänen (d.h. andere Hostcomputer, die zu unterschiedlichen Zeiten gepatcht werden) und Fehlerdomänen (d.h. Hostcomputer mit gemeinsamer Stromquelle und gemeinsamem Netzwerkswitch) enthalten sind. Ohne Anordnung in einer Verfügbarkeitsgruppe können sich Ihre VMs ggf. auf demselben Hostcomputer befinden, sodass unter Umständen eine einzelne Fehlerquelle entsteht, die für Sie nicht sichtbar ist. Weitere Informationen zur Steigerung der Verfügbarkeit von virtuellen Computern mithilfe von Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../virtual-machines/virtual-machines-windows-manage-availability.md).
+### <a name="are-you-using-availability-sets-for-your-stateless-application-and-web-servers"></a>Verwenden Sie Verfügbarkeitsgruppen für Ihre zustandslosen Anwendungs- und Webserver?
+Wenn Sie Ihre Computer der gleichen Anwendungsebene einer Verfügbarkeitsgruppe hinzufügen, sind Ihre virtuellen Computer für das Azure VM-SLA geeignet. Mit dem Einfügen in eine Verfügbarkeitsgruppe wird auch sichergestellt, dass die Computer in unterschiedlichen Updatedomänen (d.h. andere Hostcomputer, die zu unterschiedlichen Zeiten gepatcht werden) und Fehlerdomänen (d.h. Hostcomputer mit gemeinsamer Stromquelle und gemeinsamem Netzwerkswitch) enthalten sind. Ohne Anordnung in einer Verfügbarkeitsgruppe können sich Ihre VMs ggf. auf demselben Hostcomputer befinden, sodass unter Umständen eine einzelne Fehlerquelle entsteht, die für Sie nicht sichtbar ist. Weitere Informationen zur Steigerung der Verfügbarkeit von virtuellen Computern mithilfe von Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../virtual-machines/virtual-machines-windows-manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 **Was passiert, wenn Sie für Ihre zustandslosen Anwendungen und Webserver keine Verfügbarkeitsgruppe verwenden?** Der Verzicht auf die Verwendung einer Verfügbarkeitsgruppe bedeutet, dass Sie das Azure VM-SLA nicht nutzen können. Außerdem bedeutet dies, dass alle Computer dieser Anwendungsebene ggf. in den Offlinezustand versetzt werden, wenn ein Update des Hostcomputers erfolgt (Computer, der die verwendeten VMs hostet) oder ein allgemeiner Hardwarefehler auftritt.
 
-### <a name="are-you-using-virtual-machine-scale-sets-(vmss)-for-your-stateless-application-or-web-servers?"></a>Verwenden Sie Skalierungsgruppen für virtuelle Computer (Virtual Machine Scale Sets, VMSS) für Ihre zustandslosen Anwendungs- oder Webserver?
+### <a name="are-you-using-virtual-machine-scale-sets-vmss-for-your-stateless-application-or-web-servers"></a>Verwenden Sie Skalierungsgruppen für virtuelle Computer (Virtual Machine Scale Sets, VMSS) für Ihre zustandslosen Anwendungs- oder Webserver?
 Für einen guten skalierbaren und robusten Entwurf wird VMSS verwendet, um sicherzustellen, dass Sie die Anzahl von Computern auf einer Ebene Ihrer Anwendung (z.B. der Webebene) erhöhen und verringern können. Mit VMSS können Sie definieren, wie die Anwendungsebene skaliert wird (Hinzufügen oder Entfernen von Servern basierend auf von Ihnen gewählten Kriterien). Weitere Informationen dazu, wie Sie VM-Skalierungsgruppen von Azure zum Steigern der Resilienz bei Datenverkehrsspitzen verwenden, finden Sie unter [Übersicht über VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
 
 **Was passiert, wenn Sie keine VM-Skalierungsgruppe mit der zustandslosen Anwendung des Webservers verwenden?** Ohne VMSS schränken Sie die Möglichkeit ein, unbegrenzt zu skalieren und die Nutzung von Ressourcen zu optimieren. Ein Entwurf ohne VMSS verfügt über einen oberen Grenzwert für die Skalierung, der durch zusätzlichen Code (oder manuell) behandelt werden muss. Dieses Fehlen einer VMSS bedeutet auch, dass die Anwendung nicht ohne Weiteres Computer hinzufügen oder entfernen kann (unabhängig von der Skalierung), um Sie beim Behandeln größerer Datenverkehrsspitzen zu unterstützen (z.B. während einer Werbeaktion oder bei einem „viralen“ Website-/App-/Produkterfolg).
 
-### <a name="are-you-using-premium-storage-and-separate-storage-accounts-for-each-of-your-virtual-machines?"></a>Verwenden Sie Premium-Speicher und separate Speicherkonten für jeden virtuellen Computer?
+### <a name="are-you-using-premium-storage-and-separate-storage-accounts-for-each-of-your-virtual-machines"></a>Verwenden Sie Premium-Speicher und separate Speicherkonten für jeden virtuellen Computer?
 Es ist eine bewährte Methode, für virtuelle Computer in der Produktion Premium-Speicher zu verwenden. Außerdem sollten Sie sicherstellen, dass Sie ein separates Speicherkonto für jeden virtuellen Computer verwenden. (Dies gilt für kleinere Bereitstellungen. Bei größeren Bereitstellungen können Sie Speicherkonten für mehrere Computer wiederverwenden. Es muss aber ein Ausgleich erfolgen, um sicherzustellen, dass über Updatedomänen und Anwendungsebenen hinweg eine Balance erzielt wird.) Weitere Informationen zur Leistung und Skalierbarkeit von Azure Storage finden Sie unter [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/storage-performance-checklist.md).
 
 **Was passiert, wenn Sie nicht für jeden virtuellen Computer ein separates Speicherkonto verwenden?**  Ein Speicherkonto ist, wie viele andere Ressourcen auch, eine einzelne Fehlerquelle. Azure Storage verfügt zwar über viele Schutz- und Resilienzfunktionen, aber eine einzelne Fehlerquelle entspricht niemals einem guten Entwurf. Wenn beispielsweise Zugriffsrechte für das Konto beschädigt werden oder ein Speichergrenzwert oder ein [IOPS-Grenzwert](../azure-subscription-service-limits.md#virtual-machine-disk-limits) erreicht wird, wirkt sich dies auf alle virtuellen Computer aus, die dieses Speicherkonto verwenden. Wenn es zudem noch zu einer Dienstunterbrechung mit Auswirkungen auf einen Speicherstempel kommt, der dieses Speicherkonto enthält, sind unter Umständen mehrere virtuelle Computer betroffen.
 
-### <a name="are-you-using-a-load-balancer-or-a-queue-between-each-tier-of-your-application?"></a>Verwenden Sie einen Load Balancer oder eine Warteschlange zwischen jeder Ebene der Anwendung?
+### <a name="are-you-using-a-load-balancer-or-a-queue-between-each-tier-of-your-application"></a>Verwenden Sie einen Load Balancer oder eine Warteschlange zwischen jeder Ebene der Anwendung?
 Durch die Verwendung von Load Balancern oder Warteschlangen zwischen den Ebenen der Anwendung können Sie jede Anwendungsebene leicht und individuell skalieren. Sie sollten zwischen diesen Technologien basierend auf den Anforderungen an Latenz, Komplexität und Verteilung (also in welchem Umfang die App verteilt wird) wählen. Warteschlangen verfügen im Allgemeinen über eine höhere Latenz und erhöhen die Komplexität. Die Vorteile bestehen aber darin, dass für eine höhere Resilienz gesorgt ist und dass Sie die Anwendung über größere Bereiche verteilen können (z.B. regionsübergreifend). Weitere Informationen zur Verwendung von internen Lastenausgleichsmodulen oder Warteschlangen finden Sie unter [Interner Lastenausgleich (Übersicht)](../load-balancer/load-balancer-internal-overview.md) sowie unter [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
 
 **Was passiert, wenn Sie zwischen den Ebenen Ihrer Anwendung keinen Load Balancer oder eine Warteschlange verwenden?**  Ohne Load Balancer oder Warteschlange zwischen den Anwendungsebenen ist es schwierig, die Anwendung zentral hoch- oder herunterzuskalieren und die Last auf mehrere Computer zu verteilen. Wenn dies nicht durchgeführt wird, kann dies zu einer übermäßigen oder unzureichenden Bereitstellung Ihrer Ressourcen und einem Ausfallrisiko oder fehlender Benutzerfreundlichkeit führen, wenn unerwartete Änderungen beim Datenverkehr oder Systemfehler auftreten.
 
-### <a name="are-your-sql-databases-using-active-geo-replication?"></a>Wird für Ihre SQL-Datenbanken die aktive Georeplikation verwendet?
+### <a name="are-your-sql-databases-using-active-geo-replication"></a>Wird für Ihre SQL-Datenbanken die aktive Georeplikation verwendet?
 Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenbanken in derselben Region oder in verschiedenen Regionen konfigurieren. Sekundäre Datenbanken stehen zur Verfügung, wenn ein Dienst ausgefallen ist oder keine Verbindung mit der primären Datenbank möglich ist. Weitere Informationen zur aktiven Georeplikation der SQL-Datenbank finden Sie unter [Übersicht: Aktive Georeplikation in Azure SQL-Datenbank](../sql-database/sql-database-geo-replication-overview.md).
 
  **Was passiert, wenn Sie die aktive Georeplikation nicht für Ihre SQL-Datenbanken verwenden?** Wenn Sie keine aktive Georeplikation verwenden und Ihre primäre Datenbank in den Offlinezustand versetzt wird (geplante Wartung, Dienstunterbrechung, Hardwarefehler usw.), ist die Anwendungsdatenbank offline, bis Sie die primäre Datenbank wieder fehlerfrei in den Onlinezustand versetzen können. 
 
-### <a name="are-you-using-a-cache-(azure-redis-cache)-in-front-of-your-databases?"></a>Verwenden Sie für Ihre Datenbanken einen vorgeschalteten Cache (Azure Redis Cache)?
+### <a name="are-you-using-a-cache-azure-redis-cache-in-front-of-your-databases"></a>Verwenden Sie für Ihre Datenbanken einen vorgeschalteten Cache (Azure Redis Cache)?
 Wenn die Anwendung über eine hohe Datenbanklast verfügt, bei der die meisten Datenbankaufrufe Lesevorgänge sind, können Sie die Geschwindigkeit der Anwendung erhöhen und die Last der Datenbank verringern. Implementieren Sie hierzu eine Caching-Schicht vor Ihrer Datenbank, um diese Lesevorgänge auszulagern. Sie können die Geschwindigkeit Ihrer Anwendung erhöhen und die Datenbanklast verringern (und so die mögliche Skalierbarkeit erhöhen), indem Sie vor der Datenbank eine Caching-Schicht einfügen. Weitere Informationen zum Azure Redis Cache finden Sie unter [Anleitungen zum Caching](../best-practices-caching.md).
 
  **Was passiert, wenn Sie für die Datenbank keinen vorgeschalteten Cache verwenden?** Wenn der Datenbankcomputer leistungsfähig genug für die Behandlung der Datenverkehrslast ist, die Sie zulassen, reagiert Ihre Anwendung normal. Dies kann aber bedeuten, dass Sie bei einer geringeren Last für einen Datenbankcomputer bezahlen, der teurer als nötig ist. Wenn Ihr Datenbankcomputer nicht leistungsfähig genug für die Verarbeitung der Last ist, sinkt die Benutzerfreundlichkeit der Anwendung (Latenz, Timeouts und ggf. Dienstausfälle).
 
-### <a name="have-you-contacted-microsoft-azure-support-if-you-are-expecting-a-high-scale-event?"></a>Haben Sie sich an den Microsoft Azure Support gewendet, wenn Sie ein Ereignis größeren Umfangs erwarten?
+### <a name="have-you-contacted-microsoft-azure-support-if-you-are-expecting-a-high-scale-event"></a>Haben Sie sich an den Microsoft Azure Support gewendet, wenn Sie ein Ereignis größeren Umfangs erwarten?
 Der Support von Azure kann Sie beim Heraufsetzen Ihrer Diensteinschränkungen unterstützen, um geplante Ereignisse mit einem hohen Aufkommen an Datenverkehr zu bewältigen (z.B. Einführung neuer Produkte oder besondere Anlässe). Darüber hinaus kann Sie der Support von Azure auch mit Experten in Kontakt bringen, die Sie beim Prüfen des Entwurfs mit Ihrem Kundenteam und der Ermittlung der besten Lösung für Ihre speziellen Anforderungen in Bezug auf das Ereignis unterstützen können. Weitere Informationen zur Kontaktaufnahme mit dem Support von Azure finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
 
 **Was passiert, wenn Sie sich bei einem Ereignis mit hohem Datenverkehrsaufkommen nicht an den Support von Azure wenden?** Wenn Sie die Informationen zu einem Ereignis mit hohem Datenverkehrsaufkommen nicht weitergeben bzw. dieses Ereignis nicht einplanen, besteht das Risiko, dass Sie bestimmte [Grenzwerte für Azure-Dienste](../azure-subscription-service-limits.md) erreichen und während des Ereignisses die Benutzerfreundlichkeit leidet (oder es sogar zu einem Ausfall kommt). Sie können dieses Risiko verringern, wenn Sie die Architektur prüfen und hohe Datenverkehrsaufkommen ankündigen.
 
-### <a name="are-you-using-a-content-delivery-network-(azure-cdn)-in-front-of-your-web-facing-storage-blobs-and-static-assets?"></a>Haben Sie Ihren Speicherblobs und statischen Medienobjekten ein Content Delivery Network (Azure CDN) vorgeschaltet?
+### <a name="are-you-using-a-content-delivery-network-azure-cdn-in-front-of-your-web-facing-storage-blobs-and-static-assets"></a>Haben Sie Ihren Speicherblobs und statischen Medienobjekten ein Content Delivery Network (Azure CDN) vorgeschaltet?
 Mit einem CDN können Sie die Last für die Server verringern, indem Sie Inhalte an den CDN POP/edge-Standorten zwischenspeichern, die weltweit verteilt sind. Dies können Sie tun, um die Latenz zu verringern, die Skalierbarkeit zu erhöhen und die Serverlast zu verringern. Außerdem kann dies Teil einer Strategie zum Schützen vor Denial-of-Service-Angriffen (DOS) sein. Weitere Informationen dazu, wie Sie Azure CDN zum Erhöhen der Resilienz sowie zum Verringern der Kundenlatenz verwenden, finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md).
 
 **Was passiert, wenn Sie kein CDN verwenden?** Wenn Sie kein CDN verwenden, gelangt der gesamte Kundendatenverkehr direkt auf Ihre Ressourcen. Dies bedeutet, dass die Last der Server zunimmt, was wiederum zu einer Verringerung der Skalierbarkeit führt. Außerdem kommt es für Kunden ggf. zu einer höheren Latenz, da im Rahmen von CDNs weltweite Standorte angeboten werden, die unter Umständen weniger weit von Ihren Kunden entfernt sind.
 
-## <a name="next-steps:"></a>Nächste Schritte:
+## <a name="next-steps"></a>Nächste Schritte:
 Weitere Informationen dazu, wie Sie Ihre Anwendungen für hohe Verfügbarkeit konzipieren, finden Sie unter [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

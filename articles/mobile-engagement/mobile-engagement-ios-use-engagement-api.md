@@ -1,12 +1,12 @@
 ---
 title: Verwenden der Engagement-API auf iOS
-description: Neuestes iOS-SDK – Verwenden der Engagement-API auf iOS
+description: "Neuestes iOS-SDK – Verwenden der Engagement-API auf iOS"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: dwrede
-editor: ''
-
+editor: 
+ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
@@ -14,34 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: bf672384407588ddc2c4998f42f6893e2638c592
+
 
 ---
-# Verwenden der Engagement-API auf iOS
+# <a name="how-to-use-the-engagement-api-on-ios"></a>Verwenden der Engagement-API auf iOS
 Dieses Dokument ist ein Add-On zum Dokument "So integrieren Sie Engagement auf iOS". Es bietet detaillierte Informationen zur Verwendung der Engagement-API zur Bereitstellung von Anwendungsstatistiken.
 
 Beachten Sie Folgendes: Wenn Sie über Engagement nur Berichte zu Anwendungssitzungen, Aktivitäten, Abstürzen und technischen Informationen bereitstellen möchten, ist es am einfachsten, für alle benutzerdefinierten `UIViewController`-Objekte eine Vererbung aus den entsprechenden `EngagementViewController`-Klassen zu konfigurieren.
 
 Wenn Sie darüber hinaus noch mehr Meldungen wünschen, z. B. wenn Sie anwendungsspezifische Ereignisse, Fehler und Aufträge melden möchten, oder wenn die Aktivitäten Ihrer Anwendung anders als in den `EngagementViewController`-Klassen implementiert gemeldet werden sollen, dann müssen Sie die Engagement-API verwenden.
 
-Die Engagement-API wird von der `EngagementAgent`-Klasse zur Verfügung gestellt. Eine Instanz dieser Klasse kann durch Aufruf der `[EngagementAgent shared]` statischen Methode abgerufen werden (beachten Sie, dass das zurückgegebene `EngagementAgent`-Objekt ein Singleton-Objekt ist).
+Die Engagement-API wird von der `EngagementAgent` -Klasse zur Verfügung gestellt. Eine Instanz dieser Klasse kann durch Aufruf der `[EngagementAgent shared]` statischen Methode abgerufen werden (beachten Sie, dass das zurückgegebene `EngagementAgent`-Objekt ein Singleton-Objekt ist).
 
 Vor jeglichen API-Aufrufen muss das `EngagementAgent`-Objekt durch Aufrufen der Methode `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];` initialisiert werden.
 
-## Engagement-Konzepte
+## <a name="engagement-concepts"></a>Engagement-Konzepte
 In den folgenden Abschnitten werden die [Mobile Engagement-Konzepte](mobile-engagement-concepts.md) für die iOS-Plattform genauer dargestellt.
 
-### `Session` und `Activity`
-Eine *Aktivität* ist üblicherweise mit einem Bildschirm einer Anwendung verknüpft, d. h. die *Aktivität* startet, wenn der Bildschirm angezeigt wird und endet, wenn der Bildschirm geschlossen wird. Dies ist der Fall, wenn das Engagement-SDK über die `EngagementViewController`-Klassen integriert wird.
+### <a name="session-and-activity"></a>`Session` und `Activity`
+Eine *Aktivität* ist üblicherweise mit einem Bildschirm einer Anwendung verknüpft, d.h. die *Aktivität* startet, wenn der Bildschirm angezeigt wird und endet, wenn der Bildschirm geschlossen wird. Dies ist der Fall, wenn das Engagement-SDK über die `EngagementViewController`-Klassen integriert wird.
 
-Aber *Aktivitäten* können auch manuell mithilfe der Engagement-API gesteuert werden. Auf diese Weise kann ein vorhandener Bildschirm in mehrere Unterabschnitte geteilt werden, um mehr Details über die Verwendung des Bildschirms zu erhalten (um beispielsweise zu erfahren, wie häufig und wie lange Dialoge in diesem Bildschirm verwendet werden).
+*Aktivitäten* können aber auch manuell mithilfe der Engagement-API gesteuert werden. Auf diese Weise kann ein vorhandener Bildschirm in mehrere Unterabschnitte geteilt werden, um mehr Details über die Verwendung des Bildschirms zu erhalten (um beispielsweise zu erfahren, wie häufig und wie lange Dialoge in diesem Bildschirm verwendet werden).
 
-## Berichterstellung für Aktivitäten
-### Benutzer startet eine neue Aktivität
+## <a name="reporting-activities"></a>Berichterstellung für Aktivitäten
+### <a name="user-starts-a-new-activity"></a>Benutzer startet eine neue Aktivität
             [[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
 
 Sie müssen jedes Mal `startActivity()` aufrufen, wenn sich die Benutzeraktivität ändert. Der erste Aufruf dieser Funktion startet eine neue Benutzersitzung.
 
-### Der Benutzer beendet seine aktuelle Aktivität
+### <a name="user-ends-his-current-activity"></a>Der Benutzer beendet seine aktuelle Aktivität
             [[EngagementAgent shared] endActivity];
 
 > [!WARNING]
@@ -49,8 +53,8 @@ Sie müssen jedes Mal `startActivity()` aufrufen, wenn sich die Benutzeraktivit�
 > 
 > 
 
-## Berichterstellung für Ereignisse
-### Sitzungsereignisse
+## <a name="reporting-events"></a>Berichterstellung für Ereignisse
+### <a name="session-events"></a>Sitzungsereignisse
 Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutzers während seiner Sitzung zu melden.
 
 **Beispiel ohne zusätzliche Daten:**
@@ -84,15 +88,15 @@ Sitzungsereignisse werden normalerweise verwendet, um die Aktionen eines Benutze
        [...]
     }
 
-### Eigenständige Ereignisse
+### <a name="standalone-events"></a>Eigenständige Ereignisse
 Im Gegensatz zu Sitzungsereignissen können eigenständige Ereignisse außerhalb des Kontexts einer Sitzung verwendet werden.
 
 **Beispiel:**
 
     [[EngagementAgent shared] sendEvent:@"received_notification" extras:nil];
 
-## Melden von Fehlern
-### Sitzungsfehler
+## <a name="reporting-errors"></a>Melden von Fehlern
+### <a name="session-errors"></a>Sitzungsfehler
 Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirkungen auf den Benutzer während seiner Sitzung haben.
 
 **Beispiel:**
@@ -109,14 +113,14 @@ Sitzungsfehler werden normalerweise zum Melden der Fehler verwendet, die Auswirk
       [...]
     }
 
-### Eigenständige Fehler
+### <a name="standalone-errors"></a>Eigenständige Fehler
 Im Gegensatz zu Sitzungsfehlern können eigenständige Fehler außerhalb des Kontexts einer Sitzung verwendet werden.
 
 **Beispiel:**
 
     [[EngagementAgent shared] sendError:@"something_failed" extras:nil];
 
-## Berichterstellung für Aufträge
+## <a name="reporting-jobs"></a>Berichterstellung für Aufträge
 **Beispiel:**
 
 Angenommen, Sie möchten die Dauer des Anmeldevorgangs melden:
@@ -134,7 +138,7 @@ Angenommen, Sie möchten die Dauer des Anmeldevorgangs melden:
     }
     [...]
 
-### Berichterstellung zu Fehlern während eines Auftrags
+### <a name="report-errors-during-a-job"></a>Berichterstellung zu Fehlern während eines Auftrags
 Fehler können mit einem ausgeführten Auftrag in Zusammenhang stehen anstatt mit der aktuellen Benutzersitzung.
 
 **Beispiel:**
@@ -171,7 +175,7 @@ Angenommen, Sie möchten einen Fehler während des Anmeldevorgangs melden:
     };
     [...]
 
-### Ereignisse während eines Auftrags
+### <a name="events-during-a-job"></a>Ereignisse während eines Auftrags
 Ereignisse können statt mit der aktuellen Benutzersitzung in Zusammenhang mit einem ausgeführten Auftrag stehen.
 
 **Beispiel:**
@@ -198,7 +202,7 @@ Angenommen, wir verfügen über ein soziales Netzwerk und verwenden einen Auftra
     }
     [...]
 
-## Zusätzliche Parameter
+## <a name="extra-parameters"></a>Zusätzliche Parameter
 Ereignissen, Fehlern, Aktivitäten und Aufträgen können beliebige Daten zugeordnet werden.
 
 Diese Daten können strukturiert werden und die iOS-Klasse "NSDictionary" nutzen.
@@ -214,29 +218,29 @@ Zusätzliche Daten können `arrays(NSArray, NSMutableArray)`, `numbers(NSNumber 
 > 
 > 
 
-### Beispiel
+### <a name="example"></a>Beispiel
     NSMutableDictionary* extras = [NSMutableDictionary dictionaryWithCapacity:2];
     [extras setObject:[NSNumber numberWithInt:123] forKey:@"video_id"];
     [extras setObject:@"http://foobar.com/blog" forKey:@"ref_click"];
     [[EngagementAgent shared] sendEvent:@"video_clicked" extras:extras];
 
-### Grenzen
-#### Schlüssel
+### <a name="limits"></a>Grenzen
+#### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in `NSDictionary` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchstaben, Ziffern oder Unterstrichen (\_) beginnen müssen.
 
-#### Größe
+#### <a name="size"></a>Größe
 Zusätzliche Daten sind auf **1024** Zeichen pro Aufruf beschränkt (nach Codierung in JSON durch den Engagement-Agent).
 
 Im vorherigen Beispiel enthält die an den Server gesendete JSON 58 Zeichen:
 
     {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
-## Informationen zur Berichterstellung
-Sie können Berichte zur Nachverfolgung (oder zu anderen anwendungsspezifischen Informationen) mithilfe der `sendAppInfo:`-Funktion manuell erstellen.
+## <a name="reporting-application-information"></a>Informationen zur Berichterstellung
+Sie können Berichte zur Nachverfolgung (oder zu anderen anwendungsspezifischen Informationen) mithilfe der `sendAppInfo:` -Funktion manuell erstellen.
 
 Beachten Sie, dass diese Informationen inkrementell gesendet werden können: Nur der letzte Wert für einen bestimmten Schlüssel wird für ein bestimmtes Gerät gespeichert.
 
@@ -249,19 +253,23 @@ Wie bei den zusätzlichen Daten zu Ereignissen wird die `NSDictionary`-Klasse zu
     [appInfo setObject:@"1983-12-07" forKey:@"birthdate"]; // December 7th 1983
     [[EngagementAgent shared] sendAppInfo:appInfo];
 
-### Grenzen
-#### Schlüssel
+### <a name="limits"></a>Grenzen
+#### <a name="keys"></a>Schlüssel
 Jeder Schlüssel in `NSDictionary` muss mit dem folgenden regulären Ausdruck übereinstimmen:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Das bedeutet, dass Schlüssel mit mindestens einem Buchstaben, gefolgt von Buchstaben, Ziffern oder Unterstrichen (\_) beginnen müssen.
 
-#### Größe
+#### <a name="size"></a>Größe
 Anwendungsinformationen sind beschränkt auf **1024** Zeichen pro Aufruf (einmal im JSON-Format vom Agent Engagement codiert).
 
 Im vorherigen Beispiel enthält die an den Server gesendete JSON 44 Zeichen:
 
     {"birthdate":"1983-12-07","gender":"female"}
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Nov16_HO3-->
+
+

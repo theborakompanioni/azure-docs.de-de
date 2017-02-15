@@ -1,50 +1,64 @@
 ---
-title: Service Fabric und Bereitstellung von Containern | Microsoft Docs
-description: Es wird beschrieben, wie Sie Service Fabric und Container zur Bereitstellung von Microserviceanwendungen nutzen. In diesem Artikel geht es um die Funktionen, die in Service Fabric für Container enthalten sind, und um die Bereitstellung von Containerimages in einem Cluster.
+title: Service Fabric und Bereitstellung von Containern | Microsoft-Dokumentation
+description: "Es wird beschrieben, wie Sie Service Fabric und Container zur Bereitstellung von Microserviceanwendungen nutzen. In diesem Artikel werden die Funktionen, die in Service Fabric für Container enthalten sind, und die Bereitstellung von Windows-Containerimages in einem Cluster beschrieben."
 services: service-fabric
 documentationcenter: .net
 author: msfussell
-manager: ''
-editor: ''
-
+manager: timlt
+editor: 
+ms.assetid: 799cc9ad-32fd-486e-a6b6-efff6b13622d
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2016
-ms.author: msfussell
+ms.date: 10/24/2016
+ms.author: mfussell
+translationtype: Human Translation
+ms.sourcegitcommit: af9f761179896a1acdde8e8b20476b7db33ca772
+ms.openlocfilehash: 1c5f3bc66c902c3b7186cad44728fa5237dd298a
+
 
 ---
-# <a name="preview:-deploy-a-container-to-service-fabric"></a>Vorschau: Bereitstellen eines Containers in Service Fabric
-> [!NOTE]
-> Dieses Feature befindet sich für Linux in der Vorschauphase und ist für Windows Server derzeit nicht verfügbar. Die Vorschauphase für Windows Server beginnt mit der nächsten Version von Service Fabric nach Windows Server 2016 GA, und das Feature wird in der darauffolgenden Version unterstützt.
+# <a name="preview-deploy-a-windows-container-to-service-fabric"></a>Vorschau: Bereitstellen eines Windows-Containers in Service Fabric
+> [!div class="op_single_selector"]
+> * [Bereitstellen von Windows Containern](service-fabric-deploy-container.md)
+> * [Bereitstellen von Docker-Containern](service-fabric-deploy-container-linux.md)
 > 
 > 
 
-Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. Diese werden als Dienste in Containern bezeichnet. Die Funktionen sind:
+In diesem Artikel werden Sie durch den Prozess zum Erstellen von Diensten in Windows-Containern geführt.
+
+> [!NOTE]
+> Dieses Feature befindet sich in der Vorschauphase für Linux und ist noch nicht für Windows Server 2016 verfügbar. Die Vorschauphase für Windows Server 2016 beginnt mit der nächsten Version von Azure Service Fabric. 
+> 
+> 
+
+Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. 
+
+Die Funktionen sind:
 
 * Bereitstellung und Aktivierung von Containerimages
 * Ressourcenkontrolle
 * Repositoryauthentifizierung
-* Containerport zum Hosten der Portzuordnung
+* Zuordnung vom Containerport zum Hostport
 * Container-zu-Container-Ermittlung und -Kommunikation
 * Möglichkeit zum Konfigurieren und Festlegen von Umgebungsvariablen
 
-Wir sehen uns nacheinander die Funktionen an, die beim Verpacken eines in einem Container enthaltenen Diensts für Ihre Anwendung verwendet werden.
+Als Nächstes sehen wir uns die einzelnen Funktionen beim Packen eines Diensts in einem Container zum Einfügen in Ihre Anwendung an.
 
-## <a name="packaging-a-container"></a>Packen eines Containers
-Beim Packen eines Containers können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit dem neuen Projekt-Assistenten für Sie erstellt.
+## <a name="package-a-windows-container"></a>Packen eines Windows-Containers
+Beim Packen eines Containers können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Bei Verwendung von Visual Studio werden die Anwendungspaketstruktur und die Manifestdateien mit der neuen Projektvorlage für Sie erstellt. Die VS-Vorlage wird in einer späteren Version veröffentlicht.
 
-## <a name="using-visual-studio-to-package-an-existing-executable"></a>Verwenden von Visual Studio zum Packen einer vorhandenen ausführbaren Datei
+## <a name="use-visual-studio-to-package-an-existing-container-image"></a>Verwenden von Visual Studio zum Packen eines vorhandenen Containerimage
 > [!NOTE]
-> In einer zukünftigen Version des SDK mit den Visual Studio-Tools können Sie einer Anwendung einen Container auf ähnliche Weise hinzufügen, wie Sie dies bereits von einer ausführbaren Gastanwendung kennen. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md) . Derzeit müssen Sie das Packen wie unten beschrieben manuell durchführen.
+> In einer der nächsten Versionen von Visual Studio für Service Fabric können Sie einen Container einer Anwendung genauso hinzufügen, wie Sie bereits eine ausführbare Gastanwendungsdatei hinzufügen können. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md). Derzeit müssen Sie einen Container wie im nächsten Abschnitt beschrieben manuell packen.
 > 
 > 
 
 <a id="manually"></a>
 
-## <a name="manually-packaging-and-deploying-container"></a>Manuelles Packen und Bereitstellen von Containern
+## <a name="manually-package-and-deploy-a-container"></a>Manuelles Packen und Bereitstellen eines Containers
 Der Vorgang zum manuellen Packen eines Diensts in einem Container basiert auf folgenden Schritten:
 
 1. Veröffentlichen des Containers in Ihrem Repository
@@ -52,48 +66,52 @@ Der Vorgang zum manuellen Packen eines Diensts in einem Container basiert auf fo
 3. Bearbeiten der Dienstmanifestdatei
 4. Bearbeiten der Anwendungsmanifestdatei
 
-## <a name="container-image-deployment-and-activation."></a>Bereitstellung und Aktivierung des Containerimage
+## <a name="deploy-and-activate-a-container-image"></a>Bereitstellen und Aktivieren eines Containerimage
 Im Service Fabric- [Anwendungsmodell](service-fabric-application-model.md)stellt ein Container einen Anwendungshost dar, in dem mehrere Dienstreplikate angeordnet werden. Fügen Sie den Namen des Containerimage im Dienstmanifest in ein `ContainerHost` -Element ein, um einen Container bereitzustellen und zu aktivieren.
 
-Fügen Sie im Dienstmanifest ein `ContainerHost`-Element für den Einstiegspunkt hinzu, und legen Sie `ImageName` als Name für das Containerrepository und Image fest. Der folgende Teil eines Manifests zeigt ein Beispiel für die Bereitstellung eines Containers mit dem Namen *myimage:v1* aus einem Repository mit dem Namen *myrepo*.
+Fügen Sie im Dienstmanifest einen `ContainerHost` für den Einstiegspunkt hinzu. Legen Sie anschließend `ImageName` als Namen für das Containerrepository und -image fest. Der folgende Teil eines Manifests zeigt ein Beispiel für die Bereitstellung eines Containers mit dem Namen `myimage:v1` aus einem Repository mit dem Namen `myrepo`:
 
+```xml
     <CodePackage Name="Code" Version="1.0">
         <EntryPoint>
           <ContainerHost>
-            <ImageName>myrepo/myimagename:v1</ImageName>
+            <ImageName>myrepo/myimage:v1</ImageName>
             <Commands></Commands>
           </ContainerHost>
         </EntryPoint>
     </CodePackage>
+```
 
-Sie können für das Containerimage Eingabebefehle angeben, indem Sie das optionale `Commands` -Element mit einer per Komma getrennten Gruppe von Befehlen für die Ausführung im Container angeben. 
+Sie können Eingabebefehle verwenden, indem Sie das optionale `Commands`-Element mit einer per Komma getrennten Gruppe von Befehlen für die Ausführung im Container angeben.
 
-## <a name="resource-governance"></a>Ressourcenkontrolle
-Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen beschränkt werden, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, können Ressourcenbegrenzungen für ein Dienstcodepaket deklariert werden. Ressourcenbegrenzungen können für Folgendes festgelegt werden:
+## <a name="understand-resource-governance"></a>Grundlagen der Ressourcenkontrolle
+Die Ressourcenkontrolle ist eine Funktion des Containers, mit der die Ressourcen beschränkt werden, die vom Container auf dem Host verwendet werden können. Mit dem `ResourceGovernancePolicy`-Element, das im Anwendungsmanifest angegeben ist, werden Ressourcenlimits für ein Dienstcodepaket deklariert. Ressourcenlimits können für die folgenden Ressourcen festgelegt werden:
 
 * Arbeitsspeicher
 * MemorySwap
 * CpuShares (relative CPU-Gewichtung)
 * MemoryReservationInMB  
-* BlkioWeight (relative BlockIO-Gewichtung) 
+* BlkioWeight (relative BlockIO-Gewichtung)
 
 > [!NOTE]
-> In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten möglich sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
+> In einer zukünftigen Version wird die Unterstützung für das Angeben von bestimmten Block-E/A-Grenzwerten enthalten sein, z.B. IOPS, Bit/s (Lesen/Schreiben) und andere.
 > 
 > 
 
+```xml
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
-            <ResourceGovernancePolicy CodePackageRef="FrontendService.Code" CpuShares="500" 
+            <ResourceGovernancePolicy CodePackageRef="FrontendService.Code" CpuShares="500"
             MemoryInMB="1024" MemorySwapInMB="4084" MemoryReservationInMB="1024" />
         </Policies>
     </ServiceManifestImport>
+```
 
+## <a name="authenticate-a-repository"></a>Authentifizieren eines Repositorys
+Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im Anwendungsmanifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet. Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext (*nicht* zu empfehlen):
 
-## <a name="repository-authentication"></a>Repositoryauthentifizierung
-Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinformationen für das Containerrepository angeben. Die Anmeldeinformationen, die im *Anwendungs* manifest enthalten sind, werden zum Angeben der Anmeldeinformationen oder des SSH-Schlüssels zum Herunterladen des Containerimage aus dem Imagerepository verwendet.  Das folgende Beispiel enthält ein Konto mit dem Namen *TestUser* und dem Kennwort als Klartext. Dies ist **nicht** zu empfehlen.
-
+```xml
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
@@ -102,26 +120,29 @@ Zum Herunterladen eines Containers müssen Sie unter Umständen die Anmeldeinfor
             </ContainerHostPolicies>
         </Policies>
     </ServiceManifestImport>
+```
 
-Das Kennwort kann und muss verschlüsselt werden, indem ein für den Computer bereitgestelltes Zertifikat verwendet wird.
+Wir empfehlen Ihnen, das Kennwort mit einem Zertifikat zu verschlüsseln, das auf dem Computer bereitgestellt wird.
 
-Im folgenden Beispiel wird ein Konto mit dem Namen *TestUser* verwendet, dessen Kennwort mit dem Zertifikat *MyCert* verschlüsselt wird. Sie können den PowerShell-Befehl `Invoke-ServiceFabricEncryptText` verwenden, um den Verschlüsselungstext für den geheimen Schlüssel für das Kennwort zu erstellen. Der Artikel [Verwalten von geheimen Daten in Service Fabric-Anwendungen](service-fabric-application-secret-management.md) enthält Details hierzu. Der private Schlüssel des Zertifikats zum Entschlüsseln des Kennworts muss auf dem lokalen Computer mit einer Out-of-Band-Methode bereitgestellt werden (in Azure über den Resource Manager). Wenn Service Fabric das Dienstpaket dann auf dem Computer bereitstellt, kann der geheime Schlüssel entschlüsselt und zusammen mit dem Kontonamen zum Authentifizieren für das Containerrepository mit diesen Anmeldeinformationen verwendet werden.
+Im folgenden Beispiel wird ein Konto mit dem Namen *TestUser* verwendet, dessen Kennwort mit dem Zertifikat *MyCert* verschlüsselt wurde. Sie können den PowerShell-Befehl `Invoke-ServiceFabricEncryptText` verwenden, um den Verschlüsselungstext für das Kennwort zu erstellen. Weitere Informationen finden Sie im Artikel [Verwalten von Geheimnissen in Service Fabric-Anwendungen](service-fabric-application-secret-management.md).
 
+Der private Schlüssel des Zertifikats zum Entschlüsseln des Kennworts muss auf dem lokalen Computer mit einer Out-of-Band-Methode bereitgestellt werden. (In Azure ist dies die Methode mit dem Azure Resource Manager.) Wenn Service Fabric das Dienstpaket dann auf dem Computer bereitstellt, kann das Geheimnis entschlüsselt werden. Indem das Geheimnis zusammen mit dem Kontonamen verwendet wird, ist die Authentifizierung mit dem Containerrepository möglich.
+
+```xml
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
             <ContainerHostPolicies CodePackageRef="FrontendService.Code">
                 <RepositoryCredentials AccountName="TestUser" Password="[Put encrypted password here using MyCert certificate ]" PasswordEncrypted="true"/>
             </ContainerHostPolicies>
-            <SecurityAccessPolicies>
-                <SecurityAccessPolicy ResourceRef="MyCert" PrincipalRef="TestUser" GrantRights="Full" ResourceType="Certificate" />
-            </SecurityAccessPolicies>
         </Policies>
     </ServiceManifestImport>
+```
 
-## <a name="container-port-to-host-port-mapping"></a>Containerport zum Hosten der Portzuordnung
-Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, indem Sie im Anwendungsmanifest ein `PortBinding` -Element angeben. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet.
+## <a name="configure-container-port-to-host-port-mapping"></a>Konfigurieren der Zuordnung vom Containerport zum Hostport
+Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, indem Sie im Anwendungsmanifest ein `PortBinding`-Element angeben. Über die Portbindung wird der Port, über den der Dienst im Container lauscht, einem Port auf dem Host zugeordnet.
 
+```xml
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
@@ -130,13 +151,14 @@ Sie können einen Hostport zum Kommunizieren mit dem Container konfigurieren, in
             </ContainerHostPolicies>
         </Policies>
     </ServiceManifestImport>
+```
 
+## <a name="configure-container-to-container-discovery-and-communication"></a>Konfigurieren der Container-zu-Container-Ermittlung und -Kommunikation
+Mit der `PortBinding`-Richtlinie können Sie einen Containerport einem `Endpoint` im Dienstmanifest zuordnen. Dies wird im folgenden Beispiel veranschaulicht. Der Endpunkt `Endpoint1` kann einen festen Port angeben (z.B. Port 80). Es kann auch kein Port angegeben werden. In diesem Fall wird ein zufälliger Port aus dem Anwendungsportbereich für Sie ausgewählt.
 
-## <a name="container-to-container-discovery-and-communication"></a>Container-zu-Container-Ermittlung und -Kommunikation
-Mit der `PortBinding`-Richtlinie können Sie einen Containerport einem `Endpoint` im Dienstmanifest zuordnen. Dies wird im folgenden Beispiel veranschaulicht. Für den Endpunkt `Endpoint1` kann ein fester Port angegeben werden, z.B. Port 80, oder es kann auch kein Port angegeben werden. In diesem Fall wird für Sie ein zufälliger Port aus dem Anwendungsportbereich der Cluster ausgewählt.
+Wenn Sie einen Endpunkt angeben, kann Service Fabric mit dem `Endpoint`-Tag im Dienstmanifest eines Gastcontainers den Endpunkt automatisch für den Naming Service veröffentlichen. Andere Dienste, die im Cluster ausgeführt werden, können diesen Container dann ermitteln, indem sie die REST-Abfragen für die Auflösung nutzen.
 
-Für Gastcontainer ermöglicht diese Angabe eines `Endpoint` -Elements im Dienstmanifest Service Fabric das automatische Veröffentlichen des Endpunkts für den Naming Service, sodass andere im Cluster ausgeführte Dienste den Container über die REST-Abfragen zum Auflösen von Diensten ermitteln können. 
-
+```xml
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <Policies>
@@ -145,14 +167,16 @@ Für Gastcontainer ermöglicht diese Angabe eines `Endpoint` -Elements im Dienst
             </ContainerHostPolicies>
         </Policies>
     </ServiceManifestImport>
+```
 
-Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md)leicht eine Kommunikation von Container zu Container einrichten. Sie müssen lediglich den HTTP-Lauschport für den Reverseproxy und die Namen der Dienste angeben, mit denen Sie kommunizieren möchten, indem Sie sie als Umgebungsvariablen festlegen. Die Vorgehensweise ist im nächsten Abschnitt beschrieben.  
+Durch die Registrierung mit dem Naming Service können Sie im Code für Ihre Container per [Reverseproxy](service-fabric-reverseproxy.md) leicht eine Kommunikation von Container zu Container einrichten. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden. Weitere Informationen finden Sie im nächsten Abschnitt. 
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurieren und Festlegen von Umgebungsvariablen
-Umgebungsvariablen können für jedes Codepaket im Dienstmanifest für im Container bereitgestellte Dienste oder als Prozesse/ausführbare Gastanwendungsdateien angegeben werden. Diese Werte von Umgebungsvariablen können im Anwendungsmanifest spezifisch überschrieben oder während der Bereitstellung als Anwendungsparameter angegeben werden.
+Umgebungsvariablen können für jedes Codepaket im Dienstmanifest angegeben werden, und zwar sowohl für Dienste, die in Containern bereitgestellt werden, als auch für Dienste, die als Prozesse oder ausführbare Gastanwendungsdateien bereitgestellt werden. Diese Werte von Umgebungsvariablen können im Anwendungsmanifest spezifisch überschrieben oder während der Bereitstellung als Anwendungsparameter angegeben werden.
 
-Der folgende XML-Codeausschnitt eines Dienstmanifests enthält ein Beispiel für die Angabe von Umgebungsvariablen für ein Codepaket. 
+Der folgende XML-Codeausschnitt eines Dienstmanifests enthält ein Beispiel für die Angabe von Umgebungsvariablen für ein Codepaket:
 
+```xml
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <Description>a guest executable service in a container</Description>
         <ServiceTypes>
@@ -171,9 +195,11 @@ Der folgende XML-Codeausschnitt eines Dienstmanifests enthält ein Beispiel für
             </EnvironmentVariables>
         </CodePackage>
     </ServiceManifest>
+```
 
 Diese Umgebungsvariablen können auf Anwendungsmanifestebene überschrieben werden:
 
+```xml
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="FrontendServicePackage" ServiceManifestVersion="1.0"/>
         <EnvironmentOverrides CodePackageRef="FrontendService.Code">
@@ -181,12 +207,15 @@ Diese Umgebungsvariablen können auf Anwendungsmanifestebene überschrieben werd
             <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
         </EnvironmentOverrides>
     </ServiceManifestImport>
+```
 
-Im obigen Beispiel haben wir einen expliziten Wert für die Umgebungsvariable `HttpGateway` (19000) angegeben, und der Wert für den Parameter `BackendServiceName` wird über den Anwendungsparameter `[BackendSvc]` festgelegt. Dies ermöglicht Ihnen das Angeben des Werts für den `BackendServiceName`-Wert während der Anwendungsbereitstellung, und Sie müssen keinen festen Wert im Manifest verwenden. 
+Im obigen Beispiel haben wir einen expliziten Wert für die Umgebungsvariable `HttpGateway` (19000) angegeben, und der Wert für den Parameter `BackendServiceName` wird über den Anwendungsparameter `[BackendSvc]` festgelegt. Diese Einstellungen ermöglichen Ihnen das Angeben des Werts für den `BackendServiceName`-Wert während der Anwendungsbereitstellung, und Sie müssen keinen festen Wert im Manifest verwenden.
 
 ## <a name="complete-examples-for-application-and-service-manifest"></a>Vollständige Beispiele für Anwendungs- und Dienstmanifest
-Hier ist ein Beispiel für ein Anwendungsmanifest angegeben, in dem die Containerfunktionen enthalten sind:
 
+Hier ist ein Beispiel für ein Anwendungsmanifest angegeben:
+
+```xml
     <ApplicationManifest ApplicationTypeName="SimpleContainerApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <Description>A simple service container application</Description>
         <Parameters>
@@ -208,12 +237,13 @@ Hier ist ein Beispiel für ein Anwendungsmanifest angegeben, in dem die Containe
             </Policies>
         </ServiceManifestImport>
     </ApplicationManifest>
+```
 
+Dies ist ein Beispiel für ein Dienstmanifest (aus dem obigen Anwendungsmanifest):
 
-Hier ist ein Beispiel für ein Dienstmanifest (aus dem vorherigen Anwendungsmanifest) angegeben, in dem die Containerfunktionen enthalten sind:
-
+```xml
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <Description> A service that implements a stateless frontend in a container</Description>
+        <Description> A service that implements a stateless front end in a container</Description>
         <ServiceTypes>
             <StatelessServiceType ServiceTypeName="StatelessFrontendService"  UseImplicitHost="true"/>
         </ServiceTypes>
@@ -232,14 +262,19 @@ Hier ist ein Beispiel für ein Dienstmanifest (aus dem vorherigen Anwendungsmani
         <ConfigPackage Name="FrontendService.Config" Version="1.0" />
         <DataPackage Name="FrontendService.Data" Version="1.0" />
         <Resources>
-            <Eendpoints>
+            <Endpoints>
                 <Endpoint Name="Endpoint1" Port="80"  UriScheme="http" />
-            </Eendpoints>
+            </Endpoints>
         </Resources>
     </ServiceManifest>
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+Nachdem Sie nun einen Dienst in einem Container bereitgestellt haben, können Sie sich unter [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) über die Verwaltung des dazugehörigen Lebenszyklus informieren.
 
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Nov16_HO3-->
 
 

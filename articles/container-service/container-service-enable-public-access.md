@@ -1,27 +1,31 @@
 ---
-title: Ermöglichen des öffentlichen Zugriffs auf eine ACS-App | Microsoft Docs
-description: Es wird beschrieben, wie Sie den öffentlichen Zugriff auf einen Azure Container Service ermöglichen.
+title: "Ermöglichen des öffentlichen Zugriffs auf eine ACS-App | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie den öffentlichen Zugriff auf einen Azure Container Service ermöglichen."
 services: container-service
-documentationcenter: ''
-author: Thraka
-manager: timlt
-editor: ''
+documentationcenter: 
+author: sauryadas
+manager: madhana
+editor: 
 tags: acs, azure-container-service
 keywords: Docker, Container, Microservices, Mesos, Azure
-
+ms.assetid: 5dea3c4d-a687-4024-93ea-f7a9a7243ab4
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
-ms.author: adegeo
+ms.author: saudas
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 9491ffb2683063169ab25c38b3db5de06282d654
+
 
 ---
-# Ermöglichen des öffentlichen Zugriffs auf eine Azure Container Service-Anwendung
-Alle DC/OS-Container im [Pool mit den öffentlichen Agents](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) von ACS werden automatisch für das Internet verfügbar gemacht. Standardmäßig sind die Ports **80**, **443** und **8080** geöffnet, und alle (öffentlichen) Container, die über diese Ports lauschen, sind zugänglich. In diesem Artikel wird beschrieben, wie Sie mehr Ports für Ihre Anwendungen im Azure Container Service öffnen.
+# <a name="enable-public-access-to-an-azure-container-service-application"></a>Ermöglichen des öffentlichen Zugriffs auf eine Azure Container Service-Anwendung
+Alle DC/OS-Container im [Pool mit den öffentlichen Agents](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) von ACS werden automatisch für das Internet verfügbar gemacht. Standardmäßig sind die Ports **80**, **443** und **8080** geöffnet, und alle (öffentlichen) Container, die an diesen Ports lauschen, sind zugänglich. In diesem Artikel wird beschrieben, wie Sie mehr Ports für Ihre Anwendungen im Azure Container Service öffnen.
 
-## Öffnen eines Ports (Portal)
+## <a name="open-a-port-portal"></a>Öffnen eines Ports (Portal)
 Zunächst müssen wir den gewünschten Port öffnen.
 
 1. Melden Sie sich beim Portal an.
@@ -53,15 +57,15 @@ Zunächst müssen wir den gewünschten Port öffnen.
    | Back-End-Port |Der interne öffentliche Port des Containers, an den Datenverkehr geleitet wird. |
    | Back-End-Pool |Die Container in diesem Pool sind das Ziel für diesen Lastenausgleich. |
    | Test |Der Test für die Ermittlung, ob ein Ziel im **Back-End-Pool** fehlerfrei ist. |
-   | Sitzungspersistenz |Bestimmt, wie Datenverkehr von einem Client für die Dauer der Sitzung behandelt werden soll.<br><br>**Keine**: Aufeinander folgende Anforderungen von demselben Client können von jedem Container verarbeitet werden.<br>**Client-IP**: Aufeinander folgende Anforderungen von derselben Client-IP werden von demselben Container verarbeitet.<br>**Client-IP und Protokoll**: Aufeinander folgende Anforderungen von derselben Kombination aus Client-IP und Protokoll werden von demselben Container verarbeitet. |
-   | Leerlauftimeout |(Nur TCP) Der Zeitraum zur Beibehaltung des geöffneten Zustands eines TCP/HTTP-Clients in Minuten, ohne dass *Keep-Alive*-Nachrichten verwendet werden. |
+   | Sitzungspersistenz |Bestimmt, wie Datenverkehr von einem Client für die Dauer der Sitzung behandelt werden soll.<br><br>**Keine**: Aufeinander folgende Anforderungen vom gleichen Client können von jedem Container verarbeitet werden.<br>**Client-IP**: Aufeinander folgende Anforderungen von der gleichen Client-IP werden vom gleichen Container verarbeitet.<br>**Client-IP und Protokoll**: Aufeinander folgende Anforderungen von derselben Kombination aus Client-IP und Protokoll werden von demselben Container verarbeitet. |
+   | Leerlauftimeout |(Nur TCP) Der Zeitraum zur Beibehaltung des geöffneten Zustands eines TCP/HTTP-Clients in Minuten, ohne dass *Keep-Alive* -Nachrichten verwendet werden. |
 
-## Hinzufügen einer Sicherheitsregel (Portal)
+## <a name="add-a-security-rule-portal"></a>Hinzufügen einer Sicherheitsregel (Portal)
 Als Nächstes müssen wir eine Sicherheitsregel hinzufügen, mit der Datenverkehr von unserem geöffneten Port über die Firewall geleitet wird.
 
 1. Melden Sie sich beim Portal an.
 2. Suchen Sie nach der Ressourcengruppe, in der Sie den Azure Container Service bereitgestellt haben.
-3. Wählen Sie **öffentliche** Agent-Netzwerksicherheitsgruppe (der Name hat in der Regel das Format **XXXX-agent-public-nsg-XXXX**).
+3. Wählen Sie die **öffentliche** Agent-Netzwerksicherheitsgruppe (der Name weist in der Regel das Format **XXXX-agent-public-nsg-XXXX** auf).
    
     ![Azure Container Service-Netzwerksicherheitsgruppe](media/container-service-dcos-agents/agent-nsg.png)
 4. Wählen Sie **Eingangssicherheitsregeln** und dann **Hinzufügen**.
@@ -73,15 +77,20 @@ Als Nächstes müssen wir eine Sicherheitsregel hinzufügen, mit der Datenverkeh
    | --- | --- |
    | Name |Ein beschreibender Name der Firewallregel. |
    | Priority |Prioritätsrang für die Regel. Je niedriger die Nummer ist, desto höher ist die Priorität. |
-   | Quelle |Schränkt den IP-Adressbereich für eingehenden Datenverkehr ein, der mit dieser Regel zugelassen oder abgelehnt wird. Verwenden Sie **Alle**, um keine Einschränkung anzugeben. |
-   | Dienst |Wählen Sie einen Satz mit vordefinierten Diensten aus, für die diese Sicherheitsregel gilt. Verwenden Sie andernfalls **Benutzerdefiniert**, um einen eigenen Satz zu erstellen. |
-   | Protokoll |Schränkt den Datenverkehr basierend auf **TCP** oder **UDP** ein. Verwenden Sie die Option **Alle**, um keine Einschränkung anzugeben. |
-   | Portbereich |Wenn **Dienst** auf **Benutzerdefiniert** festgelegt ist, wird hiermit der Portbereich angegeben, auf den sich diese Regel auswirkt. Sie können einen einzelnen Port, z.B. **80**, oder einen Bereich wie **1024 - 1500** verwenden. |
+   | Quelle |Schränkt den IP-Adressbereich für eingehenden Datenverkehr ein, der mit dieser Regel zugelassen oder abgelehnt wird. Verwenden Sie **Alle** , um keine Einschränkung anzugeben. |
+   | Dienst |Wählen Sie einen Satz mit vordefinierten Diensten aus, für die diese Sicherheitsregel gilt. Verwenden Sie andernfalls **Benutzerdefiniert** , um einen eigenen Satz zu erstellen. |
+   | Protocol |Schränkt den Datenverkehr basierend auf **TCP** oder **UDP** ein. Verwenden Sie **Alle** , um keine Einschränkung anzugeben. |
+   | Portbereich |Wenn **Dienst** auf **Benutzerdefiniert** festgelegt ist, wird hiermit der Portbereich angegeben, auf den sich diese Regel auswirkt. Sie können einen einzelnen Port, z.B. **80**, oder einen Bereich wie **1024–1500** verwenden. |
    | Aktion |Dient zum Zulassen oder Verweigern von Datenverkehr, der die Kriterien erfüllt. |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich über den Unterschied zwischen [öffentlichen und privaten DC/OS-Agents](container-service-dcos-agents.md).
 
 Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

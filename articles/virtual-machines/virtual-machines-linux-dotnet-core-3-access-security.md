@@ -1,26 +1,30 @@
 ---
 title: Zugriff und Sicherheit in Azure Resource Manager-Vorlagen | Microsoft Docs
-description: .NET Core-Tutorial für virtuelle Azure-Computer
+description: ".NET Core-Tutorial für virtuelle Azure-Computer"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-
+ms.assetid: 07e47189-680e-4102-a8d4-5a8eb9c00213
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/21/2016
+ms.date: 11/21/2016
 ms.author: nepeters
+translationtype: Human Translation
+ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
+ms.openlocfilehash: 25af19c208fb69d06ca74dec41f42a075eb22304
+
 
 ---
 # <a name="access-and-security-in-azure-resource-manager-templates"></a>Zugriff und Sicherheit in Azure Resource Manager-Vorlagen
 Auf in Azure gehostete Anwendungen muss in der Regel über das Internet oder über eine VPN-/ExpressRoute-Verbindung mit Azure zugegriffen werden. Im Rahmen des Music Store-Anwendungsbeispiels wird die Website im Internet mit einer öffentlichen IP-Adresse verfügbar gemacht. Nach Einrichtung des Zugriffs müssen die Verbindungen mit der Anwendung sowie der Zugriff auf die Ressourcen des virtuellen Computers geschützt werden. Diese Zugriffssicherheit wird mithilfe einer Netzwerksicherheitsgruppe erreicht. 
 
-In diesem Dokument erfahren Sie, wie die Music Store-Anwendung in der Azure Resource Manager-Beispielvorlage geschützt wird. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+In diesem Dokument erfahren Sie, wie die Music Store-Anwendung in der Azure Resource Manager-Beispielvorlage geschützt wird. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux). 
 
 ## <a name="public-ip-address"></a>Öffentliche IP-Adresse
 Eine Azure-Ressource kann mithilfe einer öffentlichen IP-Adressressource öffentlich zugänglich gemacht werden. Eine öffentliche IP-Adresse kann mit einer statischen oder mit einer dynamischen IP-Adresse konfiguriert werden. Dynamische Adressen werden entfernt, wenn der virtuelle Computer beendet und seine Zuordnung aufgehoben wird. Wenn der Computer wieder gestartet wird, erhält er unter Umständen eine andere öffentliche IP-Adresse. Um die Änderung einer IP-Adresse zu verhindern, können Sie eine reservierte IP-Adresse verwenden. 
@@ -29,7 +33,7 @@ Eine öffentliche IP-Adresse kann einer Azure Resource Manager-Vorlage mithilfe 
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L121).
 
-```none
+```json
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/publicIPAddresses",
@@ -51,7 +55,7 @@ Eine öffentliche IP-Adresse kann einem virtuellen Netzwerkadapter oder einem La
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L208).
 
-```none
+```json
 "frontendIPConfigurations": [
   {
     "properties": {
@@ -75,7 +79,7 @@ Es empfiehlt sich, nach der Einrichtung den Zugriff auf Azure-Ressourcen einzusc
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L68).
 
-```none
+```json
 {
   "apiVersion": "2015-05-01-preview",
   "type": "Microsoft.Network/networkSecurityGroups",
@@ -110,7 +114,7 @@ In diesem Beispiel ist die Netzwerksicherheitsgruppe dem in der Virtual Network-
 
 Das entsprechende JSON-Beispiel in der Resource Manager-Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L158).
 
-```none
+```json
 "subnets": [
   {
     "name": "[variables('subnetName')]",
@@ -132,8 +136,11 @@ Ausführliche Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Was 
 ## <a name="next-step"></a>Nächster Schritt
 <hr>
 
-[Schritt 3: Verfügbarkeit und Skalierung in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-4-avalibility-scale.md)
+[Schritt 3: Verfügbarkeit und Skalierung in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO3-->
 
 

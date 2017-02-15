@@ -87,6 +87,6 @@ Informationen zu den Geschäftskontinuitätsfeatures von Azure SQL-Datenbank-Edi
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

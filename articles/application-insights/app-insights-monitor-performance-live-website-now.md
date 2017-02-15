@@ -14,21 +14,21 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: b70c8baab03703bc00b75c2c611f69e3b71d6cd7
-ms.openlocfilehash: 5159e7fc47d320d52eb7b94b5775158a3f09c769
+ms.sourcegitcommit: ee9ebc23ce805bb4665669077a4d3fddf4c43e32
+ms.openlocfilehash: a190b1990a4ae4e7ad52cc1a7e802c8002522917
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentieren von Web-Apps zur Laufzeit mit Application Insights
-*Application Insights befindet sich in der Vorschau.*
 
-Sie können eine Live-Web-App mit Visual Studio Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Wenn Ihre Apps mit einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Wenn es sich um Azure-Web-Apps handelt oder wenn sie in einer Azure-VM ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).)
+
+Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Wenn Ihre Apps mit einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Wenn es sich um Azure-Web-Apps handelt oder wenn sie in einer Azure-VM ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).)
 
 ![Beispieldiagramme](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
 Bei der Anwendung von Application Insights auf die .NET-Webanwendungen können Sie zwischen drei Möglichkeiten wählen:
 
-* **Buildzeit**: [Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
+* **Buildzeit:** [Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
 * **Laufzeit:** Instrumentieren Sie Ihre Web-App auf dem Server wie unten beschrieben, ohne den Code neu zu erstellen und bereitzustellen.
 * **Beides:** Erstellen Sie das SDK in Ihrem Web-App-Code, und wenden Sie auch die Laufzeiterweiterungen an. So können Sie die Vorteile beider Optionen nutzen.
 
@@ -38,8 +38,8 @@ Hier ist zusammengefasst, was Sie jeweils erhalten:
 | --- | --- | --- |
 | Anforderungen und Ausnahmen |Ja |Ja |
 | [Weitere ausführliche Ausnahmen](app-insights-asp-net-exceptions.md) | |Ja |
-| [Abhängigkeitsdiagnose](app-insights-asp-net-dependencies.md) |Unter .NET 4.6+ |Ja |
-| [Systemleistungsindikatoren](app-insights-performance-counters.md) | |IIS oder Azure-Clouddienst, nicht Azure-Web-App |
+| [Abhängigkeitsdiagnose](app-insights-asp-net-dependencies.md) |Bei .NET 4.6 und höheren Versionen, aber weniger Details |Ja, vollständige Details: Ergebniscodes, SQL-Befehlstext, HTTP-Verb|
+| [Systemleistungsindikatoren](app-insights-performance-counters.md) |Ja |Ja |
 | [API für benutzerdefinierte Telemetrie][api] |Ja | |
 | [Ablaufverfolgungsprotokoll-Integration](app-insights-asp-net-trace-logs.md) |Ja | |
 | [Seitenansicht und Benutzerdaten](app-insights-javascript.md) |Ja | |
@@ -55,29 +55,23 @@ Sie benötigen ein [Microsoft Azure](http://azure.com) -Abonnement.
 
 ### <a name="if-your-app-is-hosted-on-your-iis-server"></a>Bei auf dem IIS-Server gehosteter App
 1. Melden Sie sich mit Administratorrechten auf Ihrem IIS-Webserver an.
-2. Laden Sie den [Statusmonitor-Installer](http://go.microsoft.com/fwlink/?LinkId=506648)herunter, und starten Sie ihn.
-3. Melden Sie sich im Installations-Assistenten bei Microsoft Azure an.
-
-    ![Melden Sie sich mit den Anmeldeinformationen für ihr Microsoft-Konto bei Azure an.](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
-
-    *Verbindungsfehler? Informationen hierzu finden Sie unter [Problembehandlung](#troubleshooting).*
-4. Wählen Sie die installierte Webanwendung oder Website aus, die Sie überwachen möchten, und konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen.
+2. Laden Sie den [Statusmonitor-Installer](http://go.microsoft.com/fwlink/?LinkId=506648)herunter, und starten Sie ihn.  
+3. Wählen Sie die installierte Webanwendung oder Website aus, die Sie überwachen möchten, und konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen. Die Anmeldung an Microsoft Azure sollte durchgeführt werden.
 
     ![Wählen Sie eine App und eine Ressource.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
     In der Regel konfigurieren Sie eine neue Ressource und [Ressourcengruppe][roles].
 
     Sie können andernfalls auch eine vorhandene Ressource verwenden, wenn Sie bereits [Webtests][availability] für Ihre Website oder die [Webclientüberwachung][client] eingerichtet haben.
-5. Starten Sie IIS neu.
+4. Starten Sie IIS neu.
 
     ![Wählen Sie im oberen Bereich des Dialogfelds "Neustart".](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
     Der Webdienst wird für kurze Zeit unterbrochen.
-6. Beachten Sie, dass die Datei "ApplicationInsights.config" in die Web-Apps eingefügt wurde, die Sie überwachen möchten.
+5. Beachten Sie, dass die Datei "ApplicationInsights.config" in die Web-Apps eingefügt wurde, die Sie überwachen möchten.
 
     ![Suchen Sie die CONFIG-Datei bei den Codedateien der Web-App.](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
-
-   Außerdem wurden Änderungen an der Datei web.config vorgenommen.
+   
 
 #### <a name="want-to-reconfigure-later"></a>Möchten Sie die Konfiguration später ändern?
 Nach Abschluss des Assistenten können Sie die Konfiguration des Agenten später jederzeit ändern. Sie können dies auch verwenden, wenn bei der ursprünglichen Einrichtung des Agenten ein Problem aufgetreten ist.
@@ -105,7 +99,7 @@ Gehen Sie wie folgt vor, um das Diagramm nach Aufrufen verschiedener Abhängigke
 ![Abhängigkeit](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
-(Nicht für Azure-Web-Apps.) Klicken Sie auf dem Übersichtsblatt auf "Server", um die Diagramme von Serverleistungsindikatoren wie CPU- und Speicherauslastung anzuzeigen.
+Klicken Sie auf dem Übersichtsblatt auf "Server", um die Diagramme von Serverleistungsindikatoren wie CPU- und Speicherauslastung anzuzeigen.
 
 Wenn Sie über mehrere Serverinstanzen verfügen, kann es ratsam sein, die Diagramme so zu bearbeiten, dass sie nach der Rolleninstanz gruppiert werden.
 
@@ -137,7 +131,7 @@ Sie müssen [einige ausgehende Ports](app-insights-ip-addresses.md#outgoing-port
   * Wählen Sie in IIS-Manager Ihren Anwendungspool aus, öffnen Sie **Erweiterte Einstellungen**, und überprüfen Sie die Identität unter **Prozessmodell**.
   * Fügen Sie in der Systemsteuerung "Computerverwaltung" diese Identität der Gruppe "Systemmonitorbenutzer" hinzu.
 * Wenn Sie MMA/SCOM auf Ihrem Server installiert haben, können einige Versionen in Konflikt stehen. Deinstallieren Sie sowohl SCOM als auch den Statusmonitor, und installieren Sie die neuesten Versionen.
-* Weitere Informationen finden Sie unter [Problembehandlung][qna].
+* Informationen hierzu finden Sie unter [Problembehandlung][qna].
 
 ## <a name="system-requirements"></a>Systemanforderungen
 Betriebssystemunterstützung für den Application Insights-Statusmonitor auf dem Server:
@@ -146,10 +140,11 @@ Betriebssystemunterstützung für den Application Insights-Statusmonitor auf dem
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows Server 2012 R2
+* Windows Server 2016
 
-mit den neuesten Service Packs und .NET Framework 4.0 und 4.5
+mit den neuesten Service Packs und .NET Framework 4.5
 
-Auf der Clientseite: Windows 7, 8 und 8.1, ebenfalls mit .NET Framework 4.0 und 4.5
+Auf der Clientseite: Windows 7, 8, 8.1 und 10, ebenfalls mit .NET Framework 4.5
 
 IIS-Unterstützung: IIS 7, 7.5, 8, 8.5 (IIS ist erforderlich)
 
@@ -216,7 +211,7 @@ Ermitteln Sie, welche Apps überwacht werden:
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
 * [Erstellen Sie Webtests][availability], um sicherzustellen, dass Ihre Website live bleibt.
 * [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme besser zu diagnostizieren.
-* [Fügen Sie Webclienttelemetrie][usage] hinzu, um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
+* [Fügen Sie Webclienttelemetrie hinzu][usage], um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
 * [Fügen Sie Ihrem Webdienstcode das Application Insights-SDK hinzu][greenbrown], damit Sie die Ablaufverfolgungs- und Protokollaufrufe im Servercode einfügen können.
 
 <!--Link references-->
@@ -232,6 +227,6 @@ Ermitteln Sie, welche Apps überwacht werden:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

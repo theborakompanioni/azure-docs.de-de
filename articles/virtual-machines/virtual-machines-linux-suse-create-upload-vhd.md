@@ -1,13 +1,13 @@
 ---
 title: Erstellen und Hochladen einer SUSE-Linux-VHD in Azure
-description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein SUSE-Linux-Betriebssystem enthält.
+description: "Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein SUSE-Linux-Betriebssystem enthält."
 services: virtual-machines-linux
-documentationcenter: ''
+documentationcenter: 
 author: szarkos
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
-
+ms.assetid: 066d01a6-2a54-4718-bcd0-90fe7a5303a1
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,29 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: szark
+translationtype: Human Translation
+ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
+ms.openlocfilehash: a49eb5e27f5b8d2da1f8de95a46f43106b045fe2
+
 
 ---
-# Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
+# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie bereits ein SUSE- oder openSUSE-Linux-Betriebssystem auf einer virtuellen Festplatte installiert haben. Sie können VHD-Dateien mit unterschiedlichen Tools erstellen, beispielsweise mit einer Virtualisierungslösung wie Hyper-V. Anweisungen hierzu finden Sie unter [Installieren der Hyper-V-Rolle und Konfigurieren eines virtuellen Computers](http://technet.microsoft.com/library/hh846766.aspx).
 
-### Installationshinweise zu SLES/openSUSE
-* Beachten Sie auch die [allgemeinen Installationshinweise für Linux](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes). Dort erhalten Sie weitere Tipps zur Vorbereitung von Linux für Azure.
-* Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**. Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren.
-* Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](virtual-machines-linux-configure-lvm.md) oder [RAID](virtual-machines-linux-configure-raid.md) können bei Bedarf auf Datenträgern verwendet werden.
-* Konfigurieren Sie keine SWAP-Partition auf einem Betriebssystemdatenträger. Der Linux-Agent kann konfiguriert werden, eine Auslagerungsdatei auf dem temporären Ressourcendatenträger zu erstellen. Weitere Informationen dazu finden Sie in den folgenden Schritten.
+### <a name="sles--opensuse-installation-notes"></a>Installationshinweise zu SLES/openSUSE
+* Beachten Sie auch den Artikelabschnitt [Allgemeine Linux-Systemanforderungen](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes), in dem weitere Tipps zur Vorbereitung von Linux für Azure enthalten sind.
+* Das VHDX-Format wird in Azure noch nicht unterstützt, dafür jedoch **virtuelle Festplatten mit fester Größe**.  Sie können den Datenträger mit dem Hyper-V-Manager oder dem convert-vhd-Cmdlet in das VHD-Format konvertieren.
+* Beim Installieren des Linux-Systems wird empfohlen, anstelle von LVM (bei vielen Installationen oftmals voreingestellt) die Standardpartitionen zu verwenden. Dadurch lässt sich vermeiden, dass ein LVM-Namenskonflikt mit geklonten virtuellen Computern auftritt, besonders dann, wenn ein BS-Datenträger zu Fehlerbehebungszwecken mit einem anderen virtuellen Computer verbunden wird. [LVM](virtual-machines-linux-configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [RAID](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) können wahlweise auf Datenträgern verwendet werden.
+* Konfigurieren Sie keine SWAP-Partition auf einem Betriebssystemdatenträger. Der Linux-Agent kann konfiguriert werden, eine Auslagerungsdatei auf dem temporären Ressourcendatenträger zu erstellen.  Weitere Informationen dazu finden Sie in den folgenden Schritten.
 * Alle virtuellen Festplatten müssen eine Größe aufweisen, die ein Vielfaches von 1 MB ist.
 
-## Verwenden von SUSE Studio
-Mit [SUSE Studio](http://www.susestudio.com) können Sie Ihre SLES- und openSUSE-Images für Azure und Hyper-V auf einfache Weise erstellen und verwalten. Diese Vorgehensweise wird zum Anpassen Ihrer eigenen SLES- und openSUSE-Images empfohlen.
+## <a name="use-suse-studio"></a>Verwenden von SUSE Studio
+[SUSE Studio](http://www.susestudio.com) können Sie Ihre SLES- und openSUSE-Images für Azure und Hyper-V auf einfache Weise erstellen und verwalten. Diese Vorgehensweise wird zum Anpassen Ihrer eigenen SLES- und openSUSE-Images empfohlen.
 
-Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007) auch BYOS-Images (Bring Your Own Subscription) für SLES.
+Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007)auch BYOS-Images (Bring Your Own Subscription) für SLES.
 
-## Vorbereiten von SUSE Linux Enterprise Server 11 SP4
+## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Vorbereiten von SUSE Linux Enterprise Server 11 SP4
 1. Wählen Sie den virtuellen Computer im mittleren Fensterbereich des Hyper-V-Managers.
-2. Klicken Sie auf **Verbinden**, um das Fenster für den virtuellen Computer zu öffnen.
+2. Klicken Sie auf **Verbinden** , um das Fenster für den virtuellen Computer zu öffnen.
 3. Registrieren Sie Ihr SUSE Linux Enterprise-System, um das Herunterladen von Updates und das Installieren von Paketen zu ermöglichen.
 4. Aktualisieren Sie das System mit den neuesten Patches:
    
@@ -48,7 +52,7 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
 6. Prüfen Sie, ob waagent in "chkconfig" aktiviert ist. Ist dies nicht der Fall, legen Sie den Autostart fest:
    
         # sudo chkconfig waagent on
-7. Überprüfen Sie, ob der waagent-Dienst ausgeführt wird. Ist dies nicht der Fall, starten Sie ihn:
+7. Überprüfen Sie, ob der waagent-Dienst ausgeführt wird. Ist dies nicht der Fall, starten Sie ihn: 
    
         # sudo service waagent start
 8. Modifizieren Sie die Boot-Zeile des Kernels in Ihrer Grub-Konfiguration, um zusätzliche Kernel-Parameter für Azure einzubinden. Öffnen Sie dafür „/boot/grub/menu.lst“ in einem Text-Editor. Stellen Sie sicher, dass der Standardkernel die folgenden Parameter enthält:
@@ -56,7 +60,7 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
     Dadurch wird sichergestellt, dass alle Konsolennachrichten zum ersten seriellen Port gesendet werden. Dieser kann Azure bei der Behebung von Fehlern unterstützen.
-9. Vergewissern Sie sich, dass "/boot/grub/menu.lst" und "/etc/fstab" mit der UUID (by-uuid) auf den Datenträger verweisen und nicht mit der Datenträger-ID (by-id).
+9. Vergewissern Sie sich, dass "/boot/grub/menu.lst" und "/etc/fstab" mit der UUID (by-uuid) auf den Datenträger verweisen und nicht mit der Datenträger-ID (by-id). 
    
     Abrufen der Datenträger-UUID
    
@@ -80,29 +84,24 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
      DHCLIENT_SET_HOSTNAME="no"
 12. Kommentieren Sie in „/etc/sudoers“ die folgenden Zeilen aus, sofern sie vorhanden sind, oder entfernen Sie sie:
     
-     Defaults targetpw   # ask for the password of the target user i.e. root
-     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-13. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt. Dies ist für gewöhnlich die Standardeinstellung.
+     Defaults targetpw   # Kennwort des Zielbenutzers abfragen, also „root ALL“    ALL=(ALL) ALL   # WARNUNG! Verwenden Sie dies nur mit „Defaults targetpw“!
+13. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
 14. Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
     
     Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Modifizieren Sie nach dem Installieren des Azure Linux Agent (siehe vorheriger Schritt) die folgenden Parameter in /etc/waagent.conf entsprechend:
     
-     ResourceDisk.Format=y
-     ResourceDisk.Filesystem=ext4
-     ResourceDisk.MountPoint=/mnt/resource
-     ResourceDisk.EnableSwap=y
-     ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+     ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## HINWEIS: Legen Sie diesen Parameter auf einen belieben gewünschten Wert fest.
 15. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
     
-    # sudo waagent -force -deprovision
-    # export HISTSIZE=0
-    # logout
-16. Klicken Sie im Hyper-V-Manager auf **Aktion -> Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
+    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
+    # <a name="export-histsize0"></a>export HISTSIZE=0
+    # <a name="logout"></a>logout
+16. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
 - - -
-## Vorbereiten von openSUSE 13.1+
+## <a name="prepare-opensuse-131"></a>Vorbereiten von openSUSE 13.1+
 1. Wählen Sie den virtuellen Computer im mittleren Fensterbereich des Hyper-V-Managers.
-2. Klicken Sie auf **Verbinden**, um das Fenster für den virtuellen Computer zu öffnen.
+2. Klicken Sie auf **Verbinden** , um das Fenster für den virtuellen Computer zu öffnen.
 3. Führen Sie in der Shell den Befehl "`zypper lr`" aus. Wenn dieser Befehl den folgenden ähnelnde Ausgaben zurückgibt, sind Repositorys erwartungsgemäß konfiguriert, und es sind keine Anpassungen erforderlich (Versionsnummern können abweichen):
    
         # | Alias                 | Name                  | Enabled | Refresh
@@ -129,7 +128,7 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
         # sudo zypper update
 5. Installieren des Azure Linux Agent:
    
-   # sudo zypper install WALinuxAgent
+   # <a name="sudo-zypper-install-walinuxagent"></a>sudo zypper install WALinuxAgent
 6. Modifizieren Sie die Boot-Zeile des Kernels in Ihrer Grub-Konfiguration, um zusätzliche Kernel-Parameter für Azure einzubinden. Öffnen Sie dafür "/boot/grub/menu.lst" in einem Text-Editor. Stellen Sie sicher, dass der Standardkernel die folgenden Parameter enthält:
    
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300
@@ -142,29 +141,29 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
      DHCLIENT_SET_HOSTNAME="no"
 8. **Wichtig:** Kommentieren Sie in "/etc/sudoers" die folgenden Zeilen aus, oder entfernen Sie sie, sofern vorhanden:
    
-     Defaults targetpw   # ask for the password of the target user i.e. root
-     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-9. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt. Dies ist für gewöhnlich die Standardeinstellung.
+     Defaults targetpw   # Kennwort des Zielbenutzers abfragen, also „root ALL“    ALL=(ALL) ALL   # WARNUNG! Verwenden Sie dies nur mit „Defaults targetpw“!
+9. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt.  Dies ist für gewöhnlich die Standardeinstellung.
 10. Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
     
     Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Modifizieren Sie nach dem Installieren des Azure Linux Agent (siehe vorheriger Schritt) die folgenden Parameter in /etc/waagent.conf entsprechend:
     
-     ResourceDisk.Format=y
-     ResourceDisk.Filesystem=ext4
-     ResourceDisk.MountPoint=/mnt/resource
-     ResourceDisk.EnableSwap=y
-     ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+     ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## HINWEIS: Legen Sie diesen Parameter auf einen belieben gewünschten Wert fest.
 11. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
     
-    # sudo waagent -force -deprovision
-    # export HISTSIZE=0
-    # logout
+    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent -force -deprovision
+    # <a name="export-histsize0"></a>export HISTSIZE=0
+    # <a name="logout"></a>logout
 12. Stellen Sie sicher, dass der Azure Linux Agent beim Start ausgeführt wird:
     
         # sudo systemctl enable waagent.service
-13. Klicken Sie im Hyper-V-Manager auf **Aktion -> Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
+13. Klicken Sie im Hyper-V-Manager auf **Aktion > Herunterfahren**. Ihre Linux-VHD kann nun in Azure hochgeladen werden.
 
-## Nächste Schritte
-Sie können jetzt mit Ihrer SUSE-Linux-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md) aus.
+## <a name="next-steps"></a>Nächste Schritte
+Sie können jetzt mit Ihrer SUSE-Linux-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)aus.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

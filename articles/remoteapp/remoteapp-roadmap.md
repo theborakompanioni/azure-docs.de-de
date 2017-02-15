@@ -1,23 +1,27 @@
 ---
 title: Geplante Neuerungen in Azure RemoteApp | Microsoft Docs
-description: Erfahren Sie, welche neuen Funktionen für Azure RemoteApp geplant sind.
+description: "Erfahren Sie, welche neuen Funktionen für Azure RemoteApp geplant sind."
 services: remoteapp
-documentationcenter: ''
-author: lizap
+documentationcenter: 
+author: msmbaldwin
 manager: mbaldwin
-
+ms.assetid: b4aedf83-dd93-4573-b432-abbbabaee07a
 ms.service: remoteapp
 ms.workload: compute
 ms.tgt_pltfrm: NA
 ms.devlang: NA
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: elizapo
+ms.date: 01/07/2017
+ms.author: mbaldwin
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 4bfc5ac853833b8e51e7e3a556ed6208f22884d3
+
 
 ---
-# Geplante Neuerungen in Azure RemoteApp
+# <a name="whats-coming-in-azure-remoteapp"></a>Geplante Neuerungen in Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148).
+> Azure RemoteApp wird eingestellt. Details finden Sie in der [Ankündigung](https://go.microsoft.com/fwlink/?linkid=821148) .
 > 
 > 
 
@@ -25,11 +29,11 @@ ms.author: elizapo
 
 | Feature | Status |
 | --- | --- | --- |
-| Azure RemoteApp ist sowohl im [klassischen Azure-Portal](http://manage.windowsazure.com) als auch im [Azure-Portal](https://portal.azure.com) in der privaten Vorschau verfügbar. |**Canceled** |
+| Azure RemoteApp ist sowohl im [klassischen Azure-Portal](http://manage.windowsazure.com) als auch im [Azure-Portal in der privaten Vorschau](https://portal.azure.com) verfügbar. |**Canceled** |
 | Möglichkeit zum Veröffentlichen einzelner Anwendungen für bestimmte Benutzer – private Vorschau ([Feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/)) |**Canceled** |
 | Weiterverteilbares Windows-MSI-Clientpaket ([Feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) – private Vorschau |**Canceled** |
 | Support für Azure-Ressourcen-Manager (ARM) |**Canceled** |
-| Azure v2-Ressourcenunterstützung |**Canceled** |
+| Azure v2-Ressourcenunterstützung |**Canceled** |
 | Cloud-Lösungsanbieter (CSP) |**Canceled** |
 | Verfügbarkeit in der Region Indien |**Canceled** |
 | Verfügbarkeit in der Region Großbritannien |**Canceled** |
@@ -37,7 +41,7 @@ ms.author: elizapo
 Weitere Verbesserungen, die dieses Jahr bereits hinzugefügt wurden:
 
 * HTML5-basierter Client für Azure RemoteApp
-* Universelle Windows 10-Anwendung mit Continuum für die Vorschauversion von Azure RemoteApp
+* Universelle Windows 10-Anwendung mit Continuum für die Vorschauversion von Azure RemoteApp
 * Ohne Beitritt zu einer Domäne (Verbindung der Cloud-Sammlung mit den Azure-VMs) auf einem VNET bereitstellen
 * Ein vorhandenes virtuelles Netzwerk für die RemoteApp-Hybridsammlung erneut verwenden (ermöglicht auch ExpressRoute)
 * ExpressRoute
@@ -49,4 +53,9 @@ Weitere Verbesserungen, die dieses Jahr bereits hinzugefügt wurden:
 * Mithilfe einer CSV-Datei eine große Anzahl an Benutzern bereitstellen
 * Verfügbarkeit in australischen Rechenzentren
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

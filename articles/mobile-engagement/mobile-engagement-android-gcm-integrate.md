@@ -1,12 +1,12 @@
 ---
 title: Integration des Azure Mobile Engagement Android SDKs
-description: Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement
+description: "Neueste Updates und Verfahren für das Android SDK für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: ''
-
+editor: 
+ms.assetid: d72b5014-a22b-4a7f-a470-d2b8145b5b86
 ms.service: mobile-engagement
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -14,6 +14,10 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: piyushjo
+translationtype: Human Translation
+ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
+ms.openlocfilehash: 0282abbf44406cac89c13520bc2a4e375817ed1f
+
 
 ---
 # <a name="how-to-integrate-gcm-with-mobile-engagement"></a>Integrieren von GCM mit Mobile Engagement
@@ -30,7 +34,7 @@ Durch die Integration von GCM kann Ihre Anwendung Pushnachrichten empfangen.
 GCM-Nutzlasten, die mithilfe von Push an das SDK übertragen werden, enthalten immer den `azme` -Schlüssel im Datenobjekt. Wenn Sie GCM in Ihrer Anwendung also zu einem anderen Zweck verwenden, können Sie Push-Vorgänge basierend auf diesem Schlüssel filtern.
 
 > [!IMPORTANT]
-> Über GCM können nur Geräte Pushnachrichten empfangen, die über Android 2.2 oder höher verfügen, auf denen Google Play installiert ist und die über eine Google-Hintergrundverbindung verfügen. Dieser Code kann jedoch ohne Sicherheitsbedenken auch auf Geräten integriert werden, die GCM nicht unterstützen (es werden nur „Intents“ verwendet).
+> Über GCM können nur Geräte Pushnachrichten empfangen, die über Android 2.2 oder höher verfügen, auf denen Google Play installiert ist und die über eine Google-Hintergrundverbindung verfügen. Dieser Code kann jedoch ohne Sicherheitsbedenken auch auf Geräten integriert werden, die GCM nicht unterstützen (es werden nur „Intents“ verwendet).
 > 
 > 
 
@@ -81,6 +85,6 @@ Befolgen Sie [diesen Leitfaden](mobile-engagement-android-get-started.md#grant-m
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 
