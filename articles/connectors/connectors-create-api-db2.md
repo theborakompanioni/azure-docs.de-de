@@ -414,6 +414,6 @@ Dieser Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen s
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

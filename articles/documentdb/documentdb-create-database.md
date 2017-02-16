@@ -24,6 +24,6 @@ Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentd
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

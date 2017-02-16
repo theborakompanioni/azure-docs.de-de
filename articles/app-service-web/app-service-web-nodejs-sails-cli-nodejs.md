@@ -261,6 +261,6 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 
