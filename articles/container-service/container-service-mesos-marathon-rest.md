@@ -1,5 +1,5 @@
 ---
-title: "Azure Container Service-Containerverwaltung über die REST-API | Microsoft Docs"
+title: Verwalten eines Azure-DC/OS-Clusters mit der Marathon-REST-API | Microsoft-Dokumentation
 description: "Stellen Sie mithilfe der Marathon-REST-API Container für einen Azure Container Service-Mesos-Cluster bereit."
 services: container-service
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 54832afbc9a7bf1d660de3fd898ad5c97715ca5d
-ms.openlocfilehash: a01993eb01b9e05b4848d5a81b841fe10ccae035
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 0a5f75a085991f8e14d0949e2d13da1072ca6978
 
 
 ---
-# <a name="container-management-through-the-rest-api"></a>Containerverwaltung über die REST-API
+# <a name="dcos-container-management-through-the-marathon-rest-api"></a>DC/OS-Containerverwaltung über die Marathon-REST-API
 DC/OS stellt eine Umgebung für die Bereitstellung und Skalierung geclusterter Workloads bereit und abstrahiert die zugrunde liegende Hardware. Zusätzlich zu DC/OS ist auch ein Framework vorhanden, mit dem die Planung und Ausführung von Computeworkloads verwaltet wird.
 
 Es sind zwar Frameworks für viele gängige Workloads verfügbar, aber in diesem Dokument wird beschrieben, wie Sie Containerbereitstellungen mit Marathon erstellen und skalieren. Bevor Sie diese Beispiele durcharbeiten, benötigen Sie einen DC/OS-Cluster, der im Azure Container Service konfiguriert ist. Sie müssen auch über Remoteverbindungen mit diesem Cluster verfügen. Weitere Informationen zu diesen Elementen finden Sie in den folgenden Artikeln:
@@ -174,6 +174,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

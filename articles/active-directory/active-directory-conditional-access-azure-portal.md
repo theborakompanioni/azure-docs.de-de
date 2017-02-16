@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2016
+ms.date: 01/19/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0ecbaaf030e5c87ff05228af852477b865329596
-ms.openlocfilehash: 3b06c7c32c6ec27659365ca4da6193457fff7162
+ms.sourcegitcommit: 89d32955506afdfb9c45c5b0ce3d38d40f012e72
+ms.openlocfilehash: 570a0f0a0c0932a00bbe92b1e137951ceffcd660
 
 
 ---
@@ -159,18 +159,13 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funktioniert der bedingte Zugriff mit Exchange ActiveSync?
  
-Sie können Exchange ActiveSync in einer Richtlinie für den bedingten Zugriff verwenden. Die Unterstützung für dieses Szenario ist aber eingeschränkt.  
-Die folgenden Einschränkungen gelten für eine Richtlinie, in die Exchange ActiveSync eingebunden ist:
+Nein, Sie können Exchange ActiveSync derzeit nicht in einer Richtlinie für den bedingten Zugriff verwenden.
 
-- Als Zuweisung für **Cloud-Apps** ist nur **Exchange Online** ausgewählt.
 
-- Als **Kontrolle** können Sie nur **Erfordert kompatibles Gerät** auswählen. 
- 
-    ![Gewährung](./media/active-directory-conditional-access-azure-portal/22.png)
- 
-- Wenn Sie eine **Bedingung** konfigurieren müssen, können Sie nur **Client-Apps** konfigurieren.   
+### <a name="what-happens-if-i-require-multi-factor-authentication-or-a-compliant-device"></a>Was geschieht, wenn ich die mehrstufige Authentifizierung oder ein kompatibles Gerät benötige?
 
-    ![Bedingungen](./media/active-directory-conditional-access-azure-portal/21.png)
+Derzeit wird der Benutzer unabhängig vom Gerät zur mehrstufigen Authentifizierung aufgefordert.
+
 
 
 ## <a name="common-scenarios"></a>Gängige Szenarien
@@ -201,6 +196,6 @@ Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff kon
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 
