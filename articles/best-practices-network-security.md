@@ -1,5 +1,5 @@
 ---
-title: Microsoft-Clouddienste und Netzwerksicherheit | Microsoft Docs
+title: "Bewährte Methoden für die Azure-Netzwerksicherheit | Microsoft-Dokumentation"
 description: Lernen Sie einige der wesentlichen Features von Azure zum Einrichten sicherer Netzwerkumgebungen kennen.
 services: virtual-network
 documentationcenter: na
@@ -12,48 +12,49 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2016
-ms.author: jonor;sivae
+ms.date: 01/03/2017
+ms.author: jonor
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: 634f0c28c833612fdd1a6cd656c364eb3f5e43e5
+ms.sourcegitcommit: bdde0988bbaa3868c4acadfec0b81a2413e8a14b
+ms.openlocfilehash: f9a687ce5dd381e27ed9b784c3644528f000de2d
 
 
 ---
+
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft-Clouddienste und Netzwerksicherheit
-Microsoft-Clouddienste bieten hyperskalierbare Dienste und Infrastrukturen, Features auf Unternehmensniveau und vielfältige Auswahlmöglichkeiten für Hybridkonnektivität. Kunden können entweder über das Internet oder mit Azure ExpressRoute auf diese Dienste zugreifen. Letzteres stellt private Netzwerkkonnektivität bereit. Die Microsoft Azure Platform ermöglicht Kunden eine nahtlose Erweiterung ihrer Infrastruktur auf die Cloud und den Aufbau mehrstufiger Architekturen. Zudem können Drittanbieter über Sicherheitsdienste und virtuelle Geräte erweiterte Funktionen anbieten. Dieses Whitepaper bietet einen Überblick über Aspekte zu Sicherheit und Architektur, die Kunden beim Einsatz von Microsoft-Clouddiensten über ExpressRoute berücksichtigen sollten.  Außerdem behandelt es die Erstellung sicherer Dienste in virtuellen Azure-Netzwerken.
+Microsoft Cloud Services bieten hyperskalierbare Dienste und Infrastrukturen, Features auf Unternehmensniveau und vielfältige Auswahlmöglichkeiten für Hybridkonnektivität. Kunden können entweder über das Internet oder mit Azure ExpressRoute auf diese Dienste zugreifen. Letzteres stellt private Netzwerkkonnektivität bereit. Microsoft Azure Platform ermöglicht Kunden eine nahtlose Erweiterung ihrer Infrastruktur auf die Cloud und den Aufbau mehrstufiger Architekturen. Zudem können Drittanbieter über Sicherheitsdienste und virtuelle Geräte erweiterte Funktionen anbieten. Dieses Whitepaper bietet einen Überblick über Aspekte zu Sicherheit und Architektur, die Kunden beim Einsatz von Microsoft-Clouddiensten über ExpressRoute berücksichtigen sollten. Außerdem behandelt es die Erstellung sicherer Dienste in virtuellen Azure-Netzwerken.
 
 ## <a name="fast-start"></a>Schnelleinstieg
 Das folgende logische Diagramm bietet Hilfestellung bei der Auswahl aus den vielen Sicherheitsverfahren, die mit der Azure Platform zur Verfügung stehen. Für eine Kurzübersicht suchen Sie das Beispiel heraus, das Ihrem Fall am ehesten entspricht. Wenn Sie ausführlichere Erklärungen benötigen, lesen Sie das Whitepaper vollständig durch.
-![Flussdiagramm zu den Sicherheitsoptionen][0]
+[![0]][0]
 
-[Beispiel 1: Erstellen eines Umkreisnetzwerks (auch bekannt als DMZ, demilitarisierte Zone und überwachtes Subnetz) zum Schutz von Anwendungen durch Netzwerksicherheitsgruppen (NSGs)](#example-1-build-a-perimeter-network-to-help-protect-applications-with-nsgs)</br>
+[Beispiel 1: Erstellen eines Umkreisnetzwerks (auch bekannt als DMZ, demilitarisierte Zone oder überwachtes Subnetz) zum Schutz von Anwendungen durch Netzwerksicherheitsgruppen (NSGs)](#example-1-build-a-perimeter-network-to-help-protect-applications-with-nsgs)</br>
 [Beispiel 2: Erstellen eines Umkreisnetzwerks zum Schutz von Anwendungen durch eine Firewall und NSGs](#example-2-build-a-perimeter-network-to-help-protect-applications-with-a-firewall-and-nsgs)</br>
-[Beispiel 3: Erstellen eines Umkreisnetzwerks zum Schutz von Netzwerken durch eine Firewall, UDR (User-Defined Routing, benutzerdefiniertes Routing) und NSGs](#example-3-build-a-dmz-to-protect-networks-with-a-firewall-and-udr-and-nsg)</br>
-[Beispiel 4: Hinzufügen einer Hybridverbindung mit einem Standort-zu-Standort-VPN über ein virtuelles Gerät](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-virtual-private-network)</br>
-[Beispiel 5: Hinzufügen einer Hybridverbindung mit einem Standort-zu-Standort-VPN über ein Azure-Gateway](#example-5-add-a-hybrid-connection-with-a-site-to-site-azure-gateway-vpn)</br>
+[Beispiel 3: Erstellen eines Umkreisnetzwerks zum Schutz von Netzwerken durch eine Firewall, UDR (User-Defined Routing, benutzerdefiniertes Routing) und NSGs](#example-3-build-a-perimeter-network-to-help-protect-networks-with-a-firewall-and-udr-and-nsg)</br>
+[Beispiel 4: Hinzufügen einer Hybridverbindung mit einem Standort-zu-Standort-VPN über ein virtuelles Gerät](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
+[Beispiel 5: Hinzufügen einer Hybridverbindung mit einem Site-to-Site-, Azure-VPN-Gateway](#example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway)</br>
 [Beispiel 6: Hinzufügen einer Hybridverbindung mit ExpressRoute](#example-6-add-a-hybrid-connection-with-expressroute)</br>
- Beispiele für das Hinzufügen von Verbindungen zwischen virtuellen Netzwerken, hohe Verfügbarkeit und Dienstverkettung werden diesem Dokument in den nächsten Monaten hinzugefügt.
+Beispiele für das Hinzufügen von Verbindungen zwischen virtuellen Netzwerken, hohe Verfügbarkeit und Dienstverkettung werden diesem Dokument in den nächsten Monaten hinzugefügt.
 
 ## <a name="microsoft-compliance-and-infrastructure-protection"></a>Microsoft-Compliance und Infrastrukturschutz
-Microsoft nimmt in Bezug auf Compliance-Initiativen zur Unterstützung von Unternehmenskunden eine führende Rolle ein. Nachfolgend sehen Sie einige der Compliancezertifizierungen für Azure: ![Azure-Compliancezertifizierungen][1]
+Um Organisationen bei der Einhaltung nationaler sowie länder- und branchenspezifischer Anforderungen hinsichtlich der Erfassung und Nutzung personenbezogener Daten zu helfen, bietet Microsoft mehr als 40 Zertifizierungen und Nachweise. Dies sind mehr als alle anderen Clouddienstanbieter.
 
-Weitere Informationen finden Sie in den Informationen zur Compliance im [Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/compliance/).
+Weitere Informationen finden Sie in den Informationen zur Compliance im [Microsoft Trust Center][TrustCenter].
 
 Microsoft verfolgt einen umfassenden Ansatz zum Schutz der Cloudinfrastruktur, die zur Ausführung hyperskalierbarer globaler Dienste erforderlich ist. Die Microsoft-Cloudinfrastruktur umfasst neben den physischen Rechenzentren auch Hardware, Software, Netzwerke sowie administratives und operatives Personal.
 
-![Sicherheitsfeatures von Azure][2]
+![2]
 
 Dieser Ansatz bietet Kunden eine sicherere Grundlage für die Bereitstellung ihrer Dienste in der Microsoft-Cloud. Der nächste Schritt besteht für Kunden darin, eine sichere Architektur zum Schutz dieser Dienste zu entwerfen und einzurichten.
 
 ## <a name="traditional-security-architectures-and-perimeter-networks"></a>Traditionelle Sicherheitsarchitekturen und Umkreisnetzwerke
 Wenngleich Microsoft hohe Investitionen in den Schutz der Cloudinfrastruktur tätigt, müssen Kunden ebenfalls für den Schutz ihrer Clouddienste und Ressourcengruppen sorgen. Ein mehrstufiger Sicherheitsansatz bietet die beste Absicherung. Die Sicherheitszone eines Umkreisnetzwerks schützt die internen Netzwerkressourcen vor einem nicht vertrauenswürdigen Netzwerk. Ein Umkreisnetzwerk bezieht sich auf die Grenzen oder die Teile des Netzwerks, die sich zwischen dem Internet und der geschützten IT-Infrastruktur des Unternehmens befinden.
 
-In typischen Unternehmensnetzwerken wird der Kern der Infrastruktur im Umkreisnetzwerk durch mehrere Stufen von Sicherheitsgeräten stark geschützt. An den Grenzen der einzelnen Stufen befinden sich Sicherheitsgeräte und Stellen zur Durchsetzung von Richtlinien. Hierzu gehören: Firewalls, DDoS-Schutz (Distributed Denial of Service), IDS/IPS (Intrusion Detection/Protection Systems), und VPN-Geräte (virtuelle private Netzwerke).  Die Durchsetzung von Richtlinien kann über Firewallrichtlinien, Zugriffssteuerungslisten (Access Control Lists, ACLs) oder ein spezifisches Routing erfolgen. Die erste Schutzstufe im Netzwerk, die für den direkten Empfang von Datenverkehr aus dem Internet verantwortlich ist, nutzt eine Kombination dieser Mechanismen, um Angriffe und schädlichen Datenverkehr abzuwehren, aber legitime Anforderungen an das Netzwerk weiterzuleiten. Dieser Datenverkehr wird direkt an Ressourcen im Umkreisnetzwerk geroutet. Die Ressourcen können dann mit anderen Ressourcen kommunizieren, die sich weiter im Inneren des Netzwerks befinden. Zuerst müssen sie jedoch die nächste Sicherheitsgrenze passieren. Die ganz außen liegende Schicht wird als Umkreisnetzwerk bezeichnet, da dieser Teil des Netzwerks dem Internet gegenüber offen ist. Üblicherweise kommen verschiedene Formen des Schutzes auf beiden Seiten zum Einsatz. Die nachfolgende Abbildung zeigt ein Beispiel für ein Umkreisnetzwerk mit einem einzigen Subnetz in einem Unternehmensnetzwerk. Es umfasst zwei Sicherheitsgrenzen.
+In typischen Unternehmensnetzwerken wird der Kern der Infrastruktur im Umkreisnetzwerk durch mehrere Stufen von Sicherheitsgeräten stark geschützt. An den Grenzen der einzelnen Stufen befinden sich Sicherheitsgeräte und Stellen zur Durchsetzung von Richtlinien. Jede Stufe kann eine Kombination der folgenden Geräte für Netzwerksicherheit enthalten: Firewalls, DoS-Schutz (Denial of Service), IDS/IPS (Intrusion Detection/Protection Systems) und VPN-Geräte (virtuelle private Netzwerke). Die Durchsetzung von Richtlinien kann über Firewallrichtlinien, Zugriffssteuerungslisten (Access Control Lists, ACLs) oder ein spezifisches Routing erfolgen. Die erste Schutzstufe im Netzwerk, die für den direkten Empfang von Datenverkehr aus dem Internet verantwortlich ist, nutzt eine Kombination dieser Mechanismen, um Angriffe und schädlichen Datenverkehr abzuwehren, aber legitime Anforderungen an das Netzwerk weiterzuleiten. Dieser Datenverkehr wird direkt an Ressourcen im Umkreisnetzwerk geroutet. Die Ressourcen können dann mit anderen Ressourcen kommunizieren, die sich weiter im Inneren des Netzwerks befinden. Zuerst müssen sie jedoch die nächste Sicherheitsgrenze passieren. Die ganz außen liegende Schicht wird als Umkreisnetzwerk bezeichnet, da dieser Teil des Netzwerks dem Internet gegenüber offen ist. Üblicherweise kommen verschiedene Formen des Schutzes auf beiden Seiten zum Einsatz. Die nachfolgende Abbildung zeigt ein Beispiel für ein Umkreisnetzwerk mit einem einzigen Subnetz in einem Unternehmensnetzwerk. Es umfasst zwei Sicherheitsgrenzen.
 
-![Ein Umkreisnetzwerk in einem Unternehmensnetzwerk][3]
+![3]
 
-Es gibt zahlreiche Architekturen zum Implementieren eines Umkreisnetzwerks. Diese reichen von einem einfachen Lastenausgleichsmodul, das einer Webfarm vorgeschaltet ist, bis hin zu einem Umkreisnetzwerk mit mehreren Subnetzen und verschiedenen Mechanismen an jeder Grenze, um Datenverkehr zu blockieren und die tieferen Schichten des Unternehmensnetzwerks zu schützen. Der Aufbau des Umkreisnetzwerks richtet sich nach den spezifischen Anforderungen der Organisation und der Risikotoleranz insgesamt.
+Es gibt viele Architekturen, die zum Implementieren eines Umkreisnetzwerks verwendet werden. Diese Architekturen reichen von einem einfachen Lastenausgleichsmodul bis hin zu einem Umkreisnetzwerk mit mehreren Subnetzen und verschiedenen Mechanismen an jeder Grenze, um Datenverkehr zu blockieren und die tieferen Schichten des Unternehmensnetzwerks zu schützen. Der Aufbau des Umkreisnetzwerks richtet sich nach den spezifischen Anforderungen der Organisation und der Risikotoleranz insgesamt.
 
 Wenn Kunden ihre Workloads in öffentliche Clouds verschieben, ist es von wesentlicher Bedeutung, ähnliche Funktionen für Umkreisnetzwerk-Architekturen in Azure zu unterstützen, um Compliance- und Sicherheitsanforderungen zu erfüllen. Dieses Dokument bietet Kunden eine Hilfestellung zum Einrichten einer sicheren Netzwerkumgebung in Azure. Der Schwerpunkt liegt dabei auf dem Umkreisnetzwerk. Es enthält aber auch eine umfassende Erörterung vieler Aspekte der Netzwerksicherheit. Dieser Erörterung liegen die folgenden Fragen zugrunde:
 
@@ -66,47 +67,54 @@ Wenn Kunden ihre Workloads in öffentliche Clouds verschieben, ist es von wesent
 
 Das folgende Diagramm zeigt verschiedene Sicherheitsstufen, die Azure den Kunden bietet. Bei diesen Stufen handelt es sich sowohl um nativ in der Azure Platform enthaltene Funktionen als auch um benutzerdefinierte Features:
 
-![Sicherheitsarchitektur von Azure][4]
+![4]
 
-Als erste Grenze gegenüber dem Internet bietet Azure DDoS Schutz vor groß angelegten Angriffen gegen Azure. Die nächste Stufe sind vom Kunden definierten öffentliche Endpunkte, anhand derer ermittelt wird, welcher Datenverkehr den Clouddienst zum virtuellen Netzwerk passieren darf. Die native Isolation virtueller Azure-Netzwerke stellt eine vollständige Isolierung von allen anderen Netzwerken sicher und gewährleistet, dass der Datenverkehr nur über vom Benutzer konfigurierte Pfade und Methoden fließt. Diese Pfade und Methoden stellen die nächste Stufe dar, in der NSGs, UDR und virtuelle Netzwerkgeräte zum Einrichten von Sicherheitsgrenzen verwendet werden können, um die Anwendungsbereitstellungen im geschützten Netzwerk abzusichern.
+Als erste Grenze gegenüber dem Internet bietet Azure DDoS Schutz vor groß angelegten Angriffen gegen Azure. Die nächste Stufe sind vom Kunden definierten öffentliche IP-Adressen (Endpunkte), anhand derer ermittelt wird, welcher Datenverkehr den Clouddienst zum virtuellen Netzwerk passieren darf. Die native Isolation virtueller Azure-Netzwerke stellt eine vollständige Isolation von allen anderen Netzwerken sicher und gewährleistet, dass der Datenverkehr nur über vom Benutzer konfigurierte Pfade und Methoden fließt. Diese Pfade und Methoden stellen die nächste Stufe dar, in der NSGs, UDR und virtuelle Netzwerkgeräte zum Einrichten von Sicherheitsgrenzen verwendet werden können, um die Anwendungsbereitstellungen im geschützten Netzwerk abzusichern.
 
 Im nächsten Abschnitt erhalten Sie einen Überblick über virtuelle Azure-Netzwerke. Diese virtuellen Netzwerke werden von den Kunden erstellt und sind die Netzwerke, mit denen die bereitgestellten Workloads eine Verbindung herstellen. Virtuelle Netzwerke sind die Grundlage aller Netzwerksicherheitsfeatures, die zum Einrichten eines Umkreisnetzwerks für den Schutz von Kundenbereitstellungen in Azure erforderlich sind.
 
 ## <a name="overview-of-azure-virtual-networks"></a>Übersicht über virtuelle Azure-Netzwerke
 Bevor der Internetdatenverkehr die virtuellen Azure-Netzwerke erreicht, müssen zwei Sicherheitsstufen der Azure Platform passiert werden:
 
-1. **DDoS-Schutz**: DDoS-Schutz ist eine Stufe des physischen Azure-Netzwerks, das die Azure Platform selbst vor groß angelegten internetbasierten Angriffen schützt. Bei diesen Angriffe wird mithilfe mehrerer „Bot“-Knoten versucht, einen Internetdienst zu überlasten. Azure verfügt über ein robustes DDoS-Schutzsystem für alle eingehenden Internetverbindungen. Diese DDoS-Sicherheitsstufe umfasst keine durch den Benutzer konfigurierbaren Attribute und ist für den Kunden nicht zugänglich. So wird Azure als Plattform vor groß angelegten Angriffen geschützt, ein direkter Schutz einzelner Kundenanwendungen ist jedoch nicht gegeben. Der Kunde kann zusätzliche Ausfallsicherheitslösungen konfigurieren, um sich vor örtlich begrenzten Angriffen zu schützen. Wenn beispielsweise Kunde A von einem groß angelegten DDoS-Angriff auf einen öffentlichen Endpunkt betroffen ist, blockiert Azure die Verbindungen mit diesem Dienst. Kunde A kann zur Dienstwiederherstellung ein Failover auf ein anderes virtuelles Netzwerk oder einen Dienstendpunkt durchführen, der nicht von dem Angriff betroffen ist. Hierbei ist zu beachten, dass Kunde A zwar auf diesem Endpunkt von dem Angriff betroffen ist, der Angriff jedoch keinerlei Auswirkungen auf andere Dienste außerhalb dieses Endpunkts besitzt. Andere Kunden und Dienste werden in keiner Weise durch den Angriff beeinträchtigt.
-2. **Dienstendpunkte**: Über Endpunkte können Clouddienste oder Ressourcengruppen öffentliche Internet-IP-Adressen und Ports verfügbar machen. Der Endpunkt verwendet NAT (Network Address Translation) zum Weiterleiten von Datenverkehr an die interne Adresse und den Port im virtuellen Azure-Netzwerk. Dies ist der primäre Pfad, auf dem externer Datenverkehr in das virtuelle Netzwerk gelangt. Die Dienstendpunkte können durch den Benutzer konfiguriert werden und legen fest, welcher Datenverkehr zugelassen wird bzw. wie und wo eine Übersetzung in das virtuelle Netzwerk stattfindet.
+1.    **DDoS-Schutz**: DDoS-Schutz ist eine Stufe des physischen Azure-Netzwerks, das die Azure Platform selbst vor groß angelegten internetbasierten Angriffen schützt. Bei diesen Angriffe wird mithilfe mehrerer „Bot“-Knoten versucht, einen Internetdienst zu überlasten. Azure verfügt über ein robustes DDoS-Schutzsystem für alle eingehenden und ausgehenden Verbindungen sowie für Verbindungen über Azure-Regionen hinweg. Diese DDoS-Sicherheitsstufe umfasst keine durch den Benutzer konfigurierbaren Attribute und ist für den Kunden nicht zugänglich. Die DDoS-Sicherheitsstufe schützt Azure als Plattform vor groß angelegten Angriffen und überwacht zudem ausgehenden Datenverkehr und Datenverkehr über Azure-Regionen hinweg. Mit virtuellen Netzwerkgeräten im VNET können Kunden zusätzliche Ausfallsicherheitslösungen zum Schutz vor kleineren Angriffen konfigurieren, die vom Plattformschutz nicht abgefangen werden. Beispiel für DDoS in Aktion: Wenn eine IP-Adresse mit Internetzugriff durch einen groß angelegten DDoS-Angriff angegriffen wurde, würde Azure die Quellen der Angriffe erkennen und den problematischen Datenverkehr bereinigen, bevor er das vorgesehene Ziel erreicht. In fast allen Fällen beeinträchtigt der Angriff den angegriffenen Endpunkt nicht. In den seltenen Fällen, in denen ein Endpunkt betroffen ist, wird kein Datenverkehr an andere Endpunkte beeinflusst, nur der angegriffene Endpunkt. Also werden andere Kunden und Dienste in keiner Weise durch den Angriff beeinträchtigt. Es ist wichtig zu beachten, dass Azure DDoS nur nach groß angelegten Angriffen sucht. Es ist möglich, dass Ihr spezifischer Dienst überlastet ist, bevor die Schwellenwerte für den Plattformschutz überschritten werden. Beispielsweise könnte eine Website auf einem einzelnen A0 IIS-Server durch einen DDoS-Angriff offline geschaltet werden, bevor der Azure DDoS-Plattformschutz eine Bedrohung registriert.
+
+2.  **Öffentliche IP-Adressen**: Mit öffentlichen IP-Adressen (aktiviert über Dienstendpunkte, öffentliche IP-Adressen, Application Gateway und andere Azure-Funktionen, die für das Internet eine öffentliche IP-Adresse für die Weiterleitung an Ihre Ressource bieten) können Clouddienste oder Ressourcengruppen öffentliche IP-Internetadressen und Ports verfügbar machen. Der Endpunkt verwendet NAT (Network Address Translation) zum Weiterleiten von Datenverkehr an die interne Adresse und den Port im virtuellen Azure-Netzwerk. Dieser Pfad ist der primäre Weg, auf dem externer Datenverkehr in das virtuelle Netzwerk gelangt. Die öffentlichen IP-Adressen können konfiguriert werden und legen fest, welcher Datenverkehr zugelassen wird bzw. wie und wo eine Übersetzung in das virtuelle Netzwerk stattfindet.
 
 Sobald Datenverkehr das virtuelle Netzwerk erreicht, kommen zahlreiche Funktionen ins Spiel. Virtuelle Azure-Netzwerke sind die Grundlage, auf der die Kunden ihre Workloads einbinden und die grundlegende Sicherheit auf Netzwerkebene anwenden. Es handelt sich um ein privates Netzwerk (ein virtuelles Netzwerkoverlay) in Azure, das den Kunden die folgenden Features und Merkmale bietet:
 
-* **Isolation des Datenverkehrs**: Azure Platform verwendet virtuelle Netzwerke, um Datenverkehr zu isolieren. Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren – selbst dann nicht, wenn beide virtuellen Netzwerke durch denselben Kunden erstellt werden. Dies ist eine wichtige Eigenschaft, mit der sichergestellt wird, dass Kunden-VMs und -kommunikation innerhalb eines virtuellen Netzwerks privat bleiben.
+* **Isolation des Datenverkehrs**: Azure Platform verwendet virtuelle Netzwerke, um Datenverkehr zu isolieren. Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren – selbst dann nicht, wenn beide virtuellen Netzwerke durch denselben Kunden erstellt werden. Isolation ist eine wichtige Eigenschaft, mit der sichergestellt wird, dass VMs und die Kommunikation von Kunden innerhalb eines virtuellen Netzwerks privat bleiben.
+
+>[!NOTE]
+>Datenverkehrsisolation bezieht sich nur auf in das virtuelle Netzwerk *eingehenden* Datenverkehr. Standardmäßig ist ausgehender Datenverkehr des VNET mit dem Internet zulässig, kann jedoch bei Bedarf durch NSGs verhindert werden.
+>
+>
+
 * **Mehrstufige Topologie**: Virtuelle Netzwerke ermöglichen Kunden das Definieren einer mehrstufigen Topologie, indem unterschiedlichen Elementen oder „Stufen“ ihrer Workloads Subnetze und separate Adressräume zugewiesen werden. Diese logischen Gruppierungen und Topologien ermöglichen es den Kunden, unterschiedliche Zugriffsrichtlinien basierend auf dem Workloadtyp zu definieren und außerdem den Datenverkehr zwischen den Stufen zu steuern.
-* **Standortübergreifende Konnektivität**: Kunden können standortübergreifende Konnektivität zwischen einem virtuellen Netzwerk und mehreren lokalen Standorten oder anderen virtuellen Netzwerken in Azure einrichten. Zu diesem Zweck können Kunden Azure VPN Gateways oder virtuelle Geräte von Drittanbietern verwenden. Azure unterstützt Site-to-Site-VPNs (S2S) unter Verwendung von IPsec/IKE-Standardprotokollen und privater ExpressRoute-Konnektivität.
+* **Standortübergreifende Konnektivität**: Kunden können standortübergreifende Konnektivität zwischen einem virtuellen Netzwerk und mehreren lokalen Standorten oder anderen virtuellen Netzwerken in Azure einrichten. Um eine Verbindung herzustellen, können Kunden VNET-Peering, Azure-VPN-Gateways, virtuelle Netzwerkgeräte von Drittanbietern oder ExpressRoute verwenden. Azure unterstützt Site-to-Site-VPNs (S2S) unter Verwendung von IPsec/IKE-Standardprotokollen und privater ExpressRoute-Konnektivität.
 * **NSG** ermöglicht dem Kunden das Erstellen von Regeln (ACLs) auf der gewünschten Ebene: für Netzwerkschnittstellen, einzelne VMs oder virtuelle Subnetze. Kunden können den Zugriff steuern, indem sie die Kommunikation zwischen den Workloads innerhalb eines virtuellen Netzwerks, zwischen Systemen im Kundennetzwerk über standortübergreifende Verbindungen oder die direkte Internetkommunikation zulassen oder ablehnen.
 * **UDR** und **IP-Weiterleitung** ermöglichen Kunden das Definieren der Kommunikationspfade zwischen unterschiedlichen Stufen innerhalb eines virtuellen Netzwerks. Kunden können eine Firewall, IDS/IPS und andere virtuelle Geräte bereitstellen und den Netzwerkdatenverkehr zum Erzwingen von Sicherheitsrichtlinien, zur Überprüfung und zu Überwachungszwecken über diese Sicherheitsgeräte routen.
-* **Virtuelle Netzwerkgeräte** im Azure Marketplace: Sicherheitsgeräte wie z.B. Firewalls, Lastenausgleichsmodule und IDS/IPS stehen im Azure Marketplace und im VM-Imagekatalog zur Verfügung. Kunden können diese Geräte in ihren virtuellen Netzwerken und insbesondere an ihren Sicherheitsgrenzen (einschließlich der Subnetze des Umkreisnetzwerks) einsetzen, um ihre mehrstufige Sicherheitsumgebung zu vervollständigen.
+* **Virtuelle Netzwerkgeräte** im Azure Marketplace: Sicherheitsgeräte wie z.B. Firewalls, Lastenausgleichsmodule und IDS/IPS stehen im Azure Marketplace und im VM-Imagekatalog zur Verfügung. Kunden können diese Geräte in ihren virtuellen Netzwerken und insbesondere an ihren Sicherheitsgrenzen (einschließlich der Subnetze des Umkreisnetzwerks) bereitstellen, um ihre mehrstufige Sicherheitsumgebung zu vervollständigen.
 
-Mithilfe dieser Features und Komponenten kann ein Beispiel für eine Umkreisnetzwerk-Architektur auf der Grundlage von Azure folgendermaßen aussehen:
+Mithilfe dieser Features und Komponenten kann ein Beispiel für eine Umkreisnetzwerk-Architektur auf der Grundlage von Azure wie in folgendem Diagramm aussehen:
 
-![Ein Umkreisnetzwerk in einem virtuellen Azure-Netzwerk][5]
+![5]
 
 ## <a name="perimeter-network-characteristics-and-requirements"></a>Umkreisnetzwerk – Merkmale und Anforderungen 
-Das Umkreisnetzwerk ist als Front-End des Netzwerks konzipiert und stellt eine direkte Schnittstelle zur Kommunikation mit dem Internet dar. Die eingehenden Paket sollten über die Sicherheitsgeräte wie Firewall, IDS und IPS geleitet werden, bevor sie die Back-End-Server erreichen. Von den Workloads an das Internet gesendete Pakete können zur Richtlinienerzwingung, zur Überprüfung und zu Überwachungszwecken ebenfalls über die Sicherheitsgeräte im Umkreisnetzwerk geleitet werden, bevor sie das Netzwerk verlassen. Zusätzlich kann das Umkreisnetzwerk zum Hosten standortübergreifender VPN Gateways zwischen virtuellen Kundennetzwerken und lokalen Netzwerken eingesetzt werden.
+Das Umkreisnetzwerk ist das Front-End des Netzwerks und stellt eine direkte Schnittstelle zur Kommunikation mit dem Internet dar. Die eingehenden Paket sollten über die Sicherheitsgeräte wie Firewall, IDS und IPS geleitet werden, bevor sie die Back-End-Server erreichen. Von den Workloads an das Internet gesendete Pakete können zur Richtlinienerzwingung, zur Überprüfung und zu Überwachungszwecken ebenfalls über die Sicherheitsgeräte im Umkreisnetzwerk geleitet werden, bevor sie das Netzwerk verlassen. Zusätzlich kann das Umkreisnetzwerk zum Hosten standortübergreifender VPN Gateways zwischen virtuellen Kundennetzwerken und lokalen Netzwerken eingesetzt werden.
 
 ### <a name="perimeter-network-characteristics"></a>Merkmale des Umkreisnetzwerks
 In Bezug auf die obige Abbildung weist ein gutes Umkreisnetzwerk folgende Merkmale auf:
 
 * Internetzugriff:
   * Das Subnetz des Umkreisnetzwerks selbst ist eine Schnittstelle zur direkten Kommunikation mit dem Internet.
-  * Öffentliche IPs, VIPs und/oder Dienstendpunkte leiten Internetdatenverkehr an das Front-End-Netzwerk und die zugehörigen Geräte.
+  * Öffentliche IP-Adressen, VIPs und/oder Dienstendpunkte leiten Internetdatenverkehr an das Front-End-Netzwerk und die zugehörigen Geräte.
   * Eingehender Datenverkehr aus dem Internet passiert die Sicherheitsgeräte, bevor andere Ressourcen im Front-End-Netzwerk erreicht werden.
   * Wenn die ausgehende Sicherheit aktiviert ist, passiert der Datenverkehr im letzten Schritt die Sicherheitsgeräte, bevor er an das Internet gesendet wird.
 * Geschütztes Netzwerk:
   * Es gibt keinen direkten Pfad vom Internet zur Kerninfrastruktur.
   * Kanäle zur Kerninfrastruktur müssen die Sicherheitsgeräte passieren, z. B. NSGs, Firewalls oder VPN-Geräte.
   * Andere Geräte dürfen keine Überbrückung zwischen Internet und Kerninfrastruktur herbeiführen.
-  * Als Sicherheitsgeräte sowohl an der Grenze zum Internet als auch an der Grenze zum geschützten Netzwerk des Umkreisnetzwerks (z. B. die beiden Firewallsymbole in der obigen Abbildung) kann tatsächlich ein einzelnes virtuelles Gerät mit differenzierten Regeln oder Schnittstellen für jede Grenze dienen (d. h. ein Gerät, das logisch getrennt wird und die Last für beide Grenzen des Umkreisnetzwerks verarbeitet).
+  * Als Sicherheitsgeräte sowohl an der Grenze zum Internet als auch an der Grenze zum geschützten Netzwerk des Umkreisnetzwerks (z. B. die beiden Firewallsymbole in der obigen Abbildung) kann tatsächlich ein einzelnes virtuelles Gerät mit differenzierten Regeln oder Schnittstellen für jede Grenze dienen (beispielsweise ein physisches Gerät, das logisch getrennt wird und die Last für beide Grenzen des Umkreisnetzwerks verarbeitet).
 * Weitere gängige Methoden und Einschränkungen:
   * Workloads dürfen keine kritischen Geschäftsinformationen speichern.
   * Der Zugriff auf und die Aktualisierung von Umkreisnetzwerk-Konfigurationen und -Bereitstellungen ist ausschließlich auf autorisierte Administratoren beschränkt.
@@ -114,15 +122,15 @@ In Bezug auf die obige Abbildung weist ein gutes Umkreisnetzwerk folgende Merkma
 ### <a name="perimeter-network-requirements"></a>Anforderungen des Umkreisnetzwerks
 Um diese Merkmale umzusetzen, befolgen Sie diese Richtlinien zu den Anforderungen virtueller Netzwerke für eine erfolgreiche Implementierung eines Umkreisnetzwerks:
 
-* **Subnetzarchitektur** : Konfigurieren Sie das virtuelle Netzwerk so, dass ein gesamtes Subnetz als Umkreisnetzwerk reserviert ist, getrennt von anderen Subnetzen im selben virtuellen Netzwerk. Auf diese Weise wird sichergestellt, dass der Datenverkehr zwischen dem Umkreisnetzwerk und anderen internen oder privaten Subnetzstufen über eine Firewall oder ein virtuelles IDS/IPS-Gerät mit benutzerdefiniertem Routing (UDR) an den Subnetzgrenzen fließt.
-* **NSG** : Das Subnetz des Umkreisnetzwerks selbst sollte offen sein, um eine Kommunikation mit dem Internet zu ermöglichen, aber dies bedeutet nicht, dass Kunden die NSGs umgehen sollten. Befolgen Sie allgemeine Sicherheitsmaßnahmen, um die aus dem Internet zugänglichen Netzwerkoberflächen auf ein Mindestmaß zu beschränken. Beschränken Sie die Remoteadressbereiche, die auf die Bereitstellungen oder die spezifischen Anwendungsprotokolle und geöffneten Ports zugreifen dürfen. Es gibt allerdings Situationen, in denen das nicht immer möglich ist. Wenn Kunden beispielsweise über eine externe Website in Azure verfügen, sollte das Umkreisnetzwerk eingehende Webanforderungen von beliebigen öffentlichen IP-Adressen zulassen, jedoch nur die Webanwendungsports öffnen: TCP:80 und TCP:443.
+* **Subnetzarchitektur** : Konfigurieren Sie das virtuelle Netzwerk so, dass ein gesamtes Subnetz als Umkreisnetzwerk reserviert ist, getrennt von anderen Subnetzen im selben virtuellen Netzwerk. Durch diese Trennung wird sichergestellt, dass der Datenverkehr zwischen dem Umkreisnetzwerk und anderen internen oder privaten Subnetzstufen über eine Firewall oder ein virtuelles IDS/IPS-Gerät fließt.  Benutzerdefinierte Routen an den Grenzsubnetzen sind erforderlich, um diesen Datenverkehr an das virtuelle Gerät weiterzuleiten.
+* **NSG** : Das Subnetz des Umkreisnetzwerks selbst sollte offen sein, um eine Kommunikation mit dem Internet zu ermöglichen, aber dies bedeutet nicht, dass Kunden die NSGs umgehen sollten. Befolgen Sie allgemeine Sicherheitsmaßnahmen, um die aus dem Internet zugänglichen Netzwerkoberflächen auf ein Mindestmaß zu beschränken. Beschränken Sie die Remoteadressbereiche, die auf die Bereitstellungen oder die spezifischen Anwendungsprotokolle und geöffneten Ports zugreifen dürfen. Es gibt allerdings Situationen, in denen eine vollständige Sperrung nicht möglich ist. Wenn Kunden beispielsweise über eine externe Website in Azure verfügen, sollte das Umkreisnetzwerk eingehende Webanforderungen von beliebigen öffentlichen IP-Adressen zulassen, jedoch nur die Webanwendungsports öffnen: TCP an Port 80 und/oder TCP an Port 443.
 * **Routingtabelle** : Das Subnetz des Umkreisnetzwerks selbst sollte in der Lage sein, direkt mit dem Internet zu kommunizieren, es sollte jedoch keine direkte Kommunikation von und zum Back-End oder lokalen Netzwerken stattfinden, ohne den Datenverkehr über eine Firewall oder ein Sicherheitsgerät zu leiten.
-* **Konfiguration von Sicherheitsgeräten**: Um Pakete zwischen dem Umkreisnetzwerk und allen Komponenten des geschützten Netzwerks weiterzuleiten und zu überprüfen, können Sicherheitsgeräte wie z.B. Firewall, IDS- und IPS-Geräte mehrfach vernetzt sein. Sie können mit separaten Netzwerkkarten (NICs) für das Umkreisnetzwerk und die Back-End-Subnetze ausgestattet sein. Die NICs im Umkreisnetzwerk kommunizieren direkt mit dem Internet (eingehend und ausgehend), unter Verwendung entsprechender NSGs und der Routingtabelle für das Umkreisnetzwerk. Die NICs zur Verbindung mit den Back-End-Subnetzen verfügen über eingeschränktere NSGs und Routingtabellen für die entsprechenden Back-End-Subnetze.
+* **Konfiguration von Sicherheitsgeräten**: Um Pakete zwischen dem Umkreisnetzwerk und allen Komponenten des geschützten Netzwerks weiterzuleiten und zu überprüfen, können Sicherheitsgeräte wie z.B. Firewall-, IDS- und IPS-Geräte mehrfach vernetzt sein. Sie können mit separaten Netzwerkkarten (NICs) für das Umkreisnetzwerk und die Back-End-Subnetze ausgestattet sein. Die NICs im Umkreisnetzwerk kommunizieren direkt mit dem Internet (eingehend und ausgehend), unter Verwendung entsprechender NSGs und der Routingtabelle für das Umkreisnetzwerk. Die NICs zur Verbindung mit den Back-End-Subnetzen verfügen über eingeschränktere NSGs und Routingtabellen für die entsprechenden Back-End-Subnetze.
 * **Funktionalität der Sicherheitsgeräte** : Die im Umkreisnetzwerk bereitgestellten Sicherheitsgeräte erfüllen typischerweise die folgenden Funktionen:
   * Firewall: Durchsetzen von Firewallregeln oder Richtlinien für die Zugriffssteuerung für eingehende Anforderungen.
   * Angriffserkennung und -abwehr: Erkennen und Abschwächen böswilliger Angriffe aus dem Internet.
   * Überwachung und Protokollierung: Speichern detaillierter Protokolle für Überwachung und Analyse.
-  * Reverseproxy: Umleiten eingehender Anforderungen an die entsprechenden Back-End-Server. Hierzu gehört die Zuordnung und Übersetzung der Zieladressen auf dem Front-End-Gerät (in der Regel Firewalls) in die Adressen der Back-End-Server.
+  * Reverseproxy: Umleiten eingehender Anforderungen an die entsprechenden Back-End-Server. Zu dieser Umleitung gehört die Zuordnung und Übersetzung der Zieladressen auf den Front-End-Geräten (in der Regel Firewalls) in die Adressen der Back-End-Server.
   * Weiterleitungsproxy: Bereitstellen der Netzwerkadressübersetzung (NAT) und Überwachen auf Kommunikation aus dem virtuellen Netzwerk mit dem Internet.
   * Router: Weiterleitung von eingehendem und subnetzübergreifendem Datenverkehr innerhalb des virtuellen Netzwerks.
   * VPN-Geräte: Fungieren als standortübergreifende VPN Gateways zur Bereitstellung standortübergreifender VPN-Konnektivität zwischen lokalen Kundennetzwerken und virtuellen Azure-Netzwerken.
@@ -136,7 +144,7 @@ Um diese Merkmale umzusetzen, befolgen Sie diese Richtlinien zu den Anforderunge
 ### <a name="questions-to-be-asked-when-building-network-boundaries"></a>Fragen in Bezug auf die Einrichtung von Netzwerkgrenzen
 Sofern nicht ausdrücklich erwähnt, verweist der Begriff „Netzwerke“ in diesem Abschnitt auf private virtuelle Azure-Netzwerke, die von einem Abonnementadministrator erstellt wurden. Der Begriff bezieht sich nicht auf die zugrunde liegenden physischen Netzwerke in Azure.
 
-Virtuelle Azure-Netzwerke werden auch häufig dazu verwendet, traditionelle lokale Netzwerke zu erweitern. Es ist möglich, entweder Standort-zu-Standort- oder ExpressRoute-Hybridnetzwerklösungen in Umkreisnetzwerk-Architekturen zu integrieren. Dies ist ein wichtiger Aspekt bei der Erstellung von Netzwerksicherheitsgrenzen.
+Virtuelle Azure-Netzwerke werden auch häufig dazu verwendet, traditionelle lokale Netzwerke zu erweitern. Es ist möglich, entweder Standort-zu-Standort- oder ExpressRoute-Hybridnetzwerklösungen in Umkreisnetzwerk-Architekturen zu integrieren. Dieser Hybridlink ist ein wichtiger Aspekt bei der Erstellung von Netzwerksicherheitsgrenzen.
 
 Die Beantwortung der folgenden drei Fragen ist entscheidend, wenn Sie ein Netzwerk mit einem Umkreisnetzwerk und mehrere Sicherheitsgrenzen erstellen.
 
@@ -148,14 +156,14 @@ Im ersten Schritt muss entschieden werden, wie viele Sicherheitsgrenzen in einem
 * Drei Grenzen: Eine Grenze auf der Internetseite des Umkreisnetzwerks, eine zweite Grenze zwischen dem Subnetz des Umkreisnetzwerks und den Back-End-Subnetzen und eine dritte zwischen den Back-End-Subnetzen und dem lokalen Netzwerk.
 * N Grenzen: eine variable Anzahl. Je nach geltenden Sicherheitsanforderungen können beliebig viele Sicherheitsgrenzen in einem Netzwerk eingerichtet werden.
 
-Die Anzahl und Art der erforderlichen Grenzen variiert basierend darauf, wie hoch die Risikotoleranz eines Unternehmens liegt und welches Szenario implementiert wird. Diese Entscheidung wird häufig gemeinsam von verschiedenen Gruppen innerhalb einer Organisation getroffen – z. B. durch ein Team für Risiko und Compliance, ein Netzwerk- und Plattformteam und ein Team für die Anwendungsentwicklung. Bei dieser Entscheidung sollten Personen mit Einblick in die Sicherheit, relevante Daten und die eingesetzte Technologie einbezogen werden, um ein angemessenes Sicherheitsniveau für jede Implementierung zu gewährleisten.
+Die Anzahl und Art der erforderlichen Grenzen variiert basierend darauf, wie hoch die Risikotoleranz eines Unternehmens ist und welches Szenario implementiert wird. Diese Entscheidung wird häufig gemeinsam von verschiedenen Gruppen innerhalb einer Organisation getroffen – z.B. durch ein Team für Risiko und Compliance, ein Netzwerk- und Plattformteam und ein Team für die Anwendungsentwicklung. Bei dieser Entscheidung sollten Personen mit Einblick in die Sicherheit, relevante Daten und die eingesetzte Technologie einbezogen werden, um ein angemessenes Sicherheitsniveau für jede Implementierung zu gewährleisten.
 
 > [!TIP]
-> Verwenden Sie die kleinstmögliche Anzahl von Grenzen, mit denen die Sicherheitsanforderungen für ein vorgegebenes Szenario erfüllt werden können. Je mehr Grenzen implementiert werden, desto schwieriger können sich Betrieb und Problembehandlung gestalten. Gleichzeitig steigt der Aufwand für das Verwalten der verschiedenen Grenzrichtlinien. Durch eine unzureichende Anzahl von Grenzen steigt jedoch das Risiko. Entscheidend ist, die richtige Balance zu finden.
+> Verwenden Sie die kleinstmögliche Anzahl von Grenzen, mit denen die Sicherheitsanforderungen für ein vorgegebenes Szenario erfüllt werden können. Je mehr Grenzen implementiert werden, desto schwieriger können sich Betrieb und Problembehandlung gestalten. Gleichzeitig steigt mit der Zeit der Aufwand für das Verwalten der verschiedenen Grenzrichtlinien. Durch eine unzureichende Anzahl von Grenzen steigt jedoch das Risiko. Entscheidend ist, die richtige Balance zu finden.
 >
 >
 
-![Hybridnetzwerk mit drei Sicherheitsgrenzen][6]
+![6]
 
 Die obige Abbildung zeigt einen allgemeinen Überblick über ein Netzwerk mit drei Sicherheitsgrenzen. Die Grenzen bestehen zwischen dem Umkreisnetzwerk und dem Internet, dem privaten Azure-Front-End- und -Back-End-Subnetz sowie dem Azure-Back-End-Subnetz und dem lokalen Unternehmensnetzwerk.
 
@@ -175,11 +183,11 @@ In der obigen Abbildung sind die Grenzen zwischen Internet und Umkreisnetzwerk u
 Beispielsweise bietet die Verwendung vorhandener physischer Sicherheitsgeräte auf der Seite des lokalen Netzwerks den Vorteil, dass keine neuen Geräte erforderlich sind. Sie müssen nur neu konfiguriert werden. Der Nachteil besteht jedoch darin, dass der gesamte Datenverkehr von Azure zurück an das lokale Netzwerk geleitet werden muss, damit er die Sicherheitsgeräte passiert. Der Azure-zu-Azure-Datenverkehr könnte sich erheblich auf die Latenz und damit auf die Anwendungsleistung und das Benutzererlebnis auswirken, wenn der Datenverkehr zur Erzwingung von Sicherheitsrichtlinien zurück an das lokale Netzwerk geleitet werden muss.
 
 #### <a name="3-how-are-the-boundaries-implemented"></a>3) Wie werden die Grenzen implementiert?
-Jede Sicherheitsgrenze hat andere Funktionsanforderungen (z.B. IDS- und Firewallregeln auf der Internetseite des Umkreisnetzwerks, aber lediglich ACLs zwischen Umkreisnetzwerk und Back-End-Subnetz). Die Entscheidung, welche Geräte zum Einsatz kommen, richtet sich nach dem Szenario und den Sicherheitsanforderungen. Im folgenden Abschnitt werden in den Beispiele 1, 2 und 3 einige Optionen erläutert, die verwendet werden können. Die nativen Netzwerkfeatures von Azure und die über das Partnerökosystem in Azure erhältlichen Geräte bieten unzählige Optionen, um praktisch jedes Szenario abzudecken.
+Jede Sicherheitsgrenze hat andere Funktionsanforderungen (z. B. IDS- und Firewallregeln auf der Internetseite des Umkreisnetzwerks, aber lediglich ACLs zwischen Umkreisnetzwerk und Back-End-Subnetz). Die Entscheidung, welches Gerät (oder wie viele Geräte) zum Einsatz kommt, richtet sich nach dem Szenario und den Sicherheitsanforderungen. Im folgenden Abschnitt werden in den Beispiele 1, 2 und 3 einige Optionen erläutert, die verwendet werden können. Die nativen Netzwerkfeatures von Azure und die über das Partnerökosystem in Azure erhältlichen Geräte bieten unzählige Optionen, um praktisch jedes Szenario abzudecken.
 
 Ein weiterer wichtiger Aspekt bei der Implementierung ist, auf welche Weise das lokale Netzwerk mit Azure verbunden wird: über das virtuelle Azure-Gateway oder über ein virtuelles Netzwerkgerät. Diese Optionen werden in den Beispielen 4, 5 und 6 im folgenden Abschnitt ausführlicher erläutert.
 
-Darüber hinaus kann der Datenverkehr zwischen virtuellen Netzwerken in Azure erforderlich sein. Diese Szenarien werden zu einem späteren Zeitpunkt hinzugefügt.
+Darüber hinaus kann der Datenverkehr zwischen virtuellen Netzwerken in Azure erforderlich sein. Diese Szenarien werden in der Zukunft hinzugefügt.
 
 Sobald Sie sämtliche der oben aufgeführten Fragen beantwortet haben, können Sie mithilfe des Abschnitts [Schnelleinstieg](#fast-start) ermitteln, welche Beispiele für ein bestimmtes Szenario am besten geeignet sind.
 
@@ -187,17 +195,18 @@ Sobald Sie sämtliche der oben aufgeführten Fragen beantwortet haben, können S
 ### <a name="example-1-build-a-perimeter-network-to-help-protect-applications-with-nsgs"></a>Beispiel 1: Erstellen eines Umkreisnetzwerks zum Schutz von Anwendungen durch NSGs
 [Zurück zum Schnelleinstieg](#fast-start) | [Detaillierte Einrichtungsanweisungen zu diesem Beispiel][Example1]
 
-![Eingehende Umkreisnetzwerk-Verbindungen mit NSG][7]
+[![7]][7]
 
 #### <a name="environment-description"></a>Beschreibung der Umgebung
-Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
+Dieses Beispiel umfasst ein Abonnement, das folgende Ressourcen enthält:
 
-* Zwei Clouddienste: "FrontEnd001" und "BackEnd001"
-* Ein virtuelles Netzwerk, „CorpNetwork“, mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
-* Eine Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
-* Einen Windows-Server, der einen Anwendungswebserver darstellt („IIS01“)
-* Zwei Windows-Server, die Back-End-Anwendungsserver darstellen („AppVM01“, „AppVM02“)
-* Eine Windows Server-Instanz, die einen DNS-Server darstellt ("DNS01")
+- Eine einzelne Ressourcengruppe
+- Ein virtuelles Netzwerk mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
+- Eine Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
+- Einen Windows-Server, der einen Anwendungswebserver darstellt („IIS01“)
+- Zwei Windows-Server, die Back-End-Anwendungsserver darstellen („AppVM01“, „AppVM02“)
+- Eine Windows Server-Instanz, die einen DNS-Server darstellt ("DNS01")
+- Eine öffentliche IP-Adresse, die mit dem Anwendungswebserver verknüpft ist
 
 Skripts und eine Azure Resource Manager-Vorlage finden Sie in den [detaillierten Einrichtungsanweisungen][Example1].
 
@@ -218,28 +227,29 @@ Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
 5. Jeglicher Datenverkehr (alle Ports) aus dem Internet in das gesamte virtuelle Netzwerk (beide Subnetze) wird abgelehnt.
 6. Jeglicher Datenverkehr (alle Ports) vom Front-End-Subnetz zum Back-End-Subnetz wird abgelehnt.
 
-Wenn diese Regeln an die einzelnen Subnetze gebunden sind, gelten beim Eingehen einer HTTP-Anforderung aus dem Internet an den Webserver sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Aber da Regel 3 eine höhere Priorität hat, wird nur sie angewendet, und Regel 5 findet keine Anwendung. Aus diesem Grund wird die HTTP-Anforderung für den Webserver als zulässig eingestuft. Falls derselbe Datenverkehr versuchen würde, den DNS01-Server zu erreichen, würde Regel 5 (Verweigern) zuerst gelten. Für den Datenverkehr wird die Übergabe an den Server also nicht zugelassen. Regel 6 (Verweigern) verhindert die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Dadurch wird das Back-End-Netzwerk geschützt für den Fall, dass ein Angreifer die Webanwendung auf dem Front-End gefährdet. Der Angreifer könnte nur eingeschränkt auf das „geschützte“ Back-End-Netzwerk zugreifen (nur auf die Ressourcen, die auf dem Server „AppVM01“ zur Verfügung gestellt werden).
+Wenn diese Regeln an die einzelnen Subnetze gebunden sind, gelten beim Eingehen einer HTTP-Anforderung aus dem Internet an den Webserver sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Aber da Regel 3 eine höhere Priorität hat, wird nur sie angewendet, und Regel 5 findet keine Anwendung. Aus diesem Grund wird die HTTP-Anforderung für den Webserver als zulässig eingestuft. Falls derselbe Datenverkehr versuchen würde, den DNS01-Server zu erreichen, würde Regel 5 (Verweigern) zuerst gelten. Für den Datenverkehr wird die Übergabe an den Server also nicht zugelassen. Regel 6 (Verweigern) verhindert die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Mit diesem Regelsatz wird das Back-End-Netzwerk für den Fall geschützt, dass ein Angreifer die Webanwendung auf dem Front-End gefährdet. Der Angreifer könnte nur eingeschränkt auf das „geschützte“ Back-End-Netzwerk zugreifen (nur auf die Ressourcen, die auf dem Server „AppVM01“ zur Verfügung gestellt werden).
 
 Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine Regeln für die ausgehende Richtung geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich (siehe Beispiel 3).
 
 #### <a name="conclusion"></a>Zusammenfassung
-Dies ist eine relativ einfache und direkte Möglichkeit, das Back-End-Subnetz von eingehendem Datenverkehr zu isolieren. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example1]. In diesen Anweisungen wird Folgendes behandelt:
+Dieses Beispiel ist eine relativ einfache und direkte Möglichkeit, das Back-End-Subnetz von eingehendem Datenverkehr zu isolieren. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example1]. In diesen Anweisungen wird Folgendes behandelt:
 
-* Erstellen dieses Umkreisnetzwerks mithilfe von PowerShell-Skripts.
+* Erstellen dieses Umkreisnetzwerks mithilfe von klassischen PowerShell-Skripts.
 * Erstellen dieses Umkreisnetzwerks mit einer Azure Resource Manager-Vorlage.
 * Ausführliche Beschreibungen für jeden NSG-Befehl.
 * Ausführliche Szenarien zum Datenverkehrsfluss, die zeigen, wie der Datenverkehr auf jeder Stufe zugelassen oder abgelehnt wird.
 
+
 ### <a name="example-2-build-a-perimeter-network-to-help-protect-applications-with-a-firewall-and-nsgs"></a>Beispiel 2: Erstellen eines Umkreisnetzwerks zum Schutz von Anwendungen durch eine Firewall und NSGs
 [Zurück zum Schnelleinstieg](#fast-start) | [Detaillierte Einrichtungsanweisungen zu diesem Beispiel][Example2]
 
-![Eingehende Umkreisnetzwerk-Verbindungen mit virtuellem Netzwerkgerät und NSG][8]
+[![8]][8]
 
 #### <a name="environment-description"></a>Beschreibung der Umgebung
-Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
+Dieses Beispiel umfasst ein Abonnement, das folgende Ressourcen enthält:
 
-* Zwei Clouddienste: "FrontEnd001" und "BackEnd001"
-* Ein virtuelles Netzwerk, „CorpNetwork“, mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
+* Eine einzelne Ressourcengruppe
+* Ein virtuelles Netzwerk mit zwei Subnetzen: „FrontEnd“ und „BackEnd“
 * Eine Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
 * Ein virtuelles Netzwerkgerät, in diesem Fall eine Firewall, das mit dem Front-End-Subnetz verbunden ist
 * Einen Windows-Server, der einen Anwendungswebserver darstellt („IIS01“)
@@ -265,7 +275,7 @@ Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
 5. Jeglicher Datenverkehr (alle Ports) aus dem Internet in das gesamte virtuelle Netzwerk (beide Subnetze) wird abgelehnt.
 6. Jeglicher Datenverkehr (alle Ports) vom Front-End-Subnetz zum Back-End-Subnetz wird abgelehnt.
 
-Wenn diese Regeln an die einzelnen Subnetze gebunden sind, gelten beim Eingehen einer HTTP-Anforderung aus dem Internet an die Firewall sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Aber da Regel 3 eine höhere Priorität hat, wird nur sie angewendet, und Regel 5 findet keine Anwendung. Aus diesem Grund würde die HTTP-Anforderung für die Firewall als zulässig eingestuft werden. Falls versucht würde, denselben Datenverkehr an den IIS01-Server zu senden, würde Regel 5 (Ablehnen) – obwohl der Server sich im Front-End-Subnetz befindet – zuerst angewendet, der Datenverkehr also nicht an den Server übergeben. Regel 6 (Verweigern) verhindert die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Dadurch wird das Back-End-Netzwerk geschützt für den Fall, dass ein Angreifer die Webanwendung auf dem Front-End gefährdet. Der Angreifer könnte nur eingeschränkt auf das „geschützte“ Back-End-Netzwerk zugreifen (nur auf die Ressourcen, die auf dem Server „AppVM01“ zur Verfügung gestellt werden).
+Wenn diese Regeln an die einzelnen Subnetze gebunden sind, gelten beim Eingehen einer HTTP-Anforderung aus dem Internet an die Firewall sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Aber da Regel 3 eine höhere Priorität hat, wird nur sie angewendet, und Regel 5 findet keine Anwendung. Aus diesem Grund würde die HTTP-Anforderung für die Firewall als zulässig eingestuft werden. Falls versucht würde, denselben Datenverkehr an den IIS01-Server zu senden, würde Regel 5 (Ablehnen) – obwohl der Server sich im Front-End-Subnetz befindet – zuerst angewendet, der Datenverkehr also nicht an den Server übergeben. Regel 6 (Verweigern) verhindert die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Mit diesem Regelsatz wird das Back-End-Netzwerk für den Fall geschützt, dass ein Angreifer die Webanwendung auf dem Front-End gefährdet. Der Angreifer könnte nur eingeschränkt auf das „geschützte“ Back-End-Netzwerk zugreifen (nur auf die Ressourcen, die auf dem Server „AppVM01“ zur Verfügung gestellt werden).
 
 Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine Regeln für die ausgehende Richtung geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich (siehe Beispiel 3).
 
@@ -275,9 +285,9 @@ In der Firewall sollten Weiterleitungsregeln erstellt werden. Da in diesem Beisp
 Die Weiterleitungsregel akzeptiert alle eingehenden Quelladressen, die bei dem Versuch, eine HTTP-Adresse (Port 80 oder 443 für HTTPS) zu erreichen, auf die Firewall stoßen. Sie werden von der lokalen Firewallschnittstelle aus gesendet und an den Webserver mit der IP-Adresse 10.0.1.5 umgeleitet.
 
 #### <a name="conclusion"></a>Zusammenfassung
-Dies ist eine relativ einfache Möglichkeit zum Schützen Ihrer Anwendung mit einer Firewall und zum Isolieren des Back-End-Subnetzes vor eingehendem Datenverkehr. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example2]. In diesen Anweisungen wird Folgendes behandelt:
+Dieses Beispiel ist eine relativ einfache Möglichkeit zum Schützen Ihrer Anwendung mit einer Firewall und zum Isolieren des Back-End-Subnetzes vor eingehendem Datenverkehr. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example2]. In diesen Anweisungen wird Folgendes behandelt:
 
-* Erstellen dieses Umkreisnetzwerks mithilfe von PowerShell-Skripts.
+* Erstellen dieses Umkreisnetzwerks mithilfe von klassischen PowerShell-Skripts.
 * Erstellen dieses Beispiels mit einer Azure Resource Manager-Vorlage.
 * Ausführliche Beschreibungen für jeden NSG-Befehl und jede Firewallregel.
 * Ausführliche Szenarien zum Datenverkehrsfluss, die zeigen, wie der Datenverkehr auf jeder Stufe zugelassen oder abgelehnt wird.
@@ -285,13 +295,13 @@ Dies ist eine relativ einfache Möglichkeit zum Schützen Ihrer Anwendung mit ei
 ### <a name="example-3-build-a-perimeter-network-to-help-protect-networks-with-a-firewall-and-udr-and-nsg"></a>Beispiel 3: Erstellen eines Umkreisnetzwerks zum Schutz von Netzwerken durch eine Firewall, UDR und NSGs
 [Zurück zum Schnelleinstieg](#fast-start) | [Detaillierte Einrichtungsanweisungen zu diesem Beispiel][Example3]
 
-![Bidirektionale Umkreisnetzwerk-Verbindungen mit NSG, NVA und UDR][9]
+[![9]][9]
 
 #### <a name="environment-description"></a>Beschreibung der Umgebung
-Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
+Dieses Beispiel umfasst ein Abonnement, das folgende Ressourcen enthält:
 
-* Drei Clouddienste: "SecSvc001", "FrontEnd001" und "BackEnd001"
-* Ein virtuelles Netzwerk, „CorpNetwork“, mit drei Subnetzen: „SecNet“, „FrontEnd“ und „BackEnd“
+* Eine einzelne Ressourcengruppe
+* Ein virtuelles Netzwerk mit drei Subnetzen: „SecNet“, „FrontEnd“ und „BackEnd“
 * Ein virtuelles Netzwerkgerät, in diesem Fall eine Firewall, das mit dem Subnetz „SecNet“ verbunden ist
 * Einen Windows-Server, der einen Anwendungswebserver darstellt („IIS01“)
 * Zwei Windows-Server, die Back-End-Anwendungsserver darstellen („AppVM01“, „AppVM02“)
@@ -312,23 +322,23 @@ Standardmäßig sind folgende Systemrouten definiert:
          {172.16.0.0/12}   Null                                 Active   Default    
          {192.168.0.0/16}  Null                                 Active   Default
 
-VNETLocal ist immer das definierte Adresspräfix (bzw. die definierten Adresspräfixe) des virtuellen Netzwerks für dieses spezifische Netzwerk (d. h. diese Angabe ändert sich je nach virtuellem Netzwerk und je nachdem, wie jedes virtuelle Netzwerk definiert ist). Die anderen Systemrouten sind statisch und standardmäßig wie in der Tabelle angegeben.
+VNETLocal ist immer mindestens ein definiertes Adresspräfix des virtuellen Netzwerks für dieses spezifische Netzwerk (d.h., diese Angabe ändert sich je nach virtuellem Netzwerk und je nachdem, wie jedes virtuelle Netzwerk definiert ist). Die anderen Systemrouten sind statisch und standardmäßig wie in der Tabelle angegeben.
 
-In diesem Beispiel werden zwei Routingtabellen erstellt, jeweils eine für das Front-End- und das Back-End-Subnetz. Jede Tabelle enthält statische Routen, die sich für das jeweilige Subnetz eignen. Im Rahmen dieses Beispiels enthält jede Tabelle drei Routen, die den gesamten Datenverkehr (0.0.0.0/0) über die Firewall (nächster Hop = IP-Adresse des virtuellen Geräts) leiten:
+In diesem Beispiel werden zwei Routingtabellen erstellt, jeweils eine für das Front-End- und das Back-End-Subnetz. Jede Tabelle enthält statische Routen, die sich für das jeweilige Subnetz eignen. In diesem Beispiel enthält jede Tabelle drei Routen, die den gesamten Datenverkehr (0.0.0.0/0) über die Firewall (nächster Hop = IP-Adresse des virtuellen Geräts) leiten:
 
 1. Datenverkehr im lokalen Subnetz ohne definierten nächsten Hop, sodass der Datenverkehr im lokalen Subnetz die Firewall umgehen kann.
-2. Virtueller Netzwerkdatenverkehr mit einem als Firewall definierten nächsten Hop. Dies setzt die Standardregel außer Kraft, die ein direktes Routing des Datenverkehrs im lokalen virtuellen Netzwerk ermöglicht.
+2. Virtueller Netzwerkdatenverkehr mit einem als Firewall definierten nächsten Hop. Dieser nächste Hop setzt die Standardregel außer Kraft, die ein direktes Routing des lokalen virtuellen Netzwerkdatenverkehrs ermöglicht.
 3. Der gesamte verbleibende Datenverkehr (0/0) mit einem als Firewall definierten nächsten Hop.
 
 > [!TIP]
 > Wenn sich der lokale Subnetzeintrag nicht in der benutzerdefinierten Route befindet, wird die Kommunikation im lokalen Subnetz unterbrochen.
 >
-> * In unserem Beispiel ist es wichtig, dass 10.0.1.0/24 auf VNETLocal verweist, da andernfalls vom Webserver (10.0.1.4) ausgehende Pakete, die für einen anderen lokalen Server (z.B. 10.0.1.25) vorgesehen sind, fehlschlagen, da diese über das virtuelle Netzwerkgerät gesendet werden. Dieses sendet sie an das Subnetz, das Subnetz sendet sie an das virtuelle Netzwerkgerät zurück usw.
-> * Bei Multi-NIC-Geräten, die eine direkte Verbindung mit dem jeweiligen Subnetz herstellen, mit dem sie kommunizieren, ist die Wahrscheinlichkeit einer Routingschleife höher. Dies sind häufig traditionelle lokale Geräte.
+> * In unserem Beispiel ist es wichtig, dass VNETLocal auf 10.0.1.0/24 verweist! Andernfalls könnte ein Paket, das vom Webserver (10.0.1.4) an einen anderen lokalen Server (z.B. 10.0.1.25) gesendet werden soll, nicht übertragen werden, da es an das virtuelle Netzwerkgerät gesendet wird. Das virtuelle Netzwerkgerät sendet es an das Subnetz, und das Subnetz sendet es in einer Endlosschleife wieder an das virtuelle Netzwerkgerät.
+> * Bei Geräten mit mehreren NICs, die mit getrennten Subnetzen verbunden sind, ist die Wahrscheinlichkeit einer Routingschleife höher. Dies sind häufig traditionelle lokale Geräte.
 >
 >
 
-Sobald die Routingtabellen erstellt wurden, sind sie an ihre Subnetze gebunden. Die Routingtabelle für das Front-End-Subnetz sieht nach Erstellung und Bindung an das Subnetz wie folgt aus:
+Sobald die Routingtabellen erstellt wurden, müssen sie an ihre Subnetze gebunden werden. Die Routingtabelle für das Front-End-Subnetz sieht nach Erstellung und Bindung an das Subnetz wie die folgende Ausgabe aus:
 
         Effective routes :
          Address Prefix    Next hop type    Next hop IP address Status   Source     
@@ -345,9 +355,9 @@ Sobald die Routingtabellen erstellt wurden, sind sie an ihre Subnetze gebunden. 
 >
 
 #### <a name="ip-forwarding-description"></a>Beschreibung der IP-Weiterleitung
-Die IP-Weiterleitung ist eine begleitende Funktion für das benutzerdefinierte Routing (UDR). Es handelt sich um eine Einstellung in einem virtuellen Gerät, das diesem ermöglicht, nicht speziell an dieses Gerät adressierten Datenverkehr zu empfangen und diesen an das endgültige Ziel weiterzuleiten.
+Die IP-Weiterleitung ist eine begleitende Funktion für das benutzerdefinierte Routing (UDR). Bei der IP-Weiterleitung handelt sich um eine Einstellung in einem virtuellen Gerät, das diesem ermöglicht, nicht speziell an dieses Gerät adressierten Datenverkehr zu empfangen und diesen an das endgültige Ziel weiterzuleiten.
 
-Wenn beispielsweise Datenverkehr aus AppVM01 eine Anforderung an den Server DNS01 sendet, leitet UDR diese Anforderung an die Firewall weiter. Wenn die IP-Weiterleitung aktiviert ist, wird Datenverkehr für das Ziel DNS01 (10.0.2.4) vom Gerät (10.0.0.4) akzeptiert und dann an das endgültige Ziel (10.0.2.4) weitergeleitet. Ist die IP-Weiterleitung in der Firewall nicht aktiviert, wird der Datenverkehr vom Gerät nicht akzeptiert, selbst wenn in der Routingtabelle die Firewall als nächster Hop angegeben ist. Um ein virtuelles Gerät verwenden zu können, ist es wichtig, die IP-Weiterleitung zusammen mit UDR zu aktivieren.
+Wenn beispielsweise AppVM01 eine Anforderung an den Server DNS01 sendet, leitet UDR diesen Datenverkehr an die Firewall weiter. Wenn die IP-Weiterleitung aktiviert ist, wird Datenverkehr für das Ziel DNS01 (10.0.2.4) vom Gerät (10.0.0.4) akzeptiert und dann an das endgültige Ziel (10.0.2.4) weitergeleitet. Ist die IP-Weiterleitung in der Firewall nicht aktiviert, wird der Datenverkehr vom Gerät nicht akzeptiert, selbst wenn in der Routingtabelle die Firewall als nächster Hop angegeben ist. Um ein virtuelles Gerät verwenden zu können, ist es wichtig, die IP-Weiterleitung zusammen mit UDR zu aktivieren.
 
 #### <a name="nsg-description"></a>Beschreibung von NSGs
 In diesem Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit einer einzigen Regel geladen. Diese Gruppe wird dann nur an das Front-End- und das Back-End-Subnetz (nicht an SecNet) gebunden. Die folgende Regel wird deklarativ erstellt:
@@ -356,7 +366,7 @@ In diesem Beispiel wird eine Netzwerksicherheitsgruppe erstellt und dann mit ein
 
 Obwohl Netzwerksicherheitsgruppen in diesem Beispiel verwendet werden, dienen sie hauptsächlich als zweite Stufe zum Schutz gegen manuelle Fehlkonfigurationen. Ziel ist es, den gesamten eingehenden Datenverkehr aus dem Internet an das Front-End- oder das Back-End-Subnetz zu blockieren. Datenverkehr sollte nur über das Subnetz „SecNet“ zur Firewall gelangen (und gegebenenfalls an das Front-End- oder Back-End-Subnetz weitergeleitet werden). Darüber hinaus soll – wenn die UDR-Regeln eingerichtet sind – jeglicher Datenverkehr, der an das Front-End- oder Back-End-Subnetz weitergeleitet wurde, nach außen an die Firewall geleitet werden (dank UDR). Die Firewall erkennt diesen Datenverkehr als asymmetrisch und verwirft den ausgehenden Datenverkehr. Es gibt also drei Sicherheitsstufen zum Schutz der Subnetze:
 
-* Keine geöffneten Endpunkte in den Clouddiensten „FrontEnd001“ und „BackEnd001“.
+* Keine öffentlichen IP-Adressen auf Front-End- oder Back-End-NICs.
 * NSGs verweigern den Datenverkehr aus dem Internet.
 * Die Firewall verwirft/ asymmetrischen Datenverkehr.
 
@@ -365,50 +375,50 @@ Ein interessanter Aspekt in Bezug auf die Netzwerksicherheitsgruppe in diesem Be
 #### <a name="firewall-rules"></a>Firewallregeln
 In der Firewall sollten Weiterleitungsregeln erstellt werden. Da die Firewall sämtlichen eingehenden und ausgehenden Datenverkehr sowie den Datenverkehr innerhalb des virtuellen Netzwerks blockiert oder weiterleitet, müssen zahlreiche Firewallregeln festgelegt werden. Darüber hinaus wird jeglicher eingehender Datenverkehr über die öffentliche IP-Adresse des Sicherheitsdiensts geleitet (über unterschiedliche Ports) und muss von der Firewall verarbeitet werden. Eine bewährte Methode besteht darin, die logischen Datenflüsse in Diagrammen abzubilden, bevor Subnetze und Firewallregeln eingerichtet werden, um spätere Überarbeitungen zu vermeiden. Die folgende Abbildung zeigt eine logische Ansicht der Firewallregeln für dieses Beispiel:
 
-![Logische Ansicht der Firewallregeln][10]
+![10]
 
 > [!NOTE]
-> Je nach verwendetem virtuellem Netzwerkgerät variieren die Verwaltungsports. In diesem Beispiel wird auf eine Barracuda NextGen-Firewall verwiesen, die die Ports 22, 801 und 807 verwendet. Informationen dazu, über welche Ports das verwendete Gerät genau verwaltet wird, finden Sie in der Dokumentation des Geräteanbieters.
+> Je nach verwendetem virtuellen Netzwerkgerät variieren die Verwaltungsports. In diesem Beispiel wird auf eine Barracuda NextGen-Firewall verwiesen, die die Ports 22, 801 und 807 verwendet. Informationen dazu, über welche Ports das verwendete Gerät genau verwaltet wird, finden Sie in der Dokumentation des Geräteanbieters.
 >
 >
 
 #### <a name="firewall-rules-description"></a>Beschreibung der Firewallregeln
-Im obigen logischen Diagramm wird das Sicherheitssubnetz nicht dargestellt, da die Firewall die einzige Ressource in diesem Subnetz ist. Dieses Diagramm zeigt die Firewallregeln und die Art und Weise, wie sie Datenverkehrsflüsse logisch zulassen oder ablehnen. Das Diagramm zeigt nicht den tatsächlichen Weiterleitungspfad. Die für den RDP-Datenverkehr ausgewählten externen Ports liegen in einem höheren Bereich (8014–8026) und wurden zur Anpassung an die letzten beiden Oktette der lokalen IP-Adresse ausgewählt, um die Lesbarkeit zu vereinfachen (die lokale Serveradresse 10.0.1.4 ist beispielsweise Port 8014 zugeordnet). Es können jedoch auch Ports mit einer höheren Nummer ausgewählt werden, wenn sie keine Konflikte verursachen.
+Im vorherigen logischen Diagramm wird das Sicherheitssubnetz nicht dargestellt, da die Firewall die einzige Ressource in diesem Subnetz ist. Das Diagramm zeigt die Firewallregeln und die Art und Weise, wie sie Datenverkehrsflüsse logisch zulassen oder ablehnen. Das Diagramm zeigt nicht den tatsächlichen Weiterleitungspfad. Die für den RDP-Datenverkehr ausgewählten externen Ports liegen in einem höheren Bereich (8014 – 8026) und wurden für eine gewisse Abstimmung auf die letzten beiden Oktette der lokalen IP-Adresse ausgewählt, um die Lesbarkeit zu vereinfachen (die lokale Serveradresse 10.0.1.4 ist beispielsweise Port 8014 zugeordnet). Es können jedoch auch Ports mit einer höheren Nummer ausgewählt werden, wenn sie keine Konflikte verursachen.
 
 Für dieses Beispiel benötigen wir sieben verschiedene Arten von Regeln:
 
 * Externe Regeln (für eingehenden Datenverkehr):
   1. Firewallverwaltungsregel: Diese Regel zur Anwendungsumleitung ermöglicht die Weiterleitung von Datenverkehr an die Verwaltungsports des virtuellen Netzwerkgeräts.
-  2. RDP-Regeln (für jeden Windows-Server): Diese vier Regeln (eine für jeden Server) ermöglichen die Verwaltung der einzelnen Server über RDP. Diese können je nach Funktionsumfang des verwendeten virtuellen Netzwerkgeräts in eine Regel gebündelt werden.
+  2. RDP-Regeln (für jeden Windows-Server): Diese vier Regeln (eine für jeden Server) ermöglichen die Verwaltung der einzelnen Server über RDP. Die vier RDP-Regeln können je nach Funktionsumfang des verwendeten virtuellen Netzwerkgeräts in einer Regel zusammengefasst werden.
   3. Regeln für den Anwendungsdatenverkehr: Hierfür gibt es zwei Regeln, eine für den Webdatenverkehr im Front-End, eine für den Datenverkehr im Back-End (z. B. vom Webserver zur Datenebene). Die Konfiguration dieser Regeln richtet sich nach der Netzwerkarchitektur (der Platzierung Ihrer Server) und dem Datenverkehrsfluss (Richtung des Datenverkehrs und verwendete Ports).
-     * Mit der ersten Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit und Verwaltung sorgen, ermöglichen Anwendungsregeln es Benutzern oder Diensten, auf die Anwendung(en) zuzugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet eine einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver, um. Die umgeleitete Datenverkehrssitzung wird per NAT an den internen Server übersetzt.
+     * Mit der ersten Regel gelangt der tatsächliche Anwendungsdatenverkehr zum Anwendungsserver. Während die anderen Regeln für Sicherheit und Verwaltung sorgen, können externe Benutzer oder Dienste mit Regeln für den Anwendungsdatenverkehr auf die Anwendungen zugreifen. In diesem Beispiel befindet sich ein einziger Webserver an Port 80. Daher leitet eine einzige Firewallanwendungsregel den eingehenden Datenverkehr an die externe IP-Adresse, also die interne IP-Adresse der Webserver, um. Die umgeleitete Datenverkehrssitzung wird per NAT an den internen Server übersetzt.
      * Bei der zweiten Regel handelt es sich um die Back-End-Regel, dank derer der Webserver über jeden Port mit dem Server AppVM01 (nicht jedoch mit dem Server „AppVM02“) kommunizieren kann.
 * Interne Regeln (für den Datenverkehr innerhalb des virtuellen Netzwerks)
   1. Regel für ausgehenden Datenverkehr zum Internet: Mit dieser Regel kann Datenverkehr aus allen Netzwerken an die ausgewählten Netzwerke weitergeleitet werden. Diese Regel ist üblicherweise standardmäßig in der Firewall vorhanden, jedoch deaktiviert. Diese Regel sollte für dieses Beispiel aktiviert werden.
   2. DNS-Regel: Mit dieser Regel kann nur DNS-Datenverkehr (Port 53) an den DNS-Server weitergeleitet werden. Für diese Umgebung wird der meiste Datenverkehr vom Front-End an das Back-End blockiert. Diese Regel lässt insbesondere DNS aus allen lokalen Subnetzen zu.
   3. Subnetz-zu-Subnetz-Regel: Mit dieser Regel kann jeder Server im Back-End-Subnetz eine Verbindung mit jedem Server im Front-End-Subnetz herstellen (nicht jedoch umgekehrt).
 * Ausfallsicherheitsregel (für Datenverkehr, für den keine der obigen Regeln gilt):
-  1. Regel zum Ablehnen jeglichen Datenverkehrs: Dies sollte (hinsichtlich der Priorität) die letzte Regel sein. Sollte ein Datenverkehrsfluss keiner der vorherigen Regeln entsprechen, wird er durch diese Regel verworfen. Dies ist eine Standardregel, die normalerweise aktiviert ist. Im Allgemeinen sind keine Änderungen erforderlich.
+  1. Regel zum Ablehnen jeglichen Datenverkehrs: Diese Ablehnungsregel sollte (hinsichtlich der Priorität) die letzte Regel sein. Sollte ein Datenverkehrsfluss keiner der vorherigen Regeln entsprechen, wird er durch diese Regel verworfen. Diese Regel ist eine Standardregel, die üblicherweise implementiert und aktiviert ist. Normalerweise sind keine Änderungen an dieser Regel erforderlich.
 
 > [!TIP]
 > In der zweiten Regel für den Anwendungsdatenverkehr ist zur Vereinfachung dieses Beispiels ein beliebiger Port zulässig. In einem realen Szenario sollten jedoch besonders spezifische Port- und Adressbereiche verwendet werden, um die Angriffsfläche dieser Regel zu reduzieren.
 >
 >
 
-Nachdem alle oben genannten Regeln erstellt wurden, ist es wichtig, die Priorität jeder einzelnen Regel zu prüfen, um sicherzustellen, dass der Datenverkehr wie gewünscht zugelassen oder abgelehnt wird. In diesem Beispiel wurden die Regeln nach Priorität geordnet.
+Nachdem alle zuvor genannten Regeln erstellt wurden, ist es wichtig, die Priorität jeder einzelnen Regel zu prüfen, um sicherzustellen, dass der Datenverkehr wie gewünscht zugelassen oder abgelehnt wird. In diesem Beispiel wurden die Regeln nach Priorität geordnet.
 
 #### <a name="conclusion"></a>Zusammenfassung
-Dies ist eine komplexere, aber vollständigere Möglichkeit, das Netzwerk zu schützen und zu isolieren, als in den vorherigen Beispiele gezeigt wurde. (In Beispiel 2 wird nur die Anwendung geschützt, und in Beispiel 1 werden nur Subnetze isoliert.) Es werden Netzwerksicherheitsrichtlinien für alle Server im Netzwerk durchgesetzt. Je nach verwendeten Geräten kann außerdem der gesamte Datenverkehr überwacht werden, um vollständigen Einblick zu erhalten. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example3]. In diesen Anweisungen wird Folgendes behandelt:
+Dieses Beispiel ist im Vergleich mit den vorherigen Beispielen eine komplexere, aber vollständige Möglichkeit, das Netzwerk zu schützen und zu isolieren. (In Beispiel 2 wird nur die Anwendung geschützt, und in Beispiel 1 werden nur Subnetze isoliert.) Dieser Entwurf ermöglicht eine Überwachung des Datenverkehrs in beide Richtungen, nicht lediglich des eingehenden Anwendungsservers. Es werden Netzwerksicherheitsrichtlinien für alle Server im Netzwerk durchgesetzt. Je nach verwendeten Geräten kann außerdem der gesamte Datenverkehr überwacht werden, um vollständigen Einblick zu erhalten. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example3]. In diesen Anweisungen wird Folgendes behandelt:
 
-* Erstellen dieses Beispiel-Umkreisnetzwerks mithilfe von PowerShell-Skripts.
+* Erstellen dieses Beispiel-Umkreisnetzwerks mithilfe von klassischen PowerShell-Skripts.
 * Erstellen dieses Beispiels mit einer Azure Resource Manager-Vorlage.
 * Ausführliche Beschreibungen für jede benutzerdefinierte Route, jeden NSG-Befehl und jede Firewallregel
 * Ausführliche Szenarien zum Datenverkehrsfluss, die zeigen, wie der Datenverkehr auf jeder Stufe zugelassen oder abgelehnt wird.
 
-### <a name="example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-virtual-private-network"></a>Beispiel 4: Hinzufügen einer Hybridverbindung mit einem Standort-zu-Standort-VPN über ein virtuelles Gerät
+### <a name="example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn"></a>Beispiel 4: Hinzufügen einer Hybridverbindung mit einem Site-to-Site-VPN über ein virtuelles Gerät
 [Zurück zum Schnelleinstieg](#fast-start) | Detaillierte Einrichtungsanweisungen zu diesem Beispiel stehen in Kürze zur Verfügung.
 
-![Umkreisnetzwerk mit einem über ein virtuelles Netzwerkgerät verbundenen Hybridnetzwerk][11]
+[![11]][11]
 
 #### <a name="environment-description"></a>Beschreibung der Umgebung
 Ein Hybridnetzwerk unter Verwendung eines virtuellen Netzwerkgeräts kann einem beliebigen der Umkreisnetzwerk-Typen hinzugefügt werden, die in den Beispielen 1, 2 oder 3 beschrieben werden.
@@ -416,7 +426,7 @@ Ein Hybridnetzwerk unter Verwendung eines virtuellen Netzwerkgeräts kann einem 
 Wie in der obigen Abbildung dargestellt, wird eine VPN-Verbindung über das Internet (Standort-zu-Standort) dazu verwendet, ein lokales Netzwerk über ein virtuelles Netzwerkgerät mit einem virtuellen Azure-Netzwerk zu verbinden.
 
 > [!NOTE]
-> Wenn Sie ExpressRoute mit aktivierter Azure Public Peering-Option verwenden, sollte eine statische Route erstellt werden. Diese sollte den Datenverkehr über die Unternehmensgrenze zum Internet an die VPN-IP-Adresse des virtuellen Netzwerkgeräts routen und nicht über das ExpressRoute-WAN. Durch die Netzwerkadressübersetzung in der Azure Public Peering-Option von ExpressRoute kann die VPN-Verbindung unterbrochen werden.
+> Wenn Sie ExpressRoute mit aktivierter Azure Public Peering-Option verwenden, sollte eine statische Route erstellt werden. Diese statische Route sollte den Datenverkehr über die Unternehmensgrenze zum Internet an die VPN-IP-Adresse des virtuellen Netzwerkgeräts leiten und nicht über die ExpressRoute-Verbindung. Durch die Netzwerkadressübersetzung in der Azure Public Peering-Option von ExpressRoute kann die VPN-Verbindung unterbrochen werden.
 >
 >
 
@@ -426,13 +436,13 @@ Der Fluss des Datenverkehrs muss sorgfältig geplant werden, da er durch dieses 
 
 Eine Umgebung, die auf Beispiel 3 basiert und der anschließend eine Standort-zu-Standort-VPN-Hybridnetzwerkverbindung hinzugefügt wird, führt zu dem folgenden Entwurf:
 
-![Umkreisnetzwerk mit einem über ein Standort-zu-Standort-VPN verbundenen virtuellen Netzwerkgerät][12]
+[![12]][12]
 
 Der lokale Router – oder ein beliebiges anderes Netzwerkgerät, das mit Ihrem virtuellen Netzwerkgerät für das VPN kompatibel ist – fungiert als VPN-Client. Dieses physische Gerät ist für die Initialisierung und die Aufrechterhaltung der VPN-Verbindung mit Ihrem virtuellen Netzwerkgerät verantwortlich.
 
 Aus logischer Sicht des virtuellen Netzwerkgeräts sind die Netzwerke vier separate „Sicherheitszonen“, wobei die Regeln auf dem virtuellen Netzwerkgerät festlegen, wie der Datenverkehr zwischen diesen Zonen abgewickelt wird:
 
-![Logisches Netzwerk aus Sicht des virtuellen Netzwerkgeräts][13]
+![13]
 
 #### <a name="conclusion"></a>Zusammenfassung
 Durch das Hinzufügen einer Standort-zu-Standort-VPN-Hybridnetzwerkverbindung zu einem virtuellen Azure-Netzwerk kann das lokale Netzwerk auf sichere Weise auf Azure erweitert werden. Durch die Verwendung einer VPN-Verbindung wird Ihr Datenverkehr verschlüsselt und über das Internet geroutet. Das virtuelle Netzwerkgerät in diesem Beispiel bietet eine zentrale Möglichkeit zum Durchsetzen und Verwalten der Sicherheitsrichtlinie. Weitere Informationen finden Sie (demnächst) in den detaillierten Einrichtungsanweisungen. In diesen Anweisungen wird Folgendes behandelt:
@@ -441,10 +451,10 @@ Durch das Hinzufügen einer Standort-zu-Standort-VPN-Hybridnetzwerkverbindung zu
 * Erstellen dieses Beispiels mit einer Azure Resource Manager-Vorlage.
 * Detaillierte Szenarien zum Datenfluss in diesem Entwurf.
 
-### <a name="example-5-add-a-hybrid-connection-with-a-site-to-site-azure-gateway-vpn"></a>Beispiel 5: Hinzufügen einer Hybridverbindung mit einem Standort-zu-Standort-VPN über ein Azure-Gateway
+### <a name="example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway"></a>Beispiel 5: Hinzufügen einer Hybridverbindung mit einem Site-to-Site-, Azure-VPN-Gateway
 [Zurück zum Schnelleinstieg](#fast-start) | Detaillierte Einrichtungsanweisungen zu diesem Beispiel stehen in Kürze zur Verfügung.
 
-![Umkreisnetzwerk mit einem über ein Gateway verbundenen Hybridnetzwerk][14]
+[![14]][14]
 
 #### <a name="environment-description"></a>Beschreibung der Umgebung
 Eine Hybridnetzwerkverbindung über ein Azure VPN Gateway kann einem beliebigen der Umkreisnetzwerk-Typen hinzugefügt werden, die in den Beispielen 1 und 2 beschrieben werden.
@@ -452,20 +462,20 @@ Eine Hybridnetzwerkverbindung über ein Azure VPN Gateway kann einem beliebigen 
 Wie in der Abbildung oben dargestellt, wird eine VPN-Verbindung über das Internet (Standort-zu-Standort) dazu verwendet, ein lokales Netzwerk über ein Azure VPN Gateway mit einem virtuellen Azure-Netzwerk zu verbinden.
 
 > [!NOTE]
-> Wenn Sie ExpressRoute mit aktivierter Azure Public Peering-Option verwenden, sollte eine statische Route erstellt werden. Diese sollte den Datenverkehr über die Unternehmensgrenze zum Internet an die VPN-IP-Adresse des virtuellen Netzwerkgeräts routen und nicht über das ExpressRoute-WAN. Durch die Netzwerkadressübersetzung in der Azure Public Peering-Option von ExpressRoute kann die VPN-Verbindung unterbrochen werden.
+> Wenn Sie ExpressRoute mit aktivierter Azure Public Peering-Option verwenden, sollte eine statische Route erstellt werden. Diese statische Route sollte den Datenverkehr über die Unternehmensgrenze zum Internet an die VPN-IP-Adresse des virtuellen Netzwerkgeräts leiten und nicht über das ExpressRoute-WAN. Durch die Netzwerkadressübersetzung in der Azure Public Peering-Option von ExpressRoute kann die VPN-Verbindung unterbrochen werden.
 >
 >
 
-Die folgende Abbildung zeigt die beiden Netzwerkrandbereiche in dieser Option. Im ersten Randbereich werden Datenverkehrsflüsse für Netzwerke innerhalb von Azure und zwischen Azure und dem Internet über das virtuelle Netzwerkgerät und NSGs gesteuert. Der zweite Randbereich ist das Azure VPN Gateway, ein vollständig separater und isolierter Netzwerkrandbereich zwischen dem lokalen und dem Azure-Netzwerk.
+Die folgende Abbildung zeigt die beiden Netzwerkrandbereiche in diesem Beispiel. Im ersten Randbereich werden Datenverkehrsflüsse für Netzwerke innerhalb von Azure und zwischen Azure und dem Internet über das virtuelle Netzwerkgerät und NSGs gesteuert. Der zweite Randbereich ist das Azure-VPN-Gateway: ein separater und isolierter Netzwerkrandbereich zwischen dem lokalen und dem Azure-Netzwerk.
 
 Der Fluss des Datenverkehrs muss sorgfältig geplant werden, da er durch dieses Entwurfsmuster je nach Anwendungsfall optimiert oder beeinträchtigt werden kann.
 
 Eine Umgebung, die auf Beispiel 1 basiert und der anschließend eine Standort-zu-Standort-VPN-Hybridnetzwerkverbindung hinzugefügt wird, führt zu dem folgenden Entwurf:
 
-![Umkreisnetzwerk mit einem über eine ExpressRoute-Verbindung verbundenen Gateway][15]
+[![15]][15]
 
 #### <a name="conclusion"></a>Zusammenfassung
-Durch das Hinzufügen einer Standort-zu-Standort-VPN-Hybridnetzwerkverbindung zu einem virtuellen Azure-Netzwerk kann das lokale Netzwerk auf sichere Weise auf Azure erweitert werden. Durch Verwendung des nativen Azure VPN Gateways wird Ihr Datenverkehr mit IPSec verschlüsselt und über das Internet geroutet. Durch Einsatz des Azure VPN Gateways können außerdem die Kosten gesenkt werden (da im Gegensatz zu virtuellen Netzwerkgeräten von Drittanbietern keine zusätzlichen Lizenzierungskosten anfallen). Besonders wirtschaftlich ist dies in Beispiel 1, in dem kein virtuelles Netzwerkgerät verwendet wird. Weitere Informationen finden Sie (demnächst) in den detaillierten Einrichtungsanweisungen. In diesen Anweisungen wird Folgendes behandelt:
+Durch das Hinzufügen einer Standort-zu-Standort-VPN-Hybridnetzwerkverbindung zu einem virtuellen Azure-Netzwerk kann das lokale Netzwerk auf sichere Weise auf Azure erweitert werden. Durch Verwendung des nativen Azure VPN Gateways wird Ihr Datenverkehr mit IPSec verschlüsselt und über das Internet geroutet. Durch Einsatz des Azure-VPN-Gateways können außerdem die Kosten gesenkt werden (da im Gegensatz zu virtuellen Netzwerkgeräten von Drittanbietern keine zusätzlichen Lizenzierungskosten anfallen). Besonders wirtschaftlich ist diese Option in Beispiel 1, in dem kein virtuelles Netzwerkgerät verwendet wird. Weitere Informationen finden Sie (demnächst) in den detaillierten Einrichtungsanweisungen. In diesen Anweisungen wird Folgendes behandelt:
 
 * Erstellen dieses Beispiel-Umkreisnetzwerks mithilfe von PowerShell-Skripts.
 * Erstellen dieses Beispiels mit einer Azure Resource Manager-Vorlage.
@@ -474,33 +484,25 @@ Durch das Hinzufügen einer Standort-zu-Standort-VPN-Hybridnetzwerkverbindung zu
 ### <a name="example-6-add-a-hybrid-connection-with-expressroute"></a>Beispiel 6: Hinzufügen einer Hybridverbindung mit ExpressRoute
 [Zurück zum Schnelleinstieg](#fast-start) | Detaillierte Einrichtungsanweisungen zu diesem Beispiel stehen in Kürze zur Verfügung.
 
-![Umkreisnetzwerk mit einem über ein Gateway verbundenen Hybridnetzwerk][16]
+[![16]][16]
 
 #### <a name="environment-description"></a>Beschreibung der Umgebung
 Ein Hybridnetzwerk mit einer privaten ExpressRoute-Peeringverbindung kann einem beliebigen der Umkreisnetzwerk-Typen hinzugefügt werden, die in Beispiel 1 oder 2 beschrieben werden.
 
 Wie in der Abbildung oben gezeigt wird, bietet das private ExpressRoute-Peering eine direkte Verbindung zwischen Ihrem lokalen Netzwerk und dem virtuellen Azure-Netzwerk. Der Datenverkehr passiert nur das Dienstanbieternetzwerk und das Microsoft Azure-Netzwerk, ohne jeglichen Berührungspunkt mit dem Internet.
 
-> [!NOTE]
-> Aufgrund der Komplexität des dynamischen Routings im virtuellen Azure-Gateway gelten für UDR mit ExpressRoute bestimmte Einschränkungen. Dies sind:
->
-> * UDR darf nicht auf das Gatewaysubnetz angewendet werden, an das das mit ExpressRoute verbundene virtuelle Azure-Gateway angebunden ist.
-> * Das mit ExpressRoute verbundene virtuelle Azure-Gateway kann nicht als NextHop-Gerät für andere UDR-gebundene Subnetze fungieren.
->
-> <br />
->
 > [!TIP]
-> Durch den Einsatz von ExpressRoute wird der Netzwerkdatenverkehr des Unternehmens vollständig vom Internet getrennt. Diese Implementierung bietet höhere Sicherheit, eine erheblich gesteigerte Leistung und ermöglicht das Bereitstellen von SLAs durch Ihren ExpressRoute-Anbieter. Das Azure-Gateway kann mit ExpressRoute eine Leistung von bis zu 2 GBit/s erzielen, während das Azure-Gateway mit Standort-zu-Standort-VPNs einen maximalen Durchsatz von 200 MBit/s erreicht.
+> Mithilfe von ExpressRoute gelangt der Netzwerkdatenverkehr des Unternehmens nicht in das Internet. Diese Implementierung bietet höhere Sicherheit, eine erheblich gesteigerte Leistung und ermöglicht das Bereitstellen von SLAs durch Ihren ExpressRoute-Anbieter. Das Azure-Gateway kann mit ExpressRoute eine Leistung von bis zu 10 GBit/s erzielen, während das Azure-Gateway mit Site-to-Site-VPNs einen maximalen Durchsatz von 200 MBit/s erreicht.
 >
 >
 
-Wie im folgenden Diagramm gezeigt, weist die Umgebung mit dieser Option zwei Netzwerkrandbereiche auf. Das virtuelle Netzwerkgerät und NSGs steuern den Fluss des Datenverkehrs für interne Azure-Netzwerke und zwischen Azure und dem Internet. Das Gateway ist hingegen eine vollständig getrennte und isolierte Netzwerkgrenze zwischen dem lokalen Netzwerk und Azure.
+Wie im folgenden Diagramm gezeigt, weist die Umgebung mit dieser Option zwei Netzwerkrandbereiche auf. Das virtuelle Netzwerkgerät und NSGs steuern den Fluss des Datenverkehrs für interne Azure-Netzwerke und zwischen Azure und dem Internet. Das Gateway ist hingegen eine getrennte und isolierte Netzwerkgrenze zwischen dem lokalen Netzwerk und Azure.
 
 Der Fluss des Datenverkehrs muss sorgfältig geplant werden, da er durch dieses Entwurfsmuster je nach Anwendungsfall optimiert oder beeinträchtigt werden kann.
 
 Eine Umgebung, die auf Beispiel 1 basiert und der anschließend eine ExpressRoute-Hybridnetzwerkverbindung hinzugefügt wird, führt zu dem folgenden Entwurf:
 
-![Umkreisnetzwerk mit einem über eine ExpressRoute-Verbindung verbundenen Gateway][17]
+[![17]][17]
 
 #### <a name="conclusion"></a>Zusammenfassung
 Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kann das lokale Netzwerk auf sichere Weise auf Azure erweitert werden und bietet gleichzeitig niedrige Latenz und hohe Leistung. Durch Einsatz des nativen Azure-Gateways, wie in diesem Beispiel, können außerdem die Kosten gesenkt werden (da im Gegensatz zu virtuellen Netzwerkgeräten von Drittanbietern keine zusätzlichen Lizenzierungskosten anfallen). Weitere Informationen finden Sie (demnächst) in den detaillierten Einrichtungsanweisungen. In diesen Anweisungen wird Folgendes behandelt:
@@ -512,36 +514,36 @@ Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kan
 ## <a name="references"></a>Referenzen
 ### <a name="helpful-websites-and-documentation"></a>Hilfreiche Websites und Dokumentation
 * Implementierung mit Azure Resource Manager:
-* Zugriff auf Azure mit PowerShell: [https://azure.microsoft.com/documentation/articles/powershell-install-configure/](powershell-install-configure.md)
-* Dokumentation zu virtuellen Netzwerken: [https://azure.microsoft.com/documentation/services/virtual-network/](https://azure.microsoft.com/documentation/services/virtual-network/)
-* Dokumentation zu Netzwerksicherheitsgruppen: [https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/](virtual-network/virtual-networks-nsg.md)
-* Dokumentation zum benutzerdefinierten Routing (UDR): [https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/](virtual-network/virtual-networks-udr-overview.md)
-* Virtuelle Azure-Gateways: [https://azure.microsoft.com/documentation/services/vpn-gateway/](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-* Site-to-Site-VPNs: [https://azure.microsoft.com/documentation/articles/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-* ExpressRoute-Dokumentation (lesen Sie unbedingt die Abschnitte „Erste Schritte“ und „Gewusst wie“): [https://azure.microsoft.com/documentation/services/expressroute/](https://azure.microsoft.com/documentation/services/expressroute/)
+* Zugreifen auf Azure mit PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azureps-cmdlets-docs)
+* Dokumentation zu virtuellen Netzwerken: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
+* Dokumentation zu Netzwerksicherheitsgruppen: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
+* Dokumentation zum benutzerdefinierten Routing (UDR): [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
+* Virtuelle Azure-Gateways: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
+* Site-to-Site-VPNs: [https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* ExpressRoute-Dokumentation (lesen Sie unbedingt die Abschnitte „Erste Schritte“ und „Anleitung“): [https://docs.microsoft.com/azure/expressroute/](https://docs.microsoft.com/azure/expressroute/)
 
 <!--Image References-->
 [0]: ./media/best-practices-network-security/flowchart.png "Flussdiagramm zu den Sicherheitsoptionen"
-[1]: ./media/best-practices-network-security/compliancebadges.png "Azure-Compliancezertifizierungen"
 [2]: ./media/best-practices-network-security/azuresecurityfeatures.png "Sicherheitsfeatures von Azure"
 [3]: ./media/best-practices-network-security/dmzcorporate.png "Eine DMZ in einem Unternehmensnetzwerk"
 [4]: ./media/best-practices-network-security/azuresecurityarchitecture.png "Sicherheitsarchitektur von Azure"
 [5]: ./media/best-practices-network-security/dmzazure.png "Ein DMZ in einem virtuellen Azure-Netzwerk"
 [6]: ./media/best-practices-network-security/dmzhybrid.png "Hybridnetzwerk mit drei Sicherheitsgrenzen"
 [7]: ./media/best-practices-network-security/example1design.png "Eingehende DMZ mit NSG"
-[8]: ./media/best-practices-network-security/example2design.png "Eingehende DMZ mit NVA und NSG"
-[9]: ./media/best-practices-network-security/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, Netzwerksicherheitsgruppe und benutzerdefiniertem Routing"
+[8]: ./media/best-practices-network-security/example2design.png "Eingehende DMZ mit virtuellem Netzwerkgerät und NSG"
+[9]: ./media/best-practices-network-security/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, NSG und benutzerdefiniertem Routing"
 [10]: ./media/best-practices-network-security/example3firewalllogical.png "Logische Ansicht der Firewallregeln"
-[11]: ./media/best-practices-network-security/example4designoptions.png "DMZ mit einem über ein virtuelles Netzwerkgerät verbundenen Hybridnetzwerk"
+[11]: ./media/best-practices-network-security/example3designoptions.png "DMZ mit einem über ein virtuelles Netzwerkgerät verbundenen Hybridnetzwerk"
 [12]: ./media/best-practices-network-security/example4designs2s.png "DMZ mit einem über ein Site-to-Site-VPN verbundenen virtuellen Netzwerkgerät"
 [13]: ./media/best-practices-network-security/example4networklogical.png "Logisches Netzwerk aus Sicht des virtuellen Netzwerkgeräts"
 [14]: ./media/best-practices-network-security/example5designoptions.png "DMZ mit einem über ein Site-to-Site-Hybridnetzwerk verbundenen Azure-Gateway"
 [15]: ./media/best-practices-network-security/example5designs2s.png "DMZ mit Azure-Gateway und Verwendung eines Site-to-Site-VPN"
-[16]: ./media/best-practices-network-security/example6designoptions.png "DMZ mit einem über ExpressRoute verbundenen Azure-Gateway"
+[16]: ./media/best-practices-network-security/example6designoptions.png "DMZ mit einem über ein ExpressRoute-Hybridnetzwerk verbundenen Azure-Gateway"
 [17]: ./media/best-practices-network-security/example6designexpressroute.png "DMZ mit Azure-Gateway und Verwendung einer ExpressRoute-Verbindung"
 
 <!--Link References-->
-[Example1]: ./virtual-network/virtual-networks-dmz-nsg-asm.md
+[TrustCenter]: https://azure.microsoft.com/support/trust-center/compliance/
+[Example1]: ./virtual-network/virtual-networks-dmz-nsg.md
 [Example2]: ./virtual-network/virtual-networks-dmz-nsg-fw-asm.md
 [Example3]: ./virtual-network/virtual-networks-dmz-nsg-fw-udr-asm.md
 [Example4]: ./virtual-network/virtual-networks-hybrid-s2s-nva-asm.md
@@ -552,6 +554,6 @@ Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kan
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

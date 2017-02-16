@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 353f09a8a6fa3798d764d41618a8f0b3ba83e3d0
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: 777dc11be139b20363e2060776ac0227883591ff
 
 
 ---
@@ -233,7 +233,7 @@ In späteren Phasen des Cloud Team Data Science-Prozesses verwenden Sie [Azure M
 3. Geben Sie den SQL-Benutzernamen im Textfeld **Server user account name** ein.
 4. Geben Sie das Kennwort für den SQL-Benutzer im Textfeld **Server user account password** ein.
    
-   ![Azure ML – Import Data][13]
+   ![Azure Machine Learning: Importieren von Daten][13]
 
 ## <a name="a-nameshutdownashutdown-and-deallocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
 Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht für ungenutzte virtuelle Computer bezahlen müssen, sollten Sie diese in den Status **Angehalten (Freigegeben)** versetzen.
@@ -277,6 +277,6 @@ Die nächsten Schritte im Data Science-Prozess sind unter [Team Data Science-Pro
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,13 +1,13 @@
 ---
-title: Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mit PowerShell im Ressourcen-Manager | Microsoft Docs
-description: Erfahren Sie, wie Sie VMs mit einer statischen öffentlichen IP-Adresse mit PowerShell im Ressourcen-Manager bereitstellen.
+title: "Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP mithilfe von PowerShell | Microsoft Docs"
+description: "Erfahren Sie, wie Sie einen virtuellen Computer mit einer statischen öffentlichen IP-Adresse über Azure Resource Manager mithilfe von PowerShell erstellen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: ''
+editor: 
 tags: azure-resource-manager
-
+ms.assetid: ad975ab9-d69f-45c1-9e45-0d3f0f51e87e
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,124 +15,170 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+translationtype: Human Translation
+ms.sourcegitcommit: 536cb4cd7975283dd61c8c4f2fe1a707a735504e
+ms.openlocfilehash: 989236033c263bae3cc54260e1b2e6c31c30af03
+
 
 ---
-# Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mit PowerShell
-[!INCLUDE [virtual-network-deploy-static-pip-arm-selectors-include.md](../../includes/virtual-network-deploy-static-pip-arm-selectors-include.md)]
+# <a name="create-a-vm-with-a-static-public-ip-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe von PowerShell
+
+> [!div class="op_single_selector"]
+- [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
+- [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
+- [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
+- [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
+- [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]
-
-klassisches Bereitstellungsmodell.
+> [!NOTE]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des klassischen Bereitstellungsmodells empfohlen wird.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## Schritt 1: Starten des Skripts
-Sie können das verwendete PowerShell-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-ps.ps1) herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
+## <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
+Sie können das verwendete PowerShell-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-ps.ps1)herunterladen. Gehen Sie folgendermaßen vor, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
-1. Ändern Sie die Werte der unten angegebenen Variablen basierend auf den Werten, die Sie für die Bereitstellung verwenden möchten. Die Werte unten gelten für das Szenario in diesem Dokument.
-   
-        # Set variables resource group
-        $rgName                = "IaaSStory"
-        $location              = "West US"
-   
-        # Set variables for VNet
-        $vnetName              = "WTestVNet"
-        $vnetPrefix            = "192.168.0.0/16"
-        $subnetName            = "FrontEnd"
-        $subnetPrefix          = "192.168.1.0/24"
-   
-        # Set variables for storage
-        $stdStorageAccountName = "iaasstorystorage"
-   
-        # Set variables for VM
-        $vmSize                = "Standard_A1"
-        $diskSize              = 127
-        $publisher             = "MicrosoftWindowsServer"
-        $offer                 = "WindowsServer"
-        $sku                   = "2012-R2-Datacenter"
-        $version               = "latest"
-        $vmName                = "WEB1"
-        $osDiskName            = "osdisk"
-        $nicName               = "NICWEB1"
-        $privateIPAddress      = "192.168.1.101"
-        $pipName               = "PIPWEB1"
-        $dnsName               = "iaasstoryws1"
+Ändern Sie die Werte der unten angegebenen Variablen basierend auf den Werten, die Sie für die Bereitstellung verwenden möchten. Die folgenden Werte gelten für das in diesem Artikel verwendete Szenario:
 
-## Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre VM
+```powershell
+# Set variables resource group
+$rgName                = "IaaSStory"
+$location              = "West US"
+
+# Set variables for VNet
+$vnetName              = "WTestVNet"
+$vnetPrefix            = "192.168.0.0/16"
+$subnetName            = "FrontEnd"
+$subnetPrefix          = "192.168.1.0/24"
+
+# Set variables for storage
+$stdStorageAccountName = "iaasstorystorage"
+
+# Set variables for VM
+$vmSize                = "Standard_A1"
+$diskSize              = 127
+$publisher             = "MicrosoftWindowsServer"
+$offer                 = "WindowsServer"
+$sku                   = "2012-R2-Datacenter"
+$version               = "latest"
+$vmName                = "WEB1"
+$osDiskName            = "osdisk"
+$nicName               = "NICWEB1"
+$privateIPAddress      = "192.168.1.101"
+$pipName               = "PIPWEB1"
+$dnsName               = "iaasstoryws1"
+```
+
+## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre VM
 Vor dem Erstellen einer virtuellen Maschine benötigen Sie eine Ressourcengruppe, ein VNET, eine öffentliche IP-Adresse und eine Netzwerkschnittstelle für die Verwendung durch die VM.
 
 1. Erstellen Sie eine neue Ressourcengruppe.
-   
-        New-AzureRmResourceGroup -Name $rgName -Location $location
-2. Erstellen Sie das VNET und das Subnetz.
-   
-        $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName `
-            -AddressPrefix $vnetPrefix -Location $location   
-   
-        Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName `
-            -VirtualNetwork $vnet -AddressPrefix $subnetPrefix
-   
-        Set-AzureRmVirtualNetwork -VirtualNetwork $vnet 
-3. Erstellen Sie die öffentliche IP-Ressource.
-   
-        $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName `
-            -AllocationMethod Static -DomainNameLabel $dnsName -Location $location
-4. Erstellen Sie die Netzwerkschnittstelle (NIC) für die VM im oben erstellten Subnetz mit der öffentlichen IP-Adresse. Beachten Sie das erste Cmdlet zum Abrufen des VNET aus Azure. Dies ist erforderlich, da **Set-AzureRmVirtualNetwork** ausgeführt wurde, um das vorhandene VNET zu ändern.
-   
-        $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
-        $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
-            -Subnet $subnet -Location $location -PrivateIpAddress $privateIPAddress `
-            -PublicIpAddress $pip
-5. Erstellen Sie ein Speicherkonto zum Hosten des VM-Betriebssystemlaufwerks.
-   
-        $stdStorageAccount = New-AzureRmStorageAccount -Name $stdStorageAccountName `
-            -ResourceGroupName $rgName -Type Standard_LRS -Location $location
 
-## Schritt 3: Erstellen der VM
+    ```powershell
+    New-AzureRmResourceGroup -Name $rgName -Location $location
+    ```
+
+2. Erstellen Sie das VNET und das Subnetz.
+
+    ```powershell
+    $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName `
+        -AddressPrefix $vnetPrefix -Location $location
+
+    Add-AzureRmVirtualNetworkSubnetConfig -Name $subnetName `
+        -VirtualNetwork $vnet -AddressPrefix $subnetPrefix
+
+    Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+    ```
+
+3. Erstellen Sie die öffentliche IP-Ressource. 
+
+    ```powershell
+    $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName `
+        -AllocationMethod Static -DomainNameLabel $dnsName -Location $location
+    ```
+
+4. Erstellen Sie die Netzwerkschnittstelle (NIC) für die VM im oben erstellten Subnetz mit der öffentlichen IP-Adresse. Beachten Sie das erste Cmdlet zum Abrufen des VNET aus Azure. Dies ist erforderlich, da ein `Set-AzureRmVirtualNetwork` ausgeführt wurde, um das vorhandene VNET zu ändern.
+
+    ```powershell
+    $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+    $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+    $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName `
+        -Subnet $subnet -Location $location -PrivateIpAddress $privateIPAddress `
+        -PublicIpAddress $pip
+    ```
+
+5. Erstellen Sie ein Speicherkonto zum Hosten des VM-Betriebssystemlaufwerks.
+
+    ```powershell
+    $stdStorageAccount = New-AzureRmStorageAccount -Name $stdStorageAccountName `
+    -ResourceGroupName $rgName -Type Standard_LRS -Location $location
+    ```
+
+## <a name="step-3---create-the-vm"></a>Schritt 3: Erstellen der VM
 Nachdem nun alle benötigten Ressourcen vorhanden sind, können Sie eine neue VM erstellen.
 
 1. Erstellen Sie das Konfigurationsobjekt für die VM.
-   
-        $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize 
+
+    ```powershell
+    $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
+    ```
+
 2. Beschaffen Sie die Anmeldeinformationen für das lokale Administratorkonto der VM.
-   
-        $cred = Get-Credential -Message "Type the name and password for the local administrator account."
+
+    ```powershell
+    $cred = Get-Credential -Message "Type the name and password for the local administrator account."
+    ```
+
 3. Erstellen Sie ein VM-Konfigurationsobjekt.
-   
-        $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName `
-            -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+
+    ```powershell
+    $vmConfig = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName `
+        -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+    ```
+
 4. Legen Sie das Betriebssystemimage für die VM fest.
-   
-        $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher `
-            -Offer $offer -Skus $sku -Version $version
+
+    ```powershell
+    $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher `
+        -Offer $offer -Skus $sku -Version $version
+    ```
+
 5. Konfigurieren Sie den Betriebssystemdatenträger.
-   
-        $osVhdUri = $stdStorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $osDiskName + ".vhd"
-        $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name $osDiskName -VhdUri $osVhdUri -CreateOption fromImage
+
+    ```powershell
+    $osVhdUri = $stdStorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $osDiskName + ".vhd"
+    $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name $osDiskName -VhdUri $osVhdUri -CreateOption fromImage
+    ```
+
 6. Fügen Sie die Netzwerkschnittstelle der VM hinzu.
-   
-        $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id -Primary
+
+    ```powershell
+    $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id -Primary
+    ```
+
 7. Erstellen Sie den virtuellen Computer.
-   
-        New-AzureRmVM -VM $vmConfig -ResourceGroupName $rgName -Location $location
+
+    ```powershell
+    New-AzureRmVM -VM $vmConfig -ResourceGroupName $rgName -Location $location
+    ```
+
 8. Speichern Sie die Skript-Datei.
 
-## Schritt 4: Ausführen des Skripts
-Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript vertraut gemacht haben, können Sie das Skript ausführen.
+## <a name="step-4---run-the-script"></a>Schritt 4: Ausführen des Skripts
+Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript vertraut gemacht haben, können Sie das Skript ausführen. 
 
 1. Führen Sie das obige Skript über eine PowerShell-Konsole oder PowerShell ISE aus.
-2. Nach einigen Minuten sollte die unten angegebene Ausgabe angezeigt werden.
+2. Nach einigen Minuten sollte die nachstehende Ausgabe angezeigt werden:
    
         ResourceGroupName : IaaSStory
         Location          : westus
         ProvisioningState : Succeeded
         Tags              : 
-        ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory
+        ResourceId        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory
    
         AddressSpace      : Microsoft.Azure.Commands.Network.Models.PSAddressSpace
         DhcpOptions       : Microsoft.Azure.Commands.Network.Models.PSDhcpOptions
@@ -152,12 +198,12 @@ Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript v
                             ]
         ResourceGroupName : IaaSStory
         Location          : westus
-        ResourceGuid      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        ResourceGuid      : [Id]
         Tag               : {}
         TagsTable         : 
         Name              : WTestVNet
         Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet
+        Id                : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet
    
         AddressSpace      : Microsoft.Azure.Commands.Network.Models.PSAddressSpace
         DhcpOptions       : Microsoft.Azure.Commands.Network.Models.PSDhcpOptions
@@ -174,8 +220,8 @@ Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript v
         SubnetsText       : [
                               {
                                 "Name": "FrontEnd",
-                                "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-                                "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/FrontEnd",
+                                "Etag": [Id],
+                                "Id": "/subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet/subnets/FrontEnd",
                                 "AddressPrefix": "192.168.1.0/24",
                                 "IpConfigurations": [],
                                 "ProvisioningState": "Succeeded"
@@ -183,21 +229,26 @@ Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript v
                             ]
         ResourceGroupName : IaaSStory
         Location          : westus
-        ResourceGuid      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        ResourceGuid      : [Id]
         Tag               : {}
         TagsTable         : 
         Name              : WTestVNet
-        Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet
+        Etag              : [Id]
+        Id                : /subscriptions/[Subscription Id]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/WTestVNet
    
-        TrackingOperationId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-        RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+        TrackingOperationId : [Id]
+        RequestId           : [Id]
         Status              : Succeeded
         StatusCode          : OK
         Output              : 
-        StartTime           : 1/12/2016 12:57:56 PM -08:00
-        EndTime             : 1/12/2016 12:59:13 PM -08:00
+        StartTime           : [Subscription Id]
+        EndTime             : [Subscription Id]
         Error               : 
         ErrorText           : 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Nov16_HO3-->
+
+

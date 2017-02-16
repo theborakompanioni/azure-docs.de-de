@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/06/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
+ms.sourcegitcommit: e8b484ec7eff26919d4fb3869baf9f358c2522cb
+ms.openlocfilehash: 6e5d96ff9754954eb745f14c8248609775bbf290
 
 
 ---
@@ -27,11 +27,11 @@ ms.openlocfilehash: f61d23fec6badb8dd53379d183b177e4c19e5711
 > 
 
 ## <a name="introduction"></a>Einführung
-Diese Funktion wird von Administratoren und Entwicklern verwendet, um die Lebensdauer der von Azure AD ausgegebenen Token festzulegen. Die Tokengültigkeitsdauer kann für alle Apps in einem Mandanten, für eine mehrinstanzenfähige Anwendung oder für einen bestimmten Dienstprinzipal in einem Mandanten konfiguriert werden.
+Diese Funktion wird von Administratoren und Entwicklern verwendet, um die Lebensdauer der von Azure AD ausgegebenen Token festzulegen. Die Tokengültigkeitsdauer kann für alle Apps in einer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in einer Organisation konfiguriert werden.
 
-In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für einzelne Anwendungen oder alle Anwendungen in einem Mandanten erzwungen werden.  Jede Art von Richtlinie verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
+In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für einzelne Anwendungen oder alle Anwendungen in einer Organisation erzwungen werden.  Jede Art von Richtlinie verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
 
-Eine Richtlinie kann für einen Mandanten als Standard festgelegt werden. Diese Richtlinie wird dann für jede Anwendung wirksam, die sich innerhalb dieses Mandanten befindet, solange sie nicht durch eine Richtlinie mit höherer Priorität außer Kraft gesetzt wird. Richtlinien können auch bestimmten Anwendungen zugewiesen werden. Die Reihenfolge der Priorität variiert je nach Richtlinientyp.
+Eine Richtlinie kann für eine Organisation als Standard festgelegt werden. Diese Richtlinie wird dann für jede Anwendung wirksam, die sich innerhalb dieser Organisation befindet, solange sie nicht durch eine Richtlinie mit höherer Priorität außer Kraft gesetzt wird. Richtlinien können auch bestimmten Anwendungen zugewiesen werden. Die Reihenfolge der Priorität variiert je nach Richtlinientyp.
 
 Tokengültigkeitsdauer-Richtlinien können für Aktualisierungstoken, Zugriffstoken, Sitzungstoken und ID-Token konfiguriert werden.
 
@@ -82,12 +82,12 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Max. Alter Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Bis zum Widerruf |
 
 ### <a name="priority-and-evaluation-of-policies"></a>Priorität und Auswertung von Richtlinien
-Richtlinien für die Tokengültigkeitsdauer können erstellt und bestimmten Anwendungen, Mandanten und Dienstprinzipalen zugewiesen werden. Dies bedeutet, dass mehrere Richtlinien auf eine bestimmte Anwendung angewandt werden können. Folgende Regeln bestimmen, welche Tokengültigkeitsdauer-Richtlinie wirksam wird:
+Richtlinien für die Tokengültigkeitsdauer können erstellt und bestimmten Anwendungen, Organisationen und Dienstprinzipalen zugewiesen werden. Dies bedeutet, dass mehrere Richtlinien auf eine bestimmte Anwendung angewandt werden können. Folgende Regeln bestimmen, welche Tokengültigkeitsdauer-Richtlinie wirksam wird:
 
 * Wenn eine Richtlinie explizit dem Dienstprinzipal zugewiesen ist, wird sie erzwungen. 
-* Wenn keine Richtlinie explizit dem Dienstprinzipal zugewiesen ist, wird eine Richtlinie erzwungen, die explizit dem übergeordneten-Mandanten des Dienstprinzipals zugewiesen ist. 
-* Wenn keine Richtlinie explizit dem Dienstprinzipal oder dem Mandanten zugewiesen ist, wird die Richtlinie erzwungen, die der Anwendung zugewiesen ist. 
-* Wenn dem Dienstprinzipal, Mandanten oder Anwendungsobjekt keine Richtlinie zugewiesen ist, werden die Standardwerte erzwungen (siehe obige Tabelle).
+* Wenn dem Dienstprinzipal nicht explizit eine Richtlinie zugewiesen ist, wird eine Richtlinie erzwungen, die explizit der übergeordneten Organisation des Dienstprinzipals zugewiesen ist. 
+* Wenn dem Dienstprinzipal oder der Organisation nicht explizit eine Richtlinie zugewiesen ist, wird die Richtlinie erzwungen, die der Anwendung zugewiesen ist. 
+* Wenn dem Dienstprinzipal, der Organisation oder dem Anwendungsobjekt keine Richtlinie zugewiesen ist, werden die Standardwerte erzwungen (siehe obige Tabelle).
 
 Ausführliche Informationen zu den Beziehungen zwischen Anwendungsobjekten und Dienstprinzipalobjekten in Azure AD finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](active-directory-application-objects.md).
 
@@ -98,16 +98,16 @@ Die Gültigkeit des Tokens wird zum Zeitpunkt seiner Verwendung überprüft. Die
 > 
 > Ein Benutzer möchte auf die beiden Webanwendungen A und B zugreifen. 
 > 
-> * Beide Anwendungen gehören zu demselben übergeordneten Mandanten. 
-> * Als Standard für den übergeordneten Mandanten wird die Tokengültigkeitsdauer-Richtlinie 1 mit einem maximalen Alter für Sitzungstoken von 8 Stunden festgelegt.
+> * Beide Anwendungen gehören zur selben übergeordneten Organisation. 
+> * Als Standard für die übergeordnete Organisation wird die Tokengültigkeitsdauer-Richtlinie 1 mit einem maximalen Alter für Sitzungstoken von acht Stunden festgelegt.
 > * Webanwendung A ist eine regelmäßig verwendete Webanwendung, die nicht mit Richtlinien verknüpft ist. 
 > * Webanwendung B wird für hochsensible Prozesse verwendet, und ihr Dienstprinzipal ist mit der Tokengültigkeitsdauer-Richtlinie 2 mit einem maximalen Alter für Sitzungstoken von 30 Minuten verknüpft.
 > 
 > Um 12 Uhr öffnet der Benutzer eine neue Browsersitzung und versucht, auf die Webanwendung A zuzugreifen. Der Benutzer wird an Azure AD umgeleitet und aufgefordert, sich anzumelden. Hierdurch wird im Browser ein Cookie mit einem Sitzungstoken gespeichert. Der Benutzer wird mit einem ID-Token an die Webanwendung A zurückgeleitet. Dieses ID-Token erlaubt ihm den Zugriff auf die Anwendung.
 > 
-> Um 12:15 Uhr versucht der Benutzer, auf Webanwendung B zuzugreifen. Der Browser nimmt die Umleitung an Azure AD vor, welches das Sitzungscookie erkennt. Der Dienstprinzipal von Webanwendung B ist mit Richtlinie 2 verknüpft, ist aber zugleich Teil des übergeordneten Mandanten mit der Standardrichtlinie 1. Richtlinie 2 wird wirksam, da mit Dienstprinzipalen verknüpfte Richtlinien eine höhere Priorität haben als Mandantenstandardrichtlinien. Das Sitzungstoken wurde innerhalb der letzten 30 Minuten erstmalig ausgegeben, weshalb es als gültig erachtet wird. Der Benutzer wird mit einem ID-Token, das ihm Zugriff gewährt, an die Webanwendung B zurückgeleitet.
+> Um 12:15 Uhr versucht der Benutzer, auf Webanwendung B zuzugreifen. Der Browser nimmt die Umleitung an Azure AD vor, welches das Sitzungscookie erkennt. Der Dienstprinzipal von Webanwendung B ist mit Richtlinie 2 verknüpft, ist aber zugleich Teil der übergeordneten Organisation mit der Standardrichtlinie 1. Richtlinie 2 wird wirksam, da mit Dienstprinzipalen verknüpfte Richtlinien eine höhere Priorität haben als Organisationsstandardrichtlinien. Das Sitzungstoken wurde innerhalb der letzten 30 Minuten erstmalig ausgegeben, weshalb es als gültig erachtet wird. Der Benutzer wird mit einem ID-Token, das ihm Zugriff gewährt, an die Webanwendung B zurückgeleitet.
 > 
-> Um 13:00 Uhr versucht der Benutzer, zur Webanwendung A zu navigieren. Der Benutzer wird an Azure AD umgeleitet. Webanwendung A ist nicht mit Richtlinien verknüpft, aber da sie sich in einem Mandanten mit Standardrichtlinie 1 befindet, wird diese Richtlinie wirksam. Das innerhalb der letzten acht Stunden erstmalig ausgestellte Sitzungscookie wird erkannt, und der Benutzer wird im Hintergrund mit einem neuen ID-Token an die Webanwendung A zurückgeleitet, ohne dass er sich authentifizieren muss.
+> Um 13:00 Uhr versucht der Benutzer, zur Webanwendung A zu navigieren. Der Benutzer wird an Azure AD umgeleitet. Webanwendung A ist nicht mit Richtlinien verknüpft, aber da sie sich in einer Organisation mit Standardrichtlinie 1 befindet, wird diese Richtlinie wirksam. Das innerhalb der letzten acht Stunden erstmalig ausgestellte Sitzungscookie wird erkannt, und der Benutzer wird im Hintergrund mit einem neuen ID-Token an die Webanwendung A zurückgeleitet, ohne dass er sich authentifizieren muss.
 > 
 > Der Benutzer versucht unmittelbar danach, auf Webanwendung B zuzugreifen und wird an Azure AD umgeleitet. Wie bereits zuvor tritt Richtlinie 2 in Kraft. Da die Ausstellung des Tokens mehr als 30 Minuten zurückliegt, wird der Benutzer aufgefordert, seine Anmeldeinformationen erneut eingeben, und es werden völlig neue Sitzungs- und ID-Token ausgestellt. Nun kann der Benutzer auf Webanwendung B zugreifen.
 > 
@@ -169,7 +169,7 @@ Durch die Reduzierung des maximalen Alters müssen sich Benutzer öfter authenti
 Durch die Reduzierung des maximalen Alters müssen sich Benutzer öfter authentifizieren. Da die Single-Factor Authentication als weniger sicher erachtet wird als die Multi-Factor Authentication, wird empfohlen, diese Richtlinie auf einen Wert gleich oder größer des Wertes für die Richtlinie „Max. Alter Single-Factor-Sitzungstoken“ festzulegen.
 
 ## <a name="sample-token-lifetime-policies"></a>Beispiel: Tokengültigkeitsdauer-Richtlinien
-Die Möglichkeit zum Erstellen und Verwalten von Tokengültigkeitsdauern für Apps, Dienstprinzipale und Ihren gesamten Mandanten eröffnet unterschiedlichste neue Szenarios in Azure AD.  Wir werden einige allgemeine Richtlinienszenarios durchgehen, die es ermöglichen, neue Regeln für folgende Festlegungen vorzugeben:
+Die Möglichkeit zum Erstellen und Verwalten von Tokengültigkeitsdauern für Apps, Dienstprinzipale und Ihre gesamte Organisation eröffnet unterschiedlichste neue Szenarios in Azure AD.  Wir werden einige allgemeine Richtlinienszenarios durchgehen, die es ermöglichen, neue Regeln für folgende Festlegungen vorzugeben:
 
 * Tokengültigkeitsdauer
 * Max. Inaktivitätszeit von Token
@@ -177,26 +177,26 @@ Die Möglichkeit zum Erstellen und Verwalten von Tokengültigkeitsdauern für Ap
 
 Wir werden einige Szenarios durchgehen, beispielsweise:
 
-* Verwalten der Standardrichtlinie eines Mandanten
+* Verwalten der Standardrichtlinie einer Organisation
 * Erstellen einer Richtlinie für die Webanmeldung
 * Erstellen einer Richtlinie für native Apps, die eine Web-API aufrufen
 * Verwalten einer erweiterten Richtlinie 
 
 ### <a name="prerequisites"></a>Voraussetzungen
-In den Beispielszenarios werden wir Richtlinien für Apps, Dienstprinzipale und Ihren gesamten Mandanten erstellen, aktualisieren, verknüpfen und löschen.  Lesen Sie [diesen Artikel](active-directory-howto-tenant.md), wenn Sie noch nicht mit Azure AD vertraut sind. Dort erhalten Sie Hilfestellung bei der Einrichtung, bevor Sie sich den nachstehenden Beispielen zuwenden.  
+In den Beispielszenarios werden wir Richtlinien für Apps, Dienstprinzipale und Ihre gesamte Organisation erstellen, aktualisieren, verknüpfen und löschen.  Lesen Sie [diesen Artikel](active-directory-howto-tenant.md), wenn Sie noch nicht mit Azure AD vertraut sind. Dort erhalten Sie Hilfestellung bei der Einrichtung, bevor Sie sich den nachstehenden Beispielen zuwenden.  
 
 1. Laden Sie zunächst das aktuelle [Azure AD PowerShell-Cmdlet (Vorschau)](https://www.powershellgallery.com/packages/AzureADPreview) herunter. 
 2. Nach dem Herunterladen des Azure AD PowerShell-Cmdlets führen Sie den Befehl „Connect“ aus, um sich bei Ihrem Azure AD-Administratorkonto anzumelden. Sie müssen dies jedes Mal tun, wenn Sie eine neue Sitzung starten.
    
      Connect-AzureAD -Confirm
-3. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrem Mandanten erstellt wurden.  Dieser Befehl sollte nach den meisten Vorgängen in den folgenden Szenarios verwendet werden.  Außerdem erhalten Sie so die **Objekt-ID** Ihrer Richtlinien. 
+3. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrer Organisation erstellt wurden.  Dieser Befehl sollte nach den meisten Vorgängen in den folgenden Szenarios verwendet werden.  Außerdem erhalten Sie so die **Objekt-ID** Ihrer Richtlinien. 
    
      Get-AzureADPolicy
 
-### <a name="sample-managing-a-tenants-default-policy"></a>Beispiel: Verwalten der Standardrichtlinie eines Mandanten
-In diesem Beispiel wird eine Richtlinie erstellt, die es den Benutzern ermöglicht, sich weniger häufig bei Ihrem gesamten Mandanten anzumelden. 
+### <a name="sample-managing-a-organizations-default-policy"></a>Beispiel: Verwalten der Standardrichtlinie einer Organisation
+In diesem Beispiel wird eine Richtlinie erstellt, die es den Benutzern ermöglicht, sich weniger häufig bei Ihrer gesamten Organisation anzumelden. 
 
-Hierzu erstellen wir eine Richtlinie für die Tokengültigkeitsdauer für Single-Factor-Aktualisierungstoken, die auf Ihren gesamten Mandanten angewandt wird. Diese Richtlinie wird auf jede Anwendung in Ihrem Mandanten und jeden Dienstprinzipal angewandt, für die/den noch keine Richtlinie festgelegt wurde. 
+Hierzu erstellen wir eine Richtlinie für die Tokengültigkeitsdauer für Single-Factor-Aktualisierungstoken, die auf Ihre gesamte Organisation angewendet wird. Diese Richtlinie wird auf jede Anwendung in Ihrer Organisation und jeden Dienstprinzipal angewandt, für die/den noch keine Richtlinie festgelegt wurde. 
 
 1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.** 
 
@@ -212,7 +212,7 @@ Setzen Sie das Single-Factor-Aktualisierungstoken auf „Bis zum Widerruf“, wa
 
 Führen Sie nun den folgenden Befehl zum Erstellen dieser Richtlinie aus. 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName TenantDefaultPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1, `"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName OrganizationDefaultPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
 
 Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
@@ -221,7 +221,7 @@ Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden 
 
 Sie haben festgestellt, dass die erste Richtlinie nicht so streng ist, wie es Ihr Dienst erfordert, weshalb Ihre Single-Factor-Aktualisierungstoken nach zwei Tagen ablaufen sollen. Führen Sie den folgenden Befehl aus: 
 
-    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName TenantDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
+    Set-AzureADPolicy -ObjectId <ObjectID FROM GET COMMAND> -DisplayName OrganizationDefaultPolicyUpdatedScenario -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"2.00:00:00`"}}")
 
 &nbsp;&nbsp;3. **Fertig!** 
 
@@ -232,14 +232,14 @@ In diesem Beispiel erstellen wir eine Richtlinie, die öfter eine Authentifizier
 
 Diese Richtlinie für die Webanmeldung wird die Gültigkeit des Zugriffs-/ID-Tokens und das maximale Alter des Single-Factor-Sitzungstokens auf zwei Stunden festlegen.
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"AccessTokenLifetime`":`"02:00:00`",`"MaxAgeSessionSingleFactor`":`"02:00:00`"}}") -DisplayName WebPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
 
 Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
     Get-AzureADPolicy
 &nbsp;&nbsp;2.    **Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu.**
 
-Wir werden diese neue Richtlinie mit einen Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihres Mandanten zu sehen. 
+Wir werden diese neue Richtlinie mit einen Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation zu sehen. 
 
 Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
@@ -249,18 +249,13 @@ Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl a
  
 
 ### <a name="sample-creating-a-policy-for-native-apps-calling-a-web-api"></a>Beispiel: Erstellen einer Richtlinie für native Apps, die eine Web-API aufrufen
-> [!NOTE]
-> Das Verknüpfen von Richtlinien mit Anwendungen ist derzeit deaktiviert.  Wir arbeiten daran, dass diese Funktion in Kürze bereitgestellt wird.  Diese Seite wird aktualisiert, sobald die Funktion verfügbar ist.
-> 
-> 
-
 In diesem Beispiel werden wir eine Richtlinie erstellen, mit der sich Benutzer seltener authentifizieren müssen und die die Zeitspanne verlängert, die Benutzer inaktiv sein können, ohne sich erneut authentifizieren zu müssen. Die Richtlinie wird auf die Web-API angewandt. Wenn die native App sie als Ressource anfordert, wird diese Richtlinie somit angewandt.
 
 1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.** 
 
 Mit diesem Befehl wird eine strenge Richtlinie für eine Web-API erstellt. 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsTenantDefault $false -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"30.00:00:00`",`"MaxAgeMultiFactor`":`"until-revoked`",`"MaxAgeSingleFactor`":`"180.00:00:00`"}}") -DisplayName WebApiDefaultPolicyScenario -IsOrganizationDefault $false -Type TokenLifetimePolicy
 
 Um Ihre neue Richtlinie und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
@@ -281,33 +276,33 @@ In diesem Beispiel erstellen wir einige Richtlinien, um zu zeigen, wie das Prior
 
 1. **Legen Sie eine Tokengültigkeitsdauer-Richtlinie an.**
 
-Bisher war es noch ziemlich einfach. Wir haben eine Standardrichtlinie für den Mandanten erstellt, die die Gültigkeitsdauer des Single-Factor-Aktualisierungstokens auf 30 Tage festsetzt. 
+Bisher war es noch ziemlich einfach. Wir haben eine Standardrichtlinie für die Organisation erstellt, die die Gültigkeitsdauer des Single-Factor-Aktualisierungstokens auf 30 Tage festsetzt. 
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"30.00:00:00`"}}") -DisplayName ComplexPolicyScenario -IsOrganizationDefault $true -Type TokenLifetimePolicy
 Um Ihre neue Richtlinie anzuzeigen und deren ObjectID abzurufen, führen Sie den folgenden Befehl aus.
 
     Get-AzureADPolicy
 
 &nbsp;&nbsp;2.    **Weisen Sie die Richtlinie einem Dienstprinzipal zu.**
 
-Nun verfügen wir über eine Richtlinie für den gesamten Mandanten.  Nehmen wir an, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, die Mandantenstandardrichtlinie jedoch so geändert werden soll, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert. 
+Nun verfügen wir über eine Richtlinie für die gesamte Organisation.  Nehmen wir an, dass diese 30-Tage-Richtlinie für einen bestimmten Dienstprinzipal beibehalten werden soll, die Organisationsstandardrichtlinie jedoch so geändert werden soll, dass sie als Obergrenze für „Bis zum Widerruf“ fungiert. 
 
-Wir werden diese neue Richtlinie zunächst mit unserem Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihres Mandanten zu sehen. 
+Wir werden diese neue Richtlinie zunächst mit unserem Dienstprinzipal verknüpfen.  Sie benötigen auch eine Möglichkeit, auf die **ObjectId** Ihres Dienstprinzipals zuzugreifen. Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen oder zum [Graph-Tester](https://graphexplorer.cloudapp.net/) wechseln und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation zu sehen. 
 
 Nachdem Sie die **ObjectId** abgerufen haben, führen Sie den folgenden Befehl aus.
 
     Add-AzureADServicePrincipalPolicy -ObjectId <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 
-&nbsp;&nbsp;3.    **Setzen Sie das IsTenantDefault-Flag mithilfe des folgenden Befehls auf „false“**. 
+&nbsp;&nbsp;3.    **Setzen Sie das IsOrganizationDefault-Flag mithilfe des folgenden Befehls auf „false“.** 
 
-    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsTenantDefault $false
-&nbsp;&nbsp;4.    **Erstellen Sie eine neue Mandantenstandardrichtlinie.**
+    Set-AzureADPolicy -ObjectId <ObjectId of Policy> -DisplayName ComplexPolicyScenario -IsOrganizationDefault $false
+&nbsp;&nbsp;4.    **Erstellen Sie eine neue Organisationsstandardrichtlinie.**
 
-    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsTenantDefault $true -Type TokenLifetimePolicy
+    New-AzureADPolicy -Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxAgeSingleFactor`":`"until-revoked`"}}") -DisplayName ComplexPolicyScenarioTwo -IsOrganizationDefault $true -Type TokenLifetimePolicy
 
 &nbsp;&nbsp;5.     **Fertig!** 
 
-Sie haben jetzt die ursprüngliche Richtlinie mit Ihrem Dienstprinzipal verknüpft und die neue Richtlinie als Mandantenstandardrichtlinie festgelegt.  Beachten Sie, dass Richtlinien für Dienstprinzipale Priorität vor Mandantenstandardrichtlinien haben. 
+Sie haben jetzt die ursprüngliche Richtlinie mit Ihrem Dienstprinzipal verknüpft und die neue Richtlinie als Organisationsstandardrichtlinie festgelegt.  Beachten Sie, dass Richtlinien für Dienstprinzipale Priorität vor Organisationsstandardrichtlinien haben. 
 
 ## <a name="cmdlet-reference"></a>Cmdlet-Referenz
 ### <a name="manage-policies"></a>Verwalten von Richtlinien
@@ -316,13 +311,13 @@ Mit den folgenden Cmdlets können Richtlinien verwaltet werden.</br></br>
 #### <a name="new-azureadpolicy"></a>New-AzureADPolicy
 Erstellt eine neue Richtlinie.
 
-    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsTenantDefault <boolean> -Type <Policy Type> 
+    New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type> 
 
 | Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | -Definition |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
 | -DisplayName |Zeichenfolge mit dem Namen der Richtlinie |-DisplayName MyTokenPolicy |
-| -IsTenantDefault |Bei TRUE wird die Richtlinie als Standardrichtlinie des Mandanten festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsTenantDefault $true |
+| -IsOrganizationDefault |Bei TRUE wird die Richtlinie als Standardrichtlinie der Organisation festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsOrganizationDefault $true |
 | -Type |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |-Type TokenLifetimePolicy |
 | -AlternativeIdentifier [optional] |Legt eine alternative ID für die Richtlinie fest. |-AlternativeIdentifier myAltId |
 
@@ -360,7 +355,7 @@ Aktualisiert eine vorhandene Richtlinie.
 | -ObjectId |Die Objekt-ID der Richtlinie, die Sie abrufen möchten |-ObjectId &lt;Objekt-ID der Richtlinie&gt; |
 | -DisplayName |Zeichenfolge mit dem Namen der Richtlinie |-DisplayName MyTokenPolicy |
 | -Definition [optional] |Das JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. |-Definition @("{`"TokenLifetimePolicy`":{`"Version`":1,`"MaxInactiveTime`":`"20:00:00`"}}") |
-| -IsTenantDefault [optional] |Bei TRUE wird die Richtlinie als Standardrichtlinie des Mandanten festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsTenantDefault $true |
+| -IsOrganizationDefault [Optional] |Bei TRUE wird die Richtlinie als Standardrichtlinie der Organisation festgelegt, bei FALSE hat der Wert keine Auswirkung. |-IsOrganizationDefault $true |
 | -Type [optional] |Die Art der Richtlinie; verwenden Sie für die Tokengültigkeitsdauer stets „TokenLifetimePolicy“. |-Type TokenLifetimePolicy |
 | -AlternativeIdentifier [optional] |Legt eine alternative ID für die Richtlinie fest. |-AlternativeIdentifier myAltId |
 
@@ -454,6 +449,6 @@ Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

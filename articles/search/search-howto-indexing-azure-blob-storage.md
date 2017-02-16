@@ -2,59 +2,74 @@
 title: Indizieren von Azure Blob Storage mit Azure Search
 description: Erfahren Sie, wie Sie Azure Blob Storage indizieren und Text aus Dokumenten mit Azure Search extrahieren.
 services: search
-documentationcenter: ''
+documentationcenter: 
 author: chaosrealm
 manager: pablocas
-editor: ''
-
+editor: 
+ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/16/2016
+ms.date: 11/24/2016
 ms.author: eugenesh
+translationtype: Human Translation
+ms.sourcegitcommit: 2b62ddb83b35194b9fcd23c60773085a9551b172
+ms.openlocfilehash: 041b47ed2aba11d45ed6ae02dadb73916046dd78
 
 ---
-# Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
+
+# <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
 Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure-Blobspeicher gespeichert sind. Mit dem neuen Azure Search-Blobindexer verläuft dieser Prozess schnell und reibungslos.
 
-> [!IMPORTANT]
-> Diese Funktion befindet sich derzeit in der Vorschauphase. Sie ist nur im Rahmen der REST-API unter der Version **2015-02-28-Preview** verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
-> 
-> 
-
-## Unterstützte Dokumentformate
+## <a name="supported-document-formats"></a>Unterstützte Dokumentformate
 Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 
 * PDF
-* Microsoft Office-Formate: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)
+* Microsoft Office-Formate: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook-E-Mails)  
 * HTML
 * XML
 * ZIP
 * EML
-* Nur-Text-Dateien
-* JSON (Details finden Sie unter [Indizierung von JSON-Blobs](search-howto-index-json-blobs.md))
-* CSV (Details finden Sie unter [Indizierung von CSV-Blobs](search-howto-index-csv-blobs.md))
+* Nur-Text-Dateien  
+* JSON (siehe Vorschaufeature [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md))
+* CSV (siehe Vorschaufeature [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md))
 
-## Einrichten der Blobindizierung
-Zum Einrichten und Konfigurieren des Indexers für Azure Blob Storage können Sie die Azure Search-REST-API nutzen, um **Indexer** und **Datenquellen** wie in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn946891.aspx) beschrieben zu erstellen und zu verwalten. Sie können auch die [Version 2.0-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) des .NET SDK verwenden. In Zukunft wird die Blobindizierung vom Azure-Portal unterstützt.
+> [!IMPORTANT]
+> Die Unterstützung für CSV- und JSON-Dateien befindet sich derzeit in der Vorschauphase. Diese Formate sind nur mit der Version **2015-02-28-Preview** der REST-API oder der Version 2.x-preview des .NET SDKs verfügbar. Beachten Sie hierbei, dass Vorschau-APIs für Tests und Evaluierungen bestimmt sind und nicht in Produktionsumgebungen eingesetzt werden sollten.
+>
+>
 
-Führen Sie die folgenden drei Schritte aus, um einen Indexer einzurichten: Erstellen einer Datenquelle, Erstellen eines Index, Konfigurieren des Indexers.
+## <a name="setting-up-blob-indexing"></a>Einrichten der Blobindizierung
+Sie können einen Azure Blob Storage-Indexer über folgende Elemente einrichten:
 
-### Schritt 1: Erstellen einer Datenquelle
-Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien zur Aktivierung von Azure Search fest, um Änderungen an den Daten effizient identifizieren zu können (z.B. neue, geänderte oder gelöschte Zeilen). Eine Datenquelle kann von mehreren Indexern in demselben Abonnement verwendet werden.
+* [Azure-Portal](https://ms.portal.azure.com)
+* Azure Search [REST-API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
+* Azure Search .NET SDK [Version 2.0-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)
+
+> [!NOTE]
+> Einige Features (z.B. Feldzuordnungen) sind im Portal noch nicht verfügbar und müssen programmgesteuert verwendet werden.
+>
+>
+
+In diesem Artikel richten wir mithilfe der REST-API einen Indexer ein. Wir müssen zunächst eine Datenquelle und dann einen Index erstellen und schließlich den Indexer konfigurieren.
+
+Danach wird beschrieben, wie der Blobindexer Blobs analysiert, wie Sie auswählen, welchen Blob Sie indizieren, wie Sie mit Blobs nicht unterstützter Inhaltstypen umgehen und welche Konfigurationseinstellungen verfügbar sind. 
+
+### <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
+Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien fest, mit denen Änderungen an den Daten effizient identifiziert werden können (z.B. neue, geänderte oder gelöschte Zeilen). Eine Datenquelle kann von mehreren Indexern im selben Suchdienst verwendet werden.
 
 Für die Blobindizierung muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
 
 * **name** ist der eindeutige Name der Datenquelle im Suchdienst.
 * **type** muss `azureblob` lauten.
-* Mit **credentials** wird die Speicherkonto-Verbindungszeichenfolge als `credentials.connectionString`-Parameter angegeben. Sie erhalten die Verbindungszeichenfolge über das Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto, wählen Sie **Einstellungen** > **Schlüssel**, und verwenden Sie den Wert „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“. Da die Verbindungszeichenfolge an ein Speicherkonto gebunden ist, wird durch das Angeben der Verbindungszeichenfolge implizit das Speicherkonto identifiziert, das die Daten bereitstellt.
+* Mit **credentials** wird die Speicherkonto-Verbindungszeichenfolge als `credentials.connectionString`-Parameter angegeben. Sie erhalten die Verbindungszeichenfolge über das Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto > **Einstellungen** > **Schlüssel**, und verwenden Sie den Wert „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“.
 * Mit **container** wird ein Container in Ihrem Speicherkonto angegeben. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
 
 Das folgende Beispiel veranschaulicht eine Datenquellendefinition:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -65,14 +80,14 @@ Das folgende Beispiel veranschaulicht eine Datenquellendefinition:
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
 
-Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](search-api-indexers-2015-02-28-preview.md#create-data-source).
+Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://msdn.microsoft.com/library/azure/dn946876.aspx).
 
-### Schritt 2: Erstellen eines Index
-Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.
+### <a name="step-2-create-an-index"></a>Schritt 2: Erstellen eines Index
+Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.  
 
 Stellen Sie bei der Blobindizierung sicher, dass der Index über ein durchsuchbares Feld `content` zum Speichern des Blobs verfügt.
 
-    POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
+    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -84,12 +99,12 @@ Stellen Sie bei der Blobindizierung sicher, dass der Index über ein durchsuchba
           ]
     }
 
-Weitere Informationen zur API zum Erstellen eines Index finden Sie unter [Create Index (Azure Search-Dienst REST-API)](https://msdn.microsoft.com/library/dn798941.aspx).
+Weitere Informationen zur API zum Erstellen eines Index finden Sie unter [Create Index](https://msdn.microsoft.com/library/dn798941.aspx)
 
-### Schritt 3: Erstellen eines Indexers
-Ein Indexer verbindet Datenquellen mit Zielsuchindizes und stellt Zeitplaninformationen bereit, sodass Sie die Datenaktualisierung automatisieren können. Nachdem der Index und die Datenquelle erstellt wurden, ist es relativ einfach, einen Indexer zu erstellen, mit dem auf die Datenquelle und einen Zielindex verwiesen wird. Zum Beispiel:
+### <a name="step-3-create-an-indexer"></a>Schritt 3: Erstellen eines Indexers
+Ein Indexer verbindet Datenquellen mit Zielsuchindizes und stellt Zeitplaninformationen bereit, sodass Sie die Datenaktualisierung automatisieren können. Nachdem der Index und die Datenquelle erstellt wurden, ist es relativ einfach, einen Indexer zu erstellen, mit dem auf die Datenquelle und einen Zielindex verwiesen wird. Beispiel:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,24 +115,27 @@ Ein Indexer verbindet Datenquellen mit Zielsuchindizes und stellt Zeitplaninform
       "schedule" : { "interval" : "PT2H" }
     }
 
-Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall ist 5 Minuten. Der Zeitplan ist optional. Falls Sie ihn weglassen, wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.
+Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall ist 5 Minuten. Der Zeitplan ist optional. Falls Sie ihn weglassen, wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](search-api-indexers-2015-02-28-preview.md#create-indexer).
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](https://msdn.microsoft.com/library/azure/dn946899.aspx).
 
-## Prozess der Dokumentextrahierung
-Azure Search indiziert jedes Dokument (Blob) wie folgt:
+## <a name="how-azure-search-indexes-blobs"></a>Wie indiziert Azure Search Blobs?
 
-* Der gesamte Inhalt des Dokuments wird in ein Zeichenfolgenfeld mit dem Namen `content` extrahiert. Beachten Sie, dass derzeit keine Unterstützung zum Extrahieren mehrerer Dokumente aus einem einzelnen Blob vorhanden ist:
-  
-  * Beispielsweise wird eine CSV-Datei als einzelnes Dokument indiziert. Stimmen Sie für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate), wenn Sie jede Zeile in einer CSV-Datei als separates Dokument behandeln müssen.
-  * Ein Verbunddokument oder eingebettetes Dokument (z. B. ein ZIP-Archiv oder ein Word-Dokument mit eingebetteter Outlook-E-Mail mit PDF-Anhang) wird ebenfalls als einzelnes Dokument indiziert.
-* Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert. Die Metadateneigenschaften können auch verwendet werden, um bestimmte Aspekte des Prozesses der Dokumentextrahierung zu steuern. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Metadaten zum Steuern der Dokumentextrahierung](#CustomMetadataControl).
+Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metadaten und Textinhalt, Speicher- und Inhaltsmetadaten oder nur Speichermetadaten indizieren (nützlich, wenn Sie nur die Metadaten interessieren und den Inhalt des Blobs nicht indizieren müssen). Der Indexer extrahiert standardmäßig sowohl die Metadaten als auch den Inhalt. 
+
+> [!NOTE]
+> Die Blobs mit strukturiertem Inhalt wie JSON, CSV oder XML werden standardmäßig als ein einzelnes Textsegment indiziert. Wenn Sie JSON- und CSV-Blobs in einem strukturierten Verfahren indizieren möchten, finden Sie unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) und [Indizierung der CSV-Blobs](search-howto-index-csv-blobs.md) Vorschaufeatures. Wir unterstützen derzeit keine Analyse des XML-Inhalts; wenn Sie diese benötigen, fügen Sie einen Vorschlag auf unserer [UserVoice](https://feedback.azure.com/forums/263029-azure-search) hinzu.
+> 
+> Ein Verbunddokument oder eingebettetes Dokument (z.B. ein ZIP-Archiv oder ein Word-Dokument mit eingebetteter Outlook-E-Mail mit Anhängen) wird ebenfalls als einzelnes Dokument indiziert.
+
+* Der gesamte Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
+* Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert.
 * Standardmäßige Blob-Metadateneigenschaften werden in die folgenden Felder extrahiert:
-  
-  * **metadata\_storage\_name** (Edm.String): Der Dateiname des Blobs. Für ein Blob mit dem Namen „/my-container/my-folder/subfolder/resume.pdf“ lautet der Wert dieses Felds beispielsweise `resume.pdf`.
-  * **metadata\_storage\_path** (Edm.String): Der vollständige URI des Blobs, einschließlich Speicherkonto. Beispiel: `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+
+  * **metadata\_storage\_name** (Edm.String): der Dateiname des Blobs. Für ein Blob mit dem Namen „/my-container/my-folder/subfolder/resume.pdf“ lautet der Wert dieses Felds beispielsweise `resume.pdf`.
+  * **metadata\_storage\_path** (Edm.String): der vollständige URI des Blobs, einschließlich Speicherkonto. Beispiel: `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
   * **metadata\_storage\_content\_type** (Edm.String): Inhaltstyp, der mit dem Code angegeben wird, den Sie zum Hochladen des Blobs verwendet haben. Beispiel: `application/octet-stream`.
-  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset): Zeitstempel der letzten Änderung für das Blob. Von Azure Search wird dieser Zeitstempel zum Identifizieren geänderter Blobs verwendet, um die erneute Indizierung aller Elemente nach der ersten Indizierung zu vermeiden.
+  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset): Zeitstempel der letzten Änderung für das Blob. In Azure Search wird dieser Zeitstempel zum Identifizieren geänderter Blobs verwendet, um die erneute Indizierung aller Elemente nach der ersten Indizierung zu vermeiden.
   * **metadata\_storage\_size** (Edm.Int64): Blob-Größe in Byte.
   * **metadata\_storage\_content\_md5** (Edm.String): MD5-Hash des Blob-Inhalts, falls verfügbar.
 * Die Metadateneigenschaften der einzelnen Dokumentformate werden in die [hier](#ContentSpecificMetadata) aufgeführten Felder extrahiert.
@@ -126,33 +144,33 @@ Es ist nicht erforderlich, Felder für alle obigen Eigenschaften in Ihrem Suchin
 
 > [!NOTE]
 > Die Feldnamen im vorhandenen Index unterscheiden sich von den Feldnamen, die während der Dokumentextrahierung generiert werden. Sie können **Feldzuordnungen** verwenden, um die von Azure Search bereitgestellten Eigenschaftennamen den Feldnamen in Ihrem Suchindex zuzuordnen. Weiter unten finden Sie ein Beispiel für die Verwendung von Feldzuordnungen.
-> 
-> 
+>
+>
 
-## Auswählen des Dokumentschlüsselfelds und Behandeln unterschiedlicher Feldnamen
-In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ „Edm.String“ verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist auch das einzige erforderliche Feld).
+### <a name="picking-the-document-key-field-and-dealing-with-different-field-names"></a>Auswählen des Dokumentschlüsselfelds und Behandeln unterschiedlicher Feldnamen
+In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ „Edm.String“ verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist auch das einzige erforderliche Feld).  
 
 Sie sollten sorgfältig abwägen, welches extrahierte Feld Sie dem Schlüsselfeld für Ihren Index zuordnen. Die Kandidaten lauten:
 
-* **metadata\_storage\_name**: Dies ist ggf. ein passender Kandidat. Beachten Sie aber, dass 1) die Namen unter Umständen nicht eindeutig sind, falls Blobs mit dem gleichen Namen in unterschiedlichen Ordnern enthalten sind, und 2) der Name Zeichen enthalten kann, die in Dokumentschlüsseln ungültig sind, z. B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die Option `base64EncodeKeys` in den Indexereigenschaften aktivieren. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z. B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
-* **metadata\_storage\_path**: Die Verwendung des vollständigen Pfads sorgt für Eindeutigkeit, aber der Pfad enthält auf jeden Fall `/`-Zeichen, die [in einem Dokumentschlüssel ungültig sind](https://msdn.microsoft.com/library/azure/dn857353.aspx). Wie oben auch, haben Sie hierbei die Möglichkeit, die Schlüssel mit der Option `base64EncodeKeys` zu codieren.
-* Falls keine der Optionen für Sie geeignet ist, können Sie sehr flexibel vorgehen und den Blobs eine benutzerdefinierte Metadateneigenschaft hinzufügen. Bei dieser Option ist es aber erforderlich, dass diese Metadateneigenschaft im Rahmen des Blob-Uploadvorgangs allen Blobs hinzugefügt wird. Da der Schlüssel eine erforderliche Eigenschaft ist, tritt für alle Blobs, die nicht über diese Eigenschaft verfügen, beim Indizieren ein Fehler auf.
+* **metadata\_storage\_name**: Dies ist gegebenenfalls ein passender Kandidat. Beachten Sie aber, dass 1) die Namen unter Umständen nicht eindeutig sind, falls Blobs mit dem gleichen Namen in unterschiedlichen Ordnern enthalten sind, und 2) der Name Zeichen enthalten kann, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die `base64Encode`-[Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) verwenden. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z.B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
+* **metadata\_storage\_path**: Die Verwendung des vollständigen Pfads sorgt für Eindeutigkeit, aber der Pfad enthält auf jeden Fall `/`-Zeichen, die [in einem Dokumentschlüssel ungültig sind](https://msdn.microsoft.com/library/azure/dn857353.aspx).  Wie oben auch, haben Sie hierbei die Möglichkeit, die Schlüssel mit der `base64Encode`-[Funktion](search-indexer-field-mappings.md#base64EncodeFunction) zu codieren.
+* Falls keine der Optionen oben für Sie geeignet ist, können Sie den Blobs eine benutzerdefinierte Metadateneigenschaft hinzufügen. Bei dieser Option ist es aber erforderlich, dass diese Metadateneigenschaft im Rahmen des Blob-Uploadvorgangs allen Blobs hinzugefügt wird. Da der Schlüssel eine erforderliche Eigenschaft ist, tritt für alle Blobs, die nicht über diese Eigenschaft verfügen, beim Indizieren ein Fehler auf.
 
 > [!IMPORTANT]
-> Wenn keine explizite Zuordnung für das Schlüsselfeld im Index vorhanden ist, verwendet Azure Search automatisch `metadata_storage_path` (zweite Option oben) als Schlüssel und aktiviert die Base64-Codierung der Schlüssel.
-> 
-> 
+> Wenn keine ausdrückliche Zuordnung für das Schlüsselfeld im Index vorhanden ist, wird in Azure Search automatisch `metadata_storage_path` als Schlüssel verwendet, und die Schlüsselwerte werden Base64-codiert (zweite Option oben).
+>
+>
 
 Für dieses Beispiel wählen wir das Feld `metadata_storage_name` als Dokumentschlüssel aus. Nehmen wir außerdem an, dass Ihr Index über ein Schlüsselfeld mit dem Namen `key` und ein Feld `fileSize` zum Speichern der Dokumentgröße verfügt. Um alles wie gewünscht einzurichten, geben Sie die folgenden Feldzuordnungen an, wenn Sie den Indexer erstellen oder aktualisieren:
 
     "fieldMappings" : [
-      { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key" },
+      { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
 
 Hier wird beschrieben, wie Sie Feldzuordnungen hinzufügen und die Base64-Codierung von Schlüsseln für einen Indexer aktivieren, um alle Elemente zu verknüpfen:
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2015-02-28-Preview
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -161,35 +179,112 @@ Hier wird beschrieben, wie Sie Feldzuordnungen hinzufügen und die Base64-Codier
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" },
       "fieldMappings" : [
-        { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key" },
+        { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
         { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
-      ],
-      "parameters" : { "base64EncodeKeys": true }
+      ]
     }
 
 > [!NOTE]
 > Weitere Informationen zu Feldzuordnungen finden Sie in [diesem Artikel](search-indexer-field-mappings.md).
-> 
-> 
+>
+>
 
-## Inkrementelle Indizierung und Erkennung von Löschungen
+<a name="WhichBlobsAreIndexed"></a>
+## <a name="controlling-which-blobs-are-indexed"></a>Steuern, welche Blobs indiziert werden
+Sie können steuern, welche Blobs indiziert und welche übersprungen werden.
+
+### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Indizieren von Blobs mit bestimmten Dateierweiterungen
+Sie können nur die Blobs mit den Dateinamenerweiterungen indizieren, die Sie über den `indexedFileNameExtensions`-Konfigurationsparameter des Indexers angeben. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise nur die PDF- und DOCX-Blobs zu indizieren, gehen Sie folgendermaßen vor:
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
+    }
+
+### <a name="exclude-blobs-with-specific-file-extensions"></a>Ausschließen von Blobs mit bestimmten Dateierweiterungen
+Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie verhindern, dass Blobs mit bestimmten Dateinamenerweiterungen indiziert werden. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise alle Blobs mit Ausnahme von Blobs mit den Erweiterungen PNG und JPEG zu indizieren, gehen Sie folgendermaßen vor:
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
+    }
+
+Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden ist, untersucht Azure Search zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions`. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
+
+### <a name="dealing-with-unsupported-content-types"></a>Umgang mit nicht unterstützten Inhaltstypen
+
+Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Natürlich können Sie den Parameter `excludedFileNameExtensions` nutzen, um bestimmte Inhaltstypen zu überspringen. Allerdings müssen Sie möglicherweise Blobs indizieren, ohne im Voraus alle möglichen Inhaltstypen zu kennen. Legen Sie zum Fortsetzen der Indizierung beim Auftreten eines nicht unterstützten Inhaltstyps den Konfigurationsparameter `failOnUnsupportedContentType` auf `false` fest: 
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
+    } 
+
+### <a name="ignoring-parsing-errors"></a>Ignorieren von Analysefehlern
+
+Die Dokumentextraktionslogik von Azure Search ist nicht perfekt und wird in manchen Fällen die Analyse von Dokumenten mit einem unterstützten Inhaltstyp wie DOCX- oder PDF-Dateien nicht erfolgreich durchführen können. Wenn Sie den Indizierungsprozess in einem solchen Fall nicht unterbrechen möchten, legen Sie die Konfigurationsparameter `maxFailedItems` und `maxFailedItemsPerBatch` auf sinnvolle Werte fest. Beispiel: 
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
+    } 
+
+<a name="PartsOfBlobToIndex"></a>
+## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>Steuern, welche Teile des Blobs indiziert werden
+
+Sie können mithilfe des Konfigurationsparameters `dataToExtract` steuern, welche Teile der Blobs indiziert werden. Die folgenden Werte sind möglich: 
+
+* `storageMetadata` ‒ Gibt an, dass nur die [standardmäßigen Blob-Eigenschaften und benutzerspezifischen Metadaten](../storage/storage-properties-metadata.md) indiziert werden
+* `allMetadata` ‒ Gibt an, dass Speichermetadaten und die [inhaltstypspezifischen Metadaten](#ContentSpecificMetadata), die aus dem Blobinhalt extrahiert wurden, indiziert werden
+* `contentAndMetadata` ‒ Gibt an, dass alle Metadaten und Textinhalte, die aus dem Blob extrahiert wurden, indiziert werden Dies ist der Standardwert.
+
+Verwenden Sie z.B. Folgendes, um nur die Speichermetadaten zu indizieren: 
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
+    }
+
+### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>Verwenden von Blob-Metadaten, um zu steuern, wie Blobs indiziert werden
+
+Die oben beschriebenen Konfigurationsparameter werden auf alle Blobs angewendet. In manchen Fällen möchten Sie möglicherweise steuern, wie *einzelne Blobs* indiziert werden. Dies ist möglich, indem Sie die folgenden Eigenschaften und Werte der Blob-Metadaten hinzufügen:
+
+| Eigenschaftenname | Eigenschaftswert | Erklärung |
+| --- | --- | --- |
+| AzureSearch_Skip |„true“ |Weist den Blobindexer an, das Blob vollständig zu überspringen. Weder die Metadaten- noch die Inhaltsextraktion werden versucht. Dies ist nützlich, wenn ein bestimmtes Blob wiederholt fehlschlägt und den Indizierungsprozess unterbricht. |
+| AzureSearch_SkipContent |„true“ |Dies entspricht der [oben](#PartsOfBlobToIndex) beschriebenen Einstellung `"dataToExtract" : "allMetadata"` zu einem bestimmten Blob. |
+
+## <a name="incremental-indexing-and-deletion-detection"></a>Inkrementelle Indizierung und Erkennung von Löschungen
 Wenn Sie einen Blob-Indexer zur Ausführung nach einem Zeitplan einrichten, werden nur die geänderten Blobs neu indiziert. Dies wird anhand des `LastModified`-Zeitstempels der Blobs ermittelt.
 
 > [!NOTE]
 > Sie müssen keine Richtlinie zum Erkennen von Änderungen angeben. Die inkrementelle Indizierung wird für Sie automatisch indiziert.
-> 
-> 
 
-Um anzugeben, dass bestimmte Dokumente aus dem Index entfernt werden müssen, sollten Sie die Strategie „Vorläufiges Löschen“ verwenden. Anstatt die entsprechenden Blobs zu löschen, fügen Sie eine benutzerdefinierte Metadateneigenschaft hinzu, um anzugeben, dass die gelöscht sind. Außerdem richten Sie für die Datenquelle eine Richtlinie zur Erkennung des vorläufigen Löschens ein.
+Damit das Löschen von Dokumenten unterstützt wird, sollten Sie die Strategie des „vorläufigen Löschens“ anwenden. Wenn Sie die Blobs direkt löschen, werden die entsprechenden Dokumente nicht aus dem Suchindex entfernt. Führen Sie stattdessen die folgenden Schritte aus:  
 
-> [!WARNING]
-> Wenn Sie keine Richtlinie zum Erkennen von Löschungen verwenden, sondern nur die Blobs löschen, werden entsprechende Dokumente nicht aus dem Suchindex entfernt.
-> 
-> 
+1. Fügen Sie dem Blob eine benutzerdefinierte Metadateneigenschaft hinzu, um in Azure Search anzugeben, dass es logisch gelöscht wird.
+2. Konfigurieren Sie für die Datenquelle eine Richtlinie zur Erkennung des vorläufigen Löschens.
+3. Nachdem das Blob mit dem Indexer verarbeitet wurde (wie durch die API für den Indexerstatus gezeigt), können Sie das Blob physisch löschen.
 
-Bei der unten angegebenen Richtlinie wird ein Blob beispielsweise als gelöscht angesehen, wenn es über die Metadateneigenschaft `IsDeleted` mit dem Wert `true` verfügt:
+Bei der folgenden Richtlinie wird ein Blob beispielsweise als gelöscht angesehen, wenn es über die Metadateneigenschaft `IsDeleted` mit dem Wert `true` verfügt:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
     api-key: [admin key]
 
@@ -205,94 +300,50 @@ Bei der unten angegebenen Richtlinie wird ein Blob beispielsweise als gelöscht 
         }
     }   
 
-<a name="ContentSpecificMetadata"></a>
+## <a name="indexing-large-datasets"></a>Indizieren großer Datasets
 
-## Inhaltstypspezifische Metadateneigenschaften
+Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie Millionen von Blobs zu indizieren haben, können Sie durch das Partitionieren der Daten und Verwenden mehrerer Indexer zur parallelen Datenverarbeitung die Indizierung beschleunigen. Sie können es folgendermaßen einrichten: 
+
+- Partitionieren Sie Ihre Daten in mehrere Blobcontainer oder virtuelle Ordner. 
+- Richten Sie mehrere Azure Search-Datenquellen ein, eine pro Container oder Ordner. Verwenden Sie den Parameter `query`, um auf einen Blob-Ordner zu verweisen: 
+
+    ```
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : "my-folder" }
+    }
+    ```
+
+- Erstellen Sie einen entsprechenden Indexer für jede Datenquelle. Alle Indexer können auf den gleichen Zielsuchindex zeigen.  
+
+<a name="ContentSpecificMetadata"></a>
+## <a name="content-type-specific-metadata-properties"></a>Inhaltstypspezifische Metadateneigenschaften
 In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentformat zusammengefasst, und es werden die Metadateneigenschaften beschrieben, die von Azure Search extrahiert werden.
 
 | Dokumentformat/Inhaltstyp | Inhaltstypspezifische Metadateneigenschaften | Verarbeitungsdetails |
 | --- | --- | --- |
 | HTML (`text/html`) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |Entfernen von HTML-Markup und Extrahieren von Text |
-| PDF (`application/pdf`) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Extrahieren von Text, z. B. eingebettete Dokumente (mit Ausnahme von Bildern) |
-| DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrahieren von Text, z. B. eingebettete Dokumente |
-| DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrahieren von Text, z. B. eingebettete Dokumente |
-| XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrahieren von Text, z. B. eingebettete Dokumente |
-| XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrahieren von Text, z. B. eingebettete Dokumente |
-| PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrahieren von Text, z. B. eingebettete Dokumente |
-| PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrahieren von Text, z. B. eingebettete Dokumente |
+| PDF (`application/pdf`) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Extrahieren von Text, z. B. eingebettete Dokumente (mit Ausnahme von Bildern) |
+| DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrahieren von Text, z. B. eingebettete Dokumente |
+| DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Extrahieren von Text, z. B. eingebettete Dokumente |
+| XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrahieren von Text, z. B. eingebettete Dokumente |
+| XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Extrahieren von Text, z. B. eingebettete Dokumente |
+| PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrahieren von Text, z. B. eingebettete Dokumente |
+| PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Extrahieren von Text, z. B. eingebettete Dokumente |
 | MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Extrahieren von Text, einschließlich Anlagen |
 | ZIP (application/zip) |`metadata_content_type` |Extrahieren von Text aus allen Dokumenten im Archiv |
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Entfernen von XML-Markup und Extrahieren von Text |
-| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, helfen Ihnen die detaillierten Informationen unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) weiter. |
+| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrahieren von Text<br/>HINWEIS: Wenn Sie mehrere Felder des Dokuments aus einem JSON-Blob extrahieren möchten, helfen Ihnen die ausführlichen Informationen unter [Indizierung der JSON-Blobs](search-howto-index-json-blobs.md) weiter. |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Extrahieren von Text, einschließlich Anlagen |
 | Nur-Text (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | |
 
-<a name="CustomMetadataControl"></a>
-
-## Verwenden von benutzerdefinierten Metadaten zum Steuern der Dokumentextrahierung
-Sie können einem Blob Metadateneigenschaften hinzufügen, um bestimmte Aspekte der Blobindizierung und des Prozesses der Dokumentextrahierung zu steuern. Derzeit werden die folgenden Eigenschaften unterstützt:
-
-| Eigenschaftenname | Eigenschaftswert | Erklärung |
-| --- | --- | --- |
-| AzureSearch\_Skip |„true“ |Weist den Blobindexer an, das Blob vollständig zu überspringen. Es wird nicht versucht, Metadaten oder Inhalt zu extrahieren. Dies ist nützlich, wenn Sie bestimmte Inhaltstypen überspringen möchten oder wenn ein bestimmtes Blob wiederholt fehlschlägt und den Indizierungsprozess unterbricht. |
-| AzureSearch\_SkipContent |„true“ |Weist den Blobindexer an, nur die Metadaten zu indizieren und das Extrahieren von Inhalten des Blobs zu überspringen. Dies ist hilfreich, wenn der Blobinhalt nicht weiter relevant ist, Sie aber dennoch die an das Blob angefügten Metadaten indizieren möchten. |
-
-<a name="IndexerParametersConfigurationControl"></a>
-
-## Verwenden von Indexerparametern zum Steuern des Extrahierens von Dokumenten
-Mehrere Konfigurationsparameter stehen für den Indexer zur Verfügung, mit denen gesteuert werden kann, welche Blobs und welche Teile des Inhalts und der Metadaten eines Blobs indiziert werden.
-
-### Indizieren von Blobs mit bestimmten Dateierweiterungen
-Sie können nur die Blobs mit den Dateinamenerweiterungen indizieren, die Sie über den `indexedFileNameExtensions`-Konfigurationsparameter des Indexers angeben. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise nur die PDF- und DOCX-Blobs zu indizieren, gehen Sie folgendermaßen vor:
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
-    }
-
-### Ausschließen von Blobs mit bestimmten Dateierweiterungen von der Indizierung
-Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie verhindern, dass Blobs mit bestimmten Dateinamenerweiterungen indiziert werden. Der Wert ist eine Zeichenfolge mit einer durch Trennzeichen getrennte Liste von Dateierweiterungen (mit einem vorangestellten Punkt). Um beispielsweise alle Blobs mit Ausnahme von Blobs mit den Erweiterungen PNG und JPEG zu indizieren, gehen Sie folgendermaßen vor:
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
-    }
-
-Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden ist, untersucht Azure Search zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions`. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
-
-### Indizieren von Speichermetadaten
-Mithilfe der Konfigurationseigenschaft `indexStorageMetadataOnly` können Sie nur die Speichermetadaten indizieren und den Prozess der Dokumentextrahierung vollständig überspringen. Dies ist hilfreich, wenn Sie weder den Inhalt des Dokuments noch die inhaltstypspezifischen Metadateneigenschaften benötigen. Legen Sie dazu die `indexStorageMetadataOnly`-Eigenschaft auf `true` fest:
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "indexStorageMetadataOnly" : true } }
-    }
-
-### Indizieren von Speicher- und Inhaltstyp-Metadaten und Überspringen der Inhaltsextrahierung
-Falls Sie alle Metadaten extrahieren, aber die Inhaltsextraktion für alle Blobs überspringen möchten, können Sie dieses Verhalten durch die Indexerkonfiguration anfordern, anstatt jedem einzelnen Blob `AzureSearch_SkipContent`-Metadaten hinzuzufügen. Legen Sie zu diesem Zweck die `skipContent`-Konfigurationseigenschaft des Indexers auf `true` fest:
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "skipContent" : true } }
-    }
-
-## Helfen Sie uns bei der Verbesserung von Azure Search
+## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Nov16_HO4-->
+
+

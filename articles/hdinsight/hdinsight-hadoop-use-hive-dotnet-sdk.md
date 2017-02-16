@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 2168147972184e14705781765b9afb3f2ee902e3
+ms.sourcegitcommit: 4ef2546b34461a8303c5ced22adec0d1e36dfa96
+ms.openlocfilehash: 47849e2700d5da391a5cc3b3f1dbf00dd8c8deea
 
 
 ---
@@ -43,7 +43,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
 **So übermitteln Sie Aufträge**
 
 1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio.
-2. Führen Sie in der NuGet-Paket-Manager-Konsole den folgenden Befehl aus.
+2. Führen Sie in der NuGet-Paket-Manager-Konsole den folgenden Befehl aus:
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 3. Verwenden Sie den folgenden Code:
@@ -132,6 +132,10 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
     ```
 4. Drücken Sie **F5** , um die Anwendung auszuführen.
 
+Die Ausgabe der Anwendung sollte Folgendem ähneln:
+
+![Ausgabe des HDInsight Hadoop Hive-Auftrags](./media/hdinsight-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
 
@@ -150,6 +154,6 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

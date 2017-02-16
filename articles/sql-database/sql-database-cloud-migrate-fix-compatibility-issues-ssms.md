@@ -1,6 +1,7 @@
 ---
-title: "Beheben von Kompatibilitätsproblemen der SQL Server-Datenbank mit SQL Server Management Studio vor der Migration zu SQL-Datenbank | Microsoft Docs"
-description: "Microsoft Azure SQL-Datenbank, Datenbankmigration, Kompatibilität, Migrations-Assistent für SQL Azure"
+title: "SSMS: Beheben von Kompatibilitätsproblemen bei der Migration zu Azure SQL-Datenbank | Microsoft Docs"
+description: "In diesem Artikel erfahren Sie, wie Sie vor der Migration zu Azure SQL-Datenbank Kompatibilitätsprobleme von SQL Server-Datenbank mithilfe von SQL Server Management Studio beheben."
+keywords: "Microsoft Azure SQL-Datenbank, Datenbankmigration, Kompatibilität, Migrations-Assistent für SQL Azure"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,18 +17,17 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 355353fb15a00860573699cc652543b61c62c2c1
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 841c4d644c6b096251e1ecefac17a8254b5ca712
 
 
 ---
 # <a name="fix-sql-server-database-compatibility-issues-using-sql-server-management-studio-before-migration-to-sql-database"></a>Beheben von Kompatibilitätsproblemen der SQL Server-Datenbank mit SQL Server Management Studio vor der Migration zu einer SQL-Datenbank
 > [!div class="op_single_selector"]
-> * Mit dem [SQL Azure-Migrations-Assistenten](sql-database-cloud-migrate-fix-compatibility-issues.md)
+> * Mit [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 > * Mit [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
 > * Mit [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
-> 
-> 
+>  
 
 Fortgeschrittene Benutzer können Kompatibilitätsprobleme von SQL Server-Datenbank mithilfe von SQL Server Management Studio vor der Migration zu Azure SQL-Datenbank beheben.
 
@@ -52,6 +52,6 @@ Verwenden Sie SQL Server Management Studio zum Beheben von Kompatibilitätsprobl
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

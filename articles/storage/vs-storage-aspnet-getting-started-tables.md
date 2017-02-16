@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 12/21/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 07f827e13e5f01a373e69b90e8a5a0c72081acd0
-ms.openlocfilehash: 24cfb3217dbadba3a086a8b0251efe5ab0173d1f
+ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
+ms.openlocfilehash: ca603d4833336ddee1474d365d57159bc288303f
 
 
 ---
@@ -27,308 +27,694 @@ ms.openlocfilehash: 24cfb3217dbadba3a086a8b0251efe5ab0173d1f
 
 Azure-Tabellenspeicher ermöglicht das Speichern großer Mengen von strukturierten Daten. Der Dienst ist ein NoSQL-Datenspeicher, der authentifizierte Aufrufe von innerhalb und außerhalb der Azure-Cloud akzeptiert. Azure-Tabellen sind hervorragend zur Speicherung strukturierter nicht relationaler Daten geeignet.
 
-In diesem Artikel wird beschrieben, wie Sie Azure Table Storage-Entitäten programmgesteuert verwalten, allgemeine Aufgaben wie das Erstellen und Löschen einer Tabelle ausführen und mit Tabellenentitäten arbeiten. 
+In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwendete Szenarien mit Azure-Tabellenspeicherentitäten schreiben. Die behandelten Szenarien umfassen das Erstellen einer Tabelle sowie das Hinzufügen, Abfragen und Löschen von Tabellenentitäten. 
+
+##<a name="prerequisites"></a>Voraussetzungen
+
+* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Azure-Speicherkonto](storage-create-storage-account.md#create-a-storage-account)
+
+[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+
+[!INCLUDE [storage-create-account-include](../../includes/vs-storage-aspnet-getting-started-create-azure-account.md)]
+
+[!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
+
+### <a name="create-an-mvc-controller"></a>Erstellen eines MVC-Controllers 
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Controller**, und wählen Sie im Kontextmenü **Hinzufügen > Controller** aus.
+
+    ![Hinzufügen eines Controllers zu einer ASP.NET-MVC-App](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
+
+1. Wählen Sie im Dialogfeld **Gerüst hinzufügen** die Option **MVC 5 Controller - Leer** und dann **Hinzufügen**.
+
+    ![Angeben des MVC-Controllertyps](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
+
+1. Benennen Sie den Controller im Dialogfeld **Controller hinzufügen** mit *TablesController*, und wählen Sie **Hinzufügen**.
+
+    ![Benennen des MVC-Controllers](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
+
+1. Fügen Sie die folgenden *using*-Anweisungen der `TablesController.cs`-Datei hinzu:
+
+    ```csharp
+    using Microsoft.Azure;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Table;
+    ```
+
+### <a name="create-a-model-class"></a>Erstellen einer Modellklasse
+
+In vielen der Beispiele in diesem Artikel wird eine **TableEntity**-abgeleitete Klasse mit dem Namen **CustomerEntity** verwendet. Die folgenden Schritte führen Sie durch das Deklarieren dieser Klasse als Modellklasse:
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und wählen Sie im Kontextmenü **Hinzufügen > Klasse** aus.
+
+1. Geben Sie der Klasse im Dialogfeld **Neues Element hinzufügen** den Namen **CustomerEntity**.
+
+1. Öffnen Sie die `CustomerEntity.cs`-Datei, und fügen Sie die folgenden **using**-Direktiven hinzu:
+
+    ```csharp
+    using Microsoft.WindowsAzure.Storage.Table;
+    ```
+
+1. Ändern Sie die Klasse so, dass sie anschließend wie im folgenden Code deklariert wird. Die Klasse deklariert eine Entitätsklasse namens **CustomerEntity**, die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet.
+
+    ```csharp
+    public class CustomerEntity : TableEntity
+    {
+        public CustomerEntity(string lastName, string firstName)
+        {
+            this.PartitionKey = lastName;
+            this.RowKey = firstName;
+        }
+
+        public CustomerEntity() { }
+
+        public string Email { get; set; }
+    }
+    ```
+
+## <a name="create-a-table"></a>Erstellen einer Tabelle
+
+Die folgenden Schritte veranschaulichen, wie Sie eine Tabelle erstellen:
 
 > [!NOTE]
 > 
-> In den Codeabschnitten in diesem Artikel wird davon ausgegangen, dass Sie bereits über Verbundene Dienste eine Verbindung mit einem Azure-Speicherkonto hergestellt haben. Verbundene Dienste wird konfiguriert, indem Sie den Visual Studio Projektmappen-Explorer öffnen, mit der rechten Maustaste auf das Projekt klicken und dann im Kontextmenü **Hinzufügen->Verbundener Dienst** auswählen. Befolgen Sie die Anleitungen im eingeblendeten Dialogfeld zum Herstellen der Verbindung mit dem gewünschten Azure-Speicherkonto.      
+> In diesem Abschnitt wird vorausgesetzt, dass Sie die Schritte zum [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben. 
 
-## <a name="create-a-table-in-code"></a>Erstellen einer Tabelle in Code
+1. Öffnen Sie die Datei `TablesController.cs` .
 
-Die folgenden Schritte beschreiben, wie Sie eine Tabelle programmgesteuert erstellen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden.
+1. Fügen Sie eine Methode namens **CreateTable** hinzu, die ein **ActionResult** zurückgibt.
 
-1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+    ```csharp
+    public ActionResult CreateTable()
+    {
+        // The code in this section goes here.
 
-         using Microsoft.Azure;
-         using Microsoft.WindowsAzure.Storage;
-         using Microsoft.WindowsAzure.Storage.Auth;
-         using Microsoft.WindowsAzure.Storage.Table;
+        return View();
+    }
+    ```
 
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
-
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-
-3. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
-
-        CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-
-
-4. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. (Ändern Sie *<table-name>* in den Namen der Tabelle, den Sie erstellen möchten.)
-
-        CloudTable table = tableClient.GetTableReference(<table-name>);
-
-5. Rufen Sie die **CloudTable.CreateIfNotExists**-Methode auf, um die Tabelle zu erstellen, falls noch nicht vorhanden.   
+1. Rufen Sie in der **CreateTable**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
-        table.CreateIfNotExists();
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
+
+1. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+   
+    ```csharp
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
+
+1. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. Die **CloudTableClient.GetTableReference**-Methode stellt keine Anforderung an den Tabellenspeicher. Der Verweis wird zurückgegeben, und zwar unabhängig davon, ob die Tabelle vorhanden ist oder nicht. 
+   
+    ```csharp
+    CloudTable table = tableClient.GetTableReference("TestTable");
+    ```
+
+1. Rufen Sie die **CloudTable.CreateIfNotExists**-Methode auf, um die Tabelle zu erstellen, falls noch nicht vorhanden. Die **CloudTable.CreateIfNotExists**-Methode gibt **true** zurück, wenn die Tabelle nicht vorhanden ist und erfolgreich erstellt wurde. Andernfalls wird **false** zurückgegeben.    
+
+    ```csharp
+    ViewBag.Success = table.CreateIfNotExists();
+    ```
+
+1. Aktualisieren Sie **ViewBag** mit dem Namen der Tabelle.
+
+    ```csharp
+    ViewBag.TableName = table.Name;
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf **Tabellen**, und wählen Sie im Kontextmenü **Hinzufügen > Ansicht** aus.
+
+1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **CreateTable** ein, und wählen Sie **Hinzufügen**.
+
+1. Öffnen Sie `CreateTable.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
+
+    ```csharp
+    @{
+        ViewBag.Title = "Create Table";
+    }
+    
+    <h2>Create Table results</h2>
+
+    Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
+
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
+
+    ```html
+    <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
+    ```
+
+1. Führen Sie die Anwendung aus, und wählen Sie **Tabelle erstellen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+  
+    ![Tabelle erstellen](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+
+    Wie bereits erwähnt, gibt die **CloudTable.CreateIfNotExists**-Methode nur dann **true** zurück, wenn die Tabelle nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn die Tabelle vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie die Tabelle vor dem erneuten Ausführen der App löschen. Das Löschen der Tabelle kann mit der **CloudTable.Delete**-Methode durchgeführt werden. Sie können die Tabelle auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
 
 ## <a name="add-an-entity-to-a-table"></a>Hinzufügen einer Entität zu einer Tabelle
 
-Die folgenden Schritte beschreiben, wie Sie eine Entität einer Tabelle programmgesteuert hinzufügen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden. 
+*Entitäten* werden C\#-Objekten zugeordnet, indem eine benutzerdefinierte Klasse verwendet wird, die aus **TableEntity** abgeleitet wurde. Erstellen Sie eine Klasse, mit der die Eigenschaften der Entität definiert werden, um eine Entität zu einer Tabelle hinzuzufügen. In diesem Abschnitt erfahren Sie, wie eine Entitätsklasse definiert wird, die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet. In Kombination miteinander wird mit dem Partitions- und Zeilenschlüssel eine Entität in der Tabelle eindeutig identifiziert. Entitäten mit dem gleichen Partitionsschlüssel können schneller abgerufen werden als Entitäten mit unterschiedlichen Partitionsschlüsseln, die Verwendung verschiedener Partitionsschlüssel ermöglicht jedoch eine größere Skalierbarkeit paralleler Vorgänge. Bei jeder Eigenschaft, die im Tabellendienst gespeichert werden soll, muss es sich um eine öffentliche Eigenschaft eines unterstützten Typs handeln, für die sowohl Werte festgelegt als auch Werte abgerufen werden können.
+Die Entitätsklasse *muss* einen öffentlichen parameterlosen Konstruktor deklarieren.
 
-1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+> [!NOTE]
+> 
+> In diesem Abschnitt wird vorausgesetzt, dass Sie die Schritte zum [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben.
 
-         using Microsoft.Azure;
-         using Microsoft.WindowsAzure.Storage;
-         using Microsoft.WindowsAzure.Storage.Auth;
-         using Microsoft.WindowsAzure.Storage.Table;
+1. Öffnen Sie die Datei `TablesController.cs` .
 
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Fügen Sie die folgende Direktive hinzu, damit der Code in der `TablesController.cs`-Datei auf die **CustomerEntity**-Klasse zugreifen kann:
 
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```csharp
+    using StorageAspnet.Models;
+    ```
 
-3. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+1. Fügen Sie eine Methode namens **AddEntity** hinzu, die ein **ActionResult** zurückgibt.
 
-        CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```csharp
+    public ActionResult AddEntity()
+    {
+        // The code in this section goes here.
 
+        return View();
+    }
+    ```
 
-4. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. (Ändern Sie *<table-name>* in den Namen der Tabelle, der Sie die Entität hinzufügen möchten.)
+1. Rufen Sie in der **AddEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 
-        CloudTable table = tableClient.GetTableReference(<table-name>);
+1. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+   
+    ```csharp
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 
-5. Um einer Tabelle eine Entität hinzuzufügen, definieren Sie eine von **TableEntity** abgeleitete Klasse. Der folgenden Code definiert eine Entitätsklasse namens **CustomerEntity** , die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet.
+1. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf die Tabelle darstellt, der Sie die neue Entität hinzufügen möchten. 
+   
+    ```csharp
+    CloudTable table = tableClient.GetTableReference("TestTable");
+    ```
 
-        public class CustomerEntity : TableEntity
-        {
-            public CustomerEntity(string lastName, string firstName)
-            {
-                this.PartitionKey = lastName;
-                this.RowKey = firstName;
-            }
+1. Instanziieren und initialisieren Sie die **CustomerEntity**-Klasse.
+
+    ```csharp
+    CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
+    customer1.Email = "Walter@contoso.com";
+    ```
+
+1. Erstellen Sie ein **TableOperation**-Objekt, das die Kundenentität einfügt.
+
+    ```csharp
+    TableOperation insertOperation = TableOperation.Insert(customer1);
+    ```
+
+1. Führen Sie den Einfügevorgang durch Aufrufen der **CloudTable.Execute**-Methode aus. Sie können das Ergebnis des Vorgangs überprüfen, indem Sie die **TableResult.HttpStatusCode**-Eigenschaft untersuchen. Der Statuscode 2xx gibt an, dass die vom Client angeforderte Aktion erfolgreich verarbeitet wurde. Erfolgreiche Einfügungen neuer Entitäten führen z.B. zum HTTP-Statuscode 204, was bedeutet, dass der Vorgang erfolgreich verarbeitet wurde und der Server keine Inhalte zurückgegeben hat.
+
+    ```csharp
+    TableResult result = table.Execute(insertOperation);
+    ```
+
+1. Aktualisieren Sie **ViewBag** mit dem Tabellennamen und den Ergebnissen des Einfügevorgangs.
+
+    ```csharp
+    ViewBag.TableName = table.Name;
+    ViewBag.Result = result.HttpStatusCode;
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf **Tabellen**, und wählen Sie im Kontextmenü **Hinzufügen > Ansicht** aus.
+
+1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **AddEntity** ein, und wählen Sie **Hinzufügen**.
+
+1. Öffnen Sie `AddEntity.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
+
+    ```csharp
+    @{
+        ViewBag.Title = "Add entity";
+    }
     
-            public CustomerEntity() { }
-    
-            public string Email { get; set; }
-        }
+    <h2>Add entity results</h2>
 
-6. Instanziieren Sie die Entität.
+    Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
+    ```
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-        CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-        customer1.Email = "Walter@contoso.com";
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
-7. Erstellen Sie das **TableOperation**-Objekt, das die Kundenentität einfügt.
+    ```html
+    <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
+    ```
 
-        TableOperation insertOperation = TableOperation.Insert(customer1);
+1. Führen Sie die Anwendung aus, und wählen Sie **Entität hinzufügen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+  
+    ![Hinzufügen einer Entität](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
-8. Führen Sie den Einfügevorgang durch Aufrufen der **CloudTable.Execute**-Methode aus. Sie können das Ergebnis des Vorgangs überprüfen, indem Sie die **TableResult.HttpStatusCode**-Eigenschaft untersuchen. Der Statuscode 2xx gibt an, dass die vom Client angeforderte Aktion erfolgreich verarbeitet wurde. Erfolgreiche Einfügungen neuer Entitäten führen z.B. zum HTTP-Statuscode 204, was bedeutet, dass der Vorgang erfolgreich verarbeitet wurde und der Server keine Inhalte zurückgegeben hat.
-
-        TableResult result = table.Execute(insertOperation);
-
-        // Inspect result.HttpStatusCode for success/failure.
+    Sie können anhand der Schritte im Abschnitt [Abrufen einer einzelnen Entität](#get-a-single-entity) überprüfen, ob die Entität hinzugefügt wurde. Sie können auch mit dem [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) alle Entitäten für Ihre Tabellen anzeigen.
 
 ## <a name="add-a-batch-of-entities-to-a-table"></a>Hinzufügen eines Entitätsbatchs zu einer Tabelle
 
-Sie können nicht nur Entitäten einzeln nacheinander einer Tabelle hinzufügen, sondern auch Entitäten als Batch hinzufügen. Dies reduziert die Anzahl von Roundtrips zwischen Ihrem Code und dem Azure-Tabellenspeicherdienst. Die folgenden Schritte beschreiben, wie Sie einer Tabelle programmgesteuert mehrere Entitäten in einem Vorgang hinzufügen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden.
+Sie können nicht nur Entitäten [einzeln nacheinander einer Tabelle hinzufügen](#add-an-entity-to-a-table), sondern auch Entitäten als Batch hinzufügen. Das Hinzufügen von Entitäten als Batch reduziert die Anzahl von Roundtrips zwischen Ihrem Code und dem Azure-Tabellenspeicherdienst. Die folgenden Schritte zeigen, wie Sie einer Tabelle mehrere Entitäten in einem einzigen Vorgang hinzufügen:
 
-1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+> [!NOTE]
+> 
+> In diesem Abschnitt wird vorausgesetzt, dass Sie die Schritte zum [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben.
 
-         using Microsoft.Azure;
-         using Microsoft.WindowsAzure.Storage;
-         using Microsoft.WindowsAzure.Storage.Auth;
-         using Microsoft.WindowsAzure.Storage.Table;
+1. Öffnen Sie die Datei `TablesController.cs` .
 
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Fügen Sie eine Methode namens **AddEntities** hinzu, die ein **ActionResult** zurückgibt.
 
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```csharp
+    public ActionResult AddEntities()
+    {
+        // The code in this section goes here.
 
-3. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+        return View();
+    }
+    ```
 
-        CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+1. Rufen Sie in der **AddEntities**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 
+1. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+   
+    ```csharp
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 
-4. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. (Ändern Sie *<table-name>* in den Namen der Tabelle, der Sie die Entitäten hinzufügen möchten.)
+1. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf die Tabelle darstellt, der Sie die neuen Entitäten hinzufügen möchten. 
+   
+    ```csharp
+    CloudTable table = tableClient.GetTableReference("TestTable");
+    ```
 
-        CloudTable table = tableClient.GetTableReference(<table-name>);
+1. Instanziieren Sie einige Kundenobjekte, die auf der **CustomerEntity**-Modellklasse basieren, die im Abschnitt [Hinzufügen einer Entität zu einer Tabelle](#add-an-entity-to-a-table) vorgestellt werden.
 
-5. Um einer Tabelle eine Entität hinzuzufügen, definieren Sie eine von **TableEntity** abgeleitete Klasse. Der folgenden Code definiert eine Entitätsklasse namens **CustomerEntity** , die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet.
+    ```csharp
+    CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
+    customer1.Email = "Jeff@contoso.com";
 
-        public class CustomerEntity : TableEntity
+    CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
+    customer2.Email = "Ben@contoso.com";
+    ```
+
+1. Rufen Sie ein **TableBatchOperation**-Objekt ab.
+
+    ```csharp
+    TableBatchOperation batchOperation = new TableBatchOperation();
+    ```
+
+1. Fügen Sie Entitäten dem Batcheinfügevorgangs-Objekt hinzu.
+
+    ```csharp
+    batchOperation.Insert(customer1);
+    batchOperation.Insert(customer2);
+    ```
+
+1. Führen Sie den Batcheinfügevorgang durch Aufrufen der **CloudTable.ExecuteBatch**-Methode aus.   
+
+    ```csharp
+    IList<TableResult> results = table.ExecuteBatch(batchOperation);
+    ```
+
+1. Die **CloudTable.ExecuteBatch**-Methode gibt eine Liste von **TableResult**-Objekten zurück, wobei jedes **TableResult**-Objekt untersucht werden kann, um festzustellen, ob die einzelnen Vorgänge erfolgreich verlaufen, oder ob Fehler aufgetreten sind. In diesem Beispiel übergeben Sie die Liste einer Ansicht, und lassen Sie die Ergebnisse jedes Vorgangs in der Ansicht anzeigen. 
+ 
+    ```csharp
+    return View(results);
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf **Tabellen**, und wählen Sie im Kontextmenü **Hinzufügen > Ansicht** aus.
+
+1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **AddEntities** ein, und wählen Sie **Hinzufügen**.
+
+1. Öffnen Sie `AddEntities.cshtml`, und ändern Sie die Datei folgendermaßen:
+
+    ```csharp
+    @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
+    @{
+        ViewBag.Title = "AddEntities";
+    }
+    
+    <h2>Add-entities results</h2>
+    
+    <table border="1">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>HTTP result</th>
+        </tr>
+        @foreach (var result in Model)
         {
-            public CustomerEntity(string lastName, string firstName)
-            {
-                this.PartitionKey = lastName;
-                this.RowKey = firstName;
-            }
-    
-            public CustomerEntity() { }
-    
-            public string Email { get; set; }
+        <tr>
+            <td>@((result.Result as StorageAspnet.Models.CustomerEntity).RowKey)</td>
+            <td>@((result.Result as StorageAspnet.Models.CustomerEntity).PartitionKey)</td>
+            <td>@result.HttpStatusCode</td>
+        </tr>
         }
+    </table>
+    ```
 
-6. Instanziieren Sie die Entitäten.
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-        CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-        customer1.Email = "Jeff@contoso.com";
-    
-        CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-        customer2.Email = "Ben@contoso.com";
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
-7. Rufen Sie ein **TableBatchOperation**-Objekt ab.
+    ```html
+    <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
+    ```
 
-        TableBatchOperation batchOperation = new TableBatchOperation();
+1. Führen Sie die Anwendung aus, und wählen Sie **Entitäten hinzufügen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+  
+    ![Hinzufügen von Entitäten](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
-8. Fügen Sie Entitäten dem Batcheinfügevorgang hinzu.
-
-        batchOperation.Insert(customer1);
-        batchOperation.Insert(customer2);
-
-9. Führen Sie den Batcheinfügevorgang durch Aufrufen der **CloudTable.ExecuteBatch**-Methode aus. Die **CloudTable.ExecuteBatch**-Methode gibt eine Liste von **TableResult**-Objekten zurück. Sie können das Ergebnis des Batcheinfügevorgangs überprüfen, indem Sie die **TableResult.HttpStatusCode**-Eigenschaft jedes **TableResult**-Objekts in der Liste untersuchen. Der Statuscode 2xx gibt an, dass die vom Client angeforderte Aktion erfolgreich verarbeitet wurde. Erfolgreiche Einfügungen neuer Entitäten führen z.B. zum HTTP-Statuscode 204, was bedeutet, dass der Vorgang erfolgreich verarbeitet wurde und der Server keine Inhalte zurückgegeben hat.
-    
-        IList<TableResult> results = table.ExecuteBatch(batchOperation);
-
-        // Inspect the HttpStatusCode property of each TableResult object
-        // in the results list for success/failure.
+    Sie können anhand der Schritte im Abschnitt [Abrufen einer einzelnen Entität](#get-a-single-entity) überprüfen, ob die Entität hinzugefügt wurde. Sie können auch mit dem [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) alle Entitäten für Ihre Tabellen anzeigen.
 
 ## <a name="get-a-single-entity"></a>Abrufen einer einzelnen Entität
 
-Die folgenden Schritte beschreiben, wie Sie eine Entität programmgesteuert aus einer Tabelle abrufen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden. 
+Dieser Abschnitt veranschaulicht, wie eine einzelne Entität aus einer Tabelle mithilfe des Zeilenschlüssels und Partitionsschlüssels der Entität abgerufen wird. 
 
 > [!NOTE]
 > 
-> Der Code in diesem Abschnitt verweist auf die **CustomerEntity**-Klasse und Daten, die im Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) gezeigt wurden. 
+> Dieser Abschnitt setzt voraus, dass Sie die Schritte in [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben, und verwendet Daten aus [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table). 
 
-1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+1. Öffnen Sie die Datei `TablesController.cs` .
 
-         using Microsoft.Azure;
-         using Microsoft.WindowsAzure.Storage;
-         using Microsoft.WindowsAzure.Storage.Auth;
-         using Microsoft.WindowsAzure.Storage.Table;
+1. Fügen Sie eine Methode namens **GetSingle** hinzu, die ein **ActionResult** zurückgibt.
 
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+    ```csharp
+    public ActionResult GetSingle()
+    {
+        // The code in this section goes here.
 
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+        return View();
+    }
+    ```
 
-3. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+1. Rufen Sie in der **GetSingle**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 
-        CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+1. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+   
+    ```csharp
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 
+1. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf die Tabelle darstellt, aus der Sie die Entität abrufen. 
+   
+    ```csharp
+    CloudTable table = tableClient.GetTableReference("TestTable");
+    ```
 
-4. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. (Ändern Sie *<table-name>* in den Namen der Tabelle, der Sie die Entitäten hinzufügen möchten.)
+1. Erstellen Sie ein Abrufvorgangsobjekt, das ein von **TableEntity** abgeleitetes Entitätsobjekt verwendet. Der erste Parameter ist *partitionKey* und der zweite Parameter *rowKey*. Mithilfe der **CustomerEntity**-Klasse und den Daten aus dem Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) fragt der folgende Codeausschnitt die Tabelle auf eine **CustomerEntity**-Entität mit dem *partitionKey*-Wert „Smith“ und *rowKey*-Wert „Ben“ ab:
 
-        CloudTable table = tableClient.GetTableReference(<table-name>);
+    ```csharp
+    TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+    ```
 
-5. Erstellen Sie ein Abrufvorgangsobjekt, das ein von **TableEntity** abgeleitetes Entitätsobjekt verwendet. Der erste Parameter ist *partitionKey* und der zweite Parameter *rowKey*. Mithilfe der **CustomerEntity**-Klasse und den Daten aus dem Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) fragt der folgende Codeausschnitt die Tabelle auf eine **CustomerEntity**-Entität mit dem *partitionKey*-Wert „Smith“ und *rowKey*-Wert „Ben“ ab.  
+1. Führen Sie den Abrufvorgang aus.   
 
-        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+    ```csharp
+    TableResult result = table.Execute(retrieveOperation);
+    ```
 
-6. Führen Sie den Abrufvorgang aus.   
+1. Übergeben Sie das Ergebnis der Ansicht zur Anzeige.
 
-        TableResult retrievedResult = table.Execute(retrieveOperation);
+    ```csharp
+    return View(result);
+    ```
 
-7. Überprüfen Sie das Ergebnis des Vorgangs durch Untersuchen der **TableOperation.HttpStatusCode**-Eigenschaft, wobei der Statuscode 200 bedeutet, dass die vom Client angeforderte Aktion erfolgreich verarbeitet wurde. Sie können auch die **TableResult.Result**-Eigenschaft untersuchen, die (falls der Vorgang erfolgreich war) die zurückgegebene Entität enthält.
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf **Tabellen**, und wählen Sie im Kontextmenü **Hinzufügen > Ansicht** aus.
 
-        CustomerEntity customer = null;
+1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **GetSingle** ein, und wählen Sie **Hinzufügen**.
 
-        if (retrievedResult.HttpStatusCode == 200 && retrievedResult.Result != null)
-        {
-            // Process the customer entity.
-            customer = retrievedResult.Result as CustomerEntity;
-        }
+1. Öffnen Sie `GetSingle.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
+
+    ```csharp
+    @model Microsoft.WindowsAzure.Storage.Table.TableResult
+    @{
+        ViewBag.Title = "GetSingle";
+    }
+    
+    <h2>Get Single results</h2>
+    
+    <table border="1">
+        <tr>
+            <th>HTTP result</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>@Model.HttpStatusCode</td>
+            <td>@((Model.Result as StorageAspnet.Models.CustomerEntity).RowKey)</td>
+            <td>@((Model.Result as StorageAspnet.Models.CustomerEntity).PartitionKey)</td>
+            <td>@((Model.Result as StorageAspnet.Models.CustomerEntity).Email)</td>
+        </tr>
+    </table>
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
+
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
+
+    ```html
+    <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
+    ```
+
+1. Führen Sie die Anwendung aus, und wählen Sie **Einzelne Entität abrufen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+  
+    ![Abrufen einer einzelnen Entität](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
 ## <a name="get-all-entities-in-a-partition"></a>Abrufen aller Entitäten einer Partition
 
-Die folgenden Schritte beschreiben, wie Sie alle Entitäten programmgesteuert aus einer Partition abrufen. In einer ASP.NET MVC-Anwendung würde sich der Code in einem Controller befinden. 
+Wie im Abschnitt [Hinzufügen einer Entität zu einer Tabelle](#add-an-entity-to-a-table) erwähnt, identifiziert die Kombination aus einer Partition und einem Zeilenschlüssel eine Entität in einer Tabelle eindeutig. Entitäten mit dem gleichen Partitionsschlüssel können schneller abgefragt werden als Entitäten mit verschiedenen Schlüsseln. Dieser Abschnitt veranschaulicht das Abfragen einer Tabelle für alle Entitäten einer angegebenen Partition.  
 
 > [!NOTE]
 > 
-> Der Code in diesem Abschnitt verweist auf die **CustomerEntity**-Klasse und Daten, die im Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) gezeigt wurden. 
+> Dieser Abschnitt setzt voraus, dass Sie die Schritte in [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben, und verwendet Daten aus [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table). 
 
-1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+1. Öffnen Sie die Datei `TablesController.cs` .
 
-         using Microsoft.Azure;
-         using Microsoft.WindowsAzure.Storage;
-         using Microsoft.WindowsAzure.Storage.Auth;
-         using Microsoft.WindowsAzure.Storage.Table;
+1. Fügen Sie eine Methode namens **GetPartition** hinzu, die ein **ActionResult** zurückgibt.
 
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+    ```csharp
+    public ActionResult GetPartition()
+    {
+        // The code in this section goes here.
 
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+        return View();
+    }
+    ```
 
-3. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+1. Rufen Sie in der **GetPartition**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 
-        CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+1. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+   
+    ```csharp
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 
+1. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf die Tabelle darstellt, aus der Sie die Entitäten abrufen. 
+   
+    ```csharp
+    CloudTable table = tableClient.GetTableReference("TestTable");
+    ```
 
-4. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. (Ändern Sie *<table-name>* in den Namen der Tabelle, der Sie die Entitäten hinzufügen möchten.)
+1. Instanziieren Sie ein **TableQuery**-Objekt, und geben Sie die Abfrage in der **Where**-Klausel an. Mithilfe der **CustomerEntity**-Klasse und den Daten aus dem Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) fragt der folgende Codeausschnitt die Tabelle auf alle Entitäten ab, deren **PartitionKey** (Nachname des Kunden) den Wert „Smith“ hat:
 
-        CloudTable table = tableClient.GetTableReference(<table-name>);
+    ```csharp
+    TableQuery<CustomerEntity> query = 
+        new TableQuery<CustomerEntity>()
+        .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
+    ```
 
-5. Instanziieren Sie ein **TableQuery**-Objekt, und geben Sie die Abfrage in der **Where**-Klausel an. Mithilfe der **CustomerEntity**-Klasse und den Daten aus dem Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) fragt der folgende Codeausschnitt die Tabelle auf alle Entitäten ab, deren **PartitionKey** den Wert „Smith“ hat.
+1. Rufen Sie in einer Schleife die **CloudTable.ExecuteQuerySegmented**-Methode auf, um das Abfrageobjekt zu übergeben, das Sie im vorherigen Schritt instanziiert haben.  Die **CloudTable.ExecuteQuerySegmented**-Methode gibt ein **TableContinuationToken**-Objekt zurück. Wenn diese den Wert **null** hat, bedeutet dies, dass es keine weiteren abzurufenden Entitäten gibt. Verwenden Sie innerhalb der Schleife eine andere Schleife zum Durchlaufen der zurückgegebenen Entitäten. Im folgenden Codebeispiel wird jede zurückgegebene Entität einer Liste hinzugefügt. Sobald die Schleife beendet ist, wird die Liste einer Ansicht zur Anzeige übergeben: 
 
-        TableQuery<CustomerEntity> query = 
-            new TableQuery<CustomerEntity>()
-            .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
+    ```csharp
+    List<CustomerEntity> customers = new List<CustomerEntity>();
+    TableContinuationToken token = null;
+    do
+    {
+        TableQuerySegment<CustomerEntity> resultSegment = table.ExecuteQuerySegmented(query, token);
+        token = resultSegment.ContinuationToken;
 
-6. Rufen Sie in einer Schleife die **CloudTable.ExecuteQuerySegmented**-Methode auf, um das Abfrageobjekt zu übergeben, das Sie im vorherigen Schritt instanziiert haben.  Die **CloudTable.ExecuteQuerySegmented**-Methode gibt ein **TableContinuationToken**-Objekt zurück. Wenn diese den Wert **null** hat, bedeutet dies, dass es keine weiteren abzurufenden Entitäten gibt. Verwenden Sie innerhalb der Schleife eine andere Schleife zum Durchlaufen der zurückgegebenen Entitäten.
-
-        TableContinuationToken token = null;
-        do
+        foreach (CustomerEntity customer in resultSegment.Results)
         {
-            TableQuerySegment<CustomerEntity>resultSegment = table.ExecuteQuerySegmented(query, token);
-            token = resultSegment.ContinuationToken;
+            customers.Add(customer);
+        }
+    } while (token != null);
 
-            foreach (CustomerEntity customer in resultSegment.Results)
-            {
-                // Process customer entity.
-            }
-        } while (token != null);
+    return View(customers);
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf **Tabellen**, und wählen Sie im Kontextmenü **Hinzufügen > Ansicht** aus.
+
+1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **GetPartition** ein, und wählen Sie **Hinzufügen**.
+
+1. Öffnen Sie `GetPartition.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
+
+    ```csharp
+    @model IEnumerable<StorageAspnet.Models.CustomerEntity>
+    @{
+        ViewBag.Title = "GetPartition";
+    }
+    
+    <h2>Get Partition results</h2>
+    
+    <table border="1">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@(customer.RowKey)</td>
+            <td>@(customer.PartitionKey)</td>
+            <td>@(customer.Email)</td>
+        </tr>
+        }
+    </table>
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
+
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
+
+    ```html
+    <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
+    ```
+
+1. Führen Sie die Anwendung aus, und wählen Sie **Partition abrufen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+  
+    ![Abrufen einer Partition](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
 ## <a name="delete-an-entity"></a>Löschen einer Entität
 
-Die folgenden Schritte veranschaulichen, wie Sie eine Entität suchen und löschen.
+Dieser Abschnitt zeigt das Löschen einer Entität aus einer Tabelle.
 
-1. Fügen Sie die folgenden *using*-Direktiven hinzu:
+> [!NOTE]
+> 
+> Dieser Abschnitt setzt voraus, dass Sie die Schritte in [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben, und verwendet Daten aus [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table). 
 
-         using Microsoft.Azure;
-         using Microsoft.WindowsAzure.Storage;
-         using Microsoft.WindowsAzure.Storage.Auth;
-         using Microsoft.WindowsAzure.Storage.Table;
+1. Öffnen Sie die Datei `TablesController.cs` .
 
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Fügen Sie eine Methode namens **DeleteEntity** hinzu, die ein **ActionResult** zurückgibt.
 
-         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```csharp
+    public ActionResult DeleteEntity()
+    {
+        // The code in this section goes here.
 
-3. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+        return View();
+    }
+    ```
 
-        CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+1. Rufen Sie in der **DeleteEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+   
+    ```csharp
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+       CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
+    ```
 
+1. Rufen Sie ein **CloudTableClient**-Objekt ab, das einen Tabellenspeicherdienst-Client darstellt.
+   
+    ```csharp
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    ```
 
-4. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf den gewünschten Tabellennamen darstellt. (Ändern Sie *<table-name>* in den Namen der Tabelle, der Sie die Entitäten hinzufügen möchten.)
+1. Rufen Sie ein **CloudTable**-Objekt ab, das einen Verweis auf die Tabelle darstellt, aus der Sie die Entität löschen. 
+   
+    ```csharp
+    CloudTable table = tableClient.GetTableReference("TestTable");
+    ```
 
-        CloudTable table = tableClient.GetTableReference(<table-name>);
+1. Erstellen Sie ein Löschvorgangsobjekt, das ein von **TableEntity** abgeleitetes Entitätsobjekt verwendet. In diesem Fall werden die **CustomerEntity**-Klasse und Daten verwendet, die im Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) gezeigt wurden. Für das **ETag** der Entität muss ein gültiger Wert festgelegt werden.  
 
-5. Erstellen Sie ein Abrufvorgangsobjekt, das ein von **TableEntity** abgeleitetes Entitätsobjekt verwendet. Der erste Parameter ist *partitionKey* und der zweite Parameter *rowKey*. Mithilfe der **CustomerEntity**-Klasse und den Daten aus dem Abschnitt [Hinzufügen eines Entitätsbatchs zu einer Tabelle](#add-a-batch-of-entities-to-a-table) fragt der folgende Codeausschnitt die Tabelle auf eine **CustomerEntity**-Entität mit dem *partitionKey*-Wert „Smith“ und *rowKey*-Wert „Ben“ ab.  
+    ```csharp
+    TableOperation deleteOperation = 
+        TableOperation.Delete(new CustomerEntity("Smith", "Ben") { ETag = "*" } );
+    ```
 
-        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+1. Führen Sie den Löschvorgang aus.   
 
-6. Führen Sie den Abrufvorgang aus.   
+    ```csharp
+    TableResult result = table.Execute(deleteOperation);
+    ```
 
-        TableResult retrievedResult = table.Execute(retrieveOperation);
+1. Übergeben Sie das Ergebnis der Ansicht zur Anzeige.
 
-7. Überprüfen Sie das Ergebnis des Vorgangs durch Untersuchen der **TableOperation.HttpStatusCode**-Eigenschaft, wobei der Statuscode 200 bedeutet, dass die vom Client angeforderte Aktion erfolgreich verarbeitet wurde. Sie können auch die **TableResult.Result**-Eigenschaft untersuchen, die (falls der Vorgang erfolgreich war) die zurückgegebene Entität enthält. Erstellen Sie innerhalb der bedingten Anweisung zum Überprüfen, ob der Vorgang erfolgreich war, einen Löschvorgang (indem Sie die von der Abfrage zurückgegebene Entität übergeben), und führen Sie den Löschvorgang aus.
+    ```csharp
+    return View(result);
+    ```
 
-        if (retrievedResult.HttpStatusCode == 200 && retrievedResult.Result != null)
-        {
-            CustomerEntity customer = retrievedResult.Result as CustomerEntity;
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Ansichten**, klicken Sie mit der rechten Maustaste auf **Tabellen**, und wählen Sie im Kontextmenü **Hinzufügen > Ansicht** aus.
 
-            // Create the delete operation.
-            TableOperation deleteOperation = TableOperation.Delete(customer);
+1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **DeleteEntity** ein, und wählen Sie **Hinzufügen**.
 
-            // Execute the delete operation.
-            table.Execute(deleteOperation);
-        }
+1. Öffnen Sie `DeleteEntity.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
+
+    ```csharp
+    @model Microsoft.WindowsAzure.Storage.Table.TableResult
+    @{
+        ViewBag.Title = "DeleteEntity";
+    }
+    
+    <h2>Delete Entity results</h2>
+    
+    <table border="1">
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>HTTP result</th>
+        </tr>
+        <tr>
+            <td>@((Model.Result as StorageAspnet.Models.CustomerEntity).RowKey)</td>
+            <td>@((Model.Result as StorageAspnet.Models.CustomerEntity).PartitionKey)</td>
+            <td>@Model.HttpStatusCode</td>
+        </tr>
+    </table>
+
+    ```
+
+1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
+
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
+
+    ```html
+    <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
+    ```
+
+1. Führen Sie die Anwendung aus, und wählen Sie **Entität löschen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
+  
+    ![Abrufen einer einzelnen Entität](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
+Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
+
+  * [Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
+  * [Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten](./vs-storage-aspnet-getting-started-queues.md)
 
 
-
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

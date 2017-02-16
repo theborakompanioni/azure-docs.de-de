@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 12/14/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: 040556d42f246ab2876cc5bab031036ec78e13bc
+ms.sourcegitcommit: 6c644b124ad8c994170152006ff61c11e363e7ab
+ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
 
 
 ---
@@ -24,13 +24,11 @@ Metriken in [Application Insights][start] sind gemessene Werte und Anzahlen von 
 
 Metriken und Ereignisanzahlen werden in Diagrammen aggregierter Werte z. B. als Summen, Mittelwerte oder Zählwerte angezeigt.
 
-Hier sehen Sie ein Beispieldiagramm:
+Hier sehen Sie einige Beispiele für Diagramme:
 
-![Öffnen Sie das Blatt "Übersicht" Ihrer Anwendung im Azure-Portal](./media/app-insights-metrics-explorer/01-overview.png)
+![](./media/app-insights-metrics-explorer/01-overview.png)
 
-Einige Diagramme sind unterteilt: die Gesamthöhe des Diagramms an einem beliebigen Punkt ist die Summe der gezeigten Metriken. In der Legende werden in der Standardeinstellung die größten Mengen gezeigt.
-
-Gepunktete Linien zeigen den Wert der Metrik eine Woche zuvor.
+Metrikdiagramme finden Sie überall im Application Insights-Portal. In den meisten Fällen lassen sich diese anpassen, und Sie können dem Blatt weitere Diagramme hinzufügen. Klicken Sie auf dem Blatt „Übersicht“, um ausführlichere Diagramme anzuzeigen (mit Titeln wie z.B. „Serverantworten“), oder klicken Sie auf **Metrik-Explorer**, um ein neues Blatt zu öffnen, auf dem Sie benutzerdefinierte Diagramme erstellen können.
 
 ## <a name="time-range"></a>Zeitbereich
 Sie können den Zeitbereich der Diagramme oder Raster auf jedem Blatt ändern.
@@ -62,33 +60,6 @@ Sie können die Granularität auf dem Blatt „Zeitbereich“ anpassen:
 
 Die verfügbaren Granularitäten hängen vom ausgewählten Zeitbereich ab. Die expliziten Granularitäten sind Alternativen für die „automatische“ Granularität für den Zeitbereich.
 
-## <a name="metrics-explorer"></a>Metrik-Explorer
-Klicken Sie sich auf dem Blatt "Übersicht" durch ein beliebiges Diagramm, um eine detailliertere Gruppe zusammengehöriger Diagramme und Raster anzuzeigen. Sie können diese Diagramme und Raster bearbeiten, um sich auf die Details zu konzentrieren, die Sie interessieren.
-
-Sie können auch einfach im Metrik-Explorer auf die Kopfzeile des Übersichtsblatts klicken.
-
-Klicken Sie sich z. B. durch das Diagramm "Anforderungsfehler" der Web-App:
-
-![Klicken Sie auf dem Blatt "Übersicht" auf ein Diagramm](./media/app-insights-metrics-explorer/14-trix.png)
-
-## <a name="what-do-the-figures-mean"></a>Was bedeuten die Zahlen?
-In der Legende auf der Seite wird standardmäßig der über den Zeitraum des Diagramms aggregierte Wert angezeigt. Wenn Sie auf das Diagramm zeigen, wird der an diesem Punkt befindliche Wert angezeigt.
-
-Jeder Datenpunkt im Diagramm ist ein Aggregat der Datenwerte, die im vorherigen Samplingintervall (Granularität) empfangen wurden. Die Granularität wird oben auf dem Blatt angezeigt und variiert abhängig von der gesamten Zeitskala des Diagramms.
-
-Metriken können auf unterschiedliche Weisen zusammengefasst werden:
-
-* **Summe** addiert die Werte aller Datenpunkte, die über das Samplingintervall oder den Zeitraum des Diagramms empfangen werden.
-* **Durchschnitt** teilt die Summe durch die Anzahl der Datenpunkte, die während des Intervalls empfangen werden.
-* **Eindeutige** Werte werden verwendet, um Benutzer und Konten zu zählen. Die Abbildung zeigt die Anzahl der verschiedenen Benutzer, die während des Samplingintervalls oder über den Zeitraum des Diagramms gezählt werden.
-
-Sie können die Aggregationsmethode ändern:
-
-![Wählen Sie das Diagramm und dann die Aggregation aus](./media/app-insights-metrics-explorer/05-aggregation.png)
-
-Die Standardmethode für die einzelnen Metriken wird bei der Erstellung eines neuen Diagramms bzw. bei Deaktivierung der gesamten Metrikauswahl angezeigt:
-
-![Heben Sie die Auswahl aller Metriken auf, um die Standardwerte anzuzeigen](./media/app-insights-metrics-explorer/06-total.png)
 
 ## <a name="editing-charts-and-grids"></a>Bearbeiten von Diagrammen und Rastern
 So fügen Sie dem Blatt ein neues Diagramm hinzu:
@@ -101,7 +72,7 @@ Wählen Sie in einem vorhandenen oder neuen Diagramm die Option **Bearbeiten** ,
 
 Sie können in einem Diagramm mehr als eine Metrik anzeigen, wenngleich es Einschränkungen bezüglich der Kombinationen gibt, die zusammen angezeigt werden können. Sobald Sie eine Metrik auswählen, werden einige der anderen deaktiviert.
 
-Wenn Sie [benutzerdefinierte Metriken][track] in Ihrer App (Aufrufe von „TrackMetric“ und „TrackEvent“) programmiert haben, werden sie hier aufgelistet.
+Wenn Sie [benutzerdefinierte Metriken][track] in Ihrer App (Aufrufe von „TrackMetric“ und „TrackEvent“) programmiert haben, sind diese hier aufgelistet.
 
 ## <a name="segment-your-data"></a>Segmentieren der Daten
 Sie können eine Metrik nach Eigenschaften aufteilen, um beispielsweise Seitenansichten auf Clients mit unterschiedlichen Betriebssystemen zu vergleichen.
@@ -120,6 +91,30 @@ Wenn Sie [benutzerdefinierte Metriken][track] in Ihrer App programmiert haben un
 Ist das Diagramm für segmentierte Daten zu klein? Passen Sie die Höhe an:
 
 ![Passen Sie den Schieberegler an](./media/app-insights-metrics-explorer/18-height.png)
+
+## <a name="aggregation-types"></a>Aggregationstypen
+In der Legende auf der Seite wird standardmäßig der über den Zeitraum des Diagramms aggregierte Wert angezeigt. Wenn Sie auf das Diagramm zeigen, wird der an diesem Punkt befindliche Wert angezeigt.
+
+Jeder Datenpunkt im Diagramm ist ein Aggregat der Datenwerte, die im vorherigen Samplingintervall (Granularität) empfangen wurden. Die Granularität wird oben auf dem Blatt angezeigt und variiert abhängig von der gesamten Zeitskala des Diagramms.
+
+Metriken können auf unterschiedliche Weisen zusammengefasst werden:
+
+* **Anzahl** ist die Anzahl der im Abtastintervall empfangenen Ereignisse. Sie wird für Ereignisse wie beispielsweise Anforderungen verwendet. Abweichungen bei der die Höhe des Diagramms geben Abweichungen bei der Rate an, mit der die Ereignisse auftreten. Beachten Sie jedoch, dass sich der numerische Wert ändert, wenn Sie das Abtastintervall ändern.
+* **Summe** addiert die Werte aller Datenpunkte, die über das Samplingintervall oder den Zeitraum des Diagramms empfangen werden.
+* **Durchschnitt** teilt die Summe durch die Anzahl der Datenpunkte, die während des Intervalls empfangen werden.
+* **Eindeutige** Werte werden verwendet, um Benutzer und Konten zu zählen. Die Abbildung zeigt die Anzahl der verschiedenen Benutzer, die während des Samplingintervalls oder über den Zeitraum des Diagramms gezählt werden.
+* **%** – Prozentsatzversionen der Aggregationen werden nur bei segmentierten Diagrammen verwendet. Die Summe ergibt immer 100%, und das Diagramm zeigt den relativen Anteil verschiedener Komponenten an einer Summe.
+
+    ![Prozentwertaggregation](./media/app-insights-metrics-explorer/percentage-aggregation.png)
+
+### <a name="change-the-aggregation-type"></a>Ändern des Aggregationstyps
+
+![Bearbeiten Sie das Diagramm, und wählen Sie dann „Aggregation“ aus.](./media/app-insights-metrics-explorer/05-aggregation.png)
+
+Die Standardmethode für die einzelnen Metriken wird bei der Erstellung eines neuen Diagramms bzw. bei Deaktivierung der gesamten Metrikauswahl angezeigt:
+
+![Heben Sie die Auswahl aller Metriken auf, um die Standardwerte anzuzeigen](./media/app-insights-metrics-explorer/06-total.png)
+
 
 ## <a name="filter-your-data"></a>Filtern der Daten
 So zeigen Sie nur die Metriken für eine ausgewählte Gruppe von Eigenschaftswerten an:
@@ -229,6 +224,6 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

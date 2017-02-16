@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: raymondl;garye;v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8544f04360c44d54b9c3e69448b6d5b29826f06c
+ms.sourcegitcommit: cd32cb7d2247676795f345448960d547eafba084
+ms.openlocfilehash: 9290258998f6756dce55a764e020fb3278c2f8a6
 
 
 ---
@@ -44,10 +44,11 @@ So erstellen Sie das Experiment
 5. Geben Sie „Census Model“ ein.
 6. Klicken Sie am unteren Rand des Experimentbereichs auf **Run**.
 7. Klicken Sie auf **Set Up Web Service**, und wählen Sie **Retraining Web Service** aus. 
+
+Das folgende Beispiel zeigt das anfängliche Experiment.
    
    ![Anfängliches Experiment][2]
 
-Diagramm 2: Anfängliches Experiment
 
 ## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>Erstellen eines Vorhersageexperiments und Veröffentlichen als Webdienst
 Erstellen Sie als Nächstes ein Vorhersageexperiment.
@@ -79,7 +80,7 @@ Nach Abschluss der Experimentausführung sieht der resultierende Workflow wie fo
 
 ![Resultierender Workflow nach der Ausführung][4]
 
-Abbildung 3: Resultierender Workflow nach der Ausführung
+
 
 ## <a name="retrain-the-model-with-new-data-using-bes"></a>Erneutes Trainieren des Modells mit neuen Daten mithilfe von BES
 In diesem Beispiel verwenden Sie C# zum Erstellen der Anwendung für erneutes Trainieren. Für diese Aufgabe können Sie auch Python- oder R-Beispielcode verwenden.
@@ -185,6 +186,6 @@ Wenn Sie den Vorhersagewebdienst durch Klicken auf **Deploy Web Service [New]** 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

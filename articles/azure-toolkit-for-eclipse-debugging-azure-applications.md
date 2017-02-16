@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 06b33c09f5c316f974efde1116cae699d8df1065
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 04e6a43e478484d90478e4aa90d489ea4eb0cc68
 
 
 ---
@@ -27,7 +27,7 @@ Mit dem Azure-Toolkit für Eclipse können Sie Ihre Anwendungen debuggen, und zw
 
 In diesem Tutorial wird davon ausgegangen, dass Sie bereits über eine erfolgreich erstellte Anwendung verfügen und mit dem Serveremulator sowie mit dem Bereitstellen in Azure vertraut sind.
 
-Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeitbibliothek in JSP][Verwenden der Azure-Dienstlaufzeitbibliothek in JSP] als Ausgangspunkt für dieses Thema. Erstellen Sie jetzt diese Anwendung, falls Sie es noch nicht getan haben. Erst danach können Sie die Schritte in diesem Tutorial ausführen.
+Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeitbibliothek in JSP][Using the Azure Service Runtime Library in JSP] als Ausgangspunkt für dieses Thema. Erstellen Sie jetzt diese Anwendung, falls Sie es noch nicht getan haben. Erst danach können Sie die Schritte in diesem Tutorial ausführen.
 
 ## <a name="to-debug-your-application-while-running-in-azure"></a>So debuggen Sie die in Azure ausgeführte Anwendung
 > [!WARNING]
@@ -39,7 +39,7 @@ Wir verwenden die Anwendung aus dem Tutorial [Verwenden der Azure-Dienstlaufzeit
 2. Erstellen Sie Ihr Projekt neu: Klicken Sie im Eclipse-Menü auf **Project** und dann auf **Build All**.
 3. Stellen Sie Ihre Anwendung unter *Staging* in Azure bereit.
     >[AZURE.IMPORTANT] Wie oben erwähnt: Es wird dringend empfohlen, dass Sie das Debuggen in den allermeisten Fällen im Serveremulator ausführen und nur dann in der Stagingumgebung debuggen, wenn ein zusätzliches Debuggen erforderlich ist. Es wird empfohlen, nicht in der Produktionsumgebung zu debuggen.
-4. Wenn die Bereitstellung in Azure abgeschlossen ist, suchen und notieren Sie den DNS-Namen im [Azure-Verwaltungsportal][Azure-Verwaltungsportal]. Eine Stagingbereitstellung hat einen DNS-Namen in der Form http://*&lt;GUID&gt;*.cloudapp.net, wobei *&lt;GUID&gt;* ein von Azure zugeordneter GUID-Wert ist.
+4. Wenn die Bereitstellung in Azure abgeschlossen ist, suchen und notieren Sie den DNS-Namen im [Azure-Verwaltungsportal][Azure Management Portal]. Eine Stagingbereitstellung hat einen DNS-Namen in der Form http://*&lt;GUID&gt;*.cloudapp.net, wobei *&lt;GUID&gt;* ein von Azure zugeordneter GUID-Wert ist.
 5. Klicken Sie im Projektexplorer von Eclipse mit der rechten Maustaste auf **WorkerRole1**, klicken Sie auf** Azure** und dann auf **Debugging**.
 6. Gehen Sie im Dialogfeld **Properties for WorkerRole1 Debugging** wie folgt vor:
    1. Aktivieren Sie das Kontrollkästchen **Enable remote debugging for this role**.
@@ -119,22 +119,22 @@ Hier wurde veranschaulicht, wie Sie beim Debuggen im Serveremulator vorgehen. De
 * Wenn Sie das Remotedebuggen in GlassFish aktivieren möchten, dürfen Sie das Konfigurationsfeature für das Remotedebuggen im Azure-Toolkit für Eclipse nicht verwenden. Konfigurieren Sie GlassFish stattdessen manuell. GlassFish behandelt in Umgebungsvariablen vordefinierte Java-Optionen auf eine Art und Weise, die eine ordnungsgemäße Funktion des Toolkit-Konfigurationsfeatures für das Remotedebuggen bei GlassFish verhindert. Wenn das Konfigurationsfeature für das Remotedebuggen im Toolkit aktiviert ist, lässt sich GlassFish unter Umständen nicht starten.
 
 ## <a name="see-also"></a>Weitere Informationen
-[Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse]
+[Azure-Toolkit für Eclipse][Azure Toolkit for Eclipse]
 
-[Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)][Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]
+[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-[Installieren des Azure-Toolkits für Eclipse][Installieren des Azure-Toolkits für Eclipse] 
+[Installieren des Azure-Toolkits für Eclipse][Installing the Azure Toolkit for Eclipse] 
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure-Verwaltungsportal]: http://go.microsoft.com/fwlink/?LinkID=512959
-[Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installieren des Azure-Toolkits für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Verwenden der Azure-Dienstlaufzeitbibliothek in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551
 
 <!-- IMG List -->
 
@@ -145,6 +145,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

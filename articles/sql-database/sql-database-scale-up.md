@@ -1,6 +1,6 @@
 ---
-title: "Ändern der Dienstebene und Leistungsstufe einer Azure SQL-Datenbank | Microsoft Docs"
-description: "In „Ändern der Dienstebene und Leistungsstufe einer Azure SQL-Datenbank“ wird beschrieben, wie Sie die Dienstebene und Leistungsstufe Ihrer SQL-Datenbank zentral hoch- oder herunterstufen. Ändern des Tarifs einer Azure SQL-Datenbank."
+title: "Azure-Portal: Ändern des Azure SQL-Datenbank-Tarifs | Microsoft Docs"
+description: "Erfahren Sie, wie Sie die Dienstebene und Leistungsstufe einer Azure SQL-Datenbank-Instanz im Azure-Portal ändern und wie Sie die Ressourcen und Preise Ihrer SQL-Datenbank zentral hoch- oder herunterskalieren."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,16 +16,15 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: a4d68b4365c6c5865b19a0b2e9b78afdb7a04014
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: 88104e0684281f77da497ef4dd608c6a0c64b274
 
 
 ---
 # <a name="change-the-service-tier-and-performance-level-pricing-tier-of-a-sql-database-using-the-azure-portal"></a>Ändern der Dienstebene und Leistungsstufe (Tarif) einer SQL-Datenbank mithilfe des Azure-Portals
 > [!div class="op_single_selector"]
 > * [**Azure-Portal**](sql-database-scale-up.md)
-> * [PowerShell](sql-database-scale-up-powershell.md)
-> 
+> * [PowerShell](sql-database-scale-up-powershell.md)> 
 > 
 
 Dienstebenen und Leistungsstufen beschreiben die für Ihre SQL-Datenbank verfügbaren Funktionen und Ressourcen und können aktualisiert werden, wenn sich die Anforderungen an Ihre Anwendung ändern. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md).
@@ -89,6 +88,6 @@ Bestimmen Sie anhand der Informationen unter [Dienstebenen für SQL-Datenbank f�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

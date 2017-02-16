@@ -1,5 +1,5 @@
 ---
-title: "Richtlinien für die Netzwerkinfrastruktur | Microsoft Docs"
+title: "Richtlinien für die Azure-Netzwerkinfrastruktur | Microsoft Docs"
 description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung virtueller Netzwerke in Azure-Infrastrukturdiensten."
 documentationcenter: 
 services: virtual-machines-windows
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4e1f3e1a79321683337d155c5f575cb3f8905913
+ms.sourcegitcommit: 1e52ae69951b6b1feee6207033a85a583d13bcc2
+ms.openlocfilehash: 5db3100d94af1461d538eb1bb9b16b7bf387517a
 
 
 ---
-# <a name="networking-infrastructure-guidelines"></a>Richtlinien für die Netzwerkinfrastruktur
+# <a name="azure-networking-infrastructure-guidelines"></a>Richtlinien für die Azure-Netzwerkinfrastruktur
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel werden die erforderlichen Planungsschritte für virtuelle Netzwerke in Azure sowie die Verbindungen zwischen vorhandenen lokalen Umgebungen erläutert.
@@ -106,6 +106,6 @@ Ebenso wie eine lokale physische Netzwerkinfrastruktur können auch virtuelle Az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

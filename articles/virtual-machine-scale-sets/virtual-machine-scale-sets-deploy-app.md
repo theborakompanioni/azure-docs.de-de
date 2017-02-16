@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/26/2016
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 611099e8c28584e091f9dc6c07eebf7e397092ea
+ms.sourcegitcommit: da5ad10e01d83d714b47f8d478dc73a824797dea
+ms.openlocfilehash: 714e0dd907b1efe8d2c4d6e062a6cedd08f44c4c
 
 
 ---
@@ -51,13 +51,11 @@ Packer und Terraform unterstützen Azure Resource Manager ebenfalls. Daher könn
 Die Skalierungsgruppen-VMs werden dann zu einem stabilen Substrat für die Container und erfordern nur gelegentliche Sicherheits- und Betriebssystemupdates. Wie bereits erwähnt, ist Azure Container Service ein gutes Beispiel für diesen Ansatz und das Erstellen eines entsprechenden Diensts.
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>Wie verteilen Sie ein Betriebssystemupdate auf Updatedomänen?
-Nehmen wir an, dass Sie das Betriebssystemimage aktualisieren möchten, während gleichzeitig die VM-Skalierungsgruppe weiter ausgeführt wird. Eine Möglichkeit ist, die VM-Images der einzelnen VMs nacheinander zu aktualisieren. Sie können dazu PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Es gibt gesonderte Befehle zum Aktualisieren des VM-Skalierungsgruppenmodells (der Konfigurationsdefinition) und zur Ausgabe von Aufrufen zum „manuellen Upgrade“ auf einzelnen VMs.
-
-[Hier](https://github.com/gbowerman/vmsstools) finden Sie ein Beispiel für ein Python-Skript, das den Prozess der Aktualisierung einer VM-Skalierungsgruppe auf den einzelnen Updatedomänen automatisiert. (Einschränkung: Es ist eher eine Machbarkeitsstudie als eine gesicherte einsatzbereite Lösung. Sie sollten Überprüfungen auf Fehler usw. ergänzen.)
+Nehmen wir an, dass Sie das Betriebssystemimage aktualisieren möchten, während gleichzeitig die VM-Skalierungsgruppe weiter ausgeführt wird. Eine Möglichkeit ist, die VM-Images der einzelnen VMs nacheinander zu aktualisieren. Sie können dazu PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Es gibt gesonderte Befehle zum Aktualisieren des VM-Skalierungsgruppenmodells (der Konfigurationsdefinition) und zur Ausgabe von Aufrufen zum „manuellen Upgrade“ auf einzelnen VMs. Das Azure-Dokument [Upgrade a Virtual Machine Scale Set](./virtual-machine-scale-sets-upgrade-scale-set.md) (Aktualisieren einer VM-Skalierungsgruppe) bietet auch weitere Informationen zu Optionen zum Ausführen von Betriebssystemupgrades in einer VM-Skalierungsgruppe.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "  Veröffentlichen von Inhalten mithilfe des Azure-Portals | Microsoft Docs"
+title: "  Veröffentlichen von Inhalten mithilfe des Azure-Portals | Microsoft Docscs"
 description: "Dieses Tutorial führt Sie durch die Schritte zur Veröffentlichung Ihrer Inhalte mithilfe des Azure-Portals."
 services: media-services
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 96a8342dc782a9270a6de5b67387c35ea45b860e
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 72b0b7feef583799613b1cb2c18b2020c1401b36
 
 
 ---
@@ -62,7 +62,7 @@ Weitere Informationen finden Sie unter [Inhaltsbereitstellung – Übersicht](me
 > 
 > 
 
-Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
+Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>So verwenden Sie das Portal zum Veröffentlichen eines Objekts
 So veröffentlichen Sie ein Medienobjekt über das Portal:
@@ -90,7 +90,6 @@ Folgende Überlegungen sollten berücksichtigt werden:
 * Vergewissern Sie sich, dass das Video veröffentlicht wurde.
 * Dieser **Media Player** verwendet für die Wiedergabe den standardmäßigen Streamingendpunkt. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, können Sie die URL per Klick kopieren und einen anderen Player verwenden. Sie können beispielsweise den [Azure Media Services-Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)nutzen.
 * Der Streamingendpunkt, von dem aus das Streaming erfolgen soll.  
-* Zum Streamen von einem Streamingendpunkt müssen Sie mindestens eine Streamingeinheit hinzufügen. Weitere Informationen finden Sie in [diesem](media-services-portal-scale-streaming-endpoints.md) Thema.   
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die Media Services-Lernpfade.
@@ -103,6 +102,6 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

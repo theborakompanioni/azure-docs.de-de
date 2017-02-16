@@ -1,10 +1,10 @@
 ---
-title: "Konfigurieren eines Application Gateways für SSL-Auslagerung mit klassischer Bereitstellung | Microsoft Docs"
+title: "Konfigurieren eines Application Gateways für die SSL-Auslagerung bei einer klassischen Bereitstellung | Microsoft Docs"
 description: "Dieser Artikel enthält Anweisungen zum Erstellen eines Application Gateways mit SSL-Auslagerung mit dem klassischen Azure-Bereitstellungsmodell."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 63f28d96-9c47-410e-97dd-f5ca1ad1b8a4
 ms.service: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 12/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 1cb291817462a2af59a17693a29b8667750c877f
-ms.openlocfilehash: b4fc6b09069022967b572327647dd5d848712932
+ms.sourcegitcommit: 1506729fb346a8a67930a5a2cd4c15f375c52e3f
+ms.openlocfilehash: 0f565431f03527c4fac463f93c5664504a90662f
 
 
 ---
@@ -26,8 +26,6 @@ ms.openlocfilehash: b4fc6b09069022967b572327647dd5d848712932
 > * [Azure-Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-ssl.md)
-> 
-> 
 
 Azure Application Gateway kann so konfiguriert werden, dass damit die Secure Sockets Layer-Sitzung (SSL) auf dem Gateway beendet wird. Auf diese Weise wird die aufwändige SSL-Entschlüsselung in der Webfarm vermieden. Die SSL-Auslagerung vereinfacht zudem die Einrichtung und Verwaltung der Webanwendung auf dem Front-End-Server.
 
@@ -92,8 +90,6 @@ State..........: Provisioned
 
 > [!NOTE]
 > Das Zertifikatkennwort darf aus Buchstaben und Ziffern bestehen und muss zwischen vier und 12 Zeichen lang sein. Sonderzeichen werden nicht akzeptiert.
-> 
-> 
 
 ## <a name="configure-the-gateway"></a>Konfigurieren des Gateways
 
@@ -218,6 +214,6 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

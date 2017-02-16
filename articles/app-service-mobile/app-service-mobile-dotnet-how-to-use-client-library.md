@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 01/04/2017
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 790ca8b1adfece3a008b1dbf42a827d8ee283d9a
-ms.openlocfilehash: 5044dfc3cd5ba070ab4c57ca052bdf4e2aa852cb
+ms.sourcegitcommit: a02b817ecc45594f55de9a94b67dd35e34386735
+ms.openlocfilehash: 1f0dfe06bbcd22727d12b651cd708b208350831a
 
 
 ---
@@ -24,11 +24,11 @@ ms.openlocfilehash: 5044dfc3cd5ba070ab4c57ca052bdf4e2aa852cb
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Übersicht
-In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalteten Clientbibliothek für Mobile App Service-Apps unter Azure in Windows- und Xamarin-Apps beschrieben. Wenn Sie keine Erfahrungen mit Mobile Apps haben, sollten Sie eventuell zunächst das Tutorial [Erstellen einer Windows-App][1] absolvieren. In diesem Handbuch konzentrieren wir uns auf das clientseitige verwaltete SDK. Weitere Informationen zu den serverseitigen SDKs für Mobile Apps finden Sie in der Dokumentation zum [.NET Server SDK][2] oder [Node.js Server SDK][3].
+In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalteten Clientbibliothek für Mobile App Service-Apps unter Azure in Windows- und Xamarin-Apps beschrieben. Wenn Sie keine Erfahrungen mit Mobile Apps haben, sollten Sie eventuell zunächst das [Schnellstarttutorial für Azure Mobile Apps][1] absolvieren. In diesem Handbuch konzentrieren wir uns auf das clientseitige verwaltete SDK. Weitere Informationen zu den serverseitigen SDKs für Mobile Apps finden Sie in der Dokumentation zum [.NET Server SDK][2] oder [Node.js Server SDK][3].
 
 ## <a name="reference-documentation"></a>Referenzdokumentation
 Die Referenzdokumentation für das Client-SDK finden Sie hier: [.NET-Client-Referenz für Azure Mobile Apps][4].
-Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure Samples“][5](Azure Beispiele).
+Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure-Samples“][5] (Azure-Beispiele).
 
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
 Die .NET-Plattform unterstützt die folgenden Plattformen:
@@ -42,22 +42,24 @@ Die .NET-Plattform unterstützt die folgenden Plattformen:
 Die Authentifizierung für den „Serverfluss“ verwendet eine Webansicht für die dargestellte Benutzeroberfläche.  Wenn das Gerät keine Benutzeroberfläche in Form einer Webansicht darstellen kann, sind andere Authentifizierungsmethoden erforderlich.  Dieses SDK eignet sich daher nicht für Geräte vom Typ „Überwachung“ oder für ähnlich eingeschränkte Geräte.
 
 ## <a name="a-namesetupasetup-and-prerequisites"></a><a name="setup"></a>Einrichtung und Voraussetzungen
-Es wird davon ausgegangen, dass Sie Ihr Mobile App-Back-End-Projekt bereits erstellt und veröffentlicht haben und dass es mindestens eine Tabelle enthält.  Der Code in diesem Thema verwendet eine Tabelle mit dem Namen `TodoItem` und den folgenden Spalten: `Id`, `Text` und `Complete`. Dies ist die gleiche Tabelle, die Sie beim Durcharbeiten des Schnellstarttutorials für Azure Mobile Apps erstellt haben.
+Es wird davon ausgegangen, dass Sie Ihr Mobile App-Back-End-Projekt bereits erstellt und veröffentlicht haben und dass es mindestens eine Tabelle enthält.  Der Code in diesem Thema verwendet eine Tabelle mit dem Namen `TodoItem` und den folgenden Spalten: `Id`, `Text` und `Complete`. Dies ist die gleiche Tabelle, die Sie beim Durcharbeiten des [Schnellstarttutorials für Azure Mobile Apps][1] erstellt haben.
 
 Der entsprechende typisierte clientseitige Typ in C# ist die folgende Klasse:
 
-    public class TodoItem
-    {
-        public string Id { get; set; }
+```
+public class TodoItem
+{
+    public string Id { get; set; }
 
-        [JsonProperty(PropertyName = "text")]
-        public string Text { get; set; }
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
-        [JsonProperty(PropertyName = "complete")]
-        public bool Complete { get; set; }
-    }
+    [JsonProperty(PropertyName = "complete")]
+    public bool Complete { get; set; }
+}
+```
 
-Das [JsonPropertyAttribute][6] wird verwendet, um die *PropertyName*-Zuordnung zwischen dem Clienttyp und der Tabelle zu definieren.
+Das [JsonPropertyAttribute][6] wird verwendet, um die *PropertyName*-Zuordnung zwischen dem Clientfeld und dem Tabellenfeld zu definieren.
 
 Informationen zum Erstellen von Tabellen in Ihrem Mobile Apps-Back-End finden Sie im Thema zum [.NET Server SDK][7] oder zum [Node.js Server SDK][8]. Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal]verwenden.
 
@@ -69,7 +71,9 @@ Verwenden Sie eine der folgenden Methoden, um das SDK-Paket für verwaltete Clie
 
 Denken Sie daran, in der Datei Ihrer Hauptaktivität die folgende **using** -Anweisung hinzuzufügen:
 
-    using Microsoft.WindowsAzure.MobileServices;
+```
+using Microsoft.WindowsAzure.MobileServices;
+```
 
 ### <a name="a-namesymbolsourceahow-to-work-with-debug-symbols-in-visual-studio"></a><a name="symbolsource"></a>Arbeiten mit Debugsymbolen in Visual Studio
 Die Symbole für den Namespace „Microsoft.Azure.Mobile“ sind unter [SymbolSource][10] verfügbar.  Integrieren Sie SymbolSource gemäß den [SymbolSource-Anweisungen][11] in Visual Studio.
@@ -77,7 +81,9 @@ Die Symbole für den Namespace „Microsoft.Azure.Mobile“ sind unter [SymbolSo
 ## <a name="a-namecreate-clientacreate-the-mobile-apps-client"></a><a name="create-client"></a>Erstellen des Mobile Apps-Clients
 Der folgende Code erstellt das [MobileServiceClient][12]-Objekt, das für den Zugriff auf Ihr Mobile App-Back-End verwendet wird.
 
-    var client = new MobileServiceClient("MOBILE_APP_URL");
+```
+var client = new MobileServiceClient("MOBILE_APP_URL");
+```
 
 Ersetzen Sie im obigen Code `MOBILE_APP_URL` durch die URL des Mobile App-Back-Ends. Sie finden die URL auf dem Blatt für das Mobile App-Back-End im [Azure-Portal]. Beim MobileServiceClient-Objekt muss es sich um ein Singleton-Objekt handeln.
 
@@ -102,12 +108,16 @@ Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datens�
 ### <a name="a-nameinstantiatingahow-to-create-a-table-reference"></a><a name="instantiating"></a>Erstellen von Tabellenverweisen
 Jeglicher Code zum Abrufen oder Ändern von Daten in einer Back-End-Tabelle ruft Funktionen des `MobileServiceTable` -Objekts auf. Rufen Sie einen Verweis auf die Tabelle ab, indem Sie wie folgt die Methode [GetTable] aufrufen:
 
-    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+```
+IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+```
 
 Das zurückgegebene Objekt verwendet das typisierte Serialisierungsmodell. Ein nicht typisiertes Serialisierungsmodell wird ebenfalls unterstützt. Das folgende Beispiel [erstellt einen Verweis auf eine nicht typisierte Tabelle]:
 
-    // Get an untyped table reference
-    IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
+```
+// Get an untyped table reference
+IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
+```
 
 Bei nicht typisierten Abfragen müssen Sie die zugrunde liegende OData-Abfragezeichenfolge angeben.
 
@@ -121,50 +131,60 @@ Dieser Abschnitt beschreibt, wie Sie Abfragen an Ihr Mobile App-Back-End stellen
 * [Daten nach ID abrufen](#lookingup)
 
 > [!NOTE]
-> Es wird die Verwendung einer servergesteuerten Seitengröße erzwungen, um zu verhindern, dass alle Zeilen zurückgegeben werden.  Durch Paging wird verhindert, dass Standardabfragen für große Datensätze den Dienst negativ beeinflussen.  Verwenden Sie die Methoden `Skip` und `Take`, um mehr als 50 Zeilen zurückzugeben, wie unter „Seitenweises Zurückgeben von Daten“ beschrieben.
->
->
+> Es wird die Verwendung einer servergesteuerten Seitengröße erzwungen, um zu verhindern, dass alle Zeilen zurückgegeben werden.  Durch Paging wird verhindert, dass Standardabfragen für große Datensätze den Dienst negativ beeinflussen.  Verwenden Sie die Methoden `Skip` und `Take`, um mehr als 50 Zeilen zurückzugeben, wie unter [Seitenweises Zurückgeben von Daten](#paging) beschrieben.
 
 ### <a name="a-namefilteringahow-to-filter-returned-data"></a><a name="filtering"></a>Filtern zurückgegebener Daten
 Der folgende Code zeigt, wie Sie Daten mithilfe einer `Where` -Klausel in einer Abfrage filtern. Die Abfrage gibt alle Elemente aus `todoTable` zurück, deren `Complete`-Eigenschaft gleich `false` ist. Die [Where] -Funktion wendet ein Zeilenfilterungsprädikat auf die Tabellenabfrage an.
 
-    // This query filters out completed TodoItems and items without a timestamp.
-    List<TodoItem> items = await todoTable
-       .Where(todoItem => todoItem.Complete == false)
-       .ToListAsync();
+```
+// This query filters out completed TodoItems and items without a timestamp.
+List<TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false)
+    .ToListAsync();
+```
 
 Sie können den URI der an das Back-End gesendeten Anforderung anzeigen, indem Sie Software zur Überprüfung von Nachrichten verwenden, z. B. Browserentwicklertools oder [Fiddler]. Beachten Sie im Anforderungs-URI, dass die Abfragezeichenfolge verändert ist:
 
-    GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
+```
+GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
+```
 
 Diese OData-Anforderung wird vom Server-SDK in eine SQL-Abfrage übersetzt:
 
-    SELECT *
+```
+SELECT *
     FROM TodoItem
     WHERE ISNULL(complete, 0) = 0
+```
 
 Die an die `Where` -Methode übergebene Funktion kann beliebig viele Bedingungen enthalten.
 
-    // This query filters out completed TodoItems where Text isn't null
-    List<TodoItem> items = await todoTable
-       .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
-       .ToListAsync();
+```
+// This query filters out completed TodoItems where Text isn't null
+List<TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
+    .ToListAsync();
+```
 
 Dieses Beispiel würde vom Server-SDK in eine SQL-Abfrage übersetzt:
 
-    SELECT *
+```
+SELECT *
     FROM TodoItem
     WHERE ISNULL(complete, 0) = 0
           AND ISNULL(text, 0) = 0
+```
 
 Diese Abfrage kann auch in mehrere Klauseln aufgeteilt werden:
 
-    List<TodoItem> items = await todoTable
-       .Where(todoItem => todoItem.Complete == false)
-       .Where(todoItem => todoItem.Text != null)
-       .ToListAsync();
+```
+List<TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false)
+    .Where(todoItem => todoItem.Text != null)
+    .ToListAsync();
+```
 
-Beide Methoden sind äquivalent und können frei austauschbar verwendet werden.  Die erste Option - Verketten mehrerer Prädikate in einer Abfrage - ist kompakter und empfehlenswert.
+Beide Methoden sind äquivalent und können frei austauschbar verwendet werden.  Die erste Option &mdash; Verketten mehrerer Prädikate in einer Abfrage &mdash; ist kompakter und wird daher empfohlen.
 
 Die `Where` -Klausel unterstützt Vorgänge, die in die OData-Teilmenge übersetzt werden können. Folgende Vorgänge sind möglich:
 
@@ -181,105 +201,123 @@ Wenn Sie wissen möchten, was das Server-SDK unterstützt, lesen Sie die [OData 
 ### <a name="a-namesortingahow-to-sort-returned-data"></a><a name="sorting"></a>Gewusst wie: Sortieren zurückgegebener Daten
 Der folgende Code zeigt, wie Sie Daten mithilfe einer [OrderBy]- oder einer [OrderByDescending]-Klausel in einer Abfrage sortieren können. Die Abfrage gibt Elemente aus der Tabelle `todoTable` aufsteigend sortiert nach dem `Text`-Feld zurück.
 
-    // Sort items in ascending order by Text field
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .OrderBy(todoItem => todoItem.Text)
-     List<TodoItem> items = await query.ToListAsync();
+```
+// Sort items in ascending order by Text field
+MobileServiceTableQuery<TodoItem> query = todoTable
+                .OrderBy(todoItem => todoItem.Text)
+List<TodoItem> items = await query.ToListAsync();
 
-    // Sort items in descending order by Text field
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .OrderByDescending(todoItem => todoItem.Text)
-     List<TodoItem> items = await query.ToListAsync();
+// Sort items in descending order by Text field
+MobileServiceTableQuery<TodoItem> query = todoTable
+                .OrderByDescending(todoItem => todoItem.Text)
+List<TodoItem> items = await query.ToListAsync();
+```
 
 ### <a name="a-namepagingahow-to-return-data-in-pages"></a><a name="paging"></a>Seitenweises Zurückgeben von Daten
 Standardmäßig gibt das Back-End nur die ersten 50 Zeilen zurück. Sie können die [Take] -Methode aufrufen, um die Anzahl der zurückgegebenen Zeilen zu erhöhen. Verwenden Sie `Take` zusammen mit der [Skip] -Methode, um eine bestimmte "Seite" des gesamten Datasets anzufordern, das von der Abfrage zurückgegeben wird. Die folgende Abfrage liefert die ersten drei Elemente aus der Tabelle zurück.
 
-    // Define a filtered query that returns the top 3 items.
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .Take(3);
-    List<TodoItem> items = await query.ToListAsync();
+```
+// Define a filtered query that returns the top 3 items.
+MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
+List<TodoItem> items = await query.ToListAsync();
+```
 
 Die folgende geänderte Abfrage überspringt die ersten drei Ergebnisse und gibt die nächsten drei Ergebnisse zurück. Diese Abfrage erzeugt die zweite „Seite“ der Daten für eine Seitengröße von drei Elementen.
 
-    // Define a filtered query that skips the top 3 items and returns the next 3 items.
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .Skip(3)
-                    .Take(3);
-    List<TodoItem> items = await query.ToListAsync();
+```
+// Define a filtered query that skips the top 3 items and returns the next 3 items.
+MobileServiceTableQuery<TodoItem> query = todoTable.Skip(3).Take(3);
+List<TodoItem> items = await query.ToListAsync();
+```
 
 Die [IncludeTotalCount] -Methode ruft die Gesamtanzahl für *alle* Datensätze ab, die bei Ignorieren aller angegebenen Paging-/Limit-Klauseln zurückgegeben worden wären:
 
-    query = query.IncludeTotalCount();
+```
+query = query.IncludeTotalCount();
+```
 
 In tatsächlichen Apps können Sie ähnliche Abfragen wie im vorherigen Beispiel mit einem Pagingsteuerelement oder einer vergleichbaren Benutzeroberfläche ausführen, um zwischen Seiten zu navigieren.
 
 > [!NOTE]
 > Um die Begrenzung auf 50 Zeilen in einem Mobile App-Back-End zu überschreiben, müssen Sie [EnableQueryAttribute] auf die öffentliche GET-Methode anwenden und das Pagingverhalten festlegen. Bei Anwendung des Attributs auf die Methode wird durch Folgendes die maximale Anzahl zurückgegebener Zeilen auf 1000 beschränkt:
 >
-> [EnableQuery(MaxTop=1000)]
->
->
+> `[EnableQuery(MaxTop=1000)]`
+
 
 ### <a name="a-nameselectingahow-to-select-specific-columns"></a><a name="selecting"></a>Gewusst wie: Auswählen bestimmter Spalten
 Sie können angeben, welche Eigenschaften im Ergebnis enthalten sein sollen, indem Sie eine [Select] -Klausel zu Ihrer Abfrage hinzufügen. Der folgende Code zeigt, wie Sie nur ein Feld auswählen oder auch mehrere Felder auswählen und formatieren können:
 
-    // Select one field -- just the Text
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .Select(todoItem => todoItem.Text);
-    List<string> items = await query.ToListAsync();
+```
+// Select one field -- just the Text
+MobileServiceTableQuery<TodoItem> query = todoTable
+                .Select(todoItem => todoItem.Text);
+List<string> items = await query.ToListAsync();
 
-    // Select multiple fields -- both Complete and Text info
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .Select(todoItem => string.Format("{0} -- {1}",
-                        todoItem.Text.PadRight(30), todoItem.Complete ?
-                        "Now complete!" : "Incomplete!"));
-    List<string> items = await query.ToListAsync();
+// Select multiple fields -- both Complete and Text info
+MobileServiceTableQuery<TodoItem> query = todoTable
+                .Select(todoItem => string.Format("{0} -- {1}",
+                    todoItem.Text.PadRight(30), todoItem.Complete ?
+                    "Now complete!" : "Incomplete!"));
+List<string> items = await query.ToListAsync();
+```
 
 Alle bisher beschriebenen Funktionen sind additiv, wir können also damit fortfahren, sie zu verketten. Jeder verkettete Aufruf betrifft einen größeren Teil der Abfrage. Ein weiteres Beispiel:
 
-    MobileServiceTableQuery<TodoItem> query = todoTable
-                    .Where(todoItem => todoItem.Complete == false)
-                    .Select(todoItem => todoItem.Text)
-                    .Skip(3).
-                    .Take(3);
-    List<string> items = await query.ToListAsync();
+```
+MobileServiceTableQuery<TodoItem> query = todoTable
+                .Where(todoItem => todoItem.Complete == false)
+                .Select(todoItem => todoItem.Text)
+                .Skip(3).
+                .Take(3);
+List<string> items = await query.ToListAsync();
+```
 
 ### <a name="a-namelookingupahow-to-look-up-data-by-id"></a><a name="lookingup"></a>Gewusst wie: Abrufen von Daten nach ID
 Die [LookupAsync] -Funktion kann verwendet werden, um Objekte mit einer bestimmten ID aus der Datenbank abzufragen.
 
-    // This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
-    TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
+```
+// This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
+TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
+```
 
 ### <a name="a-nameuntypedqueriesahow-to-execute-untyped-queries"></a><a name="untypedqueries"></a>Ausführen von nicht typisierten Abfragen
 Beim Ausführen einer Abfrage mit einem nicht typisierten Tabellenobjekt müssen Sie die OData-Abfragezeichenfolge durch Aufruf von [ReadAsync]explizit angeben, wie im folgenden Beispiel veranschaulicht:
 
-    // Lookup untyped data using OData
-    JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
+```
+// Lookup untyped data using OData
+JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
+```
 
 Sie erhalten JSON-Werte zurück, die Sie wie einen Eigenschaftenbehälter verwenden können. Weitere Informationen zu JToken und Newtonsoft Json.NET finden Sie unter [Json.NET] .
 
 ### <a name="a-nameinsertingahow-to-insert-data-into-a-mobile-app-backend"></a><a name="inserting"></a>Einfügen von Daten in ein Mobile App-Back-End
 Alle Clienttypen müssen einen Member mit dem Namen **Id** enthalten. Dies ist standardmäßig eine Zeichenfolge. Diese **Id** ist für die Durchführung von CRUD-Vorgängen und die Offlinesynchronisierung erforderlich. Der folgende Code zeigt, wie Sie mit der [InsertAsync]-Methode neue Zeilen in eine Tabelle einfügen. Der Parameter enthält die einzufügenden Daten als .NET-Objekt.
 
-    await todoTable.InsertAsync(todoItem);
+```
+await todoTable.InsertAsync(todoItem);
+```
 
 Wenn während einer Einfügung kein eindeutiger benutzerdefinierter ID-Wert in das `todoItem` eingeschlossen wird, wird vom Server eine GUID generiert.
 Sie können die generierte ID abrufen, indem Sie das Objekt nach Rückgabe des Aufrufs untersuchen.
 
 Zum Einfügen von nicht typisierten Daten können Sie Json.NET verwenden:
 
-    JObject jo = new JObject();
-    jo.Add("Text", "Hello World");
-    jo.Add("Complete", false);
-    var inserted = await table.InsertAsync(jo);
+```
+JObject jo = new JObject();
+jo.Add("Text", "Hello World");
+jo.Add("Complete", false);
+var inserted = await table.InsertAsync(jo);
+```
 
 Das folgende Beispiel verwendet eine E-Mail-Adresse als eindeutige ID-Zeichenfolge:
 
-    JObject jo = new JObject();
-    jo.Add("id", "myemail@emaildomain.com");
-    jo.Add("Text", "Hello World");
-    jo.Add("Complete", false);
-    var inserted = await table.InsertAsync(jo);
+```
+JObject jo = new JObject();
+jo.Add("id", "myemail@emaildomain.com");
+jo.Add("Text", "Hello World");
+jo.Add("Complete", false);
+var inserted = await table.InsertAsync(jo);
+```
 
 ### <a name="working-with-id-values"></a>Arbeiten mit ID-Werten
 Mobile Apps unterstützt eindeutige benutzerdefinierte Zeichenfolgenwerte für die Spalte **id** der Tabelle. Mit einem Zeichenfolgenwert können Anwendungen benutzerdefinierte Werte wie E-Mail-Adressen oder Benutzernamen für die ID verwenden.  Zeichenfolgen-IDs bieten Ihnen die folgenden Vorteile:
@@ -290,34 +328,44 @@ Mobile Apps unterstützt eindeutige benutzerdefinierte Zeichenfolgenwerte für d
 
 Wenn der ID-Wert einer Zeichenfolge für keine eingefügten Datensätze festgelegt ist, generiert das Mobile App-Back-End einen eindeutigen Wert für die ID. Sie können die [Guid.NewGuid] -Methode verwenden, um eigene ID-Werte entweder auf dem Client oder im Back-End zu generieren.
 
-    JObject jo = new JObject();
-    jo.Add("id", Guid.NewGuid().ToString("N"));
+```
+JObject jo = new JObject();
+jo.Add("id", Guid.NewGuid().ToString("N"));
+```
 
 ### <a name="a-namemodifyingahow-to-modify-data-in-a-mobile-app-backend"></a><a name="modifying"></a>Ändern von Daten in einem Mobile App-Back-End
 Der folgende Code zeigt, wie Sie mit der [UpdateAsync] -Methode einen vorhandenen Datensatz, der die gleiche ID aufweist, mit neuen Daten aktualisieren können. Der Parameter enthält die zu aktualisierenden Daten als .NET-Objekt.
 
-    await todoTable.UpdateAsync(todoItem);
+```
+await todoTable.UpdateAsync(todoItem);
+```
 
 Zum Aktualisieren von nicht typisierten Daten können Sie [Json.NET] wie folgt verwenden:
 
-    JObject jo = new JObject();
-    jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
-    jo.Add("Text", "Hello World");
-    jo.Add("Complete", false);
-    var inserted = await table.UpdateAsync(jo);
+```
+JObject jo = new JObject();
+jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+jo.Add("Text", "Hello World");
+jo.Add("Complete", false);
+var inserted = await table.UpdateAsync(jo);
+```
 
 Beim Ausführen eines Updates muss ein `id` -Feld angegeben werden. Das Back-End verwendet das `id` -Feld, um die zu aktualisierende Zeile zu identifizieren. Sie können das `id`-Feld aus dem Ergebnis des `InsertAsync`-Aufrufs abrufen. Wenn Sie versuchen, ein Element ohne Angabe des `id`-Werts zu aktualisieren, wird eine `ArgumentException` ausgelöst.
 
 ### <a name="a-namedeletingahow-to-delete-data-in-a-mobile-app-backend"></a><a name="deleting"></a>Löschen von Daten in einem Mobile App-Back-End
 Der folgende Code zeigt, wie Sie vorhandene Instanzen mit der [DeleteAsync] -Methode löschen können. Die Instanz wird durch das `id`-Feld identifiziert, das im `todoItem` festgelegt ist.
 
-    await todoTable.DeleteAsync(todoItem);
+```
+await todoTable.DeleteAsync(todoItem);
+```
 
 Zum Löschen von nicht typisierten Daten können Sie Json.NET wie folgt verwenden:
 
-    JObject jo = new JObject();
-    jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
-    await table.DeleteAsync(jo);
+```
+JObject jo = new JObject();
+jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+await table.DeleteAsync(jo);
+```
 
 Bei einer Löschanforderung müssen Sie eine ID angeben. Andere Eigenschaften werden nicht an den Dienst übergeben oder vom Dienst ignoriert. Das Ergebnis eines `DeleteAsync`-Aufrufs lautet normalerweise `null`. Sie erhalten die zu übergebende ID im Ergebnis des `InsertAsync` -Aufrufs. Es wird eine `MobileServiceInvalidOperationException` ausgelöst, wenn Sie versuchen, ein Element ohne Angabe des `id`-Felds zu löschen.
 
@@ -328,112 +376,123 @@ Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem �
 
 Definieren Sie eine Spalte in der Tabellenklasse für die `version` -Systemeigenschaft, um die optimistische Parallelität zu aktivieren. Beispiel:
 
-    public class TodoItem
-    {
-        public string Id { get; set; }
+```
+public class TodoItem
+{
+    public string Id { get; set; }
 
-        [JsonProperty(PropertyName = "text")]
-        public string Text { get; set; }
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
-        [JsonProperty(PropertyName = "complete")]
-        public bool Complete { get; set; }
+    [JsonProperty(PropertyName = "complete")]
+    public bool Complete { get; set; }
 
-        // *** Enable Optimistic Concurrency *** //
-        [JsonProperty(PropertyName = "version")]
-        public string Version { set; get; }
-    }
-
+    // *** Enable Optimistic Concurrency *** //
+    [JsonProperty(PropertyName = "version")]
+    public string Version { set; get; }
+}
+```
 
 Anwendungen, die nicht typisierte Tabellen verwenden, können die optimistische Nebenläufigkeit aktivieren, indem sie das `Version`-Flag in den `SystemProperties` der Tabelle wie folgt festlegen.
 
-    //Enable optimistic concurrency by retrieving version
-    todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
+```
+//Enable optimistic concurrency by retrieving version
+todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
+```
 
 Zusätzlich zum Aktivieren der optimistischen Parallelität müssen Sie beim Aufrufen von [UpdateAsync] auch die `MobileServicePreconditionFailedException<T>`-Ausnahme im Code abfangen.  Lösen Sie den Konflikt durch Anwenden der richtigen `version` auf den aktualisierten Datensatz, und rufen Sie [UpdateAsync] mit dem aufgelösten Datensatz auf. Der folgende Code zeigt, wie ein erkannter Schreibkonflikt gelöst werden kann:
 
-    private async void UpdateToDoItem(TodoItem item)
+```
+private async void UpdateToDoItem(TodoItem item)
+{
+    MobileServicePreconditionFailedException<TodoItem> exception = null;
+
+    try
     {
-        MobileServicePreconditionFailedException<TodoItem> exception = null;
-
-        try
-        {
-            //update at the remote table
-            await todoTable.UpdateAsync(item);
-        }
-        catch (MobileServicePreconditionFailedException<TodoItem> writeException)
-        {
-            exception = writeException;
-        }
-
-        if (exception != null)
-        {
-            // Conflict detected, the item has changed since the last query
-            // Resolve the conflict between the local and server item
-            await ResolveConflict(item, exception.Item);
-        }
+        //update at the remote table
+        await todoTable.UpdateAsync(item);
+    }
+    catch (MobileServicePreconditionFailedException<TodoItem> writeException)
+    {
+        exception = writeException;
     }
 
-
-    private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
+    if (exception != null)
     {
-        //Ask user to choose the resoltion between versions
-        MessageDialog msgDialog = new MessageDialog(
-            String.Format("Server Text: \"{0}\" \nLocal Text: \"{1}\"\n",
-            serverItem.Text, localItem.Text),
-            "CONFLICT DETECTED - Select a resolution:");
-
-        UICommand localBtn = new UICommand("Commit Local Text");
-        UICommand ServerBtn = new UICommand("Leave Server Text");
-        msgDialog.Commands.Add(localBtn);
-        msgDialog.Commands.Add(ServerBtn);
-
-        localBtn.Invoked = async (IUICommand command) =>
-        {
-            // To resolve the conflict, update the version of the item being committed. Otherwise, you will keep
-            // catching a MobileServicePreConditionFailedException.
-            localItem.Version = serverItem.Version;
-
-            // Updating recursively here just in case another change happened while the user was making a decision
-            UpdateToDoItem(localItem);
-        };
-
-        ServerBtn.Invoked = async (IUICommand command) =>
-        {
-            RefreshTodoItems();
-        };
-
-        await msgDialog.ShowAsync();
+        // Conflict detected, the item has changed since the last query
+        // Resolve the conflict between the local and server item
+        await ResolveConflict(item, exception.Item);
     }
+}
+
+
+private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
+{
+    //Ask user to choose the resoltion between versions
+    MessageDialog msgDialog = new MessageDialog(
+        String.Format("Server Text: \"{0}\" \nLocal Text: \"{1}\"\n",
+        serverItem.Text, localItem.Text),
+        "CONFLICT DETECTED - Select a resolution:");
+
+    UICommand localBtn = new UICommand("Commit Local Text");
+    UICommand ServerBtn = new UICommand("Leave Server Text");
+    msgDialog.Commands.Add(localBtn);
+    msgDialog.Commands.Add(ServerBtn);
+
+    localBtn.Invoked = async (IUICommand command) =>
+    {
+        // To resolve the conflict, update the version of the item being committed. Otherwise, you will keep
+        // catching a MobileServicePreConditionFailedException.
+        localItem.Version = serverItem.Version;
+
+        // Updating recursively here just in case another change happened while the user was making a decision
+        UpdateToDoItem(localItem);
+    };
+
+    ServerBtn.Invoked = async (IUICommand command) =>
+    {
+        RefreshTodoItems();
+    };
+
+    await msgDialog.ShowAsync();
+}
+```
 
 Weitere Informationen finden Sie im Thema [Synchronisieren von Offlinedaten in Azure Mobile Apps] .
 
 ### <a name="a-namebindingahow-to-bind-mobile-apps-data-to-a-windows-user-interface"></a><a name="binding"></a>Binden von Mobile Apps-Daten an eine Windows-Benutzeroberfläche
 In diesem Abschnitt wird das Anzeigen zurückgegebener Datenobjekte mithilfe von UI-Elementen in einer Windows-App beschrieben.  Der folgende Beispielcode wird mit einer Abfrage für unvollständige Elemente an die Quelle der Liste gebunden. Die [MobileServiceCollection] erstellt eine Bindungssammlung, die Mobile Apps unterstützt.
 
-    // This query filters out completed TodoItems.
-    MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
-        .Where(todoItem => todoItem.Complete == false)
-        .ToCollectionAsync();
+```
+// This query filters out completed TodoItems.
+MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false)
+    .ToCollectionAsync();
 
-    // itemsControl is an IEnumerable that could be bound to a UI list control
-    IEnumerable itemsControl  = items;
+// itemsControl is an IEnumerable that could be bound to a UI list control
+IEnumerable itemsControl  = items;
 
-    // Bind this to a ListBox
-    ListBox lb = new ListBox();
-    lb.ItemsSource = items;
+// Bind this to a ListBox
+ListBox lb = new ListBox();
+lb.ItemsSource = items;
+```
 
 Einige Steuerelemente in der verwalteten Laufzeit unterstützen eine Schnittstelle namens [ISupportIncrementalLoading]. Mit dieser Schnittstelle können Steuerelemente weitere Daten anfordern, wenn ein Benutzer blättert. [MobileServiceIncrementalLoadingCollection]bietet integrierte Unterstützung für diese Schnittstelle für universelle Windows-Apps und verarbeitet die Aufrufe dieser Steuerelemente automatisch. Verwenden Sie `MobileServiceIncrementalLoadingCollection` folgendermaßen in Windows-Apps:
 
-    MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
-    items = todoTable.Where(todoItem => todoItem.Complete == false).ToIncrementalLoadingCollection();
+```
+MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
+items = todoTable.Where(todoItem => todoItem.Complete == false).ToIncrementalLoadingCollection();
 
-    ListBox lb = new ListBox();
-    lb.ItemsSource = items;
+ListBox lb = new ListBox();
+lb.ItemsSource = items;
+```
 
 Um die neue Sammlung in Windows Phone 8- und Silverlight-Apps zu nutzen, verwenden Sie die `ToCollection`-Erweiterungsmethoden für `IMobileServiceTableQuery<T>` und `IMobileServiceTable<T>`. Zum Laden von Daten rufen Sie `LoadMoreItemsAsync()`auf.
 
-    MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
-    await items.LoadMoreItemsAsync();
+```
+MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
+await items.LoadMoreItemsAsync();
+```
 
 Wenn Sie die durch den Aufruf von `ToCollectionAsync` bzw. `ToCollection` erstellte Sammlung verwenden, erhalten Sie eine Sammlung, die an UI-Steuerelemente gebunden werden kann.  Diese Sammlung unterstützt das Paging.  Da die Sammlung Daten aus dem Netzwerk lädt, tritt bei Ladevorgängen manchmal ein Fehler auf. Zur Behandlung solcher Fehler überschreiben Sie die `OnException`-Methode für `MobileServiceIncrementalLoadingCollection`, um Ausnahmen zu behandeln, die aus Aufrufen von `LoadMoreItemsAsync` entstehen.
 
@@ -442,10 +501,12 @@ Stellen Sie sich vor, Ihre Tabelle hat viele Felder, aber Sie möchten nur einen
 ### <a name="a-namepagesizeachange-the-page-size"></a><a name="pagesize"></a>Ändern der Seitengröße
 Azure Mobile Apps gibt standardmäßig maximal 50 Elemente pro Anforderung zurück.  Sie können die Paginggröße ändern, indem Sie die maximale Seitengröße sowohl auf dem Client als auch auf dem Server erhöhen.  Um die angeforderte Seitengröße zu erhöhen, geben Sie `PullOptions` an, wenn Sie `PullAsync()` verwenden:
 
-    PullOptions pullOptions = new PullOptions
-        {
-            MaxPageSize = 100
-        };
+```
+PullOptions pullOptions = new PullOptions
+    {
+        MaxPageSize = 100
+    };
+```
 
 Wenn Sie die `PageSize` auf dem Server auf einen Wert gleich oder größer 100 festgelegt haben, gibt eine Anforderung bis zu 100 Elemente zurück.
 
@@ -457,17 +518,19 @@ Offlinetabellen verwenden eine lokalen SQLite-Speicher zum Speichern von Daten f
 
    * **Windows 8.1-Runtime:** Installieren Sie [SQLite für Windows 8.1][3].
    * **Windows Phone 8.1:** Installieren Sie [SQLite für Windows Phone 8.1][4].
-   * **Universelle Windows-Plattform** Installieren Sie [SQLite für die universelle Windows-Plattform][5].
+   * **Universelle Windows-Plattform:** Installieren Sie [SQLite für die universelle Windows-Plattform][5].
 3. (Optional). Klicken Sie bei Windows-Geräten auf **Verweise** > **Verweis hinzufügen...**, erweitern Sie den Ordner **Windows**, und wählen Sie **Erweiterungen**. Aktivieren Sie anschließend das richtige **SDK SQLite für Windows** zusammen mit dem SDK **Visual C++ 2013 Runtime for Windows**.
     Die Namen der SQLite-SDKs unterscheiden sich bei den einzelnen Windows-Plattformen.
 
 Bevor ein Tabellenverweis erstellt werden, muss der lokale Speicher vorbereitet werden:
 
-    var store = new MobileServiceSQLiteStore(Constants.OfflineDbPath);
-    store.DefineTable<TodoItem>();
+```
+var store = new MobileServiceSQLiteStore(Constants.OfflineDbPath);
+store.DefineTable<TodoItem>();
 
-    //Initializes the SyncContext using the default IMobileServiceSyncHandler.
-    await this.client.SyncContext.InitializeAsync(store);
+//Initializes the SyncContext using the default IMobileServiceSyncHandler.
+await this.client.SyncContext.InitializeAsync(store);
+```
 
 Die Speicherinitialisierung erfolgt normalerweise sofort nach dem Erstellen des Clients.  Der **OfflineDbPath** sollte ein geeigneter Dateiname für die Verwendung auf allen Plattformen sein, die Sie unterstützen.  Wenn der Pfad ein vollqualifizierter Pfad ist (d. h. er beginnt mit einem Schrägstrich), dann wird der Pfad verwendet.  Wenn der Pfad nicht vollqualifiziert ist, wird die Datei in einem plattformspezifischen Verzeichnis platziert.
 
@@ -476,56 +539,60 @@ Die Speicherinitialisierung erfolgt normalerweise sofort nach dem Erstellen des 
 
 Ein Tabellenverweis kann mit der `GetSyncTable<>`-Methode:abgerufen werden:
 
-    var table = client.GetSyncTable<TodoItem>();
+```
+var table = client.GetSyncTable<TodoItem>();
+```
 
 Für die Verwendung einer Offlinetabelle müssen Sie sich nicht authentifizieren.  Sie müssen sich nur authentifizieren, wenn Sie mit dem Back-End-Dienst kommunizieren.
 
 ### <a name="a-namesyncofflineasyncing-an-offline-table"></a><a name="syncoffline"></a>Synchronisieren einer Offlinetabelle
 Offlinetabellen werden nicht standardmäßig mit dem Back-End synchronisiert.  Die Synchronisierung ist in zwei Bereiche unterteilt.  Sie können Änderungen separat vom Herunterladen neuer Elemente übertragen.  Hier sehen Sie eine typische Synchronisierungsmethode:
 
-    public async Task SyncAsync()
+```
+public async Task SyncAsync()
+{
+    ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;
+
+    try
     {
-        ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;
+        await this.client.SyncContext.PushAsync();
 
-        try
+        await this.todoTable.PullAsync(
+            //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
+            //Use a different query name for each unique query in your program
+            "allTodoItems",
+            this.todoTable.CreateQuery());
+    }
+    catch (MobileServicePushFailedException exc)
+    {
+        if (exc.PushResult != null)
         {
-            await this.client.SyncContext.PushAsync();
-
-            await this.todoTable.PullAsync(
-                //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
-                //Use a different query name for each unique query in your program
-                "allTodoItems",
-                this.todoTable.CreateQuery());
-        }
-        catch (MobileServicePushFailedException exc)
-        {
-            if (exc.PushResult != null)
-            {
-                syncErrors = exc.PushResult.Errors;
-            }
-        }
-
-        // Simple error/conflict handling. A real application would handle the various errors like network conditions,
-        // server conflicts and others via the IMobileServiceSyncHandler.
-        if (syncErrors != null)
-        {
-            foreach (var error in syncErrors)
-            {
-                if (error.OperationKind == MobileServiceTableOperationKind.Update && error.Result != null)
-                {
-                    //Update failed, reverting to server's copy.
-                    await error.CancelAndUpdateItemAsync(error.Result);
-                }
-                else
-                {
-                    // Discard local change.
-                    await error.CancelAndDiscardItemAsync();
-                }
-
-                Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
-            }
+            syncErrors = exc.PushResult.Errors;
         }
     }
+
+    // Simple error/conflict handling. A real application would handle the various errors like network conditions,
+    // server conflicts and others via the IMobileServiceSyncHandler.
+    if (syncErrors != null)
+    {
+        foreach (var error in syncErrors)
+        {
+            if (error.OperationKind == MobileServiceTableOperationKind.Update && error.Result != null)
+            {
+                //Update failed, reverting to server's copy.
+                await error.CancelAndUpdateItemAsync(error.Result);
+            }
+            else
+            {
+                // Discard local change.
+                await error.CancelAndDiscardItemAsync();
+            }
+
+            Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
+        }
+    }
+}
+```
 
 Wenn das erste Argument für `PullAsync` null ist, wird die inkrementelle Synchronisierung nicht verwendet.  Jeder Synchronisierungsvorgang ruft alle Datensätze ab.
 
@@ -538,21 +605,29 @@ Mit einer benutzerdefinierten API können Sie benutzerdefinierte Endpunkte defin
 
 Sie rufen eine benutzerdefinierte API auf, indem Sie auf dem Client eine der [InvokeApiAsync] -Methoden aufrufen. Mit der folgenden Codezeile wird beispielsweise eine POST-Anforderung an die **completeAll** -API im Back-End gesendet:
 
-    var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
+```
+var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
+```
 
 Diese Form ist ein typisierter Methodenaufruf, der erfordert, dass der **MarkAllResult**-Rückgabetyp definiert ist. Typisierte und nicht typisierte Methoden werden unterstützt.
 
+Die InvokeApiAsync()-Methode stellt „/api/“ der API voran, die Sie aufrufen möchten, sofern diese API nicht mit einem Schrägstrich „/“ beginnt.
+Beispiel:
+
+* `InvokeApiAsync("completeAll",...)` ruft /api/completeAll auf dem Back-End auf.
+* `InvokeApiAsync("/.auth/me",...)` ruft /.auth/me auf dem Back-End auf.
+
+Sie können mit InvokeApiAsync jede WebAPI aufrufen, einschließlich WebAPIs, die nicht in Azure Mobile Apps definiert sind.  Bei Verwendung von InvokeApiAsync() werden die entsprechenden Header, einschließlich der Authentifizierungsheader, mit der Anforderung gesendet.
+
 ## <a name="a-nameauthenticationaauthenticate-users"></a><a name="authentication"></a>Authentifizieren von Benutzern
-Mobile Apps unterstützt die Authentifizierung und Autorisierung von App-Benutzern mit verschiedenen externen Identitätsanbietern: Facebook, Google, Microsoft Account, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Hinzufügen von Authentifizierung zu Ihrer App].
+Mobile Apps unterstützt die Authentifizierung und Autorisierung von App-Benutzern mit verschiedenen externen Identitätsanbietern: Facebook, Google, Microsoft Account, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Authentifizierung zu Ihrer App hinzufügen].
 
 Zwei Authentifizierungsflüsse werden unterstützt: *vom Client verwalteter* und *vom Server verwalteter* Fluss. Der vom Server verwaltete Fluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der vom Client verwaltete Fluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
 
 > [!NOTE]
 > In Ihren Produktions-Apps sollten Sie einen vom Client verwalteten Fluss nutzen.
->
->
 
-Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Hinzufügen von Authentifizierung zu Ihrer App].
+Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Authentifizierung zu Ihrer App hinzufügen].
 
 In diesem Abschnitt werden die folgenden Themen behandelt:
 
@@ -585,203 +660,223 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 
      **Windows:**
 
-       private MobileServiceUser user;   private async Task AuthenticateAsync()   {
-
-           string authority = "INSERT-AUTHORITY-HERE";
-           string resourceId = "INSERT-RESOURCE-ID-HERE";
-           string clientId = "INSERT-CLIENT-ID-HERE";
-           string redirectUri = "INSERT-REDIRECT-URI-HERE";
-           while (user == null)
-           {
-               string message;
-               try
-               {
-                   AuthenticationContext ac = new AuthenticationContext(authority);
-                   AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
-                       new Uri(redirectUri), new PlatformParameters(PromptBehavior.Auto, false) );
-                   JObject payload = new JObject();
-                   payload["access_token"] = ar.AccessToken;
-                   user = await App.MobileService.LoginAsync(
-                       MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
-                   message = string.Format("You are now logged in - {0}", user.UserId);
-               }
-               catch (InvalidOperationException)
-               {
-                   message = "You must log in. Login Required";
-               }
-               var dialog = new MessageDialog(message);
-               dialog.Commands.Add(new UICommand("OK"));
-               await dialog.ShowAsync();
-           }
-       }
-
-     **Xamarin.iOS**
-
-       private MobileServiceUser user;   private async Task AuthenticateAsync(UIViewController view)   {
-
-           string authority = "INSERT-AUTHORITY-HERE";
-           string resourceId = "INSERT-RESOURCE-ID-HERE";
-           string clientId = "INSERT-CLIENT-ID-HERE";
-           string redirectUri = "INSERT-REDIRECT-URI-HERE";
-           try
-           {
-               AuthenticationContext ac = new AuthenticationContext(authority);
-               AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
-                   new Uri(redirectUri), new PlatformParameters(view));
-               JObject payload = new JObject();
-               payload["access_token"] = ar.AccessToken;
-               user = await client.LoginAsync(
-                   MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
-           }
-           catch (Exception ex)
-           {
-               Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
-           }
-       }
-
-     **Xamarin.Android**
-
-       private MobileServiceUser user;   private async Task AuthenticateAsync()   {
-
-           string authority = "INSERT-AUTHORITY-HERE";
-           string resourceId = "INSERT-RESOURCE-ID-HERE";
-           string clientId = "INSERT-CLIENT-ID-HERE";
-           string redirectUri = "INSERT-REDIRECT-URI-HERE";
-           try
-           {
-               AuthenticationContext ac = new AuthenticationContext(authority);
-               AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
-                   new Uri(redirectUri), new PlatformParameters(this));
-               JObject payload = new JObject();
-               payload["access_token"] = ar.AccessToken;
-               user = await client.LoginAsync(
-                   MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
-           }
-           catch (Exception ex)
-           {
-               AlertDialog.Builder builder = new AlertDialog.Builder(this);
-               builder.SetMessage(ex.Message);
-               builder.SetTitle("You must log in. Login Required");
-               builder.Create().Show();
-           }
-       }   protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)   {
-
-           base.OnActivityResult(requestCode, resultCode, data);
-           AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
-       }
-
-#### <a name="a-nameclient-facebookasingle-sign-on-using-a-token-from-facebook-or-google"></a><a name="client-facebook"></a>Einmaliges Anmelden mit einem Token von Facebook oder Google
-Der folgende Codeausschnitt zeigt den Clientfluss für Facebook oder Google.
-
-    var token = new JObject();
-    // Replace access_token_value with actual value of your access token obtained
-    // using the Facebook or Google SDK.
-    token.Add("access_token", "access_token_value");
-
+    ```
     private MobileServiceUser user;
     private async Task AuthenticateAsync()
     {
+
+        string authority = "INSERT-AUTHORITY-HERE";
+        string resourceId = "INSERT-RESOURCE-ID-HERE";
+        string clientId = "INSERT-CLIENT-ID-HERE";
+        string redirectUri = "INSERT-REDIRECT-URI-HERE";
         while (user == null)
         {
             string message;
             try
             {
-                // Change MobileServiceAuthenticationProvider.Facebook
-                // to MobileServiceAuthenticationProvider.Google if using Google auth.
-                user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+                AuthenticationContext ac = new AuthenticationContext(authority);
+                AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
+                    new Uri(redirectUri), new PlatformParameters(PromptBehavior.Auto, false) );
+                JObject payload = new JObject();
+                payload["access_token"] = ar.AccessToken;
+                user = await App.MobileService.LoginAsync(
+                    MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
                 message = string.Format("You are now logged in - {0}", user.UserId);
             }
             catch (InvalidOperationException)
             {
                 message = "You must log in. Login Required";
             }
-
             var dialog = new MessageDialog(message);
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
     }
+    ```
 
-#### <a name="a-nameclient-livesdkasingle-sign-in-using-microsoft-account-with-the-live-sdk"></a><a name="client-livesdk"></a>Einmaliges Anmelden mit einem Microsoft-Konto mit dem Live SDK
-Um Benutzer zu authentifizieren, müssen Sie Ihre App beim Microsoft-Konto für das Developer Center registrieren. Konfigurieren Sie die Registrierungsdetails in Ihrem Mobile App-Back-End. Um eine Microsoft-Kontoregistrierung zu erstellen und diese mit Ihrem Mobile App-Back-End zu verbinden, führen Sie die Schritte unter [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung]aus. Wenn Sie sowohl eine Windows Store- als auch eine Windows Phone 8-/Silverlight-Version Ihrer App haben, registrieren Sie zuerst die Windows Store-Version.
+     **Xamarin.iOS**
 
-Im folgenden Code erfolgt eine Authentifizierung mit Live SDK und wird das zurückgegebene Token verwendet, um eine Anmeldung bei Ihrem Mobile App-Back-End vorzunehmen.
-
-    private LiveConnectSession session;
-     //private static string clientId = "<microsoft-account-client-id>";
-    private async System.Threading.Tasks.Task AuthenticateAsync()
+    ```
+    private MobileServiceUser user;
+    private async Task AuthenticateAsync(UIViewController view)
     {
 
-        // Get the URL the Mobile App backend.
-        var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
-
-        // Create the authentication client for Windows Store using the service URL.
-        LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
-        //// Create the authentication client for Windows Phone using the client ID of the registration.
-        //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
-
-        while (session == null)
+        string authority = "INSERT-AUTHORITY-HERE";
+        string resourceId = "INSERT-RESOURCE-ID-HERE";
+        string clientId = "INSERT-CLIENT-ID-HERE";
+        string redirectUri = "INSERT-REDIRECT-URI-HERE";
+        try
         {
-            // Request the authentication token from the Live authentication service.
-            // The wl.basic scope should always be requested.  Other scopes can be added
-            LiveLoginResult result = await liveIdClient.LoginAsync(new string[] { "wl.basic" });
-            if (result.Status == LiveConnectSessionStatus.Connected)
-            {
-                session = result.Session;
-
-                // Get information about the logged-in user.
-                LiveConnectClient client = new LiveConnectClient(session);
-                LiveOperationResult meResult = await client.GetAsync("me");
-
-                // Use the Microsoft account auth token to sign in to App Service.
-                MobileServiceUser loginResult = await App.MobileService
-                    .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
-
-                // Display a personalized sign-in greeting.
-                string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
-                var message = string.Format("You are now logged in - {0}", loginResult.UserId);
-                var dialog = new MessageDialog(message, title);
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
-            else
-            {
-                session = null;
-                var dialog = new MessageDialog("You must log in.", "Login Required");
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
+            AuthenticationContext ac = new AuthenticationContext(authority);
+            AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
+                new Uri(redirectUri), new PlatformParameters(view));
+            JObject payload = new JObject();
+            payload["access_token"] = ar.AccessToken;
+            user = await client.LoginAsync(
+                MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine(@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
         }
     }
+    ```
+
+     **Xamarin.Android**
+
+    ```
+    private MobileServiceUser user;
+    private async Task AuthenticateAsync()
+    {
+
+        string authority = "INSERT-AUTHORITY-HERE";
+        string resourceId = "INSERT-RESOURCE-ID-HERE";
+        string clientId = "INSERT-CLIENT-ID-HERE";
+        string redirectUri = "INSERT-REDIRECT-URI-HERE";
+        try
+        {
+            AuthenticationContext ac = new AuthenticationContext(authority);
+            AuthenticationResult ar = await ac.AcquireTokenAsync(resourceId, clientId,
+                new Uri(redirectUri), new PlatformParameters(this));
+            JObject payload = new JObject();
+            payload["access_token"] = ar.AccessToken;
+            user = await client.LoginAsync(
+                MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory, payload);
+        }
+        catch (Exception ex)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.SetMessage(ex.Message);
+            builder.SetTitle("You must log in. Login Required");
+            builder.Create().Show();
+        }
+    }
+    protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+    {
+
+        base.OnActivityResult(requestCode, resultCode, data);
+        AuthenticationAgentContinuationHelper.SetAuthenticationAgentContinuationEventArgs(requestCode, resultCode, data);
+    }
+    ```
+
+#### <a name="a-nameclient-facebookasingle-sign-on-using-a-token-from-facebook-or-google"></a><a name="client-facebook"></a>Einmaliges Anmelden mit einem Token von Facebook oder Google
+Der folgende Codeausschnitt zeigt den Clientfluss für Facebook oder Google.
+
+```
+var token = new JObject();
+// Replace access_token_value with actual value of your access token obtained
+// using the Facebook or Google SDK.
+token.Add("access_token", "access_token_value");
+
+private MobileServiceUser user;
+private async Task AuthenticateAsync()
+{
+    while (user == null)
+    {
+        string message;
+        try
+        {
+            // Change MobileServiceAuthenticationProvider.Facebook
+            // to MobileServiceAuthenticationProvider.Google if using Google auth.
+            user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+            message = string.Format("You are now logged in - {0}", user.UserId);
+        }
+        catch (InvalidOperationException)
+        {
+            message = "You must log in. Login Required";
+        }
+
+        var dialog = new MessageDialog(message);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
+}
+```
+
+#### <a name="a-nameclient-livesdkasingle-sign-on-using-microsoft-account-with-the-live-sdk"></a><a name="client-livesdk"></a>Einmaliges Anmelden mit einem Microsoft-Konto mit dem Live SDK
+Um Benutzer zu authentifizieren, müssen Sie Ihre App beim Microsoft-Konto für das Developer Center registrieren. Konfigurieren Sie die Registrierungsdetails in Ihrem Mobile App-Back-End. Um eine Microsoft-Kontoregistrierung zu erstellen und diese mit Ihrem Mobile App-Back-End zu verbinden, führen Sie die Schritte unter [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung]aus. Wenn Sie sowohl eine Windows Store- als auch eine Windows Phone 8-/Silverlight-Version Ihrer App haben, registrieren Sie zuerst die Windows Store-Version.
+
+Im folgenden Code erfolgt eine Authentifizierung mit Live SDK. Außerdem wird das zurückgegebene Token verwendet, um eine Anmeldung bei Ihrem Mobile App-Back-End vorzunehmen.
+
+```
+private LiveConnectSession session;
+    //private static string clientId = "<microsoft-account-client-id>";
+private async System.Threading.Tasks.Task AuthenticateAsync()
+{
+
+    // Get the URL the Mobile App backend.
+    var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
+
+    // Create the authentication client for Windows Store using the service URL.
+    LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
+    //// Create the authentication client for Windows Phone using the client ID of the registration.
+    //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
+
+    while (session == null)
+    {
+        // Request the authentication token from the Live authentication service.
+        // The wl.basic scope should always be requested.  Other scopes can be added
+        LiveLoginResult result = await liveIdClient.LoginAsync(new string[] { "wl.basic" });
+        if (result.Status == LiveConnectSessionStatus.Connected)
+        {
+            session = result.Session;
+
+            // Get information about the logged-in user.
+            LiveConnectClient client = new LiveConnectClient(session);
+            LiveOperationResult meResult = await client.GetAsync("me");
+
+            // Use the Microsoft account auth token to sign in to App Service.
+            MobileServiceUser loginResult = await App.MobileService
+                .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
+
+            // Display a personalized sign-in greeting.
+            string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
+            var message = string.Format("You are now logged in - {0}", loginResult.UserId);
+            var dialog = new MessageDialog(message, title);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+        }
+        else
+        {
+            session = null;
+            var dialog = new MessageDialog("You must log in.", "Login Required");
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+        }
+    }
+}
+```
 
 Weitere Informationen finden Sie in der Dokumentation zum [Windows Live SDK] .
 
 ### <a name="a-nameserverflowaserver-managed-authentication"></a><a name="serverflow"></a>Vom Server verwaltete Authentifizierung
 Rufen Sie nach der Registrierung Ihres Identitätsanbieters die [LoginAsync]-Methode für den MobileServiceClient mit dem [MobileServiceAuthenticationProvider]-Wert Ihres Anbieters auf. Der folgende Beispielcode startet eine Serverfluss-Anmeldung über Facebook.
 
-    private MobileServiceUser user;
-    private async System.Threading.Tasks.Task Authenticate()
+```
+private MobileServiceUser user;
+private async System.Threading.Tasks.Task Authenticate()
+{
+    while (user == null)
     {
-        while (user == null)
+        string message;
+        try
         {
-            string message;
-            try
-            {
-                user = await client
-                    .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
-                message =
-                    string.Format("You are now logged in - {0}", user.UserId);
-            }
-            catch (InvalidOperationException)
-            {
-                message = "You must log in. Login Required";
-            }
-
-            var dialog = new MessageDialog(message);
-            dialog.Commands.Add(new UICommand("OK"));
-            await dialog.ShowAsync();
+            user = await client
+                .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+            message =
+                string.Format("You are now logged in - {0}", user.UserId);
         }
+        catch (InvalidOperationException)
+        {
+            message = "You must log in. Login Required";
+        }
+
+        var dialog = new MessageDialog(message);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
     }
+}
+```
 
 Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie den Wert für [MobileServiceAuthenticationProvider] oben entsprechend Ihrem Anbieter.
 
@@ -790,43 +885,51 @@ In einem Serverfluss verwaltet Azure App Service den OAuth-Authentifizierungsflu
 ### <a name="a-namecachingacaching-the-authentication-token"></a><a name="caching"></a>Zwischenspeichern des Authentifizierungstokens
 In einigen Fällen kann der Aufruf der Anmeldemethode nach der ersten erfolgreichen Authentifizierung vermieden werden, indem das Authentifizierungstoken des Anbieters gespeichert wird.  Windows Store- und UWP-Apps können nach einer erfolgreichen Anmeldung [PasswordVault] wie folgt zum Zwischenspeichern des aktuellen Authentifizierungstokens verwenden:
 
-    await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+```
+await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
 
-    PasswordVault vault = new PasswordVault();
-    vault.Add(new PasswordCredential("Facebook", client.currentUser.UserId,
-        client.currentUser.MobileServiceAuthenticationToken));
+PasswordVault vault = new PasswordVault();
+vault.Add(new PasswordCredential("Facebook", client.currentUser.UserId,
+    client.currentUser.MobileServiceAuthenticationToken));
+```
 
 Die Benutzer-ID wird als Benutzername der Anmeldeinformationen und das Token als Kennwort gespeichert. Bei nachfolgenden Systemstarts können Sie **PasswordVault** auf zwischengespeicherte Anmeldeinformationen überprüfen. Das folgende Beispiel verwendet zwischengespeicherte Anmeldeinformationen, sobald diese gefunden werden, und versucht andernfalls, eine erneute Authentifizierung beim Back-End:
 
-    // Try to retrieve stored credentials.
-    var creds = vault.FindAllByResource("Facebook").FirstOrDefault();
-    if (creds != null)
-    {
-        // Create the current user from the stored credentials.
-        client.currentUser = new MobileServiceUser(creds.UserName);
-        client.currentUser.MobileServiceAuthenticationToken =
-            vault.Retrieve("Facebook", creds.UserName).Password;
-    }
-    else
-    {
-        // Regular login flow and cache the token as shown above.
-    }
+```
+// Try to retrieve stored credentials.
+var creds = vault.FindAllByResource("Facebook").FirstOrDefault();
+if (creds != null)
+{
+    // Create the current user from the stored credentials.
+    client.currentUser = new MobileServiceUser(creds.UserName);
+    client.currentUser.MobileServiceAuthenticationToken =
+        vault.Retrieve("Facebook", creds.UserName).Password;
+}
+else
+{
+    // Regular login flow and cache the token as shown above.
+}
+```
 
 Wenn Sie einen Benutzer abmelden, müssen Sie auch die gespeicherten Anmeldeinformationen wie folgt entfernen:
 
-    client.Logout();
-    vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
+```
+client.Logout();
+vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
+```
 
 Xamarin-Apps verwenden die [Xamarin.Auth]-APIs zum sicheren Speichern von Anmeldeinformationen in einem **Account**-Objekt. Ein Beispiel für die Verwendung dieser APIs finden Sie in der Codedatei [AuthStore.cs] im [ContosoMoments-Beispiel für das Teilen von Fotos](https://github.com/azure-appservice-samples/ContosoMoments).
 
 Wenn Sie die vom Client verwaltete Authentifizierung verwenden, können Sie auch das von einem Anbieter wie Facebook oder Twitter erhaltene Zugriffstoken zwischenspeichern. Dieses Token kann angegeben werden, um ein neues Authentifizierungstoken wie folgt vom Back-End anzufordern:
 
-    var token = new JObject();
-    // Replace <your_access_token_value> with actual value of your access token
-    token.Add("access_token", "<your_access_token_value>");
+```
+var token = new JObject();
+// Replace <your_access_token_value> with actual value of your access token
+token.Add("access_token", "<your_access_token_value>");
 
-    // Authenticate using the access token.
-    await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+// Authenticate using the access token.
+await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+```
 
 ## <a name="a-namepushnotificationsapush-notifications"></a><a name="pushnotifications"></a>Pushbenachrichtigungen
 Die folgenden Themen behandeln Pushbenachrichtigungen:
@@ -838,14 +941,16 @@ Die folgenden Themen behandeln Pushbenachrichtigungen:
 ### <a name="a-nameregister-for-pushahow-to-register-for-push-notifications"></a><a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
 Mit dem Mobile Apps-Client können Sie die App für Pushbenachrichtigungen mit Azure Notification Hubs registrieren. Wenn Sie sich registrieren, erhalten Sie ein Handle, das vom plattformspezifischen Pushbenachrichtigungsdienst bezogen wird. Diesen Wert müssen Sie zusammen mit allen übrigen Tags beim Registrieren angeben. Der folgende Code registriert Ihre Windows-App für Pushbenachrichtigungen mit dem Windows-Benachrichtigungsdienst (Windows Notification Service, WNS):
 
-    private async void InitNotificationsAsync()
-    {
-        // Request a push notification channel.
-        var channel =await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+```
+private async void InitNotificationsAsync()
+{
+    // Request a push notification channel.
+    var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-        // Register for notifications using the new channel.
-        await MobileService.GetPush().RegisterNativeAsync(channel.Uri, null);
-    }
+    // Register for notifications using the new channel.
+    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, null);
+}
+```
 
 Zu einer Pushbenachrichtigung an den WNS [BENÖTIGEN Sie eine Windows Store-Paket-SID](#package-sid).  Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
 
@@ -873,35 +978,41 @@ Xamarin-Apps erfordern zusätzlichen Code, um eine App registrieren zu können, 
 ### <a name="a-nameregister-xplatahow-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="register-xplat"></a>Gewusst wie: Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen
 Verwenden Sie die `RegisterAsync()` -Methode wie folgt, um Vorlagen zu registrieren:
 
-        JObject templates = myTemplates();
-        MobileService.GetPush().RegisterAsync(channel.Uri, templates);
+```
+JObject templates = myTemplates();
+MobileService.GetPush().RegisterAsync(channel.Uri, templates);
+```
 
 Ihre Vorlagen sollten den Typ `JObject` aufweisen und können mehrere Vorlagen im folgenden JSON-Format enthalten:
 
-        public JObject myTemplates()
-        {
-            // single template for Windows Notification Service toast
-            var template = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(message)</text></binding></visual></toast>";
+```
+public JObject myTemplates()
+{
+    // single template for Windows Notification Service toast
+    var template = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(message)</text></binding></visual></toast>";
 
-            var templates = new JObject
+    var templates = new JObject
+    {
+        ["generic-message"] = new JObject
+        {
+            ["body"] = template,
+            ["headers"] = new JObject
             {
-                ["generic-message"] = new JObject
-                {
-                    ["body"] = template,
-                    ["headers"] = new JObject
-                    {
-                        ["X-WNS-Type"] = "wns/toast"
-                    },
-                    ["tags"] = new JArray()
-                },
-                ["more-templates"] = new JObject {...}
-            };
-            return templates;
-        }
+                ["X-WNS-Type"] = "wns/toast"
+            },
+            ["tags"] = new JArray()
+        },
+        ["more-templates"] = new JObject {...}
+    };
+    return templates;
+}
+```
 
 Die **RegisterAsync()** -Methode akzeptiert auch sekundäre Kacheln:
 
-        MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
+```
+MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
+```
 
 Während der Registrierung werden aus Sicherheitsgründen alle Tags entfernt. Informationen zum Hinzufügen von Tags zu Installationen bzw. Vorlagen innerhalb von Installationen finden Sie unter „Verwenden des .NET-Back-End-Server SDK für Azure Mobile Apps“.
 
@@ -911,54 +1022,55 @@ Informationen zum Senden von Benachrichtigungen unter Verwendung dieser registri
 ### <a name="a-nameerrorsahow-to-handle-errors"></a><a name="errors"></a>Gewusst wie: Fehlerbehandlung
 Tritt ein Fehler im Back-End auf, löst das Client-SDK eine `MobileServiceInvalidOperationException`aus.  Das folgende Beispiel zeigt, wie eine vom Back-End zurückgegebene Ausnahme behandelt wird:
 
-    private async void InsertTodoItem(TodoItem todoItem)
+```
+private async void InsertTodoItem(TodoItem todoItem)
+{
+    // This code inserts a new TodoItem into the database. When the operation completes
+    // and App Service has assigned an Id, the item is added to the CollectionView
+    try
     {
-        // This code inserts a new TodoItem into the database. When the operation completes
-        // and App Service has assigned an Id, the item is added to the CollectionView
-        try
-        {
-            await todoTable.InsertAsync(todoItem);
-            items.Add(todoItem);
-        }
-        catch (MobileServiceInvalidOperationException e)
-        {
-            // Handle error
-        }
+        await todoTable.InsertAsync(todoItem);
+        items.Add(todoItem);
     }
+    catch (MobileServiceInvalidOperationException e)
+    {
+        // Handle error
+    }
+}
+```
 
-Sie finden ein weiteres Beispiel für die Behandlung von Fehlerbedingungen im [Beispiel für Mobile Apps-Dateien]. Das [LoggingHandler] -Beispiel stellt einen (nachfolgenden) Delegathandler für die Protokollierung bereit, um die Anforderungen an das Back-End zu protokollieren.
+Sie finden ein weiteres Beispiel für die Behandlung von Fehlerbedingungen im [Beispiel für Mobile Apps-Dateien]. Das [LoggingHandler]-Beispiel stellt einen Delegathandler für die Protokollierung der Anforderungen an das Back-End bereit.
 
 ### <a name="a-nameheadersahow-to-customize-request-headers"></a><a name="headers"></a>Gewusst wie: Anpassen der Anforderungsheader
 Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen die Kommunikation mit dem Mobile App-Back-End anpassen. Sie können z. B. benutzerdefinierte Header zu allen ausgehenden Anforderungen hinzufügen oder den Statuscode von Antworten ändern. Sie können einen benutzerdefinierten [DelegatingHandler] bereitstellen, wie im folgenden Beispiel gezeigt:
 
-    public async Task CallClientWithHandler()
+```
+public async Task CallClientWithHandler()
+{
+    MobileServiceClient client = new MobileServiceClient("AppUrl", new MyHandler());
+    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+    var newItem = new TodoItem { Text = "Hello world", Complete = false };
+    await todoTable.InsertAsync(newItem);
+}
+
+public class MyHandler : DelegatingHandler
+{
+    protected override async Task<HttpResponseMessage>
+        SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        HttpResponseMessage[]
-        MobileServiceClient client = new MobileServiceClient("AppUrl",
-            new MyHandler()
-            );
-        IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
-        var newItem = new TodoItem { Text = "Hello world", Complete = false };
-        await todoTable.InsertAsync(newItem);
+        // Change the request-side here based on the HttpRequestMessage
+        request.Headers.Add("x-my-header", "my value");
+
+        // Do the request
+        var response = await base.SendAsync(request, cancellationToken);
+
+        // Change the response-side here based on the HttpResponseMessage
+
+        // Return the modified response
+        return response;
     }
-
-    public class MyHandler : DelegatingHandler
-    {
-        protected override async Task<HttpResponseMessage>
-            SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            // Change the request-side here based on the HttpRequestMessage
-            request.Headers.Add("x-my-header", "my value");
-
-            // Do the request
-            var response = await base.SendAsync(request, cancellationToken);
-
-            // Change the response-side here based on the HttpResponseMessage
-
-            // Return the modified response
-            return response;
-        }
-    }
+}
+```
 
 
 <!-- Anchors. -->
@@ -980,7 +1092,7 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Authentifizierung zu Ihrer App hinzufügen]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Synchronisieren von Offlinedaten in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Hinzufügen von Pushbenachrichtigungen zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung]: app-service-mobile-how-to-configure-microsoft-authentication.md
@@ -1029,10 +1141,10 @@ Um Ihr spezielles App-Szenario zu unterstützen, müssen Sie unter Umständen di
 [Json.NET]: http://www.newtonsoft.com/json
 [Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
-[ContosoMoments-Beispiel für das Teilen von Fotos]: https://github.com/azure-appservice-samples/ContosoMoments
+[ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

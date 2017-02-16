@@ -1,5 +1,5 @@
 ---
-title: "Unterstützung mehrerer Mandanten in Azure Site Recovery für die Replikation von VMware-VMs in Azure über das CSP-Programm | Microsoft-Dokumentation"
+title: "Unterstützung mehrerer Mandanten für die VMware-VM-Replikation in Azure (CSP-Programm) | Microsoft-Dokumentation"
 description: "Beschreibt, wie Azure Site Recovery in einer Umgebung mit mehreren Mandanten bereitgestellt wird, um Replikation, Failover und Wiederherstellung von lokalen VMware-VMs in Azure über das CSP-Programm im Azure-Portal zu orchestrieren."
 services: site-recovery
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: manayar
 translationtype: Human Translation
-ms.sourcegitcommit: 4727eeb92a7cd06c4775d7cbf5594ab752a1e8f2
-ms.openlocfilehash: 80eb816f50d707e7605b9863c9cb99bce5c3d592
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: ed484afc59bbf48490e3ff4389e8e28c71a5e471
 
 
 ---
@@ -44,7 +44,7 @@ Die Architektur sieht wie folgt aus:
 
 **Abbildung 1: SHSP-Szenario mit einem vCenter**
 
-Wie Sie in dieser Abbildung erkennen können, hat jeder Kunde einen eigenen Verwaltungsserver. Dies erfolgt zum Beschränken des Mandantenzugriffs auf mandantenspezifische VMs zum Ermöglichen der Isolation von Mandanten. Im VMware-VM-Replikationsszenario wird der Konfigurationsserver zum Verwalten von Konten verwendet, um VMs zu ermitteln und Agents zu installieren. Wir befolgen dieselben Prinzipien für Umgebungen mit mehreren Mandanten, wobei die VM-Ermittlung durch die vCenter-Zugriffssteuerung zusätzlich eingeschränkt wird. 
+Wie Sie in dieser Abbildung erkennen können, hat jeder Kunde einen eigenen Verwaltungsserver. Dies erfolgt zum Beschränken des Mandantenzugriffs auf mandantenspezifische VMs zum Ermöglichen der Isolation von Mandanten. Im VMware-VM-Replikationsszenario wird der Konfigurationsserver zum Verwalten von Konten verwendet, um VMs zu ermitteln und Agents zu installieren. Wir befolgen dieselben Prinzipien für Umgebungen mit mehreren Mandanten, wobei die VM-Ermittlung durch die vCenter-Zugriffssteuerung zusätzlich eingeschränkt wird.
 
 Die Anforderung der Isolation von Daten erfordert, dass sämtliche sensiblen Infrastrukturinformationen (z.B. Anmeldeinformationen für den Zugriff) den Mandanten nicht angezeigt werden. Aus diesem Grund wird empfohlen, dass alle Komponenten des Verwaltungsservers (Konfigurationsserver, Prozessserver und Masterzielserver) der ausschließlichen Kontrolle des Partners unterliegen. Dies schließt Prozessserver mit horizontaler Skalierung ein.
 
@@ -63,7 +63,7 @@ Die Alternative ist das Zuweisen des Benutzerkontos und der Rolle zum Objekt „
 
 Das Zugriffsverfahren des vCenter-Kontos ist wie folgt:
 
-1.  Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle „Schreibgeschützt“, und geben Sie ihr einen passenden Namen (z. B. „Azure_Site_Recovery“ wie in diesem Beispiel). 
+1.  Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle „Schreibgeschützt“, und geben Sie ihr einen passenden Namen (z. B. „Azure_Site_Recovery“ wie in diesem Beispiel).
 2.  Weisen Sie dieser Rolle die folgenden Berechtigungen zu:
  *  Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
  *  Netzwerk -> Netzwerk zuweisen
@@ -95,7 +95,7 @@ Zum Einschränken von Vorgängen für die Notfallwiederherstellung bis zum Failo
 
 ## <a name="other-multi-tenant-environments"></a>Andere Umgebungen mit mehreren Mandanten
 
-Bislang wurde das Einrichten einer Umgebung für mehrere Mandanten für eine SHPS-Lösung detailliert beschrieben. Die anderen beiden wichtigen Lösungen heißen DHPS und MSP. Die jeweilige Architektur wird nachstehend gezeigt: 
+Bislang wurde das Einrichten einer Umgebung für mehrere Mandanten für eine SHPS-Lösung detailliert beschrieben. Die anderen beiden wichtigen Lösungen heißen DHPS und MSP. Die jeweilige Architektur wird nachstehend gezeigt:
 
 ### <a name="dedicated-hosting-solution"></a>Dedizierte Hostinglösung
 
@@ -115,7 +115,7 @@ Der Unterschied bei der Architektur besteht darin, dass die Infrastruktur jedes 
 
 
 ## <a name="csp-program-overview"></a>Übersicht über das CSP-Programm
-Das Microsoft Cloud Solution Provider-[Programm](https://partner.microsoft.com/en-US/cloud-solution-provider) (CSP) ermöglicht ein besseres Zusammenspiel mit Partnern beim Anbieten sämtlicher Microsoft-Clouddienste einschließlich Office 365, EMS und Microsoft Azure. Es ermöglicht unseren Partnern eine lückenlose Zuständigkeit für die Beziehung mit Kunden und die Position als Hauptansprechpartner. Über das CSP-Programm kann ein Partner Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren. 
+Das Microsoft Cloud Solution Provider-[Programm](https://partner.microsoft.com/en-US/cloud-solution-provider) (CSP) ermöglicht ein besseres Zusammenspiel mit Partnern beim Anbieten sämtlicher Microsoft-Clouddienste einschließlich Office&365;, EMS und Microsoft Azure. Es ermöglicht unseren Partnern eine lückenlose Zuständigkeit für die Beziehung mit Kunden und die Position als Hauptansprechpartner. Über das CSP-Programm kann ein Partner Azure-Abonnements für Kunden bereitstellen und diese Abonnements mit ihren eigenen angepassten Angeboten mit einem Mehrwert kombinieren.
 
 Im Fall von Azure Site Recovery können Partner die gesamte Notfallwiederherstellungslösung für Kunden direkt über das CSP-Programm verwalten. Sie können auch im Rahmen dieses Programms die Azure Site Recovery-Umgebungen einrichten und Kunden ermöglichen, ihre eigenen Anforderungen an die Notfallwiederherstellung in einem Self-Service-Modell zu erfüllen. In beiden Szenarien ist der Partner das Bindeglied zwischen Azure Site Recovery und Endkunden. Der Partner kümmert sich um die Beziehung mit den Kunden und stellt ihnen die Nutzung von Azure Site Recovery in Rechnung.
 
@@ -152,11 +152,11 @@ Die VM-Voraussetzungen sind identisch mit der Beschreibung in der [Dokumentation
 ### <a name="step-2-access-tenant-account"></a>Schritt 2: Zugreifen auf das Mandantenkonto
 
 1.  Wie in Schritt 1 beschrieben, können Sie in Ihrem Dashboard auf der Seite „Kunden“ auf das Abonnement des Mandanten zugreifen. Navigieren Sie hierhin, und klicken Sie auf den Namen des Mandantenkontos, das Sie gerade erstellt haben.
-2.  Daraufhin wird der Abschnitt „Abonnements“ des Mandantenkontos geöffnet, in dem Sie die vorhandenen Abonnements des Kontos überwachen und bei Bedarf weitere Abonnements hinzufügen können. Wählen Sie zum Verwalten der Notfallwiederherstellungsvorgänge des Mandanten rechts auf der Seite „Alle Ressourcen (Azure-Portal)“ aus. 
+2.  Daraufhin wird der Abschnitt „Abonnements“ des Mandantenkontos geöffnet, in dem Sie die vorhandenen Abonnements des Kontos überwachen und bei Bedarf weitere Abonnements hinzufügen können. Wählen Sie zum Verwalten der Notfallwiederherstellungsvorgänge des Mandanten rechts auf der Seite „Alle Ressourcen (Azure-Portal)“ aus.
 
     ![Alle Ressourcen](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)
 
-3.  Durch Klicken auf die Schaltfläche „Alle Ressourcen“ erhalten Sie Zugriff auf die Azure-Abonnements des Mandanten. Dieselben Informationen können Sie auch im Azure Active Directory (AAD) überprüfen, das rechts oben im Azure-Portal angezeigt wird. 
+3.  Durch Klicken auf die Schaltfläche „Alle Ressourcen“ erhalten Sie Zugriff auf die Azure-Abonnements des Mandanten. Dieselben Informationen können Sie auch im Azure Active Directory (AAD) überprüfen, das rechts oben im Azure-Portal angezeigt wird.
 
     ![AAD-Administrator](./media/site-recovery-multi-tenant-support-vmware-using-csp/aad-admin-display.png)
 
@@ -183,11 +183,11 @@ Bei einer Self-Service-Lösung für die Notfallwiederherstellung müssen dem Man
 Ein Partner kann auch über das CSP-Portal dem Mandantenabonnement einen neuen Benutzer wie folgt hinzufügen:
 
 1.  Wechseln Sie zur CSP-Abonnementseite eines bestimmten Mandanten, und wählen Sie die Option „Benutzer und Lizenzen“ aus.
-    
+
     ![Benutzer und Lizenzen](./media/site-recovery-multi-tenant-support-vmware-using-csp/users-and-licences.png)
 
-    Sie können nun einen neuen Benutzer erstellen, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können auch die Liste der Benutzer mithilfe einer CSV-Datei hochladen. 
-2.  Nachdem die Benutzer erstellt wurden, navigieren Sie zurück zum Azure-Portal und wählen auf dem Blatt „Abonnement“ das entsprechende Abonnement aus. 
+    Sie können nun einen neuen Benutzer erstellen, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können auch die Liste der Benutzer mithilfe einer CSV-Datei hochladen.
+2.  Nachdem die Benutzer erstellt wurden, navigieren Sie zurück zum Azure-Portal und wählen auf dem Blatt „Abonnement“ das entsprechende Abonnement aus.
 3.  Wählen Sie auf dem geöffneten neuen Blatt „Zugriffssteuerung (IAM)“ aus, und klicken Sie auf „+Hinzufügen“, um einen Benutzer mit der entsprechenden Zugriffsebene hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden automatisch auf dem Blatt angezeigt, das nach dem Klicken auf eine Zugriffsebene geöffnet wird.
 
     ![Benutzerabonnement](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-user-subscription.png)
@@ -196,8 +196,6 @@ Ein Partner kann auch über das CSP-Portal dem Mandantenabonnement einen neuen B
 
 
 
-
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

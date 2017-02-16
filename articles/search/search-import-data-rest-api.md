@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 80a1630deb8f7e93a91118d880eb2477ace26eb6
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 7c1c14055507d77dfcefe87694167ca5a2fcfb97
 
 ---
 
@@ -36,10 +36,10 @@ In diesem Artikel erfahren Sie, wie Sie die [Azure Search REST-API](https://docs
 
 Um Dokumente mit der REST-API mithilfe von Push in Ihren Index zu verschieben, geben Sie eine HTTP POST-Anforderung an das URL-Endpunkt Ihres Indexes aus. Der Hauptteil der HTTP-Anforderung ist ein JSON-Objekt, das die Dokumente enthält, die hinzugefügt, geändert oder gelöscht werden sollen.
 
-## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
+## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Beim Ausgeben von HTTP-Anforderungen in Ihrem Dienst mithilfe der REST-API muss *jede* API-Anforderung den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu ermitteln.
+1. Sie können sich am [Azure-Portal](https://portal.azure.com/) anmelden, um die API-Schlüssel für Ihren Dienst zu ermitteln.
 2. Wechseln Sie zum Blatt Ihres Azure Search-Diensts.
 3. Klicken Sie auf das Schlüsselsymbol.
 
@@ -50,7 +50,7 @@ Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
 Verwenden Sie zum Importieren von Daten in einen Index entweder den primären oder den sekundären Admin-Schlüssel.
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
+## <a name="decide-which-indexing-action-to-use"></a>Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
 Wenn Sie die REST-API verwenden, werden HTTP POST-Anforderungen mit JSON-Anforderungstexten an die Endpunkt-URL Ihres Azure Search-Indexes ausgegeben. Das JSON-Objekt im HTTP-Anforderungstext enthält ein einzelnes JSON-Array namens „value“, das JSON-Objekte enthält. Diese stellen Dokumente dar, die Sie zum Index hinzufügen, aktualisieren oder löschen möchten.
 
 Jedes JSON-Objekt im Array „value“ stellt ein zu indizierendes Dokument dar. Jedes der Objekte enthält den Schlüssel des Dokuments und bestimmt die gewünschte Indizierungsaktion (Hochladen, Zusammenführen, Löschen usw.). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
@@ -62,7 +62,7 @@ Jedes JSON-Objekt im Array „value“ stellt ein zu indizierendes Dokument dar.
 | `mergeOrUpload` |Diese Aktion verhält sich wie `merge`, wenn im Index bereits ein Dokument mit dem entsprechenden Schlüssel vorhanden ist. Wenn das Dokument nicht vorhanden ist, verhält es sich wie `upload` mit einem neuen Dokument. |Schlüssel und alle anderen zu definierenden Felder |- |
 | `delete` |Hiermit wird das angegebene Dokument aus dem Index gelöscht. |Nur Schlüssel |Mit Ausnahme des Schlüsselfelds werden alle angegebenen Felder ignoriert. Wenn Sie ein einzelnes Feld aus einem Dokument entfernen möchten, verwenden Sie stattdessen `merge` , und setzen Sie das Feld ausdrücklich auf Null. |
 
-## <a name="iii-construct-your-http-request-and-request-body"></a>III. Erstellen Sie die HTTP-Anforderung und den Anforderungstext
+## <a name="construct-your-http-request-and-request-body"></a>Erstellen Sie die HTTP-Anforderung und den Anforderungstext
 Da Sie nun die erforderlichen Feldwerte für Ihre Indexaktionen gesammelt haben, können Sie die HTTP-Anforderung und den JSON-Anforderungstext für den Datenimport erstellen.
 
 #### <a name="request-and-request-headers"></a>Anforderung und Anforderungsheader
@@ -126,7 +126,7 @@ Wir gehen davon aus, dass der Index in diesem Beispiel („hotels“) bereits mi
 
 Beachten Sie außerdem, dass nur bis zu 1000 Dokumente (oder 16 MB) in einer einzigen Indizierungsanforderung enthalten sein können.
 
-## <a name="iv-understand-your-http-response-code"></a>IV. Erläuterungen zum HTTP-Antwortcode
+## <a name="understand-your-http-response-code"></a>Erläuterungen zum HTTP-Antwortcode
 #### <a name="200"></a>200
 Nach der Übermittlung einer erfolgreichen Indizierungsanforderung erhalten Sie eine HTTP-Antwort mit dem Statuscode `200 OK`. Der JSON-Text der HTTP-Antwort lautet wie folgt:
 
@@ -177,11 +177,11 @@ Der Statuscode `503` wird zurückgegeben, wenn keines der Elemente in der Anford
 
 Weitere Informationen zu Dokumentaktionen und Antworten bei Erfolg/Fehler finden Sie unter [Hinzufügen, Aktualisieren und Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents). Weitere Informationen zu anderen HTTP-Statuscodes, die bei Fehlern ausgegeben werden, finden Sie unter [HTTP-Statuscodes (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-## <a name="next"></a>Weiter
+## <a name="next-steps"></a>Nächste Schritte
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen in Azure Search](search-query-overview.md) .
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

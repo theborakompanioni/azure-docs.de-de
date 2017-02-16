@@ -8,4 +8,7 @@
 [0]: ./media/vs-docker-add-docker-support/add-docker-support.png
 [1]: ./media/vs-docker-add-docker-support/docker-files-added.png
 
-<!---HONumber=AcomDC_0622_2016-->
+
+<!--HONumber=Jan17_HO3-->
+
+

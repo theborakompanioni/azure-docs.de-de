@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 03/31/2016
 ms.author: mattrow
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
+ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
+ms.openlocfilehash: c920a206d6f3288f6cba0d2658d556749fc4d574
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 45cfb660db9ea1d93d136d223d65602f3a373574
 Beim Ausführen von Diensten auf dem Entwicklercomputer sind [Visual Studio-Debugtools](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)hilfreich. Für Remotecluster sind [Integritätsberichte](service-fabric-view-entities-aggregated-health.md) immer ein guter Ausgangspunkt. Am einfachsten greifen Sie auf diese Berichte über PowerShell oder [SFX](service-fabric-visualizing-your-cluster.md)zu. In diesem Artikel wird davon ausgegangen, dass Sie einen Remotecluster debuggen und über grundlegende Kenntnisse zur Verwendung der Tools verfügen.
 
 ## <a name="application-crash"></a>Anwendungsabstürze
-Der Bericht „Partition is below target replica or instance count“ ist ein guter Hinweis darauf, dass der Dienst abstürzt. Um herauszufinden, an welcher Stelle Ihr Dienst abstürzt, bedarf es einiger weiterer Untersuchungen. Bei einer ordnungsgemäßen Skalierung des Diensts stellt ein Satz von gut durchdachten Ablaufverfolgungen die beste Möglichkeit dar.  Es empfiehlt sich, zu versuchen, diese Ablaufverfolgungen mit der [Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md) zu sammeln und sie mithilfe einer Lösung wie [Elasticsearch](service-fabric-diagnostic-how-to-use-elasticsearch.md) anzuzeigen und zu suchen.
+Der Bericht „Partition is below target replica or instance count“ ist ein guter Hinweis darauf, dass der Dienst abstürzt. Um herauszufinden, an welcher Stelle Ihr Dienst abstürzt, bedarf es einiger weiterer Untersuchungen. Bei einer ordnungsgemäßen Skalierung des Diensts stellt ein Satz von gut durchdachten Ablaufverfolgungen die beste Möglichkeit dar.  Es empfiehlt sich, zu versuchen, diese Ablaufverfolgungen mit [Azure-Diagnose](service-fabric-diagnostics-how-to-setup-wad.md) zu sammeln und sie mithilfe einer Lösung wie [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) anzuzeigen und zu suchen.
 
 ![SFX-Partitionsintegrität](./media/service-fabric-diagnostics-troubleshoot-common-scenarios/crashNewApp.png)
 
@@ -55,6 +55,6 @@ Weitere Informationen zu vorhandenen Diagnosefunktionen von Service Fabric:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

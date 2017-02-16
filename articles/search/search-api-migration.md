@@ -15,14 +15,17 @@ ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 165ab7363efaf90eaab41098f71e2f1b846c346e
-ms.openlocfilehash: 5ac292729d236bd539e71ba431283ca417ea3980
+ms.sourcegitcommit: 7d45759915f38ba4337b745eb2b28dcbc72dbbe0
+ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
 
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Aktualisieren der REST-API für den Azure Search-Dienst auf Version 2016-09-01
 Wenn Sie die Version 2015-02-28 oder 2015-02-28-Preview der [REST-API für den Azure Search-Dienst](https://msdn.microsoft.com/library/azure/dn798935.aspx) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die erste allgemein verfügbare API-Version 2016-09-01.
 
 Version 2016-09-01 der REST-API enthält einige Änderungen im Vergleich mit früheren Versionen. Sie sind größtenteils abwärtskompatibel, daher sollte das Ändern von Code nur minimalen Aufwand bedeuten, abhängig davon, welche Version Sie zuvor verwendet haben. Anweisungen zum Ändern Ihres Codes, um die neue API-Version zu verwenden, finden Sie unter [Schritte zum Upgrade](#UpgradeSteps).
+
+> [!NOTE]
+> Ihre Azure Search-Dienstinstanz unterstützt mehrere REST-API-Versionen, einschließlich der neuesten. Sie können auch ältere Versionen weiterhin verwenden, aber es wird empfohlen, den Code zur neuesten Version zu migrieren.
 
 <a name="WhatsNew"></a>
 
@@ -67,6 +70,6 @@ Vielen Dank für die Nutzung von Azure Search!
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

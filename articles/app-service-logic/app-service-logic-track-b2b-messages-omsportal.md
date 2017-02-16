@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: b3f564e32105708ddbd9027240c897fdd8ae2ac6
-ms.openlocfilehash: 673b128c628a13c4af6c73c1a2d82953aadfd45a
+ms.sourcegitcommit: 7f64fe625b7c3b7e58f86154b9d601eff03e31d3
+ms.openlocfilehash: 854db453a3af459c0398c4b88a6789c87747e920
 
 
 ---
@@ -32,9 +32,10 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * Ein Integrationskonto. Sie können ein [Integrationskonto](app-service-logic-enterprise-integration-create-integration-account.md) erstellen und die Protokollierung aktivieren. Entsprechende Schritte finden Sie [hier](app-service-logic-monitor-b2b-message.md).
-* Eine Logik-App. Sie können eine [Logik-App](app-service-logic-create-a-logic-app.md) erstellen und die Protokollierung aktivieren. Entsprechende Schritte finden Sie [hier](app-service-logic-monitor-your-logic-apps.md).
+* Eine Logik-App. Sie können eine [Logik-App](app-service-logic-create-a-logic-app.md) erstellen und die Protokollierung aktivieren. Entsprechende Schritte finden Sie [hier](app-service-logic-monitor-your-logic-apps.md#azure-diagnostics-and-alerts).
 
 ## <a name="adding-logic-apps-b2b-solution-to-oms-portal"></a>Hinzufügen der B2B-Lösung für Logik-Apps zum OMS-Portal
+
 1. Wählen Sie im Portal **More Services** (Weitere Dienste), suchen Sie nach **Log Analytics**, und wählen Sie **Log Analytics**
 ![Log Analytics suchen](./media/app-service-logic-track-b2b-messages-omsportal/browseloganalytics.png).  
 
@@ -54,17 +55,39 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 7. Suchen Sie auf der Startseite, um **Logic Apps B2B Messages** (Logik-Apps-B2B-Nachrichten) anzuzeigen
 ![Startseite auswählen](./media/app-service-logic-track-b2b-messages-omsportal/omshomepage4.png).
 
-8. Nachrichtenveröffentlichungsprozess. Die Nachrichtenanzahl auf der Startseite wird aktualisiert ![Startseite auswählen](./media/app-service-logic-track-b2b-messages-omsportal/omshomepage6.png).
+## <a name="tracking-data-in-oms-portal"></a>Nachverfolgen von Daten im OMS-Portal
 
-9. Wenn Sie auf der Startseite **Logic Apps B2B Messages** (Logik-Apps-B2B-Nachrichten) auswählen, wird der AS2- und X12-Nachrichtenstatus angezeigt.  Die Daten basieren auf dem letzten Tag.
+1. Nachrichtenveröffentlichungsprozess. Die Nachrichtenanzahl auf der Startseite wird aktualisiert ![Startseite auswählen](./media/app-service-logic-track-b2b-messages-omsportal/omshomepage6.png).
+
+2. Wenn Sie auf der Startseite **Logic Apps B2B Messages** (Logik-Apps-B2B-Nachrichten) auswählen, wird der AS2- und X12-Nachrichtenstatus angezeigt.  Die Daten basieren auf dem letzten Tag.
 ![„Logic Apps B2B Messages“ (Logik-Apps-B2B-Nachrichten) auswählen](./media/app-service-logic-track-b2b-messages-omsportal/omshomepage5.png)
 
-10. Durch die Auswahl von AS2- oder X12-Nachrichten nach Status wird die Nachrichtenliste angezeigt ![AS2-Nachrichtenstatus auswählen](./media/app-service-logic-track-b2b-messages-omsportal/as2messagelist.png)
+3. Durch die Auswahl von AS2- oder X12-Nachrichten nach Status wird die Nachrichtenliste angezeigt ![AS2-Nachrichtenstatus auswählen](./media/app-service-logic-track-b2b-messages-omsportal/as2messagelist.png)
 
     ![X12-Nachrichtenstatus auswählen](./media/app-service-logic-track-b2b-messages-omsportal/x12messagelist.png)
 
-11. Wenn Sie eine Zeile in der AS2- oder X12-Nachrichtenliste auswählen, wird die Protokollsuche angezeigt.  In der Protokollsuche werden alle Aktionen mit derselben **Ausführungs-ID** angezeigt 
+4. Wenn Sie eine Zeile in der AS2- oder X12-Nachrichtenliste auswählen, wird die Protokollsuche angezeigt.  In der Protokollsuche werden alle Aktionen mit derselben **Ausführungs-ID** angezeigt 
 ![Nachrichtenstatus auswählen](./media/app-service-logic-track-b2b-messages-omsportal/logsearch.png).
+
+## <a name="queries-in-oms-portal"></a>Abfragen im OMS-Portal
+
+Auf der Suchseite können Sie eine Abfrage erstellen und die Ergebnisse dann bei der Suche anhand von Facetsteuerelementen filtern.
+
+### <a name="how-to-create-a-query"></a>Erstellen einer Abfrage
+
+1. Schreiben Sie in der Protokollsuche eine Abfrage, und wählen Sie **Speichern**.  [Hier](app-service-logic-track-b2b-messages-omsportal-query-filter-control-number.md) finden Sie die Schritte zum Schreiben einer Abfrage.![Startseite wählen](./media/app-service-logic-track-b2b-messages-omsportal/logsearchaddquery.png)
+
+2. **Suche speichern** wird geöffnet.  Geben Sie einen **Namen** und eine **Kategorie** ein, und klicken Sie auf **Speichern** .  
+![Startseite wählen](./media/app-service-logic-track-b2b-messages-omsportal/logsearchaddquery1.png)
+
+3. Wählen Sie zum Anzeigen der Abfrage **Favoriten**  .  
+![Startseite wählen](./media/app-service-logic-track-b2b-messages-omsportal/logsearchaddquery3.png)
+
+    ![Startseite wählen](./media/app-service-logic-track-b2b-messages-omsportal/logsearchaddquery4.png)
+
+### <a name="how-to-use-a-saved-query"></a>Verwenden einer gespeicherten Abfrage
+
+1. Wählen Sie in der Protokollsuche **Favoriten**, um gespeicherte Abfragen anzuzeigen.  Auswählen eines der Abfrageergebnisse ![Startseite wählen](./media/app-service-logic-track-b2b-messages-omsportal/logsearchaddquery5.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

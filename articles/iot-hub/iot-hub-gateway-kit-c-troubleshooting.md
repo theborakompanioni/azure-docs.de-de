@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei Ihrem Azure IoT-Gateway | Microsoft Docs
+title: Problembehandlung bei Ihrem Azure IoT-Gateway | Microsoft-Dokumentation
 description: "Problembehandlungsseite für Intel NUC-Gateway"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 44b61dbdad51e3d6b5505477c97de75c8fc5a1a4
-ms.openlocfilehash: d704d21a89a8fde0128063430476c14317243e33
+ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
+ms.openlocfilehash: c1c7679af9a931c46d25a2e1509e67b781b00f35
 
 
 ---
@@ -140,7 +140,7 @@ Wenn Sie Azure IoT Hub erfolgreich mit der Azure-Befehlszeilenschnittstelle bere
 
 ### <a name="device-explorer"></a>Geräte-Explorer
 
-[Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/):
+[Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/):
 
 - Geräteidentitätsverwaltung zum Bereitstellen und Verwalten von Geräten, die bei IoT Hub registriert sind.
 - Empfangen von Gerät-zu-Cloud, damit Sie von Ihrem Gerät an IoT Hub gesendete Nachrichten überwachen können.
@@ -150,7 +150,7 @@ Konfigurieren Sie Ihre IoT Hub-Verbindungszeichenfolge in diesem Tool, um alle F
 
 ### <a name="iothub-explorer"></a>iothub-explorer
 
-[iothub-explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
+[iothub-explorer](https://github.com/Azure/iothub-explorer) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
 
 Zum Installieren der aktuellen Version (Vorabversion) des Tools „iothub-explorer“ führen Sie den folgenden Befehl aus:
 
@@ -174,6 +174,6 @@ Sie können eine vollständige CLI-Oberfläche nutzen, um alle Azure-Ressourcen 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

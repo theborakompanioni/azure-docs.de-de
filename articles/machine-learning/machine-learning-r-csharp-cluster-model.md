@@ -1,6 +1,6 @@
 ---
-title: Clustermodell | Microsoft Docs
-description: Clustermodell
+title: "(Veraltet:) Clustermodell – Azure | Microsoft Docs"
+description: (Veraltet:) Clustermodell
 services: machine-learning
 documentationcenter: 
 author: FrancescaLazzeri
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: lazzeri
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8206107550173959021ea69ac533aa046f7e12e3
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 84c94b83878f851c2ac281fe33afe53e02f8456c
 
 
 ---
-# <a name="cluster-model"></a>Clustermodell
+# <a name="deprecated-cluster-model"></a>(Veraltet:) Clustermodell
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Wie lässt sich das Verhalten von Gruppen von Kreditkartenbesitzern vorhersagen, um die Belastungsrisiken der Kreditunternehmen zu verringern? Wie lassen sich Gruppen von Persönlichkeitsmerkmalen von Mitarbeitern definieren, um die Leistung bei der Arbeit zu verbessern? Wie können Ärzte Patienten anhand der Merkmale ihrer Krankheiten in Gruppen unterteilen? Grundsätzlich können all diese Fragen durch Clusteranalyse beantwortet werden.   
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -80,7 +87,7 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei [Execute R Script][execute-r-script]-Module in den Arbeitsbereich gezogen. Das Datenschema wurde mit einem einfachen [Execute R Script][execute-r-script]-Modul erstellt. Anschließend wurde das Datenschema mit dem Clustermodellabschnitt verknüpft, der ebenfalls mit einem [Execute R Script][execute-r-script]-Modul erstellt wurde. In dem für das Clustermodell verwendeten [Execute R Script][execute-r-script]-Modul nutzt der Webdienst dann die k-means-Funktion, die bereits in das [Execute R Script][execute-r-script]-Modul von Azure Machine Learning integriert ist.    
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei Module [Execute R Script][execute-r-script] in den Arbeitsbereich gezogen. Das Datenschema wurde mit einem einfachen Modul [Execute R Script][execute-r-script] erstellt. Anschließend wurde das Datenschema mit dem Clustermodellabschnitt verknüpft, der ebenfalls mit einem Modul [Execute R Script][execute-r-script] erstellt wurde. In dem für das Clustermodell verwendeten Modul [Execute R Script][execute-r-script] nutzt der Webdienst dann die k-means-Funktion, die bereits in das Modul [Execute R Script][execute-r-script] von Azure Machine Learning integriert ist.    
 
 ![Experimentablauf][3]
 
@@ -134,6 +141,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

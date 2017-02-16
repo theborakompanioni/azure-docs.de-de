@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98333c8721274c207ed3d7f2bd05cc20bcd10562
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: be19590bca7c7fb45e32f5a5e29c88ab5dd21deb
 
 
 ---
@@ -30,6 +30,10 @@ Einer der Vorteile bei der Ausführung von SQL-Datenbank unter Microsoft Azure i
 
 ## <a name="when-your-app-is-an-overnight-success"></a>Wenn Ihre App über Nacht zum Erfolg wird
 SQL-Datenbank macht die spontane Skalierung leicht. Wenn Ihre App also über Nacht zum Erfolg wird, können Sie sie mit einem Klick den neuen Leistungsanforderungen anpassen. Und dies bei minimaler Ausfallzeit – Sie müssen sich also keine Sorgen machen, dass Ihre App während des zentralen Hoch- oder Herunterskalierens beeinträchtigt wird.
+
+>
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
+>
 
 [Dokumentation lesen](http://go.microsoft.com/fwlink/?LinkID=787569)
 
@@ -47,7 +51,7 @@ Wechseln Sie zur Startseite, um zu erfahren, welche weiteren Features SQL-Datenb
 [Weitere Informationen](https://azure.microsoft.com/services/sql-database/) 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/) und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
+Erhalten Sie ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/get-started/), und [erstellen Sie Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
@@ -57,6 +61,6 @@ Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

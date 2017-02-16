@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/06/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56bee9c0a2da3e522290c2274b6d0301defe3f71
+ms.sourcegitcommit: 52153526fb5b127823316b86fa05c0528151e18f
+ms.openlocfilehash: 2dfcdf2207d1437a917c493075e3245bd58381ac
 
 
 ---
@@ -44,7 +44,7 @@ Weitere Informationen zu Machine Learning-Webdiensten finden Sie unter [Bereitst
 ## <a name="get-an-azure-machine-learning-authorization-key"></a>Abrufen eines Autorisierungsschlüssels für Azure Machine Learning
 Wenn Sie Ihr Experiment bereitstellen, werden API-Schlüssel für den Webdienst erstellt. Sie können die Schlüssel von verschiedenen Stellen abrufen.
 
-## <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Im Azure Machine Learning Web Services-Portal
+### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Im Azure Machine Learning Web Services-Portal
 Melden Sie sich beim [Microsoft Azure Machine Learning Web Services-Portal](https://services.azureml.net) an.
 
 So rufen Sie den API-Schlüssel für einen neuen Machine Learning-Webdienst ab
@@ -62,14 +62,14 @@ So rufen Sie den API-Schlüssel für einen klassischen Machine Learning-Webdiens
 4. Klicken Sie im oberen Menü auf **Consume**.
 5. Kopieren und speichern Sie den **Primary Key**.
 
-## <a name="classic-web-service"></a>Klassischer Webdienst
- Sie können auch einen Schlüssel für einen klassischen Webdienst aus Machine Learning Studio oder dem Azure-Portal abrufen.
+### <a name="classic-web-service"></a>Klassischer Webdienst
+ Sie können auch einen Schlüssel für einen klassischen Webdienst aus Machine Learning Studio oder dem klassischen Azure-Portal abrufen.
 
-### <a name="machine-learning-studio"></a>Machine Learning Studio
+#### <a name="machine-learning-studio"></a>Machine Learning Studio
 1. Klicken Sie in Machine Learning Studio links auf **WEB SERVICES** .
 2. Klicken Sie auf einen Webdienst. Der **API Key** befindet sich auf der Registerkarte **DASHBOARD**.
 
-### <a name="azure-portal"></a>Azure-Portal
+#### <a name="azure-classic-portal"></a>Klassisches Azure-Portal
 1. Klicken Sie links auf **MACHINE LEARNING**.
 2. Klicken Sie auf den Arbeitsbereich, in dem sich der Webdienst befindet.
 3. Klicken Sie auf **WEB SERVICES**.
@@ -127,6 +127,6 @@ Verwenden Sie zum Verbinden mit einem Machine Learning-Webdienst die **urllib2**
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

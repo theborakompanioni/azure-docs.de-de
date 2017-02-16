@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/16/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ece7ee4f0235f5677e03526cef8935809770cd93
+ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
+ms.openlocfilehash: 402670a16b5dabc653c943737abdf2621db6a50b
 
 
 ---
@@ -48,10 +48,10 @@ PHP 5.5 und PHP 5.6 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
         PS C:\> Login-AzureRmAccount
 2. Legen Sie die PHP-Version für die Web-App fest.
    
-        PS C:\> Set-AzureWebsite -PhpVersion [5.4 | 5.5 | 5.6] -Name {site-name}
+        PS C:\> Set-AzureWebsite -PhpVersion {5.4 | 5.5 | 5.6} -Name {app-name}
 3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
    
-        PS C:\> Get-AzureWebsite -Name {site-name} | findstr PhpVersion
+        PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
 ### <a name="azure-command-line-interface-linux-mac-windows"></a>Azure-Befehlszeilen-Schnittstelle (Linux, Mac, Windows)
 Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** auf Ihrem Computer installiert sein.
@@ -61,10 +61,20 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** a
         azure login
 2. Legen Sie die PHP-Version für die Web-App fest.
    
-        azure site set --php-version [5.4 | 5.5] {site-name}
+        azure site set --php-version {5.4 | 5.5 | 5.6} {app-name}
+
 3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
    
-        azure site show {site-name}
+        azure site show {app-name}
+
+> [!NOTE] 
+> Die Befehle der [Azure CLI 2.0 (Vorschau)](https://github.com/Azure/azure-cli), die den oben genannten entsprechen, sind:
+>
+>
+
+    az login
+    az appservice web config update --php-version {5.5 | 5.6 | 7.0} -g {resource-group-name} -n {app-name}
+    az appservice web config show -g {resource-group-name} -n {app-name}
 
 ## <a name="how-to-change-the-built-in-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
 Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie folgende Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
@@ -197,6 +207,6 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

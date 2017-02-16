@@ -1,13 +1,13 @@
 ---
-title: Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks| Microsoft Docs
-description: Verwenden Sie Azure Functions, um eine C#-Funktion zu erstellen, die basierend auf einem Ereignistimer ausgeführt wird.
+title: "Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks| Microsoft Docs"
+description: "Verwenden Sie Azure Functions, um eine C#-Funktion zu erstellen, die basierend auf einem Ereignistimer ausgeführt wird."
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: erikre
-editor: ''
-tags: ''
-
+editor: 
+tags: 
+ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -15,6 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2016
 ms.author: glenga
+translationtype: Human Translation
+ms.sourcegitcommit: b873a7d0ef9efa79c9a173a8bfd3522b12522322
+ms.openlocfilehash: c0b4a963275dae5bbf203388cb61086393803b15
+
 
 ---
 # <a name="use-azure-functions-to-perform-a-scheduled-clean-up-task"></a>Verwenden von Azure Functions zum Ausführen eines geplanten Bereinigungstasks
@@ -48,16 +52,20 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
    
     ![Neue per Timer ausgelöste Funktion erstellen](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
 2. Fügen Sie im Bereich **Code** auf der Registerkarte **Entwickeln** die folgenden Assemblyverweise am Anfang des vorhandenen Funktionscodes hinzu:
-   
+    ```cs
         #r "System.Configuration"
         #r "System.Data"
+    ```
+
 3. Fügen Sie der Funktion die folgenden `using` -Anweisungen hinzu:
-   
+    ```cs
         using System.Configuration;
         using System.Data.SqlClient;
-        using System.Threading.Tasks; 
+        using System.Threading.Tasks;
+    ```
+
 4. Ersetzen Sie die vorhandene **Run** -Funktion durch den folgenden Code:
-   
+    ```cs
         public static async Task Run(TimerInfo myTimer, TraceWriter log)
         {
             var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
@@ -73,6 +81,8 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
                 }
             }
         }
+    ```
+
 5. Klicken Sie auf **Speichern**, überwachen Sie das Fenster **Protokolle** auf die nächste Funktionsausführung, und beachten Sie die Anzahl der Zeilen, die aus der Tabelle „TodoItems“ gelöscht wurden.
 6. (Optional) Markieren Sie mithilfe der [Mobile Apps-Schnellstart-App](../app-service-mobile/app-service-mobile-ios-get-started.md) zusätzliche Elemente als „Abgeschlossen“. Kehren Sie dann zum Fenster **Protokolle** zurück, und beobachten Sie, wie dieselbe Anzahl von Zeilen von der Funktion während der nächsten Ausführung gelöscht wird. 
 
@@ -80,14 +90,17 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
 Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-  Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
+   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
-  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
+   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
-  Beschreibt die für Azure Functions verfügbaren Servicepläne einschließlich des dynamischen Serviceplans, und wie Sie den richtigen Plan finden  
+  Beschreibt die für Azure Functions verfügbaren Servicepläne, einschließlich des Verbrauchsplans, und enthält Informationen zur Auswahl des geeigneten Plans.  
 
 [!INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Nov16_HO5-->
 
 

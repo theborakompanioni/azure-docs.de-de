@@ -11,11 +11,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 01/12/2017
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 29385af9183ef2f8431581aaa5fe38e89404d068
+ms.sourcegitcommit: 292c9150822363aba3336b1efce579dc5362cb14
+ms.openlocfilehash: 99b3babee9b252b2d741515391295d8b1dc5c747
 
 
 ---
@@ -25,13 +25,13 @@ Azure Search ist eine cloudbasierte SaaS-Lösung, deren Server- und Infrastruktu
 ## <a name="give-your-users-a-powerful-search-experience"></a>Leistungsfähige Suchfunktion für Benutzer
 **leistungsfähige Abfragen** formulieren, indem Sie die [einfache Abfragesyntax](https://msdn.microsoft.com/library/azure/dn798920.aspx)verwenden, die über logische Operatoren, Operatoren für die Suche von Ausdrücken, Suffixoperatoren und Rangfolgenoperatoren verfügt. Die [Lucene-Abfragesyntax](https://msdn.microsoft.com/library/azure/mt589323.aspx) ermöglicht zudem die Verwendung von Fuzzy- und NEAR-Suchen, Term Boosts und regulären Ausdrücken. Azure Search unterstützt auch benutzerdefinierte lexikalische Analysen, was Ihrer Anwendung die Behandlung komplexer Suchabfragen mit phonetischem Abgleich und regulären Ausdrücken ermöglicht.
 
-**Sprachunterstützung** steht für [56 Sprachen zur Verfügung](https://msdn.microsoft.com/library/azure/dn879793.aspx). Durch den kombinierten Einsatz von Lucene- und Microsoft-Analysen (mit jahrelanger Erfahrung bei der Sprachdatenverarbeitung in Office und Bing) kann Text mit Azure Search im Suchfeld Ihrer Anwendung analysiert werden. Sprachspezifische linguistische Probleme können intelligent gelöst werden, z. B. Zeiten von Verben, Geschlecht, unregelmäßiger Plural von Substantiven (Englisch: mouse/mice), Auflösen von zusammengesetzten Wörtern, Worttrennung (für Sprachen ohne Leerstellen) und vieles mehr.
+**Sprachunterstützung** steht für [56 Sprachen zur Verfügung](https://msdn.microsoft.com/library/azure/dn879793.aspx). Durch den kombinierten Einsatz von Lucene- und Microsoft-Analysen (mit jahrelanger Erfahrung bei der Sprachdatenverarbeitung in Office und Bing) kann Text mit Azure Search im Suchfeld Ihrer Anwendung analysiert werden. Sprachspezifische linguistische Probleme können intelligent gelöst werden, z.B. Zeiten von Verben, Geschlecht, unregelmäßiger Plural von Substantiven (Englisch: mouse/mice), Auflösen von zusammengesetzten Wörtern, Worttrennung (für Sprachen ohne Leerstellen) und vieles mehr.
 
 **Suchvorschläge** aktiviert werden. [Vorschläge für Dokumente aus Ihrem Index](https://msdn.microsoft.com/library/azure/dn798936.aspx) angezeigt.
 
 **Treffermarkierungen** [vereinfachen](https://msdn.microsoft.com/library/azure/dn798927.aspx) die Erkennung des Textausschnitts in allen Ergebnissen, die Übereinstimmungen für die Abfrage enthalten. Sie können wählen, für welche Felder hervorgehobene Ausschnitte zurückgegeben werden sollen.
 
-Mit Azure Search kann Ihre Suchergebnisseite problemlos mit einer **Facettennavigation** versehen werden. Mit [einem einzigen Abfrageparameter](https://msdn.microsoft.com/library/azure/dn798927.aspx) gibt Azure Search alle Informationen zurück, die für die Facettennavigation auf Ihrer App-Benutzeroberfläche erforderlich sind. Dadurch können die Benutzer Detailinformationen zu Suchergebnissen anzeigen und Suchergebnisse filtern, um beispielsweise Katalogelemente nach Preisbereich oder Marke zu filtern.
+Mit Azure Search kann Ihre Suchergebnisseite problemlos mit einer **Facettennavigation** versehen werden. Mit [einem einzigen Abfrageparameter](https://msdn.microsoft.com/library/azure/dn798927.aspx) gibt Azure Search alle Informationen zurück, die für die Facettensuche auf Ihrer App-Benutzeroberfläche erforderlich sind. Dadurch können die Benutzer Detailinformationen zu Suchergebnissen anzeigen und Suchergebnisse filtern, um beispielsweise Katalogelemente nach Preisbereich oder Marke zu filtern.
 
 **geografischer Daten** ermöglicht eine intelligente Verarbeitung, Filterung und Anzeige geografischer Standorte. Mit Azure Search können die Benutzer Daten auf der Grundlage der Nähe eines Suchergebnisses zu einem bestimmten Ort oder auf der Grundlage einer bestimmten geografischen Region untersuchen. In diesem Video wird erläutert, wie das funktioniert: [Channel 9: Azure Search and Geospatial Data](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data).
 
@@ -67,7 +67,7 @@ Je nach Wahl Ihres Tarifs können Sie Ihren Dienst in zwei Dimensionen skalieren
 ### <a name="2-create-index"></a>2. Erstellen des Index
 Bevor Sie Ihre Inhalte an den Azure Search-Dienst hochladen können, müssen Sie einen Azure Search-Index definieren. Einen Index können Sie sich wie eine Datenbanktabelle vorstellen, die Ihre Daten enthält und Suchabfragen entgegennimmt. Sie definieren das Indexschema für die Zuordnung zur Struktur der Dokumente, die Sie durchsuchen möchten (ähnlich wie bei Feldern in einer Datenbank).
 
-Das Schema dieser Indizes kann entweder im Azure-Portal oder programmgesteuert [mithilfe des .NET SDK](search-howto-dotnet-sdk.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn798941.aspx) erstellt werden. Nach dem Definieren des Index können Sie Ihre Daten an den Azure Search-Dienst hochladen, wo sie anschließend indiziert werden.
+Das Schema dieser Indizes kann entweder im Azure-Portal oder programmgesteuert mithilfe des [.NET SDK](search-howto-dotnet-sdk.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn798941.aspx) erstellt werden. Nach dem Definieren des Index können Sie Ihre Daten an den Azure Search-Dienst hochladen, wo sie anschließend indiziert werden.
 
 ### <a name="3-index-data"></a>3. Indizieren der Daten
 Nachdem Sie die Felder und Attribute Ihres Index definiert haben, können Sie mit dem Hochladen von Inhalten an den Index beginnen. Dazu können Sie entweder ein Push- oder ein Pullmodell verwenden.
@@ -80,13 +80,16 @@ Das Pushmodell wird über das SDK oder die REST-APIs bereitgestellt, die zum Sen
 Nach dem Füllen Ihres Azure Search-Index können Sie über einfache HTTP-Anforderungen mit REST-API oder dem .NET-SDK [Suchabfragen](https://msdn.microsoft.com/library/azure/dn798927.aspx) an Ihren Dienstendpunkt richten.
 
 ## <a name="try-it-now-for-free"></a>Gleich (kostenlos) ausprobieren!
-Testen Sie Azure Search noch heute! Wenn Sie bereits über ein Azure-Konto verfügen, können Sie [einen Dienst im Free-Tarif bereitstellen](search-create-service-portal.md).
+Azure-Abonnenten können [einen Dienst im Free-Tarif bereitstellen](search-create-service-portal.md).
 
-Falls Sie noch kein Azure-Konto besitzen, können Sie ganz ohne Registrierung eine kostenlose, 60-minütige Sitzung ausprobieren. Wählen Sie unter [Azure App Service testen](http://go.microsoft.com/fwlink/p/?LinkId=618214) die Option „Web-App“ aus. Wählen Sie anschließend die Vorlage „ASP.NET + Azure Search Site“ aus.
+Wenn Sie kein Abonnent sind, können Sie [kostenlos ein Azure-Konto erstellen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F): Sie erhalten ein Guthaben, das Sie zum Ausprobieren zahlungspflichtiger Azure-Dienste nutzen können, und Sie können das Konto selbst dann behalten und die kostenlosen Azure-Dienste wie Websites nutzen, wenn das Guthaben aufgebraucht ist. Ihre Kreditkarte wird nur dann belastet, wenn Sie Ihre Einstellungen explizit ändern und mit einer Zahlung einverstanden sind.
+
+Alternativ können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können. 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Jan17_HO2-->
 
 

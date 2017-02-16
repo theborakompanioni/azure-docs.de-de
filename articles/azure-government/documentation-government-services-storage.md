@@ -1,23 +1,22 @@
 ---
 title: Azure Government Storage | Microsoft Docs
 description: "Dies bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: 83df022b-d791-4efb-9fdf-8afe47a885d5
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/13/2016
+ms.date: 12/22/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: e9287ab74e9bed8681b66fa9a168c8d7c403c63b
-ms.openlocfilehash: 8c9488e302540ca0c67926f6aa6fad591c6ce037
+ms.sourcegitcommit: a7e53dcdbf3cecd8a00ad3424ffa0d62cc8fde43
+ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
 
 
 ---
@@ -37,6 +36,7 @@ Einzelheiten zu diesem Dienst und seiner Verwendung finden Sie in der [öffentli
 | [Storage Service Encryption] (../storage/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [Storage Premium] (../storage/storage-premium-storage.md) |Allgemein verfügbar |NA | Umfasst das Erstellen virtueller Computer der DS-Serie. |
 | [Blob-Import/Export] (../storage/storage-import-export-service.md) |Allgemein verfügbar |Allgemein verfügbar | Derzeit werden nur klassische Speicherkonten unterstützt. |
+| [StorSimple] (../storsimple/storsimple-ova-overview.md) |Allgemein verfügbar |Allgemein verfügbar |
 
 ### <a name="variations"></a>Variationen
 Die URLs für Speicherkonten in Azure Government unterscheiden sich:
@@ -68,6 +68,11 @@ Wählen Sie beim [Anfügen an ein externes Speicherkonto] (../vs-azure-tools-sto
 >
 >
 
+> [!NOTE]
+> Verwenden Sie beim Bereitstellen des StorSimple Manager-Diensts die URLs https://portal.azure.us/ und https://manage.windowsazure.us/ für das Azure-Portal bzw. das klassische Portal. Anweisungen zum Bereitstellen von StorSimple Virtual Array finden Sie unter [Systemanforderungen für StorSimple Virtual Array] (../storsimple/storsimple-ova-system-requirements.md) und für die StorSimple 8000-Serie unter [StorSimple-Software, hohe Verfügbarkeit und Netzwerkanforderungen] (../storsimple/storsimple-system-requirements.md). Navigieren Sie im Menü links zum Abschnitt über die Bereitstellung. Die allgemeine StorSimple-Dokumentation finden Sie unter [Was ist StorSimple?] (../storsimple/index.md).
+>
+>
+
 ### <a name="considerations"></a>Überlegungen
 Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Government für Azure Storage:
 
@@ -80,6 +85,6 @@ Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://b
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

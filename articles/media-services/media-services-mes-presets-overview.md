@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0124c884d3d805a407041e8ecbc5961209a9653d
-ms.openlocfilehash: 708444a1b2569cf794ce1f6d8d6c97c7d9e339b7
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 42acc73e1c97f5570e674d95627a760a7fc88154
 
 
 ---
@@ -66,9 +66,9 @@ ms.openlocfilehash: 708444a1b2569cf794ce1f6d8d6c97c7d9e339b7
   
  [H264 Single Bitrate 4K](media-services-mes-preset-H264-Single-Bitrate-4K.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18.000KBit/s und Stereo-AAC-Audio.  
   
- [H264 Single Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18.000KBit/s und AAC 5.1-Audio.  
+ [H264 Single Bitrate 4x3 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-4x3-SD-Audio-5.1.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 1.800 KBit/s und AAC 5.1-Audio.  
   
- [H264 Single Bitrate 4x3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18.000KBit/s und Stereo-AAC-Audio.  
+ [H264 Single Bitrate 4x3 SD](media-services-mes-preset-H264-Single-Bitrate-4x3-SD.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 1.800 KBit/s und Stereo-AAC-Audio.  
   
  [H264 Single Bitrate 16x9 SD Audio 5.1](media-services-mes-preset-H264-Single-Bitrate-16x9-SD-Audio-5.1.md) erzeugt eine einzelne MP4-Datei mit einer Bitrate von 2.200KBit/s und AAC 5.1-Audio.  
   
@@ -87,6 +87,7 @@ ms.openlocfilehash: 708444a1b2569cf794ce1f6d8d6c97c7d9e339b7
  Weitere Informationen im Zusammenhang mit Media Services-Encodern finden Sie unter [Azure On-Demand Media Encoder – Überblick und Vergleich](https://azure.microsoft.com/en-us/documentation/articles/media-services-encode-asset/).
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Jan17_HO2-->
 
 

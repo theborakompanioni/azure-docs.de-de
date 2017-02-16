@@ -1,11 +1,12 @@
 <a name="tellmeas"></a>
 
-## Weitere Informationen über App Service
-Azure Virtual Machines kann eine breite Palette von Cloudhostingaufgaben verarbeiten. Aber für das Erstellen und Verwalten einer VM-Infrastruktur sind spezielle Kenntnisse und beträchtlicher Aufwand erforderlich. Wenn Sie keine vollständige Kontrolle über VMs benötigen, auf denen die Web-Apps, Back-Ends der mobilen Apps, API-Apps usw. ausgeführt werden, gibt es eine einfachere (und kostengünstigere) Lösung: *Platform as a Service* (PaaS). Bei PaaS übernimmt Azure die meisten Verwaltungsaufgaben für die VMs, auf denen Ihre Anwendungen ausgeführt werden. [Azure App Service](../articles/app-service/app-service-value-prop-what-is.md) ist ein vollständig verwaltetes PaaS-Angebot, mit dem Sie Apps auf Unternehmensniveau binnen Sekunden erstellen, bereitstellen und skalieren können.
+## <a name="tell-me-about-app-service"></a>Weitere Informationen über App Service
+Azure Virtual Machines kann eine breite Palette von Cloudhostingaufgaben verarbeiten. Aber für das Erstellen und Verwalten einer VM-Infrastruktur sind spezielle Kenntnisse und beträchtlicher Aufwand erforderlich. Wenn Sie keine vollständige Kontrolle über VMs benötigen, auf denen die Web-Apps, Back-Ends der mobilen Apps, API-Apps usw. ausgeführt werden, gibt es eine einfachere (und kostengünstigere) Lösung: *Platform as a Service* (PaaS). Bei PaaS übernimmt Azure die meisten Verwaltungsaufgaben für die VMs, auf denen Ihre Anwendungen ausgeführt werden. [Azure App Service](../articles/app-service/app-service-value-prop-what-is.md) ist ein vollständig verwaltetes PaaS-Angebot, mit dem Sie Apps auf Unternehmensniveau innerhalb weniger Sekunden erstellen, bereitstellen und skalieren können.
 
 App Service ist die beste Wahl für viele Arten von Anwendungsworkloads. Ein Unternehmen könnte eine kommerzielle Website erstellen oder migrieren, die Millionen von Aufrufen pro Woche verarbeiten kann und in verschiedenen Rechenzentren weltweit bereitgestellt ist. Dasselbe Unternehmen verfügt möglicherweise auch über eine Branchen-App, die Spesenabrechnungen für authentifizierte Benutzer über Active Directory im Unternehmen verfolgt, und die App könnte eine Komponente für mobile Geräte aufweisen und Verbindungen mit lokalen Ressourcen und Geschäftsprozessen herstellen. Für die Spesenabrechnungen sind möglicherweise regelmäßige Hintergrundaufträge erforderlich, um große Datenmengen zu berechnen und zusammenzufassen. Ein IT-Berater könnte eine gängige Open Source-Anwendung anpassen, um ein Content Management-System für ein kleines Unternehmen zu erstellen. Die folgende Abbildung zeigt einige Arten von Web-Apps, die in Azure App Service ausgeführt werden können.
 
-<a name="appservice_diagram"></a> ![App Service-Diagramm](media/app-service-choose-me-content/diagram.png)
+<a name="appservice_diagram"></a>
+![App Service-Diagramm](media/app-service-choose-me-content/diagram.png)
 
 **Abbildung: Azure App Service unterstützt statische Webseiten, gängige Webanwendungen und spezielle Webanwendungen unter Verwendung unterschiedlicher Technologien. Sie können auch mobile Back-Ends, API-Apps und webunabhängige Computeworkloads (mit WebJobs) ausführen.**
 
@@ -19,4 +20,8 @@ Entwickler können mit Azure App Service große und skalierbare Webanwendungen e
 
 Wie die [Abbildung](#appservice_diagram) oben zeigt, können Sie Code und andere Webinhalte in Azure App Service auf verschiedene Arten veröffentlichen. Sie können FTP, FTPS oder die WebDeploy-Technologie von Microsoft verwenden. Azure App Service unterstützt außerdem die Veröffentlichung von Code aus Quellcodeverwaltungssystemen, darunter Git, GitHub, CodePlex, BitBucket, Dropbox, Mercurial, Team Foundation Server und dem cloudbasierten Team Foundation Service.
 
-<!---HONumber=AcomDC_0413_2016-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

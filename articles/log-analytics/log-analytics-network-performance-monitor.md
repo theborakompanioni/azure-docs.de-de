@@ -4,7 +4,7 @@ description: "Mit dem Netzwerkleistungsmonitor können Sie die Leistung Ihrer Ne
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 4f5c7208cabc565c4f5dddc917c4756ae4776c33
+ms.sourcegitcommit: 820a9463c0e58054cf70324b680c5af8fdcacade
+ms.openlocfilehash: 794d9b7d5031730f9ea0f8daae251c825f7b05b0
 
 
 ---
 # <a name="network-performance-monitor-preview-solution-in-oms"></a>Netzwerkleistungsmonitor-Lösung (Preview) in OMS
 > [!NOTE]
-> Dies ist eine [Previewlösung](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features).
+> Dies ist eine [Previewlösung](log-analytics-add-solutions.md#preview-management-solutions-and-features).
 >
 >
 
@@ -246,6 +246,6 @@ Nachdem Sie nun mit dem Netzwerkleistungsmonitor vertraut sind, erfahren Sie in 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren der aktiven Georeplikation für die Azure SQL-Datenbank mit PowerShell | Microsoft Docs"
-description: "Konfigurieren der aktiven Georeplikation für die Azure SQL-Datenbank mit PowerShell"
+title: "Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit PowerShell | Microsoft Docs"
+description: "Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit PowerShell"
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: bc5e50e4-bbb2-4ce1-9ee5-9a632de6fa06
 ms.service: sql-database
-ms.custom: business continuity; how to
+ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -16,12 +16,12 @@ ms.workload: NA
 ms.date: 07/14/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 605f7d33c197af60579e30f0b2823968865c7229
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 1849e257240a45a6161db524ce53a83cbf29068d
 
 
 ---
-# <a name="configure-geo-replication-for-azure-sql-database-with-powershell"></a>Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit PowerShell
+# <a name="configure-active-geo-replication-for-azure-sql-database-with-powershell"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit PowerShell
 > [!div class="op_single_selector"]
 > * [Übersicht](sql-database-geo-replication-overview.md)
 > * [Azure-Portal](sql-database-geo-replication-portal.md)
@@ -30,7 +30,7 @@ ms.openlocfilehash: 605f7d33c197af60579e30f0b2823968865c7229
 > 
 > 
 
-In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation der SQL-Datenbank mit PowerShell konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation von SQL-Datenbank mit PowerShell konfigurieren.
 
 Informationen zum Initiieren eines Failovers mit PowerShell finden Sie unter [Initiieren eines geplanten oder ungeplanten Failovers für die Azure SQL-Datenbank mit PowerShell](sql-database-geo-replication-failover-powershell.md).
 
@@ -57,7 +57,7 @@ Zum Auswählen des Abonnements benötigen Sie Ihre Abonnement-ID. Sie können di
 
     Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-Nach dem erfolgreichen Ausführen von **Select-AzureRMSubscription** kehren Sie zur PowerShell-Eingabeaufforderung zurück.
+Nach dem erfolgreichen Ausführen von **Select-AzureRmSubscription** kehren Sie zur PowerShell-Eingabeaufforderung zurück.
 
 ## <a name="add-secondary-database"></a>Hinzufügen einer sekundären Datenbank 
 Mit den folgenden Schritten wird eine neue sekundäre Datenbank in einer Partnerschaft für die Georeplikation erstellt.  
@@ -66,42 +66,42 @@ Zum Aktivieren einer sekundären Datenbank müssen Sie der Besitzer oder Mitbesi
 
 Sie können das Cmdlet **New-AzureRmSqlDatabaseSecondary** nutzen, um eine sekundäre Datenbank auf einem Partnerserver in einer lokalen Datenbank auf dem Server hinzuzufügen, mit dem Sie verbunden sind (die primäre Datenbank). 
 
-Dieses Cmdlet ersetzt **Start-AzureSqlDatabaseCopy** durch den **–IsContinuous**-Parameter.  Es gibt ein **AzureRmSqlDatabaseSecondary**-Objekt aus, das von anderen Cmdlets für die eindeutige Bezeichnung einer bestimmten Replikationsverknüpfung verwendet werden kann. Dieses Cmdlet wird zurückgegeben, wenn die sekundäre Datenbank erstellt wurde und das Seeding erfolgt ist Je nach Größe der Datenbank liegt der Zeitaufwand zwischen wenigen Minuten und mehreren Stunden.
+Dieses Cmdlet ersetzt **Start-AzureSqlDatabaseCopy** durch den **-IsContinuous**-Parameter.  Es gibt ein **AzureRmSqlDatabaseSecondary**-Objekt aus, das von anderen Cmdlets für die eindeutige Bezeichnung einer bestimmten Replikationsverknüpfung verwendet werden kann. Dieses Cmdlet wird zurückgegeben, wenn die sekundäre Datenbank erstellt wurde und das Seeding erfolgt ist Je nach Größe der Datenbank liegt der Zeitaufwand zwischen wenigen Minuten und mehreren Stunden.
 
-Die replizierte Datenbank auf dem zweiten Server hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch die gleiche Dienstebene. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine Einzeldatenbank oder eine elastische Datenbank sein. Weitere Informationen finden Sie unter [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689\(v=azure.300\).aspx) und [Dienstebenen](sql-database-service-tiers.md).
-Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank. Nachfolgend erfahren Sie, wie Sie mithilfe von PowerShell nicht lesbare und lesbare sekundäre Datenbanken erstellen – mit einer Einzeldatenbank oder einer elastischen Datenbank.
+Die replizierte Datenbank auf dem zweiten Server hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch die gleiche Dienstebene. Die sekundäre Datenbank kann lesbar oder nicht lesbar und eine eigenständige Datenbank oder ein Pool für elastische Datenbanken sein. Weitere Informationen finden Sie unter [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt603689\(v=azure.300\).aspx) und [Dienstebenen](sql-database-service-tiers.md).
+Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank. In den folgenden Schritten erfahren Sie, wie Sie mithilfe von PowerShell nicht lesbare und lesbare sekundäre Datenbanken erstellen – mit einer Einzeldatenbank oder in einem Pool für elastische Datenbanken.
 
 Wenn die Partnerdatenbank bereits vorhanden ist (z.B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 
-### <a name="add-a-non-readable-secondary-single-database"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (Einzeldatenbank)
+### <a name="add-a-non-readable-secondary-standalone-database"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (eigenständige Datenbank)
 Mit dem folgenden Befehl erstellen Sie eine nicht lesbare sekundäre Datenbank der „mydb“-Datenbank des Servers „srv2“ in der Ressourcengruppe „rg2“:
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "No"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -AllowConnections "No"
 
 
 
-### <a name="add-readable-secondary-single-database"></a>Hinzufügen einer lesbaren sekundären Datenbank (Einzeldatenbank)
+### <a name="add-readable-secondary-standalone-database"></a>Hinzufügen einer lesbaren sekundären Datenbank (eigenständige Datenbank)
 Mit dem folgenden Befehl erstellen Sie eine lesbare sekundäre Datenbank der „mydb“-Datenbank des Servers „srv2“ in der Ressourcengruppe „rg2“:
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" -AllowConnections "All"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -AllowConnections "All"
 
 
 
 
-### <a name="add-a-non-readable-secondary-elastic-database"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (elastische Datenbank)
-Mit dem folgenden Befehl erstellen Sie eine nicht lesbare sekundäre Datenbank der „mydb“-Datenbank im elastischen Datenbankpool „ElasticPool1“ des Servers „srv2“ in der Ressourcengruppe „rg2“:
+### <a name="add-a-non-readable-secondary-elastic-pool"></a>Hinzufügen einer nicht lesbaren sekundären Datenbank (Pool für elastische Datenbanken)
+Mit dem folgenden Befehl erstellen Sie eine nicht lesbare sekundäre Datenbank zur Datenbank „mydb“ im Pool für elastische Datenbanken „ElasticPool1“ auf dem Server „srv2“ in der Ressourcengruppe „rg2“:
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "No"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -SecondaryElasticPoolName "ElasticPool1" -AllowConnections "No"
 
 
-### <a name="add-a-readable-secondary-elastic-database"></a>Hinzufügen einer lesbaren sekundären Datenbank (elastische Datenbank)
-Mit dem folgenden Befehl erstellen Sie eine lesbare sekundäre Datenbank der „mydb“-Datenbank im elastischen Datenbankpool „ElasticPool1“ des Servers „srv2“ in der Ressourcengruppe „rg2“:
+### <a name="add-a-readable-secondary-elastic-pool"></a>Hinzufügen einer lesbaren sekundären Datenbank (Pool für elastische Datenbanken)
+Mit dem folgenden Befehl erstellen Sie eine lesbare sekundäre Datenbank zur Datenbank „mydb“ im Pool für elastische Datenbanken „ElasticPool1“ auf dem Server „srv2“ in der Ressourcengruppe „rg2“:
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary –PartnerResourceGroupName "rg2" –PartnerServerName "srv2" –SecondaryElasticPoolName "ElasticPool1" -AllowConnections "All"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName "rg2" -PartnerServerName "srv2" -SecondaryElasticPoolName "ElasticPool1" -AllowConnections "All"
 
 
 
@@ -118,8 +118,8 @@ Zum Entfernen der sekundären Datenbank benötigen die Benutzer Schreibzugriff a
 
 Mit dem folgenden Code entfernen Sie die Replikationsverknüpfung der „mydb“-Datenbank  zum Server „srv2“ der Ressourcengruppe „rg2“. 
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –SecondaryResourceGroup "rg2" –PartnerServerName "srv2"
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink -SecondaryResourceGroup "rg2" -PartnerServerName "srv2"
     $secondaryLink | Remove-AzureRmSqlDatabaseSecondary 
 
 
@@ -130,17 +130,17 @@ Zu den Überwachungsaufgaben gehören die Überwachung der Konfiguration der Geo
 
 Der folgende Befehl ruft den Status der Replikationsverknüpfung zwischen der primären „mydb“-Datenbank und der sekundären Datenbank auf Server „srv2“ von der Ressourcengruppe „rg2“ auf.
 
-    $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
-    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink –PartnerResourceGroup "rg2” –PartnerServerName "srv2”
+    $database = Get-AzureRmSqlDatabase -DatabaseName "mydb" -ResourceGroupName "rg1" -ServerName "srv1"
+    $secondaryLink = $database | Get-AzureRmSqlDatabaseReplicationLink -PartnerResourceGroup "rg2” -PartnerServerName "srv2”
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+* Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

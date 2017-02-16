@@ -1,136 +1,149 @@
 ---
 title: Geschachtelte Traffic Manager-Profile | Microsoft Docs
-description: Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager.
+description: "Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager."
 services: traffic-manager
-documentationcenter: ''
-author: sdwheeler
-manager: carmonm
-editor: tysonn
-
+documentationcenter: 
+author: kumudd
+manager: timlt
+editor: 
+ms.assetid: f1b112c4-a3b1-496e-90eb-41e235a49609
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/25/2016
-ms.author: sewhee
+ms.date: 10/11/2016
+ms.author: kumud
+translationtype: Human Translation
+ms.sourcegitcommit: 3e48a28aa1ecda6792e79646a33875c8f01a878f
+ms.openlocfilehash: fdf22a3f8d0ba6f1838af4f5e6924c8c0a18ef64
 
 ---
-# Geschachtelte Traffic Manager-Profile
-Traffic Manager umfasst eine Reihe von Methoden für das Datenverkehrsrouting, mit denen Sie steuern können, auf welche Weise Traffic Manager den Endpunkt auswählt, der den Datenverkehr jedes Endbenutzers empfangen soll. Diese werden unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) beschrieben und ermöglichen es Traffic Manager, die häufigsten Anforderungen an das Datenverkehrsrouting zu erfüllen.
 
-Jedes Traffic Manager-Profil gibt eine einzelne Methode für das Datenverkehrsrouting an. Es kann jedoch vorkommen, dass komplexere Anwendungen ein detaillierteres Datenverkehrsrouting erfordern, als es von einem einzelnen Traffic Manager-Profil bereitgestellt werden kann.
+# <a name="nested-traffic-manager-profiles"></a>Geschachtelte Traffic Manager-Profile
 
-Um diese komplexen Anwendungen zu unterstützen, können Traffic Manager-Profile kombiniert bzw. *geschachtelt* werden, sodass eine einzelne Anwendung von mehreren Methoden für das Datenverkehrsrouting profitieren kann. Mithilfe geschachtelter Profile können Sie flexiblere und leistungsfähigere Schemas für das Datenverkehrsrouting erstellen, um die Anforderungen größerer, komplexerer Bereitstellungen zu erfüllen.
+Traffic Manager umfasst eine Reihe von Methoden für das Datenverkehrsrouting, mit denen Sie steuern können, auf welche Weise Traffic Manager den Endpunkt auswählt, der den Datenverkehr der einzelnen Endbenutzer empfangen soll. Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).
 
-Darüber können Sie mit geschachtelten Profilen in bestimmten Fällen das Standardverhalten von Traffic Manager außer Kraft setzen – z.B. beim leistungsorientierten Routing des Datenverkehrs innerhalb einer Region oder während eines Failovers.
+Jedes Traffic Manager-Profil gibt eine einzelne Methode für das Datenverkehrsrouting an. Es gibt jedoch Szenarios, die ein detaillierteres Datenverkehrsrouting erfordern, als es von einem einzelnen Traffic Manager-Profil bereitgestellt werden kann. Sie können Traffic Manager-Profile schachteln, um die Vorteile mehrerer Datenverkehrsrouting-Methoden zu kombinieren. Mit geschachtelten Profilen können Sie das Standardverhalten von Traffic Manager überschreiben, um größere und komplexere Anwendungsbereitstellungen zu unterstützen.
 
-Dieser Artikel erläutert anhand einer Reihe von Beispielen, wie geschachtelte Traffic Manager-Profile in verschiedenen Szenarien verwendet werden können. Zum Abschluss werden einige häufig gestellte Fragen zu geschachtelten Profilen beantwortet.
+Die folgenden Beispiele zeigen, wie geschachtelte Traffic Manager-Profile in verschiedenen Szenarios verwendet werden.
 
-## Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
-Angenommen, Ihre Anwendung wurde in mehreren Azure-Region bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
+## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
+
+Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
 
 ![Einzelnes Traffic Manager-Profil][1]
 
-Angenommen, Sie möchten ein Update Ihres Diensts mit einer kleinen Anzahl von Benutzern testen, bevor Sie es in größerem Rahmen einführen. Dafür möchten Sie die gewichtete Methode für das Datenverkehrsrouting verwenden, mit der ein kleiner Prozentsatz des Datenverkehrs an die Testbereitstellung geleitet wird. Mit einem einzigen Profil können Sie das gewichtete und das leistungsbasierte Datenverkehrsrouting nicht miteinander kombinieren. Mit geschachtelten Profilen können Sie beide Methoden verwenden.
+Angenommen, Sie möchten ein Update Ihres Diensts testen, bevor Sie es in größerem Rahmen einführen. Sie möchten die gewichtete Methode für das Datenverkehrsrouting verwenden, mit der ein kleiner Prozentsatz des Datenverkehrs an die Testbereitstellung geleitet wird. Sie richten die Testbereitstellung zusammen mit der vorhandenen Produktionsbereitstellung in Europa, Westen, ein.
 
-So funktioniert es: Angenommen, Sie möchten die neue Bereitstellung in Europa, Westen, testen. Sie richten die Testbereitstellung neben der vorhandenen Produktionsbereitstellung ein und erstellen ein Traffic Manager-Profil nur mit diesen beiden Endpunkten und der gewichteten Methode für das Datenverkehrsrouting. Sie können dieses untergeordnete Profil als Endpunkt zum übergeordneten Profil hinzufügen, das weiterhin die leistungsorientierte Methode für das Datenverkehrsrouting verwendet und auch die anderen globalen Bereitstellungen als Endpunkte enthält.
+Die gewichtete und die leistungsorientierte Datenverkehrsrouting-Methode können nicht einem einzigen Profil miteinander kombiniert werden. Um dieses Szenario zu unterstützen, erstellen Sie ein Traffic Manager-Profil mit den beiden Endpunkten in Europa, Westen, und der gewichteten Methode für das Datenverkehrsrouting. Als Nächstes fügen Sie dieses untergeordnete Profil als Endpunkt zum übergeordneten Profil hinzu. Das übergeordnete Profil verwendet weiterhin die leistungsorientierte Methode für das Datenverkehrsrouting und enthält die anderen globalen Bereitstellungen als Endpunkt.
 
 Das folgende Diagramm veranschaulicht dieses Beispiel:
 
 ![Geschachtelte Traffic Manager-Profile][2]
 
-In dieser Anordnung wird der Datenverkehr, der über das übergeordnete Profil weitergeleitet wird, normal auf die Region verteilt. Innerhalb der Region Europa, Westen, wird der Datenverkehr gemäß den zugeordneten Gewichtungen an die Produktions- bzw. die Testbereitstellung weitergeleitet.
+In dieser Konfiguration wird der über das übergeordnete Profil geleitete Datenverkehr normal auf alle Regionen verteilt. In Europa, Westen, verteilt das geschachtelte Profil Datenverkehr gemäß den zugeordneten Gewichtungen an die Produktions- und Testendpunkte.
 
-Beachten Sie Folgendes: Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss der Standort jedes Endpunkts bekannt sein. Bei geschachtelten ebenso wie bei externen Endpunkten muss dieser Standort im Rahmen der Endpunktkonfiguration angegeben werden. Wählen Sie die Ihrer Bereitstellung am nächsten gelegene Azure-Region – als Optionen sind die Azure-Regionen verfügbar, da sie die Standorte sind, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#performance-traffic-routing-method).
+Wenn das übergeordnete Profil die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, muss jeder Endpunkt einem Standort zugeordnet sein. Der Standort wird beim Konfigurieren des Endpunkts zugewiesen. Wählen Sie die Azure-Region aus, die Ihrer Bereitstellung am nächsten ist. Bei den Azure-Regionen handelt es sich um die Standortwerte, die von der Internetlatenztabelle unterstützt werden. Weitere Informationen finden Sie unter [Prioritätsmethode für das Datenverkehrsrouting](traffic-manager-routing-methods.md#performance-traffic-routing-method).
 
-## Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
-Traffic Manager überwacht aktiv die Integrität der einzelnen Dienstendpunkte. Wenn ein Endpunkt als fehlerhaft erkannt wird, leitet Traffic Manager die Benutzer an alternative Endpunkte weiter und stellt so die Gesamtverfügbarkeit Ihres Diensts sicher. Dieses Verhalten für Endpunktüberwachung und -failover gilt für alle Methoden für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md).
+## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>Beispiel 2: Endpunktüberwachung in geschachtelten Profilen
 
-Bei geschachtelten Profilen gelten einige besondere Regeln für die Endpunktüberwachung. Wenn ein übergeordnetes Profil mit einem untergeordneten Profil als geschachteltem Endpunkt konfiguriert wird, führt das übergeordnete Profil keine direkten Integritätsprüfungen für das untergeordnete Profil aus. Stattdessen wird die Integrität des Endpunkts des untergeordneten Profils verwendet, um die Gesamtintegrität des untergeordneten Profils zu berechnen. Diese Informationen werden in der Hierarchie des geschachtelten Profils weitergegeben, um die Integrität des geschachtelten Endpunkts innerhalb des übergeordneten Profils zu bestimmen. So wird bestimmt, ob das übergeordnete Profil Datenverkehr an das untergeordnete Profil weiterleitet. Details dazu, wie genau die Integrität des geschachtelten Endpunkts im übergeordneten Profil anhand der Integrität des untergeordneten Profils berechnet wird, finden Sie [unten](#faq) in diesem Artikel.
+Traffic Manager überwacht aktiv die Integrität der einzelnen Dienstendpunkte. Wenn ein Endpunkt fehlerhaft ist, leitet Traffic Manager Benutzer an andere Endpunkte, um die Verfügbarkeit Ihres Dienstes zu gewährleisten. Dieses Verhalten für Endpunktüberwachung und -failover gilt für alle Methoden für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Die Endpunktüberwachung funktioniert bei geschachtelten Profilen anders. Bei geschachtelten Profilen führt das übergeordnete Profil die Integritätsprüfung nicht direkt am untergeordneten Profil durch. Stattdessen wird mit der Integrität der Endpunkte des untergeordneten Profils die Gesamtintegrität des untergeordneten Profils berechnet. Diese Integritätsinformationen werden in der Hierarchie der geschachtelten Profile nach oben weitergegeben. Das übergeordnete Profil verwendet diese aggregierte Integrität, um festzulegen, ob der Datenverkehr an das untergeordnete Profil weitergeleitet wird. Ausführliche Informationen zur Integritätsüberwachung bei geschachtelten Profilen finden Sie im Abschnitt [Häufig gestellte Fragen](#faq) in diesem Artikel.
 
-Zurück zu Beispiel 1: Nehmen Sie an, in der Produktionsbereitstellung in Europa, Westen, tritt ein Fehler auf. Standardmäßig leitet das untergeordnete Profil sämtlichen Datenverkehr an die Testbereitstellung weiter. Wenn auch dabei ein Fehler auftritt, legt das übergeordnete Profil Folgendes fest: Da alle untergeordneten Endpunkte fehlerhaft sind, sollte das untergeordnete Profil keinen Datenverkehr empfangen, und für den gesamten Datenverkehr in Europa, Westen, wird ein Failover in die anderen Regionen durchgeführt.
+Zurück zum vorherigen Beispiel: Angenommen, in der Produktionsbereitstellung in Europa, Westen, tritt ein Fehler auf. Standardmäßig leitet das untergeordnete Profil sämtlichen Datenverkehr an die Testbereitstellung weiter. Wenn in der Testbereitstellung ebenfalls ein Fehler auftritt, legt das übergeordnete Profil fest, dass das untergeordnete Profil keinen Datenverkehr mehr empfangen soll, da alle untergeordneten Endpunkte fehlerhaft sind. Das übergeordnete Profil verteilt den Datenverkehr daraufhin auf die anderen Regionen.
 
 ![Failover eines geschachtelten Profils (Standardverhalten)][3]
 
-Möglicherweise sind Sie mit dieser Anordnung zufrieden. Möglicherweise machen Sie sich aber auch Gedanken, dass die Testbereitstellung nicht als Failoverziel für sämtlichen Datenverkehr in Europa, Westen, verwendet werden soll. Sie möchten lieber ein Failover in die anderen Regionen durchführen, wenn in der Produktionsbereitstellung in Europa, Westen, ein Fehler auftritt – *unabhängig* von der Integrität der Testbereitstellung. Dies ist auch möglich: Bei der Konfiguration des untergeordneten Profils als Endpunkt im übergeordneten Profil können Sie den MinChildEndpoints-Parameter angeben. Dieser bestimmt die Mindestanzahl von Endpunkten, die im untergeordneten Profil verfügbar sein müssen. Unterhalb dieses Schwellenwerts (der standardmäßig auf 1 festgelegt ist) betrachtet das übergeordnete Profil das gesamte untergeordnete Profil als nicht verfügbar und leitet den Datenverkehr stattdessen an die anderen Endpunkte im übergeordneten Profil weiter.
+Möglicherweise sind Sie mit dieser Anordnung zufrieden. Möglicherweise machen Sie sich aber auch Gedanken, dass die Testbereitstellung nicht als Failoverziel für sämtlichen Datenverkehr in Europa, Westen, verwendet werden soll. Sie möchten jedoch unabhängig von der Integrität der Testbereitstellung ein Failover in die anderen Regionen durchführen, wenn in der Produktionsbereitstellung in Europa, Westen, ein Fehler auftritt. Hierzu können Sie bei der Konfiguration des untergeordneten Profils als Endpunkt im übergeordneten Profil den MinChildEndpoints-Parameter angeben. Dieser bestimmt die Mindestanzahl von Endpunkten, die im untergeordneten Profil verfügbar sein müssen. Der Standardwert ist „1“. In diesem Beispiel wird für MinChildEndpoints der Wert 2 festgelegt. Unter diesem Schwellenwert wird das gesamte untergeordnete Profil vom übergeordneten Profil als nicht verfügbar eingestuft, und der Datenverkehr wird an andere Endpunkte geleitet.
 
-Das Beispiel unten veranschaulicht Folgendes: Wenn MinChildEndpoints auf 2 festgelegt ist und bei einer der Bereitstellungen in Europa, Westen, ein Fehler auftritt, legt das übergeordnete Profil fest, dass das untergeordnete Profil keinen Datenverkehr empfangen sollte, und Benutzer werden an die anderen Regionen weitergeleitet.
+Die folgende Abbildung veranschaulicht diese Konfiguration:
 
-![Failover eines geschachtelten Profils mit MinChildEndpoints=2][4]
+![Failover eines geschachtelten Profils mit MinChildEndpoints = 2][4]
 
-Beachten Sie Folgendes: Wenn das untergeordnete Profil die prioritätsbasierte Methode für das Datenverkehrsrouting verwendet, wird der gesamte Datenverkehr an dieses Profil von einem einzigen Endpunkt empfangen. Daher ist es in diesem Fall wenig sinnvoll, MinChildEndpoints auf einen anderen Wert als 1 festzulegen.
+> [!NOTE]
+> Mit der prioritätsbasierten Methode für das Datenverkehrsrouting wird der gesamte Datenverkehr an einen Endpunkt geleitet. Daher ist es in diesem Fall wenig sinnvoll, MinChildEndpoints für ein untergeordnetes Profil auf einen anderen Wert als&1; festzulegen.
 
-## Beispiel 3: Priorisierte Failoverregionen im leistungsorientierten Datenverkehrsrouting
-Wenn ein einziges Profil vorhanden ist, das die leistungsorientierte Methode für das Datenverkehrsrouting verwendet, und in einem Endpunkt (z.B. Europa, Westen) ein Fehler auftritt, wird der gesamte Datenverkehr für diesen Endpunkt stattdessen an die anderen Endpunkte in allen Regionen verteilt. Dies ist das Standardverhalten der leistungsorientierten Methode für das Datenverkehrsrouting, das dazu konzipiert wurde, eine Überlastung des nächstgelegenen Endpunkts und dadurch eine kaskadierende Serie von Ausfällen zu vermeiden.
+## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>Beispiel 3: Priorisierte Failoverregionen im leistungsorientierten Datenverkehrsrouting
 
-![Leistungsorientiertes Datenverkehrsrouting mit Standardfailover][5]
+Mit dem Standardverhalten der leistungsorientierten Methode für das Datenverkehrsrouting soll eine Überlastung des nächstgelegenen Endpunkts und dadurch eine kaskadierende Serie von Ausfällen vermieden werden. Wenn bei einem Endpunkt ein Fehler auftritt, wird der gesamte Datenverkehr, der an diesen Endpunkt geleitet worden wäre, gleichmäßig auf die anderen Endpunkte in allen Regionen verteilt.
 
-Angenommen, Sie möchten für den Datenverkehr nach Europa, Westen, ein Failover in die Region USA, Westen, durchführen und den Datenverkehr nur dann an andere Regionen weiterleiten, wenn beide Endpunkte nicht verfügbar sind. Hierzu können Sie ein untergeordnetes Profil erstellen, das die prioritätsbasierte Methode für das Datenverkehrsrouting verwendet, wie hier gezeigt:
+![Leistungsorientierte Methode für das Datenverkehrsrouting mit Standardfailover][5]
+
+Angenommen, Sie möchten für den Datenverkehr nach Europa, Westen, ein Failover in die Region USA, Westen, durchführen und Datenverkehr nur dann an andere Regionen weiterleiten, wenn keiner der beiden Endpunkte verfügbar ist. Diese Lösung können Sie mit einem untergeordneten Profil mit der prioritätsbasierten Methode für das Datenverkehrsrouting erstellen.
 
 ![Leistungsorientiertes Datenverkehrsrouting mit bevorzugtem Failover][6]
 
-Da der Endpunkt Europa, Westen, eine höhere Priorität aufweist als der Endpunkt USA, Westen, wird der gesamte Datenverkehr an den Endpunkt Europa, Westen, gesendet, wenn beide Endpunkte online sind. Wenn in Europa, Westen, ein Fehler auftritt, wird der Datenverkehr nach USA, Westen, weitergeleitet. Nur wenn auch in USA, Westen, ein Fehler auftritt, wird der Datenverkehr aus Europa, Westen, nach Asien, Osten, weitergeleitet.
+Da der Endpunkt Europa, Westen, eine höhere Priorität aufweist als der Endpunkt USA, Westen, wird der gesamte Datenverkehr an den Endpunkt Europa, Westen, gesendet, wenn beide Endpunkte online sind. Wenn in Europa, Westen, ein Fehler auftritt, wird der Datenverkehr nach USA, Westen, weitergeleitet. Beim geschachtelten Profil wird der Datenverkehr nur dann an Asien, Osten, weitergeleitet, wenn bei beiden Endpunkten, Europa, Westen, und USA, Westen, ein Fehler auftritt.
 
-Sie können dieses Muster für alle Regionen wiederholen und alle drei Endpunkte im übergeordneten Profil durch drei untergeordnete Profile ersetzen, von denen jedes eine priorisierte Failoversequenz bereitstellt.
+Dieses Muster kann für alle Regionen wiederholt werden. Ersetzen Sie alle drei Endpunkte im übergeordneten Profil mit drei untergeordneten Profilen, von denen jedes eine priorisierte Failoversequenz bereitstellt.
 
-## Beispiel 4: Steuern des leistungsorientierten Datenverkehrsroutings zwischen mehreren Endpunkten in der gleichen Region
-Angenommen, die leistungsorientierte Methode für das Datenverkehrsrouting wird in einem Profil mit mehr als einem Endpunkt in einer bestimmten Region (z.B. USA, Westen) verwendet. Standardmäßig wird für diese Region bestimmter Datenverkehr gleichmäßig auf alle verfügbaren Endpunkte in dieser Region verteilt.
+## <a name="example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Beispiel 4: Steuern des leistungsorientierten Datenverkehrsroutings zwischen mehreren Endpunkten in der gleichen Region
+
+Angenommen, die leistungsorientierte Methode für das Datenverkehrsrouting wird in einem Profil mit mehr als einem Endpunkt in einer bestimmten Region verwendet. Standardmäßig wird für diese Region bestimmter Datenverkehr gleichmäßig auf alle verfügbaren Endpunkte in dieser Region verteilt.
 
 ![Leistungsorientiertes Datenverkehrsrouting mit regionsinterner Verteilung des Datenverkehrs (Standardverhalten)][7]
 
-Diese Standardeinstellung kann mithilfe von geschachtelten Traffic Manager-Profilen geändert werden. Anstatt mehrere Endpunkte in USA, Westen, hinzuzufügen, können diese Endpunkte in ein separates untergeordnetes Profil eingeschlossen werden, und das untergeordnete Profil kann dem übergeordneten Profil als einziger Endpunkt in USA, Westen, hinzugefügt werden. Mit den Einstellungen im untergeordneten Profil lässt sich die Verteilung des Datenverkehrs nach USA, Westen, steuern, indem (beispielsweise) prioritätsbasiertes oder gewichtetes Datenverkehrsrouting innerhalb dieser Region verwendet wird.
+Anstatt mehrere Endpunkte in Europa, Westen, hinzuzufügen, können diese Endpunkte in ein separates untergeordnetes Profil eingeschlossen werden. Das untergeordnete Profil kann dem übergeordneten Profil als einziger Endpunkt in Europa, Westen, hinzugefügt werden. Mit den Einstellungen im untergeordneten Profil kann die Verteilung des Datenverkehrs nach Europa, Westen, gesteuert werden, indem prioritätsbasiertes oder gewichtetes Datenverkehrsrouting innerhalb dieser Region verwendet wird.
 
 ![Leistungsorientiertes Datenverkehrsrouting mit benutzerdefinierter regionsinterner Verteilung des Datenverkehrs][8]
 
-## Beispiel 5: Überwachungseinstellungen pro Endpunkt
-Angenommen, Sie verwenden Traffic Manager, um den Datenverkehr nahtlos zwischen einer älteren lokalen Website und einer neuen cloudbasierten Version zu migrieren, die in Azure gehostet wird. Für die ältere Website möchten Sie die Startseite (Pfad „/“) verwenden, um die Integrität der Website zu überwachen. Für die neue cloudbasierte Version implementieren Sie jedoch eine benutzerdefinierte Überwachungsseite, die zusätzliche Überprüfungen (Pfad „/monitor.aspx“) umfasst.
+## <a name="example-5-per-endpoint-monitoring-settings"></a>Beispiel 5: Überwachungseinstellungen pro Endpunkt
+
+Angenommen, Sie verwenden Traffic Manager, um den Datenverkehr nahtlos zwischen einer älteren lokalen Website und einer neuen cloudbasierten Version zu migrieren, die in Azure gehostet wird. Für die ältere Website möchten Sie den URI der Startseite verwenden, um die Integrität der Website zu überwachen. Für die neue cloudbasierte Version implementieren Sie jedoch eine benutzerdefinierte Überwachungsseite (Pfad „/monitor.aspx“), die zusätzliche Überprüfungen umfasst.
 
 ![Traffic Manager-Endpunktüberwachung (Standardverhalten)][9]
 
-Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle Endpunkte innerhalb des Profils. Aus diesem Grund mussten Sie bisher auf beiden Seiten den gleichen Pfad verwenden. Mit geschachtelten Traffic Manager-Profilen können Sie jetzt ein untergeordnetes Profil pro Website verwenden, um unterschiedliche Überwachungseinstellungen für jede Website zu definieren:
+Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle Endpunkte innerhalb eines Profils. Bei geschachtelten Profilen können Sie für jede Website ein anderes untergeordnetes Profil verwenden, um unterschiedliche Überwachungseinstellungen zu definieren.
 
 ![Traffic Manager-Endpunktüberwachung mit separaten Einstellungen für jeden Endpunkt][10]
 
-## Häufig gestellte Fragen
-### Wie konfiguriere ich geschachtelte Profile?
-Geschachtelte Traffic Manager-Profile können mit ARM- und ASM-REST-APIs (Azure Resource Manager bzw. Azure Service Management), PowerShell-Cmdlets und plattformübergreifenden Befehlen der Azure-Befehlszeilenschnittstelle konfiguriert werden. Sie werden auch im Azure-Portal unterstützt, nicht jedoch im klassischen Portal.
+## <a name="faq"></a>Häufig gestellte Fragen
 
-### Wie viele Schachtelungsebenen werden in Traffic Manager unterstützt?
+### <a name="how-do-i-configure-nested-profiles"></a>Wie konfiguriere ich geschachtelte Profile?
+
+Geschachtelte Traffic Manager-Profile können sowohl mit Azure Resource Manager als auch mit den klassischen Azure-REST-APIs, Azure PowerShell-Cmdlets und plattformübergreifenden Befehlen der Azure-Befehlszeilenschnittstelle konfiguriert werden. Sie werden auch im neuen Azure-Portal unterstützt. Über das klassische Portal werden sie jedoch nicht unterstützt.
+
+### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Wie viele Schachtelungsebenen werden in Traffic Manager unterstützt?
+
 Sie können Profile bis zu 10 Ebenen schachteln. Schleifen sind nicht zulässig.
 
-### Kann ich andere Endpunkttypen mit geschachtelten untergeordneten Profilen im gleichen Traffic Manager-Profil kombinieren?
+### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Kann ich andere Endpunkttypen mit geschachtelten untergeordneten Profilen im gleichen Traffic Manager-Profil kombinieren?
+
 Ja. Es gibt keine Einschränkungen hinsichtlich der Kombination von Endpunkten verschiedener Typen innerhalb eines Profils.
 
-### Wie wird das Abrechnungsmodell auf geschachtelte Profile angewendet?
+### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Wie wird das Abrechnungsmodell auf geschachtelte Profile angewendet?
+
 Die Verwendung geschachtelter Profile wirkt sich nicht negativ auf die Preise aus.
 
-Die Abrechnung für Traffic Manager besteht aus zwei Komponenten: Integritätsprüfungen der Endpunkte und Millionen von DNS-Abfragen (ausführliche Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/traffic-manager/)). So wird die Abrechnung auf geschachtelte Profile angewendet:
+Die Abrechnung für Traffic Manager besteht aus zwei Komponenten: Integritätsprüfungen der Endpunkte und Millionen von DNS-Abfragen.
 
-* Überprüfungen der Endpunktintegrität: Wenn ein untergeordnetes Profil als Endpunkt in einem übergeordneten Profil konfiguriert wird, fallen keine Gebühren an. Endpunkte im untergeordneten Profil, die die zugrunde liegenden Dienste überwachen, werden wie üblich abgerechnet.
-* DNS-Abfragen: Jede Abfrage wird nur einmal gezählt. Die Abfrage eines übergeordneten Profils, die einen Endpunkt aus einem untergeordneten Profil zurückgibt, wird nur im übergeordneten Profil berechnet.
+* Überprüfungen der Endpunktintegrität: Wenn ein untergeordnetes Profil als Endpunkt in einem übergeordneten Profil konfiguriert wird, fallen keine Gebühren an. Die Überwachung von Endpunkten im untergeordneten Profil wird wie üblich abgerechnet.
+* DNS-Abfragen: Jede Abfrage wird nur einmal gezählt. Die Abfrage eines übergeordneten Profils, die einen Endpunkt aus einem untergeordneten Profil zurückgibt, wird nur im übergeordneten Profil gezählt.
 
-### Wirken sich geschachtelte Profile auf die Leistung aus?
-Nein, durch geschachtelte Profile entstehen keine Leistungseinbußen.
+Ausführliche Informationen finden Sie auf der Seite [Traffic Manager Preise](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
-Die Traffic Manager-Namenserver durchlaufen bei der Verarbeitung jeder DNS-Abfrage intern die Profilhierarchie, sodass die DNS-Abfrage eines übergeordneten Profils eine DNS-Antwort mit einem Endpunkt aus einem untergeordneten Profil erhalten kann.
+### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Wirken sich geschachtelte Profile auf die Leistung aus?
 
-Daher wird nur ein einziger CNAME-Eintrag verwendet – der gleiche wie bei Verwendung eines einzigen Traffic Manager-Profils. Eine Kette von CNAME-Einträgen – einer für jedes Profil in der Hierarchie – ist **nicht** erforderlich, daher entstehen keine Leistungseinbußen.
+Nein. Durch geschachtelte Profile entstehen keine Leistungseinbußen.
 
-### Wie berechnet Traffic Manager die Integrität eines geschachtelten Endpunkts in einem übergeordneten Profil, basierend auf der Integrität des untergeordneten Profils?
-Wenn ein übergeordnetes Profil mit einem untergeordneten Profil als geschachteltem Endpunkt konfiguriert wird, führt das übergeordnete Profil keine direkten Integritätsprüfungen für das untergeordnete Profil aus. Stattdessen wird die Integrität des Endpunkts des untergeordneten Profils verwendet, um die Gesamtintegrität des untergeordneten Profils zu berechnen. Diese Informationen werden in der Hierarchie des geschachtelten Profils weitergegeben, um die Integrität des geschachtelten Endpunkts innerhalb des übergeordneten Profils zu bestimmen. So wird bestimmt, ob das übergeordnete Profil Datenverkehr an das untergeordnete Profil weiterleitet.
+Die Traffic Manager-Namenserver durchlaufen bei der Verarbeitung der einzelnen DNS-Abfragen intern die Profilhierarchie. Eine DNS-Abfrage an ein übergeordnetes Profil kann eine DNS-Antwort mit einem Endpunkt aus einem untergeordneten Profil erhalten. Unabhängig davon, ob Sie ein einzelnes Profil oder geschachtelte Profile verwenden, wird nur ein einziger CNAME-Eintrag verwendet. Es gibt keine Notwendigkeit, für jedes Profil in der Hierarchie einen CNAME-Eintrag zu erstellen.
 
-Die folgende Tabelle beschreibt das Verhalten von Traffic Manager-Integritätsprüfungen für einen geschachtelten Endpunkt in einem übergeordneten Profil, das auf ein untergeordnetes Profil verweist.
+### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Wie berechnet Traffic Manager die Integrität eines geschachtelten Endpunkts in einem übergeordneten Profil?
+
+Das übergeordnete Profil führt die Integritätsprüfung nicht direkt am untergeordneten Profil durch. Stattdessen wird mit der Integrität der Endpunkte des untergeordneten Profils die Gesamtintegrität des untergeordneten Profils berechnet. Diese Informationen werden in der Hierarchie der geschachtelten Profile nach oben weitergegeben, um die Integrität des geschachtelten Endpunkts zu bestimmen. Das übergeordnete Profil verwendet diese aggregierte Integrität, um festzulegen, ob der Datenverkehr an das untergeordnete Profil weitergeleitet wird.
+
+Die folgende Tabelle beschreibt das Verhalten von Traffic Manager-Integritätsprüfungen für einen geschachtelten Endpunkt.
 
 | Überwachungsstatus von untergeordneten Profilen | Überwachungsstatus von übergeordneten Endpunkten | Hinweise |
 | --- | --- | --- |
-| Deaktiviert. Das untergeordnete Profil wurde vom Benutzer deaktiviert. |Beendet |Der Status des übergeordneten Endpunkts ist "Beendet", nicht "Deaktiviert". Der Status "Deaktiviert" zeigt lediglich an, dass Sie den Endpunkt im übergeordneten Profil deaktiviert haben. |
-| Heruntergestuft. Der Status mindestens eines Endpunkts wurde heruntergestuft. |Online: Die Anzahl von Onlineendpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints. CheckingEndpoint: Die Anzahl von Online- plus CheckingEndpoint-Endpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints. Heruntergestuft: andere Fälle. |Der Datenverkehr wird an einen Endpunkt mit dem Status „CheckingEndpoint“ weitergeleitet. Wenn MinChildEndpoints zu hoch festgelegt wurde, wird der Endpunkt immer heruntergestuft. |
-| Online. Mindestens ein untergeordneter Profilendpunkt weist den Status „Online“ auf und keiner den Status „Heruntergestuft“. |Siehe oben. | |
-| CheckingEndpoints. Mindestens ein untergeordneter Profilendpunkt weist „CheckingEndpoint“ auf, keiner ist „Online“ oder „Heruntergestuft“. |Wie oben. | |
-| Inaktiv. Alle untergeordneten Profilendpunkte sind „Deaktiviert“ oder „Beendet“, oder dies ist ein Profil ohne Endpunkte. |Beendet | |
+| Deaktiviert. Das untergeordnete Profil wurde deaktiviert. |Stopped |Der Status des übergeordneten Endpunkts ist "Beendet", nicht "Deaktiviert". Der Status "Deaktiviert" zeigt lediglich an, dass Sie den Endpunkt im übergeordneten Profil deaktiviert haben. |
+| Heruntergestuft. Der Status mindestens eines Endpunkts wurde heruntergestuft. |Online: Die Anzahl von Onlineendpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints.<BR>CheckingEndpoint: Die Anzahl von Online- plus CheckingEndpoint-Endpunkten im untergeordneten Profil ist mindestens gleich dem Wert von MinChildEndpoints.<BR>Heruntergestuft: andere Fälle. |Der Datenverkehr wird an einen Endpunkt mit dem Status „CheckingEndpoint“ weitergeleitet. Wenn MinChildEndpoints zu hoch festgelegt wurde, wird der Endpunkt immer heruntergestuft. |
+| Online. Mindestens ein untergeordneter Profilendpunkt weist den Status „Online“ auf. Kein Endpunkt weist den Status „Heruntergestuft“ auf. |Siehe oben. | |
+| CheckingEndpoints. Mindestens ein untergeordneter Profilendpunkt weist den Status „CheckingEndpoint“ auf. Kein Endpunkt weist den Status „Online“ oder „Heruntergestuft“ auf. |Wie oben. | |
+| Inaktiv. Alle untergeordneten Profilendpunkte sind „Deaktiviert“ oder „Beendet“, oder dieses Profil weist keine Endpunkte auf. |Stopped | |
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur [Funktionsweise von Traffic Manager](traffic-manager-how-traffic-manager-works.md)
 
 Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-manage-profiles.md)
@@ -147,4 +160,8 @@ Informationen zum [Erstellen eines Traffic Manager-Profils](traffic-manager-mana
 [9]: ./media/traffic-manager-nested-profiles/figure-9.png
 [10]: ./media/traffic-manager-nested-profiles/figure-10.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Jan17_HO1-->
+
+

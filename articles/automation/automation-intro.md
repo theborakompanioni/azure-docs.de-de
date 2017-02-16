@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 05/10/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 16f6285577294ff49f11a27f48daea090655a2b1
+ms.sourcegitcommit: 15456a887aab29ac6c4ee74d15b8b8ef8d3047d3
+ms.openlocfilehash: 4e7488f954ce50298aba0da83ae07f7a0de6a73d
 
 
 ---
@@ -36,7 +36,7 @@ Runbooks in Azure Automation basieren auf Windows PowerShell oder dem Windows Po
 Der [Runbookkatalog](automation-runbook-gallery.md#runbooks-in-runbook-gallery) enthält Runbooks von Microsoft und der Community, die Sie entweder unverändert in Ihrer Umgebung verwenden oder für Ihre eigenen Zwecke anpassen können. Außerdem sind sie als Referenz hilfreich, um zu lernen, wie Sie eigene Runbooks erstellen. Sie können auch Ihre eigenen Runbooks im Katalog bereitstellen, die für andere Benutzer nützlich sein können. 
 
 ## <a name="creating-runbooks-with-azure-automation"></a>Erstellen von Runbooks mit Azure Automation
-Sie können völlig neue [eigene Runbooks erstellen](automation-creating-importing-runbook.md) oder Runbooks aus dem [Runbookkatalog](http://msdn.microsoft.com/library/azure/dn781422.aspx) an Ihre eigenen Anforderungen anpassen. Sie können zwischen drei verschiedenen [Runbooktypen](automation-runbook-types.md) basierend auf Ihren Anforderungen und Ihrer Erfahrung mit PowerShell wählen. Wenn Sie lieber direkt mit PowerShell-Code arbeiten, können Sie ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) oder [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) verwenden, das Sie offline oder mit dem [Text-Editor](http://msdn.microsoft.com/library/azure/dn879137.aspx) im Azure-Portal bearbeiten. Wenn Sie ein Runbook lieber bearbeiten möchten, ohne sich mit dem zugrunde liegenden Code zu befassen, können Sie mit dem [Grafik-Editor](automation-graphical-authoring-intro.md) im Azure-Portal ein [grafisches Runbook](automation-runbook-types.md#graphical-runbooks) erstellen. 
+Sie können völlig neue [eigene Runbooks erstellen](automation-creating-importing-runbook.md) oder Runbooks aus dem [Runbookkatalog](http://msdn.microsoft.com/library/azure/dn781422.aspx) an Ihre eigenen Anforderungen anpassen. Sie können basierend auf Ihren Anforderungen und Ihrer Erfahrung mit PowerShell zwischen vier verschiedenen [Runbooktypen](automation-runbook-types.md) wählen. Wenn Sie lieber direkt mit PowerShell-Code arbeiten, können Sie ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) oder [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) verwenden, das Sie offline oder mit dem [Text-Editor](http://msdn.microsoft.com/library/azure/dn879137.aspx) im Azure-Portal bearbeiten. Wenn Sie ein Runbook lieber bearbeiten möchten, ohne sich mit dem zugrunde liegenden Code zu befassen, können Sie mit dem [Grafik-Editor](automation-graphical-authoring-intro.md) im Azure-Portal ein [grafisches Runbook](automation-runbook-types.md#graphical-runbooks) erstellen. 
 
 Möchten Sie sich lieber ein Video ansehen? Sehen Sie sich das folgende Video aus einer Microsoft Ignite-Veranstaltung im Mai 2015 an. Hinweis: Wenngleich die Konzepte und Features, die in diesem Video erläutert werden, weiter zutreffend sind, hat sich Azure Automation seit der Aufzeichnung des Videos wesentlich weiterentwickelt. Die Lösung bietet nun im Azure-Portal eine umfangreichere Benutzeroberfläche und unterstützt weitere Funktionen.
 
@@ -82,11 +82,11 @@ Um mehr über Azure Automation zu erfahren und Ihre eigenen Runbooks zu erstelle
 * [Azure Automation-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx) werden Informationen zum Automatisieren von Verwaltungsaufgaben bereitgestellt. Die Anwendung enthält Cmdlets zum Verwalten von Automation-Konten, -Assets, -Runbooks und Automation DSC.
 
 ## <a name="can-i-provide-feedback"></a>Kann ich Feedback geben?
-**Bitte geben Sie uns Feedback!**  Wenn Sie nach einer Azure Automation-Runbook-Lösung oder einem Integrationsmodul suchen, senden Sie im Script Center eine Skriptanforderung. Wenn Sie Feedback oder Vorschläge zu Features für Azure Automation haben, veröffentlichen Sie sie auf [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback). Vielen Dank! 
+**Bitte geben Sie uns Feedback!** Wenn Sie nach einer Azure Automation-Runbook-Lösung oder einem Integrationsmodul suchen, senden Sie im Script Center eine Skriptanforderung. Wenn Sie Feedback oder Vorschläge zu Features für Azure Automation haben, veröffentlichen Sie sie auf [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback). Vielen Dank! 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

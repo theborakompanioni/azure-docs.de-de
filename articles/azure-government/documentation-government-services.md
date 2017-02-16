@@ -16,8 +16,8 @@ ms.workload: azure-government
 ms.date: 10/14/2016
 ms.author: zakramer
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 256dd290abcf0326330c9a6079437d8701d290e8
+ms.sourcegitcommit: 083ffff3a99c82a518bcc370e6d40c7500ba6907
+ms.openlocfilehash: f48fd6856346e1fd0be12fec2391d0c16287f106
 
 
 ---
@@ -45,14 +45,22 @@ Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://a
 * [ExpressRoute](documentation-government-networking.md#expressroute-private-connectivity)
 
 ## <a name="storagedocumentation-government-services-storagemd"></a>[Speicher](documentation-government-services-storage.md)
-* [Azure Storage](documentation-government-services-storage.md#azure-storage)
+* [Azure Storage (in englischer Sprache)](documentation-government-services-storage.md#azure-storage)
+* [Blob Storage](documentation-government-services-storage.md#azure-storage)
+* [Table Storage](documentation-government-services-storage.md#azure-storage)
+* [Queue Storage](documentation-government-services-storage.md#azure-storage)
+* [File Storage](documentation-government-services-storage.md#azure-storage)
+* [„Heißer“/„kalter“ Speicher](documentation-government-services-storage.md#azure-storage)
+* [Storage Service Encryption](documentation-government-services-storage.md#azure-storage)
+* [Storage Premium](documentation-government-services-storage.md#azure-storage)
+* [Blob – Import/Export](documentation-government-services-storage.md#azure-storage)
+* [StorSimple](documentation-government-services-storage.md)
+* [Sicherung](documentation-government-services-backup.md)
+* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * Import/Export
-* StorSimple
-* Sicherung
-* Site Recovery
 
-## <a name="web--mobile"></a>Web und mobil
-* Web-Apps
+## <a name="web--mobiledocumentation-government-services-webandmobilemd"></a>[Web und mobil](documentation-government-services-webandmobile.md)
+* [App Services](documentation-government-services-webandmobile.md#app-services)
 * Media Services
 
 ## <a name="databasesdocumentation-government-services-databasemd"></a>[Datenbanken](documentation-government-services-database.md)
@@ -65,8 +73,8 @@ Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://a
 * Notification Hubs
 
 ## <a name="enterprise-integration"></a>Enterprise Integration
-* SERVICE BUS
-* StorSimple
+* Service Bus
+* [StorSimple](documentation-government-services-storage.md)
 * SQL Server Stretch-Datenbank
 
 ## <a name="security--identitydocumentation-government-services-securityandidentitymd"></a>[Sicherheit und Identität](documentation-government-services-securityandidentity.md)
@@ -76,9 +84,9 @@ Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://a
 
 ## <a name="monitoring--managementdocumentation-government-services-monitoringandmanagementmd"></a>[Überwachung und Verwaltung](documentation-government-services-monitoringandmanagement.md)
 * [Automation](documentation-government-services-monitoringandmanagement.md#automation)
-* Sicherung
+* [Sicherung](documentation-government-services-backup.md) 
 * [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics)
-* Site Recovery
+* [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * Scheduler
 * Traffic Manager
 * Überwachung und Diagnose
@@ -89,6 +97,6 @@ Weitere Informationen und Updates erhalten Sie, indem Sie den [Microsoft Azure G
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

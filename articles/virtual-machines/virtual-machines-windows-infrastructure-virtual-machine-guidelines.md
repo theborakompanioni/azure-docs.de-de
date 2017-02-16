@@ -1,5 +1,5 @@
 ---
-title: "Richtlinien für virtuelle Windows-Computer | Microsoft Docs"
+title: "Richtlinien für Azure Virtual Machines | Microsoft Docs"
 description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung virtueller Windows-Computer in Azure."
 documentationcenter: 
 services: virtual-machines-windows
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 923f2128eef294a4d5f14638f4be622618ed812d
+ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
+ms.openlocfilehash: 513edca959a3a9a8d6a8bf7d7620da9ad8a7d879
 
 
 ---
-# <a name="virtual-machines-guidelines"></a>Richtlinien für virtuelle Computer
+# <a name="azure-virtual-machines-guidelines-for-windows"></a>Richtlinien für virtuelle Azure-Computer unter Windows
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel liegt das Hauptaugenmerk darauf, die erforderlichen Planungsschritte zum Erstellen und Verwalten virtueller Computer (VMs) in Ihrer Azure-Umgebung zu erläutern.
@@ -41,7 +41,7 @@ Aufgaben:
 * Erstellen Sie die virtuellen Computer mit der Azure PowerShell, dem Webportal oder mit Resource Manager-Vorlagen.
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
-Zu den wichtigsten Komponenten in Ihrer Azure-Umgebung gehören wahrscheinlich virtuelle Computer. Damit führen Sie Ihre Anwendungen, Datenbanken, Authentifizierungsdienste usw. aus.
+Virtuelle Computer gehören wahrscheinlich zu den wichtigsten Ressourcen in Ihrer Azure-Umgebung. Auf dieser Ressource führen Sie Ihre Anwendungen, Datenbanken, Authentifizierungsdienste usw. aus.
 
 Sie müssen die [unterschiedlichen Größen virtueller Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kennen, um die Größe Ihrer Umgebung im Hinblick auf Leistung und Kosten richtig festzulegen. Wenn Ihre virtuellen Computer nicht über genügend CPU-Kerne oder Arbeitsspeicher verfügen, leidet die Leistung der Anwendung unabhängig davon, wie gut sie entworfen und entwickelt wurde. Überprüfen Sie zunächst die vorgeschlagenen Workloads für jede Serie virtueller Computer, wenn Sie entscheiden, welche Größe Sie für virtuelle Computer für jede Komponente in Ihrer Infrastruktur verwenden möchten. Sie können [die Größe eines virtuellen Computers](https://azure.microsoft.com/blog/resize-virtual-machines/) nach der Bereitstellung ändern.
 
@@ -59,6 +59,6 @@ Sie können Vorlagen erstellen, die durch deklarative JSON-Dateien definiert sin
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

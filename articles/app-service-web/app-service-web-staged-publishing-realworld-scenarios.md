@@ -1,5 +1,5 @@
 ---
-title: "Effektive Verwendung der DevOps-Umgebungen für Ihre Web-App"
+title: "Effektive Verwendung der DevOps-Umgebungen für Ihre Web-App | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Bereitstellungsslots zum Einrichten und Verwalten mehrerer Entwicklungsumgebungen für Ihre Anwendung verwenden."
 services: app-service\web
 documentationcenter: 
@@ -15,107 +15,108 @@ ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3760409bacab7731711d6749e5c083c65865cc49
+ms.sourcegitcommit: 385eb87ec32f5f605b28cc8c76b1c89c7e90bfec
+ms.openlocfilehash: 5284022ea473db893800b0f64b5bf4f811d994aa
 
 
 ---
 # <a name="use-devops-environments-effectively-for-your-web-apps"></a>Effektive Verwendung der DevOps-Umgebungen für Ihre Web-Apps
-In diesem Artikel werden die Einrichtung und Verwaltung von Webanwendungsbereitstellungen für mehrere Versionen Ihrer Anwendung (z. B. Entwicklung, Staging, Qualitätssicherung und Produktion) erläutert. Jede Version Ihrer Anwendung kann als Entwicklungsumgebung für bestimmte Anforderungen innerhalb des Bereitstellungsprozesses betrachtet werden. Eine Qualitätssicherungsumgebung kann beispielsweise von Ihrem Entwicklerteam zum Testen der Qualität der Anwendung genutzt werden, ehe die Änderungen in der Produktionsumgebung übernommen werden.
-Das Einrichten mehrerer Entwicklungsumgebungen kann eine Herausforderung darstellen, da Sie die Ressourcen (Compute, Web-App, Datenbank, Cache usw.) nachverfolgen, verwalten umgebungsübergreifend bereitstellen müssen.
+In diesem Artikel werden die Einrichtung und Verwaltung von Webanwendungsbereitstellungen erläutert, wenn mehrere Versionen Ihrer Anwendung in unterschiedlichen Umgebungen eingesetzt werden (z.B. Entwicklung, Staging, Qualitätssicherung und Produktion). Jede Version Ihrer Anwendung kann als Entwicklungsumgebung für den jeweiligen Zweck Ihres Bereitstellungsprozesses betrachtet werden. Entwickler können beispielsweise die Qualitätssicherungsumgebung zum Testen der Qualität der Anwendung nutzen, ehe die Änderungen in der Produktionsumgebung übernommen werden.
+Mehrere Entwicklungsumgebungen können eine Herausforderung darstellen, da Sie Code nachverfolgen, Ressourcen (Compute, Web-App, Datenbank, Cache usw.) verwalten und Code umgebungsübergreifend bereitstellen müssen.
 
-## <a name="setting-up-a-non-production-environment-stagedevqa"></a>Einrichten einer Nichtproduktionsumgebung (Staging, Entwicklung, QA)
-Nachdem Sie eine Produktions-Web-App erstellt und in Betrieb genommen haben, besteht der nächste Schritt darin, eine Nichtproduktionsumgebung zu erstellen. Zur Verwendung von Bereitstellungsslots müssen Sie die App im App Service-Planmodus **Standard** oder **Premium** ausführen. Bereitstellungsslots sind Live-Web-Apps mit eigenen Hostnamen. Elemente für Web-App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung von Anwendungen in einem Bereitstellungsslot hat die folgenden Vorteile:
+## <a name="set-up-a-non-production-environment-stage-dev-qa"></a>Einrichten einer Nichtproduktionsumgebung (Staging, Entwicklung, Qualitätssicherung)
+Nachdem eine Produktions-Web-App erstellt und in Betrieb genommen wurde, besteht der nächste Schritt darin, eine Nichtproduktionsumgebung zu erstellen. Zur Verwendung von Bereitstellungsslots müssen Sie die App im App Service-Planmodus „Standard“ oder „Premium“ ausführen. Bereitstellungsslots sind Live-Web-Apps mit eigenen Hostnamen. Elemente für Web-App-Inhalte und -Konfigurationen können zwischen zwei Bereitstellungsslots, einschließlich des Produktionsslots, ausgetauscht werden. Die Bereitstellung Ihrer Anwendung in einem Bereitstellungsslot hat die folgenden Vorteile:
 
-1. Sie können Web-App-Änderungen in einem Stagingbereitstellungsslot überprüfen, bevor Sie die Web-App in den Produktionsslot überführen.
-2. Indem Sie eine Web-App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, stellen Sie sicher, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeit bei der Bereitstellung der Web-App. Die Datenverkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Austauschvorgängen gelöscht. Dieser gesamte Wortflow kann durch Konfigurieren von [Auto Swap](web-sites-staged-publishing.md#configure-auto-swap-for-your-web-app) automatisiert werden, wenn keine Überprüfung vor dem Austauschen erforderlich ist.
-3. Nach einem Austausch befindet sich im Slot mit der zuvor bereitgestellten Web-App jetzt die vorherige Produktions-Web-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie denselben Austausch sofort noch einmal vornehmen, um die „letzte als gut befundene Web-App“ wiederherzustellen.
+- Sie können Änderungen an einer Web-App in einem Stagingbereitstellungsslot überprüfen, bevor Sie die Web-App in den Produktionsslot überführen.
+- Wenn Sie eine Web-App zuerst in einem Slot bereitstellen und sie dann in den Produktionsslot überführen, werden alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen. Durch diesen Vorgang vermeiden Sie Ausfallzeit bei der Bereitstellung der Web-App. Die Datenverkehrsweiterleitung ist nahtlos, und es werden keine Anfragen aufgrund von Austauschvorgängen gelöscht. Um diesen gesamten Workflow zu automatisieren, konfigurieren Sie [Automatisch tauschen](web-sites-staged-publishing.md#configure-auto-swap), wenn keine Überprüfung vor dem Austauschen erforderlich ist.
+- Nach einem Austausch befindet sich im Slot mit der zuvor bereitgestellten Web-App jetzt die vorherige Produktions-Web-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie denselben Austausch sofort noch einmal vornehmen, um die „letzte als funktionierend bekannte Web-App“ wiederherzustellen.
 
-Informationen zum Einrichten eines Stagingbereitstellungsslots finden Sie unter [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](web-sites-staged-publishing.md). Jede Umgebung sollte über einen eigenen Satz von Ressourcen verfügen. Wenn Ihre Web-App z. B. eine Datenbank verwendet, sollten für die Produktions- und Staging-Web-Apps verschiedene Datenbanken verwendet werden. Fügen Sie zum Einrichten Ihrer Staging- und Entwicklungsumgebung Staging- und Entwicklungsumgebungsressourcen wie z. B. Datenbank, Speicher oder Cache hinzu.
+Informationen zum Einrichten eines Stagingbereitstellungsslots finden Sie unter [Einrichten von Stagingumgebungen für Web-Apps in Azure App Service](web-sites-staged-publishing.md). Jede Umgebung muss einen eigenen Satz von Ressourcen enthalten. Wenn Ihre Web-App beispielsweise eine Datenbank verwendet, sollten die Produktions- und die Staging-Web-App unterschiedliche Datenbanken verwenden. Fügen Sie zum Einrichten Ihrer Staging- und Entwicklungsumgebung Staging- und Entwicklungsumgebungsressourcen wie z.B. Datenbank, Speicher oder Cache hinzu.
 
 ## <a name="examples-of-using-multiple-development-environments"></a>Beispiele für die Verwendung mehrerer Entwicklungsumgebungen
-Für jedes Projekt ist eine Quellcodeverwaltung mit mindestens zwei Umgebungen erforderlich – eine Entwicklungs- und eine Produktionsumgebung. Bei der Verwendung von Content Management-Systemen (CMS), Anwendungsframeworks usw. können jedoch Probleme auftreten, wenn die Anwendung dieses Szenario nicht standardmäßig unterstützt. Dies gilt für einige der beliebten Frameworks, die im Folgenden erläutert werden. Wenn Sie mit einem CMS oder mit Frameworks arbeiten, sind viele Fragen zu klären, z. B.:
+Jedes Projekt sollte der Quellcodeverwaltung mit mindestens zwei Umgebungen folgen: Entwicklung und Produktion. Bei Verwendung von Content Management-Systemen (CMS), Anwendungsframeworks usw. wird dieses Szenario möglicherweise nicht ohne Anpassung von der Anwendung unterstützt. Dies gilt für einige beliebte Frameworks, die in den folgenden Abschnitten behandelt werden. Wenn Sie mit CMS oder Frameworks arbeiten, sind viele Fragen zu klären:
 
-1. Wie nehme ich die Unterteilung in unterschiedliche Umgebungen vor?
-2. Welche Dateien kann ich ändern, ohne dass sich dies auf Framework-Versionsaktualisierungen auswirkt?
-3. Wie verwalte ich die Konfiguration pro Umgebung?
-4. Wie verwalte ich Versionsaktualisierungen von Modulen/Plug-Ins und Kern-Frameworks?
+- Wie verteilen Sie den Inhalt auf verschiedene Umgebungen?
+- Welche Dateien können Sie ändern, ohne Versionsupdates für Frameworks zu beeinträchtigen?
+- Wie verwalten Sie die Konfigurationen nach Umgebung?
+- Wie verwalten Sie Versionsupdates für Module, Plug-Ins und das Kernframework?
 
-Es gibt viele Methoden zum Einrichten mehrerer Umgebungen für Ihr Projekt. In den folgenden Beispielen wird nur eine dieser Methoden für die jeweiligen Anwendungen erläutert.
+Es gibt viele Möglichkeiten, mehrere Umgebungen für Ihr Projekt festzulegen. Die folgenden Beispiele zeigen eine Methode für jede Anwendung.
 
 ### <a name="wordpress"></a>WordPress
-In diesem Abschnitt erfahren Sie, wie Sie einen Bereitstellungsworkflow mit Slots für WordPress einrichten. Wie die meisten CMS-Lösungen unterstützt WordPress die Verwendung mehrerer Entwicklungsumgebungen nicht standardmäßig. App Service-Web-Apps verfügen über einige Funktionen, die das Speichern von Konfigurationseinstellungen außerhalb des Codes vereinfachen.
+In diesem Abschnitt erfahren Sie, wie Sie einen Bereitstellungsworkflow mit Slots für WordPress einrichten. Wie die meisten CMS-Lösungen unterstützt WordPress die Verwendung mehrerer Entwicklungsumgebungen nicht ohne Anpassung. Das Web-Apps-Feature von Azure App Service verfügt über einige Features, die das Speichern von Konfigurationseinstellungen außerhalb des Codes vereinfachen.
 
-Vor dem Erstellen eines Stagingslots richten Sie den Anwendungscode zur Unterstützung mehrerer Umgebungen ein. Um mehrere Umgebungen in WordPress zu unterstützen, müssen Sie `wp-config.php` in Ihrer lokalen Entwicklungs-Web-App bearbeiten und den folgenden Code am Anfang der Datei hinzufügen. Dadurch kann die Anwendung basierend auf der ausgewählten Umgebung die richtige Konfiguration auswählen.
+1. Bevor Sie einen Stagingslot erstellen, richten Sie den Anwendungscode zur Unterstützung mehrerer Umgebungen ein. Um mehrere Umgebungen in WordPress zu unterstützen, müssen Sie `wp-config.php` in Ihrer lokalen Entwicklungs-Web-App bearbeiten und den folgenden Code am Anfang der Datei hinzufügen. Durch diesen Vorgang kann die Anwendung basierend auf der ausgewählten Umgebung die richtige Konfiguration auswählen.
 
-```
-// Support multiple environments
-// set the config file based on current environment
-if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
-// local development
- $config_file = 'config/wp-config.local.php';
-}
-elseif ((strpos(getenv('WP_ENV'),'stage') !== false) || (strpos(getenv('WP_ENV'),'prod' )!== false ))
-//single file for all azure development environments
- $config_file = 'config/wp-config.azure.php';
-}
-$path = dirname(__FILE__). '/';
-if (file_exists($path. $config_file)) {
-// include the config file if it exists, otherwise WP is going to fail
-require_once $path. $config_file;
-```
+    ```
+    // Support multiple environments
+    // set the config file based on current environment
+    if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
+    // local development
+     $config_file = 'config/wp-config.local.php';
+    }
+    elseif ((strpos(getenv('WP_ENV'),'stage') !== false) || (strpos(getenv('WP_ENV'),'prod' )!== false ))
+    //single file for all azure development environments
+     $config_file = 'config/wp-config.azure.php';
+    }
+    $path = dirname(__FILE__). '/';
+    if (file_exists($path. $config_file)) {
+    // include the config file if it exists, otherwise WP is going to fail
+    require_once $path. $config_file;
+    ```
 
-Erstellen Sie im Web-App-Stammverzeichnis einen Ordner namens `config`, und fügen Sie zwei Dateien hinzu: `wp-config.azure.php` und `wp-config.local.php`, die Ihre lokale Umgebung bzw. Azure-Umgebung darstellen.
+2. Erstellen Sie im Web-App-Stammverzeichnis einen Ordner namens `config`, und fügen Sie die Dateien `wp-config.azure.php` und `wp-config.local.php` hinzu, die die Azure-Umgebung bzw. Ihre lokale Umgebung darstellen.
 
-Kopieren Sie den folgenden Code in `wp-config.local.php`:
+3. Kopieren Sie den folgenden Code in `wp-config.local.php`:
 
-```
-<?php
-// MySQL settings
-/** The name of the database for WordPress */
+    ```
+    <?php
+    // MySQL settings
+    /** The name of the database for WordPress */
 
-define('DB_NAME', 'yourdatabasename');
+    define('DB_NAME', 'yourdatabasename');
 
-/** MySQL database username */
-define('DB_USER', 'yourdbuser');
+    /** MySQL database username */
+    define('DB_USER', 'yourdbuser');
 
-/** MySQL database password */
-define('DB_PASSWORD', 'yourpassword');
+    /** MySQL database password */
+    define('DB_PASSWORD', 'yourpassword');
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
-/**
- * For developers: WordPress debugging mode.
- * * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- */
-define('WP_DEBUG', true);
+    /** MySQL hostname */
+    define('DB_HOST', 'localhost');
+    /**
+     * For developers: WordPress debugging mode.
+     * * Change this to true to enable the display of notices during development.
+     * It is strongly recommended that plugin and theme developers use WP_DEBUG
+     * in their development environments.
+     */
+    define('WP_DEBUG', true);
 
-//Security key settings
-define('AUTH_KEY', 'put your unique phrase here');
-define('SECURE_AUTH_KEY','put your unique phrase here');
-define('LOGGED_IN_KEY','put your unique phrase here');
-define('NONCE_KEY', 'put your unique phrase here');
-define('AUTH_SALT', 'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT', 'put your unique phrase here');
-define('NONCE_SALT', 'put your unique phrase here');
+    //Security key settings
+    define('AUTH_KEY', 'put your unique phrase here');
+    define('SECURE_AUTH_KEY','put your unique phrase here');
+    define('LOGGED_IN_KEY','put your unique phrase here');
+    define('NONCE_KEY', 'put your unique phrase here');
+    define('AUTH_SALT', 'put your unique phrase here');
+    define('SECURE_AUTH_SALT', 'put your unique phrase here');
+    define('LOGGED_IN_SALT', 'put your unique phrase here');
+    define('NONCE_SALT', 'put your unique phrase here');
 
-/**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each a unique
- * prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix = 'wp_';
-```
+    /**
+     * WordPress Database Table prefix.
+     *
+     * You can have multiple installations in one database if you give each a unique
+     * prefix. Only numbers, letters, and underscores please!
+     */
+    $table_prefix = 'wp_';
+    ```
 
-Durch das Festlegen der obigen Sicherheitsschlüssel können Sie verhindern, dass Ihre Web-App gehackt wird. Verwenden Sie daher eindeutige Werte. Wenn Sie die Zeichenfolge für die oben genannten Sicherheitsschlüssel generieren müssen, können Sie den automatischen Generator unter diesem [Link](https://api.wordpress.org/secret-key/1.1/salt) zum Erstellen neuer Schlüssel/Werte verwenden.
+    Indem Sie die Sicherheitsschlüssel wie im vorherigen Code gezeigt festlegen, können Sie verhindern, dass Ihre Web-App gehackt wird. Verwenden Sie daher eindeutige Werte. Wenn Sie die Zeichenfolge für die im Code genannten Sicherheitsschlüssel generieren müssen, können Sie [den automatischen Generator](https://api.wordpress.org/secret-key/1.1/salt) zum Erstellen neuer Schlüssel-Wert-Paare verwenden.
 
-Kopieren Sie den folgenden Code in `wp-config.azure.php`:
+4. Kopieren Sie den folgenden Code in `wp-config.azure.php`:
 
-```    <?php
+    ```    
+    <?php
     // MySQL settings
     /** The name of the database for WordPress */
 
@@ -165,8 +166,8 @@ Kopieren Sie den folgenden Code in `wp-config.azure.php`:
     $table_prefix = getenv('DB_PREFIX');
 ```
 
-#### <a name="use-relative-paths"></a>Verwenden von relativen Pfaden
-Zuletzt müssen Sie WordPress noch für die Verwendung relativer Pfade konfigurieren. WordPress speichert URL-Informationen in der Datenbank. Dies erschwert das Verschieben von Inhalten zwischen Umgebungen, da Sie die Datenbank jedes Mal aktualisieren müssen, wenn Sie von der lokalen zur Staging- oder von der Staging- zur Produktionsumgebung wechseln. Zur Vermeidung von Problemen, die durch das Bereitstellen der Datenbank bei jeder umgebungsübergreifenden Bereitstellung entstehen können, verwenden Sie das [Plug-In für relative Stammlinks](https://wordpress.org/plugins/root-relative-urls/), das über das WordPress-Administratordashboard installiert oder [hier](https://downloads.wordpress.org/plugin/root-relative-urls.zip) manuell heruntergeladen werden kann.
+#### <a name="use-relative-paths"></a>Verwenden relativer Pfade
+Zuletzt müssen Sie in WordPress noch relative Pfade konfigurieren. WordPress speichert URL-Informationen in der Datenbank. Durch diesen Speicher lassen sich Inhalte nur schwierig aus einer Umgebung in eine andere verschieben. Sie müssen die Datenbank jedes Mal aktualisieren, wenn Sie Inhalte aus der lokalen Umgebung in die Stagingumgebung oder umgekehrt verschieben. Zur Vermeidung von Problemen, die durch das Bereitstellen der Datenbank bei jeder umgebungsübergreifenden Bereitstellung entstehen können, verwenden Sie das [Plug-In für relative Stammlinks](https://wordpress.org/plugins/root-relative-urls/), das über das WordPress-Administratordashboard installiert werden kann.
 
 Fügen Sie Ihrer Datei `wp-config.php` die folgenden Einträge vor dem Kommentar `That's all, stop editing!` hinzu:
 
@@ -181,7 +182,7 @@ Fügen Sie Ihrer Datei `wp-config.php` die folgenden Einträge vor dem Kommentar
 Aktivieren Sie das Plug-In über das Menü `Plugins` im WordPress-Administratordashboard. Speichern Sie die Permalink-Einstellungen für die WordPress-App.
 
 #### <a name="the-final-wp-configphp-file"></a>Die fertige Datei `wp-config.php`
-Aktualisierungen des WordPress-Kerns haben keine Auswirkung auf Ihre Dateien `wp-config.php`, `wp-config.azure.php` und `wp-config.local.php`. Am Ende sieht die Datei `wp-config.php` wie folgt aus.
+Aktualisierungen des WordPress-Kerns haben keine Auswirkung auf Ihre Dateien `wp-config.php`, `wp-config.azure.php` und `wp-config.local.php`. Hier ist eine endgültige Version der Datei `wp-config.php`:
 
 ```
 <?php
@@ -239,21 +240,21 @@ require_once(ABSPATH. 'wp-settings.php');
 ```
 
 #### <a name="set-up-a-staging-environment"></a>Einrichten einer Stagingumgebung
-Wenn Sie bereits über eine in Azure Web ausgeführte WordPress-Web-App verfügen, melden Sie sich beim [Azure-Vorschauverwaltungsportal](http://portal.azure.com) an, und wechseln Sie zu Ihrer WordPress-Web-App. Andernfalls können Sie über den Marketplace eine App erstellen. Klicken Sie [hier](web-sites-php-web-site-gallery.md), um weitere Informationen zu erhalten.
-Klicken Sie auf „Einstellungen -> Bereitstellungsslots -> Hinzufügen“, um einen Bereitstellungsslot mit dem Namen „stage“ zu erstellen. Ein Bereitstellungsslot ist eine weitere Webanwendung, die die gleichen Ressourcen wie die zuvor erstellte primäre Web-App nutzt.
+1. Wenn Sie bereits über eine in Ihrem Azure-Abonnement ausgeführte WordPress-Web-App verfügen, melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und wechseln Sie dann zu Ihrer WordPress-Web-App. Wenn Sie keine WordPress-Web-App besitzen, können Sie im Azure Marketplace eine App erstellen. Weitere Informationen finden Sie unter [Erstellen einer WordPress-Web-App in Azure App Service](web-sites-php-web-site-gallery.md).
+Klicken Sie auf **Einstellungen** > **Bereitstellungsslots** > **Hinzufügen**, um einen Bereitstellungsslot mit dem Namen *stage* zu erstellen. Ein Bereitstellungsslot ist eine weitere Webanwendung, die die gleichen Ressourcen wie die zuvor erstellte primäre Web-App nutzt.
 
-![Erstellen des Bereitstellungslots „stage“](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
+    ![Erstellen des Bereitstellungslots „stage“](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
 
-Fügen Sie der Ressourcengruppe `wordpressapp-group` eine weitere MySQL-Datenbank hinzu, z. B. `wordpress-stage-db`.
+2. Fügen Sie der Ressourcengruppe `wordpressapp-group` eine weitere MySQL-Datenbank hinzu, z.B. `wordpress-stage-db`.
 
- ![Hinzufügen einer MySQL-Datenbank zur Ressourcengruppe](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
+    ![Hinzufügen einer MySQL-Datenbank zur Ressourcengruppe](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
 
-Aktualisieren Sie die Verbindungszeichenfolgen für Ihren Bereitstellungsslot „stage“, um auf die neu erstellte Datenbank `wordpress-stage-db`zu verweisen. Beachten Sie, dass die Produktions-Web-App `wordpressprodapp` und die Staging-Web-App `wordpressprodapp-stage` auf unterschiedliche Datenbanken verweisen müssen.
+3. Aktualisieren Sie die Verbindungszeichenfolgen für Ihren Bereitstellungsslot „stage“, um auf die neue Datenbank `wordpress-stage-db` zu verweisen. Ihre Produktions-Web-App `wordpressprodapp` und die Staging-Web-App `wordpressprodapp-stage` müssen auf unterschiedliche Datenbanken verweisen.
 
 #### <a name="configure-environment-specific-app-settings"></a>Konfigurieren umgebungsspezifischer App-Einstellungen 
-Entwickler können Schlüssel-Wert-Zeichenfolgenpaare in Azure mit einer Web-App namens App-Einstellungen als Teil der zugehörigen Konfigurationsinformationen speichern. App Service-Web-Apps rufen diese Werte zur Laufzeit automatisch für Sie ab und machen sie für den in Ihrer Web-App ausgeführten Code verfügbar. Im Hinblick auf die Sicherheit ist dies ein angenehmer Nebeneffekt, da vertrauliche Informationen wie Datenbank-Verbindungszeichenfolgen mit Kennwörtern nie als Klartext in einer Datei wie `wp-config.php` angezeigt werden.
+Entwickler können Schlüssel-Wert-Zeichenfolgenpaare in Azure als Teil der zu einer Web-App gehörenden Konfigurationsinformationen speichern, die als **App-Einstellungen** bezeichnet werden. Web-Apps rufen diese Werte zur Laufzeit automatisch ab und machen sie für den in Ihrer Web-App ausgeführten Code verfügbar. Im Hinblick auf die Sicherheit ist dies ein angenehmer Nebeneffekt, da vertrauliche Informationen wie Datenbank-Verbindungszeichenfolgen mit Kennwörtern nie als Klartext in einer Datei wie `wp-config.php` angezeigt werden.
 
-Der folgende Prozess ist nützlich, da bei seiner Ausführung sowohl Datei- als auch Datenbankänderungen für die WordPress-App eingeschlossen werden:
+Dieser Vorgang, der in den folgenden Abschnitten beschrieben wird, ist nützlich, da er sowohl Dateiänderungen als auch Datenbankänderungen für die WordPress-App berücksichtigt:
 
 * WordPress-Versionsupgrade
 * Hinzufügen neuer Plug-Ins oder Bearbeiten bzw. Aktualisieren von Plug-Ins
@@ -267,166 +268,171 @@ Konfigurieren Sie App-Einstellungen für Folgendes:
 
 ![App-Einstellungen für die WordPress-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/3configure.png)
 
-Stellen Sie sicher, dass Sie die folgenden App-Einstellungen für die Produktions-Web-App und den Slot „stage“ hinzugefügt haben. Beachten Sie, dass die Produktions-Web-App und die Staging-Web-App unterschiedliche Datenbanken verwenden.
-Deaktivieren Sie das Kontrollkästchen **Sloteinstellung** für alle Einstellungsparameter außer WP_ENV. Dadurch wird die Konfiguration für Ihre Web-App zusammen mit Dateiinhalten und der Datenbank ausgetauscht. Wenn **Sloteinstellung** **aktiviert** ist, werden die App-Einstellungen und die Verbindungszeichenfolgen-Konfiguration der Web-App bei einem Austausch NICHT umgebungsübergreifend verschoben. Falls Datenbankänderungen vorliegen, wird die Produktions-Web-App dadurch also nicht unterbrochen.
+Stellen Sie sicher, dass Sie die folgenden App-Einstellungen für die Produktions-Web-App und den Slot „stage“ hinzufügen. Beachten Sie, dass die Produktions-Web-App und die Staging-Web-App unterschiedliche Datenbanken verwenden.
 
-Stellen Sie die Web-App in der lokalen Entwicklungsumgebung mithilfe von WebMatrix oder Tools Ihrer Wahl (z. B. FTP, Git oder PhpMyAdmin) für die Staging-Web-App und -Datenbank bereit.
+1. Deaktivieren Sie das Kontrollkästchen **Sloteinstellung** für alle Einstellungsparameter außer WP_ENV. Durch diesen Vorgang wird die Konfiguration für Ihre Web-App, Dateiinhalte und die Datenbank ausgetauscht. Wenn die **Sloteinstellung** aktiviert ist, werden die App-Einstellungen und die Verbindungszeichenfolgen-Konfiguration der Web-App bei einem **Austauschvorgang** *nicht* umgebungsübergreifend verschoben. Vorhandene Datenbankänderungen verursachen keine Unterbrechung Ihrer Produktions-Web-App.
 
-![WebMatrix-Veröffentlichungsdialogfeld für die WordPress-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/4wmpublish.png)
+2. Stellen Sie die Web-App in der lokalen Entwicklungsumgebung mithilfe von WebMatrix oder Tools Ihrer Wahl (z.B. FTP, Git oder PhpMyAdmin) für die Staging-Web-App und -Datenbank bereit.
 
-Durchsuchen und testen Sie Ihre Staging-Web-App. Das folgende Beispiel zeigt die Staging-Web-App für ein Szenario, in dem das Design der Web-App aktualisiert werden soll.
+    ![WebMatrix-Veröffentlichungsdialogfeld für die WordPress-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/4wmpublish.png)
 
-![Durchsuchen der Staging-Web-App vor dem Austauschen von Slots](./media/app-service-web-staged-publishing-realworld-scenarios/5wpstage.png)
+3. Durchsuchen und testen Sie Ihre Staging-Web-App. Das folgende Beispiel zeigt die Staging-Web-App für ein Szenario, in dem das Design der Web-App aktualisiert werden soll.
 
- Wenn alles Ihren Vorstellungen entspricht, klicken Sie in Ihrer Staging-Web-App auf die Schaltfläche **Austauschen** , um den Inhalt in die Produktionsumgebung zu verschieben. In diesem Fall tauschen Sie die Web-App und die Datenbank bei jedem **Austauschvorgang** zwischen den Umgebungen aus.
+    ![Durchsuchen der Staging-Web-App vor dem Austauschen von Slots](./media/app-service-web-staged-publishing-realworld-scenarios/5wpstage.png)
 
-![Austauschen von Vorschauänderungen für WordPress](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
+4. Wenn alles Ihren Vorstellungen entspricht, klicken Sie in Ihrer Staging-Web-App auf die Schaltfläche **Austauschen**, um den Inhalt in die Produktionsumgebung zu verschieben. In diesem Fall tauschen Sie die Web-App und die Datenbank bei jedem **Austauschvorgang** zwischen den Umgebungen aus.
 
-> [!NOTE]
-> Bei einem Szenarios, in dem Sie nur Dateien (keine Datenbankaktualisierungen) mithilfe von Push übertragen müssen, **aktivieren** Sie vor dem Austausch im Azure-Vorschauportal auf dem Blatt mit den Web-App-Einstellungen das Kontrollkästchen **Sloteinstellung** für alle datenbankbezogenen *App-Einstellungen* und *Verbindungszeichenfolgen-Einstellungen*. In diesem Fall sollten DB_NAME, DB_HOST, DB_PASSWORD, DB_USER und die standardmäßige Verbindungszeichenfolgen-Einstellung bei einem **Austausch** nicht in der Vorschau der Änderungen angezeigt werden. Nach Abschluss des **Austauschvorgangs** enthält die WordPress-Web-App **NUR** die aktualisierten Dateien.
-> 
-> 
+    ![Austauschen von Vorschauänderungen für WordPress](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
-Hier sehen Sie die WordPress-Produktions-Web-App vor dem Austauschvorgang. ![Produktions-Web-App vor dem Austauschen von Slots](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
+    > [!NOTE]
+    > Wenn in Ihrem Szenario nur Dateien (keine Datenbankupdates) mithilfe von Push übertragen werden müssen, aktivieren Sie vor dem **Austausch** im Azure-Portal auf dem Blatt mit den **Web-App-Einstellungen** das Kontrollkästchen **Sloteinstellung** für alle datenbankbezogenen *App-Einstellungen* und *Verbindungszeichenfolgen-Einstellungen*. In diesem Fall sollten DB_NAME, DB_HOST, DB_PASSWORD, DB_USER und die standardmäßigen Verbindungszeichenfolgen-Einstellungen bei einem **Austausch** nicht in der Vorschau der Änderungen angezeigt werden. Nach Abschluss des **Austauschvorgangs** enthält die WordPress-Web-App nur die aktualisierten Dateien.
+    >
+    >
 
-Nach dem Austauschvorgang ist das Design Ihrer Produktions-Web-App aktualisiert.
+    Hier sehen Sie die WordPress-Produktions-Web-App vor dem **Austauschvorgang**.
+    ![Produktions-Web-App vor dem Austauschen von Slots](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
 
-![Produktions-Web-App nach dem Austauschen von Slots](./media/app-service-web-staged-publishing-realworld-scenarios/8afswap.png)
+    Nach dem **Austauschvorgang** ist das Design Ihrer Produktions-Web-App aktualisiert.
 
-Falls Sie ein **Rollback** ausführen müssen, können Sie zu den Einstellungen der Produktions-Web-App wechseln und auf die Schaltfläche **Austauschen** klicken, um für die Web-App und die Datenbank den Produktions- gegen den Stagingslot auszutauschen. Beachten Sie, dass wenn der Vorgang **Austauschen** Datenbankänderungen umfasst, Sie bei der nächsten erneuten Bereitstellung in der Staging-Web-App die Datenbankänderungen in der aktuellen Datenbank für Ihre Staging-Web-App bereitstellen müssen. Dabei kann es sich um die vorherige Produktionsdatenbank oder die Stagingdatenbank handeln.
+    ![Produktions-Web-App nach dem Austauschen von Slots](./media/app-service-web-staged-publishing-realworld-scenarios/8afswap.png)
+
+5. Falls Sie einen Rollback ausführen müssen, können Sie zu den Produktions-Web-**App-Einstellungen** wechseln und auf die Schaltfläche **Austauschen** klicken, um für die Web-App und die Datenbank den Produktions- gegen den Stagingslot auszutauschen. Wenn der Vorgang **Austauschen** Datenbankänderungen umfasst, beachten Sie, dass Sie bei der nächsten Bereitstellung in der Staging-Web-App die Datenbankänderungen in der aktuellen Datenbank für Ihre Staging-Web-App bereitstellen müssen. Die aktuelle Datenbank kann die vorherige Produktionsdatenbank oder die Stagingdatenbank sein.
 
 #### <a name="summary"></a>Zusammenfassung
-Die allgemeinen Schritte des Prozesses für Anwendungen mit einer Datenbank lauten wie folgt:
+Es folgt eine verallgemeinerte Vorgehensweise für jede Anwendung, die eine Datenbank verwendet:
 
 1. Installieren Sie die Anwendung in Ihrer lokalen Umgebung.
-2. Fügen Sie die umgebungsspezifische Konfiguration hinzu (lokale App und Azure-Web-App).
-3. Richten Sie Ihre Umgebungen in App Service-Web-Apps ein: Staging und Produktion.
+2. Fügen Sie die umgebungsspezifische Konfiguration hinzu (lokale und Azure-Web-Apps).
+3. Richten Sie Ihre Staging- und Ihre Produktionsumgebung für Web-Apps ein.
 4. Wenn Sie bereits eine auf Azure ausgeführte Produktionsanwendung haben, synchronisieren Sie Ihre Produktionsinhalte (Dateien, Code und Datenbank) mit der lokalen Umgebung und der Stagingumgebung.
-5. Entwickeln Sie die Anwendung in Ihrer lokalen Umgebung.
-6. Versetzen Sie die Produktions-Web-App in den Wartungs- oder gesperrten Modus, und synchronisieren Sie Datenbankinhalte aus der Produktionsumgebung mit den Staging-und Entwicklungsumgebungen.
+5. Entwickeln Sie Ihre Anwendung in Ihrer lokalen Umgebung.
+6. Versetzen Sie die Produktions-Web-App in den Wartungs- oder gesperrten Modus, und synchronisieren Sie Datenbankinhalte aus der Produktionsumgebung mit der Staging- und der Entwicklungsumgebung.
 7. Stellen Sie die App in der Stagingumgebung bereit, und testen Sie sie.
 8. Stellen Sie die App in der Produktionsumgebung bereit.
-9. Wiederholen Sie die Schritte 4 bis 6
+9. Wiederholen Sie die Schritte 4 bis 6.
 
 ### <a name="umbraco"></a>Umbraco
-In diesem Abschnitt erfahren Sie, wie Umbraco CMS als Grundlage für die übergreifende Bereitstellung in einer Umgebung mit mehreren DevOps ein benutzerdefiniertes Modul verwendet. In diesem Beispiel wird ein anderer Ansatz zum Verwalten mehrerer Entwicklungsumgebungen vorgestellt.
+In diesem Abschnitt erfahren Sie, wie Umbraco CMS ein benutzerdefiniertes Modul für die übergreifende Bereitstellung in einer Umgebung mit mehreren DevOps verwendet. In diesem Beispiel wird ein anderer Ansatz zum Verwalten mehrerer Entwicklungsumgebungen vorgestellt.
 
-[Umbraco CMS](http://umbraco.com/) ist eine beliebte .NET-CMS-Lösung, die von vielen Entwicklern verwendet wird. Sie bietet das Modul [Courier2](http://umbraco.com/products/more-add-ons/courier-2) für die Bereitstellung von der Entwicklungsumgebung in den Staging- und Produktionsumgebungen. Sie können problemlos eine lokale Entwicklungsumgebung für eine Umbraco CMS-Web-App mit Visual Studio oder WebMatrix erstellen.
+[Umbraco CMS](http://umbraco.com/) ist eine beliebte .NET-CMS-Lösung, die von vielen Entwicklern verwendet wird. Sie bietet das Modul [Courier2](http://umbraco.com/products/more-add-ons/courier-2), um die Bereitstellung von der Entwicklungs- in der Staging- und schließlich in der Produktionsumgebungen durchzuführen. Sie können mit Visual Studio oder WebMatrix problemlos eine lokale Entwicklungsumgebung für eine Umbraco CMS-Web-App erstellen.
 
-1. Klicken Sie [hier](https://our.umbraco.org/documentation/Installation/install-umbraco-with-nuget), um Informationen zum Erstellen einer Umbraco-Web-App mit Visual Studio anzuzeigen.
-2. Klicken Sie [hier](http://umbraco.com/help-and-support/video-tutorials/getting-started/working-with-webmatrix), um Informationen zum Erstellen einer Umbraco-Web-App mit WebMatrix anzuzeigen.
+- [Erstellen einer Umbraco-Web-App mit Visual Studio](https://our.umbraco.org/documentation/Installation/install-umbraco-with-nuget)
+- [Erstellen einer Umbraco-Web-App mit WebMatrix](http://umbraco.tv/videos/umbraco-v7/implementor/fundamentals/installation/creating-umbraco-site-from-webmatrix-web-gallery/)
 
-Denken Sie immer daran, den Ordner `install` Ihrer Anwendung zu entfernen. Laden Sie ihn niemals in Staging- oder Produktions-Web-Apps hoch. In diesem Tutorial verwende ich WebMatrix.
+Denken Sie immer daran, den Ordner `install` unter Ihrer Anwendung zu entfernen. Laden Sie ihn niemals in Staging- oder Produktions-Web-Apps hoch. In diesem Lernprogramm wird WebMatrix verwendet.
 
 #### <a name="set-up-a-staging-environment"></a>Einrichten einer Stagingumgebung
-* Sofern Sie bereits eine Umbraco CMS-Web-App erstellt haben und ausführen, erstellen Sie wie oben erläutert einen Bereitstellungsslot für die Umbraco CMS-Web-App. Andernfalls können Sie die App über den Marketplace erstellen.
-* Aktualisieren Sie die Verbindungszeichenfolge für Ihren Bereitstellungsslot „stage“, um auf die neu erstellte Datenbank **umbraco-stage-db**zu verweisen. Ihre Produktions-Web-App (umbraositecms-1) und Ihre Staging-Web-App (umbracositecms-1-stage) **MÜSSEN** auf unterschiedliche Datenbanken verweisen.
+1. Sofern Sie bereits eine Umbraco CMS-Web-App erstellt haben und ausführen, erstellen Sie wie bereits erläutert einen Bereitstellungsslot für die Umbraco CMS-Web-App. Andernfalls können Sie eine App über den Marketplace erstellen.
+2. Aktualisieren Sie die Verbindungszeichenfolge für Ihren Bereitstellungsslot „stage“, um auf die neue Datenbank **umbraco-stage-db** zu verweisen. Ihre Produktions-Web-App (umbraositecms-1) und Ihre Staging-Web-App (umbracositecms-1-stage) *müssen* auf unterschiedliche Datenbanken verweisen.
 
-![Aktualisieren der Verbindungszeichenfolge für die Staging-Web-App mit der neuen Stagingdatenbank](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
+    ![Aktualisieren der Verbindungszeichenfolge für die Staging-Web-App mit der neuen Stagingdatenbank](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
 
-* Klicken Sie für den Bereitstellungsslot **stage** auf **Veröffentlichungseinstellungen abrufen**. Dadurch wird eine Datei mit Veröffentlichungseinstellungen heruntergeladen, die alle Informationen enthalten, die Visual Studio oder WebMatrix benötigen, um Ihre lokale Entwicklungs-Web-App in der Azure-Web-App zu veröffentlichen.
-  
-  ![Abrufen der Veröffentlichungseinstellungen der Staging-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
-* Öffnen Sie die lokale Entwicklungs-Web-App in **WebMatrix** oder **Visual Studio**. In diesem Tutorial verwende ich WebMatrix. Als Erstes müssen Sie die Datei mit den Veröffentlichungseinstellungen für Ihre Staging-Web-App importieren.
+3. Klicken Sie für den Bereitstellungsslot **stage** auf **Veröffentlichungseinstellungen abrufen**. Durch diesen Vorgang wird eine Datei mit Veröffentlichungseinstellungen heruntergeladen, die alle Informationen speichert, die Visual Studio oder WebMatrix benötigt, um Ihre lokale Entwicklungs-Web-App in der Azure-Web-App zu veröffentlichen.
 
-![Importieren der Veröffentlichungseinstellungen für Umbraco mit WebMatrix](./media/app-service-web-staged-publishing-realworld-scenarios/11import.png)
+    ![Abrufen der Veröffentlichungseinstellungen der Staging-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
+4. Öffnen Sie die lokale Entwicklungs-Web-App in WebMatrix oder Visual Studio. In diesem Lernprogramm wird WebMatrix verwendet. Als Erstes müssen Sie die Datei mit den Veröffentlichungseinstellungen für Ihre Staging-Web-App importieren.
 
-* Überprüfen Sie die Änderungen im Dialogfeld, und stellen Sie Ihre lokale Web-App in Ihrer Azure-Web-App *umbracositecms-1-stage*bereit. Wenn Sie Dateien direkt in der Staging-Web-App bereitstellen, werden alle Dateien im Ordner `~/app_data/TEMP/` ausgelassen, da diese beim erstmaligen Start der Staging-Web-App erneut generiert werden. Sie sollten auch die Datei `~/app_data/umbraco.config` auslassen, da diese ebenfalls erneut generiert wird.
+    ![Importieren der Veröffentlichungseinstellungen für Umbraco mit WebMatrix](./media/app-service-web-staged-publishing-realworld-scenarios/11import.png)
 
-![Überprüfen der Veröffentlichungseinstellungen in WebMatrix](./media/app-service-web-staged-publishing-realworld-scenarios/12umbpublish.png)
+5. Überprüfen Sie die Änderungen im Dialogfeld, und stellen Sie Ihre lokale Web-App in Ihrer Azure-Web-App *umbracositecms-1-stage* bereit. Wenn Sie Dateien direkt in der Staging-Web-App bereitstellen, werden alle Dateien im Ordner `~/app_data/TEMP/` ausgelassen, da diese beim erstmaligen Start der Staging-Web-App neu generiert werden. Sie sollten auch die Datei `~/app_data/umbraco.config` auslassen, die ebenfalls neu generiert wird.
 
-* Nachdem Sie die lokale Umbraco-Web-App erfolgreich in der Staging-Web-App veröffentlicht haben, wechseln Sie zu Ihrer Staging-Web-App, und führen Sie einige Tests aus, um Probleme auszuschließen.
+    ![Überprüfen der Veröffentlichungseinstellungen in WebMatrix](./media/app-service-web-staged-publishing-realworld-scenarios/12umbpublish.png)
 
-#### <a name="set-up-courier2-deployment-module"></a>Einrichten des Bereitstellungsmoduls „Courier2“
-Mit dem Modul [Courier2](http://umbraco.com/products/more-add-ons/courier-2) können Inhalte, Stylesheets, Entwicklungsmodule usw. einfach per Rechtsklick mithilfe von Push von einer Staging-Web-App in eine Produktions-Web-App übertragen werden. Dies ermöglicht problemlose Bereitstellungen und verringert das Risiko, dass Ihre Produktions-Web-App beim Bereitstellen eines Updates unterbrochen wird.
-Erwerben Sie eine Lizenz für „Courier2“ für die Domäne `*.azurewebsites.net` und Ihre benutzerdefinierte Domäne (z. B. http://abc.com). Speichern Sie nach dem Kauf der Lizenz die heruntergeladene Lizenz (LIC-Datei) im Ordner `bin`.
+6. Nachdem Sie die lokale Umbraco-Web-App erfolgreich in der Staging-Web-App veröffentlicht haben, wechseln Sie zu Ihrer Staging-Web-App, und führen Sie einige Tests aus, um Probleme auszuschließen.
+
+#### <a name="set-up-the-courier2-deployment-module"></a>Einrichten des Bereitstellungsmoduls „Courier2“
+Beim Modul [Courier2](http://umbraco.com/products/more-add-ons/courier-2) können Sie einfach mit der rechten Maustaste klicken, um Inhalte, Stylesheets und Entwicklungsmodule aus einer Staging-Web-App in eine Produktions-Web-App zu verschieben. Durch diesen Vorgang wird das Risiko verringert, dass Ihre Produktions-Web-App beim Bereitstellen eines Updates beschädigt wird.
+Erwerben Sie eine Lizenz für „Courier2“ für die Domäne `*.azurewebsites.net` und Ihre benutzerdefinierte Domäne (z.B. http://abc.com). Nachdem Sie die Lizenz erworben haben, legen Sie die heruntergeladene Lizenz (LIC-Datei) im Ordner `bin` ab.
 
 ![Speichern der Lizenzdatei im Ordner „bin“](./media/app-service-web-staged-publishing-realworld-scenarios/13droplic.png)
 
-Laden Sie das Courier2-Paket [hier](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/) herunter. Melden Sie sich bei Ihrer Staging-Web-App, z.B. http://umbracocms-site-stage.azurewebsites.net/umbraco, an, und klicken Sie im Menü **Developer** auf **Select Packages**. Klicken Sie auf **Install local package**.
+1. [Laden Sie das Courier2-Paket herunter](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/). Melden Sie sich bei Ihrer Staging-Web-App an, z.B. http://umbracocms-site-stage.azurewebsites.net/umbraco, und klicken Sie im Menü **Developer** auf **Packages** > **Install local package**.
 
-![Umbraco-Paketinstaller](./media/app-service-web-staged-publishing-realworld-scenarios/14umbpkg.png)
+    ![Umbraco-Paketinstaller](./media/app-service-web-staged-publishing-realworld-scenarios/14umbpkg.png)
 
-Laden Sie das Courier2-Paket mithilfe des Installers hoch.
+2. Laden Sie das Courier2-Paket mithilfe des Installers hoch.
 
-![Hochladen des Pakets für das Courier-Modul](./media/app-service-web-staged-publishing-realworld-scenarios/15umbloadpkg.png)
+    ![Hochladen des Pakets für das Courier-Modul](./media/app-service-web-staged-publishing-realworld-scenarios/15umbloadpkg.png)
 
-Zum Konfigurieren müssen Sie die Datei „courier.config“ im Ordner **Config** Ihrer Web-App aktualisieren.
+3. Zum Konfigurieren des Pakets müssen Sie die Datei „courier.config“ im Ordner **Config** Ihrer Web-App aktualisieren.
 
-```xml
-<!-- Repository connection settings -->
- <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
- <repositories>
-    <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
-    <repository name="production web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
-      <url>http://umbracositecms-1.azurewebsites.net</url>
-      <user>0</user>
-      <!--<login>user@email.com</login> -->
-      <!-- <password>user_password</password>-->
-      <!-- <passwordEncoding>Clear</passwordEncoding>-->
-      </repository>
- </repositories>
- ```
+    ```xml
+    <!-- Repository connection settings -->
+     <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
+     <repositories>
+        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
+        <repository name="production web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
+          <url>http://umbracositecms-1.azurewebsites.net</url>
+          <user>0</user>
+          <!--<login>user@email.com</login> -->
+          <!-- <password>user_password</password>-->
+          <!-- <passwordEncoding>Clear</passwordEncoding>-->
+          </repository>
+     </repositories>
+     ```
 
-Geben Sie unter `<repositories>`die URL der Produktionswebsite und die Benutzerinformationen ein. Geben Sie bei Verwendung des Standardmitgliedschaftsanbieters für Umbraco die ID des Administratorbenutzers im Abschnitt <user> ein. Wenn Sie einen benutzerdefinierten Mitgliedschaftsanbieter für Umbraco verwenden, verwenden Sie `<login>`,`<password>`, um dem Courier2-Modul mitzuteilen, wie die Verbindung zur Produktionswebsite hergestellt wird. Weitere Informationen finden Sie in der [Siteübersicht](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation) für das Courier-Modul.
+4. Geben Sie unter `<repositories>`die URL der Produktionswebsite und die Benutzerinformationen ein.
+    Geben Sie bei Verwendung des Standardmitgliedschaftsanbieters für Umbraco die ID des Administratorbenutzers im Abschnitt &lt;user&gt; ein.
+    Wenn Sie einen benutzerdefinierten Mitgliedschaftsanbieter für Umbraco verwenden, verwenden Sie `<login>`,`<password>` im Courier2-Modul, um eine Verbindung mit der Produktionswebsite herzustellen.
+    Weitere Informationen finden Sie in der [Dokumentation für das Courier2-Modul](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation).
 
-Installieren Sie auf ähnliche Weise das Courier-Modul auf der Produktionswebsite, und konfigurieren Sie es in der betreffenden Datei „courier.config“ so, dass es auf die Stage-Web-App zeigt.
+5. Installieren Sie auf ähnliche Weise das Courier2-Modul auf der Produktionswebsite, und konfigurieren Sie es in der betreffenden Datei „courier.config“ so, dass es auf die Staging-Web-App zeigt.
 
-```xml
- <!-- Repository connection settings -->
- <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
- <repositories>
-    <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
-    <repository name="Stage web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
-      <url>http://umbracositecms-1-stage.azurewebsites.net</url>
-      <user>0</user>
-      </repository>
- </repositories>
-```
+    ```xml
+     <!-- Repository connection settings -->
+     <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
+     <repositories>
+        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
+        <repository name="Stage web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
+          <url>http://umbracositecms-1-stage.azurewebsites.net</url>
+          <user>0</user>
+          </repository>
+     </repositories>
+    ```
 
-Klicken Sie im Dashboard der Umbraco CMS-Web-App auf die Registerkarte „Courier2“, und wählen Sie Speicherorte aus. Der in `courier.config` angegebene Name des Repositorys sollte angezeigt werden. Führen Sie diesen Schritt für Ihre Produktions- und Staging-Web-Apps aus.
+6. Klicken Sie im Dashboard der Umbraco CMS-Web-App auf die Registerkarte **Courier2**, und klicken Sie dann auf **Locations**. Der Name des Repositorys sollte wie in `courier.config`erwähnt angezeigt werden. Führen Sie diesen Vorgang für die Produktions- und die Staging-Web-App aus.
 
-![Anzeigen des Zielrepositorys der Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
+    ![Anzeigen des Zielrepositorys der Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
 
-Jetzt können Sie Inhalte von der Stagingwebsite in der Produktionswebsite bereitstellen. Wechseln Sie zu „Inhalt“, und wählen Sie eine vorhandene Seite aus, oder erstellen Sie eine neue Seite. Ich wähle eine vorhandene Seite aus meiner Web-App aus, deren Titel in **Getting Started – new** geändert wurde, und klicke auf **Save and Publish**.
+7. Um Inhalte von der Stagingsite in der Produktionssite bereitzustellen, wechseln Sie zu **Content**, und wählen Sie eine vorhandene Seite aus, oder erstellen Sie eine neue Seite. Ich wähle eine vorhandene Seite aus meiner Web-App aus, deren Titel **Getting Started – new** lautet, und klicke dann auf **Save and Publish**.
 
-![Ändern des Titels der Seite und Veröffentlichen](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
+    ![Ändern des Titels der Seite und Veröffentlichen](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
 
-Wählen Sie jetzt die geänderte Seite aus, und *klicken Sie mit der rechten Maustaste* , um alle Optionen anzuzeigen. Klicken Sie auf **Courier** , um das Dialogfeld „Deployment“ anzuzeigen. Klicken Sie auf **Bereitstellen** , um die Bereitstellung zu initiieren.
+8. Klicken Sie mit der rechten Maustaste auf die geänderte Seite, um alle Optionen anzuzeigen. Klicken Sie auf **Courier**, um das Dialogfeld **Bereitstellung** zu öffnen. Klicken Sie auf **Bereitstellen**, um die Bereitstellung zu initiieren.
 
-![Bereitstellungsdialogfeld für das Courier-Modul](./media/app-service-web-staged-publishing-realworld-scenarios/18dialog1.png)
+    ![Bereitstellungsdialogfeld für das Courier-Modul](./media/app-service-web-staged-publishing-realworld-scenarios/18dialog1.png)
 
-Überprüfen Sie die Änderungen, und klicken Sie auf „Weiter“.
+9. Überprüfen Sie die Änderungen, und klicken Sie dann auf **Weiter**.
 
-![Überprüfen der Änderungen im Bereitstellungsdialogfeld für das Courier-Modul](./media/app-service-web-staged-publishing-realworld-scenarios/19dialog2.png)
+    ![Überprüfen der Änderungen im Bereitstellungsdialogfeld für das Courier-Modul](./media/app-service-web-staged-publishing-realworld-scenarios/19dialog2.png)
 
-Im Bereitstellungsprotokoll wird angezeigt, ob die Bereitstellung erfolgreich war.
+    Im Bereitstellungsprotokoll wird angezeigt, ob die Bereitstellung erfolgreich war.
 
- ![Anzeigen der Bereitstellungsprotokolle des Courier-Moduls](./media/app-service-web-staged-publishing-realworld-scenarios/20successdlg.png)
+     ![Anzeigen der Bereitstellungsprotokolle des Courier-Moduls](./media/app-service-web-staged-publishing-realworld-scenarios/20successdlg.png)
 
-Durchsuchen Sie Ihre Produktions-Web-App, um zu überprüfen, ob die Änderungen angewendet wurden.
+10. Durchsuchen Sie Ihre Produktions-Web-App, um zu überprüfen, ob die Änderungen angewendet wurden.
 
- ![Durchsuchen der Produktions-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/21umbpg.png)
+     ![Durchsuchen der Produktions-Web-App](./media/app-service-web-staged-publishing-realworld-scenarios/21umbpg.png)
 
 Weitere Informationen zur Verwendung von Courier finden Sie in der Dokumentation.
 
-#### <a name="how-to-upgrade-umbraco-cms-version"></a>Aktualisieren der Umbraco CMS-Version
-Courier bietet keine Hilfe beim Aktualisieren der Umbraco CMS-Version. Wenn Sie die Umbraco CMS-Version aktualisieren, müssen Sie überprüfen, ob Inkompatibilitäten mit Ihren benutzerdefinierten Modulen oder Drittanbietermodulen und den Umbraco-Kernbibliotheken vorliegen. Folgende Vorgehensweise wird empfohlen:
+#### <a name="how-to-upgrade-the-umbraco-cms-version"></a>Aktualisieren der Umbraco CMS-Version
+Courier bietet keine Hilfe beim Aktualisieren der Umbraco CMS-Version. Wenn Sie die Umbraco CMS-Version aktualisieren, müssen Sie überprüfen, ob Inkompatibilitäten mit Ihren benutzerdefinierten Modulen oder mit Modulen von Partnern und den Umbraco-Kernbibliotheken vorliegen. Bewährte Methoden:
 
-1. Sichern Sie Ihre Web-App und Datenbank IMMER, bevor Sie ein Upgrade durchführen. Für Azure-Web-Apps können Sie mithilfe der Sicherungsfunktion automatische Sicherungen für Ihre Websites einrichten und Ihre Website bei Bedarf mit der Wiederherstellungsfunktion wiederherstellen. Weitere Informationen finden Sie unter [Sichern Ihrer Web-App](web-sites-backup.md) und [Wiederherstellen Ihrer Web-App](web-sites-restore.md).
-2. Überprüfen Sie, ob die von Ihnen verwendeten Drittanbieterpakete mit der Version kompatibel sind, auf die Sie aktualisieren. Überprüfen Sie auf der Downloadseite des Pakets die Projektkompatibilität mit der Umbraco CMS-Version.
+* Sichern Sie immer Ihre Web-App und Ihre Datenbank, bevor Sie ein Upgrade durchführen. Für Azure-Web-Apps können Sie mithilfe der Sicherungsfunktion automatische Sicherungen für Ihre Websites einrichten und Ihre Website bei Bedarf mit der Wiederherstellungsfunktion wiederherstellen. Weitere Informationen finden Sie unter [Sichern Ihrer Web-App](web-sites-backup.md) und [Wiederherstellen Ihrer Web-App](web-sites-restore.md).
+* Überprüfen Sie, ob Pakete von Partnern mit der Version kompatibel sind, auf die Sie aktualisieren. Überprüfen Sie auf der Downloadseite des Pakets die Projektkompatibilität mit der Umbraco CMS-Version.
 
-Weitere Informationen zum lokalen Aktualisieren Ihrer Web-App finden Sie [hier](https://our.umbraco.org/documentation/getting-started/set up/upgrading/general).
+Weitere Informationen zum lokalen Upgrade Ihrer Web-App [finden Sie in der allgemeinen Upgradeanleitung](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general).
 
-Nach dem Aktualisieren Ihrer lokalen Entwicklungswebsite veröffentlichen Sie die Änderungen in der Staging-Web-App. Testen Sie Ihre Anwendung, und klicken Sie, wenn alles Ihren Vorstellungen entspricht, auf die Schaltfläche **Swap**, um Ihre Stagingwebsite und die Produktions-Web-App **auszutauschen**. Beim Ausführen des **Austauschvorgangs** können Sie die Änderungen anzeigen, die in Ihrer Web-App-Konfiguration betroffen sind. Bei diesem **Austauschvorgang** werden die Web-Apps und Datenbanken ausgetauscht. Daher verweist die Produktions-Web-App nach dem Austausch auf die Datenbank „umbraco-stage-db“ und die Staging-Web-App auf die Datenbank „umbraco-prod-db“.
+Nach dem Aktualisieren Ihrer lokalen Entwicklungswebsite veröffentlichen Sie die Änderungen in der Staging-Web-App. Testen Sie Ihre Anwendung. Wenn alles Ihren Vorstellungen entspricht, klicken Sie auf die Schaltfläche **Swap**, um Ihre Stagingsite und die Produktions-Web-App auszutauschen. Wenn Sie den **Austauschvorgangs** verwenden, können Sie die Änderungen anzeigen, die in Ihrer Web-App-Konfiguration betroffen sind. Bei diesem **Austauschvorgang** werden die Web-Apps und Datenbanken ausgetauscht. Daher verweist die Produktions-Web-App nach dem **Austausch** auf die Datenbank „umbraco-stage-db“, und die Staging-Web-App verweist auf die Datenbank „umbraco-prod-db“.
 
 ![Austauschvorschau für die Bereitstellung von Umbraco CMS](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
 
 Das Austauschen der Web-App und der Datenbank bietet folgende Vorteile:
 
-1. Sie können mit einem weiteren **Austauschvorgang** ein Rollback auf die vorherige Version der Web-App ausführen, wenn in der Anwendung Probleme auftreten.
-2. Bei einer Aktualisierung müssen Sie Dateien und die Datenbank von der Staging-Web-App in der Produktions-Web-App und der Datenbank bereitstellen. Bei der Bereitstellung von Dateien und Datenbanken kann vieles schief gehen. Durch das **Austauschen** von Slots wird das Risiko von Ausfallzeiten während einer Aktualisierung und von Fehlern bei der Bereitstellung von Änderungen reduziert.
-3. Sie können **A/B-Tests** mithilfe der Funktion zum [Testen in der Produktionsumgebung](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) durchführen.
+* Sie können mit einem weiteren **Austauschvorgang** einen Rollback auf die vorherige Version der Web-App ausführen, wenn in der Anwendung Probleme auftreten.
+* Bei einem Upgrade müssen Sie Dateien und die Datenbank von der Staging-Web-App in der Produktions-Web-App und der Datenbank bereitstellen. Beim Bereitstellen von Dateien und Datenbanken kann viel passieren. Durch das Verwenden des Features zum **Austauschen** von Slots wird das Risiko von Ausfallzeiten während eines Upgrades und von Fehlern bei der Bereitstellung von Änderungen reduziert.
+* Mithilfe des Features [Test-in-Produktion](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) können Sie **A/B-Tests** durchführen.
 
 Dieses Beispiel veranschaulicht die Flexibilität der Plattform. Sie ermöglicht es Ihnen, benutzerdefinierte Module wie das Umbraco Courier-Modul zur umgebungsübergreifenden Verwaltung der Bereitstellung zu erstellen.
 
@@ -439,7 +445,6 @@ Dieses Beispiel veranschaulicht die Flexibilität der Plattform. Sie ermöglicht
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

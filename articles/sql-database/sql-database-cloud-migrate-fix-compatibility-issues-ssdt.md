@@ -1,6 +1,7 @@
 ---
-title: "Beheben von Kompatibilitätsproblemen der SQL Server-Datenbank vor der Migration zu SQL-Datenbank | Microsoft Docs"
-description: "Microsoft Azure SQL-Datenbank, Datenbankmigration, Kompatibilität, Migrations-Assistent für SQL Azure, SSDT"
+title: "SSDT: Beheben von Kompatibilitätsproblemen bei der Migration zu Azure SQL-Datenbank | Microsoft Docs"
+description: "In diesem Artikel erfahren Sie, wie Sie mit SQL Server Data Tools für Visual Studio vor der Migration zu Azure SQL-Datenbank Kompatibilitätsprobleme mit SQL Server-Datenbank ermitteln und beheben."
+keywords: "Microsoft Azure SQL-Datenbank, Datenbankmigration, Kompatibilität, Migrations-Assistent für SQL Azure, SSDT"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: e09c60111286681928ee1dd0b08fade7a102d6f2
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: ea4248a5ff16e6dd8e754aa0f1be480d08aa47f3
 
 
 ---
@@ -97,6 +98,6 @@ Verwenden Sie SQL Server Data Tools für Visual Studio (SSDT), um das Datenbanks
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

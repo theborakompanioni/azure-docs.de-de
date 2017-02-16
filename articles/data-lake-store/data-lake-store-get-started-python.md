@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Data Lake Store mithilfe von Python | Microsoft Docs
+title: Erste Schritte mit Azure Data Lake Store mithilfe von Python | Microsoft-Dokumentation
 description: "Erfahren Sie mehr über die Verwendung des Python SDK, um mit Data Lake Store und dem Dateisystem zu arbeiten."
 services: data-lake-store
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/29/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f29f36effd858f164f7b6fee8e5dab18211528b3
-ms.openlocfilehash: 6f724576badb7cf3625a139c416860b7e43ed036
+ms.sourcegitcommit: d8faeafc6d4c73c4c71d0bc1554b04302dffdc55
+ms.openlocfilehash: 72186e03a1dc47f67b8f4cdcac55208a61c8e147
 
 
 ---
@@ -49,7 +49,7 @@ Erfahren Sie, wie Sie mit dem Python SDK für Azure und Azure Data Lake Store ei
 
 Zum Verwenden von Data Lake Store mit Python müssen Sie drei Module installieren.
 
-* Das Modul `azure-mgmt-resource`. Es beinhaltet Azure-Module für Active Directory etc..
+* Das Modul `azure-mgmt-resource`. Es beinhaltet Azure-Module für Active Directory etc.
 * Das Modul `azure-mgmt-datalake-store`. Es beinhaltet die Verwaltungsvorgänge für das Azure Data Lake Store-Konto. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Verwaltungsmodul für Azure Data Lake Store](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html).
 * Das Modul `azure-datalake-store`. Es beinhaltet die Dateisystemvorgänge für Azure Data Lake Store. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Dateisystemmodul für Azure Data Lake Store](http://azure-datalake-store.readthedocs.io/en/latest/).
 
@@ -74,12 +74,19 @@ pip install azure-datalake-store
     ## Use this only for Azure AD end-user authentication
     from azure.common.credentials import UserPassCredentials
 
+    ## Use this only for Azure AD multi-factor authentication
+    from msrestazure.azure_active_directory import AADTokenCredentials
+
     ## Required for Azure Data Lake Store account management
-    from azure.mgmt.datalake.store.account import DataLakeStoreAccountManagementClient
-    from azure.mgmt.datalake.store.account.models import DataLakeStoreAccount
+    from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
+    from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
     ## Required for Azure Data Lake Store filesystem management
     from azure.datalake.store import core, lib, multithread
+
+    # Common Azure imports
+    from azure.mgmt.resource.resources import ResourceManagementClient
+    from azure.mgmt.resource.resources.models import ResourceGroup
 
     ## Use these as needed for your application
     import logging, getpass, pprint, uuid, time
@@ -89,9 +96,17 @@ pip install azure-datalake-store
 
 ## <a name="authentication"></a>Authentifizierung
 
+In diesem Abschnitt werden die unterschiedlichen Möglichkeiten zur Authentifizierung mit Azure AD beschrieben. Die verfügbaren Optionen sind:
+
+* Authentifizierung von Endbenutzern
+* Dienst-zu-Dienst-Authentifizierung
+* Multi-Factor Authentication
+
+Sie müssen diese Authentifizierungsoptionen sowohl für Kontoverwaltungs- als auch für Dateisystem-Verwaltungsmodule verwenden.
+
 ### <a name="end-user-authentication-for-account-management"></a>Endbenutzerauthentifizierung für die Kontoverwaltung
 
-Verwenden Sie dieses Vorgehen für die Authentifizierung gegenüber Azure AD für Kontoverwaltungsvorgänge vor (Erstellen/Löschen des Data Lake Store-Kontos usw.). Sie müssen den Benutzernamen und das Kennwort für einen Azure AD-Benutzer angeben. Beachten Sie, dass der Benutzer nicht für die mehrstufige Authentifizierung konfiguriert werden soll.
+Verwenden Sie dieses Vorgehen zur Authentifizierung bei Azure AD für Kontoverwaltungsvorgänge (Erstellen/Löschen des Data Lake Store-Kontos usw.). Sie müssen den Benutzernamen und das Kennwort für einen Azure AD-Benutzer angeben. Beachten Sie, dass keine mehrstufige Authentifizierung für den Benutzer konfiguriert werden sollte.
 
     user = input('Enter the user to authenticate with that has permission to subscription: ')
     password = getpass.getpass()
@@ -111,7 +126,7 @@ Verwenden Sie dieses Vorgehen für die Authentifizierung gegenüber Azure AD fü
 
 ### <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>Dienst-zu-Dienst-Authentifizierung mit Clientgeheimnis für die Kontoverwaltung
 
-Verwenden Sie dieses Vorgehen für die Authentifizierung gegenüber Azure AD für Kontoverwaltungsvorgänge vor (Erstellen/Löschen des Data Lake Store-Kontos usw.). Mit dem folgenden Codeausschnitt können Sie unter Verwendung des Clientgeheimnisses für eine Anwendung bzw. einen Dienstprinzipal eine nicht interaktive Authentifizierung Ihrer Anwendung durchführen. Verwenden Sie diese Option mit einer vorhandenen Azure AD-Anwendung vom Typ „Web-App“.
+Verwenden Sie dieses Vorgehen zur Authentifizierung bei Azure AD für Kontoverwaltungsvorgänge (Erstellen/Löschen des Data Lake Store-Kontos usw.). Mit dem folgenden Codeausschnitt können Sie unter Verwendung des Clientgeheimnisses für eine Anwendung bzw. einen Dienstprinzipal eine nicht interaktive Authentifizierung Ihrer Anwendung durchführen. Verwenden Sie diese Option mit einer vorhandenen Azure AD-Anwendung vom Typ „Web-App“.
 
     credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = 'FILL-IN-HERE', tenant = 'FILL-IN-HERE')
 
@@ -120,6 +135,29 @@ Verwenden Sie dieses Vorgehen für die Authentifizierung gegenüber Azure AD fü
 Verwenden Sie dieses Vorgehen für die Authentifizierung gegenüber Azure AD für Dateisystemvorgänge (Ordner erstellen, Datei hochladen usw.). Mit dem folgenden Codeausschnitt können Sie unter Verwendung des Clientgeheimnisses für eine Anwendung bzw. einen Dienstprinzipal eine nicht interaktive Authentifizierung Ihrer Anwendung durchführen. Verwenden Sie diese Option mit einer vorhandenen Azure AD-Anwendung vom Typ „Web-App“.
 
     token = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE')
+
+### <a name="multi-factor-authentication-for-account-management"></a>Multi-Factor Authentication für die Kontoverwaltung
+
+Verwenden Sie dieses Vorgehen zur Authentifizierung bei Azure AD für Kontoverwaltungsvorgänge (Erstellen/Löschen des Data Lake Store-Kontos usw.). Sie können den folgenden Codeausschnitt verwenden, um Ihre Anwendung per Multi-Factor Authentication zu authentifizieren. Verwenden Sie diese Option mit einer vorhandenen Azure AD-Anwendung vom Typ „Web-App“.
+
+    authority_host_url = "https://login.microsoftonline.com"
+    tenant = "FILL-IN-HERE"
+    authority_url = authority_host_url + '/' + tenant
+    client_id = 'FILL-IN-HERE'
+    redirect = 'urn:ietf:wg:oauth:2.0:oob'
+    RESOURCE = 'https://management.core.windows.net/'
+    
+    context = adal.AuthenticationContext(authority_url)
+    code = context.acquire_user_code(RESOURCE, client_id)
+    print(code['message'])
+    mgmt_token = context.acquire_token_with_device_code(RESOURCE, code, client_id)
+    credentials = AADTokenCredentials(mgmt_token, client_id)
+
+### <a name="multi-factor-authentication-for-filesystem-management"></a>Multi-Factor Authentication für Dateisystemverwaltung
+
+Verwenden Sie dieses Vorgehen für die Authentifizierung gegenüber Azure AD für Dateisystemvorgänge (Ordner erstellen, Datei hochladen usw.). Sie können den folgenden Codeausschnitt verwenden, um Ihre Anwendung per Multi-Factor Authentication zu authentifizieren. Verwenden Sie diese Option mit einer vorhandenen Azure AD-Anwendung vom Typ „Web-App“.
+
+    token = lib.auth(tenant_id='FILL-IN-HERE')
 
 ## <a name="create-an-azure-resource-group"></a>Erstellen einer Azure-Ressourcengruppe
 
@@ -137,7 +175,7 @@ Verwenden Sie den folgenden Codeausschnitt, um eine Azure-Ressourcengruppe zu er
     )
     
     ## Create an Azure Resource Group
-    armGroupResult = resourceClient.resource_groups.create_or_update(
+    resourceClient.resource_groups.create_or_update(
         resourceGroup,
         ResourceGroup(
             location=location
@@ -207,6 +245,6 @@ Der folgende Codeausschnitt erstellt zunächst den Data Lake Store-Kontoclient. 
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

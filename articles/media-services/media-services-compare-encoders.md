@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 0124c884d3d805a407041e8ecbc5961209a9653d
-ms.openlocfilehash: c405f1bc405990ef4959e90d9e98e1629fe7f6b7
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: dca8087230b261f14e876e49b9b0fb12579b96d0
 
 
 ---
@@ -28,8 +28,8 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 ### <a name="a-idbillingabilling-meter-used-by-each-encoder"></a><a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
 | Medienprozessorname | Geltende Preise | Hinweise |
 | --- | --- | --- |
-| **Media Encoder Standard** |ENCODER |Codierungsaufgaben werden gemäß der Größe von Ausgabemedienobjekten in GB berechnet, und zwar zur [hier][1] angegebenen Rate in der Spalte ENCODER. |
-| **Media Encoder Premium-Workflow** |PREMIUM ENCODER |Codierungsaufgaben werden gemäß der Größe von Ausgabemedienobjekten in GB berechnet, und zwar zur [hier][1] angegebenen Rate in der Spalte PREMIUM ENCODER. |
+| **Media Encoder Standard** |ENCODER |Codierungsaufgaben werden basierend auf der Gesamtdauer in Minuten für die Ausgabe aller Mediendateien in Rechnung gestellt. Den entsprechenden Kostensatz finden Sie [hier][1] in der Spalte „ENCODER“. |
+| **Media Encoder Premium-Workflow** |PREMIUM ENCODER |Codierungsaufgaben werden basierend auf der Gesamtdauer in Minuten für die Ausgabe aller Mediendateien in Rechnung gestellt. Den entsprechenden Kostensatz finden Sie [hier][1] in der Spalte „PREMIUM ENCODER“. |
 
 ### <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 | Eingabecontainer/Dateiformate | Media Encoder Standard | Media Encoder Premium Workflow |
@@ -134,6 +134,6 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO2-->
 
 

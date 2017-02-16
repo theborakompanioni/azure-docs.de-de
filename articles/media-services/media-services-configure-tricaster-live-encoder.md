@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako;cenkd;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: de649ebc0f832f1c549c2e0f39eb00efbf1fcdfc
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 4c1a50e26e5cde606d0ef34889fb1c9db80e8ee0
 
 
 ---
@@ -40,7 +40,7 @@ In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Erstellen eines Azure Media Services-Kontos](media-services-portal-create-account.md)
-* Stellen Sie sicher, dass ein Streamingendpunkt mit mindestens einer zugeordneten Streamingeinheit ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md)
+* Stellen Sie sicher, dass ein Streamingendpunkt vorhanden ist, der ausgeführt wird. Weitere Informationen finden Sie unter [Verwalten von Streamingendpunkten in einem Media Services-Konto](media-services-portal-manage-streaming-endpoints.md)
 * Installieren Sie die neueste Version des [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) -Tools.
 * Starten Sie das Tool, und stellen Sie eine Verbindung mit Ihrem AMS-Konto her.
 
@@ -50,16 +50,17 @@ In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool
 * Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
 
 ## <a name="create-a-channel"></a>Erstellen eines Kanals
-1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live** , und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen**  aus.
+1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live** , und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen** aus.
 
-![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
+    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
-1. Geben Sie einen Kanalnamen und optional eine Beschreibung ein. Wählen Sie unter „Kanaleinstellungen“ **Standard** für die Option „Livecodierung“ aus, und legen Sie für das Eingabeprotokoll **RTMP** fest. Alle anderen Einstellungen können Sie unverändert lassen.
+2. Geben Sie einen Kanalnamen und optional eine Beschreibung ein. Wählen Sie unter „Kanaleinstellungen“ **Standard** für die Option „Live Encoding“ aus, und legen Sie für das Eingabeprotokoll **RTMP** fest. Alle anderen Einstellungen können Sie unverändert lassen.
 
-Stellen Sie sicher, dass die Option **Neuen Kanal jetzt starten** ausgewählt ist.
+    Stellen Sie sicher, dass die Option **Neuen Kanal jetzt starten** ausgewählt ist.
 
-1. Klicken Sie auf **Kanal erstellen**.
-   ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
+3. Klicken Sie auf **Kanal erstellen**.
+
+   ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
 
 > [!NOTE]
 > Das Starten des Kanals kann bis zu 20 Minuten dauern.
@@ -129,9 +130,9 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 >
 
 ## <a name="test-playback"></a>Testen der Wiedergabe
-1. Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Playback the Preview** (Vorschau wiedergeben), und wählen Sie **with Azure Media Player** (mit Azure Media Player) aus.  
+Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den Kanal, der getestet werden soll. Bewegen Sie den Mauszeiger im Menü über **Playback the Preview** (Vorschau wiedergeben), und wählen Sie **with Azure Media Player** (mit Azure Media Player) aus.  
 
-    ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
+    ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
 
 Wenn der Datenstrom im Player angezeigt wird, wurde der Encoder ordnungsgemäß für die Verbindung mit AMS konfiguriert.
 
@@ -145,7 +146,9 @@ Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und 
 3. Aktivieren Sie das Kontrollkästchen **Programm jetzt starten** .
 4. Klicken Sie auf **Programm erstellen**.  
 
-    Hinweis: Die Programmerstellung erfordert weniger Zeit als die Kanalerstellung.    
+    >[!NOTE]
+    >Die Programmerstellung erfordert weniger Zeit als die Kanalerstellung.
+        
 5. Sobald die Anwendung ausgeführt wird, bestätigen Sie die Wiedergabe, indem Sie mit der rechten Maustaste auf das Programm klicken, zu **Playback the program(s)** (Programm(e) wiedergeben) navigieren und dann **with Azure Media Player** (mit Azure Media Player) auswählen.  
 6. Nach der Bestätigung klicken Sie mit der rechten Maustaste erneut auf das Programm, und wählen Sie **Copy the Output URL to Clipboard** (Ausgabe-URL in die Zwischenablage kopieren) aus (bzw. rufen Sie diese Informationen über das Menü mit der Option **Program information and settings** (Programminformationen und -einstellungen) ab).
 
@@ -164,6 +167,6 @@ Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troublesho
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

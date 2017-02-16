@@ -15,8 +15,8 @@ ms.workload: required
 ms.date: 10/05/2016
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: ef381ef234608e0ccbf7f3814bd1f23816100d25
-ms.openlocfilehash: 3d78ec39d75da4118cc06f49ece3aa852eefd538
+ms.sourcegitcommit: 1663126f43b8e1cd3e68b9e9b2bbbb67298bb8c1
+ms.openlocfilehash: 893e2f64377b9b00596dfdc00e6eba36c024fa66
 
 
 ---
@@ -57,7 +57,7 @@ Wenn Sie ein Failover für einen virtuellen VMware-Computer durchgeführt haben,
 
 * Wenn Sie ein Failover für physische Server durchgeführt haben, erfolgt das Failback immer zu einem neuen virtuellen VMware-Computer.
   * Beachten Sie vor dem Ausführen eines Failbacks an einem physischen Computer Folgendes:
-    * Der geschützte physische Computer wird beim Failback von Azure zu VMware zu einem virtuellen Computer. Für einen geschützten Windows Server 2008 R2 SP1-Computer, für den ein Failover zu Azure ausgeführt wurde, kann kein Failback ausgeführt werden.
+    * Der geschützte physische Computer wird beim Failback von Azure zu VMware zu einem virtuellen Computer. Für einen geschützten physischen Computer unter Windows Server 2008 R2 SP1, für den ein Failover auf Azure ausgeführt wurde, kann kein Failback ausgeführt werden. Für einen WS 2008 R2 SP1-Computer, der lokal als virtueller Computer ausgeführt wird, kann ein Failback ausgeführt werden.
     * Stellen Sie sicher, dass Sie mindestens einen Masterzielserver zusammen mit den erforderlichen ESX/ESXi-Hosts ermitteln, auf die Sie ein Failback ausführen müssen.
 * Wenn Sie ein Failback zum ursprünglichen virtuellen Computer durchführen, ist Folgendes erforderlich: 
   
@@ -191,7 +191,7 @@ Nachdem Sie die nach der Installation nötigen Schritte ausgeführt und die Pake
 
    d. Der Dateisystemtyp für das Volume darf nicht FAT oder FAT32 lauten.
 
-   e. Die Volumekapazität muss größer als 0 sein.
+   e. Die Volumekapazität muss größer als&0; sein.
 
    e. Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
 
@@ -237,7 +237,7 @@ Nachdem das erneute Schützen abgeschlossen ist, wird die VM zurück nach Azure 
 4. Wenn Sie die kostenlose Edition ESXi 5.5 oder die kostenlose Edition vSphere 6 Hypervisor verwenden, wäre das Failover erfolgreich, das Failback jedoch nicht. Sie müssen auf eine der Evaluierungslizenzen aktualisieren, um das Failback zu aktivieren.
 5. Wenn CS auf dem Prozessserver nicht erreichbar ist, können Sie Konnektivität auf Ihrem Prozessserver mit CS mithilfe des Befehls „- Telnet“ an den CS-Computer an Port 443 überprüfen. Sie können auch versuchen, CS auf dem PS-Computer zu pingen. Ein PS-Server sollte auch einen Takt aufweisen, wenn er mit dem CS verbunden ist.
 6. Wenn Sie versuchen, ein Failback auf einen alternativen vCenter-Computer durchzuführen, stellen Sie sicher, dass Ihr neuer vCenter-Computer erkannt wird und der Masterzielserver ebenfalls erkannt wird. Als typisches Symptom sind die Datenspeicher im Dialogfeld „Erneut schützen“ nicht zugänglich/sichtbar.
-7. Für einen als physischen oder virtuellen lokalen Computer geschützten WS2008R2SP1-Computer kann kein Failback von Azure zu lokalen Standorten ausgeführt werden.
+7. Für einen als physischen lokalen Computer geschützten WS&2008; R2 SP1-Computer kann kein Failback von Azure auf lokale Standorte ausgeführt werden.
 
 ## <a name="failing-back-with-expressroute"></a>Ausführen eines Failbacks mit ExpressRoute
 Ein Failback kann über eine VPN-Verbindung oder über Azure ExpressRoute ausgeführt werden. Wenn Sie ExpressRoute verwenden möchten, beachten Sie Folgendes:
@@ -248,6 +248,6 @@ Ein Failback kann über eine VPN-Verbindung oder über Azure ExpressRoute ausgef
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

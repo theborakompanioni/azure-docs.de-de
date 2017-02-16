@@ -13,19 +13,25 @@ ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 01/03/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: cff4e05de2a9e2f0603fd4beebe26e44b4652dc8
-ms.openlocfilehash: d168c6e477eff07b8f499c1be869f85506c2fabc
+ms.sourcegitcommit: 9a2ab28a2dc456d5f21242ded1d348f411d3d994
+ms.openlocfilehash: c8cc44cf132bb82c217a81ab94f27ed391a4248d
 
 
 ---
 # <a name="azure-cli-commands-in-azure-service-management-asm-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)
-> [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../articles/azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Sie können sich auch [über alle Befehle des Resource Manager-Modells informieren](virtual-machines/azure-cli-arm-commands.md) und die Befehlszeilenschnittstelle zum [Migrieren von Ressourcen](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md) aus dem klassischen Modell in das Resource Manager-Modell verwenden.
+
 
 Dieser Artikel enthält die Syntax und Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen im klassischen Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM) ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. 
+
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../articles/azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Sie können sich auch [über Befehle der Befehlszeilenschnittstelle im Resource Manager-Modell informieren](virtual-machines/azure-cli-arm-commands.md) und die Befehlszeilenschnittstelle zum [Migrieren von Ressourcen](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md) aus dem klassischen Modell in das Resource Manager-Modell verwenden.
+>
+>Um im Resource Manager-Modell zu arbeiten, können Sie auch die [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) ausprobieren, unsere Multi-Plattform-Befehlszeilenschnittstelle der nächsten Generation.
+>
+
 
 Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](xplat-cli-install.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](xplat-cli-connect.md).
 
@@ -2353,6 +2359,6 @@ Löscht einen DNS-Servereintrag aus der Netzwerkkonfiguration.
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO1-->
 
 

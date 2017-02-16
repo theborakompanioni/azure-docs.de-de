@@ -1,6 +1,6 @@
 ---
-title: Migrieren eines vorhandenen Azure SQL Data Warehouse zu Storage Premium | Microsoft Azure
-description: Anweisungen zum Migrieren eines vorhandenen SQL Data Warehouse in Storage Premium
+title: Migrieren eines vorhandenen Azure Data Warehouse zu Storage Premium | Microsoft-Dokumentation
+description: Anweisungen zum Migrieren eines vorhandenen Data Warehouse zu Storage Premium
 services: sql-data-warehouse
 documentationcenter: NA
 author: happynicolle
@@ -15,20 +15,20 @@ ms.workload: data-services
 ms.date: 11/29/2016
 ms.author: rortloff;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: b676630e44c49c2ab4006f04408b01cc90c4dc28
-ms.openlocfilehash: ef20cf90b54c9b28c70341d7545bb55474feb39f
+ms.sourcegitcommit: e66f808da8d301e0adc393ba0ae67ab8618ce814
+ms.openlocfilehash: e73e52665dd22e33054745907613c269b6d57915
 
 
 ---
-# <a name="migration-to-premium-storage-details"></a>Details zur Migration zu Storage Premium
-Für SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können][Premium Storage for greater performance predictability].  Wir sind jetzt bereit für das Migrieren vorhandener Data Warehouses, für die derzeit Storage Standard verwendet wird, zu Storage Premium.  Im Folgenden erhalten Sie weitere Details dazu, wie und wann automatische Migrationen erfolgen und wie Sie die Migration selbst durchführen, um den Zeitpunkt der Ausfallzeiten zu steuern.
+# <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrieren eines Data Warehouse zu Storage Premium
+Für Azure SQL Data Warehouse wurde vor Kurzem [Storage Premium eingeführt, um die Leistung besser vorhersagen zu können][premium storage for greater performance predictability]. Vorhandene Data Warehouses mit derzeit Standardspeicher können nun zu Storage Premium migriert werden. Sie können die automatische Migration nutzen. Wenn Sie aber den Migrationszeitpunkt bestimmen möchten (was eine gewisse Ausfallzeit mit sich bringt), können Sie die Migration selbst vornehmen.
 
-Wenn Sie über mehr als ein Data Warehouse verfügen, ermitteln Sie anhand des unten angegebenen [Zeitplans für die automatische Migration][automatic migration schedule], wann die einzelnen Migrationen durchgeführt werden.
+Wenn Sie über mehr als ein Data Warehouse verfügen, ermitteln Sie anhand des [Zeitplans für die automatische Migration][automatic migration schedule], wann die einzelnen Migrationen erfolgen.
 
 ## <a name="determine-storage-type"></a>Bestimmen des Speichertyps
-Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, verwenden Sie derzeit Storage Standard.
+Wenn Sie ein Data Warehouse vor den folgenden Terminen erstellt haben, verwenden Sie derzeit Standardspeicher.
 
-| **Region** | **Vor diesem Datum erstelltes DW** |
+| **Region** | **Vor diesem Datum erstelltes Data Warehouse** |
 |:--- |:--- |
 | Australien (Osten) |Storage Premium noch nicht verfügbar |
 | China, Osten |1. November 2016 |
@@ -37,34 +37,34 @@ Wenn Sie ein Data Warehouse vor den unten angegebenen Terminen erstellt haben, v
 | Deutschland, Nordosten |1. November 2016 |
 | Indien, Westen |Storage Premium noch nicht verfügbar |
 | Japan (Westen) |Storage Premium noch nicht verfügbar |
-| USA (Mitte/Norden) |10. November 2016 |
+| USA Nord Mitte |10. November 2016 |
 
 ## <a name="automatic-migration-details"></a>Details zur automatischen Migration
-Standardmäßig migrieren wir Ihre Datenbank zwischen 18:00 und 06:00 Uhr Ortszeit Ihrer Region, und zwar während des unten angegebenen [Zeitplans für die automatische Migration][automatic migration schedule].  Während der Migration kann Ihr vorhandenes Data Warehouse nicht genutzt werden.  Die Migration dauert ca. eine Stunde pro TB an gespeicherten Daten pro Data Warehouse.  Außerdem stellen wir sicher, dass während der automatischen Migration keine Kosten für Sie anfallen.
+Standardmäßig migrieren wir Ihre Datenbank zwischen 18:00 und 06:00 Uhr Ortszeit Ihrer Region, und zwar im Rahmen des [Zeitplans für die automatische Migration][automatic migration schedule]. Während der Migration kann Ihr vorhandenes Data Warehouse nicht genutzt werden. Die Migration dauert pro Data Warehouse pro Terabyte an gespeicherten Daten ca. eine Stunde. Im Rahmen der automatischen Migration fallen keine Kosten für Sie an.
 
 > [!NOTE]
-> Während der Migration können Sie Ihr vorhandenes Data Warehouse nicht nutzen.  Nachdem die Migration abgeschlossen ist, ist das Data Warehouse wieder online.
+> Nach Abschluss der Migration wird das Data Warehouse zur Nutzung wieder online geschaltet.
 >
 >
 
-Bei den unten angegebenen Details handelt es sich um Schritte, die Microsoft für Sie ausführt, um die Migration abzuschließen. Hierfür ist kein Eingriff Ihrerseits erforderlich.  Beispiel: Ihr vorhandenes Data Warehouse mit Storage Standard trägt derzeit den Namen „MyDW“.
+Microsoft führt die folgenden Schritte aus, um die Migration abzuschließen (die von Ihnen keine Beteiligung verlangen). Beispiel: Ihr vorhandenes Data Warehouse mit Standardspeicher hat derzeit den Namen „MyDW“.
 
 1. Microsoft benennt „MyDW“ in „MyDW_DO_NOT_USE_[Zeitstempel]“ um.
-2. Microsoft hält „MyDW_DO_NOT_USE_[Zeitstempel]“ an.  Während dieser Zeit wird eine Sicherung erstellt.  Es kann zu mehreren Anhaltevorgängen und Fortsetzungen kommen, falls bei diesem Prozess Probleme auftreten.
-3. Microsoft erstellt anhand der in Schritt 2 erstellen Sicherung ein neues Data Warehouse in Storage Premium mit dem Namen „MyDW“.  „MyDW“ wird erst angezeigt, nachdem der Wiederherstellungsvorgang abgeschlossen wurde.
-4. Nach Abschluss der Wiederherstellung wird „MyDW“ zurück auf die gleichen DWUs und in den angehaltenen oder aktiven Zustand wie vor der Migration versetzt.
-5. Nachdem die Migration abgeschlossen ist, löscht Microsoft „MyDW_DO_NOT_USE_[Zeitstempel]“.
+2. Microsoft hält „MyDW_DO_NOT_USE_[Zeitstempel]“ an. Während dieser Zeit wird eine Sicherung erstellt. Es kann zu mehreren Anhalte- und Fortsetzungsvorgängen kommen, falls bei diesem Prozess Probleme auftreten.
+3. Microsoft erstellt anhand der in Schritt 2 erstellen Sicherung ein neues Data Warehouse in Storage Premium mit dem Namen „MyDW“. „MyDW“ wird erst angezeigt, nachdem der Wiederherstellungsvorgang abgeschlossen wurde.
+4. Nach Abschluss der Wiederherstellung wird „MyDW“ zurück auf die gleichen Data Warehouse-Einheiten und in den (angehaltenen oder aktiven) Zustand wie vor der Migration versetzt.
+5. Nach Abschluss der Migration löscht Microsoft „MyDW_DO_NOT_USE_[Zeitstempel]“.
 
 > [!NOTE]
-> Diese Einstellungen werden im Rahmen der Migration nicht übernommen:
+> Die folgenden Einstellungen werden im Rahmen der Migration nicht übernommen:
 >
 > * Die Überwachung auf Datenbankebene muss erneut aktiviert werden.
-> * Firewallregeln auf **Datenbankebene** müssen erneut hinzugefügt werden.  Firewallregeln auf **Serverebene** sind nicht betroffen.
+> * Firewallregeln auf Datenbankebene müssen erneut hinzugefügt werden. Firewallregeln auf Serverebene sind nicht betroffen.
 >
 >
 
-### <a name="automatic-migration-schedule"></a>Zeitplans für die automatische Migration
-Automatische Migrationen finden zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in der jeweiligen Region) und im Rahmen des folgenden Ausfallzeitplans statt.
+### <a name="automatic-migration-schedule"></a>Zeitplan für die automatische Migration
+Automatische Migrationen erfolgen zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in der jeweiligen Region) und im Rahmen des folgenden Ausfallzeitplans.
 
 | **Region** | **Geschätztes Startdatum** | **Geschätztes Enddatum** |
 |:--- |:--- |:--- |
@@ -78,57 +78,48 @@ Automatische Migrationen finden zwischen 18:00 Uhr und 06:00 Uhr (Ortszeit in de
 | USA (Mitte/Norden) |9. Januar 2017 |13. Januar 2017 |
 
 ## <a name="self-migration-to-premium-storage"></a>Selbst durchgeführte Migration zu Storage Premium
-Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein wird, können Sie die folgenden Schritte ausführen, um ein vorhandenes Data Warehouse von Storage Standard zu Storage Premium zu migrieren.  Falls Sie sich für die selbst durchgeführte Migration entscheiden, müssen Sie diesen Vorgang vor Beginn der automatischen Migration in dieser Region durchführen. So vermeiden Sie das Risiko, dass die automatische Migration einen Konflikt verursacht (siehe [Zeitplan für die automatische Migration][automatic migration schedule]).
+Wenn Sie steuern möchten, wann genau Ihr Data Warehouse nicht verfügbar sein soll, können Sie die folgenden Schritte ausführen, um ein vorhandenes Data Warehouse von Standardspeicher zu Storage Premium zu migrieren. Wenn Sie sich hierfür entscheiden, müssen Sie die selbst durchgeführte Migration vor Beginn der automatischen Migration in dieser Region abschließen. Dadurch wird sichergestellt, dass Sie alle Risiken aufgrund eines Konflikts mit der automatischen Migration vermeiden (siehe den [Zeitplan für die automatische Migration][automatic migration schedule]).
 
 ### <a name="self-migration-instructions"></a>Anleitung zur selbst durchgeführten Migration
-Wenn Sie Ihre Ausfallzeiten selbst steuern möchten, können Sie die Migration für das Data Warehouse per Sicherung und Wiederherstellung selbst durchführen.  Der Wiederherstellungsanteil der Migration dauert ca. eine Stunde pro TB an gespeicherten Daten pro Data Warehouse.  Führen Sie die [Schritte zum Umbenennen während der Migration][steps to rename during migration] aus, wenn Sie nach Abschluss der Migration den gleichen Namen beibehalten möchten.
+Verwenden Sie zum Migrieren Ihres Data Warehouse die Sicherung- und Wiederherstellungsfunktionen. Der Wiederherstellungsanteil der Migration dauert pro Data Warehouse pro TB gespeicherter Daten ca. eine Stunde. Führen Sie die [Schritte zum Umbenennen während der Migration][steps to rename during migration] aus, wenn Sie nach Abschluss der Migration den gleichen Namen beibehalten möchten.
 
-1. [Anhalten][Pause]: Halten Sie das Data Warehouse an, damit eine automatische Sicherung erstellt wird.
-2. [Wiederherstellung][Restore]: Führen Sie eine Wiederherstellung aus der letzten Momentaufnahme durch.
-3. Löschen Sie das vorhandene DW unter Storage Standard. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses berechnet.**
+1. [Halten][Pause] Sie Ihr Data Warehouse an. Daraufhin wird eine automatische Sicherung erstellt.
+2. Führen Sie eine [Wiederherstellung][Restore] der neuesten Momentaufnahme durch.
+3. Löschen Sie das vorhandene Data Warehouse in Standardspeicher. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses in Rechnung gestellt.**
 
 > [!NOTE]
-> Diese Einstellungen werden im Rahmen der Migration nicht übernommen:
+> Die folgenden Einstellungen werden im Rahmen der Migration nicht übernommen:
 >
 > * Die Überwachung auf Datenbankebene muss erneut aktiviert werden.
-> * Firewallregeln auf **Datenbankebene** müssen erneut hinzugefügt werden.  Firewallregeln auf **Serverebene** sind nicht betroffen.
+> * Firewallregeln auf Datenbankebene müssen erneut hinzugefügt werden. Firewallregeln auf Serverebene sind nicht betroffen.
 >
 >
 
-#### <a name="optional-steps-to-rename-during-migration"></a>Optional: Schritte zum Umbenennen während der Migration
-Zwei Datenbanken auf demselben logischen Server können nicht den gleichen Namen haben. SQL Data Warehouse unterstützt jetzt die Möglichkeit zum Umbenennen eines DW.
+#### <a name="rename-data-warehouse-during-migration-optional"></a>Umbenennen des Data Warehouse während der Migration (optional)
+Zwei Datenbanken auf demselben logischen Server können nicht den gleichen Namen haben. SQL Data Warehouse unterstützt jetzt die Möglichkeit zum Umbenennen eines Data Warehouse.
 
-Beispiel: Ihr vorhandenes Data Warehouse mit Storage Standard trägt derzeit den Namen „MyDW“.
+Beispiel: Ihr vorhandenes Data Warehouse mit Standardspeicher hat derzeit den Namen „MyDW“.
 
-1. Benennen Sie „MyDW“ um, indem Sie den ALTER DATABASE-Befehl nach einer Zeichenfolge ähnlich dieser ausführen: MyDW_BeforeMigration.  Dieser Befehl löscht alle vorhandenen Transaktionen und muss in der Masterdatenbank ausgeführt werden, um erfolgreich zu sein.
+1. Benennen Sie "MyDW" mithilfe des folgenden ALTER DATABASE-Befehls um. (In diesem Beispiel erfolgt eine Umbenennung in „MyDW_BeforeMigration“.) Dieser Befehl beendet alle vorhandenen Transaktionen und muss in der Masterdatenbank ausgeführt werden, um erfolgreich zu sein.
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. [Anhalten][Pause]: Halten Sie „MyDW_BeforeMigration“ an, damit eine automatische Sicherung erstellt wird.
-3. [Wiederherstellen][Restore]: Stellen Sie aus der jüngsten Momentaufnahme eine neue Datenbank mit dem vorherigen Namen wieder her (z.B. „MyDW“).
-4. Löschen Sie „MyDW_BeforeMigration“.  **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses berechnet.**
+2. [Halten][Pause] Sie „MyDW_BeforeMigration“ an. Daraufhin wird eine automatische Sicherung erstellt.
+3. Führen Sie mithilfe der neuesten Momentaufnahme eine [Wiederherstellung][Restore] durch, und erstellen Sie dabei eine neue Datenbank mit dem vorherigen Namen (z.B. „MyDW“).
+4. Löschen Sie „MyDW_BeforeMigration“. **Wenn Sie diesen Schritt nicht ausführen, werden Ihnen beide Data Warehouses in Rechnung gestellt.**
 
-> [!NOTE]
-> Diese Einstellungen werden im Rahmen der Migration nicht übernommen:
->
-> * Die Überwachung auf Datenbankebene muss erneut aktiviert werden.
-> * Firewallregeln auf **Datenbankebene** müssen erneut hinzugefügt werden.  Firewallregeln auf **Serverebene** sind nicht betroffen.
->
->
 
 ## <a name="next-steps"></a>Nächste Schritte
-Mit der Änderung zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobdateien in der zugrunde liegenden Architektur Ihrer Data Warehouse-Instanz erhöht.  Um die Leistungsvorteile dieser Änderung zu maximieren, empfehlen wir Ihnen, die gruppierten Columnstore-Indizes mit dem folgenden Skript neu zu erstellen.  Das Skript erzwingt, dass einige Ihrer Daten in den zusätzlichen Blobs gespeichert werden.  Wenn Sie keine Maßnahmen ergreifen, werden die Daten im Laufe der Zeit auf natürliche Weise verteilt, sobald Sie weitere Daten in die Data Warehouse-Tabellen laden.
+Mit dem Wechsel zu Storage Premium haben wir auch die Anzahl von Datenbank-Blobdateien in der zugrunde liegenden Architektur Ihrer Data Warehouse-Instanz erhöht. Um die Leistungsvorteile dieses Wechsels zu maximieren, erstellen Sie Ihre gruppierten Columnstore-Indizes mit dem folgenden Skript neu. Das Skript erzwingt, dass einige Ihrer Daten in den zusätzlichen Blobs gespeichert werden. Wenn Sie keine Maßnahmen ergreifen, werden die Daten im Laufe der Zeit auf natürliche Weise verteilt, sobald Sie weitere Daten in Ihre Tabellen laden.
 
 **Voraussetzungen:**
 
-1. Data Warehouse sollte mit 1.000 DWUs oder mehr ausgeführt werden (siehe [Skalieren von Computeleistung][scale compute power]).
-2. Benutzer, die das Skript ausführen, sollten über die [Rolle „mediumrc“][mediumrc role] oder höher verfügen.
-   1. Führen Sie Folgendes aus, um dieser Rolle einen Benutzer hinzuzufügen:
-      1. ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+- Das Data Warehouse sollte mit 1.000 Data Warehouse-Einheiten oder mehr ausgeführt werden (siehe [Skalieren von Computeleistung][scale compute power]).
+- Der Benutzer, der das Skript ausführt, muss die [Rolle „mediumrc“][mediumrc role] oder höher haben. Führen Sie Folgendes aus, um dieser Rolle einen Benutzer hinzuzufügen:     ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
 
 ````sql
 -------------------------------------------------------------------------------
--- Step 1: Create Table to control Index Rebuild
+-- Step 1: Create table to control index rebuild
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 create table sql_statements
@@ -146,7 +137,7 @@ where
 go
 
 --------------------------------------------------------------------------------
--- Step 2: Execute Index Rebuilds.  If script fails, the below can be rerun to restart where last left off
+-- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 
@@ -162,7 +153,7 @@ begin
 end;
 go
 -------------------------------------------------------------------------------
--- Step 3: Cleanup Table Created in Step 1
+-- Step 3: Clean up table created in Step 1
 --------------------------------------------------------------------------------
 drop table sql_statements;
 go
@@ -193,6 +184,6 @@ Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie [ein Supportticket
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

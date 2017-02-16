@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/31/2016
+ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 1b0a9c9532662cb96a90300453d946e4c1e6f866
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: cacb2ce368a09c71c6f02548c5a1836ad77f540a
 
 
 ---
-# <a name="how-to-use-azure-active-directory-and-resource-manager-to-manage-a-customers-resources"></a>Gewusst wie: Verwenden von Azure Active Directory und Resource Manager zum Verwalten der Ressourcen eines Kunden
+# <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
 Wenn Sie Softwareentwickler sind, der eine App erstellen möchten, die die Azure-Ressourcen eines Kunden verwaltet, finden Sie in diesem Thema Informationen zur Authentifizierung mit den Azure Resource Manager-APIs und zum Zugriff auf Ressourcen in anderen Abonnements. 
 
@@ -108,7 +108,7 @@ Geben Sie eine Open ID Connect/OAuth2.0-Autorisierungsanforderung an den Azure A
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Authorize
 
-Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Anfordern eines Autorisierungscodes](../active-directory/active-directory-protocols-oauth-code.md#request-an-authorization-code) beschrieben.
+Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Anfordern eines Autorisierungscodes](../active-directory/develop/active-directory-protocols-oauth-code.md#request-an-authorization-code) beschrieben.
 
 Das folgende Beispiel zeigt, wie Sie eine OAuth2.0-Autorisierung anfordern:
 
@@ -121,7 +121,7 @@ Azure AD authentifiziert den Benutzer und fordert ihn ggf. auf, der App eine Ber
 ### <a name="auth-request-open-id-connect"></a>Autorisierungsanforderung (Open ID Connect)
 Wenn Sie nicht nur für den Benutzer auf Azure Resource Manager zugreifen möchten, sondern es dem Benutzer auch ermöglichen möchten, sich bei Ihrer Anwendung mit einem Azure AD-Konto anzumelden, geben Sie eine Open ID Connect-Autorisierungsanforderung aus. Mit Open ID Connect empfängt die Anwendung auch ein „id_token“ von Azure AD, das Ihre App zum Anmelden des Benutzers verwenden kann.
 
-Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Senden der Anmeldeanforderung](../active-directory/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request) beschrieben.
+Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Senden der Anmeldeanforderung](../active-directory/develop/active-directory-protocols-openid-connect-code.md#send-the-sign-in-request) beschrieben.
 
 Beispiel für eine Open ID Connect-Anforderung:
 
@@ -138,7 +138,7 @@ Nachdem die Anwendung den Autorisierungscode von Azure AD erhalten hat, ist es a
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Verwenden des Autorisierungscodes](../active-directory/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) beschrieben.
+Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Verwenden des Autorisierungscodes](../active-directory/develop/active-directory-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token) beschrieben.
 
 Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit Kennwort:
 
@@ -149,7 +149,7 @@ Das folgende Beispiel zeigt eine Anforderung für ein Codeberechtigungstoken mit
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-Wenn Sie Zertifikatanmeldeinformationen verwenden, erstellen Sie ein JSON-Webtoken (JWT), und signieren Sie (RSA-SHA256) mit dem privaten Schlüssel der Zertifikatanmeldeinformationen Ihrer Anwendung. Die Anspruchstypen für das Token finden Sie unter [JWT-Tokenansprüche](../active-directory/active-directory-protocols-oauth-code.md#jwt-token-claims). Informationen zum Signieren von JWT-Token für die Clientassertion finden Sie im [Code der Active Directory Authentication Library (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) .
+Wenn Sie Zertifikatanmeldeinformationen verwenden, erstellen Sie ein JSON-Webtoken (JWT), und signieren Sie (RSA-SHA256) mit dem privaten Schlüssel der Zertifikatanmeldeinformationen Ihrer Anwendung. Die Anspruchstypen für das Token finden Sie unter [JWT-Tokenansprüche](../active-directory/develop/active-directory-protocols-oauth-code.md#jwt-token-claims). Informationen zum Signieren von JWT-Token für die Clientassertion finden Sie im [Code der Active Directory Authentication Library (.NET)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) .
 
 Informationen zur Clientauthentifizierung finden Sie in der [Open ID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) . 
 
@@ -173,7 +173,7 @@ Eine erfolgreiche Antwort enthält das Zugriffstoken (Benutzer und App) für Azu
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
-Die Parameter für die Aktualisierungsanforderung sind unter [Aktualisieren der Zugriffstoken](../active-directory/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens) beschrieben.
+Die Parameter für die Aktualisierungsanforderung sind unter [Aktualisieren der Zugriffstoken](../active-directory/develop/active-directory-protocols-oauth-code.md#refreshing-the-access-tokens) beschrieben.
 
 Das folgende Beispiel zeigt die Verwendung des Aktualisierungstokens:
 
@@ -223,14 +223,14 @@ Wenn Ihre Anwendung einen Benutzer aus Azure AD authentifiziert, wird ein Dienst
 
 Sie haben nur ein Zugriffstoken für Azure Resource Manager. Sie benötigen ein neues Zugriffstoken zum Aufrufen der Azure AD Graph-API. Jede Anwendung in Azure AD verfügt über Berechtigungen, um das eigene Dienstprinzipalobjekt abzufragen. Ein nur für die App geltendes Zugriffstoken ist daher ausreichend.
 
-<a id="app-azure-ad-graph">
+<a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API
 Geben Sie zum Authentifizieren Ihrer App und zum Abrufen eines Tokens für die Azure AD Graph-API eine Tokenanforderung zur Gewährung von Clientanmeldeinformationen im OAuth2.0-Datenfluss an den Azure AD-Tokenendpunkt aus (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
 Die Methode [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) der ASP.NET MVC-Beispielanwendung ruft unter Verwendung der Active Directory Authentication Library für .NET ein nur für die App geltendes Zugriffstoken für die Graph-API ab.
 
-Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Anfordern eines Zugriffstokens](../active-directory/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) beschrieben.
+Die Abfragezeichenfolgenparameter, die für diese Anforderung verfügbar sind, werden im Thema [Anfordern eines Zugriffstokens](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#request-an-access-token) beschrieben.
 
 Beispielanforderung für ein Token zur Gewährung von Clientanmeldeinformationen: 
 
@@ -366,6 +366,6 @@ Jetzt können Benutzer Ihre Anwendung verwenden, um problemlos eine Verbindung m
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

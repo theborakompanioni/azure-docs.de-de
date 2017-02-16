@@ -13,11 +13,11 @@ ms.workload: web
 ms.tgt_pltfrm: vm-linux
 ms.devlang: ruby
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b8ab951046e031e5b1f8ae428ba7dc6ea936066e
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 7b3c6da0e158c2824a5feb084a13eafe265762ce
 
 
 ---
@@ -27,7 +27,7 @@ In diesem Lernprogramm wird gezeigt, wie Sie eine Ruby on Rails-Website auf Azur
 Dieses Lernprogramm wurde mit Ubuntu Server 14.04 LTS getestet. Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte zur Rails-Installation möglicherweise anpassen.
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../../../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../../../azure-resource-manager/resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 > 
 > 
 
@@ -44,7 +44,7 @@ Zur Erstellung des virtuellen Computers können Sie das klassische Azure-Portal 
 Nachdem der virtuelle Computer bereitgestellt wurde, klicken Sie auf den Namen des virtuellen Computers und dann auf **Dashboard**. Suchen Sie den SSH-Endpunkt, der unter **SSH-Details**aufgeführt ist.
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Folgen Sie den Schritten unter [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][vm-instructions].
+Befolgen Sie die Schritte unter [Erstellen eines virtuellen Linux-Computers][vm-instructions].
 
 Nachdem der virtuelle Computer bereitgestellt wurde, können Sie den SSH-Endpunkt mit dem folgenden Befehl abrufen:
 
@@ -117,13 +117,13 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden.
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Lernprogramm haben Sie die meisten Schritte manuell ausgeführt. In einer Produktionsumgebung würden Sie die App auf einem Entwicklungscomputer schreiben und in der Azure-VM bereitstellen. Außerdem wird in den meisten Produktionsumgebungen die Rails-Anwendung zusammen mit einem anderen Serverprozess wie Apache oder NginX gehostet, der die Weiterleitung von Anfragen an mehrere Instanzen der Rails-Anwendung und statische Ressourcen bearbeitet. Weitere Informationen finden Sie unter „http://rubyonrails.org/deploy/“.
 
-Weitere Informationen zu Ruby on Rails finden Sie in den Handbüchern zu Ruby on Rails[][rails-guides].
+Weitere Informationen über Ruby on Rails finden Sie in den [Ruby on Rails-Handbüchern][rails-guides].
 
 Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie unter:
 
-* [Speichern von unstrukturierten Daten mithilfe von Blobs][blobs]
-* [Speichern von Schlüssel/Wert-Paaren mithilfe von Tabellen][tables]
-* [Übermitteln von Inhalten mit hoher Bandbreite mit CDN][cdn-howto]
+* [Speichern von unstrukturierten Daten mit Blobs][blobs]
+* [Speichern von Schlüssel/Wert-Paaren mit Tabellen][tables]
+* [Bereitstellen von Inhalten mit hoher Bandbreite über das Content Delivery Network][cdn-howto]
 
 <!-- WA.com links -->
 [blobs]: ../../../storage/storage-ruby-how-to-use-blob-storage.md
@@ -146,6 +146,6 @@ Informationen zum Verwenden von Azure-Diensten in der Ruby-Anwendung finden Sie 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

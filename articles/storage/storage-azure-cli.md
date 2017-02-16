@@ -1,244 +1,375 @@
 ---
-title: Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher | Microsoft Docs
-description: "Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure-Befehlszeilenschnittstelle ist ein plattformübergreifendes Tool. "
+title: Verwenden von Azure CLI 2.0 (Vorschau) mit Azure Storage | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Azure CLI 2.0 (Vorschau) (Azure-Befehlszeilenschnittstelle) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten. Die Azure CLI 2.0 ist ein plattformübergreifendes Tool."
 services: storage
 documentationcenter: na
-author: micurd
-manager: jahogg
+author: mmacy
+manager: timlt
 editor: tysonn
-ms.assetid: b502232a-e8f6-4d6c-befd-3476592e0e35
+ms.assetid: 
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: micurd
+ms.date: 01/04/2017
+ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dee3d7733631ed2b63e5b02c50deeac60deb1b42
+ms.sourcegitcommit: 1e2569a6db330c908fe4087c1bc5a475d3e8a575
+ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
 
 
 ---
-# <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
+# <a name="using-the-azure-cli-20-preview-with-azure-storage"></a>Verwenden der Azure CLI 2.0 (Vorschau) mit Azure Storage
+
 ## <a name="overview"></a>Übersicht
-Die Azure-Befehlszeilenschnittstelle stellt eine Reihe von plattformübergreifenden Open Source-Befehlen für die Arbeit mit der Azure-Plattform bereit. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com) sowie umfangreiche Datenzugriffsfunktionen.
 
-Diese Anleitung enthält Informationen zur Verwendung der [Azure-Befehlszeilenschnittstelle (Azure-CLI)](../xplat-cli-install.md) zum Ausführen einer Vielzahl von Entwicklungs- und Verwaltungsaufgaben mit Azure Storage. Sie sollten die neueste Azure-Befehlszeilenschnittstelle herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie diese Anleitung verwenden.
+Die plattformübergreifende Azure CLI 2.0 (Vorschau) auf Open-Source-Basis bietet eine Reihe von Befehlen zum Arbeiten mit der Azure-Plattform. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com), so z.B. umfangreiche Datenzugriffsfunktionen.
 
-Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure-Speicher verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der Azure-Befehlszeilenschnittstelle mit Azure-Speicher zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
+In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI 2.0 (Vorschau)](/cli/azure/get-started-with-az-cli2) nutzen, um für Ressourcen in Ihrem Azure Storage-Konto verschiedene Aufgaben auszuführen. Sie sollten die neueste Version der CLI 2.0 herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieser Anleitung folgen.
 
-> [!NOTE]
-> Die Anleitung enthält die Befehle der Azure-Befehlszeilenschnittstelle und Skriptbeispiele für klassische Speicherkonten. Befehle der Azure-Befehlszeilenschnittstelle für Resource Manager-Speicherkonten finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) .
-> 
-> 
+In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein. 
 
-## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Erste Schritte mit Azure-Speicher und der Azure-Befehlszeilenschnittstelle in 5 Minuten
-Diese Anleitung verwendet für Beispiele Ubuntu, andere Betriebssystemplattformen funktionieren jedoch auf ähnliche Weise.
+[!INCLUDE [storage-cli-versions](../../includes/storage-cli-versions.md)]
 
-**Neu in Azure:** Holen Sie Sich ein Microsoft Azure-Abonnement und ein Microsoft-Konto für dieses Abonnement. Informationen zu Azure-Kaufoptionen finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/), [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) und [Angebote für Mitglieder](https://azure.microsoft.com/pricing/member-offers/) (für Mitglieder von MSDN, Microsoft Partner Network, BizSpark und anderen Microsoft-Programmen).
+## <a name="prerequisites"></a>Voraussetzungen
+Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Außerdem wird vorausgesetzt, dass Sie die Anforderungen an die Kontoerstellung erfüllen können, die unten für Azure und den Storage-Dienst angegeben sind.
 
-Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/hh531793.aspx) finden Sie weitere Informationen zu Azure-Abonnements.
+### <a name="accounts"></a>Konten
+* **Azure-Konto**: Falls Sie noch kein Azure-Abonnement ´haben, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/).
+* **Storage-Konto**: Weitere Informationen finden Sie unter Informationen zu [Azure Storage-Konten](../storage/storage-create-storage-account.md) im Abschnitt [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account).
 
-**Nach der Erstellung eines Microsoft Azure-Abonnements und eines Kontos:**
+### <a name="install-the-azure-cli-20-preview"></a>Installieren der Azure CLI 2.0 (Vorschau)
 
-1. Laden Sie die Azure-Befehlszeilenschnittstelle herunterladen und installieren Sie sie gemäß den Anweisungen unter [Installieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md).
-2. Sobald die Befehlszeilenschnittstelle installiert ist, können Sie den Befehl "azure" in Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) verwenden, um auf die Befehle der Azure-Befehlszeilenschnittstelle zuzugreifen. Wenn Sie den Befehl _azure_ eingeben, sollte die folgende Ausgabe angezeigt werden.
-   
-    ![Azure-Befehlsausgabe:][Image1]
-3. Geben Sie in der Befehlszeilenschnittstelle `azure storage` ein, um alle Azure-Speicher-Befehle aufzulisten und einen ersten Eindruck vom Funktionsumfang der Azure-Befehlszeilenschnittstelle zu erhalten. Sie können Befehlsnamen mit einem **-h**-Parameter (z. B. `azure storage share create -h`) eingeben , um Details der Befehlssyntax anzuzeigen.
-4. In einem einfachen Skript werden nun grundlegende Befehle der Azure-Befehlszeilenschnittstele für den Zugriff auf Azure-Speicher dargestellt. In dem Skript werden Sie als erstes dazu aufgefordert, zwei Variablen für Ihr Speicherkonto und Ihren Speicherschlüssel festzulegen. Als Nächstes erstellt das Skript in dem neuen Speicherkonto einen neuen Container und lädt eine vorhandene Image-Datei (Blob) in diesen Container. Nachdem das Skript alle Blobs in diesem Container aufgelistet hat, lädt es die Image-Datei in ein Zielverzeichnis auf dem lokalen Computer herunter.
-   
-    ```azurecli
-    #!/bin/bash
-    # A simple Azure storage example
+Laden Sie die Azure CLI 2.0 (Vorschau) herunter, und installieren Sie sie gemäß den Anweisungen unter [Installieren der Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2).
 
-    export AZURE_STORAGE_ACCOUNT=<storage_account_name>
-    export AZURE_STORAGE_ACCESS_KEY=<storage_account_key>
+> [!TIP]
+> Wenn Sie Probleme mit der Installation haben, lesen Sie den Abschnitt zur [Behandlung von Installationsproblemen](/cli/azure/install-az-cli2#installation-troubleshooting) des Artikels und die Anleitung zur [Behandlung von Installationsproblemen](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) auf GitHub.
+>
 
-    export container_name=<container_name>
-    export blob_name=<blob_name>
-    export image_to_upload=<image_to_upload>
-    export destination_folder=<destination_folder>
+## <a name="working-with-the-cli"></a>Arbeiten mit der CLI
 
-    echo "Creating the container..."
-    azure storage container create $container_name
+Sobald die CLI installiert ist, können Sie den Befehl `az` an Ihrer Befehlszeilenschnittstelle (Bash, Terminal, Eingabeaufforderung) aufrufen, um auf die Azure CLI-Befehle zuzugreifen. Geben Sie den Befehl `az` ein, woraufhin Sie eine Ausgabe wie die folgende erhalten sollten:
 
-    echo "Uploading the image..."
-    azure storage blob upload $image_to_upload $container_name $blob_name
+```
+     /\
+    /  \    _____   _ _ __ ___
+   / /\ \  |_  / | | | \'__/ _ \
+  / ____ \  / /| |_| | | |  __/
+ /_/    \_\/___|\__,_|_|  \___|
 
-    echo "Listing the blobs..."
-    azure storage blob list $container_name
 
-    echo "Downloading the image..."
-    azure storage blob download $container_name $blob_name $destination_folder
+Welcome to the cool new Azure CLI!
 
-    echo "Done"
-    ```
+Here are the base commands:
 
-5. Öffnen Sie auf Ihrem lokalen Computer Ihren bevorzugten Texteditor (z. B. Vim). Geben Sie das obige Skript in den Texteditor ein.
-6. Nun müssen Sie die Skriptvariablen auf Basis der Konfigurationseinstellungen aktualisieren.
-   
-   * **<storage_account_name>**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihr Speicherkonto ein. **Wichtig:** Der Name des Speicherkontos muss in Azure eindeutig sein. Er darf außerdem nur aus Kleinbuchstaben bestehen!
-   * **<storage_account_key>**: Der Zugriffsschlüssel für Ihr Speicherkonto.
-   * **<container_name>**: Verwenden Sie den im Skript angegebenen Namen, oder geben Sie einen neuen Namen für Ihren Container ein.
-   * **<image_to_upload>**: Geben Sie einen Pfad zu einem Bild auf dem lokalen Computer ein. Beispiel: „~/images/HelloWorld.png“.
-   * **<destination_folder>**: Geben Sie den Pfad zu einem lokalen Verzeichnis zum Speichern von Dateien ein, die aus Azure Storage heruntergeladen werden. Beispiel: „~/downloadImages“.
-7. Nachdem Sie die erforderlichen Variablen in Vim aktualisiert haben, drücken Sie die Tastenkombinationen „Esc, : , wq!“, um das Skript zu speichern.
-8. Zum Ausführen des Skripts geben Sie einfach den Namen der Skripdatei in der Bash-Konsole ein. Nachdem das Skript ausgeführt wird, sollten Sie über einen lokalen Zielordner verfügen, der die heruntergeladene Image-Datei enthält. Der folgende Screenshot zeigt eine Beispielausgabe:
-
-Nachdem das Skript ausgeführt wird, sollten Sie über einen lokalen Ordner verfügen, der die heruntergeladene Datei enthält.
-
-## <a name="manage-storage-accounts-with-the-azure-cli"></a>Verwalten von Speicherkonten mit der Azure-Befehlszeilenschnittstelle
-### <a name="connect-to-your-azure-subscription"></a>Verbinden mit Ihrem Azure-Abonnement
-Obwohl die meisten Speicherbefehle ohne Azure-Abonnement funktionieren, empfehlen wir Ihnen, eine Verbindung zu Ihrem Abonnement über die Azure-Befehlszeilenschnittstelle herzustellen. Zum Konfigurieren der Azure-Befehlszeilenschnittstelle für die Verwendung mit Ihrem Abonnement führen Sie die Schritte unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md)aus.
-
-### <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
-Für die Verwendung von Azure-Speicher benötigen Sie ein Speicherkonto. Nachdem Sie Ihren Computer für die Verbindung mit Ihrem Abonnement konfiguriert haben, können Sie ein neues Azure-Speicherkonto erstellen.
-
-```azurecli
-azure storage account create <account_name>
+    account   : Commands to manage subscriptions.
+    acr       : Commands to manage Azure container registries.
+    acs       : Commands to manage Azure container services.
+    ad        : Synchronize on-premises directories and manage Azure Active Directory (AAD)
+                resources.
+    appservice: Commands to manage your Azure web apps and App Service plans.
+    cloud     : Manage the Azure clouds registered.
+    component : Commands to manage and update Azure CLI 2.0 (Preview) components.
+    configure : Configure Azure CLI 2.0 Preview or view your configuration. The command is
+                interactive, so just type `az configure` and respond to the prompts.
+    container : Set up automated builds and deployments for multi-container Docker applications.
+    context   : Manage contexts.
+    feature   : Commands to manage resource provider features, such as previews.
+    feedback  : Loving or hating the CLI?  Let us know!
+    group     : Commands to manage resource groups.
+    login     : Log in to access Azure subscriptions.
+    logout    : Log out to remove accesses to Azure subscriptions.
+    network   : Manages Network resources.
+    policy    : Commands to manage resource policies.
+    provider  : Manage resource providers.
+    resource  : Generic commands to manage Azure resources.
+    role      : Use role assignments to manage access to your Azure resources.
+    storage   : Durable, highly available, and massively scalable cloud storage.
+    tag       : Manage resource tags.
+    vm        : Provision Linux and Windows virtual machines in minutes.
+    vmss      : Create highly available, auto-scalable Linux or Windows virtual machines.
 ```
 
-Der Name Ihres Speicherkontos muss zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+Führen Sie an der Befehlszeilenschnittstelle den Befehl `az storage -h` aus, um die `storage`-Gruppe von Befehlen und deren Untergruppen aufzulisten. Die Beschreibungen der Untergruppen bieten einen Überblick über die Funktionalität, die die Azure-CLI für die Arbeit mit Ihren Speicherressourcen bietet.
 
-### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Festlegen eines Azure-Standardspeicherkontos in Umgebungsvariablen
-Sie können mehrere Speicherkonten in Ihrem Abonnement verwenden. Sie können ein Speicherkonto auswählen und es in den Umgebungsvariablen als Standardspeicherkonto für alle Speicherbefehle in einer Sitzung festlegen. Dadurch können Sie die Speicherbefehle der Azure-Befehlszeilenschnittstelle ohne explizite Angabe des Speicherkontos und des Speicherschlüssels ausführen.
+```
+Group
+    az storage: Durable, highly available, and massively scalable cloud storage.
+
+Subgroups:
+    account  : Manage storage accounts.
+    blob     : Object storage for unstructured data.
+    container: Manage blob storage containers.
+    cors     : Manage Storage service Cross-Orgin Resource Sharing (CORS).
+    directory: Manage file storage directories.
+    entity   : Manage table storage entities.
+    file     : File shares that use the standard SMB 3.0 protocol.
+    logging  : Manage Storage service logging information.
+    message  : Manage queue storage messages.
+    metrics  : Manage Storage service metrics.
+    queue    : Effectively scale apps according to traffic using queues.
+    share    : Manage file shares.
+    table    : NoSQL key-value storage using semi-structured datasets.
+```
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>Herstellen einer Verbindung zwischen der CLI und Ihrem Azure-Abonnement
+
+Um mit den Ressourcen in Ihrem Azure-Abonnement zu arbeiten, müssen Sie sich zunächst mit `az login` bei Ihrem Azure-Konto anmelden. Dazu gibt es verschiedene Möglichkeiten:
+
+* **Interaktive Anmeldung**: `az login`
+* **Anmeldung mit Benutzername und Kennwort**: `az login -u johndoe@contoso.com -p VerySecret`
+  * Dies funktioniert nicht mit Microsoft-Konten oder Konten, die die mehrstufige Authentifizierung verwenden.
+* **Anmeldung mit einem Dienstprinzipal**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
+
+## <a name="azure-cli-20-sample-script"></a>Azure CLI-2.0-Beispielskript
+
+Als Nächstes arbeiten wir mit einem kleinen Shellskript, das einige grundlegenden Azure CLI 2.0-Befehle für die Interaktion mit Azure Storage-Ressourcen aufruft. Das Skript erstellt zuerst einen neuen Container in Ihrem Speicherkonto und lädt dann eine vorhandene Datei (als Blob) in diesen Container hoch. Anschließend werden alle Blobs im Container aufgelistet. Zum Abschluss wird die Datei in ein von Ihnen angegebenes Zielverzeichnis auf dem lokalen Computer heruntergeladen.
+
+```bash
+#!/bin/bash
+# A simple Azure Storage example script
+
+export AZURE_STORAGE_ACCOUNT=<storage_account_name>
+export AZURE_STORAGE_ACCESS_KEY=<storage_account_key>
+
+export container_name=<container_name>
+export blob_name=<blob_name>
+export file_to_upload=<file_to_upload>
+export destination_file=<destination_file>
+
+echo "Creating the container..."
+az storage container create -n $container_name
+
+echo "Uploading the file..."
+az storage blob upload -f $file_to_upload -c $container_name -n $blob_name
+
+echo "Listing the blobs..."
+az storage blob list -c $container_name
+
+echo "Downloading the file..."
+az storage blob download -c $container_name -n $blob_name -f $destination_file
+
+echo "Done"
+```
+
+**Konfigurieren und Ausführen des Skripts**
+
+1. Öffnen Sie Ihren bevorzugten Texteditor, in den Sie das kopierte vorhergehende Skript einfügen.
+
+2. Aktualisieren Sie als Nächstes die Skriptvariablen entsprechend Ihren Konfigurationseinstellungen. Ersetzen Sie die folgenden Werte wie angegeben:
+
+   * **\<storage_account_name\>**: Der Name Ihres Speicherkontos.
+   * **\<storage_account_key\>** Der primäre oder sekundäre Zugriffsschlüssel für Ihr Speicherkonto.
+   * **\<container_name\> ** Ein Name für den zu erstellenden Container wie z.B. „azure-cli-beispielcontainer“.
+   * **\<blob_name\> ** Ein Name für das Zielblob im Container.
+   * **\<file_to_upload\>** Der Pfad zu der kleinen Datei auf Ihrem lokalen Computer, wie z.B. „~/images/HelloWorld.png“.
+   * **\<destination_file\> ** Der Zieldateipfad, z.B. „~/downloadedImage.png“.
+
+3. Nachdem Sie die erforderlichen Variablen aktualisiert haben, speichern Sie das Skript, und beenden Sie den Editor. In den nächsten Schritten wird vorausgesetzt, dass Sie Ihr **my_storage_sample.sh** genannt haben.
+
+4. Markieren Sie das Skript bei Bedarf als ausführbar:`chmod +x my_storage_sample.sh`
+
+5. Führen Sie das Skript aus. Beispielsweise in Bash:`./my_storage_sample.sh`
+
+Eine Ausgabe wie die folgende sollte angezeigt werden. Die **\<destination_file\>**, die Sie im Skript angegeben haben, sollte auf Ihrem lokalen Computer angezeigt werden.
+
+```
+Creating the container...
+Success
+---------
+True
+Uploading the file...                                           Percent complete: %100.0
+Listing the blobs...
+Name           Blob Type      Length  Content Type              Last Modified
+-------------  -----------  --------  ------------------------  -------------------------
+test_blob.txt  BlockBlob         771  application/octet-stream  2016-12-21T15:35:30+00:00
+Downloading the file...
+Name
+-------------
+test_blob.txt
+Done
+```
+
+> [!NOTE]
+> Die vorangehende Ausgabe erfolgt im Format **Tabelle**. Sie können das zu verwendende Ausgabeformat angeben, indem Sie das Argument `--output` in Ihren CLI-Befehlen angeben oder es mithilfe von `az configure` global festlegen.
+>
+
+## <a name="manage-storage-accounts"></a>Verwalten von Speicherkonten
+
+### <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
+Zum Verwenden von Azure Storage benötigen Sie ein Speicherkonto. Nachdem Sie Ihren Computer für die [Verbindung mit Ihrem Abonnement](#connect-to-your-azure-subscription) konfiguriert haben, können Sie ein neues Azure-Speicherkonto erstellen.
+
+```azurecli
+az storage account create -l <location> -n <account_name> -g <resource_group> --sku <account_sku>
+```
+
+* `-l` [Erforderlich]: Standort. Beispiel: USA, Westen
+* `-n` [Erforderlich]: Der Name des Speicherkontos. Der Name muss 3 bis 24 Zeichen lang sein und darf nur aus Kleinbuchstaben und Ziffern bestehen.
+* `-g` [Erforderlich]: Name der Ressourcengruppe.
+* `--sku` [Erforderlich]: Der Name der SKU des Speicherkontos. Zulässige Werte:
+  * `Premium_LRS`
+  * `Standard_GRS`
+  * `Standard_LRS`
+  * `Standard_RAGRS`
+  * `Standard_ZRS`
+
+### <a name="set-default-azure-storage-account-environment-variables"></a>Festlegen eines Azure-Standardspeicherkontos in Umgebungsvariablen
+Sie können mehrere Speicherkonten in Ihrem Azure-Abonnement verwenden. Um eines für alle nachfolgenden Speicherbefehle auszuwählen, können Sie diese Umgebungsvariablen festlegen:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_ACCESS_KEY=<key>
 ```
-    
-Eine weitere Möglichkeit zum Festlegen eines Standardspeicherkontos ist die Verwendung einer Verbindungszeichenfolge. Rufen Sie zuerst die Verbindungszeichenfolge per Befehl ab:
+
+Eine weitere Möglichkeit zum Festlegen eines Standardspeicherkontos ist die Verwendung einer Verbindungszeichenfolge. Rufen Sie zuerst die Verbindungszeichenfolge mit dem Befehl `show-connection-string` ab:
 
 ```azurecli
-azure storage account connectionstring show <account_name>
+az storage account show-connection-string -n <account_name> -g <resource_group>
 ```
 
-Kopieren Sie dann die Ausgabeverbindungszeichenfolge und legen Sie sie auf die Umgebungsvariable fest:
+Kopieren Sie die ausgegebene Verbindungszeichenfolge, und legen Sie die Umgebungsvariable `AZURE_STORAGE_CONNECTION_STRING` fest (möglicherweise müssen Sie die Verbindungszeichenfolge in Anführungszeichen setzen):
 
 ```azurecli
 export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
-    
+
+> [!NOTE]
+> In allen Beispiele in den folgenden Abschnitten dieses Artikels wird davon ausgegangen, dass Sie die Umgebungsvariablen `AZURE_STORAGE_ACCOUNT` und `AZURE_STORAGE_ACCESS_KEY` festgelegt haben.
+>
+
 ## <a name="create-and-manage-blobs"></a>Erstellen und Verwalten von Blobs
-Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Konzepten des Azure-Blob-Speichers bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Der Azure-Blob-Speicher ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Dieser Abschnitt setzt voraus, dass Sie mit den Azure Blob Storage-Konzepten bereits vertraut sind. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md) und [Konzepte des Blob-Diensts](/rest/api/storageservices/fileservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
-Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befehl `azure storage container create` können Sie einen privaten Container erstellen:
+Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Mit dem Befehl `az storage container create` können Sie einen Container erstellen:
 
 ```azurecli
-azure storage container create mycontainer
+az storage container create -n <container_name>
 ```
-    
-> [!NOTE]
-> Es gibt drei Stufen des anonymen Lesezugriffs: **Off**, **Blob** und **Container**. Legen Sie für den Parameter "Permission" den Wert **Off**fest, um den anonymen Zugriff auf Blobs zu verhindern. Der neue Container ist standardmäßig privat, und der Zugriff ist ausschließlich dem Kontobesitzer gestattet. Um den anonymen öffentlichen Lesezugriff auf Blob-Ressourcen, jedoch nicht auf Containermetadaten oder die Liste der im Container enthaltenen Blobs zuzulassen, legen Sie für den Parameter "Permission" den Wert **Blob**fest. Um den vollständigen öffentlichen Lesezugriff auf Blob-Ressourcen, Containermetadaten und die Liste der im Container enthaltenen Blobs zuzulassen, legen Sie für den Parameter "Permission" den Wert **Container**fest. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
-> 
-> 
 
-### <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
-Azure Blob-Speicher unterstützt Blockblobs und Seitenblobs. Weitere Informationen finden Sie unter [Grundlagen zu Blockblobs, Anfügeblobs und Seitenblobs](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Sie können eine der drei Ebenen von Lesezugriff für einen neuen Container festlegen, indem Sie das optionale Argument `--public-access` angeben:
 
-Um Blobs in einen Container hochzuladen, können Sie den Befehl `azure storage blob upload`verwenden. Dieser Befehl lädt standardmäßig die lokalen Dateien in einen Blockblob hoch. Um den Blob-Typ anzugeben, können Sie den Parameter `--blobtype` verwenden.
+* `off` (Standard): Containerdaten sind für den Kontobesitzer privat.
+* `blob`: Öffentlicher Lesezugriff für Blobs.
+* `container`: Öffentlicher Lese- und Auflistungszugriff auf den gesamten Container.
+
+Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
+
+### <a name="upload-a-blob-to-a-container"></a>Hochladen eines Blobs in einen Container
+Azure-Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Laden Sie Blobs mithilfe des Befehls `blob upload` in einen Container hoch:
 
 ```azurecli
-azure storage blob upload '~/images/HelloWorld.png' mycontainer myBlockBlob
+az storage blob upload -f <local_file_path> -c <container_name> -n <blob_name>
 ```
+
+ Standardmäßig lädt der Befehl `blob upload` VHD-Dateien in Seitenblobs oder andernfalls Blockblobs hoch. Um einen anderen Typ anzugeben, wenn Sie ein Blob hochladen, können Sie das Argument `--type` angeben. Uulässige Werte sind `append`, `block` und `page`.
+
+ Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 
 ### <a name="download-blobs-from-a-container"></a>Herunterladen von Blobs aus einem Container
-Im folgenden Beispiel wird veranschaulicht, wie Blobs aus einem Container heruntergeladen werden.
+In diesem Beispiel wird veranschaulicht, wie Blobs aus einem Container heruntergeladen werden:
 
 ```azurecli
-azure storage blob download mycontainer myBlockBlob '~/downloadImages/downloaded.png'
+az storage blob download -c mycontainer -n myblob.png -f ~/mydownloadedblob.png
 ```
 
 ### <a name="copy-blobs"></a>Kopieren von Blobs
 Sie können Blobs innerhalb oder zwischen Speicherkonten und Regionen asynchron kopieren.
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie Blobs von einem Speicherkonto in ein anderes kopieren. In diesem Beispiel erstellen wir einen Container, in dem Blobs öffentlich sind und anonym darauf zugegriffen werden kann.
+Im folgenden Beispiel wird veranschaulicht, wie Sie Blobs von einem Speicherkonto in ein anderes kopieren. Wir erstellen zunächst einen Container in einem anderen Konto und geben an, dass auf seine Blobs öffentlich sind anonym zugegriffen werden kann. Als Nächstes laden wir eine Datei in den Container hoch. Schließlich kopieren wird das Blob aus dem Container in den Container **mycontainer** im aktuellen Konto.
 
 ```azurecli
-azure storage container create mycontainer2 -a <accountName2> -k <accountKey2> -p Blob
+az storage container create -n mycontainer2 --account-name <accountName2> --account-key <accountKey2> --public-access blob
 
-azure storage blob upload '~/Images/HelloWorld.png' mycontainer2 myBlockBlob2 -a <accountName2> -k <accountKey2>
+az storage blob upload -f ~/Images/HelloWorld.png -c mycontainer2 -n myBlockBlob2 --account-name <accountName2> --account-key <accountKey2>
 
-azure storage blob copy start 'https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2' mycontainer
+az storage blob copy start -u https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2 -b myBlobBlob -c mycontainer
 ```
 
-In diesem Beispiel wird ein asynchroner Kopiervorgang ausgeführt. Sie können den Status jedes Kopiervorgangs überwachen, indem Sie den Vorgang `azure storage blob copy show` ausführen.
+Auf (von `-u` angegebene) Quellblob-URL muss entweder öffentlich zugegriffen werden können, oder sie muss ein SAS-Token (Shared Access Signature) enthalten.
 
-Beachten Sie, dass die für den Kopiervorgang bereitgestellte Quell-URL entweder öffentlich zugänglich sein muss oder ein SAS-Token (Token für die freigegebene Zugriffssignatur) enthalten muss.
-
-### <a name="delete-a-blob"></a>Löschen eines BLOBs
-Verwenden Sie den nachfolgenden Befehl, um ein Blob zu löschen.
+### <a name="delete-a-blob"></a>Löschen eines Blobs
+Verwenden Sie zum Löschen eines Blobs den Befehl `blob delete`:
 
 ```azurecli
-azure storage blob delete mycontainer myBlockBlob2
+az storage blob delete -c <container_name> -n <blob_name>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Erstellen und Verwalten von Dateifreigaben
-Der Azure-Dateispeicher bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet dabei das SMB-Protokoll. Microsoft Azure Virtual Machines und Clouddienste können wie lokale Anwendungen Dateidaten mithilfe bereitgestellter Freigaben teilen. Dateifreigaben und Dateidaten können über die Azure-Befehlszeilenschnittstelle verwaltet werden. Weitere Informationen zum Azure-Dateispeicher finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md) und [Verwenden des Azure-Dateispeichers unter Linux](storage-how-to-use-files-linux.md).
+Azure File Storage bietet einen gemeinsam genutzten Speicher für Anwendungen und verwendet dabei das SMB-Protokoll (Server Message Block). Microsoft Azure Virtual Machines und Clouddienste können wie lokale Anwendungen Dateidaten mithilfe bereitgestellter Freigaben teilen. Dateifreigaben und Dateidaten können über die Azure-Befehlszeilenschnittstelle verwaltet werden. Weitere Informationen zum Azure-Dateispeicher finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md) und [Verwenden des Azure-Dateispeichers unter Linux](storage-how-to-use-files-linux.md).
 
 ### <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 Eine Azure-Dateifreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in einer Dateifreigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze des Speicherkontos erreicht ist. Im folgenden Beispiel wird eine Dateifreigabe namens **myshare**erstellt.
 
 ```azurecli
-azure storage share create myshare
+az storage share create -n myshare
 ```
 
 ### <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 Ein Verzeichnis enthält eine optionale hierarchische Struktur für eine Azure-Dateifreigabe. Im folgenden Beispiel wird ein Verzeichnis namens **myDir** in der Dateifreigabe erstellt.
 
 ```azurecli
-azure storage directory create myshare myDir
+az storage directory create -n myDir -s myshare
 ```
 
-Beachten Sie, dass dieser Verzeichnispfad mehrere Ebenen enthalten kann, *z.B.*, **a/b**. Allerdings müssen Sie sicherstellen, dass alle übergeordneten Verzeichnisse vorhanden ist. Zum Beispiel müssen Sie für Pfad **a/b**, zuerst Verzeichnis **a** und anschließend Verzeichnis **b** erstellen.
+Beachten Sie, dass dieser Verzeichnispfad mehrere Ebenen enthalten kann, *z.B.*, **a/b**. Sie müssen allerdings sicherstellen, dass alle übergeordneten Verzeichnisse vorhanden sind. Zum Beispiel müssen Sie für Pfad **a/b**, zuerst Verzeichnis **a** und anschließend Verzeichnis **b** erstellen.
 
-### <a name="upload-a-local-file-to-directory"></a>Hochladen einer lokalen Datei in das Verzeichnis
-Im folgenden Beispiel wird eine Datei aus **~/temp/samplefile.txt** in das Verzeichnis **myDir** hochgeladen. Bearbeiten Sie den Dateipfad so, dass er auf eine gültige Datei auf Ihrem lokalen Computer verweist:
+### <a name="upload-a-local-file-to-a-share"></a>Hochladen einer lokalen Datei in eine Freigabe
+Im folgenden Beispiel wird eine Datei aus **~/temp/samplefile.txt** in die Dateifreigabe **myshare** hochgeladen. Das Argument `--source` gibt die vorhandene hochzuladende lokale Datei an.
 
 ```azurecli
-azure storage file upload '~/temp/samplefile.txt' myshare myDir
+az storage file upload --share-name myshare --source ~/temp/samplefile.txt
 ```
 
-Beachten Sie, dass eine Datei in der Freigabe bis zu 1 TB groß sein kann.
-
-### <a name="list-the-files-in-the-share-root-or-directory"></a>Auflisten der Dateien im Freigabestamm oder Verzeichnis
-Sie können Sie die Dateien und Unterverzeichnisse in einem Freigabestamm oder einem Verzeichnis mit dem folgenden Befehl auflisten:
+Wie bei der Verzeichniserstellung können Sie einen Verzeichnispfad in der Freigabe angeben, um die Datei in ein in der Freigabe vorhandenes Verzeichnis hochzuladen:
 
 ```azurecli
-azure storage file list myshare myDir
+az storage file upload --share-name myshare/myDir --source ~/temp/samplefile.txt
 ```
 
-Beachten Sie, dass der Name des Verzeichnisses für den Auflistungsvorgang optional ist. Wenn kein Namen angegeben wird, listet der Befehl den Inhalt des Stammverzeichnisses der Freigabe auf.
+Eine Datei in der Freigabe kann bis zu 1 TB groß sein.
 
-### <a name="copy-files"></a>Kopieren von Dateien
-Ab Version 0.9.8 der Azure-CLI können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. Im Folgenden wird demonstriert, wie diese Kopiervorgänge mithilfe von CLI-Befehlen ausgeführt werden können. So kopieren Sie eine Datei in das neue Verzeichnis:
+### <a name="list-the-files-in-a-share"></a>Auflisten der Dateien in einer Freigabe
+Sie können Dateien und Verzeichnissen in einer Freigabe mit dem Befehl `az storage file list` auflisten:
 
 ```azurecli
-azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare 
-    --dest-path destdir/hellocopy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
+# List the files in the root of a share
+az storage file list -s myshare
+
+# List the files in a directory within a share
+az storage file list -s myshare/myDir
+
+# List the files in a path within a share
+az storage file list -s myshare -p myDir/mySubDir/MySubDir2
 ```
 
-So kopieren Sie ein Blob in ein Dateiverzeichnis:
-
+### <a name="copy-files"></a>Kopieren von Dateien      
+Sie können eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. Geben Sie beispielsweise Folgendes ein, um eine Datei in ein Verzeichnis in einer anderen Freigabe zu kopieren:        
+        
 ```azurecli
-azure storage file copy start --source-container srcctn --source-blob hello2.txt --dest-share hello 
-    --dest-path hellodir/hello2copy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
+# Get the URL for the source file you want to copy
+az storage file url -s myshare -p /mydir/image.png
+
+# Copy the file to another share
+az storage file copy start \
+    --source-uri https://mystorageaccount.file.core.windows.net/myshare/mydir/image.png \   
+    --destination-share myshare2 --destination-path mydir2/image.png        
 ```
+
+> [!NOTE]
+> Es gibt in CLI 2.0 (Vorschau) ein bekanntes Problem , dass die Verwendung von `--source-share` und `--source-path` verhindert. Sie können das Argument `--source-uri` verwenden, um dieses Problem zu umgehen, bis es behoben ist.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
-In den folgenden Artikeln und Ressourcen finden Sie weitere Informationen zum Azure-Speicher.
+Es folgen einige zusätzlichen Ressourcen mit weiteren Informationen zum Arbeiten mit Azure CLI-2.0 (Vorschau).
 
-* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-* [Referenz zur REST-API von Azure-Speicher](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-
-[Image1]: ./media/storage-azure-cli/azure_command.png
-
+* [Erste Schritte mit Azure CLI 2.0 (Vorschau)](/cli/azure/get-started-with-az-cli2)
+* [Befehlsreferenz zu Azure CLI 2.0](/cli/azure)
+* [Azure CLI 2.0 (Vorschau) auf GitHub](https://github.com/Azure/azure-cli)
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO1-->
 
 

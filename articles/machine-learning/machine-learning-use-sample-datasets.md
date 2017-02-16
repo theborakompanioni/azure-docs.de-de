@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Beispiel-Datasets in Machine Learning Studio | Microsoft Docs
-description: "Beschreibungen von in Beispielmodellen verwendete DataSets in ML Studio. Sie können diese Beispiel-DataSets für Experimente verwenden."
+title: Verwenden von Beispieldatasets in Machine Learning Studio | Microsoft-Dokumentation
+description: "Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -12,29 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/14/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0a19e10d9bc4c2d0f6579518583f100b5ca76c23
+ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
+ms.openlocfilehash: c4adae8125a6780ddb4c7c64baf4df6aae139104
 
 
 ---
-# <a name="use-the-sample-data-sets-in-azure-machine-learning-studio"></a>Verwenden von Beispiel-DataSets in Azure Machine Learning Studio
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
 
-Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning ist eine Reihe von Beispielexperimenten und -DataSets standardmäßig enthalten. Viele dieser Beispiel-Datasets sind für die Beispielmodelle im [Katalog für Azure Cortana Intelligence](http://gallery.cortanaintelligence.com/)vorgesehen, während andere als Beispiele für verschiedene Arten von Daten für Machine Learning enthalten sind.
+Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen in der [Azure Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
 
-Einige dieser DataSets sind im Azure-Blob-Speicher verfügbar. Für diese DataSets finden Sie in der folgende Tabelle einen direkten Link. Diese Datasets können Sie mithilfe des [Import Data][import-data]-Moduls in Ihren Experimenten verwenden.
+Einige dieser Datasets sind im Azure-Blobspeicher verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
 
-Der Rest dieser Beispiel-DataSets wird in der Modulpalette auf der linken Seite des Experimentcanvas unter **Saved Datasets** angezeigt, wenn Sie in ML Studio ein neues Experiment öffnen oder erstellen.
+Der Rest dieser Beispieldatasets wird in Ihrem Arbeitsbereich unter **Saved Datasets** in der Modulpalette auf der linken Seite des Experimentcanvas angezeigt, wenn Sie in Machine Learning Studio ein neues Experiment öffnen oder erstellen.
 Sie können alle diese DataSets für Ihre eigenen Experimente verwenden, indem Sie sie auf Ihren Experimentcanvas ziehen.
 
-<!--
-For a list of sample experiments available in ML Studio, see [Machine Learning Sample Experiments][sample-experiments].
-
-[sample-experiments]: machine-learning-sample-experiments.md
--->
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -143,13 +138,13 @@ Beschriftungen vom KDD Cup 2009 (Kundenbeziehungsprognose, <a href="http://www.s
 <tr>
   <td valign=top>Daten zur Energieeffizienzregression</td>
   <td valign=top>
-Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäudeformen basieren. Die Gebäude werden anhand von acht Merkmalen wie Verglasungsfläche, Verglasungsflächenverteilung und -ausrichtung unterschieden.<p> </p><b>Verwendung:</b> Verwendung der Regression oder Klassifizierung zur Vorhersage der Energieeffizienzbewertung, die die Grundlage für eine von zwei Realwertantworten bildet. Für die Multiklassen-Klassifizierung wird die Antwortvariable auf die nächste ganze Zahl gerundet. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Xifara, A. und Tsanas, A. (2012). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäudeformen basieren. Die Gebäude werden anhand von acht Merkmalen wie beispielsweise Verglasungsfläche, Verglasungsflächenverteilung und -ausrichtung unterschieden.<p> </p><b>Verwendung:</b> Verwendung der Regression oder Klassifizierung zur Vorhersage der Energieeffizienzbewertung, die die Grundlage für eine von zwei Realwertantworten darstellt. Für die Multiklassen-Klassifizierung wird die Antwortvariable auf die nächste ganze Zahl gerundet. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Xifara, A. und Tsanas, A. (2012). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=flight-delays-data>
   <td valign=top>Flugverspätungsdaten</td>
   <td valign=top>
-Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).<p> </p>Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Azure ML Studio wie folgt verarbeitet:<ul><li>Es wurde gefiltert, damit nur die 70 verkehrsreichsten Flughäfen in Kontinental-USA enthalten waren.</li><li>Ausgefallene Flüge wurden als um mehr als 15 Minuten verspätet gekennzeichnet.</li><li>Umgeleitete Flüge wurden herausgefiltert.</li><li>Die folgenden Spalten wurden ausgewählt: Year, Month, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Cancelled</li></ul>
+Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).<p> </p>Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:<ul><li>Es wurde gefiltert, damit nur die 70 verkehrsreichsten Flughäfen in Kontinental-USA enthalten waren.</li><li>Ausgefallene Flüge wurden als um mehr als 15 Minuten verspätet gekennzeichnet.</li><li>Umgeleitete Flüge wurden herausgefiltert.</li><li>Die folgenden Spalten wurden ausgewählt: Year, Month, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, Canceled</li></ul>
 </td>
 </tr>
 
@@ -177,7 +172,7 @@ Das DataSet „UCI Statlog“ (deutsche Kreditkarte) (<a href="http://archive.ic
 <tr ID=imdb-movie-titles>
   <td valign=top>IMDB-Filmtitel</td>
   <td valign=top>
-Das DataSet enthält Informationen über Filme, die in Tweets auf Twitter bewertet wurden: Film-ID in der IMDB, Filmname und Genre, Produktionsjahr. Das DataSet enthält 17.000 Filme. Das Dataset wurde im Dokument „S. Dooms, T. De Pessemier und L. Martens. MovieTweetings: a Movie Rating Dataset Collected From Twitter. Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013“ eingeführt.
+Das Dataset enthält Informationen über Filme, die in Tweets auf Twitter bewertet wurden: Film-ID in der IMDB, Filmname, Genre und Produktionsjahr. Das DataSet enthält 17.000 Filme. Das Dataset wurde im Dokument „S. Dooms, T. De Pessemier und L. Martens. MovieTweetings: a Movie Rating Dataset Collected From Twitter. Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013“ eingeführt.
   </td>
 </tr>
 
@@ -230,7 +225,7 @@ Enthält von Benutzern abgegebene Bewertungen für Restaurants auf einer Skala v
 <tr>
   <td valign=top>Multiklassen-Dataset zur Stahlhärtung</td>
   <td valign=top>
-Dieses Dataset enthält eine Reihe von Datensätzen aus Stahlhärtungsversuchen mit den physikalischen Attributen (Breite, Stärke, Typ) der sich ergebenden Stahltypen.<p> </p><b>Verwendung:</b> Vorhersage eines von zwei numerischen Klassenattributen: Härte oder Belastbarkeit. Sie können auch Korrelationen zwischen den Attributen analysieren.<p> </p>Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Organisationen definiert wurde. Sie suchen nach einer bestimmten „Sorte“ (die Klassenvariable) und möchten die erforderlichen Werte verstehen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Sterling, D. und Buntine, W., (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>Ein nützliches Handbuch zu Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Dieses Dataset enthält eine Reihe von Datensätzen aus Stahlhärtungsversuchen mit den physikalischen Attributen (Breite, Stärke, Typ) der sich ergebenden Stahltypen.<p> </p><b>Verwendung:</b> Vorhersage eines von zwei numerischen Klassenattributen: Härte oder Belastbarkeit. Sie können auch Korrelationen zwischen den Attributen analysieren.<p> </p>Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Organisationen definiert wurde. Sie suchen nach einer bestimmten „Sorte“ (die Klassenvariable) und möchten die erforderlichen Werte verstehen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>Ein nützliches Handbuch zu Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -243,14 +238,14 @@ Datensätze von hochenergetischen Gammapartikelausbrüchen zusammen mit Hintergr
 <tr ID=weather-dataset>
   <td valign=top>Wetter-Dataset</td>
   <td valign=top>
-Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">zusammengeführte Daten von 201304 bis 201310</a>).<p> </p>Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Azure ML Studio wie folgt verarbeitet:<ul><li>Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.</li><li>Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert</li><li>Die Datumsspalte wurde in separate Jahres-, Monats- und Tagesspalten aufgeteilt.</li><li>Die folgenden Spalten wurden ausgewählt: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter</li></ul>
+Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="http://cdo.ncdc.noaa.gov/qclcd_ascii/, merged data from 201304 to 201310">zusammengeführte Daten von 201304 bis 201310</a>).<p> </p>Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:<ul><li>Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.</li><li>Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert</li><li>Die Datumsspalte wurde in separate Jahres-, Monats- und Tagesspalten aufgeteilt.</li><li>Die folgenden Spalten wurden ausgewählt: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter</li></ul>
   </td>
 </tr>
 
 <tr ID=wikipedia-sp-500-dataset>
   <td valign=top>Wikipedia SP 500 Dataset</td>
   <td valign=top>
-Die Daten stammen aus Wikipedia (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.<p> </p>Das DataSet wurde vor dem Hochladen in Azure ML Studio wie folgt verarbeitet:<ul><li>Extrahieren der Textinhalte für die einzelnen Unternehmen</li><li>Entfernen der Wiki-Formatierung</li><li>Entfernen aller nicht alphanumerischen Zeichen</li><li>Konvertieren sämtlicher Texte in Kleinbuchstaben</li><li>Bekannte Firmenkategorien wurden hinzugefügt.</li></ul><p> </p>Beachten Sie, dass für einige Unternehmen keine Artikel gefunden werden konnten, daher ist die Anzahl der Datensätze kleiner als 500.
+Die Daten stammen aus Wikipedia (<a href="http://www.wikipedia.org/">http://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.<p> </p>Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:<ul><li>Extrahieren der Textinhalte für die einzelnen Unternehmen</li><li>Entfernen der Wiki-Formatierung</li><li>Entfernen aller nicht alphanumerischen Zeichen</li><li>Konvertieren sämtlicher Texte in Kleinbuchstaben</li><li>Bekannte Firmenkategorien wurden hinzugefügt.</li></ul><p> </p>Beachten Sie, dass für einige Unternehmen keine Artikel gefunden werden konnten, daher ist die Anzahl der Datensätze kleiner als 500.
   </td>
 </tr>
 
@@ -282,7 +277,7 @@ Merkmale von Schulungsbeispielen im Reuters-Nachrichtendataset RCV1 V2. Das Data
 <tr ID=intrusion-detection>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td valign=top>
-Dataset von KDD Cup 1999 Knowledge Discovery and Data Mining Tools Competition (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).<p> </p>Das Dataset wurde heruntergeladen und im Azure-Blobspeicher abgelegt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) und enthält Trainings- und Testdatasets. Der Schulungsdatensatz enthält ca. 126.000 Zeilen und 43 Spalten, inklusive Überschriften; 3 Spalten sind Teil der Überschrifteninformationen, und die anderen 40 Spalten bestehen aus numerischen und Zeichenfolgen-/Kategoriefeatures, sind verfügbar, um das Modell anzulernen. Die Testdaten enthalten ca. 22.500 Testbeispiele, die die gleichen 43 Spalten wie die Schulungsdaten enthalten.
+Dataset von KDD Cup 1999 Knowledge Discovery and Data Mining Tools Competition (<a href="http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>).<p> </p>Das Dataset wurde heruntergeladen und im Azure-Blobspeicher abgelegt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) und enthält Trainings- und Testdatasets. Das Trainingsdataset enthält ca. 126.000 Zeilen und 43 Spalten, inklusive der Bezeichnungen. Drei Spalten sind Teil der Bezeichnungsinformationen, und 40 Spalten, die aus numerischen und Zeichenfolgen-/Kategoriefeatures bestehen, sind zum Trainieren des Modells verfügbar. Die Testdaten enthalten ca. 22.500 Testbeispiele, die die gleichen 43 Spalten wie die Schulungsdaten enthalten.
 
   </td>
 </tr>
@@ -290,14 +285,14 @@ Dataset von KDD Cup 1999 Knowledge Discovery and Data Mining Tools Competition (
 <tr ID=rcv1-v2-topics-qrels>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td valign=top>
-Themenzuweisungen für Nachrichtenartikel im Reuters-Nachrichtendataset RCV1-V2 Ein Nachrichtenartikel kann verschiedenen Themen zugewiesen werden. Das Format jeder Zeile ist „<topic name> <document id> 1“. Das Dataset enthält 2,6 Mio. Themenzuweisungen. Das DataSet wurde von D. Lewis zur Verfügung gestellt.
+Themenzuweisungen für Nachrichtenartikel im Reuters-Nachrichtendataset RCV1-V2 Ein Nachrichtenartikel kann verschiedenen Themen zugewiesen werden. Das Format jeder Zeile lautet „&lt;Themenname&gt; &lt;Dokument-ID&gt; 1“. Das Dataset enthält 2,6 Mio. Themenzuweisungen. Das DataSet wurde von D. Lewis zur Verfügung gestellt.
   </td>
 </tr>
 
 <tr ID=student-performance>
   <td valign=top><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td valign=top>
-Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. DataSet des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> oder <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.<p> </p>Das Dataset wurde in Azure-Blobspeicher heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche DataSet umfasst 8,9 Millionen Datensätze. Dieses DataSet wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
+Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">Schülerleistungsbewertung</a>). Die verwendeten Daten stammen aus dem Trainingssatz „Algebra_2008_2009“ (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Dataset des KDD Cup 2010 – Educational Data Mining Challenge. Sie finden das Dataset unter <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> oder <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.<p> </p>Das Dataset wurde in Azure-Blobspeicher heruntergeladen und gespeichert (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>). Es enthält Protokolldateien aus einem Tutorensystem für Schüler. Die bereitgestellten Funktionen umfassen eine Problem-ID und eine zugehörige Kurzbeschreibung, die Schüler-ID, einen Zeitstempel und die Anzahl der Versuche, bevor das Problem vom Schüler ordnungsgemäß gelöst wurde. Das ursprüngliche Dataset umfasst 8,9 Millionen Datensätze. Dieses Dataset wurde auf die ersten 100.000 Zeilen reduziert. Das DataSet umfasst 23 durch Tabulatoren getrennte Spalten mit verschiedenen Typen: numerisch, kategorisch und Zeitstempel.
 
   </td>
 </tr>
@@ -313,6 +308,6 @@ Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie einige häufige Probleme beheben, die
 services: 
 documentationcenter: 
 author: JiangChen79
-manager: felixwu
+manager: adpick
 editor: 
 tags: billing,top-support-issue
 ms.assetid: a0907da1-cb2d-41d1-a97f-43841fabe355
@@ -13,16 +13,32 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 01/24/2016
 ms.author: cjiang
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e2e22b767ce1d54e7b90158fb6adb877e3a165b8
+ms.sourcegitcommit: 73c4ff6fdbde09dd08d1bcacf0ec87c7fa43f3b2
+ms.openlocfilehash: 7ded94f432f8e61153ee8dfbf2508b288a4ad5fd
 
 
 ---
 # <a name="i-cant-sign-up-for-azure"></a>Ich kann mich nicht für Azure registrieren
 Wenn Sie sich nicht für Azure registrieren können, können Sie mehrere Dinge überprüfen, um das Problem zu beheben.
+
+## <a name="progress-bar-hangs-in-identity-verification-by-card-section"></a>Statusanzeige hängt im Abschnitt „Identity verification by card“ (Überprüfung der Identität mit Kreditkarte)
+
+Während der Azure-Registrierung erfolgt eine Überprüfung der Identität mit der Kreditkarte. Wenn die Statusanzeige hängt:
+
+![Screenshot des Abschnitts „Identity verification by card“ (Überprüfung der Identität mit Kreditkarte) während der Registrierung](./media/billing-troubleshoot-azure-sign-up-issues/identity-verification-hangs.PNG)
+
+Dieses Problem tritt auf, wenn Cookies von Drittanbietern in Ihren Browser blockiert werden.
+
+### <a name="suggestion"></a>Vorschlag
+
+1. Lassen Sie Cookies von Drittanbieter in den Browsereinstellungen zu.
+  * In Edge: Aktivieren Sie unter „Einstellungen“ > „Erweiterte Einstellungen anzeigen“ > „Cookies“ die Option „Keine Cookies blockieren“ aus.
+  * In Chrome: Deaktivieren Sie unter „Einstellungen“ > „Erweiterte Einstellungen anzeigen“ > „Datenschutz“ > „Inhaltseinstellungen“ die Option „Drittanbieter-Cookies und Websitedaten blockieren“.
+2. Aktualisieren Sie die Azure Registrierungsseite, und überprüfen Sie, ob das Problem behoben ist.
+3. Wenn Das Problem durch die Aktualisierung nicht behoben wurde, beenden Sie den Browser, und starten Sie ihn neu. Wiederholen Sie die Registrierung anschließend.
 
 ## <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Keine SMS oder Anrufe während der Kontoüberprüfung für die Registrierung
 * Stellen Sie sicher, dass Sie über die angegebene Telefonnummer SMS empfangen können.
@@ -39,8 +55,8 @@ Wenn Sie sich nicht für Azure registrieren können, können Sie mehrere Dinge �
 
 > [!NOTE]
 > Sie können Ihre bevorzugte Telefonnummer später durch [Aktualisierung Ihrer Profilinformationen](billing-how-to-change-azure-account-profile.md)ändern.
-> 
-> 
+>
+>
 
 ## <a name="credit-card-declined-or-not-accepted"></a>Kreditkarte abgelehnt bzw. nicht akzeptiert
 Stellen Sie sicher, dass die bei der Registrierung angegebene Zahlungsmethode für Azure-Aktivierungen und -Zahlungen unterstützt wird.
@@ -77,15 +93,14 @@ Wenn Sie keinen OSA-Schlüssel haben, wenden Sie sich an einen der unter [Micros
 Haben Sie bereits einmal ein Azure-Abonnement verwendet? Laut Vereinbarung in den Azure-Nutzungsbedingungen ist die Aktivierung einer kostenlosen Testversion nur für Benutzer eingeschränkt, die neu bei Azure sind. Wenn Sie bereits einen anderen Typ von Azure-Abonnement verwendet haben, können Sie keine kostenlose Testversion aktivieren.
 
 ### <a name="suggestion"></a>Vorschlag
-* Wenn Sie schon einmal ein Azure-Abonnement aktiviert haben und bei der Aktivierung der kostenlosen Testversion ein Fehler auftritt, können Sie die Nutzung eines Abonnements mit nutzungsbasierter Bezahlung erwägen. 
+* Wenn Sie schon einmal ein Azure-Abonnement aktiviert haben und bei der Aktivierung der kostenlosen Testversion ein Fehler auftritt, können Sie die Nutzung eines Abonnements mit nutzungsbasierter Bezahlung erwägen.
 * Prüfen Sie, ob Sie über die Berechtigung für ein Vorteilsangebot verfügen. Weitere Informationen finden Sie auf der Seite mit den [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Für Vorteilspläne müssen bestimmte Voraussetzungen erfüllt sein.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen. 
+[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

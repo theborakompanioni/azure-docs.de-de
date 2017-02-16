@@ -122,6 +122,6 @@ Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO4-->
 
 

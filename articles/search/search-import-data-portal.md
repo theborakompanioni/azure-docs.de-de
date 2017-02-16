@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2a0f4c9c5942ee75b9ca4f3924198e8a8ad8ccc7
+ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
+ms.openlocfilehash: c2bf44dc23a3b330994e51317b6b021fab6eef1f
 
 
 ---
@@ -77,7 +77,7 @@ Vom Dataset wird üblicherweise ein vorläufiger Index abgeleitet. Vervollständ
 4. Klicken Sie auf die Registerkarte **Analyse** , wenn Sie eine Sprachanalyse auf Feldebene angeben möchten. Derzeit können nur Sprachanalysen angegeben werden. Zur Verwendung benutzerdefinierter Analysen oder einer sprachfremden Analyse wie Schlüsselwort oder Muster muss Code geschrieben werden.
    
    * Klicken Sie auf **Durchsuchbar** , um die Volltextsuche für das Feld festzulegen und die Analyse-Dropdownliste zu aktivieren.
-   * Wählen Sie die gewünschte Analyse aus. Details finden Sie unter [Erstellen eines Indexes für Dokumente in mehreren Sprachen](search-language-support.md) .
+   * Wählen Sie die gewünschte Analyse aus. Details finden Sie unter [Erstellen eines Indexes für Dokumente in mehreren Sprachen](search-language-support.md).
 5. Klicken Sie auf **Vorschläge** , um für ausgewählte Felder Textvervollständigungsfunktionen bei der Abfrage zu aktivieren.
 
 ## <a name="import-your-data"></a>Import your data
@@ -93,11 +93,17 @@ In Azure Search ist für strukturelle Updates eines Index eine Neuerstellung des
 
 Änderungen, für die keine Neuerstellung erforderlich ist, beinhalten das Hinzufügen eines neuen Felds sowie das Ändern von Bewertungsprofilen, Vorschlägen und Sprachanalysen. Weitere Informationen finden Sie unter [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) (Aktualisieren des Index).
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="query-an-index-using-search-explorer"></a>Abfragen eines Index mit dem Suchexplorer
+
+Das Portal enthält den **Suchexplorer**, mit dem Sie einen Index abfragen können, ohne Code schreiben zu müssen. Sie können den Suchexplorer für jeden Index verwenden.
+
+Die Suchumgebung basiert auf Standardeinstellungen, z.B. der [einfachen Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und dem standardmäßigen [searchMode-Abfrageparameter(https://docs.microsoft.com/rest/api/searchservice/search-documents). Ergebnisse werden im JSON-Format zurückgegeben, damit Sie das gesamte Dokument untersuchen können.
+
+## <a name="next-steps"></a>Nächste Schritte
 Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
 
 * [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern](../documentdb/documentdb-search-indexer.md)
+* [Herstellen einer Verbindung zwischen DocumentDB und Azure Search unter Verwendung von Indexern](search-howto-index-documentdb.md)
 * [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)
 * [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md)
 
@@ -107,6 +113,6 @@ Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

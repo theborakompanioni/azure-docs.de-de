@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 768de7b221474f9143ba8e960581893229dca051
+ms.sourcegitcommit: 0d37eb09a6c8a0bb39a331e51a8993c114202b91
+ms.openlocfilehash: 88858cffa5ddc6ba83152d3430f5400a1c66a26a
 
 
 ---
@@ -47,7 +47,7 @@ Die Storage-Tabelleneingabe in eine Funktion verwendet die folgenden JSON-Objekt
 {
     "name": "<Name of input parameter in function signature>",
     "type": "table",
-    "direction": "in"
+    "direction": "in",
     "tableName": "<Name of Storage table>",
     "partitionKey": "<PartitionKey of table entity to read - see below>",
     "rowKey": "<RowKey of table entity to read - see below>",
@@ -59,8 +59,8 @@ Die Storage-Tabelleneingabe in eine Funktion verwendet die folgenden JSON-Objekt
 
 Beachten Sie Folgendes: 
 
-* Verwenden Sie `partitionKey` und `rowKey` zusammen, um eine einzelne Entität zu lesen. Diese Eigenschaften sind optional.
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Storage-Konto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](). 
+* Verwenden Sie `partitionKey` und `rowKey` zusammen, um eine einzelne Entität zu lesen. Diese Eigenschaften sind optional. 
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Sie können [diese App-Einstellung auch manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md#application-settings).  
 
 <a name="inputusage"></a>
 
@@ -167,7 +167,7 @@ Die Storage-Tabellenausgabe für eine Funktion verwendet die folgenden JSON-Obje
 {
     "name": "<Name of input parameter in function signature>",
     "type": "table",
-    "direction": "out"
+    "direction": "out",
     "tableName": "<Name of Storage table>",
     "partitionKey": "<PartitionKey of table entity to write - see below>",
     "rowKey": "<RowKey of table entity to write - see below>",
@@ -178,7 +178,7 @@ Die Storage-Tabellenausgabe für eine Funktion verwendet die folgenden JSON-Obje
 Beachten Sie Folgendes: 
 
 * Verwenden Sie `partitionKey` und `rowKey` zusammen, um eine einzelne Entität zu schreiben. Diese Eigenschaften sind optional. Sie können beim Erstellen der Entitätsobjekte in Ihrem Funktionscode auch `PartitionKey` und `RowKey` angeben.
-* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Storage-Konto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung](). 
+* `connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Sie können [diese App-Einstellung auch manuell konfigurieren](functions-how-to-use-azure-function-app-settings.md#application-settings). 
 
 <a name="outputusage"></a>
 
@@ -190,6 +190,7 @@ Sie können Objekte in Node.js- oder C#-Funktionen serialisieren. In C#-Funktion
 * Jeder Typ, der `ITableEntity` implementiert
 * `ICollector<T>` (Um mehrere Entitäten auszugeben. Siehe [Beispiel](#outcsharp).)
 * `IAsyncCollector<T>` (asynchrone Version von `ICollector<T>`)
+* `CloudTable` (mithilfe des Azure Storage-SDK. Siehe [Beispiel](#readmulti).)
 
 <a name="outputsample"></a>
 
@@ -342,6 +343,6 @@ public class Person : TableEntity
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

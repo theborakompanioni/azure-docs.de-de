@@ -12,24 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: arramac
+ms.date: 12/13/2016
+ms.author: mimig
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: db87e15ceb12238dd7b402cd04cfd36c62e3cab7
+ms.sourcegitcommit: d2728682d4fada23d884d0a6b7e2cf4cda38aa33
+ms.openlocfilehash: 32e8fb12e2b80260f7b4c5c6cf4b1b07ec766aca
 
 
 ---
 # <a name="default-quotas-for-documentdb"></a>Standardkontingente für DocumentDB
-In der folgenden Tabelle sind die Standardkontingente für Azure DocumentDB-Datenbankressourcen aufgeführt. 
 
-[!INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
-
-Kontingente mit einem Sternchen (*) [können angepasst werden. Wenden Sie sich dafür an den Azure-Support](documentdb-increase-limits.md). Bei Kontingentsteigerungen können nach dem Empfang der erforderlichen Informationen bis zum Abschluss 24 Stunden verstreichen. 
+DocumentDB ist eine Datenbank für globale Skalierung, in der Durchsatz und Speicher je nach den Anforderungen Ihrer Anwendung skaliert werden können. Wenn Sie Fragen zur Staffelung von DocumentDB haben, senden Sie eine E-Mail an askdocdb@microsoft.com.
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

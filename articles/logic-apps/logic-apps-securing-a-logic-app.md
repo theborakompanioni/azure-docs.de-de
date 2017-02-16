@@ -1,6 +1,6 @@
 ---
-title: Sichern einer Azure-Logik-App | Microsoft-Dokumentation
-description: Sichern von Eingaben, Zugriff und Steuerung einer Azure-Logik-App
+title: Sicherer Zugriff auf Azure Logic Apps | Microsoft-Dokumentation
+description: "Legen Sie die Sicherheit fest für den Schutz des Zugriffs auf Trigger, Eingaben und Ausgaben, Aktionsparameter und Dienste, die mit Workflows in Azure Logic Apps verwendet werden."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -15,8 +15,8 @@ ms.workload: integration
 ms.date: 11/22/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: ba109fdc2a97e99f6216aa038261e6ccc5e356d9
-ms.openlocfilehash: 88df53aed1ffcf3c53d3d5557bdd2604e44f2aef
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: 2cc83c6f10272139f148b450e3c1c8cc91fd68f9
 
 
 ---
@@ -281,6 +281,6 @@ Sie können die Funktion für lokale Hybridverbindungen für Azure-API- und Web-
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

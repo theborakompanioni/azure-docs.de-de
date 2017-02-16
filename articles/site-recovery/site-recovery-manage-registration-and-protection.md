@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/19/2016
+ms.date: 12/28/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3710f5966889b805b3ea8d2a3fe33fa9ab86c2ec
-ms.openlocfilehash: 5dff369ca32f9f4487684b27c57d2722ab9ad954
+ms.sourcegitcommit: f57c88cbace41af233f542880c6199b3e278700e
+ms.openlocfilehash: c8d893dbac1a4f6cb3f05f857e186bca155e5865
 
 
 ---
@@ -29,22 +29,32 @@ In diesem Artikel erfahren Sie, wie Sie die Registrierung von Servern in einem R
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
 
-## <a name="unregister-a-configuration-server"></a>Aufheben der Registrierung eines Konfigurationsservers
+## <a name="unregister-a-connected-configuration-server"></a>Aufheben der Registrierung eines verbundenen Konfigurationsservers
 
-Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, können Sie die Registrierung des Konfigurationsservers bei einem Tresor wie folgt aufheben:
+Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, können Sie die Registrierung des verbundenen Konfigurationsservers bei einem Tresor wie folgt aufheben:
 
 1. Deaktivieren Sie den Computerschutz. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**.
 2. Trennen Sie ggf. alle Richtlinien. Doppelklicken Sie unter **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Replikationsrichtlinien** auf die zugehörige Richtlinie. Klicken Sie mit der rechten Maustaste auf den Konfigurationsserver, und klicken Sie dann auf **Trennen**.
 3. Entfernen Sie alle zusätzlichen lokalen Prozess- oder Masterzielserver. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
 4. Löschen Sie den Konfigurationsserver.
 5. Deinstallieren Sie den Mobilitätsdienst manuell, der auf dem Masterzielserver ausgeführt wird. (Dabei handelt es sich entweder um einen separaten Server, oder er wird auf dem Konfigurationsserver ausgeführt.)
-6. Deinstallieren Sie den Konfigurationsserver.
-7. Deinstallieren Sie ggf. weitere Prozessserver.
+6. Deinstallieren Sie ggf. weitere Prozessserver.
+7. Deinstallieren Sie den Konfigurationsserver.
 8. Deinstallieren Sie auf dem Konfigurationsserver die Instanz von MySQL, die von Site Recovery installiert wurde.
 9. Löschen Sie in der Registrierung des Konfigurationsservers den Schlüssel ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``.
 
-Die Anweisungen sind identisch, wenn der Konfigurationsserver mit Azure verbunden oder nicht verbunden ist.
+## <a name="unregister-a-unconnected-configuration-server"></a>Aufheben der Registrierung eines nicht verbundenen Konfigurationsservers
 
+Wenn Sie VMware-VMs oder physische Windows-/Linux-Server in Azure replizieren, können Sie die Registrierung des nicht verbundenen Konfigurationsservers bei einem Tresor wie folgt aufheben:
+
+1. Deaktivieren Sie den Computerschutz. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Löschen**. Wählen Sie **Verwaltung des Computers beenden** aus.
+2. Entfernen Sie alle zusätzlichen lokalen Prozess- oder Masterzielserver. Klicken Sie unter **Site Recovery-Infrastruktur** > **Für VMware und physische Computer** > **Konfigurationsserver** mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Löschen**.
+3. Löschen Sie den Konfigurationsserver.
+4. Deinstallieren Sie den Mobilitätsdienst manuell, der auf dem Masterzielserver ausgeführt wird. (Dabei handelt es sich entweder um einen separaten Server, oder er wird auf dem Konfigurationsserver ausgeführt.)
+5. Deinstallieren Sie ggf. weitere Prozessserver.
+6. Deinstallieren Sie den Konfigurationsserver.
+7. Deinstallieren Sie auf dem Konfigurationsserver die Instanz von MySQL, die von Site Recovery installiert wurde.
+8. Löschen Sie in der Registrierung des Konfigurationsservers den Schlüssel ``HKEY_LOCAL_MACHINE\Software\Microsoft\Azure Site Recovery``.
 
 ## <a name="unregister-a-connected-vmm-server"></a>Aufheben der Registrierung eines verbundenen VMM-Servers
 
@@ -229,6 +239,6 @@ Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach A
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

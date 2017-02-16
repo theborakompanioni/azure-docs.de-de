@@ -3,7 +3,7 @@ title: Globale Verteilung von Daten mit DocumentDB | Microsoft Docs
 description: "Erfahren Sie mehr über weltweite Georeplikation, Failover und Datenwiederherstellungen mithilfe von globalen Datenbanken mit Azure DocumentDB, einem vollständig verwalteten NoSQL-Datenbankdienst."
 services: documentdb
 documentationcenter: 
-author: kiratp
+author: arramac
 manager: jhubbard
 editor: 
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
@@ -12,19 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: kipandya
+ms.date: 12/13/2016
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 4147bf0a5f4a3c41de53ef5b3e05d8409f9a8c87
+ms.sourcegitcommit: 70ccae77af2ace919e01a595a3e61711be2f760d
+ms.openlocfilehash: f7ae58ff1dd500e130aa6a5b362065b1a304b7aa
 
 
 ---
 # <a name="distribute-data-globally-with-documentdb"></a>Globale Verteilung von Daten mit DocumentDB
-> [!NOTE]
-> Die globale Verteilung von DocumentDB-Datenbanken ist allgemein verfügbar und für alle neu erstellten DocumentDB-Konten automatisch aktiviert. Wir arbeiten daran, die globale Verteilung für alle vorhandenen Konten zu aktivieren. Wenn Sie jedoch in der Zwischenzeit die globale Verteilung für Ihr Konto aktivieren möchten, [kontaktieren Sie den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), der diesen Schritt für Sie ausführt.
-> 
-> 
 
 Azure DocumentDB wurde für die Anforderungen von IoT-Anwendungen konzipiert, die aus Millionen von global verteilten Geräten und internetbasierten Anwendungen bestehen, die Benutzern auf der ganzen Welt ein reaktionsschnelles Benutzererlebnis bieten. Mit diesen Datenbanksystemen lässt sich die Herausforderung bewältigen, beim Zugriff auf Anwendungsdaten aus mehreren geografischen Regionen eine sehr niedrige Latenz zu erzielen und gleichzeitig für klar definierte Datenkonsistenz und garantierte Verfügbarkeit zu sorgen. Als global verteiltes Datenbanksystem vereinfacht DocumentDB die globale Verteilung von Daten, indem es vollständig verwaltete Datenbankkonten in mehreren Regionen bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. DocumentDB-Datenbankkonten bieten hohe Verfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen][consistency], transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit elastisch zu skalieren. 
 
@@ -67,7 +63,7 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 * [Multihosting-APIs über REST- .NET-, Java-, Python- und Node-SDKs][developingwithmultipleregions]
 * [Konsistenzebenen in DocumentDB][consistency]
 * [Verfügbarkeits-SLAs][sla]
-* [Verwalten eines Datenbankkontos][manageaccount]
+* [Verwalten von Datenbankkonten][manageaccount]
 
 [1]: ./media/documentdb-distribute-data-globally/consistency-tradeoffs.png
 [2]: ./media/documentdb-distribute-data-globally/collection-regions.png
@@ -92,6 +88,6 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung von Dat
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,6 +1,7 @@
 ---
-title: "Ermitteln der SQL-Datenbankkompatibilität mithilfe von SqlPackage.exe | Microsoft Docs"
-description: "Microsoft Azure SQL-Datenbank, Datenbankmigration, SQL-Datenbankkompatibilität, SqlPackage"
+title: "SQLPackage: Azure SQL Server-Datenbankkompatibilität | Microsoft Docs"
+description: "In diesem Artikel erfahren Sie, wie Sie mit SqlPackage ermitteln können, ob eine SQL Server-Datenbank für die Migration zu SQL-Datenbank geeignet ist."
+keywords: "Microsoft Azure SQL-Datenbank, Datenbankmigration, SQL-Datenbankkompatibilität, SqlPackage"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 11/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 06563b181a8d4ff568eb7cce15189defab0225ca
-ms.openlocfilehash: 16cc9beb3c239e583f47f33fe2f8c7caf44e8eb6
+ms.sourcegitcommit: 6728693290e2c1d6c970c60c7d8ef674764e053c
+ms.openlocfilehash: 834dae604fa87f753e8d050ce7cdfa7e9613f462
 
 
 ---
@@ -48,7 +49,7 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-Da
    | < Schemaname.Tabellenname > |Tabellen, für die Daten in die Zieldatei ausgegeben werden |
    | < Ausgabedatei > |Dateiname und Speicherort für die Ausgabedatei mit Fehlern, falls vorhanden |
    
-    Der Grund für das Argument „/p:TableName“ ist, dass wir nur die Datenbankkompatibilität in Bezug auf das Exportieren nach Azure SQL-Datenbank V12 testen und nicht die Daten aus allen Tabellen exportieren möchten. Das Exportargument für „sqlpackage.exe“ wird leider nicht unterstützt, wenn keine Tabellen extrahiert werden. Sie müssen mindestens eine Tabelle angeben, z.B. eine einzelne kleine Tabelle. Die < Ausgabedatei > enthält den Bericht zu etwaigen Fehlern. Mit der Zeichenfolge „> 2>&1“ werden sowohl die Standardausgabe als auch der Standardfehler, die bzw. der sich aus der Befehlsausführung ergibt, an die angegebene Ausgabedatei geleitet.
+    Der Grund für das Argument „/p:TableData“ ist, dass wir nur die Datenbankkompatibilität in Bezug auf das Exportieren nach Azure SQL-Datenbank V12 testen und nicht die Daten aus allen Tabellen exportieren möchten. Das Exportargument für „sqlpackage.exe“ wird leider nicht unterstützt, wenn keine Tabellen extrahiert werden. Sie müssen mindestens eine Tabelle angeben, z.B. eine einzelne kleine Tabelle. Die < Ausgabedatei > enthält den Bericht zu etwaigen Fehlern. Mit der Zeichenfolge „2>&1“ werden sowohl die Standardausgabe als auch der Standardfehler, die bzw. der sich aus der Befehlsausführung ergibt, an die angegebene Ausgabedatei geleitet.
    
     ![Exportieren von Datenebenenanwendungen im Menü "Aufgaben"](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01.png)
 
@@ -70,6 +71,6 @@ In diesem Artikel erfahren Sie, wie Sie ermitteln können, ob eine SQL Server-Da
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

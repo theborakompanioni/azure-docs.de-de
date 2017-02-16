@@ -8,6 +8,7 @@ author: ddove
 editor: 
 ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 56f8270666f4d132c5e07053f5a6d476878c9b5f
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
 
 
 ---
@@ -27,7 +28,7 @@ Wenn Sie **Aufträge für die elastische Datenbank** bereits über das Portal au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Azure PowerShell. Installieren Sie die neueste Version mithilfe des [Webplattform-Installers](http://go.microsoft.com/fwlink/p/?linkid=320376). Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* Azure PowerShell. Installieren Sie die neueste Version mithilfe des [Webplattform-Installers](http://go.microsoft.com/fwlink/p/?linkid=320376). Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * [NuGet-Befehlszeilenhilfsprogramm](https://nuget.org/nuget.exe) verwendet. Weitere Informationen finden Sie hier: http://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Herunterladen und Importieren des PowerShell-Pakets der Aufträge für die elastische Datenbank
@@ -146,11 +147,11 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Installieren der Komponenten der Aufträge für die elastische Datenbank mithilfe des Portals
-Nachdem Sie einen [elastischen Datenbankpool erstellt](sql-database-elastic-pool-create-portal.md)haben, können Sie die Komponenten der **Aufträge für die elastische Datenbank** installieren, um die Ausführung von Verwaltungsaufgaben für jede der Datenbanken im elastischen Datenbankpool zu ermöglichen. Anders als bei der Verwendung der PowerShell-APIs für die **Aufträge für die elastische Datenbank** , ist die Portalschnittstelle aktuell auf die Ausführung auf einem vorhandenen Pool beschränkt.
+Nachdem Sie einen [Pool für elastische Datenbanken erstellt](sql-database-elastic-pool-create-portal.md) haben, können Sie die Komponenten der **Aufträge für die elastische Datenbank** installieren, um die Ausführung von Verwaltungsaufgaben für jede der Datenbanken im Pool für elastische Datenbanken zu ermöglichen. Anders als bei der Verwendung der PowerShell-APIs für die **Aufträge für die elastische Datenbank** , ist die Portalschnittstelle aktuell auf die Ausführung auf einem vorhandenen Pool beschränkt.
 
 **Geschätzter Zeitaufwand:** 10 Minuten.
 
-1. Klicken Sie in der Dashboardansicht des elastischen Datenbankpools im [Azure-Portal](https://portal.azure.com/#) auf **Auftrag erstellen**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/#) in der Dashboardansicht des Pools für elastische Datenbanken auf **Auftrag erstellen**.
 2. Wenn Sie zum ersten Mal einen Auftrag erstellen, müssen Sie **Aufträge für die elastische Datenbank** installieren, indem Sie auf **VORSCHAUBESTIMMUNGEN** klicken.
 3. Akzeptieren Sie die Bedingungen, indem Sie das Kontrollkästchen aktivieren.
 4. Klicken Sie in der Ansicht "Dienste installieren" auf **JOB CREDENTIALS**.
@@ -169,7 +170,7 @@ Nachdem Sie einen [elastischen Datenbankpool erstellt](sql-database-elastic-pool
 Wenn die Deinstallation erforderlich ist, löschen Sie die Ressourcengruppe. Weitere Informationen finden Sie unter [Deinstallieren der Komponenten der Aufträge für die elastische Datenbank](sql-database-elastic-jobs-uninstall.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Stellen Sie sicher, dass für jede Datenbank in der Gruppe Anmeldeinformationen mit den geeigneten Rechten für die Skriptausführung erstellt werden. Weitere Informationen dazu finden Sie unter [Sichern der SQL-Datenbank](sql-database-security.md).
+Stellen Sie sicher, dass für jede Datenbank in der Gruppe Anmeldeinformationen mit den geeigneten Rechten für die Skriptausführung erstellt werden. Weitere Informationen dazu finden Sie unter [Sichern der SQL-Datenbank](sql-database-manage-logins.md).
 Informationen zum Einstieg finden Sie unter [Erstellen und Verwalten von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-create-and-manage.md).
 
 <!--Image references-->
@@ -180,6 +181,6 @@ Informationen zum Einstieg finden Sie unter [Erstellen und Verwalten von Aufträ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

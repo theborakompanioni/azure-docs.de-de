@@ -1,8 +1,8 @@
 ---
 title: "Verwenden von Import/Export zum Übertragen von Daten in den Blobspeicher | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Import- und Exportaufträge im klassischen Azure-Portal erstellen, um Daten in den Blob-Speicher zu übertragen."
-author: renashahmsft
-manager: aungoo
+description: "Erfahren Sie, wie Sie Import- und Exportaufträge im Azure-Portal erstellen, um Daten in den Blobspeicher zu übertragen."
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: renash
+ms.date: 1/15/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a1993b2aef38cb76111bbb793f02e4bd307eb64e
+ms.sourcegitcommit: 787f54ca2c19d87866ede452ea1cce0b1c37f263
+ms.openlocfilehash: 50f66d229b80489e429b5db3f2c6cc5787b6884c
 
 
 ---
@@ -24,14 +24,9 @@ ms.openlocfilehash: a1993b2aef38cb76111bbb793f02e4bd307eb64e
 ## <a name="overview"></a>Übersicht
 Mit dem Import/Export-Dienst von Azure können Sie große Datenmengen auf sichere Weise in den Azure-Blobspeicher übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus dem Azure-Blobspeicher auf Festplattenlaufwerke und zum Schicken an Ihren lokalen Standort nutzen. Dieser Dienst eignet sich für Situationen, in denen Sie mehrere TB an Daten an oder von Azure übertragen möchten und in denen das Hoch- oder Herunterladen über das Netzwerk aufgrund der eingeschränkten Bandbreite oder hoher Netzwerkkosten nicht möglich ist.
 
-Für den Dienst ist es erforderlich, dass Festplattenlaufwerke über eine BitLocker-Verschlüsselung verfügen, damit für die Sicherheit Ihrer Daten gesorgt ist. Der Dienst unterstützt die klassischen Speicherkonten, die in allen Regionen des öffentlichen Azure vorhanden sind. Schicken Sie die Festplattenlaufwerke an einen der unterstützten Standorte, die weiter unten in diesem Artikel angegeben sind.
+Für den Dienst ist es erforderlich, dass Festplattenlaufwerke über eine BitLocker-Verschlüsselung verfügen, damit für die Sicherheit Ihrer Daten gesorgt ist. Der Dienst unterstützt klassische und Azure Resource Manager-Speicherkonten (standardmäßige und kalte Ebene), die in allen Regionen des öffentlichen Azure vorhanden sind. Schicken Sie die Festplattenlaufwerke an einen der unterstützten Standorte, die weiter unten in diesem Artikel angegeben sind.
 
 In diesem Artikel erfahren Sie mehr zum Import/Export-Dienst von Azure und zum Schicken von Laufwerken, um Ihre Daten in und aus Azure-Blobspeichern zu kopieren.
-
-> [!IMPORTANT]
-> Sie können Import- und Exportaufträge für den klassischen Speicher mit dem klassischen Portal oder den REST-APIs des Import/Export-Diensts ( [Speicher-Import/Export Service REST-API-Referenz](http://go.microsoft.com/fwlink/?LinkID=329099)) erstellen und verwalten. Resource Manager-Speicherkonten werden derzeit nicht unterstützt.
-> 
-> 
 
 ## <a name="when-should-i-use-the-azure-importexport-service"></a>Wann sollte der Import/Export-Dienst von Azure verwendet werden?
 Sie können den Import/Export-Dienst von Azure nutzen, wenn das Hoch- bzw. Herunterladen von Daten über das Netzwerk zu langsam oder das Hinzufügen weiterer Bandbreite aus Kostengründen nicht möglich ist.
@@ -43,11 +38,11 @@ Sie können diesen Dienst in folgenden Szenarien verwenden:
 * Sicherung: Erstellen Sie Sicherungen Ihrer lokalen Daten für die Speicherung im Azure-Blobspeicher.
 * Datenwiederherstellung: Stellen Sie große Datenmengen wieder her, die im Blobspeicher gespeichert sind, und lassen Sie sie an Ihren lokalen Standort schicken.
 
-## <a name="pre-requisites"></a>Voraussetzungen
-In diesem Abschnitt sind die Voraussetzungen aufgeführt, die für diesen Dienst erforderlich sind. Lesen Sie sich diese Informationen sorgfältig durch, bevor Sie Ihre Laufwerke verschicken.
+## <a name="prerequisites"></a>Voraussetzungen
+In diesem Abschnitt sind die Voraussetzungen aufgelistet, die für diesen Dienst erforderlich sind. Lesen Sie sich diese Informationen sorgfältig durch, bevor Sie Ihre Laufwerke verschicken.
 
 ### <a name="storage-account"></a>Speicherkonto
-Sie müssen über ein Azure-Abonnement und ein oder mehrere **klassische** Speicherkonten verfügen, um den Import/Export-Dienst nutzen zu können. Bei jedem Auftrag können lediglich Daten auf ein oder von einem klassischen Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
+Sie müssen über ein Azure-Abonnement und ein oder mehrere Speicherkonten verfügen, um den Import/Export-Dienst nutzen zu können. Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-create-storage-account.md#create-a-storage-account).
 
 ### <a name="blob-types"></a>Blobtypen
 Sie können den Import/Export-Dienst von Azure verwenden, um Daten in **Blockblobs** oder **Seitenblobs** zu kopieren. Umgekehrt können Sie mit diesem Dienst nur **Blockblobs**, **Seitenblobs** oder **Anfügeblobs** aus dem Azure-Speicher exportieren.
@@ -64,28 +59,25 @@ Wenn Sie einen Auftrag erstellen, benachrichtigen Sie den Import-/Export-Dienst,
 * Bei einem Exportauftrag verschicken Sie leere Festplatten.
 * Sie können bis zu 10 Festplatten pro Auftrag schicken.
 
-Sie können einen Import- oder Exportauftrag erstellen, indem Sie das [klassische Portal](https://manage.windowsazure.com/) oder die [Azure Storage Import/Export-REST-API](http://go.microsoft.com/fwlink/?LinkID=329099) verwenden.
+Sie können einen Import- oder Exportauftrag erstellen, indem Sie das Azure-Portal oder die [Azure Storage Import/Export-REST-API](/rest/api/storageimportexport) verwenden.
 
-### <a name="client-tool"></a>Clienttool
-Der erste Schritt beim Erstellen eines **Import** auftrags ist das Vorbereiten des Laufwerks, das für Importzwecke verschickt werden soll. Zum Vorbereiten des Laufwerks müssen Sie es mit einem lokalen Server verbinden und darauf das Azure Import/Export-Clienttool ausführen. Mit diesem Clienttool können Sie Ihre Daten auf das Laufwerk kopieren, die Daten auf dem Laufwerk mit BitLocker verschlüsseln und die Laufwerkjournaldateien generieren.
+### <a name="waimportexport-tool"></a>WAImportExport-Tool
+Der erste Schritt beim Erstellen eines **Import**-Auftrags ist das Vorbereiten der Laufwerke, die für Importzwecke verschickt werden sollen. Zum Vorbereiten der Laufwerke müssen Sie sie mit einem lokalen Server verbinden und darauf das WAImportExport-Tool ausführen. Mit diesem WAImportExport-Tool können Sie Ihre Daten auf das Laufwerk kopieren, die Daten auf dem Laufwerk mit BitLocker verschlüsseln und die Laufwerkjournaldateien generieren.
 
 In den Journaldateien werden grundlegende Informationen zum Auftrag und Laufwerk gespeichert, z.B. die Seriennummer des Laufwerks und der Speicherkontoname. Diese Journaldatei wird nicht auf dem Laufwerk gespeichert. Sie wird beim Erstellen des Importauftrags verwendet. Eine Schritt-für-Schritt-Anleitung zum Erstellen eines Auftrags folgt später in diesem Artikel.
 
-Das Clienttool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Informationen zu den unterstützten Betriebssystemversionen finden Sie im Abschnitt [Betriebssystem](#operating-system) .
+Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Informationen zu den unterstützten Betriebssystemversionen finden Sie im Abschnitt [Betriebssystem](#operating-system) .
 
-Laden Sie die aktuelle Version des [Azure Import/Export-Clienttools](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)herunter. Weitere Details zum Microsoft Import/Export-Tool für Azure finden Sie in der [Referenz zum Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?LinkId=329032).
+Laden Sie die neueste Version des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) herunter. Weitere Informationen zur Verwendung des WAImportExport-Tools finden Sie unter [Using the WAImportExport Tool](storage-import-export-tool-how-to.md) (Verwenden des WAImportExport-Tools).
+
+>[!NOTE]
+>**Vorherige Version:** Sie können [Version WAImportExpot V1 des Tools herunterladen](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) und das [WAImportExpot V1-Benutzerhandbuch](storage-import-export-tool-how-to-v1.md) zu Rate ziehen. Version WAImportExpot V1 des Tools bietet Unterstützung für **die Vorbereitung von Datenträgern, wenn die Daten bereits vorab auf den Datenträger geschrieben werden**. Sie müssen das WAImportExpot V1-Tool auch dann verwenden, wenn der einzige verfügbare Schlüssel der SAS-Schlüssel ist.
+>
 
 ### <a name="hard-disk-drives"></a>Festplattenlaufwerke
-Für den Import/Export-Dienst werden nur interne 3,5-Zoll-SATA II/III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10TB verwenden.
+Für den Import/Export-Dienst werden nur 2,5-Zoll-SSD-Laufwerke bzw. interne 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10TB verwenden.
 Bei Importaufträgen wird nur das erste Datenvolume auf dem Laufwerk verarbeitet. Das Datenvolume muss mit NTFS formatiert sein.
-Beim Kopieren von Daten auf Ihre Festplatte können Sie sie direkt mit einem SATA-Connector oder extern mit einem externen SATA II/III-USB-Adapter verbinden. Wir empfehlen Ihnen die Verwendung von einem der folgenden externen SATA II/III-USB-Adapter:
-
-* Anker 68UPSATAA-02BU
-* Anker 68UPSHHDS-BU
-* Startech SATADOCK22UE
-* Sharkoon QuickPort XT HC
-
-Falls Sie einen Konverter haben, der nicht in der Liste enthalten ist, können Sie versuchen, das Import-/Exporttool für Azure mit Ihrem Konverter zur Vorbereitung des Laufwerks auszuführen, bevor Sie einen unterstützten Konverter erwerben.
+Beim Kopieren von Daten auf Ihre Festplatte können Sie diese direkt mit einem 2,5-Zoll-SSD- bzw. 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-Anschluss oder extern mit einem externen 2,5-Zoll-SSD- bzw. 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-USB-Adapter verbinden.
 
 > [!IMPORTANT]
 > Externe Festplattenlaufwerke mit einem integrierten USB-Adapter werden von diesem Dienst nicht unterstützt. Außerdem kann der Datenträger im Gehäuse einer externen Festplatte nicht verwendet werden. Senden Sie bitte keine externen Festplatten ein.
@@ -95,22 +87,17 @@ Falls Sie einen Konverter haben, der nicht in der Liste enthalten ist, können S
 ### <a name="encryption"></a>Verschlüsselung
 Die Daten auf dem Laufwerk müssen mit BitLocker-Laufwerkverschlüsselung verschlüsselt sein. So sind Ihre Daten beim Transport geschützt.
 
-Für Importaufträge gibt es zwei Möglichkeiten zum Durchführen der Verschlüsselung. Die erste Möglichkeit ist die Verwendung des Parameters „/encrypt“, wenn Sie das Clienttool während der Vorbereitung des Laufwerks ausführen. Die zweite Möglichkeit ist das Aktivieren der BitLocker-Verschlüsselung manuell auf dem Laufwerk und das Angeben des Verschlüsselungsschlüssels bei der Vorbereitung des Laufwerks in der Befehlszeile des Clienttools.
+Für Importaufträge gibt es zwei Möglichkeiten zum Durchführen der Verschlüsselung. Die erste Möglichkeit besteht darin, die Option bei Verwendung der Dataset-CSV-Datei anzugeben, während das WAImportExport-Tool bei der Vorbereitung des Laufwerks ausgeführt wird. Die zweite Möglichkeit ist das manuelle Aktivieren der BitLocker-Verschlüsselung auf dem Laufwerk und das Angeben des Verschlüsselungsschlüssels in der Driveset-CSV bei der Ausführung der Befehlszeile des WAImportExport-Tools während der Laufwerksvorbereitung.
 
-Bei Exportaufträgen wendet der Dienst nach dem Kopieren Ihrer Daten auf die Laufwerke jeweils die BitLocker-Verschlüsselung auf das Laufwerk an, bevor es an Sie zurückgeschickt wird. Der Verschlüsselungsschlüssel wird für Sie über das klassische Portal bereitgestellt.  
+Bei Exportaufträgen wendet der Dienst nach dem Kopieren Ihrer Daten auf die Laufwerke jeweils die BitLocker-Verschlüsselung auf das Laufwerk an, bevor es an Sie zurückgeschickt wird. Der Verschlüsselungsschlüssel wird für Sie über das Azure Portal bereitgestellt.  
 
 ### <a name="operating-system"></a>Betriebssystem
-Sie können eines der folgenden 64-Bit-Betriebssysteme zum Vorbereiten der Festplatte mit dem Azure Import/Export-Tool verwenden, bevor Sie die Festplatte an Azure schicken:
+Sie können eines der folgenden 64-Bit-Betriebssysteme zum Vorbereiten der Festplatte mit dem WAImportExport-Tool verwenden, bevor Sie die Festplatte an Azure schicken:
 
 Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10<sup>1</sup>, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2. Alle diese Betriebssysteme unterstützen die BitLocker-Laufwerkverschlüsselung.
 
-> [!IMPORTANT]
-> <sup>1</sup>Laden Sie die neueste Version des Import/Export-Tools für Azure herunter, wenn Sie die Festplatte mit einem Computer unter Windows 10 vorbereiten.
-> 
-> 
-
 ### <a name="locations"></a>Standorte
-Der Azure Import/Export-Dienst unterstützt das Kopieren von Daten von bzw. in alle öffentlichen Azure-Speicherkonten. Sie können Festplatten an einen der unten angegebenen Standorte schicken. Falls sich Ihr Speicherkonto an einem öffentlichen Azure-Standort befindet, der hier nicht aufgeführt ist, wird ein anderer Zielstandort angegeben, wenn Sie den Auftrag mit dem klassischen Portal oder mit der Import/Export-REST-API erstellen.
+Der Azure Import/Export-Dienst unterstützt das Kopieren von Daten von bzw. in alle öffentlichen Azure-Speicherkonten. Sie können Festplatten an einen der unten angegebenen Standorte schicken. Falls sich Ihr Speicherkonto an einem öffentlichen Azure-Standort befindet, der hier nicht aufgeführt ist, wird ein anderer Zielstandort angegeben, wenn Sie den Auftrag mit dem Azure-Portal oder mit der Import/Export-REST-API erstellen.
 
 Unterstützte Standorte für die Verschickung:
 
@@ -129,6 +116,9 @@ Unterstützte Standorte für die Verschickung:
 * Japan (Westen)
 * Japan Ost
 * Indien (Mitte)
+* Kanada
+* US-Behörde
+* China
 
 ### <a name="shipping"></a>Versand
 **Schicken von Festplatten an das Rechenzentrum:**
@@ -141,12 +131,12 @@ Sie können Kurierdienste wie FedEx, DHL, UPS oder US Postal Service nutzen, um 
 
 Beim Erstellen eines Import- oder Exportauftrags müssen Sie eine Rücksendeadresse angeben, an die Festplatten nach Abschluss des Auftrags von Microsoft zurückgeschickt werden können. Achten Sie darauf, dass Sie eine gültige Rücksendeadresse angeben, um Verzögerungen bei der Verarbeitung zu vermeiden.
 
-Sie müssen auch eine gültige Nummer Ihres Kontos bei FedEx oder DHL angeben, die von Microsoft zum Zurücksenden der Laufwerke verwendet werden kann. Eine FedEx-Kontonummer wird benötigt, um den Rückversand für Festplatten von Standorten in den USA und Europa durchzuführen. Eine DHL-Kontonummer wird benötigt, um den Rückversand für Festplatten von Standorten in Asien und Australien durchzuführen. Sie können ein Konto bei [FedEx](http://www.fedex.com/us/oadr/) (für USA und Europa) oder [DHL](http://www.dhl.com/) (Asien und Australien) erstellen, falls Sie noch nicht über ein solches Konto verfügen. Wenn Sie bereits über die Nummer eines Kontos bei einem Kurierdienst verfügen, sollten Sie überprüfen, ob sie gültig ist.
+Sie können einen Kurierdienst Ihrer Wahl verwenden, um die Festplatte zu senden. Der Kurierdienst muss eine angemessene Nachverfolgung bieten, um die Überwachungskette zu gewährleisten. Sie müssen auch eine gültige Nummer Ihres Kontos bei FedEx oder DHL angeben, die von Microsoft zum Zurücksenden der Laufwerke verwendet werden kann. Eine FedEx-Kontonummer wird benötigt, um den Rückversand für Festplatten von Standorten in den USA und Europa durchzuführen. Eine DHL-Kontonummer wird benötigt, um den Rückversand für Festplatten von Standorten in Asien und Australien durchzuführen. Sie können ein Konto bei [FedEx](http://www.fedex.com/us/oadr/) (für USA und Europa) oder [DHL](http://www.dhl.com/) (Asien und Australien) erstellen, falls Sie noch nicht über ein solches Konto verfügen. Wenn Sie bereits über die Nummer eines Kontos bei einem Kurierdienst verfügen, sollten Sie überprüfen, ob sie gültig ist.
 
 Beim Versand Ihrer Pakete müssen Sie die Nutzungsbedingungen unter [Microsoft Azure-Nutzungsbedingungen](https://azure.microsoft.com/support/legal/services-terms/)beachten.
 
 > [!IMPORTANT]
-> Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen. Z.B. muss allen Paketen, die Ländergrenzen überschreiten (Grenzüberschreitungen innerhalb der Europäischen Union ausgenommen), eine Handelsrechnung beiliegen. Sie könnten eine ausgefüllte Kopie der Handelsrechnung von der Website des Frachtführers ausdrucken. Beispiele für Handelsrechnungen sind die [DHL-Handelsrechnung](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) oder die [FedEx-Handelsrechnung](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Stellen Sie sicher, dass Microsoft nicht als Exporteur angegeben wurde.
+> Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergrenzen überqueren. Sie müssen sicherstellen, dass Ihre physischen Medien und Daten gemäß geltender Gesetze importiert bzw. exportiert werden. Prüfen Sie vor dem Versand der physischen Medien mit Ihren Rechtsberatern, ob Medien und Daten laut Gesetz an das entsprechende Rechenzentrum verschickt werden dürfen. So stellen Sie sicher, dass Ihre Daten zeitnah bei Microsoft eintreffen. Z.B. muss allen Paketen, die Ländergrenzen überschreiten (Grenzüberschreitungen innerhalb der Europäischen Union ausgenommen), eine Handelsrechnung beiliegen. Sie könnten eine ausgefüllte Kopie der Handelsrechnung von der Website des Frachtführers ausdrucken. Beispiele für Handelsrechnungen sind die [DHL-Handelsrechnung](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf) und [FedEx-Handelsrechnung](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf). Stellen Sie sicher, dass Microsoft nicht als Exporteur angegeben wurde.
 > 
 > 
 
@@ -159,9 +149,9 @@ In diesem Abschnitt werden die allgemeinen Schritte beschrieben, die für Import
 Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
 
 * Bestimmen Sie die zu importierenden Daten und die Anzahl der benötigten Festplatten.
-* Geben Sie die Zielblobs für Ihre Daten in Blob Storage an.
-* Verwenden Sie das Azure Import/Export-Tool, um die Daten auf eine oder mehrere Festplatten zu kopieren und per BitLocker zu verschlüsseln.  
-* Erstellen Sie einen Importauftrag in Ihrem klassischen Zielspeicherkonto mit dem klassischen Portal oder der Import/Export-REST-API. Laden Sie bei Verwendung des klassischen Portals die Laufwerkjournaldateien hoch.
+* Geben Sie die Zielblobspeicherorte für Ihre Daten im Blobspeicher an.
+* Verwenden Sie das the WAImportExport-Tool, um die Daten auf eine oder mehrere Festplatten zu kopieren und per BitLocker zu verschlüsseln.
+* Erstellen Sie einen Importauftrag in Ihrem Zielspeicherkonto mit dem Azure-Portal oder der Import/Export-REST-API. Laden Sie bei Verwendung des Azure-Portals die Laufwerkjournaldateien hoch.
 * Geben Sie die Rücksendeadresse und die Nummer Ihres Kontos beim Kurierdienst an, die für das Zurücksenden der Festplatten verwendet werden können.
 * Schicken Sie die Festplatten an die Versandadresse, die Sie während der Erstellung des Auftrags erhalten haben.
 * Aktualisieren Sie die Nummer für die Sendungsverfolgung in den Details des Importauftrags, und senden Sie den Importauftrag ab.
@@ -175,29 +165,56 @@ Ein Exportauftrag umfasst im Allgemeinen die folgenden Schritte:
 
 * Bestimmen Sie die zu exportierenden Daten und die Anzahl der benötigten Festplatten.
 * Identifizieren Sie die Quellblobs oder Containerpfade Ihrer Daten im Blobspeicher.
-* Erstellen Sie einen Exportauftrag in Ihrem Quellspeicherkonto mit dem klassischen Portal oder der Import/Export-REST-API.
+* Erstellen Sie einen Exportauftrag in Ihrem Quellspeicherkonto mit dem Azure-Portal oder der Import/Export-REST-API.
 * Geben Sie die Quellblobs oder Containerpfade Ihrer Daten im Exportauftrag an.
 * Geben Sie die Rücksendeadresse und die Nummer Ihres Kontos beim Kurierdienst an, die für das Zurücksenden der Festplatten verwendet werden können.
 * Schicken Sie die Festplatten an die Versandadresse, die Sie während der Erstellung des Auftrags erhalten haben.
 * Aktualisieren Sie die Nummer für die Sendungsverfolgung in den Details des Exportauftrags, und senden Sie den Exportauftrag ab.
 * Die Festplatten kommen im Azure-Rechenzentrum an und werden verarbeitet.
-* Die Festplatten werden mit BitLocker verschlüsselt. Die Schlüssel sind über das klassische Portal verfügbar.  
+* Die Festplatten werden mit BitLocker verschlüsselt. Die Schlüssel sind über das Azure-Portal verfügbar.  
 * Die Festplatten werden über Ihr Kurierdienstkonto an die Rücksendeadresse zurückgeschickt, die im Importauftrag angegeben ist.
   
     ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/exportjob.png)
 
-### <a name="viewing-your-job-status"></a>Anzeigen des Auftragsstatus
-Sie können den Status Ihrer Import- oder Exportaufträge im klassischen Portal nachverfolgen. Navigieren Sie im klassischen Portal zu Ihrem Speicherkonto, und klicken Sie auf die Registerkarte **Import/Export** . Eine Liste Ihrer Aufträge wird auf der Seite angezeigt. Sie können die Liste nach Auftragsstatus, Auftragsname, Auftragstyp oder Tracking-Nummer filtern.
+### <a name="viewing-your-job-and-drive-status"></a>Anzeigen von Auftrags- und Laufwerksstatus
+Sie können den Status Ihrer Import- oder Exportaufträge im Azure-Portal nachverfolgen. Klicken Sie auf die Registerkarte **Import/Export**. Eine Liste Ihrer Aufträge wird auf der Seite angezeigt.
+
+![Anzeigen des Auftragsstatus](./media/storage-import-export-service/jobstate.png)
 
 Je nachdem, an welchem Punkt des Prozesses sich Ihre Festplatte befindet, wird einer der folgenden Auftragsstatus angezeigt.
 
 | Auftragsstatus | Beschreibung |
 |:--- |:--- |
-| Wird erstellt |Ihr Auftrag wurde erstellt, aber Sie haben Ihre Versandinformationen noch nicht angegeben. |
-| Versand |Ihr Auftrag wurde erstellt, und Sie haben Ihre Versandinformationen angegeben. **Hinweis**: Nachdem die Festplatte an das Azure-Rechenzentrum geliefert wurde, kann als Status vorerst noch „Versand“ angezeigt werden. Wenn der Dienst mit dem Kopieren der Daten beginnt, ändert sich der Status in „Übertragung wird ausgeführt“. Falls Sie einen genaueren Status für Ihre Festplatte angezeigt bekommen möchten, können Sie die Import/Export-REST-API verwenden. |
-| Übertragung wird ausgeführt |Ihre Daten werden von Ihrem Laufwerk (bei einem Importauftrag) oder auf Ihr Laufwerk (bei einem Exportauftrag) übertragen. |
-| Verpackung |Die Übertragung Ihrer Daten ist abgeschlossen, und Ihre Festplatte wird für den Rückversand vorbereitet. |
-| Abgeschlossen |Ihre Festplatte wurde an Sie zurückgeschickt. |
+| Wird erstellt | Nachdem ein Auftrag erstellt wurde, ist sein Status auf „Wird erstellt“ festgelegt. Während der Auftrag sich im Status „Wird erstellt“ befindet, geht der Import/Export-Dienst davon aus, dass die Laufwerke noch nicht an das Rechenzentrum versendet wurden. Ein Auftrag verbleibt bis zu zwei Wochen im Status „Wird erstellt“. Anschließend wird er automatisch vom Dienst gelöscht. |
+| Versand | Nachdem Sie Ihr Paket gesendet haben, sollten Sie die Nachverfolgungsinformationen im Azure-Portal aktualisieren.  So erhält der Auftrag den Status „Wird versendet“. Der Auftrag verbleibt bis zu zwei Wochen im Status „Wird versendet“. 
+| Empfangen | Nachdem das Rechenzentrum alle Laufwerke empfangen hat, wird der Status des Auftrags auf „Empfangen“ gesetzt. |
+| Übertragung wird ausgeführt | Nachdem die Verarbeitung mindestens eines Laufwerks begonnen hat, wird der Status des Auftrags auf „Übertragung wird ausgeführt“ festgelegt. Ausführliche Informationen finden Sie im Abschnitt „Laufwerkstatus“. |
+| Verpackung | Nachdem die Verarbeitung aller Laufwerke abgeschlossen ist, wird der Auftrag in den Status „Verpackung“ gesetzt, bis die Laufwerke an den Kunden zurückgesendet werden. |
+| Abgeschlossen | Nachdem alle Laufwerke an den Kunden zurückgesendet worden sind, und der Auftrag ohne Fehler abgeschlossen wurde, wird der Auftrag in den Status „Abgeschlossen“ gesetzt. Nach 90 Tagen im Status „Abgeschlossen“ wird der Auftrag automatisch gelöscht. |
+| Geschlossen | Nachdem alle Laufwerke an den Kunden zurückgesendet worden sind, und während der Verarbeitung des Auftrags Fehler aufgetreten sind, wird der Auftrag in den Status „Geschlossen“ gesetzt. Nach 90 Tagen im Status „Geschlossen“ wird der Auftrag automatisch gelöscht. |
+
+Die Tabelle im Folgenden beschreibt den Lebenszyklus eines einzelnen Laufwerks mit seinen Übergängen in einem Import- oder Exportauftrag. Der aktuelle Status der einzelnen Laufwerke in einem Auftrag wird jetzt im Azure-Portal angezeigt.
+Die folgende Tabelle beschreibt die einzelnen Status, die jedes Laufwerk in einem Auftrag durchlaufen kann.
+
+![Anzeigen des Laufwerkstatus](./media/storage-import-export-service/drivestate.png)
+
+| Laufwerkstatus | Beschreibung |
+|:--- |:--- |
+| Angegeben | Für einen Importauftrag, der im Azure-Portal erstellt wurde, befindet sich ein Laufwerk anfänglich im Status „Angegeben“. Für einen Exportauftrag befindet sich ein Laufwerk anfänglich im Status „Empfangen“, da beim Erstellen des Auftrags kein Laufwerk angegeben wird. |
+| Empfangen | Das Laufwerk wechselt in den Status „Empfangen“, wenn der Import/Export-Dienstanbieter die Laufwerke verarbeitet hat, die vom Transportunternehmen für einen Importauftrag empfangen wurden. Für einen Exportauftrag ist der anfängliche Laufwerkstatus der Status „Empfangen“. |
+| NeverReceived | Das Laufwerk wechselt in den Status „NeverReceived“, wenn das Paket für einen Auftrag eintrifft, aber kein Laufwerk enthält. Ein Laufwerk kann auch in diesen Status verschoben werden, wenn zwei Wochen verstrichen sind, seitdem der Dienst die Versandinformationen erhalten hat, aber das Paket noch nicht im Rechenzentrum eingetroffen ist. |
+| Übertragung wird ausgeführt | Ein Laufwerk wechselt in den Status „Übertragung wird ausgeführt“, wenn der Dienst beginnt, Daten aus dem Laufwerk in Microsoft Azure Storage zu übertragen. |
+| Abgeschlossen | Ein Laufwerk wechselt in den Status „Abgeschlossen“, wenn der Dienst alle Daten ohne Fehler erfolgreich übertragen hat.
+| CompletedMoreInfo | Ein Laufwerk wechselt in den Status „CompletedMoreInfo“, wenn der Dienst beim Kopieren von Daten entweder von dem Laufwerk oder auf das Laufwerk auf Probleme gestoßen ist. Die Informationen können Fehler, Warnungen oder Informationsmeldungen zum Überschreiben von Blobs umfassen.
+| ShippedBack | Das Laufwerk wechselt in den Status „ShippedBack“, wenn es vom Rechenzentrum an die Rücksendeadresse zurückgesendet wurde. |
+
+Die folgende Tabelle beschreibt die Laufwerkfehlerstatus und die Aktionen, die für jeden Status durchgeführt werden.
+
+| Laufwerkstatus | Ereignis | Lösung / Nächster Schritt |
+|:--- |:--- |:--- |
+| NeverReceived | Ein Laufwerk mit der Kennzeichnung „NeverReceived“ (da es im Rahmen des Versands des Auftrags nicht eingegangen ist) geht in einer anderen Sendung ein. | Das Betriebsteam versetzt das Laufwerk in den Status „Empfangen“. |
+| N/V | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet und nach Abschluss des Auftrags, der dem Originalpaket zugeordnet ist, an den Kunden zurückgegeben. |
+
 
 ### <a name="time-to-process-job"></a>Verarbeitungsdauer des Auftrags
 Die Verarbeitungsdauer eines Import- oder Exportauftrags kann aufgrund von verschiedenen Faktoren variieren, z.B. Versanddauer, Auftragstyp, Typ und Größe der zu kopierenden Daten und Größe der geschickten Festplatten. Der Import/Export-Dienst verfügt nicht über eine Vereinbarung zum Servicelevel (SLA). Sie können die REST-API verwenden, um den Auftragsstatus genauer verfolgen zu können. Der Vorgang zum Auflisten von Aufträgen enthält einen Parameter für die prozentuale Fertigstellung, mit dem Sie den Status des Kopiervorgangs verfolgen können. Sie können sich gern an uns wenden, falls Sie für einen zeitkritischen Import- oder Exportauftrag einen geschätzten Fertigstellungszeitpunkt benötigen.
@@ -219,7 +236,7 @@ Für das Importieren von Daten in den Blobspeicher fallen keine Transaktionskost
 Dieser Abschnitt enthält eine Schritt-für-Schritt-Anleitung zum Erstellen eines Import- und Exportauftrags. Stellen Sie sicher, dass alle [Voraussetzungen](#pre-requisites) erfüllt sind, bevor Sie fortfahren.
 
 ## <a name="how-to-create-an-import-job"></a>Wie kann ich einen Importauftrag erstellen?
-Erstellen Sie einen Importauftrag zum Kopieren von Daten von Festplatten in Ihr Azure-Speicherkonto, indem Sie eine oder mehrere Festplatten mit Daten an das angegebene Rechenzentrum schicken. Im Rahmen des Importauftrags werden Details zu Festplattenlaufwerken, die zu kopierenden Daten, das Zielspeicherkonto und Versandinformationen an den Azure Import/Export-Dienst übermittelt. Die Erstellung eines Importauftrags ist ein dreistufiger Prozess. Bereiten Sie die Festplatten zuerst mit dem Azure Import/Export-Clienttool vor. Senden Sie anschließend einen Importauftrag über das klassische Portal. Der dritte Schritt umfasst das Schicken der Festplatten an die Versandadresse, die bei der Erstellung des Auftrags angegeben wurde, und das Aktualisieren der Versandinformationen in den Auftragsdetails.   
+Erstellen Sie einen Importauftrag zum Kopieren von Daten von Festplatten in Ihr Azure-Speicherkonto, indem Sie eine oder mehrere Festplatten mit Daten an das angegebene Rechenzentrum schicken. Im Rahmen des Importauftrags werden Details zu Festplattenlaufwerken, die zu kopierenden Daten, das Zielspeicherkonto und Versandinformationen an den Azure Import/Export-Dienst übermittelt. Die Erstellung eines Importauftrags ist ein dreistufiger Prozess. Bereiten Sie zuerst die Laufwerke mit dem WAImportExport-Tool vor. Senden Sie anschließend einen Importauftrag über das Azure-Portal. Der dritte Schritt umfasst das Schicken der Festplatten an die Versandadresse, die bei der Erstellung des Auftrags angegeben wurde, und das Aktualisieren der Versandinformationen in den Auftragsdetails.   
 
 > [!IMPORTANT]
 > Sie können nur einen Auftrag pro Speicherkonto senden. Jede verschickte Festplatte kann in ein Speicherkonto importiert werden. Angenommen, Sie möchten Daten in zwei Speicherkonten importieren. In diesem Fall müssen Sie separate Festplattenlaufwerke für jedes Speicherkonto verwenden und pro Speicherkonto einen eigenen Auftrag erstellen.
@@ -227,70 +244,99 @@ Erstellen Sie einen Importauftrag zum Kopieren von Daten von Festplatten in Ihr 
 > 
 
 ### <a name="prepare-your-drives"></a>Vorbereiten Ihrer Laufwerke
-Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst ist das Vorbereiten Ihrer Festplatten mit dem Azure Import/Export-Clienttool. Führen Sie die folgenden Schritte aus, um die Festplatten vorzubereiten:
+Der erste Schritt beim Importieren von Daten mit dem Azure Import/Export-Dienst ist das Vorbereiten Ihrer Festplatten mit dem WAImportExport-Tool. Führen Sie die folgenden Schritte aus, um die Festplatten vorzubereiten:
 
 1. Identifizieren Sie die zu importierenden Daten. Hierbei kann es sich um Verzeichnisse und eigenständige Dateien auf dem lokalen Server oder einer Netzwerkfreigabe handeln.  
-2. Bestimmen Sie anhand der Gesamtgröße der Daten die Anzahl von benötigten Festplatten. Beschaffen Sie die erforderliche Anzahl von SATA II/III-Festplatten (3,5 Zoll).
+2. Bestimmen Sie anhand der Gesamtgröße der Daten die Anzahl von benötigten Festplatten. Beschaffen Sie die erforderliche Anzahl von 2,5-Zoll-SSD-Laufwerken oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II- oder -III-Festplatten.
 3. Identifizieren Sie das Zielspeicherkonto, den Container, die virtuellen Verzeichnisse und die Blobs.
-4. Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
-5. Verwenden Sie das [Azure Import/Export-Tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409) , um Ihre Daten auf eine oder mehrere Festplatten zu kopieren.
+4.  Bestimmen Sie die Verzeichnisse bzw. eigenständigen Dateien, die auf jede Festplatte kopiert werden sollen.
+5.  Erstellen Sie die CSV-Dateien für das Dataset und Driveset.
+    
+    **Dataset-CSV-Datei**
+    
+    Im Folgenden sehen Sie ein Beispiel für eine Dataset CSV-Datei:
+    
+    ```
+    BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
+    "F:\50M_original\100M_1.csv.txt","containername/100M_1.csv.txt",BlockBlob,rename,"None",None
+    "F:\50M_original\","containername/",BlockBlob,rename,"None",None 
+    ```
    
-   * Mit dem Azure Import/Export-Tool werden Kopiersitzungen zum Kopieren der Daten von der Quelle auf die Festplatten erstellt. In einer Kopiersitzung kann das Tool ein einzelnes Verzeichnis mit seinen Unterverzeichnissen oder eine einzelne Datei kopieren.
-   * Unter Umständen benötigen Sie mehrere Kopiersitzungen, wenn Ihre Quelldaten auf mehrere Verzeichnisse verteilt sind.
-   * Für jede Festplatte, die Sie vorbereiten, benötigen Sie mindestens eine Kopiersitzung.
-6. Sie können den Parameter „/encrypt“ angeben, um für die Festplatte die BitLocker-Verschlüsselung zu aktivieren. Alternativ dazu können Sie die BitLocker-Verschlüsselung auf der Festplatte auch manuell aktivieren und beim Ausführen des Tools den Schlüssel angeben.
-7. Das Azure Import/Export-Tool generiert bei der Vorbereitung für jedes Laufwerk eine Laufwerkjournaldatei. Die Laufwerkjournaldatei wird auf Ihrem lokalen Computer gespeichert, nicht auf dem Laufwerk selbst. Beim Erstellen des Importauftrags laden Sie die Journaldatei hoch. Eine Laufwerkjournaldatei enthält die Laufwerk-ID und die BitLocker-Schlüssel sowie weitere Informationen über das Laufwerk.
-   **Wichtig**: Für jede vorbereitete Festplatte ergibt sich eine Journaldatei. Wenn Sie den Importauftrag mit dem klassischen Portal erstellen, müssen Sie alle Journaldateien der Festplatten hochladen, die Teil des Importauftrags sind. Festplatten ohne Journaldateien werden nicht verarbeitet.
+    Im Beispiel oben wird 100M_1.csv.txt in das Stammverzeichnis des Containers mit dem Namen "Containername" kopiert. Wenn der Container "Containername" nicht vorhanden ist, wird er erstellt. Alle Dateien und Ordner in 50M_original werden rekursiv in „Containername“ kopiert. Die Ordnerstruktur wird beibehalten.
+
+    Erfahren Sie mehr über das [Vorbereiten der Dataset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
+    
+    **Beachten Sie Folgendes:** Die Daten werden standardmäßig als Blockblobs importiert. Sie können den Feldwert „BlobType“ verwenden, um Daten als Seitenblobs zu importieren. Wenn Sie beispielsweise VHD-Dateien importieren, die als Datenträger auf einer Azure VM bereitgestellt werden, müssen Sie sie als Seitenblobs importieren.
+
+    **Driveset-CSV-Datei**
+
+    Der Wert des Driveset-Flags ist eine CSV-Datei, die die Liste der Datenträger enthält, denen die Laufwerkbuchstaben zugeordnet sind, damit das Tool richtig die Liste der vorzubereitenden Datenträger auswählt. 
+
+    Im Folgenden finden Sie ein Beispiel der Driveset CSV-Datei:
+    
+    ```
+    DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+    G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
+    H,Format,SilentMode,Encrypt,
+    ```
+
+    Im obigen Beispiel wird davon ausgegangen, dass zwei Festplatten angeschlossen sind, und grundlegende NTFS-Volumes mit Volumebuchstaben G:\ und H:\ erstellt wurden. Das Tool formatiert und verschlüsselt den Datenträger, der H:\ hostet, und formatiert und verschlüsselt nicht den Datenträger, der Volume G:\ hostet.
+
+    Erfahren Sie mehr über das [Vorbereiten der Driveset-CSV-Datei](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file).
+
+6.  Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip) auf eine oder mehrere Festplatten.
+7.  Sie können „Encrypt“ im Feld „Encryption“ der Driveset-CSV-Datei angeben, um für die Festplatte die BitLocker-Verschlüsselung zu aktivieren. Alternativ dazu können Sie die BitLocker-Verschlüsselung auf der Festplatte auch manuell aktivieren, „AlreadyEncrypted“ angeben und den Schlüssel beim Ausführen des Tools in der Driveset-CSV-Datei bereitstellen.
+
 8. Ändern Sie die Daten auf den Festplatten oder die Journaldatei nicht mehr, nachdem Sie die Festplattenvorbereitung abgeschlossen haben.
 
-Unten sind die Befehle und Beispiele zum Vorbereiten der Festplatte mit dem Azure Import/Export-Clienttool aufgeführt.
+> [!IMPORTANT]
+> Für jede vorbereitete Festplatte ergibt sich eine Journaldatei. Wenn Sie den Importauftrag mit dem Azure-Portal erstellen, müssen Sie alle Journaldateien der Festplatten hochladen, die Teil des Importauftrags sind. Festplatten ohne Journaldateien werden nicht verarbeitet.
+> 
+>
 
-Befehl „PrepImport“ des Azure Import/Export-Clienttools für die erste Kopiersitzung zum Kopieren eines Verzeichnisses:
+Unten sind die Befehle und Beispiele zum Vorbereiten der Festplatte mit dem WAImportExport-Tool aufgeführt.
+
+Der PrepImport-Befehl des WAImportExport-Tools für die erste Kopiersitzung zum Kopieren von Verzeichnissen und/oder Dateien mit einer neuen Kopiersitzung:
 
 ```
-WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
 ```
 
 **Beispiel:**
 
-Im Beispiel unten werden alle Dateien und Unterverzeichnisse aus „H:\Video“ auf die Festplatte kopiert, die unter „X:“ bereitgestellt wurde. Die Daten werden in das Zielspeicherkonto, das mit dem Speicherkontoschlüssel angegeben wird, und in den Speichercontainer mit dem Namen „video“ importiert. Wenn der Speichercontainer nicht vorhanden ist, wird er erstellt. Mit diesem Befehl wird auch die Zielfestplatte formatiert und verschlüsselt.
-
 ```
-WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:storageaccountkey /t:x /format /encrypt /srcdir:H:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-Befehl „PrepImport“ des Azure Import/Export-Clienttools für nachfolgende Kopiersitzungen zum Kopieren eines Verzeichnisses:
+Um **weitere Laufwerke hinzufügen**, können Sie eine neue Driveset-Datei erstellen und den Befehl wie unten beschrieben ausführen. Geben Sie für nachfolgende Kopiersitzungen mit anderen Laufwerken als den in der InitialDriveset-CSV-Datei angegebenen eine neue Driveset-CSV-Datei an, und geben Sie sie als Wert für den Parameter AdditionalDriveSet an. Verwenden Sie den **gleichen Journaldateinamen**, und geben Sie eine **neue Sitzungs-ID** an. Das Format der AdditionalDriveset-CSV-Datei ist mit dem InitialDriveSet-Format identisch.
 
 ```
-WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
 ```
 
-Geben Sie für nachfolgende Kopiersitzungen für Kopiervorgänge auf dieselbe Festplatte den gleichen Journaldateinamen und eine neue Sitzungs-ID an. Es ist nicht erforderlich, den Speicherkontoschlüssel und das Ziellaufwerk erneut anzugeben, und Sie müssen die Festplatte auch nicht formatieren oder verschlüsseln. In diesem Beispiel kopieren wir den Ordner „H:\Photo“ und dessen Unterverzeichnisse auf dasselbe Ziellaufwerk in den Speichercontainer mit dem Namen „photo“.
-
+**Beispiel**
 ```
-WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstdir:photo/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt
-```
-
-Befehl „PrepImport“ des Azure Import/Export-Clienttools für die erste Kopiersitzung zum Kopieren einer Datei:
-
-```
-WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
 ```
 
-Befehl „PrepImport“ des Azure Import/Export-Clienttools für nachfolgende Kopiersitzungen zum Kopieren einer Datei:
+Um dem gleichen Driveset zusätzliche Daten hinzuzufügen, kann der PrepImport-Befehl des WAImportExport-Tools für nachfolgende Kopiersitzungen zum Kopieren zusätzlicher Dateien/Verzeichnisse aufgerufen werden: Geben Sie für nachfolgende Kopiersitzungen zum Kopieren auf die gleichen Festplattenlaufwerke in der InitialDriveset-CSV-Datei den **gleichen Journaldateinamen** an, und geben Sie eine **neue Sitzungs-ID** an; den Speicherkontoschlüssel müssen Sie nicht bereitstellen.
 
 ```
-WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /srcfile:<SourceFile> /dstblob:<DestinationBlobPath> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]
+WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
 ```
 
-**Beachten Sie Folgendes:** Die Daten werden standardmäßig als Blockblobs importiert. Sie können den Parameter „/BlobType“ verwenden, um Daten als Seitenblobs zu importieren. Wenn Sie beispielsweise VHD-Dateien importieren, die als Datenträger auf einer Azure VM bereitgestellt werden, müssen Sie sie als Seitenblobs importieren. Falls Sie nicht sicher sind, welchen Blobtyp Sie verwenden sollen, können Sie „/blobType:auto“ angeben. Wir helfen Ihnen dann beim Bestimmen des richtigen Typs. In diesem Fall werden alle VHD- und VHDX-Dateien als Seitenblobs importiert, und der Rest wird als Blockblobs importiert.
+**Beispiel:**
 
-Weitere Details zur Verwendung des Azure Import/Export-Clienttools finden Sie unter [Vorbereiten von Festplatten für einen Importauftrag](https://msdn.microsoft.com/library/dn529089.aspx).
+```
+WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
+```
 
-Ausführlichere Schritt-für-Schritt-Anleitungen finden Sie unter [Beispielworkflow zur Vorbereitung von Festplatten für einen Importauftrag](https://msdn.microsoft.com/library/dn529097.aspx) .  
+Weitere Details zur Verwendung des WAImportExport-Tools finden Sie unter [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-tool-preparing-hard-drives-import.md).
+
+Ausführlichere Schritt-für-Schritt-Anleitungen finden Sie unter [Beispielworkflow zur Vorbereitung von Festplatten für einen Importauftrag](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md) .  
 
 ### <a name="create-the-import-job"></a>Importauftrag erstellen
-1. Sobald Sie Ihre Festplatte vorbereitet haben, navigieren Sie zum Speicherkonto im [klassischen Portal](https://manage.windowsazure.com) , und zeigen Sie das Dashboard an. Klicken Sie unter **Auf einen Blick** auf **Importauftrag erstellen**. Sehen Sie sich die Schritte an, und aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Festplatte vorbereitet haben und die Laufwerkjournaldatei verfügbar ist.
+1. Sobald Sie Ihr Laufwerk vorbereitet haben, navigieren Sie zum Speicherkonto im Azure-Portal und zeigen das Dashboard an. Klicken Sie unter **Auf einen Blick** auf **Importauftrag erstellen**. Sehen Sie sich die Schritte an, und aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Festplatte vorbereitet haben und die Laufwerkjournaldatei verfügbar ist.
 2. Geben Sie im ersten Schritt die Kontaktinformationen des Ansprechpartners für diesen Importauftrag und eine gültige Rücksendeadresse an. Wenn Sie ausführliche Protokolldaten für den Importauftrag speichern möchten, wählen Sie die Option **Save the verbose log in my 'waimportexport' 	blob container**.
 3. Laden Sie im zweiten Schritt die Protokolldateien hoch, die Sie während der Vorbereitung des Laufwerks erhalten haben. Sie müssen pro vorbereitetem Laufwerk eine Datei hochladen.
    
@@ -303,7 +349,7 @@ Ausführlichere Schritt-für-Schritt-Anleitungen finden Sie unter [Beispielworkf
    Falls Sie Ihre Nachverfolgungsnummer haben, können Sie Ihren Kurierdienst in der Liste auswählen und die Nummer eingeben.
    
    Wenn Sie noch keine Tracking-Nummer haben, wählen Sie **I will provide my shipping information for this import job once I have shipped my package**, und schließen Sie den Importprozess ab.
-6. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie das Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im klassischen Portal zurück, wählen Sie den Auftrag in der Liste aus, und klicken Sie auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
+6. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie Ihr Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im Azure-Portal zurück, wählen Ihren Auftrag in der Liste aus und klicken auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
    
     Wenn die Nachverfolgungsnummer nicht innerhalb von zwei Wochen nach Erstellung des Auftrags aktualisiert wird, läuft der Auftrag ab.
    
@@ -316,11 +362,11 @@ Erstellen Sie einen Exportauftrag, um den Import/Export-Dienst darüber zu infor
 ### <a name="prepare-your-drives"></a>Vorbereiten Ihrer Laufwerke
 Zur Vorbereitung von Laufwerken für einen Exportauftrag werden folgende Vorabprüfungen empfohlen:
 
-1. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem Import/Export-Tool für Azure. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](https://msdn.microsoft.com/library/azure/dn722414.aspx). Sie können damit eine Vorschau der Festplattenverwendung für Blobs anzeigen, die Sie ausgewählt haben, basierend auf der Größe der Laufwerke, die Sie verwenden möchten.
+1. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem WAImportExport-Tool. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](https://msdn.microsoft.com/library/azure/dn722414.aspx). Sie können damit eine Vorschau der Festplattenverwendung für Blobs anzeigen, die Sie ausgewählt haben, basierend auf der Größe der Laufwerke, die Sie verwenden möchten.
 2. Überprüfen Sie, ob Sie Lese-/Schreibzugriff auf die Festplatte haben, die für den Exportauftrag verschickt werden soll.
 
 ### <a name="create-the-export-job"></a>Erstellen des Exportauftrags
-1. Navigieren Sie zum Speicherkonto im [klassischen Portal](https://manage.windowsazure.com), und zeigen Sie das Dashboard an, um einen Exportauftrag zu erstellen. Klicken Sie unter **Auf einen Blick** auf **Exportauftrag erstellen**, und fahren Sie mit dem Assistenten fort.
+1. Navigieren Sie zum Speicherkonto im Azure-Portal, und zeigen Sie das Dashboard an, um einen Exportauftrag zu erstellen. Klicken Sie unter **Auf einen Blick** auf **Exportauftrag erstellen**, und fahren Sie mit dem Assistenten fort.
 2. Geben Sie im zweiten Schritt die Kontaktinformationen des Ansprechpartners für diesen Exportauftrag an. Wenn Sie ausführliche Protokolldaten für den Exportauftrag speichern möchten, wählen Sie die Option **Save the verbose log in my 'waimportexport' 	blob container**.
 3. Legen Sie im dritten Schritt fest, welche Blob-Daten Sie von Ihrem Speicherkonto auf Ihr leeres Laufwerk oder Ihre Laufwerke exportieren möchten. Sie können alle Blob-Daten des Speicherkontos exportieren, oder Sie legen fest, welche Blobs oder Blob-Sätze exportiert werden sollen.
    
@@ -351,7 +397,7 @@ Zur Vorbereitung von Laufwerken für einen Exportauftrag werden folgende Vorabpr
    Falls Sie Ihre Nachverfolgungsnummer haben, können Sie Ihren Kurierdienst in der Liste auswählen und die Nummer eingeben.
    
    Falls Sie noch keine Nachverfolgungsnummer haben, wählen Sie die Option **Ich werde die Versanddaten für diesen Exportauftrag angeben, sobald ich mein Paket verschickt habe**aus und schließen Sie den Exportvorgang ab.
-6. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie das Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im klassischen Portal zurück, wählen Sie den Auftrag in der Liste aus, und klicken Sie auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
+6. Um Ihre Nachverfolgungsnummer einzugeben, nachdem Sie Ihr Paket verschickt haben, kehren Sie zur Seite **Import/Export** für Ihr Speicherkonto im Azure-Portal zurück, wählen Ihren Auftrag in der Liste aus und klicken auf **Versandinformationen**. Navigieren Sie durch den Assistenten und geben Sie Ihre Nachverfolgungsnummer in Schritt 2 ein.
    
     Wenn die Nachverfolgungsnummer nicht innerhalb von zwei Wochen nach Erstellung des Auftrags aktualisiert wird, läuft der Auftrag ab.
    
@@ -361,24 +407,14 @@ Zur Vorbereitung von Laufwerken für einen Exportauftrag werden folgende Vorabpr
    > Wenn das zu exportierende Blob während des Kopierens auf die Festplatte verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
    > 
    > 
-7. Sie können den Auftragsstatus im Dashboard im klassischen Portal nachverfolgen. Im vorherigen Abschnitt unter „Anzeigen des Auftragsstatus“ wird beschrieben, was ein Auftragsstatus jeweils bedeutet.
-8. Nachdem Sie die Laufwerke mit den exportierten Daten erhalten haben, können Sie die BitLocker-Schlüssel anzeigen und kopieren, die vom Dienst für Ihre Festplatte generiert wurden. Navigieren Sie im klassischen Portal zu Ihrem Speicherkonto, und klicken Sie auf die Registerkarte „Import/Export“. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie auf die Schaltfläche Schlüssel anzeigen. Die BitLocker-Schlüssel werden wie hier dargestellt angezeigt:
+7. Sie können den Auftragsstatus im Dashboard im Azure-Portal nachverfolgen. Im vorherigen Abschnitt unter „Anzeigen des Auftragsstatus“ wird beschrieben, was ein Auftragsstatus jeweils bedeutet.
+8. Nachdem Sie die Laufwerke mit den exportierten Daten erhalten haben, können Sie die BitLocker-Schlüssel anzeigen und kopieren, die vom Dienst für Ihre Festplatte generiert wurden. Navigieren Sie im Azure-Portal zu Ihrem Speicherkonto, und klicken Sie auf die Registerkarte „Import/Export“. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie auf die Schaltfläche Schlüssel anzeigen. Die BitLocker-Schlüssel werden wie hier dargestellt angezeigt:
    
-   ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](.\\media\\storage-import-export-service\\export-job-bitlocker-keys.png)
+   ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 
 Sehen Sie sich unten den Abschnitt mit den häufig gestellten Fragen an. Darin werden die häufigsten Fragen von Kunden beantwortet, die bei der Nutzung des Diensts entstehen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-**Wie lange dauert das Kopieren meiner Daten, nachdem meine Festplatten im Rechenzentrum angekommen sind?**
-
-Die Kopierdauer variiert in Abhängigkeit von verschiedenen Faktoren wie Auftragstyp, Typ und Größe der kopierten Daten, Größe der bereitgestellten Festplatten und vorhandene Workload. Je nach diesen Faktoren kann der Vorgang zwischen zwei Tagen und zwei Wochen dauern. Daher ist es schwierig, einen allgemeinen Schätzwert zu nennen. Der Dienst versucht, Ihren Auftrag zu optimieren, indem nach Möglichkeit mehrere Festplatten parallel kopiert werden. Sie können sich gern an uns wenden, falls Sie für einen zeitkritischen Import- oder Exportauftrag eine Schätzung benötigen.
-
-**Wann sollte der Import/Export-Dienst von Azure verwendet werden?**
- Erwägen Sie, den Import/Export-Dienst von Azure einzusetzen, wenn das Hoch- oder Herunterladen über das Netzwerk grob geschätzt mehr als 7 Tage dauern wird. Die Dauer können Sie mit einem beliebigen Onlinetaschenrechner berechnen, oder Sie können den Rechner [herunterladen](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/archive/master.zip), der sich in unserem Azure Import/Export-REST-API-Beispiel im Azure-Beispielrepository unter [Data Transfer Speed Calculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) (Rechner zum Berechnen der Datenübertragungsgeschwindigkeit) befindet. Dies ist keine genaue Berechnung, sondern nur eine ungefähre Angabe.
-
-**Kann ich den Azure Import/Export-Dienst mit einem Resource Manager-Speicherkonto verwenden?**
-
-Nein. Sie können den Azure Import/Export-Dienst nicht verwenden, um Daten direkt in ein oder aus einem Resource Manager-Speicherkonto zu kopieren. Der Dienst unterstützt nur klassische Speicherkonten. Die Unterstützung von Resource Manager-Speicherkonten wird in Kürze verfügbar sein. Als Alternativlösung können Sie Daten in ein klassisches Speicherkonto importieren und das Konto mit [AzCopy](storage-use-azcopy.md) oder CopyBlob zu Ihrem Resource Manager-Speicherkonto migrieren.
 
 **Kann ich den Azure Import/Export-Dienst verwenden, um Azure Files zu kopieren?**
 
@@ -390,11 +426,11 @@ Nein. Der Azure Import/Export-Dienst unterstützt keine CSP-Abonnements. Diese U
 
 **Kann ich den Schritt für die Festplattenvorbereitung für einen Importauftrag überspringen, oder kann ich eine Festplatte ohne Kopiervorgang vorbereiten?**
 
-Alle Festplatten, die Sie zum Importieren von Daten verschicken möchten, müssen mit dem Azure Import/Export-Clienttool vorbereitet werden. Sie müssen das Clienttool verwenden, um die Daten auf die Festplatte zu kopieren.
+Alle Festplatten, die Sie zum Importieren von Daten verschicken möchten, müssen mit dem WAImportExport-Tool vorbereitet werden. Sie müssen das WAImportExport-Tool verwenden, um die Daten auf die Festplatte zu kopieren.
 
 **Muss ich den Datenträger beim Erstellen eines Exportauftrags vorbereiten?**
 
-Nein, aber es empfiehlt sich, einige Vorabüberprüfungen durchzuführen. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem Import/Export-Tool für Azure. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](https://msdn.microsoft.com/library/azure/dn722414.aspx). Sie können damit eine Vorschau der Festplattenverwendung für Blobs anzeigen, die Sie ausgewählt haben, basierend auf der Größe der Laufwerke, die Sie verwenden möchten. Überprüfen Sie außerdem, ob Sie Lese-/Schreibzugriff auf die Festplatte haben, die für den Exportauftrag versendet werden soll.
+Nein, aber es empfiehlt sich, einige Vorabüberprüfungen durchzuführen. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem WAImportExport-Tool. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](https://msdn.microsoft.com/library/azure/dn722414.aspx). Sie können damit eine Vorschau der Festplattenverwendung für Blobs anzeigen, die Sie ausgewählt haben, basierend auf der Größe der Laufwerke, die Sie verwenden möchten. Überprüfen Sie außerdem, ob Sie Lese-/Schreibzugriff auf die Festplatte haben, die für den Exportauftrag versendet werden soll.
 
 **Was geschieht, wenn ich aus Versehen eine HDD verschicke, die den unterstützten Anforderungen nicht entspricht?**
 
@@ -404,17 +440,13 @@ Das Azure-Datacenter schickt das Laufwerk, das den unterstützten Anforderungen 
 
 Sie können einen Auftrag stornieren, solange dieser den Status "Wird erstellt" oder "Wird versendet" hat.
 
-**Wie lange kann ich den Status abgeschlossener Aufträge im klassischen Portal anzeigen?**
+**Wie lange kann ich den Status abgeschlossener Aufträge im Azure-Portal anzeigen?**
 
 Den Status abgeschlossener Aufträge können Sie bis zu 90 Tage lang anzeigen. Abgeschlossene Aufträge werden nach 90 Tagen gelöscht.
 
 **Was soll ich tun, wenn ich mehr als 10 Laufwerke importieren oder exportieren möchte?**
 
 Jeder Import- oder Exportauftrag kann auf maximal 10 Laufwerke für den Import-/Exportdienst verweisen. Wenn Sie mehr als zehn Laufwerke verschicken möchten, können Sie mehrere Aufträge erstellen. Laufwerke, die demselben Auftrag zugeordnet sind, müssen zusammen in einem Paket verschickt werden.
-
-**Kann ich einen USB-SATA-Adapter verwenden, der nicht in der Liste mit den Empfehlungen aufgeführt ist?**
-
-Falls Sie einen Konverter haben, der nicht in der Liste enthalten ist, können Sie versuchen, das Import-/Exporttool für Azure mit Ihrem Konverter zur Vorbereitung des Laufwerks auszuführen, bevor Sie einen unterstützten Konverter erwerben.
 
 **Werden die Festplatten vom Dienst formatiert, bevor sie zurückgeschickt werden?**
 
@@ -426,14 +458,14 @@ Nein. Sie müssen sowohl für den Import als auch den Export Ihre eigenen Laufwe
 
 **Wie sehen meine Daten nach Abschluss des Importauftrags im Speicherkonto aus? Wird meine Verzeichnishierarchie beibehalten?**
 
-Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Parameter „/dstdir:“ angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt.
+Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem Feld DstBlobPathOrPrefix in der Dataset-CSV-Datei angegeben. Dies ist der Zielcontainer im Speicherkonto, in den Daten von der Festplatte kopiert werden. In diesem Zielcontainer werden virtuelle Verzeichnisse für Ordner von der Festplatte und Blobs für Dateien erstellt.
 
 **Wenn die Festplatte Dateien enthält, die in meinem Speicherkonto bereits vorhanden sind, werden die entsprechenden Blobs in meinem Speicherkonto vom Dienst dann überschrieben?**
 
-Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie den Parameter „/Disposition:<rename|no-overwrite|overwrite>“. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs zu überschreiben.
+Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie das Feld „Disposition:<rename|no-overwrite|overwrite>“ (umbenennen, nicht überschreiben, überschreiben) in der Dataset-CSV-Datei. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs zu überschreiben.
 
-**Ist das Azure Import/Export-Clienttool mit 32-Bit-Betriebssystemen kompatibel?**
-Nein. Das Clienttool ist nur mit 64-Bit-Windows-Betriebssystemen kompatibel. Eine vollständige Liste mit den unterstützten Betriebssystemversionen finden Sie im Abschnitt „Betriebssystem“ unter [Voraussetzungen](#pre-requisites) .
+**Ist das WAImportExport-Tool mit dem 32-Bit-Windows-Betriebssystem kompatibel?**
+Nr. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste mit den unterstützten Betriebssystemversionen finden Sie im Abschnitt „Betriebssystem“ unter [Voraussetzungen](#pre-requisites) .
 
 **Sollte mein Paket noch andere Dinge als die Festplatte enthalten?**
 
@@ -451,10 +483,6 @@ Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergr
 
 Einige Speicherkontostandorte sind alternativen Standorten für den Versand zugeordnet. Versandstandorte, die bisher verfügbar waren, können vorübergehend auch anderen Standorten zugeordnet werden. Überprüfen Sie immer die Versandadresse, die bei der Erstellung des Auftrags angegeben wurde, bevor Sie die Festplatten verschicken.
 
-**Warum wird als Auftragsstatus im klassischen Portal „Versand“ angezeigt, während auf der Website des Transportunternehmens angezeigt wird, dass mein Paket zugestellt wurde?**
-
-Der Status im klassischen Portal ändert sich von „Versand“ in „Übertragung wird ausgeführt“, wenn die Verarbeitung des Laufwerks beginnt. Wenn das Laufwerk den Standort erreicht hat, aber die Verarbeitung noch nicht gestartet wurde, wird als Auftragsstatus „Versand“ angezeigt.
-
 **Beim Versand der Festplatte fragt der Kurierdienst nach dem Namen und der Telefonnummer des Ansprechpartners im Rechenzentrum. Was muss ich hier angeben?**
 
 Die Telefonnummer erhalten Sie bei der Erstellung des Auftrags. Falls Sie den Namen eines Ansprechpartners benötigen, können Sie sich unter waimportexport@microsoft.com an uns wenden. Wir senden Ihnen dann einen Namen zu.
@@ -468,13 +496,13 @@ Informationen hierzu finden Sie unter [Importieren von PST-Dateien oder SharePoi
 Informationen hierzu finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](../backup/backup-azure-backup-import-export.md).
 
 ## <a name="see-also"></a>Weitere Informationen:
-* [Einrichten des Azure-Import-/Exporttools](https://msdn.microsoft.com/library/dn529112.aspx)
+* [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 * [Azure Import/Export-REST-API-Beispiel](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

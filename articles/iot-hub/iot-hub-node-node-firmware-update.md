@@ -1,6 +1,6 @@
 ---
-title: "Gewusst wie: Durchführen eines Firmwareupdates | Microsoft-Dokumentation"
-description: "In diesem Tutorial erfahren Sie, wie Sie eine Aktualisierung der Firmware durchführen."
+title: "Gerätefirmwareupdate mit Azure IoT Hub (Node) | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe der Geräteverwaltung in Azure IoT Hub ein Gerätefirmwareupdate initiieren. Sie verwenden die Azure IoT SDKs für Node.js, um eine simulierte Geräte-App und eine Dienst-App zu implementieren, die das Firmwareupdate auslöst."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 632b9b38808e033b1fee2676b353f2649c4a282c
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: fdc8dca46f5bd0feb8e6ce24af32327be4c8ebb6
 
 
 ---
-# <a name="tutorial-how-to-do-a-firmware-update"></a>Tutorial: Durchführen eines Firmwareupdates
+# <a name="use-device-management-to-initiate-a-device-firmware-update-node"></a>Initiieren eines Gerätefirmwareupdates mithilfe der Geräteverwaltung (Node)
 ## <a name="introduction"></a>Einführung
 Im Tutorial [Get started with device management][lnk-dm-getstarted] (Erste Schritte mit der Geräteverwaltung) wurde erläutert, wie Sie mit einem [Gerätezwilling][lnk-devtwin] und [direkten Methoden][lnk-c2dmethod] Grundtypen für den Remoteneustart eines Geräts verwenden können. In diesem Tutorial werden dieselben IoT Hub-Grundtypen verwendet. Sie erhalten Hilfestellung dazu, wie Sie ein simuliertes End-to-End-Firmwareupdate durchführen.  Dieses Muster wird in der Firmwareupdateimplementierung für das Intel Edison-Gerätebeispiel verwendet.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Erstellen einer Konsolen-Anwendung, die die direkte firmwareUpdate-Methode in der simulierten Geräte-App über Ihren IoT-Hub aufruft.
+* Erstellen einer Node.js-Konsolen-App, die über Ihre IoT Hub-Instanz die direkte firmwareUpdate-Methode in der simulierten Geräte-App aufruft.
 * Erstellen einer simulierten Geräte-App, die eine direkte firmwareUpdate-Methode implementiert, die einen mehrstufigen Prozess durchläuft und über diesen auf das Herunterladen des Firmwareimages wartet, das Firmwareimage herunterlädt und schließlich das Firmwareimage übernimmt.  Während der gesamten Ausführung aller Phasen aktualisiert das Gerät den Fortschritt über die gemeldeten Eigenschaften.
 
-Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
+Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 **dmpatterns_fwupdate_service.js**, die in der simulierten Geräte-App eine direkte Methode aufruft, die Antwort anzeigt und in regelmäßigen Abständen (alle 500 ms) die aktualisierten gemeldeten Eigenschaften anzeigt.
 
@@ -40,7 +40,7 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 * Node.js Version 0.12.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 * Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
 
-Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md), um Ihren IoT Hub zu erstellen und die Verbindungszeichenfolge abzurufen.
+Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md), um Ihre IoT Hub-Instanz zu erstellen und die IoT Hub-Verbindungszeichenfolge zu erhalten.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -53,7 +53,7 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
 * Auslösen eines simulierten Firmwareupdates
 * Ermöglichen von Gerätezwillingabfragen mit den gemeldeten Eigenschaften, um Geräte und den Zeitpunkt ihres letzten abgeschlossenen Firmwareupdates zu identifizieren
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl verwenden.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -72,7 +72,7 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen eines Geräteclients.  
+5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
@@ -262,7 +262,7 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
 ## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Auslösen eines Remotefirmwareupdates auf dem Gerät über eine direkte Methode
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die mit einer direkten Methode ein Remotefirmwareupdate auf einem Gerät initiiert und mithilfe von Gerätezwillingsabfragen in regelmäßigen Abständen den Status des aktiven Firmwareupdates auf diesem Gerät abruft.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **triggerfwupdateondevice**.  Erstellen Sie im Ordner **triggerfwupdateondevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl eingeben.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **triggerfwupdateondevice**.  Erstellen Sie im Ordner **triggerfwupdateondevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -337,12 +337,12 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die mit einer direk
 ## <a name="run-the-apps"></a>Ausführen der Apps
 Sie können die Apps nun ausführen.
 
-1. Führen Sie in der Befehlszeile im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
+1. Führen Sie an der Eingabeaufforderung im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
    
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. Führen Sie in der Befehlszeile im Ordner **triggerfwupdateondevice** den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
+2. Führen Sie an der Eingabeaufforderung im Ordner **triggerfwupdateondevice** den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
    
     ```
     node dmpatterns_fwupdate_service.js
@@ -359,12 +359,12 @@ Im Tutorial [Schedule and broadcast jobs][lnk-tutorial-jobs] (Planen und Senden 
 [lnk-dm-getstarted]: iot-hub-node-node-device-management-get-started.md
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

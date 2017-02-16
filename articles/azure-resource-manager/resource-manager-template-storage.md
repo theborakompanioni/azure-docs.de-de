@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 04/05/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4f541e34e7c0696e4074613c4ab0734a096c6d12
-ms.openlocfilehash: a9850299610aae6b4d9fdaf5abdf81ff6b361b8b
+ms.sourcegitcommit: b089bc075ec3ec718eb21357bbbc5c4af09f4af1
+ms.openlocfilehash: b01125160875e367b9b6e1d02031c5dd80b41594
 
 
 ---
@@ -81,13 +81,13 @@ Im folgenden Beispiel wird ein lokal redundantes Standardspeicherkonto mit einem
 ## <a name="quickstart-templates"></a>Schnellstartvorlagen
 Es gibt viele Schnellstartvorlagen, die ein Speicherkonto enthalten. In den folgenden Vorlagen werden einige häufige Szenarien veranschaulicht:
 
-* [Erstellen eines Standardspeicherkontos](https://azure.microsoft.com/documentation/templates/101-storage-account-create)
-* [Einfache Bereitstellung einer Windows-VM](https://azure.microsoft.com/documentation/templates/101-vm-simple-windows)
-* [Einfache Bereitstellung einer Linux-VM](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux)
-* [Erstellen eines CDN-Profils, eines CDN-Endpunkts mit einem Speicherkonto als Ursprung](https://azure.microsoft.com/documentation/templates/201-cdn-with-storage-account)
-* [Erstellen einer hoch verfügbaren SharePoint-Farm mit neun virtuellen Computern mithilfe der Powershell DSC-Erweiterung](https://azure.microsoft.com/documentation/templates/sharepoint-server-farm-ha)
-* [Einfache Bereitstellung eines sicheren Service Fabric-Clusters mit fünf Knoten und aktivierter WAD](https://azure.microsoft.com/documentation/templates/service-fabric-secure-cluster-5-node-1-nodetype-wad)
-* [Erstellen eines virtuellen Computers aus einem Windows-Image mit vier leeren Datenträgern](https://azure.microsoft.com/documentation/templates/101-vm-multiple-data-disk)
+* [Erstellen eines Standardspeicherkontos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create)
+* [Einfache Bereitstellung einer Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+* [Einfache Bereitstellung einer Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+* [Create a CDN Profile, a CDN Endpoint with a Storage Account as origin]https://github.com/Azure/azure-quickstart-templates/tree/master/201-cdn-with-storage-account) (Erstellen eines CDN-Profils und eines CDN-Endpunkts mit einem Speicherkonto als Quelle)
+* [Erstellen einer hoch verfügbaren SharePoint-Farm mit neun virtuellen Computern mithilfe der Powershell DSC-Erweiterung](https://github.com/Azure/azure-quickstart-templates/tree/master/sharepoint-server-farm-ha)
+* [Einfache Bereitstellung eines sicheren Service Fabric-Clusters mit fünf Knoten und aktivierter WAD](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)
+* [Erstellen eines virtuellen Computers aus einem Windows-Image mit vier leeren Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Allgemeine Informationen zu Speichern finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md).
@@ -96,6 +96,6 @@ Es gibt viele Schnellstartvorlagen, die ein Speicherkonto enthalten. In den folg
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/08/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 53b827f15fcba26630dd470c2c9e5bbc87919c84
-ms.openlocfilehash: 79270aa5650f4ac149b582204b3c0e41d099765b
+ms.sourcegitcommit: 4faf01ca10f263a5ecc18f51659b5004bf4f7c36
+ms.openlocfilehash: 3ca870da1a01bc216604cdd1142ba68dfd5e96e2
 
 
 ---
@@ -68,12 +68,13 @@ Für die Unternehmensintegration werden unterstützt diese Branchenstandards unt
 * [Überprüfung von XML-Nachrichten](app-service-logic-enterprise-integration-xml.md "Informationen zum Überprüfen von XML-Nachrichten mit Logik-Apps")
 * [XML-Transformation](app-service-logic-enterprise-integration-transform.md "Informationen zu Zuordnungen für die Unternehmensintegration")
 * [Enterprise-Integrationsconnectors](../connectors/apis-list.md "Informationen zu Enterprise Integration Pack-Connectors")
+* [Integrationskontometadaten](app-service-logic-enterprise-integration-metadata.md "Erfahren Sie mehr über Integrationskontometadaten")
 * [Überwachen von B2B-Nachrichten](app-service-logic-monitor-b2b-message.md "Weitere Informationen zum Überwachen von B2B-Nachrichten")
 * [Nachverfolgen von B2B-Nachrichten im OMS-Portal](app-service-logic-track-b2b-messages-omsportal.md "Weitere Informationen zum Nachverfolgen von B2B-Nachrichten im OMS-Portal")
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

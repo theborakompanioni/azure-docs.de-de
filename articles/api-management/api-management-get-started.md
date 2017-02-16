@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 587c7346bcb8e6549febd3904c8d0a9e46cbc50a
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 6376faa50613288a797e2c0683a0890fa21879e1
 
 
 ---
@@ -59,11 +59,11 @@ Das System setzt sich aus den folgenden Komponenten zusammen:
 
 ## <a name="create-service-instance"> </a>Erstellen einer API Management-Instanz
 > [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Details finden Sie unter [Kostenlose Azure-Testversion][Kostenlose Azure-Testversion].
+> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Konto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][Azure Free Trial].
 > 
 > 
 
-Der erste Schritt bei der Arbeit mit API Management ist die Erstellung einer Dienstinstanz. Melden Sie sich beim [Azure-Portal][Azure-Portal] an, und klicken Sie auf **Neu**, **Web + Mobil**, **API Management**.
+Der erste Schritt bei der Arbeit mit API Management ist die Erstellung einer Dienstinstanz. Melden Sie sich beim [Azure-Portal][Azure Portal] an, und klicken Sie auf **Neu**, **Web + Mobil**, **API Management**.
 
 ![Neue API Management-Instanz][api-management-create-instance-menu]
 
@@ -74,7 +74,7 @@ Wählen Sie die gewünschten Werte für **Abonnement**, **Ressourcengruppe** und
 Geben Sie **Contoso Ltd.** unter **Organisationsname** ein, und geben Sie Ihre E-Mail-Adresse in das Feld **Administrator-E-Mail** ein.
 
 > [!NOTE]
-> Diese E-Mail-Adresse wird für Benachrichtigungen vom API Management-System verwendet. Weitere Informationen finden Sie unter [Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management][Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management].
+> Diese E-Mail-Adresse wird für Benachrichtigungen vom API Management-System verwendet. Weitere Informationen finden Sie unter [Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management][How to configure notifications and email templates in Azure API Management].
 > 
 > 
 
@@ -83,7 +83,7 @@ Geben Sie **Contoso Ltd.** unter **Organisationsname** ein, und geben Sie Ihre E
 API Management-Dienstinstanzen stehen in drei Tarifen zur Verfügung: Developer, Standard und Premium.
 
 > [!NOTE]
-> Der Tarif "Developer" ist für Entwicklung, Tests und API-Pilotprogramme konzipiert, bei denen eine hohe Verfügbarkeit nicht relevant ist. In den Tarifen "Standard" und "Premium" können Sie die Anzahl der reservierten Einheiten skalieren, um mehr Datenverkehr zu verarbeiten. Die Tarife "Standard" und "Premium" bieten für den API Management-Dienst hinsichtlich Verarbeitungsleistung und Durchsatz die besten Ergebnisse. Sie können dieses Tutorial mithilfe eines beliebigen Tarifs abschließen. Weitere Informationen zu den API Management-Tarifen finden Sie unter [API Management-Preise][API Management-Preise].
+> Der Tarif "Developer" ist für Entwicklung, Tests und API-Pilotprogramme konzipiert, bei denen eine hohe Verfügbarkeit nicht relevant ist. In den Tarifen "Standard" und "Premium" können Sie die Anzahl der reservierten Einheiten skalieren, um mehr Datenverkehr zu verarbeiten. Die Tarife "Standard" und "Premium" bieten für den API Management-Dienst hinsichtlich Verarbeitungsleistung und Durchsatz die besten Ergebnisse. Sie können dieses Tutorial mithilfe eines beliebigen Tarifs abschließen. Weitere Informationen zu den API Management-Tarifen finden Sie unter [API Management-Preise][API Management pricing].
 > 
 > 
 
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um die Rechner-API zu konfigurieren:
 1. Klicken Sie auf **Aus URL**, geben Sie **http://calcapi.cloudapp.net/calcapi.json** in das Textfeld **URL für Spezifikationsdokument** ein, und aktivieren Sie das Optionsfeld **Swagger**.
 2. Geben Sie in das Textfeld **URL-Suffix für Web-API** den Wert **calc** ein.
 3. Klicken Sie auf das Feld **Produkte (optional)**, und wählen Sie **Starter**.
-4. Klicken Sie auf **Speichern** , um die API zu importieren.
+4. Klicken Sie auf **Speichern**, um die API zu importieren.
 
 ![Neue API hinzufügen][api-management-import-new-api]
 
@@ -199,26 +199,26 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 ## <a name="next-steps"> </a>Nächste Schritte
 * Erfahren Sie, wie Sie Ihre API mit [Aufruflimits](api-management-howto-product-with-rules.md)schützen können.
 
-[Kostenlose Azure-Testversion]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
+[Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
-[Erstellen einer API Management-Instanz]: #create-service-instance
-[Erstellen einer API]: #create-api
-[Hinzufügen einer Operation]: #add-operation
-[Hinzufügen der API zu einem Produkt]: #add-api-to-product
-[Abonnieren des Produkts, das die API enthält]: #subscribe
+[Create an API Management instance]: #create-service-instance
+[Create an API]: #create-api
+[Add an operation]: #add-operation
+[Add the new API to a product]: #add-api-to-product
+[Subscribe to the product that contains the API]: #subscribe
 [Call an operation from the Developer Portal]: #call-operation
-[Anzeigen von Analysen]: #view-analytics
-[Nächste Schritte]: #next-steps
+[View analytics]: #view-analytics
+[Next steps]: #next-steps
 
 
-[Verwalten von Entwicklerkonten in Azure API Management]: api-management-howto-create-or-invite-developers.md
-[Konfigurieren der API-Einstellungen]: api-management-howto-create-apis.md#configure-api-settings
-[Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management]: api-management-howto-configure-notifications.md
-[Antworten]: api-management-howto-add-operations.md#responses
-[Erstellen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
-[API Management-Preise]: http://azure.microsoft.com/pricing/details/api-management/
+[How to manage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
+[Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
+[How to configure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
+[Responses]: api-management-howto-add-operations.md#responses
+[How create and publish a product]: api-management-howto-add-products.md
+[API Management pricing]: http://azure.microsoft.com/pricing/details/api-management/
 
-[Azure-Portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 [api-management-management-console]: ./media/api-management-get-started/api-management-management-console.png
 [api-management-create-instance-menu]: ./media/api-management-get-started/api-management-create-instance-menu.png
@@ -257,6 +257,6 @@ Der Abschnitt **Analyse** enthält die folgenden vier Registerkarten:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

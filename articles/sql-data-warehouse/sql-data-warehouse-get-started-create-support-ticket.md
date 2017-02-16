@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: bd85b9eae0e1cb281116748edcad6643b1ec537f
-ms.openlocfilehash: 6ad20a246fce996e6a11ce6fa4715c0d734c4323
+ms.sourcegitcommit: 889776269aa3d722115ea0632b7c3db2775924eb
+ms.openlocfilehash: cc3bc8a0463842ba11b9cdcc996319e2d811ce8a
 
 
 ---
@@ -60,7 +60,7 @@ Bei Problemen mit Ihrer Instanz von SQL Data Warehouse ist es ratsam, ein Suppor
      Wenn Sie über den Supportplan „Premier“ verfügen, können Sie Probleme im Zusammenhang mit SQL Data Warehouse auch im [Microsoft Premier-Onlineportal][Microsoft Premier online portal] melden.  Weitere Informationen zu den unterschiedlichen Supportplänen, z.B. zu Umfang, Reaktionszeiten, Preisen usw., finden Sie auf der Seite mit den [Azure-Supportplänen][Azure support plan].  Häufig gestellte Fragen zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support][Azure support FAQs].  
      
      ![Supportplan](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
-8. Wählen Sie **Problemtyp** und **-kategorie** aus.
+8. Wählen Sie **Problemtyp** und **-kategorie** aus. In diesem Beispiel haben wir „Tools“ als Problemtyp und „Client tools“ als Kategorie gewählt. 
    
     ![Problemtypkategorie](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
 9. Beschreiben Sie das Problem, und wählen Sie den Grad der geschäftlichen Auswirkungen aus.
@@ -101,6 +101,6 @@ Außerdem können Sie sich an der SQL Data Warehouse-Community unter [Stack Over
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

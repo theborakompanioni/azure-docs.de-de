@@ -12,23 +12,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2016
+ms.date: 12/20/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: f1d7df6163336cd66600dc22ff72a2bc1f29a1d5
-ms.openlocfilehash: 138ac79846a2e7d0ae4af59ce13b6d36cce05047
+ms.sourcegitcommit: 55c988bf74ff0f2e519e895a735dc68f3dc99855
+ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
 
 ---
 
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in den Azure Search-Index mithilfe von Azure Data Factory
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität verwenden können, um eine Push-Übertragung von Daten aus einem lokalen, vom Data Factory-Dienst unterstützten Datenspeicher in den Azure Search-Index durchführen. In der Spalte „Quelle“ der Tabelle [Unterstützte Datenquellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) sind unterstützte Quelldatenspeicher aufgelistet. Dieser Artikel baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit Kopieraktivität und unterstützten Datenspeicherkombinationen bietet.
 
-Azure Data Factory unterstützt derzeit nur das Verschieben von Daten in Azure Search aus [unterstützten lokalen Quelldatenspeichern](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Das Verschieben von Daten aus Azure Search in andere Datenquellen wird nicht unterstützt.
-
 ## <a name="enabling-connectivity"></a>Herstellen der Verbindung
-Installieren Sie das Datenverwaltungsgateway in Ihrer lokalen Umgebung, um die Verbindung des Data Factory-Diensts mit einem lokalen Datenspeicher zuzulassen. Sie können das Gateway auf dem Computer, der den Quelldatenspeicher hostet oder auf einem separaten Computer installieren, um zu vermeiden, dass der Computer mit dem Datenspeicher um Ressourcen konkurriert. 
+Installieren Sie das Datenverwaltungsgateway in Ihrer lokalen Umgebung, um die Verbindung des Data Factory-Diensts mit einem lokalen Datenspeicher zuzulassen. Sie können das Gateway auf dem Computer, der den Quelldatenspeicher hostet oder auf einem separaten Computer installieren, um zu vermeiden, dass der Computer mit dem Datenspeicher um Ressourcen konkurriert.
 
-Das Datenverwaltungsgateway verbindet die lokalen Datenquellen mit Cloud-Diensten auf sichere und verwaltete Weise. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) . 
+Das Datenverwaltungsgateway verbindet die lokalen Datenquellen mit Cloud-Diensten auf sichere und verwaltete Weise. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
 Die einfachste Art, eine Pipeline zu erstellen, die Daten in Azure Search aus einem der unterstützten Datenspeicher kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Eine kurze exemplarische Vorgehensweise finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
@@ -45,14 +43,14 @@ Dieses Beispiel zeigt Folgendes:
 4.  Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSearchIndex](#azure-search-index-dataset-properties).
 4.  Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) und [AzureSearchIndexSink](#azure-search-index-sink-properties) verwendet.
 
-In diesem Beispiel werden Zeitreihendaten aus einer lokalen SQL Server-Datenbank stündlich in den Azure Search-Index kopiert. Die in diesem Beispiel verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen. 
+In diesem Beispiel werden Zeitreihendaten aus einer lokalen SQL Server-Datenbank stündlich in den Azure Search-Index kopiert. Die in diesem Beispiel verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
 Als Erstes richten Sie das Datenverwaltungsgateway auf Ihrem lokalen Computer ein. Anweisungen dazu finden Sie im Artikel [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
 
 **Mit Azure Search verknüpfter Dienst:**
 
 ```JSON
-{   
+{
     "name": "AzureSearchLinkedService",
     "properties": {
         "type": "AzureSearch",
@@ -182,6 +180,19 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 }
 ```
 
+Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `executionLocation`-Eigenschaft erforderlich. Im Folgenden werden als Beispiel die Änderung gezeigt, die unter der Kopieraktivität `typeProperties` erforderlich sind. Im Abschnitt [Kopieren von Daten zwischen Clouddatenspeichern](data-factory-data-movement-activities.md#global) finden Sie Informationen zu den unterstützten Werten sowie weitere Details.
+
+```JSON
+"typeProperties": {
+  "source": {
+    "type": "BlobSource"
+  },
+  "sink": {
+    "type": "AzureSearchIndexSink"
+  },
+  "executionLocation": "West US"
+}
+```
 
 ## <a name="azure-search-linked-service-properties"></a>Eigenschaften des mit Azure Search verknüpften Diensts
 
@@ -210,7 +221,7 @@ Wenn bei der Kopieraktivität die Quelle den Typ **AzureSearchIndexSink** hat, s
 
 | Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Hochladen| Nein | 
+| WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Hochladen| Nein |
 | writeBatchSize | Lädt Daten in den Azure Search-Index hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property). | 1 bis 1.000. Der Standardwert ist 1000. | Nein |
 
 ### <a name="writebehavior-property"></a>Eigenschaft „WriteBehavior“
@@ -226,22 +237,37 @@ Das Standardverhalten ist **Merge**.
 ### <a name="writebatchsize-property"></a>Eigenschaft „writeBatchSize“
 Der Azure Search-Dienst unterstützt das Schreiben von Dokumenten als Batch. Ein Batch kann 1 bis 1.000 Aktionen enthalten. Eine Aktion bearbeitet ein Dokument, um den Vorgang upload/merge auszuführen.
 
-### <a name="data-type-support"></a>Unterstützung von Datentypen 
-In der folgenden Tabelle wird angegeben, ob ein Azure Search-Datentyp unterstützt wird oder nicht. 
+### <a name="data-type-support"></a>Unterstützung von Datentypen
+In der folgenden Tabelle wird angegeben, ob ein Azure Search-Datentyp unterstützt wird oder nicht.
 
 | Azure Search-Datentyp | In Azure Search-Senke unterstützt |
 | ---------------------- | ------------------------------ |
-| String | J | 
+| String | J |
 | Int32 | J |
 | Int64 | J |
 | Double | J |
 | Boolean | J |
-| DataTimeOffset | J | 
-| String Array | N | 
+| DataTimeOffset | J |
+| String Array | N |
 | GeographyPoint | N |
 
+## <a name="copy-from-a-cloud-source"></a>Kopieren aus einer Clouddatenquelle
+Wenn Sie Daten aus einem Clouddatenspeicher in Azure Search kopieren, ist die `executionLocation`-Eigenschaft erforderlich. Im Folgenden werden als Beispiel die Änderung gezeigt, die unter der Kopieraktivität `typeProperties` erforderlich sind. Im Abschnitt [Kopieren von Daten zwischen Clouddatenspeichern](data-factory-data-movement-activities.md#global) finden Sie Informationen zu den unterstützten Werten sowie weitere Details.
+
+```JSON
+"typeProperties": {
+  "source": {
+    "type": "BlobSource"
+  },
+  "sink": {
+    "type": "AzureSearchIndexSink"
+  },
+  "executionLocation": "West US"
+}
+```
+
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Angeben der Strukturdefinition für rechteckige Datasets
-Der Abschnitt „structure“ in der JSON von Datasets ist ein **optionaler** Abschnitt für rechteckige Tabellen (mit Zeilen und Spalten) und enthält eine Auflistung der Spalten der Tabelle. Verwenden Sie den Abschnitt „structure“ entweder zum Angeben von Typinformationen für Typkonvertierungen oder für Spaltenzuordnungen. In den folgenden Abschnitten werden diese Features ausführlich beschrieben. 
+Der Abschnitt „structure“ in der JSON von Datasets ist ein **optionaler** Abschnitt für rechteckige Tabellen (mit Zeilen und Spalten) und enthält eine Auflistung der Spalten der Tabelle. Verwenden Sie den Abschnitt „structure“ entweder zum Angeben von Typinformationen für Typkonvertierungen oder für Spaltenzuordnungen. In den folgenden Abschnitten werden diese Features ausführlich beschrieben.
 
 Jede Spalte enthält die folgenden Eigenschaften:
 
@@ -255,7 +281,7 @@ Jede Spalte enthält die folgenden Eigenschaften:
 Das folgende Beispiel zeigt den Abschnitt „structure“ der JSON für eine Tabelle mit den drei Spalten `userid`, `name` und `lastlogindate`.
 
 ```JSON
-"structure": 
+"structure":
 [
     { "name": "userid"},
     { "name": "name"},
@@ -264,27 +290,27 @@ Das folgende Beispiel zeigt den Abschnitt „structure“ der JSON für eine Tab
 ```
 Befolgen Sie die folgenden Angaben dazu, wann der Abschnitt **structure** mit welchen Informationen verwendet werden sollte.
 
-- **Bei strukturierten Datenquellen**, die Datenschema- und Typinformationen neben den Daten selbst speichern (Beispiel: SQL Server, Oracle, Azure-Tabelle usw.), geben Sie den Abschnitt „structure“ nur an, wenn Sie bestimmte Quellspalten bestimmten Zielspalten in der Senke zuweisen, und deren Namen nicht identisch sind. Einzelheiten finden Sie in der nachfolgenden Abschnitt zur Spaltenzuordnung. 
+- **Bei strukturierten Datenquellen**, die Datenschema- und Typinformationen neben den Daten selbst speichern (Beispiel: SQL Server, Oracle, Azure-Tabelle usw.), geben Sie den Abschnitt „structure“ nur an, wenn Sie bestimmte Quellspalten bestimmten Zielspalten in der Senke zuweisen, und deren Namen nicht identisch sind. Einzelheiten finden Sie in der nachfolgenden Abschnitt zur Spaltenzuordnung.
 
     Wie bereits erwähnt, ist die Typinformation im Abschnitt „structure“ optional. Für strukturierte Datenquellen steht die Typinformation als Teil der Datasetdefinition im Datenspeicher zur Verfügung, weshalb Sie Typinformationen nicht dem Abschnitt „structure“ hinzufügen müssen.
 - **Für das Schema von Lesedatenquellen (insbesondere Azure-Blob)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Bei diesen Typen von Datenquellen sollten Sie den Abschnitt „structure“ in den beiden folgenden Fällen hinzufügen:
     - Beim Zuordnen von Quellspalten zu Spalten in der Senke.
     - Wenn das Dataset eine Quelle in einer Kopieraktivität ist, können Sie Typinformationen im Bereich „structure“ angeben. Data Factory verwendet Typinformationen für die Konvertierung in native Typen für die Senke. Weitere Informationen finden Sie im Artikel [Verschieben von Daten in einen und aus einem Azure-Blob](data-factory-azure-blob-connector.md).
 
-### <a name="supported-net-based-types"></a>Unterstützte .NET-basierte Typen 
+### <a name="supported-net-based-types"></a>Unterstützte .NET-basierte Typen
 Data Factory unterstützt die folgenden CLS-kompatiblen auf .NET basierenden Typwerte für die Bereitstellung von Typinformationen in „structure“ für das Schema von Lesedatenquellen wie Azure-Blob.
 
 - Int16
-- Int32 
+- Int32
 - Int64
 - Single
 - Double
 - DECIMAL
 - Bool
-- String 
+- String
 - Datetime
 - Datetimeoffset
-- Timespan 
+- Timespan
 
 Für „Datetime“ und „Datetimeoffset“ können Sie optional auch die Zeichenfolgen „culture“ & „format“ angeben, um das Analysieren Ihrer benutzerdefinierten „Datetime“-Zeichenfolge zu erleichtern. Im folgenden Abschnitt finden Sie Beispiele für die Typkonvertierung:
 
@@ -298,12 +324,12 @@ Für „Datetime“ und „Datetimeoffset“ können Sie optional auch die Zeich
 Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln: 
+Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
-* [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität. 
+* [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

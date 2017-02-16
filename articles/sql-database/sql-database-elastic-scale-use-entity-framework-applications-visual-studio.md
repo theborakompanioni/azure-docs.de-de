@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a57ad6211403712bc35f20710e0c8c1728d2639d
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 91fe35cb57775c1ab9c30fdfe5cf82cd1afafd14
 
 
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Clientbibliothek für elastische Datenbanken mit Entity Framework
-Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md)nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem **Code First**-Ansatz von Entity Framework. Das Lernprogramm [Code First für eine neue Datenbank](http://msdn.microsoft.com/data/jj193542.aspx) für EF wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen.
+Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung erforderlich sind, damit diese die Funktionen der [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md)nutzen kann. Der Schwerpunkt liegt auf der Erstellung der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) und des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) mit dem **Code First**-Ansatz von Entity Framework. Das Tutorial [Code First für eine neue Datenbank](http://msdn.microsoft.com/data/jj193542.aspx) für EF wird im gesamten Dokument als Beispiel verwendet. Der zu diesem Dokument gehörige Beispielcode ist Teil der Beispielserie der Tools für elastische Datenbanken in den Visual Studio-Codebeispielen.
 
 ## <a name="downloading-and-running-the-sample-code"></a>Herunterladen und Ausführen des Beispielcodes
 So laden Sie den Code für diesen Artikel herunter:
@@ -34,7 +34,7 @@ So laden Sie den Code für diesen Artikel herunter:
   
     ![Entity Framework und elastische Datenbank – Beispielanwendung][1] 
   
-    Wählen Sie das Beispiel namens **Elastic DB Tools for Azure SQL – Entity Framework Integration**aus. Nachdem Sie die Lizenzbedingungen akzeptiert haben, wird das Beispiel geladen. 
+    Wählen Sie das Beispiel **Elastic DB Tools for Azure SQL – Entity Framework Integration** aus. Nachdem Sie die Lizenzbedingungen akzeptiert haben, wird das Beispiel geladen. 
 
 Um das Beispiel ausführen zu können, müssen Sie drei leere Datenbanken in Azure SQL-Datenbank erstellen:
 
@@ -256,7 +256,7 @@ Möglicherweise muss die Version des Konstruktors, die von der Basisklasse geerb
 Für die in diesem Dokument beschriebenen Vorgehensweisen gelten einige Einschränkungen: 
 
 * EF-Anwendungen, die **LocalDb** verwenden, müssen vor dem Einsatz der Clientbibliothek für elastische Datenbanken zuerst in eine reguläre SQL-Serverdatenbank migriert werden. Mit **LocalDb**ist es nicht möglich, eine Anwendung über Sharding mit Elastic Scale horizontal zu skalieren. Beachten Sie, dass in der Entwicklung **LocalDb**weiterhin verwendet werden kann. 
-* Alle Änderungen der Anwendung, die Änderungen am Datenbankschema zur Folge haben, müssen EF Migrationen in allen Shards durchlaufen. Dies wird im Beispielcode für dieses Dokument nicht veranschaulicht. Verwenden Sie Update-Database mit einem ConnectionString-Parameter zum Durchlaufen aller Shards; oder extrahieren das T-SQL-Skript für die anstehende Migration unter Verwendung von Update-Database mit der Option –Script, und wenden Sie das T-SQL-Skript auf die Shards an.  
+* Alle Änderungen der Anwendung, die Änderungen am Datenbankschema zur Folge haben, müssen EF Migrationen in allen Shards durchlaufen. Dies wird im Beispielcode für dieses Dokument nicht veranschaulicht. Verwenden Sie Update-Database mit einem ConnectionString-Parameter zum Durchlaufen aller Shards. Oder extrahieren Sie das T-SQL-Skript für die anstehende Migration unter Verwendung von Update-Database mit der Option „-Script“, und wenden Sie das T-SQL-Skript auf die Shards an.  
 * Wenn eine Anforderung gegeben ist, wird davon ausgegangen, dass die damit verbundene Datenbankverarbeitung innerhalb einer einzelnen Shard erfolgt, die durch den in der Anforderung bereitgestellten Sharding-Schlüssel bezeichnet wird. Allerdings ist diese Annahme nicht immer richtig. Beispielsweise dann, wenn es nicht möglich ist, einen Sharding-Schlüssel verfügbar zu machen. Um dieses Problem zu beheben, stellt die Clientbibliothek die **MultiShardQuery** -Klasse bereit, die eine Verbindungsabstraktion für Abfragen mit mehreren Shards implementiert. Eine detaillierte Erläuterung der Verwendung von **MultiShardQuery** in Kombination mit EF würde den Rahmen dieses Dokuments sprengen.
 
 ## <a name="conclusion"></a>Zusammenfassung
@@ -269,6 +269,6 @@ Durch die in diesem Dokument beschriebenen Schritte können EF-Anwendungen die F
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 5724a9c66bef01972f41e66a84844aae9b300296
 
 
 ---
@@ -37,10 +37,10 @@ Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die 
 
 Weitere Überlegungen:
 
-Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der Name-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Es darf außerdem nur ein „.“ für die Dateinamenerweiterung vorhanden sein.
+Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der Name-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
 
 ## <a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>So fügen Sie ein Speicherkonto mit der Azure-Dienstverwaltungs-REST-API an
-Zum gegenwärtigen Zeitpunkt können mehrere Speicherkonten nur mithilfe der [Azure-Dienstverwaltungs-REST-API](http://msdn.microsoft.com/library/azure/dn167014.aspx)angefügt werden. Das Codebeispiel im Thema [How to: Use Media Services Management REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) (Gewusst wie: Verwenden der Media Services-Verwaltungs-REST-API) definiert die **AttachStorageAccountToMediaServiceAccount** -Methode, mit der ein Speicherkonto an das angegebene Media Services-Konto angefügt wird. Der Code im gleichen Thema definiert die **ListStorageAccountDetails** -Methode, mit der alle an das angegebene Media Services-Konto angefügten Speicherkonten aufgelistet werden.
+Zum gegenwärtigen Zeitpunkt können mehrere Speicherkonten nur mithilfe der [Azure-Dienstverwaltungs-REST-API](https://docs.microsoft.com/rest/api/media/management/media-services-management-rest)angefügt werden. Das Codebeispiel im Thema [How to: Use Media Services Management REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) (Gewusst wie: Verwenden der Media Services-Verwaltungs-REST-API) definiert die **AttachStorageAccountToMediaServiceAccount** -Methode, mit der ein Speicherkonto an das angegebene Media Services-Konto angefügt wird. Der Code im gleichen Thema definiert die **ListStorageAccountDetails** -Methode, mit der alle an das angegebene Media Services-Konto angefügten Speicherkonten aufgelistet werden.
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>So verwalten Sie Media Services-Medienobjekte für mehrere Speicherkonten
 Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufgaben ausgeführt:
@@ -257,6 +257,6 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

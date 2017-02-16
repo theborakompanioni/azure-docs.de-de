@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/14/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: db3705c26ecb1b939c17829cc121c9ef0f3eaa31
+ms.sourcegitcommit: 0e74a1784f39fe934d36c0391de7d01bf7699868
+ms.openlocfilehash: b0c207190fcfb23cc75c4aaa661c76c561265ef8
 
 
 ---
@@ -177,7 +177,7 @@ In diesem Tutorial werden Sie zwei kleine Knoten hinzufügen.
 1. Klicken Sie in HPC-Cluster-Manager unter **Node Management** (Knotenverwaltung; in früheren Versionen von HPC Pack auch als **Ressourcenverwaltung** bezeichnet) im Bereich **Actions** (Aktionen) auf **Add Node** (Knoten hinzufügen).
    
     ![Add Node][add_node1]
-2. Klicken Sie im Assistenten zum Hinzufügen von Knoten auf der Seite **Select Deployment Method** (Bereitstellungsmethode auswählen) auf **Add Azure nodes** (Azure-Knoten hinzufügen) und dann auf **Weiter**.
+2. Klicken Sie im Assistenten zum Hinzufügen von Knoten auf der Seite **Select Deployment Method** (Bereitstellungsmethode auswählen) auf **Add Windows Azure nodes** (Windows Azure-Knoten hinzufügen) und dann auf **Weiter**.
    
     ![Hinzufügen eines Azure-Knotens][add_node1_1]
 3. Wählen Sie auf der Seite **Specify New Nodes** (Neue Knoten angeben) die Azure-Knotenvorlage aus, die Sie zuvor angelegt haben (Standardname **Default AzureNode Template** (AzureNode-Standardvorlage)). Geben Sie dann **2** Knoten der Größe **Small** an, und klicken Sie anschließend auf **Weiter**.
@@ -197,7 +197,7 @@ Wenn Sie die Clusterressourcen in Azure nutzen wollen, veranlassen Sie den Start
 1. Klicken Sie in HPC-Cluster-Manager unter **Node Management** (Knotenverwaltung; in früheren Versionen von HPC Pack auch als **Ressourcenverwaltung** bezeichnet) auf einen oder beide Knoten, und klicken Sie dann im Bereich **Actions** (Aktionen) auf **Start** (Starten).
    
    ![Starten von Knoten][add_node4]
-2. Klicken Sie im Dialogfeld **Start Azure Nodes** (Azure-Knoten starten) auf **Start** (Starten).
+2. Klicken Sie im Dialogfeld **Stop Windows Azure Nodes** (Windows Azure-Knoten beenden) auf **Start** (Starten).
    
     ![Starten von Knoten][add_node5]
    
@@ -250,7 +250,7 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
 1. Wählen Sie in HPC-Cluster-Manager unter **Node Management** (Knotenverwaltung; in früheren Versionen von HPC Pack auch als **Ressourcenverwaltung** bezeichnet) beide Azure-Knoten aus. Klicken Sie dann im Bereich **Actions** (Aktionen) auf **Stop** (Beenden).
    
     ![Knoten anhalten][stop_node1]
-2. Klicken Sie im Dialogfeld **Stop Azure Nodes** (Azure-Knoten beenden) auf **Stop** (Beenden).
+2. Klicken Sie im Dialogfeld **Stop Windows Azure Nodes** (Windows Azure-Knoten beenden) auf **Stop** (Beenden).
    
     ![Knoten anhalten][stop_node2]
 3. Die Knoten wechseln in den Status **Stopping** . Nach einigen Minuten zeigt HPC Cluster Manager an, dass die Knoten **Not-Deployed**sind.
@@ -268,7 +268,7 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
 * Andere Methoden zum Erstellen eines HPC Pack-Clusters in Azure (einschließlich Azure Resource Manager-Vorlagen) sind unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) beschrieben.
 * Unter [Big Compute in Azure: Technische Ressourcen für Batch und HPC (High Performance Computing)](../batch/big-compute-resources.md) finden Sie weitere Informationen zu den verschiedenen Big Compute- und HPC-Cloudlösungen in Azure.
 
-[Übersicht]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
+[Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
 [install_hpc1]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc1.png
 [install_hpc2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc2.png
 [install_hpc3]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc3.png
@@ -307,6 +307,6 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

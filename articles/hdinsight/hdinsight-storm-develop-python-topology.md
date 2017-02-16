@@ -12,23 +12,29 @@ ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4b667dda33c61c44090cf89ebeebece0b19c84ea
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: f6bc08230384b637f6b7b83fe32915ab09647d37
 
 
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Entwickeln von Apache Storm-Topologien mit Python in HDInsight
+
 Apache Storm unterstützt mehrere Sprachen und ermöglicht sogar das Kombinieren von Komponenten in verschiedenen Sprachen in einer Topologie. In diesem Dokument erfahren Sie, wie Sie Python-Komponenten in Ihren Java- und Clojure-basierten Storm-Topologien in HDInsight verwenden.
 
+> [!IMPORTANT]
+> Dieses Dokument enthält die Schritte zur Verwendung von Windows- und Linux-basierten HDInsight-Clustern. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Python 2.7 oder höher
 * Java JDK 1.7 oder höher
 * [Leiningen](http://leiningen.org/)
 
 ## <a name="storm-multi-language-support"></a>Storm-Unterstützung für mehrere Sprachen
+
 Storm ist für die Verwendung mit in beliebigen Programmiersprachen geschriebenen Komponenten konzipiert. Dies erfordert jedoch, dass die Komponenten „verstehen“, wie die [Thrift-Definition für Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift) verwendet wird. Für Python wird ein Modul als Teil des Apache Storm-Projekts bereitgestellt, das Ihnen eine problemlose Verknüpfung mit Storm ermöglicht. Sie finden dieses Modul unter [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
 Da Apache Storm ein Java-Prozess ist, der auf der Java Virtual Machine (JVM) ausgeführt wird, werden in anderen Sprachen geschriebene Komponenten als Unterprozesse ausgeführt. Die in der JVM ausgeführten Storm-Bits kommunizieren mithilfe von JSON-Nachrichten, die über „stdin/stdout“ gesendet werden, mit diesen Unterprozessen. Weitere Informationen zur Kommunikation zwischen Komponenten finden Sie in der Dokumentation zum [Multi-Lang Protocol](https://storm.apache.org/documentation/Multilang-protocol.html) .
@@ -181,6 +187,6 @@ In diesem Dokument haben Sie erfahren, wie Python-Komponenten in einer Storm-Top
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Azure IoT Hub-Instanz und Registrieren Ihres Geräts | Microsoft-Dokumentation"
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 2: Registrieren des Geräts | Microsoft-Dokumentation"
 description: 
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7765f122476c51011ab12613e615e5fea0bc58f4
-ms.openlocfilehash: d3726201754b90a60e9bde2651c023adf9f9033b
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 759085dcb4993d38f79cb19efe58e1a968ddb682
 
 
 ---
@@ -38,13 +38,13 @@ Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gatewa
 
 In dieser Lektion lernen Sie Folgendes:
 
-- Erstellen einer IoT Hub-Instanz mithilfe der Azure-CLI
-- Registrieren eines Geräts bei einer IoT Hub-Instanz
+- Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
+- Registrieren eines Geräts bei einer IoT Hub-Instanz.
 
 ## <a name="what-you-need"></a>Erforderliches Element
 
 - Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](http://azure.microsoft.com/pricing/free-trial/) erstellen.
-- Die Azure-CLI muss installiert sein.
+- Die Azure-Befehlszeilenschnittstelle muss installiert sein.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -108,6 +108,6 @@ Sie haben eine IoT Hub-Instanz erstellt und Ihr logisches Gerät mit einer Gerä
 [Konfigurieren und Ausführen der Cloudupload-Beispielanwendung für das simulierte Gerät](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

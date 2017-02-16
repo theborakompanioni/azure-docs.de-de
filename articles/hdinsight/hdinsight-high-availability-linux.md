@@ -1,5 +1,5 @@
 ---
-title: "Funktionen für hohe Verfügbarkeit bei Linux-basiertem HDInsight (Hadoop) | Microsoft Docs"
+title: "Features für hohe Verfügbarkeit bei HDInsight (Hadoop) | Microsoft Docs"
 description: "Erfahren Sie, wie Linux-basierte HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
 services: hdinsight
 editor: cgronlun
@@ -13,23 +13,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 461ff9ce5aac5b2bf87671c314b38a4b1adad233
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: c29f539d25df3f7b005eb0fa98009d26549fa32b
 
 
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
+
 Hadoop erzielt hohe Verfügbarkeit und Zuverlässigkeit durch Verteilen von redundanten Kopien von Diensten und Daten auf die Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert.
 
-Zur Behebung dieses potenziellen Problems stellen Linux-basierte HDInsight-Cluster in Azure zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
+Zur Behebung dieses potenziellen Problems stellen HDInsight-Cluster in Azure zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
 
-> [!NOTE]
-> Die Schritte in diesem Dokument gelten für Linux-basierte HDInsight-Cluster. Wenn Sie einen Windows-basierten Cluster verwenden, finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Windows-basierten Hadoop-Clustern in HDInsight](hdinsight-high-availability.md) entsprechende Informationen für Windows.
-> 
-> 
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 ## <a name="understanding-the-nodes"></a>Grundlegendes zu den Knoten
 Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. Falls ein Knoten ausfällt, wird er offline geschaltet, und es wird ein neuer Knoten erstellt, um den fehlerhaften Knoten zu ersetzen. Während der Knoten offline ist, wird ein anderer Knoten desselben Typs verwendet, bis der neue Knoten online geschaltet wird.
@@ -187,14 +186,10 @@ Um eine Liste aller verfügbaren Befehle zu erhalten, geben Sie an der `sftp>`-E
 
 > [!NOTE]
 > Es gibt auch grafische Benutzeroberflächen, mit denen Sie das Dateisystem visuell anzeigen können, wenn eine Verbindung über SFTP hergestellt wurde. [MobaXTerm](http://mobaxterm.mobatek.net/) z. B. ermöglicht das Durchsuchen des Dateisystems in einer Benutzeroberfläche ähnlich Windows Explorer.
-> 
-> 
 
 ### <a name="ambari"></a>Ambari
 > [!NOTE]
 > Für den Zugriff auf Protokolldateien über Ambari ist ein SSH-Tunnel erforderlich, da die Websites für die einzelnen Dienste nicht öffentlich im Internet verfügbar sind. Informationen zum Verwenden eines SSH-Tunnels finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
-> 
-> 
 
 Wählen Sie in der Ambari-Webbenutzeroberfläche den Dienst aus, für den Sie Protokolle anzeigen möchten (z.B. YARN), und wählen Sie dann mithilfe von **Quicklinks** den gewünschten Hauptknoten aus.
 
@@ -226,6 +221,6 @@ In diesem Dokument haben Sie erfahren, wie Azure HDInsight hohe Verfügbarkeit f
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

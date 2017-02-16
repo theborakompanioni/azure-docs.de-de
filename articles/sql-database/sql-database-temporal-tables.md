@@ -3,7 +3,7 @@ title: Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank | Micro
 description: Lernen Sie die ersten Schritte mit temporalen Tabellen in der Azure SQL-Datenbank.
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: bonova
 manager: jhubbard
 editor: 
 ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sql-database
-ms.date: 08/29/2016
-ms.author: carlrab
+ms.date: 01/10/2017
+ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2b83d2561d37cb2dcb799d14774b6350e0681c42
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: e00345ddd9e52e2613789ba78c48e8f993d2415c
 
 
 ---
@@ -27,7 +27,7 @@ Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, m
 ## <a name="temporal-scenario"></a>Temporales Szenario
 Dieser Artikel beschreibt die Schritte zur Nutzung temporaler Tabellen in einem Anwendungsszenario. Stellen Sie sich vor, Sie möchten die Benutzeraktivität auf einer neuen Website nachverfolgen, die von Grund auf neu entwickelt wird, oder auf einer vorhandenen Website, die Sie mit der Benutzeraktivitätsanalyse erweitern möchten. In diesem vereinfachten Beispiel setzen wir voraus, dass die Anzahl der besuchten Webseiten während einer Zeitspanne ein Indikator ist, der in der Websitedatenbank aufgezeichnet und überwacht werden muss, die in der Azure SQL-Datenbank gehostet wird. Die Verlaufsanalyse der Benutzeraktivität soll Anregungen zum Neuentwurf der Website und bessere Erkenntnisse über die Besucher liefern.
 
-Das Datenbankmodell für dieses Szenario ist sehr einfach – die Metrik der Benutzeraktivität wird nur mit dem Ganzzahlfeld **PageVisited**dargestellt und zusammen mit grundlegenden Informationen im Benutzerprofil erfasst. Außerdem verwalten Sie für die zeitbasierte Analyse eine Reihe von Zeilen für jeden Benutzer, wobei jede Zeile die Anzahl der Seiten darstellt, die ein bestimmter Benutzer innerhalb einer bestimmten Zeitspanne besucht.
+Das Datenbankmodell für dieses Szenario ist sehr einfach – die Metrik der Benutzeraktivität wird nur mit dem Ganzzahlfeld **PageVisited** dargestellt und zusammen mit grundlegenden Informationen im Benutzerprofil erfasst. Außerdem verwalten Sie für die zeitbasierte Analyse eine Reihe von Zeilen für jeden Benutzer, wobei jede Zeile die Anzahl der Seiten darstellt, die ein bestimmter Benutzer innerhalb einer bestimmten Zeitspanne besucht.
 
 ![Schema](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
@@ -69,7 +69,9 @@ Wenn Sie eine temporale Tabelle mit Systemversionsverwaltung erstellen, wird die
 
 In diesem Fall soll über einen längeren Datenverlauf hinweg und mit größeren Datasets eine zeitbasierte Trendanalyse ausgeführt werden, darum wird als Speicher für die Verlaufstabelle ein gruppierter Columnstore-Index gewählt. Ein gruppierter Columnstore bietet sehr gute Komprimierung und Leistung für analytische Abfragen. Temporale Tabellen geben Ihnen die Flexibilität zum vollständig unabhängigen Konfigurieren von Indizes für aktuelle und temporalen Tabellen. 
 
-**Hinweis**: Columnstore-Indizes sind nur im Premium-Tarif verfügbar.
+> [!NOTE]
+> Columnstore-Indizes sind nur im Premium-Tarif verfügbar.
+>
 
 Das folgende Skript zeigt, wie der Standardindex für die Verlaufstabelle in den gruppierten Columnstore geändert werden kann:
 
@@ -199,6 +201,6 @@ Auf Channel 9 können Sie einen [Kundenerfahrungsbericht zur Temporal-Implementi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

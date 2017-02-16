@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2016
+ms.date: 01/13/2016
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b89917f71701cccd6e78c036b78b136c19e9c2c
+ms.sourcegitcommit: f5143bc817215d075129170adcabf3dd53b5e15a
+ms.openlocfilehash: 1f6abf9bf123534f29b7976ecadbcf8cb49ce040
 
 
 ---
@@ -32,11 +32,13 @@ Wenn Sie das Zurückschreiben konfigurieren, werden Änderungen im Azure AD-Verz
 
 > [!NOTE]
 > Verwenden Sie immer die neueste Version von Azure AD Connect, um sicherzustellen, dass Sie über die Fehlerbehebungen für alle bekannten Fehler verfügen.
-> 
-> 
+>
+>
 
 ## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Synchronisierung aus dem Azure AD-Mandanten mit der verwalteten Domäne
-Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden aus dem Azure AD-Mandanten mit der durch Azure AD Domain Services verwalteten Domäne synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Der Synchronisierungsvorgang wird zudem unidirektional durchgeführt. Die verwaltete Domäne ist größtenteils schreibgeschützt, mit Ausnahme der benutzerdefinierten Organisationseinheiten, die Sie erstellen. Aus diesem Grund können Sie keine Änderungen an den Benutzerattributen, Benutzerkennwörtern oder Gruppenmitgliedschaften in der verwalteten Domäne vornehmen. Daher erfolgt keine umgekehrte Synchronisierung der Änderungen aus der verwalteten Domäne mit dem Azure AD-Mandanten.
+Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden aus dem Azure AD-Mandanten mit der durch Azure AD Domain Services verwalteten Domäne synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Nach Abschluss der einmaligen Erstsynchronisierung Ihres Verzeichnisses dauert es in der Regel ca. 20 Minuten bis Änderungen in Azure AD in Ihrer verwalteten Domäne sichtbar werden. Dieses Synchronisierungsintervall gilt für Kennwortänderungen oder Änderungen an Attributen, die in Azure AD vorgenommen werden.
+
+Der Synchronisierungsvorgang wird zudem unidirektional durchgeführt. Die verwaltete Domäne ist größtenteils schreibgeschützt, mit Ausnahme der benutzerdefinierten Organisationseinheiten, die Sie erstellen. Aus diesem Grund können Sie keine Änderungen an den Benutzerattributen, Benutzerkennwörtern oder Gruppenmitgliedschaften in der verwalteten Domäne vornehmen. Daher erfolgt keine umgekehrte Synchronisierung der Änderungen aus der verwalteten Domäne mit dem Azure AD-Mandanten.
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Synchronisierung aus einer lokalen Umgebung mit mehreren Gesamtstrukturen
 Viele Organisationen verfügen über eine relativ komplexe lokale Identitätsinfrastruktur mit mehreren Kontogesamtstrukturen. Azure AD Connect unterstützt die Synchronisierung von Benutzern, Gruppen und Anmeldeinformationshashes aus Umgebungen mit mehreren Gesamtstrukturen mit dem Azure AD-Mandanten.
@@ -66,8 +68,8 @@ In der folgenden Tabelle sind einige allgemeine Attribute sowie entsprechende Be
 
 > [!NOTE]
 > **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das SAMAccountName-Attribut wird für einige Benutzerkonten in der verwalteten Domäne möglicherweise automatisch generiert. Wenn mehrere Benutzer dasselbe mailNickname-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das SAMAccountName-Attribut für diese Benutzer möglicherweise automatisch generiert. Daher ist das Format für SAMAccountName (z.B. „CONTOSO100\joeuser“) nicht immer eine verlässliche Möglichkeit für die Anmeldung in der Domäne. Das automatisch generierte SAMAccountName-Attribut von Benutzern kann von ihrem UPN-Präfix abweichen. Verwenden Sie das UPN-Format (z.B. 'joeuser@contoso100.com') für die zuverlässige Anmeldung bei der verwalteten Domäne.
-> 
-> 
+>
+>
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Attributzuordnung für Benutzerkonten
 In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Benutzerobjekte im Azure AD-Mandanten mit den entsprechenden Attributen in der verwalteten Domäne synchronisiert werden.
@@ -122,7 +124,6 @@ Wie in einem vorherigen Abschnitt dieses Artikels beschrieben wurde, erfolgt kei
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -1,13 +1,14 @@
 ---
 layout: LandingPage
+description: "Hier erfahren Sie, wie Sie DocumentDB (eine schemafreie NoSQL-Dokumentdatenbank) verwenden. Anhand von Tutorials wird gezeigt, wie die App-Integration funktioniert und wie Sie SQL-Abfragen für JSON-Dokumente verwenden."
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c0911518e954131f1c8de783d71fb17a9eea1945
+ms.sourcegitcommit: 14e5e2f2bdf3708ab339eff7eb58bbf87cb1a10c
+ms.openlocfilehash: 261d2d5410603fe3352c0bcfabcc15058f3f7c94
 
 ---
 #<a name="documentdb-documentation"></a>DocumentDB-Dokumentation
 
-Bei Azure DocumentDB handelt es sich um einen vollständig verwalteten NoSQL-Datenbankdienst, der für hohe und vorhersagbare Leistung, hohe Verfügbarkeit, elastische Skalierung, globale Verteilung und einfache Bereitstellung entworfen wurde. Als NoSQL-Datenbank ohne Schema stellt DocumentDB umfassende und vertraute SQL-Abfragefunktionen mit einheitlichen geringen Latenzen für JSON-Daten bereit.
+Hier erfahren Sie, wie Sie DocumentDB in Hochleistungsanwendungen für das Web und den Mobilbereich sowie für Spiele und das IoT verwenden. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie in diesem NoSQL-Datenbankdienst JSON-Daten speichern und SQL-Abfragen unter Verwendung eines flexiblen Schemas ausführen.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -221,6 +222,6 @@ Herunterladen der DocumentDB-Dokumentation </div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO3-->
 
 

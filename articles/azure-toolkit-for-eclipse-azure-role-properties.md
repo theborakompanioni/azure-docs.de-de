@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b65a0c306ec9316fd8a86f8ebb2808cce65200a
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: eb1f4c815618e866e683b3fe2e3adf93a151ff5a
 
 
 ---
@@ -70,7 +70,7 @@ Auf der Eigenschaftenseite **Caching** können Sie globale Einstellungen für Fo
 * Name des Speicherkontos zum Speichern des Cachezustands, wenn Ihre Anwendung als Clouddienst ausgeführt wird (oder keine Angabe, wenn Sie den Cachezustand nicht speichern möchten). (Beim Ausführen der Anwendung im Serveremulator wird der Name des Speicherkontos nicht verwendet.) Wenn Sie den Namen des Speicherkontos auf **(Auto)** (Standardeinstellung) festlegen, wird für die Cachekonfiguration automatisch das im Dialogfeld **In Azure veröffentlichen** ausgewählte Speicherkonto verwendet.
 
 > [!NOTE]
-> Die Einstellung **(Auto)** funktioniert nur dann wie gewünscht, wenn Sie Ihre Bereitstellung mit dem Bereitstellungs-Assistenten des Eclipse-Toolkits veröffentlichen. Wenn Sie die CSPKG-Datei stattdessen manuell (etwa über das [Azure-Verwaltungsportal][Azure-Verwaltungsportal]) veröffentlichen, funktioniert die Bereitstellung nicht ordnungsgemäß.
+> Die Einstellung **(Auto)** funktioniert nur dann wie gewünscht, wenn Sie Ihre Bereitstellung mit dem Bereitstellungs-Assistenten des Eclipse-Toolkits veröffentlichen. Wenn Sie die CSPKG-Datei stattdessen manuell (etwa über das [Azure-Verwaltungsportal][Azure Management Portal]) veröffentlichen, funktioniert die Bereitstellung nicht ordnungsgemäß.
 > 
 > 
 
@@ -93,7 +93,7 @@ Wenn Sie einen benannten Cache ändern möchten, wählen Sie den Cache aus, und 
 
 Wenn Sie einen Cache löschen möchten, wählen Sie ihn aus, klicken Sie auf der Eigenschaftenseite **Caching** auf die Schaltfläche **Entfernen**, und bestätigen Sie den Löschvorgang anschließend durch Klicken auf **Ja**.
 
-Weitere Informationen zur Verwendung von Caching finden Sie unter[ Vorgehensweise: Verwenden von zusammengestelltem Caching][Vorgehensweise: Verwenden von zusammengestelltem Caching].
+Weitere Informationen zur Verwendung von Caching finden Sie unter [Verwenden von zusammengestelltem Caching][How to Use Co-located Caching].
 
 <a name="certificates_properties"></a> 
 
@@ -102,7 +102,7 @@ Weitere Informationen zur Verwendung von Caching finden Sie unter[ Vorgehensweis
 
 ![][ic710964]
 
-In diesem Dialogfeld können Sie Zertifikate hinzufügen oder entfernen, auf die von Ihrem Eclipse-Projekt verwiesen wird. Beachten Sie, dass die hier aufgeführten Zertifikate nicht automatisch in jedem Java-Schlüsselspeicher gespeichert werden und daher nicht automatisch für jede Verwendung in einer Java-Anwendung zur Verfügung stehen. Sie werden nur bei Azure registriert, damit sie auf den virtuellen Maschinen, die Ihre Bereitstellung ausführen, vorab in den Windows-Zertifikatspeicher geladen und später von anderer Windows-Software verwendet werden können. Derzeit ist [SSL-Abladung][SSL-Abladung] die einzige Funktion des Toolkits, die Zertifikate verwendet, auf die im Dialogfeld **Zertifikate** auf diese Weise verwiesen wird. Dies ist der Abhängigkeit von IIS (Internet Information Services; Internetinformationsdienste) und ARR (Application Request Routing; Routing von Anwendungsanforderungen) geschuldet, für die das richtige Zertifikat auf diese Weise verfügbar gemacht werden muss.
+In diesem Dialogfeld können Sie Zertifikate hinzufügen oder entfernen, auf die von Ihrem Eclipse-Projekt verwiesen wird. Beachten Sie, dass die hier aufgeführten Zertifikate nicht automatisch in jedem Java-Schlüsselspeicher gespeichert werden und daher nicht automatisch für jede Verwendung in einer Java-Anwendung zur Verfügung stehen. Sie werden nur bei Azure registriert, damit sie auf den virtuellen Maschinen, die Ihre Bereitstellung ausführen, vorab in den Windows-Zertifikatspeicher geladen und später von anderer Windows-Software verwendet werden können. Derzeit ist [SSL-Abladung][SSL Offloading] das einzige Feature des Toolkits, das Zertifikate verwendet, auf die im Dialogfeld **Zertifikate** auf diese Weise verwiesen wird. Dies ist der Abhängigkeit von IIS (Internet Information Services, Internetinformationsdienste) und ARR (Application Request Routing, Routing von Anwendungsanforderungen) geschuldet, für die das richtige Zertifikat auf diese Weise verfügbar gemacht werden muss.
 
 Wenn Sie Ihr Projekt mithilfe des Veröffentlichungs-Assistenten in Azure bereitstellen, werden Sie aufgefordert, auf die entsprechenden Personal Information Exchange (PFX)-Dateien für diese Zertifikate (einschließlich Kennwörter) zu verweisen, damit sie automatisch in den Azure-Dienst hochgeladen werden (sofern nicht bereits geschehen).
 
@@ -181,7 +181,7 @@ Komponenten werden in der angegebenen Reihenfolge verarbeitet. Die Reihenfolge k
 
 ![][ic719504]
 
-Weitere Informationen zum Debuggen finden Sie unter [Debuggen von Azure-Anwendungen in Eclipse][Debuggen von Azure-Anwendungen in Eclipse].
+Weitere Informationen zum Debuggen finden Sie unter [Debuggen von Azure-Anwendungen in Eclipse][Debugging Azure Applications in Eclipse].
 
 <a name="endpoints_properties"></a> 
 
@@ -204,9 +204,9 @@ Je nach Art des Endpunkts können folgende Portbereiche verwendet werden:
 
 Wenn Sie nur eine einzelne Portnummer und keinen Bereich verwenden möchten, lassen Sie das Textfeld für das Ende des Bereichs leer.
 
-Wenn Sie bei Verwendung der automatischen Portfestlegung ermitteln möchten, welcher Port zur Laufzeit tatsächlich verwendet wird, kann Ihre Anwendung die Azure Service Runtime-API verwenden. Die entsprechende Dokumentation finden Sie in der [Paketzusammenfassung für „com.microsoft.windowsazure.serviceruntime“][Paketzusammenfassung für „com.microsoft.windowsazure.serviceruntime“].
+Wenn Sie bei Verwendung der automatischen Portfestlegung ermitteln möchten, welcher Port zur Laufzeit tatsächlich verwendet wird, kann Ihre Anwendung die Azure Service Runtime-API verwenden. Die entsprechende Dokumentation finden Sie in der [Paketzusammenfassung für „com.microsoft.windowsazure.serviceruntime“][com.microsoft.windowsazure.serviceruntime package summary].
 
-Informationen zum Verwenden von Instanzeingabe-Endpunkten beim Debuggen einer Bereitstellung mit mehreren Instanzen finden Sie unter [Debuggen einer bestimmten Rolleninstanz in einer Bereitstellung mit mehreren Instanzen][Debuggen einer bestimmten Rolleninstanz in einer Bereitstellung mit mehreren Instanzen].
+Informationen zum Verwenden von Instanz-Eingabeendpunkten beim Debuggen einer Bereitstellung mit mehreren Instanzen finden Sie unter [Debuggen einer bestimmten Rolleninstanz in einer Bereitstellung mit mehreren Instanzen][Debugging a specific role instance in a multi-instance deployment].
 
 Wenn Sie einen Endpunkt ändern möchten, wählen Sie ihn aus, und klicken Sie auf der Eigenschaftenseite **Endpunkte** auf die Schaltfläche **Bearbeiten**. Daraufhin erscheint ein Dialogfeld, in dem Sie Name und Typ sowie den öffentlichen und privaten Port des Endpunkts ändern können. Klicken Sie auf **OK**, um die geänderten Endpunktwerte zu speichern.
 
@@ -256,7 +256,7 @@ Zur ordnungsgemäßen Konfiguration einiger Features (etwa Serverkonfiguration, 
 
 ![][ic719492]
 
-Weitere Informationen finden Sie unter [Sitzungsaffinitiät][Sitzungsaffinitiät]. Beachten Sie außerdem das Verhalten dieses Features im Kontext der [SSL-Abladung][SSL-Abladung].
+Weitere Informationen finden Sie unter [Sitzungsaffinitiät][Session Affinity]. Beachten Sie außerdem das Verhalten dieses Features im Kontext der [SSL-Abladung][SSL Offloading].
 
 <a name="local_storage_properties"></a> 
 
@@ -267,7 +267,7 @@ Weitere Informationen finden Sie unter [Sitzungsaffinitiät][Sitzungsaffinitiät
 
 Darüber hinaus können Sie optional eine Umgebungsvariable angeben, die dem lokalen Speicher entspricht.
 
-Standardmäßig werden alle Elemente, die Sie in Azure bereitstellen, im Ordner **approot** der Rolleninstanz platziert (und entzippt). Die meisten einfachen Bereitstellungen finden dort zwar auch nach dem Entzippen Platz, dem Verzeichnis **approot** ist jedoch nur eine begrenzte Menge an Speicherplatz zugewiesen, und diese ist nicht klar definiert. Daher empfiehlt es sich, über das Dialogfeld **Lokaler Speicher** eine lokale Speicherressource einzurichten, um sicherzustellen, dass Azure ausreichend Speicherplatz für größere Bereitstellungen zuordnet, die unter Umständen nicht in den Ordner **approot** passen. Eine einfache Anleitung hierzu finden Sie unter [Bereitstellen großer Bereitstellungen][Bereitstellen großer Bereitstellungen].
+Standardmäßig werden alle Elemente, die Sie in Azure bereitstellen, im Ordner **approot** der Rolleninstanz platziert (und entzippt). Die meisten einfachen Bereitstellungen finden dort zwar auch nach dem Entzippen Platz, dem Verzeichnis **approot** ist jedoch nur eine begrenzte Menge an Speicherplatz zugewiesen, und diese ist nicht klar definiert. Daher empfiehlt es sich, über das Dialogfeld **Lokaler Speicher** eine lokale Speicherressource einzurichten, um sicherzustellen, dass Azure ausreichend Speicherplatz für größere Bereitstellungen zuordnet, die unter Umständen nicht in den Ordner **approot** passen. Eine einfache Anleitung hierzu finden Sie unter [Bereitstellen großer Bereitstellungen][Deploying Large Deployments].
 
 Auf die Speicherressource kann ganz einfach in Startskripts (etwa **startup.cmd**) verwiesen werden. Dabei wird die Umgebungsvariable verwendet, die der Ressource automatisch vom Eclipse-Toolkit zugeordnet wurde, wie im Dialogfeld **Lokaler Speicher** zu sehen. Diese Umgebungsvariable enthält den vollständigen Pfad der lokalen Ressource, die Sie zum Zeitpunkt der Ausführung Ihres Startskripts konfiguriert haben. 
 
@@ -398,38 +398,38 @@ Bei Verwendung der automatischen Uploadoption **** informieren Erstellungsmeldun
 
 ![][ic719481]
 
-In diesem Dialogfeld können Sie die SSL-Abladung aktivieren. Dies ermöglicht die unkomplizierte Unterstützung von HTTPS (Hypertext Transfer-Protokoll Secure) in Ihrer Java-Bereitstellung für Azure, ohne SSL auf Ihrem Java-Anwendungsserver konfigurieren zu müssen. Weitere Informationen finden Sie unter [SSL-Abladung][SSL-Abladung] sowie unter [Vorgehensweise: Verwenden der SSL-Abladung][Vorgehensweise: Verwenden der SSL-Abladung].
+In diesem Dialogfeld können Sie die SSL-Abladung aktivieren. Dies ermöglicht die unkomplizierte Unterstützung von HTTPS (Hypertext Transfer-Protokoll Secure) in Ihrer Java-Bereitstellung für Azure, ohne SSL auf Ihrem Java-Anwendungsserver konfigurieren zu müssen. Weitere Informationen finden Sie unter [SSL-Abladung][SSL Offloading] sowie unter [Verwenden der SSL-Abladung][How to Use SSL Offloading].
 
 ## <a name="see-also"></a>Weitere Informationen
-[Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse]
+[Azure-Toolkit für Eclipse][Azure Toolkit for Eclipse]
 
-[Installation des Azure Toolkit für Eclipse][Installation des Azure Toolkit für Eclipse]
+[Installieren des Azure-Toolkits für Eclipse][Installing the Azure Toolkit for Eclipse]
 
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Erstellen einer Hello World-Anwendung für Azure in Eclipse]
+[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-[Azure-Projekteigenschaften][Azure-Projekteigenschaften]
+[Azure-Projekteigenschaften][Azure Project Properties]
 
-[Azure-Speicherkontenliste][Azure-Speicherkontenliste]
+[Azure Storage-Kontenliste][Azure Storage Account List]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure-Verwaltungsportal]: http://go.microsoft.com/fwlink/?LinkID=512959
-[Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure-Projekteigenschaften]: http://go.microsoft.com/fwlink/?LinkID=699524
-[Azure-Speicherkontenliste]: http://go.microsoft.com/fwlink/?LinkID=699528
-[Paketzusammenfassung für „com.microsoft.windowsazure.serviceruntime“]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Debuggen einer bestimmten Rolleninstanz in einer Bereitstellung mit mehreren Instanzen]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
-[Debuggen von Azure-Anwendungen in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699535
-[Bereitstellen großer Bereitstellungen]: http://go.microsoft.com/fwlink/?LinkID=699536
-[Vorgehensweise: Verwenden von zusammengestelltem Caching]: http://go.microsoft.com/fwlink/?LinkID=699542
-[Vorgehensweise: Verwenden der SSL-Abladung]: http://go.microsoft.com/fwlink/?LinkID=699545
-[Installation des Azure Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Sitzungsaffinitiät]: http://go.microsoft.com/fwlink/?LinkID=699548
-[SSL-Abladung]: http://go.microsoft.com/fwlink/?LinkID=699549
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Azure Project Properties]: http://go.microsoft.com/fwlink/?LinkID=699524
+[Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
+[com.microsoft.windowsazure.serviceruntime package summary]: http://azure.github.io/azure-sdk-for-java/com/microsoft/windowsazure/serviceruntime/package-summary.html
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Debugging a specific role instance in a multi-instance deployment]: http://go.microsoft.com/fwlink/?LinkID=699535#debugging_specific_role_instance
+[Debugging Azure Applications in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699535
+[Deploying Large Deployments]: http://go.microsoft.com/fwlink/?LinkID=699536
+[How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542
+[How to Use SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699545
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699548
+[SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549
 
 <!-- IMG List -->
 
@@ -460,6 +460,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

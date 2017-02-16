@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5041b2e4102bf8aaf72358e0812a7b045c804048
+ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
+ms.openlocfilehash: 8650ad41d1d6ef3ee94c2792f435b84676a72d27
 
 
 ---
@@ -37,7 +37,7 @@ Klicken Sie zunächst im Azure-Portal für Ihren API Management-Dienst auf **Ent
 ![Herausgeberportal][api-management-management-console]
 
 > [!NOTE]
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Tutorial [Erste Schritte mit Azure API Management][Erste Schritte mit Azure API Management].
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] im Tutorial [Erste Schritte mit Azure API Management][Get started with Azure API Management].
 > 
 > 
 
@@ -66,7 +66,7 @@ Geben Sie die **Autorisierungscode-Berechtigungstypen** an, indem Sie die gewün
 
 Geben Sie die **Autorisierungsendpunkt-URL**ein. Für Azure Active Directory lautet diese URL ähnlich wie die folgende, wobei `<client_id>` durch die Client-ID ersetzt wird, die Ihre Anwendung gegenüber dem OAuth 2.0-Server authentifiziert.
 
-    https://login.windows.net/<client_id>/oauth2/authorize
+`https://login.windows.net/<client_id>/oauth2/authorize`
 
 Über **Methode für Autorisierungsanforderung** wird festgelegt, wie die Autorisierungsanforderung an den OAuth 2.0-Server gesendet wird. Per Voreinstellung ist **GET** ausgewählt.
 
@@ -76,7 +76,7 @@ Im nächsten Abschnitt werden **Token-Endpunkt-URL**, **Clientauthentifizierungs
 
 Bei einem Azure Active Directory OAuth 2.0-Server weist **Token-Endpunkt-URL** das folgende Format auf. Hierbei verwendet `<APPID>` das Format `yourapp.onmicrosoft.com`.
 
-    https://login.windows.net/<APPID>/oauth2/token
+`https://login.windows.net/<APPID>/oauth2/token`
 
 Die Standardeinstellung für **Clientauthentifizierungsmethoden** lautet **Basis**, und die **Sendemethode für Zugriffstoken** ist **Autorisierungsheader**. Diese Werte werden zusammen mit **Standardmäßiger Geltungsbereich**in diesem Abschnitt des Formulars festgelegt.
 
@@ -155,28 +155,28 @@ Weitere Informationen zur Verwendung von OAuth 2.0 und API Management finden Si
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 
 
-[Hinzufügen von Operationen zu einer API]: api-management-howto-add-operations.md
-[Hinzufügen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
-[Überwachung und Analyse]: api-management-monitoring.md
-[Hinzufügen von APIs zu einem Produkt]: api-management-howto-add-products.md#add-apis
-[Veröffentlichen eines Produkts]: api-management-howto-add-products.md#publish-product
-[Erste Schritte mit Azure API Management]: api-management-get-started.md
-[API Management-Richtlinienreferenz]: api-management-policy-reference.md
-[Cachingrichtlinien]: api-management-policy-reference.md#caching-policies
-[Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: api-management-get-started.md
+[API Management policy reference]: api-management-policy-reference.md
+[Caching policies]: api-management-policy-reference.md#caching-policies
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
-[Voraussetzungen]: #prerequisites
-[Konfigurieren eines OAuth 2.0-Autorisierungsservers in API Management]: #step1
-[Konfigurieren einer API zum Verwenden der OAuth 2.0-Benutzerauthentifizierung]: #step2
-[Testen der OAuth 2.0-Benutzerauthentifizierung im Entwicklerportal]: #step3
-[Nächste Schritte]: #next-steps
+[Prerequisites]: #prerequisites
+[Configure an OAuth 2.0 authorization server in API Management]: #step1
+[Configure an API to use OAuth 2.0 user authorization]: #step2
+[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Next steps]: #next-steps
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

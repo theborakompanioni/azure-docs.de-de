@@ -1,5 +1,5 @@
 ---
-title: "Zurücksetzen eines lokalen Windows-Kennworts bei nicht installiertem Azure Gast-Agent | Microsoft Docs"
+title: "Zurücksetzen eines lokalen Windows-Kennworts ohne Azure-Agent | Microsoft Docs"
 description: "Gewusst wie: Zurücksetzen des Kennworts eines lokalen Windows-Benutzerkontos, wenn der Azure-Gast-Agent auf einem virtuellen Computer nicht installiert ist oder nicht ausgeführt wird."
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/05/2016
+ms.date: 12/20/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: ea637c05a0b30efcce40822556f7bfc58d4e87d9
+ms.sourcegitcommit: 370bcf5189c855185f11277518e0cbd5377993ab
+ms.openlocfilehash: 74b1282bf205bc38f13c51c5e05f55987d0cd12e
 
 
 ---
@@ -125,7 +125,7 @@ Versuchen Sie zunächst immer, ein Kennwort im [Azure-Portal oder mithilfe von A
      ![Kopieren des Datenträger-URI](./media/virtual-machines-windows-reset-local-password-without-guest-agent/copy_source_vhd_uri.png)
 9. Erstellen Sie einen virtuellen Computer über den Betriebssystemdatenträger des virtuellen Quellcomputers:
    
-   * Verwenden Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd), um einen virtuellen Computer aus einer speziellen VHD zu erstellen. Klicken Sie auf die Schaltfläche `Deploy to Azure`, um das Azure-Portal mit den automatisch ausgefüllten Werten der Vorlage zu öffnen.
+   * Verwenden Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd), um einen virtuellen Computer aus einer speziellen VHD zu erstellen. Klicken Sie auf die Schaltfläche `Deploy to Azure`, um das Azure-Portal mit den automatisch ausgefüllten Werten der Vorlage zu öffnen.
    * Wenn alle vorherigen Einstellungen für den virtuellen Computer beibehalten werden sollen, wählen Sie *Vorlage bearbeiten* aus, um das vorhandene VNET, das vorhandene Subnetz, die vorhandene Netzwerkkarte oder die vorhandene öffentliche IP-Adresse anzugeben.
    * Fügen Sie im Parametertextfeld `OSDISKVHDURI` den URI der Quell-VHD aus dem vorherigen Schritt ein:
      
@@ -146,6 +146,6 @@ Wenn Sie dennoch keine Verbindung per Remotedesktop herstellen können, finden S
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

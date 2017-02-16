@@ -4,10 +4,10 @@ Die Beschränkungen hängen von dem von Ihnen ausgewählten [Tarif](https://azur
 
 | **Ressource** | **Standardlimit** | **Hinweis**
 | --- | --- | --- |
-| Gesamtdaten pro Tag | 100 GB | Diese können Sie durch Festlegen einer Obergrenze reduzieren.
+| Gesamtdaten pro Tag | 100 GB | Diese können Sie durch Festlegen einer Obergrenze reduzieren. Wenn Sie mehr benötigen, wenden Sie sich per E-Mail an AIDataCap@microsoft.com 
 | Kostenlose Daten pro Monat<br/> (Plan der Grundpreise) | 1 GB | Zusätzliche Daten, die pro GB abgerechnet werden
 | Beibehaltung von Daten | 90 Tage | für die [Suche](../articles/application-insights/app-insights-diagnostic-search.md), die [Analyse](../articles/application-insights/app-insights-analytics.md) und [Metriken-Explorer](../articles/application-insights/app-insights-metrics-explorer.md).
-| [Webtests in mehreren Schritten](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests) mit detaillierter Ergebnisaufbewahrung | 30 Tage | Detaillierte Ergebnisse der einzelnen Schritte
+| [Webtests in mehreren Schritten](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests) mit detaillierter Ergebnisaufbewahrung | 90 Tage | Detaillierte Ergebnisse der einzelnen Schritte
 | [Eigenschaft](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties) und Anzahl der Namen von [Metriken](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)<sup>2</sup> | 200 | 
 | Eingenschaft und Länge der Namen von Metriken | 150 |
 | Zeichenfolgenlänge des Eigenschaftswerts | 8192 |
@@ -23,6 +23,6 @@ Die Beschränkungen hängen von dem von Ihnen ausgewählten [Tarif](https://azur
 
 [Informationen zu Preisen und Kontingenten für Application Insights](../articles/application-insights/app-insights-pricing.md)
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

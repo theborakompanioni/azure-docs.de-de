@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 7b4988ecc1594b5c9fba8554173ccbf167260898
+ms.sourcegitcommit: 5b8b293b5b37365088a3df55581be7b7bf76691c
+ms.openlocfilehash: 7bc3421e00215ca4629ea11811c98e581377b24a
 
 
 ---
@@ -34,7 +34,7 @@ In diesem Thema wird erläutert, wie Ihre Anwendung mit Azure PowerShell und Res
 > [!TIP]
 > Hilfe zum Beheben eines Fehlers während der Bereitstellung finden Sie unter:
 > 
-> * [Anzeigen von Bereitstellungsvorgängen mit Azure PowerShell.](resource-manager-troubleshoot-deployments-powershell.md) Hier erfahren Sie, wie Sie Informationen zum Beheben von Fehlern abrufen.
+> * [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md). Erfahren Sie, wie Sie Informationen zum Beheben von Fehlern abrufen.
 > * [Beheben von häufigen Fehlern beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager](resource-manager-common-deployment-errors.md). Hier erfahren Sie, wie Sie häufig auftretende Bereitstellungsfehler beheben.
 > 
 > 
@@ -104,7 +104,7 @@ Diese Befehle dienen zum Erstellen einer Ressourcengruppe und Bereitstellen eine
    
      Die vorherigen beiden Beispiele enthalten keine Parameterwerte. Im Abschnitt [Parameter](#parameters) erfahren Sie mehr über die Optionen zum Übergeben von Parameterwerten. Vorerst werden Sie aufgefordert, Parameterwerte mit der folgenden Syntax anzugeben:
 
-   ```poweshell  
+   ```powershell  
    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
    Supply values for the following parameters:
    (Type !? for Help.)
@@ -113,7 +113,7 @@ Diese Befehle dienen zum Erstellen einer Ressourcengruppe und Bereitstellen eine
      
      Nachdem die Ressourcen bereitgestellt wurden, wird eine Zusammenfassung der Bereitstellung angezeigt. Die Zusammenfassung enthält die Angabe **ProvisioningState**, die bestimmt, ob die Bereitstellung erfolgreich war.
 
-   ```poweshell   
+   ```powershell   
    DeploymentName    : ExampleDeployment
    ResourceGroupName : ExampleResourceGroup
    ProvisioningState : Succeeded
@@ -127,7 +127,7 @@ Diese Befehle dienen zum Erstellen einer Ressourcengruppe und Bereitstellen eine
    New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate>
    ```
    
-     Weitere Informationen zur Verwendung dieses Debuginhalts zur Behebung von Problemen in der Bereitstellung finden Sie unter [View deployment operations with Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md) (Anzeigen von Bereitstellungsvorgängen mit Azure PowerShell).
+     Weitere Informationen zur Verwendung dieses Debuginhalts zum Beheben von Bereitstellungsproblemen finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md).
 
 ## <a name="deploy-private-template-with-sas-token"></a>Bereitstellen einer privaten Vorlage mit SAS-Token
 Sie können Ihre Vorlagen einem Speicherkonto hinzufügen und sie während der Bereitstellung mit einem SAS-Token verknüpfen.
@@ -193,7 +193,7 @@ Sie haben die folgenden Möglichkeiten zum Angeben der Parameterwerte:
    
 - Inlineparameter. Beziehen Sie Namen einzelner Parameter in das Cmdlet ein (z.B. **-MeinParametername**.)
 
-   ```poweshell   
+   ```powershell   
    New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -myParameterName "parameterValue"
    ```
 - Parameterobjekt. Beziehen Sie den **-TemplateParameterObject**-Parameter ein.
@@ -233,6 +233,6 @@ Bei Verwendung einer externen Parameterdatei können Sie jedoch keine anderen We
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

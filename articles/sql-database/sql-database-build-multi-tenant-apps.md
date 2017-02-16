@@ -17,8 +17,8 @@ ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: c17cedb24dacc6aeefa02a963b4dffcf22e246ec
-ms.openlocfilehash: db92ce021183b7006f2b9b060b3ac2c08fbcd200
+ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
+ms.openlocfilehash: fb62e82865ac39031f86daa329f93261ec4ffd7b
 
 
 ---
@@ -27,6 +27,10 @@ ms.openlocfilehash: db92ce021183b7006f2b9b060b3ac2c08fbcd200
 Wenn Sie als SaaS-Entwickler eine mehrinstanzenfähige App für eine Vielzahl von Kunden erstellen, gehen Sie häufig Kompromisse im Hinblick auf Leistung, Verwaltung und Sicherheit ein. Mit den Pools für elastische Datenbanken von Azure SQL-Datenbank gehören diese Kompromisse der Vergangenheit an. Die Pools unterstützen Sie bei der Verwaltung und Überwachung mehrinstanzenfähiger Apps und ermöglichen es Ihnen, von der Isolation eines Kunden pro Datenbank zu profitieren. Informationen finden Sie unter [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)(Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank).
 
 ![build-multi-tenant-apps](./media/sql-database-build-multi-tenant-apps/sql-database-build-multi-tenant-apps.png)
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
+>
+>
 
 ## <a name="auto-scaling-you-control"></a>Automatische Skalierung, von Ihnen gesteuert
 Pools führen basierend auf dem aktuellen Bedarf eine automatische Skalierung von Leistung und Speicherkapazität für elastische Datenbanken durch. Sie können die Leistung eines Pools steuern, elastische Datenbanken nach Bedarf hinzufügen oder entfernen und die Leistung elastischer Datenbanken definieren, ohne dass sich dies auf die Gesamtkosten des Pools auswirkt. Dies bedeutet, dass Sie sich keine Gedanken über die Verwaltung einzelner Datenbanken machen müssen.
@@ -69,6 +73,6 @@ Lesen Sie die [Technische Übersicht über SQL-Datenbank](sql-database-technical
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 24d6a25e872eabb7d64d57d5ee66969401e4f1cd
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 649984be9aee5253dcd1f3ed3be31795212aa3ae
 
 
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Beispiel 3: Erstellen einer DMZ zum Schutz von Netzwerken mit Firewall, UDR und NSG
-[Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
+[Zurück zur Seite mit bewährten Methoden zu Sicherheitsgrenzen][HOME]
 
 In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern, benutzerdefiniertem Routing, IP-Weiterleitung und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
 
@@ -958,7 +958,7 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
-Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
+Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie dazu eine Anwendung unter folgendem Link: [Beispielanwendungsskript][SampleApp].
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "Bidirektionale DMZ mit virtuellem Netzwerkgerät, NSG und benutzerdefiniertem Routing"
@@ -969,15 +969,15 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 [6]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/createnetworkobjectrdpb.png "AppVM01-Regel"
 [7]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconapplicationredirect.png "Symbol der Regel zur Anwendungsumleitung"
 [8]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/icondestinationnat.png "Symbol der Ziel-NAT-Regel"
-[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Symbol der Übergaberegel"
+[9]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/iconpass.png "Symbol übergeben"
 [10]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulefirewall.png "Firewallverwaltungsregel"
 [11]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/rulerdp.png "RDP-Firewallregel"
 [12]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleweb.png "Firewallwebregel"
 [13]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleappvm01.png "AppVM01-Firewallregel"
 [14]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleoutbound.png "Ausgehende Firewallregel"
 [15]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledns.png "DNS-Firewallregel"
-[16]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleintravnet.png "VNET-interne Firewallregel"
-[17]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledeny.png "Firewallregel „Alle ablehnen“"
+[16]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruleintravnet.png "VNet-interne Firewallregel"
+[17]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/ruledeny.png "Firewallablehnungsregel"
 [18]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/firewallruleactivate.png "Aktivierung der Firewallregeln"
 
 <!--Link References-->
@@ -986,6 +986,6 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f2fb432881c606c29d4ee7bc810bff984ddec2c
+ms.sourcegitcommit: f9a216f3f76ef84e745ef29575d20da971e5eb61
+ms.openlocfilehash: 2ccd414e0eec04dbee7c412cef245e1ab0da2bff
 
 
 ---
@@ -46,6 +46,7 @@ Auch wenn die meisten Module einfache Nur-Text-JavaScript-Dateien sind, gibt es 
 Azure App Service unterstützt nicht alle systemeigenen Module, sodass eine Kompilierung dieser Module unter sehr spezifischen Voraussetzungen möglicherweise fehlschlägt. Während einige beliebte Module wie MongoDB optionale systemeigene Abhängigkeiten besitzen, aber problemlos ohne diese funktionieren, erwiesen sich zwei Problemumgehungen als sehr erfolgreich mit fast allen zurzeit verfügbaren systemeigenen Modulen:
 
 * Führen Sie **npm install** auf einem Windows-Computer aus, auf dem alle Voraussetzungen für das jeweilige systemeigene Modul installiert sind. Stellen Sie anschließend den erstellten Ordner **node\_modules** als Teil der Anwendung in Azure App Service bereit.
+  * Überprüfen Sie vor dem Kompilieren, dass die Architektur der lokalen Installation von Node.js übereinstimmt und dass die Version so nah wie möglich an der in Azure verwendeten ist (die aktuellen Werte können zur Laufzeit mit den Eigenschaften **process.arch** und **process.version** geprüft werden).
 * Azure App Service kann für die Ausführung benutzerdefinierter Bash- oder Shell-Skripts während der Bereitstellung konfiguriert werden. So haben Sie die Möglichkeit, benutzerdefinierte Befehle auszuführen und exakt zu konfigurieren, wie **npm install** ausgeführt wird. Ein Video mit der entsprechenden Vorgehensweise finden Sie unter [Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu].
 
 ### <a name="using-a-packagejson-file"></a>Verwenden einer package.json-Datei
@@ -85,13 +86,13 @@ Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/)
 
 [die Node.js-Version angeben]: nodejs-specify-node-version-azure-apps.md
 [die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden]: xplat-cli-install.md
-[Erstellen und Bereitstellen einer Node.js-Web-App]: web-sites-nodejs-develop-deploy-mac.md
-[Node.js-Webanwendung mit Speicher für MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
-[Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst]: cloud-services-nodejs-develop-deploy-app.md
+[build and deploy a Node.js web app]: web-sites-nodejs-develop-deploy-mac.md
+[Node.js Web Application with Storage on MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
+[Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [Benutzerdefinierte Website-Bereitstellungsskripts mit Kudu]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

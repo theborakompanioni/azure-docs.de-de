@@ -11,14 +11,14 @@ keywords: Docker, Container, Microservices, Mesos, Azure
 ms.assetid: 52da4163-1182-4b2e-be00-4951e5c1da16
 ms.service: container-service
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 12/20/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 3edc4bf663244805fc184d9598621b3fbca72d5d
-ms.openlocfilehash: 430f895a783cbbe6b7454ccd24c2dd8d99f6228b
+ms.sourcegitcommit: f8a2b63c381ceafb23b31697916796066ea549f9
+ms.openlocfilehash: d5652134cc2c660395cfb83a1a2727acf306f5e9
 
 
 ---
@@ -28,6 +28,10 @@ Azure Container Service (ACS) vereinfacht Ihnen das Erstellen, Konfigurieren und
 ![Azure Container Service bietet eine Möglichkeit, Anwendungen, die in Containern ausgeführt werden, auf mehreren Hosts in Azure zu verwalten.](./media/acs-intro/acs-cluster-new.png)
 
 Azure Container Service nutzt das Docker-Containerformat, um sicherzustellen, dass Ihre Anwendungscontainer vollständig portierbar sind. Der Dienst unterstützt außerdem Marathon und DC/OS, Docker Swarm oder Kubernetes, sodass Sie diese Anwendungen auf Tausende und sogar Zehntausende von Containern skalieren können.
+
+>[!NOTE]
+> Die Kubernetes-Unterstützung in Azure Container Service befindet sich derzeit in der Vorschauphase.
+>
 
 Mit dem Azure Container Service können Sie die Unternehmensfunktionen von Azure nutzen, während gleichzeitig die Anwendungsportierbarkeit erhalten bleibt, auch auf den Orchestrierungsebenen.
 
@@ -89,7 +93,7 @@ Das Tool bietet zahlreiche Funktionen, darunter:
 * Geheimnis- und Konfigurationsverwaltung
 * API-basierte automatisierte Rollouts und Rollbacks
 * Selbstreparatur 
-* und vieles mehr...
+* und vieles mehr.
 
 
 
@@ -109,6 +113,6 @@ Erstellen von Anwendungen mithilfe von Azure Container Service (Build 2016)
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

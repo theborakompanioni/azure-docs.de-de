@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
 translationtype: Human Translation
-ms.sourcegitcommit: 460d26bad4407de32f0e805063e0699ff3a31dbd
-ms.openlocfilehash: 62a3e78c95a39aa03ea1130e10950531dc60788e
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
 
 ---
 
@@ -152,7 +152,7 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 
 In diesem Szenario verteilt Load Balancer Verbindungen von der Webebene zu den Datenbanken innerhalb eines Clusters mit hoher Verfügbarkeit.
 
-Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../virtual-machines/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md).
 
 Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
@@ -213,6 +213,6 @@ Jetzt konfigurieren wir die IP-Adresse und den Load Balancer-Front-End-Port in d
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

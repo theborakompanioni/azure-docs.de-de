@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
+ms.date: 09/11/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
-ms.openlocfilehash: ee413f5044d541a7a127690fab0115341c7619f3
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 03df35cff59f9de4642de7b5e851199d593129a9
 
 
 ---
@@ -43,29 +43,23 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TOP
 ### <a name="to-enable-the-application-integration-for-topdesk---public-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für TOPdesk - Public:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
-    ![Active Directory](./media/active-directory-saas-topdesk-public-tutorial/IC700993.png "Active Directory")
-
+   ![Active Directory](./media/active-directory-saas-topdesk-public-tutorial/IC700993.png "Active Directory")
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-topdesk-public-tutorial/IC700994.png "Applications")
-
+   ![Anwendungen](./media/active-directory-saas-topdesk-public-tutorial/IC700994.png "Applications")
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Anwendung hinzufügen](./media/active-directory-saas-topdesk-public-tutorial/IC749321.png "Add application")
-
+   ![Anwendung hinzufügen](./media/active-directory-saas-topdesk-public-tutorial/IC749321.png "Add application")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-topdesk-public-tutorial/IC749322.png "Add an application from gallerry")
-
+   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-topdesk-public-tutorial/IC749322.png "Add an application from gallerry")
 6. Geben Sie in das **Suchfeld** als Suchbegriff **TOPdesk - Public** ein.
    
-    ![Anwendungskatalog](./media/active-directory-saas-topdesk-public-tutorial/IC790614.png "Application Gallery")
-
+   ![Anwendungskatalog](./media/active-directory-saas-topdesk-public-tutorial/IC790614.png "Application Gallery")
 7. Wählen Sie im Ergebnisbereich **TOPdesk - Public** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
-    ![TOPdesk Public](./media/active-directory-saas-topdesk-public-tutorial/IC791317.png "TOPdesk Public")
+   ![TOPdesk Public](./media/active-directory-saas-topdesk-public-tutorial/IC791317.png "TOPdesk Public")
 
 ## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei TOPdesk - Public zu authentifizieren.  
@@ -73,59 +67,45 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
 
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Melden Sie sich bei der **TOPdesk - Public** -Unternehmenswebsite als Administrator an.
-
 2. Klicken Sie im Menü **TOPdesk** auf **Einstellungen**.
    
-    ![Einstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
-
+   ![Einstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
 3. Klicken Sie auf **Anmeldeeinstellungen**.
    
-    ![Anmeldeeinstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
-
+   ![Anmeldeeinstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790599.png "Login Settings")
 4. Erweitern Sie das Menü **Anmeldeeinstellungen**, und klicken Sie dann auf **Allgemein**.
    
-    ![Allgemein](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
-
+   ![Allgemein](./media/active-directory-saas-topdesk-public-tutorial/IC790600.png "General")
 5. Führen Sie im Abschnitt **Öffentlich** des Konfigurationsabschnitts **SAML-Anmeldung** die folgenden Schritte aus:
    
-    ![Technische Einstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technical Settings")
+   ![Technische Einstellungen](./media/active-directory-saas-topdesk-public-tutorial/IC790601.png "Technical Settings")
    
-    a. Klicken Sie auf **Herunterladen** , um die  öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
-   
-    b. Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService** .
-    ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/IC790619.png "AssertionConsumerService")
-   
-    c. Kopieren Sie den Wert **AssertionConsumerService** .  
+   1. Klicken Sie auf **Herunterladen** , um die  öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
+   2. Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService** .
+      ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/IC790619.png "AssertionConsumerService")
+   3. Kopieren Sie den Wert **AssertionConsumerService** .  
       
-    > [!NOTE]
-    > Sie benötigen den Wert später im Tutorial im Abschnitt **App-URL konfigurieren** .
-    > 
-    > 
-
+      > [!NOTE]
+      > Sie benötigen den Wert später im Tutorial im Abschnitt **App-URL konfigurieren** .
+      > 
+      > 
 6. Melden Sie sich in einem anderen Webbrowserfenster beim **klassischen Azure-Portal** als Administrator an.
-
 7. Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Public** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "Configure Single Sign-On")
-
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790620.png "Configure Single Sign-On")
 8. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TOPdesk - Public anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
-
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790621.png "Configure Single Sign-On")
 9. Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "Configure App URL")
+   ![App-URL konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "Configure App URL")
    
-    a. Geben Sie in das Textfeld **TOPdesk - Public-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der TOPdesk - Public-Anwendung verwenden (z.B. *https://qssolutions.topdesk.net*).
-   
-    b. Fügen Sie in das Textfeld **TOPdesk - Public-Antwort-URL** die **TOPdesk - Public-AssertionConsumerService-URL** ein (z.B.: *https://qssolutions.topdesk.net/tas/public/login/saml*).
-   
-    c. Klicken Sie auf **Weiter**.
-
+   1. Geben Sie in das Textfeld **TOPdesk - Public-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der TOPdesk - Public-Anwendung verwenden (z.B. *https://qssolutions.topdesk.net*).
+   2. Fügen Sie in das Textfeld **TOPdesk - Public-Antwort-URL** die **TOPdesk - Public-AssertionConsumerService-URL** ein (z.B.: *https://qssolutions.topdesk.net/tas/public/login/saml*).
+   3. Klicken Sie auf **Weiter**.
 10. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TOPdesk - Public** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790623.png "Configure Single Sign-On")
-
 11. Zum Erstellen einer Zertifikatsdatei führen Sie die folgenden Schritte durch:
     
     ![Zertifikat](./media/active-directory-saas-topdesk-public-tutorial/IC790606.png "Certificate")
@@ -150,18 +130,12 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Public müssen Si
     
     ![SAML Configuration Assistant](./media/active-directory-saas-topdesk-public-tutorial/IC790608.png "SAML Configuration Assistant")
     
-    a. Klicken Sie zum Hochladen der heruntergeladenen Metadatendatei unter **Verbundmetadaten** auf **Durchsuchen**.
-
-    b. Klicken Sie zum Hochladen Ihrer Zertifikatsdatei unter **Zertifikat (RSA)** auf **Durchsuchen**.
-
-    c. Klicken Sie zum Hochladen der Logodatei, die Sie vom TOPdesk-Supportteam erhalten haben, unter **Logosymbol** auf **Durchsuchen**.
-
-    d. Geben Sie in das Textfeld **Benutzernamenattribut** Folgendes ein: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
-
-    e. Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
-
-    f. Klicken Sie auf **Speichern**.
-
+    1. Klicken Sie zum Hochladen der heruntergeladenen Metadatendatei unter **Verbundmetadaten** auf **Durchsuchen**.
+    2. Klicken Sie zum Hochladen Ihrer Zertifikatsdatei unter **Zertifikat (RSA)** auf **Durchsuchen**.
+    3. Klicken Sie zum Hochladen der Logodatei, die Sie vom TOPdesk-Supportteam erhalten haben, unter **Logosymbol** auf **Durchsuchen**.
+    4. Geben Sie in das Textfeld **Benutzernamenattribut** Folgendes ein: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    5. Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
+    6. Klicken Sie auf **Speichern**.
 17. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-public-tutorial/IC790627.png "Configure Single Sign-On")
@@ -172,22 +146,17 @@ Im Fall von TOPdesk - Public ist die Bereitstellung eine manuelle Aufgabe.
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
 1. Melden Sie sich bei Ihrem **TOPdesk - Public** -Unternehmenswebsite als Administrator an.
-
 2. Klicken Sie im Menü oben auf **TOPdesk \> Neu \> Support-Dateien \> Person**.
    
-    ![Person](./media/active-directory-saas-topdesk-public-tutorial/IC790628.png "Person")
-
+   ![Person](./media/active-directory-saas-topdesk-public-tutorial/IC790628.png "Person")
 3. Führen Sie im Dialogfeld „Neue Person“ die folgenden Schritte aus:
    
-    ![Neue Person](./media/active-directory-saas-topdesk-public-tutorial/IC790629.png "New Person")
+   ![Neue Person](./media/active-directory-saas-topdesk-public-tutorial/IC790629.png "New Person")
    
-    a. Klicken Sie auf die Registerkarte „Allgemein“.
-
-    b. Geben Sie in das Textfeld „Nachname“ den Nachnamen eines gültigen Azure Active Directory-Kontos ein, welches Sie bereitstellen möchten.
- 
-    c. Wählen Sie einen **Speicherort** für das Konto aus.
- 
-    d. Klicken Sie auf **Speichern**.
+   1. Klicken Sie auf die Registerkarte „Allgemein“.
+   2. Geben Sie in das Textfeld „Nachname“ den Nachnamen eines gültigen Azure Active Directory-Kontos ein, welches Sie bereitstellen möchten.
+   3. Wählen Sie einen **Speicherort** für das Konto aus.
+   4. Klicken Sie auf **Speichern**.
 
 > [!NOTE]
 > Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von TOPdesk - Public-Benutzerkonten oder mithilfe der von TOPdesk - Public bereitgestellten APIs erstellen.
@@ -199,20 +168,18 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ### <a name="to-assign-users-to-topdesk---public-perform-the-following-steps"></a>So weisen Sie  TOPdesk - Public Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
-
 2. Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Public** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "Assign Users")
-
+   ![Benutzer zuweisen](./media/active-directory-saas-topdesk-public-tutorial/IC790630.png "Assign Users")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
+   ![Ja](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 

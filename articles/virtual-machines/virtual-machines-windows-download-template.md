@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b6dffec166ffe8e04c5d7b701aef009bf7b72d45
+ms.sourcegitcommit: 349b8dc78ace79efca771efb78e453a47e51023e
+ms.openlocfilehash: 6e80064adadcc542523acb1d2478e6b8f0163acb
 
 
 ---
@@ -39,7 +39,7 @@ Wenn Sie über das Portal oder mithilfe von PowerShell einen virtuellen Computer
    * parameters.json
    * template.json
 
-Die JSON-Datei ist die Vorlage.
+Die Datei „template.json“ ist die Vorlage.
 
 ## <a name="download-the-template-using-powershell"></a>Herunterladen der Vorlage mithilfe von PowerShell
 Sie können die JSON-Vorlagendatei auch mithilfe des Cmdlets [Export-AzureRMResourceGroup](https://msdn.microsoft.com/library/mt715427.aspx) herunterladen. Sie können den Parameter `-path` verwenden, um den Dateinamen und den Pfad für die JSON-Datei anzugeben. Dieses Beispiel zeigt, wie Sie die Vorlage für die Ressourcengruppe mit dem Namen **myResourceGroup** in den Ordner **C:\users\public\downloads** auf Ihrem lokalen Computer herunterladen.
@@ -54,6 +54,6 @@ Weitere Informationen zum Bereitstellen von Ressourcen mithilfe von Vorlagen fin
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

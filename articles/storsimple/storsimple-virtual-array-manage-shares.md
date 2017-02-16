@@ -1,5 +1,5 @@
 ---
-title: "StorSimple-Geräte-Manager – Verwalten von Freigaben auf Ihrem Microsoft Azure StorSimple Virtual Array | Microsoft Docs"
+title: Verwalten von StorSimple Virtual Array-Freigaben | Microsoft-Dokumentation
 description: "Beschreibt den StorSimple-Geräte-Manager und erläutert, wie Sie darüber Freigaben auf Ihrem StorSimple Virtual Array verwalten."
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: 90b932453c83d15e7e33eb0653f0f7ceaf7eeff4
+ms.sourcegitcommit: 19177fe13db2aefcef7fcf37ea8fef2fa99c728f
+ms.openlocfilehash: e5c62689de36baa175001f5f4f70d87568876ef0
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array
@@ -74,9 +74,9 @@ Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben ausz
 
 1. Klicken Sie auf dem StorSimple-Dienstübersichtsblatt in der Befehlsleiste auf **+ Freigabe hinzufügen**. Daraufhin öffnet sich das Blatt **Freigabe hinzufügen**.
 
-![Hinzufügen der Freigabe](./media/storsimple-virtual-array-manage-shares/add-share.png)
+    ![Hinzufügen der Freigabe](./media/storsimple-virtual-array-manage-shares/add-share.png)
 
-1. Gehen Sie auf dem Blatt **Freigabe hinzufügen** wie folgt vor:
+2. Gehen Sie auf dem Blatt **Freigabe hinzufügen** wie folgt vor:
    
     1. Geben Sie im Feld **Freigabename** einen eindeutigen Namen für Ihre Freigabe ein. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
 
@@ -87,8 +87,8 @@ Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben ausz
     4. Geben Sie im Feld **Kapazität** die Größe der Freigabe an. Eine mehrstufige Freigabe muss zwischen 500 GB und 20 TB groß sein und eine lokale Freigabe zwischen 50 GB und 2 GB.
 
     5. Weisen Sie die Berechtigungen im Feld **Set default full permissions to ** (Vollzugriff als Standardeinstellung festlegen) dem Benutzer oder der Gruppe zu, der bzw. die auf die Freigabe zugreift. Geben Sie den Namen des Benutzers oder der Benutzergruppe im Format _john@contoso.com_ ein. Es wird empfohlen, eine Benutzergruppe (anstelle eines einzelnen Benutzers) zu verwenden, um für Administratorberechtigungen den Zugriff auf diese Freigaben zuzulassen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese Berechtigungen zu ändern.
-2. Wenn Sie die Konfiguration Ihrer Freigabe abgeschlossen haben, klicken Sie auf **Erstellen**. Eine Freigabe wird mit den angegebenen Einstellungen erstellt, und Sie erhalten eine Benachrichtigung. Standardmäßig wird für die Freigabe die Sicherungsfunktion aktiviert.
-3. Wechseln Sie zum Blatt **Freigaben**, um sicherzustellen, dass die Freigabe erfolgreich erstellt wurde. Die Freigabe sollte hier aufgeführt werden.
+3. Wenn Sie die Konfiguration Ihrer Freigabe abgeschlossen haben, klicken Sie auf **Erstellen**. Eine Freigabe wird mit den angegebenen Einstellungen erstellt, und Sie erhalten eine Benachrichtigung. Standardmäßig wird für die Freigabe die Sicherungsfunktion aktiviert.
+4. Wechseln Sie zum Blatt **Freigaben**, um sicherzustellen, dass die Freigabe erfolgreich erstellt wurde. Die Freigabe sollte hier aufgeführt werden.
    
     ![Erfolgreiches Erstellen der Freigabe](./media/storsimple-virtual-array-manage-shares/share-success.png)
 
@@ -146,6 +146,6 @@ Erfahren Sie, wie Sie [eine StorSimple-Freigabe klonen (in englischer Sprache)](
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: asteen
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 3515091cf71ecb595d8c08902ff13549a9ddd2f4
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: ad322aed5e2e6a42a2600a3995be28a99ee14f3a
 
 
 ---
@@ -659,7 +659,7 @@ Jetzt versuchen Sie, die Kennwortrückschreibung zu aktivieren/zu deaktivieren. 
               <p>Wenn Sie versuchen, über das Azure-Verwaltungsportal ein Kennwort im Namen eines Benutzers zurückzusetzen, wird eine Meldung mit diesem Text angezeigt: "Der in Ihrer lokalen Umgebung ausgeführte Dienst für die Kennwortzurücksetzung bietet keine Unterstützung für das Zurücksetzen von Benutzerkennwörtern durch Administratoren. Führen Sie ein Upgrade auf die aktuelle Version von Azure AD Connect aus, um dieses Problem zu lösen."</p>
             </td>
             <td>
-              <p>Dies geschieht, wenn die Version des Synchronisierungsmoduls keine Unterstützung für den verwendeten Vorgang für die Kennwortrückschreibung bietet. Alle Azure AD Connect-Versionen ab 1.0.0419.0911 bieten Unterstützung für alle Vorgänge im Rahmen der Kennwortverwaltung. Dazu gehören das Zurückschreiben zurückgesetzter Kennwörter, das Zurückschreiben geänderter Kennwörter sowie das durch einen Administrator über das Azure-Verwaltungsportal initiierte Zurückschreiben zurückgesetzter Kennwörter.&nbsp; DirSync-Versionen ab 1.0.6862 bieten nur Unterstützung für das Zurückschreiben zurückgesetzter Kennwörter. Um diesen Fehler zu beheben, wird dringend empfohlen, die aktuelle Version von Azure AD Connect oder Azure Active Directory Connect zu installieren. Informationen dazu, wie Sie diesen Fehler beheben und die Funktion zur Kennwortrückschreibung in Ihrer Organisation optimal nutzen, finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](connect/active-directory-aadconnect.md).</p>
+              <p>Dies geschieht, wenn die Version des Synchronisierungsmoduls keine Unterstützung für den verwendeten Vorgang für die Kennwortrückschreibung bietet. Alle Azure AD Connect-Versionen ab 1.0.0419.0911 bieten Unterstützung für alle Vorgänge im Rahmen der Kennwortverwaltung. Dazu gehören das Zurückschreiben zurückgesetzter Kennwörter, das Zurückschreiben geänderter Kennwörter sowie das durch einen Administrator über das Azure-Verwaltungsportal initiierte Zurückschreiben zurückgesetzter Kennwörter.&nbsp; DirSync-Versionen ab 1.0.6862 bieten nur Unterstützung für das Zurückschreiben zurückgesetzter Kennwörter. Um diesen Fehler zu beheben, wird dringend empfohlen, die aktuelle Version von Azure AD Connect oder Azure Active Directory Connect zu installieren. Informationen dazu, wie Sie diesen Fehler beheben und die Funktion zur Kennwortrückschreibung in Ihrer Organisation optimal nutzen, finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).</p>
             </td>
           </tr>
         </tbody></table>
@@ -1486,7 +1486,7 @@ Wenn das Problem durch das Deaktivieren und erneute Aktivieren der Funktion für
 Durch das erneute Installieren des Azure AD Connect-Pakets werden Konfigurationsprobleme behoben, die sich möglicherweise auf die Fähigkeit zur Verbindungsherstellung mit den Clouddiensten oder auf die Verwaltung von Kennwörtern in Ihrer lokalen AD-Umgebung auswirken.
 Es wird empfohlen, diese Maßnahme erst zu ergreifen, wenn Sie ersten zwei Schritte bereits ausgeführt haben.
 
-1. Sie können die aktuelle Version von Azure AD Connect [hier](connect/active-directory-aadconnect.md#install-azure-ad-connect)herunterladen.
+1. Sie können die aktuelle Version von Azure AD Connect [hier](active-directory-aadconnect.md#install-azure-ad-connect)herunterladen.
 2. Da Sie Azure AD Connect bereits installiert haben, müssen Sie lediglich ein direktes Upgrade Ihrer Azure AD Connect-Installation auf die aktuelle Version durchführen.
 3. Führen Sie das heruntergeladene Paket aus, und folgen Sie den Bildschirmanweisungen zum Aktualisieren Ihres Azure AD Connect-Computers.  Sofern Sie keine Anpassung der integrierten Synchronisierungsregeln durchgeführt haben, sind keine weiteren manuellen Schritte erforderlich. Falls Sie die Synchronisierungsregeln angepasst haben sollten, **sichern Sie diese, bevor Sie mit dem Upgrade fortfahren, und stellen Sie sie nach dem Upgrade erneut manuell bereit**.
 
@@ -1519,6 +1519,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Nov16_HO3-->
 
 

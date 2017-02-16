@@ -12,17 +12,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: ba4c04880913996b9744cdf2a3d19e9bedf36c16
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 331d82a987aebe422ca2f560d856dad9f1b733f3
 
 
 ---
 # <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>Erstellen einer Node.js-Webanwendung mit Express in einem Azure-Cloud-Dienst
 Die Core Runtime von Node.js umfasst eine Reihe elementarer Funktionen.
-Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Lernprogramm erstellen Sie eine neue Anwendung mit dem Modul [Express][Express], das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
+Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Tutorial erstellen Sie eine neue Anwendung mit dem Modul [Express][Express], das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
 
 Unten finden Sie einen Screenshot der vollständigen Anwendung:
 
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Cloud-Dienst-Projekt namens
         PS C:\Node\expressapp> Set-AzureServiceProjectRole WebRole1 Node 0.10.21
    
     > [!NOTE]
-    > Standardmäßig verwendet **Add-AzureNodeWebRole** eine ältere Version von "Node.js". Die oben stehende Anweisung **Set-AzureServiceProjectRole** weist Azure an, Node 0.10.21 zu verwenden.  Beachten Sie, dass bei Parametern die Groß-/Kleinschreibung relevant ist.  Sie können überprüfen, ob die richtige Version von „Node.js“ ausgewählt wurde, indem Sie die **engines**-Eigenschaft in **WebRole1\package.json** prüfen.
+    > Standardmäßig verwendet **Add-AzureNodeWebRole** eine ältere Version von "Node.js". Die oben stehende Anweisung **Set-AzureServiceProjectRole** weist Azure an, Node&0;.10.21 zu verwenden.  Beachten Sie, dass bei Parametern die Groß-/Kleinschreibung relevant ist.  Sie können überprüfen, ob die richtige Version von „Node.js“ ausgewählt wurde, indem Sie die **engines**-Eigenschaft in **WebRole1\package.json** prüfen.
     > 
     > 
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Cloud-Dienst-Projekt namens
    
    ![Inhalt der Datei index.jade](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade ist das Standard-Ansichtsmodul, das von Express-Anwendungen verwendet wird. Weitere Informationen über das Ansichtsmodul Jade finden Sie unter [http://jade-lang.com][http://jade-lang.com].
+   Jade ist das Standard-Ansichtsmodul, das von Express-Anwendungen verwendet wird. Weitere Informationen zum Ansichtsmodul Jade finden Sie unter [http://jade-lang.com][http://jade-lang.com].
 2. Ändern Sie die letzte Textzeile, indem Sie **in Azure**anhängen.
    
    ![Die letzte Zeile in der Datei „index.jade“ lautet „p Welcome to \#{title} in Azure“.](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
@@ -119,7 +119,7 @@ Sobald die Bereitstellung abgeschlossen ist, wird der Browser geöffnet und die 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/).
 
-[Node.js-Webanwendung]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
+[Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: http://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
 
@@ -127,6 +127,6 @@ Weitere Informationen finden Sie im [Node.js Developer Center](/develop/nodejs/)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/12/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ac7622e14a5341e0559af9e5888a6f65736a12b
+ms.sourcegitcommit: aa641c1324c6075fc24ba091ac7fb785e2156454
+ms.openlocfilehash: ddd7eacc0ba9a63f2d021fed61fd891223918a3e
 
 
 ---
@@ -75,9 +75,9 @@ Aktuell sind die folgenden Clientbibliotheken bekannt, die mit Service Bus arbei
 | PHP |Apache Qpid Proton-PHP |
 | Python |Apache Qpid Proton-Python |
 
-**Abbildung 2: Tabelle der AMQP 1.0 Clientbibliotheken**
+**Abbildung 2: Tabelle der AMQP 1.0-Clientbibliotheken**
 
-Weitere Informationen zur Beschaffung dieser Bibliotheken und ihrer Verwendung mit Service Bus entnehmen Sie dem [Entwicklerhandbuch für Service Bus AMQP][Entwicklerhandbuch für Service Bus AMQP]. Links zu weiteren Informationen finden Sie im Abschnitt [Nächste Schritte](service-bus-java-amqp-overview.md#next-steps).
+Weitere Informationen zur Beschaffung dieser Bibliotheken und ihrer Verwendung mit Service Bus finden Sie im [Entwicklerhandbuch für Service Bus AMQP][Service Bus AMQP Developer's Guide]. Links zu weiteren Informationen finden Sie im Abschnitt [Nächste Schritte](service-bus-java-amqp-overview.md#next-steps).
 
 ## <a name="summary"></a>Zusammenfassung
 * AMQP 1.0 ist ein offenes, zuverlässiges Messagingprotokoll, mit dem Sie plattformübergreifende Hybridanwendungen erstellen können. AMQP 1.0 ist ein OASIS-Standard.
@@ -88,16 +88,16 @@ Klicken Sie auf die folgenden Links, um mehr über die AMQP-Unterstützung in Se
 
 * [Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
 * [Verwenden der JMS-Programmierschnittstelle (Java Message Service) mit Service Bus & AMQP 1.0](service-bus-java-how-to-use-jms-api-amqp.md)
-* [Entwicklerhandbuch für Service Bus AMQP][Entwicklerhandbuch für Service Bus AMQP]
+* [Entwicklerhandbuch für Service Bus AMQP][Service Bus AMQP Developer's Guide]
 * [Spezifikation für OASIS Advanced Message Queuing Protocol (AMQP) Version 1.0](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 
 [0]: ./media/service-bus-java-amqp-overview/Example1.png
-[Entwicklerhandbuch für Service Bus AMQP]: service-bus-amqp-dotnet.md
+[Service Bus AMQP Developer's Guide]: service-bus-amqp-dotnet.md
 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

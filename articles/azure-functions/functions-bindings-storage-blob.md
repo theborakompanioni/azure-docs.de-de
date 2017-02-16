@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
+ms.date: 01/11/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 880ea646b1e976975f610ce81d0b372e81d2e34a
+ms.sourcegitcommit: 7b691e92cfcc8c6c62f854b3f1b6cf13d317df7b
+ms.openlocfilehash: 961aa46e3f3654c250aa10e61149fac2fc251935
 
 
 ---
@@ -37,7 +37,7 @@ In diesem Artikel wird das Konfigurieren und Codieren von Azure Storage-Blobbind
 <a name="trigger"></a>
 
 ## <a name="storage-blob-trigger"></a>Storage-Blobtrigger
-Mit dem Azure Storage-Blobtrigger können Sie einen Speichercontainer für neue und aktualisierte Blobs überwachen und darauf reagieren. 
+Mit dem Azure Storage-Blobtrigger können Sie einen Speichercontainer auf neue und geänderte Blobs überwachen und Funktionscode ausführen, wenn Änderungen erkannt werden. 
 
 Der Storage-Blobtrigger zu einer Funktion verwendet die folgenden JSON-Objekte im `bindings`-Array von „function.json“:
 
@@ -108,7 +108,7 @@ Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* im Azur
 * Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname
-* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+* ETag (eine Blobversions-ID. Beispiel:&0;x8D1DC6E70A277EF)
 
 Um eine erneute Verarbeitung eines Blobs zu erzwingen, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen.
 
@@ -121,7 +121,7 @@ Wenn bei Ausführung einer Blobtrigger-Funktion ein Fehler auftritt, versucht Az
 * BlobType ("BlockBlob" oder "PageBlob")
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+* ETag (eine Blobversions-ID. Beispiel:&0;x8D1DC6E70A277EF)
 
 ### <a name="blob-polling-for-large-containers"></a>Abfragen von Blobs für große Container
 Wenn der Blobcontainer, der von der Bindung überwacht wird, mehr als 10.000 Blobs enthält, überprüft die Functions-Laufzeit Protokolldateien auf neue oder geänderte Blobs. Dieser Prozess läuft nicht in Echtzeit ab. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Außerdem erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](https://msdn.microsoft.com/library/azure/hh343262.aspx). Es gibt aber keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn die Einschränkungen bei der Geschwindigkeit und Zuverlässigkeit von Blobtriggern für große Container für Ihre Anwendung nicht akzeptabel sind, empfiehlt es sich, zusammen mit dem Blob eine [Warteschlangennachricht](../storage/storage-dotnet-how-to-use-queues.md) zu erstellen und für die Verarbeitung des Blobs anstelle des Blobtriggers einen [Warteschlangentrigger](functions-bindings-storage-queue.md) zu verwenden.
@@ -328,9 +328,9 @@ Die Storage-Blobausgabe für eine Funktion verwendet die folgenden JSON-Objekte 
 {
   "name": "<Name of output parameter in function signature>",
   "type": "blob",
-  "direction": "out"
+  "direction": "out",
   "path": "<Path of input blob - see below>",
-  "connection":"<Name of app setting - see below>"
+  "connection": "<Name of app setting - see below>"
 }
 ```
 
@@ -358,6 +358,8 @@ In C#-Funktionen können Sie auch eine Ausgabe in einen der folgenden Typen erst
 * `ICloudBlob`
 * `CloudBlockBlob` 
 * `CloudPageBlob` 
+* `ICollector<T>` (um mehrere Blobs auszugeben)
+* `IAsyncCollector<T>` (asynchrone Version von `ICollector<T>`)
 
 <a name="outputsample"></a>
 
@@ -370,6 +372,6 @@ Siehe [Eingabebeispiel](#inputsample).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

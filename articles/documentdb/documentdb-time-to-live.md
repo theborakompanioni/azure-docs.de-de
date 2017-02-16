@@ -13,23 +13,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2016
+ms.date: 01/13/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 9f4105d1ab366994add0f75d634917ab9a063733
-ms.openlocfilehash: 03486c23e4e939f1d84aa13af4308dc2059f9980
+ms.sourcegitcommit: 1ad5307054dbd860f9c65db4b82ea5f560a554c8
+ms.openlocfilehash: 14a06dd20547f2910b2321372b27d9f777e54cc7
 
 
 ---
 # <a name="expire-data-in-documentdb-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in DocumentDB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
 
-Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure DocumentDB die Möglichkeit, Dokumente nach einem bestimmten Zeitraum automatisch aus der Datenbank zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von DocumentDB automatisch entfernt.
+Mit der Gültigkeitsdauer (Time To Live, TTL) bietet Microsoft Azure DocumentDB die Möglichkeit, Dokumente nach einem bestimmten Zeitraum automatisch aus der Datenbank endgültig zu löschen. Die standardmäßige Gültigkeitsdauer kann auf Sammlungsebene festgelegt und für individuelle Dokumente überschrieben werden. Nach dem Festlegen der Gültigkeitsdauer (auf Sammlungs- oder Dokumentebene) werden Dokumente, die nach dem in Sekunden angegebenen Zeitraum (beginnend ab der letzten Änderung) vorhanden sind, von DocumentDB automatisch entfernt.
 
-Die Gültigkeitsdauer in DocumentDB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld „_ts“ verwendet. Bei dem Feld „_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld „_ts“ wird bei jeder Änderung eines Dokuments aktualisiert. 
+Die Gültigkeitsdauer in DocumentDB basiert auf einem Offset für den letzten Änderungszeitpunkt eines Dokuments. Zu diesem Zweck wird das für jedes Dokument vorhandene Feld `_ts` verwendet. Bei dem Feld „_ts“ handelt es sich um einen Epochenzeitstempel im Unix-Format zur Darstellung von Datum und Uhrzeit. Das Feld `_ts` wird bei jeder Änderung eines Dokuments aktualisiert. 
 
 ## <a name="ttl-behavior"></a>TTL-Verhalten
-Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und Dokumentebene) gesteuert. Die Werte werden in Sekunden festgelegt und fungieren als Delta für den letzten Änderungszeitpunkt des Dokuments (aus dem Feld „_ts“).
+Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und Dokumentebene) gesteuert. Die Werte werden in Sekunden festgelegt und fungieren als Delta für den letzten Änderungszeitpunkt des Dokuments (aus dem Feld `_ts`).
 
 1. DefaultTTL für die Sammlung
    
@@ -41,7 +41,7 @@ Das TTL-Feature wird über TTL-Eigenschaften auf zwei Ebenen (Sammlungsebene und
    * Die Eigenschaft wird nur angewendet, wenn DefaultTTL für die übergeordnete Auflistung vorhanden ist.
    * Überschreibt den DefaultTTL-Wert für die übergeordnete Auflistung.
 
-Abgelaufene Dokumente (TTL + _ts > = aktuelle Serverzeit) werden als abgelaufen markiert. Ab diesem Zeitpunkt können für diese Dokumente keine Vorgänge mehr ausgeführt werden, und sie werden in Abfrageergebnissen nicht mehr berücksichtigt. Die Dokumente werden im System physisch gelöscht und zu einem späteren Zeitpunkt opportunistisch im Hintergrund gelöscht. Dabei werden keinerlei [Anforderungseinheiten (Request Units, RUs)](documentdb-request-units.md) des Sammlungsbudgets verbraucht.
+Abgelaufene Dokumente (`ttl` + `_ts` > = aktuelle Serverzeit) werden als abgelaufen markiert. Ab diesem Zeitpunkt können für diese Dokumente keine Vorgänge mehr ausgeführt werden, und sie werden in Abfrageergebnissen nicht mehr berücksichtigt. Die Dokumente werden im System physisch gelöscht und zu einem späteren Zeitpunkt opportunistisch im Hintergrund gelöscht. Dabei werden keinerlei [Anforderungseinheiten (Request Units, RUs)](documentdb-request-units.md) des Sammlungsbudgets verbraucht.
 
 Die obige Logik wird in der folgenden Matrix veranschaulicht:
 
@@ -57,42 +57,98 @@ Die Gültigkeitsdauer ist in DocumentDB-Sammlungen und für alle Dokumente stand
 ## <a name="enabling-ttl"></a>Aktivieren von TTL
 Um TTL für eine Sammlung (oder für die Dokumente in einer Sammlung) zu aktivieren, müssen Sie die DefaultTTL-Eigenschaft einer Auflistung entweder auf „-1“ oder auf eine positive Zahl ungleich Null festlegen. Wenn DefaultTTL auf „-1“ festgelegt wird, laufen die Dokumente in der Sammlung standardmäßig nicht ab, der DocumentDB-Dienst überwacht die Sammlung aber auf Dokumente, bei denen diese Standardeinstellung überschrieben wurde.
 
+    DocumentCollection collectionDefinition = new DocumentCollection();
+    collectionDefinition.Id = "orders";
+    collectionDefinition.PartitionKey.Paths.Add("/customerId");
+    collectionDefinition.DefaultTimeToLive =-1; //never expire by default
+
+    DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
+        UriFactory.CreateDatabaseUri(databaseName),
+        collectionDefinition,
+        new RequestOptions { OfferThroughput = 20000 });
+
 ## <a name="configuring-default-ttl-on-a-collection"></a>Konfigurieren einer Standardgültigkeitsdauer für eine Sammlung
-Sie haben die Möglichkeit, eine Standardgültigkeitsdauer auf Sammlungsebene zu konfigurieren. 
+Sie haben die Möglichkeit, eine Standardgültigkeitsdauer auf Sammlungsebene zu konfigurieren. Wenn Sie die Gültigkeitsdauer für eine Sammlung festlegen möchten, müssen Sie mit einer positiven Zahl ungleich null den Zeitraum angeben, nach dem alle in der Sammlung enthaltenen Dokumente ablaufen (in Sekunden ab dem Zeitstempel der letzten Änderung des Dokuments [`_ts`]). Alternativ können Sie den Standardwert auf „-1“ festlegen. In diesem Fall laufen die in die Sammlung eingefügten Dokumente niemals ab.
 
-Wenn Sie die Gültigkeitsdauer für eine Sammlung festlegen möchten, müssen Sie mit einer positiven Zahl ungleich Null den Zeitraum angeben, nach dem alle in der Sammlung enthaltenen Dokumente ablaufen (in Sekunden ab dem Zeitstempel der letzten Änderung des Dokuments [_ts]).
+    DocumentCollection collectionDefinition = new DocumentCollection();
+    collectionDefinition.Id = "orders";
+    collectionDefinition.PartitionKey.Paths.Add("/customerId");
+    collectionDefinition.DefaultTimeToLive = 90 * 60 * 24; // expire all documents after 90 days
+    
+    DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionAsync(
+        "/dbs/salesdb",
+        collectionDefinition,
+        new RequestOptions { OfferThroughput = 20000 });
 
-Alternativ können Sie den Standardwert auf „-1“ festlegen. In diesem Fall laufen die in die Sammlung eingefügten Dokumente niemals ab.
 
 ## <a name="setting-ttl-on-a-document"></a>Festlegen einer Gültigkeitsdauer für ein Dokument
 Zusätzlich zu einer Standardgültigkeitsdauer für eine Sammlung können Sie eine spezifische Gültigkeitsdauer auf Dokumentebene festlegen. Dadurch wird die Standardeinstellung der Sammlung überschrieben.
 
-Wenn Sie die Gültigkeitsdauer für ein Dokument festlegen möchten, müssen Sie mit einer positiven Zahl ungleich Null den Zeitraum angeben, nach dem das Dokument abläuft (in Sekunden ab dem Zeitstempel der letzten Änderung des Dokuments [_ts]).
+* Wenn Sie die Gültigkeitsdauer für ein Dokument festlegen möchten, müssen Sie mit einer positiven Zahl ungleich null den Zeitraum angeben, nach dem das Dokument abläuft (in Sekunden ab dem Zeitstempel der letzten Änderung des Dokuments [`_ts`]).
+* Für Dokumente ohne TTL-Feld gilt die Standardeinstellung der Sammlung.
+* Wenn die Gültigkeitsdauer auf der Sammlungsebene deaktiviert ist, wird das TTL-Feld für das Dokument ignoriert, bis die Gültigkeitsdauer für die Sammlung wieder aktiviert wird.
 
-Konfigurieren Sie zum Festlegen dieses Ablauf-Offsets das TTL-Felds für das Dokument.
+Der folgende Codeausschnitt veranschaulicht das Festlegen des Ablaufs der Gültigkeitsdauer (TTL) für ein Dokument:
 
-Für Dokumente ohne TTL-Feld gilt die Standardeinstellung der Sammlung.
+    // Include a property that serializes to "ttl" in JSON
+    public class SalesOrder
+    {
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+        
+        [JsonProperty(PropertyName="cid")]
+        public string CustomerId { get; set; }
+        
+        // used to set expiration policy
+        [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
+        public int? TimeToLive { get; set; }
+        
+        //...
+    }
+    
+    // Set the value to the expiration in seconds
+    SalesOrder salesOrder = new SalesOrder
+    {
+        Id = "SO05",
+        CustomerId = "CO18009186470",
+        TimeToLive = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days 
+    };
 
-Wenn die Gültigkeitsdauer auf der Sammlungsebene deaktiviert ist, wird das TTL-Feld für das Dokument ignoriert, bis die Gültigkeitsdauer für die Sammlung wieder aktiviert wird.
 
 ## <a name="extending-ttl-on-an-existing-document"></a>Verlängern der Gültigkeitsdauer für ein vorhandenes Dokument
-Die Gültigkeitsdauer für ein Dokument kann durch Ausführen eines beliebigen Schreibvorgangs für das Dokument zurückgesetzt werden. Dadurch wird „_ts“ auf die aktuelle Zeit festgelegt, und der Countdown für den mittels TTL festgelegten Dokumentablauf beginnt von vorn.
+Die Gültigkeitsdauer für ein Dokument kann durch Ausführen eines beliebigen Schreibvorgangs für das Dokument zurückgesetzt werden. Dadurch wird `_ts` auf die aktuelle Zeit festgelegt, und der Countdown für den mittels `ttl` festgelegten Dokumentablauf beginnt von vorn. Wenn Sie die `ttl` eines Dokuments ändern möchten, können Sie das Feld genau wie jedes andere festlegbare Feld aktualisieren.
 
-Wenn Sie die Gültigkeitsdauer eines Dokuments ändern möchten, können Sie das Feld genau wie jedes andere festlegbare Feld aktualisieren.
+    response = await client.ReadDocumentAsync(
+        "/dbs/salesdb/colls/orders/docs/SO05"), 
+        new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
+    
+    Document readDocument = response.Resource;
+    readDocument.TimeToLive = 60 * 30 * 30; // update time to live
+    
+    response = await client.ReplaceDocumentAsync(salesOrder);
 
 ## <a name="removing-ttl-from-a-document"></a>Entfernen der Gültigkeitsdauer von einem Dokument
-Falls für ein Dokument eine Gültigkeitsdauer festgelegt wurde, das Dokument nun aber nicht mehr ablaufen soll, können Sie das Dokument abrufen, das TTL-Feld entfernen und das Dokument anschließend auf dem Server ersetzen.
+Falls für ein Dokument eine Gültigkeitsdauer festgelegt wurde, das Dokument nun aber nicht mehr ablaufen soll, können Sie das Dokument abrufen, das TTL-Feld entfernen und das Dokument anschließend auf dem Server ersetzen. Nach dem Entfernen des TTL-Felds aus dem Dokument gilt wieder der Standardwert der Sammlung. Wenn ein Dokument nicht mehr ablaufen und auch nicht die Einstellung der Sammlung erben soll, muss der TTL-Wert auf „-1“ festgelegt werden.
 
-Nach dem Entfernen des TTL-Felds aus dem Dokument gilt wieder der Standardwert der Sammlung.
-
-Wenn ein Dokument nicht mehr ablaufen und auch nicht die Einstellung der Sammlung erben soll, muss der TTL-Wert auf „-1“ festgelegt werden.
+    response = await client.ReadDocumentAsync(
+        "/dbs/salesdb/colls/orders/docs/SO05"), 
+        new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
+    
+    Document readDocument = response.Resource;
+    readDocument.TimeToLive = null; // inherit the default TTL of the collection
+    
+    response = await client.ReplaceDocumentAsync(salesOrder);
 
 ## <a name="disabling-ttl"></a>Deaktivieren von TTL
-Wenn Sie TTL für eine Sammlung vollständig deaktivieren und den Hintergrundprozess für die Suche nach abgelaufenen Dokumenten beenden möchten, muss die DefaultTTL-Eigenschaft für die Sammlung gelöscht werden.
+Wenn Sie TTL für eine Sammlung vollständig deaktivieren und den Hintergrundprozess für die Suche nach abgelaufenen Dokumenten beenden möchten, muss die DefaultTTL-Eigenschaft für die Sammlung gelöscht werden. Das Löschen dieser Eigenschaft ist nicht das Gleiche wie das Festlegen der Eigenschaft auf „-1“. Bei Verwendung der Einstellung „-1“ laufen neue Dokumente, die der Sammlung hinzugefügt werden, nicht ab, dies kann jedoch für individuelle Dokumente in der Sammlung überschrieben werden. Wenn Sie die Eigenschaft vollständig aus der Sammlung entfernen, läuft ebenfalls keines der Dokumente ab, dies gilt aber auch für Dokumente, bei denen explizit ein vorheriger Standardwert überschrieben wurde.
 
-Das Löschen dieser Eigenschaft ist nicht das Gleiche wie das Festlegen der Eigenschaft auf „-1“. Bei Verwendung der Einstellung „-1“ laufen neue Dokumente, die der Sammlung hinzugefügt werden, nicht ab, dies kann jedoch für individuelle Dokumente in der Sammlung überschrieben werden.
+    DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
+    
+    // Disable TTL
+    collection.DefaultTimeToLive = null;
+    
+    await client.ReplaceDocumentCollectionAsync(collection);
 
-Wenn Sie die Eigenschaft vollständig aus der Sammlung entfernen, läuft ebenfalls keines der Dokumente ab, dies gilt aber auch für Dokumente, bei denen explizit ein vorheriger Standardwert überschrieben wurde.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **Was kostet TTL?**
@@ -121,6 +177,6 @@ Weitere Informationen zu Azure DocumentDB finden Sie auf der [*Dokumentationssei
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

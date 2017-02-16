@@ -1,6 +1,6 @@
 ---
-title: Skalieren Ihres ACS-Clusters mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: So skalieren Sie Ihren Azure-Containerdienstcluster mithilfe der Azure-Befehlszeilenschnittstelle
+title: Skalieren eines Azure Container Service-Clusters | Microsoft-Dokumentation
+description: "So skalieren Sie Ihren Azure Container Service-Cluster mithilfe der Azure-Befehlszeilenschnittstelle oder über das Azure-Portal."
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -14,130 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2016
+ms.date: 01/10/2017
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9e8df2e68b1b7018d76da89ba9ab332b6ea216fb
+ms.sourcegitcommit: cb3fd28659eb09dfb74496d2aa526736d223631a
+ms.openlocfilehash: d1571aa6191111c46c43b3a424cea415091adfc9
 
 
 ---
-# <a name="scale-an-azure-container-service"></a>Skalieren eines Azure-Containerdiensts
-Sie können die Anzahl der Knoten, über die Ihr Azure-Containerdienst (Azure Container Service, ACS) verfügt, mithilfe des Tools der Azure-Befehlszeilenschnittstelle horizontal hochskalieren. Wenn Sie eine Azure-Befehlszeilenschnittstelle zum Skalieren verwenden, gibt Ihnen das Tool eine neue Konfigurationsdatei zurück, die die angewendeten Änderungen für den Container darstellt.
+# <a name="scale-an-azure-container-service-cluster"></a>Skalieren eines Azure Container Service-Clusters
+Nach dem [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md) müssen Sie eventuell die Anzahl von Agent-Knoten ändern. Möglicherweise benötigen Sie mehr Agents, damit Sie mehr Containeranwendungen oder -instanzen ausführen können. 
 
-## <a name="about-the-command"></a>Über den Befehl
-Die Azure-Befehlszeilenschnittstelle muss sich im Azure Resource Manager-Modus befinden, damit Sie mit Azure-Containern interagieren können. Sie können in den Ressource Manager-Modus wechseln, indem Sie `azure config mode arm` aufrufen. Der `acs`-Befehl verfügt über einen untergeordneten Befehl mit dem Namen `scale`, der alle Skalierungsvorgänge für einen Containerdienst ausführt. Sie können Hilfe zu den verschiedenen Parametern erhalten, die im Befehl zum Skalieren verwendet werden, indem Sie `azure acs scale --help` ausführen, was eine ähnliche Darstellung wie diese ausgibt:
+Sie können die Anzahl von Agent-Knoten im Cluster über das Azure-Portal oder mithilfe der Azure-CLI 2.0 (Vorschau) ändern. Die Azure-CLI 2.0 (Vorschau) ist die [Befehlszeilenschnittstelle der nächsten Generation](/cli/azure/old-and-new-clis) für das Resource Manager-Bereitstellungsmodell.
+
+> [!NOTE]
+> Zurzeit wird die Skalierung von Agent-Knoten in einem Kubernetes-Containerdienstcluster nicht unterstützt.
+
+
+## <a name="scale-with-the-azure-portal"></a>Skalieren über das Azure-Portal
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Containerdiensten**, und klicken Sie dann auf den Containerdienst, den Sie ändern möchten.
+2. Klicken Sie auf dem Blatt **Containerdienst** auf **Agents**.
+3. Geben Sie unter **VM-Anzahl** die gewünschte Anzahl von Agent-Knoten ein.
+
+    ![Skalieren eines Pools im Portal](./media/container-service-scale/container-service-scale-portal.png)
+
+4. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.
+
+
+
+## <a name="scale-with-the-azure-cli-20-preview"></a>Skalieren mit der Azure-CLI 2.0 (Vorschau)
+
+Stellen Sie sicher, dass Sie die aktuelle Version der Azure-CLI 2.0 (Vorschau) [installiert](/cli/azure/install-az-cli2) haben und an einem Azure-Konto (`az login`) angemeldet sind.
+
+
+### <a name="see-the-current-agent-count"></a>Anzeigen der aktuellen Agent-Anzahl
+Um die Anzahl der Agents anzuzeigen, die sich derzeit im Cluster befinden, führen Sie den Befehl `az acs show` aus. Damit wird die Clusterkonfiguration angezeigt. Der folgende Befehl zeigt z.B. die Konfiguration des Containerdiensts namens `containerservice-myACSName` in der Ressourcengruppe `myResourceGroup`:
 
 ```azurecli
-azure acs scale --help
-
-help:    The operation to scale a container service.
-help:
-help:    Usage: acs scale [options] <resource-group> <name> <new-agent-count>
-help:
-help:    Options:
-help:      -h, --help                               output usage information
-help:      -v, --verbose                            use verbose output
-help:      -vv                                      more verbose with debug output
-help:      --json                                   use json output
-help:      -g, --resource-group <resource-group>    resource-group
-help:      -n, --name <name>                        name
-help:      -o, --new-agent-count <new-agent-count>  New agent count
-help:      -s, --subscription <subscription>        The subscription identifier
-help:
-help:    Current Mode: arm (Azure Resource Management)
+az acs show -g myResourceGroup -n containerservice-myACSName
 ```
 
-## <a name="use-the-command-to-scale"></a>Verwenden des Befehls zum Skalieren
-Sie müssen zunächst die **Ressourcengruppe** kennen sowie den **Namen des Azure-Containerdiensts (Azure Container Service, ACS)** und auch die neue Anzahl der Agents angeben, um einen Containerdienst zu skalieren. Indem Sie eine kleinere oder größere Menge verwenden, können Sie jeweils zentral herunter- bzw. hochskalieren.
+Der Befehl gibt die Anzahl von Agents im `Count`-Wert unter `AgentPoolProfiles` zurück.
 
-Möglicherweise möchten Sie die aktuelle Anzahl der Agents für einen Containerdienst wissen, bevor Sie mit der Skalierung beginnen. Verwenden Sie den `azure acs show <resource group> <ACS name>`-Befehl, um die ACS-Konfiguration zurückzugeben. Beachten Sie das Ergebnis <mark>Count</mark>.
 
-#### <a name="see-current-count"></a>Anzeigen der aktuellen Anzahl
-```azurecli
-azure acs show containers-test containerservice-containers-test
+### <a name="use-the-az-acs-scale-command"></a>Verwenden des Befehls „az acs scale“
+Um die Anzahl von Agent-Knoten zu ändern, führen Sie den `az acs scale`-Befehl aus, und geben Sie die **Ressourcengruppe**, den **Namen des Containerdiensts** und die gewünschte **neue Agent-Anzahl** an. Durch Verwendung einer kleineren oder größeren Zahl können Sie jeweils zentral herunter- bzw. hochskalieren.
 
-info:    Executing command acs show
-data:
-data:     Id                 : /subscriptions/<guid>/resourceGroups/containers-test/providers/Microsoft.ContainerService/containerServices/containerservice-containers-test
-data:     Name               : containerservice-containers-test
-data:     Type               : Microsoft.ContainerService/ContainerServices
-data:     Location           : westus
-data:     ProvisioningState  : Succeeded
-data:     OrchestratorProfile
-data:       OrchestratorType : DCOS
-data:     MasterProfile
-data:       Count            : 1
-data:       DnsPrefix        : myprefixmgmt
-data:       Fqdn             : myprefixmgmt.westus.cloudapp.azure.com
-data:     AgentPoolProfiles
-data:       #0
-data:         Name           : agentpools
-data:         <mark>Count          : 1</mark>
-data:         VmSize         : Standard_D2
-data:         DnsPrefix      : myprefixagents
-data:         Fqdn           : myprefixagents.westus.cloudapp.azure.com
-data:     LinuxProfile
-data:       AdminUsername    : azureuser
-data:       Ssh
-data:         PublicKeys
-data:           #0
-data:             KeyData    : ssh-rsa <ENCODED VALUE>
-data:     DiagnosticsProfile
-data:       VmDiagnostics
-data:         Enabled        : true
-data:         StorageUri     : https://<storageid>.blob.core.windows.net/
-```  
-
-#### <a name="scale-to-new-count"></a>Skalieren auf die neue Anzahl
-Da es wahrscheinlich schon offensichtlich ist, können Sie den Containerdienst skalieren, indem Sie `azure acs scale` aufrufen, und die **Ressourcengruppe**, den **ACS-Namen** und die **Anzahl der Agents** angeben. Wenn Sie einen Containerdienst skalieren, gibt die Azure-Befehlszeilenschnittstelle eine JSON-Zeichenfolge zurück, die die neue Konfiguration des Containerdienst darstellt, einschließlich der neuen Anzahl der Agents.
+Um z.B. die Anzahl von Agents im vorherigen Cluster auf 10 zu ändern, geben Sie folgenden Befehl ein:
 
 ```azurecli
-azure acs scale containers-test containerservice-containers-test 10
+azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
+```
 
-info:    Executing command acs scale
-data:    {
-data:        id: '/subscriptions/<guid>/resourceGroups/containers-test/providers/Microsoft.ContainerService/containerServices/containerservice-containers-test',
-data:        name: 'containerservice-containers-test',
-data:        type: 'Microsoft.ContainerService/ContainerServices',
-data:        location: 'westus',
-data:        provisioningState: 'Succeeded',
-data:        orchestratorProfile: { orchestratorType: 'DCOS' },
-data:        masterProfile: {
-data:            count: 1,
-data:            dnsPrefix: 'myprefixmgmt',
-data:            fqdn: 'myprefixmgmt.westus.cloudapp.azure.com'
-data:        },
-data:        agentPoolProfiles: [
-data:            {
-data:                name: 'agentpools',
-data:                <mark>count: 10</mark>,
-data:                vmSize: 'Standard_D2',
-data:                dnsPrefix: 'myprefixagents',
-data:                fqdn: 'myprefixagents.westus.cloudapp.azure.com'
-data:            }
-data:        ],
-data:        linuxProfile: {
-data:            adminUsername: 'azureuser',
-data:            ssh: {
-data:                publicKeys: [
-data:                    { keyData: 'ssh-rsa <ENCODED VALUE>' }
-data:                ]
-data:            }
-data:        },
-data:        diagnosticsProfile: {
-data:            vmDiagnostics: { enabled: true, storageUri: 'https://<storageid>.blob.core.windows.net/' }
-data:        }
-data:    }
-info:    acs scale command OK
-``` 
+Die Azure-CLI 2.0 (Vorschau) gibt eine JSON-Zeichenfolge zurück, die die neue Konfiguration des Containerdiensts darstellt, einschließlich der neuen Anzahl von Agents.
+
+Um weitere Befehlsoptionen zu erhalten, führen Sie `az acs scale --help` aus.
+
+
+## <a name="scaling-considerations"></a>Überlegungen zur Skalierung
+
+
+* Die Anzahl von Agent-Knoten muss zwischen 1 und 100 (einschließlich) liegen. 
+
+* Das Kernnutzungskontingent Ihres Systems kann die Anzahl von Agent-Knoten in einem Cluster begrenzen.
+
+* Skalierungsvorgänge für Azure-Knoten werden auf eine Azure-VM-Skalierungsgruppe angewendet, die den Agent-Pool enthält. In einem DC/OS-Cluster werden nur Agent-Knoten im privaten Pool von den in diesem Artikel gezeigten Vorgängen skaliert.
+
+* Je nach der im Cluster bereitgestellten Orchestrierung können Sie die Anzahl von Instanzen eines im Cluster ausgeführten Containers separat skalieren. Verwenden Sie in einem DC/OS-Cluster z.B. die [Marathon-Schnittstelle](container-service-mesos-marathon-ui.md), um die Anzahl von Instanzen einer Containeranwendung zu ändern.
+
+* Zurzeit wird die automatische Skalierung von Agent-Knoten in einem Containerdienstcluster nicht unterstützt.
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md)
+* Hier finden Sie [weitere Beispiele](container-service-create-acs-cluster-cli.md) für die Verwendung von Befehlen der Azure-CLI 2.0 (Vorschau) mit Azure Container Service.
+* Hier erfahren Sie mehr über [DC/OS-Agent-Pools](container-service-dcos-agents.md) in Azure Container Service.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

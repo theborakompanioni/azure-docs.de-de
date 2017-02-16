@@ -1,6 +1,6 @@
 ---
-title: Arten von Risikoereignisse, die von Azure Active Directory Identity Protection erkannt werden | Microsoft Docs
-description: "Dieses Thema bietet eine ausführliche Übersicht über die verfügbaren Typen von Risikoereignisse in Azure Active Directory Protection"
+title: Arten von Risikoereignissen, die von Azure Active Directory erkannt werden | Microsoft-Dokumentation
+description: "Dieses Thema bietet eine ausführliche Übersicht über die verfügbaren Typen von Risikoereignisse in Azure Active Directory."
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 documentationcenter: 
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 11/30/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fd1fb445a78d12046d52cb27798eaa9d058629c3
+ms.sourcegitcommit: ffc64fc0469cd3588d6d13524411575b423ab4e5
+ms.openlocfilehash: dc04ebb3c205c01ed42c9d8bc3e0eb009881074a
 
 
 ---
-# <a name="types-of-risk-events-detected-by-azure-active-directory-identity-protection"></a>Arten von Risikoereignisse, die von Azure Active Directory Identity Protection erkannt werden
-Risikoereignisse in Azure Active Directory Identity Protection sind Ereignisse, die:
+# <a name="types-of-risk-events-detected-by-azure-active-directory"></a>Arten von Risikoereignissen, die von Azure Active Directory erkannt werden 
+Risikoereignisse in Azure Active Directory sind Ereignisse, die:
 
 * als verdächtig gekennzeichnet wurden
 * andeuten, dass eine Identität möglicherweise kompromittiert wurde. 
@@ -30,7 +30,7 @@ Risikoereignisse in Azure Active Directory Identity Protection sind Ereignisse, 
 In diesem Thema erhalten Sie eine ausführliche Übersicht über die verfügbaren Arten von Risikoereignissen.
 
 ## <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
-Kompromittierte Anmeldeinformationen sind Anmeldeinformationen, für die von unseren Microsoft-Sicherheitsexperten herausgefunden wird, dass sie öffentlich im Dark Web gepostet werden. Diese Anmeldeinformationen sind dort normalerweise in Klartext zu finden. Sie werden mit Azure AD-Anmeldeinformationen verglichen. Wenn sich eine Übereinstimmung ergibt, werden sie in Identity Protection als „Kompromittierte Anmeldeinformationen“ gemeldet.
+Kompromittierte Anmeldeinformationen sind Anmeldeinformationen, für die von unseren Microsoft-Sicherheitsexperten herausgefunden wird, dass sie öffentlich im Dark Web gepostet werden. Diese Anmeldeinformationen sind dort normalerweise in Klartext zu finden. Sie werden mit Azure AD-Anmeldeinformationen verglichen. Wenn sich eine Übereinstimmung ergibt, werden sie als „Kompromittierte Anmeldeinformationen“ gemeldet.
 
 Risikoereignisse vom Typ „Kompromittierte Anmeldeinformationen“ werden als Risikoereignisse mit dem Schweregrad „Hoch“ eingestuft, da es sich hierbei um einen eindeutigen Hinweis darauf handelt, dass der Benutzername und das Kennwort für Angreifer zur Verfügung stehen.
 
@@ -67,7 +67,7 @@ Bei dieser Art von Risikoereignis handelt es sich um ein Verfahren zur Echtzeita
 ## <a name="azure-ad-anomalous-activity-reports"></a>Azure AD-Berichte zu anomalen Aktivitäten
 Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten von Azure AD im Azure-Portal verfügbar. Die Tabelle unten enthält die verschiedenen Risikoereignistypen und den entsprechenden **Azure AD-Bericht zu anomalen Aktivitäten** . Microsoft investiert weiter in diesen Bereich und plant, die Erkennungsgenauigkeit von vorhandenen Risikoereignissen ständig weiter zu verbessern und fortlaufend neue Risikoereignistypen hinzuzufügen. 
 
-| Typ des Identity Protection-Risikoereignisses | Zugehöriger Azure AD-Bericht zu anomalen Aktivitäten |
+| Risikoereignistyp | Zugehöriger Azure AD-Bericht zu anomalen Aktivitäten |
 |:--- |:--- |
 | Kompromittierte Anmeldeinformationen |Benutzer mit kompromittierten Anmeldeinformationen |
 | Unmöglicher Ortswechsel zu atypischen Orten |Irreguläre Anmeldeaktivitäten |
@@ -77,7 +77,7 @@ Einige dieser Risikoereignisse sind über die Berichte zu anomalen Aktivitäten 
 | Anmeldungen von unbekannten Standorten |- |
 | Sperrereignisse |- |
 
-Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind zwar noch im Azure-Portal verfügbar, werden aber nach und nach durch Risikoereignisse in Identity Protection ersetzt.
+Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD enthalten und daher auch nicht über Azure AD verfügbar. Diese Berichte sind zwar noch im Azure-Portal verfügbar, werden aber nach und nach durch Risikoereignisse in Azure AD ersetzt.
 
 * Anmeldungen nach mehreren Fehlern
 * Anmeldungen aus mehreren geografischen Regionen
@@ -88,6 +88,6 @@ Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoer
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

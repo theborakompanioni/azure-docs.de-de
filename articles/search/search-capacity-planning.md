@@ -1,6 +1,6 @@
 ---
-title: "Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search | Microsoft Docs"
-description: "Die Kapazitätsplanung in Azure Search basiert auf Kombinationen von Partitions- und Replikatcomputerressourcen, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird."
+title: "Kapazitätsplanung für Azure Search | Microsoft-Dokumentation"
+description: Passen Sie Partitions- und Replikatcomputerressourcen in Azure Search an, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird.
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 7fc643a4c852b723d030212f01e6ff475c76e1a4
-ms.openlocfilehash: 8fb3011d755dd0330e71005de4df52f59e1f7b95
+ms.sourcegitcommit: 814292d76601452493c1d708c39d42da909036d9
+ms.openlocfilehash: c3f547fade400ba35619217dac503ab7ea2fbb40
 
 ---
 
@@ -81,7 +81,7 @@ Derzeit steht kein integrierter Mechanismus für die Notfallwiederherstellung be
 ## <a name="increase-query-performance-with-replicas"></a>Erhöhen der Abfrageleistung mit Replikaten
 Eine Abfragelatenz deutet darauf hin, dass zusätzliche Replikate erforderlich sind. Im Allgemeinen besteht der erste Schritt zum Verbessern der Abfrageleistung im Hinzufügen weiterer Instanzen dieser Ressource. Beim Hinzufügen von Replikaten werden zusätzliche Kopien des Index online geschaltet, um größere Abfrageworkloads zu unterstützen und die Anforderungslast gleichmäßig auf mehrere Replikate zu verteilen.
 
-Es können keine festen Schätzungen für die Abfragen pro Sekunde (Queries Per Second, QPS) abgegeben werden: Die Abfrageleistung kann je nach Komplexität der jeweiligen Abfrage und konkurrierenden Workloads stark variieren. Im Schnitt verarbeitet ein Replikat unter der Basic- oder S1-SKU etwa 15 Abfragen pro Sekunde, der Durchsatz kann jedoch abhängig von der Komplexität der Abfrage (Facetabfragen sind komplexer) und der Netzwerklatenz höher oder niedriger ausfallen. Darüber hinaus ist zu beachten, dass beim Hinzufügen von Replikaten zwar die Skalierung und Leistung erhöht werden, das Endergebnis aber nicht streng linear ist: Das Hinzufügen von 3 Replikaten garantiert keinen dreifachen Durchsatz.
+Es können keine festen Schätzungen für die Abfragen pro Sekunde (Queries Per Second, QPS) abgegeben werden: Die Abfrageleistung kann je nach Komplexität der jeweiligen Abfrage und konkurrierenden Workloads stark variieren. Im Schnitt verarbeitet ein Replikat unter der Basic- oder S1-SKU etwa 15 Abfragen pro Sekunde, der Durchsatz kann jedoch abhängig von der Komplexität der Abfrage (Facetabfragen sind komplexer) und der Netzwerklatenz höher oder niedriger ausfallen. Darüber hinaus ist zu beachten, dass beim Hinzufügen von Replikaten zwar die Skalierung und Leistung erhöht werden, das Endergebnis aber nicht streng linear ist: Das Hinzufügen von&3; Replikaten garantiert keinen dreifachen Durchsatz.
 
 Weitere Informationen zu QPS (einschließlich Konzepte zur Schätzung der QPS für Ihre Workloads) finden Sie unter [Verwalten des Search-Dienstes](search-manage.md).
 
@@ -111,7 +111,7 @@ Diese Tabelle enthält die SUs, die für eine Unterstützung der Kombinationen a
 SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> Die Anzahl der Replikate und Partitionen ist ein ganzzahliger Teiler von 12 (d.h. 1, 2, 3, 4, 6, 12). Der Grund: Azure Search unterteilt jeden Index vorab in 12 Shards, damit er gleichmäßig auf alle Partitionen verteilt werden kann. Wenn Ihr Dienst z.B. drei Partitionen aufweist und Sie einen Index erstellen, enthält jede Partition 4 Shards des Indexes. Azure Search erstellt Shards eines Index in Form von Implementierungsdetails, die sich bei zukünftigen Versionen ändern können. Auch wenn die Anzahl heute 12 beträgt, sollten Sie nicht davon ausgehen, das dies auch in Zukunft immer so ist.
+> Die Anzahl der Replikate und Partitionen ist ein ganzzahliger Teiler von 12 (d.h. 1, 2, 3, 4, 6, 12). Der Grund: Azure Search unterteilt jeden Index vorab in 12 Shards, damit er gleichmäßig auf alle Partitionen verteilt werden kann. Wenn Ihr Dienst z.B. drei Partitionen aufweist und Sie einen Index erstellen, enthält jede Partition&4; Shards des Indexes. Azure Search erstellt Shards eines Index in Form von Implementierungsdetails, die sich bei zukünftigen Versionen ändern können. Auch wenn die Anzahl heute 12 beträgt, sollten Sie nicht davon ausgehen, das dies auch in Zukunft immer so ist.
 >
 >
 
@@ -122,6 +122,6 @@ Die Kosten pro SU sind durch den Tarif vorgegeben. Der Kostensatz pro SU für de
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

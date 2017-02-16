@@ -22,6 +22,7 @@ ms.openlocfilehash: c6b662883919d81a4895c85deed8f50f9e578444
 
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Sichern eines Windows-Servers oder -Clients in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells
+
 > [!div class="op_single_selector"]
 > * [Azure-Portal](backup-configure-vault.md)
 > * [Klassisches Portal](backup-configure-vault-classic.md)
@@ -153,7 +154,7 @@ Die erste Sicherung umfasst zwei wichtige Aufgaben:
 Für die erste Sicherung verwenden Sie den Microsoft Azure Backup-Agent.
 
 ### <a name="to-schedule-the-backup"></a>So planen Sie die Sicherung
-1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.
+1. Öffnen Sie den Microsoft Azure Backup-Agent. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.
 
     ![Starten des Azure Backup-Agents](./media/backup-configure-vault/snap-in-search.png)
 2. Klicken Sie im Backup-Agent auf **Sicherung planen**.

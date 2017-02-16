@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 07/12/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a4310e365148e94a7d9b61df354e7328863f8662
+ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
+ms.openlocfilehash: 28c847137bda93886a2ae80151e3834f149a4858
 
 
 ---
@@ -236,7 +236,7 @@ Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung der Batchverarbeitung mi
 > 
 > 
 
-Bei kleineren Batches wurde mit Tabellenwertparametern eine bessere Leistung erzielt als mit der Klasse **SqlBulkCopy** . Bei 1000 und 10.000 Zeilen war **SqlBulkCopy** jedoch um 12 bis 31 Prozent schneller als die Tabellenwertparameter. **SqlBulkCopy** ist (genau wie Tabellenwertparameter) eine gute Option für Batcheinfügevorgänge – insbesondere verglichen mit der Leistung von Vorgängen ohne Batchverarbeitung.
+Bei kleineren Batches wurde mit Tabellenwertparametern eine bessere Leistung erzielt als mit der Klasse **SqlBulkCopy** . Bei Tests mit 1.000 und 10.000 Zeilen war **SqlBulkCopy** jedoch um 12–31 % schneller als die Tabellenwertparameter. **SqlBulkCopy** ist (genau wie Tabellenwertparameter) eine gute Option für Batcheinfügevorgänge – insbesondere verglichen mit der Leistung von Vorgängen ohne Batchverarbeitung.
 
 Weitere Informationen zum Massenkopieren in ADO.NET finden Sie unter [Massenkopiervorgänge in SQL Server](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
@@ -283,7 +283,7 @@ Für Batches mit weniger als 100 Zeilen kann dieser Ansatz etwas schneller sein
 Mithilfe der Klasse **DataAdapter** können Sie ein Objekt vom Typ **DataSet** ändern und die Änderungen anschließend als INSERT-, UPDATE- und DELETE-Vorgang übermitteln. Beachten Sie bei einer solchen Verwendung des Objekts **DataAdapter** , dass für jeden einzelnen Vorgang separate Aufrufe ausgeführt werden. Verwenden Sie zur Verbesserung der Leistung die Eigenschaft **UpdateBatchSize** mit der Anzahl von Vorgängen, für die eine gleichzeitige Batchverarbeitung durchgeführt werden soll. Weitere Informationen finden Sie unter [Ausführen von Batchoperationen mit DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Entity Framework
-Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Problemumgehungen wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: Sie können diese Diskussion unter [Design Meeting Notes – August 2, 2012 (Anmerkungen zum Design-Meeting vom 2. August 2012)](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012) nachlesen.
+Von Entity Framework wird derzeit keine Batchverarbeitung unterstützt. Verschiedene Entwickler aus der Community haben sich an Problemumgehungen wie etwa dem Überschreiben der Methode **SaveChanges** versucht. Diese Lösungen sind jedoch in der Regel komplex und speziell auf die jeweilige Anwendung und das jeweilige Datenmodell zugeschnitten. Für das Entity Framework-Codeplex-Projekt gibt es derzeit eine Diskussionsseite zu diesem Funktionswunsch: Sie können diese Diskussion unter [Design Meeting Notes – August 2, 2012](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012) (Anmerkungen zum Design-Meeting vom 2. August 2012) nachlesen.
 
 ### <a name="xml"></a>XML
 Der Vollständigkeit halber sollten wir auch auf XML als Batchverarbeitungsstrategie eingehen. Allerdings bietet die Verwendung von XML gegenüber anderen Methoden keinerlei Vorteile und sogar einige Nachteile. Der Ansatz ist vergleichbar mit Tabellenwertparametern, eine XML-Datei oder eine Zeichenfolge wird jedoch nicht an eine benutzerdefinierte Tabelle, sondern an eine gespeicherte Prozedur übergeben. Die gespeicherte Prozedur analysiert die Befehle in der gespeicherten Prozedur.
@@ -622,11 +622,11 @@ Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten
 * Erwägen Sie für weitere Szenarien eine größen- und zeitabhängige Pufferung als Implementierungsoption für die Batchverarbeitung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) sowie unter [Überlegungen zum Preis und zur Leistung eines elastischen Datenbankpools](sql-database-elastic-pool-guidance.md).
+In diesem Artikel ging es in erster Linie darum, wie Datenbankdesign und Programmiertechniken im Zusammenhang mit der Batchverarbeitung die Leistung und Skalierbarkeit Ihrer Anwendung verbessern können. Dies ist jedoch nur einer von vielen Faktoren einer Gesamtstrategie. Weitere Methoden zur Verbesserung der Leistung und Skalierbarkeit finden Sie unter [Azure SQL-Datenbank und Leistung für Einzeldatenbanken](sql-database-performance-guidance.md) und [Überlegungen zum Preis und zur Leistung eines elastischen Pools](sql-database-elastic-pool-guidance.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/21/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: ba109fdc2a97e99f6216aa038261e6ccc5e356d9
-ms.openlocfilehash: 68a1b8515bbcebbe7ce4d4224a4015f18af5040b
+ms.sourcegitcommit: e5d567800d00b41ec0782216b442f437a2500928
+ms.openlocfilehash: 41edd713d85790793341e100f77300f999ac8c73
 
 
 ---
-# <a name="azure-logic-apps-integration-account-metadata"></a>Metadaten für das Azure Logic Apps-Integrationskonto 
+# <a name="azure-logic-apps-integration-account-metadata"></a>Metadaten für das Azure Logic Apps-Integrationskonto
 
 ## <a name="overview"></a>Übersicht
 
 Für Partner, Vereinbarungen, Schemas und Zuordnungen, die einem Integrationskonto hinzugefügt werden, werden Metadaten als Schlüssel-Wert-Paare gespeichert. Sie können benutzerdefinierten Metadaten definieren, die zur Laufzeit abgerufen werden können.  Derzeit bieten die Artefakte keine Möglichkeit zum Erstellen von Metadaten auf der Benutzeroberfläche. Verwenden Sie die REST-API, um sie zu erstellen.  Partner, Vereinbarungen und Schema bieten die Option **EDIT as JSON** (Als JSON bearbeiten) und lassen die Eingabe von Metadateninformationen zu.  In einer Logik-App hilft die Option **Integration Account Artifact LookUp** (Nachschlagen von Integrationskontoartefakten) beim Abrufen der Metadateninformationen.
 
-## <a name="how-to-store-metadata"></a>Speichern von Metadaten 
+## <a name="how-to-store-metadata"></a>Speichern von Metadaten
 
 1. Erstellen Sie ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md).   
 
@@ -39,17 +39,17 @@ Für Partner, Vereinbarungen, Schemas und Zuordnungen, die einem Integrationskon
 
 1. Erstellen Sie eine [Logik-App](logic-apps-create-a-logic-app.md).
 
-2. [Verknüpfen](logic-apps-enterprise-integration-create-integration-account.md#how-to-link-an-integration-account-to-a-logic-app) Sie die Logik-App mit einem Integrationskonto.    
+2. [Verknüpfen](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app) Sie die Logik-App mit einem Integrationskonto.    
 
-3. Erstellen Sie einen Trigger, z.B. unter Verwendung von *Request* oder *HTTP*, vor dem Suchen nach **Integration Account Artifact LookUp** (Integrationskontoartefakt nachschlagen).  Suchen Sie **Integration**, um nach **Integration Account Artifact LookUp (Integrationskontoartefakt nachschlagen)** 
-![Suchen](media/logic-apps-enterprise-integration-metadata/image2.png) zu suchen. 
+3. Erstellen Sie einen Trigger, z.B. unter Verwendung von *Request* oder *HTTP*, vor dem Suchen nach **Integration Account Artifact LookUp** (Integrationskontoartefakt nachschlagen).  Durchsuchen Sie **Integration**, um nach **Artefaktsuche für Integrationskonto** zu suchen.  
+![Suchen Sie „lookup“ (Suchen).](media/logic-apps-enterprise-integration-metadata/image2.png)
 
 3. Wählen Sie **Integration Account Artifact LookUp** (Integrationskontoartefakt nachschlagen) aus.  
 
 4. Wählen Sie **Artefakttyp** aus, und geben Sie den **Namen des Artefakts** ein.  
 ![Suchen Sie „lookup“ (Suchen).](media/logic-apps-enterprise-integration-metadata/image3.png)
 
-## <a name="an-example-to-retrieve-partner-metadata"></a>Beispiel zum Abrufen von Metadaten für Partner 
+## <a name="an-example-to-retrieve-partner-metadata"></a>Beispiel zum Abrufen von Metadaten für Partner
 
 1. Partnermetadaten mit Details zur Routing-URL    
 ![Suchen Sie „lookup“ (Suchen).](media/logic-apps-enterprise-integration-metadata/image6.png)
@@ -65,6 +65,7 @@ Für Partner, Vereinbarungen, Schemas und Zuordnungen, die einem Integrationskon
 * [Weitere Informationen zu Vereinbarungen](logic-apps-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")  
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO1-->
 
 

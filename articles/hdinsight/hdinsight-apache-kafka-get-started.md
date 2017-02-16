@@ -4,7 +4,7 @@ description: "Enthält die Grundlagen der Erstellung und Verwendung von Kafka in
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: paulettm
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/09/2016
+ms.date: 01/09/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 70d910f61fa414a0c58a22057133ef3b899dac05
+ms.sourcegitcommit: 34c1138a9c3b9313a12ffbf4bc4c3141db0a016e
+ms.openlocfilehash: 98b11144c049f9db780c7665610c83a753f23b21
 
 ---
 # <a name="get-started-with-apache-kafka-preview-on-hdinsight"></a>Erste Schritte mit Apache Kafka (Vorschau) in HDInsight
@@ -71,6 +71,11 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Kafka in HDInsig
     Klicken Sie abschließend auf die Schaltfläche **Auswählen**, um die Einstellungen zu speichern.
      
     ![Auswählen des Clustertyps](./media/hdinsight-apache-kafka-get-started/cluster-type.png)
+
+    > [!NOTE]
+    > Wenn Ihr Azure-Abonnement keinen Zugriff auf die Vorschau von Kafka hat, werden Anweisungen zum Zugriff auf die Vorschau angezeigt. Die angezeigten Anweisungen ähneln der folgenden Abbildung:
+    >
+    > ![Vorschaunachricht: Wenn Sie einen verwalteten Apache Kafka-Cluster in HDInsight bereitstellen möchten, senden Sie uns eine E-Mail, um den Zugriff auf die Vorschau anzufordern.](./media/hdinsight-apache-kafka-get-started/no-kafka-preview.png)
 
 4. Verwenden Sie **Anmeldeinformationen**, um die Clusteranmeldung und die SSH-Benutzeranmeldeinformationen zu konfigurieren.  Klicken Sie auf die Schaltfläche **Auswählen**, um die Einstellungen zu speichern.
    
@@ -320,6 +325,6 @@ In diesem Dokument wurden die Grundlagen der Arbeit mit Apache Kafka in HDInsigh
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

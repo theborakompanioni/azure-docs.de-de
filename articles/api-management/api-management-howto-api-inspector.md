@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
-ms.author: sdanie
+ms.author: apipm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 36231c3d2c19e129b301b76dfbbc8417b055fbae
+ms.sourcegitcommit: 28e9cbf05e75055a10c78fd42b5cb27e359b1d65
+ms.openlocfilehash: aad0e6de85a40df8a873aa11e5a33e7064090dce
 
 
 ---
@@ -69,7 +69,7 @@ Die Antwortheader enthalten ein **ocp-apim-trace-location** mit einem ähnlichen
 ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 ```
 
-Sie können die Ablaufverfolgung vom angegebenen Speicherort herunterladen und wie im folgenden Schritt gezeigt analysieren.
+Sie können die Ablaufverfolgung vom angegebenen Speicherort herunterladen und wie im folgenden Schritt gezeigt analysieren. Beachten Sie, dass nur die letzten 100 Protokolleinträge gespeichert werden und Protokollspeicherorte in Rotation wiederverwendet werden. Wenn Sie mehr als 100 Aufrufe mit aktivierter Ablaufverfolgung ausführen, werden die ersten Ablaufverfolgungen überschrieben.
 
 ## <a name="inspect-trace"> </a>Analysieren der Ablaufverfolgung
 Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location** -URL herunter, um die Werte in der Ablaufverfolgung zu überprüfen. Es handelt sich um eine Textdatei im JSON-Format, die Werte ähnlich des folgenden Beispiels enthält.
@@ -269,6 +269,6 @@ Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location** -URL 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

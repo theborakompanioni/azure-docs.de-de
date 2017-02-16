@@ -11,17 +11,21 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 71cf6cd6e7a33b3aeb3e0e20b9b047377412786d
 
 
 ---
 # <a name="reference-for-analytics"></a>Referenz für Analytics
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
+Zusätzliche Informationsquellen:
+
+* Während der Eingabe in Analytics ist viel Referenzmaterial verfügbar. Beginnen Sie einfach mit der Eingabe einer Abfrage, und Sie erhalten Vervollständigungsvorschläge.
+* [Die Seite „Tutorial“](app-insights-analytics-tour.md) bietet eine schrittweise Einführung in die Sprachfunktionen.
 * In der [Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics) finden Sie eine Übersetzung der gängigsten Sprachen.
 * [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo), wenn Ihre App noch keine Daten an Application Insights sendet.
  
@@ -29,7 +33,7 @@ ms.openlocfilehash: 1b153af33ef2f7c112336a2de2a3710613ad3887
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
 
-**Abfragen und Operatoren** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**Abfragen und Operatoren** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
 
 **Aggregationen** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -364,6 +368,70 @@ traces
     Age = now() - timestamp
 ```
 
+### <a name="find-operator"></a>find-Operator
+
+    find in (Table1, Table2, Table3) where id=='42'
+
+Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
+
+**Syntax**
+
+    find in (Table1, ...) 
+    where Predicate 
+    [project Column1, ...]
+
+**Argumente**
+
+* *Table1* Tabellenname oder Abfrage. Kann eine let-definierte Tabelle, aber keine Funktion sein. Ein Tabellenname bietet eine bessere Leistung als eine Abfrage.
+* *Predicate* Ein boolescher Ausdruck, der für jede Zeile in den angegebenen Tabellen ausgewertet wird.
+* *Column1* Mit der `project`-Option können Sie angeben, welche Spalten in der Ausgabe immer angezeigt werden müssen. 
+
+**Ergebnis**
+
+Standardmäßig enthält die Ausgabetabelle:
+
+* `source_`: Ein Indikator für die Quelltabelle für jede Zeile
+* Im Prädikat explizit erwähnte Spalten
+* Nicht leere Spalten, die alle Eingabetabellen gemeinsam haben
+* `pack_`: Eine Eigenschaftensammlung mit den Daten aus den anderen Spalten.
+
+Beachten Sie, dass sich dieses Format bei Änderungen in den Eingabedaten oder eines Prädikats ändern kann. Zum angeben eines festen Satzes von Spalten verwenden Sie `project`.
+
+**Beispiel**
+
+Abrufen aller Anforderungen und Ausnahmen, mit Ausnahme derjenigen von Verfügbarkeitstests und Robotern:
+
+```AIQL
+
+    find in (requests, exceptions) where isempty(operation_SyntheticSource)
+```
+
+Suchen aller Anforderungen und Ausnahmen aus dem Vereinigten Königreich, mit Ausnahme derjenigen von Verfügbarkeitstests und Robotern:
+
+```AIQL
+
+    let requk = requests
+    | where client_CountryOrRegion == "United Kingdom";
+    let exuk = exceptions
+    | where client_CountryOrRegion == "United Kingdom";
+    find in (requk, exuk) where isempty(operation_SyntheticSource)
+```
+
+Suchen der aktuellen Telemetriedaten, wobei ein beliebiges Feld den Begriff „test“ enthält:
+
+```AIQL
+
+    find in (traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions) 
+    where * has 'test' 
+    | top 100 by timestamp desc
+```
+
+**Leistungstipps**
+
+* Fügen Sie dem `where`-Prädikat zeitbasierte Begriffe hinzu.
+* Verwenden Sie `let`-Klauseln anstatt Abfragen inline zu schreiben.
+
+
 
 ### <a name="join-operator"></a>join-Operator
     Table1 | join (Table2) on CommonColumn
@@ -387,10 +455,10 @@ Eine Tabelle mit:
 
 * Einer Spalte für jede Spalte in jeder der beiden Tabellen, einschließlich der übereinstimmenden Schlüssel. Die Spalten der rechten Seite werden bei Namenskonflikten automatisch umbenannt.
 * Einer Zeile für jede Übereinstimmung zwischen den Eingabetabellen. Eine Übereinstimmung ist eine ausgewählte Zeile in einer Tabelle, die in allen `on` -Feldern denselben Wert wie eine Zeile in der anderen Tabelle aufweist. 
-* `Kind` – nicht angegeben
+* `Kind` ohne Angabe oder `= innerunique`
   
     Nur eine Zeile der linken Seite wird für jeden Wert des `on` -Schlüssels abgeglichen. Die Ausgabe enthält eine Zeile für jede Übereinstimmung dieser Zeile mit Zeilen der rechten Seite.
-* `Kind=inner`
+* `kind=inner`
   
      Der Ausgabe enthält eine Zeile für jede Kombination von übereinstimmenden Zeilen der linken und rechten Seite.
 * `kind=leftouter` (oder `kind=rightouter` oder `kind=fullouter`)
@@ -399,8 +467,10 @@ Eine Tabelle mit:
 * `kind=leftanti`
   
      Gibt alle Datensätze von der linken Seite zurück, für die keine Übereinstimmungen auf der rechten Seite vorhanden sind. Die Ergebnistabelle enthält nur die Spalten von der linken Seite. 
+* `kind=leftsemi` (oder `leftantisemi`)
 
-Wenn mehrere Zeilen mit denselben Werten für diese Felder vorhanden sind, erhalten Sie Zeilen für alle Kombinationen.
+    Gibt eine Zeile aus der linken Tabelle zurück, wenn in der rechten Tabelle eine Übereinstimmung dafür vorhanden ist (oder nicht). Das Ergebnis enthält keine Daten aus der rechten Tabelle.
+
 
 **Tipps**
 
@@ -811,7 +881,7 @@ Tabelle, die die Anzahl, durchschnittliche Anforderungsdauer und Menge von Städ
 
     T | summarize count() by price_range=bin(price, 10.0)
 
-Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0, 10,0][10,0, 20,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
+Eine Tabelle, die zeigt, wie viele Elemente in jedem Intervall [0,&10;,0][10,0,&20;,0] usw. Preise aufweisen. In diesem Beispiel ist eine Spalte für die Anzahl und eine für den Preisbereich vorhanden. Alle anderen Eingabespalten werden ignoriert.
 
 **Syntax**
 
@@ -836,9 +906,8 @@ Die Eingabezeilen sind in Gruppen mit denselben Werten der `by` -Ausdrücke ange
 
 Das Ergebnis umfasst genauso viele Zeilen, wie unterschiedliche Kombinationen von `by` -Werten vorhanden sind. Wenn Sie Zusammenfassungen über Bereiche von numerischen Werten erstellen möchten, verwenden Sie `bin()` , um Bereiche auf diskrete Werte zu reduzieren.
 
-**Hinweis**
-
-Auch wenn Sie beliebige Ausdrücke für die Aggregation und Gruppierung von Ausdrücken bereitstellen können, ist es effizienter, einfache Spaltennamen zu verwenden oder `bin()` auf eine numerische Spalte anzuwenden.
+> [!NOTE]
+> Auch wenn Sie beliebige Ausdrücke für die Aggregation und Gruppierung von Ausdrücken bereitstellen können, ist es effizienter, einfache Spaltennamen zu verwenden oder `bin()` auf eine numerische Spalte anzuwenden.
 
 ### <a name="take-operator"></a>take-Operator
 Alias von [limit](#limit-operator)
@@ -937,13 +1006,13 @@ Mit dieser effizienteren Version wird dasselbe Ergebnis erzielt. Jede Tabelle wi
 ```AIQL
 
     exceptions
-    | where Timestamp > ago(1d)
+    | where Timestamp > ago(12h)
     | union withsource=SourceTable kind=outer 
-       (Command | where Timestamp > ago(1d))
+       (Command | where Timestamp > ago(12h))
     | summarize dcount(UserId)
 ```
 
-### <a name="forcing-an-order-of-results"></a>Erzwingen der Reihenfolge der Ergebnisse
+#### <a name="forcing-an-order-of-results"></a>Erzwingen der Reihenfolge der Ergebnisse
 
 „Union“ garantiert keine bestimmte Reihenfolge der Zeilen in den Ergebnissen.
 Fügen Sie zum Abrufen derselben Reihenfolge bei jeder Ausführung der Abfrage eine Spalte des Typs „Tag“ an jede Eingabetabelle an:
@@ -953,6 +1022,9 @@ Fügen Sie zum Abrufen derselben Reihenfolge bei jeder Ausführung der Abfrage e
     let r3 = (pageViews | count | extend tag = 'r3');
     r1 | union r2,r3 | sort by tag
 
+#### <a name="see-also"></a>Weitere Informationen
+
+Betrachten Sie den [join-Operator](#join-operator) als Alternative.
 
 ### <a name="where-operator"></a>where-Operator
      requests | where resultCode==200
@@ -964,11 +1036,13 @@ Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 **Syntax**
 
     T | where Predicate
+    T | where * has Term
 
 **Argumente**
 
 * *T* : Die tabellarische Eingabe, deren Datensätze gefiltert werden sollen.
 * *Predicate*: Ein `boolean`-[-Ausdruck](#boolean) über die Spalten von *T*. Er wird für jede Zeile in *T* ausgewertet.
+* *Term*: Zeichenfolge, die dem gesamten Wort in einer Spalte entsprechen muss.
 
 **Rückgabe**
 
@@ -1621,7 +1695,7 @@ Alias: `floor`
 
 Das nächste Vielfache von *roundTo* unter dem Wert (*value*).  
 
-    (toint((value/roundTo)-0.5)) * roundTo
+    (toint(value/roundTo)) * roundTo
 
 **Beispiele**
 
@@ -1705,14 +1779,14 @@ Die Quadratwurzelfunktion.
 
 ### <a name="toint"></a>toint
     toint(100)        // cast from long
-    toint(20.7) == 21 // nearest int from double
-    toint(20.4) == 20 // nearest int from double
+    toint(20.7) == 20 // nearest int below double
+    toint(20.4) == 20 // nearest int below double
     toint("  123  ")  // parse string
     toint(a[0])       // cast from dynamic
     toint(b.c)        // cast from dynamic
 
 ### <a name="tolong"></a>tolong
-    tolong(20.7) == 21 // conversion from double
+    tolong(20.7) == 20 // conversion from double
     tolong(20.4) == 20 // conversion from double
     tolong("  123  ")  // parse string
     tolong(a[0])       // cast from dynamic
@@ -2607,6 +2681,6 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

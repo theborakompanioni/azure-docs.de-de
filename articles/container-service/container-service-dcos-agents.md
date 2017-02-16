@@ -1,6 +1,6 @@
 ---
-title: "Öffentliche und private DC/OS-Agent-Pools – ACS | Microsoft-Dokumentation"
-description: "Funktionsweise öffentlicher und privater Agent-Pools mit einem Azure Container Service-Cluster"
+title: "DC/OS-Agent-Pools für Azure Container Service | Microsoft Docs"
+description: "Funktionsweise öffentlicher und privater Agent-Pools mit einem Azure Container Service-DC/OS-Cluster"
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -14,34 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 01/04/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a6d9ab6d95de936e4f1d28d47d4e1d74c080bdae
+ms.sourcegitcommit: be10411e735c5b96702ee8dcb893f1a48e479f6f
+ms.openlocfilehash: cffc65e25ae8eab90a9879a0030b78b3b77890b7
 
 
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>DC/OS-Agent-Pools für Azure Container Service
-Azure Container Service für DC/OS unterteilt Agents in öffentliche und private Pools. Eine Bereitstellung ist in jedem Pool möglich, der Pool hat jedoch Auswirkungen auf den Zugriff zwischen Computern in Ihrem Containerdienst. Die Computer können über Internetzugriff (öffentlich) verfügen oder nur intern (privat) verwendet werden. Dieser Artikel geht kurz darauf ein, warum ein öffentlicher und ein privater Pool zur Verfügung stehen.
+DC/OS-Cluster in Azure Container Service enthalten die Agent-Knoten in zwei Pools, einem öffentlichen und einem privaten Pool. Die Bereitstellung einer Anwendung ist in beiden Pools möglich, der Pool hat jedoch Auswirkungen auf den Zugriff zwischen Computern in Ihrem Containerdienst. Die Computer können über Internetzugriff (öffentlich) verfügen oder nur intern (privat) verwendet werden. Dieser Artikel geht kurz darauf ein, warum ein öffentlicher und ein privater Pool zur Verfügung stehen.
 
-### <a name="private-agents"></a>Private Agents
-Private Agentknoten werden über ein nicht routingfähiges Netzwerk ausgeführt. Über dieses Netzwerk kann nur von der Administratorzone oder über den Edgerouter der öffentlichen Zone zugegriffen werden. Standardmäßig startet DC/OS Apps auf privaten Agentknoten. Weitere Informationen zur Netzwerksicherheit finden Sie in der [DC/OS-Dokumentation](https://dcos.io/docs/1.7/administration/securing-your-cluster/) .
 
-### <a name="public-agents"></a>Öffentliche Agents
-Öffentliche Agent-Knoten führen DC/OS-Apps und -Dienste über ein öffentlich zugängliches Netzwerk aus. Weitere Informationen zur Netzwerksicherheit finden Sie in der [DC/OS-Dokumentation](https://dcos.io/docs/1.7/administration/securing-your-cluster/) .
+* **Private Agents:** Private Agentknoten werden über ein nicht routingfähiges Netzwerk ausgeführt. Über dieses Netzwerk kann nur von der Administratorzone oder über den Edgerouter der öffentlichen Zone zugegriffen werden. Standardmäßig startet DC/OS Apps auf privaten Agentknoten. 
 
-## <a name="using-agent-pools"></a>Verwenden von Agent-Pools
+* **Öffentliche Agents:** Öffentliche Agent-Knoten führen DC/OS-Apps und -Dienste über ein öffentlich zugängliches Netzwerk aus. 
+
+Weitere Informationen zur DC/OS-Netzwerksicherheit finden Sie in der [DC/OS-Dokumentation](https://dcos.io/docs/1.7/administration/securing-your-cluster/).
+
+## <a name="deploy-agent-pools"></a>Bereitstellen von Agent-Pools
+
+DC/OS-Agent-Pools werden in Azure Container Service folgendermaßen erstellt:
+
+* Der **private Pool** enthält die Anzahl der Agent-Knoten, die Sie angeben, wenn Sie [DC/OS-Cluster bereitstellen](container-service-deployment.md). 
+
+* Der **öffentliche Pool** enthält eine zuvor festgelegte Anzahl von Agent-Knoten. Dieser Pool wird automatisch hinzugefügt, wenn der DC/OS-Cluster bereitgestellt wird.
+
+Der private Pool und der öffentliche Pool sind Azure-VM-Skalierungsgruppen. Sie können die Größe dieser Pools nach der Bereitstellung ändern.
+
+## <a name="use-agent-pools"></a>Verwenden von Agent-Pools
 Standardmäßig stellt **Marathon** jede neue Anwendung auf den *privaten* Agentknoten bereit. Sie müssen die Anwendung bei der Anwendungserstellung explizit auf dem *öffentlichen* Knoten bereitstellen. Geben Sie dazu auf der Registerkarte **Optional** für den Wert **Accepted Resource Roles** den Text **slave_public** ein. Dieser Prozess ist [hier](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) und in der [DC/OS](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/)-Dokumentation beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
+* Erhalten Sie weitere Informationen zum [Verwalten Ihrer DC/OS-Container](container-service-mesos-marathon-ui.md).
 
-Erfahren Sie, wie Sie [die von Azure bereitgestellte Firewall öffnen](container-service-enable-public-access.md) , um den Zugriff auf Ihre DC/OS-Container zu ermöglichen.
-
-
+* Erfahren Sie, wie Sie die von Azure bereitgestellte [Firewall öffnen](container-service-enable-public-access.md), um den Zugriff auf Ihre DC/OS-Container zu ermöglichen.
 
 
-<!--HONumber=Nov16_HO3-->
+
+
+<!--HONumber=Jan17_HO1-->
 
 

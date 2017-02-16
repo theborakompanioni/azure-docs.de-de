@@ -8,7 +8,7 @@ manager: jhubbard
 editor: 
 ms.assetid: 8d78da13-43fe-4447-92e0-0a41d0321fd4
 ms.service: sql-database
-ms.custom: migrate and move; how to
+ms.custom: migrate and move
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
@@ -16,13 +16,12 @@ ms.workload: data-management
 ms.date: 08/31/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4e1cf312cf8213cbeea84b4fb0ab605248800fcd
+ms.sourcegitcommit: 75bf523679c8d8ad6fbe4a8aa8a561d03008e59b
+ms.openlocfilehash: 211f416d05b0ca998cd71a78d091b8efa39f6a7b
 
 
 ---
 # <a name="import-a-bacpac-file-to-create-an-azure-sql-database-by-using-powershell"></a>Importieren einer BACPAC-Datei zum Erstellen einer Azure SQL-Datenbank mithilfe von PowerShell
-**Einzeldatenbank**
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-database-import.md)
@@ -51,7 +50,7 @@ Zum Importieren einer SQL-Datenbank benötigen Sie Folgendes:
 ## <a name="set-up-the-variables-for-your-environment"></a>Einrichten der Variablen für Ihre Umgebung
 Es gibt einige Variablen, bei denen Sie die Beispielwerte durch die speziellen Werte für Ihre Datenbank und Ihr Speicherkonto ersetzen müssen.
 
-Beim Servernamen muss es sich um einen Server handeln, der in dem im vorherigen Schritt ausgewählten Abonnement derzeit vorhanden ist. Es muss sich zudem um den Server handeln, auf dem Sie die Datenbank erstellen möchten. Das direkte Importieren einer Datenbank in einen elastischen Pool wird nicht unterstützt. Sie können jedoch Daten zuerst in eine Einzeldatenbank importieren und die Datenbank anschließend in einen Pool verschieben.
+Beim Servernamen muss es sich um einen Server handeln, der in dem im vorherigen Schritt ausgewählten Abonnement derzeit vorhanden ist. Es muss sich zudem um den Server handeln, auf dem Sie die Datenbank erstellen möchten. Das direkte Importieren einer Datenbank in einen elastischen Pool wird nicht unterstützt. Sie können jedoch Daten zuerst als Einzeldatenbank importieren und die Datenbank anschließend in einen Pool verschieben.
 
 Der Datenbankname ist der gewünschte Name für die neue Datenbank.
 
@@ -78,7 +77,7 @@ Wenn Sie das [Get-Credential](https://msdn.microsoft.com/library/azure/hh849815\
 ## <a name="import-the-database"></a>Importieren der Datenbank
 Mit diesem Befehl wird eine Anforderung zum Importieren der Datenbank an den Dienst gesendet. Je nach Größe Ihrer Datenbank kann es einige Zeit dauern, bis der Importvorgang abgeschlossen ist.
 
-    $importRequest = New-AzureRmSqlDatabaseImport –ResourceGroupName $ResourceGroupName –ServerName $ServerName –DatabaseName $DatabaseName –StorageKeytype $StorageKeyType –StorageKey $StorageKey -StorageUri $StorageUri –AdministratorLogin $credential.UserName –AdministratorLoginPassword $credential.Password –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
+    $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -StorageKeytype $StorageKeyType -StorageKey $StorageKey -StorageUri $StorageUri -AdministratorLogin $credential.UserName -AdministratorLoginPassword $credential.Password -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
 
 
 ## <a name="monitor-the-progress-of-the-operation"></a>Überwachen des Fortschritts des Vorgangs
@@ -100,7 +99,7 @@ Nach dem Ausführen von [New-AzureRmSqlDatabaseImport](https://msdn.microsoft.co
 
     $credential = Get-Credential
 
-    $importRequest = New-AzureRmSqlDatabaseImport –ResourceGroupName $ResourceGroupName –ServerName $ServerName –DatabaseName $DatabaseName –StorageKeytype $StorageKeyType –StorageKey $StorageKey -StorageUri $StorageUri –AdministratorLogin $credential.UserName –AdministratorLoginPassword $credential.Password –Edition Standard –ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
+    $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -StorageKeytype $StorageKeyType -StorageKey $StorageKey -StorageUri $StorageUri -AdministratorLogin $credential.UserName -AdministratorLoginPassword $credential.Password -Edition Standard -ServiceObjectiveName S0 -DatabaseMaxSizeBytes 50000
 
     Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink
 
@@ -112,6 +111,6 @@ Nach dem Ausführen von [New-AzureRmSqlDatabaseImport](https://msdn.microsoft.co
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

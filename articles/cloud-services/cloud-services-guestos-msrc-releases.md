@@ -4,7 +4,7 @@ description: "Liste der Updates für Azure-Gastbetriebssystemreleases"
 services: cloud-services
 documentationcenter: na
 author: raiye
-manager: markkie
+manager: timlt
 editor: 
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
@@ -12,16 +12,63 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/31/2016
+ms.date: 1/10/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: 8bc848f96ad1c5b6942692eb38646537b796ebbb
+ms.sourcegitcommit: e579c7fd4547a88c6356c77a220b5f9e1a07e542
+ms.openlocfilehash: deafae1c6f77a655d80ee7bafd220c5b624018bd
 
 
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="january-guest-os"></a>Gastbetriebssystem Januar
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| MS17-004 | [3216771] |Sicherheitsupdate für den Subsystemdienst für die lokale Sicherheitsautorität |2.59 |10. Januar 2017 |
+
+## <a name="december-guest-os"></a>Gastbetriebssystem Dezember
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| MS16-144 |[3204059] |Kumulatives Sicherheitsupdate für Internet Explorer |2.58, 3.46, 4.39 |13. Dezember 2016 |
+| MS16-145 |[3204062] |Kumulatives Sicherheitsupdate für Microsoft Edge |5.4 |13. Dezember 2016 |
+| MS16-146 |[3204066]   |Sicherheitsupdate für Microsoft-Grafikkomponente|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-147 |[3204063]   |Sicherheitsupdate für Microsoft Uniscribe|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-149 |[3205655]   |Sicherheitsupdate für Microsoft Windows|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-150 |[3205642]   |Sicherheitsupdate für sicheren Kernelmodus |5.4 |13. Dezember 2016 |
+| MS16-151 |[3205651]   |Sicherheitsupdate für Kernelmodustreiber|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-152 |[3199709]   |Sicherheitsupdate für Windows Kernel |5.4 |13. Dezember 2016 |
+| MS16-153 |[3207328] |Sicherheitsupdate für den Treiber für das gemeinsame Protokolldateisystem|2.58, 3.46, 4.39, 5.4 |13. Dezember 2016 |
+| MS16-155 |[3205640]   |Sicherheitsupdate für .NET Framework |5.4 |13. Dezember 2016 |
+| – |[3197868] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.58 |13. Dezember 2016 |
+| – |[3197877] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows Server 2012 |3,46 |13. Dezember 2016 |
+| N/V |[3197874] |November 2016: monatlicher Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.39 |13. Dezember 2016 |
+
+## <a name="november-guest-os"></a>Gastbetriebssystem November
+| Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| MS16-129 |[3199057] |Kumulatives Sicherheitsupdate für Microsoft Edge |5.3 |8. November 2016 |
+| MS16-130 |[3199172] |Sicherheitsupdate für Microsoft Windows |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-131 |[3199151]   |Sicherheitsupdate für die Microsoft Video-Steuerung |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-132 |[3199120] |Sicherheitsupdate für Microsoft-Komponente |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-134 |[3193706] |Sicherheitsupdate für den Treiber für das gemeinsame Protokolldateisystem |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-135 |[3199135] |Sicherheitsupdate für Kernelmodustreiber |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-137 |[3199173]   |Sicherheitsupdate für Windows-Authentifizierungsmethoden |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| MS16-138 |[3199647] |Sicherheitsupdate für Microsoft virtuelle Festplatte |5.3, 4.38, 3.45 |8. November 2016 |
+| MS16-139 |[3199720] |Sicherheitsupdate für Windows Kernel |2.57 |8. November 2016 |
+| MS16-140 |[3193479] |Sicherheitsupdate für Start-Manager |5.3, 4.38, 3.45 |8. November 2016 |
+| MS16-142 |[3198467] |Kumulatives Sicherheitsupdate für Internet Explorer |2.57, 4.38, 5.3 |8. November 2016 |
+| N/V |[3192321] |Türkei beendet Sommerzeitverwendung |5.3, 4.38, 3.45, 2.57 |8. November 2016 |
+| N/V |[3185330] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.57 |8. November 2016 |
+| N/V |[3192403] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows 7 SP1 und Windows Server 2008 R2 SP1 |2.57 |8. November 2016 |
+| N/V |[3177467] |Wartungsstapelupdate für Windows 7 SP1 und Windows Server 2008 R2 SP1: 20. September 2016 |2.57 |8. November 2016 |
+| – |[3185332] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows Server 2012 |3.45 |8. November 2016 |
+| N/V |[3192406] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows Server 2012 |3.45 |8. November 2016 |
+| N/V |[3185331] |Oktober 2016: monatliches Sicherheitsqualitätsrollup für Windows 8.1 und Windows Server 2012 R2 |4.38 |8. November 2016 |
+| N/V |[3192404] |Oktober 2016: Vorschau des monatlichen Qualitätsrollups für Windows 8.1 und Windows Server 2012 R2 |4.38 |8. November 2016 |
+| N/V |[3199986] |Wartungsstapelupdate für Windows 10 (Version 1607): 27. Oktober 2016 |5.3 |8. November 2016 |
+| N/V |[3197954] |Kumulatives Update für Windows 10 (Version 1607) und Windows Server 2016: 27. Oktober 2016 |5.3 |8. November 2016 |
 
 ## <a name="october-guest-os"></a>Gastbetriebssystem Oktober
 | Bulletin-ID | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -338,7 +385,7 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | MS15-006 |[3004365] |Sicherheitsanfälligkeit in Windows-Fehlerberichterstattung kann Umgehung der Sicherheitsfunktion ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-007 |[3014029] |Sicherheitsanfälligkeit in RADIUS-Implementierung des Netzwerkrichtlinienservers kann Denial-of-Service-Angriffe ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-008 |[3019215] |Sicherheitsanfälligkeit in Windows-Kernelmodustreibern kann Erhöhung der Berechtigungen ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
-| MS14 080 |[3008923] |Kumulatives Sicherheitsupdate für Internet Explorer |4.16, 3.23, 2.35 |19. Januar 2015 |
+| MS14&080; |[3008923] |Kumulatives Sicherheitsupdate für Internet Explorer |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-002 |[3020393] |Sicherheitsanfälligkeit im Windows-Telnetdienst kann Remotecodeausführung ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 | MS15-002 |[3020393] |Sicherheitsanfälligkeit im Windows-Telnetdienst kann Remotecodeausführung ermöglichen |4.16, 3.23, 2.35 |19. Januar 2015 |
 
@@ -356,6 +403,44 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
+
+[3216771]: https://technet.microsoft.com/library/security/MS17-004
+
+[3204059]: http://support.microsoft.com/kb/3204059 
+[3204062]: http://support.microsoft.com/kb/3204062 
+[3204066]: http://support.microsoft.com/kb/3204066 
+[3204063]: http://support.microsoft.com/kb/3204063 
+[3205655]: http://support.microsoft.com/kb/3205655 
+[3205642]: http://support.microsoft.com/kb/3205642 
+[3205651]: http://support.microsoft.com/kb/3205651 
+[3199709]: http://support.microsoft.com/kb/3199709 
+[3207328]: http://support.microsoft.com/kb/3207328 
+[3205640]: http://support.microsoft.com/kb/3205640 
+[3197868]: http://support.microsoft.com/kb/3197868 
+[3197877]: http://support.microsoft.com/kb/3197877 
+[3197874]: http://support.microsoft.com/kb/3197874 
+
+[3199057]: http://support.microsoft.com/kb/3199057 
+[3199172]: http://support.microsoft.com/kb/3199172 
+[3199151]: http://support.microsoft.com/kb/3199151 
+[3193706]: http://support.microsoft.com/kb/3193706 
+[3199120]: http://support.microsoft.com/kb/3199120 
+[3199135]: http://support.microsoft.com/kb/3199135 
+[3199173]: http://support.microsoft.com/kb/3199173 
+[3199647]: http://support.microsoft.com/kb/3199647 
+[3199720]: http://support.microsoft.com/kb/3199720 
+[3193479]: http://support.microsoft.com/kb/3193479 
+[3198467]: http://support.microsoft.com/kb/3198467 
+[3192321]: http://support.microsoft.com/kb/3192321 
+[3185330]: http://support.microsoft.com/kb/3185330 
+[3192403]: http://support.microsoft.com/kb/3192403 
+[3177467]: http://support.microsoft.com/kb/3177467 
+[3185332]: http://support.microsoft.com/kb/3185332 
+[3192406]: http://support.microsoft.com/kb/3192406 
+[3185331]: http://support.microsoft.com/kb/3185331 
+[3192404]: http://support.microsoft.com/kb/3192404 
+[3199986]: http://support.microsoft.com/kb/3199986 
+[3197954]: http://support.microsoft.com/kb/3197954  
 
 [3192887]: http://support.microsoft.com/kb/3192887
 [3192884]: http://support.microsoft.com/kb/3192884
@@ -636,6 +721,6 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

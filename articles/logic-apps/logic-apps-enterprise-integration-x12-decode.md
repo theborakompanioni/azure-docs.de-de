@@ -1,6 +1,6 @@
 ---
-title: Informationen zum Enterprise Integration Pack-Connector zum Decodieren von X12-Nachrichten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden
+title: Decodieren von X12-Nachrichten in Azure Logic Apps | Microsoft-Dokumentation
+description: Verwendung des im Enterprise Integration Pack enthaltenen X12-Decoders mit Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -12,31 +12,31 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: b6ce911b8435f3d6ed1c12c78ba81abe180346a2
+ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
+ms.openlocfilehash: 2fa435d5a52ee7a9c18926912a7212ee862b3832
 
 
 ---
-# <a name="get-started-with-decode-x12-message"></a>Erste Schritte mit der Decodierung von X12-Nachrichten
+# <a name="get-started-with-decode-x12-messages"></a>Erste Schritte mit der Decodierung von X12-Nachrichten
 Überprüfung von EDI- und partnerspezifischen Eigenschaften, Generieren eines XML-Dokuments für jeden Transaktionssatz und einer Bestätigung für die verarbeitete Transaktion
 
-## <a name="create-the-connection"></a>Erstellen der Verbindung
-### <a name="prerequisites"></a>Voraussetzungen
+## <a name="prereqs"></a>Voraussetzungen
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * Für die Verwendung des Connectors zur Decodierung von X12-Nachrichten ist ein Integrationskonto erforderlich. Hier finden Sie Details zum Erstellen eines [Integrationskontos](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) sowie zu [Partnern](../logic-apps/logic-apps-enterprise-integration-partners.md) und zur [X12-Vereinbarung](../logic-apps/logic-apps-enterprise-integration-x12.md).
 
-### <a name="connect-to-decode-x12-message-using-the-following-steps"></a>Stellen Sie mithilfe der folgenden Schritte eine Verbindung mit der Decodierung von X12-Nachrichten her:
+## <a name="decode-x12-messages"></a>Decodieren von X12-Nachrichten
+
 1. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md) finden Sie ein Beispiel.
-2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (beispielsweise einen Anforderungstrigger).  Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu.  Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „x12“ in das Suchfeld ein.  Wählen Sie „X12 – Decode X12 Message“ (X12 – X12-Nachricht decodieren) aus.
+2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (beispielsweise einen Anforderungstrigger).  Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu.  Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „x12“ in das Suchfeld ein.  Wählen Sie „X12 – X12-Nachricht decodieren“ aus.
    
     ![Suchen von x12](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
-3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto erstellt haben, werden Sie zur Eingabe der Verbindungsdetails aufgefordert:
+3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto hergestellt haben, werden Sie zur Eingabe der Verbindungsdetails aufgefordert:
    
     ![Integrationskontoverbindung](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)     
-4. Geben Sie die Details des Integrationskontos ein.  Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
+4. Geben Sie die Details des Integrationskontos ein.  Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden:
    
    | Eigenschaft | Details |
    | --- | --- |
@@ -46,15 +46,18 @@ ms.openlocfilehash: b6ce911b8435f3d6ed1c12c78ba81abe180346a2
     Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
    
     ![Integrationskontoverbindung erstellt](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
-5. Wählen Sie **Erstellen**
-6. Beachten Sie, dass die Verbindung erstellt wurde.
+5. Klicken Sie auf **Erstellen**.
+6. Beachten Sie, dass die Verbindung hergestellt wurde:
    
     ![Verbindungsdetails des Integrationskontos](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 7. Wählen Sie die zu decodierende X12-Flatfile-Nachricht aus.
    
     ![Pflichtfelder ausfüllen](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
-## <a name="x12-decode-does-following"></a>Die X12-Decodierung führt die folgenden Schritte aus:
+## <a name="x12-decode-details"></a>Details des Decodierens von X12-Nachrichten
+
+Der Connector zur Decodierung von X12-Nachrichten führt Folgendes aus:
+
 * Überprüfen des Umschlags anhand der Handelspartnervereinbarung
 * Generieren eines XML-Dokuments für jeden Transaktionssatz
 * Überprüfen von EDI- und partnerspezifischen Eigenschaften
@@ -82,6 +85,6 @@ ms.openlocfilehash: b6ce911b8435f3d6ed1c12c78ba81abe180346a2
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

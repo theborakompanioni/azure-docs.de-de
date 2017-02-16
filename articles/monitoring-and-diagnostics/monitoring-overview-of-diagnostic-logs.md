@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 12/20/2016
 ms.author: johnkem; magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 61a54b3cb170b7961a4900d2c353bea48ae83d64
+ms.sourcegitcommit: 142aa206431d05505c7990c5e5b07b3766fb0a37
+ms.openlocfilehash: 0b5458c64226007b058bcd185b3880f72cf9613c
 
 
 ---
@@ -28,16 +28,18 @@ ms.openlocfilehash: 61a54b3cb170b7961a4900d2c353bea48ae83d64
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle
 Im Anschluss sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
-* Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem **Speicherkonto** gespeichert werden. Mithilfe der **Diagnoseeinstellungen**können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
+* Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [**Speicherkonto**](monitoring-archive-diagnostic-logs.md) gespeichert werden. Mithilfe der **Diagnoseeinstellungen**können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 * [Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md) streamen.
 * Diagnoseprotokolle können mit [OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
+
+Das Speicherkonto oder der Event Hub-Namespace muss sich nicht unter demselben Abonnement befinden, wie die Ressource, die Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 
 ## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
 Diagnoseprotokolle für computefremde Ressourcen werden mithilfe von Diagnoseeinstellungen konfiguriert. **Diagnoseeinstellungen** für ein Ressourcensteuerelement können Sie Folgendes festlegen:
 
 * Wohin Diagnoseprotokolle gesendet werden sollen (Speicherkonto, Event Hubs und/oder OMS Log Analytics)
 * Welche Protokollkategorien gesendet werden sollen
-* Wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Andernfalls kann dieser Wert zwischen 1 und 2147483647 liegen. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert.
+* Wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Andernfalls kann dieser Wert zwischen 1 und 2147483647 liegen. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
 Diese Einstellungen können für eine Ressource ganz einfach über das Blatt „Diagnose“ im Azure-Portal, mithilfe von Azure PowerShell oder CLI-Befehlen oder über die [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931943.aspx) konfiguriert werden.
 
@@ -91,14 +93,13 @@ Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden F
 
 Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
 
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [log analytics workspace id] -Enabled $true
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 
-> [!NOTE]
-> Der WorkspaceId-Parameter ist in der Oktober-Version nicht verfügbar. Er wird in der November-Version verfügbar sein.
-> 
-> 
+Sie können die Ressourcen-ID mit folgendem Befehl aus Ihrem Log Analytics-Arbeitsbereich abrufen:
 
-Ihre Log Analytics-Arbeitsbereichs-ID erhalten Sie im Azure-Portal.
+```powershell
+(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+```
 
 Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
 
@@ -119,14 +120,7 @@ Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden F
 
 Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
 
-    azure insights diagnostic set --resourceId <resourceId> --workspaceId <workspaceId> --enabled true
-
-> [!NOTE]
-> Der workspaceId-Parameter ist in der Oktober-Version nicht verfügbar. Er wird in der November-Version verfügbar sein.
-> 
-> 
-
-Ihre Log Analytics-Arbeitsbereichs-ID erhalten Sie im Azure-Portal.
+    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
 
 Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.
 
@@ -160,7 +154,7 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| Software Load Balancer |[Protokollanalysen für den Azure-Lastenausgleich (Vorschau)](../load-balancer/load-balancer-monitor-log.md) |
+| Lastenausgleichsmodul |[Protokollanalysen für den Azure-Lastenausgleich (Vorschau)](../load-balancer/load-balancer-monitor-log.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Schlüsseltresor |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
@@ -175,41 +169,42 @@ Das Schema für Diagnoseprotokolle variiert abhängig von der Ressource und der 
 | Stream Analytics |Kein Schema verfügbar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
-| Ressourcentyp | Kategorie | Anzeigename der Kategorie |
-| --- | --- | --- |
-| Microsoft.Automation/automationAccounts |JobLogs |Auftragsprotokolle |
-| Microsoft.Automation/automationAccounts |JobStreams |Auftragsdatenströme |
-| Microsoft.Batch/batchAccounts |ServiceLog |Dienstprotokolle |
-| Microsoft.DataLakeAnalytics/accounts |Audit |Überwachungsprotokolle |
-| Microsoft.DataLakeAnalytics/accounts |Requests |Anforderungsprotokolle |
-| Microsoft.DataLakeStore/accounts |Audit |Überwachungsprotokolle |
-| Microsoft.DataLakeStore/accounts |Requests |Anforderungsprotokolle |
-| Microsoft.EventHub/namespaces |ArchiveLogs |Archivprotokolle |
-| Microsoft.EventHub/namespaces |OperationalLogs |Betriebsprotokolle |
-| Microsoft.KeyVault/vaults |AuditEvent |Überwachungsprotokolle |
-| Microsoft.Logic/workflows |WorkflowRuntime |Diagnoseereignisse zur Workflowlaufzeit |
-| Microsoft.Network/networksecuritygroups |NetworkSecurityGroupEvent |Ereignis der Netzwerksicherheitsgruppe |
-| Microsoft.Network/networksecuritygroups |NetworkSecurityGroupRuleCounter |Regelzähler der Netzwerksicherheitsgruppe |
-| Microsoft.Network/networksecuritygroups |NetworkSecurityGroupFlowEvent |Regelflussereignis der Netzwerksicherheitsgruppe |
-| Microsoft.Network/loadBalancers |LoadBalancerAlertEvent |Load Balancer-Warnereignisse |
-| Microsoft.Network/loadBalancers |LoadBalancerProbeHealthStatus |Integritätsstatus der Load Balancer-Stichprobe |
-| Microsoft.Network/applicationGateways |ApplicationGatewayAccessLog |Application Gateway-Zugriffsprotokoll |
-| Microsoft.Network/applicationGateways |ApplicationGatewayPerformanceLog |Application Gateway-Leistungsprotokoll |
-| Microsoft.Network/applicationGateways |ApplicationGatewayFirewallLog |Application Gateway-Firewallprotokoll |
-| Microsoft.Search/searchServices |OperationLogs |Vorgangsprotokolle |
-| Microsoft.ServerManagement/nodes |RequestLogs |Anforderungsprotokolle |
-| Microsoft.ServiceBus/namespaces |OperationalLogs |Betriebsprotokolle |
-| Microsoft.StreamAnalytics/streamingjobs |Ausführung |Ausführung |
-| Microsoft.StreamAnalytics/streamingjobs |Erstellen |Erstellen |
+|Ressourcentyp|Kategorie|Anzeigename der Kategorie|
+|---|---|---|
+|Microsoft.Automation/automationAccounts|JobLogs|Auftragsprotokolle|
+|Microsoft.Automation/automationAccounts|JobStreams|Auftragsdatenströme|
+|Microsoft.Batch/batchAccounts|ServiceLog|Dienstprotokolle|
+|Microsoft.DataLakeAnalytics/accounts|Audit|Überwachungsprotokolle|
+|Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
+|Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.EventHub/namespaces|ArchiveLogs|Archivprotokolle|
+|Microsoft.EventHub/namespaces|OperationalLogs|Betriebsprotokolle|
+|Microsoft.KeyVault/vaults|AuditEvent|Überwachungsprotokolle|
+|Microsoft.Logic/workflows|WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|
+|Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|
+|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
+|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
+|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
+|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
+|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
+|Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
+|Microsoft.ServerManagement/nodes|RequestLogs|Anforderungsprotokolle|
+|Microsoft.ServiceBus/namespaces|OperationalLogs|Betriebsprotokolle|
+|Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
+|Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Streamen von Diagnoseprotokollen an **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Ändern der Diagnoseeinstellungen mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [Analysieren der Protokolle mit OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
+* [Analysieren der Protokolle mit OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

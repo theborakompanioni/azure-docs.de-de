@@ -1,6 +1,6 @@
 ---
-title: "Planen der Kapazität für den Schutz virtueller Computer und physischer Server in Azure Site Recovery | Microsoft Docs"
-description: "Planen der Replikationskapazität für Azure Site Recovery"
+title: "Schätzen der Replikationskapazität in Azure | Microsoft-Dokumentation"
+description: "Anhand dieses Artikel können Sie die Kapazität bei der Replikation mit Azure Site Recovery schätzen."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/15/2016
+ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 8fca992488746bc50a7342644de62b862a9aaea7
-ms.openlocfilehash: a427969378d2454246217d48bafe6f360e93df0f
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: 7ec48138cf18cf50dc34f28e177c8d774034090b
 
 
 ---
@@ -65,7 +65,7 @@ Sie können das Tool in einem von zwei Modi ausführen:
    * **Anzahl erforderlicher Blobdatenträger** : Gibt die Anzahl von Datenträgern an, die im Azure-Speicher erstellt werden.
    * **Anzahl erforderlicher Storage Premium-Konten** : Gibt die Gesamtzahl von Storage Premium-Konten an, die zum Schützen der VMs benötigt werden. Beachten Sie, dass für eine Quell-VM mit hohem IOPS-Wert (höher als 20.000) ein Premium-Speicherkonto erforderlich ist. Ein Premium-Speicherkonto kann bis zu 80.000 IOPS leisten.
    * **Gesamt-IOPS für Storage Premium** : Wird basierend auf der Einheitengröße 256K IOPS für alle Storage Premium-Konten berechnet.  Für den Quick Planner wird die Zahl basierend auf allen VM-Quelldatenträgern und der täglichen Änderungsrate berechnet. Für den Detailed Planner wird die Zahl basierend auf der Gesamtzahl der VMs, die Azure-Premium-VMs (DS- und GS-Reihe) zugeordnet sind, und der Datenänderungsrate auf diesen VMs berechnet.
-   * **Number of configuration servers required** (Anzahl der erforderlichen Konfigurationsserver) zeigt, wie viele Konfigurationsserver für die Bereitstellung erforderlich sind. 
+   * **Number of configuration servers required** (Anzahl der erforderlichen Konfigurationsserver) zeigt, wie viele Konfigurationsserver für die Bereitstellung erforderlich sind.
    * **Number of additional process servers required** (Anzahl der erforderlichen zusätzlichen Prozessserver) zeigt, ob weitere Prozessserver außer dem Prozessserver erforderlich sind, der standardmäßig auf dem Konfigurationsserver ausgeführt wird.
    * **100 % zusätzlicher Speicher für die Quelle** zeigt an, ob am Quellspeicherort zusätzlicher Speicher erforderlich ist.
 
@@ -86,7 +86,7 @@ Sie können das Tool in einem von zwei Modi ausführen:
    * Geben Sie unter **Number of disks attached** (Anzahl der angefügten Datenträger) die Gesamtzahl der Datenträger eines Quellservers an.
    * Geben Sie unter **Disk capacity utilization** (Auslastung der Datenträgerkapazität) die durchschnittliche Auslastung an.
    * Geben Sie unter **Daily change rate (%)** (Tägliche Änderungsrate (%)) die tägliche Änderungsrate eines Quellservers an.
-   * Geben Sie unter **Mapping Azure size** (Zuordnung der Azure-Größe) die Größe der Azure-VM ein, die Sie zuordnen möchten. Wenn Sie keine manuelle Eingabe durchführen möchten, klicken Sie auf **Compute IaaS VMs** (IaaS-VMs berechnen).Wenn Sie eine manuelle Einstellung eingeben und dann auf „Compute IaaS VMs“ klicken, könnte die manuelle Einstellung überschrieben werden, da der Berechnungsprozesses automatisch die beste Übereinstimmung mit der Azure-VM-Größe erkennt.
+   * Geben Sie unter **Mapping Azure size** (Zuordnung der Azure-Größe) die Größe der Azure-VM ein, die Sie zuordnen möchten. Wenn Sie keine manuelle Eingabe durchführen möchten, klicken Sie auf **IaaS-VMs berechnen**. Wenn Sie eine manuelle Einstellung eingeben und dann auf „IaaS-VMs berechnen“ klicken, könnte die manuelle Einstellung überschrieben werden, da der Berechnungsprozesses automatisch die beste Übereinstimmung mit der Azure-VM-Größe erkennt.
 
    ![Workload-Qualifikation](./media/site-recovery-capacity-planner/workload-qualification.png)
 4. Wenn Sie auf **IaaS-VMs berechnen** klicken, wird Folgendes durchgeführt:
@@ -117,7 +117,7 @@ Beispielsweise berechnet das Tool für sechs VMs mit den in der Tabelle angezeig
 
     > [!NOTE]
     > Der IOPS-Wert für Standard- und Premium-Speicher wird auf VM-Ebene und nicht auf Datenträgerebene berechnet. Ein standardmäßiger virtueller Computer kann bis zu 500 IOPS pro Datenträger verarbeiten. Wenn der IOPS-Wert für einen Datenträger mehr als 500 beträgt, benötigen Sie einen Premium-Speicher. Wenn der IOPS-Wert jedoch für einen Datenträger über 500 liegt, aber der IOPS-Wert für alle VM-Datenträger innerhalb der standardmäßigen Unterstützungsgrenzen (VM-Größe, Anzahl der Datenträger, Anzahl der Adapter, CPU, Arbeitsspeicher) für Azure-VMs liegt, wählt der Planer statt der DS- oder GS-Reihe eine Standard-VM aus. Sie müssen die Zuordnung der Azure-Größenzelle manuell mit einer geeigneten VM aus der DS- oder GS-Reihe aktualisieren.
-   
+
 
 1. Klicken Sie nach dem Einrichten aller Details auf **Submit data to the planner tool** (Daten an das Planungstool senden), um den **Capacity Planner** zu öffnen. Die Workloads sind hervorgehoben, um anzuzeigen, ob sie für den Schutz geeignet sind oder nicht.
 
@@ -129,6 +129,6 @@ Beispielsweise berechnet das Tool für sechs VMs mit den in der Tabelle angezeig
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

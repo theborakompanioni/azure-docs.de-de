@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen der App in Azure App Service
+title: Bereitstellen der App in Azure App Service | Microsoft Docs
 description: "Erfahren Sie, wie Sie Ihre App für Azure App Service bereitstellen."
 services: app-service
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 01/05/2017
 ms.author: cephalin;dariac
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1473f805bdb87a6c5e85174b1c7a91b67ca446b2
+ms.sourcegitcommit: 283b1cfda82b4f96ad5148c522a4c9833cb4c381
+ms.openlocfilehash: 4b3b96e9c5d7a4ff99c803aa356dcb5ad6997978
 
 
 ---
@@ -26,10 +26,10 @@ Dieser Artikel hilft Ihnen beim Ermitteln der besten Option für die Bereitstell
 ## <a name="a-nameoverviewaazure-app-service-deployment-overview"></a><a name="overview"></a>Übersicht über die Azure App Service-Bereitstellung
 Azure App Service verwaltet das Anwendungsframework für Sie (ASP.NET, PHP, Node.js, usw). Einige Frameworks sind standardmäßig aktiviert, während für andere, z. B. Java und Python, unter Umständen eine einfache Konfiguration durch das Setzen eines Häkchens erforderlich ist, um sie zu aktivieren. Außerdem können Sie Ihr Anwendungsframework anpassen, z. B. die PHP-Version oder die Bitanzahl der Laufzeit. Weitere Informationen finden Sie unter [Konfigurieren der App in Azure App Service](web-sites-configure.md).
 
-Da Sie sich nicht um den Webserver oder das Anwendungsframework kümmern müssen, geht es bei der Bereitstellung Ihrer App für App Service nur darum, Ihren Code sowie Ihre Binärdateien, Inhaltsdateien und die entsprechenden Verzeichnisstrukturen im Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs im Verzeichnis **/site/wwwroot/App_Data/Jobs/**) bereitzustellen. App Service unterstützt die folgenden Bereitstellungsprozesse: 
+Da Sie sich nicht um den Webserver oder das Anwendungsframework kümmern müssen, geht es bei der Bereitstellung Ihrer App für App Service nur darum, Ihren Code sowie Ihre Binärdateien, Inhaltsdateien und die entsprechenden Verzeichnisstrukturen im Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs im Verzeichnis **/site/wwwroot/App_Data/Jobs/**) bereitzustellen. App Service unterstützt drei unterschiedliche Bereitstellungsprozesse. Alle Bereitstellungsmethoden in diesem Artikel verwenden eines der folgenden Verfahren: 
 
 * [FTP oder FTPS:](https://en.wikipedia.org/wiki/File_Transfer_Protocol) Verwenden Sie das gewünschte FTP- oder FTPS-fähige Tool, um die Dateien nach Azure zu verschieben – von [FileZilla](https://filezilla-project.org) bis hin zu IDEs mit vollem Funktionsumfang wie [NetBeans](https://netbeans.org). Genau genommen handelt es sich hierbei um das Hochladen von Dateien. Von App Service werden keine zusätzlichen Dienste bereitgestellt, wie Versionskontrolle, Dateistrukturverwaltung usw. 
-* [Kudu (Git/Mercurial oder OneDrive/Dropbox):](https://github.com/projectkudu/kudu/wiki/Deployment) Verwenden Sie das [Bereitstellungsmodul](https://github.com/projectkudu/kudu/wiki) in App Service. Sie können Ihren Code direkt aus einem Repository an Kudu übertragen. Kudu stellt außerdem weitere Dienste bereit, wenn Code übertragen wird, z.B. Versionskontrolle, Paketwiederherstellung, MSBuild und [Webhooks](https://github.com/projectkudu/kudu/wiki/Web-hooks) für die kontinuierliche Bereitstellung und andere Automatisierungsaufgaben. Das Kudu-Bereitstellungsmodul unterstützt drei verschiedene Arten von Bereitstellungsquellen:   
+* [Kudu (Git/Mercurial oder OneDrive/Dropbox):](https://github.com/projectkudu/kudu/wiki/Deployment) Kudu ist das [Bereitstellungsmodul](https://github.com/projectkudu/kudu/wiki) in App Service. Sie können Ihren Code direkt aus einem Repository an Kudu übertragen. Kudu stellt außerdem weitere Dienste bereit, wenn Code übertragen wird, z.B. Versionskontrolle, Paketwiederherstellung, MSBuild und [Webhooks](https://github.com/projectkudu/kudu/wiki/Web-hooks) für die kontinuierliche Bereitstellung und andere Automatisierungsaufgaben. Das Kudu-Bereitstellungsmodul unterstützt drei verschiedene Arten von Bereitstellungsquellen:   
   
   * Inhaltssynchronisierung aus OneDrive und Dropbox   
   * Repositorybasierte kontinuierliche Bereitstellung mit automatischer Synchronisierung aus GitHub, Bitbucket und Visual Studio Team Services  
@@ -39,11 +39,11 @@ Da Sie sich nicht um den Webserver oder das Anwendungsframework kümmern müssen
 Gängige Webentwicklungstools unterstützen einen oder mehrere dieser Bereitstellungsprozesse. Das von Ihnen gewählte Tool bestimmt zwar die Bereitstellungsprozesse, die Sie nutzen können, aber die eigentliche verfügbare DevOps-Funktionalität hängt von der Kombination aus Bereitstellungsprozess und den von Ihnen gewählten speziellen Tools ab. Wenn Sie den Web Deploy-Vorgang beispielsweise über [Visual Studio mit Azure SDK](#vspros)durchführen, können Sie die Paketwiederherstellungs- und MSBuild-Automatisierung in Visual Studio nutzen, auch wenn eine Automatisierung über Kudu nicht möglich ist. 
 
 > [!NOTE]
-> Diese Bereitstellungsprozesse umfassen nicht die eigentliche [Bereitstellung der Azure-Ressourcen](../resource-group-template-deploy-portal.md), die für Ihre App ggf. erforderlich sind. In den meisten verlinkten Gewusst-wie-Artikeln wird aber ausführlich gezeigt, wie Sie die App UND den Code dafür bereitstellen. Zusätzliche Optionen für die Bereitstellung von Azure-Ressourcen finden Sie auch im Abschnitt [Automatisieren der Bereitstellung mit Befehlszeilentools](#automate).
+> Diese Bereitstellungsprozesse umfassen nicht die eigentliche [Bereitstellung der Azure-Ressourcen](../azure-resource-manager/resource-group-template-deploy-portal.md), die für Ihre App ggf. erforderlich sind. In den meisten verlinkten Gewusst-wie-Artikeln wird aber ausführlich gezeigt, wie Sie die App UND den Code dafür bereitstellen. Zusätzliche Optionen für die Bereitstellung von Azure-Ressourcen finden Sie auch im Abschnitt [Automatisieren der Bereitstellung mit Befehlszeilentools](#automate).
 > 
 > 
 
-## <a name="a-nameftpadeploy-via-ftp-by-copying-files-to-azure-manually"></a><a name="ftp"></a>Bereitstellen über FTP durch manuelles Kopieren von Dateien nach Azure
+## <a name="a-nameftpadeploy-manually-by-uploading-files-with-ftp"></a><a name="ftp"></a>Manuelles Bereitstellen durch Hochladen von Dateien über FTP
 Wenn Sie es gewohnt sind, Ihre Webinhalte manuell auf einen Webserver zu kopieren, können Sie Dateien mithilfe eines [FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol)-Tools wie Windows-Explorer oder [FileZilla](https://filezilla-project.org/) kopieren.
 
 Vorteile des manuellen Kopierens von Dateien:
@@ -59,20 +59,10 @@ Nachteile des manuellen Kopierens von Dateien:
 * Es gibt keinen integrierten Bereitstellungsverlauf zur Behandlung von Problemen bei der Bereitstellung.
 * Die Bereitstellung kann lange dauern, da viele FTP-Tools keine Differenzbereitstellung (diff-only) ermöglichen, es werden einfach alle Dateien kopiert.  
 
-### <a name="a-namehowtoftpahow-to-deploy-by-copying-files-to-azure-manually"></a><a name="howtoftp"></a>Bereitstellen durch manuelles Kopieren von Dateien nach Azure
-Das Kopieren von Dateien nach Azure umfasst einige einfache Schritte:
+### <a name="a-namehowtoftpahow-to-upload-files-with-ftp"></a><a name="howtoftp"></a>Hochladen von Dateien mit FTP
+Das [Azure-Portal](https://portal.azure.com) stellt alle Informationen bereit, die Sie zum Herstellen von Verbindungen mit Ihren App-Verzeichnissen über FTP oder FTPS benötigen.
 
-1. Es wird vorausgesetzt, dass Sie die Anmeldeinformationen für die Bereitstellung eingerichtet haben. Rufen Sie die FTP-Verbindungsinformationen wie folgt ab: Wählen Sie **Einstellungen** > **Eigenschaften**, und kopieren Sie die Werte unter **FTP/Bereitstellungsbenutzer**, **FTP-Hostname** und **FTPS-Hostname**. Kopieren Sie den Benutzerwert für **FTP/Bereitstellungsbenutzer**, wie im Azure-Portal angezeigt, einschließlich des App-Namens, um den richtigen Kontext für den FTP-Server bereitzustellen.
-   
-    ![FTP-Verbindungsinformationen](./media/web-sites-deploy/FTP-Connection-Info.PNG)
-    ![Anmeldeinformationen für FTP-Bereitstellung](./media/web-sites-deploy/FTP-UID-PWD.PNG)
-2. Verwenden Sie im FTP-Client die gesammelten Verbindungsinformationen, um eine Verbindung mit Ihrer App herzustellen.
-3. Kopieren Sie Ihre Dateien und die entsprechende Verzeichnisstruktur in das Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs in das Verzeichnis **/site/wwwroot/App_Data/Jobs/**).
-4. Navigieren Sie zur URL Ihrer App, um sicherzustellen, dass die Anwendung richtig ausgeführt wird. 
-
-Weitere Informationen finden Sie in der folgenden Ressource:
-
-* [Erstellen einer PHP-MySQL-Web-App und Bereitstellen über FTP](web-sites-php-mysql-deploy-use-ftp.md).
+* [Bereitstellen der App in Azure App Service mithilfe von FTP](app-service-deploy-ftp.md)
 
 ## <a name="a-namedropboxadeploy-by-syncing-with-a-cloud-folder"></a><a name="dropbox"></a>Bereitstellen per Synchronisierung mit einem Cloudordner
 Eine gute Alternative zum [manuellen Kopieren von Dateien](#ftp) ist das Synchronisieren von Dateien und Ordnern mit App Service über einen Cloudspeicherdienst wie OneDrive und Dropbox. Bei der Synchronisierung mit einem Cloudordner wird der Kudu-Prozess für die Bereitstellung verwendet (siehe [Übersicht über die Bereitstellungsprozesse](#overview)).
@@ -111,6 +101,8 @@ Nachteile der Bereitstellung über einen cloudbasierten Quellcodeverwaltungsdien
 Im [Azure-Portal](https://portal.azure.com)können Sie die kontinuierliche Bereitstellung aus GitHub, Bitbucket und Visual Studio Team Services konfigurieren.
 
 * [Kontinuierliche Bereitstellung in Azure App Service](app-service-continuous-deployment.md) 
+
+Informationen zum manuellen Konfigurieren der kontinuierlichen Bereitstellung in einem Cloudrepository, das nicht im Azure-Portal aufgeführt ist (etwa [GitLab](https://gitlab.com/)), finden Sie unter [Setting up continuous deployment using manual steps](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps) (Manuelles Einrichten der kontinuierlichen Bereitstellung).
 
 ## <a name="a-namelocalgitdeploymentadeploy-from-local-git"></a><a name="localgitdeployment"></a>Bereitstellen aus lokalem Git
 Wenn Ihr Entwicklungsteam einen lokalen, auf Git basierenden Quellcodeverwaltungsdienst verwendet, können Sie diesen als Bereitstellungsquelle für App Service verwenden. 
@@ -168,58 +160,21 @@ Microsoft ermöglicht das Bereitstellen von Web-Apps in Azure direkt aus Eclipse
 * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ](app-service-web-intellij-create-hello-world-web-app.md). In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Toolkit für IntelliJ eine „Hello World“-Web-App für Azure erstellen und bereitstellen.
 
 ## <a name="a-nameautomateaautomate-deployment-by-using-command-line-tools"></a><a name="automate"></a>Automatisieren der Bereitstellung mit Befehlszeilentools
-* [Automatisieren der Bereitstellung mit MSBuild](#msbuild)
-* [Kopieren von Dateien mit FTP-Tools und Skripts](#ftp)
-* [Automatisieren der Bereitstellung mit Windows PowerShell](#powershell)
-* [Automatisieren der Bereitstellung mit .NET Verwaltungs-API](#api)
-* [Bereitstellen über die Azure-Befehlszeilenschnittstelle (Azure-CLI)](#cli)
-* [Bereitstellen über die Web Deploy-Befehlszeile](#webdeploy)
-* [Verwenden von FTP-Stapelskripts](http://support.microsoft.com/kb/96269)
+Wenn Sie ein Befehlszeilenterminal als Entwicklungsumgebung bevorzugen, können Sie mithilfe von Befehlszeilentools Skripts für die Bereitstellungsaufgaben Ihre App Service-App schreiben. 
 
-Eine weitere Möglichkeit der Bereitstellung ist die Nutzung eines cloudbasierten Diensts, z.B. [Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy). Weitere Informationen finden Sie unter [Bereitstellen von ASP.NET-Anwendungen für Azure-Websites](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites).
+Vorteile der Bereitstellung mithilfe von Befehlszeilentools:
 
-### <a name="a-namemsbuildaautomate-deployment-with-msbuild"></a><a name="msbuild"></a>Automatisieren der Bereitstellung mit MSBuild
-Wenn Sie die [Visual Studio IDE](#vs) für die Entwicklung verwenden, können Sie [MSBuild](http://msbuildbook.com/) für die Automatisierung sämtlicher Aufgaben nutzen, die Sie in Ihrer IDE ausführen können. Sie können MSBuild für die Verwendung von [Web Deploy](#webdeploy) oder [FTP/FTPS](#ftp) zum Kopieren der Dateien konfigurieren. Mit Web Deploy können auch viele andere Aufgaben, die mit der Bereitstellung in Zusammenhang stehen, automatisiert werden, wie beispielsweise das Bereitstellen von Datenbanken.
+* Skriptgestützte Bereitstellungsszenarien
+* Kombination der Bereitstellung von Azure-Ressourcen mit der von Code
+* Integration der Azure-Bereitstellung in vorhandene Skripts zur Continous Integration
 
-Weitere Informationen zur Befehlszeilen-Bereitstellung mithilfe von MSBuild finden Sie in den folgenden Ressourcen:
+Nachteile der Bereitstellung mithilfe von Befehlszeilentools:
 
-* [ASP.NET-Webbereitstellung mithilfe von Visual Studio: Befehlszeilenbereitstellung](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment). Der zehnte Teil in einer Lernprogrammserie, in dem die Bereitstellung in Azure mithilfe von Visual Studio erläutert wird. In diesem Lernprogramm wird gezeigt, wie die Befehlszeile für die Bereitstellung verwendet wird, nachdem Veröffentlichungsprofile in Visual Studio eingerichtet wurden.
-* [Inside the Microsoft Build Engine: Using MSBuild and Team Foundation Build (In der Microsoft Build Engine: Verwenden von MSBuild und Team Foundation Build,  in englischer Sprache)](http://msbuildbook.com/). Buch, in dem Kapitel zur Verwendung von MSBuild für die Bereitstellung enthalten sind.
+* Nicht geeignet für Entwickler, die eine GUI bevorzugen
 
-### <a name="a-namepowershellaautomate-deployment-with-windows-powershell"></a><a name="powershell"></a>Automatisieren der Bereitstellung mit Windows PowerShell
-Sie können MSBuild- oder FTP-Bereitstellungsfunktionen mithilfe von [Windows PowerShell](http://msdn.microsoft.com/library/dd835506.aspx)ausführen. Wenn dies der Fall ist, können Sie auch eine Sammlung von Windows PowerShell-Cmdlets nutzen, mit denen die Azure-REST-Verwaltungs-API leicht aufgerufen werden kann.
+### <a name="a-nameautomatehowahow-to-automate-deployment-with-command-line-tools"></a><a name="automatehow"></a>Automatisieren der Bereitstellung mithilfe von Befehlszeilentools
 
-Weitere Informationen finden Sie in den folgenden Ressourcen:
-
-* [Bereitstellen einer Web-App in einem GitHub-Repository](app-service-web-arm-from-github-provision.md)
-* [Bereitstellen einer Web-App mit einer SQL-Datenbank](app-service-web-arm-with-sql-database-provision.md)
-* [Vorhersagbares Bereitstellen von Microservices in Azure](app-service-deploy-complex-application-predictably.md)
-* [Building Real-World Cloud Apps with Azure - Automate Everything (Erstellen von Cloud-Anwendungen mit Azure – Automatisierung, in englischer Sprache)](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything). In diesem E-Book-Kapitel wird erklärt, wie die im E-Book dargestellte Beispielanwendung Windows PowerShell-Skripte nutzt, um eine Azure-Testumgebung zu erstellen und wie die Bereitstellung für diese Umgebung erfolgt. Im Abschnitt [Ressourcen](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything#resources) finden Sie Links für die weiterführende Azure PowerShell-Dokumentation.
-* [Veröffentlichung in Entwicklungs- und Testumgebungen mithilfe von Windows PowerShell-Skripts](../vs-azure-tools-publishing-using-powershell-scripts.md). Hier erfahren Sie, wie Sie Windows PowerShell-Bereitstellungsskripts verwenden, die von Visual Studio generiert werden.
-
-### <a name="a-nameapiaautomate-deployment-with-net-management-api"></a><a name="api"></a>Automatisieren der Bereitstellung mit .NET Verwaltungs-API
-Sie können C#-Code schreiben, um die MSBuild- oder FTP-Funktionen für die Bereitstellung auszuführen. Wenn Sie dies tun, können Sie auf die Azure-REST-Verwaltungs-API zugreifen, um die Website-Verwaltungsfunktionen auszuführen.
-
-Weitere Informationen finden Sie in der folgenden Ressource:
-
-* [Automating everything with the Azure Management Libraries and .NET (Automatisierung mithilfe der Azure-Verwaltungsbibliotheken und .NET, in englischer Sprache)](http://www.hanselman.com/blog/PennyPinchingInTheCloudAutomatingEverythingWithTheWindowsAzureManagementLibrariesAndNET.aspx). Einführung in die .NET-Verwaltungs-API und Links für die weiterführende Dokumentation.
-
-### <a name="a-namecliadeploy-from-azure-command-line-interface-azure-cli"></a><a name="cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle (Azure-CLI)
-Über die Befehlszeile können Sie auf Windows-, Mac- oder Linux-Computern FTP-basierte Bereitstellungen durchführen. In diesem Fall können Sie über die Azure-Befehlszeilenschnittstelle auch auf die Azure-REST-Verwaltungs-API zugreifen.
-
-Weitere Informationen finden Sie in der folgenden Ressource:
-
-* [Azure-Befehlszeilentools](/downloads/#cmd-line-tools). Portalseite auf Azure.com mit Informationen zu Befehlszeilentools.
-
-### <a name="a-namewebdeployadeploy-from-web-deploy-command-line"></a><a name="webdeploy"></a>Bereitstellen über die Web Deploy-Befehlszeile
-Bei [Web Deploy](http://www.iis.net/downloads/microsoft/web-deploy) handelt es sich um eine Microsoft-Software für die Bereitstellung in IIS, wobei neben den Funktionen für die intelligente Dateisynchronisierung auch viele andere Aufgaben, die mit der Bereitstellung in Zusammenhang stehen und bei der Verwendung von FTP nicht automatisierbar sind, ausgeführt und koordiniert werden können. Mithilfe von Web Deploy können beispielsweise neue Datenbanken oder Datenbank-Updates in Ihrer Web-App bereitgestellt werden. Auch die Zeit, die zum Aktualisieren einer vorhandenen Website erforderlich ist, kann mit Web Deploy verringert werden, da dieses Programm auf intelligente Weise lediglich geänderte Dateien kopiert. Microsoft Visual Studio und Team Foundation Server verfügen über eine integrierte Unterstützung für Web Deploy. Sie können Web Deploy aber auch direkt über die Befehlszeile verwenden, um die Bereitstellung zu automatisieren. Die Web Deploy-Befehle sind äußerst leistungsstark, stellen aber einen gewaltigen Lernprozess dar.
-
-Weitere Informationen finden Sie in der folgenden Ressource:
-
-* [Simple Web Apps: Deployment (Einfache Web-Apps: Bereitstellung, in englischer Sprache)](https://azure.microsoft.com/blog/2014/07/28/simple-azure-websites-deployment/). Blog von David Ebbo über ein von ihm geschriebenes Tool zur einfacheren Verwendung von Web Deploy.
-* [Webbereitstellungstool](http://technet.microsoft.com/library/dd568996). Offizielle Dokumentation auf der Microsoft TechNet-Website. Der Inhalt ist nicht mehr auf dem neuesten Stand, aber für den Anfang gut geeignet.
-* [Verwenden von Web Deploy](http://www.iis.net/learn/publish/using-web-deploy). Offizielle Dokumentation auf der Microsoft IIS.NET-Website. Der Inhalt ist auch nicht mehr auf dem neuesten Stand, aber für den Anfang gut geeignet.
-* [ASP.NET-Webbereitstellung mithilfe von Visual Studio: Befehlszeilenbereitstellung](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment). Bei MSBuild handelt es sich um das von Visual Studio verwendete Buildmodul, das auch über die Befehlszeile zum Bereitstellen von Webanwendungen in Web-Apps genutzt werden kann. Dieses Lernprogramm ist Bestandteil einer Serie, in der es in erster Linie um die Visual Studio-Bereitstellung geht.
+Eine Liste der Befehlszeilentools sowie Links zu Tutorials zu finden Sie unter [Automatisieren der Bereitstellung der Azure-App mit Befehlszeilentools](app-service-deploy-command-line.md). 
 
 ## <a name="a-namenextstepsanext-steps"></a><a name="nextsteps"></a>Nächste Schritte
 In einigen Szenarios möchten Sie ggf. in der Lage sein, bequem zwischen einer Staging- und einer Produktionsversion Ihrer App zu wechseln. Weitere Informationen finden Sie unter [Stagingbereitstellung in Web-Apps](web-sites-staged-publishing.md).
@@ -228,17 +183,9 @@ Die Aufstellung eines Sicherungs- und Wiederherstellungsplans ist ein wesentlich
 
 Informationen zur Verwendung der rollenbasierten Zugriffssteuerung von Azure zum Verwalten des Zugriffs auf die App Service-Bereitstellung finden Sie unter [RBAC and Web App Publishing](https://azure.microsoft.com/blog/2015/01/05/rbac-and-azure-websites-publishing/)(Rollenbasierte Zugriffssteuerung und Web-App-Veröffentlichung).
 
-<a name="see-also"></a>
-
-## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
-
-<!-- URL List -->
-
-[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

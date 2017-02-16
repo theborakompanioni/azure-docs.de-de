@@ -1,22 +1,28 @@
 ---
-title: Migrieren einer SQL Server-Datenbank zu einer Azure SQL-Datenbank | Microsoft Docs
-description: Microsoft Azure SQL-Datenbank, Datenbankbereitstellung, Datenbankmigration, Datenbank importieren, Datenbank exportieren, Migrations-Assistent
+title: 'SSMS: Importieren aus einer BACPAC-Datei in Azure SQL-Datenbank | Microsoft Docs'
+description: "In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebenenanwendung exportieren“ in SQL Server Management Studio aus einer BACPAC-Datei in SQL-Datenbank importieren."
+keywords: Microsoft Azure SQL-Datenbank, Datenbankbereitstellung, Datenbankmigration, Datenbank importieren, Datenbank exportieren, Migrations-Assistent
 services: sql-database
-documentationcenter: ''
+documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: ''
-
+editor: 
+ms.assetid: 24375fc6-c94c-43ef-97ec-fce77343b581
 ms.service: sql-database
+ms.custom: migrate and move
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
-ms.date: 08/24/2016
+ms.date: 11/08/2016
 ms.author: carlrab
+translationtype: Human Translation
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: b5a6d90069e87d6115a3b80711f06ccf286b3e88
+
 
 ---
-# Importieren aus BACPAC zur SQL-Datenbank mithilfe von SSMS
+# <a name="import-from-bacpac-to-sql-database-using-ssms"></a>Importieren aus BACPAC zur SQL-Datenbank mithilfe von SSMS
 > [!div class="op_single_selector"]
 > * [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 > * [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
@@ -25,7 +31,7 @@ ms.author: carlrab
 > 
 > 
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebenenanwendung exportieren“ in SQL Server Management Studio aus einer [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4)-Datei zur SQL-Datenbank importieren.
+In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebenenanwendung exportieren“ in SQL Server Management Studio aus einer [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) -Datei zur SQL-Datenbank importieren.
 
 > [!NOTE]
 > Bei den folgenden Schritten wird davon ausgegangen, dass Sie Ihre logische Instanz von Azure SQL-Datenbank bereits bereitgestellt haben, und dass Ihnen die Verbindungsinformationen vorliegen.
@@ -56,13 +62,18 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe des Assistenten „Datenebe
 6. Stellen Sie mit dem Objekt-Explorer eine Verbindung mit der migrierten Datenbank auf Ihrem Azure SQL-Datenbankserver her.
 7. Zeigen Sie über das Azure-Portal Ihre Datenbank und deren Eigenschaften an.
 
-## Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Neueste Version von SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
 * [Neueste Version von SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## Zusätzliche Ressourcen
-* [SQL-Datenbank V12](sql-database-v12-whats-new.md)
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* [Azure SQL Database features (Features der Azure SQL-Datenbank)](sql-database-features.md)
 * [Teilweise oder vollständig unterstützte Transact-SQL-Funktionen](sql-database-transact-sql-information.md)
 * [Migrate non-SQL Server databases using SQL Server Migration Assistant (Migrieren von Nicht-SQL Server-Datenbanken mithilfe des SQL Server-Migrations-Assistenten)](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Jan17_HO1-->
+
+

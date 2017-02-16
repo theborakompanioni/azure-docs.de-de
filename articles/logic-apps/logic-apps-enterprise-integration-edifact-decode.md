@@ -1,6 +1,6 @@
 ---
-title: Informationen zum Enterprise Integration Pack-Connector zum Decodieren von EDIFACT-Nachrichten | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden
+title: Decodieren von EDIFACT-Nachrichten in Azure Logic Apps | Microsoft-Dokumentation
+description: Verwendung des im Enterprise Integration Pack enthaltenen EDIFACT-Decoders mit Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -12,31 +12,31 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 8bf5fe5527e3de6f2e0950b3ee494b88cd1063a1
-ms.openlocfilehash: 96dbedf2dc072795712e4b0a41c424e633263220
+ms.sourcegitcommit: 2f407a428aa176cc5c2a3b6bb236b522bda5ab64
+ms.openlocfilehash: 430a3add46053b5969597aa625df899f4d2e83f6
 
 
 ---
-# <a name="get-started-with-decode-edifact-message"></a>Erste Schritte mit der Decodierung von EDIFACT-Nachrichten
-Überprüfung von EDI- und partnerspezifischen Eigenschaften, Generieren eines XML-Dokuments für jeden Transaktionssatz und einer Bestätigung für die verarbeitete Transaktion
 
-## <a name="create-the-connection"></a>Erstellen der Verbindung
-### <a name="prerequisites"></a>Voraussetzungen
+# <a name="get-started-with-decode-edifact-message"></a>Erste Schritte mit der Decodierung von EDIFACT-Nachrichten
+Der Connector zur Decodierung von EDIFACT-Nachrichten überprüft EDI- und partnerspezifische Eigenschaften, generiert ein XML-Dokument für jeden Transaktionssatz und eine Bestätigung für die verarbeitete Transaktion.
+
+## <a name="prereqs"></a>Voraussetzungen
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * Für die Verwendung des Connectors zur Decodierung von EDIFACT-Nachrichten ist ein Integrationskonto erforderlich. Hier finden Sie Details zum Erstellen eines [Integrationskontos](logic-apps-enterprise-integration-create-integration-account.md), zu [Partnern](logic-apps-enterprise-integration-partners.md) und zur [EDIFACT-Vereinbarung](logic-apps-enterprise-integration-edifact.md).
 
-### <a name="connect-to-decode-edifact-message-using-the-following-steps"></a>Stellen Sie mithilfe der folgenden Schritte eine Verbindung mit der Decodierung von EDIFACT-Nachrichten her:
-1. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](logic-apps-create-a-logic-app.md) finden Sie ein Beispiel.
-2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (beispielsweise einen Anforderungstrigger).  Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu.  Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „EDIFACT“ in das Suchfeld ein.  Wählen Sie „Decode EDIFACT Message“ (EDIFACT-Nachricht decodieren).
+## <a name="decode-edifact-messages"></a>Decodierung von EDIFACT-Nachrichten
+1. [Erstellen Sie eine Logic App.](logic-apps-create-a-logic-app.md)
+2. Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten (beispielsweise einen Anforderungstrigger).  Fügen Sie im Designer für Logik-Apps einen Trigger und anschließend eine Aktion hinzu.  Wählen Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ aus, und geben Sie dann „EDIFACT“ in das Suchfeld ein.  Wählen Sie „EDIFACT-Nachricht decodieren“:
    
     ![Suchen nach EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
-3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto hergestellt haben, werden Sie aufgefordert, die Details der Verbindung anzugeben.
+3. Wenn Sie zuvor noch keine Verbindungen mit dem Integrationskonto hergestellt haben, werden Sie zur Eingabe der Verbindungsdetails aufgefordert:
    
     ![Erstellen eines Integrationskontos](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)  
-4. Geben Sie die Details des Integrationskontos ein.  Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden.
+4. Geben Sie die Details des Integrationskontos ein.  Mit einem Sternchen gekennzeichnete Eigenschaften müssen angegeben werden:
    
    | Eigenschaft | Details |
    | --- | --- |
@@ -46,15 +46,17 @@ ms.openlocfilehash: 96dbedf2dc072795712e4b0a41c424e633263220
     Nach Abschluss des Vorgangs sehen Ihre Verbindungsdetails in etwa wie folgt aus:
    
     ![Integrationskonto erstellt](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
-5. Klicken Sie auf **Erstellen**
-6. Beachten Sie, dass die Verbindung erstellt wurde.
+5. Klicken Sie auf **Erstellen**.
+6. Beachten Sie, dass die Verbindung hergestellt wurde:
    
     ![Verbindungsdetails des Integrationskontos](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
-7. Wählen Sie die zu decodierende EDIFACT-Flatfile-Nachricht aus.
+7. Wählen Sie die zu decodierende EDIFACT-Flatfilenachricht aus:
    
     ![Pflichtfelder ausfüllen](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
-## <a name="edifact-decode-does-following"></a>Die EDIFACT-Decodierung führt die folgenden Schritte aus:
+## <a name="edifact-decoder-details"></a>Details des EDIFACT-Decoders
+Der Connector zur Decodierung von EDIFACT-Nachrichten führt Folgendes aus: 
+
 * Auflösen der Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner
 * Aufteilen mehrerer Austauschvorgänge in einer einzelnen Nachricht in separate Vorgänge
 * Überprüfen des Umschlags anhand der Handelspartnervereinbarung
@@ -84,6 +86,6 @@ ms.openlocfilehash: 96dbedf2dc072795712e4b0a41c424e633263220
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

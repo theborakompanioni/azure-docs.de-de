@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: bda9854b5ed05eaaf71f4cbd98b51e3634c66450
+ms.sourcegitcommit: ab8f4f7bbb823cc56783a0cb39bb22157c74087f
+ms.openlocfilehash: fb45ef6239827ea2860b707b2bb5016ea680ad17
 
 
 ---
@@ -35,7 +35,7 @@ In diesem Tutorial machen Sie sich zuerst mit den Grundlagen des [IoT Gateway St
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>Lektion 1: Konfigurieren Ihres NUC-Geräts
-![Lektion 1: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
+![Lektion&1;: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
 
 In dieser Lektion richten Sie Intel NUC (Next Unit of Computing) im Kit als Azure IoT Gateway ein, installieren das Azure IoT Gateway SDK-Paket auf dem NUC und führen eine Beispiel-App aus, um die Gatewayfunktionalität zu überprüfen.
 
@@ -44,7 +44,7 @@ In dieser Lektion richten Sie Intel NUC (Next Unit of Computing) im Kit als Azur
 [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>Lektion 2: Erstellen des IoT Hub
-![Lektion 2: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
+![Lektion&2;: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
 
 In dieser Lektion installieren Sie die Tools und Software auf dem Hostcomputer. Anschließend erstellen Sie ein kostenloses Azure-Konto, stellen Ihren Azure IoT Hub bereit und erstellen Ihr erstes Gerät im IoT Hub.
 
@@ -106,9 +106,9 @@ Wechseln Sie zu [Lesen von Nachrichten in Azure Table Storage](iot-hub-gateway-k
 Falls Sie bei den Lektionen Probleme haben, helfen Ihnen die Lösungen im Artikel zur [Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md) weiter.
 
 ## <a name="explore-more"></a>Mehr erfahren
-Weitere Informationen finden Sie unter [Intel IoT Gateway Kit Developer Zone](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit).
+Weitere Informationen finden Sie unter [Intel IoT Gateway Kit Developer Zone](http://software.intel.com/iot/microsoft-azure).
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0f9b0cf4e88a1ab27546063ae89cde8de7761609
+ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
+ms.openlocfilehash: 4256201f2fd505ed86734e900496eb7364c9a575
 
 
 ---
@@ -32,6 +32,7 @@ Microsoft Azure Media Services (AMS) ermöglicht es Ihnen, Ihre Medien zu schüt
 AMS bietet einen Dienst zum Übermitteln von DRM-Lizenzen und unverschlüsselten AES-Schlüsseln an autorisierte Clients. Über das Azure-Portal können Sie eine einzelne **Schlüssel-/Lizenzautorisierungsrichtlinie** für alle Arten von Verschlüsselungen erstellen.
 
 In diesem Artikel erfahren Sie, wie Sie Content Protection-Richtlinien über das Azure-Portal konfigurieren. Außerdem erfahren Sie, wie Sie die dynamische Verschlüsselung auf Ihre Assets anwenden.
+
 
 > [!NOTE]
 > Wenn Sie Schutzrichtlinien über das klassische Azure-Portal erstellt haben, werden diese unter Umständen nicht im [Azure-Portal](https://portal.azure.com/) angezeigt. Die alten Richtlinien sind jedoch weiterhin vorhanden. Sie können mithilfe des Azure Media Services .NET SDKs oder mithilfe des Tools [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases) untersucht werden (klicken Sie zum Anzeigen der Richtlinien mit der rechten Maustaste auf das Medienobjekt, wählen Sie „Informationen anzeigen [F4]“ aus, klicken Sie auf die Registerkarte „Inhaltsschlüssel“, und klicken Sie anschließend auf den Schlüssel). 
@@ -93,10 +94,7 @@ Um die FairPlay-Verschlüsselung zu aktivieren, müssen Sie das App-Zertifikat u
 ![Inhalt schützen](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
 ## <a name="apply-dynamic-encryption-to-your-asset"></a>Anwenden der dynamischen Verschlüsselung auf Ihr Asset
-Führen Sie die folgenden Schritte aus, um die dynamische Verschlüsselung zu nutzen:
-
-* Codieren Sie Ihre Quelldatei als Gruppe von MP4-Dateien mit adaptiver Bitrate.
-* Rufen Sie mindestens eine On-Demand-Streamingeinheit für den Streamingendpunkt ab, von dem aus Sie die Übermittlung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-portal-manage-streaming-endpoints.md).
+Um dynamische Verschlüsselung nutzen zu können, müssen Sie die Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate codieren.
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>Auswählen eines zu verschlüsselnden Assets
 Wählen Sie **Einstellungen** > **Medienobjekte** aus, um alle Ihre Medienobjekte anzuzeigen.
@@ -137,6 +135,6 @@ Wählen Sie eine Verschlüsselung aus, und klicken Sie anschließend auf **Über
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

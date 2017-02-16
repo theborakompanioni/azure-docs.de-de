@@ -1,5 +1,5 @@
 ---
-title: H264 Single Bitrate 4K | Microsoft-Dokumentation
+title: "Media Encoder Standard-Voreinstellung „H264 Single Bitrate 4K“ – Azure | Microsoft-Dokumentation"
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 4K**."
 author: Juliako
 manager: erikre
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
-ms.openlocfilehash: f47a3baf4504307fce0baf726980d58ec10ba629
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 3efb26c819739cd980b278438f407bf1ec10dbc4
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: f47a3baf4504307fce0baf726980d58ec10ba629
   
  In diesem Thema wird die Voreinstellung `H264 Single Bitrate 4K` im XML- und JSON-Format gezeigt.  
   
- Diese Voreinstellung erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18000 KBit/s und AAC-Stereoaudio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
+ Diese Voreinstellung erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18.000KBit/s und AAC-Stereoaudio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
 >  Bei reservierten Einheiten des Typs „Premium“ sind voraussichtlich 4K-Codierungen inbegriffen. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
@@ -121,6 +121,6 @@ ms.openlocfilehash: f47a3baf4504307fce0baf726980d58ec10ba629
 ```
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

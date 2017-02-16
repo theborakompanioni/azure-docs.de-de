@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen einer Linux-VM in einem vorhandenen Azure Virtual Network mithilfe der CLI | Microsoft Docs
+title: "Bereitstellen virtueller Linux-Computer in vorhandenen Netzwerken – Azure-CLI | Microsoft-Dokumentation"
 description: Bereitstellen einer Linux-VM in einem vorhandenen Virtual Network mithilfe der CLI.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 9b053a618dd7a4e198b558402eb09ffdfbe2919a
-ms.openlocfilehash: b2153097ef33ec323070253e379050f9024449f5
+ms.sourcegitcommit: e64449991bc28427d8f559ed13c3bdf9160488db
+ms.openlocfilehash: 93fa2521b81b423d663df6e04ef201839bca2814
 
 
 ---
@@ -31,7 +31,7 @@ In diesem Artikel wird das Bereitstellen einer VM in einem vorhandenen virtuelle
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
-Im folgenden Abschnitt werden die Befehle beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#detailed-walkthrough)).
+Im folgenden Abschnitt werden die Befehle beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#detailed-walkthrough)).
 
 Voraussetzungen: Ressourcengruppe, VNET, NSG mit SSH für eingehende Daten, Subnetz. Ersetzen Sie alle Beispiele durch Ihre eigenen Einstellungen.
 
@@ -161,6 +161,6 @@ Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, di
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

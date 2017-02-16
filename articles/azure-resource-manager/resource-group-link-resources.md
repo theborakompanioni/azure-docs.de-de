@@ -1,5 +1,5 @@
 ---
-title: "Verknüpfen von Ressourcen in Azure Resource Manager | Microsoft Docs"
+title: "Verknüpfen zugehöriger Ressourcen in Azure-Lösungen | Microsoft-Dokumentation"
 description: "Erstellen Sie in Azure Resource Manager eine Verknüpfung zwischen verwandten Ressourcen in verschiedenen Ressourcengruppen."
 services: azure-resource-manager
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 87d19e4680a6da6be6da55eeab80ee7739361f8c
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 2750e971ae281e498e9c505e1cd2790cefbfbc78
 
 
 ---
-# <a name="linking-resources-in-azure-resource-manager"></a>Verknüpfen von Ressourcen im Azure-Ressourcen-Manager
+# <a name="link-related-resources-from-different-resource-groups"></a>Verknüpfen zugehöriger Ressourcen aus verschiedenen Ressourcengruppen
 Während der Bereitstellung können Sie eine Ressource als von einer anderen Ressource abhängig markieren, aber dieser Lebenszyklus endet bei der Bereitstellung. Nach der Bereitstellung gibt es keine identifizierte Beziehung zwischen abhängigen Ressourcen. Stattdessen bietet Resource Manager ein neues Feature namens Ressourcenverknüpfungen, um dauerhafte Beziehungen zwischen Ressourcen herzustellen.
 
 Mithilfe von Ressourcenverknüpfungen können Sie Beziehungen ressourcengruppenübergreifend dokumentieren. Beispielsweise ist es üblich, dass eine Datenbank mit einem eigenen Lebenszyklus sich in einer Ressourcengruppe und eine App mit einem anderen Lebenszyklus in einer anderen Ressourcengruppe befindet. Die App verbindet sich mit der Datenbank, weshalb Sie eine Verknüpfung zwischen der App und der Datenbank markieren sollten. 
@@ -76,6 +76,6 @@ Weitere Beispiele, wie z.B. zum Abrufen von Informationen zu Links, finden Sie u
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

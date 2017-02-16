@@ -1,6 +1,6 @@
 ---
-title: "Häufig gestellte Fragen: Veröffentlichen und Verwenden von Machine Learning-Apps im Azure Marketplace | Microsoft Docs"
-description: "Häufig gestellte Fragen"
+title: "(Veraltet:) Häufig gestellte Fragen – Veröffentlichen und Verwenden von Machine Learning-Apps im Azure Marketplace | Microsoft Docs"
+description: "(Veraltet:) Häufig gestellte Fragen zum Veröffentlichen von Machine Learning-Apps im Azure Marketplace"
 services: machine-learning
 documentationcenter: 
 author: bharaths
@@ -11,16 +11,24 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/11/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: bharaths
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f8ae758a406dfed48968531ae20a9bbd2383db92
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 9e2d4a2d46bd461a71217cd2b2d75f5a50e8b617
 
 
 ---
-# <a name="publishing-and-using-machine-learning-apps-in-the-azure-marketplace-faq"></a>Veröffentlichung und Verwendung von Machine Learning-Apps im Azure Marketplace: Häufig gestellte Fragen
+# <a name="deprecated-publishing-and-using-machine-learning-apps-in-the-azure-marketplace-faq"></a>(Veraltet:) Veröffentlichen und Verwenden von Machine Learning-Apps im Azure Marketplace: häufig gestellte Fragen
+
+> [!NOTE]
+> DataMarket und Data Services werden eingestellt, und vorhandene Abonnements werden ab dem 31.3.2017 zurückgezogen und beendet. Dieser Artikel gilt daher als veraltet. 
+> 
+> Als Alternative können Sie Ihre Machine Learning-Experimente im [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/) veröffentlichen, damit sie der Data Science-Community zugute kommen. Weitere Informationen finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-gallery-how-to-use-contribute-publish).
+
+
 ## <a name="questions-about-consuming-from-marketplace"></a>Fragen zur Nutzung des Marketplace
 **1. Warum erhalte ich folgende Fehlermeldung, nachdem ich Daten für den Webdienst eingegeben habe?**
 
@@ -72,6 +80,6 @@ Wenden Sie sich unter <mailto:datamarketbd@microsoft.com> an das Azure Marketpla
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

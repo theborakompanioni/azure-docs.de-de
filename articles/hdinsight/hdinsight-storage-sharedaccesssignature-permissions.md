@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2016
+ms.date: 01/17/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f2e5bbd2516c0f697084a802d6963c3d1023914
+ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
+ms.openlocfilehash: 6187106a9aa98107d89e65fe4c7a0e8a27befa87
 
 
 ---
@@ -31,7 +31,11 @@ Shared Access Signatures (SAS) sind ein Feature von Azure Storage-Konten, das da
   
   * Die Visual Studio-Version 2013 oder 2015 ist erforderlich.
   * Die Python-Version 2.7 oder höher ist erforderlich.
-* Einen Linux-basierten HDInsight-Cluster ODER [Azure PowerShell][powershell] – Wenn Sie bereits über einen Linux-basierten Cluster verfügen, können Sie mit Ambari eine Shared Access Signature zum Cluster hinzuzufügen. Falls nicht, können Sie mit Azure PowerShell einen neuen Cluster erstellen und eine Shared Access Signature während der Clustererstellung hinzufügen.
+* Einen Linux-basierten HDInsight-Cluster ODER [Azure PowerShell][powershell] – Wenn Sie bereits über einen Linux-basierten Cluster verfügen, können mit Ambari eine Shared Access Signature zum Cluster hinzuzufügen. Falls nicht, können Sie mit Azure PowerShell einen neuen Cluster erstellen und eine Shared Access Signature während der Clustererstellung hinzufügen.
+
+    > [!IMPORTANT]
+    > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+
 * Die Beispieldateien aus [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Dieses Repository enthält Folgendes:
   
   * Ein Visual Studio-Projekt, in dem ein Speichercontainer, eine gespeicherte Richtlinie und SAS für die Verwendung mit HDInsight erstellt werden kann.
@@ -127,7 +131,7 @@ Ein Beispiel zum Erstellen eines HDInsight-Clusters, der die SAS verwendet, befi
     Ändern Sie z. B. `'mycluster'` in den Namen des Clusters, den Sie erstellen möchten. Die SAS-Werte müssen den Werten in den vorherigen Schritten zum Erstellen eines Speicherkontos und SAS-Tokens entsprechen.
    
     Nachdem Sie die Werte geändert haben, speichern Sie die Datei.
-2. Öffnen Sie eine neue Azure PowerShell-Eingabeaufforderung. Wenn Sie mit Azure PowerShell nicht vertraut sind oder dieses Feature nicht installiert haben, finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][powershell] weitere Informationen.
+2. Öffnen Sie eine neue Azure PowerShell-Eingabeaufforderung. Wenn Sie mit Azure PowerShell nicht vertraut sind oder dieses Feature nicht installiert haben, lesen Sie unter [Installieren und Konfigurieren von Azure PowerShell][powershell] nach.
 3. Führen Sie an der Eingabeaufforderung Folgendes aus, um sich bei Ihrem Azure-Abonnement zu authentifizieren:
    
         Login-AzureRmAccount
@@ -249,10 +253,10 @@ Nachdem Sie erfahren haben, wie Sie Ihrem HDInsight-Cluster Speicher mit eingesc
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
 
-[powershell]: ../powershell-install-configure.md
+[powershell]: /powershell/azureps-cmdlets-docs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

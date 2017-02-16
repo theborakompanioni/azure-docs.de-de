@@ -1,6 +1,7 @@
 ---
-title: Migrieren einer SQL Server-Datenbank zu einer SQL-Datenbank mit dem Datenbankassistenten zum Bereitstellen einer Datenbank unter Microsoft Azure | Microsoft Docs
-description: "Microsoft Azure SQL-Datenbank, Datenbankmigration, Assistent für Microsoft Azure-Datenbank"
+title: 'SSMS: Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank | Microsoft Docs'
+description: In diesem Artikel wird beschrieben, wie Sie mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in SQL Server Management Studio eine kompatible SQL Server-Datenbank direkt zu Ihrem Azure SQL-Datenbank-Server migrieren.
+keywords: "Microsoft Azure SQL-Datenbank, Datenbankmigration, Assistent für Microsoft Azure-Datenbank"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,8 +17,8 @@ ms.workload: sqldb-migrate
 ms.date: 08/24/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e8bb9e5a02a7caf95dae0101c720abac1c2deff3
-ms.openlocfilehash: 6f0dc3b3df76dcb7a43fcdfad49ddfdb747e0747
+ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
+ms.openlocfilehash: f4cbfc1a277cbe80edbfbb4dc651adb1972f41b4
 
 
 ---
@@ -30,7 +31,7 @@ ms.openlocfilehash: 6f0dc3b3df76dcb7a43fcdfad49ddfdb747e0747
 > 
 > 
 
-Mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in SQL Server Management Studio wird eine [kompatible SQL Server-Datenbank](sql-database-cloud-migrate.md) direkt in Ihren Azure SQL-Datenbankserver migriert.
+In diesem Artikel wird beschrieben, wie Sie mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in SQL Server Management Studio eine [kompatible SQL Server-Datenbank](sql-database-cloud-migrate.md) direkt zu Ihrem Azure SQL-Datenbank-Server migrieren.
 
 ## <a name="use-the-deploy-database-to-microsoft-azure-database-wizard"></a>Verwenden des Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure-Datenbank
 > [!NOTE]
@@ -51,7 +52,7 @@ Mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in S
 4. Klicken Sie im Bereitstellungs-Assistenten auf **Weiter**, und klicken Sie dann auf **Verbinden**, um die Verbindung mit Ihrem SQL-Datenbank-Server zu konfigurieren.
    
    !["Bereitstellen in Azure" aus dem Menü "Aufgaben"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard002.png)
-5. Geben Sie im Dialogfeld „Verbindung mit Server herstellen“ Ihre Verbindungsinformationen ein, um die Verbindung mit Ihrem SQL-Datenbankserver herzustellen.
+5. Geben Sie im Dialogfeld „Verbindung mit Server herstellen“ Ihre Verbindungsinformationen ein, um die Verbindung mit Ihrem SQL-Datenbankserver herzustellen. Um den Servernamen für einen vorhandenen Server abzurufen, navigieren Sie zu [Anzeigen und Aktualisieren eines SQL Server-Datenbankservers und seiner Einstellungen](sql-database-view-update-server-settings.md).
    
     !["Bereitstellen in Azure" aus dem Menü "Aufgaben"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
 6. Geben Sie Folgendes für die [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) -Datei an, die dieser Assistent während der Migration erstellt:
@@ -79,6 +80,6 @@ Mit dem Assistenten zum Bereitstellen einer Datenbank unter Microsoft Azure in S
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO1-->
 
 

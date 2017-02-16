@@ -17,8 +17,8 @@ ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
-ms.openlocfilehash: 8eb4b280104cc4f05b9ed25985d0c336f15b6d0f
+ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
+ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
 
 
 ---
@@ -44,17 +44,22 @@ Nach Abschluss dieses Tutorials verfügen Sie über eine Beispieldatenbank und e
 
 **Geschätzte Zeit**: Dieses Tutorial ist in ca. 30 Minuten abgeschlossen (sofern die Voraussetzungen bereits erfüllt sind).
 
+> [!TIP]
+> Sie können diese Aufgaben auch in einem Tutorial zu den ersten Schritten durchführen, indem Sie entweder [C#](sql-database-get-started-csharp.md) oder [PowerShell](sql-database-get-started-powershell.md) verwenden.
+>
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
 
 * Sie müssen mit einem Konto, das über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügt, eine Verbindung mit dem Azure-Portal herstellen können. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
 
-> [!TIP]
-> Sie können diese Aufgaben auch in einem Tutorial zu den ersten Schritten durchführen, indem Sie entweder [C#](sql-database-get-started-csharp.md) oder [PowerShell](sql-database-get-started-powershell.md) verwenden.
->
+> [!NOTE]
+> Dieses Tutorial dient Ihnen als Hilfe beim Erlernen des Inhalts dieser Lernthemen: [Logische Azure SQL-Datenbankserver](sql-database-server-overview.md), [Übersicht zu Azure SQL-Datenbank](sql-database-overview.md) und [Übersicht über Firewallregeln für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+>  
 
-### <a name="sign-in-by-using-your-existing-account"></a>Anmelden mit einem vorhandenen Konto
+
+### <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Anmelden am Azure-Portal mit dem Azure-Konto
 Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorhandenen Abonnements](https://account.windowsazure.com/Home/Index)eine Verbindung mit dem Azure-Portal herzustellen.
 
 1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/)her.
@@ -103,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
     ![Serverstandort](./media/sql-database-get-started/server-location.png)
     
     > [!TIP]
-    > Das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben** kann auf diesem Blatt nicht geändert werden. Sie können diese Einstellung auf dem Blatt für die Serverfirewall ändern. Weitere Informationen finden Sie unter [Erste Schritte mit der Sicherheit](sql-database-get-started-security.md).
+    > Das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben** kann auf diesem Blatt nicht geändert werden. Sie können diese Einstellung auf dem Blatt für die Serverfirewall ändern. Weitere Informationen finden Sie unter [Erste Schritte mit der Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
     >
     
 9. Klicken Sie auf **Erstellen**.
@@ -183,7 +188,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
     ![Abfragen von Systemobjekten in der Masterdatenbank](./media/sql-database-get-started/query-master-database-system-objects.png)
 
     > [!NOTE]
-    > Informationen zur SQL-Sicherheit finden Sie unter [Erste Schritte mit SQL-Sicherheit](sql-database-get-started-security.md).
+    > Informationen zur SQL-Sicherheit finden Sie unter [Erste Schritte mit SQL-Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
     >
 
 ## <a name="create-new-database-in-the-azure-portal-using-adventure-works-lt-sample"></a>Erstellen der neuen Datenbank im Azure-Portal mit dem Adventure Works LT-Beispiel
@@ -291,7 +296,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutorials durcharbeiten, die auf den hier erworbenen Kenntnissen aufbauen. 
 
-* Wenn Sie sich mit der Sicherheit von Azure SQL-Datenbank befassen möchten, finden Sie entsprechende Informationen im Thema zu den [ersten Schritten bei der Sicherheit](sql-database-get-started-security.md).
+* Wenn Sie sich mit der Sicherheit von Azure SQL-Datenbank befassen möchten, finden Sie entsprechende Informationen im Thema zu den [ersten Schritten bei der Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
 * Wenn Sie mit Excel vertraut sind, informieren Sie sich über das [Herstellen von Verbindungen mit SQL-Datenbank in Azure mit Excel](sql-database-connect-excel.md).
 * Wenn Sie mit dem Programmieren beginnen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)Ihre Programmiersprache aus.
 * Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, helfen Ihnen die Informationen unter [Migrieren von Datenbanken zu SQL-Datenbank](sql-database-cloud-migrate.md) weiter.
@@ -306,6 +311,6 @@ Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutoria
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 
