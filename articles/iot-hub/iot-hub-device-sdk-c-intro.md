@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
-ms.openlocfilehash: 02907ef15742cda456fd0c5f10b777b11aa7c35e
+ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
+ms.openlocfilehash: 0033f1cc036e1eef63f0728be8d5d73c8dbbccf6
 
 
 ---
@@ -30,7 +30,7 @@ Es gibt eine Vielzahl von Plattformen, auf denen das SDK getestet wurde. (Einzel
 In diesem Artikel erhalten Sie einen Einblick in die Architektur des Azure IoT-Geräte-SDK für C. Wir zeigen, wie Sie die Gerätebibliothek initialisieren, Ereignisse an IoT Hub senden und vom IoT Hub Nachrichten empfangen können. Die Informationen in diesem Artikel sollten ausreichen, um mit der Arbeit mit dem SDK zu beginnen. Zugleich erhalten Sie Hinweise darauf, wo Sie weitere Informationen zu den Bibliotheken finden können.
 
 ## <a name="sdk-architecture"></a>SDK-Architektur
-Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html).
+Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html).
 
 Die aktuelle Version der Bibliotheken finden Sie im **master** -Verzeichnis dieses Repository:
 
@@ -466,6 +466,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

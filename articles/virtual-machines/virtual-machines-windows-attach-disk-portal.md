@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: bc4a892ce1745d54ee4424e04a79a52942650b49
-ms.openlocfilehash: f25942f24c1a2f24050c15908b86489d39ee9a13
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: 40375aa411920f966aa6923f0899ca2f88a9ed39
 
 
 ---
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
 * Neue Datenträger werden von Azure beim Anfügen automatisch erstellt. Sie müssen den Datenträger also nicht manuell erstellen.
 * Bei einem bereits vorhandenen Datenträger muss die VHD-Datei in einem Azure-Speicherkonto verfügbar sein. Sie können eine bereits vorhandene VHD verwenden, die noch nicht an einen anderen virtuellen Computer angefügt wurde, oder eine eigene VHD-Datei in das Speicherkonto hochladen.
 
-Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](virtual-machines-windows-ps-manage.md#add-a-data-disk-to-a-virtual-machine).
+Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](virtual-machines-windows-attach-disk-ps.md).
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
@@ -98,6 +98,6 @@ Wenn Ihre Anwendung das Laufwerk „D:“ für die Datenspeicherung verwenden mu
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

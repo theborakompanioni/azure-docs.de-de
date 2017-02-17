@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 75b651bd3e77ac19e22dcc3442870469fe2aaca1
-ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: e066a7fc671399ba44bec35a2ea860fccddb4cc5
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 22d6222b8fd27eeeb562af1ba50164031c885f25
 *Ich benötige Hilfe beim Einrichten von Folgendem:*
 
 * [.NET-App](app-insights-asp-net-troubleshoot-no-data.md)
-* [Überwachen einer bereits ausgeführten App](app-insights-monitor-performance-live-website-now.md#troubleshooting)
+* [Überwachen einer bereits ausgeführten App](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Azure-Diagnose](app-insights-azure-diagnostics.md)
 * [Java-Web-Apps](app-insights-java-troubleshoot.md)
 * [Andere Plattformen](app-insights-platforms.md)
@@ -40,7 +40,7 @@ Informationen hierzu finden Sie unter [Plattformen][platforms].
 
 ## <a name="is-it-free"></a>Ist es kostenlos?
 
-Ja, zur experimentellen Verwendung. Im Standardtarif kann Ihre Anwendung kostenlos ein bestimmtes monatliches Datenkontingent senden. Das kostenlose Kontingent ist groß genug, um Entwicklungsaufgaben auszuführen und eine App für eine geringe Anzahl von Benutzern zu veröffentlichen. Sie können eine Obergrenze festlegen, um sicherzustellen, dass nicht mehr als die angegebene Datenmenge verarbeitet wird.
+Ja, zur experimentellen Verwendung. Im Basic-Tarif kann Ihre Anwendung kostenlos ein bestimmtes monatliches Datenkontingent senden. Das kostenlose Kontingent ist groß genug, um Entwicklungsaufgaben auszuführen und eine App für eine geringe Anzahl von Benutzern zu veröffentlichen. Sie können eine Obergrenze festlegen, um sicherzustellen, dass nicht mehr als die angegebene Datenmenge verarbeitet wird.
 
 Bestimmte Features wie etwa der fortlaufende Export stehen nur im Enterprise-Tarif zur Verfügung. Dadurch fallen täglich Gebühren an.
 
@@ -51,20 +51,20 @@ Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details
 Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
 * Fügen Sie folgende Dateien zu Ihrem Projekt hinzu:
-  
+
   * ApplicationInsights.config
   * ai.js
 * Diese NuGet-Pakete werden installiert:
-  
+
   * *Application Insights API* - die Haupt-API
   * *Application Insights API for Web Applications* - zum Senden von Telemetrie vom Server
   * *Application Insights API for JavaScript Applications* - zum Senden von Telemetrie vom Client
-    
+
     Die Pakete umfassen folgende Assemblys:
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
 * Fügt Elemente ein in:
-  
+
   * Web.config
   * packages.config
 * (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie diesen Schritt manuell ausführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/_Layout.cshtml" eingefügt.
@@ -90,7 +90,7 @@ Informationen hierzu finden Sie unter [Datenspeicherung und Datenschutz][data].
 | Diese Daten sollten angezeigt werden | So erhalten Sie die Daten | Deshalb benötigen Sie die Daten |
 | --- | --- | --- |
 | Verfügbarkeitsdiagramme |[Webtests](app-insights-monitor-web-app-availability.md) |Information, ob Ihre Web-App verfügbar ist |
-| Leistung der Server-App: Antwortzeiten usw. ... |[Fügen Sie Ihrem Projekt Application Insights hinzu](app-insights-asp-net.md) oder [installieren Sie den AI-Statusmonitor auf dem Server](app-insights-monitor-performance-live-website-now.md) (oder schreiben Sie Ihren eigenen Code zum [Nachverfolgung von Aufrufen](app-insights-api-custom-events-metrics.md#track-dependency)) |Erkennen von Leistungsproblemen |
+| Leistung der Server-App: Antwortzeiten usw. ... |[Fügen Sie Ihrem Projekt Application Insights hinzu](app-insights-asp-net.md) oder [installieren Sie den AI-Statusmonitor auf dem Server](app-insights-monitor-performance-live-website-now.md) (oder schreiben Sie Ihren eigenen Code zum [Nachverfolgung von Aufrufen](app-insights-api-custom-events-metrics.md#trackdependency)) |Erkennen von Leistungsproblemen |
 | Telemetriedaten zu Abhängigkeiten |[Installieren des AI-Statusmonitors auf dem Server](app-insights-monitor-performance-live-website-now.md) |Diagnostizieren von Problemen mit Datenbanken oder anderen externen Komponenten |
 | Abrufen von Stapelüberwachungen aus Ausnahmen |[Einfügen von TrackException-Aufrufen in Ihren Code](app-insights-search-diagnostic-logs.md#exceptions) (einige werden jedoch automatisch gemeldet) |Erkennen und Diagnostizieren von Ausnahmen |
 | Durchsuchen von Ablaufprotokollen |[Hinzufügen eines Protokollierungsadapters](app-insights-search-diagnostic-logs.md) |Diagnostizieren von Ausnahmen und Leistungsproblemen |
@@ -113,6 +113,6 @@ Sie können [PowerShell-Skripts schreiben](app-insights-powershell.md) , um Appl
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

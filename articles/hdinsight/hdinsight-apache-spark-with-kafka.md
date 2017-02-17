@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Apache Spark mit Kafka in HDInsight | Microsoft Docs
+title: Verwenden von Apache Spark mit Kafka in Azure HDInsight | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Spark in HDInsight verwenden, um Daten in einem Kafka-Cluster in HDInsight zu lesen und zu schreiben. In diesem Beispiel wird Scala in einem Jupyter-Notebook verwendet, um Zufallsdaten nach Kafka in HDInsight zu schreiben und sie mithilfe von Spark-Streaming wieder einzulesen.
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/14/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2d744e753224e4ce98680d3228914fd89e87eba4
-ms.openlocfilehash: 535e8fc7503e21eea470a1fdb0a10fbc8a18349c
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 0cb9d65e33bf6f6b67e2a74b7e4634aba3f2359b
 
 ---
 # <a name="use-apache-spark-with-kafka-preview-on-hdinsight"></a>Verwenden von Apache Spark mit Kafka (Vorschau) in HDInsight
@@ -81,7 +81,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
 3. Lesen Sie die **Geschäftsbedingungen**, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 
-4. Aktivieren Sie schließlich **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
+4. Aktivieren Sie zum Schluss **An Dashboard anheften**, und wählen Sie dann **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
 Sobald die Ressourcen erstellt sind, werden Sie zu einem Blatt für die Ressourcengruppe weitergeleitet, das die Cluster und das Webdashboard enthält.
 
@@ -130,7 +130,7 @@ Verwenden Sie in Ihrer Entwicklungsumgebung die folgenden Befehle, um die Broker
         curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")'
 
     > [!IMPORTANT]
-    > Bei Verwenden dieses Befehls aus Windows PowerShell erhalten Sie möglicherweise eine Fehlermeldung zu Anführungszeichen in der Shell. Verwenden Sie in diesem Fall den folgenden Befehl: `curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'
+    > Bei Verwenden dieses Befehls aus Windows PowerShell erhalten Sie möglicherweise eine Fehlermeldung zu Anführungszeichen in der Shell. Verwenden Sie in diesem Fall den folgenden Befehl: `curl -u admin:PASSWORD -G "https://kafka-BASENAME.azurehdinsight.net/api/v1/clusters/kafka-BASENAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")'`
 
 * So rufen Sie die Informationen zum __Zookeeper-Host__ ab:
 
@@ -187,6 +187,6 @@ In diesem Dokument haben Sie erfahren, wie Spark verwendet wird, um in Kafka Les
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

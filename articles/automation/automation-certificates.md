@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: ad4878dd2684c44f8458a9eb8288730e8fd45308
-ms.openlocfilehash: dbb39aad69f63765bf7f72129dbdcde36ed40ec7
+ms.sourcegitcommit: 89e5486f3302098f3a1d49e4390ec5b21617d778
+ms.openlocfilehash: fd1737a420c132dace9307436bfea98a9bde94a0
 
 ---
 
@@ -34,7 +34,7 @@ Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Auto
 
 |Cmdlets|Beschreibung|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|Ruft Informationen über ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Sie können mithilfe der Aktivität „Get-AzureRmAutomationCertificate“nur das Zertifikat selbst abrufen.|
+|[Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx)|Ruft Informationen über ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Sie können mithilfe der Aktivität "Get-AutomationCertificate" nur das Zertifikat selbst abrufen.|
 |[New-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603604.aspx)|Erstellt ein neues Zertifikat in Azure Automation.|
 [Remove-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603529.aspx)|Entfernt ein Zertifikat aus Azure Automation.|Erstellt ein neues Zertifikat in Azure Automation.
 |[Set-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603760.aspx)|Legt die Eigenschaften für ein vorhandenes Zertifikat fest, lädt die Zertifikatdatei hoch und legt das Kennwort für eine PFX-Datei fest.|
@@ -98,6 +98,6 @@ Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Zertifikats 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
