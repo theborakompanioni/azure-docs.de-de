@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 600bc7182b1ce3eb3663ce986e128c6b04897dee
+ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
+ms.openlocfilehash: c0fcfc1087e8635f6ec2a0cdc246f1155c90ea53
 
 
 ---
@@ -34,8 +34,8 @@ Das in diesem Thema verwendete Beispielskript erstellt einen Windows-basierten S
 
 * [Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md)
 * [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md): Allgemeine Informationen zum Erstellen von HDInsight-Clustern.
-* [Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen][hdinsight-cluster-customize]: Allgemeine Informationen zum Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen.
-* [Entwickeln von Script Action-Skripts für HDInsight](hdinsight-hadoop-script-actions.md)
+* [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize]: Allgemeine Informationen zum Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen
+* [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions.md)
 
 ## <a name="what-is-solr"></a>Was ist Solr?
 <a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> ist eine Unternehmensplattform für die leistungsstarke Volltextsuche in Daten. Während Hadoop das Speichern und Verwalten von großen Datenmengen ermöglicht, bietet Apache Solr die Suchfunktionen, um schnell Daten abzurufen.
@@ -44,7 +44,7 @@ Das in diesem Thema verwendete Beispielskript erstellt einen Windows-basierten S
 1. Beginnen Sie mit dem Erstellen eines Clusters, indem Sie die Option **BENUTZERDEFINIERT ERSTELLEN** verwenden, die unter [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md) beschrieben ist.
 2. Klicken Sie auf der Seite **Skriptaktionen** des Assistenten auf **Skriptaktion hinzufügen**, um wie unten gezeigt Details zur Skriptaktion bereitzustellen:
 
-    ![Anpassen eines Clusters mit einer Skriptaktion](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "Use Script Action to customize a cluster")
+    ![Anpassen eines Clusters mithilfe einer Skriptaktion](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "Anpassen eines Clusters mithilfe einer Skriptaktion")
 
     <table border='1'>
         <tr><th>Eigenschaft</th><th>Wert</th></tr>
@@ -55,7 +55,7 @@ Das in diesem Thema verwendete Beispielskript erstellt einen Windows-basierten S
         <tr><td>Knotentyp</td>
             <td>Gibt die Knoten an, auf denen das Anpassungsskript ausgeführt wird. Sie können <b>Alle Knoten</b>, <b>Nur Hauptknoten</b> oder <b>Nur Workerknoten</b> auswählen.
         <tr><td>Parameter</td>
-            <td>Geben Sie die Parameter an, wenn dies für das Skript erforderlich ist. Für das Skript zum Installieren von Solr sind keine Parameter erforderlich, sodass Sie dieses Feld leer lassen können.</td></tr>
+            <td>Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. Für das Skript zum Installieren von Solr sind keine Parameter erforderlich, sodass Sie dieses Feld leer lassen können.</td></tr>
     </table>
 
     Sie können dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzufügen. Nachdem Sie die Skripts hinzugefügt haben, klicken Sie auf das Häkchen, um die Erstellung des Clusters zu starten.
@@ -82,7 +82,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
    * Geben Sie im Textfeld **q** Folgendes ein: **\*:**\*. Dadurch werden alle Dokumente zurückgegeben, die in Solr indiziert sind. Wenn Sie nach einer bestimmten Zeichenfolge innerhalb der Dokumente suchen möchten, können diese Zeichenfolge hier eingeben.
    * Wählen Sie im Textfeld **wt** das Ausgabeformat aus. Der Standardwert ist **json**. Klicken Sie auf **Execute Query**.
 
-     ![Anpassen eines Clusters mit "Skriptaktion"](./media/hdinsight-hadoop-solr-install/hdi-solr-dashboard-query.png "Run a query on Solr dashboard")
+     ![Anpassen eines Clusters mithilfe einer Skriptaktion](./media/hdinsight-hadoop-solr-install/hdi-solr-dashboard-query.png "Ausführen einer Abfrage im Solr-Dashboard")
 
      Die Ausgabe gibt die beiden Dokumente zurück, die wir zur Indizierung von Solr verwendet haben. Die Ausgabe sieht ungefähr so aus:
 
@@ -169,13 +169,13 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 ## <a name="see-also"></a>Siehe auch
 * [Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md)
 * [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-provision-clusters.md): Allgemeine Informationen zum Erstellen von HDInsight-Clustern.
-* [Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen][hdinsight-cluster-customize]: Allgemeine Informationen zum Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen.
-* [Entwickeln von Script Action-Skripts für HDInsight](hdinsight-hadoop-script-actions.md)
-* [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]: Beispiel zum Installieren von Spark mithilfe einer Skriptaktion.
-* [Installieren von R in HDInsight-Clustern][hdinsight-install-r]: Beispiel zum Installieren von R mithilfe einer Skriptaktion.
+* [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize]: Allgemeine Informationen zum Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen
+* [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions.md)
+* [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]: Skriptaktionsbeispiel zum Installieren von Spark
+* [Installieren von R in HDInsight-Clustern][hdinsight-install-r]: Skriptaktionsbeispiel zum Installieren von R
 * [Installieren von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md): Skriptaktionsbeispiel zum Installieren von Giraph
 
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
@@ -183,6 +183,6 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

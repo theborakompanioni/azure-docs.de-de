@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a3af9aa0a7b9707203932051883f61792047558a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 1e3e4825d06486e6e8dfa874271ec82d203f7a7b
 
 
 ---
@@ -64,7 +64,7 @@ Klicken Sie auf ein Projekt, um alle Programme anzuzeigen, die zu diesem Projekt
 
 ![Home2][3]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 
@@ -167,6 +167,6 @@ Klicken Sie auf ein Projekt, um alle Programme anzuzeigen, die zu diesem Projekt
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

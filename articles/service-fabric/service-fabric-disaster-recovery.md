@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/29/2016
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ff3e8fe622bdd6ecba01bc08b26a243c592c3c8b
+ms.sourcegitcommit: 6dc2a6dbf4b26363f1ad714baec8d48045aa97b6
+ms.openlocfilehash: 81d818afb1a15db646a20b4001493d9df7e24d27
 
 
 ---
@@ -41,7 +41,7 @@ Sie können das Layout Ihres Clusters in Fehlerdomänen mithilfe der von [Servic
 > 
 
 ### <a name="geographic-distribution"></a>Geografische Verteilung
-Es gibt derzeit [weltweit 26 Azure-Regionen][azure-regions]. Einige weitere sind bereits angekündigt. Eine einzelne Region kann ein oder mehrere physische Rechenzentren enthalten, was u. a. von der Nachfrage und der Verfügbarkeit geeigneter Standorte abhängt. Beachten Sie jedoch, dass auch in Regionen mit mehreren physische Rechenzentren es keine Garantie gibt, dass die VMs in Ihrem Cluster gleichmäßig auf diese physischen Standorte verteilt sind. Derzeit werden sogar alle VMs für einen bestimmten Cluster an einem einzelnen physischen Standort bereitgestellt.
+Es gibt derzeit [weltweit 30 Azure-Regionen][azure-regions]. Einige weitere sind bereits angekündigt. Eine einzelne Region kann ein oder mehrere physische Rechenzentren enthalten, was u. a. von der Nachfrage und der Verfügbarkeit geeigneter Standorte abhängt. Beachten Sie jedoch, dass auch in Regionen mit mehreren physische Rechenzentren es keine Garantie gibt, dass die VMs in Ihrem Cluster gleichmäßig auf diese physischen Standorte verteilt sind. Derzeit werden sogar alle VMs für einen bestimmten Cluster an einem einzelnen physischen Standort bereitgestellt.
 
 ## <a name="dealing-with-failures"></a>Umgang mit Ausfällen
 Es gibt verschiedene Arten von Ausfällen, die sich auf Ihren Cluster auswirken können. Für jeden gibt es eine eigene Abhilfemöglichkeit. Wir sehen uns diese in der Reihenfolge der Wahrscheinlichkeit ihres Auftretens an.
@@ -55,7 +55,7 @@ Wenngleich Fehlerdomänen das Risiko gleichzeitiger Computerausfälle deutlich r
 Solange die Mehrheit der Knoten verfügbar bleibt, setzt der Cluster im Allgemeinen den Betrieb fort, allerdings mit geringerer Kapazität, da zustandsbehaftete Replikate auf eine kleinere Menge von VMs verteilt werden und weniger zustandslose Instanzen zum Verteilen der Last zur Verfügung stehen.
 
 #### <a name="quorum-loss"></a>Quorumverlust
-Wenn eine Mehrheit der Replikate für die Partition eines zustandsbehafteten Diensts ausfällt, wechselt die Partition in einen Zustand, der als „Quorumverlust“ bezeichnet wird. An diesem Punkt beendet Service Fabric das Zulassen von Schreibvorgängen in dieser Partition, um sicherzustellen, dass ihr Status konsistent und zuverlässig bleibt. Tatsächlich nehmen wir einen Zeitraum der Nichtverfügbarkeit in Kauf, um dafür zu sorgen, dass Clients nicht mitgeteilt wird, dass ihre Daten gespeichert wurden, wenn das gar nicht der Fall ist. Wenn Sie sich für das Zulassen von Lesevorgängen aus sekundären Replikaten für diesen zustandsbehafteten Dienst entschieden haben, können Sie diese Lesevorgänge in diesem Zustand fortsetzen. Eine Partition behält den Zustand „Quorumverlust“ so lange, bis eine ausreichende Anzahl von Replikaten reaktiviert ist oder der Clusteradministrator das System mithilfe des Cmdlets [Repair-ServiceFabricPartition API][repair-partition-ps] zum Fortsetzen zwingt.
+Wenn eine Mehrheit der Replikate für die Partition eines zustandsbehafteten Diensts ausfällt, wechselt die Partition in einen Zustand, der als „Quorumverlust“ bezeichnet wird. An diesem Punkt beendet Service Fabric das Zulassen von Schreibvorgängen in dieser Partition, um sicherzustellen, dass ihr Status konsistent und zuverlässig bleibt. Tatsächlich nehmen wir einen Zeitraum der Nichtverfügbarkeit in Kauf, um dafür zu sorgen, dass Clients nicht mitgeteilt wird, dass ihre Daten gespeichert wurden, wenn das gar nicht der Fall ist. Wenn Sie sich für das Zulassen von Lesevorgängen aus sekundären Replikaten für diesen zustandsbehafteten Dienst entschieden haben, können Sie diese Lesevorgänge in diesem Zustand fortsetzen. Eine Partition behält den Zustand „Quorumverlust“ so lange, bis eine ausreichende Anzahl von Replikaten reaktiviert ist, oder der Clusteradministrator das System mithilfe des Cmdlets [Repair-ServiceFabricPartition API][repair-partition-ps] zum Fortsetzen zwingt.
 
 > [!WARNING]
 > Das Ausführen einer Reparaturaktion, solange das primäre Replikat ausgefallen ist, führt zu Datenverlust.
@@ -70,7 +70,7 @@ Sie können das Risiko eines Quorumverlusts minimieren, indem Sie die Zielgröß
 Sehen Sie sich die folgenden Beispiele unter der Annahme an, dass Sie Ihre Dienste mit dem „MinReplicaSetSize“-Wert 3 konfiguriert haben, dem niedrigsten für Produktionsdienste empfohlenen Wert. Beim „TargetReplicaSetSize“-Wert 3 (ein primäres und zwei sekundäre Replikate) führt ein Hardwarefehler während eines Upgrades (zwei Replikate ausgefallen) zum Quorumverlust, woraufhin Ihr Dienst schreibgeschützt wird. Wenn Sie alternativ über 5 Replikate verfügen, können Sie zwei Ausfälle während des Upgrades überstehen (drei Replikate ausgefallen), da die verbleibenden 2 Replikate weiter mit dem Mindestreplikatsatz ein Quorum bilden können.
 
 ### <a name="data-center-outages-or-destruction"></a>Rechenzentrumsausfälle oder -zerstörung
-In seltenen Fällen können physische Rechenzentren aufgrund eines Ausfalls des Stroms oder der Netzwerkverbindung vorübergehend nicht verfügbar sein. In diesen Fällen sind auch Ihre Service Fabric-Cluster und -Anwendungen nicht verfügbar, aber Ihre Daten bleiben erhalten. Für in Azure ausgeführte Cluster können Sie neueste Informationen zu Ausfällen auf der [Azure-Statusseite][azure-status-dashboard] nachlesen.
+In seltenen Fällen können physische Rechenzentren aufgrund eines Ausfalls des Stroms oder der Netzwerkverbindung vorübergehend nicht verfügbar sein. In diesen Fällen sind auch Ihre Service Fabric-Cluster und -Anwendungen nicht verfügbar, aber Ihre Daten bleiben erhalten. Für in Azure ausgeführte Cluster können Sie aktuelle Informationen zu Ausfällen auf der [Azure-Statusseite][azure-status-dashboard] nachlesen.
 
 Im äußerst unwahrscheinlichen Fall der Zerstörung eines gesamten physischen Rechenzentrums gehen sämtliche Service Fabric-Cluster samt Zustand verloren.
 
@@ -109,6 +109,6 @@ Als Ursache von Datenverlust sind Codefehler in Diensten, Benutzerfehler und Sic
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

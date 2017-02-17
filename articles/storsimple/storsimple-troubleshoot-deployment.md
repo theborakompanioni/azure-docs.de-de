@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 08/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7df0243622af7166a57a6ec81ed356022246a3ed
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 230a652ceca8b4643d1984d81383c6628b8e1f5f
 
 
 ---
@@ -77,8 +77,8 @@ Die folgenden Tabellen enthalten häufige Fehler, die auftreten können, wenn Si
 | 2 |Invoke-HcsSetupWizard: Gerät ist nicht bereit. |Es gibt Probleme mit der DATA 0-Netzwerkverbindung. |Überprüfen Sie die physische DATA 0-Netzwerkkonnektivität. |
 | 3 |Invoke-HcsSetupWizard: Es liegt ein IP-Adressenkonflikt mit einem anderen System im Netzwerk vor (Ausnahme von HRESULT: 0x80070263). |Die für DATA 0 angegebene IP-Adresse wird bereits von einem anderen System verwendet. |Geben Sie eine neue IP-Adresse an, die nicht belegt ist. |
 | 4 |Invoke-HcsSetupWizard: Fehler in einer Clusterressource. (Ausnahme von HRESULT:0x800713AE). |Doppelte VIP. Die angegebene IP-Adresse wird bereits verwendet. |Geben Sie eine neue IP-Adresse an, die nicht belegt ist. |
-| 5 |Invoke-HcsSetupWizard: Ungültige IPv4-Adresse. |Die IP-Adresse hat das falsche Format. |Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [Ipv4 Addressing][1](in englischer Sprache). |
-| 6 |Invoke-HcsSetupWizard: Ungültige IPv6-Adresse. |Die IP-Adresse hat das falsche Format. |Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [Ipv6 Addressing][2](in englischer Sprache). |
+| 5 |Invoke-HcsSetupWizard: Ungültige IPv4-Adresse. |Die IP-Adresse hat das falsche Format. |Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [IPv4-Adressierung][1]. |
+| 6 |Invoke-HcsSetupWizard: Ungültige IPv6-Adresse. |Die IP-Adresse hat das falsche Format. |Überprüfen Sie das Format, und geben Sie die IP-Adresse erneut an. Weitere Informationen finden Sie unter [IPv6-Adressierung][2]. |
 | 7 |Invoke-HcsSetupWizard: Es sind keine Endpunkte mehr von der Endpunktzuordnung verfügbar. (Ausnahme von HRESULT:0x800706D9). |Die Clusterfunktionalität ist nicht funktionsfähig. |[Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md) für weitere Schritte. |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Fehler während der optionalen Webproxyeinstellungen
@@ -528,7 +528,7 @@ Der Fehler kann eine der folgenden Ursachen haben:
 2. Stellen Sie sicher, dass das Gerät richtig verkabelt ist: Überprüfen Sie das Netzwerkkabel an der Rückseite des Geräts. Die Verkabelung ist von Modell zu Modell unterschiedlich. Weitere Informationen finden Sie unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md) oder [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md).
    
    > [!NOTE]
-   > Bei Verwendung von 10-GbE-Netzwerkanschlüsssen, müssen Sie die bereitgestellten QSFP-SFP-Adapter und SFP-Kabel verwenden. Weitere Informationen finden Sie unter der [list of cables, switches, and transceivers recommended by the OEM supplier for Mellanox ports](http://www.mellanox.com/page/cables?mtag=cable_overview)(in englischer Sprache).
+   > Bei Verwendung von 10-GbE-Netzwerkanschlüsssen, müssen Sie die bereitgestellten QSFP-SFP-Adapter und SFP-Kabel verwenden. Weitere Informationen finden Sie unter der [Liste der für 10-GbE-Ports empfohlenen Kabel, Switches und Transceiver](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
    > 
    > 
 3. Überprüfen Sie die Integrität der Netzwerkschnittstelle:
@@ -566,6 +566,6 @@ Informationen zur [Problembehandlung bei einem betriebsbereiten Gerät](storsimp
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

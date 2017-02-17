@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/09/2016
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6eb9fd3750eaf03547f93462d97bc30d30a9a8bc
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4b466878831b9a8d78c03738397f2119a6d5e13d
 
 
 ---
@@ -570,7 +570,7 @@ Um die Inhalte einer bestimmten Datei anzuzeigen, beispielsweise "000000\_0", ve
 > 
 > 
 
-Das Speichern dieser Daten in einem Azure-Blob bietet den Vorteil, dass die Daten in Azure Machine Learning mit dem [Import Data][import-data]-Modul untersucht werden können.
+Das Speichern dieser Daten in einem Azure-Blob hat den Vorteil, dass die Daten in Azure Machine Learning mit dem [Import Data][import-data]-Modul untersucht werden können.
 
 ## <a name="a-namedownsampleadown-sample-data-and-build-models-in-azure-machine-learning"></a><a name="#downsample"></a>Komprimieren von Daten und Entwickeln von Modellen in Azure Machine Learning
 > [!NOTE]
@@ -716,12 +716,12 @@ Führen Sie an der Hive-Eingabeaufforderung den folgenden Befehl aus, um diese A
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-Wir verfügen jetzt über eine interne Tabelle namens „nyctaxidb.nyctaxi_downsampled_dataset“, auf die über das [Import Data][import-data]-Modul in Azure Machine Learning zugegriffen werden kann. Darüber hinaus können wir dieses Dataset zum Entwickeln von Machine Learning-Modellen nutzen.  
+Wir verfügen nun über eine interne Tabelle namens „nyctaxidb.nyctaxi_downsampled_dataset“, auf die über das [Import Data][import-data]-Modul in Azure Machine Learning zugegriffen werden kann. Darüber hinaus können wir dieses Dataset zum Entwickeln von Machine Learning-Modellen nutzen.  
 
 ### <a name="use-the-import-data-module-in-azure-machine-learning-to-access-the-down-sampled-data"></a>Verwenden Sie das „Import Data“-Modul in Azure Machine Learning, um auf die komprimierten Daten zuzugreifen.
-Als Voraussetzung für die Ausführung von Hive-Abfragen im [Import Data][import-data]-Modul von Azure Machine Learning benötigen wir Zugriff auf einen Azure Machine Learning-Arbeitsbereich sowie Zugriff auf die Anmeldeinformationen des Clusters und das zugeordnete Speicherkonto.
+Um Hive-Abfragen im [Import Data][import-data]-Modul von Azure Machine Learning ausführen zu können, benötigen wir Zugriff auf einen Azure Machine Learning-Arbeitsbereich sowie auf die Anmeldeinformationen des Clusters und auf das zugeordnete Speicherkonto.
 
-Nachfolgend werden einige Details zum [Import Data][import-data]-Modul sowie die Parameter für die Eingabe gezeigt:
+Einige Details zum [Import Data][import-data]-Modul sowie zu den Parametern für die Eingabe:
 
 **HCatalog-Server-URI**: Wenn der Clustername „abc123“ lautet, ist dies einfach: https://abc123.azurehdinsight.net
 
@@ -736,7 +736,7 @@ Nachfolgend werden einige Details zum [Import Data][import-data]-Modul sowie die
 **Azure-Containername**: Dies ist der standardmäßige Containername für den Cluster. Dieser stimmt üblicherweise mit dem Clusternamen überein. Wenn der Cluster "abc123" heißt, lautet dieser Name "abc123".
 
 > [!IMPORTANT]
-> **Jede Tabelle, die mit dem [Import Data][import-data]-Modul in Azure Machine Learning abgefragt werden soll, muss eine interne Tabelle sein.**  Nachfolgend wird gezeigt, wie Sie ermitteln können, ob es sich bei einer Tabelle "T" in einer Datenbank "D.db" um eine interne Tabelle handelt.
+> **Jede Tabelle, die mit dem [Import Data][import-data]-Modul in Azure Machine Learning abgefragt werden soll, muss eine interne Tabelle sein.** Nachfolgend wird gezeigt, wie Sie ermitteln können, ob es sich bei einer Tabelle "T" in einer Datenbank "D.db" um eine interne Tabelle handelt.
 > 
 > 
 
@@ -746,9 +746,9 @@ Führen Sie an der Hive-Eingabeaufforderung den folgenden Befehl aus:
 
 Wenn es sich um eine interne Tabelle handelt und diese mit Daten gefüllt ist, müssen die Inhalte angezeigt werden. Alternativ können Sie auch mit dem Azure Storage-Explorer prüfen, ob es sich bei einer Tabelle um eine interne Tabelle handelt. Wechseln Sie im Azure Storage-Explorer zum standardmäßigen Containernamen des Clusters, und filtern Sie anschließend nach dem Tabellennamen. Wenn die Tabelle vorhanden ist und ihre Inhalte angezeigt werden, handelt es sich um eine interne Tabelle.
 
-Nachfolgend sehen Sie einen Screenshot von Hive-Abfrage und [Import Data][import-data]-Modul:
+Nachfolgend sehen Sie eine Momentaufnahme von Hive-Abfrage und [Import Data][import-data]-Modul:
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
+![Hive-Abfrage für das Import Data-Modul](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
 Beachten Sie Folgendes: Da die komprimierten Daten im Standardcontainer vorliegen, ist die Hive-Abfrage aus Azure Machine Learning sehr einfach und besteht lediglich aus einem „SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data“.
 
@@ -761,39 +761,39 @@ Wir können nun mit der Modellentwicklung und -bereitstellung in [Azure Machine 
 
 **Verwendeter Lernansatz:** Logistische Regression mit zwei Klassen
 
-a. Für dieses Problem lautet der Zielbezeichner (oder die Zielklasse) "tipped". Unser ursprüngliches komprimiertes Dataset weist einige Spalten auf, die Datenlecks für dieses Klassifizierungsexperiment darstellen. Dies sind insbesondere: „tip\_class“, „tip\_amount“ und „total\_amount“. Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir nehmen diese Spalten mit dem [Select Columns in Dataset][select-columns]-Modul von der Berücksichtigung aus.
+a. Für dieses Problem lautet der Zielbezeichner (oder die Zielklasse) "tipped". Unser ursprüngliches komprimiertes Dataset weist einige Spalten auf, die Datenlecks für dieses Klassifizierungsexperiment darstellen. Dies sind insbesondere: „tip\_class“, „tip\_amount“ und „total\_amount“. Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir nehmen diese Spalten mithilfe des [Select Columns in Dataset][select-columns]-Moduls von der Berücksichtigung aus.
 
 Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage, ob für eine bestimmte Fahrt ein Trinkgeld gezahlt wurde oder nicht.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
+![Momentaufnahme des Experiments](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
 
 b. Bei diesem Experiment ergibt sich für die Zielbezeichner eine Verteilung von etwa 1:1.
 
 Der nachstehende Screenshot zeigt die Verteilung der tip_class-Bezeichner für das binäre Klassifizierungsproblem.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
+![Verteilung der tip_class-Bezeichner](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
 
 Als Ergebnis erhalten wir einen AUC-Wert (Area Under Curve) von 0,987, wie in der nachstehenden Abbildung gezeigt.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
+![AUC-Wert](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
 
 **2. Multiklassenklassifizierung**: Zur Vorhersage des Trinkgeldbereichs für die Fahrt, unter Verwendung der zuvor definierten Klassen.
 
 **Verwendeter Lernansatz:** Logistische Regression mit mehreren Klassen
 
-a. Für dieses Problem lautet unser Zielbezeichner (oder die Zielklasse) „tip\_class“ und kann einen von fünf Werten annehmen (0,1,2,3,4). Wie bei der binären Klassifizierung sind Spalten vorhanden, die Datenlecks für dieses Experiment darstellen. Dies sind insbesondere: „tipped“, „tip\_amount“ und „total\_amount“. Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir entfernen diese Spalten mit dem [Select Columns in Dataset][select-columns]-Modul.
+a. Für dieses Problem lautet unser Zielbezeichner (oder die Zielklasse) „tip\_class“ und kann einen von fünf Werten annehmen (0,1,2,3,4). Wie bei der binären Klassifizierung sind Spalten vorhanden, die Datenlecks für dieses Experiment darstellen. Dies sind insbesondere: „tipped“, „tip\_amount“ und „total\_amount“. Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir entfernen diese Spalten mithilfe des [Select Columns in Dataset][select-columns]-Moduls.
 
 Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage, wann ein Trinkgeld wahrscheinlich niedriger ausfällt ( Class 0: tip = $0, class 1 : tip > $0 and tip <= $5, Class 2 : tip > $5 and tip <= $10, Class 3 : tip > $10 and tip <= $20, Class 4 : tip > $20)
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
+![Momentaufnahme des Experiments](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
 
 Nachstehend wird gezeigt, wie unsere tatsächliche Testklassenverteilung aussieht. Während Klasse 0 und Klasse 1 sehr häufig vorkommen, sind die weiteren Klassen eher selten.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
+![Testklassenverteilung](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
 
 b. Für diese Experiment verwenden wir eine Konfusionsmatrix, um die Vorhersagegenauigkeit zu untersuchen. Dies wird nachfolgend gezeigt.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
+![Konfusionsmatrix](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
 
 Beachten Sie Folgendes: Während die Klassengenauigkeit bei den häufig vorkommenden Klassen recht gut ist, zeigt das Modell keine gute "Lernkurve" bei den selteneren Klassen.
 
@@ -801,15 +801,15 @@ Beachten Sie Folgendes: Während die Klassengenauigkeit bei den häufig vorkomme
 
 **Verwendeter Lernansatz:** Gewichteter Entscheidungsbaum
 
-a. Für dieses Problem lautet der Zielbezeichner (oder die Zielklasse) „tip\_amount“. Die Datenlecks lauten in diesem Fall: „tipped“, „tip\_class“, „total\_amount“. Sämtliche dieser Variablen enthalten Informationen zum Trinkgeldbetrag, die zum Testzeitpunkt normalerweise nicht zur Verfügung stehen. Wir entfernen diese Spalten mit dem [Select Columns in Dataset][select-columns]-Modul.
+a. Für dieses Problem lautet der Zielbezeichner (oder die Zielklasse) „tip\_amount“. Die Datenlecks lauten in diesem Fall: „tipped“, „tip\_class“, „total\_amount“. Sämtliche dieser Variablen enthalten Informationen zum Trinkgeldbetrag, die zum Testzeitpunkt normalerweise nicht zur Verfügung stehen. Wir entfernen diese Spalten mithilfe des [Select Columns in Dataset][select-columns]-Moduls.
 
 Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage des Trinkgeldbetrags.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
+![Momentaufnahme des Experiments](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
 
 b. Für Regressionsprobleme messen wir die Genauigkeit unserer Vorhersage, indem wir die quadratische Abweichung in den Vorhersagen, den Bestimmungskoeffizienten und ähnliche Faktoren betrachten. Dies wird nachfolgend gezeigt.
 
-![](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
+![Vorhersagestatistik](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
 
 Wir sehen, dass der Bestimmungskoeffizient 0,709 lautet, was impliziert, dass etwa 71 % der Varianz durch die Modellkoeffizienten erklärt werden.
 
@@ -822,9 +822,9 @@ Wir sehen, dass der Bestimmungskoeffizient 0,709 lautet, was impliziert, dass et
 Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei LICENSE.txt im Verzeichnis mit dem Beispielcode auf GitHub.
 
 ## <a name="references"></a>Referenzen
-•    [NYC Taxi Trips: Download Page von Andrés Monroy (in englischer Sprache)](http://www.andresmh.com/nyctaxitrips/)  
-•    [FOILing NYC’s Taxi Trip Data von Chris Whong (in englischer Sprache)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-• [NYC Taxi and Limousine Commission Research and Statistics (in englischer Sprache)](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+•    [NYC Taxi Trips: Download Page von Andrés Monroy](http://www.andresmh.com/nyctaxitrips/)  
+•    [FOILing NYC’s Taxi Trip Data von Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•    [NYC Taxi and Limousine Commission Research and Statistics](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
 [11]: ./media/machine-learning-data-science-process-hive-walkthrough/hive-reader-properties.png
@@ -839,6 +839,6 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

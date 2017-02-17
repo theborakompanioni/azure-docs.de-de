@@ -1,6 +1,6 @@
 ---
-title: "Entwicklungsleitfaden – Aufträge | Microsoft-Dokumentation"
-description: "Entwicklungsleitfaden für Azure IoT Hub: Planen der Ausführung von Aufträgen auf mehreren mit Ihrem Hub verbundenen Geräten"
+title: "Grundlegendes zu Azure IoT Hub-Aufträgen | Microsoft-Dokumentation"
+description: "Entwicklerhandbuch: Planen der Ausführung von Aufträgen auf mehreren Geräten, die mit Ihrer IoT Hub-Instanz verbunden sind. Aufträge können Tags und gewünschte Eigenschaften aktualisieren und auf mehreren Geräten direkte Methoden aufrufen."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: d57e52d2b97d226b62a356798a9e0b5fcabd1a00
+ms.sourcegitcommit: 8245c9d86d7a37bfb12c06b1cb2cbe9dae01d653
+ms.openlocfilehash: c919105d2047e2a931433d2f30a7fa41192d7908
 
 
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
 ## <a name="overview"></a>Übersicht
-Wie in den vorherigen Artikeln beschrieben, bietet Azure IoT Hub eine Reihe von Bausteinen ([Eigenschaften und Tags von Gerätezwillingen][lnk-twin-devguide] und [Direkte Methoden][lnk-dev-methods]).  IoT-Back-End-Anwendungen ermöglichen Geräteadministratoren und -bedienern in der Regel die Aktualisierung von und Interaktion mit IoT-Geräten in einem Massenvorgang und zu einem geplanten Zeitpunkt.  Aufträge kapseln die Ausführung von Updates von Gerätezwillingen und direkten Methoden für eine Gruppe von Geräten zu einem geplanten Zeitpunkt.  Beispiel: Ein Bediener nutzt eine Back-End-Anwendung, mit der ein Auftrag zum Neustarten einer Gruppe von Geräten in Gebäude 43 im 3. Stock nacheinander neu gestartet und nachverfolgt wird, der für die Betriebsabläufe im Gebäude nicht störend ist.
+Wie in den vorherigen Artikeln beschrieben, bietet Azure IoT Hub eine Reihe von Bausteinen ([Eigenschaften und Tags von Gerätezwillingen][lnk-twin-devguide] und [Direkte Methoden][lnk-dev-methods]).  Mit Back-End-Apps können Geräteadministratoren und -bediener in der Regel IoT-Geräte mithilfe eines Massenvorgangs und zu einem geplanten Zeitpunkt aktualisieren und mit ihnen interagieren.  Aufträge kapseln die Ausführung von Updates von Gerätezwillingen und direkten Methoden für eine Gruppe von Geräten zu einem geplanten Zeitpunkt.  So kann ein Bediener beispielsweise mithilfe einer Back-End-App einen Auftrag für den Neustart einer Gruppe von Geräten im dritten Stock von Gebäude 43 zu einem Zeitpunkt initiieren und nachverfolgen, zu dem die Betriebsabläufe im Gebäude nicht gestört werden.
 
 ### <a name="when-to-use"></a>Einsatzgebiete
 Erwägen Sie das Arbeiten mit Aufträgen, wenn ein Lösungs-Back-End den Fortschritt der folgenden Aktivitäten auf einer Gruppe von Geräten planen und nachverfolgen muss:
@@ -32,7 +32,7 @@ Erwägen Sie das Arbeiten mit Aufträgen, wenn ein Lösungs-Back-End den Fortsch
 * Aufrufen direkter Methoden
 
 ## <a name="job-lifecycle"></a>Auftragslebenszyklus
-Aufträge werden vom Lösungs-Back-End eingeleitet und vom IoT Hub verwaltet.  Sie können einen Auftrag über einen dienstseitigen URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-09-30-preview`) auslösen und den Fortschritt eines in der Ausführung befindlichen Auftrags über einen dienstseitigen URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-09-30-preview`) abfragen.  Nachdem ein Auftrag eingeleitet wurde, ermöglicht das Abfragen von Aufträgen der Back-End-Anwendung das Aktualisieren des Status in der Ausführung befindlicher Aufträge.
+Aufträge werden vom Lösungs-Back-End eingeleitet und vom IoT Hub verwaltet.  Sie können einen Auftrag über einen dienstseitigen URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) auslösen und den Fortschritt eines in der Ausführung befindlichen Auftrags über einen dienstseitigen URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) abfragen.  Nach dem Initiieren eines Auftrags kann die Back-End-App den Ausführungsstatus durch das Abfragen von Aufträgen aktualisieren.
 
 > [!NOTE]
 > Wenn Sie einen Auftrag initiieren, dürfen Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
@@ -46,7 +46,7 @@ Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung von 
 Es folgen die HTTP 1.1-Anforderungsdetails zum Ausführen einer [direkten Methode][lnk-dev-methods] auf einer Gruppe von Geräten mithilfe eines Auftrags:
 
     ```
-    PUT /jobs/v2/<jobId>?api-version=2016-09-30-preview
+    PUT /jobs/v2/<jobId>?api-version=2016-11-14
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -72,7 +72,7 @@ Es folgen die HTTP 1.1-Anforderungsdetails zum Ausführen einer [direkten Method
 Es folgen die HTTP 1.1-Anforderungsdetails zum Aktualisieren von Eigenschaften von Gerätezwillingen mithilfe eines Auftrags:
 
     ```
-    PUT /jobs/v2/<jobId>?api-version=2016-09-30-preview
+    PUT /jobs/v2/<jobId>?api-version=2016-11-14
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
     Request-Id: <guid>
@@ -93,7 +93,7 @@ Es folgen die HTTP 1.1-Anforderungsdetails zum Aktualisieren von Eigenschaften v
 Es folgen die HTTP 1.1-Anforderungsdetails für das [Abfragen von Aufträgen][lnk-query]:
 
     ```
-    GET /jobs/v2/query?api-version=2016-09-30-preview[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
+    GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -123,7 +123,7 @@ Es folgt eine Liste von Eigenschaften und entsprechenden Beschreibungen, die bei
 | **completed**: Auftrag wurde abgeschlossen. | |
 | **deviceJobStatistics** |Statistiken zur Ausführung des Auftrags. |
 
-In der Vorschauphase steht das Objekt „deviceJobStatistics“ erst zur Verfügung, nachdem der Auftrag abgeschlossen wurde.
+**deviceJobStatistics**-Eigenschaften.
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
@@ -134,12 +134,12 @@ In der Vorschauphase steht das Objekt „deviceJobStatistics“ erst zur Verfüg
 | **deviceJobStatistics.pendingCount** |Anzahl der Geräte, auf denen die Ausführung des Auftrags aussteht. |
 
 ### <a name="additional-reference-material"></a>Weiteres Referenzmaterial
-Weitere Referenzthemen im Entwicklerhandbuch:
+Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
 * Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
-* Unter [Azure IoT device and service SDKs][lnk-sdks] (Azure IoT SDKs für Geräte und Dienste) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienstanwendungen für die Interaktion mit IoT Hub verwenden können.
-* Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen über Gerätezwillinge und Aufträge abrufen können.
+* Unter [Azure IoT device and service SDKs][lnk-sdks] (Azure IoT SDKs für Geräte und Dienste) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+* Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -162,6 +162,6 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Dienstprinzipals im Portal | Microsoft Docs
+title: Erstellen eines Dienstprinzipals im Portal | Microsoft-Dokumentation
 description: Beschreibt das Erstellen einer neuen Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure-Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2016
+ms.date: 11/30/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 1a0889e16d0b0e4d361f573ac34ad868936ed20c
+ms.sourcegitcommit: 4312002b311ec17f175f6eb6bc45fbe1ce7c7a01
+ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
 
 
 ---
@@ -28,150 +28,139 @@ ms.openlocfilehash: 1a0889e16d0b0e4d361f573ac34ad868936ed20c
 >
 >
 
-Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Derzeit müssen Sie das klassische Portal verwenden, um eine neue Active Directory-Anwendung zu erstellen, und dann zum Azure-Portal wechseln, um der Anwendung eine Rolle zuzuweisen.
+Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Es konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.
+ 
+## <a name="required-permissions"></a>Erforderliche Berechtigungen
+Um dieses Thema abzuschließen, müssen Sie über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Active Directory zu registrieren, und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen. Stellen Sie sicher, dass Sie über die richtigen Berechtigungen für diese Schritte verfügen.
 
-> [!NOTE]
-> Die Schritte in diesem Thema gelten nur bei Verwendung des **klassischen Portals** zum Erstellen der AD-Anwendung. **Wenn Sie das Azure-Portal zum Erstellen der AD-Anwendung verwenden, haben diese Schritte keinen Erfolg.**
->
-> Unter Umständen ist es für Sie einfacher, die AD-Anwendung und den Dienstprinzipal über [PowerShell](resource-group-authenticate-service-principal.md) oder die [Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md) einzurichten. Dies gilt besonders, wenn Sie für die Authentifizierung ein Zertifikat verwenden möchten. Dieses Thema beschreibt nicht die Verwendung eines Zertifikats.
->
->
+### <a name="check-active-directory-permissions"></a>Überprüfen der Active Directory-Berechtigungen
+1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com) bei Ihrem Azure-Konto an.
+2. Wählen Sie **Azure Active Directory**.
 
-Eine Erläuterung der Active Directory-Konzepte finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
-Weitere Informationen zur Active Directory-Authentifizierung finden Sie unter [Authentifizierungsszenarien für Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+     ![Azure Active Directory auswählen](./media/resource-group-create-service-principal-portal/select-active-directory.png)
+3. Wählen Sie in Ihrem Active Directory die Option **Benutzereinstellungen** aus.
 
-Ausführliche Schritte zum Integrieren einer Anwendung in Azure zur Verwaltung von Ressourcen finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
+     ![Benutzereinstellungen auswählen](./media/resource-group-create-service-principal-portal/select-user-settings.png)
+4. Überprüfen Sie die Einstellung **App Registrierungen**. Ist diese Option auf **Ja** festgelegt, können Benutzer ohne Administratorrechte AD-Apps registrieren. Diese Einstellung bedeutet, dass jeder Benutzer in Active Directory Apps registrieren kann. Sie können mit [Berechtigungen des Azure-Abonnements überprüfen](#check-azure-subscription-permissions) fortfahren.
+
+     ![App-Registrierungen anzeigen](./media/resource-group-create-service-principal-portal/view-app-registrations.png)
+5. Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Administratorbenutzer Apps registrieren. Sie müssen überprüfen, ob Ihr Konto ein Administrator für Active Directory ist. Wählen Sie aus den schnellen Aufgaben **Übersicht** und **Benutzer suchen** aus.
+
+     ![Benutzer suchen](./media/resource-group-create-service-principal-portal/find-user.png)
+6. Suchen Sie nach Ihrem Konto, und wählen Sie es aus, wenn Sie es gefunden haben.
+
+     ![Benutzer durchsuchen](./media/resource-group-create-service-principal-portal/show-user.png)
+7. Wählen Sie für Ihr Konto **Verzeichnisrolle** aus. 
+
+     ![Verzeichnisrolle](./media/resource-group-create-service-principal-portal/select-directory-role.png)
+8. Zeigen Sie die Ihnen zugewiesene Rolle für Active Directory an. Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung (aus den vorherigen Schritten) aber auf Administratoren begrenzt ist, bitten Sie Ihren Administrator, Ihnen entweder eine Administratorrolle zuzuweisen oder Benutzern zu erlauben, Apps zu registrieren.
+
+     ![Rolle anzeigen](./media/resource-group-create-service-principal-portal/view-role.png)
+
+### <a name="check-azure-subscription-permissions"></a>Überprüfen der Berechtigungen des Azure-Abonnements
+Ihr Konto muss in Ihrem Azure-Abonnement über `Microsoft.Authorization/*/Write`-Zugriff verfügen, um einer Rolle eine AD-App zuzuweisen. Diese Aktion wird über die Rolle [Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt. Wenn Ihr Konto der Rolle **Mitwirkender** zugewiesen ist, verfügen Sie nicht über die erforderliche Berechtigung. Beim Versuch, einer Rolle den Dienstprinzipal zuzuweisen, erhalten Sie eine Fehlermeldung. 
+
+So überprüfen Sie die Berechtigungen Ihres Abonnements
+
+1. Wenn Ihr Active Directory-Konto aus den vorherigen Schritten noch nicht angezeigt wird, wählen Sie im linken Bereich **Azure Active Directory** aus.
+
+2. Suchen Sie Ihr Azure Active Directory-Konto. Wählen Sie aus den schnellen Aufgaben **Übersicht** und **Benutzer suchen** aus.
+
+     ![Benutzer suchen](./media/resource-group-create-service-principal-portal/find-user.png)
+2. Suchen Sie nach Ihrem Konto, und wählen Sie es aus, wenn Sie es gefunden haben.
+
+     ![Benutzer durchsuchen](./media/resource-group-create-service-principal-portal/show-user.png) 
+     
+3. Wählen Sie **Azure-Ressourcen** aus.
+
+     ![Ressourcen auswählen](./media/resource-group-create-service-principal-portal/select-azure-resources.png) 
+3. Zeigen Sie Ihre zugewiesenen Rollen an, und ermitteln Sie, ob Sie über die erforderlichen Berechtigungen verfügen, um einer Rolle eine AD-App zuzuweisen. Wenn dies nicht der Fall ist, bitten Sie Ihren Abonnementadministrator, Sie zur Rolle „Benutzerzugriffsadministrator“ hinzuzufügen. In der folgenden Abbildung wurde der Benutzer für zwei Abonnements der Rolle „Besitzer“ zugeordnet, das bedeutet, dass dieser Benutzer über die erforderlichen Berechtigungen verfügt. 
+
+     ![Berechtigungen anzeigen](./media/resource-group-create-service-principal-portal/view-assigned-roles.png)
 
 ## <a name="create-an-active-directory-application"></a>Erstellen einer Active Directory-Anwendung
-1. Melden Sie sich über das [klassische Portal](https://manage.windowsazure.com/)bei Ihrem Azure-Konto an.
-2. Stellen Sie sicher, dass Sie das Active Directory-Standardverzeichnis für Ihr Abonnement kennen. Sie können nur Zugriff für Anwendungen gewähren, die sich im selben Verzeichnis wie Ihr Abonnement befinden. Wählen Sie **Einstellungen** aus, und suchen Sie den Namen des mit Ihrem Abonnement verknüpften Verzeichnisses.  Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com) bei Ihrem Azure-Konto an.
+2. Wählen Sie **Azure Active Directory**.
 
-     ![Standardverzeichnis suchen](./media/resource-group-create-service-principal-portal/show-default-directory.png)
-3. Wählen Sie im linken Bereich **Active Directory** aus.
+     ![Azure Active Directory auswählen](./media/resource-group-create-service-principal-portal/select-active-directory.png)
 
-     ![Active Directory auswählen](./media/resource-group-create-service-principal-portal/active-directory.png)
-4. Wählen Sie das Active Directory aus, das Sie zum Erstellen der Anwendung nutzen möchten. Wenn Sie über mehr als eine Active Directory-Instanz verfügen, erstellen Sie die Anwendung im Standardverzeichnis für Ihr Abonnement.   
+4. Wählen Sie **App-Registrierungen** aus.   
 
-     ![Verzeichnis wählen](./media/resource-group-create-service-principal-portal/active-directory-details.png)
-5. Wählen Sie **Anwendungen**aus, um die Anwendungen in Ihrem Verzeichnis anzuzeigen.
+     ![App-Registrierungen auswählen](./media/resource-group-create-service-principal-portal/select-app-registrations.png)
+5. Wählen Sie **Hinzufügen**.
 
-     ![Anwendungen anzeigen](./media/resource-group-create-service-principal-portal/view-applications.png)
-6. Wenn Sie in diesem Verzeichnis bisher noch keine Anwendung erstellt haben, sollten Sie eine Anzeige ähnlich der folgenden sehen. Wählen Sie **EINE ANWENDUNG HINZUFÜGEN**
+     ![App hinzufügen](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-     ![Anwendung hinzufügen](./media/resource-group-create-service-principal-portal/create-application.png)
+6. Geben Sie einen Namen und eine URL für die Anwendung an. Wählen Sie als Typ für die zu erstellende Anwendung entweder **Web-App/API** oder **Nativ** aus. Wählen Sie nach dem Festlegen der Werte **Erstellen** aus.
 
-     Oder klicken Sie im unteren Bereich auf **Hinzufügen** .
-
-     ![Hinzufügen](./media/resource-group-create-service-principal-portal/add-icon.png)
-7. Wählen Sie den Anwendungstypen aus, den Sie erstellen möchten. Wählen Sie für dieses Tutorial **Eine von meinem Unternehmen entwickelte Anwendung hinzufügen**aus.
-
-     ![neue Anwendung](./media/resource-group-create-service-principal-portal/what-do-you-want-to-do.png)
-8. Geben Sie einen Namen für die Anwendung ein, und wählen Sie den Typ der Anwendung aus, die Sie erstellen möchten. Erstellen Sie für dieses Tutorial eine **WEBANWENDUNG UND/ODER WEB-API** , und klicken Sie auf die Schaltfläche „Weiter“. Wenn Sie **NATIVE CLIENTANWENDUNG**auswählen, entsprechen die restlichen Schritte in diesem Artikel nicht der tatsächlichen Vorgehensweise.
-
-     ![Anwendung benennen](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
-9. Tragen Sie die Eigenschaften Ihrer Anwendung ein. Geben Sie für die **ANMELDE-URL**den URI einer Website an, die Ihre Anwendung beschreibt. Das Vorhandensein der Website wird nicht überprüft.
-   Geben Sie für die **APP-ID URI**die URI an, die Ihre Anwendung identifiziert.
-
-     ![Anwendungseigenschaften](./media/resource-group-create-service-principal-portal/app-properties.png)
+     ![Anwendung benennen](./media/resource-group-create-service-principal-portal/create-app.png)
 
 Sie haben Ihre Anwendung erstellt.
 
-## <a name="get-client-id-and-authentication-key"></a>Abrufen der Client-ID und des Authentifizierungsschlüssels
-Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wenn die Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, benötigen Sie außerdem einen Authentifizierungsschlüssel.
+## <a name="get-application-id-and-authentication-key"></a>Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels
+Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung und einen Authentifizierungsschlüssel. Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
 
-1. Wählen Sie die Registrierkarte **Konfigurieren** aus, um das Kennwort für Ihre Anwendung zu konfigurieren.
+1. Wählen Sie in Active Directory unter **App Registrierungen** Ihre Anwendung aus.
 
-     ![Anwendung konfigurieren](./media/resource-group-create-service-principal-portal/application-configure.png)
-2. Kopieren Sie die **CLIENT-ID**.
+     ![Anwendung auswählen](./media/resource-group-create-service-principal-portal/select-app.png)
+2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. Die Anwendungen im Abschnitt [Beispielanwendungen](#sample-applications) verweisen auf diesen Wert als Client-ID.
 
-     ![CLIENT-ID](./media/resource-group-create-service-principal-portal/client-id.png)
-3. Wenn die Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, navigieren Sie nach unten zum Abschnitt **Schlüssel** , und wählen Sie den gewünschten Gültigkeitszeitraum für Ihr Kennwort aus.
+     ![CLIENT-ID](./media/resource-group-create-service-principal-portal/copy-app-id.png)
+3. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
 
-     ![Schlüssel](./media/resource-group-create-service-principal-portal/create-key.png)
-4. Wählen Sie **Speichern** aus, um Ihren Schlüssel zu erstellen.
+     ![Schlüssel auswählen](./media/resource-group-create-service-principal-portal/select-keys.png)
+4. Geben Sie eine Beschreibung des Schlüssels und eine Dauer für den Schlüssel ein. Wählen Sie dann die Option **Schließen**.
 
-     ![Speichern](./media/resource-group-create-service-principal-portal/save-icon.png)
+     ![Schlüssel speichern](./media/resource-group-create-service-principal-portal/save-key.png)
 
-     Der gespeicherte Schlüssel wird angezeigt, sodass Sie ihn kopieren können. Kopieren Sie den Schlüssel jetzt, da Sie ihn später nicht mehr abrufen können.
+     Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopieren Sie diesen Wert jetzt, da Sie ihn später nicht mehr abrufen können. Sie geben den Schlüsselwert zusammen mit der Anwendungs-ID ein, um sich als Anwendung anzumelden. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
 
-     ![gespeicherter Schlüssel](./media/resource-group-create-service-principal-portal/save-key.png)
+     ![gespeicherter Schlüssel](./media/resource-group-create-service-principal-portal/copy-key.png)
 
 ## <a name="get-tenant-id"></a>Abrufen der Mandanten-ID
-Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. Bei Web-Apps und Web-API-Apps können Sie die Mandanten-ID abrufen, indem Sie unten auf der Seite **Endpunkte anzeigen** auswählen und die ID wie im der folgenden Abbildung gezeigt abrufen.  
+Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung die Mandanten-ID übergeben. 
 
-   ![Mandanten-ID](./media/resource-group-create-service-principal-portal/save-tenant.png)
+1. Wählen Sie zum Abrufen der Mandanten-ID die Option **Eigenschaften** für Ihr Active Directory aus. 
 
-Sie können die Mandanten-ID auch über PowerShell abrufen:
+     ![Active Directory-Eigenschaften auswählen](./media/resource-group-create-service-principal-portal/select-ad-properties.png)
 
-    Get-AzureRmSubscription
+2. Kopieren Sie die **-Verzeichnis-ID**. Dieser Wert ist Ihre Mandanten-ID.
 
-Oder mit der Azure-Befehlszeilenschnittstelle:
-
-    azure account show --json
-
-## <a name="set-delegated-permissions"></a>Festlegen der delegierten Berechtigungen
-Wenn Ihre Anwendung im Auftrag eines angemeldeten Benutzers auf Ressourcen zugreift, müssen Sie der Anwendung die delegierten Berechtigungen für den Zugriff auf andere Anwendungen gewähren. Sie gewähren diesen Zugriff auf der Registerkarte **Konfigurieren** im Abschnitt **Berechtigungen für andere Anwendungen**. Eine delegierte Berechtigung ist standardmäßig bereits für die Azure Active Directory-Instanz aktiviert. Lassen Sie diese delegierte Berechtigung unverändert.
-
-1. Wählen Sie **Anwendung hinzufügen**aus.
-2. Wählen Sie in der Liste die **Windows Azure-Dienstverwaltungs-API**aus. Klicken Sie dann auf das Symbol zum Fertigstellen.
-
-      ![App auswählen](./media/resource-group-create-service-principal-portal/select-app.png)
-3. Aktivieren Sie in der Dropdownliste für delegierte Berechtigungen das Kontrollkästchen **Als Organisation auf Azure-Dienstverwaltung zugreifen**.
-
-      ![Berechtigung auswählen](./media/resource-group-create-service-principal-portal/select-permissions.png)
-4. Speichern Sie die Änderungen.
+     ![Mandanten-ID](./media/resource-group-create-service-principal-portal/copy-directory-id.png)
 
 ## <a name="assign-application-to-role"></a>Zuweisen einer Anwendung zur Rolle
-Wenn Ihre Anwendung mit ihren eigenen Anmeldeinformationen ausgeführt wird, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
-
-Um einer Anwendung eine Rolle zuzuweisen, müssen Sie über die richtigen Berechtigungen verfügen. Für die Rollenzuweisung benötigen Sie `Microsoft.Authorization/*/Write`-Zugriff. Dieser wird über die Rolle[ Besitzer](../active-directory/role-based-access-built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) gewährt. Die Rolle „Mitwirkender“ verfügt nicht über die richtigen Zugriffsrechte.
+Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../active-directory/role-based-access-built-in-roles.md).
 
 Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
 
-1. Zum Zuweisen der Anwendung an eine Rolle wechseln Sie vom klassischen Portal zum [Azure-Portal](https://portal.azure.com).
-2. Überprüfen Sie Ihre Berechtigungen, um sicherzustellen, dass Sie den Dienstprinzipal einer Rolle zuweisen können. Wählen Sie **Meine Berechtigungen** für Ihr Konto.
-
-    ![Meine Berechtigungen auswählen](./media/resource-group-create-service-principal-portal/my-permissions.png)
-3. Zeigen Sie die zugewiesenen Berechtigungen für Ihr Konto an. Wie bereits erwähnt, müssen Sie zur Rolle „Besitzer“ oder zur Rolle „Benutzerzugriffsadministrator“ gehören oder über eine benutzerdefinierte Rolle verfügen, die Schreibzugriff für „Microsoft.Authorization“ gewährt. Die folgende Abbildung zeigt ein Konto, das der Rolle „Mitwirkender“ für das Abonnement zugewiesen wurde – dies sind keine adäquaten Berechtigungen, um eine Anwendung zu einer Rolle zuzuweisen.
-
-    ![Meine Berechtigungen anzeigen](./media/resource-group-create-service-principal-portal/show-permissions.png)
-
-     Wenn Sie nicht über die erforderlichen Berechtigungen zum Gewähren des Zugriffs auf eine Anwendung verfügen, muss Ihr Abonnementadministrator Sie zur Rolle „Benutzerzugriffsadministrator“ hinzufügen, oder es muss ein Administrator den Zugriff auf die Anwendung gewähren.
-4. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements**aus.
+1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z.B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements** aus. Sie können stattdessen auch eine Ressourcengruppe oder Ressource auswählen.
 
      ![Abonnement auswählen](./media/resource-group-create-service-principal-portal/select-subscription.png)
 
-     Wählen Sie das Abonnement aus, dem die Anwendung zugewiesen werden soll.
+2. Wählen Sie das entsprechende Abonnement (Ressourcengruppe oder Ressource) aus, dem die Anwendung zugewiesen werden soll.
 
      ![Abonnement für Zuweisung auswählen](./media/resource-group-create-service-principal-portal/select-one-subscription.png)
 
-     Wählen Sie rechts oben das Symbol **Zugriff** aus.
+3. Wählen Sie **Access Control (IAM)** aus.
 
-     ![„Zugriff“ auswählen](./media/resource-group-create-service-principal-portal/select-access.png)
+     ![„Zugriff“ auswählen](./media/resource-group-create-service-principal-portal/select-access-control.png)
 
-     Um eine Rolle auf Ressourcengruppenebene zuzuweisen, wechseln Sie zu einer Ressourcengruppe. Wählen Sie auf dem Blatt „Ressourcengruppe“ **Zugriffssteuerung**aus.
-
-     ![Benutzer auswählen](./media/resource-group-create-service-principal-portal/select-users.png)
-
-     Die folgenden Schritte sind für alle Ebenen identisch.
-5. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Hinzufügen**.
 
      ![„Hinzufügen“ wählen](./media/resource-group-create-service-principal-portal/select-add.png)
-6. Wählen Sie die Rolle **Leser** (bzw. die Rolle, der die Anwendung zugewiesen werden soll).
+6. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. In der folgenden Abbildung ist die Rolle **Leser** dargestellt.
 
      ![Rolle wählen](./media/resource-group-create-service-principal-portal/select-role.png)
-7. Beim ersten Anzeigen der Liste mit Benutzern, die Sie der Rolle hinzufügen können, werden keine Anwendungen angezeigt. Nur Gruppen und Benutzer werden angezeigt.
 
-     ![Benutzer anzeigen](./media/resource-group-create-service-principal-portal/show-users.png)
-8. Sie müssen nach Ihrer Anwendung suchen. Geben Sie den Anfang des Namens Ihrer Anwendung ein, und die Liste der verfügbaren Optionen ändert sich. Wählen Sie Ihre Anwendung aus, wenn Sie in der Liste angezeigt wird.
+8. Suchen Sie nach Ihrer Anwendung, und wählen Sie sie aus.
 
-     ![An Rolle zuweisen](./media/resource-group-create-service-principal-portal/assign-to-role.png)
-9. Wählen Sie **OK** , um das Zuweisen der Rolle abzuschließen. Jetzt sollten Sie Ihre Anwendung in der Liste der Benutzer sehen, die einer Rolle für die Ressourcengruppe zugewiesen sind.
+     ![Nach App suchen](./media/resource-group-create-service-principal-portal/search-app.png)
+9. Wählen Sie **OK** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer angezeigt, die einer Rolle für diesen Kontext zugewiesen sind.
 
-Weitere Informationen zum Zuweisen von Benutzern und Anwendungen zu Rollen über das Portal finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md#add-access).
+Die Anwendung wird jetzt in Active Directory eingerichtet. Sie verfügen über eine ID und einen Schlüssel, um sich als Anwendung anzumelden. Die Anwendung ist einer Rolle zugewiesen, die die Ausführung bestimmter Aktionen erlaubt. Anhand der Beispielanwendungen können Sie mehr darüber erfahren, wie Sie Aufgaben im Anwendungscode durchführen können.
 
 ## <a name="sample-applications"></a>Beispielanwendungen
-Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinzipal:
+Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als AD-Anwendung:
 
 **.NET**
 
@@ -199,11 +188,12 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als Dienstprinz
 * [Manage Azure resources and resource groups with Ruby (Verwalten von Azure-Ressourcen und -Ressourcengruppen mit Ruby)](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](resource-manager-api-authentication.md).
 * Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).  
-* Eine Videodemo dieser Schritte finden Sie unter [Aktivieren der programmgesteuerten Verwaltung einer Azure-Ressource mit Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO1-->
 
 

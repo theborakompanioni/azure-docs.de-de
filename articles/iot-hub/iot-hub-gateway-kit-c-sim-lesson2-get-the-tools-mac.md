@@ -1,6 +1,6 @@
 ---
-title: Vorbereiten von Mac-Computern und Azure IoT Hub | Microsoft-Dokumentation
-description: "Installieren Sie die Tools auf Ihrem Mac-Computer, erstellen Sie eine IoT Hub-Instanz und registrieren Sie Ihr Gerät bei IoT Hub."
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 2: Abrufen der Tools (macOS) | Microsoft-Dokumentation"
+description: "Installieren Sie die Tools auf Ihrem Mac-Computer, erstellen Sie eine IoT Hub-Instanz, und registrieren Sie Ihr Gerät bei IoT Hub."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: f3bed8620c13372c3af50657bb54aa8dce115529
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 8b79b166fb16d6454fde46996e715779bf19eac7
 
 
 ---
@@ -45,12 +45,12 @@ In dieser Lektion lernen Sie Folgendes:
   - Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   - NPM ist einer der Paket-Manager für Node.js.
 - Installieren von Visual Studio Code
-  - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und MacOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
+  - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und macOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
 - Installieren von Python
   - Python ist eine weit verbreitete, interpretierte und dynamische Programmiersprache für allgemeine Aufgaben auf hoher Ebene.
 - Installieren der Azure-Befehlszeilenschnittstelle
   - Die Azure-CLI bietet eine plattformübergreifende Befehlszeile für Azure. So können Sie Ressourcen direkt über die Befehlszeile bereitstellen und verwalten.
-- Erstellen einer IoT Hub-Instanz mithilfe der Azure-CLI
+- Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 
 ## <a name="what-you-need"></a>Erforderliches Element
 
@@ -85,7 +85,7 @@ Führen Sie den folgenden Befehl im Terminal aus, um Gulp zu installieren:
 npm install -g gulp
 ```
 
-Wenn bei der Installation Probleme auftreten, finden Sie in der [Anleitung zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md) Lösungen für häufiger auftretende Probleme.
+Wenn bei der Installation Probleme auftreten, helfen Ihnen die Lösungen für häufiger vorkommende Probleme in der [Anleitung zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md) weiter.
 
 > [!Note]
 > Node, NPM und Gulp sind für die Ausführung von Automatisierungsskripts, die mit Node.js entwickelt wurden, erforderlich.
@@ -117,7 +117,7 @@ Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
    ```
    Wenn die Installation erfolgreich war, wird die folgende Ausgabe angezeigt.
 
-   ![Überprüfen der Azure-CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_osx.png)
+   ![Überprüfen der Azure CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_osx.png)
 
 ## <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
 
@@ -127,13 +127,13 @@ Sie verwenden später in diesem Tutorial Visual Studio Code, um Konfigurationsda
 
 ## <a name="summary"></a>Zusammenfassung
 
-Sie haben die erforderlichen Tools und Software auf Ihrem Mac-Computer installiert. Als Nächstes verwenden Sie die Azure-CLI zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
+Sie haben die erforderlichen Tools und Software auf Ihrem Mac-Computer installiert. Als Nächstes verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer IoT Hub-Instanz und Registrieren des Geräts](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

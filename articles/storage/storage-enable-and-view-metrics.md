@@ -4,7 +4,7 @@ description: "Aktivieren von Speichermetriken für die Blob-, Warteschlangen-, T
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2721d804c1ce9ae2d6df60b1daa5a957848945b6
-ms.openlocfilehash: 3cf750343f431299b20a8b8147305dec00bde87d
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: dc5fd2fac9ed67f192a088e1187536ec94c6ab1d
 
 
 ---
@@ -60,7 +60,7 @@ Der folgende Befehl ruft die aktuelle stündliche Metrikstufe und die Aufbewahru
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>Programmgesteuertes Aktivieren von Speichermetriken
 Der folgende C#-Codeausschnitt zeigt, wie Metriken und Protokollierung für den Blob-Dienst mithilfe der Speicherclientbibliothek für .NET aktiviert werden:
@@ -209,6 +209,6 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 [Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

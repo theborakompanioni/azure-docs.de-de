@@ -12,16 +12,16 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/24/2016
+ms.date: 11/30/2016
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 2b62ddb83b35194b9fcd23c60773085a9551b172
-ms.openlocfilehash: 041b47ed2aba11d45ed6ae02dadb73916046dd78
+ms.sourcegitcommit: 976470e7b28a355cbfa4c5c8d380744eb1366787
+ms.openlocfilehash: f8711ba45339be7ffbeac1ab28823df43db23046
 
 ---
 
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
-Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure-Blobspeicher gespeichert sind. Mit dem neuen Azure Search-Blobindexer verläuft dieser Prozess schnell und reibungslos.
+Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure-Blobspeicher gespeichert sind. Zunächst werden grundlegende Informationen zu Einrichten und Konfigurieren eines Blobindexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen. 
 
 ## <a name="supported-document-formats"></a>Unterstützte Dokumentformate
 Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
@@ -45,17 +45,15 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 Sie können einen Azure Blob Storage-Indexer über folgende Elemente einrichten:
 
 * [Azure-Portal](https://ms.portal.azure.com)
-* Azure Search [REST-API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
-* Azure Search .NET SDK [Version 2.0-Vorschau](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)
+* Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Mit dem Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
 > [!NOTE]
 > Einige Features (z.B. Feldzuordnungen) sind im Portal noch nicht verfügbar und müssen programmgesteuert verwendet werden.
 >
 >
 
-In diesem Artikel richten wir mithilfe der REST-API einen Indexer ein. Wir müssen zunächst eine Datenquelle und dann einen Index erstellen und schließlich den Indexer konfigurieren.
-
-Danach wird beschrieben, wie der Blobindexer Blobs analysiert, wie Sie auswählen, welchen Blob Sie indizieren, wie Sie mit Blobs nicht unterstützter Inhaltstypen umgehen und welche Konfigurationseinstellungen verfügbar sind. 
+Hier wird der Ablauf unter Verwendung der REST-API veranschaulicht. 
 
 ### <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
 Eine Datenquelle gibt an, welche Daten indiziert werden müssen. Sie legt außerdem die Anmeldeinformationen für den Zugriff auf die Daten sowie die Richtlinien fest, mit denen Änderungen an den Daten effizient identifiziert werden können (z.B. neue, geänderte oder gelöschte Zeilen). Eine Datenquelle kann von mehreren Indexern im selben Suchdienst verwendet werden.
@@ -67,7 +65,7 @@ Für die Blobindizierung muss die Datenquelle über die folgenden erforderlichen
 * Mit **credentials** wird die Speicherkonto-Verbindungszeichenfolge als `credentials.connectionString`-Parameter angegeben. Sie erhalten die Verbindungszeichenfolge über das Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto > **Einstellungen** > **Schlüssel**, und verwenden Sie den Wert „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“.
 * Mit **container** wird ein Container in Ihrem Speicherkonto angegeben. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
 
-Das folgende Beispiel veranschaulicht eine Datenquellendefinition:
+So erstellen Sie eine Datenquelle:
 
     POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
     Content-Type: application/json
@@ -80,12 +78,12 @@ Das folgende Beispiel veranschaulicht eine Datenquellendefinition:
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
 
-Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://msdn.microsoft.com/library/azure/dn946876.aspx).
+Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
 ### <a name="step-2-create-an-index"></a>Schritt 2: Erstellen eines Index
-Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.  
+Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.
 
-Stellen Sie bei der Blobindizierung sicher, dass der Index über ein durchsuchbares Feld `content` zum Speichern des Blobs verfügt.
+Hier sehen Sie, wie Sie einen Index mit einem durchsuchbaren `content`-Feld zum Speichern des aus Blobs extrahierten Texts erstellen:   
 
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
     Content-Type: application/json
@@ -99,10 +97,12 @@ Stellen Sie bei der Blobindizierung sicher, dass der Index über ein durchsuchba
           ]
     }
 
-Weitere Informationen zur API zum Erstellen eines Index finden Sie unter [Create Index](https://msdn.microsoft.com/library/dn798941.aspx)
+Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index erstellen).
 
 ### <a name="step-3-create-an-indexer"></a>Schritt 3: Erstellen eines Indexers
-Ein Indexer verbindet Datenquellen mit Zielsuchindizes und stellt Zeitplaninformationen bereit, sodass Sie die Datenaktualisierung automatisieren können. Nachdem der Index und die Datenquelle erstellt wurden, ist es relativ einfach, einen Indexer zu erstellen, mit dem auf die Datenquelle und einen Zielindex verwiesen wird. Beispiel:
+Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen Zeitplan zur Automatisierung der Datenaktualisierung bereit. 
+
+Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
     POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
     Content-Type: application/json
@@ -115,9 +115,9 @@ Ein Indexer verbindet Datenquellen mit Zielsuchindizes und stellt Zeitplaninform
       "schedule" : { "interval" : "PT2H" }
     }
 
-Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall ist 5 Minuten. Der Zeitplan ist optional. Falls Sie ihn weglassen, wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
+Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](https://msdn.microsoft.com/library/azure/dn946899.aspx).
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 ## <a name="how-azure-search-indexes-blobs"></a>Wie indiziert Azure Search Blobs?
 
@@ -147,13 +147,14 @@ Es ist nicht erforderlich, Felder für alle obigen Eigenschaften in Ihrem Suchin
 >
 >
 
-### <a name="picking-the-document-key-field-and-dealing-with-different-field-names"></a>Auswählen des Dokumentschlüsselfelds und Behandeln unterschiedlicher Feldnamen
+<a name="DocumentKeys"></a>
+### <a name="defining-document-keys-and-field-mappings"></a>Definieren von Dokumentschlüsseln und Feldzuordnungen
 In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ „Edm.String“ verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist auch das einzige erforderliche Feld).  
 
 Sie sollten sorgfältig abwägen, welches extrahierte Feld Sie dem Schlüsselfeld für Ihren Index zuordnen. Die Kandidaten lauten:
 
 * **metadata\_storage\_name**: Dies ist gegebenenfalls ein passender Kandidat. Beachten Sie aber, dass 1) die Namen unter Umständen nicht eindeutig sind, falls Blobs mit dem gleichen Namen in unterschiedlichen Ordnern enthalten sind, und 2) der Name Zeichen enthalten kann, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die `base64Encode`-[Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) verwenden. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z.B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
-* **metadata\_storage\_path**: Die Verwendung des vollständigen Pfads sorgt für Eindeutigkeit, aber der Pfad enthält auf jeden Fall `/`-Zeichen, die [in einem Dokumentschlüssel ungültig sind](https://msdn.microsoft.com/library/azure/dn857353.aspx).  Wie oben auch, haben Sie hierbei die Möglichkeit, die Schlüssel mit der `base64Encode`-[Funktion](search-indexer-field-mappings.md#base64EncodeFunction) zu codieren.
+* **metadata\_storage\_path**: Die Verwendung des vollständigen Pfads sorgt für Eindeutigkeit, aber der Pfad enthält auf jeden Fall `/`-Zeichen, die [in einem Dokumentschlüssel ungültig sind](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  Wie oben auch, haben Sie hierbei die Möglichkeit, die Schlüssel mit der `base64Encode`-[Funktion](search-indexer-field-mappings.md#base64EncodeFunction) zu codieren.
 * Falls keine der Optionen oben für Sie geeignet ist, können Sie den Blobs eine benutzerdefinierte Metadateneigenschaft hinzufügen. Bei dieser Option ist es aber erforderlich, dass diese Metadateneigenschaft im Rahmen des Blob-Uploadvorgangs allen Blobs hinzugefügt wird. Da der Schlüssel eine erforderliche Eigenschaft ist, tritt für alle Blobs, die nicht über diese Eigenschaft verfügen, beim Indizieren ein Fehler auf.
 
 > [!IMPORTANT]
@@ -344,6 +345,6 @@ Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO1-->
 
 

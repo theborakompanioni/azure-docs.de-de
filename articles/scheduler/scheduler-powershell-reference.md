@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e36a52f44bc30662a01299d2d4a2f3c36d9033a7
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 26eb1469bc508ef518103a955fa0fbc6db2be46d
 
 
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>Scheduler – PowerShell-Cmdlets-Referenz
 In der folgenden Tabelle sind die wichtigsten Cmdlets in Azure Scheduler beschrieben. Sie enthält zudem Links zu den jeweiligen Referenzseiten dieser Cmdlets.
 
-Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). 
+Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). 
 
 Weitere Informationen zu [Azure Resource Manager-Cmdlets](https://msdn.microsoft.com/library/mt125356\(v=azure.200\).aspx) finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../powershell-azure-resource-manager.md).
 
@@ -79,6 +79,6 @@ Get-Help <cmdlet name> -Full
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

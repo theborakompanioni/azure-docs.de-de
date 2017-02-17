@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2016
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 8761e32f22471e00e33605916fc145881c8fe378
-ms.openlocfilehash: fed40bd97114a2f4eafedc5587b4744d73b2a0ff
+ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
+ms.openlocfilehash: 64234747b92379e50edb800d03353be346c4d319
 
 ---
 
@@ -29,7 +29,7 @@ ms.openlocfilehash: fed40bd97114a2f4eafedc5587b4744d73b2a0ff
 
 In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-Adressen pro virtueller Netzwerkschnittstellenkarte (Network Interface Card, NIC) verwenden. Die Unterstützung für mehrere IP-Adressen auf einer NIC ist eine Funktion, die sich derzeit noch in der Vorschauphase befindet. Weitere Informationen finden Sie im Abschnitt [Einschränkungen](#limitations) in diesem Artikel. Das folgende Szenario veranschaulicht, wie dieses Feature mit Load Balancer funktioniert.
 
-In diesem Szenario verwenden wir zwei virtuelle Computer unter Windows mit jeweils einer NIC. Jede NIC verfügt über Konfigurationen mit mehreren IP-Adressen. Jeder virtuelle Computer hostet beide Websites für „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen auf der NIC gebunden. Wir verwenden Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), um den Datenverkehr an die entsprechende IP-Konfiguration für die Website zu verteilen. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
+In diesem Szenario verwenden wir zwei virtuelle Computer unter Windows mit jeweils einer NIC. Jede NIC verfügt über Konfigurationen mit mehreren IP-Adressen. Jeder virtuelle Computer hostet beide Websites für „contoso.com“ und „fabrikam.com“. Jede Website ist an eine der IP-Konfigurationen auf der NIC gebunden. Wir verwenden Load Balancer, um zwei Front-End-IP-Adressen verfügbar zu machen (jeweils eine für jede Website), damit der Datenverkehr an die entsprechende IP-Konfiguration für die Website verteilt werden kann. Dieses Szenario verwendet die gleiche Portnummer auf beiden Front-Ends sowie beide Back-End-Pool-IP-Adressen.
 
 ![Abbildung zum LB-Szenario](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
@@ -45,7 +45,7 @@ Wenn Sie sich für die Vorschau registrieren möchten, senden Sie eine E-Mail an
 
 Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
-1. Installieren Sie Azure PowerShell. Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
+1. Installieren Sie Azure PowerShell. Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 2. Erstellen Sie mithilfe der folgenden Einstellungen eine Ressourcengruppe:
 
     ```powershell
@@ -150,6 +150,6 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

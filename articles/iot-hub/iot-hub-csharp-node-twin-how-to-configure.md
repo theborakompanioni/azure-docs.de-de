@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von Eigenschaften von Gerätezwillingen | Microsoft Docs"
-description: "In diesem Tutorial wird erläutert, wie Sie Eigenschaften von Gerätezwillingen verwenden."
+title: "Verwenden von Azure IoT Hub-Gerätezwillingseigenschaften (.NET/Node) | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Geräte konfigurieren. Sie verwenden das Azure IoT-Geräte-SDK für Node.js, um eine simulierte Geräte-App zu implementieren, und das Azure IoT-Dienst-SDK, um eine Dienst-App zu implementieren, die eine Gerätekonfiguration mithilfe eines Gerätezwillings ändert."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: 34e59b5ef344b48b57418d5cdb6e84b06ee07c43
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 26a6cd170e47204e16bb5799af8dcece7f4bb844
 
 
 ---
-# <a name="tutorial-use-desired-properties-to-configure-devices"></a>Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten
+# <a name="use-desired-properties-to-configure-devices"></a>Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
+Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 * **SimulateDeviceConfiguration.js**, eine simulierte Geräte-App, die auf eine gewünschte Konfigurationsaktualisierung wartet und den Status eines simulierten Konfigurationsaktualisierungsvorgangs meldet.
-* **SetDesiredConfigurationAndQuery**, eine .NET-Konsolen-App, die über das Back-End ausgeführt werden soll, die gewünschte Konfiguration auf einem Gerät festlegt und den Konfigurationsaktualisierungsvorgangs abfragt.
+* **SetDesiredConfigurationAndQuery**, eine .NET-Back-End-App, die die gewünschte Konfiguration für ein Gerät festlegt und den Konfigurationsaktualisierungsprozess abfragt.
 
 > [!NOTE]
-> Im Artikel [Azure IoT SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Anwendungen erstellen können.
+> Im Artikel [Azure IoT SDKs][lnk-hub-sdks] finden Sie Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Apps erstellen können.
 > 
 > 
 
@@ -48,7 +48,7 @@ Wenn Sie das Tutorial [Erste Schritte mit Gerätezwillingen][lnk-twin-tutorial] 
 ## <a name="create-the-simulated-device-app"></a>Erstellen der simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDeviceId** eine Verbindung mit dem Hub herstellt, auf eine gewünschte Konfigurationsaktualisierung wartet und dann Aktualisierungen für den simulierten Konfigurationsaktualisierungsvorgang meldet.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulatedeviceconfiguration**. Erstellen Sie im Ordner **simulatedeviceconfiguration** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulatedeviceconfiguration**. Erstellen Sie im Ordner **simulatedeviceconfiguration** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -59,7 +59,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SimulateDeviceConfiguration.js** im Ordner **simulatedeviceconfiguration**.
-4. Fügen Sie in der Datei **SimulateDeviceConfiguration.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{device connection string}** durch die Verbindungszeichenfolge, die Sie beim Erstellen der Geräteidentität **myDeviceId** kopiert haben:
+4. Fügen Sie in der Datei **SimulateDeviceConfiguration.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{device connection string}** durch die Geräteverbindungszeichenfolge, die Sie beim Erstellen der Geräteidentität **myDeviceId** kopiert haben:
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -142,7 +142,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
             });
         };
    
-    Die **initConfigChange**-Methode aktualisiert die gemeldeten Eigenschaften des lokalen Gerätezwillingsobjekts mit der Anforderung zur Konfigurationsaktualisierung, legt den Status auf **Pending** fest und aktualisiert dann den Gerätezwilling für den Dienst. Nach dem erfolgreichen Aktualisieren des Gerätezwillings wird ein lang ausgeführter Vorgang simuliert, der mit der Ausführung von **completeConfigChange** endet. Diese Methode aktualisiert die lokale Einstellung der gemeldeten Eigenschaften, indem sie den Status auf **Success** festgelegt und das **pendingConfig**-Objekt entfernt. Anschließend wird der Gerätezwilling für den Dienst aktualisiert.
+    Die **initConfigChange**-Methode aktualisiert die gemeldeten Eigenschaften des lokalen Gerätezwillingsobjekts mit der Anforderung zur Konfigurationsaktualisierung, legt den Status auf **Ausstehend** fest und aktualisiert dann den Gerätezwilling für den Dienst. Nach dem erfolgreichen Aktualisieren des Gerätezwillings wird ein lang ausgeführter Vorgang simuliert, der mit der Ausführung von **completeConfigChange** endet. Diese Methode aktualisiert die lokale Einstellung der gemeldeten Eigenschaften, indem sie den Status auf **Success** festgelegt und das **pendingConfig**-Objekt entfernt. Anschließend wird der Gerätezwilling für den Dienst aktualisiert.
    
     Beachten Sie, dass zum Einsparen von Bandbreite beim Aktualisieren der gemeldeten Eigenschaften nicht das gesamte Dokument ersetzt wird, sondern nur die zu ändernden Eigenschaften (mit dem Namen **patch** im Code oben) angegeben werden.
    
@@ -163,7 +163,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die die *gewünschten 
    
     ![Neues Visual C#-Projekt für den klassischen Windows-Desktop][img-createapp]
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SetDesiredConfigurationAndQuery**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen**, suchen Sie nach **microsoft.azure.devices**, wählen Sie zum Installieren des Pakets **Microsoft.Azure.Devices** die Option **Installieren**, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren werden das NuGet-Paket für das [Dienst SDK für Microsoft Azure IoT][lnk-nuget-service-sdk] sowie die dazugehörigen Abhängigkeiten heruntergeladen, installiert und mit einem Verweis versehen.
+3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **microsoft.azure.devices**, wählen Sie zum Installieren des Pakets **Microsoft.Azure.Devices** die Option **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket [Azure IoT-Dienst-SDK][lnk-nuget-service-sdk] heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
    
     ![Fenster „NuGet-Paket-Manager“][img-servicenuget]
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
@@ -171,7 +171,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die die *gewünschten 
         using Microsoft.Azure.Devices;
         using System.Threading;
         using Newtonsoft.Json;
-5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die Verbindungszeichenfolge für den IoT Hub, den Sie im vorherigen Abschnitt erstellt haben.
+5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
@@ -230,13 +230,13 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die die *gewünschten 
    > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine gewünschte Konfiguration als *gewünschte Eigenschaften* im Back-End festgelegt und eine Geräte-App geschrieben, die diese Änderung erkennt und einen Aktualisierungsvorgang in mehreren Schritten simuliert, bei dem der entsprechende Status als gemeldete Eigenschaften gemeldet wird.
+In diesem Tutorial haben Sie eine gewünschte Konfiguration als *gewünschte Eigenschaften* im Lösungs-Back-End festgelegt und eine Geräte-App geschrieben, die diese Änderung erkennt und einen Aktualisierungsvorgang in mehreren Schritten simuliert, bei dem der entsprechende Status als gemeldete Eigenschaften gemeldet wird.
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* Informationen zum Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub][lnk-iothub-getstarted]
-* Informationen zum Planen oder Durchführen von Vorgängen für eine Vielzahl von Geräten im Tutorial [Schedule and broadcast jobs][lnk-schedule-jobs] (Planen und Übertragen von Aufträgen)
-* Informationen zur interaktiven Steuerung von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App) im Tutorial [Verwenden von direkten Methoden][lnk-methods-tutorial]
+* Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub][lnk-iothub-getstarted]
+* Planen oder Durchführen von Vorgängen für eine Vielzahl von Geräten im Tutorial [Schedule and broadcast jobs][lnk-schedule-jobs] (Planen und Übertragen von Aufträgen)
+* Interaktive Steuerung von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App) im Tutorial [Use direct methods][lnk-methods-tutorial] (Verwenden von direkten Methoden)
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-twin-getstarted/servicesdknuget.png
@@ -254,7 +254,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-schedule-jobs]: iot-hub-node-node-schedule-jobs.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
@@ -267,6 +267,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

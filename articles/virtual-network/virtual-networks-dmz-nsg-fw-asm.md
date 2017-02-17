@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 178771fb235e8b2786e4b6d0ac117d5c90540c67
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>Beispiel 2 – Erstellen einer DMZ zum Schützen von Anwendungen mit einer Firewall und NSGs
-[Zurück zur Seite mit bewährten Methoden zu Sicherheitsgrenzen][HOME]
+[Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
 
 In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
 
@@ -79,7 +79,7 @@ Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
 
 Wenn diese Regeln an jedes Subnetz gebunden sind und eine HTTP-Anforderung aus dem Internet an den Webserver eingeht, gilt sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Da Regel 3 aber eine höhere Priorität hat, wird nur diese Regel angewendet, und Regel 5 wird nicht berücksichtigt. Aus diesem Grund würde die HTTP-Anforderung für die Firewall als zulässig eingestuft werden. Falls derselbe Datenverkehr versuchen würde, den DNS01-Server zu erreichen, würde Regel 5 (Verweigern) zuerst gelten. Für den Datenverkehr wird die Übergabe an den Server also nicht zugelassen. Mit Regel 6 (Verweigern) wird die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz blockiert (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Dies dient dem Schutz des Back-End-Netzwerks, falls ein Angreifer die Webanwendung am Front-End attackiert. Der Angreifer hat dann nur beschränkten Zugriff auf das „geschützte“ Back-End-Netzwerk (nur auf Ressourcen, die auf dem Server AppVM01 verfügbar gemacht werden).
 
-Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine Regeln für die ausgehende Richtung geändert. Zum Sperren von Datenverkehr in beiden Richtungen ist das benutzerdefinierte Routing erforderlich. Dies wird in einem anderen Beispiel behandelt, das im [Hauptdokument zu Sicherheitsgrenzen][HOME] enthalten ist.
+Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Zum Sperren von Datenverkehr in beiden Richtungen ist das benutzerdefinierte Routing erforderlich. Dies wird in einem anderen Beispiel behandelt, das im [Hauptdokument zu Sicherheitsgrenzen][HOME] enthalten ist.
 
 Die oben beschriebenen NSG-Regeln weisen eine starke Ähnlichkeit mit den NSG-Regeln unter [Beispiel 1 – Erstellen einer einfachen DMZ mit NSGs][Example1] auf. Lesen Sie sich die NSG-Beschreibung in diesem Dokument durch, um ausführliche Informationen zu den einzelnen NSG-Regeln und ihren Attributen zu erhalten.
 
@@ -567,7 +567,7 @@ Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie
     </NetworkConfiguration>
 
 #### <a name="sample-application-scripts"></a>Beispielanwendungsskripts
-Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie dazu eine Anwendung unter folgendem Link: [Beispielanwendungsskript][SampleApp].
+Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installieren möchten, finden Sie eine Anwendung dieser Art unter folgendem Link: [Beispielanwendungsskript][SampleApp].
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "Eingehende DMZ mit NSG"
@@ -582,6 +582,6 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

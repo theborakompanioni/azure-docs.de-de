@@ -8,6 +8,7 @@ manager: felixwu
 editor: 
 ms.assetid: 340b41bd-9df8-47fb-adfc-03216de38a5e
 ms.service: sql-database
+ms.custom: migrate and move
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 08/31/2016
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f792ad3da0037c55a41e50710cedcbcdf8ef0d74
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dbdcfc9760df41ec1f52406b91cc211fc5ad8ef7
 
 
 ---
@@ -26,27 +27,34 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 ## <a name="preparation-steps-rename-the-table-and-restore-a-copy-of-the-database"></a>Vorbereitungsschritte: Benennen Sie die Tabelle um, und stellen Sie eine Kopie der Datenbank wieder her.
 1. Identifizieren Sie die Tabelle in Ihrer Azure SQL-Datenbank, die Sie durch die wiederhergestellte Kopie ersetzen möchten. Verwenden Sie Microsoft SQL Management Studio zum Umbenennen der Tabelle. Benennen Sie die Tabelle beispielsweise in „&lt;Tabellenname&gt;_alt“ um.
    
-    **Hinweis** : Stellen Sie sicher, dass für die Tabelle, die umbenannt werden soll, keine Aktivitäten ausgeführt werden, um eine Blockierung zu vermeiden. Wenn Probleme auftreten, stellen Sie sicher, dass dieser Schritt während eines Wartungsfensters ausgeführt wird.
+   > [!NOTE]
+   > Stellen Sie sicher, dass für die Tabelle, die umbenannt werden soll, keine Aktivitäten ausgeführt werden, um eine Blockierung zu vermeiden. Wenn Probleme auftreten, stellen Sie sicher, dass dieser Schritt während eines Wartungsfensters ausgeführt wird.
+   >
+
 2. Stellen Sie mithilfe der Schritte zur [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) eine Sicherung Ihrer Datenbank auf den Zustand zu einem von Ihnen gewünschten Zeitpunkt wieder her.
    
-    **Hinweise**:
+   > [!NOTE]
+   > Der Name der wiederhergestellten Datenbank liegt im Format „Datenbankname+Zeitstempel“ vor. Beispiel: **Adventureworks2012_2016-01-01T22-12Z**. Durch diesen Schritt wird der vorhandene Datenbankname auf dem Server nicht überschrieben. Dies ist eine Sicherheitsmaßnahme, die Ihnen die Überprüfung der wiederhergestellten Datenbank ermöglicht, bevor die aktuelle Datenbank gelöscht und die wiederhergestellte Datenbank zum Einsatz in der Produktion umbenannt wird.
    
-   * Der Name der wiederhergestellten Datenbank liegt im Format „Datenbankname+Zeitstempel“ vor. Beispiel: **Adventureworks2012_2016-01-01T22-12Z**. Durch diesen Schritt wird der vorhandene Datenbankname auf dem Server nicht überschrieben. Dies ist eine Sicherheitsmaßnahme, die Ihnen die Überprüfung der wiederhergestellten Datenbank ermöglicht, bevor die aktuelle Datenbank gelöscht und die wiederhergestellte Datenbank zum Einsatz in der Produktion umbenannt wird.
-   * Alle Leistungsstufen von Basic bis Premium werden automatisch vom Dienst gesichert. Hierbei variieren die Aufbewahrungszeiten für die Sicherung basierend auf dem Tarif:
-
-| Datenbankwiederherstellung | Basic-Tarif | Standard-Tarife | Premium-Tarife |
-|:--- |:--- |:--- |:--- |
-| Zeitpunktwiederherstellung |Jeder Wiederherstellungspunkt innerhalb von 7 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |
-
 ## <a name="copying-the-table-from-the-restored-database-by-using-the-sql-database-migration-tool"></a>Kopieren der Tabelle aus der wiederhergestellten Datenbank mithilfe des Tools für die SQL-Datenbankmigration 
+
 1. Laden Sie den [SQL-Datenbankmigrations-Assistenten](https://sqlazuremw.codeplex.com)herunter, und installieren Sie ihn.
 2. Öffnen Sie den SQL-Datenbankmigrations-Assistenten, wählen Sie auf der Seite **Prozess auswählen** die Einstellung **Datenbank in Analyse/Migration** aus, und klicken Sie dann auf **Weiter**.
+
    ![SQL-Datenbankmigrations-Assistent: Prozess auswählen](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/1.png)
+
 3. Geben Sie im Dialogfeld **Verbindung mit dem Server herstellen** die folgenden Einstellungen an:
-   * **Servername**: Ihre SQL Azure-Instanz.
-   * **Authentifizierung**: **SQL Server-Authentifizierung**. Geben Sie Ihre Anmeldeinformationen ein.
-   * **Datenbank**: **Masterdatenbank (alle Datenbanken auflisten)**.
-   * **Hinweis** : Der Assistent speichert standardmäßig Ihre Anmeldeinformationen. Wenn Sie dies nicht möchten, aktivieren Sie **Anmeldeinformationen vergessen**.
+
+   * Servername: **Ihr SQL-Server**
+   * Authentifizierung: **SQL Server-Authentifizierung**
+   * Anmeldung: **Ihre Anmeldung**
+   * Kennwort: **Ihr Kennwort**
+   * Datenbank: **Masterdatenbank (alle Datenbanken auflisten)**
+   
+   > [!NOTE]
+   > Der Assistent speichert standardmäßig Ihre Anmeldeinformationen. Wenn Sie dies nicht möchten, aktivieren Sie **Anmeldeinformationen vergessen**.
+   >
+   
      ![SQL-Datenbankmigrations-Assistent: Quelle auswählen, Schritt 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
 4. Wählen Sie im Dialogfeld **Quelle auswählen** aus dem Abschnitt **Vorbereitungsschritte** den Namen der wiederhergestellten Datenbank als Quelle aus, und klicken Sie auf **Weiter**.
    
@@ -67,7 +75,8 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 9. Klicken Sie auf **Verbinden**, wählen Sie die Zieldatenbank aus, in die Sie die Tabelle verschieben möchten, und klicken Sie dann auf **Weiter**. Dadurch wird die Ausführung des zuvor generierten Skripts abgeschlossen, und es sollte die neu verschobene Tabelle angezeigt werden, die Sie in die Zieldatenbank kopiert haben.
 
 ## <a name="verification-step"></a>Überprüfungsschritt
-1. Testen Sie die neu kopierte Tabelle, und führen Sie Abfragen aus, um sicherzustellen, dass die Daten intakt sind. Wenn Sie sich von der Richtigkeit der Daten überzeugt haben, können Sie die umbenannte Tabelle aus dem Abschnitt **Vorbereitungsschritte** löschen. (z.B. „&lt;Tabellenname&gt;_alt“).
+
+- Testen Sie die neu kopierte Tabelle, und führen Sie Abfragen aus, um sicherzustellen, dass die Daten intakt sind. Wenn Sie sich von der Richtigkeit der Daten überzeugt haben, können Sie die umbenannte Tabelle aus dem Abschnitt **Vorbereitungsschritte** löschen. (z.B. „&lt;Tabellenname&gt;_alt“).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
@@ -75,6 +84,6 @@ Es kann Situationen geben, in denen Sie versehentlich einige Daten in einer SQL-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

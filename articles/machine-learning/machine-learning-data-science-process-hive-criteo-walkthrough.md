@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 63ed48c874d75904cb7ea56b7ae1e50311f6b7f2
+ms.sourcegitcommit: 4d6bdffe23905f5507332b95e1dc12e2c00c017d
+ms.openlocfilehash: b6fe6dd15dd73e8874ded8b9481ea8a14733e34c
 
 
 ---
@@ -75,7 +75,7 @@ Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-log
 
 Klicken Sie auf **Download fortsetzen** , um weitere Informationen über das DataSet und seine Verfügbarkeit zu erhalten.
 
-Die Daten befinden sich an einem öffentlichen [Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md)-Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. „wasb“ bezieht sich auf den Azure-Blobspeicherort. 
+Die Daten befinden sich in einem öffentlichen [Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. „wasb“ bezieht sich auf den Azure Blob Storage-Speicherort. 
 
 1. Die Daten in diesem öffentlichen Blob-Speicher bestehen aus drei untergeordneten Ordnern mit extrahierten Daten.
    
@@ -450,7 +450,7 @@ Klicken Sie mit der rechten Maustaste auf den Ausgabeport des **Import Data** -M
 
 Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experiment zu verwenden, suchen Sie die DataSets mithilfe des nachfolgend angezeigten Felds **Suche** . Geben Sie dann einfach teilweise den Namen ein, den Sie dem DataSets gegeben haben, um darauf zuzugreifen, und ziehen es in den Hauptbereich. Durch das Ziehen in den Hauptbereich wird es zur Verwendung für die Machine Learning-Modellierung ausgewählt.
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
+![Ziehen des Datasets in den Hauptbereich](./media/machine-learning-data-science-process-hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
 > Dies gilt sowohl für Trainings- als auch Test-DataSets. Achten Sie außerdem darauf, den Datenbanknamen und die Tabellennamen zu verwenden, die Sie für diesen Zweck angegeben haben. Die in der Abbildung verwendeten Werte dienen lediglich zur Veranschaulichung.**
@@ -460,7 +460,7 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 ### <a name="a-namestep2a-step-2-create-a-simple-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a> Schritt 2: Erstellen eines einfachen Experiments in Azure Machine Learning, um Klicks/keine Klicks vorherzusagen
 Unser Azure ML-Experiment sieht wie folgt aus:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xRpVfrY.png)
+![Machine Learning-Experiment](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xRpVfrY.png)
 
 Zunächst betrachten wir die Hauptkomponenten dieses Experiments. Denken Sie daran, dass wir zuerst unsere gespeicherten Trainings- und Test-DataSets auf die Experiment-Canvas ziehen müssen.
 
@@ -477,56 +477,56 @@ Für einige kategorische Features von großen DataSets können Millionen von ein
 ##### <a name="building-counting-transforms"></a>Erstellen von Zähltransformationen
 Zum Erstellen von Zählfunktionen verwenden wir das **Build Counting Transform** -Modul, das in Azure Machine Learning verfügbar ist. Das Modul sieht wie folgt aus:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/e0eqKtZ.png)
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OdDN0vw.png)
+![Build Counting Transform-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/e0eqKtZ.png)
+![Build Counting Transform-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OdDN0vw.png)
 
 **Wichtiger Hinweis**: Im Feld **Count columns** geben wir die Spalten ein, die wir zählen möchten. In der Regel handelt es sich dabei (wie bereits erwähnt) um hochdimensionale kategorische Spalten. Zu Beginn wurde erwähnt, dass das Criteo-DataSet über 26 Kategoriespalten verfügt: von Col15 bis Col40. Hier führen wir für alle eine Zählung durch und geben die Indizes (von 15 bis 40, durch Kommas getrennt, wie gezeigt) an.
 
 Zur Verwendung des Moduls im MapReduce-Modus (geeignet für große DataSets) benötigen wir Zugriff auf einen HDInsight Hadoop-Cluster (dazu kann auch der zum Durchsuchen von Funktionen genutzte Cluster verwendet werden) und die Anmeldeinformationen. Die vorigen Abbildungen veranschaulichen die ausgefüllten Werte (ersetzen Sie die Beispielwerte durch die entsprechenden Werte für Ihren Anwendungsfall).
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/05IqySf.png)
+![Modulparameter](./media/machine-learning-data-science-process-hive-criteo-walkthrough/05IqySf.png)
 
 In der Abbildung oben wird das Eingeben des Eingabe-BLOB-Speicherorts gezeigt. Dieser Speicherort enthält die Daten, die zum Erstellen von Zähltabellen reserviert sind.
 
 Nachdem die Ausführung dieses Moduls abgeschlossen ist, können wir die Transformation für später speichern, indem wir mit der rechten Maustaste auf das Modul klicken und die Option **Als Transformation speichern** :
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IcVgvHR.png)
+![Option „Als Transformation speichern“](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IcVgvHR.png)
 
 In unserer oben gezeigten Experimentarchitektur entspricht das DataSet „ytransform2“ genau einer gespeicherten Zähltransformation. Für den Rest dieses Experiments wird angenommen, dass der Reader ein **Build Counting Transform** -Modul für einige Daten zum Generieren von Zahlen verwendet und mit diesen dann Zählfunktionen für die Trainings- und Test-DataSets generiert.
 
 ##### <a name="choosing-what-count-features-to-include-as-part-of-the-train-and-test-datasets"></a>Auswählen der Zählfunktionen, die in Trainings- und Test-DataSets aufgenommen werden
 Sobald eine Zähltransformation bereitsteht kann der Benutzer auswählen, welche Funktionen mithilfe des **Modify Count Table Parameters** -Moduls in seine Trainings- und Test-DataSets aufgenommen werden. Der Vollständigkeit halber zeigen wir dieses Modul hier, verwenden es aber aus Gründen der Einfachheit nicht tatsächlich in unserem Experiment.
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/PfCHkVg.png)
+![Modify Count Table Parameters](./media/machine-learning-data-science-process-hive-criteo-walkthrough/PfCHkVg.png)
 
 In diesem Fall haben wir uns, wie man sehen kann, dafür entschieden, nur die logarithmischen Wahrscheinlichkeiten zu verwenden und die Backoff-Spalte ignorieren. Wir können auch Parameter festlegen, z. B. den Schwellenwert für Papierkorb, die Anzahl der hinzuzufügenden vorhergehenden Pseudobeispiele für die Glättung, und ob Laplace-Rauschen verwendet wird. Dabei handelt es sich um erweiterte Funktionen, und es ist darauf hinzuweisen, dass die Standardwerte ein guter Ausgangspunkt für Benutzer sind, die noch nicht mit dieser Art von Funktionsgenerierung vertraut sind.
 
 ##### <a name="data-transformation-before-generating-the-count-features"></a>Datentransformation vor dem Generieren der Zählfunktionen
 Jetzt konzentrieren wir uns auf einen wichtigen Aspekt der Transformation unserer Trainings- und Testdaten vor dem tatsächlichen Generieren der Zählfunktionen. Beachten Sie, dass zwei **Execute R Script** -Module verwendet werden, bevor wir die Zähltransformation auf unsere Daten anwenden.
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/aF59wbc.png)
+![Execute R Script-Module](./media/machine-learning-data-science-process-hive-criteo-walkthrough/aF59wbc.png)
 
 Hier ist das erste R-Skript:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/3hkIoMx.png)
+![Erstes R-Skript](./media/machine-learning-data-science-process-hive-criteo-walkthrough/3hkIoMx.png)
 
 In diesem R-Skript benennen wir unsere Spalten in „Col1“ bis „Col40“ um, da die Zähltransformation Namen dieses Formats erwartet.
 
 Im zweiten R-Skript gleichen wir die Verteilung zwischen positiven und negativen Klassen (Klasse 1 bzw. 0) durch die Verkleinerung der negativen Klasse aus. Dieser Vorgang wird anhand dieses R-Skripts veranschaulicht:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/91wvcwN.png)
+![Zweites R-Skript](./media/machine-learning-data-science-process-hive-criteo-walkthrough/91wvcwN.png)
 
 In diesem einfachen R-Skript verwenden wir „pos\_neg\_ratio“, um den Ausgleich zwischen den positiven und den negativen Klassen festzulegen. Dies ist wichtig, da das Verringern der Diskrepanz zwischen Klassen in der Regel Leistungsvorteile bei Klassifizierungsproblemen mit sich bringt, wenn die Klassenverteilung verzerrt ist (beachten Sie, dass in unserem Fall wir 3,3 % positive und 96,7 % negative Klassen vorhanden sind).
 
 ##### <a name="applying-the-count-transformation-on-our-data"></a>Anwenden der Zähltransformation auf unsere Daten
 Schließlich können wir das **Apply Transformation** -Modul zum Anwenden der Zähltransformationen auf unsere Trainings- und Test-DataSets verwenden. Dieses Modul nimmt die gespeicherte Zähltransformation als eine Eingabe und die Trainings- oder Test-DataSets als die andere Eingabe auf und gibt Daten mit Zählfunktionen zurück. Dies wird hier gezeigt:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xnQvsYf.png)
+![Apply Transformation-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/xnQvsYf.png)
 
 ##### <a name="an-excerpt-of-what-the-count-features-look-like"></a>Ein Auszug des Erscheinungsbilds der Zählfunktionen
 Es ist hilfreich zu sehen, wie die Zählfunktionen in unserem Fall aussehen. Hier sehen Sie einen Auszug dieser Funktion:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/FO1nNfw.png)
+![Zählfunktionen](./media/machine-learning-data-science-process-hive-criteo-walkthrough/FO1nNfw.png)
 
 In diesem Ausschnitt wird gezeigt, dass für die Spalten, für die wir Zählungen durchgeführt haben, neben den relevanten Backoffs auch die Zahlen und logarithmischen Wahrscheinlichkeiten erhalten.
 
@@ -536,19 +536,19 @@ Wir können nun mithilfe dieser transformierten DataSets ein Azure Machine Learn
 ##### <a name="choice-of-learner"></a>Auswahl des Lerners
 Zunächst müssen wir einen Lerner auswählen. Als Lerner verwenden wir eine verstärkte Entscheidungsstruktur mit zwei Klassen. Dies sind die Standardoptionen für diesen Lerner:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/bH3ST2z.png)
+![Two-Class Boosted Decision Tree-Parameter](./media/machine-learning-data-science-process-hive-criteo-walkthrough/bH3ST2z.png)
 
 Für unser Experiment wählen wir die Standardwerte. Wir stellen fest, dass die Standardwerte in der Regel aussagekräftig und eine gute Möglichkeit zum schnellen Erzielen einer Leistungsbasis sind. Sie können die Leistung verbessern, indem Sie Parameter auswählen, sobald Sie eine Basislinie haben.
 
 #### <a name="train-the-model"></a>Modelltraining
 Für das Training rufen wir einfach ein **Train Model** -Modul auf. Bei den zwei Eingaben handelt es sich um die  verstärkte Entscheidungsstruktur mit zwei Klassen und unser Trainings-DataSet. Dies wird hier gezeigt:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/2bZDZTy.png)
+![Train Model-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/2bZDZTy.png)
 
 #### <a name="score-the-model"></a>Bewertung des Modells
 Sobald wir über ein trainiertes Modell verfügen, sind wir bereit, das Test-DataSet und seine Leistung zu bewerten. Wir verwenden dafür das nachfolgend gezeigte **Score Mode**l-Modul zusammen mit einem **Evaluate Model**-Modul:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/fydcv6u.png)
+![Modul Modell bewerten](./media/machine-learning-data-science-process-hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="a-namestep5a-step-5-evaluate-the-model"></a><a name="step5"></a> Schritt 5: Bewerten des Modells
 Abschließend möchten wir die Leistung des Modells analysieren. Wenn bei zwei Klassen (binäre) Klassifizierungsprobleme auftreten, eignet sich AUC gewöhnlich als Maßstab. Um dies zu veranschaulichen, ordnen wir das Modul **Score Model** dem Modul **Evaluate Model** zu. Wenn Sie im Modul **Evaluate Model** auf **Visualize** klicken, ergibt dies ungefähr folgende Grafik:
@@ -602,7 +602,7 @@ Um die blauen E/A-Ports zu erhalten, klicken Sie einfach unten rechts auf **Webd
 
 Sobald der Webdienst veröffentlicht wurde, werden wir auf eine Seite umgeleitet, die folgendermaßen aussieht:
 
-![](./media/machine-learning-data-science-process-hive-criteo-walkthrough/YKzxAA5.png)
+![Dashboard des Webdiensts](./media/machine-learning-data-science-process-hive-criteo-walkthrough/YKzxAA5.png)
 
 Auf der linken Seite befinden sich zwei Links zu Webdiensten:
 
@@ -628,6 +628,6 @@ Damit sind wir am Ende unser ausführlichen exemplarischen Vorgehensweise zum Be
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

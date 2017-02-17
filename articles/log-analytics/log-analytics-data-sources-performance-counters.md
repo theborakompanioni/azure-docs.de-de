@@ -1,10 +1,10 @@
 ---
-title: Windows- und Linux-Leistungsindikatoren in Log Analytics | Microsoft Docs
+title: Erfassen und Analysieren von Leistungsindikatoren in Log Analytics | Microsoft-Dokumentation
 description: "Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im OMS-Repository gespeichert werden und wie sie im OMS-Portal analysiert werden können."
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b4d326064059b42cf2bf059184066c9acb4dcfd0
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: 1e4b5dac9333a9bd38f6ef89ddce22c74fed06ba
 
 
 ---
@@ -63,7 +63,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 | CounterValue |Numerischer Wert des Leistungsindikators |
 | InstanceName |Name der Ereignisinstanz.  Leer, wenn keine Instanz vorhanden ist. |
 | ObjectName |Name des Leistungsobjekts. |
-| SourceSystem |Typ des Agents, auf dem die Daten gesammelt wurden. <br> OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br>  Linux: Alle Linux-Agents  <br>  AzureStorage – Azure-Diagnose |
+| SourceSystem |Typ des Agents, auf dem die Daten gesammelt wurden. <br> OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br> Linux: Alle Linux-Agents  <br> AzureStorage – Azure-Diagnose |
 | TimeGenerated |Datum und Uhrzeit der Datenstichprobe. |
 
 ## <a name="sizing-estimates"></a>Größeneinschätzung
@@ -105,6 +105,6 @@ Informationen zum Aggregieren von Leistungsdaten in einer Protokollsuche finden 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

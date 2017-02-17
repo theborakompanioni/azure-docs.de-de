@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: 5738c78d65ed0394028b90d634e5ebd4b1d5c5bc
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 497f963870d24a335379a7f015a515c425737a73
 
 
 ---
@@ -28,7 +28,7 @@ Verbinden Sie sich mit Google Drive, um Dateien zu erstellen, Zeilen abzurufen u
 * Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus einer Suche abgerufen werden. 
 * Verwenden von Aktionen, um Bilder, Nachrichten und mehr zu suchen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z. B. ein Video suchen und dann Twitter verwenden, um das Video in einem Twitter-Feed zu posten.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Google Drive bietet die folgenden Aktionen. Es gibt keine Trigger. 
@@ -321,7 +321,7 @@ Aktualisiert eine Zeile in einer Google-Tabelle.
 | value |array |no |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
 
@@ -337,6 +337,6 @@ Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

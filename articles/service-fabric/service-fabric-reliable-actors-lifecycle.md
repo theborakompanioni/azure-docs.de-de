@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/30/2016
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 0ce3808e44d715aca5f335aa93a3c9425810b03f
+ms.sourcegitcommit: e39c130b1abb0b2c31511abdd51f02446d3898f6
+ms.openlocfilehash: 681c9aa628ea9364f73e6a41f0f71139d3b983d7
 
 
 ---
@@ -83,7 +83,7 @@ public class Program
 
 Für jeden aktiven Actor verfolgt die Actors-Laufzeit die Zeitspanne, während der er sich im Leerlauf befand (d.h. nicht verwendet wurde). Die Actors-Laufzeit überprüft jeden Actor in einem festgelegten Abstand (`ScanIntervalInSeconds`), um festzustellen, ob eine Garbage Collection für ihn durchgeführt werden kann, und sammelt ihn auf, wenn er sich seit einem gewissen Zeitraum (`IdleTimeoutInSeconds`) im Leerlauf befindet.
 
-Bei jeder Verwendung eines Actors wird seine Leerlaufzeit auf 0 zurückgesetzt. Danach kann für den Actor nur dann eine Garbage Collection ausgeführt werden, wenn er erneut `IdleTimeoutInSeconds`lang im Leerlauf bleibt. Denken Sie daran, dass ein Actor als verwendet gilt, wenn entweder eine Actor-Schnittstellenmethode oder ein Erinnerungs-Rückruf ausgeführt wird. Ein Actor gilt **nicht** als verwendet, wenn der Timer-Rückruf ausgeführt wird.
+Bei jeder Verwendung eines Actors wird seine Leerlaufzeit auf 0 zurückgesetzt. Danach kann für den Actor nur dann eine Garbage Collection ausgeführt werden, wenn er erneut `IdleTimeoutInSeconds`lang im Leerlauf bleibt. Denken Sie daran, dass ein Actor als verwendet gilt, wenn entweder eine Actor-Schnittstellenmethode oder ein Actor-Erinnerungsrückruf ausgeführt wird. Ein Actor gilt **nicht** als verwendet, wenn der Timer-Rückruf ausgeführt wird.
 
 Das folgende Diagramm zeigt den Lebenszyklus eines einzelnen Actors, um diese Konzepte zu verdeutlichen.
 
@@ -101,7 +101,7 @@ Das Beispiel zeigt die Auswirkung von Actor-Methodenaufrufen, Erinnerungen und T
 Für einen Actor wird nie eine Garbage Collection durchgeführt, während er eine seiner Methoden ausführt, unabhängig davon, wie viel Zeit die Ausführung dieser Methode beansprucht. Wie bereits erwähnt, verhindert die Ausführung von Actor-Schnittstellenmethoden und Erinnerungs-Rückrufen die Durchführung der Garbage Collection, indem die Leerlaufzeit des Actors auf 0 zurückgesetzt wird. Durch die Ausführung von Timer-Rückrufen wird die Leerlaufzeit nicht auf 0 zurückgesetzt. Allerdings wird die Garbage Collection des Actors verzögert, bis der Timer-Rückruf abgeschlossen ist.
 
 ## <a name="deleting-actors-and-their-state"></a>Löschen von Actors und deren Zustände
-Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor wieder aktiviert wird, werden ihm seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. In Fällen, in denen Actors Daten im Zustands-Manager speichern, dann deaktiviert aber nie wieder aktiviert werden, kann die Bereinigung Ihrer Daten nötig sein.
+Eine Garbage Collection von deaktivierten Actors bereinigt nur das Actor-Objekt, entfernt jedoch keine Daten, die im Zustands-Manager eines Actors gespeichert sind. Wenn ein Actor wieder aktiviert wird, werden ihm seine Daten durch den Zustands-Manager wieder zur Verfügung gestellt. In Fällen, in denen Actors Daten im Zustands-Manager speichern, dann deaktiviert aber nie wieder aktiviert werden, kann die Bereinigung Ihrer Daten nötig sein.
 
 Der [Actordienst](service-fabric-reliable-actors-platform.md) bietet auch eine Funktion zum Löschen von Actors über einen Remoteanrufer:
 
@@ -137,6 +137,6 @@ Beachten Sie, dass ein Actor für sich selbst durch eine seiner Methoden „dele
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

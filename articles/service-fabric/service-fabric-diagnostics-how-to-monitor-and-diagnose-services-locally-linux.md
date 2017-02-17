@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/14/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: af9f761179896a1acdde8e8b20476b7db33ca772
-ms.openlocfilehash: 03f1dde722025624997adb7c1258b2f24c481209
+ms.sourcegitcommit: 72fcad2957d6fc5466719c1d275ae0f86f7fa302
+ms.openlocfilehash: 1d02402f8d3d3f501a100c1618bcba595f1fedc0
 
 
 ---
@@ -58,7 +58,7 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
  
  
-Diese Konfiguration führt zu Protokollen, die auf rotierende Weise unter `/tmp/servicefabric/logs/`erfasst werden. **%u** und **%g** ermöglichen das Erstellen weiterer Dateien mit den Dateinamen „mysfapp0.log“, „mysfapp1.log“ usw. Wenn kein Handler explizit konfiguriert ist, wird standardmäßig der Konsolen-Handler registriert. Die Protokolle können in syslog unter „/var/log/syslog“ angezeigt werden.
+Diese Konfiguration führt zu Protokollen, die auf rotierende Weise unter `/tmp/servicefabric/logs/`erfasst werden. **%u** und **%g** ermöglichen das Erstellen von Dateien mit den Dateinamen „mysfapp0.log“, „mysfapp1.log“ usw. Wenn kein Handler explizit konfiguriert ist, wird standardmäßig der Konsolen-Handler registriert. Die Protokolle können in syslog unter „/var/log/syslog“ angezeigt werden.
  
 Weitere Informationen finden Sie unter der [Codebeispielen in Github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
 
@@ -143,6 +143,6 @@ Der Ablaufverfolgungscode, der Ihrer Anwendung hinzugefügt wurde, gilt auch fü
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

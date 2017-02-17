@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
+ms.date: 12/06/2016
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 04eebbe19354ab1e927ee2bb41f25dc6676a7c93
-ms.openlocfilehash: c28e73f0a6833793561d8702eb6c6480b9fbc0a4
+ms.sourcegitcommit: 45ba55083ecca1995e343dc1da1497df43f70e10
+ms.openlocfilehash: 90fb374e8c1712b5fc1e94979999da6a8c400f68
 
 
 ---
 
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution-in-log-analytics"></a>Optimieren der Umgebung mit der System Center Operations Manager-Bewertungslösung (Vorschau) in Log Analytics
 
-Sie können die System Center Operations Manager-Bewertungslösung verwenden, um die Risiken und die Integrität Ihrer System Center Operations Manager-Serverumgebungen in regelmäßigen Abständen zu bewerten. Dieser Artikel unterstützt Sie beim Installieren, Konfigurieren und Verwenden der Lösung, sodass Sie bei potenziellen Problemen korrigierende Maßnahmen ergreifen können.
+Sie können die System Center Operations Manager-Bewertungslösung verwenden, um die Risiken und die Integrität Ihrer System Center Operations Manager-Serverumgebungen in regelmäßigen Abständen zu bewerten. Dieser Artikel unterstützt Sie beim Installieren, Konfigurieren und Verwenden der Lösung, sodass Sie bei potenziellen Problemen korrigierende Maßnahmen ergreifen können. 
 
 Die Lösung bietet eine priorisierte Liste von Empfehlungen, die spezifisch für Ihre bereitgestellte Serverinfrastruktur gelten. Die Empfehlungen sind in vier Schwerpunktbereiche eingeteilt, mit deren Hilfe Sie die Risiken schnell einschätzen und korrigierende Maßnahmen ergreifen können.
 
@@ -243,6 +243,12 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ## <a name="system-center-operations-manager-assessment-solution-faq"></a>System Center Operations Manager-Bewertung – häufig gestellte Fragen
 
+*Ich habe die Assessment-Lösung meinem OMS-Arbeitsbereich hinzugefügt. Aber es werden keine Empfehlungen angezeigt. Warum nicht?* Gehen Sie nach dem Hinzufügen der Lösung anhand der folgenden Schritte vor, um die Empfehlungen auf dem OMS-Dashboard anzuzeigen.  
+
+- [Festlegen des ausführenden Kontos für System Center Operations Manager-Bewertung](#operations-manager-run-as-accounts-for-oms)  
+- [Konfigurieren der System Center Operations Manager-Bewertungsregel](#configure-the-assessment-rule)
+
+
 *Gibt es eine Möglichkeit, die Häufigkeit der Bewertung zu konfigurieren?* Ja. Lesen Sie die Informationen unter [Konfigurieren der Ausführungshäufigkeit](#configure-the-run-frequency).
 
 *Wird ein anderer Server, der erst nach dem Hinzufügen der System Center Operations Manager-Bewertungslösung erkannt wird, auch bewertet?* Ja. Er wird ab dem Zeitpunkt der Erkennung bewertet (standardmäßig alle sieben Tage).
@@ -274,6 +280,6 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

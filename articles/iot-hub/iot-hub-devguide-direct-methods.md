@@ -1,6 +1,6 @@
 ---
-title: "Entwicklerhandbuch – direkte Methoden | Microsoft Docs"
-description: "Azure IoT Hub-Entwicklerhandbuch – Verwenden von direkten Methoden zum Aufrufen von Code auf Ihren Geräten"
+title: Informationen zu direkten Azure IoT Hub-Methoden | Microsoft Docs
+description: "Entwicklerhandbuch – Verwenden von direkten Methoden zum Aufrufen von Code auf Ihren Geräten von einer Service-App"
 services: iot-hub
 documentationcenter: .net
 author: nberdy
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: b041fbc6887d78644f94b247c05199fd0f80094a
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: fc2d81ce5d1562bcc71584626d8e45a2d788b2e3
 
 
 ---
-# <a name="invoke-a-direct-method-on-a-device"></a>Aufrufen einer direkten Methode auf einem Gerät
+# <a name="direct-methods"></a>Direkte Methoden
 ## <a name="overview"></a>Übersicht
 IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dies ist hilfreich für Szenarios, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
 
@@ -60,7 +60,7 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTP-Aufrufe, die Folgendes umfass
 ```
 {
     "methodName": "reboot",
-    "timeoutInSeconds": 200,
+    "responseTimeoutInSeconds": 200,
     "payload": {
         "input1": "someInput",
         "input2": "anotherInput"
@@ -68,10 +68,10 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTP-Aufrufe, die Folgendes umfass
 }
 ```
 
-  Timeout in Sekunden. Wenn kein Timeout festgelegt ist, lautet der Standardwert 30 Sekunden.
+Timeout in Sekunden. Wenn kein Timeout festgelegt ist, lautet der Standardwert 30 Sekunden.
 
 ### <a name="response"></a>Antwort
-Das Back-End empfängt eine Antwort, die Folgendes umfasst:
+Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
 
 * *HTTP-Statuscode*, der für Fehler von IoT Hub verwendet wird. Dazu gehören z.B. 404-Fehler für Geräte, die derzeit nicht verbunden sind
 * *Header*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
@@ -110,16 +110,16 @@ Das Gerät sendet Antworten an `$iothub/methods/res/{status}/?$rid={request id}`
 Der Haupttext wird durch das Gerät festgelegt und kann jeden beliebigen Status aufweisen.
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
-Weitere Referenzthemen im Entwicklerhandbuch:
+Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
-* Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
+* Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
 * Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
-* Unter [Azure IoT device and service SDKs][lnk-sdks] (Azure IoT SDKs für Geräte und Dienste) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienstanwendungen für die Interaktion mit IoT Hub verwenden können.
-* Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen über Gerätezwillinge und Aufträge abrufen können.
+* Unter [Azure IoT SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+* Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie gelernt haben, wie Sie direkte Methoden verwenden, sind möglicherweise die folgenden Themen im Entwicklerhandbuch für Sie interessant:
+Nachdem Sie erfahren haben, wie Sie direkte Methoden verwenden, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
 
 * [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
 
@@ -141,6 +141,7 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Dec16_HO1-->
 
 

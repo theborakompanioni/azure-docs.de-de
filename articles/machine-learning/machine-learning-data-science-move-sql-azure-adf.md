@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 61176151652f9c9d79ebe07d2a4aedf8702e2d16
-ms.openlocfilehash: a329d1ef98e2ab59df2f11b5095fe87a8cc9f94a
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: adbede3de17f055f5e39630658f526dd239d50da
 
 
 ---
@@ -56,7 +56,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 * Ein **Azure-Abonnement**. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Ein **Azure-Speicherkonto**. Sie nutzen ein Azure-Speicherkonto zum Speichern der Daten in diesem Tutorial. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md#create-a-storage-account) . Nachdem Sie das Speicherkonto erstellt haben, müssen Sie den Kontoschlüssel für den Zugriff auf den Speicher abrufen. Weitere Informationen finden Sie unter [Verwalten von Speicherzugriffsschlüsseln](../storage/storage-create-storage-account.md#manage-your-storage-access-keys).
 * Zugriff auf eine **Azure SQL-Datenbank**. Wenn Sie eine Azure SQL-Datenbank einrichten müssen, finden Sie im Thema [Erste Schritte mit Microsoft Azure SQL-Datenbank ](../sql-database/sql-database-get-started.md) Informationen dazu, wie Sie eine neue Instanz einer Azure SQL-Datenbank bereitstellen.
-* Lokal installierte und konfigurierte **Azure PowerShell** . Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+* Lokal installierte und konfigurierte **Azure PowerShell** . Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 > [!NOTE]
 > In diesem Verfahren wird das [Azure-Portal](https://portal.azure.com/)verwendet.
@@ -315,7 +315,7 @@ Kopieren Sie diese JSON-Definition der Pipeline in eine Datei namens *pipelinede
 
 Vergewissern Sie sich, dass die Pipeline im klassischen Azure-Portal für die ADF wie folgt angezeigt wird (wenn Sie auf das Diagramm klicken).
 
-![](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
+![ADF-Pipeline](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
 ## <a name="a-nameadf-pipeline-startastart-the-pipeline"></a><a name="adf-pipeline-start"></a>Starten der Pipeline
 Die Pipeline kann jetzt mithilfe der folgenden Befehle ausgeführt werden:
@@ -330,6 +330,6 @@ Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

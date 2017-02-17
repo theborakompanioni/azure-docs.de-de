@@ -1,6 +1,6 @@
 ---
 title: Skalieren von Azure IoT Hub | Microsoft Docs
-description: Beschreibt das Skalieren von Azure IoT Hub.
+description: "Skalieren der IoT Hub-Instanz zur Unterstützung des erwarteten Nachrichtendurchsatzes. Enthält eine Zusammenfassung der unterstützten Durchsätze für die einzelnen Ebenen und Optionen für das Sharding."
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 09/19/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 992c271fe3426f4a1e59f4e546b0f7f4e0d59e59
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 7683a6c6afa3dbec3fccadc9f095480ed90aa039
 
 
 ---
 # <a name="scaling-iot-hub"></a>Skalieren von IoT Hub
-Azure IoT Hub kann bis zu einer Million gleichzeitig verbundener Geräte unterstützen. Weitere Informationen finden Sie unter [Azure IoT Hub – Preise][lnk-pricing]. Jede IoT Hub-Einheit lässt eine bestimmte Anzahl von täglichen Nachrichten zu.
+Azure IoT Hub kann bis zu einer Million gleichzeitig verbundener Geräte unterstützen. Weitere Informationen finden Sie unter [IoT Hub – Preise][lnk-pricing]. Jede IoT Hub-Einheit lässt eine bestimmte Anzahl von täglichen Nachrichten zu.
 
 Um Ihre Lösung richtig skalieren zu können, sollten Sie sich nach dem jeweiligen IoT Hub-Anwendungsfall richten. Achten Sie besonders auf den erforderlichen Spitzendurchsatz für die folgenden Kategorien von Vorgängen:
 
@@ -29,7 +29,7 @@ Um Ihre Lösung richtig skalieren zu können, sollten Sie sich nach dem jeweilig
 * C2D-Nachrichten
 * Identitätsregistrierungsvorgänge
 
-Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub quotas and throttles][IoT Hub quotas and throttles] an, und entwerfen Sie Ihre Lösung entsprechend.
+Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub-Kontingente und -Drosselungen][IoT Hub quotas and throttles] an, und entwerfen Sie Ihre Lösung entsprechend.
 
 ## <a name="device-to-cloud-and-cloud-to-device-message-throughput"></a>D2C- und C2D-Nachrichtendurchsatz
 Die beste Methode zum Skalieren einer IoT Hub-Lösung ist die Auswertung des Datenverkehrs pro Einheit.
@@ -45,7 +45,7 @@ D2C-Nachrichten basieren auf diesen Richtlinien für den anhaltenden Durchsatz:
 ## <a name="identity-registry-operation-throughput"></a>Durchsatz von Identitätsregistrierungsvorgängen
 IoT Hub-Identitätsregistrierungsvorgänge sollten keine Laufzeitvorgänge sein, da sie sich größtenteils auf die Gerätebereitstellung beziehen.
 
-Genaue Zahlen zur Burst-Leistung finden Sie unter [IoT Hub quotas and throttles][IoT Hub quotas and throttles].
+Genaue Zahlen zur Burstleistung finden Sie unter [IoT Hub-Kontingente und -Drosselungen][IoT Hub quotas and throttles].
 
 ## <a name="sharding"></a>Sharding (Horizontales Partitionieren)
 Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werden, aber es kann sein, dass Ihre Lösung bestimmte Leistungsmerkmale benötigt, die von einer einzelnen IoT Hub-Einheit nicht gewährleistet werden können. In diesem Fall wird empfohlen, Ihre Geräte auf mehrere IoT Hubs zu partitionieren. Mehrere IoT Hubs glätten Datenverkehrsbursts und erzielen den erforderlichen Durchsatz oder die erforderlichen Vorgangsraten.
@@ -53,17 +53,17 @@ Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werd
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 * [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md (IoT Hub – Kontingente und Drosselungen)
+[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

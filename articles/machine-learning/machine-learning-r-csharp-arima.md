@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2016
+ms.date: 12/13/2016
 ms.author: yijichen
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 22a44e1c47748a54950d9ad732a04c08bbcefd87
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c8d02cdd50c7f44991aeabee1999a81ec18bf59c
 
 
 ---
@@ -88,7 +88,7 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Stichprobeneingabedaten wurden mit einem vordefinierten Datenschema hochgeladen. Mit dem Schema ist ein [Execute R Script][execute-r-script]-Modul verknüpft, welches das ARIMA-Prognosemodell mithilfe der auto.arima- und forecast-Funktionen von R generiert. 
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt. Stichprobeneingabedaten wurden mit einem vordefinierten Datenschema hochgeladen. Mit dem Schema ist ein Modul [Execute R Script][execute-r-script] verknüpft, das das ARIMA-Prognosemodell mithilfe der R-Funktionen auto.arima und forecast generiert. 
 
 ### <a name="experiment-flow"></a>Experimentablauf:
 ![Arbeitsbereich erstellen][2]
@@ -142,6 +142,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

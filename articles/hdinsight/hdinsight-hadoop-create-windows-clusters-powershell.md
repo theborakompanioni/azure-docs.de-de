@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/10/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 823ba08cfc805000871e0c2a6375306f435b7910
+ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
+ms.openlocfilehash: a71718eabc3863e4e78619a2f1ceb174c7c0f058
 
 
 ---
@@ -34,13 +34,13 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
 * Azure PowerShell.
 
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 ### <a name="access-control-requirements"></a>Voraussetzungen für die Zugriffssteuerung
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## <a name="create-clusters"></a>Erstellen von Clustern
-Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Arbeitsauslastungen in Azure steuern und automatisieren können. Dieser Abschnitt enthält Anweisungen für die Erstellung eines HDInsight-Clusters mit Azure PowerShell. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md). Weitere Informationen zum Verwenden von Azure PowerShell mit HDInsight finden Sie unter [Verwalten von HDInsight mit PowerShell](hdinsight-administer-use-powershell.md). Eine Liste der HDInsight Windows PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz](https://msdn.microsoft.com/library/azure/dn858087.aspx).
+Azure PowerShell ist eine leistungsstarke Skriptumgebung, mit der Sie die Bereitstellung und Verwaltung Ihrer Arbeitsauslastungen in Azure steuern und automatisieren können. Dieser Abschnitt enthält Anweisungen für die Erstellung eines HDInsight-Clusters mit Azure PowerShell. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Weitere Informationen zum Verwenden von Azure PowerShell mit HDInsight finden Sie unter [Verwalten von HDInsight mit PowerShell](hdinsight-administer-use-powershell.md). Eine Liste der HDInsight Windows PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz](https://msdn.microsoft.com/library/azure/dn858087.aspx).
 
 Die folgenden Prozeduren müssen für die Erstellung eines HDInsight-Clusters mithilfe von Azure PowerShell ausgeführt werden:
 
@@ -131,8 +131,8 @@ Die folgenden Prozeduren müssen für die Erstellung eines HDInsight-Clusters mi
     ####################################
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 
-## <a name="create-clusters-using-arm-template"></a>Erstellen von Clustern mithilfe einer ARM-Vorlage
-Mithilfe von Azure PowerShell können Sie eine ARM-Vorlage bereitstellen, die einen HDInsight-Cluster erstellt.  Informationen hierzu finden Sie unter [Aufrufen von Vorlagen mit Azure PowerShell](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-powershell).
+## <a name="create-clusters-using-resource-management-template"></a>Erstellen von Clustern mit der Ressourcenverwaltungsvorlage
+Mithilfe von Azure PowerShell können Sie eine Azure-Ressourcenverwaltungsvorlage bereitstellen, die einen HDInsight-Cluster erstellt.  Informationen hierzu finden Sie unter [Aufrufen von Vorlagen mit Azure PowerShell](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-powershell).
 
 ## <a name="customize-clusters"></a>Anpassen von Clustern
 * Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell).
@@ -155,6 +155,6 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

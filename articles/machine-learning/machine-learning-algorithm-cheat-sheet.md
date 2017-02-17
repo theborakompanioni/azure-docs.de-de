@@ -4,7 +4,7 @@ description: "Eine druckbare Version des Machine Learning Cheat Sheet für Algor
 keywords: "Algorithmus-Cheat Sheet,Cheat Sheet,Algorithmus für maschinelles Lernen"
 services: machine-learning
 documentationcenter: 
-author: brohrer
+author: garyericson
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2016
-ms.author: brohrer;garye
+ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 412c9ceb2e063a253f3e9d03dcf2735a7f373e15
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 4b7cbaec88b79cbc6f43fd32b85d104eada403da
 
 
 ---
@@ -90,6 +90,6 @@ Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat her
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

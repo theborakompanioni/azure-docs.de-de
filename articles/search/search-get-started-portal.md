@@ -162,7 +162,7 @@ Im Folgenden erhalten Sie eine allgemeine Anleitung, die aber nicht alle Aspekte
    * 386.json
    * 387.json
    * . . .
-   * 486. json
+   * 486.json
 9. Wiederholen Sie diesen Schritt, um die nächste Gruppe von Dateien hochzuladen, bis Sie die letzte Datei (669.json) hochgeladen haben.
 10. Klicken Sie auf **Abfrage-Explorer** , um zu überprüfen, ob die Daten hochgeladen wurden und die Uploadanforderungen von Dokument-Explorer erfüllt wurden.
 

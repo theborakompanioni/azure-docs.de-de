@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/02/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a83b4e910dbb8421d80416286c3d1eadcbf7bba7
+ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
+ms.openlocfilehash: 37114071cb9c3da187e8d96d7a49680ee828832a
 
 
 ---
@@ -129,9 +129,9 @@ Sie können Bootstrap in einer Resource Manager-Vorlage verwenden:
 
 ![HDInsight Hadoop anpassen Cluster Bootstrap Azure Resource Manager-Vorlage](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * Unter [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision-cluster] finden Sie Anweisungen zum Erstellen eines HDInsight-Clusters mit anderen benutzerdefinierten Optionen.
-* [Entwickeln von Script Action-Skripts für HDInsight][hdinsight-write-script]
+* [Entwickeln von Skriptaktionsskripts für HDInsight][hdinsight-write-script]
 * [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]
 * [Installieren und Verwenden von R in HDInsight-Clustern][hdinsight-install-r]
 * [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md)
@@ -141,7 +141,7 @@ Sie können Bootstrap in einer Resource Manager-Vorlage verwenden:
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-provision-clusters.md
-[powershell-install-configure]: powershell-install-configure.md
+[powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Phasen während der Clustererstellung"
@@ -258,6 +258,6 @@ Dieses PowerShell-Skript erstellt einen HDInsight-Cluster und passt eine Hive-Ei
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von Eigenschaften von Gerätezwillingen | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird erläutert, wie Sie Eigenschaften von Gerätezwillingen verwenden."
+title: "Verwenden von Azure IoT Hub-Gerätezwillingseigenschaften (Node) | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Geräte konfigurieren. Sie verwenden die Azure IoT SDKs für Node.js, um eine simulierte Geräte-App und eine Dienst-App zu implementieren, die eine Gerätekonfiguration mithilfe eines Gerätezwillings ändert."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: 400eab43a417980abe9df5fa75ee9f9e43b296d0
-ms.openlocfilehash: cc3e2f92550b77fe837afa19f51ea7691422ac9b
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 397dffe8ec93ced9196bce8fcc12a058c6876bd4
 
 
 ---
-# <a name="tutorial-use-desired-properties-to-configure-devices"></a>Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten
+# <a name="use-desired-properties-to-configure-devices-node"></a>Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Node)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
+Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 * **SimulateDeviceConfiguration.js**, eine simulierte Geräte-App, die auf eine gewünschte Konfigurationsaktualisierung wartet und den Status eines simulierten Konfigurationsaktualisierungsvorgangs meldet.
-* **SetDesiredConfigurationAndQuery.js**, eine Node.js-App, die über das Back-End ausgeführt werden soll, die gewünschte Konfiguration auf einem Gerät festlegt und den Konfigurationsaktualisierungsvorgangs abfragt.
+* **SetDesiredConfigurationAndQuery.js**, eine Node.js-Back-End-App, die die gewünschte Konfiguration für ein Gerät festlegt und den Konfigurationsaktualisierungsprozess abfragt.
 
 > [!NOTE]
-> Im Artikel [Azure IoT SDKs][lnk-hub-sdks] finden Sie Informationen über die verschiedenen Azure IoT SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Anwendungen erstellen können.
+> Im Artikel [Azure IoT SDKs][lnk-hub-sdks] finden Sie Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Apps erstellen können.
 > 
 > 
 
@@ -47,7 +47,7 @@ Wenn Sie das Tutorial [Erste Schritte mit Gerätezwillingen][lnk-twin-tutorial] 
 ## <a name="create-the-simulated-device-app"></a>Erstellen der simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDeviceId** eine Verbindung mit dem Hub herstellt, auf eine gewünschte Konfigurationsaktualisierung wartet und dann Aktualisierungen für den simulierten Konfigurationsaktualisierungsvorgang meldet.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulatedeviceconfiguration**. Erstellen Sie im Ordner **simulatedeviceconfiguration** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulatedeviceconfiguration**. Erstellen Sie im Ordner **simulatedeviceconfiguration** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -58,7 +58,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SimulateDeviceConfiguration.js** im Ordner **simulatedeviceconfiguration**.
-4. Fügen Sie in der Datei **SimulateDeviceConfiguration.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{device connection string}** durch die Verbindungszeichenfolge, die Sie beim Erstellen der Geräteidentität **myDeviceId** kopiert haben:
+4. Fügen Sie in der Datei **SimulateDeviceConfiguration.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{device connection string}** durch die Geräteverbindungszeichenfolge, die Sie beim Erstellen der Geräteidentität **myDeviceId** kopiert haben:
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -141,7 +141,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
             });
         };
    
-    Die **initConfigChange**-Methode aktualisiert die gemeldeten Eigenschaften des lokalen Gerätezwillingsobjekts mit der Anforderung zur Konfigurationsaktualisierung, legt den Status auf **Pending** fest und aktualisiert dann den Gerätezwilling für den Dienst. Nach dem erfolgreichen Aktualisieren des Gerätezwillings wird ein lang ausgeführter Vorgang simuliert, der mit der Ausführung von **completeConfigChange** endet. Diese Methode aktualisiert die gemeldeten Eigenschaften des lokalen Gerätezwillings. Dabei wird der Status auf **Success** festgelegt und das **pendingConfig**-Objekt entfernt. Anschließend wird der Gerätezwilling für den Dienst aktualisiert.
+    Die **initConfigChange**-Methode aktualisiert gemeldete Eigenschaften des lokalen Gerätezwillingsobjekts mit der Anforderung zur Konfigurationsaktualisierung, legt den Status auf **Ausstehend** fest und aktualisiert dann den Gerätezwilling für den Dienst. Nach dem erfolgreichen Aktualisieren des Gerätezwillings wird ein lang ausgeführter Vorgang simuliert, der mit der Ausführung von **completeConfigChange** endet. Diese Methode aktualisiert die gemeldeten Eigenschaften des lokalen Gerätezwillings. Dabei wird der Status auf **Success** festgelegt und das **pendingConfig**-Objekt entfernt. Anschließend wird der Gerätezwilling für den Dienst aktualisiert.
    
     Beachten Sie, dass zum Einsparen von Bandbreite beim Aktualisieren der gemeldeten Eigenschaften nicht das gesamte Dokument ersetzt wird, sondern nur die zu ändernden Eigenschaften (mit dem Namen **patch** im Code oben) angegeben werden.
    
@@ -158,7 +158,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die als **myDe
 ## <a name="create-the-service-app"></a>Erstellen der Dienst-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die die *gewünschten Eigenschaften* für den Gerätezwilling, der **myDeviceId** zugeordnet ist, mit einem neuen Telemetriekonfigurationsobjekt aktualisiert. Anschließend werden die im IoT-Hub gespeicherten Gerätezwillinge abgefragt und die Unterschiede zwischen den gewünschten und den gemeldeten Konfigurationen des Geräts angezeigt.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **setdesiredandqueryapp**. Erstellen Sie im Ordner **setdesiredandqueryapp** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **setdesiredandqueryapp**. Erstellen Sie im Ordner **setdesiredandqueryapp** die neue Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -169,12 +169,12 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die die *gewü
     npm install azure-iothub node-uuid --save
     ```
 3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SetDesiredAndQuery.js** im Ordner **addtagsandqueryapp**.
-4. Fügen Sie in der Datei **SetDesiredAndQuery.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{service connection string}** durch die Verbindungszeichenfolge, die Sie beim Erstellen des Hubs kopiert haben:
+4. Fügen Sie in der Datei **SetDesiredAndQuery.js** den folgenden Code ein, und ersetzen Sie den Platzhalter **{iot hub connection string}** durch die IoT Hub-Verbindungszeichenfolge, die Sie beim Erstellen des Hubs kopiert haben:
    
         'use strict';
         var iothub = require('azure-iothub');
         var uuid = require('node-uuid');
-        var connectionString = '{service connection string}';
+        var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
    
         registry.getTwin('myDeviceId', function(err, twin){
@@ -209,7 +209,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die die *gewü
     > [!IMPORTANT]
     > Diese Anwendung fragt IoT Hub zur Veranschaulichung alle 10 Sekunden ab. Verwenden Sie Abfragen, um Berichte für Benutzer für viele Geräte zu generieren, und nicht, um Änderungen zu erkennen. Wenn für Ihre Lösung Echtzeitbenachrichtigungen über Geräteereignisse erforderlich sind, verwenden Sie [Gerät-zu-Cloud-Nachrichten][lnk-d2c].
     > 
-    > verfügbar.
+    >verfügbar.
 
 1. Fügen Sie direkt vor dem `registry.getDeviceTwin()`-Aufruf den folgenden Code zum Implementieren der Funktion **queryTwins** ein:
    
@@ -246,7 +246,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolenanwendung, die die *gewü
    > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine gewünschte Konfiguration als *gewünschte Eigenschaften* in einer Back-End-Anwendung festgelegt und eine simulierte Geräte-App geschrieben, die diese Änderung erkennt und einen Aktualisierungsvorgang in mehreren Schritten simuliert, bei dem der entsprechende Status als *gemeldete Eigenschaften* an den Gerätezwilling gemeldet wird.
+In diesem Tutorial haben Sie eine gewünschte Konfiguration als *gewünschte Eigenschaften* in einer Back-End-App festgelegt und eine simulierte Geräte-App geschrieben, die diese Änderung erkennt und einen Aktualisierungsvorgang in mehreren Schritten simuliert, bei dem der entsprechende Status als *gemeldete Eigenschaften* an den Gerätezwilling gemeldet wird.
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
@@ -265,7 +265,7 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 [lnk-dm-overview]: iot-hub-device-management-overview.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-schedule-jobs]: iot-hub-node-node-schedule-jobs.md
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
@@ -278,6 +278,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

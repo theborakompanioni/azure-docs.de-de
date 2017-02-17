@@ -13,10 +13,10 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 10/22/2016
-ms.author: msfussell;mikhegn
+ms.author: mfussell;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a3766215c00da9d055a1efb4b534f7522f9ded25
+ms.sourcegitcommit: f31c8ab3d2b4fd871c92ac0e7d04bc8d5ab86830
+ms.openlocfilehash: 70d13fd05aeedc9aa6e9f87a9a0223a2e20ef88b
 
 
 ---
@@ -114,7 +114,7 @@ Sie können beginnen, indem Sie die Verzeichnisstruktur wie im vorherigen Abschn
 ### <a name="add-the-applications-code-and-configuration-files"></a>Hinzufügen von Anwendungscode und Konfigurationsdateien
 Nachdem Sie die Verzeichnisstruktur erstellt haben, können Sie den Anwendungscode und die Konfigurationsdateien den Verzeichnissen „code“ und „config“ hinzufügen. In den Verzeichnissen „code“ und „config“ können Sie auch weitere Verzeichnisse bzw. Unterverzeichnisse erstellen.
 
-Service Fabric erstellt eine XCopy des Inhalts des Stammverzeichnisses der Anwendung. Außer dem Erstellen der beiden übergeordneten Verzeichnisse „code“ und „settings“ gibt es also keine vordefinierte Struktur, die verwendet werden muss. (Sie können auch andere Namen verwenden. Weitere Informationen finden Sie im nächsten Abschnitt.)
+Service Fabric führt einen `xcopy`-Vorgang für den Inhalt des Stammverzeichnisses der Anwendung aus. Mit Ausnahme der Erstellung der beiden übergeordneten Verzeichnisse „code“ und „settings“ gibt es also keine vordefinierte Struktur, die verwendet werden muss. (Sie können auch andere Namen verwenden. Weitere Informationen finden Sie im nächsten Abschnitt.)
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie alle Dateien und Abhängigkeiten einbeziehen, die für die Anwendung erforderlich sind. Service Fabric kopiert den Inhalt des Anwendungspakets auf alle Knoten im Cluster, auf denen die Anwendungsdienste bereitgestellt werden sollen. Das Paket muss den gesamten Code enthalten, den die Anwendung zur Ausführung benötigt. Gehen Sie nicht davon aus, dass die Abhängigkeiten bereits installiert sind.
@@ -320,6 +320,16 @@ Wenn Sie in Server-Explorer zum jeweiligen Verzeichnis wechseln, sehen Sie das A
 
 ![Speicherort des Protokolls](./media/service-fabric-deploy-existing-app/loglocation.png)
 
+## <a name="creating-a-guest-executable-using-yeoman-for-service-fabric-on-linux"></a>Erstellen einer ausführbaren Gastanwendungsdatei mithilfe von Yeoman für Service Fabric unter Linux
+
+Zum Erstellen und Bereitstellen einer ausführbaren Gastanwendungsdatei unter Linux wird das gleiche Verfahren verwendet wie beim Bereitstellen einer CSharp- oder Java-Anwendung. 
+
+1. Geben Sie in einem Terminal `yo azuresfguest` ein.
+2. Benennen Sie Ihre Anwendung.
+3. Wählen Sie die Art Ihres ersten Diensts aus, und benennen Sie ihn. Wählen Sie **Guest Binary** (Binäre Gastdatei) für eine ausführbare Gastanwendungsdatei (und **Gastcontainer** für einen Container) aus, und geben Sie Details wie etwa den Pfad der ausführbaren Datei und die Parameter an, mit denen sie aufgerufen werden muss.
+
+Yeoman hätte ein Anwendungspaket mit der entsprechenden Anwendung und den Manifestdateien sowie ein Installations- und ein Deinstallationsskript erstellt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowie ihre Bereitstellung in Service Fabric beschrieben. Entsprechende Informationen und Aufgaben finden Sie in den folgenden Artikeln.
 
@@ -330,6 +340,6 @@ In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

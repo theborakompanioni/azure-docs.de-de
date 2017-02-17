@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0063c689d4259d15c6aa2c8ca037a512644419fd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
 
 
 ---
@@ -125,6 +125,11 @@ Damit sich ein einzelner Index für verschiedene Clientendpunkte anders verhält
 
 Mithilfe dieser Methode lassen sich eine Unterstützung getrennter Benutzerkonten und Berechtigungsstufen sowie sogar vollständig getrennter Anwendungen erreichen.
 
+> [!NOTE]
+> Der oben beschriebene Ansatz der Konfiguration eines einzelnen Indizes für mehrere Mandanten hat Auswirkungen auf die Relevanz der Suchergebnisse. Die Relevanzbewertungen der Suche werden auf Indexebene berechnet, nicht auf Mandantenebene. Dadurch werden Daten für alle Mandanten in die den Relevanzbewertungen zugrunde liegenden Statistiken einbezogen, z.B. die Ausdruckshäufigkeit.
+> 
+> 
+
 ## <a name="next-steps"></a>Nächste Schritte
 Azure Search ist eine hervorragende Wahl für viele Anwendungen. [Erfahren Sie mehr über die leistungsfähigen Funktionen des Diensts.](http://aka.ms/whatisazsearch) Berücksichtigen Sie beim Bewerten der verschiedenen Entwurfsmuster für mehrinstanzenfähige Anwendungen die [verschiedenen Tarife](https://azure.microsoft.com/pricing/details/search/) und zugehörigen [Dienstgrenzen](search-limits-quotas-capacity.md), um Azure Search perfekt an Anwendungsworkloads und Architekturen sämtlicher Größen anzupassen.
 
@@ -133,6 +138,6 @@ Fragen zu Szenarios mit Azure Search und mehreren Mandanten können an azuresear
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

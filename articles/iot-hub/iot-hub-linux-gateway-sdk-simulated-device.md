@@ -1,6 +1,6 @@
 ---
-title: "Simulieren eines Geräts mit dem IoT Gateway SDK | Microsoft-Dokumentation"
-description: "Exemplarische Vorgehensweise für das Azure IoT Gateway SDK unter Verwendung von Linux, um zu veranschaulichen, wie Telemetriedaten mithilfe des Azure IoT Gateway SDK von einem simulierten Gerät gesendet werden."
+title: Simulieren eines mit dem Azure IoT Gateway SDK (Linux) | Microsoft Docs
+description: "Erfahren Sie, wie Sie das Azure IoT Gateway SDK unter Linux verwenden, um ein simuliertes Gerät zu erstellen, das Telemetriedaten über ein Gateway an eine IoT Hub-Instanz sendet."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/29/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: 00746fa67292fa6858980e364c88921d60b29460
-ms.openlocfilehash: a6a97202c8221680f13bd8b29fe8d616578629cd
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e2e814559282de3e5409e3215d824e1309debe5a
 
 
 ---
-# <a name="azure-iot-gateway-sdk--send-device-to-cloud-messages-with-a-simulated-device-using-linux"></a>Azure IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux
+# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-simulated-device-linux"></a>Senden von D2C-Nachrichten mit einem simulierten Gerät mithilfe des Azure IoT Gateway SDKs (Linux)
 [!INCLUDE [iot-hub-gateway-sdk-simulated-selector](../../includes/iot-hub-gateway-sdk-simulated-selector.md)]
 
 ## <a name="build-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
@@ -34,7 +34,7 @@ So erstellen Sie das Beispiel:
 
 1. Öffnen Sie eine Shell.
 2. Navigieren Sie in Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk** zum Stammordner.
-3. Führen Sie das Skript **tools/build.sh** aus. Dieses Skript verwendet das Hilfsprogramm **cmake**, um einen Ordner namens **build** im Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys zu erstellen und ein Makefile zu generieren. Das Skript erstellt dann die Lösung und führt die Tests aus.
+3. Führen Sie das Skript **tools/build.sh --skip-unittests** aus. Dieses Skript verwendet das Hilfsprogramm **cmake**, um einen Ordner namens **build** im Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys zu erstellen und ein Makefile zu generieren. Das Skript erstellt dann die Lösung und überspringt die Komponententests. Entfernen Sie den Parameter **--skip-unittests**, wenn Sie die Komponententests erstellen und ausführen möchten. 
 
 > [!NOTE]
 > Bei jeder Ausführung löscht das Skript **build.sh** den Ordner **build** im Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys und erstellt ihn neu.
@@ -152,13 +152,13 @@ Speichern Sie alle Änderungen, die Sie an der Konfigurationsdatei vorgenommen h
 
 So führen Sie das Beispiel aus:
 
-1. Navigieren Sie in der Shell zum Stammordner in Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk** .
+1. Navigieren Sie in der Shell zum Ordner **azure-iot-gateway-sdk/build**.
 2. Führen Sie den folgenden Befehl aus:
    
     ```
-    ./build/samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
+    ./samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./../samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
     ```
-3. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die IoT-Hub vom Gateway empfängt.
+3. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die IoT Hub vom Gateway empfängt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie noch mehr über das IoT Gateway SDK wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials und Ressourcen für Entwickler an:
@@ -168,7 +168,7 @@ Wenn Sie noch mehr über das IoT Gateway SDK wissen und mit einigen Codebeispiel
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 * [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
 
 <!-- Links -->
@@ -185,6 +185,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO2-->
 
 

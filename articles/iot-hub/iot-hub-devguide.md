@@ -1,6 +1,6 @@
 ---
-title: "Entwicklungsleitfaden für IoT Hub | Microsoft-Dokumentation"
-description: "In diesem Entwicklungsleitfaden für Azure IoT Hub werden Themen wie IoT Hub-Endpunkte, Sicherheit, Identitätsregistrierung, Geräteverwaltung und Messaging behandelt."
+title: "Entwicklerhandbuch für Azure IoT Hub | Microsoft Docs"
+description: "Das Azure IoT Hub-Entwicklerhandbuch umfasst Erläuterungen zu Endpunkten, Sicherheit, Identitätsregistrierung, Geräteverwaltung, direkten Methoden, Gerätezwillingen, Dateiuploads, Aufträgen, die Abfragesprache von IoT Hub und Messaging."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: e71676834e06b21482196d2a1bd8b4fd7f0d7d32
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 2804e9239d9d4ee127ca539cae49f1dcd54f306c
 
 
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Entwicklungsleitfaden für Azure IoT Hub
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Anwendungs-Back-End ermöglicht.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht.
 
 Azure IoT Hub bietet Ihnen Folgendes:
 
@@ -41,11 +41,11 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
 * Unter [Grundlegendes zu Gerätezwillingen – Vorschau][devguide-device-twins] wird das Konzept von *Gerätezwillingen* und die damit verfügbar gemachte Funktionalität beschrieben, z.B. das Synchronisieren eines Geräts mit seinem Gerätezwilling. Der Artikel enthält Informationen zu den Daten, die in einem Gerätezwilling gespeichert sind.
 * Unter [Aufrufen einer direkten Methode auf einem Gerät (Vorschau)][devguide-directmethods] werden der Lebenszyklus einer direkten Methode beschrieben, und es wird erläutert, wie Methoden auf einem Gerät von Ihrer Back-End-App aufgerufen und die direkte Methode auf Ihrem Gerät verarbeitet wird.
 * Unter [Schedule jobs on multiple devices][devguide-jobs] (Planen von Aufträgen auf mehreren Geräten) wird beschrieben, wie Sie Aufträge auf mehreren Geräten planen können. Der Artikel erläutert das Übermitteln von Aufträgen zum Erledigen von Aufgaben wie dem Ausführen einer direkten Methode und Aktualisieren eines Geräts mithilfe eines Gerätezwillings. Außerdem wird erklärt, wie der Status eines Auftrags abgefragt wird.
-* Unter [Reference - IoT Hub endpoints][devguide-endpoints] (Referenz – IoT Hub-Endpunkte) werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt. In diesem Artikel wird auch erörtert, wie Sie ein Bereichsgateway verwenden können, um einige Geräte für eine Verbindung mit Ihren IoT Hub-Endpunkten zu aktivieren.
+* Unter [Referenz – IoT Hub-Endpunkte][devguide-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt. In diesem Artikel wird auch erörtert, wie Sie ein Bereichsgateway verwenden können, um einige Geräte für eine Verbindung mit Ihren IoT Hub-Endpunkten zu aktivieren.
 * Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][devguide-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von Ihrem Hub Informationen über Gerätezwillinge und Aufträge abrufen können.
 * Unter [Reference - quotas and throttling][devguide-quotas] (Referenz – Kontingente und Drosselung) sind die im IoT Hub-Dienst festgelegten Kontingente samt Drosselungsverhalten zusammengefasst, die beim Überschreiten eines Kontingents erwartet werden können.
 * [Reference - pricing][devguide-pricing] (Referenz – Preise) enthält allgemeine Informationen zu verschiedenen SKUs und Preise für IoT Hub sowie zusätzliche Details zur Erfassung der verschiedenen IoT Hub-Funktionen als Nachrichten durch IoT Hub.
-* Unter [Reference - Device and service SDKs][devguide-sdks] (Referenz – Geräte- und Dienst-SDKs) sind die Azure IoT SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienstanwendungen für die Interaktion mit Ihrem IoT-Hub verwenden können. Der Artikel enthält Links zur online verfügbaren API-Dokumentation.
+* Unter [Referenz – Geräte- und Dienst-SDKs][devguide-sdks] sind die Azure IoT SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit Ihrer IoT Hub-Instanz verwenden können. Der Artikel enthält Links zur online verfügbaren API-Dokumentation.
 * [IoT Hub-MQTT-Unterstützung][devguide-mqtt] enthält detaillierte Informationen zur Unterstützung des MQTT-Protokolls durch IoT Hub. Der Artikel beschreibt die Unterstützung des in die Azure IoT SDKs integrierten MQTT-Protokolls und bietet Informationen zur direkten Verwendung des MQTT-Protokolls.
 * [Glossar][devguide-glossary]: Eine Liste der allgemeinen auf IoT Hub bezogenen Begriffe.
 
@@ -68,6 +68,6 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

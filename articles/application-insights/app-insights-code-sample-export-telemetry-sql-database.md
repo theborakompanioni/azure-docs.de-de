@@ -1,5 +1,5 @@
 ---
-title: 'Codebeispiel: Analysieren von Daten, die aus Application Insights exportiert wurden | Microsoft Docs'
+title: 'Beispiel: Analysieren von Daten, die aus Azure Application Insights exportiert wurden | Microsoft-Dokumentation'
 description: "Codieren Sie Ihre eigene Telemetrieanalyse in Application Insights mithilfe des Features für den fortlaufenden Export. Speichern Sie Daten in SQL."
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: b0782ed5675e5256694f7b9f4e98750e57d23e0a
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: fedd078402bbd220bce9b71cd035508d46f92f82
 
 
 ---
@@ -501,6 +501,6 @@ Um dieses Beispiel in Aktion zu sehen, [laden Sie den vollständigen Arbeitscode
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 
