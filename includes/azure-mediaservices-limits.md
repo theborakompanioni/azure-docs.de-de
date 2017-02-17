@@ -17,7 +17,8 @@
 | Streamingeinheiten pro Streamingendpunkt  |10 |
 | Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1, S2)<br/>10 (S3) <sup>1</sup> | 
 | Speicherkonten | 1.000<sup>5</sup> (feststehend) |
-| Richtlinien | |1,000,000<sup>6</sup> |
+| Richtlinien | 1,000,000<sup>6</sup> |
+| Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>7</sup> |
  
 <sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar.
 
@@ -34,8 +35,15 @@
 >[!NOTE]
 > Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden.
 
+<sup>7</sup>Berücksichtigen Sie die folgenden Grenzwerte, wenn Sie Inhalte an ein Objekt in Azure Media Services hochladen und mit einem der Medienprozessoren in unseren Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Face Detector) verarbeiten möchten. 
+
+| Reservierte Einheiten für Medien (Typ) | Maximale Dateigröße (GB)| 
+| --- | --- | 
+|S1 | 35|
+|S2 | 75|
+|S3 | 260|
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

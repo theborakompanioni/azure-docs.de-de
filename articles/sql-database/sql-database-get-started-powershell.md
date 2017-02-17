@@ -17,13 +17,13 @@ ms.workload: data-management
 ms.date: 12/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: e3a9ba798639a9939d8c3d5330b21715ac4be53d
+ms.sourcegitcommit: 7f1983e871ea425a095e3a4bf6c7a1b89d6f45a9
+ms.openlocfilehash: 51ed691eb206f284cb8bbd682c723f87362caa33
 
 
 ---
 
-# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-powershell"></a>SQL-Datenbank-Tutorial: Erste Schritte mit Azure SQL-Datenbank-Servern, -Datenbanken und -Firewallregeln mit PowerShell
+# <a name="tutorial-provision-and-access-an-azure-sql-database-using-powershell"></a>Tutorial: Bereitstellen und Verwenden einer Azure SQL-Datenbank mithilfe von PowerShell
 
 In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie PowerShell für folgende Aufgaben verwenden:
 
@@ -566,7 +566,9 @@ Remove-AzureRmResourceGroup -Name {resource-group-name}
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie dieses Tutorial zu den ersten Schritten abgeschlossen und eine Datenbank mit einigen Beispieldaten erstellt haben, können Sie weitere Tutorials durcharbeiten, die auf den hier erworbenen Kenntnissen aufbauen. 
 
-* Wenn Sie sich mit der Sicherheit von Azure SQL-Datenbank befassen möchten, finden Sie entsprechende Informationen im Thema zu den [ersten Schritten bei der Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
+- Informationen zu den ersten Schritten im SQL Server-Authentifizierungstutorial finden Sie unter [SQL-Authentifizierung und -Autorisierung](sql-database-control-access-sql-authentication-get-started.md).
+- Informationen zu den ersten Schritten im Azure Active Directory-Authentifizierungstutorial finden Sie unter [Azure AD-Authentifizierung und Autorisierung](sql-database-control-access-aad-authentication-get-started.md).
+* Informationen zum Abfragen der Beispieldatenbank über das Azure-Portal finden Sie unter [Public preview: Interactive query experience for SQL databases](https://azure.microsoft.com/en-us/updates/azure-sql-database-public-preview-t-sql-editor/) (Öffentliche Vorschau: Interaktives Abfragen von SQL-Datenbanken).
 * Wenn Sie mit Excel vertraut sind, informieren Sie sich über das [Herstellen von Verbindungen mit SQL-Datenbank in Azure mit Excel](sql-database-connect-excel.md).
 * Wenn Sie mit dem Programmieren beginnen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)Ihre Programmiersprache aus.
 * Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, helfen Ihnen die Informationen unter [Migrieren von Datenbanken zu SQL-Datenbank](sql-database-cloud-migrate.md) weiter.
@@ -578,6 +580,6 @@ Nachdem Sie dieses Tutorial zu den ersten Schritten abgeschlossen und eine Daten
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

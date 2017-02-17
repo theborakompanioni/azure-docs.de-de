@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 01/27/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 4f67c67639eaf33bb1f2aa236164e98030f5b555
-ms.openlocfilehash: c76471f4c0f4e1b751d623f691578d354008d863
+ms.sourcegitcommit: 7a342d5e3ce255346a15ef7622ecec1a5950e654
+ms.openlocfilehash: fc821bd27c99e669d08d9610e16c98fc5597f064
 
 
 ---
@@ -189,8 +189,12 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | **Azure-Region für nationale Clouds**| **BGP-Communitywert** |
 | --- | --- |
 | **US Government** |  |
+| US Gov Arizona | 12076:51106 |
 | US Government, Iowa | 12076:51109 |
 | US Government, Virginia | 12076:51105 |
+| US Gov Texas | 12076:51108 |
+| US DoD, Mitte | 12076:51209 |
+| US DoD, Osten | 12076:51205 |
 
 
 | **Dienst in nationalen Clouds** | **BGP-Communitywert** |
@@ -212,6 +216,6 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

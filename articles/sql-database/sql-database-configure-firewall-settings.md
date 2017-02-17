@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 11/28/2016
-ms.author: rickbyh;carlrab
+ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: 36938e642853d587cd28405f5e518ac9ac0697ac
+ms.sourcegitcommit: e5834558d761784239813afc6bbb3e77cebcf1fa
+ms.openlocfilehash: fcdd0b855d64eb4b04ef1ea6d7752e9c664557a6
 
 
 ---
@@ -50,8 +50,8 @@ Klicken Sie zum Speichern der Änderungen auf **Speichern** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ein Tutorial mit ersten Schritten finden Sie unter [SQL-Datenbank-Tutorial: Erstellen eines Servers, einer Firewallregel auf Serverebene, einer Beispieldatenbank und einer Firewallregel auf Datenbankebene und Herstellen der Verbindung mit SQL Server Management Studio](sql-database-get-started.md).
-- Ein Tutorial mit ersten Sicherheitsschritten finden Sie unter [SQL-Datenbank-Tutorial: Erste Schritte für die Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
+- Ein Tutorial zum Bereitstellen und Herstellen einer Verbindung mit einem Server unter Verwendung von Firewalls auf Serverebene finden Sie unter [Tutorial: Bereitstellen und Verwenden einer Azure SQL-Datenbank mithilfe von Azure-Portal und SQL Server Management Studio](sql-database-get-started.md).
+- Ein Tutorial mit SQL Server-Authentifizierung und Firewalls auf Datenbankebene finden Sie unter [SQL-Authentifizierung und -Autorisierung](sql-database-control-access-sql-authentication-get-started.md).
 - Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 - Um zu erfahren, wie zusätzliche Benutzer erstellt werden, die eine Verbindung mit Datenbanken herstellen können, gehen Sie unter [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff](https://msdn.microsoft.com/library/azure/ee336235.aspx).
 
@@ -64,6 +64,6 @@ Klicken Sie zum Speichern der Änderungen auf **Speichern** .
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

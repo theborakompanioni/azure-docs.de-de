@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/06/2017
+ms.date: 01/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 5385e8a33466020dd89eaa843ece0ca8d1f31936
-ms.openlocfilehash: c6166484fb132395e7c06d695a6a03a7a628b56a
+ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
+ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
 
 
 ---
@@ -54,7 +54,7 @@ Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie kö
 * [Aktivieren Sie Visual Studio-Abonnementvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
 
 ### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015 mit dem Azure SDK für .NET
-Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio 2015 wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
+Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio&2015; wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
 
 Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für Visual Studio 2013 herunterladen](http://go.microsoft.com/fwlink/?LinkID=324322). Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
 
@@ -65,7 +65,7 @@ Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für V
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 1. Öffnen Sie Visual Studio, und klicken Sie auf **Datei** > **Neu** > **Projekt**.
-2. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**, wählen Sie **Cloud** aus, und klicken Sie anschließend auf **ASP.NET-Webanwendung**. Vergewissern Sie sich, dass **.NET Framework 4.5.2** ausgewählt ist.  Geben Sie im Textfeld **Name** die Zeichenfolge **ContosoTeamStats** ein, und klicken Sie auf **OK**.
+2. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**, wählen Sie **Cloud** aus, und klicken Sie anschließend auf **ASP.NET-Webanwendung**. Vergewissern Sie sich, dass mindestens **.NET Framework 4.5.2** ausgewählt ist.  Geben Sie im Textfeld **Name** die Zeichenfolge **ContosoTeamStats** ein, und klicken Sie auf **OK**.
    
     ![Projekt erstellen][cache-create-project]
 3. Wählen Sie als Projekttyp die Option **MVC** aus. Deaktivieren Sie das Kontrollkästchen **In der Cloud hosten** . Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
@@ -852,6 +852,6 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

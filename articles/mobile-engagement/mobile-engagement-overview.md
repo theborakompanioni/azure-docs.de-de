@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 957dcdd3cef2939ef913eead7ebf332f9b797860
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 42b50685b854cabe8906f42aac81ab82c63f8a94
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 957dcdd3cef2939ef913eead7ebf332f9b797860
 Azure Mobile Engagement ist eine als Software-as-a-Service (SaaS) bereitgestellte Benutzerengagementplattform, die Folgendes ermöglicht: datenbezogene Einblicke in die App-Nutzung, Benutzersegmentierung in Echtzeit und kontextbezogene Pushbenachrichtigungen sowie In-App-Messaging.
 
 ### <a name="overview-video"></a>Übersichtsvideo
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Mobile-Engagement-Overview/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Mobile-Engagement-Overview/player]
 > 
 > 
 
@@ -41,7 +41,7 @@ Hiervon profitieren App-Entwickler, indem sie ihre Kunden auf höchst effektive 
 ## <a name="open-apis-and-ease-of-integration"></a>Offene APIs und einfache Integration
 Durch die Bereitstellung offener APIs und SDKs, die die Integration erleichtern, können Sie Daten aus Ihrem vorhandenen CRM, CMS oder anderen Back-End-Systemen nutzen. Dadurch können Sie die Genauigkeit Ihrer Zielgruppenadressierung erhöhen und Ihre Investitionen schützen.
 
-## <a name="data-protection-privacy-across-the-globe"></a>Datensicherheit und Datenschutz weltweit
+## <a name="data-protection--privacy-across-the-globe"></a>Datensicherheit und Datenschutz weltweit
 Microsoft bekennt sich seit langer Zeit zum Datenschutz, einem wichtigen Teil unseres Produkt- und Dienstelebenszyklus. Wir arbeiten an der Transparenz unserer Datenschutzpraktiken, indem wir Kunden sinnvolle Optionen zum Datenschutz bieten und die von uns gespeicherten Daten verantwortungsbewusst verwalten. Wie bei allen Azure-Diensten gibt Mobile Engagement keine aus dem Besitz des Kunden abgeleiteten Daten weiter und verkauft diese nicht. Mobile Engagement ist global verfügbar, und die Einhaltung regionaler oder landesspezifischer Datenschutzgesetze ist möglich.
 
 ### <a name="next-steps"></a>Nächste Schritte:
@@ -54,6 +54,6 @@ Microsoft bekennt sich seit langer Zeit zum Datenschutz, einem wichtigen Teil un
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

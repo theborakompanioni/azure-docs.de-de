@@ -14,17 +14,17 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/23/2016
+ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: 6da0bb371336e0d9662a7fd36187cdf4317c22ea
+ms.sourcegitcommit: 6fd3c0ebe6d7b7e23550358ca1d93840ae8acaa1
+ms.openlocfilehash: 3b9a4fbd7121155e34cf9014ca08a4614457fe11
 
 
 ---
-# <a name="sql-database-tutorial-get-started-with-azure-sql-database-servers-databases-and-firewall-rules-using-the-azure-portal-and-sql-server-management-studio"></a>SQL-Datenbank-Tutorial: Enthält Informationen zu den ersten Schritten mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio.
+# <a name="tutorial-provision-and-access-an-azure-sql-database-using-the-azure-portal-and-sql-server-management-studio"></a>Tutorial: Bereitstellen und Verwenden einer Azure SQL-Datenbank mithilfe von Azure-Portal und SQL Server Management Studio
 
-In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
+In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
 
 * Erstellen einer neuen Azure-Ressourcengruppe
 * Erstellen eines logischen Azure SQL-Servers
@@ -296,7 +296,9 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutorials durcharbeiten, die auf den hier erworbenen Kenntnissen aufbauen. 
 
-* Wenn Sie sich mit der Sicherheit von Azure SQL-Datenbank befassen möchten, finden Sie entsprechende Informationen im Thema zu den [ersten Schritten bei der Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
+- Informationen zu den ersten Schritten im SQL Server-Authentifizierungstutorial finden Sie unter [SQL-Authentifizierung und -Autorisierung](sql-database-control-access-sql-authentication-get-started.md).
+- Informationen zu den ersten Schritten im Azure Active Directory-Authentifizierungstutorial finden Sie unter [Azure AD-Authentifizierung und Autorisierung](sql-database-control-access-aad-authentication-get-started.md).
+* Informationen zum Abfragen der Beispieldatenbank über das Azure-Portal finden Sie unter [Public preview: Interactive query experience for SQL databases](https://azure.microsoft.com/en-us/updates/azure-sql-database-public-preview-t-sql-editor/) (Öffentliche Vorschau: Interaktives Abfragen von SQL-Datenbanken).
 * Wenn Sie mit Excel vertraut sind, informieren Sie sich über das [Herstellen von Verbindungen mit SQL-Datenbank in Azure mit Excel](sql-database-connect-excel.md).
 * Wenn Sie mit dem Programmieren beginnen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)Ihre Programmiersprache aus.
 * Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, helfen Ihnen die Informationen unter [Migrieren von Datenbanken zu SQL-Datenbank](sql-database-cloud-migrate.md) weiter.
@@ -311,6 +313,6 @@ Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutoria
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

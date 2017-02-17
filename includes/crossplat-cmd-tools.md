@@ -41,7 +41,7 @@ Geben Sie `azure` an der Eingabeaufforderung ein, um die Installation zu überpr
 
 Sie benötigen ein Azure-Konto, um die Azure-Befehlszeilentools für Mac und Linux zu verwenden.
 
-Öffnen Sie einen Webbrowser, und rufen Sie die Seite [http://www.windowsazure.com][windowsazuredotcom] auf. Klicken Sie in der oberen rechten Ecke auf **Kostenlose Testversion**.
+Navigieren Sie in einem Webbrowser zu [http://www.windowsazure.com][windowsazuredotcom], und klicken Sie rechts oben auf **Kostenloses Konto**.
 
 ![Azure-Website][Azure Web Site]
 
@@ -214,6 +214,6 @@ Eine vollständige Liste der Befehle zum Erstellen und Verwalten von virtuellen 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

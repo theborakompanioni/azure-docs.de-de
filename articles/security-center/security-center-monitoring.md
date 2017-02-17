@@ -1,5 +1,5 @@
 ---
-title: "Überwachen der Sicherheitsintegrität in Azure Security Center | Microsoft Docs"
+title: "Sicherheitsüberwachung in Azure Security Center | Microsoft-Dokumentation"
 description: "Diese Artikel bietet eine Einführung in die Überwachungsfunktionen von Azure Security Center."
 services: security-center
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: b0694222548e39718f6626c1b1666584445f8398
-ms.openlocfilehash: 246b322378d581f6f263fd0adb96ef32f6962906
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: ae263615d5fa262eb8a8ed2e5461d92bec503f1d
 
 
 ---
@@ -60,8 +60,8 @@ Dieser Abschnitt enthält eine Reihe von [Empfehlungen für die einzelnen virtue
 
 > [!NOTE]
 > Auf dem Blatt **Networking Health** (Netzwerkintegrität) werden in der Liste **Netzwerktopologie** nur virtuelle Computer mit mindestens einem öffentlichen Endpunkt angezeigt.
-> 
-> 
+>
+>
 
 Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden können, wenn Sie darauf klicken. Wenn Sie beispielsweise auf **Fehlende Systemupdates** klicken, wird das Blatt **Fehlende Systemupdates** geöffnet. Auf dem Blatt sind die virtuellen Computer mit fehlenden Patches sowie der Schweregrad des fehlenden Updates aufgeführt, wie im folgenden Screenshot zu sehen.
 
@@ -87,8 +87,8 @@ Um die Details zur Empfehlung anzuzeigen, klicken Sie auf den Namen des jeweilig
 
 > [!NOTE]
 > Hier werden die gleichen Sicherheitsempfehlungen aufgeführt wie auf dem Blatt **Empfehlungen**. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md). Dies gilt nicht nur für virtuelle Computer, sondern für alle Ressourcen, die auf der Kachel **Ressourcenintegrität** verfügbar sind.
-> 
-> 
+>
+>
 
 #### <a name="virtual-machines-section"></a>Abschnitt „Virtuelle Computer“
 Der Abschnitt „Virtuelle Computer“ enthält eine Übersicht über alle virtuellen Computer und Empfehlungen. Jede Spalte steht für eine Gruppe von Empfehlungen, wie im folgenden Screenshot zu sehen:
@@ -217,7 +217,6 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

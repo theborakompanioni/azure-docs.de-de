@@ -15,15 +15,15 @@ ms.topic: hero-article
 /ms.date: 1/18/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: b4f13f1b5469ea3d3b2ab69e6435d3e7beb6ace8
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 8661d4b3da31e3e3e54590a013b5c784216ecefb
 
 
 ---
 # <a name="get-started-with-azure-file-storage-on-windows"></a>Erste Schritte mit Azure File Storage unter Windows
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[!INCLUDE [storage-check-out-samples-dotnet](../../includes/storage-check-out-samples-dotnet.md)]
 
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
@@ -38,7 +38,7 @@ Informationen zu Skalierbarkeits- und Leistungszielen von File Storage finden Si
 ## <a name="video-using-azure-file-storage-with-windows"></a>Video: Verwenden des Azure-Dateispeichers unter Windows
 Dieses Video veranschaulicht das Erstellen und Verwenden von Azure-Dateifreigaben unter Windows.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Azure-File-Storage-with-Windows/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Windows/player]
 > 
 > 
 
@@ -430,7 +430,7 @@ if (share.Exists())
 }
 ```
 
-Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) und [Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage](storage-dotnet-shared-access-signature-part-2.md).
+Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures finden Sie unter [Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell](storage-dotnet-shared-access-signature-part-1.md) und [Shared Access Signatures, Teil&2;: Erstellen und Verwenden einer SAS mit Blob Storage](storage-dotnet-shared-access-signature-part-2.md).
 
 ### <a name="copy-files"></a>Kopieren von Dateien
 Ab Version 5.x der Azure Storage-Clientbibliothek können Sie eine Datei in eine andere Datei, eine Datei in ein Blob oder ein Blob in eine Datei kopieren. In den nächsten Abschnitten wird demonstriert, wie diese Kopiervorgänge programmgesteuert ausgeführt werden.
@@ -645,6 +645,9 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
 15. **Wie behebe ich Fehler bei Azure File Storage?**
     
     Umfassende Unterstützung bei der Problembehandlung erhalten Sie im [Artikel zur Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md).               
+16. ** Kann ich FileSystemWatcher zum Lauschen auf Ereignisse verwenden, z.B. das Erstellen/Ändern/Löschen von Dateien und Verzeichnissen auf meiner Freigabe des Azure-Dateidiensts?
+
+Nein. Sie können das Azure-WebJobs-SDK verwenden. Sie können eigene ausgelöste oder nicht ausgelöste Bindungen schreiben und auf Ereignisse in Ihrem Dateispeicher lauschen. Ausführliche Informationen zu den ersten Schritten finden Sie hier: [Guideline for authoring new triggers and binders](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) (Anleitung zur Erstellung neuer Trigger und Bindungen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
@@ -670,6 +673,6 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

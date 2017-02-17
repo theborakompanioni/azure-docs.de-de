@@ -1,10 +1,10 @@
 ---
-title: Netzwerksicherheitsgruppen | Microsoft-Dokumentation
+title: Netzwerksicherheitsgruppen in Azure | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie den Flow des Datenverkehrs in Ihren virtuellen Netzwerken isolieren und steuern, indem Sie die verteilte Firewall in Azure und Netzwerksicherheitsgruppen verwenden.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 20e850fc-6456-4b5f-9a3f-a8379b052bc9
 ms.service: virtual-network
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 1de0827c01c772a4298b7b568363e89f08910ff7
-ms.openlocfilehash: 46dce57f509872580c57bb1d8d93af51623211ac
+ms.sourcegitcommit: 2165cdc87a505e94fab2fc73c30a5764348c6dc1
+ms.openlocfilehash: b382cf65ae172e0037f2bc668a4f5862b29d1700
 
 
 ---
-# <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
+# <a name="control-network-traffic-flow-with-network-security-groups"></a>Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen
 
 Eine Netzwerksicherheitsgruppe (NSG) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einer einzelnen virtuellen Maschine weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
 
@@ -93,8 +93,8 @@ Wie in den folgenden Standardregeln zu sehen, wird Datenverkehr aus einem bzw. i
 ## <a name="associating-nsgs"></a>Zuordnen von NSGs
 Je nach verwendetem Bereitstellungsmodell können Sie eine NSG einem virtuellen Computer, Netzwerkkarten (NICs) und Subnetzen zuordnen.
 
-* **Zuordnen einer NSG zu einem virtuellen Computer (nur klassische Bereitstellungen).**  Wenn Sie eine NSG einem virtuellen Computer zuordnen, werden die Netzwerkzugriffsregeln in der NSG auf jeglichen Datenverkehr angewendet, der für den virtuellen Computer bestimmt ist oder diesen verlässt. 
-* **Zuordnen einer NSG zu einer Netzwerkkarte (nur Ressourcen-Manager-Bereitstellungen).**  Wenn Sie eine NSG zu einer Netzwerkkarte zuordnen, werden die Netzwerkzugriffsregeln in der NSG nur auf diese Netzwerkkarte angewendet. Für einen virtuellen Computer mit mehreren Netzwerkkarten bedeutet dies, dass sich eine NSG, die auf eine einzelne Netzwerkkarte angewendet wird, nicht auf die anderen Netzwerkkarten auswirkt. 
+* **Zuordnen einer NSG zu einem virtuellen Computer (nur klassische Bereitstellungen).** Wenn Sie eine NSG einem virtuellen Computer zuordnen, werden die Netzwerkzugriffsregeln in der NSG auf jeglichen Datenverkehr angewendet, der für den virtuellen Computer bestimmt ist oder diesen verlässt. 
+* **Zuordnen einer NSG zu einer Netzwerkkarte (nur Ressourcen-Manager-Bereitstellungen).** Wenn Sie eine NSG zu einer Netzwerkkarte zuordnen, werden die Netzwerkzugriffsregeln in der NSG nur auf diese Netzwerkkarte angewendet. Für einen virtuellen Computer mit mehreren Netzwerkkarten bedeutet dies, dass sich eine NSG, die auf eine einzelne Netzwerkkarte angewendet wird, nicht auf die anderen Netzwerkkarten auswirkt. 
 * **Zuordnen einer NSG zu einem Subnetz (alle Bereitstellungen)**. Wenn Sie eine NSG einem Subnetz zuordnen, werden die Netzwerk-Zugriffsregeln in der NSG auf alle IaaS- und PaaS-Ressourcen im Subnetz angewendet. 
 
 Sie können verschiedene NSGs einem virtuellen Computer (oder einer Netzwerkkarte, abhängig vom Bereitstellungsmodell) und dem Subnetz zuordnen, an das eine Netzwerkkarte oder ein virtueller Computer gebunden ist. In diesem Fall werden alle Netzwerkzugriffsregeln in der Reihenfolge Ihrer Priorität in der NSG auf den Datenverkehr angewendet:
@@ -180,11 +180,11 @@ In NSG-Regeln kann derzeit als Protokoll nur *TCP* oder *UDP* angegeben werden. 
 * Viele Azure-Dienste können nicht mit Azure Virtual Networks verbunden werden. Daher kann der ein- und ausgehende Datenverkehr dieser Dienste nicht mit NSGs gefiltert werden.  Lesen Sie die Dokumentation zu den von Ihnen genutzten Diensten, um herauszufinden, ob sie mit VNETs verbunden werden können.
 
 ## <a name="sample-deployment"></a>Beispielbereitstellung
-Im Folgenden wird veranschaulicht, wie die Informationen in diesem Artikel praktisch umgesetzt werden können. Dazu  definieren wir NSGs, die den Netzwerk-Datenverkehr für eine Workloadlösung mit zwei Ebenen filtern. Es gelten diese Anforderungen:
+Im Folgenden wird veranschaulicht, wie die Informationen in diesem Artikel praktisch umgesetzt werden können. Dazu definieren wir NSGs, die den Netzwerk-Datenverkehr für eine Workloadlösung mit zwei Ebenen filtern. Es gelten diese Anforderungen:
 
 1. Trennung des Datenverkehrs zwischen Front-End (Windows-Webserver) und Back-End (SQL-Datenbankserver).
 2. Lastenausgleichsregeln leiten den am Load Balancer eingehenden Datenverkehr auf allen Webservern an Port 80 weiter.
-3. NAT-Regeln leiten den an Port 50001 des Load Balancers eingehenden Datenverkehr an Port 3389 auf  nur einem virtuellen Computer im Front-End weiter.
+3. NAT-Regeln leiten den an Port 50001 des Load Balancers eingehenden Datenverkehr an Port 3389 auf nur einem virtuellen Computer im Front-End weiter.
 4. Kein Zugriff auf die virtuellen Computer des Front-Ends oder Back-Ends aus dem Internet, mit Ausnahme von Anforderung 1.
 5. Kein Zugriff aus dem Front-End oder Back-End auf das Internet.
 6. Zugriff auf Port 3389 auf jedem Webserver im Front-End für Datenverkehr, der aus dem Front-End-Subnetz selbst stammt.
@@ -261,6 +261,6 @@ Da einige der oben aufgeführten NSGs einzelnen Netzwerkkarten zugeordnet werden
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

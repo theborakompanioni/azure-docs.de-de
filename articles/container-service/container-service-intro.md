@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Azure Container Service | Microsoft Docs"
+title: Docker-Containercluster in der Azure-Cloud | Microsoft-Dokumentation
 description: "Azure Container Service bietet eine Möglichkeit zur Vereinfachung der Erstellung, Konfiguration und Verwaltung eines Clusters virtueller Computer, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind."
 services: container-service
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 12/20/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: f8a2b63c381ceafb23b31697916796066ea549f9
-ms.openlocfilehash: d5652134cc2c660395cfb83a1a2727acf306f5e9
+ms.sourcegitcommit: 0bf622c24b9865832fe9aeb1ece7a7b94e283f46
+ms.openlocfilehash: e4623d6e1fd0944b9d95a4f0c5bdc8a5d6593614
 
 
 ---
@@ -113,6 +113,6 @@ Erstellen von Anwendungen mithilfe von Azure Container Service (Build 2016)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

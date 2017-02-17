@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit der Sicherung und Wiederherstellung von Azure SQL-Datenbanken für Datenschutz und Wiederherstellung | Microsoft-Dokumentation"
+title: 'Azure-Portal: Sichern und Wiederherstellen von Azure SQL-Datenbanken | Microsoft-Dokumentation'
 description: In diesem Tutorial wird gezeigt, wie Sie Daten aus automatisierten Sicherungen in einem bestimmten Zustand wiederherstellen, automatisierte Sicherungen im Azure Recovery Services-Tresor speichern und Daten aus dem Azure Recovery Services-Tresor wiederherstellen.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
@@ -17,13 +17,13 @@ ms.topic: hero-article
 ms.date: 12/08/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: a9adc82faab977ad5da1c9dc281d45db3101d8c8
-ms.openlocfilehash: 3fb97f80d5012e993f92eb592d877faabc94c43e
+ms.sourcegitcommit: 062860b6bc1343a419cd8d35f6fbe5610396a239
+ms.openlocfilehash: c598268186869c8443007c8537853978555d6428
 
 
 ---
-# <a name="get-started-with-backup-and-restore-for-data-protection-and-recovery"></a>Erste Schritte mit der Sicherung und Wiederherstellung für Datenschutz und Wiederherstellung
-In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
+# <a name="tutorial-back-up-and-restore-an-azure-sql-database-using-the-azure-portal"></a>Tutorial: Sichern und Wiederherstellen einer Azure SQL-Datenbank über das Azure-Portal
+In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
 
 - Anzeigen vorhandener Sicherungen einer Datenbank
 - Wiederherstellen eines früheren Zustands einer Datenbank
@@ -245,6 +245,6 @@ In diesem Abschnitt des Tutorials stellen Sie die Datenbank aus einer Sicherung 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

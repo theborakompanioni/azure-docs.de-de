@@ -14,15 +14,15 @@ ms.topic: get-started-article
 ms.date: 10/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: ee9ebc23ce805bb4665669077a4d3fddf4c43e32
-ms.openlocfilehash: a190b1990a4ae4e7ad52cc1a7e802c8002522917
+ms.sourcegitcommit: 15de13cfaec7a5dcd906733727bb1f826893a31b
+ms.openlocfilehash: 61a2aca74f9d422550b90d218c5e060c89e354ad
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentieren von Web-Apps zur Laufzeit mit Application Insights
 
 
-Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Wenn Ihre Apps mit einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Wenn es sich um Azure-Web-Apps handelt oder wenn sie in einer Azure-VM ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).)
+Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Falls Ihre Apps von einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Falls es sich um Azure-Web-Apps handelt oder die Apps auf einem virtuellen Azure-Computer ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).)
 
 ![Beispieldiagramme](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -227,6 +227,6 @@ Ermitteln Sie, welche Apps überwacht werden:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 
