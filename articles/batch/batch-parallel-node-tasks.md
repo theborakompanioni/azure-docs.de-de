@@ -1,5 +1,5 @@
 ---
-title: Maximieren der Nutzung von Batch-Knoten mit parallelen Aufgaben | Microsoft Docs
+title: "Ausführen von parallelen Aufgaben zur Maximierung der Knotennutzung – Azure Batch | Microsoft-Dokumentation"
 description: "Steigern der Effizienz und Reduzieren von Kosten durch Verringern der Serverknotenzahl und Ausführen paralleler Aufgaben auf jedem Knoten in einem Azure Batch-Pool"
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 7fec2e08209365e306d423ab35e67532ee0876c0
+ms.sourcegitcommit: ffba988bd8cd3896816118afde979c7067fced79
+ms.openlocfilehash: 8080c8c43d1e88381cd49bdac6a5f36b6cd82709
 
 
 ---
@@ -146,6 +146,6 @@ Der [Azure Batch Explorer][batch_explorer], eine der [Beispielanwendungen][githu
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

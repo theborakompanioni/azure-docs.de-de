@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: 3493afbebf2a75a190d344ac1e66b00b9ddfd582
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 3d9997655e19ba800bf3462d5ebd3f7c7210271f
 
 
 ---
@@ -28,7 +28,7 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 
 1. Öffnen Sie eine **Developer-Eingabeaufforderung für VS2015** .
 2. Navigieren Sie in Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk** zum Stammordner.
-3. Führen Sie das Skript **tools\\build.cmd** aus. Dieses Skript erstellt eine Visual Studio-Projektmappendatei, erstellt die Projektmappe und führt die Tests aus. Sie finden die Visual Studio-Projektmappe im **build**-Ordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys.
+3. Führen Sie das Skript **tools\\build.cmd** aus. Dieses Skript erstellt eine Visual Studio-Projektmappendatei und erstellt die Projektmappe. Sie finden die Visual Studio-Projektmappe im **build**-Ordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys. Dem Skript können zur Erstellung und Ausführung von Komponenten- und End-to-End-Tests weitere Parameter hinzugefügt werden. Diese Parameter lauten **--run-unittests** bzw. **--run-e2e-tests**. 
 
 ## <a name="how-to-run-the-sample"></a>Ausführen des Beispiels
 1. Das **build.cmd**-Skript erstellt einen Ordner mit dem Namen **build** in Ihrer lokalen Kopie des Repositorys. Dieser Ordner enthält die beiden in diesem Beispiel verwendeten Module.
@@ -86,6 +86,6 @@ Bevor Sie beginnen, müssen Sie die [Entwicklungsumgebung einrichten][lnk-setupd
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -68,6 +68,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

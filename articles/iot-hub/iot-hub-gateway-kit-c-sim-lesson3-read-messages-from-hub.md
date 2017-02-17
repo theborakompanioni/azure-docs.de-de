@@ -1,6 +1,6 @@
 ---
-title: Lesen von Nachrichten vom Azure IoT Hub | Microsoft-Dokumentation
-description: "Führen Sie einen Beispielcode auf Ihrem Hostcomputer aus, um die Nachrichten vom IoT Hub zu lesen."
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 3: Lesen von Nachrichten | Microsoft-Dokumentation"
+description: "Führen Sie Beispielcode auf Ihrem Hostcomputer aus, um die Nachrichten vom IoT Hub zu lesen."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: c92b9a86ceee306f713df5bcffca87071c905393
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 08ccd35c6e6a8e77f0fd4637f14a1f27730560d6
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: c92b9a86ceee306f713df5bcffca87071c905393
 
 ## <a name="what-you-will-do"></a>Aufgaben
 
-- Führen Sie einen Beispielcode auf Ihrem Hostcomputer aus, um Nachrichten vom IoT Hub zu lesen.
+- Führen Sie Beispielcode auf Ihrem Hostcomputer aus, um Nachrichten vom IoT Hub zu lesen.
 
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
@@ -101,6 +101,6 @@ Sie haben die Beispielanwendung für das Senden von Daten an Ihren IoT Hub mit e
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

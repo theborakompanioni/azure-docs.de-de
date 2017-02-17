@@ -125,6 +125,6 @@ Einen Vergleich zwischen den in diesem Artikel besprochenen Azure Service Bus-Wa
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

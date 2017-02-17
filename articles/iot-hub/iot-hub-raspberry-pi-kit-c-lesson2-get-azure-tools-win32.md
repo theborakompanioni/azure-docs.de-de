@@ -1,5 +1,5 @@
 ---
-title: "Abrufen der Azure-Tools (Windows 7 und höher) | Microsoft-Dokumentation"
+title: "Verbinden von Raspberry Pi (C) mit Azure IoT – Lektion 2: Azure-Tools (Windows) | Microsoft-Dokumentation"
 description: "Installieren Sie unter Windows 7 und höheren Versionen Python und die Azure-Befehlszeilenschnittstelle (Azure-CLI)."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 59d6edc1af60c9850a97378ac8758f0f245e68d6
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 1ae210489b8d369a5fca33e1824b9dc224ad33d2
 
 
 ---
@@ -75,6 +75,6 @@ Sie haben die Azure-CLI installiert. Die nächste Aufgabe besteht in der Erstell
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

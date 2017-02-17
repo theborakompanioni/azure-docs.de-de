@@ -1,5 +1,5 @@
 ---
-title: Vorbereiten von Mac-Computern und Azure IoT Hub | Microsoft Docs
+title: "SensorTag-Gerät und Azure IoT Gateway – Lektion 2: Abrufen der Tools (macOS) | Microsoft-Dokumentation"
 description: "Installieren Sie die Tools auf Ihrem Mac-Computer, erstellen Sie eine IoT Hub-Instanz, und registrieren Sie Ihr Gerät bei IoT Hub."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: 90b211e1d0b85e2c99ab31a633ddcee9218d4874
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 8b105cebd5b3e6c5cae726abbf5f2c48c0cd7587
 
 
 ---
@@ -44,7 +44,7 @@ In dieser Lektion lernen Sie Folgendes:
 - Verwenden von [NPM](https://www.npmjs.com/) zum Installieren von Node.js-Entwicklungstools.
   - Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   - NPM ist einer der Paket-Manager für Node.js.
-- Installieren von Visual Studio Code.
+- Installieren von Visual Studio Code
   - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und macOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
 - Installieren von Python
   - Python ist eine weit verbreitete, interpretierte und dynamische Programmiersprache für allgemeine Aufgaben auf hoher Ebene.
@@ -55,7 +55,7 @@ In dieser Lektion lernen Sie Folgendes:
 ## <a name="what-you-need"></a>Erforderliches Element
 
 - Eine Internetverbindung zum Herunterladen der Tools und der Software
-- Ein Mac-Computer, auf dem OS X Yosemite (10.10) oder höher ausgeführt wird.
+- Ein Mac-Computer, auf dem OS X Yosemite (10.10) oder höher ausgeführt wird
 
 ## <a name="install-git-and-nodejs"></a>Installieren von Git und Node.js
 
@@ -85,14 +85,14 @@ Führen Sie den folgenden Befehl im Terminal aus, um Gulp zu installieren:
 npm install -g gulp
 ```
 
-Wenn bei der Installation Probleme auftreten, finden Sie in der [Anleitung zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md) Lösungen für häufiger auftretende Probleme.
+Wenn bei der Installation Probleme auftreten, helfen Ihnen die Lösungen für häufiger vorkommende Probleme in der [Anleitung zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md) weiter.
 
 > [!Note]
 > Node, NPM und Gulp sind für die Ausführung von Automatisierungsskripts, die mit Node.js entwickelt wurden, erforderlich.
 
 ## <a name="install-python"></a>Installieren von Python
 
-Obwohl Python 2.7 bereits in Mac OS X enthalten ist, wird empfohlen, Python über Homebrew zu installieren. Siehe [Installing Python on macOS](http://docs.python-guide.org/en/latest/starting/install/osx/) (Installieren von Python unter Mac OS X).
+Obwohl Python 2.7 bereits in Mac OS X enthalten ist, wird empfohlen, Python über Homebrew zu installieren. Siehe [Installieren von Python unter Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/).
 
 Installieren Sie Python und pip, indem Sie den folgenden Befehl ausführen:
 
@@ -104,7 +104,7 @@ brew install python
 
 Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
 
-1. Führen Sie die folgenden Befehle in einem Terminal aus:
+1. Führen Sie die folgenden Befehle im Terminal aus:
    ```bash
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
@@ -134,6 +134,6 @@ Sie haben die erforderlichen Tools und Software auf Ihrem Mac-Computer installie
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

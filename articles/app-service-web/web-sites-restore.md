@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: af79132b5830b1782850c8738f1d8bd5ca0b38d9
-ms.openlocfilehash: b60009a93bd2c857acfc4d1856d8f1afb7fff595
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 71d07e64480d4b4eaff7fdef53c8f5ff7a97a944
 
 
 ---
@@ -81,7 +81,7 @@ Auf dem Blatt „Details“ werden die verfügbaren Informationen im Zusammenhan
 Sie können App Service-Apps auch mithilfe der REST-API sichern und wiederherstellen (siehe [Verwenden von REST zum Sichern und Wiederherstellen von App Service-Apps](websites-csm-backup.md)).
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -103,6 +103,6 @@ Sie können App Service-Apps auch mithilfe der REST-API sichern und wiederherste
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -152,6 +152,6 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

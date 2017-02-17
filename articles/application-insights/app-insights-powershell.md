@@ -1,6 +1,6 @@
 ---
-title: "Erstellen von Azure Application Insights-Ressourcen, Warnungen und Verfügbarkeitstests in PowerShell | Microsoft-Dokumentation"
-description: Automatisieren Sie die Verwaltung von Application Insights-Ressourcen mithilfe einer Azure Resource Manager-Vorlage.
+title: Automatisieren von Azure Application Insights mit PowerShell | Microsoft-Dokumentation
+description: "Automatisieren Sie die Ressourcen-, Warnungs- und Verfügbarkeitstesterstellung in PowerShell mithilfe einer Azure Resource Manager-Vorlage."
 services: application-insights
 documentationcenter: 
 author: alancameronwills
@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 86118ebfcb0c7c55ff414d381645025f41c74eb7
-ms.openlocfilehash: ba52b3dc55d80cc5944f16c238a2ea0d66c94990
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 9fc886d9ce69c1ca3d7a981d5eeb276c09cc245e
 
 
 ---
@@ -111,7 +111,7 @@ Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json
                 "ApplicationId": "[parameters('appName')]",
                 "Name": "[parameters('appName')]",
                 "Flow_Type": "Redfield",
-                "Request_Source": "IbizaAIExtension"
+                "Request_Source": "ARMAIExtension"
               }
             },
             {
@@ -438,6 +438,6 @@ Andere Artikel zu Automation:
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

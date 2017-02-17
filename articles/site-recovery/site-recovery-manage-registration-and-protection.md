@@ -239,6 +239,6 @@ Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach A
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

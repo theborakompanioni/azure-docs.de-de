@@ -1,9 +1,9 @@
 ---
-title: Verwalten des Ablaufs von Azure Storage-Blobinhalten in Azure CDN | Microsoft Docs
+title: Verwalten des Ablaufs von Azure Storage-Blobs in Azure CDN | Microsoft-Dokumentation
 description: "Informationen zu den Optionen für das Festlegen der Gültigkeitsdauer von Blobs beim Azure CDN-Zwischenspeichern."
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/15/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
-ms.openlocfilehash: 751db56ee29ebc635d4d2a27dd18f99f7efb5a34
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 26085360a1f2a2ffda3789c654bc7212f2e652f3
 
 
 ---
-# <a name="manage-expiration-of-azure-storage-blob-content-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Storage-Blobinhalten in Azure CDN
+# <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Storage-Blobs in Azure CDN
 > [!div class="op_single_selector"]
 > * [Azure-Web-Apps/Cloud Services, ASP.NET oder IIS](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Storage Blob-Dienst](cdn-manage-expiration-of-blob-content.md)
@@ -122,6 +122,6 @@ Sie können die Gültigkeitsdauer Ihrer Blobs einfach überprüfen.  Mithilfe de
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

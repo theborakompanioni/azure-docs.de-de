@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/30/2016
+ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 976470e7b28a355cbfa4c5c8d380744eb1366787
-ms.openlocfilehash: f8711ba45339be7ffbeac1ab28823df43db23046
+ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
+ms.openlocfilehash: 60c8296e1287419dedf5b5f01f2ddb7ab86b5d11
 
 ---
 
@@ -62,7 +62,7 @@ Für die Blobindizierung muss die Datenquelle über die folgenden erforderlichen
 
 * **name** ist der eindeutige Name der Datenquelle im Suchdienst.
 * **type** muss `azureblob` lauten.
-* Mit **credentials** wird die Speicherkonto-Verbindungszeichenfolge als `credentials.connectionString`-Parameter angegeben. Sie erhalten die Verbindungszeichenfolge über das Azure-Portal. Navigieren Sie zum Blatt mit dem gewünschten Speicherkonto > **Einstellungen** > **Schlüssel**, und verwenden Sie den Wert „Primäre Verbindungszeichenfolge“ oder „Sekundäre Verbindungszeichenfolge“.
+* Mit **credentials** wird die Speicherkonto-Verbindungszeichenfolge als `credentials.connectionString`-Parameter angegeben. Details finden Sie weiter unten unter [Angeben von Anmeldeinformationen](#Credentials).
 * Mit **container** wird ein Container in Ihrem Speicherkonto angegeben. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
 
 So erstellen Sie eine Datenquelle:
@@ -74,11 +74,25 @@ So erstellen Sie eine Datenquelle:
     {
         "name" : "blob-datasource",
         "type" : "azureblob",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
 
 Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
+
+<a name="Credentials"></a>
+#### <a name="how-to-specify-credentials"></a>Angeben von Anmeldeinformationen ####
+
+Sie haben folgende Möglichkeiten zum Angeben der Anmeldeinformationen für den Blobcontainer: 
+
+- **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
+- Verbindungszeichenfolge für eine **Shared Access Signature (SAS) für ein Speicherkonto**: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für Container und Objekte (in diesem Fall Blobs) verfügen.
+-  **Shared Access Signature des Containers**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
+
+Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md).
+
+> [!NOTE]
+> Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Falls SAS-Anmeldedaten ablaufen, tritt beim Indexer ein Fehler mit ungefähr folgender Fehlermeldung auf: `Credentials provided in the connection string are invalid or have expired.`.  
 
 ### <a name="step-2-create-an-index"></a>Schritt 2: Erstellen eines Index
 Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.
@@ -345,6 +359,6 @@ Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

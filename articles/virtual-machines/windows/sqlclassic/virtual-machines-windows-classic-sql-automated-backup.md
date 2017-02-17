@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 09/26/2016
+ms.workload: iaas-sql-server
+ms.date: 01/18/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 3379551c722efbe0d1591e409c6e039cd772d99b
+ms.sourcegitcommit: 61df14be1d231c4c236774cbcfe1ddff0bce1652
+ms.openlocfilehash: 1412bf2059688177e0b731a6124b4bc66e33b27f
 
 
 ---
@@ -69,10 +69,11 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 | Einstellung | Bereich (Standard) | Beschreibung |
 | --- | --- | --- |
 | **Automatisierte Sicherung** |Aktivieren/Deaktivieren (deaktiviert) |Aktiviert oder deaktiviert die automatisierte Sicherung für eine Azure-VM mit SQL Server 2014 Standard oder Enterprise. |
-| **Aufbewahrungszeitraum** |1 bis 30 Tage (30 Tage) |Die Anzahl von Tagen, für die eine Sicherung aufbewahrt wird. |
+| **Aufbewahrungszeitraum** |1 bis&30; Tage (30 Tage) |Die Anzahl von Tagen, für die eine Sicherung aufbewahrt wird. |
 | **Speicherkonto** |Azure-Speicher-Konto (das für die angegebene VM erstellte Speicherkonto) |Ein Azure-Speicherkonto, mit dem Dateien der automatisierten Sicherung im Blob-Speicher gespeichert werden. An diesem Speicherort wird ein Container zum Speichern aller Sicherungsdateien erstellt. Die Namenskonvention für die Sicherungsdatei enthält das Datum, die Uhrzeit und den Computernamen. |
 | **Verschlüsselung** |Aktivieren/Deaktivieren (deaktiviert) |Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto im gleichen automaticbackup-Container (mit derselben Namenskonvention). Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
-| **Kennwort** |Kennworttext (keiner) |Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. |
+| **Kennwort** |Kennworttext (keiner) |Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. | **Sichern von Systemdatenbanken** | Aktivieren/Deaktivieren (deaktiviert) | So erstellen Sie vollständige Sicherungen von Master-, Model- und MSDB-Datenbanken |
+| **Configure backup schedule** (Sicherungszeitplan konfigurieren) | Manuell/Automatisiert (automatisch) | Wählen Sie **Automated** (Automatisiert), um automatisch vollständige Sicherungen und Protokollsicherungen basierend auf dem Protokolldateiwachstum zu erstellen. Wählen Sie **Manuell**, um den Zeitplan für vollständige Sicherungen und Protokollsicherungen anzugeben. |
 
 ## <a name="configuration-with-powershell"></a>Konfiguration mit PowerShell
 Im folgenden PowerShell-Beispiel wird die automatisierte Sicherung für eine vorhandene SQL Server 2014-VM konfiguriert. Der Befehl **New-AzureVMSqlServerAutoBackupConfig** konfiguriert die Einstellungen der automatisierten Sicherung zum Speichern von Sicherungen in dem mit der $storageaccount-Variable angegebenen Azure-Speicherkonto. Die Sicherungen werden für 10 Tage beibehalten. Der Befehl **Set AzureVMSqlServerExtension** aktualisiert die angegebene Azure-VM mit diesen Einstellungen.
@@ -116,6 +117,6 @@ Ausführlichere Informationen zur Ausführung von SQL Server auf virtuellen Azur
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

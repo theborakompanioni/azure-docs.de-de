@@ -1,6 +1,6 @@
 ---
-title: "Azure Network Security im Überblick | Microsoft Docs"
-description: " Dieser Artikel erläutert Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit. Wir bieten grundlegende Erklärungen zu Kernkonzepten und Anforderungen im Bereich Netzwerksicherheit und Informationen über die Vorteile von Azure in jedem dieser Bereiche. "
+title: Konzepte und Anforderungen im Zusammenhang mit der Netzwerksicherheit in Azure | Microsoft-Dokumentation
+description: " Dieser Artikel erläutert Ihnen das Angebot von Microsoft Azure im Bereich Netzwerksicherheit. Wir bieten grundlegende Erklärungen zu Kernkonzepten und Anforderungen im Bereich Netzwerksicherheit sowie Informationen über die Vorteile von Azure in jedem dieser Bereiche.. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f62d964dc5da9200a9f1944c00a4983e8d01b997
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 8b0266a86221b379a105b87f130cd0a4f97385f7
 
 
 ---
@@ -270,6 +270,6 @@ Weitere Informationen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -16,13 +16,18 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: fc79b8017f2184091f2473a0ff9cdfbd0a4cbdf8
-ms.openlocfilehash: bc3098db4ba43d69b23b3644bd2ad62c867cbb00
+ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
+ms.openlocfilehash: 2b69ebe544d663ee0b9d25bae482342726b6ffa8
 
 
 ---
-# <a name="install-and-use-giraph-in-hdinsight"></a>Installieren und Verwenden von Giraph in HDInsight
+# <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>Installieren und Verwenden von Giraph in Windows-basierten HDInsight-Clustern
+
 Erfahren Sie, wie Sie mithilfe von Skriptaktionen Windows-basierte HDInsight-Cluster mit Giraph anpassen und mit Giraph große Graphen verarbeiten. Informationen zur Verwendung von Giraph mit einem Linux-basierten Cluster finden Sie unter [Installieren von Giraph in HDinsight Hadoop-Clustern (Linux)](hdinsight-hadoop-giraph-install-linux.md).
+
+> [!IMPORTANT]
+> Die Schritte in diesem Dokument funktionieren nur mit einem Windows-basierten HDInsight-Cluster. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Informationen zur Installation von Giraph in einem Linux-basierten HDInsight-Cluster finden Sie unter [Installieren von Giraph in HDinsight Hadoop-Clustern (Linux)](hdinsight-hadoop-giraph-install-linux.md).
+
 
 Mithilfe von *Skriptaktionen*können Sie Giraph in einem beliebigen Clustertyp (Hadoop, Storm, HBase, Spark) in Azure HDInsight installieren. Ein Beispielskript zum Installieren von Giraph in einem HDInsight-Cluster steht in einem schreibgeschützten Azure-Speicherblob unter [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)zur Verfügung. Das Beispielskript funktioniert nur mit HDInsight-Clustern der Version 3.1. Weitere Informationen zu HDInsight-Clusterversionen finden Sie unter [HDInsight-Clusterversionen](hdinsight-component-versioning.md).
 
@@ -179,6 +184,6 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

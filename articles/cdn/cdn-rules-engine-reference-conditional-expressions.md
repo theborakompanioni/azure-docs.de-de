@@ -1,6 +1,6 @@
 ---
-title: "Bedingte Ausdrücke des Azure Content Delivery Network-Regelmoduls | Microsoft-Dokumentation"
-description: "In diesem Thema werden Übereinstimmungsbedingungen und Features des Regelmoduls beschrieben."
+title: "Bedingte Ausdrücke des Azure CDN-Regelmoduls | Microsoft-Dokumentation"
+description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls."
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: 92cb8832de934c19164bc26e688142538a8ba96c
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: 57e56c38e003cb83dcf44f455c4451d159db8a59
 
 
 ---
 
-# <a name="conditional-expressions-for-azure-content-delivery-network-cdn-rules-engine"></a>Bedingte Ausdrücke für das Azure CDN-Regelmodul (Content Delivery Network)
+# <a name="azure-cdn-rules-engine-conditional-expressions"></a>Bedingte Ausdrücke des Azure CDN-Regelmoduls
 Dieses Thema enthält ausführliche Beschreibungen der bedingten Ausdrücke für das [Regelmodul](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
 
 Der erste Teil einer Regel ist der bedingte Ausdruck.
@@ -39,13 +39,13 @@ ELSE IF| Mit einem ELSE IF-Ausdruck wird eine alternative Bedingung angegeben, d
 
 ### <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über das Azure CDN](cdn-overview.md)
-* [Rules Engine Reference](cdn-rules-engine-reference.md) (Regelmodul – Referenz)
+* [Regelmodul – Referenz](cdn-rules-engine-reference.md)
 * [Rules Engine Match Conditions](cdn-rules-engine-reference-match-conditions.md) (Regelmodul – Übereinstimmungsbedingungen)
 * [Rules Engine Features](cdn-rules-engine-reference-features.md) (Regelmodul – Features)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

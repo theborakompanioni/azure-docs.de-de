@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: d8818035349c8e78c1f2bb39a05e1afb2c854cc9
+ms.sourcegitcommit: 1f7ec5d53512dcfbff17269802c8889eae0ad744
+ms.openlocfilehash: 5dd69a0b9357a601070765817a814dae3e7e5c05
 
 
 ---
@@ -34,6 +34,11 @@ Es gibt verschiedene Strategien für das Upgrade von Azure AD Connect.
 | [Swing-Migration](#swing-migration) |Wenn Sie über zwei Server verfügen, können Sie einen der Server mit der neuen Version oder Konfiguration vorbereiten und den aktiven Server ändern, wenn Sie bereit sind. |
 
 Die erforderlichen Berechtigungen für das Upgrade finden Sie [hier](active-directory-aadconnect-accounts-permissions.md#upgrade).
+
+> [!NOTE]
+> Nachdem Sie Ihren neuen Azure AD Connect-Server aktiviert haben, um mit dem Synchronisieren von Änderungen mit Azure AD zu beginnen, dürfen Sie kein Rollback zur Verwendung von DirSync oder Azure AD Sync mehr durchführen. Ein Downgrade von Azure AD Connect auf Legacyclients, z.B. DirSync und Azure AD Sync, wird nicht unterstützt und kann zu Problemen führen, z.B. zu Datenverlust in Azure AD. 
+> 
+> 
 
 ## <a name="in-place-upgrade"></a>Direktes Upgrade
 Ein direktes Upgrade funktioniert für das Aktualisieren von Azure AD Sync oder Azure AD Connect. Es funktioniert nicht für DirSync oder für eine Lösung mit FIM und Azure AD-Connector.
@@ -76,7 +81,7 @@ Folgendes muss auf beiden Servern auf die gleiche Weise konfiguriert sein:
 * Die gleichen optionalen Funktionen wie Kennwortsynchronisierung und Kennwortrückschreiben.
 
 **Verschieben von Synchronisierungsregeln**  
- Gehen Sie folgendermaßen vor, um eine benutzerdefinierte Synchronisierungsregel zu verschieben:
+Gehen Sie folgendermaßen vor, um eine benutzerdefinierte Synchronisierungsregel zu verschieben:
 
 1. Öffnen Sie den **Synchronisierungsregel-Editor** auf dem aktiven Server.
 2. Wählen Sie die benutzerdefinierte Regel aus. Klicken Sie auf **Exportieren**. Ein Editor-Fenster wird geöffnet. Speichern Sie die temporäre Datei mit der Erweiterung „PS1“. Damit ist es ein PowerShell-Skript. Kopieren Sie die PS1-Datei auf den Stagingserver.  
@@ -91,6 +96,6 @@ Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Dire
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

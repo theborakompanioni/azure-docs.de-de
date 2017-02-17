@@ -68,6 +68,6 @@ Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den I
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

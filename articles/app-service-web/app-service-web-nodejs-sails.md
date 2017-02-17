@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen einer Sails.js-Web-App in Azure App Service | Microsoft-Dokumentation
+title: Bereitstellen einer Sails.js-Web-App in Azure App Service | Microsoft Docs
 description: Erfahren Sie, wie Sie eine Node.js-Anwendung in Azure App Service bereitstellen. In diesem Tutorial wird gezeigt, wie Sie eine Sails.js-Web-App bereitstellen.
 services: app-service\web
 documentationcenter: nodejs
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 395a13718d221ecbebcf967c7eac6f4e3c429ea7
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 2bc84ce01918878abbef1faf539561a4fec4c2e9
 
 
 ---
@@ -49,7 +49,7 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) oder [Ihre Visual Studio-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
+> Zum [Testen von App Service](https://azure.microsoft.com/try/app-service/) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
 > 
 > 
 
@@ -277,6 +277,6 @@ Erstellen Sie zum Herstellen einer Verbindung mit einer Datenbank in Azure die g
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

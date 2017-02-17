@@ -167,6 +167,6 @@ Im Blogbeitrag [Networking Infrastructure Setup for Microsoft Azure as a Disaste
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

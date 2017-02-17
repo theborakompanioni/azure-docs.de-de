@@ -194,6 +194,6 @@ Im Anschluss finden Sie Aspekte, die beim Ausführen von MPI-Anwendungen mit HPC
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

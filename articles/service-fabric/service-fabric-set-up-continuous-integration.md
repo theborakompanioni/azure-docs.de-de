@@ -1,5 +1,5 @@
 ---
-title: "Einrichten von Continuous Integration und Continuous Deployment für Service Fabric mit Visual Studio Team Services | Microsoft-Dokumentation"
+title: "Einrichten der Continuous Integration für Azure-Microservices | Microsoft-Dokumentation"
 description: "Hier finden Sie eine Übersicht über die Einrichtung von Continuous Integration und Continuous Deployment für eine Service Fabric-Anwendung mithilfe von Visual Studio Team Services (VSTS)."
 services: service-fabric
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 12/06/2016
 ms.author: mthalman;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: 562113254bc9344b465397b5b20b82353b54f289
-ms.openlocfilehash: 808a4964b29d61bbbc7b4c043aea20bbb1dcd0cd
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 437e343425da5c8cfe71d4ae67c423fcc2b794c2
 
 
 ---
@@ -134,6 +134,6 @@ Weitere Informationen zu Continuous Integration für Service Fabric-Anwendungen 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

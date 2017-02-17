@@ -192,6 +192,6 @@ Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden S
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

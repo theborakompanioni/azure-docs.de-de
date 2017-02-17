@@ -3,7 +3,7 @@ title: Verwalten von Azure CDN mit PowerShell | Microsoft Docs
 description: Erfahren Sie, wie Sie Azure PowerShell-Cmdlets zum Verwalten von Azure CDN verwenden.
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 275869b0b3b705943e1af1c21912acb96f39fe49
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: 9b0912edc5adf804e7a3e6dcc6b440fc165d3673
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 275869b0b3b705943e1af1c21912acb96f39fe49
 PowerShell ermöglicht eine äußerst flexible Methode zur Verwaltung Ihrer Azure CDN-Profile und -Endpunkte.  Sie können PowerShell interaktiv oder durch Schreiben von Skripts verwenden, um Verwaltungsaufgaben zu automatisieren.  In diesem Tutorial werden einige allgemeine Aufgaben vorgestellt, die Sie mit PowerShell zum Verwalten Ihrer Azure CDN-Profile und -Endpunkte ausführen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Wenn Sie PowerShell zur Verwaltung Ihrer Azure CDN-Profile und -Endpunkte verwenden möchten, muss das Azure PowerShell-Modul installiert sein.  Informationen zum Installieren von Azure PowerShell und zum Herstellen einer Verbindung mit Azure mithilfe des `Login-AzureRmAccount` -Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Wenn Sie PowerShell zur Verwaltung Ihrer Azure CDN-Profile und -Endpunkte verwenden möchten, muss das Azure PowerShell-Modul installiert sein.  Informationen zum Installieren von Azure PowerShell und zum Herstellen einer Verbindung mit Azure mithilfe des `Login-AzureRmAccount` -Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 > [!IMPORTANT]
 > Melden Sie sich mit `Login-AzureRmAccount` an, um Azure PowerShell-Cmdlets ausführen zu können.
@@ -248,6 +248,6 @@ Informationen zu CDN-Features finden Sie unter [Übersicht über das Azure Conte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

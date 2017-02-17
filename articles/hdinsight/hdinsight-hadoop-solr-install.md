@@ -16,13 +16,18 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: c0fcfc1087e8635f6ec2a0cdc246f1155c90ea53
+ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
+ms.openlocfilehash: 010a8a377150292fcb533a1af99adcc7c782bceb
 
 
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Solr in HDInsight Hadoop-Clustern
-Erfahren Sie, wie Sie mithilfe von Skriptaktionen Windows-basierte HDInsight-Cluster mit Solr anpassen und wie Sie Solr zum Durchsuchen von Daten verwenden. Informationen zur Verwendung von Solr mit einem Linux-basierten Cluster finden Sie unter [Installieren und Verwenden von Solr in HDinsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md).
+# <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Installieren und Verwenden von Solr in Windows-basierten HDInsight-Clustern
+
+Erfahren Sie, wie Sie mithilfe von Skriptaktionen Windows-basierte HDInsight-Cluster mit Solr anpassen und wie Sie Solr zum Durchsuchen von Daten verwenden. 
+
+> [!IMPORTANT]
+> Die Schritte in diesem Dokument funktionieren nur mit einem Windows-basierten HDInsight-Cluster. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Informationen zur Verwendung von Solr mit einem Linux-basierten Cluster finden Sie unter [Installieren und Verwenden von Solr in HDinsight Hadoop-Clustern (Linux)](hdinsight-hadoop-solr-install-linux.md).
+
 
 Mithilfe von *Skriptaktionen*können Sie Solr in einem beliebigen Clustertyp (Hadoop, Storm, HBase, Spark) in Azure HDInsight installieren. Ein Beispielskript zum Installieren von Solr in einem HDInsight-Cluster steht in einem schreibgeschützten Azure-Speicherblob unter [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1)zur Verfügung.
 
@@ -183,6 +188,6 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

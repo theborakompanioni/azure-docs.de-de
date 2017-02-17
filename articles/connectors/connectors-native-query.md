@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d45ada934ad9211dbe8534b210ff06653c40afd1
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: a992fa17a07d6167297c4cf5fe9fb3b58181d7df
 
 
 ---
@@ -27,7 +27,7 @@ Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflow
 * Erstellen Sie eine Aufgabe für alle Datensätze mit hoher Priorität aus einer Datenbank.
 * Speichern Sie alle PDF-Anlagen für E-Mails in einem Azure-Blob.
 
-Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Wenn Sie die Abfrageaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="use-the-query-action"></a>Verwenden der Abfrageaktion
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).  
@@ -78,11 +78,11 @@ Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 | Array gefiltert |array |Array, das ein Objekt für jedes gefilterte Ergebnis enthält |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

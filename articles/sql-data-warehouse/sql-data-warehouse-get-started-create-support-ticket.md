@@ -101,6 +101,6 @@ Außerdem können Sie sich an der SQL Data Warehouse-Community unter [Stack Over
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

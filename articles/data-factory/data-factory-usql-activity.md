@@ -1,6 +1,6 @@
 ---
-title: "Ausführen eines U-SQL-Skripts auf Azure Data Lake Analytics in Azure Data Factory"
-description: "Erläutert die Datenverarbeitung durch Ausführen eines U-SQL-Skripts mit einem Azure Data Lake Analytics-Computedienst."
+title: "Transformieren von Daten mit dem U-SQL-Skript – Azure | Microsoft-Dokumentation"
+description: "Erläutert die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: f2d7655f0e119b524b7fb9a32bee4cc874e265a5
+ms.sourcegitcommit: 7c9f14503a7cf5c0808e26884a73cd2918ff1c74
+ms.openlocfilehash: 7a26b44f1c2c97174fb98ffdf0cb74a71d27710a
 
 
 ---
-# <a name="run-u-sql-script-on-azure-data-lake-analytics-from-azure-data-factory"></a>Ausführen eines U-SQL-Skripts auf Azure Data Lake Analytics in Azure Data Factory
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -303,6 +303,6 @@ In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/i
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

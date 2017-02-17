@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 02/05/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 8a7ca492d846f274019eb228fc027defac0aa390
-ms.openlocfilehash: 98688632c6aaba14b71923dc217f6b0368ae76d8
+ms.sourcegitcommit: c9e3c1d2a1f5b83c59fa2a22f3cb4d89df203384
+ms.openlocfilehash: 4fa808b50b56122976cc176c55937f9443f31097
 
 
 ---
-# <a name="install-and-use-spark-on-hdinsight-hadoop-clusters-using-script-action"></a>Installieren und Verwenden von Spark in HDInsight-Clustern mithilfe von Script Action
+# <a name="install-and-use-spark-on-windows-based-hdinsight-clusters-using-script-action"></a>Installieren und Verwenden von Spark in Windows-basierten HDInsight-Clustern mithilfe von Skriptaktionen
+
 > [!IMPORTANT]
-> Dieser Artikel ist jetzt veraltet. HDInsight verfügt jetzt über Spark als erstklassigen Clustertyp für Windows-basierte Cluster. Dies bedeutet, dass Sie einen Spark-Cluster jetzt direkt erstellen können, ohne einen Hadoop-Cluster mithilfe von Skriptaktionen ändern zu müssen. Mit dem Spark-Clustertyp erhalten Sie einen HDInsight-Cluster der Version 3.2 mit Spark-Version 1.3.1.  Sie können Skriptaktionen verwenden, um verschiedene Versionen von Spark zu installieren. HDInsight verfügt über ein Beispielskript für Skriptaktionen.
+> Dieser Artikel ist jetzt veraltet. HDInsight verfügt jetzt über Spark als erstklassigen Clustertyp für Linux-basierte Cluster. Dies bedeutet, dass Sie einen Spark-Cluster jetzt direkt erstellen können, ohne einen Hadoop-Cluster mithilfe von Skriptaktionen ändern zu müssen. Die Schritte in diesem Dokument funktionieren zudem nur bei Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 Erfahren Sie, wie Sie Spark für HDInsight auf Windows-Basis installieren, indem Sie Skriptaktionen verwenden, und wie Sie Spark-Abfragen auf HDInsight-Clustern ausführen.
 
@@ -297,6 +298,6 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

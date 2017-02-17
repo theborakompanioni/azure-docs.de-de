@@ -1,5 +1,5 @@
 ---
-title: Leistungsstarkes WordPress in Azure App Service | Microsoft Docs
+title: Professionelle WordPress-Websites in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine leistungsstarke WordPress-Website in Azure App Service hosten.
 services: app-service\web
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
 translationtype: Human Translation
-ms.sourcegitcommit: 4f37777eb42051921087c90a57138cb4085dd7cd
-ms.openlocfilehash: 032d5cbc19113d966b20cec1ef332eb6fdca5708
+ms.sourcegitcommit: 541dd7bed5a4a9e306642b2c36dd7c9d45aec690
+ms.openlocfilehash: fcaff51b2897b1b0bce8b1c503adfd9425c9fbb4
 
 
 ---
-# <a name="enterprise-class-wordpress-on-azure-app-service"></a>Leistungsstarkes WordPress in Azure App Service
+# <a name="enterprise-class-wordpress-on-azure"></a>Professionelle WordPress-Websites in Azure
 Azure App Service bietet eine skalierbare, sichere und benutzerfreundliche Umgebung für große unternehmenswichtige [WordPress][wordpress]-Websites. Microsoft selbst betreibt leistungsstarke Websites wie die [Office][officeblog]- und [Bing][bingblog]-Blogs. In diesem Artikel wird erläutert, wie Sie das Web-Apps-Feature von Microsoft Azure App Service verwenden, um eine leistungsfähige, cloudbasierte WordPress-Website einzurichten und zu verwalten, die eine hohe Anzahl von Besuchern bewältigen kann.
 
 ## <a name="architecture-and-planning"></a>Architektur und Planung
@@ -191,7 +191,7 @@ Befolgen Sie nach dem Erstellen oder Migrieren der WordPress-Website die folgend
 * [Tips for WordPress on Azure (Tipps für WordPress in Azure, in englischer Sprache)](http://www.johnpapa.net/azurecleardbmysql/)
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751) sofort kostenlos eine nur kurz verfügbare Starter-Web-App in App Service erstellen. Es ist keine Kreditkarte erforderlich, und Sie gehen keine Verpflichtungen ein.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto registrieren, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/) sofort kostenlos eine nur kurz verfügbare Starter-Web-App in App Service erstellen. Es ist keine Kreditkarte erforderlich, und Sie gehen keine Verpflichtungen ein.
 >
 >
 
@@ -246,6 +246,6 @@ Hinweise zu den Änderungen in App Service im Vergleich zu Websites finden Sie u
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

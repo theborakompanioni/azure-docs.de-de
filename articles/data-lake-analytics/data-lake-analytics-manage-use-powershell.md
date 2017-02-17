@@ -377,6 +377,6 @@ Die folgende ARM-Vorlage kann zum Bereitstellen eines Data Lake Analytics-Kontos
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

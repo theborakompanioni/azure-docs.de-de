@@ -209,6 +209,6 @@ Diese BI-Tools sind hilfreich für Ihre Big Data-Analyse:
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

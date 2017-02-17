@@ -715,6 +715,6 @@ Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in 
   * [Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten](./vs-storage-aspnet-getting-started-queues.md)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

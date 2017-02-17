@@ -90,6 +90,6 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

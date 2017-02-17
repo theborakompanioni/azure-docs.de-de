@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 07/29/2016
 ms.author: magoedte;csand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d9b12c074417e51057dea68e8cff04df5081e111
+ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
+ms.openlocfilehash: 4fcfa2e7ec2e8257407026ed4cca0e15fd0b5bb6
 
 
 ---
@@ -31,7 +31,7 @@ Azure Automation bietet ein äußerst zuverlässiges, hoch verfügbares Workflow
 Indem Sie die Aufgaben im Zusammenhang mit der Cloudverwaltung mit Azure Automation automatisieren, verringern Sie den Verwaltungsaufwand und ermöglichen es Ihren IT- und DevOps-Mitarbeitern, sich Aufgaben zu widmen, die einen Mehrwert für Ihr Unternehmen liefern.
 
 ## <a name="how-can-azure-automation-help-manage-azure-web-app"></a>Inwiefern unterstützt Azure Automation die Verwaltung von Azure-Web-Apps?
-Web-Apps können in Azure Automation durch die Verwendung von PowerShell-Cmdlets verwaltet werden, die in den [Azure PowerShell-Modulen](../powershell-install-configure.md)zur Verfügung stehen. Sie können [diese PowerShell-Cmdlets für Web-Apps in Azure Automation installieren](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/), sodass Sie alle Aufgaben im Zusammenhang mit der Verwaltung Ihrer Web-Apps innerhalb des Diensts ausführen können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
+Web-Apps können in Azure Automation durch die Verwendung von PowerShell-Cmdlets verwaltet werden, die in den [Azure PowerShell-Modulen](/powershell/azureps-cmdlets-docs)zur Verfügung stehen. Sie können [diese PowerShell-Cmdlets für Web-Apps in Azure Automation installieren](https://azure.microsoft.com/blog/announcing-azure-resource-manager-support-azure-automation-runbooks/), sodass Sie alle Aufgaben im Zusammenhang mit der Verwaltung Ihrer Web-Apps innerhalb des Diensts ausführen können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
 
 Hier einige Beispiele für die Verwaltung von App Services mit Automation:
 
@@ -45,6 +45,6 @@ Nachdem Sie sich nun mit den Grundlagen von Azure Automation vertraut gemacht ha
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

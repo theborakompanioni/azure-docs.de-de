@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Intel NUC als Azure IoT Gateway | Microsoft-Dokumentation
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 1: Einrichten von NUC | Microsoft-Dokumentation"
 description: Es wird beschrieben, wie Sie Intel NUC als IoT Gateway zwischen einem Sensor und Azure IoT Hub einrichten, um Sensorinformationen zu sammeln und an IoT Hub zu senden.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 7725f49d71cb77dd6ff7ae075cc7449e568c21d7
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 399ac2d571b65503da7d9cc47d2dec9aa5e4c3d7
 
 
 ---
@@ -73,7 +73,7 @@ Hierfür benötigen Sie eine Tastatur und einen Monitor, um die IP-Adresse Ihres
 
    ![Ausgabe von „ifconfig“ mit NUC-IP](media/iot-hub-gateway-kit-lessons/lesson1/ifconfig.png)
 
-   In diesem Beispiel ist der Wert, der auf `inet addr:` folgt, die IP-Adresse, die Sie beim Planen der Remoteverbindung von einem Hostcomputer zum Intel NUC benötigen.
+   In diesem Beispiel folgt auf `inet addr:` die IP-Adresse, die Sie beim Planen der Remoteverbindung von einem Hostcomputer zum Intel NUC benötigen.
 
 3. Verwenden Sie einen der folgenden SSH-Clients von Ihrem Hostcomputer aus, um die Verbindung mit dem Intel NUC herzustellen.
 
@@ -138,6 +138,6 @@ Glückwunsch! Sie haben die Einrichtung des Intel NUC als Gateway abgeschlossen.
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

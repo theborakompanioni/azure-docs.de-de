@@ -1,6 +1,6 @@
 ---
-title: Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory | Microsoft Docs
-description: Informationen zum Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory
+title: 'Dienst-zu-Dienst-Authentifizierung: Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory die Dienst-zu-Dienst-Authentifizierung mit Data Lake Store implementieren.
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 35cde786bbc091c58f4dcb341cd47ce4c4f4b46c
-ms.openlocfilehash: 02e52c3aba82ab8e3a8b1dc921731c29e505e23e
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: dac6c9f3be7b4535f8cb30a9ec0c1e398ca5ff28
 
 
 ---
-# <a name="service-to-serivce-authentication-with-data-lake-store-using-azure-active-directory"></a>Dienst-zu-Dienst-Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory
+# <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Dienst-zu-Dienst-Authentifizierung mit Data Lake Store mithilfe von Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Dienst-zu-Dienst-Authentifizierung](data-lake-store-authenticate-using-active-directory.md)
 > * [Authentifizierung von Endbenutzern](data-lake-store-end-user-authenticate-using-active-directory.md)
@@ -29,49 +29,20 @@ ms.openlocfilehash: 02e52c3aba82ab8e3a8b1dc921731c29e505e23e
 
 Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Azure Data Lake Store oder Azure Data Lake Analytics funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren möchten. Sie haben zwei Möglichkeiten:
 
-* Authentifizierung von Endbenutzern und 
-* Dienst-zu-Dienst-Authentifizierung 
+* Authentifizierung von Endbenutzern 
+* Dienst-zu-Dienst-Authentifizierung (dieser Artikel) 
 
 Bei beiden Optionen erhält Ihre Anwendung ein OAuth 2.0-Token, das an jede an Azure Data Lake Store oder Azure Data Lake Analytics gestellte Anforderung angefügt wird.
 
 In diesem Artikel wird erläutert, wie Sie eine Azure AD-Webanwendung für die Dienst-zu-Dienst-Authentifizierung erstellen. Anweisungen zur Konfiguration von Azure AD-Anwendungen für die Authentifizierung von Endbenutzern finden Sie unter [Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Ihre Abonnement-ID. Sie können sie über das Azure-Portal abrufen. Sie ist beispielsweise auf dem Blatt „Data Lake Store“ des Kontos verfügbar.
-  
-    ![Abrufen der Abonnement-ID](./media/data-lake-store-authenticate-using-active-directory/get-subscription-id.png)
-* Der Name Ihrer Azure AD-Domäne. Diesen können Sie bestimmen, indem Sie den Mauszeiger über dem rechten oberen Bereich im Azure-Portal bewegen. Im Screenshot unten lautet der Domänenname **contoso.microsoft.com**, und die GUID in Klammern stellt die Mandanten-ID dar. 
-  
-    ![Abrufen der AAD-Domäne](./media/data-lake-store-authenticate-using-active-directory/get-aad-domain.png)
-
-## <a name="service-to-service-authentication"></a>Dienst-zu-Dienst-Authentifizierung
-Dieser Ansatz wird empfohlen, wenn sich Ihre Anwendung automatisch bei Azure AD authentifizieren soll, ohne dass Endbenutzer ihre Anmeldeinformationen angeben müssen. Ihre Anwendung kann sich so lange authentifizieren, wie ihre Anmeldeinformationen gültig sind, was auf einen Zeitraum von Jahren angepasst werden kann.
-
-### <a name="what-do-i-need-to-use-this-approach"></a>Was brauche ich, um diesen Ansatz zu befolgen?
-* Name Ihrer Azure AD-Domäne Dieser ist bereits in den in diesem Artikel angegebenen Voraussetzungen aufgeführt.
-* Azure AD- **Webanwendung**
-* Client-ID für die Azure AD-Webanwendung
-* Clientgeheimnis für die Azure AD-Webanwendung
-* Tokenendpunkt für die Azure AD-Webanwendung
-* Aktivieren Sie den Zugriff für die Azure AD-Webanwendung in der Data Lake Store-Datei bzw. dem Data Lake Store-Ordner oder im Data Lake Analytics-Konto, mit dem Sie arbeiten möchten.
-
-Für Anweisungen zur Erstellung einer Azure AD-Webanwendung und um diese für die oben angegebenen Anforderungen zu konfigurieren, lesen Sie den nachfolgenden Artikel [Erstellen einer Active Directory-Anwendung](#create-an-active-directory-application).
-
-> [!NOTE]
-> Standardmäßig ist die Azure AD-Anwendung für die Verwendung des Clientgeheimnisses konfiguriert, das Sie aus der Azure AD-Anwendung abrufen können. Wenn die Azure AD-Anwendung jedoch stattdessen ein Zertifikat verwenden soll, müssen Sie die Azure AD-Webanwendung mithilfe von Azure PowerShell erstellen, wie unter [Erstellen eines Dienstprinzipals mit Zertifikat](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate) beschrieben.
-> 
-> 
+* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
 
 ## <a name="create-an-active-directory-application"></a>Erstellen einer Active Directory-Anwendung
-In diesem Abschnitt erfahren Sie, wie Sie eine Azure AD-Webanwendung für die Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Store mithilfe von Azure Active Directory erstellen und konfigurieren können. 
+In diesem Abschnitt erfahren Sie, wie Sie eine Azure AD-Webanwendung für die Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Store mithilfe von Azure Active Directory erstellen und konfigurieren können. Hinweis: Wenn Sie eine Active Directory-Anwendung erstellen, wird zwar ein Dienstprinzipal, aber keine App und auch kein Code für Sie erstellt.
 
 ### <a name="step-1-create-an-azure-active-directory-application"></a>Schritt 1: Erstellen Sie eine Azure Active Directory-Anwendung.
-> [!NOTE]
-> Bei den Schritten unten kommt das Azure-Portal zum Einsatz. Sie können auch eine Azure AD-Anwendung mithilfe von [Azure PowerShell](../resource-group-authenticate-service-principal.md) oder der [Azure-Befehlszeilenschnittstelle](../resource-group-authenticate-service-principal-cli.md) erstellen.
-> 
-> 
-
 1. Melden Sie sich über das [klassische Portal](https://manage.windowsazure.com/)bei Ihrem Azure-Konto an.
 2. Wählen Sie im linken Bereich **Active Directory** aus.
    
@@ -82,7 +53,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Azure AD-Webanwendung für die Di
 4. Klicken Sie auf **Anwendungen**, um die Anwendungen in Ihrem Verzeichnis anzuzeigen.
    
      ![Anwendungen anzeigen](./media/data-lake-store-authenticate-using-active-directory/view-applications.png)
-5. Wenn Sie in diesem Verzeichnis zuvor noch keine Anwendung erstellt haben, sollten Sie eine Abbildung ähnlich dieser hier sehen. Klicken Sie auf **EINE ANWENDUNG HINZUFÜGEN**
+5. Wenn Sie in diesem Verzeichnis bisher noch keine Anwendung erstellt haben, sollten Sie eine Anzeige ähnlich der folgenden sehen. Klicken Sie auf **EINE ANWENDUNG HINZUFÜGEN**
    
      ![Anwendung hinzufügen](./media/data-lake-store-authenticate-using-active-directory/create-application.png)
    
@@ -128,28 +99,34 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
    
     ![Mandanten-ID](./media/data-lake-store-authenticate-using-active-directory/save-tenant.png)
 
+#### <a name="note-down-the-following-properties-that-you-will-need-for-the-next-steps"></a>Notieren Sie sich die folgenden, für die nächsten Schritte benötigten Eigenschaften:
+1. Den Namen der in Schritt 1.6 erstellten Webanwendungs-ID
+2. Die in Schritt 2.2 abgerufene Client-ID
+3. Den in Schritt 2.4 erstellten Schlüssel
+4. Die in Schritt 2.5 abgerufene Mandanten-ID
+
 ### <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder-only-for-service-to-service-authentication"></a>Schritt 3: Weisen Sie die Azure AD-Anwendung der Datei oder dem Ordner des Azure Data Lake Store-Kontos zu (nur für die Dienst-zu-Dienst-Authentifizierung).
 1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Azure Data Lake Store-Konto, das Sie der zuvor erstellten Azure Active Directory-Anwendung zuordnen möchten.
 2. Klicken Sie auf dem Blatt Ihres Data Lake-Speicherkontos auf **Daten-Explorer**.
    
-    ![Verzeichnisse in Data Lake-Speicherkonto erstellen](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Create directories in Data Lake account")
+    ![Erstellen von Verzeichnissen im Data Lake Store-Konto](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Erstellen von Verzeichnissen im Data Lake Store-Konto")
 3. Klicken Sie auf dem Blatt **Daten-Explorer** auf die Datei oder den Ordner, für die bzw. den Sie den Zugriff auf die Azure AD-Anwendung festlegen möchten, und klicken Sie dann auf **Zugriff**. Um den Zugriff auf eine Datei zu konfigurieren, müssen Sie auf dem Blatt **Dateivorschau** auf **Zugriff** klicken.
    
-    ![Zugriffssteuerungslisten für Data Lake-Dateisystem festlegen](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "Set ACLs on Data Lake file system")
+    ![Festlegen von Zugriffssteuerungslisten für das Data Lake-Dateisystem](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "Festlegen von Zugriffssteuerungslisten für das Data Lake-Dateisystem")
 4. Auf dem Blatt **Zugriff** sind der Standardzugriff und der benutzerdefinierte Zugriff aufgeführt, die dem Stamm bereits zugewiesen wurden. Klicken Sie auf das Symbol **Hinzufügen** , um Zugriffssteuerungslisten auf benutzerdefinierter Ebene hinzuzufügen.
    
-    ![Standardzugriff und benutzerdefinierten Zugriff auflisten](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "List standard and custom access")
+    ![Auflisten von Standardzugriff und benutzerdefiniertem Zugriff](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "Auflisten von Standardzugriff und benutzerdefiniertem Zugriff")
 5. Klicken Sie auf das Symbol **Hinzufügen**, um das Blatt **Benutzerdefinierten Zugriff hinzufügen** zu öffnen. Klicken Sie auf diesem Blatt auf **Benutzer oder Gruppe auswählen**, und suchen Sie dann auf dem Blatt **Benutzer oder Gruppe auswählen** nach der Azure Active Directory-Anwendung, die Sie zuvor erstellt haben. Wenn Sie über viele Gruppen verfügen, in denen Sie suchen können, können Sie das Textfeld oben zum Filtern nach dem Gruppennamen verwenden. Klicken Sie auf die Gruppe, die Sie hinzufügen möchten, und klicken Sie dann auf **Auswählen**.
    
-    ![Gruppe hinzufügen](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Add a group")
+    ![Hinzufügen einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Hinzufügen einer Gruppe")
 6. Klicken Sie auf **Berechtigungen auswählen**, wählen Sie die Berechtigungen aus, und legen Sie fest, ob die Berechtigungen als Standard-ACL und/oder Zugriffs-ACL zugewiesen werden sollen. Klicken Sie auf **OK**.
    
-    ![Berechtigungen für Gruppe zuweisen](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Assign permissions to group")
+    ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Zuweisen von Berechtigungen zu einer Gruppe")
    
     Weitere Informationen zu Berechtigungen in Data Lake Store und zu Standard- und Zugriffs-ACLs finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
 7. Klicken Sie auf dem Blatt **Benutzerdefinierten Zugriff hinzufügen** auf **OK**. Die neu hinzugefügte Gruppe mit den zugeordneten Berechtigungen wird jetzt auf dem Blatt **Zugriff** aufgelistet.
    
-    ![Berechtigungen für Gruppe zuweisen](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Assign permissions to group")    
+    ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Zuweisen von Berechtigungen zu einer Gruppe")    
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforderlichen Informationen gesammelt, die für Ihre Clientanwendungen nötig sind, die Sie mithilfe des .NET SDKs, des Java SDKs usw. erstellen. Sie können nun mit den nachfolgend aufgeführten Artikeln fortfahren, in denen erläutert wird, wie Sie die Azure AD-Webanwendung verwenden, um sich zum ersten Mal mit Data Lake Store authentifizieren und anschließend andere Vorgänge im Store durchführen.
@@ -157,9 +134,15 @@ In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforder
 * [Erste Schritte mit Azure Data Lake-Speicher mithilfe des .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Erste Schritte mit Azure Data Lake Store mit dem Java SDK](data-lake-store-get-started-java-sdk.md)
 
+In diesem Artikel wurden die grundlegenden Schritte erläutert, die zum Einrichten eines Benutzerprinzipals für Ihre Anwendung erforderlich sind. Weitere Informationen finden Sie in den folgenden Artikeln:
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Erstellen eines Dienstprinzipals mit Zertifikat](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal#create-service-principal-with-certificate)
+* [Other methods to authenticate to Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-authentication-scenarios) (Andere Azure AD-Authentifizierungsmethoden)
 
 
 
-<!--HONumber=Nov16_HO5-->
+
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -146,6 +146,6 @@ Nachdem Sie erfahren haben, wie Sie Pig mit HDInsight verwenden, können Sie mit
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

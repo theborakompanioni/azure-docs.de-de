@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5af430daa609f1838c640949f535f1d84cbe5f13
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 36cc4206b81312f8f4ff287cd36d9dba56611fde
 
 
 ---
@@ -61,19 +61,25 @@ Zum Konfigurieren der Integration von Trello in Azure AD müssen Sie Trello aus 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
    
     ![Active Directory][1]
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Anwendungen][2]
+
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
     ![Anwendungen][3]
+
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
     ![Anwendungen][4]
+
 6. Geben Sie im Suchfeld den Suchbegriff **Trello**ein.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/tutorial_trello_01.png)
+
 7. Wählen Sie im Ergebnisbereich **Trello** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/tutorial_trello_02.png)
@@ -102,6 +108,7 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **Trello** im Menü oben auf **Attribute**.
    
     ![Einmaliges Anmelden konfigurieren][5]
+
 2. Führen Sie im Dialogfeld **SAML-Tokenattribute** für jede Zeile in der folgenden Tabelle die folgenden Schritte aus:
 
     | Attributname | Attributwert |
@@ -123,12 +130,15 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
 1. Klicken Sie im oberen Menü auf **Schnellstart**.
    
     ![Einmaliges Anmelden konfigurieren][6]
+
 2. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Trello** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
     ![Einmaliges Anmelden konfigurieren][7] 
+
 3. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Trello anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_06.png)
+
 4. Führen Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_07.png)
@@ -137,10 +147,10 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
 
     b. Klicken Sie auf **Weiter**.
 
-> [!NOTE]
-> Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich unter <mailto:support@trello.com> an das Supportteam, um das Schlüsselwort für Ihr Unternehmen zu erhalten.
-> 
-> 
+    > [!NOTE]
+    > Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich unter <mailto:support@trello.com> an das Supportteam, um das Schlüsselwort für Ihr Unternehmen zu erhalten.
+    > 
+    > 
 
 1. Wenn die Anwendung im **SP-initiierten Modus** konfiguriert werden soll, klicken Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** auf **Zeigen Sie die erweiterten Einstellungen an (optional)**, und geben Sie die **Anmelde-URL** ein:
    
@@ -149,13 +159,16 @@ Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute ent
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://trello.com/auth/saml/consume/<enterprise>`
    
     b. Klicken Sie auf **Weiter**
+
 2. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Trello** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_09.png)
+
 3. Um SSO für Ihre Anwendung zu konfigurieren, wechseln Sie zur Seite [Enterprise SSO-Konfiguration für Trello](https://trello.com/sso-configuration) , um dem Trello-Team die Anmelde-URL zu senden und das heruntergeladen Zertifikat anzuhängen.
 4. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
+
 5. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
@@ -170,13 +183,17 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_09.png) 
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_03.png) 
+
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_04.png) 
+
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_05.png) 
@@ -186,22 +203,25 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
     b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
    
     c. Klicken Sie auf **Weiter**.
+
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_06.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Klicken Sie auf **Weiter**.
+    e. Klicken Sie auf **Weiter**.
+
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_07.png) 
+
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-trello-tutorial/create_aaduser_08.png) 
@@ -223,12 +243,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen** .
    
     ![Benutzer zuweisen][201] 
+
 2. Wählen Sie in der Anwendungsliste **Trello**aus.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_10.png) 
+
 3. Klicken Sie im oberen Menü auf **Benutzer**.
    
     ![Benutzer zuweisen][203] 
+
 4. Wählen Sie in der Liste „Alle Benutzer“ den Eintrag **Britta Simon**aus.
 5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
    
@@ -266,6 +289,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Trello“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

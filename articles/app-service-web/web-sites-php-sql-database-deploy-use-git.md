@@ -12,16 +12,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 58791f5362182596de8b792c408e392d8d6cbb95
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c7dbb3ab55607e377abc3c91c7ee3e938248a676
 
 
 ---
 # <a name="create-a-php-sql-web-app-and-deploy-to-azure-app-service-using-git"></a>Erstellen einer PHP-SQL-Web-App und Bereitstellen in Azure App Service mit Git
-In diesem Lernprogramm erfahren Sie, wie Sie eine PHP-Web-App in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) erstellen, die eine Verbindung mit einer Azure-SQL-Datenbank herstellt, und wie Sie diese über Git bereitstellen. In diesem Tutorial wird davon ausgegangen, dass [PHP][install-php], [SQL Server Express][install-SQLExpress], die [Microsoft-Treiber für SQL Server für PHP](http://www.microsoft.com/download/en/details.aspx?id=20098) und [Git][install-git] auf dem Computer installiert sind. Nach der Durchführung dieses Lernprogramms verfügen Sie über eine in Azure ausgeführte PHP-SQL-Web-App.
+In diesem Lernprogramm erfahren Sie, wie Sie eine PHP-Web-App in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) erstellen, die eine Verbindung mit einer Azure-SQL-Datenbank herstellt, und wie Sie diese über Git bereitstellen. Dieses Tutorial setzt voraus, dass auf dem Computer [PHP][install-php], [SQL Server Express][install-SQLExpress], die [Microsoft-Treiber für SQL Server für PHP](http://www.microsoft.com/download/en/details.aspx?id=20098) und [Git][install-git] installiert sind. Nach der Durchführung dieses Lernprogramms verfügen Sie über eine in Azure ausgeführte PHP-SQL-Web-App.
 
 > [!NOTE]
 > Sie können PHP, SQL Server Express und die Microsoft-Treiber für SQL Server für PHP mit dem [Microsoft-Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx)installieren und konfigurieren.
@@ -40,7 +40,7 @@ Mithilfe dieses Tutoriums erstellen Sie eine einfache Webanwendung für die Regi
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -280,6 +280,6 @@ Befolgen Sie die folgenden Schritte, um Änderungen an der Anwendung zu veröffe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

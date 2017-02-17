@@ -1,9 +1,9 @@
 ---
-title: "Zuordnen einer benutzerdefinierten Domäne zu einem Azure CDN-Endpunkt (Content Delivery Network, Netzwerk für die Inhaltsübermittlung) | Microsoft Docs"
-description: "In diesem Thema wird veranschaulicht, wie Sie CDN-Inhalte einer benutzerdefinierten Domäne zuordnen."
+title: "Zuordnen von Azure CDN-Inhalten zu einer benutzerdefinierten Domäne | Microsoft-Dokumentation"
+description: "Hier erhalten Sie Informationen zum Zuordnen von CDN-Inhalten zu einer benutzerdefinierten Domäne."
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 289f8d9e-8839-4e21-b248-bef320f9dbfc
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 567e72805c22c8100ef2d8d97c1e26a77f214ca3
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 36099a7c52508cd5115a527f5ef6e40fbfd6c323
 
 
 ---
-# <a name="how-to-map-custom-domain-to-content-delivery-network-cdn-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem CDN-Endpunkt (Content Delivery Network, Netzwerk für die Inhaltsübermittlung)
+# <a name="map-azure-cdn-content-to-a-custom-domain"></a>Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne
 Sie können einem CDN-Endpunkt (Content Delivery Network, Netzwerk für die Inhaltsübermittlung) eine benutzerdefinierte Domäne zuordnen, damit in URLs für zwischengespeicherte Inhalte anstatt einer Unterdomäne von „azureedge.net“ Ihr eigener Domänenname verwendet wird.
 
 Es gibt zwei Möglichkeiten, einem CDN-Endpunkt eine benutzerdefinierte Domäne zuzuordnen:
@@ -84,6 +84,6 @@ Nachdem Sie Ihre benutzerdefinierte Domäne mit einem der oben genannten Verfahr
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

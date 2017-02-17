@@ -138,9 +138,9 @@ Jede Regel wird im Folgenden detailliert beschrieben (**Hinweis:** Jedes Element
         Set-AzureNetworkSecurityRule -Name "Enable $VMName[1] to $VMName[2]" `
         -Type Inbound -Priority 130 -Action Allow `
         -SourceAddressPrefix $VMIP[1] -SourcePortRange '*' `
-        -DestinationAddressPrefix $VMIP[2] `
-        -DestinationPortRange '*' `
-        -Protocol *
+         -DestinationAddressPrefix $VMIP[2] `
+         -DestinationPortRange '*' `
+         -Protocol *
     ```
 
 6. Dies Regel lehnt Datenverkehr aus dem Internet an alle Server im Netzwerk ab. Mit den Regeln mit Priorität 110 und 120 wird nur eingehender Datenverkehr aus dem Internet an die Firewall- und RDP-Ports von Servern zugelassen, jeglicher anderer Datenverkehr wird blockiert. Diese Regel ist eine „Fail-safe“-Regel, die alle unerwarteten Datenflüsse blockiert.
@@ -593,6 +593,6 @@ Wenn Sie eine Beispielanwendung für dieses und weitere DMZ-Beispiele installier
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

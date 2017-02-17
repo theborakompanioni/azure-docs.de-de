@@ -230,7 +230,7 @@ Sobald Sie [eine Warteschlange erstellt](#create-a-queue) haben, können Sie die
   
     ![Hinzufügen einer Nachricht](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
-Die beiden Abschnitte [Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen](#read-a-message-from-a-queue-without-removing-it) und [Lesen und Entfernen von Nachrichten aus einer Warteschlange](#read-and-remove-a-message-from-a-queue) veranschaulichen, wie Nachrichten aus einer Warteschlange gelesen werden.    
+Die beiden Abschnitte [Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen](#read-a-message-from-a-queue-without-removing-it) und [Lesen und Entfernen von Nachrichten aus einer Warteschlange](#read-and-remove-a-message-from-a-queue) veranschaulichen, wie Nachrichten aus einer Warteschlange gelesen werden.     
 
 ## <a name="read-a-message-from-a-queue-without-removing-it"></a>Lesen einer Nachricht in einer Warteschlange, ohne sie zu entfernen
 
@@ -281,7 +281,7 @@ Dieser Abschnitt zeigt, wie Sie eine Nachricht in der Warteschlange in der Vorsc
 1. Aktualisieren Sie **ViewBag** mit zwei Werten: dem Namen der Warteschlange und der Nachricht, die gelesen wurde. Im **CloudQueueMessage**-Objekt sind zwei Eigenschaften verfügbar, aus denen der Wert des Objekts abgerufen werden kann: **CloudQueueMessage.AsBytes** und **CloudQueueMessage.AsString**. **AsString** (in diesem Beispiel verwendet) gibt eine Zeichenfolge zurück, während **AsBytes** ein Bytearray zurückgibt.
 
     ```csharp
-    ViewBag.QueueName = queue.Name; 
+    ViewBag.QueueName = queue.Name;    
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
@@ -318,7 +318,7 @@ Dieser Abschnitt zeigt, wie Sie eine Nachricht in der Warteschlange in der Vorsc
 
 ## <a name="read-and-remove-a-message-from-a-queue"></a>Lesen und Entfernen von Nachrichten aus einer Warteschlange
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Nachricht lesen und aus einer Warteschlange entfernen.   
+In diesem Abschnitt erfahren Sie, wie Sie eine Nachricht lesen und aus einer Warteschlange entfernen.     
 
 > [!NOTE]
 > 
@@ -581,6 +581,6 @@ Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in 
   * [Erste Schritte mit Tabellenspeicher und verbundenen Visual Studio-Diensten (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

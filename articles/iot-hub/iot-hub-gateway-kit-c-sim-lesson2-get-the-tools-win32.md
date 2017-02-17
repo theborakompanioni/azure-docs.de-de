@@ -1,12 +1,12 @@
 ---
-title: Vorbereiten des Hostcomputers und von Azure IoT Hub | Microsoft Dokumentation
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 2: Abrufen der Tools (Windows) | Microsoft-Dokumentation"
 description: "Installieren Sie die Tools und die Software auf dem Hostcomputer unter Windows, erstellen Sie eine IoT Hub-Instanz, und registrieren Sie Ihr Gerät bei IoT Hub."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "IoT-Entwicklung, IoT-Software, IoT-Clouddienst, Internet der Dinge Software, Azure-CLI, Git unter Windows installieren, Gulp ausführen, Node.js installieren Windows, npm unter Windows installieren, Python unter Windows installieren"
+keywords: "IoT-Entwicklung, IoT-Software, IoT-Clouddienst, Internet der Dinge Software, Azure CLI, Git unter Windows installieren, Gulp ausführen, Node.js installieren Windows, npm unter Windows installieren, Python unter Windows installieren"
 ms.assetid: c16eee4c-8756-454b-82bf-3eb0dd51aa5f
 ms.service: iot-hub
 ms.devlang: c
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: fd00d36e55109dfa4c6ddfab7d92872854696ba0
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: b07c6c383f31f77a78628593a60b7b76a49bca4f
 
 
 ---
@@ -45,12 +45,12 @@ In dieser Lektion lernen Sie Folgendes:
   - Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   - NPM ist einer der Paket-Manager für Node.js.
 - Installieren von Visual Studio Code
-  - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und MacOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
+  - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und macOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
 - Installieren von Python
   - Python ist eine weit verbreitete, interpretierte und dynamische Programmiersprache für allgemeine Aufgaben auf hoher Ebene.
 - Installieren der Azure-Befehlszeilenschnittstelle
   - Die Azure-CLI bietet eine plattformübergreifende Befehlszeile für Azure. So können Sie Ressourcen direkt über die Befehlszeile bereitstellen und verwalten.
-- Erstellen einer IoT Hub-Instanz mithilfe der Azure-CLI
+- Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 
 ## <a name="what-you-need"></a>Erforderliches Element
 
@@ -93,7 +93,7 @@ Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
 
 1. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator.
 
-2. Installieren Sie die Azure-CLI, indem Sie die folgenden Befehle ausführen:
+2. Installieren Sie die Azure-Befehlszeilenschnittstelle, indem Sie die folgenden Befehle ausführen:
 
    ```cmd
    pip install --upgrade azure-cli
@@ -110,7 +110,7 @@ Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
 
    Wenn die Installation erfolgreich war, wird die folgende Ausgabe angezeigt.
 
-   ![Überprüfen der Azure-CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_win.png)
+   ![Überprüfen der Azure CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_win.png)
 
 ## <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
 
@@ -120,13 +120,13 @@ Sie verwenden später in diesem Tutorial Visual Studio Code, um Konfigurationsda
 
 ## <a name="summary"></a>Zusammenfassung
 
-Sie haben die erforderlichen Tools und Software auf Ihrem Hostcomputer installiert. Als Nächstes verwenden Sie die Azure-CLI zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
+Sie haben die erforderlichen Tools und Software auf Ihrem Hostcomputer installiert. Als Nächstes verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen eines IoT Hub und Registrieren Ihres Geräts](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

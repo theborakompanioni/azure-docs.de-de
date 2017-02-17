@@ -129,6 +129,6 @@ Sie müssen die Anwendung einer [Rolle](../active-directory/role-based-access-bu
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

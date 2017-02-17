@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2016
+ms.date: 01/17/2016
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: e8b484ec7eff26919d4fb3869baf9f358c2522cb
-ms.openlocfilehash: 6e5d96ff9754954eb745f14c8248609775bbf290
+ms.sourcegitcommit: b520b4672dd403981d218c9855c3beb09ef55021
+ms.openlocfilehash: 6da28e6273d92445e4b14ea22752a6e59b1dd93a
 
 
 ---
@@ -41,9 +41,14 @@ Ein Zugriffstoken wird von einem Client verwendet, um auf eine geschützte Resso
 ### <a name="refresh-tokens"></a>Aktualisierungstoken
 Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er ein Aktualisierungstoken und ein Zugriffstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Aktualisierungstoken sind an die Kombination aus Benutzer und Client gebunden. Sie können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.
 
-Es ist wichtig, zwischen vertraulichen und öffentlichen Clients zu unterscheiden. Vertrauliche Clients sind Anwendungen, die ein Clientkennwort sicher speichern können, was es ihnen ermöglicht nachzuweisen, dass Anforderungen von der Clientanwendung und nicht von einem böswilligen Akteur stammen. Da derartige Flüsse sicherer sind, ist die Standardgültigkeitsdauer von Aktualisierungstoken, die für diese Flüsse ausgestellt werden, höher und kann nicht mithilfe einer Richtlinie geändert werden.
+Es ist wichtig, zwischen vertraulichen und öffentlichen Clients zu unterscheiden. Weitere Informationen zu den verschiedenen Clienttypen finden Sie unter [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
-Aufgrund der Einschränkungen der Umgebungen, in denen die Anwendungen ausgeführt werden, können öffentliche Clients ein Clientkennwort nicht sicher speichern. Für Ressourcen können Richtlinien festgelegt werden, um zu verhindern, dass Aktualisierungstoken aus öffentlichen Clients, deren Alter einen festgelegten Wert überschritten hat, ein neues Zugriffs-/Aktualisierungstoken-Paar abrufen können (maximale Zeit der Inaktivität für Aktualisierungstoken).  Darüber hinaus können Richtlinien verwendet werden, um eine bestimmte Zeitspanne festzulegen, nach der die Aktualisierungstoken nicht mehr akzeptiert werden (maximales Alter für Aktualisierungstoken).  Durch das Anpassen der Gültigkeitsdauer von Aktualisierungstoken können Sie steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch erneut authentifiziert zu werden, wenn er eine öffentliche Clientanwendung verwendet.
+#### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Tokengültigkeitsdauer bei Aktualisierungstoken von vertraulichen Clients
+Vertrauliche Clients sind Anwendungen, die ein Clientkennwort (geheimer Schlüssel) sicher speichern können, was es ihnen ermöglicht nachzuweisen, dass Anforderungen von der Clientanwendung und nicht von einem böswilligen Akteur stammen. Eine Web-App ist beispielsweise ein vertraulicher Client, da sie einen geheimen Clientschlüssel auf dem Webserver speichern kann und daher nicht gefährdet ist. Da derartige Flüsse sicherer sind, ist die Standardgültigkeitsdauer von Aktualisierungstoken, die für diese Flüsse ausgestellt werden, höher und kann nicht mithilfe einer Richtlinie geändert werden.
+
+#### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokengültigkeitsdauer bei Aktualisierungstoken von öffentlichen Clients 
+
+Öffentliche Clients können ein Clientkennwort (geheimer Schlüssel) nicht sicher speichern. Eine iOS- oder Android-App kann beispielsweise keinen geheimen Schlüssel vor dem Ressourcenbesitzer verbergen und gilt daher als öffentlicher Client.  Für Ressourcen können Richtlinien festgelegt werden, um zu verhindern, dass Aktualisierungstoken aus öffentlichen Clients, deren Alter einen festgelegten Wert überschritten hat, ein neues Zugriffs-/Aktualisierungstoken-Paar abrufen können (maximale Zeit der Inaktivität für Aktualisierungstoken).  Darüber hinaus können Richtlinien verwendet werden, um eine bestimmte Zeitspanne festzulegen, nach der die Aktualisierungstoken nicht mehr akzeptiert werden (maximales Alter für Aktualisierungstoken).  Durch das Anpassen der Gültigkeitsdauer von Aktualisierungstoken können Sie steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch erneut authentifiziert zu werden, wenn er eine öffentliche Clientanwendung verwendet.
 
 ### <a name="id-tokens"></a>ID-Token
 ID-Token werden an Websites und native Clients weitergegeben und enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zum Ablaufdatum als gültig betrachtet.  In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an.  Durch das Anpassen der Gültigkeitsdauer des ID-Tokens können Sie steuern, wie oft die Sitzung der Webanwendung abläuft und der Benutzer erneut (im Hintergrund oder interaktiv) bei Azure AD authentifiziert werden muss.
@@ -449,6 +454,6 @@ Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

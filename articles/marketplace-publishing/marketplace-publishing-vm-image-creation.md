@@ -297,9 +297,9 @@ Der erstellte Shared Access Signature-URI sollte die folgenden Anforderungen erf
 Die SAS-URL kann auf verschiedene Weisen generiert werden, um Ihre VHD in Azure Marketplace freizugeben.
 Es folgen die drei empfohlenen Tools:
 
-1.  Azure-Speicher-Explorer
-2.  Microsoft Speicher-Explorer
-3.  Azure-Befehlszeilenschnittstelle
+1.    Azure-Speicher-Explorer
+2.    Microsoft Speicher-Explorer
+3.    Azure-Befehlszeilenschnittstelle
 
 **Azure-Speicher-Explorer (empfohlen für Windows-Benutzer)**
 
@@ -330,15 +330,15 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Azure-Speicher-Ex
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_06.png)
 
-8.  Nachdem Sie die VHD-Datei im Container ausgewählt haben, klicken Sie auf die Registerkarte **Sicherheit** .
+8.    Nachdem Sie die VHD-Datei im Container ausgewählt haben, klicken Sie auf die Registerkarte **Sicherheit** .
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_07.png)
 
-9.  Lassen Sie die Standardeinstellung im Dialogfeld **Blobcontainersicherheit** auf der Registerkarte **Zugriffsebene** unverändert, und klicken Sie dann auf die Registerkarte **Shared Access Signatures**.
+9.    Lassen Sie die Standardeinstellung im Dialogfeld **Blobcontainersicherheit** auf der Registerkarte **Zugriffsebene** unverändert, und klicken Sie dann auf die Registerkarte **Shared Access Signatures**.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_08.png)
 
-10. Führen Sie die folgenden Schritte aus, um einen Shared Access Signature-URI für das VHD-Image zu generieren:
+10.    Führen Sie die folgenden Schritte aus, um einen Shared Access Signature-URI für das VHD-Image zu generieren:
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
@@ -358,45 +358,45 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Azure-Speicher-Ex
         - Stellen Sie sicher, dass am Ende der Signatur **=rl** angezeigt wird. Dies ist der Beweis, dass der Zugriff für „Lesen“ und „Auflisten“ erfolgreich bereitgestellt wurde.
         - Stellen Sie sicher, dass am Ende der Signatur **sr=c** angezeigt wird. Dies beweist, dass Sie auf Containerebene Zugriff haben.
 
-11. Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, klicken Sie auf **In Browser testen**. Der Downloadvorgang sollte gestartet werden.
+11.    Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, klicken Sie auf **In Browser testen**. Der Downloadvorgang sollte gestartet werden.
 
-12. Kopieren Sie den Shared Access Signature-URI. Dies ist der URI, der in das Veröffentlichungsportal eingefügt wird.
+12.    Kopieren Sie den Shared Access Signature-URI. Dies ist der URI, der in das Veröffentlichungsportal eingefügt wird.
 
-13. Wiederholen Sie die Schritte 6-10 für jede VHD in der SKU.
+13.    Wiederholen Sie die Schritte 6-10 für jede VHD in der SKU.
 
 **Microsoft Azure-Speicher-Explorer (Windows/MAC/Linux)**
 
 Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Microsoft Azure-Speicher-Explorer.
 
-1.  Laden Sie Microsoft Azure-Speicher-Explorer von der Website [http://storageexplorer.com/](http://storageexplorer.com/) herunter. Wechseln Sie zu [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html), und klicken Sie auf **Free download for Windows**.
+1.    Laden Sie Microsoft Azure-Speicher-Explorer von der Website [http://storageexplorer.com/](http://storageexplorer.com/) herunter. Wechseln Sie zu [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html), und klicken Sie auf **Free download for Windows**.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
-2.  Öffnen Sie die Anwendung, nachdem sie installiert wurde.
+2.    Öffnen Sie die Anwendung, nachdem sie installiert wurde.
 
-3.  Klicken Sie auf **Konto hinzufügen**.
+3.    Klicken Sie auf **Konto hinzufügen**.
 
-4.  Konfigurieren Sie Microsoft Azure-Speicher-Explorer für Ihr Abonnement, indem Sie sich bei Ihrem Konto anmelden.
+4.    Konfigurieren Sie Microsoft Azure-Speicher-Explorer für Ihr Abonnement, indem Sie sich bei Ihrem Konto anmelden.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_11.png)
 
-5.  Wechseln Sie zum Speicherkonto, und wählen Sie den Container aus.
+5.    Wechseln Sie zum Speicherkonto, und wählen Sie den Container aus.
 
-6.  Wählen Sie **Shared Access Signature abrufen** aus, nachdem Sie mit der rechten Maustaste auf den **Container** geklickt haben.
+6.    Wählen Sie **Shared Access Signature abrufen** aus, nachdem Sie mit der rechten Maustaste auf den **Container** geklickt haben.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 
-7.  Aktualisieren Sie „Startzeit“, „Ablaufzeit“ und „Berechtigungen“ wie in der folgenden
+7.    Aktualisieren Sie „Startzeit“, „Ablaufzeit“ und „Berechtigungen“ wie in der folgenden
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.  **Startzeit:** Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wählen Sie beispielsweise 05.10.2014 aus, wenn das aktuelle Datum der 6. Oktober 2014 ist.
+    a.    **Startzeit:** Wählen Sie den Tag vor dem aktuellen Datum aus, um in Bezug auf die UTC-Zeit sicherzugehen. Wählen Sie beispielsweise 05.10.2014 aus, wenn das aktuelle Datum der 6. Oktober 2014 ist.
 
-    b.  **Ablaufzeit:** Wählen Sie ein Datum, das mindestens drei Wochen nach dem Datum von **Startzeit** liegt.
+    b.    **Ablaufzeit:** Wählen Sie ein Datum, das mindestens drei Wochen nach dem Datum von **Startzeit** liegt.
 
-    c.  **Berechtigungen**: Wählen Sie die Berechtigungen **Auflisten** und **Lesen** aus.
+    c.    **Berechtigungen**: Wählen Sie die Berechtigungen **Auflisten** und **Lesen** aus.
 
-8.  Kopieren Sie den Shared Access Signature-URI des Containers.
+8.    Kopieren Sie den Shared Access Signature-URI des Containers.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_14.png)
 
@@ -416,21 +416,21 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe von Microsoft Azure-S
     - Stellen Sie sicher, dass am Ende der Signatur **sp=rl** angezeigt wird. Dies ist der Beweis, dass der Zugriff für „Lesen“ und „Auflisten“ erfolgreich bereitgestellt wurde.
     - Stellen Sie sicher, dass am Ende der Signatur **sr=c** angezeigt wird. Dies beweist, dass Sie auf Containerebene Zugriff haben.
 
-9.  Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, testen Sie ihn im Browser. Der Downloadvorgang sollte gestartet werden.
+9.    Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, testen Sie ihn im Browser. Der Downloadvorgang sollte gestartet werden.
 
-10. Kopieren Sie den Shared Access Signature-URI. Dies ist der URI, der in das Veröffentlichungsportal eingefügt wird.
+10.    Kopieren Sie den Shared Access Signature-URI. Dies ist der URI, der in das Veröffentlichungsportal eingefügt wird.
 
-11. Wiederholen Sie diese Schritte für jede VHD in der SKU.
+11.    Wiederholen Sie diese Schritte für jede VHD in der SKU.
 
 **Azure CLI (Befehlszeilenschnittstelle) (empfohlen für Nicht-Windows-Betriebssysteme/Continuous Integration)**
 
 Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
 
-1.  Laden Sie die Microsoft Azure CLI [hier](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/) herunter. Sie finden Links für **[Windows](http://aka.ms/webpi-azure-cli)** und **[MAC OS](http://aka.ms/mac-azure-cli)**.
+1.    Laden Sie die Microsoft Azure CLI [hier](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/) herunter. Sie finden Links für **[Windows](http://aka.ms/webpi-azure-cli)** und **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
-2.  Führen Sie nach dem Herunterladen die Installation durch.
+2.    Führen Sie nach dem Herunterladen die Installation durch.
 
-3.  Erstellen Sie eine PowerShell-Datei mit folgendem Code, und speichern Sie sie lokal.
+3.    Erstellen Sie eine PowerShell-Datei mit folgendem Code, und speichern Sie sie lokal.
 
           $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
           azure storage container list vhds -c $conn
@@ -452,21 +452,21 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
           azure storage container list vhds -c $conn
           azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
 
-4.  Öffnen Sie den PowerShell-Editor im Modus „Als Administrator ausführen“, und öffnen Sie die Datei in Schritt 3.
+4.    Öffnen Sie den PowerShell-Editor im Modus „Als Administrator ausführen“, und öffnen Sie die Datei in Schritt 3.
 
-5.  Führen Sie das Skript aus. Sie erhalten die SAS-URL für den Zugriff auf Containerebene.
+5.    Führen Sie das Skript aus. Sie erhalten die SAS-URL für den Zugriff auf Containerebene.
 
     Es folgt die Ausgabe der SAS-Signatur. Kopieren Sie den markierten Teil in einen Texteditor.
 
     ![Abbildung](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
 
-6.  Sie erhalten nun die SAS-URL für die Containerebene, der Sie den VHD-Namen hinzufügen müssen.
+6.    Sie erhalten nun die SAS-URL für die Containerebene, der Sie den VHD-Namen hinzufügen müssen.
 
     SAS-URL auf Containerebene #
 
     `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-7.  Fügen Sie, wie unten beschrieben, in der SAS-URL den VHD-Namen nach dem Containernamen ein: `https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+7.    Fügen Sie, wie unten beschrieben, in der SAS-URL den VHD-Namen nach dem Containernamen ein: `https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     Beispiel:
 
@@ -475,14 +475,14 @@ Es folgen die Schritte zum Generieren der SAS-URL mithilfe der Azure CLI.
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     - Stellen Sie sicher, dass Ihr Imagedateiname und „.vhd“ im URI enthalten sind.
-    -   Stellen Sie sicher, dass am Ende der Signatur „sp=rl“ angezeigt wird. Dies ist der Beweis, dass der Zugriff für „Lesen“ und „Auflisten“ erfolgreich bereitgestellt wurde.
-    -   Stellen Sie sicher, dass am Ende der Signatur „sr=c“ angezeigt wird. Dies beweist, dass Sie auf Containerebene Zugriff haben.
+    -    Stellen Sie sicher, dass am Ende der Signatur „sp=rl“ angezeigt wird. Dies ist der Beweis, dass der Zugriff für „Lesen“ und „Auflisten“ erfolgreich bereitgestellt wurde.
+    -    Stellen Sie sicher, dass am Ende der Signatur „sr=c“ angezeigt wird. Dies beweist, dass Sie auf Containerebene Zugriff haben.
 
-8.  Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, testen Sie ihn im Browser. Der Downloadvorgang sollte gestartet werden.
+8.    Um sicherzustellen, dass der generierte Shared Access Signature-URI funktioniert, testen Sie ihn im Browser. Der Downloadvorgang sollte gestartet werden.
 
-9.  Kopieren Sie den Shared Access Signature-URI. Dies ist der URI, der in das Veröffentlichungsportal eingefügt wird.
+9.    Kopieren Sie den Shared Access Signature-URI. Dies ist der URI, der in das Veröffentlichungsportal eingefügt wird.
 
-10. Wiederholen Sie diese Schritte für jede VHD in der SKU.
+10.    Wiederholen Sie diese Schritte für jede VHD in der SKU.
 
 
 ### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 Angeben von Informationen zum VM-Image und Anfordern der Zertifizierung im Veröffentlichungsportal
@@ -570,6 +570,6 @@ Wenn Sie die SKU-Details abgeschlossen haben, können Sie mit der [Anleitung fü
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

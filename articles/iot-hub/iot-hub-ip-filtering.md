@@ -106,6 +106,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-metrics]: iot-hub-metrics.md
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

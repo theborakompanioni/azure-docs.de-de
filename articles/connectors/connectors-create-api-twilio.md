@@ -16,8 +16,8 @@ ms.workload: integration
 ms.date: 09/19/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0999d96b4819d6bf03faa843750c5c4b19649774
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 6770aa8387fe3d381fd9c566ca0c38c88a4b1e55
 
 
 ---
@@ -34,7 +34,7 @@ Mit Twilio können Sie folgende Aktionen ausführen:
 * Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden. 
 * Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht B. annehmen und als Service Bus-Workflow verwenden. 
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Der Twilio-Connector beinhaltet die folgenden Aktionen. Es gibt keine Trigger. 
@@ -238,11 +238,11 @@ Sendet eine neue Nachricht an eine Mobiltelefonnummer.
 | end_date |string |no |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

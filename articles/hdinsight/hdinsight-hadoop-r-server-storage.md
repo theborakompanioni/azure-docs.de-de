@@ -194,6 +194,6 @@ Da Sie nun die Azure-Speicheroptionen kennen, verwenden Sie die folgenden Links,
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

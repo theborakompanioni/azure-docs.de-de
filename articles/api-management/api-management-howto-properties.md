@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a85dc1388701c750af48249c818a5227d73e77e6
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 146aa7706b5ff2a613dd94c75f3ad447ace82834
 
 
 ---
@@ -47,9 +47,11 @@ Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](https
 ## <a name="to-use-a-property"></a>So verwenden Sie eine Eigenschaft
 Um eine Eigenschaft in einer Richtlinie zu verwenden, platzieren Sie den Namen der Eigenschaft in ein doppeltes Paar geschweifter Klammern wie `{{ContosoHeader}}`, wie im folgenden Beispiel gezeigt.
 
-    <set-header name="{{ContosoHeader}}" exists-action="override">
-      <value>{{ContosoHeaderValue}}</value>
-    </set-header>
+```xml
+<set-header name="{{ContosoHeader}}" exists-action="override">
+  <value>{{ContosoHeaderValue}}</value>
+</set-header>
+```
 
 In diesem Beispiel dient `ContosoHeader` als Name eines Headers in einer `set-header`-Richtlinie und `ContosoHeaderValue` als Wert dieses Headers. Wenn diese Richtlinie in einer Anforderung oder Antwort an das API Management-Gateway ausgewertet wird, werden `{{ContosoHeader}}` und `{{ContosoHeaderValue}}` durch ihre jeweiligen Eigenschaftswerte ersetzt.
 
@@ -57,9 +59,11 @@ Eigenschaften können als vollständige Attribut- oder Elementwerte verwendet we
 
 Eigenschaften können auch Richtlinienausdrücke enthalten. Im folgenden Beispiel wird `ExpressionProperty` verwendet.
 
-    <set-header name="CustomHeader" exists-action="override">
-        <value>{{ExpressionProperty}}</value>
-    </set-header>
+```xml
+<set-header name="CustomHeader" exists-action="override">
+    <value>{{ExpressionProperty}}</value>
+</set-header>
+```
 
 Wenn diese Richtlinie ausgewertet wird, wird `{{ExpressionProperty}}` durch ihren Wert ersetzt: `@(DateTime.Now.ToString())`. Da der Wert ein Richtlinienausdruck ist, wird der Ausdruck ausgewertet, und die Ausführung der Richtlinie wird fortgesetzt.
 
@@ -151,6 +155,6 @@ Geben Sie zum Filtern der Eigenschaftenliste nach Tagwerten ein oder mehrere Tag
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

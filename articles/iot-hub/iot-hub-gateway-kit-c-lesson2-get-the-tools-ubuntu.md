@@ -1,5 +1,5 @@
 ---
-title: Vorbereiten des Hostcomputers und von Azure IoT Hub | Microsoft Docs
+title: "SensorTag-Gerät und Azure IoT Gateway – Lektion 2: Abrufen der Tools (Ubuntu) | Microsoft-Dokumentation"
 description: "Installieren Sie die Tools und die Software auf dem Hostcomputer unter Ubuntu, erstellen Sie eine IoT Hub-Instanz, und registrieren Sie Ihr Gerät bei IoT Hub."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 3b8aaa4a8e23c69eb1d48574b78598a2e5393166
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 6414a4f37367d8acc0bab9356b8a09aadf13bfc9
 
 
 ---
@@ -38,12 +38,12 @@ Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gatewa
 In dieser Lektion lernen Sie Folgendes:
 
 - Installieren von Git und Node.js
-  - Git ist ein Open-Source-System zur verteilten Versionskontrolle. Die Beispielanwendung für diese Lektion ist auf Git gespeichert.
+  - Git ist ein Open-Source-System für die verteilte Versionskontrolle. Die Beispielanwendung für diese Lektion ist auf Git gespeichert.
   - Node.js ist eine JavaScript-Runtime mit einer umfangreichen Paketumgebung.
 - Verwenden von NPM zum Installieren von Node.js-Entwicklungstools.
   - Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   - NPM ist einer der Paket-Manager für Node.js.
-- Installieren von Visual Studio Code.
+- Installieren von Visual Studio Code
   - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und macOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
 - Gewusst wie: Installieren der Azure-Befehlszeilenschnittstelle
   - Die Azure-CLI bietet eine plattformübergreifende Befehlszeile für Azure. So können Sie Ressourcen direkt über die Befehlszeile bereitstellen und verwalten.
@@ -56,7 +56,7 @@ In dieser Lektion lernen Sie Folgendes:
 
 ## <a name="install-git-and-nodejs"></a>Installieren von Git und Node.js
 
-Gehen Sie zum Installieren von Git oder Node.js folgendermaßen vor:
+Gehen Sie zum Installieren von Git oder Node.js wie folgt vor:
 
 1. Drücken Sie `Ctrl + Alt + T`, um ein Terminalfenster zu öffnen.
 2. Führen Sie die folgenden Befehle aus:
@@ -78,7 +78,7 @@ Führen Sie den folgenden Befehl im Terminal aus, um Gulp zu installieren:
 sudo npm install -g gulp
 ```
 
-Wenn bei der Installation Probleme auftreten, finden Sie in der [Anleitung zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md) Lösungen für häufiger auftretende Probleme.
+Wenn bei der Installation Probleme auftreten, helfen Ihnen die Lösungen für häufiger vorkommende Probleme in der [Anleitung zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md) weiter.
 
 > [!Note]
 > Node, NPM und Gulp sind für die Ausführung von Automatisierungsskripts, die mit Node.js entwickelt wurden, erforderlich.
@@ -87,7 +87,7 @@ Wenn bei der Installation Probleme auftreten, finden Sie in der [Anleitung zur P
 
 Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
 
-1. Führen Sie die folgenden Befehle in einem Terminal aus:
+1. Führen Sie die folgenden Befehle im Terminal aus:
 
    ```bash
    sudo apt-get update
@@ -120,10 +120,10 @@ Sie verwenden später in diesem Tutorial Visual Studio Code, um Konfigurationsda
 Sie haben die erforderlichen Tools und Software auf Ihrem Hostcomputer installiert. Als Nächstes verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer IoT Hub-Instanz und Registrieren des Geräts](iot-hub-gateway-kit-c-lesson2-register-device.md)
+[Erstellen eines IoT Hub und Registrieren Ihres Geräts](iot-hub-gateway-kit-c-lesson2-register-device.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

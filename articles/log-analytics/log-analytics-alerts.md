@@ -1,5 +1,5 @@
 ---
-title: Warnungen in Log Analytics | Microsoft Docs
+title: Erstellen von Warnungen in OMS Log Analytics | Microsoft-Dokumentation
 description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/09/2016
+ms.date: 01/25/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7f8603c9ddfd3f99ea38ad07b7a8a0a553e5e4dd
+ms.sourcegitcommit: 9fe104a1ea26afa2817aedaa8ed77d042404cda6
+ms.openlocfilehash: 9a62ed7540de05b1db7610e12f2671d33fc8049d
 
 
 ---
@@ -24,6 +24,9 @@ ms.openlocfilehash: 7f8603c9ddfd3f99ea38ad07b7a8a0a553e5e4dd
 Mit Warnungen werden in Log Analytics wichtige Informationen in Ihrem OMS-Repository identifiziert.  Mit Warnungsregeln werden Protokollsuchen automatisch gemäß einem Zeitplan durchgeführt, und es wird ein Warnungsdatensatz erstellt, wenn die Ergebnisse bestimmte Kriterien erfüllen.  Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess aufzurufen.   
 
 ![Log Analytics-Warnungen](media/log-analytics-alerts/overview.png)
+
+>[!NOTE]
+> Informationen zu Warnungsregeln für Metrikmessungen, die derzeit in der öffentlichen Vorschau verfügbar sind, finden Sie unter [New metric measurement alert rule type in Public Preview!](https://blogs.technet.microsoft.com/msoms/2016/11/22/new-metric-measurement-alert-rule-type-in-public-preview/) (Neuer Warnungsregeltyp für Metrikmessungen in der öffentlichen Vorschau!).
 
 ## <a name="creating-an-alert-rule"></a>Erstellen einer Warnungsregel
 Beim Erstellen einer Warnungsregel beginnen Sie mit dem Erstellen einer Protokollsuche für die Datensätze, von denen die Warnung aufgerufen werden soll.  Die Schaltfläche **Warnung** ist dann verfügbar, sodass Sie die Warnungsregel erstellen und konfigurieren können.
@@ -43,7 +46,7 @@ Beim Erstellen einer Warnungsregel beginnen Sie mit dem Erstellen einer Protokol
 | Name |Eindeutiger Name zum Identifizieren der Warnungsregel |
 | Schweregrad |Schweregrad der Warnung, die mit dieser Regel erstellt wird |
 | Suchabfrage |Wählen Sie die Option **Use current search query** (Aktuelle Suchabfrage verwenden), um die aktuelle Abfrage zu verwenden, oder wählen Sie in der Liste eine vorhandene gespeicherte Suche aus.  Die Abfragesyntax ist im Textfeld angegeben, und Sie können sie darin bei Bedarf ändern. |
-| Zeitfenster |Gibt den Zeitraum für die Abfrage an.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein.  Er sollte größer als oder gleich der Warnungshäufigkeit sein.  <br><br>  Wenn das Zeitfenster beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden. |
+| Zeitfenster |Gibt den Zeitraum für die Abfrage an.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein.  Er sollte größer als oder gleich der Warnungshäufigkeit sein.  <br><br> Wenn das Zeitfenster beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden. |
 | **Zeitplan** | |
 | Schwellenwert |Kriterien für die Erstellung einer Warnung.  Eine Warnung wird erstellt, wenn die Anzahl der von der Abfrage zurückgegebenen Datensätze dieses Kriterium erfüllt. |
 | Alert frequency (Warnhäufigkeit) |Gibt an, wie oft die Abfrage ausgeführt werden soll.  Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein.  Er sollte kleiner als oder gleich dem Zeitfensterwert sein. |
@@ -60,6 +63,7 @@ Beim Erstellen einer Warnungsregel beginnen Sie mit dem Erstellen einer Protokol
 | Runbook auswählen |Wählen Sie das zu startende Runbook aus den Runbooks im Automation-Konto aus, die in Ihrer Automation-Lösung konfiguriert sind. |
 | Run on (Ausführen auf) |Wählen Sie **Azure** aus, um das Runbook in der Azure-Cloud auszuführen.  Wählen Sie die Option **Hybrid Worker** , um das Runbook auf einem [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md) in Ihrer lokalen Umgebung auszuführen. |
 
+
 ## <a name="manage-alert-rules"></a>Verwalten von Warnungsregeln
 In den **Einstellungen** von Log Analytics können Sie im Menü **Warnungen** eine Liste mit allen Warnungsregeln abrufen.  
 
@@ -74,7 +78,11 @@ In dieser Ansicht können Sie mehrere Aktionen ausführen.
 * Bearbeiten Sie eine Warnungsregel, indem Sie daneben auf das Stiftsymbol klicken.
 * Entfernen Sie eine Warnungsregel, indem Sie daneben auf das Symbol **X** klicken. 
 
-## <a name="setting-time-windows"></a>Festlegen von Zeitfenstern
+## <a name="setting-time-windows-and-thresholds"></a>Festlegen von Zeitfenstern und Schwellenwerten
+
+>[!NOTE]
+> Informationen zu Warnungsregeln für Metrikmessungen, die derzeit in der öffentlichen Vorschau verfügbar sind, finden Sie unter [New metric measurement alert rule type in Public Preview!](https://blogs.technet.microsoft.com/msoms/2016/11/22/new-metric-measurement-alert-rule-type-in-public-preview/) (Neuer Warnungsregeltyp für Metrikmessungen in der öffentlichen Vorschau!).
+ 
 ### <a name="event-alerts"></a>Ereigniswarnungen
 Zu Ereignissen gehören Datenquellen wie Windows-Ereignisprotokolle, Syslog und benutzerdefinierte Protokolle.  Es kann ratsam sein, eine Warnung zu erstellen, wenn ein bestimmtes Fehlerereignis erstellt wird oder wenn mehrere Fehlerereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.
 
@@ -82,14 +90,18 @@ Legen Sie zum Auslösen einer Warnung aufgrund eines einzelnen Ereignisses die A
 
 Für einige Anwendungen wird unter Umständen gelegentlich ein Fehler protokolliert, für den nicht unbedingt eine Warnung ausgelöst werden muss.  Es kann beispielsweise sein, dass die Anwendung versucht, den Vorgang mit dem Fehler erneut durchzuführen, und dass der Vorgang dann erfolgreich ist.  In diesem Fall sollten Sie die Warnung ggf. nur erstellen, wenn mehrere Ereignisse innerhalb eines bestimmten Zeitfensters erstellt werden.  
 
-Es kann auch vorkommen, dass Sie eine Warnung erstellen möchten, ohne dass ein entsprechendes Ereignis vorliegt.  Für einen Prozess können beispielsweise regelmäßig Ereignisse protokolliert werden, um anzugeben, dass er richtig funktioniert.  Wenn innerhalb eines bestimmten Zeitfensters nicht eines dieser Ereignisse protokolliert wird, sollte eine Warnung erstellt werden.  In diesem Fall sollten Sie den Schwellenwert auf *Kleiner als 1*festlegen.
+Es kann auch vorkommen, dass Sie eine Warnung erstellen möchten, ohne dass ein entsprechendes Ereignis vorliegt.  Für einen Prozess können beispielsweise regelmäßig Ereignisse protokolliert werden, um anzugeben, dass er richtig funktioniert.  Wenn innerhalb eines bestimmten Zeitfensters nicht eines dieser Ereignisse protokolliert wird, sollte eine Warnung erstellt werden.  In diesem Fall sollten Sie den Schwellenwert auf **Kleiner als 1** festlegen.
 
 ### <a name="performance-alerts"></a>Leistungswarnungen
-[Leistungsdaten](log-analytics-data-sources-performance-counters.md) werden ähnlich wie Ereignisse als Datensätze im OMS-Repository gespeichert.  Der Wert jedes Datensatzes ist der über die letzten 30 Minuten gemessene Mittelwert.  Falls gewarnt werden soll, wenn ein Leistungsindikator einen bestimmten Schwellenwert überschreitet, sollte dieser Schwellenwert in die Abfrage einbezogen werden.
+[Leistungsdaten](log-analytics-data-sources-performance-counters.md) werden ähnlich wie Ereignisse als Datensätze im OMS-Repository gespeichert.  Falls gewarnt werden soll, wenn ein Leistungsindikator einen bestimmten Schwellenwert überschreitet, sollte dieser Schwellenwert in die Abfrage einbezogen werden.
 
-Falls beispielsweise eine Warnung erfolgen soll, wenn der Prozessor 30 Minuten lang zu mehr als 90 % ausgelastet ist, können Sie eine Abfrage wie *Type=Perf ObjectName=Processor CounterName="% Prozessorzeit" CounterValue>90* verwenden und den Schwellenwert für die Warnungsregel auf *Größer als 0* festlegen.  
+Falls beispielsweise eine Warnung erfolgen soll, wenn der Prozessor zu mehr als 90 Prozent ausgelastet ist, können Sie eine Abfrage wie die folgende verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
 
- Da [Leistungsdatensätze](log-analytics-data-sources-performance-counters.md) alle 30 Minuten aggregiert werden – unabhängig von der Häufigkeit, mit der Sie die einzelnen Indikatoren erfassen –, werden bei einem Zeitfenster, das kleiner als 30 Minuten ist, unter Umständen keine Datensätze zurückgegeben.  Durch das Festlegen des Zeitfensters auf 30 Minuten wird sichergestellt, dass Sie einen einzelnen Datensatz für jede verbundene Quelle erhalten, mit dem der Mittelwert in Abhängigkeit der Zeit dargestellt wird.
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
+
+Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem [measure-Befehl](log-analytics-search-reference.md#commands) verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen: 
+
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
 ## <a name="alert-actions"></a>Warnungsaktionen
 Zusätzlich zum Erstellen eines Warnungsdatensatzes können Sie die Warnungsregel so konfigurieren, dass automatisch eine oder mehrere Aktionen durchgeführt werden.  Aktionen können Sie proaktiv über die Warnung informieren oder einige Prozesse aufrufen, mit denen versucht wird, das erkannte Problem zu beheben.  In den folgenden Aktionen werden die Aktionen beschrieben, die derzeit verfügbar sind.
@@ -212,6 +224,6 @@ Es gibt noch andere Arten von Warnungsdatensätzen, die von der [Alert Managemen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

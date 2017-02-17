@@ -38,6 +38,6 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

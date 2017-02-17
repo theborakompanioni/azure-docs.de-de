@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Service Bus-Autorisierungsregel mithilfe einer Azure Resource Manager-Vorlage | Microsoft Docs
+title: Erstellen einer Azure Service Bus-Autorisierungsregel anhand einer Vorlage | Microsoft-Dokumentation
 description: "Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage"
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,18 +12,18 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 10/14/2016
+ms.date: 01/18/2017
 ms.author: sethm;shvija
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 178b49b74319c57bb6a948b1b364c9d2e59b2379
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 65693a99ee3458deb15d0e41187ef3babd76e5c1
 
 
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage
 In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage verwenden, die eine [Autorisierungsregel](service-bus-authentication-and-authorization.md#shared-access-signature-authentication) für einen Service Bus-Namespace und eine Service Bus-Warteschlange erstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Erstellen von Azure Resource Manager-Vorlagen].
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
 Die vollständige Vorlage finden Sie unter [Service Bus auth rule template][Service Bus auth rule template] (Service Bus-Autorisierungsregelvorlage) auf GitHub.
 
@@ -33,9 +33,9 @@ Die vollständige Vorlage finden Sie unter [Service Bus auth rule template][Serv
 > * [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
 > * [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
 > * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
-> * [Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure-Schnellstartvorlagen] auf und suchen nach „Service Bus“.
+> Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Service Bus“ suchen.
 > 
 > 
 
@@ -56,7 +56,7 @@ Die Vorlage definiert die folgenden Parameter:
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 Der Name des zu erstellenden Service Bus-Namespace.
 
-```
+```json
 "serviceBusNamespaceName": {
 "type": "string"
 }
@@ -65,7 +65,7 @@ Der Name des zu erstellenden Service Bus-Namespace.
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
 Der Name der Autorisierungsregel für den Namespace.
 
-```
+```json
 "namespaceAuthorizationRuleName ": {
 "type": "string"
 }
@@ -74,7 +74,7 @@ Der Name der Autorisierungsregel für den Namespace.
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
 Der Name der Warteschlange im Service Bus-Namespace.
 
-```
+```json
 "serviceBusQueueName": {
 "type": "string"
 }
@@ -83,7 +83,7 @@ Der Name der Warteschlange im Service Bus-Namespace.
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
 Die Service Bus-API-Version der Vorlage.
 
-```
+```json
 "serviceBusApiVersion": {
 "type": "string"
 }
@@ -92,7 +92,7 @@ Die Service Bus-API-Version der Vorlage.
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
 Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**und eine Service Bus-Autorisierungsregel für Namespace und Entität.
 
-```
+```json
 "resources": [
         {
             "apiVersion": "[variables('sbVersion')]",
@@ -147,12 +147,12 @@ Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**und
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-```
+```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-```
+```cli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
@@ -162,17 +162,17 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
 
 * [Verwalten von Service Bus mit PowerShell](service-bus-powershell-how-to-provision.md)
-* [Service Bus Explorer](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
+* [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 * [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md)
 
-[Erstellen von Azure Resource Manager-Vorlagen]: ../resource-group-authoring-templates.md
-[Azure-Schnellstartvorlagen]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[Verwenden von Windows PowerShell mit dem Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle]: ../xplat-cli-azure-resource-manager.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Service Bus auth rule template]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

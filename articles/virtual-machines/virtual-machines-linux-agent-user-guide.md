@@ -1,5 +1,5 @@
 ---
-title: "Benutzerhandbuch für Linux-Agent | Microsoft Docs"
+title: "Azure-Linux-VM-Agent – Übersicht | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie den Linux-Agent (waagent) zum Verwalten der Interaktion Ihres virtuellen Computers mit Azure Fabric Controller installieren und konfigurieren.
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 43d3ad9e2b50a84cb9fd70582eb03b9d7d45d788
+ms.sourcegitcommit: 02579f138f957e5d245290e2cb8fc448120a4701
+ms.openlocfilehash: e77fee96710e99dab664f61d4c64aea0b12944ad
 
 
 ---
@@ -49,7 +49,7 @@ Der Microsoft Azure Linux-Agent (waagent) verwaltet die Bereitstellung von Linux
   * Stellt die Stabilität des Netzwerkschnittstellennamens sicher
 * **Kernel**
   
-  * Konfiguriert einen virtuellen NUMA (muss für Kernel vor Version 2.6.37 deaktiviert werden)
+  * Konfiguriert einen virtuellen NUMA (muss für Kernel vor Version&2;.6.37 deaktiviert werden)
   * Verbraucht Hyper-V-Entropie für /dev/random
   * Konfiguriert SCSI-Zeitüberschreitungen für das Stammgerät (das auch remote sein kann)
 * **Diagnose**
@@ -210,7 +210,7 @@ Ist diese Option festgelegt, führt waagent benutzerdefinierte Daten nach der Be
 
 **Provisioning.PasswordCryptId**  
 Typ: Zeichenfolge  
-Standardwert: 6
+Standardwert:&6;
 
 Algorithmus, der von Crypt zum Generieren des Kennworthashs verwendet wird.  
  1: MD5  
@@ -220,7 +220,7 @@ Algorithmus, der von Crypt zum Generieren des Kennworthashs verwendet wird.
 
 **Provisioning.PasswordCryptSaltLength**  
 Typ: Zeichenfolge  
-Standardeinstellung: 10
+Standardeinstellung:&10;
 
 Länge des Zufallssalts, das beim Generieren des Kennworthashs verwendet wird.
 
@@ -309,6 +309,6 @@ Beachten Sie, dass Cloud Ubuntu-Images für zahlreiche Konfigurationsaufgaben, d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

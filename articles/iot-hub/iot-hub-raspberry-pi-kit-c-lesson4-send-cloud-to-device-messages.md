@@ -90,6 +90,6 @@ Sie haben erfolgreich Nachrichten von IoT Hub an den Pi gesendet, damit die LED 
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

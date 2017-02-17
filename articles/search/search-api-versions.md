@@ -66,6 +66,6 @@ Allgemeine Verfügbarkeit bedeutet, dass Azure Search jetzt der Vereinbarung zum
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

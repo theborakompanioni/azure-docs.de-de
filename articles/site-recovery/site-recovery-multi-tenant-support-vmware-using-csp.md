@@ -29,9 +29,9 @@ Diese Anleitung bezieht sich umfassend auf die vorhandene Dokumentation zum Repl
 ## <a name="multi-tenant-environments"></a>Umgebungen mit mehreren Mandanten
 Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 
-1.  **Shared Hosting Services Provider (SHSP, Anbieter von gemeinsam genutzten Hostingdiensten)**: Hier besitzt der Partner die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann vom Partner als verwalteter Dienst bereitgestellt werden oder als Self-Service-Lösung in die Zuständigkeit des Mandanten fallen.
-2.  **Dedicated Hosting Services Provider (DHSP, Anbieter dedizierter Hostingdienste)**: Hier besitzt der Partner die physische Infrastruktur, wobei jedoch dedizierte Ressourcen (mehrere vCenter, physische Datenspeicher usw.) verwendet werden, um die VMs der einzelnen Mandanten in getrennter Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann wiederum vom Partner oder als Self-Service-Lösung vom Mandanten verwaltet werden.
-3.  **Managed Services Provider (MSP, Anbieter verwalteter Dienste)**: Hier besitzt der Kunde die physische Infrastruktur, in der die VMs gehostet werden, während die Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig sind.
+1.    **Shared Hosting Services Provider (SHSP, Anbieter von gemeinsam genutzten Hostingdiensten)**: Hier besitzt der Partner die physische Infrastruktur und arbeitet mit gemeinsam genutzten Ressourcen (vCenter, Rechenzentren, physischem Speicher usw.), um die VMs mehrerer Mandanten in derselben Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann vom Partner als verwalteter Dienst bereitgestellt werden oder als Self-Service-Lösung in die Zuständigkeit des Mandanten fallen.
+2.    **Dedicated Hosting Services Provider (DHSP, Anbieter dedizierter Hostingdienste)**: Hier besitzt der Partner die physische Infrastruktur, wobei jedoch dedizierte Ressourcen (mehrere vCenter, physische Datenspeicher usw.) verwendet werden, um die VMs der einzelnen Mandanten in getrennter Infrastruktur zu hosten. Die Verwaltung der Notfallwiederherstellung kann wiederum vom Partner oder als Self-Service-Lösung vom Mandanten verwaltet werden.
+3.    **Managed Services Provider (MSP, Anbieter verwalteter Dienste)**: Hier besitzt der Kunde die physische Infrastruktur, in der die VMs gehostet werden, während die Partner für die Aktivierung und Verwaltung der Notfallwiederherstellung zuständig sind.
 
 ## <a name="shared-hosting-multi-tenant-guidance"></a>Anleitung für SHSP mit mehreren Mandanten
 In dieser Anleitung wird das SHSP-Szenario ausführlich behandelt. Die anderen beiden Szenarien sind eine Teilmenge des SHSP-Szenarios und folgen denselben Prinzipien. Die Unterschiede werden am Ende der SHSP-Anleitung beschrieben.
@@ -63,21 +63,21 @@ Die Alternative ist das Zuweisen des Benutzerkontos und der Rolle zum Objekt „
 
 Das Zugriffsverfahren des vCenter-Kontos ist wie folgt:
 
-1.  Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle „Schreibgeschützt“, und geben Sie ihr einen passenden Namen (z. B. „Azure_Site_Recovery“ wie in diesem Beispiel).
-2.  Weisen Sie dieser Rolle die folgenden Berechtigungen zu:
- *  Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
- *  Netzwerk -> Netzwerk zuweisen
- *  Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
- *  Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)
- *  Virtueller Computer -> Konfiguration
- *  Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
- *  Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben
- *  Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen
- *  Virtueller Computer -> Momentaufnahmen -> Momentaufnahmen entfernen
+1.    Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle „Schreibgeschützt“, und geben Sie ihr einen passenden Namen (z. B. „Azure_Site_Recovery“ wie in diesem Beispiel).
+2.    Weisen Sie dieser Rolle die folgenden Berechtigungen zu:
+ *    Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
+ *    Netzwerk -> Netzwerk zuweisen
+ *    Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
+ *    Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)
+ *    Virtueller Computer -> Konfiguration
+ *    Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
+ *    Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben
+ *    Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen
+ *    Virtueller Computer -> Momentaufnahmen -> Momentaufnahmen entfernen
 
     ![Berechtigungen für Rollen](./media/site-recovery-multi-tenant-support-vmware-using-csp/edit-role-permissions.png)
 
-3.  Weisen Sie dem vCenter-Konto (das im Konfigurationsserver des Mandanten verwendet wird) für verschiedene Objekte Zugriffsebenen wie folgt zu:
+3.    Weisen Sie dem vCenter-Konto (das im Konfigurationsserver des Mandanten verwendet wird) für verschiedene Objekte Zugriffsebenen wie folgt zu:
 
 | **Object** | **Rolle** | **Hinweise:** |
 | --- | --- | --- |
@@ -127,52 +127,52 @@ Die VM-Voraussetzungen sind identisch mit der Beschreibung in der [Dokumentation
 
 ### <a name="step-1-create-tenant-account"></a>Schritt 1: Erstellen des Mandantenkontos
 
-1.  Melden Sie sich über [Partnercenter](https://partnercenter.microsoft.com/) bei Ihrem CSP-Konto an. Wählen Sie links im Menü „Dashboard“ die Option „Kunden“ aus.
+1.    Melden Sie sich über [Partnercenter](https://partnercenter.microsoft.com/) bei Ihrem CSP-Konto an. Wählen Sie links im Menü „Dashboard“ die Option „Kunden“ aus.
 
     ![CSP-Dashboard](./media/site-recovery-multi-tenant-support-vmware-using-csp/csp-dashboard-display.png)
 
-2.  Klicken Sie auf der Seite, die geöffnet wird, auf „Kunden hinzufügen“.
+2.    Klicken Sie auf der Seite, die geöffnet wird, auf „Kunden hinzufügen“.
 
     ![Hinzufügen von Kunden](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-new-customer.png)
 
-3.  Füllen Sie auf der Seite „Neuer Kunde“ alle Kontodetails für den Mandanten aus, und klicken Sie dann auf „Weiter -> Abonnements“.
+3.    Füllen Sie auf der Seite „Neuer Kunde“ alle Kontodetails für den Mandanten aus, und klicken Sie dann auf „Weiter -> Abonnements“.
 
     ![Ausfüllen von Details](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-add-filled.png)
 
-4.  Scrollen Sie auf der Seite zur Auswahl von Abonnements nach unten, um das Abonnement „Microsoft Azure“ hinzuzufügen. Andere Abonnements können jetzt oder zu einem späteren Zeitpunkt hinzugefügt werden.
+4.    Scrollen Sie auf der Seite zur Auswahl von Abonnements nach unten, um das Abonnement „Microsoft Azure“ hinzuzufügen. Andere Abonnements können jetzt oder zu einem späteren Zeitpunkt hinzugefügt werden.
 
     ![Abonnement hinzufügen](./media/site-recovery-multi-tenant-support-vmware-using-csp/azure-subscription-selection.png)
 
-5.  Fahren Sie fort, und überprüfen Sie auf der nächsten Seite alle Details, die für den Mandanten eingegeben wurden. Klicken Sie anschließend auf die Schaltfläche „Senden“.
+5.    Fahren Sie fort, und überprüfen Sie auf der nächsten Seite alle Details, die für den Mandanten eingegeben wurden. Klicken Sie anschließend auf die Schaltfläche „Senden“.
 
     ![Kundenzusammenfassung](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-summary-page.png)
 
-6.  Nach der Erstellung des Kunden wird eine Bestätigungsseite mit den Details des Standardkontos und dem Kennwort für dieses Abonnement eingeblendet. Speichern Sie die Informationen, und ändern Sie das Kennwort später nach der Anmeldung beim Azure-Portal den Anforderungen entsprechend. Diese Informationen können wie vorhanden mit dem Mandanten gemeinsam genutzt werden. Bei Bedarf kann auch ein gesondertes Konto erstellt und freigegeben werden.
+6.    Nach der Erstellung des Kunden wird eine Bestätigungsseite mit den Details des Standardkontos und dem Kennwort für dieses Abonnement eingeblendet. Speichern Sie die Informationen, und ändern Sie das Kennwort später nach der Anmeldung beim Azure-Portal den Anforderungen entsprechend. Diese Informationen können wie vorhanden mit dem Mandanten gemeinsam genutzt werden. Bei Bedarf kann auch ein gesondertes Konto erstellt und freigegeben werden.
 
 ### <a name="step-2-access-tenant-account"></a>Schritt 2: Zugreifen auf das Mandantenkonto
 
-1.  Wie in Schritt 1 beschrieben, können Sie in Ihrem Dashboard auf der Seite „Kunden“ auf das Abonnement des Mandanten zugreifen. Navigieren Sie hierhin, und klicken Sie auf den Namen des Mandantenkontos, das Sie gerade erstellt haben.
-2.  Daraufhin wird der Abschnitt „Abonnements“ des Mandantenkontos geöffnet, in dem Sie die vorhandenen Abonnements des Kontos überwachen und bei Bedarf weitere Abonnements hinzufügen können. Wählen Sie zum Verwalten der Notfallwiederherstellungsvorgänge des Mandanten rechts auf der Seite „Alle Ressourcen (Azure-Portal)“ aus.
+1.    Wie in Schritt 1 beschrieben, können Sie in Ihrem Dashboard auf der Seite „Kunden“ auf das Abonnement des Mandanten zugreifen. Navigieren Sie hierhin, und klicken Sie auf den Namen des Mandantenkontos, das Sie gerade erstellt haben.
+2.    Daraufhin wird der Abschnitt „Abonnements“ des Mandantenkontos geöffnet, in dem Sie die vorhandenen Abonnements des Kontos überwachen und bei Bedarf weitere Abonnements hinzufügen können. Wählen Sie zum Verwalten der Notfallwiederherstellungsvorgänge des Mandanten rechts auf der Seite „Alle Ressourcen (Azure-Portal)“ aus.
 
     ![Alle Ressourcen](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)
 
-3.  Durch Klicken auf die Schaltfläche „Alle Ressourcen“ erhalten Sie Zugriff auf die Azure-Abonnements des Mandanten. Dieselben Informationen können Sie auch im Azure Active Directory (AAD) überprüfen, das rechts oben im Azure-Portal angezeigt wird.
+3.    Durch Klicken auf die Schaltfläche „Alle Ressourcen“ erhalten Sie Zugriff auf die Azure-Abonnements des Mandanten. Dieselben Informationen können Sie auch im Azure Active Directory (AAD) überprüfen, das rechts oben im Azure-Portal angezeigt wird.
 
     ![AAD-Administrator](./media/site-recovery-multi-tenant-support-vmware-using-csp/aad-admin-display.png)
 
 Sie können nun alle Azure Site Recovery-Vorgänge für den Mandanten über das Azure-Portal ausführen und die Notfallwiederherstellungsvorgänge verwalten. Der zuvor beschriebene Prozess muss jedes Mal befolgt werden, um über das CSP-Programm für die verwaltete Notfallwiederherstellung auf das Abonnement des Mandanten zuzugreifen.
 
 ### <a name="step-3-deploy-resources-to-tenant-subscription"></a>Schritt 3: Bereitstellen von Ressourcen für das Abonnement des Mandanten
-1.  Erstellen Sie im Azure-Portal eine Ressourcengruppe, und stellen Sie einen Recovery Services-Tresor wie üblich bereit. Laden Sie den Tresorregistrierungsschlüssel herunter.
-2.  Registrieren Sie den Konfigurationsserver des Mandanten mithilfe des Tresorregistrierungsschlüssels.
-3.  Geben Sie die Anmeldeinformationen für die beiden Zugriffskonten, das vCenter-Zugriffskonto und VM-Zugriffskonto, ein.
+1.    Erstellen Sie im Azure-Portal eine Ressourcengruppe, und stellen Sie einen Recovery Services-Tresor wie üblich bereit. Laden Sie den Tresorregistrierungsschlüssel herunter.
+2.    Registrieren Sie den Konfigurationsserver des Mandanten mithilfe des Tresorregistrierungsschlüssels.
+3.    Geben Sie die Anmeldeinformationen für die beiden Zugriffskonten, das vCenter-Zugriffskonto und VM-Zugriffskonto, ein.
 
     ![Konfigurieren von Konten](./media/site-recovery-multi-tenant-support-vmware-using-csp/config-server-account-display.png)
 
 ### <a name="step-4-register-site-recovery-infrastructure-to-recovery-services-vault"></a>Schritt 4: Registrieren von Site Recovery-Infrastruktur im Recovery Services-Tresor
-1.  Öffnen Sie das Azure-Portal, und registrieren Sie im zuvor erstellten Tresor den vCenter-Server beim im vorherigen Schritt registrierten Konfigurationsserver. Verwenden Sie für diesen Zweck das vCenter-Zugriffskonto.
-2.  Beenden Sie den Prozess zur Vorbereitung der Infrastruktur für Site Recovery wie üblich.
-3.  Die VMs können jetzt repliziert werden. Vergewissern Sie sich, dass nur die VMs des Mandanten auf dem Blatt zur VM-Auswahl unter der Option „Replizieren“ angezeigt werden.
+1.    Öffnen Sie das Azure-Portal, und registrieren Sie im zuvor erstellten Tresor den vCenter-Server beim im vorherigen Schritt registrierten Konfigurationsserver. Verwenden Sie für diesen Zweck das vCenter-Zugriffskonto.
+2.    Beenden Sie den Prozess zur Vorbereitung der Infrastruktur für Site Recovery wie üblich.
+3.    Die VMs können jetzt repliziert werden. Vergewissern Sie sich, dass nur die VMs des Mandanten auf dem Blatt zur VM-Auswahl unter der Option „Replizieren“ angezeigt werden.
 
     ![Mandanten-VMs](./media/site-recovery-multi-tenant-support-vmware-using-csp/tenant-vm-display.png)
 
@@ -182,13 +182,13 @@ Bei einer Self-Service-Lösung für die Notfallwiederherstellung müssen dem Man
 
 Ein Partner kann auch über das CSP-Portal dem Mandantenabonnement einen neuen Benutzer wie folgt hinzufügen:
 
-1.  Wechseln Sie zur CSP-Abonnementseite eines bestimmten Mandanten, und wählen Sie die Option „Benutzer und Lizenzen“ aus.
+1.    Wechseln Sie zur CSP-Abonnementseite eines bestimmten Mandanten, und wählen Sie die Option „Benutzer und Lizenzen“ aus.
 
     ![Benutzer und Lizenzen](./media/site-recovery-multi-tenant-support-vmware-using-csp/users-and-licences.png)
 
     Sie können nun einen neuen Benutzer erstellen, indem Sie die relevanten Details eingeben und Berechtigungen auswählen. Sie können auch die Liste der Benutzer mithilfe einer CSV-Datei hochladen.
-2.  Nachdem die Benutzer erstellt wurden, navigieren Sie zurück zum Azure-Portal und wählen auf dem Blatt „Abonnement“ das entsprechende Abonnement aus.
-3.  Wählen Sie auf dem geöffneten neuen Blatt „Zugriffssteuerung (IAM)“ aus, und klicken Sie auf „+Hinzufügen“, um einen Benutzer mit der entsprechenden Zugriffsebene hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden automatisch auf dem Blatt angezeigt, das nach dem Klicken auf eine Zugriffsebene geöffnet wird.
+2.    Nachdem die Benutzer erstellt wurden, navigieren Sie zurück zum Azure-Portal und wählen auf dem Blatt „Abonnement“ das entsprechende Abonnement aus.
+3.    Wählen Sie auf dem geöffneten neuen Blatt „Zugriffssteuerung (IAM)“ aus, und klicken Sie auf „+Hinzufügen“, um einen Benutzer mit der entsprechenden Zugriffsebene hinzuzufügen. Die über das CSP-Portal erstellten Benutzer werden automatisch auf dem Blatt angezeigt, das nach dem Klicken auf eine Zugriffsebene geöffnet wird.
 
     ![Benutzerabonnement](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-user-subscription.png)
 
@@ -196,6 +196,6 @@ Ein Partner kann auch über das CSP-Portal dem Mandantenabonnement einen neuen B
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

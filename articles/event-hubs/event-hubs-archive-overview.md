@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs Archive | Microsoft Docs
+title: "Archivieren von Telemetriedaten mit Azure Event Hubs Archive (Übersicht) | Microsoft-Dokumentation"
 description: "Übersicht über das Azure Event Hubs Archive-Feature"
 services: event-hubs
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: darosa;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 539c04ef95804cc0af9924db8b1d2d1f2ea6eef3
-ms.openlocfilehash: 37d8ff4c2e95fddc1daefa650f2407236bc9cda5
+ms.sourcegitcommit: ca66a344ea855f561ead082091c6941540b1839d
+ms.openlocfilehash: 7f5652aa39d6681b4a96cac00daac904dce2e537
 
 
 ---
 # <a name="azure-event-hubs-archive"></a>Azure Event Hubs Archive
-Azure Event Hubs Archive ermöglicht Ihnen das automatische Streaming von Daten in Ihren Event Hubs an ein Blobspeicherkonto Ihrer Wahl. Für mehr Flexibilität ist dabei die Angabe eines beliebigen Zeit- oder Größenintervalls möglich. Das Einrichten von Archive geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Durchsatzeinheiten](event-hubs-overview.md#capacity-and-security) Ihrer Event Hubs. Event Hubs Archive bietet die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht Ihnen, sich auf die Datenverarbeitung anstatt die Datenerfassung zu konzentrieren.
+Azure Event Hubs Archive ermöglicht Ihnen das automatische Streaming von Daten in Ihren Event Hubs an ein Blobspeicherkonto Ihrer Wahl. Für mehr Flexibilität ist dabei die Angabe eines beliebigen Zeit- oder Größenintervalls möglich. Das Einrichten von Archive geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Durchsatzeinheiten](event-hubs-what-is-event-hubs.md#capacity) Ihrer Event Hubs. Event Hubs Archive bietet die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht Ihnen, sich auf die Datenverarbeitung anstatt die Datenerfassung zu konzentrieren.
 
 Azure Event Hubs Archive ermöglicht Ihnen das Verarbeiten von Echtzeit-Pipelines und batchbasierten Pipelines für den gleichen Stream. Dadurch können Sie Lösungen erstellen, die sich im Laufe der Zeit parallel zu Ihren Anforderungen erweitern lassen. Ob Sie derzeit batchbasierte Systeme mit Blick auf zukünftige Echtzeitverarbeitung erstellen oder einer vorhandenen Echtzeitlösung effiziente kalte Daten hinzufügen möchten – Event Hubs Archive macht das Arbeiten mit Streamingdaten einfacher.
 
 ## <a name="how-event-hubs-archive-works"></a>Azure Event Hubs Archive – Funktionsweise
-Event Hubs ist ein beständiger Puffer mit zeitbasierter Speicherung für Telemetrieeingänge, vergleichbar mit einem verteilten Protokoll. Der Schlüssel zur Skalierung in Event Hubs ist das [partitionierte Consumermodell](event-hubs-overview.md#partition-key). Jede Partition ist ein unabhängiges Datensegment und wird unabhängig genutzt. Mit der Zeit werden diese Daten basierend auf der konfigurierbaren Beibehaltungsdauer ersetzt. Daher kann ein Event Hub nie „zu voll“ werden.
+Event Hubs ist ein beständiger Puffer mit zeitbasierter Speicherung für Telemetrieeingänge, vergleichbar mit einem verteilten Protokoll. Der Schlüssel zur Skalierung in Event Hubs ist das [partitionierte Consumermodell](event-hubs-what-is-event-hubs.md#partitions). Jede Partition ist ein unabhängiges Datensegment und wird unabhängig genutzt. Mit der Zeit werden diese Daten basierend auf der konfigurierbaren Beibehaltungsdauer ersetzt. Daher kann ein Event Hub nie „zu voll“ werden.
 
 Mit Event Hubs Archive können Sie Ihr eigenes Azure Blob-Speicherkonto und Container festlegen, die zum Speichern der archivierten Daten verwendet werden sollen. Dieses Konto kann sich in der gleichen Region wie Ihr Event Hub oder in einer anderen Region befinden, was zur Flexibilität des Event Hubs Archive-Features beiträgt.
 
@@ -40,7 +40,7 @@ Event Hubs Archive ermöglicht Ihnen das Einrichten eines Fensters zur Steuerung
 ```
 
 ### <a name="scaling-to-throughput-units"></a>Skalierung auf Durchsatzeinheiten
-Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-overview.md#capacity-and-security) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden, und über eine [Supportanfrage][support request] für eine Kontingenterhöhung können weitere Einheiten erworben werden. Bei Überschreitung der erworbenen Durchsatzeinheiten wird die Nutzung gedrosselt. Event Hubs Archive kopiert Daten direkt aus dem internen Event Hubs-Speicher. Dabei werden Durchsatzeinheitkontingente für ausgehenden Datenverkehr umgangen und stattdessen für andere Verarbeitungsreader wie Stream Analytics oder Spark verwendet.
+Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-what-is-event-hubs.md#capacity) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden, und über eine [Supportanfrage][support request] für eine Kontingenterhöhung können weitere Einheiten erworben werden. Bei Überschreitung der erworbenen Durchsatzeinheiten wird die Nutzung gedrosselt. Event Hubs Archive kopiert Daten direkt aus dem internen Event Hubs-Speicher. Dabei werden Durchsatzeinheitkontingente für ausgehenden Datenverkehr umgangen und stattdessen für andere Verarbeitungsreader wie Stream Analytics oder Spark verwendet.
 
 Nach der Konfiguration wird Event Hubs Archive automatisch ausgeführt, sobald Sie das erste Ereignis senden. Die Ausführung wird ununterbrochen fortgesetzt. Damit Ihre Downstreamverarbeitung leichter erkennt, dass der Prozess ausgeführt wird, schreibt Event Hubs leere Dateien, wenn keine Daten vorhanden sind. Dies sorgt für einen vorhersagbaren Rhythmus und Marker, die als Feed für Ihre Batchprozessoren fungieren.
 
@@ -117,12 +117,12 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 [Avro Tools]: http://www-us.apache.org/dist/avro/avro-1.8.1/java/avro-tools-1.8.1.jar
 [Java]: http://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: http://avro.apache.org/docs/current/gettingstartedpython.html
-[Event Hubs overview]: event-hubs-overview.md
+[Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [Scale out Event Processing with Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

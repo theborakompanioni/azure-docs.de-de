@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 93cfd92687fdcad3f1f593a5c5c098850af4762f
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 134239990df959fe2657340eca4f2a8bf646a7b0
 
 
 ---
@@ -33,14 +33,14 @@ Mithilfe dieses Lernprogramms erstellen Sie eine einfache Web-App für die Regis
 ![Azure-PHP-Website][running-app]
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen. 
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen. 
 > 
 > 
 
 ## <a name="create-a-web-app-and-set-up-ftp-publishing"></a>Erstellen einer Web-App und Einrichten der FTP-Veröffentlichung
 Befolgen Sie diese Schritte, um eine Web-App und eine MySQL-Datenbank zu erstellen:
 
-1. Melden Sie sich am [Azure-Portal][management-portal] an.
+1. Melden Sie sich beim [Azure-Portal][management-portal] an.
 2. Klicken Sie oben links im Azure-Portal auf das Symbol **+ Neu** .
    
     ![Neue Azure-Website erstellen][new-website]
@@ -197,7 +197,7 @@ Befolgen Sie die unten stehenden Schritte, um die App lokal zu erstellen und aus
             echo "<h3>No one is currently registered.</h3>";
         }
 
-Nun können Sie [http://localhost/registration/index.php][localhost-index] aufrufen, um die App zu testen.
+Nun können Sie zu [http://localhost/registration/index.php][localhost-index] navigieren, um die App zu testen.
 
 ## <a name="get-mysql-and-ftp-connection-information"></a>Abrufen der Verbindungsinformationen für MySQL und FTP
 Um eine Verbindung mit der in Web-Apps ausgeführten MySQL-Datenbank herzustellen, benötigen Sie die Verbindungsinformationen. Befolgen Sie die folgenden Schritte, um MySQL-Verbindungsinformationen abzurufen:
@@ -218,7 +218,7 @@ Um eine Verbindung mit der in Web-Apps ausgeführten MySQL-Datenbank herzustelle
    
     ![Veröffentlichungsprofil herunterladen][download-publish-profile]
 6. Öffnen Sie die Datei `.publishsettings` in einem XML-Editor. 
-7.  Suchen Sie das Element `<publishProfile >` mit `publishMethod="FTP"`, das ungefähr wie folgt aussieht:
+7. Suchen Sie das Element `<publishProfile >` mit `publishMethod="FTP"`, das ungefähr wie folgt aussieht:
    
         <publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
             ...
@@ -276,6 +276,6 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

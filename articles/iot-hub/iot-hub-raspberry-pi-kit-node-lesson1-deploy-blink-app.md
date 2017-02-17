@@ -1,5 +1,7 @@
 ---
-title: Erstellen und Bereitstellen der Blinkanwendung | Microsoft-Dokumentation
+featureFlags:
+- usabilla
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 1: Bereitstellen der App | Microsoft-Dokumentation"
 description: Klonen Sie die Node.js-Beispielanwendung aus GitHub, und verwenden Sie Gulp, um die Anwendung auf Raspberry Pi 3 bereitzustellen. Diese Beispielanwendung bewirkt, dass die mit dem Pi verbundene LED alle zwei Sekunden blinkt.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +18,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 09554b64f31c909e413f5a93dfd6d74186bf6e21
-ms.openlocfilehash: b9e49d3637b3e3aff1a89e57c125a59877544e01
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 90ceb432bd9506dc40e340af21a3cae4e21a20b0
 
 
 ---
@@ -153,6 +155,6 @@ Sie haben die erforderlichen Tools für die Arbeit mit Pi installiert und auf Pi
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

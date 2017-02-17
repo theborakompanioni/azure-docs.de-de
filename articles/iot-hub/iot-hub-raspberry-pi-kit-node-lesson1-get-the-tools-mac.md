@@ -1,5 +1,5 @@
 ---
-title: Abrufen der Tools (macOS 10.10) | Microsoft-Dokumentation
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 1: Abrufen der Tools (macOS) | Microsoft-Dokumentation"
 description: "Laden Sie die erforderlichen Tools und die Software für die erste Beispielanwendung für Pi auf macOS herunter, und installieren Sie sie."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: cd3d9a6db98f5239fc6231464605848789751c7d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: f157a68f502f018bab83a377367f92ce20f89adf
 
 
 ---
@@ -86,6 +86,6 @@ Sie haben die erforderlichen Entwicklungstools und die Software für die erste B
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

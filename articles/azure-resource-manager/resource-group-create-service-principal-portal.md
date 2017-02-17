@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Dienstprinzipals im Portal | Microsoft-Dokumentation
+title: "Erstellen einer Identität für die Azure-App im Portal | Microsoft-Dokumentation"
 description: Beschreibt das Erstellen einer neuen Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure-Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/17/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 4312002b311ec17f175f6eb6bc45fbe1ce7c7a01
-ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 3b132bbc89f64928f971f92365691d40c1aab420
 
 
 ---
@@ -28,7 +28,13 @@ ms.openlocfilehash: 3232aa0356353e3856286c38d931543a254fd9fd
 >
 >
 
-Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Es konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.
+Bei Verwendung einer Anwendung, die auf Ressourcen zugreifen oder diese ändern muss, müssen Sie eine Active Directory-Anwendung (AD) einrichten und ihr die erforderlichen Berechtigungen zuweisen. Dieser Ansatz ist der Ausführung der App mit Ihren Anmeldeinformationen aus folgenden Gründen vorzuziehen:
+
+* Sie können der App-Identität Berechtigungen zuweisen, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
+* Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern. 
+* Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.
+
+In diesem Thema erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Es konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.
  
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 Um dieses Thema abzuschließen, müssen Sie über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Active Directory zu registrieren, und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen. Stellen Sie sicher, dass Sie über die richtigen Berechtigungen für diese Schritte verfügen.
@@ -157,9 +163,19 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
      ![Nach App suchen](./media/resource-group-create-service-principal-portal/search-app.png)
 9. Wählen Sie **OK** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer angezeigt, die einer Rolle für diesen Kontext zugewiesen sind.
 
-Die Anwendung wird jetzt in Active Directory eingerichtet. Sie verfügen über eine ID und einen Schlüssel, um sich als Anwendung anzumelden. Die Anwendung ist einer Rolle zugewiesen, die die Ausführung bestimmter Aktionen erlaubt. Anhand der Beispielanwendungen können Sie mehr darüber erfahren, wie Sie Aufgaben im Anwendungscode durchführen können.
+## <a name="log-in-as-the-application"></a>Anmelden als Anwendung
 
-## <a name="sample-applications"></a>Beispielanwendungen
+Die Anwendung wird jetzt in Active Directory eingerichtet. Sie verfügen über eine ID und einen Schlüssel, um sich als Anwendung anzumelden. Die Anwendung ist einer Rolle zugewiesen, die die Ausführung bestimmter Aktionen ermöglicht. 
+
+Anweisungen zur Anmeldung mithilfe von PowerShell finden Sie unter [Provide credentials through PowerShell](resource-group-authenticate-service-principal.md#provide-credentials-through-powershell) (Bereitstellen von Anmeldeinformationen über PowerShell).
+
+Anweisungen zur Anmeldung mithilfe der Azure-CLI finden Sie unter [Provide credentials through Azure CLI](resource-group-authenticate-service-principal-cli.md#provide-credentials-through-azure-cli) (Bereitstellen von Anmeldeinformationen über die Azure-CLI).
+
+Informationen zum Abrufen des Zugriffstokens für REST-Vorgänge finden Sie unter [Create the request](/rest/api/#create-the-request) (Erstellen der Anfrage).
+
+Betrachten Sie die folgenden Beispielanwendungen, um Informationen zum Anmelden über den Anwendungscode zu erhalten.
+
+### <a name="sample-applications"></a>Beispielanwendungen
 Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als AD-Anwendung:
 
 **.NET**
@@ -194,6 +210,6 @@ Die folgenden Beispielanwendungen veranschaulichen die Anmeldung als AD-Anwendun
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2e8cdbbd7f97c5095a151d0ef228cfdeb671345a
-ms.openlocfilehash: 1f5eb285e061b1e221e1d68f894bbd9dd0a50b32
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c8568846837f404eee0293be284c70bd27f06380
 
 
 ---
@@ -37,7 +37,7 @@ In diesem Tutorial erstellen Sie ein Speicherkonto und fügen Ihrem Back-End fü
 * Schließen Sie das Tutorial zum [Erstellen einer Xamarin.Forms-App] ab. Dort werden weitere Voraussetzungen aufgeführt. In diesem Artikel wird die fertige App aus diesem Tutorial verwendet.
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](https://tryappservice.azure.com/?appServiceName=mobile). Dort können Sie direkt eine kurzzeitige mobile Start-App in App Service erstellen – keine Kreditkarte erforderlich, keine weiteren Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, besuchen Sie [Azure App Service-App erstellen](https://azure.microsoft.com/try/app-service/mobile/). Dort können Sie direkt eine kurzzeitige mobile Start-App in App Service erstellen – keine Kreditkarte erforderlich, keine weiteren Verpflichtungen.
 > 
 > 
 
@@ -115,7 +115,7 @@ Das neue `TodoItemStorageController` -Element macht zwei Unterressourcen unter d
 ### <a name="a-nameclient-communicationaclient-and-server-communication"></a><a name="client-communication"></a>Kommunikation zwischen Client und Server
 Beachten Sie, dass `TodoItemStorageController` *keine* Route für den Upload oder Download eines Blobs umfasst. Dies liegt daran, dass ein mobiler Client *direkt* mit dem Blobspeicher interagiert, um diese Vorgänge durchzuführen. Vorher wird ein SAS-Token (Shared Access Signature) abgerufen, um sicher auf ein bestimmtes Blob oder einen bestimmten Container zugreifen zu können. Dies ist ein wichtiger Aspekt des Architekturentwurfs, da der Zugriff auf den Speicher andernfalls durch die Skalierbarkeit und Verfügbarkeit des mobilen Back-Ends eingeschränkt wäre. Indem Sie stattdessen eine direkte Verbindung mit Azure Storage herstellen, kann der mobile Client die darüber bereitgestellten Features nutzen, z. B. automatische Partitionierung und geografische Verteilung.
 
-Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell].
+Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen. Weitere Informationen finden Sie unter [Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell].
 
 Im folgenden Diagramm sind die Interaktionen zwischen Client und Server dargestellt. Vor dem Hochladen einer Datei fordert der Client ein SAS-Token vom Dienst an. Der Dienst verwendet die Verbindungszeichenfolge des Speichers zum Generieren einer neuen SAS, die er dann an den Client zurückgibt. Die SAS ist zeitlich begrenzt und beschränkt Berechtigungen auf eine bestimmte Datei oder einen Container. Der mobile Client verwendet dann diese SAS und das Azure Storage-Client-SDK, um die Datei in den Blobspeicher hochzuladen.
 
@@ -653,7 +653,7 @@ Fügen Sie dem iOS-Projekt plattformspezifischen Code hinzu.
 ## <a name="summary"></a>Zusammenfassung
 In diesem Artikel wird beschrieben, wie Sie die neue Dateiunterstützung im Azure Mobile-Client und -Server-SDK für Azure Storage verwenden. 
 
-* Erstellen Sie ein Speicherkonto, und fügen Sie dem Back-End für die mobile App die Verbindungszeichenfolge hinzu. Nur das Back-End verfügt über den Schlüssel für Azure Storage: Der mobile Client fordert jeweils ein SAS-Token (Shared Access Signature) an, wenn er Zugriff auf Azure Storage benötigt. Weitere Informationen zu SAS-Token in Azure Storage finden Sie unter [Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell].
+* Erstellen Sie ein Speicherkonto, und fügen Sie dem Back-End für die mobile App die Verbindungszeichenfolge hinzu. Nur das Back-End verfügt über den Schlüssel für Azure Storage: Der mobile Client fordert jeweils ein SAS-Token (Shared Access Signature) an, wenn er Zugriff auf Azure Storage benötigt. Weitere Informationen zu SAS-Token in Azure Storage finden Sie unter [Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell].
 * Erstellen Sie einen Controller, mit dem `StorageController` als Unterklasse eingerichtet wird, um die SAS-Tokenanforderungen zu verarbeiten und die Dateien abzurufen, die einem Datensatz zugeordnet sind. Standardmäßig werden Dateien einem Datensatz zugeordnet, indem die Datensatz-ID als Teil des Containernamens verwendet wird. Sie können das Verhalten anpassen, indem Sie eine Implementierung von `IContainerNameResolver` angeben. Die SAS-Tokenrichtlinie kann ebenfalls angepasst werden.
 * Das Azure Mobile Client-SDK speichert selbst keine Dateidaten. Stattdessen ruft das Client-SDK Ihr `IFileSyncHandler`-Element auf, mit dem dann bestimmt wird, (ob und) wie Dateien auf dem lokalen Gerät gespeichert werden. Der Handler für die Synchronisierung wird wie folgt registriert:
   
@@ -686,11 +686,11 @@ In diesem Artikel wird beschrieben, wie Sie die neue Dateiunterstützung im Azur
 [Microsoft.Azure.Mobile.Client.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.Files/
 [Microsoft.Azure.Mobile.Client.SQLiteStore]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client.SQLiteStore/
 [Microsoft.Azure.Mobile.Server.Files]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Files/
-[Shared Access Signatures, Teil 1: Grundlagen zum SAS-Modell]: ../storage/storage-dotnet-shared-access-signature-part-1.md
+[Shared Access Signatures, Teil&1;: Grundlagen zum SAS-Modell]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [Erstellen Sie ein Speicherkonto]:  ../storage/storage-create-storage-account.md#create-a-storage-account
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

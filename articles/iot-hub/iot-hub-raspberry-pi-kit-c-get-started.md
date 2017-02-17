@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Raspberry Pi 3 | Microsoft-Dokumentation
+title: "Verbinden von Raspberry Pi (C) mit Azure IoT – Erste Schritte | Microsoft-Dokumentation"
 description: "Führen Sie erste Schritte mit Raspberry Pi 3 aus, erstellen Sie Ihre Azure IoT Hub-Instanz, und verbinden Sie Pi mit dieser IoT Hub-Instanz."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9f7647d89a6cf3c962bd4a6986e521cade3fd838
-ms.openlocfilehash: da2f32eb91dc8a2e10a3d76741d892b3c355ea1e
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 58398a8963ca834ed04d50a4715b29cbd3200b53
 
 
 ---
@@ -57,7 +57,7 @@ Wechseln Sie zu [Create and deploy the blink application](iot-hub-raspberry-pi-k
 ## <a name="lesson-2-create-your-iot-hub"></a>Lektion 2: Erstellen Sie Ihren IoT Hub
 ![Lektion 2: Komplettes Diagramm](media/iot-hub-raspberry-pi-lessons/e2e-lesson2.png)
 
-In dieser Lektion erstellen Sie ein kostenloses Azure-Konto, stellen Ihre Azure IoT Hub-Instanz bereit und erstellen Ihr erstes Gerät in IoT Hub.
+In dieser Lektion erstellen Sie ein kostenloses Azure-Konto, stellen Ihre Azure IoT Hub-Instanz bereit und erstellen Ihr erstes Gerät im IoT Hub.
 
 Schließen Sie Lektion 1 ab, bevor Sie mit dieser Lektion beginnen.
 
@@ -129,6 +129,6 @@ Falls Sie bei den Lektionen Probleme haben, helfen Ihnen die Lösungen im Artike
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

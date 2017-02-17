@@ -1,5 +1,5 @@
 ---
-title: "Verwenden der Webbenutzeroberfläche von Kubernetes in Azure Container Service | Microsoft-Dokumentation"
+title: "Verwalten eines Azure Kubernetes-Clusters mit der Webbenutzeroberfläche | Microsoft-Dokumentation"
 description: "Verwenden der Webbenutzeroberfläche von Kubernetes in Azure Container Service"
 services: container-service
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: bcc2d3468c8a560105aa2c2feb0d969ec3cccdcb
-ms.openlocfilehash: 9ae6e606bf215d9f53f725899b8ac7c466b781f1
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 4192369f2e7758200131aa85c60d07436f7cbbdc
 
 
 ---
 
-# <a name="microsoft-azure-container-service-engine---using-the-kubernetes-web-ui"></a>Microsoft Azure Container Service-Modul: Verwenden der Webbenutzeroberfläche von Kubernetes
+# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Verwenden der Webbenutzeroberfläche von Kubernetes mit Azure Container Service
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie mit [Azure Container Service einen Kubernetes-Cluster erstellt haben](container-service-kubernetes-walkthrough.md).
@@ -136,6 +136,6 @@ Dadurch sinkt die Anzahl der Replikate um zwei, indem einer Ihrer Pods gelöscht
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

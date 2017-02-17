@@ -1,6 +1,6 @@
 ---
 title: "Entwickeln von benutzerdefinierten U-SQL-Operatoren für Azure Data Lake Analytics-Aufträge | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie benutzerdefinierte Operatoren zur Verwendung und Wiederverwendung in Data Lake Analytics-Aufträgen entwickeln. "
+description: "Erfahren Sie, wie Sie benutzerdefinierte Operatoren zur Verwendung und Wiederverwendung in Data Lake Analytics-Aufträgen entwickeln. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 88a00c2b0a5aac85bbcaef5b21b10f44121c7d38
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ef0fa131cc665df68e13ee7be58330f571f3ac90
 
 
 ---
 # <a name="develop-u-sql-user-defined-operators-for-azure-data-lake-analytics-jobs"></a>Entwickeln von benutzerdefinierten U-SQL-Operatoren für Azure Data Lake Analytics-Aufträge
-Hier erfahren Sie, wie Sie benutzerdefinierte Operatoren zur Verwendung und Wiederverwendung in Data Lake Analytics-Aufträgen entwickeln. Im Folgenden wird erläutert, wie Sie einen benutzerdefinierten Operator zum Konvertieren von Ländernamen entwickeln.
+Erfahren Sie, wie Sie benutzerdefinierte Operatoren zur Verwendung und Wiederverwendung in Data Lake Analytics-Aufträgen entwickeln. Im Folgenden wird erläutert, wie Sie einen benutzerdefinierten Operator zum Konvertieren von Ländernamen entwickeln.
+
+Anweisungen für die Entwicklung allgemeiner Assemblys für U-SQL, finden Sie unter [Entwickeln U-SQL-Assemblys für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-assemblies.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Visual Studio 2015, Visual Studio 2013 Update 4 oder Visual Studio 2012 mit Installation von Visual C++
 * Microsoft Azure SDK für .NET, Version 2.5 oder höher.  Führen Sie die Installation mit dem Webplattform-Installer durch.
-* Data Lake Analytics-Konto.  Siehe [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md).
+* Data Lake Analytics-Konto.  Weitere Informationen finden Sie unter [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md).
 * Arbeiten Sie das Lernprogramm [Erste Schritte mit U-SQL-Studio für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) durch.
 * Stelle Sie eine Verbindung zu Azure her.
 * Laden Sie die Datenquelle hoch (siehe [Erste Schritte mit U-SQL-Studio für Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md)). 
@@ -144,6 +146,6 @@ Hier erfahren Sie, wie Sie benutzerdefinierte Operatoren zur Verwendung und Wied
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

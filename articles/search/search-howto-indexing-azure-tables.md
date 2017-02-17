@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2016
+ms.date: 01/18/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 714045750ab16364ecd1095f1f346d3da1d4c4a5
-ms.openlocfilehash: 4bfcf719cb071a28421c64dbb4d6c132f45ba9f9
+ms.sourcegitcommit: 19a652f81beacefd4a51f594f045c1f3f7063b59
+ms.openlocfilehash: b7f6c92867e3fabe07312539ec8dfd2d3525f02e
 
 ---
 
@@ -34,7 +34,7 @@ So richten Sie die Tabellenindizierung ein:
 
 1. Erstellen einer Datenquelle
    * Legen Sie den `type`-Parameter auf `azuretable` fest.
-   * Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu **Einstellungen** > **Schlüssel** (für klassische Speicherkonten) oder zu **Einstellungen** > **Zugriffsschlüssel** (für ARM-Speicherkonten) navigieren. Beachten Sie, dass Azure Search momentan keine Shared Access Signature-Anmeldeinformationen unterstützt. Wenn Sie SAS verwenden möchten, stimmen Sie für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/12368244-support-shared-access-signature-for-blob-datasourc).
+   * Übergeben Sie die Verbindungszeichenfolge des Speicherkontos als `credentials.connectionString`-Parameter. Details finden Sie weiter unten unter [Angeben von Anmeldeinformationen](#Credentials).
    * Geben Sie den Tabellennamen mit dem Parameter `container.name` an.
    * Geben Sie optional eine Abfrage mit dem Parameter `container.query` an. Verwenden Sie nach Möglichkeit einen Filter für PartitionKey, um die beste Leistung zu erzielen. Alle anderen Abfragen führen zu einem vollständigen Tabellenscan, wodurch bei großen Tabellen die Leistung beeinträchtigt werden kann.
 2. Erstellen Sie einen Suchindex mit dem Schema, das den Spalten in der Tabelle entspricht, die Sie indizieren möchten.
@@ -53,6 +53,20 @@ So richten Sie die Tabellenindizierung ein:
     }   
 
 Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://msdn.microsoft.com/library/azure/dn946876.aspx).
+
+<a name="Credentials"></a>
+#### <a name="how-to-specify-credentials"></a>Angeben von Anmeldeinformationen ####
+
+Sie können die Anmeldeinformationen für die Tabelle mit einer der folgenden Methoden angeben: 
+
+- **Verbindungszeichenfolge für den Vollzugriff auf ein Speicherkonto**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Sie können die Verbindungszeichenfolge über das Azure-Portal abrufen, indem Sie auf dem Blatt des Speicherkontos zu „Einstellungen“ > „Schlüssel“ (für klassische Speicherkonten) oder zu „Einstellungen“ > „Zugriffsschlüssel“ (für Azure Resource Manager-Speicherkonten) navigieren.
+- Verbindungszeichenfolge für **Shared Access Signature (SAS) für ein Speicherkonto**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für Container (in diesem Fall: Tabellen) und Objekte (Tabellenzeilen) verfügen.
+-  **Shared Access Signature für eine Tabelle**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`. Die SAS muss über Listen- und Leseberechtigungen für die Tabelle verfügen.
+
+Weitere Informationen zu speicherbezogenen Shared Access Signatures finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md).
+
+> [!NOTE]
+> Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Falls SAS-Anmeldedaten ablaufen, tritt beim Indexer ein Fehler mit ungefähr folgender Fehlermeldung auf: `Credentials provided in the connection string are invalid or have expired.`.  
 
 ### <a name="create-index"></a>Erstellen des Index
     POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
@@ -123,6 +137,6 @@ Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

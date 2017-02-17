@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e4281c70dc0edd45ff485c64a499291b23ad51b7
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
 
 
 ---
@@ -29,7 +29,7 @@ Dazu zählen z. B.:
 * Versand einer E-Mail mit einem Statusupdate bis zum Erreichen eines Werktags verzögern.
 * Workflow verzögern, bis ein HTTP-Aufruf abgeschlossen werden konnte, und erst dann den Vorgang fortsetzen und das Ergebnis abrufen.
 
-Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="use-the-delay-actions"></a>Verwenden der Verzögerungsaktionen
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
@@ -72,11 +72,11 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 <br>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

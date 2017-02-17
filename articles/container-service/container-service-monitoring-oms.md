@@ -1,7 +1,6 @@
 ---
-
-title: "OMS-Containerlösung | Microsoft Docs"
-description: "Die OMS-Containerlösung ist eine Lösung in OMS Log Analytics, mit der Sie das Inventar, die Leistung und die Protokolle von Containern an einer zentralen Stelle anzeigen können. Sie können Container überwachen und Problembehebungen durchführen, indem Sie die Protokolle an einer zentralen Stelle anzeigen und Container mit hoher Aktivität auf einem Host suchen."
+title: "Überwachen eines Azure-DC/OS-Clusters – Operations Management | Microsoft-Dokumentation"
+description: "Überwachen Sie einen Azure Container Service-DC/OS-Cluster mit Microsoft Operations Management Suite."
 services: container-service
 documentationcenter: 
 author: keikhara
@@ -18,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
 translationtype: Human Translation
-ms.sourcegitcommit: 10770c96900737e1894405a6aedaa7fe2a55fd3d
-ms.openlocfilehash: 9697a4c23b50b5ed2435a00a31fa2ee239c56c48
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: f10236ab89339234a32abf42c42083e233ab3a52
 
 
 ---
 
-# <a name="using-oms-to-monitor-container-applications-on-acs-dcos"></a>Verwenden von OMS zum Überwachen von Containeranwendungen in ACS DC/OS
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>Überwachen eines Azure Container Service-DC/OS-Clusters mit Operations Management Suite
 
-Microsoft Operations Management (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Sie beim Verwalten und Schützen Ihrer Infrastruktur lokal und in der Cloud unterstützt. Die Containerlösung ist eine Lösung in OMS Log Analytics, mit der Sie das Inventar, die Leistung und die Protokolle von Containern an einer zentralen Stelle anzeigen können. Sie können Container überwachen und Problembehebungen durchführen, indem Sie die Protokolle an einer zentralen Stelle anzeigen und Container mit zu hoher Aktivität und zu hohem Ressourcenverbrauch auf einem Host suchen.
+Microsoft Operations Management Suite (OMS) ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer Infrastruktur lokal und in der Cloud erleichtert. Die Containerlösung ist eine Lösung in OMS Log Analytics, mit der Sie das Inventar, die Leistung und die Protokolle von Containern an einer zentralen Stelle anzeigen können. Sie können Container überwachen und Problembehebungen durchführen, indem Sie die Protokolle an einer zentralen Stelle anzeigen und Container mit zu hoher Aktivität und zu hohem Ressourcenverbrauch auf einem Host suchen.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
@@ -120,6 +119,6 @@ Was funktioniert? Was fehlt? Was benötigen Sie noch, was nützlich für Sie sei
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

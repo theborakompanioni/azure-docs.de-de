@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 11/30/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6fec9b6d4006893b90a1e65c959c8e2c5b10318b
+ms.sourcegitcommit: 1a2ff324cfa65977685f6a0eee9cd398b0717519
+ms.openlocfilehash: 30a01be95bdc04359d8816598f1382505e4fd790
 
 
 ---
@@ -154,17 +154,18 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
     c. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
-   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-degreed-tutorial/create_aaduser_06.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-degreed-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
    
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
    
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
    
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
    
-   e. Klicken Sie auf **Weiter**.
+    e. Klicken Sie auf **Weiter**.
+
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-degreed-tutorial/create_aaduser_07.png) 
@@ -235,6 +236,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Degreed“ klicken, sollten Sie au
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

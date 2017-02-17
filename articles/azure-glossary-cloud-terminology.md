@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: monicar
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: bcfa97c08cb55aba1ab69e67843abb81805a8884
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: c4a58abe5018f15a1067e46e47010b963dfd530e
 
 
 ---
@@ -46,8 +46,8 @@ Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), d
 Eine [Befehlszeilenschnittstelle](xplat-cli-install.md) , die zum Verwalten von Azure-Diensten über Windows-, OS X- und Linux-Computer verwendet werden kann.
 
 ### <a name="a-namepowershellaazure-powershell"></a><a name="powershell"></a>Azure PowerShell
-Eine [Befehlszeilenschnittstelle](powershell-install-configure.md), mit der Azure-Dienste über eine Befehlszeile von einem Windows-PC aus verwaltet werden können. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.   
-Siehe auch [Installieren und Konfigurieren von Azure PowerShell](powershell-install-configure.md).
+Eine [Befehlszeilenschnittstelle](/powershell/azureps-cmdlets-docs), mit der Azure-Dienste über eine Befehlszeile von einem Windows-PC aus verwaltet werden können. Einige Dienste oder Dienstfeatures können nur über PowerShell oder die CLI verwaltet werden. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.   
+Siehe auch [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ### <a name="a-namearm-modelaazure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager-Bereitstellungsmodell
 Eines der zwei [Bereitstellungsmodelle](resource-manager-deployment-model.md), die in Microsoft Azure zum Bereitstellen von Ressourcen verwendet werden. (Das andere ist das klassische Bereitstellungsmodell.) Einige Azure-Ressourcen können entweder in dem einen oder dem anderen Modell bereitgestellt werden, während andere in beiden Modellen bereitgestellt werden können. Richtlinien für einzelne Azure-Ressourcen beschreiben, mit welchem Modell bzw. welchen Modellen eine Ressource bereitgestellt werden kann.
@@ -147,6 +147,6 @@ Siehe auch [Übersicht über Azure Virtual Network](virtual-network/virtual-netw
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

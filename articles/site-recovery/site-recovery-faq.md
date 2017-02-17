@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/13/2016
+ms.date: 12/28/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1832e584c599384948e7174b377552703ce8bbcd
-ms.openlocfilehash: 11a03d932fc70164640c30acb9808c08e3354de8
+ms.sourcegitcommit: 4ad6d1003b3acd48a1f129eb84f9bbed53075d37
+ms.openlocfilehash: 3c2705a7608c3af9085b51fdbc7191030d3fc9fe
 
 
 ---
@@ -72,6 +72,20 @@ Zum Schützen von VMware-VMs benötigen Sie einen vSphere-Hypervisor und virtuel
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Kann ich mit Site Recovery die Notfallwiederherstellung für meine Zweigstellen verwalten?
 Ja. Wenn Sie Site Recovery zum Orchestrieren von Replikation und Failover in Zweigstellen verwenden, erhalten Sie eine einheitliche Orchestrierung und Anzeige der Workloads aller Zweigstellen an einer zentralen Stelle. Sie können problemlos über Ihren Hauptsitz für alle Zweigstellen Failover ausführen und die Notfallwiederherstellung verwalten, ohne die Zweigstellen zu besuchen.
 
+## <a name="pricing"></a>Preise
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Welche Gebühren fallen bei der Verwendung von Azure Site Recovery an?
+Bei der Verwendung von Azure Site Recovery fallen Gebühren für die Azure Site Recovery-Lizenz, für Azure-Speicher, für Speichertransaktionen und für ausgehende Datenübertragungen an. [detaillierte Kapazitätsplanung](https://azure.microsoft.com/pricing/details/site-recovery)
+
+Die Site Recovery-Lizenz gilt pro geschützter Instanz. Eine Instanz kann ein virtueller Computer oder ein physischer Server sein.
+
+- Falls ein VM-Datenträger in einem Standard-Speicherkonto repliziert wird, wird die Gebühr für Azure-Speicher auf den Speicherverbrauch erhoben. Wenn der Quelldatenträger also beispielsweise eine Größe von 1 TB hat und 400 GB davon genutzt werden, erstellt Site Recovery in Azure eine VHD mit einer Kapazität von 1 TB, es werden jedoch lediglich 400 GB (zuzüglich des benötigten Speicherplatzes für Replikationsprotokolle) in Rechnung gestellt.
+- Falls ein VM-Datenträger in einem Premium-Speicherkonto repliziert wird, wird die Gebühr für Azure-Speicher auf die Größe des bereitgestellten Speichers erhoben (auf-/abgerundet auf die nächste Storage Premium-Datenträgeroption). Wenn der Quelldatenträger also beispielsweise eine Größe von 50 GB hat, erstellt Site Recovery in Azure einen Datenträger mit einer Kapazität von 50 GB, und Azure ordnet diesen dem nächsthöheren/-niedrigeren Storage Premium-Datenträger (P10) zu.  Die Kosten werden für P10 und nicht für die Datenträgergröße von 50 GB berechnet.  [detaillierte Kapazitätsplanung](https://aka.ms/premium-storage-pricing)  Bei Verwendung von Storage Premium wird auch ein Standard-Speicherkonto für die Protokollierung der Replikation benötigt, und der von den Protokollen beanspruchte Standard-Speicherplatz wird ebenfalls in Rechnung gestellt.
+
+Kosten fallen auch bei einem Testfailover an. Dabei werden die Kosten für den virtuellen Computer, für Speicher, für ausgehende Daten und für Speichertransaktionen berechnet.
+
+
+
 ## <a name="security"></a>Sicherheit
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Werden Replikationsdaten an den Site Recovery-Dienst gesendet?
 Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern oder physischen Servern ausgeführt wird.
@@ -88,10 +102,10 @@ Für virtuelle Computer und physische Server wird bei der Replikation zwischen l
 ## <a name="replication"></a>Replikation
 
 ### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Kann ich über ein Standort-zu-Standort-VPN zu Azure replizieren?
-Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Daher erfolgt die Replikation nicht über ein Standort-zu-Standort-VPN. Sie können ein Standort-zu-Standort-VPN mit einem virtuellen Azure-Netzwerk erstellen, das die ASR-Replikation nicht beeinträchtigt. 
+Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Daher erfolgt die Replikation nicht über ein Standort-zu-Standort-VPN. Sie können ein Standort-zu-Standort-VPN mit einem virtuellen Azure-Netzwerk erstellen, das die ASR-Replikation nicht beeinträchtigt.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kann ich virtuelle Computer mithilfe von ExpressRoute zu Azure replizieren?
-Ja, ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden. Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Sie müssen [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#public-peering) einrichten, um ExpressRoute für die ASR-Replikation zu verwenden. Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#private-peering) für das virtuelle Azure-Netzwerk darauf zugreifen. 
+Ja, ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden. Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#public-peering) einrichten. Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#private-peering) für das virtuelle Azure-Netzwerk darauf zugreifen.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Gelten Voraussetzungen für die Replikation von virtuellen Computern in Azure?
 Virtuelle Computer, die Sie in Azure replizieren möchten, sollten den [Azure-Anforderungen](site-recovery-best-practices.md#azure-virtual-machine-requirements)entsprechen.
@@ -146,9 +160,9 @@ Ja. In den Bereitstellungsartikeln erfahren Sie mehr über die Drosselung der Ba
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-virtual-machines-after-failover"></a>Wie greife ich nach einem Failover auf Azure auf die virtuellen Azure-Computer zu?
 Sie können auf die Azure-VMs über eine sichere Internetverbindung, über eine Site-to-Site-VPN-Verbindung oder über Azure ExpressRoute zugreifen. Sie müssen eine Reihe von Vorbereitungen treffen, um eine Verbindung herzustellen. Weitere Informationen finden Sie in:
 
-* [Connect to Azure VMs after failover of VMware VMs or physical servers](site-recovery-vmware-to-azure.md#step-7-test-the-deployment)
+* [Connect to Azure VMs after failover of VMware VMs or physical servers](site-recovery-vmware-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 * [Connect to Azure VMs after failover of Hyper-V VMs in VMM clouds](site-recovery-vmm-to-azure.md#step-7-test-your-deployment)
-* [Connect to Azure VMs after failover of Hyper-V VMs without VMM](site-recovery-hyper-v-site-to-azure.md#step-7-test-the-deployment)
+* [Connect to Azure VMs after failover of Hyper-V VMs without VMM](site-recovery-hyper-v-site-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Wie wird bei einem Failover auf Azure in Azure sichergestellt, dass die Daten stabil sind?
 Azure ist auf Resilienz ausgelegt. Site Recovery ist bereits für ein Failover in ein sekundäres Azure-Rechenzentrum (gemäß Azure-SLA) konzipiert, falls sich die Notwendigkeit ergibt. Wenn dies der Fall ist, stellen wir sicher, dass Ihre Metadaten und Tresore innerhalb der gleichen geografischen Region bleiben, die Sie für Ihren Tresor ausgewählt haben.  
@@ -198,6 +212,6 @@ Ja, Sie können virtuelle Hyper-V-Computer in Azure oder zwischen Dienstanbieter
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

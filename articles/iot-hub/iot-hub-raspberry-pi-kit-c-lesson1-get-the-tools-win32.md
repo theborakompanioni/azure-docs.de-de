@@ -1,5 +1,5 @@
 ---
-title: Abrufen der Tools (ab Windows 7) | Microsoft Docs
+title: "Verbinden von Raspberry Pi (C) mit Azure IoT – Lektion 1: Herunterladen der Tools (Windows) | Microsoft-Dokumentation"
 description: "Laden Sie die erforderlichen Tools und die Software für die erste Beispielanwendung für Pi unter Windows 7 und höheren Versionen herunter, und installieren Sie sie."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 7dad64ae5044838646915a0ec933e29c90edd1b9
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d53efc7d25714427e25d4f88279f3b0d4f61c150
 
 
 ---
@@ -84,6 +84,6 @@ Sie haben die erforderlichen Entwicklungstools und die Software für die erste B
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

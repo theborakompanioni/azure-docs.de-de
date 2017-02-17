@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/22/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: ef5c1f296a0a4ee6476db663e85c49c351f826b9
-ms.openlocfilehash: 53a2012a1d928c961cbfbdcea485ae18d776360f
+ms.sourcegitcommit: da98bc3e4dda1a05cba38701c0042f1c023c419a
+ms.openlocfilehash: 40b172356b3171557d6309a6bb2984fba34f485d
 
 
 ---
@@ -66,11 +66,12 @@ Wenn Sie Daten in einen/aus einem Datenspeicher verschieben müssen, der von der
 ### <a name="supported-file-formats"></a>Unterstützte Dateiformate
 Sie können die Kopieraktivität verwenden, um **Dateien unverändert** zwischen zwei dateibasierten Datenspeichern zu kopieren, wie z.B. Azure Blob, Azure Data Lake Store, Amazon S3, FTP, Dateisystem und HDFS. Zu diesem Zweck können Sie in den Definitionen sowohl für das Eingabe- als auch für das Ausgabedataset den [Formatierungsabschnitt](data-factory-create-datasets.md) überspringen. Die Daten werden effizient ohne jegliche Serialisierung oder Deserialisierung kopiert.
 
-Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: **Text, Avro, ORC, Parquet und JSON**. Sie können z.B. folgende Kopieraktivitäten ausführen:
+Die Kopieraktivität liest und schreibt Dateien in den folgenden Formaten: **Text, Avro, ORC, Parquet und JSON**. Außerdem unterstützt sie folgende Komprimierungscodecs: **„GZip“, „Deflate“, „BZip2“ und „ZipDeflate“**. Sie können z.B. folgende Kopieraktivitäten ausführen:
 
-* Kopieren von Daten im Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank.
-* Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format.
-* Kopieren von Daten aus Azure SQL-Datenbank und Schreiben in ein lokales HDFS im ORC-Format.
+* Kopieren von Daten im GZip-komprimierten Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank
+* Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format
+* Kopieren von Daten in einer lokalen SQL Server-Instanz und Schreiben in Azure Data Lake Store im ORC-Format
+* Kopieren von ZIP-Dateien aus dem lokalen Dateisystem und Dekomprimieren in Azure Data Lake Store
 
 ## <a name="a-nameglobalaglobally-available-data-movement"></a><a name="global"></a>Global verfügbare Datenverschiebung
 Azure Data Factory ist nur in den USA (Westen), USA (Osten) und Nordeuropa verfügbar. Jedoch ist der Dienst, der die Kopieraktivität unterstützt, in den folgenden Regionen und Ländern global verfügbar. Die global verfügbare Topologie gewährleistet effiziente Datenverschiebungen, die regionsübergreifende Hops in der Regel vermeiden. Unter [Dienste nach Region](https://azure.microsoft.com/regions/#services) erfahren Sie, in welchen Regionen Data Factory und die Datenverschiebung verfügbar sind.
@@ -103,10 +104,10 @@ Wenn sich Quell- und Senkendatenspeicher in der Cloud befinden, verwendet Data F
 | verfügbar. | Indien, Westen | Indien (Mitte) |
 | verfügbar. | Indien, Süden | Indien (Mitte) |
 
+Alternativ können Sie unter den Typeigenschaften der Kopieraktivität (`typeProperties`) mithilfe der `executionLocation`-Eigenschaft explizit die Region des Data Factory-Diensts angeben, die für den Kopiervorgang verwendet werden soll. Die unterstützten Werte für diese Eigenschaft finden Sie weiter oben in der Spalte **Verwendete Region für die Datenverschiebung**. Hinweis: Beim Kopieren werden Ihre Daten über diese Region geleitet. Wenn Sie also beispielsweise einen Kopiervorgang zwischen Azure-Speichern im Vereinigten Königreich durchführen möchten, können Sie `executionLocation` als „Europa, Norden“ angeben, um die Daten über Nordeuropa zu leiten.
 
 > [!NOTE]
-> Wenn die Region des Zieldatenspeichers in der obigen Liste nicht enthalten ist, schlägt die Kopieraktivität fehl, anstatt eine Alternativregion auszuwählen.
->
+> Falls die Region des Zieldatenspeichers in der obigen Liste nicht enthalten ist oder nicht gefunden wird, tritt standardmäßig ein Fehler auf, und die Daten werden nicht über eine Alternativregion geleitet (es sei denn, `executionLocation` wurde angegeben). Die Liste mit den unterstützten Regionen wird im Laufe der Zeit erweitert.
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopieren von Daten zwischen einem lokalen Datenspeicher und einem Clouddatenspeicher
@@ -193,6 +194,6 @@ Die Zuordnung zwischen einem nativen Typ und einem .NET-Typ für den Datenspeich
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

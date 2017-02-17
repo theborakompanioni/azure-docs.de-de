@@ -1,7 +1,7 @@
 ---
-title: "Migrieren von Daten zu einem Azure DocumentDB-Konto mit Protokollunterstützung für MongoDB | Microsoft-Dokumentation"
+title: "Verwenden von „mongoimport“ und „mongorestore“ mit Azure DocumentDB | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie „mongoimport“ und „mongorestore“ zum Importieren von Daten in ein DocumentDB-Konto mit Protokollunterstützung für MongoDB (jetzt als Vorschauversion verfügbar) verwenden."
-keywords: migrate
+keywords: mongoimport, mongorestore
 services: documentdb
 author: AndrewHoh
 manager: jhubbard
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 2dc98400ed4eaa2263d73f0718f5eaee260d48f5
-ms.openlocfilehash: 80665bc84948696b05b04536a066ebebb5a81e89
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: df43600a11aa829ba7fc6b858d64b5f8e98d22fb
 
 
 ---
-# <a name="migrate-data-to-documentdb-with-protocol-support-for-mongodb"></a>Migrieren von Daten zu DocumentDB mit Protokollunterstützung für MongoDB
+# <a name="migrate-data-to-documentdb-by-using-mongoimport-and-mongorestore"></a>Migrieren von Daten zu DocumentDB mit „mongoimport“ und „mongorestore“
 Zum Migrieren eines Azure DocumentDB-Kontos mit Protokollunterstützung für MongoDB müssen Sie Folgendes durchführen:
 
 * Laden Sie entweder *mongoimport.exe* oder *mongorestore.exe* aus dem [MongoDB Download Center](https://www.mongodb.com/download-center) herunter.
@@ -71,6 +71,6 @@ Beispiel:
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

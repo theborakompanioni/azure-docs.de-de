@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/07/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2969f307a6f0f52fc732d4e3360cfeda7784c5cf
+ms.sourcegitcommit: 4c0b60afdc95a44dc5fdb0e43605e8bb079278e5
+ms.openlocfilehash: b2dcf4e0e5cc8e2c594357495635889a2e3645bd
 
 
 ---
@@ -30,7 +30,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
 * **Ein Azure-Speicherkonto**.
-* **Ein Azure Data Lake Analytics-Konto (optional)**. Eine Anleitung zur Erstellung dieses Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+* **Ein Azure Data Lake-Speicherkonto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake-Speicher](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>Vorbereiten der Daten
 Vor der Verwendung des Import/Export-Diensts muss die zu übertragende Datendatei **in Kopien mit einer Größe von weniger als 200GB aufgeteilt** werden. Das Importtool kann nicht für Dateien mit einer Größe von mehr als 200GB ausgeführt werden. In diesem Tutorial teilen wir die Datei in Abschnitte von jeweils 100GB auf. Hierfür können Sie [Cygwin](https://cygwin.com/install.html) verwenden. Cygwin unterstützt Linux-Befehle. Führen in diesem Fall den folgenden Befehl aus:
@@ -215,6 +215,6 @@ Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

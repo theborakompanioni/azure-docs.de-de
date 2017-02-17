@@ -263,6 +263,6 @@ Nachdem Sie erfahren haben, wie Daten mithilfe von Storm in Azure Data Lake-Spei
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

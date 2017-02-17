@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren Ihres Geräts | Microsoft-Dokumentation"
+title: "Verbinden von Raspberry Pi (C) mit Azure IoT – Lektion 1: Konfigurieren des Geräts | Microsoft-Dokumentation"
 description: "Konfigurieren Sie den Raspberry Pi 3 für die erstmalige Verwendung, und installieren Sie Raspbian, ein kostenloses Betriebssystem, das für die Raspberry Pi-Hardware optimiert ist."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: abe7c8b00648a101ea8255a3a6a1091a6fcccc46
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 4fdd8de3a24bf521b8ea13416900e69d24e1b62d
 
 
 ---
@@ -117,6 +117,6 @@ In diesem Artikel haben Sie erfahren, wie Sie den Raspberry Pi konfigurieren, in
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

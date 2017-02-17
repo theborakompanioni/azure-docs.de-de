@@ -54,6 +54,6 @@ An diesem Punkt ist Ihr Azure RemoteApp-Abonnement Ihrem Office 365 Azure AD zug
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

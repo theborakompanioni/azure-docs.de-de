@@ -1,5 +1,5 @@
 ---
-title: "Einführung in die Microsoft Azure-Protokollintegration | Microsoft Docs"
+title: Integrieren von Protokollen aus Azure-Ressourcen in Ihre SIEM-Systeme | Microsoft-Dokumentation
 description: Sie erhalten Informationen zur Azure-Protokollintegration, zu den wichtigsten Funktionen und dazu, wie dieses Feature funktioniert.
 services: security
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2017
+ms.date: 01/23/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 68c0e3c73b3192aedc18ec3588f1201b3aa36f35
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 62b5469d06974dfbe1b243091d34e1141416c971
 
 
 ---
@@ -26,7 +26,7 @@ Sie erhalten Informationen zur Azure-Protokollintegration, zu den wichtigsten Fu
 ## <a name="overview"></a>Übersicht
 PaaS- (Platform-as-a-Service) als auch IaaS-Lösungen (Infrastructure-as-a-Service), die in Azure gehostet werden, generieren in Sicherheitsprotokollen eine große Menge von Daten. Diese Protokolle enthalten wichtige Informationen, die wertvolle Einblicke in Richtlinienverstöße, interne und externe Bedrohungen, Probleme bei der Einhaltung gesetzlicher Compliancevorgaben sowie Anomalien bei Netzwerk-, Host- und Benutzeraktivität liefern.
 
-Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management) integrieren. Die Azure-Protokollintegration erfasst Azure-Diagnosen von Ihren Windows-VMs *(WAD)*, Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Ressourcenanbieterprotokollen. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Assets (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
+Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in Ihre lokalen SIEM-Systeme (Security Information and Event Management) integrieren. Die Azure-Protokollintegration erfasst Azure-Diagnosen von Ihren virtuellen Windows-Computern *(WAD)*, Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Ressourcenanbieterprotokollen. Diese Integration bietet ein einheitliches Dashboard für alle Ihre Assets (ganz gleich ob lokal oder in der Cloud), sodass Sie Sicherheitsereignisse aggregieren, korrelieren, analysieren und entsprechende Warnungen ausgeben können.
 
 ![Azure-Protokollintegration][1]
 
@@ -55,6 +55,6 @@ In diesem Dokument wurde die Azure-Protokollintegration vorgestellt. Weitere Inf
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

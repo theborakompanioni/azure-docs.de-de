@@ -8,16 +8,16 @@ manager: erikre
 editor: monicar
 tags: azure-service-management
 ms.assetid: c681e7a7-eeda-48aa-bc35-6277f4828244
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/04/2016
+ms.workload: iaas-sql-server
+ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 761126cb6a5e119e07d4d8fd7b04f6ea50856f6e
+ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
+ms.openlocfilehash: 60bd5469b4d22bac87e8794bcb6e1d3713645415
 
 
 ---
@@ -67,11 +67,12 @@ Weitere Informationen zu Editionen und Features, die von SQL Server unterstützt
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>BI-Features, die auf den Images im SQL Server Virtual Machine-Katalog installiert sind
 In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst, die in den allgemeinen Images für SQL Server im Microsoft Azure Virtual Machine-Katalog installiert sind:
 
-* SQL Server 2016 RC3
-* SQL Server 2014 SP1 Enterprise
-* SQL Server 2014 SP1 Standard
-* SQL Server 2012 SP2 Enterprise
-* SQL Server 2012 SP2 Standard
+* SQL Server 2016 SP1 Enterprise
+* SQL Server 2016 SP1 Standard
+* SQL Server 2014 SP2 Enterprise
+* SQL Server 2014 SP2 Standard
+* SQL Server 2012 SP3 Enterprise
+* SQL Server 2012 SP3 Standard
 
 | BI-Funktion von SQL Server | In Katalogimage installiert | Hinweise |
 | --- | --- | --- |
@@ -103,8 +104,6 @@ In der folgenden Tabelle sind die Business Intelligence-Features zusammengefasst
   
   > [!NOTE]
   > Das SQL Server-Datenbankmodul ist in den unterstützten BI-Szenarios erforderlich. Bei einer VM-Topologie mit Einzelserver muss das Datenbankmodul auf demselben virtuellen Computer ausgeführt werden.
-  > 
-  > 
   
     Weitere Informationen finden Sie unter [Deinstallieren von Reporting Services](https://msdn.microsoft.com/library/hh479745.aspx) und [Deinstallieren einer Instanz von Analysis Services](https://msdn.microsoft.com/library/ms143687.aspx).
 * Prüfen Sie **Windows-Update** auf neue „Wichtige Updates“. Die Microsoft Azure Virtual Machine-Images werden häufig aktualisiert. Es kann aber sein, dass nach der letzten Aktualisierung des VM-Images unter **Windows-Update** wichtige Updates bereitgestellt werden.
@@ -140,8 +139,6 @@ Das Image für SQL Server im Katalog mit den virtuellen Computern enthält eine 
 
 > [!NOTE]
 > Ähnliche Inhalte, bei denen Windows PowerShell-Skripts zum Konfigurieren des Berichtsservers verwendet werden, finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](virtual-machines-windows-classic-ps-sql-report.md).
-> 
-> 
 
 ### <a name="connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager"></a>Herstellen einer Verbindung mit dem virtuellen Computer und Starten des Konfigurations-Managers für Reporting Services
 Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virtuellen Azure-Computer:
@@ -160,7 +157,7 @@ Es gibt zwei allgemeine Workflows zum Herstellen einer Verbindung mit einem virt
 
 **Starten Sie den Konfigurations-Manager für Reporting Services.**
 
-1. In **Windows Server 2012**:
+1. Unter **Windows Server 2012/2016**:
 2. Geben Sie auf dem Bildschirm **Start** den Text **Reporting Services** ein, um eine Liste von Apps anzuzeigen.
 3. Klicken Sie mit der rechten Maustaste auf **Konfigurations-Manager für Reporting Services**, und klicken Sie auf **Als Administrator ausführen**.
 4. In **Windows Server 2008 R2**:
@@ -346,8 +343,6 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 > [!NOTE]
 > [Übermitteln von Feedback und Kontaktinformationen über Microsoft SQL Server Connect](https://connect.microsoft.com/SQLServer/Feedback)
-> 
-> 
 
 ### <a name="community-content"></a>Community-Inhalte
 * [Verwalten von Azure SQL-Datenbank mit PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
@@ -355,6 +350,6 @@ Im folgenden Diagramm sind die Ports dargestellt, die in der Firewall des virtue
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

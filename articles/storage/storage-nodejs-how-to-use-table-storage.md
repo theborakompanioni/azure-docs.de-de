@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 4935223f572e0ed3188195c23f7e9f692fb170af
+ms.sourcegitcommit: b9041713f3d084fde77a34ef7956a2c59312245e
+ms.openlocfilehash: d9008f6232ca2442edce2a3cae88f0b3d2be2f14
 
 
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Verwenden des Azure-Tabellenspeichers mit Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[!INCLUDE [storage-check-out-samples-all](../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Übersicht
 In diesem Thema wird erläutert, wie allgemeine Szenarios mit dem Azure-Tabellenspeicherdienst in einer Node.js-Anwendung durchgeführt werden.
@@ -195,9 +195,8 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > 1. Rufen Sie das Etag des aktualisierten Objekts ab. Es wird im Rahmen der `response` für jeden entitätsbezogenen Vorgang zurückgegeben und kann durch `response['.metadata'].etag` abgerufen werden.
 > 2. Wenn Sie einen Aktualisierungsvorgang für eine Entität ausführen, sollten Sie der neuen Entität die zuvor abgerufenen ETag-Informationen hinzufügen. Beispiel:
 >
-> `entity2['.metadata'].etag = currentEtag;`
->
-> 1. Führen Sie den Aktualisierungsvorgang aus. Wurde die Entität seit dem Abruf des ETag-Werts beispielsweise durch eine andere Instanz Ihrer Anwendung geändert, wird ein `error` zurückgegeben, der besagt, dass die in der Anforderung angegebene Aktualisierungsbedingung nicht erfüllt ist.
+>       entity2['.metadata'].etag = currentEtag;
+> 3. Führen Sie den Aktualisierungsvorgang aus. Wurde die Entität seit dem Abruf des ETag-Werts beispielsweise durch eine andere Instanz Ihrer Anwendung geändert, wird ein `error` zurückgegeben, der besagt, dass die in der Anforderung angegebene Aktualisierungsbedingung nicht erfüllt ist.
 >
 >
 
@@ -469,6 +468,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

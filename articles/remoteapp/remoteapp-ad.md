@@ -50,6 +50,6 @@ Sie benötigen diese beiden Objekte beim Erstellen Ihrer RemoteApp-Sammlung, dah
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Virtuelle Azure-Computer – Sicherheitsübersicht | Microsoft Docs"
-description: " Ein virtueller Azure-Computer bietet Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und das Verwalten der Hardware aufwenden zu müssen, die den virtuellen Computer hostet.  Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Virtual Machines verwendet werden können. "
+title: "Azure-Sicherheitsfeatures, die für virtuelle Azure-Computer verwendet werden | Microsoft-Dokumentation"
+description: " Hier finden Sie eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Azure-Computern verwendet werden können. Virtuelle Azure-Computer bieten Ihnen die Flexibilität der Virtualisierung, ohne Zeit und Geld für den Kauf und die Verwaltung der Hardware aufwenden zu müssen, mit die virtuellen Computer betrieben werden.. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 3f504db7d67fdf196fbdaaaba2e09d989449b101
-ms.openlocfilehash: 0be0500296ad9bed302f65da9ef8de63e0ed08f6
+ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
+ms.openlocfilehash: 5e9dcd9913cf301e7c5a50eb9e55fb0b3dc303e5
 
 
 ---
@@ -154,6 +154,6 @@ Weitere Informationen:
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

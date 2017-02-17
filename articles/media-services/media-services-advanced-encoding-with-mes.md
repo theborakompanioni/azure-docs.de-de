@@ -1006,6 +1006,6 @@ Mit dem Wert „0“ können Sie den Encoder anweisen, Rotationsmetadaten im Vid
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
