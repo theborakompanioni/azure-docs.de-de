@@ -4,7 +4,7 @@ description: Wichtige Aspekte beim Planen der Sicherung virtueller Computer in A
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: Sichern virtueller Computer, Sichern von VMs
 ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.author: markgal;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: a4045fc0fc6e2c263da06ed31a590714e80fb4d4
 ms.openlocfilehash: ac13b82c885720fa6d3d127b8e8dbbace5b09ef5
@@ -95,7 +95,7 @@ Obgleich ein Großteil der Sicherungszeit für das Lesen und Kopieren von Daten 
 ## <a name="total-restore-time"></a>Gesamtzeit der Wiederherstellung
 Ein Wiederherstellungsvorgang umfasst zwei zentrale Teilvorgänge: das Kopieren von Daten aus dem Tresor in das ausgewählte Kundenspeicherkonto und das Erstellen des virtuellen Computers. Das Kopieren von Daten aus dem Tresor hängt vom internen Speicherort von Sicherungen in Azure sowie vom Speicherort des Kundenspeicherkontos ab. Die Dauer des Datenkopiervorgangs hängt von folgenden Faktoren ab:
 * Wartezeit in der Warteschlange: Da der Dienst Wiederherstellungen von mehreren Kunden gleichzeitig verarbeitet, werden Wiederherstellungsanforderungen in eine Warteschlange eingereiht.
-* Zeit für das Kopieren von Daten: Daten werden ähnlich wie bei einem ersten Sicherungsprozess aus dem Tresor in das Kundenspeicherkonto kopiert. Wenn das Kundenspeicherkonto, in das der Sicherungsdienst Daten aus dem Tresor schreiben muss, geladen ist, kann das Kopieren länger dauern. Achten Sie also darauf, ein Speicherkonto auszuwählen, das während der Wiederherstellung nicht für andere Schreib- und Lesevorgänge der Anwendung geladen ist, um die Kopierdauer zu optimieren. 
+* Zeit für das Kopieren von Daten: Daten werden ähnlich wie bei einem ersten Sicherungsprozess aus dem Tresor in das Kundenspeicherkonto kopiert. Wenn das Kundenspeicherkonto, in das der Sicherungsdienst Daten aus dem Tresor schreiben muss, geladen ist, kann das Kopieren länger dauern. Achten Sie also darauf, ein Speicherkonto auszuwählen, das während der Wiederherstellung nicht für andere Schreib- und Lesevorgänge der Anwendung geladen ist, um die Kopierdauer zu optimieren.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer die folgenden bewährten Methoden:
