@@ -63,7 +63,7 @@ Erstellen Sie zuerst schnell eine standardmäßige Sails.js-App in Ihrer Entwick
         cd <appname>
         sails lift
 
-    Stellen Sie sicher, dass Sie zur Standardstartseite unter „http://localhost:1377“ navigieren können.
+    Stellen Sie sicher, dass Sie zur Standardstartseite unter „ http://localhost:1377 “ navigieren können.
 
 ## <a name="step-2-create-the-azure-app-resource"></a>Schritt 2: Erstellen der Azure-App-Ressource
 Als Nächstes erstellen Sie die App Service-Ressource in Azure. Sie werden ihr später Ihre Sails.js-App bereitstellen.
