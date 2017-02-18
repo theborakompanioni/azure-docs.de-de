@@ -14,6 +14,7 @@
 ### [Erstellen eines Authentifizierungsanbieters](multi-factor-authentication-get-started-auth-provider.md)
 ### [Konfigurieren von Einstellungen](multi-factor-authentication-whats-next.md)
 ### [MFA-Berichte](multi-factor-authentication-manage-reports.md)
+### [Verwenden vorhandener Netzwerkrichtlinienserver](multi-factor-authentication-nps-extension.md)
 ### Lokale Azure MFA
 #### [Installieren des Benutzerportals](multi-factor-authentication-get-started-portal.md)
 #### [Erweiterte VPN-Konfigurationen](multi-factor-authentication-advanced-vpn-configurations.md)
@@ -38,7 +39,7 @@
 ### [IIS-Web-Apps](multi-factor-authentication-get-started-server-iis.md)
 ### [Remotedesktopgateway](multi-factor-authentication-get-started-server-rdg.md)
 
-## Entwickeln 
+## Entwickeln
 ### [Integrieren in benutzerdefinierte Apps (SDK)](multi-factor-authentication-sdk.md)
 
 ## Problembehandlung
@@ -46,6 +47,6 @@
 ### [Stellen einer Frage](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

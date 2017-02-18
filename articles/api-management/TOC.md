@@ -14,6 +14,7 @@
 ## Schützen Ihres Back-Ends
 ### [Schützen des Web-API-Back-Ends mit AAD](api-management-howto-protect-backend-with-aad.md)
 ### [Verbinden mit einem virtuellen Netzwerk](api-management-using-with-vnet.md)
+### [Herstellen einer Verbindung mit einem internen virtuellen Netzwerk](api-management-using-with-internal-vnet.md)
 ### [Gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md)
 ## Konfigurieren von Richtlinien
 ### [Benutzerdefiniertes Caching](api-management-sample-cache-by-key.md)
@@ -82,6 +83,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

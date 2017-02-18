@@ -11,7 +11,7 @@
 
 # Erste Schritte
 ## [Voraussetzungen](active-directory-aadconnect-prerequisites.md)
-## [Installieren von Azure AD Connect](active-directory-aadconnect-accounts-permissions.md)
+## [Installieren von Azure AD Connect](active-directory-aadconnect-select-installation.md)
 ### [Express-Einstellungen](active-directory-aadconnect-get-started-express.md)
 ### [Benutzerdefinierte Einstellungen](active-directory-aadconnect-get-started-custom.md)
 ### [Upgrade von DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md)
@@ -33,7 +33,6 @@
 
 
 ## Verwalten der Azure AD Connect-Synchronisierung
-### [Schrittweise Anleitung für den generischen SQL-Connector](active-directory-aadconnectsync-connector-genericsql-step-by-step.md)
 ### [Verhindern von versehentlichen Löschungen](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [Kennwortsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD-Dienstkonto](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -58,14 +57,11 @@
 
 
 # Referenz
-## [Windows PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md)
-## [Generischer SQL-Connector](active-directory-aadconnectsync-connector-genericsql.md)
-## [Generischer LDAP-Connector](active-directory-aadconnectsync-connector-genericldap.md)
-## [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md)
 ## [Identitätssynchronisierung und Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [Erforderliche Ports und Protokolle für die Hybrid-Identität](active-directory-aadconnect-ports.md)
 ## [Features in der Vorschau](active-directory-aadconnect-feature-preview.md)
 ## [Versionsverlauf](active-directory-aadconnect-version-history.md)
+## [Konten und Berechtigungen](active-directory-aadconnect-accounts-permissions.md)
 
 ## Azure AD Connect-Synchronisierung
 ### [Mit Azure Active Directory synchronisierte Attribute](active-directory-aadconnectsync-attributes-synchronized.md)
@@ -89,6 +85,6 @@
 ##[DirSync – Veraltet](active-directory-aadconnect-dirsync-deprecated.md)
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 
