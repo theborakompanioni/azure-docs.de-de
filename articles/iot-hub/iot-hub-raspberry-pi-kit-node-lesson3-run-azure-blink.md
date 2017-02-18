@@ -1,5 +1,5 @@
 ---
-title: Senden von D2C-Nachrichten an Azure IoT Hub | Microsoft Docs
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 3: Ausführen des Beispiels | Microsoft-Dokumentation"
 description: "Stellen Sie eine Beispielanwendung auf Raspberry Pi 3 bereit, die Nachrichten an IoT Hub sendet und ein Blinken der LED auslöst, und führen Sie sie aus."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: c0ddd7e68accf28ee65ba70ea992acd413da6f5b
-ms.openlocfilehash: ac844b94151c4f9f5105ece63075529779f0efb6
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: d33229fea3ed8af636f744992cb8ed321418da85
 
 
 ---
@@ -105,6 +105,6 @@ Sie haben die neue Beispielanwendung blink auf dem Pi bereitgestellt und ausgef�
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,12 +1,12 @@
 ---
-title: Vorbereiten des Hostcomputers und von Azure IoT Hub | Microsoft-Dokumentation
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 2: Abrufen der Tools (Ubuntu) | Microsoft-Dokumentation"
 description: "Installieren Sie die Tools und die Software auf dem Hostcomputer unter Ubuntu, erstellen Sie eine IoT Hub-Instanz, und registrieren Sie Ihr Gerät bei IoT Hub."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "IoT-Entwicklung, IoT-Software, IoT-Clouddienst, Internet der Dinge Software, Azure-CLI, Git unter Ubuntu installieren, Gulp ausführen, Node.js installieren Ubuntu"
+keywords: "IoT-Entwicklung, IoT-Software, IoT-Clouddienst, Internet der Dinge Software, Azure CLI, Git unter Ubuntu installieren, Gulp ausführen, Node.js installieren Ubuntu"
 ms.assetid: cf673154-ce67-4ed7-a9f7-2440301c6270
 ms.service: iot-hub
 ms.devlang: c
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 6feb4f6fa72aeb3d43211ad8c3973ad2b96671ec
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: f09ad1624f8a7ce4e1b13217d085cfc172d870ca
 
 
 ---
@@ -43,11 +43,11 @@ In dieser Lektion lernen Sie Folgendes:
 - Verwenden von NPM zum Installieren von Node.js-Entwicklungstools.
   - Die erforderliche Minimalversion von Node.js ist 4.5 LTS.
   - NPM ist einer der Paket-Manager für Node.js.
-- Installieren von Visual Studio Code.
-  - Visual Studio Code ist ein einfacher – aber leistungsstarker – plattformübergreifender Quellcode-Editor für Windows, Linux und MacOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
+- Installieren von Visual Studio Code
+  - Visual Studio Code ist ein einfacher, aber leistungsstarker, plattformübergreifender Quellcode-Editor für Windows, Linux und macOS. Er verfügt über hervorragende Unterstützung für das Debuggen, eingebettete Git-Steuerung, Syntaxhervorhebung, intelligente Codevervollständigung, Codeausschnitte und die Umgestaltung von Code.
 - Gewusst wie: Installieren der Azure-Befehlszeilenschnittstelle
   - Die Azure-CLI bietet eine plattformübergreifende Befehlszeile für Azure. So können Sie Ressourcen direkt über die Befehlszeile bereitstellen und verwalten.
-- Erstellen einer IoT Hub-Instanz mithilfe der Azure-CLI
+- Erstellen einer IoT Hub-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 
 ## <a name="what-you-need"></a>Erforderliches Element
 
@@ -107,7 +107,7 @@ Führen Sie zum Installieren der Azure-CLI die folgenden Schritte aus:
    az iot -h
    ```
 Wenn die Installation erfolgreich war, wird die folgende Ausgabe angezeigt.
-![Überprüfen der Azure-CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_ubuntu.png)
+![Überprüfen der Azure CLI-Installation](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_ubuntu.png)
 
 ### <a name="install-visual-studio-code"></a>Installieren von Visual Studio Code
 
@@ -117,13 +117,13 @@ Sie verwenden später in diesem Tutorial Visual Studio Code, um Konfigurationsda
 
 ## <a name="summary"></a>Zusammenfassung
 
-Sie haben die erforderlichen Tools und Software auf Ihrem Hostcomputer installiert. Als Nächstes verwenden Sie die Azure-CLI zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
+Sie haben die erforderlichen Tools und Software auf Ihrem Hostcomputer installiert. Als Nächstes verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer IoT Hub-Instanz und zum Registrieren Ihres Geräts bei IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Create an IoT hub and register your device](iot-hub-gateway-kit-c-sim-lesson2-register-device.md) (Erstellen eines IoT Hub und Registrieren Ihres Geräts)
+[Erstellen eines IoT Hub und Registrieren Ihres Geräts](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

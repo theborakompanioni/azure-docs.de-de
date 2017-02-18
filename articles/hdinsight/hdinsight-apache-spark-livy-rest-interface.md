@@ -1,5 +1,5 @@
 ---
-title: "Remoteübermittlung von Spark-Aufträgen mithilfe von Livy | Microsoft-Dokumentation"
+title: "Remoteübermittlung von Aufträgen an Spark in Azure HDInsight mithilfe von Livy | Microsoft-Dokumentation"
 description: "Hier erhalten Sie Informationen zur Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy mit HDInsight-Clustern."
 services: hdinsight
 documentationcenter: 
@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0866581d6feebc71ed82aa48f6e41a58068af900
-ms.openlocfilehash: 0b8c9f9395f034355c8f10574e750fcf40e870de
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 3c349aecc87e28275045828a84e0ea3f89400b9e
 
 
 ---
-# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-linux-using-livy"></a>Remoteübermittlung von Spark-Aufträgen an einen Apache Spark-Cluster unter HDInsight (Linux) mithilfe von Livy
+# <a name="submit-spark-jobs-remotely-to-an-apache-spark-cluster-on-hdinsight-using-livy"></a>Remoteübermittlung von Spark-Aufträgen an einen Apache Spark-Cluster unter HDInsight mithilfe von Livy
+
 Der Apache Spark-Cluster in Azure HDInsight bietet mit Livy eine REST-Schnittstelle zur Remoteübermittlung von Aufträgen an einen Spark-Cluster. Eine ausführliche Dokumentation finden Sie unter [Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server).
 
 Mit Livy können Sie interaktive Spark-Shells ausführen oder Batchaufträge zur Ausführung in Spark übermitteln. In diesem Artikel wird die Übermittlung von Batchaufträgen mithilfe von Livy behandelt. Die Syntax weiter unten verwendet cURL für an den Livy-Endpunkt gerichtete REST-Aufrufe.
@@ -30,8 +31,8 @@ Mit Livy können Sie interaktive Spark-Shells ausführen oder Batchaufträge zur
 
 Sie benötigen Folgendes:
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
-* Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Einen Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
 ## <a name="submit-a-batch-job"></a>Einreichen eines Batchauftrags
 Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clusterspeicher hochgeladen werden, der dem Cluster zugeordnet ist. Dafür können Sie das Befehlszeilenprogramm [**AzCopy**](../storage/storage-use-azcopy.md) verwenden. Die Daten können aber auch mit zahlreichen anderen Clients hochgeladen werden. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
@@ -193,6 +194,6 @@ Der HDInsight 3.5-Cluster deaktiviert standardmäßig die Verwendung der lokalen
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

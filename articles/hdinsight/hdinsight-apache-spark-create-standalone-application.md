@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eigenständiger Scala-Anwendungen zur Ausführung in HDInsight Spark-Clustern | Microsoft Docs"
+title: "Erstellen eigenständiger Scala-Anwendungen zur Ausführung in HDInsight Spark-Clustern | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie eine eigenständige Spark-Anwendung zur Ausführung in HDInsight Spark-Clustern erstellen."
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,16 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/28/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7b4348fbc77c2682001c8b18ddf7918dbb66872b
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 153b1ea4ec3d326fb533817cdb74d3489135f7d9
 
 
 ---
-# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight-linux"></a>Erstellen einer eigenständigen Scala-Anwendung zur Ausführung in Apache Spark-Clustern unter HDInsight (Linux)
+# <a name="create-a-standalone-scala-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Erstellen einer eigenständigen Scala-Anwendung zur Ausführung in Apache Spark-Clustern unter HDInsight
+
 Dieser Artikel enthält eine Schrittanleitung zum Entwickeln eigenständiger, in Scala geschriebener Spark-Anwendungen mit Maven und IntelliJ IDEA. Dabei wird Apache Maven als Buildsystem verwendet. Ausgangspunkt ist ein vorhandener, von IntelliJ IDEA bereitgestellter Maven-Archetyp für Scala.  Die Erstellung einer Scala-Anwendung in IntelliJ IDEA umfasst im Allgemeinen Folgendes:
 
 * Verwenden von Maven als Buildsystem
@@ -37,8 +38,8 @@ Dieser Artikel enthält eine Schrittanleitung zum Entwickeln eigenständiger, in
 
 **Voraussetzungen**
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
-* Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Einen Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 * Eine Java-IDE. In diesem Artikel wird IntelliJ IDEA 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
 
@@ -172,6 +173,6 @@ Gehen Sie wie folgt vor, um die Anwendung im Cluster auszuführen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

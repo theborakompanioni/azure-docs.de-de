@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Azure Resource Manager-Vorlagen | Microsoft Docs
-description: "Erstellen Sie Azure-Ressourcen-Manager-Vorlagen mithilfe von deklarativer JSON-Syntax, um Anwendungen für Azure bereitzustellen."
+title: "Erstellen von Vorlagen für Azure-Bereitstellungen | Microsoft-Dokumentation"
+description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2016
+ms.date: 01/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: a3a1fc856dc4fb39e3d3b765e943662799c75398
-ms.openlocfilehash: 62b51e2c6235011019d0ad837fe58388cf85e8d0
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 52fe8e3ce0c9c94c918818784fd735b5a6486ed8
 
 
 ---
@@ -55,7 +55,7 @@ In der einfachsten Struktur enthält eine Vorlage die folgenden Elemente:
 Weiter unten in diesem Thema untersuchen wir die Abschnitte der Vorlage ausführlich.
 
 ## <a name="expressions-and-functions"></a>Ausdrücke und Funktionen
-Die grundlegende Syntax der Vorlage ist JSON. Allerdings erweitern Ausdrücke und Funktionen den JSON-Code, der in der Vorlage zur Verfügung steht. Mit Ausdrücken erstellen Sie Werte, die keine strikten Literalwerte sind. Ausdrücke werden in Klammern eingeschlossen („[“ und „]“) und beim Bereitstellen der Vorlage ausgewertet. Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert auftreten und geben immer einen anderen JSON-Wert zurück. Wenn Sie ein Zeichenfolgenliteral verwenden müssen, das mit einer eckigen Klammer [ beginnt, müssen Sie zwei eckige Klammern verwenden [[.
+Die grundlegende Syntax der Vorlage ist JSON. Allerdings erweitern Ausdrücke und Funktionen den JSON-Code, der in der Vorlage zur Verfügung steht. Mit Ausdrücken erstellen Sie Werte, die keine strikten Literalwerte sind. Ausdrücke werden in Klammern eingeschlossen (`[` und`]`) und beim Bereitstellen der Vorlage ausgewertet. Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert auftreten und geben immer einen anderen JSON-Wert zurück. Wenn Sie ein Zeichenfolgenliteral verwenden müssen, das mit einer eckigen Klammer (`[`) beginnt, müssen Sie zwei eckige Klammern verwenden: `[[`.
 
 In der Regel verwenden Sie Ausdrücke mit Funktionen, um Vorgänge zum Konfigurieren der Bereitstellung durchzuführen. Genau wie in JavaScript haben Funktionsaufrufe das Format **functionName(arg1,arg2,arg3)**. Auf Eigenschaften verweisen Sie mithilfe der Operatoren Punkt und [Index].
 
@@ -64,7 +64,7 @@ Das folgende Beispiel zeigt, wie Sie verschiedene Funktionen beim Erstellen von 
 ```json
 "variables": {
    "location": "[resourceGroup().location]",
-   "usernameAndPassword": "[concat('parameters('username'), ':', parameters('password'))]",
+   "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
    "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
 }
 ```
@@ -98,7 +98,7 @@ Sie definieren Parameter mit der folgenden Struktur:
 | Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | parameterName |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| Typ |Ja |Der Typ des Parameterwerts. Die nachstehende Liste zeigt die zulässigen Typen. |
+| Typ |Ja |Der Typ des Parameterwerts. Informationen finden Sie nach dieser Tabelle in der Liste der zulässigen Typen. |
 | defaultValue |Nein |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
 | allowedValues |Nein |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
 | minValue |Nein |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
@@ -119,7 +119,7 @@ Die zulässigen Typen und Werte lauten folgendermaßen:
 
 Um einen Parameter als optional anzugeben, geben Sie einen Standardwert (kann eine leere Zeichenfolge sein) an. 
 
-Wenn Sie einen Parameternamen angeben, der dem eines Parameters im Befehl zum Bereitstellen der Vorlage entspricht, werden Sie zur Eingabe eines Werts für diesen Parameter mit dem Postfix **FromTemplate** aufgefordert. Wenn Sie beispielsweise einen Parameter mit dem Namen **ResourceGroupName** der Vorlage hinzufügen, die dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment][deployment2cmdlet] entspricht, werden Sie aufgefordert, einen Wert für **ResourceGroupNameFromTemplate** anzugeben. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
+Wenn Sie einen Parameternamen in der Vorlage angeben, die einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht, sind die bereitgestellten Werte möglicherweise mehrdeutig. Resource Manager löst diese Probleme durch Hinzufügen des Postfix-Elements **FromTemplate** zum Vorlagenparameter. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment][deployment2cmdlet] verursacht. Sie werden während der Bereitstellung zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
 
 > [!NOTE]
 > Für Kennwörter, Schlüssel und andere geheime Informationen sollte der Typ **secureString** verwendet werden. Wenn Sie vertrauliche Daten an ein JSON-Objekt übergeben, verwenden Sie den Typ **secureObject**. Vorlagenparameter des Typs „secureString“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
@@ -241,7 +241,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
      "copy": {
        "name": "<name-of-copy-loop>",
        "count": "<number-of-iterations>"
-     }
+     },
      "resources": [
        "<array-of-child-resources>"
      ]
@@ -257,10 +257,10 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | location |Variabel |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. eine Rollenzuweisung) jedoch nicht. |
 | tags |Nein |Markierungen, die der Ressource zugeordnet sind |
 | Kommentare |Nein |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage |
-| dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Weitere Informationen finden Sie unter [Definieren von Abhängigkeiten in Azure-Ressourcen-Manager-Vorlagen](resource-group-define-dependencies.md). |
-| Eigenschaften |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Links zur Ressourcenschemadokumentation oder REST-API finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md). |
+| dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Tipps für das Festlegen von Abhängigkeiten finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](resource-group-define-dependencies.md). |
+| Eigenschaften |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Links zur Ressourcenschemadokumentation oder REST-API finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](resource-manager-supported-services.md). |
 | copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
-| resources |Nein |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Sie können nur Ressourcentypen bereitstellen, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Name des untergeordneten Ressourcentyps enthält den übergeordneten Ressourcentyp, z.B. **Microsoft.Web/sites/extensions**. Die Abhängigkeit von der übergeordneten Ressource ist nicht implizit. Sie müssen diese Abhängigkeit explizit definieren. |
+| resources |Nein |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Stellen Sie nur Ressourcentypen bereit, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Typ der untergeordneten Ressource enthält den übergeordneten Ressourcentyp, z.B. **Microsoft.Web/sites/extensions**. Eine Abhängigkeit von der übergeordneten Ressource ist nicht impliziert. Sie müssen diese Abhängigkeit explizit definieren. |
 
 Zu wissen, welche Werte für **apiVersion**, **type** und **location** anzugeben sind, ist nicht sofort ersichtlich. Glücklicherweise können Sie diese Werte mithilfe von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle (CLI) bestimmen.
 
@@ -290,17 +290,23 @@ Um die unterstützten Speicherorte für einen Ressourcentyp abzurufen, verwenden
 
 Zum Abrufen aller Ressourcenanbieter mit der **Azure CLI** geben Sie Folgendes an:
 
-    azure provider list
+```azurecli
+azure provider list
+```
 
 Suchen Sie in der zurückgegebenen Liste die Ressourcenanbieter, die Sie interessieren. Verwenden Sie zum Abrufen der Ressourcentypen für einen Ressourcenanbieter (z.B. Speicher) Folgendes:
 
-    azure provider show Microsoft.Storage
+```azurecli
+azure provider show Microsoft.Storage
+```
 
 Um unterstützte Speicherorte und API-Versionen abzurufen, verwenden Sie Folgendes:
 
-    azure provider show Microsoft.Storage --details --json
+```azurecli
+azure provider show Microsoft.Storage --details --json
+```
 
-Weitere Informationen zu den Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
+Weitere Informationen zu den Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](resource-manager-supported-services.md).
 
 Der Abschnitt „Ressourcen“ enthält ein Array mit den bereitzustellenden Ressourcen. Innerhalb jeder Ressource können Sie auch ein Array untergeordneter Ressourcen definieren. Der Abschnitt „Ressourcen“ kann daher beispielsweise folgende Struktur aufweisen:
 
@@ -428,6 +434,6 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

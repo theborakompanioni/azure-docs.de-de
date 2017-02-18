@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 03b74607227aed68c6df01e80e4bb87e906ecf31
-ms.openlocfilehash: 402670a16b5dabc653c943737abdf2621db6a50b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: f72b59c0b3091cd2b8ad12f8d94e09364d9b65cd
 
 
 ---
@@ -182,7 +182,7 @@ Standardmäßig wird „composer.json“ (sofern in Ihrem PHP-Projekt vorhanden)
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -207,6 +207,6 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

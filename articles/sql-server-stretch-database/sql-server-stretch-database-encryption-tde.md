@@ -1,5 +1,5 @@
 ---
-title: "Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure | Microsoft Docs"
+title: "Aktivieren von Transparent Data Encryption für Stretch-Datenbank – Azure | Microsoft-Dokumentation"
 description: "Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure"
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: a8a2c05bb341869e6dd67a9d6872fba6a35ffabe
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: a8a2c05bb341869e6dd67a9d6872fba6a35ffabe
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
-> 
-> 
+>
+>
 
 Transparent Data Encryption (TDE) bietet Schutz vor der Bedrohung durch böswillige Aktivitäten. Hierzu werden die Datenbank, die dazugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind.
 
@@ -61,6 +61,6 @@ Befolgen Sie folgende Schritte zum Deaktivieren von TDE für eine Azure-Datenban
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

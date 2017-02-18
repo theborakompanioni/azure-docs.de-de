@@ -1,5 +1,5 @@
 ---
-title: "SAP NetWeaver auf virtuellen Azure-Computern (VMs) – DBMS-Bereitstellungshandbuch | Microsoft Docs"
+title: "SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch | Microsoft-Dokumentation"
 description: "SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 7cbb85e3f6705770a3eab7cc5a0da5070f2a170e
-ms.openlocfilehash: 52506430dcaccca1a29878470abb86585593b5a7
+ms.sourcegitcommit: 73d08acd6cd57a9430826413d71a8c53b9646dd5
+ms.openlocfilehash: 61a1181ee06c989b4837442800110aee0c5f1abf
 
 
 ---
@@ -350,11 +350,11 @@ Die Platzierung der Datenbankdateien und Protokolldateien und der Typ des verwen
 Abhängig von der Azure VM-Serie weisen die lokalen Datenträger im Computeknoten unterschiedliche Leistungen auf, die wie folgt kategorisiert werden können:
 
 * A0-A7: Sehr eingeschränkte Leistung. Nur für die Windows-Auslagerungsdatei geeignet.
-* A8-A11: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz
-* D-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz
-* DS-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz
-* G-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz
-* GS-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz
+* A8-A11: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz
+* D-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz
+* DS-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz
+* G-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz
+* GS-Serie: Sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz
 
 Die Angaben oben beziehen sich auf die für SAP zertifizierten VM-Typen. Die VM-Serien mit hervorragenden Werten für IOPS und Durchsatz können für einige DBMS-Funktionen genutzt werden, z.B. tempdb oder temporärer Tablespace.
 
@@ -603,7 +603,7 @@ Diese Funktion ermöglicht Ihnen das direkte Sichern im Azure-BLOB-Speicher. Ohn
 
 Der Vorteil besteht in diesem Fall darin, dass zum Speichern von SQL Server-Sicherungen keine virtuelle Festplatten genutzt werden müssen. Somit sind weniger virtuelle Festplatten zugeordnet, und die gesamte VHD-IOPS-Bandbreite kann für Daten-und Protokolldateien verwendet werden. Beachten Sie, dass die maximale Größe einer Sicherung auf 1 TB beschränkt ist, wie im Abschnitt „Einschränkungen“ dieses Artikels dokumentiert: <https://msdn.microsoft.com/library/dn435916.aspx#limitations>. Wenn die Sicherungsgröße trotz der Verwendung der SQL Server-Sicherungskomprimierung eine Größe von 1 TB übersteigen würde, muss die im Kapitel [SQL Server 2012 SP1 CU3 und frühere Versionen][dbms-guide-5.5.2] dieses Dokuments beschriebene Funktion verwendet werden.
 
-[Verwandte Dokumentation:](https://msdn.microsoft.com/library/dn449492.aspx) Hier wird die Wiederherstellung von Datenbanken aus Sicherungen in Azure Blob Storage beschrieben. Die direkte Wiederherstellung aus Azure Blob Storage wird nicht empfohlen, wenn die Sicherungen eine Größe von 25 GB übersteigen. Die Empfehlung in diesem Artikel basiert auf Leistungsüberlegungen und beruht nicht auf funktionalen Einschränkungen. Daher können von Fall zu Fall verschiedene Bedingungen zutreffen.
+[Verwandte Dokumentation:](https://msdn.microsoft.com/library/dn449492.aspx) Hier wird die Wiederherstellung von Datenbanken aus Sicherungen in Azure Blob Storage beschrieben. Die direkte Wiederherstellung aus Azure Blob Storage wird nicht empfohlen, wenn die Sicherungen eine Größe von&25; GB übersteigen. Die Empfehlung in diesem Artikel basiert auf Leistungsüberlegungen und beruht nicht auf funktionalen Einschränkungen. Daher können von Fall zu Fall verschiedene Bedingungen zutreffen.
 
 Eine Dokumentation darüber, wie dieser Sicherungstyp eingerichtet und verwendet wird, finden Sie in [diesem](https://msdn.microsoft.com/library/dn466438.aspx) Tutorial.
 
@@ -1340,6 +1340,6 @@ Weitere Informationen finden Sie auch im Kapitel [SQL Server für SAP in Azure �
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

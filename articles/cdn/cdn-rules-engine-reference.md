@@ -1,6 +1,6 @@
 ---
-title: "Azure Content Delivery Network-Regelmodul und dazugehörige Referenz | Microsoft-Dokumentation"
-description: "In diesem Thema werden Übereinstimmungsbedingungen und Features des Regelmoduls beschrieben."
+title: Referenz zum Azure CDN-Regelmodul | Microsoft-Dokumentation
+description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls."
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: 61a544f177ab820f1b13ca2bcd4afe623af597af
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
 
 
 ---
-# <a name="azure-content-delivery-network-rules-engine"></a>Azure Content Delivery Network-Regelmodul
+# <a name="azure-cdn-rules-engine"></a>Azure CDN-Regelmodul
 Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen und Features für das [Regelmodul](cdn-rules-engine.md)von Azure Content Delivery Network (CDN).
 
 Das HTTP-Regelmodul fungiert als endgültige Autorität, wie vom CDN bestimmte Typen von Anforderungen verarbeitet werden.
@@ -83,6 +83,6 @@ Leerzeichen | Ein Leerzeichen wird in der Regel als Literalzeichen behandelt.
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

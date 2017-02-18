@@ -1,5 +1,5 @@
 ---
-title: Abrufen der Azure-Tools (macOS 10.10) | Microsoft-Dokumentation
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 1: Herunterladen der Tools (Ubuntu) | Microsoft-Dokumentation"
 description: Installieren Sie unter macOS Python und die Azure-Befehlszeilenschnittstelle (Azure-CLI).
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 7fbf21434952ece22468df6873e10e6f3eae1724
-ms.openlocfilehash: 3bf03cbd56ac72a0be62c1adc769dcbbd9295029
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 9b680e8e7fe9d6b12f050914dffd34c87462daea
 
 
 ---
@@ -78,6 +78,6 @@ Sie haben die Azure-CLI installiert. Die nächste Aufgabe besteht in der Erstell
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

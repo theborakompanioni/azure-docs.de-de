@@ -1,5 +1,5 @@
 ---
-title: Anwenden von Richtlinien auf virtuelle Computer des Azure Resource Manager | Microsoft Docs
+title: Erzwingen der Sicherheit mit Richtlinien auf virtuellen Windows-Computern in Azure | Microsoft-Dokumentation
 description: Anwenden einer Richtlinie auf einen virtuellen Windows-Computer des Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5ee1e47b940516ea872daba7d1dd7b23f404f326
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Verwenden Sie für virtuelle Azure Resource Manager-Computer diese PowerShell:
+# <a name="apply-security-and-policies-to-windows-vms-with-azure-resource-manager"></a>Anwenden von Sicherheit und Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
 
 Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
@@ -105,6 +105,6 @@ Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

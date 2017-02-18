@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über die Sicherheit der Azure-Identitätsverwaltung | Microsoft Docs"
-description: " Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Ebenen der Überprüfungen aktiviert werden, z.B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. Dieser Artikel bietet eine Übersicht über die wichtigsten Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen. "
+title: "Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen | Microsoft-Dokumentation"
+description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen. Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensdatencenter und in der Cloud zu schützen, wobei zusätzliche Ebenen der Überprüfungen aktiviert werden, z.B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff.. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 01/23/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 5778f554e83426f5fba12a25d2bbce13db4a9226
-ms.openlocfilehash: b73fb97a1f3879ae8f232d666e366b058f3253d1
+ms.sourcegitcommit: af191f7eed529c7d4541b28eb62979f25da89892
+ms.openlocfilehash: 9c5af888ec0130ec8506602ab805221f0a83ea47
 
 
 ---
@@ -156,6 +156,6 @@ Weitere Informationen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

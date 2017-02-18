@@ -1,9 +1,9 @@
 ---
-title: Erste Schritte mit SQL-Datenbank-Datensynchronisierung
+title: Erste Schritte mit Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
 description: "Dieses Lernprogramm unterstützt Sie bei den ersten Schritten mit Azure SQL-Datensynchronisierung (Vorschau)."
 services: sql-database
 documentationcenter: 
-author: jennieHubbard
+author: dearandyxu
 manager: jhubbard
 editor: 
 ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/11/2016
 ms.author: jhubbard
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 328e694fae433800962b85e44a4a8ba902db3fd5
+ms.sourcegitcommit: c8e285fc6fb82ab5c929236ac9cb5dc858924e57
+ms.openlocfilehash: 6535260a1650a2d3cc665eeb9d3ea33ae2de2650
 
 
 ---
@@ -28,8 +28,8 @@ Für dieses Lernprogramm wird minimale vorherige Erfahrung mit SQL Server und Az
 
 > [!NOTE]
 > Die gesamte technische Dokumentation zur SQL-Datensynchronisierung von Azure, die früher im MSDN zu finden war, ist als PDF-Datei verfügbar. Sie können sie [hier](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)herunterladen.
-> 
-> 
+>
+>
 
 ## <a name="step-1-connect-to-the-azure-sql-database"></a>Schritt 1: Herstellen einer Verbindung zur Azure SQL-Datenbank
 1. Melden Sie sich beim [klassischen Portal](http://manage.windowsazure.com)an.
@@ -37,11 +37,12 @@ Für dieses Lernprogramm wird minimale vorherige Erfahrung mit SQL Server und Az
 3. Klicken Sie unten auf der Seite auf **SYNC** . Wenn Sie auf SYNC klicken, wird eine Liste mit den Elementen geöffnet, die Sie hinzufügen können – **New Sync Group** und **New Sync Agent**.
 4. Klicken Sie auf **New Sync Agent**, um den Assistenten "New SQL Data Sync Agent" zu öffnen.
 5. Wenn Sie bisher noch keinen Agent hinzugefügt haben, **klicken Sie hier, um ihn herunterzuladen**.
-   
+
     ![Image1](./media/sql-database-get-started-sql-data-sync/SQLDatabaseScreen-Figure1.PNG)
 
 ## <a name="step-2-add-a-client-agent"></a>Schritt 2: Hinzufügen eines Client-Agents
-Dieser Schritt ist nur erforderlich, wenn Sie eine lokale SQL Server-Datenbank in Ihre Synchronisierungsgruppe integrieren möchten. Fahren Sie mit Schritt 4 fort, wenn Ihre Synchronisierungsgruppe nur über SQL Database-Instanzen verfügt.
+Dieser Schritt ist nur erforderlich, wenn Sie eine lokale SQL Server-Datenbank in Ihre Synchronisierungsgruppe integrieren möchten.
+Fahren Sie mit Schritt 4 fort, wenn Ihre Synchronisierungsgruppe nur über SQL Database-Instanzen verfügt.
 
 <a id="InstallRequiredSoftware"></a>
 
@@ -49,13 +50,13 @@ Dieser Schritt ist nur erforderlich, wenn Sie eine lokale SQL Server-Datenbank i
 Stellen Sie sicher, dass die folgende Software auf dem Computer installiert ist, auf dem Sie den Client-Agent installieren.
 
 * **.NET Framework 4.0**
-  
+
   Sie können .NET Framework 4.0 [hier](http://go.microsoft.com/fwlink/?linkid=205836)installieren.
 * **Microsoft SQL Server 2008 R2 SP1 System-CLR-Typen (x86)**
-  
+
   Sie können die Microsoft SQL Server 2008 R2 SP1 System-CLR-Typen (x86) [hier](http://www.microsoft.com/download/en/details.aspx?id=26728) installieren.
 * **Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86)**
-  
+
   Sie können die freigegebenen Verwaltungsobjekte für Microsoft SQL Server 2008 R2 SP1 (x86) [hier](http://www.microsoft.com/download/en/details.aspx?id=26728)
 
 <a id="InstallClient"></a>
@@ -83,7 +84,7 @@ Wenn Sie mit dem Agent eine Datenbank registrieren möchten, folgen Sie den Anwe
 1. Kehren Sie zum [klassischen Portal](http://manage.windowsazure.com)zurück.
 2. Klicken Sie auf **SQL DATABASES**.
 3. Klicken Sie unten auf der Seite auf **ADD SYNC** , und wählen Sie dann in der Schublade "Neue Synchronisierungsgruppe" aus.
-   
+
    ![Image2](./media/sql-database-get-started-sql-data-sync/NewSyncGroup-Figure2.png)
 
 <a id=""></a>
@@ -92,7 +93,7 @@ Wenn Sie mit dem Agent eine Datenbank registrieren möchten, folgen Sie den Anwe
 1. Gegen Sie einen aussagekräftigen Namen für die Synchronisierungsgruppe ein.
 2. Wählen Sie in der Dropdown-Liste die **REGION** (Datencenter), in der diese Gruppe gehostet werden soll.
 3. Klicken Sie auf den Pfeil nach rechts.
-   
+
     ![Image3](./media/sql-database-get-started-sql-data-sync/NewSyncGroupName-Figure3.PNG)
 
 <a id="DefineHubDB"></a>
@@ -102,13 +103,13 @@ Wenn Sie mit dem Agent eine Datenbank registrieren möchten, folgen Sie den Anwe
 2. Geben Sie die Anmeldeinformationen für diese SQL-Datenbankinstanz ein – **HUB-BENUTZERNAME** und **HUB-KENNWORT**.
 3. Warten Sie, bis SQL Data Sync den BENUTZERNAMEN und das KENNWORT bestätigt. Wenn die Anmeldeinformationen bestätigt sind, wird rechts neben dem KENNWORT ein grünes Häkchen angezeigt.
 4. Wählen Sie in der Dropdown-Liste die Richtlinie **KONFLIKTLÖSUNG** .
-   
+
    **Hub gewinnt** – jede in die Hub-Datenbank geschriebene Änderung wird auch in die Referenzdatenbanken geschrieben. Änderungen im selben Referenzdatensatz werden überschrieben. Konkret bedeutet dies, dass die erste in den Hub geschriebene Änderung an die anderen Datenbanken weitergeleitet wird.
 
  **Client gewinnt** - in den Hub geschriebene Änderungen werden durch Änderungen in den Referenzdatenbanken überschrieben. Konkret bedeutet dies, dass die letzte in den Hub geschriebene Änderung beibehalten und an die anderen Datenbanken weitergeleitet wird.
 
 1. Klicken Sie auf den Pfeil nach rechts.
-   
+
    ![Image4](./media/sql-database-get-started-sql-data-sync/NewSyncGroupHub-Figure4.PNG)
 
 <a id="AddRefDB"></a>
@@ -117,19 +118,19 @@ Wenn Sie mit dem Agent eine Datenbank registrieren möchten, folgen Sie den Anwe
 Wiederholen Sie diesen Schritt für jede zusätzliche Datenbank, die Sie zur Synchronisierungsgruppe hinzufügen möchten.
 
 1. Wählen Sie in der Dropdown-Liste die Datenbank aus, die hinzugefügt werden soll.
-   
+
     Zu den Datenbanken in der Dropdown-Liste gehören sowohl mit dem Agent registrierte SQL Server-Datenbanken als auch SQL Database-Instanzen.
 2. Geben Sie die Anmeldeinformationen für diese Datenbank ein – **BENUTZERNAME** und **KENNWORT**.
 3. Wählen Sie in der Dropdown-Liste die **SYNCHRONISIERUNGSRICHTUNG** für diese Datenbank aus.
-   
+
    **Bidirektional** - Änderungen in der Referenzdatenbank werden in die Hub-Datenbank geschrieben, und Änderungen in der Hub-Datenbank werden in die Referenzdatenbank geschrieben.
-   
+
    **Synchronisierung vom Hub** - Die Datenbank empfängt Aktualisierungen vom Hub. Sie sendet keine Änderungen an den Hub.
-   
+
    **Synchronisierung zum Hub** - Die Datenbank sendet Aktualisierungen an den Hub. Änderungen im Hub werden nicht in die Datenbank geschrieben.
 4. Klicken Sie auf das Häkchen in der rechten unteren Ecke des Assistenten, um die Erstellung der Synchronisierungsgruppe abzuschließen. Warten Sie, bis SQL Data Sync die Anmeldeinformationen bestätigt. Ein grünes Häkchen zeigt an, dass die Anmeldeinformationen bestätigt wurden.
 5. Klicken Sie erneut auf dieses Häkchen. Nun kehren Sie unter SQL Databases zur Seite **SYNC** zurück. Diese Synchronisierungsgruppe wird nun mit Ihren anderen Synchronisierungsgruppen und Agents gelistet.
-   
+
    ![Image5](./media/sql-database-get-started-sql-data-sync/NewSyncGroupReference-Figure5.PNG)
 
 ## <a name="step-5-define-the-data-to-sync"></a>Schritt 5: Definieren der zu synchronisierenden Daten
@@ -149,7 +150,7 @@ In Azure SQL Data Sync können Sie Tabellen und Spalten zur Synchronisierung aus
    * Klicken Sie unten auf dem Bildschirm auf SELECT, um alle Tabellen auszuwählen oder die Auswahl aufzuheben.
 10. Klicken Sie auf **SPEICHERN**, und warten Sie, bis die Bereitstellung der Synchronisierungsgruppe abgeschlossen ist.
 11. Klicken Sie oben links auf dem Bildschirm (über dem Namen der Synchronisierungsgruppe) auf den Pfeil nach links, um zur Data Sync-Angebotsseite zurückzukehren.
-    
+
     ![Image6](./media/sql-database-get-started-sql-data-sync/NewSyncGroupSyncRules-Figure6.PNG)
 
 ## <a name="step-6-configure-your-sync-group"></a>Schritt 6: Konfigurieren der Synchronisierungsgruppe
@@ -181,7 +182,6 @@ Zusätzliche Informationen über SQL Database und SQL Data Sync finden Sie hier:
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

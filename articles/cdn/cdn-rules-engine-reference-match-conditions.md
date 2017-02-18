@@ -1,6 +1,6 @@
 ---
-title: "Übereinstimmungsbedingungen des Azure Content Delivery Network-Regelmoduls | Microsoft-Dokumentation"
-description: "In diesem Thema werden Übereinstimmungsbedingungen und Features des Regelmoduls beschrieben."
+title: "Übereinstimmungsbedingungen des Azure CDN-Regelmoduls | Microsoft-Dokumentation"
+description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls."
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: f96e977c777e4ecd007d6cd863054addb465489d
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: f4886b1d78dfa87cf25737fb46c12b5963034f27
 
 
 ---
 
-#<a name="match-conditions-for-azure-content-delivery-network-cdn-rules-engine"></a>Übereinstimmungsbedingungen für das Azure CDN-Regelmodul (Content Delivery Network)
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen des Azure CDN-Regelmoduls
 Dieses Thema enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen für das [Regelmodul](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
 
 Der zweite Teil einer Regel ist die Übereinstimmungsbedingung. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die verschiedene sog. Features ausgeführt werden.
@@ -122,12 +122,12 @@ URL Query Wildcard | Vergleicht die angegebenen Werte mit der Abfragezeichenfolg
 * [Übersicht über das Azure CDN](cdn-overview.md)
 * [Rules Engine Reference](cdn-rules-engine-reference.md) (Regelmodul – Referenz)
 * [Rules Engine Conditional Expressions](cdn-rules-engine-reference-conditional-expressions.md) (Regelmodul – Bedingte Ausdrücke)
-* [Rules Engine Features](cdn-rules-engine-reference-features.md) (Regelmodul – Features)
+* [Regelmodul – Features](cdn-rules-engine-reference-features.md)
 * [Überschreiben des HTTP-Standardverhaltens mithilfe des Regelmoduls](cdn-rules-engine.md)
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

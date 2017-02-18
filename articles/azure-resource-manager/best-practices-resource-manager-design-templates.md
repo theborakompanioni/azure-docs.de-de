@@ -1,6 +1,6 @@
 ---
-title: "Muster für Resource Manager-Vorlagen | Microsoft Docs"
-description: "Anzeigen von Entwurfsmustern für Azure-Ressourcen-Manager Vorlagen"
+title: "Entwerfen von Azure-Vorlagen für komplexe Lösungen | Microsoft-Dokumentation"
+description: "Hier finden Sie bewährte Methoden für das Entwerfen von Azure Resource Manager-Vorlagen für komplexe Szenarien."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: c38d7120de7d31f1079dd84bcc073eb2f9618775
-ms.openlocfilehash: c66032ef65a523528e2610f7a2e13595a47d9587
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: 2bd8f7ac127cd34b2d5129ecb49c56e2adf257b8
 
 
 ---
-# <a name="patterns-for-designing-azure-resource-manager-templates"></a>Muster für das Entwerfen von Azure Resource Manager-Vorlagen
+# <a name="design-patterns-for-azure-resource-manager-templates-when-deploying-complex-solutions"></a>Entwurfsmuster für Azure Resource Manager-Vorlagen bei der Bereitstellung komplexer Lösungen
 Bei Verwendung eines flexiblen Ansatzes, der auf Azure Resource Manager-Vorlagen basiert, können Sie komplexe Topologien schnell und einheitlich bereitstellen. Sie können diese Bereitstellungen dann mühelos anpassen, sobald dies für wichtige Angebote erforderlich ist oder Varianten für besondere Szenarien oder Kunden unterstützt werden müssen.
 
 Dieses Thema ist Teil eines umfangreicheren Whitepapers. Laden Sie [World Class Azure Resource Manager Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) (Professionelle Azure Resource Manager-Vorlagen – Aspekte und bewährte Methoden) herunter, wenn Sie den ganzen Artikel lesen möchten.
@@ -351,6 +351,6 @@ Wenn Sie Ihre Vorlage im Marketplace veröffentlichen möchten, richten Sie unte
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

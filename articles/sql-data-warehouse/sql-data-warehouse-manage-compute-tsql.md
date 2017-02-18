@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Computeleistung in Azure SQL Data Warehouse (REST) | Microsoft Docs
+title: Anhalten, Fortsetzen und Skalieren mit T-SQL in Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: "Transact-SQL-Aufgaben (T-SQL) zur horizontalen Hochskalierung durch Anpassen der DWUs Sparen Sie Kosten, indem Sie während Nicht-Spitzenzeiten herunterskalieren."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 41ab1c4b2709c2ea6890ca526db1dea177b7da1b
+ms.sourcegitcommit: f589111d3a4da061e1cc3313632dd0b5403dc278
+ms.openlocfilehash: f93e5802141b16862f5e37126196069bd32c1f19
 
 
 ---
@@ -29,17 +29,6 @@ ms.openlocfilehash: 41ab1c4b2709c2ea6890ca526db1dea177b7da1b
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
 > 
 > 
-
-Passen Sie die Leistung durch horizontales Hochskalieren der Computeressourcen und des Arbeitsspeichers an, um die wechselnden Anforderungen Ihrer Workload zu erfüllen. Sparen Sie außerhalb von Spitzenzeiten Kosten, indem Sie die zur Verfügung stehenden Ressourcen verringern oder den Computevorgang vollständig pausieren. 
-
-Diese Sammlung von Tasks verwendet T-SQL für folgende Aufgaben:
-
-* Anzeigen der aktuellen DWU-Einstellungen
-* Ändern von Computeressourcen durch Anpassen der DWUs
-
-Wählen Sie eine der anderen Plattformoptionen am Anfang dieses Artikels, um eine Datenbank anzuhalten oder fortzusetzen.
-
-Informationen hierzu finden Sie unter [Übersicht zum Verwalten von Computeleistung][Übersicht zum Verwalten von Computeleistung].
 
 <a name="current-dwu-bk"></a>
 
@@ -69,7 +58,7 @@ FROM
 So ändern Sie die DWUs
 
 1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem logischen SQL-Datenbankserver her.
-2. Verwenden Sie die TSQL-Anweisung [ALTER DATABASE][ALTER DATABASE]. Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000“ gesetzt. 
+2. Verwenden Sie die T-SQL-Anweisung [ALTER DATABASE][ALTER DATABASE]. Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000“ gesetzt. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -80,14 +69,14 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][Verwaltungsübersicht].
+Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][Management overview].
 
 <!--Image references-->
 
 <!--Article references-->
-[Dienstkapazitätsgrenzen]: ./sql-data-warehouse-service-capacity-limits.md
-[Verwaltungsübersicht]: ./sql-data-warehouse-overview-manage.md
-[Übersicht zum Verwalten von Computeleistung]: ./sql-data-warehouse-manage-compute-overview.md
+[Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
+[Management overview]: ./sql-data-warehouse-overview-manage.md
+[Manage compute power overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
@@ -96,10 +85,10 @@ Andere Verwaltungsaufgaben finden Sie in der [Verwaltungsübersicht][Verwaltungs
 
 <!--Other Web references-->
 
-[Azure-Portal]: http://portal.azure.com/
+[Azure portal]: http://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

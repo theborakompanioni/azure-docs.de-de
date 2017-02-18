@@ -1,5 +1,5 @@
 ---
-title: "Überwachen eines Azure Container Service-Clusters mit Datadog | Microsoft-Dokumentation"
+title: "Überwachen eines Azure-DC/OS-Clusters – Datadog | Microsoft-Dokumentation"
 description: "Überwachen eines Azure-Containerdienstclusters mit Datadog. Verwenden Sie die DC/OS-Webbenutzeroberfläche, um die Datadog-Agents auf Ihrem Cluster bereitzustellen."
 services: container-service
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2016
 ms.author: saudas
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eeb257e00f89948c9623ac05303d46209454a615
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 8dfd53346b6198bf5ecab4b4b73bfed93fa46b18
 
 
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-datadog"></a>Überwachen eines Azure-Containerdienstcluster mit Datadog
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>Überwachen eines Azure Container Service-DC/OS-Clusters mit Datadog
 In diesem Artikel stellen wir Datadog-Agents für alle Agent-Knoten in Ihrem Azure-Containerdienstcluster bereit. Für diese Konfiguration benötigen Sie ein Konto mit Datadog. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,7 +40,7 @@ Greifen Sie über [http://localhost:80/](http://localhost:80/) auf die DC/OS-Ben
 
 ![Datadog-Paket innerhalb von DC/OS Universe](./media/container-service-monitoring/datadog1.png)
 
-Zum Durchführen der Konfiguration benötigen Sie nun ein Datadog-Konto oder ein kostenloses Testkonto. Sobald Sie bei der Datadog-Website angemeldet sind, wechseln Sie auf der linken Seite zu „Integrations“ (Integrationen) > -APIs. 
+Zum Durchführen der Konfiguration benötigen Sie nun ein Datadog-Konto oder ein kostenloses Testkonto. Sobald Sie bei der Datadog-Website angemeldet sind, wechseln Sie auf der linken Seite zu „Integrations“ (Integrationen) > [APIs](https://app.datadoghq.com/account/settings#api). 
 
 ![Datadog-API-Schlüssel](./media/container-service-monitoring/datadog2.png)
 
@@ -48,11 +48,11 @@ Geben Sie als Nächstes Ihren API-Schlüssel in die Datadog-Konfiguration in DC/
 
 ![Datadog-Konfiguration in DC/OS Universe](./media/container-service-monitoring/datadog3.png) 
 
-In der obigen Konfiguration sind die Instanzen auf „10000000“ festgelegt, damit Datadog für jeden neu hinzugefügten Knoten des Clusters automatisch einen Agent bereitstellt. Dies ist eine vorläufige Lösung. Nachdem Sie das Paket installiert haben, gehen Sie zurück zur Website von Datadog, und suchen Sie „Dashboards“. Dort sehen Sie „Custom“ (benutzerdefiniert) und „Integration Dashboards“. Das „Docker Integration Dashboard“ weist alle Containermetriken auf, die Sie für die Überwachung des Clusters benötigen. 
+In der obigen Konfiguration sind die Instanzen auf „10000000“ festgelegt, damit Datadog für jeden neu hinzugefügten Knoten des Clusters automatisch einen Agent bereitstellt. Dies ist eine vorläufige Lösung. Nachdem Sie das Paket installiert haben, gehen Sie zurück zur Website von Datadog, und suchen Sie [Dashboards](https://app.datadoghq.com/dash/list). Dort sehen Sie „Custom“ (benutzerdefiniert) und „Integration Dashboards“. Das [Docker-Dashboard](https://app.datadoghq.com/screen/integration/docker) weist alle Containermetriken auf, die Sie für die Überwachung des Clusters benötigen. 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -8,16 +8,16 @@ manager: erikre
 editor: monicar
 tags: azure-service-management
 ms.assetid: 78b76318-d9bf-48ef-9d9e-d1b7d8cf3042
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/04/2016
+ms.workload: iaas-sql-server
+ms.date: 01/11/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: c1df69b37b85544f00fc6ed68827f4817d766443
+ms.sourcegitcommit: 4f7527119f0e0955303858a52b638f6dbf483267
+ms.openlocfilehash: 084200ba25f0eb213100c638d164441c2618efe0
 
 
 ---
@@ -29,8 +29,6 @@ Sie können eine Microsoft Azure-Website mit dem Visual Studio-Steuerelement „
 
 > [!IMPORTANT]
 > Die Vorlagen für ASP.NET MVC-Webanwendungen unterstützen das ReportViewer-Steuerelement nicht.
-> 
-> 
 
 Um „ReportViewer“ in Ihre Microsoft Azure-Website zu integrieren, müssen Sie die folgenden Aufgaben ausführen.
 
@@ -45,10 +43,6 @@ Lesen Sie den Abschnitt "Allgemeine Empfehlungen und bewährte Methoden" in [SQL
 > ReportViewer-Steuerelemente werden mit Visual Studio Standard Edition oder höher geliefert. Wenn Sie die Web Developer Express Edition verwenden, müssen Sie die [MICROSOFT REPORT VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) installieren, damit Sie die ReportViewer-Laufzeitfunktionen verwenden können.
 > 
 > Ein im lokalen Verarbeitungsmodus konfiguriertes ReportViewer-Steuerelement wird in Microsoft Azure nicht unterstützt.
-> 
-> 
-
-Lesen Sie das Whitepaper [ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx).
 
 ## <a name="adding-assemblies-to-the-deployment-package"></a>Hinzufügen von Assemblys zu dem Bereitstellungspaket
 Wenn Sie Ihre ASP.NET-Anwendung lokal hosten, werden die ReportViewer-Assemblys bei der Installation von Visual Studio in der Regel direkt im globalen Assemblycache (GAC) des IIS-Servers installiert, sodass die Anwendung direkt auf sie zugreifen kann. Wenn Sie Ihre ASP.NET-Anwendung dagegen in der Cloud hosten, lässt Microsoft Azure es nicht zu, dass irgendeine Komponente im GAC installiert wird. Daher müssen Sie sicherstellen, dass die ReportViewer-Assemblys lokal für Ihre Anwendung verfügbar sind. Sie können dies erreichen, indem Sie in Ihrem Projekt Verweise auf die Assemblys hinzufügen und diese so konfigurieren, dass sie lokal kopiert werden.
@@ -99,11 +93,9 @@ Anleitungen zum Veröffentlichen einer ASP.NET Web-Anwendung in Azure finden Sie
 
 [Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus](virtual-machines-windows-classic-ps-sql-report.md)
 
-[ReportViewer-Steuerelement von Reporting Services und Berichtsserver, die auf virtuellen Microsoft Azure-Computern basieren](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
 
 
-
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

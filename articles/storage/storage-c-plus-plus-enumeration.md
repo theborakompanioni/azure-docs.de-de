@@ -1,5 +1,5 @@
 ---
-title: Auflisten von Azure Storage-Ressourcen mit der Microsoft Azure Storage Client Library for C++ | Microsoft Docs
+title: "Auflisten von Azure Storage-Ressourcen mit der Speicherclientbibliothek für C++ | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie die Auflistungs-APIs in Microsoft Azure Storage Client Library for C++ verwenden können, um Container, BLOBs, Warteschlangen, Tabellen und Entitäten aufzuzählen."
 documentationcenter: .net
 services: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: dineshm
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 085796493df86a2e86a88266d9b3aacf12cb6541
+ms.sourcegitcommit: c5fedb8c4a6e3722e2f37dd432cec60513c73e0d
+ms.openlocfilehash: f14ed08473ba9c424acf39d3fe98d4a11adf9948
 
 
 ---
@@ -206,6 +206,6 @@ Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

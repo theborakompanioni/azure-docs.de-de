@@ -1,6 +1,6 @@
 ---
-title: "Hadoop-Streamingaktivität"
-description: "Erfahren Sie, wie Sie die Hadoop-Streamingaktivität in Azure Data Factory verwenden können, um Hadoop-Streamingprogramme in einem bedarfsgesteuerten oder einem eigenen HDInsight-Cluster auszuführen."
+title: "Transformieren von Daten mit der Hadoop-Streamingaktivität – Azure | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie die Hadoop-Streamingaktivität in Azure Data Factory verwenden können, um Daten durch die Ausführung von Hadoop-Streamingprogrammen in einem bedarfsgesteuerten oder einem eigenen HDInsight-Cluster zu transformieren."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: shlo
 translationtype: Human Translation
-ms.sourcegitcommit: a4121f8857fa9eaeb1cf1bca70e29666f6a04f63
-ms.openlocfilehash: 58c0e0cfd862bc421c3b4a9ad042283a22656460
+ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
+ms.openlocfilehash: 56754bde961708f04477be74e1ae80acddf2c0cd
 
 
 ---
-# <a name="hadoop-streaming-activity"></a>Hadoop-Streamingaktivität
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop-Streamingaktivität in Azure Data Factory
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -224,6 +224,6 @@ Der HDInsight-Cluster wird automatisch mit Beispielprogrammen („wc.exe“ und 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

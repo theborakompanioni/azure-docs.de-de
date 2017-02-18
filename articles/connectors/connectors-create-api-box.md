@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia
 translationtype: Human Translation
-ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
-ms.openlocfilehash: e211d0878a7f9bd43c95c727935ad883fae0db3a
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: bb6bef230f4ba4f7019fd2f120c2115d97649b81
 
 
 ---
@@ -35,7 +35,7 @@ Box ermöglicht Folgendes:
 * Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
 * Verwenden von Aktionen, um eine Datei zu kopieren, zu löschen usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn z. B. in Box eine Datei geändert wird, können Sie diese Datei auswählen und mithilfe von Office 365 per E-Mail senden.
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Box weist die folgenden Trigger und Aktionen auf.
@@ -262,11 +262,11 @@ Löst einen Datenfluss aus, wenn in einem Box-Ordner eine Datei geändert wird.
 | FileLocator |string |no |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

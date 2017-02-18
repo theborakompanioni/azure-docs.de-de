@@ -1,6 +1,6 @@
 ---
-title: Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe von Azure Resource Manager-Vorlagen erstellen."
+title: Erstellen von Windows-basierten Azure HDInsight (Hadoop)-Clustern mithilfe von Vorlagen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Windows-basierte Cluster in Azure HDInsight mithilfe von Azure Resource Manager-Vorlagen erstellen.
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
-ms.openlocfilehash: 9fb4862f3ba38058bd07d5a2e0bebcf78477e2d1
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: ad511174f8df2fca752447ed942880d02c141308
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Erstellen Windows-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Informieren Sie sich über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen. Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Informieren Sie sich über das Erstellen Windows-basierter HDInsight-Cluster mithilfe von Azure Resource Manager-Vorlagen. Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md). 
+
+Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Informationen zum Erstellen von Linux-basierten Clustern finden Sie unter [Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -125,7 +132,7 @@ Im folgende Beispiel werden ein Cluster und dessen abhängiges Speicherkonto und
 ## <a name="deploy-with-rest-api"></a>Bereitstellen über die REST-API
 Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
-## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio 2013
+## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio&2013;
 Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Resource Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
 Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
@@ -290,6 +297,6 @@ Die folgende Azure Resource Manager-Vorlage erstellt einen Windows-basierten Had
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

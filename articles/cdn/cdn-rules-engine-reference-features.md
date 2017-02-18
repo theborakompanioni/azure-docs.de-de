@@ -1,6 +1,6 @@
 ---
-title: Features des Azure Content Delivery Network-Regelmoduls | Microsoft-Dokumentation
-description: "In diesem Thema werden Übereinstimmungsbedingungen und Features des Regelmoduls beschrieben."
+title: Features des Azure CDN-Regelmoduls | Microsoft-Dokumentation
+description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls"
 services: cdn
 documentationcenter: 
 author: Lichard
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2016
+ms.date: 01/23/2017
 ms.author: rli
 translationtype: Human Translation
-ms.sourcegitcommit: 8a5d98bdc737fd9476b9db42100f58ed28619879
-ms.openlocfilehash: a3d8199a9d5d067a4da1e1d40ff99bebc40a5097
+ms.sourcegitcommit: dccb945e170bd3e3f23283359db25e574a2d4296
+ms.openlocfilehash: 6703247aa8b4a6d53ff22ea2d4f22eb4a746e370
 
 
 ---
 
-# <a name="features-for-azure-content-delivery-network--cdn-rules-engine"></a>Features für das Azure CDN-Regelmodul (Content Delivery Network)
+# <a name="azure-cdn-rules-engine-features"></a>Features des Azure CDN-Regelmoduls
 Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
 
 Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art der Aktion, die auf die Art von Anforderung angewendet wird, die mithilfe verschiedener Übereinstimmungsbedingungen bestimmt wurde.
@@ -131,8 +131,8 @@ Wichtige Informationen:
 
 - Die Option „Value“ definiert den Namen des Abfragezeichenfolgenparameters, über den ein Token angegeben werden kann.
 - Die Option „Value“ kann nicht auf „ec_token“ festgelegt werden.
-- Stellen Sie sicher, dass der in der Option „Value“ definierte Name  
-- nur gültige URL-Zeichen enthält.
+- Stellen Sie sicher, dass der in der Option „Value“ definierte Name nur 
+- gültige URL-Zeichen enthält.
 
 Wert|Ergebnis
 ----|----
@@ -207,9 +207,11 @@ Deaktiviert|Hiermit werden Assets entsprechend der in den Antwortheadern definie
 **Standardverhalten:**
 
 - **HTTP Large:** deaktiviert
+
 <!---
 - **ADN:** Enabled
 --->
+
 ###<a name="cache-control-header-treatment"></a>Cache Control Header Treatment
 **Zweck:** Steuert die Generierung von Cache-Control-Headern durch den Edgeserver, wenn das Feature „External Max-Age“ aktiv ist.
 
@@ -966,7 +968,28 @@ Option|Beschreibung
  Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
  Dieses Feature ermöglicht unseren Edgeservern das Umschreiben der URL, ohne dass eine herkömmliche Umleitung durchgeführt werden muss. Dies bedeutet, dass die anfordernde Person den gleichen Antwortcode erhält, den sie auch bei Anforderung der umgeschriebenen URL erhalten hätte.
 
-**Beispielszenario**
+**Beispielszenario 1**
+
+In diesem Beispiel zeigen wir, wie eine Edge-CNAME-URL umgeleitet wird, die zu dieser Basis-CDN-URL aufgelöst wird: http://marketing.azureedge.net/brochures/
+
+Qualifizierte Anforderungen werden an diese Basis-Edge-CNAME-URL umgeleitet: http://MyOrigin.azureedge.net/resources/
+
+Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+
+**Beispielszenario 2**
+
+In diesem Beispiel zeigen wir, wie eine Edge-CNAME-URL mithilfe von regulären Ausdrücken von GROSSBUCHSTABEN zu kleinbuchstaben umgeleitet wird.
+
+Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+
+
+**Die wichtigsten Punkte:**
+
+- Das Feature „URL Rewrite“ definiert die Anforderungs-URLs, die umgeschrieben werden sollen. Daher sind zusätzliche Übereinstimmungsbedingungen nicht erforderlich. Auch wenn die Übereinstimmungsbedingung als „Always“ definiert wurde, werden nur Anforderungen umgeschrieben, die auf den Ordner „brochures“ auf dem Kundenursprung „marketing“ verweisen.
+
+- Die aus der Anforderung erfassten URL-Segmente werden über „$1“ an die neue URL angefügt.
+
+
 
 ###<a name="compatibility"></a>Kompatibilität
 
@@ -998,6 +1021,6 @@ Dieses Feature umfasst Übereinstimmungskriterien, die erfüllt sein müssen, be
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

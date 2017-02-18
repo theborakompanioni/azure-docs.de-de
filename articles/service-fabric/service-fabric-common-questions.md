@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2016
+ms.date: 01/19/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: da356a95fc372c140e089a943e5fcb680f0c9fd7
-ms.openlocfilehash: 009fde75bff1b7746ad0ae247a3b895366f54b84
+ms.sourcegitcommit: 102be620e8812cc551aebafe7c8df4e4eac0ae90
+ms.openlocfilehash: 2ad3bd7b846693c637fd843383802651a619b128
 
 ---
 
@@ -39,15 +39,15 @@ Heute noch nicht, aber auch dies ist eine häufig gestellte Anforderung, die wir
 
 Die Herausforderung von Betriebssystemupdates besteht darin, dass dafür in der Regel ein Neustart des Computers erforderlich ist, was zu einer vorübergehenden Unterbrechung der Verfügbarkeit führt. Dies ist für sich gesehen noch kein Problem, weil Service Fabric Datenverkehr für diese Dienste automatisch an andere Knoten umleitet. Wenn Betriebssystemupdates jedoch nicht über den Cluster koordiniert werden, besteht die Gefahr, dass viele Knoten gleichzeitig ausfallen. Diese gleichzeitigen Neustarts können für einen Dienst oder zumindest für eine bestimmte Partition (bei einem zustandsbehafteten Dienst) zum vollständigen Verlust der Verfügbarkeit führen.
 
-In der Zukunft werden wir eine Betriebssystemupdate-Richtlinie unterstützen, die Updatedomänen-übergreifend koordiniert wird und sicherstellt, dass die Verfügbarkeit trotz Neustarts und anderen unerwarteten Fehlern beibehalten wird.
+Künftig werden wir eine Betriebssystemupdate-Richtlinie unterstützen, die Updatedomänen-übergreifend vollständig automatisiert und koordiniert ist und sicherstellt, dass die Verfügbarkeit trotz Neustarts und anderen unerwarteten Fehlern beibehalten wird.
 
-In der Zwischenzeit besteht die einzig sichere Möglichkeit darin, Betriebssystemupdates manuell pro Knoten durchzuführen.
+In der Zwischenzeit haben wir [ein Skript bereitgestellt](https://blogs.msdn.microsoft.com/azureservicefabric/2017/01/09/os-patching-for-vms-running-service-fabric/), mit denen ein Clusteradministrator das Patchen jedes Knotens auf sichere Weise manuell starten kann.
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Was ist die Mindestgröße für einen Service Fabric-Cluster? Warum darf er nicht kleiner sein?
 
 Die unterstützte Mindestgröße für einen Service Fabric-Cluster, auf dem Produktionsworkloads ausgeführt werden, beträgt fünf Knoten. Für Entwicklungs-/Testszenarios unterstützen wir Cluster mit drei Knoten.
 
-Diese Mindestwerte gelten, weil auf dem Service Fabric-Cluster ein Satz zustandsbehafteter Systemdienste ausgeführt werden, darunter der Naming Service und der Failover-Manager. Diese Dienste verfolgen, welche Dienste auf dem Cluster bereitgestellt wurden und wo sie zurzeit gehostet werden, und sind von starker Konsistenz abhängig. Diese starke Konsistenz ist wiederum von der Möglichkeit abhängig, ein *Quorum* für jedes Update am Zustand dieser Dienste abzurufen, wobei ein Quorum die strikte Mehrheit der Replikate (N/2 + 1) für einen bestimmten Dienst darstellt.
+Diese Mindestwerte gelten, weil auf dem Service Fabric-Cluster ein Satz zustandsbehafteter Systemdienste ausgeführt werden, darunter der Naming Service und der Failover-Manager. Diese Dienste verfolgen, welche Dienste auf dem Cluster bereitgestellt wurden und wo sie zurzeit gehostet werden, und sind von starker Konsistenz abhängig. Diese starke Konsistenz ist wiederum von der Möglichkeit abhängig, ein *Quorum* für jedes Update am Zustand dieser Dienste abzurufen, wobei ein Quorum die strikte Mehrheit der Replikate (N/2 +&1;) für einen bestimmten Dienst darstellt.
 
 Untersuchen wir vor diesem Hintergrund einige mögliche Clusterkonfigurationen:
 
@@ -103,9 +103,17 @@ Beachten Sie, dass bei dieser Berechnung zudem Folgendes vorausgesetzt wird:
 
 Wie bei zuverlässigen Diensten wird die Menge der Daten, die Sie in einem Akteurdienst speichern können, nur durch den insgesamt verfügbaren Speicherplatz und Arbeitsspeicher auf den Knoten in Ihrem Cluster begrenzt. Einzelne Akteure sind jedoch am effektivsten, wenn sie zum Kapseln einer kleinen Menge von Zustandslogik und der zugehörigen Geschäftslogik verwendet werden. Allgemein gilt, dass ein einzelner Akteur einen Zustand aufweisen sollte, der in KB gemessen werden kann.
 
+## <a name="other-questions"></a>Weitere Fragen
+
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Welcher Zusammenhang besteht zwischen Service Fabric und Containern?
 
 Container bieten eine einfache Möglichkeit zum Paketieren von Diensten und ihren Abhängigkeiten, sodass sie konsistent in allen Umgebungen und in isolierter Weise auf einem einzelnen Computer ausgeführt werden können. Service Fabric bietet eine Möglichkeit zum Bereitstellen und Verwalten von Diensten, darunter [Dienste, die in einem Container paketiert wurden](service-fabric-containers-overview.md).
+
+### <a name="are-you-planning-to-open-source-service-fabric"></a>Planen Sie die Open Source-Bereitstellung von Service Fabric?
+
+Wir möchten die Reliable Services- und Reliable Actors-Frameworks als Open Source-Projekte auf GitHub bereitstellen und nehmen Community-Beiträge zu diesen Projekten an. Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservicefabric/), in dem Sie weitere Details finden, sobald sie angekündigt werden.
+
+Derzeit gibt es keine Pläne für die Open Source-Bereitstellung der Service Fabric-Laufzeit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -113,6 +121,6 @@ Container bieten eine einfache Möglichkeit zum Paketieren von Diensten und ihre
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

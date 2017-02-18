@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines REST-Diensts mithilfe der ASP.NET Web API und einer SQL-Datenbank in Azure App Service
+title: Erstellen einer REST-API in Azure mit ASP.NET und SQL DB | Microsoft-Dokumentation
 description: "In diesem Tutorial erfahren Sie, wie Sie eine App bereitstellen, die die ASP.NET-Web-API mithilfe von Visual Studio für eine Azure-Web-App verwendet."
 services: app-service\web
 documentationcenter: .net
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2188a56fee942cd58b20b92fb77891708ab62d24
+ms.sourcegitcommit: 3f6bb2604d6f20e299ae5583a0ad215f02b9b803
+ms.openlocfilehash: 016d44cb57d5ad76dc0b115be6fbac6835d84396
 
 
 ---
@@ -493,7 +493,7 @@ In der Anwendung werden die Seeddaten angezeigt und Links zum Bearbeiten und Lö
 
     ![Web-API-Speicherdialog][addwebapi007]
 
-    **Sicherheitswarnung**: Ihre Anwendung ist unsicher und anfällig für CSRF-Angriffe. Im Verlauf des Tutorials korrigieren wir diese Schwachstelle. Weitere Informationen erhalten Sie unter [Verhindern von webseitenübergreifender Anforderungsfälschung][prevent-csrf-attacks].
+    **Sicherheitswarnung**: Ihre Anwendung ist unsicher und anfällig für CSRF-Angriffe. Im Verlauf des Tutorials korrigieren wir diese Schwachstelle. Weitere Informationen erhalten Sie unter [Verhindern von Cross-Site Request Forgery (CSRF)-Angriffen][prevent-csrf-attacks].
 ## <a name="add-xsrf-protection"></a>Hinzufügen von XSRF-Schutz
 Bei der websiteübergreifenden Anforderungsfälschung (auch bekannt als XSRF oder CSRF) handelt es sich um einen Angriff auf eine im Web gehostete Anwendung, bei der eine schädliche Website die Interaktion zwischen einem Clientbrowser und einer Website, der der Browser vertraut, beeinflussen kann. Diese Angriffe sind möglich, da Webbrowser bei jeder Anforderung an eine Website automatisch Authentifizierungstoken senden. Ein typisches Beispiel ist ein Authentifizierungscookie, wie das Authentifizierungsticket von ASP.NET. Websites, die einen persistenten Authentifizierungsmechanismus verwenden (wie Windows-Authentifizierung, HTTP-Basic usw.), sind für derartige Angriffe anfällig.
 
@@ -663,12 +663,12 @@ Wenn der Eintrag auf der Contact Manager Seite gespeichert und angezeigt wird, w
 Die Anwendung wird nun in der Cloud ausgeführt und verwendet die SQL-Datenbank zum Speichern von Daten. Löschen Sie die Anwendung, sobald Sie die Tests in Azure abgeschlossen haben. Die Anwendung ist öffentlich und der Zugriff auf sie kann nicht beschränkt werden.
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine echte Anwendung benötigt eine Authentifizierung und Autorisierung, und Sie würden für diesen Zweck die Mitgliedsdatenbank verwenden. Das Tutorial [Bereitstellen einer sicheren ASP.NET MVC 5-Anwendung mit Mitgliedschaft, OAuth und einer SQL-Datenbank](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) basiert auf diesem Tutorial und zeigt, wie Sie eine Webanwendung mithilfe der Mitgliedsdatenbank bereitstellen.
+Eine echte Anwendung benötigt eine Authentifizierung und Autorisierung, und Sie würden für diesen Zweck die Mitgliedsdatenbank verwenden. Das Tutorial [Bereitstellen einer sicheren ASP.NET MVC&5;-Anwendung mit Mitgliedschaft, OAuth und einer SQL-Datenbank](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) basiert auf diesem Tutorial und zeigt, wie Sie eine Webanwendung mithilfe der Mitgliedsdatenbank bereitstellen.
 
 Ferner können Daten in einer Azure-Anwendung mithilfe von Azure Storage gespeichert werden, das nichtrelationale Datenspeicherung in Form von Blobs und Tabellen bietet. Die folgenden Links bieten weitere Informationen zu WEB API, ASP.NET MVC und Microsoft Azure.
 
@@ -685,10 +685,10 @@ Bitte teilen Sie uns mit, was Ihrer Meinung nach beim Tutorial wie auch den dari
 * Hinweise zu den Änderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
-[Hinzufügen eines OAuth-Anbieters]: #addOauth
-[Hinzufügen von Rollen zur Mitgliedschaftsdatenbank]:#mbrDB
-[Erstellen eines Datenbereitstellungsskripts]:#ppd
-[Aktualisieren der Mitgliedschaftsdatenbank]:#ppd2
+[Add an OAuth Provider]: #addOauth
+[Add Roles to the Membership Database]:#mbrDB
+[Create a Data Deployment Script]:#ppd
+[Update the Membership Database]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -742,9 +742,9 @@ Bitte teilen Sie uns mit, was Ihrer Meinung nach beim Tutorial wie auch den dari
 [addwebapi004]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-added-contact.png
 [addwebapi006]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-save-returned-contacts.png
 [addwebapi007]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-contacts-in-notepad.png
-[Hinzufügen von XSRF-Schutz]: #xsrf
+[Add XSRF Protection]: #xsrf
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
-[Hinzufügen von XSRF-Schutz]: #xsrf
+[Add XSRF Protection]: #xsrf
 [ImportPublishSettings]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishSettings.png
 [ImportPublishProfile]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishProfile.png
 [PublishVSSolution]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/PublishVSSolution.png
@@ -755,6 +755,6 @@ Bitte teilen Sie uns mit, was Ihrer Meinung nach beim Tutorial wie auch den dari
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

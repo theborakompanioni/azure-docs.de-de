@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 tags: azure-service-management
 ms.assetid: a9bda2e7-cdba-427c-bc30-77cde4376f3a
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.workload: iaas-sql-server
+ms.date: 01/18/2017
 ms.author: jroth
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: c34684760f8de856c64565e8859b31dc73554e00
+ms.sourcegitcommit: 6494f8bd610c26ceda718a38faf32d0346a063d7
+ms.openlocfilehash: 73187757207eef345f262dfc16780e7a6dbfb739
 
 
 ---
@@ -82,7 +82,7 @@ Bei einer Aktualisierung auf die aktuelle Version der SQL-IaaS-Agent-Erweiterung
 > 
 
 ## <a name="status"></a>Status
-Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie auf dem Blatt des virtuellen Computers die Option **Alle Einstellungen** aus, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SQLIaaSAgent** sollte aufgeführt werden.
+Eine Möglichkeit, zu überprüfen, ob die Erweiterung installiert ist, ist das Anzeigen des Agent-Status im Azure-Portal. Wählen Sie auf dem Blatt des virtuellen Computers einen virtuellen Computer aus, und klicken Sie dann auf **Erweiterungen**. Die Erweiterung **SQLIaaSAgent** sollte aufgeführt werden.
 
 ![Erweiterung für SQL Server-IaaS-Agent im Azure-Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)
 
@@ -91,7 +91,7 @@ Sie können auch das Azure PowerShell-Cmdlet **Get-AzureVMSqlServerExtension** v
     Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
 
 ## <a name="removal"></a>Entfernen
-Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie in den Eigenschaften des virtuellen Computers auf dem Blatt **Erweiterungen** auf die Auslassungspunkte klicken. Klicken Sie dann auf **Löschen**.
+Im Azure-Portal können Sie die Erweiterung deinstallieren, indem Sie in den Eigenschaften des virtuellen Computers auf dem Blatt **Erweiterungen** auf die Auslassungspunkte klicken. Klicken Sie anschließend auf **Deinstallieren**.
 
 ![Deinstallieren der Erweiterung für SQL Server-IaaS-Agent im Azure-Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)
 
@@ -107,6 +107,6 @@ Ausführlichere Informationen zur Verwendung von SQL Server auf virtuellen Azur
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Exemplarische Vorgehensweise: Exportieren von Telemetriedaten in SQL-Datenbank mit Application Insights'
+title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 03/06/2015
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: abaeb614e304c4ae78e6a1d43d19c99698e50494
+ms.sourcegitcommit: 96614dd3c0bf9c55ffd81d0912ecb62b71c32b22
+ms.openlocfilehash: fa9b09833f61e372738ff74022ac9fd6a288847f
 
 
 ---
@@ -41,7 +41,7 @@ Erste Schritte:
 ## <a name="create-storage-in-azure"></a>Erstellen von Speicher in Azure
 Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto übertragen, daher müssen Sie zuerst Speicher erstellen.
 
-1. Erstellen Sie im [Azure-Portal][portal] ein Speicherkonto in Ihrem Abonnement.
+1. Erstellen Sie ein Speicherkonto in Ihrem Abonnement im [Azure-Portal][portal].
    
     ![Wählen Sie im Azure-Portal "Neu", "Daten" und "Speicher" aus. Wählen Sie "Klassisch" und dann "Erstellen" aus. Geben Sie einen Speichernamen an.](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 2. Erstellen eines Containers
@@ -278,6 +278,6 @@ Nach einigen Minuten wechseln Sie zurück zu den SQL Server-Verwaltungstools, un
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

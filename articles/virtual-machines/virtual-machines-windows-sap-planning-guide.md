@@ -1,5 +1,5 @@
 ---
-title: "SAP NetWeaver auf virtuellen Azure-Computern (VMs) – Planungs- und Implementierungshandbuch | Microsoft Docs"
+title: "SAP NetWeaver auf virtuellen Azure-Computern – Planung und Implementierung | Microsoft-Dokumentation"
 description: "SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch"
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 translationtype: Human Translation
-ms.sourcegitcommit: 08f82498d46b2e67d55ad7dfb05efdb266e7fc61
-ms.openlocfilehash: 56da763a21da7c55aa0cd295a04fa22b2815d2ac
+ms.sourcegitcommit: 06b8f8cc99809338fcf512fb8e4bbf72721cb243
+ms.openlocfilehash: 433b2bc5d602c1117c2ef2e16399eb6d29b425d7
 
 
 ---
@@ -463,7 +463,7 @@ Ein weiteres interessantes Feature ist die Möglichkeit zum Erstellen von Images
 Weitere Informationen zum Erstellen von Images von virtuellen Computern finden Sie in [diesem Artikel (Windows)][virtual-machines-windows-capture-image] oder [diesem Artikel (Linux)][virtual-machines-linux-capture-image].
 
 #### <a name="a-namedf49dc09-141b-4f34-a4a2-990913b30358afault-domains"></a><a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Fehlerdomänen
-Fehlerdomänen stellen eine physische Fehlereinheit dar, die sehr eng mit der physischen Infrastruktur in Rechenzentren verwandt ist, und obwohl ein physisches Blade oder Rack als Fehlerdomäne betrachtet werden kann, gibt es keine direkte 1: 1-Zuordnung zwischen den beiden.
+Fehlerdomänen stellen eine physische Fehlereinheit dar, die sehr eng mit der physischen Infrastruktur in Rechenzentren verwandt ist, und obwohl ein physisches Blade oder Rack als Fehlerdomäne betrachtet werden kann, gibt es keine direkte&1;:&1;-Zuordnung zwischen den beiden.
 
 Wenn Sie mehrere virtuelle Computer als Teil eines SAP-Systems in Microsoft Azure Virtual Machine-Diensten bereitstellen, können Sie die Azure Fabric Controller zum Bereitstellen der Anwendung in verschiedenen Fehlerdomänen einsetzen und so die Anforderungen des Microsoft Azure-SLA erfüllen. Allerdings ist die Verteilung von Fehlerdomänen über eine Azure-Skalierungseinheit (Sammlung von Hunderten von Serverknoten oder Speicherknoten und Netzwerken) oder die Zuweisung von virtuellen Computern zu einer bestimmten Fehlerdomäne etwas, das Sie nicht direkt steuern können. Um Azure Fabric Controller anzuweisen, eine Gruppe aus virtuellen Computern in verschiedenen Fehlerdomänen bereitzustellen, müssen Sie den virtuellen Computern zum Zeitpunkt der Bereitstellung eine Azure-Verfügbarkeitsgruppe zuweisen. Weitere Informationen zu Azure-Verfügbarkeitsgruppen finden Sie im Kapitel [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] in diesem Dokument.
 
@@ -503,11 +503,11 @@ Der nicht permanente Speicher ist direkt mit dem ausgeführten virtuellen Comput
 Das eigentliche Laufwerk ist temporär, da es auf dem Hostserver gespeichert wird. Wenn der virtuelle Computer in eine erneute Bereitstellung verschoben wird (z.B. aufgrund von Wartungsarbeiten auf dem Host oder durch Herunterfahren und Neustart), geht der Inhalt des Laufwerks verloren. Aus diesem Grund dürfen Sie auf diesem Laufwerk keine wichtigen Daten speichern. Der für diese Art von Speicher verwendete Medientyp unterscheidet sich je nach VM-Serie durch sehr unterschiedliche Leistungsmerkmale, die seit Juni 2015 folgendermaßen aussehen:
 
 * A5-A7: sehr eingeschränkte Leistung. Nur für Auslagerungsdatei empfohlen.
-* A8-A11: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz.
-* D-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz.
-* DS-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz.
-* G-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz.
-* GS-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und > 1 GB/s Durchsatz.
+* A8-A11: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz.
+* D-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz.
+* DS-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz.
+* G-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz.
+* GS-Serie: sehr gute Leistungsmerkmale mit mehreren Zehntausend IOPS und >&1; GB/s Durchsatz.
 
 Die Angaben oben beziehen sich auf die für SAP zertifzierten VM-Typen. Die VM-Serie mit hervorragenden IOPS und Durchsatz können für einige DBMS-Funktionen genutzt werden. Weitere Informationen finden Sie im [DBMS-Bereitstellungshandbuch][dbms-guide].
 
@@ -632,7 +632,7 @@ Sie können mehrere virtuelle Netzwerkschnittstellenkarten (vNIC) für virtuelle
 Um eine Standort-zu-Standort-Verbindung (lokales Rechenzentrum zu Azure-Rechenzentrum) zu erstellen, müssen Sie ein VPN-Gerät abrufen und konfigurieren oder RRAS (Routing and Remote Access Service) verwenden, der als Softwarekomponente mit Windows Server 2012 eingeführt wurde.
 
 * [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung mit PowerShell][vpn-gateway-create-site-to-site-rm-powershell]
-* [Informationen zu VPN-Geräten für VPN Gateway-Verbindungen zwischen Standorten][vpn-gateway-about-vpn-devices]
+* [Informationen zu VPN-Geräten für Site-to-Site-VPN Gateway-Verbindungen][vpn-gateway-about-vpn-devices]
 * [Häufig gestellte Fragen zu VPN Gateway][vpn-gateway-vpn-faq]
 
 ![Site-to-Site-Verbindung zwischen lokalem System und Azure][planning-guide-figure-600]
@@ -1874,6 +1874,6 @@ Hier die wichtigsten Punkte der hohen Verfügbarkeit für SAP-Systeme in Azure:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

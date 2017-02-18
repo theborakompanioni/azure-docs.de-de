@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines Load Balancers mit Internetzugriff über IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle | Microsoft Docs"
+title: "Erstellen eines Lastenausgleichs für den Internetzugriff mit IPv6 – Azure CLI | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff über IPv6 in Azure Resource Manager über die Azure-Befehlszeilenschnittstelle erstellen."
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: e516ebea287948c52afca6ab3d3e4e61b3c3c080
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 6edfe8ee8011200e208117f5e03eac8fa741a548
 
 ---
 
@@ -345,6 +345,6 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

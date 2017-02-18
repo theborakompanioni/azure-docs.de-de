@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit dem Azure IoT Gateway Starter Kit | Microsoft-Dokumentation
+title: "SensorTag-Gerät und Azure IoT Gateway – Erste Schritte | Microsoft-Dokumentation"
 description: "Enthält die ersten Schritte mit dem IoT Gateway Starter Kit und Informationen zum Erstellen des Azure IoT Hub und Herstellen der Verbindung für den SensorTag und das Gateway mit dem IoT Hub."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ab8f4f7bbb823cc56783a0cb39bb22157c74087f
-ms.openlocfilehash: fb45ef6239827ea2860b707b2bb5016ea680ad17
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: dd14d137c23fbccb3616b60db8a63e668ae7ea80
 
 
 ---
@@ -109,6 +109,6 @@ Falls Sie bei den Lektionen Probleme haben, helfen Ihnen die Lösungen im Artike
 Weitere Informationen finden Sie unter [Intel IoT Gateway Kit Developer Zone](http://software.intel.com/iot/microsoft-azure).
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

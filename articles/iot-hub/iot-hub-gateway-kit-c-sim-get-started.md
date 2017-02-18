@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit dem Azure IoT Gateway Starter Kit | Microsoft-Dokumentation
+title: "Simuliertes Gerät und Azure IoT Gateway – Erste Schritte | Microsoft-Dokumentation"
 description: "Enthält die ersten Schritte mit dem IoT Gateway Starter Kit und Informationen zum Erstellen des Azure IoT Hub und Herstellen der Verbindung des Gateways mit dem IoT Hub."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: c62e0cc560af18945c371af000ec08c0ddc7cd5a
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 06161c2950fbe99d2e4f9c1b416695a5f9f18ca4
 
 
 ---
@@ -35,7 +35,7 @@ In diesem Tutorial machen Sie sich zuerst mit den Grundlagen des [IoT Gateway St
 ***
 
 ## <a name="lesson-1-configure-your-nuc"></a>Lektion 1: Konfigurieren Ihres NUC-Geräts
-![Lektion 1: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
+![Lektion&1;: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson1.png)
 
 In dieser Lektion richten Sie Intel NUC (Next Unit of Computing) im Kit als Azure IoT Gateway ein, installieren das Azure IoT Gateway SDK-Paket auf dem NUC und führen eine Beispiel-App aus, um die Gatewayfunktionalität zu überprüfen.
 
@@ -44,7 +44,7 @@ In dieser Lektion richten Sie Intel NUC (Next Unit of Computing) im Kit als Azur
 [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>Lektion 2: Erstellen des IoT Hub
-![Lektion 2: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
+![Lektion&2;: Komplettes Diagramm](media/iot-hub-gateway-kit-lessons/e2e-sim-Lesson2.png)
 
 In dieser Lektion installieren Sie die Tools und Software auf dem Hostcomputer. Anschließend erstellen Sie ein kostenloses Azure-Konto, stellen Ihren Azure IoT Hub bereit und erstellen Ihr erstes Gerät im IoT Hub.
 
@@ -109,6 +109,6 @@ Falls Sie bei den Lektionen Probleme haben, helfen Ihnen die Lösungen im Artike
 Weitere Informationen finden Sie unter [Intel IoT Gateway Kit Developer Zone](https://software.intel.com/en-us/iot/hardware/gateways/dev-kit).
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

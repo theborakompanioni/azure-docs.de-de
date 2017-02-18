@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen der Blinkanwendung im Azure IoT Starter Kit | Microsoft-Dokumentation
+title: "Verbinden von Intel Edison (C) mit Azure IoT – Lektion 1: Bereitstellen der Anwendung | Microsoft-Dokumentation"
 description: "Klonen Sie die C-Beispielanwendung aus GitHub, und führen Sie Gulp zum Bereitstellen der Anwendung auf dem Intel Edison aus. Diese Beispielanwendung bewirkt, dass die mit dem Pi verbundene LED alle zwei Sekunden blinkt."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 604ab48856f3fbc09ca6b566ef3f7e1d18e912c6
-ms.openlocfilehash: 6c911297be4fa2c7ce6bd817233e8a8012634f42
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: c0589d488be5ec62686551b97d8949e5fed2f0a3
 
 
 ---
@@ -127,6 +127,6 @@ Sie haben die erforderlichen Tools zum Arbeiten mit dem Edison installiert und a
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

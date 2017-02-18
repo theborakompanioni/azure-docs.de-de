@@ -1,5 +1,5 @@
 ---
-title: Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Erstellen von Azure HDInsight (Hadoop)-Clustern mithilfe von Vorlagen | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe von Azure Resource Manager-Vorlagen erstellen."
 services: hdinsight
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 756369d219c34e5530edc91de0dc74cbf88c02c5
-ms.openlocfilehash: 78276ecfbeb339721c76af40428a452681c3407d
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 1816b7f5bb95669197891315ca57f93fd779c5c3
 
 
 ---
-# <a name="create-linux-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Erstellen Linux-basierter Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Erstellen von Hadoop-Clustern in HDInsight mithilfe von Azure Resource Manager-Vorlagen
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Erfahren Sie mehr über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen (ARM-Vorlagen). Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Informieren Sie sich über das Erstellen von HDInsight-Clustern mithilfe von Azure Resource Manager-Vorlagen. Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md). Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
 
 ## <a name="prerequisites"></a>Voraussetzungen:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -59,9 +59,9 @@ Um das JSON-Schema für bestimmte Elemente zu ermitteln, können Sie wie folgt v
 
     Das Portal erstellt auf Grundlage Ihrer Konfigurationseinstellungen eine Resource Manager-Vorlage.
 
-   ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
+## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 
-Gehen Sie wie folgt vor, um den Linux-basierten HDInsight-Cluster zu erstellen.
+Gehen Sie wie folgt vor, um einen Hadoop-Cluster in HDInsight zu erstellen:
 
 **Bereitstellen eines Clusters mithilfe von Resource Manager-Vorlagen**
 
@@ -136,7 +136,7 @@ Sie werden dazu aufgefordert, den Clusternamen, das Benutzerkennwort für den Cl
 ## <a name="deploy-with-rest-api"></a>Bereitstellen über die REST-API
 Informationen hierzu finden Sie unter [Bereitstellen mit der REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md).
 
-## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio 2013
+## <a name="deploy-with-visual-studio"></a>Bereitstellen mit Visual Studio&2013;
 Mit Visual Studio können Sie über die Benutzeroberfläche ein Ressourcengruppenprojekt erstellen und in Azure bereitstellen. Wählen Sie den Typ der Ressourcen aus, die in das Projekt aufgenommen werden sollen, und diese Ressourcen werden der Resource Manager-Vorlage automatisch hinzugefügt. Das Projekt enthält auch ein PowerShell-Skript zum Bereitstellen der Vorlage.
 
 Eine Einführung in die Verwendung von Visual Studio mit Ressourcengruppen finden Sie unter [Erstellen und Bereitstellen von Azure-Ressourcengruppen über Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
@@ -359,6 +359,6 @@ Die folgende Azure Resource Manager-Vorlage erstellt einen Linux-basierten Hadoo
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

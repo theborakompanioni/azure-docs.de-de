@@ -13,11 +13,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 01867f283678171eda8fb9798ea996cae605665a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 5304ddd84bebb19f5f082acb6442faa34b8d84bb
 
 
 ---
@@ -38,7 +38,7 @@ Hier sehen Sie die erstellte Anwendung:
 ![Webseite mit einer leeren Aufgabenliste][node-table-finished]
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -462,7 +462,7 @@ In diesem Schritt laden Sie eine Datei mit Informationen zu Ihrem Abonnement her
 
 1. Geben Sie den folgenden Befehl ein:
    
-        azure account download
+        azure login
    
     Dieser Befehl startet einen Browser und navigiert zur Downloadseite. Melden Sie sich bei entsprechender Aufforderung mit dem Konto an, dass Ihrem Azure-Abonnement zugeordnet ist.
    
@@ -594,6 +594,6 @@ In den Schritten in diesem Artikel wird zwar die Verwendung des Tabellenspeicher
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

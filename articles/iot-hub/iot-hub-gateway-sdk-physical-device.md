@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: andbuc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 05c82a87e839a0a95e7050092d6f6867e76fb316
+ms.sourcegitcommit: e1cf5ed3f2434a9e98027afd0225207ad5d2f1b1
+ms.openlocfilehash: 199f07ce705036c3d8f9d56115b5df9c8c52dc45
 
 
 ---
@@ -239,7 +239,7 @@ git submodule update --init --recursive
 Wenn Sie auf Ihrem Raspberry Pi 3-Gerät über eine vollständige Kopie des IoT Gateway SDK-Repositorys verfügen, können Sie es mit dem folgenden Befehl aus dem Ordner erstellen, der das SDK enthält:
 
 ```
-./tools/build.sh --skip-unittests
+./tools/build.sh
 ```
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Konfigurieren und Ausführen des BLE-Beispiels auf dem Raspberry Pi 3
@@ -429,11 +429,11 @@ Sie müssen die kleine Taste auf dem SensorTag-Gerät vor dem Ausführen des Bei
 Wenn Sie das Beispiel ausführen, können Sie die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die das Gateway vom SensorTag-Gerät weiterleitet.
 
 ## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
-Das BLE-Modul unterstützt auch das Senden von Anweisungen vom Azure IoT Hub an das Gerät. Sie können den [Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) oder das Tool [iothub-explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) verwenden, um JSON-Nachrichten zu senden, die das BLE-Gatewaymodul an das BLE-Gerät übergibt.
+Das BLE-Modul unterstützt auch das Senden von Anweisungen vom Azure IoT Hub an das Gerät. Sie können den [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) oder das Tool [iothub-explorer](https://github.com/Azure/iothub-explorer) verwenden, um JSON-Nachrichten zu senden, die das BLE-Gatewaymodul an das BLE-Gerät übergibt.
 Bei Verwendung des SensorTag-Geräts von Texas Instruments können Sie die rote LED, grüne LED oder den Summer einschalten, indem Sie Befehle vom IoT Hub senden. Senden Sie hierzu die folgenden beiden JSON-Nachrichten in der richtigen Reihenfolge. Anschließend können Sie die entsprechenden Befehle senden, um die LEDs oder den Summer einzuschalten.
 
-1. Zurücksetzen aller LEDs und des Summers (Ausschalten)
-  
+1. Zurücksetzen aller LEDs und des Summers (Ausschalten):
+
     ```json
     {
       "type": "write_once",
@@ -441,7 +441,8 @@ Bei Verwendung des SensorTag-Geräts von Texas Instruments können Sie die rote 
       "data": "AA=="
     }
     ```
-2. Konfigurieren von E/A als „remote“
+    
+2. Konfigurieren von E/A als „remote“:
   
     ```json
     {
@@ -450,7 +451,10 @@ Bei Verwendung des SensorTag-Geräts von Texas Instruments können Sie die rote 
       "data": "AQ=="
     }
     ```
-* Einschalten der roten LED
+    
+Anschließend können Sie die folgenden Befehle senden, um die LEDs oder den Summer einzuschalten.
+
+* Einschalten der roten LED:
   
     ```json
     {
@@ -459,7 +463,8 @@ Bei Verwendung des SensorTag-Geräts von Texas Instruments können Sie die rote 
       "data": "AQ=="
     }
     ```
-* Einschalten der grünen LED
+
+* Einschalten der grünen LED:
   
     ```json
     {
@@ -468,7 +473,8 @@ Bei Verwendung des SensorTag-Geräts von Texas Instruments können Sie die rote 
       "data": "Ag=="
     }
     ```
-* Einschalten des Summers
+
+* Einschalten des Summers:
   
     ```json
     {
@@ -501,6 +507,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit dem .NET SDK | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie HDInsight-Cluster für Azure HDInsight mithilfe des .NET SDK erstellen."
+description: Hier erhalten Sie Informationen zum Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit dem .NET SDK.
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21f2a14c1514c3f70787613c5f0962dc3eabd7b1
+ms.sourcegitcommit: ede2e4ec5f3414d1c8a17f4c120011eba0d9a6ca
+ms.openlocfilehash: 4f597fad719637e66d64143c302334b1c62e226e
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-net-sdk"></a>Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit dem .NET SDK
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Erfahren Sie, wie Sie HDInsight-Cluster mit dem .NET SDK erstellen. Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Hier erhalten Sie Informationen zum Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit dem .NET SDK. 
+
+Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Informationen zum Erstellen von Linux-basierten Clustern finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 ## <a name="prerequisites"></a>Voraussetzungen:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -245,6 +251,6 @@ Das folgende Azure PowerShell-Skript kann zum Erstellen der abhängigen Komponen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

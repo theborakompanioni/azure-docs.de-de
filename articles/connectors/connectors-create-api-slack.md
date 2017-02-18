@@ -1,10 +1,10 @@
 ---
-title: " Verwenden des Slack-Connectors in Ihren Logik-Apps | Microsoft Docs"
-description: Erste Schritte mit dem Slack-Connector in Ihren Microsoft Azure App Service-Logik-Apps
+title: " Verwenden des Slack-Connectors in Ihren Logik-Apps | Microsoft-Dokumentations"
+description: Erste Schritte mit dem Slack-Connector in Ihren Logik-Apps
 services: 
 documentationcenter: 
 author: msftman
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cacaa4a4a0089e1c3df54ae466af251026e1a55b
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: 404776283ee10aa9410d002597e054757516bcab
 
 
 ---
@@ -33,7 +33,7 @@ Der Slack-Connector ermöglicht Folgendes:
 
 * Erstellen von Logik-Apps
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="lets-talk-about-triggers-and-actions"></a>Trigger und Aktionen
 Der Slack-Connector kann als Aktion verwendet werden. Es gibt keine Trigger. Alle Connectors unterstützen Daten im JSON- und XML-Format. 
@@ -109,7 +109,7 @@ Führen Sie folgende Schritte aus, um sich bei Slack anzumelden und die Konfigur
 
 - - -
 ## <a name="object-definitions"></a>Objektdefinitionen:
- **Message:**Yammer-Nachricht
+ **Message**:Slack Message
 
 Erforderliche Eigenschaften für „Message“:
 
@@ -141,7 +141,7 @@ Keine der Eigenschaften ist erforderlich.
 | liked_by |nicht definiert |
 | system_message |Boolescher Wert |
 
- **PostOperationRequest:**stellt eine Sendeanforderung für den Yammer-Connector dar, die an Yammer gesendet werden soll.
+ **PostOperationRequest**: Stellt eine Sendeanforderung für den Slack-Connector dar, die an Slack gesendet werden soll.
 
 Erforderliche Eigenschaften für PostOperationRequest:
 
@@ -231,7 +231,7 @@ Keine der Eigenschaften ist erforderlich.
 | full_name |string |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 ## <a name="object-definitions"></a>Objektdefinitionen:
  **WebResultModel:**Bing-Ergebnisse für Websuche
@@ -400,7 +400,7 @@ Keine der Eigenschaften ist erforderlich.
 | is_user-deleted |Boolescher Wert |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 [1]: ./media/connectors-create-api-slack/connectionconfig1.png
 [2]: ./media/connectors-create-api-slack/connectionconfig2.png 
@@ -411,6 +411,6 @@ Keine der Eigenschaften ist erforderlich.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Reliable Actors-Lebenszyklus | Microsoft Docs
+title: "Übersicht über den Lebenszyklus von Actor-basierten Azure-Microservices | Microsoft-Dokumentation"
 description: "Erläutert den Service Fabric Reliable Actor-Lebenszyklus, Garbage Collection und das manuelle Löschen von Actors und ihren Zuständen"
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 08/30/2016
 ms.author: amanbha
 translationtype: Human Translation
-ms.sourcegitcommit: e39c130b1abb0b2c31511abdd51f02446d3898f6
-ms.openlocfilehash: 681c9aa628ea9364f73e6a41f0f71139d3b983d7
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 22f906de37ad7ae2a48acf26be26f2af1e3bde7a
 
 
 ---
@@ -93,9 +93,9 @@ Das Beispiel zeigt die Auswirkung von Actor-Methodenaufrufen, Erinnerungen und T
 
 * „ScanInterval“ und „IdleTimeout“ werden auf 5 und 10 festgelegt. (Einheiten sind hier nicht wichtig, da nur das Konzept veranschaulicht werden soll.)
 * Der Scanvorgang für Actors, für die eine Garbage Collection ausgeführt werden soll, erfolgt in den Intervallen T = 0, 5, 10, 15, 20, 25, wie durch den Scanintervallwert 5 definiert.
-* Ein periodischer Timer wird bei T = 4, 8, 12, 16, 20, 24 ausgelöst, und der Rückruf wird ausgeführt. Auf die Leerlaufzeit des Actors hat dies keine Auswirkungen.
+* Ein periodischer Timer wird bei T =&4;,&8;,&12;,&16;,&20;,&24; ausgelöst, und der Rückruf wird ausgeführt. Auf die Leerlaufzeit des Actors hat dies keine Auswirkungen.
 * Ein Actor-Methodenaufruf bei T = 7 setzt die Leerlaufzeit auf 0 zurück und verzögert die Ausführung der Garbage Collection für den Actor.
-* Ein Actor-Erinnerungs-Rückruf wird bei T = 14 ausgeführt und verzögert die Garbage Collection des Actors noch weiter.
+* Ein Actor-Erinnerungs-Rückruf wird bei T =&14; ausgeführt und verzögert die Garbage Collection des Actors noch weiter.
 * Während des Garbage Collection-Scanvorgangs bei T = 25 überschreitet die Leerlaufzeit des Actors schließlich den Leerlauftimeout-Wert von 10, und die Garbage Collection wird für den Actor ausgeführt.
 
 Für einen Actor wird nie eine Garbage Collection durchgeführt, während er eine seiner Methoden ausführt, unabhängig davon, wie viel Zeit die Ausführung dieser Methode beansprucht. Wie bereits erwähnt, verhindert die Ausführung von Actor-Schnittstellenmethoden und Erinnerungs-Rückrufen die Durchführung der Garbage Collection, indem die Leerlaufzeit des Actors auf 0 zurückgesetzt wird. Durch die Ausführung von Timer-Rückrufen wird die Leerlaufzeit nicht auf 0 zurückgesetzt. Allerdings wird die Garbage Collection des Actors verzögert, bis der Timer-Rückruf abgeschlossen ist.
@@ -137,6 +137,6 @@ Beachten Sie, dass ein Actor für sich selbst durch eine seiner Methoden „dele
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

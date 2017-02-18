@@ -1,5 +1,5 @@
 ---
-title: "Ausführen einer Beispiel-App für ein simuliertes Gerät zum Senden von Daten an Azure IoT Hub | Microsoft-Dokumentation"
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 3: Ausführen der Beispiel-App | Microsoft-Dokumentation"
 description: "Ausführen einer Beispiel-App für ein simuliertes Gerät zum Senden von Temperaturdaten an Ihren IoT Hub"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: 94bffa363f7979b7dc37363328a358f0b139307d
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 873f3cef8cb1d115f77f0d3fa2c4b50391f66d91
 
 
 ---
@@ -139,6 +139,6 @@ Sie haben die Cloudupload-Beispielanwendung, mit der Daten an Ihren IoT Hub mit 
 [Read messages from your IoT hub](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

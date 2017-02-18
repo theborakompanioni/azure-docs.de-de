@@ -17,19 +17,19 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 04b081d265c53ddcf77c79bf604296a0d44be4ed
+ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
+ms.openlocfilehash: ade380b7fc6adfb929f42c0e6c75b3fa613c45b1
 
 
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>Erste Schritte mit der Aktion „HTTP + Swagger“
 Mit der Aktion „HTTP + Swagger“ können Sie einen erstklassigen Connector für beliebige REST-Endpunkte über ein [Swagger-Dokument](https://swagger.io)erstellen. Sie können eine Logik-App auch erweitern, sodass sie beliebige REST-Endpunkte mit erstklassiger Logik-App-Designer-Funktion aufruft.
 
-Wenn Sie die Aktion „HTTP + Swagger“ in einer Logik-App verwenden möchten, müssen Sie zunächst [eine neue Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Wenn Sie die Aktion „HTTP + Swagger“ in einer Logik-App verwenden möchten, müssen Sie zunächst [eine neue Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
 
 - - -
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>Verwenden von „HTTP + Swagger“ als Trigger oder Aktion
-Der Trigger und die Aktion „HTTP + Swagger“ funktionieren wie die [HTTP-Aktion](connectors-native-http.md), bieten aber bessere Entwurfsfunktionen, da sie die Form der API und die Ausgaben im Designer anhand von [Swagger-Metadaten](https://swagger.io) anzeigen. Darüber hinaus können Sie HTTP + Swagger als Trigger verwenden. Wenn Sie einen Abruftrigger implementieren möchten, sollte er dem in [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers)beschriebenen Abrufmuster entsprechen.
+Der Trigger und die Aktion „HTTP + Swagger“ funktionieren wie die [HTTP-Aktion](connectors-native-http.md), bieten aber bessere Entwurfsfunktionen, da sie die Form der API und die Ausgaben im Designer anhand von [Swagger-Metadaten](https://swagger.io) anzeigen. Darüber hinaus können Sie HTTP + Swagger als Trigger verwenden. Wenn Sie einen Abruftrigger implementieren möchten, sollte er dem in [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers)beschriebenen Abrufmuster entsprechen.
 
 Mehr über Logik-App-Trigger und -Aktionen erfahren Sie [hier](connectors-overview.md).
 
@@ -64,14 +64,14 @@ Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern 
 Im Folgenden finden Sie Details zu den von diesem „HTTP + Swagger“-Connector unterstützten Triggern und Aktionen.
 
 ## <a name="http--swagger-triggers"></a>„HTTP + Swagger“-Trigger
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. [Weitere Informationen zu Triggern finden Sie hier.](connectors-overview.md)  Der Connector „HTTP + Swagger“ verfügt über einen Trigger.
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. [Weitere Informationen zu Triggern finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über einen Trigger.
 
 | Trigger | Beschreibung |
 | --- | --- |
 | HTTP + Swagger |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
 ## <a name="http--swagger-actions"></a>„HTTP + Swagger“-Aktionen
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md)  Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
 
 | Aktion | Beschreibung |
 | --- | --- |
@@ -117,11 +117,11 @@ Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten a
 
 - - -
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO3-->
 
 

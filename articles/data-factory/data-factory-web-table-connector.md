@@ -1,6 +1,6 @@
 ---
-title: Verschieben von Daten aus einer Webtabelle | Microsoft Docs
-description: Erfahren Sie, wie Sie Daten aus einer lokalen Tabelle mithilfe von Azure Data Factory auf eine Webseite verschieben.
+title: Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Daten aus einer Tabelle auf einer Webseite mithilfe von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 7b55f6730c6a2bf8637f312c452fe552f82dbaeb
-ms.openlocfilehash: 4adfd82a0dea0aa46607b3cc528c922cd46ab7d5
+ms.sourcegitcommit: dd8a68029449ad013c4df9a46c558efaefd20e96
+ms.openlocfilehash: 88f746a4802e13e062f4414e5d2032dfcee565b7
 
 
 ---
@@ -270,7 +270,7 @@ Wenn bei der Kopieraktivität die Quelle den Typ **WebSource**hat, werden derzei
 2. Klicken Sie auf der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 
     ![Power Query-Menü](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON-Code für den verknüpften Dienst verwenden möchten (Beispiel: https://en.wikipedia.org/wiki/), sowie den Pfad ein, den Sie für das Dataset angeben möchten (Beispiel: AFI%27s_100_Years... 100_Movies), und klicken Sie anschließend auf **OK**.
+3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON-Code für den verknüpften Dienst verwenden möchten (Beispiel: https://en.wikipedia.org/wiki/), sowie den Pfad ein, den Sie für das Dataset angeben möchten (Beispiel: AFI%27s_100_Years...&100;_Movies), und klicken Sie anschließend auf **OK**.
 
     ![Aus dem Web (Dialogfeld) ](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
@@ -299,6 +299,6 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

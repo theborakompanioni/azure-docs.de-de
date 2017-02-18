@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/09/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7e3c1440cc2b669c574c2c0160a0d282b5f27bca
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c940f490908a3b934c108b214b5ef2af44698059
 
 
 ---
@@ -26,7 +26,7 @@ Hybridverbindungen ermöglichen die Verbindung von [Azure App Service](http://go
 In diesem Tutorial erfahren Sie, wie Sie eine App Service-Web-App im [Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715)erstellen, die Web-App mit der neuen Funktion „Hybridverbindung“ mit Ihrer lokalen SQL Server-Datenbank verbinden, eine einfache ASP.NET-Anwendung erstellen, die die Hybridverbindung verwendet, und die Anwendung auf der App Service-Web-App bereitstellen. Die fertige Web-App in Azure speichert Benutzeranmeldeinformationen in einer lokalen Mitgliedschaftsdatenbank. Bei diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit der Verwendung von Azure oder ASP.NET haben.
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > Der Web-Apps-Teil der Funktion "Hybridverbindungen" ist nur im [Azure-Portal](https://portal.azure.com)verfügbar. Informationen zum Erstellen einer Verbindung in BizTalk-Diensten finden Sie unter [Hybridverbindungen](http://go.microsoft.com/fwlink/p/?LinkID=397274).  
 > 
@@ -56,7 +56,7 @@ Der Computer, auf dem Sie den lokalen Hybridverbindungs-Manager-Agent installier
 | 443 |**Optional** für Datenkonnektivität. Wenn keine ausgehende Konnektivität zu 443 verfügbar ist, wird TCP-Port 80 verwendet. |
 | 5671 und 9352 |**Empfohlen** , jedoch für Datenkonnektivität optional. Beachten Sie, dass dieser Modus normalerweise für mehr Durchsatz sorgt. Wenn Outbound-Konnektivität zu diesen Ports nicht verfügbar ist, wird TCP-Port 443 verwendet. |
 
-* Sie müssen in der Lage sein, hostnameFolgendes ein:Portnummer Ihrer lokalen Ressource zu erreichen.
+* Sie müssen in der Lage sein, *hostname*Folgendes ein:*Portnummer* Ihrer lokalen Ressource zu erreichen.
 
 Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie den Browser auf dem Computer verwenden, auf dem der lokale Hybridverbindungs-Agent installiert ist.
 
@@ -195,7 +195,7 @@ In diesem Schritt bearbeiten Sie die Verbindungszeichenfolge, der Ihre Anwendung
     Beachten Sie beim Erstellen der Verbindungszeichenfolge Folgendes:
    
    * Wenn Sie eine Verbindung mit einer benannten Instanz statt mit der Standardinstanz herstellen (beispielsweise IhrServer\SQLEXPRESS), müssen Sie den SQL Server für die Verwendung statischer Ports konfigurieren. Informationen zum Konfigurieren statischer Ports finden Sie unter [Konfigurieren von SQL Server zum Abhören eines bestimmten Ports](http://support.microsoft.com/kb/823938). Standardmäßig verwenden benannte Instanzen UDP und dynamische Ports, was von Hybridverbindungen nicht unterstützt wird.
-   * Es wird empfohlen, dass Sie den Port (standardmäßig 1433 wie im Beispiel) in der Verbindungszeichenfolge angeben, damit Sie sicher sein können, dass auf ihrem lokalen SQL Server TCP aktiviert ist und der richtige Port verwendet wird.
+   * Es wird empfohlen, dass Sie den Port (standardmäßig&1433; wie im Beispiel) in der Verbindungszeichenfolge angeben, damit Sie sicher sein können, dass auf ihrem lokalen SQL Server TCP aktiviert ist und der richtige Port verwendet wird.
    * Denken Sie daran, die Verbindung unter Verwendung der SQL Server-Authentifizierung herzustellen und die Benutzer-ID und das Kennwort in der Verbindungszeichenfolge anzugeben.
 3. Klicken Sie in Visual Studio auf **Speichern** , um die Datei "Web.config" zu speichern.
 
@@ -289,7 +289,7 @@ Sie haben jetzt eine ASP.NET-Webanwendung erstellt und bereitgestellt, die eine 
 [SSMScreateNewDB]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/A05SSMScreateNewDBlh.png
 [SSMSprovideDBname]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/A06SSMSprovideDBname.png
 [SSMSMembershipDBCreated]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/A07SSMSMembershipDBCreated.png
-[Neu]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/B01New.png
+[New]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/B01New.png
 [NewWebsite]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/B02NewWebsite.png
 [WebsiteCreationBlade]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/B03WebsiteCreationBlade.png
 [WebSiteRunningBlade]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/B04WebSiteRunningBlade.png
@@ -335,6 +335,6 @@ Sie haben jetzt eine ASP.NET-Webanwendung erstellt und bereitgestellt, die eine 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

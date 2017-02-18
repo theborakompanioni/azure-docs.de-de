@@ -1,5 +1,5 @@
 ---
-title: Service Fabric-Architektur | Microsoft Docs
+title: Architektur von Azure Service Fabric | Microsoft-Dokumentation
 description: "Service Fabric ist eine Plattform für verteilte Systeme zum Erstellen skalierbarer, zuverlässiger und einfach zu verwaltender Anwendungen für die Cloud. Dieser Artikel beschreibt die Architektur von Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 06/09/2016
 ms.author: rsinha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 911e1cedd944d22f9e13c1ec784bae0efb0947e2
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: c485e8a3d12e7d2dcbfd6304a67aaa4fc2838b3f
 
 
 ---
@@ -66,6 +66,6 @@ Das Prüfbarkeitssubsystem besteht aus mehreren Tools, die speziell zum Testen v
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

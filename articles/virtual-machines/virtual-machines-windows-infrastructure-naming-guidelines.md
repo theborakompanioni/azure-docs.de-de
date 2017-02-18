@@ -1,5 +1,5 @@
 ---
-title: "Benennungsrichtlinien für die Azure-Infrastruktur | Microsoft Docs"
+title: "Benennungsrichtlinien für die Azure-Infrastruktur – Windows | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für Benennungen in Azure-Infrastrukturdiensten."
 documentationcenter: 
 services: virtual-machines-windows
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/24/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 310dc34634f7104ddfc7dfab13f09ab945b53cf4
-ms.openlocfilehash: 1f456fc982f185e1c68aca91650f73e2d1bb5947
+ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
+ms.openlocfilehash: 866265bfa2eb7bcfebd8c73e14d3344a150aaf09
 
 
 ---
@@ -107,6 +107,6 @@ Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur K
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

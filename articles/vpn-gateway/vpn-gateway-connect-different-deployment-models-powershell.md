@@ -1,10 +1,10 @@
 ---
-title: Verbinden von klassischen virtuellen Netzwerken mit virtuellen Resource Manager-Netzwerken mit PowerShell | Microsoft Docs
+title: 'Verbinden von klassischen virtuellen Netzwerken mit Azure Resource Manager-VNets: PowerShell | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie mithilfe von VPN Gateway und PowerShell eine VPN-Verbindung zwischen klassischen VNets und Resource Manager-VNets erstellen.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/23/2016
+ms.date: 01/12/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: 42cc83b058f504ba5eb7a918fbcc775f14c632fd
+ms.sourcegitcommit: 10985eaebd9148ef4fbd22eac0ba50076ca71ef5
+ms.openlocfilehash: 430d2c02537e6907da09926db52a3d07b975bb64
 
 
 ---
@@ -62,7 +62,7 @@ Adressräume des virtuellen Netzwerks = 10.0.0.0/24 <br>
 Subnet-1 = 10.0.0.0/27 <br>
 GatewaySubnet = 10.0.0.32/29 <br>
 Name des lokalen Netzwerks = RMVNetLocal <br>
- Gatewaytyp = DynamicRouting
+Gatewaytyp = DynamicRouting
 
 **Einstellungen für das Resource Manager-VNet**
 
@@ -75,7 +75,7 @@ Standort = USA, Osten <br>
 Name der öffentlichen Gateway-IP = gwpip <br>
 Lokales Netzwerkgateway = ClassicVNetLocal <br>
 Name des Gateways für virtuelle Netzwerke = RMGateway <br>
- Gateway-IP-Adressierungskonfiguration = gwipconfig
+Gateway-IP-Adressierungskonfiguration = gwipconfig
 
 ## <a name="a-namecreatesmgwasection-1---configure-the-classic-vnet"></a><a name="createsmgw"></a>Abschnitt 1 – Konfigurieren des klassischen VNet
 ### <a name="part-1---download-your-network-configuration-file"></a>Teil 1 – Herunterladen der Netzwerkkonfigurationsdatei
@@ -111,7 +111,7 @@ Fügen Sie Ihrem VNet im Element **VirtualNetworkSites** ein Gatewaysubnetz hinz
     </VirtualNetworkSites>
 
 ### <a name="part-3---add-the-local-network-site"></a>Teil 3 – Hinzufügen des lokalen Netzwerkstandorts
-Der lokale Netzwerkstandort, den Sie hinzufügen, stellt das RM-VNet dar, mit dem Sie eine Verbindung herstellen möchten. Sofern noch nicht vorhanden, müssen Sie der Datei ein Element **LocalNetworkSites** hinzufügen. An diesem Punkt der Konfiguration kann für die „VPNGatewayAddress“ eine beliebige gültige öffentliche IP-Adresse verwendet werden, weil wir das Gateway für das Resource Manager-VNet noch nicht erstellt haben. Nachdem wir das Gateway erstellt haben, ersetzen wir diese Platzhalter-IP-Adresse durch die richtige öffentliche IP-Adresse, die dem RM-Gateway zugewiesen wurde.
+Der lokale Netzwerkstandort, den Sie hinzufügen, stellt das RM-VNet dar, mit dem Sie eine Verbindung herstellen möchten. Sofern noch nicht vorhanden, müssen Sie der Datei ein **LocalNetworkSites**-Element hinzufügen. An diesem Punkt der Konfiguration kann für die „VPNGatewayAddress“ eine beliebige gültige öffentliche IP-Adresse verwendet werden, weil wir das Gateway für das Resource Manager-VNet noch nicht erstellt haben. Nachdem wir das Gateway erstellt haben, ersetzen wir diese Platzhalter-IP-Adresse durch die richtige öffentliche IP-Adresse, die dem RM-Gateway zugewiesen wurde.
 
     <LocalNetworkSites>
       <LocalNetworkSite name="RMVNetLocal">
@@ -146,6 +146,9 @@ Das Ergebnis, durch das der erfolgreiche Abschluss des Imports bestätigt wird, 
 
 ### <a name="part-6---create-the-gateway"></a>Teil 6 – Erstellen des Gateways
 Sie können das VNet-Gateway im klassischen Portal oder mit PowerShell erstellen.
+
+Vor dem Ausführen dieses Beispiels schlagen Sie in der heruntergeladenen Netzwerkkonfigurationsdatei die exakten Namen nach, die von Azure erwartet werden. Die Netzwerkkonfigurationsdatei enthält die Werte für Ihre klassischen virtuellen Netzwerke. Aufgrund der Unterschiede zwischen den Bereitstellungsmodellen werden die Namen für klassische VNETs in einigen Fällen in der Netzwerkkonfigurationsdatei geändert, wenn Einstellungen für klassische VNETs im Azure-Portal erstellt werden. Beispiel: Wenn Sie mithilfe des Azure-Portals ein klassisches VNet mit dem Namen „Classic VNet“ in einer Ressourcengruppe mit dem Namen „ClassicRG“ erstellt haben, wird der Name in der Netzwerkkonfigurationsdatei in „Group ClassicRG Classic VNet“ umgewandelt. Wenn Sie einen VNET-Namen angeben, der Leerzeichen enthält, setzen Sie den Wert in Anführungszeichen.
+
 
 Verwenden Sie das folgende Beispiel, um ein Gateway mit dynamischem Routing zu erstellen:
 
@@ -206,28 +209,24 @@ Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet 
    
         Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
 
-## <a name="section-3-modify-the-local-network-for-the-classic-vnet"></a>Abschnitt 3: Ändern des lokalen Netzwerks für das klassische VNet
-Zum Ausführen dieses Schritts können Sie entweder die Netzwerkkonfigurationsdatei exportieren, bearbeiten, speichern und wieder in Azure importieren oder die Einstellung im klassischen Portal ändern. 
+## <a name="section-3-modify-the-classic-vnet-local-site-settings"></a>Abschnitt 3: Ändern der Einstellungen für den lokalen Standort des klassischen VNet
 
-### <a name="to-modify-in-the-portal"></a>So nehmen Sie die Änderung im Portal vor
-1. Öffnen Sie das [klassische Portal](https://manage.windowsazure.com).
-2. Scrollen Sie im klassischen Portal auf der linken Seite nach unten, und klicken Sie auf **Netzwerke**. Klicken Sie oben auf der Seite **Netzwerke** auf **Lokale Netzwerke**. 
-3. Wählen Sie auf der Seite **Lokale Netzwerke** das lokale Netzwerk aus, das Sie in Teil 1 konfiguriert haben, und klicken Sie dann unten auf der Seite auf **Bearbeiten**.
-4. Ersetzen Sie auf der Seite **Details zum lokalen Netzwerk angeben** die Platzhalter-IP-Adresse durch die öffentliche IP-Adresse für das Resource Manager-Gateway, das Sie im vorherigen Abschnitt erstellt haben. Klicken Sie auf den Pfeil, um zum nächsten Abschnitt zu gelangen. Überprüfen Sie, ob der **Adressraum** korrekt ist, und klicken Sie dann auf das Häkchen, um die Änderungen zu übernehmen.
+In diesem Abschnitt arbeiten Sie mit dem klassischen VNet. Sie ersetzen die Platzhalter-IP-Adresse, die Sie beim Festlegen der Einstellungen für den lokalen Standort verwendet haben, die zum Herstellen der Verbindung mit dem Resource Manager-VNet-Gateway verwendet wird. 
 
-### <a name="to-modify-using-the-network-configuration-file"></a>So nehmen Sie die Änderung mithilfe der Netzwerkkonfigurationsdatei vor
 1. Exportieren Sie die Netzwerkkonfigurationsdatei.
-2. Ändern Sie in einem Text-Editor die IP-Adresse des VPN-Gateways.
+
+        Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
+2. Ändern Sie den Wert für „VPNGatewayAddress“ mit einem Texteditor. Ersetzen Sie die Platzhalter-IP-Adresse durch die öffentliche IP-Adresse des Resource Manager-Gateways, und speichern Sie dann die Änderungen.
    
         <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
-3. Speichern Sie die Änderungen, und importieren Sie die bearbeitete Datei wieder in Azure.
+3. Importieren Sie die geänderte Netzwerkkonfigurationsdatei in Azure.
+
+        Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 
 ## <a name="a-nameconnectasection-4-create-a-connection-between-the-gateways"></a><a name="connect"></a>Abschnitt 4: Erstellen einer Verbindung zwischen den Gateways
-Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich. Sie müssen Ihr Azure-Konto hinzufügen, um die klassischen PowerShell-Cmdlets zu verwenden. Dazu können Sie das folgende Cmdlet verwenden: 
+Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich. Sie müssen Ihr Azure-Konto hinzufügen, um die klassischen PowerShell-Cmdlets zu verwenden. Verwenden Sie dazu `Add-AzureAccount`.
 
-    Add-AzureAccount
-
-1. **Legen Sie Ihren gemeinsam verwendeten Schlüssel fest** , indem Sie den folgenden Befehl ausführen. In diesem Beispiel ist `-VNetName` der Name des klassischen VNet und `-LocalNetworkSiteName` der Name, den Sie bei der Konfiguration des lokalen Netzwerks im klassischen Portal für das lokale Netzwerk angegeben haben. `-SharedKey` ist ein Wert, den Sie generieren und angeben können. Der hier angegebene Wert muss mit dem Wert identisch sein, den Sie im nächsten Schritt beim Erstellen der Verbindung angeben. Für dieses Beispiel sollte der Status **Erfolgreich**zurückgegeben werden.
+1. Legen Sie in der PowerShell-Konsole die gemeinsam verwendeten Schlüssel fest. Vor dem Ausführen der Cmdlets schlagen Sie in der heruntergeladenen Netzwerkkonfigurationsdatei die exakten Namen nach, die von Azure erwartet werden. Wenn Sie einen VNet-Namen angeben, der Leerzeichen enthält, setzen Sie den Wert in einfache Anführungszeichen.<br><br>Im folgenden Beispiel ist `-VNetName` der Name des klassischen VNet und `-LocalNetworkSiteName` der Name, den Sie für den Standort des lokalen Netzwerks angegeben haben. `-SharedKey` ist ein Wert, den Sie generieren und angeben. Im Beispiel wurde 'abc123' verwendet, Sie können jedoch einen komplexeren Wert generieren und verwenden. In erster Linie muss der hier angegebene Wert mit dem Wert identisch sein, den Sie im nächsten Schritt beim Erstellen der Verbindung angeben. Der Status **Erfolgreich** sollte zurückgegeben werden. 
    
         Set-AzureVNetGatewayKey -VNetName ClassicVNet `
         -LocalNetworkSiteName RMVNetLocal -SharedKey abc123
@@ -244,18 +243,39 @@ Zum Erstellen einer Verbindung zwischen den Gateways ist PowerShell erforderlich
         -Location "East US" -VirtualNetworkGateway1 `
         $vnet02gateway -LocalNetworkGateway2 `
         $vnet01gateway -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-3. Sie können die Verbindung im Portal oder mit dem Cmdlet `Get-AzureRmVirtualNetworkGatewayConnection` anzeigen.
-   
-        Get-AzureRmVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1
 
-## <a name="a-namefaqavnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
-Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Informationen zu VNet-zu-VNet-Verbindungen zu erhalten.
+## <a name="section-5-verify-your-connections"></a>Abschnitt 5: Überprüfen der Verbindungen
+
+### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>So überprüfen Sie die Verbindung des klassischen VNet mit dem Resource Manager-VNet
+
+####<a name="verify-your-connection-using-powershell"></a>Überprüfen der Verbindung mithilfe von PowerShell
+
+
+[!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
+
+
+####<a name="verify-your-connection-using-the-azure-portal"></a>Überprüfen der Verbindung mithilfe des Azure-Portals
+
+[!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
+
+
+###<a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>So überprüfen Sie die Verbindung des Resource Manager-VNet mit dem klassischen VNet
+
+####<a name="verify-your-connection-using-powershell"></a>Überprüfen der Verbindung mithilfe von PowerShell
+
+[!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+
+####<a name="verify-your-connection-using-the-azure-portal"></a>Überprüfen der Verbindung mithilfe des Azure-Portals
+
+[!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
+
+## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>Informationen zu VNet-zu-VNet-Verbindungen
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

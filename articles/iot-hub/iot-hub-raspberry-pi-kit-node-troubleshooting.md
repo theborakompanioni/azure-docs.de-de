@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung | Microsoft-Dokumentation
+title: "Verbinden von Raspberry Pi (C) mit Azure IoT – Problembehandlung | Microsoft-Dokumentation"
 description: "Problembehandlungsseite für die Node.js-Umgebung von Raspberry Pi"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: cd29c24c7c1a1bf3bc03543ffd7f0e9e33537edf
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 2c5e2955584b165ca0ca95ce424a2050fb3f6ccd
 
 
 ---
@@ -123,6 +123,7 @@ Wenn Sie Azure IoT Hub erfolgreich mit der Azure CLI bereitgestellt haben und ei
 ### <a name="device-explorer"></a>Geräte-Explorer
 Der [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit Ihrer IoT Hub-Instanz in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](iot-hub-devguide.md):
 
+
 * *Geräteidentitätsverwaltung* zum Bereitstellen und Verwalten von Geräten, die bei IoT Hub registriert sind.
 * *Empfangen von Gerät-zu-Cloud*, damit Sie von Ihrem Gerät an IoT Hub gesendete Nachrichten überwachen können.
 * *Senden von Cloud-zu-Gerät* ermöglicht es Ihnen, von Ihren Geräten Nachrichten an IoT Hub zu senden.
@@ -153,6 +154,6 @@ Sie können eine vollständige CLI-Oberfläche nutzen, um alle Azure-Ressourcen 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

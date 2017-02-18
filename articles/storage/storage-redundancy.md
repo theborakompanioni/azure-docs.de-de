@@ -1,5 +1,5 @@
 ---
-title: Azure Storage-Replikation | Microsoft Docs
+title: Datenreplikation in Azure Storage | Microsoft-Dokumentation
 description: "Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und hohe Verfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS)."
 services: storage
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8253e4c58cf9f1900a6e76885af3abac32c78cb0
+ms.sourcegitcommit: 349be81b5d1d5ccc1510360974b4e3b10471cf7f
+ms.openlocfilehash: 13cd31bdce89ae898a6e22a1d27b5aed819ccc0a
 
 
 ---
@@ -82,8 +82,8 @@ Bei GRS werden Replikate sowohl in der primären als auch der sekundären Region
 Überlegungen:
 
 * Da eine asynchrone Replikation eine Verzögerung einschließt, gehen bei einem regionalen Notfall Änderungen, die noch nicht in der sekundären Region repliziert wurden, unter Umständen verloren, wenn die Daten nicht aus der primären Region wiederhergestellt werden können.
-* Das Replikat ist nicht verfügbar, sofern von Microsoft kein Failover in die sekundäre Region initiiert wird.
-* Wenn eine Anwendung Daten aus der sekundären Region lesen können soll, sollten Benutzer RA-GRS aktivieren.
+* Das Replikat ist nicht verfügbar, sofern von Microsoft kein Failover in die sekundäre Region initiiert wird. Wenn Microsoft ein Failover auf die sekundäre Region initiiert, erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](storage-disaster-recovery-guidance.md). 
+* Wenn eine Anwendung Daten aus der sekundären Region lesen können soll, muss der Benutzer RA-GRS aktivieren.
 
 Wenn Sie ein Speicherkonto erstellen, wählen Sie die primäre Region für das Konto aus. Die sekundäre Region wird basierend auf der primären Region bestimmt und kann nicht geändert werden. In der folgenden Tabelle werden die Paare primärer und sekundärer Regionen gezeigt:
 
@@ -129,9 +129,12 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 Überlegungen:
 
 * Von Ihrer Anwendung muss verwaltet werden, mit welchem Endpunkt sie bei Verwendung von RA-GRS interagieren muss.
+* Da eine asynchrone Replikation eine Verzögerung einschließt, gehen bei einem regionalen Notfall Änderungen, die noch nicht in der sekundären Region repliziert wurden, unter Umständen verloren, wenn die Daten nicht aus der primären Region wiederhergestellt werden können.
+* Wenn Microsoft ein Failover auf die sekundäre Region initiiert, erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](storage-disaster-recovery-guidance.md). 
 * RA-GRS ist für hohe Verfügbarkeit ausgelegt. Eine Anleitung zur Skalierbarkeit finden Sie in der [Checkliste zur Leistung](storage-performance-checklist.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Entwerfen hochverfügbarer Anwendungen mithilfe des RA-GRS-Speichers](storage-designing-ha-apps-with-ragrs.md)
 * [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 * [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md)
 * [Skalierbarkeits- und Leistungsziele für Azure-Speicher](storage-scalability-targets.md)
@@ -141,6 +144,6 @@ Wenn Sie den schreibgeschützten Zugriff auf Ihre Daten in der sekundären Regio
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

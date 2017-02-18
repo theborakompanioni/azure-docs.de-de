@@ -1,9 +1,9 @@
 ---
-title: 'Gewusst wie: Verwalten des Ablaufs von Inhalten aus Azure-Web-Apps/Cloud Services, ASP.NET und IIS in Azure CDN | Microsoft Docs'
-description: Beschreibt die Verwaltung des Ablaufs von Clouddienstinhalten in Azure CDN
+title: Verwalten des Ablaufs von Webinhalten in Azure CDN | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Ablauf von Inhalten aus Azure-Web-Apps/Cloud Services, ASP.NET oder IIS in Azure CDN verwalten.
 services: cdn
 documentationcenter: .NET
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 61c14a27fc82b128dec41e2ed46850ac7fb554ad
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 02d0270c5763eb9dd2190bc24b793022ea536746
 
 
 ---
-# <a name="how-to-manage-expiration-of-azure-web-appscloud-services-aspnet-or-iis-content-in-azure-cdn"></a>Gewusst wie: Verwalten des Ablaufs von Inhalten aus Azure-Web-Apps/Cloud Services, ASP.NET oder IIS in Azure CDN
+# <a name="manage-expiration-of-azure-web-appscloud-services-aspnet-or-iis-content-in-azure-cdn"></a>Verwalten des Ablaufs von Inhalten aus Azure-Web-Apps/Cloud Services, ASP.NET oder IIS in Azure CDN
 > [!div class="op_single_selector"]
 > * [Azure-Web-Apps/Cloud Services, ASP.NET oder IIS](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Storage Blob-Dienst](cdn-manage-expiration-of-blob-content.md)
@@ -75,6 +75,6 @@ Response.Cache.SetLastModified(DateTime.Now);
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

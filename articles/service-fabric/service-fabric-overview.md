@@ -1,5 +1,5 @@
 ---
-title: "Übersicht über Service Fabric | Microsoft-Dokumentation"
+title: "Übersicht über Service Fabric in Azure | Microsoft-Dokumentation"
 description: "Eine Übersicht über Service Fabric und das Konzept der Anwendungen, die sich aus Microservices zusammensetzen, um Skalierung und Resilienz zu bieten. Service Fabric ist eine Plattform für verteilte Systeme und ermöglicht das Erstellen skalierbarer, zuverlässiger und einfach zu verwaltender Anwendungen für die Cloud."
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/22/2016
+ms.date: 01/05/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 6b3c49f6721ffc149bbb7f0433ff67f529abf938
-ms.openlocfilehash: c61541d65fe2f84bdd629d8b8d8c7ce00a049133
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: 0e899225063e77ccef254e8aaacbf0390faa25e3
 
 
 ---
@@ -79,7 +79,7 @@ Service Fabric verfügt über Unterstützung für die vollständige Anwendungsle
 
 Dank der Funktionen für die Anwendungslebenszyklusverwaltung von Service Fabric profitieren Anwendungsadministratoren und IT-Operatoren von einfachen Workflows und können Anwendungen so mit geringem Arbeitsaufwand vorbereiten, bereitstellen, patchen und überwachen. Diese integrierten Workflows entlasten IT-Operatoren bei der Gewährleistung der kontinuierlichen Anwendungsverfügbarkeit erheblich.
 
-Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices und anderen ausführbaren Dateien/Laufzeiten, die gemeinsam bereitgestellt werden. Dank leistungsstarker Typen für Anwendungen und gepackter Microservices ermöglicht Service Fabric die Bereitstellung mehrerer Anwendungsinstanzen. Jede Instanz kann jeweils unabhängig voneinander verwaltet und aktualisiert werden. Maßgeblich dabei ist, dass Service Fabric *jede beliebige* ausführbare Datei oder Laufzeit zuverlässig bereitstellen kann. Mit Service Fabric können beispielsweise ASP.NET Core 1, Node.js, virtuelle Java-Computer, Skripts und alle anderen beliebigen Komponenten bereitgestellt werden, aus denen sich Ihre Anwendung zusammensetzt.
+Die meisten Anwendungen bestehen aus einer Kombination aus zustandslosen und zustandsbehafteten Microservices und anderen ausführbaren Dateien/Laufzeiten, die gemeinsam bereitgestellt werden. Dank leistungsstarker Typen für Anwendungen und gepackter Microservices ermöglicht Service Fabric die Bereitstellung mehrerer Anwendungsinstanzen. Jede Instanz kann jeweils unabhängig voneinander verwaltet und aktualisiert werden. Maßgeblich dabei ist, dass Service Fabric *jede beliebige* ausführbare Datei oder Laufzeit zuverlässig bereitstellen kann. Mit Service Fabric können beispielsweise .NET, ASP.NET Core, Node.js, virtuelle Java-Computer, Skripts, Angular und alle anderen Komponenten bereitgestellt werden, aus denen sich Ihre Anwendung zusammensetzt.
 
 Weitere Informationen zur Verwaltung des Anwendungslebenszyklus finden Sie unter [Anwendungslebenszyklus](service-fabric-application-lifecycle.md). Weitere Informationen zum Bereitstellen von Code finden Sie unter [Bereitstellen einer ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md).
 
@@ -91,7 +91,7 @@ Sie können sich auch dieses Microsoft Virtual Academy-Video ansehen, dass eine 
 Mit Service Fabric können Sie Folgendes tun:
 
 * Hochgradig skalierbare Anwendungen mit Selbstreparatur entwickeln.
-* Anwendungen entwickeln, die aus Microservices bestehen, indem Sie das Service Fabric-Programmiermodell verwenden. Oder hosten Sie einfach ausführbare Gastanwendungsdateien und andere Anwendungsframeworks Ihrer Wahl, z.B. ASP.NET Core 1 oder Node.js.
+* Anwendungen entwickeln, die aus Microservices bestehen, indem Sie das Service Fabric-Programmiermodell verwenden. Oder hosten Sie einfach ausführbare Gastanwendungsdateien und andere Anwendungsframeworks Ihrer Wahl, z.B. ASP.NET Core oder Node.js.
 * Sehr zuverlässige zustandslose und zustandsbehaftete Microservices entwickeln.
 * Container bereitstellen und orchestrieren, die Windows-Container und Docker-Container in einem Cluster enthalten. Diese Container können ausführbare Gastanwendungsdateien oder zuverlässige zustandslose und zustandsbehaftete Microservices enthalten. In beiden Fällen erhalten Sie eine Zuordnung vom Containerport zum Hostport, Auffindbarkeit von Containern und automatisches Failover.
 * Den Anwendungsentwurf durch die Nutzung zustandsbehafteter Microservices anstelle von Caches und Warteschlangen vereinfachen.
@@ -106,6 +106,7 @@ Mit Service Fabric können Sie Folgendes tun:
 * Integrität der Anwendungen überwachen und diagnostizieren und Richtlinien für automatische Reparaturen festlegen.
 * Die Anzahl von Knoten in einem Cluster horizontal hoch- oder herunterskalieren sowie die Größe der einzelnen Knoten zentral hoch- oder herunterskalieren. Dabei können Sie sich darauf verlassen, dass Ihre Anwendungen automatisch skaliert und gemäß den verfügbaren Ressourcen verteilt werden.
 * Den selbstreparierenden Resource Balancer beim Organisieren einer erneuten Bereitstellung der Anwendungen im Cluster überwachen. Service Fabric führt nach Fehlern eine Wiederherstellung durch und optimiert die Lastenverteilung basierend auf den verfügbaren Ressourcen.
+* Verwenden Sie den Fehleranalysedienst, um Chaostests für Ihren Dienst auszuführen, um vor der Ausführung in der Produktion Probleme und Fehler zu ermitteln.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
@@ -114,11 +115,12 @@ Mit Service Fabric können Sie Folgendes tun:
   * [Technische Übersicht](service-fabric-technical-overview.md)
 * Einrichten der Service Fabric- [Entwicklungsumgebung](service-fabric-get-started.md)  
 * [Auswählen eines Frameworks](service-fabric-choose-framework.md) für Ihren Dienst
+* Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

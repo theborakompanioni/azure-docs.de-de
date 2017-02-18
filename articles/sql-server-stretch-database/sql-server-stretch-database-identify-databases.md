@@ -1,5 +1,5 @@
 ---
-title: "Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank durch Ausführen von Stretch Database Advisor | Microsoft Docs"
+title: "Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Datenbanken und Tabellen identifizieren können, die sich für Stretch-Datenbank eignen."
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: 47b666a7f2178daebc1b2b442fd1bb8cf31e40bb
-ms.openlocfilehash: 3aef66c7b80ee356faedcaaadacd15aea3438714
+ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
+ms.openlocfilehash: 0f1a7feea79c73d7b80343fcc9898509268d111c
 
 
 ---
@@ -36,10 +36,10 @@ Laden Sie Upgrade Advisor [hier](http://go.microsoft.com/fwlink/?LinkID=613421)h
 
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 1. Wenn die Analyse abgeschlossen ist, wählen Sie auf dem Blatt **Analysierte Datenbanken** eine der analysierten Datenbanken aus, um das Blatt **Analyseergebnisse** anzuzeigen.
-   
+
    Auf dem Blatt **Analyseergebnisse** werden die empfohlenen Tabellen in der ausgewählten Datenbank aufgelistet, die den standardmäßigen Empfehlungskriterien entsprechen.
 2. Wählen Sie in der Liste der Tabellen auf dem Blatt **Analyseergebnisse** eine der empfohlenen Tabellen aus, um das Blatt **Tabellenergebnisse** anzuzeigen.
-   
+
    Wenn Hindernisse vorliegen, enthält das Blatt **Tabellenergebnisse** Hindernisse für die ausgewählte Tabelle. Informationen zu den Hindernissen, die vom Stretch Database Advisor erkannt werden, finden Sie unter [Einschränkungen für Stretch-Datenbank](sql-server-stretch-database-limitations.md).
 3. Wählen Sie in der Liste der Hindernisse auf dem Blatt **Tabellenergebnisse** eines der Probleme aus, um weitere Informationen über das ausgewählte Problem und mögliche Gegenmaßnahmen anzuzeigen. Implementieren Sie die empfohlenen Maßnahmen, wenn Sie die ausgewählte Tabelle für Stretch-Datenbank konfigurieren möchten.
 
@@ -58,7 +58,6 @@ Aktivieren Sie Stretch-Datenbank.
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Abrufen von Azure-Tools (Ubuntu 16.04) | Microsoft-Dokumentation
+title: "Verbinden von Raspberry Pi (C) mit Azure IoT – Lektion 2: Azure-Tools (Ubuntu) | Microsoft-Dokumentation"
 description: Installieren Sie unter Ubuntu Python und die Azure-Befehlszeilenschnittstelle (Azure CLI).
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 155e5d6280d86b06b1718fc3032c2c224539183d
-ms.openlocfilehash: 5ae42a718a67d52364dd4b083f65a45a668e643d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 4c31bb14f2b32d71f14a89576922b9701b226e66
 
 
 ---
@@ -74,6 +74,6 @@ Sie haben die Azure-CLI installiert. Die nächste Aufgabe besteht in der Erstell
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

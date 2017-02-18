@@ -1,5 +1,5 @@
 ---
-title: "Hohe Verfügbarkeit und Notfallwiederherstellung von Azure IoT Hub | Microsoft Docs"
+title: "Hochverfügbarkeit und Notfallwiederherstellung für Azure IoT Hub | Microsoft-Dokumentation"
 description: "Informationen zu den Azure- und IoT Hub-Features zum Erstellen von Azure IoT-Lösungen mit hoher Verfügbarkeit und Notfallwiederherstellung."
 services: iot-hub
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: f133300d88b0ffc10b287879ec78f4c63e9ba62d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 76c3187549e1821908263c30e394db26ee6f75e6
 
 
 ---
@@ -62,6 +62,6 @@ Folgen Sie diesen Links, um mehr über Azure IoT Hub zu erfahren:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

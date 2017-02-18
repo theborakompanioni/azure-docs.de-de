@@ -1,6 +1,6 @@
 ---
-title: Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory | Microsoft Docs
-description: Informationen zum Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory
+title: 'Endbenutzerauthentifizierung: Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory umsetzen.
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 01/10/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7e7c9fd2fe7e6327cd39c4c26583c8fd556c9044
+ms.sourcegitcommit: 9019a4115e81a7d8f1960098b1138cd437a0460b
+ms.openlocfilehash: a50fc687a1738a55c3d22eb3e12060397c162e06
 
 
 ---
@@ -29,8 +29,8 @@ ms.openlocfilehash: 7e7c9fd2fe7e6327cd39c4c26583c8fd556c9044
 
 Azure Data Lake Store verwendet Azure Active Directory für die Authentifizierung. Vor dem Erstellen einer Anwendung, die mit Azure Data Lake Store oder Azure Data Lake Analytics funktioniert, müssen Sie entscheiden, wie Sie Ihre Anwendung bei Azure Active Directory (Azure AD) authentifizieren möchten. Sie haben zwei Möglichkeiten:
 
-* Authentifizierung von Endbenutzern und 
-* Dienst-zu-Dienst-Authentifizierung 
+* Endbenutzerauthentifizierung (dieser Artikel)
+* Dienst-zu-Dienst-Authentifizierung
 
 Bei beiden Optionen erhält Ihre Anwendung ein OAuth 2.0-Token, das an jede an Azure Data Lake Store oder Azure Data Lake Analytics gestellte Anforderung angefügt wird.
 
@@ -59,7 +59,7 @@ Ihre Anwendung kann das Einblenden eines OAuth 2.0-Autorisierungsfensters auslö
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>Direktes Übergeben von Benutzeranmeldeinformationen
-Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. Diese Methode funktioniert nur mit Benutzerkonten mit Organisations-ID. Sie ist nicht kompatibel mit persönlichen bzw. „Live ID“-Benutzerkonten, die z.B. auf @outlook.com oder @live.com. enden. Darüber hinaus ist diese Methode nicht kompatibel mit Benutzerkonten, die die zweistufige Authentifizierung von Azure AD benötigen.
+Ihre Anwendung kann Azure AD Benutzeranmeldeinformationen direkt bereitstellen. Diese Methode funktioniert nur mit Benutzerkonten mit Organisations-ID. Sie ist nicht kompatibel mit persönlichen bzw. Live ID-Benutzerkonten, die beispielsweise auf @outlook.com oder @live.com enden. Darüber hinaus ist diese Methode nicht kompatibel mit Benutzerkonten, die die zweistufige Authentifizierung von Azure AD benötigen.
 
 ### <a name="what-do-i-need-to-use-this-approach"></a>Was brauche ich, um diesen Ansatz zu befolgen?
 * Name Ihrer Azure AD-Domäne Dieser ist bereits in den in diesem Artikel angegebenen Voraussetzungen aufgeführt.
@@ -75,7 +75,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Azure AD-Webanwendung für die Au
 
 ### <a name="step-1-create-an-azure-active-directory-application"></a>Schritt 1: Erstellen Sie eine Azure Active Directory-Anwendung.
 > [!NOTE]
-> Bei den Schritten unten kommt das Azure-Portal zum Einsatz. Sie können auch eine Azure AD-Anwendung mithilfe von [Azure PowerShell](../resource-group-authenticate-service-principal.md) oder der [Azure-Befehlszeilenschnittstelle](../resource-group-authenticate-service-principal-cli.md) erstellen.
+> Bei den Schritten unten kommt das Azure-Portal zum Einsatz. Sie können auch eine Azure AD-Anwendung mithilfe von [Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md) oder der [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) erstellen.
 > 
 > 
 
@@ -134,6 +134,6 @@ In diesem Artikel haben Sie eine Azure AD-Webanwendung erstellt und die erforder
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

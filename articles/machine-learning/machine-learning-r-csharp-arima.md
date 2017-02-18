@@ -1,6 +1,6 @@
 ---
-title: "Prognose – ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert) | Microsoft Docs"
-description: "Prognose – ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert)"
+title: "(veraltet) Prognose – ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert) – Azure | Microsoft-Dokumentation"
+description: "(veraltet) Prognose – ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert)"
 services: machine-learning
 documentationcenter: 
 author: yijichen
@@ -11,16 +11,24 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/13/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c8d02cdd50c7f44991aeabee1999a81ec18bf59c
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 169331fc08c8d378fbb0c9869e69a9eb132224ba
 
 
 ---
-# <a name="forecasting---autoregressive-integrated-moving-average-arima"></a>Prognose – ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert)
+# <a name="deprecated-forecasting---autoregressive-integrated-moving-average-arima"></a>(veraltet) Prognose – ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert)
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
+
 Dieser [Dienst](https://datamarket.azure.com/dataset/aml_labs/arima) implementiert ARIMA (Autoregressive Integrated Moving Average, autoregressiver integrierter gleitender Mittelwert), um Vorhersagen basierend auf den vom Benutzer bereitgestellten Verlaufsdaten zu erzeugen. Erhöht sich der Bedarf für ein bestimmtes Produkt in diesem Jahr? Kann ich meine Produktverkäufe für die Weihnachtssaison vorhersagen, damit ich meine Inventur effektiv planen kann? Planungsmodelle sind für solche Fragen die passende Lösung. Angesichts der letzten Daten, untersuchen diese Modelle versteckte Trends und Saisonabhängigkeit, um zukünftige Trends vorherzusagen. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -142,6 +150,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

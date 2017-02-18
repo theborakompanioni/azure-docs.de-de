@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zur Service Fabric-Anwendung und zu Sicherheitsrichtlinien | Microsoft Docs
+title: "Weitere Informationen zu Sicherheitsrichtlinien für Azure-Microservices | Microsoft-Dokumentation"
 description: "Eine Übersicht über die Ausführung einer Service Fabric-Anwendung unter System- und lokalen Sicherheitskonten einschließlich dem SetupEntryPoint, an dem eine Anwendung verschiedene Aktionen mit bestimmten Berechtigungen ausführen muss, bevor sie gestartet wird."
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/22/2016
+ms.date: 01/05/2017
 ms.author: mfussell
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9484de017b9903cc22b27b26bba753b09b311749
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 469f37362fa0ebe39367a66df8a27e71e762a9d5
 
 
 ---
@@ -34,7 +34,7 @@ Wie im [Anwendungsmodell](service-fabric-application-model.md) beschrieben, ist 
 
 Unten sehen Sie ein einfaches Beispiel für ein Dienstmanifest mit dem SetupEntryPoint und dem primären EntryPoint des Diensts.
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest</Description>
@@ -56,12 +56,12 @@ Unten sehen Sie ein einfaches Beispiel für ein Dienstmanifest mit dem SetupEntr
   </CodePackage>
   <ConfigPackage Name="Config" Version="1.0.0" />
 </ServiceManifest>
-~~~
+```
 
 ### <a name="configure-the-policy-by-using-a-local-account"></a>Konfigurieren der Richtlinie mithilfe eines lokalen Kontos
 Nach der Konfiguration des Diensts mit einem SetupEntryPoint können Sie im Anwendungsmanifest die Sicherheitsberechtigungen ändern, unter denen dieser ausgeführt wird. Das folgende Beispiel zeigt, wie Sie den Dienst so konfigurieren, dass dieser mit den Berechtigungen des Benutzeradministratorkontos ausgeführt wird.
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
@@ -81,7 +81,7 @@ Nach der Konfiguration des Diensts mit einem SetupEntryPoint können Sie im Anwe
       </Users>
    </Principals>
 </ApplicationManifest>
-~~~
+```
 
 Erstellen Sie zuerst den Abschnitt **Principals** mit einem Benutzernamen, z.B. „SetupAdminUser“. Dies bedeutet, dass der Benutzer Mitglied der Gruppe „Administratoren“ des Systems ist.
 
@@ -95,7 +95,7 @@ Stellen Sie anschließend sicher, dass die Datei „MySetup.bat“ im Dienstpake
 
 Öffnen Sie nun die Datei „MySetup.bat“, und fügen Sie die folgenden Befehle hinzu:
 
-~~~
+```
 REM Set a system environment variable. This requires administrator privilege
 setx -m TestVariable "MyValue"
 echo System TestVariable set to > out.txt
@@ -103,25 +103,25 @@ echo %TestVariable% >> out.txt
 
 REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
-~~~
+```
 
 Als Nächstes müssen Sie die Projektmappe erstellen und in einem lokalen Entwicklungscluster bereitstellen. Nachdem der Dienst gestartet wurde (wie im Service Fabric Explorer angezeigt), können Sie erkennen, dass die Datei „MySetup.bat“ auf zwei Arten erfolgreich war. Öffnen Sie eine PowerShell-Eingabeaufforderung, und geben Sie Folgendes ein:
 
-~~~
+```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
-~~~
+```
 
 Notieren Sie anschließend den Namen des Knotens, auf dem der Dienst bereitgestellt und im Service Fabric Explorer gestartet wurde, z.B. Knoten 2. Navigieren Sie als Nächstes zum Arbeitsordner der Anwendungsinstanz, um die Datei „out.txt“ zu ermitteln, in der der Wert von **TestVariable** angezeigt wird. Wenn dieser Dienst z.B. auf Knoten 2 bereitgestellt wurde, können Sie für **MyApplicationType** auf diesen Pfad zugreifen:
 
-~~~
+```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
-~~~
+```
 
 ### <a name="configure-the-policy-by-using-local-system-accounts"></a>Konfigurieren der Richtlinie mithilfe eines lokalen Systemkontos
 Häufig ist es von Vorteil, das Startskript mithilfe eines lokalen Systemkontos statt eines Administratorkontos auszuführen. Die Ausführung der RunAs-Richtlinie als Mitglied der Administratorgruppe funktioniert in der Regel nicht gut, da die Benutzerkontensteuerung (User Access Control, UAC) auf Computern standardmäßig aktiviert ist. In solchen Fällen **wird empfohlen, den SetupEntryPoint als LocalSystem auszuführen, anstatt als lokaler Benutzer, der der Administratorgruppe hinzugefügt wurde**. Das folgende Beispiel zeigt, wie SetupEntryPoint zur Ausführung als LocalSystem festgelegt wird:
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
@@ -137,37 +137,37 @@ Häufig ist es von Vorteil, das Startskript mithilfe eines lokalen Systemkontos 
       </Users>
    </Principals>
 </ApplicationManifest>
-~~~
+```
 
 ## <a name="start-powershell-commands-from-a-setup-entry-point"></a>Starten von PowerShell-Befehlen über einen Setupeinstiegspunkt
 Zum Ausführen von PowerShell über den Punkt **SetupEntryPoint** können Sie **PowerShell.exe** in einer Batchdatei ausführen, die auf eine PowerShell-Datei verweist. Fügen Sie zuerst dem Dienstprojekt eine PowerShell-Datei hinzu, z.B. **MySetup.ps1**. Denken Sie daran, die Eigenschaft *Kopieren, wenn neuer* so festzulegen, dass die Datei in das Dienstpaket einbezogen wird. Das folgende Beispiel zeigt eine Beispielbatchdatei zum Starten einer PowerShell-Datei namens „MySetup.ps1“, mit der die Systemumgebungsvariable **TestVariable** festgelegt wird.
 
 „MySetup.bat“ zum Starten der PowerShell-Datei:
 
-~~~
+```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
-~~~
+```
 
 Fügen Sie in der PowerShell-Datei Folgendes ein, um eine Systemumgebungsvariable festzulegen:
 
-~~~
+```
 [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
 [Environment]::GetEnvironmentVariable("TestVariable","Machine") > out.txt
-~~~
+```
 
 > [!NOTE]
 > Standardmäßig sucht die Batchdatei bei der Ausführung in dem Anwendungsordner **work** nach Dateien. In diesem Fall soll „MySetup.bat“ bei der Ausführung die Datei „MySetup.ps1“ im gleichen Ordner suchen, also im Anwendungsordner **CodePackage**. Um diesen Ordner zu ändern, legen Sie den Arbeitsordner fest:
 > 
 > 
 
-~~~
+```xml
 <SetupEntryPoint>
     <ExeHost>
     <Program>MySetup.bat</Program>
     <WorkingFolder>CodePackage</WorkingFolder>
     </ExeHost>
 </SetupEntryPoint>
-~~~
+```
 
 ## <a name="use-console-redirection-for-local-debugging"></a>Verwenden der Konsolenumleitung für das lokale Debuggen
 Gelegentlich ist es hilfreich, die Konsolenausgabe der Ausführung eines Skripts zum Debuggen auszuwerten. Zu diesem Zweck können Sie eine Richtlinie zur Konsolenumleitung festlegen, die die Ausgabe in eine Datei schreibt. Die Dateiausgabe wird in den Anwendungsordner **log** auf dem Knoten geschrieben, auf dem die Anwendung bereitgestellt und ausgeführt wird. (Siehe obiges Beispiel.)
@@ -179,7 +179,7 @@ Gelegentlich ist es hilfreich, die Konsolenausgabe der Ausführung eines Skripts
 
 Das folgende Beispiel zeigt das Festlegen der Konsolenumleitung mit einem FileRetentionCount-Wert:
 
-~~~
+```xml
 <SetupEntryPoint>
     <ExeHost>
     <Program>MySetup.bat</Program>
@@ -187,13 +187,13 @@ Das folgende Beispiel zeigt das Festlegen der Konsolenumleitung mit einem FileRe
     <ConsoleRedirection FileRetentionCount="10"/>
     </ExeHost>
 </SetupEntryPoint>
-~~~
+```
 
 Wenn Sie nun die Datei „MySetup.ps1“ so ändern, dass ein **Echo**-Befehl geschrieben wird, wird zu Debugzwecken in die Ausgabedatei geschrieben:
 
-~~~
+```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
-~~~
+```
 
 **Nachdem Sie Ihr Skript gedebuggt haben, entfernen Sie diese Richtlinie zur Konsolenumleitung sofort**.
 
@@ -203,7 +203,7 @@ In den vorangegangenen Schritten wurde erläutert, wie eine RunAs-Richtlinie auf
 ### <a name="create-local-user-groups"></a>Erstellen lokaler Benutzergruppen
 Sie können Benutzergruppen definieren und erstellen werden, die es ermöglichen, dass der Gruppe ein oder mehrere Benutzer hinzugefügt werden. Dies ist besonders nützlich, wenn es für verschiedene Diensteinstiegspunkte mehrere Benutzer gibt, die auf Gruppenebene bestimmte allgemeine Berechtigungen benötigen. Das folgende Beispiel zeigt eine lokale Gruppe namens **LocalAdminGroup**, die über Administratorrechte verfügt. Zwei Benutzer, „Customer1“ und „Customer2“, wurden dieser lokalen Gruppe hinzugefügt.
 
-~~~
+```xml
 <Principals>
  <Groups>
    <Group Name="LocalAdminGroup">
@@ -225,48 +225,49 @@ Sie können Benutzergruppen definieren und erstellen werden, die es ermöglichen
     </User>
   </Users>
 </Principals>
-~~~
+```
 
 ### <a name="create-local-users"></a>Erstellen lokaler Benutzer
 Sie können einen lokalen Benutzer erstellen, der zum Sichern eines Diensts in der Anwendung dienen kann. Wenn ein Konto vom Typ **LocalUser** im Abschnitt „Principals“ des Anwendungsmanifests angegeben wird, erstellt Service Fabric lokale Benutzerkonten auf Computern, auf denen die Anwendung bereitgestellt wird. Standardmäßig müssen diese Konten nicht die gleichen Namen wie im Anwendungsmanifest haben (z.B. „Customer3“ im folgenden Beispiel). Stattdessen werden sie dynamisch generiert und verfügen über zufällige Kennwörter.
 
-~~~
+```xml
 <Principals>
   <Users>
      <User Name="Customer3" AccountType="LocalUser" />
   </Users>
 </Principals>
-~~~
+```
 
-<!-- If an application requires that the user account and password be same on all machines (for example, to enable NTLM authentication), the cluster manifest must set NTLMAuthenticationEnabled to true. The cluster manifest must also specify an NTLMAuthenticationPasswordSecret that will be used to generate the same password across all machines.
+Wenn eine Anwendung erfordert, dass das Benutzerkonto und Kennwort auf allen Computern gleich ist (beispielsweise zum Zwecke der NTLM-Authentifizierung), muss im Clustermanifest „NTLMAuthenticationEnabled“ auf „True“ festgelegt werden. Das Clustermanifest muss darüber hinaus ein NTLMAuthenticationPasswordSecret-Element enthalten, das zum Erstellen des gleichen Kennworts auf allen Computern verwendet wird.
 
+```xml
 <Section Name="Hosting">
       <Parameter Name="EndpointProviderEnabled" Value="true"/>
       <Parameter Name="NTLMAuthenticationEnabled" Value="true"/>
       <Parameter Name="NTLMAuthenticationPassworkSecret" Value="******" IsEncrypted="true"/>
  </Section>
--->
+```
 
 ### <a name="assign-policies-to-the-service-code-packages"></a>Zuweisen von Richtlinien zu den Dienstcodepaketen
 Der Abschnitt **RunAsPolicy** für ein **ServiceManifestImport**-Element gibt das Konto aus dem Abschnitt „Principals“ an, das zum Ausführen eines Codepakets verwendet werden soll. Außerdem werden damit Codepakete aus dem Dienstmanifest Benutzerkonten im Abschnitt „Principals“ zugeordnet. Sie können dies für die Setup-Einstiegspunkte oder primären Einstiegspunkte angeben oder `All` angeben, damit diese Einstellung für beide gilt. Das folgende Beispiel zeigt die Anwendung unterschiedlicher Richtlinien:
 
-~~~
+```xml
 <Policies>
 <RunAsPolicy CodePackageRef="Code" UserRef="LocalAdmin" EntryPointType="Setup"/>
 <RunAsPolicy CodePackageRef="Code" UserRef="Customer3" EntryPointType="Main"/>
 </Policies>
-~~~
+```
 
 Wenn **EntryPointType** nicht angegeben ist, wird die Standardeinstellung auf „EntryPointType = Main“ festgelegt. Das Angeben von **SetupEntryPoint** ist besonders nützlich, wenn Sie bestimmte Setupvorgänge mit erhöhten Berechtigungen in einem Systemkonto ausführen möchten. Der tatsächliche Dienstcode kann unter einem Konto mit weniger hohen Berechtigungen ausgeführt werden.
 
 ### <a name="apply-a-default-policy-to-all-service-code-packages"></a>Anwenden einer Standardrichtlinie auf alle Dienstcodepakete
 Verwenden Sie den Abschnitt **DefaultRunAsPolicy**, um ein Standardbenutzerkonto für alle Codepakete anzugeben, für die keine bestimmte **RunAsPolicy** definiert ist. Wenn die meisten Codepakete, die im Dienstmanifest einer Anwendung angegeben sind, im gleichen Benutzerkonto ausgeführt werden müssen, kann für die Anwendung einfach eine RunAs-Standardrichtlinie mit diesem Benutzerkonto definiert werden. Im folgenden Beispiel wird beispielsweise Folgendes angegeben: Wenn für ein Codepaket keine **RunAsPolicy** angegeben ist, soll das Codepaket unter dem Standardkonto **MyDefaultAccount** ausgeführt werden, das im Abschnitt „Principals“ angegeben ist.
 
-~~~
+```xml
 <Policies>
   <DefaultRunAsPolicy UserRef="MyDefaultAccount"/>
 </Policies>
-~~~
+```
 ### <a name="use-an-active-directory-domain-group-or-user"></a>Verwenden einer Active Directory-Domänengruppe oder eines -Benutzers
 Für eine Service Fabric-Instanz, die mit dem eigenständigen Installer unter Windows Server installiert wurde, können Sie den Dienst mit den Anmeldeinformationen für ein Active Directory-Benutzer- oder -Gruppenkonto ausführen. Hinweis: Dies bezieht sich auf eine lokale Active Directory-Instanz in Ihrer Domäne, nicht auf Azure Active Directory (Azure AD). Indem Sie einen Domänenbenutzer oder eine -gruppe verwenden, können Sie anschließend auf andere Ressourcen in der Domäne (z.B. Dateifreigaben) zugreifen, für die Berechtigungen gewährt wurden.
 
@@ -274,7 +275,7 @@ Im folgenden Beispiel wird ein Active Directory-Benutzer mit dem Namen *TestUser
 
 Sie müssen den privaten Schlüssel des Zertifikats zum Entschlüsseln des Kennworts mit einer Out-of-Band-Methode auf dem lokalen Computer bereitstellen (in Azure erfolgt dies über Azure Resource Manager). Wenn Service Fabric das Dienstpaket dann auf dem Computer bereitstellt, kann Service Fabric den geheimen Schlüssel entschlüsseln und (zusammen mit dem Benutzernamen) zum Authentifizieren bei Active Directory verwenden, sodass die Ausführung mit diesen Anmeldeinformationen erfolgt.
 
-~~~
+```xml
 <Principals>
   <Users>
     <User Name="TestUser" AccountType="DomainUser" AccountName="Domain\User" Password="[Put encrypted password here using MyCert certificate]" PasswordEncrypted="true" />
@@ -287,23 +288,23 @@ Sie müssen den privaten Schlüssel des Zertifikats zum Entschlüsseln des Kennw
   </SecurityAccessPolicies>
 </Policies>
 <Certificates>
-~~~
+```
 
 
 ## <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte
 Wenn Sie eine RunAs-Richtlinie auf einen Dienst anwenden und im Dienstmanifest Endpunktressourcen mit dem HTTP-Protokoll deklariert sind, müssen Sie eine **SecurityAccessPolicy** angeben. Diese Richtlinie soll sicherstellen, dass Ports, die diesen Endpunkten zugeordnet sind, richtig auf der Zugriffssteuerungsliste für das RunAs-Benutzerkonto eingetragen sind, in dem der Dienst ausgeführt wird. Andernfalls hat **http.sys** keinen Zugriff auf den Dienst, sodass beim Aufrufen vom Client Fehler auftreten. Im folgenden Beispiel wird das Customer3-Konto auf den Endpunkt **ServiceEndpointName** angewendet, und es werden vollständige Zugriffsrechte gewährt.
 
-~~~
+```xml
 <Policies>
    <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
    <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
    <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
 </Policies>
-~~~
+```
 
 Für den HTTPS-Endpunkt müssen Sie auch den Namen des Zertifikats zum Zurückgeben des Clients angeben. Hierfür können Sie **EndpointBindingPolicy**verwenden, indem Sie das Zertifikat im Zertifikatabschnitt des Anwendungsmanifests definieren.
 
-~~~
+```xml
 <Policies>
    <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
   <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
@@ -311,13 +312,13 @@ Für den HTTPS-Endpunkt müssen Sie auch den Namen des Zertifikats zum Zurückge
   <!--EndpointBindingPolicy is needed if the EndpointName is secured with https -->
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
-~~~
+```
 
 
 ## <a name="a-complete-application-manifest-example"></a>Vollständiges Beispiel eines Anwendungsmanifests
 Im folgenden Anwendungsmanifest sind viele unterschiedliche Einstellungen enthalten:
 
-~~~
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application3Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
@@ -368,7 +369,7 @@ Im folgenden Anwendungsmanifest sind viele unterschiedliche Einstellungen enthal
      <EndpointCertificate Name="Cert1" X509FindValue="FF EE E0 TT JJ DD JJ EE EE XX 23 4T 66 "/>
   </Certificates>
 </ApplicationManifest>
-~~~
+```
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -381,6 +382,6 @@ Im folgenden Anwendungsmanifest sind viele unterschiedliche Einstellungen enthal
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

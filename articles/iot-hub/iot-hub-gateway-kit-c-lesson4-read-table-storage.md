@@ -1,5 +1,5 @@
 ---
-title: Lesen von Nachrichten in Azure Table Storage | Microsoft Docs
+title: "SensorTag-Gerät und Azure IoT Gateway – Lektion 4: Table Storage | Microsoft-Dokumentation"
 description: Speichern Sie Nachrichten von Intel NUC in Ihrer IoT Hub-Instanz, schreiben Sie sie in Azure Table Storage, und lesen Sie diese aus der Cloud.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: a1007ac2db53c2c378cf4312b73765ef490e0ad6
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 293343e5db58bebc8c2e27d54d6396212fe6d3a1
 
 
 ---
@@ -78,7 +78,7 @@ Aktualisieren Sie die Datei `config-azure.json` so, dass mit dem auf dem Hostcom
 
 2. Ersetzen Sie `[Azure storage connection string]` durch die Azure-Speicherverbindungszeichenfolge, die Sie abgerufen haben.
 
-   `[IoT hub connection string]` sollte bereits in Lektion 3 im Abschnitt [Lesen von Nachrichten von Ihrem IoT Hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) ersetzt worden sein.
+   `[IoT hub connection string]` sollte bereits in Lektion&3; im Abschnitt [Read messages from your IoT hub](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md) (Lesen von Nachrichten von Ihrem IoT Hub) ersetzt worden sein.
 
 ## <a name="read-messages-in-your-azure-table-storage"></a>Lesen von Nachrichten in Ihrem Azure-Tabellenspeicher
 
@@ -101,6 +101,6 @@ Alle gesendeten und empfangenen Nachrichten werden auf dem Hostcomputer sofort i
 Sie haben den Beispielcode zum Lesen der Nachrichten in Ihrem Azure-Tabellenspeicher nach dem Speichern mit der Azure-Funktionen-Anwendung ausgeführt.
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 
