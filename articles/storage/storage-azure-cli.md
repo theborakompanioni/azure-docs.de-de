@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 1e2569a6db330c908fe4087c1bc5a475d3e8a575
-ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 9a9ae2758aba17f35b7262560f8d980404ecd394
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 0e1f7719c993dda419e3ebae7d50b91bd5effbc2
 
 Die plattformübergreifende Azure CLI 2.0 (Vorschau) auf Open-Source-Basis bietet eine Reihe von Befehlen zum Arbeiten mit der Azure-Plattform. Sie bietet im Wesentlichen die gleiche Funktionalität wie das [Azure-Portal](https://portal.azure.com), so z.B. umfangreiche Datenzugriffsfunktionen.
 
-In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI 2.0 (Vorschau)](/cli/azure/get-started-with-az-cli2) nutzen, um für Ressourcen in Ihrem Azure Storage-Konto verschiedene Aufgaben auszuführen. Sie sollten die neueste Version der CLI 2.0 herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieser Anleitung folgen.
+In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI 2.0 (Vorschau)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) nutzen, um für Ressourcen in Ihrem Azure Storage-Konto verschiedene Aufgaben auszuführen. Sie sollten die neueste Version der CLI 2.0 herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieser Anleitung folgen.
 
 In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein. 
 
@@ -364,12 +364,12 @@ az storage file copy start \
 ## <a name="next-steps"></a>Nächste Schritte
 Es folgen einige zusätzlichen Ressourcen mit weiteren Informationen zum Arbeiten mit Azure CLI-2.0 (Vorschau).
 
-* [Erste Schritte mit Azure CLI 2.0 (Vorschau)](/cli/azure/get-started-with-az-cli2)
+* [Erste Schritte mit Azure CLI 2.0 (Vorschau)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Befehlsreferenz zu Azure CLI 2.0](/cli/azure)
 * [Azure CLI 2.0 (Vorschau) auf GitHub](https://github.com/Azure/azure-cli)
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

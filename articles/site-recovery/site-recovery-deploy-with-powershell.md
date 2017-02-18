@@ -1,6 +1,6 @@
 ---
-title: Replizieren virtueller Hyper-V-Computer in VMM-Clouds mithilfe von Azure Site Recovery und PowerShell | Microsoft Docs
-description: Erfahren Sie, wie Sie virtuelle Hyper-V-Computer in VMM-Clouds mithilfe von Site Recovery und PowerShell replizieren.
+title: Replizieren von Hyper-V-VMs in Azure im klassischen Portal mit PowerShell | Microsoft-Dokumentation
+description: Automatisieren der Replikation virtueller Hyper-V-Computer in VMM-Clouds mithilfe von Site Recovery und PowerShell im klassischen Portal
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,15 +12,15 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7ccf60c1f83a50b948b9855f2fedefeb75a0393b
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: d3bf50e9e686acdac33ffaf9d781f02193406298
 
 
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell---classic"></a>Replizieren virtueller Hyper-V-Computer in VMM-Clouds in Azure mithilfe von PowerShell – klassisch
+# <a name="replicate-hyper-v-vms-to-azure-with-powershell-in-the-classic-portal"></a>Replizieren von Hyper-V-VMs in Azure im klassischen Portal mit PowerShell
 > [!div class="op_single_selector"]
 > * [Azure-Portal](site-recovery-vmm-to-azure.md)
 > * [PowerShell – Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
@@ -408,6 +408,6 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

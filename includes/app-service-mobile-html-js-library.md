@@ -5,7 +5,7 @@ Stellen Sie eine Clientverbindung her, indem Sie ein `WindowsAzure.MobileService
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="a-nametable-referenceawork-with-tables"></a><a name="table-reference"></a>Arbeiten mit Tabellen
+## <a name="a-nametable-referenceawork-with-tables"></a><a name="table-reference"></a>Verwenden von Tabellen
 Zum Zugreifen auf oder Aktualisieren von Daten erstellen Sie einen Verweis auf die Back-End-Tabelle. Ersetzen Sie `tableName` durch den Namen Ihrer Tabelle.
 
 ```
@@ -107,7 +107,7 @@ Die Methode `.includeTotalCount()` wird verwendet, um ein totalCount-Feld dem �
 
 Sie können dann die pages-Variable und einige Schaltflächen auf der Benutzeroberfläche verwenden, um eine Seitenliste bereitzustellen. Verwenden Sie `loadPage()` zum Laden der neuen Datensätze für jede Seite.  Implementieren Sie eine Zwischenspeicherung, um den Zugriff auf bereits geladene Datensätze zu beschleunigen.
 
-#### <a name="a-namesorting-dataahow-to-return-data-sorted"></a><a name="sorting-data"></a>Vorgehensweise: Zurückgeben sortierter Daten
+#### <a name="a-namesorting-dataahow-to-return-sorted-data"></a><a name="sorting-data"></a>Vorgehensweise: Zurückgeben sortierter Daten
 Verwenden Sie die Abfragemethode `.orderBy()` oder `.orderByDescending()`:
 
 ```
@@ -119,7 +119,7 @@ table
 
 Weitere Informationen zum Query-Objekt finden Sie in der [Dokumentation zum Query-Objekt].
 
-### <a name="a-nameinsertingahow-to-insert-data"></a><a name="inserting"></a>Gewusst wie: Einfügen von Daten
+### <a name="a-nameinsertingahow-to-insert-data"></a><a name="inserting"></a>Vorgehensweise: Einfügen von Daten
 Erstellen Sie ein JavaScript-Objekt mit dem entsprechenden Datum, und rufen Sie `table.insert()` asynchron auf:
 
 ```javascript
@@ -139,7 +139,7 @@ Bei erfolgreichem Einfügen wird das eingefügte Element mit den zusätzlichen F
 
 Das Node.js-Server SDK für Azure Mobile Apps unterstützt ein dynamisches Schema für die Entwicklung.  Dadurch können Sie der Tabelle Spalten durch Angabe in einem Einfüge- oder Aktualisierungsvorgang hinzufügen.  Es wird empfohlen, das dynamische Schema zu deaktivieren, bevor die Anwendung in die Produktion verlagert wird.
 
-### <a name="a-namemodifyingahow-to-modify-data"></a><a name="modifying"></a>Gewusst wie: Ändern von Daten
+### <a name="a-namemodifyingahow-to-modify-data"></a><a name="modifying"></a>Vorgehensweise: Ändern von Daten
 Ähnlich wie bei der `.insert()`-Methode müssen Sie zuerst ein Update-Objekt erstellen und dann `.update()` aufrufen.  Das Update-Objekt muss die ID des Datensatzes enthalten, der aktualisiert werden soll. Die ID wird beim Lesen des Datensatzes oder Aufrufen von `.insert()` abgerufen.
 
 ```javascript
@@ -155,7 +155,7 @@ table
     }, failure);
 ```
 
-### <a name="a-namedeletingahow-to-delete-data"></a><a name="deleting"></a>Gewusst wie: Löschen von Daten
+### <a name="a-namedeletingahow-to-delete-data"></a><a name="deleting"></a>Vorgehensweise: Löschen von Daten
 Rufen Sie die `.del()`-Methode auf, um einen Datensatz zu löschen.  Übergeben Sie die ID in einen Objektverweis:
 
 ```
@@ -167,6 +167,6 @@ table
 ```
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

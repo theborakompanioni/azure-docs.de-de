@@ -3,7 +3,7 @@ title: Aktivieren oder Deaktivieren einer Rolle | Microsoft Docs
 description: "Erfahren Sie, wie Sie mit der Anwendung Azure Privileged Identity Management Rollen für privilegierte Identitäten aktivieren."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 1ce9e2e7-452b-4f66-9588-0d9cd2539e45
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 67695e5715e83e2214b27a2abd76a3f68fb4a75a
+ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
+ms.openlocfilehash: f70fec829b273de97fc49e61ba42d511b6b141b3
 
 
 ---
@@ -53,7 +53,6 @@ Wenn eine Rolle aktiviert wurde, wird sie nach Erreichen des Zeitlimits automati
 
 Wenn Sie vorher mit Ihren Aufgaben fertig sind, können Sie die Rolle in der Anwendung Azure AD Privileged Identity Management auch manuell deaktivieren.  Wählen Sie **Meine Rollen aktivieren** und dann die Rolle aus, die Sie nicht mehr verwenden. Wählen Sie anschließend **Deaktivieren** aus.  
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Azure AD Privileged Identity Management finden Sie unter folgenden Links.
 
@@ -66,6 +65,6 @@ Weitere Informationen über Azure AD Privileged Identity Management finden Sie u
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

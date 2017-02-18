@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 962e631f4857d525233d84ea604fc49c24d32850
+ms.sourcegitcommit: 253b7fe3614579d5a9a74d1de21bd2d3efe50d09
+ms.openlocfilehash: bf642e08d92414543f55ddeceff297c886b82882
 
 
 ---
@@ -33,12 +33,12 @@ Zunächst stellen wir sicher, dass [**machine.config**](active-directory-aadconn
 
 > [!NOTE]
 > In einigen Nicht-Microsoft-Blogs ist dokumentiert, dass Änderungen stattdessen an „miiserver.exe.config“ vorgenommen werden sollen. Diese Datei wird jedoch mit jeder Aktualisierung überschrieben. Selbst wenn das System nach der Erstinstallation funktionieren sollte, ist das nach der ersten Aktualisierung nicht mehr der Fall. Daher wird empfohlen, stattdessen „machine.config“ zu aktualisieren.
-> 
-> 
+>
+>
 
-Der Proxyserver muss die erforderlichen URLs geöffnet haben. Die offizielle Liste ist unter [URLs und IP-Adressbereiche von Office 365 ](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)zu finden.
+Der Proxyserver muss die erforderlichen URLs geöffnet haben. Die offizielle Liste ist unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) zu finden.
 
-Die folgende Tabelle zeigt die Grundvoraussetzungen für eine Verbindung mit Azure AD. Diese Liste beinhaltet keine optionalen Funktionen, wie die Kennwortrückschreibung oder Azure AD Connect Health. Sie soll bei der Problembehebung während der Erstkonfiguration helfen.
+Die in der folgenden Tabelle aufgeführten URLs stellen die Grundvoraussetzungen für eine Verbindung mit Azure AD dar. Diese Liste beinhaltet keine optionalen Funktionen, wie die Kennwortrückschreibung oder Azure AD Connect Health. Sie soll bei der Problembehebung während der Erstkonfiguration helfen.
 
 | URL | Port | Beschreibung |
 | --- | --- | --- |
@@ -50,32 +50,37 @@ Die folgende Tabelle zeigt die Grundvoraussetzungen für eine Verbindung mit Azu
 | \*.microsoftonline.com |HTTPS/443 |Wird zum Konfigurieren Ihres Azure AD-Verzeichnisses und zum Importieren/Exportieren von Daten verwendet. |
 
 ## <a name="errors-in-the-wizard"></a>Fehler im Assistenten
-Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf der Seite **Mit Azure AD verbinden** verwendet er den aktuell angemeldeten Benutzer. Auf der Seite **Konfigurieren** wechselt er zu dem [Konto, das den Dienst für das Synchronisierungsmodul ausführt](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts). Unsere Proxykonfigurationen gelten für den ganzen Computer. Daher werden auftretende Probleme höchstwahrscheinlich bereits auf der Seite **Mit Azure AD verbinden** des Assistenten angezeigt.
+Der Installations-Assistent verwendet zwei verschiedene Sicherheitskontexte. Auf der Seite **Mit Azure AD verbinden** verwendet er den aktuell angemeldeten Benutzer. Auf der Seite **Konfigurieren** wechselt er zu dem [Konto, das den Dienst für das Synchronisierungsmodul ausführt](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts). Wenn ein Problem vorliegt, tritt es wahrscheinlich bereits auf der Seite **Mit Azure AD verbinden** des Assistenten auf, da die Proxykonfiguration global ist.
 
-Dies sind die häufigsten Fehler im Installations-Assistenten:
+Die folgenden Probleme sind die häufigsten Fehler, die im Installations-Assistenten auftreten.
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Der Installations-Assistent wurde nicht richtig konfiguriert 
-Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kann.
+Dieser Fehler tritt auf, wenn der Assistent den Proxy selbst nicht erreichen kann.  
 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomachineconfig.png)
 
-* Falls dies angezeigt wird, überprüfen Sie, ob [machine.config](active-directory-aadconnect-prerequisites.md#connectivity) richtig konfiguriert wurde.
+* Falls dieser Fehler angezeigt wird, überprüfen Sie, ob [machine.config](active-directory-aadconnect-prerequisites.md#connectivity) richtig konfiguriert wurde.
 * Falls dies in Ordnung ist, befolgen Sie die Schritte zur [Überprüfung der Proxykonnektivität](#verify-proxy-connectivity) , um zu sehen, ob die Probleme außerhalb des Assistenten ebenfalls auftreten.
+
+### <a name="a-microsoft-account-is-used"></a>Ein Microsoft-Konto wird verwendet
+Bei Verwendung eines **Microsoft-Kontos** anstelle eines **Schul- oder Organisationskontos** wird ein generischer Fehler angezeigt.  
+![Ein Microsoft-Konto wird verwendet](./media/active-directory-aadconnect-troubleshoot-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Der MFA-Endpunkt ist nicht erreichbar
 Dieser Fehler wird angezeigt, wenn der Endpunkt **https://secure.aadcdn.microsoftonline-p.com** nicht erreichbar ist und Ihr globaler Administrator MFA aktiviert hat.  
 ![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
-* Wenn diese Meldung angezeigt wird, stellen Sie sicher, dass dem Proxy der Endpunkt „secure.aadcdn.microsoftonline-p.com“ hinzugefügt wurde.
+* Wenn dieser Fehler angezeigt wird, stellen Sie sicher, dass dem Proxy der Endpunkt **secure.aadcdn.microsoftonline-p.com** hinzugefügt wurde.
 
 ### <a name="the-password-cannot-be-verified"></a>Das Kennwort kann nicht überprüft werden
-Falls sich der Installations-Assistent erfolgreich mit Azure AD verbinden konnte, aber das Kennwort selbst nicht überprüft werden kann, wird Ihnen Folgendes angezeigt: ![badpassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
+Falls sich der Installations-Assistent erfolgreich mit Azure AD verbinden konnte, aber das Kennwort selbst nicht überprüft werden kann, wird Ihnen dieser Fehler angezeigt:  
+![badpassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
 
 * Handelt es sich um ein temporäres Kennwort, das geändert werden muss? Handelt es sich um das richtige Kennwort? Versuchen Sie, sich bei „https://login.microsoftonline.com“ (auf einem anderen Computer als dem Azure AD Connect-Server) anzumelden, und überprüfen Sie, ob das Konto verwendbar ist.
 
 ### <a name="verify-proxy-connectivity"></a>Überprüfung der Proxykonnektivität
-Um nachzuprüfen, ob der Azure AD Connect-Server über eine Verbindung zum Proxy und dem Internet verfügt, verwenden wir einige PowerShell-Teile, um festzustellen, ob der Proxy Webanforderungen zulässt oder nicht. Führen Sie in PowerShell `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` aus. (Streng genommen ist der erste Aufruf an „https://login.microsoftonline.com“ gerichtet. Dies würde auch funktionieren, aber der andere URI antwortet schneller.)
+Um nachzuprüfen, ob der Azure AD Connect-Server über eine Verbindung zum Proxy und dem Internet verfügt, verwenden wir einige PowerShell-Teile, um festzustellen, ob der Proxy Webanforderungen zulässt oder nicht. Führen Sie in PowerShell `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` aus. (Streng genommen ist der erste Aufruf an „https://login.microsoftonline.com“ gerichtet. Dieser URI würde auch funktionieren, aber der andere URI antwortet schneller.)
 
-PowerShell wird die Konfiguration aus machine.config verwenden, um den Proxy zu kontaktieren. Die Einstellungen in winhttp/netsh sollten sich nicht auf diese Cmdlets auswirken.
+PowerShell verwendet die Konfiguration aus machine.config , um den Proxy zu kontaktieren. Die Einstellungen in winhttp/netsh sollten sich nicht auf diese Cmdlets auswirken.
 
 Wenn der Proxy richtig konfiguriert ist, sollten Sie einen Erfolgsstatus erhalten: ![proxy200](./media/active-directory-aadconnect-troubleshoot-connectivity/invokewebrequest200.png)
 
@@ -88,19 +93,19 @@ Falls der Proxy nicht richtig konfiguriert ist, tritt folgender Fehler auf: ![pr
 | Error | Fehlertext | Kommentar |
 | --- | --- | --- |
 | 403 |Verboten (403) |Der Proxy wurde für die angeforderte URL nicht geöffnet. Rufen Sie die Proxykonfiguration erneut auf, und stellen Sie sicher, dass die [URLs](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet wurden. |
-| 407 |Proxyauthentifizierung erforderlich |Der Proxyserver erfordert eine Anmeldung, die nicht erfolgt ist. Stellen Sie sicher, dass Sie in den Konfigurationen von machine.config eine entsprechende Einstellung vorgenommen haben, falls Ihr Proxyserver eine Authentifizierung erfordert. Gehen Sie außerdem sicher, dass Sie sowohl für den Benutzer, der den Assistenten ausführt, als auch für das Dienstkonto Domänenkonten verwenden. |
+| 407 |Proxyauthentifizierung erforderlich |Der Proxyserver erfordert eine Anmeldung, die nicht erfolgt ist. Stellen Sie sicher, dass Sie in den Konfigurationen von „machine.config“ eine entsprechende Einstellung vorgenommen haben, falls Ihr Proxyserver eine Authentifizierung erfordert. Stellen Sie außerdem sicher, dass Sie sowohl für den Benutzer, der den Assistenten ausführt, als auch für das Dienstkonto Domänenkonten verwenden. |
 
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Das Kommunikationsmuster zwischen Azure AD Connect und Azure AD 
-Falls Sie alle obigen Schritte ausgeführt haben und immer noch keine Verbindung herstellen können, sollten Sie sich Ihre Netzwerkprotokolle ansehen. Dieser Abschnitt dokumentiert ein normales und erfolgreiches Konnektivitätsmuster. Er zeigt auch häufig auftretende Meldungen, die Sie aber ignorieren können, wenn Sie die Netzwerkprotokolle lesen.
+Falls Sie alle vorhergehenden Schritte ausgeführt haben und immer noch keine Verbindung herstellen können, sollten Sie sich Ihre Netzwerkprotokolle ansehen. Dieser Abschnitt dokumentiert ein normales und erfolgreiches Konnektivitätsmuster. Er zeigt auch häufig auftretende Meldungen, die Sie aber ignorieren können, wenn Sie die Netzwerkprotokolle lesen.
 
-* Es werden Aufrufe an „https://dc.services.visualstudio.com“ durchgeführt. Für eine erfolgreiche Installation ist es nicht erforderlich, dass diese Versuche im Proxy geöffnet sind. Sie können daher ignoriert werden.
-* Sie werden sehen, dass die DNS-Auflösung den tatsächlichen Host im DNS-Namen von  nsatc.net und anderen Namespaces anzeigt, anstatt unter microsoftonline.com. Es werden jedoch keine Webdienstanfragen an die eigentlichen Servernamen gestellt und Sie müssen diese dem Proxy nicht hinzufügen.
-* Die Endpunkte „adminwebservice“ und „provisioningapi“ (siehe unten in den Protokollen) sind Ermittlungsendpunkte und werden benutzt, um die tatsächlich zu verwendeten Endpunkte zu finden. Sie unterschieden sich je nach Ihrer Region.
+* Es werden Aufrufe an „https://dc.services.visualstudio.com“ durchgeführt. Für eine erfolgreiche Installation ist es nicht erforderlich, dass diese URL im Proxy geöffnet ist. Sie können diese Aufrufe daher ignorieren.
+* Sie werden sehen, dass die DNS-Auflösung den tatsächlichen Host im DNS-Namen von nsatc.net und anderen Namespaces anzeigt, anstatt unter microsoftonline.com. Es werden jedoch keine Webdienstanfragen an die eigentlichen Servernamen gestellt, und Sie müssen diese URLs dem Proxy nicht hinzufügen.
+* Die Endpunkte „adminwebservice“ und „provisioningapi“ sind Ermittlungsendpunkte und werden benutzt, um die tatsächlich zu verwendeten Endpunkte zu finden. Diese Endpunkte unterscheiden sich abhängig von Ihrer Region.
 
 ### <a name="reference-proxy-logs"></a>Verweisproxyprotokolle
-Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations-Assistenten, von der er entnommen wurde. (Doppelte Einträge, die zum selben Endpunkt führen, wurden entfernt). Sie können ihn als Referenz für Ihre eigenen Proxy- und Netzwerkprotokolle verwenden. Die tatsächlichen Endpunkte können in Ihrer Umgebung abweichen (insbesondere die *kursiv* formatierten).
+Hier nun ein Auszug eines echten Proxyprotokolls und der Seite des Installations-Assistenten, von der er entnommen wurde. (Doppelte Einträge, die zum selben Endpunkt führen, wurden entfernt). Sie können diesen Abschnitt als Referenz für Ihre eigenen Proxy- und Netzwerkprotokolle verwenden. Die tatsächlichen Endpunkte können in Ihrer Umgebung abweichen (insbesondere die *kursiv* formatierten URLs).
 
-**Herstellen einer Verbindung mit Azure AD**
+**Mit Azure AD verbinden**
 
 | Time | URL |
 | --- | --- |
@@ -164,7 +169,7 @@ Die Authentifizierung war erfolgreich, aber es liegt ein Authentifizierung bei A
 Die Authentifizierung war erfolgreich. Sie sind kein globaler Administrator.
 
 ### <a name="privilegedidentitymanagement"></a>PrivilegedIdentityManagement
-Die Authentifizierung war erfolgreich. Privileged Identity Management wurde aktiviert, und Sie sind aktuell kein globaler Administrator. Weitere Informationen finden Sie unter [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) .
+Die Authentifizierung war erfolgreich. Privileged Identity Management wurde aktiviert, und Sie sind aktuell kein globaler Administrator. Weitere Informationen finden Sie unter [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
 
 ### <a name="companyinfounavailable"></a>CompanyInfoUnavailable
 Die Authentifizierung war erfolgreich. Es konnten keine Unternehmensinformationen aus Azure AD abgerufen werden.
@@ -172,10 +177,13 @@ Die Authentifizierung war erfolgreich. Es konnten keine Unternehmensinformatione
 ### <a name="retrievedomains"></a>RetrieveDomains
 Die Authentifizierung war erfolgreich. Es konnten keine Domäneninformationen aus Azure AD abgerufen werden.
 
-## <a name="troubleshooting-steps-for-previous-releases"></a>Schritte zur Problembehandlung für frühere Versionen.
-Ab Build 1.1.105.0 (veröffentlicht im Februar 2016) wurde der Anmelde-Assistent eingestellt. Dieser Abschnitt und die Konfiguration sind eigentlich nicht mehr erforderlich, werden aber als Referenz beibehalten.
+### <a name="unexpected-exception"></a>Unerwartete Ausnahme
+Wird als „Unerwarteter Fehler“ im Installations-Assistenten angezeigt. Dies kann auftreten, wenn Sie versuchen, ein **Microsoft-Konto** anstelle eines **Schul- oder Organisationskontos** zu verwenden.
 
-Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfiguriert werden. Verwenden Sie dazu [**netsh**](active-directory-aadconnect-prerequisites.md#connectivity)zu finden.  
+## <a name="troubleshooting-steps-for-previous-releases"></a>Schritte zur Problembehandlung für frühere Versionen.
+Ab Build 1.1.105.0 (veröffentlicht im Februar 2016) wurde der Anmelde-Assistent eingestellt. Dieser Abschnitt und die Konfiguration sind eigentlich nicht mehr erforderlich, werden aber als Referenz beibehalten.
+
+Damit der Assistent für einmaliges Anmelden funktioniert, muss winhttp konfiguriert werden. Diese Konfiguration kann mit [**netsh**](active-directory-aadconnect-prerequisites.md#connectivity) durchgeführt werden.  
 ![netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Der Anmelde-Assistent wurde nicht richtig konfiguriert
@@ -191,7 +199,6 @@ Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Dire
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

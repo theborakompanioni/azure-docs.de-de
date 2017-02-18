@@ -1,5 +1,5 @@
 ---
-title: Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal | Microsoft Docs
+title: Verwenden des Azure Machine Learning-Webdiensteportals | Microsoft-Dokumentation
 description: Verwalten des Zugriffs auf Azure Machine Learning-Arbeitsbereiche sowie Bereitstellen und Verwalten von ML-API-Webdiensten
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3b04aa7406f44130deb4f12c856b459369301449
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
 
 
 ---
@@ -178,6 +178,6 @@ Um zusätzliche Konten zu verwalten, die Zugriff auf den Arbeitsbereich in Machi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Bewerten des Kompatibilitätsgrads | Microsoft Docs"
-description: "Enthält eine Beschreibung der Schritte und Tools, mit denen ermittelt werden kann, welcher Kompatibilitätsgrad für Ihre Datenbank unter Azure SQL-Datenbank oder Microsoft SQL Server am besten geeignet ist."
+title: "Datenbankkompatibilitätsgrad 130 – Azure-SQL-Datenbank | Microsoft-Dokumentation"
+description: "In diesem Artikel untersuchen wir die Vorteile der Ausführung von Azure SQL-Datenbank mit dem Kompatibilitätsgrad 130 sowie die Vorteile des neuen Abfrageoptimierers und des Abfrageprozessors. Wir sehen uns zudem die möglichen Auswirkungen auf die Abfrageleistung für die vorhandenen SQL-Anwendungen an."
 services: sql-database
 documentationcenter: 
 author: alainlissoir
@@ -16,15 +16,17 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: alainl
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b778a822e49acbbae4bc9e109b673c10ccc01ae2
+ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
+ms.openlocfilehash: 3ad25fe844c75941303034ca1037fdb99a5c679b
 
 
 ---
 # <a name="improved-query-performance-with-compatibility-level-130-in-azure-sql-database"></a>Verbesserte Abfrageleistung mit Kompatibilitätsgrad 130 in Azure SQL-Datenbank
 Azure SQL-Datenbank führt auf transparente Weise Hunderttausende Datenbanken mit vielen verschiedenen Kompatibilitätsgraden aus und sorgt so für alle Kunden für die Aufrechterhaltung und Sicherstellung der Abwärtskompatibilität mit der entsprechenden Version von Microsoft SQL Server.
 
-Kunden, die vorhandene Datenbanken auf den aktuellen Kompatibilitätsgrad umstellen, können so von den neuen Funktionen „Abfrageoptimierer“ und „Abfrageprozessor“ profitieren. Zur Erinnerung sind hier noch einmal die SQL-Versionen mit den standardmäßigen Kompatibilitätsgraden angegeben:
+In diesem Artikel untersuchen wir die Vorteile der Ausführung von Azure SQL-Datenbank mit dem Kompatibilitätsgrad 130 sowie die Vorteile des neuen Abfrageoptimierers und des Abfrageprozessors. Wir sehen uns zudem die möglichen Auswirkungen auf die Abfrageleistung für die vorhandenen SQL-Anwendungen an.
+
+Zur Erinnerung sind hier noch einmal die SQL-Versionen mit den standardmäßigen Kompatibilitätsgraden angegeben:
 
 * 100: in SQL Server 2008 und Azure SQL-Datenbank V11.
 * 110: in SQL Server 2012 und Azure SQL-Datenbank V11.
@@ -34,11 +36,8 @@ Kunden, die vorhandene Datenbanken auf den aktuellen Kompatibilitätsgrad umstel
 > [!IMPORTANT]
 > Ab **Mitte Juni 2016** lautet der standardmäßige Kompatibilitätsgrad in Azure SQL-Datenbank für **neu erstellte Datenbanken** nicht mehr 120, sondern 130.
 > 
-> Datenbanken, die vor Mitte Juni 2016 erstellt wurden, sind *nicht* betroffen und behalten ihren aktuellen Kompatibilitätsgrad bei (100, 110 oder 120). Für Datenbanken, die von Azure SQL-Datenbank V11 zu V12 migriert werden, wird der Kompatibilitätsgrad ebenfalls nicht geändert.
+> Datenbanken, die vor Mitte Juni 2016 erstellt wurden, sind *nicht* betroffen und behalten ihren aktuellen Kompatibilitätsgrad bei (100, 110 oder 120). Für Datenbanken, die von Azure SQL-Datenbank V11 zu V12 migriert wurden, gilt ein Kompatibilitätsgrad von 100 oder 110. 
 > 
-> 
-
-In diesem Artikel geht es um die Vorteile von Kompatibilitätsgrad 130 und die Nutzung dieser Vorteile. Wir beschreiben die möglichen Auswirkungen auf die Abfrageleistung für die vorhandenen SQL-Anwendungen.
 
 ## <a name="about-compatibility-level-130"></a>Informationen zum Kompatibilitätsgrad 130
 Führen Sie die folgende Transact-SQL-Anweisung aus, wenn Sie den aktuellen Kompatibilitätsgrad Ihrer Datenbank ermitteln möchten.
@@ -151,7 +150,7 @@ Wenn Sie den tatsächlichen Abfrageplan anfordern, können Sie ermitteln, welche
 ![Abbildung 1](./media/sql-database-compatibility-level-query-performance-130/figure-1.jpg)
 
 ## <a name="serial-batch-mode"></a>Serieller Batchmodus
-Auf ähnliche Weise ermöglicht die Umstellung auf Kompatibilitätsgrad 130 beim Verarbeiten von Zeilen mit Daten die Verarbeitung im Batchmodus. Erstens sind Vorgänge im Batchmodus nur verfügbar, wenn Sie über einen Columnstore-Index verfügen. Zweitens umfasst ein Batch normalerweise etwa 900 Zeilen, und es werden eine für CPUs mit mehreren Kernen optimierte Codelogik und ein höherer Speicherdurchsatz verwendet. Außerdem werden die komprimierten Daten des Columnstore nach Möglichkeit direkt genutzt. Unter diesen Bedingungen kann SQL Server 2016 etwa 900 Zeilen auf einmal verarbeiten, anstatt nur jeweils eine Zeile. Dies führt dazu, dass die Gesamtkosten des Vorgangs auf den gesamten Batch verteilt und die Gesamtkosten pro Zeile reduziert werden. Diese gleichzeitigen Vorgänge in Kombination mit der Columnstore-Komprimierung sorgen für eine Reduzierung der Latenz eines SELECT-Batchmodusvorgangs. Weitere Informationen zu Columnstore und zum Batchmodus finden Sie unter [Beschreibung von Columnstore-Indizes](https://msdn.microsoft.com/library/gg492088.aspx).
+Auf ähnliche Weise ermöglicht die Umstellung auf Kompatibilitätsgrad 130 beim Verarbeiten von Zeilen mit Daten die Verarbeitung im Batchmodus. Erstens sind Vorgänge im Batchmodus nur verfügbar, wenn Sie über einen Columnstore-Index verfügen. Zweitens umfasst ein Batch normalerweise etwa&900; Zeilen, und es werden eine für CPUs mit mehreren Kernen optimierte Codelogik und ein höherer Speicherdurchsatz verwendet. Außerdem werden die komprimierten Daten des Columnstore nach Möglichkeit direkt genutzt. Unter diesen Bedingungen kann SQL Server 2016 etwa 900 Zeilen auf einmal verarbeiten, anstatt nur jeweils eine Zeile. Dies führt dazu, dass die Gesamtkosten des Vorgangs auf den gesamten Batch verteilt und die Gesamtkosten pro Zeile reduziert werden. Diese gleichzeitigen Vorgänge in Kombination mit der Columnstore-Komprimierung sorgen für eine Reduzierung der Latenz eines SELECT-Batchmodusvorgangs. Weitere Informationen zu Columnstore und zum Batchmodus finden Sie unter [Beschreibung von Columnstore-Indizes](https://msdn.microsoft.com/library/gg492088.aspx).
 
 ```
 -- Serial batch mode execution
@@ -405,7 +404,7 @@ Unten sehen wir, dass die Zeilenschätzung 202.877 lautet und somit höher und g
 
 In Wirklichkeit umfasst das Resultset 200.704 Zeilen. (Alles hängt aber davon ab, wie oft Sie die Abfragen der vorherigen Beispiele ausgeführt haben. Wichtiger ist aber der Hinweis, dass die tatsächlichen zurückgegebenen Werte von einer Ausführung zur nächsten variieren können, weil für TSQL die RAND()-Anweisung verwendet wird.) In diesem Beispiel wird mit der neuen Kardinalitätsschätzung daher eine bessere Schätzung der Zeilenanzahl erzielt (202.877 liegt näher an 200.704 als 194.284). Wenn Sie für die Prädikate der WHERE-Klausel nun auch noch Gleichheit festlegen (z.B. anstelle von „>“), kann dies dazu führen, dass sich die Schätzungen der alten und der neuen Funktion für die Kardinalitätsschätzung noch stärker unterscheiden. Dies hängt davon ab, wie viele Übereinstimmungen erzielt werden.
 
-In diesem Fall scheint der Unterschied von ca. 6.000 Zeilen gegenüber der tatsächlichen Anzahl nicht sonderlich viele Daten zu betreffen. Wenn Sie dies aber auf Millionen von Zeilen in mehreren Tabellen und mit komplexeren Abfragen umrechnen, wird klar, dass die Schätzung unter Umständen einen Fehler in der Größenordnung von Millionen von Zeilen aufweisen kann. Das Risiko der Entscheidung für einen falschen Ausführungsplan oder der Anforderung einer unzureichenden Speichergewährung mit nachfolgenden TempDB-Überläufen und höherem E/A-Aufwand ist also deutlich höher.
+In diesem Fall scheint der Unterschied von ca.&6;.000 Zeilen gegenüber der tatsächlichen Anzahl nicht sonderlich viele Daten zu betreffen. Wenn Sie dies aber auf Millionen von Zeilen in mehreren Tabellen und mit komplexeren Abfragen umrechnen, wird klar, dass die Schätzung unter Umständen einen Fehler in der Größenordnung von Millionen von Zeilen aufweisen kann. Das Risiko der Entscheidung für einen falschen Ausführungsplan oder der Anforderung einer unzureichenden Speichergewährung mit nachfolgenden TempDB-Überläufen und höherem E/A-Aufwand ist also deutlich höher.
 
 Wenn die Möglichkeit besteht, können Sie diesen Vergleich mit Ihren typischen Abfragen und Datasets durchführen und selbst ermitteln, inwieweit die alten oder neuen Schätzungen betroffen sind. Der Fehler der Schätzung kann entweder noch gravierender sein, oder der Wert kann näher an der tatsächlichen Anzahl von Zeilen liegen, die in den Resultsets zurückgegeben werden. Alles richtet sich nach der Form Ihrer Abfragen, den Merkmalen von Azure SQL-Datenbank, der Art und Größe Ihrer Datasets und den dazu verfügbaren Statistiken. Wenn Sie Ihre SQL-Datenbankinstanz gerade erstellt haben, muss der Abfrageoptimierer sein Wissen von Grund auf neu aufbauen und kann keine Statistiken nutzen, die bei vorherigen Ausführungen der Abfragen erstellt wurden. Die Schätzungen sind also sehr kontextbezogen und gelten nahezu speziell für jeden Server und jede Anwendungssituation. Dies ist ein wichtiger Punkt, den Sie beachten sollten.
 
@@ -462,6 +461,6 @@ genemi = MightyPen , 2016-05-20  Friday  17:00pm
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

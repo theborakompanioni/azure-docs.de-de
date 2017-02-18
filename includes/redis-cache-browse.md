@@ -14,6 +14,6 @@ Sie können Ihren Cache auf dem Blatt **Redis Cache** anzeigen und konfigurieren
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

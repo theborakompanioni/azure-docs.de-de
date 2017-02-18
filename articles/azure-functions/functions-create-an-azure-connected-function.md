@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: a4d871686a54465e12f93c1720a44985785b94ae
-ms.openlocfilehash: 76d81b8e57c59147f8fb203435b07f45228fdd52
+ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
+ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
 
 ---
@@ -26,12 +26,9 @@ ms.openlocfilehash: 76d81b8e57c59147f8fb203435b07f45228fdd52
 
 In diesem Thema erfahren Sie, wie Sie in Azure Functions eine Funktion erstellen, die über eine Azure Storage-Warteschlange auf Nachrichten lauscht und die Nachrichten in die Zeilen einer Azure Storage-Tabelle kopiert. Eine per Timer ausgelöste Funktion wird verwendet, um Nachrichten in die Warteschlange zu laden. Mit einer zweiten Funktion werden Daten aus der Warteschlange ausgelesen und Nachrichten in die Tabelle geschrieben. Sowohl die Warteschlange als auch die Tabelle werden für Sie basierend auf den Bindungsdefinitionen von Azure Functions erstellt. 
 
-Interessant ist hierbei, dass eine Funktion in JavaScript und die andere in C#-Skript geschrieben wurde. Dies zeigt, dass eine Funktionen-App über Funktionen in unterschiedlichen Sprachen verfügen kann.
+Interessant ist hierbei, dass eine Funktion in JavaScript und die andere in C#-Skript geschrieben wurde. Dies zeigt, dass eine Funktionen-App über Funktionen in unterschiedlichen Sprachen verfügen kann. 
 
-## <a name="watch-the-video"></a>Video ansehen
->[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
->
->
+Dieses Szenario wird in einem [Video auf Channel 9](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player) veranschaulicht.
 
 ## <a name="create-a-function-that-writes-to-the-queue"></a>Erstellen einer Funktion, die in die Warteschlange schreibt
 
@@ -197,6 +194,6 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

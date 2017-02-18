@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines Lastenausgleichs mit Internetzugriff in Resource Manager über das Azure-Portal | Microsoft Docs"
+title: "Erstellen eines Lastenausgleichs für den Internetzugriff – Azure-Portal | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff in Resource Manager über das Azure-Portal erstellen."
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 01/23/2017
 ms.author: annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5ce773311b691bf28ea3e9590ab74603a1a9b641
-ms.openlocfilehash: 052a9e6a511875dcb2a79ecad89ee09b32948d06
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: db7c328b2ba7008b9d34275341fa4bad9522b028
 
 ---
 
@@ -115,6 +115,6 @@ Zum Löschen eines Load Balancers wählen Sie den Load Balancer aus, den Sie ent
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Linux-VM-Größen | Microsoft Docs"
+title: "Größen von virtuellen Linux-Computern in Azure | Microsoft-Dokumentation"
 description: "Listet die verschiedenen verfügbaren Größen für virtuelle Linux-Computer in Azure auf."
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/15/2016
+ms.date: 02/09/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 539e6a8835bf9f999f8855496e39e06bb58cd848
-ms.openlocfilehash: e3a8741f8e8d0dc62de3c0dd48acb93853837a6f
+ms.sourcegitcommit: 2b4debaeaf879b0c79c05420fdbbd8735da1d015
+ms.openlocfilehash: d1b6b5b46b3329471388e178c3ea06f881003c48
 
 
 ---
-# <a name="sizes-for-virtual-machines-in-azure"></a>Größen für virtuelle Computer in Azure
+# <a name="sizes-for-linux-virtual-machines-in-azure"></a>Größen für virtuelle Linux-Computer in Azure
 Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Linux-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)verfügbar.
 
 > [!IMPORTANT]
@@ -39,6 +39,6 @@ Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtue
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

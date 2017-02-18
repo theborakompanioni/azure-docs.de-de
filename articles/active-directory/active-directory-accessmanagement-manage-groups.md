@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: da1841d4ff9e5b4b53f5d766065acc1024d1eb3a
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 7d2cc99925e01f8135f04f5863f798e13d7413e3
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: da1841d4ff9e5b4b53f5d766065acc1024d1eb3a
 > * [Azure-Portal](active-directory-groups-create-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-> 
-> 
+>
+>
 
 Ein Feature der Benutzerverwaltung von Azure Active Directory (Azure AD) ist die Möglichkeit, Gruppen mit Benutzern zu erstellen. Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. gleichzeitiges Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer. Außerdem können Sie Gruppen verwenden, um folgenden Ressourcen Berechtigungen zuzuweisen:
 
@@ -73,13 +73,13 @@ Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamische
 
 > [!NOTE]
 > Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuweisung zu Anwendungen derzeit nicht unterstützt.
-> 
+>
 > Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
-> 
+>
 > * Dem Administrator, der die Regel für eine Gruppe verwaltet
 > * Alle Mitglieder der Gruppe
-> 
-> 
+>
+>
 
 **So aktivieren Sie die dynamische Mitgliedschaft für eine Gruppe**
 
@@ -103,7 +103,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

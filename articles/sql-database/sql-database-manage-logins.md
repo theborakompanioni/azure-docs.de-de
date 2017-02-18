@@ -12,14 +12,14 @@ ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
 ms.service: sql-database
 ms.custom: authentication and authorization
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 01/23/2017
 ms.author: rickbyh
 translationtype: Human Translation
-ms.sourcegitcommit: baf3adaa0bb1e93cccd592648018c84353496cb7
-ms.openlocfilehash: cf2cc63d9b0abbca79e4da340cd76ddb348b6679
+ms.sourcegitcommit: 5eccb4705cd6c8f6170a48f3b3591518688651f1
+ms.openlocfilehash: c3a45973a04d5082bee777a98f8204ceedc888a5
 
 
 ---
@@ -29,6 +29,12 @@ Wenn Firewallregeln konfiguriert wurden, können Benutzer über ein Administrato
 
 >  [!NOTE]  
 >  Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. 
+>
+
+> [!TIP]
+> Ein Tutorial mit SQL Server-Authentifizierung finden Sie unter [Tutorial: SQL Server-Authentifizierung](sql-database-control-access-sql-authentication-get-started.md). Ein Tutorial mit Azure Active Directory-Authentifizierung finden Sie unter [Tutorial: AAD-Authentifizierung](sql-database-control-access-aad-authentication-get-started.md).
+>
+
 
 ## <a name="unrestricted-administrative-accounts"></a>Uneingeschränkte Administratorkonten
 Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory-Administrator**), die als Administratoren fungieren. Öffnen Sie das Azure-Portal, und navigieren Sie zu den Eigenschaften Ihres SQL-Servers, um diese Administratorkonten für Ihren SQL-Server zu identifizieren.

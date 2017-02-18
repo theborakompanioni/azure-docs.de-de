@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/06/2016
+ms.date: 02/02/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: b16e7e221853f5d44248430cef2296301a09d497
-ms.openlocfilehash: 9ff8fec2daf9fc69377891b85b0a81e9e2a54536
+ms.sourcegitcommit: fbf77e9848ce371fd8d02b83275eb553d950b0ff
+ms.openlocfilehash: a95e65db804f1c6cc2927901216ee7a287a911ee
 
 
 ---
@@ -37,15 +37,14 @@ In diesem Tutorial erstellen und überwachen Sie eine Azure Data Factory-Instanz
 
 Das Kopieraktivitätsfeature führt die Datenverschiebung in Data Factory durch. Sie basiert auf einem global verfügbaren Dienst, mit dem Daten zwischen verschiedenen Datenspeichern sicher, zuverlässig und skalierbar kopiert werden können. Ausführliche Informationen zur Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md).   
 
-> [!IMPORTANT]
-> Sehen Sie sich vor Beginn dieses Tutorials die [Übersicht über das Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) an, und führen Sie die vorbereitenden Schritte aus.
+> [!NOTE]
+> In diesem Artikel werden nicht alle Data Factory-Cmdlets behandelt. Eine umfassende Dokumentation zu diesen Cmdlets finden Sie in der [Data Factory-Cmdlet-Referenz](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories).
 >
-> In diesem Artikel werden nicht alle Data Factory-Cmdlets behandelt. Eine umfassende Dokumentation zu diesen Cmdlets finden Sie in der [Data Factory-Cmdlet-Referenz](https://msdn.microsoft.com/library/dn820234.aspx).
->
->
+> Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Sie transformiert keine Eingabedaten in Ausgabedaten. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zusätzlich zur Erfüllung der Voraussetzungen aus der Tutorialübersicht müssen Sie auch Azure PowerShell installieren. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](../powershell-install-configure.md) (Erste Schritte mit Azure PowerShell-Cmdlets).
+- Verschaffen Sie sich unter [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) einen Überblick über das Tutorial, und führen Sie die Schritte aus, die zur Erfüllung der **Voraussetzungen** erforderlich sind.
+- Installieren Sie Azure PowerShell. Befolgen Sie die Anweisungen unter [Get started with Azure PowerShell cmdlets](../powershell-install-configure.md) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
 ## <a name="in-this-tutorial"></a>Dieses Lernprogramm umfasst folgende Punkte
 Die folgende Tabelle enthält die einzelnen Schritte dieses Tutorials.
@@ -460,11 +459,10 @@ In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus 
 ## <a name="see-also"></a>Weitere Informationen
 | Thema | Beschreibung |
 |:--- |:--- |
-| [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) |Dieser Artikel enthält ausführliche Informationen zum in diesem Tutorial verwendeten Kopieraktivitätsfeature. |
-| [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
+| [Cmdlet-Referenz zu Data Factory](/powershell/resourcemanager/azurerm.datafactories/v2.5.0/azurerm.datafactories) | Dieser Abschnitt enthält Informationen zu allen Data Factory-Cmdlets. |
 | [Pipelines](data-factory-create-pipelines.md) |Dieser Artikel enthält Informationen zu Pipelines und Aktivitäten in Azure Data Factory. |
 | [datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
-| [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) |Dieser Artikel beschreibt das Überwachen, Verwalten und Debuggen von Pipelines mit der App „Überwachung und Verwaltung“. |
+| [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
 
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
@@ -484,6 +482,6 @@ In diesem Lernprogramm haben Sie eine Azure Data Factory erstellt, um Daten aus 
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 09/20/2016
+ms.date: 01/19/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 115668dae46557f6d6caefc9e7c1178768e7e775
+ms.sourcegitcommit: 2b128e2771ea89d1c0d6b8d52357d1bcc993115a
+ms.openlocfilehash: a9629d0a4bfc44f5d035a29f8e97d76922cc0060
 
 
 ---
@@ -117,7 +117,7 @@ Jetzt können Sie Datenassets aus der Adventure Works-Beispieldatenbank mithilfe
 In dieser Übung verwenden Sie das Registrierungstool, um Datenassets aus der Adventure Works-Datenbank im Katalog zu registrieren. Bei der Registrierung werden wichtige strukturelle Metadaten (z.B. Namen, Typen und Speicherorte) aus der Datenquelle und des darin enthaltenen Assets extrahiert und in den Katalog kopiert. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
 
 ### <a name="register-a-data-source"></a>Registrieren einer Datenquelle
-1. Navigieren Sie zur [Azure Data Catalog-Startseite](https://azuredatacatalog.com) , und klicken Sie auf **Daten veröffentlichen**.
+1. Navigieren Sie zur [Azure Data Catalog-Startseite](http://azuredatacatalog.com) , und klicken Sie auf **Daten veröffentlichen**.
    
    ![Azure Data Catalog – Schaltfläche „Daten veröffentlichen“](media/data-catalog-get-started/data-catalog-publish-data.png)
 2. Klicken Sie auf **Anwendung starten** , um das Registrierungstool auf Ihren Computer herunterzuladen, zu installieren und auszuführen.
@@ -366,6 +366,6 @@ In diesem Tutorial haben Sie wichtige Funktionen von Azure Data Catalog kennen g
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

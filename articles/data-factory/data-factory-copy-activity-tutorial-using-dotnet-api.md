@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/27/2016
+ms.date: 01/17/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: d2d3f414d0e9fcc392d21327ef630f96c832c99c
-ms.openlocfilehash: 19d1cc75d61a3897c916180afa395bade43d47ec
+ms.sourcegitcommit: 4b29fd1c188c76a7c65c4dcff02dc9efdf3ebaee
+ms.openlocfilehash: 733c151012e3d896f720fbc64120432aca594bda
 
 
 ---
@@ -37,6 +37,9 @@ Die Kopieraktivität dient zum Verschieben von Daten in Azure Data Factory. Sie 
 
 > [!NOTE]
 > In diesem Artikel wird nicht die gesamte Data Factory-.NET-API behandelt. Ausführlichere Informationen zum Data Factory .NET SDK finden Sie in der [Data Factory-.NET-API-Referenz](https://msdn.microsoft.com/library/mt415893.aspx) .
+> 
+> Die Datenpipeline in diesem Tutorial kopiert Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Sie transformiert keine Eingabedaten in Ausgabedaten. Ein Tutorial zum Transformieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters](data-factory-build-your-first-pipeline.md).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Verschaffen Sie sich unter [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) einen Überblick über das Tutorial, und führen Sie die Schritte aus, die zur Erfüllung der **Voraussetzungen** erforderlich sind.
@@ -50,41 +53,58 @@ Erstellen Sie eine Azure Active Directory-Anwendung, erstellen Sie einen Dienstp
 1. Starten Sie **PowerShell**.
 2. Führen Sie den folgenden Befehl aus, und geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie bei der Anmeldung beim Azure-Portal verwendet haben:
 
-        Login-AzureRmAccount
+    ```PowerShell
+    Login-AzureRmAccount
+    ```
 3. Führen Sie den folgenden Befehl aus, um alle Abonnements für dieses Konto anzuzeigen:
 
-        Get-AzureRmSubscription
+    ```PowerShell
+    Get-AzureRmSubscription
+    ```
 4. Führen Sie den folgenden Befehl aus, um das gewünschte Abonnement auszuwählen: Ersetzen Sie **&lt;NameOfAzureSubscription**&gt; durch den Namen Ihres Azure-Abonnements.
 
-        Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```PowerShell
+    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    ```
 
    > [!IMPORTANT]
    > Notieren Sie sich **SubscriptionId** und **TenantId** aus der Ausgabe dieses Befehls.
 
 5. Erstellen Sie eine Azure-Ressourcengruppe mit dem Namen **ADFTutorialResourceGroup** , indem Sie in PowerShell den folgenden Befehl ausführen.
 
-        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```PowerShell
+    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    ```
 
     Falls die Ressourcengruppe bereits vorhanden ist, können Sie angeben, ob sie aktualisiert (J) oder beibehalten (N) werden soll.
 
     Bei Verwendung einer anderen Ressourcengruppe müssen Sie den Namen Ihrer Ressourcengruppe anstelle von ADFTutorialResourceGroup in diesem Tutorial verwenden.
 6. Erstellen Sie eine Azure Active Directory-Anwendung.
 
-        $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    ```PowerShell
+    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
+    ```
 
     Sollte der folgende Fehler auftreten, wiederholen Sie den Befehl mit einer anderen URL:
-
-        Another object with the same value for property identifierUris already exists.
+    
+    ```PowerShell
+    Another object with the same value for property identifierUris already exists.
+    ```
 7. Erstellen Sie den AD-Dienstprinzipal.
 
-        New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    ```PowerShell
+    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    ```
 8. Fügen Sie den Dienstprinzipal der Rolle **Data Factory-Mitwirkender** hinzu.
 
-        New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    ```PowerShell
+    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    ```
 9. Rufen Sie die Anwendungs-ID ab.
 
-        $azureAdApplication
-
+    ```PowerShell
+    $azureAdApplication 
+    ```
     Notieren Sie sich die Anwendungs-ID (**ApplicationID** aus der Ausgabe).
 
 Nach diesen Schritten sollten Sie über vier Werte verfügen:
@@ -474,7 +494,10 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
 16. Erstellen Sie die Konsolenanwendung. Klicken Sie im Menü auf **Erstellen** und dann auf **Projektmappe erstellen**.
 17. Vergewissern Sie sich, dass sich in Ihrem Azure-Blobspeicher mindestens eine Datei im Container **adftutorial** befindet. Erstellen Sie andernfalls im Editor die Datei **Emp.txt** mit folgendem Inhalt, und laden Sie sie anschließend in den Container „adftutorial“ hoch:
 
-       John, Doe    Jane, Doe
+    ```
+    John, Doe
+    Jane, Doe
+    ```
 18. Führen Sie das Beispiel aus, indem Sie im Menü auf **Debuggen** -> **Debuggen starten** klicken. Wenn angezeigt wird, dass die **Ausführungsdetails für einen Datenslice abgerufen werden**, warten Sie einige Minuten, und drücken Sie dann die **EINGABETASTE**.
 19. Vergewissern Sie sich mithilfe des Azure-Portals, dass die Data Factory **APITutorialFactory** mit folgenden Artefakten erstellt wird:
    * Verknüpfter Dienst: **LinkedService_AzureStorage**
@@ -483,12 +506,18 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
 20. Stellen Sie sicher, dass die zwei Mitarbeiterdatensätze in der Tabelle „**emp**“ in der angegebenen Azure SQL-Datenbank erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie den Artikel über [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). Er enthält ausführliche Informationen zur in diesem Tutorial verwendeten Kopieraktivität.
-* Ausführlichere Informationen zum Data Factory .NET SDK finden Sie in der [Data Factory-.NET-API-Referenz](https://msdn.microsoft.com/library/mt415893.aspx) . In diesem Artikel wird nicht die gesamte Data Factory-.NET-API behandelt.
+| Thema | Beschreibung |
+|:--- |:--- |
+| [Pipelines](data-factory-create-pipelines.md) |Dieser Artikel enthält Informationen zu Pipelines und Aktivitäten in Azure Data Factory. |
+| [Datasets](data-factory-create-datasets.md) |Dieser Artikel enthält Informationen zu Datasets in Azure Data Factory. |
+| [Planung und Ausführung](data-factory-scheduling-and-execution.md) |In diesem Artikel werden die Planungs- und Ausführungsaspekte des Azure Data Factory-Anwendungsmodells erläutert. |
+[Referenz zur Data Factory-.NET-API](/dotnet/api/) | Enthält Details zum Data Factory .NET SDK. (Suchen Sie in der Strukturansicht nach „Microsoft.Azure.Management.DataFactories.Models“.) 
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset von Criteo | Microsoft Docs'
+title: 'Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset | Microsoft-Dokumentation'
 description: "Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines (1 TB) großen öffentlich zugänglichen Datasets"
 services: machine-learning,hdinsight
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 4d6bdffe23905f5507332b95e1dc12e2c00c017d
-ms.openlocfilehash: b6fe6dd15dd73e8874ded8b9481ea8a14733e34c
+ms.sourcegitcommit: e29c26a7fbd25d01f2d58dc29a7fd2f34c91307b
+ms.openlocfilehash: 5e4bf617d80d3b0f4b88a819257bf4226db0ab7a
 
 
 ---
-# <a name="the-team-data-science-process-in-action---using-azure-hdinsight-hadoop-clusters-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
+# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
+
 In dieser exemplarischen Vorgehensweise wird das Verwenden des Team Data Science-Prozesses in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) gezeigt, der zum Speichern, Untersuchen, Entwickeln von Features und Downsampling von Beispieldaten aus einem der öffentlich zugänglichen [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)-Datasets genutzt wird. Mithilfe von Azure Machine Learning erstellen wir ein binäres Klassifizierungsmodell für diese Daten. Zudem zeigen wir auf, wie eines dieser Modelle als Webdienst veröffentlicht wird.
 
 Die in dieser exemplarischen Vorgehensweise vorgestellten Aufgaben können auch mit einem IPython-Notizbuch umgesetzt werden. Benutzer, die diesem Ansatz folgen möchten, sollten das Thema [Criteo walkthrough using a Hive ODBC connection](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) (in englischer Sprache) beachten.
@@ -75,7 +76,7 @@ Um auf das [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-log
 
 Klicken Sie auf **Download fortsetzen** , um weitere Informationen über das DataSet und seine Verfügbarkeit zu erhalten.
 
-Die Daten befinden sich in einem öffentlichen [Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. „wasb“ bezieht sich auf den Azure Blob Storage-Speicherort. 
+Die Daten befinden sich an einem öffentlichen [Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md)-Speicherort: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" bezieht sich auf den Azure-Blob-Speicherort. 
 
 1. Die Daten in diesem öffentlichen Blob-Speicher bestehen aus drei untergeordneten Ordnern mit extrahierten Daten.
    
@@ -407,7 +408,9 @@ Bevor wir in Azure Machine Learning fortfahren, gilt es, eine letzte wichtige Ko
 ## <a name="a-namecounta-a-brief-discussion-on-the-count-table"></a><a name="count"></a> Eine kurze Erläuterung der Zahlentabelle
 Wie wir gesehen haben, sind mehrere Kategorievariablen äußerst umfangreich. In dieser exemplarischen Vorgehensweise stellen wir die leistungsfähige Technik [Lernen durch Anzahl](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) vor, mit der diese Variablen effizient und stabile Weise codiert werden. Weitere Informationen zu dieser Technik finden Sie über den angegebenen Link.
 
-**Hinweis**: In dieser exemplarischen Vorgehensweise konzentrieren wir uns auf die Verwendung von Zahlentabellen zum Erstellen kompakter Darstellungen umfangreicher Kategoriefunktionen. Dies ist nicht die einzige Möglichkeit, Kategoriefunktionen zu codieren. Interessierte Benutzer können sich über anderen Verfahren wie [One-hot-encoding](http://en.wikipedia.org/wiki/One-hot) und [Feature hashing](http://en.wikipedia.org/wiki/Feature_hashing) (beide Artikel in englischer Sprache) informieren.
+[!NOTE]
+>In dieser exemplarischen Vorgehensweise konzentrieren wir uns auf die Verwendung von Zahlentabellen zum Erstellen kompakter Darstellungen umfangreicher Kategoriefunktionen. Dies ist nicht die einzige Möglichkeit, Kategoriefunktionen zu codieren. Interessierte Benutzer können sich über anderen Verfahren wie [One-hot-encoding](http://en.wikipedia.org/wiki/One-hot) und [Feature hashing](http://en.wikipedia.org/wiki/Feature_hashing) (beide Artikel in englischer Sprache) informieren.
+>
 
 Um anhand der Zahlendaten Zahlentabellen zu erstellen, verwenden wir die Daten im Ordner "raw/count". Im Abschnitt "Modellierung" erfahren Sie, wie diese Zahlentabellen für Kategoriefunktionen von Grund auf neu erstellt, oder wie optional vorgefertigte Zahlentabellen für Untersuchungen eingesetzt werden. Im folgenden bedeutet "vordefinierte Zahlentabellen", dass wir die von uns bereitgestellten Zahlentabellen verwenden. Im nächsten Abschnitt finden Sie ausführliche Anweisungen für den Zugriff auf diese Tabellen.
 
@@ -415,11 +418,10 @@ Um anhand der Zahlendaten Zahlentabellen zu erstellen, verwenden wir die Daten i
 Beim Erstellen von Modellen in Azure Machine Learning führen wir diese Schritte aus:
 
 1. [Abrufen der Daten aus Hive-Tabellen in Azure Machine Learning](#step1)
-2. [Erstellen des Experiments: Bereinigen der Daten, Auswählen eines Lerners und Ausstatten mit Funktionen mithilfe von Zahlentabellen](#step2)
-3. [Modelltraining](#step3)
-4. [Abstimmen des Modells anhand von Testdaten](#step4)
-5. [Bewerten des Modells](#step5)
-6. [Veröffentlichen des Modells als zu verwendender Webdienst](#step6)
+2. [Erstellen des Experiments: Bereinigen der Daten und Ausstatten mit Funktionen mithilfe von Zahlentabellen](#step2)
+3. [Erstellen, Trainieren und Bewerten des Modells](#step3)
+4. [Bewerten des Modells](#step4)
+5. [Veröffentlichen des Modells als Webdienst](#step5)
 
 Wir sind nun bereit, in Azure Machine Learning Studio Modelle zu erstellen. Unsere komprimierten Daten wurden als Hive-Tabellen im Cluster gespeichert. Zum Lesen dieser Daten verwenden wir das Azure Machine Learning **Import Data** -Modul. Im Folgenden finden Sie die Anmeldeinformationen für den Zugriff auf das Speicherkonto für diesen Cluster.
 
@@ -472,7 +474,7 @@ Das anpassbare **Clean Missing Data**-Modul bereinigt fehlende Daten. Die Method
 Hier haben wir alle fehlenden Werte durch "0" ersetzt. Es gibt weitere Optionen, die mithilfe der Dropdownlisten im Modul angezeigt werden.
 
 #### <a name="feature-engineering-on-the-data"></a>Funktionsverarbeitung der Daten
-Für einige kategorische Features von großen DataSets können Millionen von eindeutigen Werten vorhanden sein. Die Verwendung naiver Methoden wie One-Hot-Codierung für die Darstellung solcher hochdimensionalen Funktionen ist völlig unmöglich. In dieser exemplarischen Vorgehensweise wird demonstriert, wie in Azure Machine Learning integrierte Zählfunktionen zum Generieren von kompakten Darstellungen dieser hochdimensionalen kategorischen Variablen verwendet werden. Das Endergebnis ist eine geringere Modellgröße, kürzere Trainingszeiten und Leistungsdaten, die mit denen anderer Techniken vergleichbar sind.
+Für einige kategorische Features von großen DataSets können Millionen von eindeutigen Werten vorhanden sein. Die Verwendung naiver Methoden wie One-Hot-Codierung für die Darstellung solcher hochdimensionaler Funktionen ist völlig unmöglich. In dieser exemplarischen Vorgehensweise wird demonstriert, wie in Azure Machine Learning integrierte Zählfunktionen zum Generieren von kompakten Darstellungen dieser hochdimensionalen kategorischen Variablen verwendet werden. Das Endergebnis ist eine geringere Modellgröße, kürzere Trainingszeiten und Leistungsdaten, die mit denen anderer Techniken vergleichbar sind.
 
 ##### <a name="building-counting-transforms"></a>Erstellen von Zähltransformationen
 Zum Erstellen von Zählfunktionen verwenden wir das **Build Counting Transform** -Modul, das in Azure Machine Learning verfügbar ist. Das Modul sieht wie folgt aus:
@@ -480,7 +482,9 @@ Zum Erstellen von Zählfunktionen verwenden wir das **Build Counting Transform**
 ![Build Counting Transform-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/e0eqKtZ.png)
 ![Build Counting Transform-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/OdDN0vw.png)
 
-**Wichtiger Hinweis**: Im Feld **Count columns** geben wir die Spalten ein, die wir zählen möchten. In der Regel handelt es sich dabei (wie bereits erwähnt) um hochdimensionale kategorische Spalten. Zu Beginn wurde erwähnt, dass das Criteo-DataSet über 26 Kategoriespalten verfügt: von Col15 bis Col40. Hier führen wir für alle eine Zählung durch und geben die Indizes (von 15 bis 40, durch Kommas getrennt, wie gezeigt) an.
+> [!IMPORTANT] 
+> Im Feld **Count columns** geben wir die Spalten ein, die wir zählen möchten. In der Regel handelt es sich dabei (wie bereits erwähnt) um hochdimensionale kategorische Spalten. Zu Beginn wurde erwähnt, dass das Criteo-DataSet über 26 Kategoriespalten verfügt: von Col15 bis Col40. Hier führen wir für alle eine Zählung durch und geben die Indizes (von 15 bis 40, durch Kommas getrennt, wie gezeigt) an.
+> 
 
 Zur Verwendung des Moduls im MapReduce-Modus (geeignet für große DataSets) benötigen wir Zugriff auf einen HDInsight Hadoop-Cluster (dazu kann auch der zum Durchsuchen von Funktionen genutzte Cluster verwendet werden) und die Anmeldeinformationen. Die vorigen Abbildungen veranschaulichen die ausgefüllten Werte (ersetzen Sie die Beispielwerte durch die entsprechenden Werte für Ihren Anwendungsfall).
 
@@ -532,8 +536,9 @@ In diesem Ausschnitt wird gezeigt, dass für die Spalten, für die wir Zählunge
 
 Wir können nun mithilfe dieser transformierten DataSets ein Azure Machine Learning-Modell erstellen. Die Vorgehensweise wird im nächsten Abschnitt gezeigt.
 
-#### <a name="azure-machine-learning-model-building"></a>Azure Machine Learning – Modellerstellung
-##### <a name="choice-of-learner"></a>Auswahl des Lerners
+### <a name="a-namestep3a-step-3-build-train-and-score-the-model"></a><a name="step3"></a> Schritt 3: Erstellen, Trainieren und Bewerten des Modells
+
+#### <a name="choice-of-learner"></a>Auswahl des Lerners
 Zunächst müssen wir einen Lerner auswählen. Als Lerner verwenden wir eine verstärkte Entscheidungsstruktur mit zwei Klassen. Dies sind die Standardoptionen für diesen Lerner:
 
 ![Two-Class Boosted Decision Tree-Parameter](./media/machine-learning-data-science-process-hive-criteo-walkthrough/bH3ST2z.png)
@@ -550,7 +555,7 @@ Sobald wir über ein trainiertes Modell verfügen, sind wir bereit, das Test-Dat
 
 ![Modul Modell bewerten](./media/machine-learning-data-science-process-hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="a-namestep5a-step-5-evaluate-the-model"></a><a name="step5"></a> Schritt 5: Bewerten des Modells
+### <a name="a-namestep4a-step-4-evaluate-the-model"></a><a name="step4"></a> Schritt 4: Bewerten des Modells
 Abschließend möchten wir die Leistung des Modells analysieren. Wenn bei zwei Klassen (binäre) Klassifizierungsprobleme auftreten, eignet sich AUC gewöhnlich als Maßstab. Um dies zu veranschaulichen, ordnen wir das Modul **Score Model** dem Modul **Evaluate Model** zu. Wenn Sie im Modul **Evaluate Model** auf **Visualize** klicken, ergibt dies ungefähr folgende Grafik:
 
 !["Evaluate"-Modul für BDT-Modell](./media/machine-learning-data-science-process-hive-criteo-walkthrough/0Tl0cdg.png)
@@ -559,7 +564,7 @@ Bei binären (oder zweiklassigen) Klassifizierungsproblemen, eignet sich AUC (Ar
 
 !["Visualize Evaluate Model"-Modul](./media/machine-learning-data-science-process-hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="a-namestep6a-step-6-publish-the-model-as-a-web-service"></a><a name="step6"></a> Schritt 6: Veröffentlichen des Modells als Webdienst
+### <a name="a-namestep5a-step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> Schritt 5: Veröffentlichen des Modells als Webdienst
 Die Möglichkeit zum Veröffentlichen eines Azure Machine Learning-Modells als Webdienst ohne hohen Aufwand ist eine nützliche Funktion, um es allgemein verfügbar zu machen. Sobald dies erfolgt ist, kann jeder mit den Daten, für die Vorhersagen benötigt werden, Aufrufe an den Webdienst durchführen. Der Webdienst nutzt dann das Modell für das Zurückgeben dieser Vorhersagen.
 
 Zu diesem Zweck speichern wir unser trainiertes Modell zunächst als "Trained Model"-Objekt. Dazu klicken wir mit der rechten Maustaste auf das Modul **Train Model**. Anschließend wählen wir die Option **Save as Trained Model** aus.
@@ -628,6 +633,6 @@ Damit sind wir am Ende unser ausführlichen exemplarischen Vorgehensweise zum Be
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

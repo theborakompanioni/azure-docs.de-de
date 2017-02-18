@@ -10,14 +10,14 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: servers
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 17e2830dceeaa313dd0fd7d406bf68a75b6f900e
+ms.sourcegitcommit: 79a9e72d29b5522dc3960b79bae7876f21acb4c5
+ms.openlocfilehash: 07181e5d35703cddf8a896badd45e7485c9e07a2
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 17e2830dceeaa313dd0fd7d406bf68a75b6f900e
 Dieses Thema enthält Aspekte und Richtlinien für die Arbeit mit logischen Azure SQL-Servern. Informationen über Azure SQL-Datenbanken, finden Sie unter [SQL databases (SQL-Datenbanken)](sql-database-overview.md).
 
 ## <a name="what-is-an-azure-sql-database-logical-server"></a>Was ist ein logischer Azure SQL-Datenbankserver?
-Ein logischer Azure SQL-Datenbankserver fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken. In SQL-Datenbank ist ein Server ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene. Weitere Informationen zu logischen Azure SQL-Servern, finden Sie unter [Logical Servers (Logische Server)](sql-database-server-overview.md). 
+Ein logischer Azure SQL-Datenbankserver fungiert als zentraler Verwaltungspunkt für mehrere Datenbanken. In SQL-Datenbank ist ein Server ein logisches Konstrukt, das von einer SQL Server-Instanz unterschieden wird, mit der Sie möglicherweise in der lokalen Welt vertraut sind. Insbesondere der SQL-Datenbankdienst gibt keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf ihre logischen Server, und bietet kein Zugriff oder Funktion auf Instanzebene.  
 
 Ein logischer Azure Datenbankserver:
 
@@ -85,6 +85,6 @@ Sie können die logischen Azure SQL-Datenbankserver mit verschiedenen Methoden v
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

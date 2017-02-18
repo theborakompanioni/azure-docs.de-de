@@ -1,5 +1,5 @@
 ---
-title: 'Apache Storm-Tutorial: Erste Schritte mit Storm in HDInsight unter Linux | Microsoft Docs'
+title: Erste Schritte mit Apache Storm in Azure HDInsight | Microsoft-Dokumentation
 description: Erste Schritte mit Big Data-Analysen in HDInsight unter Linux mit Apache Storm und den Storm-Starter-Beispielen. Erfahren Sie, wie Sie Storm zur Verarbeitung von Daten in Echtzeit verwenden.
 keywords: Apache Storm, Apache Storm-Tutorial, Big Data-Analysen, Storm Starter
 services: hdinsight
@@ -16,8 +16,8 @@ ms.workload: big-data
 ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 856043148b3fc28594850ae27bedd57d48292582
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
 
 
 ---
@@ -216,6 +216,6 @@ Beispieltechnologien, die mit Storm in HDInsight verwendet werden können, finde
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

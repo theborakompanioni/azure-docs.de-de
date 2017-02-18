@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 06/12/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 41ce9b0e323c0938b6db98b99d8d687d1ed0f0ef
-ms.openlocfilehash: 1480c67792dc0ef6d2742b5b7f1c13e81cefbc1c
+ms.sourcegitcommit: f86986fea6fc48a4a6ed09022e8026e0645dfc56
+ms.openlocfilehash: 971558d287191c6b7b5ea9d135e6fe37c904aa76
 
 
 ---
@@ -75,11 +75,12 @@ Sie können diese Standardeinstellungen ändern, indem Sie den Codeausschnitt be
             sessionRenewalMs: 3600000,
             sessionExpirationMs: 172800000
         });
+    </script>
 
 * `sessionRenewalMs` : Der Zeitraum in Millisekunden, nach dem die Sitzung aufgrund der Inaktivität des Benutzers beendet wird. Standardwert: 30 Minuten.
 * `sessionExpirationMs` : Die maximale Sitzungslänge in Millisekunden. Wenn der Benutzer nach Ablauf dieses Zeitraums noch aktiv ist, zählt dies als weitere Sitzung. Standardwert: 24 Stunden.
 
-Die **Sitzungsdauer** ist eine [Metrik][metrics], die die Zeitspanne zwischen den ersten und letzten Telemetrieelementen einer Sitzung aufzeichnet. (Der Timeoutzeitraum ist darin nicht enthalten.)
+**Sitzungsdauer** ist eine [Metrik][metrics], die die Zeitspanne zwischen den ersten und letzten Telemetrieelementen einer Sitzung aufzeichnet. (Der Timeoutzeitraum ist darin nicht enthalten.)
 
 Die **Sitzungsanzahl** innerhalb eines bestimmten Intervalls ist als Anzahl eindeutiger Sitzungen mit Aktivität während dieses Intervalls definiert. Wenn Sie einen langen Zeitraum betrachten, wie z. B. die Anzahl der täglichen Sitzungen der vergangenen Woche, entspricht diese Anzahl üblicherweise der Gesamtanzahl von Sitzungen. 
 
@@ -337,6 +338,6 @@ Wenn Sie mit Analysen arbeiten, werden diese zu einem integrierten Bestandteil I
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Klonen aus einer Sicherung des Microsoft Azure StorSimple Virtual Array | Microsoft Docs
+title: Klonen einer StorSimple Virtual Array-Sicherung | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie eine Sicherung klonen und eine Datei aus Ihrem StorSimple Virtual Array wiederherstellen können."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: ae076d52b532f5181868b2ab24ee8f2ffa887af7
-ms.openlocfilehash: f1c050c499484b612d2f9dcae395f36524397008
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
 
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen aus einer Sicherung des StorSimple Virtual Array
@@ -140,6 +140,6 @@ Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokale
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

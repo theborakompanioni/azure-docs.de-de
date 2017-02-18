@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a7d0b98e1c582230c756d1c893d9cc549a5a2893
-ms.openlocfilehash: ec38012c15d1970a56881fa64d8655b09487eae5
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 
 ---
@@ -50,7 +50,7 @@ Folgende Tools können Sie verwenden:
 
 * [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md): In Event Hubs erfasste Ereignisse können mithilfe einer Azure Data Lake Store-Ausgabe in Azure Data Lake geschrieben werden.
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) : Daten aus dem Storm-Cluster können direkt in Data Lake Store geschrieben werden.
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Store schreiben.
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Store schreiben.
 
 ### <a name="relational-data"></a>Relationale Daten
 Sie können auch Daten aus relationalen Datenbanken erfassen. Relationale Datenbanken sammeln über einen Zeitraum hinweg umfangreiche Datenmengen, die bei Verarbeitung durch eine Big Data-Pipeline wichtige Einblicke bieten können. Mit den folgenden Tools können Sie solche Daten in den Data Lake-Speicher verschieben.
@@ -135,6 +135,6 @@ Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen d
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

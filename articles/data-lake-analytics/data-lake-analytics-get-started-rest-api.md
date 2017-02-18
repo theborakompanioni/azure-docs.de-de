@@ -7,16 +7,16 @@ author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5e133d92-baaa-44c9-890c-ab2d85c91122
-ms.service: data-lake-store
+ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/19/2016
+ms.date: 02/03/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cae1eeb70e5358b8c30527a45379d2a0da315974
+ms.sourcegitcommit: 2fea3686b1484406d31c5447c7d3d7e2451b827e
+ms.openlocfilehash: 1898b3d6aa1a9ccbc9f4427cf994c02f9fa35abd
 
 
 ---
@@ -33,7 +33,7 @@ Es wird beschrieben, wie Sie WebHDFS-REST-APIs und Data Lake Analytics-REST-APIs
 ## <a name="authenticate-with-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
 Es gibt zwei Methoden für die Authentifizierung mit Azure Active Directory.
 
-### <a name="enduser-authentication-interactive"></a>Endbenutzerauthentifizierung (interaktiv)
+### <a name="end-user-authentication-interactive"></a>Endbenutzerauthentifizierung (interaktiv)
 Mit dieser Methode wird der Benutzer in der Anwendung zum Anmelden aufgefordert. Alle Vorgänge werden im Kontext des Benutzers durchgeführt. 
 
 Gehen Sie wie folgt vor, um die interaktive Authentifizierung durchzuführen:
@@ -74,9 +74,9 @@ Gehen Sie wie folgt vor, um die interaktive Authentifizierung durchzuführen:
              -F client_id=<CLIENT-ID> \
              -F refresh_token=<REFRESH-TOKEN>
 
-Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
+Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth&2;.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
-### <a name="servicetoservice-authentication-noninteractive"></a>Dienst-zu-Dienst-Authentifizierung (nicht interaktiv)
+### <a name="service-to-service-authentication-non-interactive"></a>Dienst-zu-Dienst-Authentifizierung (nicht interaktiv)
 Mit dieser Methode stellt die Anwendung eigene Anmeldeinformationen zum Durchführen der Vorgänge bereit. Hierzu müssen Sie eine POST-Anforderung wie unten abgebildet ausgeben: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
@@ -209,7 +209,7 @@ Ersetzen Sie \<`REDACTED`\> durch das Autorisierungstoken, \<`AzureSubscriptionI
         ]
     }
 
-## <a name="submit-usql-jobs"></a>Übermitteln von U-SQL-Aufträgen
+## <a name="submit-u-sql-jobs"></a>Übermitteln von U-SQL-Aufträgen
 Der folgende Curl-Befehl veranschaulicht, wie Sie einen U-SQL-Auftrag übermitteln:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
@@ -266,7 +266,7 @@ Die Ausgabe sieht in etwa wie folgt aus:
     }
 
 
-## <a name="list-usql-jobs"></a>Auflisten von U-SQL-Aufträgen
+## <a name="list-u-sql-jobs"></a>Auflisten von U-SQL-Aufträgen
 Der folgende Curl-Befehl veranschaulicht, wie Sie U-SQL-Aufträge auflisten:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
@@ -350,6 +350,6 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

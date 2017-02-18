@@ -1,5 +1,5 @@
 ---
-title: "Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory | Microsoft Docs"
+title: "Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure AD | Microsoft-Dokumentation"
 description: "Erhalten Sie weitere Informationen zur Implementierung des Ablaufs der impliziten OAuth2-Gewährung durch Azure Active Directory und dazu, ob dies die richtige Methode für Ihre Anwendung ist."
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: vittorib;bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 0b035ad1505e45c8c0820c825ff609df6e6100f0
-ms.openlocfilehash: 2b7b40aacaf701be22ba6109e1a6370131f2e737
+ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
+ms.openlocfilehash: 980cac016b37e3744441508b93e5cd504045d638
 
 
 ---
@@ -72,6 +72,6 @@ Auch wenn Sie eine Webanwendung mit einem Back-End entwickeln, die eine API übe
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

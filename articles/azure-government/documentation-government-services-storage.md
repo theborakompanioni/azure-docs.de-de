@@ -15,8 +15,8 @@ ms.workload: azure-government
 ms.date: 12/22/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a7e53dcdbf3cecd8a00ad3424ffa0d62cc8fde43
-ms.openlocfilehash: 73d34bc7f34b9b9730e826e17537f82d0f689c03
+ms.sourcegitcommit: 831334f2b835d00aa3fd22292764b69e85d735a6
+ms.openlocfilehash: a6b61df5884031eb5b53f983b834357bd23a622e
 
 
 ---
@@ -35,7 +35,7 @@ Einzelheiten zu diesem Dienst und seiner Verwendung finden Sie in der [öffentli
 | [Hot/Cool Blob Storage] (../storage/storage-blob-storage-tiers.md) |NA |NA |
 | [Storage Service Encryption] (../storage/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [Storage Premium] (../storage/storage-premium-storage.md) |Allgemein verfügbar |NA | Umfasst das Erstellen virtueller Computer der DS-Serie. |
-| [Blob-Import/Export] (../storage/storage-import-export-service.md) |Allgemein verfügbar |Allgemein verfügbar | Derzeit werden nur klassische Speicherkonten unterstützt. |
+| [Blob-Import/Export] (../storage/storage-import-export-service.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [StorSimple] (../storsimple/storsimple-ova-overview.md) |Allgemein verfügbar |Allgemein verfügbar |
 
 ### <a name="variations"></a>Variationen
@@ -85,6 +85,6 @@ Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://b
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

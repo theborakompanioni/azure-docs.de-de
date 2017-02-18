@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: fc2d81ce5d1562bcc71584626d8e45a2d788b2e3
+ms.sourcegitcommit: 9c2817129162ab17faadf3c5ecf8ef7dcb370c3c
+ms.openlocfilehash: 2c9c4b59077ea7d31677a5e1c690160bf63633a6
 
 
 ---
@@ -43,7 +43,9 @@ Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnu
 
 Direkte Methoden sind synchron und werden nach der Wartezeit (Standardeinstellung: 30 Sekunden, einstellbar bis 3.600 Sekunden) entweder mit einem Erfolg oder Fehler abgeschlossen. Direkte Methoden sind hilfreich bei interaktiven Szenarios, in denen ein Gerät genau dann agieren soll, wenn es online ist und Befehle empfängt, z.B. Einschalten eines Lichts von einem Telefon aus. In diesen Szenarios soll der Erfolg oder Misserfolg unmittelbar erkennbar sein, damit der Clouddienst so schnell wie möglich auf das Ergebnis reagieren kann. Das Gerät kann einen Nachrichtentext als Ergebnis der Methode zurückgeben, dies ist für die Methode aber nicht erforderlich. Es gibt keine Garantie für die Sortierung oder eine Parallelitätssemantik für Methodenaufrufe.
 
-Gerätemethodenaufrufe erfolgen von der Cloudseite nur über HTTP und von der Geräteseite nur über MQTT.
+Direkte Methodenaufrufe erfolgen von der Cloudseite nur über HTTP und von der Geräteseite nur über MQTT.
+
+Die Nutzlast für Methodenanforderungen und -antworten ist ein JSON-Dokument bis zu 8KB.
 
 ## <a name="reference-topics"></a>Referenzthemen:
 Die folgenden Referenzthemen enthalten weitere Informationen zur Verwendung direkter Methoden.
@@ -142,6 +144,6 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

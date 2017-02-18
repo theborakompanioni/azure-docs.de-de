@@ -1,6 +1,6 @@
 ---
 title: Verarbeiten von D2C-Nachrichten mit Azure IoT Hub (Java) | Microsoft Docs
-description: Verarbeiten von D2C-Nachrichten mit IoT Hub durch Lesen von Daten aus dem mit Event Hubs kompatiblen Endpunkt auf einem IoT Hub. Sie erstellen eine Java-Service-App, die eine EventProcessorHost-Instanz verwendet.
+description: "Hier wird erläutert, wie IoT Hub-D2C-Nachrichten mithilfe von Routingregeln und benutzerdefinierten Endpunkten verarbeitet werden, um Nachrichten an andere Back-End-Dienste zu senden."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: e3e4ad430d8941a09543ce2dc97f8e449a39bced
-ms.openlocfilehash: 5ede1fdd040b2f59383dda27d6fb26b87c2d7f02
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 616bca96eaff12fa1929605f3480098bd8b867c2
 
 
 ---
@@ -95,10 +95,10 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie im Tutorial 
     }
     ```
    
-    Hiermit wird vom simulierten Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Lösungs-Back-End sofortiges Eingreifen erfordert. Die Anwendung übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
+    Mit dieser Methode wird vom simulierten Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Anwendungs-Back-End sofortiges Eingreifen erfordert. Die Anwendung übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
    
    > [!NOTE]
-   > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für eine Vielzahl von Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
+   > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
    > 
    > 
 
@@ -120,25 +120,25 @@ In diesem Abschnitt erstellen Sie eine Service Bus-Warteschlange, verbinden sie 
 
 1. Erstellen Sie eine Service Bus-Warteschlange wie in [Erste Schritte mit Warteschlangen][Service Bus queue] beschrieben. Notieren Sie den Namespace und den Warteschlangennamen.
 
-2. Öffnen Sie Ihren IoT Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
+2. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
     
     ![Endpunkte in IoT Hub][30]
 
-3. Klicken Sie oben auf dem Blatt „Endpunkte“ auf **Hinzufügen**, um die Warteschlange Ihrem IoT Hub hinzuzufügen. Benennen Sie den Endpunkt „CriticalQueue“ und, wählen Sie mithilfe der Dropdownlisten **Service Bus-Warteschlange**, den Service Bus-Namespace, in dem sich die Warteschlange befindet, und den Namen der Warteschlange. Klicken Sie anschließend am unteren Rand auf **Speichern**.
+3. Klicken Sie oben auf dem Blatt **Endpunkte** auf **Hinzufügen**, um die Warteschlange Ihrem IoT-Hub hinzuzufügen. Benennen Sie den Endpunkt **CriticalQueue**, und wählen Sie mithilfe der Dropdownlisten **Service Bus-Warteschlange**, den Service Bus-Namespace, in dem sich die Warteschlange befindet, und den Namen der Warteschlange. Klicken Sie anschließend am unteren Rand auf **Speichern**.
     
     ![Hinzufügen eines Endpunkts][31]
     
-4. Klicken Sie jetzt in Ihrem IoT Hub auf **Routen**. Klicken Sie am oberen Rand des Blatts auf **Hinzufügen**, um eine Regel zu erstellen, die Nachrichten an die gerade von Ihnen hinzugefügte Warteschlange leitet. Wählen Sie **DeviceTelemetry** als Quelle der Daten. Geben Sie `level="critical"` als Bedingung ein, und wählen Sie die Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, als Routenendpunkt. Klicken Sie anschließend am unteren Rand auf **Speichern**.
+4. Klicken Sie jetzt in Ihrem IoT-Hub auf **Routen**. Klicken Sie am oberen Rand des Blatts auf **Hinzufügen**, um eine Routingregel zu erstellen, die Nachrichten an die gerade von Ihnen hinzugefügte Warteschlange leitet. Wählen Sie **DeviceTelemetry** als Quelle der Daten. Geben Sie `level="critical"` als Bedingung ein, und wählen Sie die Warteschlange, die Sie gerade als benutzerdefinierten Endpunkt hinzugefügt haben, als Routingregelendpunkt. Klicken Sie anschließend am unteren Rand auf **Speichern**.
     
     ![Hinzufügen einer Route][32]
     
-    Stellen Sie sicher, dass die Fallbackroute auf EIN festgelegt ist. Dies ist die Standardkonfiguration des IoT Hubs.
+    Stellen Sie sicher, dass die Fallbackroute auf **EIN** festgelegt ist. Diese Einstellung ist die Standardkonfiguration eines IoT-Hubs.
     
     ![Fallbackroute][33]
 
 
 ## <a name="optional-read-from-the-queue-endpoint"></a>(Optional) Lesen aus dem Warteschlangen-Endpunkt
-Sie können optional die Nachrichten aus dem Warteschlangen-Endpunkt anhand der Anweisungen in [Erste Schritte mit Warteschlangen][lnk-sb-queues-java] lesen. Benennen Sie die App **read-critical-queue**.
+Sie können optional die Nachrichten aus dem Warteschlangenendpunkt anhand der Anweisungen unter [Erste Schritte mit Warteschlangen][lnk-sb-queues-java] lesen. Benennen Sie die App **read-critical-queue**.
 
 ## <a name="run-the-applications"></a>Ausführen der Anwendungen
 Sie können jetzt die drei Anwendungen ausführen.
@@ -230,6 +230,6 @@ Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

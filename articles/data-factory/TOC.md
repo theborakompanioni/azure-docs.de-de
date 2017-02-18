@@ -25,7 +25,7 @@
 
 # Anleitung
 ## Verschieben von Daten
-### [Assistent zum Kopieren in Data Factory](data-factory-copy-wizard.md)
+### [Assistent zum Kopieren in Data Factory](data-factory-azure-copy-wizard.md)
 #### [Laden von 1 TB in 15 Minuten](data-factory-load-sql-data-warehouse.md)
 ### [Kopieraktivität](data-factory-data-movement-activities.md)
 #### [Leitfaden zur Leistung und Optimierung](data-factory-copy-activity-performance.md)
@@ -84,7 +84,6 @@
 # Referenz
 ## [PowerShell](/powershell/resourcemanager/azurerm.datafactories/v2.3.0/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
-## [Azure Data Factory-Entwicklerreferenz](data-factory-sdks.md)
 ## [REST](/rest/api/datafactory/)
 
 # Ressourcen

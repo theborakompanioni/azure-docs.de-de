@@ -1,5 +1,5 @@
 ---
-title: "Bereitstellen von StorSimple Virtual Array 3 – Einrichten des virtuellen Geräts als Dateiserver"
+title: Einrichten von StorSimple Virtual Array als Dateiserver | Microsoft-Dokumentation
 description: "In diesem dritten Tutorial zur StorSimple Virtual Array-Bereitstellung lernen Sie, wie Sie ein virtuelles Gerät als Dateiserver einrichten."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 05/26/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8f99e3dc59c0637053cad6c2b3b6baedac803f42
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: e1863b43706ffc200bb94c4a26ae75080a6dd857
 
 
 ---
@@ -65,7 +65,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
 6. Auf der Seite **Geräteeinstellungen** :
    
    1. Weisen Sie Ihrem Gerät einen eindeutigen **Namen** zu. Dieser Name kann 1 bis 15 Zeichen lang sein und Buchstaben, Zahlen und Bindestriche enthalten.
-   2. Klicken Sie auf das **Dateiserver**-Symbol ![](./media/storsimple-ova-deploy3-fs-setup/image6.png) für den **Typ** von Gerät, den Sie erstellen. Mit einem Dateiserver können Sie freigegebene Ordner erstellen.
+   2. Klicken Sie auf das **Dateiserver**-Symbol ![](./media/storsimple-ova-deploy3-fs-setup/image6.png) für den **Typ** des Geräts, das Sie erstellen. Mit einem Dateiserver können Sie freigegebene Ordner erstellen.
    3. Da es sich bei Ihrem Gerät um einen Dateiserver handelt, müssen Sie dafür den Beitritt zu einer Domäne durchführen. Geben Sie einen **Domänennamen**ein.
    4. Klicken Sie auf **Übernehmen**.
 7. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
@@ -177,7 +177,7 @@ Als Nächstes müssen Sie eine Verbindung mit der bzw. den Freigaben herstellen,
 
 Im Video wird gezeigt, wie Sie ein StorSimple Virtual Array als Dateiserver konfigurieren und registrieren können.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Configure-a-StorSimple-Virtual-Array/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Configure-a-StorSimple-Virtual-Array/player]
 > 
 > 
 
@@ -187,6 +187,6 @@ Erfahren Sie, wie Sie die lokale Webbenutzeroberfläche verwenden, um [Ihr StorS
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

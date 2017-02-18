@@ -1,28 +1,25 @@
 ---
-title: Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
+title: "Konfigurieren Ihres API Management-Diensts mithilfe von Git – Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie die API Management-Dienstkonfiguration mit Git speichern und konfigurieren.
 services: api-management
 documentationcenter: 
 author: steved0x
 manager: erikre
-editor: 
+editor: mattfarm
 ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 96d100d69a7f4989153b293d1fa1ab249a82c1c2
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
-> [!IMPORTANT]
-> Die Git-Konfiguration für API Management ist derzeit in der Vorschau. Sie ist funktionell abgeschlossen, aber in der Vorschau ist, da wir aktiv Feedback zu dieser Funktion suchen. Es ist möglich, dass wir als Reaktion auf Kundenfeedback eine wichtige Änderung vornehmen, und raten daher von der Verwendung der Funktion in Produktionsumgebungen ab. Wenn Sie Feedback oder Fragen haben, informieren Sie uns bitte unter `apimgmt@microsoft.com`.
 > 
 > 
 
@@ -40,7 +37,7 @@ Wenn Sie den Dienst mit dem Herausgeberportal, PowerShell-Cmdlets oder der REST-
 
 Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Management-Dienstinstanz mit Git.
 
-1. Aktivieren von Git-Zugriff in Ihrem Dienst
+1. Zugreifen auf die Git-Konfiguration in Ihrem Dienst
 2. Speichern der Konfigurationsdatenbank des Diensts in Ihrem Git-Repository
 3. Klonen des Git-Repositorys auf Ihrem lokalen Computer
 4. Herunterladen des aktuellen Repositorys auf Ihren lokalen Computer und Ausführen eines Commits und Übertragen der Änderungen zurück in das Repository
@@ -48,20 +45,14 @@ Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Man
 
 In diesem Artikel wird das Aktivieren und Verwenden von Git für die Verwaltung der Dienstkonfiguration beschrieben. Zudem enthält er eine Referenz für die Dateien und Ordner im Git-Repository.
 
-## <a name="to-enable-git-access"></a>So aktivieren Sie Git-Zugriff
-Sie können den Status der Git-Konfiguration schnell anzeigen, indem Sie das Git-Symbol im Herausgeberportal in der oberen rechten Ecke anzeigen. In diesem Beispiel ist der Git-Zugriff noch nicht aktiviert.
+## <a name="access-git-configuration-in-your-service"></a>Zugreifen auf die Git-Konfiguration in Ihrem Dienst
+Sie können den Status der Git-Konfiguration schnell anzeigen, indem Sie das Git-Symbol im Herausgeberportal in der oberen rechten Ecke anzeigen. In diesem Beispiel gibt die Statusmeldung an, dass nicht gespeicherte Änderungen am Repository vorhanden sind. Dies liegt daran, dass die API Management-Dienstkonfigurationsdatenbank noch nicht im Repository gespeichert wurde.
 
 ![Git-Status][api-management-git-icon-enable]
 
 Um Ihre Git-Konfiguration anzuzeigen und zu konfigurieren, können Sie entweder auf das Git-Symbol klicken, oder Sie klicken auf das Menü **Sicherheit** und navigieren zu der Registerkarte **Konfigurations-Repository**.
 
 ![Git aktivieren][api-management-enable-git]
-
-Um den Git-Zugriff zu aktivieren, aktivieren Sie das Kontrollkästchen **Git-Zugriff aktivieren** .
-
-Kurze Zeit später wird die Änderung gespeichert, und eine Meldung wird angezeigt. Beachten Sie, dass das Git-Symbol farbig geworden ist, um anzuzeigen, dass der Git-Zugriff aktiviert ist, und die Statusmeldung jetzt angibt, dass Änderungen vorliegen, die noch nicht im Repository gespeichert sind. Dies liegt daran, dass die API Management-Dienstkonfigurationsdatenbank noch nicht im Repository gespeichert wurde.
-
-![Git aktiviert][api-management-git-enabled]
 
 > [!IMPORTANT]
 > Geheime Schlüssel, die nicht als Eigenschaften definiert sind, werden im Repository gespeichert und verbleiben in dessen Verlauf, bis Sie den Git-Zugriff deaktivieren und erneut aktivieren. Eigenschaften stellen einen sicheren Ort zum Verwalten von konstanten Zeichenfolgenwerten, einschließlich geheimer Schlüssel, für alle API-Konfigurationen und -Richtlinien dar. Sie müssen sie also nicht direkt in Ihren Richtlinienanweisungen speichern. Weitere Informationen finden Sie unter [Verwenden von Eigenschaften in Azure API Management-Richtlinien](api-management-howto-properties.md).
@@ -321,6 +312,6 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

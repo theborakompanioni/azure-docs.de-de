@@ -1,5 +1,5 @@
 ---
-title: "Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management"
+title: "Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie Benutzer mit OAuth 2.0 in API Management autorisieren.
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 8650ad41d1d6ef3ee94c2792f435b84676a72d27
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: e43027cdea291f34aa60ad123e0de86b385efb30
 
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von OAuth 2.0 in Azure API Management
@@ -177,6 +176,6 @@ Weitere Informationen zur Verwendung von OAuth 2.0 und API Management finden Si
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -31,6 +31,6 @@ In diesem Abschnitt wird die Einrichtung Ihrer Entwicklungsumgebung erläutert. 
 1. Wählen Sie im Dialogfeld **Azure Storage** das gewünschte Azure-Speicherkonto aus, mit dem Sie arbeiten möchten, und wählen Sie **Hinzufügen**.
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

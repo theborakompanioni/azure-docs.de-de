@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute | Microsoft Docs'
+title: Durch Azure AD Connect synchronisierte Attribute | Microsoft-Dokumentation
 description: Listet die mit Azure Active Directory synchronisierten Attribute auf.
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2016
+ms.date: 01/23/2017
 ms.author: markvi;andkjell
 translationtype: Human Translation
-ms.sourcegitcommit: 2a361774095b20aacff91e9926ead2c1a53b8835
-ms.openlocfilehash: b8ed85dc70d0270884d57db61d81e89cfd2bf582
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
 
 
 ---
@@ -372,7 +372,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 Diese Gruppe umfasst einen Satz von Attributen. Es handelt sich um die Attribute, die für eine generische Workload oder Anwendung mindestens benötigt werden. Dieser Attributsatz kann für eine oben nicht aufgeführte Workload oder für eine Nicht-Microsoft-App verwendet werden. Der Satz wird explizit für Folgendes verwendet:
 
 * Yammer (nur „Benutzer“ wird genutzt)
-* [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office 365 (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office 365))](http://go.microsoft.com/fwlink/?LinkId=747036)
+* [Organisationsübergreifende Hybrid-B2B-Zusammenarbeit über Ressourcen wie SharePoint (siehe SharePoint Business to Business Collaboration: Extranet for Partners with Office&365; (SharePoint Business-to-Business-Zusammenarbeit: Extranet für Partner mit Office&365;))](http://go.microsoft.com/fwlink/?LinkId=747036)
 
 Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, wenn das Azure AD-Verzeichnis nicht zur Unterstützung von Office 365, Dynamics oder Intune verwendet wird. Er umfasst eine kleine Gruppe von Kernattributen.
 
@@ -462,6 +462,6 @@ Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Dire
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

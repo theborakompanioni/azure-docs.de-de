@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 7a99b931a30c04e13d535caa2abd46980c4a3fb3
+ms.sourcegitcommit: 84d42efc54f7dcbde8330360941969a5b0884a1a
+ms.openlocfilehash: ed249f63098a82b935016ccac3e0416951cb1b0a
 
 
 ---
@@ -46,7 +46,6 @@ Anschließend können Sie zur Verarbeitung von Ausfällen basierend auf den Ursp
 
 Es gelten die folgenden Bedingungen:
 
-* Die aktuelle Version des Media Services-SDKs unterstützt nicht das Erstellen eines Locators mit einer angegebenen Locator-ID. Für diese Aufgabe wird die Media Services-REST-API verwendet.
 * Die aktuelle Version des Media Services-SDKs unterstützt keine programmgesteuerte Generierung von IAssetFile-Informationen, die ein Medienobjekt zu Medienobjektdateien zuordnen würde. Für diese Aufgabe wird die Media Services-REST-API "CreateFileInfos" verwendet. 
 * Im Speicher verschlüsselte Medienobjekte (AssetCreationOptions.StorageEncrypted) werden für die Replikation nicht unterstützt (da sich die Verschlüsselungsschlüssel in beiden Media Services-Konten unterscheiden). 
 * Wenn Sie dynamische Paketerstellung nutzen möchten, stellen Sie sicher, dass der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, den Status **Wird ausgeführt** aufweist.
@@ -950,6 +949,6 @@ Sie können nun einen Traffic Manager zum Weiterleiten von Anforderungen zwische
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

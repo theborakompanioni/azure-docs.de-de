@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: e516d3cea9a53dec209a51fc8729f2cca934d3cd
+ms.sourcegitcommit: e5bacb7ce32845b97e06cb0d35cc62935a3c86f6
+ms.openlocfilehash: 79b597fb1d76ec0dd7bdfca701a16f885d245b94
 
 
 ---
@@ -93,7 +93,7 @@ Elapsed time:            00.00:13:07
 ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
-* Wenn Sie AZCopy verwenden und Ihnen die Fehlermeldung „Fehler beim Authentifizieren der Anforderung durch den Server.“ Stellen Sie sicher, dass der Wert des Autorisierungsheaders, einschließlich der Signatur, korrekt ist." angezeigt wird, und Sie Schlüssel 2 oder den sekundären Speicherschlüssel verwenden, versuchen Sie es mit dem primären oder dem ersten Speicherschlüssel.
+* Wenn Sie AZCopy verwenden und Ihnen die Fehlermeldung „Fehler beim Authentifizieren der Anforderung durch den Server“ angezeigt wird, stellen Sie sicher, dass der Wert des Autorisierungsheaders, einschließlich der Signatur, richtig ist und Sie Schlüssel 2 oder den sekundären Speicherschlüssel verwenden. Versuchen Sie es dann mit dem primären oder ersten Speicherschlüssel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können eine neue VM erstellen, indem Sie [die Kopie der VHD als Betriebssystem-Datenträger an eine VM anfügen](virtual-machines-windows-create-vm-specialized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -101,6 +101,6 @@ Elapsed time:            00.00:13:07
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

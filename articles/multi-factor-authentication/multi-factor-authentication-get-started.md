@@ -1,5 +1,5 @@
 ---
-title: Vergleich von Azure MFA-Cloud und -Server | Microsoft Docs
+title: Auswahl zwischen Azure MFA-Cloud und Server | Microsoft Dokumentation
 description: "Entscheiden Sie sich für die am besten geeignete Multi-Factor Authentication-Sicherheitslösung, indem Sie sich fragen, was Sie sichern möchten und wo sich Ihre Benutzer befinden.  Wählen Sie dann zwischen Cloud, MFA-Server und AD FS aus."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/06/2017
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 07e2a62ee63a8f9ef3d660fff8c6269654e2b448
-ms.openlocfilehash: 3e10becd802dfe8934063727f2f7fb0e9e8b420b
+ms.sourcegitcommit: 92c552f42f2645281f5039242825cfdaf6b683c9
+ms.openlocfilehash: 1a42c137204c2d2f6fff9a005b2b0e885c2002b2
 
 
 ---
@@ -36,7 +36,7 @@ Um die richtige zweistufige Überprüfungslösung zu ermitteln, müssen Sie zun�
 | --- |:---:|:---:|
 | Microsoft-Apps |● |● |
 | SaaS-Apps im Appkatalog |● |● |
-| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |● |● |
+| Über den Azure AD-App-Proxy veröffentlichte Webanwendungen |● |● |
 | Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen | |● |
 | Remotezugriff, z. B. VPN, RDG | |● |
 
@@ -62,8 +62,8 @@ In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Facto
 | Unidirektionale SMS als zweite Stufe | ● | ● |
 | Bidirektionale SMS als zweite Stufe | | ● |
 | Hardwaretoken als zweite Stufe | | ● |
-| App-Kennwörter für Clients, die MFA nicht unterstützen | ● | |
-| Administrative Kontrolle über Authentifizierungsmethoden | | ● |
+| App-Kennwörter für Office 365-Clients, die MFA nicht unterstützen | ● | |
+| Administrative Kontrolle über Authentifizierungsmethoden | ● | ● |
 | PIN-Modus | | ● |
 | Betrugswarnung |● | ● |
 | MFA-Berichte |● | ● |
@@ -73,7 +73,7 @@ In der folgenden Tabelle finden Sie einen Vergleich der Features von Multi-Facto
 | Vertrauenswürdige IP-Adressen | ● | ● |
 | Speichern der MFA für vertrauenswürdige Geräte | ● | |
 | Bedingter Zugriff | ● | ● |
-| Cache | ● | ● |
+| Cache |  | ● |
 
 Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder den MFA-Server lokal verwenden möchten. Jetzt können Sie mit dem Einrichten und Verwenden von Azure Multi-Factor Authentication beginnen. **Wählen Sie das Symbol aus, das Ihrem Szenario entspricht.**
 
@@ -87,6 +87,6 @@ Sie haben nun ermittelt, ob Sie Multi-Factor Authentication in der Cloud oder de
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

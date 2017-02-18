@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von Codierungseinheiten"
+title: "Skalieren der Medienverarbeitung durch Hinzufügen von Codierungseinheiten – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit .NET Codierungseinheiten hinzufügen."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
-ms.author: juliako;milangada;gtrifonov
+ms.date: 01/23/2017
+ms.author: juliako;milangada;
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: ad0cf996390a792495c492e4205d5be3d27ffa9b
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: ee40b92c48d91a391fe72582c7ea5e244907747f
 
 
 ---
@@ -73,6 +73,6 @@ Um ein Supportticket zu öffnen, gehen Sie folgendermaßen vor:
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

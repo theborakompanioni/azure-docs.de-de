@@ -9,6 +9,6 @@ Software as a Service-Angebote wie Office 365 und Dynamics 365 wurden für den s
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

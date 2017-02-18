@@ -1,10 +1,10 @@
 ---
-title: StorSimple-Systembegrenzungen | Microsoft Docs
+title: Systembegrenzungen der StorSimple 8000-Serie | Microsoft-Dokumentation
 description: "Beschreibt Systembegrenzungen und empfohlene Größen für StorSimple-Komponenten und Verbindungen der 8000 Serie."
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: c7392678-0924-46c6-9c59-1665cb9b6586
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/06/2016
+ms.date: 01/30/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 884f9ad8cf3c0862fa0f235ee19efd0dbdadbab6
+ms.sourcegitcommit: d81b20ca17ddf723dcc11148f7b44e763dde100b
+ms.openlocfilehash: 1af0f36ce1161b35a2f75d74774ed145c8bc9328
 
 
 ---
@@ -30,14 +30,14 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Maximale Anzahl von Volumecontainern |64 | |
 | Maximale Anzahl von Volumes |255 | |
 | Maximale Anzahl von lokalen Volumes |32 | |
-| Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 * 7). |
+| Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 *&7;). |
 | Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
-| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br>  64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
-| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |8,5 TB für 8100 <br></br>  22,5 TB für 8600 |8100 und 8600 sind physische Geräte. |
+| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br> 64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
+| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |8,5 TB für 8100 <br></br> 22,5 TB für 8600 |8100 und 8600 sind physische Geräte. |
 | Maximale Anzahl von iSCSI-Verbindungen |512 | |
 | Maximale Anzahl von iSCSI-Verbindungen von Initiatoren |512 | |
 | Maximale Anzahl von Zugriffssteuerungsdatensätzen pro Gerät |64 | |
-| Maximale Anzahl von Volumes pro Sicherungsrichtlinie |24 | |
+| Maximale Anzahl von Volumes pro Sicherungsrichtlinie |20 | |
 | Maximale Anzahl von Sicherungen, die pro Zeitplan (in einer Sicherungsrichtlinie) beibehalten werden |64 | |
 | Maximale Anzahl von Zeitplänen pro Sicherungsrichtlinie |10 | |
 | Maximale Anzahl von Momentaufnahmen beliebigen Typs, die pro Volume beibehalten werden können |256 |Dies umfasst lokale Momentaufnahmen und Cloudmomentaufnahmen. |
@@ -50,9 +50,9 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von HDD-Ebene aus bereitgestellt)* |120/250 MB/s | |
 | Maximaler Client-Lese-/-Schreibdurchsatz (wenn von Cloud-Ebene aus bereitgestellt)* ab Update 3** |40/60 MB/s für mehrstufige Volumes<br><br>60/80 MB/s für mehrstufige Volumes, bei denen im Rahmen der Volumeerstellung die Archivierungsoption ausgewählt wurde |Lesedurchsatz hängt von Clients ab, die genügend E/A-Warteschlangentiefe generieren und verwalten müssen. <br><br>Die erreichbare Geschwindigkeit hängt von der Geschwindigkeit des zugrunde liegenden Speicherkontos ab. |
 
-&#42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
+& #42; Der maximale Durchsatz pro E/A-Typ wurde mit 100 %-Lese- und 100 %-Schreibszenarien gemessen. Der tatsächliche Durchsatz kann geringer sein und hängt von der E/A-Mischung und den Netzwerkbedingungen ab.
 
-&#42; &#42; Leistungswerte vor Update 3 können niedriger sein.
+& #42; & #42; Leistungswerte vor Update 3 können niedriger sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [StorSimple-Systemanforderungen](storsimple-system-requirements.md). 
@@ -60,6 +60,6 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

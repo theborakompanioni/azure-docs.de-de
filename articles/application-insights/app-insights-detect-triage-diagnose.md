@@ -1,5 +1,5 @@
 ---
-title: Erkennung, Eingrenzung und Diagnose
+title: "Erkennen und Diagnostizieren von Problemen mit Web-Apps – Azure Application Insights | Microsoft-Dokumentation"
 description: "Analysieren von Abstürzen und Erkennen und Diagnostizieren von Leistungsproblemen in Ihren Anwendungen"
 author: alancameronwills
 services: application-insights
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 63c901529b81c75f46f1b21219054817c148063a
-ms.openlocfilehash: 9589adad2f8f227043b2c8f864a48d1c9ba43732
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: 1af63c31a8cb7995f64813c12d32b283745c04ed
 
 
 ---
@@ -69,7 +69,7 @@ Die Übersichtsseite in Application Insights enthält ein Diagramm, das eine Vie
 
 Die Browser-Seitenladezeit wird von Telemetriedaten abgeleitet, die direkt von Webseiten gesendet werden. Die Serverantwortzeit, die Anzahl von Serveranforderungen und die Anzahl der Anforderungsfehler werden alle auf dem Webserver gemessen und von dort an Application Insights gesendet.
 
-Marcela ist etwas besorgt über den Serverantwortgraphen, der die Durchschnittszeit anzeigt, in der ein Server eine HTTP-Anforderung vom Browser eines Benutzers erhält und in der der Server die Antwort zurückgibt. Es ist nicht ungewöhnlich, dass eine Abweichung in diesem Diagramm auftritt, da die Systemauslastung variiert. In diesem Fall existiert aber scheinbar eine Korrelation zwischen geringfügigen Anstiegen in der Anzahl der Anforderungen, und großen Anstiegen in der Antwortzeit. Das könnte darauf hinweisen, dass das System genau an seiner Grenze arbeitet. 
+Marcela ist etwas besorgt über den Serverantwortgraphen, der die Durchschnittszeit anzeigt, in der ein Server eine HTTP-Anforderung vom Browser eines Benutzers erhält und in der der Server die Antwort zurückgibt. Es ist nicht ungewöhnlich, dass eine Abweichung in diesem Diagramm auftritt, da die Systemauslastung variiert. In diesem Fall existiert aber scheinbar eine Korrelation zwischen geringfügigen Anstiegen in der Anzahl der Anforderungen, und großen Anstiegen in der Antwortzeit. Das könnte darauf hinweisen, dass das System genau an seiner Grenze arbeitet.
 
 Sie öffnet die Serverdiagramme:
 
@@ -91,7 +91,7 @@ Am nächsten Tag kommt eine E-Mail mit einer Warnung von Application Insights. A
 
 Anforderungsfehler sind Fälle, bei denen Benutzern ein Fehler angezeigt wurde, meist im Anschluss an eine im Code ausgelöste Ausnahme. Vielleicht wird den Benutzern auf dem Bildschirm die Meldung "Es tut uns leid, dass wir Ihre Daten zur Zeit nicht aktualisieren können" oder aber (im absolut peinlichsten Fall) ein Stapelabbild des Webservers gezeigt.
 
-Diese Warnung ist eine Überraschung, denn das letzte Mal, als sie die Situation prüfte, war die Anzahl der Anforderungsfehler ermutigend niedrig. Eine kleine Anzahl von Fehlern werden in einem ausgelasteten Server erwartet. 
+Diese Warnung ist eine Überraschung, denn das letzte Mal, als sie die Situation prüfte, war die Anzahl der Anforderungsfehler ermutigend niedrig. Eine kleine Anzahl von Fehlern werden in einem ausgelasteten Server erwartet.
 
 Dies war ebenso eine Überraschung für sie, denn sie musste diese Warnung nicht konfigurieren. Die intelligente Erkennung ist automatisch in Application Insights enthalten. Sie passt sich automatisch dem üblichen Fehlermuster Ihrer App an, und „gewöhnt sich“ an Fehler auf einer bestimmten Seite, unter hoher Last oder verknüpft mit anderen Metriken. Es wird nur dann ein Alarm ausgelöst, wenn der Anstieg über einen erwarteten Punkt hinausgeht.
 
@@ -101,16 +101,16 @@ Dies ist eine sehr nützliche E-Mail. Sie löst nicht nur einen Alarm aus, sie f
 
 Es wird gezeigt, wie viele Kunden, Webseiten oder Vorgänge betroffen sind. Marcela kann entscheiden, ob das gesamte Team als Übung für den Erstfall daran arbeiten soll, oder ob es reicht, diese Arbeit bis zur nächsten Woche aufzuschieben.
 
-Die E-Mail zeigt auch, dass eine bestimmte Ausnahme aufgetreten ist, und dass der Fehler den fehlerhaften Aufrufen auf eine bestimmte Datenbank zugeordnet werden kann, was sogar noch interessanter ist. Dies erklärt, warum der Fehler plötzlich aufgetreten ist, obwohl Marcelas Team in letzter Zeit keine Updates bereitgestellt hat. 
+Die E-Mail zeigt auch, dass eine bestimmte Ausnahme aufgetreten ist, und dass der Fehler den fehlerhaften Aufrufen auf eine bestimmte Datenbank zugeordnet werden kann, was sogar noch interessanter ist. Dies erklärt, warum der Fehler plötzlich aufgetreten ist, obwohl Marcelas Team in letzter Zeit keine Updates bereitgestellt hat.
 
 Sie sendet Ping-Nachrichten an den Leiter des Datenbankteams. Ja, sie haben ein Hotfix in der letzten halben Stunde herausgegeben, und ups, eine kleine Schemaänderung könnte durchgeführt worden sein ...
 
-Das Problem wird also behoben, noch vor der Untersuchung von Protokollen, und innerhalb von 15 Minuten vor dessen Erscheinen. Marcela klickt trotzdem auf den Link, um Application Insights zu öffnen. Sie wird direkt auf eine fehlgeschlagene Anforderung geleitet und sie kann die fehlerhafte Datenbankanforderung in der Liste der Abhängigkeitsaufrufe sehen. 
+Das Problem wird also behoben, noch vor der Untersuchung von Protokollen, und innerhalb von 15 Minuten vor dessen Erscheinen. Marcela klickt trotzdem auf den Link, um Application Insights zu öffnen. Sie wird direkt auf eine fehlgeschlagene Anforderung geleitet und sie kann die fehlerhafte Datenbankanforderung in der Liste der Abhängigkeitsaufrufe sehen.
 
 ![Fehlgeschlagene Anforderung](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detecting-exceptions"></a>Erkennen von Ausnahmen
-Mit nur wenigen Einrichtungsschritten werden [Ausnahmen](app-insights-asp-net-exceptions.md) automatisch an Application Insights gemeldet. Die Ausnahmen können auch explizit aufgezeichnet werden, indem Aufrufe von [TrackException()](app-insights-api-custom-events-metrics.md#track-exception) in den Code eingefügt werden:  
+Mit nur wenigen Einrichtungsschritten werden [Ausnahmen](app-insights-asp-net-exceptions.md) automatisch an Application Insights gemeldet. Die Ausnahmen können auch explizit aufgezeichnet werden, indem Aufrufe von [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) in den Code eingefügt werden:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -201,7 +201,7 @@ Bei einigen Problemen mit langsamen Abhängigkeiten ist die Geolocation die Ursa
 
 **Was haben wir gemacht?** Wenn das Problem nicht einer Abhängigkeit zuzuschreiben ist und nicht immer vorhanden war, wird es wahrscheinlich durch eine zuletzt erfolgte Änderung verursacht. Die von den Metrik- und Ereignisdiagrammen zur Verfügung gestellte Verlaufsansicht erleichtert das Korrelieren plötzlicher Änderungen mit Bereitstellungen Dadurch kann die Suche nach der Problemursache eingeengt werden.
 
-**Was passiert?**  Einige Probleme treten nur selten auf und können schwierig aufzuspüren sein, wenn Tests offline erfolgen. Alles, was wir tun können, ist versuchen, den Fehler zu erfassen, wenn er online auftritt. Sie können das Stapelabbild in den Ausnahmeberichten prüfen. Darüber hinaus können Sie die Ablaufverfolgungsaufrufe mit Ihrem bevorzugten Protokollierungsframework oder mit "TrackTrace()" oder "TrackEvent()" schreiben.  
+**Was passiert?** Einige Probleme treten nur selten auf und können schwierig aufzuspüren sein, wenn Tests offline erfolgen. Alles, was wir tun können, ist versuchen, den Fehler zu erfassen, wenn er online auftritt. Sie können das Stapelabbild in den Ausnahmeberichten prüfen. Darüber hinaus können Sie die Ablaufverfolgungsaufrufe mit Ihrem bevorzugten Protokollierungsframework oder mit "TrackTrace()" oder "TrackEvent()" schreiben.  
 
 Bei Fabrikam war ein zwischenzeitliches Problem bei Überweisungen zwischen Konten, jedoch nur bei bestimmten Kontotypen aufgetreten. Um besser zu verstehen, was passiert ist, hat das Team "TrackTrace()"-Aufrufe an wichtigen Punkten im Code eingefügt, wobei der Kontotyp jedem Aufruf als Eigenschaft angefügt wird. Dadurch wurde das Herausfiltern bloß dieser Ablaufverfolgungen bei der Diagnosesuche erleichtert. Außerdem hat das Team Parameterwerte als Eigenschaften und Kennzahlen an die Ablaufverfolgungsaufrufe angefügt.
 
@@ -231,10 +231,6 @@ Der Einstieg kann auf verschiedene Weise je nach den Eigenschaften Ihrer Anwendu
 
 
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

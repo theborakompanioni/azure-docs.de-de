@@ -17,8 +17,8 @@ ms.date: 10/04/2016
 ms.author: rasquill
 "\"/": 
 translationtype: Human Translation
-ms.sourcegitcommit: 03d93ac0416a947d43dca66297588c4c5b656a1d
-ms.openlocfilehash: 18ea4ab3ab6b82fd43ee290ece790d61cabf16a4
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
 
 
 ---
@@ -162,12 +162,12 @@ Verwenden Sie den folgenden Befehl, um sich abzumelden:
 Wenn die mit dem Konto verknüpften Abonnements nur über Active Directory authentifiziert werden, werden die Abonnementinformationen bei der Abmeldung aus dem lokalen Profil gelöscht. Wenn jedoch auch eine Datei mit Veröffentlichungseinstellungen für die Abonnements importiert wurde, werden durch die Abmeldung nur die auf Active Directory bezogenen Informationen aus dem lokalen Profil gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Resource Manager-Modus](virtual-machines/azure-cli-arm-commands.md) und unter [Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](virtual-machines-command-line-tools.md).
+* Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Resource Manager-Modus](virtual-machines/azure-cli-arm-commands.md) und unter [Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 * Wenn Sie weitere Informationen zur Azure-Befehlszeilenschnittstelle erhalten, den Quellcode herunterladen, Probleme melden oder etwas zum Projekt beitragen möchten, besuchen Sie die Webseite [GitHub repository for the Azure CLI](https://github.com/azure/azure-xplat-cli).
 * Wenn Sie Probleme bei der Verwendung der Azure-Befehlszeilenschnittstelle oder Azure haben, besuchen Sie die [Azure-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

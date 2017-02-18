@@ -1,8 +1,8 @@
 ---
-title: "Konfigurieren eines Webhooks für Azure-Aktivitätsprotokollwarnungen | Microsoft Docs"
-description: "Hier erfahren Sie, wie Sie Webhooks mithilfe von Aktivitätsprotokollwarnungen aufrufen. "
+title: "Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen | Microsoft-Dokumentation"
+description: "Leiten Sie Aktivitätsprotokollereignisse für benutzerdefinierte Aktionen an andere Dienste weiter. Senden Sie z.B. SMS, melden Sie Fehler oder benachrichtigen Sie Teams über Chat/Messagingdienst."
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/23/2017
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 3c240e5f8eac50f4151a5a72bea690241597fc01
-ms.openlocfilehash: 0b912bc130ab5de3236a0e3f1f60087624b089a0
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 4ee65a10616fff81044c181fce8708a596e9e6de
 
 
 ---
-# <a name="configure-a-webhook-on-an-azure-activity-log-alert"></a>Konfigurieren eines Webhooks für eine Azure-Aktivitätsprotokollwarnung
-Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, Fehler protokollieren, ein Team per Chat-/Messagingdienst benachrichtigen oder beliebige andere Aktionen ausführen. In diesem Artikel erfahren Sie, wie Sie einen Webhook für eine Azure-Aktivitätsprotokollwarnung festlegen und wie die Nutzlast für den an einen Webhook gerichteten HTTP POST-Vorgang aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Metrikwarnung finden Sie auf [dieser Seite](insights-webhooks-alerts.md). Sie können auch eine Aktivitätsprotokollwarnung einrichten, bei deren Aktivierung eine E-Mail gesendet wird.
+# <a name="call-a-webhook-on-azure-activity-log-alerts"></a>Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen
+Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, Fehler protokollieren, ein Team per Chat-/Messagingdienst benachrichtigen oder beliebige andere Aktionen ausführen. In diesem Artikel wird beschrieben, wie Sie einen Webhook festlegen, der beim Auslösen einer Azure-Aktivitätsprotokollwarnung aufgerufen werden soll. Außerdem erfahren Sie, wie die Nutzlast für die HTTP-POST-Methode für einen Webhook aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Metrikwarnung finden Sie auf [dieser Seite](insights-webhooks-alerts.md). Sie können auch eine Aktivitätsprotokollwarnung einrichten, bei deren Aktivierung eine E-Mail gesendet wird.
 
 > [!NOTE]
 > Dieses Feature befindet sich zurzeit in der Vorschau und wird zu einem späteren Zeitpunkt entfernt.
-> 
-> 
+>
+>
 
-Aktivitätsprotokollwarnungen können mithilfe von [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-alert-rules), mithilfe der [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder mithilfe der [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) eingerichtet werden.
+Aktivitätsprotokollwarnungen können mithilfe von [Azure PowerShell-Cmdlets](insights-powershell-samples.md#create-alert-rules), mithilfe der [plattformübergreifenden Befehlszeilenschnittstelle](insights-cli-samples.md#work-with-alerts) oder mithilfe der [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn933805.aspx) eingerichtet werden. Derzeit können Sie keine mithilfe des Azure-Portals festlegen.
 
 ## <a name="authenticating-the-webhook"></a>Authentifizieren des Webhooks
 Der Webhook kann mithilfe folgender Methoden authentifiziert werden:
 
-1. **Tokenbasierte Autorisierung:** Der Webhook-URI wird mit einer Token-ID gespeichert. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
-2. **Einfache Autorisierung:** Der Webhook-URI wird mit einem Benutzernamen und Kennwort gespeichert. `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
+1. **Tokenbasierte Autorisierung:** Der Webhook-URI wird mit einer Token-ID gespeichert, z.B. `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+2. **Einfache Autorisierung:** Der Webhook-URI wird mit einem Benutzernamen und Kennwort gespeichert, z.B. `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`.
 
 ## <a name="payload-schema"></a>Nutzlast und Schema
 Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die folgende JSON-Nutzlast und das folgende Schema. Dieses Schema ähnelt dem Schema metrikbasierter Warnungen.
@@ -126,7 +126,6 @@ Der POST-Vorgang enthält für alle aktivitätsprotokollbasierten Warnungen die 
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,23 +1,22 @@
 ---
 title: Azure Government-Dienste | Microsoft Docs
 description: "Bietet eine Übersicht über die verfügbaren Dienste in Azure Government"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: zakramer
 manager: liki
-editor: 
 ms.assetid: a453a23c-bc0f-4203-9075-0f579dea7e23
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/14/2016
+ms.date: 01/29/2017
 ms.author: zakramer
 translationtype: Human Translation
-ms.sourcegitcommit: 083ffff3a99c82a518bcc370e6d40c7500ba6907
-ms.openlocfilehash: f48fd6856346e1fd0be12fec2391d0c16287f106
+ms.sourcegitcommit: 157e1d2b39e3990daa8001279b0dcc5bd14f0de8
+ms.openlocfilehash: eac5f44f3e6f0953bff57e362d327b738e6b50f9
 
 
 ---
@@ -37,12 +36,13 @@ Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://a
 * Cloud Services
 
 ## <a name="networkingdocumentation-government-networkingmd"></a>[Netzwerk](documentation-government-networking.md)
-* Virtuelles Netzwerk
-* Lastenausgleichsmodul
-* Application Gateway
-* VPN Gateway
-* Traffic Manager
 * [ExpressRoute](documentation-government-networking.md#expressroute-private-connectivity)
+* [Unterstützung für BGP-Communitys](documentation-government-networking.md#support-for-bgp-communities)
+* Virtuelles Netzwerk
+* [Load Balancer](documentation-government-networking.md#support-for-load-balancer)
+* Application Gateway
+* [Traffic Manager](documentation-government-networking.md#support-for-traffic-manger)
+* [VPN Gateway](documentation-government-networking.md#support-for-vpn-gateway)
 
 ## <a name="storagedocumentation-government-services-storagemd"></a>[Speicher](documentation-government-services-storage.md)
 * [Azure Storage (in englischer Sprache)](documentation-government-services-storage.md#azure-storage)
@@ -88,7 +88,7 @@ Die aktuelle Liste der Dienste finden Sie unter [Produkte nach Region](https://a
 * [Log Analytics](documentation-government-services-monitoringandmanagement.md#log-analytics)
 * [Site Recovery](documentation-government-services-monitoringandmanagement.md#site-recovery)
 * Scheduler
-* Traffic Manager
+* [Traffic Manager](documentation-government-networking.md#support-for-traffic-manger)
 * Überwachung und Diagnose
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -97,6 +97,6 @@ Weitere Informationen und Updates erhalten Sie, indem Sie den [Microsoft Azure G
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

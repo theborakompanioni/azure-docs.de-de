@@ -1,5 +1,5 @@
 ---
-title: "Notfallwiederherstellung und Gerätefailover für das Microsoft Azure StorSimple Virtual Array | Microsoft Docs"
+title: "Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie das Failover für das StorSimple Virtual Array durchführen."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: 34de93b8133649aaedc3cb89a8cd478eda92c7aa
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
 
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array
@@ -76,7 +76,7 @@ Vor Beginn der Notfallwiederherstellung werden auf dem Gerät Vorüberprüfungen
   
   * gültige ACR-Namen
   * gültige IQN (nicht länger als 220 Zeichen)
-  * gültige CHAP-Kennwörter (12 bis 16 Zeichen lang)
+  * gültige CHAP-Kennwörter (12 bis&16; Zeichen lang)
 
 Falls eine dieser Vorüberprüfungen fehlschlägt, kann die Notfallwiederherstellung nicht durchgeführt werden. Sie müssen diese Fehler zunächst beheben, bevor Sie die Notfallwiederherstellung wiederholen können.
 
@@ -182,6 +182,6 @@ Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokale
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

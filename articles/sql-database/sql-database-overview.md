@@ -1,6 +1,6 @@
 ---
-title: "Übersicht zu Azure SQL-Datenbank | Microsoft Docs"
-description: "Diese Seite enthält eine Übersicht über Azure SQL-Datenbanken."
+title: Was ist eine Azure SQL-Datenbank? | Microsoft Docs
+description: "Dieser Artikel enthält eine Übersicht über Azure SQL-Datenbanken."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -10,14 +10,14 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: single databases
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 11/28/2016
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 315fb49ba25c46afaa6571d9249ecd1c8da13e91
+ms.sourcegitcommit: 06639080dec485395d6821c371a4f792c7c02845
+ms.openlocfilehash: 5e3ac3a08ea3e5c72082dcc7faa209d848acf2fe
 
 
 ---
@@ -71,6 +71,6 @@ Sie können logische Azure SQL-Datenbankserver mit verschiedenen Methoden verwal
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

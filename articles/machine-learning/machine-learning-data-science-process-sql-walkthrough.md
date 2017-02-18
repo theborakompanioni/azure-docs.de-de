@@ -1,5 +1,5 @@
 ---
-title: 'Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server | Microsoft-Dokumentation'
+title: Erstellen und Bereitstellen eines Machine Learning-Modells mithilfe von SQL Server auf einer Azure-VM | Microsoft-Dokumentation
 description: Advanced Analytics Process and Technology in Aktion
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 01/29/2017
 ms.author: fashah;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
-ms.openlocfilehash: 76fe2f70ca297be153d1223a219c9a2b18203a96
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: a5e0a76a29a82d5364ee1adb5c912e76064dd1f9
 
 
 ---
@@ -48,7 +48,7 @@ Der eindeutige Schlüssel für die Zusammenführung von „trip\_data“ und „
 ## <a name="a-namemltasksaexamples-of-prediction-tasks"></a><a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 Wir werden drei Vorhersageprobleme formulieren, die auf *tip\_amount* basieren, nämlich:
 
-1. Binäre Klassifizierung: Vorhersagen, ob ein Trinkgeld bezahlt wurde. Ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
+1. Binäre Klassifizierung: Vorhersagen, ob ein Trinkgeld bezahlt wurde. Ein *tip\_amount* größer als&0; $ ist eine positive Probe, während ein *tip\_amount* gleich&0; $ eine negative Probe ist.
 2. Multi-Klassen-Klassifizierung: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
    
         Class 0 : tip_amount = $0
@@ -70,7 +70,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
 
 1. [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md)
 2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md)
-3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und IPython Notebook fungiert.
+3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und ein IPython Notebook fungiert.
    
    > [!NOTE]
    > Die Beispielskripts und IPython Notebooks werden während der Einrichtung auf den virtuellen Computer für Data Science heruntergeladen. Nach Abschluss der VM-Nachinstallationsskripts finden Sie die Beispiele in der Dokumentbibliothek auf Ihrem virtuellen Computer:  
@@ -656,6 +656,6 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

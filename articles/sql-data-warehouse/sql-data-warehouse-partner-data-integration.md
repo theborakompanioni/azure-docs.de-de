@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 10/31/2016
+ms.date: 01/30/2017
 ms.author: jrj;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: a7f6de2fe04a62278d49ff2395bb6f48b701e35b
-ms.openlocfilehash: 797844a0b58269c5258001ed53bec0dbbec8d4d5
+ms.sourcegitcommit: d9436796373af55a18c0b6fbfc036bd6616bbe4f
+ms.openlocfilehash: ea9c6be4dce0b0812ac780257732321444a57beb
 
 
 ---
@@ -26,7 +26,7 @@ Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie 
 ## <a name="our-data-integration-partners"></a>Unsere Partner für die Datenintegration
 | Partner | Beschreibung | Links | Videos |
 | --- | --- | --- | --- |
-| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer bietet einen wiederholbaren Workflow für Self-Service-Datenanalysen, mit dem Sie für detaillierte Einblicke nicht mehr Wochen, sondern nur noch wenige Stunden benötigen. Alteryx Designer erweitert die Möglichkeiten von Datenanalysten: Datenvorbereitung, Datenzusammenführung und vorhersagende, statistische und räumliche Analysen werden in der gleichen intuitiven Benutzeroberfläche zusammengeführt. |[Marketplace][alteryx_marketplace]<br>[Website][alteryx_designer_website]<br>[Datenblatt][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Video zu Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
+| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer bietet einen wiederholbaren Workflow für Self-Service-Datenanalysen, mit dem Sie für detaillierte Einblicke nicht mehr Wochen, sondern nur noch wenige Stunden benötigen. Alteryx Designer erweitert die Möglichkeiten von Datenanalysten: Datenvorbereitung, Datenzusammenführung und vorhersagende, statistische und räumliche Analysen werden in der gleichen intuitiven Benutzeroberfläche zusammengeführt. |[Marketplace][alteryx_marketplace]<br>[Website][alteryx_designer_website]<br>[Whitepaper][alteryx_whitepaper]<br>[Datenblatt][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Video zu Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
 | ![Attunity][2] |**Attunity**<br>Attunity CloudBeam bietet eine automatisierte und optimierte Lösung zum Laden von Daten in SQL Data Warehouse. Diese Lösung mit einem "Click-to-Load"-Design vereinfacht und beschleunigt sowohl das Laden von Batchdateien als auch die inkrementelle Replikation aus vielen heterogenen Datenbanken, darunter SQL Server, Oracle, DB2, Sybase und mySQL. |[Marketplace][attunity_marketplace]<br>[Schnellstart][attunity_quickstart]<br>[Website][attunity_cloudbeam_website]<br>[Datenblatt][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] |[![Video zu Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
 | ![Bryte Systems][3] |**Bryte Systems**<br>Bryte Systems automatisiert die Datenübertragung in SQL Data Warehouse aus verschiedenen Datenbanken und Quellen. Bryte Systems ist spezialisiert auf Technologien im Bereich Datenverschiebung und Datenintegration. Es erstellt skalierbare cloudbasierte Data Warehouses und Data Lakes für tiefere Einblicke. |[Marketplace][bryte_systems_marketplace]<br>[Website][bryte_systems_azure_website] | |
 | ![Informatica][4] |**Informatica Cloud Services für Azure – Nutzungsbasierte Bezahlung**<br> Optimieren Sie den Wert Ihrer Azure-Dienste und gewinnen Sie handlungsrelevante Erkenntnisse aus allen Ihren Hybrid-Datasets mit Informatica Cloud Services für Azure – Nutzungsbasierte Bezahlung. Informatica Cloud bietet eine erstklassige Lösung für die Datenintegration, Cloud-Analysen, Anwendungsintegration und Datenverwaltung. Mit der Self-Service-Datenmigration sowie der Integrations- und Verwaltungsfunktionen können Kunden schnell und zuverlässig Petabytes von Daten aus einer Vielzahl von Quellen, wie SaaS-Anwendungen, Hadoop-basierten Data Lakes und anderen lokalen Datenquellen (Oracle, SAP) in Azure importieren, exportieren, synchronisieren und planen.  Informatica Cloud Services für Azure bietet systemeigene, leistungsstarke Konnektivität mit hohem Volumen zu Azure SQL Data Warehouse, SQL-Datenbank, Blob Storage, Data Lake Store und DocumentDB. |[Marketplace][informatica_Cloud_Services_marketplace]<br>[Kostenlose Testversion][informatica_cloud_free_trial]<br>[Konfigurationshandbuch][informatica_cloud_services_config]<br>[Website][informatica_Cloud_Services_website]<br>[Datenblatt][informatica_cloud_datasheet]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
@@ -68,7 +68,7 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 [informatica_cloud_free_trial]:https://www.informatica.com/products/cloud-integration/connectivity/microsoft-azure-connector.html
 
 <!--Website Links -->
-[alteryx_designer_website]:http://www.alteryx.com/products/alteryx-designer/
+[alteryx_designer_website]:http://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
 [bryte_systems_azure_website]:http://www.bryte.com.au/azure-integration/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
@@ -116,8 +116,10 @@ Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Int
 [redgate_twitter]:https://twitter.com/DataPlatform_S
 [snaplogic_twitter]:https://twitter.com/snaplogic
 
+<!--WhitePaper-->
+[alteryx_whitepaper]:http://pages.alteryx.com/Microsoft-Azure-InDB-WP?lsm=microsoft
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

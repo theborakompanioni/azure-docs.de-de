@@ -1,10 +1,10 @@
 ---
-title: Planung und Entwurf von VPN-Gateways | Microsoft Docs
+title: "Planung und Entwurf für standortübergreifende Verbindungen: Azure VPN Gateway | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über Planung und Entwurf von VPN-Gateways für standortübergreifende, Hybrid- und VNet-zu-VNet-Verbindungen."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/25/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 03f9294b558a075705fca4bd647a2154e155a1ea
+ms.sourcegitcommit: d2087d4a1844379ae642c9ce5b08d62edef2fccf
+ms.openlocfilehash: 21723b3c8ab636f6c4a497abece59ce83a46d65f
 
 
 ---
@@ -117,7 +117,7 @@ Ohne die Tunnelerzwingung wird der Internetdatenverkehr Ihrer virtuellen Compute
 
 **Diagramm zur Tunnelerzwingung**
 
-![Verbindung durch Tunnelerzwingung](./media/vpn-gateway-plan-design/forced-tunnel.png "forced tunneling")
+![Azure VPN Gateway – Diagramm von erzwungenem Tunneling](./media/vpn-gateway-plan-design/forced-tunneling-diagram.png)
 
 Eine Verbindung mit erzwungenem Tunneling kann in beiden Bereitstellungsmodellen und mit unterschiedlichen Tools konfiguriert werden. Ausführlichere Informationen finden Sie in der Tabelle weiter unten. Wir aktualisieren diese Tabelle, wenn neue Artikel, neue Bereitstellungsmodelle und weitere Tools für diese Konfiguration verfügbar werden. Wenn ein Artikel verfügbar ist, fügen wir in der Tabelle einen direkten Link dazu ein.
 
@@ -131,6 +131,6 @@ Weitere Informationen zu bestimmten Gatewayeinstellungen finden Sie unter [Infor
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

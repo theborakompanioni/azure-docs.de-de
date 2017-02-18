@@ -1,8 +1,8 @@
 ---
-title: "Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen | Microsoft Docs"
-description: "Konfiguration der automatischen Skalierung für VM-Skalierungsgruppen basierend auf mehreren Regeln und Profilen mit E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen."
+title: Erweiterte Autoskalierung mit Azure Virtual Machines | Microsoft-Dokumentation
+description: Hier werden Resource Manager und VM-Skalierungsgruppen mit mehreren Regeln und Profilen verwendet, die mit Skalierungsaktionen E-Mails senden und Webhook-URLs aufrufen.
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/30/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: e075622583ee83cbf52a06257be9f5684307751c
-ms.openlocfilehash: ffb1d26aeab05bfc015bae2e058944f10c7a479d
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 0e0fe444ef6eab96b134ad042d41a54b436f3aec
 
 
 ---
 
-# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen
-Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrikschwellenwerten horizontal hoch- und herunterskalieren – entweder nach einem sich wiederholenden Zeitplan oder an einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
+# <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen
+Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
 > [!NOTE]
 > Zwar werden in dieser exemplarischen Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, die Informationen gelten aber auch für die automatische Skalierung von Cloud Services und Web-Apps.
@@ -255,6 +255,6 @@ Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalier
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

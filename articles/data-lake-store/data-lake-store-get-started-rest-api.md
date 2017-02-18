@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Data Lake-Speicher mit REST-API | Microsoft Docs
+title: "Verwenden der REST-API für die ersten Schritte mit Data Lake Store | Microsoft-Dokumentation"
 description: "Verwenden von WebHDFS-REST-APIs, um Vorgänge in Data Lake-Speicher auszuführen"
 services: data-lake-store
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: big-data
 ms.date: 11/21/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: 57af74321c453733daadc1b295dd3df95d0fd052
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 33574b0c1f023a8a5f83b1bf06f0523623891757
 
 
 ---
@@ -87,7 +87,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
              -F client_id=<CLIENT-ID> \
              -F refresh_token=<REFRESH-TOKEN>
 
-Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
+Weitere Informationen zur interaktiven Benutzerauthentifizierung finden Sie unter [Autorisieren des Zugriffs auf Webanwendungen mit OAuth&2;.0 und Azure Active Directory](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ### <a name="service-to-service-authentication-non-interactive"></a>Dienst-zu-Dienst-Authentifizierung (nicht interaktiv)
 In diesem Szenario stellt die Anwendung eigene Anmeldeinformationen zum Durchführen der Vorgänge bereit. Hierzu müssen Sie eine POST-Anforderung wie unten abgebildet ausgeben. 
@@ -264,6 +264,6 @@ Folgendes sollte angezeigt werden:
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

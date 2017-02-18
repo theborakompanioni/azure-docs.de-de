@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 01/26/2017
 ms.author: elbutter;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 73b5f05bf8b127a2fa5cc2aa26a7bd655569368c
-ms.openlocfilehash: 8e17866ef1e6802edf88534ad34e09bf04fb8ec5
+ms.sourcegitcommit: 2c88c1abd2af7a1ca041cd5003fd1f848e1b311c
+ms.openlocfilehash: 12f72e76ee991dfb701637847f2e406cd0f8c449
 
 
 ---
@@ -132,23 +132,23 @@ In diesem Schritt erstellen Sie ein Benutzerkonto für den Zugriff auf Ihr Data 
 
 Da Sie momentan als Serveradministrator angemeldet sind, sind Sie zum Erstellen von Anmeldungen und Benutzern berechtigt.
 
-2. Öffnen Sie mit SSMS oder einem anderen Abfrageclient eine neue Abfrage für **master**.
+1. Öffnen Sie mit SSMS oder einem anderen Abfrageclient eine neue Abfrage für **master**.
 
     ![Neue Abfrage für „Master“](./media/sql-data-warehouse-get-started-tutorial/query-on-server.png)
 
     ![Neue Abfrage für „Master1“](./media/sql-data-warehouse-get-started-tutorial/query-on-master.png)
 
-2. Führen Sie im Abfragefenster den folgenden T-SQL-Befehl aus, um eine Anmeldung namens „XLRCLOGIN“ und einen Benutzer namens „Loading User“ zu erstellen. Diese Anmeldung kann eine Verbindung mit der logischen SQL Server-Instanz herstellen.
+2. Führen Sie im Abfragefenster den folgenden T-SQL-Befehl aus, um eine Anmeldung namens „MedRCLogin“ und einen Benutzer namens „LoadingUser“ zu erstellen. Diese Anmeldung kann eine Verbindung mit der logischen SQL Server-Instanz herstellen.
 
     ```sql
-    CREATE LOGIN XLRCLOGIN WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN XLRCLOGIN;
+    CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
+    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
 3. Fragen Sie nun die *SQL Data Warehouse-Datenbank* ab, und erstellen Sie auf der Grundlage der Anmeldung, die Sie erstellt haben, einen Datenbankbenutzer für den Datenbankzugriff und die Ausführung von Datenbankvorgängen.
 
     ```sql
-    CREATE USER LoadingUser FOR LOGIN XLRCLOGIN;
+    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
 4. Erteilen Sie dem Datenbankbenutzer Zugriffsberechtigungen für die Datenbank namens „NYT“. 
@@ -160,13 +160,16 @@ Da Sie momentan als Serveradministrator angemeldet sind, sind Sie zum Erstellen 
     > Falls der Datenbankname Bindestriche enthält, müssen Sie ihn in Klammern setzen. 
     >
 
-### <a name="give-the-user-extra-large-resource-allocations"></a>Zuweisen sehr großer Ressourcenzuweisungen für den Benutzer
+### <a name="give-the-user-medium-resource-allocations"></a>Zuweisen mittelgroßer Ressourcenzuweisungen für den Benutzer
 
-1. Führen Sie den folgenden T-SQL-Befehl aus, um eine Zuweisung zur sehr großen Ressourcenklasse (xlargerc) durchzuführen: 
+1. Führen Sie den folgenden T-SQL-Befehl aus, um eine Zuweisung zur mittelgroßen Ressourcenklasse (mediumrc) durchzuführen. 
 
     ```sql
-    EXEC sp_addrolemember 'xlargerc', 'LoadingUser';
+    EXEC sp_addrolemember 'mediumrc', 'LoadingUser';
     ```
+    > [!NOTE]
+    > Weitere Informationen zu Parallelität und Ressourcenklassen finden Sie [hier](sql-data-warehouse-develop-concurrency.md#resource-classes). 
+    >
 
 2. Stellen Sie unter Verwendung der neuen Anmeldeinformationen eine Verbindung mit dem logischen Server her.
 
@@ -223,7 +226,8 @@ Nun können Sie Daten in Ihr Data Warehouse laden. In diesem Schritt wird gezeig
     WITH ( 
         FORMAT_TYPE = DELIMITEDTEXT,
         FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
-            STRING_DELIMITER = ''DATE_FORMAT = '',
+            STRING_DELIMITER = '',
+        DATE_FORMAT = '',
             USE_TYPE_DEFAULT = False
         ),
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
@@ -352,7 +356,7 @@ Nun können Sie Daten in Ihr Data Warehouse laden. In diesem Schritt wird gezeig
         LOCATION = 'Time',
         DATA_SOURCE = NYTPublic,
         FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value
+        REJECT_TYPE = value,
         REJECT_VALUE = 0
     )
     ;
@@ -403,7 +407,7 @@ Nun können Sie Daten in Ihr Data Warehouse laden. In diesem Schritt wird gezeig
     )
     WITH
     (
-        LOCATION = 'Weather2013'
+        LOCATION = 'Weather2013',
         DATA_SOURCE = NYTPublic,
         FILE_FORMAT = uncompressedcsv,
         REJECT_TYPE = value,
@@ -670,6 +674,6 @@ savings by pausing and scaling to meet your business needs.
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

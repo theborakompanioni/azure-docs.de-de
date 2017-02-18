@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2017
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: d4eb942db51af9c8136e9e0f5f8683cc15679d08
-ms.openlocfilehash: 5a0cd9ac88f30bb5f1ccba43260b86392dba6d7b
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: d88c6e8d4c0c5aecbdbcf6262da8d919ad3b325d
 
 
 ---
@@ -96,31 +96,31 @@ Sie können die Einstellungen für einen IoT Hub nach dessen Erstellung im Blatt
 ![][10]
 
 ## <a name="endpoints"></a>Endpunkte
-Klicken Sie auf **Endpunkte**, um eine Liste der Endpunkte für den zu ändernden IoT Hub anzuzeigen. Es gibt zwei Haupttypen von Endpunkten: Endpunkte, die in den IoT Hub integriert sind, und Endpunkte, die Sie dem IoT Hub nach seiner Erstellung hinzugefügt haben.
-
-### <a name="built-in-endpoints"></a>Integrierte Endpunkte
-Es gibt zwei wesentliche integrierte Endpunkte: **Cloud-zu-Gerät-Feedback** und **Ereignisse**.
-
-* **Cloud-zu-Gerät**-Einstellungen: Diese Einstellung hat zwei untergeordnete Einstellungen: **Cloud-zu-Gerät-TTL** (Time to Live, Gültigkeitsdauer) und **Aufbewahrungszeit** für Nachrichten. Bei der ersten Erstellung des IoT Hubs werden diese beiden Einstellungen mit einem Standardwert von einer Stunde erstellt. Zum Anpassen dieser Werte bewegen Sie die Schieberegler oder geben die entsprechenden Werte ein.
-* **Ereignisse**-Einstellungen: Diese Einstellung hat mehrere untergeordnete Einstellungen, von denen einige bei Erstellung des IoT Hubs benannt bzw. zugewiesen werden und nur in andere untergeordnete Einstellungen kopiert werden können, die anpassbar sind. Diese Einstellungen sind im nächsten Abschnitt aufgeführt.
-
-**Partitionen**: Dieser Wert wird bei Erstellung des IoT Hubs festgelegt und kann durch diese Einstellung geändert werden.
-
-**Event Hub-kompatibler Name und Event-Hub-kompatibler Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den Sie unter bestimmten Umständen zugreifen müssen. Dieser mit Event Hub kompatible Name bzw. Endpunkt kann nicht angepasst werden, steht jedoch über die Schaltfläche **Kopieren** zur Verfügung.
-
-**Aufbewahrungszeit**: Standardmäßig auf&1; Tag festgelegt, kann aber mithilfe der Dropdownliste in andere Werte geändert werden. Dieser Wert ist bei Gerät-zu-Cloud (genauso wie die ähnliche Einstellung bei Cloud-zu-Gerät) in Tagen statt Stunden angegeben.
-
-**Consumergruppen**: Consumergruppen ähneln als Einstellung anderen Messaging-Systemen, die zum Abrufen von Daten auf bestimmte Weise verwendet werden können, um andere Programme oder Dienste mit IoT Hub zu verbinden. Jeder IoT Hub wird mit einer Standard-Consumergruppe erstellt. Sie können Ihren IoT Hubs jedoch Consumergruppen hinzufügen oder diese daraus löschen.
-
-> [!NOTE]
-> Die Standard-Consumergruppe kann nicht bearbeitet oder gelöscht werden.
-> 
-> 
+Klicken Sie auf **Endpunkte**, um eine Liste der Endpunkte für den IoT-Hub anzuzeigen, den Sie ändern. Es gibt zwei Typen von Endpunkten: Endpunkte, die in den IoT-Hub integriert sind, und Endpunkte, die Sie dem IoT-Hub nach seiner Erstellung hinzufügen.
 
 ![][11]
 
+### <a name="built-in-endpoints"></a>Integrierte Endpunkte
+Es gibt zwei integrierte Endpunkte: **Cloud-zu-Gerät-Feedback** und **Ereignisse**.
+
+* Einstellungen für **Cloud-zu-Gerät-Feedback**: Diese Einstellung hat zwei untergeordnete Einstellungen: **Cloud-zu-Gerät-TTL** (Time to Live, Gültigkeitsdauer) und **Aufbewahrungszeit** (in Stunden) für die Nachrichten. Bei der ersten Erstellung eines IoT-Hubs ist für beide Einstellungen ein Standardwert von einer Stunde festgelegt. Zum Anpassen dieser Einstellungen bewegen Sie die Schieberegler oder geben die entsprechenden Werte ein.
+* Einstellungen für **Ereignisse**: Für diese Einstellung sind verschiedene Untereinstellungen verfügbar. Manche davon sind schreibgeschützt. Diese Einstellungen werden in der folgende Liste beschrieben:
+
+    * **Partitionen**: Beim Erstellen des IoT-Hubs wird ein Standardwert festgelegt. Sie können die Anzahl von Partitionen über diese Einstellung ändern.
+
+    * **Event Hub-kompatibler Name und Event-Hub-kompatibler Endpunkt**: Bei Erstellung des IoT Hubs wird intern ein Event Hub erstellt, auf den Sie unter bestimmten Umständen zugreifen müssen. Die Event Hub-kompatiblen Werte für Name und Endpunkt können nicht angepasst, aber kopiert werden. Klicken Sie dazu auf **Kopieren**.
+
+    * **Aufbewahrungszeit**: Standardmäßig auf&1; Tag festgelegt, kann aber mithilfe der Dropdownliste geändert werden. Dieser Wert wird für die Gerät-zu-Cloud-Einstellung in Tagen angegeben.
+
+    * **Consumergruppen**: Consumergruppen ähneln als Einstellung anderen Messaging-Systemen, die zum Abrufen von Daten auf bestimmte Weise verwendet werden können, um andere Programme oder Dienste mit IoT Hub zu verbinden. Jeder IoT Hub wird mit einer Standard-Consumergruppe erstellt. Sie können mit dieser Einstellung Ihren IoT-Hubs jedoch Consumergruppen hinzufügen oder diese daraus löschen.
+
+    > [!NOTE]
+    > Die Standard-Consumergruppe kann nicht bearbeitet oder gelöscht werden.
+    > 
+    > 
+
 ### <a name="custom-endpoints"></a>Benutzerdefinierte Endpunkte
-Sie können Ihrem IoT Hub über das Verwaltungsportal benutzerdefinierte Endpunkte hinzufügen. Klicken Sie am oberen Rand des Endpunkteblatts auf **Hinzufügen**, um **Endpunkt hinzufügen** zu öffnen. Geben Sie die erforderlichen Informationen in das Blatt ein, und klicken Sie auf **OK**. Ihr benutzerdefinierter Endpunkt wird dann auf dem Hauptendpunkteblatt angezeigt.
+Sie können Ihrem IoT-Hub über das Portal benutzerdefinierte Endpunkte hinzufügen. Klicken Sie auf dem Blatt **Endpunkte** oben auf **Hinzufügen**, um das Blatt **Endpunkt hinzufügen** zu öffnen. Geben Sie die erforderlichen Informationen ein, und klicken Sie dann auf **OK**. Ihr benutzerdefinierter Endpunkt wird nun auf dem Hauptblatt für **Endpunkte** aufgeführt.
 
 ![][13]
 
@@ -131,7 +131,7 @@ Klicken Sie auf **Routen**, um zu verwalten, wie IoT Hub Ihre D2C-Nachrichten se
 
 ![][14]
 
-Sie können Ihrem IoT Hub zusätzliche Routen hinzufügen, indem Sie am oberen Rand des Blatts auf **Hinzufügen** klicken, die erforderlichen Informationen in das Blatt eingeben und dann auf **OK** klicken. Ihre Route wird dann auf dem Hauptendpunkteblatt angezeigt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken und sie dann ändern. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und setzen Sie den Aktivieren/Deaktivieren-Schalter auf **Aus**. Klicken Sie am unteren Rand des Blatts auf **OK**, um die Änderung zu speichern.
+Sie können Ihrem IoT-Hub Routen hinzufügen, indem Sie am oberen Rand des Blatts **Routen*** auf **Hinzufügen** klicken, die erforderlichen Informationen eingeben und auf **OK** klicken. Die wird dann auf dem Hauptblatt für **Routen** aufgeführt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und setzen Sie Schalter **Aktiviert** auf **Aus**. Klicken Sie am unteren Rand des Blatts auf **OK**, um die Änderung zu speichern.
 
 ![][15]
 
@@ -182,6 +182,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

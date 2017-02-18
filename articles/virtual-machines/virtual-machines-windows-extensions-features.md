@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 259ad6e8481545c48865fbb108956b70251ade7c
-ms.openlocfilehash: 16d5b3347e01718a9976b6fa5e6d0b92c073da21
+ms.sourcegitcommit: 1493bf0a545cd605b80404413894bd56e1ced735
+ms.openlocfilehash: ebd8734ad2de6f5e528e941f90098de079966f48
 
 
 ---
@@ -47,7 +47,7 @@ Für jede VM-Erweiterung gilt möglicherweise ein eigener Satz Voraussetzungen. 
 ### <a name="azure-vm-agent"></a>Azure-VM-Agent
 Der Azure-VM-Agent verwaltet die Interaktion eines virtuellen Azure-Computers mit dem Azure Fabric Controller. Der VM-Agent ist für viele funktionale Aspekte in Bezug auf die Bereitstellung und Verwaltung virtueller Azure-Computer verantwortlich. Dies umfasst auch das Ausführen von VM-Erweiterungen. Der Azure-VM-Agent ist in Images aus dem Azure Marketplace vorinstalliert und kann auf unterstützten Betriebssystemen installiert werden.
 
-Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](virtual-machines-windows-agent-user-guide.md).
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
 Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Um eine vollständige Liste anzuzeigen, führen Sie den folgenden Befehl mit dem Azure Resource Manager-PowerShell-Modul aus. Stellen Sie sicher, dass Sie die gewünschte Position angeben, wenn Sie diesen Befehl ausführen.
@@ -288,6 +288,6 @@ Eine Erweiterung kann auch im Azure-Portal entfernt werden. Gehen Sie dazu wie f
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

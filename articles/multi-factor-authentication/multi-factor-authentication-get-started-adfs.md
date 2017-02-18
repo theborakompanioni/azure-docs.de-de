@@ -1,5 +1,5 @@
 ---
-title: Azure MFA und AD FS | Microsoft Docs
+title: "Überprüfung in zwei Schritten und AD FS – Azure MFA | Microsoft-Dokumentation"
 description: Auf dieser Seite zur Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA und AD FS beschrieben.
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 01/23/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dcf67cfd5f4d44188f119ca40b227b32c684e1f7
+ms.sourcegitcommit: 00ee90b6d264c1aee4b488cd1c2a5447809a1e3c
+ms.openlocfilehash: 0981be75b9caffb29b10c70ce528209984986ce2
 
 
 ---
-# <a name="getting-started-with-azure-multifactor-authentication-and-active-directory-federation-services"></a>Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
+# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Erste Schritte mit Azure Multi-Factor Authentication und Active Directory-Verbunddiensten
 <center>![Cloud](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
 Wenn Ihre Organisation über einen Verbund Ihres lokalen Active Directory mit Azure Active Directory über AD FS verfügt, gibt es zwei Optionen für die Verwendung von Multi-Factor Authentication.
@@ -51,7 +51,6 @@ Informationen zum Einrichten von Azure Multi-Factor Authentication oder Azure Mu
 
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

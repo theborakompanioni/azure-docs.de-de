@@ -36,8 +36,8 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Öffentliche IP-Adressen (statisch) |20 |Support kontaktieren |
 | Lastenausgleichsmodule (intern und Internet) |100 |Support kontaktieren |
 | Regeln für Lastenausgleichsmodule pro Lastenausgleichsmodul |150 |150 |
-| Öffentliche Front-End-IP pro Lastenausgleichsmodul |5 |Support kontaktieren |
-| Private Front-End-IP pro Lastenausgleichsmodul |30 |Support kontaktieren |
+| Öffentliche Front-End-IP pro Lastenausgleichsmodul |10 |Support kontaktieren |
+| Private Front-End-IP pro Lastenausgleichsmodul |10 |Support kontaktieren |
 | VNets Peerings pro Virtual Network-Instanz |10 |50 |
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
 

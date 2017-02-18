@@ -12,20 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2016
+ms.date: 01/19/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e082470c8ad3ee02c528a4ca6e3326e5be4752a3
+ms.sourcegitcommit: be986fd7bb1745dcf43a1066dfabc1e1c699ab4c
+ms.openlocfilehash: b9cd11954a52600c1cd50155cb7ce9b7d2355cd3
 
 
 ---
 # <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory-Berichterstellung – Vorschau
-> [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-reporting-azure-portal.md)
-> * [Klassisches Azure-Portal](active-directory-reporting-guide.md)
-> 
-> 
+
 
 *Diese Dokumentation ist Teil des Handbuchs für [Azure Active Directory Reporting](active-directory-reporting-guide.md).*
 
@@ -184,7 +180,7 @@ Wenn Azure Active Directory Ihr Einstiegspunkt ist, enthält diese Liste alle m�
 * Gerät
 * Verzeichnis
 * Richtlinie
-* Andere
+* Sonstige
 
 ![Überwachung](./media/active-directory-reporting-azure-portal/825.png "Auditing")
 
@@ -203,6 +199,6 @@ Weitere Informationen finden Sie unter [Anleitung für Azure Active Directory-Be
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

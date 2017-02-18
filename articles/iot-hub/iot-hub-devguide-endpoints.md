@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: 2a61421121697a63ad2d2a32b197904838564207
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 58a5f8cfc376cd1fea6a668126683bb6d2521bab
 
 
 ---
@@ -45,7 +45,7 @@ Im Folgenden finden Sie eine Beschreibung der Endpunkte:
     Die Zwillings- und Methodenendpunkte sind nur über [MQTT&3;.1.1][lnk-mqtt] verfügbar.
 * **Dienstendpunkte**. Jeder IoT Hub legt eine Reihe von Endpunkten offen, die Ihr Lösungs-Back-End zur Kommunikation mit Ihren Geräten verwenden kann. Diese Endpunkte werden derzeit nur über das Protokoll [AMQP][lnk-amqp] verfügbar gemacht. Eine Ausnahme ist der Endpunkt für den Methodenaufruf, der über HTTP 1.1 verfügbar gemacht wird.
   
-  * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs][lnk-event-hubs]. Ein Back-End-Dienst kann ihn zum Lesen aller [D2C-Nachrichten][lnk-d2c] verwenden, die Ihre Geräte senden. Sie können Ihrem IoT Hub zusätzlich zu diesem Endpunkt benutzerdefinierte Routingendpunkte hinzufügen.
+  * *Empfangen von D2C-Nachrichten*. Dieser Endpunkt ist kompatibel mit [Azure Event Hubs][lnk-event-hubs]. Ein Back-End-Dienst kann ihn zum Lesen der [D2C-Nachrichten][lnk-d2c] verwenden, die Ihre Geräte senden. Zusätzlich zu diesem integrierten Endpunkt können Sie für Ihren IoT-Hub benutzerdefinierte Endpunkte erstellen.
   * *Senden von C2D-Nachrichten und Empfangen von Übermittlungsbestätigungen*. Diese Endpunkte ermöglichen Ihrem Lösungs-Back-End das Senden von zuverlässigen [C2D-Nachrichten][lnk-c2d] sowie das Empfangen zugehöriger Übermittlungs- oder Ablaufbestätigungen.
   * *Empfangen von Dateibenachrichtigungen*. Dieser Messaging-Endpunkt ermöglicht den Empfang von Benachrichtigungen, wenn Ihre Geräte erfolgreich eine Datei hochgeladen haben. 
   * *Aufruf direkter Methoden*. Dieser Endpunkt ermöglicht einem Back-End-Dienst das Aufrufen einer [direkten Methode][lnk-methods] auf einem Gerät.
@@ -54,8 +54,8 @@ Im Artikel [Azure IoT SDKs][lnk-sdks] werden die verschiedenen Möglichkeiten zu
 
 Schließlich ist es wichtig zu wissen, dass alle IoT Hub-Endpunkte das [TLS][lnk-tls]-Protokoll nutzen und Endpunkte niemals auf unverschlüsselten/unsicheren Kanälen verfügbar gemacht werden.
 
-## <a name="custom-routing-endpoints"></a>Benutzerdefinierte Routingendpunkte
-Sie können vorhandene Azure-Dienste in Ihrem Abonnement mit Ihrem IoT Hub als Endpunkte für das Nachrichtenrouting verknüpfen. Diese Dienstendpunkte werden als „Senken“ für Nachrichtenrouten verwendet. Geräte können nicht direkt auf die zusätzlichen Endpunkte schreiben. Weitere Informationen zu Nachrichtenrouten finden Sie im Entwicklerhandbuch im Eintrag zum [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-devguide-messaging].
+## <a name="custom-endpoints"></a>Benutzerdefinierte Endpunkte
+Sie können vorhandene Azure-Dienste in Ihrem Abonnement mit Ihrem IoT-Hub verknüpfen, die als Endpunkte für das Nachrichtenrouting fungieren. Diese Endpunkte fungieren als Dienstendpunkte und werden als Senken für Nachrichtenrouten verwendet. Geräte können nicht direkt auf die zusätzlichen Endpunkte schreiben. Weitere Informationen zu Nachrichtenrouten finden Sie im Entwicklerhandbuch im Eintrag zum [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-devguide-messaging].
 
 IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 
@@ -63,11 +63,11 @@ IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 * Service Bus-Warteschlangen
 * Service Bus-Themen
 
-IoT Hub benötigt Schreibzugriff auf diese Endpunkte, damit das Nachrichtenrouting funktioniert. Wenn Sie Ihre Endpunkte über das Azure-Portal konfigurieren, werden die erforderlichen Berechtigungen für Sie hinzugefügt. Stellen Sie sicher, dass Sie Ihre Dienste zur Unterstützung des erwarteten Durchsatzes konfigurieren. Sie müssen möglicherweise Ihre zusätzlichen Endpunkte überwachen, wenn Sie zuerst Ihre IoT-Lösung konfigurieren und dann die erforderlichen Anpassungen für die tatsächliche Last vornehmen.
+IoT Hub benötigt Schreibzugriff auf diese Dienstendpunkte, damit das Nachrichtenrouting funktioniert. Wenn Sie Ihre Endpunkte über das Azure-Portal konfigurieren, werden die erforderlichen Berechtigungen für Sie hinzugefügt. Stellen Sie sicher, dass Sie Ihre Dienste zur Unterstützung des erwarteten Durchsatzes konfigurieren. Sie müssen möglicherweise Ihre zusätzlichen Endpunkte überwachen, wenn Sie zuerst Ihre IoT-Lösung konfigurieren und dann die erforderlichen Anpassungen für die tatsächliche Last vornehmen.
 
 Wenn eine Nachricht mehreren Routen entspricht, die alle auf den gleichen Endpunkt verweisen, übermittelt IoT Hub die Nachricht nur einmal an diesen Endpunkt. Aus diesem Grund müssen Sie nicht die Deduplizierung für Ihre Service Bus-Warteschlange oder ein Thema konfigurieren. In partitionierten Warteschlangen garantiert die Partitionsaffinität die Nachrichtensortierung. Warteschlangen mit aktivierten Sitzungen werden nicht als Endpunkte unterstützt. Partitionierte Warteschlangen und Themen mit aktivierter Deduplizierung werden ebenfalls nicht unterstützt.
 
-Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen können, finden Sie unter [Kontingente und Einschränkungen][lnk-devguide-quotas].
+Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen können, finden Sie unter [Kontingente und Drosselung][lnk-devguide-quotas].
 
 ## <a name="field-gateways"></a>Bereichsgateways
 Bei einer IoT-Lösung ist zwischen Ihren Geräten und IoT Hub-Endpunkten ein *Bereichsgateway* angeordnet. Es befindet sich normalerweise in der Nähe Ihrer Geräte. Ihre Geräte kommunizieren direkt mit dem Bereichsgateway, indem sie ein von den Geräten unterstütztes Protokoll nutzen. Das Bereichsgateway verbindet sich mit einem IoT Hub-Endpunkt über ein Protokoll, das von IoT Hub unterstützt wird. Bei einem Bereichsgateway kann es sich um hochspezialisierte Hardware oder einen Computer mit niedriger Leistung handeln, auf dem Software für das End-to-End-Szenario ausgeführt wird, wofür das Gateway vorgesehen ist.
@@ -112,6 +112,6 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

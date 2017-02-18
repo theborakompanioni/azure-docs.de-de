@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/14/2016
+ms.date: 1/31/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 9652e8365642ec0d088f73ba2bb4eaa0def653a6
-ms.openlocfilehash: 0752130c0e9116efcd0da44e8c81de356cace7e4
+ms.sourcegitcommit: 47d5a9173d8791124a3071b090d6db027dba9448
+ms.openlocfilehash: c070fa326688d94ce2cbf4e0471c4afc9d78c93c
 
 
 ---
@@ -38,8 +38,11 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? Lesen Sie [diesen](#how-it-works) Abschnitt.
 
 ## <a name="news-updates"></a>Neuigkeiten
+###### <a name="january-10-2017"></a>**10. Januar 2017**
+Das Januar-Gastbetriebssystem enthält Patches, die nur die Betriebssystemfamilie 2 betreffen (Windows 2008 Server R2). Wir haben daher nur das Image für die Betriebssystemfamilie 2 (WA-GUEST-OS-2.59_201701-01) für diesen Monat veröffentlicht. Für alle anderen Betriebssystemfamilien, bleibt das Betriebssystem vom Dezember (201612-01) das aktuellste.
+
 ###### <a name="december-14-2016"></a>**14. Dezember 2016**
-Die Bereitstellung des Gastbetriebssystems beginnt am 14. Dezember 2016 und soll voraussichtlich am 13. Januar 2016 freigegeben werden.
+Die Bereitstellung des Gastbetriebssystems beginnt am 14. Dezember 2016 und soll voraussichtlich am 13. Januar 2017 freigegeben werden.
 
 ###### <a name="november-20-2016"></a>**20. November 2016**
 Die Bereitstellung des Gastbetriebssystems beginnt am 8. November 2016 und soll voraussichtlich am 8. Dezember 2016 freigegeben werden.
@@ -91,6 +94,7 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.4_201612-01 |10. Januar 2017 |Post 5.6 |TBD | 
 | WA-GUEST-OS-5.3_201611-01 |14. Dezember 2016 |Nach Version 5.5 |TBD |
 | WA-GUEST-OS-5.2_201610-02 |1. November 2016 |Nach Version 5.4 |TBD |
 
@@ -106,27 +110,19 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-4.38_201611-01 |14. Dezember 2016 |Nach Version 4.4 |TBD |
+| WA-GUEST-OS-4.39_201612-01 |10. Januar 2017 |Post 4.41 |TBD |
+| WA-GUEST-OS-4.38_201611-01 |14. Dezember 2016 |Post 4.40 |TBD |
 | WA-GUEST-OS-4.37_201610-02 |16. November 2016 |Nach Version 4.39 |TBD |
-| WA-GUEST-OS-4.36_201609-01 |13. Oktober 2016 |Nach 4.38 |TBD |
-| WA-GUEST-OS-4.35_201608-01 |13. September 2016 |16. Dezember 2016 |TBD |
-| WA-GUEST-OS-4.34_201607-01 |8. August 2016 |13. November 2016 |TBD |
-| WA-GUEST-OS-4.33_201606-01 |13. Juli 2016 |13. Oktober 2016 |TBD |
-| WA-GUEST-OS-4.32_201605-01 |10. Juni 2016 |8. September 2016 |TBD |
-| WA-GUEST-OS-4.31_201604-01 |2. Mai 2016 |13. August 2016 |TBD |
-| WA-GUEST-OS-4.30_201603-01 |7. April 2016 |10. Juli 2016 |TBD |
-| WA-GUEST-OS-4.29_201602-02 |12. März 2016 |2. Juni 2016 |TBD |
-| WA-GUEST-OS-4.28_201601-01 |12. Februar 2016 |7. Mai 2016 |TBD |
-| WA-GUEST-OS-4.27_201512-01 |12. Januar 2016 |12. April 2016 |TBD |
-| ~~WA-GUEST-OS-4.26_201511-02~~ |4. Januar 2016 |12. März 2016 |TBD |
-| ~~WA-GUEST-OS-4.26_201511-01~~ |10. Dezember 2015 |12. März 2016 |TBD |
-| ~~WA-GUEST-OS-4.25_201510-01~~ |6. November 2015 |12. Februar 2016 |TBD |
-| ~~WA-GUEST-OS-4.24_201509-01~~ |1. Oktober 2015 |10. Januar 2016 |TBD |
-| ~~WA-GUEST-OS-4.23_201508-02~~ |9. September 2015 |6. Dezember 2015 |TBD |
-| ~~WA-GUEST-OS-4.22_201507-02~~ |7. August 2015 |1. November 2015 |TBD |
-| ~~WA-GUEST-OS-4.21_201506-01~~ |9. Juli 2015 |9. Oktober 2015 |TBD |
-| ~~WA-GUEST-OS-4.20_201505-02~~ |12. Juni 2015 |7. September 2015 |TBD |
-| ~~WA-GUEST-OS-4.19_201504-01~~ |17. April 2015 |9. August 2015 |TBD |
+|~~WA-GUEST-OS-4.36_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
+|~~WA-GUEST-OS-4.35_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
+|~~WA-GUEST-OS-4.34_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
+|~~WA-GUEST-OS-4.33_201606-01~~ |13. Juli 2016 |13. Oktober 2016 |TBD |
+|~~WA-GUEST-OS-4.32_201605-01~~ |10. Juni 2016 |8. September 2016 |TBD |
+|~~WA-GUEST-OS-4.31_201604-01~~ |2. Mai 2016 |13. August 2016 |TBD |
+|~~WA-GUEST-OS-4.30_201603-01~~ |7. April 2016 |10. Juli 2016 |TBD |
+|~~WA-GUEST-OS-4.29_201602-02~~ |12. März 2016 |2. Juni 2016 |TBD |
+|~~WA-GUEST-OS-4.28_201601-01~~ |12. Februar 2016 |7. Mai 2016 |TBD |
+|~~WA-GUEST-OS-4.27_201512-01~~ |12. Januar 2016 |12. April 2016 |TBD |
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
@@ -140,27 +136,19 @@ Unterstützt .NET 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.46_201612-01 |10. Januar 2017 |Post 3.48 |TBD |
 | WA-GUEST-OS-3.45_201611-01 |14. Dezember 2016 |Nach Version 3.47 |TBD |
 | WA-GUEST-OS-3.44_201610-01 |16. November 2016 |Nach Version 3.46 |TBD |
-| WA-GUEST-OS-3.43_201609-01 |13. Oktober 2016 |Nach 3.45 |TBD |
-| WA-GUEST-OS-3.42_201608-01 |13. September 2016 |16. Dezember 2016 |TBD |
-| WA-GUEST-OS-3.41_201607-01 |8. August 2016 |13. November 2016 |TBD |
-| WA-GUEST-OS-3.40_201606-01 |13. Juli 2016 |13. Oktober 2016 |TBD |
-| WA-GUEST-OS-3.39_201605-01 |10. Juni 2016 |8. September 2016 |TBD |
-| WA-GUEST-OS-3.38_201604-01 |2. Mai 2016 |13. August 2016 |TBD |
-| WA-GUEST-OS-3.37_201603-01 |7. April 2016 |10. Juli 2016 |TBD |
-| WA-GUEST-OS-3.36_201602-02 |12. März 2016 |2. Juni 2016 |TBD |
-| WA-GUEST-OS-3.35_201601-01 |12. Februar 2016 |7. Mai 2016 |TBD |
-| WA-GUEST-OS-3.34_201512-01 |12. Januar 2016 |12. April 2016 |TBD |
-| ~~WA-GUEST-OS-3.33_201511-02~~ |4. Januar 2016 |12. März 2016 |TBD |
-| ~~WA-GUEST-OS-3.33_201511-01~~ |10. Dezember 2015 |12. März 2016 |TBD |
-| ~~WA-GUEST-OS-3.32_201510-01~~ |6. November 2015 |12. Februar 2016 |TBD |
-| ~~WA-GUEST-OS-3.31_201509-01~~ |1. Oktober 2015 |10. Januar 2016 |TBD |
-| ~~WA-GUEST-OS-3.30_201508-02~~ |9. September 2015 |6. Dezember 2015 |TBD |
-| ~~WA-GUEST-OS-3.29_201507-02~~ |7. August 2015 |1. November 2015 |TBD |
-| ~~WA-GUEST-OS-3.28_201506-01~~ |9. Juli 2015 |9. Oktober 2015 |TBD |
-| ~~WA-GUEST-OS-3.27_201505-02~~ |12. Juni 2015 |7. September 2015 |TBD |
-| ~~WA-GUEST-OS-3.26_201504-01~~ |17. April 2015 |9. August 2015 |TBD |
+| ~~WA-GUEST-OS-3.43_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
+| ~~WA-GUEST-OS-3.42_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
+| ~~WA-GUEST-OS-3.41_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
+| ~~WA-GUEST-OS-3.40_201606-01~~ |13. Juli 2016 |13. Oktober 2016 |TBD |
+| ~~WA-GUEST-OS-3.39_201605-01~~ |10. Juni 2016 |8. September 2016 |TBD |
+| ~~WA-GUEST-OS-3.38_201604-01~~ |2. Mai 2016 |13. August 2016 |TBD |
+| ~~WA-GUEST-OS-3.37_201603-01~~ |7. April 2016 |10. Juli 2016 |TBD |
+| ~~WA-GUEST-OS-3.36_201602-02~~ |12. März 2016 |2. Juni 2016 |TBD |
+| ~~WA-GUEST-OS-3.35_201601-01~~ |12. Februar 2016 |7. Mai 2016 |TBD |
+| ~~WA-GUEST-OS-3.34_201512-01~~ |12. Januar 2016 |12. April 2016 |TBD |
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
@@ -174,27 +162,20 @@ Unterstützt .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.59_201701-01 |10. Januar 2017 |Post 2.61 |TBD |
+| WA-GUEST-OS-2.58_201612-01 |10. Januar 2017 |Post 2.60 |TBD |
 | WA-GUEST-OS-2.57_201611-01 |14. Dezember 2016 |Nach Version 2.59 |TBD |
-| WA-GUEST-OS-2.56_201610-01 |16. November 2016 |Nach Version 2.58 |TBD |
-| WA-GUEST-OS-2.55_201609-01 |13. Oktober 2016 |Nach 2.57 |TBD |
-| WA-GUEST-OS-2.54_201608-01 |13. September 2016 |16. Dezember 2016 |TBD |
-| WA-GUEST-OS-2.53_201607-01 |8. August 2016 |13. November 2016 |TBD |
-| WA-GUEST-OS-2.52_201606-01 |13. Juli 2016 |13. Oktober 2016 |TBD |
-| WA-GUEST-OS-2.51_201605-01 |10. Juni 2016 |8. September 2016 |TBD |
-| WA-GUEST-OS-2.50_201604-01 |2. Mai 2016 |13. August 2016 |TBD |
-| WA-GUEST-OS-2.49_201603-01 |7. April 2016 |10. Juli 2016 |TBD |
-| WA-GUEST-OS-2.48_201602-02 |12. März 2016 |2. Juni 2016 |TBD |
-| WA-GUEST-OS-2.47_201601-01 |12. Februar 2016 |7. Mai 2016 |TBD |
-| WA-GUEST-OS-2.46_201512-01 |12. Januar 2016 |12. April 2016 |TBD |
-| ~~WA-GUEST-OS-2.45_201511-02~~ |4. Januar 2016 |12. März 2016 |TBD |
-| ~~WA-GUEST-OS-2.45_201511-01~~ |10. Dezember 2015 |12. März 2016 |TBD |
-| ~~WA-GUEST-OS-2.44_201510-01~~ |6. November 2015 |12. Februar 2016 |TBD |
-| ~~WA-GUEST-OS-2.43_201509-01~~ |1. Oktober 2015 |10. Januar 2016 |TBD |
-| ~~WA-GUEST-OS-2.42_201508-02~~ |9. September 2015 |6. Dezember 2015 |TBD |
-| ~~WA-GUEST-OS-2.41_201507-02~~ |7. August 2015 |1. November 2015 |TBD |
-| ~~WA-GUEST-OS-2.40_201506-01~~ |9. Juli 2015 |9. Oktober 2015 |TBD |
-| ~~WA-GUEST-OS-2.39_201505-02~~ |12. Juni 2015 |7. September 2015 |TBD |
-| ~~WA-GUEST-OS-2.38_201504-01~~ |17. April 2015 |9. August 2015 |TBD |
+| WA-GUEST-OS-2.56_201610-01 |16. November 2016 |10. Februar 2017 |TBD |
+|~~WA-GUEST-OS-2.55_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
+|~~WA-GUEST-OS-2.54_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
+|~~WA-GUEST-OS-2.53_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
+|~~WA-GUEST-OS-2.52_201606-01~~ |13. Juli 2016 |13. Oktober 2016 |TBD |
+|~~WA-GUEST-OS-2.51_201605-01~~ |10. Juni 2016 |8. September 2016 |TBD |
+|~~WA-GUEST-OS-2.50_201604-01~~ |2. Mai 2016 |13. August 2016 |TBD |
+|~~WA-GUEST-OS-2.49_201603-01~~ |7. April 2016 |10. Juli 2016 |TBD |
+|~~WA-GUEST-OS-2.48_201602-02~~|12. März 2016 |2. Juni 2016 |TBD |
+|~~WA-GUEST-OS-2.47_201601-01~~|12. Februar 2016 |7. Mai 2016 |TBD |
+|~~WA-GUEST-OS-2.46_201512-01~~|12. Januar 2016 |12. April 2016 |TBD |
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates
 Die Liste der Patches, die in den einzelnen monatlichen Gastbetriebssystemreleases enthalten sind, steht [hier][patches] zur Verfügung.
@@ -274,6 +255,6 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Richtlinien für Azure-Abonnements und -Konten | Microsoft Docs"
+title: "Abonnement und Konto für Linux-VMs in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für Abonnements und Konten in Azure."
 documentationcenter: 
 services: virtual-machines-linux
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
-ms.openlocfilehash: df7291a93af5185d3bd18259a37233f7910fcabf
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 0a4ddfa550913df1c987d1782bcd4bc3c41eb048
 
 
 ---
@@ -69,6 +69,6 @@ Wir stellen ausführliche Abrechnungen in einer herunterladbaren Datei für einz
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

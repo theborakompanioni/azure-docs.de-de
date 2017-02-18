@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 9138fc1da6c45e2aa874e3e26c4a65ceb248d8f1
-ms.openlocfilehash: 325e25412e80d005a87b49e6971703cd74551c5e
+ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
+ms.openlocfilehash: 8aac22bed0b16c97faabf1e15c9fc9f40c34ca67
 
 
 ---
@@ -28,14 +28,14 @@ Die vorkonfigurierte Lösung für die Azure IoT Suite-Remoteüberwachung ist ein
 * Wie verwaltet die Lösung die Gerätemetadaten?
 
 ## <a name="context"></a>Kontext
-Für die vorkonfigurierte Lösung für die Remoteüberwachung wird [Azure IoT Hub][lnk-iot-hub] verwendet, um für Ihre Geräte das Senden von Daten an die Cloud zu ermöglichen. IoT Hub enthält eine [Geräteidentitätsregistrierung][lnk-identity-registry], um den Zugriff auf IoT Hub zu steuern. Die IoT Hub-Geräteidentitätsregistrierung ist von der speziellen *Geräteregistrierung* der Remoteüberwachungslösung getrennt, in der Geräteinformationen-Metadaten gespeichert werden. Für die Remoteüberwachungslösung wird eine [DocumentDB][lnk-docdb]-Datenbank verwendet, um die Geräteregistrierung zum Speichern von Geräteinformationsmetadaten zu implementieren. Unter [Microsoft Azure IoT Reference Architecture][lnk-ref-arch] (Microsoft Azure IoT-Referenzarchitektur) wird die Rolle der Geräteregistrierung in einer typischen IoT-Lösung beschrieben.
+Für die vorkonfigurierte Lösung für die Remoteüberwachung wird [Azure IoT Hub][lnk-iot-hub] verwendet, um für Ihre Geräte das Senden von Daten an die Cloud zu ermöglichen. IoT Hub enthält eine [Geräteidentitätsregistrierung][lnk-identity-registry], um den Zugriff auf IoT Hub zu steuern. Die IoT Hub-Geräteidentitätsregistrierung ist von der speziellen *Geräteregistrierung* der Remoteüberwachungslösung getrennt, in der Geräteinformationen-Metadaten gespeichert werden. Für die Remoteüberwachungslösung wird eine [DocumentDB][lnk-docdb]-Datenbank verwendet, um die Geräteregistrierung zum Speichern von Geräteinformationen-Metadaten zu implementieren. Unter [Microsoft Azure IoT-Referenzarchitektur][lnk-ref-arch] wird die Rolle der Geräteregistrierung in einer typischen IoT-Lösung beschrieben.
 
 > [!NOTE]
 > Die vorkonfigurierte Lösung für die Remoteüberwachung sorgt dafür, dass die Geräteidentitätsregistrierung mit der Geräteregistrierung synchron bleibt. Beide nutzen die gleiche Geräte-ID, um alle Geräte, die mit IoT Hub verbunden werden, eindeutig zu identifizieren.
 > 
 > 
 
-Unter [Geräteverwaltung – Übersicht)][lnk-dm-preview] werden IoT Hub Features hinzugefügt, die den in diesem Artikel beschriebenen Verwaltungsfeatures für Geräteinformationen ähneln. Für die Remoteüberwachungslösung werden derzeit aber nur die allgemein verfügbaren Features in IoT Hub genutzt.
+Unter [Geräteverwaltung mit IoT Hub][lnk-dm-preview] werden IoT Hub Features hinzugefügt, die den in diesem Artikel beschriebenen Verwaltungsfeatures für Geräteinformationen ähneln. Für die Remoteüberwachungslösung werden derzeit aber nur die allgemein verfügbaren Features in IoT Hub genutzt.
 
 ## <a name="device-information-metadata"></a>Geräteinformationen-Metadaten
 Ein JSON-Dokument mit Geräteinformationen-Metadaten, das in der DocumentDB-Datenbank der Geräteregistrierung gespeichert ist, hat die folgende Struktur:
@@ -72,7 +72,7 @@ Ein JSON-Dokument mit Geräteinformationen-Metadaten, das in der DocumentDB-Date
 * **id**: Der eindeutige DocumentDB-Bezeichner für dieses Gerätedokument.
 
 > [!NOTE]
-> Geräteinformationen können auch Metadaten zum Beschreiben der Telemetriedaten sein, die vom Gerät an IoT Hub gesendet werden. Die Lösung für die Remoteüberwachung verwendet diese Telemetriemetadaten, um anzupassen, wie im Dashboard [dynamische Telemetriedaten][lnk-dynamic-telemetry] angezeigt werden.
+> Geräteinformationen können auch Metadaten zum Beschreiben der Telemetriedaten sein, die vom Gerät an IoT Hub gesendet werden. Die Lösung für die Remoteüberwachung verwendet diese Telemetriemetadaten, um anzupassen, wie [dynamische Telemetriedaten][lnk-dynamic-telemetry] im Dashboard angezeigt werden.
 > 
 > 
 
@@ -92,10 +92,10 @@ Wenn Sie im Lösungsportal unter **Gerätedetails** auf **Bearbeiten** klicken, 
 
 Sie können das Lösungsportal verwenden, um ein Gerät aus der Lösung zu entfernen. Wenn Sie ein Gerät entfernen, entfernt die Lösung die Geräteinformationen-Metadaten aus der Lösungsgerätregistrierung und außerdem den Geräteeintrag in der IoT Hub-Geräteidentitätsregistrierung. Bevor Sie ein Gerät entfernen können, müssen Sie es deaktivieren.
 
-![Gerät entfernen][img-device-remove]
+![Entfernen des Geräts][img-device-remove]
 
 ## <a name="device-information-message-processing"></a>Verarbeitung der Geräteinformationsnachricht
-Von einem Gerät gesendete Geräteinformationsnachrichten unterscheiden sich von Telemetrienachrichten. Geräteinformationsnachrichten enthalten Informationen wie Geräteeigenschaften, die Befehle, auf die ein Gerät reagieren kann, und einen beliebigen Befehlsverlauf. IoT Hub selbst verfügt über keinerlei Informationen über die Metadaten, die in einer Geräteinformationsnachricht enthalten sind, und verarbeitet die Nachricht wie alle anderen D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) auch. In der Lösung für die Remoteüberwachung liest ein [Azure Stream Analytics][lnk-stream-analytics]-Auftrag (ASA) die Nachrichten aus IoT Hub. Der **DeviceInfo**-Stream Analytics-Auftrag filtert nach Nachrichten, die **"ObjectType": "DeviceInfo"** enthalten, und leitet sie an die **EventProcessorHost**-Hostinstanz weiter, die in einem Webauftrag ausgeführt wird. Die Logik in der **EventProcessorHost**-Instanz verwendet die Geräte-ID, um den DocumentDB-Eintrag für das jeweilige Gerät zu ermitteln und den Eintrag zu aktualisieren. Der Geräteregistrierungseintrag enthält jetzt Informationen, z.B. Geräteeigenschaften, Befehle und den Befehlsverlauf.
+Von einem Gerät gesendete Geräteinformationsnachrichten unterscheiden sich von Telemetrienachrichten. Geräteinformationsnachrichten enthalten Informationen wie Geräteeigenschaften, die Befehle, auf die ein Gerät reagieren kann, und einen beliebigen Befehlsverlauf. IoT Hub selbst verfügt über keinerlei Informationen über die Metadaten, die in einer Geräteinformationsnachricht enthalten sind, und verarbeitet die Nachricht wie alle anderen D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) auch. In der Lösung für die Remoteüberwachung liest ein [Azure Stream Analytics][lnk-stream-analytics]-Auftrag (ASA) die Nachrichten von IoT Hub. Der **DeviceInfo**-Stream Analytics-Auftrag filtert nach Nachrichten, die **"ObjectType": "DeviceInfo"** enthalten, und leitet sie an die **EventProcessorHost**-Hostinstanz weiter, die in einem Webauftrag ausgeführt wird. Die Logik in der **EventProcessorHost**-Instanz verwendet die Geräte-ID, um den DocumentDB-Eintrag für das jeweilige Gerät zu ermitteln und den Eintrag zu aktualisieren. Der Geräteregistrierungseintrag enthält jetzt Informationen, z.B. Geräteeigenschaften, Befehle und den Befehlsverlauf.
 
 > [!NOTE]
 > Eine Geräteinformationsnachricht ist eine D2C-Standardnachricht. Die Lösung unterscheidet mithilfe von ASA-Abfragen zwischen Geräteinformationsnachrichten und Telemetrienachrichten.
@@ -248,7 +248,7 @@ Das folgende Beispiel enthält den JSON-Geräteinformationseintrag für ein benu
 }
 ```
 
-Unten ist die **DeviceInfo** -JSON-Nachricht angegeben, die vom Gerät zum Aktualisieren der Geräteinformationen-Metadaten gesendet wurde:
+Das folgende Beispiel zeigt die **DeviceInfo**-JSON-Nachricht, die vom Gerät zum Aktualisieren der Geräteinformationen-Metadaten gesendet wurde:
 
 ```
 { "ObjectType":"DeviceInfo",
@@ -288,6 +288,6 @@ Nachdem Sie erfahren haben, wie Sie die vorkonfigurierten Lösungen anpassen, k�
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

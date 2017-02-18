@@ -1,6 +1,6 @@
 ---
-title: "Informationen zu VPN-Geräten für Site-to-Site-VPN-Gatewayverbindungen in virtuellen Azure-Netzwerken | Microsoft Docs"
-description: "In diesem Artikel werden VPN-Geräte und IPsec-Parameter für S2S-VPN-Gateway-Verbindungen beschrieben und Links zu Konfigurationsanleitungen und -beispielen angegeben."
+title: "Informationen zu VPN-Geräten für standortübergreifende Azure-Verbindungen | Microsoft-Dokumentation"
+description: "In diesem Artikel werden VPN-Geräte und IPsec-Parameter für standortübergreifende S2S-VPN Gateway-Verbindungen beschrieben. Er enthält Links zu Konfigurationsanleitungen und -beispielen."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 12/12/2016
 ms.author: yushwang;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: bbaf89bca07fd2d4c4a12403d2daa8323f4d7be5
-ms.openlocfilehash: 12e7768665b8d360fe7241c9879bd1f7bfc63664
+ms.sourcegitcommit: bf262073b46daa8b7dcf50fabf5f455d7d5850e7
+ms.openlocfilehash: b8e65f6c314457b76bd062ea09bda53099fb79d9
 
 
 ---
 # <a name="about-vpn-devices-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten für VPN-Gatewayverbindungen zwischen Standorten
-Ein VPN-Gerät ist erforderlich, um eine VPN-Verbindung zwischen Standorten (Site-to-Site, S2S) zu konfigurieren. Standort-zu-Standort-Verbindungen können zum Erstellen einer Hybridlösung verwendet werden. Sie können sie auch zum Herstellen einer sicheren Verbindung zwischen Ihrem lokalen Netzwerk und dem virtuellen Netzwerk verwenden. Dieser Artikel beschreibt kompatible VPN-Geräte und Konfigurationsparameter.
+Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung (Site-to-Site) per VPN Gateway zu konfigurieren. Standort-zu-Standort-Verbindungen können zum Erstellen einer Hybridlösung verwendet werden. Sie können sie auch zum Herstellen einer sicheren Verbindung zwischen Ihrem lokalen Netzwerk und dem virtuellen Netzwerk verwenden. Dieser Artikel beschreibt kompatible VPN-Geräte und Konfigurationsparameter.
 
 > [!NOTE]
 > Beim Konfigurieren einer Standort-zu-Standort-Verbindung ist eine öffentliche IPv4-IP-Adresse für das VPN-Gerät erforderlich.                                                                                                                                                                               
@@ -115,7 +115,7 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | **Eigenschaft** | **PolicyBased** | **Routenbasiertes und Standard- oder Hochleistungs-VPN-Gateway** |
 | --- | --- | --- |
 | IKE-Version |IKEv1 |IKEv2 |
-| Hashalgorithmus |SHA1(SHA128) |SHA1(SHA128) |
+| Hashalgorithmus |SHA1(SHA128), SHA2(SHA256) |SHA1(SHA128), SHA2(SHA256) |
 | Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |3.600 Sekunden |3.600 Sekunden |
 | Phase 2 Sicherheitszuordnung (SA) Lebensdauer (Durchsatz) |102.400.000 KB |- |
 | IPsec-SA-Verschlüsselungs- und Authentifizierungsangebote (sortiert nach Präferenz) |1. ESP-AES256 2. ESP-AES128 3. ESP-3DES 4. N/V |Siehe unten: *IPsec-Sicherheitszuordnungsangebote (SA) für routenbasierte Gateways* |
@@ -153,6 +153,6 @@ Die folgende Tabelle enthält die IPsec-SA-Verschlüsselungs- und -Authentifizie
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

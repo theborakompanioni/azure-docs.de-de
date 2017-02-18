@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 01/27/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: dca8087230b261f14e876e49b9b0fb12579b96d0
+ms.sourcegitcommit: 5cbe0b7f71f8dfd6f3a41fa6ff4b0c6ab5e6985d
+ms.openlocfilehash: dd5b1f9298bc4d864377c98114ce4a91ba8bfdae
 
 
 ---
@@ -118,6 +118,8 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 | MP3 (MPEG-1 Audio Layer 3) |Nein |Ja |
 | Windows Media Audio |Nein |Ja |
 
+>[!NOTE]
+>Wenn Sie in Dolby® Digital (AC3) codieren, kann die Ausgabe nur in eine ISO MP4-Datei geschrieben werden.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -134,6 +136,6 @@ In diesem Thema werden die Codierungsfunktionen von **Media Encoder Standard** u
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen | Microsoft Docs"
+title: "Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen in Site Recovery | Microsoft-Dokumentation"
 description: "In diesem Artikel erfahren Sie, wie Sie mit Azure Site Recovery und Azure Automation Wiederherstellungspläne erweitern und komplexe Aufgaben bei der Wiederherstellung zu Azure durchführen können."
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: required
-ms.date: 10/23/2016
+ms.date: 02/06/2017
 ms.author: ruturajd@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 9f9a71cd7c6688dfd42dcb7ce52847f2016daf58
+ms.sourcegitcommit: 44b6ff6e588d529fd833a4a7fdd61df7e933ddd8
+ms.openlocfilehash: b88974ef713211a40b52aafab1b079ed8dbfec49
 
 
 ---
@@ -146,6 +146,6 @@ Mit dem NSGwithCustomScript-Runbook werden jeder VM im Wiederherstellungsplan ö
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: Verarbeiten von Azure IoT Hub-D2C-Nachrichten mit Routen (.NET) | Microsoft-Dokumentation
-description: Wie IoT Hub-D2C-Nachrichten mithilfe von Routen verarbeitet werden, um Nachrichten an andere Back-End-Dienste zu senden.
+description: "Hier wird erläutert, wie IoT Hub-D2C-Nachrichten mithilfe von Routingregeln und benutzerdefinierten Endpunkten verarbeitet werden, um Nachrichten an andere Back-End-Dienste zu senden."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: d2da282a849496772fe57b9429fe2a180f37328d
-ms.openlocfilehash: 1ca480c4be2cca2c2558b13d2c3a5e5dea8b561e
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 88b75c2b222ee153c935898dbece0c366c7f198d
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 1ca480c4be2cca2c2558b13d2c3a5e5dea8b561e
 ## <a name="introduction"></a>Einführung
 Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Weitere Tutorials ([Erste Schritte mit IoT Hub] und [Senden von C2D-Nachrichten mit IoT Hub][lnk-c2d]) veranschaulichen, wie Sie die grundlegenden Device-to-Cloud- und Cloud-to-Device-Messagingfunktionen von IoT Hub verwenden.
 
-Dieses Tutorial stützt sich auf den Code, der im Tutorial [Erste Schritte mit IoT Hub] vorgestellt wird, und zeigt Ihnen, wie Sie das Nachrichtenrouting auf einfache Weise und auf Konfigurationsbasis für das Senden von D2C-Nachrichten einsetzen. Das Tutorial veranschaulicht das Isolieren von Nachrichten, die vom Lösungs-Back-End sofortiges Eingreifen zur weiteren Verarbeitung erfordern. Beispielsweise könnte ein Gerät eine Alarmnachricht senden, die das Einfügen eines Tickets in ein CRM-System auslöst. Im Gegensatz dazu werden Datenpunktnachrichten einfach in ein Analysemodul eingegeben. Temperaturtelemetriedaten von einem Gerät, die zur späteren Analyse gespeichert werden, sind beispielsweise Datenpunktnachrichten.
+Dieses Tutorial basiert auf dem Tutorial [Erste Schritte mit IoT Hub] und zeigt Ihnen, wie Sie Routingregeln auf einfache Weise und auf Konfigurationsbasis für das Senden von D2C-Nachrichten einsetzen. Das Tutorial veranschaulicht das Isolieren von Nachrichten, die vom Lösungs-Back-End sofortiges Eingreifen zur weiteren Verarbeitung erfordern. Beispielsweise könnte ein Gerät eine Alarmnachricht senden, die das Einfügen eines Tickets in ein CRM-System auslöst. Im Gegensatz dazu werden Datenpunktnachrichten einfach in ein Analysemodul eingegeben. Temperaturtelemetriedaten von einem Gerät, die zur späteren Analyse gespeichert werden, sind beispielsweise Datenpunktnachrichten.
 
 Am Ende dieses Tutorials führen Sie drei .NET-Konsolen-Apps aus:
 
@@ -50,77 +50,79 @@ Sie sollten über grundlegende Kenntnisse zu [Azure Storage] und [Azure Service 
 ## <a name="send-interactive-messages-from-a-simulated-device-app"></a>Senden interaktiver Nachrichten von einer simulierten Geräte-App aus
 In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie im Tutorial [Erste Schritte mit IoT Hub] erstellt haben, sodass sie gelegentlich Nachrichten sendet, die sofort verarbeitet werden müssen.
 
-- Ersetzen Sie in Visual Studio im **SimulatedDevice**-Projekt die `SendDeviceToCloudMessagesAsync`-Methode durch den folgenden Code.
-   
-    ```
-    private static async void SendDeviceToCloudMessagesAsync()
+Ersetzen Sie in Visual Studio im **SimulatedDevice**-Projekt die `SendDeviceToCloudMessagesAsync`-Methode durch den folgenden Code:
+
+```
+private static async void SendDeviceToCloudMessagesAsync()
+    {
+        double avgWindSpeed = 10; // m/s
+        Random rand = new Random();
+
+        while (true)
         {
-            double avgWindSpeed = 10; // m/s
-            Random rand = new Random();
+            double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
 
-            while (true)
+            var telemetryDataPoint = new
             {
-                double currentWindSpeed = avgWindSpeed + rand.NextDouble() * 4 - 2;
+                deviceId = "myFirstDevice",
+                windSpeed = currentWindSpeed
+            };
+            var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
+            string levelValue;
 
-                var telemetryDataPoint = new
-                {
-                    deviceId = "myFirstDevice",
-                    windSpeed = currentWindSpeed
-                };
-                var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
-                string levelValue;
-
-                if (rand.NextDouble() > 0.7)
-                {
-                    messageString = "This is a critical message";
-                    levelValue = "critical";
-                }
-                else
-                {
-                    levelValue = "normal";
-                }
-                
-                var message = new Message(Encoding.ASCII.GetBytes(messageString));
-                message.Properties.Add("level", levelValue);
-                
-                await deviceClient.SendEventAsync(message);
-                Console.WriteLine("{0} > Sent message: {1}", DateTime.Now, messageString);
-
-                await Task.Delay(1000);
+            if (rand.NextDouble() > 0.7)
+            {
+                messageString = "This is a critical message";
+                levelValue = "critical";
             }
-        }
-    ```
-   
-     Hiermit wird vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Lösungs-Back-End sofortiges Eingreifen erfordert. Die Geräte-App übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
+            else
+            {
+                levelValue = "normal";
+            }
+            
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+            message.Properties.Add("level", levelValue);
+            
+            await deviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sent message: {1}", DateTime.Now, messageString);
 
-   > [!NOTE]
-   > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für eine Vielzahl von Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
-   > 
-   > 
-   
-   > [!NOTE]
-   > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie eine Wiederholungsrichtlinie implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
-   > 
-   > 
+            await Task.Delay(1000);
+        }
+    }
+```
+
+Mit dieser Methode wird vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaft `"level": "critical"` hinzugefügt, wodurch eine Nachricht simuliert wird, die vom Lösungs-Back-End sofortiges Eingreifen erfordert. Die Geräte-App übergibt diese Information den Eigenschaften der Nachricht statt dem Nachrichtentext, sodass IoT Hub die Nachricht an das richtige Nachrichtenziel weiterleiten kann.
+
+> [!NOTE]
+> Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
+
+> [!NOTE]
+> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie eine Wiederholungsrichtlinie implementieren (etwa einen exponentiellen Backoff), wie im MSDN-Artikel zum [Behandeln vorübergehender Fehler]beschrieben.
 
 ## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>Hinzufügen einer Warteschlange zu Ihrem IoT Hub und Weiterleiten von Nachrichten an sie
-In diesem Abschnitt erstellen Sie eine Service Bus-Warteschlange, verbinden sie mit Ihrem IoT Hub und konfigurieren Ihren IoT Hub zum Senden von Nachrichten an die Warteschlange, sofern eine Eigenschaft in der Nachricht vorhanden ist. Weitere Informationen zum Verarbeiten von Nachrichten von der Service Bus-Warteschlange finden Sie in [Erste Schritte mit Event Hubs][Service Bus queue].
+In diesem Abschnitt führen Sie folgende Schritte aus:
+
+* Erstellen einer Service Bus-Warteschlange
+* Herstellen einer Verbindung mit Ihrem IoT-Hub
+* Konfigurieren Ihres IoT-Hubs zum Senden von Nachrichten an die Warteschlange, sofern eine Eigenschaft in der Nachricht vorhanden ist
+
+Weitere Informationen zum Verarbeiten von Nachrichten von der Service Bus-Warteschlange finden Sie in [Erste Schritte mit Event Hubs][Service Bus queue].
 
 1. Erstellen Sie eine Service Bus-Warteschlange wie in [erste Schritte mit Warteschlangen][Service Bus queue] beschrieben. Die Warteschlange muss sich in dem gleichen Abonnement und der gleichen Region wie der IoT Hub befinden. Notieren Sie den Namespace und den Warteschlangennamen.
 
-2. Öffnen Sie Ihren IoT Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
+2. Öffnen Sie Ihren IoT-Hub im Azure-Portal, und klicken Sie auf **Endpunkte**.
     
     ![Endpunkte in IoT Hub][30]
 
-3. Klicken Sie oben auf dem Blatt „Endpunkte“ auf **Hinzufügen**, um die Warteschlange Ihrem IoT Hub hinzuzufügen. Benennen Sie den Endpunkt „CriticalQueue“ und, wählen Sie mithilfe der Dropdownlisten **Service Bus-Warteschlange**, den Service Bus-Namespace, in dem sich die Warteschlange befindet, und den Namen der Warteschlange. Klicken Sie anschließend am unteren Rand auf **Speichern**.
+3. Klicken Sie oben auf dem Blatt **Endpunkte** auf **Hinzufügen**, um die Warteschlange Ihrem IoT-Hub hinzuzufügen. Benennen Sie den Endpunkt **CriticalQueue**, und wählen Sie mithilfe der Dropdownlisten **Service Bus-Warteschlange**, den Service Bus-Namespace, in dem sich die Warteschlange befindet, und den Namen der Warteschlange. Klicken Sie anschließend am unteren Rand auf **Speichern**.
     
     ![Hinzufügen eines Endpunkts][31]
     
-4. Klicken Sie jetzt in Ihrem IoT Hub auf **Routen**. Klicken Sie am oberen Rand des Blatts auf **Hinzufügen**, um eine Regel zu erstellen, die Nachrichten an die gerade von Ihnen hinzugefügte Warteschlange leitet. Wählen Sie **DeviceTelemetry** als Quelle der Daten. Geben Sie `level="critical"` als Bedingung ein, und wählen Sie die Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, als Routenendpunkt. Klicken Sie anschließend am unteren Rand auf **Speichern**.
+4. Klicken Sie jetzt in Ihrem IoT-Hub auf **Routen**. Klicken Sie am oberen Rand des Blatts auf **Hinzufügen**, um eine Routingregel zu erstellen, die Nachrichten an die gerade von Ihnen hinzugefügte Warteschlange leitet. Wählen Sie **DeviceTelemetry** als Quelle der Daten. Geben Sie `level="critical"` als Bedingung ein, und wählen Sie die Warteschlange, die Sie gerade als benutzerdefinierten Endpunkt hinzugefügt haben, als Routingregelendpunkt. Klicken Sie anschließend am unteren Rand auf **Speichern**.
     
     ![Hinzufügen einer Route][32]
     
-    Stellen Sie sicher, dass die Fallbackroute auf EIN festgelegt ist. Dies ist die Standardkonfiguration des IoT Hubs.
+    Stellen Sie sicher, dass die Fallbackroute auf **EIN** festgelegt ist. Dieser Wert ist die Standardkonfiguration für einen IoT-Hub.
     
     ![Fallbackroute][33]
 
@@ -226,6 +228,6 @@ Weitere Informationen zum Nachrichtenrouting in IoT Hub finden Sie unter [Senden
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

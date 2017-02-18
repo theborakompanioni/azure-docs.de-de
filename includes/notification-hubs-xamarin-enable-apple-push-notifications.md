@@ -67,7 +67,7 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
    > Der Name in Ihrem Zertifikat kann sich davon unterscheiden, er enthält jedoch das Präfix **Apple Development iOS Push Services:**.
    > 
    > 
-10. Klicken Sie in der Kategorie **Certificates** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das gerade neu erstellte Pushzertifikat. Klicken Sie auf **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und klicken Sie dann auf **Speichern**.
+10. Klicken Sie in der Schlüsselbundverwaltung bei gedrückter Control-Taste auf das neue Pushzertifikat, das Sie soeben in der Kategorie **Zertifikate** erstellt haben. Klicken Sie auf **Exportieren**, benennen Sie die Datei, wählen Sie das Format **.p12** aus, und klicken Sie dann auf **Speichern**.
     
     Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats. Damit wird die Authentifizierung mit APNS aktiviert, indem Sie es zum klassischen Azure-Portal hochladen.
 
@@ -91,6 +91,6 @@ Erstellen Sie eine neue explizite App-ID für Ihre Anwendung bei Apple, und konf
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

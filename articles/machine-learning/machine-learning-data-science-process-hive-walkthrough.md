@@ -1,5 +1,8 @@
 ---
-title: 'Der Team Data Science-Prozess in Aktion: Verwenden von Hadoop-Clustern | Microsoft Docs'
+
+
+
+title: Untersuchen von Daten in einem Hadoop-Cluster und Erstellen von Modellen in Azure Machine Learning | Microsoft-Dokumentation
 description: "Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines öffentlich zugänglichen Datasets."
 services: machine-learning,hdinsight
 documentationcenter: 
@@ -12,15 +15,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 01/29/2017
 ms.author: hangzh;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4b466878831b9a8d78c03738397f2119a6d5e13d
+ms.sourcegitcommit: 2b7f4b5743945738f801dc26a60d00892c33d809
+ms.openlocfilehash: 91ff5546a954b91585e5ae93f910caffe3b392e1
 
 
 ---
-# <a name="the-team-data-science-process-in-action-using-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise nutzen Sie den [Team Data Science-Prozess (TDSP)](data-science-process-overview.md) in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/), um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern und zu untersuchen, Features zu entwickeln und ein Downsampling auf die Daten anzuwenden. Modelle der Daten werden mit Azure Machine Learning entwickelt, um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen.
 
 Eine exemplarische Vorgehensweise, die zeigt, wie ein größeres Dataset (mit 1 TB) für ein ähnliches Szenario mit Verwendung von HDInsight Hadoop-Clustern für die Datenverarbeitung genutzt wird, finden Sie unter [Team Data Science-Prozess in Aktion – Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset](machine-learning-data-science-process-hive-criteo-walkthrough.md).
@@ -57,7 +60,7 @@ Weitere Details der Daten werden beschrieben, wenn wir diese in Hive-Tabellen sp
 Bei der Arbeit mit Daten ist es zunächst wichtig, die Art der Vorhersagen zu bestimmen, die Sie treffen möchten. Basierend auf der Analyse können Sie dann die Aufgaben ermitteln, die Sie durchführen müssen.
 Hier sehen Sie drei Beispiele für Vorhersageprobleme, die in dieser exemplarischen Vorgehensweise behandelt werden. Die Formulierung basiert auf *tip\_amount*:
 
-1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d. h. ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
+1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d. h. ein *tip\_amount* größer als&0; $ ist eine positive Probe, während ein *tip\_amount* gleich&0; $ eine negative Probe ist.
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0
@@ -402,7 +405,7 @@ Dies ist der Inhalt der Datei *sample\_hive\_trip\_count\_by\_medallion.hql*, de
     HAVING med_count > 100
     ORDER BY med_count desc;
 
-Über "medallion" wird im NYC Taxi-Dataset ein Taxi eindeutig identifiziert. Wir können ermitteln, welche Taxis besonders häufig zum Einsatz kommen, indem wir abfragen, welche Taxis innerhalb einer bestimmten Zeit mehr als eine bestimmte Anzahl von Fahrten durchgeführt haben. Im folgenden Beispiel werden Taxis ermittelt, die in den ersten drei Monaten mehr als 100 Fahrten durchgeführt haben. Die Ergebnisse der Abfrage werden in einer lokalen Datei namens "C:\temp\queryoutput.tsv" gespeichert.
+Über "medallion" wird im NYC Taxi-Dataset ein Taxi eindeutig identifiziert. Wir können ermitteln, welche Taxis besonders häufig zum Einsatz kommen, indem wir abfragen, welche Taxis innerhalb einer bestimmten Zeit mehr als eine bestimmte Anzahl von Fahrten durchgeführt haben. Im folgenden Beispiel werden Taxis ermittelt, die in den ersten drei Monaten mehr als&100; Fahrten durchgeführt haben. Die Ergebnisse der Abfrage werden in einer lokalen Datei namens "C:\temp\queryoutput.tsv" gespeichert.
 
 Dies ist der Inhalt der Datei *sample\_hive\_trip\_count\_by\_medallion.hql*, der untersucht wird.
 
@@ -839,6 +842,6 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

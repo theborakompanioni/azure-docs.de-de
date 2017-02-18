@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
 translationtype: Human Translation
-ms.sourcegitcommit: 91090ad383d6a03e6d978376d8dd45dc05eac7e8
-ms.openlocfilehash: 504e810146d6787eac9be661a93c7a0ec2ff183f
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 72aed50d3dd86c5875d3b741a6fff16cb8f17a2d
 
 
 ---
@@ -44,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie die folgenden Schritte ausführen:
 ![Systemarchitektur](media/virtual-machines-linux-classic-mariadb-mysql-cluster/Setup.png)
 
 > [!NOTE]
-> In diesem Thema werden die [Azure CLI](../xplat-cli-install.md)-Tools verwendet. Denken Sie deshalb daran, sie herunterzuladen und gemäß den Anweisungen mit Ihrem Azure-Abonnement zu verbinden. Referenzinformationen zu den Befehlen der Azure-Befehlszeilenschnittstelle (Azure CLI) finden Sie unter [Befehlsreferenz zur Azure-Befehlszeilenschnittstelle](../virtual-machines-command-line-tools.md). Darüber hinaus müssen Sie einen [SSH-Schlüssel für die Authentifizierung erstellen] und sich den Speicherort der PEM-Datei notieren.
+> In diesem Thema werden die [Azure CLI](../xplat-cli-install.md)-Tools verwendet. Denken Sie deshalb daran, sie herunterzuladen und gemäß den Anweisungen mit Ihrem Azure-Abonnement zu verbinden. Referenzinformationen zu den Befehlen der Azure-Befehlszeilenschnittstelle (Azure CLI) finden Sie unter [Befehlsreferenz zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2). Darüber hinaus müssen Sie einen [SSH-Schlüssel für die Authentifizierung erstellen] und sich den Speicherort der PEM-Datei notieren.
 >
 >
 
@@ -367,6 +367,6 @@ Es empfiehlt sich unter Umständen, sich über [eine weitere Möglichkeit zur Er
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

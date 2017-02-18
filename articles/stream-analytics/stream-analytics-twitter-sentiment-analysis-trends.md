@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2017
+ms.date: 02/03/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 3c97604b17636f011ddb2acda40fbc77afeab590
-ms.openlocfilehash: 9f7e9008f29b2b1a3a0422133e15871c4ce7cca8
-
+ms.sourcegitcommit: 110bf7df8753ec83a5a8b4219891700b462d4eb1
+ms.openlocfilehash: 339301772b1ee3bf22e543d4d4183adda5b54c2e
 
 ---
+
 # <a name="social-media-analysis-real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Soziale Medienanalyse: Twitter-Stimmungsanalyse in Echtzeit in Azure Stream Analytics
 Erfahren Sie, wie Sie eine Lösung für Standpunktanalysen zur Analyse sozialer Medien durch die Einbindung von Twitter-Echtzeitereignissen in Azure Event Hubs erstellen können. Sie werden eine Azure Stream Analytics-Abfrage schreiben, um die Daten zu analysieren. Anschließend werden Sie die Ergebnisse entweder zur späteren Durchsicht speichern oder ein Dashboard und [Power BI](https://powerbi.com/) verwenden, um verwertbare Daten in Echtzeit bereitzustellen.
 
@@ -45,6 +45,7 @@ Führen Sie die folgenden Schritte aus, um einen Event Hub zu erstellen.
 4. Erstellen Sie unter **RICHTLINIEN FÜR GEMEINSAMEN ZUGRIFF** eine neue Richtlinie mit Berechtigungen zum **VERWALTEN**.
 
    ![Unter "Gemeinsame Zugriffsrichtlinien" können Sie eine neue Richtlinie mit Verwaltungsberechtigungen erstellen.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-ananlytics-shared-access-policies.png)
+
 5. Klicken Sie unten auf der Seite auf **Speichern** .
 6. Wechseln Sie zum **DASHBOARD**, klicken Sie unten auf der Seite auf **VERBINDUNSINFORMATIONEN**, und kopieren und speichern Sie anschließend die Verbindungsinformationen. (Verwenden Sie das Symbol „Kopieren“, das unter dem Suchsymbol angezeigt wird.)
 
@@ -65,18 +66,23 @@ Gehen Sie folgendermaßen vor, um die Anwendung einzurichten:
    [Schritte zum Generieren eines OAuth-Zugriffstokens](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)  
 
    Beachten Sie, dass Sie zum Generieren eines Tokens eine leere Anwendung erstellen müssen.  
-3. Ersetzen Sie die Werte EventHubConnectionString und EventHubName in „TwitterClient.exe.config“ durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs. Die zuvor kopierte Verbindungszeichenfolge enthält sowohl die Verbindungszeichenfolge als auch den Namen Ihres Event Hubs. Trennen Sie die beiden Angaben also, und geben Sie sie in die richtigen Felder ein. Ziehen Sie beispielsweise die folgende Verbindungszeichenfolge in Betracht:
 
-     Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey;EntityPath=yourhub
-
+3. Ersetzen Sie die Werte EventHubConnectionString und EventHubName in „TwitterClient.exe.config“ durch die Verbindungszeichenfolge und den Namen Ihres Event Hubs. Die zuvor kopierte Verbindungszeichenfolge enthält sowohl die Verbindungszeichenfolge als auch den Namen Ihres Event Hubs. Trennen Sie die beiden Angaben also, und geben Sie sie in die richtigen Felder ein. Ziehen Sie beispielsweise die folgende Verbindungszeichenfolge in Betracht:  
+   
+   `Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey;EntityPath=yourhub`
+   
    Die Datei „TwitterClient.exe.config“ sollte Ihre Einstellungen wie im folgenden Beispiel enthalten:
-
-     add key="EventHubConnectionString" value="Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey"   add key="EventHubName" value="yourhub"
-
+   
+   ```
+     add key="EventHubConnectionString" value="Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey"
+     add key="EventHubName" value="yourhub"
+   ```
+   
    Beachten Sie unbedingt, dass der Text „EntityPath=“ **nicht** im EventHubName-Wert enthalten ist.
+   
 4. *Optional:* Passen Sie die Schlüsselwörter für die Suche an.  Standardmäßig sucht diese Anwendung nach „Azure,Skype,XBox,Microsoft,Seattle“.  Falls gewünscht, können Sie die Werte für **twitter_keywords** in „TwitterClient.exe.config“ anpassen.
 5. Führen Sie „TwitterClient.exe“ aus, um Ihre Anwendung zu starten. Sie sehen nun, wie Ereignisse mit den **CreatedAt**-, **Topic**- und **SentimentScore**-Werten an Ihren Event Hub gesendet werden.
-
+   
    ![Stimmungsanalyse: SentimentScore-Werte, die an einen Event Hub gesendet werden.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-sentiment-output-to-event-hub.png)
 
 ## <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
@@ -88,30 +94,35 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen haben, können wir einen Stre
 
    * **AUFTRAGSNAME**: Geben Sie einen Auftragsnamen ein.
    * **REGION**: Wählen Sie die Region aus, in der der Auftrag ausgeführt werden soll. Ziehen Sie es in Betracht, den Auftrag und das Event Hub in derselben Region zu platzieren, um für eine bessere Leistung zu sorgen und sicherzustellen, dass Sie nicht für die Übertragung von Daten zwischen Regionen bezahlen.
-   * **SPEICHERKONTO**: Wählen Sie das Azure-Speicherkonto aus, das Sie zum Speichern von Überwachungsdaten für alle Stream Analytics-Aufträge verwenden möchten, die innerhalb dieser Region ausgeführt werden. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto auszuwählen oder ein neues zu erstellen.
-3. Klicken Sie im linken Bereich auf **STREAM ANALYTICS**, um die Stream Analytics-Aufträge aufzulisten.  
-   ![Symbol des Stream Analytics-Diensts](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+   * **SPEICHERKONTO**: Wählen Sie das Azure-Speicherkonto aus, das Sie zum Speichern von Überwachungsdaten für alle Stream Analytics-Aufträge verwenden möchten, die innerhalb dieser Region ausgeführt werden. Sie haben die Möglichkeit, ein vorhandenes Speicherkonto auszuwählen oder ein neues zu erstellen.   
 
+3. Klicken Sie im linken Bereich auf **STREAM ANALYTICS**, um die Stream Analytics-Aufträge aufzulisten.  
+   
+   ![Symbol des Stream Analytics-Diensts](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-service-icon.png)
+   
    Der neue Auftrag wird mit dem Status **ERSTELLT**aufgeführt. Beachten Sie, dass die Schaltfläche **START** am unteren Seitenrand deaktiviert ist. Sie müssen die Auftragseingabe, -ausgabe und -abfrage konfigurieren, bevor Sie den Auftrag starten können.
 
+
 ### <a name="specify-job-input"></a>Festlegen der Auftragseingabe
+
 1. Klicken Sie in Ihrem Stream Analytics-Auftrag auf **EINGABEN** am oberen Rand der Seite, und klicken Sie anschließend auf **EINGABE HINZUFÜGEN**. Das aufgerufene Dialogfeld führt Sie durch eine Reihe von Schritten, um Ihre Eingabe einzurichten.
 2. Klicken Sie auf **DATENSTROM** und anschließend auf die rechte Schaltfläche.
 3. Klicken Sie auf **EVENT HUB**, und dann mit der rechten Maustaste.
-4. Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
-
+4. Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:  
+   
    * **EINGABEALIAS**: Geben Sie einen Anzeigenamen für diese Auftragseingabe ein, wie z.B. *TwitterStream*. Beachten Sie, dass Sie diesen Namen später in der Abfrage verwenden werden.
-     **EVENT HUB**: Wenn sich der Event Hub, den Sie erstellt haben, im gleichen Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
-
-     Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, klicken Sie auf **Use Event Hub from Another Subscription** (Event Hub aus einem anderen Abonnement verwenden) aus, und geben Sie manuell die Informationen für **SERVICE BUS-NAMESPACE**, **EVENT HUB-NAME**, **NAME DER EVENT HUB-RICHTLINIE**, **SCHLÜSSEL DER EVENT HUB-RICHTLINIE** und **EVENT HUB-PARTITIONSANZAHL** ein.
+   * **EVENT HUB**: Wenn sich der Event Hub, den Sie erstellt haben, im gleichen Abonnement wie der Stream Analytics-Auftrag befindet, wählen Sie den Namespace aus, in dem sich der Event Hub befindet.
+      * Wenn sich Ihr Event Hub in einem anderen Abonnement befindet, klicken Sie auf **Use Event Hub from Another Subscription** (Event Hub aus einem anderen Abonnement verwenden) aus, und geben Sie manuell die Informationen für **SERVICE BUS-NAMESPACE**, **EVENT HUB-NAME**, **NAME DER EVENT HUB-RICHTLINIE**, **SCHLÜSSEL DER EVENT HUB-RICHTLINIE** und **EVENT HUB-PARTITIONSANZAHL** ein.
    * **EVENT HUB-NAME**: Wählen Sie den Namen des Event Hubs aus.
    * **NAME DER EVENT HUB-RICHTLINIE**: Wählen Sie die Event Hub-Richtlinie aus, die Sie zuvor in diesem Lernprogramm erstellt haben.
    * **EVENT HUB-CONSUMERGRUPPE**: Geben Sie den Namen der Consumergruppe ein, die Sie zuvor in diesem Tutorial erstellt haben.
+   
 5. Klicken Sie auf die rechte Taste.
-6. Geben Sie die folgenden Werte an:
-
+6. Geben Sie die folgenden Werte an:  
+   
    * **EVENT SERIALIZER FORMAT**: JSON
    * **CODIERUNG**: UTF8
+  
 7. Klicken Sie auf das **Kontrollkästchen**, um diese Quelle hinzuzufügen und um zu überprüfen, ob Stream Analytics erfolgreich mit dem Event Hub verbunden werden kann.
 
 ### <a name="specify-job-query"></a>Festlegen der Auftragsabfrage
@@ -128,43 +139,63 @@ Um Ihre Abfrage mit den tatsächlichen Auftragsdaten zu überprüfen, können Si
 Wir beginnen mit einer einfachen Pass-Through-Abfrage, die alle Felder in einem Ereignis projiziert.
 
 1. Klicken Sie auf **ABFRAGE** oben auf der Seite des Stream Analytics-Auftrags.
-2. Ersetzen Sie im Code-Editor die ursprüngliche Abfragevorlage mit Folgendem:
-
-     SELECT * FROM TwitterStream
-
+2. Ersetzen Sie im Code-Editor die ursprüngliche Abfragevorlage mit Folgendem:  
+   
+   `SELECT * FROM TwitterStream`
+   
    Stellen Sie sicher, dass der Name der Eingabequelle dem Namen der Eingabe entspricht, die Sie zuvor angegeben haben.
+   
 3. Klicken Sie im Abfrage-Editor auf **Test** .
 4. Navigieren Sie zu Ihrer JSON-Beispieldatei.
 5. Klicken Sie auf die Schaltfläche **PRÜFEN**. Die Ergebnisse werden unterhalb der Abfragedefinition angezeigt.
-
+   
    ![Unterhalb der Abfragedefinition angezeigte Ergebnisse](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sentiment-by-topic.png)
-
+   
 #### <a name="count-of-tweets-by-topic-tumbling-window-with-aggregation"></a>Anzahl der Tweets nach Thema: rollierendes Fenster mit Aggregation
 Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, verwenden wir ein [TumblingWindow](https://msdn.microsoft.com/library/azure/dn835055.aspx), um alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abzurufen.
 
-1. Ändern Sie die Abfrage im Code-Editor in:
-
-     SELECT System.Timestamp as Time, Topic, COUNT(*)   FROM TwitterStream TIMESTAMP BY CreatedAt   GROUP BY TUMBLINGWINDOW(s, 5), Topic
-
+1. Ändern Sie die Abfrage im Code-Editor in:  
+   
+   ```
+     SELECT System.Timestamp as Time, Topic, COUNT(*)
+     FROM TwitterStream TIMESTAMP BY CreatedAt
+     GROUP BY TUMBLINGWINDOW(s, 5), Topic
+   ```
+   
    Diese Abfrage gibt mit dem Schlüsselwort **TIMESTAMP BY** ein Zeitstempelfeld für die Nutzlast an, das für die zeitliche Berechnung verwendet wird. Wird dieses Feld nicht angegeben, dann würde der Vorgang die Zeit verwenden, zu der jedes Ereignis beim Event Hub eingeht.  Weitere Informationen erhalten Sie im Abschnitt „Arrival Time Vs Application Time“ (Eingangszeit im Vgl. zu Anwendungszeit) in der [Stream Analytics Query Language Reference (Stream Analytics-Abfragereferenz)](https://msdn.microsoft.com/library/azure/dn834998.aspx).
-
+   
    Diese Abfrage greift zudem mithilfe der Eigenschaft **System.Timestamp** jeweils auf einen Zeitstempel für das Ende der einzelnen Fenster zu.
+   
 2. Klicken Sie im Abfrage-Editor auf **Erneut ausführen** , um die Ergebnisse der Abfrage anzuzeigen.
 
 #### <a name="identify-trending-topics-sliding-window"></a>Identifizieren von Trendthemen: gleitendes Fenster
 Zum Identifizieren von Trendthemen suchen wir nach Themen, die einen Schwellenwert für Erwähnungen in einem bestimmten Zeitraum überschreiten. Für die Zwecke dieses Tutorials suchen wir mithilfe eines [SlidingWindow](https://msdn.microsoft.com/library/azure/dn835051.aspx)nach Themen, die in den letzten fünf Sekunden mehr als 20-mal erwähnt werden.
 
-1. Ändern Sie die Abfrage im Code-Editor in: SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions     FROM TwitterStream TIMESTAMP BY CreatedAt     GROUP BY SLIDINGWINDOW(s, 5), topic     HAVING COUNT(*) > 20
-2. Klicken Sie im Abfrage-Editor auf **Erneut ausführen** , um die Ergebnisse der Abfrage anzuzeigen.
-
+1. Ändern Sie die Abfrage im Code-Editor in:  
+   
+   ```
+     SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions
+     FROM TwitterStream TIMESTAMP BY CreatedAt
+     GROUP BY SLIDINGWINDOW(s, 5), topic
+     HAVING COUNT(*) > 20
+   ```
+   
+2. Klicken Sie im Abfrage-Editor auf **Erneut ausführen** , um die Ergebnisse der Abfrage anzuzeigen.  
+   
    ![Gleitendes Fenster – Abfrageausgabe](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-query-output.png)
-
+   
 #### <a name="count-of-mentions-and-sentiment-tumbling-window-with-aggregation"></a>Anzahl der Erwähnungen und Stimmung: Rollierendes Fenster mit Aggregation
 Die letzte Abfrage, die wir testen, verwendet **TumblingWindow**, um alle fünf Sekunden für jedes Thema die Anzahl von Erwähnungen sowie die Durchschnitts-, Mindest-, Maximal- und Standardabweichung von der Bewertung der Stimmung abzurufen.
 
-1. Ändern Sie die Abfrage im Code-Editor in:
+1. Ändern Sie die Abfrage im Code-Editor in:  
+   
+   ```
+     SELECT System.Timestamp as Time, Topic, COUNT(*), AVG(SentimentScore), MIN(SentimentScore),
+     Max(SentimentScore), STDEV(SentimentScore)
+     FROM TwitterStream TIMESTAMP BY CreatedAt
+     GROUP BY TUMBLINGWINDOW(s, 5), Topic
+   ```     
 
-     SELECT System.Timestamp as Time, Topic, COUNT(*), AVG(SentimentScore), MIN(SentimentScore),   Max(SentimentScore), STDEV(SentimentScore)   FROM TwitterStream TIMESTAMP BY CreatedAt   GROUP BY TUMBLINGWINDOW(s, 5), Topic
 2. Klicken Sie im Abfrage-Editor auf **Erneut ausführen** , um die Ergebnisse der Abfrage anzuzeigen.
 3. Dies ist die Abfrage, die wir für unser Dashboard verwenden.  Klicken Sie unten auf der Seite auf **Speichern** .
 
@@ -180,15 +211,16 @@ Befolgen Sie die nachstehenden Schritte zum Erstellen eines Containers für Blob
 ## <a name="specify-job-output"></a>Festlegen der Auftragsausgabe
 1. Klicken Sie in Ihrem Stream Analytics-Auftrag am oberen Rand der Seite auf **AUSGABE**, und klicken Sie dann auf **AUSGABE HINZUFÜGEN**. Das aufgerufene Dialogfeld führt Sie durch eine Reihe von Schritten, um Ihre Ausgabe einzurichten.
 2. Wählen Sie **BLOB STORAGE**, und klicken Sie dann mit der rechten Maustaste.
-3. Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:
-
+3. Geben Sie die folgenden Werte auf der dritten Seite ein, oder wählen Sie sie aus:   
+   
    * **AUSGABEALIAS**: Geben Sie einen Anzeigenamen für diese Auftragsausgabe ein.
    * **ABONNEMENT**: Befindet sich der Blob Storage, den Sie erstellt haben, im gleichen Abonnement wie der Stream Analytics-Auftrag, wählen Sie **Speicherkonto aus dem aktuellen Abonnement verwenden** aus. Wenn sich der Speicher in einem anderen Abonnement befindet, wählen Sie **Speicherkonto von einem anderen Abonnement verwenden** aus, und geben Sie manuell die Informationen für **SPEICHERKONTO**, **SPEICHERKONTOSCHLÜSSEL** und **CONTAINER** ein.
    * **SPEICHERKONTO**: Wählen Sie den Namen des Speicherkontos aus.
    * **CONTAINER**: Wählen Sie den Namen des Containers aus.
    * **DATEINAMENPRÄFIX**: Geben Sie ein Präfix ein, das beim Schreiben von BLOB-Ausgaben verwendet wird.
+  
 4. Klicken Sie auf die rechte Taste.
-5. Geben Sie die folgenden Werte an:
+5. Geben Sie die folgenden Werte an:  
    * **EVENT SERIALIZER FORMAT**: JSON
    * **CODIERUNG**: UTF8
 6. Klicken Sie auf die Schaltfläche **PRÜFEN**, um diese Quelle hinzuzufügen und zu überprüfen, ob Stream Analytics erfolgreich mit dem Speicherkonto verbunden werden kann.
@@ -217,6 +249,6 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

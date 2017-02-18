@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2016
+ms.date: 01/27/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2f3ea8b6be032b732b5ab1c587843f10387a4efb
-ms.openlocfilehash: 56397e33fb86cd839899a4009f2be95402a09b14
+ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
+ms.openlocfilehash: 9245eb870f592ee0a1f1d6956ce3d573f4902485
 
 
 ---
@@ -83,15 +83,40 @@ Sie können die Gruppenrichtlinien-Verwaltungskonsole auf dem in die Domäne ein
 2. Klicken Sie auf **Gruppenrichtlinienverwaltung**, um die Gruppenrichtlinien-Verwaltungskonsole zu starten.
 
     ![Gruppenrichtlinien-Verwaltungskonsole](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
-3. Klicken Sie, um die Knoten **Gesamtstruktur: contoso100.com** und **Domänen** zu erweitern und die Gruppenrichtlinien für Ihre verwaltete Domäne anzuzeigen. Es gibt zwei integrierte Gruppenrichtlinienobjekte: je eins für die Container „AADDC Computers“ und „AADDC Users“ in Ihrer Domäne.
+
+## <a name="task-4---customize-built-in-group-policy-objects"></a>Aufgabe 4: Anpassen integrierter Gruppenrichtlinienobjekte
+Es gibt zwei integrierte Gruppenrichtlinienobjekte: je eins für die Container „AADDC Computers“ und „AADDC Users“ in Ihrer Domäne. Sie können diese integrierten Gruppenrichtlinienobjekte (Group Policy Objects, GPOs) anpassen, um eine Gruppenrichtlinie in der verwalteten Domäne zu konfigurieren.
+
+1. Klicken Sie in der Konsole für die **Gruppenrichtlinienverwaltung** , um die Knoten **Gesamtstruktur: contoso100.com** und **Domänen** zu erweitern und die Gruppenrichtlinien für Ihre verwaltete Domäne anzuzeigen.
 
     ![Integrierte Gruppenrichtlinienobjekte](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-4. Sie können diese integrierten GPOs anpassen, um Gruppenrichtlinien in Ihrer verwalteten Domäne zu konfigurieren. Klicken Sie mit der rechten Maustaste auf das Gruppenrichtlinienobjekt, und klicken Sie auf **Bearbeiten...**, um das integrierte Gruppenrichtlinienobjekt anzupassen. Der Editor für die Gruppenrichtlinienkonfiguration ermöglicht das Anpassen des Gruppenrichtlinienobjekts.
+2. Sie können diese integrierten GPOs anpassen, um Gruppenrichtlinien in Ihrer verwalteten Domäne zu konfigurieren. Klicken Sie mit der rechten Maustaste auf das Gruppenrichtlinienobjekt, und klicken Sie auf **Bearbeiten...**, um das integrierte Gruppenrichtlinienobjekt anzupassen. Der Editor für die Gruppenrichtlinienkonfiguration ermöglicht das Anpassen des Gruppenrichtlinienobjekts.
 
     ![Bearbeiten des integrierten Gruppenrichtlinienobjekts](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-5. Sie können jetzt den **Gruppenrichtlinienverwaltungs-Editor** verwenden, um das integrierte Gruppenrichtlinienobjekt zu bearbeiten. Der folgende Screenshot zeigt die Anpassung des integrierten Gruppenrichtlinienobjekts „AADDC Computers“.
+3. Sie können jetzt den **Gruppenrichtlinienverwaltungs-Editor** verwenden, um das integrierte Gruppenrichtlinienobjekt zu bearbeiten. Der folgende Screenshot zeigt die Anpassung des integrierten Gruppenrichtlinienobjekts „AADDC Computers“.
 
     ![Anpassen von Gruppenrichtlinienobjekten](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+
+## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>Aufgabe 5: Erstellen eines benutzerdefinierten Gruppenrichtlinienobjekts
+Sie können eigene benutzerdefinierte Gruppenrichtlinienobjekte erstellen oder importieren. Darüber hinaus können Sie benutzerdefinierte GPOs mit einer in der verwalteten Domäne erstellten Organisationseinheit verknüpfen. Weitere Informationen zum Erstellen von benutzerdefinierten Organisationseinheiten finden Sie unter [Erstellen einer Organisationseinheit in einer verwalteten Domäne](active-directory-ds-admin-guide-create-ou.md).
+
+> [!NOTE]
+> Sie müssen der Administratorengruppe für Azure AD-Domänencontroller angehören, um Gruppenrichtlinien in der verwalteten Domäne verwalten zu können.
+>
+>
+
+1. Klicken Sie in der Konsole für die **Gruppenrichtlinienverwaltung**, um die benutzerdefinierte Organisationseinheit auszuwählen. Klicken Sie mit der rechten Maustaste auf die Organisationseinheit, und klicken Sie dann auf **Gruppenrichtlinienobjekt hier erstellen und verknüpfen...**.
+
+    ![Erstellen eines benutzerdefinierten GPOs](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
+2. Geben Sie einen Namen für das neue Gruppenrichtlinienobjekt an, und klicken Sie auf **OK**.
+
+    ![Angeben eines Namens für das GPO](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
+3. Ein neues GPO wird erstellt und mit Ihrer benutzerdefinierten Organisationseinheit verknüpft. Klicken Sie mit der rechten Maustaste auf das GPO, und klicken Sie anschließend im Menü auf **Bearbeiten...**.
+
+    ![Neu erstelltes GPO](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+4. Sie können das neu erstellte GPO mit dem **Gruppenrichtlinienverwaltungs-Editor** anpassen.
+
+    ![Anpassen des neuen Gruppenrichtlinienobjekts](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
 
 Weitere Informationen zur Verwendung der [Gruppenrichtlinien-Verwaltungskonsole](https://technet.microsoft.com/library/cc753298.aspx) finden Sie in TechNet.
@@ -104,6 +129,6 @@ Weitere Informationen zur Verwendung der [Gruppenrichtlinien-Verwaltungskonsole]
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

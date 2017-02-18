@@ -1,5 +1,5 @@
 ---
-title: "Einführung in die DPM-Sicherung mit Azure | Microsoft Docs"
+title: Verwenden von DPM zum Sichern von Workloads im Azure-Portal | Microsoft-Dokumentation
 description: "Eine Einführung in die Sicherung von DPM-Servern mithilfe des Azure Backup-Diensts"
 services: backup
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
-ms.author: trinadhk;giridham;jimpark;markgal;adigan
+ms.author: adigan;giridham;jimpark;markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: d883cdc007beaf17118c6b6ddbc8345c3bfb5ef2
-ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: b1d4cd29198eeda0cb3cd5bd193836352dda20d6
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure Backup Server (klassisch)](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM (klassisch)](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Backup zum Schutz von DPM-Servern  und -Workloads (System Center Data Protection Manager). In diesem Artikel lernen Sie Folgendes:
 
@@ -39,8 +39,8 @@ Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Back
 
 > [!NOTE]
 > Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel enthält die Informationen und Verfahren für die Wiederherstellung virtueller Computer, die über das Resource Manager-Bereitstellungsmodell bereitgestellt werden.
-> 
-> 
+>
+>
 
 System Center DPM sichert Datei- und Anwendungsdaten. Daten, die in DPM gesichert werden, können auf Band, auf Festplatte gespeichert oder in Azure mit Microsoft Azure Backup gesichert werden. DPM interagiert mit Azure Backup wie folgt:
 
@@ -66,16 +66,16 @@ So erstellen Sie einen Recovery Services-Tresor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
-   
+
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
-   
+
     Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 3. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
-   
+
     ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
-   
+
     Das Blatt „Recovery Services-Tresor“ wird geöffnet, und Sie werden aufgefordert, **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** anzugeben.
-   
+
     ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
 5. Klicken Sie auf **Abonnement** , um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
@@ -91,9 +91,9 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
 1. Wählen Sie Ihren Tresor aus, um das Tresordashboard und das Blatt „Einstellungen“ zu öffnen. Sollte das Blatt **Einstellungen** nicht geöffnet werden, klicken Sie im Tresordashboard auf **Alle Einstellungen**.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen. Wählen Sie auf dem Blatt **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
-   
+
     ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
-   
+
     Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
 ### <a name="2-download-vault-credentials"></a>2. Herunterladen der Tresoranmeldedaten
@@ -106,10 +106,10 @@ Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem
 1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
 2. Öffnen Sie den Recovery Services-Tresor, bei dem Sie den DPM-Computer registrieren möchten.
 3. Blatt „Einstellungen“ wird standardmäßig geöffnet. Wenn es geschlossen ist, klicken Sie auf dem Tresordashboard auf **Einstellungen** , um das Einstellungenblatt zu öffnen. Klicken Sie im Blatt „Einstellungen“ auf **Eigenschaften**.
-   
+
     ![Tresorblatt öffnen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 4. Klicken Sie auf der Seite „Eigenschaften“ unter **Sicherungsanmeldeinformationen** auf **Herunterladen**. Das Portal generiert die Datei mit Tresoranmeldeinformationen, die zum Download zur Verfügung gestellt wird.
-   
+
     ![Download](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
 Das Portal generiert Tresoranmeldeinformationen mit einer Kombination aus dem Tresornamen und dem aktuellen Datum. Klicken Sie auf **Speichern**, um die Tresoranmeldeinformationen in den Downloadordner des lokalen Kontos herunterzuladen. Sie können auch im Menü „Speichern“ die Option „Speichern unter“ auswählen, um einen anderen Speicherort anzugeben. Es dauert bis zu einer Minute, bis die Datei generiert ist.
@@ -124,45 +124,45 @@ Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (W
 
 1. Öffnen Sie den Recovery Services-Tresor, bei dem Sie den DPM-Computer registrieren möchten.
 2. Blatt „Einstellungen“ wird standardmäßig geöffnet. Wenn es geschlossen ist, klicken Sie auf **Einstellungen** , um das Blatt mit den Einstellungen zu öffnen. Klicken Sie im Blatt „Einstellungen“ auf **Eigenschaften**.
-   
+
     ![Tresorblatt öffnen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Klicken Sie auf der Seite „Einstellungen“ unter **Azure Backup-Agent** auf **Herunterladen**.
-   
+
     ![Download](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
-   
+
    Sobald der Agent heruntergeladen ist, doppelklicken Sie auf „MARSAgentInstaller.exe“, um die Installation des Azure Backup-Agents zu starten. Wählen Sie den Installationsordner und den Ablageordner aus, der für den Agent erforderlich ist. Der verfügbare Speicherplatz am angegebenen Speicherort muss mindestens 5 % der Sicherungsdaten betragen.
 4. Wenn Sie einen Proxyserver für die Verbindung mit dem Internet verwenden, geben Sie im Bildschirm **Proxykonfiguration** die Details des Proxyservers ein. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie in diesem Bildschirm die Informationen zum Benutzernamen und zum Kennwort ein.
 5. Der Azure Backup-Agent installiert .NET Framework 4.5 und Windows PowerShell (falls noch nicht verfügbar), um die Installation abzuschließen.
 6. Sobald der Agent installiert ist, **Schließen** Sie das Fenster.
-   
+
    ![Schließen](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 7. Zum **Registrieren des DPM-Servers** klicken Sie im Tresor auf der Registerkarte **Verwaltung** auf **Online**. Wählen Sie dann **Registrieren**. Der Registrierungssetup-Assistent wird geöffnet.
 8. Wenn Sie einen Proxyserver für die Verbindung mit dem Internet verwenden, geben Sie im Bildschirm **Proxykonfiguration** die Details des Proxyservers ein. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie in diesem Bildschirm die Informationen zum Benutzernamen und zum Kennwort ein.
-   
+
     ![Proxykonfiguration](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
 9. Suchen Sie im Bildschirm für die Tresoranmeldeinformationen nach der zuvor heruntergeladenen Datei mit den Tresoranmeldeinformationen, und wählen Sie sie aus.
-   
+
     ![Tresoranmeldeinformationen](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
-   
+
     Die Datei mit den Tresoranmeldeinformationen gilt nur für 48 Stunden (nachdem sie aus dem Portal heruntergeladen wurde). Wenn in diesem Bildschirm Fehler auftreten (z. B. „Datei mit Tresoranmeldeinformationen abgelaufen“), melden Sie sich beim Azure-Portal an, und laden Sie die Datei mit den Tresoranmeldeinformationen erneut herunter.
-   
+
     Stellen Sie sicher, dass die Datei mit den Tresoranmeldeinformationen an einem Speicherort verfügbar ist, der für die Setupanwendung zugänglich ist. Wenn Zugriffsfehler auftreten, kopieren Sie die Datei mit den Tresoranmeldeinformationen in einen temporären Speicherort auf diesem Computer, und wiederholen Sie den Vorgang.
-   
+
     Wenn ein Fehler wegen ungültiger Tresoranmeldeinformationen angezeigt wird (z. B. „Ungültige Tresoranmeldeinformationen angegeben“), ist die Datei entweder beschädigt oder enthält nicht die aktuellen Anmeldeinformationen, die dem Wiederherstellungsdienst zugeordnet sind. Wiederholen Sie den Vorgang, nachdem Sie eine neue Datei mit Tresoranmeldeinformationen vom Portal heruntergeladen haben. Dieser Fehler tritt i.d R. auf, wenn der Benutzer im Azure-Portal in schneller Folge auf die Option **Tresoranmeldedaten herunterladen** klickt. In diesem Fall ist nur die zweite Datei mit Tresoranmeldeinformationen gültig.
 10. Um die Nutzung der Netzwerkbandbreite während Arbeitszeit und arbeitsfreien Stunden zu steuern, können Sie im Bildschirm **Einstellung für die Bandbreiteneinschränkung** die Grenzwerte der Bandbreitennutzung festlegen und Arbeitszeit und arbeitsfreie Stunden definieren.
-    
+
     ![Einstellung für die Bandbreiteneinschränkung](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 11. Wechseln Sie im Bildschirm **Einstellungen für den Wiederherstellungsordner** zu dem Ordner, in dem die aus Azure heruntergeladenen Dateien vorübergehend bereitgestellt werden.
-    
+
     ![Einstellungen für den Wiederherstellungsordner](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 12. Im Bildschirm **Verschlüsselungseinstellung** können Sie entweder eine Passphrase generieren oder eine Passphrase angeben (mindestens 16 Zeichen). Vergessen Sie nicht, die Passphrase an einem sicheren Speicherort zu speichern.
-    
+
     ![Verschlüsselung](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
-    
+
     > [!WARNING]
     > Wenn die Passphrase verloren geht oder vergessen wird, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Der Endbenutzer besitzt die Verschlüsselungspassphrase, und Microsoft kann nicht auf die vom Endbenutzer verwendete Passphrase zugreifen. Speichern Sie die Datei an einem sicheren Speicherort, da sie bei einem Wiederherstellungsvorgang benötigt wird.
-    > 
-    > 
+    >
+    >
 13. Nach dem Klicken auf die Schaltfläche **Registrieren** wird der Computer erfolgreich beim Tresor registriert, und Sie können mit der Sicherung in Microsoft Azure beginnen.
 14. Bei Verwendung von Data Protection Manager können Sie die während des Registrierungsworkflows angegebenen Einstellungen ändern, indem Sie auf der Registerkarte **Verwaltung** unter **Online** auf die Option **Konfigurieren** klicken.
 
@@ -195,12 +195,11 @@ Diese werden nicht unterstützt:
 
 > [!NOTE]
 > Ab System Center 2012 DPM mit SP1 können Sie Workloads, die von DPM geschützt werden, in Azure mithilfe von Microsoft Azure Backup sichern.
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

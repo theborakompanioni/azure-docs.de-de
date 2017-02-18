@@ -1,5 +1,5 @@
 ---
-title: "Docker-Vorgänge in einer Containerregistrierung | Microsoft Docs"
+title: Docker-Images in der Azure-Containerregistrierung | Microsoft-Dokumentation
 description: "Push- und Pullübertragung von Docker-Images an eine Azure-Containerregistrierung mit der Docker CLI"
 services: container-registry
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
 translationtype: Human Translation
-ms.sourcegitcommit: aa4b960ed75b5a4702317bf557b4588e7a54fa0e
-ms.openlocfilehash: 923e1a045062a817dd6726dfce94485be7211ca2
+ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
+ms.openlocfilehash: df15eebf0052aa4713263a810df605fa1016c306
 
 ---
 # <a name="push-your-first-image-to-a-container-registry-using-the-docker-cli"></a>Übertragen des ersten Image in eine Containerregistrierung mit der Docker CLI
@@ -118,6 +118,6 @@ Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie mit der 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

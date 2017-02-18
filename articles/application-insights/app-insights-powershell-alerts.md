@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4edd2696c9a5709ded6e2a3e352090775335f0d2
-ms.openlocfilehash: 710663e122bdebff575c762a501a0d261056e1bc
+ms.sourcegitcommit: 80e2ac4235492d727e2034f37f9a85eb2873625c
+ms.openlocfilehash: f479ae38e446c3404592901c416990ab6e39126b
 
 
 ---
@@ -81,7 +81,7 @@ Die GUID ist die Abonnement-ID (nicht der Instrumentierungsschlüssel der Anwend
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>Beispiel 2
-Ich habe eine Anwendung, in der ich mit [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) eine Metrik namens „salesPerHour“ melde. Eine E-Mail an meine Kollegen senden, wenn "salesPerHour" gemittelt über 24 Stunden unter 100 fällt.
+Ich habe eine Anwendung, in der ich mit [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) eine Metrik namens „salesPerHour“ melde. Eine E-Mail an meine Kollegen senden, wenn "salesPerHour" gemittelt über 24 Stunden unter 100 fällt.
 
     Add-AlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -108,19 +108,19 @@ Dieselbe Regel kann für die Metrik verwendet werden, die mit dem [Messparameter
 | `clientPerformance.total.value` |Browser-Seitenladezeit |Zeit ab der Benutzeranforderung, bis DOM, Stylesheets, Skripts und Bilder geladen werden. |
 | `performanceCounter.available_bytes.value` |Verfügbarer Arbeitsspeicher |Physischer Arbeitsspeicher, der sofort für einen Prozess oder für die Nutzung durch das System verfügbar ist. |
 | `performanceCounter.io_data_bytes_per_sec.value` |E/A-Rate für Prozess |Gesamtanzahl von pro Sekunde in Dateien, im Netzwerk und auf Geräten gelesenen und geschriebenen Bytes. |
-| `performanceCounter.number_of_exceps_thrown_per_sec` |Ausnahmerate |Pro Sekunde ausgelöste Ausnahmen. |
+| `performanceCounter.number_of_exceps_thrown_per_sec.value` |Ausnahmerate |Pro Sekunde ausgelöste Ausnahmen. |
 | `performanceCounter.percentage_processor_time.value` |Prozess-CPU |Der Prozentsatz der verstrichenen Zeit für alle Prozessthreads, die vom Prozessor zur Ausführung von Anweisungen für den Anwendungsprozess verwendet wird. |
 | `performanceCounter.percentage_processor_total.value` |Prozessorzeit |Der Prozentsatz der Zeit, die der Prozessor nicht im Leerlauf in Threads verbringt. |
 | `performanceCounter.process_private_bytes.value` |Private Bytes für Prozess |Speicher, der exklusiv den überwachten Anwendungsprozessen zugewiesen ist. |
 | `performanceCounter.request_execution_time.value` |Ausführungsdauer für ASP.NET-Anforderungen |Ausführungszeit der aktuellen Anforderung. |
 | `performanceCounter.requests_in_application_queue.value` |ASP.NET-Anforderungen in Ausführungswarteschlange |Länge der Anwendungsanforderungswarteschleife. |
-| `performanceCounter.requests_per_sec` |ASP.NET-Anforderungsrate |Rate aller Anforderungen an die Anwendung pro Sekunde von ASP.NET. |
+| `performanceCounter.requests_per_sec.value` |ASP.NET-Anforderungsrate |Rate aller Anforderungen an die Anwendung pro Sekunde von ASP.NET. |
 | `remoteDependencyFailed.durationMetric.count` |Abhängigkeitsfehler |Anzahl der Aufrufe mit Fehlern von der Serveranwendung an externe Ressourcen. |
 | `request.duration` |Serverantwortzeit |Zeit zwischen dem Empfang einer HTTP-Anforderung und dem Abschluss des Sendevorgangs der Antwort. |
 | `request.rate` |Anforderungsrate |Rate aller Anforderungen an die Anwendung pro Sekunde. |
 | `requestFailed.count` |Anforderungsfehler |Anzahl von HTTP-Anforderungen, die als Ergebnis Antwortcode >= 400 hatten. |
 | `view.count` |Seitenaufrufe |Anzahl der Clientbenutzeranforderungen für eine Webseite. Synthetischer Datenverkehr wird herausgefiltert. |
-| {benutzerdefinierter Metrikname} |{Ihr Metrikname} |Der von [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) oder im [Messparameter eines Trackingaufrufs](app-insights-api-custom-events-metrics.md#properties) gemeldete Metrikwert. |
+| {benutzerdefinierter Metrikname} |{Ihr Metrikname} |Der von [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) oder im [Messparameter eines Trackingaufrufs](app-insights-api-custom-events-metrics.md#properties) gemeldete Metrikwert. |
 
 Die Metriken werden von verschiedenen Telemetriemodulen gesendet:
 
@@ -142,6 +142,6 @@ Sie können [Ihre Reaktion auf eine Warnung automatisieren](../monitoring-and-di
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

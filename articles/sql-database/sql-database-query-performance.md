@@ -1,5 +1,5 @@
 ---
-title: "Query Performance Insight für Azure SQL-Datenbank"
+title: Einblicke in die Abfrageleistung der Azure SQL-Datenbank | Microsoft-Dokumentation
 description: "Mit der Überwachung der Abfrageleistung werden für eine Azure SQL-Datenbank die Abfragen mit der höchsten CPU-Auslastung identifiziert."
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: ddb43393695ae74711bea0ff66b644ddd7787571
+ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
+ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
 
 
 ---
@@ -32,7 +32,6 @@ Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine a
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Query Performance Insight ist nur unter Azure SQL-Datenbank V12 verfügbar.
 * Um Query Performance Insight nutzen zu können, muss der [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx) für Ihre Datenbank aktiv sein. Wenn der Abfragespeicher nicht ausgeführt wird, werden Sie vom Portal zum Aktivieren aufgefordert.
 
 ## <a name="permissions"></a>Berechtigungen
@@ -229,6 +228,6 @@ Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erh
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 
