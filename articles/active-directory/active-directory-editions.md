@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b241d70ab7c7e8468a3f358fef5af47a89d42e56
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 8dd4c5ab11c43ca09085004ee4dce3e616b19d8e
 
 
 ---
@@ -377,7 +377,7 @@ Neben den allgemein verfügbaren Funktionen der Free, Basic und Premium Editione
 * [Zertifikatbasierte Authentifizierung auf iOS](active-directory-certificate-based-authentication-ios.md)
 * [Zertifikatbasierte Authentifizierung auf Android](active-directory-certificate-based-authentication-android.md)
 
-## <a name="whats-next"></a>Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md)
 * [Hinzufügen Ihres Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md)
 * [Anzeigen Ihrer Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)

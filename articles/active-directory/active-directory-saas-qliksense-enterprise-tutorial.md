@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: ce18993832ce4953a1c3b21707206cdd06580edd
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: 00dcedb09ea63b4337b2b730746fb2f5a1f27e64
 
 
 ---
@@ -183,7 +183,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     
     d. Geben Sie im Feld **SAML entity ID**den gleichen Wert wie im Feld „SAML host URI“ ein.
     
-    e. Unter **SAML IdP metadata** (SAML-IdP-Metadaten) wird die Datei gewählt, die Sie zuvor im Abschnitt **Edit Federation Metadata from Azure AD Configuration** (Verbundmetadaten der Azure AD-Konfiguration bearbeiten) bearbeitet haben.  **Vor dem Hochladen der IdP-Metadaten muss die Datei bearbeitet werden** , um Informationen zu entfernen und so den richtigen Ablauf zwischen Azure AD und dem Qlik Sense-Server sicherzustellen.  **Verwenden Sie die obige Anleitung, falls Sie die Datei noch bearbeiten müssen.**   Wenn die Datei bearbeitet wurde, können Sie auf die Schaltfläche zum Durchsuchen klicken und die bearbeitete Metadatendatei auswählen, um sie für die Konfiguration des virtuellen Proxys hochzuladen.
+    e. Unter **SAML IdP metadata** (SAML-IdP-Metadaten) wird die Datei gewählt, die Sie zuvor im Abschnitt **Edit Federation Metadata from Azure AD Configuration** (Verbundmetadaten der Azure AD-Konfiguration bearbeiten) bearbeitet haben.  **Vor dem Hochladen der IdP-Metadaten muss die Datei bearbeitet werden** , um Informationen zu entfernen und so den richtigen Ablauf zwischen Azure AD und dem Qlik Sense-Server sicherzustellen.  **Verwenden Sie die obige Anleitung, falls Sie die Datei noch bearbeiten müssen.**  Wenn die Datei bearbeitet wurde, können Sie auf die Schaltfläche zum Durchsuchen klicken und die bearbeitete Metadatendatei auswählen, um sie für die Konfiguration des virtuellen Proxys hochzuladen.
     
     f. Geben Sie den Attributnamen oder den Schemaverweis für das SAML-Attribut ein, das für die **UserID** steht, die von Azure AD an den Qlik Sense-Server gesendet wird.  Informationen zum Schemaverweis sind auf den Azure-App-Bildschirmen zur Post-Konfiguration verfügbar.  Geben Sie zur Verwendung des name-Aattributs **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name** ein.
     
@@ -202,7 +202,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     
     ![QlikSense][qs13]
     
-    a. Unter „Host white list“ sind die Hostnamen angegeben, die akzeptiert werden, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt wird.  **Geben Sie den Hostnamen ein, der von Benutzern angegeben werden muss, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt werden soll.**  Der Hostname ist der gleiche Wert wie der SAML-Host-URI ohne „https://“.
+    a. Unter „Host white list“ sind die Hostnamen angegeben, die akzeptiert werden, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt wird.  **Geben Sie den Hostnamen ein, der von Benutzern angegeben werden muss, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt werden soll.** Der Hostname ist der gleiche Wert wie der SAML-Host-URI ohne „https://“.
 15. Klicken Sie auf die Schaltfläche „Apply“.
     
     ![QlikSense][qs14]
@@ -375,6 +375,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Qlik Sense Enterprise“ klicken, 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

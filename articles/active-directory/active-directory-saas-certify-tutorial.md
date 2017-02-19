@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e250fcd488f75f88122407b0ed5ffb1e68d684d2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c36bea632f232e4026609e546a59d246df433425
 
 
 ---
@@ -117,7 +117,7 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
     a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Weiter**.
-2. Wenden Sie sich unter support@certify.com. Hängen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail-Nachricht an, und teilen Sie dem Certify-Team die Metadaten-URLs (Entitäts-ID, Anmelde-URL und Abmelde-URL für SSO) zum Einrichten von SSO auf seiner Seite mit.
+2. Wenden Sie sich unter support@certify.com an das Supportteam von Certify, um SSO für Ihre Anwendung konfigurieren zu lassen. Hängen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail-Nachricht an, und teilen Sie dem Certify-Team die Metadaten-URLs (Entitäts-ID, Anmelde-URL und Abmelde-URL für SSO) zum Einrichten von SSO auf seiner Seite mit.
 3. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -234,6 +234,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Certify“ klicken, sollten Sie au
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

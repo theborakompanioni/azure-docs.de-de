@@ -13,32 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2016
+ms.date: 02/06/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: de0de775c551e5b7b7f5c42d09a40b35a282f891
+ms.sourcegitcommit: ae4961611195c1574f5b94edbca74e1f182b4361
+ms.openlocfilehash: eb0b428f84dc16abd5cfee73dc8e4191698ebdd6
 
 
 ---
 # <a name="what-is-microsoft-azure-active-directory-licensing"></a>Was ist Microsoft Azure Active Directory-Lizenzierung?
-## <a name="description"></a>Beschreibung
+
+> [!div class="op_single_selector"]
+> * [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
+> * [Klassisches Azure-Portal](active-directory-licensing-what-is.md)
+>
+>
+
+
 Azure Active Directory (Azure AD) ist die IDaaS-Lösung (Identity as a Service) und -Plattform von Microsoft. Azure AD wird in einer Reihe von funktionalen und technischen Versionen angeboten. Diese reichen von Azure AD Free, die mit anderen Microsoft-Diensten wie Office 365, Dynamics, Microsoft Intune und Azure (Azure AD generiert keine Nutzungsgebühren in diesem Modus) verfügbar ist, bis hin zu kostenpflichtigen Versionen von Azure AD wie Enterprise Mobility Suite (EMS), Azure AD Premium und Basic sowie Azure Multi-Factor Authentication (MFA). Wie bei vielen der Microsoft-Onlinedienste werden die meisten kostenpflichtigen Versionen von Azure AD über Berechtigungen pro Benutzer bereitgestellt, wie auch in Office 365, Microsoft Intune und Azure AD. In diesen Fällen entspricht der Erwerb des Diensts einem oder mehreren Abonnements, und jedes Abonnement umfasst eine im Voraus bezahlte Anzahl von Lizenzen in Ihrem Mandanten. Berechtigungen pro Benutzer werden durch Lizenzzuweisung erreicht und erstellen eine Verknüpfung zwischen dem Benutzer und dem Produkt, sodass die Komponenten des Diensts für den Benutzer aktiviert werden und eine der vorausbezahlten Lizenzen nutzt wird.
 
 [Testen Sie Azure AD Premium jetzt.](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 
 > [!NOTE]
 > Das Azure AD-Verwaltungsportal ist Teil des klassischen Azure-Portals. Zwar ist für die Verwendung von Azure AD der Erwerb von Azure nicht erforderlich, für den Zugriff auf dieses Portal wird aber ein aktives Azure-Abonnement oder ein [Azure-Testabonnement](https://azure.microsoft.com/pricing/free-trial/)benötigt.
-> 
-> 
+>
+>
 
 Einen umfassenden Überblick über die Azure AD-Dienstfunktionen finden Sie unter [Was ist Azure AD?](active-directory-whatis.md).
 [Erfahren Sie mehr über Azure AD-Servicelevel](https://azure.microsoft.com/support/legal/sla/)
 
 > [!NOTE]
 > Nutzungsbasierte Abonnements von Azure sind anders: Sie werden zwar auch in Ihrem Verzeichnis dargestellt, diese Abonnements ermöglichen jedoch das Erstellen von Azure-Ressourcen und deren Abstimmung auf Ihre Zahlungsweise. In diesem Fall ist KEINE Lizenzanzahl mit dem Abonnement verknüpft. Die Zuordnung von Benutzern zum Abonnement und der Benutzerzugriff zum Verwalten von Abonnementressourcen erfolgt durch die Erteilung von Berechtigungen zum Verarbeiten von Azure-Ressourcen, die dem Abonnement zugeordnet sind.
-> 
-> 
+>
+>
 
 ## <a name="how-does-azure-ad-licensing-work"></a>Wie funktioniert die Lizenzierung von Azure AD?
 Lizenzbasierte (berechtigungsbasierte) Azure AD-Dienste funktionieren durch die Aktivierung eines Abonnements im Azure AD-Verzeichnis/-Dienstmandanten. Sobald das Abonnement aktiv ist, können Dienstfunktionen von Verzeichnis-/Dienstadministratoren verwaltet und von lizenzierten Benutzern verwendet werden.
@@ -51,10 +58,10 @@ Im Allgemeinen werden Azure AD-Abonnementinformationen über das klassische Azur
 
 > [!IMPORTANT]
 > Azure AD Premium- und Basic-Abonnements sowie Enterprise Mobility Suite-Abonnements sind auf ihre bereitgestellten Verzeichnisse/Mandanten beschränkt. Abonnements können nicht zwischen Verzeichnissen aufgeteilt oder verwendet werden, um Benutzern Berechtigungen in anderen Verzeichnissen zu erteilen. Das Verschieben eines Abonnements zwischen Verzeichnissen ist möglich, erfordert jedoch das Einreichen eines Supporttickets oder im Fall von direkten Käufen die Kündigung und den erneuten Erwerb.
-> 
+>
 > Beim Kauf von Azure AD oder Enterprise Mobility Suite über ein Abonnement mit Volumenlizenzierung erfolgt die Aktivierung automatisch, wenn die Vereinbarung andere Microsoft Online-Dienste wie Office 365 enthält.
-> 
-> 
+>
+>
 
 Kostenpflichtige Azure AD-Funktionen decken das gesamte Verzeichnis ab. Beispiele:
 
@@ -80,8 +87,8 @@ Dies sind einige bewährte Methoden:
 
 > [!NOTE]
 > Azure AD unterstützt "externe Benutzer". Dies sind Benutzerkonten in einer Instanz von Azure AD, die mit einem Microsoft-Konto (MSA) oder einer Azure AD-Identität aus einem anderen Verzeichnis erstellt wurden. Während diese Funktion in alle Organisationsdienste von Microsoft implementiert werden soll, werden diese Konten noch nicht in allen Diensten unterstützt. Beispielsweise unterstützt das Office 365-Verwaltungsportal derzeit diese Benutzer nicht. Daher können externe Benutzer mit Microsoft-Konten nicht auf das Office 365-Verwaltungsportal zugreifen, während externe Benutzer aus anderen Azure AD-Verzeichnissen ignoriert werden. Im letzteren Fall kann nur auf das lokale Konto des Benutzers, das Azure AD- oder Office 365-Verzeichnis, in dem der Benutzer ursprünglich erstellt wurde, über diese Dienste zugegriffen werden.
-> 
-> 
+>
+>
 
 Wie erwähnt, gibt es für Azure AD verschiedene kostenpflichtige Versionen. Diese Versionen weisen geringfügige Unterschiede in ihrer Kaufverfügbarkeit auf:
 
@@ -154,7 +161,6 @@ Jetzt sind Sie möglicherweise bereit, einige Funktionen von Azure AD Premium zu
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
