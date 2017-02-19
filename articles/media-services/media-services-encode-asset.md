@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: ea3d67f7e73f9e1fb716e9c5cdd4873b0b7dddd4
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 6aecea32361166d363a412b4e8f2b01d421da5cf
 
 
 ---
@@ -29,10 +29,10 @@ Bei Codecs handelt es sich um die Software, die die Algorithmen für die Komprim
 
 Media Services bietet dynamische Paketerstellung zum Übermitteln Ihrer MP4-Dateien mit adaptiver Bitrate oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG-DASH, HLS, Smooth Streaming), ohne dass Sie diese Streamingformate erneut packen müssen.
 
-Um die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md)nutzen zu können, müssen Sie folgende Schritte ausführen:
-
-* Codieren Ihrer Zwischendatei (Quelle) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate (die Codierungsschritte werden weiter unten in diesem Lernprogramm beschrieben)
-* Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Bereitstellung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-portal-manage-streaming-endpoints.md).
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. Um die [dynamische Paketerstellung](media-services-dynamic-packaging-overview.md)nutzen zu können, müssen Sie folgende Schritte ausführen:
+>
+>Codieren Sie Ihre Quelldatei außerdem in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate. (Die Codierungsschritte werden weiter unten in diesem Tutorial beschrieben.)
 
 Media Services unterstützt die folgenden On-Demand-Encoder, die in diesem Artikel beschrieben werden:
 
@@ -54,9 +54,9 @@ Beachten Sie, dass jedes Media Services-Konto standardmäßig je eine aktive Cod
 Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
 
 ### <a name="input-and-output-metadata"></a>Eingabe- und Ausgabemetadaten
-Die Eingabemetadaten für den Encoder werden [hier](http://msdn.microsoft.com/library/azure/dn783120.aspx)beschrieben.
+Die Eingabemetadaten für den Encoder werden [hier](media-services-input-metadata-schema.md)beschrieben.
 
-Die Ausgabemetadaten für den Encoder werden [hier](http://msdn.microsoft.com/library/azure/dn783217.aspx)beschrieben.
+Die Ausgabemetadaten für den Encoder werden [hier](media-services-output-metadata-schema.md)beschrieben.
 
 ### <a name="generate-thumbnails"></a>Generieren von Miniaturansichten
 Informationen finden Sie unter [Generieren von Miniaturansichten mithilfe von Media Encoder Standard](media-services-advanced-encoding-with-mes.md#thumbnails).
@@ -98,6 +98,6 @@ Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjek
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

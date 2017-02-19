@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 4cc2906d19562fc420d92ea0f3097a972acc45b9
-ms.openlocfilehash: dfacb95f816c45413b292c93c13d0e37b7ce517e
+ms.sourcegitcommit: c3d96d11894f0009db004b1089c05559cafd2d43
+ms.openlocfilehash: ee79612cc30f1dfefcf7dcd8af7aed7836dd528c
 
 
 ---
@@ -156,12 +156,13 @@ Data Factory verwendet standardmäßig eine einzelne Cloud-DMU, um eine einzelne
 Für die **cloudDataMovementUnits**-Eigenschaft **sind folgende Werte zulässig**: 1 (Standard), 2, 4 und 8. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster.
 
 > [!NOTE]
-> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert „8“ und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien mit einer Größe von jeweils mindestens 16 MB aus Blob Storage/Data Lake Store/Amazon S3 in Blob Storage/Data Lake Store/Azure SQL-Datenbank kopieren**.
+> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert „8“ und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien mit einer Größe von jeweils mindestens 16 MB aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP in Blob Storage/Data Lake Store/Azure SQL-Datenbank kopieren**.
 >
 >
 
 Informationen zur optimalen Verwendung dieser beiden Eigenschaften sowie zur Erhöhung des Durchsatzes beim Verschieben von Daten finden Sie in den [Beispielen für Anwendungsfälle](#case-study-use-parallel-copy). Das Standardverhalten kann verwendet werden, ohne **parallelCopies** zu konfigurieren. Wenn Sie das Feature konfigurieren und **parallelCopies** zu klein ist, werden mehrere Cloud-DMUs unter Umständen nicht optimal genutzt.  
 
+### <a name="billing-impact"></a>Auswirkungen auf die Abrechnung
 **Wichtig:** Die Berechnung der Gebühren basiert auf der Gesamtdauer des Kopiervorgangs. Wenn ein Kopierauftrag mit einer einzelnen Cloudeinheit bislang eine Stunde gedauert hat und nun mit vier Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus. Ein Beispiel: Angenommen, Sie verwenden vier Cloudeinheiten. Die erste Cloudeinheit benötigt zehn Minuten, die zweite ebenfalls, die dritte fünf Minuten und die vierte ebenfalls fünf Minuten – alles in einer einzelnen Kopieraktivität. Ihnen wird die gesamte Kopierzeit (Datenverschiebungszeit) in Rechnung gestellt. Das sind in diesem Fall 30 Minuten (10 + 10 + 5 + 5). Die Verwendung von **parallelCopies** hat keine Auswirkungen auf die Abrechnung.
 
 ## <a name="staged-copy"></a>gestaffeltem Kopieren
@@ -410,6 +411,6 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

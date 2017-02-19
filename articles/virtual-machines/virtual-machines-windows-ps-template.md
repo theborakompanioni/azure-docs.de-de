@@ -1,288 +1,104 @@
----
-title: Erstellen eines virtuellen Computers mit einer Resource Manager-Vorlage | Microsoft Docs
-description: Verwenden Sie eine Resource Manager-Vorlage und PowerShell, um ganz einfach einen neuen virtuellen Windows-Computer zu erstellen.
-services: virtual-machines-windows
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 19129d61-8c04-4aa9-a01f-361a09466805
-ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 10/06/2016
-ms.author: davidmu
-translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: a094f6dccd93712c2effef60fdac0cea1a68bcb1
+<properties
+  pageTitle="Erstellen eines virtuellen Computers mit einer Resource Manager-Vorlage | Microsoft Docs"
+  description="Verwenden Sie eine Resource Manager-Vorlage und PowerShell, um ganz einfach einen neuen virtuellen Windows-Computer zu erstellen."
+  services="virtual-machines-windows" 
+  documentationcenter=""
+  author="davidmu1"
+  manager="timlt"
+  editor=""
+  tags="azure-resource-manager"/>
+
+<tags
+  ms.assetid="19129d61-8c04-4aa9-a01f-361a09466805"
+  ms.service="virtual-machines-windows"
+  ms.workload="na"
+  ms.tgt_pltfrm="vm-windows"
+  ms.devlang="na"
+  ms.topic="article"
+  ms.date="01/06/2017"
+  ms.author="davidmu"/>
 
 
----
 # <a name="create-a-windows-virtual-machine-with-a-resource-manager-template"></a>Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage
-Dieser Artikel bietet eine Einführung in Azure Resource Manager-Vorlagen und zeigt Ihnen, wie Sie sie mithilfe von PowerShell bereitstellen. Mit dieser Vorlage wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
 
-Die Ausführung der Schritte in diesem Artikel dauert ungefähr 20 Minuten.
+In diesem Artikel wird gezeigt, wie Sie eine Azure Resource Manager-Vorlage mithilfe von PowerShell bereitstellen. Mit dieser [Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json) wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
 
-> [!IMPORTANT]
-> Wenn der virtuelle Computer einer Verfügbarkeitsgruppe angehören soll, fügen Sie ihn bei seiner Erstellung der Gruppe hinzu. Derzeit ist es nicht möglich, einen virtuellen Computer einer Verfügbarkeitsgruppe hinzuzufügen, nachdem er erstellt wurde.
->
->
+Eine ausführliche Beschreibung der Ressource des virtuellen Computers finden Sie unter [Virtuelle Computer in einer Azure Resource Manager-Vorlage](virtual-machines-windows-template-description.md). Weitere Informationen zu allen Ressourcen in einer Vorlage finden Sie unter [Exemplarische Vorgehensweise zu Azure Resource Manager-Vorlagen](../resource-manager-template-walkthrough.md).
 
-## <a name="step-1-create-the-template-file"></a>Schritt 1: Erstellen der Vorlagendatei
-Sie können eine eigene Vorlage mithilfe der Informationen unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)erstellen. Sie können auch Vorlagen bereitstellen, die für Sie aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/)erstellt wurden.
+Das Ausführen der Schritte in diesem Artikel dauert ungefähr fünf Minuten.
 
-1. Öffnen Sie Ihren bevorzugten Text-Editor, und fügen Sie das erforderliche schema-Element und das erforderliche contentVersion-Element ein:
+## <a name="step-1-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
+Unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-  }
-  ```
-
-2. [Parameter](../azure-resource-manager/resource-group-authoring-templates.md#parameters) sind nicht immer erforderlich, ermöglichen aber die Eingabe von Werten, wenn die Vorlage bereitgestellt wird. Fügen Sie das Parameterelement und seine untergeordneten Elemente nach dem ContentVersion-Element hinzu:
-
-  ```json
-  {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminUserName": { "type": "string" },
-      "adminPassword": { "type": "securestring" }
-    },
-  }
-  ```
-
-3. [Variablen](../azure-resource-manager/resource-group-authoring-templates.md#variables) können in einer Vorlage verwendet werden, um die Werte festzulegen, die sich häufig ändern, oder um die Werte festzulegen, die aus einer Kombination von Parameterwerten erstellt werden müssen. Fügen Sie das Variablenelement nach dem Parameterabschnitt hinzu:
-
-  ```json
-  {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminUsername": { "type": "string" },
-      "adminPassword": { "type": "securestring" }
-    },
-    "variables": {
-      "vnetID":"[resourceId('Microsoft.Network/virtualNetworks','myvn1')]",
-      "subnetRef": "[concat(variables('vnetID'),'/subnets/mysn1')]"
-    },
-  }
-  ```
-
-4. [Ressourcen](../azure-resource-manager/resource-group-authoring-templates.md#resources) wie der virtuelle Computer, das virtuelle Netzwerk und das Speicherkonto werden als Nächstes in der Vorlage definiert. Fügen Sie nach dem Variablenabschnitt den Ressourcenabschnitt hinzu:
-
-  ```json
-  {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminUsername": { "type": "string" },
-      "adminPassword": { "type": "securestring" }
-    },
-    "variables": {
-      "vnetID":"[resourceId('Microsoft.Network/virtualNetworks','myvn1')]",
-      "subnetRef": "[concat(variables('vnetID'),'/subnets/mysn1')]"
-    },
-    "resources": [
-      {
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "mystorage1",
-        "apiVersion": "2015-06-15",
-        "location": "[resourceGroup().location]",
-        "properties": { "accountType": "Standard_LRS" }
-      },
-      {
-        "apiVersion": "2016-03-30",
-        "type": "Microsoft.Network/publicIPAddresses",
-        "name": "myip1",
-        "location": "[resourceGroup().location]",
-        "properties": {
-          "publicIPAllocationMethod": "Dynamic",
-          "dnsSettings": { "domainNameLabel": "mydns1" }
-        }
-      },
-      {
-        "apiVersion": "2016-03-30",
-        "type": "Microsoft.Network/virtualNetworks",
-        "name": "myvn1",
-        "location": "[resourceGroup().location]",
-        "properties": {
-          "addressSpace": { "addressPrefixes": [ "10.0.0.0/16" ] },
-          "subnets": [ {
-            "name": "mysn1",
-            "properties": { "addressPrefix": "10.0.0.0/24" }
-          } ]
-        }
-      },
-      {
-        "apiVersion": "2016-03-30",
-        "type": "Microsoft.Network/networkInterfaces",
-        "name": "mync1",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-          "Microsoft.Network/publicIPAddresses/myip1",
-          "Microsoft.Network/virtualNetworks/myvn1"
-        ],
-        "properties": {
-          "ipConfigurations": [ {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'myip1')]"
-              },
-              "subnet": { "id": "[variables('subnetRef')]" }
-            }
-          } ]
-        }
-      },
-      {
-        "apiVersion": "2016-03-30",
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "myvm1",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-          "Microsoft.Network/networkInterfaces/mync1",
-          "Microsoft.Storage/storageAccounts/mystorage1"
-        ],
-        "properties": {
-          "hardwareProfile": { "vmSize": "Standard_A1" },
-          "osProfile": {
-            "computerName": "myvm1",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-          },
-          "storageProfile": {
-            "imageReference": {
-              "publisher": "MicrosoftWindowsServer",
-              "offer": "WindowsServer",
-              "sku": "2012-R2-Datacenter",
-              "version" : "latest"
-            },
-            "osDisk": {
-              "name": "myosdisk1",
-              "vhd": {
-                "uri": "https://mystorage1.blob.core.windows.net/vhds/myosdisk1.vhd"
-              },
-              "caching": "ReadWrite",
-              "createOption": "FromImage"
-            }
-          },
-          "networkProfile": {
-            "networkInterfaces" : [ {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces','mync1')]"
-            } ]
-          }
-        }
-      } ]
-    }
-  ```
-
-  > [!NOTE]
-  > In diesem Artikel wird ein virtueller Computer erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-5. Speichern Sie die Vorlagendatei als *VirtualMachineTemplate.json*.
-
-## <a name="step-2-create-the-parameters-file"></a>Schritt 2: Erstellen der Parameterdatei
-Um Werte für die Ressourcenparameter anzugeben, die in der Vorlage definiert wurden, müssen Sie eine Parameterdatei erstellen, die die Werte enthält, die beim Bereitstellen der Vorlage verwendet werden.
-
-1. Kopieren Sie im Text-Editor diesen JSON-Inhalt in eine neue Datei namens *Parameters.json*:
-
-  ```json
-        {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-            "adminUserName": { "value": "mytestacct1" },
-            "adminPassword": { "value": "mytestpass1" }
-          }
-        }
-  ```
-
-   > [!NOTE]
-   > Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm).
-   >
-   >
-2. Speichern Sie die Parameterdatei.
-
-## <a name="step-3-install-azure-powershell"></a>Schritt 3: Installieren von Azure PowerShell
-Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
-
-## <a name="step-4-create-a-resource-group"></a>Schritt 4: Erstellen einer Ressourcengruppe
+## <a name="step-2-create-a-resource-group"></a>Schritt 2: Erstellen einer Ressourcengruppe
 Alle Ressourcen müssen in einer [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) bereitgestellt werden.
 
 1. Rufen Sie eine Liste mit den verfügbaren Standorten ab, an denen Ressourcen erstellt werden können.
-
-  ```powershell
+   
+  ```powershell   
   Get-AzureRmLocation | sort DisplayName | Select DisplayName
   ```
-2. Ersetzen Sie den Wert von **$locName** durch einen Standort aus der Liste, z.B. **USA, Mitte**. Erstellen Sie die Variable.
 
-  ```powershell
-  $locName = "location name"
+2. Erstellen Sie die Ressourcengruppe am ausgewählten Standort. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen **myResourceGroup** am Standort **USA, Mitte** erstellt:
+
+  ```powershell   
+  New-AzureRmResourceGroup -Name "myResourceGroup" -Location "Central US"
   ```
-
-3. Ersetzen Sie den Wert von **$rgName** durch den Namen der neuen Ressourcengruppe. Erstellen Sie die Variable und die Ressourcengruppe.
-
-  ```powershell
-  $rgName = "resource group name"
-  New-AzureRmResourceGroup -Name $rgName -Location $locName
-  ```
-
+   
   Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
 
-  ```powershell
-  ResourceGroupName : myrg1
+  ```
+  ResourceGroupName : myResourceGroup
   Location          : centralus
   ProvisioningState : Succeeded
   Tags              :
-  ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myrg1
+  ResourceId        : /subscriptions/{subscription-id}/resourceGroups/myResourceGroup
   ```
 
-## <a name="step-5-create-the-resources-with-the-template-and-parameters"></a>Schritt 5: Erstellen von Ressourcen mit der Vorlage und Parametern
-Ersetzen Sie den Wert von **$templateFile** durch den Pfad und Namen der Vorlagendatei. Ersetzen Sie den Wert von **$parameterFile** durch den Pfad und Namen der Parameterdatei. Erstellen Sie die Variablen, und stellen Sie anschließend die Vorlage bereit.
+## <a name="step-3-create-the-resources"></a>Schritt 3: Erstellen der Ressourcen
+Stellen Sie die Vorlage bereit, und geben Sie Parameterwerte an, wenn Sie dazu aufgefordert werden. In diesem Beispiel wird die Vorlage 101-vm-simple-windows in der von Ihnen erstellten Ressourcengruppe bereitgestellt:
 
 ```powershell
-$templateFile = "template file"
-$parameterFile = "parameter file"
-New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -TemplateFile $templateFile `
-  -TemplateParameterFile $parameterFile
+New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json" 
 ```
+Sie werden aufgefordert, den Namen des Administratorkontos auf dem virtuellen Computer, das Kennwort des Kontos und das DNS-Präfix anzugeben.
 
-Folgendes sollte angezeigt werden:
+Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
 
-```powershell
-DeploymentName    : VirtualMachineTemplate
-ResourceGroupName : myrg1
+```
+DeploymentName    : azuredeploy
+ResourceGroupName : myResourceGroup
 ProvisioningState : Succeeded
-Timestamp         : 4/14/2016 8:11:37 PM
+Timestamp         : 12/29/2016 8:11:37 PM
 Mode              : Incremental
 TemplateLink      :
+                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/
+                    101-vm-simple-windows/azuredeploy.json
+                    ContentVersion : 1.0.0.0
 Parameters        :
                     Name             Type                       Value
                     ===============  =========================  ==========
-                    adminUsername    String                     mytestacct1
+                    adminUsername    String                     myAdminUser
                     adminPassword    SecureString
-
+                    dnsLabelPrefix   String                     myDomain
+                    windowsOSVersion String                     2016-Datacenter
 Outputs           :
+                    Name             Type                       Value
+                    ===============  =========================  ===========
+                    hostname         String                     myDomain.centralus.cloudapp.azure.com
+DeploymentDebugLogLevel :
 ```
 
 > [!NOTE]
-> Sie können auch Vorlagen und Parameter aus einem Azure-Speicherkonto bereitstellen. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md).
->
->
+> Sie können auch Vorlagen und Parameter von lokalen Dateien bereitstellen. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../storage/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md).
-* Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Azure-Computern mit Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) lesen.
+* Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

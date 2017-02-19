@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 40874984ca29f6a284270e743b7cf70a396f81d1
+ms.sourcegitcommit: dd281ead7d2c06af98ea0baea31d897b5be0d9d7
+ms.openlocfilehash: 04d8031a4c5f06d56afc1d08d4a4fa5fb50f8a25
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 40874984ca29f6a284270e743b7cf70a396f81d1
 > 
 > 
 
-Azure RemoteApp speichert die Benutzeridentität und -anpassungen über alle Geräte und Sitzungen hinweg. Diese Benutzerdaten werden auf einem benutzer- und sammlungsspezifischen Datenträger gespeichert, der sogenannte Benutzerprofil-Datenträger. Der Datenträger gilt für den Benutzer und stellt sicher, dass er eine einheitliche Umgebung erfährt, unabhängig davon, wo er sich anmeldet. speichert 
+Azure RemoteApp speichert die Benutzeridentität und -anpassungen über alle Geräte und Sitzungen hinweg. Diese Benutzerdaten werden auf einem benutzer- und sammlungsspezifischen Datenträger gespeichert, der sogenannte Benutzerprofil-Datenträger. Der Datenträger gilt für den Benutzer und stellt sicher, dass er eine einheitliche Umgebung erfährt, unabhängig davon, wo er sich anmeldet.
 
 Benutzerprofil-Datenträger sind für den Benutzer vollständig transparent – Benutzer speichern Dokumente in ihrem Dokumentenordner (scheinbar auf einem lokalen Laufwerk), und ändern ihre App-Einstellungen wie gewohnt. Gleichzeitig bleiben alle persönlichen Einstellungen beim Verbinden mit Azure RemoteApp von jedem Gerät aus bestehen. Der Benutzer sieht lediglich seine Daten am selben Ort.
 
@@ -149,6 +149,6 @@ So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspring
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

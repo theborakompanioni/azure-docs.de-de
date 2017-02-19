@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2016
+ms.date: 01/06/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 852d8ee2686e5653f9fe8bb5ec41b22cb1b19048
-ms.openlocfilehash: a9cf9a7e91c21d675f7ae22072fd10794a1295e7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 1cde923ad0aef1ce1c91d1240f7b3e3d3c26e105
 
 
 ---
@@ -44,8 +44,8 @@ Die folgende Tabelle hilft Ihnen bei der Entscheidung, wenn Sie zwischen verschi
 
 * Reservierte Einheiten dienen zur Parallelisierung der gesamten Medienverarbeitung, einschließlich der Indizierung von Aufträgen mit Azure Media Indexer.  Allerdings erfolgt die Indizierung von Aufträgen im Gegensatz zur Codierung mit schnelleren reservierten Einheiten nicht schneller.
 * Bei Verwendung des gemeinsam genutzten Pools, d.h. ohne reservierte Einheiten, haben die Codierungsaufgaben die gleiche Leistung wie S1-RUs. Allerdings können sich die Aufgaben beliebig lange in der Warteschlange befinden, und es wird immer nur maximal eine Aufgabe ausgeführt.
-* Der **S2** -Typ für reservierte Einheiten ist in den folgenden Rechenzentren nicht verfügbar: Brasilien, Süden; Indien, Westen; Indien, Mitte; Indien, Süden.
-* Der **S3** -Typ für reservierte Einheiten ist in den folgenden Rechenzentren nicht verfügbar: Brasilien, Süden; Indien, Westen; Indien, Mitte.
+* Der Typ **S2** für reservierte Einheiten ist in den folgenden Rechenzentren nicht verfügbar: „Brasilien, Süden“ und „Indien, Westen“.
+* Der Typ **S3** für reservierte Einheiten ist im folgenden Rechenzentrum nicht verfügbar: „Indien, Westen“.
 * Die höchste für den 24-Stunden-Zeitraum angegebene Anzahl an Einheiten wird zum Berechnen der Kosten verwendet.
 
 ## <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
@@ -57,7 +57,7 @@ Führen Sie das Skalieren der Medienverarbeitung mit einer dieser Technologien d
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Portal](media-services-portal-scale-media-processing.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -72,6 +72,6 @@ Führen Sie das Skalieren der Medienverarbeitung mit einer dieser Technologien d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

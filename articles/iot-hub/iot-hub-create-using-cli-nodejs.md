@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 01/04/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 39c8c4944ef19379dc04e04a717ab60d305593c4
-ms.openlocfilehash: 08fe56605555342ec14e1628f77d905783fda057
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: 44291ed86775312a894f6acf92260cde76982f27
 
 
 ---
@@ -55,7 +55,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     azure login
    ```
    Verwenden Sie den vorgeschlagenen Webbrowser und Code zum Authentifizieren.
-2. Wenn Sie mehrere Azure-Abonnements besitzen, erhalten Sie durch das Herstellen einer Verbindung mit Azure Zugriff auf alle Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Mit dem folgenden Befehl können Sie die Azure-Abonnements anzeigen und herausfinden, welches Abonnement das Standardabonnement ist:
+2. Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch Herstellen einer Verbindung mit Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Mit dem folgenden Befehl können Sie die Azure-Abonnements anzeigen und herausfinden, welches Abonnement das Standardabonnement ist:
    
    ```
     azure account list 
@@ -67,13 +67,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
     azure account set <subscription name>
    ```
 
-3. Sie können die Ressourcengruppe **exampleResourceGroup** erstellen, wenn Sie über keine verfügen. 
+3. Sie können die Ressourcengruppe **exampleResourceGroup** erstellen, wenn Sie über keine Ressourcengruppe verfügen:
    ```
     azure group create -n exampleResourceGroup -l westus
    ```
 
 > [!TIP]
-> Der Artikel [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle][llnk-CLI-arm] enthält weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Verwalten von Azure-Ressourcen. 
+> Der Artikel [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle][lnk-CLI-arm] enthält weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Verwalten von Azure-Ressourcen. 
 > 
 > 
 
@@ -95,14 +95,14 @@ Um alle für die Erstellung verfügbaren Parameter anzuzeigen, können Sie an de
 ```
 Kurzes Beispiel:
 
- Zum Erstellen des IoT Hubs **exampleIoTHubName** in der Ressourcengruppe **exampleResourceGroup** führen Sie einfach den folgenden Befehl aus:
+ Zum Erstellen des IoT Hubs **exampleIoTHubName** in der Ressourcengruppe **exampleResourceGroup** führen Sie den folgenden Befehl aus:
 
 ```
     azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1 -u 1
 ```
 
 > [!NOTE]
-> Mit diesem Azure-CLI-Befehl wird ein für Sie kostenpflichtiger S1-Standard-IoT Hub hinzugefügt. Sie können den IoT Hub **exampleIoTHubName** mit dem folgenden Befehl löschen: 
+> Mit diesem Azure-CLI-Befehl wird ein für Sie kostenpflichtiger S1-Standard-IoT Hub hinzugefügt. Sie können den IoT Hub **exampleIoTHubName** mit dem folgenden Befehl löschen:
 > 
 > ```
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
@@ -118,7 +118,7 @@ Weitere Informationen zum Entwickeln für IoT Hub finden Sie unter:
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
+* [Verwenden des Azure-Portals zum Verwalten von IoT Hub][lnk-portal]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -133,6 +133,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

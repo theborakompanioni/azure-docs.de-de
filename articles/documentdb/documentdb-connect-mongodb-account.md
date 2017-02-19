@@ -13,16 +13,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 01/09/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 91474f61ab724d3fd7a70c51dcd097fade8953dd
-ms.openlocfilehash: 3789079412932d56be1c9697fc23c56de5afba6f
+ms.sourcegitcommit: 218d41ac352f01a7e03b5b8a1c45e1bf6d5ace28
+ms.openlocfilehash: a3b1289d52207448cebc628466492371d1bf6519
 
 
 ---
 
-# <a name="connect-a-mongodb-app-to-an-documentdb-account-using-a-mongodb-connection-string"></a>Verbinden einer MongoDB-App mit einem Azure DocumentDB-Konto mithilfe einer MongoDB-Verbindungszeichenfolge
+# <a name="connect-a-mongodb-app-to-a-documentdb-account-using-a-mongodb-connection-string"></a>Verbinden einer MongoDB-App mit einem DocumentDB-Konto mithilfe einer MongoDB-Verbindungszeichenfolge
 Erfahren Sie, wie Sie Ihre MongoDB-App mithilfe einer MongoDB-Verbindungszeichenfolge zu einem Azure DocumentDB-Konto hinzufügen. Indem Sie Ihre MongoDB-App mit einer Azure DocumentDB-Datenbank verbinden, können Sie die DocumentDB-Datenbank als Datenspeicher für die MongoDB-App verwenden. 
 
 Dieses Tutorial zeigt zwei Möglichkeiten, um Informationen zur Verbindungszeichenfolge abzurufen:
@@ -86,6 +86,6 @@ Betrachten Sie beispielsweise das Konto in den Informationen zur Verbindungszeic
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 
