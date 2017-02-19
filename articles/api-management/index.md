@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure API Management – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar veröffentlichen. Die Dokumentation zeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen."
+services: api-management
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: api-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: bc1895fc3b10c9fab96a120359e25324a1132a51
-ms.openlocfilehash: cd5342474c551bfb9eb1496ffd67f3b36933f1d8
+ms.sourcegitcommit: 5710f0aeb9af0f5d829c30d4b3e604c0a62afdb5
+ms.openlocfilehash: 09eb558a4e4b32fa6e1094c55f321db8ce008d4d
 
 ---
 # <a name="api-management-documentation"></a>Dokumentation zu API Management
@@ -120,7 +131,7 @@ Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierba
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Andere</h3>
+                        <h3>Sonstige</h3>
                         <p><a href="https://msdn.microsoft.com/library/azure/dn894081">Richtlinien</a></p>
                         <p><a href="https://msdn.microsoft.com/library/azure/mt697540">Vorlagen</a></p>
                     </div>
@@ -130,18 +141,12 @@ Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierba
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/api-management.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu API Management </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

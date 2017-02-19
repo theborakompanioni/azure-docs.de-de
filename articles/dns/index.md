@@ -1,13 +1,25 @@
 ---
+title: "Azure-DNS-Dokumentation – Tutorials, API-Referenz | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie Ihre DNS-Einträge mithilfe von Azure Domain Name System verwalten. Die Dokumentation zeigt, wie Sie DNS-Zonen und -Einträge für Domänennamen einrichten und verwalten."
+services: dns
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: dns
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: e32393348fc26fa4cb0a5221695a9bf8bb4d36e1
+ms.sourcegitcommit: f415cc458e91085ce315ef7ee5755b96bbcfa170
+ms.openlocfilehash: b9608dc3bafeea5faec8e379c67810113b00ffd9
 
 ---
 # <a name="dns-documentation"></a>DNS-Dokumentation
 
-Azure DNS (Domain Name System) ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt.  Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten.
+Hier erfahren Sie, wie Sie Ihre DNS-Einträge mithilfe von Azure Domain Name System (einem Hostingdienst) verwalten. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie DNS-Zonen und -Einträge für Domänennamen einrichten und verwalten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -131,16 +143,10 @@ Azure DNS (Domain Name System) ist ein Hostingdienst für DNS-Domänen, der die 
 </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/dns.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der DNS-Dokumentation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

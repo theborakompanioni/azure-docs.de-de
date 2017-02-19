@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Logic Apps – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Logik-Apps zur übergreifenden Automatisierung und Vereinfachung von Geschäftsworkflows auf lokaler Ebene und in der Cloud entwickeln. Tutorials, Vorlagen und API-Referenzen."
+services: logic-apps
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: logic-apps
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: abebff15a5385bfc3ef046923927bb74a6ee6ace
-ms.openlocfilehash: c19b7e4ecfa67f54f34fac11dc6d23a843e27232
+ms.sourcegitcommit: 2c45896d603913d21bebb5f5a157bb60ad9e73ac
+ms.openlocfilehash: f85fbd5c9cce81c5934abce25ccd343810bcc4dd
 
 ---
+
 # <a name="logic-apps-documentation"></a>Dokumentation zu Logic Apps
 
 Hier erfahren Sie, wie Sie Logik-Apps entwickeln, die skalierbare Workflows vereinfachen und in die Cloud integrieren. Anhand von Tutorials, Vorlagen und API-Referenzen wird gezeigt, wie Sie übergreifende automatisierte Geschäftsworkflows für die lokale Ebene und die Cloud entwerfen und bereitstellen.
@@ -150,6 +162,6 @@ Hier erfahren Sie, wie Sie Logik-Apps entwickeln, die skalierbare Workflows vere
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

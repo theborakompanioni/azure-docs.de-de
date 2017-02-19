@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure ExpressRoute – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie in Ihrer lokalen Infrastruktur oder Kollokationsumgebung eine private ExpressRoute-Verbindung mit Microsoft Cloud Services konfigurieren und verwalten.
+services: expressroute
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: expressroute
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: ecb42e7a0abc5a0438bff39bddddac25d005eb77
+ms.sourcegitcommit: 6eb84236ff7814ab7dfade718693060d7e7383b9
+ms.openlocfilehash: a060970a2f2870a40d4925b8eeccf4fec4af1aa4
 
 ---
+
 #<a name="expressroute-documentation"></a>ExpressRoute-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von ExpressRoute in Ihrer lokalen Infrastruktur oder Kollokationsumgebung eine schnelle private Verbindung mit Microsoft Cloud Services konfigurieren und verwalten. Anhand von Tutorials, REST-APIs und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine ExpressRoute-Verbindung konfigurieren und verwalten.
@@ -102,6 +114,6 @@ Hier erfahren Sie, wie Sie mithilfe von ExpressRoute in Ihrer lokalen Infrastruk
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
