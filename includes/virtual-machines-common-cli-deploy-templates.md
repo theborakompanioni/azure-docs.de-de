@@ -40,14 +40,20 @@ Wenn Sie noch kein Azure-Abonnement aber ein MDSN-Abonnement haben, können Sie 
 >
 >
 
-Ihr Konto kann über mehrere Abonnements verfügen. Sie können Ihre Abonnements durch Eingabe von `azure account list` auflisten, was etwa wie folgt aussieht:
+Ihr Konto kann über mehrere Abonnements verfügen. Sie können Ihre Abonnements durch Eingabe von `azure account list`auflisten, was etwa wie folgt aussieht:
 
-```azure cli azure account list info:    Executing command account list data:    Name                              Id                                    Tenant Id                            Current data:    --------------------------------  ------------------------------------  ------------------------------------  ------- data:    Contoso Admin                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  true data:    Fabrikam dev                      xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
+```azurecli
+azure account list
+info:    Executing command account list
+data:    Name                              Id                                    Tenant Id                            Current
+data:    --------------------------------  ------------------------------------  ------------------------------------  -------
+data:    Contoso Admin                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  true
+data:    Fabrikam dev                      xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 data:    Fabrikam test                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 data:    Contoso production                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 ```
 
-You can set the current Azure subscription by typing the following. Use the subscription name or the ID that has the resources you want to manage.
+Sie können das aktuelle Azure-Abonnement durch Eingabe des Folgenden festlegen. Verwenden Sie den Abonnementnamen oder die ID, die über die Ressourcen verfügt, die Sie verwalten möchten.
 
 ```azurecli
 azure account set <subscription name or ID> true
@@ -111,8 +117,8 @@ Zweitens benötigen Sie ein Image. Informationen zur Suche nach einem Image mit 
 | MicrosoftSharePoint |MicrosoftSharePointServer |2013 |1.0.0 |
 | msopentech |Oracle-Database-12c-Weblogic-Server-12c |Standard |1.0.0 |
 | msopentech |Oracle-Database-12c-Weblogic-Server-12c |Enterprise |1.0.0 |
-| MicrosoftSQLServer |SQL 2014 WS2012R2 |Enterprise-Optimized-for-DW |12.0.2430 |
-| MicrosoftSQLServer |SQL 2014 WS2012R2 |Enterprise-Optimized-for-OLTP |12.0.2430 |
+| MicrosoftSQLServer |SQL&2014; WS2012R2 |Enterprise-Optimized-for-DW |12.0.2430 |
+| MicrosoftSQLServer |SQL&2014; WS2012R2 |Enterprise-Optimized-for-OLTP |12.0.2430 |
 | Canonical |UbuntuServer |12.04.5-LTS |12.04.201504230 |
 | Canonical |UbuntuServer |14.04.2-LTS |14.04.201503090 |
 | MicrosoftWindowsServer |Windows Server |2012-Datacenter |3.0.201503 |
@@ -1302,6 +1308,6 @@ Viele weitere Verwendungsbeispiele für die Azure-Befehlszeilenschnittstelle mit
 Weitere Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) und [Erstellen von Anwendungsframeworks mithilfe von Vorlagen](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 
