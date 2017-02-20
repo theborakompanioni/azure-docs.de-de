@@ -1,6 +1,6 @@
 ---
-title: Importieren von Daten in Azure Search mithilfe von Indexern im Azure-Portal | Microsoft Docs
-description: Verwenden Sie den Datenimport-Assistenten von Azure Search im Azure-Portal, um Daten in Azure Blob Storage, Table Stroage, SQL-Datenbank und SQL Server auf virtuellen Azure-Computern zu durchforsten.
+title: "Importieren von Daten in Azure Search über das Portal | Microsoft-Dokumentation"
+description: Verwenden Sie den Datenimport-Assistenten von Azure Search im Azure-Portal, um Azure-Daten aus NoSQL DocumentDB, Blob Storage, Table Storage, SQL-Datenbank und SQL Server auf virtuellen Azure-Computern zu durchforsten.
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 08/29/2016
+ms.date: 02/08/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: c2bf44dc23a3b330994e51317b6b021fab6eef1f
+ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
+ms.openlocfilehash: c03c26d0e5ea2529162262664412f4f8f7e854dc
 
 
 ---
@@ -28,12 +28,14 @@ Im Azure-Portal steht auf dem Azure Search-Dashboard der **Datenimport-Assistent
 
 Intern wird von dem Assistenten ein *Indexer*konfiguriert und aufgerufen, um mehrere Schritte des Indizierungsprozesses zu automatisieren: 
 
-* Herstellen einer Verbindung mit einer externen Datenquelle im aktuellen Azure-Abonnement
-* Automatisches Generieren eines Indexschemas auf der Grundlage der Quelldatenstruktur
-* Erstellen von Dokumenten auf der Grundlage eines aus der Datenquelle abgerufenen Rowsets
-* Hochladen von Dokumenten an den Index in Ihrem Suchdienst
+* Herstellen einer Verbindung mit einer externen Datenquelle im gleichen Azure-Abonnement
+* Generieren eines anpassbaren Indexschemas auf der Grundlage der Quelldatenstruktur
+* Laden von JSON-Dokumenten in einen Index unter Verwendung eines aus der Datenquelle abgerufenen Rowsets
 
 Sie können diesen Workflow mithilfe von Beispieldaten in DocumentDB testen. Eine Anleitung hierzu finden Sie unter [Erste Schritte mit Azure Search im Portal](search-get-started-portal.md) .
+
+> [!NOTE]
+> Starten Sie über das DocumentDB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
 
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>Vom Datenimport-Assistenten unterstützte Datenquellen
 Der Datenimport-Assistent unterstützt die folgenden Datenquellen: 
@@ -41,15 +43,13 @@ Der Datenimport-Assistent unterstützt die folgenden Datenquellen:
 * Azure SQL-Datenbank
 * Relationale SQL Server-Daten auf einem virtuellen Azure-Computer
 * Azure DocumentDB
-* Azure Blob Storage (Vorschau)
-* Azure Table Storage (Vorschau)
+* Azure-Blobspeicher
+* Azure-Tabellenspeicher
 
 Als Eingabe ist ein vereinfachtes Dataset erforderlich. Sie können Daten nur aus einer einzelnen Tabelle, Datenbanksicht oder entsprechenden Datenstruktur importieren. Diese Datenstruktur muss vor dem Ausführen des Assistenten erstellt werden.
 
-Beachten Sie, dass sich einige der Indexer noch in der Vorschauphase befinden. Das bedeutet, dass die Indexer-Definition von der Vorschauversion der API unterstützt wird. Weitere Informationen und Links finden Sie in der [Indexer-Übersicht](search-indexer-overview.md).
-
 ## <a name="connect-to-your-data"></a>Herstellen einer Verbindung mit Ihren Daten
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Servicedashboard. Sie können auf der Navigationsleiste auf **Suchdienste** klicken, um die vorhandenen Dienste des aktuellen Abonnements anzuzeigen. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Servicedashboard. Sie können auf der Navigationsleiste auf **Weitere Dienste** klicken, um nach vorhandenen Suchdiensten des aktuellen Abonnements zu suchen. 
 2. Klicken Sie auf der Befehlsleiste auf **Daten importieren** , um das gleichnamige Blatt zu öffnen.  
 3. Klicken Sie auf **Mit Ihren Daten verbinden** , um eine von einem Indexer verwendete Datenquellendefinition anzugeben. Bei abonnementinternen Datenquellen kann der Assistent Verbindungsinformationen in der Regel erkennen und lesen, was insgesamt den Konfigurationsaufwand minimiert.
 
@@ -57,16 +57,16 @@ Beachten Sie, dass sich einige der Indexer noch in der Vorschauphase befinden. D
 | --- | --- |
 | **Vorhandene Datenquelle** |Wenn Sie in Ihrem Suchdienst bereits Indexer definiert haben, können Sie eine vorhandene Datenquellendefinition für einen weiteren Importvorgang auswählen. |
 | **Azure SQL-Datenbank** |Dienstname, Anmeldeinformationen für einen Datenbankbenutzer mit Leseberechtigung und ein Datenbankname können entweder auf der Seite oder über eine ADO.NET-Verbindungszeichenfolge angegeben werden. Wenn Sie Eigenschaften anzeigen oder anpassen möchten, verwenden Sie die Verbindungszeichenfolgen-Option. <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
-| **SQL Server auf virtuellen Azure-Computern** |Geben Sie einen vollqualifizierten Dienstnamen, eine Benutzer-ID, ein Kennwort und eine Datenbank als Verbindungszeichenfolge an. Um diese Datenquelle verwenden zu können, müssen Sie zuvor ein Zertifikat im lokalen Speicher installieren haben, das die Verbindung verschlüsselt. <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
+| **SQL Server auf virtuellen Azure-Computern** |Geben Sie einen vollqualifizierten Dienstnamen, eine Benutzer-ID, ein Kennwort und eine Datenbank als Verbindungszeichenfolge an. Um diese Datenquelle verwenden zu können, müssen Sie zuvor ein Zertifikat im lokalen Speicher installieren haben, das die Verbindung verschlüsselt. Eine Anleitung finden Sie unter [SQL-VM-Verbindung mit Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Die Tabelle oder Sicht, die das Rowset bereitstellt, muss auf der Seite angegeben werden. Diese Option wird nach erfolgreicher Verbindungsherstellung in einer Dropdownliste angezeigt. |
 | **DocumentDB** |Zu den erforderlichen Angaben gehören das Konto, die Datenbank und die Sammlung. Alle Dokumente in der Sammlung werden in den Index aufgenommen. Sie können eine Abfrage zum Vereinfachen oder Filtern des Rowsets oder eine Abfrage zum Erkennen geänderter Dokumente bei nachfolgenden Datenaktualisierungsvorgängen definieren. |
-| **Azure Blob Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Container. Optional: Wenn zu Gruppierungszwecken für Blobnamen eine virtuelle Benennungskonvention verwendet wird, können Sie den virtuellen Verzeichnisteil des Namens als Ordner unter dem Container angeben. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md) . |
-| **Azure Table Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Tabellenname. Optional können Sie eine Abfrage zum Abrufen einer Teilmenge der Tabellen angeben. Weitere Informationen finden Sie unter [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md) . |
+| **Azure Blob Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Container. Optional: Wenn zu Gruppierungszwecken für Blobnamen eine virtuelle Benennungskonvention verwendet wird, können Sie den virtuellen Verzeichnisteil des Namens als Ordner unter dem Container angeben. Weitere Informationen finden Sie unter [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md). |
+| **Azure Table Storage** |Zu den erforderlichen Angaben gehören das Speicherkonto und ein Tabellenname. Optional können Sie eine Abfrage zum Abrufen einer Teilmenge der Tabellen angeben. Weitere Informationen finden Sie unter [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md). |
 
 ## <a name="customize-target-index"></a>Anpassen des Zielindex
 Vom Dataset wird üblicherweise ein vorläufiger Index abgeleitet. Vervollständigen Sie das Schema, indem Sie Felder hinzufügen, bearbeiten oder löschen. Legen Sie außerdem Attribute auf Feldebene fest, um das Verhalten bei nachfolgenden Suchvorgängen zu bestimmen.
 
 1. Geben Sie unter **Zielindex anpassen** den Namen und einen **Schlüssel** zur eindeutigen Identifizierung der einzelnen Dokumente an. Der Schlüssel muss eine Zeichenfolge sein. Wenn Feldwerte Leerzeichen oder Bindestriche enthalten, müssen unter **Import your data** (Daten importieren) erweiterte Optionen festgelegt werden, um die Prüfung auf diese Zeichen zu unterdrücken.
-2. Überprüfen und überarbeiten Sie die restlichen Felder. Der Feldname und -typ werden meist für Sie ausgefüllt. Sie können den Datentyp ändern.
+2. Überprüfen und überarbeiten Sie die restlichen Felder. Der Feldname und -typ werden meist für Sie ausgefüllt. Der Datentyp kann bis zur Indexerstellung noch geändert werden. Wenn Sie den Typ später ändern möchten, muss der Index neu erstellt werden.
 3. Legen Sie Indexattribute für die einzelnen Felder fest:
    
    * „Abrufbar“ gibt das Feld in Suchergebnissen zurück.
@@ -84,20 +84,30 @@ Vom Dataset wird üblicherweise ein vorläufiger Index abgeleitet. Vervollständ
 1. Geben Sie unter **Import your data**(Daten importieren) einen Namen für den Indexer an. Denken Sie daran, dass der Datenimport-Assistent einen Indexer generiert. Wenn Sie diesen später anzeigen oder bearbeiten möchten, können Sie ihn über das Portal auswählen, anstatt erneut den Assistenten auszuführen. 
 2. Geben Sie den Zeitplan an. Dieser basiert auf der regionalen Zeitzone, in der der Dienst bereitgestellt wird.
 3. Legen Sie erweiterte Optionen zum Angeben von Schwellenwerten an, die bestimmen, ob die Indizierung fortgesetzt werden kann, wenn ein Dokument verworfen wird. Außerdem können Sie angeben, ob Felder vom Typ **Schlüssel** Leerzeichen und Schrägstriche enthalten dürfen.  
+4. Klicken Sie auf **OK**, um den Index zu erstellen und die Daten zu importieren.
 
-## <a name="edit-an-existing-indexer"></a>Bearbeiten eines vorhandenen Indexers
-Doppelklicken Sie im Dashboard des Diensts auf die Kachel „Indexer“, um eine Liste mit allen Indexern einzublenden, die für Ihr Abonnement erstellt wurden. Doppelklicken Sie auf einen der Indexer, um ihn auszuführen, zu bearbeiten oder zu löschen. Sie können während der Indizierung den Index durch einen anderen vorhandenen Index ersetzen, die Datenquelle ändern und Optionen für Fehlerschwellenwerte festlegen.
+Die Indizierung kann im Portal überwacht werden. Während Dokumente geladen werden, steigt die Dokumentanzahl für den definierten Index. Manchmal dauert es einige Minuten, bis die Portalseite die neuesten Aktualisierungen widerspiegelt.
 
-## <a name="edit-an-existing-index"></a>Bearbeiten eines vorhandenen Index
-In Azure Search ist für strukturelle Updates eines Index eine Neuerstellung des Index erforderlich. Dabei wird der Index gelöscht und neu erstellt, und die Daten werden erneut geladen. Zu strukturellen Updates zählen das Ändern des Datentyps und das Umbenennen oder Löschen eines Felds.
-
-Änderungen, für die keine Neuerstellung erforderlich ist, beinhalten das Hinzufügen eines neuen Felds sowie das Ändern von Bewertungsprofilen, Vorschlägen und Sprachanalysen. Weitere Informationen finden Sie unter [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) (Aktualisieren des Index).
+Der Index kann abgefragt werden, sobald alle Dokumente geladen wurden.
 
 ## <a name="query-an-index-using-search-explorer"></a>Abfragen eines Index mit dem Suchexplorer
 
-Das Portal enthält den **Suchexplorer**, mit dem Sie einen Index abfragen können, ohne Code schreiben zu müssen. Sie können den Suchexplorer für jeden Index verwenden.
+Das Portal enthält den **Suchexplorer**, mit dem Sie einen Index abfragen können, ohne Code schreiben zu müssen. Der [Suchexplorer](search-explorer.md) kann für jeden beliebigen Index verwendet werden.
 
-Die Suchumgebung basiert auf Standardeinstellungen, z.B. der [einfachen Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und dem standardmäßigen [searchMode-Abfrageparameter(https://docs.microsoft.com/rest/api/searchservice/search-documents). Ergebnisse werden im JSON-Format zurückgegeben, damit Sie das gesamte Dokument untersuchen können.
+Die Suchumgebung basiert auf Standardeinstellungen, z.B. der [einfachen Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) und dem standardmäßigen [searchMode-Abfrageparameter(https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+
+Ergebnisse werden in einem ausführlichen JSON-Format zurückgegeben, damit Sie das gesamte Dokument untersuchen können.
+
+## <a name="edit-an-existing-indexer"></a>Bearbeiten eines vorhandenen Indexers
+Wie bereits erwähnt erstellt der Datenimport-Assistent einen **Indexer**, den Sie als eigenständiges Konstrukt im Portal ändern können.
+
+Doppelklicken Sie im Dashboard des Diensts auf die Kachel „Indexer“, um eine Liste mit allen Indexern einzublenden, die für Ihr Abonnement erstellt wurden. Doppelklicken Sie auf einen der Indexer, um ihn auszuführen, zu bearbeiten oder zu löschen. Sie können während der Indizierung den Index durch einen anderen vorhandenen Index ersetzen, die Datenquelle ändern und Optionen für Fehlerschwellenwerte festlegen.
+
+## <a name="edit-an-existing-index"></a>Bearbeiten eines vorhandenen Index
+Der Assistent erstellt auch einen **Index**. In Azure Search muss ein Index nach einer strukturellen Aktualisierung neu erstellt werden. Die Neuerstellung umfasst das Löschen des Index, das Neuerstellen des Index unter Verwendung eines überarbeiteten Schemas mit den gewünschten Änderungen sowie das erneute Laden der Daten. Zu strukturellen Updates zählen das Ändern des Datentyps und das Umbenennen oder Löschen eines Felds.
+
+Änderungen, für die keine Neuerstellung erforderlich ist, beinhalten das Hinzufügen eines neuen Felds sowie das Ändern von Bewertungsprofilen, Vorschlägen und Sprachanalysen. Weitere Informationen finden Sie unter [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) (Aktualisieren des Index).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
@@ -113,6 +123,6 @@ Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

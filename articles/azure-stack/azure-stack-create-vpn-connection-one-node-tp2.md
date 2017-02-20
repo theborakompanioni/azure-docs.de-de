@@ -1,6 +1,6 @@
 ---
-title: Create a Site-to-Site VPN connection between two Virtual Networks in different Azure Stack PoC Environments | Microsoft Docs
-description: Step-by-step procedure that will allow a cloud administrator to create a Site-to-Site VPN connection between two one-node POC environments in TP2.
+title: Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in unterschiedlichen Azure Stack-POC-Umgebungen | Microsoft-Dokumentation
+description: "Schrittweise Anleitung für Cloudadministratoren zum Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei POC-Umgebungen mit jeweils einem Knoten in TP2."
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -12,339 +12,345 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/12/2016
+ms.date: 02/08/2017
 ms.author: scottnap
 translationtype: Human Translation
-ms.sourcegitcommit: cb2aa446f95fc399209810c4b8d26ce2256e835e
-ms.openlocfilehash: 30ee41f4c8fc9f64514dee5dfdb9298dc66e8480
+ms.sourcegitcommit: 5104c7996de9dc0597e65be31c28a9aaa1243a90
+ms.openlocfilehash: d324290caf5b5a085a2daf67e541c295dffda732
 
 
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-poc-environments"></a>Create a Site-to-Site VPN connection between two Virtual Networks in different Azure Stack PoC Environments
-## <a name="overview"></a>Overview
-This article shows you how to create a Site-to-Site VPN Connection between two virtual networks in two separate Azure Stack Proof-of-Concept (POC) environments. While you configure the connections, you will learn how VPN gateways in Azure Stack work.
+# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-poc-environments"></a>Erstellen einer Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in unterschiedlichen Azure Stack-POC-Umgebungen
+## <a name="overview"></a>Übersicht
+In diesem Artikel erfahren Sie, wie Sie eine Site-to-Site-VPN-Verbindung zwischen zwei virtuellen Netzwerken in zwei separaten Azure Stack-POC-Umgebungen (Proof of Concept) erstellen. Im Rahmen der Verbindungskonfiguration werden Sie auch mit der Funktionsweise von VPN-Gateways in Azure Stack vertraut gemacht.
 
 > [!NOTE]
-> This document applies specifically to the Azure Stack TP2 POC.
+> Dieses Dokument gilt speziell für den Azure Stack TP2-POC.
 > 
 > 
 
-### <a name="connection-diagram"></a>Connection diagram
-The following diagram shows what the configuration should look like when you’re done:
+### <a name="connection-diagram"></a>Verbindungsdiagramm
+Das folgende Diagramm zeigt die fertige Konfiguration:
 
 ![](media/azure-stack-create-vpn-connection-one-node-tp2/image1.png)
 
-### <a name="before-you-begin"></a>Before you begin
-To complete this configuration, ensure you have the following items before you get started:
+### <a name="before-you-begin"></a>Voraussetzungen
+Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
-* Two Servers that meet the Azure Stack POC hardware requirements defined by the [Azure Stack Deployment Prerequisites](azure-stack-deploy.md), and the other prerequisites defined by that document.
-* The Azure Stack Technical Preview 2 Deployment Package.
+* Zwei Server, die die Azure Stack-POC-Hardwareanforderungen aus den [Azure Stack-Bereitstellungsvoraussetzungen](azure-stack-deploy.md) sowie die anderen Voraussetzungen aus diesem Dokument erfüllen.
+* Das Azure Stack Technical Preview 2-Bereitstellungspaket.
 
-## <a name="deploy-the-poc-environments"></a>Deploy the POC environments
-You will deploy two Azure Stack POC environments to complete this configuration.
+## <a name="deploy-the-poc-environments"></a>Bereitstellen der POC-Umgebungen
+Für diese Konfiguration werden zwei Azure Stack-POC-Umgebungen bereitgestellt.
 
-* For each POC that you deploy, you can follow the deployment instructions detailed in the article [Deploy Azure Stack POC](azure-stack-run-powershell-script.md).
-  Each POC environment in this document is generically referred to as *POC1* and *POC2*.
+* Die einzelnen POC-Umgebungen können auf der Grundlage der Bereitstellungsanleitung aus dem Artikel [Deploy Azure Stack POC](azure-stack-run-powershell-script.md) (Bereitstellen von Azure Stack POC) bereitgestellt werden.
+  Die POC-Umgebungen werden in diesem Dokument generisch als *POC1* und *POC2* bezeichnet.
 
-## <a name="configure-quotas-for-compute-network-and-storage"></a>Configure Quotas for Compute, Network and Storage
-First, you need to configure *Quotas* for compute, network, and storage. These services can be associated with a *Plan*, and then an *Offer* that tenants can subscribe to.
-
-> [!NOTE]
-> You need to do these steps for each Azure Stack POC environment.
-> 
-> 
-
-Creating Quotas for Services has changed from TP1. The steps to create quotas in TP2 can be found at <http://aka.ms/mas-create-quotas>. You can accept the defaults for all quota settings for this exercise.
-
-## <a name="create-a-plan-and-offer"></a>Create a Plan and Offer
-[Plans](azure-stack-key-features.md) are groupings of one or more services. As a provider, you can create plans to offer to your tenants. In turn, your tenants subscribe to your offers to use the plans and services they include.
+## <a name="configure-quotas-for-compute-network-and-storage"></a>Konfigurieren von Compute-, Netzwerk- und Speicherkontingenten
+Konfigurieren Sie zunächst *Kontingente* für Compute, Netzwerk und Speicher. Diese Dienste können einem *Plan* und anschließend einem *Angebot* zugeordnet werden, das von Mandanten abonniert werden kann.
 
 > [!NOTE]
-> You need to perform these steps for each Azure Stack POC environment.
+> Diese Schritte müssen für jede Azure Stack-POC-Umgebung ausgeführt werden.
 > 
 > 
 
-1. First create a Plan. To do this, you can follow the steps in the [Create a Plan](azure-stack-create-plan.md) online article.
-2. Create an Offer following the steps described in [Create an Offer in Azure Stack](azure-stack-create-offer.md).
-3. Log in to the portal as a tenant administrator and [subscribe to the Offer you created](azure-stack-subscribe-plan-provision-vm.md).
+Die Kontingenterstellung hat sich im Vergleich zu TP1 geändert. Eine Kontingenterstellungsanleitung für TP2 finden Sie unter <http://aka.ms/mas-create-quotas>. Für diese Übung können Sie die Standardeinstellungen für alle Kontingenteinstellungen beibehalten.
 
-## <a name="create-the-network-resources-in-poc-1"></a>Create the Network Resources in POC 1
-Now you are going to actually create the resources you need to set up your configuration. The following steps illustrate what you'll be doing. These instructions show how to create resources using the portal, but the same thing can be accomplished using PowerShell.
+## <a name="create-a-plan-and-offer"></a>Erstellen von Plan und Angebot
+[Pläne](azure-stack-key-features.md) sind Gruppen mit mindestens einem Dienst. Als Anbieter können Sie Pläne erstellen und Ihren Mandanten anbieten. Im Gegenzug abonnieren Ihre Mandanten Ihre Angebote, um die Pläne und Dienste, die sie damit enthalten, zu verwenden.
+
+> [!NOTE]
+> Diese Schritte müssen für jede Azure Stack-POC-Umgebung ausgeführt werden.
+> 
+> 
+
+1. Erstellen Sie zunächst einen Plan. Eine entsprechende Anleitung finden Sie in [diesem Onlineartikel](azure-stack-create-plan.md).
+2. Erstellen Sie ein Angebot, wie in [diesem Artikel](azure-stack-create-offer.md) beschrieben.
+3. Melden Sie sich beim Portal als Mandantenadministrator an, und [abonnieren Sie das erstellte Angebot](azure-stack-subscribe-plan-provision-vm.md).
+
+## <a name="create-the-network-resources-in-poc-1"></a>Erstellen der Netzwerkressourcen in POC1
+Als Nächstes erstellen Sie die eigentlichen Ressourcen, die Sie zum Einrichten Ihrer Konfiguration benötigen. Die Vorgehensweise wird in den folgenden Schritten veranschaulicht. In diesen Anweisungen werden die Ressourcen über das Portal erstellt, Sie können aber auch PowerShell verwenden.
 
 ![](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
-### <a name="log-in-as-a-tenant"></a>Log in as a tenant
-A service administrator can log in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [Create a tenant account](azure-stack-add-new-user-aad.md) before you log in.
+### <a name="log-in-as-a-tenant"></a>Anmelden als Mandant
+Ein Dienstadministrator kann sich als Mandant anmelden, um die Pläne, Angebote und Abonnements zu testen, die den Mandanten zur Verfügung stehen. Falls Sie noch kein Mandantenkonto besitzen, [erstellen Sie ein Mandantenkonto](azure-stack-add-new-user-aad.md), bevor Sie sich anmelden.
 
-### <a name="create-the-virtual-network--vm-subnet"></a>Create the virtual network & VM subnet
-1. Log in using a tenant account.
-2. In the Azure portal, click **New**.
+### <a name="create-the-virtual-network--vm-subnet"></a>Erstellen des virtuellen Netzwerks und des VM-Subnetzes
+1. Melden Sie sich mit einem Mandantenkonto an.
+2. Klicken Sie im Azure-Portal auf **Neu**.
    
     ![](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
-3. Select **Networking** from the Marketplace menu.
-4. Click the **Virtual network** item on the menu.
-5. Click **Create** near the bottom of the resource description blade. Enter the following values into the appropriate fields according to this table.
+3. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+4. Klicken Sie im Menü auf **Virtuelles Netzwerk**.
+5. Klicken Sie im unteren Bereich des Blatts mit der Ressourcenbeschreibung auf **Erstellen**. Geben Sie gemäß der folgenden Tabelle Werte in die entsprechenden Felder ein:
    
-   | **Field** | **Value** |
+   | **Feld** | **Wert** |
    | --- | --- |
    | Name |vnet-01 |
-   | Address space |10.0.10.0/23 |
-   | Subnet name |subnet-01 |
-   | Subnet address range |10.0.10.0/24 |
-6. You should see the Subscription you created earlier populated in the **Subscription** field.
-7. For Resource Group, you can either create a new Resource Group or if you already have one, select **Use existing**.
-8. Verify the default location.
-9. Click **Create**.
+   | Adressraum |10.0.10.0/23 |
+   | Subnetzname |subnet-01 |
+   | Subnetzadressbereich |10.0.10.0/24 |
+6. Daraufhin sollte das Feld **Abonnement** mit dem zuvor erstellten Abonnement aufgefüllt werden.
+7. Als Ressourcengruppe können Sie entweder eine neue Ressourcengruppe erstellen oder **Use existing** (Vorhandene verwenden) auswählen, sofern Sie bereits über eine Ressourcengruppe verfügen.
+8. Überprüfen Sie den standardmäßigen Speicherort.
+9. Klicken Sie auf **Erstellen**.
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
-1. Open the Virtual Network resource you just created (Vnet-01) from the dashboard.
-2. On the Settings blade, select **Subnets**.
-3. Click **Gateway Subnet** to add a gateway subnet to the virtual network.
+### <a name="create-the-gateway-subnet"></a>Erstellen des Gatewaysubnetzes
+1. Öffnen Sie über das Dashboard die soeben erstellte Virtual Network-Ressource (vnet-01).
+2. Wählen Sie auf dem Blatt mit den Einstellungen die Option **Subnetze** aus.
+3. Klicken Sie auf **Gatewaysubnetz**, um dem virtuellen Netzwerk ein Gatewaysubnetz hinzuzufügen.
    
     ![](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
-4. The name of the subnet is set to **GatewaySubnet** by default.
-   Gateway subnets are special and must have this specific name to function properly.
-5. In the **Address range** field, type **10.0.11.0/24**.
-6. Click **Create** to create the gateway subnet.
+4. Der Name des Subnetzes wird standardmäßig auf **GatewaySubnet** festgelegt.
+   Gatewaysubnetze sind spezielle Subnetze und müssen diesen spezifischen Namen besitzen, damit sie ordnungsgemäß funktionieren.
+5. Geben Sie im Feld **Adressbereich** den Bereich **10.0.11.0/24** ein.
+6. Klicken Sie auf **Erstellen**, um das Gatewaysubnetz zu erstellen.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the Virtual Network Gateway
-1. In the Azure portal, click **New**.
+### <a name="create-the-virtual-network-gateway"></a>Erstellen des virtuellen Netzwerkgateways
+1. Klicken Sie im Azure-Portal auf **Neu**.
    
-2. Select **Networking** from the Marketplace menu.
-3. Select **Virtual network gateway** from the list of network resources.
-4. Review the description and click **Create**.
-5. In the **Name** field type **GW1**.
-6. Click the **Virtual network** item to choose a virtual network.
-   Select **Vnet-01** from the list.
-7. Click the **Public IP address** menu item. When the **Choose public IP address** blade opens click **Create new**.
-8. In the **Name** field, type **GW1-PiP** and click **OK**.
-9. The **Gateway type** should have **VPN** selected by default. Keep this setting.
-10. The **VPN type** should have **Route-based** selected by default.
-    Keep this setting.
-11. Verify that **Subscription** and **Location** are correct. You can pin the resource to the Dashboard if you like. Click **Create**.
+2. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+3. Wählen Sie in der Liste mit den Netzwerkressourcen den Eintrag **Gateway von Virtual Network** aus.
+4. Lesen Sie sich die Beschreibung durch, und klicken Sie auf **Erstellen**.
+5. Geben Sie im Feld **Name** die Zeichenfolge **GW1** ein.
+6. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen.
+   Wählen Sie in der Liste die Option **vnet-01** aus.
+7. Klicken Sie auf das Menüelement **Öffentliche IP-Adresse**. Klicken Sie auf dem Blatt **Öffentliche IP-Adresse auswählen** auf **Neu erstellen**.
+8. Geben Sie im Feld **Name** die Zeichenfolge **GW1-PiP** ein, und klicken Sie auf **OK**.
+9. Für **Gatewaytyp** sollte standardmäßig **VPN** ausgewählt sein. Behalten Sie diese Einstellung bei.
+10. Für **VPN-Typ** sollte standardmäßig **Routenbasiert** ausgewählt sein.
+    Behalten Sie diese Einstellung bei.
+11. Vergewissern Sie sich, dass **Abonnement** und **Speicherort** korrekt sind. Die Ressource kann auf Wunsch an das Dashboard angeheftet werden. Klicken Sie auf **Erstellen**.
 
-### <a name="create-the-local-network-gateway"></a>Create the Local Network Gateway
-The implementation of a *local network gateway* in this Azure Stack evaluation deployment is a bit different than in an actual Azure deployment.
+### <a name="create-the-local-network-gateway"></a>Erstellen des lokalen Netzwerkgateways
+Die Implementierung eines *lokalen Netzwerkgateways* ist bei dieser Azure Stack-Evaluierungsbereitstellung ein wenig anders als bei einer tatsächlichen Azure-Bereitstellung.
 
-Just like in Azure, you have the concept of a local network gateway. However, in an Azure deployment a local network gateway represents an on-premise (at the tenant)  physical device you use to connect to a virtual network gateway in Azure. But in this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways!
+Das Konzept eines lokalen Netzwerkgateways ist hier ebenso vorhanden wie in Azure. In einer Azure-Bereitstellung stellt ein lokales Netzwerkgateway allerdings ein (aus Sicht des Mandanten) lokales physisches Gerät dar, mit dem eine Verbindung mit einem virtuellen Netzwerkgateway in Azure hergestellt wird. In dieser Azure Stack-Evaluierungsbereitstellung handelt es sich jedoch bei beiden Enden der Verbindung um virtuelle Netzwerkgateways.
 
-A way to think about this more generically is that the Local Network Gateway resource is always meant to indicate the remote gateway at the other end of the connection. Because of the way the POC was designed, you need to provide the IP address of the external network adapter on the NAT VM of the other POC as the Public IP Address of the Local Network Gateway. You will then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
+Etwas allgemeiner betrachtet wird mit der Ressource des lokalen Netzwerkgateways immer das Remotegateway am anderen Ende der Verbindung angegeben. Aufgrund des POC-Designs müssen Sie die IP-Adresse des externen Netzwerkadapters auf dem virtuellen NAT-Computer des anderen POC als öffentliche IP-Adresse des lokalen Netzwerkgateways angeben. Anschließend erstellen Sie NAT-Zuordnungen auf dem virtuellen NAT-Computer, um sicherzustellen, dass beide Enden ordnungsgemäß verbunden sind.
 
 
-### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Get the IP address of the external adapter of the NAT VM
-1. Log in to the Azure Stack physical machine for POC2.
-2. Press the [Windows Key] + R to open the **Run** menu and type **mstsc** and press Enter.
-3. In the **Computer** field type the name **MAS-BGPNAT01** and click  **Connect**.
-4. Click the Start Menu and right-click **Windows PowerShell** and select **Run As Administrator**.
-5. Type **ipconfig /all**.
-6. Find the Ethernet Adapter that is connected to your on-premise network, and take note of the IPv4 address bound to that adapter. In our example environment, it’s **10.16.167.195** but yours will be something different.
-7. Record this address. This is what you will use as the Public IP Address of the Local Network Gateway resource you create in POC1.
+### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Abrufen der IP-Adresse des externen Adapters des virtuellen NAT-Computers
+1. Melden Sie sich auf dem physischen Azure Stack-Computer für POC2 an.
+2. Öffnen Sie durch Drücken von WINDOWS-TASTE+R das Menü **Ausführen**, geben Sie **mstsc** ein, und drücken Sie die EINGABETASTE.
+3. Geben Sie im Feld **Computer** den Namen **MAS-BGPNAT01** ein, und klicken Sie auf  **Verbinden**.
+4. Klicken Sie im Startmenü mit der rechten Maustaste auf **Windows PowerShell**, und wählen Sie **Als Administrator ausführen** aus.
+5. Geben Sie **ipconfig /all** ein.
+6. Suchen Sie nach dem mit Ihrem lokalen Netzwerk verbundenen Ethernet-Adapter, und notieren Sie sich die an diesen Adapter gebundene IPv4-Adresse. In unserer Beispielumgebung wird die Adresse **10.16.167.195** verwendet, Ihre eigene Adresse lautet allerdings anders.
+7. Notieren Sie sich diese Adresse. Sie wird als öffentliche IP-Adresse der Ressource des lokalen Netzwerkgateways verwendet, die Sie in POC1 erstellen.
 
-### <a name="create-the-local-network-gateway-resource"></a>Create the Local Network Gateway Resource
-1. Log in to the Azure Stack physical machine for POC1.
-2. In the **Computer** field, type the name **MAS-CON01** and click **Connect**.
-3. In the Azure portal, click **New**.
+### <a name="create-the-local-network-gateway-resource"></a>Erstellen der Ressource des lokalen Netzwerkgateways
+1. Melden Sie sich auf dem physischen Azure Stack-Computer für POC1 an.
+2. Geben Sie im Feld **Computer** den Namen **MAS-CON01** ein, und klicken Sie auf **Verbinden**.
+3. Klicken Sie im Azure-Portal auf **Neu**.
    
-4. Select **Networking** from the Marketplace menu.
-5. Select **local network gateway** from the list of resources.
-6. In the **Name** field type **POC2-GW**.
-7. You don’t know the IP address of the other gateway yet, but that’s ok because you can come back and change it later. For now, type **10.16.167.195** in the **IP address** field.
-8. In the **Address Space** field type the address space of the Vnet that you will create in POC2. This is going to be **10.0.20.0/23** so type that value.
-9. Verify that your **Subscription**, **Resource Group** and **location** are all correct and click **Create**.
+4. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+5. Wählen Sie in der Ressourcenliste den Eintrag für das lokale Netzwerkgateway** **aus.
+6. Geben Sie im Feld **Name** die Zeichenfolge **POC2-GW** ein.
+7. Die IP-Adresse des anderen Gateways ist Ihnen noch nicht bekannt. Das macht aber nichts, da Sie später hierher zurückkehren und sie ändern können. Geben Sie im Feld **IP-Adresse** die vorläufige Adresse **10.16.167.195** ein.
+8. Geben Sie im Feld **Adressraum** den Adressraum des VNets ein, das Sie in POC2 erstellen werden. Der Adressraum wird **10.0.20.0/23** lauten. Geben Sie also diesen Wert ein.
+9. Überprüfen Sie **Abonnement**, **Ressourcengruppe** und **Speicherort** auf Richtigkeit, und klicken Sie auf **Erstellen**.
 
-### <a name="create-the-connection"></a>Create the Connection
-1. In the Azure portal, click **New**.
+### <a name="create-the-connection"></a>Erstellen der Verbindung
+1. Klicken Sie im Azure-Portal auf **Neu**.
    
-2. Select **Networking** from the Marketplace menu.
-3. Select **Connection** from the list of resources.
-4. In the **Basic** settings blade, choose **Site-to-site (IPSec)** as the **Connection type**.
-5. Select the **Subscription**, **Resource Group** and **Location** and click **Ok**.
-6. In the **Settings** blade, choose the **Virtual Network Gateway** (**GW1**) you created previously.
-7. Choose the **local Network Gateway** (**POC2-GW**) you created previously.
-8. In the **Connection Name** field, type **POC1-POC2**.
-9. In the **Shared Key (PSK)** field type **12345** and click **OK**.
+2. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+3. Wählen Sie in der Ressourcenliste die Option **Verbindung** aus.
+4. Wählen Sie auf dem Blatt **Grundlagen** unter **Verbindungstyp** die Option **Site-to-Site (IPsec)** aus.
+5. Wählen Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** aus, und klicken Sie anschließend auf **OK**.
+6. Wählen Sie auf dem Blatt **Einstellungen** das virtuelle Netzwerkgateway** **(**GW1**) aus, das Sie zuvor erstellt haben.
+7. Wählen Sie das lokale Netzwerkgateway** **(**POC2-GW**) aus, das Sie zuvor erstellt haben.
+8. Geben Sie im Feld **Verbindungsname** die Zeichenfolge **POC1-POC2** ein.
+9. Geben Sie im Feld **Shared Key (PSK)** (Gemeinsam verwendeter Schlüssel (PSK)) den Wert **12345** ein, und klicken Sie anschließend auf **OK**.
 
-### <a name="create-a-vm"></a>Create a VM
-To validate data traveling through the VPN Connection, you need VMs to send and receive data in each POC. Create a VM in POC1 now and put it on your VM subnet in your virtual network.
+### <a name="create-a-vm"></a>Erstellen eines virtuellen Computers
+Zur Überprüfung der Daten, die über die VPN-Verbindung übermittelt werden, benötigen Sie in den POCs virtuelle Computer, die Daten senden und empfangen. Erstellen Sie in POC1 einen virtuellen Computer, und platzieren Sie ihn im VM-Subnetz Ihres virtuellen Netzwerks.
 
-1. In the Azure portal, click **New**.
+1. Klicken Sie im Azure-Portal auf **Neu**.
    
-2. Select **Virtual Machines** from the Marketplace menu.
-3. In the list of virtual machine images, select the **Windows Server 2012 R2 Datacenter** image.
-4. On the **Basics** blade, in the **Name** field type **VM01**.
-5. Type a valid user name and password. You’ll use this account to log in to the VM after it has been created.
-6. Provide a **Subscription**, **Resource Group** and **Location** and then click **OK**.
-7. On the **Size** blade, choose a VM size for this instance and then click **Select**.
-8. On the **Settings** blade, you can accept the defaults; just ensure that the Virtual network selected is **VNET-01** and the Subnet is set to **10.0.10.0/24**. Click **OK**.
-9. Review the settings on the **Summary** blade and click **OK**.
+2. Wählen Sie im Marketplace-Menü die Option **Virtual Machines** aus.
+3. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2012 R2 Datacenter** aus.
+4. Geben Sie auf dem Blatt **Grundlagen** im Feld **Name** die Zeichenfolge **VM01** ein.
+5. Geben Sie einen gültigen Benutzernamen und ein Kennwort ein. Mit diesem Konto melden Sie sich bei dem virtuellen Computer an, nachdem dieser erstellt wurde.
+6. Geben Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** an, und klicken Sie anschließend auf **OK**.
+7. Wählen Sie auf dem Blatt **Größe** eine VM-Größe für diese Instanz aus, und klicken Sie anschließend auf **Auswählen**.
+8. Auf dem Blatt **Einstellungen** können Sie die Standardwerte übernehmen. Vergewissern Sie sich lediglich, dass das virtuelle Netzwerk **VNET-01** ausgewählt und das Subnetz auf **10.0.10.0/24** festgelegt ist. Klicken Sie auf **OK**.
+9. Überprüfen Sie die Einstellungen auf dem Blatt **Zusammenfassung**, und klicken Sie anschließend auf **OK**.
 
-## <a name="create-the-network-resources-in-poc-2"></a>Create the Network Resources in POC 2
-### <a name="log-in-as-a-tenant"></a>Log in as a tenant
-A service administrator can log in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [Create a tenant account](azure-stack-add-new-user-aad.md) before you log in.
+## <a name="create-the-network-resources-in-poc-2"></a>Erstellen der Netzwerkressourcen in POC2
+### <a name="log-in-as-a-tenant"></a>Anmelden als Mandant
+Ein Dienstadministrator kann sich als Mandant anmelden, um die Pläne, Angebote und Abonnements zu testen, die den Mandanten zur Verfügung stehen. Falls Sie noch kein Mandantenkonto besitzen, [erstellen Sie ein Mandantenkonto](azure-stack-add-new-user-aad.md), bevor Sie sich anmelden.
 
-### <a name="create-the-virtual-network-and-vm-subnet"></a>Create the virtual network and VM subnet
-1. Log in using a tenant account.
-2. In the Azure portal, click **New**.
+### <a name="create-the-virtual-network-and-vm-subnet"></a>Erstellen des virtuellen Netzwerks und des VM-Subnetzes
+1. Melden Sie sich mit einem Mandantenkonto an.
+2. Klicken Sie im Azure-Portal auf **Neu**.
    
-3. Select **Networking** from the Marketplace menu.
-4. Click **Virtual network** on the menu.
-5. Click **Create** near the bottom of the resource description blade. Type the following values for the appropriate fields listed in the table below.
+3. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+4. Klicken Sie im Menü auf **Virtuelles Netzwerk**.
+5. Klicken Sie im unteren Bereich des Blatts mit der Ressourcenbeschreibung auf **Erstellen**. Geben Sie die Werte aus der folgenden Tabelle in die entsprechenden Felder ein:
    
-   | **Field** | **Value** |
+   | **Feld** | **Wert** |
    | --- | --- |
    | Name |vnet-02 |
-   | Address space |10.0.20.0/23 |
-   | Subnet name |subnet-02 |
-   | Subnet address range |10.0.20.0/24 |
-6. You should see the Subscription you created previously populated in the **Subscription** field.
-7. For Resource Group, you can either create a new Resource Group or if you already have one select **Use existing**.
-8. Verify the default **location**. If you want, you can pin the virtual network to the Dashboard for easy access.
-9. Click **Create**.
+   | Adressraum |10.0.20.0/23 |
+   | Subnetzname |subnet-02 |
+   | Subnetzadressbereich |10.0.20.0/24 |
+6. Daraufhin sollte das Feld **Abonnement** mit dem zuvor erstellten Abonnement aufgefüllt werden.
+7. Als Ressourcengruppe können Sie entweder eine neue Ressourcengruppe erstellen oder **Use existing** (Vorhandene verwenden) auswählen, sofern Sie bereits über eine Ressourcengruppe verfügen.
+8. Überprüfen Sie den standardmäßigen **Speicherort**. Das virtuelle Netzwerk kann auf Wunsch an das Dashboard angeheftet werden, um komfortabel darauf zugreifen zu können.
+9. Klicken Sie auf **Erstellen**.
 
-### <a name="create-the-gateway-subnet"></a>Create the Gateway Subnet
-1. Open the Virtual network resource you created (**Vnet-02**) from the Dashboard.
-2. On the **Settings** blade, select **Subnets**.
-3. Click  **Gateway subnet** to add a gateway subnet to the virtual network.
+### <a name="create-the-gateway-subnet"></a>Erstellen des Gatewaysubnetzes
+1. Öffnen Sie über das Dashboard die zuvor erstellte Ressource des virtuellen Netzwerks (**vnet-02**).
+2. Wählen Sie auf dem Blatt **Einstellungen** die Option **Subnetze** aus.
+3. Klicken Sie auf **Gatewaysubnetz**, um dem virtuellen Netzwerk ein Gatewaysubnetz hinzuzufügen.
    
-4. The name of the subnet is set to **GatewaySubnet** by default.
-   Gateway subnets are special and must have this specific name to function properly.
-5. In the **Address range** field, type **10.0.20.0/24**.
-6. Click **Create** to create the gateway subnet.
+4. Der Name des Subnetzes wird standardmäßig auf **GatewaySubnet** festgelegt.
+   Gatewaysubnetze sind spezielle Subnetze und müssen diesen spezifischen Namen besitzen, damit sie ordnungsgemäß funktionieren.
+5. Geben Sie im Feld **Adressbereich** den Bereich **10.0.20.0/24** ein.
+6. Klicken Sie auf **Erstellen**, um das Gatewaysubnetz zu erstellen.
 
-### <a name="create-the-virtual-network-gateway"></a>Create the Virtual Network Gateway
-1. In the Azure portal, click **New**.
+### <a name="create-the-virtual-network-gateway"></a>Erstellen des virtuellen Netzwerkgateways
+1. Klicken Sie im Azure-Portal auf **Neu**.
    
-2. Select **Networking** from the Marketplace menu.
-3. Select **Virtual network gateway** from the list of network resources.
-4. Review the description and click **Create**.
-5. In the **Name** field type **GW2**.
-6. Click  **Virtual network** to choose a virtual network.
-   Select **Vnet-02** from the list.
-7. Click **Public IP address**. When the **Choose public IP address** blade opens click **Create new**.
-8. In the **Name** field, type **GW2-PiP** and click **OK**.
-9. The **Gateway type** should have **VPN** selected by default. Keep this setting.
-10. The **VPN type** should have **Route-based** selected by default.
-    Keep this setting.
-11. Verify **Subscription** and **Location** are correct. You can pin the resource to the Dashboard if you like. Click **Create**.
+2. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+3. Wählen Sie in der Liste mit den Netzwerkressourcen den Eintrag **Gateway von Virtual Network** aus.
+4. Lesen Sie sich die Beschreibung durch, und klicken Sie auf **Erstellen**.
+5. Geben Sie im Feld **Name** die Zeichenfolge **GW2** ein.
+6. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen.
+   Wählen Sie in der Liste die Option **vnet-02** aus.
+7. Klicken Sie auf **Öffentliche IP-Adresse**. Klicken Sie auf dem Blatt **Öffentliche IP-Adresse auswählen** auf **Neu erstellen**.
+8. Geben Sie im Feld **Name** die Zeichenfolge **GW2-PiP** ein, und klicken Sie auf **OK**.
+9. Für **Gatewaytyp** sollte standardmäßig **VPN** ausgewählt sein. Behalten Sie diese Einstellung bei.
+10. Für **VPN-Typ** sollte standardmäßig **Routenbasiert** ausgewählt sein.
+    Behalten Sie diese Einstellung bei.
+11. Vergewissern Sie sich, dass **Abonnement** und **Speicherort** korrekt angegeben sind. Die Ressource kann auf Wunsch an das Dashboard angeheftet werden. Klicken Sie auf **Erstellen**.
 
-### <a name="create-the-local-network-gateway"></a>Create the Local Network Gateway
-#### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Get the IP address of the external Adapter of the NAT VM
-1. Log in to the Azure Stack physical machine for POC1.
-2. Press and hold [Windows Key] + R to open the **Run** menu and type **mstsc** and press enter.
-3. In the **Computer** field type the name **MAS-BGPNAT01** and click  **Connect**.
-4. Click the Start menu, right-click  **Windows PowerShell** and select **Run As Administrator**.
-5. Type **ipconfig /all**.
-6. Find the Ethernet adapter that is connected to your on-premise network, and note the IPv4 address bound to that adapter. In the example environment it’s **10.16.169.131** but yours will be different.
-7. Record this address. This is what you will use later as the Public IP Address of the Local Network Gateway resource you create in POC1.
+### <a name="create-the-local-network-gateway"></a>Erstellen des lokalen Netzwerkgateways
+#### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>Abrufen der IP-Adresse des externen Adapters des virtuellen NAT-Computers
+1. Melden Sie sich auf dem physischen Azure Stack-Computer für POC1 an.
+2. Öffnen Sie durch Drücken von WINDOWS-TASTE+R das Menü **Ausführen**, geben Sie **mstsc** ein, und drücken Sie die EINGABETASTE.
+3. Geben Sie im Feld **Computer** den Namen **MAS-BGPNAT01** ein, und klicken Sie auf  **Verbinden**.
+4. Klicken Sie im Startmenü mit der rechten Maustaste auf **Windows PowerShell**, und wählen Sie **Als Administrator ausführen** aus.
+5. Geben Sie **ipconfig /all** ein.
+6. Suchen Sie nach dem mit Ihrem lokalen Netzwerk verbundenen Ethernet-Adapter, und notieren Sie sich die an diesen Adapter gebundene IPv4-Adresse. In unserer Beispielumgebung wird die Adresse **10.16.169.131** verwendet, Ihre eigene Adresse lautet allerdings anders.
+7. Notieren Sie sich diese Adresse. Sie wird später als öffentliche IP-Adresse der Ressource des lokalen Netzwerkgateways verwendet, die Sie in POC1 erstellen.
 
-#### <a name="create-the-local-network-gateway-resource"></a>Create the Local Network Gateway Resource
-1. Log in to the Azure Stack physical machine for POC2.
-2. In the **Computer** field type the name **MAS-CON01** and click **Connect**.
-3. In the Azure portal, click **New**.
+#### <a name="create-the-local-network-gateway-resource"></a>Erstellen der Ressource des lokalen Netzwerkgateways
+1. Melden Sie sich auf dem physischen Azure Stack-Computer für POC2 an.
+2. Geben Sie im Feld **Computer** den Namen **MAS-CON01** ein, und klicken Sie auf **Verbinden**.
+3. Klicken Sie im Azure-Portal auf **Neu**.
    
-4. Select **Networking** from the Marketplace menu.
-5. Select **local network gateway** from the list of resources.
-6. In the **Name** field type **POC1-GW**.
-7. Now you need the Public IP Address you recorded for the Virtual network gateway in POC1. Type **10.16.169.131** in the **IP address** field.
-8. In the **Address Space** field type the address space of **Vnet-01** from POC1 - **10.0.0.0/16**.
-9. Verify that your **Subscription**, **Resource Group** and **location** are all correct and click **Create**.
+4. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+5. Wählen Sie in der Ressourcenliste den Eintrag für das lokale Netzwerkgateway** **aus.
+6. Geben Sie im Feld **Name** die Zeichenfolge **POC1-GW** ein.
+7. Nun benötigen Sie die öffentliche IP-Adresse, die Sie sich für das virtuelle Netzwerkgateway in POC1 notiert haben. Geben Sie im Feld **IP-Adresse** die Adresse **10.16.169.131** ein.
+8. Geben Sie im Feld **Adressraum** den Adressraum von **vnet-01** aus POC1 ein: **10.0.0.0/16**.
+9. Überprüfen Sie **Abonnement**, **Ressourcengruppe** und **Speicherort** auf Richtigkeit, und klicken Sie auf **Erstellen**.
 
-## <a name="create-the-connection"></a>Create the Connection
-1. In the Azure portal, click **New**.
+## <a name="create-the-connection"></a>Erstellen der Verbindung
+1. Klicken Sie im Azure-Portal auf **Neu**.
    
-2. Select **Networking** from the Marketplace menu.
-3. Select **Connection** from the list of resources.
-4. In the **Basic** settings blade, choose **Site-to-site (IPSec)** as the **Connection type**.
-5. Select the **Subscription**, **Resource Group** and **Location** and click **OK**.
-6. In the **Settings** blade, choose the **Virtual Network Gateway** (**GW1**) you created previously.
-7. Choose the **Local Network Gateway** (**POC1-GW**) you created previously.
-8. In the **Connection Name** field, type **POC2-POC1**.
-9. In the **Shared Key (PSK)** field type **12345**. If you choose a different value, remember that it MUST match the value for Shared Key you created on POC1. Click **OK**.
+2. Wählen Sie im Marketplace-Menü die Option **Netzwerk** aus.
+3. Wählen Sie in der Ressourcenliste die Option **Verbindung** aus.
+4. Wählen Sie auf dem Blatt **Grundlagen** unter **Verbindungstyp** die Option **Site-to-Site (IPsec)** aus.
+5. Wählen Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** aus, und klicken Sie anschließend auf **OK**.
+6. Wählen Sie auf dem Blatt **Einstellungen** das virtuelle Netzwerkgateway** **(**GW1**) aus, das Sie zuvor erstellt haben.
+7. Wählen Sie das lokale Netzwerkgateway** **(**POC1-GW**) aus, das Sie zuvor erstellt haben.
+8. Geben Sie im Feld **Verbindungsname** die Zeichenfolge **POC2-POC1** ein.
+9. Geben Sie im Feld **Shared Key (PSK)** (Gemeinsam verwendeter Schlüssel (PSK)) den Wert **12345** ein. Falls Sie einen anderen Wert verwenden, vergessen Sie nicht, dass er dem Wert für den gemeinsam verwendeten Schlüssel entsprechen muss, den Sie für POC1 erstellt haben. Klicken Sie auf **OK**.
 
-## <a name="create-a-vm"></a>Create a VM
-Create a VM in POC1 now and put it on your VM subnet in your virtual network.
+## <a name="create-a-vm"></a>Erstellen eines virtuellen Computers
+Erstellen Sie in POC1 einen virtuellen Computer, und platzieren Sie ihn im VM-Subnetz Ihres virtuellen Netzwerks.
 
-1. In the Azure portal, click **New**.
+1. Klicken Sie im Azure-Portal auf **Neu**.
    
-2. Select **Virtual Machines** from the Marketplace menu.
-3. In the list of virtual machine images, select the **Windows Server 2012 R2 Datacenter** image.
-4. On the **Basics** blade, in the **Name** field type **VM02**.
-5. Type a valid user name and password. You’ll use this account to log in to the VM after it has been created.
-6. Provide a **Subscription**, **Resource Group** and **Location** and then click **OK**.
-7. On the **Size** blade, choose a VM size for this instance and then click **Select**.
-8. On the Settings blade, you can accept the defaults; just ensure that the virtual network selected is **VNET-02** and the subnet is set to **20.0.0.0/24**. Click **OK**.
-9. Review the settings on the **Summary** blade and click **OK**.
+2. Wählen Sie im Marketplace-Menü die Option **Virtual Machines** aus.
+3. Wählen Sie in der Liste mit den VM-Images das Image **Windows Server 2012 R2 Datacenter** aus.
+4. Geben Sie auf dem Blatt **Grundlagen** im Feld **Name** die Zeichenfolge **VM02** ein.
+5. Geben Sie einen gültigen Benutzernamen und ein Kennwort ein. Mit diesem Konto melden Sie sich bei dem virtuellen Computer an, nachdem dieser erstellt wurde.
+6. Geben Sie Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** an, und klicken Sie anschließend auf **OK**.
+7. Wählen Sie auf dem Blatt **Größe** eine VM-Größe für diese Instanz aus, und klicken Sie anschließend auf **Auswählen**.
+8. Auf dem Blatt mit den Einstellungen können Sie die Standardwerte übernehmen. Vergewissern Sie sich lediglich, dass das virtuelle Netzwerk **VNET-02** ausgewählt und das Subnetz auf **20.0.0.0/24** festgelegt ist. Klicken Sie auf **OK**.
+9. Überprüfen Sie die Einstellungen auf dem Blatt **Zusammenfassung**, und klicken Sie anschließend auf **OK**.
 
-## <a name="configure-the-nat-vm-in-each-poc-for-gateway-traversal"></a>Configure the NAT VM in each POC for gateway traversal
-Because the POC was designed to be self-contained and isolated from the network on which the physical host is deployed, the “External” VIP network that the gateways are connected to is not actually external, but instead is hidden behind a router doing Network Address Translation (NAT). The router is actually a Windows Server VM (**MAS-BGPNAT01**) running the Routing and Remote Access Services (RRAS) role in the POC infrastructure. You must configure NAT on the MAS-BGPNAT01 VM to allow the Site-to-Site VPN Connection to connect on both ends.
+## <a name="configure-the-nat-vm-in-each-poc-for-gateway-traversal"></a>Konfigurieren des virtuellen NAT-Computers in den einzelnen POCs für das Durchlaufen des Gateways
+Da der POC entwurfsbedingt eigenständig und von dem Netzwerk isoliert ist, in dem der physische Host bereitgestellt wird, handelt es sich bei dem externen VIP-Netzwerk, mit dem die Gateways verbunden sind, nicht wirklich um ein externes Netzwerk. Das Netzwerk befindet sich vielmehr hinter einem Router, der eine Netzwerkadressenübersetzung (Network Address Translation, NAT) durchführt. Der Router ist eigentlich ein virtueller Windows Server-Computer (**MAS-BGPNAT01**), der die RRAS-Rolle (Routing and Remote Access Services; Routing- und RAS-Dienste) in der POC-Infrastruktur ausführt. Sie müssen die Netzwerkadressenübersetzung auf dem virtuellen Computer „MAS-BGPNAT01“ so konfigurieren, dass die Site-to-Site-VPN-Verbindung an beiden Enden möglich ist. Hierzu müssen Sie eine statische NAT-Zuordnung erstellen, die die externe Schnittstelle des virtuellen Computers „BGPNAT“ der VIP des Edge-Gatewaypools für die Ports zuordnet, die für eine VPN-Verbindung erforderlich sind.
 
 > [!NOTE]
-> This configuration is required for POC environments only.
+> Diese Konfiguration muss nur für POC-Umgebungen vorgenommen werden.
 > 
 > 
 
-### <a name="configure-nat"></a>Configure NAT
-You need to follow these steps in BOTH POC environments.
+### <a name="configure-nat"></a>Konfigurieren der Netzwerkadressenübersetzung
+Die folgenden Schritte müssen in BEIDEN POC-Umgebungen ausgeführt werden:
 
-1. Log in to the Azure Stack physical machine for POC1.
-2. Press and hold [Windows Key] + R to open the **Run** menu and type **mstsc** and press **Enter**.
-3. In the **Computer** field type the name **MAS-BGPNAT01** and click **Connect**.
-4. Click on the Start menu and right-click **Windows PowerShell** and select **Run As Administrator**.
-5. Type **ipconfig /all**.
-6. Find the Ethernet Adapter that is connected to your on-premise network, and note the IPv4 address bound to that adapter. In the example environment, it’s **10.16.169.131** (circled in red below), but yours will be different.
+1. Melden Sie sich auf dem physischen Azure Stack-Computer für POC1 an.
+2. Öffnen Sie durch Drücken von WINDOWS-TASTE+R das Menü **Ausführen**, geben Sie **mstsc** ein, und drücken Sie die** **EINGABETASTE.
+3. Geben Sie im Feld **Computer** den Namen **MAS-BGPNAT01** ein, und klicken Sie auf **Verbinden**.
+4. Klicken Sie im Startmenü mit der rechten Maustaste auf **Windows PowerShell**, und wählen Sie **Als Administrator ausführen** aus.
+5. Geben Sie **ipconfig /all** ein.
+6. Suchen Sie nach dem mit Ihrem lokalen Netzwerk verbundenen Ethernet-Adapter, und notieren Sie sich die an diesen Adapter gebundene IPv4-Adresse. In unserer Beispielumgebung wird die Adresse **10.16.169.131** (rot eingekreist) verwendet, Ihre eigene Adresse lautet allerdings anders.
    
     ![](media/azure-stack-create-vpn-connection-one-node-tp2/image16.png)
-7. Type the following PowerShell command to designate the external NAT address for the ports that the IKE authentication. Remember to change the IP address to the one that matches your environment.
+7. Geben Sie den folgenden PowerShell-Befehl ein, um die externe NAT-Adresse für die Ports festzulegen, die die IKE-Authentifizierung verwenden. Vergessen Sie nicht, die IP-Adresse auf die passende IP-Adresse für Ihre Umgebung festzulegen.
    
-       Add-NetNatExternalAddress -NatName BGPNAT -IPAddress 10.16.169.131 PortStart 499 -PortEnd 501
-8. Next, you create a static NAT mapping to map the external  address to the Gateway Public IP Address to map the ISAKMP port 500  for PHASE 1 of the IPSEC tunnel.
+       Add-NetNatExternalAddress -NatName BGPNAT -IPAddress 10.16.169.131 -PortStart 499 -PortEnd 501
+8. Erstellen Sie als Nächstes eine statische NAT-Zuordnung, um die externe Adresse der öffentlichen Gateway-IP-Adresse zuzuordnen und dadurch den ISAKMP-Port 500 für PHASE 1 des IPsec-Tunnels zuzuordnen.
    
         Add-NetNatStaticMapping -NatName BGPNAT -Protocol UDP -ExternalIPAddress 10.16.169.131 -InternalIPAddress 192.168.102.1 -ExternalPort 500 -InternalPort 500
-9. Finally, you must configure NAT traversal which uses port 4500 to successfully establish the complete IPEC tunnel over NAT devices.
+> [!NOTE] 
+> Bei dem Parameter `-InternalAddress` handelt es sich um die öffentliche IP-Adresse des virtuellen Netzwerkgateways, das Sie zuvor erstellt haben.  Diese IP-Adresse finden Sie in den Eigenschaften des Blatts für das virtuelle Netzwerkgateway unter „Öffentliche IP-Adresse“.       
+
+9. Anschließend müssen Sie noch den NAT-Durchlauf konfigurieren. Dabei wird der Port 4500 verwendet, um den vollständigen IPsec-Tunnel über NAT-Geräte einzurichten.
    
         Add-NetNatStaticMapping -NatName BGPNAT -Protocol UDP -ExternalIPAddress 10.16.169.131 -InternalIPAddress 192.168.102.1 -ExternalPort 4500 -InternalPort 4500
-10. Repeat steps 1-9 in POC2.
+> [!NOTE] 
+> Bei dem Parameter `-InternalAddress` handelt es sich um die öffentliche IP-Adresse des virtuellen Netzwerkgateways, das Sie zuvor erstellt haben.  Diese IP-Adresse finden Sie in den Eigenschaften des Blatts für das virtuelle Netzwerkgateway unter „Öffentliche IP-Adresse“.       
 
-## <a name="test-the-connection"></a>Test the connection
-Now that the Site-to-Site connection has been established you should validate that you can get traffic flowing through it. This task is simple as it just involves logging in to one of the VMs you created in either POC environment and pinging the VM you created in the other environment. To ensure that you are putting the traffic through the Site-to-Site connection, you want to make sure that you ping the Direct IP (DIP) address of the VM on the remote subnet, not the VIP. To do this, you need to find and note the address on the other end of the connection.
+10. Wiederholen Sie die Schritte 1–9 für POC2.
 
-### <a name="log-in-to-the-tenant-vm-in-poc1"></a>Log in to the tenant VM in POC1
-1. Log in to the Azure Stack physical machine for POC1, and log in to the Portal using a tenant account.
-2. Click **Virtual Machines** in the left navigation bar.
-3. Find **VM01** that you created previously in the list of VMs and click it.
-4. On the blade for the virtual machine click **Connect**.
+## <a name="test-the-connection"></a>Testen der Verbindung
+Nach der Einrichtung der Site-to-Site-Verbindung sollten Sie sich vergewissern, dass darüber Datenverkehr abgewickelt werden kann. Dazu müssen Sie sich lediglich bei einem virtuellen Computer anmelden, den Sie in einer der POC-Umgebungen erstellt haben, und den virtuellen Computer pingen, den Sie in der anderen Umgebung erstellt haben. Um sicherzustellen, dass der Datenverkehr über die Site-to-Site-Verbindung abgewickelt wird, müssen Sie anstelle der VIP-Adresse die direkte IP-Adresse (DIP) des virtuellen Computers im Remotesubnetz pingen. Hierzu müssen Sie die Adresse am anderen Ende der Verbindung ermitteln und notieren.
+
+### <a name="log-in-to-the-tenant-vm-in-poc1"></a>Anmelden beim virtuellen Mandantencomputer in POC1
+1. Melden Sie sich beim physischen Azure Stack-Computer für POC1 und anschließend mithilfe des Mandantenkontos beim Portal an.
+2. Klicken Sie auf der linken Navigationsleiste auf **Virtual Machines**.
+3. Klicken Sie in der Liste mit den virtuellen Computern auf den virtuellen Computer **VM01**, den Sie zuvor erstellt haben.
+4. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Verbinden**.
    
      ![](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
-5. Open a Command prompt from inside the VM and type **ipconfig /all**.
-6. Find the **IPv4 Address** in the output and note it. This is the address you will ping from POC2. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should however fall within the **10.0.10.0/24** subnet that was created previously.
+5. Öffnen Sie auf dem virtuellen Computer eine Eingabeaufforderung, und geben Sie **ipconfig /all** ein.
+6. Suchen Sie in der Ausgabe nach der **IPv4-Adresse**, und notieren Sie sie. Diese Adresse wird später von POC2 aus gepingt. In der Beispielumgebung wird die Adresse **10.0.10.4** verwendet, in Ihrer Umgebung lautet sie aber unter Umständen anders. Sie sollte allerdings innerhalb des zuvor erstellten Subnetzes **10.0.10.0/24** liegen.
 
-### <a name="log-in-to-the-tenant-vm-in-poc2"></a>Log in to the tenant VM in POC2
-1. Log in to the Azure Stack physical machine for POC2 and log in to the portal using a tenant account.
-2. Click **Virtual Machines** in the left navigation bar.
-3. Find **VM02** that you created previously in the list of VMs and click it.
-4. On the blade for the virtual machine click **Connect**.
+### <a name="log-in-to-the-tenant-vm-in-poc2"></a>Anmelden beim virtuellen Mandantencomputer in POC2
+1. Melden Sie sich beim physischen Azure Stack-Computer für POC2 und anschließend mithilfe des Mandantenkontos beim Portal an.
+2. Klicken Sie auf der linken Navigationsleiste auf **Virtual Machines**.
+3. Klicken Sie in der Liste mit den virtuellen Computern auf den virtuellen Computer **VM02**, den Sie zuvor erstellt haben.
+4. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Verbinden**.
    
-5. Open a Command prompt from inside the VM and type **ipconfig /all**.
-6. You should see an IPv4 address that falls within 10.0.20.0/24. In the example environment, the address is 10.0.20.4, but yours might be different.
-7. Now from the VM in POC2 you want to ping the VM in POC1, through the tunnel. To do this you ping the DIP that you recorded from VM01.
-   In the example environment this is 10.0.10.4, but be sure to ping the address you noted in your lab. You should see a result that looks like this:
+5. Öffnen Sie auf dem virtuellen Computer eine Eingabeaufforderung, und geben Sie **ipconfig /all** ein.
+6. Daraufhin sollte eine IPv4-Adresse aus dem Adressbereich 10.0.20.0/24 angezeigt werden. In der Beispielumgebung wird die Adresse 10.0.20.4 verwendet, Ihre Adresse lautet aber unter Umständen anders.
+7. Auf dem virtuellen Computer in POC2 möchten Sie nun über den Tunnel den virtuellen Computer in POC1 pingen. Hierzu pingen Sie die DIP-Adresse, die Sie für „VM01“ erfasst haben.
+   In der Beispielumgebung wird die Adresse 10.0.10.4 verwendet. Achten Sie jedoch darauf, dass Sie die Adresse pingen, die Sie in Ihrem Lab notiert haben. Das Ergebnis sollte in etwa wie folgt aussehen:
    
     ![](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-8. A reply from the remote VM indicates a successful test! You can close the VM Connect window. Or you can try doing some other data transfers like a file copy to test your connection.
+8. Wenn Sie eine Antwort vom virtuellen Remotecomputer erhalten, war der Test erfolgreich. Das VM-Verbindungsfenster kann geschlossen werden. Alternativ können Sie weitere Datenübertragungen ausführen und beispielsweise eine Datei kopieren, um Ihre Verbindung zu testen.
 
-### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Viewing data transfer statistics through the gateway connection
-If you want to know how much data is passing through your Site-to-Site connection, this information is available in the Connection blade. This test is also another good way to verify that the ping you just sent actually went through the VPN connection.
+### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>Anzeigen der Datenübertragungsstatistik über die Gatewayverbindung
+Auf dem Verbindungsblatt können Sie die Datenmenge ermitteln, die über die Site-to-Site-Verbindung übertragen wird. Mit diesem Test können Sie auch überprüfen, ob der soeben gesendete Ping tatsächlich die VPN-Verbindung durchlaufen hat.
 
-1. While still logged in to tenant VM in POC2, log in to the **Microsoft Azure Stack POC Portal** using your tenant account.
-2. Click the **Browse** menu item and select **Connections**.
-3. Click the **POC2-POC1** connection in the list.
-4. On the Connection blade, you can see statistics for **Data in** and **Data out**. In the following screen shot you see some larger numbers than just a ping will create. That’s because of some additional file transfers as well. You should see some non-zero values there.
+1. Vergewissern Sie sich, dass Sie noch bei einem virtuellen Mandantencomputer in POC2 angemeldet sind, und melden Sie sich anschließend mithilfe Ihres Mandantenkontos beim **Microsoft Azure Stack POC-Portal** an.
+2. Klicken Sie auf das Menüelement **Durchsuchen**, und wählen Sie **Verbindungen** aus.
+3. Klicken Sie in der Liste auf die Verbindung **POC2-POC1**.
+4. Auf dem Verbindungsblatt wird die Statistik für **eingehende Daten** und **ausgehende Daten** angezeigt. Auf dem folgenden Screenshot sehen Sie einige größere Zahlen, die nicht nur von einem Ping stammen können. Diese sind auf zusätzliche Dateiübertragungen zurückzuführen. Bei Ihnen sollten dort Werte angezeigt werden, die nicht Null sind.
    
     ![](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
