@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 32f69c4bcfdeb5dbbbc41deb6d98b2e97e9a095f
-ms.openlocfilehash: 00eae18ab35a2e060782db0b8ec555c2855e82aa
+ms.sourcegitcommit: d95d42592e1102d635e5eaad473196c4fa461136
+ms.openlocfilehash: e633562e35276b2d0c6dd19ada5a17bae7b1b0b6
 
 
 ---
@@ -26,9 +26,9 @@ Dieser Artikel beschreibt, wie Sie die Kopieraktivität in einer Azure Data Fact
 > [!NOTE]
 > Erstellen Sie ein Azure Data Lake Store-Konto, bevor Sie eine Pipeline mit einer Kopieraktivität zum Verschieben von Daten in einen bzw. aus einem Azure Data Lake Store erstellen können. Weitere Informationen zu Azure Data Lake Store finden Sie unter [Erste Schritte mit Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md).
 >
-> Im Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md) finden Sie ausführliche Anweisungen zum Erstellen von Data Factorys, verknüpften Diensten, Datasets und Pipelines. Verwenden Sie die JSON-Codeausschnitte mit Data Factory-Editor, Visual Studio oder Azure PowerShell, um die Data Factory-Entitäten zu erstellen.
->
->
+
+## <a name="supported-authentication-types"></a>Unterstützte Authentifizierungstypen
+Der Azure Data Lake Store-Connector unterstützt die Authentifizierung per **Dienstprinzipal** und die Authentifizierung mit **Benutzeranmeldeinformationen**. Wir empfehlen die Verwendung der ersten Option (insbesondere beim geplanten Kopieren von Daten), um das Tokenablaufverhalten der zweiten Option zu vermeiden. Ausführliche Informationen zur Konfiguration finden Sie im Abschnitt [Eigenschaften des mit Azure Data Lake-Speicher verknüpften Diensts](#azure-data-lake-store-linked-service-properties).
 
 ## <a name="copy-data-wizard"></a>Assistent zum Kopieren von Daten
 Die einfachste Möglichkeit zum Erstellen einer Pipeline, die Daten in und aus Azure Data Lake Store kopiert, ist die Verwendung des Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mit dem Assistenten zum Kopieren](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
@@ -69,28 +69,18 @@ Im Beispiel werden Daten einer Zeitreihe aus Azure Blob Storage stündlich in ei
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
         }
     }
 }
 ```
 
-### <a name="to-create-azure-data-lake-linked-service-using-data-factory-editor"></a>Erstellen eines mit Azure Data Lake verknüpften Diensts mit Data Factory-Editor
-Das folgende Verfahren enthält Schritte zum Erstellen eines mit Azure Data Lake-Speicher verknüpften Diensts mit dem Data Factory-Editor.
-
-1. Klicken Sie auf der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure Data Lake Store** aus.
-2. Geben Sie im JSON-Editor für die **dataLakeStoreUri** -Eigenschaft den URI für die Data Lake-Instanz ein.
-3. Klicken Sie auf der Befehlsleiste auf die Schaltfläche **Autorisieren** . Ein Popupfenster wird angezeigt.
-
-    ![Schaltfläche „Autorisieren“](./media/data-factory-azure-data-lake-connector/authorize-button.png)
-4. Melden Sie sich mit Ihren Anmeldeinformationen an. Der **authorization**-Eigenschaft in der JSON sollte nun ein Wert zugewiesen sein.
-5. (Optional) Geben Sie Werte für optionale Parameter wie **accountName**, **subscriptionID** und **resourceGroupName** in der JSON-Datei an, oder löschen Sie diese Eigenschaften aus der JSON-Datei.
-6. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.
-
-> [!IMPORTANT]
-> Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Wenn das **Token abläuft**, müssen Sie mithilfe der Schaltfläche **Autorisieren** eine **erneute Autorisierung** ausführen und den verknüpften Dienst erneut bereitstellen. Weitere Informationen finden Sie im Abschnitt [Mit Azure Data Lake-Speicher verknüpfter Dienst](#azure-data-lake-store-linked-service-properties) .
->
+> [!NOTE]
+> Ausführliche Informationen zur Konfiguration finden Sie in den Schritten des Abschnitts [Eigenschaften des mit Azure Data Lake-Speicher verknüpften Diensts](#azure-data-lake-store-linked-service-properties).
 >
 
 **Azure-Blob-Eingabedataset:**
@@ -208,9 +198,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
                 ],
                 "typeProperties": {
                     "source": {
-                        "type": "BlobSource",
-                        "treatEmptyAsNull": true,
-                        "blobColumnSeparators": ","
+                        "type": "BlobSource"
                       },
                       "sink": {
                         "type": "AzureDataLakeStoreSink"
@@ -252,16 +240,16 @@ Im Beispiel werden Daten einer Zeitreihe aus einem Azure Data Lake Store stündl
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "sessionId": "<session ID>",
-            "authorization": "<authorization URL>"
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
         }
     }
 }
 ```
 
 > [!NOTE]
-> Siehe die Schritte im vorherigen Beispiel zum Abrufen der Autorisierungs-URL.  
->
+> Ausführliche Informationen zur Konfiguration finden Sie in den Schritten des Abschnitts [Eigenschaften des mit Azure Data Lake-Speicher verknüpften Diensts](#azure-data-lake-store-linked-service-properties).
 >
 
 **Mit Azure Storage verknüpfter Dienst:**
@@ -371,6 +359,7 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
   }
 }
 ```
+
 **Pipeline mit Kopieraktivität:**
 
 Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **AzureDataLakeStoreSource** und der Typ **sink** auf **BlobSink** festgelegt.
@@ -422,19 +411,72 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 ```
 
 ## <a name="azure-data-lake-store-linked-service-properties"></a>Eigenschaften des mit Azure Data Lake-Speicher verknüpften Diensts
-Sie können einen mit Azure Storage verknüpften Dienst verwenden, um ein Azure-Speicherkonto mit einer Azure Data Factory zu verknüpfen. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure Storage verknüpften Dienst spezifisch sind.
+Die folgende Tabelle beschreibt spezifische JSON-Elemente für den verknüpften Azure Data Lake Store-Dienst. Außerdem können Sie zwischen Authentifizierung per **Dienstprinzipal** und Authentifizierung mit **Benutzeranmeldeinformationen** wählen.
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| Typ |Die type-Eigenschaft muss auf **AzureDataLakeStore** |Ja |
-| dataLakeStoreUri |Geben Sie Informationen zum Azure Data Lake-Speicherkonto an. Der URI hat das folgende Format: https://<Azure Data Lake account name>.azuredatalakestore.net/webhdfs/v1. |Ja |
-| authorization |Klicken Sie im **Data Factory-Editor** auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein, wodurch die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen wird. |Ja |
-| sessionId |OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. |Ja |
-| accountName |Data Lake-Kontoname |Nein |
-| subscriptionId |Azure-Abonnement-ID. |Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
-| ResourceGroupName |Azure-Ressourcengruppenname |Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
+| Typ | Die type-Eigenschaft muss auf **AzureDataLakeStore** | Ja |
+| dataLakeStoreUri | Geben Sie Informationen zum Azure Data Lake-Speicherkonto an. Sie weisen das folgende Format auf: **https://[Kontoname].azuredatalakestore.net/webhdfs/v1** oder **adl://[Kontoname].azuredatalakestore.net/**. | Ja |
+| subscriptionId | ID des Azure-Abonnements, dem die Data Lake Store-Instanz angehört. | Erforderlich für Senke |
+| ResourceGroupName | Name der Azure-Ressourcengruppe, der die Data Lake Store-Instanz angehört. | Erforderlich für Senke |
 
-## <a name="token-expiration"></a>Tokenablauf
+### <a name="using-service-principal-authentication-recommended"></a>Verwenden der Dienstprinzipalauthentifizierung (empfohlen)
+Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst in Azure Active Directory (AAD) eine Anwendungsentität registrieren und ihr in Data Lake Store Zugriff gewähren. Anschließend können Sie in Azure Data Factory die folgenden Eigenschaften mit entsprechenden Werten für Anwendungs-ID, Anwendungsschlüssel und Mandant angeben, um Daten aus bzw. in Data Lake Store zu kopieren. Informationen zur Einrichtung sowie zum Abrufen der erforderlichen Informationen finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+
+>[!NOTE]
+>Wenn Sie einen Dienstprinzipal in AAD neu erstellen, kann es einige Minuten dauern, bis er tatsächlich wirksam wird. Wenn in den Fehlerdetails des Kopierassistenten oder Kopiervorgangs die Meldung „Die angegebenen Anmeldeinformationen sind ungültig.“ angezeigt wird, warten Sie etwas und versuchen es dann erneut.
+>
+
+| Eigenschaft | Beschreibung | Erforderlich |
+|:--- |:--- |:--- |
+| servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. | Ja |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diesen können Sie bestimmen, indem Sie den Mauszeiger über dem rechten oberen Bereich im Azure-Portal bewegen. | Ja |
+
+**Beispiel: Verwenden der Dienstprinzipalauthentifizierung**
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": "<service principal key>",
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        }
+    }
+}
+```
+
+### <a name="using-user-credential-authentication"></a>Verwenden der Authentifizierung mit Benutzeranmeldeinformationen
+Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen verwenden, um Daten aus/in Data Lake Store zu kopieren. Geben Sie hierzu die folgenden Eigenschaften an:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+|:--- |:--- |:--- |
+| authorization | Klicken Sie im **Data Factory-Editor** auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein, wodurch die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen wird. | Ja |
+| sessionId | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
+
+**Beispiel: Verwenden der Authentifizierung mit Benutzeranmeldeinformationen**
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
+            "sessionId": "<session ID>",
+            "authorization": "<authorization URL>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        }
+    }
+}
+```
+
+#### <a name="token-expiration"></a>Tokenablauf
 Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21-09-31Z“.
 
 | Benutzertyp | Läuft ab nach |
@@ -446,7 +488,7 @@ Wenn Sie Ihr Kennwort vor Ablauf der Tokengültigkeitsdauer ändern, läuft das 
 
 Um diesen Fehler zu vermeiden oder zu beheben, autorisieren Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut, wenn das **Token abläuft**, und stellen den verknüpften Dienst anschließend erneut bereit. Sie können auch programmgesteuert Werte für die Eigenschaften **sessionId** und **authorization** generieren. Verwenden Sie hierzu den im folgenden Abschnitt bereitgestellten Code:
 
-### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>So generieren Sie programmgesteuert Werte für „sessionId“ und „authorization“
+#### <a name="to-programmatically-generate-sessionid-and-authorization-values"></a>So generieren Sie programmgesteuert Werte für „sessionId“ und „authorization“
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -552,6 +594,6 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

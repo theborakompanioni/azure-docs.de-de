@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
-ms.openlocfilehash: b1691d78e4914bd5cf9c75e32f36afceb997a622
+ms.sourcegitcommit: 9b26cfed4102bc09512f5ef1270aa0275a7f8f69
+ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
 
 
 ---
@@ -40,7 +40,7 @@ Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights
 
 * Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen: Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights aus Ihrer Anwendung empfängt.
 * Für jede App ist 1 GB kostenlos. Wenn Sie also nur experimentieren oder entwickeln, ist es unwahrscheinlich, dass Sie dafür zahlen müssen.
-* [Fortlaufender Export](app-insights-export-telemetry.md) und [Log Analytics-Connector](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) sind gegen eine Zusatzgebühr pro GB im Basic-Tarif verfügbar. Bis Anfang März 2017 sind beide Funktion allerdings kostenlos.
+* [Fortlaufender Export](app-insights-export-telemetry.md) ist gegen eine Zusatzgebühr pro GB im Basic-Tarif verfügbar. Bis Anfang März 2017 ist die Funktion allerdings kostenlos.
 
 ### <a name="enterprise-plan"></a>Enterprise-Tarif
 
@@ -66,7 +66,7 @@ Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights
 
 * Die genaue Knotenanzahl hängt vom Application Insights SDK ab, das von der Anwendung verwendet wird. 
   * In den SDK-Versionen 2.2 und höher melden das [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) und das [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) von Application Insights jeden Anwendungshost als Knoten, z.B. den Computernamen für physische Server und VM-Hosts oder den Instanznamen bei Clouddiensten.  Die einzige Ausnahme bilden Anwendungen, die nur [.NET Core](https://dotnet.github.io/) und das Application Insights Core SDK verwenden. In diesem Fall wird nur ein Knoten für alle Hosts gemeldet, da der Hostname nicht verfügbar ist. 
-  * Für frühere Versionen des SDK verhält sich das [Web SDK}(https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) wie die höheren SDK-Versionen, das [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) meldet jedoch nur einen Knoten, unabhängig von der Anzahl der tatsächlichen Anwendungshosts. 
+  * Für frühere Versionen des SDK verhält sich das [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) wie die höheren SDK-Versionen, das [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) meldet jedoch nur einen Knoten, unabhängig von der Anzahl der tatsächlichen Anwendungshosts. 
   * Beachten Sie, dass Ihre Anwendung das SDK verwendet, um „roleInstance“ auf einen benutzerdefinierten Wert festzulegen. Standardmäßig wird dieser Wert verwendet, um die Anzahl der Knoten zu bestimmen. 
   * Wenn Sie eine neue SDK-Version mit einer App verwenden, die über Clientcomputer oder mobile Geräte ausgeführt wird, ist es möglich, dass für die Anzahl der Knoten eine sehr hohe Zahl zurückgegeben wird (durch die große Anzahl von Clientcomputern oder mobilen Geräten). 
 
@@ -174,6 +174,6 @@ Für vorhandene Anwendungen können noch bis Februar 2017 die alten Tarife verwe
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

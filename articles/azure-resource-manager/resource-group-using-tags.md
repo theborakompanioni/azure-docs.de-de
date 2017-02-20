@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Tags zum Organisieren von Azure-Ressourcen | Microsoft Docs
-description: "Zeigt, wie Sie Tags zum Organisieren von Ressourcen für die Abrechnung und Verwaltung anwenden können."
+title: "Kennzeichnen von Azure-Ressourcen für die logische Organisation | Microsoft-Dokumentation"
+description: "Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -12,22 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2017
+ms.date: 02/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 87973df7bb1b81c2d1cbdeb31e2fabb584f7e625
-ms.openlocfilehash: 61e47f479b7cb05e1aca06e12ff5997769b2097d
+ms.sourcegitcommit: ec80273fd388a435bc0aee9cb2dd49df12535923
+ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
 
 
 ---
-# <a name="using-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
-Mit dem Resource Manager können Sie Ressourcen durch Anwenden von Tags logisch organisieren. Tags bestehen aus Schlüssel-Wert-Paaren, die Ressourcen mit den Eigenschaften identifizieren, die Sie definieren. Um Ressourcen so zu kennzeichnen, dass sie zur selben Kategorie gehören, wenden Sie das gleiche Tag auf diese Ressourcen an.
-
-Wenn Sie Ressourcen mit einem bestimmten Tag anzeigen, sehen Sie Ressourcen aus allen Ressourcengruppen. Sie sind nicht auf Ressourcen in der gleichen Ressourcengruppe beschränkt, weshalb Sie Ihre Ressourcen unabhängig von Bereitstellungsbeziehungen organisieren können. Tags können besonders hilfreich sein, wenn Sie Ressourcen zur Abrechnung oder Verwaltung organisieren müssen.
-
-Jedes Tag, das Sie einer Ressource oder Ressourcengruppe hinzufügen, wird automatisch der Taxonomie für das Abonnement hinzugefügt. Sie können die Taxonomie für Ihr Abonnement auch vorab mit Tagnamen und -werten füllen, die Sie zukünftig zum Markieren von Ressourcen verwenden möchten.
-
-Jede Ressource oder Ressourcengruppe kann maximal 15 Tags haben. Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
+# <a name="use-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
+[!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
 
 > [!NOTE]
 > Sie können Tags nur auf Ressourcen anwenden, die Resource Manager-Vorgänge unterstützen. Wenn Sie einen virtuellen Computer, ein virtuelles Netzwerk (VNET) oder Speicher über das klassische Bereitstellungsmodell erstellt haben (z.B. über das klassische Azure-Portal), können Sie auf diese Ressource kein Tag anwenden. Damit Tags unterstützt werden, müssen Sie diese Ressourcen über den Resource Manager erneut bereitstellen. Alle anderen Ressourcen unterstützen die Markierung durch Tags.
@@ -35,77 +29,76 @@ Jede Ressource oder Ressourcengruppe kann maximal 15 Tags haben. Der Tagname is
 > 
 
 ## <a name="templates"></a>Vorlagen
-Um eine Ressource während der Bereitstellung zu markieren, fügen Sie der Ressource, die Sie bereitstellen, das **tags**-Element hinzu, und geben Sie den Namen und den Wert des Tags an. Der Tagname und der Wert müssen nicht bereits in Ihrem Abonnement vorhanden sein. Sie können für jede Ressource bis zu 15 Tags bereitstellen.
 
-Das folgende Beispiel zeigt ein Speicherkonto mit einem Tag.
-
-```json
-"resources": [
-    {
-        "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2015-06-15",
-        "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "dept": "Finance"
-        },
-        "properties": 
-        {
-            "accountType": "Standard_LRS"
-        }
-    }
-]
-```
-
-Derzeit wird die Verarbeitung eines Objekts für die Tagnamen und -werte von Resource Manager nicht unterstützt. Übergeben Sie stattdessen ein Objekt für die Tagwerte, Sie müssen jedoch dennoch die Tagnamen angeben, wie unten dargestellt.
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "tagvalues": {
-      "type": "object",
-      "defaultValue": {
-        "dept": "Finance",
-        "project": "Test"
-      }
-    }
-  },
-  "resources": [
-  {
-    "apiVersion": "2015-06-15",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "examplestorage",
-    "tags": {
-      "dept": "[parameters('tagvalues').dept]",
-      "project": "[parameters('tagvalues').project]"
-    },
-    "location": "[resourceGroup().location]",
-    "properties": {
-      "accountType": "Standard_LRS"
-    }
-  }]
-}
-```
+[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
 
 ## <a name="portal"></a>Portal
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="powershell"></a>PowerShell
-[!INCLUDE [resource-manager-tag-resources](../../includes/resource-manager-tag-resources-powershell.md)]
+[!INCLUDE [resource-manager-tag-resources-powershell](../../includes/resource-manager-tag-resources-powershell.md)]
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+
+Mit Azure CLI 2.0 (Vorschau) können Sie Ressourcen und Ressourcengruppen Tags hinzufügen und Ressourcen anhand von Tag-Werten abfragen.
+
+Wenn Sie Tags auf eine Ressource oder Ressourcengruppe anwenden, werden die bereits vorhandenen Tags für diese Ressource oder Ressourcengruppe überschrieben. Daher müssen Sie Ihre Vorgehensweise darauf abstimmen, ob für die Ressource oder Ressourcengruppe bereits Tags vorhanden sind, die Sie beibehalten möchten. Mögliche Szenarien:
+
+* Hinzufügen von Tags zu einer Ressourcengruppe ohne vorhandene Tags
+
+  ```azurecli
+  az group update -n TagTestGroup --set tags.Environment=Test tags.Dept=IT
+  ```
+
+* Hinzufügen von Tags zu einer Ressource ohne vorhandene Tags
+
+  ```azurecli
+  az resource tag --tags Dept=IT Environment=Test -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+  ``` 
+
+Um einer Ressource ein Tag hinzuzufügen, die bereits Tags enthält, rufen Sie zuerst die vorhandenen Tags ab: 
+
+```azurecli
+az resource show --query tags --output list -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+```
+
+Hiermit wird das folgende Format zurückgegeben:
+
+```
+Dept        : Finance
+Environment : Test
+```
+
+Wenden Sie die vorhandenen Tags erneut auf die Ressource an, und fügen Sie die neuen Tags hinzu.
+
+```azurecli
+az resource tag --tags Dept=Finance Environment=Test CostCenter=IT -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+``` 
+
+Zum Abrufen von Ressourcengruppen mit einem bestimmten Tag verwenden Sie `az group list`.
+
+```azurecli
+az group list --tag Dept=IT
+```
+
+Zum Abrufen aller Ressourcen mit einem bestimmten Tag und Wert verwenden Sie `az resource list`.
+
+```azurecli
+az resource list --tag Dept=Finance
+```
+
+## <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
 [!INCLUDE [resource-manager-tag-resources-cli](../../includes/resource-manager-tag-resources-cli.md)]
 
 ## <a name="rest-api"></a>REST-API
 Das Vorschauportal und PowerShell verwenden im Hintergrund die [Ressourcen-Manager-REST-API](https://docs.microsoft.com/rest/api/resources/) . Wenn Sie das Tagging in eine andere Umgebung integrieren müssen, können Sie Tags mit GET für die Ressourcen-ID abrufen und die Tags mit einem PATCH-Aufruf aktualisieren.
 
 ## <a name="tags-and-billing"></a>Tags und Abrechnung
-Abrechnungsdaten können für unterstützte Dienste mithilfe von Tags gruppiert werden. So können Sie beispielsweise mithilfe von in Azure Resource Manager bereitgestellten virtuellen Computern Tags definieren und anwenden, um die Abrechnung für virtuelle Computer zu organisieren. Wenn Sie mehrere virtuelle Computer für verschiedene Organisationen betreiben, können Sie die Nutzung mithilfe von Tags nach Kostenstelle gruppieren.  
-Mit Tags können Sie auch Kosten nach Laufzeitumgebung kategorisieren (beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung).
+Mithilfe von Tags können Sie Ihre Abrechnungsdaten gruppieren. Beispiel: Wenn Sie mehrere virtuelle Computer für verschiedene Organisationen betreiben, gruppieren Sie die Nutzung mithilfe von Tags nach Kostenstelle. Mit Tags können Sie auch Kosten nach Laufzeitumgebung kategorisieren (beispielsweise zur Abrechnung der Nutzung virtueller Computer in der Produktionsumgebung).
 
-Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../billing-usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontenportal](https://account.windowsazure.com/) oder dem [EA-Portal](https://ea.azure.com) herunter. Weitere Informationen zum programmgesteuerten Zugriff auf Abrechnungsinformationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../billing-usage-rate-card-overview.md). Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)(in englischer Sprache).
+
+Informationen zu Tags können Sie über die [Azure-Ressourcennutzungs- und RateCard-APIs](../billing/billing-usage-rate-card-overview.md) oder aus der Nutzungsdatei im CSV-Format abrufen. Sie laden die Nutzungsdatei aus dem [Azure-Kontenportal](https://account.windowsazure.com/) oder dem [EA-Portal](https://ea.azure.com) herunter. Weitere Informationen zum programmgesteuerten Zugriff auf Abrechnungsinformationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Hinweise zu REST-API-Vorgängen finden Sie unter [Azure Billing REST API Reference (Preview)](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)(in englischer Sprache).
+
 
 Wenn Sie die CSV-Nutzungsdatei für Dienste herunterladen, die die Verwendung von Tags für die Abrechnung unterstützen, sind die Tags in der Spalte **Tags** enthalten. Weitere Informationen finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../billing/billing-understand-your-bill.md).
 
@@ -121,6 +114,6 @@ Wenn Sie die CSV-Nutzungsdatei für Dienste herunterladen, die die Verwendung vo
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

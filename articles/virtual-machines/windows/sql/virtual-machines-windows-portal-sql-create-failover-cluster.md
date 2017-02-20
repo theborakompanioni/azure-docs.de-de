@@ -17,8 +17,8 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 5c5c6aa4b6408da7b0c1511ac5fa79af5076f979
-ms.openlocfilehash: 268e5eabe88c46b2fab51debb25179a8a65be469
+ms.sourcegitcommit: b84e07b26506149cf9475491b32b9ff3ea9ae80d
+ms.openlocfilehash: 4d078c3307c5f1a567f580ae5baaa21fa915e90a
 
 
 ---
@@ -163,7 +163,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres WS
    | SQL Server | 1433 | Dies ist der normale Port für Standardinstanzen von SQL Server. Falls Sie ein Image aus dem Katalog verwendet haben, ist dieser Port automatisch geöffnet. 
    | Integritätstest | 59999 | Beliebiger geöffneter TCP-Port. In einem späteren Schritt konfigurieren Sie für den [Integritätstest](#probe) des Lastenausgleichs und den Cluster die Verwendung dieses Ports.  
 
-1. Fügen Sie dem virtuellen Computer Speicher hinzu. Ausführliche Informationen finden Sie im Artikel zum [Hinzufügen von Speicher](../../../storage/storage-premium-storage.md#quick-start-create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk).
+1. Fügen Sie dem virtuellen Computer Speicher hinzu. Ausführliche Informationen finden Sie im Artikel zum [Hinzufügen von Speicher](../../../storage/storage-premium-storage.md).
 
    Für beide virtuellen Computer sind jeweils mindestens zwei Datenträger für Daten erforderlich.
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-Datenbankratgeber
+title: "Empfehlungen zur Optimierung der Abfrageleistung – Azure SQL-Datenbank | Microsoft-Dokumentation"
 description: "Der Azure SQL-Datenbankratgeber stellt Empfehlungen für Ihre vorhandenen SQL-Datenbanken bereit, die die aktuelle Abfrageleistung verbessern können."
 services: sql-database
 documentationcenter: 
@@ -16,21 +16,16 @@ ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f7bffa4f13d7a4fa0ea3c120a826638ee5d6c65a
+ms.sourcegitcommit: cf627b92399856af2b9a58ab155fac6730128f85
+ms.openlocfilehash: a8d0b08abc7e3c688f9ab79499b3459b33f06848
 
 
 ---
 # <a name="sql-database-advisor"></a>SQL-Datenbankratgeber
-> [!div class="op_single_selector"]
-> * [SQL-Datenbankratgeber – Übersicht](sql-database-advisor.md)
-> * [Portal](sql-database-advisor-portal.md)
-> 
-> 
 
 Azure SQL-Datenbank lernt mit Ihrer Anwendung und passt sich daran an. Darüber hinaus bietet der Dienst benutzerdefinierte Empfehlungen, mit denen Sie die Leistung Ihrer SQL-Datenbanken maximieren können. Der SQL Database Advisor stellt Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen bereit. Der Ratgeber bewertet die Leistung durch eine Analyse des Nutzungsverlaufs Ihrer SQL-Datenbank. Die Empfehlungen, die sich am besten für die Ausführung der typischen Workload Ihrer Datenbank eignen, werden angezeigt. 
 
-Die folgenden Empfehlungen sind für V12-Server verfügbar. (Für V11-Server stehen keine Empfehlungen zur Verfügung.) Derzeit können Sie festlegen, dass die Empfehlungen zum Erstellen und Löschen von Indizes automatisch angewendet werden. Informationen hierzu finden Sie unter [Automatische Indexverwaltung](sql-database-advisor-portal.md#enable-automatic-index-management).
+Die folgenden Empfehlungen sind für Azure SQL-Datenbankserver verfügbar. Derzeit können Sie festlegen, dass die Empfehlungen zum Erstellen und Löschen von Indizes automatisch angewendet werden. Informationen hierzu finden Sie unter [Automatische Indexverwaltung](sql-database-advisor-portal.md#enable-automatic-index-management).
 
 ## <a name="create-index-recommendations"></a>Empfehlungen zum Erstellen eines Index
 **Erstellen eines Index** werden angezeigt, wenn der SQL-Datenbankdienst erkennt, dass ein Index fehlt, von dem die Workload Ihrer Datenbanken profitieren könnte (nur nicht gruppierte Indizes).
@@ -79,6 +74,6 @@ Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

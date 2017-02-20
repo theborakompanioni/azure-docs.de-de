@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub-Glossar | Microsoft-Dokumentation
+title: Glossar mit Azure IoT Hub-Begriffen | Microsoft-Dokumentation
 description: "Entwicklerhandbuch: Ein Glossar mit häufig verwendeten Begriffen für IoT Hub."
 services: iot-hub
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1f795dd5b3d99731b2e683085d889ed7943d6281
-ms.openlocfilehash: 3661ad7374fd91cf7bbc485b8ce0805b78518899
+ms.sourcegitcommit: 85fd7b0e867ebe5fff937ff9fc83b688649fcfba
+ms.openlocfilehash: 70feb409d05b26a4d874bad2d1984fda5db32216
 
 
 ---
@@ -27,7 +27,11 @@ In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT H
 [Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (Azure-CLI) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis zum Erstellen und Verwalten von Ressourcen in Microsoft Azure.
+Die [Azure CLI](../xplat-cli-install.md) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Version wird mithilfe von Node.js implementiert.
+
+## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+Die [Azure CLI 2.0 (Vorschau)](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Vorschauversion wird mithilfe von Python implementiert.
+
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
 Es sind _Geräte-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Geräte-Apps](#device-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Geräte-SDKs verwenden. Den Quellcode und weitere Informationen zu den Geräte-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
@@ -56,6 +60,9 @@ Mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overvi
 ## <a name="back-end-app"></a>Back-End-App
 Im Kontext von [IoT Hub](#iot-hub) ist eine Back-End-App eine App, mit der eine Verbindung mit einem der dienstseitigen Endpunkte von IoT Hub hergestellt wird. Mit einer Back-End-App werden beispielsweise [Gerät-zu-Cloud](#device-to-cloud)-Nachrichten (D2C-Nachrichten) abgerufen, oder sie wird zum Verwalten der [Identitätsregistrierung](#identity-registry) eingesetzt. Eine Back-End-App wird normalerweise in der Cloud ausgeführt, aber in vielen Tutorials handelt es sich bei den Back-End-Apps um Konsolen-Apps, die auf dem lokalen Entwicklungscomputer ausgeführt werden.
 
+## <a name="built-in-endpoints"></a>Integrierte Endpunkte
+Jeder IoT Hub umfasst einen mit Event Hubs kompatiblen [Endpunkt](iot-hub-devguide-endpoints.md). Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von D2C-Nachrichten von diesem Endpunkt verwenden.
+
 ## <a name="cloud-gateway"></a>Cloudgateway
 Mit einem Cloudgateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Ein Cloudgateway wird in der Cloud gehostet, während ein [Bereichsgateway](#field-gateway) lokal auf Ihren Geräten ausgeführt wird. Ein typischer Anwendungsfall für ein Cloudgateway ist die Implementierung der Protokollübersetzung für Ihre Geräte.
 
@@ -66,6 +73,9 @@ Bezieht sich auf Nachrichten, die von IoT Hub an ein verbundenes Gerät gesendet
 Sie können Verbindungszeichenfolgen in Ihrem App-Code verwenden, um die Informationen zu kapseln, die zum Herstellen der Verbindung mit einem Endpunkt erforderlich sind. Eine Verbindungszeichenfolge enthält üblicherweise die Adresse des Endpunkts und Sicherheitsinformationen, aber das Format der Verbindungszeichenfolge variiert für die verschiedenen Dienste. Im Zusammenhang mit dem IoT Hub-Dienst gibt es zwei Arten von Verbindungszeichenfolgen:
 - *Geräteverbindungszeichenfolgen:* Ermöglichen es Geräten, eine Verbindung mit den geräteseitigen Endpunkten einer IoT Hub-Instanz herzustellen.
 - *IoT Hub-Verbindungszeichenfolgen:* Ermöglichen es Back-End-Apps, eine Verbindung mit den dienstseitigen Endpunkten einer IoT Hub-Instanz herzustellen.
+
+## <a name="custom-endpoints"></a>Benutzerdefinierte Endpunkte
+Sie können benutzerdefinierte [Endpunkte](iot-hub-devguide-endpoints.md) auf einen IoT Hub erstellen, um von einer [Routingregel](#routing-rules) versendete Nachrichten weiterzuleiten. Benutzerdefinierte Endpunkte stellen eine direkte Verbindung mit einem Event Hub, einer Service Bus-Warteschlange oder einem Service Bus-Thema her.
 
 ## <a name="custom-gateway"></a>Benutzerdefiniertes Gateway
 Mit einem Gateway können Verbindungen für Geräte hergestellt werden, für die eine direkte Verbindung mit [IoT Hub](#iot-hub) nicht möglich ist. Sie können das [Azure IoT Gateway SDK](#azure-iot-gateway-sdk) zum Erstellen von benutzerdefinierten Gateways verwenden, bei denen benutzerdefinierte Logik implementiert wird, um Nachrichten und benutzerdefinierte Protokollkonvertierungen zu verarbeiten.
@@ -95,10 +105,10 @@ Bezieht sich auf Informationen zum Gerätezustand, z.B. die derzeit verwendete V
 Gerätedaten sind Daten, die pro Gerät in der IoT Hub-[Identitätsregistrierung](#identity-registry) gespeichert werden. Es ist möglich, diese Daten zu importieren und zu exportieren.
 
 ## <a name="device-explorer"></a>Geräte-Explorer
-Der [Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) und das Senden und Empfangen von Nachrichten für Ihre Geräte ermöglicht.
+Der [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) und das Senden und Empfangen von Nachrichten für Ihre Geräte ermöglicht.
 
 ## <a name="device-identities-rest-api"></a>REST-API für Geräteidentitäten
-Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/iothub/device-identities-rest) können Sie Ihre Geräte, die in der [Identitätsregistrierung](#identity-registry) registriert sind, per REST-API verwalten. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/iothub/iothubresource) können Sie Ihre Geräte, die in der [Identitätsregistrierung](#identity-registry) registriert sind, per REST-API verwalten. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
 ## <a name="device-identity"></a>Geräteidentität
 Die Geräteidentität ist der eindeutige Bezeichner, der jedem Gerät zugewiesen wird, das in der [Identitätsregistrierung](#identity-registry) registriert ist.
@@ -110,7 +120,7 @@ Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltun
 [IoT Hub](#iot-hub) ermöglicht allgemeine Schritte zur Geräteverwaltung, z.B. Neustart, Zurücksetzung auf die Werkseinstellungen und Durchführung von Firmwareupdates auf Ihren Geräten.
 
 ## <a name="device-messaging-rest-api"></a>REST-API für Device Messaging
-Sie können die [REST-API für Device Messaging](https://docs.microsoft.com/rest/api/iothub/device-messaging-rest-apis) auf einem Gerät nutzen, um D2C-Nachrichten an IoT Hub zu senden und [C2D-Nachrichten](#cloud-to-device) von IoT Hub zu empfangen. Es ist in der Regel ratsam, eines der allgemeinen [Geräte-SDKs](#azure-iot-device-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+Sie können die [REST-API für Device Messaging](https://docs.microsoft.com/rest/api/iothub/httpruntime) auf einem Gerät nutzen, um D2C-Nachrichten an IoT Hub zu senden und [C2D-Nachrichten](#cloud-to-device) von IoT Hub zu empfangen. Es ist in der Regel ratsam, eines der allgemeinen [Geräte-SDKs](#azure-iot-device-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
 Die Gerätebereitstellung ist der Prozess des Hinzufügens der ersten [Gerätedaten](#device-data) zu den Speichern in Ihrer Lösung. Damit ein neues Gerät eine Verbindung mit Ihrem Hub herstellen kann, müssen Sie der IoT Hub-[Identitätsregistrierung](#identity-registry) eine neue Geräte-ID und Schlüssel hinzufügen. Im Rahmen des Bereitstellungsprozesses müssen Sie unter Umständen gerätespezifische Daten in anderen Lösungsspeichern initialisieren.
@@ -121,6 +131,9 @@ Ein [Gerätezwilling](iot-hub-devguide-device-twins.md) ist ein JSON-Dokument, m
 ## <a name="device-twin-queries"></a>Gerätezwillingabfragen
 Für [Gerätezwillingabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Gerätezwillingen abzufragen. Sie können diese IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
 
+## <a name="device-twins-rest-api"></a>REST-API für Gerätezwillinge
+Sie können die [REST-API für Gerätezwillinge](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) am Lösungs-Back-End zur Verwaltung Ihrer Gerätezwillinge verwenden. Mithilfe der API können Sie [Gerätezwillings](#device-twin)eigenschaften abrufen und aktualisieren sowie [direkte Methoden](#direct-method) aufrufen. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+
 ## <a name="device-twin-synchronization"></a>Synchronisierung von Gerätezwillingen
 Bei der Synchronisierung von Gerätezwillingen werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Gerätezwillingen verwendet, um die Geräte zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten zum Speichern auf dem Gerätezwilling abzurufen.
 
@@ -128,10 +141,10 @@ Bei der Synchronisierung von Gerätezwillingen werden die [gewünschten Eigensch
 Eine [direkte Methode](iot-hub-devguide-direct-methods.md) ist eine Möglichkeit zum Auslösen einer auf einem Gerät auszuführenden Methode, indem eine API auf Ihrem IoT Hub aufgerufen wird.
 
 ## <a name="endpoint"></a>Endpunkt
-Ein IoT Hub macht mehrere [Endpunkte](iot-hub-devguide-endpoints.md) verfügbar, mit deren Hilfe Ihre Apps eine Verbindung mit dem IoT Hub herstellen können. Es gibt geräteseitige Endpunkte, die Geräten das Durchführen von Vorgängen ermöglichen, z.B. das Senden von [D2C](#device-to-cloud)-Nachrichten und das Empfangen von [C2D](#cloud-to-device)-Nachrichten. Es gibt dienstseitige Endpunkte, die [Back-End-Apps](#back-end-app) das Durchführen von Vorgängen ermöglichen, z.B. die Verwaltung der [Geräteidentität](#device-identity) und von Gerätezwillingen.
+Ein IoT Hub macht mehrere [Endpunkte](iot-hub-devguide-endpoints.md) verfügbar, mit deren Hilfe Ihre Apps eine Verbindung mit dem IoT Hub herstellen können. Es gibt geräteseitige Endpunkte, die Geräten das Durchführen von Vorgängen ermöglichen, z.B. das Senden von [D2C](#device-to-cloud)-Nachrichten und das Empfangen von [C2D](#cloud-to-device)-Nachrichten. Es gibt dienstseitige Verwaltungsendpunkte, die [Back-End-Apps](#back-end-app) das Durchführen von Vorgängen ermöglichen, z.B. die Verwaltung der [Geräteidentität](#device-identity) und von Gerätezwillingen. Es gibt dienstseitige [integrierte Endpunkte](#built-in-endpoints) zum Lesen von D2C-Nachrichten. Sie können [benutzerdefinierte Endpunkte](#custom-endpoints) erstellen, um von einer [Routingregel](#routing-rules) versendete D2C-Nachrichten zu empfangen.
 
 ## <a name="event-hubs-service"></a>Event Hubs-Dienst
-[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) ist ein hoch skalierbarer Datenerfassungsdienst, mit dem Millionen von Ereignissen pro Sekunde erfasst werden können. Mit diesem Dienst können Sie riesige Datenmengen verarbeiten und analysieren, die von Ihren verbundenen Geräten und Anwendungen erzeugt werden. Einen Vergleich mit dem IoT Hub-Dienst finden Sie unter [Vergleich zwischen Azure IoT Hub und Azure Event Hubs](iot-hub-compare-event-hubs.md).
+[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) ist ein hoch skalierbarer Datenerfassungsdienst, mit dem Millionen von Ereignissen pro Sekunde erfasst werden können. Mit diesem Dienst können Sie umfangreiche Datenmengen verarbeiten und analysieren, die von Ihren verbundenen Geräten und Anwendungen generiert werden. Einen Vergleich mit dem IoT Hub-Dienst finden Sie unter [Vergleich zwischen Azure IoT Hub und Azure Event Hubs](iot-hub-compare-event-hubs.md).
 
 ## <a name="event-hub-compatible-endpoint"></a>Event Hub-kompatibler Endpunkt
 Zum Lesen von [D2C](#device-to-cloud)-Nachrichten, die an Ihren IoT Hub gesendet werden, können Sie sich mit einem Endpunkt auf Ihrem Hub verbinden und eine beliebige Event Hub-kompatible Methode zum Lesen dieser Nachrichten nutzen. Event Hub-kompatible Methoden sind beispielsweise das Verwenden von [Event Hubs SDKs](../event-hubs/event-hubs-programming-guide.md) und [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
@@ -167,10 +180,13 @@ Sie können die [IoT Hub-Ressourcenanbieter-REST-API](https://docs.microsoft.com
 Azure IoT Suite kombiniert mehrere Azure IoT-Dienste mit vorkonfigurierten Lösungen. Diese vorkonfigurierten Lösungen ermöglichen Ihnen die schnelle und lückenlose Implementierung gängiger IoT-Szenarien. Weitere Informationen finden Sie unter [Was ist Azure IoT Suite?](../iot-suite/iot-suite-overview.md).
 
 ## <a name="iothub-explorer"></a>iothub-explorer
-Der [iothub-explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) ist ein plattformübergreifendes Befehlszeilentool. Mit dem Tool können Sie Ihre Geräte in der [Identitätsregistrierung](#identity-registry) verwalten, Nachrichten und Dateien für Ihre Geräte senden und empfangen und die IoT Hub-Vorgänge überwachen.
+Der [iothub-explorer](https://github.com/azure/iothub-explorer) ist ein plattformübergreifendes Befehlszeilentool. Mit dem Tool können Sie Ihre Geräte in der [Identitätsregistrierung](#identity-registry) verwalten, Nachrichten und Dateien für Ihre Geräte senden und empfangen und die IoT Hub-Vorgänge überwachen.
 
 ## <a name="job"></a>Auftrag
 Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt [IoT Hub](#iot-hub) Aufträge zum [Importieren und Exportieren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
+
+## <a name="job-api"></a>Auftrags-API
+Die [Auftrags-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ist eine REST-API und ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrem IoT-Hub ausgeführt werden.
 
 ## <a name="module"></a>Modul
 Im [Azure IoT Gateway SDK](iot-hub-linux-gateway-sdk-get-started.md) ist ein [Modul](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Das Azure IoT Gateway SDK enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
@@ -194,7 +210,7 @@ Ein Protokollgateway wird der Regel in der Cloud bereitgestellt und bietet Proto
 Es gibt verschiedene [Kontingente](iot-hub-devguide-quotas-throttling.md), die für Ihre Verwendung von [IoT Hub](#iot-hub) gelten. Viele Kontingente variieren je nach IoT Hub-Ebene. [IoT Hub](#iot-hub) wendet außerdem [Drosselungen](iot-hub-devguide-quotas-throttling.md) auf Ihre Nutzung des Diensts zur Laufzeit an.
 
 ## <a name="reported-configuration"></a>Gemeldete Konfiguration
-Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) bezieht sich die gemeldete Konfiguration auf den vollständigen Satz von Eigenschaften und Metadaten im Gerätezwilling, die vom Gerät an das Lösungs-Back-End gemeldet werden sollen.
+Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) bezieht sich die gemeldete Konfiguration auf den vollständigen Satz von Eigenschaften und Metadaten im Gerätezwilling, die an das Lösungs-Back-End gemeldet werden sollen.
 
 ## <a name="reported-properties"></a>Gemeldete Eigenschaften
 Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es sich bei gemeldeten Eigenschaften um einen Unterabschnitt, der zusammen mit [gewünschten Eigenschaften](#desired-properties) verwendet wird, um die Gerätekonfiguration oder den Gerätezustand zu synchronisieren. Gemeldete Eigenschaften können nur von der [Geräte-App](#device-app) festgelegt werden. Das Lesen und Abfragen ist per [Back-End-App](#back-end-app) möglich.
@@ -204,6 +220,9 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es
 
 ## <a name="retry-policy"></a>Wiederholungsrichtlinie
 Sie verwenden eine Wiederholungsrichtlinie, um [vorübergehende Fehler](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) zu verarbeiten, wenn Sie eine Verbindung mit einem Clouddienst herstellen.
+
+## <a name="routing-rules"></a>Routingregeln
+Sie konfigurieren [Routingregeln](iot-hub-devguide-messaging.md#routing-rules) in Ihrem IoT Hub, um D2C-Nachrichten an einen [integrierten Endpunkt](#built-in-endpoints) oder [benutzerdefinierte Endpunkte](#custom-endpoints) für die Verarbeitung durch Ihr Lösungs-Back-End weiterzuleiten.
 
 ## <a name="sasl-plain"></a>SASL PLAIN
 SASL PLAIN ist ein Protokoll, das vom [AMQP](#advanced-message-queue-protocol)-Protokoll zum Übertragen von Sicherheitstoken verwendet wird.
@@ -239,6 +258,6 @@ Sie können einen Tokendienst verwenden, um einen Authentifizierungsmechanismus 
 Ein Gerät kann ein X.509-Zertifikat für die Authentifizierung beim [IoT Hub](#iot-hub) verwenden. Der Einsatz eines X.509-Zertifikats ist eine Alternative zur Verwendung eines [SAS-Tokens](#shared-access-signature).
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

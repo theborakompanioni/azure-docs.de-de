@@ -15,13 +15,12 @@ ms.topic: article
 ms.date: 1/30/2016
 ms.author: luywang
 translationtype: Human Translation
-ms.sourcegitcommit: ebd9a8cf3d3fd0d2eec3be0b74eb679ebcf2a8f6
-ms.openlocfilehash: 775f57ea15369228a41814a8ef62c46be911af34
+ms.sourcegitcommit: 4582049fa1d369ea63395514336d26a524dbfdbe
+ms.openlocfilehash: bd4fb88e9a0eccfb9c9e22120a7552e3fb11f725
 
 
 ---
 # <a name="migrating-to-premium-storage-using-azure-site-recovery"></a>Migrieren zu Storage Premium mit Azure Site Recovery
-## <a name="overview"></a>Übersicht
 
 [Azure Storage Premium](storage-premium-storage.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. Dieser Leitfaden soll Benutzern beim Migrieren ihrer VM-Datenträger von einem Standard-Speicherkonto zu einem Storage Premium-Konto mithilfe von [Azure Site Recovery](../site-recovery/site-recovery-overview.md) als Hilfe dienen.
 
@@ -185,6 +184,6 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Az
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
