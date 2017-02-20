@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration | Microsoft Docs"
+title: "Azure AD Connect-Synchronisierung: Vornehmen einer Konfigurationsänderung in der Azure AD Connect-Synchronisierung | Microsoft-Dokumentation"
 description: "Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konfiguration in der Azure AD Connect-Synchronisierung vornehmen."
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 1e5356dca98e8da035c1ffb1eca16e8b16dbfe77
+ms.sourcegitcommit: 7c237bfb42fdd2ffdfface1a12ab21c51d2504bb
+ms.openlocfilehash: b327671b12bf6e2ce040ef6e6b0a58a0fead22b4
 
 
 ---
@@ -54,18 +54,18 @@ Der [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) wird stand
    ![Filterung für die eingehende Regel](./media/active-directory-aadconnectsync-change-the-configuration/description2.png)  
    * Name: Geben Sie einen beschreibenden Namen für die Regel ein.
    * Beschreibung: Fügen Sie Informationen hinzu, denen andere Benutzer entnehmen können, wozu die Regel dient.
-   * Verbundenes System: Das System, in dem sich das Objekt befindet. In diesem Fall wählen wir den Active Directory Connector aus.
+   * Verbundenes System: Das System, in dem sich das Objekt befindet. Wählen Sie in diesem Fall den Active Directory Connector aus.
    * Objekttyp im verbundenen System/Metaverse-Objekttyp: Wählen Sie **User** bzw. **Person** aus.
    * Verknüpfungstyp: Ändern Sie diesen Wert in **Join**.
    * Rangfolge: Geben Sie einen Wert an, der im System eindeutig ist. Ein niedrigerer numerischer Wert steht für eine höhere Rangfolge.
    * Tag: Lassen Sie dieses Feld leer. Dieses Feld sollte nur bei vordefinierten Regeln von Microsoft einen Wert enthalten.
 3. Geben Sie auf der Seite **Bereichsfilter** den Wert **givenName ISNOTNULL** ein.  
    ![Bereichsfilter für die eingehende Regel](./media/active-directory-aadconnectsync-change-the-configuration/scopingfilter.png)  
-    Dieser Abschnitt wird verwendet, um die Objekte zu definieren, auf die die Regel angewendet werden soll. Wenn Sie die Felder leer lassen, gilt die Regel für alle Benutzerobjekte. Sie würde in diesem Fall jedoch Konferenzräume, Dienstkonten und andere nicht personenbezogene Benutzerobjekte enthalten.
+   Dieser Abschnitt wird verwendet, um die Objekte zu definieren, auf die die Regel angewendet werden soll. Wenn Sie die Felder leer lassen, gilt die Regel für alle Benutzerobjekte. Sie würde in diesem Fall jedoch Konferenzräume, Dienstkonten und andere nicht personenbezogene Benutzerobjekte enthalten.
 4. Lassen die Felder im Abschnitt **Zusammenführungsregeln ** leer.
 5. Ändern Sie auf der Seite **Transformationen** den „FlowType“ in **Ausdruck**. Wählen Sie das Zielattribut **givenName** aus, und geben Sie `PCase([givenName])` als Quelle ein.
    ![Transformationen für die eingehende Regel](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png)  
-    Das Synchronisierungsmodul beachtet sowohl beim Funktionsnamen als auch dem Attributnamen die Groß-/Kleinschreibung. Im Fall einer fehlerhaften Eingabe wird beim Hinzufügen der Regel eine Warnung angezeigt. Da Sie Ihre Einstellungen im Editor speichern und den Vorgang dann fortsetzen können, müssten Sie die Regel erneut öffnen und korrigieren.
+   Das Synchronisierungsmodul beachtet sowohl beim Funktionsnamen als auch dem Attributnamen die Groß-/Kleinschreibung. Im Fall einer fehlerhaften Eingabe wird beim Hinzufügen der Regel eine Warnung angezeigt. Da Sie Ihre Einstellungen im Editor speichern und den Vorgang dann fortsetzen können, müssten Sie die Regel erneut öffnen und korrigieren.
 6. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.
 
 Die neue benutzerdefinierte Regel sollte zusammen mit den anderen Synchronisierungsregeln im System angezeigt werden.
@@ -81,14 +81,14 @@ Starten Sie den **Synchronisierungsdienst** über das Startmenü. Alle Schritte 
 1. **Vollständige Synchronisierung aller Objekte**  
    Klicken Sie im Menü „Aktionen“ auf **Connectors** aus. Suchen Sie nach dem Connector, den Sie im vorherigen Abschnitt geändert haben (in diesem Fall Active Directory Domain Services), und wählen Sie ihn aus. Klicken Sie im Menü „Aktionen“ auf **Ausführen**, wählen Sie **Vollständige Synchronisierung** aus, und klicken Sie auf **OK**.
    ![Vollständige Synchronisierung](./media/active-directory-aadconnectsync-change-the-configuration/fullsync.png)  
-    Die Objekte sind jetzt in der Metaverse aktualisiert. Nun möchten Sie sich das Objekt in der Metaverse ansehen.
+   Die Objekte sind jetzt in der Metaverse aktualisiert. Nun möchten Sie sich das Objekt in der Metaverse ansehen.
 2. **Vorschau und vollständige Synchronisierung eines einzelnen Objekts**  
-   Klicken Sie im Menü „Aktionen“ auf **Connectors** aus. Suchen Sie nach dem Connector, den Sie im vorherigen Abschnitt geändert haben (in diesem Fall die Active Directory Domain Services), und wählen Sie ihn aus. Wählen Sie **Search Connector Space**(Connectorbereich durchsuchen) aus. Verwenden Sie den Bereich, um nach einem Objekt zu suchen, das Sie zum Testen der Änderung verwenden möchten. Wählen Sie das Objekt aus, und klicken Sie auf **Vorschau**. Wählen Sie auf dem neuen Bildschirm **Commit Preview**(Commitvorschau) aus.
+   Klicken Sie im Menü „Aktionen“ auf **Connectors** aus. Suchen Sie nach dem Connector, den Sie im vorherigen Abschnitt geändert haben (in diesem Fall die Active Directory Domain Services), und wählen Sie ihn aus. Wählen Sie **Search Connector Space**(Connectorbereich durchsuchen) aus. Verwenden Sie den Bereich, um nach einem Objekt zu suchen, das Sie zum Testen der Änderung verwenden möchten. Wählen Sie das Objekt aus, und klicken Sie auf **Vorschau**. Wählen Sie auf dem neuen Bildschirm **Commit Preview**(Commitvorschau) aus.  
    ![Commit preview](./media/active-directory-aadconnectsync-change-the-configuration/commitpreview.png)  
-    Die Änderung wird jetzt an die Metaverse übergeben.
+   Die Änderung wird jetzt an die Metaverse übergeben.
 
 **Überprüfen des Objekts in der Metaverse**  
- Jetzt möchten Sie einige Beispielobjekte auswählen, um sicherzustellen, dass der Wert wie erwartet ist und die Regel angewendet wird. Wählen Sie oben im Fenster **Metaverse Search** (Metaversesuche) aus. Fügen Sie beliebige Filter hinzu, die Sie zur Suche nach den entsprechenden Objekten benötigen. Öffnen Sie im Suchergebnis ein Objekt. Sehen Sie sich die Attributwerte an, und überprüfen Sie in der Spalte **Synchronisierungsregeln** , ob die Regel wie erwartet angewendet wurde.  
+Jetzt möchten Sie einige Beispielobjekte auswählen, um sicherzustellen, dass der Wert wie erwartet ist und die Regel angewendet wird. Wählen Sie oben im Fenster **Metaverse Search** (Metaversesuche) aus. Fügen Sie beliebige Filter hinzu, die Sie zur Suche nach den entsprechenden Objekten benötigen. Öffnen Sie im Suchergebnis ein Objekt. Sehen Sie sich die Attributwerte an, und überprüfen Sie in der Spalte **Synchronisierungsregeln** , ob die Regel wie erwartet angewendet wurde.  
 ![Metaverse search](./media/active-directory-aadconnectsync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>Deaktivieren des Schedulers
@@ -107,7 +107,7 @@ Führen Sie folgende Schritte aus, um eine Regel mit anderen Attributflüssen zu
 
 * Öffnen Sie den **Synchronisierungsregel-Editor** über das Startmenü.
 * Lassen Sie auf der linken Seite **Eingehend** ausgewählt, und klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**.
-* Benennen Sie die Regel und fügen Sie eine Beschreibung hinzu. Wählen Sie das lokale Active Directory und die entsprechenden Objekttypen aus.  Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Wählen Sie als Rangfolge eine Zahl, die nicht von einer anderen Regel verwendet wird. Die vordefinierten Regeln beginnen mit 100. In diesem Beispiel kann also der Wert 50 verwendet werden.
+* Benennen Sie die Regel und fügen Sie eine Beschreibung hinzu. Wählen Sie das lokale Active Directory und die entsprechenden Objekttypen aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Wählen Sie als Rangfolge eine Zahl, die nicht von einer anderen Regel verwendet wird. Die vordefinierten Regeln beginnen mit 100. In diesem Beispiel kann also der Wert 50 verwendet werden.
   ![Attributfluss 2](./media/active-directory-aadconnectsync-change-the-configuration/attributeflowjp2.png)
 * Lassen Sie den Bereich leer (d.h. die Regel soll für alle Benutzerobjekte in der Gesamtstruktur gelten).
 * Lassen Sie die Verknüpfungsregeln leer (d.h. alle Verknüpfungen sollen von der Standardregel behandelt werden).
@@ -133,7 +133,7 @@ Verketten Sie in diesem Ausdruck alle Zeichen links neben dem ersten @-sign (Wor
 Einige Attribute in Active Directory weisen im Schema mehrere Werte auf, obwohl sie in "Active Directory-Benutzer und -Computer" wie einwertige Attribute aussehen. Das Attribut „description“ ist ein Beispiel hierfür.  
 `description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
 
-Falls das Attribut einen Wert besitzt, wird in diesem Ausdruck das erste Element (Item) im Attribut genommen, die voran- und nachgestellten Leerzeichen (Trim) werden entfernt, und die ersten 448 Zeichen (Left) der Zeichenfolge werden beibehalten.
+Falls das Attribut einen Wert besitzt, wird in diesem Ausdruck das erste Element (Item) im Attribut genommen, die voran- und nachgestellten Leerzeichen (Trim) werden entfernt, und die ersten 448 Zeichen (Left) der Zeichenfolge werden beibehalten.
 
 ### <a name="do-not-flow-an-attribute"></a>Verhindern des „Fließens“ eines Attributs
 Hintergrundinformationen zum Szenario in diesem Abschnitt finden Sie unter [Steuern des Attributflussprozesses](active-directory-aadconnectsync-understanding-declarative-provisioning.md#control-the-attribute-flow-process).
@@ -152,6 +152,25 @@ Bei Fabrikam haben wir festgestellt, dass einige der Attribute, die wir mit der 
 * Stellen Sie sicher, dass die beabsichtigten Änderungen exportiert werden sollen, indem Sie den Connectorbereich durchsuchen.
   ![Gestaffeltes Löschen](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
+## <a name="create-rules-with-powershell"></a>Erstellen von Regeln mit PowerShell
+Der Synchronisierungsregel-Editor funktioniert gut, wenn Sie nur wenige Änderungen vornehmen möchten. Wenn mehr Änderungen erforderlich sind, ist PowerShell wahrscheinlich besser geeignet. Einige erweiterte Funktionen sind nur über PowerShell verfügbar.
+
+### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>Abrufen des PowerShell-Skripts für eine Standardregel
+Um das PowerShell-Skript anzuzeigen, mit dem eine Standardregel erstellt wurde, wählen Sie die Regel im Synchronisierungsregel-Editor aus, und klicken Sie auf **Exportieren**. Damit erhalten Sie das PowerShell-Skript, mit dem die Regel erstellt wurde.
+
+### <a name="advanced-precedence"></a>Erweiterte Rangfolge
+Die standardmäßigen Synchronisierungsregeln beginnen mit dem Rangfolgewert 100. Wenn Sie über viele Gesamtstrukturen verfügen und viele benutzerdefinierte Änderungen vornehmen müssen, sind 99 Synchronisierungsregeln möglicherweise nicht ausreichend.
+
+Sie können das Synchronisierungsmodul anweisen, dass vor den Standardregeln weitere Regeln eingefügt werden sollen. Führen Sie folgende Schritte aus, um dieses Verhalten festzulegen:
+
+1. Markieren Sie im Synchronisierungsregel-Editor die erste Standardregel (hierbei handelt es sich um **In from AD - User Join**), und wählen Sie **Exportieren** aus. Kopieren Sie den SR-ID-Wert.  
+![PowerShell vor der Änderung](./media/active-directory-aadconnectsync-change-the-configuration/powershell1.png)  
+2. Erstellen Sie die neue Synchronisierungsregel. Sie können zur Erstellung den Synchronisierungsregel-Editor verwenden. Exportieren Sie die Regel in ein PowerShell-Skript.
+3. Fügen Sie den ID-Wert aus der Standardregel in die Eigenschaft **PrecedenceBefore** ein. Legen Sie die **Rangfolge** auf **0** fest. Stellen Sie sicher, dass das ID-Attribut eindeutig ist und Sie keine GUID aus einer anderen Regel wiederverwenden. Stellen Sie auch sicher, dass die Eigenschaft **ImmutableTag** nicht festgelegt ist. Diese Eigenschaft sollte nur für eine Standardregel festgelegt werden. Speichern Sie das PowerShell-Skript, und führen Sie es aus. Das Ergebnis dieses Vorgehens: Ihrer benutzerdefinierten Regel wird der Rangfolgewert 100 zugewiesen, und alle anderen Standardregeln erhalten schrittweise ansteigende Werte.  
+![PowerShell nach der Änderung](./media/active-directory-aadconnectsync-change-the-configuration/powershell2.png)  
+
+Bei Bedarf können Sie eine Vielzahl von benutzerdefinierten Synchronisierungsregeln einrichten, die den gleichen **PrecedenceBefore**-Wert verwenden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)(Grundlegendes zur deklarativen Bereitstellung).
 * Weitere Informationen zur Ausdruckssprache finden Sie unter [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md).
@@ -163,7 +182,6 @@ Bei Fabrikam haben wir festgestellt, dass einige der Attribute, die wir mit der 
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Authentifizieren des Clientzugriffs auf ein Cluster | Microsoft Docs
+title: Herstellen einer sicheren Verbindung mit einem Azure Service Fabric-Cluster | Microsoft-Dokumentation
 description: Beschreibt das Authentifizieren des Clientzugriffs auf einen Service Fabric-Cluster und das Sichern der Kommunikation zwischen Clients und einem Cluster
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 02/03/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 9d5e2ce7ce8c27bc8fee75ee19236db268ee9281
-ms.openlocfilehash: 882b524929bd4b9d52ec3d13e6e11d931c0f1560
+ms.sourcegitcommit: cb1c9734ef7745274095e5b3840698a76045bc91
+ms.openlocfilehash: 44dec18e40f5693e32a99cbea0bf0d1530dddb44
 
 
 ---
@@ -107,7 +107,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Herstellen einer Verbindung mit einem Cluster über die FabricClient-APIs
-Das Service Fabric SDK enthält die [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx)-Klasse für die Clusterverwaltung. 
+Das Service Fabric SDK enthält die [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)-Klasse für die Clusterverwaltung. Um die FabricClient-APIs zu verwenden, rufen Sie das Microsoft.ServiceFabric-NuGet-Paket ab.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Herstellen einer Verbindung mit einem unsicheren Cluster
 
@@ -125,9 +125,12 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Herstellen einer Verbindung mit einem sicheren Cluster mithilfe eines Clientzertifikats
 
-Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren allgemeiner Name oder DNS-Name im SAN in der [RemoteCommonNames](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)-Eigenschaft angezeigt wird, die auf [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) festgelegt ist. Durch dieses Verfahren wird die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten ermöglicht.
+Die Knoten im Cluster müssen über gültige Zertifikate verfügen, deren allgemeiner Name oder DNS-Name im SAN in der [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials#System_Fabric_X509Credentials_RemoteCommonNames)-Eigenschaft angezeigt wird, die auf [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) festgelegt ist. Durch dieses Verfahren wird die gegenseitige Authentifizierung zwischen dem Client und dem Clusterknoten ermöglicht.
 
 ```csharp
+using System.Fabric;
+using System.Security.Cryptography.X509Certificates;
+
 string clientCertThumb = "71DE04467C9ED0544D021098BCD44C71E183414E";
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
 string CommonName = "www.clustername.westus.azure.com";
@@ -146,22 +149,15 @@ catch (Exception e)
     Console.WriteLine("Connect failed: {0}", e.Message);
 }
 
-...
-
 static X509Credentials GetCredentials(string clientCertThumb, string serverCertThumb, string name)
 {
-    var xc = new X509Credentials();
-
-    // Client certificate
+    X509Credentials xc = new X509Credentials();
     xc.StoreLocation = StoreLocation.CurrentUser;
-    xc.StoreName = "MY";
+    xc.StoreName = "My";
     xc.FindType = X509FindType.FindByThumbprint;
-    xc.FindValue = thumb;
-
-    // Server certificate
-    xc.RemoteCertThumbprints.Add(thumb);
+    xc.FindValue = clientCertThumb;
     xc.RemoteCommonNames.Add(name);
-
+    xc.RemoteCertThumbprints.Add(serverCertThumb);
     xc.ProtectionLevel = ProtectionLevel.EncryptAndSign;
     return xc;
 }
@@ -347,6 +343,6 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

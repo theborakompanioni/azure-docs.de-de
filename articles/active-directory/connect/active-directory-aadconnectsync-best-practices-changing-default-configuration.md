@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: markvi;andkjell
+ms.date: 02/08/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: 14b6b817c071ba833d2f49ca289151520e1e32f0
+ms.sourcegitcommit: 08ec09275bbcaffaf25cf45a0f2f466fdeb60dc5
+ms.openlocfilehash: 954923e699ef2160b0a16cb369f8a86b3beacd39
 
 
 ---
@@ -44,8 +44,6 @@ Der Installations-Assistent verfügt über eine Konfiguration, die für die meis
 
 > [!WARNING]
 > Die standardmäßigen Synchronisierungsregeln verfügen über einen Fingerabdruck. Wenn Sie diese Regeln ändern, stimmt der Fingerabdruck nicht mehr überein. In Zukunft treten unter Umständen Probleme auf, wenn Sie eine neue Version von Azure AD Connect anwenden möchten. Führen Sie Änderungen nur wie in diesem Artikel beschrieben durch.
-> 
-> 
 
 ### <a name="disable-an-unwanted-sync-rule"></a>Deaktivieren Sie eine unerwünschte Synchronisierungsregel
 Löschen Sie keine standardmäßige Synchronisierungsregel. Sie wird beim nächsten Upgrade wiederhergestellt.
@@ -57,6 +55,8 @@ In einigen Fällen erstellt der Installations-Assistent eine Konfiguration, die 
 In der Abbildung oben wurde mit dem Installations-Assistenten ein altes Exchange 2003-Schema in der Kontogesamtstruktur gefunden. Diese Schemaerweiterung wurde hinzugefügt, bevor die Ressourcengesamtstruktur in die Umgebung von Fabrikam eingeführt wurde. Um sicherzustellen, dass keine Attribute aus der alten Exchange-Implementierung synchronisiert werden, sollte die Synchronisierungsregel wie gezeigt deaktiviert werden.
 
 ### <a name="change-an-out-of-box-rule"></a>Ändern einer standardmäßigen Regel
+Ändern Sie eine standardmäßige Regel nur dann, wenn Sie die Verknüpfungsregel ändern müssen. Wenn Sie einen Attributfluss ändern müssen, sollten Sie eine Synchronisierungsregel erstellen, die Vorrang vor den standardmäßigen Regeln hat. Die einzige Regel, die Sie im Grunde klonen müssen, ist die Regel **In from AD - User Join**. Alle anderen Regeln können Sie mit einer Regel mit höherer Priorität außer Kraft setzen.
+
 Wenn Sie Änderungen an einer standardmäßigen Regel vornehmen müssen, erstellen Sie eine Kopie der standardmäßigen Regel und deaktivieren Sie die ursprüngliche Regel. Nehmen Sie an der geklonten Regel dann die gewünschten Änderungen vor. Der Synchronisierungsregel-Editor unterstützt Sie bei diesen Schritten. Wenn Sie eine standardmäßige Regel öffnen, wird dieses Dialogfeld angezeigt:   
 ![Warnung für standardmäßige Regel](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
@@ -73,7 +73,6 @@ Nehmen Sie an dieser geklonten Regel die erforderlichen Änderungen für Bereich
 
 
 
-
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

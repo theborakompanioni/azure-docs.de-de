@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/24/2016
 ms.author: pajosh
 translationtype: Human Translation
-ms.sourcegitcommit: 4a846e86fa8cefbee04e1e30078a0d2aabdd834d
-ms.openlocfilehash: 1b7df71f103e8284bdcc7bc3a27fe44815b12305
+ms.sourcegitcommit: 276b0e89c41cf4e58c4431969276f0985cbf0427
+ms.openlocfilehash: e5ce6a413f5164a564493eaaefd43f6b2a3aa648
 
 
 ---
@@ -61,7 +61,7 @@ Benutzer, die einen Recovery Services-Tresor erstellen, können dann alle Sicher
 5. Wählen Sie einen Wert aus der Dropdownliste **Have you configured Azure Multi-Factor Authentication?** (Haben Sie die Azure Multi-Factor Authentification konfiguriert?), um zu bestätigen, dass Sie [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) aktiviert haben. Wenn Azure Multi-Factor Authentification aktiviert ist, werden Sie gebeten, sich bei der Anmeldung beim Azure-Portal von einem anderen Gerät (z.B. Mobiltelefon) aus zu authentifizieren.
 
    Als Teil der Sicherheitsfunktionen müssen Sie die im Azure-Portal verfügbare Sicherheits-PIN eingeben, wenn in Azure Backup kritische Vorgänge ausgeführt werden. Durch das Aktivieren von Multi-Factor Authentication wird eine Sicherheitsebene hinzugefügt und gewährleistet, dass nur Benutzer mit gültigen Azure-Anmeldedaten, die sich außerdem von einem zweiten Gerät aus authentifiziert haben, auf das Azure-Portal zugreifen und solche kritischen Vorgänge ausführen können.
-6. Verwenden Sie wie in der Abbildung dargestellt die Umschaltfläche **Aktivieren**, um die Sicherheitseinstellungen zu aktivieren, und klicken Sie auf die oben sichtbare Schaltfläche **Speichern**, um die Sicherheitseinstellungen zu speichern. **Aktivieren** kann erst ausgewählt werden, nachdem ein Wert aus der Dropdownliste „Have you configured Azure Multi-Factor Authentication?“ (Haben Sie Azure Multi-Factor Authentication konfiguriert?)  ausgewählt wurde.
+6. Verwenden Sie wie in der Abbildung dargestellt die Umschaltfläche **Aktivieren**, um die Sicherheitseinstellungen zu aktivieren, und klicken Sie auf die oben sichtbare Schaltfläche **Speichern**, um die Sicherheitseinstellungen zu speichern. Sie können **Aktivieren** erst auswählen, nachdem Sie aus der Dropdownliste „Haben Sie Azure Multi-Factor Authentication konfiguriert?“ einen Wert ausgewählt haben.
 
     ![Aktivieren der Sicherheitseinstellungen](./media/backup-azure-security-feature/enable-security-settings.png)
 
@@ -70,7 +70,7 @@ Als Sicherheitsmaßnahme bewahrt Azure Backup gelöschte Sicherungsdaten zusätz
 
 Für Benutzer von **Microsoft Recovery Services Agent (MARS)**:
 
-1. Wenn der Computer, auf dem die Sicherungen durchgeführt wurden, noch verfügbar ist, verwenden Sie in MARS die [Wiederherstellung von Daten auf demselben Computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-the-same-machine), um die Wiederherstellung mithilfe aller alten Wiederherstellungspunkte durchzuführen.
+1. Wenn der Computer, auf dem die Sicherungen durchgeführt wurden, noch verfügbar ist, verwenden Sie in MARS die [Wiederherstellung von Daten auf demselben Computer](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine), um die Wiederherstellung mithilfe aller alten Wiederherstellungspunkte durchzuführen.
 2. Wenn der obengenannte Computer nicht mehr verfügbar ist, verwenden Sie die [Wiederherstellung auf einem anderen Computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine), um einen anderen MARS-Computer für die Wiederherstellung dieser Daten zu verwenden.
 
 Für Benutzer von **Azure Backup Server **:
