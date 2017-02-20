@@ -13,15 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 02/13/2017
 ms.author: cgronlun;tedway;olgali
 translationtype: Human Translation
-ms.sourcegitcommit: ab8e5861dd7214dab41024e7048b739c072d3f64
-ms.openlocfilehash: 52a431c2af8b670fc4e4babb0a0d077051a46f54
+ms.sourcegitcommit: 25e1def880dbb8431e1a0cae9d8b84c6f5906315
+ms.openlocfilehash: 50963d47d030d43d1c98dfb9a5878af7b9e99d47
 
 
 ---
-# <a name="introduction-to-machine-learning-in-the-cloud"></a>Einführung in Machine Learning in der Cloud
+# <a name="introduction-to-azure-machine-learning-in-the-cloud"></a>Einführung in Azure Machine Learning in der Cloud
 ## <a name="what-is-machine-learning"></a>Was ist Machine Learning?
 Machine Learning ist ein Data Science-Verfahren, bei dem Computer aus vorhandenen Daten lernen können, um zukünftiges Verhalten, Ergebnisse und Trends vorherzusagen.  
 
@@ -37,8 +37,6 @@ Sie können mit einer fertigen Bibliothek mit Algorithmen arbeiten, sie zum Erst
 ![Was ist Machine Learning? Ein grundlegender Workflow zum Operationalisieren von Predictive Analytics im Rahmen von Azure Machine Learning.](./media/machine-learning-what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
 Azure Machine Learning bietet nicht nur Tools zur Modellierung von Predictive Analytics-Lösungen, sondern auch einen vollständig verwalteten Dienst, über den Sie Ihre Vorhersagemodelle als sofort nutzbare Webdienste bereitstellen können.
-
-[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-predictive-analytics"></a>Was ist Predictive Analytics?
 Für Predictive Analytics werden mathematische Formeln verwendet, die als Algorithmen bezeichnet werden. Hiermit werden Verlaufsdaten oder aktuelle Daten analysiert, um Muster oder Trends zu ermitteln und zukünftige Ereignisse vorhersagen zu können.
@@ -60,7 +58,7 @@ In [Machine Learning Studio](machine-learning-what-is-ml-studio.md)können Sie i
 In den folgenden Tutorials wird gezeigt, wie Sie Ihre Predictive Analytics-Modelle operationalisieren:
 
  * [Bereitstellen von Webdiensten](machine-learning-publish-a-machine-learning-web-service.md)
- * [Trainieren und erneutes Trainieren von Modellen über APIs](machine-learning-retrain-models-programmatically.md)
+ * [Erneutes Trainieren von Modellen über APIs](machine-learning-retrain-models-programmatically.md)
  * [Verwalten von Webdienstendpunkten](machine-learning-create-endpoint.md)
  * [Skalieren eines Webdiensts](machine-learning-scaling-webservice.md)
  * [Nutzen von Webdiensten](machine-learning-consume-web-services.md)
@@ -69,7 +67,10 @@ In den folgenden Tutorials wird gezeigt, wie Sie Ihre Predictive Analytics-Model
 Machine Learning-Begriffe können manchmal verwirrend sein. Hier finden Sie deshalb die Definitionen der wichtigsten Begriffe. Sie können auch gern die Kommentarfunktion nutzen, um uns andere Begriffe mitzuteilen, für die Sie eine Definition wünschen.
 
 ### <a name="data-exploration-descriptive-analytics-and-predictive-analytics"></a>Durchsuchen von Daten, beschreibende Analyse und Predictive Analytics
-**Durchsuchen von Daten** werden Informationen über ein umfangreiches und häufig unstrukturiertes Dataset erfasst, um Merkmale für eine gezielte Analyse zu ermitteln. **Data Mining** bezieht sich auf das automatisierte Durchsuchen von Daten.
+
+**Durchsuchen von Daten** werden Informationen über ein umfangreiches und häufig unstrukturiertes Dataset erfasst, um Merkmale für eine gezielte Analyse zu ermitteln.
+
+**Data Mining** bezieht sich auf das automatisierte Durchsuchen von Daten.
 
 Bei der **beschreibenden Analyse** wird ein Dataset analysiert, um Vorgänge zusammenzufassen. Bei den weitaus meisten Business Analytics-Prozessen – z. B. Verkaufsberichten, Webmetriken und Analysen sozialer Netzwerke – handelt es sich um beschreibende Analysen.
 
@@ -114,6 +115,6 @@ Die Grundlagen von Predictive Analytics und Machine Learning werden anhand eines
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

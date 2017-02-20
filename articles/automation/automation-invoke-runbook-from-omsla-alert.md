@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: 76706d1ab9b1c675167af8119b58dd7cb0cda4a3
-ms.openlocfilehash: 15270983b3c3299f85c7e2020c9e11e9b3c168f4
+ms.sourcegitcommit: 4ce5ad30d79e92a11231313fe13dd42b94fc2aa4
+ms.openlocfilehash: 50969591267ca74e5c4d4aa5c1efe5b673498309
 
 ---
 
@@ -76,7 +76,7 @@ Das Runbook besitzt einen einzelnen Eingabeparameter vom Typ **Objekt** namens *
 
 Für dieses Beispiel haben wir in Log Analytics zwei benutzerdefinierte Felder (*SvcDisplayName_CF* und *SvcState_CF*) erstellt, um aus dem Ereignis, das in das Systemereignisprotokoll geschrieben wurde, den Anzeigenamen und den Zustand des Diensts (ausgeführt oder beendet) zu extrahieren.  Anschließend erstellen wir eine Warnungsregel mit der Suchabfrage `Type=Event SvcDisplayName_CF="Print Spooler" SvcState_CF="stopped"`, um ermitteln zu können, wann der Druckspoolerdienst für das Windows-System beendet wird.  Sie können jeden beliebigen Dienst verwenden, der für Sie von Interesse ist. In diesem Beispiel verweisen wir jedoch auf einen der Dienste, die bereits im Windows-Betriebssystem enthalten sind.  Die Warnungsaktion ist so konfiguriert, dass das in diesem Beispiel verwendete Runbook für die Hybrid Runbook Worker ausgeführt wird, die auf den Zielsystemen aktiviert sind.   
 
-Die Runbook-Codeaktivität **Get Service Name from LA** (Dienstname aus LA abrufen) konvertiert die JSON-Zeichenfolge in einen Objekttyp und filtert nach dem Element *„SvcDisplayName_CF“, um den Anzeigenamen des Windows-Diensts zu extrahieren und an die nächste Aktivität zu übergeben, die überprüft, ob der Dienst beendet wurde, bevor sie versucht, ihn neu zu starten.  *SvcDisplayName_CF* ist ein [benutzerdefiniertes Feld](../log-analytics/log-analytics-custom-fields.md), das in Log Analytics für dieses Beispiel erstellt wurde.
+Die Runbook-Codeaktivität **Get Service Name from LA** (Dienstname aus LA abrufen) konvertiert die JSON-Zeichenfolge in einen Objekttyp und filtert nach dem Element *SvcDisplayName_CF*, um den Anzeigenamen des Windows-Diensts zu extrahieren und an die nächste Aktivität zu übergeben, die überprüft, ob der Dienst beendet wurde, bevor sie versucht, ihn neu zu starten.  *SvcDisplayName_CF* ist ein [benutzerdefiniertes Feld](../log-analytics/log-analytics-custom-fields.md), das in Log Analytics für dieses Beispiel erstellt wurde.
 
     $SearchResults = (ConvertFrom-Json $WebhookData.RequestBody).SearchResults.value
     $SearchResults.SvcDisplayName_CF  
@@ -92,6 +92,7 @@ Falls Ihr Automation-Konto nicht mit Ihrem OMS-Arbeitsbereich verknüpft ist, k�
 * Informationen zum Auslösen von Runbooks mithilfe eines Webhooks finden Sie unter [Azure Automation-Webhooks](automation-webhooks.md).
 
 
-<!--HONumber=Jan17_HO5-->
+
+<!--HONumber=Feb17_HO2-->
 
 

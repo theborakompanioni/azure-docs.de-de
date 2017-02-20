@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 6fc751d956eee68d2bbab50b0f25b928759c9d32
+ms.sourcegitcommit: dc6d0a2d48895da12a95e3f482ad8588b98db4ec
+ms.openlocfilehash: 37726a272b0fbe17c58e627d66106ccbbe083936
 
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
@@ -193,7 +193,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** inbound, outbound  
+-   **Richtlinienabschnitte**: inbound, outbound  
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
@@ -391,7 +391,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 |Name|Beschreibung|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|exists-action|Gibt die auszuführende Aktion an, wenn der Header bereits vorhanden ist. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|  
+|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|  
 |Name|Der Name des zu setzenden Headers.|Ja|N/V|  
   
 ### <a name="usage"></a>Verwendung  
@@ -472,11 +472,11 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 > [!NOTE]
 >  Sie können mit der Richtlinie nur Abfrageparameter hinzufügen. Sie können keine zusätzlichen Vorlagenpfadparameter in die umgeschriebene URL einfügen.  
-  
+
 ### <a name="policy-statement"></a>Richtlinienanweisung  
   
 ```xml  
-<rewrite-uri template="uri template" />  
+<rewrite-uri template="uri template" copy-unmatched-params="true | false" />  
 ```  
   
 ### <a name="example"></a>Beispiel  
@@ -492,7 +492,33 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
     </outbound>  
 </policies>  
 ```  
-  
+```xml
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/put" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+<!-- Resulting URL will be /put?c=d -->
+```  
+```xml
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<policies>  
+    <inbound>  
+        <base />  
+        <rewrite-uri template="/put" copy-unmatched-params="false" />  
+    </inbound>  
+    <outbound>  
+        <base />  
+    </outbound>  
+</policies>  
+<!-- Resulting URL will be /put -->
+```
+
 ### <a name="elements"></a>Elemente  
   
 |Name|Beschreibung|Erforderlich|  
@@ -503,7 +529,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 |Attribut|Beschreibung|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern.|Ja|N/V|  
+|Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|Ja|–|  
+|copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein|true|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -572,7 +599,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** inbound, outbound  
+-   **Richtlinienabschnitte**: inbound, outbound  
   
 -   **Richtlinienbereiche:** global, Produkt, API, Vorgang  
   
@@ -580,6 +607,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

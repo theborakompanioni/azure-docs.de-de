@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
+ms.sourcegitcommit: 21be71a1b4c79ecec8af02d08f65c41128c5ef73
+ms.openlocfilehash: 50a465f314909c10bc3c3f95be2d9dc377d433a7
 
 
 ---
@@ -47,7 +47,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 * Gefiltert nach allgemeiner Verfügbarkeit [Ankündigungen](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) für SQL-Datenbankfunktionen.
 
 > [!TIP]
-> Siehe [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von SQL Server Data Tools für Visual Studio](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md), um eine vorhandene Datenbank auf Kompatibilität mit Azure SQL-Datenbank zu testen.
+> Informationen zum Testen einer vorhandenen Datenbank auf Kompatibilität mit Azure SQL-Datenbank finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure](sql-database-cloud-migrate.md).
 >
 
 | **Feature** | **SQL Server** | **Azure SQL-Datenbank** | 
@@ -161,6 +161,6 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -8,6 +8,8 @@ Der Speicher ist durch den Festplattenspeicher oder einen festen Grenzwert für 
 | Partitionsgröße |– |2 GB |25 GB |100 GB |200 GB |200 GB |
 | Replikate |– |3 |12 |12 |12 |12 |
 | Maximale Anzahl von Indizes |3 |5 |50 |200 |200 |1000 pro Partition oder 3000 pro Dienst |
+| Maximale Anzahl von Indexern |3 |5 |50 |200 |200 |Keine Indexer-Unterstützung |
+| Maximale Datenquellen |3 |5 |50 |200 |200 |Keine Indexer-Unterstützung |
 | Maximale Anzahl von Dokumenten |10.000 |1 Mio. |15 Millionen pro Partition oder 180 Millionen pro Dienst |60 Millionen pro Partition oder 720 Millionen pro Dienst |120 Millionen pro Partition oder 1,4 Milliarden pro Dienst |1 Millionen pro Index oder 200 Millionen pro Partition |
 | Geschätzte Anzahl von Abfragen pro Sekunde (QPS) |– |~3 pro Replikat |~15 pro Replikat |~60 pro Replikat |~60 pro Replikat |>60 pro Replikat |
 
@@ -16,6 +18,6 @@ Der Speicher ist durch den Festplattenspeicher oder einen festen Grenzwert für 
 <sup>2</sup> Für S3 HD gilt ein festes Limit von drei Partitionen. (Das Limit ist also geringer als bei S3.) Die Untergrenze für Partitionen wurde festgelegt, da die Indexanzahl für S3 HD wesentlich höher ist. Da sowohl für Computeressourcen (Speicher und Verarbeitung) als auch für Inhalte (Indizes und Dokumente) Dienstlimits gelten, wird das Inhaltslimit zuerst erreicht.
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

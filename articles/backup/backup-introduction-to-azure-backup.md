@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 1/4/2017
-ms.author: jimpark; trinadhk
+ms.date: 2/6/2017
+ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 0eb7b5c283c95503d076da486ba08df833f1acbd
-ms.openlocfilehash: 5235a09822dc14040ca6d4353d00e938fefd0e43
+ms.sourcegitcommit: bda71281617fa37f7f2a08e238c706dd2a4f5576
+ms.openlocfilehash: 99246e97f096b872e225e8818def059bdc2211c6
 
 
 ---
@@ -45,7 +45,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 **Anwendungskonsistente Sicherungen**: Unabhängig davon, ob Sie einen Dateiserver, einen virtuellen Computer oder eine SQL-Datenbank sichern, müssen Sie wissen, dass ein Wiederherstellungspunkt über alle erforderlichen Daten zum Wiederherstellen der Sicherungskopie verfügt. Azure Backup umfasst anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Fixes benötigt werden. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
 
-**Langfristige Aufbewahrung**: In Azure können Sie Daten für eine Dauer von bis zu 99 Jahren sichern. Anstatt Sicherungskopien vom Datenträger auf Band zu verschieben und das Band dann zur langfristigen Speicherung an einen anderen Standort zu bringen, können Sie Azure für die kurz- und langfristige Aufbewahrung nutzen.
+**Langfristige Aufbewahrung**: Anstatt Sicherungskopien auf Band zu erstellen und das Band dann zur langfristigen Aufbewahrung an einen anderen Ort zu bringen, können Sie Azure für die kurz- und langfristige Aufbewahrung nutzen. Die Zeit, für die Sie Daten in einem Backup- oder Recovery Services-Tresor aufbewahren, wird von Azure nicht begrenzt. Sie können Daten also beliebig lange in einem Tresor aufbewahren. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Informationen zu den möglichen Auswirkungen auf Ihre Sicherungsanforderungen finden Sie im Abschnitt [Sicherung und Aufbewahrung](backup-introduction-to-azure-backup.md#backup-and-retention).  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Welche Azure Backup-Komponenten sollte ich verwenden?
 Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen geeignet ist, helfen Ihnen die Informationen in der folgenden Tabelle weiter. Es ist jeweils angegeben, was Sie mit einer Komponente schützen können. Das Azure-Portal enthält einen Assistenten, der in das Portal integriert ist und Sie bei der Auswahl der Komponente unterstützt, die heruntergeladen und bereitgestellt werden soll. Mit dem Assistenten, der Teil der Erstellung des Recovery Services-Tresors ist, werden Sie schrittweise durch die Auswahl eines Sicherungsziels geführt, und Sie können die zu schützenden Daten oder die Anwendung auswählen.
@@ -107,6 +107,15 @@ Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelös
 
 ### <a name="restore-premium-storage-vms"></a>Wiederherstellen virtueller Storage Premium-Computer
 Virtuelle Storage Premium-Computer können entweder unter Storage Premium oder in einem normalen Speicher wiederhergestellt werden. In der Regel wird der Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf Storage Premium wiederhergestellt. Unter Umständen ist es jedoch kostengünstiger, den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf dem Standardspeicher wiederherzustellen. Diese Art der Wiederherstellung ist möglich, wenn Sie einen Teil der Dateien des virtuellen Computers benötigen.
+
+## <a name="using-managed-disk-vms-with-azure-backup"></a>Verwendung von virtuellen Computer auf verwalteten Datenträgern
+Azure Backup schützt virtuelle Computer auf verwalteten Datenträgern. Bei verwalteten Datenträgern entfällt die Verwaltung von Speicherkonten für virtuelle Computer, und die Bereitstellung virtueller Computer wird erheblich vereinfacht.
+
+### <a name="back-up-managed-disk-vms"></a>Sichern von virtuellen Computer auf verwalteten Datenträgern
+Die Sicherung virtueller Computer auf verwalteten Datenträgern unterscheidet sich nicht von der Sicherung virtueller Resource Manager-Computer. Sie können direkt in der Ansicht des virtuellen Computers oder in der Recovery Services-Tresoransicht sichern. Die Sicherung von virtuellen Computern auf verwalteten Datenträgern wird durch RestorePoint Sammlungen unterstützt, die auf verwalteten Datenträgern basieren. Azure Backup unterstützt keine derzeit keine Sicherung von virtuellen Computern auf verwalteten Datenträgern, die mit Azure Disk Encryption (ADE) verschlüsselt sind.
+
+### <a name="restore-managed-disk-vms"></a>Wiederherstellen von virtuellen Computer auf verwalteten Datenträgern
+Azure Backup ermöglicht Ihnen das Wiederherstellen eines vollständigen virtuellen Computers mit verwalteten Datenträgern oder das Wiederherstellen von verwalteten Datenträgern in einem Resource Manager-Speicherkonto. Während die beim Wiederherstellungsvorgang erstellten Datenträger von Azure verwaltet werden, ist das im Rahmen des Wiederherstellungsvorgangs erstellte Speicherkonto mit anderen Resource Manager-Speicherkonten vergleichbar, und die Verwaltung wird vom Kunden erwartet.
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>Welche Features haben die einzelnen Backup-Komponenten?
 Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. die Unterstützung verschiedener Features der einzelnen Azure Backup-Komponenten zusammengefasst ist. Weitere Informationen zur Unterstützung bzw. weitere Details sind jeweils unterhalb der Tabelle zu finden.
@@ -175,7 +184,7 @@ Wenn Sie Ihre Daten auf einer System Center DPM- oder Azure Backup Server-Einhei
 #### <a name="network-throttling"></a>Netzwerkdrosselung
 Der Azure Backup-Agent verfügt über die Netzwerkdrosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Die Drosselung kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den anderen Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
 
-### <a name="backup-and-retention"></a>Sicherung und Aufbewahrung
+## <a name="backup-and-retention"></a>Sicherung und Aufbewahrung
 
 Für Azure Backup gilt pro *geschützter Instanz* eine Obergrenze von 9999 Wiederherstellungspunkten (auch Sicherungskopien oder Momentaufnahmen genannt). Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die Daten in Azure sichern. Weitere Informationen finden Sie im Abschnitt [Was ist eine geschützte Instanz?](backup-introduction-to-azure-backup.md#what-is-a-protected-instance). Eine Instanz ist geschützt, sobald eine Sicherungskopie der Daten gespeichert wurde. Die Sicherungskopie der Daten ist der Schutz. Wenn die Quelldaten verloren gehen oder beschädigt werden, können sie mithilfe der Sicherungskopie wiederhergestellt werden. In der folgenden Tabelle ist die maximale Sicherungshäufigkeit für die einzelnen Komponenten angegeben. Ihre Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verbraucht werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
 
@@ -234,6 +243,6 @@ Weitere Informationen zum Schützen anderer Workloads finden Sie in diesen Artik
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

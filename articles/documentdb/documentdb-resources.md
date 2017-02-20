@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 01/28/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 51c5694379d3f35ed2595f0cafeb00c6cc527854
-ms.openlocfilehash: 94549905816707fa3dcce3c3e443122162a2c4e8
+ms.sourcegitcommit: a42e04b6a8b09078986ba0d12c6d07305e8068c6
+ms.openlocfilehash: 15d1a9d819fdf9565e85ccea39a922c608aba917
 
 
 ---
@@ -43,7 +43,7 @@ Wie das folgende Diagramm veranschaulicht, besteht das hierarchische **Ressource
 ![Hierarchisches Ressourcenmodell von DocumentDB][1]  
 **Hierarchisches Ressourcenmodell**   
 
-Um mit Ressourcen zu arbeiten, müssen Sie über Ihr Azure-Abonnement [ein DocumentDB-Datenbankkonto erstellen](documentdb-create-account.md) . Ein Datenbankkonto kann aus einer Reihe von **Datenbanken** bestehen, die jeweils mehrere **Sammlungen** enthalten, die jeweils wiederum **gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen, Dokumente** und die zugehörigen **Anhänge** enthalten. Einer Datenbank sind zudem **Benutzer** zugeordnet, die jeweils über eine Reihe von **Berechtigungen** verfügen, um auf Sammlungen, gespeicherte Prozeduren, Trigger, UDFs, Dokumente oder Anhänge zuzugreifen. Während Datenbanken, Benutzer, Berechtigungen und Sammlungen vom System definierte Ressourcen mit bekannten Schemas sind, enthalten Dokumente und Anhänge beliebige, benutzerdefinierte JSON-Inhalte.  
+Um mit Ressourcen zu arbeiten, müssen Sie über Ihr Azure-Abonnement [ein Datenbankkonto erstellen](documentdb-create-account.md). Ein Datenbankkonto kann aus einer Reihe von **Datenbanken** bestehen, die jeweils mehrere **Sammlungen** enthalten, die jeweils wiederum **gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen, Dokumente** und die zugehörigen **Anhänge** enthalten. Einer Datenbank sind zudem **Benutzer** zugeordnet, die jeweils über eine Reihe von **Berechtigungen** verfügen, um auf Sammlungen, gespeicherte Prozeduren, Trigger, UDFs, Dokumente oder Anhänge zuzugreifen. Während Datenbanken, Benutzer, Berechtigungen und Sammlungen vom System definierte Ressourcen mit bekannten Schemas sind, enthalten Dokumente und Anhänge beliebige, benutzerdefinierte JSON-Inhalte.  
 
 | Ressource | Beschreibung |
 | --- | --- |
@@ -464,6 +464,6 @@ Weitere Informationen zum Arbeiten mit Ressourcen mithilfe von HTTP-Befehlen fin
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

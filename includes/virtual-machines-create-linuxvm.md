@@ -1,5 +1,5 @@
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI)](../articles/xplat-cli-connect.md)ausführen.
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI 1.0)](../articles/xplat-cli-connect.md)ausführen.
 
 2. Stellen Sie wie folgt sicher, dass der klassische Bereitstellungsmodus aktiviert ist:
 
@@ -52,10 +52,10 @@
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ausführliche Informationen zu diesen Azure-CLI-Befehlen für virtuelle Computer finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)](../articles/virtual-machines-command-line-tools.md).
+Ausführliche Informationen zu diesen Azure-CLI 1.0-Befehlen für virtuelle Computer finden Sie unter [Verwendung der Azure CLI 1.0 mit der API der klassischen Bereitstellung](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.topic: hero-article
 /ms.date: 1/18/2017
 ms.author: renash
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: 8661d4b3da31e3e3e54590a013b5c784216ecefb
+ms.sourcegitcommit: 6c93e5363767cb6860d4a365eba178dd940bd41d
+ms.openlocfilehash: e0800b7c7aba64fa7429fc3ced8c194cd9fbf0d1
 
 
 ---
@@ -602,52 +602,61 @@ Umfassende Unterstützung bei der Problembehandlung erhalten Sie auch im [Artike
    
     Derzeit ist keine Unterstützung für die AD-basierte Authentifizierung oder Zugriffssteuerungslisten (ACLs) vorhanden, aber wir haben es in die Liste mit den angeforderten Features aufgenommen. Vorläufig werden die Azure Storage-Kontoschlüssel für die Authentifizierung gegenüber der Dateifreigabe genutzt. Als Alternative bieten wir die Verwendung von Shared Access Signatures (SAS) über die REST-API oder die Clientbibliotheken an. Mit SAS können Sie Token mit bestimmten Berechtigungen generieren, die für ein bestimmtes Zeitintervall gültig sind. Beispielsweise können Sie ein Token mit Lesezugriff für eine bestimmte Datei generieren. Jeder Benutzer, der dieses Token während des Gültigkeitszeitraums besitzt, hat Lesezugriff auf die Datei.
    
-    SAS wird nur über die REST-API oder Clientbibliotheken unterstützt. Wenn Sie die Dateifreigabe per SMB-Protokoll bereitstellen, können Sie keine SAS verwenden, um den Zugriff auf ihren Inhalt zu delegieren.
-2. **Sind Azure-Dateifreigaben allgemein über das Internet sichtbar, oder sind sie nur über Azure erreichbar?**
-   
-    Solange Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (*z. B.*Windows 8 oder Windows Server 2012), ist Ihre Dateifreigabe über das Internet erreichbar.  
-3. **Zählt der Netzwerkdatenverkehr zwischen einem virtuellen Azure-Computer und einer Dateifreigabe als externe Bandbreite, die für das Abonnement berechnet wird?**
+    SAS wird nur über die REST-API oder Clientbibliotheken unterstützt. Wenn Sie die Dateifreigabe per SMB-Protokoll bereitstellen, können Sie keine SAS verwenden, um den Zugriff auf ihren Inhalt zu delegieren. 
+
+2. **Wie kann ich Zugriff auf eine bestimmte Datei über einen Webbrowser gewähren?**
+   Mit SAS können Sie Token mit bestimmten Berechtigungen generieren, die für ein bestimmtes Zeitintervall gültig sind. Beispielsweise können Sie ein Token mit Lesezugriff auf eine bestimmte Datei für einen bestimmten Zeitraum generieren. Jeder, der diese URL besitzt, kann den Download direkt über einen beliebigen Webbrowser ausführen, solange gültig ist. SAS-Schlüssel können problemlos über eine Benutzeroberfläche wie Speicher-Explorer generiert werden.
+
+3.   **Was sind die verschiedenen Methoden für den Zugriff auf Dateien im Azure-Dateispeicher?**
+    Sie können die Dateifreigabe mithilfe des SMB 3.0-Protokolls auf dem lokalen Computer einbinden oder mithilfe von Tools wie [Speicher-Explorer](http://storageexplorer.com/) oder Cloudberry auf Dateien in Ihrer Dateifreigabe zugreifen. In Ihrer Anwendung können Sie über Clientbibliotheken, die REST-API oder Powershell auf Ihre Dateien in der Azure-Dateifreigabe zugreifen.
+    
+4.   **Wie kann ich die Azure-Dateifreigabe auf meinem lokalen Computer einbinden?** Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, solange Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (*z.B.*Windows 8 oder Windows Server 2012). Wenden Sie sich zwecks Aufhebung der Portblockierung an Ihren örtlichen Internetdienstanbieter. Bis dahin können Sie Ihre Dateien mit dem Speicher-Explorer oder mit einem anderen Drittanbietertool wie etwa Cloudberry anzeigen.
+
+5. **Zählt der Netzwerkdatenverkehr zwischen einem virtuellen Azure-Computer und einer Dateifreigabe als externe Bandbreite, die für das Abonnement berechnet wird?**
    
     Wenn sich die Dateifreigabe und der virtuelle Computer in verschiedenen Regionen befinden, wird der dazwischen ausgetauschte Datenverkehr als externe Bandbreite berechnet.
-4. **Ist Netzwerkdatenverkehr kostenlos, wenn er zwischen einem virtuellen Computer und einer Dateifreigabe in derselben Region auftritt?**
+6. **Ist Netzwerkdatenverkehr kostenlos, wenn er zwischen einem virtuellen Computer und einer Dateifreigabe in derselben Region auftritt?**
    
     Ja. Er ist kostenlos, wenn der Datenverkehr in derselben Region auftritt.
-5. **Ist das Verbinden von lokalen virtuellen Computern mit Azure-Dateispeicher von Azure ExpressRoute abhängig?**
+7. **Ist das Verbinden von lokalen virtuellen Computern mit Azure-Dateispeicher von Azure ExpressRoute abhängig?**
    
     Nein. Auch wenn Sie nicht über ExpressRoute verfügen, können Sie auf die Dateifreigabe trotzdem lokal zugreifen, solange Port 445 (TCP ausgehend) für den Internetzugriff geöffnet ist. Sie können aber auch ExpressRoute mit Dateispeicher verwenden, wenn Sie möchten.
-6. **Ist ein „Dateifreigabenzeuge“ für einen Failovercluster einer der Anwendungsfälle für Azure-Dateispeicher?**
+8. **Ist ein „Dateifreigabenzeuge“ für einen Failovercluster einer der Anwendungsfälle für Azure-Dateispeicher?**
    
     Dies wird derzeit nicht unterstützt.
-7. **Wird der Dateispeicher derzeit nur per LRS oder GRS repliziert?**  
+9. **Wird der Dateispeicher derzeit nur per LRS oder GRS repliziert?**  
    
     Die Unterstützung von RA-GRS ist geplant, aber es liegt noch keine Zeitplanung vor.
-8. **Wann kann ich vorhandene Speicherkonten für Azure-Dateispeicher verwenden?**
+10. **Wann kann ich vorhandene Speicherkonten für Azure-Dateispeicher verwenden?**
    
     Azure-Dateispeicher ist jetzt für alle Speicherkonten aktiviert.
-9. **Wird ein Umbenennungsvorgang auch der REST-API hinzugefügt?**
+11. **Wird ein Umbenennungsvorgang auch der REST-API hinzugefügt?**
    
     Das Umbenennen wird für unsere REST-API noch nicht unterstützt.
-10. **Können Freigaben geschachtelt werden? Kann eine Freigabe also einer anderen Freigabe untergeordnet sein?**
+12. **Können Freigaben geschachtelt werden? Kann eine Freigabe also einer anderen Freigabe untergeordnet sein?**
     
     Nein. Die Dateifreigabe ist der virtuelle Treiber, den Sie bereitstellen können. Geschachtelte Freigaben werden nicht unterstützt.
-11. **Ist es möglich, Lese- oder Schreibberechtigungen für Ordner der Freigabe anzugeben?**
+13. **Ist es möglich, Lese- oder Schreibberechtigungen für Ordner der Freigabe anzugeben?**
     
     Sie verfügen nicht über dieses Maß an Kontrolle über Berechtigungen, wenn Sie die Dateifreigabe per SMB bereitstellen. Sie können dies aber erreichen, indem Sie über die REST-API oder Clientbibliotheken eine Shared Access Signature (SAS) erstellen.  
-12. **Beim Versuch, Dateien in den Dateispeicher zu entzippen, war die Leistung schlecht. Wie soll ich vorgehen?**
+14. **Beim Versuch, Dateien in den Dateispeicher zu entzippen, war die Leistung schlecht. Wie soll ich vorgehen?**
     
     Für die Übertragung größerer Mengen von Dateien in den Dateispeicher empfehlen wir die Verwendung von AzCopy, Azure Powershell (Windows) oder der Azure CLI (Linux/Unix), da diese Tools für die Netzwerkübertragung optimiert sind.
-13. **Patch veröffentlicht, um das Problem einer geringen Leistung bei Azure-Dateien zu beheben**
+15. **Patch veröffentlicht, um das Problem einer geringen Leistung bei Azure-Dateien zu beheben**
     
     Das Windows-Team hat kürzlich einen Patch veröffentlicht, mit dem das Problem behoben wird, dass die Leistung beim Zugreifen auf Azure Files Storage von Windows 8.1 oder Windows Server 2012 R2 zu gering ist. Weitere Informationen finden Sie im zugehörigen KB-Artikel [Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/en-us/kb/3114025) (Niedrige Leistung beim Zugriff auf Azure Files Storage von Windows 8.1 oder Server 2012 R2).
-14. **Verwenden von Azure File Storage mit IBM MQ**
+16. **Verwenden von Azure File Storage mit IBM MQ**
     
     IBM hat ein Dokument mit Anweisungen für IBM MQ-Kunden veröffentlicht, die Azure File Storage mit ihrem Dienst konfigurieren möchten. Weitere Informationen finden Sie unter [How to setup IBM MQ Multi instance queue manager with Microsoft Azure File Service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)(Gewusst wie: Einrichten des IBM MQ-Warteschlangen-Managers für mehrere Instanzen mit dem Microsoft Azure-Dateidienst).
-15. **Wie behebe ich Fehler bei Azure File Storage?**
+17. **Wie behebe ich Fehler bei Azure File Storage?**
     
     Umfassende Unterstützung bei der Problembehandlung erhalten Sie im [Artikel zur Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md).               
-16. ** Kann ich FileSystemWatcher zum Lauschen auf Ereignisse verwenden, z.B. das Erstellen/Ändern/Löschen von Dateien und Verzeichnissen auf meiner Freigabe des Azure-Dateidiensts?
 
-Nein. Sie können das Azure-WebJobs-SDK verwenden. Sie können eigene ausgelöste oder nicht ausgelöste Bindungen schreiben und auf Ereignisse in Ihrem Dateispeicher lauschen. Ausführliche Informationen zu den ersten Schritten finden Sie hier: [Guideline for authoring new triggers and binders](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) (Anleitung zur Erstellung neuer Trigger und Bindungen).
+18. **Wie kann ich die serverseitige Verschlüsselung für Azure Files aktivieren?**
+
+    Die [serverseitige Verschlüsselung](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) befindet sich derzeit in der Vorschauphase. Während der Vorschauphase kann das Feature nur für neu erstellte ARM-Speicherkonten (Azure Resource Manager) aktiviert werden.
+    Sie können dieses Feature über das Azure-Portal für Azure Resource Manager-Speicherkonten aktivieren. Die Aktivierung der Verschlüsselung für Dateispeicher mittels [Azure PowerShell](https://msdn.microsoft.com/en-us/library/azure/mt607151.aspx), [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli-nodejs) oder [Microsoft Azure Storage-Ressourcenanbieter-API](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts) steht voraussichtlich Ende Februar zur Verfügung. Für die Aktivierung dieses Features fallen keine zusätzlichen Gebühren an. Wenn Sie Storage Service Encryption für Azure-Dateispeicher aktivieren, werden Ihre Daten automatisch für Sie verschlüsselt. 
+    Informieren Sie sich ausführlicher über Storage Service Encryption. Weitere Fragen zur Vorschau können auch an ssediscussions@microsoft.com gerichtet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
@@ -660,6 +669,7 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 * [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)
 * [Verwenden von AzCopy mit Microsoft Azure Storage](storage-use-azcopy.md)
 * [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](storage-azure-cli.md#create-and-manage-file-shares)
+* [Beheben von Problemen mit Azure File Storage](https://docs.microsoft.com/en-us/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>Referenz
 * [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
@@ -673,6 +683,6 @@ Weitere Informationen zum Azure-Dateispeicher erhalten Sie über diese Links.
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

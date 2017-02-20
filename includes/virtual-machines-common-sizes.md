@@ -35,20 +35,20 @@ Wir haben das Konzept der Azure-Berechnungseinheit ACU (Azure Compute Unit) erst
 
 | SKU-Familie | ACU/Kern |
 | --- | --- |
-| [Standard_A0](#a-series) |50 |
-| [Standard_A1-4](#a-series) |100 |
-| [Standard_A5-7](#a-series) |100 |
-| [Standard_A1-8v2](#av2-series) |100 |
-| [Standard_A2m-8mv2](#av2-series) |100 |
+| [A0](#a-series) |50 |
+| [A1–A4](#a-series) |100 |
+| [A5–A7](#a-series) |100 |
+| [A1_v2–A8_v2](#av2-series) |100 |
+| [A2m_v2–A8m_v2](#av2-series) |100 |
 | [A8-A11](#a-series) |225* |
-| [D1-14](#d-series) |160 |
-| [D1-15v2](#dv2-series) |210 - 250* |
-| [DS1-14](#ds-series) |160 |
-| [DS1-15v2](#dsv2-series) |210-250* |
+| [D1–D14](#d-series) |160 |
+| [D1_v2–D15_v2](#dv2-series) |210 - 250* |
+| [DS1–DS14](#ds-series) |160 |
+| [DS1_v2–DS15_v2](#dsv2-series) |210-250* |
 | [F1-F16](#f-series) |210-250* |
 | [F1s-F16s](#fs-series) |210-250* |
-| [G1-5](#g-series) |180 - 240* |
-| [GS1-5](#gs-series) |180 - 240* |
+| [G1–G5](#g-series) |180 - 240* |
+| [GS1–GS5](#gs-series) |180 - 240* |
 | [H](#h-series) |290 - 300* |
 
 Mit * gekennzeichnete ACUs verwenden die Intel® Turbo-Technologie, um die CPU-Frequenz zu erhöhen eine Leistungssteigerung zu erzielen.  Das Maß der Leistungssteigerung variiert basierend auf der Größe und Workload des virtuellen Computers sowie auf anderen Workloads, die auf dem gleichen Host ausgeführt werden.
@@ -64,14 +64,14 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 ## <a name="a-series"></a>A-Serie
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales HDD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 |1 |0,768 |20 |1 |1 x 500 |1/niedrig |
-| Standard_A1 |1 |1,75 |70 |2 |2 x 500 |1/moderat |
-| Standard_A2 |2 |3,5 |135 |4 |4 x 500 |1/moderat |
-| Standard_A3 |4 |7 |285 |8 |8 x 500 |2/hoch |
-| Standard_A4 |8 |14 |605 |16 |16 x 500 |4/hoch |
-| Standard_A5 |2 |14 |135 |4 |4 x 500 |1/moderat |
-| Standard_A6 |4 |28 |285 |8 |8 x 500 |2/hoch |
-| Standard_A7 |8 |56 |605 |16 |16 x 500 |4/hoch |
+| Standard_A0 |1 |0,768 |20 |1 |1 x&500; |1/niedrig |
+| Standard_A1 |1 |1,75 |70 |2 |2 x&500; |1/moderat |
+| Standard_A2 |2 |3,5 |135 |4 |4 x&500; |1/moderat |
+| Standard_A3 |4 |7 |285 |8 |8 x&500; |2/hoch |
+| Standard_A4 |8 |14 |605 |16 |16 x&500; |4/hoch |
+| Standard_A5 |2 |14 |135 |4 |4 x&500; |1/moderat |
+| Standard_A6 |4 |28 |285 |8 |8 x&500; |2/hoch |
+| Standard_A7 |8 |56 |605 |16 |16 x&500; |4/hoch |
 
 <br>
 
@@ -80,10 +80,10 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales HDD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8* |8 |56 |382 |16 |16 x 500 |2/hoch |
-| Standard_A9* |16 |112 |382 |16 |16 x 500 |4/sehr hoch |
-| Standard_A10 |8 |56 |382 |16 |16 x 500 |2/hoch |
-| Standard_A11 |16 |112 |382 |16 |16 x 500 |4/sehr hoch |
+| Standard_A8* |8 |56 |382 |16 |16 x&500; |2/hoch |
+| Standard_A9* |16 |112 |382 |16 |16 x&500; |4/sehr hoch |
+| Standard_A10 |8 |56 |382 |16 |16 x&500; |2/hoch |
+| Standard_A11 |16 |112 |382 |16 |16 x&500; |4/sehr hoch |
 
 * RDMA-fähig
 
@@ -93,44 +93,46 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 | Größe        | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 |-------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
-| Standard_A1_v2 | 1         | 2            | 10                   | 2              | 2 x 500              | 1/moderat              |
-| Standard_A2_v2 | 2         | 4            | 20                   | 4              | 4 x 500              | 2/moderat              |
-| Standard_A4_v2 | 4         | 8            | 40                   | 8              | 8 x 500              | 4/hoch                  |
-| Standard_A8_v2 | 8         | 16           | 80                   | 16             | 16 x 500             | 8/hoch                  |
-| Standard_A2m_v2 | 2        | 16           | 20                   | 4              | 4 x 500              | 2/moderat              |
-| Standard_A4m_v2 | 4        | 32           | 40                   | 8              | 8 x 500              | 4/hoch                  |
-| Standard_A8m_v2 | 8        | 64           | 80                   | 16             | 16 x 500             | 8/hoch                  |
+| Standard_A1_v2 | 1         | 2            | 10                   | 2              | 2 x&500;              | 1/moderat              |
+| Standard_A2_v2 | 2         | 4            | 20                   | 4              | 4 x&500;              | 2/moderat              |
+| Standard_A4_v2 | 4         | 8            | 40                   | 8              | 8 x&500;              | 4/hoch                  |
+| Standard_A8_v2 | 8         | 16           | 80                   | 16             | 16 x&500;             | 8/hoch                  |
+| Standard_A2m_v2 | 2        | 16           | 20                   | 4              | 4 x&500;              | 2/moderat              |
+| Standard_A4m_v2 | 4        | 32           | 40                   | 8              | 8 x&500;              | 4/hoch                  |
+| Standard_A8m_v2 | 8        | 64           | 80                   | 16             | 16 x&500;             | 8/hoch                  |
 
 
 ## <a name="d-series"></a>D-Serie
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1 |1 |3,5 |50 |2 |2 x 500 |1/moderat |
-| Standard_D2 |2 |7 |100 |4 |4 x 500 |2/hoch |
-| Standard_D3 |4 |14 |200 |8 |8 x 500 |4/hoch |
-| Standard_D4 |8 |28 |400 |16 |16 x 500 |8/hoch |
-| Standard_D11 |2 |14 |100 |4 |4 x 500 |2/hoch |
-| Standard_D12 |4 |28 |200 |8 |8 x 500 |4/hoch |
-| Standard_D13 |8 |56 |400 |16 |16 x 500 |8/hoch |
-| Standard_D14 |16 |112 |800 |32 |32 x 500 |8/sehr hoch |
+| Standard_D1 |1 |3,5 |50 |2 |2 x&500; |1/moderat |
+| Standard_D2 |2 |7 |100 |4 |4 x&500; |2/hoch |
+| Standard_D3 |4 |14 |200 |8 |8 x&500; |4/hoch |
+| Standard_D4 |8 |28 |400 |16 |16 x&500; |8/hoch |
+| Standard_D11 |2 |14 |100 |4 |4 x&500; |2/hoch |
+| Standard_D12 |4 |28 |200 |8 |8 x&500; |4/hoch |
+| Standard_D13 |8 |56 |400 |16 |16 x&500; |8/hoch |
+| Standard_D14 |16 |112 |800 |32 |32 x&500; |8/sehr hoch |
 
 <br>
 
 ## <a name="dv2-series"></a>Dv2-Serie
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |3,5 |50 |2 |2 x 500 |1/moderat |
-| Standard_D2_v2 |2 |7 |100 |4 |4 x 500 |2/hoch |
-| Standard_D3_v2 |4 |14 |200 |8 |8 x 500 |4/hoch |
-| Standard_D4_v2 |8 |28 |400 |16 |16 x 500 |8/hoch |
-| Standard_D5_v2 |16 |56 |800 |32 |32 x 500 |8/äußerst hoch |
-| Standard_D11_v2 |2 |14 |100 |4 |4 x 500 |2/hoch |
-| Standard_D12_v2 |4 |28 |200 |8 |8 x 500 |4/hoch |
-| Standard_D13_v2 |8 |56 |400 |16 |16 x 500 |8/hoch |
-| Standard_D14_v2 |16 |112 |800 |32 |32 x 500 |8/äußerst hoch |
-| Standard_D15_v2 |20 |140 |1.000 |40 |40 x 500 |8/äußerst hoch* |
+| Standard_D1_v2 |1 |3,5 |50 |2 |2 x&500; |1/moderat |
+| Standard_D2_v2 |2 |7 |100 |4 |4 x&500; |2/hoch |
+| Standard_D3_v2 |4 |14 |200 |8 |8 x&500; |4/hoch |
+| Standard_D4_v2 |8 |28 |400 |16 |16 x&500; |8/hoch |
+| Standard_D5_v2 |16 |56 |800 |32 |32 x&500; |8/äußerst hoch |
+| Standard_D11_v2 |2 |14 |100 |4 |4 x&500; |2/hoch |
+| Standard_D12_v2 |4 |28 |200 |8 |8 x&500; |4/hoch |
+| Standard_D13_v2 |8 |56 |400 |16 |16 x&500; |8/hoch |
+| Standard_D14_v2 |16 |112 |800 |32 |32 x&500; |8/äußerst hoch |
+| Standard_D15_v2** |20 |140 |1.000 |40 |40 x&500; |8/äußerst hoch* |
 
 *In einigen Regionen stehen für die Größe „Standard_D15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
+
+**Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 <br>
 
@@ -164,7 +166,7 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 | Standard_DS12_v2 |4 |28 |56 |8 |16.000/128 (144) |12.800/192 |4 hoch |
 | Standard_DS13_v2 |8 |56 |112 |16 |32.000/256 (288) |25.600/384 |8 hoch |
 | Standard_DS14_v2 |16 |112 |224 |32 |64.000/512 (576) |51.200/768 |8 äußerst hoch |
-| Standard_DS15_v2 |20 |140 |280 |40 |80.000/640 (720) |64.000/960 |8 äußerst hoch** |
+| Standard_DS15_v2*** |20 |140 |280 |40 |80.000/640 (720) |64.000/960 |8 äußerst hoch** |
 
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
@@ -172,16 +174,17 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 **In einigen Regionen stehen für die Größe „Standard_DS15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
 
+***Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
 
 ## <a name="f-series"></a>F-Serie
 | Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1 |1 |2 |16 |2 |2 x 500 |1/moderat |
-| Standard_F2 |2 |4 |32 |4 |4 x 500 |2/hoch |
-| Standard_F4 |4 |8 |64 |8 |8 x 500 |4/hoch |
-| Standard_F8 |8 |16 |128 |16 |16 x 500 |8/hoch |
-| Standard_F16 |16 |32 |256 |32 |32 x 500 |8/äußerst hoch |
+| Standard_F1 |1 |2 |16 |2 |2 x&500; |1/moderat |
+| Standard_F2 |2 |4 |32 |4 |4 x&500; |2/hoch |
+| Standard_F4 |4 |8 |64 |8 |8 x&500; |4/hoch |
+| Standard_F8 |8 |16 |128 |16 |16 x&500; |8/hoch |
+| Standard_F16 |16 |32 |256 |32 |32 x&500; |8/äußerst hoch |
 
 <br>
 
@@ -207,8 +210,9 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 | Standard_G2 |4 |56 |768 |8 |8 x 500 |2/hoch |
 | Standard_G3 |8 |112 |1.536 |16 |16 x 500 |4/sehr hoch |
 | Standard_G4 |16 |224 |3.072 |32 |32 x 500 |8/äußerst hoch |
-| Standard_G5 |32 |448 |6.144 |64 |64 x 500 |8/äußerst hoch |
+| Standard_G5* |32 |448 |6.144 |64 |64 x 500 |8/äußerst hoch |
 
+*Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
 
 ## <a name="gs-series"></a>GS-Serie*
@@ -218,12 +222,13 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 | Standard_GS2 |4 |56 |112 |8 |20.000/200 (528) |10.000/250 |2/hoch |
 | Standard_GS3 |8 |112 |224 |16 |40.000/400 (1.056) |20.000/500 |4/sehr hoch |
 | Standard_GS4 |16 |224 |448 |32 |80.000/800 (2.112) |40.000/1.000 |8/äußerst hoch |
-| Standard_GS5 |32 |448 |896 |64 |160.000/1.600 (4.224) |80.000/2.000 |8/äußerst hoch |
+| Standard_GS5** |32 |448 |896 |64 |160.000/1.600 (4.224) |80.000/2.000 |8/äußerst hoch |
 
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 * Der mit einer VM der GS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. 
 
+**Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
 
 ## <a name="h-series"></a>H-Reihe
@@ -301,6 +306,6 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

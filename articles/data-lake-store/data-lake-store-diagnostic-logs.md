@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 276033907d454a54b2d9d5354f8e1dc48a7b01d4
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: f139674f96793b8486c541c9e3f1ead751b97232
 
 
 ---
@@ -31,17 +31,26 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>Aktivieren der Diagnoseprotokollierung für Ihr Data Lake Store-Konto
 1. Melden Sie sich beim neuen [Azure-Portal](https://portal.azure.com)an.
-2. Öffnen Sie Ihr Data Lake Store-Konto, und klicken Sie auf Ihrem Data Lake Store-Kontoblatt auf **Einstellungen** und dann auf **Diagnoseeinstellungen**.
+2. Öffnen Sie Ihr Data Lake Store-Konto, und klicken Sie auf Ihrem Data Lake Store-Kontoblatt auf **Einstellungen** und dann auf **Diagnoseprotokolle**.
+3. Klicken Sie auf dem Blatt **Diagnoseprotokolle** auf **Diagnose aktivieren**.
+
+    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Aktivieren von Diagnoseprotokollen")
+
 3. Nehmen Sie auf dem Blatt **Diagnose** die folgenden Änderungen vor, um die Diagnoseprotokollierung zu konfigurieren.
    
-    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Enable diagnostic logs")
+    ![Aktivieren der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
    
    * Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
-   * Sie können die Daten auf zwei verschiedene Arten speichern/verarbeiten.
-     * Wählen Sie die Option **Nach Event Hub Exportieren** , um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
-     * Wählen Sie die Option **Nach Speicherkonto exportieren** , um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
+   * Sie können die Daten auf verschiedene Arten speichern/verarbeiten.
+     
+        * Wählen Sie die Option zum **Archivieren in einem Speicherkonto**, um Protokolle in einem Azure Storage-Konto zu speichern. Verwenden Sie diese Option, wenn Sie die Daten archivieren möchten, die zu einem späteren Zeitpunkt der Batchverarbeitung unterzogen werden sollen. Bei Auswahl dieser Option müssen Sie ein Azure Storage-Konto zum Speichern der Protokolle bereitstellen.
+        
+        * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
+
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Operations Management Suite-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden.
+     
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
-   * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen.
+   * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.
    * Klicken Sie auf **Speichern**.
 
 Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie die Protokolle auf der Registerkarte **Diagnoseprotokolle** verfolgen.
@@ -55,7 +64,7 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anz
 ### <a name="using-the-data-lake-store-settings-view"></a>Verwenden der Data Lake Store-Ansicht „Einstellungen“
 1. Klicken Sie in Ihrem Data Lake Store-Konto auf dem Blatt **Einstellungen** auf **Diagnoseprotokolle**.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "View diagnostic logs") 
+    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Anzeigen von Diagnoseprotokollen") 
 2. Auf dem Blatt **Diagnoseprotokolle** sollten die Protokolle nach **Überwachungsprotokollen** und **Anforderungsprotokollen** kategorisiert sein.
    
    * Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Store-Konto.
@@ -63,15 +72,15 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Store-Kontos anz
 3. Klicken Sie für jeden Protokolleintrag auf den Link **Herunterladen** , um die Protokolle herunterzuladen.
 
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
-1. Öffnen Sie das Azure Storage-Kontoblatt, das zur Protokollierung dem Data Lake Store zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blobdienst** werden zwei Container aufgelistet.
+1. Öffnen Sie das Azure Storage-Kontoblatt, das zur Protokollierung dem Data Lake Store zugeordnet ist, und klicken Sie dann auf „Blobs“. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "View diagnostic logs")
+    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
    
    * Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
    * Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
 2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert.
    
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "View diagnostic logs")
+    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Anzeigen von Diagnoseprotokollen")
    
     Der vollständige Pfad zu einem Überwachungsprotokoll könnte z.B. folgendermaßen lauten: `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
@@ -177,6 +186,6 @@ Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten vera
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

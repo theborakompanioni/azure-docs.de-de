@@ -4,7 +4,7 @@ Weitere Informationen zu Datenträgern finden Sie unter [Informationen zu Datent
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Anfügen eines leeren Datenträgers
-1. Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
+1. Öffnen Sie Azure CLI 1.0, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 2. Geben Sie wie im folgenden Beispiel gezeigt den Befehl `azure vm disk attach-new` ein, um einen neuen Datenträger zu erstellen und anzufügen. Ersetzen Sie dabei *myVM* durch den Namen Ihres virtuellen Linux-Computers, und geben Sie die Größe des Datenträgers in GB ein. In diesem Beispiel sind es *100 GB*:
 
     ```azurecli
@@ -37,7 +37,7 @@ Weitere Informationen zu Datenträgern finden Sie unter [Informationen zu Datent
 ## <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers
 Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkonto benötigt.
 
-1. Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
+1. Öffnen Sie Azure CLI 1.0, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 2. Überprüfen Sie, ob die VHD, die Sie anfügen möchten, bereits in Ihr Azure-Abonnement hochgeladen wurde:
    
     ```azurecli
@@ -78,7 +78,7 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
     info:    vm disk create command OK
     ```
    
-   Sie können auch den Befehl `azure vm disk upload` zum Hochladen einer VHD in ein bestimmtes Speicherkonto verwenden. Weitere Informationen zu den Befehlen zum Verwalten der Datenträger Ihrer virtuellen Azure-Computer finden Sie [hier](../articles/virtual-machines-command-line-tools.md#commands-to-manage-your-azure-virtual-machine-data-disks).
+   Sie können auch den Befehl `azure vm disk upload` zum Hochladen einer VHD in ein bestimmtes Speicherkonto verwenden. Weitere Informationen zu den Befehlen zum Verwalten der Datenträger Ihrer virtuellen Azure-Computer finden Sie [hier](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
 4. Nun fügen Sie die gewünschte VHD an Ihren virtuellen Computer an:
    
@@ -117,6 +117,6 @@ Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkont
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -14,15 +14,16 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2016
+ms.date: 02/06/2017
 ms.author: genemi
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: c046c6bd16d6ede165ccaeb5983393dd5e33bfae
+ms.sourcegitcommit: fdbe5ff497b7acc9d8521b8ba1a016ae11bc69d2
+ms.openlocfilehash: 3bb6cc477b413a8636433038429e4defec1d2676
 
 
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
+
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 Sie suchen ein vollständiges Codebeispiel als stabile Option zum Erfassen und Melden von Informationen für erweiterte Ereignisse.
@@ -38,6 +39,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
   * Erstellen und Starten der Ereignissitzung usw.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
@@ -52,6 +54,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
   * Die Module umfassen verschiedene Befehle, z.B. **New-AzureStorageAccount**.
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell-Code für den Azure-Speichercontainer
+
 Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
 
 Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
@@ -66,9 +69,10 @@ Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen 
 
 ![PowerShell ISE mit installiertem Azure-Modul, bereit für die Ausführung des Skripts.][30_powershell_ise]
 
-&nbsp;
 
-```
+### <a name="powershell-code"></a>PowerShell-Code
+
+```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
 
 #--------------- 1 -----------------------
@@ -239,11 +243,10 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 ```
 
 
-&nbsp;
-
 Beachten Sie die benannten Werte, die beim Beenden des PowerShell-Skripts ausgegeben werden. Diese Werte müssen Sie im Transact-SQL-Skript bearbeiten, das als Phase 2 folgt.
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL-Code zum Verwenden des Azure-Speichercontainers
+
 * In Phase 1 dieses Codebeispiels haben Sie ein PowerShell-Skript zum Erstellen eines Azure-Speichercontainers ausgeführt.
 * In Phase 2 muss das folgende Transact-SQL-Skript nun diesen Container verwenden.
 
@@ -258,16 +261,14 @@ Beim Beenden des PowerShell-Skripts wurden einige benannte Werte ausgegeben. Sie
 5. Suchen Sie alle Vorkommen von **TODO** im Skript, und nehmen Sie jeweils die entsprechende Bearbeitung vor.
 6. Speichern Sie die Änderungen, und führen Sie dann das Skript aus.
 
-&nbsp;
 
 > [!WARNING]
 > Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie *das vorangestellte Fragezeichen entfernen*. Andernfalls kann die Ausführung des Skripts aus Sicherheitsgründen blockiert werden.
-> 
-> 
 
-&nbsp;
 
-```
+### <a name="transact-sql-code"></a>Transact-SQL-Code
+
+```tsql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -461,11 +462,9 @@ GO
 ```
 
 
-&nbsp;
-
 Wenn das Ziel bei der Ausführung nicht angefügt wird, müssen Sie die Ereignissitzung beenden und dann erneut starten:
 
-```
+```tsql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
@@ -473,16 +472,14 @@ GO
 ```
 
 
-&nbsp;
-
 ## <a name="output"></a>Ausgabe
+
 Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **<event>** -Element mit einer UPDATE-Anweisung angezeigt.
 
 Hier sehen Sie ein **<event>** -Element, das beim Testen generiert wurde:
 
-&nbsp;
 
-```
+```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
   <data name="state">
     <value>0</value>
@@ -521,7 +518,6 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 </event>
 ```
 
-&nbsp;
 
 Im vorherigen Transact-SQL-Skript wurde die folgende Systemfunktion verwendet, um die Ereignisdatei zu lesen:
 
@@ -531,9 +527,9 @@ Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterte
 
 * [Advanced Viewing of Target Data from Extended Events (Erweiterte Anzeige von Zieldaten aus erweiterten Ereignissen)](http://msdn.microsoft.com/library/mt752502.aspx)
 
-&nbsp;
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Konvertieren des Codebeispiels für die Ausführung in SQL Server
+
 Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsoft SQL Server ausführen.
 
 * Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch **C:\myeventdata.xel**. Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
@@ -543,6 +539,7 @@ Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsof
   * Es wird kein Azure-Speicherkonto benötigt.
 
 ## <a name="more-information"></a>Weitere Informationen
+
 Weitere Informationen zu Konten und Containern im Azure Storage-Dienst finden Sie in den folgenden Artikeln:
 
 * [Verwenden des Blob-Speichers mit .NET](../storage/storage-dotnet-how-to-use-blobs.md)
@@ -560,6 +557,6 @@ Image references.
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

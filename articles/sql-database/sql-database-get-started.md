@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Portal: Erste Schritte mit Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: "Es wird beschrieben, wie Sie einen logischen SQL-Datenbank-Server, eine Firewallregel auf Serverebene und Datenbanken mit dem Azure-Portal erstellen. Außerdem wird beschrieben, wie Sie Datenbanken mit SQL Server Management Studio abfragen."
+title: 'Schnellstart: Ihre erste Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: "Erfahren Sie, wie Sie einen logischen SQL-Datenbankserver, eine Firewallregel auf Serverebene und Datenbanken mit dem Azure-Portal erstellen. Außerdem lernen Sie, wie Sie SQL Server Management Studio mit Azure SQL-Datenbank verwenden."
 keywords: Tutorial zu SQL-Datenbank, Erstellen einer SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -14,53 +14,52 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/01/2017
+ms.date: 02/04/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 6fd3c0ebe6d7b7e23550358ca1d93840ae8acaa1
-ms.openlocfilehash: 3b9a4fbd7121155e34cf9014ca08a4614457fe11
+ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
+ms.openlocfilehash: b838974de06ecbc751254064e2310df51c450086
 
 
 ---
-# <a name="tutorial-provision-and-access-an-azure-sql-database-using-the-azure-portal-and-sql-server-management-studio"></a>Tutorial: Bereitstellen und Verwenden einer Azure SQL-Datenbank mithilfe von Azure-Portal und SQL Server Management Studio
+# <a name="quick-start-tutorial-your-first-azure-sql-database"></a>Schnellstarttutorial: Ihre erste Azure SQL-Datenbank
 
-In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal für Folgendes verwenden:
+In diesem Schnellstarttutorial wird Folgendes behandelt:
 
-* Erstellen einer neuen Azure-Ressourcengruppe
-* Erstellen eines logischen Azure SQL-Servers
-* Anzeigen der Eigenschaften eines logischen Azure SQL-Servers
-* Erstellen einer Firewallregel auf Serverebene
-* Erstellen der Adventure Works LT-Beispieldatenbank als Einzeldatenbank
-* Anzeigen von Eigenschaften der Adventure Works LT-Beispieldatenbank in Azure
+* [Erstellen eines neuen logischen Servers](sql-database-get-started.md#create-a-new-logical-sql-server) 
+* [Anzeigen der Eigenschaften eines logischen Servers](sql-database-get-started.md#view-the-logical-server-properties) 
+* [Erstellen einer Firewallregel auf Serverebene](sql-database-get-started.md#create-a-server-level-firewall-rule) 
+* [Herstellen einer Verbindung für den Server mit SSMS](sql-database-get-started.md#connect-to-the-server-with-ssms) 
+* [Erstellen einer Datenbank mit Beispieldaten](sql-database-get-started.md#create-a-database-with-sample-data) 
+* [Anzeigen der Datenbankeigenschaften](sql-database-get-started.md#view-the-database-properties) 
+* [Abfragen der Datenbank im Azure-Portal](sql-database-get-started.md#query-the-database-in-the-azure-portal) 
+* [Herstellen einer Verbindung mit der Datenbank und Abfragen dieser Datenbank mit SSMS](sql-database-get-started.md#connect-and-query-the-database-with-ssms) 
+* [Erstellen einer neuen, leeren Datenbank mit SSMS](sql-database-get-started.md#create-a-blank-database-with-ssms) 
+* [Behandeln von Konnektivitätsproblemen](sql-database-get-started.md#troubleshoot-connectivity) 
+* [Löschen einer Datenbank](sql-database-get-started.md#delete-a-single-database) 
 
-In diesem Tutorial verwenden Sie auch die aktuelle Version von SQL Server Management Studio für folgende Aufgaben:
 
-* Herstellen einer Verbindung mit dem logischen Server und der dazugehörigen Masterdatenbank
-* Abfragen der Masterdatenbank
-* Herstellen einer Verbindung mit der Beispieldatenbank
-* Abfragen der Beispieldatenbank
-
-Nach Abschluss dieses Tutorials verfügen Sie über eine Beispieldatenbank und eine leere Datenbank, die in einer Azure-Ressourcengruppe ausgeführt wird und einem logischen Server zugeordnet ist. Außerdem verfügen Sie über eine Firewallregel auf Serverebene, die so konfiguriert ist, dass sich der Prinzipal auf Serverebene am Server über eine angegebene IP-Adresse (oder einen IP-Adressbereich) anmelden kann. 
+In diesem Schnellstarttutorial erstellen Sie eine Beispieldatenbank und eine leere Datenbank, die in einer Azure-Ressourcengruppe ausgeführt werden und einem logischen Server zugeordnet sind. Sie erstellen außerdem zwei Firewallregeln auf Serverebene, die so konfiguriert sind, dass sich der Prinzipal auf Serverebene am Server über zwei angegebene IP-Adressen anmelden kann. Zum Schluss lernen Sie, wie eine Datenbank im Azure-Portal abgefragt wird und wie mithilfe von SQL Server Management Studio eine Verbindung hergestellt und Abfragen durchgeführt werden. 
 
 **Geschätzte Zeit**: Dieses Tutorial ist in ca. 30 Minuten abgeschlossen (sofern die Voraussetzungen bereits erfüllt sind).
 
 > [!TIP]
-> Sie können diese Aufgaben auch in einem Tutorial zu den ersten Schritten durchführen, indem Sie entweder [C#](sql-database-get-started-csharp.md) oder [PowerShell](sql-database-get-started-powershell.md) verwenden.
+> Die gleichen Aufgaben können Sie mit [C#](sql-database-get-started-csharp.md) oder [PowerShell](sql-database-get-started-powershell.md) ausführen.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
 
-* Sie müssen mit einem Konto, das über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügt, eine Verbindung mit dem Azure-Portal herstellen können. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
+* Es muss möglich sein, dass Sie mit einem Konto, das über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügt, eine Verbindung mit dem Azure-Portal herstellen. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
 
 > [!NOTE]
-> Dieses Tutorial dient Ihnen als Hilfe beim Erlernen des Inhalts dieser Lernthemen: [Logische Azure SQL-Datenbankserver](sql-database-server-overview.md), [Übersicht zu Azure SQL-Datenbank](sql-database-overview.md) und [Übersicht über Firewallregeln für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+> Dieses Schnellstarttutorial dient Ihnen als Hilfe zu diesen Themen: [Logische Azure SQL-Datenbankserver](sql-database-server-overview.md), [Übersicht zu Azure SQL-Datenbank](sql-database-overview.md) und [Übersicht über Firewallregeln für Azure SQL-Datenbank](sql-database-firewall-configure.md).
 >  
 
 
-### <a name="sign-in-to-the-azure-portal-using-your-azure-account"></a>Anmelden am Azure-Portal mit dem Azure-Konto
-Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorhandenen Abonnements](https://account.windowsazure.com/Home/Index)eine Verbindung mit dem Azure-Portal herzustellen.
+### <a name="sign-in-to-the-azure-portal-with-your-azure-account"></a>Anmelden beim Azure-Portal mit Ihrem Azure-Konto
+Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [Azure-Kontos](https://account.windowsazure.com/Home/Index)eine Verbindung mit dem Azure-Portal herzustellen.
 
 1. Öffnen Sie einen Browser Ihrer Wahl, und stellen Sie eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/)her.
 2. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
@@ -71,7 +70,9 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
 <a name="create-logical-server-bk"></a>
 
-## <a name="create-a-new-logical-sql-server-in-the-azure-portal"></a>Erstellen eines neuen logischen SQL-Servers im Azure-Portal
+## <a name="create-a-new-logical-sql-server"></a>Erstellen eines neuen logischen SQL-Servers
+
+Führen Sie die Schritte in diesem Verfahren aus, um mit dem Azure-Portal in der Region Ihrer Wahl einen neuen logischen Server zu erstellen.
 
 1. Klicken Sie auf **Neu**, geben Sie **sql server** ein, und drücken Sie dann die **EINGABETASTE**.
 
@@ -87,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
     ![Neuer Servername](./media/sql-database-get-started/new-server-name.png)
 
     > [!IMPORTANT]
-    > Der vollqualifizierte Name für den neuen Server lautet „<Ihr_Servername>.database.windows.net“.
+    > Der vollqualifizierte Name für den neuen Server weist folgendes Format auf „<Ihr_Servername>.database.windows.net“.
     >
     
 4. Geben Sie im Textfeld „Serveradministratoranmeldung“ einen Benutzernamen für die SQL-Authentifizierungsanmeldung für diesen Server ein. Diese Anmeldung wird als Serverprinzipalanmeldung bezeichnet. Wenn der angegebene Name gültig ist, wird ein grünes Häkchen angezeigt.
@@ -115,7 +116,9 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Schaltfläche erstellen](./media/sql-database-get-started/create.png)
 
-## <a name="view-the-logical-sql-server-properties-in-the-azure-portal"></a>Anzeigen der Eigenschaften der logischen SQL Server-Instanz im Azure-Portal
+## <a name="view-the-logical-server-properties"></a>Anzeigen der Eigenschaften eines logischen Servers
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit dem Azure-Portal die Servereigenschaften anzuzeigen. Sie benötigen den vollqualifizierten Servernamen, um in einem nachfolgenden Verfahren eine Verbindung mit diesem Server herzustellen. 
 
 1. Klicken Sie im Azure-Portal auf **Weitere Dienste**.
 
@@ -137,17 +140,15 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Vollständiger SQL Server-Name](./media/sql-database-get-started/sql-server-full-name.png)
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Erstellen einer Firewallregel auf Serverebene im Azure-Portal
+## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit dem Azure-Portal eine neue Firewallregel auf Serverebene zu erstellen, damit Sie im nächsten Verfahren Ihren Server mit SQL Server Management Studio verbinden können.
 
 1. Klicken Sie auf dem Blatt „SQL Server“ unter „Einstellungen“ auf **Firewall**, um das Blatt „Firewall“ für den SQL-Server zu öffnen.
 
     ![SQL Server-Firewall](./media/sql-database-get-started/sql-server-firewall.png)
 
-2. Überprüfen Sie die angezeigte Client-IP-Adresse, und vergewissern Sie sich, dass dies Ihre IP-Adresse für das Internet ist, indem Sie einen Browser Ihrer Wahl verwenden (Frage: „Wie lautet meine IP-Adresse“). Es kann vorkommen, dass diese Adressen aus unterschiedlichen Gründen nicht übereinstimmen.
-
-    ![Ihre IP-Adresse](./media/sql-database-get-started/your-ip-address.png)
-
-3. Wenn die IP-Adressen übereinstimmen, können Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen** klicken.
+2. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**.
 
     ![Hinzufügen der Client-IP-Adresse](./media/sql-database-get-started/add-client-ip.png)
 
@@ -159,14 +160,16 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Hinzufügen der Client-IP-Adresse](./media/sql-database-get-started/save-firewall-rule.png)
 
-## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit der SQL Server-Instanz mit SQL Server Management Studio (SSMS)
+## <a name="connect-to-the-server-with-ssms"></a>Herstellen einer Verbindung mit dem Server mit SSMS
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit SQL Server Management Studio eine Verbindung mit dem logischen SQL-Server herzustellen.
 
 1. Laden Sie die aktuelle Version von SSMS unter [Herunterladen von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) herunter, und installieren Sie die Anwendung, falls noch nicht geschehen. Damit Sie immer auf dem neuesten Stand bleiben, werden Sie von der aktuellen Version von SSMS informiert, wenn eine neue Version als Download verfügbar ist.
 
 2. Geben Sie nach der Installation im Windows-Suchfeld den Text **Microsoft SQL Server Management Studio** ein, und drücken Sie die **EINGABETASTE**, um SSMS zu öffnen:
 
     ![SQL Server Management Studio](./media/sql-database-get-started/ssms.png)
-3. Geben Sie im Dialogfeld „Mit Server verbinden“ die erforderlichen Informationen ein, um eine Verbindung Ihrer SQL Server-Instanz per SQL Server-Authentifizierung herzustellen.
+3. Geben Sie im Dialogfeld „Mit Server verbinden“ die erforderlichen Informationen ein, um mithilfe der SQL Server-Authentifizierung eine Verbindung mit Ihrer SQL Server-Instanz herzustellen.
 
     ![Verbindung mit dem Server herstellen](./media/sql-database-get-started/connect-to-server.png)
 4. Klicken Sie auf **Verbinden**.
@@ -191,7 +194,9 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
     > Informationen zur SQL-Sicherheit finden Sie unter [Erste Schritte mit SQL-Sicherheit](sql-database-control-access-sql-authentication-get-started.md).
     >
 
-## <a name="create-new-database-in-the-azure-portal-using-adventure-works-lt-sample"></a>Erstellen der neuen Datenbank im Azure-Portal mit dem Adventure Works LT-Beispiel
+## <a name="create-a-database-with-sample-data"></a>Erstellen einer Datenbank mit Beispieldaten
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit dem Azure-Portal eine Datenbank mit Beispieldaten zu erstellen. Diese erstellte Datenbank wird an den zuvor erstellten logischen Server angefügt. Wenn die Dienstebene „Basic“ in der Region, in der Sie Ihren Server erstellt haben, nicht verfügbar ist, löschen Sie Ihren Server, und erstellen Sie ihn in einer anderen Region neu. Informationen zu den Schritten zum Löschen finden Sie im vorherigen Verfahren in diesem Tutorial.
 
 1. Klicken Sie im Azure-Portal auf dem Standardblatt auf **SQL-Datenbanken**.
 
@@ -223,7 +228,9 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Schaltfläche erstellen](./media/sql-database-get-started/create.png)
 
-## <a name="view-database-properties-in-the-azure-portal"></a>Anzeigen von Datenbankeigenschaften im Azure-Portal
+## <a name="view-the-database-properties"></a>Anzeigen der Datenbankeigenschaften
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit dem Azure-Portal eine Datenbankabfrage durchzuführen.
 
 1. Klicken Sie auf dem Blatt „SQL-Datenbanken“ auf Ihre neue Datenbank, um die dazugehörigen Eigenschaften im Azure-Portal anzuzeigen. In den nachfolgenden Tutorials werden die Optionen beschrieben, die auf diesem Blatt verfügbar sind. 
 
@@ -242,7 +249,41 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Neue Beispieldatenbank im Bereich „Zusammenfassung“ des Servers](./media/sql-database-get-started/new-sample-db-server-essentials-pane.png)
 
-## <a name="connect-and-query-sample-database-using-sql-server-management-studio"></a>Herstellen einer Verbindung mit der Beispieldatenbank und Durchführen von Abfragen mit SQL Server Management Studio
+## <a name="query-the-database-in-the-azure-portal"></a>Abfragen der Datenbank im Azure-Portal
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um im dem Azure-Portal eine Datenbankabfrage mithilfe des Abfrage-Editors durchzuführen. Die Abfrage zeigt die Objekte in der Datenbank an.
+
+1. Klicken Sie auf dem Blatt „SQL-Datenbanken“ auf **Tools**.
+
+    ![Tools](./media/sql-database-get-started/tools.png)
+2. Klicken Sie auf dem Blatt „Tools“ auf **Abfrage-Editor (Vorschau)**.
+
+    ![Abfrage-Editor](./media/sql-database-get-started/query-editor.png)
+3. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass der Abfrage-Editor eine Vorschaufunktion ist, und klicken Sie anschließend auf **OK**.
+4. Klicken Sie auf dem Blatt **Abfrage-Editor** auf **Anmelden**.
+
+    ![Blatt „Abfrage-Editor“](./media/sql-database-get-started/query-editor-blade.png)
+5. Prüfen Sie den Autorisierungstyp und die Anmeldung, und geben Sie anschließend das Kennwort für die Anmeldung ein. 
+
+    ![Abfrage-Editor – Anmeldung](./media/sql-database-get-started/query-editor-login.png)
+6. Klicken Sie auf **OK**, um sich anzumelden.
+7. Wenn Sie einen Anmeldefehler erhalten, der angibt, dass Ihr Client über keine Berechtigungen zum Anmelden verfügt, da für die IP-Adresse Ihres Clients keine Firewallregel vorhanden ist, kopieren Sie die IP-Adresse Ihres Clients in das Fehlerfenster, und erstellen Sie auf dem Blatt „SQL Server“ für diese Datenbank eine Firewallregel auf Serverebene.
+
+    ![Abfrage-Editor – Fehler](./media/sql-database-get-started/query-editor-error.png)
+8. Wiederholen Sie den vorherigen Schritt (Schritt 6), um sich bei Ihrer Datenbank anzumelden.
+9. Geben Sie nach der Authentifizierung im Abfragefenster die folgende Abfrage ein:
+
+   ```select * from sys.objects```
+
+    ![Abfrage-Editor-Abfrage](./media/sql-database-get-started/query-editor-query.png)
+10.  Klicken Sie auf **Run**(Ausführen).
+11. Die Abfrageergebnisse werden im Bereich **Ergebnisse** angezeigt.
+
+    ![Abfrage-Editor – Ergebnisse](./media/sql-database-get-started/query-editor-results.png)
+
+## <a name="connect-and-query-the-database-with-ssms"></a>Herstellen einer Verbindung mit der Datenbank und Abfragen dieser Datenbank mit SSMS
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit SQL Server Management Studio eine Verbindung mit der Datenbank herzustellen und anschließend die Beispieldaten abzufragen, damit die Objekte in der Datenbank angezeigt werden.
 
 1. Wechseln Sie zu SQL Server Management Studio, und klicken Sie im Objekt-Explorer auf **Datenbanken** und dann in der Symbolleiste auf **Aktualisieren**, um die Beispieldatenbank anzuzeigen.
 
@@ -261,7 +302,9 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Abfragen von Systemobjekten in der neuen Beispieldatenbank mit SSMS](./media/sql-database-get-started/new-sample-db-query-objects-ssms.png)
 
-## <a name="create-a-new-blank-database-using-sql-server-management-studio"></a>Erstellen einer neuen leeren Datenbank mit SQL Server Management Studio
+## <a name="create-a-blank-database-with-ssms"></a>Erstellen einer neuen, leeren Datenbank mit SSMS
+
+Führen Sie die in diesem Verfahren beschriebenen Schritte aus, um mit SQL Server Management Studio eine neue Datenbank auf dem logischen SQL-Server zu erstellen.
 
 1. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf **Datenbanken**, und klicken Sie dann auf **Neue Datenbank**.
 
@@ -288,8 +331,25 @@ Führen Sie die folgenden Schritte aus, um unter Verwendung Ihres [bereits vorha
 
     ![Neue leere Datenbank im Objekt-Explorer](./media/sql-database-get-started/new-blank-database-object-explorer.png)
 
+## <a name="troubleshoot-connectivity"></a>Behandeln von Konnektivitätsproblemen
+
+> [!IMPORTANT]
+> Bei Problemen mit der Verbindung finden Sie unter [Verbindungsprobleme](sql-database-troubleshoot-common-connection-issues.md) weitere Informationen.
+> 
+
+## <a name="delete-a-single-database"></a>Löschen einer Einzeldatenbank
+
+Führen Sie die Schritte in diesem Verfahren aus, um mit dem Azure-Portal eine Einzeldatenbank zu löschen.
+
+1. Klicken Sie im Azure-Portal auf dem Blatt für Ihre SQL-Datenbank auf **Löschen**.
+
+    ![Datenbank löschen](./media/sql-database-get-started/delete-database.png)
+2. Klicken Sie auf **Ja**, um zu bestätigen, dass Sie diese Datenbank dauerhaft löschen möchten.
+
+    ![Datenbank löschen – Ja](./media/sql-database-get-started/delete-database-yes.png)
+
 > [!TIP]
-> Sie können Kosten sparen, während Sie lernen, indem Sie nicht verwendete Datenbanken löschen. Sie haben die Möglichkeit, Datenbanken der Basic Edition innerhalb von sieben Tagen wiederherzustellen. Vermeiden Sie es aber, einen Server zu löschen. Wenn Sie dies tun, ist es nicht möglich, den Server oder die gelöschten Datenbanken wiederherzustellen.
+> Während der Beibehaltungsdauer für Ihre Datenbank können Sie diese von den automatischen Sicherungen, die vom Dienst initiiert werden, wiederherstellen. Sie haben die Möglichkeit, Datenbanken der Basic Edition innerhalb von sieben Tagen wiederherzustellen. Vermeiden Sie es aber, einen Server zu löschen. Wenn Sie dies tun, ist es nicht möglich, den Server oder die gelöschten Datenbanken wiederherzustellen. Weitere Informationen zu Datenbanksicherungen finden Sie unter [Weitere Informationen zu Sicherungen für SQL-Datenbank](sql-database-automated-backups.md). Informationen zum Wiederherstellen einer Datenbank aus den Sicherungen finden Sie unter [Wiederherstellen einer Datenbank](sql-database-recovery-using-backups.md). Unter [Wiederherstellen einer gelöschten Azure SQL-Datenbank im Azure-Portal](sql-database-restore-deleted-database-portal.md) finden Sie Anleitungen zum Wiederherstellen einer gelöschten Datenbank.
 >
 
 
@@ -302,7 +362,7 @@ Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutoria
 * Wenn Sie mit Excel vertraut sind, informieren Sie sich über das [Herstellen von Verbindungen mit SQL-Datenbank in Azure mit Excel](sql-database-connect-excel.md).
 * Wenn Sie mit dem Programmieren beginnen möchten, wählen Sie unter [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)Ihre Programmiersprache aus.
 * Wenn Sie lokale SQL Server-Datenbanken in Azure verschieben möchten, helfen Ihnen die Informationen unter [Migrieren von Datenbanken zu SQL-Datenbank](sql-database-cloud-migrate.md) weiter.
-* Wenn Sie einige Daten aus einer CSV-Datei mit dem BCP-Befehlszeilentool in eine neue Tabelle laden möchten, machen Sie sich mit den Informationen unter [Laden von Daten aus einer CSV-Datei in SQL-Datenbank mit BPC](sql-database-load-from-csv-with-bcp.md)vertraut.
+* Wenn Sie Daten aus einer CSV-Datei mit dem BCP-Befehlszeilentool in eine neue Tabelle laden möchten, finden Sie unter [Laden von Daten aus einer CSV-Datei in SQL-Datenbank mit BPC](sql-database-load-from-csv-with-bcp.md) weitere Informationen.
 * Wenn Sie mit dem Erstellen von Tabellen und anderen Objekten beginnen möchten, helfen Ihnen die Informationen unter „Erstellen einer Tabelle“ im Thema [Erstellen einer Tabelle](https://msdn.microsoft.com/library/ms365315.aspx) weiter.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -313,6 +373,6 @@ Nachdem Sie dieses Tutorial nun abgeschlossen haben, können Sie weitere Tutoria
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

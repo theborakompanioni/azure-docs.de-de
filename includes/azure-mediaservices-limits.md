@@ -4,25 +4,27 @@
 | Ressource | Standardlimit | 
 | --- | --- | 
 | Azure Media Services (AMS)-Konten in einem einzelnen Abonnement | 25 (feststehend) |
-| Objekte pro AMS-Konto | 1.000.000|
+| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1, S2)<br/>10 (S3) <sup>1</sup> | 
+| Aufträge pro AMS-Konto | 50.000<sup>2</sup> |
 | Verkettete Aufgaben pro Auftrag | 30 (feststehend) |
+| Objekte pro AMS-Konto | 1.000.000|
 | Objekte pro Aufgabe | 50 |
 | Objekte pro Auftrag | 100 |
-| Aufträge pro AMS-Konto | 50.000<sup>2</sup> |
 | Eindeutige Locators, die einem Objekt gleichzeitig zugeordnet sind | 5<sup>4</sup> |
 | Livekanäle pro AMS-Konto  |5|
 | Programme im angehaltenen Zustand pro Kanal  |50|
 | Programme im ausgeführten Zustand pro Kanal  |3|
 | Streamingendpunkte im ausgeführten Zustand pro AMS-Konto|2|
 | Streamingeinheiten pro Streamingendpunkt  |10 |
-| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1, S2)<br/>10 (S3) <sup>1</sup> | 
 | Speicherkonten | 1.000<sup>5</sup> (feststehend) |
 | Richtlinien | 1,000,000<sup>6</sup> |
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>7</sup> |
- 
+  
 <sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar.
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. Sie können die alten Aufträge mithilfe von **IJob.Delete** oder der HTTP **DELETE**-Anforderung löschen.
+
+Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den [hier](../articles/media-services/media-services-dotnet-manage-entities.md) beschriebenen Code verwenden.
 
 <sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden maximal 1.000 Entitäten pro Anforderung zurückgegeben. Falls Sie alle gesendeten Aufträge nachverfolgen müssen, können Sie "Nach oben"/"Überspringen" wie in [OData-Systemabfrageoptionen](http://msdn.microsoft.com/library/gg309461.aspx)beschrieben verwenden.
 
@@ -33,17 +35,17 @@
 <sup>6</sup> Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). 
 
 >[!NOTE]
-> Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden.
+> Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden. Weitere Informationen und ein Beispiel finden Sie in [diesem](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) Abschnitt.
 
 <sup>7</sup>Berücksichtigen Sie die folgenden Grenzwerte, wenn Sie Inhalte an ein Objekt in Azure Media Services hochladen und mit einem der Medienprozessoren in unseren Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Face Detector) verarbeiten möchten. 
 
 | Reservierte Einheiten für Medien (Typ) | Maximale Dateigröße (GB)| 
 | --- | --- | 
-|S1 | 35|
-|S2 | 75|
-|S3 | 260|
+|S1    | 325|
+|S2    | 640|
+|S3    | 260|
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO2-->
 
 

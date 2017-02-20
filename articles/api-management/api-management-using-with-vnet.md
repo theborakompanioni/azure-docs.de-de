@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 40d9b0ee5a24e5503de19daa030bf1e8169dec24
-ms.openlocfilehash: 58be070ea5d5f4ea9f6d9453a1adcc23c4b9b2a2
+ms.sourcegitcommit: a74872f308624028016ffb30ead3c056b1fa69ce
+ms.openlocfilehash: fbab411a22d3d1e140bc3ea8f56b113de79f204c
 
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann mit verschiedenen VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
 
-Azure API Management kann mit einem virtuellen Netzwerk (virtual network, VNet) verbunden werden, um auf Back-End-Dienste innerhalb des Netzwerks zugreifen zu können, damit das Entwicklerportal und das API-Gateway innerhalb des Netzwerks zugänglich sind.
+Azure API Management kann im virtuellen Netzwerk (VNET) bereitgestellt werden, damit der Dienst auf Back-End-Dienste im Netzwerk zugreifen kann. Das Entwicklerportal und das API-Gateway können so konfiguriert werden, dass darauf entweder über das Internet oder nur vom virtuellen Netzwerk aus zugegriffen werden kann.
 
 > [!NOTE]
 > Azure API Management unterstützt sowohl klassische als auch Azure Resource Manager-VNets.
@@ -101,12 +101,14 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 
 | Quell-/Zielport(s) | Richtung | Transportprotokoll | Zweck | Quelle/Ziel | Zugriffstyp |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443/80, 443 |Eingehend |TCP |Kommunikation zwischen Clients und API Management |INTERNET/VIRTUAL_NETWORK |Extern |
+| * / 80, 443 |Eingehend |TCP |Kommunikation zwischen Clients und API Management |INTERNET/VIRTUAL_NETWORK |Extern |
 | */3443 |Eingehend |TCP |Verwaltungsendpunkt für Azure-Portal und PowerShell |INTERNET/VIRTUAL_NETWORK |Extern & Intern |
-| 80, 443/80, 443 |Ausgehend |TCP |Abhängigkeit von Azure Storage und Azure Service Bus |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
-| 1433/1433 |Ausgehend |TCP |Abhängigkeit von Azure SQL |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
-| 9350 - 9354/9350 - 9354 |Ausgehend |TCP |Abhängigkeit von Service Bus |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
-| 5671/5671 |Ausgehend |AMQP |Abhängigkeit für Richtlinie zum Anmelden bei Event Hub |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 80, 443 |Ausgehend |TCP |Abhängigkeit von Azure Storage und Azure Service Bus |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 1433 |Ausgehend |TCP |Abhängigkeit von Azure SQL |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 11000 - 11999 |Ausgehend |TCP |Abhängigkeit von Azure SQL V12 |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 14000 - 14999 |Ausgehend |TCP |Abhängigkeit von Azure SQL V12 |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 9350 - 9354 |Ausgehend |TCP |Abhängigkeit von Service Bus |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
+| * / 5671 |Ausgehend |AMQP |Abhängigkeit für Richtlinie zum Anmelden bei Event Hub |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | 6381 - 6383/6381 - 6383 |Ein- und ausgehend |UDP |Abhängigkeit von Redis-Cache |VIRTUAL_NETWORK/VIRTUAL_NETWORK |Extern & Intern |-
 | */445 |Ausgehend |TCP |Abhängigkeit von Azure File Share für GIT |VIRTUAL_NETWORK/INTERNET |Extern & Intern |
 | * / * | Eingehend |TCP |Lastenausgleich von Azure-Infrastruktur | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK |Extern & Intern |
@@ -152,6 +154,6 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

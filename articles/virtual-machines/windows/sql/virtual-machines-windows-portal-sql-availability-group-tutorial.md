@@ -17,8 +17,8 @@ ms.workload: iaas-sql-server
 ms.date: 01/10/2016
 ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 54dcec29b9ec6a6e518658e9be15c4ed63917bd4
-ms.openlocfilehash: c59bf8bfdee095ebc0a9afe07f2c43beb77e772d
+ms.sourcegitcommit: 5e41a20f563eab6b236eaa6eaf0ce1d20ebfa493
+ms.openlocfilehash: d8982dda38df92c94e7dac4b5a1cf451bab3a5ce
 
 
 ---
@@ -55,7 +55,8 @@ Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
-## <a name="a-namecreateclusteracreate-the-cluster"></a><a name="CreateCluster"></a>Erstellen des Clusters
+<a name="CreateCluster"></a>
+## Cluster erstellen
 
 Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Server-Failovercluster mit zwei SQL Server-Instanzen und einem Zeugenserver erstellen.  
 
@@ -133,7 +134,7 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
 1. Klicken Sie unter **Ordnerpfad** auf **Durchsuchen**, und navigieren Sie zu einem Pfad für den freigegebenen Ordner, oder erstellen Sie einen Pfad. Klicken Sie auf **Weiter**.
 
-1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Next**.
+1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
 
 1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
 
@@ -504,6 +505,6 @@ Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, d
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

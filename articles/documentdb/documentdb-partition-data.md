@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 01/16/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 1d65fbb7278adc014ba6a655385396ace87f568e
+ms.sourcegitcommit: ec72d5df2fc220638773286e76c25b4b013cce63
+ms.openlocfilehash: 4f96f7392442c31888b79d0284b6d2d58d292e86
 
 
 ---
@@ -31,6 +31,11 @@ Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 Sie können das Projekt aus dem [DocumentDB-Treiberbeispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark)herunterladen, um mit dem Programmieren loszulegen. 
 
+Partitionierung und Partitionsschlüssel werden auch im folgenden Azure Friday-Video mit Scott Hanselman und Shireesh Thota (DocumentDB Principal Engineering Manager) behandelt:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> 
+
 ## <a name="partitioning-in-documentdb"></a>Partitionieren in DocumentDB
 In DocumentDB können Sie schemalose JSON-Dokumente jeder Größe speichern und innerhalb von Millisekunden abfragen. DocumentDB stellt Container für das Speichern von Daten bereit, so genannte **Sammlungen**. Sammlungen sind logische Ressourcen und können eine oder mehrere physische Partitionen oder einen oder mehrere Server umfassen. Die Anzahl der Partitionen wird von DocumentDB auf Basis der Speichergröße und dem bereitgestellten Durchsatz der Sammlung bestimmt. Jede Partition in DocumentDB verfügt über eine feste Menge an SSD-gestütztem Speicher, der dieser zugeordnet ist. Ebenso ist sie für hohe eine Verfügbarkeit repliziert. Die Partitionsverwaltung wird komplett von Azure DocumentDB verwaltet. Sie müssen also keinen komplexen Code schreiben oder Ihre Partitionen verwalten. DocumentDB-Sammlungen sind im Hinblick auf Speicher und Durchsatz **praktisch unbegrenzt**. 
 
@@ -40,7 +45,7 @@ Wie funktioniert das? Wenn Sie eine Sammlung in DocumentDB erstellen, können Si
 
 Stellen Sie sich z.B. eine Anwendung vor, die Daten über Mitarbeiter und deren Abteilungen in DocumentDB speichert. Wir wählen `"department"` als Partitionsschlüsseleigenschaft aus, um Daten nach Abteilung horizontal hochzuskalieren. Jedes Dokument in DocumentDB muss eine obligatorische `"id"`-Eigenschaft aufweisen, die für jedes Dokument mit dem gleichen Partitionsschlüssel eindeutig sein muss, z.B. `"Marketing`". Jedes Dokument, das in einer Sammlung gespeichert ist, muss eine eindeutige Kombination aus Partitionsschlüssel und ID enthalten, z.B. `{ "Department": "Marketing", "id": "0001" }`, `{ "Department": "Marketing", "id": "0002" }` und `{ "Department": "Sales", "id": "0001" }`. In anderen Worten gilt die zusammengesetzte Eigenschaft aus (Partitionsschlüssel, id) als Primärschlüssel für Ihre Auflistung.
 
-### <a name="partition-keys"></a>Partitionsschlüssel
+## <a name="partition-keys"></a>Partitionsschlüssel
 Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Sie müssen einen JSON-Eigenschaftennamen auswählen, der eine große Spanne von Werten sowie wahrscheinlich gleichmäßig verteilte Zugriffsmuster besitzt. Der Partitionsschlüssel wird als JSON-Pfad angegeben. So stellt z.B. `/department` die Eigenschaft „Abteilung“ dar. 
 
 Die folgende Tabelle zeigt Beispiele für Definitionen der Partitionsschlüssel und die entsprechenden JSON-Werte.
@@ -77,7 +82,7 @@ Die folgende Tabelle zeigt Beispiele für Definitionen der Partitionsschlüssel 
 
 Sehen wir uns an, wie sich die Auswahl der Partitionsschlüssel auf die Leistung Ihrer Anwendung auswirkt.
 
-### <a name="partitioning-and-provisioned-throughput"></a>Partitionierung und bereitgestellter Durchsatz
+## <a name="partitioning-and-provisioned-throughput"></a>Partitionierung und bereitgestellter Durchsatz
 DocumentDB wurde für die vorhersagbare Leistung entwickelt. Wenn Sie eine Sammlung erstellen, reservieren Sie Durchsatz in Form von **[Anforderungseinheiten](documentdb-request-units.md) (Request Units, RUs) pro Sekunde**. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die proportional zur Menge der Systemressourcen wie CPU und E/A ist, die vom Vorgang genutzt werden. Der Lesevorgang eines Dokuments mit der Größe von 1 KB und mit einer Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Abhängig von der Größe erfordern größere Dokumente höhere Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
 
 Wenn DocumentDB Dokumente speichert, verteilt es diese anhand des Partitionsschlüsselwerts gleichmäßig zwischen Partitionen. Der Durchsatz wird auch gleichmäßig zwischen den verfügbaren Partitionen verteilt, z.B. der Durchsatz pro Partition = (gesamter Durchsatz pro Sammlung) / (Anzahl der Partitionen). 
@@ -90,14 +95,12 @@ Wenn DocumentDB Dokumente speichert, verteilt es diese anhand des Partitionsschl
 ## <a name="single-partition-and-partitioned-collections"></a>Einzelne Partitionen und partitionierte Sammlungen
 DocumentDB unterstützt die Erstellung von einzelnen Partitionen und partitionierte Sammlungen. 
 
-* **Partitionierte Sammlungen** können mehrere Partitionen umfassen und sehr große Mengen an Speicher und Durchsatz unterstützen. Sie müssen einen Partitionsschlüssel für die Sammlung angeben.
-* **Einzelne partitionierte Sammlungen** haben niedrigere Preisoptionen und die Fähigkeit, Transaktionen über alle Sammlungsdaten hinweg abzufragen und durchzuführen. Sie haben das Skalierbarkeitslimit und die Speichergrenzwerte einer einzelnen Partition. Sie müssen keinen Partitionsschlüssel für diese Sammlungen angeben. 
+* **Partitionierte Sammlungen** können mehrere Partitionen umfassen und unbegrenzte Mengen an Speicher und Durchsatz unterstützen. Sie müssen einen Partitionsschlüssel für die Sammlung angeben. 
+* **Sammlungen mit einer einzelnen Partition** sind kostengünstiger, bieten aber auch weniger maximalen Speicher und Durchsatz. Sie müssen keinen Partitionsschlüssel für diese Sammlungen angeben. Wir empfehlen, partitionierte Sammlungen in allen Szenarien einer Sammlung mit einzelner Partition vorzuziehen – außer in Fällen mit geringem Datenspeicherungs- und Anforderungsaufkommen.
 
 ![Partitionierte Sammlungen in DocumentDB][2] 
 
-Für Szenarios, die keine große Mengen an Speicher oder Durchsatz benötigen, sind Sammlungen mit nur einer Partition gut geeignet. Beachten Sie, dass Sammlungen mit nur einer Partition die Skalierbarkeits- und Speichergrenzwerte einer einzelnen Partition besitzen, d.h. bis zu 10 GB Speicher und bis zu 10.000 Anforderungseinheiten pro Sekunde. 
-
-Partitionierte Sammlungen können sehr große Mengen an Speicher und Durchsatz unterstützen. Die Standardangebote sind jedoch dafür konfiguriert, bis zu 250 GB Speicher zu speichern und bis zu 250.000 Anforderungseinheiten pro Sekunde zentral hochzuskalieren. Wenn Sie mehr Speicher oder Durchsatz pro Sammlung benötigen, wenden Sie sich an den [Azure-Support](documentdb-increase-limits.md) , um diese für Ihr Konto vergrößern zu lassen.
+Partitionierte Sammlungen können unbegrenzte Mengen an Speicher und Durchsatz unterstützen.
 
 In der folgenden Tabelle sind die Unterschiede zwischen der Arbeit mit einer Sammlung mit einer Partition und der mit partitionierten Sammlungen aufgeführt:
 
@@ -126,7 +129,7 @@ In der folgenden Tabelle sind die Unterschiede zwischen der Arbeit mit einer Sam
         <tr>
             <td valign="top"><p>Maximale Speichergröße</p></td>
             <td valign="top"><p>10 GB</p></td>
-            <td valign="top"><p>Unbegrenzt (250 GB standardmäßig)</p></td>
+            <td valign="top"><p>Unbegrenzt</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Minimaler Durchsatz</p></td>
@@ -136,7 +139,7 @@ In der folgenden Tabelle sind die Unterschiede zwischen der Arbeit mit einer Sam
         <tr>
             <td valign="top"><p>Maximaler Durchsatz</p></td>
             <td valign="top"><p>10.000 Anforderungseinheiten pro Sekunde</p></td>
-            <td valign="top"><p>Unbegrenzt (250.000 Anforderungseinheiten pro Sekunde in der Standardeinstellung)</p></td>
+            <td valign="top"><p>Unbegrenzt</p></td>
         </tr>
         <tr>
             <td valign="top"><p>API-Versionen</p></td>
@@ -285,8 +288,8 @@ Im nächsten Abschnitt untersuchen wir, wie partitionierte Sammlungen aus Sammlu
 
 <a name="migrating-from-single-partition"></a>
 
-### <a name="migrating-from-single-partition-to-partitioned-collections"></a>Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen
-Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (> 10.000 RU/s) oder mehr Speicher (> 10 GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren. 
+## <a name="migrating-from-single-partition-to-partitioned-collections"></a>Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen
+Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen höheren Durchsatz (>&10;.000 RU/s) oder mehr Speicher (>&10; GB) benötigt, können Sie mit dem [DocumentDB-Datenmigrationstool](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) die Daten aus der Sammlung mit nur einer Partition zu einer partitionierten Sammlung migrieren. 
 
 So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine partitionierte Sammlung durch
 
@@ -309,7 +312,7 @@ Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zu
 Sie sollten Ihren Partitionsschlüssel so wählen, dass Transaktionen vorgenommen werden können und zugleich die Skalierbarkeit der Lösung gegeben ist (durch Verteilung Ihrer Entitäten auf mehrere Partitionsschlüssel). In einem Extremfall können Sie denselben Partitionsschlüssel für alle Dokumente festlegen, aber dies kann die Skalierbarkeit Ihrer Lösung beeinträchtigen. Im anderen Extremfall können Sie jedem Dokument einen eindeutigen Partitionsschlüssel zuweisen. Dies ermöglicht zwar eine hohe Skalierbarkeit, aber es wird auch verhindert, dass Sie dokumentübergreifende Transaktionen über gespeicherte Prozeduren und Trigger verwenden. Ein idealer Partitionsschlüssel ermöglicht die Verwendung von effizienten Abfragen und verfügt über eine ausreichende Kardinalität, um sicherzustellen, dass Ihre Lösung skalierbar ist. 
 
 ### <a name="avoiding-storage-and-performance-bottlenecks"></a>Vermeiden von Speicher- und Leistungsengpässen
-Es ist auch wichtig, eine Eigenschaft auszuwählen, mit der Schreibvorgänge über eine Anzahl von unterschiedlichen Werten verteilt werden können. Anforderungen an den gleichen Partitionsschlüssel können den Durchsatz einer einzelnen Partition nicht überschreiten und werden gedrosselt. Daher ist es wichtig, einen Partitionsschlüssel auszuwählen, der nicht zu **„Hotspots“** innerhalb Ihrer Anwendung führt. Die gesamte Speichergröße für Dokumente mit demselben Partitionsschlüssel kann ebenso 10 GB an Speicherplatz nicht überschreiten. 
+Es ist auch wichtig, eine Eigenschaft auszuwählen, mit der Schreibvorgänge über eine Anzahl von unterschiedlichen Werten verteilt werden können. Anforderungen an den gleichen Partitionsschlüssel können den Durchsatz einer einzelnen Partition nicht überschreiten und werden gedrosselt. Daher ist es wichtig, einen Partitionsschlüssel auszuwählen, der nicht zu **„Hotspots“** innerhalb Ihrer Anwendung führt. Da alle Daten für einen einzelnen Partitionsschlüssel innerhalb einer Partition gespeichert werden müssen, sollten Sie möglichst keine Partitionsschlüssel verwenden, die große Mengen an Daten für den gleichen Wert besitzen. 
 
 ### <a name="examples-of-good-partition-keys"></a>Beispiele für gute Partitionsschlüssel
 Nachstehend finden Sie einige Beispiele dafür, wie Sie den Partitionsschlüssel für Ihre Anwendung auswählen:
@@ -342,7 +345,6 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 * Nutzen Sie DocumentDB, um die Skalierung und die Leistung zu testen. Weitere Informationen und ein Beispiel finden Sie unter [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-performance-testing.md) .
 * Erste Schritte bei der Codierung mit den [SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx)
 * Erfahren Sie mehr über den [bereitgestellten Durchsatz in DocumentDB](documentdb-performance-levels.md)
-* Wenn Sie selbst anpassen möchten, wie Ihre Anwendung die Partitionierung ausführt, können Sie Ihre eigene clientseitige Partitionierungsimplementierung verwenden. Siehe [Unterstützung für clientseitige Partitionierung](documentdb-sharding.md).
 
 [1]: ./media/documentdb-partition-data/partitioning.png
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
@@ -352,6 +354,6 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

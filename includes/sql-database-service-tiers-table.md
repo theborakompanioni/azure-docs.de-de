@@ -40,6 +40,6 @@ sql-database-service-tiers.md
 
 \* Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und enthält nicht den von Protokolldateien belegten Speicherplatz.
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

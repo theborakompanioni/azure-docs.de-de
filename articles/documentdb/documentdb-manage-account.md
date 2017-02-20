@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2016
+ms.date: 02/03/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
+ms.sourcegitcommit: e82d677c9d53ec5d28a40a7def4b911081765ca5
+ms.openlocfilehash: 0a249d63df35f9c3334a658672777e9b1359265e
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: f38b5d6127897ba2b083e0f3bb41562650214ae9
 Erfahren Sie, wie Sie globale Konsistenz festlegen, mit Schlüsseln arbeiten und ein DocumentDB-Konto im Azure-Portal löschen.
 
 ## <a name="a-idconsistencyamanage-documentdb-consistency-settings"></a><a id="consistency"></a>Verwalten von DocumentDB-Konsistenzeinstellungen
-Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer Anwendung. Sie sollten sich mit den Konsistenzebenen in DocumentDB vertraut machen – lesen Sie [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB][consistency]. DocumentDB bietet auf jeder für Ihr Datenbankkonto verfügbaren Konsistenzebene bestimmte Garantien für Konsistenz, Verfügbarkeit und Leistung. Wenn Sie Ihr Datenbankkonto mit der Konsistenzebene „Strong“ konfigurieren, sind Ihre Daten auf eine einzige Azure-Region beschränkt und dürfen nicht global verfügbar sein. Auf den gelockerten Konsistenzebenen dagegen – „Bounded Staleness“, „Session“ und „Eventual“ – können Sie Ihrem Datenbankkonto eine beliebige Anzahl von Azure-Regionen zuordnen. Die folgenden einfachen Schritte zeigen Ihnen, wie Sie die Standardkonsistenzebene für Ihr Datenbankkonto auswählen. 
+Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer Anwendung. Sie sollten sich mit den Konsistenzebenen in DocumentDB vertraut machen. Lesen Sie daher [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB][consistency]. DocumentDB bietet auf jeder für Ihr Datenbankkonto verfügbaren Konsistenzebene bestimmte Garantien für Konsistenz, Verfügbarkeit und Leistung. Wenn Sie Ihr Datenbankkonto mit der Konsistenzebene „Strong“ konfigurieren, sind Ihre Daten auf eine einzige Azure-Region beschränkt und dürfen nicht global verfügbar sein. Auf den gelockerten Konsistenzebenen dagegen – „Bounded Staleness“, „Session“ und „Eventual“ – können Sie Ihrem Datenbankkonto eine beliebige Anzahl von Azure-Regionen zuordnen. Die folgenden einfachen Schritte zeigen Ihnen, wie Sie die Standardkonsistenzebene für Ihr Datenbankkonto auswählen. 
 
 ### <a name="to-specify-the-default-consistency-for-a-documentdb-account"></a>So legen Sie die Standardkonsistenz für ein DocumentDB-Konto fest
 1. Greifen Sie im [Azure-Portal](https://portal.azure.com/)auf Ihr DocumentDB-Konto zu.
@@ -87,12 +87,12 @@ Führen Sie zum Abrufen der Verbindungszeichenfolge folgende Schritte aus:
 Bei Verwendung der Verbindungszeichenfolge im [DocumentDB-Datenbank-Migrationstool](documentdb-import-data.md) fügen Sie den Datenbanknamen am Ende der Verbindungszeichenfolge an. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
 
 ## <a name="a-iddeletea-delete-a-documentdb-account"></a><a id="delete"></a> Löschen eines DocumentDB-Kontos
-Zum Entfernen eines nicht mehr verwendeten DocumentDB-Kontos aus dem Azure-Portal verwenden Sie den Befehl **Löschen** auf dem Blatt **DocumentDB-Konto**.
+Klicken Sie zum Entfernen eines nicht mehr verwendeten DocumentDB-Kontos aus dem Azure-Portal mit der rechten Maustaste auf den Kontonamen, und klicken Sie dann auf **Konto löschen**.
 
 ![So löschen Sie ein DocumentDB-Konto im Azure-Portal](./media/documentdb-manage-account/deleteaccount.png)
 
 1. Greifen Sie im [Azure-Portal](https://portal.azure.com/)auf das zu löschende DocumentDB-Konto zu.
-2. Klicken Sie auf dem Blatt **DocumentDB-Konto** auf **Mehr**, und klicken Sie dann auf **Konto löschen**. Alternativ können Sie mit der rechten Maustaste auf den Namen der Datenbank und dann auf **Konto löschen**klicken.
+2. Klicken Sie auf dem Blatt **DocumentDB-Konto** mit der rechten Maustaste auf das Konto, und klicken Sie dann auf **Konto löschen**. 
 3. Geben Sie im daraufhin angezeigten Bestätigungsblatt den Namen des DocumentDB-Kontos ein, um zu bestätigen, dass Sie das Konto löschen möchten.
 4. Klicken Sie auf die Schaltfläche **Löschen** .
 
@@ -119,6 +119,6 @@ Weitere Informationen zu DocumentDB finden Sie in der Azure DocumentDB-Dokumenta
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

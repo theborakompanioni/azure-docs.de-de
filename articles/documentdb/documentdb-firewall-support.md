@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB-Firewallunterstützung | Microsoft Docs"
+title: "Firewallunterstützung und IP-Access Control in Azure DocumentDB | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie IP-Access Control-Richtlinien für die Firewallunterstützung in Azure DocumentDB-Datenbankkonten verwendet werden."
 keywords: "IP-Access Control, Firewallunterstützung"
 services: documentdb
@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 12/20/2016
 ms.author: ankshah; kraman
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb3c5c2adbaedc4bfb1e68f26b88079aeabe50f5
+ms.sourcegitcommit: 08cac64a6b08266f78bca03f1139a13e9686ebc3
+ms.openlocfilehash: 819602cda932ea698287724e307ebbd73f1af988
 
 
 ---
@@ -31,14 +31,14 @@ Standardmäßig ist ein DocumentDB-Datenbankkonto über das öffentliche Interne
 ![Abbildung zum Verbindungsprozess für die IP-basierte Access Control](./media/documentdb-firewall-support/documentdb-firewall-support-flow.png)
 
 ## <a name="connections-from-cloud-services"></a>Verbindungen über Clouddienste
-In Azure ist es sehr üblich, dass Clouddienste Servicelogik der mittleren Ebene mithilfe von DocumentDB hosten. Um den Zugriff auf ein DocumentDB-Datenbankkonto über einen Clouddienst zu ermöglichen, muss die öffentliche IP-Adresse des Clouddiensts der Liste der zulässigen IP-Adressen, die dem DocumentDB-Datenbankkonto zugeordnet ist, mithilfe des [Azure-Supports](#configure-ip-policy) hinzugefügt werden.  Dadurch wird sichergestellt, dass alle Rolleninstanzen von Clouddiensten Zugriff auf das DocumentDB-Datenbankkonto haben. Sie können die IP-Adressen für Ihre Clouddienste im Azure-Portal abrufen (siehe dazu den folgenden Screenshot). 
+In Azure ist es sehr üblich, dass Clouddienste Servicelogik der mittleren Ebene mithilfe von DocumentDB hosten. Um den Zugriff auf ein DocumentDB-Datenbankkonto über einen Clouddienst zu ermöglichen, muss die öffentliche IP-Adresse des Clouddiensts der Liste der zulässigen IP-Adressen, die dem DocumentDB-Datenbankkonto zugeordnet ist, durch [Konfigurieren der IP-Access Control-Richtlinie](#configure-ip-policy) hinzugefügt werden.  Dadurch wird sichergestellt, dass alle Rolleninstanzen von Clouddiensten Zugriff auf das DocumentDB-Datenbankkonto haben. Sie können die IP-Adressen für Ihre Clouddienste im Azure-Portal abrufen (siehe dazu den folgenden Screenshot).
 
 ![Screenshot mit der öffentlichen IP-Adresse für einen Clouddienst im Azure-Portal](./media/documentdb-firewall-support/documentdb-public-ip-addresses.png)
 
 Wenn Sie Ihren Clouddienst horizontal hochskalieren, indem Sie zusätzliche Rolleninstanzen hinzufügen, haben diese neuen Instanzen automatisch Zugriff auf das DocumentDB-Datenbankkonto, da sie zum gleichen Clouddienst gehören.
 
 ## <a name="connections-from-virtual-machines"></a>Verbindungen über virtuelle Computer
-[Virtuelle Computer](https://azure.microsoft.com/services/virtual-machines/) oder [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) können auch zum Hosten von Diensten der mittleren Ebene mithilfe von DocumentDB verwendet werden.  Um das DocumentDB-Datenbankkonto für den Zugriff von virtuellen Computern zu konfigurieren, müssen die öffentlichen IP-Adressen des virtuellen Computers und/oder der VM-Skalierungsgruppe mithilfe des [Azure-Supports](#configure-ip-policy) als eine der zulässigen IP-Adressen für das DocumentDB-Datenbankkonto konfiguriert werden. Sie können die IP-Adressen für virtuelle Computer im Azure-Portal abrufen (siehe dazu den folgenden Screenshot).
+[Virtuelle Computer](https://azure.microsoft.com/services/virtual-machines/) oder [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) können auch zum Hosten von Diensten der mittleren Ebene mithilfe von DocumentDB verwendet werden.  Um das DocumentDB-Datenbankkonto für den Zugriff von virtuellen Computern zu konfigurieren, müssen die öffentlichen IP-Adressen des virtuellen Computers und/oder der VM-Skalierungsgruppe durch [Konfigurieren der IP-Access Control-Richtlinie](#configure-ip-policy) als eine der zulässigen IP-Adressen für das DocumentDB-Datenbankkonto konfiguriert werden. Sie können die IP-Adressen für virtuelle Computer im Azure-Portal abrufen (siehe dazu den folgenden Screenshot).
 
 ![Screenshot mit einer öffentlichen IP-Adresse für einen virtuellen Computer im Azure-Portal](./media/documentdb-firewall-support/documentdb-public-ip-addresses-dns.png)
 
@@ -48,26 +48,10 @@ Wenn Sie der Gruppe weitere virtuelle Computerinstanzen hinzufügen, erhalten di
 Wenn Sie über einen Computer im Internet auf ein DocumentDB-Datenbankkonto zugreifen, muss die Client-IP-Adresse oder der Client-IP-Adressbereich des Computers der Liste der zulässigen IP-Adressen für das DocumentDB-Datenbankkonto hinzugefügt werden. 
 
 ## <a name="a-idconfigure-ip-policya-configuring-the-ip-access-control-policy"></a><a id="configure-ip-policy"></a> Konfigurieren der IP-Access Control-Richtlinie
-Stellen Sie über das Azure-Portal eine Anfrage an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) zum Aktivieren der IP-Access Control-Richtlinie für Ihr Datenbankkonto.
+Die IP-Access Control-Richtlinie kann programmgesteuert über die [Azure CLI](documentdb-automation-resource-manager-cli.md), über [Azure Powershell](documentdb-manage-account-with-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) durch Aktualisierung der `ipRangeFilter`-Eigenschaft festgelegt werden. IP-Adressen und -Adressbereiche müssen durch Kommas voneinander getrennt werden und dürfen keine Leerzeichen enthalten. Beispiel:&13;.91.6.132,13.91.6.1/24. Achten Sie beim Aktualisieren Ihres Datenbankkontos mithilfe dieser Methoden darauf, dass alle Eigenschaften ausgefüllt sind, um eine Zurücksetzung auf die Standardeinstellungen zu vermeiden.
 
-1. Wählen Sie auf dem Blatt [Hilfe und Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) die Option **Neue Supportanfrage** aus.
-2. Wählen Sie auf dem Blatt **Neue Supportanfrage** die Option **Grundlagen** aus.
-3. Wählen Sie auf dem Blatt **Grundlagen** Folgendes aus:
-   * **Problemtyp:** Kontingent
-   * **Abonnement:** das Abonnement des Kontos, in dem die IP-Access Control-Richtlinie hinzugefügt werden soll.
-   * **Kontingenttyp:** DocumentDB
-   * **Supportplan:** Kontingentsupport – inbegriffen.
-4. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
-   * **Schweregrad:** Wählen Sie „C – Minimale Auswirkungen“ aus.
-   * **Details:** Kopieren Sie den folgenden Text in das Feld, und geben Sie die Kontonamen und IP-Adressen an: „I would like to enable firewall support for my DocumentDB database account. Database account: *Kontonamen einfügen*. Allowed IP address/Ranges: *IP-Adresse/IP-Adressbereich im CIDR-Format einfügen, z.B. 13.91.6.132, 13.91.6.1/24*.“
-   * Klicken Sie auf **Weiter**. 
-5. Geben Sie auf dem Blatt **Kontaktinformationen** Ihre Kontaktinformationen ein, und klicken Sie auf **Erstellen**. 
-
-Nachdem Ihre Anfrage eingegangen ist, sollte die IP-Access Control innerhalb von 24 Stunden aktiviert werden. Sie werden benachrichtigt, wenn die Anfrage abgeschlossen ist.
-
-![Screenshot der Blätter für „Hilfe und Support“](./media/documentdb-firewall-support/documentdb-firewall-support-request-access.png)
-
-![Screenshot des Blatts „Problem“](./media/documentdb-firewall-support/documentdb-firewall-support-request-access-ticket.png)
+> [!NOTE]
+> Durch Aktivieren einer IP-Access Control-Richtlinie für Ihr DocumentDB-Datenbankkonto wird der Zugriff auf das DocumentDB-Datenbankkonto von Computern außerhalb der konfigurierten Liste der zulässigen IP-Adressbereiche blockiert. Aufgrund dieses Modells wird auch das Durchsuchen der Vorgänge auf Datenebene über das Portal blockiert, um die Integrität der Access Control sicherzustellen.
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Problembehandlung für die IP-Access Control-Richtlinie
 ### <a name="portal-operations"></a>Portalvorgänge
@@ -82,6 +66,6 @@ Informationen zur netzwerkbezogenen Leistungssteigerung finden Sie unter [Tipps 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

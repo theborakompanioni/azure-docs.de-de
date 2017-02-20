@@ -1,10 +1,10 @@
 ---
-title: "ExpressRoute – FAQ"
+title: "Häufig gestellte Fragen zu Azure ExpressRoute | Microsoft-Dokumentation"
 description: "Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie zusätzliche technische Details."
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2016
+ms.date: 02/01/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 9f26fd3796a45d6a4a782f80632e09a6390f1dbe
-ms.openlocfilehash: ae2dbb8524acba44f83397b7340ca98433b34de6
+ms.sourcegitcommit: 899fbfb63633286a1065546b1f262cbc1d7d39c4
+ms.openlocfilehash: d11d57a352138e43f7a7e9d2ec91663361be6f95
 
 
 ---
@@ -99,7 +99,7 @@ Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querver
 Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es steht eine redundante Verbindung zur Verfügung, um die Auslastung des Netzwerks zu unterstützen. Sie können zudem mehrere Verbindungen an einem anderen Peeringstandort erstellen, um die Ausfallsicherheit bei einem Fehler sicherzustellen.
 
 ### <a name="a-nameonep2plinkaif-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
-Nein, Sie benötigen nur eine einzige physische Verbindung, wenn Ihr Dienstanbieter zwei virtuelle Ethernet-Verbindungen über die physische Verbindung herstellen kann. Die physische Verbindung (z. B. Glasfaser) wird auf einem Gerät der Ebene 1 (L1) beendet (siehe Abbildung unten). Die zwei virtuellen Ethernet-Verbindungen werden mit unterschiedlichen VLAN-IDs markiert, eine für die primäre Verbindung und eine für die sekundäre Verbindung. Diese VLAN-IDs befinden sich im äußeren 802.1Q-Ethernet-Header. Der innere 802.1Q-Ethernet-Header (nicht dargestellt) wird einer bestimmten [ExpressRoute-Routingdomäne](expressroute-circuit-peerings.md) zugeordnet. 
+Nein, Sie benötigen nur eine einzige physische Verbindung, wenn Ihr Dienstanbieter zwei virtuelle Ethernet-Verbindungen über die physische Verbindung herstellen kann. Die physische Verbindung (z.B. Glasfaser) wird auf einem Gerät der Ebene 1 (L1) beendet (siehe Abbildung unten). Die zwei virtuellen Ethernet-Verbindungen werden mit unterschiedlichen VLAN-IDs markiert, eine für die primäre Verbindung und eine für die sekundäre Verbindung. Diese VLAN-IDs befinden sich im äußeren 802.1Q-Ethernet-Header. Der innere 802.1Q-Ethernet-Header (nicht dargestellt) wird einer bestimmten [ExpressRoute-Routingdomäne](expressroute-circuit-peerings.md) zugeordnet. 
 
 ![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
@@ -188,7 +188,7 @@ Sie können die Bandbreite der ExpressRoute-Verbindung mithilfe der API zum Aktu
 ExpressRoute Premium ist eine Sammlung der unten aufgeführten Features.
 
 * Erhöhung des Grenzwerts für Routingtabellen von 4.000 auf 10.000 Routen für privates Peering.
-* Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist 10.) Weitere Details finden Sie in der Tabelle unten.
+* Größere Anzahl an VNets, die mit der ExpressRoute-Verbindung verbunden werden können. (Der Standardwert ist&10;.) Weitere Details finden Sie in der Tabelle unten.
 * Globale Konnektivität über das Microsoft-Kernnetzwerk. Jetzt können Sie ein VNet in einer geopolitischen Region mit einer ExpressRoute-Verbindung in einer anderen Region verknüpfen. **Beispiel:** Sie können ein in Westeuropa erstelltes VNet mit einer ExpressRoute-Verbindung verknüpfen, die im Silicon Valley erstellt wurde.
 * Verbindung mit Office 365-Diensten und CRM Online.
 
@@ -201,7 +201,7 @@ Die folgenden Tabellen enthalten die ExpressRoute-Grenzwerte und die Anzahl von 
 Die Features von ExpressRoute Premium können aktiviert werden, sobald Sie das Feature selbst aktiviert haben. Durch Aktualisieren des Verbindungsstatus können sie beendet werden. Sie können ExpressRoute Premium zum Zeitpunkt der Verbindungserstellung aktivieren, oder Sie können die API zum Aktualisieren der dedizierten Verbindung bzw. das PowerShell-Cmdlet aufrufen, um ExpressRoute Premium zu aktivieren.
 
 ### <a name="how-do-i-disable-expressroute-premium"></a>Wie deaktiviere ich ExpressRoute Premium?
-Sie können ExpressRoute Premium deaktivieren, indem Sie die API zum Aktualisieren der dedizierten Verbindung/das PowerShell-Cmdlet aufrufen. Stellen Sie sicher, dass Sie Ihre Konnektivitätsanforderungen skaliert haben, um die Standardlimits zu erfüllen, bevor Sie ExpressRoute Premium deaktivieren. Die Anforderung ExpressRoute Premium zu deaktivieren wird storniert, wenn Ihre Nutzung über dem Standardlimit liegt.
+Sie können ExpressRoute Premium aktualisieren, indem Sie die API zum Aktualisieren der dedizierten Verbindung und das PowerShell-Cmdlet aufrufen. Stellen Sie sicher, dass Sie Ihre Konnektivitätsanforderungen skaliert haben, um die Standardlimits zu erfüllen, bevor Sie ExpressRoute Premium deaktivieren. Die Anforderung ExpressRoute Premium zu deaktivieren wird storniert, wenn Ihre Nutzung über dem Standardlimit liegt.
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Kann ich die Features der Premium-Features auswählen, die ich nutzen möchte?
 Nein. Sie können keine einzelnen Features auswählen. Wenn Sie ExpressRoute Premium aktivieren, werden alle Features aktiviert.
@@ -250,6 +250,6 @@ Ja. [Dynamics 365 for Operations](https://www.microsoft.com/en-us/dynamics365/op
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 
