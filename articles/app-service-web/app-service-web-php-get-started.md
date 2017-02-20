@@ -80,7 +80,7 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
         cd <app_name>
         php artisan serve
    
-    Sie sollten jetzt in einem Browser zu „http://localhost:8000“ navigieren und den Laravel-Begrüßungsbildschirm sehen können.
+    Sie sollten jetzt in einem Browser zu http://localhost:8000 navigieren und den Laravel-Begrüßungsbildschirm sehen können.
    
     ![Lokales Testen der PHP-App (Laravel) vor der Bereitstellung in Azure](./media/app-service-web-php-get-started/laravel-splash-screen.png)
 
