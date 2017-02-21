@@ -129,7 +129,7 @@ Herzlichen Glückwunsch! Sie haben Ihre App in Azure App Service bereitgestellt.
 ## <a name="see-your-app-running-live"></a>Verfolgen der Liveausführung der App
 Führen Sie den folgenden Befehl aus einem beliebigen Verzeichnis in Ihrem Repository aus, um die Liveausführung der App in Azure zu verfolgen:
 
-    azure site browse
+    az appservice web browse -n <app-name> --resource-group my-first-app-group
 
 ## <a name="make-updates-to-your-app"></a>Durchführen von Updates für die App
 Sie können jetzt Git verwenden, um aus Ihrem Projektstamm (Repositorystamm) jederzeit einen Pushvorgang durchzuführen und so ein Update für die Live-Website vorzunehmen. Dazu gehen Sie wie bei der erstmaligen Bereitstellung Ihres Codes vor. Wenn Sie beispielsweise eine neue Änderung übertragen möchten, die Sie lokal getestet haben, führen Sie einfach die folgenden Befehle in Ihrem Projektstamm (Repositorystamm) aus:
