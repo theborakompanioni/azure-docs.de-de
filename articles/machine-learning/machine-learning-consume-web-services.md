@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/04/2016
+ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 369b7c8775388f641727cb889b406ac60be13d16
+ms.sourcegitcommit: ecb2ab00b56476b4373fa06cb766384cb2fcd514
+ms.openlocfilehash: fceb4254461bd91fd2da8603af4fefa47def72e8
 
 
 ---
@@ -28,22 +28,17 @@ Dienste können in jeder beliebigen Programmiersprache und von jedem Gerät aus 
 
 * Netzwerkverbindung
 * SSL-Funktionen zum Ausführen von HTTPS-Anforderungen
-* Möglichkeit zum Analysieren von JSON (manuell oder durch Supportbibliotheken)
+* Analysieren von JSON-Code (direkt oder mit Unterstützungsbibliotheken)
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Ein Azure Machine Learning-Webdienst kann auf zwei Arten genutzt werden: als Request-Response Service Anforderung-/Antwort-Dienst oder als Batch Execution Service (Stapelausführungsdienst). In jedem Szenario wird die Funktionalität über den RESTFul-Webdienst bereitgestellt, der für die Nutzung verfügbar gemacht wird, sobald Sie das Experiment bereitstellen.
+Ein Azure Machine Learning-Webdienst kann auf zwei Arten genutzt werden: als Anforderung-Antwort-Dienst oder als Stapelausführungsdienst. In jedem Szenario wird die Funktionalität über den RESTFul-Webdienst bereitgestellt, der für die Nutzung verfügbar gemacht wird, sobald Sie das Experiment bereitstellen.
 
 > [!TIP]
 > Eine einfache Möglichkeit zum Erstellen einer Web-App für den Zugriff auf Ihren Vorhersagewebdienst finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage](machine-learning-consume-web-service-with-web-app-template.md).
 > 
 > 
-
-<!-- When this article gets published, fix the link and uncomment
-For more information on how to manage Azure Machine Learning Web service endpoints using the REST API, see **Azure machine learning Web service endpoints**.
--->
-
-Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][Veröffentlichen]. Eine detaillierte Anleitung zum Erstellen und Bereitstellen eines Machine Learning-Experiments finden Sie unter [Entwickeln einer Predictive Analytics-Lösung mit Azure Machine Learning][Exemplarische Vorgehensweise].
+> Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][publish]. Eine ausführliche Anleitung zum Erstellen und Bereitstellen eines Machine Learning-Experiments finden Sie unter [Entwickeln einer Vorhersagelösung mit Azure Machine Learning][walkthrough].
 
 ## <a name="request-response-service-rrs"></a>Anforderung-/Antwort-Dienst (Request-Response Service RRS)
 Ein Anforderung-/Antwort-Dienst (Request-Response Service, RRS) ist ein überaus skalierbarer Webdienst mit niedriger Latenz, mit dem eine Schnittstelle für die aus einem Azure Machine Learning Studio-Experiment erstellten und bereitgestellten zustandslosen Modelle bereitgestellt werden kann. Dadurch werden Szenarien ermöglicht, bei denen die verarbeitende Anwendung eine Antwort in Echtzeit erwartet.
@@ -72,7 +67,7 @@ Die Art und Weise, in der Sie diese Informationen finden, hängt davon ab, welch
 ### <a name="information-location-in-the-azure-machine-learning-web-services-portal"></a>Auffinden von Informationen im Azure Machine Learning Web Services-Portal
 So finden Sie die benötigten Informationen
 
-1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][Web Services-Portal] an.
+1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][webservicesportal] an.
 2. Klicken Sie auf **Web Services** oder **Classic Web Services**.
 3. Klicken Sie auf den Webdienst, mit dem Sie arbeiten. 
 4. Klicken Sie bei Verwendung eines klassischen Webdiensts auf den Endpunkt, mit dem Sie arbeiten.
@@ -88,7 +83,7 @@ Sie finden die benötigten Informationen an zwei Stellen: in Machine Learning St
 
 So finden Sie die benötigten Informationen in Machine Learning Studio
 
-1. Melden Sie sich bei [Azure Machine Learning Studio][ML Studio] an.
+1. Melden Sie sich bei [Machine Learning Studio][mlstudio] an.
 2. Klicken Sie auf der linken Seite des Bildschirms auf **WEB SERVICES**.
 3. Klicken Sie auf den Webdienst, mit dem Sie arbeiten. 
 
@@ -102,7 +97,7 @@ Um die API-Hilfeseite zuzugreifen, klicken Sie entsprechend Ihrer Aufgabe entwed
 
 So finden Sie die benötigten Informationen im Azure Machine Learning Web Services-Portal
 
-1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][Web Services-Portal] an.
+1. Melden Sie sich beim [Azure Machine Learning Web Services-Portal][webservicesportal] an.
 2. Klicken Sie auf **Classic Web Services**.
 3. Klicken Sie auf den Webdienst, mit dem Sie arbeiten. 
 4. Klicken Sie auf den Endpunkt, mit dem Sie arbeiten.
@@ -729,15 +724,15 @@ Jetzt können Sie beliebige Swagger-Tools verwenden. Hier sind die Anweisungen, 
 
 <!-- Relative Links -->
 
-[Veröffentlichen]: machine-learning-publish-a-machine-learning-web-service.md
-[Exemplarische Vorgehensweise]: machine-learning-walkthrough-develop-predictive-solution.md
+[publish]: machine-learning-publish-a-machine-learning-web-service.md
+[walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
 <!-- External Links -->
-[Web Services-Portal]: https://services.azureml.net/
-[ML Studio]: https://studio.azureml.net
+[webservicesportal]: https://services.azureml.net/
+[mlstudio]: https://studio.azureml.net
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

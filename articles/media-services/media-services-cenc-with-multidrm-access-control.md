@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/11/2016
 ms.author: willzhan;kilroyh;yanmf;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 24d324a724792051eb6d86026da7b41ee9ff87b1
-ms.openlocfilehash: 32c792c097e44d46fef9d161ef8d361e97167224
+ms.sourcegitcommit: e65393c9582056f84530a32804e0d82fd451b688
+ms.openlocfilehash: 1ea286a04c84d031fcefa8dc771cbdef9d8a9b72
 
 
 ---
@@ -296,15 +296,15 @@ Was geschieht, wenn das Schlüsselrollover geschieht, nachdem AAD ein JWT-Token 
 Da ein Schlüssel sich jederzeit ändern kann, steht im Dokument mit den Verbundmetadaten immer mehr als ein gültiger öffentlicher Schlüssel zur Verfügung. Die Azure Media Services-Lizenzbereitstellung kann einen der im Dokument angegebenen Schlüssel verwenden, da ein Schlüssel bald geändert werden kann, ein anderer dessen Ersatz sein kann usw.
 
 ### <a name="where-is-the-access-token"></a>Wo befindet sich das Zugriffstoken?
-Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../active-directory/active-directory-authentication-scenarios.md#web-application-to-web-api)ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
+Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/active-directory-authentication-scenarios.md#web-application-to-web-api)ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
 
-1. Ein Benutzer ist in der Webanwendung bei Azure AD angemeldet (siehe den Abschnitt [Webbrowser zu Webanwendung](../active-directory/active-directory-authentication-scenarios.md#web-browser-to-web-application)).
+1. Ein Benutzer ist in der Webanwendung bei Azure AD angemeldet (siehe den Abschnitt [Webbrowser zu Webanwendung](../active-directory/develop/active-directory-authentication-scenarios.md#web-browser-to-web-application)).
 2. Der Azure AD-Autorisierungsendpunkt leitet den Benutzer-Agent mit einem Autorisierungscode zurück zur Clientanwendung. Der Benutzer-Agent gibt den Autorisierungscode an den Umleitungs-URI der Clientanwendung zurück.
 3. Die Webanwendung muss ein Zugriffstoken abrufen, damit sie sich gegenüber der Web-API authentifizieren und die gewünschte Ressource abrufen kann. Sie sendet eine Anfrage an den Token-Endpunkt von Azure AD. Diese Anfrage enthält die Anmeldeinformationen, die Client-ID und den Anwendungs-ID-URI der Web-API. Sie legt den Autorisierungscode vor, um zu belegen, dass der Benutzer zugestimmt hat.
 4. Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
 5. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
 
-In diesem anwendungsidentitätsbezogenen Datenfluss vertraut die Web-API darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet. Das [Diagramm auf dieser Seite](http://msdn.microsoft.com/library/azure/dn645542.aspx/) beschreibt, wie der Datenfluss zum Gewähren des Autorisierungscodes aussieht.
+In diesem anwendungsidentitätsbezogenen Datenfluss vertraut die Web-API darauf, dass die Webanwendung den Benutzer authentifiziert hat. Aus diesem Grund wird dieses Modell als vertrauenswürdiges Subsystem bezeichnet. Das [Diagramm auf dieser Seite](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) beschreibt, wie der Datenfluss zum Gewähren des Autorisierungscodes aussieht.
 
 Beim Lizenzerwerb mit Tokeneinschränkung folgen wir demselben vertrauenswürdigen Subsystemmuster. Der Lizenzbereitstellungsdienst in Azure Media Services ist die Web-API-Ressource, d. h. die „Back-End-Ressource“, auf die eine Webanwendung zugreifen muss. Wo befindet sich also das Zugriffstoken?
 
@@ -458,6 +458,6 @@ In diesem Dokument haben wir uns mit CENC mit mehreren systemeigenen DRM-Systeme
  
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

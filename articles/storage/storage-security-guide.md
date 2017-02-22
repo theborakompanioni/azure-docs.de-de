@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: c5e6c3a63a7dbe0a598136a32990f65f7ee077d9
+ms.sourcegitcommit: 9e75c5af6cb6d2f2a25f18269ec6822aa86459fc
+ms.openlocfilehash: 95ea1a9bc8fe80c39ca9f0683855cc3a4e7a77c4
 
 
 ---
@@ -186,7 +186,7 @@ Darüber hinaus können Sie angeben, dass Anforderungen, die mit einer SAS erfol
 #### <a name="definition-of-a-shared-access-signature"></a>Definition einer Shared Access Signature
 Eine Shared Access Signature ist ein Satz von Abfrageparametern, die an die URL angehängt werden, die auf die Ressource verweist,
 
-die Informationen über den erlaubten Zugriff und die Zeitspanne bieten, für die der Zugriff zulässig ist. Der URI in diesem Beispiel bietet für fünf Minuten Lesezugriff auf ein Blob. Beachten Sie, dass die SAS-Abfrageparameter URL-codiert sein müssen, d. h. % 3A steht für den Doppelpunkt (:) oder %20 für ein Leerzeichen.
+die Informationen über den erlaubten Zugriff und die Zeitspanne bieten, für die der Zugriff zulässig ist. Der URI in diesem Beispiel bietet für fünf Minuten Lesezugriff auf ein Blob. Beachten Sie, dass die SAS-Abfrageparameter URL-codiert sein müssen, d. h. %&3;A steht für den Doppelpunkt (:) oder %20 für ein Leerzeichen.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -328,33 +328,41 @@ Für die Verschlüsselung selbst können Sie Ihre eigenen Verschlüsselungsschl�
   Dieser Artikel bietet eine Erklärung der clientseitigen Verschlüsselung und enthält Beispiele für die Verwendung von Speicherclientbibliotheken zum Verschlüsseln und Entschlüsseln von Ressourcen aus den vier Speicherdiensten. Er behandelt auch Azure Key Vault.
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Verwenden von Azure Disk Encryption zum Verschlüsseln von Datenträgern, die Ihre virtuellen Computer verwenden
-Azure Disk Encryption ist ein neues Feature, das sich derzeit in der Vorschau befindet. Mit diesem Feature können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Diese ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können.
+Azure Disk Encryption ist ein neues Feature. Mit diesem Feature können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Diese ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können.
 
-Die Lösung Azure Disk Encryption unterstützt die folgenden drei Kundenverschlüsselungsszenarien:
-
-* Aktivieren der Verschlüsselung auf neuen IaaS-VMs, die auf der Basis vom Kunden verschlüsselter VHD-Dateien und vom Kunden bereitgestellter Verschlüsselungsschlüssel, die in Azure Key Vault gespeichert sind, erstellt wurden.
-* Aktivieren der Verschlüsselung auf neuen IaaS-VMs, die über Azure Marketplace erstellt wurden.
-* Aktivieren der Verschlüsselung auf vorhandenen IaaS-VMs, die bereits unter Azure ausgeführt werden.
-
-> [!NOTE]
-> Für bereits in Azure ausgeführte virtuelle Linux-Computer oder neue virtuelle Linux-Computer, die aus Images in Azure Marketplace erstellt wurden, wird die Verschlüsselung des Betriebssystemdatenträgers derzeit nicht unterstützt. Die Verschlüsselung des Betriebssystemvolumes für virtuelle Linux-Computer wird nur für virtuelle Computer unterstützt, die lokal verschlüsselt und in Azure hochgeladen wurden. Diese Einschränkung gilt nur für den Betriebssystemdatenträger. Die Verschlüsselung von Datenvolumes wird für virtuelle Linux-Computer unterstützt.
-> 
-> 
-
-Die Lösung unterstützt bei Aktivierung in Microsoft Azure für virtuelle IaaS-Computer (öffentliche Vorschauversion) Folgendes:
+Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
 * Integration in Azure-Schlüsseltresor
-* Standardmäßige [virtuelle IaaS-Computer der A-, D- und G-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Aktivieren der Verschlüsselung für virtuelle IaaS-Computer, die mit dem [Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md) -Modell erstellt werden
-* Alle öffentlichen Azure- [Regionen](https://azure.microsoft.com/regions/)
+* Virtuelle Computer im Standard-Tarif: [Virtuelle IaaS-Computer der Serien A, D, DS, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Aktivieren der Verschlüsselung auf virtuellen Windows- und Linux-IaaS-Computern
+* Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für virtuelle Windows-IaaS-Computer
+* Deaktivieren der Verschlüsselung auf Datenlaufwerken für virtuelle Linux-IaaS-Computer
+* Aktivieren der Verschlüsselung auf virtuellen IaaS-Computern mit dem Windows-Clientbetriebssystem
+* Aktivieren der Verschlüsselung auf Volumes mit Bereitstellungspfaden
+* Aktivieren der Verschlüsselung auf virtuellen Linux-Computern, die mithilfe von mdadm mit Datenträgerstriping (RAID) konfiguriert sind
+* Aktivieren der Verschlüsselung auf virtuellen Linux-Computern mit LVM für Datenträger
+* Aktivieren der Verschlüsselung auf virtuellen Windows-Computern, die mithilfe von Speicherplätzen konfiguriert sind
+* Alle öffentlichen Azure-Regionen werden unterstützt.
+
+Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologien:
+
+* IaaS-VMs des Basic-Tarifs
+* Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
+* Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
+* Integration in den lokalen Schlüsselverwaltungsdienst
+* Azure Files (freigegebenes Dateisystem), Network File System (NFS), dynamische Volumes und virtuelle Windows-Computer, die mit softwarebasierten RAID-Systemen konfiguriert sind
+
+
+> [!NOTE]
+> Die Verschlüsselung von Linux-Betriebssystemdatenträgern wird derzeit für die folgenden Linux-Distributionen unterstützt: RHEL 7.2, CentOS 7.2n und Ubuntu 16.04.
+> 
+> 
 
 Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtuellen Computer in Azure Storage ruhend verschlüsselt sind.
 
 #### <a name="resources"></a>Ressourcen
-* [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines (Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)
   
-  Dieser Artikel beschreibt die Preview-Version von Azure Disk Encryption und enthält einen Link, um das Whitepaper herunterzuladen.
-
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergleich zwischen Azure Disk Encryption, SSE und clientseitiger Verschlüsselung
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS-VMs und ihre zugehörigen VHD-Dateien
 Für Datenträger, die von IaaS-VMs verwendet werden, sollten Sie Azure Disk Encryption verwenden. Sie können SSE aktivieren, um die VHD-Dateien zu verschlüsseln, mit denen diese Datenträger in Azure Storage gesichert werden, aber es werden nur neu geschriebene Daten verschlüsselt. Dies bedeutet: Wenn Sie einen virtuellen Computer erstellen und dann SSE für das Speicherkonto aktivieren, das die VHD-Datei enthält, werden nur die Änderungen verschlüsselt, nicht die ursprüngliche VHD-Datei.
@@ -527,6 +535,6 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
   Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

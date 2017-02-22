@@ -1,5 +1,5 @@
 ---
-title: "Routinganforderungen für ExpressRoute | Microsoft Docs"
+title: "Routinganforderungen für Azure ExpressRoute | Microsoft-Dokumentation"
 description: "Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten des Routings für ExpressRoute-Verbindungen."
 documentationcenter: na
 services: expressroute
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/03/2017
+ms.date: 01/27/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 4f67c67639eaf33bb1f2aa236164e98030f5b555
-ms.openlocfilehash: c76471f4c0f4e1b751d623f691578d354008d863
+ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
+ms.openlocfilehash: 4acca777cb5e34719c9b8ccef09bd04b82f74ce6
 
 
 ---
@@ -189,8 +189,12 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | **Azure-Region für nationale Clouds**| **BGP-Communitywert** |
 | --- | --- |
 | **US Government** |  |
+| US Gov Arizona | 12076:51106 |
 | US Government, Iowa | 12076:51109 |
 | US Government, Virginia | 12076:51105 |
+| US Gov Texas | 12076:51108 |
+| US DoD, Mitte | 12076:51209 |
+| US DoD, Osten | 12076:51205 |
 
 
 | **Dienst in nationalen Clouds** | **BGP-Communitywert** |
@@ -212,6 +216,6 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

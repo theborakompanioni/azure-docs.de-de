@@ -1,7 +1,7 @@
 Wenn Sie einen Datenträger, der einem virtuellen Computer (VM) angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Wenn Sie die Verbindung zwischen einem Datenträger und dem virtuellen Computer trennen, wird der Datenträger nicht aus dem Speicher entfernt. Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an dieselbe VM oder eine andere anfügen.  
 
 > [!NOTE]
-> Eine VM in Azure verwendet verschiedene Arten von Datenträgern wie Betriebssystemfestplatten, lokale temporäre Festplatten und optionale Datenträger. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es ist nicht möglich, einen Betriebssystem-Datenträger zu trennen, ohne auch die VM zu löschen.
+> Eine VM in Azure verwendet verschiedene Arten von Datenträgern wie Betriebssystemfestplatten, lokale temporäre Festplatten und optionale Datenträger. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../articles/storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es ist nicht möglich, einen Betriebssystem-Datenträger zu trennen, ohne auch die VM zu löschen.
 
 ## <a name="find-the-disk"></a>Suchen des Datenträgers
 Bevor Sie einen Datenträger von einer VM trennen können, müssen Sie die LUN-Nummer herausfinden, die als Bezeichner des zu trennenden Datenträgers fungiert. Gehen Sie dazu folgendermaßen vor:
@@ -114,6 +114,6 @@ Der getrennte Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

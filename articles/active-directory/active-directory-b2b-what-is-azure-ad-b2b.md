@@ -1,9 +1,9 @@
 ---
-title: 'Vorschau der Azure Active Directory B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud | Microsoft Docs'
+title: Was ist Azure Active Directory B2B-Zusammenarbeit (Vorschau)? | Microsoft Docs
 description: "Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen."
 services: active-directory
 documentationcenter: 
-author: viv-liu
+author: sasubram
 manager: femila
 editor: 
 tags: 
@@ -13,39 +13,90 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 09/27/2016
-ms.author: femila
+ms.date: 02/02/2017
+ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 40c98146f1bbf1b1d53cd27044ce383c33098870
+ms.sourcegitcommit: 1c1da3c7b1d5e096e03ac3814275f29afeffcaeb
+ms.openlocfilehash: ad03b71052be46bdb64432b007aa471d120db0fa
 
 
 ---
-# <a name="azure-ad-b2b-collaboration-preview-simple-secure-cloud-partner-integration"></a>Vorschau der Azure AD B2B-Zusammenarbeit: Einfache, sichere Integration von Partnern in der Cloud
-Da sich Unternehmen mehr auf ihr Kerngeschäft konzentrieren, wächst auch die Notwendigkeit der Zusammenarbeit mit anderen Unternehmen. Zur Gewährleistung einer effektiven Zusammenarbeit müssen Unternehmen Ressourcen auf einfache und sichere Weise gemeinsam mit ihren Partnern nutzen können (z. B. den Zugriff auf Unternehmensanwendungen). Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Partnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und Unternehmensdaten über ihre selbstverwalteten Identitäten und unterstützt so Ihre unternehmensübergreifenden Beziehungen. Die Azure AD B2B-Zusammenarbeit ist:
 
-* **Einfach**: Jeder Partnerbenutzer verwendet ein vorhandenes Azure AD-Konto oder ein Konto, das sich mühelos während der Annahme der Einladung erstellen lässt. Sie können diesem Benutzer den direkten Zugriff auf die ausgewählte Unternehmens-App oder eine Reihe von Anwendungen über den App-Zugriffsbereich ermöglichen.
-* **Sicher**: Ihr Administrator steuert den gesamten Zugriff auf Ihre Unternehmens-Apps über Ihr Azure AD-Verzeichnis. Wenn die Zusammenarbeit beendet ist, können Partnerbenutzer aus Azure AD entfernt werden, und ihr Zugriff auf Ihre Apps wird sofort aufgehoben. Darüber hinaus wird der Zugriff automatisch aufgehoben, wenn ein Partnerbenutzer die Partnerorganisation verlässt.
-* **Nahtlos:** Die Partnerunternehmen, die Zugriff auf Ihre Unternehmens-Apps benötigen, **müssen nicht über Azure AD verfügen**. Die Azure AD-B2B-Zusammenarbeit bietet eine einfache Anmeldeumgebung, über die Partner unmittelbaren Zugriff auf Ihre Apps erhalten.
+# <a name="what-is-azure-ad-b2b-collaboration-preview"></a>Was ist Azure AD B2B-Zusammenarbeit (Vorschau)?
 
-Ausführliche Informationen zur Azure AD B2B-Zusammenarbeit finden Sie [im Blogbeitrag zur Ankündigung der öffentlichen Vorschau](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) und in [diesem umfassenden Video](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-B2B-collaboration-demo).
+Die Funktionen von Azure AD B2B-Zusammenarbeit ermöglichen IT-Experten und Information-Workern eine enge Zusammenarbeit mit ihren Partnern in anderen Organisationen weltweit. Sie können Zugriff auf Dokumente, Ressourcen und Anwendungen bereitstellen und gleichzeitig die vollständige Kontrolle über ihre interne Daten gewährleisten. Mithilfe der Business-to-Business-APIs in Azure AD können Entwickler Anwendungen schreiben, die die beiden Organisationen sicher miteinander verbinden und den Information-Workern eine nahtlose Anzeige und eine intuitive Navigation bieten.
 
-Unter [Vergleich von Funktionen zum Verwalten externer Identitäten mithilfe von Azure AD](active-directory-b2b-compare-external-identities.md)werden die Anwendungsfälle für die Azure AD B2B-Zusammenarbeit, Azure AD B2C und die mehrinstanzenfähige Azure AD-App verglichen.
+Die Funktionen von Azure AD B2B-Zusammenarbeit ermöglichen Organisationen aller Größen und Branchen, unabhängig von ihren Konformitäts- und Governanceanforderungen, eine einfache und sichere Zusammenarbeit mit Mitarbeitern auf der ganzen Welt. Das ist das Ziel dieser aktualisierten öffentlichen Vorschau von B2B-Zusammenarbeit.
 
-## <a name="related-articles"></a>Verwandte Artikel
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
-* [So funktioniert's](active-directory-b2b-how-it-works.md)
-* [Ausführliche exemplarische Vorgehensweise](active-directory-b2b-detailed-walkthrough.md)
-* [Referenz zum CSV-Dateiformat](active-directory-b2b-references-csv-file-format.md)
-* [Tokenformat für externe Benutzer](active-directory-b2b-references-external-user-token-format.md)
-* [Objektattributänderungen für externe Benutzer](active-directory-b2b-references-external-user-object-attribute-changes.md)
-* [Aktuelle Einschränkungen der Vorschau](active-directory-b2b-current-preview-limitations.md)
+Um in der aktuellen Vorschauversion eine Beziehung zu einer Organisation einzurichten, können IT-Profis und Information-Worker über das Portal oder die Einladungs-Manager-API Benutzer aus einer anderen Organisation einzeln oder als Gruppe hinzufügen. Administratoren können zu diesem Zweck die neuen Benutzeroberflächen im Azure-Portal (https://portal.azure.com) und in PowerShell verwenden. Information-Worker können zudem die Zugriffsbereichsoberflächen unter http://myapps.microsoft.com einsetzen. Entwickler können Anwendungen mit der Einladungs-Manager-API von Azure AD B2B erstellen, um Benutzer von B2B-Zusammenarbeit hinzuzufügen und die Einladungs- und Onboardingworkflows anzupassen.
+
+Benutzer von B2B-Zusammenarbeit werden in der Regel über eine Einladung und einen Annahmevorgang aufgenommen. Dies funktioniert folgendermaßen:
+
+1. John Doe von WoodGrove möchte Sam Oogle über seine Gmail-E-Mail-Adresse (gsamoogle@gmail.com) hinzufügen.
+
+2. John ruft das WoodGrove-Portal (portal.azure.com) oder den Zugriffsbereich (myapps.microsoft.com) auf, meldet sich an und fügt den Benutzer dem WoodGrove-Verzeichnis, einer Gruppe oder einer Anwendung hinzu.
+
+3. John gibt eine benutzerdefinierte Einladungs-E-Mail an, die an Sam gesendet werden soll.
+
+4. Sobald er damit fertig ist, wird folgender Benutzer in WoodGrove AD erstellt (der Screenshot zeigt die Verwaltungsoberfläche von portal.azure.com):
+
+  ![Benutzer wird hinzugefügt](media/active-directory-b2b-what-is-azure-ad-b2b/user-is-added.png)
+
+5. Sobald wir diesen Benutzer hinzugefügt haben, sendet Azure AD eine Einladungs-E-Mail an Sam:
+
+  ![An Sam gesendete Einladungs-E-Mail](media/active-directory-b2b-what-is-azure-ad-b2b/invitation-mail-sent-to-sam.png)
+
+6. Jetzt wählt Sam **Loslegen** und meldet sich an. Zu diesem Zeitpunkt aktualisiert Azure AD sein Benutzerobjekt im Verzeichnis mit Informationen aus seinem Token (der Screenshot zeigt die Verwaltungsoberfläche im [Azure-Portal](https://portal.azure.com)):
+
+  ![Benutzerprofil wird aufgefüllt](media/active-directory-b2b-what-is-azure-ad-b2b/user-profile-is-populated.png)
+
+7. Nachdem Sam die Einladung angenommen hat, kann er Zugriff auf WoodGrove-Ressourcen erhalten und natürlich wie jeder andere Benutzer im Verzeichnis vom Administrator verwaltet werden (der Screenshot zeigt die Verwaltungsoberfläche im [Azure-Portal](https://portal.azure.com)):
+
+  ![Sam ist jetzt ein Benutzer in Azure AD](media/active-directory-b2b-what-is-azure-ad-b2b/sam-now-user-in-azure-ad.png)
+
+## <a name="public-preview-features"></a>Features der öffentlichen Vorschau
+Sie haben die Funktionen von B2B-Zusammenarbeit, die wir in einer öffentlichen Vorschau vorgestellt hatten, genutzt und uns massenhaft wertvolles Feedback gegeben. Das haben wir umgesetzt. In dieser aktualisierten öffentlichen Vorschau haben wir alle Verbesserungen zusammengefasst. Dies sind die wichtigsten Funktionen der aktualisierten öffentlichen Vorschau von B2B-Zusammenarbeit:
+
+1. Erweiterungen der B2B-Verwaltungsoberfläche
+  - Aufrufen von https://portal.azure.com
+  - Möglichkeit für Administratoren zum Einladen von B2B-Benutzern zum Verzeichnis oder zu einer beliebigen Gruppe oder Anwendung
+
+2. Self-Service-Einladungsfunktionen zu B2B-Zusammenarbeit für Information-Worker im Zugriffsbereich: https://myapps.microsoft.com. Information-Worker können Benutzer von B2B-Zusammenarbeit zu einer beliebigen Self-Service-Gruppe oder -Anwendung einladen, die von ihnen verwaltet wird.
+
+3. Sie können jetzt einen Benutzer mit einer beliebigen E-Mail-Adresse einladen. Ganz gleich, ob der Benutzer über eine Office&365;- oder eine lokale Microsoft Exchange-E-Mail-Adresse, eine Outlook.com-E-Mail-Adresse oder eine beliebige E-Mail-Adresse aus sozialen Netzwerken (Gmail, Yahoo usw.) verfügt – er kann jetzt durch die einfache Inlineerstellung eines Azure AD-Kontos oder eines Microsoft-Kontos nahtlos auf die eingeladene Organisation zugreifen.
+
+4. Profitieren Sie von einer professionellen Einladungs-E-Mail mit dem Branding des Mandanten.
+
+5. Umfangreiche Möglichkeit zum Anpassen des Onboardings über die Einladung-APIs.
+
+6. Mehrstufige Authentifizierung für Benutzer von B2B-Zusammenarbeit in der einladenden Organisation.
+
+7. Möglichkeit zum Delegieren von Einladungen an Nicht-Administratoren.
+
+8. PowerShell-Unterstützung für B2B-Zusammenarbeit.
+
+9. Überwachungs- und Berichtsfunktionen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Artikel zur Azure AD B2B-Kollaboration:
+
+* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
+* [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)
+* [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-how-it-works.md)
+* [Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit](active-directory-b2b-invitation-email.md)
+* [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
+* [Lizenzierung von Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
+* [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
+* [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-faq.md)
+* [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
+* [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 843f0862f9e4d8dc1d40e110710e48ad66716168
-ms.openlocfilehash: d714907184ccdde8d912ff8cf4240b8c6d2c45e5
+ms.sourcegitcommit: 109ca4a4672d21969096af26a094390673de25d9
+ms.openlocfilehash: afb6662e1b4af6cf66fd3c8e7b155b5b6bea85ff
 
 
 ---
@@ -27,7 +27,7 @@ Ein Automation-Anmeldeinformationsobjekt enthält ein [PSCredential](http://msdn
 > Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird mit einem Masterzertifikat verschlüsselt und in Azure Automation gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel für das Automation-Konto mit dem Masterzertifikat verschlüsselt und anschließend zum Verschlüsseln des Objekts verwendet.  
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-Cmdlets
-Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](../powershell-install-configure.md) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
+Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azureps-cmdlets-docs) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
 | Cmdlets | Beschreibung |
 |:--- |:--- |
@@ -104,6 +104,6 @@ DSC-Konfigurationen in Azure Automation können mithilfe von **Get-AutomationPSC
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

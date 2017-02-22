@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a98185bf44af2271f5ded04c05d3134321db536a
+ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
+ms.openlocfilehash: c0b3e2de393c53dab4c9e9341269f792603eec18
 
 
 ---
@@ -93,7 +93,15 @@ Dies sind die Schritte, die in Power BI Desktop ausgeführt werden müssen. Es i
 * **username** (optional): Bei Verwendung mit RLS ist dies eine Zeichenfolge, die zum Identifizieren des Benutzers verwendet werden kann, wenn RLS-Regeln angewendet werden. Weitere Informationen finden Sie unter „Sicherheit auf Zeilenebene in Power BI Embedded“.
 * **roles** : Mit den in dieser Zeichenfolge enthaltenen Rollen wird ausgewählt, wann die Regeln der Sicherheit auf Zeilenebene (RLS) angewendet werden sollen. Wenn mehr als eine Rolle übergeben wird, sollten sie als Zeichenfolgenarray übergeben werden.
 
-Falls die username-Eigenschaft vorhanden ist, müssen Sie in den Rollen auch mindestens einen Wert übergeben.
+Sie erstellen das Token mithilfe der [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__)-Methode. Falls die username-Eigenschaft vorhanden ist, müssen Sie in den Rollen auch mindestens einen Wert übergeben.
+
+Beispielsweise können Sie das EmbedSample ändern. Zeile 55 von DashboardController ändert sich von
+
+    var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id);
+
+To
+
+    var embedToken = PowerBIToken.CreateReportEmbedToken(this.workspaceCollection, this.workspaceId, report.Id, "Andrew Ma", ["Manager"]);'
 
 Das vollständige App-Token sieht ungefähr wie folgt aus:
 
@@ -109,6 +117,6 @@ Wenn sich nach Abschluss all dieser Schritte nun eine Person an unserer Anwendun
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

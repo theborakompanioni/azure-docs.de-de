@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0c74663599e8f74ce80948abc3b9e1677bb86de0
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: d6b2b28a7e01d5a70cd08f4cd2d8cccff7d918cf
 
 
 ---
@@ -32,24 +32,24 @@ Falls die Bereitstellung zu groß für den Standardordner „approot“ ist, kan
 
 Wenn Sie **DEPLOYROOT** für das Feld *Name* Ihrer lokalen Ressource verwenden und den Namen der automatisch generierten Umgebungsvariablen nicht ändern (die in diesem Fall auf **DEPLOYROOT_PATH** festgelegt wird), funktioniert Ihre Anwendung auch.
 
-Weitere Informationen zum Erstellen einer lokalen Speicherressource finden Sie unter [Eigenschaften für lokalen Speicher][Eigenschaften für lokalen Speicher] (Eigenschaften des lokalen Speichers).
+Weitere Informationen zum Erstellen einer lokalen Speicherressource finden Sie unter [Eigenschaften für lokalen Speicher][Local storage properties].
 
 ## <a name="see-also"></a>Weitere Informationen
-[Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse]
+[Azure-Toolkit für Eclipse][Azure Toolkit for Eclipse]
 
-[Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)][Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]
+[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-[Installieren des Azure-Toolkits für Eclipse][Installieren des Azure-Toolkits für Eclipse] 
+[Installieren des Azure-Toolkits für Eclipse][Installing the Azure Toolkit for Eclipse] 
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Creating a Hello World Application for Azure in Eclipse (in englischer Sprache)]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installieren des Azure-Toolkits für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Eigenschaften für lokalen Speicher]: http://go.microsoft.com/fwlink/?LinkID=699525#local_storage_properties
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Local storage properties]: http://go.microsoft.com/fwlink/?LinkID=699525#local_storage_properties
 
 <!-- IMG List -->
 
@@ -59,6 +59,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

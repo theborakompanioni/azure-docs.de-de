@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 352532e176a2849c0ea637ea7de09a2299b9862c
+ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
+ms.openlocfilehash: 92b9c88ec49424c96c3bd21bc5c4ce390352c17b
 
 
 ---
@@ -25,11 +25,11 @@ Die Funktion „dedizierte Gruppen“ erstellt und befüllt in Azure Active Dire
 
 > [!NOTE]
 > Dedizierte Gruppen erfordern, dass folgenden Benutzern eine Azure AD Premium-Lizenz zugewiesen wurde:
-> 
+>
 > * Dem Administrator, der die Gruppenregel verwaltet
 > * Allen Benutzern, die durch die Regel als Gruppenmitglieder ausgewählt wurden
-> 
-> 
+>
+>
 
 **Dedizierte Gruppen aktivieren**
 
@@ -51,6 +51,7 @@ Verwenden Sie für eine Gruppe, die alle Gäste ausschließt, eine Regel wie:
 
 Weitere Informationen zur Erstellung *erweiterter* Regeln (mit mehreren Vergleichen) für dynamische Gruppenmitgliedschaften finden Sie unter [Verwenden von Attributen zum Erstellen erweiterter Regeln](active-directory-accessmanagement-groups-with-advanced-rules.md).
 
+### <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
@@ -60,7 +61,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

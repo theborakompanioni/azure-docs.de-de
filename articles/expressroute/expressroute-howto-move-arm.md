@@ -1,10 +1,10 @@
 ---
-title: Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell | Microsoft Docs
-description: Auf dieser Seite wird beschrieben, wie Sie eine klassische Verbindung in das Resource Manager-Bereitstellungsmodell verschieben.
+title: 'Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell: PowerShell: Azure | Microsoft-Dokumentation'
+description: Auf dieser Seite wird beschrieben, wie Sie mithilfe von PowerShell eine klassische Verbindung in das Resource Manager-Bereitstellungsmodell verschieben.
 documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: 08152836-23e7-42d1-9a56-8306b341cd91
@@ -13,112 +13,115 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
-ms.author: ganesr
+ms.date: 02/03/2017
+ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1c3bd8e01e02fb66bf5e04c307863bbe54176128
+ms.sourcegitcommit: 6d11b75fdd33260be3d975d9bc25fdac3cf22b49
+ms.openlocfilehash: 73f42b25d667f07205e7e67556c367f1a0e6e215
 
 
 ---
-# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell
-## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
-* Sie benötigen die neueste Version der Azure PowerShell-Module (mindestens Version 1.0).
+# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell mithilfe von PowerShell
+
+Damit Sie eine ExpressRoute-Verbindung sowohl für das klassische Bereitstellungsmodell als auch für das Resource Manager-Bereitstellungsmodell verwenden können, müssen Sie die Verbindung in das Resource Manager-Bereitstellungsmodell verschieben. In den folgenden Abschnitten werden die Schritte zum Verschieben der Verbindung mithilfe von PowerShell erläutert.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+* Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Module (mindestens Version 1.0) besitzen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
-* Bevor Sie fortfahren, lesen Sie die unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md)bereitgestellten Informationen. Stellen Sie sicher, dass Sie alle Limits und Einschränkungen kennen und verstehen.
-* Wenn Sie eine Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell verschieben, muss die Verbindung im klassischen Bereitstellungsmodell vollständig konfiguriert worden und betriebsbereit sein.
+* Lesen Sie die unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md) bereitgestellten Informationen. Stellen Sie sicher, dass Sie die Grenzwerte und Einschränkungen verstehen.
+* Vergewissern Sie sich, dass die Verbindung im klassischen Bereitstellungsmodell voll funktionsfähig ist.
 * Stellen Sie sicher, dass Sie über eine Ressourcengruppe verfügen, die im Resource Manager-Bereitstellungsmodell erstellt wurde.
 
-## <a name="move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Verschieben der ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell
-Sie müssen eine ExpressRoute-Verbindung in das Resource Manager-Modell verschieben, sodass Sie es sowohl im klassischen als auch im Resource Manager-Bereitstellungsmodell verwenden können. Hierzu können Sie die folgenden PowerShell-Befehle ausführen.
+## <a name="move-an-expressroute-circuit"></a>Verschieben einer ExpressRoute-Verbindung
 
 ### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Schritt 1: Abrufen von Verbindungsdetails aus dem klassischen Bereitstellungsmodell
-Sie müssen zunächst Informationen zu Ihrer ExpressRoute-Verbindung abrufen.
+Melden Sie sich bei der klassischen Azure-Umgebung an, und rufen Sie den Dienstschlüssel ab.
 
-Melden Sie sich bei der klassischen Azure-Umgebung an, und rufen Sie den Dienstschlüssel ab. Sie können den folgenden PowerShell-Codeausschnitt zum Abrufen der Informationen verwenden:
+1. Melden Sie sich beim Azure-Konto an.
 
-    # Sign in to your Azure account
-    Add-AzureAccount
+        Add-AzureAccount
 
-    # Select the appropriate Azure subscription
-    Select-AzureSubscription "<Enter Subscription Name here>"
+2. Wählen Sie das entsprechende Azure-Abonnement.
 
-    # Import the PowerShell modules for Azure and ExpressRoute
-    Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
-    Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
+        Select-AzureSubscription "<Enter Subscription Name here>"
 
-    # Get the service keys of all your ExpressRoute circuits
-    Get-AzureDedicatedCircuit
+3. Importieren Sie die PowerShell-Module für Azure und ExpressRoute.
 
-Kopieren Sie den **Dienstschlüssel** der Verbindung, die Sie in das Resource Manager-Bereitstellungsmodell verschieben möchten.
+        Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
+        Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
-### <a name="step-2-sign-in-to-the-resource-manager-environment-and-create-a-new-resource-group"></a>Schritt 2: Anmelden bei der Resource Manager-Umgebung und Erstellen einer neuen Ressourcengruppe
-Verwenden Sie den folgenden Codeausschnitt, um eine neue Ressourcengruppe zu erstellen:
+4. Verwenden Sie das Cmdlet weiter unten, um die Dienstschlüssel für alle ExpressRoute-Verbindungen abzurufen. Kopieren Sie nach dem Abrufen der Schlüssel den **Dienstschlüssel** der Verbindung, die Sie in das Resource Manager-Bereitstellungsmodell verschieben möchten.
 
-    # Sign in to your Azure Resource Manager environment
-    Login-AzureRmAccount
+        Get-AzureDedicatedCircuit
 
-    # Select the appropriate Azure subscription
-    Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>Schritt 2: Anmelden und Erstellen einer Ressourcengruppe
+Melden Sie sich bei der Resource Manager-Umgebung an, und erstellen Sie eine neue Ressourcengruppe.
 
-    #Create a new resource group if you don't already have one
-    New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
+1. Melden Sie sich bei Ihrer Azure Resource Manager-Umgebung an.
 
-Sie können auch eine vorhandene Ressourcengruppe verwenden, sofern verfügbar.
+        Login-AzureRmAccount
+
+2. Wählen Sie das entsprechende Azure-Abonnement.
+
+        Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
+
+3. Ändern Sie den Codeausschnitt unten, um eine neue Ressourcengruppe zu erstellen, falls Sie noch keine besitzen.
+
+        New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Schritt 3: Verschieben der ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell
-Sie können Ihre ExpressRoute-Verbindung jetzt vom klassischen Bereitstellungsmodell in das Resource Manager-Bereitstellungsmodell verschieben. Bevor Sie fortfahren, lesen Sie die Informationen im Artikel [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md) .
+Sie können Ihre ExpressRoute-Verbindung jetzt vom klassischen Bereitstellungsmodell in das Resource Manager-Bereitstellungsmodell verschieben. Bevor Sie fortfahren, lesen Sie die Informationen im Artikel [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md).
 
-Verwenden Sie dazu den folgenden Codeausschnitt:
+Ändern Sie zum Verschieben den folgenden Codeausschnitt, und führen Sie ihn aus:
 
     Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 
 > [!NOTE]
 > Nachdem der Verschiebevorgang abgeschlossen wurde, wird der neue Name (der im vorherigen Cmdlet aufgeführt wurde), zum Verweis auf die Ressource verwendet. Die Verbindung wird im Grunde umbenannt.
 > 
-> 
 
-## <a name="enable-an-expressroute-circuit-for-both-deployment-models"></a>Aktivieren einer ExpressRoute-Verbindung für beide Bereitstellungsmodelle
-Sie müssen Ihre ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell verschieben, bevor Sie den Zugriff auf das Bereitstellungsmodell steuern können.
+## <a name="modify-circuit-access"></a>Ändern des Verbindungszugriffs
 
-Führen Sie das folgende Cmdlet aus, um den Zugriff auf beide Bereitstellungsmodelle zu aktivieren:
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>So aktivieren Sie eine ExpressRoute-Verbindung für beide Bereitstellungsmodelle
+Nachdem Sie die klassische ExpressRoute-Verbindung in das Resource Manager-Bereitstellungsmodell verschoben haben, können Sie den Zugriff auf beide Bereitstellungsmodelle aktivieren. Führen Sie die folgenden Cmdlets aus, um den Zugriff auf beide Bereitstellungsmodelle zu aktivieren:
 
-    # Get details of the ExpressRoute circuit
-    $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+1. Rufen Sie die Verbindungsdetails ab.
 
-    #Set "Allow Classic Operations" to TRUE
-    $ckt.AllowClassicOperations = $true
+        $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
 
-    # Update circuit
-    Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+2. Legen Sie „Klassische Vorgänge zulassen“ auf TRUE fest.
 
-Nachdem dieser Vorgang erfolgreich abgeschlossen wurde, können Sie die Verbindung im klassischen Bereitstellungsmodell anzeigen.
+        $ckt.AllowClassicOperations = $true
 
-Führen Sie den folgenden Befehl aus, um die Details zur ExpressRoute-Verbindung abzurufen:
+3. Aktualisieren Sie die Verbindung. Nachdem dieser Vorgang erfolgreich abgeschlossen wurde, können Sie die Verbindung im klassischen Bereitstellungsmodell anzeigen.
 
-    get-azurededicatedcircuit
+        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Sie müssen in der Lage sein, den aufgeführten Dienstschlüssel anzuzeigen. Sie können jetzt Verknüpfungen mit der ExpressRoute-Verbindung mithilfe der Standardbefehle des klassischen Bereitstellungsmodells für klassische VNets und der ARM-Standardbefehle für ARM-VNETs verwalten. In den folgenden Artikeln werden Informationen zum Verwalten von Verknüpfungen mit der ExpressRoute-Verbindung bereitgestellt:
+4. Führen Sie das folgende Cmdlet aus, um die Details zur ExpressRoute-Verbindung abzurufen. Sie müssen in der Lage sein, den aufgeführten Dienstschlüssel anzuzeigen. 
 
-* [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen im Resource Manager-Bereitstellungsmodell](expressroute-howto-linkvnet-arm.md)
-* [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen im klassischen Bereitstellungsmodell](expressroute-howto-linkvnet-classic.md)
+        get-azurededicatedcircuit
 
-## <a name="disable-the-expressroute-circuit-to-the-classic-deployment-model"></a>Deaktivieren der ExpressRoute-Verbindung für das klassische Bereitstellungsmodell
-Führen Sie das folgende Cmdlet aus, um den Zugriff auf das klassische Bereitstellungsmodell zu deaktivieren:
+5. Sie können jetzt Verknüpfungen mit der ExpressRoute-Verbindung mithilfe der Befehle des klassischen Bereitstellungsmodells für klassische VNets und mithilfe der Resource Manager-Befehle für Resource Manager-VNETs verwalten. In den folgenden Artikeln werden Informationen zum Verwalten von Verknüpfungen mit der ExpressRoute-Verbindung bereitgestellt:
 
-    # Get details of the ExpressRoute circuit
-    $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+    * [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen im Resource Manager-Bereitstellungsmodell](expressroute-howto-linkvnet-arm.md)
+    * [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen im klassischen Bereitstellungsmodell](expressroute-howto-linkvnet-classic.md)
 
-    #Set "Allow Classic Operations" to FALSE
-    $ckt.AllowClassicOperations = $false
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>So deaktivieren Sie die ExpressRoute-Verbindung für das klassische Bereitstellungsmodell
+Führen Sie die folgenden Cmdlets aus, um den Zugriff auf das klassische Bereitstellungsmodell zu deaktivieren:
 
-    # Update circuit
-    Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+1. Rufen Sie die Details der ExpressRoute-Verbindung ab.
 
-Nachdem dieser Vorgang erfolgreich abgeschlossen wurde, können Sie die Verbindung im klassischen Bereitstellungsmodell nicht mehr anzeigen.
+        $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+
+2. Legen Sie „Klassische Vorgänge zulassen“ auf FALSE fest.
+
+        $ckt.AllowClassicOperations = $false
+
+3. Aktualisieren Sie die Verbindung. Nachdem dieser Vorgang erfolgreich abgeschlossen wurde, können Sie die Verbindung im klassischen Bereitstellungsmodell nicht mehr anzeigen.
+
+        Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="next-steps"></a>Nächste Schritte
-Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 
 * [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-arm.md)
 * [Verknüpfen Ihres virtuelles Netzwerks mit Ihrer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
@@ -126,6 +129,6 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

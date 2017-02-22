@@ -1,6 +1,6 @@
 ---
-title: "Schützen von Servern in Azure mithilfe von Azure PowerShell mit Azure Resource Manager | Microsoft Docs"
-description: Automatisieren Sie den Schutz von Servern in Azure mit Azure Site Recovery mithilfe von PowerShell und Azure Resource Manager.
+title: Replizieren von Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager | Microsoft-Dokumentation
+description: "Automatisieren Sie die Replikation von Hyper-V-VMs in Azure mit Azure Site Recovery über PowerShell und Azure Resource Manager."
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 09/27/2016
+ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 555f61f76a8d6f1564e7ca736bcdd0dec7d594df
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
 
 
 ---
@@ -62,7 +62,7 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 * Ein Hyper-V-Host unter Windows Server 2012 R2 oder Microsoft Hyper-V Server 2012 R2 mit einem oder mehreren virtuellen Computern.
 * Direkt oder über einen Proxy mit dem Internet verbundene Hyper-V-Server.
-* Die zu schützenden virtuellen Computer müssen die [Voraussetzungen für virtuelle Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+* Die zu schützenden virtuellen Computer müssen die [Voraussetzungen für virtuelle Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Schritt 1: Anmelden bei Ihrem Azure-Konto
 1. Öffnen Sie eine PowerShell-Konsole, und führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Konto anzumelden. Das Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert.
@@ -247,6 +247,6 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

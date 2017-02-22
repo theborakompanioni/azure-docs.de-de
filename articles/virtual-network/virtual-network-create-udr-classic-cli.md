@@ -1,5 +1,5 @@
 ---
-title: "Steuern des Routings und Verwenden virtueller Geräte mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell | Microsoft Docs"
+title: "Steuern des Routings in einem virtuellen Azure-Netzwerk – CLI – klassisch | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie das Routing in VNets mithilfe der Azure-Befehlszeilenschnittstelle im klassischen Bereitstellungsmodell steuern.
 services: virtual-network
 documentationcenter: na
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 80b452bd96e3a328899ed455b71cf68da8bfde54
-ms.openlocfilehash: b7508d1ee01c1a5b7773360cabde075553b55ac1
+ms.sourcegitcommit: 71153e46d1695611c8286d2e57b109db9e7ad9df
+ms.openlocfilehash: 4a610a65b33f91f46d011e07c6cb11523d3dae0d
 
 
 ---
@@ -126,7 +126,7 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz e
     azure network route-table create -n UDR-BackEnd -l uswest
     ```
 
-2. Führen Sie den Befehl aus, um in der Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet:
+2. Führen Sie den folgenden Befehl aus, um in der Routingtabelle eine Route zu erstellen, die sämtlichen an das Front-End-Subnetz (192.168.1.0/24) gerichteten Datenverkehr an den virtuellen Computer **FW1** (192.168.0.4) umleitet:
 
     ```azurecli
     azure network route-table route set -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -t VirtualAppliance -p 192.168.0.4
@@ -141,6 +141,6 @@ Führen Sie zum Erstellen der Routingtabelle und der für das Back-End-Subnetz e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

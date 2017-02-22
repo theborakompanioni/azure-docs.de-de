@@ -1,5 +1,5 @@
 ---
-title: "Erweiterungen und Features für virtuelle Computer | Microsoft Docs"
+title: "Erweiterungen und Features für virtuelle Computer für Linux | Microsoft-Dokumente"
 description: "Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen."
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,45 +13,239 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 11/17/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f377293e39699cd2be2493df020576389393ee0e
+ms.sourcegitcommit: 31c6cb19827279995502c68ed6d86d23ef9eacd0
+ms.openlocfilehash: 5d98f086b4ccee300b18c8271f940272f618e93e
 
 
 ---
-# <a name="about-virtual-machine-extensions-and-features"></a>Informationen zu Erweiterungen und Features für virtuelle Computer
-## <a name="azure-vm-extensions"></a>Azure-VM-Erweiterungen
-Erweiterungen für virtuelle Azure-Computer sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Wenn z.B. Software auf einem virtuellen Computer installiert werden muss oder ein Virenschutz oder eine Docker-Konfiguration erforderlich ist, kann eine VM-Erweiterung zum Ausführen dieser Aufgaben verwendet werden. Azure VM-Erweiterungen können mithilfe der Azure-CLI, PowerShell, Resource Manager-Vorlagen und dem Azure-Portal ausgeführt werden. Erweiterungen können mit einer neuen Bereitstellung für virtuelle Computer gebündelt oder in Bezug auf ein bestehendes System ausgeführt werden.
+# <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
-In diesem Dokument finden Sie Informationen zu den Voraussetzungen für Erweiterungen für virtuelle Azure-Computer sowie dazu, wie Sie die verfügbaren VM-Erweiterungen ermitteln. 
+Erweiterungen für virtuelle Azure-Computer sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Wenn z.B. Software auf einem virtuellen Computer installiert werden muss, Virenschutz oder eine Docker-Konfiguration erforderlich ist, kann eine VM-Erweiterung zum Ausführen dieser Aufgaben verwendet werden. Azure VM-Erweiterungen können mithilfe der Azure-Befehlszeilenoberfläche, PowerShell, Azure Resource Manager-Vorlagen und dem Azure-Portal ausgeführt werden. Erweiterungen können mit einer neuen Bereitstellung für virtuelle Computer gebündelt oder in Bezug auf ein bestehendes System ausgeführt werden.
 
-## <a name="azure-vm-agent"></a>Azure-VM-Agent
-Der Azure-VM-Agent verwaltet die Interaktion eines virtuellen Azure-Computers mit dem Azure Fabric Controller. Der VM-Agent ist für viele funktionale Aspekte in Bezug auf die Bereitstellung und Verwaltung virtueller Azure-Computer verantwortlich. Dies umfasst auch das Ausführen von VM-Erweiterungen. Der Azure-VM-Agent ist in Images aus dem Azure-Katalog vorinstalliert und kann auf unterstützten Betriebssystemen installiert werden. 
+Dieses Dokument enthält eine Übersicht der VM-Erweiterungen, erläutert Voraussetzungen für die Verwendung von Azure VM-Erweiterungen und bietet Hilfestellung beim Erkennen, Verwalten und Entfernen von VM-Erweiterungen. Dieses Dokument enthält verallgemeinerte Informationen, da eine Vielzahl von VM-Erweiterungen verfügbar ist, die alle eine potenziell eigene Konfiguration aufweisen. Erweiterungsspezifische Details finden Sie in der für die jeweilige Erweiterung spezifischen Dokumentation.
 
-Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie im [Benutzerhandbuch für Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="use-cases-and-samples"></a>Anwendungsfälle und Beispiele
+
+Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Hier einige Beispiele:
+
+- Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf einen virtuellen Computer mithilfe der DSC-Erweiterung für Linux. Weitere Informationen finden Sie unter [Azure Desired State configuration extension (Azure-Erweiterung für die gewünschte Statuskonfiguration)](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
+- Konfigurieren der Überwachung eines virtuellen Computers mit der Microsoft Monitoring Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivierung der Überwachung von virtuellen Computern](virtual-machines-linux-vm-monitoring.md).
+- Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
+- Konfigurieren eines Docker-Hosts auf einem virtuellen Azure-Computer mithilfe der Docker-VM-Erweiterung. Weitere Informationen finden Sie unter [Docker-VM-Erweiterung](virtual-machines-linux-dockerextension.md).
+
+Über prozessspezifische Erweiterungen hinaus ist sowohl für virtuelle Windows- als auch für virtuelle Linux-Computer eine benutzerdefinierte Skripterweiterung verfügbar. Die benutzerdefinierte Skripterweiterung für Linux ermöglicht die Ausführung beliebiger Bash-Skripts auf virtuellen Computern. Dies ist beim Entwerfen von Azure-Bereitstellungen nützlich, die Konfiguration über das Maß hinaus erfordern, das mithilfe von Azure-Tools erreicht werden kann. Weitere Informationen finden Sie unter [Benutzerdefinierte Skripterweiterung für Linux-VMs](virtual-machines-linux-extensions-customscript.md).
+
+Wenn Sie ein Beispiel für den Einsatz einer VM-Erweiterung in einer End-to-End-Anwendungsbereitstellung durcharbeiten möchten, lesen Sie [Automatisieren von Anwendungsbereitstellungen auf virtuellen Azure-Computern](virtual-machines-linux-dotnet-core-1-landing.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für jede VM-Erweiterung gilt möglicherweise ein eigener Satz Voraussetzungen. Beispielsweise setzt die Docker-VM-Erweiterung eine unterstützte Linux-Distribution voraus. Die Anforderungen der einzelnen Erweiterungen werden ausführlich in der erweiterungsspezifischen Dokumentation behandelt.
+
+### <a name="azure-vm-agent"></a>Azure-VM-Agent
+
+Der Azure VM-Agent verwaltet Interaktionen zwischen einem virtuellen Azure-Computer und dem Azure Fabric Controller. Der VM-Agent ist für viele funktionale Aspekte in Bezug auf die Bereitstellung und Verwaltung virtueller Azure-Computer verantwortlich. Dies umfasst auch das Ausführen von VM-Erweiterungen. Der Azure-VM-Agent ist in Images aus dem Azure Marketplace vorinstalliert und kann manuell auf unterstützten Betriebssystemen installiert werden.
+
+Informationen zu unterstützten Betriebssystemen und Installationshinweise finden Sie unter [Informationen zum Agent und zu Erweiterungen für virtuelle Computer](virtual-machines-linux-classic-agents-and-extensions.md).
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
-Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Wenn Sie eine vollständige Liste erhalten möchten, führen Sie mit der Azure-CLI den folgenden Befehl aus. Ersetzen Sie den Speicherort dabei durch den gewünschten Speicherort.
 
-```none
+Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Wenn Sie eine vollständige Liste erhalten möchten, führen Sie mit der Azure-Befehlszeilenoberfläche den folgenden Befehl aus. Ersetzen Sie den Beispielspeicherort dabei durch den gewünschten Speicherort.
+
+```azurecli
 azure vm extension-image list westus
 ```
 
-<br />
+## <a name="run-vm-extensions"></a>Ausführen von VM-Erweiterungen
 
-## <a name="common-vm-extensions"></a>Häufige VM-Erweiterungen
+Azure VM-Erweiterungen können auf vorhandenen virtuellen Computern ausgeführt werden, was nützlich ist, um Konfigurationsänderungen vorzunehmen oder die Konnektivität für eine bereits bereitgestellte VM wiederherzustellen. VM-Erweiterungen können darüber hinaus mit der Bereitstellung von Azure Resource Manager-Vorlagen gekoppelt werden. Durch die Verwendung von Erweiterungen mit Resource Manager-Vorlagen können virtuelle Azure--Computer bereitgestellt und konfiguriert werden, ohne dass Eingriffe nach der Bereitstellung erforderlich werden.
+
+Die folgenden Methoden können verwendet werden, um eine Erweiterung für einen vorhandenen virtuellen Computer auszuführen.
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+Azure VM-Erweiterungen können mithilfe des `azure vm extension set`-Befehls für einen vorhandenen virtuellen Computer ausgeführt werden. In diesem Beispiel wird die benutzerdefinierte Skripterweiterung für einen virtuellen Computer ausgeführt.
+
+```azurecli
+azure vm extension set myResourceGroup myVM CustomScript Microsoft.Azure.Extensions 2.0 \
+  --auto-upgrade-minor-version \
+  --public-config '{"fileUris": ["https://gist.github.com/ahmetalpbalkan/b5d4a856fe15464015ae87d5587a4439/raw/466f5c30507c990a4d5a2f5c79f901fa89a80841/hello.sh"],"commandToExecute": "./hello.sh"}'
+```
+
+Dabei wird eine Ausgabe wie etwa der folgende Text erstellt:
+
+```azurecli
+info:    Executing command vm extension set
++ Looking up the VM "myVM"
++ Installing extension "CustomScript", VM: "mvVM"
+info:    vm extension set command OK
+```
+
+### <a name="azure-portal"></a>Azure-Portal
+
+VM-Erweiterungen können mithilfe des Azure-Portals auf einen vorhandenen virtuellen Computer angewendet werden. Wählen Sie zu diesem Zweck den virtuellen Computer aus, wählen Sie **Erweiterungen** aus, und klicken Sie auf **Hinzufügen**. Dadurch wird eine Liste der verfügbaren Erweiterungen ausgegeben. Wählen Sie die gewünschte Erweiterung aus, und befolgen Sie die Anweisungen im Assistenten.
+
+Das folgende Bild zeigt die Installation der benutzerdefinierten Linux-Skripterweiterung aus dem Azure-Portal.
+
+![Benutzerdefinierte Skripterweiterung](./media/virtual-machines-linux-extensions-features/script-extension-linux.jpg)
+
+### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
+
+VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Wenn Sie eine Erweiterung mithilfe einer Vorlage bereitstellen, können Sie vollständig konfigurierte Azure-Bereitstellungen erstellen. Beispielsweise stammt der folgende JSON-Code aus einer Resource Manager-Vorlage, die einen Satz von virtuellen Computern mit Lastenausgleich und einer Azure SQL-Datenbank bereitstellt und dann auf jedem virtuellen Computer eine .NET Core-Anwendung installiert. Die VM-Erweiterung kümmert sich um die Softwareinstallation.
+
+Weitere Informationen finden Sie in der vollständigen [Resource Manager-Vorlage](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+
+```json
+{
+    "apiVersion": "2015-06-15",
+    "type": "extensions",
+    "name": "config-app",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
+    ],
+    "tags": {
+    "displayName": "config-app"
+    },
+    "properties": {
+    "publisher": "Microsoft.Azure.Extensions",
+    "type": "CustomScript",
+    "typeHandlerVersion": "2.0",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+        "fileUris": [
+        "https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"
+        ]
+    },
+    "protectedSettings": {
+        "commandToExecute": "[concat('sudo sh config-music.sh ',variables('musicStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
+    }
+    }
+}
+```
+
+Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen](virtual-machines-linux-extensions-authoring-templates.md).
+
+## <a name="secure-vm-extension-data"></a>Schützen der Daten von VM-Erweiterungen
+
+Beim Ausführen einer VM-Erweiterung ist es möglicherweise erforderlich, vertrauliche Informationen, wie Anmeldeinformationen, Namen von Speicherkonten und Zugriffsschlüssel von Speicherkonten mit aufzunehmen. Viele VM-Erweiterungen beinhalten eine geschützte Konfiguration, die Daten verschlüsselt und sie ausschließlich innerhalb des virtuellen Zielcomputers entschlüsselt. Jede Erweiterung weist ein spezifisches Schema für die geschützte Konfiguration auf, und jede wird in der erweiterungsspezifischen Dokumentation ausführlich erläutert.
+
+Das folgende Beispiel zeigt eine Instanz der benutzerdefinierten Skripterweiterung für Linux. Beachten Sie, dass der auszuführende Befehl einen Satz Anmeldeinformationen enthält. In diesem Beispiel wird der auszuführende Befehl nicht verschlüsselt.
+
+
+```json
+{
+  "apiVersion": "2015-06-15",
+  "type": "extensions",
+  "name": "config-app",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
+  ],
+  "tags": {
+    "displayName": "config-app"
+  },
+  "properties": {
+    "publisher": "Microsoft.Azure.Extensions",
+    "type": "CustomScript",
+    "typeHandlerVersion": "2.0",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"
+      ],
+      "commandToExecute": "[concat('sudo sh config-music.sh ',variables('musicStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
+    }
+  }
+}
+```
+
+Durch Verschieben der **CommandToExecute**-Eigenschaft in die **protected**-Konfiguration wird die Ausführungszeichenfolge geschützt.
+
+```json
+{
+  "apiVersion": "2015-06-15",
+  "type": "extensions",
+  "name": "config-app",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/', concat(variables('vmName'),copyindex()))]"
+  ],
+  "tags": {
+    "displayName": "config-app"
+  },
+  "properties": {
+    "publisher": "Microsoft.Azure.Extensions",
+    "type": "CustomScript",
+    "typeHandlerVersion": "2.0",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"
+      ]
+    },
+    "protectedSettings": {
+      "commandToExecute": "[concat('sudo sh config-music.sh ',variables('musicStoreSqlName'), ' ', parameters('adminUsername'), ' ', parameters('sqlAdminPassword'))]"
+    }
+  }
+}
+```
+
+## <a name="troubleshoot-vm-extensions"></a>Problembehandlung bei VM-Erweiterungen
+
+Jede VM-Erweiterung kann für die Erweiterung spezifische Schritte zur Problembehandlung aufweisen. Wenn Sie beispielsweise die benutzerdefinierte Skripterweiterung verwenden, finden Sie Details zur Skriptausführung lokal auf dem virtuellen Computer, auf dem die Erweiterung ausgeführt wurde. Alle erweiterungsspezifischen Schritte zur Problembehandlung sind ausführlich in der Dokumentation zur Erweiterung erläutert.
+
+Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
+
+### <a name="view-extension-status"></a>Anzeigen des Erweiterungsstatus
+
+Verwenden Sie nach dem Anwenden einer VM-Erweiterung auf einen virtuellen Computer den folgenden Azure-Befehlszeilenbefehl zum Zurückgeben des Erweiterungsstatus. Ersetzen Sie die Namen der Beispielparameter durch Ihre eigenen Werte.
+
+```azurecli
+azure vm extension get myResourceGroup myVM
+```
+
+Die Ausgabe sieht in etwa wie folgt aus:
+
+```azurecli
+info:    Executing command vm extension get
++ Looking up the VM "myVM"
+data:    Publisher                   Name             Version  State
+data:    --------------------------  ---------------  -------  ---------
+data:    Microsoft.Azure.Extensions  DockerExtension  1.0      Succeeded
+info:    vm extension get command OK         :
+```
+
+Der Ausführungsstatus von Erweiterungen findet sich ebenfalls im Azure-Portal. Um den Status einer Erweiterung anzuzeigen, wählen Sie den virtuellen Computer aus, wählen Sie **Erweiterungen** und dann die gewünschte Erweiterung aus.
+
+### <a name="rerun-a-vm-extension"></a>Erneutes Ausführen einer VM-Erweiterung
+
+In manchen Fällen kann die erneute Ausführung einer VM-Erweiterung erforderlich sein. Das können Sie erreichen, indem Sie die Erweiterung entfernen und sie dann mit einer Ausführungsmethode Ihrer Wahl erneut ausführen. Um eine Erweiterung zu entfernen, führen Sie den folgenden Befehl in der Azure-Befehlszeile aus. Ersetzen Sie die Namen der Beispielparameter durch Ihre eigenen Werte.
+
+```azurecli
+azure vm extension set myResourceGroup myVM --uninstall CustomScript Microsoft.Azure.Extensions 2.0
+```
+
+Im Azure-Portal können Sie eine Erweiterung mithilfe der folgenden Schritte entfernen:
+
+1. Wählen Sie einen virtuellen Computer aus.
+2. Wählen Sie **Erweiterungen** aus.
+3. Wählen Sie die gewünschte Erweiterung aus.
+4. Wählen Sie **Deinstallieren** aus.
+
+## <a name="common-vm-extension-reference"></a>Allgemeine VM-Erweiterungsreferenz
 | Name der Erweiterung | Beschreibung | Weitere Informationen |
 | --- | --- | --- |
-| Benutzerdefinierte Script-Erweiterung für Linux |Ausführen von Skripts für virtuelle Azure-Computer |[Benutzerdefinierte Script-Erweiterung für Linux](virtual-machines-linux-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
+| Benutzerdefinierte Skripterweiterung für Linux |Führt Skripts auf einem virtuellen Azure-Computer aus |[Benutzerdefinierte Skripterweiterung für Linux](virtual-machines-linux-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
 | Docker-Erweiterung |Installiert den Docker-Daemon zur Unterstützung von Docker-Remotebefehlen. |[Docker-VM-Erweiterung](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
-| Erweiterungen für den Zugriff auf virtuelle Computer |Erneut Zugriff auf einen virtuellen Azure-Computer erhalten |[Erweiterungen für den Zugriff auf virtuelle Computer](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
+| Erweiterungen für den Zugriff auf virtuelle Computer |Wiedererlangen des Zugriffs auf einen virtuellen Azure-Computer |[Erweiterungen für den Zugriff auf virtuelle Computer](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure-Diagnoseerweiterung |Verwalten der Azure-Diagnose |[Azure-Diagnoseerweiterung](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterungen für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Der Azure AD v2.0-Endpunkt | Microsoft Docs"
+title: Worin unterscheidet sich der Azure AD v2.0-Endpunkt? | Microsoft Docs
 description: "Ein Vergleich zwischen dem ursprünglichen Azure AD und den v2.0-Endpunkten."
 services: active-directory
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 8a8f8af9b23c66461385a73f80c148a2fdd652d5
+ms.sourcegitcommit: 47dce83cb4e3e5df92e91f1ca9195326634d6c8b
+ms.openlocfilehash: 9f00013c4eb6c32707489d5f78a5e95b7419bcd2
 
 
 ---
@@ -56,7 +56,7 @@ Nun brauchen Sie lediglich eine einzige App-Registrierung und eine einzige Anwen
 Unser Ziel ist es, dass dies zu einer vereinfachten App-Verwaltung und Entwicklungserfahrung führt, und sich eine konsolidiertere Ansicht eines einzelnen Projekts ergibt, an dem Sie möglicherweise arbeiten.
 
 ## <a name="scopes-not-resources"></a>Bereiche, keine Ressourcen
-Im ursprünglichen Azure AD-Dienst kann sich eine App als **Ressource**oder als Empfänger von Token verhalten.  Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth 2.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können.  Betrachten Sie als Beispiel für eine Ressource die Azure AD Graph-API:
+Im ursprünglichen Azure AD-Dienst kann sich eine App als **Ressource**oder als Empfänger von Token verhalten.  Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth&2;.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können.  Betrachten Sie als Beispiel für eine Ressource die Azure AD Graph-API:
 
 * Ressourcenbezeichner, oder `AppID URI`: `https://graph.windows.net/`
 * Bereiche, oder `OAuth2Permissions`: `Directory.Read`, `Directory.Write`, usw.  
@@ -113,7 +113,7 @@ Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Akt
 
 Um mehr über OAuth 2.0, Aktualisierungstoken und Zugriffstoken zu erfahren, lesen Sie die [v2.0-Protokollreferenz](active-directory-v2-protocols.md).
 
-#### <a name="openid-profile--email"></a>OpenID, Profil und E-Mail
+#### <a name="openid-profile-and-email"></a>OpenID, Profil und E-Mail
 Im ursprünglichen Azure Active Directory-Dienst wurden im grundlegenden OpenID Connect-Anmeldefluss zahlreiche Benutzerinformationen im resultierenden ID-Token bereitgestellt.  Die Ansprüche in einem ID-Token können u. a. Name, bevorzugten Benutzernamen, E-Mail-Adresse, Objekt-ID eines Benutzers enthalten.
 
 Die Informationen, auf die der Bereich `openid` Ihrer App Zugriff gewährt, werden nun beschränkt.  Der Bereich „openid“ erlaubt Ihrer App nur das Anmelden des Benutzers und das Empfangen eines App-spezifischen Bezeichners für den Benutzer.  Falls Sie personenbezogene Informationen (Personally Identifiable Information, PII) über den Benutzer in Ihrer App erhalten möchten, müssen Sie über Ihre App zusätzliche Berechtigungen vom Benutzer einholen.  Zu diesem Zweck führen wir zwei neue Bereiche ein: `email` und `profile`.
@@ -132,6 +132,6 @@ Es gibt einige Einschränkungen, die Sie bei Verwendung des v2.0-Endpunkts kenne
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

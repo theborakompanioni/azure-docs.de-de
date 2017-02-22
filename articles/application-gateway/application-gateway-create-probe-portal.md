@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal | Microsoft Docs"
+title: "Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (Azure-Portal) | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen benutzerdefinierten Test für ein Anwendungsgateway über das Portal erstellen."
 services: application-gateway
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: aaf13418331f29287399621cb911e4b9f5b33dc0
-ms.openlocfilehash: 0fafaff220dfb5d224bc5b57b630f8b2912155f7
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 14b715013b4154a1fa079c0dc470e675d7cf4c1f
 
 
 ---
@@ -55,7 +55,7 @@ Klicken Sie auf **Tests** und dann auf die Schaltfläche **Hinzufügen**, um ein
 Stellen Sie die erforderlichen Informationen für den Test bereit, und klicken Sie anschließend auf **OK**.
 
 * **Name**: Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.
-* **Host**: Dieser Wert ist der Hostname, der für den Test verwendet wird. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers.
+* **Host**: Dieser Wert ist der Hostname, der für den Test verwendet wird. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie&127;.0.0.1. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers.
 * **Pfad** : Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“.
 * **Intervall (Sek.)** : Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.
 * **Timeout (Sek.)** : Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist.
@@ -97,6 +97,6 @@ Informationen zum Konfigurieren der SSL-Auslagerung mit Azure Application Gatewa
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -4,7 +4,7 @@ description: "Weitere Informationen zum Azure-Toolkit für Eclipse"
 services: 
 documentationcenter: java
 author: rmcmurray
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: ef2f3839-2549-4471-9b53-0deb7f4c128b
 ms.service: multiple
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/22/2016
 ms.author: robmcm;asirveda
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e2376cd1f4fd5dd6c79b5eb7969c0e82c07f5473
+ms.sourcegitcommit: d58166140c5de03462df07ea6ea83eb78ffa54ba
+ms.openlocfilehash: 1c60d3730aa2bbca63abf259727ec41ffc164b47
 
 
 ---
@@ -28,7 +28,7 @@ Das Azure-Toolkit für Eclipse stellt Vorlagen und Funktionen bereit, die Ihnen 
 * <https://github.com/microsoft/azure-tools-for-java>
 
 > [!NOTE]
-> Es gibt auch ein Azure-Toolkit für die IntelliJ-IDE. Weitere Informationen finden Sie unter [Azure-Toolkit für IntelliJ].
+> Es gibt auch ein Azure-Toolkit für die IntelliJ-IDE. Weitere Informationen finden Sie unter [Azure Toolkit für IntelliJ].
 > 
 > 
 
@@ -57,7 +57,7 @@ Die folgenden Artikel erklären, wie Sie mit dem Azure-Toolkit für Eclipse Ihre
 * [Bereitstellen umfangreicher Bereitstellungen]
 * [Debuggen einer Java-Web-App in Azure in Eclipse]
 * [Debuggen von Azure-Anwendungen in Eclipse]
-* [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux][Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux]
+* [Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux][HDInsight Tools Plugin for Eclipse]
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den folgenden Links:
@@ -66,25 +66,26 @@ Weitere Informationen zu den Azure-Toolkits für Java-IDEs finden Sie unter den 
   * [Installieren des Azure-Toolkits für Eclipse]
   * [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]
   * [Neuerungen im Azure-Toolkit für Eclipse]
-* [Azure-Toolkit für IntelliJ]
-  * [Installieren des Azure-Toolkits für IntelliJ]
+* [Azure Toolkit für IntelliJ]
+  * [Installieren des Azure Toolkit für IntelliJ]
   * [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]
   * [Neuerungen im Azure-Toolkit für IntelliJ]
 
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center] und in den [Java-Tools für Visual Studio Team Services].
 
 <!-- URL List -->
 
-[Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse.md
-[Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
+[Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
+[Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij.md
 [Erstellen einer „Hello World“-Web-App für Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Erstellen einer „Hello World“-Web-App für Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
 [Installieren des Azure-Toolkits für Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Installieren des Azure-Toolkits für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Installieren des Azure Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-installation.md
 [Neuerungen im Azure-Toolkit für Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
 [Neuerungen im Azure-Toolkit für IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
+[Java-Tools für Visual Studio Team Services]: https://java.visualstudio.com/
 
 [Azure-Projekteigenschaften]: ./azure-toolkit-for-eclipse-azure-project-properties.md
 [Eigenschaften der Azure-Rolle]: ./azure-toolkit-for-eclipse-azure-role-properties.md
@@ -97,8 +98,8 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 [Anzeigen von Javadoc-Inhalten in Eclipse für das Paket für Azure-Bibliotheken für Java]: ./azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries.md
 [Aktivieren des Remotezugriffs für Azure-Bereitstellungen in Eclipse]: ./azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments.md
 [Aktivieren der Sitzungsaffinität]: ./azure-toolkit-for-eclipse-enable-session-affinity.md
-[Verwenden des HDInsight-Tools-Plug-Ins für Eclipse zum Erstellen von Spark-Anwendungen für HDInsight Spark-Cluster unter Linux]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
-[Authentifizieren von Webbenutzern mit dem Azure Access Control Service über Eclipse]: ./active-directory/active-directory-java-authenticate-users-access-control-eclipse.md
+[HDInsight Tools Plugin for Eclipse]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
+[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: ./active-directory/active-directory-java-authenticate-users-access-control-eclipse.md
 
 <!-- [How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539 -->
 <!-- [How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542 -->
@@ -110,6 +111,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/28/2016
+ms.date: 01/20/2017
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 193c939065979dc48243d31e7f97cd87d96bf9a8
-ms.openlocfilehash: 1b439e2b48cc009e727a49c271318cfd4ead9ef2
+ms.sourcegitcommit: a287ebd634a9305229424d0efea266146f88a952
+ms.openlocfilehash: 234032630cb3911deb7c7d32cfc4963ad6aee43f
 
 
 ---
@@ -31,11 +31,16 @@ Wenn ein Direktabfrage-Modell eine Verbindung mit lokalen Datenquellen herstellt
 ## <a name="data-source-providers"></a>Datenquellenanbieter
 Die folgenden Datenquellenanbieter werden für In-Memory- oder Direktabfrage-Datenmodelle beim Herstellen einer Verbindung mit lokalen Datenquellen oder Clouddatenquellen unterstützt:
 
-|  | **Datenquelle** | **In-Memory** | **Direktabfrage** |
-| --- | --- | --- | --- |
-| **Cloud** |Azure SQL Data Warehouse |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server |
+### <a name="cloud"></a>Cloud
+| **Datenquelle** | **In-Memory** | **Direktabfrage** |
+|  --- | --- | --- |
+| Azure SQL Data Warehouse |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server |
 | Azure SQL-Datenbank |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
-| **Lokal** (über Gateway) |SQL Server |SQL Server Native Client 11.0 |.NET Framework-Datenanbieter für SQL Server |
+
+### <a name="on-premises-via-gateway"></a>Lokal (über Gateway)
+|**Datenquelle** | **In-Memory** | **Direktabfrage** |
+|  --- | --- | --- |
+| SQL Server |SQL Server Native Client 11.0 |.NET Framework-Datenanbieter für SQL Server |
 | SQL Server |Microsoft OLE DB-Anbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
 | SQL Server |.NET Framework-Datenanbieter für SQL Server |.NET Framework-Datenanbieter für SQL Server | |
 | Oracle |Microsoft OLE DB-Anbieter für Oracle |Oracle-Datenanbieter für .NET | |
@@ -75,6 +80,6 @@ Wenn Sie lokale Datenquellen verwenden, müssen Sie das [lokale Gateway](analysi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

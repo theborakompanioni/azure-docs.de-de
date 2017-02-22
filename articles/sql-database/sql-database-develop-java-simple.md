@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 02/03/2017
 ms.author: lbosq
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
+ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
+ms.openlocfilehash: aafc89ca958e4bdc2ba52bf1a7d379e3a4cddf1c
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 5d8934ab6ac0fd29e5b389c2690b5ef42575e005
 Dieses Thema enthält ein Java-Codebeispiel zum Herstellen einer Verbindung mit Azure SQL-Datenbank. Das Java-Beispiel beruht auf dem Java Development Kit (JDK), Version 1.8. Das Beispiel stellt mithilfe des JDBC-Treibers eine Verbindung mit Azure SQL-Datenbank her.
 
 ## <a name="step-1--configure-development-environment"></a>Schritt 1: Konfigurieren der Entwicklungsumgebung
-[Configure development environment for Java development](https://msdn.microsoft.com/library/mt720658.aspx)
+[Configure development environment for Java development](https://docs.microsoft.com/sql/connect/jdbc/step-1-configure-development-environment-for-java-development/)
 
 ## <a name="step-2-create-a-sql-database"></a>Schritt 2: Erstellen einer SQL-Datenbank
 Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Datenbank.  
@@ -41,12 +41,12 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 > 
 
 ## <a name="step-4-run-sample-code"></a>Schritt 4: Ausführen von Beispielcode
-* [Proof of concept connecting to SQL using Java](https://msdn.microsoft.com/library/mt720656.aspx)
+* [Proof of concept connecting to SQL using Java](https://docs.microsoft.com/sql/connect/jdbc/step-3-proof-of-concept-connecting-to-sql-using-java/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Besuchen Sie das [Java Developer Center](/develop/java/).
 * Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
-* Weitere Informationen zum [Microsoft JDBC-Treiber für SQL Server](https://msdn.microsoft.com/library/mt484311.aspx)
+* Weitere Informationen zum [Microsoft JDBC-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
@@ -55,6 +55,6 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

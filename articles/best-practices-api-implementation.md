@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: f4ad13e7674f7af28b22f55dbbb76ccc5d5d26f8
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ea75a14232c010ebea31273856f21cb0e02067a7
 
 
 ---
@@ -1029,7 +1029,7 @@ Die Art einer Web-API bringt eigene zusätzliche Anforderungen in Bezug auf die 
 * Stellen Sie sicher, dass jeder Vorgang für unterschiedliche Eingabekombinationen die richtigen Statuscodes zurückgibt. Beispiel:
 
   * Wenn eine Abfrage erfolgreich ist, sollte der Vorgang den Statuscode 200 (OK) zurückgeben.
-  * Wenn eine Ressource nicht gefunden wird, sollte der Vorgang den HTTP-Statuscode 404 (Nicht gefunden) zurückgeben.
+  * Wenn eine Ressource nicht gefunden wird, sollte der Vorgang den HTTP-Statuscode 404 (Nicht gefunden) zurückgeben.
   * Wenn der Client eine Anforderung sendet, mit der eine Ressource erfolgreich gelöscht wird, sollte der Statuscode 204 (No Content) lauten.
   * Wenn der Client eine Anforderung sendet, mit der eine neue Ressource erstellt wird, sollte der Statuscode 201 (Created) lauten.
 
@@ -1150,6 +1150,6 @@ Anhand dieser Informationen können Sie bestimmen, ob eine bestimmte Web-API ode
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

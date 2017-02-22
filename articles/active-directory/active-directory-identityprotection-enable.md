@@ -6,18 +6,17 @@ keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwa
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: f7a7ffaf-76bf-4cc7-96a1-86c944275c82
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/11/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7321e73bf30e8cba5a7a61a6705d285617f70122
+ms.sourcegitcommit: f231252c222c5520d0a66f9b40749bd203545f16
+ms.openlocfilehash: 44ee1e58b65b23eeb3fa3710fcb29a1646d5f3ad
 
 
 ---
@@ -32,16 +31,16 @@ In diesem Thema wird gezeigt, wie Sie Azure Active Directory Identity Protection
 1. [Melden Sie sich als globaler Administrator](https://ms.portal.azure.com/) bei Ihrem Azure-Portal an. 
 2. Klicken Sie im Azure-Portal auf **Marketplace**.
    
-    ![Erstellen](./media/active-directory-identityprotection-enable/01.png "Create")
+    ![Erstellen](./media/active-directory-identityprotection-enable/01.png "Erstellen")
 3. Klicken Sie in der Anwendungsliste auf **Sicherheit + Identität**.
    
-    ![Erstellen](./media/active-directory-identityprotection-enable/02.png "Create")
+    ![Erstellen](./media/active-directory-identityprotection-enable/02.png "Erstellen")
 4. Klicken Sie auf **Azure AD Identity Protection**.
    
-    ![Erstellen](./media/active-directory-identityprotection-enable/03.png "Create")
+    ![Erstellen](./media/active-directory-identityprotection-enable/03.png "Erstellen")
 5. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Erstellen**.
    
-    ![Erstellen](./media/active-directory-identityprotection-enable/04.png "Create")
+    ![Erstellen](./media/active-directory-identityprotection-enable/04.png "Erstellen")
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
@@ -49,6 +48,6 @@ In diesem Thema wird gezeigt, wie Sie Azure Active Directory Identity Protection
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

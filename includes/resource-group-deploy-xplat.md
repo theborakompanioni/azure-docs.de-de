@@ -1,4 +1,4 @@
-## Bereitstellen über die Azure-Befehlszeilenschnittstelle
+## <a name="how-to-deploy-with-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 1. Melden Sie sich bei Ihrem Azure-Konto an.
    
         azure login
@@ -62,4 +62,8 @@
    
          azure group log show -l -v ExampleResourceGroup
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

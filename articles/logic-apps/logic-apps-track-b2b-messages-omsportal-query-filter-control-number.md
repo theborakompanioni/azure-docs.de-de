@@ -1,6 +1,6 @@
 ---
-title: Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal mit einer Abfrage | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie B2B-Nachrichten im Operations Management Suite-Portal nachverfolgen, indem Sie eine Abfrage verwenden.
+title: "Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten mithilfe einer Abfrage – Azure Logic Apps | Microsoft-Dokumentation"
+description: Verwenden von Abfragen zum Nachverfolgen von Business-to-Business-Nachrichten im Operations Management Suite-Portal
 author: padmavc
 manager: anneta
 editor: 
@@ -12,22 +12,22 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: df6beaaa5de45acfa850049721797fc43f4c9ed7
+ms.sourcegitcommit: 67313e4ff780e6c64dfc3d767ea49167c2a390f4
+ms.openlocfilehash: 701a3bbadb340c9390b486a5295eced056db70a0
 
 
 ---
 # <a name="track-b2b-messages-in-the-operations-management-suite-portal-by-using-a-query"></a>Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal mit einer Abfrage
 Zum Nachverfolgen von B2B-Nachrichten (Business-to-Business) im Operations Management Suite-Portal können Sie eine Abfrage erstellen, mit der Daten nach einer bestimmten Austauschkontrollnummer gefiltert werden.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prereqs"></a>Voraussetzungen
 
 Um das Debuggen durchzuführen und ausführlichere Diagnoseinformationen zu erhalten, aktivieren Sie die Diagnose in Ihrem [Integrationskonto](logic-apps-monitor-b2b-message.md) für die [Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics-and-alerts) mit X12-Connectors. Führen Sie anschließend die Schritte zum [Veröffentlichen von Diagnosedaten](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) im Operations Management Suite-Portal aus.
 
-## <a name="to-create-a-query-to-search-for-a-specific-interchange-control-number"></a>So erstellen Sie eine Abfrage zum Suchen nach einer bestimmten Austauschkontrollnummer
+## <a name="search-for-an-interchange-control-number"></a>Suchen nach einer Austauschkontrollnummer
 
 1. Wählen Sie auf der Startseite die Option **Protokollsuche**.  
 ![Auswählen der Protokollsuche“.](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
@@ -62,6 +62,6 @@ Um das Debuggen durchzuführen und ausführlichere Diagnoseinformationen zu erha
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

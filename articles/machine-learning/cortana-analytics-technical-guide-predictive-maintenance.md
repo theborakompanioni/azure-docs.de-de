@@ -1,5 +1,5 @@
 ---
-title: "Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie in anderen Branchen | Microsoft-Dokumentation"
+title: "Vorhersagbarer Wartungsbedarf in der Luft- und Raumfahrt mit Azure – Cortana Intelligence-Lösungsvorlage (technischer Leitfaden) | Microsoft-Dokumentation"
 description: "Eine technische Anleitung für die Lösungsvorlage mit Microsoft Cortana Intelligence zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen."
 services: cortana-analytics
 documentationcenter: 
@@ -15,12 +15,16 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: fboylu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f4ad547656bb3675a8a636106b7e95e5392ab4c5
+ms.sourcegitcommit: c78604783bb21f9162939637e04e60aa8131ce11
+ms.openlocfilehash: 6464dbf22fc0084ee7d50f3117dae9b6566614cd
 
 
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
+
+## <a name="important"></a>**Wichtig**
+Dieser Artikel ist veraltet. Die Informationen sind für das vorliegende Problem, d.h. den vorhersagbaren Wartungsbedarf in der Luft- und Raumfahrt, immer noch relevant. Den aktuellen Artikel mit den neuesten Informationen finden Sie nun jedoch [hier](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace). 
+
 ## <a name="acknowledgements"></a>**Bestätigungen**
 Die Autoren dieses Artikels sind die Big Data-Experten Yan Zhang, Gauher Shaheen und Fidan Boylu Uz sowie der Softwareentwickler Dan Grecoe bei Microsoft.
 
@@ -235,6 +239,6 @@ Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

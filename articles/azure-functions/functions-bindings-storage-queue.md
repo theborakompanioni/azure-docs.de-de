@@ -1,5 +1,5 @@
 ---
-title: Azure Storage-Warteschlangenbindungen in Azure Functions | Microsoft Docs
+title: Azure Storage-Warteschlangenbindungen in Azure Functions | Microsoft-Dokumentation
 description: Erfahren Sie, wie Azure Storage-Trigger und -Bindungen in Azure Functions verwendet werden.
 services: functions
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/02/2016
-ms.author: chrande
+ms.date: 01/18/2017
+ms.author: chrande, glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 36cf563a8318acb9371c48ba7d29e24694446e45
+ms.sourcegitcommit: 770cac8809ab9f3d6261140333ec789ee1390daf
+ms.openlocfilehash: bf9bd2a1b5acdf5a4a4f862bef693f8c60c63a33
 
 
 ---
@@ -46,14 +46,14 @@ Der Storage-Warteschlangentrigger zu einer Funktion verwendet die folgenden JSON
 }
 ```
 
-`connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Storage-Konto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung]().
+`connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungszeichenfolge enthält. Im Azure-Portal können Sie diese App-Einstellung auf der Registerkarte **Integrieren** konfigurieren, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Informationen zum manuellen Erstellen dieser App-Einstellung finden Sie unter [App Service-Einstellungen verwalten](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings).
 
 [Zusätzliche Einstellungen](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) können in einer host.json-Datei zur weiteren Feinabstimmung von Storage-Warteschlangentriggern angegeben werden.  
 
 ### <a name="handling-poison-queue-messages"></a>Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten
-Wenn bei Ausführung einer Warteschlangentrigger-Funktion ein Fehler auftritt, versucht Azure Functions standardmäßig bis zu 5 Mal (einschließlich des ersten Versuchs), diese Funktion für eine bestimmte Warteschlangennachricht auszuführen. Wenn alle 5 Versuche nicht gelingen, fügt Functions einer Storage-Warteschlange eine Nachricht mit dem Namen *&lt;Originalwarteschlangename>-poison* hinzu. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist. 
+Wenn eine Warteschlangentrigger-Funktion fehlschlägt, versucht Azure Functions bis zu fünf Mal (einschließlich des ersten Versuchs), diese Funktion für eine bestimmte Warteschlangennachricht auszuführen. Wenn alle fünf Versuche misslingen, fügt Functions einer Storage-Warteschlange eine Nachricht mit dem Namen *&lt;originalqueuename>-poison* hinzu. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist. 
 
-Wenn Sie nicht verarbeitbare Nachrichten manuell verarbeiten möchten, können Sie durch Überprüfen von `dequeueCount` abrufen, wie oft eine Nachricht zur Verarbeitung entnommen wurde (siehe [Metadaten für Warteschlangentrigger](#meta)).
+Zur manuellen Verarbeitung von nicht verarbeitbaren Nachrichten können Sie durch Überprüfen von `dequeueCount` abrufen, wie oft eine Nachricht zur Verarbeitung entnommen wurde (siehe [Metadaten für Warteschlangentrigger](#meta)).
 
 <a name="triggerusage"></a>
 
@@ -63,11 +63,10 @@ Dabei ist `T` der Datentyp, in den Sie die Daten deserialisieren möchten, und `
 
 Die Warteschlangennachricht kann in alle folgenden Typen deserialisiert werden:
 
-* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-serialisierte Nachrichten.
-  Wenn Sie einen benutzerdefinierten Eingabetyp deklarieren (z.B. `FooType`), versucht Azure Functions, die JSON-Daten in den angegebenen Typ zu deserialisieren.
+* [Objekt](https://msdn.microsoft.com/library/system.object.aspx): Wird für serialisierte JSON-Nachrichten verwendet. Wenn Sie einen benutzerdefinierten Eingabetyp deklarieren, versucht die Laufzeit, das JSON-Objekt zu deserialisieren. 
 * String
-* Bytearray 
-* `CloudQueueMessage` (C#) 
+* Bytearray
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx) (nur C#)
 
 <a name="meta"></a>
 
@@ -148,7 +147,7 @@ public static void Run(string myQueueItem,
 
 ```javascript
 module.exports = function (context) {
-    context.log('Node.js queue trigger function processed work item' context.bindings.myQueueItem);
+    context.log('Node.js queue trigger function processed work item', context.bindings.myQueueItem);
     context.log('queueTrigger =', context.bindingData.queueTrigger);
     context.log('expirationTime =', context.bindingData.expirationTime);
     context.log('insertionTime =', context.bindingData.insertionTime);
@@ -177,45 +176,46 @@ Die Storage-Warteschlangenausgabe für eine Funktion verwendet die folgenden JSO
 }
 ```
 
-`connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Storage-Konto erstellen oder ein vorhandenes auswählen. Wie Sie diese App-Einstellung manuell erstellen, erfahren Sie unter [Manuelles Konfigurieren dieser App-Einstellung]().
+`connection` muss den Namen einer App-Einstellung enthalten, die eine Speicherverbindungs-Zeichenfolge enthält. Im Azure-Portal konfiguriert der Standard-Editor auf der Registerkarte **Integrieren** diese App-Einstellung für Sie, wenn Sie ein Speicherkonto erstellen oder ein vorhandenes auswählen. Informationen zum manuellen Erstellen dieser App-Einstellung finden Sie unter [App Service-Einstellungen verwalten](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings).
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>Ausgabeverwendung
-In C#-Funktionen schreiben Sie eine Warteschlangennachricht mithilfe des benannten `out`-Parameters wie `out <T> <name>` in Ihrer Funktionssignatur, wobei `T` der Datentyp ist, in den Sie die Nachricht serialisieren möchten, und `paramName` der Name, den Sie in der [Ausgabebindung](#output) angegeben haben. In Node.js-Funktionen greifen Sie mit `context.bindings.<name>` auf die Ausgabe zu.
+In C#-Funktionen schreiben Sie eine Warteschlangennachricht mithilfe des benannten `out`-Parameters in Ihrer Funktionssignatur, z.B. `out <T> <name>`. In diesem Fall ist `T` der Datentyp, in den Sie die Nachricht serialisieren möchten, und `paramName` ist der Name, den Sie in der [Ausgabebindung](#output) angegeben haben. In Node.js-Funktionen greifen Sie mit `context.bindings.<name>` auf die Ausgabe zu.
 
 Sie können eine Warteschlangennachricht mit einem beliebigen Datentyp in Ihrem Code ausgeben:
 
-* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-Serialisierung.
-  Wenn Sie einen benutzerdefinierten Ausgabetyp deklarieren (z.B. `out FooType paramName`), versucht Azure Functions, das Objekt in JSON zu serialisieren. Wenn der Ausgabeparameter NULL ist, wenn die Funktion beendet wird, erstellt die Functions-Laufzeit eine Warteschlangennachricht als NULL-Objekt.
-* Zeichenfolge – (`out string paramName`) nützlich für Testnachrichten. Die Functions-Laufzeit erstellt nur dann eine Nachricht, wenn der Zeichenfolgenparameter bei Rückgabe durch die Funktion ungleich NULL ist.
-* Bytearray – (`out byte[]`) 
-* `out CloudQueueMessage` – nur C# 
+* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx): `out MyCustomType paramName`  
+Für die JSON-Serialisierung verwendet.  Wenn Sie einen benutzerdefinierten Ausgabetyp deklarieren, versucht die Laufzeit, das Objekt in JSON zu serialisieren. Wenn der Ausgabeparameter beim Beenden der Funktion NULL ist, erstellt die Laufzeit eine Warteschlangennachricht als NULL-Objekt.
+* Zeichenfolge: `out string paramName`  
+Für Testnachrichten verwendet. Die Laufzeit erstellt nur dann eine Nachricht, wenn der Zeichenfolgenparameter bei Rückgabe durch die Funktion ungleich NULL ist.
+* Bytearray: `out byte[]` 
 
-In C# können Sie auch eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
+Diese zusätzliche Ausgabetypen werden von einer C#-Funktion unterstützt:
+
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx): `out CloudQueueMessage` 
+* `ICollector<T>` oder `IAsyncCollector<T>`, wobei `T` einer der unterstützten Typen ist.
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Ausgabebeispiel
-Nehmen wir an, dass Sie über die folgende „function.json“ verfügen, die einen [Storage-Warteschlangentrigger](functions-bindings-storage-queue.md), eine Storage-Blobeingabe und eine Storage-Blobausgabe definiert:
+Nehmen wir an, dass Sie über die folgende Datei „function.json“ verfügen, die einen [Storage-Warteschlangentrigger](functions-bindings-storage-queue.md), eine Storage-Blobeingabe und eine Storage-Blobausgabe definiert:
 
-Beispiel von *function.json* für eine Storage-Warteschlangen-Ausgabebindung, die einen Warteschlangentrigger verwendet und eine Warteschlangennachricht schreibt:
+*function.json*-Beispiel für eine Storage-Warteschlangen-Ausgabebindung, die einen manuellen Trigger verwendet und die Eingabe in eine Warteschlangennachricht schreibt:
 
 ```json
 {
   "bindings": [
     {
-      "name": "myQueueItem",
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
-      "type": "queueTrigger",
-      "direction": "in"
+      "type": "manualTrigger",
+      "direction": "in",
+      "name": "input"
     },
     {
-      "name": "myQueue",
-      "queueName": "samples-workitems-out",
-      "connection": "MyStorageConnection",
       "type": "queue",
+      "name": "myQueueItem",
+      "queueName": "myqueue",
+      "connection": "my_storage_connection",
       "direction": "out"
     }
   ],
@@ -233,19 +233,19 @@ Beachten Sie das sprachspezifische Beispiel für das Schreiben einer Ausgabewart
 ### <a name="output-sample-in-c"></a>Ausgabebeispiel in C# #
 
 ```cs
-public static void Run(string myQueueItem, out string myQueue, TraceWriter log)
+public static void Run(string input, out string myQueueItem, TraceWriter log)
 {
-    myQueue = myQueueItem + "(next step)";
+    myQueueItem = "New message: " + input;
 }
 ```
 
 Alternative zum Senden mehrerer Nachrichten:
 
 ```cs
-public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWriter log)
+public static void Run(string input, ICollector<string> myQueueItem, TraceWriter log)
 {
-    myQueue.Add(myQueueItem + "(step 1)");
-    myQueue.Add(myQueueItem + "(step 2)");
+    myQueueItem.Add("Message 1: " + input);
+    myQueueItem.Add("Message 2: " + "Some other message.");
 }
 ```
 
@@ -263,7 +263,8 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 ```javascript
 module.exports = function(context) {
-    context.bindings.myQueue = context.bindings.myQueueItem + "(next step)";
+    // Define a new message for the myQueueItem output binding.
+    context.bindings.myQueueItem = "new message";
     context.done();
 };
 ```
@@ -272,20 +273,21 @@ Alternative zum Senden mehrerer Nachrichten:
 
 ```javascript
 module.exports = function(context) {
-    context.bindings.myQueue = [];
-
-    context.bindings.myQueueItem.push("(step 1)");
-    context.bindings.myQueueItem.push("(step 2)");
+    // Define a message array for the myQueueItem output binding. 
+    context.bindings.myQueueItem = ["message 1","message 2"];
     context.done();
 };
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Ein Beispiel für eine Funktion, die Storage-Warteschlangentrigger und Bindungen verwendet, finden Sie unter [Erstellen einer Azure Functions-Funktion, die mit einem Azure-Dienst verbunden ist](functions-create-an-azure-connected-function.md).
+
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

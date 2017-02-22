@@ -13,16 +13,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7cb11ffd583afa75bfd4e76c7f543a81a6ebdcde
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1b1da346a253443c0b5eaf6f8a9a5a399923e760
 
 
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-git"></a>Erstellen einer PHP-MySQL-Web-App in Azure App Service und Bereitstellen über Git
-In diesem Lernprogramm erfahren Sie, wie Sie eine PHP-MySQL-Web-App erstellen und über Git in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen. Sie verwenden [PHP][install-php], das MySQL-Befehlszeilentool (Komponente von [MySQL][install-mysql]) und das auf Ihrem Computer installierte [Git][install-git]. Die Anweisungen in diesem Tutorial lassen sich von jedem Betriebssystem aus befolgen, einschließlich Windows, Mac und Linux. Nachdem Sie diese Anleitung durchgearbeitet haben, verfügen Sie über eine in Azure ausgeführte PHP-/MySQL-Web-App.
+In diesem Lernprogramm erfahren Sie, wie Sie eine PHP-MySQL-Web-App erstellen und über Git in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen. Dazu verwenden Sie [PHP][install-php], das MySQL-Befehlszeilentool (Teil von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer. Die Anweisungen in diesem Tutorial lassen sich von jedem Betriebssystem aus befolgen, einschließlich Windows, Mac und Linux. Nachdem Sie diese Anleitung durchgearbeitet haben, verfügen Sie über eine in Azure ausgeführte PHP-/MySQL-Web-App.
 
 Sie erhalten Informationen zu folgenden Themen:
 
@@ -35,14 +35,14 @@ Mithilfe dieses Lernprogramms erstellen Sie eine einfache Web-App für die Regis
 ![Azure-PHP-Website][running-app]
 
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
-Voraussetzung für dieses Tutorial ist, dass [PHP][install-php], das MySQL-Befehlszeilentool (Komponente von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer installiert sind.
+Voraussetzung für dieses Tutorial sind [PHP][install-php], das MySQL-Befehlszeilentool (Teil von [MySQL][install-mysql]) und [Git][install-git] auf Ihrem Computer.
 
 <a id="create-web-site-and-set-up-git"></a>
 
 ## <a name="create-a-web-app-and-set-up-git-publishing"></a>Erstellen einer Web-App und Einrichten der Git-Veröffentlichung
 Befolgen Sie diese Schritte, um eine Web-App und eine MySQL-Datenbank zu erstellen:
 
-1. Melden Sie sich am [Azure-Portal][management-portal] an.
+1. Melden Sie sich beim [Azure-Portal][management-portal] an.
 2. Klicken Sie auf das Symbol **Neu** .
 3. Klicken Sie neben **Marketplace** auf **Alle anzeigen**. 
 4. Klicken Sie auf **Web + Mobile** und dann auf **Web-App + MySQL**. Klicken Sie dann auf **Erstellen**.
@@ -86,7 +86,7 @@ Die Registrierungsanwendung ist eine einfache PHP-Anwendung, die Ihnen die Regis
 
 * **index.php**: Zeigt ein Registrierungsformular und eine Tabelle mit Registranteninformationen an.
 
-Befolgen Sie die unten stehenden Schritte, um die Anwendung lokal zu erstellen und auszuführen. Beachten Sie, dass für diese Schritte PHP und das MySQL-Befehlszeilentool (Komponente von MySQL) auf Ihrem lokalen Computer eingerichtet und die [PDO-Erweiterung für MySQL][pdo-mysql] aktiviert sein müssen.
+Befolgen Sie die unten stehenden Schritte, um die Anwendung lokal zu erstellen und auszuführen. Beachten Sie, dass Voraussetzung für diese Schritte ist, dass PHP und das MySQL-Befehlszeilentool (Teil von MySQL) auf Ihrem lokalen Computer eingerichtet sind und die [PDO-Erweiterung für MySQL][pdo-mysql] aktiviert ist.
 
 1. Stellen Sie eine Verbindung mit dem MySQL-Remoteserver her, indem Sie den zuvor abgerufenen Wert für `Data Source`, `User Id`, `Password` und `Database` verwenden:
    
@@ -234,7 +234,7 @@ Befolgen Sie die folgenden Schritte, um Änderungen an der Anwendung zu veröffe
     ![Azure-PHP-Website][running-app]
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -243,7 +243,7 @@ Befolgen Sie die folgenden Schritte, um Änderungen an der Anwendung zu veröffe
 ## <a name="enable-composer-automation-with-the-composer-extension"></a>Aktivieren der Composer-Automatisierung mit der Composer-Erweiterung
 Standardmäßig wird composer.json (sofern in Ihrem PHP-Projekt vorhanden) vom Git-Bereitstellungsprozess in App Service nicht verarbeitet. Während `git push` können Sie die Verarbeitung von „composer.json“ aktivieren, indem Sie die Composer-Erweiterung aktivieren.
 
-1. Klicken Sie auf dem Blatt Ihrer PHP-Web-App im [Azure-Portal][management-portal] auf **Extras** > **Erweiterungen**.
+1. Klicken Sie auf dem Blatt Ihrer PHP-Web-App im [Azure-Portal][management-portal] auf **Tools** > **Erweiterungen**.
    
     ![Einstellungen der Composer-Erweiterung][composer-extension-settings]
 2. Klicken Sie auf **Hinzufügen** und anschließend auf **Composer**.
@@ -299,6 +299,6 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

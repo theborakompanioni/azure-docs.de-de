@@ -1,5 +1,5 @@
 ---
-title: 'Gewusst wie: Erstellen eines Medienprozessors | Microsoft-Dokumentation'
+title: Erstellen eines Medienprozessors | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie eine Medienprozessorkomponente erstellen können, um Medieninhalte für Azure Media Services zu codieren, zu ver- oder entschlüsseln, und um Formate zu konvertieren."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/20/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 60458091f8c60eb1d726508724fc96eb0145e3bc
+ms.sourcegitcommit: d1d05b46591fe4b72c92c59d357681c8e1cdb336
+ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
 
 
 ---
@@ -98,6 +98,6 @@ Sie sind nun in der Lage, eine Medienprozessorinstanz zu erstellen, und können 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

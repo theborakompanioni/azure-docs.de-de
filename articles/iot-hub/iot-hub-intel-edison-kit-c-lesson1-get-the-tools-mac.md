@@ -1,5 +1,5 @@
 ---
-title: "Abrufen der Tools für Ihr Azure IoT Starter Kit (macOS 10.10) | Microsoft Docs"
+title: "Verbinden von Intel Edison (C) mit Azure IoT – Lektion 1: Abrufen der Tools (macOS) | Microsoft-Dokumentation"
 description: "Laden Sie die erforderlichen Tools und die Software für die erste Beispielanwendung für Edison auf macOS herunter, und installieren Sie sie."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 6d7f9df965967839b191c6587080d01aa68095ed
-ms.openlocfilehash: 66db1b2dbd8a76fb53d301c5189ea99f3b6df6ba
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 6bfefbdb7728d375ea05a17978ece84aaf8e2821
 
 
 ---
@@ -94,6 +94,6 @@ Sie haben die erforderlichen Entwicklungstools und die Software für die erste B
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

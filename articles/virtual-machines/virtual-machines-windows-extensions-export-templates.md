@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 015b6387491e0347b3a3a0ac87bb6b91b06387f0
-ms.openlocfilehash: fb1cdfee5094198e3380e120f409175c89d23b6d
+ms.sourcegitcommit: f24227a33b2106955dc44defe8feb5a7d4dc655e
+ms.openlocfilehash: 6f6338d8c0e941b7fee4fb8c04315b26919716a3
 
 ---
 
@@ -148,18 +148,18 @@ Die endgültige Erweiterungsressource sieht ähnlich wie das folgende JSON-Beisp
 }
 ```
 
-Wenn Sie Vorlagenparameter zum Angeben von Eigenschaftswerten verwenden, müssen diese erstellt werden. Achten Sie beim Erstellen von Vorlagenparameter für geschützte Einstellungswerte darauf, den Parametertyp `SecureObject` zu verwenden, damit vertrauliche Werte geschützt sind. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
+Wenn Sie Vorlagenparameter zum Angeben von Eigenschaftswerten verwenden, müssen diese erstellt werden. Achten Sie beim Erstellen von Vorlagenparameter für geschützte Einstellungswerte darauf, den Parametertyp `SecureString` zu verwenden, damit vertrauliche Werte geschützt sind. Weitere Informationen zum Verwenden von Parametern finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Im Beispiel der `IaasDiagnostic`-Erweiterung würden im Parameterabschnitt der Resource Manager-Vorlage die folgenden Parameter erstellt.
 
 ```json
 "storageAccountName": {
     "defaultValue": null,
-    "type": "SecureObject"
+    "type": "SecureString"
 },
 "storageAccountKey": {
     "defaultValue": null,
-    "type": "SecureObject"
+    "type": "SecureString"
 }
 ```
 
@@ -167,6 +167,6 @@ An diesem Punkt kann die Vorlage mithilfe einer beliebigen Methode zur Vorlagenb
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

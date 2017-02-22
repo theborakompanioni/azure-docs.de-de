@@ -1,5 +1,5 @@
 ---
-title: Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery | Microsoft Docs
+title: Replizieren virtueller VMware-Computer und physischer Server im klassischen Azure-Portal | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Azure Site Recovery bereitgestellt wird, um die Replikation, das Failover und die Wiederherstellung von lokalen virtuellen VMware-Maschinen und physischen Windows-/Linux-Servern in Azure aufeinander abzustimmen.
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
-ms.openlocfilehash: 70ccb773b70f1b58f039ea5f4aca488d91fa3dad
+ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
+ms.openlocfilehash: e794f44cbf0b5e76c8a67e6e63129efb12090df8
 
 
 ---
@@ -65,12 +65,12 @@ Bei der erweiterten Bereitstellung handelt es sich um ein umfangreiches Update. 
 * Konfigurieren Sie Wiederherstellungspläne, die Anwendungsworkloads von verschiedenen Computern in Gruppen zusammenfassen. Sie können für diese Pläne ein Failover durchführen. Site Recovery sorgt dann für die Konsistenz zwischen den verschiedenen virtuellen Computern (Multi-VM-Konsistenz). Dadurch können die Computer, die die gleichen Workloads ausführen, gemeinsam an einem konsistenten Datenpunkt wiederhergestellt werden.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-### <a name="windows64-bit-only"></a>Windows (nur 64 Bit)
+### <a name="windows64-bit-only"></a>Windows (nur&64; Bit)
 * Windows Server 2008 R2 SP1+
 * Windows Server 2012
 * Windows Server 2012 R2
 
-### <a name="linux-64-bit-only"></a>Linux (nur 64 Bit)
+### <a name="linux-64-bit-only"></a>Linux (nur&64; Bit)
 * Red Hat Enterprise Linux 6.7, 7.1, 7.2
 * CentOS 6.5, 6.6, 6.7, 7.0, 7.1, 7.2
 * Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird
@@ -250,7 +250,7 @@ Wenn Sie virtuelle VMware-Computer replizieren möchten, installieren Sie die fo
 >
 
 
->[!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/Enhanced-VMware-to-Azure-Setup-Registration/player]
 
 
 1. Laden Sie auf der Seite **Schnellstart** die einheitliche Installationsdatei auf den Server herunter.
@@ -335,7 +335,7 @@ Hierbei gilt:
 * /ProxySettingsFilePath. Optional. Gibt die Einstellungen für einen benutzerdefinierten Proxy an (entweder für einen Standardproxy auf dem Server, der eine Authentifizierung erfordert, oder für einen benutzerdefinierten Proxy).
 
 ## <a name="step-6-set-up-credentials-for-the-vcenter-server"></a>Schritt 6: Einrichten der Anmeldeinformationen für den vCenter-Server
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Discovery/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Enhanced-VMware-to-Azure-Discovery/player]
 >
 >
 
@@ -377,7 +377,7 @@ Wenn Sie virtuelle VMware-Computer replizieren, müssen Sie einen vCenter-Server
     ![vCenter](./media/site-recovery-vmware-to-azure-classic/add-vcenter3.png)
 
 ## <a name="step-8-create-a-protection-group"></a>Schritt 8: Erstellen einer Schutzgruppe
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Protection/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Enhanced-VMware-to-Azure-Protection/player]
 >
 >
 
@@ -452,7 +452,7 @@ Die Installationsprogramme stehen unter „C:\Programme (x86)\Microsoft Azure Si
 
 | Quellbetriebssystem | Installationsdatei für den Mobilitätsdienst |
 | --- | --- |
-| Windows Server (nur 64 Bit) |Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe |
+| Windows Server (nur&64; Bit) |Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe |
 | CentOS 6.4, 6.5, 6.6 (nur 64 Bit) |Microsoft-ASR_UA_9.*.0.0_RHEL6-64_*release.tar.gz |
 | SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit) |Microsoft-ASR_UA_9.*.0.0_SLES11-SP3-64_*release.tar.gz |
 | Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit) |Microsoft-ASR_UA_9.*.0.0_OL6-64_*release.tar.gz |
@@ -589,7 +589,7 @@ Außerdem können Sie den Schutzstatus unter **Geschützte Elemente** > <protect
      * Wenn die Netzwerkkarte des Quellcomputers für eine statische IP-Adresse konfiguriert wurde, können Sie für den virtuellen Azure-Computer eine statische IP-Adresse angeben. Wenn Sie keine statische IP-Adresse angeben, wird eine beliebige verfügbare IP-Adresse zugewiesen. Wenn die Ziel-IP-Adresse angegeben ist, sie aber bereits von einem anderen virtuellen Computer in Azure verwendet wird, tritt beim Failover ein Fehler auf. Wenn die Netzwerkkarte des Quellcomputers für DHCP konfiguriert ist, wird für Azure als Einstellung DHCP verwendet.
 
 ## <a name="step-12-create-a-recovery-plan-and-run-a-failover"></a>Schritt 12: Erstellen eines Wiederherstellungsplans und Ausführen eines Failovers
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Enhanced-VMware-to-Azure-Failover/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Enhanced-VMware-to-Azure-Failover/player]
 >
 >
 
@@ -722,6 +722,6 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

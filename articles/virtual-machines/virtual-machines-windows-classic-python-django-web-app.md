@@ -1,5 +1,5 @@
 ---
-title: Python-Web-App mit Django | Microsoft Docs
+title: Erstellen einer Django-App auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
 description: In diesem Lernprogramm erfahren Sie, wie Sie eine Django-basierte Website auf Azure mithilfe eines virtuellen Computers mit Windows Server 2012 R2 Datacenter unter Verwendung des klassischen Bereitstellungsmodells hosten.
 services: virtual-machines-windows
 documentationcenter: python
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 08/04/2015
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: bd3e269815628411ff51d0274eb8ba36f04e6fcb
+ms.sourcegitcommit: 52967959e60ac64f5af2ae044803aa7443c5830b
+ms.openlocfilehash: 3691a00dd9ce64b30435be98b3429627113128e3
 
 
 ---
@@ -176,6 +176,6 @@ Wenn Sie mit diesem Lernprogramm fertig sind, fahren Sie den neu erstellten virt
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

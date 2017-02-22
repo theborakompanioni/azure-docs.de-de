@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 02/13/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 0800297f675182cbd246181d5ece03a5b1fd0c97
+ms.sourcegitcommit: 50a9c3929a4d3194c3786a3d4f6cdd1b73fb5867
+ms.openlocfilehash: 6c9e70c3de404a3a5af343570203d6724342e062
 
 
 ---
@@ -168,12 +168,12 @@ Dieser Download enthält die folgenden C#-Projekte:
    
    ![Bild des Storm-Menüelements "An Storm senden"](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
-6. Wählen Sie im Dialogfeld **Topologie übermitteln** den Storm-Cluster, in dem diese Topologie ausgeführt werden.
+6. Wählen Sie im Dialogfeld **Topologie übermitteln** den Storm-Cluster aus, in dem Sie diese Topologie bereitstellen möchten.
    
    > [!NOTE]
    > Bei der ersten Übermittlung einer Topologie kann das Abrufen der Namen Ihrer HDInsight-Cluster einige Sekunden dauern.
 
-7. Sobald die Topologie hochgeladen und an den Cluster gesendet wurde, wird die **Storm-Topologieansicht** geöffnet, und die ausgeführte Topologie wird angezeigt. Wählen Sie **CorrelationTopology** aus, und verwenden Sie die Schaltfläche "Aktualisieren" oben rechts auf der Seite, um die Topologieinformationen zu aktualisieren.
+7. Sobald die Topologie hochgeladen und an den Cluster gesendet wurde, wird die **Storm-Topologieansicht** geöffnet und die aktive Topologie angezeigt. Wählen Sie **CorrelationTopology** aus, und verwenden Sie die Schaltfläche "Aktualisieren" oben rechts auf der Seite, um die Topologieinformationen zu aktualisieren.
    
    ![Bild der Topologie-Ansicht](./media/hdinsight-storm-correlation-topology/topologyview.png)
    
@@ -199,7 +199,7 @@ Sobald Daten ausgegeben wurden, gehen Sie folgendermaßen vor, um die Daten abzu
    
         Session e6992b3e-79be-4991-afcf-5cb47dd1c81c started at 6/5/2015 6:10:15 PM. Timestamp = 1433527820737
 
-Die Suche nach END-Ereignissen wird auf dieselbe Weise wie die Suche nach START-Ereignissen ausgeführt. END-Ereignisse werden jedoch nach dem Zufallsprinzip zwischen 1 und 5 Minuten nach dem START-Ereignis generiert. Daher müssen Sie möglicherweise einige Zeitabschnitte ausprobieren, um die END-Ereignisse zu finden. END-Ereignisse enthalten außerdem die Dauer der Sitzung: die Differenz zwischen der Zeitangabe des START-Ereignisses und der Zeitangabe des END-Ereignisses. Es folgen Beispieldaten für END-Ereignisse:
+Die Suche nach END-Ereignissen wird auf dieselbe Weise wie die Suche nach START-Ereignissen ausgeführt. END-Ereignisse werden jedoch nach dem Zufallsprinzip zwischen 1 und 5 Minuten nach dem START-Ereignis generiert. Daher müssen Sie möglicherweise einige Zeitabschnitte ausprobieren, um die END-Ereignisse zu finden. END-Ereignisse enthalten außerdem die Dauer der Sitzung. Dies ist die Differenz zwischen der Zeitangabe des START-Ereignisses und der Zeitangabe des END-Ereignisses. Es folgen Beispieldaten für END-Ereignisse:
 
     Session fc9fa8e6-6892-4073-93b3-a587040d892e lasted 2 minutes, and ended at 6/5/2015 6:12:15 PM
 

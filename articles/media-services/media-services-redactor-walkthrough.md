@@ -90,12 +90,12 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
 
 ### <a name="set-up-the-tool"></a>Einrichten des Tools
 
-1.  Laden Sie die gesamte Lösung herunter, und installieren Sie sie. 
+1.    Laden Sie die gesamte Lösung herunter, und installieren Sie sie. 
 
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
-2.  Laden Sie FFMPEG [hier](https://ffmpeg.org/download.html) herunter. Dieses Projekt wurde ursprünglich mit Version be1d324 (2016-10-04) mit statischer Verknüpfung entwickelt. 
-3.  Kopieren Sie „ffmpeg.exe“ und „ffprobe.exe“ in den gleichen Ausgabeordner wie „AzureMediaRedactor.exe“. 
+2.    Laden Sie FFMPEG [hier](https://ffmpeg.org/download.html) herunter. Dieses Projekt wurde ursprünglich mit Version be1d324 (2016-10-04) mit statischer Verknüpfung entwickelt. 
+3.    Kopieren Sie „ffmpeg.exe“ und „ffprobe.exe“ in den gleichen Ausgabeordner wie „AzureMediaRedactor.exe“. 
 
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
@@ -113,9 +113,9 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
     
     ![Gesichtsbearbeitung](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  Im Textfeld unten werden die IDs der Gesichter aktualisiert. Erstellen Sie eine Datei namens „idlist.txt“ mit diesen IDs als durch Zeilenvorschübe getrennte Liste. 
-6.  Laden Sie diese Datei in die Ausgaberessource aus Schritt 1 hoch. Laden Sie das ursprüngliche Video ebenfalls in diese Ressource hoch, und legen Sie es als primäre Ressource fest. 
-7.  Führen Sie die Bearbeitung dieser Ressource im „Redact“-Modus aus, um das abschließend bearbeitete Video zu erhalten. 
+5.    Im Textfeld unten werden die IDs der Gesichter aktualisiert. Erstellen Sie eine Datei namens „idlist.txt“ mit diesen IDs als durch Zeilenvorschübe getrennte Liste. 
+6.    Laden Sie diese Datei in die Ausgaberessource aus Schritt 1 hoch. Laden Sie das ursprüngliche Video ebenfalls in diese Ressource hoch, und legen Sie es als primäre Ressource fest. 
+7.    Führen Sie die Bearbeitung dieser Ressource im „Redact“-Modus aus, um das abschließend bearbeitete Video zu erhalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
@@ -132,6 +132,6 @@ Wenn Sie als Entwickler versuchen, die JSON-Anmerkungsdaten zu analysieren, such
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Assistent zum Kopieren in Data Factory | Microsoft Docs
+title: "Einfaches Kopieren von Daten mit dem Kopier-Assistenten – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie den Data Factory-Kopier-Assistenten verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren."
 services: data-factory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/23/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bdd816303cb971403eaa074d0fe8a46f11017a42
+ms.sourcegitcommit: 49545648a069f25820f6a6e483072be8410b091e
+ms.openlocfilehash: 0fc9eb7869ebe7316e4aed0d561638a05bc9a91c
 
 
 ---
-# <a name="data-factory-copy-wizard"></a>Assistent zum Kopieren in Data Factory
+# <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Einfaches Kopieren oder Verschieben von Daten mit dem Kopier-Assistenten von Azure Data Factory
 Der Azure Data Factory-Kopier-Assistent vereinfacht den Datenerfassungsvorgang (üblicherweise der erste Schritt in einem Szenario mit End-to-End-Datenintegration). Zur Arbeit mit dem Azure Data Factory-Kopier-Assistenten ist die Kenntnis der JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines nicht erforderlich. Nachdem Sie alle Schritte mit dem Assistenten abgeschlossen haben, erstellt der Assistent allerdings eine Pipeline, um Daten aus der gewählten Datenquelle und in das gewünschte Ziel zu kopieren. Darüber hinaus können Sie die erfassten Daten mit dem Kopier-Assistenten zum Zeitpunkt des Erstellens überprüfen. So sparen Sie Zeit, besonders wenn Sie Daten aus einer bestimmten Datenquelle zum ersten Mal erfassen. Klicken Sie zum Starten des Kopier-Assistenten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren** .
 
 ![Kopier-Assistent](./media/data-factory-copy-wizard/copy-data-wizard.png)
@@ -42,7 +42,7 @@ Sie können mit dem Kopier-Assistenten Teile der Daten aus der jeweiligen Datenq
 
 ![Dateiformateinstellungen](./media/data-factory-copy-wizard/file-format-settings.png)
 
-## <a name="schema-capture-and-mapping"></a>Erfassung von Schemata und Zuordnungen
+## <a name="schema-capture-and-mapping"></a>Schemaerfassung und -zuordnung
 Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgabedaten überein. In diesem Szenario müssen die Spalten des Quellschemas den Spalten des Zielschemas zugeordnet werden. 
 
 Der Kopier-Assistent ordnet Quell- und Zielschemaspalten automatisch zu. Sie können diese Zuordnungen mithilfe der Dropdownlisten überschreiben oder angeben, dass eine Spalte beim Kopieren übersprungen werden soll.   
@@ -93,6 +93,6 @@ Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mit einer K
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

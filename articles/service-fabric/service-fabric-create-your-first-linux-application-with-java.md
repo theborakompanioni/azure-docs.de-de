@@ -1,5 +1,5 @@
 ---
-title: Erstellen Ihrer ersten Service Fabric-Anwendung unter Linux mithilfe von Java | Microsoft Docs
+title: Erstellen Ihrer ersten Azure-Microservices-App unter Linux mithilfe von Java | Microsoft-Dokumentation
 description: Erstellen und Bereitstellen einer Service Fabric-Anwendung mithilfe von Java
 services: service-fabric
 documentationcenter: java
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 381d372b549fa0ed0900d97c03b9584b21624b25
-ms.openlocfilehash: 4a8fb3499ec55e451b54a05d5642bdf9a924294f
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: dc9234760b0dfb5d109fc86ac47a89c8fcf7d991
 
 
 ---
@@ -147,6 +147,6 @@ Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die berei
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

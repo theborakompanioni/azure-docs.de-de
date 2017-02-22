@@ -1,5 +1,5 @@
 ---
-title: "Verwenden der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen, die in HDInsight Spark-Clustern ausgeführt werden | Microsoft-Dokumentation"
+title: "Remotedebuggen von Anwendungen in Spark-Clustern mithilfe des Azure-Toolkits für IntelliJ | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie die HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Anwendungen verwenden, die in HDInsight Spark-Clustern ausgeführt werden."
 services: hdinsight
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: faeb4568a0d9cd7b1991496ce167a481ef08e189
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: 2d50c432f335d362068e55899f350cdf1c4c09ec
 
 
 ---
-# <a name="use-hdinsight-tools-in-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-on-hdinsight-spark-linux-cluster"></a>Verwenden der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Spark-Anwendungen im HDInsight Spark-Cluster unter Linux
+# <a name="use-hdinsight-tools-in-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-on-hdinsight-spark-cluster"></a>Verwenden der HDInsight-Tools im Azure-Toolkit für IntelliJ zum Remotedebuggen von Spark-Anwendungen in HDInsight Spark-Clustern
 Dieser Artikel enthält eine Schrittanleitung zur Verwendung der HDInsight-Tools im Azure-Toolkit für IntelliJ, um einen Spark-Auftrag im HDInsight Spark-Cluster zu senden und dann über den Desktopcomputer per Remotezugriff zu debuggen. Hierzu müssen Sie die folgenden allgemeinen Schritte ausführen:
 
 1. Erstellen Sie ein Azure Virtual Network vom Typ „Standort zu Standort“ oder „Punkt zu Standort“. Für die Schritte in diesem Dokument wird vorausgesetzt, dass Sie ein Standort-zu-Standort-Netzwerk verwenden.
@@ -31,8 +31,8 @@ Dieser Artikel enthält eine Schrittanleitung zur Verwendung der HDInsight-Tools
 5. Stellen Sie die Anwendung bereit, und führen Sie das Debuggen durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
-* Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit. Das Installationspaket finden Sie [hier](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 * IntelliJ IDEA. In diesem Artikel wird die Version 15.0.1 verwendet. Das Installationspaket finden Sie [hier](https://www.jetbrains.com/idea/download/).
 * HDInsight-Tools im Azure-Toolkit für IntelliJ. Die HDInsight-Tools für IntelliJ sind als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure Toolkit für IntelliJ](../azure-toolkit-for-intellij-installation.md).
@@ -283,6 +283,6 @@ Sie sollten auch einen Apache Spark-Cluster unter Azure HDInsight erstellen, der
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

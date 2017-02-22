@@ -34,7 +34,7 @@ Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [
 Für dieses Tutorial gelten die folgenden Voraussetzungen:
 
 * Visual Studio 2013 unter Windows 8.1 oder höher.
-* Durchführung des Lernprogramms [Erstellen einer Windows-App][create a windows app] (in englischer Sprache).
+* Durchführung des Lernprogramms [Erstellen einer Windows-App][Erstellen einer Windows-App] \(in englischer Sprache).
 * [Azure Mobile Services SQLite Store][sqlite store nuget]
 * [SQLite for Universal Windows Platform Development](http://www.sqlite.org/downloads)
 
@@ -107,7 +107,7 @@ In den folgenden Themen finden Sie weitere Hintergrundinformationen zum Offlines
 
 <!-- URLs. -->
 [Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[create a windows app]: app-service-mobile-windows-store-dotnet-get-started.md
+[Erstellen einer Windows-App]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite für Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite für Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite für Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921

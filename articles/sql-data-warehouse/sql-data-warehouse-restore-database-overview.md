@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse-Wiederherstellung | Microsoft Docs
+title: "Wiederherstellen einer Azure Data Warehouse-Instanz – lokal und georedundant | Microsoft-Dokumentation"
 description: "Übersicht über die Wiederherstellungsoptionen zur Wiederherstellung einer Datenbank in Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2147967edc1dadcc8bda5e5a33bbdedd62a22b4f
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 104986e88ededf2137725fe258b6ce51f608b37d
 
 
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL Data Warehouse-Wiederherstellung
 > [!div class="op_single_selector"]
-> * [Übersicht][Übersicht]
+> * [Übersicht][Overview]
 > * [Portal][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
@@ -90,8 +90,8 @@ Um eine Data Warehouse-Wiederherstellung auszuführen, verwenden Sie Folgendes:
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL-Datenbank-Übersicht zur Geschäftskontinuität]: ../sql-database/sql-database-business-continuity.md
-[Übersicht]: ./sql-data-warehouse-restore-database-overview.md
+[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
+[Overview]: ./sql-data-warehouse-restore-database-overview.md
 [Portal]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
 [REST]: ./sql-data-warehouse-restore-database-rest-api.md
@@ -103,6 +103,6 @@ Um eine Data Warehouse-Wiederherstellung auszuführen, verwenden Sie Folgendes:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

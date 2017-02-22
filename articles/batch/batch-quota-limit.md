@@ -1,5 +1,5 @@
 ---
-title: "Batch-Dienst – Kontingente und Limits | Microsoft Docs"
+title: "Dienstkontingente und -grenzwerte für Azure Batch | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und Einschränkungen sowie die Anforderung von Kontingentsteigerungen."
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/09/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 1a530bf6e9afca9a7cdc1f68e8eefdbf077dc516
+ms.sourcegitcommit: 683ff9f9a829468d9852ce7e9699c766cab53f8b
+ms.openlocfilehash: 163f9f19dfed86e1280135b653086e018f85592b
 
 
 ---
@@ -30,12 +30,7 @@ Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglich
 > 
 > 
 
-## <a name="subscription-quotas"></a>Abonnementkontingente
-| **Ressource** | **Standardlimit** | **Maximales Limit** |
-| --- | --- | --- |
-| Batch-Konten pro Region und Abonnement |1 |50 |
-
-## <a name="batch-account-quotas"></a>Batch-Kontokontingente
+## <a name="resource-quotas"></a>Ressourcenkontingente
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ## <a name="other-limits"></a>Andere Limits
@@ -103,6 +98,6 @@ Nachdem Sie die Supportanfrage übermittelt haben, wird sich der Azure-Support m
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

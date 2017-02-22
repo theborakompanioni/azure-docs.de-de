@@ -1,9 +1,9 @@
 ---
-title: "Verwalten der Sicherheit nach der Wiederherstellung einer Datenbank auf einem neuen Server oder nach einem Failover einer Datenbank in eine sekundäre Datenbankkopie | Microsoft Docs"
-description: "In diesem Thema werden Sicherheitsaspekte bei der Verwaltung der Sicherheit nach einer Wiederherstellung oder einem Failover einer Datenbank erläutert."
+title: "Konfigurieren der Sicherheit von Azure SQL-Datenbank für die Notfallwiederherstellung | Microsoft Docs"
+description: "In diesem Thema werden Überlegungen zur Sicherheit erläutert, die für das Konfigurieren und Verwalten der Sicherheit nach einer Wiederherstellung der Datenbank oder einem Failover auf einem sekundären Server bei einem Ausfall im Rechenzentrum oder einem anderen Notfall gelten."
 services: sql-database
 documentationcenter: na
-author: CarlRabeler
+author: anosov1960
 manager: jhubbard
 editor: monicar
 ms.assetid: c7c898c9-69d4-4e16-8b7e-720bbb3353dd
@@ -14,18 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
-ms.author: carlrab
+ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3c8a05cb86522253bbbf85da2d29ba38f114120b
+ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
+ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
 
 
 ---
-# <a name="how-to-manage-azure-sql-database-security-after-disaster-recovery"></a>Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung
+# <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover 
 > [!NOTE]
 > [Die aktive Georeplikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar.
-> 
-> 
+>  
 
 ## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>Übersicht über die Authentifizierungsanforderungen für die Notfallwiederherstellung
 In diesem Thema werden die Authentifizierungsanforderungen zum Konfigurieren und Steuern der [aktiven Georeplikation](sql-database-geo-replication-overview.md) sowie die erforderlichen Schritte zum Einrichten des Benutzerzugriffs auf die sekundäre Datenbank beschrieben. Außerdem wird beschrieben, wie nach der [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)der Zugriff auf die wiederhergestellte Datenbank aktiviert wird. Weitere Informationen zu Wiederherstellungsoptionen finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
@@ -103,10 +102,9 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 * Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [aktiven Georeplikation](sql-database-geo-replication-overview.md)
 * Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

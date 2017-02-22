@@ -1,7 +1,7 @@
-# Verwenden der Azure-Befehlszeilentools für Mac und Linux
-Dieser Leitfaden beschreibt, wie Sie mithilfe der Azure-Befehlszeilentools für Mac und Linux Dienste in Azure erstellen und verwalten. Die aufgeführten Szenarien umfassen die **Installation der Tools**, **den Import Ihrer Veröffentlichungseinstellungen**, **das Erstellen und Verwalten von Azure-Websites** und das **Erstellen und Verwalten von virtuellen Azure-Computern**. Umfassendes Referenzmaterial finden Sie in der [Dokumentation zum Azure-Befehlszeilentool für Mac und Linux][reference-docs].
+# <a name="how-to-use-the-azure-command-line-tools-for-mac-and-linux"></a>Verwenden der Azure-Befehlszeilentools für Mac und Linux
+Dieser Leitfaden beschreibt, wie Sie mithilfe der Azure-Befehlszeilentools für Mac und Linux Dienste in Azure erstellen und verwalten. Die aufgeführten Szenarien umfassen die **Installation der Tools**, den **Import Ihrer Veröffentlichungseinstellungen**, das **Erstellen und Verwalten von Azure-Websites** und das **Erstellen und Verwalten von virtuellen Azure-Computern**. Umfassendes Referenzmaterial finden Sie in der [Dokumentation zum Azure-Befehlszeilentool für Mac und Linux][reference-docs]. 
 
-## Inhaltsverzeichnis
+## <a name="table-of-contents"></a>Inhaltsverzeichnis
 * [Beschreibung der Azure-Befehlszeilentools für Mac und Linux](#Overview)
 * [Installation der Azure-Befehlszeilentools für Mac und Linux](#Download)
 * [Erstellen eines Azure-Kontos](#CreateAccount)
@@ -19,29 +19,29 @@ Unter anderem werden folgende Aufgaben unterstützt:
 * Erstellen und Verwalten von Azure-Websites
 * Erstellen und Verwalten von virtuellen Azure-Computern
 
-Sie können eine vollständige Liste der unterstützten Befehle anzeigen, indem Sie nach der Installation der Tools `azure -help` an der Befehlszeile eingeben, oder die [Referenzdokumentation][reference-docs] konsultieren.
+Sie können eine vollständige Liste der unterstützten Befehle anzeigen, indem Sie nach der Installation der Tools `azure -help` an der Befehlszeile eingeben oder die [Referenzdokumentation][reference-docs] konsultieren.
 
 <h2><a id="Download">Installation der Azure-Befehlszeilentools für Mac und Linux</a></h2>
 
 Die folgende Liste enthält Informationen zur Installation der Befehlszeilentools, abhängig von Ihrem Betriebssystem:
 
 * **Mac**: Laden Sie den [Azure SDK Installer][mac-installer] herunter. Öffnen Sie die heruntergeladene PKG-Datei, und führen Sie die Installationsschritte durch, zu denen Sie aufgefordert werden.
-* **Linux**: Installieren Sie die neueste Version von [Node.js][nodejs-org] \(siehe [Install Node.js via Package Manager][install-node-linux] \(Installieren von Node.js mithilfe des Paket-Managers, in englischer Sprache)), und führen Sie dann den folgenden Befehl aus:
+* **Linux**: Installieren Sie die neueste Version von [Node.js][nodejs-org] (siehe [Install Node.js via Package Manager][install-node-linux] (Installieren von Node.js mithilfe des Paket-Managers)), und führen Sie dann den folgenden Befehl aus:
   
         npm install azure-cli -g
   
     **Hinweis**: Möglicherweise müssen Sie diesen Befehl mit erhöhten Rechten ausführen:
   
         sudo npm install azure-cli -g
-* **Windows**: Führen Sie den Windows-Installer (MSI-Datei) aus. Sie finden diesen unter [Azure-Befehlszeilentools][windows-installer].
+* **Windows**: Führen Sie den Windows-Installer (MSI-Datei) aus. Sie finden ihn unter[ Azure-Befehlszeilentools][windows-installer].
 
-Geben Sie `azure` an der Eingabeaufforderung ein, um die Installation zu überprüfen. Wenn die Installation erfolgreich war, wird eine Liste aller verfügbaren `azure`-Befehle angezeigt.
+Geben Sie `azure` an der Eingabeaufforderung ein, um die Installation zu überprüfen. Wenn die Installation erfolgreich war, wird eine Liste aller verfügbaren `azure` -Befehle angezeigt.
 
 <h2><a id="CreateAccount"></a>Erstellen eines Azure-Kontos</h2>
 
 Sie benötigen ein Azure-Konto, um die Azure-Befehlszeilentools für Mac und Linux zu verwenden.
 
-Öffnen Sie einen Webbrowser, und rufen Sie die Seite [http://www.windowsazure.com][windowsazuredotcom] auf. Klicken Sie in der oberen rechten Ecke auf **Kostenlose Testversion**.
+Navigieren Sie in einem Webbrowser zu [http://www.windowsazure.com][windowsazuredotcom], und klicken Sie rechts oben auf **Kostenloses Konto**.
 
 ![Azure-Website][Azure Web Site]
 
@@ -53,7 +53,7 @@ Laden Sie zunächst Ihre Veröffentlichungseinstellungen herunter, und importier
 
     azure account download
 
-Ihr Standardbrowser wird geöffnet, und Sie werden aufgefordert, sich beim Verwaltungsportal anzumelden. Nachdem Sie sich angemeldet haben, wird Ihre `.publishsettings`-Datei heruntergeladen. Notieren Sie sich den Speicherort der Datei.
+Ihr Standardbrowser wird geöffnet, und Sie werden aufgefordert, sich beim Verwaltungsportal anzumelden. Nachdem Sie sich angemeldet haben, wird Ihre `.publishsettings` -Datei heruntergeladen. Notieren Sie sich den Speicherort der Datei.
 
 Importieren Sie als Nächstes die `.publishsettings`-Datei, indem Sie den folgenden Befehl ausführen und dabei `{path to .publishsettings file}` durch den Pfad zu Ihrer `.publishsettings`-Datei ersetzen:
 
@@ -67,10 +67,10 @@ Verwenden Sie die Option `-help`, um eine Liste der Optionen für `account`-Befe
 
     azure account -help
 
-Nachdem Sie Ihre Veröffentlichungseinstellungen importiert haben, löschen Sie die `.publishsettings`-Datei aus Sicherheitsgründen.
+Nachdem Sie Ihre Veröffentlichungseinstellungen importiert haben, löschen Sie die `.publishsettings` -Datei aus Sicherheitsgründen.
 
 > [!NOTE]
-> Wenn Sie Veröffentlichungseinstellungen importieren, werden die Anmeldeinformationen für den Zugriff auf Ihr Azure-Abonnement in Ihrem `user`-Ordner gespeichert. Ihr `user`-Ordner ist durch Ihr Betriebssystem geschützt. Es wird jedoch empfohlen, dass Sie zusätzliche Schritte vornehmen, um Ihren `user`-Ordner zu verschlüsseln. Sie haben dazu folgende Möglichkeiten:
+> Wenn Sie Veröffentlichungseinstellungen importieren, werden die Anmeldeinformationen zum Zugreifen auf Ihr Azure-Abonnement im Ordner `user` gespeichert. Ihr `user` -Ordner ist durch Ihr Betriebssystem geschützt. Es wird jedoch empfohlen, dass Sie zusätzliche Schritte vornehmen, um Ihren `user` -Ordner zu verschlüsseln. Sie haben dazu folgende Möglichkeiten:    
 > 
 > * Windows: Ändern Sie die Ordnereigenschaften, oder verwenden Sie BitLocker.
 > * Mac: Aktivieren Sie FileVault für den Ordner.
@@ -78,29 +78,29 @@ Nachdem Sie Ihre Veröffentlichungseinstellungen importiert haben, löschen Sie 
 > 
 > 
 
-Nun können Sie mit dem Erstellen und Verwalten von Azure-Websites und virtuellen Azure-Computern beginnen.
+Nun können Sie mit dem Erstellen und Verwalten von Azure-Websites und virtuellen Azure-Computern beginnen.  
 
 <h2><a id="WebSites"></a>Erstellen und Verwalten einer Azure-Website</h2>
 
-### Erstellen einer Website
-Erstellen Sie zunächst ein leeres Verzeichnis namens `MySite`, und navigieren Sie zu diesem Verzeichnis, um eine Azure-Website zu erstellen.
+### <a name="create-a-website"></a>Erstellen einer Website
+Erstellen Sie zunächst ein leeres Verzeichnis namens `MySite` , und navigieren Sie zu diesem Verzeichnis, um eine Azure-Website zu erstellen.
 
 Führen Sie dann den folgenden Befehl aus:
 
     azure site create MySite --git
 
-Die Ausgabe dieses Befehls enthält die Standard-URL für die neu erstellte Website. Mit der `--git`-Option können Sie Git zur Veröffentlichung Ihrer Website verwenden, indem Sie Git-Repositorys sowohl in Ihrem lokalen Anwendungsverzeichnis als auch im Datencenter Ihrer Website erstellen. Falls Ihr lokaler Ordner bereits ein Git-Repository ist, fügt der Befehl ein neues Remoterepository zu dem bereits vorhandenen Repository hinzu, das auf das Repository im Datencenter Ihrer Website verweist.
+Die Ausgabe dieses Befehls enthält die Standard-URL für die neu erstellte Website. Mit der `--git` -Option können Sie Git zur Veröffentlichung Ihrer Website verwenden, indem Sie Git-Repositorys sowohl in Ihrem lokalen Anwendungsverzeichnis als auch im Datencenter Ihrer Website erstellen. Falls Ihr lokaler Ordner bereits ein Git-Repository ist, fügt der Befehl ein neues Remoterepository zu dem bereits vorhandenen Repository hinzu, das auf das Repository im Datencenter Ihrer Website verweist.
 
 Beachten Sie, dass Sie den Befehl `azure site create` mit einer der folgenden Optionen ausführen können:
 
-* `--location [location name]`. Mit dieser Option geben Sie den Standort des Datencenters an, in dem Ihre Website erstellt wird (z. B. "USA, Westen"). Wenn Sie diese Option auslassen, werden Sie aufgefordert, einen Standort auszuwählen.
+* `--location [location name]`. Mit dieser Option geben Sie den Standort des Datencenters an, in dem Ihre Website erstellt wird (z. B. "USA, Westen"). Wenn Sie diese Option auslassen, werden Sie aufgefordert, einen Standort auszuwählen.
 * `--hostname [custom host name]`. Mithilfe dieser Option können Sie einen benutzerdefinierten Hostnamen für Ihre Website auswählen.
 
-Sie können dann Inhalte zu Ihrem Websiteverzeichnis hinzufügen. Verwenden Sie den regulären Git-Ablauf (`git add`, `git commit`), um Ihre Inhalte zu übermitteln. Verwenden Sie den folgenden Git-Befehl, um Ihren Website-Inhalt an Azure zu übertragen:
+Sie können dann Inhalte zu Ihrem Websiteverzeichnis hinzufügen. Verwenden Sie den regulären Git-Ablauf (`git add`, `git commit`), um Ihre Inhalte zu übermitteln. Verwenden Sie den folgenden Git-Befehl, um Ihren Website-Inhalt an Azure zu übertragen: 
 
     git push azure master
 
-### Einrichten der Veröffentlichung über GitHub
+### <a name="set-up-publishing-from-github"></a>Einrichten der Veröffentlichung über GitHub
 Verwenden Sie die Option `--GitHub` beim Erstellen einer Website, um die kontinuierliche Veröffentlichung von einem GitHub-Repository einzurichten:
 
     auzre site create MySite --github --githubusername username --githubpassword password --githubrepository githubuser/reponame
@@ -111,7 +111,7 @@ Wenn Sie Veröffentlichung von GitHub einrichten, ist die verwendete Standardver
 
     azure site repository <branch name>
 
-### Konfigurieren von App-Einstellungen
+### <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen
 App-Einstellungen sind Schlüssel/Wert-Paare, die Ihrer Anwendung während der Laufzeit zur Verfügung stehen. Sobald diese Einstellungen für eine Azure-Website eingerichtet sind, überschreiben die App-Einstellungswerte Einstellungen mit demselben Schlüssel, die in der Web.config-Datei Ihrer Website definiert sind. Für Node.js- und PHP-Anwendungen sind App-Einstellungen als Umgebungsvariablen verfügbar. Das folgende Beispiel zeigt Ihnen, wie Sie ein Schlüssel/Wert-Paar festlegen:
 
     azure site config add <key>=<value> 
@@ -128,23 +128,23 @@ Wenn Sie den Wert eines vorhandenen Schlüssels ändern möchten, müssen Sie de
 
     azure site config clear <key> 
 
-### Auflisten und Anzeigen von Websites:
+### <a name="list-and-show-sites"></a>Auflisten und Anzeigen von Websites:
 Verwenden Sie den folgenden Befehl, um Ihre Websites aufzulisten:
 
     azure site list
 
-Verwenden Sie den Befehl `site show`, um detaillierte Informationen über eine Website abzurufen. Das folgende Beispiel zeigt die Detailinformationen für `MySite`:
+Verwenden Sie den Befehl `site show` , um detaillierte Informationen über eine Website abzurufen. Das folgende Beispiel zeigt die Detailinformationen für `MySite`:
 
     azure site show MySite
 
-### Anhalten, Starten oder Neustarten einer Website
+### <a name="stop-start-or-restart-a-site"></a>Anhalten, Starten oder Neustarten einer Website
 Sie können eine Website mit den Befehlen `site stop`, `site start` oder `site restart` anhalten, starten oder neu starten:
 
     azure site stop MySite
     azure site start MySite
     azure site restart MySite
 
-### Löschen einer Website
+### <a name="delete-a-site"></a>Löschen einer Website
 Sie können eine Website mit dem Befehl `site delete` löschen:
 
     azure site delete MySite
@@ -161,25 +161,25 @@ Ein virtueller Azure-Computer wird aus einem Image eines virtuellen Computers (V
 
     azure vm image list
 
-Sie können einen virtuellen Computer mit dem Befehl `vm create` über eines der verfügbaren Images bereitstellen oder starten. Das folgende Beispiel zeigt, wie Sie einen virtuellen Linux-Computer (genannt `myVM`) aus einem Image im Imagekatalog (CentOS 6.2) starten. Der Root-Benutzername und das -Kennwort für den virtuellen Computer lauten `myusername` bzw. `Mypassw0rd`. (Beachten Sie, dass der Parameter `--location` das Datencenter angibt, in dem der virtuelle Computer erstellt wird. Wenn Sie den Parameter `--location` auslassen, werden Sie aufgefordert, einen Standort auszuwählen.)
+Sie können einen virtuellen Computer mit dem Befehl `vm create` über eines der verfügbaren Images bereitstellen oder starten. Das folgende Beispiel zeigt, wie Sie einen virtuellen Linux-Computer (genannt `myVM`) aus einem Image im Imagekatalog (CentOS 6.2) starten. Der Root-Benutzername und das -Kennwort für den virtuellen Computer lauten `myusername` bzw. `Mypassw0rd`. (Beachten Sie, dass der Parameter `--location` das Datencenter angibt, in dem der virtuelle Computer erstellt wird. Wenn Sie den Parameter `--location` auslassen, werden Sie aufgefordert, einen Standort auszuwählen.)
 
-    azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-de-DE-30GB.vhd myusername --location "West US"
+    azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-en-us-30GB.vhd myusername --location "West US"
 
 Möglicherweise möchten Sie das `--ssh`-Flag (Linux) oder das `--rdp`-Flag (Windows) an `vm create` übergeben, um Remoteverbindungen mit dem neu erstellten virtuellen Computer zu ermöglichen.
 
-Wenn Sie stattdessen einen virtuellen Computer aus einem benutzerdefinierten Image erstellen möchten, können Sie mit dem Befehl `vm image create` ein Image einer VHD-Datei erstellen und dann mit dem Befehl `vm create` den virtuellen Computer bereitstellen. Das folgende Beispiel zeigt, wie Sie ein Linux-Image (genannt `myImage`) aus einer lokalen VHD-Datei erstellen. (Der `--location`-Parameter gibt die Daten an, in denen das Image gespeichert ist.)
+Wenn Sie stattdessen einen virtuellen Computer aus einem benutzerdefinierten Image erstellen möchten, können Sie mit dem Befehl `vm image create` ein Image einer VHD-Datei erstellen und dann mit dem Befehl `vm create` den virtuellen Computer bereitstellen. Das folgende Beispiel zeigt, wie Sie ein Linux-Image (genannt `myImage`) aus einer lokalen VHD-Datei erstellen. (Der `--location` -Parameter gibt die Daten an, in denen das Image gespeichert ist.)
 
     azure vm image create myImage /path/to/myImage.vhd --os linux --location "West US"
 
-Statt ein Image aus einer lokalen VHD-Datei zu erstellen, können Sie ein Image aus einer VHD-Datei erstellen, die im Azure Blob Storage gespeichert ist. Hierzu können Sie den `blob-url`-Parameter verwenden:
+Statt ein Image aus einer lokalen VHD-Datei zu erstellen, können Sie ein Image aus einer VHD-Datei erstellen, die im Azure Blob Storage gespeichert ist. Hierzu können Sie den `blob-url` -Parameter verwenden:
 
     azure vm image create myImage --blob-url <url to .vhd in Blob Storage> --os linux
 
-Nachdem Sie ein Image erstellt haben, können Sie mithilfe von `vm create` einen virtuellen Computer aus dem Image erstellen. Der unten genannte Befehl erstellt einen virtuellen Computer namens `myVM` aus dem oben erstellten Image (`myImage`).
+Nachdem Sie ein Image erstellt haben, können Sie mithilfe von `vm create`einen virtuellen Computer aus dem Image erstellen. Der unten genannte Befehl erstellt einen virtuellen Computer namens `myVM` aus dem oben erstellten Image (`myImage`).
 
     azure vm create myVM myImage myusername --location "West US"
 
-Nachdem Sie einen virtuellen Computer bereitgestellt haben, möchten Sie möglicherweise Endpunkte erstellen, um beispielsweise Remotezugriff auf den virtuellen Computer zu ermöglichen. Das folgende Beispiel verwendet den Befehl `vm create endpoint`, um den externen Port 22 und den lokalen Port 22 auf `myVM` zu öffnen:
+Nachdem Sie einen virtuellen Computer bereitgestellt haben, möchten Sie möglicherweise Endpunkte erstellen, um beispielsweise Remotezugriff auf den virtuellen Computer zu ermöglichen. Das folgende Beispiel verwendet den Befehl `vm create endpoint`, um den externen Port 22 und den lokalen Port 22 auf `myVM` zu öffnen:
 
     azure vm endpoint create myVM 22 22
 
@@ -193,11 +193,11 @@ Verwenden Sie einen der folgenden Befehle, um den virtuelle Computer herunterzuf
     azure vm start myVM
     azure vm restart myVM
 
-Verwenden Sie den Befehl `vm delete`, um den virtuellen Computer zu löschen:
+Verwenden Sie den Befehl `vm delete` , um den virtuellen Computer zu löschen:
 
     azure vm delete myVM
 
-Eine vollständige Liste der Befehle zum Erstellen und Verwalten von virtuellen Computern erhalten Sie über die Option `-h`:
+Eine vollständige Liste der Befehle zum Erstellen und Verwalten von virtuellen Computern erhalten Sie über die Option `-h` :
 
     azure vm -h
 
@@ -212,4 +212,8 @@ Eine vollständige Liste der Befehle zum Erstellen und Verwalten von virtuellen 
 [reference-docs]: http://go.microsoft.com/fwlink/?LinkId=252246
 [windowsazuredotcom]: http://www.windowsazure.com
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO5-->
+
+

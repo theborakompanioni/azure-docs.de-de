@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: d83372fbce5f49d7cd038a15bd271e9d8a463b7b
-ms.openlocfilehash: f1cff67f31da87d6361603f0216a68c55686db0e
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: 00424292fbc5321a77a4e924530ade97739208d4
 
 
 ---
@@ -27,12 +27,12 @@ Wenn sich Attribute eines Benutzers ändern, bewertet das System alle dynamische
 
 > [!NOTE]
 > Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten. Geschachtelte Gruppenmitgliedschaften werden für die gruppenbasierte Zuweisung zu Anwendungen derzeit nicht unterstützt.
-> 
+>
 > Für dynamische Gruppenmitgliedschaften muss eine Azure AD Premium-Lizenz folgenden Personen zugewiesen werden:
-> 
+>
 > * Dem Administrator, der die Regel für eine Gruppe verwaltet
 > * Alle Mitglieder der Gruppe
-> 
+>
 
 ## <a name="to-create-the-advanced-rule"></a>So erstellen Sie eine erweiterte Regel
 1. Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com)die Option **Active Directory**aus, und öffnen Sie dann das Verzeichnis Ihrer Organisation.
@@ -57,17 +57,18 @@ Eine vollständige Liste der unterstützten Parameter und Ausdrucksregeloperator
 Beachten Sie, dass die Eigenschaft als Präfix über den richtigen Objekttyp verfügen muss: „user“ oder „device“.
 Die folgende Regel führt bei der Überprüfung zu einem Fehler: mail –ne null
 
-Die richtige Regel lautet: 
+Die richtige Regel lautet:
 
 user.mail –ne null
 
 Die Gesamtlänge des Texts der erweiterten Regel darf 2048 Zeichen nicht überschreiten.
 
 > [!NOTE]
-> Bei string- und regex-Vorgängen wird die Groß-und Kleinschreibung nicht  beachtet. Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden. Beispiel: user.department -eq \`"Sales".
+> Bei string- und regex-Vorgängen wird die Groß-und Kleinschreibung nicht  beachtet.
+> Zeichenfolgen mit Anführungszeichen (") sollten mit einem Escapezeichen (') maskiert werden. Beispiel: user.department -eq \`"Sales".
 > Verwenden Sie nur für Zeichenfolgentyp-Werte Anführungszeichen, und verwenden Sie nur englische Anführungszeichen (also Anführungszeichen oben).
-> 
-> 
+>
+>
 
 ## <a name="supported-expression-rule-operators"></a>Unterstützte Ausdrucksregeloperatoren
 Die folgende Tabelle enthält alle Ausdrucksregeloperatoren und ihre Syntax zur Verwendung im Text der erweiterten Regel:
@@ -86,14 +87,14 @@ Die folgende Tabelle enthält alle Ausdrucksregeloperatoren und ihre Syntax zur 
 ## <a name="operator-precedence"></a>Rangfolge der Operatoren
 
 Unten sind alle Operatoren nach ihrer Rangfolge von niedrig bis hoch aufgeführt (Operator in derselben Zeile haben die gleiche Rangfolge): -any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch
- 
+
 Alle Operatoren können mit oder ohne Bindestrich als Präfix verwendet werden.
 
 Beachten Sie, dass die Klammern nicht immer benötigt werden. Das Einfügen von Klammern ist nur erforderlich, wenn die Rangfolge nicht Ihre Anforderungen erfüllt: Beispiel:
 
-   user.department –eq "Marketing" –and user.country –eq "US" 
-   
-entspricht: 
+   user.department –eq "Marketing" –and user.country –eq "US"
+
+entspricht:
 
    (user.department –eq "Marketing") –and (user.country –eq "US")
 
@@ -173,7 +174,7 @@ Zulässige Operatoren
 
 ## <a name="use-of-null-values"></a>Verwenden von NULL-Werten
 
-Zum Angeben eines NULL-Werts in einer Regel können Sie „null“ oder „$null“ verwenden. Beispiel: 
+Zum Angeben eines NULL-Werts in einer Regel können Sie „null“ oder „$null“ verwenden. Beispiel:
 
    user.mail –ne null ist äquivalent zu user.mail –ne $null
 
@@ -197,7 +198,7 @@ Den Namen des benutzerdefinierten Attributs finden Sie im Verzeichnis. Fragen Si
 Verwenden Sie den Operator „-any“, um eine mehrwertige Eigenschaft in eine Regel einzufügen. Beispiel:
 
   user.assignedPlans -any assignedPlan.service -startsWith "SCO"
-  
+
 ## <a name="direct-reports-rule"></a>Mitarbeiterregel
 Sie können Mitglieder einer Gruppe basierend auf dem manager-Attribut eines Benutzers auffüllen.
 
@@ -207,11 +208,11 @@ Sie können Mitglieder einer Gruppe basierend auf dem manager-Attribut eines Ben
 2. Wählen Sie die Registerkarte **Gruppen** aus, und öffnen Sie dann die Gruppe, die Sie bearbeiten möchten.
 3. Wählen Sie die Registerkarte **Konfigurieren** und anschließend die Option **ERWEITERTE REGEL** aus.
 4. Geben Sie die Regel mit der folgenden Syntax ein:
-   
+
     Mitarbeiter von *Mitarbeiter von {Objekt_ID_des_Managers}*. Beispiel für eine gültige Regel für Mitarbeiter:
-   
+
                     Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-   
+
     Dabei ist „62e19b97-8b3d-4d4a-a106-4ce66896a863“ die Objekt-ID des Managers. Die Objekt-ID kann in Azure AD auf der Registerkarte **Profil** der Benutzerseite desjenigen Benutzers gefunden werden, der Manager ist.
 5. Nach dem Speichern dieser Regel werden alle Benutzer, die diese Regel erfüllen, als Mitglieder dieser Gruppe eingetragen. Das erste Auffüllen der Gruppe kann einige Minuten dauern.
 
@@ -239,10 +240,10 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
 
 > [!NOTE]
 > Diese Geräteregeln können nicht mithilfe der Dropdownliste mit einfachen Regeln im klassischen Azure-Portal erstellt werden.
-> 
-> 
+>
+>
 
-## <a name="additional-information"></a>Zusätzliche Informationen
+## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 
 * [Problembehandlung bei dynamischen Mitgliedschaften für Gruppen](active-directory-accessmanagement-troubleshooting.md)
@@ -250,7 +251,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
 * [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
 
 
 

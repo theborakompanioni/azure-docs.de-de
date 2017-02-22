@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse-Sicherungen | Microsoft Docs
+title: "Azure SQL Data Warehouse-Sicherungen – Momentaufnahmen (georedundant) | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie integrierte SQL Data Warehouse-Datenbanksicherungen Ihnen ermöglichen, ein Azure SQL Data Warehouse auf einen Wiederherstellungspunkt in einer anderen geografischen Region wiederherzustellen."
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 71f2798871c946b1edce467e1f491e0d62b342c6
-ms.openlocfilehash: fb61dd8b33581740557be6e5902bbe573f11999c
+ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
+ms.openlocfilehash: 94b92f05af30734de727a12fd99271aa9769723a
 
 
 ---
@@ -116,6 +116,6 @@ Der Hauptzweck von SQL Data Warehouse-Sicherungen ist es, das Data Warehouse auf
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,13 +1,25 @@
 ---
+title: "Dokumentation für Azure Backup – Tutorials, API-Referenz | Microsoft-Dokumentation"
+description: In der Dokumentation zu Backup erfahren Sie, wie Sie Daten in der Cloud sichern. Sehen Sie sich Tutorials und Videos zur Sicherung von Anwendungen, Windows-Servern und virtuellen Azure-Computern an.
+services: backup
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: backup
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 4c3a00fe82ec903bcd756e8cd2ef940fc10e8af2
+ms.sourcegitcommit: 4d159b2cec70d9491a562f460629d8efa511d695
+ms.openlocfilehash: 29466a465865dc17350eb4aa70a86f9c973b693a
 
 ---
 #<a name="backup-documentation"></a>Dokumentation zu Backup
 
-Azure Backup ist ein Clouddienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können.  Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung.  
+Hier erfahren Sie, wie Sie Azure Backup in der Cloud verwenden, um Daten langfristig aufbewahren und wiederherstellen zu können. Anhand von Tutorials, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie Daten, Anwendungen, Windows-Server und virtuelle Azure-Computer sichern.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -132,16 +144,10 @@ Azure Backup ist ein Clouddienst, den Sie zum Sichern (bzw. Schützen) und Wiede
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/backup.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Azure Backup </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

@@ -4,11 +4,13 @@
 ## [Datensicherheit](security-center-data-security.md)
 ## Szenarien
 ### [Reaktion auf Vorfälle](security-center-incident-response.md)
+### [Verwenden von Empfehlungen zur Verbesserung der Sicherheit](security-center-using-recommendations.md)
 
 # Erste Schritte
 ## [Schnellstart](security-center-get-started.md)
 ## [Planung und Betrieb](security-center-planning-and-operations-guide.md)
 ## [Berechtigungen](security-center-permissions.md)
+## [Partnerintegration](security-center-partner-integration.md)
 ## [Häufig gestellte Fragen](security-center-faq.md)
 
 # Anleitung
@@ -18,12 +20,14 @@
 ### [Implementieren von Sicherheitsempfehlungen](security-center-recommendations.md)
 
 ### [Anwendungsempfehlungen](security-center-application-recommendations.md)
-#### [Add a web application firewall](security-center-add-web-application-firewall.md)
+#### [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)
+#### [Finalize application protection (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection)
 
 ### [Netzwerkempfehlungen](security-center-network-recommendations.md)
 #### [Hinzufügen einer Firewall der nächsten Generation](security-center-add-next-generation-firewall.md)
 #### [Aktivieren von Netzwerksicherheitsgruppen](security-center-enable-network-security-groups.md)
 #### [Einschränken des Zugriffs über Endpunkte mit Internetzugriff](security-center-restrict-access-through-internet-facing-endpoints.md)
+#### [Datenverkehr nur durch Firewall der nächsten Generation leiten](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
 
 ### [Empfehlungen zum SQL-Dienst](security-center-sql-service-recommendations.md)
 #### [Enable auditing on SQL databases](security-center-enable-auditing-on-sql-databases.md)
@@ -34,9 +38,11 @@
 #### [Datenträgerverschlüsselung anwenden](security-center-apply-disk-encryption.md)
 #### [Systemupdates anwenden](security-center-apply-system-updates.md)
 #### [Aktivieren der Datensammlung](security-center-enable-data-collection.md)
+#### [Aktivieren der Verschlüsselung für das Speicherkonto](security-center-enable-encryption-for-storage-account.md)
 #### [VM-Agent aktivieren](security-center-enable-vm-agent.md)
 #### [Endpoint Protection installieren](security-center-install-endpoint-protection.md)
 #### [Sicherheitskontaktinformationen bereitstellen](security-center-provide-security-contact-details.md)
+#### [Neustart nach Systemupdates](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [Betriebssystem-Sicherheitsrisiken beheben](security-center-remediate-os-vulnerabilities.md)
 #### [Auflösen von Endpoint Protection-Integritätswarnungen](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [Betriebssystemversion aktualisieren](security-center-update-os-version.md)
@@ -70,6 +76,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=security-center)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

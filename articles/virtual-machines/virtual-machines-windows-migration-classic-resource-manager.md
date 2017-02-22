@@ -1,5 +1,5 @@
 ---
-title: "Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager | Microsoft Docs"
+title: "Migrieren klassischer Ressourcen zu Azure Resource Manager – Übersicht | Microsoft-Dokumentation"
 description: "In diesem Artikel wird die plattformgestützte Migration von Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager erläutert."
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2016
+ms.date: 01/23/2017
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 8eb70339785ca15131b5ce8debd6a232a8a693b9
+ms.sourcegitcommit: 2c96a3ca5fd72a4a3c992206aeb93f201342dd6a
+ms.openlocfilehash: aafaacea59c2c7fc463fb84207417d2c4e1d81ff
 
 
 ---
@@ -138,6 +138,8 @@ Sie wählen das virtuelle Netzwerk oder den gehosteten Dienst aus (sofern es kei
 
 * Wenn die Migration für die Ressource nicht möglich ist, werden auf der Azure-Plattform alle Gründe angegeben, aus denen die Migration nicht unterstützt wird.
 
+Beim Überprüfen von Speicherdiensten befindet sich das migrierte Konto in einer Ressourcengruppe mit dem gleichen Namen wie Ihr Speicherkonto (mit dem Zusatz „-Migrated“).  Beispiel: Wenn Ihr Speicherkonto „mystorage“ heißt, befindet sich die mit ARM aktivierte Ressource in einer Ressourcengruppe namens „mystorage-Migrated“ und enthält ein Speicherkonto mit dem Namen „mystorage“.
+
 ### <a name="prepare"></a>Vorbereiten
 Der Vorbereitungsvorgang ist der zweite Schritt im Migrationsprozess. Das Ziel dieses Schritts besteht darin, die Transformation der IaaS-Ressourcen von Ressourcen des klassischen Bereitstellungsmodells zu Resource Manager-Ressourcen zu simulieren und diese zu Visualisierungszwecken nebeneinander darzustellen.
 
@@ -250,6 +252,6 @@ Nachdem Sie nun eine Vorstellung von der Migration klassischer IaaS-Ressourcen z
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

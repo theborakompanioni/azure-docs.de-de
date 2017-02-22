@@ -44,6 +44,6 @@ Nach Erhalt der Vorabgenehmigung für das Microsoft Azure Certified-Programm kö
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

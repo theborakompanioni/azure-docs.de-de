@@ -1,6 +1,6 @@
 ---
-title: "Gewusst wie: Planen von Aufträgen | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird gezeigt, wie Sie Aufträge planen."
+title: "Planen von Aufträgen mit Azure IoT Hub (Node) | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie einen Azure IoT Hub-Auftrag planen, um eine direkte Methode auf mehreren Geräten aufzurufen. Sie verwenden die Azure IoT SDKs für Node.js, um die simulierten Geräte-Apps und eine Dienst-App für die Auftragsausführung zu implementieren."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -15,33 +15,33 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 197414101ea86a68db901744c11a3de110a1eba3
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 4700bdd14f6b826116b919c12c63c8405eff6053
 
 
 ---
-# <a name="tutorial-schedule-and-broadcast-jobs"></a>Tutorial: Planen und Übertragen von Aufträgen
+# <a name="schedule-and-broadcast-jobs-node"></a>Planen und Übertragen von Aufträgen (Node)
 
 ## <a name="introduction"></a>Einführung
-Azure IoT Hub ist ein vollständig verwalteter Dienst, mit dem ein Anwendungs-Back-End Aufträge erstellen und nachverfolgen kann, mit denen für Millionen von Geräten die Planung und Updates durchgeführt werden.  Aufträge können für die folgenden Aktionen verwendet werden:
+Azure IoT Hub ist ein vollständig verwalteter Dienst, mit dem eine Back-End-App Aufträge zur Planung und Aktualisierung von Millionen von Geräten erstellen und nachverfolgen kann.  Aufträge können für die folgenden Aktionen verwendet werden:
 
 * Aktualisieren gewünschter Eigenschaften
 * Aktualisieren von Tags
 * Aufrufen direkter Methoden
 
-Vom Konzept her umschließt ein Auftrag eine dieser Aktionen und verfolgt den Ausführungsfortschritt für eine Gruppe von Geräten nach, die anhand einer Gerätezwillingsabfrage definiert wird.  Mit einem Auftrag kann ein Anwendungs-Back-End beispielsweise eine Neustartmethode auf 10.000 Geräten aufrufen, die mit einer Gerätezwillingsabfrage angegeben und für einen späteren Zeitpunkt geplant ist.  Diese Anwendung kann dann den Fortschritt nachverfolgen, wenn diese Geräte jeweils die Neustartmethode empfangen und ausführen.
+Vom Konzept her umschließt ein Auftrag eine dieser Aktionen und verfolgt den Ausführungsfortschritt für eine Gruppe von Geräten nach, die anhand einer Gerätezwillingsabfrage definiert wird.  Mit einem Auftrag kann eine Back-End-App beispielsweise eine Neustartmethode auf 10.000 Geräten aufrufen – angegeben durch eine Gerätezwillingsabfrage und geplant für einen späteren Zeitpunkt.  Diese Anwendung kann dann den Fortschritt nachverfolgen, wenn diese Geräte jeweils die Neustartmethode empfangen und ausführen.
 
 Weitere Informationen zu diesen Funktionen finden Sie in den folgenden Artikeln:
 
 * Gerätezwilling und -eigenschaften: [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)][lnk-get-started-twin] und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-props]
-* Direkte Methoden: [Entwicklerhandbuch – direkte Methoden][lnk-dev-methods] und [Use direct methods (Node)][lnk-c2d-methods] (Verwenden von direkten Methoden (Node))
+* Direkte Methoden: [Entwicklerhandbuch – direkte Methoden][lnk-dev-methods] und [Tutorial: Verwenden von direkten Methoden][lnk-c2d-methods]
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Erstellen einer simulierten Geräte-App mit einer direkten Methode, um die **lockDoor**-Funktion zu ermöglichen, die vom Anwendungs-Back-End aufgerufen werden kann
-* Erstellen einer Konsolenanwendung, die die direkte **lockDoor**-Methode in der simulierten Geräte-App über einen Auftrag aufruft und die gewünschten Eigenschaften über einen Geräteauftrag aktualisiert
+* Erstellen einer simulierten Geräte-App mit einer direkten Methode, um die Verwendung der **lockDoor**-Funktion zu ermöglichen, die vom Lösungs-Back-End aufgerufen werden kann
+* Erstellen einer Node.js-Konsolen-App, die die direkte **lockDoor**-Methode in der simulierten Geräte-App über einen Auftrag aufruft und die gewünschten Eigenschaften über einen Geräteauftrag aktualisiert
 
-Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
+Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 **simDevice.js**: Stellt mit der Geräteidentität eine Verbindung mit Ihrem IoT-Hub her und empfängt eine direkte **lockDoor**-Methode.
 
@@ -59,7 +59,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet. Diese Methode löst einen Neustart eines simulierten Geräts aus und ermöglicht mithilfe der gemeldeten Eigenschaften Abfragen des Gerätezwillings zum Identifizieren von Geräten und deren letztem Neustart.
 
-1. Erstellen Sie einen leeren Ordner mit dem Namen **simDevice**.  Erstellen Sie im Ordner **simDevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen leeren Ordner mit dem Namen **simDevice**.  Erstellen Sie im Ordner **simDevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -78,7 +78,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf eine von de
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen eines Geräteclients.  
+5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
@@ -123,7 +123,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf eine von de
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Planen von Aufträgen zum Aufrufen einer direkten Methode und Aktualisieren der Eigenschaften eines Gerätezwillings
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, mit der eine **lockDoor**-Remotefunktion auf einem Gerät mit einer direkten Methode initiiert wird, und aktualisieren die Eigenschaften des Gerätezwillings.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **scheduleJobService**.  Erstellen Sie im Ordner **scheduleJobService** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **scheduleJobService**.  Erstellen Sie im Ordner **scheduleJobService** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -176,7 +176,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, mit der eine **lock
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
-        timeoutInSeconds: 45
+        responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
    
     var methodJobId = uuid.v4();
@@ -238,12 +238,12 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, mit der eine **lock
 ## <a name="run-the-applications"></a>Ausführen der Anwendungen
 Sie können nun die Anwendungen ausführen.
 
-1. Führen Sie in der Befehlszeile im Ordner **simDevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
+1. Führen Sie an der Eingabeaufforderung im Ordner **simDevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
    
     ```
     node simDevice.js
     ```
-2. Führen Sie in der Befehlszeile im Ordner **scheduleJobService** den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
+2. Führen Sie an der Eingabeaufforderung im Ordner **scheduleJobService** den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
    
     ```
     node scheduleJobService.js
@@ -271,6 +271,6 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Ers
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

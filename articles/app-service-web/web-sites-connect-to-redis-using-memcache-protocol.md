@@ -1,5 +1,5 @@
 ---
-title: "Verbinden einer Web-App in Azure App Service mit Redis-Cache über das Memcache-Protokoll | Microsoft Docs"
+title: "Verbinden einer App Service-Web-App mit Redis-Cache über das Memcache-Protokoll – Azure | Microsoft-Dokumentation"
 description: "Verbinden Sie eine Web-App in Azure App Service mit Redis-Cache über das Memcache-Protokoll."
 services: app-service\web
 documentationcenter: php
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 02/29/2016
 ms.author: cfowler
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d8a177074d6b7671fe04081c5547665ec892f244
+ms.sourcegitcommit: 550b4154f0fe510cb37ec4f8bdef251b06f0b495
+ms.openlocfilehash: 4d867f80cfbe5360962550fbda0091f88784b4af
 
 
 ---
@@ -180,7 +180,7 @@ Der Aufruf zum Auflisten der Schlüssel sollte einen Wert zurückgeben. Wenn die
 Glückwunsch! Die WordPress-App verfügt jetzt über einen zentralen Cache im Arbeitsspeicher zur Unterstützung eines erhöhten Durchsatzes. Beachten Sie, dass der Web-Apps-Memcache-Shim mit jedem Memcache-Client verwendet werden kann, unabhängig von der Programmiersprache oder dem Anwendungsframework. Feedback oder Fragen zum Web-Apps-Memcache-Shim können Sie in den [MSDN-Foren][10] oder bei [Stackoverflow][11] veröffentlichen.
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -204,6 +204,6 @@ Glückwunsch! Die WordPress-App verfügt jetzt über einen zentralen Cache im Ar
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

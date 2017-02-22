@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Intel NUC als Azure IoT Gateway | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Intel NUC als IoT Gateway zwischen einem Sensor und Azure IoT Hub einrichten, um Sensorinformationen zu sammeln und an den IoT Hub zu senden.
+title: "SensorTag-Gerät und Azure IoT Gateway – Lektion 1: Einrichten von NUC | Microsoft-Dokumentation"
+description: Es wird beschrieben, wie Sie Intel NUC als IoT Gateway zwischen einem Sensor und Azure IoT Hub einrichten, um Sensorinformationen zu sammeln und an IoT Hub zu senden.
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 1c4f44787a7200a1c3634b258df32d30152daa90
-ms.openlocfilehash: ef479f503ac4e911f3a9d311d0f436d95396eedd
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 53e709c5134eec29d71be1d75353d606aa651273
 
 
 ---
@@ -26,8 +26,8 @@ ms.openlocfilehash: ef479f503ac4e911f3a9d311d0f436d95396eedd
 ## <a name="what-you-will-do"></a>Aufgaben
 
 - Einrichten von Intel NUC als IoT Gateway
-- Installieren des Azure IoT Gateway SDK-Pakets auf einem Intel NUC.
-- Führen Sie eine „hello_world“-Beispielanwendung auf einem Intel NUC aus, um die Gatewayfunktionalität zu überprüfen.
+- Installieren des Azure IoT Gateway SDK-Pakets auf einem Intel NUC
+- Ausführen einer „hello_world“-Beispielanwendung auf einem Intel NUC, um die Gatewayfunktionalität zu überprüfen
 Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Sie lernen Folgendes
@@ -35,10 +35,10 @@ Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gatewa
 In dieser Lektion lernen Sie Folgendes:
 
 - Herstellen der Verbindung mit einem Intel NUC mithilfe von Peripheriegeräten
-- Installieren und Aktualisieren der erforderlichen Pakete auf dem Intel NUC mit dem Smart Package Manager.
+- Installieren und Aktualisieren der erforderlichen Pakete auf dem Intel NUC mit dem Smart Package Manager
 - Ausführen einer „hello_world“-Beispielanwendung, um die Gatewayfunktionalität zu überprüfen
 
-## <a name="what-you-need"></a>Erforderliche Komponenten
+## <a name="what-you-need"></a>Erforderliches Element
 
 - Ein Intel NUC Kit DE3815TYKE mit der Intel IoT Gateway Software Suite (Wind River Linux *7.0.0.13) ist vorinstalliert.
 - Ein Ethernet-Kabel
@@ -53,13 +53,13 @@ In dieser Lektion lernen Sie Folgendes:
 Die folgende Abbildung ist ein Beispiel für einen Intel NUC, der mit verschiedenen Peripheriegeräten verbunden ist:
 
 1. Verbindung mit einer Tastatur
-2. Verbindung mit dem Monitor per VGA-Kabel oder HDMI-Kabel
+2. Verbindung mit dem Monitor per VGA- oder HDMI-Kabel
 3. Verbindung mit einem Kabelnetzwerk per Ethernet-Kabel
 4. Verbindung mit der Stromversorgung per Netzkabel
 
 ![Verbindung des Intel NUC mit Peripheriegeräten](media/iot-hub-gateway-kit-lessons/lesson1/nuc.png)
 
-## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Herstellen der Verbindung mit dem Intel NUC-System vom Hostcomputer per Secure Shell (SSH)
+## <a name="connect-to-the-intel-nuc-system-from-host-computer-via-secure-shell-ssh"></a>Herstellen der Verbindung mit dem Intel NUC-System vom Hostcomputer aus per Secure Shell (SSH)
 
 Hierfür benötigen Sie eine Tastatur und einen Monitor, um die IP-Adresse Ihres NUC-Geräts abzurufen. Falls Ihnen die IP-Adresse bereits bekannt ist, können Sie mit Schritt 3 dieses Abschnitts fortfahren.
 
@@ -75,12 +75,12 @@ Hierfür benötigen Sie eine Tastatur und einen Monitor, um die IP-Adresse Ihres
 
    In diesem Beispiel folgt auf `inet addr:` die IP-Adresse, die Sie beim Planen der Remoteverbindung von einem Hostcomputer zum Intel NUC benötigen.
 
-3. Verwenden Sie einen der folgenden SSH-Clients von Ihrem Hostcomputer, um die Verbindung mit dem Intel NUC herzustellen.
+3. Verwenden Sie einen der folgenden SSH-Clients von Ihrem Hostcomputer aus, um die Verbindung mit dem Intel NUC herzustellen.
 
    - [PuTTY](http://www.putty.org/) für Windows.
    - Der integrierte SSH-Client unter Ubuntu oder MacOS.
 
-   Es ist effizienter und produktiver, Vorgänge für den Intel NUC über einen Hostcomputer durchzuführen. Sie benötigen die IP-Adresse, den Benutzernamen und das Kennwort, um über den SSH-Client eine Verbindung mit dem NUC herzustellen. Hier ist ein Beispiel für die Verwendung des SSH-Clients unter MacOS angegeben.
+   Es ist effizienter und produktiver, Vorgänge für den Intel NUC auf einem Hostcomputer durchzuführen. Sie benötigen die IP-Adresse, den Benutzernamen und das Kennwort, um über den SSH-Client eine Verbindung mit dem NUC herzustellen. Hier ist ein Beispiel für die Verwendung des SSH-Clients unter MacOS.
    ![SSH-Client unter MacOS](media/iot-hub-gateway-kit-lessons/lesson1/ssh.png)
 
 ## <a name="install-the-azure-iot-gateway-sdk-package"></a>Installieren des Azure IoT Gateway SDK-Pakets
@@ -138,6 +138,6 @@ Glückwunsch! Sie haben die Einrichtung des Intel NUC als Gateway abgeschlossen.
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

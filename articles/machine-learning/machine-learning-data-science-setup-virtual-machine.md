@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: xibingao;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: a12d11ba5dfdb312fcfa57f665aa5fc0f471b3dd
+ms.sourcegitcommit: 22d7dc81cb2fc44ff4471951cbc482f60a97bb27
+ms.openlocfilehash: b266dc9ead635fb852d64efa82587299f692a153
 
 
 ---
@@ -28,7 +28,7 @@ Wenn Sie bereits über einen virtuellen Azure-Computer verfügen und darauf eine
 
 Bevor Sie mit der Erstellung eines virtuellen Computers in Azure beginnen, müssen Sie die Größe des Computers bestimmen, der zum Verarbeiten der Daten für das Projekt erforderlich ist. Kleinere Computer verfügen über weniger Arbeitsspeicher und weniger CPU-Kerne als leistungsstärkere Computer, aber sie sind auch preisgünstiger. Eine Liste der Computertypen und Preise finden Sie auf der Seite <a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines – Preise</a>.
 
-1. Melden Sie sich beim <a href="https://manage.windowsazure.com" target="_blank">klassischen Azure-Portal</a>an, und klicken Sie in der linken unteren Ecke auf **Neu** . Ein Fenster wird angezeigt. Wählen Sie **COMPUTE** -> **VIRTUELLER COMPUTER** -> **AUS KATALOG** aus.
+1. Melden Sie sich beim <a href="https://manage.windowsazure.com" target="_blank">klassischen Azure-Portal</a>an, und klicken unten links auf **Neu** . Ein Fenster wird angezeigt. Wählen Sie **COMPUTE** -> **VIRTUELLER COMPUTER** -> **AUS KATALOG** aus.
    
     ![Arbeitsbereich erstellen][24]
 2. Wählen Sie eines der folgenden Images aus:
@@ -74,7 +74,7 @@ Geben Sie, wenn Sie dazu aufgefordert werden, ein Kennwort für IPython Notebook
 ## <a name="a-nameaccessastep-4-access-ipython-notebooks-from-a-web-browser"></a><a name="access"></a>Schritt 4: Zugreifen auf IPython Notebooks von einem Webbrowser aus
 Öffnen Sie für den Zugriff auf den IPython Notebook-Server einen Webbrowser, und geben Sie in das Textfeld für die URL *https://&#60;DNS-Name_der_VM>:&#60;Nummer_des_öffentlichen_Ports* ein. Hierbei muss für *&#60;Nummer_des_öffentlichen_Ports>* die Portnummer angegeben werden, die Sie beim Hinzufügen des IPython Notebook-Endpunkts angegeben haben.
 
-Den Wert für *&#60;DNS-Name_der_VM>* finden Sie im klassischen Azure-Portal. Klicken Sie nach der Anmeldung im klassischen Portal auf **VIRTUAL MACHINES**, wählen Sie den erstellten Computer aus, und wählen Sie dann das **DASHBOARD** aus. Der DNS-Name wird wie im folgenden Screenshot angezeigt:
+Den Wert für *&#60;DNS-Name_des_virtuellen Computers>* finden Sie im klassischen Azure-Portal. Klicken Sie nach der Anmeldung im klassischen Portal auf **VIRTUELLE COMPUTER**, wählen Sie den erstellten Computer aus, und wählen Sie dann das **DASHBOARD** aus. Der DNS-Name wird wie im folgenden Screenshot angezeigt:
 
 ![Arbeitsbereich erstellen][19]
 
@@ -90,13 +90,13 @@ Nach Ihrer Anmeldung bei IPython Notebook wird im Browser das Verzeichnis *DataS
 ![Arbeitsbereich erstellen][18]
 
 ## <a name="a-nameuploadastep-5-upload-an-existing-ipython-notebook-from-a-local-machine-to-the-ipython-notebook-server"></a><a name="upload"></a>Schritt 5: Hochladen eines vorhandenen IPython Notebooks von einem lokalen Computer auf den IPython Notebook-Server
-IPython Notebooks bieten eine einfache Möglichkeit für das Hochladen vorhandener IPython Notebooks von lokalen Computern auf den IPython Notebook-Server auf virtuellen Computern. Klicken Sie nach der Anmeldung bei IPython Notebook in einem Webbrowser auf das **Verzeichnis** , in das das IPython Notebook hochgeladen werden soll. Wählen Sie anschließend im **Datei-Explorer**eine IPYNB-Datei mit dem IPython Notebook auf dem lokalen Computer für das Hochladen aus, und ziehen Sie es in Ihrem Webbrowser in das Verzeichnis des IPython Notebooks. Klicken Sie auf die Schaltfläche **Upload** , um die IPYNB-Datei auf den IPython Notebook-Server hochzuladen. Andere Benutzer können es dann in ihren Webbrowsern verwenden.
+IPython Notebooks bieten eine einfache Möglichkeit für das Hochladen vorhandener IPython Notebooks von lokalen Computern auf den IPython Notebook-Server auf virtuellen Computern. Klicken Sie nach der Anmeldung bei IPython Notebook in einem Webbrowser auf das **Verzeichnis**, in welches das IPython Notebook hochgeladen werden soll. Wählen Sie anschließend im **Datei-Explorer**eine IPYNB-Datei mit dem IPython Notebook auf dem lokalen Computer für das Hochladen aus, und ziehen Sie es in Ihrem Webbrowser in das Verzeichnis des IPython Notebooks. Klicken Sie auf die Schaltfläche **Upload** , um die IPYNB-Datei auf den IPython Notebook-Server hochzuladen. Andere Benutzer können es dann in ihren Webbrowsern verwenden.
 
 ![Arbeitsbereich erstellen][22]
 
 ![Arbeitsbereich erstellen][23]
 
-## <a name="a-nameshutdownashutdown-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
+## <a name="a-nameshutdownashut-down-and-de-allocate-virtual-machine-when-not-in-use"></a><a name="shutdown"></a>Herunterfahren und Freigeben von nicht genutzten virtuellen Computern
 Virtuelle Azure-Computer werden **nach Nutzung abgerechnet**. Damit Sie nicht für ungenutzte virtuelle Computer bezahlen müssen, sollten Sie diese in den Status **Angehalten (Zuordnung aufgehoben)** versetzen, wenn sie nicht mehr benötigt werden.
 
 > [!NOTE]
@@ -137,6 +137,6 @@ Die nächsten Schritte im Team Data Science-Prozess sind unter dem [Lernpfad](ht
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

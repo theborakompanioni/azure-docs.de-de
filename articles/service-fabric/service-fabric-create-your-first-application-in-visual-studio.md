@@ -1,5 +1,5 @@
 ---
-title: Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio | Microsoft Docs
+title: Erstellen Ihrer ersten Azure-Microservices-Anwendung | Microsoft-Dokumentation
 description: Erstellen, Bereitstellen und Debuggen einer Service Fabric-Anwendung in Visual Studio
 services: service-fabric
 documentationcenter: .net
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/14/2016
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: eea184fecef089d14d2c13e4528baea30037b638
-ms.openlocfilehash: 2e5e37b4d009cade5f0a919fa64ec2ec48348571
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 2510a950f29664879d193c3bc1bdf8cd47279dfe
 
 
 ---
@@ -36,7 +36,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass [Ihre Entwicklungsumgebung eingeric
 ## <a name="video-walkthrough"></a>Exemplarische Vorgehensweise per Video
 Im folgenden Video werden die Schritte in diesem Lernprogramm behandelt:
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio/player]
 > 
 > 
 
@@ -153,6 +153,6 @@ Bevor Sie Ihre Arbeit abschließen, sollten Sie bedenken, dass der lokale Cluste
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

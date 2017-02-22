@@ -1,8 +1,8 @@
 ---
-title: "Best Practices für die automatische Skalierung in Azure Monitor | Microsoft Docs"
-description: Lernen Sie die Prinzipien einer effektiven Verwendung der automatischen Skalierung in Azure Monitor kennen.
+title: "Empfohlene Methoden für die Autoskalierung| Microsoft-Dokumentation"
+description: Lernen Sie Prinzipien zur effektiven automatischen Skalierung von virtuellen Computern, VM-Skalierungsgruppen und Clouddiensten kennen.
 author: kamathashwin
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 01/23/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f49d9121f34cc58d1486220a93bcb102f8eba90b
+ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
+ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
 
 
 ---
-# <a name="best-practices-for-azure-monitor-autoscaling"></a>Best Practices für die automatische Skalierung in Azure Monitor
-Die folgenden Abschnitte helfen Ihnen, die Best Practices für die automatische Skalierung in Azure zu verstehen. Nach dem Lesen dieser Informationen sind Sie besser in der Lage, die automatische Skalierung effektiv in Ihrer Azure-Infrastruktur zu verwenden.
+# <a name="best-practices-autoscaling-virtual"></a>Empfohlene Methoden für die automatische Skalierung von VMs, VM-Skalierungsgruppen und Clouddiensten
+In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Er bezieht sich auf VMs, VM-Skalierungsgruppen und Clouddienste.  Andere Azure-Dienste verwenden andere Skalierungsmethoden.
 
 ## <a name="autoscale-concepts"></a>Konzepte der automatischen Skalierung
 * Eine Ressource kann nur *eine* Einstellung für die automatische Skalierung haben.
@@ -46,7 +46,7 @@ Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb
 Falls Sie nur einen Teil dieser Kombination verwenden („nur horizontal Hochskalieren“ oder „nur horizontal Herunterskalieren“), wird die automatische Skalierung die Hoch- oder Herunterskalierung vornehmen, bis das Maximum oder das Minimum erreicht ist.
 
 ### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>Wechseln Sie nicht zwischen dem Azure-Portal und dem klassischen Azure-Portal, wenn Sie die automatische Skalierung verwalten
-Verwenden Sie für Cloud Services und App Services (Web-Apps) das Azure-Portal (portal.azure.com), um Einstellungen für die automatische Skalierung zu erstellen und zu verwalten. Verwenden Sie PowerShell, die Befehlszeilenschnittstelle (CLI) oder die REST-API, um die Einstellung für die automatische Skalierung in Skalierungsgruppen in virtuellen Computern zu erstellen und zu verwalten. Wechseln Sie nicht zwischen dem klassischen Azure-Portal (manage.windowsazure.com) und dem Azure-Portal (portal.azure.com), wenn Sie die Konfigurationen für die automatische Skalierung verwalten. Für das klassische Azure-Portal und das zugrunde liegende Back-End gibt es Beschränkungen. Wechseln Sie zum Azure-Portal, um die automatische Skalierung mittels grafischer Benutzeroberfläche zu verwalten. Ihre Optionen sind die Verwendung der PowerShell, der CLI oder der REST-API (über den Azure-Ressourcen-Explorer) in der automatischen Skalierung.
+Verwenden Sie für Cloud Services und App Services (Web-Apps) das Azure-Portal (portal.azure.com), um Einstellungen für die automatische Skalierung zu erstellen und zu verwalten. Verwenden Sie PowerShell, die Befehlszeilenschnittstelle (CLI) oder die REST-API, um die Einstellung der automatischen Skalierung für VM-Skalierungsgruppen zu erstellen und zu verwalten. Wechseln Sie nicht zwischen dem klassischen Azure-Portal (manage.windowsazure.com) und dem Azure-Portal (portal.azure.com), wenn Sie die Konfigurationen für die automatische Skalierung verwalten. Für das klassische Azure-Portal und das zugrunde liegende Back-End gibt es Beschränkungen. Wechseln Sie zum Azure-Portal, um die automatische Skalierung mittels grafischer Benutzeroberfläche zu verwalten. Ihre Optionen sind die Verwendung der PowerShell, der CLI oder der REST-API (über den Azure-Ressourcen-Explorer) in der automatischen Skalierung.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wählen Sie die passende Statistik für Ihre Diagnosemetrik aus
 Für die Diagnosemetriken können Sie zwischen *Durchschnitt*, *Minimum*, *Maximum* und *Gesamt* als Metrik, nach der skaliert werden soll, auswählen. Die am häufigsten verwendete Statistik ist *Durchschnitt*.
@@ -67,7 +67,7 @@ Sehen wir uns nun ein Beispiel an, das zu möglicherweise verwirrendem Verhalten
 4. Bevor herunterskaliert wird, versucht die automatische Skalierung, den Endzustand nach ausgeführtem Herunterskalieren abzuschätzen. Falls beispielsweise 575 x 3 (aktuelle Instanzenanzahl) = 1.725 / 2 (Anzahl der Instanzen, wenn zentral herunterskaliert wird) = 862,5 Threads. Das bedeutet, dass die automatische Skalierung nach dem horizontalen Herunterskalieren sofort wieder horizontal hochskalieren muss, falls die durchschnittliche Threadanzahl gleich bleibt oder sich gar nur leicht verringert. Falls jedoch wieder horizontal hochskaliert wird, würde sich der ganze Vorgang wiederholen, was zu einer Endlosschleife führen würde.
 5. Um diese Fluktuation zu vermeiden, wird gar nicht erst zentral herunterskaliert. Stattdessen wird diese Bedingung übersprungen und beim nächsten Ausführen dieses Dienstauftrags neu bewertet. Das könnte viele Leute verwirren, da die automatische Skalierung scheinbar bei einer durchschnittlichen Threadanzahl von 575 nicht funktioniert.
 
-Die Schätzung während des horizontalen Herunterskalierens soll Fluktuationen verhindern. Sie sollten dieses Verhalten im Hinterkopf behalten, wenn Sie für das horizontale Hoch- und Herunterskalieren die gleichen Schwellenwerte auswählen.
+Die Schätzung während eines horizontalen Herunterskalierens soll „Pendelsituationen“ vermeiden, in denen horizontales Herunter- und Hochskalieren ständig wechseln. Behalten Sie dieses Verhalten im Hinterkopf , wenn Sie für das horizontale Hoch- und Herunterskalieren die gleichen Schwellenwerte auswählen.
 
 Wir empfehlen eine angemessene Spanne zwischen den Schwellenwerten für das horizontale Hoch- und Herunterskalieren. Ziehen Sie stattdessen beispielsweise diese bessere Regelkombination in Betracht:
 
@@ -79,7 +79,7 @@ In diesem Fall
 1. Angenommen, es gibt zu Anfang 2 Instanzen.
 2. Falls die durchschnittliche prozentuale CPU-Auslastung über alle Instanzen 80 erreicht, wird automatisch horizontal hochskaliert und eine dritte Instanz hinzugefügt.
 3. Nehmen Sie jetzt an, dass im Laufe der Zeit die prozentuale CPU-Auslastung auf 60 fällt.
-4. Die Regel für das automatische horizontale Herunterskalieren schätzt den Endzustand, falls horizontal herunterskaliert werden sollte. Falls beispielsweise 60 x 3 (aktuelle Instanzenanzahl) = 180 / 2 (Anzahl der Instanzen wenn herunterskaliert wird) = 90 Die automatische Skalierung skaliert also nicht horizontal herunter, da sie sofort wieder horizontal hochskalieren müsste. Stattdessen wird das horizontale Herunterskalieren übersprungen. Nehmen Sie jetzt an, dass bei der nächsten Überprüfung die CPU-Auslastung auf 50 fällt.
+4. Die Regel für das automatische horizontale Herunterskalieren schätzt den Endzustand, falls horizontal herunterskaliert werden sollte. Falls beispielsweise 60 x 3 (aktuelle Instanzenanzahl) = 180 / 2 (Anzahl der Instanzen wenn herunterskaliert wird) = 90 Die automatische Skalierung skaliert also nicht horizontal herunter, da sie sofort wieder horizontal hochskalieren müsste. Stattdessen wird das horizontale Herunterskalieren übersprungen. Nehmen Sie jetzt an, dass bei der nächsten Überprüfung die CPU-Auslastung auf&50; fällt.
 5. Bei der nächsten Prüfung durch die automatische Skalierung fällt die CPU-Auslastung weiter auf 50. Jetzt schätzt sie wieder – 50 x 3 Instanzen = 150 / 2 Instanzen = 75, was unter dem Schwellenwert von 80 für das horizontale Hochskalieren liegt, daher wird erfolgreich horizontal auf 2 Instanzen herunterskaliert.
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Überlegungen zu Skalierungsschwellenwerten für spezielle Metriken
@@ -152,7 +152,6 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

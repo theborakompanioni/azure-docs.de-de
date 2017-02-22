@@ -13,15 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/21/2016
+ms.date: 12/16/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2cd4a7536bcdde717221a8f2d25eadadee03dd4d
+ms.sourcegitcommit: af104d47d316b3e46108e7e2ed0771bd06f360af
+ms.openlocfilehash: 6c3b547b052bca6999e47ddc10fcce5e1e56fe09
 
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
+
+> [!div class="op_single_selector"]
+> * [Klassisches Azure-Portal](active-directory-conditional-access.md)
+> * [Azure-Portal](active-directory-conditional-access-azure-portal.md)
+
 Die Steuerungsfunktionen für den bedingten Zugriff in Azure Active Directory (Azure AD) bieten einfache Methoden, mit denen Sie Ressourcen in der Cloud und lokal schützen können. Richtlinien für den bedingten Zugriff, z.B. die Anforderung einer mehrstufigen Authentifizierung, können Schutz davor bieten, dass Anmeldeinformationen gestohlen oder ausgespäht werden. Mit weiteren Richtlinien für den bedingten Zugriff können Sie Ihre Organisationsdaten schützen. Beispielsweise können Sie zusätzlich zur Anforderung von Anmeldeinformationen eine Richtlinie verwenden, die vorschreibt, dass nur in einem Verwaltungssystem für mobile Geräte – beispielsweise Microsoft Intune – registrierte Geräte auf vertrauliche Dienste Ihrer Organisation zugreifen dürfen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -94,6 +99,6 @@ In den folgenden Ressourcenkategorien und Artikeln werden weitere Informationen 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

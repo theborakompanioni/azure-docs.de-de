@@ -98,6 +98,6 @@ Nachdem Sie VM-Skalierungsgruppen erfolgreich über Visual Studio bereitgestellt
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

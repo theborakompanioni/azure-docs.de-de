@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 482667df5897eeeef60786373edbbf6d5902c909
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e7f816713cc74ca27dd7718e8071f48dd653e213
 
 
 ---
@@ -54,7 +54,7 @@ Wenn mehrere Instanzen einer App in mehreren App Service-Umgebungen bereitgestel
 * **webfrontend2.fe2ase.p.azurewebsites.net:** Eine Instanz der Beispiel-App, die in der zweiten App Service-Umgebung bereitgestellt ist.
 * **webfrontend3.fe3ase.p.azurewebsites.net:** Eine Instanz der Beispiel-App, die in der dritten App Service-Umgebung bereitgestellt ist.
 
-Am einfachsten können Sie mehrere Azure App Service-Endpunkte, die alle in der **selben** Azure-Region ausgeführt werden, mithilfe der [Unterstützung von Azure Resource Manager für Azure Traffic Manager][ARMTrafficManager] von PowerShell registrieren.  
+Am einfachsten können Sie mehrere Azure App Service-Endpunkte, die alle in der **gleichen** Azure-Region ausgeführt werden, mithilfe der [Unterstützung von Azure Resource Manager für Azure Traffic Manager][ARMTrafficManager] von PowerShell registrieren.  
 
 Der erste Schritt ist die Erstellung eines Azure Traffic Manager-Profils.  Der folgende Code zeigt, wie das Profil für die Beispiel-App erstellt wurde:
 
@@ -94,7 +94,7 @@ In diesem Beispiel ist die benutzerdefinierte Domäne *www.scalableasedemo.com*,
 
 ![Benutzerdefinierte Domäne][CustomDomain] 
 
-Eine Zusammenfassung der Registrierung einer benutzerdefinierten Domäne bei Azure App Service-Apps finden Sie im folgenden Artikel über das [Registrieren benutzerdefinierter Domänen][RegisterCustomDomain].
+Eine Zusammenfassung der Registrierung einer benutzerdefinierten Domäne bei Azure App Service-Apps finden Sie im folgenden Artikel zum [Registrieren benutzerdefinierter Domänen][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Testen der verteilten Topologie
 Das Endergebnis der Traffic Manager- und der DNS-Konfiguration ist, das Anforderungen für *www.scalableasedemo.com* in der folgenden Reihenfolge verarbeitet werden:
@@ -134,6 +134,6 @@ Dokumentation zur [Unterstützung von Azure Resource Manager für Azure Traffic 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

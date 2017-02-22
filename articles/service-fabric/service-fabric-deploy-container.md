@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2016
-ms.author: mfussell
+ms.date: 2/17/2017
+ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: af9f761179896a1acdde8e8b20476b7db33ca772
-ms.openlocfilehash: 1c5f3bc66c902c3b7186cad44728fa5237dd298a
+ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
+ms.openlocfilehash: 97b0cb7a5f04f2c5c547cb4b70d87273aa8f2383
 
 
 ---
@@ -30,9 +30,8 @@ ms.openlocfilehash: 1c5f3bc66c902c3b7186cad44728fa5237dd298a
 In diesem Artikel werden Sie durch den Prozess zum Erstellen von Diensten in Windows-Containern geführt.
 
 > [!NOTE]
-> Dieses Feature befindet sich in der Vorschauphase für Linux und ist noch nicht für Windows Server 2016 verfügbar. Die Vorschauphase für Windows Server 2016 beginnt mit der nächsten Version von Azure Service Fabric. 
-> 
-> 
+> Dieses Feature befindet sich in der Vorschauphase für Windows Server 2016.
+>  
 
 Service Fabric verfügt über mehrere Containerfunktionen für die Erstellung von Anwendungen, die sich aus Microservices in Containern zusammensetzen. 
 
@@ -48,17 +47,46 @@ Die Funktionen sind:
 Als Nächstes sehen wir uns die einzelnen Funktionen beim Packen eines Diensts in einem Container zum Einfügen in Ihre Anwendung an.
 
 ## <a name="package-a-windows-container"></a>Packen eines Windows-Containers
-Beim Packen eines Containers können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Bei Verwendung von Visual Studio werden die Anwendungspaketstruktur und die Manifestdateien mit der neuen Projektvorlage für Sie erstellt. Die VS-Vorlage wird in einer späteren Version veröffentlicht.
+Beim Packen eines Containers können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually).  Bei Verwendung von Visual Studio werden die Anwendungspaketstruktur und die Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
+
+> [!TIP]
+> Der einfachste Weg zum Packen eines vorhandenen Containerimages in einen Dienst ist die Verwendung von Visual Studio.
 
 ## <a name="use-visual-studio-to-package-an-existing-container-image"></a>Verwenden von Visual Studio zum Packen eines vorhandenen Containerimage
-> [!NOTE]
-> In einer der nächsten Versionen von Visual Studio für Service Fabric können Sie einen Container einer Anwendung genauso hinzufügen, wie Sie bereits eine ausführbare Gastanwendungsdatei hinzufügen können. Weitere Informationen finden Sie im Thema [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md). Derzeit müssen Sie einen Container wie im nächsten Abschnitt beschrieben manuell packen.
-> 
-> 
+Visual Studio stellt eine Service Fabric-Dienstvorlage bereit, um Sie beim Bereitstellen eines Containers für einen Service Fabric-Cluster zu unterstützen.
+
+1. Wählen Sie **Datei** > **Neues Projekt**, und erstellen Sie eine Service Fabric-Anwendung.
+2. Wählen Sie die Dienstvorlage **Gastcontainer** aus.
+3. Wählen Sie **Imagename** aus, und geben Sie den Pfad zu dem Image in Ihrem Containerrepository an, z.B. https://hub.docker.com/beispielsweise myrepo/myimage:v1 
+4. Geben Sie dem Dienst einen Namen, und klicken Sie auf **OK**.
+5. Wenn der im Container ausgeführte Dienst einen Endpunkt für die Kommunikation benötigt, können Sie in der Datei „ServiceManifest.xml“ das Protokoll, den Port und den Typ hinzufügen. Beispiel: 
+     
+    `<Endpoint Name="MyContainerServiceEndpoint" Protocol="http" Port="80" UriScheme="http" PathSuffix="myapp/" Type="Input" />`
+    
+    Durch die Bereitstellung des `UriScheme` wird automatisch der Containerendpunkt im Service Fabric Naming Service registriert, damit er einfacher erkennbar ist. Der Port kann wie bei jedem anderen Dienst entweder fest sein (wie im Beispiel oben) oder dynamisch zugeordnet werden (der Port wird leer gelassen und aus dem der Anwendung zugeordneten Bereich zugewiesen).
+    Sie müssen auch die Zuordnung vom Containerport zum Hostport konfigurieren, indem Sie im Anwendungsmanifest eine `PortBinding`-Richtlinie angeben, wie unten beschrieben.
+6. Wenn Ihr Container eine Ressourcenkontrolle erfordert, fügen Sie eine `ResourceGovernancePolicy` hinzu.
+8. Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu.
+7. Sie können das Paket jetzt verwenden und Aktionen für den lokalen Cluster veröffentlichen, wenn die Ausführung unter Windows Server 2016 mit aktivierter Containerunterstützung erfolgt. 
+8. Wenn Sie bereit sind, können Sie die Anwendung in einem Remotecluster veröffentlichen oder die Projektmappe in die Quellcodeverwaltung einchecken. 
+
+Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
+
+## <a name="creating-a-windows-server-2016-cluster"></a>Erstellen eines Windows Server 2016-Clusters
+Um die in einem Container enthaltene Anwendung bereitzustellen, müssen Sie einen Cluster unter Windows Server 2016 mit aktivierter Containerunterstützung erstellen. Dafür können Sie den lokalen Entwicklungscomputer oder Azure Resource Manager (ARM) in Azure verwenden. 
+
+Um einen Cluster mit ARM bereitzustellen, wählen Sie das Image **Windows Server 2016 mit Containern** in Azure aus. Weitere Informationen finden Sie im Artikel [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Stellen Sie sicher, dass Sie die folgenden ARM-Einstellungen verwenden:
+
+```xml
+"vmImageOffer": { "type": "string","defaultValue": "WindowsServer"     },
+"vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
+"vmImageVersion": { "defaultValue": "latest","type": "string"     },  
+```
+Sie können auch die [hier verfügbare ARM-Vorlage mit&5; Knoten ](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) zum Erstellen eines Clusters verwenden. Lesen Sie alternativ [den Blogbeitrag von Leok](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html) zur Verwendung von Service Fabric und Windows-Containern.
 
 <a id="manually"></a>
 
-## <a name="manually-package-and-deploy-a-container"></a>Manuelles Packen und Bereitstellen eines Containers
+## <a name="manually-package-and-deploy-a-container-image"></a>Manuelles Packen und Bereitstellen eines Containerimages
 Der Vorgang zum manuellen Packen eines Diensts in einem Container basiert auf folgenden Schritten:
 
 1. Veröffentlichen des Containers in Ihrem Repository
@@ -263,7 +291,7 @@ Dies ist ein Beispiel für ein Dienstmanifest (aus dem obigen Anwendungsmanifest
         <DataPackage Name="FrontendService.Data" Version="1.0" />
         <Resources>
             <Endpoints>
-                <Endpoint Name="Endpoint1" Port="80"  UriScheme="http" />
+                <Endpoint Name="Endpoint1" UriScheme="http" Port="80" Protocol="http"/>
             </Endpoints>
         </Resources>
     </ServiceManifest>
@@ -272,9 +300,11 @@ Dies ist ein Beispiel für ein Dienstmanifest (aus dem obigen Anwendungsmanifest
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun einen Dienst in einem Container bereitgestellt haben, können Sie sich unter [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) über die Verwaltung des dazugehörigen Lebenszyklus informieren.
 
+* [Übersicht über Service Fabric und Container](service-fabric-containers-overview.md)
+* Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

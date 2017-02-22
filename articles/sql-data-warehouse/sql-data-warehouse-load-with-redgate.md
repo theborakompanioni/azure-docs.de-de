@@ -1,5 +1,5 @@
 ---
-title: Laden von Daten in SQL Data Warehouse mithilfe von Data Platform Studio von Redgate| Microsoft-Dokumentation
+title: Verwenden von Redgate zum Laden von Daten in eine Azure Data Warehouse-Instanz | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Data Platform Studio von Redgate in Data Warehousing-Szenarien verwenden.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: mausher;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: dd77457bfa7ebfc701750e090778f2976d82b141
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: cb0b5489ccfabb0e2a4ee412162a18930073b309
 
 
 ---
@@ -126,7 +126,7 @@ Untersuchen Sie die Daten in SQL Data Warehouse. Weitere Informationen finden Si
 Weitere Informationen zu Data Platform Studio von Redgate finden Sie hier:
 
 * [DPS-Startseite](http://www.dataplatformstudio.com/)
-* [DPS-Demo auf Channel 9](https://channel9.msdn.com/Blogs/cloud-with-a-silver-lining/Loading-data-into-Azure-SQL-Datawarehouse-with-Redgate-Data-Platform-Studio)
+* [DPS-Demo auf Channel&9;](https://channel9.msdn.com/Blogs/cloud-with-a-silver-lining/Loading-data-into-Azure-SQL-Datawarehouse-with-Redgate-Data-Platform-Studio)
 
 Eine Übersicht über weitere Methoden zum Migrieren und Laden von Daten in SQL Data Warehouse finden Sie hier:
 
@@ -154,6 +154,6 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 12/01/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ad067e4152191cd0b324775f16c5dedfeee4a071
+ms.sourcegitcommit: df2fa1d0790f8942a0350f9734232cc4b25cadc1
+ms.openlocfilehash: a54f559801e1a4f4b752bc2268ea8d6cb20b1267
 
 
 ---
@@ -31,9 +31,9 @@ App Service-Umgebungen sind ideal für Anwendungsworkloads mit folgenden Anforde
 
 Kunden können mehrere App Service-Umgebungen innerhalb einer einzelnen Azure-Region sowie über mehrere Azure-Regionen verteilt einrichten.  Dadurch eignen sich App Service-Umgebungen hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
-Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt.  Kunden haben mit [Netzwerksicherheitsgruppen][NetworkSecurityGroups] präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung.  Anwendungen können auch schnelle, sichere Verbindungen über virtuelle Netzwerke zu lokalen Unternehmensressourcen einrichten.
+Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt.  Kunden haben präzise Kontrolle über den eingehenden und ausgehenden Netzwerkdatenverkehr der Anwendung, indem sie [Netzwerksicherheitsgruppen][NetworkSecurityGroups] verwenden.  Anwendungen können auch schnelle, sichere Verbindungen über virtuelle Netzwerke zu lokalen Unternehmensressourcen einrichten.
 
-Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen.  In App Service-Umgebungen ausgeführte Apps haben Zugriff auf Ressourcen über [Site-to-Site][SiteToSite]-VPN und [Azure ExpressRoute][ExpressRoute]-Verbindungen.
+Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen.  In App Service-Umgebungen ausgeführte Apps haben Zugriff auf Ressourcen über [Site-to-Site-VPN][SiteToSite] und [Azure ExpressRoute][ExpressRoute]-Verbindungen.
 
 * [Was ist eine App Service-Umgebung?](../app-service-web/app-service-app-service-environment-intro.md)
 * [Erstellen einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
@@ -47,10 +47,11 @@ Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webd
 [!INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
 
 ## <a name="videos"></a>Videos
-[!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player]
+>[!VIDEO https://channel9.msdn.com/Events/Ignite/2016/BRK3205/player]
 
+>[!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON325/player]
 
-[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player]
+>[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3715/player]
 
 
 
@@ -65,6 +66,6 @@ Apps müssen häufig auf Unternehmensressourcen wie interne Datenbanken und Webd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

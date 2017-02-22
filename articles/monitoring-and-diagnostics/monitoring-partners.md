@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ebbd4166bc3f76c91823ee17b8b9c460feb9e194
+ms.sourcegitcommit: 244cc5e4f053901a8de94adb8fc983edf30ca516
+ms.openlocfilehash: 46b3ade8bb58ccd0637ce4f2cf5c484f599e6173
 
 
 ---
@@ -75,7 +75,7 @@ OpsGenie agiert als Verteiler für die von Azure generierten Warnungen. OpsGenie
 [Zur Dokumentation][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty, die führende Incidentmanagementlösung, liefert bereits erstklassigen Support für Azure-Warnungen für Metriken. Nun unterstützt PagerDuty neben Benachrichtigungen zu Metriken auf Plattformebene für Azure-Dienste auch Benachrichtigungen für Azure Monitor-Anwendungswarnungen, Benachrichtigungen über automatische Skalierungen und Überwachungsprotokollereignisse. Durch diese Verbesserungen erhalten Benutzer nun einen verbesserten Einblick in den Kern der Azure Platform und profitieren gleichzeitig von den Incidentmanagementfunktionen von PagerDuty für Antworten in Echtzeit. Unsere erweiterte Azure-Integration wird über Webhooks realisiert, was eine schnelle und einfache Einrichtung und Anpassung ermöglicht.
+PagerDuty, die führende Incidentmanagementlösung, liefert bereits erstklassigen Support für Azure-Warnungen für Metriken. Nun unterstützt PagerDuty neben Benachrichtigungen zu Metriken auf Plattformebene für Azure-Dienste auch Benachrichtigungen für Azure Monitor-Warnungen, Benachrichtigungen über automatische Skalierungen und Überwachungsprotokollereignisse. Durch diese Verbesserungen erhalten Benutzer nun einen verbesserten Einblick in den Kern der Azure Platform und profitieren gleichzeitig von den Incidentmanagementfunktionen von PagerDuty für Antworten in Echtzeit. Unsere erweiterte Azure-Integration wird über Webhooks realisiert, was eine schnelle und einfache Einrichtung und Anpassung ermöglicht.
 
 [Zur Dokumentation][pagerduty-doc]
 
@@ -90,7 +90,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [Weitere Informationen][sumologic-doc]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../resource-group-audit.md)
+* [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../azure-resource-manager/resource-group-audit.md)
 * [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](monitoring-stream-activity-logs-event-hubs.md)
 
 <!--Connectors Documentation-->
@@ -137,6 +137,6 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

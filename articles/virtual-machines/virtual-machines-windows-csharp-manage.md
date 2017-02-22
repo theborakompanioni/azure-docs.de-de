@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4d0c334a0b1e047208f6f61e5181864b1c2e3a6a
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 81706c6c95199b25a07589780d2a27fc0f8dffa7
 
 
 ---
-# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>Verwalten von virtuellen Azure-Computern mit Azure Resource Manager und C
+# <a name="manage-azure-virtual-machines-using-azure-resource-manager-and-c"></a>Verwalten von virtuellen Azure-Computern mit Azure Resource Manager und C# #
 Die Aufgaben in diesem Artikel zeigen, wie virtuelle Computer verwaltet werden. Dazu gehört z.B. das Starten, das Beenden und das Aktualisieren. Sie müssen über einen virtuellen Computer in einer Ressourcengruppe verfügen, um die Aufgaben in diesem Artikel ausführen zu können.
 
 Zum Ausführen der Anweisungen in diesem Artikel benötigen Sie Folgendes:
 
 * [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
-* [Einen Authentifizierungstoken](../resource-group-authenticate-service-principal.md)
+* [Einen Authentifizierungstoken](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="create-a-visual-studio-project-and-install-packages"></a>Erstellen eines Visual Studio-Projekts und Installieren von Paketen
 NuGet-Pakete sind die einfachste Möglichkeit, um die Bibliotheken zu installieren, die Sie zum Fertigstellen der Aufgaben in diesem Artikel benötigen. Für diesen Artikel müssen Sie die Azure Active Directory-Authentifizierungsbibliothek und die Computeressourcenanbieter-Bibliothek installieren. Führen Sie folgende Schritte aus, um diese Bibliotheken in Visual Studio abzurufen:
@@ -435,11 +435,11 @@ Dieses Beispiel zeigt, wie Sie einem ausgeführten virtuellen Computer einen Dat
 5. Klicken Sie in Visual Studio auf **Starten** , und melden Sie sich dann bei Azure AD mit demselben Benutzernamen und Kennwort an, die Sie für Ihr Abonnement verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sollten bei einer Bereitstellung Probleme aufgetreten sein, helfen Ihnen ggf. die Informationen unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md) weiter.
+Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) lesen.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

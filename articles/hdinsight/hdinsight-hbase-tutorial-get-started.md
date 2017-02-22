@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/21/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: da4d723e343b47187fd6fef3b7a6eab649ef8a41
+ms.sourcegitcommit: 501c44ff8db2b825b58d98b9b89219ec9fff8b7c
+ms.openlocfilehash: 6384d7b0f4851ce4d1612857203e7c3c1381d6fc
 
 
 ---
@@ -29,7 +29,7 @@ Erfahren Sie, wie Sie HBase-Cluster in HDInsight erstellen, HBase-Tabellen erste
 Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Windows-basierten Clustern erhalten Sie, indem Sie die Registerkartenauswahl oben auf der Seite zum Umschalten verwenden.
 
 > [!NOTE]
-> HBase (Version 0.98.0) für Windows-basiertes HDInsight ist nur für HDInsight-Cluster der Version 3.1 verfügbar (basiert auf Apache Hadoop und YARN 2.4.0). Versionshinweise finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen][hdinsight-versions]
+> HBase (Version 0.98.0) für Windows-basiertes HDInsight ist nur für HDInsight-Cluster der Version 3.1 verfügbar (basiert auf Apache Hadoop und YARN 2.4.0). Versionshinweise finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen][hdinsight-versions].
 > 
 > 
 
@@ -49,7 +49,7 @@ Bevor Sie mit diesem Lernprogramm zu HBase beginnen können, benötigen Sie Folg
 
 **So erstellen Sie einen HBase-Cluster im Azure-Portal**
 
-1. Melden Sie sich im [Azure-Portal][azure-management-portal] an.
+1. Melden Sie sich beim [Azure-Portal][azure-management-portal] an.
 2. Klicken Sie in der Ecke oben links auf **Neu** oder **+**, und klicken Sie dann auf **Datenanalyse** und **HDInsight**.
 3. Geben Sie die folgenden Werte ein:
    
@@ -292,11 +292,11 @@ In diesem HBase-Tutorial für HDInsight haben Sie erfahren, wie Sie einen HBase-
 
 Weitere Informationen finden Sie unter:
 
-* [Überblick zu HDInsight HBase][hdinsight-hbase-overview].
+* [Übersicht über HDInsight HBase][hdinsight-hbase-overview].
   HBase ist eine Open Source-NoSQL-Datenbank von Apache, die auf Hadoop basiert und wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
-* [Erstellen von HDInsight HBase-Clustern in Azure Virtual Network][hdinsight-hbase-provision-vnet].
+* [Erstellen von HBase-Clustern in Azure Virtual Network][hdinsight-hbase-provision-vnet].
   Mit der Integration in virtuelle Netzwerke können HBase-Cluster im selben virtuellen Netzwerk bereitgestellt werden wie Ihre Anwendungen, sodass Anwendungen direkt mit HBase kommunizieren können.
-* [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-geo-replication.md). Erfahren Sie, wie Sie HBase-Replikation zwischen zwei Azure-Rechenzentren konfigurieren.
+* [Konfigurieren der HBase-Replikation in HDInsight](hdinsight-hbase-replication.md). Erfahren Sie, wie Sie HBase-Replikation zwischen zwei Azure-Rechenzentren konfigurieren.
 * [Analysieren der Twitter-Stimmungen mit HBase in HDInsight][hbase-twitter-sentiment].
   Erfahren Sie, wie Sie in Echtzeit [Standpunktanalysen](http://en.wikipedia.org/wiki/Sentiment_analysis) bei Big Data mithilfe von HBase in einem Hadoop-Cluster in HDInsight durchführen können.
 
@@ -329,6 +329,6 @@ Weitere Informationen finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

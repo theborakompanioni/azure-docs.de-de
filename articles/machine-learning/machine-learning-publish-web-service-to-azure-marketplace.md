@@ -1,6 +1,6 @@
 ---
-title: "Veröffentlichen von Machine Learning-Webdiensten im Azure Marketplace | Microsoft Docs"
-description: "Veröffentlichen Ihres Azure Machine Learning-Webdiensts im Azure Marketplace"
+title: "(Veraltet:) Veröffentlichen von Machine Learning-Webdiensten im Azure Marketplace | Microsoft Docs"
+description: "(Veraltet:) Veröffentlichen Ihres Azure Machine Learning-Webdiensts im Azure Marketplace"
 services: machine-learning
 documentationcenter: 
 author: BharathS
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/08/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: bharaths
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 24b131d3a9a17ce9a2daf349518873871c9d1019
+ms.sourcegitcommit: 85a58e09e05fdb50984055ab25c4c2fe520dab4d
+ms.openlocfilehash: 2d62966f130f6778c9561393cc7fc338f8903f1e
 
 
 ---
-# <a name="publish-azure-machine-learning-web-service-to-the-azure-marketplace"></a>Veröffentlichen Ihres Azure Machine Learning-Webdiensts im Azure Marketplace
+# <a name="deprecated-publish-azure-machine-learning-web-service-to-the-azure-marketplace"></a>(Veraltet:) Veröffentlichen eines Azure Machine Learning-Webdiensts im Azure Marketplace
+
+> [!NOTE]
+> DataMarket und Data Services werden eingestellt, und vorhandene Abonnements werden ab dem 31.3.2017 zurückgezogen und beendet. Dieser Artikel gilt daher als veraltet. 
+> 
+> Als Alternative können Sie Ihre Machine Learning-Experimente im [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/) veröffentlichen, damit sie der Data Science-Community zugute kommen. Weitere Informationen finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-gallery-how-to-use-contribute-publish).
+
 Im Azure Marketplace können Sie Azure Machine Learning-Webdienste als kostenlose oder zahlungspflichtige Dienste für externe Consumer veröffentlichen. Dieser Artikel bietet eine Übersicht über diesen Vorgang sowie Hinweise zu den ersten Schritten. Mit diesem Prozess können Sie Ihre Webdienste bereitstellen, sodass andere Entwickler diese in ihren Anwendungen verwenden können.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -89,6 +96,6 @@ Stellen Sie den Dienst in der Produktionsumgebung bereit.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

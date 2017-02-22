@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: team-pi@sendgrid.com
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae05e89346fe6bb85408cd560505dab3c03837cc
+ms.sourcegitcommit: dc1dac6e590088b45aa7afb87cf2d41027506635
+ms.openlocfilehash: 5ad1d7f026836e90d04d493bd1c0454b83f936ef
 
 
 ---
@@ -60,7 +60,8 @@ Gehen Sie folgendermaßen vor, um das SendGrid NuGet-Paket in Ihrer Anwendung zu
 4. Suchen Sie nach **SendGrid**, und wählen Sie in der Ergebnisliste das Element **SendGrid** aus.
    
    ![SendGrid NuGet-Paket][SendGrid-NuGet-package]
-5. Klicken Sie auf **Installieren** , um die Installation abzuschließen, und schließen Sie dann das Dialogfeld.
+5. Wählen Sie **Version 6.3.4** des NuGet-Pakets aus der Versionsdropdownliste aus, um mit dem Objektmodell und den APIs arbeiten zu können, die in diesem Artikel gezeigt werden.
+6. Klicken Sie auf **Installieren** , um die Installation abzuschließen, und schließen Sie dann das Dialogfeld.
 
 Die .NET-Klassenbibliothek für SendGrid heißt **SendGridMail**. Sie enthält die folgenden Namespaces:
 
@@ -251,6 +252,6 @@ Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

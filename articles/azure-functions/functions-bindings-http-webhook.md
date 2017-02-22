@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 412640c0c53ca85dbdc234783ba94afaa807a22a
-ms.openlocfilehash: f1e4ecfd91e161f71115bed31cd41684ed514b5a
+ms.sourcegitcommit: 29df0e2198be05a64b6a90f1adf30a0c3b218d93
+ms.openlocfilehash: b40fa2d511910668438ba33291d16202dec8c8a8
 
 
 ---
@@ -211,10 +211,10 @@ HTTP-Trigger können Schlüssel nutzen, um für mehr Sicherheit zu sorgen. Ein s
 Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im Ruhezustand verschlüsselt. Um vorhandene Schlüssel anzuzeigen, neue Schlüssel zu erstellen oder Schlüsseln neue Werte zuzuweisen, navigieren Sie im Portal zu einer Ihrer Funktion, und wählen Sie „Verwalten“ aus. 
 
 Es gibt zwei Arten von Schlüsseln:
-- **Administratorschlüssel**: Diese Schlüssel werden von allen Funktionen innerhalb der Funktionen-App gemeinsam genutzt. Bei Verwendung als API-Schlüssel ermöglichen diese Zugriff auf jede Funktion in der Funktionen-App.
+- **Hostschlüssel:** Diese Schlüssel werden von allen Funktionen innerhalb der Funktionen-App gemeinsam genutzt. Bei Verwendung als API-Schlüssel ermöglichen diese Zugriff auf jede Funktion in der Funktionen-App.
 - **Funktionsschlüssel**: Diese Schlüssel gelten nur für die Funktionen, für die sie definiert sind. Bei Verwendung als API-Schlüssel ermöglichen diese nur Zugriff auf diese spezielle Funktion.
 
-Jeder Schlüssel ist zu Referenzzwecken benannt. Auf Funktions- und Administratorebene gibt es einen Standardschlüssel (mit dem Namen „default“). Der **Hauptschlüssel** ist ein Standardadministratorschlüssel namens „_master“, der für jede Funktionen-App definiert ist und nicht widerrufen werden kann. Er bietet administrativen Zugriff auf die Laufzeit-APIs. Bei Verwendung von `"authLevel": "admin"` in der Bindungs-JSON muss dieser Schlüssel in der Anforderung bereitgestellt werden. Jeder andere Schlüssel führt zu einem Autorisierungsfehler.
+Jeder Schlüssel ist zu Referenzzwecken benannt. Auf Funktions- und Hostebene gibt es einen Standardschlüssel (mit dem Namen „default“). Der **Hauptschlüssel** ist ein Standardhostschlüssel namens „_master“, der für jede Funktionen-App definiert ist und nicht widerrufen werden kann. Er bietet administrativen Zugriff auf die Laufzeit-APIs. Bei Verwendung von `"authLevel": "admin"` in der Bindungs-JSON muss dieser Schlüssel in der Anforderung bereitgestellt werden. Jeder andere Schlüssel führt zu einem Autorisierungsfehler.
 
 > [!NOTE]
 > Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in nativen Clientanwendungen verteilen. Gehen Sie sehr umsichtig vor, wenn Sie die Autorisierungsstufe „Administrator“ auswählen.
@@ -226,7 +226,7 @@ Ein HTTP-Trigger erfordert standardmäßig einen API-Schlüssel in der HTTP-Anfo
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-Der Schlüssel kann in einer Abfragezeichenfolgenvariablen namens `code` (wie oben zu sehen) oder in einem `x-functions-key`-HTTP-Header enthalten sein. Der Wert des Schlüssels kann ein beliebiger für die Funktion definierter Funktionsschlüssel oder ein beliebiger Administratorschlüssel sein.
+Der Schlüssel kann in einer Abfragezeichenfolgenvariablen namens `code` (wie oben zu sehen) oder in einem `x-functions-key`-HTTP-Header enthalten sein. Der Wert des Schlüssels kann ein beliebiger für die Funktion definierter Funktionsschlüssel oder ein beliebiger Hostschlüssel sein.
 
 Sie können Anforderungen ohne Schlüssel zulassen oder festlegen, dass der Hauptschlüssel verwendet werden muss. Ändern Sie zu diesem Zweck die `authLevel`-Eigenschaft in der Bindungs-JSON (siehe [HTTP-Trigger](#httptrigger)).
 
@@ -237,7 +237,7 @@ Die Webhookautorisierung wird von der Empfangskomponente für Webhooks verarbeit
 - **Anforderungsheader**: Der Anbieter übergibt den Schlüsselnamen im `x-functions-clientid`-Header.
 
 > [!NOTE]
-> Funktionsschlüssel haben Vorrang vor Administratorschlüsseln. Wenn zwei Schlüssel mit dem gleichen Namen definiert wurden, wird der Funktionsschlüssel verwendet.
+> Funktionsschlüssel haben Vorrang vor Hostschlüsseln. Wenn zwei Schlüssel mit dem gleichen Namen definiert wurden, wird der Funktionsschlüssel verwendet.
 > 
 > 
 
@@ -439,6 +439,6 @@ module.exports = function (context, data) {
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: ec7e5d3229d623ce08a72439317a6a515ee3e373
 
 
 ---
@@ -24,21 +24,20 @@ ms.openlocfilehash: 240ba2289ededf7a65c71e2f5007cf3a52ca4f84
 Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird aber eine allgemeinere Sprache benötigt. Hive ermöglicht Ihnen die Erstellung benutzerdefinierter Funktionen (User Defined Functions, UDF) mithilfe einer Vielzahl von Programmiersprachen. In diesem Dokument erfahren Sie, wie Sie eine Java-UDF in Hive verwenden.
 
 ## <a name="requirements"></a>Anforderungen
-* Ein Azure-Abonnement
+
 * Ein HDInsight-Cluster (Windows- oder Linux-basiert)
   
-  > [!NOTE]
-  > Die meisten Schritte in diesem Dokument funktionieren bei beiden Clustertypen. Die Schritte zum Hochladen der kompilierten UDF in den Cluster und ihrer Ausführung sind jedoch spezifisch für Linux-basierte Cluster. Links zu Informationen, die mit Windows-basierten Clustern verwendet werden können, sind angegeben.
-  > 
-  > 
+  > [!IMPORTANT]
+  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+  
+  Die meisten Schritte in diesem Dokument funktionieren bei beiden Clustertypen. Die Schritte zum Hochladen der kompilierten UDF in den Cluster und ihrer Ausführung sind jedoch spezifisch für Linux-basierte Cluster. Links zu Informationen, die mit Windows-basierten Clustern verwendet werden können, sind angegeben.
+
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 7 oder höher (oder eine entsprechende Anwendung wie OpenJDK)
 * [Apache Maven](http://maven.apache.org/)
 * Ein Text-Editor oder eine Java-IDE
   
   > [!IMPORTANT]
   > Wenn Sie einen Linux-basierten HDInsight-Server verwenden, aber die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens mithilfe von Hilfsprogrammen für den HDInsight-Cluster.
-  > 
-  > 
 
 ## <a name="create-an-example-udf"></a>Erstellen Sie einer Beispiel-UDF
 1. Geben Sie an der Befehlszeile Folgendes an, um ein neues Maven-Projekt zu erstellen:
@@ -216,6 +215,6 @@ Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Absch
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

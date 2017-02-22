@@ -1,9 +1,9 @@
 ---
-title: Konfigurieren von StorSimple mit Veritas Backup Exec | Microsoft-Dokumentation
+title: StorSimple 8000-Serie als Sicherungsziel mit Backup Exec | Microsoft-Dokumentation
 description: Beschreibt die Konfiguration des StorSimple-Sicherungsziels mit Veritas Backup Exec.
 services: storsimple
 documentationcenter: 
-author: hkanna
+author: harshakirank
 manager: matd
 editor: 
 ms.assetid: 
@@ -15,506 +15,446 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 translationtype: Human Translation
-ms.sourcegitcommit: b7c6a9ffb2c598048bf0547420b1e7afac2c3e74
-ms.openlocfilehash: 7a2fa4ccac6b2eda935477034c5f58a0ed90da37
+ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
+ms.openlocfilehash: db05fb35fdcbcf6691cc3ffc99d201383706592f
 
 ---
 
-# <a name="configure-storsimple-with-veritas-backup-exec8482"></a>Konfigurieren von StorSimple mit Veritas Backup Exec&#8482;
+# <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
 ## <a name="overview"></a>Übersicht
 
-Microsoft Azure StorSimple ist eine Hybridcloud-Speicherlösung, mit der sich die Komplexität des exponentiellen Datenwachstums bewältigen lässt. Diese Lösung verwendet ein Azure-Speicherkonto als Erweiterung der lokalen Lösung und speichert die Daten automatisch auf lokale Speicherstufen und Cloudspeicherstufen.
+Azure StorSimple ist eine hybride Cloudspeicherlösung von Microsoft. StorSimple dient zum Bewältigen der Komplexität des exponentiellen Datenwachstums. Die Lösung verwendet dazu ein Azure-Speicherkonto als Erweiterung der lokalen Lösung und verteilt Daten automatisch (per Tiering) auf lokalen Speicher und Cloudspeicher.
 
-Dieser Artikel beschreibt die StorSimple-Integration in Veritas Backup Exec sowie die bewährten Methoden für die Integration beider Lösungen. Außerdem erhalten Sie Empfehlungen, wie Sie Veritas Backup Exec für eine optimale Integration in StorSimple konfigurieren. Basierend auf bewährten Methoden von Veritas und der Erfahrung von Sicherungsarchitekten und -administratoren wird erläutert, wie Sie Veritas Backup Exec so konfigurieren, dass Ihre Sicherungsanforderungen und SLAs optimal erfüllt werden.
+In diesem Artikel beschäftigen wir uns mit der StorSimple-Integration in Veritas Backup Exec sowie den bewährten Methoden für die Integration beider Lösungen. Außerdem erhalten Sie Empfehlungen, wie Sie Backup Exec für eine optimale Integration in StorSimple einrichten. Wir gehen auf die bewährten Methoden von Veritas für Sicherungsarchitekten und Administratoren ein, um Backup Exec optimal zum Erfüllen einzelner Sicherungsanforderungen und Vereinbarungen zum Servicelevel (SLAs) einzurichten.
 
-Dieser Artikel veranschaulicht Konfigurationsschritte und wichtige Konzepte, ist jedoch keinesfalls als Schrittanleitung für die Konfiguration oder Installation zu verstehen. In diesem Artikel wird vorausgesetzt, dass die grundlegenden Komponenten und Infrastrukturen funktionieren und die hier beschriebenen Konzepte unterstützen können.
+In diesem Artikel werden Konfigurationsschritte und wichtige Konzepte veranschaulicht. Es handelt jedoch keinesfalls um eine detaillierte Anleitung für die Konfiguration oder Installation. Es wird von uns vorausgesetzt, dass die grundlegenden Komponenten und Infrastrukturen funktionieren und die hier beschriebenen Konzepte unterstützen können.
 
-## <a name="why-storsimple-as-a-backup-target"></a>Was spricht für StorSimple als Sicherungsziel?
+### <a name="who-should-read-this"></a>Zielgruppe dieses Artikels
 
-StorSimple ist aus folgenden Gründen ein hervorragendes Sicherungsziel:
-
--   Die Lösung stellt standardmäßigen lokalen Speicher für Sicherungsanwendungen bereit, der ohne jede Änderungen verwendet werden kann, und bietet damit ein schnelles Sicherungsziel. Mit StorSimple können auch kürzlich durchgeführte Sicherungen schnell wiederhergestellt werden.
-
--   Das Cloudtiering ist nahtlos in den kostengünstigen Microsoft Azure-Cloudspeicher integriert.
-
--   Die Lösung stellt automatisch Offsitespeicher für die Notfallwiederherstellung bereit.
-
-
-## <a name="target-audience"></a>Zielgruppe
-
-Zur Zielgruppe für diesen Artikel gehören Sicherungsadministratoren, Speicheradministratoren und Speicherarchitekten, die über Kenntnisse zu Speichern, Windows Server 2012 R2, Ethernet, Clouddiensten und Veritas Backup Exec verfügen.
+Die Informationen in diesem Artikel sind vornehmlich für Sicherungsadministratoren, Speicheradministratoren und Speicherarchitekten gedacht, die über Kenntnisse zu Speichern, Windows Server 2012 R2, Ethernet, Clouddiensten und Backup Exec verfügen.
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
-Eine vollständige Liste der unterstützten Versionen finden Sie hier:
+-   [Backup Exec 16 und höher](http://backupexec.com/compatibility)
+-   [StorSimple Update 3 und höher](storsimple-overview.md#storsimple-workload-summary)
 
--   [Backup Exec, Version 16 und höher](http://backupexec.com/compatibility).
 
--   [StorSimple Update 3 und höher](storsimple-overview.md#storsimple-workload-summary).
+## <a name="why-storsimple-as-a-backup-target"></a>Was spricht für StorSimple als Sicherungsziel?
+
+StorSimple eignet sich aus den folgenden Gründen gut als Sicherungsziel:
+
+-   Die Lösung stellt lokalen Standardspeicher für Sicherungsanwendungen als schnelles Sicherungsziel bereit, ohne dass Änderungen nötig sind. StorSimple eignet sich auch zum schnellen Wiederherstellen der jüngsten Sicherungen.
+-   Sein Cloudtiering ist nahtlos in ein Azure-Cloudspeicherkonto integriert, um den kostengünstigen Azure Storage-Speicher nutzen zu können.
+-   Die Lösung stellt automatisch Offsitespeicher für die Notfallwiederherstellung bereit.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
-Wie bei jeder anderen Speicherlösung auch ist es erfolgsentscheidend, die Speicherleistung, die SLAs, die Änderungsrate und die Anforderungen an das Kapazitätswachstum der Lösung sorgfältig zu bewerten. Der grundlegende Gedanke ist folgender: Aufgrund der Einführung einer Cloudspeicherstufe spielen die Zugriffszeiten und Durchsatzwerte in der Cloud eine wichtige Rolle für die richtige und sinnvolle Funktionsweise von StorSimple.
+Wie bei anderen Speicherlösungen auch ist es für den Erfolg entscheidend, die Speicherleistung, SLAs, Änderungsrate und Anforderungen an das Kapazitätswachstum der Lösung sorgfältig zu bewerten. Der grundlegende Gedanke ist folgender: Aufgrund der Einführung einer Cloudspeicherstufe spielen die Zugriffszeiten und Durchsatzwerte in der Cloud eine wichtige Rolle für die richtige und sinnvolle Funktionsweise von StorSimple.
 
-StorSimple stellt Speicher für Anwendungen bereit, die mit einem klar definierten Satz Arbeitsdaten (heiße Daten) arbeiten. In diesem Modell werden für die Arbeitsdaten lokale Speicherstufen verwendet. Die verbleibenden Daten, mit denen gerade nicht gearbeitet wird (kalte oder archivierte Daten), werden per Tiering in der Cloud gespeichert. Dieses Modell ist in der folgenden Abbildung dargestellt. Die nahezu waagerecht verlaufende grüne Linie repräsentiert die Daten, die auf den lokalen Speicherstufen des StorSimple-Geräts gespeichert sind. Die exponentiell ansteigende rote Linie zeigt die Gesamtmenge an Daten, die auf allen Speicherstufen der StorSimple-Lösung gespeichert sind. Der Abstand zwischen der grünen und der roten Linie stellt die Gesamtmenge der in der Cloud gespeicherten Daten dar.
+StorSimple stellt Speicher für Anwendungen bereit, die mit einem klar definierten Satz Arbeitsdaten (heiße Daten) arbeiten. In diesem Modell werden für die Arbeitsdaten lokale Speicherstufen verwendet. Die verbleibenden Daten, mit denen gerade nicht gearbeitet wird („kalte“ oder archivierte Daten), werden per Tiering in der Cloud gespeichert. Dieses Modell ist in der folgenden Abbildung dargestellt. Die nahezu waagerecht verlaufende grüne Linie repräsentiert die Daten, die auf den lokalen Speicherstufen des StorSimple-Geräts gespeichert sind. Die exponentiell ansteigende rote Linie zeigt die Gesamtmenge von Daten, die auf allen Speicherstufen der StorSimple-Lösung gespeichert sind. Der Abstand zwischen der grünen und der roten Linie stellt die Gesamtmenge der in der Cloud gespeicherten Daten dar.
 
 **StorSimple-Tiering**
 ![Diagramm zu StorSimple-Tiering](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
-Dank dieser Architektur eignet sich StorSimple ideal als Sicherungsziel. StorSimple ermöglicht Folgendes:
-
--   Ausführen der häufigsten Wiederherstellungen aus dem lokalen Arbeitsdatensatz.
-
+Dank dieser Architektur eignet sich StorSimple ideal als Sicherungsziel. Sie können StorSimple für folgende Zwecke verwenden:
+-   Ausführen der häufigsten Wiederherstellungen aus dem lokalen Arbeitssatz von Daten.
 -   Verwenden der Cloud zur externen Notfallwiederherstellung und für ältere Daten, die seltener wiederhergestellt werden müssen.
 
 ## <a name="storsimple-benefits"></a>Vorteile von StorSimple
 
 StorSimple bietet eine lokale Lösung, die nahtlos in Microsoft Azure integriert ist, und profitiert vom reibungslosen Zugriff auf lokalen und cloudbasierten Speicher.
 
-StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das SSD-Speicher (Solid-State Drive) und SAS-Speicher (Serial-Attached SCSI) umfasst, und Azure Storage. Mit automatischem Tiering verbleiben häufig verwendete Dateien auf den SSD- und SAS-Speicherstufen des lokalen Systems, und seltener verwendete Daten werden nach Azure Storage verschoben.
+StorSimple nutzt ein automatisches Tiering zwischen dem lokalen Gerät, das mit SSD-Speicher (Solid-State Drive) und SAS-Speicher (Serial-Attached SCSI) arbeitet, und Azure Storage. Durch das automatische Tiering verbleiben Daten, auf die häufig zugegriffen wird, lokal auf den SSD- und SAS-Stufen. Selten genutzte Daten werden in Azure Storage verschoben.
 
 StorSimple bietet folgende Vorteile:
 
 -   Eindeutige Algorithmen für Deduplizierung und Komprimierung, die dank Cloud ein nie dagewesenes Deduplizierungslevel erreichen
-
 -   Hohe Verfügbarkeit
-
 -   Georeplikation durch Nutzen der Azure-Georeplikation
-
 -   Azure-Integration
-
 -   Datenverschlüsselung in der Cloud
-
 -   Verbesserte Notfallwiederherstellung und Vorschrifteneinhaltung
 
-Obwohl StorSimple zwei wichtige Bereitstellungsszenarien (primäres und sekundäres Sicherungsziel) ermöglicht, denken Sie immer daran, dass es grundsätzlich ein einfaches Blockspeichergerät ist. StorSimple erledigt sämtliche Komprimierungs- und Deduplizierungsaufgaben, sendet Daten an die Cloud und empfängt Daten aus der Cloud – nahtlos sowohl für die Anwendung als auch das Dateisystem.
+Obwohl StorSimple zwei wichtige Bereitstellungsszenarien (primäres und sekundäres Sicherungsziel) ermöglicht, handelt es sich grundsätzlich um ein einfaches Blockspeichergerät. StorSimple führt sämtliche Komprimierungs- und Deduplizierungsaufgaben aus. Von dieser Lösung werden Daten zwischen der Cloud sowie der Anwendung und dem Dateisystem transparent gesendet und empfangen.
 
-Weitere Informationen zu StorSimple finden Sie unter [StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung](storsimple-overview.md). Lesen Sie auch die [technischen Spezifikationen des StorSimple 8000-Geräts](storsimple-technical-specifications-and-compliance.md).
+Weitere Informationen zu StorSimple finden Sie unter [StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung](storsimple-overview.md). Lesen Sie auch die [technischen Spezifikationen der StorSimple 8000-Serie](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
-> Ein StorSimple-Gerät als Sicherungsziel wird erst ab StorSimple 8000 Update 3 oder höher unterstützt.
+> Das Verwenden eines StorSimple-Geräts als Sicherungsziel wird nur für die Version StorSimple 8000 Update 3 und höher unterstützt.
 
 ## <a name="architecture-overview"></a>Übersicht über die Architektur
 
-Die folgenden Tabellen enthalten wichtige Informationen zu verschiedenen Modellen und entsprechenden Architekturen.
+Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen und entsprechenden Architekturen.
 
-#### <a name="storsimple-capacities-for-local-and-cloud-storage"></a>StorSimple-Kapazitäten für lokalen und cloudbasierten Speicher
-
+**StorSimple-Kapazitäten für lokalen und Cloudspeicher**
 
 | Speicherkapazität       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
 | Lokale Speicherkapazität | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Cloudspeicherkapazität | &gt; 200 TiB\* | &gt; 500 TiB\* |
-
 \* Bei der Speichergröße wird von nicht deduplizierten und nicht komprimierten Daten ausgegangen.
 
-#### <a name="storsimple-capacities-for-primary-and-secondary-backups"></a>StorSimple-Kapazitäten für primäre und sekundäre Sicherungen
+**StorSimple-Kapazitäten für primäre und sekundäre Sicherungen**
 
-
-| Sicherungsszenario  | Lokale Speicherkapazität                                         | Cloudspeicherkapazität                      |
-|------------------|----------------------------------------------------------------|---------------------------------------------|
-| Primäre Sicherung   | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung (RPO) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  |
+| Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
+|---|---|---|
+| Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
-In diesem Szenario werden die StorSimple-Volumes der Sicherungsanwendung als einziges Repository für Sicherungen präsentiert. Die folgende Abbildung veranschaulicht die Lösungsarchitektur, in der alle Sicherungen mehrstufige StorSimple-Volumes sowohl für Sicherungen als auch für Wiederherstellungen verwenden.
+In diesem Szenario werden StorSimple-Volumes der Sicherungsanwendung als einziges Repository für Sicherungen präsentiert. Die folgende Abbildung zeigt eine Lösungsarchitektur, in der alle Sicherungen mehrstufige StorSimple-Volumes für Sicherungen und Wiederherstellungen verwenden.
 
 ![StorSimple als primäres Sicherungsziel – logisches Diagramm](./media/storsimple-configure-backup-target-using-backup-exec/primarybackuptargetlogicaldiagram.png)
 
 ### <a name="primary-target-backup-logical-steps"></a>Logische Schritte bei der Sicherung des Primärziels
 
-1.  Der Sicherungsserver kontaktiert den Sicherungs-Agent auf dem Ziel, und der Sicherungs-Agent überträgt Daten zurück an den Sicherungsserver.
-
+1.  Der Sicherungsserver kontaktiert den Sicherungs-Agent auf dem Ziel, und der Sicherungs-Agent überträgt Daten zurück zum Sicherungsserver.
 2.  Der Sicherungsserver schreibt Daten auf die mehrstufigen StorSimple-Volumes.
-
-3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt den Sicherungsauftrag ab.
-
-4.  Das Momentaufnahmeskript löst die Verwaltung von StorSimple-Cloudmomentaufnahmen aus (start-delete).
-
+3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt dann den Sicherungsauftrag ab.
+4.  Ein Momentaufnahmenskript löst den StorSimple Cloud Snapshot Manager aus (starten oder löschen).
 5.  Der Sicherungsserver löscht die abgelaufenen Sicherungen basierend auf einer Aufbewahrungsrichtlinie.
 
-###  <a name="primary-target-restore-logical-steps"></a>Logische Schritte bei der Wiederherstellung des Primärziels
+
+### <a name="primary-target-restore-logical-steps"></a>Logische Schritte bei der Wiederherstellung des Primärziels
 
 1.  Der Sicherungsserver startet die Wiederherstellung der entsprechenden Daten aus dem Speicherrepository.
-
 2.  Der Sicherungs-Agent empfängt die Daten vom Sicherungsserver.
-
 3.  Der Sicherungsserver schließt den Wiederherstellungsauftrag ab.
 
 ## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple als sekundäres Sicherungsziel
 
 In diesem Szenario werden die StorSimple-Volumes hauptsächlich für die langfristige Aufbewahrung oder Archivierung verwendet.
 
-Die folgende Abbildung veranschaulicht die Architektur, in der die anfänglichen Sicherungen und Wiederherstellungen auf ein Hochleistungsvolume ausgelegt sind. Diese Sicherungen werden kopiert und nach einem angegebenen Zeitplan auf ein mehrstufiges StorSimple-Volume archiviert.
+Die folgende Abbildung veranschaulicht die Architektur, in der die anfänglichen Sicherungen und Wiederherstellungen ein Hochleistungsvolume als Ziel haben. Diese Sicherungen werden kopiert und nach einem angegebenen Zeitplan auf einem mehrstufigen StorSimple-Volume archiviert.
 
-Es ist wichtig, das Hochleistungsvolume mit reichlich Speicherplatz und Leistungsfähigkeit zu bemessen, um die Kapazitäts- und Leistungsanforderungen der Aufbewahrungsrichtlinie zu erfüllen.
+Es ist wichtig, das Hochleistungsvolume entsprechend zu bemessen, um die Kapazitäts- und Leistungsanforderungen der Aufbewahrungsrichtlinie zu erfüllen.
 
 ![StorSimple als sekundäres Sicherungsziel – logisches Diagramm](./media/storsimple-configure-backup-target-using-backup-exec/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>Logische Schritte bei der Sicherung des Sekundärziels
 
-1.  Der Sicherungsserver kontaktiert den Sicherungs-Agent auf dem Ziel, und der Sicherungs-Agent überträgt Daten zurück an den Sicherungsserver.
-
+1.  Der Sicherungsserver kontaktiert den Sicherungs-Agent auf dem Ziel, und der Sicherungs-Agent überträgt Daten zurück zum Sicherungsserver.
 2.  Der Sicherungsserver schreibt Daten in den Hochleistungsspeicher.
-
-3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt den Sicherungsauftrag ab.
-
-4.  Der Sicherungsserver kopiert die Sicherungen basierend auf einer Aufbewahrungsrichtlinie nach StorSimple.
-
-5.  Das Momentaufnahmeskript löst die Verwaltung von StorSimple-Cloudmomentaufnahmen aus (start-delete).
-
+3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt dann den Sicherungsauftrag ab.
+4.  Der Sicherungsserver kopiert Sicherungen basierend auf einer Aufbewahrungsrichtlinie nach StorSimple.
+5.  Ein Momentaufnahmenskript löst die Verwaltung von StorSimple-Cloudmomentaufnahmen aus (starten oder löschen).
 6.  Der Sicherungsserver löscht die abgelaufenen Sicherungen basierend auf einer Aufbewahrungsrichtlinie.
 
 ### <a name="secondary-target-restore-logical-steps"></a>Logische Schritte bei der Wiederherstellung des Sekundärziels
 
 1.  Der Sicherungsserver startet die Wiederherstellung der entsprechenden Daten aus dem Speicherrepository.
-
 2.  Der Sicherungs-Agent empfängt die Daten vom Sicherungsserver.
-
 3.  Der Sicherungsserver schließt den Wiederherstellungsauftrag ab.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
-Die Bereitstellung dieser Lösung besteht aus drei Schritten: Vorbereiten der Netzwerkinfrastruktur, Bereitstellen des StorSimple-Geräts als Sicherungsziel und schließlich Bereitstellen von Veritas Backup Exec. Jeder dieser Schritte wird in den folgenden Abschnitten ausführlich erläutert.
+Für das Bereitstellen der Lösung sind drei Schritte erforderlich:
+1. Vorbereiten der Netzwerkinfrastruktur
+2. Bereitstellen Ihres StorSimple-Geräts als Sicherungsziel
+3. Bereitstellen von Backup Exec
 
-### <a name="configure-the-network"></a>Konfigurieren des Netzwerks
+Jeder Schritt wird in den folgenden Abschnitten ausführlich erläutert.
 
-StorSimple als in die Azure-Cloud integrierte Lösung erfordert eine aktive und funktionierende Verbindung mit der Azure-Cloud. Dieser Verbindung wird für Vorgänge wie z.B. Cloudmomentaufnahmen, Verwaltung, Metadatenübertragung sowie zum Tiering älterer, seltener genutzter Daten in den Azure-Cloudspeicher verwendet.
+### <a name="set-up-the-network"></a>Einrichten des Netzwerks
+
+Da StorSimple eine in die Azure-Cloud integrierte Lösung ist, erfordert StorSimple eine aktive und funktionierende Verbindung mit der Azure-Cloud. Dieser Verbindung wird für Vorgänge wie z.B. Cloudmomentaufnahmen, Verwaltung, Metadatenübertragung sowie zum Tiering älterer, seltener genutzter Daten in Azure-Cloudspeicher verwendet.
 
 Damit die Lösung optimal funktioniert, empfehlen sich die folgenden bewährten Methoden für die Netzwerkeinrichtung:
 
--   Die für das StorSimple-Tiering erforderliche Verbindung mit Azure muss Ihre Bandbreitenanforderungen erfüllen. Wenden Sie daher die für Ihre RPO/RTO-SLAs geeignete QoS (Quality of Service) auf Ihre Infrastruktur an.
-
--   Die maximalen Zugriffslatenzen für Azure Blob Storage sollten im 80-Millisekunden-Bereich liegen.
+-   Die Verbindung zwischen Ihrem StorSimple-Tiering und Azure muss die Bandbreitenanforderungen erfüllen. Ordnen Sie hierfür Ihren Infrastrukturswitches die erforderliche Servicequalitätsstufe zu, um Ihre SLAs für Recovery Point Objective (RTO) und Recovery Time Objective (RTO) zu erfüllen.
+-   Die maximalen Zugriffslatenzen für Azure Blob Storage sollten um 80 Millisekunden betragen.
 
 ### <a name="deploy-storsimple"></a>Bereitstellen von StorSimple
 
-Eine Schrittanleitung für die Bereitstellung von StorSimple finden Sie unter [Bereitstellen lokaler StorSimple-Geräte](storsimple-deployment-walkthrough-u2.md).
+Eine detaillierte Anleitung für die Bereitstellung von StorSimple finden Sie unter [Bereitstellen lokaler StorSimple-Geräte](storsimple-deployment-walkthrough-u2.md).
 
-### <a name="deploy-veritas-backup-exec"></a>Bereitstellen von Veritas Backup Exec
+### <a name="deploy-backup-exec"></a>Bereitstellen von Backup Exec
 
-Bewährte Methoden für die Installation von Veritas Backup Exec finden Sie unter [Best practices for Backup Exec installation](https://www.veritas.com/support/en_US/article.000068207) (Bewährte Methoden für die Installation von Backup Exec).
+Bewährte Methoden für die Installation von Backup Exec finden Sie unter [Best practices for Backup Exec installation](https://www.veritas.com/support/en_US/article.000068207) (Bewährte Methoden für die Installation von Backup Exec).
 
-## <a name="configure-the-solution"></a>Konfigurieren der Lösung
+## <a name="set-up-the-solution"></a>Einrichten der Lösung
 
-In diesem Abschnitt zeigen wir Ihnen einige Konfigurationsbeispiele. Die folgenden Beispiele bzw. Empfehlungen veranschaulichen die einfachste und grundlegendste Implementierung. Diese Implementierung gilt möglicherweise nicht exakt für Ihre spezifischen Sicherungsanforderungen.
+In diesem Abschnitt zeigen wir Ihnen einige Konfigurationsbeispiele. Die folgenden Beispiele und Empfehlungen veranschaulichen die einfachste und grundlegendste Implementierung. Diese Implementierung eignet sich möglicherweise nicht direkt für Ihre spezifischen Sicherungsanforderungen.
 
-### <a name="configure-storsimple"></a>Konfigurieren von StorSimple
+### <a name="set-up-storsimple"></a>Einrichten von StorSimple
 
-| StorSimple-Bereitstellungsaufgaben                                                                                                                 | Weitere Kommentare                                                                                                                                                                                                                                                                                      |
-|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Stellen Sie Ihr lokales StorSimple-Gerät bereit.                                                                                                | Unterstützte Version: Update 3 und höher.                                                                                                                                                                                                                                                                 |
-| Aktivieren Sie den Sicherungszielmodus.                                                                                                                   | Verwenden Sie folgende Befehle zum Aktivieren und Deaktivieren und zum Abrufen des Status. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit dem StorSimple-Gerät](storsimple-remote-connect.md).</br> Sicherungsmodus aktivieren:`Set-HCSBackupApplianceMode -enable`</br>  Sicherungsmodus deaktivieren:`Set-HCSBackupApplianceMode -disable`</br> Aktueller Status der Sicherungsmoduseinstellungen:`Get-HCSBackupApplianceMode` |
-| Erstellen Sie einen gemeinsamen Volumecontainer für das Volume, auf dem die Sicherungsdaten gespeichert sind.   Alle Daten in einem Volumecontainer sind dedupliziert. | StorSimple-Volumecontainer definieren Deduplizierungsdomänen.                                                                                                                                                                                                                                             |
-| Erstellen Sie StorSimple-Volumes.                                                                                                                 | Erstellen Sie Volumes, deren Größen so nah wie möglich an der prognostizierten Nutzung liegen, da sich die Größe eines Volumes auf die Dauer von Cloudmomentaufnahmen auswirkt. Weitere Informationen zum Einrichten eines Volumes in der richtigen Größe finden Sie unter [Aufbewahrungsrichtlinien](#retention-policies).</br> </br> Verwenden Sie mehrstufige StorSimple-Volumes, und aktivieren Sie die Option **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen**. </br> Die ausschließliche Verwendung von lokalen Volumes wird nicht unterstützt.|
-| Erstellen Sie eine eindeutige StorSimple-Sicherungsrichtlinie für alle Sicherungszielvolumes.                                                               | Eine StorSimple-Sicherungsrichtlinie definiert die Volumekonsistenzgruppe.                                                                                                                                                                                                                                       |
-| Deaktivieren Sie den Zeitplan, wenn die Momentaufnahmen ablaufen.                                                                                                    | Momentaufnahmen werden als Nachverarbeitungsvorgang ausgelöst.                                                                                                                                                                                                                                                         |
-|                                                                                                     |                                             |
+| StorSimple-Bereitstellungsaufgaben  | Weitere Kommentare |
+|---|---|
+| Stellen Sie Ihr lokales StorSimple-Gerät bereit. | Unterstützte Versionen: Update 3 und höher. |
+| Schalten Sie das Sicherungsziel ein. | Verwenden Sie diese Befehle zum Aktivieren oder Deaktivieren des Sicherungszielmodus und Abrufen des Status. Weitere Informationen finden Sie unter [Herstellen einer Remoteverbindung mit einem StorSimple-Gerät](storsimple-remote-connect.md).</br> So aktivieren Sie den Sicherungsmodus: `Set-HCSBackupApplianceMode -enable`. </br> So deaktivieren Sie den Sicherungsmodus: `Set-HCSBackupApplianceMode -disable`. </br> So rufen Sie den aktuellen Status der Sicherungsmoduseinstellungen ab: `Get-HCSBackupApplianceMode`. |
+| Erstellen Sie einen gemeinsamen Volumecontainer für das Volume, auf dem die Sicherungsdaten gespeichert sind. Alle Daten in einem Volumecontainer sind dedupliziert. | StorSimple-Volumecontainer definieren Deduplizierungsdomänen.  |
+| Erstellen Sie StorSimple-Volumes. | Erstellen Sie Volumes, deren Größen so nah wie möglich an der prognostizierten Nutzung liegen, da sich die Größe eines Volumes auf die Dauer von Cloudmomentaufnahmen auswirkt. Informationen zum Dimensionieren eines Volumes finden Sie unter [Aufbewahrungsrichtlinien](#retention-policies).</br> </br> Verwenden Sie mehrstufige StorSimple-Volumes, und aktivieren Sie das Kontrollkästchen **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen**. </br> Die ausschließliche Verwendung von lokalen Volumes wird nicht unterstützt. |
+| Erstellen Sie eine eindeutige StorSimple-Sicherungsrichtlinie für alle Sicherungszielvolumes. | Eine StorSimple-Sicherungsrichtlinie definiert die Volumekonsistenzgruppe. |
+| Deaktivieren Sie den Zeitplan, wenn die Momentaufnahmen ablaufen. | Momentaufnahmen werden als Nachverarbeitungsvorgang ausgelöst. |
 
+### <a name="set-up-the-host-backup-server-storage"></a>Einrichten des Speichers auf dem Sicherungshostserver
 
+Richten Sie den Speicher auf dem Sicherungshostserver gemäß den folgenden Richtlinien ein:  
 
-
-### <a name="configure-host-backup-server-storage"></a>Konfigurieren des Speichers auf dem Sicherungshostserver
-
-Stellen Sie sicher, dass der Speicher auf dem Sicherungshostserver gemäß den folgenden Richtlinien konfiguriert ist.  
-
-- Übergreifende Volumes (von der Windows-Datenträgerverwaltung erstellt) werden nicht unterstützt.
+- Verwenden Sie keine (von der Windows-Datenträgerverwaltung erstellten) übergreifenden Volumes. Übergreifende Datenträger werden nicht unterstützt.
 - Formatieren Sie die Volumes mit NTFS und einer Zuordnungsgröße von 64 KB.
-- Ordnen Sie die StorSimple-Volumes direkt dem Backup Exec-Server zu.
-    - Verwenden Sie im Fall von physischen Servern iSCSI.
+- Ordnen Sie die StorSimple-Volumes dem Backup Exec-Server direkt zu.
+    - Verwenden Sie iSCSI für physische Server.
     - Verwenden Sie Passthrough-Datenträger für virtuelle Server.
 
+## <a name="best-practices-for-storsimple-and-backup-exec"></a>Bewährte Methoden für StorSimple und Backup Exec
 
-## <a name="best-practices-for-storsimple-and-veritas-backup-exec"></a>Bewährte Methoden für StorSimple und Veritas Backup Exec
+Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein.
 
-Konfigurieren Sie Ihre Lösung gemäß den folgenden Richtlinien.
-
-
-### <a name="operating-system"></a>Betriebssystem
+### <a name="operating-system-best-practices"></a>Bewährte Methoden für das Betriebssystem
 
 -   Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
-
 -   Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
-
 -   Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
+-   Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
+-   Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
+   - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
+   - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Azure-PowerShell als Administrator aus, und geben Sie Folgendes ein:
+      ```powershell
+      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+      ```
 
--   Führen Sie einen Virenscan auf dem Quellhost durch (nicht für die StorSimple-Volumes).
+### <a name="storsimple-best-practices"></a>Bewährte Methoden für StorSimple
 
--   Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager.
+  -   Stellen Sie sicher, dass das StorSimple-Gerät die Version [Update 3 oder höher](storsimple-install-update-3.md) aufweist.
+  -   Isolieren Sie iSCSI- und Clouddatenverkehr. Verwenden Sie dedizierte iSCSI-Verbindungen für Datenverkehr zwischen StorSimple und dem Sicherungsserver.
+  -   Stellen Sie sicher, dass Ihr StorSimple-Gerät ein dediziertes Sicherungsziel ist. Gemischte Workloads werden nicht unterstützt, da sie sich auf die RTO- und RPO-Ziele auswirken.
 
-    - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
+### <a name="backup-exec-best-practices"></a>Bewährte Methoden für Backup Exec
 
-        oder
-
-    - Laden Sie [PSEXEC – Microsoft Sysinternals](https://technet.microsoft.com/sysinternals/bb897553.aspx) herunter.
-
-      - Nachdem Sie PSEXEC heruntergeladen haben, führen Sie Windows-PowerShell als Administrator aus, und geben Sie Folgendes ein:
-
-            `psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable`
-
-### <a name="storsimple"></a>StorSimple
-
--   Stellen Sie sicher, dass das StorSimple-Gerät auf [Update 3 oder höher](storsimple-install-update-3.md) aktualisiert ist.
-
--   Isolieren Sie iSCSI- und Clouddatenverkehr. Verwenden Sie dedizierte iSCSI-Verbindungen für Datenverkehr zwischen StorSimple und dem Sicherungsserver.
-
--   Stellen Sie sicher, dass es sich beim StorSimple-Gerät um ein dediziertes Sicherungsziel handelt. Gemischte Workloads werden nicht unterstützt, da diese sich auf Ihre RTO/RPO auswirken.
-
-### <a name="veritas-backup-exec"></a>Veritas Backup Exec
-
--   Veritas Backup Exec muss auf einem lokalen Laufwerk des Servers installiert werden, nicht auf einem StorSimple-Volume.
-
--   Legen Sie **concurrent write operations** (gleichzeitige Schreibvorgänge) in Veritas Backup Exec Storage auf den maximal zulässigen Wert fest.
-
-    -   Die **block and buffer size** (Block- und Puffergröße) in Veritas Backup Exec Storage sollte auf 512 KB festgelegt werden.
-
-    -   In Veritas Backup Exec Storage sollten **buffered read and write** (gepufferte Lese- und Schreibvorgänge) aktiviert werden.
-
--   Vollständige und inkrementelle Sicherungen von Veritas Backup Exec werden unterstützt, synthetische und differenzielle Sicherungen dagegen werden nicht empfohlen.
-
+-   Backup Exec muss auf einem lokalen Laufwerk des Servers und nicht auf einem StorSimple-Volume installiert werden.
+-   Legen Sie **concurrent write operations** (gleichzeitige Schreibvorgänge) in Backup Exec Storage auf den maximal zulässigen Wert fest.
+    -   Legen Sie **block and buffer size** (Block- und Puffergröße) in Backup Exec Storage auf 512 KB fest.
+    -   Aktivieren Sie in Backup Exec Storage **buffered read and write** (gepufferte Lese- und Schreibvorgänge).
+-   StorSimple unterstützt vollständige und inkrementelle Backup Exec-Sicherungen. Synthetische und differenzielle Sicherungen werden nicht empfohlen.
 -   Sicherungsdatendateien sollten nur die Daten für einen bestimmten Auftrag enthalten. Es können beispielsweise keine Medien aus unterschiedlichen Aufträgen angefügt werden.
-
 -   Deaktivieren Sie die Auftragsüberprüfung. Falls erforderlich, sollte die Überprüfung nach dem letzten Sicherungsauftrag geplant werden. Es ist wichtig zu wissen, dass sich dieser Auftrag auf Ihr Sicherungsfenster auswirkt.
+-   Wählen Sie **Storage (Speicher)** > **Your disk (Ihr Datenträger)** > **Details** > **Properties (Eigenschaften)** aus. Deaktivieren Sie **Pre-allocate disk space** (Festplattenspeicher vorab zuordnen).
 
--   Deaktivieren Sie unter **Storage > Your disk > Details > Properties** (Speicher > Ihr Datenträger > Details > Eigenschaften) die Option **Pre-allocate disk space** (Speicherplatz auf Datenträger vorab zuweisen).
-
-Neueste Informationen zu Veritas Backup Exec-Einstellungen sowie bewährte Methoden zur Implementierung der Anforderungen finden Sie in der Veritas Backup Exec-Dokumentation unter [www.veritas.com](https://www.veritas.com).
+Neueste Informationen zu Backup Exec-Einstellungen und bewährten Methoden für die Implementierung dieser Anforderungen finden Sie auf der [Website von Veritas](https://www.veritas.com).
 
 ## <a name="retention-policies"></a>Aufbewahrungsrichtlinien
 
-Eine der am häufigsten verwendeten Aufbewahrungsrichtlinien ist die GFS-Richtlinie (Grandfather, Father and Son). Bei dieser Richtlinie wird täglich eine inkrementelle Sicherung ausgeführt. Vollständige Sicherungen erfolgen wöchentlich und monatlich. Diese Richtlinie führt zu sechs mehrstufigen StorSimple-Volumes.
+Eine der gängigsten Aufbewahrungsrichtlinien für Sicherungen ist die GFS-Richtlinie (Grandfather, Father, Son). Eine GFS-Richtlinie sieht tägliche inkrementelle Sicherungen und wöchentliche und monatliche vollständige Sicherungen vor. Diese Richtlinie führt zu sechs mehrstufigen StorSimple-Volumes. Ein Volume enthält die wöchentlichen, monatlichen und jährlichen vollständigen Sicherungen. Auf den anderen fünf Volumes werden die täglichen inkrementellen Sicherungen gespeichert.
 
--   Ein Volume enthält die wöchentlichen, monatlichen und jährlichen vollständigen Sicherungen.
-
--   Auf den anderen fünf Volumes werden die täglichen inkrementellen Sicherungen gespeichert.
-
-Das folgende Beispiel zeigt eine GFS-Rotation. Bei diesem Beispiel wird Folgendes vorausgesetzt:
+Im folgenden Beispiel verwenden wir eine GFS-Rotation. Bei diesem Beispiel wird Folgendes vorausgesetzt:
 
 -   Es werden nicht deduplizierte und nicht komprimierte Daten verwendet.
-
 -   Die vollständigen Sicherungen umfassen jeweils 1 TiB.
-
 -   Die täglichen inkrementellen Sicherungen umfassen jeweils 500 GiB.
-
--   4 wöchentliche Sicherungen werden einen Monat lang aufbewahrt.
-
--   12 monatliche Sicherungen werden ein Jahr lang aufbewahrt.
-
--   1 jährliche Sicherung wird 10 Jahre lang aufbewahrt.
+-   Vier wöchentliche Sicherungen werden einen Monat lang aufbewahrt.
+-   Zwölf monatliche Sicherungen werden ein Jahr lang aufbewahrt.
+-   Eine jährliche Sicherung wird zehn Jahre lang aufbewahrt.
 
 Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume mit 26 TiB für die monatlichen und jährlichen vollständigen Sicherungen. Erstellen Sie ein mehrstufiges StorSimple-Volume mit 5 TiB für jede der täglichen inkrementellen Sicherungen.
 
-| Sicherungstyp | Größe in TiB | GFS-Multiplikator\*                                       | Gesamtkapazität in TiB          |
-|-----------------------|----------|--------------------------------------------------------|-----------------------------|
-| Wöchentlich vollständig           | 1        | 4                                                      | 4                           |
-| Täglich inkrementell     | 0,5      | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
-| Monatlich vollständig          | 1        | 12                                                     | 12                          |
-| Jährlich vollständig           | 1        | 10                                                     | 10                          |
-| GFS-Anforderung       |          |                                                        | 38                          |
-| Zusätzliches Kontingent      | 4        |                                                        | 42 (GFS-Anforderung gesamt)   |
+| Sicherungstyp | Größe (TiB) | GFS-Multiplikator\* | Gesamtkapazität (TiB)  |
+|---|---|---|---|
+| Wöchentlich vollständig | 1 | 4  | 4 |
+| Täglich inkrementell | 0,5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
+| Monatlich vollständig | 1 | 12 | 12 |
+| Jährlich vollständig | 1  | 10 | 10 |
+| GFS-Anforderung |   | 38 |   |
+| Zusätzliches Kontingent  | 4  |   | 42 (GFS-Anforderung gesamt)  |
+\* Der GFS-Multiplikator ist die Anzahl von Kopien, die Sie schützen und beibehalten müssen, um die Anforderungen Ihrer Sicherungsrichtlinie zu erfüllen.
 
-\*Der GFS-Multiplikator ist die Anzahl von Kopien, die Sie schützen und beibehalten müssen, um Ihre Sicherungsrichtlinien zu erfüllen.
+## <a name="set-up-backup-exec-storage"></a>Einrichten von Backup Exec-Speicher
 
-## <a name="configure-veritas-backup-exec-storage"></a>Konfigurieren von Veritas Backup Exec-Speicher
+### <a name="to-set-up-backup-exec-storage"></a>So richten Sie Backup Exec-Speicher ein
 
-1.  Wählen Sie in der Veritas Backup Exec-Verwaltungskonsole **Storage  &gt; Configure Storage &gt; Disk-Based Storage** (Speicher > Speicher konfigurieren > Datenträgerbasierter Speicher). Klicken Sie auf **Next &gt;** (Weiter).
+1.  Wählen Sie in der Backup Exec-Verwaltungskonsole **Storage** > **Configure Storage** > **Disk-Based Storage** > **Next** (Speicher > Speicher konfigurieren > Datenträgerbasierter Speicher > Weiter).
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm zum Konfigurieren des Speichers](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
+    ![Backup Exec-Verwaltungskonsole, Seite zum Konfigurieren des Speichers](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-1.  Klicken Sie auf **Disk Storage** (Datenträgerspeicher), und fahren Sie mit der nächsten Seite fort.
+2.  Wählen Sie **Disk Storage** (Festplattenspeicher) und dann **Next** (Weiter) aus.
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm zum Auswählen des Speichers](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
+    ![Backup Exec-Verwaltungskonsole, Seite zum Auswählen des Speichers](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-1.  Geben Sie einen aussagekräftigen Namen wie z.B. „Samstag vollständig“ und eine Beschreibung ein. Fahren Sie mit der nächsten Seite fort.
+3.  Geben Sie einen aussagekräftigen Namen wie z.B. **Samstag, vollständig** und eine Beschreibung ein. Wählen Sie **Weiter**.
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm zur Eingabe von Name und Beschreibung](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
+    ![Backup Exec-Verwaltungskonsole, Seite zur Eingabe von Name und Beschreibung](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
-1.  Wählen Sie den entsprechenden Datenträger aus, und klicken Sie auf **Next &gt;** (Weiter). Hier wurde z.B. „D:“ ausgewählt.
+4.  Wählen Sie den Datenträger, auf dem Sie das Datenträger-Speichergerät erstellen möchten, und dann **Next** (Weiter) aus.
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm zum Auswählen des Speicherdatenträgers](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
+    ![Backup Exec-Verwaltungskonsole, Seite zum Auswählen des Speicherdatenträgers](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-1.  Erhöhen Sie die Anzahl von Schreibvorgängen auf 16, und klicken Sie auch **Next &gt;** (Weiter).
+5.  Erhöhen Sie die Anzahl von Schreibvorgängen auf **16**, und klicken Sie auch **Next** (Weiter).
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm mit Einstellungen für gleichzeitige Schreibvorgänge ](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
+    ![Backup Exec-Verwaltungskonsole, Seite mit Einstellungen für gleichzeitige Schreibvorgänge](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
-1.  Überprüfen Sie die Einstellungen, und klicken Sie auf **Finish** (Fertig stellen).
+6.  Überprüfen Sie die Einstellungen, und klicken Sie auf **Finish** (Fertig stellen).
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm mit Übersicht über die Speicherkonfiguration](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
+    ![Backup Exec-Verwaltungskonsole, Seite mit Übersicht über die Speicherkonfiguration](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
 
-1.  Ändern Sie nach jeder Zuordnung die Einstellungen des Speichergeräts so, dass sie den empfohlenen Einstellungen in der Liste der bewährten Methoden entsprechen.
+7.  Ändern Sie nach jeder Volumezuordnung die Einstellungen des Speichergeräts so, dass sie den empfohlenen Einstellungen unter [Bewährte Methoden für StorSimple und Backup Exec](#best-practices-for-storsimple-and-backup-exec) entsprechen.
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Bildschirm mit Einstellungen für das Speichergerät](./media/storsimple-configure-backup-target-using-backup-exec/image12.png)
+    ![Backup Exec-Verwaltungskonsole, Seite mit Einstellungen für das Speichergerät](./media/storsimple-configure-backup-target-using-backup-exec/image12.png)
 
-1.  Wiederholen Sie alle vorherigen Schritte, bis Sie alle StorSimple-Volumes zu Veritas Backup Exec zugewiesen haben.
+8.  Wiederholen Sie die Schritte 1-7, bis Sie Backup Exec alle StorSimple-Volumes zugewiesen haben.
 
-## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Einrichten von StorSimple als primäres Sicherungsziel
 
 > [!NOTE]
-> Beachten Sie Folgendes: Wenn Sie Daten aus einer Sicherung wiederherstellen müssen, die per Tiering in der Cloud gespeichert wurde, erfolgt die Wiederherstellung mit der Geschwindigkeit der Cloud.
+> Die Wiederherstellung von Daten aus einer Sicherung in Cloudspeicher erfolgt mit der Geschwindigkeit der Cloud.
 
-In der folgenden Abbildung wird die Zuordnung eines typischen Volumes zu einem Sicherungsauftrag veranschaulicht. In diesem Fall werden alle wöchentlichen Sicherungen dem Datenträger mit der vollständigen Sicherung von Samstag und die inkrementellen Sicherungen dem Datenträger mit den inkrementellen Sicherungen von Montag bis Freitag zugeordnet. Alle Sicherungen und Wiederherstellungen erfolgen von einem mehrstufigen StorSimple-Volume.
+In der folgenden Abbildung wird die Zuordnung eines typischen Volumes zu einem Sicherungsauftrag gezeigt. In diesem Fall werden alle wöchentlichen Sicherungen dem Datenträger mit der vollständigen Sicherung von Samstag und die inkrementellen Sicherungen dem Datenträger mit den inkrementellen Sicherungen von Montag bis Freitag zugeordnet. Alle Sicherungen und Wiederherstellungen erfolgen mithilfe eines mehrstufigen StorSimple-Volumes.
 
-![Logisches Diagramm der Konfiguration des primären Sicherungsziels ](./media/storsimple-configure-backup-target-using-backup-exec/primarybackuptargetdiagram.png)
+![Logisches Diagramm der Konfiguration des primären Sicherungsziels](./media/storsimple-configure-backup-target-using-backup-exec/primarybackuptargetdiagram.png)
 
-#### <a name="storsimple-as-a-primary-backup-target-grandfather-father-and-son-gfs-schedule-example"></a>StorSimple als primäres Sicherungsziel, Beispiel für GFS-Zeitplan
+### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>StorSimple als primäres Sicherungsziel: Beispiel eines GFS-Zeitplans
 
-| GFS-Rotationsplan für vier Wochen, monatlich und jährlich |               |             |
-|--------------------------------------------------------------------------|---------------|-------------|
-| Häufigkeit/Sicherungstyp   | Vollständig          | Inkrementell (Tag 1–5)  |
-| Wöchentlich (Woche 1–4)    | Samstag | Montag – Freitag | 
-| Monatlich     | Samstag  |             |
-| Jährlich      | Samstag  |             |
+Hier sehen Sie ein Beispiel für einen GFS-Rotationszeitplan für „Vier Wochen“, „Monatlich“ und „Jährlich“:
+
+| Häufigkeit/Sicherungstyp | Vollständig | Inkrementell (Tag 1 - 5)  |   
+|---|---|---|
+| Wöchentlich (Woche 1 - 4) | Samstag | Montag - Freitag |
+| Monatlich  | Samstag  |   |
+| Jährlich | Samstag  |   |   |
 
 
-### <a name="assigning-storsimple-volumes-to-a-veritas-backup-exec-backup-job"></a>Zuweisen von StorSimple-Volumes zu einem Veritas Backup Exec-Sicherungsauftrag.
+### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Zuweisen von StorSimple-Volumes zu einem Backup Exec-Sicherungsauftrag
 
 Bei der folgenden Sequenz wird vorausgesetzt, dass Backup Exec und der Zielhost gemäß den Backup Exec-Agent-Richtlinien konfiguriert sind.
 
-1.  Wechseln Sie in der Veritas Backup Exec-Verwaltungskonsole zu **Host &gt; Backup &gt; Backup to Disk &gt;** (Host > Sicherung > Sicherung auf Datenträger).
+#### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>So weisen Sie StorSimple-Volumes einem Backup Exec-Sicherungsauftrag zu
 
-    ![Veritas Backup Exec-Verwaltungskonsole, Auswählen von „Host“, „Backup“, „Backup to Disk“ (Host, Sicherung, Sicherung auf Datenträger)](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
+1.  Wählen Sie in der Backup Exec-Verwaltungskonsole**Host** > **Backup** > **Backup to Disk** (Host>Sicherung>Sicherung auf Datenträger) aus.
 
-1.  Wählen Sie im Fenster „Backup Definition Properties“ (Eigenschaften der Sicherungsdefinition) unter „Backup“ die Option **Edit** (Bearbeiten).
+    ![Backup Exec-Verwaltungskonsole, Auswählen von Host, Sicherung, Sicherung auf Datenträger](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-    ![Fenster „Backup Definition Properties“ (Eigenschaften der Sicherungsdefinition), Auswahl von „Edit“ (Bearbeiten)](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
+2.  Wählen Sie im Dialogfeld **Backup Definition Properties** (Eigenschaften der Sicherungsdefinition) unter **Backup** die Option **Edit** (Bearbeiten) aus.
 
-1.  Konfigurieren Sie Ihre vollständigen und inkrementellen Sicherungen so, dass sie Ihre RPO/RTO-Anforderungen erfüllen und den bewährten Methoden von Veritas entsprechen.
+    ![Backup Exec-Verwaltungskonsole, Dialogfeld mit den Eigenschaften der Sicherungsdefinition](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
-2.  Wählen Sie im Fenster „Backup Options“ (Sicherungsoptionen) die Option **Storage** (Speicher).
+3.  Richten Sie Ihre vollständigen und inkrementellen Sicherungen so ein, dass sie Ihre RPO/RTO-Anforderungen erfüllen und den bewährten Methoden von Veritas entsprechen.
 
-    ![Registerkarte „Storage“ (Speicher) im Fenster „Backup Options“ (Sicherungsoptionen)](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
+4.  Wählen Sie im Dialogfeld **Backup Options** (Sicherungsoptionen) die Option **Storage** (Speicher) aus.
 
-1.  Weisen Sie Ihrem Sicherungszeitplan die entsprechenden StorSimple-Volumes zu.
+    ![Backup Exec-Verwaltungskonsole, Dialogfeld mit der Sicherungsoption „Speicher“](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
+
+5.  Weisen Sie Ihrem Sicherungszeitplan die entsprechenden StorSimple-Volumes zu.
 
     > [!NOTE]
     > **Compression** (Komprimierung) und **Encryption type** (Verschlüsselungstyp) sind auf **None** (Keine) festgelegt.
 
-2.  Wählen Sie unter **Verify** (Überprüfen) die Option **Do not verify data for this job** (Daten für diesen Auftrag nicht überprüfen) aus, da dies das StorSimple-Tiering beeinträchtigen kann.
+6.  Aktivieren Sie unter **Verify** (Überprüfen) das Kontrollkästchen **Do not verify data for this job** (Daten für diesen Auftrag nicht überprüfen). Diese Option kann das StorSimple-Tiering beeinträchtigen.
 
     > [!NOTE]
     > Defragmentierung, Indizierung und Hintergrundüberprüfung wirken sich negativ auf das StorSimple-Tiering aus.
 
-    ![Überprüfungseinstellungen für Sicherungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image17.png)
+    ![Backup Exec-Verwaltungskonsole, Dialogfeld mit der Sicherungsoption „Überprüfen“](./media/storsimple-configure-backup-target-using-backup-exec/image17.png)
 
-1.  Nachdem Sie die verbleibenden Sicherungsoptionen so konfiguriert haben, dass sie Ihre Anforderungen erfüllen, wählen Sie **OK**.
+7.  Nachdem Sie die verbleibenden Sicherungsoptionen so eingerichtet haben, dass sie Ihre Anforderungen erfüllen, klicken Sie abschließend auf **OK**.
 
-## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple als sekundäres Sicherungsziel
+## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>Einrichten von StorSimple als sekundäres Sicherungsziel
 
 > [!NOTE]
-> Beachten Sie Folgendes: Wenn Sie Daten aus einer Sicherung wiederherstellen müssen, die per Tiering in der Cloud gespeichert wurde, erfolgt die Wiederherstellung mit der Geschwindigkeit der Cloud.
+>Die Wiederherstellung von Daten aus einer Sicherung in Cloudspeicher erfolgt mit der Geschwindigkeit der Cloud.
 
-In diesem Modell muss ein Speichermedium (nicht StorSimple) vorhanden sein, das als temporärer Cache dient. Sie können z.B. ein RAID-Volume verwenden, um Speicherplatz, E/A und Bandbreite bereitzustellen. Wir empfehlen RAID 5, 50 und 10.
+In diesem Modell muss ein Speichermedium (nicht StorSimple) vorhanden sein, das als temporärer Cache dient. Sie können ein RAID-Volume (Redundant Array of Independent Disks) nutzen, um die Anforderungen an Speicherplatz, Ein-/Ausgabe und Bandbreite zu erfüllen. Wir empfehlen RAID 5, 50 und 10.
 
-Die folgende Abbildung veranschaulicht typische Volumes für die kurzfristige lokale Aufbewahrung (auf dem Server) und die langfristige Aufbewahrung im Archiv. In diesem Fall werden alle Sicherungen auf dem lokalen RAID-Volume (auf dem Server) ausgeführt. Diese Sicherungen werden regelmäßig dupliziert und auf einem Archivvolume archiviert. Es ist wichtig, die Größe des lokalen RAID-Volumes (auf dem Server) so einzurichten, dass die Kapazitäts- und Leistungsanforderungen für die kurzfristige Aufbewahrung erfüllt werden.
+Die folgende Abbildung zeigt typische Volumes für die kurzfristige lokale Aufbewahrung (auf dem Server) und die langfristige Aufbewahrung im Archiv. In diesem Szenario erfolgen alle Sicherungen auf dem lokalen RAID-Volume (auf dem Server). Diese Sicherungen werden regelmäßig dupliziert und auf einem Archivvolume archiviert. Es ist wichtig, die Größe des lokalen RAID-Volumes (auf dem Server) so einzurichten, dass die Kapazitäts- und Leistungsanforderungen für die kurzfristige Aufbewahrung erfüllt werden.
 
-#### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple als sekundäres Sicherungsziel – GFS-Beispiel
+### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple als sekundäres Sicherungsziel – GFS-Beispiel
 
-![StorSimple als sekundäres Sicherungsziel – logisches Diagramm ](./media/storsimple-configure-backup-target-using-backup-exec/secondarybackuptargetdiagram.png)
+![StorSimple als sekundäres Sicherungsziel – logisches Diagramm](./media/storsimple-configure-backup-target-using-backup-exec/secondarybackuptargetdiagram.png)
 
-Die folgende Tabelle zeigt, wie die Sicherungen für die Ausführung auf den lokalen und StorSimple-Datenträgern konfiguriert werden sollten. Die Tabelle enthält auch die Anforderungen an die Einzel- und Gesamtkapazität.
+In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf den lokalen und StorSimple-Datenträgern eingerichtet werden. Die Tabelle enthält individuelle und gesamte Kapazitätsanforderungen.
 
-#### <a name="backup-configuration-and-capacity-requirements"></a>Sicherungskonfiguration und Kapazitätsanforderungen
+### <a name="backup-configuration-and-capacity-requirements"></a>Sicherungskonfiguration und Kapazitätsanforderungen
 
-| Sicherungstyp und Aufbewahrung                    |Konfigurierter Speicher| Größe (TiB) | GFS-Multiplikator | Gesamtkapazität (TiB)        |
-|----------------------------------------------|-----|----------|----------------|------------------------|
-| Woche 1 (vollständig und inkrementell) |Lokaler Datenträger (kurzfristig)| 1        | 1              | 1           |
-| StorSimple, Woche 2–4           |StorSimple-Datenträger (langfristig) | 1        | 4              | 4                   |
-| Monatlich vollständig                                 |StorSimple-Datenträger (langfristig) | 1        | 12             | 12                   |
-| Jährlich vollständig                               |StorSimple-Datenträger (langfristig) | 1        | 1              | 1                   |
-|Größenanforderungen für GFS-Volumes | |          |                | 18*|
-
+| Sicherungstyp und Aufbewahrung | Konfigurierter Speicher | Größe (TiB) | GFS-Multiplikator | Gesamtkapazität \* (TiB) |
+|---|---|---|---|---|
+| Woche 1 (vollständig und inkrementell) |Lokaler Datenträger (kurzfristig)| 1 | 1 | 1 |
+| StorSimple, Woche 2-4 |StorSimple-Datenträger (langfristig) | 1 | 4 | 4 |
+| Monatlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 12 | 12 |
+| Jährlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 1 | 1 |
+|Größenanforderungen für GFS-Volumes |  |  |  | 18*|
 \* Die Gesamtkapazität umfasst 17 TiB für StorSimple-Datenträger und 1 TiB für lokale RAID-Volumes.
 
 
-#### <a name="gfs-example-schedule"></a>GFS-Beispielzeitplan
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS-Beispielzeitplan: GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan
 
-|GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan|                    |                   |                   |                   |                   |                   |
-|--------------------------------------------------------------------------|--------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
-| Frequency                                                                     | Vollständig               | Inkrementell, Tag 1        | Inkrementell, Tag 2        | Inkrementell, Tag 3        | Inkrementell, Tag 4        | Inkrementell, Tag 5        |
-| Woche 1                                                                   | Lokales RAID-Volume  | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume |
-| Woche 2                                                                   | StorSimple, Woche 2–4 |                   |                   |                   |                   |                   |
-| Woche 3                                                                   | StorSimple, Woche 2–4 |                   |                   |                   |                   |                   |
-| Woche 4                                                                   | StorSimple, Woche 2–4 |                   |                   |                   |                   |                   |
-| Monatlich                                                                  | StorSimple monatlich |                   |                   |                   |                   |                   |
-| Jährlich                                                                   | StorSimple jährlich  |                   |                   |                   |                   |                   |
+| Woche | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
+|---|---|---|---|---|---|---|
+| Woche 1 | Lokales RAID-Volume  | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume |
+| Woche 2 | StorSimple, Woche 2-4 |   |   |   |   |   |
+| Woche 3 | StorSimple, Woche 2-4 |   |   |   |   |   |
+| Woche 4 | StorSimple, Woche 2-4 |   |   |   |   |   |
+| Monatlich | StorSimple monatlich |   |   |   |   |   |
+| Jährlich | StorSimple jährlich  |   |   |   |   |   |   |
 
 
-### <a name="assign-storsimple-volumes-to-backup-exec-archivededuplication-job"></a>Zuweisen von StorSimple-Volumes zu Backup Exec-Archivierungs-/Deduplizierungsaufträgen
+### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Zuweisen von StorSimple-Volumes zu einem Backup Exec-Archivierungs- und Deduplizierungsauftrag
 
-1.  Sobald der anfängliche Sicherungsauftrag zur Verwendung des RAID-Volumes als primäres Sicherungsziel konfiguriert wurde, wechseln Sie zur Veritas Backup Exec-Verwaltungskonsole. Wählen Sie den Auftrag aus, den Sie auf ein StorSimple-Volume archivieren möchten, klicken Sie mit der rechten Maustaste, und wählen Sie **Backup Definition Properties** (Eigenschaften von Sicherungsdefinitionen) aus. Klicken Sie auf **Bearbeiten**.
+#### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>So weisen Sie StorSimple-Volumes einem Backup Exec-Archivierungs- und Deduplizierungsauftrag zu
 
-    ![Backup Exec-Konsole, Registerkarte mit Eigenschaften von Sicherungsdefinitionen](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
+1.  Klicken Sie in der Backup Exec-Verwenden mit der rechten Maustaste auf den Auftrag, den Sie auf einem StorSimple-Volume archivieren möchten. Wählen Sie dann **Backup Definition Properties** > **Edit** (Eigenschaften von Sicherungsdefinitionen>Bearbeiten) aus.
 
-1.  Wählen Sie **Add Stage** (Auftrag hinzufügen), und wählen Sie dann aus der Dropdownliste die Option **Duplicate to Disk** (Auf Datenträger duplizieren). Klicken Sie auf **Bearbeiten**.
+    ![Backup Exec-Verwaltungskonsole, Registerkarte „Eigenschaften“ in der Sicherungsdefinition](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-    ![Backup Exec-Konsole, Sicherungsdefinitionen, Speicherstufe hinzufügen](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
+2.  Wählen Sie **Add Stage** > **Duplicate to Disk** > **Edit** (Phase hinzufügen>Auf Datenträger duplizieren>Bearbeiten) aus.
 
-2.  Wählen Sie aus den **Duplicate Options** (Duplikatoptionen) die entsprechende **Source** (Quelle) und den **Schedule** (Zeitplan) aus.
+    ![Backup Exec-Verwaltungskonsole, Phase hinzufügen](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen, Duplikatoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
+3.  Wählen Sie im Dialogfeld **Duplicate Options** (Duplizierungsoptionen) die Werte aus, die Sie für **Source** (Quelle) und **Schedule** (Zeitplan) verwenden möchten.
 
-1.  Wählen Sie aus der Dropdownliste **Storage** (Speicher) das StorSimple-Volume, in dem der Archivierungsauftrag die Daten speichern soll. In diesem Fall wurde die Quelle auf **Full** (Vollständig) und das Ziel auf das vollständige StorSimple-Archivvolume festgelegt.
+    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen, Duplikatoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+4.  Wählen Sie in der Dropdownliste **Storage** (Speicher) das StorSimple-Volume, in dem der Archivierungsauftrag die Daten speichern soll.
 
-1.  Wechseln Sie zu **Verify** (Überprüfen), und wählen Sie **Do not verify data for this job** (Daten für diesen Auftrag nicht überprüfen) aus.
+    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen, Duplikatoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+5.  Wählen Sie **Verify** (Überprüfen) aus, und aktivieren Sie das Kontrollkästchen **Do not verify data for this job** (Daten für diesen Auftrag nicht überprüfen).
 
-1.  Klicken Sie auf **OK**.
+    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen, Duplikatoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+6.  Klicken Sie auf **OK**.
 
-1.  Fügen Sie in der Spalte **Backup** (Sicherung) einen neuen Sicherungsauftrag hinzu. Wählen Sie als Quelle eine inkrementelle Sicherung und als Ziel das StorSimple-Volume aus, in dem der inkrementelle Sicherungsauftrag archiviert ist. Wiederholen Sie die vorherigen Schritte.
+    ![Backup Exec-Konsole, Eigenschaften von Sicherungsdefinitionen und Duplizierungsoptionen](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+
+7.  Fügen Sie in der Spalte **Backup** (Sicherung) einen neuen Sicherungsauftrag hinzu. Verwenden Sie für „Source“ (Quelle) **incremental** (inkrementell). Wählen Sie als Ziel das StorSimple-Volume aus, auf dem der inkrementelle Sicherungsauftrag archiviert ist. Wiederholen Sie die Schritte 1-6.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple-Cloudmomentaufnahmen
 
-StorSimple-Cloudmomentaufnahmen schützen die Daten, die sich auf dem StorSimple-Gerät befinden. Dies entspricht dem Senden von Bändern an einen externen Standort bzw. bei Verwendung von georedundantem Speicher in Azure (GRS) dem Senden von Bändern an mehrere Standorte. Wenn im Notfall eine Gerätewiederherstellung erforderlich ist, können Sie ein anderes StorSimple-Gerät online schalten und ein Failover ausführen. Nach dem Failover können Sie aus der jüngsten Cloudmomentaufnahme auf die Daten zugreifen (mit der Geschwindigkeit der Cloud).
+StorSimple-Cloudmomentaufnahmen schützen die Daten, die sich auf Ihrem StorSimple-Gerät befinden. Das Erstellen einer Cloudmomentaufnahme ist gleichbedeutend mit dem Überführen lokaler Sicherungsbänder an einen externen Standort. Bei Verwendung von georedundantem Azure-Speicher entspricht das Erstellen einer Cloudmomentaufnahme dem Versenden mehrerer Bänder an mehrere Standorte. Wenn nach einem Notfall eine Gerätewiederherstellung erforderlich ist, können Sie ein anderes StorSimple-Gerät online schalten und ein Failover ausführen. Nach dem Failover können Sie aus der jüngsten Cloudmomentaufnahme (mit der Geschwindigkeit der Cloud) auf die Daten zugreifen.
 
-Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple-Cloudmomentaufnahmen während der Nachverarbeitung von Sicherungen auszulösen und zu löschen.
-
-> [!NOTE]
-> Manuell oder programmgesteuert erstellte Momentaufnahmen folgen nicht der Ablaufrichtlinie für StorSimple-Momentaufnahmen. Diese müssen manuell oder programmgesteuert gelöscht werden.
-
-### <a name="start-and-delete-cloud-snapshots-with-a-script"></a>Starten und Löschen von Cloudmomentaufnahmen mit einem Skript
+Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple-Cloudmomentaufnahmen während der Nachverarbeitung von Sicherungen zu starten und zu löschen.
 
 > [!NOTE]
-> Bewerten Sie sorgfältig die Auswirkungen auf Compliance und Datenaufbewahrung, bevor Sie eine StorSimple-Momentaufnahme löschen. Weitere Informationen zum Ausführen eines Skripts nach der Sicherung finden Sie in der Veritas Backup Exec-Dokumentation.
+> Manuell oder programmgesteuert erstellte Momentaufnahmen folgen nicht der Ablaufrichtlinie für StorSimple-Momentaufnahmen. Diese Momentaufnahmen müssen manuell oder programmgesteuert gelöscht werden.
 
-#### <a name="backup-lifecycle"></a>Sicherungslebenszyklus
+### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Starten und Löschen von Cloudmomentaufnahmen mit einem Skript
+
+> [!NOTE]
+> Bewerten Sie sorgfältig die Auswirkungen auf Compliance und Datenaufbewahrung, bevor Sie eine StorSimple-Momentaufnahme löschen. Weitere Informationen zum Ausführen eines Skripts nach der Sicherung finden Sie in der [Backup Exec-Dokumentation](https://www.veritas.com/support/en_US/15047.html).
+
+### <a name="backup-lifecycle"></a>Sicherungslebenszyklus
 
 ![Diagramm zum Sicherungslebenszyklus](./media/storsimple-configure-backup-target-using-backup-exec/backuplifecycle.png)
 
-#### <a name="requirements"></a>Anforderungen:
+### <a name="requirements"></a>Anforderungen
 
--   Der Server, auf dem das Skript ausgeführt wird, muss auf die Azure-Cloud zugreifen können.
-
+-   Der Server, auf dem das Skript ausgeführt wird, muss auf Azure-Cloudressourcen zugreifen können.
 -   Das Benutzerkonto muss über die notwendigen Berechtigungen verfügen.
+-   Eine StorSimple-Sicherungsrichtlinie mit zugehörigen StorSimple-Volumes muss eingerichtet, aber nicht aktiviert sein.
+-   Sie benötigen den Ressourcennamen, Registrierungsschlüssel, Gerätenamen und die Sicherungsrichtlinien-ID von StorSimple.
 
--   Eine StorSimple-Sicherungsrichtlinie mit zugehörigen StorSimple-Volumes muss konfiguriert, aber nicht aktiviert sein.
+### <a name="to-start-or-delete-a-cloud-snapshot"></a>So starten oder löschen Sie eine Cloudmomentaufnahme
 
--   Ressourcenname, Registrierungsschlüssel, Gerätename und Sicherungsrichtlinien-ID von StorSimple.
-
-#### <a name="steps"></a>Schritte:
-
-1.  [Installieren Sie Azure PowerShell](/powershell-install-configure/).
-
+1.  [Installieren Sie Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azureps-cmdlets-docs/).
 2.  [Laden Sie Veröffentlichungseinstellungen und Abonnementinformationen herunter, und importieren Sie sie](https://msdn.microsoft.com/library/dn385850.aspx).
-
 3.  Rufen Sie im klassischen Azure-Portal den Ressourcennamen und [Registrierungsschlüssel für Ihren StorSimple Manager-Dienst](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key) ab.
+4.  Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, PowerShell als Administrator aus. Geben Sie folgenden Befehl ein:
 
-4.  Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, Windows PowerShell als Administrator aus. Geben Sie Folgendes ein:
-
-    -   `Get-AzureStorSimpleDeviceBackupPolicy –DeviceName <device name>`
+    `Get-AzureStorSimpleDeviceBackupPolicy –DeviceName <device name>`
 
     Notieren Sie sich die ID der Sicherungsrichtlinie.
+5.  Erstellen Sie in Editor ein neues PowerShell-Skript mit dem folgenden Code.
 
-5.  Erstellen Sie im Editor ein neues Windows PowerShell-Skript, und speichern Sie es an dem Speicherort, an dem auch die Azure-Veröffentlichungseinstellungen gespeichert sind. Beispiel: `C:\\CloudSnapshot\\StorSimpleCloudSnapshot.ps1`.
-
-    Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn ein:
-
+    Kopieren Sie diesen Codeausschnitt, und fügen Sie ihn ein:
     ```powershell
     Import-AzurePublishSettingsFile "c:\\CloudSnapshot Snapshot\\myAzureSettings.publishsettings"
     Disable-AzureDataCollection
@@ -532,65 +472,60 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
     ForEach ($SnapShot in $CompletedSnapshots)
     {
-    $SnapshotStartTimeStamp = $Snapshot.CreatedOn
-    if ($SnapshotStartTimeStamp -lt $ExpirationDate)
+        $SnapshotStartTimeStamp = $Snapshot.CreatedOn
+        if ($SnapshotStartTimeStamp -lt $ExpirationDate)
 
         {
-        $SnapShotInstanceID = $SnapShot.InstanceId
-        Write-Host "This snapshotdate was created on " $SnapshotStartTimeStamp.Date.ToShortDateString()
-        Write-Host "Instance ID " $SnapShotInstanceID
-        Write-Host "This snpashotdate is older and needs to be deleted"
-        Write-host "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"
-        Remove-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName -BackupId $SnapShotInstanceID -Force -Verbose
+            $SnapShotInstanceID = $SnapShot.InstanceId
+            Write-Host "This snpashotdate was created on " $SnapshotStartTimeStamp.Date.ToShortDateString()
+            Write-Host "Instance ID " $SnapShotInstanceID
+            Write-Host "This snpashotdate is older and needs to be deleted"
+            Write-host "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"
+            Remove-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName -BackupId $SnapShotInstanceID -Force -Verbose
         }
-    }   
+    }
     ```
-
-1.  Fügen Sie das Skript zu Ihrem Sicherungsauftrag in Veritas Backup Exec hinzu, indem Sie die Befehle für die Vor- und Nachverarbeitung in den Veritas Backup Exec-Auftragsoptionen bearbeiten.
+      Speichern Sie das PowerShell-Skript an dem Speicherort, an dem Sie Ihre Azure-Veröffentlichungseinstellungen gespeichert haben. Speichern Sie es beispielsweise unter „C:\CloudSnapshot\StorSimpleCloudSnapshot.ps1“.
+6.  Fügen Sie das Skript Ihrem Sicherungsauftrag in Backup Exec hinzu, indem Sie die Befehle für die Vor- und Nachverarbeitung in den Backup Exec-Auftragsoptionen bearbeiten.
 
     ![Backup Exec-Konsole, Sicherungsoptionen, Registerkarte mit Befehlen für die Vor- und Nachverarbeitung](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
 > [!NOTE]
-> Es empfiehlt sich, die Sicherungsrichtlinie für StorSimple-Cloudmomentaufnahmen als Nachverarbeitungsskript am Ende des täglichen Sicherungsauftrags auszuführen. Weitere Informationen zum Sichern und Wiederherstellen Ihrer Sicherungsanwendungsumgebung, um Ihre RPO/RTO zu erfüllen, erhalten Sie von Ihrem Sicherungsarchitekten.
+> Es empfiehlt sich, die Sicherungsrichtlinie für StorSimple-Cloudmomentaufnahmen als Nachverarbeitungsskript am Ende des täglichen Sicherungsauftrags auszuführen. Weitere Informationen zum Sichern und Wiederherstellen Ihrer Sicherungsanwendungsumgebung, um Ihre RPO- und RTO-Ziele zu erfüllen, erhalten Sie von Ihrem Sicherungsarchitekten.
 
 ## <a name="storsimple-as-a-restore-source"></a>StorSimple als Wiederherstellungsquelle
 
-Wiederherstellungen aus StorSimple funktionieren ähnlich wie Wiederherstellungen aus anderen Blockspeichergeräten. Bei Daten, die per Tiering in der Cloud gespeichert wurden, erfolgt die Wiederherstellung mit der Geschwindigkeit der Cloud. Bei lokalen Daten erfolgt die Wiederherstellung mit der Geschwindigkeit des lokalen Datenträgers des Geräts. Informationen zum Ausführen einer Wiederherstellung finden Sie in der Veritas Backup Exec-Dokumentation. Halten Sie sich auch an die bewährten Methoden für die Wiederherstellung mit Veritas Backup Exec.
+Wiederherstellungen aus einem StorSimple-Gerät funktionieren ähnlich wie Wiederherstellungen aus anderen Blockspeichergeräten. Bei Daten, die per Tiering in der Cloud gespeichert wurden, erfolgt die Wiederherstellung mit der Geschwindigkeit der Cloud. Bei lokalen Daten erfolgt die Wiederherstellung mit der Geschwindigkeit des lokalen Datenträgers des Geräts. Informationen zum Ausführen einer Wiederherstellung finden Sie in der Backup Exec-Dokumentation. Es wird empfohlen, die bewährten Backup Exec-Wiederherstellungsmethoden zu befolgen.
 
 ## <a name="storsimple-failover-and-disaster-recovery"></a>StorSimple-Failover und -Notfallwiederherstellung
 
 > [!NOTE]
 > In Sicherungszielszenarien wird die StorSimple Cloud Appliance nicht als Wiederherstellungsziel unterstützt.
 
-Notfälle können durch verschiedene Faktoren eintreten. Die folgende Tabelle führt häufige Notfallwiederherstellungsszenarien auf.
+Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folgenden Tabelle sind häufige Notfallwiederherstellungsszenarien aufgeführt.
 
-| Szenario                                                                    | Auswirkung                                             | Wiederherstellung                                                                                                                                                                               | Hinweise                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|-----------------------------------------------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ausfall eines StorSimple-Geräts.                                                | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn die Wiederherstellung der Daten unmittelbar nach der Wiederherstellung des Geräts erfolgt, werden die vollständigen Arbeitsdatensätze aus der Cloud auf das neue Gerät abgerufen. Daher erfolgen alle Vorgänge mit der Geschwindigkeit der Cloud. Darüber hinaus kann das erneute Scannen von Index und Katalog dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger.                                                               |
-| Ausfall des Veritas Backup Exec-Servers.                                       | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie unter [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083) (Manuelles Sichern und Wiederherstellen der Backup Exec-Datenbank [BEDB]) beschrieben.            | Der Veritas Backup Exec-Server muss am Standort der Notfallwiederherstellung neu erstellt oder wiederhergestellt werden. Die Datenbank muss auf den jüngsten Zeitpunkt wiederhergestellt werden. Wenn die wiederhergestellte Veritas Backup Exec-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |
-| Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt. | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann Veritas Backup Exec wieder her.                                                                                                                                   | Stellen Sie zuerst StorSimple und dann Veritas Backup Exec wieder her.                                                                Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitsdatensätze aus der Cloud auf das neue Gerät abgerufen. Daher erfolgen alle Vorgänge mit der Geschwindigkeit der Cloud.|
-
+| Szenario | Auswirkung | Wiederherstellung | Hinweise |
+|---|---|---|---|
+| Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwendiger Prozess sein. |
+| Ausfall des Backup Exec-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie unter [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083) (Manuelles Sichern und Wiederherstellen der Backup Exec-Datenbank [BEDB]) beschrieben. | Sie können den Backup Exec-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte Backup Exec-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |
+| Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann Backup Exec wieder her. | Stellen Sie zuerst StorSimple und dann Backup Exec wieder her. Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. |
 
 ## <a name="references"></a>Referenzen
 
-Folgende Dokumente dienten zur Referenz für diesen Artikel:
+Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
-- [Konfigurieren von Multipfad-E/A für Ihr StorSimple-Gerät](storsimple-configure-mpio-windows-server.md)
-
+- [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
 - [Storage scenarios: Thin provisioning](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
-
 - [Using GPT drives](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
-
-- [Aktivieren und Konfigurieren von Schattenkopien für freigegebene Ordner](http://technet.microsoft.com/library/cc771893.aspx)
+- [Einrichten von Schattenkopien für freigegebene Ordner](http://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen:
-
-- Erfahren Sie, wie Sie eine [Wiederherstellung aus einem Sicherungssatz durchführen](storsimple-restore-from-backup-set-u2.md).
+- Erfahren Sie, wie Sie die [Wiederherstellung aus einem Sicherungssatz](storsimple-restore-from-backup-set-u2.md) durchführen.
 - Erfahren Sie, wie Sie [ein Gerätefailover und eine Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) ausführen.
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

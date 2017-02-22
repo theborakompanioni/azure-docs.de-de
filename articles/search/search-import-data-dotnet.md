@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 01/13/2017
 ms.author: brjohnst
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 724edc7894cabfb31f6e43a291f98ab60c0a9981
+ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
+ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
 
 
 ---
@@ -41,7 +41,7 @@ Gehen Sie wie folgt vor, um Dokumente mit dem .NET SDK in Ihren Index zu übertr
 2. Erstellen Sie ein `IndexBatch`-Element mit den Dokumenten, die hinzugefügt, geändert oder gelöscht werden sollen.
 3. Rufen Sie die `Documents.Index`-Methode des `SearchIndexClient`-Elements auf, um das `IndexBatch`-Element an den Suchindex zu senden.
 
-## <a name="i-create-an-instance-of-the-searchindexclient-class"></a>I. Erstellen einer Instanz der SearchIndexClient-Klasse
+## <a name="create-an-instance-of-the-searchindexclient-class"></a>Erstellen einer Instanz der SearchIndexClient-Klasse
 Um Daten mit dem Azure Search .NET SDK in den Index zu importieren, müssen Sie eine Instanz der `SearchIndexClient`-Klasse erstellen. Sie können diese Instanz selbst erstellen. Es ist aber einfacher, wenn Sie bereits über eine `SearchServiceClient`-Instanz zum Aufrufen der `Indexes.GetClient`-Methode verfügen. Hier ist beispielsweise angegeben, wie Sie ein `SearchIndexClient`-Element für den Index mit dem Namen „hotels“ über ein `SearchServiceClient`-Element mit dem Namen `serviceClient` erhalten:
 
 ```csharp
@@ -55,7 +55,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 
 `SearchIndexClient` verfügt über eine `Documents`-Eigenschaft. Mit dieser Eigenschaft werden alle Methoden bereitgestellt, die Sie benötigen, um Dokumente im Index hinzuzufügen, zu ändern, zu löschen oder abzufragen.
 
-## <a name="ii-decide-which-indexing-action-to-use"></a>II. Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
+## <a name="decide-which-indexing-action-to-use"></a>Entscheiden Sie, welche Indizierungsaktion verwendet werden soll.
 Zum Importieren von Daten mit dem .NET SDK müssen Sie Ihre Daten in einem `IndexBatch`-Objekt verpacken. Ein `IndexBatch`-Element kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll (Hochladen, Zusammenführen, Löschen usw.). Je nachdem, welche der folgenden Aktionen Sie wählen, müssen für jedes Dokument nur bestimmte Felder eingefügt werden:
 
 | Aktion | Beschreibung | Erforderliche Felder für jedes Dokument | Hinweise |
@@ -67,7 +67,7 @@ Zum Importieren von Daten mit dem .NET SDK müssen Sie Ihre Daten in einem `Inde
 
 Sie können angeben, welche Aktion Sie verwenden möchten, indem Sie verschiedene statische Methoden der Klassen `IndexBatch` und `IndexAction` verwenden. Dies wird im nächsten Abschnitt gezeigt.
 
-## <a name="iii-construct-your-indexbatch"></a>III. Erstellen des IndexBatch-Elements
+## <a name="construct-your-indexbatch"></a>Erstellen des IndexBatch-Elements
 Nachdem Sie nun wissen, welche Aktionen für die Dokumente durchgeführt werden, können Sie das `IndexBatch`-Element erstellen. Im folgenden Beispiel wird veranschaulicht, wie Sie einen Batch mit einigen anderen Aktionen erstellen. Beachten Sie, dass im Beispiel eine benutzerdefinierte Klasse mit dem Namen `Hotel` verwendet wird, die einem Dokument im Index „hotels“ zugeordnet ist.
 
 ```csharp
@@ -130,7 +130,7 @@ Beachten Sie außerdem, dass in einer Indizierungsanforderung nur bis zu 1.000 
 > 
 > 
 
-## <a name="iv-import-data-to-the-index"></a>IV. Importieren von Daten in den Index
+## <a name="import-data-to-the-index"></a>Importieren von Daten in den Index
 Nachdem Sie nun über ein initialisiertes `IndexBatch`-Objekt verfügen, können Sie es an den Index senden, indem Sie `Documents.Index` für das `SearchIndexClient`-Objekt aufrufen. Das folgende Beispiel zeigt, wie Sie `Index`aufrufen, sowie einige zusätzliche Schritte, die Sie ausführen müssen:
 
 ```csharp
@@ -215,7 +215,7 @@ Das Erste, was Sie sehen, ist, dass jede öffentliche Eigenschaft von `Hotel` ei
 > 
 > 
 
-Ebenso bemerkenswert an der Klasse `Hotel` sind die Datentypen der öffentlichen Eigenschaften. Die .NET-Typen dieser Eigenschaften stimmen mit den entsprechenden Feldtypen in der Indexdefinition überein. Die Zeichenfolgeeigenschaft `Category` passt zum Beispiel zum Feld `category`, das den Typ `DataType.String` hat. Ähnliche Zuordnungen bestehen auch zwischen `bool?` und `DataType.Boolean`, `DateTimeOffset?`, `DataType.DateTimeOffset` usw. Die jeweiligen Regeln für die Zuordnung eines Typs sind in der [Referenz zum Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) unter der `Documents.Get`-Methode dokumentiert.
+Ebenso bemerkenswert an der Klasse `Hotel` sind die Datentypen der öffentlichen Eigenschaften. Die .NET-Typen dieser Eigenschaften stimmen mit den entsprechenden Feldtypen in der Indexdefinition überein. Die Zeichenfolgeeigenschaft `Category` passt zum Beispiel zum Feld `category`, das den Typ `DataType.String` hat. Ähnliche Zuordnungen bestehen auch zwischen `bool?` und `DataType.Boolean`, `DateTimeOffset?` und `DataType.DateTimeOffset` usw. Die jeweiligen Regeln für die Zuordnung eines Typs sind in der [Referenz zum Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) unter der `Documents.Get`-Methode dokumentiert.
 
 Diese Möglichkeit, eigene Klassen als Dokumente zu verwenden, funktioniert in beide Richtungen. Denn Sie können das SDK auch wie im [nächsten Artikel](search-query-dotnet.md) gezeigt beim Abrufen von Suchergebnissen anweisen, diese automatisch in einen Typ Ihrer Wahl zu deserialisieren.
 
@@ -234,12 +234,12 @@ Dieser Aspekt ist nicht nur hypothetischer Art: Stellen Sie sich ein Szenario vo
 
 Aus diesem Grund empfehlen wir als bewährte Methode, in Ihren Modellklassen Typen zu verwenden, die NULL-Werte zulassen.
 
-## <a name="next"></a>Weiter
+## <a name="next-steps"></a>Nächste Schritte
 Nach dem Auffüllen des Azure Search-Indexes können Sie mit Abfragen für die Suche nach Dokumenten beginnen. Ausführliche Informationen finden Sie unter [Abfragen in Azure Search](search-query-overview.md) .
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

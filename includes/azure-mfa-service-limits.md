@@ -1,6 +1,6 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Maximale Anzahl von vertrauenswürdigen IP-Adressen/-bereichen</a> pro Abonnement<sup>1</sup> |0 |12 |
+| Maximale Anzahl von vertrauenswürdigen IP-Adressen/-bereichen</a> pro Abonnement |0 |50 |
 | Geräte speichern – Anzahl der Tage |14 |60 |
 | Max. Anzahl der App-Kennwörter |0 |Keine Begrenzung |
 | **X** Authentifizierungsversuche während des MFA-Aufrufs erlauben |1 |99 |
@@ -10,10 +10,7 @@
 | Kontosperrungszähler nach **X** Minuten zurücksetzen |Nicht festgelegt |9999 |
 | Kontosperrung nach **X** Minuten aufheben |Nicht festgelegt |9999 |
 
-<sup>1</sup>Dies soll in Zukunft erhöht werden.
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

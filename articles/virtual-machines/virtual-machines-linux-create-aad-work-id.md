@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Arbeits-, Uni- oder Schulidentität in AAD | Microsoft Docs"
+title: "Erstellen einer Geschäfts-, Uni- oder Schulidentität in AAD für Linux | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie eine Arbeits- oder Schulidentität in Azure Active Directory zur Verwendung mit Ihren virtuellen Linux-Computern erstellen."
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 9332e089a7bafe0acc9f136795926c1290413448
+ms.sourcegitcommit: 1d35114800ba024d0c201840722df2c6a74d1d61
+ms.openlocfilehash: 0eaa83fc19316708685eed0ca994112bc09153e5
 
 
 ---
@@ -33,6 +33,6 @@ Aufgrund aktueller Änderungen können Sie Ihr Abonnement jedoch mit jeder Art v
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

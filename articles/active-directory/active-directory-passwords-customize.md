@@ -115,7 +115,7 @@ Legt den Anzeigenamen der Von-Adresse fest, z. B. „Microsoft im Auftrag von <s
                   <li class="unordered">
 Legt fest, ob Ihr Logo anstelle des Microsoft-Standardlogos am oberen Rand des Kennwortzurücksetzungsportals angezeigt wird.<br><br></li>
                   <li class="unordered">
-                    <strong>Hinweis:</strong> Ihr Logo wird möglicherweise nicht auf der ersten Seite des Kennwortzurücksetzungsportals angezeigt, wenn Sie direkt zur Seite „Kennwort zurücksetzen“ wechseln.  Sobald ein Benutzer seine Benutzer-ID eingibt und auf "Weiter" klickt, wird Ihr Logo angezeigt.  Sie können erzwingen, dass Ihr Logo beim Laden der Seite angezeigt wird, indem Sie den whr-Parameter folgendermaßen an die Seite zur Kennwortzurücksetzung übergeben: <a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a><br><br></li>
+                    <strong>Hinweis:</strong> Ihr Logo wird möglicherweise nicht auf der ersten Seite des Kennwortzurücksetzungsportals angezeigt, wenn Sie direkt zur Seite „Kennwort zurücksetzen“ wechseln.  Sobald ein Benutzer seine Benutzer-ID eingibt und auf "Weiter" klickt, wird Ihr Logo angezeigt.  Sie können erzwingen, dass Ihr Logo beim Laden der Seite angezeigt wird, indem Sie den whr-Parameter wie folgt an die Seite zur Kennwortzurücksetzung übergeben: <a href="https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com">https://passwordreset.microsoftonline.com?whr=wingtiptoysonline.com</a><br><br></li>
                 </ul>
                 <p>
                   <strong>„Wenden Sie sich an Ihren Administrator“-E-Mails:</strong>
@@ -302,7 +302,7 @@ Wenn Sie Sicherheitsfragen verwenden, empfehlen wir ausdrücklich, dass Sie sie 
                   <li class="unordered">
 Sicherheitsfragen werden privat und sicher in einem Benutzerobjekt im Verzeichnis gespeichert und können nur während der Registrierung von Benutzern beantwortet werden.  Aus Sicherheitsgründen gibt es derzeit für einen Administrator keine Möglichkeit, diese Antworten zu bearbeiten oder abzurufen.<br><br></li>
                   <li class="unordered">
-                    <strong>Hinweis</strong>: Standardmäßig werden nur die Cloudattribute „Bürotelefon“ und „Mobiltelefon“ mit Ihrem Cloudverzeichnis aus dem lokalen Verzeichnis synchronisiert.  Weitere Informationen über die lokalen Attribute, die mit der Cloud synchronisiert werden, finden Sie unter <a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">Mit Azure Active Directory synchronisierte Attribute.</a><br><br></li>
+                    <strong>Hinweis</strong>: Standardmäßig werden nur die Cloudattribute „Bürotelefon“ und „Mobiltelefon“ mit Ihrem Cloudverzeichnis aus dem lokalen Verzeichnis synchronisiert.  Weitere Informationen über die lokalen Attribute, die mit der Cloud synchronisiert werden, finden Sie unter <a href="https://msdn.microsoft.com/library/azure/dn764938.aspx">Mit Azure Active Directory synchronisierte Attribute</a>.<br><br></li>
                 </ul>
                 <p>
                   <strong>Registrierungsportal:</strong>
@@ -724,7 +724,7 @@ Dieses Steuerelement wird nur angezeigt, wenn Sie das Rückschreiben von Kennwö
                   <li class="unordered">
 Wenn Sie das Rückschreiben von Kennwörtern aktiviert haben und ein Konfigurationsproblem mit dem Dienst vorliegt, können Sie sich auf dieser Registerkarte die Option <strong>Status des Kennwortrückschreibungs-Diensts</strong> ansehen und auf Fehler prüfen.<br><br></li>
                   <li class="unordered">
-Mögliche Statuswerte sind:<br><br><ul><li class="unordered"><strong>Konfiguriert </strong>– Alles funktioniert erwartungsgemäß.<br><br></li><li class="unordered"><strong>Nicht konfiguriert</strong> – Sie haben das Rückschreiben installiert, der Dienst ist jedoch nicht erreichbar. Stellen Sie sicher, dass Sie ausgehende Verbindungen an 443 nicht blockiert haben, und versuchen Sie, den Dienst neu zu installieren, wenn weiterhin Probleme auftreten.<br><br></li></ul></li>
+Mögliche Statuswerte sind:<br><br><ul><li class="unordered"><strong>Konfiguriert</strong>: Alles funktioniert erwartungsgemäß.<br><br></li><li class="unordered"><strong>Nicht konfiguriert</strong>: Sie haben die Rückschreibung installiert, der Dienst ist jedoch nicht erreichbar. Stellen Sie sicher, dass Sie ausgehende Verbindungen an 443 nicht blockiert haben, und versuchen Sie, den Dienst neu zu installieren, wenn weiterhin Probleme auftreten.<br><br></li></ul></li>
                 </ul>
                 <p>
                   <strong>Registrierungsportal:</strong>
@@ -767,7 +767,7 @@ Wenn die Option auf <strong>Ja</strong> gesetzt ist, wird das Rückschreiben akt
                 </p>
                 <ul>
                   <li class="unordered">
-Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen.</a></li>
+Um dieses Feature verwenden zu können, müssen Sie die Azure AD Connect-Version von August 2015 oder später (Version 1.0.8667.0 oder höher) installieren.<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">Klicken Sie hier, um die aktuelle Version von Azure AD Connect herunterzuladen</a>.</li>
 
                   <li class="unordered">
                     <strong>Hinweis</strong>: Um diese Funktion zu testen, muss das Kennwortrückschreiben aktiviert sein sowie ein lokal erstelltes Konto (beispielsweise eines Verbundbenutzers oder synchronisierten Benutzers) verwendet werden, bei dem ein gesperrtes Konto vorliegt.  Benutzern, die nicht lokal bereitgestellt sind und über kein gesperrtes Konto verfügen, wird die Option zum Entsperren ihres Kontos nicht angezeigt.</li>
@@ -880,6 +880,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

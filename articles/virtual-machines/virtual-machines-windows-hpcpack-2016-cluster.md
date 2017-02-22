@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 11/14/2016
+ms.date: 12/15/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 7e7dc6b6d58da556dfa07d5d21b3e70483d36ef9
-ms.openlocfilehash: 688f3f0885606949a265300af215f416e8f94155
+ms.sourcegitcommit: f4c29b292ecd97b51620b5e41cbcd6a096a7768e
+ms.openlocfilehash: e96d26e458f3b8f88ba88a5839dff9c48a755ffa
 
 
 ---
@@ -36,6 +36,23 @@ Für einen Microsoft HPC Pack 2016-Cluster ist ein Personal Information Exchange
 * Privater Schlüssel mit der Fähigkeit zum Schlüsselaustausch
 * Schlüsselverwendung mit digitale Signatur und Schlüsselchiffrierung
 * Erweiterte Schlüsselverwendung mit Clientauthentifizierung und die Serverauthentifizierung
+
+Wenn Sie noch kein Zertifikat haben, das diese Anforderungen erfüllt, können Sie das Zertifikat bei einer Zertifizierungsstelle anfordern. Alternativ können Sie mithilfe der folgenden Befehle basierend auf dem Betriebssystem, auf dem Sie den Befehl ausführen, das selbstsignierte Zertifikat generieren und das Zertifikat im PFX-Format mit dem privaten Schlüssel exportieren.
+
+* **Für Windows 10 oder Windows Server 2016** führen Sie das integrierte PowerShell-Cmdlet **New-SelfSignedCertificate** wie folgt aus:
+
+  ```PowerShell
+  New-SelfSignedCertificate -Subject "CN=HPC Pack 2016 Communication" -KeySpec KeyExchange -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.2") -CertStoreLocation cert:\CurrentUser\My -KeyExportPolicy Exportable -NotAfter (Get-Date).AddYears(5)
+  ```
+* **Für ältere Betriebssysteme als Windows 10 oder Windows Server 2016** laden Sie den [Generator für selbst signierte Zertifikate](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) aus dem Microsoft Script Center herunter. Extrahieren Sie den Inhalt, und führen Sie die folgenden Befehle an einer PowerShell-Eingabeaufforderung aus:
+
+    ```PowerShell 
+    Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
+  
+    New-SelfSignedCertificateEx -Subject "CN=HPC Pack 2016 Communication" -KeySpec Exchange -KeyUsage "DigitalSignature,KeyEncipherment" -EnhancedKeyUsage "Server Authentication","Client Authentication" -StoreLocation CurrentUser -Exportable -NotAfter (Get-Date).AddYears(5)
+    ```
+
+### <a name="upload-certificate-to-an-azure-key-vault"></a>Hochladen des Zertifikats in einen Azure-Schlüsseltresor
 
 Laden Sie vor dem Bereitstellen des HPC-Clusters das Zertifikat in den [Azure Key Vault](../key-vault/index.md) als Geheimnis hoch, und notieren Sie sich die folgenden Informationen für die Nutzung während der Bereitstellung: **Tresorname**, **Tresorressourcengruppe**, **Zertifikats-URL** und **Zertifikatfingerabdruck**.
 
@@ -122,7 +139,7 @@ Geben Sie Werte für die Vorlagenparameter ein, oder ändern Sie diese. Klicken 
 
 Geben Sie die Werte an, die Sie für die folgenden Parameter in den Voraussetzungen festgelegt haben: **Tresorname**, **Tresorressourcengruppe**, **Zertifikats-URL** und **Zertifikatfingerabdruck**.
 
-###<a name="step-3-review-legal-terms-and-create"></a>Schritt 3: Prüfen der rechtlichen Bedingungen und Starten der Erstellung
+### <a name="step-3-review-legal-terms-and-create"></a>Schritt 3: Prüfen der rechtlichen Bedingungen und Starten der Erstellung
 Klicken Sie **Rechtliche Bedingungen prüfen**, um die Bedingungen zu prüfen. Wenn Sie zustimmen, klicken Sie auf **Kaufen**, und klicken Sie dann auf **Erstellen**, um mit der Bereitstellung zu beginnen.
 
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
@@ -142,6 +159,6 @@ Klicken Sie **Rechtliche Bedingungen prüfen**, um die Bedingungen zu prüfen. W
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

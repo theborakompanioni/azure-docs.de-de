@@ -1,6 +1,6 @@
 ---
-title: "Migrieren von Affinitätsgruppen zu einem regionalen virtuellen Netzwerk (VNet)"
-description: "Erfahren Sie, wie Sie von Affinitätsgruppen zu regionalen VNets migrieren."
+title: "Migrieren eines virtuellen Azure-Netzwerks aus einer Affinitätsgruppe in eine Region | klassisch | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie ein virtuelles Netzwerk aus einer Affinitätsgruppe in eine Region migrieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 198a726229f4950906e79272da6913f1a1afd15d
+ms.sourcegitcommit: f74379c3e310a7bbcf659ef610727bff19639022
+ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
 
 
 ---
-# <a name="how-to-migrate-from-affinity-groups-to-a-regional-virtual-network-vnet"></a>Migrieren von Affinitätsgruppen zu einem regionalen virtuellen Netzwerk (VNet)
+# <a name="how-to-migrate-a-virtual-network-from-an-affinity-group-to-a-region"></a>Migrieren eines virtuellen Netzwerks aus einer Affinitätsgruppe in eine Region
 Mit einer Affinitätsgruppe können Sie sicherstellen, dass Ressourcen, die innerhalb der gleichen Affinitätsgruppe erstellt werden, physisch von Servern gehostet werden, die sich in geringem Abstand zueinander befinden. Auf diese Weise können die Ressourcen schneller miteinander kommunizieren. In der Vergangenheit waren Affinitätsgruppen eine Voraussetzung für die Erstellung virtueller Netzwerke (VNets). Damals konnte der Netzwerk-Manager-Dienst, der die VNets verwaltete, nur innerhalb einer Gruppe physischer Server oder innerhalb einer Skalierungseinheit verwendet werden. Aufgrund von Verbesserungen bei der Architektur konnte die Netzwerkverwaltung inzwischen jedoch auf eine Region ausgeweitet werden.
 
 Deshalb ist die Verwendung von Affinitätsgruppen nicht mehr empfehlenswert und für virtuelle Netzwerke auch nicht mehr erforderlich. Die Verwendung von Affinitätsgruppen für VNets wird durch Regionen ersetzt. VNets mit regionaler Zuordnung werden als regionale VNets bezeichnet.
@@ -74,6 +74,6 @@ Die Bereitstellung eines virtuellen Computers erfolgt in einer einzelnen Skalier
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

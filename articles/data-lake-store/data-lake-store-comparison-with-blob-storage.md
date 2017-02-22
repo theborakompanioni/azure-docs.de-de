@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 01/03/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: e82cc23dac2b765ee3dc8ae2eb1e4f7f2e49675a
-ms.openlocfilehash: 9e7dbb2b218796e3484bee05c6026c801c7780b7
+ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
+ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
 
 
 ---
@@ -38,7 +38,7 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 | Datenvorgänge – Überwachung |Verfügbar. Weitere Informationen finden Sie [hier](data-lake-store-diagnostic-logs.md) . |Verfügbar |
 | Verschlüsselung für ruhende Daten |Transparent, serverseitig <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault</li></ul> |<ul><li>Transparent, serverseitig</li> <ul><li>Mit dienstverwalteten Schlüsseln</li><li>Mit kundenverwalteten Schlüsseln in Azure Key Vault (bald verfügbar)</li></ul><li>clientseitiger Verschlüsselung</li></ul> |
 | Verwaltungsvorgänge (z.B. Kontoerstellung) |[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |[Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md) (Role-Based Access Control, RBAC) von Azure zur Kontoverwaltung |
-| Entwickler-SDKs |.NET, Java, Node.js |.Net, Java, Python, Node.js, C++, Ruby |
+| Entwickler-SDKs |.NET, Java, Python, Node.js |.Net, Java, Python, Node.js, C++, Ruby |
 | Leistung von Analyseworkloads |Optimierte Leistung für parallele Analyseworkloads. Hoher Durchsatz, hohe IOPS. |Nicht für Analyseworkloads optimiert. |
 | Größenbeschränkungen |Keine Beschränkungen für Kontogrößen, Dateigrößen oder die Anzahl von Dateien. |Die geltenden Einschränkungen sind [hier](../azure-subscription-service-limits.md#storage-limits) |
 | Georedundanz |Lokal redundant (mehrere Kopien von Daten in einer Azure-Region) |Lokal redundant (LRS), global redundant (GRS), global redundant mit Lesezugriff (RA-GRS). Weitere Informationen finden Sie [hier](../storage/storage-redundancy.md) . |
@@ -53,6 +53,6 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: f6208195fb998d5cb3ca00fa684f814971083cad
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
 
 
 ---
@@ -115,10 +115,10 @@ Füllen Sie den Titel, Inhalt und die Schaltflächentexte Ihrer Ankündigung aus
 ## <a name="content-of-polls"></a>Inhalt von Umfragen
 ![Reichweiteninhalt2][31] 
 
- Füllen Sie Titel, Beschreibung und Schaltflächentext der Ankündigung aus. Fügen Sie dann Optionen und Antworten zum Beantworten Ihrer Fragen hinzu.
+Füllen Sie Titel, Beschreibung und Schaltflächentext der Ankündigung aus. Fügen Sie dann Optionen und Antworten zum Beantworten Ihrer Fragen hinzu.
 Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann darauf basieren, ob diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde. Die Zielgruppenadressierung kann auch auf Antwortfeedback auf eine Umfrage basieren, wobei die Fragen und Antwortoptionen als Kriterien verwendet werden.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ## <a name="content-of-data-pushes"></a>Inhalt von Datenpushes
@@ -134,7 +134,7 @@ Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback
 * Wenn Sie die Pushübertragung von Binär- oder Base64-Daten ausgewählt haben, verwenden Sie die Schaltfläche "Datei hochladen" zum Hochladen Ihrer Datei.
 * Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann darauf basieren, ob diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Dokumentation zur Benutzeroberfläche – Reichweite – Neue Pushkriterien][Link 28]
 
 ## <a name="content-of-tiles-windows-phone-only"></a>Inhalt von Kacheln (nur Windows Phone)
@@ -144,7 +144,7 @@ Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback
 Die Kachelnutzlast ist der Text, der auf der Kachel Ihrer App auf Windows Phone-Geräten angezeigt wird.
 Ein Kachelpushvorgang ist die MPNS-Version (Microsoft Push Notification Service, Pushbenachrichtigungsdienst) eines systemeigenen Push für Windows Phone. Der Kachelpushtyp ist der einzige Pushtyp, der keine Antwort liefert, weshalb die Zielgruppe künftiger Kampagnen nicht auf den Ergebnissen einer Kachelpushkampagne basieren kann. 
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [API-Dokumentation – Reichweiten-API – Nativer Push][Link 4]
 
 <!--Image references-->
@@ -241,6 +241,6 @@ Ein Kachelpushvorgang ist die MPNS-Version (Microsoft Push Notification Service,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

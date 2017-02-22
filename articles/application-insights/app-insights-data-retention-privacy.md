@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: dea21a59b189d1d3d474cbc5e67f64df485a1981
-ms.openlocfilehash: be100e88e5d10c317be10aa829124a9be30e28b4
+ms.sourcegitcommit: 3dc6373c9aaa01000a7da282e48557f175f040e7
+ms.openlocfilehash: a6588718fdc0b561a70f25ac4d674c5edf08d8cb
 
 
 ---
@@ -27,7 +27,7 @@ Wenn Sie das [Visual Studio Application Insights-SDK][start] in Ihrer App instal
 Zunächst die kurze Antwort:
 
 * Bei Verwendung der Standardtelemetriemodule in der vorkonfigurierten Form ist es äußerst unwahrscheinlich, dass sensible Daten an den Dienst übermittelt werden. Bei der Telemetrie dreht sich alles um Lade-, Leistungs- und Nutzungsmetriken sowie um Ausnahmeberichte und andere Diagnosedaten. In den Diagnoseberichten sind als Benutzerdaten hauptsächlich URLs sichtbar. Ihre App sollte jedoch in keinem Fall sensible Daten im Nur-Text-Format in eine URL einfügen.
-* Sie können Code schreiben, der zusätzliche benutzerdefinierte Telemetriedaten sendet, die Sie bei der Diagnose und Überwachung der Nutzung unterstützen. (Diese Erweiterbarkeit ist ein großartiges Feature von Application Insights.) Der Code kann theoretisch so geschrieben werden, dass versehentlich auch persönliche und andere sensible Daten einbezogen werden. Falls Ihre Anwendung mit solchen Daten arbeitet, müssen Sie sämtlichen Code, den Sie schreiben, einer besonders gründlichen Prüfung unterziehen.
+* Sie können Code schreiben, der zusätzliche benutzerdefinierte Telemetriedaten sendet, die Sie bei der Diagnose und Überwachung der Nutzung unterstützen. (Diese Erweiterbarkeit ist ein großartiges Feature von Application Insights.) Der Code kann theoretisch so geschrieben werden, dass versehentlich auch persönliche und andere sensible Daten einbezogen werden. Falls Ihre Anwendung mit solchen Daten arbeitet, müssen Sie sämtlichen Code, den Sie schreiben, einer gründlichen Prüfung unterziehen.
 * Beim Entwickeln und Testen Ihrer App können Sie problemlos überprüfen, was vom SDK gesendet wird. Die Daten erscheinen in den Debugging-Ausgabefenstern von IDE und Browser. 
 * Die Daten werden auf [Microsoft Azure](http://azure.com)-Servern in den USA oder in Europa gespeichert. (Ihre App kann jedoch überall ausgeführt werden.) Azure verfügt über [ausgefeilte Sicherheitsprozesse und erfüllt eine breite Palette von Kompatibilitätsstandards](https://azure.microsoft.com/support/trust-center/). Auf die Daten haben nur Sie selbst und Ihr Team Zugriff. Microsoft-Mitarbeiter können nur unter ganz bestimmten Bedingungen und mit Ihrem Wissen eingeschränkten Zugriff auf die Daten erlangen. Die Daten sind bei der Übertragung verschlüsselt, auf den Servern allerdings nicht.
 
@@ -88,7 +88,7 @@ Hierzu können Sie ein [Telemetriedaten-Prozessor-Plug-In](app-insights-api-filt
 ## <a name="how-long-is-the-data-kept"></a>Wie lange werden Daten aufbewahrt?
 Rohdatenpunkte (also Elemente, die Sie in Analytics abfragen und in Search überprüfen können) werden bis zu 90 Tage lang aufbewahrt. Wenn Sie Daten länger beibehalten möchten, können Sie sie mit dem [fortlaufenden Export](app-insights-export-telemetry.md) in ein Speicherkonto kopieren.
 
-Aggregierte Daten (d. h. Zählungen, Mittelwerte und andere statistischen Daten, die im Metrik-Explorer angezeigt werden) werden im Maß von 1 Minute für 30 Tage und 1 Stunde oder 1 Tag (abhängig vom Typ) für mindestens 90 Tage aufbewahrt.
+Aggregierte Daten (d.h. Zählungen, Mittelwerte und andere statistischen Daten, die im Metrik-Explorer angezeigt werden) werden im Maß von 1 Minute für 90 Tage aufbewahrt.
 
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 Die Daten sind für Sie und, wenn Sie über ein Unternehmenskonto verfügen, für die Teammitglieder sichtbar. 
@@ -153,7 +153,7 @@ Sie können jedoch eine solche Funktion in Ihrer Anwendung implementieren. Alle 
 Die Daten werden von Application Insights weder gefiltert noch gelöscht. Verwalten Sie die Daten entsprechend, und vermeiden Sie es, solche Daten an Application Insights zu senden.
 
 ## <a name="data-sent-by-application-insights"></a>Von Application Insights gesendete Daten
-Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Komponenten, die Sie installieren können. (Weitere Informationen finden Sie unter [Application Insights – Einführung][start].) Jede Komponente sendet unterschiedliche Daten.
+Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Komponenten, die Sie installieren können. (Weitere Informationen finden Sie unter [Application Insights – Übersicht][start].) Jede Komponente sendet unterschiedliche Daten.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klassen von in verschiedenen Szenarien gesendeten Daten
 | Aktion | Gesammelte Datenklassen (siehe nächste Tabelle) |
@@ -168,7 +168,7 @@ Die SDKs sind je nach Plattform unterschiedlich, und es gibt verschiedene Kompon
 | [Aufrufen von TrackException][api] |**Exceptions**<br/>Stapelabbild<br/>**Eigenschaften** |
 | SDK kann keine Daten sammeln. Beispiel: <br/> – auf Leistungsindikatoren kann nicht zugegriffen werden<br/> – Ausnahme beim Telemetrieinitialisierer |SDK-Diagnose |
 
-Weitere Informationen zu [SDKs für andere Plattformen][platforms], finden Sie in den entsprechenden Dokumenten.
+Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in den entsprechenden Dokumenten.
 
 #### <a name="the-classes-of-collected-data"></a>Die Klassen der gesammelten Daten
 | Gesammelte Datenklasse | Umfasst (keine vollständige Liste) |
@@ -193,7 +193,7 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms], finden Sie i
 | Verfügbarkeit |Webtestantwortcode, Dauer der einzelnen Testschritte, Testname, Zeitstempel, Erfolg, Antwortzeit, Testverzeichnis |
 | SDK-Diagnose |Ablaufverfolgungsmeldung oder Ausnahme |
 
-Sie können [einige der Daten durch Bearbeiten von „ApplicationInsights.config“ abschalten][config]
+Sie können [einige der Daten durch Bearbeiten von ApplicationInsights.config abschalten][config].
 
 ## <a name="credits"></a>Guthaben
 Dieses Produkt enthält GeoLite2-Daten, die von MaxMind erstellt wurden und unter [http://www.maxmind.com](http://www.maxmind.com)verfügbar sind.
@@ -225,6 +225,6 @@ Dieses Produkt enthält GeoLite2-Daten, die von MaxMind erstellt wurden und unte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Metriken mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Docs
-description: "Enthält Informationen zum Konfigurieren und Verwenden von Metriken in Service Fabric."
+title: Verwalten der Auslastung von Azure-Microservices mithilfe von Metriken | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Metriken in Service Fabric konfigurieren und verwenden, um den Ressourcenverbrauch von Diensten zu verwalten.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -12,21 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/19/2016
+ms.date: 01/05/2017
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ad2588b75e41da25e5c76855849f0086ed3aa14f
+ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
+ms.openlocfilehash: c0e5418574920495bf277f4127b97ff5b07b56ef
 
 
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
-„Metriken“ sind in Service Fabric die generische Bezeichnung für die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Im Allgemeinen ist eine Metrik jedes Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu steuern.
+„Metriken“ sind in Service Fabric die generische Bezeichnung für die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Generell ist eine Metrik ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu steuern.
 
-Arbeitsspeicher, Festplatten, CPU-Auslastung – all dies sind Beispiele für Metriken. Es handelt sich hierbei um physische Metriken, also Ressourcen, die physischen Ressourcen auf dem Knoten entsprechen und verwaltet werden müssen. Metriken können auch logische Metriken sein (und sind dies häufig auch), die anwendungsdefiniert sind und einer bestimmten Ebene des Ressourcenverbrauchs entsprechen (wobei die Anwendung darüber aber keine eindeutigen Informationen besitzt und nicht weiß, wie diese gemessen wird). MyWorkQueueDepth ist ein Beispiel für eine solche Metrik. Die meisten verwendeten Metriken sind logische Metriken. Es gibt zahlreiche Gründe hierfür, aber der häufigste Grund ist, dass heute viele unserer Kunden ihre Dienste in verwaltetem Code schreiben, und aus einer bestimmten zustandslosen Dienstinstanz oder einem zustandsbehafteten Dienstreplikatobjekt heraus ist es tatsächlich ziemlich schwierig, die Nutzung tatsächlicher physischer Ressourcen zu messen und zu melden. Die Komplexität des Berichtens Ihrer eigenen Metriken ist auch der Grund, warum wir einige Standardmetriken sofort einsetzbar bereitstellen.
+Arbeitsspeicher, Festplatte und CPU-Auslastung sind Beispiele für Metriken. Es handelt sich hierbei um physische Metriken, also Ressourcen, die physischen Ressourcen auf dem Knoten entsprechen und verwaltet werden müssen. In vielen Fällen handelt es sich bei Metriken aber um logische Metriken. Beispiele für logische Metriken wären „MyWorkQueueDepth“, „MessagesToProcess“ und „TotalRecords“. Logische Metriken werden von der Anwendung definiert und entsprechen dem Verbrauch einer physischen Ressource, bei dem die Anwendung jedoch nicht genau weiß, wie sie ihn messen soll. Dies ist recht häufig der Fall. Die meisten verwendeten Metriken sind logische Metriken. Das liegt häufig daran, dass viele Dienste heutzutage in verwaltetem Code geschrieben sind. Verwalteter Code bedeutet, dass es innerhalb eines Hostprozesses schwierig sein kann, den Verbrauch physischer Ressourcen eines einzelnen Dienstobjekts zu messen und zu melden. Die Komplexität der Messung und Meldung Ihrer eigenen Metriken ist auch der Grund, warum wir einige sofort einsetzbare Standardmetriken bereitstellen.
 
 ## <a name="default-metrics"></a>Standardmetriken
-Angenommen, Sie möchten die ersten Schritte ausführen und wissen nicht, welche Ressourcen genutzt werden bzw. welche Ressourcen wichtig sein werden. Sie führen also die Implementierung durch und erstellen die Dienste, ohne Metriken anzugeben. Das ist kein Problem. Wir wählen einige Metriken für Sie aus. Die Standardmetriken, die wir derzeit für Sie verwenden, wenn Sie keine eigenen Metriken angeben, haben die Bezeichnungen „PrimaryCount“, „ReplicaCount“ und (zugegebenermaßen etwas vage) „Count“. In der folgenden Tabelle ist angegeben, welche Auslastung für diese Metriken mit jedem Dienstobjekt verbunden ist:
+Angenommen, Sie wissen zunächst noch nicht, welche Ressourcen verbraucht werden bzw. welche Ressourcen für Sie von Bedeutung sind. Sie führen also die Implementierung durch und erstellen die Dienste, ohne Metriken anzugeben. Das ist kein Problem. Der Clusterressourcen-Manager von Service Fabric wählt einige einfache Metriken für Sie aus. Wenn Sie keine Metriken angeben, verwenden wir aktuell folgende Standardmetriken: „PrimaryCount“, „ReplicaCount“ und „Count“. In der folgenden Tabelle ist angegeben, welche Auslastung für diese Metriken mit den einzelnen Dienstobjekten verbunden ist:
 
 | Metrik | Auslastung für zustandslose Instanz | Zustandsbehaftete sekundäre Auslastung | Zustandsbehaftete primäre Auslastung |
 | --- | --- | --- | --- |
@@ -34,31 +34,44 @@ Angenommen, Sie möchten die ersten Schritte ausführen und wissen nicht, welche
 | ReplicaCount |0 |1 |1 |
 | Count |1 |1 |1 |
 
-Was erhalten Sie bei diesen Standardmetriken? Für einfache Workloads erhalten Sie eine ziemlich gute Verteilung der Arbeit. Im Beispiel unten wird veranschaulicht, was passiert, wenn wir einen zustandsbehafteten Dienst mit drei Partitionen und einer Größe der Zielreplikatgruppe von „3“ erstellen. Außerdem erstellen wir einen einzelnen zustandslosen Dienst mit einer Instanzanzahl von 3. Das Ergebnis ist wie folgt:
+Was erhalten Sie bei diesen Standardmetriken? Bei einfachen Workloads erhalten Sie eine gute Arbeitsaufteilung. Im folgenden Beispiel werden zwei Dienste erstellt. Der erste ist ein zustandsbehafteter Dienst mit drei Partitionen und der Zielreplikatgruppen-Größe „3“. Der zweite ist ein zustandsloser Dienst mit einer einzelnen Partition und drei Instanzen:
 
+<center>
 ![Clusterlayout mit Standardmetriken][Image1]
+</center>
 
-In diesem Beispiel ist Folgendes zu beobachten:
+Ergebnis:
 
 * Primäre Replikate für den zustandsbehafteten Dienst sind nicht auf einem einzelnen Knoten gestapelt.
 * Die Replikate einer Partition befinden sich nicht auf demselben Knoten.
-* Die primären und sekundären Replikate sind im Cluster gut verteilt.
-* Die Dienstobjekte (zustandslos und zustandsbehaftet) sind gleichmäßig auf die einzelnen Knoten verteilt.
+* Die Gesamtanzahl primärer und sekundärer Replikate ist über den Cluster verteilt.
+* Die Gesamtanzahl von Dienstobjekten ist auf den einzelnen Knoten gleichmäßig zugewiesen.
 
-Das ist gut!  
+So weit, so gut.
 
-Dies funktioniert hervorragend, bis Sie beginnen, darüber nachzudenken: Wie hoch ist die Wahrscheinlichkeit, dass das Partitionierungsschema, das Sie ausgewählt haben, eine dauerhaft absolut gleichmäßige Auslastung aller Partitionen garantiert? Wie hoch ist in Verbindung hiermit die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft, und auch in diesem Augenblick, konstant ist? Dann zeigt es sich, dass die Wahrscheinlichkeit, dass alle Replikate gleichwertig sind, für alle wichtige Workloads tatsächlich eher niedrig ist. Wenn Sie also an der optimalen Nutzung Ihres Clusters interessiert sind, sollten Sie damit beginnen, benutzerdefinierte Metriken auszuwerten.
+Das funktioniert hervorragend, bis Sie damit beginnen, große Mengen von echten Workloads auszuführen: Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant (oder auch nur zum aktuellen Zeitpunkt gleich) ist?
 
-Realistisch gesehen könnten Sie einfach die Standardmetriken verwenden. Dies bedeutet aber üblicherweise, dass Ihre Clusterauslastung geringer als gewünscht ist (da die Berichterstellung nicht adaptiv ist und davon ausgeht, dass alle Elemente gleichwertig sind). Im schlimmsten Fall kann dies auch zu überlasteten Knoten und somit zu Leistungseinbußen führen. Besser geeignet sind benutzerdefinierte Metriken und Berichte zur dynamischen Auslastung. Darum geht es in den folgenden Abschnitten.
+Sie könnten nun zwar einfach die Standardmetriken verwenden, dies führt aber in der Regel dazu, dass Ihre Clusterauslastung geringer ausfällt als gewünscht. Das liegt daran, dass die Berichterstellung für die Standardmetriken nicht adaptiv ist und davon ausgeht, dass alles gleichwertig ist. Im schlimmsten Fall kann dies auch zu überlasteten Knoten und damit zu Leistungseinbußen führen. Besser geeignet sind benutzerdefinierte Metriken und Berichte zur dynamischen Auslastung. Darum geht es in den folgenden Abschnitten. In der Praxis ist die Wahrscheinlichkeit, dass die Workloads aller Dienste dauerhaft gleich sind, äußerst gering. Wenn Sie also Ihren Cluster optimal nutzen und Leistungsprobleme vermeiden möchten, sollten Sie sich mit benutzerdefinierten Metriken befassen.
 
 ## <a name="custom-metrics"></a>Benutzerdefinierte Metriken
-Wir haben bereits erörtert, dass es sowohl physische als auch logische Metriken gibt, und dass Sie Ihre eigenen Metriken definieren können. Prima. Aber wie? Es ist eigentlich recht einfach! Konfigurieren Sie die Metrik und die standardmäßige Anfangsauslastung einfach beim Erstellen des Diensts. Damit sind Sie schon fertig! Wenn Sie den Dienst erstellen, können Sie für jede benannte Dienstinstanz eine beliebige Gruppe von Metriken und Standardwerten konfigurieren, die den erwarteten Verbrauch durch den Dienst repräsentieren.
+Metriken werden beim Erstellen des Diensts individuell für benannte Dienstinstanzen konfiguriert.
 
-Beachten Sie Folgendes: Wenn Sie mit dem Definieren von benutzerdefinierten Metriken beginnen, müssen Sie die Standardmetriken explizit wieder hinzufügen, wenn Sie möchten, dass diese von uns ebenfalls zum Ausbalancieren Ihres Diensts verwendet werden sollen. Der Grund ist, dass Sie sich über die Beziehung zwischen Standardmetriken und Ihren benutzerdefinierten Metriken im Klaren sein sollen. Es kann beispielsweise sein, dass die Arbeitsspeicherauslastung bzw. WorkQueueDepth für Sie deutlich wichtiger als die Verteilung der primären Replikate ist.
+Jede Metrik verfügt über beschreibende Eigenschaften wie Name, Standardauslastung und Gewichtung.
 
-Angenommen, Sie möchten einen Dienst konfigurieren, von dem eine Metrik mit der Bezeichnung „Arbeitsspeicher“ gemeldet wird (zusätzlich zu den Standardmetriken). Sie haben einige grundlegende Messungen für den Arbeitsspeicher durchgeführt und ermittelt, dass für ein primäres Replikat des Diensts 20 MB Arbeitsspeicher verbraucht werden, während für sekundäre Replikate desselben Diensts 5 MB benötigt werden. Sie wissen, dass „Arbeitsspeicher“ die wichtigste Metrik in Bezug auf die Verwaltung der Leistung dieses Diensts ist. Sie möchten aber trotzdem erreichen, dass primäre Replikate gleichmäßig verteilt werden, damit beim Verlust eines Knotens oder einer Fehlerdomäne nicht eine übermäßig hohe Zahl von primären Replikaten ebenfalls verloren geht. Ansonsten verwenden Sie die Standardmetriken.
+* Metrikname: Der Name der Metrik. Der Metrikname ist ein eindeutiger Bezeichner für die Metrik (innerhalb des Clusters aus der Perspektive von Resource Manager).
+* Standardauslastung: Die Standardauslastung wird unterschiedlich repräsentiert, je nachdem, ob der Dienst zustandslos oder zustandsbehaftet ist.
+  * Bei zustandslosen Diensten besitzt jede Metrik eine einzelne Eigenschaft namens „DefaultLoad“.
+  * Bei zustandsbehafteten Diensten definieren Sie Folgendes:
+    * PrimaryDefaultLoad: Die Standardmenge dieser Metrik, die der Dienst verbraucht, wenn es sich dabei um ein primäres Replikat handelt.
+    * SecondaryDefaultLoad: Die Standardmenge dieser Metrik, die der Dienst verbraucht, wenn es sich dabei um ein sekundäres Replikat handelt.
+* Weight: Die Metrikgewichtung gibt die Bedeutung der Metrik in Relation zu den anderen Metriken für diesen Dienst an.
 
-Gehen Sie wie folgt vor:
+Wenn Sie benutzerdefinierte Metriken definieren und auch die Standardmetriken verwenden möchten, müssen Sie sie explizit wieder hinzufügen. Dies ist erforderlich, um die Beziehung zwischen den Standardmetriken und Ihren benutzerdefinierten Metriken deutlich zu machen. Vielleicht ist Ihnen ja die Arbeitsspeichernutzung oder die Tiefe der Warteschlange deutlich wichtiger als die primäre Verteilung.
+
+### <a name="defining-metrics-for-your-service---an-example"></a>Definieren von Metriken für Ihren Dienst – ein Beispiel
+Angenommen, Sie möchten einen Dienst konfigurieren, der eine Metrik namens „MemoryInMb“ meldet, und Sie möchten auch die Standardmetriken verwenden. Nehmen wir weiter an, Sie haben im Zuge einiger Messungen ermittelt, dass für ein primäres Replikat des Diensts in der Regel 20 Einheiten von „MemoryInMb“ verbraucht werden, während für sekundäre Replikate fünf Einheiten anfallen. Sie wissen, dass der Arbeitsspeicher die wichtigste Metrik für die Verwaltung der Leistung dieses speziellen Diensts ist, legen aber trotzdem Wert auf ausgewogene primäre Replikate. Die Verwendung ausgewogener primärer Replikate empfiehlt sich, damit der Verlust eines Knotens oder einer Fehlerdomäne nicht gleichzeitig die Mehrheit der primären Replikate beeinträchtigt. Abgesehen von diesen geringfügigen Anpassungen möchten Sie jedoch die Standardmetriken verwenden.
+
+Hier sehen Sie den Code, den Sie schreiben würden, um einen Dienst mit dieser Metrikkonfiguration zu erstellen:
 
 Code:
 
@@ -99,103 +112,106 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("Memory,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
 (Zur Erinnerung: Falls Sie nur die Standardmetriken verwenden möchten, müssen Sie beim Erstellen des Diensts weder die Sammlung mit den Metriken verwenden noch sonstige Einstellungen konfigurieren.)
 
-Nachdem Sie erfahren haben, wie Sie Ihre eigenen Metriken definieren, geht es nun um die unterschiedlichen Eigenschaften, die Metriken aufweisen können. Wir haben sie Ihnen bereits gezeigt, aber jetzt wird beschrieben, was sie genau bedeuten. Derzeit kann eine Metrik vier verschiedene Eigenschaften haben:
+Nach der Einführung und dem Beispiel beschäftigen wir uns nun ausführlicher mit den einzelnen Einstellungen und mit dem Verhalten, das Sie erhalten.
 
-* Metrikname: Dies ist der Name der Metrik. Es handelt sich hierbei um einen eindeutigen Bezeichner für die Metrik im Cluster aus Resource Manager-Sicht.
-* Standardauslastung: Die Standardauslastung wird unterschiedlich repräsentiert, je nachdem, ob der Dienst zustandslos oder zustandsbehaftet ist.
-  * Bei zustandslosen Diensten weist jede Metrik nur eine einzige Eigenschaft für die Standardauslastung auf.
-  * Für zustandsbehaftete Dienste definieren Sie
-    * PrimaryDefaultLoad: Dies ist die standardmäßige Auslastungsmenge, die für den Dienst für diese Metrik als primäres Replikat anfällt.
-    * SecondaryDefaultLoad: Dies ist die standardmäßige Auslastungsmenge, die für den Dienst für diese Metrik als sekundäres Replikat anfällt.  
-* Gewichtung: Gibt an, wie wichtig die Metrik relativ zu den anderen konfigurierten Metriken dieses Diensts ist.
-
-## <a name="load"></a>Laden
-Die Last oder auch Auslastung ist eine allgemeine Angabe, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder einem Replikat auf einem bestimmten Knoten verbraucht wird.
+## <a name="load"></a>Auslastung
+Metriken werden definiert, um eine Auslastung darzustellen. Die Auslastung gibt an, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder von einem Replikat auf einem bestimmten Knoten verbraucht wird. Die erwartete Auslastung kann bei der Diensterstellung konfiguriert, nach der Diensterstellung aktualisiert und/oder für einzelne Dienstobjekte gemeldet werden.
 
 ## <a name="default-load"></a>Standardauslastung
-Die Standardauslastung gibt an, welche Auslastung der Clusterressourcen-Manager für die einzelnen Dienstinstanzen oder Replikate des Diensts ansetzen soll, bis Updates von tatsächlichen Dienstinstanzen oder Replikaten eingehen. Für Dienste mit einfachem Aufbau wird dies zu einer statischen Definition, die niemals dynamisch aktualisiert und somit während der gesamten Lebensdauer des Diensts verwendet wird. Dies eignet sich gut für eine einfache Kapazitätsplanung, weil es genau die Vorgehensweise ist, die wir kennen: die Zuordnung bestimmter Ressourcen zu bestimmten Workloads. Der Vorteil besteht aber darin, dass wir uns jetzt im Bereich der Microservices befinden. Hierbei werden Ressourcen nicht statisch bestimmten Workloads zugewiesen, und der Mensch ist nicht am Treffen der Entscheidungen beteiligt.
+Die Standardauslastung gibt die Auslastung an, die standardmäßig bei den einzelnen Dienstobjekten (Instanz oder Replikat) des Diensts anfällt. Bei einfacheren Diensten ist die Standardauslastung eine statische Definition, die niemals aktualisiert und für die gesamte Lebensdauer des Diensts verwendet wird. Die Standardauslastung eignet sich gut für einfache Kapazitätsplanungsszenarien, in denen verschiedenen Workloads bestimmte Ressourcenmengen zugewiesen werden.
 
-Wir lassen es zu, dass zustandsbehaftete Dienste die Standardauslastung für ihre primären und sekundären Replikate angeben. In Wirklichkeit sehen diese Werte für viele Dienste aufgrund der unterschiedlichen Workloads, die von primären und sekundären Replikaten ausgeführt werden, anders aus. Und da primäre Replikate normalerweise sowohl Lese- als auch Schreibvorgänge bereitstellen (und außerdem die größte Rechenlast tragen), ist die Standardauslastung für ein primäres Replikat höher als für sekundäre Replikate.
-
-Nehmen wir nun an, dass Sie Ihren Dienst eine Zeit lang ausgeführt und bemerkt haben, dass einige Instanzen oder Replikate Ihres Diensts deutlich mehr Ressourcen als andere verbrauchen oder dass der Verbrauch im Laufe der Zeit variiert. Es kann beispielsweise sein, dass sie einem bestimmten Kunden zugeordnet sind oder dass sie nur für bestimmte Workloads bestimmt sind, die sich im Laufe des Tages ändern, z.B. Nachrichtendatenverkehr, Telefongespräche oder Aktienhandel. Ihnen fällt jedenfalls auf, dass es keinen alleinigen Wert gibt, den Sie für die Auslastung angeben können, ohne zumindest über einen bestimmten Zeitraum relativ weit daneben zu liegen. Außerdem bemerken Sie, dass die unrealistische erste Einschätzung dazu führt, dass der Clusterressourcen-Manager Ihrem Dienst entweder zu viele oder zu wenig Ressourcen zuordnet und daher Knoten vorhanden sind, die eine zu hohe oder zu niedrige Auslastung aufweisen.
-
-Vorgehensweise Es ist möglich, dass Ihr Dienst seine Auslastung ständig „on the fly“ meldet.
+Der Clusterressourcen-Manager ermöglicht zustandsbehafteten Diensten die Angabe unterschiedlicher Standardauslastungen für primäre und sekundäre Replikate. Bei zustandslosen Diensten kann hingegen nur ein einzelner Wert angegeben werden. Bei zustandsbehafteten Diensten unterscheidet sich die Auslastung für primäre Replikate üblicherweise von der Auslastung für sekundäre Replikate, da Replikate in jeder Rolle verschiedene Arten von Aufgaben übernehmen. So übernehmen primäre Replikate im Gegensatz zu sekundären Replikaten in der Regel sowohl Lese- als auch Schreibvorgänge (sowie den Großteil der Rechenlast). Zwar ist davon auszugehen, dass die Standardauslastung für ein primäres Replikat höher ausfällt als bei sekundären Replikaten, die tatsächlichen Werte hängen jedoch von Ihren eigenen Messungen ab.
 
 ## <a name="dynamic-load"></a>Dynamische Auslastung
-Mit Berichten zur dynamischen Auslastung können Replikate oder Instanzen die Zuordnung bzw. die gemeldete Auslastung von Metriken im Cluster über ihre Lebensdauer hinweg anpassen. Ein Dienstreplikat oder eine Dienstinstanz, das bzw. die derzeit keine Auslastung aufweist, meldet in der Regel eine geringe Nutzung einer bestimmten Metrik, während Replikate oder Instanzen mit höherer Auslastung eine höhere Nutzung melden. Aufgrund dieser allgemeinen Veränderungen im Cluster können wir die Dienstreplikate und -instanzen im Cluster im laufenden Betrieb neu organisieren, um sicherzustellen, dass die Dienste und Instanzen die benötigten Ressourcen erhalten. Höher ausgelastete Dienste können so Ressourcen von anderen Replikaten oder Instanzen nutzen, die gerade keine oder nur wenig Arbeit verrichten. Das kontinuierliche Melden der Auslastung kann über die ReportLoad-Methode erfolgen, die in ServicePartition verfügbar ist, die wiederum als Eigenschaft der StatefulService- oder StatelessService-Basisklasse über das Reliable Services-Programmiermodell zur Verfügung steht. In Ihrem Dienst würde der Code wie folgt aussehen:
+Nehmen wir an, Sie haben den Dienst bereits eine Zeitlang ausgeführt. Dabei haben Sie aufgrund der Überwachung Folgendes festgestellt:
+
+1. Einige Partitionen oder Instanzen eines bestimmten Diensts verbrauchen mehr Ressourcen als andere.
+2. Die Auslastung einiger Dienste verändert sich im Laufe der Zeit.
+
+Diese Auslastungsschwankungen können verschiedenste Ursachen haben. Möglicherweise ist der Dienst oder die Partition einem bestimmten Kunden zugeordnet, oder der Dienst/die Partition hängt mit Workloads zusammen, die im Laufe des Tages variieren. Was auch immer die Ursache ist: Sie können keinen einzelnen Wert als Standardauslastung verwenden. Jeder Wert, den Sie für die Standardauslastung festlegen, ist für einen gewissen Zeitraum unzutreffend. Das ist problematisch, da der Clusterressourcen-Manager Ihrem Dienst im Falle einer falschen Standardauslastung entweder zu viel oder zu wenig Ressourcen zuweist. Dies führt zu einer übermäßigen oder unzureichenden Auslastung von Knoten, auch wenn der Cluster für den Clusterressourcen-Manager ausgewogen erscheint. Standardauslastungen haben einen gewissen Informationsgehalt und sind daher nicht schlecht, vermitteln in der Praxis aber zumeist kein umfassendes Bild von den Workloads. Aus diesem Grund ermöglicht der Clusterressourcen-Manager den einzelnen Dienstobjekten die Aktualisierung der eigenen Auslastung zur Laufzeit. Dies wird als „dynamisches Melden der Auslastung“ bezeichnet.
+
+Mit Berichten zur dynamischen Auslastung können Replikate oder Instanzen die Zuordnung bzw. die gemeldete Auslastung von Metriken im Laufe ihrer Lebensdauer anpassen. Dienstreplikate oder -instanzen, die gerade nicht aktiv sind und nichts zu tun haben, melden in der Regel eine geringe Nutzung einer bestimmten Metrik. Aktive Replikate oder Instanzen melden eine höhere Auslastung.
+
+Auf der Grundlage replikat- oder instanzspezifischer Berichte kann der Clusterressourcen-Manager die einzelnen Dienstobjekte im Cluster so organisieren, dass den Diensten die benötigten Ressourcen zur Verfügung stehen. Dadurch können aktive Dienste Ressourcen von anderen Replikaten oder Instanzen abziehen, die gerade nicht aktiv sind oder weniger zu tun haben.
+
+Innerhalb Ihres zuverlässigen Diensts sieht der Code zum dynamischen Melden der Auslastung wie folgt aus:
 
 Code:
 
 ```csharp
-this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("metric1", 42) });
+this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Dienstreplikate oder -instanzen können die Auslastung nur für die Metriken melden, für deren Verwendung sie konfiguriert wurden. Die Liste mit den Metriken wird jeweils festgelegt, wenn ein Dienst erstellt wird, und kann später aktualisiert werden. Wenn ein Dienstreplikat oder eine Instanz versucht, die Auslastung für eine Metrik zu melden, die derzeit nicht für die Verwendung konfiguriert ist, protokolliert Service Fabric den Bericht, ignoriert ihn aber. Dies bedeutet, dass er nicht verwendet wird, wenn der Zustand des Clusters berechnet oder gemeldet wird. Dies ist praktisch, weil Sie so besser experimentieren können. Der Code kann alle Dinge messen und melden, für die die Vorgehensweise bekannt ist. Der Bediener kann die Regeln für den Lastenausgleich des Diensts kontinuierlich konfigurieren, optimieren und aktualisieren, ohne jemals den Code ändern zu müssen. Beispiele hierfür sind das Deaktivieren einer Metrik mit einem fehlerhaften Bericht, das Neukonfigurieren der Gewichtungen von Metriken anhand des Verhaltens oder das Aktivieren einer neuen Metrik erst dann, wenn der Code bereits über andere Mechanismen bereitgestellt und überprüft wurde.
+Dienstreplikate oder -instanzen können die Auslastung nur für die Metriken melden, für deren Verwendung sie bei der Erstellung konfiguriert wurden. Bei der Liste mit den Metriken, die von einem Dienst gemeldet werden können, handelt es sich um die gleichen Metriken, die im Zuge der Diensterstellung angegeben wurden. Die Liste mit den Metriken, die dem Dienst zugeordneten sind, kann auch dynamisch aktualisiert werden. Wenn ein Dienstreplikat oder eine Instanz versucht, die Auslastung für eine Metrik zu melden, für deren Verwendung das Replikat oder die Instanz derzeit nicht konfiguriert ist, protokolliert Service Fabric die Meldung, ignoriert sie aber. Falls im Rahmen des gleichen API-Aufrufs auch noch andere (gültige) Metriken gemeldet werden, werden diese akzeptiert und verwendet. Dadurch haben Sie mehr Spielraum bei Experimenten. Der Code kann sämtliche ihm bekannte Metriken ermitteln und melden, und der Bediener kann die Metrikkonfiguration für den Dienst angeben und aktualisieren, ohne den Code zu ändern. So kann etwa der Administrator oder das Betriebsteam eine Metrik mit einem fehlerhaften Bericht für einen bestimmten Dienst deaktivieren, die Gewichtungskonfiguration von Metriken auf der Grundlage des Verhaltens anpassen oder eine neue Metrik erst aktivieren, nachdem der Code über andere Mechanismen bereitgestellt und überprüft wurde.
 
 ## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Kombinieren von Standardauslastungswerten und dynamischen Auslastungsberichten
-Ist es sinnvoll, eine Standardauslastung für einen Dienst anzugeben, für den die Auslastung dynamisch gemeldet wird? Auf jeden Fall. In diesem Fall dient die Standardauslastung als Schätzung, bis die richtigen Berichte vom jeweiligen Replikat oder der Instanz des Diensts vorhanden sind. Dies ist sehr nützlich, da der Clusterressourcen-Manager die Schätzung der Standardauslastung verwenden kann, um die Dienstinstanzen oder -replikate von Beginn an richtig zu platzieren. Wenn keine Informationen zur Standardauslastung bereitgestellt werden, erfolgt die Dienstplatzierung eher zufällig, und wenn sich die Auslastungen später ändern, muss der Clusterressourcen-Manager mit hoher Wahrscheinlichkeit Elemente verschieben.
+Wenn die Standardauslastung nicht ausreicht und dynamische Auslastungsberichte empfohlen werden, kann ich dann beides verwenden? Ja. Dies ist sogar die empfohlene Konfiguration. Wenn eine Standardauslastung festgelegt wird und gleichzeitig dynamische Auslastungsberichte verwendet werden, fungiert die Standardauslastung als Schätzwert, bis dynamische Berichte vorliegen. So hat der Clusterressourcen-Manager etwas, womit er arbeiten kann. Auf der Grundlage der Standardauslastung kann der Clusterressourcen-Manager die Dienstobjekte bei deren Erstellung sinnvoll platzieren. Ohne Angabe einer Standardauslastung werden die Dienste nach dem Zufallsprinzip platziert. Wenn dann später Auslastungsberichte eingehen, muss der Clusterressourcen-Manager fast immer Dienste verschieben.
 
-Wir sehen uns das vorherige Beispiel an und prüfen, was passiert, wenn wir eine benutzerdefinierte Auslastung hinzufügen und diese nach der Erstellung des Diensts dynamisch aktualisiert wird. In diesem Beispiel verwenden wir „Memory“ (Arbeitsspeicher) und setzen voraus, dass der zustandsbehaftete Dienst zuvor mit dem folgenden Befehl erstellt wurde:
+Im Anschluss sehen wir uns anhand des vorherigen Beispiels an, was passiert, wenn wir einige benutzerdefinierte Metriken sowie dynamische Auslastungsberichte hinzufügen. In diesem Beispiel verwenden wir den Arbeitsspeicher (Memory) als Beispielmetrik. Außerdem nehmen wir an, dass der zustandsbehaftete Dienst ursprünglich mit dem folgenden Befehl erstellt wurde:
 
 Powershell:
 
 ```posh
-New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("Memory,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-Diese Syntax wurde bereits beschrieben (MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad). Weiter unten geht es dann darum, was der jeweilige Wert für „Weight“ (Gewichtung) bedeutet.
+Syntax: ("Metrikname, Metrikgewichtung, Standardauslastung des primären Replikats, Standardauslastung des sekundären Replikats").
 
 Ein mögliches Clusterlayout kann beispielsweise wie folgt aussehen:
 
-![Ausgleich für Cluster mit Standardmetriken und benutzerdefinierten Metriken][Image2]
+<center>
+![Ausgeglichener Cluster mit Standardmetriken und benutzerdefinierten Metriken][Image2]
+</center>
 
 Beachten Sie folgende Punkte:
 
-* Da Replikate oder Instanzen die Standardauslastung des Diensts verwenden, bis sie ihre eigene Auslastung melden, wissen wir, dass die Replikate in Partition 1 des zustandsbehafteten Diensts noch keine eigene Auslastung gemeldet haben.
+* Da Replikate oder Instanzen die Standardauslastung des Diensts verwenden, bis sie ihre eigene Auslastung melden, wissen wir, dass die Replikate in Partition 1 des zustandsbehafteten Diensts noch keine dynamische Auslastung gemeldet haben.
 * Sekundäre Replikate innerhalb einer Partition können über eine eigene Auslastung verfügen.
-* Insgesamt sehen die Metriken ziemlich gut aus. Die Differenz zwischen der maximalen und minimalen Auslastung eines Knotens (für den Arbeitsspeicher, der uns in diesem Fall am wichtigsten ist) weist nur einen Faktor von 1,75 auf (der Knoten mit der höchsten Auslastung für den Arbeitsspeicher ist N3, und N2 hat die geringste Auslastung, also gilt 28/16 = 1,75). Das ist ein guter Ausgleichswert!
+* Insgesamt machen die Metriken einen ausgeglichenen Eindruck. Für den Arbeitsspeicher liegt das Verhältnis zwischen maximaler und minimaler Auslastung bei 1,75. (Der Knoten mit der höchsten Auslastung ist N3, der Knoten mit der geringsten Auslastung ist N2, also: 28/16 = 1,75.)
 
-Einige zu klärende Punkte
+Einige Punkte müssen noch erläutert werden:
 
-* Wie wird bestimmt, ob ein Verhältnis von 1,75 gut oder nicht gut ist? Wie können wir sicher sein, dass der Wert gut genug ist und nicht noch mehr Arbeit erforderlich ist?
+* Wie wird bestimmt, ob ein Verhältnis von 1,75 gut oder nicht gut ist? Woher weiß der Clusterressourcen-Manager, ob dieses Ergebnis ausreicht oder ob noch weitere Optimierungen erforderlich sind?
 * Wann wird ein Lastenausgleich durchgeführt?
 * Was bedeutet es, dass „Memory“ die Gewichtung „Hoch“ erhalten hat?
 
 ## <a name="metric-weights"></a>Metrikgewichtungen
-Anhand von Metrikgewichtungen können zwei unterschiedliche Dienste die gleichen Metriken melden, die Wichtigkeit eines Ausgleichs für diese Metriken aber anders bewerten. Beispiele hierfür sind ein In-Memory-Analysemodul und eine dauerhafte Datenbank. Für beide ist die Metrik „Memory“ sicherlich von Bedeutung, aber für den In-Memory-Dienst ist die Metrik „Disk“ wahrscheinlich weniger wichtig. Unter Umständen wird diese Metrik in geringem Umfang genutzt, aber sie ist für die Leistung des Diensts nicht entscheidend, und daher meldet der Dienst sie möglicherweise nicht einmal. Es ist hilfreich, die gleichen Metriken über unterschiedliche Dienste hinweg nachverfolgen zu können, da der Clusterressourcen-Manager so die tatsächliche Nutzung im Cluster überwachen, die Einhaltung der Kapazitätsobergrenze sicherstellen und vieles mehr tun kann.
+Die gleichen Metriken müssen über verschiedene Dienste hinweg nachverfolgbar sein. Dadurch kann der Clusterressourcen-Manager den Verbrauch im Cluster überwachen, knotenübergreifend ausgleichen und sicherstellen, dass die Kapazität von Knoten nicht überschritten wird. Die gleiche Metrik hat jedoch bei unterschiedlichen Diensten unter Umständen nicht den gleichen Stellenwert. Außerdem sind perfekt ausgewogene Lösungen in einem Cluster mit zahlreichen Metriken und einer Vielzahl von Diensten unter Umständen gar nicht für alle Metriken möglich. Wie soll der Clusterressourcen-Manager mit solchen Situationen umgehen?
 
-Dank Metrikgewichtungen kann der Clusterressourcen-Manager auch Entscheidungen darüber treffen, wie der Ausgleich für den Cluster durchgeführt werden soll, wenn es keine perfekte Lösung gibt (was häufig der Fall ist). Metriken können vier unterschiedliche Gewichtungen haben: Null, Niedrig, Mittel und Hoch. Eine Metrik mit der Gewichtung „Null“ leistet keinen Beitrag, wenn überprüft wird, ob ein guter Ausgleich besteht. Ihre Auslastung wird aber trotzdem berücksichtigt, wenn es beispielsweise um die Kapazitätsmessung geht.
+Dank Metrikgewichtungen kann der Clusterressourcen-Manager entscheiden, wie der Cluster ausgeglichen werden soll, falls keine perfekte Lösung verfügbar ist. Auf der Grundlage von Metrikgewichtungen kann der Clusterressourcen-Manager außerdem bestimmte Dienste unterschiedlich ausgleichen. Metriken können vier unterschiedliche Gewichtungen haben: Null, Niedrig, Mittel und Hoch. Eine Metrik mit der Gewichtung „Null“ hat zwar keine Auswirkung auf die Frage, ob ein guter Ausgleich besteht, ihre Auslastung wird jedoch für bestimmte Aspekte (etwa die Kapazität) berücksichtigt.
 
-Die eigentlichen Auswirkungen von unterschiedlichen Metrikgewichtungen im Cluster sind, dass wir zu unterschiedlichen Anordnungen der Dienste gelangen, weil der Clusterressourcen-Manager darüber informiert wurde, dass bestimmte Metriken wichtiger sind als andere. Anhand dieser Informationen kann der Clusterressourcen-Manager bei Konflikten bei Metriken mit verschiedenen Gewichtungen Lösungen bevorzugen, die für einen besseren Ausgleich der höher gewichteten Metriken sorgen.
+Der tatsächliche Nutzen von Metrikgewichtungen im Cluster besteht darin, dass der Clusterressourcen-Manager unterschiedliche Lösungen generiert. Mithilfe von Metrikgewichtungen wird dem Clusterressourcen-Manager vermittelt, dass bestimmte Metriken einen höheren Stellenwert haben als andere. Sollte keine perfekte Lösung verfügbar sein, kann der Clusterressourcen-Manager Lösungen bevorzugen, bei denen die höher gewichteten Metriken besser ausgeglichen werden. Falls ein Dienst eine Metrik als unwichtig betrachtet, entsteht für ihn unter Umständen der Eindruck, dass die Verwendung dieser Metrik zu einer Unausgewogenheit führt. Dadurch kann bei einem anderen Dienst, bei dem dies wichtig ist, eine ausgewogene Verteilung erzielt werden.
 
-Wir sehen uns nun ein einfaches Beispiel für einige Auslastungsberichte und dafür an, wie unterschiedliche Metrikgewichtungen zu unterschiedlichen Zuordnungen im Cluster führen können. In diesem Beispiel sehen wir, dass die Umstellung der relativen Gewichtung von Metriken dazu führt, dass der Resource Manager bestimmte Lösungen vorzieht, indem unterschiedliche Anordnungen von Diensten erstellt werden.
+Im Anschluss sehen wir uns ein Beispiel für einige Auslastungsberichte an und beschäftigen uns damit, wie unterschiedliche Metrikgewichtungen zu unterschiedlichen Zuordnungen im Cluster führen können. In diesem Beispiel sehen Sie, dass die Umstellung der relativen Metrikgewichtung dazu führt, dass der Clusterressourcen-Manager unterschiedliche Lösungen vorzieht und unterschiedliche Dienstanordnungen erstellt.
 
-![Beispiel für Metrikgewichtung und Auswirkung auf Ausgleichslösungen][Image3]
+<center>
+![Beispiel für die Metrikgewichtung und deren Auswirkungen auf Ausgleichslösungen][Image3]
+</center>
 
-In diesem Beispiel werden vier verschiedene Dienste verwendet, die jeweils unterschiedliche Werte für die beiden Metriken A und B melden. In einem Fall definieren alle Dienste MetricA als wichtigste Metrik (Weight = High) und MetricB als relativ unwichtig (Weight = Low). Wir sehen, dass der Clusterressourcen-Manager die Dienste so anordnet, dass MetricA einen besseren Ausgleich (geringere Standardabweichung) als MetricB aufweist. Im zweiten Fall kehren wir die Metrikgewichtungen um und sehen, dass der Clusterressourcen-Manager ServiceA und ServiceB wahrscheinlich tauschen würde, um eine Zuordnung zu erzielen, bei der MetricB einen besseren Ausgleich als MetricA aufweist.
+In diesem Beispiel gibt es vier Dienste, die alle unterschiedliche Werte für zwei Metriken (A und B) melden. In einem Fall definieren alle Dienste „MetricA“ als wichtigste Metrik (hohe Gewichtung) und „MetricB“ als unwichtig (niedrige Gewichtung). In diesem Fall platziert der Clusterressourcen-Manager die Dienste so, dass „MetricA“ im Vergleich zu „MetricB“ besser ausgeglichen ist (also eine geringere Standardabweichung aufweist). Im zweiten Fall kehren wir die Metrikgewichtungen um. Daraufhin vertauscht der Clusterressourcen-Manager wahrscheinlich die Dienste A und B, um eine Zuordnung zu erzielen, bei der „MetricB“ im Vergleich zu „MetricA“ einen besseren Ausgleich aufweist.
 
 ### <a name="global-metric-weights"></a>Globale Metrikgewichtungen
 Wenn ServiceA also MetricA als wichtigste Metrik definiert und diese für ServiceB keine Rolle spielt, welche Gewichtung wird dann letztendlich verwendet?
 
-Für jede Metrik werden eigentlich zwei Gewichtungen nachverfolgt. Die Gewichtung, die vom Dienst selbst definiert wird, und die globale durchschnittliche Gewichtung über alle Dienste hinweg, für die diese Metrik wichtig ist. Wir nutzen beide Gewichtungen beim Berechnen der Punktzahlen von generierten Lösungen. Es ist wichtig sicherzustellen, dass ein Dienst in Bezug auf seine eigenen Prioritäten einen Lastenausgleich erfährt, aber es muss auch dafür gesorgt sein, dass der Cluster insgesamt über eine geeignete Anordnung verfügt.
+Für jede Metrik werden eigentlich mehrere Gewichtungen nachverfolgt. Bei der ersten Gruppe handelt es sich um die Gewichtungen, die jeder Dienst für die Metrik definiert hat. Die andere Gewichtung ist eine globale Gewichtung. Hierbei handelt es sich um den Durchschnitt aller Dienste, die diese Metrik melden. Bei der Berechnung der Lösungspunktzahlen werden beide Gewichtungen vom Clusterressourcen-Manager berücksichtigt. Der Grund: Es kommt nicht nur darauf an, dass ein Dienst auf der Grundlage seiner eigenen Prioritäten ausgeglichen ist, sondern auch, dass die Zuordnung des gesamten Clusters korrekt ist.
 
-Was würde passieren, wenn wir uns nicht um den globalen und lokalen Ausgleich kümmern würden? Es ist nicht schwierig, Lösungen zu erstellen, für die ein globaler Ausgleich durchgeführt wird, die für einzelne Dienste aber eine sehr schlechte Leistung und Ressourcenzuordnung ergeben. Im folgenden Beispiel sehen wir uns die Standardmetriken an, mit denen ein zustandsbehafteter Dienst konfiguriert wurde: PrimaryCount, ReplicaCount und Count. Wir können verfolgen, was passiert, wenn wir uns nur um den globalen Ausgleich kümmern:
+Was würde passieren, wenn sich der Clusterressourcen-Manager nicht um die globale und lokale Ausgewogenheit kümmert? Es ist keine große Herausforderung, global ausgewogene Lösungen zu erstellen, die aber ansonsten eine unzureichende Ressourcenzuordnung für einzelne Dienste bieten. Im folgenden Beispiel betrachten wir die Standardmetriken, mit denen ein zustandsbehafteter Dienst konfiguriert ist, und sehen uns an, was passiert, wenn lediglich die globale Ausgewogenheit berücksichtigt wird:
 
+<center>
 ![Auswirkung einer rein globalen Lösung][Image4]
+</center>
 
-Im oberen Beispiel, in dem wir uns nur den globalen Ausgleich angesehen haben, ist der Cluster insgesamt gut ausgeglichen. Alle Knoten weisen die gleiche Anzahl von primären Replikaten und Replikaten insgesamt auf. Wenn wir uns aber die tatsächlichen Auswirkungen dieser Zuordnung ansehen, ist das Ergebnis nicht so gut: Der Verlust eines Knotens wirkt sich unverhältnismäßig stark auf eine bestimmte Workload aus, da alle zugehörigen primären Replikate betroffen sind. Nehmen wir beispielsweise an, dass der erste Knoten ausfällt. In diesem Fall verlieren wir gleichzeitig die drei primären Replikate für die drei verschiedenen Partitionen des Diensts „Circle“. Für die anderen beiden Dienste („Triangle“ und „Hexagon“) verlieren die Partitionen ein Replikat, was nicht zu Problemen führt (bis auf die Wiederherstellung des ausgefallenen Replikats).
+Im oberen Beispiel, in dem wir uns nur den globalen Ausgleich angesehen haben, ist der Cluster insgesamt tatsächlich ausgeglichen. Alle Knoten verfügen über die gleiche Anzahl von primären Replikaten sowie über die gleiche Gesamtanzahl von Replikaten. Wenn wir uns aber die tatsächlichen Auswirkungen dieser Zuordnung ansehen, ist das Ergebnis nicht so gut: Der Verlust eines Knotens wirkt sich unverhältnismäßig stark auf eine bestimmte Workload aus, da alle zugehörigen primären Replikate davon betroffen sind. Wenn also beispielsweise der erste Knoten ausfällt, gehen die drei primären Replikate für die drei verschiedenen Partitionen des Diensts „Circle“ verloren. Für die anderen beiden Dienste („Triangle“ und „Hexagon“) verlieren die Partitionen ein Replikat, was nicht zu Problemen führt (bis auf die Wiederherstellung des ausgefallenen Replikats).
 
-Im unteren Beispiel haben wir die Replikate sowohl basierend auf dem globalen Ausgleich als auch auf dem Ausgleich pro Dienst verteilt. Beim Berechnen der Punktzahl für die Lösung ordnen wir den größten Teil der Gewichtung der globalen Lösung zu, aber ein (konfigurierbarer) Teil wird für die Sicherstellung verwendet, dass auch die Dienste selbst so weit wie möglich ausgeglichen sind. Wenn hier nun derselbe erste Knoten ausfällt, sehen wir, dass der Verlust der primären (und sekundären) Replikate auf alle Partitionen aller Dienste verteilt ist und die Auswirkungen jeweils gleich sind.
-
-Indem die Metrikgewichtungen berücksichtigt werden, wird der globale Ausgleich basierend auf dem Durchschnitt der Metrikgewichtungen berechnet, die für jeden Dienst konfiguriert wurden. Wir führen den Ausgleich für einen Dienst in Bezug auf seine eigenen definierten Metrikgewichtungen durch.
+Im unteren Beispiel hat der Clusterressourcen-Manager die Replikate sowohl auf der Grundlage des globalen Ausgleichs als auch auf der Grundlage des dienstspezifischen Ausgleichs verteilt. Beim Berechnen der Lösungspunktzahl entfällt der Großteil der Gewichtung auf die globale Lösung und ein (konfigurierbar) Teil auf einzelne Dienste. Der globale Ausgleich wird auf der Grundlage des Durchschnitts der Metrikgewichtungen berechnet, die für die einzelnen Dienste konfiguriert wurden. Jeder Dienst wird gemäß seiner eigenen definierten Metrikgewichtungen ausgeglichen. Dadurch wird sichergestellt, dass die Dienste gemäß ihren jeweiligen Anforderungen bestmöglich untereinander ausgeglichen sind. Wenn nun der erste Knoten ausfällt, verteilt sich der Verlust der primären (und sekundären) Replikate auf alle Partitionen aller Dienste. Die Auswirkungen sind also für alle gleich.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md)
+* Weitere Informationen zu den anderen Optionen, die für die Konfiguration von Diensten zur Verfügung stehen, finden Sie im Thema zu den anderen verfügbaren Clusterressourcen-Manager-Konfigurationen unter [Konfigurieren von Diensten](service-fabric-cluster-resource-manager-configure-services.md).
 * Das Definieren von Defragmentierungsmetriken ist eine Möglichkeit, die Last auf Knoten zu konsolidieren, statt sie auszubreiten. Informationen zum Konfigurieren der Defragmentierung finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md)
 * Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md)
@@ -208,6 +224,6 @@ Indem die Metrikgewichtungen berücksichtigt werden, wird der globale Ausgleich 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

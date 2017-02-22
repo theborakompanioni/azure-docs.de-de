@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/18/2016
 ms.author: deonhe
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 959eaca7aafd8516cfc6f3b5dd2a44ce21ec4825
+ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
+ms.openlocfilehash: e6f569355dd73919824f22c88ce3eead10e5b853
 
 
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Erste Schritte mit dem Office 365-Video-Connector
+# <a name="get-started-with-the-office365-video-connector"></a>Erste Schritte mit dem Office&365;-Video-Connector
 Stellen Sie eine Verbindung mit Office 365 Video her, um Informationen über ein Office 365-Video oder eine Liste von Videos abzurufen und vieles mehr. Der Office 365-Video-Connector kann verwendet werden in:
 
 * Logik-Apps 
@@ -36,7 +36,7 @@ Mit Office 365 Video können Sie folgende Aktionen ausführen:
 * Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Office 365 Video abgerufen werden. 
 * Verwenden Sie Aktionen zum Überprüfen des Videoportalstatus, zum Abrufen einer Liste mit allen Videos in einem Kanal und vieles mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Sie können z.B. mit dem Bing-Suche-Connector nach Office 365-Videos suchen und anschließend mithilfe des Office 365-Video-Connectors Informationen zu diesem Video abrufen. Wenn das Video Ihre Anforderungen erfüllt, können Sie es auf Facebook veröffentlichen. 
 
-Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Informationen zum Hinzufügen eines Vorgangs in Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 Der Office 365-Video-Connector verfügt über die folgenden Aktionen. Es gibt keine Trigger.
@@ -47,7 +47,7 @@ Der Office 365-Video-Connector verfügt über die folgenden Aktionen. Es gibt ke
 
 Alle Connectors unterstützen Daten im JSON- und XML-Format. 
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Herstellen einer Verbindung mit dem Office 365-Video-Connector
+## <a name="create-a-connection-to-office365-video-connector"></a>Herstellen einer Verbindung mit dem Office&365;-Video-Connector
 Wenn Sie Ihren Logik-Apps diesen Connector hinzufügen, müssen Sie sich bei Ihrem Office 365-Video-Konto anmelden und den Logik-Apps das Herstellen einer Verbindung mit Ihrem Konto erlauben.
 
 > [!INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
@@ -203,11 +203,11 @@ Ruft das Bearertoken für den Zugriff auf die Videoentschlüsselung ab.
 | ViewCount |integer |no |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

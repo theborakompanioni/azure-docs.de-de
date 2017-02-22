@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2e650a5f6e2e69b11d7acbc7628e6ce6f29e5e1c
-ms.openlocfilehash: 6909e6b9770761ecba2069d43df1ad8c04345d4a
+ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
+ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
 
 
 ---
@@ -101,15 +101,15 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 ### <a name="configuring-azure-ad-single-sign-on-for-servicenow"></a>Konfigurieren des einmaligen Anmeldens von Azure AD für ServiceNow
 1. Klicken Sie im klassischen Azure AD-Portal auf der Anwendungsintegrationsseite für **ServiceNow** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ServiceNow anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Einmaliges Anmelden konfigurieren")
 
 3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC769497.png "App-URL konfigurieren")
    
     a. Geben Sie im Textfeld **ServiceNow-Anmelde-URL** die URL, die von Ihren Benutzern zum Anmelden bei Ihrer ServiceNow-Anwendung verwendet wird, im folgenden Format ein: `https://<instance-name>.service-now.com`.
    
@@ -119,11 +119,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 4. Damit Azure AD ServiceNow automatisch für die SAML-basierte Authentifizierung konfiguriert, geben Sie den Instanznamen, den Administratorbenutzernamen und das Administratorkennwort für ServiceNow in das Formular **Einmaliges Anmelden automatisch konfigurieren** ein, und klicken Sie auf *Konfigurieren*. Beachten Sie, dass dem angegebenen Administratorbenutzernamen in ServiceNow die Rolle **security_admin** zugewiesen sein muss, damit dies funktioniert. Um ServiceNow manuell für die Verwendung von Azure AD als SAML-Identitätsanbieter zu konfigurieren, klicken Sie auf **Diese Anwendung manuell für das einmalige Anmelden konfigurieren** und anschließend auf **Weiter**, und führen Sie die folgenden Schritte aus.
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "App-URL konfigurieren")
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für ServiceNow** auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat lokal auf Ihrem Computer.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Einmaliges Anmelden konfigurieren")
 
 6. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
@@ -131,11 +131,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
    
     a. Navigieren Sie im Navigationsbereich auf der linken Seite zum Abschnitt **Systemdefinition**, und klicken Sie anschließend auf **Plug-Ins**.
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "Activate plugin")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_03.png "Plug-in aktivieren")
    
     b. Suchen Sie nach *Integration – Multiple Provider Single Sign-On Installer* (Integration – SSO-Installationsprogramm für mehrere Anbieter).
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_04.png "Activate plugin")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_04.png "Plug-in aktivieren")
    
     c. Wählen Sie das Plug-In aus. Klicken Sie mit der rechten Maustaste, und wählen Sie **Activate/Upgrade** (Aktivieren/Upgrade).
    
@@ -143,11 +143,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 8. Klicken Sie im Navigationsbereich auf der linken Seite auf **Properties**.  
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "App-URL konfigurieren")
 
 9. Führen Sie im Dialogfeld **Multiple Provider SSO Properties** die folgenden Schritte aus:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694981.png "App-URL konfigurieren")
    
     a. Bei **Enable multiple provider SSO** wählen Sie **Yes** aus.
    
@@ -159,15 +159,15 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 10. Klicken Sie im Navigationsbereich auf der linken Seite auf **x509 Certificates**.
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "Einmaliges Anmelden konfigurieren")
 
 11. Klicken Sie im Dialogfeld **X.509 Certificates** auf **New**.
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694974.png "Einmaliges Anmelden konfigurieren")
 
 12. Führen Sie im Dialogfeld **X.509 Certificates** die folgenden Schritte aus:
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Einmaliges Anmelden konfigurieren")
     
      a. Klicken Sie auf **Neu**.
     
@@ -185,19 +185,19 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 13. Klicken Sie im Navigationsbereich auf der linken Seite auf **Identity Providers**.
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "Einmaliges Anmelden konfigurieren")
 
 14. Klicken Sie im Dialogfeld **Identity Providers** auf **New**:
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694977.png "Einmaliges Anmelden konfigurieren")
 
 15. Klicken Sie im Dialogfeld **Identity Providers** auf **SAML2 Update1?**:
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694978.png "Einmaliges Anmelden konfigurieren")
 
 16. Führen Sie im Dialogfeld „SAML2 Update1 Properties“ folgende Schritte aus:
     
-     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Configure single sign-on")
+     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694982.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z. B. **SAML 2.0**).
 
@@ -239,24 +239,24 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 1. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Einmaliges Anmelden konfigurieren")
 
 2. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Einmaliges Anmelden konfigurieren")
 
 ### <a name="configuring-azure-ad-single-sign-on-for-servicenow-express"></a>Konfigurieren des einmaligen Anmeldens von Azure AD für ServiceNow Express
 1. Klicken Sie im klassischen Azure AD-Portal auf der Anwendungsintegrationsseite für **ServiceNow** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749323.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ServiceNow anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749324.png "Einmaliges Anmelden konfigurieren")
 
 3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC769497.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC769497.png "App-URL konfigurieren")
    
     a. Geben Sie im Textfeld **ServiceNow-Anmelde-URL** die URL, die von Ihren Benutzern zum Anmelden bei Ihrer ServiceNow-Anwendung verwendet wird, im folgenden Format ein: `https://<instance-name>.service-now.com`.
    
@@ -266,21 +266,21 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 4. Klicken Sie auf **Diese Anwendung manuell für einmaliges Anmelden konfigurieren** und dann auf **Weiter**, und führen Sie die folgenden Schritte aus.
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694971.png "App-URL konfigurieren")
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für ServiceNow** auf **Zertifikat herunterladen**, speichern Sie das Zertifikat lokal auf Ihrem Computer, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC749325.png "Einmaliges Anmelden konfigurieren")
 
 6. Melden Sie sich bei Ihrer ServiceNow Express-Anwendung als Administrator an.
 
 7. Klicken Sie links im Navigationsbereich auf **Einmaliges Anmelden**.  
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694980ex.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694980ex.png "App-URL konfigurieren")
 
 8. Klicken Sie im Dialogfeld **Einmaliges Anmelden** oben rechts auf das Konfigurationssymbol, und legen Sie die folgenden Eigenschaften fest:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694981ex.png "Configure app URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694981ex.png "App-URL konfigurieren")
    
     a. Schieben Sie den Umschalter der Option **Enable multiple provider SSO** (SSO für mehrere Anbieter aktivieren) nach rechts.
    
@@ -289,10 +289,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
     c. Im Textfeld **The field on the user table that...** geben Sie **user_name** ein.
 9. Klicken Sie im Dialogfeld **Einmaliges Anmelden** auf **Neues Zertifikat hinzufügen**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694973ex.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694973ex.png "Einmaliges Anmelden konfigurieren")
 10. Führen Sie im Dialogfeld **X.509 Certificates** die folgenden Schritte aus:
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694975.png "Einmaliges Anmelden konfigurieren")
     
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z. B. **TestSAML2.0**).
     
@@ -314,10 +314,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
     g. Klicken Sie auf **Aktualisieren**.
 11. Klicken Sie im Dialogfeld **Einmaliges Anmelden** auf **Add New IdP** (Neuen IdP hinzufügen).
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694976ex.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694976ex.png "Einmaliges Anmelden konfigurieren")
 12. Führen Sie im Dialogfeld **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen) unter **Configure Identity Provider** (Identitätsanbieter konfigurieren) die folgenden Schritte aus:
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694982ex.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z.B. **SAML 2.0**).
 
@@ -332,7 +332,7 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 1. Klicken Sie auf **Advanced Settings** (Erweiterte Einstellungen), und führen Sie unter **Additional Identity Provider Properties** (Weitere Identitätsanbietereigenschaften) die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694983ex.png "Einmaliges Anmelden konfigurieren")
    
     a. Geben Sie im Textfeld **Protocol Binding for the IDP's SingleLogoutRequest** die Zeichenfolge **urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect** ein.
    
@@ -344,7 +344,7 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 2. Führen Sie unter **Additional Service Provider Properties** (Weitere Service Provider-Eigenschaften) die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694984ex.png "Einmaliges Anmelden konfigurieren")
    
     a. Geben Sie im Textfeld **ServiceNow Homepage** die URL zur Homepage Ihrer ServiceNow-Instanz ein.
    
@@ -370,11 +370,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 3. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694990.png "Einmaliges Anmelden konfigurieren")
 
 4. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-servicenow-tutorial/IC7694991.png "Einmaliges Anmelden konfigurieren")
 
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für ServiceNow aktivieren.
@@ -382,7 +382,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ServiceNow** auf **Benutzerbereitstellung konfigurieren**. 
    
-    ![Benutzerbereitstellung](./media/active-directory-saas-servicenow-tutorial/IC769498.png "User provisioning")
+    ![Benutzerbereitstellung](./media/active-directory-saas-servicenow-tutorial/IC769498.png "Benutzerbereitstellung")
 
 2. Legen Sie auf der Seite **Geben Sie Ihre ServiceNow-Anmeldeinformationen ein, um die automatische Benutzerbereitstellung zu aktivieren.** die folgenden Konfigurationseinstellungen fest:
    
@@ -398,7 +398,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
    
      f. Wenn Sie alle Benutzer für diese Anwendung bereitstellen möchten, wählen Sie**Dieser Anwendung automatisch alle Benutzerkonten im Verzeichnis bereitstellen**. 
    
-    ![Nächste Schritte](./media/active-directory-saas-servicenow-tutorial/IC698804.png "Next Steps")
+    ![Nächste Schritte](./media/active-directory-saas-servicenow-tutorial/IC698804.png "Nächste Schritte")
    
      g. Klicken Sie auf der Seite **Nächste Schritte** auf **Abgeschlossen**, um die Konfiguration zu speichern.
 
@@ -519,6 +519,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ServiceNow“ klicken, sollten Sie
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

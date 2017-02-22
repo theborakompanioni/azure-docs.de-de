@@ -1,5 +1,5 @@
 ---
-title: "Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Azure Service Fabric | Microsoft Docs"
+title: Ausgleichen Ihres Azure Service Fabric-Clusters | Microsoft-Dokumentation
 description: "Eine Einführung in den Lastenausgleich für einen Cluster mit dem Clusterressourcen-Manager von Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -12,25 +12,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/19/2016
+ms.date: 01/05/2017
 ms.author: masnider
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: d278e0125d698306366713a6e11957dad2de10c5
+ms.sourcegitcommit: bb27d279396aa7b670187560cebe2ed074576bad
+ms.openlocfilehash: ee77a01b2bb17ab70099e891e00255d1cec676f6
 
 
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Lastenausgleich für Service Fabric-Cluster
-Der Clusterressourcen-Manager von Service Fabric ermöglicht Folgendes: Melden dynamischer Lasten, Reagieren auf Änderungen im Cluster, Korrigieren von Einschränkungsverletzungen sowie bei Bedarf das Ausführen eines Lastenausgleichs für den Cluster. Doch wie häufig werden diese Vorgänge ausgeführt, und wodurch werden sie ausgelöst? Hierfür gibt es mehrere Steuerungsmöglichkeiten.
+Der Clusterressourcen-Manager von Service Fabric unterstützt dynamische Laständerungen, Reaktionen auf hinzugefügte oder entfernte Knoten/Dienste, die Korrektur von Einschränkungsverletzungen sowie den Ausgleich des Clusters. Doch wie häufig werden diese Vorgänge ausgeführt, und wodurch werden sie ausgelöst?
 
 Die ersten Steuerelemente im Zusammenhang mit dem Lastenausgleich sind eine Reihe von Timern. Diese Timer legen fest, wie oft der Clusterressourcen-Manager den Zustand des Clusters überprüft, um Situationen zu ermitteln, die Maßnahmen erfordern. Es gibt drei verschiedene Kategorien von Tasks, für die jeweils ein Timer verfügbar ist. Sie lauten wie folgt:
 
-1. Platzierung – In dieser Phase erfolgt die Platzierung von zustandsbehafteten und zustandslosen Instanzen, die fehlen. Dies umfasst sowohl neue Dienste als auch die Behandlung von zustandsbehafteten Replikaten oder zustandslosen Instanzen, die ausgefallen sind und neu erstellt werden müssen. Das Löschen und Ablegen von Replikaten oder Instanzen erfolgt auch in dieser Phase.
-2. Einschränkungsüberprüfungen – In dieser Phase erfolgt eine Überprüfung auf und Korrektur bei Verstößen gegen verschiedene Platzierungseinschränkungen (Regeln) im System. Beispiele hierfür sind z. B. das Sicherstellen, dass Knoten nicht ihre Kapazität überschreiten und die Platzierungseinschränkungen eines Diensts erfüllt werden (mehr dazu weiter unten).
-3. Lastenausgleich – In dieser Phase wird geprüft, ob basierend auf dem gewünschten Ausgleichsgrad für verschiedene Metriken ein proaktiver erneuter Ausgleich erforderlich ist. Falls ja, wird versucht, eine ausgeglichenere Anordnung im Cluster zu finden.
+1. Platzierung – In dieser Phase erfolgt die Platzierung zustandsbehafteter Replikate und zustandsloser Instanzen, die ggf. fehlen. Dies umfasst sowohl neue Dienste als auch die Behandlung von zustandsbehafteten Replikaten oder zustandslosen Instanzen, die ausgefallen sind. Hier werden das Löschen und Verwerfen von Replikaten oder Instanzen behandelt.
+2. Einschränkungsüberprüfungen – In dieser Phase erfolgt eine Überprüfung auf und Korrektur bei Verstößen gegen verschiedene Platzierungseinschränkungen (Regeln) im System. Dadurch kann beispielsweise sichergestellt werden, dass Knoten ihre Kapazität nicht überschreiten und die Platzierungseinschränkungen eines Diensts eingehalten werden.
+3. Ausgleich – In dieser Phase wird auf der Grundlage des gewünschten Ausgleichsgrads für verschiedene Metriken geprüft, ob ein proaktiver erneuter Ausgleich erforderlich ist. Falls ja, wird versucht, eine ausgeglichenere Anordnung im Cluster zu finden.
 
 ## <a name="configuring-cluster-resource-manager-steps-and-timers"></a>Konfigurieren von Schritten und Timern für den Clusterressourcen-Manager
-Für all diese Typen von Korrekturen, die der Clusterressourcen-Manager durchführen kann, sind unterschiedliche Timer verfügbar, mit denen festgelegt wird, wie häufig die Vorgänge ausgeführt werden. Wenn Sie z.B. stündlich neue Dienstworkloads im Cluster platzieren möchten (um diese zu Batches zusammenzufassen), jedoch regelmäßig alle paar Sekunden Lastenausgleichsprüfungen wünschen, können Sie dieses Verhalten konfigurieren. Beim Auslösen der einzelnen Timer wird der Task geplant. Standardmäßig überprüft der Ressourcen-Manager jede Zehntelsekunde seinen Zustand und wendet Updates (Zusammenfassung aller Änderungen seit der letzten Prüfung, z.B. das Ermitteln eines ausgefallenen Knotens) ebenfalls mit diesem Intervall an. Die Kennzeichen für die Platzierungs- und Einschränkungsüberprüfung werden auf „Jede Sekunde“, das Kennzeichen für den Ausgleich auf „Alle 5 Sekunden“ festgelegt.
+Jede dieser unterschiedlichen Korrekturarten, die der Clusterressourcen-Manager durchführen kann, wird durch einen anderen Timer gesteuert, um festzulegen, wie häufig die Vorgänge ausgeführt werden. Beim Auslösen der einzelnen Timer wird der Task geplant. Der Ressourcen-Manager führt standardmäßig folgende Schritte aus:
+
+* Er überprüft seinen Zustand und wendet jede Zehntelsekunde Updates an (beispielsweise, um zu erfassen, dass ein Knoten inaktiv ist).
+* Er legt sekündlich die Kennzeichen für die Platzierungs- und Einschränkungsüberprüfung fest.
+* Er legt alle fünf Sekunden das Kennzeichen für den Ausgleich fest.
+
+Dies ist in den folgenden Konfigurationsinformationen zu sehen:
 
 ClusterManifest.xml
 
@@ -43,42 +49,92 @@ ClusterManifest.xml
         </Section>
 ```
 
-Aktuell wird jeweils nur eine dieser Aktionen ausgeführt, sodass die Aktionen nacheinander ausgeführt werden (aus diesem Grund werden diese Konfigurationen als „Mindestintervalle“ bezeichnet). Der Grund dafür ist, dass Sie z.B. zunächst auf Anforderungen zum Erstellen neuer Replikate reagieren, bevor Sie mit einem Ausgleich des Clusters fortfahren. Wie Sie anhand der angegebenen standardmäßigen Zeitintervalle erkennen, können wir sehr schnell eine Überprüfung auf alle erforderlichen Schritte durchführen. Das heißt, dass die Änderungen, die wir am Ende jedes Schritts durchführen, in der Regel weniger umfangreich sind: Wir überprüfen also nicht eine große Menge an Änderungen, die über mehrere Stunden hinweg im Cluster vorgenommen wurden, um dann zu versuchen, alle Änderungen auf einmal zu korrigieren. Stattdessen wird versucht, sofort auf Vorkommnisse zu reagieren. Wenn jedoch viele Änderungen gleichzeitig vorgenommen werden, erfolgt die Korrektur für eine Gruppe von Vorkommnissen. Dadurch kann der Ressourcen-Manager von Service Fabric sehr schnell auf Ereignisse im Cluster reagieren.
+Über „ClusterConfig.json“ für eigenständige Bereitstellungen oder „Template.json“ für in Azure gehostet Cluster:
 
-Wenngleich die meisten dieser Tasks unkompliziert sind (wenn Einschränkungsverletzungen vorliegen, werden sie korrigiert, wenn Dienste erstellt werden müssen, werden sie erstellt), benötigt der Clusterressourcen-Manager einige zusätzliche Informationen, um zu bestimmen, ob für den Cluster ein Ausgleich vorgenommen werden muss. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* und *Aktivitätsschwellenwerte*.
+```json
+"fabricSettings": [
+  {
+    "name": "PlacementAndLoadBalancing",
+    "parameters": [
+      {
+          "name": "PLBRefreshGap",
+          "value": "0.10"
+      },
+      {
+          "name": "MinPlacementInterval",
+          "value": "1.0"
+      },
+      {
+          "name": "MinLoadBalancingInterval",
+          "value": "5.0"
+      }
+    ]
+  }
+]
+```
+
+Aktuell werden die Aktionen vom Clusterressourcen-Manager einzeln nacheinander ausgeführt. (Die Timer werden daher als „Mindestintervalle“ bezeichnet.) So verarbeitet der Clusterressourcen-Manager beispielsweise zunächst ausstehende Anforderungen für die Diensterstellung und gleicht erst dann den Cluster aus. Wie anhand der angegebenen Standardintervalle zu sehen, ermittelt und überprüft der Clusterressourcen-Manager in kurzen Abständen, ob etwas zu tun ist. Daher ist die Liste mit den Änderungen, die am Ende der einzelnen Schritte vorgenommen wurden, in der Regel eher kurz. Dank des Konzepts, in kurzen Abständen geringfügige Änderungen vorzunehmen, kann der Clusterressourcen-Manager besser auf Vorgänge im Cluster reagieren. Die Standardtimer ermöglichen eine gewisse Batchverarbeitung, da viele der gleichen Ereignisarten häufig gleichzeitig auftreten. Standardmäßig geht der Clusterressourcen-Manager nicht die Clusteränderungen mehrerer Stunden durch und versucht, alle gleichzeitig zu behandeln. Dies hätte immer wieder kurze Phasen mit hohem Änderungsaufkommen zur Folge.
+
+Der Clusterressourcen-Manager benötigt außerdem einige zusätzliche Informationen, um zu ermitteln, ob der Cluster unausgeglichen ist. Hierfür gibt es zwei weitere Konfigurationseinstellungen: *Ausgleichsschwellenwerte* und *Aktivitätsschwellenwerte*.
 
 ## <a name="balancing-thresholds"></a>Ausgleichsschwellenwerte
-Ein Ausgleichsschwellenwert ist das wesentliche Steuerelement, um einen proaktiven Ausgleich auszulösen (bedenken Sie, dass der Timer lediglich bestimmt, wie oft der Clusterressourcen-Manager den Cluster überprüft. Durch den Timer selbst werden keine Schritte ausgelöst). Der Ausgleichsschwellenwert legt fest, welche Bedingungen für eine bestimmte Metrik erfüllt sein müssen, damit der Clusterressourcen-Manager den Cluster als nicht ausgeglichen einstuft und einen Ausgleich auslöst.
+Ein Ausgleichsschwellenwert ist das Hauptsteuerinstrument für das Auslösen eines proaktiven erneuten Ausgleichs. Der MinLoadBalancingInterval-Timer gibt lediglich an, wie oft der Clusterressourcen-Manager die Überprüfung durchführen soll. Das heißt noch nicht, dass etwas passiert. Der Ausgleichsschwellenwert legt fest, welche Bedingungen für eine bestimmte Metrik erfüllt sein müssen, damit der Clusterressourcen-Manager den Cluster als nicht ausgeglichen einstuft und einen Ausgleich auslöst.
 
 Ausgleichsschwellenwerte werden als Teil der Clusterdefinition metrikbezogen definiert. Weitere Informationen zu Metriken finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 
 ClusterManifest.xml
 
-``` xml
+```xml
     <Section Name="MetricBalancingThresholds">
       <Parameter Name="MetricName1" Value="2"/>
       <Parameter Name="MetricName2" Value="3.5"/>
     </Section>
 ```
 
-Der Ausgleichsschwellenwert für eine Metrik ist ein Verhältnis. Wenn die Last auf dem am stärksten ausgelasteten Knoten dividiert durch die Last auf dem am wenigsten ausgelasteten Knoten diesen Wert überschreitet, gilt der Cluster als nicht ausgeglichen. Bei der nächsten Überprüfung durch den Clusterressourcen-Manager (über MinLoadBalancingInterval standardmäßig auf ein Intervall von 5 Sekunden festgelegt, siehe oben) wird ein Ausgleich ausgelöst.
+Über „ClusterConfig.json“ für eigenständige Bereitstellungen oder „Template.json“ für in Azure gehostet Cluster:
 
-![Beispiel eines Ausgleichsschwellenwerts][Image1]
+```json
+"fabricSettings": [
+  {
+    "name": "MetricBalancingThresholds",
+    "parameters": [
+      {
+          "name": "MetricName1",
+          "value": "2"
+      },
+      {
+          "name": "MetricName2",
+          "value": "3.5"
+      }
+    ]
+  }
+]
+```
 
-Bei diesem einfachen Beispiel belegt jeder Dienst eine Einheit einer bestimmten Metrik. Im Beispiel oben ist die maximale Auslastung auf einem Knoten 5 und die minimale Auslastung 2. Angenommen, der Ausgleichsschwellenwert für diese Metrik ist 3. Daher gilt der Cluster im Beispiel oben als ausgeglichen, sodass bei der nächsten Überprüfung durch den Clusterressourcen-Manager kein Lastenausgleich ausgelöst wird (das Verhältnis im Cluster beträgt 5/2 = 2,5, der Wert ist also kleiner als der angegebene Ausgleichsschwellenwert 3).
+Der Ausgleichsschwellenwert für eine Metrik ist ein Verhältnis. Wenn das Maß der Auslastung auf dem am stärksten ausgelasteten Knoten dividiert durch das Maß der Auslastung auf dem am wenigsten ausgelasteten Knoten diesen Wert überschreitet, gilt der Cluster als unausgeglichen. Bei der nächsten Ausführung des Clusterressourcen-Managers wird deshalb ein Ausgleich ausgelöst.
 
-Im Beispiel unten ist die maximale Auslastung auf einem Knoten 10, während die Mindestauslastung 2 ist (was ein Verhältnis von 5 ergibt). Der Cluster überschreitet also den vorgesehenen Ausgleichsschwellenwert 3 für diese Metrik. Folglich wird beim nächsten Auslösen des Ausgleichstimers ein globaler Ausgleich geplant. Beachten Sie, dass allein durch die Suche zum Durchführen eines Ausgleichs noch keine Elemente verschoben werden. In einigen Fällen ist der Cluster nicht ausgeglichen, ohne dass die Situation verbessert werden kann. In einer Situation wie dieser hier wird jedoch (zumindest per Standardkonfiguration) mit ziemlicher Sicherheit ein Teil der Last auf Node3 verschoben. Da wir keinen „gierigen“ Ansatz befolgen, könnte ein Teil der Last auch auf Node2 verteilt werden, da dies zu einer Minimierung des allgemeinen Ungleichgewichts zwischen Knoten führen würde. Wir würden jedoch davon ausgehen, dass der größte Teil der Last auf Node3 platziert würde.
+<center>
+![Beispiel mit einem Ausgleichsschwellenwert][Image1]
+</center>
 
+In diesem Beispiel verbraucht jeder Dienst eine einzelne Einheit einer bestimmten Metrik. Im oberen Beispiel hat die maximale Auslastung auf einem Knoten den Wert „5“ und die minimale Auslastung den Wert „2“. Angenommen, der Ausgleichsschwellenwert für diese Metrik ist „3“. Da das Verhältnis des Clusters 5/2 (also 2,5) beträgt und damit kleiner als der angegebene Schwellenwert (3) ist, ist der Cluster ausgeglichen. Bei der Überprüfung durch den Clusterressourcen-Manager wird daher kein Ausgleich ausgelöst.
+
+Im unteren Beispiel hat die maximale Auslastung auf einem Knoten den Wert „10“ und die minimale Auslastung den Wert „2“. Für das Verhältnis ergibt sich also der Wert „5“. Der Wert „5“ übersteigt den für die Metrik festgelegten Ausgleichsschwellenwert (3). Folglich wird beim nächsten Auslösen des Ausgleichstimers ein Ausgleich geplant. In einer derartigen Situation wird ein Teil der Auslastung mit hoher Wahrscheinlichkeit an „Node3“ verteilt. Da der Clusterressourcen-Manager von Service Fabric keinen „gierigen“ Ansatz verfolgt, wird ein Teil der Auslastung unter Umständen auch an „Node2“ verteilt. Dies führt insgesamt zu einer Minimierung der Unterschiede zwischen Knoten, was ja eines der Ziele des Clusterressourcen-Managers ist.
+
+<center>
 ![Ausgleichsschwellenwert – Beispielaktionen][Image2]
+</center>
 
-Beachten Sie, dass die Unterschreitung des Ausgleichsschwellenwerts kein explizites Ziel ist – Ausgleichsschwellenwerte sind lediglich *Trigger*, die den Clusterressourcen-Manager darüber informieren, dass der Cluster geprüft werden sollte, um ggf. Verbesserungen vorzunehmen.
+Die Unterschreitung des Ausgleichsschwellenwerts ist kein explizites Ziel. Ausgleichsschwellenwerte sind lediglich *Trigger*, die den Clusterressourcen-Manager darüber informieren, dass der Cluster überprüft werden sollte, um ggf. Verbesserungen vorzunehmen. Allein durch den Suchvorgang für einen Ausgleich werden allerdings noch keine Elemente verschoben. Manchmal ist der Cluster nicht ausgeglichen, ohne dass die Situation verbessert werden kann.
 
 ## <a name="activity-thresholds"></a>Aktivitätsschwellenwerte
-Mitunter ist die *Gesamtlast* des Clusters niedrig, obwohl Knoten relativ unausgeglichen sind. Der Grund hierfür kann bloß die Tageszeit sein oder dass der Cluster neu ist und einem Bootstrapping unterzogen wird. In beiden Fällen sollten Sie auf einen Lastenausgleich für den Cluster verzichten, da der Nutzen sehr gering ist und Sie lediglich viel Zeit für das Verschieben von Netzwerk- und Computeressourcen aufwenden, ohne dass dies zu einer wirklichen Veränderung führt. Um dies zu verhindern, gibt es im Ressourcen-Manager mit Aktivitätsschwellenwerten ein weiteres Steuerelement, mit dem Sie eine absolute Untergrenze für eine Aktivität angeben können. Wenn ein Knoten nicht mindestens diese Last aufweist, wird kein Ausgleich ausgelöst, selbst wenn der Ausgleichsschwellenwert erreicht wird.
+Mitunter ist die *Gesamtlast* des Clusters niedrig, obwohl Knoten relativ unausgeglichen sind. Dies kann auf einen vorübergehenden Rückgang zurückzuführen sein oder daran liegen, dass der Cluster neu ist und einem Bootstrapping-Vorgang unterzogen wird. In beiden Fällen empfiehlt es sich unter Umständen, von einem Ausgleich des Clusters abzusehen, da sich damit nur wenig erreichen lässt. Wenn der Cluster ausgeglichen wurde, würden Sie lediglich Netzwerk- und Computeressourcen beanspruchen, um Elemente zu verschieben, ohne jedoch einen *absoluten* Unterschied zu erzielen. Dies lässt sich durch so genannte Aktivitätsschwellenwerte vermeiden. Mithilfe von Aktivitätsschwellenwerten können Sie eine absolute Untergrenze für Aktivitäten angeben. Wird der Schwellenwert von keinem Knoten überschritten, wird auch bei Erreichen des Ausgleichsschwellenwerts kein Ausgleich ausgelöst.
 
-Nehmen wir als Beispiel Berichte mit den folgenden Summen für die Nutzung auf diesen Knoten. Nehmen wir außerdem an, dass wir unseren Ausgleichsschwellenwert 3 für diese Metrik beibehalten, aber zusätzlich auch den Aktivitätsschwellenwert 1536 festgelegt haben. Obgleich der Cluster im ersten Fall laut Ausgleichsschwellenwert unausgeglichen ist, erreicht kein Knoten den Mindestaktivitätsschwellenwert, sodass wir nicht eingreifen. Im unteren Beispiel wird der Aktivitätsschwellenwert von Node1 erheblich überschritten, sodass ein Ausgleich durchgeführt wird (sowohl der Ausgleichsschwellenwert als auch der Aktivitätsschwellenwert für die Metrik werden überschritten).
+Sehen Sie sich zur Veranschaulichung das Beispieldiagramm weiter unten an. Angenommen, wir behalten für diese Metrik den Ausgleichsschwellenwert „3“ bei, verwenden aber zusätzlich den Aktivitätsschwellenwert „1536“. Im ersten Fall ist der Cluster zwar laut Ausgleichsschwellenwert unausgeglichen, der Aktivitätsschwellenwert wird jedoch von keinem Knoten erreicht, sodass keine Maßnahmen ergriffen werden. Im unteren Beispiel überschreitet „Node1“ den Aktivitätsschwellenwert deutlich. Da sowohl der Ausgleichsschwellenwert als auch der Aktivitätsschwellenwert für die Metrik überschritten werden, wird ein Ausgleich geplant.
 
-![Beispiel eines Aktivitätsschwellenwerts][Image3]
+<center>
+![Beispiel mit einem Aktivitätsschwellenwert][Image3]
+</center>
 
 Aktivitätsschwellenwerte werden wie Ausgleichsschwellenwerte metrikbezogen in der Clusterdefinition definiert:
 
@@ -90,26 +146,46 @@ ClusterManifest.xml
     </Section>
 ```
 
-Sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert sind mit der Metrik verknüpft. Der Ausgleich wird nur ausgelöst, wenn sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert für die gleiche Metrik überschritten werden. Folglich gilt: Wenn der Ausgleichsschwellenwert für den Arbeitsspeicher und der Aktivitätsschwellenwert für die CPU überschritten werden, wird kein Ausgleich mehr ausgelöst, solange die verbleibenden Schwellenwerte (Ausgleichsschwellenwert für die CPU und Aktivitätsschwellenwert für den Arbeitsspeicher) nicht überschritten werden.
+Über „ClusterConfig.json“ für eigenständige Bereitstellungen oder „Template.json“ für in Azure gehostet Cluster:
+
+```json
+"fabricSettings": [
+  {
+    "name": "MetricActivityThresholds",
+    "parameters": [
+      {
+          "name": "Memory",
+          "value": "1536"
+      }
+    ]
+  }
+]
+```
+
+Sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert sind mit einer bestimmten Metrik verknüpft. Der Ausgleich wird nur ausgelöst, wenn sowohl der Ausgleichs- als auch der Aktivitätsschwellenwert für die gleiche Metrik überschritten werden.
 
 ## <a name="balancing-services-together"></a>Gemeinsamer Lastenausgleich von Diensten
-Ein interessanter Hinweis ist, dass die Entscheidung, ob der Cluster unausgeglichen ist oder nicht, clusterweit gefällt wird. Doch die Korrektur darin besteht, einzelne Dienstreplikate und -instanzen zu verschieben. Das ist einleuchtend, nicht wahr? Wenn auf einem Knoten ein zu hoher Arbeitsspeicherwert erreicht wird, können mehrere Replikate oder Instanzen dazu beitragen. Daher kann es erforderlich sein, zustandsbehaftete Replikate oder zustandslose Instanzen zu verschieben, die die betroffene, unausgeglichene Metrik nutzen.
+Ob der Cluster unausgeglichen ist oder nicht, wird auf der Clusterebene entschieden. Die Korrektur besteht jedoch darin, einzelne Dienstreplikate und -instanzen zu verschieben. Das ist einleuchtend, nicht wahr? Wenn auf einem Knoten ein hoher Arbeitsspeicherwert erreicht wird, kann dies auf mehrere Replikate oder Instanzen zurückzuführen sein. Daher kann es erforderlich sein, zustandsbehaftete Replikate oder zustandslose Instanzen zu verschieben, die die betroffene, unausgeglichene Metrik nutzen.
 
-Gelegentlich aber ruft uns ein Kunde an oder schickt uns ein Ticket, das besagt, dass ein nicht unausgeglichener Dienst verschoben wurde. Wie kann es passieren, dass ein Dienst verschoben wird, obwohl alle Metriken dieses Diensts zum Zeitpunkt der anderen Diskrepanz (geradezu perfekt) ausgeglichen waren? Das wollen wir uns einmal ansehen.
+Gelegentlich wird jedoch auch ein Dienst verschoben, der gar nicht unausgeglichen war. Wie kann es passieren, dass ein Dienst verschoben wird, obwohl alle Metriken dieses Diensts zum Zeitpunkt der anderen Diskrepanz (geradezu perfekt) ausgeglichen waren? Das wollen wir uns einmal ansehen.
 
-Sehen wir uns folgendes Beispiel mit den Diensten Service1, Service2, Service3 und Service4 an. Service1 meldet Werte für die Metriken Metric1 und Metric2, Service2 für die Metriken Metric2 und Metric3, Service3 für die Metriken Metric3 und Metric4 und Service4 für die Metrik Metric99. Sicherlich können Sie erkennen, in welche Richtung wir hier gehen. Wir haben eine Kette! Aus Sicht des Clusterressourcen-Managers verfügen wir nicht wirklich über vier unabhängige Dienste, sondern vielmehr über eine Reihe von Diensten, die in Bezug zueinander stehen (Service1, Service2 und Service3), sowie über einen weiteren Dienst, der unabhängig ist.
+Sehen wir uns folgendes Beispiel mit den Diensten Service1, Service2, Service3 und Service4 an. Service1 meldet Werte für die Metriken Metric1 und Metric2, Service2 für die Metriken Metric2 und Metric3, Service3 für die Metriken Metric3 und Metric4 und Service4 für die Metrik Metric99. Sicherlich können Sie erkennen, in welche Richtung wir hier gehen. Wir haben eine Kette! Wir verfügen nicht wirklich über vier unabhängige Dienste, sondern vielmehr über eine Reihe von Diensten, die in Bezug zueinander stehen („Service1“, „Service2“ und „Service3“), sowie über einen weiteren Dienst, der unabhängig ist.
 
-![Gemeinsamer Lastenausgleich von Diensten][Image4]
+<center>
+![Gemeinsames Ausgleichen von Diensten][Image4]
+</center>
 
-Daher ist es möglich, dass ein Ungleichgewicht bei Metric1 bewirken kann, dass Replikate oder Instanzen, die zu Service3 gehören, verschoben werden. In der Regel sind diese Verschiebungen eher begrenzt, können aber umfassender sein, was genau davon abhängt, wie unausgeglichen Metrik 1 geworden ist und welche Änderungen im Cluster für die Korrektur erforderlich waren. Wir können auch mit Sicherheit sagen, dass ein Ungleichgewicht bei den Metriken 1, 2 oder 3 nie Verschiebungen in Dienst 4 bewirkt. Dies wäre sinnlos, da das Verschieben von Replikaten oder Instanzen, die zu Dienst 4 gehören, keinerlei Auswirkung auf die Ausgeglichenheit der Metriken 1, 2 oder 3 hat.
+Ein Ungleichgewicht bei „Metric1“ kann daher zu einer Verschiebung von Replikaten oder Instanzen führen, die zu „Service3“ gehören (der „Metric1“ nicht meldet). In der Regel sind diese Verschiebungen begrenzt, sie können aber auch umfassender ausfallen. Dies hängt davon ab, wie unausgeglichen „Metric1“ geworden ist und welche Korrekturmaßnahmen im Cluster erforderlich waren. Wir können auch mit Sicherheit sagen, dass ein Ungleichgewicht bei der Metrik 1, 2 oder 3 nie Verschiebungen in „Service4“ bewirkt. Das wäre sinnlos, da das Verschieben von Replikaten oder Instanzen, die zu „Service4“ gehören, keinerlei Auswirkung auf die Ausgeglichenheit der Metrik 1, 2 oder 3 hat.
 
-Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste in Beziehung stehen, da Dienste ggf. hinzugefügt oder entfernt werden oder sich die Konfiguration ihrer Metriken geändert haben könnte. Zwischen zwei Ausführungen des Lastenausgleichs könnte Service2 z.B. so neu konfiguriert worden sein, dass Metric2 entfernt wurde. Dadurch wird die Kette zwischen Dienst 1 und Dienst 2 unterbrochen. Dann haben Sie anstelle von zwei Dienstgruppen drei:
+Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste in Beziehung stehen, da Dienste ggf. hinzugefügt oder entfernt werden oder sich die Konfiguration ihrer Metriken geändert hat. Zwischen zwei Ausführungen des Ausgleichs kann beispielsweise „Service2“ so konfiguriert worden sein, dass „Metric2“ entfernt wird. Dadurch wird die Kette zwischen „Service1“ und „Service2“ unterbrochen. Anstelle von zwei zusammenhängenden Dienstgruppen haben Sie nun drei:
 
-![Gemeinsamer Lastenausgleich von Diensten][Image5]
+<center>
+![Gemeinsames Ausgleichen von Diensten][Image5]
+</center>
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md)
-* Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md)
+* Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+* Bewegungskosten sind eine Möglichkeit, dem Clusterressourcen-Manager mitzuteilen, dass bestimmte Dienste teurer zu bewegen sind als andere. Weitere Informationen zu Bewegungskosten finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-movement-cost.md).
 * Der Clusterressourcen-Manager bietet mehrere Drosselungen, die Sie konfigurieren können, um Änderungen im Cluster zu verlangsamen. Sie sind normalerweise nicht erforderlich, aber bei Bedarf finden Sie [hier](service-fabric-cluster-resource-manager-advanced-throttling.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
@@ -120,6 +196,6 @@ Der Clusterressourcen-Manager ermittelt automatisch, welche Dienste in Beziehung
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

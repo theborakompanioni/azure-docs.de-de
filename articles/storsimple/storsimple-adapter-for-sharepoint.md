@@ -1,5 +1,5 @@
 ---
-title: "StorSimple-Adapter für SharePoint | Microsoft Docs"
+title: "Installieren des StorSimple-Adapters für SharePoint | Microsoft-Dokumentation"
 description: "Beschreibt die Installation und Konfiguration bzw. die Entfernung des StorSimple-Adapters für SharePoint in einer SharePoint-Serverfarm."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 07/11/2016
 ms.author: v-sharos
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a108e20c36208fd211e45d180fc77a65e501b191
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 8c7bcc959c15399e8be96eb8f37634d2763a3115
 
 
 ---
@@ -32,7 +32,7 @@ Der StorSimple-Adapter für SharePoint dient als Remote BLOB Storage (RBS)-Anbie
 > 
 
 * Sie können den StorSimple-Adapter für SharePoint im Microsoft Download Center unter [StorSimple-Adapter für SharePoint][1] herunterladen.
-* Informationen zur Planung für RBS und RBS-Einschränkungen finden Sie unter [Verwenden von RBS in SharePoint 2013][2] und [Planen von RBS (SharePoint Server 2010)][3].
+* Informationen zur Planung für RBS und zu RBS-Einschränkungen finden Sie unter [Verwenden von RBS in SharePoint 2013][2] und [Planen von RBS (SharePoint Server 2010)][3].
 
 Im Rest dieser Übersicht werden kurz die Rolle des StorSimple-Adapters für SharePoint und die SharePoint-Kapazitäts- und Leistungsgrenzen beschrieben, mit denen Sie vertraut sein sollten, bevor Sie den Adapter installieren und konfigurieren. Wechseln Sie nach dem Lesen dieser Informationen zu [Installation des StorSimple-Adapters für SharePoint](#storsimple-adapter-for-sharepoint-installation) , um mit der Einrichtung des Adapters zu beginnen.
 
@@ -178,7 +178,7 @@ Wenn Objekte von einer SharePoint-Website gelöscht werden, werden sie nicht aut
 
 Dieses Wartungsprogramm (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) wird auf allen SharePoint WFE-Servern und -Anwendungsservern automatisch installiert, wenn Sie RBS aktivieren. Das Programm wird am folgenden Speicherort installiert: *Startlaufwerk*:\Programme\Microsoft SQL Remote Blob Storage 10.50\Maintainer\
 
-Informationen zum Konfigurieren und Verwenden des Wartungsprogramms finden Sie unter [RBS-Verwaltung in SharePoint Server 2013][8].
+Informationen zum Konfigurieren und Verwenden des Wartungsprogramms finden Sie unter [Verwalten von RBS in SharePoint Server 2013][8].
 
 > [!IMPORTANT]
 > Der RBS-Wartungsprogramm ist ressourcenintensiv. Planen Sie seine Ausführung nur für Zeiten, in denen in der SharePoint-Farm geringe Aktivität herrscht.
@@ -275,6 +275,6 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

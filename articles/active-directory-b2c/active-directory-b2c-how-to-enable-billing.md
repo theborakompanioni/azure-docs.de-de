@@ -13,14 +13,12 @@ ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
 translationtype: Human Translation
-ms.sourcegitcommit: 0475c0f209cde80177df7dbf23eaf8dd17a44752
-ms.openlocfilehash: b5754a08e0683344cc97bdc664ed26ef9a9cf34d
+ms.sourcegitcommit: 10bcd51746315d80cef20592b869dca95eaacb56
+ms.openlocfilehash: a460ef42dafac04088ecdce12f64ee5e19ba77ff
 
 
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>Verknüpfen eines Azure-Abonnements mit einem Azure B2C-Mandanten zum Begleichen von Nutzungsgebühren
-> [!IMPORTANT]
-> In Kürze verfügbar. Dieses Feature ist nicht für alle B2C-Mandanten verfügbar.
 
 Laufende Nutzungsgebühren für Azure Active Directory B2C (oder Azure AD B2C) werden unter einem Azure-Abonnement abgerechnet. Für den Mandantenadministrator ist es erforderlich, den Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement zu verknüpfen, nachdem der eigentliche B2C-Mandant erstellt wurde.  Diese Verknüpfung wird erreicht, indem im Azure-Zielabonnement eine Azure AD-Ressource vom Typ „B2C-Mandant“ erstellt wird. Viele B2C-Mandanten können zusammen mit anderen Azure-Ressourcen (z.B. VMs, Datenspeicher, LogicApps) mit einem einzelnen Azure-Abonnement verknüpft werden.
 
@@ -69,6 +67,9 @@ Wenn Sie auf die B2C-Mandantenressource klicken, haben Sie folgende Möglichkeit
 
 ![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
+## <a name="known-issues"></a>Bekannte Probleme
+- Löschen eines B2C-Mandanten. Wenn ein B2C-Mandanten erstellt, gelöscht und mit demselben Domänennamen neu erstellt wird, löschen Sie auch die Verknüpfungsressource mit demselben Domänennamen, und erstellen Sie sie neu.  Diese Verknüpfungsressource finden Sie über das Azure-Portal im Abonnementmandanten unter „Alle Ressourcen“.
+- Selbstauferlegte Einschränkungen für den Standort regionaler Ressourcen.  In seltenen Fällen hat ein Benutzer möglicherweise eine regionale Einschränkung für die Erstellung von Azure-Ressourcen eingerichtet.  Diese Einschränkung kann die Erstellung der Verknüpfung zwischen einem Azure-Abonnement und einem B2C-Mandanten verhindern. Um das Problem zu lösen, lockern Sie diese Einschränkung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie diese Schritte für die einzelnen B2C-Mandanten ausgeführt haben, wird die Abrechnung für Ihr Azure-Abonnement in Übereinstimmung mit Ihren Azure Direct- bzw. Enterprise Agreement-Details durchgeführt.
@@ -84,6 +85,6 @@ Nachdem Sie diese Schritte für die einzelnen B2C-Mandanten ausgeführt haben, w
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

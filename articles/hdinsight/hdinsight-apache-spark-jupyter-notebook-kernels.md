@@ -1,6 +1,6 @@
 ---
-title: "Verfügbare Kernel für Jupyter Notebooks in HDInsight Spark-Clustern unter Linux | Microsoft Docs"
-description: "Hier erhalten Sie Informationen zu zusätzlichen Jupyter Notebook-Kerneln, die in Spark-Clustern unter HDInsight (Linux) zur Verfügung stehen."
+title: Verwenden unterschiedlicher Kernel mit Jupyter Notebooks in Azure Spark-Clustern | Microsoft-Dokumentation
+description: "Erfahren Sie mehr über die PySpark- und Spark-Kernel, die Sie mit in Spark-Clustern in HDInsight Linux verfügbaren Jupyter Notebooks verwenden können."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -13,65 +13,66 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b322e44f53567e2618df086500ca42e81e4e233e
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: fc39933ac8d9f3c46023a5852df036b87e559647
 
 
 ---
-# <a name="kernels-available-for-jupyter-notebooks-with-apache-spark-clusters-on-hdinsight-linux"></a>Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight (Linux)
-Apache Spark-Cluster unter HDInsight (Linux) beinhalten Jupyter Notebooks, die Sie zum Testen Ihrer Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. HDInsight Spark-Cluster bieten zwei Kernel, die Sie für Jupyter Notebook verwenden können. Diese sind wie folgt:
+# <a name="jupyter-notebooks-kernels-with-apache-spark-clusters-in-hdinsight"></a>Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight 
 
-1. **PySpark** (für in Python geschriebene Anwendungen)
-2. **Spark** (für in Scala geschriebene Anwendungen)
+HDInsight Spark-Cluster bieten zwei Kernels, die Sie beim Jupyter Notebook zum Testen Ihrer Spark-Anwendungen verwenden können. Ein Kernel ist ein Programm, das ausgeführt wird und Ihren Code interpretiert. Die beiden Kernels sind:
 
-In diesem Artikel erfahren Sie, wie Sie diese Kernel verwenden und welche Vorteile sie Ihnen bringen.
+- **PySpark** (für in Python geschriebene Anwendungen)
+- **Spark** (für in Scala geschriebene Anwendungen)
+
+In diesem Artikel erfahren Sie, wie Sie diese Kernels verwenden und welche Vorteile sie bieten.
 
 **Voraussetzungen:**
 
 Sie benötigen Folgendes:
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
-* Einen Apache Spark-Cluster unter HDInsight (Linux). Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+* Einen Apache Spark-Cluster unter HDInsight Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-## <a name="how-do-i-use-the-kernels"></a>Vorgehensweise zum Verwenden der Kernel
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
-2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Cluster-Dashboard** und anschließend auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
+## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
+1. Öffnen Sie Ihren Cluster im [Azure-Portal](https://portal.azure.com/).  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-portal-linux.md#list-and-show-clusters). Der Cluster wird in einem neuen Blatt des Portals geöffnet.
+2. Klicken Sie im Abschnitt **Quick links** (Direktlinks) auf **Cluster dashboards** (Cluster-Dashboards), um das Blatt **Cluster dashboards** (Cluster-Dashboards) zu öffnen.  Wenn Ihnen **Quick Links** (Direktlinks) nicht angezeigt wird, klicken Sie im linken Menü des Blatts auf **Übersicht**.
+
+    ![Cluster-Dashboards](./media/hdinsight-apache-spark-jupyter-notebook-kernels/hdinsight-azure-portal-cluster-dashboards.png "Cluster-Dashboards") 
+3. Klicken Sie auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
    
    > [!NOTE]
    > Sie können auch das Jupyter Notebook für Ihren Cluster aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
-   > 
+   >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    > 
    > 
-3. Erstellen Sie ein neues Notebook mit dem neuen Kernel. Klicken Sie auf **Neu** und dann auf **Pyspark** oder **Spark**. Der Spark-Kernel ist für Scala-Anwendungen vorgesehen, der PySpark-Kernel für Python-Anwendung.
+3. Klicken Sie auf **Neu** und anschließend entweder auf **Pyspark** oder **Spark**, um ein neues Notebook zu erstellen. Der Spark-Kernel ist für Scala-Anwendungen vorgesehen, der PySpark-Kernel für Python-Anwendung.
    
-    ![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Create a new Jupyter notebook") 
+    ![Erstellen eines neuen Jupyter Notebooks](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Erstellen eines neuen Jupyter Notebooks") 
+
 4. Dadurch öffnet sich ein neues Notebook mit dem ausgewählten Kernel.
 
-## <a name="why-should-i-use-the-pyspark-or-spark-kernels"></a>Warum sollte ich die PySpark- oder Spark-Kernel verwenden?
+## <a name="choose-between-the-kernels"></a>Auswählen zwischen den Kernels
 Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 
-1. **Voreingestellte Kontexte** Bei Verwendung der **PySpark**- oder **Spark**-Kernel, die mit Jupyter Notebooks verfügbar sind, müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
+- **Voreingestellte Kontexte** Bei Verwendung der **PySpark**- oder **Spark**-Kernels müssen Sie die Spark- oder Hive-Kontexte nicht mehr explizit festlegen, um mit Ihren Anwendungen arbeiten zu können. Diese Kontexte stehen standardmäßig zur Verfügung. Diese Kontexte sind:
    
    * **sc** (Spark-Kontext)
    * **sqlContext** – für Hive-Kontext
 
     Sie müssen also keine Anweisungen wie die folgenden ausführen, um die Kontexte festzulegen:
 
-        ###################################################
-        # <a name="you-do-not-need-to-run-this-with-the-new-kernels"></a>YOU DO NOT NEED TO RUN THIS WITH THE NEW KERNELS
-        ###################################################
-        sc = SparkContext('yarn-client')    sqlContext = HiveContext(sc)
+      sc = SparkContext('yarn-client')  sqlContext = HiveContext(sc)
 
     Stattdessen können Sie in Ihrer Anwendung direkt die vordefinierten Kontexte verwenden.
 
-1. **Zellen-Magics** Der PySpark-Kernel bietet einige vordefinierte „Magics“, spezielle Befehle, die Sie mit `%%` (z.B. `%%MAGIC` <args>) aufrufen können. Der Magic-Befehl muss das erste Wort in einer Codezelle sein und ermöglicht mehrere Inhaltszeilen. Das Magic-Wort sollte das erste Wort in der Zelle sein. Beliebige Hinzufügungen vor dem Magic, auch Kommentare, verursachen einen Fehler.     Weitere Informationen zu Magics finden Sie [hier](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Zellen-Magics** Der PySpark-Kernel bietet einige vordefinierte „Magics“, spezielle Befehle, die Sie mit `%%` (z.B. `%%MAGIC` <args>) aufrufen können. Der Magic-Befehl muss das erste Wort in einer Codezelle sein und ermöglicht mehrere Inhaltszeilen. Das Magic-Wort sollte das erste Wort in der Zelle sein. Beliebige Hinzufügungen vor dem Magic, auch Kommentare, verursachen einen Fehler.     Weitere Informationen zu Magics finden Sie [hier](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
     In der folgenden Tabelle sind die verschiedenen über den Kernel verfügbaren Magics aufgeführt.
-   
+
    | Magic | Beispiel | Beschreibung |
    | --- | --- | --- |
    | help |`%%help` |Generiert eine Tabelle mit allen verfügbaren Magics mit Beispiel und Beschreibung. |
@@ -82,11 +83,11 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
    | Protokolle |`%%logs` |Gibt die Protokolle für die aktuelle Livy-Sitzung aus. |
    | delete |`%%delete -f -s <session number>` |Löscht eine bestimmte Sitzung des aktuellen Livy-Endpunkts. Beachten Sie, dass Sie die Sitzung, die für den Kernel selbst initiiert wird, nicht löschen können. |
    | cleanup |`%%cleanup -f` |Löscht alle Sitzungen für den aktuellen Livy-Endpunkt, einschließlich dieser Notebook-Sitzung. Das Force-Flag „-f“ ist obligatorisch |
-   
+
    > [!NOTE]
-   > Zusätzlich zu den Magics, die durch den PySpark-Kernel hinzugefügt werden, können Sie auch die [integrierten IPython-Magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) verwenden, einschließlich `%%sh`. Sie können das Magic `%%sh` verwenden, um Skripts und Codeblöcke auf dem Clusterhauptknoten auszuführen. 
-   > 
-   > 
+   > Zusätzlich zu den Magics, die durch den PySpark-Kernel hinzugefügt werden, können Sie auch die [integrierten IPython-Magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) verwenden, einschließlich `%%sh`. Sie können das Magic `%%sh` verwenden, um Skripts und Codeblöcke auf dem Clusterhauptknoten auszuführen.
+   >
+   >
 2. **Automatische Visualisierung**. Der **Pyspark** -Kernel visualisiert automatisch die Ausgabe von Hive- und SQL-Abfragen. Sie können zwischen verschiedenen Arten von Visualisierungen wählen, inklusive Tabelle, Kreis-, Linie-, Flächen- und Balkendiagramm.
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>Mit %%sql-Magic unterstützte Parameter
@@ -102,7 +103,7 @@ Die Verwendung der neuen Kernel bringt einige Vorteile mit sich.
 
 **Beispiel:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2 
+    %%sql -q -m sample -r 0.1 -n 500 -o query2
     SELECT * FROM hivesampletable
 
 Die obige Anweisung führt Folgendes aus:
@@ -113,7 +114,7 @@ Die obige Anweisung führt Folgendes aus:
 * Da wir `-o query2` verwendet haben, wird schließlich auch die Ausgabe in einem Dataframe namens **query2**gespeichert.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Überlegungen bei der Verwendung der neuen Kernel
-Unabhängig vom verwendeten Kernel (PySpark oder Spark) werden von ausgeführten Notebooks immer Clusterressourcen beansprucht.  Da die Kontexte für diese Kernel voreingestellt sind, werden durch ein einfaches Beenden der Notebooks die Kontexte nicht ebenfalls beendet, sondern beanspruchen weiterhin Clusterressourcen. Bei PySpark- und Spark-Kernels empfiehlt sich daher die Verwendung der Option zum **Schließen und Anhalten** aus dem Menü **Datei** des Notebooks. Dadurch wird die Beendigung des Kontexts erzwungen und das Notebook beendet.     
+Unabhängig vom verwendeten Kernel (PySpark oder Spark) werden von ausgeführten Notebooks immer Clusterressourcen beansprucht.  Da die Kontexte für diese Kernels voreingestellt sind, werden die Kontexte durch ein einfaches Beenden der Notebooks nicht ebenfalls beendet, sondern beanspruchen weiterhin Clusterressourcen. Bei PySpark- und Spark-Kernels empfiehlt sich daher die Verwendung der Option zum **Schließen und Anhalten** aus dem Menü **Datei** des Notebooks. Dadurch wird die Beendigung des Kontexts erzwungen und das Notebook beendet.     
 
 ## <a name="show-me-some-examples"></a>Beispiele
 Wenn Sie ein Jupyter Notebook öffnen, sind auf der Stammebene zwei Ordner verfügbar.
@@ -168,7 +169,6 @@ Die neuen Kernels befinden sich in der Entwicklungsphase und werden mit der Zeit
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure VM-Agent und -Erweiterungen | Microsoft Docs
+title: Linux VM-Agent und Erweiterungen in Azure | Microsoft-Dokumentation
 description: "Bietet eine Übersicht über den Agent und die Erweiterungen sowie die Installation des Agents unter Verwendung des klassischen Bereitstellungsmodells."
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 0a03dbdc8858e2fd3e8b9bad468e66bc250229a6
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: 383e32eca05888c8bf08f80a413c0b64a9b4fb46
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 0a03dbdc8858e2fd3e8b9bad468e66bc250229a6
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Automation – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Automation Prozesse und die Konfigurationsverwaltung automatisieren, um Zeit zu sparen und die Zuverlässigkeit regulärer Verwaltungsaufgaben zu erhöhen."
+services: automation
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: automation
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 9f7b84331bd0575062518834ce1cd3db60fa6289
-ms.openlocfilehash: 98ddde79d422b692a1ded866fb12061bf942fc8a
+ms.sourcegitcommit: 5a96f86157516585742bf184a65f42b1a2070a95
+ms.openlocfilehash: 008fe9bc549d2ba4bc043c344b39409a04efe598
 
 ---
 # <a name="automation-documentation"></a>Dokumentation zu Automation
@@ -166,16 +177,10 @@ Hier erfahren Sie, wie Sie mithilfe von Automation Zeit sparen und die Zuverläs
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/automation.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Automation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

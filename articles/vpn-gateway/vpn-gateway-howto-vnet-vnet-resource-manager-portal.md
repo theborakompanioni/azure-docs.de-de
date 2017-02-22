@@ -1,10 +1,10 @@
 ---
-title: Verbinden von VNets unter Verwendung des Resource Manager-Bereitstellungsmodells und des Azure-Portals | Microsoft Docs
+title: "Herstellen einer Verbindung für ein virtuelles Azure-Netzwerk mit einem anderen VNet: Portal | Microsoft-Dokumentation"
 description: Erstellen Sie eine VPN Gateway-Verbindung zwischen VNets unter Verwendung von Resource Manager und Azure-Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2016
+ms.date: 01/23/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 28d81fe312195b9a9094e1ed066f5cba57c76933
-ms.openlocfilehash: b85017913316a450fe19f1760abff6a86f933e2e
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 7796ec3a7c65e320ca142de4d03f6de5d0698e21
 
 
 ---
@@ -51,7 +51,7 @@ Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (
 
 Sie können sogar VNet-zu-VNet-Kommunikation mit Konfigurationen für mehrere Standorte kombinieren. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
 
-![Informationen zu Verbindungen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "About connections")
+![Informationen zu Verbindungen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "Informationen zu Verbindungen")
 
 ### <a name="why-connect-virtual-networks"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
 Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
@@ -64,7 +64,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
   
   * In derselben Region können Sie Anwendungen mit mehreren Ebenen und mehreren virtuellen Netzwerken einrichten, die aufgrund von Isolations- oder Verwaltungsanforderungen miteinander verbunden sind.
 
-Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) .
+Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Informationen zu VNet-zu-VNet-Verbindungen](#faq).
 
 ### <a name="a-namevaluesaexample-settings"></a><a name="values"></a>Beispieleinstellungen
 Sie können die Beispielkonfigurationswerte nutzen, wenn Sie diese Schritte als Übung verwenden. Als Beispiel verwenden wir mehrere Adressräume für die einzelnen VNets. Bei VNet-zu-VNet-Konfigurationen werden jedoch nicht mehrere Adressräume benötigt.
@@ -155,21 +155,21 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVN
 
 1. Navigieren Sie unter **Alle Ressourcen** zum virtuellen Netzwerkgateway für Ihr VNet. Beispiel: **TestVNet1GW**. Klicken Sie auf **TestVNet1GW**, um das Blatt für das virtuelle Netzwerkgateway zu öffnen.
    
-    ![Blatt „Verbindungen“](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Connections blade")
+    ![Blatt „Verbindungen“](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/settings_connection.png "Blatt „Verbindungen“")
 2. Klicken Sie auf **+ Hinzufügen**, um das Blatt **Verbindung hinzufügen** zu öffnen.
 3. Geben Sie auf dem Blatt **Verbindung hinzufügen** im Feld „Name“ einen Namen für Ihre Verbindung ein. Beispiel: **TestVNet1toTestVNet4**.
    
-    ![Verbindungsname](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Connection name")
+    ![Verbindungsname](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v1tov4.png "Verbindungsname")
 4. Wählen Sie unter **Verbindungstyp** in der Dropdownliste die Option **VNet-zu-VNet** aus.
 5. Der Wert des Felds **Erstes virtuelles Netzwerkgateway** wird automatisch ausgefüllt, da Sie diese Verbindung über das angegebene virtuelle Netzwerkgateway erstellen.
 6. Das Feld **Zweites virtuelles Netzwerkgateway** ist das virtuelle Netzwerkgateway des VNets, mit dem Sie eine Verbindung herstellen möchten. Klicken Sie auf **Ein weiteres virtuelles Netzwerkgateway auswählen**, um das Blatt **Virtuelles Netzwerkgateway auswählen** zu öffnen.
    
-    ![Hinzufügen der Verbindung hinzufügen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Add a connection")
+    ![Hinzufügen der Verbindung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add_connection.png "Hinzufügen der Verbindung")
 7. Sehen Sie sich die auf dem Blatt aufgeführten virtuellen Netzwerkgateways an. Beachten Sie, dass nur virtuelle Netzwerkgateways aus Ihrem Abonnement aufgeführt werden. Falls Sie eine Verbindung mit einem virtuellen Netzwerkgateway herstellen möchten, das nicht in Ihrem Abonnement enthalten ist, lesen Sie den [PowerShell-Artikel](vpn-gateway-vnet-vnet-rm-ps.md). 
 8. Klicken Sie auf das virtuelle Netzwerkgateway, mit dem Sie eine Verbindung herstellen möchten.
 9. Geben Sie im Feld **Gemeinsam verwendeter Schlüssel** einen gemeinsam verwendeten Schlüssel für Ihre Verbindung ein. Diesen Schlüssel können Sie selbst generieren oder erstellen. Bei einer Site-to-Site-Verbindung wird für Ihr lokales Gerät und für Ihre Verbindung mit dem virtuellen Netzwerkgateway exakt der gleiche Schlüssel verwendet. Das Konzept ist hier ähnlich, nur dass diesmal keine Verbindung mit einem VPN-Gerät hergestellt wird, sondern mit einem anderen virtuellen Netzwerkgateway.
    
-    ![Gemeinsam verwendeter Schlüssel](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Shared key")
+    ![Gemeinsam verwendeter Schlüssel](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/sharedkey.png "Gemeinsam verwendeter Schlüssel")
 10. Klicken Sie am unteren Rand des Blatts auf **OK**, um die vorgenommenen Änderungen zu speichern.
 
 ## <a name="a-nametestvnet4connectiona8-configure-the-testvnet4-connection"></a><a name="TestVNet4Connection"></a>8. Konfigurieren der TestVNet4-Verbindung
@@ -183,13 +183,13 @@ Als Nächstes erstellen Sie eine Verbindung von „TestVNet4“ zu „TestVNet1�
 
 Sehen Sie sich die Verbindungen an, und überprüfen Sie den Status. Sobald die Verbindung erstellt wurde, werden die Statuswerte **Erfolgreich** und **Verbunden** angezeigt.
 
-![Erfolgreich](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Succeeded")
+![Erfolgreich](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connected.png "Erfolgreich")
 
 Wenn Sie auf eine der Verbindungen doppelklicken, erhalten Sie weitere Informationen zur jeweiligen Verbindung.
 
-![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
+![Zusammenfassung](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Zusammenfassung")
 
-## <a name="a-namefaqavnet-to-vnet-faq"></a><a name="faq"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen
+## <a name="a-namefaqavnet-to-vnet-considerations"></a><a name="faq"></a>Informationen zu VNet-zu-VNet-Verbindungen
 Zeigen Sie die Details zu den häufig gestellten Fragen an, um zusätzliche Informationen zu VNet-zu-VNet-Verbindungen zu erhalten.
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
@@ -199,6 +199,6 @@ Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken v
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

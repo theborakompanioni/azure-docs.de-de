@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6b1f72a6d6f5084e804078a4deb984ebace0ac58
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 0e7f5b3ed4e9a23b2d2fe1acdf35450f36ef1ad4
 
 
 ---
@@ -34,7 +34,7 @@ Unter **[Competitions (Wettbewerbe)](https://gallery.cortanaintelligence.com/com
  Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)**
  zeigt eine Liste der am häufigsten verwendeten Wettbewerbe.
 Klicken Sie auf **Alle anzeigen**, um alle Wettbewerbe anzuzeigen.
-Auf dieser Seite können Sie alle Wettbewerbe im Katalog durchsuchen oder eine Suche durchführen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf dieser Seite können Sie alle Wettbewerbe im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
 
  Klicken Sie auf einen beliebigen Wettbewerb, um die Detailseite des Wettbewerbs zu öffnen und weitere Informationen zu erhalten. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum Wettbewerb per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
 
@@ -58,6 +58,6 @@ Wenn der Wettbewerb nicht mehr geöffnet ist, wird der Status **Abgeschlossen** 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

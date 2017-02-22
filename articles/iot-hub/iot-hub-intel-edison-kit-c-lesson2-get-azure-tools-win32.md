@@ -1,5 +1,5 @@
 ---
-title: "Abrufen der Azure-Tools für Ihr Azure IoT Starter Kit (ab Windows 7) | Microsoft Docs"
+title: "Verbinden von Intel Edison (C) mit Azure IoT – Lektion 2: Azure-Tools (Windows) | Microsoft-Dokumentation"
 description: "Installieren Sie unter Windows 7 und höheren Versionen Python und die Azure-Befehlszeilenschnittstelle (Azure-CLI)."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: dbb40d01aaaa94b3b579543449563dfe23390383
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: c31847b0a4b630f999f64c139f6b9b44623d847e
 
 
 ---
@@ -81,6 +81,6 @@ Sie haben die Azure-CLI installiert. Die nächste Aufgabe besteht in der Erstell
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

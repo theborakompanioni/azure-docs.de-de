@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ea24ad915b3d6f5180182a454c03edc578f7b761
-ms.openlocfilehash: 3751d1a24684bbf9b7230eb3ab4827ee2ba52379
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: aabca8fd228b1fc7c60d295a9502dece29db1b68
 
 
 ---
@@ -122,11 +122,11 @@ Wenn in den Überwachungskacheln die Meldung **Keine Daten verfügbar** angezeig
    ![Screenshot der aktualisierten Kachel „Anforderungen insgesamt – letzte Stunde“](./media/documentdb-monitor-accounts/documentdb-no-available-data-fixed.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Kapazität von DocumentDB finden Sie unter [Verwalten der Kapazität von DocumentDB](documentdb-manage.md).
+Weitere Informationen zur Kapazitätsplanung für DocumentDB finden Sie unter [DocumentDB capacity planner calculator](https://www.documentdb.com/capacityplanner) (DocumentDB Capacity Planner-Rechner).
 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

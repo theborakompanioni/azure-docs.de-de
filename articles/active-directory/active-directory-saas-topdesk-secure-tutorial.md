@@ -35,7 +35,7 @@ Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Baust
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-topdesk-secure-tutorial/IC790596.png "Scenario")
+![Szenario](./media/active-directory-saas-topdesk-secure-tutorial/IC790596.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-topdesk---secure"></a>Aktivieren der Anwendungsintegration für TOPdesk - Secure
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TOPdesk - Secure aktivieren.
@@ -49,19 +49,19 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für TOP
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-topdesk-secure-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-topdesk-secure-tutorial/IC700994.png "Anwendungen")
 
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Anwendung hinzufügen](./media/active-directory-saas-topdesk-secure-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-topdesk-secure-tutorial/IC749321.png "Anwendung hinzufügen")
 
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-topdesk-secure-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-topdesk-secure-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
 6. Geben Sie in das **Suchfeld** den Begriff **TOPdesk - Secure** ein.
    
-    ![Anwendungskatalog](./media/active-directory-saas-topdesk-secure-tutorial/IC790597.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-topdesk-secure-tutorial/IC790597.png "Anwendungskatalog")
 
 7. Wählen Sie im Ergebnisbereich **TOPdesk - Secure** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
@@ -75,25 +75,25 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
 1. Melden Sie sich bei der **TOPdesk - Secure** -Unternehmenswebsite als Administrator an.
 2. Klicken Sie im Menü **TOPdesk** auf **Einstellungen**.
    
-    ![Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Settings")
+    ![Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Einstellungen")
 
 3. Klicken Sie auf **Anmeldeeinstellungen**.
    
-    ![Anmeldeeinstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Login Settings")
+    ![Anmeldeeinstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Anmeldeeinstellungen")
 
 4. Erweitern Sie das Menü **Anmeldeeinstellungen**, und klicken Sie dann auf **Allgemein**.
    
-    ![Allgemein](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "General")
+    ![Allgemein](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "Allgemein")
 
 5. Führen Sie im Abschnitt **Secure** des Konfigurationsabschnitts **SAML-Anmeldung** die folgenden Schritte aus:
    
-    ![Technische Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "Technical Settings")
+    ![Technische Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "Technische Einstellungen")
    
     a. Klicken Sie auf **Herunterladen** , um die  öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
    
     b. Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService** .
     
-    ![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
+    ![AssertionConsumerService](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "AssertionConsumerService")
    
     c. Kopieren Sie den Wert **AssertionConsumerService** .  
       
@@ -106,15 +106,15 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
 
 7. Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Secure** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Einmaliges Anmelden konfigurieren")
 
 8. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei TOPdesk - Secure anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790603.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790603.png "Einmaliges Anmelden konfigurieren")
 
 9. Führen Sie auf der Seite **App-URL konfigurieren** die folgenden Schritte aus:
    
-    ![App-URL konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790604.png "App-URL konfigurieren")
    
     a. Geben Sie in das Textfeld **TOPdesk - Secure-Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei der TOPdesk - Secure-Anwendung verwenden (z.B. *https://qssolutions.topdesk.net*).
    
@@ -124,11 +124,11 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
 
 10. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für TOPdesk - Secure** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790605.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790605.png "Einmaliges Anmelden konfigurieren")
 
 11. Zum Erstellen einer Zertifikatsdatei führen Sie die folgenden Schritte durch:
     
-    ![Zertifikat](./media/active-directory-saas-topdesk-secure-tutorial/IC790606.png "Certificate")
+    ![Zertifikat](./media/active-directory-saas-topdesk-secure-tutorial/IC790606.png "Zertifikat")
     
     a. Öffnen Sie die heruntergeladene Metadatendatei.
     b. Erweitern Sie den Knoten **RoleDescriptor**, der über einen **xsi:type** von **fed:ApplicationServiceType** verfügt.
@@ -137,19 +137,19 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
 
 12. Klicken Sie auf Ihrer TOPdesk - Secure-Unternehmenswebsite im Menü **TOPdesk** auf **Einstellungen**.
     
-    ![Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Settings")
+    ![Einstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Einstellungen")
 
 13. Klicken Sie auf **Anmeldeeinstellungen**.
     
-    ![Anmeldeeinstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Login Settings")
+    ![Anmeldeeinstellungen](./media/active-directory-saas-topdesk-secure-tutorial/IC790599.png "Anmeldeeinstellungen")
 
 14. Erweitern Sie das Menü **Anmeldeeinstellungen**, und klicken Sie dann auf **Allgemein**.
     
-    ![Allgemein](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "General")
+    ![Allgemein](./media/active-directory-saas-topdesk-secure-tutorial/IC790600.png "Allgemein")
 
 15. Klicken Sie im Abschnitt **Öffentlich** auf **Hinzufügen**.
     
-    ![Hinzufügen](./media/active-directory-saas-topdesk-secure-tutorial/IC790607.png "Add")
+    ![Hinzufügen](./media/active-directory-saas-topdesk-secure-tutorial/IC790607.png "Hinzufügen")
 
 16. Führen Sie auf der Seite **SAML Configuration Assistant** die folgenden Schritte aus:
     
@@ -169,7 +169,7 @@ Für das Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure müssen Si
 
 17. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-topdesk-secure-tutorial/IC790609.png "Einmaliges Anmelden konfigurieren")
 
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 Damit sich Azure AD-Benutzer bei TOPdesk - Secure anmelden können, müssen sie in TOPdesk - Secure bereitgestellt werden.  
@@ -179,11 +179,11 @@ Im Fall von TOPdesk - Secure ist die Bereitstellung eine manuelle Aufgabe.
 1. Melden Sie sich bei Ihrer **TOPdesk - Secure** -Unternehmenswebsite als Administrator an.
 2. Klicken Sie im Menü oben auf **TOPdesk \> Neu \> Support-Dateien \> Operator**.
    
-    ![Operators](./media/active-directory-saas-topdesk-secure-tutorial/IC790610.png "Operator")
+    ![Operator](./media/active-directory-saas-topdesk-secure-tutorial/IC790610.png "Operator")
 
 3. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
    
-    ![Neuer Benutzer](./media/active-directory-saas-topdesk-secure-tutorial/IC790611.png "New Operator")
+    ![Neuer Operator](./media/active-directory-saas-topdesk-secure-tutorial/IC790611.png "Neuer Operator")
    
     a. Klicken Sie auf die Registerkarte „Allgemein“.
    
@@ -207,17 +207,17 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **TOPdesk - Secure** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Assign Users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Zuweisen von Benutzern")
 
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
-ms.openlocfilehash: 531927178699d6534c37dca6616fe8fdaa19e5fe
+ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
+ms.openlocfilehash: aa4c6400bcd16c90654c40e14b7a8ed239a4d8aa
 
 
 ---
@@ -31,7 +31,7 @@ Das Übersichtsblatt (bzw. die Seite) für Ihre App zeigt eine Zusammenfassung d
 
 ![Hauptwege zum Anzeigen von Telemetriedaten](./media/app-insights-dashboards/010-oview.png)
 
-Sie können alle anderen Diagramme anpassen und an ein Dashboard anheften. Auf diese Weise können Sie die wichtigen Diagramme aus verschiedenen Apps zusammenführen.
+Sie können alle Diagramme und Raster anpassen und an ein Dashboard anheften. Auf diese Weise können Sie die wichtigsten Telemetriedaten aus verschiedenen Apps auf einem zentralen Dashboard zusammenführen.
 
 ## <a name="dashboards"></a>Dashboards
 Nachdem Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) angemeldet haben, wird Ihnen als Erstes ein Dashboard angezeigt. Hier können Sie für all Ihre Azure-Ressourcen die Diagramme zusammenstellen, die für Sie am wichtigsten sind, einschließlich Telemetriedaten aus [Azure Application Insights](app-insights-overview.md).
@@ -119,8 +119,8 @@ Das Blatt „Übersicht“ ist der Ausgangspunkt für weitere Informationen zu I
 UNTERSUCHEN
 
 * [**Anwendungszuordnung**](app-insights-app-map.md): Aktive Zuordnung, die die Komponenten Ihrer Anwendung anzeigt, abgeleitet aus den Abhängigkeitsinformationen.
-* [**Proaktive Diagnose**](app-insights-proactive-diagnostics.md): Überprüfung der letzten Leistungswarnungen.
-* [**Livedatenströme**](app-insights-metrics-explorer.md#live-metrics-stream): Ein fester Satz zeitnaher Metriken, die nützlich sind, wenn Sie einen neuen Build bereitstellen oder debuggen.
+* [**Intelligente Erkennung**](app-insights-proactive-diagnostics.md): Überprüfung der letzten Leistungswarnungen
+* [**Livedatenströme**](app-insights-live-stream.md): Ein fester Satz zeitnaher Metriken, die nützlich sind, wenn Sie einen neuen Build bereitstellen oder debuggen.
 * [**Verfügbarkeit/Webtests**](app-insights-monitor-web-app-availability.md): Ermöglicht das weltweite Senden von regelmäßigen Anforderungen an Ihre Web-App.*
 * [**Fehler, Leistung**](app-insights-web-monitor-performance.md): Ausnahmen, Fehlerraten und Antwortzeiten für Anforderungen an Ihre App und für Anforderungen von Ihrer App an [Abhängigkeiten](app-insights-asp-net-dependencies.md).
 * [**Leistung**](app-insights-web-monitor-performance.md): Reaktionszeit, Reaktionszeiten von Abhängigkeiten.
@@ -157,6 +157,6 @@ SUPPORT
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

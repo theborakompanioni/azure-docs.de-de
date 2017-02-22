@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c6e67ba61732beba96831e6c3b0fd89bb8097972
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 9f664b07566fe78d93b1e35a2e0f7e5513960fad
 
 
 ---
@@ -42,20 +42,20 @@ Gehen Sie im Dialogfeld **Service Endpoints** auf eine der folgenden Arten vor:
   7. Nach dem Erstellen des Elements für die private Azure-Plattform `preferenceset` können die ihr zugewiesenen Werte durch Klicken auf die Schaltfläche **Edit** im Dialogfeld **Service Endpoints** geändert werden. Sie können auch mehrere `preferenceset`-Elemente für private Azure-Plattformen erstellen.
 
 ## <a name="see-also"></a>Weitere Informationen
-[Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse]
+[Azure-Toolkit für Eclipse][Azure Toolkit for Eclipse]
 
-[Installieren des Azure-Toolkits für Eclipse][Installieren des Azure-Toolkits für Eclipse] 
+[Installieren des Azure-Toolkits für Eclipse][Installing the Azure Toolkit for Eclipse] 
 
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Erstellen einer Hello World-Anwendung für Azure in Eclipse]
+[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installieren des Azure-Toolkits für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
@@ -65,6 +65,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

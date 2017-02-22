@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess;sonyama
 translationtype: Human Translation
-ms.sourcegitcommit: 7216b064f5d0e9a1f4b7e3966e98a0bac485dd73
-ms.openlocfilehash: dcf4bab6c28d2b353fd458687fc04f7a92857d33
+ms.sourcegitcommit: 763ae02d1196a924bbf89e423871af2ec22e9e6c
+ms.openlocfilehash: 84f582e8d767466ce9dec83203ec78047648caea
 
 
 ---
@@ -28,9 +28,6 @@ ms.openlocfilehash: dcf4bab6c28d2b353fd458687fc04f7a92857d33
 > * [REST][REST]
 >
 >
-> [!NOTE]
-> Ab dem 01.12.2016 arbeiten wir aktiv an der Behebung eines Problems in Bezug auf die Wiederherstellung über das Azure-Portal. Wir bitten Sie, die Wiederherstellung per [PowerShell] (https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell) durchzuführen.
-
 In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz über das Azure-Portal wiederherstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -43,7 +40,7 @@ So stellen Sie eine Datenbank wieder her:
 2. Wählen Sie im linken Bereich die Option **Durchsuchen** und die Option **Computer mit SQL Server**.
 
     ![Wählen Sie „Durchsuchen“ > „Computer mit SQL Server“.](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
-3. Suchen Sie nach Ihrem Server, und wählen Sie ihn dann aus.
+3. Suchen Sie nach Ihrem Server, und wählen Sie ihn aus.
 
     ![Auswählen des Servers](./media/sql-data-warehouse-restore-database-portal/01-select-server.png)
 4. Suchen Sie nach der Instanz von SQL Data Warehouse, mit der Sie die Wiederherstellung durchführen möchten, und wählen Sie sie aus.

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: a425de26cacc9525d0dc9a6842b5060f8c37a462
+ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
+ms.openlocfilehash: 2c19472c93d097f29692af18063404f3bf28b6bd
 
 
 ---
-# <a name="designing-your-network-infrastructure-for-disaster-recovery"></a>Entwerfen Ihrer Netzwerkinfrastruktur für die Notfallwiederherstellung
+# <a name="designing-your-network-for-disaster-recovery"></a>Entwerfen Ihres Netzwerks für die Notfallwiederherstellung
 Dieser Artikel richtet sich an IT-Experten, die für die Erstellung der Architektur, Implementierung und Unterstützung der Infrastruktur für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) verantwortlich sind und Microsoft Azure Site Recovery (ASR) einsetzen möchten, um ihre BCDR-Dienste zu unterstützen und zu verbessern. In diesem Artikel werden Praxisaspekte für die System Center Virtual Machine Manager-Serverbereitstellung, die Vor- und Nachteile von gestreckten Subnetzen im Vergleich mit dem Subnetzfailover und der Aufbau einer Notfallwiederherstellung für virtuelle Websites unter Microsoft Azure beschrieben.
 
 ## <a name="overview"></a>Übersicht
@@ -83,9 +83,8 @@ Wenn Ihr sekundärer Standort lokal ist und Sie einen VMM-Server für die Verwal
 
 ![IP-Adresse beibehalten](./media/site-recovery-network-design/network-design4.png)
 
-Abbildung 5
 
-Abbildung 5 zeigt die TCP/IP-Failovereinstellungen für den virtuellen Replikatcomputer (auf der Hyper-V-Konsole). Diese Einstellungen werden unmittelbar vor dem Starten des virtuellen Computers nach einem Failover aufgefüllt.
+Die Abbildung oben zeigt die TCP/IP-Failovereinstellungen für den virtuellen Replikatcomputer (auf der Hyper-V-Konsole). Diese Einstellungen werden unmittelbar vor dem Starten des virtuellen Computers nach einem Failover aufgefüllt.
 
 Falls die gleiche IP-Adresse nicht verfügbar ist, ordnet ASR eine andere verfügbare IP-Adresse aus dem definierten IP-Adresspool zu.
 
@@ -137,15 +136,13 @@ Wir sehen uns nun das Szenario an, bei dem Sie die Verwendung von unterschiedlic
 
 ![Andere IP-Adresse – vor dem Failover](./media/site-recovery-network-design/network-design10.png)
 
-Abbildung 11
 
-In Abbildung 11 werden einige Anwendungen im Subnetz 192.168.1.0/24 am primären Standort gehostet und wurden so konfiguriert, dass sie nach einem Failover am Wiederherstellungsstandort im Subnetz 172.16.1.0/24 wieder hochgefahren werden. VPN-Verbindungen/Netzwerkrouten wurden entsprechend konfiguriert, damit alle drei Standorte aufeinander zugreifen können.
+In der Abbildung oben werden einige Anwendungen im Subnetz 192.168.1.0/24 am primären Standort gehostet. Diese wurden so konfiguriert, dass sie nach einem Failover am Wiederherstellungsstandort im Subnetz 172.16.1.0/24 wieder gestartet werden. VPN-Verbindungen/Netzwerkrouten wurden entsprechend konfiguriert, damit alle drei Standorte aufeinander zugreifen können.
 
-In Abbildung 12 ist zu sehen, dass Anwendungen nach einem Failover einer oder mehrerer Anwendungen im Wiederherstellungssubnetz wiederhergestellt werden. In diesem Fall besteht nicht die Einschränkung, das Failover für das gesamte Subnetz zur gleichen Zeit durchführen zu müssen. Es sind keine Änderungen erforderlich, um VPN- oder Netzwerkrouten neu zu konfigurieren. Mit einem Failover und einigen DNS-Updates wird sichergestellt, dass Zugriff auf die Anwendungen besteht. Wenn der DNS so konfiguriert ist, dass er dynamische Updates zulässt, registrieren die virtuellen Computer sich unter Verwendung der neuen IP-Adresse selbst, sobald sie nach einem Failover gestartet werden.
+In der Abbildung unten ist zu sehen, dass Anwendungen nach einem Failover einer oder mehrerer Anwendungen im Wiederherstellungssubnetz wiederhergestellt werden. In diesem Fall besteht nicht die Einschränkung, das Failover für das gesamte Subnetz zur gleichen Zeit durchführen zu müssen. Es sind keine Änderungen erforderlich, um VPN- oder Netzwerkrouten neu zu konfigurieren. Mit einem Failover und einigen DNS-Updates wird sichergestellt, dass Zugriff auf die Anwendungen besteht. Wenn der DNS so konfiguriert ist, dass er dynamische Updates zulässt, registrieren die virtuellen Computer sich unter Verwendung der neuen IP-Adresse selbst, sobald sie nach einem Failover gestartet werden.
 
 ![Andere IP-Adresse – nach dem Failover](./media/site-recovery-network-design/network-design11.png)
 
-Abbildung 12
 
 Nach dem Failover weist die Replikat-VM möglicherweise eine IP-Adresse auf, die nicht der IP-Adresse des primären virtuellen Computers entspricht. Virtuelle Computer aktualisieren den DNS-Server, den sie nach dem Start verwenden. DNS-Einträge müssen in der Regel im gesamten Netzwerk geändert oder gelöscht werden, und zwischengespeicherte Einträge in Netzwerktabellen müssen aktualisiert oder gelöscht werden, daher ist es nicht ungewöhnlich, dass es während dieser Zustandsänderungen zu Ausfallzeiten kommt. Dieses Problem kann mit folgenden Maßnahmen vermieden werden:
 
@@ -170,6 +167,6 @@ Im Blogbeitrag [Networking Infrastructure Setup for Microsoft Azure as a Disaste
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

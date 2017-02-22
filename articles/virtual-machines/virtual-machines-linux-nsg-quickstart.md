@@ -1,5 +1,5 @@
 ---
-title: "Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer in Azure | Microsoft-Dokumentation"
+title: "Öffnen von Ports für einen virtuellen Linux-Computer mit Azure CLI 2.0 | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie für Ihren virtuellen Linux-Computer mithilfe von Azure Resource Manager-Bereitstellungsmodell und Azure CLI 2.0 (Vorschau) einen Port öffnen oder einen Endpunkt erstellen."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: e4512dd4d818b1c7bea7e858a397728ce48a5362
-ms.openlocfilehash: 40f399c339e31d9d008230449d7f559ae01afba3
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: aae141307a0ea68f0d9e481cf22a9055216c98c0
 
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure"></a>Öffnen von Ports und Endpunkten auf einem virtuellen Linux-Computer in Azure
+# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-20"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer in Azure mithilfe von Version 2.0 der Azure-Befehlszeilenschnittstelle
 In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 (Vorschau) einen Port für einen virtuellen Computer öffnen.
 
 
@@ -84,6 +84,6 @@ In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

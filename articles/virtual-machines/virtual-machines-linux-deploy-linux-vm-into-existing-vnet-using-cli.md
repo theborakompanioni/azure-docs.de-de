@@ -1,9 +1,9 @@
 ---
-title: Bereitstellen einer Linux-VM in einem vorhandenen Azure Virtual Network mithilfe der CLI | Microsoft Docs
-description: Bereitstellen einer Linux-VM in einem vorhandenen Virtual Network mithilfe der CLI.
+title: Bereitstellen von virtuellen Linux-Computern in einem vorhandenen Netzwerk mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) in einem vorhandenen Netzwerk bereitstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: vlivech
+author: iainfoulds
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,147 +13,164 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
-ms.author: v-livech
+ms.date: 01/31/2017
+ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 9b053a618dd7a4e198b558402eb09ffdfbe2919a
-ms.openlocfilehash: b2153097ef33ec323070253e379050f9024449f5
+ms.sourcegitcommit: 63485f0c9e151db22f23d291e2a4425dd01fb7ee
+ms.openlocfilehash: b22ac95ee11fe059d36a9416434a14814da1ee7d
 
 
 ---
 
-# <a name="deploy-a-linux-vm-into-an-existing-azure-virtual-network-using-the-cli"></a>Bereitstellen einer Linux-VM in einem vorhandenen virtuellen Azure-Netzwerk mithilfe der CLI
+# <a name="deploy-a-linux-vm-into-an-existing-virtual-network-using-the-azure-cli-20-preview"></a>Bereitstellen von virtuellen Linux-Computern in einem vorhandenen Netzwerk mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
 
-In diesem Artikel wird das Bereitstellen einer VM in einem vorhandenen virtuellen Netzwerk (VNET) mit CLI-Flags veranschaulicht.  Folgende Anforderungen müssen erfüllt sein:
+Dieser Artikel veranschaulicht, wie Sie die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) verwenden, um einen virtuellen Computer in einem vorhandenen virtuellen Netzwerk bereitzustellen. Folgende Anforderungen müssen erfüllt sein:
 
 - [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
 - [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
+
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
+
+- [Azure CLI 1.0:](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+
+
 ## <a name="quick-commands"></a>Schnellbefehle
+Im folgenden Abschnitt werden die Befehle beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)).
 
-Im folgenden Abschnitt werden die Befehle beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#detailed-walkthrough)).
+Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
-Voraussetzungen: Ressourcengruppe, VNET, NSG mit SSH für eingehende Daten, Subnetz. Ersetzen Sie alle Beispiele durch Ihre eigenen Einstellungen.
+Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myVnet` und `myVM` verwendet.
 
-### <a name="deploy-the-vm-into-the-vnet-nsg-and-connect-the-vnic"></a>Bereitstellen der VM im VNET, NSG und Verbinden der VNic
+**Voraussetzungen**: Azure-Ressourcengruppe, virtuelles Netzwerk und Subnetz, Netzwerksicherheitsgruppe mit eingehenden SSH-Verbindungen und eine virtuelle Netzwerkschnittstellenkarte.
+
+### <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Bereitstellen des virtuellen Computers in der virtuellen Netzwerkinfrastruktur
 
 ```azurecli
-azure vm create myVM \
--g myResourceGroup \
--l westus \
--y linux \
--Q Debian \
--o myStorageAcct \
--u myAdminUser \
--M ~/.ssh/id_rsa.pub \
--n myVM \
--F myVNet \
--j mySubnet \
--N myVNic
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image Debian \
+    --admin-username ops \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --nics myNic \
+    --vnet myVnet \
+    --subnet-name mySubnet \
+    --nsg myNetworkSecurityGroup
 ```
 
 ## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
 
-Es wird empfohlen, dass Azure-Ressourcen wie VNETs und NSGs statische und langlebige Ressourcen sein sollten, die nur selten bereitgestellt werden.  Sobald ein VNET bereitgestellt wurde, kann es von neuen Bereitstellungen ohne Nebenwirkungen auf die Infrastruktur wiederverwendet werden.  Wenn Sie ein VNET als traditionellen Hardwarenetzwerkswitch ansehen, müssten Sie keinen neuen Hardwarenetzwerkswitch bei jeder Bereitstellung konfigurieren.  Mit einem ordnungsgemäß konfigurierten VNET können wir immer wieder neue Server in diesem VNET mit wenigen oder keinen Änderungen bereitstellen, die während der Lebensdauer des VNET erforderlich sind.
+Azure-Ressourcen wie virtuelle Netzwerke und Netzwerksicherheitsgruppen sollten statische und langlebige Ressourcen sein, die nur selten bereitgestellt werden. Sobald ein virtuelles Netzwerk bereitgestellt wurde, kann es von neuen Bereitstellungen ohne Nebenwirkungen auf die Infrastruktur wiederverwendet werden. Stellen Sie sich ein virtuelles Netzwerk als traditionellen Hardwarenetzwerkswitch vor – Sie müssen nicht bei jeder Bereitstellung einen neuen Hardwarenetzwerkswitch konfigurieren. Mit einem ordnungsgemäß konfigurierten virtuellen Netzwerk können Sie immer wieder neue Server in diesem Netzwerk bereitstellen und müssen während der Lebensdauer des Netzwerks nur wenige oder gar keine Änderungen vornehmen.
 
-## <a name="create-the-resource-group"></a>Erstellen der Ressourcengruppe
+Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
-Zuerst erstellen wir eine Ressourcengruppe, um alles zu organisieren, das wir in dieser exemplarischen Vorgehensweise erstellen.  Weitere Informationen zu Azure-Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myVnet` und `myVM` verwendet.
+
+## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
+
+Zuerst erstellen Sie eine Azure-Ressourcengruppe, um alle Elemente zu organisieren, die in dieser exemplarischen Vorgehensweise erstellt werden. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Erstellen Sie die Ressourcengruppe mithilfe von [az group create](/cli/azure/group#create). Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `westus`:
 
 ```azurecli
-azure group create myResourceGroup \
---location westus
+az group create \
+    --name myResourceGroup \
+    --location westus
 ```
 
-## <a name="create-the-vnet"></a>Erstellen des VNET
+## <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
 
-Der erste Schritt besteht aus der Erstellung eines VNET, um die VMs darin zu starten.  Das VNET enthält ein Subnetz für diese exemplarische Vorgehensweise.  Weitere Informationen über Azure VNETs finden Sie unter [Create a virtual network by using the Azure CLI](../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Erstellen eines virtuellen Netzwerks mithelfe der Azure-Befehlszeilenschnittstelle)
+Erstellen Sie zunächst ein virtuelles Azure-Netzwerk, in dem die virtuellen Computer gestartet werden sollen. Weitere Informationen zu virtuellen Netzwerken finden Sie unter [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Erstellen Sie das virtuelle Netzwerk mit [az network vnet create](/cli/azure/network/vnet#create). Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen `myVnet` und ein Subnetz mit dem Namen `mySubnet` erstellt:
 
 ```azurecli
-azure network vnet create myVNet \
---resource-group myResourceGroup \
---address-prefixes 10.10.0.0/24 \
---location westus
+az network vnet create \
+    --resource-group myResourceGroup \
+    --location westus \
+    --name myVnet \
+    --address-prefix 10.10.0.0/16 \
+    --subnet-name mySubnet \
+    --subnet-prefix 10.10.1.0/24
 ```
 
-## <a name="create-the-nsg"></a>Erstellen der NSG
+## <a name="create-the-network-security-group"></a>Erstellen der Netzwerksicherheitsgruppe
 
-Das Subnetz wird hinter einer vorhandene Netzwerksicherheitsgruppe aufgebaut. Deshalb erstellen wir die NSG vor dem Subnetz.  Azure-NSGs sind gleichwertig mit einer Firewall auf der Netzwerkebene.  Weitere Informationen zu Azure-NSGs finden Sie unter [Erstellen von NSGs in der Azure-CLI](../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Azure-Netzwerksicherheitsgruppen sind gleichwertig mit einer Firewall auf Netzwerkebene. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Erstellen von NSGs in der Azure-Befehlszeilenschnittstelle](../virtual-network/virtual-networks-create-nsg-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Erstellen Sie die Netzwerksicherheitsgruppe mit [az network nsg create](/cli/azure/network/nsg#create). Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens `myNetworkSecurityGroup` erstellt:
 
 ```azurecli
-azure network nsg create myNSG \
---resource-group myResourceGroup \
---location westus
+az network nsg create \
+    --resource-group myResourceGroup \
+    --location westus \
+    --name myNetworkSecurityGroup
 ```
 
 ## <a name="add-an-inbound-ssh-allow-rule"></a>Hinzufügen einer eingehenden SSH-Zulassungsregel
 
-Die Linux-VM benötigt Zugriff über das Internet, damit eine Regel benötigt wird, die den eingehenden Port 22-Datenverkehr über das Netzwerk an Port 22 auf der Linux-VM übergibt.
+Der virtuelle Linux-Computer benötigt Zugriff über das Internet. Daher wird eine Regel benötigt, die den an Port 22 eingehenden Datenverkehr über das Netzwerk an Port 22 auf dem virtuellen Linux-Computer übergibt. Fügen Sie mithilfe von [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine eingehende Regel für die Netzwerksicherheitsgruppe hinzu. Im folgenden Beispiel wird eine Regel namens `myNetworkSecurityGroupRuleSSH` erstellt:
 
 ```azurecli
-azure network nsg rule create inboundSSH \
---resource-group myResourceGroup \
---nsg-name myNSG \
---access Allow \
---protocol Tcp \
---direction Inbound \
---priority 100 \
---source-address-prefix Internet \
---source-port-range 22 \
---destination-address-prefix 10.10.0.0/24 \
---destination-port-range 22
+az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRuleSSH \
+    --protocol tcp \
+    --direction inbound \
+    --priority 1000 \
+    --source-address-prefix '*' \
+    --source-port-range '*' \
+    --destination-address-prefix '*' \
+    --destination-port-range 22 \
+    --access allow
 ```
 
-## <a name="add-a-subnet-to-the-vnet"></a>Hinzufügen eines Subnetz im VNET
+## <a name="attach-the-subnet-to-the-network-security-group"></a>Hinzufügen des Subnetzes zur Netzwerksicherheitsgruppe
 
-VMs innerhalb des VNET müssen sich in einem Subnetz befinden.  Jedes VNET kann mehrere Subnetze enthalten.  Erstellen des Subnetzes und Zuordnen des Subnetzes zur NSG, um dem Subnetz eine Firewall hinzuzufügen.
+Regeln für Netzwerksicherheitsgruppen können auf ein Subnetz oder eine bestimmte virtuelle Netzwerkschnittstelle angewendet werden. Wir fügen jetzt die Netzwerksicherheitsgruppe an das Subnetz an. Fügen Sie Ihr Subnetz mithilfe von [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) an die Netzwerksicherheitsgruppe an:
 
 ```azurecli
-azure network vnet subnet create mySubNet \
---resource-group myResourceGroup \
---vnet-name myVNet \
---address-prefix 10.10.0.0/26 \
---network-security-group-name myNSG
+az network vnet subnet update \
+    --resource-group myResourceGroup \
+    --vnet-name myVnet \
+    --name mySubnet \
+    --network-security-group myNetworkSecurityGroup
 ```
 
-Das Subnetz ist jetzt innerhalb des VNET hinzugefügt und der NSG und der NSG-Regel zugeordnet.
+## <a name="add-a-virtual-network-interface-card-to-the-subnet"></a>Hinzufügen einer virtuellen Netzwerkschnittstellenkarte zum Subnetz
 
-
-## <a name="add-a-vnic-to-the-subnet"></a>Hinzufügen einer VNic zum Subnetz
-
-Virtuelle Netzwerkkarten (VNics) sind wichtig, da Sie sie zur Verbindung mit anderen VMs wiederverwendet werden können. Somit bleibt die VNic als statische Ressource bestehen, während die VMs temporär sein können.  Erstellen Sie eine VNic und ordnen Sie sie dem Subnetz zu, das im vorherigen Schritt erstellt wurde.
+Virtuelle Netzwerkschnittstellenkarten (VNics) sind wichtig, da Sie sie durch Verbinden mit verschiedenen virtuellen Computern wiederverwenden können. Dank dieser Wiederverwendung können Sie die VNic als statische Ressource beibehalten, während die virtuellen Computer temporär sein können. Erstellen Sie eine VNic, und ordnen Sie sie mit [az network nic create](/cli/azure/network/nic#create) dem Subnetz zu. Im folgenden Beispiel wird eine VNic namens `myNic` erstellt:
 
 ```azurecli
-azure network nic create myVNic \
--g myResourceGroup \
--l westus \
--m myVNet \
--k mySubNet
+az network nic create \
+    --resource-group myResourceGroup \
+    --location westus \
+    --name myNic \
+    --vnet-name myVnet \
+    --subnet mySubnet
 ```
 
-## <a name="deploy-the-vm-into-the-vnet-and-nsg"></a>Bereitstellen der VM im VNET und in der NSG
+## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Bereitstellen des virtuellen Computers in der virtuellen Netzwerkinfrastruktur
 
-Wir verfügen jetzt über eine VNET, ein Subnetz innerhalb dieses VNET und eine NSG, die als Firewall fungiert, um unsere Subnetz zu schützen, indem der eingehenden Datenverkehr mit Ausnahme des Port 22 für SSH blockiert wird.  Die VM kann nun innerhalb dieser bestehenden Netzwerkinfrastruktur bereitgestellt werden.
+Wir verfügen jetzt über ein virtuelles Netzwerk, ein Subnetz und eine Netzwerksicherheitsgruppe, die als Firewall fungiert. Letztere schützt unser Subnetz, indem sämtlicher eingehender Datenverkehr mit Ausnahme von Port 22 für SSH blockiert wird. Die VM kann nun innerhalb dieser bestehenden Netzwerkinfrastruktur bereitgestellt werden.
 
-Mithilfe der Azure-CLI und dem `azure vm create`-Befehl wird die Linux-VM für die vorhandene Azure Resource Group, das VNET, Subnetz und die VNic bereitgestellt.  Weitere Informationen zur Verwendung der CLI zur Bereitstellung einer vollständigen VM finden Sie unter [Create a complete Linux environment by using the Azure CLI](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure-CLI)
+Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#create). Weitere Informationen zu den Flags, die mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) zur Bereitstellung eines vollständigen virtuellen Computers verwendet werden, finden Sie unter [Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure-CLI](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ```azurecli
-azure vm create myVM \
---resource-group myResourceGroup \
---location westus \
---os-type linux \
---image-urn Debian \
---storage-account-name mystorageaccount \
---admin-username myAdminUser \
---ssh-publickey-file ~/.ssh/id_rsa.pub \
---vnet-name myVNet \
---vnet-subnet-name mySubnet \
---nic-name myVNic
+az vm create \
+    --resource-group myResourceGroup \
+    --name myVM \
+    --image Debian \
+    --admin-username ops \
+    --ssh-key-value ~/.ssh/id_rsa.pub \
+    --nics myNic \
+    --vnet myVnet \
+    --subnet-name mySubnet \
+    --nsg myNetworkSecurityGroup
 ```
 
-Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, die VM im vorhandenen Netzwerk bereitzustellen.  In anderen Worten: Sobald ein VNET und ein Subnetz bereitgestellt wurden, können sie als statische oder permanente Ressourcen innerhalb Ihrer Azure-Region beibehalten werden.  
+Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, die VM im vorhandenen Netzwerk bereitzustellen. Nochmals: Sobald ein virtuelles Netzwerk und ein Subnetz bereitgestellt wurden, können sie als statische oder permanente Ressourcen innerhalb Ihrer Azure-Region beibehalten werden. In diesem Beispiel haben wir keine öffentliche IP-Adresse erstellt und der VNic zugewiesen, daher ist dieser virtuelle Computer nicht öffentlich über das Internet zugänglich. Weitere Informationen finden Sie unter [Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu verschiedenen Methoden zum Erstellen von virtuellen Computern in Azure finden Sie in den folgenden Ressourcen:
 
 * [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Direktes Erstellen einer benutzerdefinierten Umgebung für einen virtuellen Linux-Computer über Azure-CLI-Befehle](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -161,6 +178,6 @@ Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, di
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 11/22/2016
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 30b023429cfdc671ac68175f94ffb48379c58dda
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 00f4ddd7173affb9e557e8c993c9f7432a3152cd
 
 
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
-In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
+In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
 
 Die Methode zum Aktivieren von Diagnoseprotokollen mithilfe einer Resource Manager-Vorlage hängt vom Ressourcentyp ab.
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie die Diagnose mit diesen Methoden konfigu
 Die grundlegenden Schritte lauten wie folgt:
 
 1. Erstellen Sie eine Vorlage als JSON-Datei, die die Ressourcenerstellung und die Diagnoseaktivierung beschreibt.
-2. [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](../resource-group-template-deploy.md)
+2. [Stellen Sie die Vorlage mithilfe einer beliebigen Bereitstellungsmethode bereit.](../azure-resource-manager/resource-group-template-deploy.md)
 
 Im Anschluss finden Sie ein Beispiel für die JSON-Vorlagendatei, die für computefremde Ressourcen und für Computeressourcen generiert werden muss.
 
@@ -86,13 +86,23 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
                 "enabled": false
               }
             }
+          ],
+          "metrics": [
+            {
+              "timeGrain": "PT1M",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
           ]
         }
       }
     ]
     ```
 
-Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn931931.aspx)beschriebene Format.
+Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn931931.aspx)beschriebene Format. Das Hinzufügen der `metrics`-Eigenschaft ermöglicht Ihnen, auch Ressourcenmetriken an diese gleichen Ausgaben zu senden.
 
 Im folgenden vollständigen Beispiel wird eine Netzwerksicherheitsgruppe erstellt und das Streamen an Event Hubs sowie das Speichern in einem Speicherkonto aktiviert:
 
@@ -166,6 +176,16 @@ Im folgenden vollständigen Beispiel wird eine Netzwerksicherheitsgruppe erstell
                   "enabled": false
                 }
               }
+            ],
+            "metrics": [
+              {
+                "timeGrain": "PT1M",
+                "enabled": true,
+                "retentionPolicy": {
+                  "enabled": false,
+                  "days": 0
+                }
+              }
             ]
           }
         }
@@ -198,6 +218,6 @@ Der gesamte Prozess wird in [diesem Dokument](../virtual-machines/virtual-machin
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

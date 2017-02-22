@@ -1,6 +1,6 @@
 ---
-title: Lexikonbasierte Stimmungsanalyse | Microsoft Docs
-description: Lexikonbasierte Stimmungsanalyse
+title: "(Veraltet:) Lexikonbasierte Standpunktanalyse – Azure | Microsoft Docs"
+description: (Veraltet:) Lexikonbasierte Standpunktanalyse
 services: machine-learning
 documentationcenter: 
 author: pengxia
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/16/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: pengxia
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c702fda88e0af40084958b1ad51e7156c7f4aee3
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 02a6005c47734419903f324f6fb60440f9d62664
 
 
 ---
-# <a name="lexicon-based-sentiment-analysis"></a>Lexikonbasierte Stimmungsanalyse
+# <a name="deprecated-lexicon-based-sentiment-analysis"></a>(Veraltet:) Lexikonbasierte Standpunktanalyse
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Wie können Sie die Meinungen und Einstellungen Ihrer Benutzer zu Marken oder Themen in sozialen Netzwerken wie z.B. Facebook-Beiträgen, Tweets, Rezensionen usw. messen? Die Stimmungsanalyse bietet eine Methode, solche Fragen zu analysieren.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -158,6 +165,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

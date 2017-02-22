@@ -3,7 +3,7 @@ title: Verwenden des Blobspeichers mit Xamarin | Microsoft Docs
 description: "Die Azure Storage-Clientbibliothek für Xamarin ermöglicht Entwicklern das Erstellen von iOS-, Android- und Windows Store-Apps mit ihren nativen Benutzeroberflächen. In diesem Tutorial wird erläutert, wie mithilfe von Xamarin eine Anwendung erstellt wird, in der der Azure-Blobspeicher verwendet wird."
 services: storage
 documentationcenter: xamarin
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 44cb845d-cf78-4942-95b8-952da4f9a2c2
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b438a4c90a5ccbcfb47b24ef85b70ba91fa228d6
+ms.sourcegitcommit: 5e531c6c23c510936fe7e4e844db2ec3afb170dc
+ms.openlocfilehash: 32d79cf050968738764c2239cbd79c73734ee855
 
 
 ---
@@ -36,19 +36,14 @@ Für diese ersten Schritte erstellen wir eine App, die auf Android, iOS und Wind
 Führen Sie die folgenden Schritte aus, um die Anwendung zu erstellen:
 
 1. Falls noch nicht geschehen, laden Sie [Xamarin für Visual Studio](https://www.xamarin.com/download)herunter, und installieren Sie die Anwendung.
-2. Öffnen Sie Visual Studio, und erstellen Sie eine leere App (nativ freigegeben): **Datei > Neu > Projekt > Plattformübergreifend > Leere App (Nativ freigegeben)**.
+2. Öffnen Sie Visual Studio, und erstellen Sie eine leere App (nativ portabel): **Datei > Neu > Projekt > Plattformübergreifend > Leere App (nativ portabel)**.
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Lösung, und wählen Sie **NuGet-Pakete verwalten**aus. Suchen Sie nach **WindowsAzure.Storage** , und installieren Sie die neueste stabile Version für alle Projekte in der Lösung.
 4. Erstellen Sie Ihr Projekt, und führen Sie es aus.
 
 Es sollte nun eine Anwendung verfügbar sein, in der Sie auf eine Schaltfläche klicken können, die einen Zähler schrittweise heraufsetzt.
 
-> [!NOTE]
-> Die Azure Storage-Clientbibliothek für Xamarin unterstützt derzeit die folgenden Projekttypen: Nativ freigegeben, Xamarin.Forms freigegeben, Xamarin.Android und Xamarin.iOS.
-> 
-> 
-
 ## <a name="create-container-and-upload-blob"></a>Erstellen des Containers und Hochladen des Blobs
-Als Nächstes fügen Sie der gemeinsam genutzten Klasse `MyClass.cs` Code hinzu, die einen Container erstellt und ein Blob in diesen Container lädt. `MyClass.cs` sollte wie folgt aussehen:
+Fügen Sie anschließend unter Ihrem `(Portable)`-Projekt `MyClass.cs` Code hinzu. Dieser Code erstellt einen Container und lädt ein Blob in diesen Container hoch. `MyClass.cs` sollte wie folgt aussehen:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -63,7 +58,7 @@ namespace XamarinApp
         {
         }
 
-        public static async Task createContainerAndUpload()
+        public static async Task performBlobOperation()
         {
             // Retrieve storage account from connection string.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here");
@@ -87,7 +82,9 @@ namespace XamarinApp
 }
 ```
 
-Stellen Sie sicher, dass Sie „Your_account_name_here“ und „Your_account_key_here“ durch Ihren tatsächlichen Kontonamen und Kontoschlüssel ersetzen. Anschließend können Sie diese gemeinsam genutzte Klasse in Ihrer iOS-, Android- und Windows Phone-Anwendung verwenden. Sie können jedem Projekt einfach `MyClass.createContainerAndUpload()` hinzufügen. Beispiel:
+Stellen Sie sicher, dass Sie „Your_account_name_here“ und „Your_account_key_here“ durch Ihren tatsächlichen Kontonamen und Kontoschlüssel ersetzen. 
+
+Ihre iOS-, Android- und Windows Phone-Projekte enthalten Verweise auf Ihr portables Projekt – was bedeutet, dass Sie Ihren sämtlichen freigegebenen Code an einer Stelle schreiben und in allen Ihren Projekten verwenden können. Sie können jetzt jedem Projekt die folgende Codezeile hinzufügen, um diesen Vorteil zu nutzen: `MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -118,7 +115,8 @@ namespace XamarinApp.Droid
                 button.Text = string.Format ("{0} clicks!", count++);
             };
 
-            await MyClass.createContainerAndUpload();
+            await MyClass.performBlobOperation();
+            }
         }
     }
 }
@@ -142,21 +140,30 @@ namespace XamarinApp.iOS
 
         public override async void ViewDidLoad ()
         {
-            base.ViewDidLoad ();
-            // Perform any additional setup after loading the view, typically from a nib.
-            Button.AccessibilityIdentifier = "myButton";
-            Button.TouchUpInside += delegate {
-                var title = string.Format ("{0} clicks!", count++);
-                Button.SetTitle (title, UIControlState.Normal);
-            };
+            int count = 1;
 
-            await MyClass.createContainerAndUpload();
-        }
+            public ViewController (IntPtr handle) : base (handle)
+            {
+            }
 
-        public override void DidReceiveMemoryWarning ()
-        {
-            base.DidReceiveMemoryWarning ();
-            // Release any cached data, images, etc that aren't in use.
+            public override async void ViewDidLoad ()
+            {
+                base.ViewDidLoad ();
+                // Perform any additional setup after loading the view, typically from a nib.
+                Button.AccessibilityIdentifier = "myButton";
+                Button.TouchUpInside += delegate {
+                    var title = string.Format ("{0} clicks!", count++);
+                    Button.SetTitle (title, UIControlState.Normal);
+                };
+
+                await MyClass.performBlobOperation();
+            }
+
+            public override void DidReceiveMemoryWarning ()
+            {
+                base.DidReceiveMemoryWarning ();
+                // Release any cached data, images, etc that aren't in use.
+            }
         }
     }
 }
@@ -193,19 +200,36 @@ namespace XamarinApp.WinPhone
         /// This parameter is typically used to configure the page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
+            int count = 1;
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-            Button.Click += delegate {
-                var title = string.Format("{0} clicks!", count++);
-                Button.Content = title;
-            };
+            public MainPage()
+            {
+                this.InitializeComponent();
 
-            await MyClass.createContainerAndUpload();
+                this.NavigationCacheMode = NavigationCacheMode.Required;
+            }
+
+            /// <summary>
+            /// Invoked when this page is about to be displayed in a Frame.
+            /// </summary>
+            /// <param name="e">Event data that describes how this page was reached.
+            /// This parameter is typically used to configure the page.</param>
+            protected override async void OnNavigatedTo(NavigationEventArgs e)
+            {
+                // TODO: Prepare page for display here.
+
+                // TODO: If your application contains multiple pages, ensure that you are
+                // handling the hardware Back button by registering for the
+                // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
+                // If you are using the NavigationHelper provided by some templates,
+                // this event is handled for you.
+                Button.Click += delegate {
+                    var title = string.Format("{0} clicks!", count++);
+                    Button.Content = title;
+                };
+
+                await MyClass.performBlobOperation();
+            }
         }
     }
 }
@@ -229,6 +253,6 @@ In diesen ersten Schritten haben Sie gelernt, wie Sie eine plattformübergreifen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

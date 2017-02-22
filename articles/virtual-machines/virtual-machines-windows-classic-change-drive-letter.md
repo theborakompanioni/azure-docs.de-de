@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 002e7fe3a0573898fff2552264a318d528eec25c
+ms.sourcegitcommit: 808343035c2554a3cd01cf3fe0ef6ebba2c54e23
+ms.openlocfilehash: 5b4443a8746bc8c88e2c5b58068c200aafc4beea
 
 
 ---
@@ -52,20 +52,9 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 1. Sobald die VM neu gestartet wird, melden Sie sich wieder bei der VM an.
 2. Klicken Sie auf **Start**, geben Sie **diskmgmt.msc** ein, und drücken Sie die EINGABETASTE. Die Datenträgerverwaltung wird gestartet.
 3. Klicken Sie mit der rechten Maustaste auf **D**, das temporäre Speicherlaufwerk, und wählen Sie **Laufwerkbuchstaben und -pfade** ändern.
-4. Wählen Sie **G** als Laufwerkbuchstaben, und klicken Sie dann auf **OK**. 
+4. Wählen Sie als Laufwerkbuchstaben ein neues Laufwerk wie etwa **T** aus, und klicken Sie dann auf **OK**. 
 5. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen Sie **Laufwerkbuchstaben und -pfade ändern**.
 6. Wählen Sie **D** als Laufwerkbuchstaben, und klicken Sie dann auf **OK**. 
-7. Klicken Sie mit der rechten Maustaste auf **G**, das temporäre Speicherlaufwerk, und wählen Sie **Laufwerkbuchstaben und -pfade** ändern.
-8. Wählen Sie **E** als Laufwerkbuchstaben, und klicken Sie dann auf **OK**. 
-
-> [!NOTE]
-> Wenn Ihr virtueller Computer über andere Datenträger oder Laufwerke verfügt, weisen Sie mit der gleichen Methode die Laufwerkbuchstaben der anderen Datenträger und Laufwerke zu. Sie möchten, dass die Datenträgerkonfiguration wie folgt aussieht:  
-> 
-> * C: Betriebssystemdatenträger  
-> * D: Datenträger für Daten  
-> * E: Temporärer Datenträger
-> 
-> 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Verschieben von „pagefile.sys“ zurück auf das temporäre Speicherlaufwerk 
 1. Klicken Sie mit der rechten Maustaste auf **Start**, und wählen Sie **System**.
@@ -74,7 +63,7 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 4. Wählen Sie die Registerkarte **Erweitert** .
 5. Wählen Sie im Abschnitt **Virtueller Arbeitsspeicher** die Option **Ändern**.
 6. Wählen Sie das Betriebssystemlaufwerk **C**, und klicken Sie dann auf **Keine Auslagerungsdatei** und **Festlegen**.
-7. Wählen Sie das temporäre Speicherlaufwerk **E**, und klicken Sie dann auf **Größe wird vom System verwaltet** und **Festlegen**.
+7. Wählen Sie das temporäre Speicherlaufwerk **T**, und klicken Sie dann auf **Größe wird vom System verwaltet** und **Festlegen**.
 8. Klicken Sie auf **Übernehmen**. Sie erhalten eine Warnung, dass der Computer neu gestartet werden muss, damit die Änderungen wirksam muss werden.
 9. Starten Sie den virtuellen Computer neu.
 
@@ -84,6 +73,6 @@ Zunächst müssen Sie den Datenträger an den virtuellen Computer anfügen.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

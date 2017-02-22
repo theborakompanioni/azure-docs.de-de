@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren des Edison Starter Kits für Azure IoT | Microsoft-Dokumentation"
-description: Konfigurieren von Intel Edison zur erstmaligen Verwendung.
+title: "Verbinden von Intel Edison (C) mit Azure IoT – Lektion 1: Konfigurieren des Geräts | Microsoft-Dokumentation"
+description: Konfigurieren von Intel Edison zur erstmaligen Verwendung
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/7/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: a8f9b21a02688e91fa43aaf85bafc3cd3ad2c913
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 800f1aed6d30d2bb871a6a9b55b6b95308932211
 
 
 ---
@@ -145,6 +145,6 @@ In diesem Artikel haben Sie erfahren, wie Sie die Edison-Platine einbauen, ihre 
 [get-the-tools]: iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

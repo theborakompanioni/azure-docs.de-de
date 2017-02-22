@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e38fd24edb0cb6cee0552a3cbdb282aae870d737
+ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
+ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
 
 
 ---
@@ -67,13 +67,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **App-Daten**: einzelne Apps können Daten synchronisieren |Sync.sicherung |Sync.sicherung |Intern |
 | **App-Liste**: Liste der installierten Apps |X |Sicherung |Sonstige |
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
-| **Eingabeaufforderung**: alle Einstellungen für die Eingabeaufforderung |sync |X | |
-| **Cortana**: Ein/Aus |X |X | |
-| **Cortana**: Cortana auf dem Sperrbildschirm ermöglichen |X |X | |
-| **Cortana**: Benutzername |sync |sync |Intern |
-| **Cortana**: SMS vorlesen |X |sync |Intern |
-| **Cortana**: SafeSearch |X |sync |Intern |
-| **Cortana:** Informationen zu Flügen usw. suchen |X |sync |Intern |
+| **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X | |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
 | **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |Sprache |
 | **Datum, Uhrzeit und Region**: 24-Stunden-Format |sync |X |Sprache |
@@ -95,8 +89,8 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Edge-Browser**: Leseliste |sync |sync |Intern |
 | **Edge-Browser**: Favoriten |sync |sync |Intern |
 | **Edge-Browser**: alle anderen Edge-Einstellungen |X |X | |
-| **Hoher Kontrast**: Ein/Aus |sync |sync |Erleichterte Bedienung |
-| **Hoher Kontrast**: Designeinstellungen |sync |X | |
+| **Hoher Kontrast**: Ein/Aus |sync |X |Erleichterte Bedienung |
+| **Hoher Kontrast**: Designeinstellungen |sync |X |Erleichterte Bedienung |
 | **Internet Explorer**: geöffnete Registerkarten (URL und Titel) |sync |sync |Internet Explorer |
 | **Internet Explorer**: Leseliste |sync |sync |Internet Explorer |
 | **Internet Explorer**: eingegebene URLs |sync |sync |Internet Explorer |
@@ -113,8 +107,8 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Sprache**: CHS QWERTY – dynamische Kandidateneinstufung aktivieren |sync |X |Sprache |
 | **Sprache**: CHS QWERTY – Zeichensatz Chinesisch (vereinfacht) |sync |X |Sprache |
 | **Sprache**: CHS QWERTY – Zeichensatz Chinesisch (traditionell) |sync |X |Sprache |
-| **Sprache**: CHS QWERTY – Fuzzy Pinyin |sync |sync |Sprache |
-| **Sprache**: CHS QWERTY – Fuzzy Pairs |sync |sync |Sprache |
+| **Sprache**: CHS QWERTY – Fuzzy Pinyin |sync |Sicherung |Sprache |
+| **Sprache**: CHS QWERTY – Fuzzy Pairs |sync |Sicherung |Sprache |
 | **Sprache**: CHS QWERTY – Pinyin (vollständig) |sync |X |Sprache |
 | **Sprache**: CHS QWERTY – Doppel-Pinyin |sync |X |Sprache |
 | **Sprache**: CHS QWERTY – Autokorrektur beim Lesen |sync |X |Sprache |
@@ -123,7 +117,7 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Sprache**: CHS WUBI – Eingabemodus für einzelne Zeichen |sync |X |Sprache |
 | **Sprache**: CHS WUBI – verbleibende Codierung des Kandidaten anzeigen |sync |X |Sprache |
 | **Sprache**: CHS WUBI – Signalton bei ungültigem 4-Code |sync |X |Sprache |
-| **Sprache**: CHS Bopomofo – CJK-Erweiterung A einschließen |sync |X |Sprache |
+| **Sprache:** CHT Bopomofo – CJK-Erweiterung A einschließen |sync |X |Sprache |
 | **Sprache**: Japanisches IME – Eingabevorhersage und benutzerdefinierte Wörter |sync |sync |Sprache |
 | **Sprache**: Koreanisches (KOR) IME |X |X |Sprache |
 | **Sprache**: Handschrifterkennung |X |X |Sprache |
@@ -147,11 +141,11 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Sprachausgabe**: Einfügecursor nach Sprachausgabe (standardmäßig aktiviert) |sync |X |Erleichterte Bedienung |
 | **Sprachausgabe**: visuelle Hervorhebung des Sprachausgabecursors aktivieren (standardmäßig aktiviert) |sync |X |Erleichterte Bedienung |
 | **Sprachausgabe**: Audiohinweise wiedergeben (standardmäßig aktiviert) |sync |X |Erleichterte Bedienung |
-| **Sprachausgabe**: aktivieren Sie Tasten auf der Bildschirmtastatur beim Heben Ihres Fingers (standardmäßig deaktiviert) |sync |sync |Erleichterte Bedienung |
+| **Sprachausgabe**: aktivieren Sie Tasten auf der Bildschirmtastatur beim Heben Ihres Fingers (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
 | **Erleichterte Bedienung**: legen Sie die Breite des blinkenden Cursors fest |sync |X |Erleichterte Bedienung |
 | **Erleichterte Bedienung**: Hintergrundbilder entfernen (standardmäßig deaktiviert) |sync |X |Erleichterte Bedienung |
 | **Netzschalter und Energiesparen**: alle Einstellungen |X |X | |
-| **Personalisierung des Startbildschirms**: Systemfarbe |sync |sync |Design |
+| **Personalisierung des Startbildschirms:** Akzentfarbe (nur Phone) |X |sync |Design |
 | **Eingabe**: Wörterbuch |sync |Sicherung |Sprache |
 | **Eingabe**: falsch geschriebenes Wort automatisch korrigieren |sync |Sicherung |Sprache |
 | **Eingabe**: Rechtschreibfehler hervorheben |sync |Sicherung |Sprache |
@@ -169,10 +163,10 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 * [Aktivieren von Enterprise State Roaming in Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md)
 * [Roaming von Einstellungen und Daten – Häufig gestellte Fragen](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
+* [Problembehandlung](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 01/11/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7a4105feb1621891e1777078c67e080c44e7be51
+ms.sourcegitcommit: 0c2677b388f7a88ff88715a05212633565393cc2
+ms.openlocfilehash: 2d5d1d5123ca718b2e7dcdf426b77f91969dc9dc
 
 
 ---
@@ -37,10 +37,65 @@ Wenn jedoch mehrere Apps einen App Service-Plan gemeinsam nutzen, wird eine Inst
 
 Bei der Skalierung pro App wird eine App unabhängig von dem App Service-Plan skaliert, von dem sie gehostet wird. Auf diese Weise kann ein App Service-Plan beispielsweise zur Bereitstellung von zehn Instanzen konfiguriert werden, aber für eine einzelne App kann eine Skalierung auf nur fünf dieser Instanzen festgelegt werden.
 
-Mit der folgenden Azure Resource Manager-Vorlage werden ein App Service-Plan, der auf zehn Instanzen horizontal hochskaliert wird, und eine App erstellt, die für die Verwendung der Skalierung pro App konfiguriert und auf nur fünf Instanzen skaliert wird.
+   >[!NOTE]
+   >Eine App-weise Skalierung steht nur für **Premium**-SKU-App Service-Pläne zur Verfügung.
+   >
 
-Im App Service-Plan wird die Eigenschaft **Skalierung pro Standort** auf TRUE festgelegt (`"perSiteScaling": true`). Für die App wird die **Anzahl der Worker** auf 5 festgelegt (`"properties": { "numberOfWorkers": "5" }`).
+### <a name="per-app-scaling-using-powershell"></a>App-weises Skalieren mit PowerShell
 
+Sie können einen neuen Plan konfigurieren, der eine *App-weise Skalierung* durchführt, indem Sie das ```-perSiteScaling $true```-Attribut an das Cmdlet ```New-AzureRmAppServicePlan``` übergeben.
+
+```
+New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
+                            -Location $Location `
+                            -Tier Premium -WorkerSize Small `
+                            -NumberofWorkers 5 -PerSiteScaling $true
+```
+
+Wenn Sie einen vorhandenen App Service-Plan für die Verwendung dieses Features aktualisieren möchten: 
+
+- Rufen Sie den Zielplan ab: ```Get-AzureRmAppServicePlan```
+- Ändern Sie die Eigenschaft lokal: ```$newASP.PerSiteScaling = $true```
+- Veröffentlichen Sie Ihre Änderungen in Azure: ```Set-AzureRmAppServicePlan``` 
+
+```
+    # Get the new App Service Plan and modify the "PerSiteScaling" property.
+    $newASP = Get-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan
+    $newASP
+
+    #Modify the local copy to use "PerSiteScaling" property.
+    $newASP.PerSiteScaling = $true
+    $newASP
+    
+    #Post updated app service plan back to azure
+    Set-AzureRmAppServicePlan $newASP
+```
+
+Nachdem Sie über einen konfigurierten Plan verfügen, können Sie die maximale Anzahl von Instanzen für jede App festlegen.
+
+Im folgenden Beispiel wird die App auf zwei Instanzen beschränkt, und zwar unabhängig davon, auf wie viele Instanzen der zugrunde liegenden App Service-Plan maximal horizontal hochskaliert wird.
+
+```
+    # Get the app we want to configure to use "PerSiteScaling"
+    $newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
+    
+    # Modify the NumberOfWorkers setting to the desired value.
+    $newapp.SiteConfig.NumberOfWorkers = 2
+    
+    # Post updated app back to azure
+    Set-AzureRmWebApp $newapp
+```
+
+### <a name="per-app-scaling-using-azure-resource-manager"></a>App-weises Skalieren mit Azure Resource Manager
+
+Die folgende *Azure Resource Manager-Vorlage* erstellt Folgendes:
+
+- Einen App Service-Plan, der bis zu 10 Instanzen horizontal hochskaliert wird
+- Eine App, die für die Skalierung auf maximal fünf Instanzen konfiguriert wird
+
+Im App Service-Plan wird die **PerSiteScaling**-Eigenschaft auf TRUE festgelegt (```"perSiteScaling": true```). Für die App wird die **Anzahl der Worker** auf 5 festgelegt (```"properties": { "numberOfWorkers": "5" }```).
+
+```
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
@@ -53,10 +108,10 @@ Im App Service-Plan wird die Eigenschaft **Skalierung pro Standort** auf TRUE fe
             "comments": "App Service Plan with per site perSiteScaling = true",
             "type": "Microsoft.Web/serverFarms",
             "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
+                "name": "P1",
+                "tier": "Premium",
+                "size": "P1",
+                "family": "P",
                 "capacity": 10
                 },
             "name": "[parameters('appServicePlanName')]",
@@ -85,7 +140,7 @@ Im App Service-Plan wird die Eigenschaft **Skalierung pro Standort** auf TRUE fe
              } ]
          }]
     }
-
+```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>Empfohlene Konfiguration für High Density-Hosting
 Bei der Skalierung pro App handelt es sich um ein Feature, das sowohl in öffentlichen Azure-Regionen als auch in App Service-Umgebungen aktiviert ist. Es wird jedoch empfohlen, App Service-Umgebungen mit ihren hoch entwickelten Features und größeren Kapazitätspools zu nutzen.  
@@ -94,13 +149,13 @@ Führen Sie zum Konfigurieren des High Density-Hosting für Ihre Apps die folgen
 
 1. Konfigurieren Sie die App Service-Umgebung, und wählen Sie einen Workerpool aus, der ausschließlich für das Szenario mit High Density-Hosting genutzt wird.
 2. Erstellen Sie einen einzelnen App Service-Plan, und skalieren Sie ihn so, dass die gesamte verfügbare Kapazität für den Workerpool verwendet wird.
-3. Legen Sie im App Service-Plan das Flag für die Skalierung pro Standort auf TRUE fest.
-4. Neue Standorte werden erstellt und diesem App Service-Plan zugewiesen, wobei die Eigenschaft **numberOfWorkers** auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
-5. Die Anzahl der Worker kann pro Standort unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispielsweise kann für einen Standort mit hoher Nutzung für **numberOfWorkers** der Wert **3** festgelegt werden, um mehr Verarbeitungskapazität für die App bereitzustellen, während bei weniger stark genutzten Standorten **numberOfWorkers** auf **1** festgelegt wird.
+3. Legen Sie im App Service-Plan das PerSiteScaling-Flag auf TRUE fest.
+4. Neue Apps werden erstellt und diesem App Service-Plan zugewiesen, wobei die **numberOfWorkers**-Eigenschaft auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
+5. Die Anzahl der Worker kann pro App unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispielsweise kann für eine App mit hoher Nutzung für **numberOfWorkers** der Wert **3** festgelegt werden, um mehr Verarbeitungskapazität für die App bereitzustellen, während bei weniger stark genutzten Apps **numberOfWorkers** auf **1** festgelegt wird.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

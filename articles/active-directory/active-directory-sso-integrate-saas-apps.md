@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: fcd8fe1bd1be5ffa85aab0951a28054754ba03ff
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: a451ab54144222676e8063b764a6d22f44a690d7
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: fcd8fe1bd1be5ffa85aab0951a28054754ba03ff
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-enterprise-apps-manage-sso.md)
 > * [Klassisches Azure-Portal](active-directory-sso-integrate-saas-apps.md)
-> 
-> 
+>
+>
 
 [!INCLUDE [active-directory-sso-use-case-intro](../../includes/active-directory-sso-use-case-intro.md)]
 
@@ -50,8 +50,8 @@ Das Einrichten des einmaligen Anmeldens für eine Anwendung, die in Ihrem Untern
 
 > [!NOTE]
 > Um SSO für eine vorhandene Anwendung einzurichten, benötigen Sie globale Administratorrechte in Azure AD und der SaaS-Anwendung.
-> 
-> 
+>
+>
 
 ### <a name="mapping-user-accounts"></a>Zuordnen von Benutzerkonten
 Die Identität eines Benutzers verfügt normalerweise über einen eindeutigen Bezeichner, wobei es sich um eine E-Mail-Adresse oder einen Benutzerprinzipalnamen (UPN) handeln kann. Sie müssen die Anwendungsidentität jedes Benutzers mit der entsprechenden Azure AD-Identität verknüpfen (bzw. die Zuordnung durchführen). Hierfür gibt es einige Möglichkeiten, je nachdem, welche Anforderungen für Ihre Anwendungsauthentifizierung gelten.
@@ -61,7 +61,7 @@ Weitere Informationen zum Zuordnen von Anwendungsidentitäten mit Azure AD-Ident
 ### <a name="understanding-the-users-log-in-experience"></a>Grundlegendes zur Benutzeroberfläche für die Anmeldung
 Wenn Sie SSO für eine Anwendung integrieren, die bereits verwendet wird, muss beachtet werden, dass die Benutzeroberfläche davon betroffen ist. Bei allen Anwendungen beginnen Benutzer damit, sich mit ihren Azure AD-Anmeldeinformationen anzumelden. Es kann auch sein, dass sie ein anderes Portal verwenden müssen, um auf die Anwendungen zuzugreifen.
 
-SSO kann für einige Anwendungen auf der Anmeldeoberfläche der Anwendung durchgeführt werden, aber für andere Anwendungen müssen Benutzer ein zentrales Portal für die Anmeldung verwenden, z.B. [Meine Apps](http://myapps.microsoft.com) oder [Office 365](http://portal.office.com/myapps). Erfahren Sie mehr über die verschiedenen Typen von SSO und die jeweilige Verwendungsweise für Benutzer in [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+SSO kann für einige Anwendungen auf der Anmeldeoberfläche der Anwendung durchgeführt werden, aber für andere Anwendungen müssen Benutzer ein zentrales Portal für die Anmeldung verwenden, z.B. [Meine Apps](http://myapps.microsoft.com) oder [Office&365;](http://portal.office.com/myapps). Erfahren Sie mehr über die verschiedenen Typen von SSO und die jeweilige Verwendungsweise für Benutzer in [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 Eine weitere nützliche Ressource ist der Abschnitt *Unterdrücken der Benutzerzustimmung* im Artikel [Leitfaden für Entwickler](active-directory-applications-guiding-developers-for-lob-applications.md) .
 
@@ -72,12 +72,11 @@ Wenn die App sich nicht im App-Katalog befindet, können Sie [sie der Azure AD-A
 
 In der Azure.com-Bibliothek finden Sie weitaus umfassendere Informationen zu diesen Problemen, beginnend mit [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

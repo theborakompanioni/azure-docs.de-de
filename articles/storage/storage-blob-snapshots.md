@@ -167,6 +167,6 @@ Weitere Beispiele zur Verwendung von Blobspeicher finden Sie unter [Azure-Codebe
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

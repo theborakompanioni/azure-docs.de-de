@@ -1,28 +1,28 @@
 ---
-title: Entwicklerreferenz zu Azure Functions | Microsoft Docs
-description: Lernen Sie die Azure Functions-Konzepte und -Komponenten kennen, die allen Sprachen und Bindungen gemeinsam sind.
+title: Leitfaden zur Entwicklung von Azure Functions | Microsoft-Dokumentation
+description: "Lernen Sie die Konzepte und Techniken der Azure Functions kennen, die Sie benötigen, um alle Programmiersprachen und Bindungen übergreifend Funktionen in Azure zu entwickeln."
 services: functions
 documentationcenter: na
 author: christopheranderson
 manager: erikre
 editor: 
 tags: 
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
+keywords: Entwicklerhandbuch, Azure Functions, Funktionen, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/20/2016
+ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: 635cc1300f25b7820a0abe4d6f3a6f9e4a2ce8c8
-ms.openlocfilehash: 44a14988119cc121b111718e1c03a788e819dbbe
+ms.sourcegitcommit: 0d75654e00e033eab7de97779157c43ee4493a9f
+ms.openlocfilehash: 2032426e473cb859ad60b48684bcf620e314ed6c
 
 
 ---
-# <a name="azure-functions-developer-reference"></a>Entwicklerreferenz zu Azure Functions
+# <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
 
 In diesem Artikel wird davon ausgegangen, dass Sie die [Übersicht zu Azure Functions](functions-overview.md) gelesen haben und mit [WebJobs SDK-Konzepten wie Triggern, Bindungen und der JobHost-Laufzeit](../app-service-web/websites-dotnet-webjobs-sdk.md) vertraut sind. Azure Functions basiert auf dem WebJobs SDK 
@@ -138,6 +138,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

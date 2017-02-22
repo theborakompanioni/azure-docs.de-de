@@ -1,10 +1,10 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit der Web Application Firewall über das Portal | Microsoft Docs"
+title: Erstellen einer Azure Application Gateway-Instanz mit der Web Application Firewall | Microsoft-Dokumentation
 description: "Informationen zum Erstellen eines Anwendungsgateways mit der Web Application Firewall über das Portal"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: b561a210-ed99-4ab4-be06-b49215e3255a
@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: 216b3890cde6f41c33aa34f23d7e103322d9b502
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 9ba454ad2988c1ebb6410d78f79e46ed020a4bc5
 
 
 ---
+
 # <a name="create-an-application-gateway-with-web-application-firewall-by-using-the-portal"></a>Erstellen eines Anwendungsgateways mit der Web Application Firewall über das Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-web-application-firewall-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-web-application-firewall-powershell.md)
-> 
-> 
 
 Die Web Application Firewall (WAF) in Azure Application Gateway schützt Webanwendungen vor gängigen webbasierten Angriffen wie der Einschleusung von SQL-Code, Angriffen durch websiteübergreifende Skripts und der Übernahme von Sitzungen. Ihr Webanwendung ist vor vielen der (laut OWASP) 10 häufigsten Websicherheitslücken geschützt.
 
@@ -47,8 +46,6 @@ Im zweiten Szenario erlernen Sie das [Erstellen eines Anwendungsgateways mit der
 
 > [!NOTE]
 > Zusätzliche Konfigurationsschritte für das Anwendungsgateway (u.a. benutzerdefinierte Integritätstests, Back-End-Pool-Adressen und zusätzlichen Regeln) werden nicht während der Erstbereitstellung, sondern nach der Konfiguration des Anwendungsgateways ausgeführt.
-> 
-> 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -79,8 +76,6 @@ Folgende Einstellungen dienen zum Aktualisieren eines vorhandenen Anwendungsgate
 
 > [!NOTE]
 > Um die Web Application Firewall-Protokolle anzuzeigen, muss die Diagnose aktiviert und ApplicationGatewayFirewallLog ausgewählt sein. Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Kleine Gateways sind nicht verfügbar, wenn Sie die Web Application Firewall verwenden.
-> 
-> 
 
 ## <a name="create-an-application-gateway-with-web-application-firewall"></a>Erstellen eines Anwendungsgateways mit der Web Application Firewall
 
@@ -114,8 +109,6 @@ Folgende Informationen werden für die Grundeinstellungen benötigt:
 
 > [!NOTE]
 > Zu Testzwecken kann für die Anzahl von Instanzen der Wert 1 ausgewählt werden. Beachten Sie, dass eine Anzahl von weniger als zwei Instanzen nicht durch die SLA abgedeckt ist und daher nicht empfohlen wird. Kleine Gateways werden für Web Application Firewall-Szenarios nicht unterstützt.
-> 
-> 
 
 ### <a name="step-3"></a>Schritt 3
 
@@ -212,6 +205,6 @@ Unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-portal.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

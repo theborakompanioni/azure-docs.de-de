@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 09/28/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
+ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
+ms.openlocfilehash: 37063d35e76d03a84f6e4451c2f6c363704607f2
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 3416511777ff006d0aa933cd45e50f1d200bcad4
 > 
 > 
 
-Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort vereinfacht die Analyse und Behandlung von Problemen, die ggf. in Ihren Diensten, in Ihrer Anwendung oder im Cluster auftreten. Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung „Azure-Diagnose“, mit der Protokolle an Azure Storage hochgeladen werden. Die Ereignisse können aus dem Speicher gelesen und in einem Produkt wie [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) oder in einer anderen Protokollanalyselösung verwendet werden.
+Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort vereinfacht die Analyse und Behandlung von Problemen, die ggf. in Ihren Diensten, in Ihrer Anwendung oder im Cluster auftreten. Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Erweiterung Azure-Diagnose, mit der Protokolle an Azure Storage, Azure Application Insights oder Azure Event Hubs hochgeladen werden. Die Ereignisse können auch aus dem Speicher oder aus Event Hubs gelesen und in einem Produkt wie [Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung verwendet werden. [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) bietet einen umfassenden Dienst zur Suche und Analyse von Protokollen.
 
 ## <a name="log-sources-that-you-might-want-to-collect"></a>Protokollquellen, die gesammelt werden können
 * **Service Fabric-Protokolle**: Werden von der Plattform mittels [LTTng](http://lttng.org) ausgegeben und in Ihr Speicherkonto hochgeladen. Bei Protokollen kann es sich um Betriebs- oder Laufzeitereignisse handeln, die von der Plattform ausgegeben werden. Diese Protokolle werden an dem vom Clustermanifest angegebenen Speicherort gespeichert. (Um Informationen zum Speicherkonto zu erhalten, suchen Sie nach dem Tag **AzureTableWinFabETWQueryable** und dort nach **StoreConnectionString**.)
@@ -52,6 +52,6 @@ Ausführlichere Informationen zu relevanten Ereignissen für die Problembehandlu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

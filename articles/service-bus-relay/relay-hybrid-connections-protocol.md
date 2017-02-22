@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
-ms.author: sethm
+ms.date: 02/14/2017
+ms.author: sethm;clemensv
 translationtype: Human Translation
-ms.sourcegitcommit: 16071ba6c99e41af9fe7614fcc3254cd7e786e89
-ms.openlocfilehash: 497f54903bef564bab687103a763c7a7b58da074
+ms.sourcegitcommit: 579942cfe0dc7d6a5e3f205308642d36bf6be880
+ms.openlocfilehash: d3a191797e75c424af07910e4a6a87e1183f6676
 
 
 ---
@@ -118,7 +118,7 @@ Die Nachricht enthält ein JSON-Objekt mit dem Namen „accept“, das zu diesem
 * **connectHeaders** – alle HTTP-Header, die durch den Absender auf dem Relay-Endpunkt angegeben wurden, der ebenso das Sec-WebSocket-Protocol und die Sec-WebSocket-Extensions-Header enthält.
 
 #### <a name="accept-message"></a>Akzeptieren der Nachricht
-``` JSON
+```json
 {                                                           
     "accept" : {
         "address" : "wss://168.61.148.205:443/$hc/{path}?..."    
@@ -201,7 +201,7 @@ Wenn das Listenertoken abläuft, kann es ersetzt werden, indem über den eingeri
 * **token** – ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace bereitstellen, oder eine Hybridverbindung, das **Listen** direkt verleiht.
 
 #### <a name="renewtoken-message"></a>renewToken-Nachricht
-``` JSON
+```json
 {                                                                                                                                                                        
     "renewToken" : {                                                                                                                                                      
         "token" : "SharedAccessSignature sr=http%3a%2f%2fcontoso.servicebus.windows.net%2fhyco%2f&amp;sig=XXXXXXXXXX%3d&amp;se=1471633754&amp;skn=SasKeyName"  
@@ -231,7 +231,7 @@ Der Optionen des Abfragezeichenfolgenparameters sind die folgenden
 
 | Param | Erforderlich | Beschreibung |
 | --- | --- | --- |
-| sb-hc-action |Ja |Für die Listenerrolle muss der Parameter `action=connect` lauten. |
+| sb-hc-action |Ja |Für die Absenderrolle muss der Parameter `action=connect` lauten. |
 | {path} |Ja |(Siehe folgenden Abschnitt.) |
 | sb-hc-token |Ja\* |Der Listener muss ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace oder die Hybridverbindung bereitstellen, das die Berechtigung **Senden** direkt überträgt. |
 | sb-hc-id |Nein |Eine optionale ID, mit der die End-to-End-Diagnoseablaufverfolgung möglich ist und die während des accept-Handshakes für den Listener verfügbar gemacht wird. |
@@ -271,6 +271,6 @@ Wenn die Websocketverbindung absichtlich durch den Dienst heruntergefahren wird,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

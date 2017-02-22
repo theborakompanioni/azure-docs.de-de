@@ -1,24 +1,9 @@
 ---
-title: "Sortieren von DocumentDB-Daten mit „Order By“ | Microsoft Docs"
-description: "Erfahren Sie, wie ORDER BY in DocumentDB-Abfragen in LINQ und SQL verwendet wird und wie eine Indizierungsrichtlinie für ORDER BY-Abfragen angegeben wird."
-services: documentdb
-author: mimig1
-manager: jhubbard
-editor: cgronlun
-documentationcenter: 
-ms.assetid: e55c1e42-a3be-45c1-8a3a-232ed847d925
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/03/2016
-ms.author: mimig
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 150dcb72f3e7295e1910506b85c06bb7023dcc7c
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: c5fc68fb25a4cb2166e0c0a72871d16c71397852
 
 
 ---
@@ -31,7 +16,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie konfiguriere ich eine Indexrichtlinie für "Order By"?
 * Neue Entwicklungen
 
-[Beispiele](#samples) und [Häufig gestellte Fragen](#faq) werden ebenfalls bereitgestellt.
+[Beispiele](#samples) und [häufig gestellte Fragen](#faq) werden ebenfalls bereitgestellt.
 
 Eine vollständige Referenz zu SQL-Abfragen finden Sie unter der [DocumentDB-Abfragelernprogramm](documentdb-sql-query.md).
 
@@ -132,7 +117,7 @@ Sie können Folgendes nicht durchführen:
 * „Order By“ mit Abfragen für Datenbanken, Sammlungen, Benutzer, Berechtigungen oder Anlagen (in Kürze verfügbar).
 * "Order By" mit berechneten Eigenschaften, z. B. das Ergebnis eines Ausdrucks oder eine UDF-Funktion/integrierte Funktion.
 
-„Order By“ wird derzeit nicht für partitionsübergreifende Abfragen unterstützt, wenn Abfrage-Explorer im Azure-Portal verwendet wird.
+„Order By“ wird derzeit nicht für partitionsübergreifende Abfragen unterstützt, wenn der Abfrage-Explorer im Azure-Portal verwendet wird.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Wenn eine Fehlermeldung angezeigt wird, dass „Order By“ nicht unterstützt wird, stellen Sie sicher, dass Sie eine Version des [SDK](documentdb-sdk-dotnet.md) verwenden, die „Order By“ unterstützt. 
@@ -149,6 +134,6 @@ Verwenden Sie das [Github-Beispielprojekt](https://github.com/Azure/azure-docume
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

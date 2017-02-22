@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 ms.assetid: 3a56e9de-c21a-40ba-9a35-958172cb4e5b
 ms.service: sql-database
-ms.custom: how to
+ms.custom: overview
 ms.devlang: NA
 ms.workload: data-management
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: NA
-ms.date: 09/19/2016
+ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: dde22adda13b88a6cd0f1d033c2730ddc3288050
+ms.sourcegitcommit: 420b2153f6115dd712d3033e30f11f79b18cd80f
+ms.openlocfilehash: be89a2799af3bdc2938f73e3d54f00f81d9ab9cd
 
 
 ---
@@ -30,6 +30,9 @@ ms.openlocfilehash: dde22adda13b88a6cd0f1d033c2730ddc3288050
 > 
 
 Das [Azure-Portal](https://portal.azure.com/) ermöglicht das Erstellen, Überwachen und Verwalten von Azure SQL-Datenbanken und -Servern. Dieser Artikel enthält eine kurze Beschreibung und Links zu den Details der gängigen Aufgaben.
+
+> [!TIP]
+> Das [Tutorial zu den ersten Schritten](sql-database-get-started.md) veranschaulicht, wie Sie einen Server und eine serverbasierte Firewall erstellen, Servereigenschaften anzeigen, eine Verbindung mithilfe von SQL Server Management Studio herstellen, die Masterdatenbank abfragen, eine Beispieldatenbank und eine leere Datenbank erstellen, Datenbankeigenschaften abfragen, und die Beispieldatenbank abfragen.
 
 ## <a name="view-your-azure-sql-databases-servers-and-pools"></a>Anzeigen Ihrer Azure SQL-Datenbanken, -Server und -Pools
 Zum Anzeigen der verfügbaren Dienste für die SQL-Datenbank klicken Sie auf **More services** (Weitere Dienste) und geben im Suchfeld **SQL** ein:
@@ -47,7 +50,7 @@ Zum Öffnen des Blatts **SQL Server** klicken Sie auf **SQL Server** und klicken
 ![SQL-Server](./media/sql-database-manage-portal/sql-servers.png)
 
 ## <a name="how-do-i-create-or-view-sql-elastic-pools"></a>Wie kann ich elastische SQL-Pools erstellen oder anzeigen?
-Zum Öffnen des Blatts **Elastische SQL-Pools** klicken Sie auf **Elastische SQL-Pools** und klicken anschließend auf den Pool, mit dem Sie arbeiten möchten, oder klicken Sie auf **+ Hinzufügen**, um einen Pool zu erstellen. Details finden Sie unter [Erstellen eines Pools für elastische Datenbanken mit dem Azure-Portal](sql-database-elastic-pool-create-portal.md).
+Zum Öffnen des Blatts **Elastische SQL-Pools** klicken Sie auf **Elastische SQL-Pools** und klicken anschließend auf den Pool, mit dem Sie arbeiten möchten, oder klicken Sie auf **+ Hinzufügen**, um einen Pool zu erstellen. Details finden Sie unter [Erstellen eines elastischen Pools mit dem Azure-Portal](sql-database-elastic-pool-create-portal.md).
 
 ![Elastische SQL-Pools](./media/sql-database-manage-portal/elastic-pools.png)
 
@@ -103,7 +106,7 @@ Zum Erstellen einer BACPAC-Datei einer SQL-Datenbank klicken Sie auf dem Blatt *
 ![SQL-­Datenbankexport](./media/sql-database-manage-portal/sql-database-export.png)
 
 ## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time"></a>Wie stelle ich einen früheren Zustand einer SQL-Datenbank wieder her?
-Zum Wiederherstellen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Wiederherstellen**. Details finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-point-in-time-restore-portal.md).
+Zum Wiederherstellen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf **Wiederherstellen**. Details finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-point-in-time-restore.md).
 
 ![Einstellungen der SQL-Datenbank](./media/sql-database-manage-portal/sql-database-restore.png)
 
@@ -122,11 +125,11 @@ Zum Löschen einer SQL-Datenbank klicken Sie auf dem Blatt **SQL-Datenbank** auf
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [SQL-Datenbank](sql-database-technical-overview.md)
-* [Überwachen und Verwalten eines Pools für elastische Datenbanken über das Azure-Portal](sql-database-elastic-pool-manage-portal.md)
+* [Überwachen und Verwalten eines elastischen Pools über das Azure-Portal](sql-database-elastic-pool-manage-portal.md)
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

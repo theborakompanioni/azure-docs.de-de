@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 12/09/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 79948e3ec83dc8d56f0fa38998a48ee3518f8962
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e9e8dfa79ac0b902b8ecbcf9911e38ef49f754ec
 
 
 ---
@@ -34,8 +34,8 @@ Es gibt vier Hauptarten von Machine Learning-Modellen in Azure Machine Learning:
 
 Folgende Module werden am Anfang dieser Modelle für die Vorhersage verwendet:
 
-* [Score Model][score-model] ist ein Modul für Klassifizierung und Regression
-* [Assign to Clusters][assign-to-clusters] ist ein Modul für das Clustering
+* [Score Model][score-model] ist ein Modul für Klassifizierung und Regression.
+* [Assign to Clusters][assign-to-clusters] ist ein Modul für das Clustering.
 * [Score Matchbox Recommender][score-matchbox-recommender] ist ein Modul für Empfehlungssysteme
 
 Dieses Dokument erläutert, wie Sie die Vorhersageergebnisse für jedes dieser Module interpretieren können. Einen Überblick über diese Module finden Sie unter [Auswählen von Parametern zum Optimieren Ihres Algorithmus in Azure Machine Learning](machine-learning-algorithm-parameters-optimize.md).
@@ -83,7 +83,7 @@ Sobald Sie die Vorhersageergebnisse verstanden und als solide eingestuft haben, 
 
 Abbildung 3. Experiment zur Bewertung von Schwertlilien in Verbindung mit einem Zwei-Klassen-Klassifizierungsproblem
 
-Jetzt müssen Sie die Eingabe und Ausgabe für den Webdienst festlegen. Die Eingabe erfolgt über den rechten Eingangsport von [Score Model][score-model], also die Eingabe der Schwertlilienfeatures. Die Wahl der Ausgabe hängt davon ab, ob Sie an der vorhergesagten Klasse (ausgewerteter Bezeichner), der ausgewerteten Wahrscheinlichkeit oder an beiden Werten interessiert sind. In diesem Beispiel wird vorausgesetzt, dass Sie an beiden Werten interessiert sind. Um die gewünschten Ausgabespalten auszuwählen, müssen Sie das Modul [Select Columns in Data set][select-columns] verwenden. Klicken Sie auf [Select Columns in Data set][select-columns], dann auf **Launch column selector**, und wählen Sie **Scored Labels** und **Scored Probabilities**. Nach dem Festlegen des Ausgangsports für [Select Columns in Data set][select-columns] und erneutem Ausführen sollten Sie das Bewertungsexperiment als Webdienst veröffentlichen können, indem Sie auf **PUBLISH WEB SERVICE** klicken. Das letzte Experiment sieht aus wie in Abbildung 4.
+Jetzt müssen Sie die Eingabe und Ausgabe für den Webdienst festlegen. Die Eingabe erfolgt über den rechten Eingangsport von [Score Model][score-model], also die Eingabe der Schwertlilienmerkmale. Die Wahl der Ausgabe hängt davon ab, ob Sie an der vorhergesagten Klasse (ausgewerteter Bezeichner), der ausgewerteten Wahrscheinlichkeit oder an beiden Werten interessiert sind. In diesem Beispiel wird vorausgesetzt, dass Sie an beiden Werten interessiert sind. Um die gewünschten Ausgabespalten auszuwählen, müssen Sie das Modul [Select Columns in Data set][select-columns] verwenden. Klicken Sie auf [Select Columns in Data set][select-columns], dann auf **Launch column selector**, und wählen Sie **Scored Labels** und **Scored Probabilities** aus. Nach dem Festlegen des Ausgangsports für [Select Columns in Data set][select-columns] und erneutem Ausführen sollten Sie das Bewertungsexperiment als Webdienst veröffentlichen können, indem Sie auf **PUBLISH WEB SERVICE** klicken. Das letzte Experiment sieht aus wie in Abbildung 4.
 
 ![Das Experiment mit Schwertlilien zur Klassifizierung mit zwei Klassen](./media/machine-learning-interpret-model-results/4.png)
 
@@ -122,7 +122,7 @@ Die linken 16 Spalten stellen die Featurewerte des Testsatzes dar. Die Spalten m
 
 **Webdienstveröffentlichung**
 
-Sie können auch die bewertete Bezeichnung für jeden Eintrag und die Wahrscheinlichkeit der bewerteten Bezeichnung abrufen. Die grundlegende Logik ist, die größte Wahrscheinlichkeit unter allen ausgewerteten Wahrscheinlichkeiten zu finden. Zu diesem Zweck müssen Sie das [Execute R Script][execute-r-script]-Modul verwenden. Der R-Code ist in Abbildung 8 dargestellt, das Ergebnis des Experiments in Abbildung 9.
+Sie können auch die bewertete Bezeichnung für jeden Eintrag und die Wahrscheinlichkeit der bewerteten Bezeichnung abrufen. Die grundlegende Logik ist, die größte Wahrscheinlichkeit unter allen ausgewerteten Wahrscheinlichkeiten zu finden. Zu diesem Zweck müssen Sie das Modul [Execute R Script][execute-r-script] verwenden. Der R-Code ist in Abbildung 8 dargestellt, das Ergebnis des Experiments in Abbildung 9.
 
 ![R-Codebeispiel](./media/machine-learning-interpret-model-results/8.png)
 
@@ -229,7 +229,7 @@ Für Empfehlungssysteme verwenden Sie das Restaurantempfehlungsproblem als Beisp
 * Kundenfeaturedaten
 * Daten zu Restaurantmerkmalen
 
-Mit dem integrierten Modul [Train Matchbox Recommender][train-matchbox-recommender] von Azure Machine Learning können Sie verschiedene Aufgaben durchführen:
+Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] in Azure Machine Learning können Sie verschiedene Aufgaben durchführen:
 
 * Vorhersagen von Bewertungen für einen bestimmten Benutzer und ein bestimmtes Element
 * Empfehlen von Elementen für einen bestimmten Benutzer
@@ -240,7 +240,7 @@ Im Menü **Recommender prediction kind** können Sie zwischen vier Optionen wäh
 
 ![Matchbox Recommender](./media/machine-learning-interpret-model-results/19_1.png)
 
-Ein typisches Experiment für Empfehlungssysteme in Azure Machine Learning sieht wie in Abbildung 20 aus. Weitere Informationen dazu, wie diese Recommender-System-Module verwendet werden, finden Sie unter [Train matchbox recommender][train-matchbox-recommender] und [Score Matchbox Recommender][score-matchbox-recommender].
+Ein typisches Experiment für Empfehlungssysteme in Azure Machine Learning sieht wie in Abbildung 20 aus. Ausführliche Informationen zur Verwendung dieser Empfehlungssystemmodule finden Sie in der Hilfe zu [Train Matchbox Recommender][train-matchbox-recommender] und [Score Matchbox Recommender][score-matchbox-recommender].
 
 ![Empfehlungssystemexperiment](./media/machine-learning-interpret-model-results/20.png)
 
@@ -317,6 +317,6 @@ Abbildung 26. Webdienstergebnis für das Restaurantempfehlungsproblem
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 01/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 49e5cc5045f5bd626826b4992b8b49f886ef7bde
+ms.sourcegitcommit: 744c4bd37b7b1443cf78586aab8ec2661e02254e
+ms.openlocfilehash: c0fc2ae5318068c204296b9e053c2cc7324e84c7
 
 
 ---
@@ -47,7 +47,7 @@ Wenn Sie Ihre Domänencontroller nicht direkt mit OMS verbinden möchten, könne
 3. Legen Sie auf diesem Computer den folgenden Registrierungsschlüssel fest:
 
    * Schlüssel: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<Verwaltungsgruppenname>\Solutions\ADReplication**
-   * Wert: **IsTarge**
+   * Wert: **IsTarget**
    * Wertdaten: **true**
 
    > [!NOTE]
@@ -115,10 +115,10 @@ Sie können auch auf **Exportieren** klicken, um die Ergebnisse nach Excel zu ex
 
 ## <a name="ad-replication-status-faq"></a>AD-Replikationsstatus – Häufig gestellte Fragen
 **F: Wie oft werden AD-Replikationsstatus-Daten aktualisiert?**
- A: Die Informationen werden alle fünf Tage aktualisiert.
+A: Die Informationen werden alle fünf Tage aktualisiert.
 
 **F: Kann konfiguriert werden, wie oft die Daten aktualisiert werden?**
- A: Derzeit leider nicht.
+A: Derzeit leider nicht.
 
 **F: Muss ich alle meine Domänencontroller meinem OMS-Arbeitsbereich hinzufügen, um den Replikationsstatus sehen zu können?**
 A: Nein. Sie müssen nur einen einzelnen Domänencontroller hinzufügen. Wenn Sie in Ihrem OMS-Arbeitsbereich mehrere Domänencontroller verwenden, werden Daten von allen Domänencontrollern an OMS gesendet.
@@ -127,19 +127,19 @@ A: Nein. Sie müssen nur einen einzelnen Domänencontroller hinzufügen. Wenn Si
 A: Ja. Sie können den Wert eines Registrierungsschlüssels festlegen, um dies zu ermöglichen. Weitere Informationen finden Sie unter [So aktivieren Sie einen Nichtdomänencontroller zum Senden von AD-Daten an OMS](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 **F: Wie lautet der Name des Prozesses, der die Daten sammelt?**
- A: Der Prozess hat den Namen „AdvisorAssessment.exe“.
+A: Der Prozess hat den Namen „AdvisorAssessment.exe“.
 
 **F: Wie lange dauert das Sammeln der Daten?**
- A: Die Dauer der Datensammlung hängt von der Größe der Active Directory-Umgebung ab, aber normalerweise dauert der Vorgang nicht länger als 15 Minuten.
+A: Die Dauer der Datensammlung hängt von der Größe der Active Directory-Umgebung ab, aber normalerweise dauert der Vorgang nicht länger als 15 Minuten.
 
 **F: Welche Arten von Daten werden gesammelt?**
- A: Replikationsinformationen werden per LDAP gesammelt.
+A: Replikationsinformationen werden per LDAP gesammelt.
 
 **F: Gibt es eine Möglichkeit, den Zeitpunkt der Datensammlung zu konfigurieren?**
- A: Derzeit leider nicht.
+A: Derzeit leider nicht.
 
 **F: Welche Berechtigungen benötige ich, um Daten sammeln zu können?**
- A: Normale Benutzerberechtigungen für Active Directory sind in der Regel ausreichend.
+A: Normale Benutzerberechtigungen für Active Directory sind in der Regel ausreichend.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Problembehandlung bei der Datensammlung
 Zum Sammeln von Daten ist für das AD-Replikationsstatus-Lösungspaket mindestens ein Domänencontroller erforderlich, der mit Ihrem OMS-Arbeitsbereich verbunden ist. Wenn Sie dies noch nicht durchgeführt haben, wird eine Meldung mit dem Hinweis angezeigt, dass **noch Daten gesammelt werden**.
@@ -153,6 +153,6 @@ Falls Sie keinen Domänencontroller direkt mit OMS oder SCOM verbinden möchten,
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

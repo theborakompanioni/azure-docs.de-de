@@ -1,5 +1,5 @@
 ---
-title: DocumentDB Java-API und SDK | Microsoft Docs
+title: "Ressourcen zu Java-API und SDK – Azure DocumentDB | Microsoft-Dokumentation"
 description: "Wichtige Informationen zur Java-API und zum SDK, einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB Java SDK."
 services: documentdb
 documentationcenter: java
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 10/28/2016
-ms.author: rnagpal
+ms.date: 01/31/2017
+ms.author: khdang
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 35a773e5f91490c3d4eb053d71ce1d189ba96872
+ms.sourcegitcommit: 47a54e51fa7378336aabe3fa6f93794852152cfe
+ms.openlocfilehash: d61ed82cc7841e427d422d4e48f2b1a42cf97521
 
 
 ---
@@ -42,12 +42,41 @@ ms.openlocfilehash: 35a773e5f91490c3d4eb053d71ce1d189ba96872
 
 <tr><td>**Am SDK mitwirken**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
 
-<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem Java SDK](documentdb-java-application.md)</td></tr>
+<tr><td>**Erste Schritte**</td><td>[Erste Schritte mit dem Java SDK](documentdb-java-get-started.md)</td></tr>
+
+<tr><td>**Web-App-Tutorial**</td><td>[Webanwendungsentwicklung mit DocumentDB](documentdb-java-application.md)</td></tr>
 
 <tr><td>**Aktuelle unterstützte Laufzeit**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Versionsinformationen
+### <a name="a-name195195httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb195"></a><a name="1.9.5"/>[1.9.5](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.5)
+* Unterstützung für Aggregationsabfragen (AVG, COUNT, MIN, MAX und SUM) wurde hinzugefügt.
+* Unterstützung für Änderungsfeeds wurde hinzugefügt.
+* Unterstützung für Sammlungskontingentinformationen über „RequestOptions.setPopulateQuotaInfo“ wurde hinzugefügt.
+* Unterstützung für die Skriptprotokollierung gespeicherter Prozeduren über „RequestOptions.setScriptLoggingEnabled“ wurde hinzugefügt.
+* Es wurde ein Fehler behoben, bei dem eine Abfrage im DirectHttps-Modus bei Drosselungsfehlern unter Umständen nicht mehr reagierte.
+* Korrektur eines Fehlers im Sitzungskonsistenzmodus.
+* Es wurde ein Fehler behoben, der bei hoher Anforderungsrate unter Umständen „NullReferenceException“ in „HttpContext“ auslöste.
+* Verbesserte Leistung des DirectHttps-Modus.
+
+### <a name="a-name194194httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb194"></a><a name="1.9.4"/>[1.9.4](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.4)
+* Einfache, clientinstanzbasierte Proxyunterstützung mit ConnectionPolicy.setProxy()-API hinzugefügt.
+* DocumentClient.close()-API zum ordnungsgemäßen Herunterfahren der DocumentClient-Instanz hinzugefügt.
+* Abfrageleistung im direkten Konnektivitätsmodus verbessert, indem der Abfrageplan von der nativen Assembly (und nicht vom Gateway) abgeleitet wird.
+* „FAIL_ON_UNKNOWN_PROPERTIES“ auf „false“ festgelegt, damit Benutzer in ihrem POJO „JsonIgnoreProperties“ nicht definieren müssen.
+* Protokollierung für die Verwendung von SLF4J umgestaltet.
+* Einige andere Fehler im Konsistenzleser behoben.
+
+### <a name="a-name193193httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb193"></a><a name="1.9.3"/>[1.9.3](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.3)
+* Fehler in der Verbindungsverwaltung behoben, um Verbindungsverluste im mit direkter Konnektivitätsmodus zu verhindern.
+* Fehler in der TOP-Abfrage behoben, der unter Umständen zu einer NullReferenece-Ausnahme führt.
+* Leistung durch Verringern der Anzahl von Netzwerkaufrufen für die internen Caches verbessert.
+* Problembehandlung für „DocumentClientException“ durch Hinzufügen von Statuscode, Aktivitäts-ID und Anforderungs-URI verbessert.
+
+### <a name="a-name192192httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb192"></a><a name="1.9.2"/>[1.9.2](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.2)
+* Problem in der Verbindungsverwaltung behoben, um die Stabilität zu verbessern.
+
 ### <a name="a-name191191httpmvnrepositorycomartifactcommicrosoftazureazure-documentdb191"></a><a name="1.9.1"/>[1.9.1](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb/1.9.1)
 * Unterstützung für BoundedStaleness-Konsistenzebene hinzugefügt.
 * Unterstützung direkter Verbindungen für CRUD-Vorgänge für partitionierte Sammlungen hinzugefügt.
@@ -122,7 +151,11 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
-| [1.9.1](#1.9.1) |28. Oktober 2016 |--- |
+| [1.9.5](#1.9.5) |31. Januar 2017 |--- |
+| [1.9.4](#1.9.4) |24. November 2016 |--- |
+| [1.9.3](#1.9.3) |30. Oktober 2016 |--- |
+| [1.9.2](#1.9.2) |28. Oktober 2016 |--- |
+| [1.9.1](#1.9.1) |26. Oktober 2016 |--- |
 | [1.9.0](#1.9.0) |3. Oktober 2016 |--- |
 | [1.8.1](#1.8.1) |30. Juni 2016 |--- |
 | [1.8.0](#1.8.0) |14. Juni 2016 |--- |
@@ -153,6 +186,6 @@ Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microso
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

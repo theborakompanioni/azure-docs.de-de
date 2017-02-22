@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Log Analytics | Microsoft Docs
-description: Log Analytics ist innerhalb weniger Minuten einsatzbereit.
+title: Erste Schritte mit einem Azure Log Analytics-Arbeitsbereich | Microsoft-Dokumentation
+description: Richten Sie in wenigen Minuten einen Arbeitsbereich in Log Analytics ein.
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,140 +12,147 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2017
+ms.date: 02/08/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 49e624dd9bfc534fdbae25fd0c8646be36851635
-ms.openlocfilehash: 4ab71b6ee09883abd4d095f2b1788cf69d44a219
+ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
+ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
 
 
 ---
-# <a name="get-started-with-log-analytics"></a>Erste Schritte mit Log Analytics
-Log Analytics ist innerhalb weniger Minuten in der Microsoft Operations Management Suite (OMS) einsatzbereit. Bei der Erstellung eines OMS-Arbeitsbereichs, der einem Konto ähnelt, haben Sie zwei Möglichkeiten:
+# <a name="get-started-with-a-log-analytics-workspace"></a>Erste Schritte mit einem Log Analytics-Arbeitsbereich
+Azure Log Analytics ist im Handumdrehen eingerichtet und unterstützt Sie bei der Auswertung von Operational Intelligence aus Ihrer IT-Infrastruktur. In diesem Artikel erfahren Sie, wie Sie Ihre gesammelten Daten ganz einfach und *kostenlos* untersuchen, analysieren und als Grundlage für Aktionen verwenden können.
 
-* Microsoft Operations Management Suite-Website
-* Microsoft Azure-Abonnement
+Dieser Artikel ist als Einführung in Log Analytics konzipiert und führt Sie im Rahmen eines kurzen Tutorials durch eine einfache Bereitstellung in Azure, damit Sie den Dienst verwenden können. Der logische Container, in dem Ihre Verwaltungsdaten in Azure gespeichert werden, wird als Arbeitsbereich bezeichnet. Nachdem Sie sich mit diesen Informationen vertraut gemacht und Ihre eigene Auswertung abgeschlossen haben, können Sie den Auswertungsarbeitsbereich entfernen. Da es sich bei diesem Artikel um ein Tutorial handelt, werden darin keine geschäftlichen Anforderungen, Planungsinformationen oder Architekturaspekte behandelt.
 
-Über die OMS-Website können Sie einen kostenlosen OMS-Arbeitsbereich erstellen. Alternativ können Sie ein Microsoft Azure-Abonnement verwenden, um einen kostenlosen Log Analytics-Arbeitsbereich zu erstellen. Die erstellten Arbeitsbereiche bieten in beiden Fällen die gleichen Funktionen. Bei kostenlosen Arbeitsbereichen können pro Tag nur 500 MB an Daten an den OMS-Dienst gesendet werden. Da alle Arbeitsbereiche ein Azure-Abonnement erfordern, können Sie mit Ihrem Abonnement auch auf andere Azure-Dienste zugreifen. Unabhängig von der Methode, die Sie zum Erstellen des Arbeitsbereichs wählen, erstellen Sie den Arbeitsbereich entweder mit einem Microsoft-Konto oder einem Unternehmenskonto.
+>[!NOTE]
+>Falls Sie die Microsoft Azure Government-Cloud verwenden, lesen Sie stattdessen die [Dokumentation zu Azure Government-Überwachung und -Verwaltung](https://review.docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#log-analytics).
 
-Hier wird die Vorgehensweise erläutert:
+Hier sehen Sie einen kurzen Überblick über die ersten Schritte:
 
-![Onboardingdiagramm](./media/log-analytics-get-started/oms-onboard-diagram.png)
+![Prozessdiagramm](./media/log-analytics-get-started/onboard-oms.png)
 
-## <a name="log-analytics-prerequisites-and-deployment-considerations"></a>Log Analytics-Voraussetzungen und -Bereitstellungsaspekte
-* Sie benötigen ein kostenpflichtiges Microsoft Azure-Abonnement, um Log Analytics vollständig nutzen zu können. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen und damit 30 Tage lang auf alle Azure-Dienste zugreifen. Sie können auch ein kostenloses OMS-Konto auf der Website [Operations Management Suite](http://microsoft.com/oms) erstellen.
-* Sie müssen einen Arbeitsbereich erstellen.
-* Auf jedem Windows-Computer, von dem Sie Daten erfassen möchten, muss Windows Server 2008 SP1 oder höher ausgeführt werden.
-* [Firewall](log-analytics-proxy-firewall.md) zugriff auf die Adressen des OMS-Webdiensts
-* Bestimmen Sie, ob Ihre Computer über direkten Internetzugang verfügen. Falls nicht, ist ein Gatewayserver für den Zugriff auf die Websites des OMS-Webdiensts erforderlich. Der gesamte Zugriff erfolgt per HTTPS. Sie können einen [OMS-Gatewayserver](log-analytics-oms-gateway.md) einrichten, um Datenverkehr von Servern an OMS weiterzuleiten, wenn über Computer kein Internetzugriff möglich ist.
-* Bei Verwendung von Operations Manager unterstützt Log Analytics die Anwendungen Operations Manager 2012 SP1 UR6 und höher sowie Operations Manager 2012 R2 UR2 und höher. Proxyunterstützung wurde in Operations Manager 2012 SP1 UR7 und Operations Manager 2012 R2 UR3 hinzugefügt. Bestimmen Sie, wie die Integration in OMS erfolgt.
-* Bestimmen Sie, welche Technologien und Server Daten an OMS senden. Beispiele: Domänencontroller, SQL Server usw.
-* Gewähren Sie Benutzern in OMS und Azure Berechtigungen.
-* Falls Sie Bedenken wegen der Datennutzung haben, können Sie jede Lösung einzeln bereitstellen und die Auswirkungen auf die Leistung testen, bevor Sie weitere Lösungen hinzufügen.
-* Überprüfen Sie die Datennutzung und Leistung, wenn Sie Log Analytics Lösungen und Features hinzufügen. Dies umfasst die Ereignissammlung, Protokollsammlung, Leistungsdatensammlung usw. Es ist besser, mit einer minimalen Sammlung zu beginnen, bis die Auswirkungen der Datennutzung bzw. der Leistung ermittelt wurden.
-* Stellen Sie sicher, dass Windows-Agents nicht auch mit Operations Manager verwaltet werden, da es sonst zu einer Duplizierung von Daten kommt. Dies gilt auch für Azure-basierte Agents, für die die Azure-Diagnose aktiviert ist.
-* Vergewissern Sie sich nach dem Installieren von Agents, dass der Agent jeweils richtig funktioniert. Falls nicht, sollten Sie sicherstellen, dass die CNG-Schlüsselisolation (Cryptography API Next Generation) nicht durch die Gruppenrichtlinie deaktiviert wurde.
-* Einige Log Analytics-Lösungen verfügen über zusätzliche Anforderungen
+## <a name="1-create-an-azure-account-and-sign-in"></a>1. Erstellen eines Azure-Kontos und Anmelden
 
-## <a name="sign-up-in-3-steps-using-oms"></a>Registrieren in drei Schritten mit OMS
-1. Rufen Sie die Website [Operations Management Suite](http://microsoft.com/oms) auf. Melden Sie sich zur Verwendung mit Office 365 oder anderen Microsoft-Diensten mit Ihrem Microsoft-Konto, z. B. Outlook.com, oder mit einem vom Unternehmen oder der Bildungseinrichtung bereitgestellten Organisationskonto an.
-2. Geben Sie einen eindeutigen Namen für den Arbeitsbereich ein. Ein Arbeitsbereich ist ein logischer Container, in dem die Verwaltungsdaten gespeichert werden. Er bietet eine Möglichkeit zum Partitionieren von Daten zwischen verschiedenen Teams in Ihrer Organisation, während die Daten für den Arbeitsbereich exklusiv sind. Geben Sie eine E-Mail-Adresse und die Region an, in der Ihre Daten gespeichert werden sollen.  
-    ![Erstellen eines Arbeitsbereichs und Verknüpfen von Abonnements](./media/log-analytics-get-started/oms-onboard-create-workspace-link01.png)
-3. Erstellen Sie als Nächstes ein neues kostenloses Azure-Abonnement oder eine Verknüpfung mit einem bereits vorhandenen Azure-Abonnement.  
-   ![Erstellen eines Arbeitsbereichs und Verknüpfen von Abonnements](./media/log-analytics-get-started/oms-onboard-create-workspace-link02.png)
+Falls Sie noch nicht über ein Azure-Konto verfügen, müssen Sie eines erstellen, um Log Analytics verwenden zu können. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen und damit 30 Tage lang auf alle Azure-Dienste zugreifen.
 
-Sie sind nun bereit, im Operations Management Suite-Portal loszulegen.
+### <a name="to-create-a-free-account-and-sign-in"></a>So können Sie ein kostenloses Konto erstellen und sich anmelden
+1. Folgen Sie der Anleitung unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/).
+2. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an.
 
-Unter [Verwalten von Arbeitsbereichen](log-analytics-manage-access.md) erfahren Sie mehr über das Einrichten Ihres Arbeitsbereichs und das Verknüpfen vorhandener Azure-Konten mit Arbeitsbereichen, die mit Operations Management Suite erstellt wurden.
+## <a name="2-create-a-workspace"></a>2. Erstellen eines Arbeitsbereichs
 
-## <a name="sign-up-quickly-using-microsoft-azure"></a>Schnelles Registrieren mit Microsoft Azure
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an. Durchsuchen Sie die Liste mit den Diensten, und wählen Sie **Log Analytics** aus.  
-    ![Azure-Portal](./media/log-analytics-get-started/oms-onboard-azure-portal.png)
-2. Klicken Sie auf **Hinzufügen**, und wählen Sie dann die Optionen für die folgenden Elemente:
-   * **OMS-Arbeitsbereich**
+Im nächsten Schritt erstellen Sie einen Arbeitsbereich.
+
+1. Suchen Sie im Azure-Portal in der Marketplace-Dienstliste nach *Log Analytics*, und wählen Sie **Log Analytics** aus.  
+    ![Azure-Portal](./media/log-analytics-get-started/log-analytics-portal.png)
+2. Klicken Sie auf **Erstellen**, und wählen Sie anschließend Optionen für die folgenden Elemente aus:
+   * **OMS-Arbeitsbereich**: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
    * **Abonnement** : Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das Sie dem neuen Arbeitsbereich zuordnen möchten.
    * **Ressourcengruppe**
    * **Standort**
    * **Tarif**  
        ![Schnellerfassung](./media/log-analytics-get-started/oms-onboard-quick-create.png)
-3. Klicken Sie auf **OK**. Eine Liste mit Ihren Arbeitsbereichen wird angezeigt.
+3. Klicken Sie auf **OK**, um eine Liste mit Ihren Arbeitsbereichen anzuzeigen.
 4. Wählen Sie einen Arbeitsbereich aus, um dessen Details im Azure-Portal anzuzeigen.       
     ![Informationen zum Arbeitsbereich](./media/log-analytics-get-started/oms-onboard-workspace-details.png)         
-5. Klicken Sie auf den Link zum **OMS-Portal** , um die Operations Management Suite-Website mit Ihrem neuen Arbeitsbereich zu öffnen.
 
-Sie sind jetzt bereit, das Portal der Operations Management Suite zu nutzen.
+## <a name="3-add-solutions-and-solution-offerings"></a>3. Hinzufügen von Lösungen und Lösungsangeboten
 
-Unter [Verwalten des Zugriffs auf Log Analytics](log-analytics-manage-access.md)erfahren Sie mehr über das Einrichten des Arbeitsbereichs und das Verknüpfen vorhandener Arbeitsbereiche, die Sie mit Operations Management Suite für Azure-Abonnements erstellt haben.
+Fügen Sie als Nächstes Verwaltungslösungen und Lösungsangebote hinzu. Bei Verwaltungslösungen handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken zu einem bestimmten Problembereich bereitstellen. In einem Lösungsangebot werden mehrere Verwaltungslösungen zusammengefasst.
 
-## <a name="get-started-with-the-operations-management-suite-portal"></a>Erste Schritte mit dem Operations Management Suite-Portal
-Um Lösungen zu wählen und die Server zu verbinden, die Sie verwalten möchten, klicken Sie auf die Kachel **Einstellungen** und führen die Schritte in diesem Abschnitt aus.  
+Wenn Sie Ihrem Arbeitsbereich Lösungen hinzufügen, kann Log Analytics mithilfe von Agents verschiedene Arten von Daten von Computern sammeln, die mit Ihrem Arbeitsbereich verbunden sind. Auf die Integration von Agents gehen wir später noch ein.
 
-![Erste Schritte](./media/log-analytics-get-started/oms-onboard-get-started.png)  
+### <a name="to-add-solutions-and-solution-offerings"></a>So fügen Sie Lösungen und Lösungsangebote hinzu
 
-1. **Lösungen anzeigen**: Zeigen Sie Ihre installierten Lösungen an.  
-    ![Lösungen](./media/log-analytics-get-started/oms-onboard-solutions.png)  
-    Klicken Sie auf **Zeigen Sie den Katalog an**, um weitere Lösungen hinzuzufügen.  
-    ![Lösungen](./media/log-analytics-get-started/oms-onboard-solutions02.png)  
-    Wählen Sie eine Lösung aus, und klicken Sie auf **Hinzufügen**.
-2. **Quelle verbinden**: Wählen Sie die Vorgehensweise aus, um eine Verbindung mit der Serverumgebung zum Sammeln von Daten herzustellen:
+1. Klicken Sie im Azure-Portal auf **Neu**, geben Sie im Feld **Marketplace durchsuchen** den Suchbegriff **Aktivitätsprotokollanalyse** ein, und drücken Sie anschließend die EINGABETASTE.
+2. Wählen Sie auf dem Blatt „Alles“ die Option **Aktivitätsprotokollanalyse** aus, und klicken Sie anschließend auf **Erstellen**.  
+    ![Aktivitätsprotokollanalyse](./media/log-analytics-get-started/activity-log-analytics.png)  
+3. Wählen Sie auf dem Blatt *Name der Verwaltungslösung* einen Arbeitsbereich aus, den Sie der Verwaltungslösung zuordnen möchten.
+4. Klicken Sie auf **Create**.  
+    ![Lösungsarbeitsbereich](./media/log-analytics-get-started/solution-workspace.png)  
+5. Wiederholen Sie die Schritte 1 bis 4, um Folgendes hinzuzufügen:
+    - Das Dienstangebot **Sicherheit und Compliance** mit den Lösungen „Antischadsoftwarebewertung“ und „Security and Audit“.
+    - Das Dienstangebot **Automation & Control** mit den Lösungen „Automation Hybrid Worker“, „Change Tracking“ und „System Update Assessment“ (auch „Aktualisierungsverwaltung“ genannt). Sie müssen ein Automation-Konto erstellen, wenn Sie das Lösungsangebot hinzufügen.  
+        ![Automation-Konto](./media/log-analytics-get-started/automation-account.png)  
+6. Navigieren Sie zum Anzeigen der Verwaltungslösungen, die Sie Ihrem Arbeitsbereich hinzugefügt haben, zu **Log Analytics** > **Abonnements** > ***Name des Arbeitsbereichs*** > **Übersicht**. Die hinzugefügten Verwaltungslösungen werden als Kacheln angezeigt.  
+    >[!NOTE]
+    >Da wir noch keine Agents mit dem Arbeitsbereich verbunden haben, werden für die hinzugefügten Lösungen noch keine Daten angezeigt.  
 
-   * Verbinden Sie alle Windows-Server oder -Clients direkt durch Installieren eines Agents.
-   * Stellen Sie für Linux-Server eine Verbindung mit dem OMS-Agent für Linux her.
-   * Verwenden Sie ein Azure-Speicherkonto, das mit der Erweiterung der virtuellen Windows- oder Linux Azure-Maschine zur Diagnose konfiguriert ist.
-   * Verwenden Sie System Center Operations Manager, um die Verwaltungsgruppen oder die gesamte Operations Manager-Bereitstellung anzufügen.
-   * Aktivieren Sie die Windows-Telemetrie für die Verwendung von Upgrade Analytics.
-       ![Verbundene Quellen](./media/log-analytics-get-started/oms-onboard-data-sources.png)    
-3. **Daten sammeln**: Konfigurieren Sie mindestens eine Datenquelle für das Auffüllen des Arbeitsbereichs mit Daten. Klicken Sie anschließend auf **Speichern**.    
+    ![Lösungskacheln ohne Daten](./media/log-analytics-get-started/solutions-no-data.png)
 
-    ![Sammeln von Daten](./media/log-analytics-get-started/oms-onboard-logs.png)    
+## <a name="4-create-a-vm-and-onboard-an-agent"></a>4. Erstellen eines virtuellen Computers und Integrieren eines Agents
 
-## <a name="optionally-connect-windows-computers-by-installing-an-agent"></a>Durch Installieren eines Agents können Sie optional eine Verbindung mit Windows-Computern herstellen.
-Im folgenden Beispiel wird veranschaulicht, wie Sie einen Windows-Agent installieren.
+Erstellen Sie als Nächstes einen einfachen virtuellen Computer in Azure. Integrieren Sie danach den OMS-Agent, um ihn zu aktivieren. Nach der Aktivierung des Agents werden Daten des virtuellen Computers gesammelt und an Log Analytics gesendet.
 
-1. Klicken Sie nacheinander auf die Kachel **Einstellungen**, die Registerkarte **Verbundene Quellen** und eine Registerkarte für den hinzuzufügenden Quellentyp, und laden Sie entweder einen Agent herunter, oder informieren Sie sich über das Aktivieren eines Agents. Klicken Sie beispielsweise auf **Windows-Agent herunterladen (64 Bit)**. Bei Windows-Agents können Sie den Agent nur unter Windows Server 2008 SP1 oder höher oder unter Windows 7 SP1 oder höher installieren.
-2. Installieren Sie den Agent auf einem oder mehreren Servern. Sie können Agents nacheinander oder mithilfe einer automatisierten Methode mit einem [benutzerdefinierten Skript](log-analytics-windows-agents.md)installieren, oder Sie nutzen eine bereits vorhandene Softwareverteilungslösung.
-3. Nachdem Sie dem Lizenzvertrag zugestimmt und den Installationsordner ausgewählt haben, können Sie die Option **Connect the agent to Azure Log Analytics (OMS)** (Agent mit Azure Log Analytics (OMS) verbinden) wählen.   
-    ![Einrichtung des Agents](./media/log-analytics-get-started/oms-onboard-agent.png)
-4. Auf der nächsten Seite müssen Sie Ihre Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel eingeben. Ihre Arbeitsbereichs-ID und der Schlüssel werden auf dem Bildschirm angezeigt, auf dem Sie die Agent-Datei heruntergeladen haben.  
-    ![Agent-Schlüssel](./media/log-analytics-get-started/oms-onboard-mma-keys.png)  
+### <a name="to-create-a-virtual-machine"></a>So erstellen Sie einen virtuellen Computer
 
-    ![Anfügen von Servern](./media/log-analytics-get-started/oms-onboard-key.png)
-5. Während der Installation können Sie auf **Erweitert** klicken, um optional Ihren Proxyserver einzurichten und Authentifizierungsinformationen bereitzustellen. Klicken Sie auf die Schaltfläche **Weiter** , um zum Informationsbildschirm des Arbeitsbereichs zurückzukehren.
-6. Klicken Sie auf **Weiter** , um Ihre Arbeitsbereichs-ID und den Schlüssel zu überprüfen. Wenn Fehler gefunden werden, können Sie auf **Zurück** klicken, um Korrekturen vorzunehmen. Wenn Ihr Arbeitsbereichs-ID und der Schlüssel erfolgreich überprüft wurden, klicken Sie zum Abschließen der Installation des Agents auf **Installieren** .
-7. Klicken Sie in der Systemsteuerung auf „Microsoft Monitoring Agent“ > Registerkarte „Azure Log Analytics (OMS)“. Ein grünes Häkchen wird angezeigt, wenn die Agents mit dem Operations Management Suite-Dienst kommunizieren. Zunächst wird dies ungefähr 5 bis 10 Minuten dauern.
+- Führen Sie die unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) beschriebenen Schritte aus, und starten Sie den neuen virtuellen Computer.
 
-> [!NOTE]
-> Kapazitätsverwaltungs- und Konfigurationsbewertungs-Lösungen werden von Servern derzeit nicht unterstützt, die direkt mit der Operations Management Suite verbunden sind.
+### <a name="connect-the-virtual-machine-to-log-analytics"></a>Herstellen einer Verbindung zwischen dem virtuellen Computer und Log Analytics
 
+- Führen Sie die unter [Verbinden von virtuellen Azure-Computern mit Log Analytics](log-analytics-azure-vm-extension.md) beschriebenen Schritte aus, um über das Azure-Portal eine Verbindung zwischen dem virtuellen Computer und Log Analytics herzustellen.
 
-Sie können auch den Agent mit System Center Operations Manager 2012 SP1 und höher verbinden. Zu diesem Zweck wählen Sie **Verbinden des Agents mit System Center Operations Manager**. Wenn Sie diese Option auswählen, senden Sie Daten an den Dienst, ohne dass zusätzliche Hardware oder Last für Ihre Verwaltungsgruppen erforderlich ist.
+## <a name="5-view-and-act-on-data"></a>5. Anzeigen und Nutzen der Daten
 
-Weitere Informationen zum Verbinden von Agents mit der Operations Management Suite finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md).
+Sie haben bereits die Activity Log Analytics-Lösung und die Dienstangebote „Sicherheit und Compliance“ und „Automation & Control“ aktiviert. Als Nächstes sehen wir uns von den Lösungen gesammelte Daten und Ergebnisse in Protokollsuchen an.
 
-## <a name="optionally-connect-servers-using-system-center-operations-manager"></a>Optional können Sie Server mithilfe von System Center Operations Manager verbinden.
-1. Wählen Sie in der Operations Manager-Konsole **Verwaltung**.
-2. Erweitern Sie den Knoten **Operational Insights**, und wählen Sie dann **Operational Insights-Verbindung**.
+Sehen Sie sich zunächst Daten an, die innerhalb der Lösungen angezeigt werden. Sehen Sie dann einige Protokollsuchen an, auf die über Protokollsuchen zugegriffen wird. Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung. Weitere Informationen finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md). Verwenden Sie schließlich Daten, die wir außerhalb des Azure-Portals mithilfe des OMS-Portals finden, als Grundlage für Aktionen.
 
-   > [!NOTE]
-   > Je nachdem, welches Updaterollup von SCOM Sie verwenden, wird Ihnen ein Knoten für *System Center Advisor*, *Operational Insights* oder *Operations Management Suite* angezeigt.
-   >
-   >
-3. Klicken Sie oben rechts auf den Link **Registrieren bei Operational Insights** , und befolgen Sie die Anweisungen.
-4. Klicken Sie nach Abschluss des Registrierungsassistenten auf den Link **Computer/Gruppe hinzufügen** .
-5. Im Dialogfeld **Computersuche** können Sie nach Computern oder Gruppen suchen, die von Operations Manager überwacht werden. Wählen Sie Computer oder Gruppen aus, die in Log Analytics aufgenommen werden sollen, und klicken Sie auf **Hinzufügen** und dann auf **OK**. Sie können überprüfen, ob der OMS-Dienst Daten empfängt, indem Sie im Portal der Operations Management Suite zur Kachel **Nutzung** wechseln. Daten sollten in ungefähr 5 bis 10 Minuten angezeigt werden.
+### <a name="to-view-antimalware-data"></a>So zeigen Sie Antischadsoftware-Daten an
 
-Weitere Informationen zum Verbinden von Operations Manager mit Operations Management Suite erhalten Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md).
+1. Navigieren Sie im Azure-Portal zu **Log Analytics** > ***Ihr Arbeitsbereich***.
+2. Klicken Sie auf dem Blatt für Ihren Arbeitsbereich unter **Allgemein** auf **Übersicht**.  
+    ![Übersicht](./media/log-analytics-get-started/overview.png)
+3. Klicken Sie auf die Kachel **Antischadsoftwarebewertung**. In diesem Beispiel sehen Sie, dass Windows Defender auf einem Computer installiert, die Signatur aber veraltet ist.  
+    ![Antischadsoftware](./media/log-analytics-get-started/solution-antimalware.png)
+4. Klicken Sie in diesem Beispiel unter **Schutzstatus** auf **Veraltete Signatur**, um die Protokollsuche zu öffnen und Details zu den Computern mit veralteten Signaturen anzuzeigen. Der Name des Computers lautet in diesem Beispiel *getstarted*. Sollten mehrere Computer mit veralteten Signaturen vorhanden sein, werden alle in den Ergebnissen der Protokollsuche angezeigt.  
+    ![Veraltete Antischadsoftware](./media/log-analytics-get-started/antimalware-search.png)
 
-## <a name="optionally-analyze-data-from-cloud-services-in-microsoft-azure"></a>Optional, können Sie Daten von Clouddiensten in Microsoft Azure analysieren.
-Mit der Operations Management Suite können Sie schnell Ereignis- und IIS-Protokolle für Cloud-Dienste und virtuelle Computer durchsuchen, indem Sie die Diagnose für Azure Cloud-Dienste aktivieren. Weitere Erkenntnisse zu Ihren virtuellen Azure-Computern erhalten Sie auch durch Installieren von Microsoft Monitoring Agent. Weitere Informationen zum Konfigurieren der Azure-Umgebung für die Verwendung von Operations Management Suite erhalten Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](log-analytics-azure-storage.md).
+### <a name="to-view-security-and-audit-data"></a>So zeigen Sie Sicherheits- und Überwachungsdaten an
+
+1. Klicken Sie auf dem Blatt für Ihren Arbeitsbereich unter **Allgemein** auf **Übersicht**.  
+2. Klicken Sie auf die Kachel **Security and Audit**. In diesem Beispiel sehen Sie, dass zwei relevante Probleme vorliegen: Bei einem Computer fehlen kritische Updates, und ein Computer ist nicht ausreichend geschützt.  
+    ![Sicherheit und Überwachung](./media/log-analytics-get-started/security-audit.png)
+3. Klicken Sie in diesem Beispiel unter **Relevante Probleme** auf **Computers missing critical updates** (Computer mit fehlenden kritischen Updates), um die Protokollsuche zu öffnen und Details zu Computern anzuzeigen, auf denen kritische Updates fehlen. In diesem Beispiel fehlen ein kritisches Update noch 63 andere Updates.  
+    ![Protokollsuche für Security and Audit](./media/log-analytics-get-started/security-audit-log-search.png)
+
+### <a name="to-view-and-act-on-system-update-data"></a>So können Sie Systemupdatedaten anzeigen und als Grundlage für Aktionen verwenden
+
+1. Klicken Sie auf dem Blatt für Ihren Arbeitsbereich unter **Allgemein** auf **Übersicht**.  
+2. Klicken Sie auf die Kachel **System Update Assessment**. In diesem Beispiel sehen Sie, dass ein Windows-Computer namens *getstarted* kritische Updates und ein anderer Computer Definitionsupdates benötigt.  
+    ![Systemupdates](./media/log-analytics-get-started/system-updates.png)
+3. Klicken Sie in diesem Beispiel unter **Fehlende Updates** auf **Kritische Updates**, um die Protokollsuche zu öffnen und Details zu Computern anzuzeigen, auf denen kritische Updates fehlen. Dieses Beispiel umfasst ein fehlendes und ein erforderliches Update.  
+    ![Protokollsuche für Systemupdates](./media/log-analytics-get-started/system-updates-log-search.png)
+4. Melden Sie sich auf der Website der [Operations Management Suite](http://microsoft.com/oms) mit Ihrem Azure-Konto an. Nach der Anmeldung sehen Sie, dass die Lösungsinformationen den Informationen im Azure-Portal ähneln.  
+    ![OMS-Portal](./media/log-analytics-get-started/oms-portal.png)
+5. Klicken Sie auf die Kachel **Aktualisierungsverwaltung**.
+6. Auf dem Dashboard der Aktualisierungsverwaltung sehen Sie, dass die angezeigten Systemupdateinformationen den Informationen im Azure-Portal ähneln. Die Kachel **Manage Update Deployments** (Updatebereitstellungen verwalten) ist allerdings neu. Klicken Sie auf die Kachel **Manage Update Deployments** (Updatebereitstellungen verwalten).  
+    ![Kachel für die Aktualisierungsverwaltung](./media/log-analytics-get-started/update-management.png)
+7. Klicken Sie auf der Seite **Updatebereitstellungen** auf **Hinzufügen**, um eine *Updateausführung* zu erstellen.  
+    ![Updatebereitstellungen](./media/log-analytics-get-started/update-management-update-deployments.png)
+8.  Geben Sie auf der Seite **New Update Deployment** (Neue Updatebereitstellung) einen Namen für die Updatebereitstellung ein, wählen Sie die zu aktualisierenden Computer (in diesem Beispiel: *getstarted*) aus, wählen Sie einen Zeitplan, und klicken Sie anschließend auf **Speichern**.  
+    ![Neue Bereitstellung](./media/log-analytics-get-started/new-deployment.png)  
+    Nach dem Speichern der Bereitstellung wird die geplante Aktualisierung angezeigt.  
+    ![Geplante Aktualisierung](./media/log-analytics-get-started/scheduled-update.png)  
+    Nach Abschluss der Updateausführung wird der Status **Beendet** angezeigt.
+    ![Abgeschlossene Aktualisierung](./media/log-analytics-get-started/completed-update.png)
+9. Nach Abschluss der Updateausführung können Sie überprüfen, ob die Ausführung erfolgreich war, und Details zu den angewendeten Updates anzeigen.
+
+## <a name="after-evaluation"></a>Nach der Auswertung
+
+In diesem Tutorial haben Sie einen Agent auf einem virtuellen Computer installiert und schnell Ergebnisse erzielt. Die erforderlichen Schritte waren schnell und einfach auszuführen. Die meisten großen Organisationen und Unternehmen verfügen jedoch über komplexe lokale IT-Infrastrukturen. Die Datenerfassung in solch komplexen Umgebungen ist daher mit zusätzlichem Planungs- und Arbeitsaufwand verbunden. Machen Sie sich mit den Informationen aus dem Abschnitt mit den nächsten Schritten vertraut. Dort finden Sie Links zu hilfreichen Artikeln.
+
+Sie können optional auch den Arbeitsbereich entfernen, den Sie im Rahmen dieses Tutorials erstellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Informieren Sie sich über das Herstellen einer Verbindung zwischen [Windows-Agents](log-analytics-windows-agents.md) und Log Analytics.
+* Informieren Sie sich über das Herstellen einer Verbindung zwischen [Operations Manager-Agents](log-analytics-om-agents.md) und Log Analytics.
 * [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md) , um Funktionen hinzuzufügen und Daten zu sammeln.
-* Vertrautmachen mit den [Suchprotokollen](log-analytics-log-searches.md) zur Anzeige von detaillierten Informationen, die von Lösungen gesammelt wurden.
-* Verwenden von [Dashboards](log-analytics-dashboards.md) zum Speichern und Anzeigen von eigenen benutzerdefinierten Suchvorgängen.
+* Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

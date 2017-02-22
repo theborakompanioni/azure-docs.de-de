@@ -1,6 +1,6 @@
 ---
-title: "Durchführen des Lastenausgleichs für Container in einem Azure Container Service-Cluster | Microsoft Docs"
-description: "Es wird beschrieben, wie Sie den Lastenausgleich für Container in einem Azure Container Service-Cluster durchführen."
+title: "Lastenausgleich für Container in Azure-DC/OS-Clustern | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie den Lastenausgleich für mehrere Container in einem Azure Container Service-DC/OS-Cluster durchführen."
 services: container-service
 documentationcenter: 
 author: rgardler
@@ -11,18 +11,18 @@ keywords: Container, Microservices, DC/OS, Azure
 ms.assetid: f0ab5645-2636-42de-b23b-4c3a7e3aa8bb
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/11/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cf255856302ad5bdb1f6022d231833610acbcac5
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 27ad7100f6203db3ba3dcc88ffdc191b9b9d45cb
 
 
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-cluster"></a>Durchführen des Lastenausgleichs für Container in einem Azure Container Service-Cluster
+# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Durchführen des Lastenausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
 In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in einem per DC/OS verwalteten Azure Container Service mit Marathon-LB erstellen. So wird das horizontale Skalieren Ihrer Anwendungen ermöglicht. Außerdem können Sie die öffentlichen und privaten Agent-Cluster nutzen, indem Sie Ihre Lastenausgleichsmodule im öffentlichen Cluster und Ihre Anwendungscontainer im privaten Cluster anordnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -39,14 +39,14 @@ Marathon Load Balancer konfiguriert sich basierend auf den von Ihnen bereitgeste
 
 Zum Installieren von Marathon Load Balancer können Sie entweder die DC/OS-Webbenutzeroberfläche oder die Befehlszeile verwenden.
 
-### <a name="install-marathonlb-using-dcos-web-ui"></a>Installieren von Marathon-LB über die DC/OS-Webbenutzeroberfläche
+### <a name="install-marathon-lb-using-dcos-web-ui"></a>Installieren von Marathon-LB über die DC/OS-Webbenutzeroberfläche
 1. Klicken Sie auf „Universe“.
 2. Suchen Sie nach „Marathon-LB“.
 3. Klicken Sie auf „Install“ (Installieren).
 
 ![„marathon-lb“ über die DC/OS-Webschnittstelle installieren](./media/dcos/marathon-lb-install.png)
 
-### <a name="install-marathonlb-using-the-dcos-cli"></a>Installieren von Marathon-LB mit der DC/OS-Befehlszeilenschnittstelle
+### <a name="install-marathon-lb-using-the-dcos-cli"></a>Installieren von Marathon-LB mit der DC/OS-Befehlszeilenschnittstelle
 Nachdem Sie die DC/OS-Befehlszeilenschnittstelle installiert und sichergestellt haben, dass Sie eine Verbindung mit Ihrem Cluster herstellen können, können Sie auf Ihrem Clientcomputer den folgenden Befehl ausführen:
 
 ```bash
@@ -136,6 +136,6 @@ Weitere Informationen zu [marathon-lb](https://dcos.io/docs/1.7/usage/service-di
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

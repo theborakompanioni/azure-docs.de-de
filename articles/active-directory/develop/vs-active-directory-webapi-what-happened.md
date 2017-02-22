@@ -1,6 +1,6 @@
 ---
-title: "Was ist mit dem WebApi-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)? | Microsoft Docs"
-description: "Beschreibt, was mit der MVC-Projekt-WebApi geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen"
+title: "Änderungen an einem WebApi-Projekt, die vorgenommen werden, wenn Sie eine Verbindung mit Azure AD herstellen | Microsoft-Dokumentation"
+description: "Beschreibt, was mit dem WebApi-Projekt geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen."
 services: active-directory
 documentationcenter: 
 author: TomArcher
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: a60bdc8d6977943e156fdcf0f29228af3c394a99
-ms.openlocfilehash: e35b18344acf7afedc422760c8a59e6fba17728f
+ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
+ms.openlocfilehash: aa055ead3dc039745f48f268fe456ae5dab5bf36
 
 
 ---
@@ -112,6 +112,6 @@ Ihre Azure Active Directory-App wurde aktualisiert und enthält nun die Berechti
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

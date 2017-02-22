@@ -1,6 +1,6 @@
 ---
-title: CDN-Cachingrichtlinie in der Media Services-Erweiterung
-description: "Dieses Thema bietet einen Überblick über CDN-Cachingrichtlinien in der Media Services-Erweiterung."
+title: Verwalten von Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services | Microsoft-Dokumentation
+description: "Hier wird erläutert, wie Sie Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services verwalten."
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 02/04/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d8e5fa4f3de86be0a8ef65971e42c8b20f61f0b2
+ms.sourcegitcommit: fba5384acae53ac416d91ae30840c6cfa04e7c68
+ms.openlocfilehash: 0c479a58f4158bb1a72dc43432507160f65d2791
 
 
 ---
-# <a name="cdn-caching-policy-in-media-services-extension"></a>CDN-Cachingrichtlinie in der Media Services-Erweiterung
+# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Verwalten von Azure CDN-Zwischenspeicherungsrichtlinien in Azure Media Services
 Azure Media Services bietet HTTP-basiertes adaptives Streaming und progressive Downloads. HTTP-basiertes Streaming ist hochgradig skalierbar und bietet den Vorteil, dass Dateien auf Proxy- und CDN-Ebene sowie clientseitig zwischengespeichert werden können. Streamingendpunkte bieten allgemeine Streamingfunktionen sowie Konfigurationsoptionen für HTTP-Cacheheader. Streamingendpunkte legen die HTTP-Cachesteuerungsheader "max-age" und "Expires" fest. Weitere Informationen zu HTTP-Cacheheadern finden Sie unter [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
 
 ## <a name="default-caching-headers"></a>Standardcachingheader
@@ -30,9 +30,9 @@ Standardmäßig wenden Streamingendpunkte Cacheheader zum Zwischenspeichern für
 Azure Media Services bietet ein [integriertes CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) für Streamingendpunkte. Cachesteuerungsheader werden auf CDN-aktivierte Streamingendpunkte genauso angewendet wie Streamingendpunkte. Azure CDN verwendet für Streamingendpunkte konfigurierte Cachewerte, um die Lebensdauer der intern zwischengespeicherten Objekte zu definieren, und verwendet diesen Wert, um die Übermittlungscacheheader festzulegen. Bei der Verwendung von CDN-aktivierten Streamingendpunkten empfiehlt es sich nicht, kleine Cachewerte festzulegen. Das Festlegen von kleinen Werten senkt die Leistung und reduziert die Vorteile von CDN. Es ist nicht zulässig, Cacheheader für CDN-aktivierte Streamingendpunkte auf Werte unterhalb von 600 Sekunden festzulegen.
 
 > [!IMPORTANT]
-> Azure Media Services-Integration mit Azure CDN ist in **Azure CDN von Verizon**implementiert.  Wenn Sie **Azure CDN von Akamai** für Azure Media Services verwenden möchten, müssen Sie [den Endpunkt manuell konfigurieren](cdn-create-new-endpoint.md).  Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md).
+>Azure Media Services kann vollständig in Azure CDN integriert werden. Mit nur einem Mausklick können Sie alle verfügbaren Azure CDN-Anbieter (Akamai und Verizon) in Ihren Streamingendpunkt integrieren, einschließlich Standard- und Premium-Produkte von CDN. Weitere Informationen dazu finden Sie in [dieser Ankündigung](https://azure.microsoft.com/blog/standardstreamingendpoint/).
 > 
-> 
+> Datengebühren für die Übertragung von Daten vom Streamingendpunkt an das CDN fallen nur dann nicht an, wenn das CDN über Streamingendpunkt-APIs oder über den Streamingendpunkt-Abschnitt im Azure-Verwaltungsportal aktiviert wird. Bei einer manuellen Integration oder der direkten Erstellung eines CDN-Endpunkts über CDN-APIs oder den Portalabschnitt fallen Datengebühren an.
 
 ## <a name="configuring-cache-headers-with-azure-media-services"></a>Konfigurieren von Cacheheadern mit Azure Media Services
 Sie können das Azure Verwaltungsportal oder Azure Media Services-APIs verwenden, um Cacheheaderwerte zu konfigurieren.
@@ -49,6 +49,6 @@ Sie können das Azure Verwaltungsportal oder Azure Media Services-APIs verwenden
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

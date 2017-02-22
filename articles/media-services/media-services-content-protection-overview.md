@@ -1,5 +1,5 @@
 ---
-title: "Schützen von Inhalten – Übersicht | Microsoft Docs"
+title: "Schützen Ihrer Inhalte mit Azure Media Services | Microsoft-Dokumentation"
 description: "In diesem Artikel finden Sie eine Übersicht über die Content Protection mit Media Services."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 9d3718cf80e023f4c5b9c523375b77083a9d7be7
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: bf2bd9bca8817f64790ac62d2981a51aa36566a3
 
 
 ---
@@ -27,10 +27,8 @@ Die folgende Abbildung veranschaulicht die von AMS unterstützten Content Protec
 
 ![Schützen mit PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-> [!NOTE]
-> Damit Sie die dynamische Verschlüsselung verwenden können, müssen Sie zunächst mindestens eine reservierte Einheit für das Streaming auf dem Streamingendpunkt abrufen, auf dem Sie verschlüsselte Inhalte streamen möchten.
-> 
-> 
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 
 In diesem Thema werden relevante [Konzepte und Begriffe](media-services-content-protection-overview.md) für Content Protection mit AMS behandelt. Darüber hinaus enthält das Thema [Links](media-services-content-protection-overview.md#common-scenarios) zu Themen mit Informationen zu Content Protection-Aufgaben. 
 
@@ -45,10 +43,6 @@ Außerdem müssen Sie die Übermittlungsrichtlinie des Medienobjekts konfigurier
 
 Wenn ein Player einen Datenstrom anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt dynamisch mit einem unverschlüsselten AES-Schlüssel oder mit DRM-Verschlüsselung zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
-> [!NOTE]
-> Um die dynamische Verschlüsselung nutzen zu können, ist mindestens eine On-Demand-Streamingeinheit für den Streamingendpunkt erforderlich, aus dem die verschlüsselten Inhalte bereitgestellt werden sollen. Weitere Informationen finden Sie unter [How to Scale Media Services](media-services-portal-manage-streaming-endpoints.md)(Skalieren von Media Services).
-> 
-> 
 
 ## <a name="storage-encryption"></a>Speicherverschlüsselung
 Verwenden Sie die Speicherverschlüsselung, um Ihre unverschlüsselten Inhalte lokal mithilfe der AES-256-Bit-Verschlüsselung zu verschlüsseln und sie dann in Azure Storage hochzuladen, wo sie im Ruhezustand verschlüsselt und gespeichert werden. Medienobjekte, die durch Speicherverschlüsselung geschützt sind, werden automatisch entschlüsselt, vor der Codierung in einem verschlüsselten Dateisystem platziert und optional vor dem Hochladen als neues Ausgabemedienobjekt erneut verschlüsselt. Der primäre Anwendungsfall für die Speicherverschlüsselung ist, wenn Sie Ihre qualitativ hochwertigen Eingabemediendateien mit starker Verschlüsselung beim Speichern im Ruhezustand auf dem Datenträger sichern möchten.
@@ -96,6 +90,10 @@ Die folgenden Themen enthalten Informationen zum Schützen von Inhalten im Speic
 * [How to integrate Azure PlayReady License service with your own encryptor/streaming server](http://mingfeiy.com/integrate-azure-playready-license-service-encryptorstreaming-server)(Integrieren des Azure PlayReady-Lizenzierungsdiensts in einen eigenen Verschlüsselungs-/Streamingserver)
 * [Übermitteln von DRM-Lizenzen an Azure Media Services mithilfe von castLabs](media-services-castlabs-integration.md)
 
+>[!NOTE]
+>Ein Szenario, in dem Sie einen externen DRM-Server (bzw. eine DRM-Technologie) und einen Datenstrom von AMS verwenden, wird derzeit nicht unterstützt.
+
+
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -119,6 +117,6 @@ Die folgenden Themen enthalten Informationen zum Schützen von Inhalten im Speic
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

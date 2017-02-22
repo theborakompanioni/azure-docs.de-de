@@ -11,18 +11,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f760494cbe7341391f0ce51bb1161cb1395cbe5c
-ms.openlocfilehash: 83d39eb288a3dcda45ab178f5f65de441c2fd5a3
+ms.sourcegitcommit: 13c524cdc5ef0d9e70820cc3dac8d747e5bb5845
+ms.openlocfilehash: 12e832b8e0d0509f5b59d588b43f062fb07ddcde
 
 
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Analytics-Abfragesprache beschrieben.
 
-* **[Sehen Sie sich das Einführungsvideo an](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Sehen Sie sich das Einführungsvideo an.](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**
 * **[Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo)**, wenn Ihre App noch keine Daten an Application Insights sendet.
 * In der **[Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics)** finden Sie eine Übersetzung der gängigsten Sprachen.
 
@@ -91,7 +91,7 @@ Lassen Sie uns nur Anforderungen prüfen, die einen bestimmten Ergebniscode zur�
 ```AIQL
 
     requests
-    | where resultCode  == "404" 
+    | where resultCode  == "404"
     | take 10
 ```
 
@@ -114,7 +114,7 @@ Suchen Sie nach nicht erfolgreichen Anforderungen:
     | where isnotempty(resultCode) and toint(resultCode) >= 400
 ```
 
-`responseCode` ist vom Typ „string“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-reference.md#casts) müssen.
+`resultCode` ist vom Typ „string“, sodass wir das Element für einen numerischen Vergleich [umwandeln](app-insights-analytics-reference.md#casts) müssen.
 
 ## <a name="time-range"></a>Zeitbereich
 
@@ -128,26 +128,26 @@ Standardmäßig sind Ihre Abfragen auf die letzten 24 Stunden beschränkt. Doch 
 
     // What were the slowest requests over the past 3 days?
     requests
-    | where timestamp > ago(3d)  // Override the time range 
+    | where timestamp > ago(3d)  // Override the time range
     | top 5 by duration
 ```
 
-Das Feature „Zeitbereich“ ist gleichbedeutend mit einer WHERE-Klausel, die nach jeder Erwähnung einer der Quelltabellen eingefügt wird. 
+Das Feature „Zeitbereich“ ist gleichbedeutend mit einer WHERE-Klausel, die nach jeder Erwähnung einer der Quelltabellen eingefügt wird.
 
-`ago(3d)` bedeutet „vor drei Tagen“. Andere Zeiteinheiten sind Stunden (`2h`, `2.5h`), Minuten (`25m`) und Sekunden (`10s`). 
+`ago(3d)` bedeutet „vor drei Tagen“. Andere Zeiteinheiten sind Stunden (`2h`, `2.5h`), Minuten (`25m`) und Sekunden (`10s`).
 
 Weitere Beispiele:
 
 ```AIQL
 
     // Last calendar week:
-    requests 
-    | where timestamp > startofweek(now()-7d) 
-        and timestamp < startofweek(now()) 
+    requests
+    | where timestamp > startofweek(now()-7d)
+        and timestamp < startofweek(now())
     | top 5 by duration
 
     // First hour of every day in past seven days:
-    requests 
+    requests
     | where timestamp > ago(7d) and timestamp % 1d < 1h
     | top 5 by duration
 
@@ -212,7 +212,7 @@ Zeitstempel werden stets in UTC angegeben. Für die Pazifikküste der USA gilt i
 
 ```AIQL
 
-    requests 
+    requests
     | top 10 by timestamp desc
     | extend localTime = timestamp - 8h
 ```
@@ -235,7 +235,7 @@ Außerdem können Ergebnisse nach der Tageszeit gruppiert werden:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Beachten Sie, wie wir die Funktion `bin` (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare, z.B. Zeiten oder Zahlen, müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. Die Verwendung von `bin`, wobei es sich eigentlich nur um die vertraute `floor`-Funktion zum Abrunden handelt, ist hierfür die einfachste Möglichkeit.
+Beachten Sie, wie wir die Funktion `bin` (auch `floor`) verwenden. Wenn wir nur `by timestamp` verwenden, wird jede Eingabezeile in einer eigenen kleinen Gruppe angeordnet. Für alle kontinuierlichen Skalare (beispielsweise Zeitangaben oder Zahlen) müssen wir den fortlaufenden Bereich in eine verwaltbare Anzahl von diskreten Werten unterteilen. `bin` (die vertraute `floor`-Funktion zum Abrunden) ist hierfür die einfachste Möglichkeit.
 
 Wir können dasselbe Verfahren anwenden, um Bereiche für Zeichenfolgen zu reduzieren:
 
@@ -292,7 +292,7 @@ Wählen Sie die Diagrammanzeigeoption aus:
 ![Zeitdiagramm](./media/app-insights-analytics-tour/080.png)
 
 ## <a name="multiple-series"></a>Mehrere Reihen
-Mit mehreren Ausdrücken unter `summarize` werden mehrere Spalten erstellt.
+Mit mehreren Ausdrücken in der `summarize`-Klausel werden mehrere Spalten erstellt.
 
 Mit mehreren Ausdrücken in der `by`-Klausel werden mehrere Zeilen erstellt, und zwar eine für jede Kombination der Werte.
 
@@ -318,14 +318,14 @@ Konvertieren Sie einen booleschen Wert in eine Zeichenfolge, um sie als Diskrimi
 ```AIQL
 
     // Bounce rate: sessions with only one page view
-    requests 
-    | where notempty(session_Id) 
+    requests
+    | where notempty(session_Id)
     | where tostring(operation_SyntheticSource) == "" // real users
-    | summarize pagesInSession=sum(itemCount), sessionEnd=max(timestamp) 
-               by session_Id 
-    | extend isbounce= pagesInSession == 1 
-    | summarize count() 
-               by tostring(isbounce), bin (sessionEnd, 1h) 
+    | summarize pagesInSession=sum(itemCount), sessionEnd=max(timestamp)
+               by session_Id
+    | extend isbounce= pagesInSession == 1
+    | summarize count()
+               by tostring(isbounce), bin (sessionEnd, 1h)
     | render timechart
 ```
 
@@ -334,7 +334,7 @@ Wenn Sie aus einer Tabelle mit mehr als einer Zahlenspalte ein Diagramm erstelle
 
 ![Segmentieren eines Analysediagramms](./media/app-insights-analytics-tour/110.png)
 
-Sie müssen die Option „Don't Split“ (Nicht trennen) wählen, bevor Sie mehrere Zahlenspalten auswählen können. Sie können nicht gleichzeitig die Trennung nach einer Zeichenfolgenspalte durchführen, wenn mehr als eine Zahlenspalte angezeigt wird.
+Sie müssen die Option **Don't Split** (Nicht trennen) aktivieren, um mehrere Zahlenspalten auswählen zu können. Wenn mehrere Zahlenspalten angezeigt werden, ist keine Trennung nach einer Zeichenfolgenspalte möglich.
 
 ## <a name="daily-average-cycle"></a>Durchschnittlicher Tageszyklus
 Inwiefern variiert die Nutzung im Verlauf eines durchschnittlichen Tages?
@@ -343,7 +343,7 @@ Zählen Sie die Anforderungen nach Zeitmodule an einem Tag, unterteilt in Stunde
 
 ```AIQL
 
-    requests 
+    requests
     | where timestamp > ago(30d)  // Override "Last 24h"
     | where tostring(operation_SyntheticSource) == "" // real users
     | extend hour = bin(timestamp % 1d , 1h)
@@ -414,14 +414,14 @@ Verwenden Sie die obige Abfrage, aber ersetzen Sie die letzte Zeile:
     | summarize percentiles(sesh, 5, 20, 50, 80, 95)
 ```
 
-Wir haben auch die Obergrenze in der Where-Klausel entfernt, um die richtigen Zahlen einschließlich aller Sitzungen mit mehr als einer Anforderung zu ermitteln:
+Wir haben auch die Obergrenze in der Where-Klausel entfernt, um korrekte Werte zu erhalten (einschließlich aller Sitzungen mit mehreren Anforderungen):
 
 ![result](./media/app-insights-analytics-tour/180.png)
 
 Daraus lässt sich Folgendes ablesen:
 
 * 5 % der Sitzungen sind kürzer als 3 Minuten 34 Sekunden.
-* 50 % der Sitzung sind kürzer als 36 Minuten.
+* 50 % der Sitzungen sind kürzer als 36 Minuten.
 * 5 % der Sitzungen dauern länger als 7 Tage.
 
 Um eine separate Aufstellung für jedes Land zu erhalten, müssen Sie die Spalte „client_CountryOrRegion“ separat durch beide summarize-Operatoren bringen:
@@ -449,7 +449,7 @@ Um Ausnahmen im Zusammenhang mit einer Anforderung zu suchen, die eine Fehlerant
 ```AIQL
 
     requests
-    | where toint(responseCode) >= 500
+    | where toint(resultCode) >= 500
     | join (exceptions) on operation_Id
     | take 30
 ```
@@ -459,7 +459,8 @@ Es ist üblich, `project` zu verwenden, um vor dem Verknüpfen nur die Spalten a
 In den gleichen Klauseln benennen wir die Zeitstempelspalte um.
 
 ## <a name="letapp-insights-analytics-referencemdlet-clause-assign-a-result-to-a-variable"></a>[let](app-insights-analytics-reference.md#let-clause): Zuweisen eines Ergebnisses zu einer Variablen
-Verwenden Sie *let*, um die einzelnen Teile des vorherigen Ausdrucks zu separieren. Die Ergebnisse sind wie folgt unverändert:
+
+Verwenden Sie `let`, um die einzelnen Teile des vorherigen Ausdrucks zu trennen. Die Ergebnisse sind wie folgt unverändert:
 
 ```AIQL
 
@@ -471,23 +472,37 @@ Verwenden Sie *let*, um die einzelnen Teile des vorherigen Ausdrucks zu separier
     | take 30
 ```
 
-> Tipp: Fügen Sie im Analytics-Client keine Leerzeilen zwischen diesen Teilen ein. Stellen Sie sicher, dass Sie alles ausführen.
->
+> [!Tip] 
+> Fügen Sie im Analytics-Client keine Leerzeilen zwischen den Teilen der Abfrage ein. Stellen Sie sicher, dass Sie alles ausführen.
 >
 
-### <a name="functions"></a>Functions 
+Konvertieren Sie mithilfe von `toscalar` eine einzelne Tabellenzelle in einen Wert:
+
+```AIQL
+let topCities =  toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City));
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+
+
+### <a name="functions"></a>Functions
 
 Verwenden Sie *Let*, um eine Funktion zu definieren:
 
 ```AIQL
 
-    let usdate = (t:datetime) 
+    let usdate = (t:datetime)
     {
-      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ", 
+      strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
       bin((t-1h)%12h+1h,1s), iff(t%24h<12h, "AM", "PM"))
     };
     requests  
-    | extend PST = usdate(timestamp-8h) 
+    | extend PST = usdate(timestamp-8h)
 ```
 
 ## <a name="accessing-nested-objects"></a>Zugreifen auf geschachtelte Objekte
@@ -543,26 +558,28 @@ So überprüfen Sie, ob eine benutzerdefinierte Dimension einen bestimmten Typ h
 Sie können Ihre Ergebnisse an ein Dashboard anheften, um eine Übersicht über Ihre wichtigsten Diagramme und Tabellen zu erhalten.
 
 * [Freigegebenes Azure-Dashboard](app-insights-dashboards.md#share-dashboards): Klicken Sie auf das Stecknadelsymbol. Bevor Sie dies tun, müssen Sie über ein freigegebenes Dashboard verfügen. Öffnen Sie im Azure-Portal ein Dashboard (oder erstellen Sie es), und klicken Sie auf „Freigeben“.
-* [Power BI-Dashboard](app-insights-export-power-bi.md): Klicken Sie auf „Export“ > „Power BI Query“ (Exportieren > Power BI-Abfrage). Ein Vorteil dieser alternativen Vorgehensweise besteht darin, dass Sie Ihre Abfrage neben anderen Ergebnissen aus vielen unterschiedlichen Quellen anzeigen können.
+* [Power BI-Dashboard](app-insights-export-power-bi.md): Klicken Sie auf „Export“ > „Power BI Query“ (Exportieren > Power BI-Abfrage). Ein Vorteil dieser alternativen Vorgehensweise besteht darin, dass Sie Ihre Abfrage neben anderen Ergebnissen aus unterschiedlichen Quellen anzeigen können.
 
 ## <a name="combine-with-imported-data"></a>Kombinieren mit importierten Daten
 
-Analytics-Berichte sehen im Dashboard zwar gut aus, doch mitunter möchten Sie die Daten in ein übersichtlicheres Format übersetzen. Angenommen, Ihre authentifizierten Benutzer werden in den Telemetriedaten mittels eines Alias identifiziert. Sie möchten jedoch, dass in den Ergebnissen ihre echten Namen angezeigt werden. Zu diesem Zweck benötigen Sie lediglich eine CSV-Datei, mit deren Hilfe die Alias- den tatsächlichen Namen zugeordnet werden. 
+Analytics-Berichte sehen im Dashboard zwar gut aus, doch mitunter möchten Sie die Daten in ein übersichtlicheres Format übersetzen. Angenommen, Ihre authentifizierten Benutzer werden in den Telemetriedaten mittels eines Alias identifiziert. Sie möchten jedoch, dass in den Ergebnissen ihre echten Namen angezeigt werden. Zu diesem Zweck benötigen Sie eine CSV-Datei, mit deren Hilfe die Aliase den tatsächlichen Namen zugeordnet werden.
 
 Sie können eine Datendatei importieren und genau wie Standardtabellen (Anforderungen, Ausnahmen usw.) nutzen. Fragen Sie sie entweder einzeln ab, oder verknüpfen Sie sie mit anderen Tabellen. Angenommen, Sie haben eine Tabelle mit dem Namen „usermap“ mit den Spalten `realName` und `userId`. Diese können Sie verwenden, um sie in das Feld `user_AuthenticatedId` in den Anforderungstelemetriedaten zu übersetzen:
 
 ```AIQL
 
     requests
-    | where notempty(user_AuthenticatedId) 
+    | where notempty(user_AuthenticatedId)
     | project userId = user_AuthenticatedId
       // get the realName field from the usermap table:
-    | join kind=leftouter ( usermap ) on userId 
+    | join kind=leftouter ( usermap ) on userId
       // count transactions by name:
     | summarize count() by realName
 ```
 
-Öffnen Sie zum Importieren einer Tabelle **Einstellungen**, **Datenquellen**, und befolgen Sie die Anweisungen zum Hinzufügen einer Quelle. Verwenden Sie diese Definition, um Tabellen hochzuladen.
+Wenn Sie eine Tabelle importieren möchten, halten Sie sich auf dem Schemablatt unter **Other Data Sources** (Andere Datenquellen) an die Anweisungen zum Hinzufügen einer neuen Datenquelle, und laden Sie eine Stichprobe Ihrer Daten hoch. Diese Definition können Sie dann zum Hochladen von Tabellen verwenden.
+
+Das Importfeature befindet sich momentan in der Vorschauphase, daher wird unter „Other Data Sources“ (Andere Datenquellen) zunächst ein Kontaktlink angezeigt. Verwenden Sie diesen Link, um sich für das Vorschauprogramm zu registrieren. Danach wird der Link durch eine Schaltfläche zum Hinzufügen neuer Datenquellen ersetzt.
 
 
 ## <a name="tables"></a>Tabellen
@@ -578,7 +595,7 @@ Suchen der Anforderungen mit den häufigsten Fehlern:
 ![Anzahl der Anforderungen, nach Namen unterteilt](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
 ### <a name="custom-events-table"></a>Tabelle „Benutzerdefinierte Ereignisse“
-Wenn Sie Ihre eigenen Ereignisse über [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) senden, können Sie sie dieser Tabelle entnehmen.
+Wenn Sie Ihre eigenen Ereignisse über [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) senden, können Sie sie dieser Tabelle entnehmen.
 
 Sehen wir uns ein Beispiel, in dem Ihr App-Code diese Zeilen enthält:
 
@@ -600,7 +617,7 @@ Extrahieren von Maßen und Dimensionen aus den Ereignissen:
 ![Anzeige der Rate benutzerdefinierter Ereignisse](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>Tabelle „Benutzerdefinierte Metriken“
-Wenn Sie eigene Metrikwerte über [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) senden, finden Sie die Ergebnisse im Strom **CustomMetrics**. Beispiel:  
+Wenn Sie eigene Metrikwerte über [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) senden, finden Sie die Ergebnisse im Strom **CustomMetrics**. Beispiel:  
 
 ![Benutzerdefinierte Metriken in der Application Insights-Analyse](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
@@ -653,16 +670,16 @@ Enthält die Ergebnisse der Datenbank- und REST-API-Aufrufe Ihrer Anwendung sowi
 AJAX-Aufrufe aus dem Browser:
 
 ```AIQL
-    
-    dependencies | where client_Type == "Browser" 
+
+    dependencies | where client_Type == "Browser"
     | take 10
 ```
 
 Abhängigkeitsaufrufe vom Server:
 
 ```AIQL
-    
-    dependencies | where client_Type == "PC" 
+
+    dependencies | where client_Type == "PC"
     | take 10
 ```
 
@@ -681,6 +698,6 @@ Enthält die von Ihrer App über TrackTrace() oder [andere Frameworks](app-insig
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Optionen zu verteilten Daten und verteilten Tabellen für die MPP-Systeme (Massively Parallel Processing) von SQL Data Warehouse und Parallel Data Warehouse | Microsoft-Dokumentation"
+title: Funktionsweise von verteilten Daten in Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: "Es wird beschrieben, wie Daten für MPP-Vorgänge (Massively Parallel Processing) verteilt werden, und Sie erhalten Informationen zu den Optionen zum Verteilen von Tabellen in Azure SQL Data Warehouse und Parallel Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1090c2156df11adc6f18dffe00a9d37921c0a3a3
+ms.sourcegitcommit: 2548f779767635865daf790d301d86feff573a29
+ms.openlocfilehash: 195b78a7f634d01f228c90efb34763e4175708ac
 
 
 ---
@@ -38,7 +38,7 @@ Im folgenden Diagramm ist dargestellt, wie eine vollständige (nicht verteilte) 
 
 Bei der Auswahl einer Verteilungsspalte sollten einige Aspekte in Bezug auf die Leistung beachtet werden, z.B. Eindeutigkeit, eventuelle Datenschiefe und die Arten von Abfragen, die im System ausgeführt werden.
 
-![Verteilte Tabelle](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Distributed table")  
+![Verteilte Tabelle](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Verteilte Tabelle")  
 
 * Jede Zeile gehört zu einer Verteilung.  
 * Mit einem deterministischen Hashalgorithmus wird jede Zeile einer Verteilung zugewiesen.  
@@ -69,7 +69,7 @@ Zusätzlich zur Verwendung von verteilten Tabellen verfügt Parallel Data Wareho
 
 Im folgenden Diagramm ist eine replizierte Tabelle dargestellt, die auf jedem Computeknoten gespeichert wird. Die replizierte Tabelle wird auf allen Datenträgern gespeichert, die dem Computeknoten zugewiesen sind. Diese Datenträgerstrategie wird implementiert, indem SQL Server-Dateigruppen verwendet werden.  
 
-![Replizierte Tabelle](media/sql-data-warehouse-distributed-data/replicated-table.png "Replicated table") 
+![Replizierte Tabelle](media/sql-data-warehouse-distributed-data/replicated-table.png "Replizierte Tabelle") 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur effektiven Nutzung von verteilten Tabellen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).  
@@ -77,6 +77,6 @@ Informationen zur effektiven Nutzung von verteilten Tabellen finden Sie unter [V
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

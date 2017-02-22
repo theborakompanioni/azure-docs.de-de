@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2016
+ms.date: 12/05/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 28cd9db7e49328298f2be5788b6d94baaafb6651
+ms.sourcegitcommit: 1cef7ff21a8d076c89688f1fe75cebdb7c468199
+ms.openlocfilehash: e0f85965cb884022f665d3664bc2b824095ad0fe
 
 
 ---
@@ -42,23 +42,28 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Tho
 ### <a name="to-enable-the-application-integration-for-thousandeyes-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für ThousandEyes:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
-   ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-thousandeyes-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-thousandeyes-tutorial/IC700994.png "Applications")
+
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC749321.png "Add application")
+
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC749322.png "Add an application from gallerry")
+
 6. Geben Sie im **Suchfeld** den Suchbegriff **ThousandEyes** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-thousandeyes-tutorial/IC790060.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-thousandeyes-tutorial/IC790060.png "Application Gallery")
 7. Wählen Sie im Ergebnisbereich **ThousandEyes** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
-   ![ThousandEyes](./media/active-directory-saas-thousandeyes-tutorial/IC790061.png "ThousandEyes")
+    ![ThousandEyes](./media/active-directory-saas-thousandeyes-tutorial/IC790061.png "ThousandEyes")
 
 ## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Konto in Azure Active Directory bei ThousandEyes zu authentifizieren.
@@ -66,36 +71,50 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **ThousandEyes** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "Configure Single SignOn")
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ThousandEyes anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "Configure Single SignOn")
+
+1. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei ThousandEyes anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "Configure Single SignOn")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "Configure Single SignOn")
+
 3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **ThousandEyes-Anmelde-URL** die URL-Benutzer ein, welche die Benutzer zur Anmeldung bei ThousandEyes verwenden (z.B. „*https://app.thousandeyes.com/login/sso*“), und klicken Sie dann auf **Weiter**. 
    
-   ![App-URL konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
+
 4. Klicken Sie zum Herunterladen des Zertifikats auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790065.png "Configure Single SignOn")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790065.png "Configure Single SignOn")
+
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der **ThousandEyes** -Unternehmenswebsite als Administrator an.
+
 6. Klicken Sie im oberen Menü auf das Symbol **Einstellungen**.
    
-   ![Einstellungen](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
+    ![Einstellungen](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
+
 7. Klicken Sie unten auf der Seite auf **Konto**
    
-   ![Konto](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+    ![Konto](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+
 8. Klicken Sie auf die Registerkarte **Sicherheit und Authentifizierung**.
    
-   ![Sicherheit und Authentifizierung](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "Security & Authentication")
+    ![Sicherheit und Authentifizierung](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "Security & Authentication")
+
 9. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
    
-   ![Einmaliges Anmelden einrichten](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Setup Single Sign-On")
+    ![Einmaliges Anmelden einrichten](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Setup Single Sign-On")
    
-   1. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
-   2. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmeldeseiten-URL** ein.
-   3. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmeldeseiten-URL** ein.
-   4. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-Aussteller** ein.
-   5. Klicken Sie unter **Zertifikat des Identitätsanbieters** auf **Datei auswählen**, und laden Sie dann das Zertifikat hoch, das Sie aus dem klassischen Microsoft Azure-Portal heruntergeladen haben.
-   6. Klicken Sie auf **Speichern**.
+    a. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
+   
+    b. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Anmeldeseiten-URL** ein.
+   
+    c. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Remoteabmelde-URL**, und fügen Sie ihn in das Textfeld **Abmeldeseiten-URL** ein.
+   
+    d. Kopieren Sie im klassischen Microsoft Azure-Portal auf der Seite **Einmaliges Anmelden konfigurieren für ThousandEyes** den Wert für **Aussteller-URL**, und fügen Sie ihn in das Textfeld **Identitätsanbieter-Aussteller** ein.
+   
+    e. Klicken Sie unter **Zertifikat des Identitätsanbieters** auf **Datei auswählen**, und laden Sie dann das Zertifikat hoch, das Sie aus dem klassischen Microsoft Azure-Portal heruntergeladen haben.
+   
+    f. Klicken Sie auf **Speichern**.
+
 10. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-thousandeyes-tutorial/IC790070.png "Configure Single SignOn")
@@ -106,26 +125,31 @@ Im Fall von ThousandEyes ist die Bereitstellung eine manuelle Aufgabe.
 
 ### <a name="to-provision-a-user-account-to-thousandeyes-perform-the-following-steps"></a>Führen Sie zum Bereitstellen von Benutzerkonten in ThousandEyes die folgenden Schritte aus:
 1. Melden Sie sich bei der ThousandEyes-Unternehmenswebsite als Administrator an.
+
 2. Klicken Sie auf **Einstellungen**.
    
-   ![Einstellungen](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
+    ![Einstellungen](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
+
 3. Klicken Sie auf **Account**.
    
-   ![Konto](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+    ![Konto](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+
 4. Klicken Sie auf Registerkarte **Konten und Benutzer**.
    
-   ![Konten und Benutzer](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "Accounts & Users")
+    ![Konten und Benutzer](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "Accounts & Users")
+
 5. Führen Sie im Abschnitt **Benutzer und Konten hinzufügen** die folgenden Schritte aus:
    
-   ![Benutzerkonten hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Add User Accounts")
+    ![Benutzerkonten hinzufügen](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Add User Accounts")
    
-   1. Geben Sie **Name**, **E-Mail** und weitere Details eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
-   2. Klicken Sie auf **Neuen Benutzer zum Konto hinzufügen**.
+    a. Geben Sie **Name**, **E-Mail** und weitere Details eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
+   
+    b. Klicken Sie auf **Neuen Benutzer zum Konto hinzufügen**.
       
-      > [!NOTE]
-      > Der AAD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
-      > 
-      > 
+    > [!NOTE]
+    > Der AAD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
+    > 
+    > 
 
 > [!NOTE]
 > Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von ThousandEyes-Benutzerkonten oder mithilfe der von ThousandEyes bereitgestellten APIs erstellen.
@@ -137,18 +161,20 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ### <a name="to-assign-users-to-thousandeyes-perform-the-following-steps"></a>So weisen Sie ThousandEyes Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+
 2. Klicken Sie auf der Anwendungsintegrationsseite für **ThousandEyes** auf **Benutzer zuweisen**.
    
-   ![Benutzer zuweisen](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "Assign Users")
+    ![Benutzer zuweisen](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "Assign Users")
+
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-   ![Ja](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "Yes")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

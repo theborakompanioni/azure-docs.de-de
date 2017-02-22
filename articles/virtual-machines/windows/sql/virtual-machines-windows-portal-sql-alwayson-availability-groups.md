@@ -1,6 +1,6 @@
 ---
-title: "Automatisches Konfigurieren der AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern – Resource Manager"
-description: "Erstellen Sie eine AlwaysOn-Verfügbarkeitsgruppe mit Azure-VMs im Azure Resource Manager-Modus. In diesem Tutorial wird die Benutzeroberfläche in erster Linie zum automatischen Erstellen der gesamten Lösung verwendet."
+title: "Einrichten von hoher Verfügbarkeit für virtuelle Computer im Azure Resource Manager-Modus | Microsoft-Dokumentation"
+description: "In diesem Tutorial erfahren Sie, wie Sie eine AlwaysOn-Verfügbarkeitsgruppe mit virtuellen Computern im Azure Resource Manager-Modus erstellen."
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -8,16 +8,16 @@ manager: jhubbard
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
-ms.workload: infrastructure-services
-ms.date: 10/20/2016
-ms.author: MikeRayMSFT
+ms.workload: iaas-sql-server
+ms.date: 1/23/2017
+ms.author: mikeray
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: 27967ee372c379de08ae0c4740638cbeaabc4e55
+ms.sourcegitcommit: d0910bd4e0bf50591ac83991eb2eb679bdc3cadf
+ms.openlocfilehash: 4cbe4f189f5d562edbe5d5cbb524581aa4cb66f2
 
 
 ---
@@ -231,6 +231,6 @@ Sie sind jetzt über eine RDP-Verbindung mit der SQL Server-Instanz verbunden. S
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

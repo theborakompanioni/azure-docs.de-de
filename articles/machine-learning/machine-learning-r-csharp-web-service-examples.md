@@ -1,6 +1,6 @@
 ---
-title: "Beispiele für mit R entwickelte Machine Learning-Webdienste | Microsoft Docs"
-description: "Hier finden Sie einige nützliche Beispiele für Machine Learning-Webdienste, die mit R-Code erstellt und im Azure Marketplace veröffentlicht wurden."
+title: "(Veraltet:) Beispiele für mit R entwickelte Machine Learning-Webdienste – Azure | Microsoft Docs"
+description: "(Veraltet:) Hier finden Sie einige nützliche Beispiele für Machine Learning-Webdienste, die mit R-Code erstellt und im Azure Marketplace veröffentlicht wurden."
 keywords: C-Sharp,R-Code,Webdienste-Beispiele
 services: machine-learning
 documentationcenter: 
@@ -12,16 +12,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 0c3e94cf69d55de9c31a48de35e86a1ae9149a63
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 303fb71faf73d4a1b6d17b4ca66b83b15157332b
 
 
 ---
-# <a name="web-services-examples-using-r-code-on-azure-machine-learning-and-published-to-microsoft-azure-marketplace"></a>Beispiele für Webdienste mit R-Code, die Azure Machine Learning erstellt und im Microsoft Azure Marketplace veröffentlicht wurden
+# <a name="deprecated-web-services-examples-using-r-code-on-azure-machine-learning-and-published-to-microsoft-azure-marketplace"></a>(Veraltet:) Beispiele für Webdienste mit R-Code, die in Azure Machine Learning erstellt und im Microsoft Azure Marketplace veröffentlicht wurden
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese APIs gelten nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Die Beispielwebdienste in diesem Artikel wurden mit Azure Machine Learning erstellt und im Azure Marketplace veröffentlicht. Jedem Webdienstbeispiel ist ein umfassendes Dokument angefügt, in das Beispieldatasets zum Testen des Diensts integriert sind und in dem erläutert wird, wie Benutzer ähnliche Dienste selber erstellen können. 
 
 Benutzer können in Azure Machine Learning Studio R-Code schreiben und diesen mit nur wenigen Mausklicks als Webdienst für Anwendungen und Geräte veröffentlichen, der auf der ganzen Welt genutzt werden kann. 
@@ -72,6 +79,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

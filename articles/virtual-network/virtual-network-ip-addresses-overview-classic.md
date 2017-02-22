@@ -1,5 +1,5 @@
 ---
-title: IP-Adressen (klassisch) | Microsoft Docs
+title: IP-Adresstypen in Azure (klassisch) | Microsoft-Dokumentation
 description: "Erfahren Sie mehr zu öffentlichen und privaten IP-Adressen (klassisch) in Azure."
 services: virtual-network
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: f4c164ac86c404f11a4bc77bc9346ad6fc45e0a7
+ms.sourcegitcommit: 54277a39601cd7f986a8ff8f517ab02eac77309b
+ms.openlocfilehash: dfc34435ad6e8982c0298301bdefe489c37db8f1
 
 
 ---
-# <a name="ip-addresses-classic-in-azure"></a>IP-Adressen (klassisch) in Azure
+# <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden: öffentliche und private.
 
 Öffentliche IP-Adressen werden für die Kommunikation mit dem Internet verwendet. Hierzu zählen auch öffentliche Azure-Dienste.
@@ -182,6 +182,6 @@ Im Folgenden werden IP-Adressfeatures im Ressourcen-Manager-Bereitstellungsmodel
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Binäre Klassifizierung | Microsoft Docs"
-description: "Binäre Klassifizierung"
+title: "(Veraltet:) Binäre Klassifizierung – Azure | Microsoft Docs"
+description: "(Veraltet:) Binäre Klassifizierung"
 services: machine-learning
 documentationcenter: 
 author: jaymathe
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: db2fc1df586f925277026a418a073917978c0718
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: d1d4f35a7e77a5fac1e8ecb1a82c14cca3406676
 
 
 ---
-# <a name="binary-classifier"></a>Binäre Klassifizierung
+# <a name="deprecated-binary-classifier"></a>(Veraltet:) Binäre Klassifizierung
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Angenommen, Sie verfügen über ein Dataset und möchten eine binäre abhängige Variable basierend auf den unabhängigen Variablen vorhersagen. Die "logistische Regression" ist ein beliebtes statistisches Verfahren für eine solche Vorhersage. Hier ist die abhängige Variable binär oder dichotom, und p ist die Wahrscheinlichkeit des Vorhandenseins für das betrachtete Merkmal. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -77,7 +84,7 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei [Execute R Script][execute-r-script]-Module in den Arbeitsbereich gezogen. Dieser Webdienst führt ein Azure Machine Learning-Experiment mit einem zugrunde liegenden R-Skript aus. Das Experiment besteht aus zwei Teilen: Schemadefinition und Trainieren/Bewerten des Modells. Das erste Modul definiert die erwartete Struktur des Eingabedatasets, wobei die erste Variable die abhängige Variable ist und die restlichen Variablen unabhängig sind. Das zweite Modul passt ein generisches logistisches Regressionsmodell den Eingabedaten an.    
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei Module [Execute R Script][execute-r-script] in den Arbeitsbereich gezogen. Dieser Webdienst führt ein Azure Machine Learning-Experiment mit einem zugrunde liegenden R-Skript aus. Das Experiment besteht aus zwei Teilen: Schemadefinition und Trainieren/Bewerten des Modells. Das erste Modul definiert die erwartete Struktur des Eingabedatasets, wobei die erste Variable die abhängige Variable ist und die restlichen Variablen unabhängig sind. Das zweite Modul passt ein generisches logistisches Regressionsmodell den Eingabedaten an.    
 
 ![Experimentablauf][2]
 
@@ -126,6 +133,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

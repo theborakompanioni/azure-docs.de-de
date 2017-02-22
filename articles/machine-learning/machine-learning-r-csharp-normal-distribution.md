@@ -1,6 +1,6 @@
 ---
-title: Normal Distribution Web Service Suite | Microsoft Docs
-description: Normal Distribution Web Service Suite
+title: "(Veraltet:) Normal Distribution Web Service Suite – Azure | Microsoft Docs"
+description: (Veraltet:) Normal Distribution Web Service Suite
 services: machine-learning
 documentationcenter: 
 author: ireiter
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/04/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: ireiter
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e3783df1f80fc6453d64c16f5002262fb7197309
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: da7b70171d13c82e9269064069e69a35b9b2daaa
 
 
 ---
-# <a name="normal-distribution-suite"></a>Normal Distribution Suite
+# <a name="deprecated-normal-distribution-suite"></a>(Veraltet:) Normal Distribution Suite
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Die Normal Distribution Suite ist ein Satz mit Beispielwebdiensten ([Generator](https://datamarket.azure.com/dataset/aml_labs/ndg7), [Quantile Calculator](https://datamarket.azure.com/dataset/aml_labs/ndq5), [Probability Calculator](https://datamarket.azure.com/dataset/aml_labs/ndp5)), mit denen Sie Normalverteilungen generieren und verarbeiten können. Mit den Diensten können Sie eine Normalverteilungssequenz beliebiger Länge generieren, die Quantile aus angegebenen Wahrscheinlichkeiten sowie Wahrscheinlichkeiten aus einem angegebenen Quantil errechnen. Alle Dienste machen unterschiedliche Ausgaben basierend auf dem ausgewählten Dienst (siehe Beschreibung unten). Die Normal Distribution Suite basiert auf den R-Funktionen "qnorm", "rnorm" und "pnorm", die im R-Statistikpaket enthalten sind.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -269,6 +276,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

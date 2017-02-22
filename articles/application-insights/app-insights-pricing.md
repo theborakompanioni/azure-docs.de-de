@@ -1,5 +1,5 @@
 ---
-title: "Verwalten von Funktionen und Datenvolumen für Application Insights | Microsoft Docs"
+title: "Verwalten von Preisen und Datenvolumen für Application Insights | Microsoft-Dokumentation"
 description: "Verwalten Sie Telemetriedatenvolumen, und überwachen Sie Kosten in Application Insights."
 services: application-insights
 documentationcenter: 
@@ -11,34 +11,83 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 3fdb050d1d6746313b2dffb089d56b71908335d2
-ms.openlocfilehash: 585e493b2642b3ba798977528f7564674a44d738
+ms.sourcegitcommit: 9b26cfed4102bc09512f5ef1270aa0275a7f8f69
+ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
 
 
 ---
-# <a name="manage-features-and-data-volume-in-application-insights"></a>Verwalten von Funktionen und Datenvolumen in Application Insights
+# <a name="manage-pricing-and-data-volume-in-application-insights"></a>Verwalten von Preisen und Datenvolumen in Application Insights
 
 
-Preise für [Azure Application Insights][start] basieren auf dem Datenvolumen pro Anwendung. Eine geringe Nutzung während der Entwicklung oder für eine kleinen App ist voraussichtlich kostenlos, da es für Telemetriedaten ein kostenloses monatliches Kontingent gibt.
+Die Preise für [Azure Application Insights][start] basieren auf dem Datenvolumen pro Anwendung. Eine geringe Nutzung während der Entwicklung oder für eine kleine App ist voraussichtlich kostenlos, da es für Telemetriedaten ein monatliches Kontingent von 1 GB gibt.
 
 Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt.
 
 Es gibt zwei Tarife. Der Standardtarif heißt „Basic“. Sie können sich für den Tarif „Enterprise“ entscheiden, für den eine tägliche Gebühr anfällt. Dieser bietet aber zusätzliche Features wie z.B. den [fortlaufenden Export](app-insights-export-telemetry.md).
 
-[Informieren Sie sich über die Tarife][pricing].
+Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights) posten. 
 
-## <a name="review-pricing-plan-for-your-application-insights-resource"></a>Überprüfen des Tarifs für Ihre Application Insights-Ressource
+## <a name="the-pricing-plans"></a>Die Tarife
+
+Aktuelle Preise in Ihrer Währung finden Sie auf der [Application Insights-Seite mit Preisen] [ pricing].
+
+### <a name="basic-plan"></a>Basic-Tarif
+
+Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights-Ressource erstellt wird. Er ist für die meisten Kunden ausreichend.
+
+* Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen: Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights aus Ihrer Anwendung empfängt.
+* Für jede App ist 1 GB kostenlos. Wenn Sie also nur experimentieren oder entwickeln, ist es unwahrscheinlich, dass Sie dafür zahlen müssen.
+* [Fortlaufender Export](app-insights-export-telemetry.md) ist gegen eine Zusatzgebühr pro GB im Basic-Tarif verfügbar. Bis Anfang März 2017 ist die Funktion allerdings kostenlos.
+
+### <a name="enterprise-plan"></a>Enterprise-Tarif
+
+* Im Enterprise-Tarif kann Ihre App alle Funktionen von Application Insights nutzen. [Fortlaufender Export](app-insights-export-telemetry.md) und [Log Analytics-Connector](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) sind im Enterprise-Tarif ohne zusätzliche Kosten verfügbar.
+* Sie bezahlen pro Knoten, der Telemetriedaten für Apps im Enterprise-Tarif sendet. 
+ * Ein *Knoten* ist entweder ein physischer oder ein virtueller Servercomputer oder eine PaaS-Rolleninstanz (Platform-as-a-Service), der bzw. die Ihre App hostet.
+ * Entwicklungscomputer, Clientbrowser und mobile Geräte werden nicht als Knoten gezählt.
+ * Wenn die App mehrere Komponenten aufweist, die Telemetriedaten senden, z.B. ein Webdienst und ein Back-End-Worker, werden sie separat gezählt.
+* In einem Abonnement fallen die Gebühren pro Knoten und nicht pro App an. Wenn Sie fünf Knoten haben, die Telemetriedaten für 12 Apps senden, wird die Gebühr für fünf Knoten berechnet.
+* Obwohl Gebühren pro Monat angegeben sind, müssen Sie nur für jede Stunde bezahlen, in der ein Knoten Telemetriedaten von einer App sendet. Die Stundengebühr wird als Monatsgebühr angegeben: 744 (die Anzahl der Stunden pro Monat mit 31 Tagen).
+* Eine Datenvolumenzuteilung von 200 MB pro Tag ist für jeden erkannten Knoten vorgesehen (mit stundenbezogener Granularität). Eine nicht genutzte Datenzuteilung wird nicht von einem Tag auf den nächsten übertragen.
+ * Wenn Sie sich für die Preisoption Enterprise entscheiden, wird jedem Abonnement basierend auf der Anzahl von Knoten, die in diesem Abonnement Telemetriedaten an Application Insights-Ressourcen senden, ein tägliches Datenkontingent zugeordnet. Wenn Sie also fünf Knoten haben, die den ganzen Tag Daten senden, wird Ihnen insgesamt 1 GB für alle Application Insights-Ressourcen in diesem Abonnement zugeteilt. Es ist dabei unerheblich, ob bestimmte Knoten mehr Daten senden als andere, da die enthaltene Datenmenge für alle Knoten zusammen berechnet wird. Wenn die Application Insights-Ressourcen an einem bestimmten Tag mehr Daten empfangen, als in der täglichen Datenzuteilung für dieses Abonnement vorgesehen ist, gelten Gebühren pro GB Überschreitungsdaten. 
+ * Das tägliche Datenkontingent wird berechnet aus der Anzahl der Stunden pro Tag (nach UTC), die jeder Knoten Telemetriedaten sendet, dividiert durch 24 mal 200 MB. Wenn Sie also über vier Knoten verfügen, die an 15 Stunden pro Tag Telemetriedaten senden, sind pro Tag ((4 x 15) / 24) x 200 MB = 500 MB an Daten enthalten. Bei einem Preis von 2,30 USD pro GB für Datenüberschreitung wäre die Gebühr 1,15 USD, wenn die Knoten an diesem Tag 1 GB an Daten senden.
+ * Beachten Sie, dass das tägliche Kontingent gemäß Enterprise-Tarif nicht für Anwendungen gilt, für die Sie die Basic-Option ausgewählt haben, und ein nicht genutztes Kontingent wird nicht auf den nächsten Tag übertragen. 
+* Im Folgenden finden Sie einige Beispiele zum Bestimmen der eindeutigen Knotenanzahl:
+| Szenario                               | Gesamtanzahl der Knoten pro Tag |
+|:---------------------------------------|:----------------:|
+| 1 Anwendung verwendet 3 Azure App Service-Instanzen und 1 virtuellen Server | 4 |
+| 3 Anwendungen auf 2 virtuellen Computern, und die Application Insights-Ressourcen für diese Anwendungen befinden sich im selben Abonnement und gehören zum Enterprise-Tarif | 2 | 
+| 4 Anwendungen, deren Application Insights-Ressourcen Teil des gleichen Abonnements sind. Jede Anwendung führt in 16 Stunden außerhalb der Spitzenzeiten 2 Instanzen und in 8 Stunden während der Spitzenzeiten 4 Instanzen aus. | 13,33 | 
+| Clouddienste mit 1 Workerrolle und 1 Webrolle, die je 2 Instanzen ausführen | 4 | 
+| Service Fabric-Cluster mit 5 Knoten und 50 Microservices, wobei jeder Microservice 3 Instanzen ausführt | 5|
+
+* Die genaue Knotenanzahl hängt vom Application Insights SDK ab, das von der Anwendung verwendet wird. 
+  * In den SDK-Versionen 2.2 und höher melden das [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) und das [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) von Application Insights jeden Anwendungshost als Knoten, z.B. den Computernamen für physische Server und VM-Hosts oder den Instanznamen bei Clouddiensten.  Die einzige Ausnahme bilden Anwendungen, die nur [.NET Core](https://dotnet.github.io/) und das Application Insights Core SDK verwenden. In diesem Fall wird nur ein Knoten für alle Hosts gemeldet, da der Hostname nicht verfügbar ist. 
+  * Für frühere Versionen des SDK verhält sich das [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) wie die höheren SDK-Versionen, das [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) meldet jedoch nur einen Knoten, unabhängig von der Anzahl der tatsächlichen Anwendungshosts. 
+  * Beachten Sie, dass Ihre Anwendung das SDK verwendet, um „roleInstance“ auf einen benutzerdefinierten Wert festzulegen. Standardmäßig wird dieser Wert verwendet, um die Anzahl der Knoten zu bestimmen. 
+  * Wenn Sie eine neue SDK-Version mit einer App verwenden, die über Clientcomputer oder mobile Geräte ausgeführt wird, ist es möglich, dass für die Anzahl der Knoten eine sehr hohe Zahl zurückgegeben wird (durch die große Anzahl von Clientcomputern oder mobilen Geräten). 
+
+### <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
+
+Für [Webtests mit mehreren Schritten](app-insights-monitor-web-app-availability.md#multi-step-web-tests) wird eine zusätzliche Gebühr erhoben. Dies sind Webtests, die eine Sequenz von Aktionen ausführen. 
+
+Es gibt keine gesonderte Gebühr für „Pingtests“ einer einzelnen Seite. Telemetriedaten von Pingtests und Tests mit mehreren Schritten werden zusammen mit anderen Telemetriedaten aus Ihrer App in Rechnung gestellt.
+
+## <a name="review-pricing-plan-and-estimate-costs-for-your-application-insights-resource"></a>Überprüfen des Tarifs und Schätzen der Kosten für Ihre Application Insights-Ressource
 Öffnen Sie in der Application Insights-Ressource für Ihre Anwendung das Blatt „Features und Preise“.
 
 ![Wählen Sie „Preise“ aus.](./media/app-insights-pricing/01-pricing.png)
 
-1. Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobennahme](app-insights-sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.
-2. Für [Webtests mit mehreren Schritten](app-insights-monitor-web-app-availability.md#multi-step-web-tests) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)
-3. Aktivieren Sie die zusätzlichen Funktionen, die vom Tarif „Enterprise“ geboten werden. In diesem Tarif gibt es kein kostenloses Datenkontingent.
-4. Navigieren Sie zu den Datenverwaltungsoptionen, um eine tägliche Obergrenze festzulegen, oder legen Sie „Erfassungs-Stichprobenerstellung“ fest.
+**a.** Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobennahme](app-insights-sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.
+
+**b.** Für [Webtests mit mehreren Schritten](app-insights-monitor-web-app-availability.md#multi-step-web-tests) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)
+
+**c.** Aktivieren Sie den Enterprise-Tarif.
+
+**d.** Navigieren Sie zu den Datenverwaltungsoptionen, um das Datenvolumen für den Vormonat anzuzeigen, eine tägliche Obergrenze festzulegen oder erfasste Stichproben festzulegen.
 
 Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt. Sie sehen die Details zu Ihrer Azure-Rechnung im Bereich "Abrechnung" des Azure-Portals oder im [Azure-Abrechnungsportal](https://account.windowsazure.com/Subscriptions). 
 
@@ -47,17 +96,12 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 ## <a name="data-rate"></a>Datenrate
 Es gibt drei Möglichkeiten zum Begrenzen des gesendeten Datenvolumens:
 
-* Tägliche Obergrenze. Standardmäßig ist diese Einstellung auf 100 GB pro Tag festgelegt. Wenn Ihre App die Obergrenze erreicht, senden wir eine E-Mail und verwerfen Daten bis zum Ende des Tages. Ändern Sie diesen Wert auf dem Blatt zur Datenvolumenverwaltung.
-* [Stichprobennahme](app-insights-sampling.md). Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern.
-* Durch eine Drosselung wird die Datenrate pro Minute eingeschränkt. Beim Tarif „Basic“ liegt die Grenze bei 200 Datenpunkten pro Sekunde, gemittelt über 5 Minuten. Beim Tarif „Enterprise“ ist der Grenzwert 500/s, gemittelt über eine Minute. 
+* **Tägliche Obergrenze.** Standardmäßig ist diese Einstellung auf 500 GB pro Tag festgelegt. Wenn Ihre App die Obergrenze erreicht, senden wir eine E-Mail und verwerfen Daten bis zum Ende des Tages. Ändern Sie diesen Wert auf dem Blatt für die Datenvolumenverwaltung.
+* **[Stichproben](app-insights-sampling.md).** Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern.
+* Eine **Drosselung** schränkt die Datenrate auf 16.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute). 
 
-Zur Drosselung werden drei Buckets getrennt gezählt:
 
-* [TrackTrace-Aufrufe](app-insights-api-custom-events-metrics.md#track-trace) und [Erfasste Protokolle](app-insights-asp-net-trace-logs.md)
-* [Ausnahmen](app-insights-api-custom-events-metrics.md#track-exception), begrenzt auf 50 Punkte/s
-* Alle anderen Telemetriedaten (Seitenaufrufe, Sitzungen, Anforderungen, Abhängigkeiten, Metriken, benutzerdefinierte Ereignisse).
-
-*Was geschieht, wenn meine App, das Pro-Sekunde-Volumen überschreitet?*
+*Was geschieht, wenn meine App die Drosselungsrate überschreitet?*
 
 * Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, erneut zu senden, wobei ein rascher Anstieg über mehrere Minuten hinweg verteilt wird. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen auf diese Weise erneut zu senden, andere SDKs löschen gedrosselte Daten möglicherweise einfach.)
 
@@ -71,7 +115,7 @@ Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über 
 ## <a name="to-reduce-your-data-rate"></a>So verringern Sie die Datenrate
 Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
 
-* Senken Sie die tägliche Volumenobergrenze. Die Standardeinstellung ist 100 GB pro Tag.
+* Senken Sie die tägliche Volumenobergrenze. Der Standardwert ist 500 GB/Tag.
 * Verwenden Sie [Stichproben](app-insights-sampling.md). Diese Technologie verringert die Datenrate, ohne die Metriken zu verzerren und ohne die Navigation zwischen verwandten Elementen bei der Suche zu stören. In Server-Apps arbeitet sie automatisch.
 * [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](app-insights-javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
 * Deaktivieren Sie nicht benötigte Erfassungsmodule durch [Bearbeiten von „ApplicationInsights.config“](app-insights-configuration-with-applicationinsights-config.md). Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
@@ -108,6 +152,11 @@ Verwenden Sie etwa folgende [Analytics-Abfrage](app-insights-analytics.md) , um 
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt (Anzahl zuvor verworfener Datensätze + 1). 
 
 
+## <a name="transition-from-the-old-pricing-tiers"></a>Wechsel von den alten Tarifen
+
+Für vorhandene Anwendungen können noch bis Februar 2017 die alten Tarife verwendet werden. Ab diesem Zeitpunkt werden die meisten Anwendungen automatisch auf den Basic-Tarif umgestellt. Anwendungen, die den fortlaufenden Export oder den Connector für OMS Log Analytics verwenden, werden auf den Enterprise-Tarif umgestellt.
+
+
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
@@ -125,6 +174,6 @@ In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Dat
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 2939e7450c9ce80317ada770fd95f0e9950a58af
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: ebdd4df0bd990ee37cb173da8c1f38b60d203158
 
 
 ---
@@ -38,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 > [!NOTE]
 > Das modernere VHDX-Format wird in Azure noch nicht unterstützt. Wenn Sie einen virtuellen Computer erstellen, geben Sie als Format VHD an. VHDX-Datenträger können bei Bedarf mit [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) oder mit dem PowerShell-Cmdlet [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) in VHD konvertiert werden. Azure unterstützt außerdem das Hochladen von dynamischen VHDs nicht, daher müssen Sie solche Datenträger vor dem Hochladen in statische VHDs konvertieren. Mit Tools wie [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) (Azure-VHD-Hilfsprogramme für Go) können Sie dynamische Datenträger im Zuge des Uploads zu Azure konvertieren.
 
-* **Azure-Befehlszeilenschnittstelle** : Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle](../virtual-machines-command-line-tools.md) , um die VHD hochzuladen.
+* **Azure-Befehlszeilenschnittstelle** : Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) , um die VHD hochzuladen.
 
 <a id="prepimage"> </a>
 
@@ -109,7 +109,7 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 Um Ihre eigenen virtuellen Computer zu erstellen, geben Sie Ihren eigenen Benutzernamen + Kennwort, Speicherort, DNS-Namen und Imagenamen an.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)](../virtual-machines-command-line-tools.md).
+Weitere Informationen finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Modus „Azure-Dienstverwaltung“ (Azure Service Management, ASM)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Prepare the connection to Azure]: #connect
@@ -117,6 +117,6 @@ Weitere Informationen finden Sie unter [Befehle der Azure-Befehlszeilenschnittst
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

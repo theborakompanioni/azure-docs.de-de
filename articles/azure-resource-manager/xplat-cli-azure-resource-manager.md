@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/22/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
-ms.openlocfilehash: 39ccb6e9b810d1c02a96b25946893ddd3e316463
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: 7fcf16ac835089a1c4127fd34264f2cf7cb098ac
 
 
 ---
@@ -148,13 +148,13 @@ Mithilfe der Azure-Befehlszeilenschnittstelle können Sie entweder eine Vorlage 
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Abrufen von Details zu Bereitstellungsvorgängen und zum Behandeln von Bereitstellungsfehlern mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle](resource-manager-troubleshoot-deployments-cli.md).
+* Informationen zum Abrufen von Details zu Bereitstellungsvorgängen und zum Behandeln von Bereitstellungsfehlern mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md).
 * Informationen dazu, wie Sie eine Anwendung oder ein Skript mithilfe der Befehlszeilenschnittstelle für den Zugriff auf Ressourcen einrichten, finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

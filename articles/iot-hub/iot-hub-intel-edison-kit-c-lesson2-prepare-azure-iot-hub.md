@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Azure IoT Hub-Instanz und Registrieren von Intel Edison | Microsoft-Dokumentation
+title: "Verbinden von Intel Edison (C) mit Azure IoT – Lektion 2: Registrieren des Geräts | Microsoft-Dokumentation"
 description: Erstellen Sie eine Ressourcengruppe, erstellen Sie eine Azure IoT Hub-Instanz, und registrieren Sie den Edison mithilfe der Azure CLI bei Azure IoT Hub.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: f45b3bf00d619376ac07418f0c02eca5f3241939
-ms.openlocfilehash: eed6c2b652df689732138fc9ce792728d7752f23
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: 9eebae32bf469e0744855ed9f98306bd36eb9671
 
 
 ---
@@ -105,6 +105,6 @@ Sie haben eine IoT Hub-Instanz erstellt und Edison mit einer Geräteidentität b
 [process-and-store-iot-hub-messages]: iot-hub-intel-edison-kit-c-lesson3-deploy-resource-manager-template.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

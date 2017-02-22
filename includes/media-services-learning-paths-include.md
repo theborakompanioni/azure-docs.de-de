@@ -1,10 +1,9 @@
-Sie können sich die AMS-Lernpfade hier ansehen:
+Sie können Azure Media Services Lernpfade hier anzeigen:
 
-* [Media Services - Live Streaming (in englischer Sprache)](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [Media Services - on Demand Streaming (in englischer Sprache)](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+* [Media Services: Livestreaming-Workflow](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+* [Media Services: On-Demand-Streaming-Workflow](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

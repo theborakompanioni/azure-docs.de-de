@@ -1,6 +1,6 @@
 ---
 title: "Konfigurieren des Lastenausgleichs für SQL-AlwaysOn | Microsoft Docs"
-description: "Konfigurieren von Lastenausgleich für SQL-AlwaysOn und Verwenden von Powershell zum Erstellen des Lastenausgleichs für die SQL-Implementierung"
+description: "Konfigurieren des Load Balancers für SQL-Always On und Verwenden von PowerShell zum Erstellen des Load Balancers für die SQL-Implementierung"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,8 +14,8 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: 75f05f003b691ee6464168453fa7935f1fae166e
+ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
+ms.openlocfilehash: 68aad6253f185d53fdd7f11c8660c7287ef12655
 
 ---
 
@@ -55,7 +55,7 @@ Abbildung 1: SQL AlwaysOn konfiguriert mit Lastenausgleich für Internetzugriff
 
     Im Beispiel oben werden 2 virtuelle Computer namens "sqlsvc1" und "sqlsvc2" im Clouddienst "Sqlsvc" ausgeführt. Nach dem Erstellen von ILB mit dem Switch `DirectServerReturn` fügen Sie Endpunkte mit Lastenausgleich zu ILB hinzu, um SQL das Konfigurieren der Listener für Verfügbarkeitsgruppen zu ermöglichen.
 
-Weitere Informationen zu SQL AlwaysOn finden Sie unter [Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure](../virtual-machines/virtual-machines-windows-portal-sql-alwayson-int-listener.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+Weitere Informationen zu SQL AlwaysOn finden Sie unter [Konfigurieren eines internen Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 [Erste Schritte zum Konfigurieren des Lastenausgleichs für Internetverbindungen](load-balancer-get-started-internet-arm-ps.md)
@@ -68,6 +68,6 @@ Weitere Informationen zu SQL AlwaysOn finden Sie unter [Konfigurieren eines inte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 10/18/2016
 ms.author: mcoskun
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a063d7ec6759bb9890d9b541088a8190dfd79aef
+ms.sourcegitcommit: 615e7ea84aae45f384edb671a28e4ff98b4ade3a
+ms.openlocfilehash: 9cb940a07bf9a5d624669816161450b33e862626
 
 
 ---
@@ -177,15 +177,62 @@ Beachten Sie Folgendes:
 * Bei einer Wiederherstellung besteht die Möglichkeit, dass die wiederherzustellende Sicherung älter als der Status der Partition vor dem Verlust der Daten ist. Deshalb sollte die Wiederherstellung nur als letzter Ausweg verwendet werden, um so viele Daten wie möglich wiederherzustellen.
 * Die Zeichenfolge, die den Sicherungsorderpfad und die Dateipfade im Sicherungsordner repräsentiert, kann je nach FabricDataRoot-Pfad und Namenslänge des Anwendungstyps länger als 255 Zeichen sein. Einige .NET-Methoden (etwa **Directory.Move**), lösen daraufhin unter Umständen die Ausnahme **PathTooLongException** aus. Als Problemumgehung können beispielsweise kernel32-APIs wie **CopyFile** direkt aufgerufen werden.
 
-## <a name="backup-and-restore-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Actors
-Das Sichern und Wiederherstellen von Reliable Actors baut auf den Sicherungs- und Wiederherstellungsfunktionen von Reliable Services auf. Der Dienstbesitzer muss einen benutzerdefinierten Actordienst erstellen, der von **ActorService** abgeleitet ist (also einen Reliable Service von Service Fabric, der Actors hostet), und dann Sicherungen bzw. Wiederherstellungen wie bei Reliable Services durchführen (gemäß Beschreibung in den vorherigen Abschnitten). Da Sicherungen jeweils pro Partition erstellt werden, werden Status für alle Actors einer bestimmten Partition gesichert (die Wiederherstellung erfolgt ähnlich und jeweils pro Partition).
 
-* Wenn Sie einen benutzerdefinierten Actordienst erstellen, müssen Sie beim Registrieren des Actors auch den benutzerdefinierten Actordienst registrieren. Siehe die Beschreibung zu **ActorRuntime.RegistorActorAsync**.
-* **KvsActorStateProvider** unterstützt derzeit nur vollständige Sicherungen. Außerdem ignoriert **KvsActorStateProvider** die Option **RestorePolicy.Safe**.
+
+
+## <a name="backup-and-restore-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Actors
+
+
+Das Reliable Actors-Framework basiert auf Reliable Services. Der ActorService, der die Actors hostet, ist ein zustandsbehafteter zuverlässiger Dienst. Daher stehen sämtliche Sicherungs- und Wiederherstellungsfunktionen, die in Reliable Services verfügbar sind, auch für Reliable Actors zur Verfügung (mit Ausnahme von Verhaltensweisen, die für den Zustandsanbieter spezifisch sind). Da Sicherungen jeweils pro Partition erstellt werden, werden Zustände für alle Actors in einer bestimmten Partition gesichert. (Die Wiederherstellung erfolgt ähnlich und jeweils pro Partition.) Um eine Sicherung/Wiederherstellung durchzuführen, muss der Dienstbesitzer eine benutzerdefinierte Actordienstklasse erstellen, die von der ActorService-Klasse abgeleitet ist, und dann Sicherungen bzw. Wiederherstellungen wie bei Reliable Services durchführen, wie in den vorherigen Abschnitten beschrieben.
+
+```
+class MyCustomActorService : ActorService
+{
+     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+            : base(context, actorTypeInfo)
+     {                  
+     }
+    
+    //
+   // Method overrides and other code.
+    //
+}
+```
+
+Wenn Sie eine benutzerdefinierte Actordienstklasse erstellen, müssen Sie beim Registrieren des Actors auch diese Klasse registrieren.
+
+```
+ActorRuntime.RegisterActorAsync<MyActor>(
+   (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
+```
+
+Der Standardzustandsanbieter für Reliable Actors ist **KvsActorStateProvider**. Die inkrementelle Sicherung ist für **KvsActorStateProvider** nicht standardmäßig aktiviert. Sie können die inkrementelle Sicherung aktivieren, indem Sie **KvsActorStateProvider** mit der entsprechenden Einstellung im zugehörigen Konstruktor erstellen und dann wie im folgenden Codeausschnitt gezeigt an den ActorService-Konstruktor weiterleiten:
+
+```
+class MyCustomActorService : ActorService
+{
+     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+            : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
+     {                  
+     }
+    
+    //
+   // Method overrides and other code.
+    //
+}
+```
+
+Nachdem die inkrementelle Sicherung aktiviert wurde, kann beim Erstellen einer inkrementellen Sicherung aus einem der folgenden Gründe ein Fehler „FabricMissingFullBackupException“ auftreten. Sie müssen dann eine vollständige Sicherung ausführen, bevor Sie inkrementelle Sicherungen erstellen:
+
+* Für das Replikat wurde nie eine vollständige Sicherung durchgeführt, seit es als primäres Replikat festgelegt wurde.
+* Einige Protokolldatensätze wurden seit der Erstellung der letzten Sicherung abgeschnitten.
+
+Wenn die inkrementelle Sicherung aktiviert ist, verwendet **KvsActorStateProvider** keinen zirkulären Puffer zum Verwalten der Protokolleinträge und schneidet das Protokoll in regelmäßigen Abständen ab. Wenn für einen Zeitraum von 45 Minuten keine Sicherung von einem Benutzer erstellt wird, schneidet das System die Protokolldatensätze automatisch ab. Dieses Intervall kann konfiguriert werden, indem Sie **LogTrunctationIntervalInMinutes** im **KvsActorStateProvider**-Konstruktor angeben (ähnlich wie beim Aktivieren der inkrementellen Sicherung). Die Protokolldatensätze werden möglicherweise auch abgeschnitten, wenn das primäre Replikat durch Senden sämtlicher Daten ein weiteres Replikat erstellen muss.
+
+Bei der Wiederherstellung aus einer Sicherungskette wie bei Reliable Services muss der BackupFolderPath Unterverzeichnisse enthalten, wobei ein Unterverzeichnis die vollständige Sicherung enthält und weitere Unterverzeichnissen die inkrementellen Sicherungen enthalten. Die Wiederherstellungs-API löst eine FabricException mit der entsprechenden Fehlermeldung aus, wenn die Überprüfung der Sicherungskette einen Fehler hervorruft. 
 
 > [!NOTE]
-> Der standardmäßige ActorStateProvider (**KvsActorStateProvider**) bereinigt die Sicherungsordner **nicht** eigenständig (im Arbeitsordner der Anwendung, abgerufen über „ICodePackageActivationContext.WorkDirectory“). Dadurch wird der Arbeitsordner möglicherweise übermäßig voll. Sie sollten den Sicherungsordner im Sicherungsrückruf ausdrücklich bereinigen, nachdem Sie die Sicherung in einen externen Speicher verschoben haben.
-> 
+> Zurzeit ignoriert **KvsActorStateProvider** die Option „RestorePolicy.Safe“. Unterstützung für dieses Feature ist in einer künftigen Version geplant.
 > 
 
 ## <a name="testing-backup-and-restore"></a>Testen von Sicherung und Wiederherstellung
@@ -230,6 +277,6 @@ Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

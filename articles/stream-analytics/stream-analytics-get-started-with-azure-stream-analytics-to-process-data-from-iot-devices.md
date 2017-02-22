@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten | Microsoft Docs"
+title: "IoT-Datenströme in Echtzeit und Azure Stream Analytics | Microsoft-Dokumentation"
 description: "IoT-Sensortags und -Datenströme mit Stream Analytics und Echtzeit-Datenverarbeitung"
 keywords: "IoT-Lösung, erste Schritte mit IoT"
 services: stream-analytics
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/19/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b4a725d55594885a5d9d4a62b4bf5fe6fd402849
+ms.sourcegitcommit: 9afd26024d2aa0d3d732ddc6f54e591715afca69
+ms.openlocfilehash: 9624405d8bc454e886e8011c1cb4920fdf7e0640
 
 
 ---
@@ -122,6 +122,6 @@ In diesem Tutorial erfahren Sie, wie Sie verschiedene Abfragen in der Stream Ana
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

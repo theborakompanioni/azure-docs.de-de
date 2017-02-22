@@ -8,6 +8,7 @@
 ## [Proxy und Firewall](log-analytics-proxy-firewall.md)
 ## [Nutzungsdaten](log-analytics-usage.md)
 ## [Häufig gestellte Fragen zu Log Analytics](log-analytics-faq.md)
+## [Service Providers](log-analytics-service-providers.md)
 
 # Anleitung
 ## Sammeln von Daten
@@ -15,7 +16,7 @@
 #### [Windows-Agents](log-analytics-windows-agents.md)
 #### [Linux-Agents](log-analytics-linux-agents.md)
 #### [Azure Virtual Machines](log-analytics-azure-vm-extension.md)
-#### [Azure Storage (in englischer Sprache)](log-analytics-azure-storage.md)
+#### [Azure-Ressourcen](log-analytics-azure-storage.md)
 #### [Operations Manager](log-analytics-om-agents.md)
 #### [Konfigurations-Manager](log-analytics-sccm.md)
 #### [OMS-Gateway](log-analytics-oms-gateway.md)
@@ -45,6 +46,9 @@
 #### [Änderungsnachverfolgung](log-analytics-change-tracking.md)
 #### [Container](log-analytics-containers.md)
 #### [Key Vault](log-analytics-azure-key-vault.md)
+#### Logic Apps-B2B-Nachrichten
+##### [Lösung für Logic Apps-B2B-Nachrichten](../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json)
+##### [Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 #### [Bewertung von Schadsoftware](log-analytics-malware.md)
 #### [Netzwerkanalysen](log-analytics-azure-networking-analytics.md)
 #### [Netzwerkleistungsmonitor](log-analytics-network-performance-monitor.md)
@@ -59,11 +63,13 @@
 ## Entwickeln
 ### [Data collector API (Datensammler-API)](log-analytics-data-collector-api.md)
 ### [PowerShell-Cmdlets](log-analytics-powershell-workspace-configuration.md)
+### [Resource Manager-Vorlagen](log-analytics-template-workspace-configuration.md)
 ### [Protokollsuch-API](log-analytics-log-search-api.md)
 ### [Warnungs-API](log-analytics-api-alerts.md)
 
 # Referenz
 ## [PowerShell](/powershell/resourcemanager/azurerm.operationalinsights/v2.3.0/azurerm.operationalinsights)
+## [REST](/rest/api/loganalytics)
 
 # Ressourcen
 ## [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics)
@@ -71,6 +77,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=log-analytics)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

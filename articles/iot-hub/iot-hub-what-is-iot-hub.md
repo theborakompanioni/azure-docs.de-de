@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: f01a5e7ec081b1c989fc8784c845d6e639b1d73b
-ms.openlocfilehash: 92c5e8c50b281fe1dc7e296dcdf8a6822b187ce3
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 249f2dcd852c771d0c48aa223a4596992e5ce3d7
 
 
 ---
@@ -59,7 +59,7 @@ Zusätzlich zu einer Bandbreite von [D2C][lnk-d2c-guidance]- und [C2D][lnk-c2d-g
 
 * **Gerätezwillinge**. Mithilfe von [Gerätezwillingen][lnk-twins] können Sie die Metadaten und Statusinformationen von Geräten speichern, synchronisieren und abfragen. Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metadaten, Konfigurationen und Bedingungen) gespeichert werden. IoT Hub speichert einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. 
 * **Authentifizierung pro Gerät und sichere Verbindung:** Sie können für jedes Gerät einen eigenen [Sicherheitsschlüssel][lnk-devguide-security] bereitstellen, damit es eine Verbindung mit IoT Hub herstellen kann. Die [IoT Hub-Identitätsregistrierung][lnk-devguide-identityregistry] speichert Geräteidentitäten und -schlüssel in einer Lösung. Das Back-End einer Lösung kann einzelne Geräte einer Positiv- oder Negativliste hinzufügen und so die vollständige Kontrolle über den Gerätezugriff ermöglichen.
-* **Weiterleitung von D2C-Nachrichten an Azure-Dienste auf der Grundlage deklarativer Regeln**. Mit IoT Hub können Sie Nachrichtenrouten auf der Grundlage von Nachrichtenregeln definieren und so steuern, wohin D2C-Nachrichten gesendet werden. Nachrichtenregeln können ganz ohne Programmieraufwand erstellt werden und benutzerdefinierte Nachrichtenverteiler nach der Erfassung ersetzen.
+* **Weiterleitung von D2C-Nachrichten an Azure-Dienste auf der Grundlage deklarativer Regeln**. Mit IoT Hub können Sie Nachrichtenrouten auf der Grundlage von Routingregeln definieren und so steuern, wohin D2C-Nachrichten gesendet werden. Routingregeln können ganz ohne Programmieraufwand erstellt und anstelle von benutzerdefinierten Nachrichtenverteilern nach der Erfassung verwendet werden.
 * **Überwachung von Gerätekonnektivitätsvorgängen:** Sie können detaillierte Betriebsprotokolle zu Ereignissen im Zusammenhang mit Verwaltungsvorgängen für Geräteidentität und -konnektivität empfangen. Dadurch kann Ihre IoT-Lösung Verbindungsprobleme erkennen – etwa in Form von Geräten, die versuchen, sich mit den falschen Anmeldeinformationen anzumelden, Nachrichten zu häufig senden oder alle C2D-Nachrichten zurückweisen.
 * **Umfassender Satz von Gerätebibliotheken:** [Azure IoT-Geräte-SDKs][lnk-device-sdks] sind für die unterschiedlichsten Sprachen und Plattformen verfügbar und werden entsprechend unterstützt (C für viele Linux-Distributionen, Windows und Echtzeitbetriebssysteme). Azure IoT-Geräte-SDKs unterstützen auch verwaltete Sprachen wie C#, Java und JavaScript.
 * **IoT-Protokolle und -Erweiterbarkeit:** Falls Ihre Lösung die Gerätebibliotheken nicht nutzen kann, macht IoT Hub ein öffentliches Protokoll verfügbar, mit dem Geräte die Protokolle MQTT 3.1.1, HTTP 1.1 und AMQP 1.0 nativ verwenden können. Folgendermaßen können Sie IoT Hub erweitern, um benutzerdefinierte Protokolle zu unterstützen:
@@ -91,7 +91,7 @@ Das dienstgestützte Kommunikationsmuster wurde in der Mobilgerätebranche in gr
 IoT Hub wird über den öffentlichen Peeringpfad von ExpressRoute unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Unter [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-send-messages] erfahren Sie, wie Sie Nachrichten von einem Gerät senden und Nachrichten von IoT Hub empfangen. Außerdem erfahren Sie dort, wie Sie Nachrichtenrouten für Ihren IoT-Hub konfigurieren.
+Unter [Senden und Empfangen von Nachrichten mit IoT Hub][lnk-send-messages] erfahren Sie, wie Sie Nachrichten von einem Gerät senden und Nachrichten von IoT Hub empfangen. Außerdem erfahren Sie dort, wie Sie Nachrichtenrouten konfigurieren.
 
 Informationen dazu, wie IoT Hub die standardbasierte Geräteverwaltung ermöglicht, sodass Sie Ihre Geräte remote verwalten, konfigurieren und aktualisieren können, finden Sie unter [Übersicht über die Geräteverwaltung mit IoT Hub][lnk-device-management].
 
@@ -127,6 +127,6 @@ Hilfe zu den ersten Schritten beim Schreiben von Code und dem Ausführen von Bei
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

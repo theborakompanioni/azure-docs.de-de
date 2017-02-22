@@ -1,9 +1,6 @@
+Azure-Cloudlösungen basieren auf virtuellen Computern (Emulation von physischer Computerhardware) und ermöglichen agiles Verpacken von Softwarebereitstellungen sowie eine deutlich bessere Ressourcenkonsolidierung als physische Hardware. Dank [Docker](https://www.docker.com)-Containern und des Docker-Ökosystems können Sie verteilte Software auf äußerst vielfältige Weise entwickeln, ausliefern und verwalten. Anwendungscode in einem Container wird vom virtuellen Hostcomputer sowie von anderen Containern auf dem gleichen virtuellen Computer isoliert. Diese Isolierung ermöglicht eine agilere Entwicklung und Bereitstellung.
 
-
-
-Azure bietet Ihnen hervorragende Cloudlösungen auf Basis virtueller Computer – beruhend auf der Emulation physischer Computerhardware – und ermöglicht Ihnen so hohe Flexibilität bei der Softwarebereitstellung und eine deutlich bessere Ressourcenkonsolidierung als mit physischer Hardware. Insbesondere dank des [Docker](https://www.docker.com)-Ansatzes für Container und des Docker-Ökosystems hat die Linux-Containertechnologie in den letzten Jahren immer mehr Möglichkeiten erschlossen, wie Sie verteilte Software entwickeln und verwalten können. Der Anwendungscode in einem Container wird vom virtuellen Azure-Hostcomputer sowie von anderen Containern auf demselben virtuellen Computer isoliert. Auf diese Weise erhalten Sie mehr Flexibilität für die Entwicklung und Bereitstellung auf Anwendungsebene – zusätzlich zu der Flexibilität, die Ihnen die virtuellen Azure-Computer bereits bieten.
-
-**Aber das ist nichts Neues.** Die tatsächliche *Neuigkeit* ist, dass Azure Ihnen noch mehr Docker-Vorteile bietet:
+Azure bietet folgende Docker-Vorteile:
 
 * [Viele](../articles/virtual-machines/virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) [verschiedene](../articles/virtual-machines/virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Möglichkeiten zum Erstellen von Docker-Hosts für Container, die zu Ihren individuellen Anforderungen passen
 * Der [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) erstellt Cluster mit Containerhosts, indem Orchestrators wie **Marathon** und **Swarm** verwendet werden.
@@ -15,29 +12,26 @@ Da Sie virtuelle Computer und Linux-Container in Azure programmgesteuert erstell
 In diesem Artikel werden diese Konzepte nicht nur erörtert, sondern Sie finden auch zahlreiche Links zu weiteren Informationen, Lernprogrammen und Produkten in Bezug auf die Container- und Clusternutzung in Azure. Wenn für Sie lediglich die Links von Interesse sind, finden Sie diese in den [Tools für die Arbeit mit Containern](#tools-for-working-with-azure-vms-and-containers).
 
 ## <a name="the-difference-between-virtual-machines-and-containers"></a>Der Unterschied zwischen virtuellen Computern und Containern
-Virtuelle Computer werden in einer Virtualisierungsumgebung mit isolierter Hardware ausgeführt, die von einem [Hypervisor](http://en.wikipedia.org/wiki/Hypervisor) bereitgestellt wird. In Azure übernimmt der Dienst [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) diese Aufgaben für Sie. Sie erstellen virtuelle Computer lediglich, indem Sie das Betriebssystem auswählen und die Konfiguration nach Ihren Wünschen vornehmen – oder indem Sie ein eigenes benutzerdefiniertes VM-Image hochladen. Virtuelle Computer sind eine bewährte, vielfach erprobte Technologie und es stehen viele Tools zur Verfügung, um Betriebssysteme zu verwalten und die Anwendungen zu konfigurieren, die Sie installieren und ausführen. Alle auf einem virtuellen Computer ausgeführten Prozesse sind vor dem Hostbetriebssystem verborgen und aus der Perspektive einer Anwendung oder eines Benutzers des virtuellen Computers scheint es sich bei diesem um einen autonomen physischen Computer zu handeln.
+Virtuelle Computer werden in einer Virtualisierungsumgebung mit isolierter Hardware ausgeführt, die von einem [Hypervisor](http://en.wikipedia.org/wiki/Hypervisor) bereitgestellt wird. In Azure wird das alles vom Dienst [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) übernommen: Sie erstellen einen virtuellen Computer, indem Sie das Betriebssystem auswählen und den Computer konfigurieren – oder ein benutzerdefiniertes VM-Image hochladen. Virtuelle Computer sind eine bewährte, vielfach erprobte Technologie, und es stehen viele Tools für die Verwaltung des enthaltenen Betriebssystems und der enthaltenen Apps zur Verfügung.  Apps auf einem virtuellen Computer sind für das Hostbetriebssystem nicht sichtbar. Für eine Anwendung auf einem virtuellen Computer oder den Benutzer eines virtuellen Computers wirkt der virtuelle Computer wie ein autonomer physischer Computer.
 
-[Linux-Container](http://en.wikipedia.org/wiki/LXC) – darunter auch die mithilfe von Docker-Tools erstellten und gehosteten Container (und es gibt noch weitere Ansätze) – erfordern und verwenden keinen Hypervisor, um Isolation bereitzustellen. Stattdessen verwendet der Containerhost die Isolationsfunktionen für Prozesse und Dateisysteme des Linux-Kernels, um für den Container (und dessen Anwendung) nur bestimmte Kernel-Funktionen und das eigene isolierte Dateisystem offenzulegen (mindestens). Aus der Perspektive einer Anwendung, die in einem Container ausgeführt wird, scheint es sich bei dem Container um eine eindeutige Betriebssysteminstanz zu handeln. Für eine enthaltene Anwendung sind Prozesse und andere Ressourcen außerhalb ihres Containers nicht sichtbar.
+[Linux-Container](http://en.wikipedia.org/wiki/LXC) und Container, die mithilfe von Docker-Tools erstellt und gehostet werden, verwenden keinen Hypervisor zur Isolation. Bei Containern verwendet der Containerhost die Isolationsfeatures für Prozesse und Dateisysteme des Linux-Kernels, um für den Container (und dessen Apps) bestimmte Kernel-Features und das eigene isolierte Dateisystem verfügbar zu machen. Aus der Perspektive einer App, die in einem Container ausgeführt wird, wirkt der Container wie eine eigenständige Betriebssysteminstanz. Für eine enthaltene App sind Prozesse und andere Ressourcen außerhalb ihres Containers nicht sichtbar.
 
-Da der Kernel des Docker-Hosts in diesem Isolations- und Ausführungsmodell gemeinsam genutzt wird und die Speicherplatzanforderungen des Containers kein vollständiges Betriebssystem umfassen, ist die Startzeit des Containers deutlich kürzer und der erforderliche Speicheraufwand ist wesentlich kleiner.
-
-Das ist wirklich praktisch.
-
-Windows-Container bieten für Anwendungen unter Windows die gleichen Vorteile wie Linux-Container. Windows-Container unterstützen das Docker-Imageformat und die Docker-API, können jedoch auch mithilfe von PowerShell verwaltet werden. Für Windows-Container sind zwei Containerlaufzeiten verfügbar, Windows Server-Container und Hyper-V-Container. Hyper-V-Container bieten eine zusätzliche Ebene der Isolation, indem jeder Container in einem höchst optimierten virtuellen Computer gehostet wird. Weitere Informationen über Windows-Container finden Sie unter [About Windows Containers](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)(in englischer Sprache). Informieren Sie sich als Einstieg in Windows-Container unter Azure über die [Bereitstellung eines Azure Container Service-Clusters](/articles/container-service/container-service-deployment.md).
-
-Das ist auch äußerst praktisch.
-
-### <a name="is-this-too-good-to-be-true"></a>Ist das alles wirklich möglich?
-Nun: ja und nein. Wie bei jeder anderen Technologie auch wird durch Container die harte Arbeit, die für verteilte Anwendungen nötig ist, nicht einfach von Zauberhand verschwinden. Dennoch ändert sich mit Containern Folgendes:
-
-* Wie schnell Anwendungscode entwickelt und umfassend freigegeben werden kann
-* Wie schnell und wie zuverlässig der Code getestet werden kann
-* Wie schnell und wie zuverlässig der Code bereitgestellt werden kann
-
-Denken Sie daran, dass Container auf einem Containerhost ausgeführt werden, also unter einem Betriebssystem. In Azure bedeutet dies: ein virtueller Azure-Computer. Auch wenn das Konzept von Containern Sie schon überzeugt hat, benötigen Sie weiterhin eine VM-Infrastruktur, die die Container hostet. Der Vorteil ist jedoch, dass es nicht wichtig ist, auf welchem virtuellen Computer die Container ausgeführt werden (ob ein Container allerdings in einer Linux- oder in einer Windows-Ausführungsumgebung ausgeführt wird, ist zum Beispiel wichtig).
+In einem Docker-Container werden wesentlich weniger Ressourcen verwendet als auf einem virtuellen Computer. Docker-Container verwenden ein Anwendungsisolations- und -ausführungsmodell ohne gemeinsame Nutzung des Kernels des Docker-Hosts. Der Datenträgerbedarf des Containers ist erheblich geringer, da er nicht das gesamte Betriebssystem enthält. Die Startzeit ist deutlich kürzer, und der erforderliche Speicherplatz ist deutlich geringer als bei einem virtuellen Computer.
+Windows-Container bieten für Apps unter Windows die gleichen Vorteile wie Linux-Container. Windows-Container unterstützen das Docker-Imageformat und die Docker-API, können jedoch auch mithilfe von PowerShell verwaltet werden. Für Windows-Container sind zwei Containerlaufzeiten verfügbar, Windows Server-Container und Hyper-V-Container. Hyper-V-Container bieten eine zusätzliche Isolationsebene, da jeder Container auf einem hoch optimierten virtuellen Computer gehostet wird. Weitere Informationen über Windows-Container finden Sie unter [About Windows Containers](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)(in englischer Sprache). Informieren Sie sich als Einstieg in Windows-Container unter Azure über die [Bereitstellung eines Azure Container Service-Clusters](/articles/container-service/container-service-deployment.md).
 
 ## <a name="what-are-containers-good-for"></a>Welche Vorteile bieten Container?
-Sie eignen sich für vieles, aber besonders – ebenso wie [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [Azure Service Fabric](../articles/service-fabric/service-fabric-overview.md) – für die Erstellung von Microservice-orientierten verteilten Einzeldienstanwendungen, bei denen der Anwendungsentwurf eher auf kleinen, zusammensetzbaren Teilen beruht, anstatt auf größeren, stärker verknüpften Komponenten.
+
+Container können Folgendes verbessern:
+
+* Die Geschwindigkeit, mit der Anwendungscode entwickelt und umfassend freigegeben werden kann
+* Die Geschwindigkeit und Zuverlässigkeit, mit der eine App getestet werden kann
+* Die Geschwindigkeit und Zuverlässigkeit, mit der eine App bereitgestellt werden kann
+
+Container werden auf einem Containerhost (also unter einem Betriebssystem) ausgeführt. In Azure bedeutet das: auf einem virtuellen Azure-Computer. Auch wenn das Konzept von Containern Sie schon überzeugt hat, benötigen Sie weiterhin eine VM-Infrastruktur, die die Container hostet. Der Vorteil ist jedoch, dass es nicht wichtig ist, auf welchem virtuellen Computer die Container ausgeführt werden (ob ein Container allerdings in einer Linux- oder in einer Windows-Ausführungsumgebung ausgeführt wird, ist zum Beispiel wichtig).
+
+
+## <a name="what-are-containers-good-for"></a>Welche Vorteile bieten Container?
+Sie eignen sich für vieles, fördern aber genau wie [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [Azure Service Fabric](../articles/service-fabric/service-fabric-overview.md) insbesondere die Erstellung von Microservice-orientierten verteilten Einzeldienstanwendungen, bei denen der Anwendungsentwurf mehr auf kleinen, kombinierbaren Einzelteilen und weniger auf größeren, stärker verknüpften Komponenten beruht.
 
 Dies gilt insbesondere in öffentlichen Cloudumgebungen wie Azure, bei denen Sie virtuelle Computer nach Bedarf mieten. Nicht nur erhalten Sie Tools für Isolation, schnelle Bereitstellung und Orchestrierung, sondern Sie können auch effizientere Entscheidungen zur Anwendungsinfrastruktur treffen.
 
@@ -64,7 +58,7 @@ IT- und Betriebsexperten profitieren ebenfalls von der Kombination aus Container
 * Enthaltener Code ist überprüfbar identisch.
 * Enthaltene Dienste können schnell gestartet und beendet sowie zwischen Entwicklungs-, Test- und Produktionsumgebungen verschoben werden.
 
-Funktionen wie diese – und es gibt noch mehr – sind außerordentlich interessant für etablierte Unternehmen, deren IT-Abteilungen die Aufgabe zukommt, die Ressourcen – darunter auch die reine Verarbeitungsleistung – an die geforderten Aufgaben anzupassen. Nicht nur, um im Geschäft zu bleiben, sondern auch, um die Kundenzufriedenheit zu erhöhen und mehr Kunden zu erreichen. Die Anforderungen von kleinen Unternehmen, ISVs und Startups sind identisch, werden aber möglicherweise anders formuliert.
+Funktionen wie diese und andere sind außerordentlich interessant für etablierte Unternehmen, deren IT-Abteilungen die Aufgabe zukommt, die Ressourcen – darunter auch die reine Verarbeitungsleistung – an den Bedarf anzupassen, um im Geschäft zu bleiben und gleichzeitig die Kundenzufriedenheit zu erhöhen und mehr Kunden zu erreichen. Die Anforderungen von kleinen Unternehmen, ISVs und Startups sind identisch, werden aber möglicherweise anders formuliert.
 
 ## <a name="what-are-virtual-machines-good-for"></a>Welche Vorteile bieten virtuelle Computer?
 Virtuelle Computer sind die tragende Säule des Cloud Computing und das ist unumstößlich. Virtuelle Computer starten langsamer, haben einen größeren Datenträgerbedarf und sind nicht direkt einer Microservices-Architektur zugeordnet, haben aber dennoch sehr große Vorteile:
@@ -77,7 +71,7 @@ Virtuelle Computer sind die tragende Säule des Cloud Computing und das ist unum
 Der letzte Punkt ist wichtig, da eine enthaltene Anwendung weiterhin ein bestimmtes Betriebssystem und einen bestimmten CPU-Typ erfordert, abhängig von den Aufrufen, die die Anwendung vornimmt. Es ist wichtig zu beachten, dass Container auf virtuellen Computern installiert werden, da sie die Anwendungen enthalten, die Sie bereitstellen möchten. Container sind kein Ersatz für virtuelle Computer oder Betriebssystemen.
 
 ## <a name="high-level-feature-comparison-of-vms-and-containers"></a>Allgemeiner Funktionsvergleich zwischen virtuellen Computern und Containern
-Die folgende Tabelle beschreibt auf allgemeiner Ebene die Arten der Funktionsunterschiede, die – ohne großen Mehraufwand – zwischen virtuellen Computern und Linux-Containern bestehen. Beachten Sie, dass manche Features nicht so geeignet sind wie andere, abhängig von Ihren eigenen Anwendungsanforderungen, und dass zusätzliche Arbeit wie bei jeder Software mehr Funktionsunterstützung mit sich bringt, insbesondere im Bereich der Sicherheit.
+Die folgende Tabelle beschreibt ganz allgemein die Featureunterschiede, die – ohne großen Mehraufwand – zwischen virtuellen Computern und Linux-Containern bestehen. Beachten Sie, dass manche Features nicht so geeignet sind wie andere, abhängig von Ihren eigenen Anwendungsanforderungen, und dass zusätzliche Arbeit wie bei jeder Software mehr Funktionsunterstützung mit sich bringt, insbesondere im Bereich der Sicherheit.
 
 | Funktion | VMs | Container |
 |:--- | --- | --- |
@@ -97,7 +91,7 @@ Diese Fähigkeiten werden dann oft zu Tools wie [Puppet](https://puppetlabs.com/
 ### <a name="azure-resource-group-templates"></a>Azure-Ressourcengruppenvorlagen
 Vor Kurzem wurde die REST-API der [Azure-Ressourcenverwaltung](../articles/resource-manager-deployment-model.md) veröffentlicht, und die PowerShell- und Azure-Befehlszeilenschnittstellen-Tools wurden aktualisiert, um die Verwendung zu erleichtern. Sie können komplette Anwendungstopologien bereitstellen, ändern oder erneut bereitstellen, indem Sie die [Azure Resource Manager-Vorlagen](../articles/resource-group-authoring-templates.md) mit der Azure-Ressourcenverwaltungs-API verwenden. Nutzen Sie hierbei Folgendes:
 
-* Das [Azure-Portal mit Vorlagen](https://github.com/Azure/azure-quickstart-templates) (Hinweis: Verwenden Sie die Schaltfläche „DeployToAzure“.)
+* Das [Azure-Portal mit Vorlagen](https://github.com/Azure/azure-quickstart-templates) (Tipp: Verwenden Sie die Schaltfläche „DeployToAzure“.)
 * Die [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * Die [Azure PowerShell-Module](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -196,11 +190,11 @@ Konfiguration, Clusterverwaltung und Containerorchestrierung:
 Informieren Sie sich über [Docker](https://www.docker.com) und [Windows-Container](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview).
 
 <!--Anchors-->
-[Microservices]: http://martinfowler.com/articles/microservices.html
-[Microservice]: http://martinfowler.com/articles/microservices.html
+[microservices]: http://martinfowler.com/articles/microservices.html
+[microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

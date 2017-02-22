@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: dd898a35c64e350fafbf20b4de42a23eecf3f29b
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 46a86bf99c1afd09ae3921a205d27532246171c9
 
 
 ---
@@ -47,7 +47,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 **Weitere Informationen:**
 
 * [SDK-Dokumentation – Handbücher zur Integration][Link 5] 
-* [Handbuch zur Problembehandlung - Push][Link 23]
+* [Handbuch zur Problembehandlung – Push][Link 23]
 
 #### <a name="sdk-upgrade"></a>SDK-Upgrade
 * Es muss ein SDK-Upgrade durchgeführt werden, um Probleme mit älteren SDK-Versionen zu lösen (stehen häufig in Zusammenhang mit neueren Versionen des Gerätebetriebssystems).
@@ -79,7 +79,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 * Azure Mobile Engagement veröffentlicht als Referenz eine vollständige Liste der internen Pakete, die von Azure Mobile Engagement für iOS und Android verwendet werden. Beachten Sie, dass einige Funktionen von Azure Mobile Engagement plattformspezifisch sind (Android, iOS, Web, Windows und Windows Phone).
 
 ### <a name="see-also"></a>Weitere Informationen
-* [Handbuch zur Problembehandlung - Push][Link 23] 
+* [Handbuch zur Problembehandlung – Push][Link 23] 
 * [SDK-Dokumentation – Versionshinweise][Link 5]
 * [SDK-Dokumentation – Handbücher zu Upgrades][Link 5]
 
@@ -92,7 +92,7 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 * Sie können die Geräte-ID Ihres Testgeräts ermitteln und dieselbe Aktion ausführen, die bei einem Endbenutzer zum Absturz Ihrer Anwendung führt, um die Ursache des Absturzes zu identifizieren.
 * Bekannte Probleme mit dem Azure Mobile Engagement-SDK, die zu Abstürzen der Anwendungen führen, können manchmal durch ein Upgrade auf die neueste SDK-Version behoben werden. Lesen Sie daher die Versionshinweise zu Ihrer Plattform, wenn Sie Abstürze untersuchen.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [SDK-Dokumentation – Versionshinweise][Link 5]
 * [SDK-Dokumentation – Handbücher zu Upgrades][Link 5]
 
@@ -138,6 +138,6 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Integration von Azure Mo
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

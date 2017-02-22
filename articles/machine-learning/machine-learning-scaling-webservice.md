@@ -1,6 +1,6 @@
 ---
-title: Skalieren von Webdiensten | Microsoft Docs
-description: "Erfahren Sie, wie Sie einen Webdienst skalieren, indem Sie die Parallelität erhöhen und neue Endpunkte hinzufügen."
+title: "Erhöhen der Parallelität eines Azure Machine Learning-Webdiensts | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie die Parallelität eines Azure Machine Learning-Webdiensts durch Hinzufügen zusätzlicher Endpunkte erhöhen."
 services: machine-learning
 documentationcenter: 
 author: neerajkh
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 01/23/2017
 ms.author: neerajkh
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 559db01d2c9f44af17b86f99031a8827dfeb5ab3
+ms.sourcegitcommit: c54b16517b6f08ed8bfddfb6e2c793ec0f292899
+ms.openlocfilehash: 678f747fd1b2e5017d1859fd594c3b4bc465ea41
 
 
 ---
-# <a name="scaling-a-web-service"></a>Skalieren eines Webdiensts
+# <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Skalieren eines Azure Machine Learning-Webdiensts durch Hinzufügen zusätzlicher Endpunkte
 > [!NOTE]
 > In diesem Thema werden für einen klassischen Machine Learning-Webdienst geltende Verfahren beschrieben. 
 > 
@@ -31,7 +31,6 @@ Standardmäßig ist jeder veröffentlichte Webdienst konfiguriert, 20 Anforderun
 
 Wenn Sie die API stärker als mit dem unterstützen Maximalwert von 200 gleichzeitigen Aufrufen auslasten möchten, müssen Sie mehrere Endpunkte im gleichen Webdienst erstellen. Sie können die Last dann wahllos auf alle Endpunkte verteilen.
 
-## <a name="add-new-endpoints-for-same-web-service"></a>Hinzufügen von neuen Endpunkten für denselben Webdienst
 Die Skalierung eines Webdiensts ist eine gängige Aufgabe. Gründe für die Skalierung sind eine Unterstützung von mehr als 200 gleichzeitigen Anforderungen, das Erhöhen der Verfügbarkeit mittels mehrerer Endpunkte oder das Bereitstellen getrennter Endpunkte für den Webdienst. Sie können die Skalierung erhöhen, indem Sie über das [klassische Azure-Portal](https://manage.windowsazure.com/) oder [Azure Machine Learning Web Services](https://services.azureml.net/)-Portal zusätzliche Endpunkte für den gleichen Webdienst hinzufügen.
 
 Weitere Informationen zum Hinzufügen neuer Endpunkte finden Sie unter [Erstellen von Endpunkten](machine-learning-create-endpoint.md).
@@ -46,6 +45,6 @@ Die synchronen APIs werden in der Regel in Situationen verwendet, in denen eine 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

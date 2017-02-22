@@ -1,6 +1,6 @@
 ---
-title: "Ersetzen der APIs zum Starten und Beenden von Knoten durch die Knotenübergangs-API von Azure Service Fabric | Microsoft-Dokumentation"
-description: "Ersetzen der APIs zum Starten und Beenden von Knoten durch die Knotenübergangs-API von Azure Service Fabric"
+title: Starten und Beenden von Clusterknoten zum Testen von Azure-Microservices | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Fault Injection zum Testen einer Service Fabric-Anwendung durch Starten und Beenden von Clusterknoten verwenden.
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 12/19/2016
 ms.author: lemai
 translationtype: Human Translation
-ms.sourcegitcommit: 4ca07de3604c3f543354d97db100b1f578cb0a5a
-ms.openlocfilehash: 5096ad4bdb75766850e557ed09f39b15c95126da
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 5f76100007466f2baf4e067de963486f47fbf857
 
 
 ---
@@ -291,6 +291,6 @@ Durch Starten eines *beendeten* Knotens mithilfe der Knotenübergangs-API wird d
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

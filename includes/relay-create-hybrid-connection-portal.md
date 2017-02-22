@@ -2,7 +2,7 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im linken Navigationsbereich des Portals auf **Relay**.
-3. Wählen Sie den Namespace aus, in dem die Hybridverbindung erstellt werden soll. In diesem Fall ist dies **mynewns1**.
+3. Wählen Sie den Namespace aus, in dem die Hybridverbindung erstellt werden soll. In diesem Fall: **mynewns**.
    
     ![Erstellen einer Hybridverbindung](./media/relay-create-hybrid-connection-portal/create-hc-1.png)
 4. Wählen Sie auf dem Blatt **Relay-Namespace** die Option **Hybridverbindungen** aus, und klicken Sie dann auf **+ Hybridverbindung**.
@@ -15,6 +15,6 @@ Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt ein
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

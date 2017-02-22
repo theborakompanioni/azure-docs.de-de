@@ -16,8 +16,8 @@ ms.topic: get-started-article
 ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f361e9c815ae20874fc2e40e39d2c20a415d58f2
+ms.sourcegitcommit: 40dd75832302d7d88e852e2ea93821750675607e
+ms.openlocfilehash: 4deb60c25bf13d1f31b58f002a7edea0672eca25
 
 
 ---
@@ -49,7 +49,7 @@ App Service verfügt über mehrere *App-Typen*, die jeweils zum Hosten einer bes
 * [**Web-Apps**](../app-service-web/app-service-web-overview.md): Hosten von Websites und Webanwendungen
 * [**Mobile Apps**](../app-service-mobile/app-service-mobile-value-prop.md): Hosten von Back-Ends für mobile Apps
 * [**API-Apps**](../app-service-api/app-service-api-apps-why-best-platform.md): Hosten von RESTful-APIs
-* [**Logik-Apps**](../app-service-logic/app-service-logic-what-are-logic-apps.md): Automatisierung von Geschäftsprozessen und Integration von Systemen und Daten in Clouds, ohne Code zu schreiben
+* [**Logik-Apps**](../logic-apps/logic-apps-what-are-logic-apps.md): Automatisierung von Geschäftsprozessen und Integration von Systemen und Daten in Clouds, ohne Code zu schreiben
 
 Der Begriff *App* bezieht sich hier auf die Hostingressourcen, die dediziert für die Ausführung einer Workload bestimmt sind. Wenn wir „Web-App“ als Beispiel nehmen, verstehen Sie darunter wahrscheinlich sowohl die Computeressourcen als auch die Anwendungscodeelemente, die zusammen für einen Browser die Funktionalität bereitstellen. In App Service handelt es sich bei einer *Web-App* aber um die Computeressourcen, die von Azure zum Hosten Ihres Anwendungscodes bereitgestellt werden. 
 
@@ -82,18 +82,18 @@ Wenn Sie eine bessere Skalierbarkeit und Netzwerkisolation benötigen, können S
 Weitere Informationen zu den Kosten von App Service finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 
 ## <a name="test-drive-app-service"></a>Testen von App Service
-[Hier können Sie problemlos eine Beispiel-Web-App, mobile App oder Logik-App erstellen](http://go.microsoft.com/fwlink/?LinkId=523751) und eine Stunde lang ausprobieren – ohne Kreditkarte oder Verpflichtungen.
+[Hier können Sie problemlos eine Beispiel-Web-App, mobile App oder Logik-App erstellen](https://azure.microsoft.com/try/app-service/) und eine Stunde lang ausprobieren – ohne Kreditkarte oder Verpflichtungen.
 
 Oder eröffnen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/pricing/free-trial/), und probieren Sie eines unserer Tutorials für die ersten Schritte aus:
 
 * [Tutorial: Erstellen einer Web-App](../app-service-web/app-service-web-get-started.md)
 * [Tutorial: Erstellen einer mobilen App](../app-service-mobile/app-service-mobile-android-get-started.md)
 * [Tutorial: Erstellen einer API-App](../app-service-api/app-service-api-dotnet-get-started.md)
-* [Tutorial: Erstellen einer Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
+* [Tutorial: Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

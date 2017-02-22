@@ -23,6 +23,7 @@
 ### [Logic Apps als aufrufbare Endpunkte](logic-apps-http-endpoint.md)
 ### [Schleifen, Bereiche und Auflösen von Batches](logic-apps-loops-and-scopes.md)
 ### [Verwenden der benutzerdefinierten API](logic-apps-custom-hosted-api.md)
+### [Verwenden der switch-Anweisung](logic-apps-switch-case.md)
 ### [Fehlerbehandlung](logic-apps-exception-handling.md)
 ### [Fehlerbehandlungsszenario](logic-apps-scenario-error-and-exception-handling.md)
 ### [Verarbeitung von Inhaltstypen](logic-apps-content-type.md)
@@ -91,6 +92,6 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=logic-apps)
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

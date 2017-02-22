@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c644f67c985ef1de13286bc1ef8c2bb84a2939e3
+ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
+ms.openlocfilehash: cd66296718d8ae3cd2bcd69c66f54684f57d7ece
 
 
 ---
@@ -83,7 +83,7 @@ Schützen Sie in Dienst-zu-Dienst-Szenarien die aufgerufene API-App mithilfe von
 
 Wenn Sie ein Dienst-zu-Dienst-Szenario ohne App Service-Authentifizierung behandeln möchten, können Sie Clientzertifikate oder Standardauthentifizierung verwenden. Informationen zu Clientzertifikaten in Azure finden Sie unter [Konfigurieren von gegenseitiger TLS-Authentifizierung für Web-Apps](../app-service-web/app-service-web-configure-tls-mutual-auth.md). Informationen zur grundlegenden Authentifizierung in ASP.NET finden Sie unter [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters)(Authentifizierungsfilter in ASP.NET-Web-API 2).
 
-Dienstkontoauthentifizierung von einer App Service-Logik-App zu einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../app-service-logic/app-service-logic-custom-hosted-api.md)erklärt wird.
+Dienstkontoauthentifizierung von einer App Service-Logik-App zu einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../logic-apps/logic-apps-custom-hosted-api.md)erklärt wird.
 
 ## <a name="mobile-client-authentication"></a>Mobile Clientauthentifizierung
 Informationen zur Authentifizierung von mobilen Clients finden Sie in der [Dokumentation zur Authentifizierung für mobile Apps](../app-service-mobile/app-service-mobile-ios-get-started-users.md). Die App Service-Authentifizierung für mobile Apps und API-Apps ist identisch.
@@ -91,7 +91,7 @@ Informationen zur Authentifizierung von mobilen Clients finden Sie in der [Dokum
 ## <a name="more-information"></a>Weitere Informationen
 Weitere Informationen zur Authentifizierung und Autorisierung in Azure App Service finden Sie in den folgenden Ressourcen:
 
-* [Expanding App Service authentication / authorization](/blog/announcing-app-service-authentication-authorization/)
+* [Expanding App Service authentication / authorization](https://azure.microsoft.com/blog/announcing-app-service-authentication-authorization/)
 * [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md) (Enthält oben auf der Seite Links für andere Authentifizierungsanbieter.) 
 
 Weitere Informationen zu OAuth 2.0, OpenID Connect und JSON-Webtoken (JWT) finden Sie in den folgenden Ressourcen.
@@ -112,6 +112,6 @@ In diesem Artikel wurden Authentifizierungs- und Autorisierungsfeatures von App 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

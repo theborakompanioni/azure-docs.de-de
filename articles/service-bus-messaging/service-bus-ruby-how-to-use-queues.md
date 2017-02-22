@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Service Bus-Warteschlangen mit Ruby | Microsoft Docs
+title: Verwenden von Azure Service Bus-Warteschlangen mit Ruby | Microsoft Docs
 description: "Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in Ruby geschrieben."
 services: service-bus-messaging
 documentationcenter: ruby
@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bde6cfe0daa95fc64e18be308798263544119b9f
+ms.sourcegitcommit: 0f9f732d6998a6ee50b0aea4edfc615ac61025ce
+ms.openlocfilehash: 343dc0d39f284488f03e1d1ba3df21ae616e97d9
 
 
 ---
@@ -25,48 +25,12 @@ ms.openlocfilehash: bde6cfe0daa95fc64e18be308798263544119b9f
 
 In diesem Leitfaden wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele sind in Ruby geschrieben und verwenden das Azure-Gem. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen, Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**. Weitere Informationen zu Service Bus-Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
-## <a name="what-are-service-bus-queues"></a>Was sind Service Bus-Warteschlangen?
-Service Bus-Warteschlangen unterstützen ein Kommunikationsmodell namens *Brokermessaging*. Bei der Verwendung von Warteschlangen kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über eine Warteschlange aus, die als Zwischenstufe fungiert. Ein Nachrichtenproducer (Absender) übergibt eine Nachricht an die Warteschlange und setzt seine Funktion fort.
-Ein Nachrichtenconsumer (Empfänger) ruft die Nachricht asynchron aus der Warteschlange ab und verarbeitet sie. Der Producer muss nicht auf eine Antwort vom Consumer warten, um seine Funktion fortzusetzen und weitere Nachrichten zu schicken. Warteschlangen liefern die Nachrichten im **First In, First Out (FIFO)** -Verfahren an einen oder mehrere Consumer. Die Nachrichten werden also normalerweise in der gleichen Reihenfolge von den Consumern empfangen und verarbeitet, wie sie in die Warteschlange übergeben wurden, und jede Nachricht wird nur von einem Consumer verarbeitet.
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-![Konzepte für Warteschlangen](./media/service-bus-ruby-how-to-use-queues/sb-queues-08.png)
-
-Service Bus-Warteschlangen sind eine Allzwecktechnologie für viele unterschiedliche Szenarien:
-
-* Kommunikation zwischen Web- und Workerrollen in [Azure-Anwendungen mit mehreren Ebenen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
-* Kommunikation zwischen lokalen Apps und von Azure gehosteten Apps in einer [Hybridlösung](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-* Kommunikation zwischen Komponenten einer verteilten lokalen Anwendung, die in verschiedenen Organisationen oder Abteilungen einer Organisation laufen
-
-Warteschlangen helfen bei der Skalierung Ihrer Anwendungen und führen zu einer robusteren Architektur.
-
-## <a name="create-a-namespace"></a>Erstellen eines Namespace
-Um mit der Verwendung von Service Bus-Warteschlangen in Azure beginnen zu können, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Da das Azure-Portal den Namespace nicht mit einer ACS-Verbindung erstellt, müssen Sie den Namespace über die Befehlszeilenschnittstelle erstellen.
-
-So erstellen Sie einen Namespace
-
-1. Öffnen Sie eine Azure PowerShell-Konsole.
-2. Geben Sie den folgenden Befehl ein, um einen Service Bus-Namespace zu erstellen. Geben Sie einen eigenen Namespacewert und dieselbe Region wie für Ihre Anwendung an.
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
    
-    ```
-    New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -NamespaceType 'Messaging' -CreateACSNamespace $true
-   
-    ![Create Namespace](./media/service-bus-ruby-how-to-use-queues/showcmdcreate.png)
-    ```
-
-## <a name="obtain-management-credentials-for-the-namespace"></a>Abrufen von Anmeldeinformationen zur Verwaltung des Namespace
-Wenn Sie Verwaltungsvorgänge ausführen möchten, z. B. die Erstellung einer Warteschlange im neuen Namespace, müssen Sie die Anmeldeinformationen für den Namespace abrufen.
-
-Das PowerShell-Cmdlet, das Sie zum Erstellen des Azure Service Bus-Namespaces ausgeführt haben, gibt den Schlüssel an, mit dem Sie den Namespace verwalten können. Kopieren Sie den Wert **DefaultKey**. Sie verwenden diesen Wert später in diesem Tutorial in Ihrem Code.
-
-![Kopieren des Schlüssels](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
-
-> [!NOTE]
-> Sie können diesen Wert auch ermitteln, indem Sie sich beim [Azure-Portal](https://portal.azure.com/) anmelden und zu den Verbindungsinformationen für Ihren Service Bus-Namespace navigieren.
-> 
-> 
-
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
-Erstellen Sie eine Ruby-Anwendung. Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](/develop/ruby/tutorials/web-app-with-linux-vm/).
+Erstellen Sie eine Ruby-Anwendung. Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 Um Azure Service Bus zu verwenden, müssen Sie das Ruby-Azure-Paket, das eine Reihe von Bibliotheken enthält, die mit den Speicher-REST-Diensten kommunizieren, herunterladen und verwenden.
@@ -85,7 +49,7 @@ require "azure"
 ## <a name="set-up-an-azure-service-bus-connection"></a>Einrichten einer Azure Service Bus-Verbindung
 Das Azure-Modul liest die Umgebungsvariablen **AZURE\_SERVICEBUS\_NAMESPACE** und **AZURE\_SERVICEBUS\_ACCESS_KEY** nach Informationen aus, die für eine Verbindung zu Ihrem Service Bus-Namespace benötigt werden. Wenn diese Umgebungsvariablen nicht festgelegt werden, müssen Sie die Kontoinformationen vor dem Verwenden von **Azure::ServiceBusService** mit dem folgenden Code angeben:
 
-```
+```ruby
 Azure.config.sb_namespace = "<your azure service bus namespace>"
 Azure.config.sb_access_key = "<your azure service bus access key>"
 ```
@@ -95,7 +59,7 @@ Legen Sie den Wert für den Namespace auf den von Ihnen erstellten Wert statt au
 ## <a name="how-to-create-a-queue"></a>Erstellen von Warteschlangen
 Das **Azure::ServiceBusService**-Objekt ermöglicht Ihnen, mit Warteschlangen zu arbeiten. Verwenden Sie die Methode **create_queue()**, um eine Warteschlange zu erstellen. Im folgenden Beispiel werden eine Warteschlange erstellt oder gegebenenfalls Fehler ausgegeben.
 
-```
+```ruby
 azure_service_bus_service = Azure::ServiceBusService.new
 begin
   queue = azure_service_bus_service.create_queue("test-queue")
@@ -106,7 +70,7 @@ end
 
 Sie können außerdem ein **Azure::ServiceBus::Queue**-Objekt mit weiteren Optionen übergeben, mit denen Sie die Standardeinstellungen wie z.B. Nachrichtenlebensdauer oder maximale Warteschlangengröße überschreiben können. Das folgende Beispiel zeigt, wie Sie die maximale Warteschlangengröße auf 5 GB bei einer Gültigkeitsdauer von 1 Minute festlegen:
 
-```
+```ruby
 queue = Azure::ServiceBus::Queue.new("test-queue")
 queue.max_size_in_megabytes = 5120
 queue.default_message_time_to_live = "PT1M"
@@ -119,7 +83,7 @@ Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendu
 
 Das folgende Beispiel zeigt, wie eine Testnachricht an die Warteschlange „test-queue“ mithilfe von **send\_queue\_message()** gesendet wird:
 
-```
+```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
 message.correlation_id = "test-correlation-id"
 azure_service_bus_service.send_queue_message("test-queue", message)
@@ -136,7 +100,7 @@ Wenn der **:peek\_lock**-Parameter auf **FALSE** festgelegt ist, wird zum Lesen 
 
 Im folgenden Beispiel wird veranschaulicht, wie Nachrichten mithilfe von **receive\_queue\_message()** empfangen und verarbeitet werden. In diesem Beispiel wird zuerst eine Nachricht mit **:peek\_lock** gleich **FALSE** empfangen und gelöscht, und anschließend eine Nachricht empfangen und mit **delete\_queue\_message()** gelöscht:
 
-```
+```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
   { :peek_lock => false })
 message = azure_service_bus_service.receive_queue_message("test-queue")
@@ -161,6 +125,6 @@ Einen Vergleich zwischen den in diesem Artikel besprochenen Azure Service Bus-Wa
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

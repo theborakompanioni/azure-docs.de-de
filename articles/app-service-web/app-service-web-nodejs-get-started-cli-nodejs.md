@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: dc41ae217547fea45326cb146a59bc2888e1f44b
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 55c349f19055e4e4d17f5c7290a2ee82d2d3d19d
 
 
 ---
@@ -29,12 +29,12 @@ In diesem Tutorial erfahren Sie, wie Sie eine einfache [Node.js]-Anwendung erste
 
 <a name="prereq"></a>
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen der Aufgabe
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-- [Azure CLI 1.0](app-service-web-nodejs-get-started-cli-nodejs.md): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell.
-- [Azure CLI 2.0 (Vorschau)](app-service-web-nodejs-get-started.md): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell.
+- [Azure CLI 1.0:](app-service-web-nodejs-get-started-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](app-service-web-nodejs-get-started.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Node.js]
@@ -45,7 +45,7 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 * Ein Microsoft Azure-Konto. Falls Sie noch kein Konto haben, können Sie sich [für eine kostenlose Testversion registrieren] oder [Ihre Visual Studio-Abonnentenvorteile aktivieren].
 
 > [!NOTE]
-> Zum [Testen von App Service](http://go.microsoft.com/fwlink/?LinkId=523751) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
+> Zum [Testen von App Service](https://azure.microsoft.com/try/app-service/) benötigen Sie kein Azure-Konto. Sie können eine Starter-App erstellen und bis zu einer Stunde damit experimentieren – ohne Kreditkarte und ohne jegliche Verpflichtungen.
 > 
 > 
 
@@ -99,8 +99,8 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
         }
    
     > [!NOTE] 
-    > Azure App Service führt Node.js-Anwendungen standardmäßig mit den `production` Umgebungsvariablen (`process.env.NODE_ENV="production"`) aus.
-    > Daher kann die Node.js-App in Azure bei dieser Konfiguration auf Webanforderungen über den Standardport antworten, über den iisnode lauscht.
+    > Azure App Service führt Node.js-Anwendungen standardmäßig mit den Umgebungsvariablen vom Typ `production` (`process.env.NODE_ENV="production"`) aus.
+    > Daher kann die Node.js-App in Azure bei dieser Konfiguration auf Webanforderungen über den Standardport reagieren, an dem „iisnode“ lauscht.
     >
     >
 
@@ -163,7 +163,7 @@ Das Kudu-Bereitstellungsmodul bestimmt in der folgenden Reihenfolge, welches Nod
 * Sehen Sie sich als Nächstes „package.json“ an, um zu prüfen, ob `"node": "..."` im `engines`-Objekt angegeben ist. Wenn ja, sollten Sie dieses Element verwenden.
 * Wählen Sie standardmäßig eine Node.js-Version aus.
 
-Die aktualisierte Liste aller unterstützten Node.js/NPM-Versionen in Azure App Service finden Sie unter der folgenden URL für Ihre App:
+Die aktualisierte Liste mit allen unterstützten Node.js/NPM-Versionen in Azure App Service finden Sie unter der folgenden URL für Ihre App:
 
     https://<app_name>.scm.azurewebsites.net/api/diagnostics/runtime
 
@@ -273,6 +273,6 @@ Führen Sie diese Schritte aus, um Node-Inspector zu aktivieren:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

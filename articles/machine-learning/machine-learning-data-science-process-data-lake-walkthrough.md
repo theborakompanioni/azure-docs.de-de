@@ -1,5 +1,5 @@
 ---
-title: "Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise | Microsoft Docs"
+title: "Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise | Microsoft-Dokumentation"
 description: "Informationen zum Verwenden von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf ein Dataset."
 services: machine-learning
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 01/30/2017
 ms.author: bradsev;weig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8c625752b40cffd0e7f791bd3a360f4bfb4622e7
+ms.sourcegitcommit: 34441f27e842214d009d64fbc658ff5b7c05df5d
+ms.openlocfilehash: e2aab1363c6a2ffef529f0708cb3bec9c095cf59
 
 
 ---
-# <a name="scalable-data-science-in-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science in Azure Data Lake: lückenlose exemplarische Vorgehensweise
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
 Diese exemplarische Vorgehensweise veranschaulicht die Nutzung von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf das Dataset „NYC Taxi Trip and Fare“, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld gezahlt wird oder nicht. Sie werden lückenlos durch die Schritte des [Data Science-Prozesses](http://aka.ms/datascienceprocess)begleitet – von der Datenerfassung über das Training des Modells bis zur Bereitstellung eines Webdiensts zum Veröffentlichen des Modells.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
@@ -53,14 +53,6 @@ Bevor Sie mit diesen Themen beginnen können, benötigen Sie Folgendes:
 > 
 > 
 
-* Registrieren für Azure Data Lake Preview
-
-> [!NOTE]
-> Sie benötigen eine Genehmigung für die Nutzung von Azure Data Lake-Speicher (ADLS) und Azure Data Lake Analytics (ADLA), da diese Dienste als Vorschauversionen angeboten werden. Sie werden aufgefordert, sich zu registrieren, wenn Sie Ihre erste ADLS- oder ADLA-Lösung erstellen. Um sich zu registrieren, klicken Sie auf **Für Vorschauversion registrieren**, lesen den Lizenzvertrag und klicken auf **OK**. Hier sehen Sie z. B. die ADLS-Registrierungsseite:
-> 
-> 
-
- ![2](./media/machine-learning-data-science-process-data-lake-walkthrough/2-ADLA-preview-signup.PNG)
 
 ## <a name="prepare-data-science-environment-for-azure-data-lake"></a>Vorbereiten der Data Science-Umgebung für Azure Data Lake
 Um die Data Science-Umgebung für diese exemplarische Vorgehensweise vorzubereiten, erstellen Sie die folgenden Ressourcen:
@@ -72,13 +64,15 @@ Um die Data Science-Umgebung für diese exemplarische Vorgehensweise vorzubereit
 * Azure Data Lake-Tools für Visual Studio (empfohlen)
 
 Dieser Abschnitt enthält Anweisungen zum Erstellen dieser Ressourcen. Bei Auswahl von Hive-Tabellen mit Azure Machine Learning anstelle von Python, um ein Modell zu erstellen, müssen Sie auch einen HDInsight-Cluster (Hadoop) bereitstellen. Das alternative Verfahren wird in den entsprechenden folgenden Abschnitten beschrieben.
-<br/>
 
-> AZURE.NOTE Der **Azure Data Lake Store** kann entweder getrennt oder bei der Erstellung von **Azure Data Lake Analytics** als Standardspeicher erstellt werden. Nachstehend finden Sie Anweisungen zum getrennten Erstellen dieser Ressourcen, doch das Data Lake-Speicherkonto muss nicht getrennt erstellt werden.
-> <br/>
+
+> [!NOTE]
+> Der **Azure Data Lake Store** kann entweder getrennt oder bei der Erstellung von **Azure Data Lake Analytics** als Standardspeicher erstellt werden. Nachstehend finden Sie Anweisungen zum getrennten Erstellen dieser Ressourcen, doch das Data Lake-Speicherkonto muss nicht getrennt erstellt werden.
+>
 > 
-> ### <a name="create-an-azure-data-lake-store"></a>Erstellen eines Azure Data Lake-Speichers
-> 
+
+### <a name="create-an-azure-data-lake-store"></a>Erstellen eines Azure Data Lake-Speichers
+
 
 Erstellen Sie im [Azure-Portal](http://portal.azure.com)einen Azure Data Lake-Speicher. Einzelheiten dazu finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake-Speicher mithilfe des Azure-Portals](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Richten Sie die AAD-Identität des Clusters auf dem hier beschriebenen Blatt **Datenquelle** des Blatts **Optionale Konfiguration** ein. 
 
@@ -695,6 +689,6 @@ Der Lernpfad für den [Team Data Science-Prozess (TDSP)](http://aka.ms/datascien
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

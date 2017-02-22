@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2689c8db4beb07d42da836795f9d85b53ed8f076
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: dcf0ff5c4d6ebb7d0aea0b9518cbbe66c9f0a649
 
 
 ---
@@ -39,7 +39,7 @@ In der folgenden Tabelle werden die unterstützten Controlleraustauschszenarios 
 | Fall | Austauschszenario | Anwendbare Verfahren |
 |:--- |:--- |:--- |
 | 1 |Ein Domänencontroller ist in einem fehlerhaften Zustand, der andere Controller funktioniert fehlerfrei und ist aktiv. |[Austauschen eines einzelnen Controllers](#replace-a-single-controller). Es werden sowohl die [Logik hinter dem Austauschen eines einzelnen Controllers](#single-controller-replacement-logic) als auch die [Schritte für den Austausch](#single-controller-replacement-steps) beschrieben. |
-| 2 |Beide Controller sind fehlerhaft und müssen ausgetauscht werden. Das Gehäuse, die Laufwerke und Laufwerkgehäuse sind fehlerfrei. |[Austauschen zweier Controller](#replace-both-controllers). Es werden sowohl die [Logik hinter dem Austauschen zweier Controller](#dual-controller-replacement-logic) als auch die [Schritte für den Austausch](#dual-controller-replacement-steps) beschrieben. |
+| 2 |Beide Controller sind fehlerhaft und müssen ausgetauscht werden. Das Gehäuse sowie die Laufwerke und Laufwerkgehäuse sind fehlerfrei. |[Austauschen zweier Controller](#replace-both-controllers). Es werden sowohl die [Logik hinter dem Austauschen zweier Controller](#dual-controller-replacement-logic) als auch die [Schritte für den Austausch](#dual-controller-replacement-steps) beschrieben. |
 | 3 |Die Controller aus dem gleichen Gerät oder aus verschiedenen Geräten werden ausgetauscht. Das Gehäuse, die Laufwerke und die Laufwerkgehäuse sind fehlerfrei. |Es wird eine Warnung bezüglich des falschen Steckplatzes angezeigt. |
 | 4 |Ein Domänencontroller ist nicht vorhanden, und der andere Controller ist fehlerhaft. |[Austauschen zweier Controller](#replace-both-controllers). Es werden sowohl die [Logik hinter dem Austauschen zweier Controller](#dual-controller-replacement-logic) als auch die [Schritte für den Austausch](#dual-controller-replacement-steps) beschrieben. |
 | 5 |Ein oder beide Domänencontroller sind ausgefallen. Auf das Gerät kann nicht über die serielle Konsole oder Windows PowerShell-Remoteverbindung zugegriffen werden. |[Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md) , um Anweisungen zum manuellen Controlleraustausch zu erhalten. |
@@ -173,7 +173,7 @@ Verwenden Sie das folgende Verfahren, um ein fehlerhaftes Controllermodul aus Ih
 1. Greifen Sie den Modulriegel mit Daumen und Zeigefinger.
 2. Drücken Sie Daumen und Zeigefinger vorsichtig zusammen, um den Controllerriegel zu lösen.
    
-    ![ Lösen des Controllerriegels](./media/storsimple-controller-replacement/IC741047.png)
+    ![Lösen des Controllerriegels](./media/storsimple-controller-replacement/IC741047.png)
    
     **Abbildung 2:** Lösen des Controllerriegels
 3. Verwenden Sie den Riegel als Griff, um den Controller aus dem Gehäuse zu ziehen.
@@ -250,6 +250,6 @@ Weitere Informationen zum [Austauschen von StorSimple-Hardwarekomponenten](stors
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

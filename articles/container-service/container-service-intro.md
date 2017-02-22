@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Azure Container Service | Microsoft Docs"
+title: Docker-Containercluster in der Azure-Cloud | Microsoft-Dokumentation
 description: "Azure Container Service bietet eine Möglichkeit zur Vereinfachung der Erstellung, Konfiguration und Verwaltung eines Clusters virtueller Computer, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind."
 services: container-service
 documentationcenter: 
@@ -11,14 +11,14 @@ keywords: Docker, Container, Microservices, Mesos, Azure
 ms.assetid: 52da4163-1182-4b2e-be00-4951e5c1da16
 ms.service: container-service
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/13/2016
+ms.date: 01/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 3edc4bf663244805fc184d9598621b3fbca72d5d
-ms.openlocfilehash: 430f895a783cbbe6b7454ccd24c2dd8d99f6228b
+ms.sourcegitcommit: cc3cc2dce324942f184b6a520dc4db28518a3091
+ms.openlocfilehash: 0521fbd689233c0f2359a10006e24c75c8997732
 
 
 ---
@@ -29,13 +29,17 @@ Azure Container Service (ACS) vereinfacht Ihnen das Erstellen, Konfigurieren und
 
 Azure Container Service nutzt das Docker-Containerformat, um sicherzustellen, dass Ihre Anwendungscontainer vollständig portierbar sind. Der Dienst unterstützt außerdem Marathon und DC/OS, Docker Swarm oder Kubernetes, sodass Sie diese Anwendungen auf Tausende und sogar Zehntausende von Containern skalieren können.
 
+>[!NOTE]
+> Die Kubernetes-Unterstützung in Azure Container Service befindet sich derzeit in der Vorschauphase.
+>
+
 Mit dem Azure Container Service können Sie die Unternehmensfunktionen von Azure nutzen, während gleichzeitig die Anwendungsportierbarkeit erhalten bleibt, auch auf den Orchestrierungsebenen.
 
 ## <a name="using-azure-container-service"></a>Verwenden von Azure Container Service
 Mit dem Azure Container Service verfolgen wir das Ziel, mit Open Source-Tools und -Technologien, die heutzutage bei unseren Kunden beliebt sind, eine Umgebung für das Containerhosting bereitzustellen. Zu diesem Zweck machen wir die Standard-API-Endpunkte für den von Ihnen ausgewählten Orchestrator (DC/OS, Docker Swarm oder Kubernetes) verfügbar. Mithilfe dieser Endpunkte können Sie jede Software nutzen, die mit diesen Endpunkten kommunizieren kann. Im Fall des Docker Swarm-Endpunkts können Sie z. B. die Docker-Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwenden. Für DC/OS könnten Sie die DCOS-CLI verwenden. Für Kubernetes können Sie „kubectl“ verwenden.
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Erstellen eines Docker-Clusters mit Azure Container Service
-Stellen Sie zum Verwenden von Azure Container Service zunächst einen Azure Container Service-Cluster über das Portal bereit (suchen Sie nach „Azure Container Service“). Verwenden Sie hierzu entweder eine Azure Resource Manager-Vorlage ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) oder [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) oder die [Befehlszeilenschnittstelle](/documentation/articles/xplat-cli-install/). Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Weitere Informationen zum Bereitstellen eines Azure Container Service-Clusters finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
+Stellen Sie zum Verwenden von Azure Container Service zunächst einen Azure Container Service-Cluster über das Portal bereit (suchen Sie nach „Azure Container Service“). Verwenden Sie hierzu entweder eine Azure Resource Manager-Vorlage ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm), [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos) oder [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) oder die [Befehlszeilenschnittstelle](/articles/xplat-cli-install.md). Die bereitgestellten Schnellstartvorlagen können auch so geändert werden, dass sie eine zusätzliche oder erweiterte Azure-Konfiguration enthalten. Weitere Informationen zum Bereitstellen eines Azure Container Service-Clusters finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
 
 ## <a name="deploying-an-application"></a>Bereitstellen einer Anwendung
 Azure Container Service ermöglicht die Auswahl von Docker Swarm, DC/OS oder Kubernetes zur Orchestrierung. Wie Sie Ihre Anwendung bereitstellen, hängt davon ab, welchen Orchestrator Sie wählen.
@@ -88,8 +92,8 @@ Das Tool bietet zahlreiche Funktionen, darunter:
 * Dienstermittlung und Lastenausgleich
 * Geheimnis- und Konfigurationsverwaltung
 * API-basierte automatisierte Rollouts und Rollbacks
-* Selbstreparatur 
-* und vieles mehr...
+* Selbstreparatur
+* und vieles mehr.
 
 
 
@@ -97,18 +101,17 @@ Das Tool bietet zahlreiche Funktionen, darunter:
 Erste Schritte mit dem Azure Container Service:  
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Container-Service-101/player]
-> 
-> 
+>
+>
 
 Erstellen von Anwendungen mithilfe von Azure Container Service (Build 2016)
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2016/B822/player]
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

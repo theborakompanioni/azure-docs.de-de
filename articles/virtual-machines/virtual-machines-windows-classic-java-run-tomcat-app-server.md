@@ -1,5 +1,5 @@
 ---
-title: Tomcat auf einem virtuellen Computer | Microsoft Docs
+title: "Ausführen eines Java-Anwendungsservers auf einem klassischen virtuellen Azure-Computer | Microsoft-Dokumentation"
 description: "Dieses Tutorial verwendet Ressourcen verwendet, die mit dem klassischen Bereitstellungsmodell erstellt wurden, und zeigt, wie Sie einen virtuellen Windows-Computer erstellen und zum Ausführen eines Apache Tomcat-Anwendungsservers konfigurieren."
 services: virtual-machines-windows
 documentationcenter: java
@@ -13,11 +13,11 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 01/23/2017
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 75388bba3084099fcea8d9ec1f3a2c1e909e914f
+ms.sourcegitcommit: 7b621733e09a1ba4e21152d7670a8936e3944521
+ms.openlocfilehash: 4503610eb8ef2e690e028667ebbf64e865af7134
 
 
 ---
@@ -155,6 +155,6 @@ Weitere Informationen zu anderen Diensten wie beispielsweise Azure Storage, Serv
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

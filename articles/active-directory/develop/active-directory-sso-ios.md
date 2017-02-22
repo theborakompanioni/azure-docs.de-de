@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: d76491683d08bf9afd505eebfdede5812e87f458
+ms.sourcegitcommit: a63996ad3661b43bea83870c1fa88fa6d64c6c6a
+ms.openlocfilehash: bc2bb9916baa08b14dc5cfeb0e6d712b1c0522ef
 
 
 ---
@@ -277,10 +277,10 @@ Der Umleitungs-URI muss das folgende Format besitzen:
 
 Beispiel: *x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-Dieser Umleitungs-URI muss in Ihrer App-Registrierung über das [klassische Azure-Portal](https://manage.windowsazure.com/)angegeben werden. Weitere Informationen zur Azure AD-App-Registrierung finden Sie unter [Integration in Azure Active Directory](active-directory-how-to-integrate.md).
+Dieser Umleitungs-URI muss in Ihrer App-Registrierung über das [Azure-Portal](https://portal.azure.com/) angegeben werden. Weitere Informationen zur Azure AD-App-Registrierung finden Sie unter [Integration in Azure Active Directory](active-directory-how-to-integrate.md).
 
 ##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Schritt 3a: Hinzufügen eines Umleitungs-URIs in Ihrer App und im Entwicklerportal zur Unterstützung der zertifikatbasierten Authentifizierung
-Zur Unterstützung der zertifikatbasierten Authentifizierung muss in Ihrer Anwendung und im [klassischen Azure-Portal](https://manage.windowsazure.com/) ein zweites msauth-Element für die Abwicklung der Zertifikatauthentifizierung registriert werden, wenn Sie dieses Feature in der Anwendung unterstützen möchten.
+Wenn Sie dieses Feature in der Anwendung unterstützen möchten, muss in Ihrer Anwendung und im [Azure-Portal](https://portal.azure.com/) zur Unterstützung der zertifikatbasierten Authentifizierung ein zweites msauth-Element für die Abwicklung der Zertifikatauthentifizierung registriert werden.
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
@@ -301,6 +301,6 @@ Das Microsoft Identity SDK verwendet Anmeldeinformationen nun automatisch anwend
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

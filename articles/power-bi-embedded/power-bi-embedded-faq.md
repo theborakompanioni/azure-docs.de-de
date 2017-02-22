@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 10/04/2016
+ms.date: 01/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2204034d9a39f9773a6e12ca5ed9504939a6ebf6
+ms.sourcegitcommit: f57b400dc20dc08221c0a8a770fd78f5885f634c
+ms.openlocfilehash: 0beb98220f043dc7c66cc494c3de00e0993798a6
 
 
 ---
@@ -52,18 +52,8 @@ Standardmäßige SLA für Power BI Embedded mit Azure. Weitere Informationen fin
 ## <a name="how-is-this-service-priced"></a>Wie wird dieser Dienst abgerechnet?
 Informationen zu Preisen finden Sie unter [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkId=760527) .
 
-## <a name="what-is-a-render-and-how-is-it-billed"></a>Was ist ein Renderobjekt, und wie wird es abgerechnet?
-> [!NOTE]
-> Die rabattierten Preise pro Renderobjekt wurden während der Vorschauphase von Power BI Embedded angeboten und werden aufgrund von Benutzerfeedback durch eine Abrechnung pro Sitzung abgelöst. Die neuen Preise pro Sitzung gelten ab dem 1. September 2016.
-> 
-> 
-
-Ein Renderobjekt ist ein visuelles Element, das einem Endbenutzer angezeigt wird und in einer Abfrage des Diensts resultiert. Wenn ein Benutzer also beispielsweise einen Bericht mit vier visuellen Elementen anzeigt, hat dies vier Renderobjekte zur Folge. Wenn der Benutzer den Bericht aktualisiert und weitere Abfragen an den Dienst gesendet werden, hat dies vier weitere Renderobjekte zur Folge. Um die Kosten zu deckeln bzw. in statischen Datenszenarien zu minimieren, kann der Dienstbesitzer steuern, in welchem Umfang Endbenutzer neue Abfragen generieren können, die zahlungspflichtige Renderobjekte zur Folge haben.
-
-Die Abrechnung erfolgt pro 1.000 Renderobjekte. Wenn weniger als 1.000 Renderobjekte in Anspruch genommen werden, erfolgt die Abrechnung anteilsmäßig. Pro Monat erhalten Kunden ein kostenloses Kontingent von 1.000 Renderobjekten. Kunden, die ihre Lösung über die Volumenlizenzierung erwerben, erhalten Preisinformationen von ihrem Microsoft-Partner oder -Händler.
-
 ## <a name="what-is-a-report-session-and-how-is-it-billed"></a>Was ist eine Berichtssitzung, und wie wird sie abgerechnet?
-Eine Sitzung besteht aus einer Reihe von Interaktionen zwischen einem Endbenutzer und einem Power BI Embedded-Bericht. Jedes Mal, wenn ein Power BI Embedded-Bericht für einen Benutzer angezeigt wird, wird eine Sitzung initiiert, und dem Inhaber des Abonnements wird eine Sitzung in Rechnung gestellt. Sitzungen werden unabhängig von der Anzahl visueller Elemente in einem Bericht oder der Aktualisierungshäufigkeit des Berichts zu einem Pauschalpreis in Rechnung gestellt. Eine Sitzung endet, wenn der Benutzer den Bericht schließt oder das Sitzungstimeout von einer Stunde abläuft.
+Eine Sitzung besteht aus einer Reihe von Interaktionen zwischen einem Endbenutzer und einem Power BI Embedded-Bericht. Sobald ein Power BI Embedded-Bericht für einen Benutzer angezeigt wird, wird eine Sitzung initiiert, und dem Inhaber des Abonnements wird eine Sitzung in Rechnung gestellt. Sitzungen werden unabhängig von der Anzahl visueller Elemente in einem Bericht oder der Aktualisierungshäufigkeit des Berichts zu einem Pauschalpreis in Rechnung gestellt. Eine Sitzung endet, wenn der Benutzer den Bericht schließt oder das Sitzungstimeout von einer Stunde abläuft.
 
 ## <a name="do-you-offer-any-tools-or-guidance-to-help-me-estimate-how-many-renderssession-i-should-expect-how-will-i-know-how-many-renders-have-been-completed"></a>Gibt es Tools oder Anleitungen, die mir helfen, die voraussichtliche Anzahl von Renderobjekten pro Sitzung abzuschätzen? Wie kann ich feststellen, wie viele Rendervorgänge abgeschlossen wurden?
 Das Azure-Portal stellt Abrechnungsinformationen bereit, die Aufschluss darüber geben, wie viele Renderobjekte pro Berichtssitzung für Ihr Abonnement ausgeführt wurden.
@@ -85,7 +75,7 @@ Der Power BI Embedded-Dienst nutzt App-Token zur Authentifizierung und Autorisie
 dann App-Token, die unseren Dienst anweisen, den angeforderten Bericht zu rendern. Bei diesem Konzept muss Ihre App nicht Azure AD für die Authentifizierung und Autorisierung der Benutzer verwenden, auch wenn dies natürlich möglich ist. Weitere Informationen zu App-Token finden Sie [hier](power-bi-embedded-app-token-flow.md). Darüber hinaus haben wir in Power BI Embedded die Sicherheit auf Zeilenebene (Row-Level Security, RLS) für Filterszenarien mit erweiterter Sicherheit eingeführt.
 
 ## <a name="what-data-sources-are-currently-supported-with-power-bi-embedded"></a>Welche Datenquellen werden derzeit mit Power BI Embedded unterstützt?
-Wir unterstützen den Zugriff auf Clouddatenquellen, die die Basisanmeldeinformationen über DirectQuery verwenden. Das bedeutet, dass Quellen wie Azure SQL-Datenbank und Azure SQL Data Warehouse zurzeit unterstützt werden. In den nächsten Monaten fügen wir Unterstützung für andere Datenquellen und Zugriffstypen hinzu. Neue unterstützte Datenquellen werden im Power BI-Entwicklerforum unter [https://dev.powerbi.com](https://dev.powerbi.com/)angekündigt.
+Wir unterstützen den Zugriff auf Clouddatenquellen, die die Basisanmeldeinformationen über DirectQuery verwenden. Das bedeutet, dass Quellen wie Azure SQL-Datenbank und Azure SQL Data Warehouse zurzeit unterstützt werden. In den nächsten Monaten fügen wir Unterstützung für andere Datenquellen und Zugriffstypen hinzu. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Datenquelle](power-bi-embedded-connect-datasource.md).
 
 ## <a name="how-does-the-tenancy-model-work-for-power-bi-embedded"></a>Wie funktioniert das Mandantenmodell für Power BI Embedded?
 Beim Power BI Embedded-Modell müssen sich Ihre Kunden nicht unbedingt in Azure AD-Mandanten befinden. Sie können festlegen, ob Azure AD für Ihre Kunden erforderlich ist oder nicht. Daher richtet sich das für Power BI Embedded erforderliche Mandantenmodell nach der Architektur Ihrer Anwendung und Ihrer Infrastruktur.
@@ -102,9 +92,11 @@ Sie können jetzt kostenlos beginnen! Wenn Sie ein Azure-Abonnement besitzen, k�
 * [Was ist Microsoft Power BI Embedded?](power-bi-embedded-what-is-power-bi-embedded.md)
 * [Erste Schritte mit Microsoft Power BI Embedded](power-bi-embedded-get-started.md)
 
+Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
 
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO3-->
 
 

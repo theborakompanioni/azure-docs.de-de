@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c0a3bec8542cc5974516a8fb3deb14d23bf1fe2e
+ms.sourcegitcommit: 33521eca953c0e14a7fdaa99edef2997397286eb
+ms.openlocfilehash: cd79a485feddc68924f9b7f5e7d8d614b4e28d28
 
 
 ---
@@ -162,12 +162,16 @@ Um eine differenzierte Kennwortrücksetzung in Ihrer Anwendung zu aktivieren, m�
     > 
     > 
 
+## <a name="how-to-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Wie wird eine Registrierungs- oder Anmelderichtlinie mit einer Richtlinie zum Zurücksetzen von Kennwörtern verknüpft?
+Wenn Sie eine Registrierungs- oder Anmelderichtlinie (für lokale Konten) erstellen, wird dem Endbenutzer auf der ersten Seite der Oberfläche ein Link „Kennwort vergessen?“ angezeigt. Durch Klicken auf diesen Link wird nicht automatisch eine Richtlinie zum Zurücksetzen des Kennworts ausgelöst. Stattdessen wird ein bestimmter Fehlercode `AADB2C90118` an Ihre App zurückgegeben. Ihre App muss diesen Fehler verarbeiten und eine bestimmte Richtlinie zur Kennwortzurücksetzung aufrufen. Ein Beispiel, in dem dieser Ansatz zum Verknüpfen von Richtlinien gezeigt wird, finden Sie [hier](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
+* [Deaktivieren der E-Mail-Überprüfung während der Registrierung von Endbenutzern](active-directory-b2c-reference-disable-ev.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

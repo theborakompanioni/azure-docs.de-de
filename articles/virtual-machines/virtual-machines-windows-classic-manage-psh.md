@@ -102,6 +102,6 @@ Zum Erstellen eines neuen auf Windows basierenden virtuellen Computers in Azure 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

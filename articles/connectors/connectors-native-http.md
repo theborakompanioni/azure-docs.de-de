@@ -4,7 +4,7 @@ description: "Übersicht über die HTTP-Aktion mit Eigenschaften"
 services: 
 documentationcenter: 
 author: jeffhollan
-manager: erikre
+manager: anneta
 editor: 
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 522624ccb14d295359ff5585e1b46b618b45c305
+ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
+ms.openlocfilehash: d3514dad84bea024ad6215711877a9784a8d8ffd
 
 
 ---
@@ -29,7 +29,7 @@ Sie können:
 * Erstellen Sie Logik-App-Workflows, die aktiviert (durch einen Trigger ausgelöst) werden, wenn eine von Ihnen verwaltete Website ausfällt.
 * Kommunizieren Sie mit jedem beliebigen Endpunkt über HTTP, um Ihre Workflows auf andere Dienste auszuweiten.
 
-Wenn Sie die HTTP-Aktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../app-service-logic/app-service-logic-create-a-logic-app.md).
+Wenn Sie die HTTP-Aktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="use-the-http-trigger"></a>Verwenden des HTTP-Triggers
 Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](connectors-overview.md).
@@ -125,7 +125,7 @@ Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 | Statuscode |int |HTTP-Statuscode |
 
 ## <a name="authentication"></a>Authentifizierung
-Mit dem Logik-Apps-Feature von Azure App Service können Sie verschiedene Authentifizierungstypen bei HTTP-Endpunkten verwenden. Sie können diese Authentifizierung mit den Connectors **HTTP**, **[HTTP + Swagger](connectors-native-http-swagger.md)** und **[HTTP-Webhook](connectors-native-webhook.md)** nutzen. Die folgenden Arten der Authentifizierung können konfiguriert werden:
+Das Logic Apps-Feature ermöglicht die Verwendung verschiedener Arten von Authentifizierung bei HTTP-Endpunkten. Sie können diese Authentifizierung mit den Connectors **HTTP**, **[HTTP + Swagger](connectors-native-http-swagger.md)** und **[HTTP-Webhook](connectors-native-webhook.md)** nutzen. Die folgenden Arten der Authentifizierung können konfiguriert werden:
 
 * [Standardauthentifizierung](#basic-authentication)
 * [Clientzertifikatsauthentifizierung](#client-certificate-authentication)
@@ -209,11 +209,11 @@ Beispiel:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
+Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

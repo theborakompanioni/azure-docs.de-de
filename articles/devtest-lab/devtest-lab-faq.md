@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 5d73d1203faf485d715354e68ce2ccde32562611
-ms.openlocfilehash: 2d1ff28d5c7d989d4c81758bd191e8d1e8100b2e
+ms.sourcegitcommit: f772060243ce6d741d26113710be32cb76135479
+ms.openlocfilehash: 41a28f43942d4e6bf395b7fd024bd22b96420d55
 
 
 ---
@@ -28,7 +28,7 @@ In diesem Artikel werden einige der am häufigsten gestellten Fragen zu Azure De
 ## <a name="general"></a>Allgemein
 * [Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?](#what-if-my-question-isnt-answered-here)
 * [Warum sollte ich Azure DevTest Labs verwenden?](#why-should-i-use-azure-devtest-labs) 
-* [Was bedeutet „Self-Service für sorgenfreies Arbeiten“?](#what-does-quotworry-free-self-servicequot-mean)
+* [Was bedeutet „Self-Service für sorgenfreies Arbeiten“?](#what-does-worry-free-self-service-mean)
 * [Wie kann ich Azure DevTest Labs verwenden?](#how-can-i-use-azure-devtest-labs) 
 * [Wie wird die Nutzung von Azure DevTest Labs abgerechnet?](#how-am-i-billed-for-azure-devtest-labs) 
 
@@ -246,6 +246,6 @@ Möglicherweise enthält der Name des virtuellen Netzwerks Punkte. Wenn dies der
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

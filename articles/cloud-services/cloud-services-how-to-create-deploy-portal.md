@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/14/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: f57bdd0c1d8efc37b90430f829184eb3c44aede5
-ms.openlocfilehash: ea31150ef186c9bcd8c943e39a7cb51559e94bd2
+ms.sourcegitcommit: 1ce2e980dc71ede4f8cd8ec7c9166efac7b25d2e
+ms.openlocfilehash: 554ef45d7fba5f2ff314a162ae33c6cc27206933
 
 
 ---
@@ -40,11 +40,11 @@ In diesem Thema wird erläutert, wie Sie die Schnellerfassungsmethode zum Erstel
 Für die Bereitstellung einer Anwendung als Clouddienst in Azure sind drei Komponenten erforderlich:
 
 * **Dienstdefinition:**  
-   Die Clouddienst-Definitionsdatei (.csdef) definiert das Dienstmodell einschließlich der Rollenanzahl.
+  Die Clouddienst-Definitionsdatei (.csdef) definiert das Dienstmodell einschließlich der Rollenanzahl.
 * **Dienstkonfiguration:**  
-   Die Clouddienst-Konfigurationsdatei (.cscfg) enthält Konfigurationseinstellungen für den Clouddienst sowie einzelne Rollen, darunter die Anzahl der Rolleninstanzen.
+  Die Clouddienst-Konfigurationsdatei (.cscfg) enthält Konfigurationseinstellungen für den Clouddienst sowie einzelne Rollen, darunter die Anzahl der Rolleninstanzen.
 * **Dienstpaket:**  
-   Das Dienstpaket (.cspkg) enthält den Anwendungscode, die Konfigurationen und die Dienstdefinitionsdatei.
+  Das Dienstpaket (.cspkg) enthält den Anwendungscode, die Konfigurationen und die Dienstdefinitionsdatei.
 
 Weitere Informationen zu diesen Komponenten sowie zum Erstellen eines Pakets finden Sie [hier](cloud-services-model-and-package.md).
 
@@ -66,7 +66,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 
 ## <a name="create-and-deploy"></a>Erstellen und Bereitstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **Neu > Virtuelle Computer**, scrollen Sie nach unten zu **Clouddienst**, und klicken Sie auf diese Option.
+2. Klicken Sie auf **Neu > Compute**, führen Sie einen Bildlauf nach unten zu **Clouddienst** aus, und klicken Sie darauf.
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Klicken Sie unten auf der angezeigten Informationsseite auf **Erstellen**.
@@ -76,7 +76,7 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 7. Klicken Sie auf **Paket**. Damit wird das Blatt **Paket hochladen** geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
 
     > [!IMPORTANT]
-    > Clouddienste können nur [klassischen Speicherkonten](../resource-manager-deployment-model.md) zugeordnet werden. Wenn die Meldung angezeigt wird, dass keine Speicherkonten für Ihr Abonnement und den Speicherort gefunden wurden, stellen Sie sicher, dass Sie ein klassisches Speicherkonto für Ihren Clouddienst an diesem Speicherort erstellt haben.
+    > Clouddienste können nur [klassischen Speicherkonten](../azure-resource-manager/resource-manager-deployment-model.md) zugeordnet werden. Wenn die Meldung angezeigt wird, dass keine Speicherkonten für Ihr Abonnement und den Speicherort gefunden wurden, stellen Sie sicher, dass Sie ein klassisches Speicherkonto für Ihren Clouddienst an diesem Speicherort erstellt haben.
 
 8. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
 9. Klicken Sie auf **OK**, um das Blatt **Paket hochladen** zu schließen.
@@ -111,6 +111,6 @@ Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

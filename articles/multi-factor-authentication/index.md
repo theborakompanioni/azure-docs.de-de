@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Multi-Factor Authentication – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie die mehrstufige Authentifizierung mit verschiedenen Überprüfungsmethoden bereitstellen, die einen unkomplizierten Anmeldevorgang ermöglichen. Tutorials, ein SDK und mehr."
+services: multi-factor-authentication
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: multi-factor-authentication
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 6ff0e1c42ad151c56500596d99f63bae200368ed
+ms.sourcegitcommit: acd9ead9012043bc6db8c32add86bb7797fcf8c9
+ms.openlocfilehash: c4aaa14007bf441f99ef6599bda411bcaed92a92
 
 ---
+
 # <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication-Dokumentation
 
 Hier erfahren Sie, wie Sie Azure Multi-Factor Authentication (ein zweistufiges System zur Identitätsüberprüfung) bereitstellen und verwalten. Anhand von Tutorials, einem SDK und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine sichere Authentifizierung mit verschiedenen Überprüfungsmethoden sowie einen unkomplizierten Anmeldevorgang bereitstellen.
@@ -109,6 +121,6 @@ Hier erfahren Sie, wie Sie Azure Multi-Factor Authentication (ein zweistufiges S
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

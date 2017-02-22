@@ -54,6 +54,6 @@ Weitere Informationen zum Erstellen von Images für Azure RemoteApp finden Sie u
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

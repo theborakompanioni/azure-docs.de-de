@@ -1,28 +1,25 @@
 ---
-title: Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
+title: "Konfigurieren Ihres API Management-Diensts mithilfe von Git – Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie die API Management-Dienstkonfiguration mit Git speichern und konfigurieren.
 services: api-management
 documentationcenter: 
 author: steved0x
 manager: erikre
-editor: 
+editor: mattfarm
 ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3cec0fd2547b68ff3795fd7a4c22fe927eb2a4f
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: 801fe10ad20c48fb965d3f80956d7979c9c2314e
 
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
-> [!IMPORTANT]
-> Die Git-Konfiguration für API Management ist derzeit in der Vorschau. Sie ist funktionell abgeschlossen, aber in der Vorschau ist, da wir aktiv Feedback zu dieser Funktion suchen. Es ist möglich, dass wir als Reaktion auf Kundenfeedback eine wichtige Änderung vornehmen, und raten daher von der Verwendung der Funktion in Produktionsumgebungen ab. Wenn Sie Feedback oder Fragen haben, informieren Sie uns bitte unter `apimgmt@microsoft.com`.
 > 
 > 
 
@@ -40,7 +37,7 @@ Wenn Sie den Dienst mit dem Herausgeberportal, PowerShell-Cmdlets oder der REST-
 
 Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Management-Dienstinstanz mit Git.
 
-1. Aktivieren von Git-Zugriff in Ihrem Dienst
+1. Zugreifen auf die Git-Konfiguration in Ihrem Dienst
 2. Speichern der Konfigurationsdatenbank des Diensts in Ihrem Git-Repository
 3. Klonen des Git-Repositorys auf Ihrem lokalen Computer
 4. Herunterladen des aktuellen Repositorys auf Ihren lokalen Computer und Ausführen eines Commits und Übertragen der Änderungen zurück in das Repository
@@ -48,20 +45,14 @@ Die folgenden Schritte bieten eine Übersicht über die Verwaltung Ihrer API Man
 
 In diesem Artikel wird das Aktivieren und Verwenden von Git für die Verwaltung der Dienstkonfiguration beschrieben. Zudem enthält er eine Referenz für die Dateien und Ordner im Git-Repository.
 
-## <a name="to-enable-git-access"></a>So aktivieren Sie Git-Zugriff
-Sie können den Status der Git-Konfiguration schnell anzeigen, indem Sie das Git-Symbol im Herausgeberportal in der oberen rechten Ecke anzeigen. In diesem Beispiel ist der Git-Zugriff noch nicht aktiviert.
+## <a name="access-git-configuration-in-your-service"></a>Zugreifen auf die Git-Konfiguration in Ihrem Dienst
+Sie können den Status der Git-Konfiguration schnell anzeigen, indem Sie das Git-Symbol im Herausgeberportal in der oberen rechten Ecke anzeigen. In diesem Beispiel gibt die Statusmeldung an, dass nicht gespeicherte Änderungen am Repository vorhanden sind. Dies liegt daran, dass die API Management-Dienstkonfigurationsdatenbank noch nicht im Repository gespeichert wurde.
 
 ![Git-Status][api-management-git-icon-enable]
 
 Um Ihre Git-Konfiguration anzuzeigen und zu konfigurieren, können Sie entweder auf das Git-Symbol klicken, oder Sie klicken auf das Menü **Sicherheit** und navigieren zu der Registerkarte **Konfigurations-Repository**.
 
 ![Git aktivieren][api-management-enable-git]
-
-Um den Git-Zugriff zu aktivieren, aktivieren Sie das Kontrollkästchen **Git-Zugriff aktivieren** .
-
-Kurze Zeit später wird die Änderung gespeichert, und eine Meldung wird angezeigt. Beachten Sie, dass das Git-Symbol farbig geworden ist, um anzuzeigen, dass der Git-Zugriff aktiviert ist, und die Statusmeldung jetzt angibt, dass Änderungen vorliegen, die noch nicht im Repository gespeichert sind. Dies liegt daran, dass die API Management-Dienstkonfigurationsdatenbank noch nicht im Repository gespeichert wurde.
-
-![Git aktiviert][api-management-git-enabled]
 
 > [!IMPORTANT]
 > Geheime Schlüssel, die nicht als Eigenschaften definiert sind, werden im Repository gespeichert und verbleiben in dessen Verlauf, bis Sie den Git-Zugriff deaktivieren und erneut aktivieren. Eigenschaften stellen einen sicheren Ort zum Verwalten von konstanten Zeichenfolgenwerten, einschließlich geheimer Schlüssel, für alle API-Konfigurationen und -Richtlinien dar. Sie müssen sie also nicht direkt in Ihren Richtlinienanweisungen speichern. Weitere Informationen finden Sie unter [Verwenden von Eigenschaften in Azure API Management-Richtlinien](api-management-howto-properties.md).
@@ -109,42 +100,58 @@ In den folgenden Beispielen wird das Tool Git Bash aus [Git für Windows](http:/
 
 Öffnen Sie Ihr Git-Tool im gewünschten Ordner, und führen Sie den folgenden Befehl zum Klonen des Git-Repositorys auf Ihrem lokalen Computer aus. Verwenden Sie dazu den Befehl aus dem Herausgeberportal.
 
-    git clone https://bugbashdev4.scm.azure-api.net/ 
+```
+git clone https://bugbashdev4.scm.azure-api.net/
+```
 
 Geben Sie nach Aufforderung den Benutzernamen und das Kennwort ein.
 
 Wenn Sie Fehlermeldungen erhalten, ändern Sie den Befehl `git clone` , sodass er den Benutzernamen und das Kennwort enthält, wie im folgenden Beispiel gezeigt.
 
-    git clone https://username:password@bugbashdev4.scm.azure-api.net/
+```
+git clone https://username:password@bugbashdev4.scm.azure-api.net/
+```
 
 Wenn dies zu einem Fehler führt, codieren Sie den Kennwortteil des Befehls als URL. Eine schnelle Möglichkeit, dies zu erreichen, ist, Visual Studio zu öffnen und den folgenden Befehl im **Direktfenster**auszugeben. Um das **Direktfenster** zu öffnen, öffnen Sie eine Projektmappe oder ein Projekt in Visual Studio (oder erstellen Sie eine neue leere Konsolenanwendung), und wählen Sie im Menü **Debuggen** erst **Fenster** und dann **Direkt** aus.
 
-    ?System.NetWebUtility.UrlEncode("password from publisher portal")
+```
+?System.NetWebUtility.UrlEncode("password from publisher portal")
+```
 
 Verwenden Sie das verschlüsselte Kennwort zusammen mit Ihrem Benutzernamen und dem Repositoryspeicherort, um den Git-Befehl zu erstellen.
 
-    git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+```
+git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+```
 
 Sobald das Repository geklont wurde, können Sie es anzeigen und in Ihrem lokalen Dateisystem verwenden. Weitere Informationen finden Sie unter [Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys](#file-and-folder-structure-reference-of-local-git-repository).
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>So aktualisieren Sie Ihr lokales Repository mit der aktuellen Dienstinstanzkonfiguration
 Wenn Sie Ihre API Management-Dienstinstanz im Herausgeberportal oder mit der REST-API ändern, müssen Sie diese Änderungen im Repository speichern, bevor Sie Ihr lokales Repository mit den neuesten Änderungen aktualisieren können. Klicken Sie hierzu im Herausgeberportal auf der Registerkarte **Konfigurationsrepository** auf **Konfiguration im Repository speichern**, und geben Sie dann den folgenden Befehl im lokalen Repository aus.
 
-    git pull
+```
+git pull
+```
 
 Stellen Sie vor dem Ausführen von `git pull` sicher, dass Sie sich im Ordner für das lokale Repository befinden. Wenn Sie den Befehl `git clone` gerade abgeschlossen haben, müssen Sie das Verzeichnis in Ihr Repository ändern, indem Sie einen Befehl wie den folgenden ausführen.
 
-    cd bugbashdev4.scm.azure-api.net/
+```
+cd bugbashdev4.scm.azure-api.net/
+```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>So übertragen Sie Änderungen aus Ihrem lokalen Repository in das Serverrepository
 Um Änderungen aus Ihrem lokalen Repository in das Serverrepository zu übertragen, müssen Sie einen Commit für die Änderungen ausführen und sie dann in das Serverrepository übertragen. Um einen Commit für die Änderungen auszuführen, öffnen Sie Ihr Git-Befehlstool, wechseln Sie in das Verzeichnis des lokalen Repositorys, und geben Sie die folgenden Befehle aus.
 
-    git add --all
-    git commit -m "Description of your changes"
+```
+git add --all
+git commit -m "Description of your changes"
+```
 
 Führen Sie den folgenden Befehl aus, um alle Commits auf den Server zu übertragen.
 
-    git push
+```
+git push
+```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>So stellen Sie Änderungen an der Dienstkonfiguration der API Management-Dienstinstanz bereit
 Sobald ein Commit für Ihre lokalen Änderungen ausgeführt wurde und sie in das Serverrepository übertragen wurden, können Sie sie Ihrer API Management-Dienstinstanz bereitstellen.
@@ -190,19 +197,21 @@ Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verw
 ### <a name="root-api-management-folder"></a>Stammordner „api-management“
 Der Stammordner `api-management` enthält eine Datei `configuration.json`, die Informationen der obersten Ebene über die Dienstinstanz im folgenden Format aufweist.
 
-    {
-      "settings": {
-        "RegistrationEnabled": "True",
-        "UserRegistrationTerms": null,
-        "UserRegistrationTermsEnabled": "False",
-        "UserRegistrationTermsConsentRequired": "False",
-        "DelegationEnabled": "False",
-        "DelegationUrl": "",
-        "DelegatedSubscriptionEnabled": "False",
-        "DelegationValidationKey": ""
-      },
-      "$ref-policy": "api-management/policies/global.xml"
-    }
+```json
+{
+  "settings": {
+    "RegistrationEnabled": "True",
+    "UserRegistrationTerms": null,
+    "UserRegistrationTermsEnabled": "False",
+    "UserRegistrationTermsConsentRequired": "False",
+    "DelegationEnabled": "False",
+    "DelegationUrl": "",
+    "DelegatedSubscriptionEnabled": "False",
+    "DelegationValidationKey": ""
+  },
+  "$ref-policy": "api-management/policies/global.xml"
+}
+```
 
 Die ersten vier Einstellungen (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled` und `UserRegistrationTermsConsentRequired`) entsprechen den folgenden Einstellungen auf der Registerkarte **Identitäten** im Abschnitt **Sicherheit**.
 
@@ -303,6 +312,6 @@ Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

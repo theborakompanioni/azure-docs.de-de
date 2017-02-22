@@ -1221,6 +1221,6 @@ Das folgende Beispiel zeigt ein Abrufen der subscription-Funktion im Abschnitt â
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

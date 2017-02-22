@@ -1,5 +1,5 @@
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regionen und Verfügbarkeit für virtuelle Computer in Azure
-Es ist wichtig zu verstehen, wie und wo Ihre virtuellen Computer (VMs) in Azure betrieben werden. Dies gilt auch für die Optionen zum Verbessern der Leistung, Verfügbarkeit und Redundanz. Azure wird in mehreren Rechenzentren weltweit betrieben. Dieser Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Dieser Artikel enthält eine Übersicht über die Verfügbarkeits- und Redundanzfunktionen von Azure.
+Es ist wichtig zu verstehen, wie und wo Ihre virtuellen Computer (VMs) in Azure betrieben werden. Dies gilt auch für die Optionen zum Verbessern der Leistung, Verfügbarkeit und Redundanz. Azure wird in mehreren Rechenzentren weltweit betrieben. Diese Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Dieser Artikel enthält eine Übersicht über die Verfügbarkeits- und Redundanzfunktionen von Azure.
 
 ## <a name="what-are-azure-regions"></a>Was sind Azure-Regionen?
 Mit Azure können Sie Ressourcen wie virtuelle Computer in definierten geografischen Regionen wie „USA, Westen“, „Europa, Norden“ oder „Asien, Südosten“ erstellen. Es gibt derzeit weltweit 30 Azure-Regionen. Sie können die [Liste der Regionen und Standorte](https://azure.microsoft.com/regions/)überprüfen. Innerhalb jeder Region sind mehrere Datencenter vorhanden, um Redundanz und Verfügbarkeit bereitzustellen. Dieser Ansatz gibt Ihnen beim Erstellen von Anwendungen die Flexibilität, VMs möglichst nah an Ihren Benutzern zu erstellen, um rechtliche oder steuerliche Anforderungen zu erfüllen und Compliance zu wahren.
@@ -37,8 +37,13 @@ Sie können die vollständige [Liste von Regionspaaren hier](../articles/best-pr
 Einige Dienste oder VM-Funktionen stehen nur in bestimmten Regionen zur Verfügung, z.B. bestimmte VM-Größen oder Speichertypen. Es gibt auch einige globale Azure-Dienste, für die Sie keine bestimmte Region auswählen müssen, beispielsweise [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md) oder [Azure DNS](../articles/dns/dns-overview.md). Als Hilfe beim Entwerfen Ihrer Anwendungsumgebung können Sie die [Verfügbarkeit von Azure-Diensten in jeder Region](https://azure.microsoft.com/regions/#services) überprüfen. 
 
 ## <a name="storage-availability"></a>Speicherverfügbarkeit
-Es ist wichtig, Azure-Regionen und -Gebiete zu verstehen, wenn Sie die verfügbaren Optionen für die Azure-Speicherreplikation betrachten. Wenn Sie ein Speicherkonto erstellen, müssen Sie eine der folgenden Replikationsoptionen auswählen:
+Beim Betrachten der verfügbaren Optionen für die Speicherreplikation sind grundlegende Informationen zu Azure-Regionen und -Gebiete erforderlich. Je nach Speichertyp stehen Ihnen verschiedene Replikationsoptionen zur Verfügung.
 
+**Azure Managed Disks**
+* Lokal redundanter Speicher (LRS)
+  * Repliziert Ihre Daten dreimal innerhalb der Region, in der Sie das Speicherkonto erstellt haben.
+
+**Speicherkontobasierte Datenträger**
 * Lokal redundanter Speicher (LRS)
   * Repliziert Ihre Daten dreimal innerhalb der Region, in der Sie das Speicherkonto erstellt haben.
 * Zonenredundanter Speicher (ZRS)
@@ -56,11 +61,15 @@ Die folgende Tabelle bietet einen schnellen Überblick über die Unterschiede zw
 | Daten können vom sekundären Standort und vom primären Standort aus gelesen werden. |Nein |Nein |Nein |Ja |
 | Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. |3 |3 |6 |6 |
 
-Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../articles/storage/storage-redundancy.md).
+Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../articles/storage/storage-redundancy.md). Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../articles/storage/storage-managed-disks-overview.md).
 
 ### <a name="storage-costs"></a>Speicherkosten
-Die Preise hängen vom gewählten Speichertyp und der gewünschten Verfügbarkeit ab. 
+Die Preise hängen vom gewählten Speichertyp und der gewünschten Verfügbarkeit ab.
 
+**Azure Managed Disks**
+* Verwaltete Premium-Datenträger werden durch Solid-State-Laufwerke (SSD) gesichert, und verwaltete Standarddatenträger werden durch reguläre rotierende Festplatten gesichert. Sowohl verwaltete Premium- als auch Standard-Datenträger werden basierend auf der bereitgestellten Kapazität für den Datenträger in Rechnung gestellt.
+
+**Nicht verwaltete Datenträger**
 * Storage Premium wird durch Solid State Drives (SSDs) gesichert und wird basierend auf der Kapazität des Datenträgers berechnet.
 * Standardspeicher wird durch reguläre rotierende Festplatten gesichert und wird basierend auf der verwendeten Kapazität und der gewünschten Speicherverfügbarkeit berechnet.
   * Für RA-GRS fallen zusätzliche Gebühren für Datenübertragungen zur Georeplikation für die Bandbreite für die Replikation dieser Daten in eine andere Azure-Region an.
@@ -75,7 +84,7 @@ Wenn Sie einen virtuellen Computer aus einem Image im Azure Marketplace erstelle
 Sie können auch eigene benutzerdefinierte Images erstellen und mit der [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hochladen, um schnell benutzerdefinierte virtuelle Computer für Ihre speziellen Anforderungen zu erstellen.
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
-Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern, die es Azure ermöglicht zu verstehen, wie Ihre Anwendung erstellt ist, um Redundanz und Verfügbarkeit zu bieten. Es wird empfohlen, dass zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe erstellt werden, um eine Anwendung mit hoher Verfügbarkeit bereitzustellen und um die [Azure-SLA von 99,95%](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Die Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs).
+Eine Verfügbarkeitsgruppe ist eine logische Gruppierung von virtuellen Computern, die es Azure ermöglicht zu verstehen, wie Ihre Anwendung erstellt ist, um Redundanz und Verfügbarkeit zu bieten. Es wird empfohlen, dass zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe erstellt werden, um eine Anwendung mit hoher Verfügbarkeit bereitzustellen und um die [Azure-SLA von&99;,95%](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Wenn ein einzelner virtuelle Computer [Azure Storage Premium](../articles/storage/storage-premium-storage.md) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. Eine Verfügbarkeitsgruppe besteht aus zwei zusätzlichen Gruppierungen, die vor Hardwareausfällen schützen und die sichere Anwendung von Updates ermöglichen: Fehlerdomänen (FDs) und Updatedomänen (UDs).
 
 ![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
 
@@ -83,6 +92,9 @@ Erfahren Sie mehr über das Verwalten der Verfügbarkeit von [virtuellen Linux-C
 
 ### <a name="fault-domains"></a>Fehlerdomänen
 Eine Fehlerdomäne ist eine logische Gruppe von zugrunde liegender Hardware mit einer gemeinsamen Stromquelle und einem Netzwerkswitch, ähnlich einem Rack in einem lokalen Rechenzentrum. Wenn Sie VMs in einer Verfügbarkeitsgruppe erstellen, werden Ihre VMs von der Azure-Plattform automatisch auf diese Fehlerdomänen verteilt. Bei diesem Ansatz werden die Auswirkungen von potenziellen Hardwareausfällen, Netzwerkausfällen oder Stromausfällen beschränkt.
+
+#### <a name="managed-disk-fault-domains-and-availability-sets"></a>Fehlerdomänen und Verfügbarkeitsgruppen für verwaltete Datenträger
+Virtuelle Computer mit [Azure Managed Disks](../articles/storage/storage-faq-for-disks.md) werden bei Verwendung einer verwalteten Verfügbarkeitsgruppe auf Fehlerdomänen für verwaltete Datenträger ausgerichtet. Diese Ausrichtung stellt sicher, dass sich alle verwalteten, an einen virtuellen Computer angefügten Datenträger innerhalb der gleichen Fehlerdomäne für verwaltete Datenträger befinden. Nur virtuelle Computer mit verwalteten Datenträgern können in einer verwalteten Verfügbarkeitsgruppe erstellt werden. Die Anzahl der Fehlerdomänen für verwaltete Datenträger variiert je nach Region – pro Region sind entweder zwei oder drei Fehlerdomänen für verwaltete Datenträger vorhanden.
 
 ### <a name="update-domains"></a>Updatedomänen
 Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die zur gleichen Zeit gewartet oder neu gestartet werden kann. Wenn Sie VMs in einer Verfügbarkeitsgruppe erstellen, werden Ihre VMs von der Azure-Plattform automatisch auf diese Updatedomänen verteilt. Mit diesem Ansatz wird sichergestellt, dass mindestens eine Instanz Ihrer Anwendung immer ausgeführt wird, wenn für die Azure-Plattform die regelmäßige Wartung durchgeführt wird. Während einer geplanten Wartung werden die Updatedomänen unter Umständen nicht der Reihe nach neu gestartet, sondern es wird jeweils nur eine Updatedomäne neu gestartet.
@@ -92,6 +104,6 @@ Sie können diese Verfügbarkeits- und Redundanzfunktionen jetzt nutzen, um Ihre
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

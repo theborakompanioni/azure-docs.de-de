@@ -1,23 +1,22 @@
 ---
 title: "Azure Government – Compute | Microsoft Docs"
 description: "Dies bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government"
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: fb11f60c-5a70-46a9-82a0-abb2a4f4239b
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 09/29/2016
+ms.date: 11/18/2016
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: a0374d6aeae42641e906a7f8e39bfc58eaacf096
-ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
+ms.sourcegitcommit: ca01baebd755e92aff1ef080af1fcd4606b9a2ec
+ms.openlocfilehash: 200caac4b480495b0bbb8f10cc89fdd73c42dbe2
 
 
 ---
@@ -26,16 +25,18 @@ ms.openlocfilehash: b351229c474e84a9e385d2ed81f2eb73267d9fd1
 Ausführliche Informationen zu diesem Dienst und seiner Verwendungsweise finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="variations"></a>Variationen
-In Azure Government sind die folgenden VM-SKUs allgemein verfügbar:
+Die Produkte (VMs) sind in Azure Government verfügbar:
 
-| VM-SKU | US Gov VA | US Gov IA | Hinweise |
-| --- | --- | --- | --- |
-| A |Allgemein verfügbar |Allgemein verfügbar |Keine |
-| Dv1 |Allgemein verfügbar |- |Keine |
-| DSv1 |Allgemein verfügbar |- |Keine |
-| Dv2 |Allgemein verfügbar |Allgemein verfügbar |15 in Kürze verfügbar |
-| F |Allgemein verfügbar |Allgemein verfügbar |Keine |
-| G |Geplant |- |Keine |
+| Produkte (VMs) | US Gov VA | US Gov IA |
+| --- | --- | --- |
+| A0–A7 |J |J |
+| D-Serie |J |N |
+| Dv2-Serie |J |J |
+| DS-Serie |J |N |
+| F-Serie |J |J |
+| FS-Serie |N |N |
+| G-Serie |J |N |
+| GS-Serie |J |N |
 
 ### <a name="data-considerations"></a>Überlegungen zu Daten
 Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Government für Azure Virtual Machines:
@@ -50,6 +51,6 @@ Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

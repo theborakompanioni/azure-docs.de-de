@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/30/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 98c8352152b6cd1817d32c6418597c566d94d44f
+ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
+ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
 
 
 ---
@@ -31,8 +31,8 @@ In diesem Thema wird beschrieben, wie Sie die Anmeldeseite und die Zugriffsberei
 > [!NOTE]
 > * Unternehmensbranding ist ein Feature, das nur verfügbar ist, wenn Sie Ihre Azure Active Directory-Instanz auf die Premium oder Basic Edition aktualisiert haben oder Office 365-Benutzer sind. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
 > * Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
-> 
-> 
+>
+>
 
 ## <a name="customizing-the-sign-in-page"></a>Anpassen der Anmeldeseite
 Normalerweise verwenden Sie die Anmeldeseite, wenn Sie browserbasierten Zugriff auf Ihre Cloud-Apps und -dienste benötigen, die von Ihrer Organisation abonniert wurden.
@@ -46,8 +46,8 @@ Wenn Sie einen Dienst mit nicht mandantenspezifischen URLs besuchen (7. B. https
 > [!NOTE]
 > * Ihr Domänenname muss im Abschnitt **Active Directory** > **Verzeichnis** > **Domänen** im klassischen Azure-Portal, in dem Sie das Branding konfiguriert haben, als „Aktiv“ angezeigt werden.
 > * Die Anmeldeseite mit dem Branding wird nicht auf die Verbraucheranmeldeseite von Microsoft übertragen. Wenn Sie sich mit einem persönlichen Microsoft-Konto anmelden, wird eine Liste mit von Azure AD gerenderten Benutzerkacheln mit Branding angezeigt, aber das Branding Ihrer Organisation wird nicht auf die Anmeldeseite des Microsoft-Kontos übertragen.
-> 
-> 
+>
+>
 
 Wenn Sie Ihre Unternehmensmarke, -farben und andere anpassbare Elemente auf dieser Seite anzeigen möchten, schauen Sie sich die folgenden Bilder an, um den Unterschied zwischen den beiden Eindrücken zu verstehen.
 
@@ -91,8 +91,8 @@ Sie können die folgenden Elemente auf der Anmeldeseite anpassen:
 
 > [!NOTE]
 > Alle Elemente sind optional. Wenn Sie z.B. ein Bannerlogo angeben, aber keine große Abbildung, werden auf der Anmeldeseite Ihr Logo und die Abbildung für den Zielstandort (d.h. das Office 365-Bild mit dem kalifornischen Highway) angezeigt.
-> 
-> 
+>
+>
 
 Dank des Kontrollkästchens **Angemeldet bleiben** auf der Anmeldeseite kann der Benutzer angemeldet bleiben, wenn er den Browser schließt und wieder öffnet. Die Sitzungsdauer wird dadurch nicht beeinflusst. Das Kontrollkästchen kann auf der Azure Active Directory-Anmeldeseite ausgeblendet werden.
 
@@ -100,12 +100,12 @@ Ob das Kontrollkästchen angezeigt wird, hängt von der Einstellung **„Angemel
 
 ![][9]
 
-Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ausgeblendet** fest. 
+Legen Sie diese Einstellung zum Ausblenden des Kontrollkästchens auf **Ausgeblendet** fest.
 
 > [!NOTE]
 > Einige Features von SharePoint Online und Office 2010 setzen voraus, dass dieses Kontrollkästchen von den Benutzern aktiviert werden kann. Wenn Sie das Kontrollkästchen mithilfe dieser Einstellung ausblenden, werden den Benutzern unter Umständen zusätzliche und unerwartete Anmeldeaufforderungen angezeigt.
-> 
-> 
+>
+>
 
 Sie können auch alle Elemente auf dieser Seite lokalisieren. Sobald Sie einen „Standardsatz“ mit Anpassungselementen konfiguriert haben, können Sie zusätzliche Versionen für verschiedene Gebietsschemas konfigurieren. Sie können auch verschiedene Elemente miteinander kombinieren. Dazu zählen z. B.:
 
@@ -163,15 +163,15 @@ Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am 
 4. Klicken Sie auf **Branding anpassen**.
 5. Wählen Sie auf der Seite Branding anpassen **Vorhandene Brandingeinstellungen bearbeiten** und fahren Sie anschließend mit der nächsten Seite fort.
 6. Abhängig von den Elementen, die Sie entfernen möchten, führen Sie eine oder mehrere der folgenden Aktionen aus:
-   
+
     a. Wählen Sie unter **Bannerlogo** die Option **Hochgeladenes Logo entfernen**.
-   
+
     b. Wählen Sie unter **Kachellogo** die Option **Hochgeladenes Logo entfernen**.
-   
+
     c. Entfernen Sie den Text aus allen Textfeldern.
-   
+
     d. Klicken Sie auf **Next**.
-   
+
     e. Entfernen Sie den Text aus allen Textfeldern.
 7. Klicken Sie auf **Speichern** , um die Elemente zu entfernen.
 8. Klicken Sie ggf. erneut auf **Branding anpassen**, und wiederholen Sie diese Schritte für das gesamte sprachspezifische Branding, das entfernt werden soll.
@@ -199,12 +199,12 @@ Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie k
 
 | Name | Beschreibung | Einschränkungen | Empfehlungen |
 | --- | --- | --- | --- |
-| Bannerlogo |Das Bannerlogo wird auf der Anmeldeseite und im Zugriffsbereich angezeigt. |<p>JPG oder PNG</p><p>60 x 280 Pixel</p><p>10 KB</p> |<p>Verwenden Sie das vollständige Logo Ihrer Organisation (einschließlich Piktogramm und Firmenschriftzug)</p><p>Halten Sie es unter 30 Pixel, um Bildlaufleisten auf mobilen Geräten zu vermeiden</p><p>Halten Sie es kleiner als 4 KB</p><p>Verwenden Sie eine transparente PNG-Datei (gehen Sie nicht davon aus, dass die Anmeldeseite immer einen weißen Hintergrund hat)</p> |
-| Kachellogo |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um das generische „Geschäfts- oder Schulkonto“-Piktogramm an unterschiedlichen Stellen zu platzieren. |<p>JPG oder PNG</p><p>120 x 120 Pixel</p><p>10 KB</p> |<p>Halten Sie es einfach (kein kleiner Text), da dieses Abbild um 50 % verkleinert werden kann |
+| Bannerlogo |Das Bannerlogo wird auf der Anmeldeseite und im Zugriffsbereich angezeigt. |<p>JPG oder PNG</p><p>60 x&280; Pixel</p><p>10 KB</p> |<p>Verwenden Sie das vollständige Logo Ihrer Organisation (einschließlich Piktogramm und Firmenschriftzug)</p><p>Halten Sie es unter 30 Pixel, um Bildlaufleisten auf mobilen Geräten zu vermeiden</p><p>Halten Sie es kleiner als 4 KB</p><p>Verwenden Sie eine transparente PNG-Datei (gehen Sie nicht davon aus, dass die Anmeldeseite immer einen weißen Hintergrund hat)</p> |
+| Kachellogo |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um das generische „Geschäfts- oder Schulkonto“-Piktogramm an unterschiedlichen Stellen zu platzieren. |<p>JPG oder PNG</p><p>120 x&120; Pixel</p><p>10 KB</p> |<p>Halten Sie es einfach (kein kleiner Text), da dieses Abbild um 50 % verkleinert werden kann |
 | </p> | | | |
 | Benutzernamenbezeichnung auf der Anmeldeseite |(zurzeit nicht auf der Anmeldeseite verwendet) Dieser Text kann in Zukunft verwendet werden, um die generische „Geschäfts- oder Schulkonto“-Zeichenfolge an unterschiedlichen Stellen zu platzieren. Sie können ihn beispielsweise auf „Contoso-Konto“ oder „Contoso-ID“ festlegen. |<p>Unicode-Text, bis zu 50 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> |<p>Halten Sie es kurz und einfach.</p><p>Fragen Sie die Benutzer, wie Sie sich in der Regel auf das Geschäfts- oder Schulkonto beziehen, das Sie zur Verfügung stellen.</p> |
 | Text der Anmeldeseite |Dieser „Textbaustein“ wird unter dem Anmeldeseitenformular angezeigt und kann verwendet werden, um zusätzliche Anweisungen zu kommunizieren oder mitzuteilen, wo es Hilfe und Support gibt. |<p>Unicode-Text, bis zu 256 Zeichen</p><p>Ausschließlich Nur-Text (keine Links oder HTML-Tags)</p> |Verwenden Sie maximal 250 Zeichen (ungefähr drei Zeilen Text) |
-| Abbildung auf der Anmeldeseite |Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. |<p>JPG oder PNG</p><p>1420 x 1200</p><p>500 KB</p> |<p>1420 x 1200 Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird häufig zugeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Belassen Sie die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p> |
+| Abbildung auf der Anmeldeseite |Die Abbildung zeigt ein großes Bild, das auf der Anmeldeseite links neben dem Anmeldeseitenformular angezeigt wird. |<p>JPG oder PNG</p><p>1420 x&1200;</p><p>500 KB</p> |<p>1420 x&1200; Pixel</p><p>Wichtig: Halten Sie es so klein wie möglich, idealerweise unter 200 KB. Falls dieses Bild zu groß ist, beeinflusst dies die Leistung der Anmeldeseite, wenn das Bild nicht zwischengespeichert wird</p><p>Dieses Bild wird häufig zugeschnitten, um verschiedene Bildschirm-Seitenverhältnisse zu ermöglichen. Belassen Sie die visuellen Hauptelemente in der oberen linken Ecke (oben rechts für RTL-Sprachen), weil die Größenänderung von der Ecke unten rechts nach oben links erfolgt, wenn das Browserfenster verkleinert wird.</p> |
 | Hintergrundfarbe auf der Anmeldeseite |Die Hintergrundfarbe auf der Anmeldeseite wird im Bereich links neben dem Anmeldeseitenformular verwendet. |Muss eine RGB-Farbe im hexadezimalen Format sein (Beispiel: #FFFFFF) |<p>Die Hintergrundfarbe wird bei Verbindungen mit geringer Bandbreite unter Umständen anstelle der großen Abbildung angezeigt</p><p>Wir empfehlen, die Grundfarbe des Bannerlogos auszuwählen</p> |
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -224,6 +224,6 @@ Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie k
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

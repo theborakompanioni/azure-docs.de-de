@@ -4,7 +4,7 @@ description: "Mit dem Netzwerkleistungsmonitor können Sie die Leistung Ihrer Ne
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2016
+ms.date: 01/31/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 4f5c7208cabc565c4f5dddc917c4756ae4776c33
+ms.sourcegitcommit: d1cae87bb312ef903d099b8be59ad39a5b83d468
+ms.openlocfilehash: 4b683ef50ca1046686213b55c32e07b5fb8cca68
 
 
 ---
 # <a name="network-performance-monitor-preview-solution-in-oms"></a>Netzwerkleistungsmonitor-Lösung (Preview) in OMS
 > [!NOTE]
-> Dies ist eine [Previewlösung](log-analytics-add-solutions.md#log-analytics-preview-solutions-and-features).
+> Dies ist eine [Previewlösung](log-analytics-add-solutions.md#preview-management-solutions-and-features).
 >
 >
 
@@ -149,6 +149,51 @@ Die *Standardregel* wird vom System erstellt. Sie generiert immer dann ein Integ
 6. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.  
    ![Benutzerdefinierte Überwachungsregel erstellen](./media/log-analytics-network-performance-monitor/npm-monitor-rule.png)
 
+### <a name="choose-the-right-protocol-icmp-or-tcp"></a>Wählen des richtigen Protokolls: ICMP oder TCP
+
+Die Funktion „Netzwerkleistungsüberwachung“ (Network Performance Monitor, NPM) nutzt synthetische Transaktionen zum Berechnen von Netzwerkleistungmetriken wie Paketverlust und Linklatenz. Um dies besser zu verstehen, sollten Sie einen NPM-Agent mit einem Ende einer Netzwerkverbindung verbinden. Dieser NPM-Agent sendet Testpakete an einen zweiten NPM-Agent, der mit einem anderen Ende des Netzwerks verbunden ist. Der zweite Agent antwortet mit Antwortpaketen. Dieser Prozess wird einige Male wiederholt. Durch Messen der Anzahl von Antworten und Empfangszeit jeder Antwort kann der erste NPM-Agent die Linklatenz und Paketverluste messen.
+
+Format, Größe und Reihenfolge dieser Pakete richten sich nach dem Protokoll, das Sie bei der Erstellung von Überwachungsregeln auswählen. Je nach Protokoll der Pakete können die zwischengeschalteten Netzwerkgeräte (Router, Switches usw.) diese Pakete möglicherweise unterschiedlich verarbeiten. Folglich wirkt sich Ihre Protokollauswahl auf die Genauigkeit der Ergebnisse aus. Zudem bestimmt Ihre Wahl des Protokolls auch, ob Sie nach Bereitstellen der NPM-Lösung manuelle Schritte ausführen müssen.
+
+NPM bietet Ihnen für die Ausführung synthetischer Transaktionen die Wahl zwischen den Protokollen ICMP und TCP.
+Wenn Sie beim Erstellen einer synthetischen Transaktionsregel ICMP wählen, verwenden die NPM-Agents ICMP ECHO-Nachrichten zum Berechnen von Netzwerklatenz und Paketverlust. ICMP ECHO verwendet dieselbe Nachricht, die vom gängigen Hilfsprogramm Ping gesendet wird. Bei Verwenden von TCP als Protokoll senden NPM-Agents ein TCP SYN-Paket über das Netzwerk. Darauf folgt ein TCP-Handshake bis zum Abschluss und das anschließende Entfernen der Verbindung mithilfe von RST-Paketen.
+
+#### <a name="points-to-consider-before-choosing-the-protocol"></a>Bei Wahl des Protokolls zu beachtende Aspekte
+Ehe Sie ein Protokoll wählen, sollten Sie die folgenden Informationen berücksichtigen:
+
+##### <a name="discovering-multiple-network-routes"></a>Ermitteln mehrerer Netzwerkrouten
+TCP bietet genauere Daten, wenn mehrere Routen ermitteln werden, und benötigt weniger Agents in jedem Subnetz. Beispielsweise können ein oder zwei Agents, die TCP verwenden, alle redundanten Pfade zwischen Subnetzen ermitteln. Bei Verwenden von ICMP benötigen Sie mehr Agents, um dasselbe Resultat zu erzielen. Wenn Sie bei Verwenden von ICMP über *N* Routen zwischen zwei Subnetzen verfügen, benötigen Sie im jeweiligen Quell- oder Zielsubnetz mehr als *5* Agents.
+
+##### <a name="accuracy-of-results"></a>Genauigkeit der Ergebnisse
+Router und Switches weisen ICMP ECHO-Paketen im Vergleich mit TCP-Paketen tendenziell eine niedrigere Priorität zu. Wenn Netzwerkgeräte in bestimmten Situationen stark ausgelastet sind, geben die von TCP abgerufenen Daten den Paketverlust und die Latenz von Anwendungen präziser zurück. Dies erfolgt, da der meiste Datenverkehr über TCP übertragen wird. In solchen Fällen bietet ICMP im Vergleich mit TCP ungenauere Ergebnisse.
+
+##### <a name="firewall-configuration"></a>Firewall-Konfiguration
+Das TCP-Protokoll erfordert, dass TCP-Pakete an einen Zielport gesendet werden. Der von NPM-Agents verwendete Standardport ist 8084, den Sie beim Konfigurieren von Agents jedoch ändern können. Sie müssen daher sicherstellen, dass Ihre Netzwerkfirewalls bzw. NSG-Regeln (Netzwerksicherheitsgruppen) Datenverkehr an diesem Port zulassen. Sie müssen auch sicherstellen, dass die lokale Firewall auf den Computern, auf denen Agents installiert sind, für das Zulassen von Datenverkehr an diesem Port konfiguriert ist.
+
+Sie können zum Konfigurieren von Firewallregeln auf Ihren Computern Windows PowerShell-Skripts verwenden. Die Netzwerkfirewall müssen Sie allerdings manuell konfigurieren.
+
+Im Gegensatz dazu arbeitet ICMP nicht mit einem Port. In den meisten Unternehmensumgebungen ist ICMP-Datenverkehr durch die Firewalls zulässig, damit Sie Netzwerkdiagnosetools wie das Hilfsprogramm Ping einsetzen können. Wenn Sie also einen Computer von einem anderen aus pingen können, lässt sich das ICMP-Protokoll nutzen, ohne dass Firewalls manuell konfiguriert werden müssen.
+
+> [!NOTE]
+> Falls Sie nicht sicher sind, welches Protokoll Sie verwenden sollen, wählen Sie zum Einstieg ICMP. Wenn Sie mit den Ergebnissen nicht zufrieden sind, können Sie später immer noch zu TCP wechseln.
+
+
+#### <a name="how-to-switch-the-protocol"></a>Informationen zum Wechseln des Protokolls
+
+Wenn Sie sich während der Bereitstellung für ICMP entscheiden, können Sie jederzeit zu TCP wechseln, indem Sie die Standardüberwachungsregel bearbeiten.
+
+##### <a name="to-edit-the-default-monitoring-rule"></a>So bearbeiten Sie die Standardüberwachungsregel
+1.  Navigieren Sie zu **Netzwerkleistung** > **Monitor** > **Konfigurieren** > **Monitor**, und klicken Sie dann auf **Standardregel**.
+2.  Scrollen Sie zum Abschnitt **Protokoll**, und wählen Sie das Protokoll, das Sie verwenden möchten.
+3.  Klicken Sie auf **Speichern**, um die Einstellung zu übernehmen.
+
+Auch wenn die Standardregel ein bestimmtes Protokoll angibt, können Sie neue Regeln mit einem anderen Protokoll erstellen. Sie können sogar eine Kombination aus Regeln erstellen, bei der einige der Regeln ICMP und andere TCP verwenden.
+
+
+
+
+
+
 ## <a name="data-collection-details"></a>Details zur Datensammlung
 Der Netzwerkleistungsmonitor verwendet TCP SYN-SYNACK-ACK-Handshakepakete, um Informationen zu Verlusten und zur Latenz zu sammeln. Ferner wird Traceroute verwendet, um Topologieinformationen abzurufen.
 
@@ -246,6 +291,6 @@ Nachdem Sie nun mit dem Netzwerkleistungsmonitor vertraut sind, erfahren Sie in 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

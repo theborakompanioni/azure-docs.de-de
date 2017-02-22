@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 07/07/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 759441c5d64ee59f13d50eb415fbaa884dd4821a
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: 1c29cfc0a5b6361a7f526c37d5421ee4be3fe2c1
 
 
 ---
@@ -28,7 +28,7 @@ In diesem Tutorial erstellen Sie mit [Python-Tools für Visual Studio](https://w
 > [!NOTE]
 > Die Informationen in diesem Tutorial stehen auch in folgendem Video zur Verfügung:
 > 
-> [PTVS 2.1: Django-App mit MySQL][Video]
+> [PTVS 2.1: Django app with MySQL][video] (PTVS 2.1: Django-App mit MySQL)
 > 
 > 
 
@@ -38,7 +38,7 @@ Weitere Artikel finden Sie im [Python Developer Center]. Diese Artikel behandeln
 * Visual Studio 2015
 * [Python 2.7 (32 Bit)] oder [Python 3.4 (32 Bit)]
 * [Python Tools 2.2 für Visual Studio]
-* [Python Tools 2.2 für Visual Studio, Beispiel-VSIX]
+* [Python Tools 2.2 für Visual Studio, Beispiel-VSIX]
 * [Azure SDK-Tools für Visual Studio 2015]
 * Django 1.9 oder höher
 
@@ -47,7 +47,7 @@ Weitere Artikel finden Sie im [Python Developer Center]. Diese Artikel behandeln
 <!-- This note should not render as part of the the previous include. -->
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -163,22 +163,22 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 <!--External Link references-->
 
 [Azure-Portal]: https://portal.azure.com
-[Python-Tools für Visual Studio]: https://www.visualstudio.com/vs/python/
+[Python Tools for Visual Studio]: https://www.visualstudio.com/vs/python/
 [Python Tools 2.2 für Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
-[Python Tools 2.2 für Visual Studio, Beispiel-VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Python Tools 2.2 für Visual Studio, Beispiel-VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Azure SDK-Tools für Visual Studio 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 Bit)]: http://go.microsoft.com/fwlink/?LinkId=517190
-[Python 3.4 32-Bit]: http://go.microsoft.com/fwlink/?LinkId=517191
+[Python 3.4 (32 Bit)]: http://go.microsoft.com/fwlink/?LinkId=517191
 [Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
 [Remotedebugging in Microsoft Azure]: http://go.microsoft.com/fwlink/?LinkId=624026
 [Webprojekte]: http://go.microsoft.com/fwlink/?LinkId=624027
 [Cloud Service-Projekte]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Dokumentation zu Django]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
-[Video]: http://youtu.be/oKCApIrS0Lo
+[video]: http://youtu.be/oKCApIrS0Lo
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

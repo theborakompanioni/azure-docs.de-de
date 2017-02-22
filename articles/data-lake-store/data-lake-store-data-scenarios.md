@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2016
+ms.date: 01/17/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 73d3e5577d0702a93b7f4edf3bf4e29f55a053ed
-ms.openlocfilehash: 15460ef4add0e0ab94e776ffb715b86d39b89659
+ms.sourcegitcommit: 2969e6063d7bc59a6c8ca733912904abeeb7e7e8
+ms.openlocfilehash: c79826afe9af20dd46db46ab6c73f3196a71fc46
 
 
 ---
@@ -33,7 +33,7 @@ In diesem Artikel betrachten wir diese Phasen in Bezug auf den Azure Data Lake-S
 ## <a name="ingest-data-into-data-lake-store"></a>Erfassen von Daten im Data Lake-Speicher
 In diesem Abschnitt werden die unterschiedlichen Quellen von Daten hervorgehoben, sowie die verschiedenen Methoden, mit denen Daten in einem Data Lake-Speicherkonto erfasst werden können.
 
-![Erfassen von Daten im Data Lake-Speicher](./media/data-lake-store-data-scenarios/ingest-data.png "Ingest data into Data Lake Store")
+![Erfassen von Daten in Data Lake Store](./media/data-lake-store-data-scenarios/ingest-data.png "Erfassen von Daten in Data Lake Store")
 
 ### <a name="ad-hoc-data"></a>Ad-hoc-Daten:
 Dies steht für kleinere Datasets, die zum Erstellen von Prototypen einer Big Data-Anwendung verwendet werden. Es gibt, abhängig von der Quelle der Daten, verschiedene Möglichkeiten zum Erfassen von Ad-hoc-Daten.
@@ -50,7 +50,7 @@ Folgende Tools können Sie verwenden:
 
 * [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md): In Event Hubs erfasste Ereignisse können mithilfe einer Azure Data Lake Store-Ausgabe in Azure Data Lake geschrieben werden.
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md) : Daten aus dem Storm-Cluster können direkt in Data Lake Store geschrieben werden.
-* [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Store schreiben.
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md): Sie können Ereignisse von Event Hubs empfangen und dann mit dem [Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) in Data Lake Store schreiben.
 
 ### <a name="relational-data"></a>Relationale Daten
 Sie können auch Daten aus relationalen Datenbanken erfassen. Relationale Datenbanken sammeln über einen Zeitraum hinweg umfangreiche Datenmengen, die bei Verarbeitung durch eine Big Data-Pipeline wichtige Einblicke bieten können. Mit den folgenden Tools können Sie solche Daten in den Data Lake-Speicher verschieben.
@@ -91,14 +91,14 @@ Das Hochladen von Datasets im Bereich mehrerer Terabyte kann mithilfe der oben b
 * **Offline-Datenupload**. Wenn Azure ExpressRoute aus irgendeinem Grund nicht verwendet werden kann, können Sie über den [Azure Import/Export-Dienst](../storage/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Storage-Blobs hochgeladen. Anschließend können Sie mit [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) oder dem [AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md) Daten aus Azure Storage-Blobs in Data Lake Store kopieren.
 
   > [!NOTE]
-  > Wenn Sie den Import-/Export-Dienst verwenden, sollte die Größe der Dateien auf den Datenträgern, die Sie an das Azure-Rechenzentrum senden, nicht größer als 200 GB sein.
+  > Wenn Sie den Import/Export-Dienst verwenden, sollte die Größe der Dateien auf den Datenträgern, die Sie an das Azure-Rechenzentrum senden, nicht größer als 195 GB sein.
   >
   >
 
 ## <a name="process-data-stored-in-data-lake-store"></a>Verarbeiten von Daten, die im Data Lake-Speicher gespeichert sind
 Sobald die Daten im Data Lake-Speicher verfügbar sind, können Sie mit den unterstützten Big Data-Anwendungen eine Analyse dieser Daten ausführen. Derzeit können Sie mit Azure HDInsight und Azure Data Lake Analytics Datenanalyseaufträge ausführen, die sich auf Daten im Data Lake-Speicher beziehen.
 
-![Analysieren von Daten im Data Lake-Speicher](./media/data-lake-store-data-scenarios/analyze-data.png "Analyze data in Data Lake Store")
+![Analysieren von Daten in Data Lake Store](./media/data-lake-store-data-scenarios/analyze-data.png "Analysieren von Daten in Data Lake Store")
 
 Betrachten Sie die folgenden Beispiele.
 
@@ -111,7 +111,7 @@ Vielleicht möchten Sie auch für Szenarien wie die folgenden Daten aus dem Azur
 * Verschieben von Daten aus anderen Repositorys zur Verbindung mit Ihren vorhandenen Datenverarbeitungspipelines. Sie möchten z. B. Daten aus dem Data Lake-Speicher in die Azure SQL-Datenbank oder auf einen lokalen SQL Server verschieben.
 * Herunterladen von Daten auf Ihren lokalen Computer für die Verarbeitung in IDE-Umgebungen beim Erstellen von Anwendungsprototypen.
 
-![Ausgehen von Daten aus dem Data Lake-Speicher](./media/data-lake-store-data-scenarios/egress-data.png "Egress data from Data Lake Store")
+![Ausgeben von Daten aus Data Lake Store](./media/data-lake-store-data-scenarios/egress-data.png "Ausgeben von Daten aus Data Lake Store")
 
 In solchen Fällen können Sie eine der folgenden Optionen verwenden:
 
@@ -128,13 +128,13 @@ Sie können auch mit den folgenden Methoden Ihr eigenes Skript/Ihre eigene Anwen
 ## <a name="visualize-data-in-data-lake-store"></a>Visualisieren von Daten im Data Lake-Speicher
 Sie können eine Kombination von Diensten verwenden, um visuelle Darstellungen der Daten zu erstellen, die im Data Lake-Speicher gespeichert sind.
 
-![Visualisieren von Daten im Data Lake-Speicher](./media/data-lake-store-data-scenarios/visualize-data.png "Visualize data in Data Lake Store")
+![Visualisieren von Daten in Data Lake Store](./media/data-lake-store-data-scenarios/visualize-data.png "Visualisieren von Daten in Data Lake Store")
 
 * Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Store nach Azure SQL Data Warehouse verschieben](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)
 * Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) , um eine visuelle Darstellung der Daten zu erstellen.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

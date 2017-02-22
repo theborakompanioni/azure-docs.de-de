@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/27/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 42a2b241ed6ac2b13d1fb65f42242b194ef2858b
+ms.sourcegitcommit: 1a074e54204ff8098bea09eb4aa2066ccee47608
+ms.openlocfilehash: ab9e952027dcaa5b43cdad8faf8005b063c01dce
 
 
 ---
@@ -26,7 +26,7 @@ Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto me
 * Lastenausgleich der Assets für mehrere Speicherkonten.
 * Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
 
-In diesem Thema wird erläutert, wie mehrere Speicherkonten mit der Azure-Dienstverwaltungs-REST-API an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
+In diesem Thema wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
 
 ## <a name="considerations"></a>Überlegungen
 Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die folgenden Überlegungen:
@@ -34,13 +34,33 @@ Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die 
 * Alle an ein Media Services-Konto angefügten Speicherkonten müssen sich im gleichen Rechenzentrum wie das Media Services-Konto befinden.
 * Derzeit kann ein Speicherkonto nicht mehr getrennt werden, nachdem es an ein Media Services-Konto angefügt wurde.
 * Das primäre Speicherkonto wird zum Zeitpunkt der Erstellung des Media Services-Kontos angegeben. Derzeit können Sie das Standardspeicherkonto nicht ändern. 
+* Wenn Sie gegenwärtig ein Konto für kalten Speicher zu einem AMS-Konto hinzufügen möchten, muss das Speicherkonto ein Blobtyp sein. Zudem muss es auf nicht primär festgelegt sein.
 
 Weitere Überlegungen:
 
-Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der Name-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Es darf außerdem nur ein „.“ für die Dateinamenerweiterung vorhanden sein.
+Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der Name-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen enthalten](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
 
-## <a name="to-attach-a-storage-account-with-azure-service-management-rest-api"></a>So fügen Sie ein Speicherkonto mit der Azure-Dienstverwaltungs-REST-API an
-Zum gegenwärtigen Zeitpunkt können mehrere Speicherkonten nur mithilfe der [Azure-Dienstverwaltungs-REST-API](http://msdn.microsoft.com/library/azure/dn167014.aspx)angefügt werden. Das Codebeispiel im Thema [How to: Use Media Services Management REST API](https://msdn.microsoft.com/library/azure/dn167656.aspx) (Gewusst wie: Verwenden der Media Services-Verwaltungs-REST-API) definiert die **AttachStorageAccountToMediaServiceAccount** -Methode, mit der ein Speicherkonto an das angegebene Media Services-Konto angefügt wird. Der Code im gleichen Thema definiert die **ListStorageAccountDetails** -Methode, mit der alle an das angegebene Media Services-Konto angefügten Speicherkonten aufgelistet werden.
+## <a name="to-attach-storage-accounts"></a>So fügen Sie Speicherkonten an  
+
+Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media), wie im folgenden Beispiel gezeigt.
+
+    $regionName = "West US"
+    $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
+    $resourceGroupName = "SkyMedia-USWest-App"
+    $mediaAccountName = "sky"
+    $storageAccount1Name = "skystorage1"
+    $storageAccount2Name = "skystorage2"
+    $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
+    $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
+    $storageAccount1 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+    $storageAccount2 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+    $storageAccounts = @($storageAccount1, $storageAccount2)
+    
+    Set-AzureRmMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+
+### <a name="support-for-cool-storage"></a>Unterstützung für kalten Speicher
+
+Wenn Sie gegenwärtig ein Konto für kalten Speicher zu einem AMS-Konto hinzufügen möchten, muss das Speicherkonto ein Blobtyp sein. Zudem muss es auf nicht primär festgelegt sein.
 
 ## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>So verwalten Sie Media Services-Medienobjekte für mehrere Speicherkonten
 Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufgaben ausgeführt:
@@ -257,6 +277,6 @@ Im folgenden Code werden mit dem aktuellen Media Services-SDK die folgenden Aufg
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

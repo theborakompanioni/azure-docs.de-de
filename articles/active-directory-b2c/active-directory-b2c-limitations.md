@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 3ff8fba42e6455b33103c931da731b0affa8a0fb
-ms.openlocfilehash: b5fbd15729da2674b34a227861e65b89548dad39
+ms.sourcegitcommit: bfffb074a905184269992a19993aabc22bb1256f
+ms.openlocfilehash: b65c54819374e90a8318a3f3eecce5b71b01b17f
 
 
 ---
@@ -27,9 +27,6 @@ Es gibt mehrere Features und Funktionen von Azure Active Directory (Azure AD) B2
 Wenn während der [Erstellung eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md) Probleme auftreten, hilft Ihnen die Anleitung unter [Erstellen eines Azure Active Directory (Azure AD)-Mandanten oder eines Azure AD B2C-Mandanten – Probleme und Lösungen](active-directory-b2c-support-create-directory.md) weiter.
 
 Beachten Sie, dass beim Löschen eines vorhandenen B2C-Mandanten und erneuten Erstellen mit demselben Domänennamen bekannte Probleme auftreten. Sie müssen einen B2C-Mandanten mit einem anderen Domänennamen erstellen.
-
-## <a name="note-about-b2c-tenant-quotas"></a>Hinweis zu B2C-Mandantenkontingenten
-Standardmäßig ist die Anzahl von Benutzern in einem B2C-Mandanten auf 50.000 Benutzer begrenzt. Wenn Sie das Kontingent für den B2C-Mandanten erhöhen möchten, sollten Sie sich an den Support wenden.
 
 ## <a name="branding-issues-on-verification-email"></a>Probleme beim Branding in der Bestätigungs-E-Mail
 Die Standard-Bestätigungs-E-Mail ist mit dem Microsoft-Branding versehen. Dieses wird künftig entfernt. Vorläufig können Sie es mit dem [Feature für Unternehmensbranding](../active-directory/active-directory-add-company-branding.md)entfernen.
@@ -51,6 +48,39 @@ Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-AP
 
 Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
 
+## <a name="restrictions-on-reply-urls"></a>Einschränkungen für Antwort-URLs
+Aktuell sind in Azure AD B2C registrierte Apps auf eine begrenzte Anzahl von Antwort-URL-Werten beschränkt. Die Antwort-URL für Web-Apps und -Dienste muss mit dem Schema `https` beginnen, und alle Antwort-URL-Werte müssen dieselbe DNS-Domäne verwenden. Es ist beispielsweise nicht möglich, eine Web-App zu registrieren, die eine der folgenden Direkt-URLs aufweist:
+
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`
+
+Das Registrierungssystem vergleicht den gesamten DNS-Namen der vorhandenen Antwort-URL mit dem DNS-Namen der von Ihnen hinzugefügten Antwort-URL. Die Anforderung zum Hinzufügen des DNS-Namens schlägt fehl, wenn eine der folgenden Bedingungen erfüllt ist:
+
+* Der gesamte DNS-Name der neuen Antwort-URL entspricht nicht dem DNS-Namen der vorhandenen Antwort-URL.
+* Der gesamte DNS-Name der neuen Antwort-URL ist keine Unterdomäne der vorhandenen Antwort-URL.
+
+Beispiel: Die App besitzt die folgende Antwort-URL:
+
+`https://login.contoso.com`
+
+Eine Hinzufügung ist wie folgt möglich:
+
+`https://login.contoso.com/new`
+
+In diesem Fall stimmt der DNS-Name exakt überein. Alternativ haben Sie folgende Möglichkeit:
+
+`https://new.login.contoso.com`
+
+In diesem Fall verweisen Sie auf eine DNS-Unterdomäne von login.contoso.com. Wenn Sie eine App mit den Antwort-URLs „login-east.contoso.com“ und „login-west.contoso.com“ benötigen, müssen Sie die folgenden Antwort-URLs in der angegebenen Reihenfolge hinzufügen:
+
+`https://contoso.com`  
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`  
+
+Die beiden letztgenannten URLs können hinzugefügt werden, da es sich hierbei um Unterdomänen der ersten Antwort-URL „contoso.com“ handelt. Diese Einschränkung wird in einer zukünftigen Version aufgehoben.
+
+Informationen zum Registrieren einer App in Azure AD B2C finden Sie unter [Azure Active Directory B2C: Registrieren der Anwendung](active-directory-b2c-app-registration.md).
+
 ## <a name="restriction-on-libraries-and-sdks"></a>Einschränkungen für Bibliotheken und SDKs
 Die Gruppe der von Microsoft unterstützten Bibliotheken, die mit Azure AD B2C verwendet werden können, ist zurzeit noch sehr beschränkt. Es ist Unterstützung für .NET-basierte Web-Apps und Dienste sowie für NodeJS-Web-Apps und -Dienste verfügbar.  Außerdem ist eine Vorschauversion der .NET-Clientbibliothek (MSAL) vorhanden, die mit Azure AD B2C in Windows-Apps und anderen .NET-Apps verwendet werden kann.
 
@@ -62,7 +92,7 @@ In unseren iOS- und Android-Schnellstart-Tutorials werden Open-Source-Bibliothek
 Azure AD B2C unterstützt OpenID Connect und OAuth 2.0. Allerdings wurden nicht alle Features und Funktionen der einzelnen Protokolle implementiert. Lesen Sie zum besseren Verständnis des Umfangs der unterstützten Protokollfunktionen in Azure AD B2C die [OpenID Connect- und OAuth 2.0-Protokollreferenz](active-directory-b2c-reference-protocols.md). Die Protokolle SAML (Security Assertion Markup Language) und WS-Fed (WS-Federation) werden nicht unterstützt.
 
 ## <a name="restriction-on-tokens"></a>Einschränkungen für Token
-Viele der von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Aber nicht alle Informationen, die in JWTs enthalten sind (als „Ansprüche“ bezeichnet), sind richtig, oder sie fehlen sogar. Beispiele hierfür sind die Ansprüche „sub“ und „preferred_username“.  Da sich die Werte, das Format oder die Bedeutung von Ansprüchen im Laufe der Zeit ändern, bleiben Token für Ihre vorhandenen Richtlinien davon unberührt. Sie können sich auf die Werte in den Produktions-Apps verlassen.  Wenn sich Werte ändern, erhalten Sie die Möglichkeit, diese Änderungen für jede Richtlinie zu konfigurieren.  Lesen Sie sich die [Token-Referenz](active-directory-b2c-reference-tokens.md) durch, um ein besseres Verständnis für die Token zu entwickeln, die vom Azure AD B2C-Dienst derzeit ausgegeben werden.
+Viele der von Azure AD B2C ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Aber nicht alle Informationen, die in JWTs enthalten sind (als „Ansprüche“ bezeichnet), sind richtig, oder sie fehlen sogar. Ein Beispiel hierfür ist der Anspruch „preferred_username“.  Da sich die Werte, das Format oder die Bedeutung von Ansprüchen im Laufe der Zeit ändern, bleiben Token für Ihre vorhandenen Richtlinien davon unberührt. Sie können sich auf die Werte in den Produktions-Apps verlassen.  Wenn sich Werte ändern, erhalten Sie die Möglichkeit, diese Änderungen für jede Richtlinie zu konfigurieren.  Lesen Sie sich die [Token-Referenz](active-directory-b2c-reference-tokens.md) durch, um ein besseres Verständnis für die Token zu entwickeln, die vom Azure AD B2C-Dienst derzeit ausgegeben werden.
 
 ## <a name="restriction-on-nested-groups"></a>Einschränkung für geschachtelte Gruppen
 Geschachtelte Gruppenmitgliedschaften werden in Azure AD B2C-Mandanten nicht unterstützt. Wir planen nicht, diese Funktion hinzuzufügen.
@@ -93,9 +123,13 @@ Anforderungen an Anmelderichtlinien (bei aktiviertem MFA) führen in Safari-Brow
 * Verwenden Sie die anstelle der Anmelderichtlinie die Richtlinie für Registrierung oder Anmeldung.
 * Verringern Sie die Anzahl der in Ihrer Richtlinie angeforderten **Anwendungsansprüche** .
 
+## <a name="issues-with-windows-desktop-wpf-apps-using-azure-ad-b2c"></a>Probleme mit Windows Desktop-WPF-Apps bei Verwendung von Azure AD B2C
+Bei Anforderungen von einer Windows Desktop-WPF-App an Azure AD B2C wird in einigen Fällen die folgende Fehlermeldung angezeigt: „Fehler beim Abschließen des browserbasierten Authentifizierungsdialogfelds. Ursache: Das Protokoll ist unbekannt, und kein austauschbares Protokoll hat eine Übereinstimmung ergeben.“
+
+Der Grund hierfür liegt in der Größe von Autorisierungscodes, die von Azure AD B2C bereitgestellt wurden. Die Größe hängt mit der Anzahl der Ansprüche zusammen, die in einem Token angefordert werden. Eine Problemumgehung für dieses Problem besteht darin, die Anzahl der im Token angeforderten Ansprüche zu reduzieren und die Graph-API für andere Ansprüche separat abzufragen.
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

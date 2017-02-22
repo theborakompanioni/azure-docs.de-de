@@ -1,6 +1,6 @@
 ---
-title: "Entwicklerhandbuch – Messaging | Microsoft-Dokumentation"
-description: "Azure IoT Hub-Entwicklerhandbuch – Messaging zwischen Geräten und Cloud"
+title: Grundlegendes zu Azure IoT Hub-Messaging | Microsoft-Dokumentation
+description: "Entwicklerhandbuch: Messaging zwischen Geräten und Cloud mit IoT Hub. Enthält Informationen zu Nachrichtenformaten und unterstützten Kommunikationsprotokollen."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 1951ea9d876ccb962e0bc84873bfb71ee42aa535
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: 768e21205e341f4915f8be50129fd246285a2efc
 
 
 ---
@@ -24,14 +24,14 @@ ms.openlocfilehash: 1951ea9d876ccb962e0bc84873bfb71ee42aa535
 ## <a name="overview"></a>Übersicht
 IoT Hub bietet die folgenden Messaginggrundtypen für die Kommunikation mit einem Gerät:
 
-* [Gerät-zu-Cloud (D2C):][lnk-d2c] Von einem Gerät zu einem Anwendungs-Back-End.
-* [Cloud-zu-Gerät (C2D):][lnk-c2d] Von einem Anwendungs-Back-End (*Dienst* oder *Cloud*).
+* [Gerät zu Cloud (Device-to-Cloud, D2C):][lnk-d2c] Von einem Gerät zu einer Back-End-App.
+* [Cloud zu Gerät (Cloud-to-Device, C2D):][lnk-c2d] Von einer Back-End-App (*Dienst* oder *Cloud*).
 
 Die wichtigsten Eigenschaften beim IoT Hub-Messaging sind eine zuverlässige und stabile Übermittlung von Nachrichten. Diese Eigenschaften ermöglichen Ausfallsicherheit bei zeitweiligen Verbindungsproblemen auf Geräteseite und Lastspitzen bei der Ereignisverarbeitung auf Cloudseite. IoT Hub implementiert *mindestens einmal* Übermittlungsgarantien für das D2C- und C2D-Messaging.
 
 IoT Hub unterstützt mehrere [geräteseitige Protokolle][lnk-protocols] (z.B. MQTT, AMQP und HTTP). Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein [gemeinsames Nachrichtenformat][lnk-message-format], das von allen geräteseitigen Protokollen unterstützt wird.
 
-IoT Hub stellt einen [Event Hub-kompatiblen Endpunkt][lnk-compatible-endpoint] zur Verfügung, über den Back-End-Anwendungen vom IoT Hub empfangene Gerät-zu-Cloud-Nachrichten lesen können.
+IoT Hub stellt einen integrierten [Event Hub-kompatiblen Endpunkt][lnk-compatible-endpoint] zur Verfügung, über den Back-End-Apps vom Hub empfangene D2C-Nachrichten lesen können. Sie können in Ihrem IoT Hub auch benutzerdefinierte Endpunkte erstellen, indem Sie andere Dienste Ihres Abonnements mit dem Hub verknüpfen.
 
 ### <a name="when-to-use"></a>Einsatzgebiete
 Verwenden Sie D2C-Nachrichten zum Senden von Zeitreihen-Telemetriedaten und Warnungen von Ihrer Geräte-App und von C2D-Nachrichten für unidirektionale Nachrichten an die Geräte-App.
@@ -42,30 +42,26 @@ Falls Sie weitere Informationen dazu benötigen, was die Verwendung von gewünsc
 Einen Vergleich der Dienste IoT Hub und Event Hubs finden Sie unter [Vergleich von IoT Hub und Event Hubs][lnk-compare].
 
 ## <a name="device-to-cloud-messages"></a>D2C-Nachrichten
-Sie senden Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) von einem geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/events**). Ihr Back-End-Dienst empfängt Gerät-zu-Cloud-Nachrichten über einen dienstseitigen Endpunkt (**/messages/events**), der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige [Event Hubs-Integration und SDKs][lnk-compatible-endpoint] zum Empfangen von D2C-Nachrichten verwenden.
+Sie senden Gerät-zu-Cloud-Nachrichten (Device-to-Cloud, D2C) von einem geräteseitigen Endpunkt (**/devices/{Geräte-ID}/messages/events**). Mit Routingregeln werden Ihre Nachrichten dann an einen der dienstseitigen Endpunkte auf Ihrem IoT Hub geleitet. Bei Routingregeln werden die Eigenschaften der D2C-Nachrichten, die Ihren Hub durchlaufen, zur Ermittlung des Zielorts für die Weiterleitung verwendet. Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (messages/events) gesendet, der mit [Event Hubs][lnk-event-hubs] kompatibel ist. Auf diese Weise können Sie standardmäßige [Event Hubs-Integration und SDKs][lnk-compatible-endpoint] zum Empfangen von D2C-Nachrichten verwenden.
 
-IoT Hub implementiert D2C-Messaging in einer Weise, die [Event Hubs][lnk-event-hubs] ähnelt. Die D2C-Nachrichten von IoT Hub ähneln eher Event Hubs-*Ereignissen* als [Service Bus][lnk-servicebus]-*Nachrichten*.
+IoT Hub implementiert das D2C-Messaging anhand eines Streaming-Messagingmusters. Die D2C-Nachrichten von IoT Hub ähneln eher [Event Hubs][lnk-event-hubs] *-Ereignissen* als [Service Bus][lnk-servicebus] *-Nachrichten*, da der Dienst von einem größeren Volumen von Ereignissen durchlaufen wird, die von mehreren Lesern gelesen werden können.
 
 Diese Implementierung hat folgende Auswirkungen:
 
-* Ähnlich wie Event Hubs-Ereignisse sind D2C-Nachrichten dauerhaft und werden in einem IoT Hub maximal sieben Tage aufbewahrt (siehe [Optionen für die D2C-Konfiguration][lnk-d2c-configuration]).
-* D2C-Nachrichten werden für einen festen Satz an Partitionen partitioniert, der zum Zeitpunkt der Erstellung festgelegt wird (siehe [Optionen für die D2C-Konfiguration][lnk-d2c-configuration]).
-* Analog zu Event Hubs müssen Clients, die D2C-Nachrichten lesen, Partitionen und Prüfpunkte verarbeiten können. Siehe [Event Hubs: Ereignisconsumer][lnk-event-hubs-consuming-events].
-* D2C-Nachrichten dürfen wie Event Hubs-Ereignisse maximal 256 KB groß sein. Sie können in Batches gruppiert werden, um den Sendevorgang zu optimieren. Batches können maximal 256 KB groß sein und maximal 500 Nachrichten enthalten.
+* Wie Event Hubs-Ereignisse auch, sind D2C-Nachrichten dauerhafter Art und werden bis zu sieben Tage lang auf dem Standardendpunkt des IoT Hub für **messages/events** aufbewahrt.
+* D2C-Nachrichten dürfen wie Event Hubs-Ereignisse maximal 256 KB groß sein. Sie können in Batches gruppiert werden, um den Sendevorgang zu optimieren. Die Batches können maximal 256 KB groß sein.
 
 Es gibt jedoch einige wichtige Unterschiede zwischen dem D2C-Messaging von IoT Hub und Event Hubs:
 
 * Wie im Abschnitt [Verwalten des Zugriffs auf IoT Hub][lnk-devguide-security] erläutert, ermöglicht IoT Hub Authentifizierung und Zugriffssteuerung auf Gerätebasis.
+* Mit IoT Hub können Sie bis zu zehn benutzerdefinierte Endpunkte erstellen. Nachrichten werden basierend auf Routen, die auf Ihrem IoT Hub konfiguriert sind, an die Endpunkte gesendet.
 * IoT Hub unterstützt Millionen von gleichzeitig verbundenen Geräten (siehe [Kontingente und Drosselung][lnk-quotas]), während für Event Hubs eine Beschränkung von 5.000 AMQP-Verbindungen pro Namespace gilt.
 * IoT Hub ermöglicht keine zufällige Partitionierung mit einem **PartitionKey**. D2C-Nachrichten werden gemäß ihrer ursprünglichen **deviceId**partitioniert.
 * Die Skalierung funktioniert in IoT Hub etwas anders als in Event Hubs. Weitere Informationen finden Sie unter [Skalieren von IoT Hub][lnk-guidance-scale].
 
-> [!NOTE]
-> Sie können Event Hubs nicht in allen Szenarios durch IoT Hub ersetzen. In einigen Szenarien mit Ereignisverarbeitung kann es beispielsweise erforderlich sein, Ereignisse in Bezug auf eine andere Eigenschaft oder ein anderes Feld neu zu partitionieren, bevor die Datenströme analysiert werden können. In diesem Szenario können Sie mit einem Event Hub zwei Bestandteile der Pipeline zur Datenstromverarbeitung entkoppeln. Weitere Informationen finden Sie unter *Partitionen* in [Übersicht über Azure Event Hubs][lnk-eventhub-partitions].
-> 
-> 
-
 Ausführliche Informationen zum Verwenden des D2C-Messaging finden Sie unter [Azure IoT SDKs][lnk-sdks].
+
+Weitere Informationen dazu, wie Sie das Routing von Nachrichten einrichten, finden Sie unter [Routingregeln](#routing-rules).
 
 > [!NOTE]
 > Bei der Verwendung von HTTP zum Senden von D2C-Nachrichten dürfen Eigenschaftennamen und Eigenschaftswerte nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten.
@@ -73,17 +69,33 @@ Ausführliche Informationen zum Verwenden des D2C-Messaging finden Sie unter [Az
 > 
 
 ### <a name="non-telemetry-traffic"></a>Datenverkehr ohne Telemetrie
-Oftmals senden Geräte nicht nur Telemetriedatenpunkte, sondern auch Nachrichten und Anforderungen, die eine Ausführung und Verarbeitung auf der Anwendungsschicht mit der Geschäftslogik erfordern. Beispiele: Kritische Warnungen, die eine bestimmte Aktion im Back-End auslösen müssen, oder Geräteantworten auf vom Back-End gesendete Befehle.
+Häufig senden Geräte nicht nur Telemetriedatenpunkte, sondern auch Nachrichten und Anforderungen, die eine separate Ausführung und Verarbeitung auf der Anwendungsschicht mit der Geschäftslogik erforderlich machen. Ein Beispiel hierfür sind kritische Warnungen, für die eine bestimmte Aktion auf dem Back-End ausgelöst werden muss. Sie können auf einfache Weise eine Routingregel schreiben, mit der diese Arten von Nachrichten an einen Endpunkt gesendet werden, der für deren Verarbeitung zuständig ist.
 
 Weitere Informationen zur besten Möglichkeit zum Verarbeiten dieser Art von Nachricht finden Sie im Tutorial [Gewusst wie: Verarbeiten von D2C-Nachrichten mit IoT Hub][lnk-d2c-tutorial].
 
-### <a name="device-to-cloud-configuration-options"></a>Optionen für die D2C-Konfiguration
-Ein IoT Hub macht die folgenden Eigenschaften zum Steuern des D2C-Messaging verfügbar:
+### <a name="routing-rules"></a>Routingregeln
+
+Mit IoT Hub können Sie Nachrichten basierend auf den Nachrichteneigenschaften an IoT Hub-Endpunkte weiterleiten. Mit Routingregeln können Sie Nachrichten flexibel an den Bestimmungsort senden, ohne zusätzliche Dienste zum Verarbeiten von Nachrichten oder Schreiben von weiterem Code bereitstellen zu müssen. Jede Routingregel, die Sie konfigurieren, hat die folgenden Eigenschaften:
+
+* **Name**: Der eindeutige Name, mit dem die Regel identifiziert wird.
+* **Source** (Quelle): Der Ursprung des zu verarbeitenden Datenstroms. Beispiel: Gerätetelemetrie.
+* **Condition** (Bedingung): Der Abfrageausdruck für die Routingregel, die für die Eigenschaften der Nachricht ausgeführt und verwendet wird, um zu ermitteln, ob sich für den Endpunkt eine Übereinstimmung ergibt. Weitere Informationen zur Erstellung einer Routenbedingung finden Sie unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-devguide-query-language].
+* **Endpoint** (Endpunkt): Der Name des Endpunkts, an den vom IoT Hub diejenigen Nachrichten gesendet werden, für die sich eine Übereinstimmung ergeben hat. Es ist ratsam, dass sich Endpunkte in derselben Region wie der IoT Hub befinden, da sonst ggf. Kosten für regionsübergreifende Schreibvorgänge anfallen.
+
+Es kann vorkommen, dass sich für eine einzelne Nachricht Übereinstimmungen mit den Bedingungen mehrerer Routingregeln ergeben. In diesem Fall sendet der IoT Hub die Nachricht jeweils an alle Endpunkte, die den entsprechenden Regeln zugeordnet sind. Falls für den IoT Hub bei der Nachrichtenzustellung auch die automatische Deduplizierung verwendet wird, wird eine Nachricht nur einmal auf das Ziel geschrieben, wenn diese für mehrere Regeln mit demselben Ziel eine Übereinstimmung ergibt.
+
+Weitere Informationen zur Erstellung von benutzerdefinierten Endpunkten auf dem IoT Hub finden Sie unter [IoT Hub-Endpunkte][lnk-devguide-endpoints].
+
+### <a name="built-in-endpoint-messagesevents"></a>Integrierter Endpunkt: messages/events
+
+Ein IoT Hub macht die folgenden Eigenschaften verfügbar, damit Sie den integrierten Messagingendpunkt für **messages/events** steuern können.
 
 * **Anzahl von Partitionen**. Legen Sie diese Eigenschaft bei der Erstellung fest, um die Anzahl von Partitionen für die D2C-Ereigniserfassung zu definieren.
 * **Aufbewahrungsdauer**. Diese Eigenschaft legt die Aufbewahrungszeit für D2C-Nachrichten fest. Als Standardwert ist ein Tag festgelegt, dieser Wert kann jedoch auf sieben Tage erhöht werden.
 
-Analog zu Event Hubs ermöglicht IoT Hub die Verwaltung von Consumergruppen am empfangenden D2C-Endpunkt.
+Mit dem IoT Hub können Sie außerdem Consumergruppen auf dem integrierten D2C-Empfangsendpunkt verwalten.
+
+Standardmäßig werden alle Nachrichten, für die sich nicht explizit eine Übereinstimmung mit einer Nachrichtenroutingregel ergibt, auf den integrierten Endpunkt geschrieben. Wenn Sie diese Fallbackroute deaktivieren, werden Nachrichten verworfen, für die sich keine expliziten Übereinstimmungen mit Nachrichtenroutingregeln ergeben.
 
 Sie können all diese Eigenschaften sowohl programmgesteuert über die [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] als auch über das [Azure-Portal][lnk-management-portal] ändern.
 
@@ -140,7 +152,7 @@ Eine Nachricht kann zwischen den Statuswerten **Enqueued** (Zur Warteschlange hi
 Ein Tutorial für C2D-Nachrichten finden Sie unter [Tutorial: Send cloud-to-device messages with IoT Hub (.NET)][lnk-c2d-tutorial] (Tutorial: Senden von Cloud-zu-Gerät-Nachrichten mithilfe von IoT Hub und .NET). Informationen dazu, wie verschiedene Azure IoT SDKs die C2D-Funktionalität verfügbar machen, finden Sie unter [Azure IoT SDKs][lnk-sdks].
 
 > [!NOTE]
-> Typischerweise werden C2D-Nachrichten immer dann abgeschlossen, wenn der Verlust der Nachricht keine Auswirkung auf die Anwendungslogik hat. Das ist z.B. der Fall, wenn der Inhalt der Nachricht erfolgreich im lokalen Speicher beibehalten oder ein Vorgang erfolgreich ausgeführt wurde. Die Nachricht könnte auch vorübergehende Informationen übermitteln, deren Verlust der Funktionalität der Anwendung nicht beeinträchtigen würde. In einigen Fällen können Sie für Tasks mit langer Ausführungsdauer die C2D-Nachricht nach Beibehalten der Beschreibung des Tasks im lokalen Speicher abschließen. Dann können Sie das Anwendungs-Back-End mit einer oder mehreren D2C-Nachrichten in verschiedenen Phasen des Taskverlaufs benachrichtigen.
+> Typischerweise werden C2D-Nachrichten immer dann abgeschlossen, wenn der Verlust der Nachricht keine Auswirkung auf die Anwendungslogik hat. Das ist z.B. der Fall, wenn der Inhalt der Nachricht erfolgreich im lokalen Speicher beibehalten oder ein Vorgang erfolgreich ausgeführt wurde. Die Nachricht könnte auch vorübergehende Informationen übermitteln, deren Verlust der Funktionalität der Anwendung nicht beeinträchtigen würde. In einigen Fällen können Sie für Tasks mit langer Ausführungsdauer die C2D-Nachricht nach Beibehalten der Beschreibung des Tasks im lokalen Speicher abschließen. Dann können Sie das Lösungs-Back-End mithilfe von D2C-Nachrichten in verschiedenen Phasen des Taskverlaufs benachrichtigen.
 > 
 > 
 
@@ -220,21 +232,30 @@ Jeder IoT Hub legt die folgenden Konfigurationsoptionen für das C2D-Messaging o
 Weitere Informationen finden Sie unter [Erstellen von IoT-Hubs][lnk-portal].
 
 ## <a name="read-device-to-cloud-messages"></a>Lesen von D2C-Nachrichten
-IoT Hub stellt einen Endpunkt für Ihre Back-End-Dienste zum Lesen der Gerät-zu-Cloud-Nachrichten, die von Ihrem Hub empfangen werden, bereit. Der Endpunkt ist Event Hub-kompatibel, sodass Sie zum Lesen von Nachrichten alle Mechanismen verwenden können, die der Event Hubs-Dienst unterstützt.
+IoT Hub stellt den integrierten Endpunkt **messages/events** für Ihre Back-End-Dienste bereit, damit die D2C-Nachrichten gelesen werden können, die von Ihrem Hub empfangen werden. Da dieser Endpunkt Event Hubs-kompatibel ist, könne Sie zum Lesen von Nachrichten alle Mechanismen verwenden, die der Event Hubs-Dienst unterstützt.
+
+Außerdem können Sie im IoT Hub auch benutzerdefinierte Endpunkte erstellen. IoT Hub unterstützt derzeit Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen als benutzerdefinierte Endpunkte. Weitere Details zum Lesen aus diesen Diensten finden Sie unter den Informationen zum „Lesen von [Event Hubs][lnk-getstarted-eh]“, „Lesen aus [Service Bus-Warteschlangen][lnk-getstarted-queue]“ und „Lesen aus [Service Bus-Themen][lnk-getstarted-topic]“.
+
+### <a name="reading-from-the-built-in-endpoint"></a>Lesen vom integrierten Endpunkt
 
 Wenn Sie das [Azure Service Bus-SDK für .NET][lnk-servicebus-sdk] oder den [Event Hubs-Ereignisprozessorhost][lnk-eventprocessorhost] verwenden, können Sie eine beliebige IoT Hub-Verbindungszeichenfolge mit den richtigen Berechtigungen verwenden. Anschließend verwenden Sie **messages/events** als Event Hub-Name.
 
 Wenn Sie SDKs (oder Produktintegrationen) verwenden, die nicht IoT Hub-fähig sind, müssen Sie einen Event Hub-kompatiblen Endpunkt und den Event Hub-kompatiblen Namen aus den IoT Hub-Einstellungen im [Azure-Portal][lnk-management-portal] abrufen:
 
-1. Klicken Sie auf dem IoT Hub-Blatt auf **Messaging**.
-2. Im Abschnitt **Gerät-zu-Cloud-Einstellungen** finden Sie die folgenden Werte: **Event Hub-kompatibler Endpunkt**, **Event Hub-kompatibler Name** und **Partitionen**.
+1. Klicken Sie auf dem Blatt „IoT Hub“ auf **Endpunkte**.
+2. Klicken Sie im Abschnitt **Integrierte Endpunkte** auf **Ereignisse**. Das Blatt enthält die folgenden Werte: **Event Hub-kompatibler Endpunkt**, **Event Hub-kompatibler Name**, **Partitionen**, **Aufbewahrungszeit** und **Consumergruppen**.
    
     ![D2C-Einstellungen][img-eventhubcompatible]
 
 > [!NOTE]
-> Wenn das SDK einen Wert für **Hostname** oder **Namespace** benötigt, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net**, und der **Namespace** lautet **iothub-ns-myiothub-1234**.
+> Für das IoT Hub SDK ist der IoT Hub-Endpunktname erforderlich. Er lautet **messages/events** (wie auf dem Blatt **Endpunkte** zu sehen).
+>
+>
+
+> [!NOTE]
+> Wenn das von Ihnen verwendete SDK einen Wert für **Hostname** oder **Namespace** benötigt, entfernen Sie das Schema aus dem **Event Hub-kompatiblen Endpunkt**. Wenn es sich bei Ihrem Event Hub-kompatiblen Endpunkt beispielsweise um **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** handelt, lautet der **Hostname** **iothub-ns-myiothub-1234.servicebus.windows.net**, und der **Namespace** lautet **iothub-ns-myiothub-1234**.
 > 
-> 
+>
 
 Sie können in diesem Fall eine SAS-Richtlinie für den gemeinsamen Zugriff mit den **ServiceConnect**-Berechtigungen zur Verbindungsherstellung mit dem angegebenen Event Hub verwenden.
 
@@ -314,7 +335,7 @@ Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikatio
 ## <a name="port-numbers"></a>Portnummern
 Geräte können mit IoT Hub in Azure über verschiedene Protokolle kommunizieren. In der Regel richtet sich die Wahl des Protokolls nach den spezifischen Anforderungen der Lösung. Die folgende Tabelle enthält die ausgehenden Ports, die geöffnet sein müssen, damit ein Gerät ein bestimmtes Protokoll verwenden kann:
 
-| Protocol | Port(s) |
+| Protocol | Port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT über WebSockets |443 |
@@ -326,26 +347,26 @@ Geräte können mit IoT Hub in Azure über verschiedene Protokolle kommunizieren
 Nachdem Sie einen IoT Hub in einer Azure-Region erstellt haben, behält er seine IP-Adresse für die gesamte Lebensdauer bei. Wenn der IoT Hub von Microsoft jedoch in eine andere Skalierungseinheit verschoben wird, wird ihm eine neue IP-Adresse zugewiesen, um die Dienstqualität zu gewährleisten.
 
 ## <a name="notes-on-mqtt-support"></a>Hinweise zur MQTT-Unterstützung
-IoT Hub implementiert die MQTT-Protokollversion 3.1.1 mit den folgenden Einschränkungen und einem bestimmten Verhalten:
+IoT Hub implementiert die MQTT-Protokollversion&3;.1.1 mit den folgenden Einschränkungen und einem bestimmten Verhalten:
 
-* **QoS 2 wird nicht unterstützt**. Wenn ein Geräteclient eine Nachricht mit **QoS 2**veröffentlicht, schließt IoT Hub die Netzwerkverbindung. Wenn ein Geräteclient ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1.
-* **Beibehaltungsnachrichten werden nicht beständig speichert**. Wenn ein Geräteclient eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-Anwendung.
+* **QoS 2 wird nicht unterstützt**. Wenn eine Geräte-App eine Nachricht mit **QoS 2**veröffentlicht, schließt IoT Hub die Netzwerkverbindung. Wenn eine Geräte-App ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1.
+* **Beibehaltungsnachrichten werden nicht beständig speichert**. Wenn eine Geräte-App eine Nachricht mit auf 1 festgelegtem RETAIN-Flag veröffentlicht, fügt IoT Hub der Nachricht die Anwendungseigenschaft **x-opt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-App.
 
 Weitere Informationen finden Sie unter [IoT Hub MQTT-Unterstützung][lnk-devguide-mqtt].
 
 Schließlich sollte noch der Einsatz eines [Azure IoT-Protokollgateways][lnk-azure-protocol-gateway] erwogen werden, das die Bereitstellung eines hochleistungsfähigen benutzerdefinierten Protokollgateways mit einer direkten Schnittstelle zu IoT Hub ermöglicht. Das Azure IoT-Protokollgateway dient zum Anpassen des Geräteprotokolls zum Unterstützen von Brownfield MQTT-Bereitstellungen oder anderer benutzerdefinierter Protokolle. Dieser Ansatz setzt jedoch voraus, dass Sie ein benutzerdefiniertes Protokollgateway ausführen und betreiben.
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
-Weitere Referenzthemen im Entwicklerhandbuch:
+Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
-* Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
+* Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
 * Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
-* Unter [Azure IoT device and service SDKs][lnk-sdks] (Azure IoT SDKs für Geräte und Dienste) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienstanwendungen für die Interaktion mit IoT Hub verwenden können.
-* Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen über Gerätezwillinge und Aufträge abrufen können.
+* Unter [Azure IoT-SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+* Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun gelernt haben, wie Sie Nachrichten mit IoT Hub senden und empfangen, sind möglicherweise die folgenden Themen im Entwicklerhandbuch für Sie interessant:
+Nachdem Sie nun gelernt haben, wie Sie Nachrichten mit IoT Hub senden und empfangen, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
 
 * [Hochladen von Dateien von einem Gerät][lnk-devguide-upload]
 * [Verwalten von Geräteidentitäten in IoT Hub][lnk-devguide-identities]
@@ -375,6 +396,9 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
 [lnk-eventhub-partitions]: ../event-hubs/event-hubs-overview.md#partitions
 [lnk-portal]: iot-hub-create-through-portal.md
+[lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+[lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+[lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
@@ -389,7 +413,6 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-compatible-endpoint]: iot-hub-devguide-messaging.md#read-device-to-cloud-messages
 [lnk-protocols]: iot-hub-devguide-messaging.md#communication-protocols
 [lnk-message-format]: iot-hub-devguide-messaging.md#message-format
-[lnk-d2c-configuration]: iot-hub-devguide-messaging.md#device-to-cloud-configuration-options
 [lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
 [lnk-ttl]: iot-hub-devguide-messaging.md#message-expiration-time-to-live
 [lnk-c2d-configuration]: iot-hub-devguide-messaging.md#cloud-to-device-configuration-options
@@ -406,7 +429,8 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-servicebus-sdk]: https://www.nuget.org/packages/WindowsAzure.ServiceBus
 [lnk-eventprocessorhost]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
-
+[lnk-devguide-query-language]: iot-hub-devguide-query-language.md
+[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
@@ -414,6 +438,6 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO5-->
 
 

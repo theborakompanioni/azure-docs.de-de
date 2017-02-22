@@ -1,5 +1,5 @@
 ---
-title: Kontoressourcenverwaltung mit Batch Management .NET | Microsoft Docs
+title: "Verwalten von Batch-Kontoressourcen mit der Clientbibliothek für .NET – Azure | Microsoft-Dokumentation"
 description: "Erstellen, löschen und ändern Sie Azure-Batch-Kontoressourcen mit der Batch Management .NET-Bibliothek."
 services: batch
 documentationcenter: .net
@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/19/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 0eff62c62bb256fead360423c20b98fd7f720a51
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 94d2de0d18863872510ed03a5701f4fc6d133659
 
 
 ---
@@ -158,7 +158,7 @@ Wenn Sie Batch-Konten mit der Batch Management .NET-Bibliothek erstellen, erstel
 ## <a name="sample-project-on-github"></a>Beispielprojekt auf GitHub
 Sehen Sie sich das Beispielprojekt [AccountManagment][acct_mgmt_sample] auf GitHub an, um Batch Management .NET in Aktion zu erleben. Diese Konsolenanwendung veranschaulicht die Erstellung und Verwendung von [BatchManagementClient][net_mgmt_client] und [ResourceManagementClient][resman_client]. Außerdem veranschaulicht sie die Verwendung der Azure [Active Directory-Authentifizierungsbibliothek][aad_adal] (ADAL), die für beide Clients erforderlich ist.
 
-Zum erfolgreichen Ausführen der Beispielanwendung müssen Sie sie zuerst über das Azure-Portal bei Azure AD registrieren. Führen Sie die Schritte im Abschnitt [Adding an Applicatio](../active-directory/active-directory-integrating-applications.md#adding-an-application) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um die Beispielanwendung im Standardverzeichnis Ihres eigenen Kontos zu registrieren. Achten Sie darauf, als Anwendungstyp **Systemeigene Clientanwendung** auszuwählen. Sie können unter **Umleitungs-URI** einen beliebigen gültigen URI (z.B. `http://myaccountmanagementsample`) angeben – es muss kein echter Endpunkt sein.
+Zum erfolgreichen Ausführen der Beispielanwendung müssen Sie sie zuerst über das Azure-Portal bei Azure AD registrieren. Führen Sie die Schritte im Abschnitt [Adding an Applicatio](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um die Beispielanwendung im Standardverzeichnis Ihres eigenen Kontos zu registrieren. Achten Sie darauf, als Anwendungstyp **Systemeigene Clientanwendung** auszuwählen. Sie können unter **Umleitungs-URI** einen beliebigen gültigen URI (z.B. `http://myaccountmanagementsample`) angeben – es muss kein echter Endpunkt sein.
 
 Nach dem Hinzufügen Ihrer Anwendung erteilen Sie der Anwendung **Windows Azure-Service-Verwaltungs-API** im Portal unter den Anwendungseinstellungen die *Berechtigung zum Zugriff auf die Azure-Dienstverwaltung als Unternehmen* .
 
@@ -228,6 +228,6 @@ Vor dem Löschen des neu erstellten Batch-Kontos und der Ressourcengruppe könne
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Azure Functions-Funktion zum Erstellen einer Bindung an einen Azure-Dienst | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Functions-Funktion, eine serverlose Anwendung, die mit anderen Azure-Diensten interagiert.
+title: Erstellen einer Funktion, die eine Verbindung mit Azure-Diensten herstellt | Microsoft-Dokumentation
+description: Erstellen Sie mithilfe von Azure Functions eine serverlose Anwendung, die eine Verbindung mit anderen Azure-Diensten herstellt.
 services: functions
 documentationcenter: dev-center-name
 author: yochay
@@ -14,24 +14,21 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2016
+ms.date: 01/23/2017
 ms.author: rachelap@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: f46a67f2591ef98eeda03f5c3bc556d5b8bcc096
-ms.openlocfilehash: 4e0dd8b922107b232a120c25d1f656c5d667748b
+ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
+ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
 
 
 ---
-# <a name="create-an-azure-function-connected-to-an-azure-service"></a>Erstellen einer Azure Functions-Funktion, die mit einem Azure-Dienst verbunden ist
+# <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>Erstellen einer Funktion, die eine Verbindung mit anderen Azure-Diensten herstellt, mithilfe von Azure Functions
 
-In diesem Thema wird veranschaulicht, wie Sie eine Azure Functions-Funktion erstellen, die über eine Azure Storage-Warteschlange auf Nachrichten lauscht und die Nachrichten in die Zeilen einer Azure Storage-Tabelle kopiert. Eine per Timer ausgelöste Funktion wird verwendet, um Nachrichten in die Warteschlange zu laden. Mit einer zweiten Funktion werden Daten aus der Warteschlange ausgelesen und Nachrichten in die Tabelle geschrieben. Sowohl die Warteschlange als auch die Tabelle werden für Sie basierend auf den Bindungsdefinitionen von Azure Functions erstellt. 
+In diesem Thema erfahren Sie, wie Sie in Azure Functions eine Funktion erstellen, die über eine Azure Storage-Warteschlange auf Nachrichten lauscht und die Nachrichten in die Zeilen einer Azure Storage-Tabelle kopiert. Eine per Timer ausgelöste Funktion wird verwendet, um Nachrichten in die Warteschlange zu laden. Mit einer zweiten Funktion werden Daten aus der Warteschlange ausgelesen und Nachrichten in die Tabelle geschrieben. Sowohl die Warteschlange als auch die Tabelle werden für Sie basierend auf den Bindungsdefinitionen von Azure Functions erstellt. 
 
-Interessant ist hierbei, dass eine Funktion in JavaScript und die andere in C#-Skript geschrieben wurde. Dies zeigt, dass eine Funktionen-App über Funktionen in unterschiedlichen Sprachen verfügen kann.
+Interessant ist hierbei, dass eine Funktion in JavaScript und die andere in C#-Skript geschrieben wurde. Dies zeigt, dass eine Funktionen-App über Funktionen in unterschiedlichen Sprachen verfügen kann. 
 
-## <a name="watch-the-video"></a>Video ansehen
->[!VIDEO https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player]
->
->
+Dieses Szenario wird in einem [Video auf Channel 9](https://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Create-an-Azure-Function-which-binds-to-an-Azure-service/player) veranschaulicht.
 
 ## <a name="create-a-function-that-writes-to-the-queue"></a>Erstellen einer Funktion, die in die Warteschlange schreibt
 
@@ -186,9 +183,9 @@ Nachdem der Warteschlange jetzt Nachrichten hinzugefügt werden, können Sie ein
 Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
+  Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 * [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
-   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
+  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen
 * [How to scale Azure Functions (Skalieren von Azure Functions) (Skalieren von Azure Functions)](functions-scale.md)  
   Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
 
@@ -197,6 +194,6 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

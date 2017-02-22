@@ -1,5 +1,5 @@
 ---
-title: "Tipps zur Leistungssteigerung für DocumentDB | Microsoft Docs"
+title: "Leistungstipps – Azure DocumentDB NoSQL | Microsoft-Dokumentation"
 description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure DocumentDB-Datenbanken vertraut.
 keywords: 'So wird&quot;s gemacht: Verbessern der Datenbankleistung'
 services: documentdb
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 01/19/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: 5b4efb2d6dedb43436745f5e8055cae44e4a58ac
+ms.sourcegitcommit: 532cfeb5115feb7558018af73968576dac17ff88
+ms.openlocfilehash: 28ca2d86f5008ee26376d76f3411cac05ffdfde4
 
 
 ---
@@ -37,6 +37,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
    2. Direkter Modus
 
       Der Gatewaymodus wird auf allen SDK-Plattformen unterstützt und ist als Standardoption konfiguriert.  Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in DocumentDB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt.   Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind.
+<a id="use-tcp"></a>
 2. **Verbindungsrichtlinie: Verwenden des TCP-Protokolls**
 
     Bei Verwendung des direkten Modus stehen zwei Protokolloptionen zur Verfügung:
@@ -89,7 +90,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
    <a id="max-connection"></a>
 3. **Erhöhen von „System.Net MaxConnections“ pro Host**
 
-    Anforderungen an DocumentDB erfolgen standardmäßig über HTTPS/REST und unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren MaxConnections-Wert festlegen (100 - 1.000), damit die Clientbibliothek mehrere Verbindungen zu DocumentDB gleichzeitig nutzen kann. Ab .NET SDK 1.8.0 ist der Standardwert für [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) auf 50 festgelegt. Zur Erhöhung dieses Werts können Sie [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) auf einen höheren Wert festlegen.  
+    Anforderungen an DocumentDB erfolgen standardmäßig über HTTPS/REST und unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren MaxConnections-Wert festlegen (100 -&1;.000), damit die Clientbibliothek mehrere Verbindungen zu DocumentDB gleichzeitig nutzen kann. Ab .NET SDK 1.8.0 ist der Standardwert für [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) auf 50 festgelegt. Zur Erhöhung dieses Werts können Sie [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) auf einen höheren Wert festlegen.  
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
      Ab Version 1.9.0 des DocumentDB .NET SDKs werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. (Weitere Informationen finden Sie unter [Arbeiten mit den SDKs](documentdb-partition-data.md#working-with-the-sdks) und in den dazugehörigen [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs).) Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich mit seriellen Abfragen zu verbessern. Parallele Abfragen verfügen über zwei Parameter, die Benutzer optimieren können, um sie an ihre Anforderungen anzupassen: (a) MaxDegreeOfParallelism zum Steuern der maximalen Anzahl von Partitionen, die parallel abgefragt werden können, und (b) MaxBufferedItemCount zum Steuern der Anzahl von vorab abgerufenen Ergebnissen.
@@ -111,7 +112,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. Wiederholungsrichtlinien werden ab Version 1.8.0 von DocumentDB ([.NET](documentdb-sdk-dotnet.md) und [Java](documentdb-sdk-java.md)) bzw. ab Version 1.9.0 ([Node.js](documentdb-sdk-node.md) und [Python](documentdb-sdk-python.md)) und in allen unterstützten Versionen der [.NET Core](documentdb-sdk-dotnet-core.md)-SDKs unterstützt. Weitere Informationen finden Sie unter [Überschreiten von Grenzwerten für den reservierten Durchsatz](documentdb-request-units.md#RequestRateTooLarge) sowie unter [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
 7. **Horizontales Hochskalieren Ihrer Clientworkload**
 
-    Wenn Sie auf einem hohen Durchsatzniveau testen (> 50.000 RU/s), kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerknutzung deckelt. Wenn dieser Punkt erreicht wird, können Sie das DocumentDB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
+    Wenn Sie auf einem hohen Durchsatzniveau testen (>&50;.000 RU/s), kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerknutzung deckelt. Wenn dieser Punkt erreicht wird, können Sie das DocumentDB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
 8. **Zwischenspeichern von Dokument-URIs zur Verringerung der Latenz bei Lesevorgängen**
 
     Zur Erzielung einer optimalen Leseleistung sollten Dokument-URIs möglichst immer zwischengespeichert werden.
@@ -128,6 +129,18 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 10. **Erhöhen der Anzahl von Threads/Aufgaben**
 
     Siehe [Erhöhen der Anzahl von Threads/Aufgaben](#increase-threads) im Abschnitt „Netzwerk“.
+    
+11. **Verwenden der 64-Bit-Hostverarbeitung.**
+
+    Das DocumentDB-SDK funktioniert in einem 32-Bit-Hostprozess. Bei partitionsübergreifenden Abfragen wird jedoch die 64-Bit-Hostverarbeitung empfohlen, um eine bessere Leistung zu erzielen. Bei den folgenden Anwendungstypen ist der 32-Bit-Hostprozess der Standardprozess. Führen Sie je nach Typ Ihrer Anwendung die folgenden Schritte aus, um diesen zu 64-Bit zu ändern:
+    
+    - Bei ausführbaren Anwendungen deaktivieren Sie dazu auf der Registerkarte **Build** im Fenster **Projekteigenschaften** die Option **32-Bit bevorzugen**. 
+    
+    - Bei VSTest-basierten Testprojekten ist dies möglich, indem Sie in der Menüoption **Visual Studio Test** die Optionen **Test**->**Testeinstellungen**->**Default Processor Architecture as X64** (Standardprozessorarchitektur als X64) auswählen.
+    
+    - Bei lokal bereitgestellten ASP.NET-Webawendungen ist dies möglich, indem Sie unter **Tools** (Extras) ->**Optionen**->**Projekte und Projektmappen**->**Webprojekte** die Option **64-Bit-Version von IIS Express für Websites und Projekte verwenden** aktivieren.
+    
+    - Für auf Azure bereitgestellte ASP.NET-Webanwendungen wählen Sie im Azure-Portal unter **Anwendungseinstellungen** die Option **Platform as 64-bit** (Plattform als 64-Bit) aus.
 
 ## <a name="indexing-policy"></a>Indizierungsrichtlinien
 1. **Verwenden der verzögerten Indizierung zur Beschleunigung der Erfassung zu Spitzenzeiten**
@@ -173,6 +186,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
              }
 
     Bei der in diesem Header zurückgegebenen Anforderungsbelastung handelt es sich um einen Bruchteil Ihres bereitgestellten Durchsatzes (2.000 RUs/Sekunde). Falls die obige Abfrage also beispielsweise 1000 Dokumente mit einer Größe von 1 KB zurückgibt, fallen für den Vorgang Kosten in Höhe von 1000 an. Somit werden vom Server innerhalb einer Sekunde nur zwei solcher Anforderungen berücksichtigt, und weitere Anforderungen werden gedrosselt. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](documentdb-request-units.md) sowie unter dem [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner).
+<a id="429"></a>
 2. **Behandeln von Ratenbeschränkungen/zu hohen Anforderungsraten**
 
     Wenn ein Client versucht, den für ein Konto reservierten Durchsatz zu überschreiten, wird die Serverleistung nicht beeinträchtigt, und es wird kein über die reservierte Kapazität hinausgehender Durchsatz in Anspruch genommen. Der Server beendet die Anforderung vorab mit „RequestRateTooLarge“ (HTTP-Statuscode: 429) und gibt den Header „x-ms-retry-after-ms“ zurück. Darin ist die Zeitspanne (in Millisekunden) angegeben, die der Benutzer warten muss, bis ein neuer Anforderungsversuch unternommen werden kann.
@@ -197,6 +211,6 @@ Weitere Informationen zur Gestaltung einer auf Skalierung und hohe Leistung ausg
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -3,7 +3,7 @@ title: Benutzerdefinierte Skripterweiterung auf einem virtuellen Windows-Compute
 description: "Automatisieren Sie Konfigurationsaufgaben für virtuelle Azure-Computer mit der benutzerdefinierten Skripterweiterung zum Ausführen von PowerShell-Skripts auf einem virtuellen Remote-Computer unter Windows."
 services: virtual-machines-windows
 documentationcenter: 
-author: kundanap
+author: neilpeterson
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -13,80 +13,121 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/06/2015
-ms.author: kundanap
+ms.date: 01/17/2017
+ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 5a66b7a5454ae84c656e5e38e6e7072a5de49ef0
+ms.sourcegitcommit: b326ad93120715e4965524e7d6618c1a7fecafb6
+ms.openlocfilehash: bd44fd21c6150eac882d03dc946f573e34f6ad7b
 
 
 ---
-# <a name="custom-script-extension-for-windows-virtual-machines"></a>Benutzerdefinierte Skripterweiterung für virtuelle Windows-Computer
-Dieser Artikel bietet einen Überblick über die Verwendung der benutzerdefinierten Skripterweiterung auf virtuellen Windows-Computern mithilfe von Azure PowerShell-Cmdlets mit Azure-Dienstverwaltungs-APIs.
 
-Mit den Erweiterungen virtueller Computer, die von Microsoft und vertrauenswürdigen Drittanbietern entwickelt werden, wird die Funktionalität des virtuellen Computers erweitert. Einen Überblick über die Erweiterungen virtueller Computer finden Sie unter [Erweiterungen virtueller Azure-Computer und Features](virtual-machines-windows-extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+# <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>Benutzerdefinierte Skripterweiterung für Windows im Rahmen des klassischen Bereitstellungsmodells
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+> [!IMPORTANT] 
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Erfahren Sie, wie Sie [diese Schritte mit dem Resource Manager-Modell ausführen](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Die benutzerdefinierte Skripterweiterung lädt Skripts auf virtuelle Azure-Computer herunter und führt sie aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Skripts können aus Azure Storage oder GitHub heruntergeladen oder dem Azure-Portal zur Laufzeit für die Erweiterung bereitgestellt werden. Die benutzerdefinierte Skripterweiterung kann in Azure Resource Manager-Vorlagen integriert und auch mithilfe der Azure-Befehlszeilenschnittstelle, mithilfe von PowerShell, über das Azure-Portal oder unter Verwendung der REST-API für virtuelle Azure-Computer ausgeführt werden.
 
-## <a name="custom-script-extension-overview"></a>Übersicht über benutzerdefinierte Skripterweiterungen
-Die benutzerdefinierte Skripterweiterung für Windows ermöglicht Ihnen das Ausführen von PowerShell-Skripts auf einem virtuellen Remotecomputer, ohne sich bei diesem anzumelden. Sie können die Skripts nach Bereitstellung des virtuellen Computers oder zu einem beliebigen Zeitpunkt im Lebenszyklus des virtuellen Computers ausführen, ohne zusätzliche Ports öffnen zu müssen. Die häufigsten Anwendungsfälle für benutzerdefinierte Skripterweiterungen sind das Ausführen, Installieren und Konfigurieren zusätzlicher Software auf dem virtuellen Computer, nachdem dieser bereitgestellt wurde.
+In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung über das Azure PowerShell-Modul ausführen. Sie erfahren, wie Sie eine Azure Resource Manager-Vorlage verwenden, und erhalten Informationen zu Problembehandlungsschritten für Windows-Systeme.
 
-### <a name="prerequisites-for-running-the-custom-script-extension"></a>Voraussetzungen für das Ausführen der benutzerdefinierten Skripterweiterung
-1. Installieren Sie <a href="http://azure.microsoft.com/downloads" target="_blank">Azure PowerShell-Cmdlets</a> der Version 0.8.0 oder höher.
-2. Wenn Sie die Skripts auf einem vorhandenen virtuellen Computer ausführen möchten, müssen Sie sicherstellen, dass der Agent des virtuellen Computers darauf aktiviert ist. Wenn er nicht installiert ist, befolgen Sie diese [Schritte](virtual-machines-windows-classic-agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Wenn die VM aus dem Azure-Portal erstellt wird, wird der VM-Agent standardmäßig installiert.
-3. Laden Sie die Skripts, die Sie auf der VM ausführen möchten, nach Azure Storage hoch. Die Skripts können aus einem einzelnen oder mehreren Speichercontainern stammen.
-4. Das Skript sollte so geschrieben sein, dass das Eingangsskript, das durch die Erweiterung gestartet wird, weitere Skripts startet.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="custom-script-extension-scenarios"></a>Szenarien für benutzerdefinierte Skripterweiterungen
-### <a name="upload-files-to-the-default-container"></a>Hochladen von Dateien in den Standardcontainer
-Das folgende Beispiel zeigt, wie Sie Ihre Skripts auf dem virtuellen Computer ausführen können, wenn sie im Speichercontainer des Standardkontos Ihres Abonnements vorliegen. Sie können Ihre Skripts in ContainerName hochladen. Sie können das standardmäßige Speicherkonto mit dem Befehl **Get-AzureSubscription –Default** überprüfen.
+### <a name="operating-system"></a>Betriebssystem
 
-Im folgenden Beispiel wird ein virtueller Computer erstellt. Sie können das gleiche Szenario jedoch auch auf einem vorhandenen virtuellen Computer ausführen.
+Die benutzerdefinierte Skripterweiterung für Windows ist für Windows Server 2008 R2, 2012, 2012 R2 und 2016 geeignet.
 
-    # Create a new VM in Azure.
-    $vm = New-AzureVMConfig -Name $name -InstanceSize Small -ImageName $imagename
-    $vm = Add-AzureProvisioningConfig -VM $vm -Windows -AdminUsername $username -Password $password
-    // Add Custom Script extension to the VM. The container name refers to the storage container that contains the file.
-    $vm = Set-AzureVMCustomScriptExtension -VM $vm -ContainerName $container -FileName 'start.ps1'
-    New-AzureVM -ServiceName $servicename -Location $location -VMs $vm
-    #  After the VM is created, the extension downloads the script from the storage location and executes it on the VM.
+### <a name="script-location"></a>Speicherort des Skripts
 
-    # Viewing the  script execution output.
-    $vm = Get-AzureVM -ServiceName $servicename -Name $name
-    # Use the position of the extension in the output as index.
-    $vm.ResourceExtensionStatusList[i].ExtensionSettingStatus.SubStatusList
+Das Skript muss in Azure-Speicher oder an einem anderen Ort gespeichert werden, auf den über eine gültige URL zugegriffen werden kann.
 
-### <a name="upload-files-to-a-non-default-storage-container"></a>Hochladen von Dateien in einen anderen Ordner als den Standardordner
-Dieses Szenario zeigt, wie ein Nicht-Standardspeichercontainer verwendet wird – entweder innerhalb des gleichen Abonnements oder in einem anderen Abonnement – um Skripts und Dateien hochzuladen. In diesem Beispiel wird eine vorhandene VM verwendet, aber die gleichen Operationen können auch beim Erstellen einer neuen VM verwendet werden.
+### <a name="internet-connectivity"></a>Internetverbindung
 
-        Get-AzureVM -Name $name -ServiceName $servicename | Set-AzureVMCustomScriptExtension -StorageAccountName $storageaccount -StorageAccountKey $storagekey -ContainerName $container -FileName 'file1.ps1','file2.ps1' -Run 'file.ps1' | Update-AzureVM
+Um die benutzerdefinierte Skripterweiterung für Windows verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. 
 
-### <a name="upload-scripts-to-multiple-containers-across-different-storage-accounts"></a>Hochladen von Skripts in mehrere Container über verschiedene Speicherkonten hinweg
-  Wenn die Skriptdateien in mehreren Containern gespeichert sind, müssen Sie die vollständige SAS-URL (Shared Access Signatures) für die Dateien bereitstellen, um die Skripts auszuführen.
+## <a name="extension-schema"></a>Erweiterungsschema
 
-      Get-AzureVM -Name $name -ServiceName $servicename | Set-AzureVMCustomScriptExtension -StorageAccountName $storageaccount -StorageAccountKey $storagekey -ContainerName $container -FileUri $fileUrl1, $fileUrl2 -Run 'file.ps1' | Update-AzureVM
+Der folgende JSON-Code zeigt das Schema für die benutzerdefinierte Skripterweiterung. Die Erweiterung erfordert einen Skriptspeicherort (Azure Storage oder anderen Ort mit gültiger URL) und einen auszuführenden Befehl. Wenn Sie Azure Storage als Skriptquelle verwenden, sind ein Azure-Speicherkontoname und Kontoschlüssel erforderlich. Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration mit den geschützten Einstellungen der Erweiterung angegeben werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt.
+
+```json
+{
+    "name": "config-app",
+    "type": "Microsoft.ClassicCompute/virtualMachines/extensions",
+    "location": "[resourceGroup().location]",
+    "apiVersion": "2015-06-01",
+    "properties": {
+        "publisher": "Microsoft.Compute",
+        "extension": "CustomScriptExtension",
+        "version": "1.8",
+        "parameters": {
+            "public": {
+                "fileUris": "[myScriptLocation]"
+            },
+            "private": {
+                "commandToExecute": "[myExecutionString]"
+            }
+        }
+    }
+}
+```
+
+### <a name="property-values"></a>Eigenschaftswerte
+
+| Name | Wert/Beispiel |
+| ---- | ---- |
+| apiVersion | 2015-06-15 |
+| Herausgeber | Microsoft.Compute |
+| Erweiterung | CustomScriptExtension |
+| typeHandlerVersion | 1.8 |
+| fileUris (Beispiel) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 |
+| CommandToExecute (Beispiel) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 |
+
+## <a name="template-deployment"></a>Bereitstellung von Vorlagen
+
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der benutzerdefinierten Skripterweiterung im Rahmen einer Azure Resource Manager-Bereitstellung verwendet werden. Eine Beispielvorlage, die die benutzerdefinierte Skripterweiterung enthält, finden Sie auf [hier auf GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+
+## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
+
+Mit dem Befehl `Set-AzureVMCustomScriptExtension` können Sie die benutzerdefinierte Skripterweiterung einem vorhandenen virtuellen Computer bereitstellen. Weitere Informationen finden Sie unter [Set-AzureRmVMCustomScriptExtension](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.compute/v2.1.0/set-azurermvmcustomscriptextension).
+
+```powershell
+# create vm object
+$vm = Get-AzureVM -Name 2016clas -ServiceName 2016clas1313
+
+# set extension
+Set-AzureVMCustomScriptExtension -VM $vm -FileUri myFileUri -Run 'create-file.ps1'
+
+# update vm
+$vm | Update-AzureVM
+```
+
+## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
+
+### <a name="troubleshoot"></a>Problembehandlung
+
+Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe des Azure-PowerShell-Moduls abgerufen werden. Führen Sie den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für einen bestimmten virtuellen Computer anzuzeigen.
+
+```powershell
+Get-AzureVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+```
+
+Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis auf dem virtuellen Zielcomputer protokolliert.
+
+```cmd
+C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
+```
+
+Das Skript selbst wird in das folgende Verzeichnis auf dem virtuellen Zielcomputer heruntergeladen.
+
+```cmd
+C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads
+```
+
+### <a name="support"></a>Support
+
+Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/en-us/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/en-us/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/en-us/support/faq/).
 
 
-### <a name="add-the-custom-script-extension-from-the-azure-portal"></a>Hinzufügen der benutzerdefinierten Skripterweiterung aus dem Azure-Portal
-Navigieren Sie im <a href="https://portal.azure.com/ " target="_blank">Azure-Portal</a> zum virtuellen Computer, und fügen Sie die Erweiterung hinzu, indem Sie die auszuführende Skriptdatei angeben.
-
-  ![Angeben der Skriptdatei][5]
-
-### <a name="uninstall-the-custom-script-extension"></a>Deinstallieren der benutzerdefinierten Skripterweiterung
-Sie können die benutzerdefinierte Skripterweiterung mithilfe des folgenden Befehls vom virtuellen Computer deinstallieren.
-
-      get-azureVM -ServiceName KPTRDemo -Name KPTRDemo | Set-AzureVMCustomScriptExtension -Uninstall | Update-AzureVM
-
-### <a name="use-the-custom-script-extension-with-templates"></a>Verwenden der benutzerdefinierten Skripterweiterung mit Vorlagen
-Informationen zum Verwenden der benutzerdefinierten Skripterweiterung mit Azure Resource Manager-Vorlagen finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung für virtuelle Windows-Computer mit Azure Resource Manager-Vorlagen](virtual-machines-windows-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-<!--Image references-->
-[5]: ./media/virtual-machines-windows-classic-extensions-customscript/addcse.png
-
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

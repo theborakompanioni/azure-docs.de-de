@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f2a77ada25d7d6285c62d2f3d1330df5f192713d
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: a70eb51e7ebbc79e1aab4176d154dbef754368c1
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: f2a77ada25d7d6285c62d2f3d1330df5f192713d
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="build-and-run-the-c-sample-solution"></a>Erstellen und Ausführen der C-Beispielprojektmappe
-Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FRDM-K64Flnk][lnk-mbed-home]-Geräts mit der Remoteüberwachungslösung beschrieben.
+Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FRDM-K64F-Geräts][lnk-mbed-home] mit der Remoteüberwachungslösung beschrieben.
 
 ### <a name="connect-the-mbed-device-to-your-network-and-desktop-machine"></a>Verbinden des mbed-Geräts mit Ihrem Netzwerk und Desktopcomputer
 1. Verbinden Sie das mbed-Gerät mithilfe eines Ethernet-Kabels mit Ihrem Netzwerk. Dieser Schritt ist erforderlich, da die Beispielanwendung Zugriff auf das Internet benötigt.
@@ -67,7 +67,11 @@ Im Folgenden werden die Schritte zum Verbinden eines [mbed-fähigen Freescale FR
 Wenn Sie daran interessiert sind, wie das Programm funktioniert, können Sie sich diesen Abschnitt durchlesen, in dem einige wichtige Teile des Beispielcodes beschrieben werden. Falls Sie nur den Code ausführen möchten, können Sie mit [Erstellen und Ausführen des Programms](#buildandrun)fortfahren.
 
 #### <a name="defining-the-model"></a>Definieren des Modells
-In diesem Beispiel wird die Serialisierungsbibliothek ([serializer][lnk-serializer]) zum Definieren eines Modells verwendet, mit dem die Nachrichten angegeben werden, die vom Gerät an IoT Hub gesendet und von IoT Hub empfangen werden können. In diesem Beispiel definiert der Namespace **Contoso** das Modell **Thermostat**, mit dem die Telemetriedaten **Temperature** (Temperatur), **ExternalTemperature** (Außentemperatur) und **Humidity** (Luftfeuchtigkeit) sowie Metadaten angegeben werden, z.B. die Geräte-ID, Geräteeigenschaften und die Befehle, auf die das Gerät reagiert:
+In diesem Beispiel wird die Serialisierungsbibliothek ([serializer][lnk-serializer]) zum Definieren eines Modells verwendet, mit dem die Nachrichten angegeben werden, die vom Gerät an IoT Hub gesendet und von IoT Hub empfangen werden können. In diesem Beispiel definiert der Namespace **Contoso** ein **Thermostat**-Modell, das Folgendes angibt:
+
+- Die Telemetriedaten **Temperature**, **ExternalTemperature** und **Humidity**.
+- Die Metadaten, z.B. Geräte-ID, Geräteeigenschaften.
+- Die Befehle, auf die das Gerät antwortet:
 
 ```
 BEGIN_NAMESPACE(Contoso);
@@ -204,6 +208,6 @@ Zu Referenzzwecken finden Sie nachstehend ein Beispiel für einen **Befehl** , d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

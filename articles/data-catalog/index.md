@@ -1,13 +1,25 @@
 ---
+title: "Dokumentation für Azure Data Catalog – Tutorials, API-Referenz | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie einen Datenkatalog einrichten, in dem Ihre Organisation Datenquellen suchen, verstehen und nutzen kann. Tutorials, API-Referenz und anderes Dokumentationsmaterial.
+services: data-catalog
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-catalog
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: 7c2c989ca2119f7a2c14ca55a56a2bce69d94efa
+ms.sourcegitcommit: c5ada5ff9a0ba37cecff9e2d507736457cc11eb5
+ms.openlocfilehash: b04ec1a07bd1d74aa061409823c78ea814d127fc
 
 ---
 #<a name="data-catalog-documentation"></a>Data Catalog-Dokumentation
 
-Azure Data Catalog ist ein vollständig verwalteter Clouddienst, mit dem Benutzer die benötigten Datenquellen ermitteln und die Ergebnisse besser verstehen können. Unternehmen können mit ihren vorhandenen Investitionen so einen höheren Wert erzielen. Data Catalog enthält Funktionen, mit denen alle Benutzer – von Analysten über Datenwissenschaftler bis hin zu Entwicklern – Datenquellen ermitteln, verstehen und nutzen können. Data Catalog umfasst ein Crowdsourcing-Modell für Metadaten und Anmerkungen und ermöglicht es allen Benutzern, ihr Wissen zum Aufbau einer Community und Datenkultur beizusteuern.
+Hier erfahren Sie, wie Sie Ihre Organisation und Ihr Team mithilfe von Data Catalog beim Finden, Verstehen und Nutzen Ihrer Daten unterstützen können. Anhand von Tutorials, einer REST-API-Referenz und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Datenrepository planen und einrichten, in dem Datennutzer verfügbare Datenquellen finden und sich mit Informationen von Experten vertraut machen können.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -66,15 +78,10 @@ Azure Data Catalog ist ein vollständig verwalteter Clouddienst, mit dem Benutze
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-catalog.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Data Catalog-Dokumentation </div>
-    </a>
-</div>
 
 
-<!--HONumber=Dec16_HO2-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

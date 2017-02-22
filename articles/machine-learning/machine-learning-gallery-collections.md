@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 55fcce54e92cb4d3ecea8946b6cac56bc860ce79
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 55f5eb09e13dd645369486affba338759ec6c1d5
 
 
 ---
@@ -34,7 +34,7 @@ Wenn Sie im Katalog nach Sammlungen suchen möchten, öffnen Sie den [Katalog](h
  Auf der Seite **[Sammlungen](https://gallery.cortanaintelligence.com/collections)**
  finden Sie eine Liste der zuletzt hinzugefügten und beliebtesten Sammlungen.
 Klicken Sie auf **Alle anzeigen**, um alle Sammlungen anzuzeigen.
-Auf dieser Seite können Sie alle Sammlungen im Katalog durchsuchen oder eine Suche durchführen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf dieser Seite können Sie alle Sammlungen im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
 
  Klicken Sie auf eine beliebige Sammlungen, um die Detailseite der Sammlung zu öffnen und weitere Informationen zu erhalten.
 Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch per E-Mail einen Link zum Experiment senden, um andere Benutzer zum Besuch der Seite einzuladen.
@@ -54,20 +54,20 @@ Führen Sie die folgenden Schritte aus, um eine Sammlung zu erstellen und dem Co
 
 1. Melden Sie sich mit Ihrem Microsoft-Konto am Katalog an.
 
-* Klicken Sie auf Ihr Image am oberen Rand des Fensters und dann auf Ihren Namen
+2.  Klicken Sie auf Ihr Image am oberen Rand des Fensters und dann auf Ihren Namen
   
     ![Klicken Sie auf den Namen Ihres Kontos](media/machine-learning-gallery-collections/click-account-name.png)
 
-1. Klicken Sie auf **Neues Element**
+3. Klicken Sie auf **Neues Element**
    
     ![Klicken Sie auf „Neues Element“](media/machine-learning-gallery-collections/click-new-item.png)
-2. Wählen Sie für **Elementtyp** **Sammlung** aus, versehen Sie die Sammlung mit einem Namen, einer kurzen Zusammenfassung, einer Beschreibung und den Tags, die Benutzern beim Auffinden der Sammlung als Hilfe dienen
+4. Wählen Sie für **Elementtyp** **Sammlung** aus, versehen Sie die Sammlung mit einem Namen, einer kurzen Zusammenfassung, einer Beschreibung und den Tags, die Benutzern beim Auffinden der Sammlung als Hilfe dienen
    
     ![Geben Sie Informationen für die neue Sammlung ein](media/machine-learning-gallery-collections/create-collection-page-1.png)
-3. Klicken Sie auf **Weiter** – Sie können eine Image-Datei hochladen, oder ein vorhandenes Image hochladen, das mit der Sammlung angezeigt wird. Wählen Sie ein Image aus, anhand dessen Benutzer einfach den Inhalt und den Zweck der Sammlung erkennen können
+5. Klicken Sie auf **Weiter** – Sie können eine Image-Datei hochladen, oder ein vorhandenes Image hochladen, das mit der Sammlung angezeigt wird. Wählen Sie ein Image aus, anhand dessen Benutzer einfach den Inhalt und den Zweck der Sammlung erkennen können
    
     ![Geben Sie Informationen für die neue Sammlung ein](media/machine-learning-gallery-collections/create-collection-page-2.png)
-4. Klicken Sie auf **Weiter** – Sie können entscheiden, ob die Sammlung **Öffentlich** (kann von jedem angesehen werden), oder **Nicht aufgeführt** (nur Benutzer mit einem direkten Link können die Sammlung sehen) sein soll
+6. Klicken Sie auf **Weiter** – Sie können entscheiden, ob die Sammlung **Öffentlich** (kann von jedem angesehen werden), oder **Nicht aufgeführt** (nur Benutzer mit einem direkten Link können die Sammlung sehen) sein soll
    
    > [!IMPORTANT]
    > Wenn Sie eine Sammlung auf **Öffentlich** eingestellt haben, können Sie **Nicht aufgeführt** nicht mehr einstellen.
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um eine Sammlung zu erstellen und dem Co
    > 
    
     ![Wählen Sie „Öffentlich“ oder „Nicht aufgeführt“ aus](media/machine-learning-gallery-collections/create-collection-page-3.png)
-5. Klicken Sie auf **Erstellen**
+7. Klicken Sie auf **Erstellen**
 
 Ihre Sammlung ist jetzt Teil des Cortana Intelligence-Katalogs. Sie wird auf der Seite Ihres Kontos unter der Registerkarte **Collection** angezeigt.
 
@@ -104,6 +104,6 @@ Beim Bearbeiten der Sammlung können Sie auch die Reihenfolge der Elemente in de
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

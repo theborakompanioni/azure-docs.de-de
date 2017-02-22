@@ -1,5 +1,5 @@
 ---
-title: "Diagnoseprotokollierung für Azure Batch | Microsoft Docs"
+title: "Aktivieren der Diagnoseprotokollierung für Batch-Ereignisse – Azure | Microsoft-Dokumentation"
 description: "Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoressourcen wie Pools und Tasks auf, und analysieren Sie sie."
 services: batch
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 01/20/2017
+ms.date: 02/01/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: f1aa23d2865ec8401a59b2370c8157d2458c60f7
+ms.sourcegitcommit: 4b8343ac07aa7b2c0771a723306cf1f875cb6147
+ms.openlocfilehash: aeba32d62458f948c7aa99294c90519979924d57
 
 
 ---
@@ -93,7 +93,7 @@ In einem Azure Storage-Konto können Sie nicht nur Diagnoseprotokollereignisse s
 * [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
   
   Streamen Sie Batch-Diagnoseereignisse an Event Hubs, äußerst skalierbare Dateneingangsdienste. Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern.
-* [Analysieren von Azure-Diagnoseprotokollen mit Log Analytics](../log-analytics/log-analytics-azure-storage-json.md)
+* [Analysieren von Azure-Diagnoseprotokollen mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
   
   Senden Sie Diagnoseprotokolle an Log Analytics. Hier können Sie sie im OMS-Portal (Operations Management Suite) analysieren oder zu Analyse in Power BI oder Excel exportieren.
 
@@ -108,6 +108,6 @@ In einem Azure Storage-Konto können Sie nicht nur Diagnoseprotokollereignisse s
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

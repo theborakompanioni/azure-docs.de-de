@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zu Microservices | Microsoft-Dokumentation
+title: "Einführung in Microservices in Azure | Microsoft-Dokumentation"
 description: "Sie erhalten einen Überblick, warum das Erstellen von Cloudanwendungen mit einem Microservice-Ansatz für die moderne Anwendungsentwicklung wichtig ist und wie Azure Service Fabric dafür eine Plattform bereitstellt."
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2016
-ms.author: mfussell
+ms.date: 02/06/2017
+ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9a3a4424e04597e2a06ea4a5df421bc511bc899b
+ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
+ms.openlocfilehash: a2a72da08ccff17407fcdd98783137b091651b47
 
 
 ---
@@ -151,11 +151,11 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 * [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md)
 * [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/en-us/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution)
 
-[Bild1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
-[Bild2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
+[Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
+[Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

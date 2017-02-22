@@ -1,5 +1,7 @@
 ---
-title: "Ausführen der Beispielanwendung, um C2D-Nachrichten zu empfangen | Microsoft-Dokumentation"
+featureFlags:
+- usabilla
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 4: C2D | Microsoft-Dokumentation"
 description: "Die Beispielanwendung wird auf dem Pi ausgeführt und überwacht eingehende Nachrichten von IoT Hub. Ein neuer Gulp-Task sendet Nachrichten von IoT Hub an den Raspberry Pi, damit die LED blinkt."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +18,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 4a42967ceddcd1ad8d6fdd861367a6060578353b
-ms.openlocfilehash: 06ade85c7f24ed4b55de3d57a86ad747f5ae9f2f
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 92ee9d6faae9f539c663395e47714609a146f2df
 
 
 ---
@@ -91,6 +93,6 @@ Sie haben erfolgreich Nachrichten von IoT Hub an den Pi gesendet, damit die LED 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

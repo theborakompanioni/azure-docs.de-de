@@ -1,5 +1,5 @@
 ---
-title: Anforderungseinheiten in DocumentDB | Microsoft Docs
+title: "Anforderungseinheiten und Schätzen des Durchsatzes – Azure DocumentDB | Microsoft-Dokumentation"
 description: "Enthält Informationen zu den Grundlagen von Anforderungseinheiten in DocumentDB sowie zur Angabe und zur Schätzung des Bedarfs an Anforderungseinheiten."
 services: documentdb
 author: syamkmsft
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: syamk
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: 8b2d13dd16f629fbb2108856cd1e1b2954ece8bf
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: bf58d333e81fb76ffc3cca8a8e1ccb3f71ac72c9
 
 
 ---
@@ -120,7 +120,7 @@ Beispiel:
 6. Berechnen Sie die erforderlichen Anforderungseinheiten anhand der geschätzten Anzahl von Vorgängen, die erwartungsgemäß pro Sekunde ausgeführt werden.
 
 ## <a name="a-request-unit-estimation-example"></a>Beispiel für die Schätzung von Anforderungseinheiten
-Betrachten Sie das folgende Dokument von 1 KB:
+Betrachten Sie das folgende Dokument von&1; KB:
 
     {
      "id": "08259",
@@ -239,6 +239,6 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure DocumentDB](documentdb-per
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

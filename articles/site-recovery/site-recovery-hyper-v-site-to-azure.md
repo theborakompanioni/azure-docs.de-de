@@ -1,5 +1,5 @@
 ---
-title: "Replizieren virtueller Hyper-V-Computer (ohne VMM) zu Azure mithilfe von Azure Site Recovery über das Azure-Portal | Microsoft Docs"
+title: Replizieren virtueller Hyper-V-Computer in Azure | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Azure Site Recovery bereitstellen, um Replikation, Failover und Wiederherstellung von lokalen Hyper-V-VMs, die nicht von VMM verwaltet werden, auf Azure mit dem Azure-Portal zu orchestrieren.
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 1268d29b0d9c4368f62918758836a73c757c0c8d
-ms.openlocfilehash: aeccda397ea3c311afddd88b3a8b9c6dab2461d7
+ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
+ms.openlocfilehash: aac1d2016043cd64d94ec0d10921d6e208db1d7f
 
 ---
 
@@ -40,18 +40,18 @@ Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels od
 ## <a name="quick-reference"></a>Kurzübersicht
 
 Für eine vollständige Bereitstellung empfiehlt es sich dringend, alle Schritte in diesem Artikel auszuführen. Sollten Sie wenig Zeit haben, finden Sie hier eine kurze Zusammenfassung.
- 
+
  **Bereich** | **Details**
- --- | --- 
- **Bereitstellungsszenario** | Replizieren virtueller Hyper-V-Computer (nicht in VMM-Clouds) zu Azure über das Azure-Portal 
- **Lokale Anforderungen** | Mindestens ein Hyper-V-Server, auf dem mindestens Windows Server 2012 R2 mit den neuesten Updates und der Hyper-V-Rolle aktiviert oder Microsoft Hyper-V Server 2012 R2 mit den neuesten Updates ausgeführt wird<br/><br/> Hyper-V-Hosts benötigen Internetzugriff und müssen entweder direkt oder über einen Proxy auf bestimmte URLs zugreifen können. [Details](#on-premises-prerequisites) 
+ --- | ---
+ **Bereitstellungsszenario** | Replizieren virtueller Hyper-V-Computer (nicht in VMM-Clouds) zu Azure über das Azure-Portal
+ **Lokale Anforderungen** | Mindestens ein Hyper-V-Server, auf dem mindestens Windows Server 2012 R2 mit den neuesten Updates und der Hyper-V-Rolle aktiviert oder Microsoft Hyper-V Server 2012 R2 mit den neuesten Updates ausgeführt wird<br/><br/> Hyper-V-Hosts benötigen Internetzugriff und müssen entweder direkt oder über einen Proxy auf bestimmte URLs zugreifen können. [Details](#on-premises-prerequisites)
  **Lokale Einschränkungen** | HTTPS-basierte Proxys werden nicht unterstützt.
- **Anbieter/Agent** | Der Azure Site Recovery-Anbieter und der Recovery Services-Agent werden während der Bereitstellung auf Hyper-V-Hosts installiert. 
- **Anforderungen für Azure** | Azure-Konto<br/><br/> Recovery Services-Tresor<br/><br/> LRS- oder GRS-Speicherkonto in der Tresorregion<br/><br/> Standardspeicherkonto<br/><br/> Virtuelles Azure-Netzwerk in der Tresorregion. [Details](#azure-prerequisites) 
- **Azure-Einschränkungen** | Bei Verwendung von GRS benötigen Sie ein weiteres LRS-Konto für die Protokollierung.<br/><br/> Beachten Sie, dass im Azure-Portal erstellte Speicherkonten nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden können. <br/><br/> Storage Premium wird nicht unterstützt.<br/><br/> Für Site Recovery verwendete Azure-Netzwerke können nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden. 
- **VM-Replikation** | VMs müssen die [Anforderungen für Azure](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.<br/><br/> 
+ **Anbieter/Agent** | Der Azure Site Recovery-Anbieter und der Recovery Services-Agent werden während der Bereitstellung auf Hyper-V-Hosts installiert.
+ **Anforderungen für Azure** | Azure-Konto<br/><br/> Recovery Services-Tresor<br/><br/> LRS- oder GRS-Speicherkonto in der Tresorregion<br/><br/> Standardspeicherkonto<br/><br/> Virtuelles Azure-Netzwerk in der Tresorregion. [Details](#azure-prerequisites)
+ **Azure-Einschränkungen** | Bei Verwendung von GRS benötigen Sie ein weiteres LRS-Konto für die Protokollierung.<br/><br/> Beachten Sie, dass im Azure-Portal erstellte Speicherkonten nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden können. <br/><br/> Storage Premium wird nicht unterstützt.<br/><br/> Für Site Recovery verwendete Azure-Netzwerke können nicht über Ressourcengruppen in einem oder mehreren Abonnements hinweg verschoben werden.
+ **VM-Replikation** | VMs müssen die [Anforderungen für Azure](site-recovery-best-practices.md#azure-virtual-machine-requirements) erfüllen.<br/><br/>
  **Replikationseinschränkungen** | Hyper-V-VMs, die Linux mit einer statischen IP-Adresse ausführen, können nicht repliziert werden.<br/><br/> Sie können bestimmte Datenträger von der Replikation ausschließen, allerdings nicht den Betriebssystem-Datenträger.
- **Bereitstellungsschritte** | **1)** Erstellen eines Recovery Services-Tresors -> **2)** Erstellen eines Hyper-V-Standorts, der alle Hyper-V-Hosts umfasst -> **3)** Einrichten des Hyper-V-Hosts -> **4**) Vorbereiten von Azure (Abonnement, Speicher, Netzwerk) -> **5)** Konfigurieren der Replikationseinstellungen -> **6)** Aktivieren der Replikation -> **7)** Testen der Replikation und des Failover. **8)** Führen Sie ein geplantes Failover aus, wenn Sie eine Migration durchführen. 
+ **Bereitstellungsschritte** | **1)** Erstellen eines Recovery Services-Tresors -> **2)** Erstellen eines Hyper-V-Standorts, der alle Hyper-V-Hosts umfasst -> **3)** Einrichten des Hyper-V-Hosts -> **4**) Vorbereiten von Azure (Abonnement, Speicher, Netzwerk) -> **5)** Konfigurieren der Replikationseinstellungen -> **6)** Aktivieren der Replikation -> **7)** Testen der Replikation und des Failover. **8)** Führen Sie ein geplantes Failover aus, wenn Sie eine Migration durchführen.
 
 ## <a name="azure-deployment-models"></a>Azure-Bereitstellungsmodelle
 
@@ -62,7 +62,7 @@ Azure verfügt über zwei unterschiedliche [Bereitstellungsmodelle](../azure-res
 ## <a name="site-recovery-in-your-business"></a>Site Recovery in Ihrem Unternehmen
 
 Organisationen benötigen eine BCDR-Strategie, die bestimmt, wie Apps und Daten bei geplanten und ungeplanten Ausfällen verfügbar bleiben und die normalen Arbeitsbedingungen so schnell wie möglich wiederhergestellt werden können. Site Recovery bietet folgende Vorteile:
- 
+
  - Offsite-Schutz für Unternehmens-Apps, die auf virtuellen Hyper-V-Computern ausgeführt werden
  - Zentraler Ort zum Einrichten, Verwalten und Überwachen von Replikation, Failover und Wiederherstellung
  - Unkompliziertes Failover zu Azure und Failback (Wiederherstellung) von Azure zu Hyper-V-Hostservern an Ihrem lokalen Standort
@@ -264,7 +264,7 @@ Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden S
 2. Geben Sie unter **Richtlinie erstellen und zuordnen** einen Richtliniennamen an.
 3. Geben Sie unter **Kopierhäufigkeit** an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
 4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts**das Aufbewahrungszeitfenster für die einzelnen Wiederherstellungspunkte in Stunden an. Geschützte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
-5. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Momentaufnahmen: eine Standard-Momentaufnahme, die eine inkrementelle Momentaufnahme des gesamten virtuellen Computers bereitstellt, und eine anwendungskonsistente Momentaufnahme, die eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers erfasst. Anwendungskonsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass Anwendungen sich bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Beachten Sie, dass die Leistung von Anwendungen auf virtuellen Quellcomputern durch die Aktivierung anwendungskonsistenter Momentaufnahmen beeinträchtigt wird. Stellen Sie sicher, dass der festgelegte Wert kleiner als die konfigurierte Anzahl der zusätzlichen Wiederherstellungspunkte ist.
+5. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis&12; Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Momentaufnahmen: eine Standard-Momentaufnahme, die eine inkrementelle Momentaufnahme des gesamten virtuellen Computers bereitstellt, und eine anwendungskonsistente Momentaufnahme, die eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers erfasst. Anwendungskonsistente Momentaufnahmen verwenden den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS), um sicherzustellen, dass Anwendungen sich bei der Erstellung der Momentaufnahme in einem konsistenten Zustand befinden. Beachten Sie, dass die Leistung von Anwendungen auf virtuellen Quellcomputern durch die Aktivierung anwendungskonsistenter Momentaufnahmen beeinträchtigt wird. Stellen Sie sicher, dass der festgelegte Wert kleiner als die konfigurierte Anzahl der zusätzlichen Wiederherstellungspunkte ist.
 6. Geben Sie unter **Startzeit der ersten Replikation** an, wann die erste Replikation starten soll. Da die Replikation über Ihre Internetbandbreite durchgeführt wird, ist es ratsam, sie außerhalb der Zeiten mit der höchsten Arbeitsbelastung einzuplanen. Klicken Sie dann auf **OK**.
 
     ![Replikationsrichtlinie](./media/site-recovery-hyper-v-site-to-azure/gs-replication2.png)
@@ -321,7 +321,7 @@ Aktivieren Sie die Replikation jetzt wie folgt:
 3. Wählen Sie unter **Ziel** das Tresorabonnement und das Failovermodell aus, das Sie in Azure (klassisches oder Resource Manager-Modell) nach einem Failover verwenden möchten.
 4. Wählen Sie das Speicherkonto aus, das Sie verwenden möchten. Wenn Sie ein anderes Speicherkonto als Ihre bereits vorhandenen Speicherkonten verwenden möchten, können Sie ein [Speicherkonto erstellen](#set-up-an-azure-storage-account). Klicken Sie zum Erstellen eines Speicherkontos mit dem Resource Manager-Modell auf **Neu erstellen**. Wenn Sie ein Speicherkonto mit dem klassischen Modell erstellen möchten, verwenden Sie hierfür das [Azure-Portal](../storage/storage-create-storage-account-classic-portal.md). Klicken Sie dann auf **OK**.
 5. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem Azure-VMs eine Verbindung herstellen, wenn sie nach einem Failover erstellt werden. Wählen Sie die Option **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen. Wenn Sie ein anderes Netzwerk als Ihre bereits vorhandenen Netzwerke verwenden möchten, können Sie [ein Netzwerk erstellen](#set-up-an-azure-network). Klicken Sie zum Erstellen eines Netzwerks mit dem Resource Manager-Modell auf **Neu erstellen**. Wenn Sie ein Netzwerk mit dem klassischen Modell erstellen möchten, verwenden Sie das [Azure-Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Wählen Sie, falls zutreffend, ein Subnetz aus. Klicken Sie dann auf **OK**.
-   ![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png) 
+   ![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png)
 
 6. Geben Sie unter **Virtuelle Computer** > **Virtuelle Computer auswählen** , und wählen Sie die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Klicken Sie dann auf **OK**.
 
@@ -331,10 +331,10 @@ Aktivieren Sie die Replikation jetzt wie folgt:
     ![Replikation aktivieren](./media/site-recovery-hyper-v-site-to-azure/enable-replication6-with-exclude-disk.png)
 
      > [!NOTE]
-     > 
-     > * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Der Betriebssystem-Datenträger kann nicht ausgeschlossen werden, und es wird davon abgeraten, dynamische Datenträger auszuschließen. ASR kann nicht ermitteln, ob es sich bei einer VHD des virtuellen Gastcomputers um einen Basisdatenträger oder um einen dynamischen Datenträger handelt.  Wenn keiner der abhängigen dynamischen Volumendatenträger ausgeschlossen wird, tritt bei geschützten dynamischen Datenträgern auf einem virtuellen Failovercomputer ein Fehler auf, und auf die Daten des Datenträgers kann nicht zugegriffen werden.  
+     >
+     > * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Der Betriebssystem-Datenträger kann nicht ausgeschlossen werden, und es wird davon abgeraten, dynamische Datenträger auszuschließen. ASR kann nicht ermitteln, ob es sich bei einer VHD des virtuellen Gastcomputers um einen Basisdatenträger oder um einen dynamischen Datenträger handelt.  Wenn keiner der abhängigen dynamischen Volumendatenträger ausgeschlossen wird, tritt bei geschützten dynamischen Datenträgern auf einem virtuellen Failovercomputer ein Fehler auf, und auf die Daten des Datenträgers kann nicht zugegriffen werden.
     > * Nach Aktivierung der Replikation können keine Datenträger für die Replikation hinzugefügt oder entfernt werden. Wenn Sie einen Datenträger hinzufügen oder entfernen möchten, müssen Sie den Schutz für den virtuellen Computer deaktivieren und anschließend wieder aktivieren.
-    > * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie ihn nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Sie können auch Azure 
+    > * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie ihn nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Sie können auch Azure
     > * Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
     > * Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback ausgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf dem virtuellen Azure-Computer erstellen, wird nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback von Azure zu Hyper-V ausgeführt. Manuell erstellte Datenträger können nicht in das Failback oder in die umgekehrte Replikation von Hyper-V zu Azure einbezogen werden.
     >
@@ -370,21 +370,10 @@ Es wird empfohlen, dass Sie die Eigenschaften des Quellcomputers überprüfen.
 
 4. Unter **Datenträger** werden das Betriebssystem und die Datenträger auf der VM angezeigt, die repliziert wird.
 
-## <a name="step-7-test-the-deployment"></a>Schritt 7: Testen der Bereitstellung
-Zum Testen der Bereitstellung können Sie ein Testfailover für einen einzelnen virtuellen Computer durchführen. Alternativ können Sie einen Wiederherstellungsplan erstellen, der mehrere virtuelle Computer enthält.
 
-### <a name="prepare-for-test-failover"></a>Vorbereiten des Testfailovers
-* Zum Ausführen eines Testfailovers empfehlen wir Folgendes: Erstellen Sie ein neues Azure-Zielnetzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). [Erfahren Sie mehr](site-recovery-failover.md#run-a-test-failover) über die Ausführung von Testfailovervorgängen.
-* Installieren Sie den Azure-Agent auf dem geschützten Computer, um für das Failover zu Azure die beste Leistung zu erzielen. Hierdurch wird der Startvorgang beschleunigt und die Problembehandlung vereinfacht. Installieren Sie den Agent für [Linux](https://github.com/Azure/WALinuxAgent) oder [Windows](http://go.microsoft.com/fwlink/?LinkID=394789).
-* Zum vollständigen Testen der Bereitstellung benötigen Sie eine entsprechende Infrastruktur, damit der replizierte Computer wie erwartet funktioniert. Wenn Sie Active Directory und DNS testen möchten, können Sie einen virtuellen Computer als Domänencontroller mit DNS erstellen und per Azure Site Recovery zu Azure replizieren. Weitere Informationen finden Sie unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations).
-* Wenn Sie Datenträger von der Replikation ausgeschlossen haben, müssen Sie diese Datenträger nach einem Failover möglicherweise manuell in Azure erstellen, damit die Anwendung wie erwartet ausgeführt wird.
-* Beachten Sie Folgendes, wenn Sie anstelle eines Testfailovers ein ungeplantes Failover durchführen möchten:
-
-  * Falls möglich, sollten Sie primäre Computer herunterfahren, bevor Sie ein ungeplantes Failover ausführen. Dadurch wird sichergestellt, dass die Quell- und Replikatcomputer nicht gleichzeitig ausgeführt werden.
-  * Beim Durchführen eines ungeplanten Failovers wird die Datenreplikation der primären Computer beendet. Das heißt, dass nach dem Beginn des Failovers keine Datenänderungen mehr übertragen werden. Außerdem wird ein ungeplantes Failover, das auf einem Wiederherstellungsplan basiert, auch dann bis zum Ende durchgeführt, wenn ein Fehler auftritt.
 
 ### <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
-Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Azure-VMs nach dem Failover per RDP herstellen möchten:
+Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Azure-VMs nach dem Failover per RDP herstellen möchten: 
 
 **Auf dem lokalen Computer vor dem Failover**:
 
@@ -413,33 +402,21 @@ Gehen Sie wie folgt vor, wenn Sie nach dem Failover auf eine Azure-VM mit Linux 
 * Es sollte ein öffentlicher Endpunkt erstellt werden, um eingehende Verbindungen für den SSH-Port (standardmäßig TCP-Port 22) zuzulassen.
 * Wenn auf die VM über eine VPN-Verbindung (Express Route- oder Standort-zu-Standort-VPN-Verbindung) zugegriffen wird, kann der Client verwendet werden, um per SSH eine direkte Verbindung mit der VM herzustellen.
 
-### <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
-Gehen Sie wie folgt vor, um das Testfailover durchzuführen:
+## <a name="step-7-run-a-test-failover"></a>Schritt 7: Ausführen eines Testfailovers
+Zum Testen der Bereitstellung können Sie ein Testfailover für einen einzelnen virtuellen Computer durchführen. Alternativ können Sie einen Wiederherstellungsplan erstellen, der mehrere virtuelle Computer enthält.
 
-1. Klicken Sie zum Durchführen eines Failovers für einen einzelnen virtuellen Computer unter **Einstellungen** > **Replizierte Elemente** auf den virtuellen Computer und dann auf **+Testfailover**.
+1. Klicken Sie zum Durchführen eines Failovers für einen einzelnen Computer unter **Einstellungen** > **Replizierte Elemente** auf den virtuellen Computer und dann auf das Symbol **+Testfailover**.
 
-    ![Testfailover](./media/site-recovery-hyper-v-site-to-azure/run-failover1.png)
-2. Klicken Sie zum Durchführen eines Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan, und klicken Sie dann auf **Testfailover**. [Befolgen Sie diese Anweisungen](site-recovery-create-recovery-plans.md)zum Erstellen eines Wiederherstellungsplans.
-3. Wählen Sie unter **Testfailover** das Azure-Netzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden.
+    ![Testfailover](./media/site-recovery-vmware-to-azure/test-failover1.png)
+1. Klicken Sie zum Durchführen eines Failovers für einen Wiederherstellungsplan unter **Einstellungen** > **Wiederherstellungspläne** mit der rechten Maustaste auf den Plan, und klicken Sie dann auf **Testfailover**. Eine Anleitung zum Erstellen eines Wiederherstellungsplans finden Sie [hier](site-recovery-create-recovery-plans.md).
+1. Wählen Sie unter **Testfailover** das Azure-Netzwerk aus, mit dem Azure-VMs nach dem Failover verbunden werden.
+1. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ können Sie unter „Tresorname“ > **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
+1. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt werden. Stellen Sie sicher, dass die VM die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
+1. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](#prepare-to-connect-to-azure-vms-after-failover) durchgeführt haben, sollten Sie eine Verbindung mit dem virtuellen Azure-Computer herstellen können.
+1. Klicken Sie anschließend auf dem Wiederherstellungsplan auf **Cleanup-Test-Failover** (Testfailover bereinigen). Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test-Failover. Dadurch werden die während des Testfailovers erstellten virtuellen Computer gelöscht. 
 
-    ![Testfailover](./media/site-recovery-hyper-v-site-to-azure/run-failover2.png)
-4. Klicken Sie auf **OK**, um den Failovervorgang zu starten. Sie können den Fortschritt verfolgen, indem Sie auf den virtuellen Computer klicken, um die Eigenschaften zu öffnen. Alternativ dazu können Sie unter **Einstellungen** > **Site Recovery-Aufträge** auf den Auftrag **Testfailover** klicken.
-5. Gehen Sie wie folgt vor, wenn das Failover die Phase **Test abschließen** erreicht hat:
+Weitere Informationen finden Sie im Dokument [Testfailover in Azure](site-recovery-test-failover-to-azure.md).
 
-   1. Zeigen Sie den virtuellen Replikatcomputer im Azure-Portal an. Prüfen Sie, ob der virtuelle Computer erfolgreich startet.
-   2. Wenn Sie den Zugriff auf virtuelle Computer aus Ihrem lokalen Netzwerk eingerichtet haben, können Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen.
-   3. Wenn Sie Datenträger von der Replikation ausgeschlossen haben, müssen Sie diese Datenträger nach einem Failover möglicherweise manuell in Azure erstellen, damit die Anwendung wie erwartet ausgeführt wird.
-   4. Klicken Sie auf **Test abschließen** , um den Test abzuschließen.
-   5. Klicken Sie auf **Notizen** , um alle Beobachtungen im Zusammenhang mit dem Test-Failover aufzuzeichnen und zu speichern.
-   6. Klicken Sie auf **Das Testfailover ist abgeschlossen**. Bereinigen Sie die Testumgebung, um den virtuellen Testcomputer automatisch auszuschalten und ihn zu löschen.
-   7. An diesem Punkt werden alle Elemente oder VMs gelöscht, die von Site Recovery während des Testfailovers automatisch erstellt wurden. Alle weiteren Elemente, die Sie für das Testfailover erstellt haben, werden nicht gelöscht.
-
-      > [!NOTE]
-      > Sollte ein Testfailover länger als zwei Wochen ausgeführt werden, wird sein Abschluss erzwungen.
-      >
-      >
-6. Nach Abschluss des Failovers sollte der Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt werden. Stellen Sie sicher, dass die VM die richtige Größe hat, mit dem richtigen Netzwerk verbunden ist und ausgeführt wird.
-7. Wenn Sie die [Vorbereitung für Verbindungen nach dem Failover](#prepare-to-connect-to-Azure-VMs-after-failover) durchgeführt haben, sollten Sie die Verbindung mit der Azure-VM herstellen können.
 
 ## <a name="failover"></a>Failover
 Nach Abschluss der ersten Replikation für Ihre Computer könne Sie bei Bedarf Failover auslösen. Site Recovery unterstützt verschiedene Arten von Failovern: Testfailover, geplantes Failover und ungeplantes Failover.
@@ -447,8 +424,18 @@ Lesen Sie die [weiteren Informationen](site-recovery-failover.md) zu den untersc
 
 > [!NOTE]
 > Falls Sie virtuelle Computer zu Azure migrieren möchten, empfehlen wir Ihnen dringend, ein [geplantes Failover](site-recovery-failover.md#run-a-planned-failover-primary-to-secondary) durchzuführen, um die virtuellen Computer zu Azure zu migrieren. Nachdem die migrierte Anwendung in Azure per Testfailover überprüft wurde, können Sie die Schritte unter [Vollständige Migration](#Complete-migration-of-your-virtual-machines-to-Azure) ausführen, um die Migration Ihrer virtuellen Computer durchzuführen. Sie müssen keinen Commit- oder Löschvorgang durchführen. Mit „Migration abschließen“ wird die Migration abgeschlossen, der Schutz für den virtuellen Computer beendet und die Azure Site Recovery-Gebührenberechnung für den Computer beendet.
->
->
+
+
+### <a name="run-a-planned-failover"></a>Ausführen eines geplanten Failovers
+Diese Option sollte gewählt werden, um Compliance-Anforderungen zu erfüllen oder um während einer geplanten Wartung ein Failover von Daten durchzuführen, damit Workloads vor bekannten Ausfällen wie erwarteten Stromausfällen oder Unwettern geschützt sind. Hier erfahren Sie, wie Sie ein „geplantes Failover“ für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte „Virtuelle Computer“ auch für einen einzelnen virtuellen Computer durchführen. Vergewissern Sie sich zunächst, dass bei allen virtuellen Computern, für die ein Failover durchgeführt werden soll, die erste Replikation abgeschlossen ist.
+
+1. Wählen Sie **Wiederherstellungspläne > <Name des Wiederherstellungsplans>**.
+2. Klicken Sie auf dem Blatt „Wiederherstellungsplan“ auf **Geplantes Failover**.
+3. Wählen Sie auf der Seite **Geplantes Failover bestätigen **den Quell- und Zielort aus. 
+4. Zu Beginn eines geplantes Failovers wird zur Vermeidung von Datenverlusten zunächst der virtuelle Computer heruntergefahren. Der Fortschritt des Failovers wird auf der Registerkarte **Aufträge** angezeigt. Tritt während des Failovers ein Fehler auf (entweder auf einem virtuellen Computer oder in einem Skript aus dem Wiederherstellungsplan), wird das geplante Failover des Wiederherstellungsplans beendet. Sie können das Failover erneut initiieren.
+6. Nach der Erstellung der virtuellen Replikatcomputer weist deren Status darauf hin, dass ein Commit aussteht. Klicken Sie auf **Commit**, um ein Commit für das Failover auszuführen.
+7. Nach Abschluss der Replikation werden die virtuellen Computer am sekundären Standort gestartet.
+
 
 ### <a name="run-an-unplanned-failover"></a>Durchführen eines ungeplanten Failovers
 Wählen Sie diese Option, falls aufgrund eines unerwarteten Vorfalls (beispielsweise ein Stromausfall oder ein Virusangriff) nicht mehr auf einen primären Standort zugegriffen werden kann. Hier erfahren Sie, wie Sie ein ungeplantes Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte „Virtuelle Computer“ auch für einen einzelnen virtuellen Computer durchführen. Vergewissern Sie sich zunächst, dass bei allen virtuellen Computern, für die ein Failover durchgeführt werden soll, die erste Replikation abgeschlossen ist.
@@ -484,6 +471,6 @@ Hier wird beschrieben, wie Sie die Konfigurationseinstellungen, den Status und d
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

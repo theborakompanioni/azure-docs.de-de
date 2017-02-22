@@ -1,4 +1,10 @@
-1. Melden Sie sich beim [Azure-Portal][Azure-Portal] an.
+## <a name="create-a-service-namespace"></a>Erstellen eines Dienstnamespaces
+
+Um mit der Verwendung von Service Bus-Warteschlangen in Azure beginnen zu können, müssen Sie zuerst einen Namespace erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. 
+
+So erstellen Sie einen Namespace
+
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 2. Klicken Sie im linken Navigationsbereich des Portals auf **Neu** > **Enterprise Integration** > **Service Bus**.
 3. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 4. Ist der Name verfügbar, wählen Sie den Tarif („Basic“, „Standard“ oder Premium“) aus.
@@ -19,15 +25,15 @@
    
     ![connection-string][connection-string]
 
+5. Wiederholen Sie den vorherigen Schritt, um den Wert von **Primärschlüssel** zu kopieren und zur späteren Verwendung an einem temporären Speicherort einzufügen.
+
 <!--Image references-->
 
 [create-namespace]: ./media/service-bus-create-namespace-portal/create-namespace.png
 [connection-info]: ./media/service-bus-create-namespace-portal/connection-info.png
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
+[Azure portal]: https://portal.azure.com
 
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
-[Azure-Portal]: https://portal.azure.com
-
-<!---HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

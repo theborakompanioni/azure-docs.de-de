@@ -97,9 +97,10 @@
 ##### [Beispielanwendung](virtual-networks-sample-app.md)
 
 ## Konfigurieren
-### Beschleunigte Netzwerke
+### Beschleunigte Netzwerke für virtuelle Computer
 #### [Azure-Portal](virtual-network-accelerated-networking-portal.md)
 #### [PowerShell](virtual-network-accelerated-networking-powershell.md)
+### [Optimieren des VM-Netzwerkdurchsatzes](virtual-network-optimize-network-bandwidth.md)
 ### Zugriffssteuerungslisten
 #### [Klassisches Portal](virtual-networks-acl.md)
 #### [PowerShell](virtual-networks-acl-powershell.md)
@@ -147,6 +148,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

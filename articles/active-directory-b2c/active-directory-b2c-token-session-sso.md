@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 9cc0081588f54f77a69ded336d063651b12c8dd8
-ms.openlocfilehash: a185e802a2713c6b6d4101477f0fc61bca0bf29c
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 766ba894ba2643dec06757a133f8e716aa856161
 
 
 ---
@@ -60,6 +60,11 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
 * Ermöglichen Sie einem Benutzer, unbegrenzt in einer mobilen Anwendung angemeldet zu bleiben, solange er ständig in der Anwendung aktiv ist. Hierzu können Sie die Option **Lebensdauer für gleitendes Fenster des Aktualisierungstokens (Tage)** in Ihrer Richtlinie auf **Unbegrenzt** festlegen.
 * Erfüllen Sie die Sicherheits- und Complianceanforderungen Ihrer Branche durch Festlegung der entsprechenden Zugriffstoken-Gültigkeitsdauer.
 
+    > [!NOTE]
+    > Diese Einstellungen sind für Richtlinien zur Kennwortzurücksetzung nicht verfügbar.
+    > 
+    > 
+
 ## <a name="token-compatibility-settings"></a>Tokenkompatibilitätseinstellungen
 Das Format wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken wurde geändert. Diese Änderung wurde zur Verbesserung der Standardprotokollunterstützung und zur besseren Interoperabilität mit Identitätsbibliotheken von Drittanbietern vorgenommen. Um die fehlerfreie Nutzung vorhandener Apps zu gewährleisten, wurden die folgenden Eigenschaften erstellt, um Kunden die Anwendung nach Bedarf zu ermöglichen:
 
@@ -87,6 +92,11 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
 * Erfüllen Sie die Sicherheits- und Complianceanforderungen Ihrer Branche durch Festlegung der entsprechenden Lebensdauer für Webanwendungssitzungen.
 * Erzwingen Sie die erneute Authentifizierung nach einem festgelegten Zeitraum während der Interaktion eines Benutzers mit einer Komponente Ihrer Webanwendung, die eine höhere Sicherheit erfordert. 
 
+    > [!NOTE]
+    > Diese Einstellungen sind für Richtlinien zur Kennwortzurücksetzung nicht verfügbar.
+    > 
+    > 
+
 ## <a name="single-sign-on-sso-configuration"></a>Einmaliges Anmelden (Single Sign-on, SSO) – Konfiguration
 Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfügen, können Sie die Interaktionen der Benutzer mithilfe der Eigenschaft **Konfiguration des einmaligen Anmeldens** übergreifend verwalten. Sie können die Eigenschaft auf eine der folgenden Optionen festlegen:
 
@@ -95,9 +105,14 @@ Wenn Sie in Ihrem B2C-Mandanten über mehrere Anwendungen und Richtlinien verfü
 * **Richtlinie**: Damit können Sie eine Benutzersitzung ausschließlich für eine Richtlinie beibehalten, unabhängig von den Anwendungen, die sie verwenden. Wenn der Benutzer sich z.B. bereits angemeldet und einen Multi-Factor Authentication-Schritt (MFA) abgeschlossen hat, kann er in mehreren Anwendungen Zugriff auf Komponenten mit höherer Sicherheit erhalten, solange die an die Richtlinie gebundene Sitzung nicht abläuft.
 * **Deaktiviert**: Bei jeder Ausführung der Richtlinie muss der Benutzer die gesamte User Journey ausführen. Dies erlaubt beispielsweise mehreren Benutzern, sich bei der Anwendung anzumelden (in einem Szenario mit freigegebenem Desktop), auch während ein einzelner Benutzer während der gesamten Zeit angemeldet bleibt.
 
+    > [!NOTE]
+    > Diese Einstellungen sind für Richtlinien zur Kennwortzurücksetzung nicht verfügbar.
+    > 
+    > 
 
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Jan17_HO4-->
 
 

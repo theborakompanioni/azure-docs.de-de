@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 12/13/2016
-ms.author: b-hoedid
+ms.date: 01/25/2017
+ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: b22e75264345bc9d155bd1abc1fdb6e978dfad04
-ms.openlocfilehash: bafc50750381616ecf30c4e41090f342d82007f9
+ms.sourcegitcommit: f2586eae5ef0437b7665f9e229b0cc2749bff659
+ms.openlocfilehash: 894856c6386b26610ca5078238a88adcdd2d9a03
 
 
 ---
@@ -47,7 +47,7 @@ Ein Änderungsfeed ermöglicht eine effiziente Verarbeitung großer Datasets mit
 
 ![Azure DocumentDB-basierte Lambda-Pipeline für die Erfassung und Abfrage](./media/documentdb-change-feed/lambda.png)
 
-Sie können DocumentDB zum Empfangen und Speichern von Ereignisdaten von Geräten, Sensoren, Infrastrukturen und Anwendungen verwenden und diese Ereignisse in Echtzeit mit [Azure Stream Analytics](documentdb-search-indexer.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md) oder [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) verarbeiten. 
+Sie können DocumentDB zum Empfangen und Speichern von Ereignisdaten von Geräten, Sensoren, Infrastrukturen und Anwendungen verwenden und diese Ereignisse in Echtzeit mit [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [Apache Storm](../hdinsight/hdinsight-storm-overview.md) oder [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) verarbeiten. 
 
 In Web-Apps und mobilen Apps können Sie Ereignisse wie Änderungen am Profil, an den Voreinstellungen oder am Speicherort des Kunden nachverfolgen, um bestimmte Aktionen wie das Senden von Pushbenachrichtigungen an deren Geräte mit [Azure Functions](../azure-functions/functions-bindings-documentdb.md) oder [App Services](https://azure.microsoft.com/services/app-service/) auszulösen. Wenn Sie DocumentDB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
@@ -74,7 +74,7 @@ DocumentDB bietet elastische Container für Speicher und Durchsatz, die **Sammlu
 ### <a name="readdocumentfeed-api"></a>ReadDocumentFeed-API
 Betrachten wir nun kurz die Funktionsweise von ReadDocumentFeed. DocumentDB unterstützt über die `ReadDocumentFeed`-API das Lesen eines Feeds von Dokumenten in einer Sammlung. Die folgende Anforderung gibt z.B. eine Seite von Dokumenten in der `serverlogs`-Sammlung zurück. 
 
-    GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/smallcoll HTTP/1.1
+    GET https://mydocumentdb.documents.azure.com/dbs/smalldb/colls/serverlogs HTTP/1.1
     x-ms-date: Tue, 22 Nov 2016 17:05:14 GMT
     authorization: type%3dmaster%26ver%3d1.0%26sig%3dgo7JEogZDn6ritWhwc5hX%2fNTV4wwM1u9V2Is1H4%2bDRg%3d
     Cache-Control: no-cache
@@ -172,20 +172,24 @@ Diese Anforderung gibt die folgende Antwort mit Metadaten über die Partitionssc
     <tr>
         <td>minInclusive</td>
         <td>Der minimale Partitionsschlüssel-Hashwert für den Partitionsschlüsselbereich. Zur internen Verwendung.</td>
-    </tr>       
+    </tr>        
 </table>
 
 Sie können eines der unterstützten [DocumentDB-SDKs](documentdb-sdk-dotnet.md) verwenden. Der folgende Codeausschnitt zeigt z.B., wie Partitionsschlüsselbereiche in .NET abgerufen werden.
 
+    string pkRangesResponseContinuation = null;
     List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
-    FeedResponse<PartitionKeyRange> response;
 
     do
     {
-        response = await client.ReadPartitionKeyRangeFeedAsync(collection);
-        partitionKeyRanges.AddRange(response);
+        FeedResponse<PartitionKeyRange> pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
+            collectionUri, 
+            new FeedOptions { RequestContinuation = pkRangesResponseContinuation });
+
+        partitionKeyRanges.AddRange(pkRangesResponse);
+        pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     }
-    while (response.ResponseContinuation != null);
+    while (pkRangesResponseContinuation != null);
 
 DocumentDB unterstützt das Abrufen von Dokumenten pro Partitionsschlüsselbereich durch Festlegen des optionalen `x-ms-documentdb-partitionkeyrangeid`-Headers. 
 
@@ -254,24 +258,31 @@ Im Folgenden finden Sie eine Beispielanforderung, mit der alle inkrementellen Ä
     Accept: application/json
     Host: mydocumentdb.documents.azure.com
 
-Die Änderungen sind nach Zeit innerhalb jedes Partitionsschlüsselwerts innerhalb des Partitionsschlüsselbereichs sortiert. Es gibt keine festgelegte Reihenfolge über Partitionsschlüsselwerte hinweg. Wenn mehr Ergebnisse vorhanden sind, als auf eine einzelne Seite passen, können Sie die nächste Seite der Ergebnisse lesen, indem Sie die Anforderung mit dem `If-None-Match`-Header mit dem gleichen Wert für `etag` wie in der vorherigen Antwort erneut übermitteln. Wenn mehrere Dokumente in Bezug auf Transaktionen innerhalb einer gespeicherten Prozedur oder eines Triggers aktualisiert wurden, werden sie alle auf der gleichen Antwortseite zurückgegeben.
+Die Änderungen sind nach Zeit innerhalb jedes Partitionsschlüsselwerts innerhalb des Partitionsschlüsselbereichs sortiert. Es gibt keine festgelegte Reihenfolge über Partitionsschlüsselwerte hinweg. Wenn mehr Ergebnisse vorhanden sind, als auf eine einzelne Seite passen, können Sie die nächste Seite der Ergebnisse lesen, indem Sie die Anforderung mit dem `If-None-Match`-Header mit dem gleichen Wert für `etag` wie in der vorherigen Antwort erneut übermitteln. Wenn mehrere Dokumente in Bezug auf Transaktionen innerhalb einer gespeicherten Prozedur oder eines Triggers eingefügt oder aktualisiert wurden, werden sie alle auf der gleichen Antwortseite zurückgegeben.
 
-Das .NET SDK bietet die Hilfsklassen `CreateDocumentChangeFeedQuery` und `ChangeFeedOptions`, um auf Änderungen an einer Sammlung zuzugreifen. Der folgende Codeausschnitt zeigt, wie alle Änderungen seit dem Beginn mit dem .NET SDK von einem einzigen Client abgerufen werden.
+> [!NOTE]
+> Mit einem Änderungsfeed werden auf einer Seite möglicherweise mehr Elemente zurückgegeben als in `x-ms-max-item-count` angegeben wurde, falls mehrere Dokumente innerhalb einer gespeicherten Prozedur oder eines Triggers eingefügt oder aktualisiert wurden. 
+
+Das .NET SDK enthält die Hilfsklassen [CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) und [ChangeFeedOptions](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.changefeedoptions.aspx) für den Zugriff auf die an einer Sammlung vorgenommenen Änderungen. Der folgende Codeausschnitt zeigt, wie alle Änderungen seit dem Beginn mit dem .NET SDK von einem einzigen Client abgerufen werden.
 
     private async Task<Dictionary<string, string>> GetChanges(
         DocumentClient client,
         string collection,
         Dictionary<string, string> checkpoints)
     {
+        string pkRangesResponseContinuation = null;
         List<PartitionKeyRange> partitionKeyRanges = new List<PartitionKeyRange>();
-        FeedResponse<PartitionKeyRange> pkRangesResponse;
 
         do
         {
-            pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(collection);
+            FeedResponse<PartitionKeyRange> pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
+                collectionUri, 
+                new FeedOptions { RequestContinuation = pkRangesResponseContinuation });
+
             partitionKeyRanges.AddRange(pkRangesResponse);
+            pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
         }
-        while (pkRangesResponse.ResponseContinuation != null);
+        while (pkRangesResponseContinuation != null);
 
         foreach (PartitionKeyRange pkRange in partitionKeyRanges)
         {
@@ -334,6 +345,7 @@ Dieser Artikel enthält eine exemplarische Vorgehensweise zur DocumentDB-Unterst
 * Lernen Sie die Codierung mit den [DocumentDB SDKs](documentdb-sdk-dotnet.md) oder der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) kennen.
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: H264 Single Bitrate 16x9 SD | Microsoft-Dokumentation
+title: "Media Encoder Standard-Voreinstellung „H264 Single Bitrate 16x9 SD“ – Azure | Microsoft-Dokumentation"
 description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 16x9 SD**."
 author: Juliako
 manager: erikre
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 55bfd5b283e6159e0a06b3107de31d1722796bf1
-ms.openlocfilehash: 30c7ab92aa21c0896c35a57e0bff3aa3e5d15261
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: 056cb7eef9d134b7a89c0dea627e4518d2c96b5a
 
 
 ---
@@ -29,7 +29,7 @@ ms.openlocfilehash: 30c7ab92aa21c0896c35a57e0bff3aa3e5d15261
   
  Diese Voreinstellung erzeugt eine einzelne MP4-Datei mit einer Bitrate von 2.200 KBit/s und AAC-Stereoaudio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
- XMLl  
+ XML  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -119,6 +119,7 @@ ms.openlocfilehash: 30c7ab92aa21c0896c35a57e0bff3aa3e5d15261
 ```
 
 
-<!--HONumber=Nov16_HO5-->
+
+<!--HONumber=Jan17_HO4-->
 
 

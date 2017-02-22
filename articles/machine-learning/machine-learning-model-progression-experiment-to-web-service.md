@@ -1,5 +1,5 @@
 ---
-title: So entwickelt sich ein Machine Learning-Modell von einem Experiment zu einem betriebsbereiten Webdienst | Microsoft Docs
+title: So entwickelt sich ein Azure Machine Learning-Modell zu einem Webdienst | Microsoft-Dokumentation
 description: "Ein Überblick darüber, wie Ihr Azure Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt."
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 01/05/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 452cfc0f35810ffa6bdd8c36f8f5e0cf0814e563
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: 8c5a3ca30ae0539cded6cf9cd93ba1a42e19ba58
 
 
 ---
@@ -35,7 +35,7 @@ Sobald Sie mit dem Experiment zufrieden sind, können Sie es als ***klassischen 
 In diesem Artikel geben wir einen Überblick, wie Ihr Machine Learning-Modell sich von einem Entwicklungsexperiment zu einem betriebsbereiten Webdienst entwickelt.
 
 > [!NOTE]
-> Es gibt noch weitere Methoden zum Entwickeln und Bereitstellen von Machine Learning-Modellen, aber dieser Artikel beschränkt sich auf die Verwendung von Machine Learning Studio. Eine Erläuterung zum Erstellen eines klassischen Vorhersagewebdiensts mit R finden Sie im Blogbeitrag [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx) (Erstellen und Bereitstellen von Vorhersage-Web-Apps mit RStudio und Azure ML).
+> Es gibt noch weitere Methoden zum Entwickeln und Bereitstellen von Machine Learning-Modellen, aber dieser Artikel beschränkt sich auf die Verwendung von Machine Learning Studio. Eine Erläuterung zum Erstellen eines klassischen Vorhersagewebdiensts mit R finden Sie beispielsweise im Blogbeitrag [Build & Deploy Predictive Web Apps Using RStudio and Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx) (Erstellen und Bereitstellen von Vorhersage-Web-Apps mit RStudio und Azure ML).
 > 
 > 
 
@@ -122,6 +122,6 @@ Beispiele für den gesamten Prozess finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

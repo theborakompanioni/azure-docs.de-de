@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 032ac0cf678dad3ab544d6e9257b65cf01f36385
-ms.openlocfilehash: 3c4d41689fc3c127c60e6e0988d1efe60d4d71b8
+ms.sourcegitcommit: 43eaec477ef5279631454edd584f22573e224977
+ms.openlocfilehash: b97a81cd516b6d3d20740609c064a13fb9f8622a
 
 
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Aktivieren der Diagnose mithilfe von PowerShell in Azure Cloud Services
-Mit der Azure-Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle, Leistungsindikatoren usw. von einem Clouddienst sammeln. In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnoseerweiterung für einen Clouddienst mithilfe von PowerShell aktivieren.  Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+Mit der Azure-Diagnoseerweiterung können Sie Diagnosedaten wie Anwendungsprotokolle, Leistungsindikatoren usw. von einem Clouddienst sammeln. In diesem Artikel wird beschrieben, wie Sie die Azure-Diagnoseerweiterung für einen Clouddienst mithilfe von PowerShell aktivieren.  Informationen zu den erforderlichen Komponenten für diesen Artikel finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Aktivieren der Diagnoseerweiterung bei der Bereitstellung eines Clouddiensts
-Dieser Ansatz eignet sich besonders für Szenarien mit fortlaufender Integration, bei denen die Diagnoseerweiterung im Rahmen der Bereitstellung von Clouddiensten aktiviert werden kann. Beim Erstellen einer neuen Clouddienstbereitstellung können Sie die Diagnoseerweiterung aktivieren, indem Sie den *ExtensionConfiguration* -Parameter an das Cmdlet [New-AzureDeployment](https://msdn.microsoft.com/library/azure/mt589089.aspx) übergeben. Der *ExtensionConfiguration* -Parameter akzeptiert ein Array von Diagnosekonfigurationen, die Sie mit dem Cmdlet [New-AzureServiceDiagnosticsExtensionConfig](https://msdn.microsoft.com/library/azure/mt589168.aspx) erstellen können.
+Dieser Ansatz eignet sich für Szenarien mit fortlaufender Integration, bei denen die Diagnoseerweiterung im Rahmen der Bereitstellung von Clouddiensten aktiviert werden kann. Beim Erstellen einer neuen Clouddienstbereitstellung können Sie die Diagnoseerweiterung aktivieren, indem Sie den *ExtensionConfiguration* -Parameter an das Cmdlet [New-AzureDeployment](https://msdn.microsoft.com/library/azure/mt589089.aspx) übergeben. Der *ExtensionConfiguration* -Parameter akzeptiert ein Array von Diagnosekonfigurationen, die Sie mit dem Cmdlet [New-AzureServiceDiagnosticsExtensionConfig](https://msdn.microsoft.com/library/azure/mt589168.aspx) erstellen können.
 
 Das folgende Beispiel zeigt, wie Sie die Diagnose für einen Clouddienst mit einer Webrolle und einer Workerrolle mit jeweils unterschiedlicher Diagnosekonfiguration aktivieren können.
 
@@ -41,7 +41,7 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration @($webrole_diagconfig,$workerrole_diagconfig)
 ```
 
-Falls in der Diagnosekonfigurationsdatei ein Element des Typs „StorageAccount“ mit einem Speicherkontonamen angegeben ist, verwendet das Cmdlet „New-AzureServiceDiagnosticsExtensionConfig“ automatisch dieses Speicherkonto. Dazu muss das Speicherkonto allerdings dem gleichen Abonnement angehören wie der bereitgestellte Clouddienst.
+Falls in der Diagnosekonfigurationsdatei ein `StorageAccount`-Element mit einem Speicherkontonamen angegeben ist, verwendet das Cmdlet `New-AzureServiceDiagnosticsExtensionConfig` automatisch dieses Speicherkonto. Dazu muss das Speicherkonto allerdings dem gleichen Abonnement angehören wie der bereitgestellte Clouddienst.
 
 Ab Azure SDK 2.6 enthalten die von der MSBuild-Veröffentlichungszielausgabe generierten Erweiterungskonfigurationsdateien den Speicherkontonamen basierend auf der Diagnosekonfigurations-Zeichenfolge, die in der Dienstkonfigurationsdatei (.cscfg) angegeben ist. Das folgende Skript veranschaulicht das Analysieren der Erweiterungskonfigurationsdateien aus der Veröffentlichungszielausgabe und Konfigurieren der Diagnoseerweiterung für jede Rolle, wenn der Clouddienst bereitgestellt wird.
 
@@ -84,11 +84,11 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Teams Services verwendet einen ähnlichen Ansatz für automatisierte Bereitstellungen von Clouddiensten mit der Diagnoseerweiterung. Unter [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) finden Sie ein vollständiges Beispiel.
+Visual Studio Online verwendet einen ähnlichen Ansatz für automatisierte Bereitstellungen von Clouddiensten mit der Diagnoseerweiterung. Unter [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) finden Sie ein vollständiges Beispiel.
 
-Wenn in der Diagnosekonfiguration kein „StorageAccount“ angegeben wurden, müssen Sie den „StorageAccountName“-Parameter an das Cmdlet übergeben. Bei Angabe des Parameters „StorageAccountName“ verwendet das Cmdlet immer das im Parameter angegebene Speicherkonto und nicht die Angabe aus der Diagnosekonfigurationsdatei.
+Wenn in der Diagnosekonfiguration kein `StorageAccount` angegeben wurde, müssen Sie den *StorageAccountName*-Parameter an das Cmdlet übergeben. Bei Angabe des Parameters *StorageAccountName* verwendet das Cmdlet immer das im Parameter angegebene Speicherkonto und nicht das in der Diagnosekonfigurationsdatei angegebene.
 
-Wenn das Diagnosespeicherkonto einem anderen Abonnement angehört als der Clouddienst, müssen die Parameter StorageAccountName und StorageAccountKey explizit an das Cmdlet übergeben werden. Der Parameter StorageAccountKey ist nicht erforderlich, wenn das Diagnosespeicherkonto dem gleichen Abonnement angehört, da das Cmdlet beim Aktivieren der Diagnoseerweiterung den Schlüsselwert automatisch abfragen und festlegen kann. Gehört das Diagnosespeicherkonto dagegen einem anderen Abonnement an, kann das Cmdlet den Schlüssel unter Umständen nicht automatisch abrufen, weshalb er in diesem Fall explizit über den Parameter StorageAccountKey angegeben werden muss.
+Wenn das Diagnosespeicherkonto einem anderen Abonnement angehört als der Clouddienst, müssen die Parameter *StorageAccountName* und *StorageAccountKey* explizit an das Cmdlet übergeben werden. Der Parameter *StorageAccountKey* ist nicht erforderlich, wenn das Diagnosespeicherkonto dem gleichen Abonnement angehört, da das Cmdlet beim Aktivieren der Diagnoseerweiterung den Schlüsselwert automatisch abfragen und festlegen kann. Gehört das Diagnosespeicherkonto dagegen einem anderen Abonnement an, kann das Cmdlet den Schlüssel unter Umständen nicht automatisch abrufen, weshalb er in diesem Fall explizit über den Parameter *StorageAccountKey* angegeben werden muss.
 
 ```powershell
 $webrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole" -DiagnosticsConfigurationPath $webrole_diagconfigpath -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
@@ -97,6 +97,8 @@ $workerrole_diagconfig = New-AzureServiceDiagnosticsExtensionConfig -Role "Worke
 
 ## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a>Aktivieren der Diagnoseerweiterung für einen vorhandenen Clouddienst
 Mit dem Cmdlet [Set-AzureServiceDiagnosticsExtension](https://msdn.microsoft.com/library/azure/mt589140.aspx) können Sie die Diagnosekonfiguration für einen Clouddienst aktivieren oder aktualisieren, der bereits ausgeführt wird.
+
+[!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
 ```powershell
 $service_name = "MyService"
@@ -138,6 +140,6 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Continuous Integration und Deployment von Docker-Anwendungen mit mehreren Containern in Azure Container Service | Microsoft-Dokumentation
+title: Continuous Integration und Continuous Deployment (CI/CD) mit Azure Container Service und DC/OS | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine Docker-App mit mehreren Containern erstellen und in einem Azure Container Service-Cluster mit DC/OS bereitstellen.
 services: container-service
 documentationcenter: 
@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 71fdc7b13fd3b42b136b4907c3d747887fde1a19
-ms.openlocfilehash: cdcb2a8493c6790a395251c4cf05f2a6c0770c8d
+ms.sourcegitcommit: 831f585a9591338c2f404f7ec031d40937731eab
+ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
 
 
 ---
@@ -47,15 +47,18 @@ Befassen wir uns mit einigen wichtigen Aspekten der App und dem von uns eingeric
 ## <a name="create-an-azure-container-service-cluster-configured-with-dcos"></a>Erstellen eines mit DC/OS konfigurierten Azure Container Service-Clusters
 
 >[!IMPORTANT]
-> Zum Erstellen eines sicheren Clusters übergeben Sie die Datei mit dem öffentlichen SSH-Schlüssel beim Aufrufen von `az acs create`. Entweder kann Azure CLI 2.0 die Schlüssel für Sie generieren und gleichzeitig mit der Option `--generate-ssh-keys` übergeben, oder Sie übergeben den Pfad zu Ihren Schlüsseln mit der Option `--ssh-key-value` (Standardspeicherort ist unter Linux `~/.ssh/id_rsa.pub` und unter Windows `%HOMEPATH%\.ssh\id_rsa.pub`, dieser kann sich jedoch ändern). Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Linux finden Sie unter [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json). Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH mit Windows in Azure](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
+> Zum Erstellen eines sicheren Clusters übergeben Sie die Datei mit dem öffentlichen SSH-Schlüssel beim Aufrufen von `az acs create`. Entweder kann Azure CLI 2.0 die Schlüssel für Sie generieren und gleichzeitig mit der Option `--generate-ssh-keys` übergeben, oder Sie übergeben den Pfad zu Ihren Schlüsseln mit der Option `--ssh-key-value` (Standardspeicherort ist unter Linux `~/.ssh/id_rsa.pub` und unter Windows `%HOMEPATH%\.ssh\id_rsa.pub`, dieser kann sich jedoch ändern).
+<!---Loc Comment: What do you mean by "you pass your SSH public key file to pass"? Thank you.--->
+> Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Linux finden Sie unter [Erstellen von SSH-Schlüsseln unter Linux und Mac für Linux-VMs in Azure](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
+> Informationen zum Erstellen von Dateien mit öffentlichen und privaten SSH-Schlüsseln unter Windows finden Sie unter [Verwenden von SSH mit Windows in Azure](../virtual-machines/virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fcontainer-services%2ftoc.json). 
 
 1. Geben Sie zunächst den Befehl [az login](/cli/azure/#login) in ein Terminalfenster ein, um sich mit der Azure-CLI bei Ihrem Azure-Abonnement anzumelden: 
 
     `az login`
 
-1. Erstellen Sie mit [az resource group create](/cli/azure/resource/group#create) eine Ressourcengruppe, in der wir unseren Cluster ablegen:
+1. Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe, in der wir unseren Cluster ablegen:
     
-    `az resource group create --name myacs-rg --location westus`
+    `az group create --name myacs-rg --location westus`
 
     Geben Sie dabei ggf. die am nächsten gelegene [Azure-Datencenterregion](https://azure.microsoft.com/regions) an. 
 
@@ -325,26 +328,26 @@ Löschen des ACS-Clusters:
 1. Ermitteln Sie die Ressourcengruppe, die den ACS-Cluster enthält.
 1. Öffnen Sie die UI des Blatts mit der Ressourcengruppe, und klicken Sie auf der Befehlsleiste des Blatts auf **Löschen**.
 
-Löschen der Azure-Containerregistrierung:
-1. Suchen Sie im Azure-Portal nach der Azure-Containerregistrierung, und löschen Sie sie. 
+Löschen der Azure-Containerregistrierung: Suchen Sie im Azure-Portal nach der Azure-Containerregistrierung, und löschen Sie sie. 
 
 Das [Visual Studio Team Services-Konto bietet eine kostenlose Basiszugriffsebene für die ersten fünf Benutzer](https://azure.microsoft.com/en-us/pricing/details/visual-studio-team-services/). Sie können die Build- und Releasedefinitionen jedoch löschen.
-1. Löschen der VSTS-Builddefinition:
+
+Löschen der VSTS-Builddefinition:
         
-    * Öffnen Sie die Builddefinitions-URL im Browser, und klicken Sie dann auf den Link **Builddefinitionen** (neben dem Namen der derzeit angezeigten Builddefinition).
-    * Klicken Sie neben der zu löschenden Builddefinition auf das Aktionsmenü, und wählen Sie **Definition löschen**.
+1. Öffnen Sie die Builddefinitions-URL im Browser, und klicken Sie dann auf den Link **Builddefinitionen** (neben dem Namen der derzeit angezeigten Builddefinition).
+2. Klicken Sie neben der zu löschenden Builddefinition auf das Aktionsmenü, und wählen Sie **Definition löschen**.
 
-    ![Löschen der VSTS-Builddefinition](media/container-service-setup-ci-cd/vsts-delete-build-def.png) 
+`![Löschen der VSTS-Builddefinition](media/container-service-setup-ci-cd/vsts-delete-build-def.png) 
 
-1. Löschen der VSTS-Releasedefinition:
+Löschen der VSTS-Releasedefinition:
 
-    * Öffnen Sie die Releasedefinitions-URL im Browser.
-    * Klicken Sie in der Liste der Releasedefinitionen auf der linken Seite auf das Dropdownmenü neben der zu löschenden Releasedefinition, und wählen Sie **Löschen**.
+1. Öffnen Sie die Releasedefinitions-URL im Browser.
+2. Klicken Sie in der Liste der Releasedefinitionen auf der linken Seite auf das Dropdownmenü neben der zu löschenden Releasedefinition, und wählen Sie **Löschen**.
 
-    ![Löschen der VSTS-Releasedefinition](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
+`![Löschen der VSTS-Releasedefinition](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

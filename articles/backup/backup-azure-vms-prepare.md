@@ -4,7 +4,7 @@ description: "Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtu
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonn
 editor: 
 keywords: Sicherung; Sichern;
 ms.assetid: 238ab93b-8acc-4262-81b7-ce930f76a662
@@ -13,11 +13,11 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.date: 12/20/2016
+ms.author: markgal;trinadhk;
 translationtype: Human Translation
-ms.sourcegitcommit: b5b18d063a5926ad4acb7d0aa3935978d0fedb8c
-ms.openlocfilehash: dc7e2d041ee4e0aeb222578c2fec9525e24bb0d1
+ms.sourcegitcommit: cbd7e36c5ef5c78b38a2cc7791b442cac1711b95
+ms.openlocfilehash: 92e8e25abc047811fc0ff45f424bd1b97a045e1f
 
 
 ---
@@ -36,6 +36,11 @@ Bevor Sie einen virtuellen Azure-Computer sichern können, müssen drei Bedingun
 
 Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind, fahren Sie mit dem Artikel [Sichern von virtuellen Azure-Computern](backup-azure-vms.md)fort. Andernfalls führt dieser Artikel Sie durch die Schritte zum Vorbereiten Ihrer Umgebung für das Sichern einer Azure-VM.
 
+##<a name="supported-operating-system-for-backup"></a>Unterstütztes Betriebssystem für die Sicherung
+ * **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ausnahme: CoreOS Linux. _Andere Bring-Your-Own-Linux-Distributionen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird. Wir empfehlen diese Distributionen jedoch nicht für die Sicherung._
+ * **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
+
+
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers
 > [!NOTE]
 > Azure verfügt über zwei Bereitstellungsmodelle zum Erstellen und Verwenden von Ressourcen: [Resource Manager-Modell und klassisches Modell](../azure-resource-manager/resource-manager-deployment-model.md). Die folgende Liste enthält die Einschränkungen bei der Bereitstellung über das klassische Modell.
@@ -49,8 +54,6 @@ Wenn Sie wissen, dass diese Bedingungen in Ihrer Umgebung bereits erfüllt sind,
 * Regionsübergreifende Sicherungs- und Wiederherstellungsvorgänge werden nicht unterstützt.
 * Die Sicherung von virtuellen Computern mithilfe des Azure Backup-Diensts wird in allen öffentlichen Azure-Regionen unterstützt (Informationen hierzu finden Sie in der [Liste der Azure-Regionen](https://azure.microsoft.com/regions/#services) ). Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Die Sicherung virtueller Computer mithilfe des Azure Backup-Diensts wird nur für bestimmte Betriebssystemversionen unterstützt:
-  * **Linux**: Azure Backup unterstützt eine [Liste von Verteilungen, die von Azure unterstützt werden](../virtual-machines/virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ausnahme: CoreOS Linux. Andere Bring-Your-Own-Linux-Verteilungen sollten ebenfalls funktionieren, sofern der VM-Agent auf dem virtuellen Computer verfügbar ist und Python unterstützt wird.
-  * **Windows Server**: Versionen, die älter als Windows Server 2008 R2 sind, werden nicht unterstützt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen hierzu finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-restore-vms.md#restoring-domain-controller-vms).
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-restore-vms.md#restoring-vms-with-special-network-configurations).
   * Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)
@@ -151,7 +154,7 @@ Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Sys
 ```
 
 > [!NOTE]
-> Wenn das Proxyserverprotokoll den Eintrag „(407) Proxyauthentifizierung erforderlich“ enthält, überprüfen Sie, ob Ihre Authentifizierung korrekt eingerichtet ist.
+> Wenn das Proxyserverprotokoll den Eintrag „(407) Proxyauthentifizierung erforderlich“ enthält, überprüfen Sie, ob Ihre Authentifizierung ordnungsgemäß eingerichtet ist.
 >
 >
 
@@ -231,6 +234,6 @@ Ihre Umgebung ist jetzt für das Sichern Ihres virtuellen Computers vorbereitet.
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO3-->
 
 

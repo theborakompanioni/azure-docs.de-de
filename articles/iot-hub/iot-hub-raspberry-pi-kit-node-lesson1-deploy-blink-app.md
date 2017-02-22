@@ -1,5 +1,7 @@
 ---
-title: Erstellen und Bereitstellen der Blinkanwendung | Microsoft-Dokumentation
+featureFlags:
+- usabilla
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 1: Bereitstellen der App | Microsoft-Dokumentation"
 description: Klonen Sie die Node.js-Beispielanwendung aus GitHub, und verwenden Sie Gulp, um die Anwendung auf Raspberry Pi 3 bereitzustellen. Diese Beispielanwendung bewirkt, dass die mit dem Pi verbundene LED alle zwei Sekunden blinkt.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +18,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: aee1ef8c4275f64865ff830739fc818d6bf02bd2
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 90ceb432bd9506dc40e340af21a3cae4e21a20b0
 
 
 ---
@@ -124,7 +126,7 @@ Gehen Sie folgendermaßen vor, um die Geräteverbindung zu konfigurieren:
 Glückwunsch! Sie haben die erste Beispielanwendung für Pi erstellt.
 
 ## <a name="deploy-and-run-the-sample-application"></a>Bereitstellen und Ausführen der Beispielanwendung
-### <a name="install-nodejs-and--on-pi"></a>Installieren von Node.js und NPM auf Pi
+### <a name="install-nodejs-and-npm-on-pi"></a>Installieren von Node.js und NPM auf dem Pi
 Führen Sie den folgenden Befehl aus, um Node.js und NPM auf Pi zu installieren:
 
 ```bash
@@ -153,6 +155,6 @@ Sie haben die erforderlichen Tools für die Arbeit mit Pi installiert und auf Pi
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

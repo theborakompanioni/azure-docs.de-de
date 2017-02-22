@@ -166,9 +166,7 @@ ReceiveMessage: E-Mail empfangen
 | Eigenschaftenname | Datentyp | Beschreibung |
 | --- | --- | --- |
 | Aus |string |Aus |
-| To
- |string |To
- |
+| To |string |To |
 | Betreff |string |Betreff |
 | body |string |body |
 | Wichtigkeit |string |Wichtigkeit |
@@ -250,8 +248,7 @@ Dieser Vorgang löst einen Ablauf aus, wenn eine neue E-Mail eingeht.
 | Eigenschaftenname | Display Name | Beschreibung |
 | --- | --- | --- |
 | folderPath |Ordnerpfad |Abzurufender E-Mail-Ordner (Standard: Posteingang) |
-| to |To
- |E-Mail-Adressen der Empfänger |
+| to |To |E-Mail-Adressen der Empfänger |
 | Aus |Aus |Absenderadresse |
 | importance |Wichtigkeit |Wichtigkeit der E-Mail (High, Normal, Low) (Standard: Normal) |
 | fetchOnlyWithAttachment |Has Attachments (Mit Anlagen) |Nur E-Mail-Nachrichten mit einer Anlage abrufen |
@@ -742,6 +739,6 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

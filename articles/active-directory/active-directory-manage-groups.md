@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: bda882273b6aeddcfa9ed7ba272bc08e620b666e
+ms.sourcegitcommit: 4bab9f44d1c91f05618ea510b83beb06540429f2
+ms.openlocfilehash: 2518f368c7251d5d1b8ea0b46b99ac356fee29ab
 
 
 ---
@@ -25,24 +25,24 @@ Azure Active Directory (Azure AD) ist eine umfassende Lösung für die Identitä
 
 > [!NOTE]
 > Um Azure Active Directory verwenden zu können, benötigen Sie ein Azure-Konto. Wenn Sie nicht über ein Azure-Konto verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/pricing/free-trial/).
-> 
-> 
+>
+>
 
 Eines der wichtigsten Features in Azure AD ist die Möglichkeit, den Zugriff auf Ressourcen zu verwalten. Diese Ressourcen können Teil des Verzeichnisses sein, wie im Fall von Berechtigungen zum Verwalten von Objekten mithilfe von Rollen im Verzeichnis, oder externe Ressourcen, z. B. SaaS-Anwendungen, Azure-Dienste und SharePoint-Websites oder lokale Ressourcen. Es gibt vier Möglichkeiten, einem Benutzer Zugriffsrechte auf eine Ressource zuzuweisen:
 
 1. Direkte Zuweisung
-   
+
     Benutzer können einer Ressource direkt vom Besitzer dieser Ressource zugewiesen werden.
 2. Gruppenmitgliedschaft
-   
+
     Eine Gruppe kann einer Ressource durch den Besitzer der Ressource zugewiesen werden, wodurch den Mitgliedern dieser Gruppe Zugriff auf die Ressource gewährt wird. Die Mitgliedschaft der Gruppe kann dann vom Besitzer der Gruppe verwaltet werden. Der Besitzer der Ressource delegiert die Berechtigung, dieser Ressource Benutzer zuzuweisen, an den Besitzer der Gruppe.
 3. Regelbasiert
-   
+
     Der Besitzer der Ressource kann eine Regel verwenden, um auszudrücken, welchen Benutzern Zugriff auf eine Ressource zugewiesen werden soll. Das Ergebnis der Regel hängt von den in der Regel verwendeten Attributen und deren Werten für bestimmte Benutzer ab. So delegiert der Ressourcenbesitzer das Recht zur Verwaltung des Zugriffs auf die Ressource an die autoritative Quelle für die Attribute, die in der Regel verwendet werden. Der Ressourcenbesitzer verwaltet weiterhin die Regel selbst und legt fest, welche Attribute und Werte Zugriff auf die Ressource bereitstellen.
 4. Externe Autorität
-   
+
     Der Zugriff auf eine Ressource stammt aus einer externen Quelle, z.B. einer Gruppe, die mittels einer autoritativen Quelle synchronisiert wird, etwa mittels eines lokalen Verzeichnisses oder einer SaaS-App wie WorkDay. Der Besitzer der Ressource weist der Gruppe Zugriff auf die Ressource zu, und die externe Datenquelle verwaltet die Mitglieder der Gruppe.
-   
+
    ![Übersicht über das Access Management-Diagramm](./media/active-directory-access-management-groups/access-management-overview.png)
 
 ## <a name="watch-a-video-that-explains-access-management"></a>Video zur Erläuterung der Zugriffsverwaltung
@@ -51,8 +51,8 @@ Sie können ein kurzes Video anschauen, das nähere Informationen zum Thema bere
 **Azure AD: Einführung in dynamische Mitgliedschaften für Gruppen**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
-> 
-> 
+>
+>
 
 ## <a name="how-does-access-management-in-azure-active-directory-work"></a>Wie funktioniert die Zugriffsverwaltung in Azure Active Directory?
 Im Mittelpunkt der Lösung zur Zugriffsverwaltung von Azure AD steht die Sicherheitsgruppe. Die Verwendung einer Sicherheitsgruppe zum Verwalten des Zugriffs auf Ressourcen ist ein bekanntes Paradigma, mit dem auf flexible und leicht verständliche Weise einer dafür vorgesehenen Gruppe von Benutzern Zugriff auf eine Ressource bereitgestellt werden kann. Der Besitzer der Ressource (oder der Administrator des Verzeichnisses) kann eine Gruppe zuweisen, um bestimmte Zugriffsrechte für seine Ressourcen bereitzustellen. Den Mitgliedern der Gruppe wird Zugriff erteilt, und der Besitzer der Ressource kann das Recht zur Verwaltung der Mitgliederliste einer Gruppe an Dritte delegieren – z.B. einen Abteilungsleiter oder Helpdesk-Administrator.
@@ -70,7 +70,7 @@ Wollen Sie loslegen? Sie sollten einige der grundlegenden Aufgaben testen, die S
 * [Synchronisieren einer lokalen Gruppe in Azure mittels Azure AD Connect](active-directory-aadconnect.md)
 * [Verwalten von Besitzern einer Gruppe](active-directory-accessmanagement-managing-group-owners.md)
 
-## <a name="next-steps-for-access-management"></a>Nächste Schritte für die Zugriffsverwaltung
+## <a name="next-steps"></a>Nächste Schritte
 Da Sie nun die Grundlagen der Zugriffsverwaltung kennen, können Sie sich jetzt mit einigen erweiterten Funktionen vertraut machen, die in Azure Active Directory für die Verwaltung des Zugriffs auf Anwendungen und Ressourcen zur Verfügung stehen.
 
 * [Verwenden von Attributen zum Erstellen erweiterter Regeln](active-directory-accessmanagement-groups-with-advanced-rules.md)
@@ -81,7 +81,6 @@ Da Sie nun die Grundlagen der Zugriffsverwaltung kennen, können Sie sich jetzt 
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 02/19/2016
 ms.author: huvalo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7fbe958a20099f829f2c4c38344969372217e634
+ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
+ms.openlocfilehash: c6679cf7a6b059ee7c28e1754c54afa6414d633a
 
 
 ---
@@ -29,7 +29,7 @@ Sie erstellen eine Anwendung mit dem Webframework Django (siehe auch alternative
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -38,7 +38,7 @@ Sie erstellen eine Anwendung mit dem Webframework Django (siehe auch alternative
 * Python 2.7 oder 3.4
 * setuptools, pip, virtualenv (nur Python 2.7)
 * Git
-* [Python-Tools für Visual Studio][Python-Tools für Visual Studio] (PTVS) – Hinweis: Dies ist optional.
+* [Python Tools für Visual Studio][Python Tools für Visual Studio] (PTVS) – Hinweis: Dies ist optional.
 
 **Hinweis**: TFS-Veröffentlichung wird derzeit für Python-Projekte nicht unterstützt.
 
@@ -112,10 +112,10 @@ Externe Pakete, die von dieser Anwendung benötigt werden. Das Bereitstellungssk
 
 IIS-Konfigurationsdateien. Das Bereitstellungsskript verwendet die entsprechende Datei "web.x.y.config" und kopiert sie als "web.config".
 
-### <a name="optional-files-customizing-deployment"></a>Optionale Dateien - Anpassung der Bereitstellung
+### <a name="optional-files---customizing-deployment"></a>Optionale Dateien - Anpassung der Bereitstellung
 [!INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
 
-### <a name="optional-files-python-runtime"></a>Optionale Dateien - Python-Laufzeit
+### <a name="optional-files---python-runtime"></a>Optionale Dateien - Python-Laufzeit
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 ### <a name="additional-files-on-server"></a>Zusätzliche Dateien auf dem Server
@@ -135,7 +135,7 @@ In den nächsten 3 Abschnitten wird beschrieben, wie Sie die Web-App-Entwicklung
 * Windows, über die Befehlszeile
 * Mac/Linux, über die Befehlszeile
 
-## <a name="web-app-development-windows-python-tools-for-visual-studio"></a>Web-App-Entwicklung – Windows – Python Tools für Visual Studio
+## <a name="web-app-development---windows---python-tools-for-visual-studio"></a>Web-App-Entwicklung – Windows – Python Tools für Visual Studio
 ### <a name="clone-the-repository"></a>Klonen des Repositorys
 Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
@@ -201,7 +201,7 @@ Visual Studio zeigt nicht den Fortschritt der Bereitstellung an. Wenn Sie die Au
 
 Navigieren Sie zur Azure-URL, um die Änderungen anzuzeigen.
 
-## <a name="web-app-development-windows-command-line"></a>Web-App-Entwicklung – Windows - Befehlszeile
+## <a name="web-app-development---windows---command-line"></a>Web-App-Entwicklung – Windows - Befehlszeile
 ### <a name="clone-the-repository"></a>Klonen des Repositorys
 Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist, und fügen Sie das Azure-Repository als Remoterepository hinzu. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
@@ -281,7 +281,7 @@ Die Ausgabe des Bereitstellungsskripts wird mit Angaben zur Erstellung der virtu
 
 Navigieren Sie zur Azure-URL, um die Änderungen anzuzeigen.
 
-## <a name="web-app-development-maclinux-command-line"></a>Web-App-Entwicklung – Mac/Linux - Befehlszeile
+## <a name="web-app-development---maclinux---command-line"></a>Web-App-Entwicklung – Mac/Linux - Befehlszeile
 ### <a name="clone-the-repository"></a>Klonen des Repositorys
 Klonen Sie zunächst das Repository mithilfe der URL, die im Azure-Portal bereitgestellt ist, und fügen Sie das Azure-Repository als Remoterepository hinzu. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](app-service-deploy-local-git.md).
 
@@ -365,13 +365,13 @@ Die Ausgabe des Bereitstellungsskripts wird mit Angaben zur Erstellung der virtu
 
 Navigieren Sie zur Azure-URL, um die Änderungen anzuzeigen.
 
-## <a name="troubleshooting-package-installation"></a>Problembehandlung - Paketinstallation
+## <a name="troubleshooting---package-installation"></a>Problembehandlung - Paketinstallation
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
 
-## <a name="troubleshooting-virtual-environment"></a>Problembehandlung – virtuelle Umgebung
+## <a name="troubleshooting---virtual-environment"></a>Problembehandlung – virtuelle Umgebung
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## <a name="troubleshooting-static-files"></a>Problembehandlung – Statische Dateien
+## <a name="troubleshooting---static-files"></a>Problembehandlung – Statische Dateien
 Django arbeitet mit dem Konzept der Sammlung statischer Dateien. Dabei werden alle statischen Dateien aus ihrem ursprünglichen Speicherort in einen zentralen Ordner kopiert. Für diese Anwendung werden sie in `/static`kopiert.
 
 Der Grund dafür ist, dass statische Dateien aus verschiedenen Django-'Apps' stammen können. Beispielsweise befinden sich die statischen Dateien der Django-Admin-Oberflächen in einem Unterordner der Django-Bibliothek in der virtuellen Umgebung. Statische Dateien, die von dieser Anwendung definiert werden, befinden sich in `/app/static`. Sobald Sie weitere Django-'Apps nutzen, verfügen Sie über statische Dateien, die sich an mehreren Stellen befinden.
@@ -392,7 +392,7 @@ Dann müssen Sie die Sammlung manuell auf dem lokalen Computer ausführen:
 
 Entfernen Sie anschließend den Ordner `\static` aus `.gitignore`, und fügen Sie ihn dem Git-Repository hinzu.
 
-## <a name="troubleshooting-settings"></a>Problembehandlung - Einstellungen
+## <a name="troubleshooting---settings"></a>Problembehandlung - Einstellungen
 Verschiedene Einstellungen für die Anwendung können in `DjangoWebProject/settings.py`geändert werden.
 
 Der Einfachheit halber ist für Entwickler der Debugmodus aktiviert. Ein angenehmer Nebeneffekt davon ist, dass bei einer lokalen Ausführung Bilder und andere statische Inhalte angezeigt werden, ohne statische Dateien sammeln zu müssen.
@@ -435,7 +435,7 @@ Nach seiner Aktivierung synchronisieren Sie die Datenbank, führen die Anwendung
 Folgen Sie diesen Links, um weitere Informationen zu Django- und Python-Tools für Visual Studio zu erhalten:
 
 * [Dokumentation zu Django]
-* [Python Tools für Visual Studio – Dokumentation]
+* [Dokumentation zu Python Tools für Visual Studio]
 
 Weitere Informationen zur Verwendung von SQL-Datenbank und MySQL:
 
@@ -462,11 +462,11 @@ Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 [Python Tools für Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 für Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[Python Tools für Visual Studio – Dokumentation]: http://aka.ms/ptvsdocs
+[Dokumentation zu Python Tools für Visual Studio]: http://aka.ms/ptvsdocs
 [Dokumentation zu Django]: https://www.djangoproject.com/
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure App Service – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie anhand von Tutorials, Videos, API-Referenzen und anderem Dokumentationsmaterial, wie Sie mithilfe von App Service webbasierte und mobile Apps für beliebige Plattformen oder Geräte erstellen."
+services: app-service
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: app-service
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: e4df0029db106923e3d28f16b3dfe239cae5b032
-ms.openlocfilehash: 42f4121a53432dedf214c45897aa846e0c901a41
+ms.sourcegitcommit: ebcde75ba7d5ed155fb7ec822ba037de5141c31c
+ms.openlocfilehash: a9b7cb3492fa71b33c4aa6b2c0ecda9eaac9ea4b
 
 ---
 #<a name="app-service-documentation"></a>App Service-Dokumentation
@@ -121,16 +132,10 @@ Hier erfahren Sie anhand von Tutorials, Videos, API-Referenzen und anderem Dokum
     </li>
 </ul>
 
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/app-service.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der App Service-Dokumentation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

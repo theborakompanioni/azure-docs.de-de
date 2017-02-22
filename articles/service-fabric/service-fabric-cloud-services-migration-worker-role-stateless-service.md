@@ -1,5 +1,5 @@
 ---
-title: Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste | Microsoft Docs
+title: Konvertieren von Azure Cloud Services-Apps in Microservices | Microsoft-Dokumentation
 description: "In dieser Anleitung werden Cloud Services-Web- und -Workerrollen mit zustandslosen Service Fabric-Diensten verglichen, um die Migration von Cloud Services zu Service Fabric zu unterstützen."
 services: service-fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 752d0c9cb32c602dd7721773057f113e0c8f57a0
+ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
+ms.openlocfilehash: def92885587b11ce8275292680a524d0c8e31751
 
 
 ---
@@ -38,7 +38,7 @@ In Bezug auf das Konzept stellt eine Workerrolle eine zustandslose Workload dar.
 ## <a name="web-role-to-stateless-service"></a>Von der Webrolle zum zustandslosen Dienst
 Ähnlich wie bei der Workerrolle stellt auch eine Webrolle eine zustandslose Workload dar, sodass sie vom Konzept her auch einem zustandslosen Service Fabric-Dienst zugeordnet werden kann. Im Gegensatz zu Webrollen weist Service Fabric aber keine IIS-Unterstützung auf. Zum Migrieren einer Webanwendung aus einer Webrolle in einen zustandslosen Dienst ist es zuerst erforderlich, zu einem Web-Framework zu wechseln, das sich selbst hosten kann und nicht von IIS oder System.Web abhängig ist, z. B. ASP.NET Core 1.
 
-| **Anwendung ** | **Unterstützt** | **Migrationspfad** |
+| **Anwendung** | **Unterstützt** | **Migrationspfad** |
 | --- | --- | --- |
 | ASP.NET Web Forms |Nein |In ASP.NET Core 1 MVC konvertieren |
 | ASP.NET MVC |Per Migration |Upgrade auf ASP.NET Core 1 MVC |
@@ -263,6 +263,6 @@ Lesen Sie die weiteren Informationen zu Service Fabric Reliable Services und den
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

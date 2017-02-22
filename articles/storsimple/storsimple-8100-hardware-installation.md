@@ -1,5 +1,5 @@
 ---
-title: "Installieren des StorSimple 8100-Geräts | Microsoft Docs"
+title: "Installieren des Microsoft Azure StorSimple 8100-Geräts | Microsoft-Dokumentation"
 description: "Beschreibt, wie Sie das StorSimple 8100-Gerät auspacken, in ein Rack einbauen und verkabeln., bevor Sie die Software bereitstellen und konfigurieren."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
-ms.openlocfilehash: 9d6d4ca99d5733f4e586ccba44307d8f5ffa09e8
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 102dffcd73f3d3b9362d7b2853faa060e9c645dd
 
 
 ---
@@ -251,6 +251,6 @@ Erfahren Sie, wie Sie Ihr [lokales StorSimple-Gerät bereitstellen und konfiguri
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

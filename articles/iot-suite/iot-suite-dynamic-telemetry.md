@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1a6dd35278f0a4a4f972642c40a0976986dd79ae
-ms.openlocfilehash: 000bc72e5c880abdd455d50cd7ac0bb57a51391d
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: c67cfcc8b01786dcd39fa683898ba076059be0b4
 
 
 ---
@@ -29,7 +29,7 @@ Dieses Tutorial verwendet ein einfaches simuliertes Node.js-Gerät, das Sie prob
 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-* Ein aktives Azure-Abonnement. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Details finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
+* Ein aktives Azure-Abonnement. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 * [Node.js][lnk-node], Version 0.12.x oder höher.
 
 Sie können dieses Tutorial unter allen Betriebssystemen durcharbeiten, die die Installation von Node.js unterstützen (z.B. Windows oder Linux).
@@ -236,11 +236,11 @@ Sie wissen nun, wie Sie dynamische Telemetriedaten verwenden. Weitere Informatio
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
-[Bild1]: media/iot-suite-dynamic-telemetry/image1.png
-[Abbildung 2]: media/iot-suite-dynamic-telemetry/image2.png
-[Abbildung 3]: media/iot-suite-dynamic-telemetry/image3.png
-[Abbildung 4]: media/iot-suite-dynamic-telemetry/image4.png
-[Abbildung 5]: media/iot-suite-dynamic-telemetry/image5.png
+[image1]: media/iot-suite-dynamic-telemetry/image1.png
+[image2]: media/iot-suite-dynamic-telemetry/image2.png
+[image3]: media/iot-suite-dynamic-telemetry/image3.png
+[image4]: media/iot-suite-dynamic-telemetry/image4.png
+[image5]: media/iot-suite-dynamic-telemetry/image5.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-node]: http://nodejs.org
@@ -249,6 +249,6 @@ Sie wissen nun, wie Sie dynamische Telemetriedaten verwenden. Weitere Informatio
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

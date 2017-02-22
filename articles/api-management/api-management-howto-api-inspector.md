@@ -1,5 +1,5 @@
 ---
-title: Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management
+title: Verfolgen von Anrufen mit dem API-Inspektor in Azure API Management | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie den Ablauf von Aufrufen mit dem API-Inspektor in Azure API Management verfolgen können."
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: sdanie
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 36231c3d2c19e129b301b76dfbbc8417b055fbae
-
+ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
+ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
 
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Verwenden des API-Inspektors zur Verfolgung von Aufrufen in Azure API Management
@@ -69,7 +68,7 @@ Die Antwortheader enthalten ein **ocp-apim-trace-location** mit einem ähnlichen
 ocp-apim-trace-location : https://contosoltdxw7zagdfsprykd.blob.core.windows.net/apiinspectorcontainer/ZW3e23NsW4wQyS-SHjS0Og2-2?sv=2013-08-15&sr=b&sig=Mgx7cMHsLmVDv%2B%2BSzvg3JR8qGTHoOyIAV7xDsZbF7%2Bk%3D&se=2014-05-04T21%3A00%3A13Z&sp=r&verify_guid=a56a17d83de04fcb8b9766df38514742
 ```
 
-Sie können die Ablaufverfolgung vom angegebenen Speicherort herunterladen und wie im folgenden Schritt gezeigt analysieren.
+Sie können die Ablaufverfolgung vom angegebenen Speicherort herunterladen und wie im folgenden Schritt gezeigt analysieren. Beachten Sie, dass nur die letzten 100 Protokolleinträge gespeichert werden und Protokollspeicherorte in Rotation wiederverwendet werden. Wenn Sie mehr als 100 Aufrufe mit aktivierter Ablaufverfolgung ausführen, werden die ersten Ablaufverfolgungen überschrieben.
 
 ## <a name="inspect-trace"> </a>Analysieren der Ablaufverfolgung
 Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location** -URL herunter, um die Werte in der Ablaufverfolgung zu überprüfen. Es handelt sich um eine Textdatei im JSON-Format, die Werte ähnlich des folgenden Beispiels enthält.
@@ -269,6 +268,6 @@ Laden Sie die Ablaufverfolgungsdatei über die **ocp-apim-trace-location** -URL 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

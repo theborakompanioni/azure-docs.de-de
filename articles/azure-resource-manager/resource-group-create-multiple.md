@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen mehrerer Instanzen von Ressourcen | Microsoft Docs
+title: Bereitstellen mehrerer Instanzen von Azure-Ressourcen | Microsoft-Dokumentation
 description: Verwenden Sie den copy-Vorgang und Arrays in einer Azure-Ressourcen-Manager-Vorlage, um sie beim Bereitstellen von Ressourcen mehrere Male zu durchlaufen.
 services: azure-resource-manager
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/02/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: e37eb89227ce8927f1c7f53306168962dce9b8f1
+ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
+ms.openlocfilehash: b3972f3d407b3ba9529b36005c0856796c272095
 
 
 ---
-# <a name="create-multiple-instances-of-resources-in-azure-resource-manager"></a>Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager
+# <a name="deploy-multiple-instances-of-resources-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager-Vorlagen
 In diesem Thema erfahren Sie, wie Sie die Azure-Ressourcen-Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen.
 
 ## <a name="copy-copyindex-and-length"></a>"copy", "copyIndex" und "length"
@@ -122,7 +122,7 @@ Verwenden Sie die folgende Vorlage:
     "parameters": { 
       "org": { 
          "type": "array", 
-             "defaultValue": [ 
+         "defaultValue": [ 
              "Contoso", 
              "Fabrikam", 
              "Coho" 
@@ -168,13 +168,13 @@ Sie können angeben, dass eine Ressource nach einer anderen Ressource bereitgest
                      "count": 3 
                   }
             },
-           {
-               "apiVersion": "2015-06-15", 
-               "type": "Microsoft.Compute/virtualMachines", 
-               "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
-               "dependsOn": ["storagecopy"],
-               ...
-           }
+            {
+                "apiVersion": "2015-06-15", 
+                "type": "Microsoft.Compute/virtualMachines", 
+                "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+                "dependsOn": ["storagecopy"],
+                ...
+            }
         ],
         "outputs": {}
     }
@@ -556,6 +556,6 @@ Erstellen Sie nun die übergeordneten Vorlage, die eine statische Instanz der ge
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

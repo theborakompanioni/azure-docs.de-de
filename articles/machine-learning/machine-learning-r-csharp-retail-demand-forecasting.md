@@ -1,6 +1,6 @@
 ---
-title: "Prognose – ETS und STL | Microsoft Docs"
-description: "Prognose – ETS und STL"
+title: "(Veraltet:) Prognose – ETS + STL – Azure  | Microsoft Docs"
+description: "(Veraltet:) Prognose – ETS + STL"
 services: machine-learning
 documentationcenter: 
 author: xueshanz
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/31/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7a8877257ba03de22e0f74253885585c02d2bd10
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: cdf6661a36e38bf7a6fca241682be796712bd5d9
 
 
 ---
-# <a name="forecasting---ets--stl"></a>Prognose – ETS und STL
+# <a name="deprecated-forecasting---ets--stl"></a>(Veraltet:) Prognose – ETS + STL
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Dieser [Webdienst](https://datamarket.azure.com/dataset/aml_labs/demand_forecast) implementiert Modelle der Saison-Trend-Zerlegung (Seasonal Trend Decomposition, STL) und der exponentiellen Glättung (Exponential Smoothing, ETS), um Vorhersagen auf Grundlage der Verlaufsdaten zu erstellen, die vom Benutzer bereitgestellt werden. Erhöht sich der Bedarf für ein bestimmtes Produkt in diesem Jahr? Kann ich meine Produktverkäufe für die Weihnachtssaison vorhersagen, damit ich meine Inventur effektiv planen kann? Planungsmodelle sind für solche Fragen die passende Lösung. Angesichts der letzten Daten, untersuchen diese Modelle versteckte Trends und Saisonabhängigkeit, um zukünftige Trends vorherzusagen. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -141,6 +148,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

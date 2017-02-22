@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 18accd5252e0ecf19fed23f3c2e4628e60fe370f
+ms.sourcegitcommit: 9ac2a1bf5987fc6fc30e20a1b4a10340eeed3825
+ms.openlocfilehash: 15cf891b9c31e1f2e2b108e631f32883ce2f36a7
 
 
 ---
@@ -43,9 +43,9 @@ Azure Machine Learning-Empfehlungen hat die folgenden Nutzungsbeschränkungen:
 
 * Maximale Anzahl von Modellen pro Abonnement: 10
 * Maximale Anzahl von Elementen, die ein Katalog aufnehmen kann: 100.000
-* Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
+* Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa&5;.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
 * Die maximale Größe der Daten, die per E-Mail gesendet werden können (z. B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Ein aktives Empfehlungsmodellbuild kann bis zu 20 TPS aufnehmen.
+* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa&2; T/s. Ein aktives Empfehlungsmodellbuild kann bis zu 20 TPS aufnehmen.
 
 ## <a name="purchase-and-billing"></a>Einkauf und Abrechnung
 **Wie hoch ist der Preis für RECOMMENDATIONS während der Startphase?**
@@ -109,15 +109,15 @@ Das Experimentieren mit RECOMMENDATIONS gestaltet sich in der Regel recht einfac
 
 RECOMMENDATIONS erfordert ein Protokoll der Benutzerauswahl in Bezug auf den Katalog. Falls Sie nicht über ein solches Protokoll, jedoch über eine Kundenwebsite verfügen, kann RECOMMENDATIONS möglicherweise Benutzeraktivitäten für Sie erfassen. 
 
-RECOMMENDATIONS erfordert außerdem einen Katalog mit Produkten und Diensten. Für den Fall, dass Sie keinen Katalog haben, kann RECOMMENDATIONS die tatsächliche Nutzung der Kundendaten verwenden und einen Katalog destillieren. Ein „impliziter“ Katalog berücksichtigt keine Elemente, die nicht als Teil von Benutzertransaktionen „gemeldet“ wurden.
+RECOMMENDATIONS erfordert außerdem einen Katalog mit Produkten und Diensten. Für den Fall, dass Sie keinen Katalog haben, kann RECOMMENDATIONS die tatsächliche Nutzung der Kundendaten verwenden und einen Katalog destillieren. Ein impliziter Katalog berücksichtigt keine Elemente, die nicht als Teil von Benutzertransaktionen gemeldet wurden.
 
 **Wie richte ich RECOMMENDATIONS erstmalig ein?**
 
-Nach dem [Abonnieren](https://datamarket.azure.com/dataset/amla/recommendations) von RECOMMENDATIONS sollten Sie den Dienst mithilfe der API-Dokumentation in [Azure Machine Learning Recommendations – Quick Start Guide](machine-learning-recommendation-api-quick-start-guide.md) (Empfehlungen zu Azure Machine Learning – Schnellstarthandbuch) einrichten.
+Nach dem [Abonnieren](https://datamarket.azure.com/dataset/amla/recommendations) von RECOMMENDATIONS sollten Sie den Dienst mithilfe der API-Dokumentation in der Kurzanleitung [Azure Machine Learning Recommendations – Schnellstartanleitung](machine-learning-recommendation-api-quick-start-guide.md) einrichten.
 
 **Wo finde ich die API-Dokumentation?** 
 
-Die API-Dokumentation ist [Azure Machine Learning Recommendations – Quick Start Guide](machine-learning-recommendation-api-quick-start-guide.md) (Empfehlungen zu Azure Machine Learning – Schnellstarthandbuch).
+Die API-Dokumentation ist [Azure Machine Learning Recommendations – Schnellstartanleitung](machine-learning-recommendation-api-quick-start-guide.md).
 
 **Welche Optionen habe ich, um Katalog- und Nutzungsdaten auf RECOMMENDATIONS hochzuladen?**
 
@@ -140,6 +140,6 @@ Der technische Support ist auf der Website des [Microsoft Azure-Supports](https:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a3d7254fded543fa12b6e82cd50ece8260858955
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: 2d7ab8fbed1d4edb60416c7c6b7ae08ddbdec91a
 
 
 ---
@@ -25,11 +25,12 @@ In diesem Dokument erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösung
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="monitoring-partner-solutions"></a>Überwachen von Partnerlösungen
 Auf der Kachel **Partnerlösungen** auf dem Blatt **Security Center** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind.
+
 ![Kachel „Partnerlösungen“][1]
 
 Die Kachel **Partnerlösungen** zeigt die Anzahl der Partnerlösungen und eine Statusübersicht für diese Lösungen an.
@@ -43,18 +44,22 @@ Eine Partnerlösung kann den folgenden **STATUS** haben:
 * Nicht gemeldet (grau): Die Lösung hat noch keine Meldung berichtet. Der Status einer Lösung kann unter Umständen noch nicht gemeldet worden sein, wenn die Verbindung gerade hergestellt wurde und die Bereitstellung noch nicht abgeschlossen ist.
 
 Wenn in Ihr Abonnement keine Lösungen integriert sind, zeigt die Kachel an, dass es keine Lösungen gibt. Wenn Sie die Kachel **Partnerlösungen** auswählen, können Sie das Blatt **Empfehlungen** zum Bereitstellen von Partnersicherheitslösungen öffnen.
+
 ![Keine Partnerlösungen][2]
 
 So zeigen der Integrität Ihrer Partnerlösungen an:
 
 1. Wählen Sie die Kachel **Partnerlösungen** . Ein Blatt mit einer Liste der Partnerlösungen, die mit dem Security Center verbunden sind, wird geöffnet.
+
    ![Partnerlösungen][3]
 2. Wählen Sie eine Partnerlösung aus. In diesem Beispiel wählen wir die Lösung **F5-WAF2** aus.  Auf einem Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
+
    ![Details der Partnerlösung][4]
 3. Wechseln Sie zurück zum Blatt **F5-WAF2**, und wählen Sie **App verknüpfen** aus. Das Blatt **Anwendungen verknüpfen** wird geöffnet. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+
    ![Verknüpfen Sie Ressourcen mit Partnerlösungen][5]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument wurden Ihnen die **Partnerlösungen** in Security Center vorgestellt. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
@@ -73,6 +78,6 @@ In diesem Dokument wurden Ihnen die **Partnerlösungen** in Security Center vorg
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

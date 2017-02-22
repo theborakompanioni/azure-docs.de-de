@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: 6700ea97bea02d68329b923f8715d84e5df1de33
+ms.sourcegitcommit: 8062106872bd50cd265fc4e64bc6f4c0fb2dbb1d
+ms.openlocfilehash: b7458e13174dc03f2c4cab707c033d96a80628e6
 
 
 ---
@@ -44,7 +44,11 @@ Bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt
 - [Zurücksetzen mithilfe von Azure PowerShell](#vmaccess-extension-and-powershell---classic)
 
 ## <a name="azure-portal---resource-manager"></a>Azure-Portal – Resource Manager
-Wählen Sie Ihren virtuellen Computer aus, indem Sie auf **Durchsuchen** > **Virtuelle Computer** > *Ihr virtueller Windows-Computer* > **Alle Einstellungen** > **Kennwort zurücksetzen** klicken. Das Blatt zum Zurücksetzen des Kennworts wird angezeigt:
+Klicken Sie zum Erweitern des Portalmenüs oben links auf die drei Balken und dann auf **Virtuelle Computer**:
+
+![Navigieren Sie zu Ihrem virtuellen Azure-Computer](./media/virtual-machines-windows-reset-rdp/Portal-Select-VM.png)
+
+Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Support und Problembehandlung** > **Zurücksetzen des Kennworts**. Das Blatt zum Zurücksetzen des Kennworts wird angezeigt:
 
 ![Seite „Zurücksetzen des Kennworts“](./media/virtual-machines-windows-reset-rdp/Portal-RM-PW-Reset-Windows.png)
 
@@ -100,11 +104,15 @@ Wenn Sie weiterhin nicht remote auf den virtuellen Computer zugreifen können, f
 
 
 ## <a name="azure-portal---classic"></a>Azure-Portal – klassisch
-Für mit dem klassischen Bereitstellungsmodell erstellte virtuelle Computer können Sie das [Azure-Portal](https://portal.azure.com) zum Zurücksetzen des Remotedesktopdiensts verwenden. Klicken Sie auf **Durchsuchen** > **Virtuelle Computer (klassisch)** > *Ihr virtueller Windows-Computer* > **Remotezugriff zurücksetzen...**. Die folgende Seite wird angezeigt.
+Für mit dem klassischen Bereitstellungsmodell erstellte virtuelle Computer können Sie das [Azure-Portal](https://portal.azure.com) zum Zurücksetzen des Remotedesktopdiensts verwenden. Klicken Sie zum Erweitern des Portalmenüs oben links auf die drei Balken und dann auf **Virtuelle Computer (Klassisch)**:
+
+![Navigieren Sie zu Ihrem virtuellen Azure-Computer](./media/virtual-machines-windows-reset-rdp/Portal-Select-Classic-VM.png)
+
+Wählen Sie Ihren virtuellen Windows-Computer aus, und klicken Sie dann auf **Remote zurücksetzen**. Das folgende Dialofeld zum Zurücksetzen der Remotedesktopkonfiguration wird angezeigt:
 
 ![Seite „Zurücksetzen der RDP-Konfiguration“](./media/virtual-machines-windows-reset-rdp/Portal-RDP-Reset-Windows.png)
 
-Sie können auch versuchen, den Namen und das Kennwort des lokalen Administratorkontos zurückzusetzen. Klicken Sie auf **Durchsuchen** > **Virtuelle Computer (klassisch)** > *Ihr virtueller Windows-Computer* > **Alle Einstellungen** > **Kennwort zurücksetzen**. Die folgende Seite wird angezeigt.
+Sie können auch den Benutzernamen und das Kennwort des lokalen Administratorkontos zurücksetzen. Klicken Sie auf Ihren virtuellen Computer auf **Support und Problembehandlung** > **Zurücksetzen des Kennworts**. Das Blatt zum Zurücksetzen des Kennworts wird angezeigt:
 
 ![Seite „Zurücksetzen des Kennworts“](./media/virtual-machines-windows-reset-rdp/Portal-PW-Reset-Windows.png)
 
@@ -174,6 +182,6 @@ Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

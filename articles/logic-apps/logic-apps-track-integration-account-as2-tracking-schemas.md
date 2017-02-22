@@ -1,6 +1,6 @@
 ---
-title: AS2-Nachverfolgungsschemas | Microsoft-Dokumentation
-description: "Enthält Informationen zu AS2-Nachverfolgungsschemas."
+title: "AS2-Nachverfolgungsschemas für die B2B-Überwachung – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Verwenden Sie AS2-Nachverfolgungsschemas, um B2B-Nachrichten von Transaktionen in Ihrem Azure-Integrationskonto zu überwachen."
 author: padmavc
 manager: anneta
 editor: 
@@ -12,11 +12,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
+ms.date: 01/27/2017
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 5c9fdb5e913199b9a52a8839cbe9a1da7d1acc84
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: b78c42b14005b9bcedbc29216541495fd19c64a5
 
 
 ---
@@ -139,6 +139,6 @@ Sie können diese AS2-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

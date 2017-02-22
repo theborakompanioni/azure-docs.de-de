@@ -6,18 +6,17 @@ keywords: "gerätebasierter bedingter Zugriff, Geräteregistrierung, Geräteregi
 documentationcenter: 
 author: MarkusVi
 manager: femila
-editor: 
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/11/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 77031b3bbe2372bf2cac34bac45368ac40911641
-ms.openlocfilehash: 81dcda2e11ff98f7f21495a83043a546786979c7
+ms.sourcegitcommit: fbabf6f2e1e588ba509c4da84ab1700b1b5d4f87
+ms.openlocfilehash: ad9f9a8c5b370ffa916b9089ef3ce523fe0266c7
 
 
 ---
@@ -48,7 +47,7 @@ Wenn Ihr Gerät mit einer der folgenden Plattformen ausgeführt wird, können Si
 ### <a name="device-is-not-registered"></a>Das Gerät ist nicht registriert
 Wenn das Gerät nicht bei Azure AD registriert und die Anwendung durch eine gerätebasierte Richtlinie geschützt ist, wird ggf. eine Seite mit einer der folgenden Fehlermeldungen angezeigt:
 
-![Meldungen vom Typ „Zugriff nicht möglich“ für nicht registrierte Geräte](./media/active-directory-conditional-access-device-remediation/01.png "Scenario")
+![Meldungen vom Typ „Zugriff nicht möglich“ für nicht registrierte Geräte](./media/active-directory-conditional-access-device-remediation/01.png "Szenario")
 
 Versuchen Sie Folgendes, wenn das Gerät einer Domäne der Active Directory-Instanz in Ihrer Organisation angehört:
 
@@ -122,7 +121,7 @@ Unter Umständen wird der Zugriff verweigert, wenn Sie versuchen, mit einem der 
 
 Eine Fehlerseite wird angezeigt, die wie folgt aussieht:
 
-![Meldung vom Typ „Zugriff nicht möglich“ für nicht unterstützte Browser](./media/active-directory-conditional-access-device-remediation/02.png "Scenario")
+![Meldung vom Typ „Zugriff nicht möglich“ für nicht unterstützte Browser](./media/active-directory-conditional-access-device-remediation/02.png "Szenario")
 
 Die einzige Abhilfe ist die Verwendung eines Browsers, der von der Anwendung für Ihre Geräteplattform unterstützt wird.
 
@@ -132,6 +131,6 @@ Die einzige Abhilfe ist die Verwendung eines Browsers, der von der Anwendung fü
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

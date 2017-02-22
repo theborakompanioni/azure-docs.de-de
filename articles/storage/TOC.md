@@ -43,6 +43,14 @@
 ### [C++](storage-c-plus-plus-how-to-use-files.md)
 ### [Python](storage-python-how-to-use-file-storage.md)
 
+## Datenspeicher 
+### [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
+### [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
+### [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/virtual-machines-linux-add-disk.md)
+### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
+### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../virtual-machines/linux/virtual-machines-linux-snapshot-copy-managed-disk.md)
+
 # Anleitung
 ## [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
 ## Verwenden von Blobs
@@ -62,13 +70,21 @@
 ### [Übersicht](/rest/api/storageservices/fileservices/File-Service-Concepts)
 ### [Problembehandlung für Azure Files](storage-troubleshoot-file-connection-problems.md)
 ### [Beispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=file)
-## Verwenden von VM-Datenträgern
+## Verwenden von Datenträgern
+### [Datenträger und virtuelle Festplatten für virtuelle Windows-Computer](storage-about-disks-and-vhds-windows.md)
+### [Datenträger und virtuelle Festplatten für virtuelle Linux-Computer](storage-about-disks-and-vhds-linux.md)
+### [Übersicht über Azure Managed Disks](storage-managed-disks-overview.md)
+### [Migrieren virtueller Azure-Computer zu Azure Managed Disks](../virtual-machines/virtual-machines-windows-migrate-to-managed-disks.md)
+### [Migrieren von AWS und anderen Plattformen zu Managed Disks](../virtual-machines/virtual-machines-windows-on-prem-to-azure.md)
+### [Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern](storage-faq-for-disks.md)
 ### Storage Premium
-#### [Hochleistungsspeicher für VM-Workloads](storage-premium-storage.md)
-#### [Migrieren zu Storage Premium](storage-migration-to-premium-storage.md)
+#### [Premium-Hochleistungsspeicher für VM-Datenträger](storage-premium-storage.md)
 #### [Entwerfen für hohe Leistung](storage-premium-storage-performance.md)
 ### Standardspeicher
-#### [Sichern von Datenträgern durch inkrementelle Momentaufnahmen](storage-incremental-snapshots.md)
+#### [Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete VM-Datenträger](storage-standard-storage.md)
+### Verwenden nicht verwalteter Datenträger
+#### [Migrieren zu Storage Premium](storage-migration-to-premium-storage.md)
+#### [Sichern nicht verwalteter VM-Datenträger mithilfe inkrementeller Momentaufnahmen](storage-incremental-snapshots.md)
 ## Planen und Entwerfen
 ### [Replikation](storage-redundancy.md)
 ### [Skalierbarkeits- und Leistungsziele](storage-scalability-targets.md)
@@ -155,12 +171,12 @@
 ### [Ressourcen-Manager](/dotnet/api/microsoft.azure.management.storage)
 ### [Datenverschiebung](https://msdn.microsoft.com/library/azure/mt684990.aspx)
 ### [Blobs, Warteschlangen, Tabellen und Dateien](https://msdn.microsoft.com/library/azure/mt347887.aspx)
-## [Java](/java/api/)
+## [Java](http://azure.github.io/azure-storage-java/)
 ## [Node.js](http://azure.github.io/azure-storage-node)
 ## [Ruby](http://azure.github.io/azure-storage-ruby)
 ## [Python](https://azure-storage.readthedocs.io/en/latest/index.html)
 ## [C++](http://azure.github.io/azure-storage-cpp)
-## [iOS](https://github.com/Azure/azure-storage-ios)
+## [iOS](http://azure.github.io/azure-storage-ios/)
 ## [Android](http://azure.github.io/azure-storage-android)
 ## REST
 ### [Blobs, Warteschlangen, Tabellen und Dateien](/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference)
@@ -205,6 +221,6 @@
 ### [iOS](https://github.com/Azure/azure-storage-ios)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

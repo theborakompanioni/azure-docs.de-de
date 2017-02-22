@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2016
-ms.author: cabailey
+ms.date: 11/30/2016
+ms.author: ambapat
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d410dd8b7baf852212707d0fa9bffd6e45c23eff
+ms.sourcegitcommit: 593fdde402845fa062dbceafa533a1efc1f7af9c
+ms.openlocfilehash: b189106be19b95366ba0e6d248c69b34b219b8a1
 
 
 ---
@@ -77,7 +77,7 @@ Führen Sie für diesen ersten Schritt die folgenden Verfahren auf der Arbeitsst
 ### <a name="step-11-install-azure-powershell"></a>Schritt 1.1: Installieren von Azure PowerShell
 Laden Sie auf der Arbeitsstation mit Internetverbindung das Azure PowerShell-Modul herunter, das die Cmdlets zum Verwalten des Azure-Schlüsseltresors enthält, und installieren Sie es. Hierfür ist mindestens die Version 0.8.13 erforderlich.
 
-Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Schritt 1.2: Abrufen der Azure-Abonnement-ID
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
@@ -94,76 +94,84 @@ Lassen Sie das Azure PowerShell-Fenster geöffnet.
 Wechseln Sie zum Microsoft Download Center, und [laden Sie das Azure-Schlüsseltresor-BYOK-Toolset für Ihre geografische Region oder Instanz von Azure herunter](http://www.microsoft.com/download/details.aspx?id=45345) . Ermitteln Sie anhand der folgenden Informationen den Namen des herunterzuladenden Pakets und seinen entsprechenden SHA-256-Pakethash:
 
 - - -
-**Nordamerika:**
+**USA:**
 
 KeyVault-BYOK-Tools-UnitedStates.zip
 
-305F44A78FEB750D1D478F6A0C345B097CD5551003302FA465C73D9497AB4A03
+760EE9BD6445C87CFF0E8B032577118704B3BEAA045AA55977C10EF68BC67E2B
 
 - - -
 **Europa:**
 
 KeyVault-BYOK-Tools-Europe.zip
 
-C73BB0628B91471CA7F9ADFCE247561C6016A5103EF1A315D49C3EA23AFC0B9C
+7A64B94225F59B847C5C27C2200BAD7D16C901E1687767EDBBB8B09BB285011D
 
 - - -
 **Asien:**
 
 KeyVault-BYOK-Tools-AsiaPacific.zip
 
-BE9A84B6C76661929F9FDAD627005D892B3B8F9F19F351220BB4F9C356694192
+813DC94B23079CF7A5CEA71D5B444E86B292F463C53EE47AED25D4F7CD58E7D8
 
 - - -
 **Lateinamerika:**
 
 KeyVault-BYOK-Tools-LatinAmerica.zip
 
-9E8EE11972DECE8F05CD898AF64C070C375B387CED716FDCB788544AE27D3D23
+3F29069E3500F95C0E156F4B8914E1DC60C20FB64B464306A299EA5145D755C0
 
 - - -
 **Japan:**
 
 KeyVault-BYOK-Tools-Japan.zip
 
-E6B88C111D972A02ABA3325F8969C4E36FD7565C467E9D7107635E3DDA11A8B2
+453FFEA2F8F410720B68B8BAC4CF79135A7F37F4E491FF840BE9E69E88A98C90
 
 - - -
 **Australien:**
 
 KeyVault-BYOK-Tools-Australia.zip
 
-7660D7A675506737857B14F527232BE51DC269746590A4E5AB7D50EDD220675D
+4AD893396E86F2D2A71682876A6A8EA59E3C7895BEAD2F7E7C8516682582C34B
 
 - - -
 [**Azure Government:**](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
-53801A3043B0F8B4A50E8DC01A935C2BFE61F94EE027445B65C52C1ACC2B5E80
+3AAE1A96B9D15B899B8126CFC0380719EB54FDF2EA94489B43FAD21ECC745F64
 
 - - -
 **Kanada:**
 
 KeyVault-BYOK-Tools-Canada.zip
 
-A42D9407B490E97693F8A5FA6B60DC1B06B1D1516EDAE7C9A71AA13E12CF1345
+30B87A0BA8208F6B7241C30C794FED1C370D7445ACA179685816E4E156CD2AF7
 
 - - -
 **Deutschland:**
 
 KeyVault-BYOK-Tools-Germany.zip
 
-4795DA855E027B2CA8A2FF1E7AE6F03F772836C7255AFC68E576410BDD28B48E
+5E3E4AA54715E4F93C3C145035B18275B7C6815A06D7ABB212E7FADBF2929261
 
 - - -
 **Indien:**
 
 KeyVault-BYOK-Tools-India.zip
 
-26853511EB767A33CF6CD880E78588E9BBE04E619B17FBC77A6B00A5111E800C
+136733A6C6A71D75571BB80819B3D55A9B83CCAD5C996C686BC5682A3F369BF7
 
 - - -
+**Großbritannien:**
+
+KeyVault-BYOK-Tools-UnitedKingdom.zip
+
+ED331A6F1D34A402317D3F27D5396046AF0E5C2D44B5D10CCCE293472942D268
+
+- - -
+
 Verwenden Sie in der Azure PowerShell-Sitzung das [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) -Cmdlet, um die Integrität des heruntergeladenen BYOK-Toolsets zu überprüfen.
 
     Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -403,6 +411,6 @@ Sie können diesen HSM-geschützten Schlüssel jetzt in Ihrem Schlüsseltresor v
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

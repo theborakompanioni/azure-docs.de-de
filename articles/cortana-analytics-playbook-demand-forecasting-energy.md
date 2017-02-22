@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 4fe84f732c24efc8aa647e1f1f650960fcf6514a
+ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
+ms.openlocfilehash: 0c07495a932c8bfdabb97e8eebe8d99de19fbd15
 
 
 ---
@@ -349,7 +349,7 @@ Mit der Erstellung einer Vorhersage des Energiebedarfs als Regressionsproblem er
 Aufgrund unserer Erfahrung in Bezug auf die Implementierung und Bereitstellung von Pilotprojekten für die Vorhersage des Energiebedarfs haben wir Folgendes herausgefunden: Die erweiterten Regressionsmodelle, die in Azure ML verfügbar sind, führen meistens zu den besten Ergebnissen, und wir setzen diese Modelle ein.
 
 ## <a name="model-evaluation"></a>Modellauswertung
-Die Modellauswertung spielt im **Modellentwicklungszyklus**eine wichtige Rolle. In diesem Schritt geht es um die Überprüfung des Modells und seine Leistung in Bezug auf echte Daten. Während des Modellierungsschritts nutzen wir einen Teil der verfügbaren Daten zum Trainieren des Modells. Während der Auswertungsphase nutzen wir die restlichen Daten, um das Modell zu testen. In praktischer Hinsicht bedeutet dies, dass wir das Modell mit neuen Daten füttern, die neu strukturiert wurden und die gleichen Features wie das Trainingsdataset enthalten. Allerdings verwenden wir das Modell während des Überprüfungsvorgangs, um die Zielvariable vorherzusagen, anstatt die verfügbare Zielvariable bereitzustellen. Wir bezeichnen diesen Prozess häufig als Modellbewertung. Anschließend verwenden wir die richtigen Zielwerte und vergleichen diese mit den vorhergesagten Werten. Das Ziel hierbei ist die Messung und Reduzierung des Vorhersagefehlers, also des Unterschieds zwischen den Vorhersagen und dem richtigen Wert. Eine Quantifizierung der Fehlermessung ist wichtig, da wir das Modell feinabstimmen und überprüfen möchten, ob der Fehlerwert tatsächlich abnimmt. Die Feinabstimmung des Modells kann durchgeführt werden, indem Modellparameter geändert werden, mit denen der Lernprozess gesteuert wird, oder indem Datenfeatures (als [Parameters Sweep](https://channel9.msdn.com/Blogs/Windows-Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)bezeichnet) hinzugefügt oder entfernt werden. In praktischer Hinsicht bedeutet dies, dass wir mehrfach zwischen den Phasen Featureentwicklung, Modellierung und Modellauswertung wechseln müssen, bis es möglich ist, den Fehler auf die erforderliche Ebene zu senken.
+Die Modellauswertung spielt im **Modellentwicklungszyklus**eine wichtige Rolle. In diesem Schritt geht es um die Überprüfung des Modells und seine Leistung in Bezug auf echte Daten. Während des Modellierungsschritts nutzen wir einen Teil der verfügbaren Daten zum Trainieren des Modells. Während der Auswertungsphase nutzen wir die restlichen Daten, um das Modell zu testen. In praktischer Hinsicht bedeutet dies, dass wir das Modell mit neuen Daten füttern, die neu strukturiert wurden und die gleichen Features wie das Trainingsdataset enthalten. Allerdings verwenden wir das Modell während des Überprüfungsvorgangs, um die Zielvariable vorherzusagen, anstatt die verfügbare Zielvariable bereitzustellen. Wir bezeichnen diesen Prozess häufig als Modellbewertung. Anschließend verwenden wir die richtigen Zielwerte und vergleichen diese mit den vorhergesagten Werten. Das Ziel hierbei ist die Messung und Reduzierung des Vorhersagefehlers, also des Unterschieds zwischen den Vorhersagen und dem richtigen Wert. Eine Quantifizierung der Fehlermessung ist wichtig, da wir das Modell feinabstimmen und überprüfen möchten, ob der Fehlerwert tatsächlich abnimmt. Die Feinabstimmung des Modells kann durchgeführt werden, indem Modellparameter geändert werden, mit denen der Lernprozess gesteuert wird, oder indem Datenfeatures (als [Parameters Sweep](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)bezeichnet) hinzugefügt oder entfernt werden. In praktischer Hinsicht bedeutet dies, dass wir mehrfach zwischen den Phasen Featureentwicklung, Modellierung und Modellauswertung wechseln müssen, bis es möglich ist, den Fehler auf die erforderliche Ebene zu senken.
 
 Es ist wichtig zu betonen, dass der Vorhersagefehler niemals null sein kann, da es kein Modell gibt, mit dem jedes Ergebnis perfekt vorhergesagt werden kann. Es gibt aber eine bestimmte Fehlergrößenordnung, die für ein Unternehmen jeweils akzeptabel ist. Während des Überprüfungsvorgangs möchten wir sicherstellen, dass der Vorhersagefehler unseres Modells der Toleranzebene des Unternehmens entspricht oder einen noch besseren Wert aufweist. Daher ist es wichtig, die Ebene des tolerierbaren Fehlers während der Phase der **Problemformulierung** am Anfang des Zyklus festzulegen.
 
@@ -404,6 +404,6 @@ Weitere Informationen zu den einzelnen Komponenten und zur gesamten Architektur 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

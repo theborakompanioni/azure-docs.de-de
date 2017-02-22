@@ -1,6 +1,6 @@
 ---
-title: "Häufig gestellte Fragen zu Cloud Services | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Cloud Services"
+title: "Häufig gestellte Fragen zu Rollen in Azure Cloud Services | Microsoft-Dokumentation"
+description: "Häufig gestellte Fragen zu Azure Cloud Services. Hier finden Sie Antworten zu einigen häufig gestellten Fragen zu Zertifikaten, Web- und Workerrollen."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 2501b6480e81b236995c37db7171a4ed1429dcbf
-ms.openlocfilehash: f7bad9a46132dec43f73e561362c9e6441a5c1c0
+ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
+ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
 
 
 ---
@@ -28,9 +28,9 @@ In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Clou
 * **My**  
   Anwendungszertifikat mit privatem Schlüssel (\*.pfx, \*.p12).
 * **CA**  
-   Alle Zwischenzertifikate werden in diesem Speicher gespeichert (Richtlinien und Sub-Zertifizierungsstellen)
+  Alle Zwischenzertifikate werden in diesem Speicher gespeichert (Richtlinien und Sub-Zertifizierungsstellen)
 * **ROOT**  
-   Ihre Hauptzertifikate der Stammzertifizierungsstelle werden hier im Speicher für Zertifikate der Stammzertifizierungsstelle gespeichert
+  Ihre Hauptzertifikate der Stammzertifizierungsstelle werden hier im Speicher für Zertifikate der Stammzertifizierungsstelle gespeichert
 
 ### <a name="i-cant-remove-expired-certificate"></a>Ich kann ein abgelaufenes Zertifikat nicht entfernen.
 Azure verhindert, dass Sie ein Zertifikat entfernen, während es verwendet wird. Sie müssen entweder die Bereitstellung löschen, die das Zertifikat verwendet, oder die Bereitstellung mit einem anderen oder einem erneuerten Zertifikat aktualisieren.
@@ -71,6 +71,6 @@ Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für de
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

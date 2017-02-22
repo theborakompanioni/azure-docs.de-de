@@ -1,5 +1,5 @@
 ---
-title: Azure AD-Tokenreferenz | Microsoft Docs
+title: "Weitere Informationen zu den verschiedenen von Azure AD unterstützten Token- und Anspruchstypen | Microsoft-Dokumentation"
 description: "Anleitung zum Verstehen und Auswerten der Ansprüche in den SAML 2.0- und JWT-Token (JSON Web Tokens), die Azure Active Directory (Azure AD) ausstellt."
 documentationcenter: na
 author: bryanla
@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 796b892d555ea114af330117365e3d0a0f622f3f
+ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
+ms.openlocfilehash: 4612c1f516dca51aea925343f79649761448c05d
 
 
 ---
@@ -304,6 +304,6 @@ Neben Ansprüchen enthält das Token eine Versionsnummer in **ver** und **appida
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

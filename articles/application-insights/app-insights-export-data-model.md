@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 03/21/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e4576409641db73ad8920a1eec2eea1e3580109f
-ms.openlocfilehash: fc8a3efd079d84aea4cac63de401d46347f9e3d7
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: feaa76e81f64b224f62e583541bf2ef376793a38
 
 
 ---
@@ -155,7 +155,7 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | internal.data.id |string | |
 
 ## <a name="events"></a>Ereignisse
-Von [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event)generierte benutzerdefinierte Ereignisse.
+Von [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)generierte benutzerdefinierte Ereignisse.
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Bro
 | basicException [0] typeName |string | |
 
 ## <a name="trace-messages"></a>Ablaufverfolgungsmeldungen
-Gesendet von [TrackTrace](app-insights-api-custom-events-metrics.md#track-trace) und über die [Protokollierungsadapter](app-insights-asp-net-trace-logs.md).
+Gesendet von [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) und über die [Protokollierungsadapter](app-insights-asp-net-trace-logs.md).
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [A
 | remoteDependency [0] urlData.host |string |Max. Länge: 200 |
 
 ## <a name="requests"></a>Anforderungen
-Gesendet von [TrackRequest](app-insights-api-custom-events-metrics.md#track-request). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.
+Gesendet von [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.
 
 | Pfad | Typ | Hinweise |
 | --- | --- | --- |
@@ -354,6 +354,6 @@ Sofern nicht anders angegeben, wird die Dauer in Zehnteln einer Mikrosekunde ang
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

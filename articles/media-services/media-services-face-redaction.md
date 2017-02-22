@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 02/01/2017
 ms.author: juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 3feaac838fe89e54a3b561b7572a9eb3393edc4c
-ms.openlocfilehash: 3b0f6127e2b64989d83efce8c5a930ffee481a01
+ms.sourcegitcommit: 5b8d989d950c17d867f30a6fa8a464a8750e2303
+ms.openlocfilehash: 98922addf7aa8bfc77033be29bf137b362378661
 
 
 ---
@@ -26,7 +26,7 @@ ms.openlocfilehash: 3b0f6127e2b64989d83efce8c5a930ffee481a01
 
 Dieses Thema enthält Details zu **Azure Media Redactor** und veranschaulicht die Verwendung zusammen mit dem Media Services SDK für .NET.
 
-Der Medienprozessor **Azure Media Redactor** befindet sich derzeit in der Vorschauphase. Er ist in allen öffentlichen Azure-Regionen sowie den Rechenzentren für die US-Regierung und China verfügbar. Diese Vorschau ist derzeit kostenfrei. Im aktuellen Release ist die Länge des verarbeiteten Videos auf 10 Minuten begrenzt.
+Der Medienprozessor **Azure Media Redactor** befindet sich derzeit in der Vorschauphase. Er ist in allen öffentlichen Azure-Regionen sowie den Rechenzentren für die US-Regierung und China verfügbar. Diese Vorschau ist derzeit kostenfrei. 
 
 ## <a name="face-redaction-modes"></a>Modi der Gesichtsbearbeitung
 Bei der Gesichtsbearbeitung werden Gesichter in jedem Bild eines Videos erkannt, und gleichzeitig wird das Gesichtsobjekt in Vorwärts- und Rückwärtsrichtung verfolgt, damit eine Person auch aus anderen Winkeln unkenntlich gemacht werden kann. Der automatisierte Prozess der Gesichtsbearbeitung ist sehr komplex und führt nicht immer exakt zum gewünschten Ergebnis. Aus diesem Grund werden unter Media Analytics einige Optionen zum Ändern der Endausgabe bereitgestellt.
@@ -103,7 +103,7 @@ In der Ausgabe des Analysedurchlaufs ist das Originalvideo nicht enthalten. Das 
 | Phase | Dateiname | Hinweise |
 | --- | --- | --- |
 | Eingabeasset |foo.bar |Video im WMV-, MPV- oder MP4-Format. Dasselbe Video wie in Schritt 1. |
-| Eingabeasset |foo_annotations.json |Metadatendatei mit Anmerkungen aus Phase 1 mit optionalen Änderungen |
+| Eingabeasset |foo_annotations.json |Metadatendatei mit Anmerkungen aus Phase&1; mit optionalen Änderungen |
 | Eingabeasset |foo_IDList.txt (optional) |Optionale neue Liste mit zu bearbeitenden Gesicht-IDs mit Zeilentrennung. Wenn die Datei leer ist, werden alle Gesichter verschwommen angezeigt. |
 | Eingabekonfiguration |Vorgangskonfiguration (Voreinstellung) |{'version':'1.0', 'options': {'mode':'redact'}} |
 | Ausgabeasset |foo_redacted.mp4 |Video mit angewendeter Unschärfe, basierend auf Anmerkungen |
@@ -308,6 +308,6 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Anfügen eines Datenträgers an einen virtuellen Linux-Computer | Microsoft Docs"
+title: "Anfügen eines Datenträgers an einen virtuellen Linux-Computer in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie einen Datenträger mit dem klassischen Bereitstellungsmodell einer Linux-VM anfügen und den Datenträger initialisieren, sodass er einsatzbereit ist."
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 17ddda372f3a232be62e565b700bb1be967fb8e3
-ms.openlocfilehash: 96ec97914784f53739b11b4ef7916de620b4ed6e
+ms.sourcegitcommit: 84d52dccef4e2d9a1ae253831b5d8f86b6fb50a6
+ms.openlocfilehash: b78deeeb7fd8d337b83c8e831f51f8e57014cf43
 
 
 ---
@@ -227,7 +227,7 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 
 * [Anmelden bei einem virtuellen Computer unter Linux][Logon]
 * [Trennen eines Datenträgers von einem virtuellen Linux-Computer](virtual-machines-linux-classic-detach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](../virtual-machines-command-line-tools.md)
+* [Verwenden der Azure-Befehlszeilenschnittstelle beim klassischen Bereitstellungsmodell](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Konfigurieren von RAID auf einem virtuellen Linux-Computer in Azure](virtual-machines-linux-configure-raid.md)
 * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](virtual-machines-linux-configure-lvm.md)
 
@@ -237,6 +237,6 @@ Informieren Sie sich in den folgenden Artikeln ausführlicher über das Verwende
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

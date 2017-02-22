@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da6ac042a55c7c145895d15a735f77fb2e82d394
+ms.sourcegitcommit: 4c3f32cd6159052f17557c51e08e7e3f611aa338
+ms.openlocfilehash: 7a1e705e40cd8f7b260c38f41e81e2f199555059
 
 
 ---
@@ -212,27 +212,17 @@ Beispiel: Wie viele individuelle Fahrzeugmarken passieren in einem Zeitraum von 
 
 **Lösung:**
 
-    WITH Makes AS (
-        SELECT
-            Make,
-            COUNT(*) AS CountMake
-        FROM
-            Input TIMESTAMP BY Time
-        GROUP BY
-              Make,
-              TumblingWindow(second, 2)
-    )
-    SELECT
-        COUNT(*) AS Count,
-        System.TimeStamp AS Time
-    FROM
-        Makes
-    GROUP BY
-        TumblingWindow(second, 1)
+````
+SELECT
+     COUNT(DISTINCT Make) AS CountMake,
+     System.TIMESTAMP AS TIME
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+````
 
 
-**Erläuterung**: Bei einer ersten Aggregation werden individuelle Marken innerhalb des Zeitraums ermittelt.
-Anschließend wird mithilfe einer Aggregierung deren Anzahl ermittelt. Wenn alle eindeutigen Werte in einem Zeitraum den gleichen Zeitstempel erhalten, muss der Zeitraum für die zweite Aggregierung sehr klein sein, damit nicht zwei Zeiträume aus dem ersten Schritt aggregiert werden.
+**Erläuterung:** COUNT (DISTINCT Make) gibt die Anzahl der unterschiedlichen Werte der Spalte „Make“ innerhalb eines Zeitfensters zurück.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Abfragebeispiel: Ermitteln, ob ein Wert geändert wurde
 **Beschreibung**: Betrachten eines vorherigen Werts, um zu ermitteln, ob er sich vom aktuellen Wert unterscheidet. Beispiel: Handelt es sich beim aktuellen Fahrzeug auf der mautpflichtigen Straße um die gleiche Marke wie beim vorherigen Fahrzeug?
@@ -509,7 +499,7 @@ Generieren Sie z. B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "springenden Fensters - Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel 300 Sekunden).
+**Erläuterung**: Diese Abfrage generiert alle fünf Sekunden Ereignisse und gibt das letzte zuvor empfangene Ereignis aus. [springenden Fensters](https://msdn.microsoft.com/library/dn835041.aspx "springenden Fensters - Azure Stream Analytics") legt fest, wie weit die Abfrage zurückreicht, um das letzte Ereignis zu suchen (in diesem Beispiel&300; Sekunden).
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
@@ -524,6 +514,6 @@ Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

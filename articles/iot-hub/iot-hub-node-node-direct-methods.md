@@ -1,6 +1,6 @@
 ---
-title: Verwenden von direkten Methoden | Microsoft-Dokumentation
-description: In diesem Tutorial wird die Verwendung direkter Methoden beschrieben.
+title: Direkte Azure IoT Hub-Methoden (Node) | Microsoft Docs
+description: "Erfahren Sie, wie Sie direkte Azure IoT Hub-Methoden verwenden. Sie verwenden die Azure IoT SDKs für Node.js, um eine simulierte Geräte-App mit einer direkten Methode und eine Dienst-App zu implementieren, die die direkte Methode aufruft."
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/11/2017
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: fd80a245f2cc2415bec487f98360980534df8730
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: 52eb502054120af4c03c649dee810366f99d326b
 
 
 ---
-# <a name="tutorial-use-direct-methods"></a>Tutorial: Verwenden von direkten Methoden
+# <a name="use-direct-methods-node"></a>Verwenden von direkten Methoden (Node)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
 
-Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolenanwendungen:
+Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
 * **CallMethodOnDevice.js**, die eine Methode in der simulierten Geräte-App aufruft und die Antwort anzeigt.
 * **SimulatedDevice.js**, die mithilfe der zuvor erstellten Geräteidentität eine Verbindung mit Ihrem IoT Hub herstellt und auf die von der Cloud aufgerufene Methode antwortet.
@@ -45,7 +45,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf eine von der Cloud aufgerufene Methode antwortet.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulateddevice**. Erstellen Sie im Ordner **simulateddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl verwenden. Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **simulateddevice**. Erstellen Sie im Ordner **simulateddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -64,7 +64,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die auf eine von de
     var Mqtt = require('azure-iot-device-mqtt').Mqtt;
     var DeviceClient = require('azure-iot-device').Client;
     ```
-5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen eines Geräteclients. Ersetzen Sie **{device connection string}** durch die Verbindungszeichenfolge, die Sie im Abschnitt *Erstellen einer Geräteidentität* erstellt haben:
+5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **DeviceClient**-Instanz. Ersetzen Sie **{device connection string}** durch die Geräteverbindungszeichenfolge, die Sie im Abschnitt *Erstellen einer Geräteidentität* erstellt haben:
    
     ```
     var connectionString = '{device connection string}';
@@ -125,7 +125,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Methode in
    
     var Client = require('azure-iothub').Client;
     ```
-5. Fügen Sie die folgende Variablendeklaration hinzu, und ersetzen Sie den Platzhalterwert durch die Verbindungszeichenfolge für Ihren IoT Hub:
+5. Fügen Sie die folgende Variablendeklaration hinzu, und ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für Ihren Hub:
    
     ```
     var connectionString = '{iothub connection string}';
@@ -160,14 +160,14 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die eine Methode in
 ## <a name="run-the-apps"></a>Ausführen der Apps
 Sie können die Apps nun ausführen.
 
-1. Führen Sie an einer Befehlszeile im Ordner **simulateddevice** den folgenden Befehl aus, um mit dem Lauschen auf Methodenaufrufe von Ihrem IoT Hub zu beginnen:
+1. Führen Sie an einer Eingabeaufforderung im Ordner **simulateddevice** den folgenden Befehl aus, um mit dem Lauschen auf Methodenaufrufe von Ihrer IoT Hub-Instanz zu beginnen:
    
     ```
     node SimulatedDevice.js
     ```
    
     ![][7]
-2. Führen Sie an einer Befehlszeile im Ordner **callmethodondevice** den folgenden Befehl aus, um mit der Überwachung Ihres IoT Hubs zu beginnen:
+2. Führen Sie an einer Eingabeaufforderung im Ordner **callmethodondevice** den folgenden Befehl aus, um mit der Überwachung Ihrer IoT Hub-Instanz zu beginnen:
    
     ```
     node CallMethodOnDevice.js 
@@ -196,7 +196,7 @@ Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, 
 <!-- Links -->
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -213,6 +213,6 @@ Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

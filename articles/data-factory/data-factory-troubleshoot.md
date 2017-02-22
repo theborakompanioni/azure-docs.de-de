@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/06/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 6b50b65fa1ad86c8e80fff0fb92352b1be52632e
-ms.openlocfilehash: d4589b5e9ca7f08b2152605dc26a96d4b5d656c8
+ms.sourcegitcommit: f78081d173bfe255a3ed8016d10a2deec87ac758
+ms.openlocfilehash: 684515213fc2533e56600cacf3bc0a3a33f337c2
 
 
 ---
@@ -34,7 +34,7 @@ Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter
     Login-AzureRmAccount
     ```
 3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren.
-    
+
     ```powershell        
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
@@ -109,7 +109,7 @@ Dieser Fehler gibt normalerweise an, dass der Speicherort des Speicherkontos, da
 Darüber hinaus können in der weiteren JSON-Eigenschaft "additionalLinkedServiceNames" zusätzliche Speicherkonten in bedarfsgesteuertem HDInsight angegeben werden. Diese zusätzlichen verknüpften Speicherkonten müssen sich am gleichen Standort wie der HDInsight-Cluster befinden. Andernfalls tritt derselbe Fehler auf.
 
 ### <a name="problem-custom-net-activity-fails"></a>Problem: Fehler bei benutzerdefinierter .NET-Aktivität
-Die ausführlichen Schritte finden Sie unter [Debuggen einer Pipeline mit benutzerdefinierten Aktivitäten](data-factory-use-custom-activities.md#debug-the-pipeline) .
+Die ausführlichen Schritte finden Sie unter [Debuggen einer Pipeline mit benutzerdefinierten Aktivitäten](data-factory-use-custom-activities.md#troubleshoot-failures) .
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Verwenden des Azure-Portals zur Problembehandlung
 ### <a name="using-portal-blades"></a>Verwenden von Portalblättern
@@ -153,6 +153,6 @@ Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipel
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

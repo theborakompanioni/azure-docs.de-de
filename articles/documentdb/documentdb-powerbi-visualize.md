@@ -3,7 +3,7 @@ title: "Power BI-Tutorial für den DocumentDB-Connector | Microsoft Docs"
 description: "Verwenden Sie dieses Power BI-Tutorial, um JSON zu importieren, aufschlussreiche Berichte zu erstellen und Daten mithilfe des DocumentDB- und Power BI-Connectors zu visualisieren."
 keywords: "Power BI-Tutorial, Daten visualisieren, Power BI-Connector"
 services: documentdb
-author: h0n
+author: mimig1
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
-ms.author: hawong
+ms.date: 02/14/2016
+ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 35c469ce0cfb99dc6a26fbcc0734938ad6b66fd7
+ms.sourcegitcommit: 089b250e36eb3e091ad63d716acaf6259a958898
+ms.openlocfilehash: 3f2103a1d3838b73f10d567721693a9b813d0edb
 
 
 ---
@@ -88,7 +88,7 @@ Sind Sie bereit, es zu versuchen? Lassen Sie uns anfangen.
     Lassen Sie den Datenbanknamen, Sammlungsnamen und die SQL-Anweisung leer, da diese Felder optional sind.  Stattdessen verwenden wir den Navigator zum Auswählen der Datenbank und der Sammlung, um zu bestimmen, woher die Daten stammen.
    
     ![Power BI-Tutorial für den Power BI-Connector für DocumentDB – Fenster für Desktopverbindung](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-7. Wenn Sie zum ersten Mal eine Verbindung mit diesem Endpunkt herstellen, werden Sie aufgefordert, den Kontoschlüssel anzugeben.  Sie können den Schlüssel aus dem Feld **Primärschlüssel** auf dem Blatt **[Schreibgeschützte Schlüssel](documentdb-manage-account.md#keys)** des Azure-Portals nutzen oder das Demokonto verwenden. In diesem Fall lautet der Schlüssel `RcEBrRI2xVnlWheejXncHId6QRcKdCGQSW6uSUEgroYBWVnujW3YWvgiG2ePZ0P0TppsrMgscoxsO7cf6mOpcA==`. Geben Sie den Kontoschlüssel an, und klicken Sie auf **Verbinden**.
+7. Wenn Sie zum ersten Mal eine Verbindung mit diesem Endpunkt herstellen, werden Sie aufgefordert, den Kontoschlüssel anzugeben.  Sie können den Schlüssel aus dem Feld **Primärschlüssel** auf dem Blatt **[Schreibgeschützte Schlüssel](documentdb-manage-account.md#keys)** des Azure-Portals nutzen oder das Demokonto verwenden. In diesem Fall lautet der Schlüssel `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Geben Sie den Kontoschlüssel an, und klicken Sie auf **Verbinden**.
    
     Es wird empfohlen, den Schlüssel mit Leseberechtigung beim Erstellen von Berichten zu verwenden.  Dadurch wird verhindert, dass der Hauptschlüssel unnötig potenziellen Sicherheitsrisiken ausgesetzt wird. Der Schlüssel mit Leseberechtigung ist auf dem Blatt [Schlüssel](documentdb-manage-account.md#keys) des Azure-Portals verfügbar. Alternativ können Sie die oben angegebenen Informationen für das Demokonto verwenden.
    
@@ -216,6 +216,6 @@ Für eine geplante Aktualisierung führen Sie die folgenden Schritte aus.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

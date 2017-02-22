@@ -16,8 +16,8 @@ ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
 translationtype: Human Translation
-ms.sourcegitcommit: 455c4847893175c1091ae21fa22215fd1dd10c53
-ms.openlocfilehash: 7e28fdde31c735b5de99aa7031ceb1b2abf72576
+ms.sourcegitcommit: 702ea254c19d1f9782f83d8445b7f440f11963b9
+ms.openlocfilehash: 7f4bccda8a7cebff0d80627320d34062d4d55add
 
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Erstellen eines Azure Search-Indexes mit der REST-API
@@ -36,7 +36,7 @@ Bevor Sie dieser Anleitung folgen und einen Index erstellen, müssen Sie einen [
 
 Zum Erstellen des Azure Search-Indexes mithilfe der REST-API können Sie eine einzelne HTTP POST-Anforderung an den URL-Endpunkt Ihres Azure Search-Diensts ausgeben. Ihre Indexdefinition ist im Anforderungstext als richtig formatierter JSON-Inhalt enthalten.
 
-## <a name="i-identify-your-azure-search-services-admin-api-key"></a>I. Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
+## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifizieren des Admin-API-Schlüssels Ihres Azure Search-Diensts
 Nachdem Sie einen Azure Search-Dienst bereitgestellt haben, können Sie HTTP-Anforderungen für den URL-Endpunkt Ihres Diensts mithilfe der REST-API ausgeben. *Alle* API-Anforderungen müssen den API-Schlüssel enthalten, der für den bereitgestellten Suchdienst erstellt wurde. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um die API-Schlüssel für Ihren Dienst zu ermitteln.
@@ -50,7 +50,7 @@ Der Dienst enthält *Admin-Schlüssel* und *Abfrageschlüssel*.
 
 Verwenden Sie zum Erstellen eines Indexes entweder den primären oder den sekundären Admin-Schlüssel.
 
-## <a name="ii-define-your-azure-search-index-using-well-formed-json"></a>II. Definieren des Azure Search-Indexes mithilfe richtig formatierter JSON
+## <a name="define-your-azure-search-index-using-well-formed-json"></a>Definieren des Azure Search-Indexes mithilfe richtig formatierter JSON
 Eine einzelne HTTP POST-Anforderung an Ihren Dienst erstellt den Index. Der Hauptteil der HTTP POST-Anforderung enthält ein einzelnes JSON-Objekt, das den Azure Search-Index definiert.
 
 1. Die erste Eigenschaft des JSON-Objekts ist der Name des Indexes.
@@ -86,7 +86,7 @@ In Ihrem Index des Typs `Edm.String` muss genau ein Feld als „key“ bestimmt 
 
 Diese Indexdefinition verwendet für das Feld `description_fr` eine Sprachanalyse, da es für Text in französischer Sprache vorgesehen ist. Weitere Informationen zu Sprachanalysen finden Sie im [Thema zur Sprachunterstützung](https://docs.microsoft.com/rest/api/searchservice/Language-support) sowie im entsprechenden [Blogbeitrag](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
-## <a name="iii-issue-the-http-request"></a>III. Stellen der HTTP-Anforderung
+## <a name="issue-the-http-request"></a>Stellen der HTTP-Anforderung
 1. Stellen Sie eine HTTP POST-Anforderung an die Endpunkt-URL des Azure Search-Diensts, indem Sie Ihre Indexdefinition als Anforderungstext verwenden. Verwenden Sie in der URL Ihren Dienstnamen als Hostnamen, und geben Sie die richtige `api-version` als Abfragezeichenfolgeparameter ein (zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2016-09-01` die aktuelle API-Version).
 2. Legen Sie im Anforderungsheader `Content-Type` als `application/json` fest. Sie müssen außerdem den Admin-Schlüssel des Diensts angeben, den Sie in Schritt I im Header `api-key` identifiziert haben.
 
@@ -105,11 +105,11 @@ Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, stellen Si
     api-key: [api-key]
 
 
-## <a name="next"></a>Weiter
+## <a name="next-steps"></a>Nächste Schritte
 Nach dem Erstellen eines Azure Search-Indexes können Sie [Ihre Inhalte in den Index hochladen](search-what-is-data-import.md) und mit dem Durchsuchen der Daten beginnen.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

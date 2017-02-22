@@ -1,6 +1,6 @@
 ---
-title: "Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps"
-description: "Erweiterte Überwachung Ihrer Java-Website mit Application Insights"
+title: "Leistungsüberwachung für Java-Web-Apps in Azure Application Insights | Microsoft-Dokumentation"
+description: "Erweiterte Leistungs- und Nutzungsüberwachung Ihrer Java-Website mit Application Insights."
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 08/24/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7a9c40081f52b2ffe918f4612f790f7fd08acc5a
-ms.openlocfilehash: 16ffd2ea5be6a18f59065a20d4c801f89bf030cf
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: a481c7c62383c92a5dfab0e3f2b1b4f4f0e5ddf5
 
 
 ---
@@ -31,7 +31,7 @@ Wenn Sie [Ihre Java-Web-App mit Application Insights instrumentiert haben][java]
 * **Abgefangene Ausnahmen** : Daten zu Ausnahmen, die vom Code verarbeitet werden.
 * **Methodenausführungszeit** : Daten über die Zeit, die zum Ausführen bestimmter Methoden benötigt wird.
 
-Um den Java-Agent zu verwenden, installieren Sie ihn auf Ihrem Server. Ihre Web-Apps müssen mit dem [Application Insights-Java-SDK][java] instrumentiert werden. 
+Um den Java-Agent zu verwenden, installieren Sie ihn auf Ihrem Server. Ihre Web-Apps müssen mit dem [Application Insights Java SDK][java] instrumentiert werden. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Installieren des Application Insights-Agents für Java
 1. Laden Sie auf dem Computer, auf dem Ihr Java-Server ausgeführt wird, [den Agent herunter](https://aka.ms/aijavasdk).
@@ -115,6 +115,6 @@ Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

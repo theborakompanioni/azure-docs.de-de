@@ -1,31 +1,31 @@
 ---
-title: "Stichprobenerstellung für Telemetriedaten in Application Insights | Microsoft Docs"
+title: "Stichprobenerstellung für Telemetriedaten in Azure Application Insights | Microsoft-Dokumentation"
 description: "So behalten Sie die Kontrolle über die Menge an erfassten Telemetriedaten."
 services: application-insights
 documentationcenter: windows
 author: vgorbenko
-manager: douge
+manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/03/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: b04e8a33e5253a5fcda78ad3d2f0626d69c4d9b4
+ms.sourcegitcommit: 611f4222b5ab1530658f612de39dd2712f98c250
+ms.openlocfilehash: cbc622a959c402fe25ce9ab026c1ae05f194d884
 
 
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
 
-Die Stichprobenerstellung ist eine Funktion in [Azure Application Insights](app-insights-overview.md) und die empfohlene Methode zum Reduzieren des Telemetriedatenverkehrs und Speicherbedarfs, während gleichzeitig eine statistisch korrekte Analyse der Anwendungsdaten sichergestellt wird. Der Filter wählt verwandte Elemente, sodass Sie beim Ausführen diagnostischer Untersuchungen zwischen Elementen navigieren können.
+Die Stichprobenerstellung ist eine Funktion in [Azure Application Insights](app-insights-overview.md). Sie ist die empfohlene Methode zum Reduzieren des Telemetriedatenverkehrs und Speicherbedarfs, während gleichzeitig eine statistisch korrekte Analyse der Anwendungsdaten sichergestellt wird. Der Filter wählt verwandte Elemente, sodass Sie beim Ausführen diagnostischer Untersuchungen zwischen Elementen navigieren können.
 Bei der Anzeige der Metrikergebnisse im Portal werden diese erneut normalisiert, um der Stichprobenerstellung Rechnung zu tragen und Auswirkungen auf die Statistiken zu minimieren.
 
-Die Stichprobenerstellung reduziert den Datenverkehr und hilft Ihnen, monatliche Datenkontingente einzuhalten und eine Drosselung zu vermeiden.
+Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstützt Sie dabei, eine Drosselung zu vermeiden.
 
 ## <a name="in-brief"></a>Kurz gesagt:
 * Bei der Stichprobenerstellung wird ein Datensatz von *n* Datensätzen beibehalten, und der Rest wird verworfen. Beispielsweise wird eines von fünf Ereignissen beibehalten – das ergibt einen Stichproben-Prozentsatz von 20%. 
@@ -103,6 +103,17 @@ In [ApplicationInsights.config](app-insights-configuration-with-applicationinsig
 * `<InitialSamplingPercentage>100</InitialSamplingPercentage>`
   
     Der Wert, der sofort nach dem Start der App zugewiesen wird. Reduzieren Sie ihn nicht, solange Sie debuggen. 
+
+* `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
+  
+    Eine durch Strichpunkte getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Gültige Typen: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt.
+
+* `<IncludedTypes>Request;Dependency</IncludedTypes>`
+  
+    Eine durch Strichpunkte getrennte Liste von Typen, für die Stichproben erstellt werden sollen. Gültige Typen: Dependency, Event, Exception, PageView, Request, Trace. Für die angegebenen Typen werden Stichproben erstellt. Alle Instanzen der anderen Typen werden immer übertragen.
+
+
+Entfernen Sie **zum Deaktivieren** der adaptiven Stichprobenerstellung den AdaptiveSamplingTelemetryProcessor-Knoten aus „applicationinsights-config“.
 
 ### <a name="alternative-configure-adaptive-sampling-in-code"></a>Alternative: Konfigurieren der adaptiven Stichprobenerstellung in Code
 Anstatt die Stichproben in der config-Datei anzupassen, können Sie Code verwenden. Dadurch können Sie eine Rückruffunktion angeben, die aufgerufen wird, wenn die Stichprobenrate neu ausgewertet wird. Zum Beispiel können Sie herausfinden, welcher Stichproben-Prozentsatz verwendet wird.
@@ -344,6 +355,6 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

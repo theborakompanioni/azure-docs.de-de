@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Catalog-Einführung | Microsoft Docs"
+title: "Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung | Microsoft-Dokumentation"
 description: "Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen."
 services: data-catalog
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/11/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: c2350ae447ccebf1a6b85a563e7fa1d7c12b16d7
-ms.openlocfilehash: 4c6a07c4b3597e357c520bcafde501bc0850e685
+ms.sourcegitcommit: 15e72950ef30b8540d0303292fb9882f500c875e
+ms.openlocfilehash: 646a7611f5680a4c08e9a5f5ff4e2a3e5631276f
 
 
 ---
-# <a name="adopting-azure-data-catalog"></a>Azure Data Catalog-Einführung
+# <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
 In diesem Artikel erhalten Sie Hilfe bei den ersten Schritten zur Einführung von **Azure Data Catalog** in Ihrem Unternehmen. Konzentrieren Sie sich auf drei wichtige Punkte, um **Azure Data Catalog** erfolgreich einzuführen: Definieren Sie Ihre Vision, ermitteln Sie die zentralen geschäftlichen Anwendungsfälle in Ihrem Unternehmen, und wählen Sie ein Pilotprojekt.
 
 ## <a name="introducing-the-azure-data-catalog"></a>Einführung in Azure Data Catalog
@@ -169,6 +169,6 @@ In diesem Artikel ging es um die ersten Schritte bei der Nutzung von **Azure Dat
 
 
 
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

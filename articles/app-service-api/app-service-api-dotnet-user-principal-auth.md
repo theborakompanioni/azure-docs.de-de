@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 06/30/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: cbac2de7334b8733c17b2db5b407eecb925bcc2f
+ms.sourcegitcommit: 16a2c6f8e704528c38054bba394e3d11098077e0
+ms.openlocfilehash: c39e7bca6f339a1797a9344778e6a01ffa8adecc
 
 
 ---
@@ -182,7 +182,7 @@ In diesem Abschnitt ändern Sie das AngularJS-Front-End, damit es die Active Dir
 
 Nehmen Sie die folgenden Änderungen an den Dateien im Projekt ToDoListAngular vor.
 
-1. Öffnen Sie die Datei *index.html* .
+1. Öffnen Sie die Datei *Index.cshtml*.
 2. Kommentieren Sie die Zeilen aus, in denen auf die Active Directory Authentication Library (ADAL) für JS-Skripts verwiesen wird.
    
         <script src="app/scripts/adal.js"></script>
@@ -284,6 +284,6 @@ In diesem Tutorial haben Sie gelernt, wie Sie die App Service-Authentifizierung 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

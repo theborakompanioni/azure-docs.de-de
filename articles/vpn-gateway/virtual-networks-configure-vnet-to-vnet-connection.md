@@ -1,10 +1,10 @@
 ---
-title: "Konfigurieren einer VNET-zu-VNET-Verbindung für das klassische Bereitstellungsmodell | Microsoft Docs"
+title: "Herstellen einer Verbindung für ein virtuelles Azure-Netzwerk mit einem anderen VNet: Klassisch | Microsoft-Dokumentation"
 description: Informationen zum Herstellen von Verbindungen zwischen virtuellen Azure-Netzwerken mithilfe von PowerShell und dem klassischen Azure-Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 7413827f-233d-4c7c-a133-9c99cf031833
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3fe204c09eebf7d254a1bf2bb130e2d3498b6b45
-ms.openlocfilehash: c1fd18ad8889033cba8a92f6ae255ba6478e6595
+ms.sourcegitcommit: eadb1f29da69e7f6fcc2c7c19ba67f4e3072c346
+ms.openlocfilehash: 863b308125a7a9ae2b9d9104d150bd2474c064b3
 
 
 ---
@@ -60,7 +60,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
   * Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie Workloads aus verschiedenen Abonnements sicher zwischen virtuellen Netzwerken verbinden.
   * Für Unternehmen und Dienstanbieter können Sie die organisationsübergreifende Kommunikation mit sicherer VPN-Technologie in Azure aktivieren.
 
-### <a name="vnet-to-vnet-faq-for-classic-vnets"></a>Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen für klassische VNets
+### <a name="vnet-to-vnet-considerations-for-classic-vnets"></a>Informationen zu VNet-zu-VNet-Verbindungen bei klassischen VNets
 * Die virtuellen Netzwerke können sich im gleichen Abonnement oder in verschiedenen Abonnements befinden.
 * Die virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen (Standorte) befinden.
 * Ein Clouddienst oder Endpunkt mit Lastenausgleich darf auch dann nicht mehrere virtuelle Netzwerke umfassen, wenn diese verbunden sind.
@@ -200,6 +200,6 @@ Sie können Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 
