@@ -13,8 +13,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9ade7b48b16d79c23355a8dbd46e9367abe4abd6
-ms.openlocfilehash: f2ddd6b02ac0dcf35c2519589f2f439c02c886c9
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: cd09b7c5d45d07a3fbcc5d6f0c02400dcd36d61b
 
 
 ---
@@ -29,7 +29,7 @@ Es folgen die Standardfilter:
 * Schnelle Antworten, d.h. Anforderungen, auf die Ihre App schnell reagiert hat
 * Bestimmte Ereignisnamen
 
-> [!NOTE] 
+> [!NOTE]
 > Filter verzerren die Metriken Ihrer App. Wenn Sie z.B. langsame Reaktionszeiten untersuchen möchten, legen Sie einen Filter fest, der schnelle Antwortzeiten ausschließt. Ihnen sollte jedoch klar sein, dass die von Application Insights gemeldeten durchschnittlichen Antwortzeiten langsamer als die tatsächliche Geschwindigkeit sind und dass die Anzahl der Anforderungen kleiner als die tatsächliche Anzahl ist.
 > Wenn dies von Belang ist, arbeiten Sie stattdessen mit [Stichproben](app-insights-sampling.md).
 
@@ -66,7 +66,7 @@ Fügen Sie der Datei „ApplicationInsights.xml“ wie in diesem Beispiel den Ab
 
            <!-- Exclude telemetry from availability tests and bots -->
            <Processor type="SyntheticSourceFilter">
-                <!-- Optional: specify which synthetic sources, 
+                <!-- Optional: specify which synthetic sources,
                      comma-separated
                      - default is all synthetics -->
                 <Add name="NotNeededSources" value="Application Insights Availability Monitoring,BingPreview"
@@ -115,7 +115,7 @@ Fügen Sie der Datei „ApplicationInsights.xml“ wie in diesem Beispiel den Ab
            </Processor>
 ```
 
-* `DurationThresholdInMS`: „Duration“ bezieht sich auf die Dauer des Ladens der Seite. Falls festgelegt, werden Seiten, die schneller als diese Angabe geladen werden, nicht gemeldet. 
+* `DurationThresholdInMS`: „Duration“ bezieht sich auf die Dauer des Ladens der Seite. Falls festgelegt, werden Seiten, die schneller als diese Angabe geladen werden, nicht gemeldet.
 * `NotNeededNames`: Durch Trennzeichen getrennte Liste von Seitennamen.
 * `NotNeededUrls`: Durch Trennzeichen getrennte Liste von URL-Fragmenten. Beispielsweise filtert `"home"` alle Seiten heraus, deren URL „home“ enthält.
 
@@ -160,7 +160,7 @@ Filtern Sie Telemetriedaten für bestimmte synthetische Quellen heraus:
 
 ### <a name="telemetry-event-filter"></a>Telemetriefilter „Ereignis“
 
-Filtert benutzerdefinierte (mit [TrackEvent()](app-insights-api-custom-events-metrics.md#track-event) protokollierte) Ereignisse.
+Filtert benutzerdefinierte (mit [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) protokollierte) Ereignisse.
 
 
 ```XML
@@ -176,7 +176,7 @@ Filtert benutzerdefinierte (mit [TrackEvent()](app-insights-api-custom-events-me
 
 ### <a name="trace-telemetry-filter"></a>Telemetriefilter „Ablaufverfolgung“
 
-Filtert (mit [TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) oder einem [Protokollierungsframework-Collector](app-insights-java-trace-logs.md) protokollierte) Protokollablaufverfolgungen.
+Filtert (mit [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) oder einem [Protokollierungsframework-Collector](app-insights-java-trace-logs.md) protokollierte) Protokollablaufverfolgungen.
 
 ```XML
 
@@ -194,14 +194,11 @@ Filtert (mit [TrackTrace()](app-insights-api-custom-events-metrics.md#track-trac
  *  CRITICAL: Filtert alles außer CRITICAL heraus.
 
 
-```
+## <a name="custom-filters"></a>Benutzerdefinierte Filter
 
+### <a name="1-code-your-filter"></a>1. Codieren des Filters
 
-## Custom filters
-
-### 1. Code your filter
-
-In your code, create a class that implements `TelemetryProcessor`:
+Erstellen Sie in Ihrem Code eine Klasse, die `TelemetryProcessor` implementiert:
 
 ```Java
 
@@ -215,7 +212,7 @@ In your code, create a class that implements `TelemetryProcessor`:
        private final String successful;
 
        /* Initializers for the parameters, named "setParameterName" */
-       public void setNotNeeded(String successful) 
+       public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
@@ -269,7 +266,6 @@ In „ApplicationInsights.xml“:
 
 
 
-
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

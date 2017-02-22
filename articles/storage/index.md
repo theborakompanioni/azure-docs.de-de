@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Storage – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Azure Storage (Blob-/Tabellen-/Warteschlangen-/Dateispeicher sowie Speicher für die Datenträger virtueller Computer) in der Cloud verwenden. Tutorials, API-Referenzen und anderes Dokumentationsmaterial."
+services: storage
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 1e9cc940d681893abbc351ef440c90f579e6c40a
+ms.sourcegitcommit: f7bd1007aeff86faf7a1d744602e5184f0ce1d6f
+ms.openlocfilehash: cdb001f960ea5d505bc757195abf14b505f77103
 
 ---
 
@@ -133,6 +144,7 @@ Hier erfahren Sie, wie Sie Azure Storage (einen beständigen, verfügbaren und s
                         <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Blobs, Warteschlangen, Tabellen und Dateien</a></p>
                         <p><a href="/rest/api/storagerp">Ressourcenanbieter</a></p>
                         <p><a href="/rest/api/storageimportexport">Import/Export</a></p>
+                        <p><a href="/rest/api/storageservices/fileservices/azure-storage-services-rest-api-reference">Speicherdaten-REST-API</a></p>
                    </div>
                 </div>
             </div>
@@ -144,6 +156,6 @@ Hier erfahren Sie, wie Sie Azure Storage (einen beständigen, verfügbaren und s
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

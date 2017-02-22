@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 5a9b3e94faee1db7c38b9f60045637640d820208
-ms.openlocfilehash: b11d9d67234c85af8f9fcb9992864ef9e1662a79
+ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
+ms.openlocfilehash: fd3ebcaa82952815ad31decd1b44cf6d41365d2f
 
 
 ---
@@ -403,7 +403,7 @@ Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Samm
 2. Sie können eine abgekürzte Syntax verwenden: Durch Eingabe von "Sammlung[3]" wird derselbe Satz von Sammlungen ausgegeben wie in Schritt 1.
 3. Mehrere Ersetzungen können bereitgestellt werden. "Sammlung[0-1] [0-9]" generiert z. B. 20 Sammlungsnamen mit führenden Nullen (Sammlung01, ...02, ...03).
 
-Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als&10;.000 RUs erfordern einen Partitionsschlüssel. Wenn Sie mehr als 250.000 RUs wählen, lesen Sie die Informationen unter [Anfordern von erhöhten DocumentDB-Kontolimits](documentdb-increase-limits.md).
+Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als&10;.000 RUs erfordern einen Partitionsschlüssel. Wenn Sie mehr als 250.000 RUs auswählen, müssen Sie im Portal eine Anfrage stellen, um Ihr Konto zu erhöhen.
 
 > [!NOTE]
 > Die Durchsatzeinstellung gilt nur für die Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Durchsatz nicht geändert.
@@ -526,6 +526,6 @@ Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen pro
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

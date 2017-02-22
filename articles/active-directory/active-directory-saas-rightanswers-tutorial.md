@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2016
+ms.date: 01/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6c08e0b1349a3eb1bb4876958e36172e87729330
+ms.sourcegitcommit: 9a653ac435198e89a527070a0174a1adaf830dc3
+ms.openlocfilehash: 9251f3f9311e1cd4b1d57c611cc1783855d8d2af
 
 
 ---
@@ -34,7 +34,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-rightanswers-tutorial/IC802925.png "Scenario")
+![Szenario](./media/active-directory-saas-rightanswers-tutorial/IC802925.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-rightanswers"></a>Aktivieren der Anwendungsintegration für RightAnswers
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für RightAnswers aktivieren.
@@ -42,51 +42,62 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Rig
 ### <a name="to-enable-the-application-integration-for-rightanswers-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für RightAnswers:
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
-   ![Active Directory](./media/active-directory-saas-rightanswers-tutorial/IC700993.png "Active Directory")
+    ![Active Directory](./media/active-directory-saas-rightanswers-tutorial/IC700993.png "Active Directory")
+
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-rightanswers-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-rightanswers-tutorial/IC700994.png "Anwendungen")
+
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-rightanswers-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-rightanswers-tutorial/IC749321.png "Anwendung hinzufügen")
+
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-rightanswers-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-rightanswers-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
+
 6. Geben Sie im **Suchfeld** den Suchbegriff **RightAnswers** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-rightanswers-tutorial/IC802926.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-rightanswers-tutorial/IC802926.png "Anwendungskatalog")
+
 7. Wählen Sie im Ergebnisbereich **RightAnswers** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
-   ## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei RightAnswers zu authentifizieren.
 
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **RightAnswers** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802927.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802927.png "Einmaliges Anmelden konfigurieren")
+
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer RightAnswers anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802928.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802928.png "Einmaliges Anmelden konfigurieren")
+
 3. Geben Sie auf der Seite **App-Einstellungen konfigurieren** im Textfeld für die **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer RightAnswers-Anwendung verwendete URL (z.B. *https://fortify.rightanswers.com/portal/ss/*) ein, und klicken Sie dann auf **Weiter**.
    
-   ![Konfigurieren von App-Einstellungen](./media/active-directory-saas-rightanswers-tutorial/IC802929.png "Configure App Settings")
+    ![App-Einstellungen konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802929.png "App-Einstellungen konfigurieren")
+
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für RightAnswers** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802930.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802930.png "Einmaliges Anmelden konfigurieren")
+
 5. Senden Sie die heruntergeladene Metadatendatei an das Supportteam von RightAnswers.
    
-   > [!NOTE]
-   > Die eigentliche SSO-Konfiguration muss vom Supportteam von RightAnswers durchgeführt werden.
-   > Sie erhalten eine Benachrichtigung, wenn SSO für Ihr Abonnement aktiviert wurde.
-   > 
-   > 
+    > [!NOTE]
+    > Die eigentliche SSO-Konfiguration muss vom Supportteam von RightAnswers durchgeführt werden.
+    > Sie erhalten eine Benachrichtigung, wenn SSO für Ihr Abonnement aktiviert wurde.
+    > 
+    > 
+
 6. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802931.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rightanswers-tutorial/IC802931.png "Einmaliges Anmelden konfigurieren")
    
-   ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
 Damit sich Azure AD-Benutzer bei RightAnswers anmelden können, müssen sie in RightAnswers bereitgestellt werden.  
 Im Fall von RightAnswers ist die Bereitstellung eine automatisierte Aufgabe.  
@@ -104,18 +115,20 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 
 ### <a name="to-assign-users-to-rightanswers-perform-the-following-steps"></a>So weisen Sie RightAnswers Benutzer zu:
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
+
 2. Klicken Sie auf der Anwendungsintegrationsseite für **RightAnswers** auf **Benutzer zuweisen**.
    
-   ![Benutzer zuweisen](./media/active-directory-saas-rightanswers-tutorial/IC802932.png "Assign Users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-rightanswers-tutorial/IC802932.png "Zuweisen von Benutzern")
+
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-   ![Ja](./media/active-directory-saas-rightanswers-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-rightanswers-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: e37c48d6c92a8a2cd480458abdff0a3a1ca9338f
-ms.openlocfilehash: bcb91660500484210c342a84595386ebb5e0bbbd
+ms.sourcegitcommit: 74b077f6f09d53c9232e5b209a5dd811364ee3f5
+ms.openlocfilehash: c995e0de46c67c5c5d243739b2d36266267bdade
 
 
 ---
@@ -43,7 +43,7 @@ Im Gegensatz zu anderen Diensten, in denen UI-Optionen beschränkt oder nur übe
 So funktioniert es: Azure AD B2C führt Code im Browser des Consumers aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing (CORS)](http://www.w3.org/TR/cors/) zum Laden des Inhalts von einer URL, die Sie in einer Richtlinie angeben. Sie können verschiedene URLs für unterschiedliche Seiten angeben. Der Code führt die UI-Elemente aus Azure AD B2C mit dem Inhalt, der von der URL geladen wird, zusammen und zeigt die Seite für den Endkunden an. Sie müssen nur Folgendes durchführen:
 
 1. Erstellen Sie wohlgeformten HTML5-Inhalt mit einem `<div id="api"></div>`-Element (muss ein leeres Element sein) an einer beliebigen Stelle in `<body>`. Dieses Element markiert die Stelle, an der der Azure AD B2C-Inhalt eingefügt wird.
-2. Hosten Sie diese Inhalte auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist).
+2. Hosten Sie diese Inhalte auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist). Beachten Sie, dass Sie bei der Konfiguration von CORS die Anforderungsmethoden GET und OPTIONS aktivieren müssen.
 3. Formatieren Sie die Elemente der Benutzeroberfläche, die von Azure AD B2C einfügt werden.
 
 ## <a name="test-out-the-ui-customization-feature"></a>Testen des Anpassungsfeatures für die Benutzeroberfläche (UI)
@@ -72,7 +72,7 @@ Unten sind grundlegende HTML-Inhalte dargestellt, die Sie zum Testen dieser Funk
 ```
 
 ## <a name="the-core-ui-elements-in-each-type-of-page"></a>Die wichtigsten UI-Elemente in den einzelnen Seitentypen
-In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente, die Azure AD B2C im `<div id="api"></div>` -Element in Ihrem Inhalt zusammenführt. **Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein.**  Sie werden vom Azure AD B2C-Dienst zur Laufzeit eingefügt. Verwenden Sie diese Beispiele, um Ihre eigenen Stylesheets zu entwerfen.
+In den folgenden Abschnitten finden Sie Beispiele für HTML5-Fragmente, die Azure AD B2C im `<div id="api"></div>` -Element in Ihrem Inhalt zusammenführt. **Fügen Sie diese Fragmente nicht in Ihren HTML5-Inhalt ein.** Sie werden vom Azure AD B2C-Dienst zur Laufzeit eingefügt. Verwenden Sie diese Beispiele, um Ihre eigenen Stylesheets zu entwerfen.
 
 ### <a name="azure-ad-b2c-content-inserted-into-the-identity-provider-selection-page"></a>Auf der „Auswahlseite für Identitätsanbieter“ eingefügte Azure AD B2C-Inhalte
 Diese Seite enthält eine Liste der Identitätsanbieter, aus denen der Benutzer bei der Registrierung oder Anmeldung auswählen kann. Dabei handelt es sich entweder um Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder um lokale Konten (basierend auf E-Mail-Adressen oder Benutzernamen).
@@ -340,20 +340,15 @@ Wenn Sie das Anpassungsfeature für die Seiten-UI verwenden möchten, beachten S
 
 * Kopieren und ändern Sie den Azure AD B2C-Standardinhalt nicht. Es wird empfohlen, eigene HTML5-Inhalte von Grund auf neu zu erstellen und den Standardinhalt als Referenz zu verwenden.
 * Auf allen Seiten (mit Ausnahme der Fehlerseiten), die von den Richtlinien für die Registrierung, Anmeldung und Profilbearbeitung bereitgestellt werden, müssen die von Ihnen angegebenen Stylesheets die Standard-Stylesheets außer Kraft setzen, die wir auf diesen Seiten in den <head> -Fragmenten hinzufügen. Für alle Seiten, die von den Richtlinien für die Registrierung, Anmeldung und Kennwortzurücksetzung bereitgestellt werden, und für die Fehlerseiten aller Richtlinien müssen Sie die gesamte Formatierung selbst angeben.
-* Aus Gründen der Sicherheit ist es nicht zulässig, JavaScript in Ihren Inhalt aufzunehmen. Das meiste, was Sie benötigen, sollte im Programmumfang enthalten sein. Falls nicht, fordern Sie über [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) neue Funktionen an.
+* Aus Gründen der Sicherheit ist es nicht zulässig, JavaScript in Ihren Inhalt aufzunehmen. Das meiste, was Sie benötigen, sollte im Programmumfang enthalten sein. Falls nicht, fordern Sie über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) neue Funktionen an.
 * Unterstützte Browserversionen:
-  * Internet Explorer 11
-  * Internet Explorer 10
-  * Internet Explorer 9 (eingeschränkt)
-  * Internet Explorer 8 (eingeschränkt)
-  * Google Chrome 43.0
-  * Google Chrome 42.0
-  * Mozilla Firefox 38.0
-  * Mozilla Firefox 37.0
+  * Internet Explorer 11, 10, Edge
+  * Eingeschränkte Unterstützung für Internet Explorer 9, 8
+  * Google Chrome 42.0 und höher
+  * Mozilla Firefox 38.0 und höher
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

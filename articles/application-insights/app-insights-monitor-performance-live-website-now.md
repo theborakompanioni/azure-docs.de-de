@@ -1,28 +1,28 @@
 ---
-title: "Diagnostizieren von Leistungsproblemen auf einer ausgeführten IIS-Website | Microsoft Docs"
-description: "Überwachen Sie die Leistung einer Website, ohne sie erneut bereitzustellen. Zur eigenständigen Verwendung oder in Verbindung mit dem Application Insights-SDK zum Abrufen von Telemetriedaten zu Abhängigkeiten."
+title: "Überwachen einer ASP.NET-Live-Web-App mit Azure Application Insights | Microsoft-Dokumentation"
+description: "Überwachen Sie die Leistung einer Website, ohne sie erneut bereitzustellen. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden."
 services: application-insights
 documentationcenter: .net
 author: alancameronwills
-manager: douge
+manager: carmonm
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2016
+ms.date: 02/08/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: ee9ebc23ce805bb4665669077a4d3fddf4c43e32
-ms.openlocfilehash: a190b1990a4ae4e7ad52cc1a7e802c8002522917
+ms.sourcegitcommit: 917f54248f4c9277caa3cf09d92f78593a901e89
+ms.openlocfilehash: fd76f40f5a34b6adf9c6ec3bded604d59b6baa72
 
 
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentieren von Web-Apps zur Laufzeit mit Application Insights
 
 
-Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Wenn Ihre Apps mit einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Wenn es sich um Azure-Web-Apps handelt oder wenn sie in einer Azure-VM ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).)
+Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Falls Ihre Apps von einem lokalen IIS-Server gehostet werden, installieren Sie den Statusmonitor. Falls es sich um Azure-Web-Apps handelt oder die Apps auf einem virtuellen Azure-Computer ausgeführt werden, können Sie die Application Insights-Erweiterung installieren. (Es gibt auch separate Artikel zum Instrumentieren von [Live-J2EE-Web-Apps](app-insights-java-live.md) und [Azure Cloud Services](app-insights-cloudservices.md).) Sie benötigen ein [Microsoft Azure](http://azure.com) -Abonnement.
 
 ![Beispieldiagramme](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
@@ -45,88 +45,63 @@ Hier ist zusammengefasst, was Sie jeweils erhalten:
 | [Seitenansicht und Benutzerdaten](app-insights-javascript.md) |Ja | |
 | Neuerstellung des Codes nicht erforderlich |Nein | |
 
-## <a name="instrument-your-web-app-at-run-time"></a>Instrumentieren der Web-App zur Laufzeit
-Sie benötigen ein [Microsoft Azure](http://azure.com) -Abonnement.
 
-### <a name="if-your-app-is-an-azure-web-app-or-cloud-service"></a>Wenn Ihre App eine Azure-Web-App oder ein Clouddienst ist
+## <a name="monitor-a-live-azure-web-app"></a>Überwachen einer Azure-Live-Web-App
+
+So aktivieren Sie die Überwachung, wenn Ihre Anwendung als Azure-Webdienst ausgeführt wird:
+
 * Wählen Sie in der Systemsteuerung der App in Azure „Application Insights“ aus.
 
-    [detaillierte Kapazitätsplanung](app-insights-azure.md)
+    ![Einrichten von Application Insights für eine Azure-Web-App](./media/app-insights-monitor-performance-live-website-now/azure-web-setup.png)
+* Klicken Sie auf der Zusammenfassungsseite von Application Insights auf den Link am unteren Rand, um die vollständige Application Insights-Ressource zu öffnen.
 
-### <a name="if-your-app-is-hosted-on-your-iis-server"></a>Bei auf dem IIS-Server gehosteter App
+    ![Öffnen von Application Insights](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
+
+[Überwachen von Cloud- und VM-Apps](app-insights-azure.md)
+
+## <a name="monitor-a-live-iis-web-app"></a>Überwachen einer IIS-Live-Web-App
+
+Wenn Ihre App auf einem IIS-Server gehostet wird, aktivieren Sie Application Insights über den Statusmonitor.
+
 1. Melden Sie sich mit Administratorrechten auf Ihrem IIS-Webserver an.
-2. Laden Sie den [Statusmonitor-Installer](http://go.microsoft.com/fwlink/?LinkId=506648)herunter, und starten Sie ihn.  
-3. Wählen Sie die installierte Webanwendung oder Website aus, die Sie überwachen möchten, und konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen. Die Anmeldung an Microsoft Azure sollte durchgeführt werden.
+2. Falls der Application Insights-Statusmonitor noch nicht installiert ist, laden Sie den [Statusmonitor-Installer](http://go.microsoft.com/fwlink/?LinkId=506648) herunter, und starten Sie ihn.
+3. Wählen Sie im Statusmonitor die installierte Webanwendung oder Website aus, die Sie überwachen möchten. Melden Sie sich mit Ihren Azure-Anmeldeinformationen an.
+
+    Konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen. (In der Regel empfiehlt es sich, eine neue Ressource zu erstellen. Wählen Sie eine vorhandene Ressource aus, falls Sie bereits über [Webtests][availability] oder über eine [Clientüberwachung][client] für die App verfügen.) 
 
     ![Wählen Sie eine App und eine Ressource.](./media/app-insights-monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
-    In der Regel konfigurieren Sie eine neue Ressource und [Ressourcengruppe][roles].
-
-    Sie können andernfalls auch eine vorhandene Ressource verwenden, wenn Sie bereits [Webtests][availability] für Ihre Website oder die [Webclientüberwachung][client] eingerichtet haben.
 4. Starten Sie IIS neu.
 
     ![Wählen Sie im oberen Bereich des Dialogfelds "Neustart".](./media/app-insights-monitor-performance-live-website-now/appinsights-036-restart.png)
 
     Der Webdienst wird für kurze Zeit unterbrochen.
-5. Beachten Sie, dass die Datei "ApplicationInsights.config" in die Web-Apps eingefügt wurde, die Sie überwachen möchten.
 
-    ![Suchen Sie die CONFIG-Datei bei den Codedateien der Web-App.](./media/app-insights-monitor-performance-live-website-now/appinsights-034-aiconfig.png)
-   
+## <a name="customize-monitoring-options"></a>Anpassen der Überwachungsoptionen
 
-#### <a name="want-to-reconfigure-later"></a>Möchten Sie die Konfiguration später ändern?
-Nach Abschluss des Assistenten können Sie die Konfiguration des Agenten später jederzeit ändern. Sie können dies auch verwenden, wenn bei der ursprünglichen Einrichtung des Agenten ein Problem aufgetreten ist.
+Wenn Sie Application Insights aktivieren, werden Ihrer Web-App DLLs und „ApplicationInsights.config“ hinzugefügt. Sie können [die CONFIG-Datei bearbeiten](app-insights-configuration-with-applicationinsights-config.md), um einige der Optionen zu ändern.
 
-![Klicken Sie auf das Application Insights-Symbol in der Taskleiste](./media/app-insights-monitor-performance-live-website-now/appinsights-033-aicRunning.png)
+## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Erneutes Aktivieren von Application Insights bei erneuter Veröffentlichung der App
 
-## <a name="view-performance-telemetry"></a>Anzeigen von Leistungstelemetriedaten
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an, navigieren Sie zu Application Insights, und öffnen Sie die zuvor erstellte Ressource.
+Überlegen Sie sich vor dem erneuten Veröffentlichen Ihrer App, ob Sie [Application Insights dem Code in Visual Studio hinzufügen][greenbrown] möchten. Sie erhalten ausführlichere Telemetriedaten und können benutzerdefinierte Telemetrie schreiben.
 
-![Wählen Sie "Durchsuchen", "Application Insights" und dann Ihre App aus.](./media/app-insights-monitor-performance-live-website-now/appinsights-08openApp.png)
+Wenn Sie die App erneut veröffentlichen möchten, ohne Application Insights dem Code hinzuzufügen, beachten Sie, dass die DLLs und „ApplicationInsights.config“ im Rahmen des Bereitstellungsprozesses unter Umständen aus der veröffentlichten Website gelöscht werden. Deshalb gilt Folgendes:
 
-Öffnen Sie das Blatt "Leistung", um die Anforderung, Antwortzeit, Abhängigkeiten und andere Daten anzuzeigen.
+1. Falls Sie „ApplicationInsights.config“ bearbeitet haben, erstellen Sie eine Kopie der Datei, bevor Sie Ihre App erneut veröffentlichen.
+2. Veröffentlichen Sie Ihre App erneut.
+3. Reaktivieren Sie die Application Insights-Überwachung. (Verwenden Sie die geeignete Methode: entweder die Systemsteuerung der Azure-Web-App oder den Statusmonitor auf einem IIS-Host.)
+4. Stellen Sie alle Änderungen wieder her, die Sie an der CONFIG-Datei vorgenommen haben.
 
-![Leistung](./media/app-insights-monitor-performance-live-website-now/21-perf.png)
 
-Klicken Sie jeweils auf ein Diagramm, um eine ausführlichere Ansicht zu öffnen.
+## <a name="troubleshooting-runtime-configuration-of-application-insights"></a>Behandeln von Problemen mit der Laufzeitkonfiguration von Application Insights
 
-Sie können Diagramme [bearbeiten, neu anordnen und speichern](app-insights-metrics-explorer.md) und Diagramme oder das gesamte Blatt an ein [Dashboard](app-insights-dashboards.md) anheften.
+### <a name="cant-connect-no-telemetry"></a>Keine Verbindung möglich? Keine Telemetriedaten?
 
-## <a name="dependencies"></a>Abhängigkeiten
-Das Diagramm mit der Abhängigkeitsdauer zeigt die Dauer, die Ihre App für Aufrufe externer Komponenten (z. B. Datenbanken, REST-APIs oder Azure-BLOB-Speicher) benötigt.
+* Sie müssen [einige ausgehende Ports](app-insights-ip-addresses.md#outgoing-ports) in der Firewall des Servers öffnen, damit der Statusmonitor funktioniert.
 
-Gehen Sie wie folgt vor, um das Diagramm nach Aufrufen verschiedener Abhängigkeiten zu segmentieren: Bearbeiten Sie das Diagramm, aktivieren Sie „Gruppierung“, und wählen Sie dann die Gruppierung nach „Abhängigkeit“, „Abhängigkeitstyp“ oder „Abhängigkeitsleistung“ aus.
-
-![Abhängigkeit](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
-
-## <a name="performance-counters"></a>Leistungsindikatoren
-Klicken Sie auf dem Übersichtsblatt auf "Server", um die Diagramme von Serverleistungsindikatoren wie CPU- und Speicherauslastung anzuzeigen.
-
-Wenn Sie über mehrere Serverinstanzen verfügen, kann es ratsam sein, die Diagramme so zu bearbeiten, dass sie nach der Rolleninstanz gruppiert werden.
-
-![Server](./media/app-insights-monitor-performance-live-website-now/22-servers.png)
-
-Sie können auch die Leistungsindikatoren ändern, die vom SDK gemeldet werden. 
-
-## <a name="exceptions"></a>Ausnahmen
-![Klicken Sie sich durch das Diagramm der Serverausnahmen](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
-
-Sie können Detailinformationen zu bestimmten Ausnahmen (der letzten sieben Tage) anzeigen sowie Stapelüberwachung und Kontextdaten abrufen.
-
-## <a name="sampling"></a>Stichproben
-Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
-
-## <a name="troubleshooting"></a>Problembehandlung
-### <a name="connection-errors"></a>Verbindungsfehler
-Sie müssen [einige ausgehende Ports](app-insights-ip-addresses.md#outgoing-ports) in der Firewall des Servers öffnen, damit der Statusmonitor funktioniert.
-
-### <a name="no-telemetry"></a>Keine Telemetriedaten?
-* Verwenden Sie Ihre Website, um einige Daten zu generieren.
-* Warten Sie einige Minuten, bis die Daten empfangen wurden, und klicken Sie dann auf **Aktualisieren**.
-* Öffnen Sie die "Diagnosesuche" (die Kachel "Search"), um einzelne Ereignisse anzuzeigen. Ereignisse werden häufig in der Diagnosesuche angezeigt, bevor Aggregatdaten in den Diagrammen dargestellt werden.
 * Öffnen Sie den Statusmonitor, und wählen Sie Ihre Anwendung auf der linken Seite aus. Prüfen Sie, ob für diese Anwendung Diagnosemeldungen im Abschnitt mit den Konfigurationsbenachrichtigungen vorliegen:
 
   ![Öffnen Sie das Blatt „Leistung“, um die Anforderung, Antwortzeit, Abhängigkeiten und andere Daten anzuzeigen.](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
-* Stellen Sie sicher, dass die Firewall Ihres Servers ausgehenden Datenverkehr an die oben aufgeführten Ports erlaubt.
 * Wenn auf dem Server eine Meldung über "unzureichende Berechtigungen" angezeigt wird, versuchen Sie Folgendes:
   * Wählen Sie in IIS-Manager Ihren Anwendungspool aus, öffnen Sie **Erweiterte Einstellungen**, und überprüfen Sie die Identität unter **Prozessmodell**.
   * Fügen Sie in der Systemsteuerung "Computerverwaltung" diese Identität der Gruppe "Systemmonitorbenutzer" hinzu.
@@ -209,10 +184,19 @@ Ermitteln Sie, welche Apps überwacht werden:
 * Lädt das aktuelle Application Insights SDK auf den Server herunter.
 
 ## <a name="a-namenextanext-steps"></a><a name="next"></a>Nächste Schritte
+
+Anzeigen der Telemetrie:
+
+* [Untersuchen Sie Metriken](app-insights-metrics-explorer.md) für die Überwachung von Leistung und Auslastung.
+* [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme zu diagnostizieren.
+* [Verwenden Sie Analytics](app-insights-analytics.md) für erweiterte Abfragen.
+* [Erstellen Sie Dashboards.](app-insights-dashboards.md)
+
+Hinzufügen weiterer Telemetrieelemente:
+
 * [Erstellen Sie Webtests][availability], um sicherzustellen, dass Ihre Website live bleibt.
-* [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme besser zu diagnostizieren.
 * [Fügen Sie Webclienttelemetrie hinzu][usage], um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
-* [Fügen Sie Ihrem Webdienstcode das Application Insights-SDK hinzu][greenbrown], damit Sie die Ablaufverfolgungs- und Protokollaufrufe im Servercode einfügen können.
+* [Fügen Sie Ihrem Code das Application Insights SDK hinzu][greenbrown], um Ablaufverfolgungs- und Protokollaufrufe einfügen zu können.
 
 <!--Link references-->
 
@@ -227,6 +211,6 @@ Ermitteln Sie, welche Apps überwacht werden:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

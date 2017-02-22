@@ -3,7 +3,7 @@ title: Kopieren oder Verschieben von Daten nach Storage mit AzCopy | Microsoft D
 description: Verwenden Sie das Hilfsprogramm AzCopy zum Verschieben oder Kopieren von Daten zu oder von Blob-, Tabellen- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
 documentationcenter: 
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: aa155738-7c69-4a83-94f8-b97af4461274
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3db01b38213b569d657284ca1354f3ec1869c7f
+ms.sourcegitcommit: a2d0f959bfcae54367512db1f63e22c866c35671
+ms.openlocfilehash: ca26ad38722560054aef1a153b9b95296d8bb021
 
 
 ---
@@ -39,7 +39,9 @@ AzCopy ist für Mac-/Linux-Betriebssysteme nicht verfügbar. Jedoch ist die Azur
 ## <a name="writing-your-first-azcopy-command"></a>Schreiben Ihres ersten AzCopy-Befehls
 Die grundlegende Syntax für AzCopy-Befehle ist:
 
-    AzCopy /Source:<source> /Dest:<destination> [Options]
+```azcopy
+AzCopy /Source:<source> /Dest:<destination> [Options]
+```
 
 Öffnen Sie ein Befehlsfenster, und navigieren Sie zum Installationsverzeichnis von AzCopy auf Ihrem Computer – dort befindet sich die ausführbare Datei `AzCopy.exe` . Bei Bedarf können Sie den Speicherort für die AzCopy-Installation zum Systempfad hinzufügen. In der Standardeinstellung ist AzCopy in `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` oder `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` installiert.
 
@@ -47,17 +49,26 @@ Die folgenden Beispiele zeigen eine Vielzahl von Szenarien zum Kopieren von Date
 
 ## <a name="blob-download"></a>Blob: Herunterladen
 ### <a name="download-single-blob"></a>Herunterladen eines einzelnen Blobs
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
+```
 
 Beachten Sie, dass, sofern der Ordner `C:\myfolder` noch nicht besteht, AzCopy diesen erstellt und `abc.txt ` in den neuen Ordner herunterlädt.
 
 ### <a name="download-single-blob-from-secondary-region"></a>Ein einzelnes Blob aus der sekundären Region herunterladen
-    AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+```
 
 Beachten Sie, dass der Lesezugriff im georedundanten Speicher aktiviert sein muss.
 
 ### <a name="download-all-blobs"></a>Herunterladen aller Blobs
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /S
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /S
+```
 
 Nehmen Sie an, die folgenden BLOBs befinden sich im angegebenen Container:  
 
@@ -78,7 +89,10 @@ Nach dem Herunterladen enthält das Verzeichnis `C:\myfolder` die folgenden Date
 Wenn Sie die Option `/S`nicht angeben, werden keine Blobs heruntergeladen.
 
 ### <a name="download-blobs-with-specified-prefix"></a>Herunterladen von Blobs mit angegebenem Präfix
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:a /S
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:a /S
+```
 
 Nehmen Sie an, die folgenden BLOBs befinden sich im angegebenen Container. Alle Blobs, die mit dem Präfix `a` beginnen, werden heruntergeladen:
 
@@ -98,29 +112,45 @@ Nach dem Herunterladen enthält der Ordner `C:\myfolder` die folgenden Dateien:
 Das Präfix gilt für das virtuelle Verzeichnis, das den ersten Teil des Blobnamens bildet. Im obigen Beispiel stimmt das virtuelle Verzeichnis nicht mit dem angegebenen Präfix überein. Daher wird es nicht heruntergeladen. Darüber hinaus lädt AzCopy keine Blobs herunter, wenn die Option `\S` nicht angegeben ist.
 
 ### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Für exportierte Dateien und Quell-Blobs dieselbe Uhrzeit der letzten Änderung festlegen
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT
+```
 
 Sie haben auch die Möglichkeit, Blobs auf Basis der Uhrzeit ihrer letzten Änderung vom Herunterladen auszuschließen. Fügen Sie die Option `/XN` hinzu, falls Sie beispielsweise Blobs, deren Uhrzeit der letzten Änderung die gleiche oder eine spätere ist als die der Zieldatei, ausschließen wollen:
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XN
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XN
+```
 
 Fügen Sie die Option `/XO` hinzu, falls Sie Blobs, deren Uhrzeit der letzten Änderung die gleiche oder eine frühere ist als die der Zieldatei, ausschließen wollen:
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XO
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XO
+```
 
 ## <a name="blob-upload"></a>Blob: Hochladen
 ### <a name="upload-single-file"></a>Hochladen einer einzelnen Datei
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:"abc.txt"
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:"abc.txt"
+```
 
 Wenn der angegebene Zielcontainer nicht vorhanden ist, wird er von AzCopy erstellt und die Datei anschließend in den Container hochgeladen.
 
 ### <a name="upload-single-file-to-virtual-directory"></a>Hochladen einer einzelnen Datei in ein virtuelles Verzeichnis
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
+```
 
 Wenn das angegebene virtuelle Verzeichnis nicht vorhanden ist, lädt AzCopy die Datei so hoch, dass das virtuelle Verzeichnis Teil des Dateinamens wird (**z.B. `vd/abc.txt` im obigen Beispiel).
 
 ### <a name="upload-all-files"></a>Hochladen aller Dateien
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /S
+```
 
 Wenn Sie die Option `/S` angeben, werden die Inhalte des angegebenen Verzeichnisses rekursiv in den Blobspeicher hochgeladen. Das bedeutet, dass alle Unterordner und die darin enthaltenen Dateien ebenfalls hochgeladen werden. Nehmen Sie z. B. an, die folgenden Dateien befinden sich im Ordner `C:\myfolder`:
 
@@ -132,7 +162,7 @@ Wenn Sie die Option `/S` angeben, werden die Inhalte des angegebenen Verzeichnis
 
 Nach dem Hochladen enthält der Container die folgenden Dateien:
 
-      abc.txt
+    abc.txt
     abc1.txt
     abc2.txt
     subfolder\a.txt
@@ -145,7 +175,10 @@ Wenn Sie die Option `/S`nicht angeben, lädt AzCopy nicht rekursiv hoch. Nach de
     abc2.txt
 
 ### <a name="upload-files-matching-specified-pattern"></a>Hochladen von Dateien, die einem angegebenen Muster entsprechen
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:a* /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:a* /S
+```
 
 Nehmen Sie z. B. an, die folgenden Dateien befinden sich im Ordner `C:\myfolder`:
 
@@ -173,30 +206,46 @@ Wenn Sie die Option `/S`nicht angeben, lädt AzCopy nur die Blobs hoch, die sich
 ### <a name="specify-the-mime-content-type-of-a-destination-blob"></a>Angeben des MIME-Inhaltstyps für Ziel-Blobs
 AzCopy legt den Inhaltstyp eines Zielblobs standardmäßig als `application/octet-stream`fest. Ab Version 3.1.0 können Sie den Inhaltstyp mit der Option `/SetContentType:[content-type]`explizit angeben. Mit dieser Syntax wird der Inhaltstyp für alle Blobs in einem Hochladevorgang festgelegt.
 
-    AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType:video/mp4
+```azcopy
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType:video/mp4
+```
 
 Wenn Sie für `/SetContentType` keinen Wert angeben, legt AzCopy den Inhaltstyp jedes Blobs und jeder Datei gemäß der jeweiligen Dateierweiterung fest.
 
-    AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType
+```azcopy
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.blob.core.windows.net/myContainer/ /DestKey:key /Pattern:ab /SetContentType
+```
 
 ## <a name="blob-copy"></a>Blob: Kopieren
 ### <a name="copy-single-blob-within-storage-account"></a>Kopieren eines einzelnen Blobs innerhalb eines Azure Storage-Kontos
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
+```
 
 Wenn Sie einen Blob innerhalb eines Azure Storage-Kontos kopieren, wird ein [serverseitiger Kopier](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) -Vorgang ausgeführt.
 
 ### <a name="copy-single-blob-across-storage-accounts"></a>Kopieren von Blobs zwischen Azure Storage-Konten
-    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+```
 
 Wenn Sie einen Blob zwischen Azure Storage-Konten kopieren, wird ein [serverseitiger Kopier](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) -Vorgang ausgeführt.
 
 ### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>Kopieren eines einzelnen Blobs aus der sekundären Region in die primäre Region
-    AzCopy /Source:https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 /Dest:https://myaccount2.blob.core.windows.net/mynewcontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 /Dest:https://myaccount2.blob.core.windows.net/mynewcontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
+```
 
 Beachten Sie, dass der Lesezugriff im georedundanten Speicher aktiviert sein muss.
 
 ### <a name="copy-single-blob-and-its-snapshots-across-storage-accounts"></a>Kopieren eines einzelnen Blobs und seiner Momentaufnahmen zwischen Storage-Konten
+
+```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt /Snapshot
+```
 
 Nach dem Kopiervorgang enthält der Zielcontainer den BLOB und seine Momentaufnahmen. Unter der Annahme, der BLOB im obigen Beispiel besitzt zwei Momentaufnahmen, enthält der Container folgenden BLOB und folgende Momentaufnahmen:
 
@@ -209,49 +258,77 @@ Standardmäßig kopiert AzCopy Daten zwischen zwei Speicherendpunkten auf asynch
 
 Die Option `/SyncCopy` gewährleistet, dass der jeweilige Kopiervorgang mit gleichmäßiger Geschwindigkeit erfolgt. Beim synchronen Kopieren lädt AzCopy die zu kopierenden Blobs aus der angegebenen Quelle in den lokalen Arbeitsspeicher herunter und dann in das Speicherziel des jeweiligen Blobs hoch.
 
-    AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
+```azcopy
+AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
+```
 
 Anders als beim asynchronen Kopieren kann es bei der Verwendung von `/SyncCopy` zu Zusatzkosten für den ausgehenden Datenverkehr kommen. Um dies zu vermeiden, sollten Sie diese Option in einer Azure VM verwenden, die sich in derselben Region wie das Storage-Quellkonto befindet.
 
 ## <a name="file-download"></a>Datei: Herunterladen
 ### <a name="download-single-file"></a>Herunterladen einer einzelnen Datei
-    AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+```
 
 Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, müssen Sie entweder den genauen Dateinamen angeben (**z.B. `abc.txt`), um eine einzelne Datei herunterzuladen, oder die Option `/S`, um alle Dateien in der Freigabe rekursiv herunterzuladen. Wenn Sie sowohl ein Dateimuster als auch die Option `/S` angeben, führt dies zu einem Fehler.
 
 ### <a name="download-all-files"></a>Herunterladen aller Dateien
-    AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myfolder /SourceKey:key /S
+
+```azcopy
+AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myfolder /SourceKey:key /S
+```
 
 Beachten Sie, dass leere Ordner nicht heruntergeladen werden.
 
 ## <a name="file-upload"></a>Datei: Hochladen
 ### <a name="upload-single-file"></a>Hochladen einer einzelnen Datei
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:abc.txt
+```
 
 ### <a name="upload-all-files"></a>Hochladen aller Dateien
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /S
+```
 
 Beachten Sie, dass leere Ordner nicht hochgeladen werden.
 
 ### <a name="upload-files-matching-specified-pattern"></a>Hochladen von Dateien, die einem angegebenen Muster entsprechen
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:ab* /S
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfileshare/ /DestKey:key /Pattern:ab* /S
+```
 
 ## <a name="file-copy"></a>Datei: Kopieren
 ### <a name="copy-across-file-shares"></a>Kopieren zwischen Dateifreigaben
-    AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
+
+```azcopy
+AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
+```
 
 ### <a name="copy-from-file-share-to-blob"></a>Kopieren aus einer Dateifreigabe zum Blob
-    AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
+
+```azcopy
+AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
+```
 
 Asynchrones Kopieren aus einem Dateispeicher in ein Seitenblob wird nicht unterstützt.
 
 ### <a name="copy-from-blob-to-file-share"></a>Kopieren vom Blob zur Dateifreigabe
-    AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
+
+```azcopy
+AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
+```
 
 ### <a name="synchronously-copy-files"></a>Synchrones Kopieren von Dateien
 Sie können die Option `/SyncCopy` angeben, um Daten synchron aus einem File Storage in einen anderen File Storage, aus einem File Storage in einen Blob Storage oder aus einem Blob Storage in einen File Storage zu kopieren. AzCopy lädt dazu die Quelldaten in den lokalen Arbeitsspeicher herunter, um diese dann wieder in das Ziel hochzuladen.
 
-    AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
+```azcopy
+AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S /SyncCopy
+```
 
 Der Standardblobtyp beim Kopieren aus File Storage in einen Blob Storage ist Blockblob. Benutzer können die Option `/BlobType:page` angeben, um den Zielblobtyp zu ändern.
 
@@ -259,7 +336,10 @@ Hinweis: Anders als beim asynchronen Kopieren kann es bei der Verwendung von `/S
 
 ## <a name="table-export"></a>Tabelle: Exportieren
 ### <a name="export-table"></a>Exportieren einer Tabelle
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key
+```
 
 AzCopy schreibt eine Manifestdatei in den angegebenen Zielordner. Die Manifestdatei wird beim Importvorgang verwendet, um die erforderlichen Datendateien zu finden, und um die Datenüberprüfung durchzuführen. Für die Manifestdatei wird standardmäßig die folgende Namenskonvention verwendet:
 
@@ -267,10 +347,15 @@ AzCopy schreibt eine Manifestdatei in den angegebenen Zielordner. Die Manifestda
 
 Ein Benutzer kann auch die Option `/Manifest:<manifest file name>` angeben, um den Namen der Manifestdatei festzulegen.
 
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /Manifest:abc.manifest
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /Manifest:abc.manifest
+```
 
 ### <a name="split-export-into-multiple-files"></a>Aufteilen eines Exports auf mehrere Dateien
-    AzCopy /Source:https://myaccount.table.core.windows.net/mytable/ /Dest:C:\myfolder /SourceKey:key /S /SplitSize:100
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/mytable/ /Dest:C:\myfolder /SourceKey:key /S /SplitSize:100
+```
 
 AzCopy verwendet einen *Volumeindex* in den Dateinamen für die Aufteilungsdaten zum Unterscheiden mehrerer Dateien. Der Volumeindex besteht aus zwei Teilen, einem *Partitionsschlüsselbereichs-Index* und einem *Aufteilungsdateiindex*. Beide Indizes sind nullbasiert.
 
@@ -286,19 +371,27 @@ Beachten Sie, dass der zulässige Mindestwert für die Option `/SplitSize` 32 M
 ### <a name="export-table-to-json-or-csv-data-file-format"></a>Exportieren einer Tabelle im JSON- oder CSV-Datendateiformat
 AzCopy exportiert Tabellen standardmäßig als JSON-Datendateien. Sie können mit der Option `/PayloadFormat:JSON|CSV` angeben, ob die Tabellen als JSON oder CSV exportiert werden sollen.
 
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PayloadFormat:CSV
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PayloadFormat:CSV
+```
 
 Wenn das CSV-Nutzlastformat angegeben wird, generiert AzCopy auch eine Schemadatei mit der Dateierweiterung `.schema.csv` für jede Datendatei.
 
 ### <a name="export-table-entities-concurrently"></a>Zeitgleiches Exportieren von Tabellenentitäten
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PKRS:"aa#bb"
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PKRS:"aa#bb"
+```
 
 AzCopy startet gleichzeitige Vorgänge zum Exportieren von Entitäten, wenn der Benutzer die Option `/PKRS`angibt. Jeder Vorgang exportiert einen Partitionsschlüsselbereich.
 
 Beachten Sie, dass die Anzahl gleichzeitiger Vorgänge auch durch die Option `/NC`gesteuert wird. AzCopy verwendet beim Kopieren von Tabellenentitäten die Anzahl der Core-Prozessoren als den Standardwert von `/NC`, selbst wenn `/NC` nicht angegeben wurde. Wenn der Benutzer die Option `/PKRS`angibt, verwendet AzCopy den kleineren der beiden Werte (Partitionsschlüsselbereich im Vergleich zu implizit oder explizit angegebenen gleichzeitigen Vorgängen), um die Anzahl der zu startenden gleichzeitigen Vorgänge zu bestimmen. Geben Sie Geben Sie `AzCopy /?:NC` an der Befehlszeile ein, um weitere Informationen zu erhalten.
 
 ### <a name="export-table-to-blob"></a>Exportieren einer Tabelle in ein Blob
-    AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:https://myaccount.blob.core.windows.net/mycontainer/ /SourceKey:key1 /Destkey:key2
+
+```azcopy
+AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:https://myaccount.blob.core.windows.net/mycontainer/ /SourceKey:key1 /Destkey:key2
+```
 
 AzCopy generiert eine JSON-Datendatei in den Blob-Container mit der folgenden Namenskonvention:
 
@@ -310,7 +403,10 @@ Beachten Sie, dass AzCopy beim Export von Tabellen in Blobs die Tabellenentität
 
 ## <a name="table-import"></a>Tabelle: Importieren
 ### <a name="import-table"></a>Importieren einer Tabelle
-    AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
+
+```azcopy
+AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.core.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
+```
 
 Die Option `/EntityOperation` gibt an, wie Entitäten in die Tabelle eingefügt werden. Mögliche Werte:
 
@@ -330,7 +426,9 @@ Angenommen, ein Blobcontainer enthält folgende Dateien: eine JSON-Datei, die ei
 
 Sie können den folgenden Befehl ausführen, um Entitäten mithilfe der Manifestdatei im Blobcontainer in eine Tabelle zu importieren:
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:https://myaccount.table.core.windows.net/mytable /SourceKey:key1 /DestKey:key2 /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:"InsertOrReplace"
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:https://myaccount.table.core.windows.net/mytable /SourceKey:key1 /DestKey:key2 /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:"InsertOrReplace"
+```
 
 ## <a name="other-azcopy-features"></a>Andere AzCopy-Funktionen
 ### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a>Nur Daten kopieren, die im Ziel nicht vorhanden sind.
@@ -342,10 +440,13 @@ Die Parameter `/XO` und `/XN` erlauben Ihnen, jeweils ältere oder neuere Quellr
 
     /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:http://myaccount.blob.core.windows.net/mycontainer1 /SourceKey:<sourcekey> /DestKey:<destkey> /S /XO /XN
 
-Hinweis: Dies wird nicht unterstützt, wenn es sich bei Quelle oder Ziel um eine Tabelle handelt.
+Beachten Sie, dass dies nicht unterstützt wird, wenn es sich bei Quelle oder Ziel um eine Tabelle handelt.
 
 ### <a name="use-a-response-file-to-specify-command-line-parameters"></a>Verwenden einer Antwortdatei zum Angeben von Befehlszeilenparametern
-    AzCopy /@:"C:\responsefiles\copyoperation.txt"
+
+```azcopy
+AzCopy /@:"C:\responsefiles\copyoperation.txt"
+```
 
 Sie können beliebige AzCopy-Befehlszeilenparameter in eine Antwortdatei einfügen. AzCopy verarbeitet die Parameter in der Datei ebenso wie bei der Angabe über die Befehlszeile, wobei mit den Inhalten der Datei ein direkter Austausch erfolgt.
 
@@ -385,18 +486,27 @@ Und eine Antwortdatei namens `options.txt` gibt die Optionen für AzCopy an:
 
 Verwenden Sie den folgenden Befehl, um AzCopy mit diesen Antwortdateien aufzurufen, die sich jeweils im Verzeichnis `C:\responsefiles`befinden:
 
-    AzCopy /@:"C:\responsefiles\source.txt" /@:"C:\responsefiles\dest.txt" /SourceKey:<sourcekey> /@:"C:\responsefiles\options.txt"   
+```azcopy
+AzCopy /@:"C:\responsefiles\source.txt" /@:"C:\responsefiles\dest.txt" /SourceKey:<sourcekey> /@:"C:\responsefiles\options.txt"   
+```
 
 AzCopy verarbeitet diesen Befehl auf dieselbe Weise wie bei der Angabe der einzelnen Parameter in der Befehlszeile:
 
-    AzCopy /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
+```azcopy
+AzCopy /Source:http://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:<sourcekey> /S /Y
+```
 
 ### <a name="specify-a-shared-access-signature-sas"></a>Angeben einer Shared Access Signature (SAS)
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceSAS:SAS1 /DestSAS:SAS2 /Pattern:abc.txt
+
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceSAS:SAS1 /DestSAS:SAS2 /Pattern:abc.txt
+```
 
 Sie können auch eine SAS in der Container-URI angeben:
 
-    AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1/?SourceSASToken /Dest:C:\myfolder /S
+```azcopy
+AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1/?SourceSASToken /Dest:C:\myfolder /S
+```
 
 ### <a name="journal-file-folder"></a>Journaldateiordner
 Sobald ein Befehl für AzCopy ausgeführt wird, prüft es, ob eine Journaldatei im Standardordner oder in einem Ordner vorhanden ist, den Sie über diese Option angegeben haben. Wenn die Journaldatei in keinem dieser Ordner vorhanden ist, behandelt AzCopy diesen Vorgang als neuen Vorgang und generiert somit eine neue Journaldatei.
@@ -405,30 +515,41 @@ Wenn die Journaldatei vorhanden ist, prüft AzCopy, ob die von Ihnen eingegebene
 
 Falls Sie den Standardspeicherort für die Journaldatei verwenden wollen:
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z
+```
 
 Wenn Sie die Option `/Z` auslassen oder die Option `/Z` ohne den Ordnerpfad angeben (wie oben gezeigt), dann erstellt AzCopy die Journaldatei am Standardspeicherort `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`. Wenn die Journaldatei bereits vorhanden ist, setzt AzCopy den Vorgang auf Basis der Journaldatei fort.
 
 Falls Sie einen benutzerdefinierten Speicherort für die Journaldatei angeben wollen:
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z:C:\journalfolder\
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Z:C:\journalfolder\
+```
 
 In diesem Beispiel wird die Journaldatei erstellt, sofern diese nicht bereits vorhanden ist. Wenn sie vorhanden ist, setzt AzCopy den Vorgang auf Basis der Journaldatei fort.
 
 Falls Sie einen AzCopy-Vorgang fortsetzen wollen:
 
-    AzCopy /Z:C:\journalfolder\
+```azcopy
+AzCopy /Z:C:\journalfolder\
+```
 
 In diesem Beispiel wird der letzte Vorgang fortgesetzt, der möglicherweise nicht abgeschlossen werden konnte.
 
 ### <a name="generate-a-log-file"></a>Generieren einer Protokolldatei
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V
+
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V
+```
 
 Wenn Sie die Option `/V` ohne einen Dateipfad zum ausführlichen Protokoll angeben, dann erstellt AzCopy die Protokolldatei am Standardspeicherort `%SystemDrive%\Users\%username%\AppData\Local\Microsoft\Azure\AzCopy`.
 
 Ansonsten können Sie eine Protokolldatei an einem benutzerdefinierten Speicherort erstellen:
 
-    AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V:C:\myfolder\azcopy1.log
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /V:C:\myfolder\azcopy1.log
+```
 
 Wenn Sie nach der Option `/V` einen relativen Pfad angeben, z. B. `/V:test/azcopy1.log`, dann wird das ausführliche Protokoll im aktuellen Arbeitsverzeichnis in einem Unterordner namens `test` erstellt.
 
@@ -438,11 +559,15 @@ Die Option `/NC` gibt die Anzahl der gleichzeitigen Kopiervorgänge an. AzCopy s
 ### <a name="run-azcopy-against-azure-storage-emulator"></a>AzCopy über Azure-Speicheremulator ausführen
 Sie können AzCopy über den [Azure-Speicheremulator](storage-use-emulator.md) ausführen. Für Blobs:
 
-    AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
+```azcopy
+AzCopy /Source:https://127.0.0.1:10000/myaccount/mycontainer/ /Dest:C:\myfolder /SourceKey:key /SourceType:Blob /S
+```
 
 und Tabellen:
 
-    AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
+```azcopy
+AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
+```
 
 ## <a name="azcopy-parameters"></a>Einführung in die Parameter
 Parameter für AzCopy werden unten beschrieben. Sie können auch einen der folgenden Befehle von der Befehlszeile für die Unterstützung in Bezug auf die Verwendung von AzCopy eingeben:
@@ -472,7 +597,7 @@ Wenn es sich bei der angegebenen Quelle um eine Azure-Dateifreigabe handelt, mü
 
 AzCopy beachtet für das Abgleichen die Groß-/Kleinschreibung, wenn die Quelle (/Source) ein BLOB-Container oder ein virtuelles BLOB-Verzeichnis ist. In allen anderen Fällen wird die Groß-/Kleinschreibung nicht beachtet.
 
-Wenn kein Dateimuster angegeben ist, ist das Standarddateimuster für einen Dateisystem-Speicherort auskennen.  oder ein leeres Präfix für einen Azure Storage-Speicherort. Das Angeben mehrerer Dateimuster wird nicht unterstützt.
+Wenn kein Dateimuster angegeben ist, ist das Standarddateimuster für einen Dateisystem-Speicherort *auskennen.* oder ein leeres Präfix für einen Azure Storage-Speicherort. Das Angeben mehrerer Dateimuster wird nicht unterstützt.
 
 **Gilt für:** Blobs, Dateien
 
@@ -783,6 +908,6 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

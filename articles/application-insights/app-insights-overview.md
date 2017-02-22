@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/01/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 8c5324742e42a1f82bb3031af4380fc5f0241d7f
-ms.openlocfilehash: c719a82e6c2ae46080811190f9ca7783414f38f4
+ms.sourcegitcommit: 3e9476f8edc4186af026495bc575b8203c35c619
+ms.openlocfilehash: b01de7724ec116e5e27369f7c0f852f82ab0348b
 
 
 ---
@@ -86,11 +86,11 @@ Application Insights ist einer der vielen in Microsoft Azure gehosteten Dienste,
 
 Es gibt mehrere Möglichkeiten für den Einstieg. Wählen Sie die Methode aus, die sich am besten für Sie eignet. Die anderen können später hinzugefügt werden.
 
-* **Zur Laufzeit: Instrumentieren Sie Ihre Web-App auf dem Server.**  Bei dieser Vorgehensweise sind keine Codeaktualisierungen erforderlich. Sie benötigen Administratorzugriff für Ihren Server.
+* **Zur Laufzeit: Instrumentieren Sie Ihre Web-App auf dem Server.** Bei dieser Vorgehensweise sind keine Codeaktualisierungen erforderlich. Sie benötigen Administratorzugriff für Ihren Server.
   * [**IIS (lokal oder auf einem virtuellen Computer)**](app-insights-monitor-performance-live-website-now.md)
   * [**Azure-Web-App oder -VM**](app-insights-monitor-performance-live-website-now.md)
   * [**J2EE**](app-insights-java-live.md)
-* **Bei der Entwicklung: Fügen Sie Ihrem Code Application Insights hinzu.**  Ermöglicht das Schreiben von benutzerdefinierter Telemetrie sowie das Instrumentieren von Back-End- und Desktop-Apps.
+* **Bei der Entwicklung: Fügen Sie Ihrem Code Application Insights hinzu.** Ermöglicht das Schreiben von benutzerdefinierter Telemetrie sowie das Instrumentieren von Back-End- und Desktop-Apps.
   * [Visual Studio](app-insights-asp-net.md) 2013, Update 2 oder höher.
   * Java in [Eclipse](app-insights-java-eclipse.md) oder [anderen Tools](app-insights-java-get-started.md)
   * [Node.js](app-insights-nodejs.md)
@@ -264,7 +264,7 @@ Live Metrics Stream zeigt Ihnen Ihre Anwendungsmetriken für den aktuellen Zeitp
 Im Gegensatz zum Metrik-Explorer zeigt Live Metrics Stream einen festen Satz von Metriken an. Die Daten werden nur so lange beibehalten, wie sie im Diagramm angezeigt werden. Anschließend werden sie verworfen.
 
 ### <a name="annotations"></a>Anmerkungen
-[Versionsanmerkungen](app-insights-annotations.md) in den Metrikdiagrammen geben an, wo Sie einen neuen Build bereitgestellt haben. Dank dieser Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch vom [Buildsystem von Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs) erstellt werden, und Sie können sie auch [mit PowerShell erstellen](#create-annotations-from-powershell).
+[Versionsanmerkungen](app-insights-annotations.md) in den Metrikdiagrammen geben an, wo Sie einen neuen Build bereitgestellt haben. Dank dieser Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch vom [Buildsystem von Visual Studio Team Services](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs) und von Webbereitstellungen in Visual Studio erstellt werden. Sie können sie auch [mit PowerShell erstellen](#create-annotations-from-powershell).
 
 ![Beispiel für Anmerkungen mit sichtbarer Korrelation mit Serverantwortzeit](./media/app-insights-overview/00.png)
 
@@ -329,7 +329,7 @@ Beginnen mit der Entwicklungszeitmethode mit:
 
 ## <a name="support-and-feedback"></a>Support und Feedback
 * Fragen und Probleme:
-  * [Problembehandlung][qna]
+  * [Behandeln von Problemen][qna]
   * [MSDN-Forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
   * [Developer Support anfordern](app-insights-get-dev-support.md)
@@ -369,6 +369,6 @@ Beginnen mit der Entwicklungszeitmethode mit:
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

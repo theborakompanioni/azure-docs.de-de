@@ -1,5 +1,5 @@
 ---
-title: 'Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server | Microsoft-Dokumentation'
+title: Erstellen und Bereitstellen eines Machine Learning-Modells mithilfe von SQL Server auf einer Azure-VM | Microsoft-Dokumentation
 description: Advanced Analytics Process and Technology in Aktion
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 01/29/2017
 ms.author: fashah;bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e9ceeecb3a603cd029117e1b7003aed16628f04f
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: a5e0a76a29a82d5364ee1adb5c912e76064dd1f9
 
 
 ---
@@ -48,7 +48,7 @@ Der eindeutige Schlüssel für die Zusammenführung von „trip\_data“ und „
 ## <a name="a-namemltasksaexamples-of-prediction-tasks"></a><a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 Wir werden drei Vorhersageprobleme formulieren, die auf *tip\_amount* basieren, nämlich:
 
-1. Binäre Klassifizierung: Vorhersagen, ob ein Trinkgeld bezahlt wurde. Ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
+1. Binäre Klassifizierung: Vorhersagen, ob ein Trinkgeld bezahlt wurde. Ein *tip\_amount* größer als&0; $ ist eine positive Probe, während ein *tip\_amount* gleich&0; $ eine negative Probe ist.
 2. Multi-Klassen-Klassifizierung: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
    
         Class 0 : tip_amount = $0
@@ -70,7 +70,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
 
 1. [Erstellen eines Speicherkontos](../storage/storage-create-storage-account.md)
 2. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md)
-3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und IPython Notebook fungiert.
+3. [Stellen Sie einen virtuellen Computer für Data Science bereit](machine-learning-data-science-setup-sql-server-virtual-machine.md), der als Server für SQL Server und ein IPython Notebook fungiert.
    
    > [!NOTE]
    > Die Beispielskripts und IPython Notebooks werden während der Einrichtung auf den virtuellen Computer für Data Science heruntergeladen. Nach Abschluss der VM-Nachinstallationsskripts finden Sie die Beispiele in der Dokumentbibliothek auf Ihrem virtuellen Computer:  
@@ -152,7 +152,7 @@ In dieser Übung führen Sie die folgenden Aktionen durch:
 
 Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:  
 
-1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen oder
+1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen, oder
 2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen Datenbanktabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul in Azure Machine Learning verwenden.
 
 In diesem Abschnitt speichern wir die endgültige Abfrage zum Extrahieren der Daten und zum Erstellen von Proben. Die zweite Methode wird im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook](#ipnb) beschrieben.
@@ -574,7 +574,7 @@ Ein typisches Trainingsexperiment umfasst Folgendes:
 
 Sie haben in dieser Übung bereits die Daten in SQL Server untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning entschieden. Für das Erstellen einer oder mehrerer Vorhersagemodelle gehen Sie folgendermaßen vor:
 
-1. Erfassen Sie die Daten in Azure Machine Learning mithilfe des [Import Data][import-data]-Moduls im Abschnitt **Data Input and Output**. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
+1. Erfassen Sie die Daten in Azure Machine Learning mithilfe des [Import Data][import-data]-Moduls im Abschnitt **Data Input and Output** (Datenein- und ausgabe). Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
    
     ![Azure Machine Learning: Importieren von Daten][17]
 2. Wählen Sie **Azure SQL-Datenbank** als **Datenquelle** im **Eigenschaften**bereich aus.
@@ -613,7 +613,7 @@ Azure Machine Learning versucht, ein Bewertungsexperiment basierend auf den Komp
 2. Ermitteln eines logischen **Eingabeports** für das erwartete Eingabedatenschema
 3. Ermitteln eines logischen **Ausgabeport** s für das erwartete Ausgabeschema für den Webdienst
 
-Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und **Scored Probabilities** mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
+Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** (Bewertete Beschriftungen) und die **Scored Probabilities** (Bewertete Wahrscheinlichkeiten) mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
 
 In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment. Wenn Sie die Bereitstellung fertig vorbereitet haben, klicken Sie auf der unteren Aktionsleiste auf die Schaltfläche **PUBLISH WEB SERVICE** .
 
@@ -656,6 +656,6 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Note
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

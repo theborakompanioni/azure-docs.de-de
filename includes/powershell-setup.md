@@ -1,25 +1,28 @@
 ---
 services: virtual-machines
-title: Setting up PowerShell
+title: Einrichten von PowerShell
 author: JoeDavies-MSFT
-solutions: ''
+solutions: 
 manager: timlt
 editor: tysonn
-
 ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: ''
+ms.tgt_pltfrm: 
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
+translationtype: Human Translation
+ms.sourcegitcommit: b3fd172d8dc468780d483821d7067c053e39968e
+ms.openlocfilehash: 19c704d965ff3e2fc9ac8c5b623aeb386cb0b974
+
 
 ---
-## Einrichten von PowerShell
+## <a name="setting-up-powershell"></a>Einrichten von PowerShell
 Bevor Sie Azure PowerShell verwenden können, müssen Sie die folgenden Schritte durchführen.
 
-### Überprüfen der PowerShell-Versionen
-Bevor Sie Windows PowerShell verwenden können, müssen Sie Windows PowerShell, Version 3.0 oder 4.0, installieren: Um die Version von Windows PowerShell zu finden, geben Sie diesen Befehl in eine Windows PowerShell-Eingabeaufforderung ein.
+### <a name="verify-powershell-versions"></a>Überprüfen der PowerShell-Versionen
+Bevor Sie Windows PowerShell verwenden können, müssen Sie Windows PowerShell, Version 3.0 oder 4.0, installieren: Um die Version von Windows PowerShell zu finden, geben Sie diesen Befehl in eine Windows PowerShell-Eingabeaufforderung ein.
 
     $PSVersionTable
 
@@ -35,9 +38,9 @@ Die Ausgabe sollte folgendermaßen aussehen:
     PSCompatibleVersions           {1.0, 2.0, 3.0}
     PSRemotingProtocolVersion      2.2
 
-Überprüfen Sie, dass der Wert der **PSVersion** 3.0 oder 4.0 ist. Informationen zum Installieren einer kompatiblen Version finden Sie unter [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+Überprüfen Sie, dass der Wert der **PSVersion** 3.0 oder 4.0 ist. Informationen zum Installieren einer kompatiblen Version finden Sie unter [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) oder [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
 
-Sie benötigen darüber hinaus Azure PowerShell, Version 0.8.0 oder höher. Sie können die von Ihnen installierte Azure Power Shell-Version mit diesem Befehl über die Azure PowerShell-Eingabeaufforderung prüfen.
+Sie benötigen darüber hinaus Azure PowerShell, Version 0.8.0 oder höher. Sie können die von Ihnen installierte Azure Power Shell-Version mit diesem Befehl über die Azure PowerShell-Eingabeaufforderung prüfen.
 
     Get-Module azure | format-table version
 
@@ -47,9 +50,9 @@ Die Ausgabe sollte folgendermaßen aussehen:
     -------
     0.8.16.1
 
-Anweisungen und einen Link zur neuesten Version finden Sie unter [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](../articles/powershell-install-configure.md).
+Anweisungen und einen Link zur neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-### Festlegen Ihres Azure-Kontos und -Abonnements
+### <a name="set-your-azure-account-and-subscription"></a>Festlegen Ihres Azure-Kontos und -Abonnements
 Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
 Öffnen Sie eine Azure PowerShell-Eingabeaufforderung und melden Sie sich mit diesem Befehl bei Azure an.
@@ -78,6 +81,11 @@ Sie können das aktuelle Azure-Abonnement durch Ausführen dieser Befehle in der
     $subscr="<SubscriptionName from the display of Get-AzureSubscription>"
     Select-AzureSubscription -SubscriptionName $subscr -Current    
 
-Weitere Informationen zu Azure-Abonnements und -Konten finden Sie unter [Verbindung mit Ihrem Abonnement](../articles/powershell-install-configure.md#Connect).
+Weitere Informationen zu Azure-Abonnements und -Konten finden Sie unter [Verbindung mit Ihrem Abonnement](/powershell/azureps-cmdlets-docs#Connect).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Jan17_HO3-->
+
+

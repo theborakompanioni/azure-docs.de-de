@@ -79,6 +79,6 @@ Der Burstmodus verlängert leicht die Akkulaufzeit, wirkt sich jedoch auf den En
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

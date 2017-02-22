@@ -3,7 +3,7 @@ title: Verwenden von Azure CDN mit CORS | Microsoft Docs
 description: "Erfahren Sie, wie Sie das Azure Content Delivery Network (CDN), mit Cross-Origin Resource Sharing (Ressourcenfreigabe zwischen verschiedenen Ursprüngen; CORS) verwendet wird."
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
@@ -12,33 +12,47 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e4f7e947ab3e9ee67224edc9cad07d82524af2b7
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
 
 
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
-CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](http://www.w3.org/Security/wiki/Same_Origin_Policy)bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern.  Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen.  CORS bietet eine sichere Methode, um einer Domäne (der Ursprungsdomäne) den Aufruf von APIs in einer anderen Domäne zu erlauben.
+CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](http://www.w3.org/Security/wiki/Same_Origin_Policy)bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern.  Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen.  CORS bietet eine sichere Methode, um einem Ursprung (der Ursprungsdomäne) das Aufrufen von APIs in einem anderen Ursprung zu ermöglichen.
 
 ## <a name="how-it-works"></a>So funktioniert's
-1. Der Browser sendet die OPTIONS-Anforderung mit einem **Ursprung** -HTTP-Header. Der Wert dieses Headers ist die Domäne, die der übergeordnete Seite dient. Wenn eine Seite aus „https://www.contoso.com“ versucht, auf die Benutzerdaten in der fabrikam.com-Domäne zuzugreifen, würde der folgende Anforderungsheader an fabrikam.com gesendet: 
-   
+Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplexe Anforderungen*.
+
+### <a name="for-simple-requests"></a>Für einfache Anforderungen gilt Folgendes:
+
+1. Der Browser sendet die CORS-Anforderung mit einem zusätzlichen HTTP-Anforderungsheader vom Typ **Ursprung**. Der Wert dieses Headers ist der Ursprung, der die übergeordneten Seite bereitgestellt hat. Dabei handelt es sich um eine Kombination aus *Protokoll*, *Domäne* und *Port*.  Wenn eine Seite aus „https://www.contoso.com“ versucht, auf die Benutzerdaten im Ursprung „fabrikam.com“ zuzugreifen, wird der folgende Anforderungsheader an „fabrikam.com“ gesendet:
+
    `Origin: https://www.contoso.com`
-2. Der Server reagiert möglicherweise mit Folgendem:
-   
-   * Ein **Access-Control-Allow-Origin** -Header in der Antwort gibt an, welche Ursprungswebsites zulässig sind. Beispiel:
-     
+
+2. Der Server reagiert kann wie folgt reagieren:
+
+   * Mit einem **Access-Control-Allow-Origin**-Header in der Antwort, der die zulässige Ursprungswebsites angibt. Beispiel:
+
      `Access-Control-Allow-Origin: https://www.contoso.com`
-   * Eine Fehlerseite wird angezeigt, wenn der Server die Anforderungen zwischen verschiedenen Ursprüngen nicht zulässt.
-   * Ein **Access-Control-Allow-Origin** -Header mit einem Platzhalter, der alle Domänen ermöglicht:
-     
+
+   * Mit einem HTTP-Fehlercode (etwa 403), falls der Server die ursprungsübergreifende Anforderung nach der Überprüfung des Origin-Headers nicht zulässt.
+
+   * Mit einem **Access-Control-Allow-Origin**-Header mit einem Platzhalter, der alle Ursprünge zulässt:
+
      `Access-Control-Allow-Origin: *`
 
-Für komplexe HTTP-Anforderungen besteht eine „Preflight“-Anforderung, die als erstes ausgeführt wird, um festzustellen, ob sie berichtigt ist, bevor die gesamte Anforderung gesendet wird.
+### <a name="for-complex-requests"></a>Für komplexe Anforderungen gilt Folgendes:
+
+Eine komplexe-Anforderung ist eine CORS-Anforderung, bei der der Browser vor dem Senden der eigentlichen CORS-Anforderung eine *Preflight-Anforderung* (also einen Vorabtest) senden muss. Die Preflight-Anforderung ist eine `OPTIONS`-Anforderung an die gleiche URL und fordert vom Server eine Berechtigung zum Ausführen der ursprünglichen CORS-Anforderung an.
+
+> [!TIP]
+> Weitere Informationen zu CORS-Abläufen und häufigen Problemen finden Sie im [CORS-Leitfaden für REST-APIs](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+>
+>
 
 ## <a name="wildcard-or-single-origin-scenarios"></a>Platzhalter oder Szenarien mit nur einem Ursprung
 CORS für Azure CDN funktioniert automatisch ohne zusätzliche Konfiguration, wenn der **Access-Control-Allow-Origin** -Header auf Platzhalter (*) oder einen einzelnen Ursprung festgelegt ist.  Das CDN speichert die erste Antwort zwischen und nachfolgende Anforderungen verwenden den gleichen Header.
@@ -46,7 +60,7 @@ CORS für Azure CDN funktioniert automatisch ohne zusätzliche Konfiguration, we
 Wenn Anforderungen schon an CDN, gesendet wurden, bevor CORS auf den Ursprung konfiguriert wurde, müssen Sie den Inhalt im Inhalt Ihres Endgeräts entfernen, um den Inhalt mit dem **Access-Control-Allow-Origin** -Header erneut zu laden.
 
 ## <a name="multiple-origin-scenarios"></a>Szenarien mit mehreren Ursprüngen
-Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird es etwas komplizierter. Das Problem tritt auf, wenn CDN den **Access-Control-Allow-Origin** -Header für den ersten CORS-Ursprung zwischenspeichert.  Wenn ein anderer CORS-Ursprung eine nachfolgende Anforderung erstellt, stellt das CDN den zwischengespeicherten **Access-Control-Allow-Origin** -Header bereit, der jedoch abweicht.  Es gibt mehrere Möglichkeiten, dies zu korrigieren:
+Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird es etwas komplizierter. Das Problem tritt auf, wenn CDN den **Access-Control-Allow-Origin** -Header für den ersten CORS-Ursprung zwischenspeichert.  Bei einer Folgeanforderung durch einen anderen CORS-Ursprung stellt das CDN den zwischengespeicherten **Access-Control-Allow-Origin**-Header bereit, dieser stimmt jedoch nicht überein.  Es gibt mehrere Möglichkeiten, dies zu korrigieren:
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium von Verizon
 Die beste Möglichkeit ist die Verwendung von **Azure CDN Premium von Verizon**, wodurch erweiterte Funktionen geboten werden. 
@@ -85,6 +99,6 @@ Auf Azure CDN-Standardprofilen ist der einzige Mechanismus, um mehrere Ursprüng
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

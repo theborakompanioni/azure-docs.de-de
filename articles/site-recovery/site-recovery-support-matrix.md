@@ -15,8 +15,8 @@ ms.workload: storage-backup-recovery
 ms.date: 12/04/2016
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 0de569ccf12f3ef428960fe8bb745eb7512c80ce
-ms.openlocfilehash: f81088bcc28e49091f45cdcb1207b30aeb3b70f2
+ms.sourcegitcommit: 1a2ea0753d12915075c055f9983773618bf6777d
+ms.openlocfilehash: 85c6a2296a4487ae549321d3ff07129bcbab5adf
 
 
 ---
@@ -189,7 +189,7 @@ Multipfad (MPIO) | Ja | Ja
 **Speicher (Gast-VM/physische Server)** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
 VMDK | Ja | NA
-VHD/VHDX | NA | Ja (bis zu 64 Datenträger)
+VHD/VHDX | NA | Ja (bis zu 16 Datenträger)
 Gen 2-VM | NA | Ja
 Freigegebener Clusterdatenträger | Ja  | Nein
 Verschlüsselter Datenträger | Nein | Nein
@@ -265,6 +265,6 @@ Sie können Site Recovery zum Replizieren virtueller Computer und physischer Ser
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO2-->
 
 

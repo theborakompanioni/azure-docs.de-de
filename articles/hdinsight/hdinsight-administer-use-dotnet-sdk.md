@@ -13,11 +13,11 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 11/15/2016
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: aa0f2dd07ffa8437ff224c278135744202adcd73
+ms.sourcegitcommit: ec710057c2016175f65578a9d6884f7273b65169
+ms.openlocfilehash: f2a762ad64feeef91802429cdd959cec67b73473
 
 
 ---
@@ -33,7 +33,8 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 ## <a name="connect-to-azure-hdinsight"></a>Verbinden mit Azure HDInsight
-Sie müssen die folgenden Nuget-Pakete installieren:
+
+Sie benötigen die folgenden NuGet-Pakete:
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
     Install-Package Microsoft.Azure.Management.ResourceManager -Pre
@@ -79,10 +80,6 @@ Das folgende Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure her
             /// <summary>
             /// Authenticate to an Azure subscription and retrieve an authentication token
             /// </summary>
-            /// <param name="TenantId">The AAD tenant ID</param>
-            /// <param name="ClientId">The AAD client ID</param>
-            /// <param name="SubscriptionId">The Azure subscription ID</param>
-            /// <returns></returns>
             static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + TenantId);
@@ -167,14 +164,14 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
     
     Die Storm-Webbenutzeroberfläche ist für den HDInsight-Cluster verfügbar:
     
-    ![HDInsight Storm-Skalierung ausgleichen](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
+    ![Ausgleichen der HDInsight Storm-Skalierung](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.storm.rebalance.png)
     
     Es folgt ein Beispiel, wie die Storm-Topologie mithilfe des CLI-Befehls neu ausgeglichen werden kann:
     
-    ## <a name="reconfigure-the-topology-mytopology-to-use-5-worker-processes"></a>Konfigurieren Sie die Topology „mytopology“ so neu, dass sie fünf Workerprozesse verwendet,
-    ## <a name="the-spout-blue-spout-to-use-3-executors-and"></a>das Spout „blue-spout“ so, dass es drei Executors verwendet, und
-    ## <a name="the-bolt-yellow-bolt-to-use-10-executors"></a>das Bolt „yellow-bolt“ so, dass es zehn Executors verwendet.
-      $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+        ## Reconfigure the topology "mytopology" to use 5 worker processes,
+        ## the spout "blue-spout" to use 3 executors, and
+        ## the bolt "yellow-bolt" to use 10 executors
+        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
 Der folgende Codeausschnitt veranschaulicht die synchrone oder asynchrone Größenänderung eines Clusters:
 
@@ -254,13 +251,13 @@ Weitere Informationen finden Sie unter [Verwenden von Sqoop mit HDInsight](hdins
 Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure-Blobspeicher
-Anweisungen hierzu finden Sie unter [Hochladen von Daten in HDInsight][hdinsight-upload-data].
+Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Referenzdokumentation zum HDInsight .NET SDK](https://msdn.microsoft.com/library/mt271028.aspx)
 * [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
-* [Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle][hdinsight-admin-cli]
-* [Erstellen Windows-basierter Hadoop-Cluster in HDInsight][hdinsight-provision]
+* [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
+* [Erstellen von HDInsight-Clustern][hdinsight-provision]
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
 
@@ -285,6 +282,6 @@ Anweisungen hierzu finden Sie unter [Hochladen von Daten in HDInsight][hdinsight
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

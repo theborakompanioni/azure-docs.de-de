@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/20/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 5f398dbc4390e300df3647093339ead6f927a833
+ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
+ms.openlocfilehash: a918737c762fe93cd8472f51dfdd945ceff6c877
 
 
 ---
 # <a name="add-hive-libraries-during-hdinsight-cluster-creation"></a>Hinzufügen von Hive-Bibliotheken während der Erstellung des HDInsight-Clusters
+
 Wenn Sie über Bibliotheken verfügen, die Sie häufig mit Hive in HDInsight verwenden, enthält dieses Dokument Informationen zur Verwendung einer Skriptaktion zum Vorabladen der Bibliotheken während der Clustererstellung. Auf diese Weise sind die Bibliotheken in Hive global verfügbar (sodass [JAR-DATEIEN HINZUFÜGEN](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) nicht verwendet werden muss, um sie zu laden.)
 
 ## <a name="how-it-works"></a>So funktioniert's
+
 Wenn Sie einen Cluster erstellen, können Sie optional eine Skriptaktion angeben, die ein Skript auf den Clusterknoten ausführt, während diese erstellt werden. Das Skript in diesem Dokument akzeptiert einen einzelnen Parameter, nämlich den WASB-Speicherort mit den (als JAR-Dateien gespeichert) Bibliotheken, die vorab geladen werden.
 
 Während der Clustererstellung zählt das Skript die Dateien auf, kopiert diese auf Haupt- und Workerknoten in das Verzeichnis `/usr/lib/customhivelibs/` und fügt sie dann der `hive.aux.jars.path`-Eigenschaft in der Datei `core-site.xml` hinzu. Bei Linux-basierten Clustern aktualisiert es außerdem die Datei `hive-env.sh` mit dem Speicherort der Dateien.
@@ -42,6 +44,9 @@ Während der Clustererstellung zählt das Skript die Dateien auf, kopiert diese 
 Bei **Linux-basierten Clustern**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
 Bei **Windows-basierten Clustern**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
+
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 **Anforderungen**
 
@@ -89,6 +94,6 @@ In diesem Dokument haben Sie gelernt, wie Hive-Bibliotheken in JAR-Dateien einem
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9d3c60eb630816698dc0c0bd3b4be8da5fec13eb
+ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
+ms.openlocfilehash: cb649d3f6ead507582f587d112e43a89e659c757
 
 
 ---
@@ -30,7 +30,10 @@ Vertikal partitionierte Datenbanken verwenden verschiedene Sätze von Tabellen i
 * ALTER ANY EXTERNAL DATA SOURCE-Berechtigungen sind erforderlich, um auf die zu Grunde liegende Datenquelle zu verweisen.
 
 ## <a name="overview"></a>Übersicht
-**HINWEIS**: Im Gegensatz zur horizontalen Partitionierung hängen diese DDL-Anweisungen nicht von der Festlegung einer Datenebene mit einer Shardzuordnung über die Clientbibliothek für elastische Datenbanken ab.
+
+> [!NOTE]
+> Im Gegensatz zur horizontalen Partitionierung hängen diese DDL-Anweisungen nicht von der Festlegung einer Datenebene mit einer Shardzuordnung über die Clientbibliothek für elastische Datenbanken ab.
+>
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -45,7 +48,9 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
     SECRET = '<password>'
     [;]
 
-**Hinweis**: Stellen Sie sicher, dass *<username>* kein *"@servername"*-Suffix enthält. 
+> [!NOTE]
+> Stellen Sie sicher, dass `<username>` kein **"@servername"**-Suffix enthält. 
+>
 
 ## <a name="create-external-data-sources"></a>Erstellen externer Datenquellen
 Syntax:
@@ -58,7 +63,9 @@ Syntax:
                 CREDENTIAL = <credential_name> 
                 ) [;] 
 
-**Wichtig**: Der TYPE-Parameter muss auf **RDBMS** festgelegt werden. 
+> [!IMPORTANT]
+> Der TYPE-Parameter muss auf **RDBMS** festgelegt werden. 
+>
 
 ### <a name="example"></a>Beispiel
 Das folgende Beispiel veranschaulicht die Verwendung der CREATE-Anweisung für externe Datenquellen. 
@@ -185,6 +192,6 @@ Informationen zum Abfragen horizontal partitionierter Datenbanken (auch Shartdat
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

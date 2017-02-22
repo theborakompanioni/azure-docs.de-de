@@ -80,6 +80,6 @@ fetch(url, { headers: headers })
 Der Abruf ist als [npm-Paket](https://www.npmjs.com/package/whatwg-fetch) oder als Browserdownload über [CDNJS](https://cdnjs.com/libraries/fetch) verfügbar. Sie können auch JQuery oder eine andere AJAX-API zum Abrufen der Informationen verwenden.  Daten werden als JSON-Objekt empfangen.
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

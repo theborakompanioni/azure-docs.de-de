@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3fc0c959f4e0af62a0bcde1b38caa37d8246b9ac
+ms.sourcegitcommit: 44a756ba437b2ce9f625017998d9ae7d09acae1f
+ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
 
 
 ---
@@ -31,7 +31,7 @@ Connectors sind gehostete Dienste, auf die Sie im Rahmen einer Logik-App zugreif
 
 Connector-Aktionen und -Trigger verfügen jeweils über einen eigenen Satz an konfigurierbaren Eigenschaften.  Über die Informationsschaltflächen erhalten Sie weitere Informationen zur jeweiligen Aktion. Alternativ können Sie sich auch in der Referenzdokumentation [ausführlicher informieren](apis-list.md).
 
-Falls Sie eine Dienst- oder API-Integration implementieren möchten und es sich bei dem Dienst oder der API noch nicht um einen Connector handelt, können Sie Logik-Apps auch durch einen [benutzerdefinierten Connector](../app-service-logic/app-service-logic-create-api-app.md) erweitern oder den Dienst direkt über ein Protokoll wie HTTP aufrufen.
+Falls Sie eine Dienst- oder API-Integration implementieren möchten und es sich bei dem Dienst oder der API noch nicht um einen Connector handelt, können Sie Logik-Apps auch durch einen [benutzerdefinierten Connector](../logic-apps/logic-apps-create-api-app.md) erweitern oder den Dienst direkt über ein Protokoll wie HTTP aufrufen.
 
 ## <a name="triggers"></a>Trigger
 Einige Connectors verfügen über einen Trigger. Das bedeutet, dass ein Ereignis dieses Connectors eine Logik-App auslöst und im Rahmen des Triggers ggf. Daten übergibt.  Ein Trigger ist immer der erste Schritt in einer Logik-App.  Beispiele für beliebte Trigger wären etwa:
@@ -56,9 +56,9 @@ Die meisten Connectors können erst nach dem Konfigurieren einer *Verbindung* ve
 Verbindungen können in Azure angezeigt und verwaltet werden, indem Sie auf **Durchsuchen** klicken und **API Connections** (API-Verbindungen) auswählen.  Über die Ressource „API Connections“ (API-Verbindungen) können Sie sämtliche von Ihnen erstellte Verbindungen anzeigen, bearbeiten, aktualisieren und erneut autorisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen Ihrer ersten Logik-App](../app-service-logic/app-service-logic-create-a-logic-app.md)
-* [Kennenlernen allgemeiner Szenarien und Beispiele für Logik-Apps](../app-service-logic/app-service-logic-examples-and-scenarios.md)
-* [Erste Schritte mit Triggern und Aktionen für die Unternehmensintegration](../app-service-logic/app-service-logic-enterprise-integration-overview.md)
+* [Erstellen Ihrer ersten Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
+* [Kennenlernen allgemeiner Szenarien und Beispiele für Logik-Apps](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [Erste Schritte mit Triggern und Aktionen für die Unternehmensintegration](../logic-apps/logic-apps-enterprise-integration-overview.md)
 
 <!--Image References -->
 [1]: ./media/connectors-overview/addAction.png
@@ -66,6 +66,6 @@ Verbindungen können in Azure angezeigt und verwaltet werden, indem Sie auf **Du
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

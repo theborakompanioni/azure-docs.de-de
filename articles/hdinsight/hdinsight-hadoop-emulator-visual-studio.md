@@ -1,5 +1,5 @@
 ---
-title: "Verwenden der Microsoft Azure Data Lake-Tools für Visual Studio mit der Hortonworks Sandbox | Microsoft Docs"
+title: "Azure Data Lake Tools für Visual Studio mit Hortonworks Sandbox | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie die Azure Data Lake-Tools für Visual Studio mit der Hortonworks Sandbox verwenden (Ausführung auf einer lokalen VM). Mit diesen Tools können Sie Hive- und Pig-Aufträge in der Sandbox erstellen und ausführen und die Auftragsausgabe und den Verlauf anzeigen."
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/15/2016
+ms.date: 02/10/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 4b0572d8fb3b81fd4bd2a34794141f137b50eed0
-ms.openlocfilehash: 42f53e0c725ed7744c2e3d919c960c42e4cebc0c
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: a1e6216647b7401183ab2f47f72aaee1f80ccee0
 
 
 ---
@@ -43,6 +43,7 @@ Stellen Sie sicher, dass die Hortonworks Sandbox ausgeführt wird. Führen Sie a
 ## <a name="connect-the-tools-to-the-sandbox"></a>Verbinden der Tools mit der Sandbox
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Ansicht** und dann **Server-Explorer**.
+
 2. Klicken Sie im **Server-Explorer** mit der rechten Maustaste auf den Eintrag **HDInsight**, und wählen Sie dann die Option **Verbinden mit HDInsight Emulator**.
 
     ![Verbinden mit HDInsight Emulator](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
@@ -209,6 +210,6 @@ Sie können die Tabelle dann mit einem Formular erstellen. Der unformatierte Hiv
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
-ms.author: sdanie
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: cbd2c3e915b93340c1a1478c09b23480c4565a98
+ms.sourcegitcommit: 13431648e87d085161ad278dc991d49f7872be34
+ms.openlocfilehash: 60213f885020a5ba36d6ada0812f755e06b3c48b
 
 
 ---
@@ -43,17 +43,17 @@ Die neue Kopfzeile wird jetzt auf allen Seiten im Entwicklerportal angezeigt.
 > 
 
 ## <a name="change-headers-styling"> </a>Ändern des Stils der Kopfzeilen
-Farben, Schriftarten, Schriftgrößen, Abstände und andere stilverwandte Elemente aller Portalseiten werden durch Stilregeln definiert. Aktivieren Sie zum Bearbeiten der Stile den Stil-Editor, indem Sie im Menü **Entwicklerportal** des Herausgeberportals auf **Darstellung** und dann auf **Anpassung beginnen** klicken.
+Farben, Schriftarten, Schriftgrößen, Abstände und andere stilverwandte Elemente aller Portalseiten werden durch Stilregeln definiert. Wenn Sie die Stile bearbeiten möchten, öffnen Sie links im **Entwicklerportal** die Anpassungssymbolleiste, indem Sie auf das Anpassungssymbol zeigen, und wählen Sie dann auf der Symbolleiste die Option „Stile“ aus.
 
-Ihr Browser wechselt zu einer versteckten Seite im Entwicklerportal mit Beispielen für die Inhalte unter Anwendung aller Stilregeln, die irgendwo auf der Website verwendet werden. Um den Stileditor zu öffnen, bewegen Sie Ihren Mauszeiger über die dünne vertikale graue Linie ganz links auf der Seite. Die Editor-Symbolleiste sollte angezeigt werden.
+![Schaltfläche der Anpassungssymbolleiste][api-management-customization-toolbar-button]
+
+Stilregeln können grundsätzlich auf zwei Arten bearbeitet werden: Sie können sich entweder die standardmäßig angezeigte Liste mit allen verwendeten Stilregeln ansehen und einen Stil nach Bedarf ändern oder die Option **Select an element on the page** (Element auf der Seite auswählen) auswählen und dann auf der Seite auf eine beliebige Stelle klicken, um nur die Stile für das entsprechende Element anzuzeigen.
+
+In diesem Abschnitt werden wir nur den Stil für die Kopfzeile ändern. Klicken Sie auf der Symbolleiste für den Stil-Editor auf die Option **Select an element on the page** (Element auf der Seite auswählen). 
 
 ![Anpassungssymbolleiste][api-management-customization-toolbar]
 
-Es gibt zwei Hauptmodi der Bearbeitung von Stilregeln: Mit **Alle Regeln bearbeiten** wird eine Liste sämtlicher an beliebiger Stelle verwendeten Stilregeln angezeigt. Mit **Element auswählen** können Sie hingegen ein Element auf der aktuellen Seite auswählen, um nur Stile für dieses Element anzuzeigen.
-
-In diesem Abschnitt werden wir nur den Stil für die Kopfzeile ändern. Klicken Sie in der Symbolleiste des Stil-Editors auf **Element auswählen** und anschließend auf **Anzupassendes Element auswählen**. Die Elemente werden nun hervorgehoben, wenn Sie den Mauszeiger darüber bewegen, um das Element anzugeben, dessen Stile Sie bearbeiten, wenn Sie darauf klicken. Bewegen Sie die Maus über den Text mit dem Firmennamen in der Kopfzeile ("Fabrikam-Entwicklerportal", wenn Sie die Anweisungen im vorigen Abschnitt ausgeführt haben), und klicken Sie darauf. Eine Liste mit benannten und kategorisierten Stilregeln wird daraufhin im Stil-Editor angezeigt.
-
-Jede Regel steht für eine Stileigenschaft des ausgewählten Elements. Der ausgewählte Kopfzeilentext hat z. B. den Schriftgrad @font-size-h1, und der Name der Schriftart mit Alternativen befindet sich in @headings-font-family.
+Die Elemente werden nun hervorgehoben, wenn Sie den Mauszeiger darüber bewegen, um das Element anzugeben, dessen Stile Sie bearbeiten, wenn Sie darauf klicken. Bewegen Sie die Maus über den Text mit dem Firmennamen in der Kopfzeile ("Fabrikam-Entwicklerportal", wenn Sie die Anweisungen im vorigen Abschnitt ausgeführt haben), und klicken Sie darauf. Eine Liste mit benannten und kategorisierten Stilregeln wird daraufhin im Stil-Editor angezeigt. Jede Regel steht für eine Stileigenschaft des ausgewählten Elements. Für den ausgewählten Kopfzeilentext befindet sich der Schriftgrad beispielsweise in @font-size-h1 und der Name der Schriftart mit Alternativen in @headings-font-family.
 
 > Falls Sie mit [Bootstrap][bootstrap] vertraut sind, werden Sie feststellen, dass es sich bei diesen Regeln um [LESS-Variablen][LESS variables] aus dem Bootstrap-Design für das Entwicklerportal handelt.
 > 
@@ -63,7 +63,7 @@ Jede Regel steht für eine Stileigenschaft des ausgewählten Elements. Der ausge
 
 ![Farbauswahl][api-management-customization-toolbar-color-picker]
 
-Wenn Sie die Änderungen an den Stilen des ausgewählten Elements abgeschlossen haben, klicken Sie auf **Vorschau der Änderungen anzeigen** , um das Resultat auf dem Bildschirm anzuzeigen. Zu diesem Zeitpunkt sind die Änderungen nur für Administratoren sichtbar. Um die Änderungen für alle Benutzer sichtbar zu machen, klicken Sie im Stil-Editor auf **Veröffentlichen** , und bestätigen Sie die Änderungen.
+Vorgenommene Änderungen werden als Echtzeitvorschau angezeigt, sind jedoch nur für Administratoren sichtbar. Um die Änderungen für alle Benutzer sichtbar zu machen, klicken Sie im Stil-Editor auf **Veröffentlichen** , und bestätigen Sie die Änderungen.
 
 ![Veröffentlichungsmenü][api-management-customization-toolbar-publish-form]
 
@@ -96,6 +96,7 @@ Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf d
 
 [api-management-management-console]: ./media/api-management-customize-portal/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-customize-portal/api-management-widgets-header.png
+[api-management-customization-toolbar-button]: ./media/api-management-customize-portal/api-management-customization-toolbar-button.png
 [api-management-customization-toolbar]: ./media/api-management-customize-portal/api-management-customization-toolbar.png
 [api-management-customization-toolbar-color-picker]: ./media/api-management-customize-portal/api-management-customization-toolbar-color-picker.png
 [api-management-customization-toolbar-publish-form]: ./media/api-management-customize-portal/api-management-customization-toolbar-publish-form.png
@@ -107,6 +108,6 @@ Klicken Sie auf die **Willkommensseite**, um den Inhalt zu bearbeiten, der auf d
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

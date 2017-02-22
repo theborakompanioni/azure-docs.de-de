@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 169366535ed15d40de22bf71f444df7569562c8a
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 641fe31fc4b160fe5f0628df717006fb540394b9
 
 
 ---
@@ -60,7 +60,7 @@ Wenn Sie den Domänennamen **\*.azurewebsites.net** nutzen, der für Ihre App Se
 Aktivieren von [HTTPS](https://en.wikipedia.org/wiki/HTTPS) kann gegen MITM-Angriffe auf die Kommunikation zwischen Ihrer Anwendung und deren Benutzern schützen.
 
 ## <a name="secure-data-tier"></a>Sichern der Datenebene
-App Service ist mit SQL-Datenbank so vernetzt, dass alle Verbindungszeichenfolgen durchgehend verschlüsselt werden. Nur auf dem virtuellen Computer, auf dem die App ausgeführt wird, kann diese entschlüsselt werden *und* auch nur wenn die Anwendung ausgeführt wird. Darüber hinaus enthält Azure SQL-Datenbank viele Sicherheitsfeatures zum Schutz Ihrer Anwendungsdaten vor Bedrohungen aus dem Internet, darunter [Verschlüsselung gespeicherter Daten](https://msdn.microsoft.com/library/dn948096.aspx), [durchgehende Verschlüsselung](https://msdn.microsoft.com/library/mt163865.aspx), [dynamische Datenmaskierung](../sql-database/sql-database-dynamic-data-masking-get-started.md) und [Bedrohungserkennung](../sql-database/sql-database-threat-detection-get-started.md). Wenn für Sie Anforderungen aufgrund vertraulicher Daten oder der Compliance gelten, finden Sie unter [Sichern Ihrer SQL-Datenbank](../sql-database/sql-database-security.md) weitere Informationen zum Schutz Ihrer Daten.
+App Service ist mit SQL-Datenbank so vernetzt, dass alle Verbindungszeichenfolgen durchgehend verschlüsselt werden. Nur auf dem virtuellen Computer, auf dem die App ausgeführt wird, kann diese entschlüsselt werden *und* auch nur wenn die Anwendung ausgeführt wird. Darüber hinaus enthält Azure SQL-Datenbank viele Sicherheitsfeatures zum Schutz Ihrer Anwendungsdaten vor Bedrohungen aus dem Internet, darunter [Verschlüsselung gespeicherter Daten](https://msdn.microsoft.com/library/dn948096.aspx), [durchgehende Verschlüsselung](https://msdn.microsoft.com/library/mt163865.aspx), [dynamische Datenmaskierung](../sql-database/sql-database-dynamic-data-masking-get-started.md) und [Bedrohungserkennung](../sql-database/sql-database-threat-detection.md). Wenn für Sie Anforderungen aufgrund vertraulicher Daten oder der Compliance gelten, finden Sie unter [Sichern Ihrer SQL-Datenbank](../sql-database/sql-database-security-overview.md) weitere Informationen zum Schutz Ihrer Daten.
 
 Wenn Sie eine Drittanbieter-Datenbank, wie z. B. ClearDB verwenden, sollten Sie sich an die vom Provider bereitgestellte Dokumentation zum Thema bewährte Sicherheitsmethoden halten.  
 
@@ -120,6 +120,6 @@ Weitere Informationen zum Protokollieren von Informationen für App Service-Apps
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

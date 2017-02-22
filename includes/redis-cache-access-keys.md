@@ -1,4 +1,4 @@
-Zum Herstellen der Verbindung mit einer Azure Redis Cache-Instanz benötigen Cacheclients den Hostnamen, die Ports und die Schlüssel des Caches. Es kann sein, dass von einigen Clients unter etwas anderen Namen auf diese Elemente verwiesen wird. [Navigieren](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) Sie zum Abrufen dieser Elemente im [Azure-Portal](https://portal.azure.com) zu Ihrem Cache, und klicken Sie auf **Einstellungen** oder **Alle Einstellungen**. 
+Zum Herstellen der Verbindung mit einer Azure Redis Cache-Instanz benötigen Cacheclients den Hostnamen, die Ports und die Schlüssel des Caches. Es kann sein, dass von einigen Clients unter etwas anderen Namen auf diese Elemente verwiesen wird. [Navigieren](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) Sie zum Abrufen dieser Elemente im [Azure-Portal](https://portal.azure.com) zu Ihrem Cache, und klicken Sie im **Ressourcenmenü** auf das gewünschte Element. 
 
 ![Redis Cache: Einstellungen](media/redis-cache-access-keys/redis-cache-settings.png)
 
@@ -14,6 +14,6 @@ Klicken Sie zum Abrufen der Zugriffsschlüssel auf **Zugriffsschlüssel**.
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

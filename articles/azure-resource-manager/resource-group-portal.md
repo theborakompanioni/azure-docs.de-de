@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: f1955e3e1618c6228bfa5439ca66155148ff1cb3
-ms.openlocfilehash: 3eb3ea76fa577dfcc360e209a645b45e0cb4ab34
+ms.sourcegitcommit: e4851e872349fa6483e1f1a340d0968e845a3518
+ms.openlocfilehash: c286b748822d6667f5682c13b7d4c870a3caab65
 
 
 ---
@@ -134,7 +134,7 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Anzeigen von Aktivitätsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](resource-group-audit.md).
-* Informationen zur Behebung von Bereitstellungsfehlern finden Sie unter [Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](resource-manager-troubleshoot-deployments-portal.md).
+* Informationen zum Anzeigen von Details zu einer Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](resource-manager-deployment-operations.md).
 * Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
 * Informationen zum Verwalten des Zugriffs auf Ressourcen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../active-directory/role-based-access-control-configure.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
@@ -142,6 +142,6 @@ Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen ge
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

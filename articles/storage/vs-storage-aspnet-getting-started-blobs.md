@@ -12,11 +12,11 @@ ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 12/21/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: c9b16bd5cd3dc2429a30fd30f9ec942c568abe42
-ms.openlocfilehash: 802249883c6adf3fedc9873e35fb64a9085d905b
+ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
+ms.openlocfilehash: 003ca36c80274c4cad430ac67cf8cf3551d4137a
 
 
 ---
@@ -54,7 +54,7 @@ In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwen
 
     ![Benennen des MVC-Controllers](./media/vs-storage-aspnet-getting-started-blobs/add-controller-name.png)
 
-1. Fügen Sie die folgenden *using*-Anweisungen der `BlobsController.cs`-Datei hinzu.
+1. Fügen Sie die folgenden *using*-Anweisungen der `BlobsController.cs`-Datei hinzu:
 
     ```csharp
     using Microsoft.Azure;
@@ -65,7 +65,11 @@ In diesem Tutorial wird gezeigt, wie Sie ASP.NET-Code für einige häufig verwen
 
 ## <a name="create-a-blob-container"></a>Erstellen eines Blobcontainers
 
-Ein Blobcontainer ist eine geschachtelte Hierarchie von Blobs und Ordnern. Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer erstellen.
+Ein Blobcontainer ist eine geschachtelte Hierarchie von Blobs und Ordnern. Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer erstellen:
+
+> [!NOTE]
+> 
+> Der Code in diesem Abschnitt setzt voraus, dass Sie die Schritte im Abschnitt [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben. 
 
 1. Öffnen Sie die Datei `BlobsController.cs` .
 
@@ -99,7 +103,7 @@ Ein Blobcontainer ist eine geschachtelte Hierarchie von Blobs und Ordnern. Die f
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Rufen Sie die **CloudBlobContainer.CreateIfNotExists**-Methode auf, um den Container zu erstellen, wenn er noch nicht vorhanden ist. Die **CloudBlobContainer.CreateIfNotExists**-Methode gibt **true** zurück, wenn der Container nicht vorhanden war und erfolgreich erstellt wurde; andernfalls wird **false** zurückgegeben.    
+1. Rufen Sie die **CloudBlobContainer.CreateIfNotExists**-Methode auf, um den Container zu erstellen, wenn er noch nicht vorhanden ist. Die **CloudBlobContainer.CreateIfNotExists**-Methode gibt **true** zurück, wenn der Container nicht vorhanden war und erfolgreich erstellt wurde. Andernfalls wird **false** zurückgegeben.    
 
     ```csharp
     ViewBag.Success = container.CreateIfNotExists();
@@ -115,35 +119,39 @@ Ein Blobcontainer ist eine geschachtelte Hierarchie von Blobs und Ordnern. Die f
 
 1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **CreateBlobContainer** ein, und wählen Sie **Hinzufügen**.
 
-1. Öffnen Sie `CreateBlobContainer.cshtml`, und ändern Sie die Datei folgendermaßen:
+1. Öffnen Sie `CreateBlobContainer.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
 
     ```csharp
     @{
-        ViewBag.Title = "Create blob container";
+        ViewBag.Title = "Create Blob Container";
     }
     
-    <h2>Create blob container results</h2>
+    <h2>Create Blob Container results</h2>
 
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu.
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
     ```html
     <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Blob-Container erstellen**. Die Ergebnisse ähneln denen im folgenden Screenshot. 
+1. Führen Sie die Anwendung aus, und wählen Sie **Blobcontainer erstellen**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
-    ![Erstellen eines Blobcontainers](./media/vs-storage-aspnet-getting-started-blobs/results.png)
+    ![Erstellen eines Blobcontainers](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
 
     Wie bereits erwähnt, gibt die **CloudBlobContainer.CreateIfNotExists**-Methode nur dann **true** zurück, wenn der Container nicht vorhanden ist und erstellt wird. Aus diesem Grund gibt die Methode **false** zurück, wenn Sie die App ausführen, wenn der Container vorhanden ist. Um die App mehrere Male auszuführen, müssen Sie den Container vor dem erneuten Ausführen der App löschen. Sie können den Container mit der **CloudBlobContainer.Delete**-Methode löschen. Sie können den Container auch über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) oder den [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) löschen.  
 
 ## <a name="upload-a-blob-into-a-blob-container"></a>Hochladen eines Blobs in einen Blobcontainer
 
-Sobald Sie [einen Blobcontainer erstellt](#create-a-blob-container) haben, können Sie Dateien in diesen Container hochladen. Dieser Abschnitt führt Sie durch die Schritte zum Hochladen einer lokalen Datei in einen Blobcontainer. Die Schritte setzen voraus, dass Sie einen Blobcontainer namens *test-blob-container* erstellt haben. Sie müssen diesen Namen in den Ihres Blobcontainers ändern. 
+Sobald Sie [einen Blobcontainer erstellt](#create-a-blob-container) haben, können Sie Dateien in diesen Container hochladen. Dieser Abschnitt führt Sie durch die Schritte zum Hochladen einer lokalen Datei in einen Blobcontainer. Die Schritte setzen voraus, dass Sie einen Blobcontainer namens *test-blob-container* erstellt haben. 
+
+> [!NOTE]
+> 
+> Der Code in diesem Abschnitt setzt voraus, dass Sie die Schritte im Abschnitt [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben. 
 
 1. Öffnen Sie die Datei `BlobsController.cs` .
 
@@ -158,7 +166,7 @@ Sobald Sie [einen Blobcontainer erstellt](#create-a-blob-container) haben, könn
     }
     ```
  
-1. Rufen Sie in der **UploadBlob**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **UploadBlob**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -177,7 +185,7 @@ Sobald Sie [einen Blobcontainer erstellt](#create-a-blob-container) haben, könn
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Wie bereits erwähnt, unterstützt Azure-Speicher verschiedene Blobtypen. Um einen Verweis auf ein Seitenblob abzurufen, rufen Sie die **CloudBlobContainer.GetPageBlobReference**-Methode auf. Um einen Verweis auf ein Blockblob abzurufen, rufen Sie die **CloudBlobContainer.GetBlockBlobReference**-Methode auf. Gewöhnlich wird die Verwendung von Blockblobs empfohlen. (Ändern Sie *<blob-name>* in den Namen, den Sie dem Blob nach dem Hochladen geben möchten.)
+1. Wie bereits erwähnt, unterstützt Azure-Speicher verschiedene Blobtypen. Um einen Verweis auf ein Seitenblob abzurufen, rufen Sie die **CloudBlobContainer.GetPageBlobReference**-Methode auf. Um einen Verweis auf ein Blockblob abzurufen, rufen Sie die **CloudBlobContainer.GetBlockBlobReference**-Methode auf. Gewöhnlich wird die Verwendung von Blockblobs empfohlen. (Ändern Sie „<blob-name>“* in den Namen, den Sie dem Blob nach dem Hochladen geben möchten.)
 
     ```csharp
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
@@ -196,7 +204,7 @@ Sobald Sie [einen Blobcontainer erstellt](#create-a-blob-container) haben, könn
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu.
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
     ```html
     <li>@Html.ActionLink("Upload blob", "UploadBlob", "Blobs")</li>
@@ -204,11 +212,15 @@ Sobald Sie [einen Blobcontainer erstellt](#create-a-blob-container) haben, könn
 
 1. Führen Sie die Anwendung aus, und wählen Sie **Blob hochladen**.  
   
-Im nächsten Abschnitt wird das Auflisten von Blobs in einem Blobcontainer veranschaulicht.     
+Dieser Abschnitt – [Auflisten von Blobs in einem Blobcontainer](#list-the-blobs-in-a-blob-container) – veranschaulicht das Auflisten von Blobs in einem Blobcontainer.    
 
 ## <a name="list-the-blobs-in-a-blob-container"></a>Auflisten von Blobs in einem Blobcontainer
 
 In diesem Abschnitt wird das Auflisten von Blobs in einem Blobcontainer veranschaulicht. Der Beispielcode verweist auf den *test-blob-container*, der im Abschnitt [Erstellen eines Blobcontainers](#create-a-blob-container) erstellt wurde.
+
+> [!NOTE]
+> 
+> Der Code in diesem Abschnitt setzt voraus, dass Sie die Schritte im Abschnitt [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben. 
 
 1. Öffnen Sie die Datei `BlobsController.cs` .
 
@@ -223,7 +235,7 @@ In diesem Abschnitt wird das Auflisten von Blobs in einem Blobcontainer veransch
     }
     ```
  
-1. Rufen Sie in der **ListBlobs**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **ListBlobs**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -242,7 +254,7 @@ In diesem Abschnitt wird das Auflisten von Blobs in einem Blobcontainer veransch
     CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
     ```
 
-1. Verwenden Sie zum Auflisten des Blobs in einem Blobcontainer die Methode **CloudBlobContainer.ListBlobs**. Die **CloudBlobContainer.ListBlobs**-Methode gibt ein **IListBlobItem**-Objekt zurück, das Sie in ein **CloudBlockBlob**-, **CloudPageBlob**- oder **CloudBlobDirectory**-Objekt umwandeln. Der folgende Codeausschnitt listet alle Blobs in einem Blobcontainer auf, wobei das zurückgegebene Objekt auf Grundlage seines Typs in das entsprechende Objekt umgewandelt wird, und fügt den Namen (oder URI im Falle eines **CloudBlobDirectory**) einer Liste hinzu, die angezeigt werden kann.
+1. Verwenden Sie zum Auflisten des Blobs in einem Blobcontainer die Methode **CloudBlobContainer.ListBlobs**. Die **CloudBlobContainer.ListBlobs**-Methode gibt ein **IListBlobItem**-Objekt zurück, das Sie in ein **CloudBlockBlob**-, **CloudPageBlob**- oder **CloudBlobDirectory**-Objekt umwandeln. Der folgende Codeausschnitt listet alle Blobs im Blobcontainer auf. Jedes Blob wird dem Typ gemäß in das entsprechende Objekt umgewandelt, und sein Name (oder URI im Fall eines **CloudBlobDirectory**) wird einer Liste hinzugefügt.
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -299,7 +311,7 @@ In diesem Abschnitt wird das Auflisten von Blobs in einem Blobcontainer veransch
 
 1. Geben Sie im Dialogfeld **Ansicht hinzufügen** für den Ansichtsnamen **ListBlobs** ein, und wählen Sie **Hinzufügen**.
 
-1. Öffnen Sie `ListBlobs.cshtml`, und ändern Sie die Datei folgendermaßen:
+1. Öffnen Sie `ListBlobs.cshtml`, und ändern Sie die Datei so, dass sie folgendem Codeausschnitt entspricht:
 
     ```html
     @model List<string>
@@ -319,19 +331,19 @@ In diesem Abschnitt wird das Auflisten von Blobs in einem Blobcontainer veransch
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu.
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
     ```html
     <li>@Html.ActionLink("List blobs", "ListBlobs", "Blobs")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Blobs auflisten**. Die Ergebnisse ähneln denen im folgenden Screenshot. 
+1. Führen Sie die Anwendung aus, und wählen Sie **Blobs auflisten**, um ähnliche Ergebnisse wie im folgenden Screenshot zu sehen:
   
     ![Blobauflistung](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
 
 ## <a name="download-blobs"></a>Herunterladen von Blobs
 
-Die folgenden Schritte veranschaulichen, wie Sie ein Blob herunterladen und entweder im lokalen Speicher beibehalten oder den Inhalt in eine Zeichenfolge lesen. Der Beispielcode verweist auf den *test-blob-container*, der im Abschnitt [Erstellen eines Blobcontainers](#create-a-blob-container) erstellt wurde.
+Dieser Abschnitt veranschaulicht, wie Sie ein Blob herunterladen und entweder im lokalen Speicher beibehalten oder den Inhalt in eine Zeichenfolge lesen. Der Beispielcode verweist auf den *test-blob-container*, der im Abschnitt [Erstellen eines Blobcontainers](#create-a-blob-container) erstellt wurde.
 
 1. Öffnen Sie die Datei `BlobsController.cs` .
 
@@ -346,7 +358,7 @@ Die folgenden Schritte veranschaulichen, wie Sie ein Blob herunterladen und entw
     }
     ```
  
-1. Rufen Sie in der **DownloadBlob**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **DownloadBlob**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -371,7 +383,7 @@ Die folgenden Schritte veranschaulichen, wie Sie ein Blob herunterladen und entw
     CloudBlockBlob blob = container.GetBlockBlobReference(<blob-name>);
     ```
 
-1. Verwenden Sie zum Herunterladen von Blobs abhängig vom Blobtyp die **CloudBlockBlob.DownloadToStream**- oder **CloudPageBlob.DownloadToStream**-Methode. Im folgenden Codeausschnitt wird die **CloudBlockBlob.DownloadToStream**-Methode verwendet, um den Blobinhalt in ein Datenstromobjekt zu übertragen, das danach in einer lokalen Datei gespeichert wird. (Ändern Sie *&lt;local-file-name>* in den vollqualifizierten Dateinamen, der angibt, wohin der Blob heruntergeladen werden soll.) 
+1. Verwenden Sie zum Herunterladen von Blobs abhängig vom Blobtyp die **CloudBlockBlob.DownloadToStream**- oder **CloudPageBlob.DownloadToStream**-Methode. Im folgenden Codeausschnitt wird die **CloudBlockBlob.DownloadToStream**-Methode verwendet, um den Blobinhalt in ein Datenstromobjekt zu übertragen, das danach in einer lokalen Datei gespeichert wird: (Ändern Sie *&lt;local-file-name>* in den vollständig qualifizierten Dateinamen, der angibt, wohin das Blob heruntergeladen werden soll.) 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -382,17 +394,21 @@ Die folgenden Schritte veranschaulichen, wie Sie ein Blob herunterladen und entw
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu.
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
     ```html
     <li>@Html.ActionLink("Download blob", "DownloadBlob", "Blobs")</li>
     ```
 
-1. Führen Sie die Anwendung aus, und wählen Sie **Blob herunterladen** zum Herunterladen des Blobs. Das im Aufruf der **CloudBlobContainer.GetBlockBlobReference**-Methode angegebene Blob wird in den Speicherort heruntergeladen, dem Sie im Aufruf der **File.OpenWrite**-Methode angeben. 
+1. Führen Sie die Anwendung aus, und wählen Sie **Blob herunterladen** zum Herunterladen des Blobs. Das im Aufruf der **CloudBlobContainer.GetBlockBlobReference**-Methode angegebene Blob wird in den Speicherort heruntergeladen, den Sie im Aufruf der **File.OpenWrite**-Methode angeben. 
 
 ## <a name="delete-blobs"></a>Löschen von Blobs
 
-Die folgenden Schritte veranschaulichen, wie Sie ein Blob löschen. 
+Die folgenden Schritte veranschaulichen, wie Sie ein Blob löschen:
+
+> [!NOTE]
+> 
+> Der Code in diesem Abschnitt setzt voraus, dass Sie die Schritte im Abschnitt [Einrichten der Entwicklungsumgebung](#set-up-the-development-environment) abgeschlossen haben. 
 
 1. Öffnen Sie die Datei `BlobsController.cs` .
 
@@ -407,7 +423,7 @@ Die folgenden Schritte veranschaulichen, wie Sie ein Blob löschen.
     }
     ```
 
-1. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen. (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -440,7 +456,7 @@ Die folgenden Schritte veranschaulichen, wie Sie ein Blob löschen.
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Views > Shared**, und öffnen Sie `_Layout.cshtml`.
 
-1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu.
+1. Fügen Sie nach dem letzten **Html.ActionLink** den folgenden **Html.ActionLink** hinzu:
 
     ```html
     <li>@Html.ActionLink("Delete blob", "DeleteBlob", "Blobs")</li>
@@ -455,6 +471,6 @@ Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in 
   * [Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten](./vs-storage-aspnet-getting-started-queues.md)
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

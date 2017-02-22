@@ -1,10 +1,10 @@
 ---
-title: "Konfigurieren der Tunnelerzwingung für Standort-zu-Standort-Verbindungen mit dem klassischen Bereitstellungsmodell | Microsoft Docs"
+title: "Konfigurieren der Tunnelerzwingung für Azure-Site-to-Site-Verbindungen: klassisch | Microsoft-Dokumentation"
 description: "Gewusst wie: „Erzwingen“ der Umleitung des gesamten Internetdatenverkehrs an Ihren lokalen Standort."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2016
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 33ca336c6ae3ffc68997d21c4d7da9275ff48a00
+ms.sourcegitcommit: 5183fc3b4e7ec3fe6060a6a9551656332300995f
+ms.openlocfilehash: 75cd2b7073d5cda6fc90aa963a9ad321e6992743
 
 
 ---
@@ -119,7 +119,7 @@ Mithilfe der Schritte wird festgelegt, dass *DefaultSiteHQ* die Standard-Standor
         New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
 2. Fügen Sie der Routingtabelle eine Standardroute hinzu. 
    
-    Das folgende Beispiel fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von 0.0.0.0/0 zum nächsten Hop „VPNGateway“ ist.
+    Das folgende Beispiel fügt der in Schritt 1 erstellten Routingtabelle eine Standardroute hinzu. Beachten Sie, dass die einzige unterstützte Route das Zielpräfix von&0;.0.0.0/0 zum nächsten Hop „VPNGateway“ ist.
    
         Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
 3. Ordnen Sie die Routingtabelle den Subnetzen zu. 
@@ -163,6 +163,6 @@ Mithilfe der Schritte wird festgelegt, dass *DefaultSiteHQ* die Standard-Standor
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

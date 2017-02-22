@@ -1,13 +1,25 @@
 ---
+title: "Dokumentation für Azure Data Factory – Tutorials, API-Referenz | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten."
+services: data-factory
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: data-factory
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 95b54199c307efea21666c774525a9a539472131
-ms.openlocfilehash: 5742326de5bbe91340df69402bc551f87dafca78
+ms.sourcegitcommit: 7e5e1b41828d0c3d81f5594609910ecdba02a249
+ms.openlocfilehash: 9e9a23f8ddcff428b45f08ab001489d00b3ed7a9
 
 ---
 # <a name="azure-data-factory-documentation"></a>Azure Data Factory-Dokumentation
 
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das Verschieben und Transformieren von Daten automatisiert wird. Mit dem Data Factory-Dienst werden Datenintegrationslösungen erstellt, die Daten aus verschiedenen Speichern erfassen, Daten transformieren und verarbeiten und die Ergebnisdaten anschließend wieder in den Datenspeichern veröffentlichen.
+Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren.
 
 <ul class="panelContent cardsFTitle">
    <li>
@@ -107,7 +119,6 @@ Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das V
                     <div class="cardText">
                         <h3>Sprachen</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.datafactories.models">.NET</a></p>
-                        <p><a href="/azure/data-factory/data-factory-sdks">Azure Data Factory-Entwicklerreferenz</a></p>
                    </div>
                 </div>
             </div>
@@ -127,18 +138,9 @@ Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem das V
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/data-factory.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Data Factory-Dokumentation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

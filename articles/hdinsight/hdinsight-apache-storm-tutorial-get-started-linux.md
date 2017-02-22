@@ -1,5 +1,5 @@
 ---
-title: 'Apache Storm-Tutorial: Erste Schritte mit Storm in HDInsight unter Linux | Microsoft Docs'
+title: Erste Schritte mit Apache Storm in Azure HDInsight | Microsoft-Dokumentation
 description: Erste Schritte mit Big Data-Analysen in HDInsight unter Linux mit Apache Storm und den Storm-Starter-Beispielen. Erfahren Sie, wie Sie Storm zur Verarbeitung von Daten in Echtzeit verwenden.
 keywords: Apache Storm, Apache Storm-Tutorial, Big Data-Analysen, Storm Starter
 services: hdinsight
@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/18/2016
+ms.date: 01/12/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: b9fda8b5f4ffa6679cc8ca9696a4c51084c80645
-ms.openlocfilehash: 7c3d73ca6f4f567247ec9796199e68f764a52808
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: 9b38cd0aa542c0fd73b73edefce230e5a463e608
 
 
 ---
@@ -25,8 +25,8 @@ ms.openlocfilehash: 7c3d73ca6f4f567247ec9796199e68f764a52808
 
 Apache Storm ist ein skalierbares, fehlertolerantes, verteiltes Echtzeit-Berechnungssystem für die Verarbeitung von Datenströmen. Mit Storm in Azure HDInsight können Sie einen cloudbasierten Storm-Cluster erstellen, der Big Data-Analysen in Echtzeit durchführt.
 
-> [!NOTE]
-> Mit den Schritten in diesem Artikel wird ein Linux-basierter HDInsight-Cluster erstellt. Schritte zum Erstellen eines Windows-basierten Storm in HDInsight-Clusters finden Sie unter [Apache Storm-Lernprogramm: Erste Schritte mit Storm-Starter-Beispielen für die Big Data-Analyse in HDInsight](hdinsight-apache-storm-tutorial-get-started.md)
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ In diesem Abschnitt erstellen Sie mithilfe einer Azure Resource Manager-Vorlage 
 
     * **Clustername**: der Name für den Hadoop-Cluster
 
-    * __Cluster-Benutzername__ und -__Kennwort__: der Standardname für die Anmeldung lautet „admin“
+    * __Clusterbenutzername__ und __-kennwort__: Der Standardname für die Anmeldung lautet „admin“.
     
     * __SSH-Benutzername__ und __-kennwort__: der Benutzer und das Kennwort zum Herstellen einer Verbindung mit dem Cluster mithilfe der SSH
 
@@ -216,6 +216,6 @@ Beispieltechnologien, die mit Storm in HDInsight verwendet werden können, finde
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

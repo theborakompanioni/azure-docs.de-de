@@ -1,5 +1,5 @@
 ---
-title: Anwenden von Richtlinien auf virtuelle Computer des Azure Resource Manager | Microsoft Docs
+title: Erzwingen der Sicherheit mit Richtlinien auf virtuellen Linux-Computern in Azure | Microsoft-Dokumentation
 description: 'Anwenden einer Richtlinie auf einen virtuellen Linux-Computer des Azure Resource Manager '
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 71036b1aa9915750992d9d671af6b1023def41c3
+ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
+ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
 
 
 ---
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Verwenden Sie für virtuelle Azure Resource Manager-Computer diese PowerShell:
+# <a name="apply-security-and-policies-to-linux-vms-with-azure-resource-manager"></a>Anwenden von Sicherheit und Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
 
 Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
@@ -99,6 +99,6 @@ Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Datenressourcen | Microsoft Docs
+title: Verwalten von Datenressourcen in Azure Data Catalog | Microsoft-Dokumentation
 description: Gewusst-wie-Artikel mit Informationen dazu, wie Sie die Sichtbarkeit und den Besitz von Datenassets steuern, die in Azure Data Catalog registriert sind.
 services: data-catalog
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/04/2016
+ms.date: 01/23/2017
 ms.author: maroche
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 49d939205c85bad8bf7422ef4d9fa02501bb8df7
+ms.sourcegitcommit: cd3184059a0970bb7c9b59803cf37125abbbd879
+ms.openlocfilehash: 45a7b2df88a2edf2bccdfc9d2aaea932f2096f24
 
 
 ---
-# <a name="how-to-manage-data-assets"></a>Verwalten von Datenassets
+# <a name="how-to-manage-data-assets-in-azure-data-catalog"></a>Verwalten von Datenressourcen in Azure Data Catalog
 ## <a name="introduction"></a>Einführung
 **Azure Data Catalog** enthält Funktionen für die Datenquellenermittlung. Hiermit können Benutzer Datenquellen, die sie zum Durchführen von Analysen und Treffen von Entscheidungen benötigen, leicht ermitteln und verstehen. Diese Ermittlungsfunktionen haben den größten Nutzen, wenn alle Benutzer möglichst viele verfügbare Datenquellen finden und verstehen können. Daher sollte es beim Standardverhalten von Data Catalog darum gehen, dass alle registrierten Datenquellen für alle Katalogbenutzer sichtbar und ermittelbar sind.
 
@@ -31,8 +31,8 @@ Es kann aber zu Situationen kommen, in denen Datenquellen nur für bestimmte Ben
 
 > [!NOTE]
 > Die in diesem Artikel beschriebenen Funktionen sind nur in der Standard Edition von Azure Data Catalog verfügbar. Die Free Edition bietet keine Funktionen für die Besitzübernahme und die Einschränkung der Sichtbarkeit von Datenassets.
-> 
-> 
+>
+>
 
 ## <a name="managing-ownership-of-data-assets"></a>Verwalten des Besitzes von Datenassets
 Standardmäßig haben Datenassets, die in Data Catalog registriert sind, keinen Besitzer. Alle Benutzer mit der Berechtigung zum Zugreifen auf den Katalog können diese Assets ermitteln und mit Anmerkungen versehen. Benutzer können den Besitz von besitzerlosen Datenassets übernehmen und die Sichtbarkeit ihrer Assets dann einschränken.
@@ -41,8 +41,8 @@ Wenn ein Datenasset in Data Catalog einen Besitzer hat, können nur vom Besitzer
 
 > [!NOTE]
 > Der Besitz wirkt sich in Data Catalog nur auf die darin gespeicherten Metadaten aus. Es werden keine Berechtigungen auf die zugrunde liegende Datenquelle übertragen.
-> 
-> 
+>
+>
 
 ### <a name="taking-ownership"></a>Festlegen des Besitzes
 Benutzer können den Besitz von Datenassets übernehmen, indem Sie im Data Catalog-Portal die Option „Besitz übernehmen“ wählen. Zum Übernehmen des Besitzes eines besitzerlosen Datenassets sind keine besonderen Berechtigungen erforderlich. Alle Benutzer können zum Besitzer eines besitzerlosen Datenassets werden.
@@ -52,8 +52,8 @@ Wenn ein Datenasset bereits einen Besitzer hat, können Benutzer nicht einfach d
 
 > [!NOTE]
 > Es ist eine bewährte Methode, für Datenassets mindestens zwei Personen als Besitzer zu verwenden.
-> 
-> 
+>
+>
 
 ### <a name="removing-owners"></a>Entfernen von Besitzern
 Genauso wie jeder Assetbesitzer Mitbesitzer hinzufügen kann, können Besitzer auch alle Mitbesitzer entfernen.
@@ -65,8 +65,8 @@ Besitzer von Datenassets können die Sichtbarkeit der Datenassets in ihrem Besit
 
 > [!NOTE]
 > Nach Möglichkeit sollten der Assetbesitz und die Sichtbarkeitsberechtigungen Sicherheitsgruppen und nicht einzelnen Benutzern zugewiesen werden.
-> 
-> 
+>
+>
 
 ## <a name="catalog-administrators"></a>Catalog-Administratoren
 Bei Data Catalog-Administratoren handelt es sich implizit um Mitbesitzer aller Assets im Katalog. Assetbesitzer können die Sichtbarkeit für Catalog-Administratoren nicht entfernen, und Administratoren können den Besitz und die Sichtbarkeit für alle Datenassets in Data Catalog verwalten.
@@ -76,7 +76,6 @@ Beim Crowdsourcing-Modell von Data Catalog für die Ermittlung von Metadaten und
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

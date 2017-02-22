@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 64e2ed7a625aec59f68411d93a5942a546919abb
+ms.sourcegitcommit: 80627139ee253bb6a01241e460781519dac69e71
+ms.openlocfilehash: a8541d5bd5e5becb25e8460b6ca774ec6637563a
 
 
 ---
@@ -32,7 +32,7 @@ Das WebJobs-Dashboard im Azure-Portal bietet leistungsstarke Verwaltungsfunktion
 
 ## <a name="a-namegetstartedagetting-started-with-webjobs-and-the-webjobs-sdk"></a><a name="getstarted"></a>Erste Schritte mit WebJobs und dem WebJobs-SDK
 * [Einführung in Azure WebJobs](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx)
-* [Azure WebJobs are awesome and you should start using them right now! (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache) (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache)](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html)  (Blogbeitrag von Troy Hunt)
+* [Azure WebJobs are awesome and you should start using them right now! (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache) (Setzen Sie ab sofort das großartige Azure WebJobs ein; in englischer Sprache)](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) (Blogbeitrag von Troy Hunt)
 * [Funktionen von Azure WebJobs](https://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [Was ist das WebJobs-SDK?](websites-dotnet-webjobs-sdk.md)
 * [Anleitungen für Hintergrundaufträge von Microsoft Patterns and Practices](/documentation/articles/best-practices-background-jobs/)
@@ -42,7 +42,6 @@ Das WebJobs-Dashboard im Azure-Portal bietet leistungsstarke Verwaltungsfunktion
 * [Verwenden von Azure-Blobspeicher mit dem WebJobs-SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 * [Verwenden von Azure-Tabellenspeicher mit dem WebJobs-SDK](websites-dotnet-webjobs-sdk-storage-tables-how-to.md)
 * [Verwenden von Azure Service Bus mit dem Webaufträge-SDK](websites-dotnet-webjobs-sdk-service-bus.md)
-* [Verwenden von WebHooks mit dem WebJobs-SDK mit Beispielen für GitHub, IFTTT und HTTP](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/WebHooks-Walkthrough)
 * [Kurzübersicht zum Azure WebJobs-SDK (PDF zum Herunterladen)](http://go.microsoft.com/fwlink/?LinkID=524028&clcid=0x409)
 * [Dokumentation zu Webauftragseinstellungen in GitHub](https://github.com/projectkudu/kudu/wiki/Web-jobs).
 * Videos
@@ -137,6 +136,6 @@ Weitere Informationen finden Sie auch in den Abschnitten [Bereitstellen von WebJ
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

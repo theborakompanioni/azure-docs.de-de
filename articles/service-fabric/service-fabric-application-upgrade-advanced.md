@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2016
+ms.date: 01/05/2017
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: 8f911da6798b8a2d517d79a9a90e66de86db9b8b
+ms.sourcegitcommit: f1e035b50b415f68ce567fe1db3a3fe93c2a1394
+ms.openlocfilehash: 63d7ca0224c1989618c474181b02fa79eb69c966
 
 
 ---
@@ -24,13 +24,13 @@ ms.openlocfilehash: 8f911da6798b8a2d517d79a9a90e66de86db9b8b
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>Hinzufügen oder Entfernen von Diensten während eines Anwendungsupgrades
 Wenn ein neuer Dienst einer Anwendung hinzugefügt wird, die bereits bereitgestellt ist, und als Upgrade veröffentlicht wird, wird der neue Dienst der bereitgestellten Anwendung hinzugefügt.  Ein solches Upgrade wirkt sich nicht auf die Dienste aus, die bereits Teil der Anwendung waren. Eine Instanz des Diensts, der hinzugefügt wurde, muss jedoch (mithilfe des Cmdlets `New-ServiceFabricService` ) gestartet werden, damit der neue Dienst aktiv ist.
 
-Im Rahmen eines Upgrades können Dienste auch aus einer Anwendung entfernt werden. Allerdings müssen alle aktuelle Instanzen des zu löschenden Diensts beendet werden, bevor Sie (mithilfe des Cmdlets `Remove-ServiceFabricService` ) mit dem Upgrade fortfahren. 
+Im Rahmen eines Upgrades können Dienste auch aus einer Anwendung entfernt werden. Allerdings müssen alle aktuelle Instanzen des zu löschenden Diensts beendet werden, bevor Sie (mithilfe des Cmdlets `Remove-ServiceFabricService` ) mit dem Upgrade fortfahren.
 
 ## <a name="manual-upgrade-mode"></a>Manueller Upgrademodus
 > [!NOTE]
 > Der nicht überwachte manuelle Modus sollte ausschließlich bei einem fehlerhaften oder angehaltenen Upgrade in Betracht gezogen werden. Der überwachte Modus ist der für Service Fabric-Anwendungen empfohlene Modus.
-> 
-> 
+>
+>
 
 Azure Service Fabric umfasst mehrere Upgrademodi zur Unterstützung von Entwicklungs- und Produktionsclustern. Die zu wählenden Bereitstellungsoptionen können sich je nach Umgebung unterscheiden.
 
@@ -55,7 +55,7 @@ Situationen, in denen sich ein Diff-Paket anbietet:
 * Ein Diff-Paket wird gegenüber einem umfangreichen Anwendungspaket bevorzugt, das auf mehrere Dienstmanifestdateien und/oder mehrere Code-, Konfigurations- oder Datenpakete verweist.
 * Ein Diff-Paket wird in einem Bereitstellungssystem bevorzugt, das das Buildlayout direkt aus dem Anwendungsbuildprozess generiert. In diesem Fall weisen neu erstellte Assemblys eine andere Prüfsumme auf, auch wenn sich der Code nicht geändert hat. Bei Verwendung eines vollständigen Anwendungspakets müssten Sie die Version in allen Codepaketen ändern. Bei Verwendung eines Diff-Pakets stellen Sie dagegen nur die geänderten Dateien und die Manifestdateien bereit, in denen sich die Version geändert hat.
 
-Wenn eine Anwendung mit Visual Studio aktualisiert wird, wird das Diff-Paket automatisch veröffentlicht. Um ein Diff-Paket manuell zu erstellen, müssen das Anwendungsmanifest und die Dienstmanifeste aktualisiert werden. Doch nur die geänderten Pakete dürfen in das endgültige Anwendungspaket eingeschlossen werden. 
+Wenn eine Anwendung mit Visual Studio aktualisiert wird, wird das Diff-Paket automatisch veröffentlicht. Um ein Diff-Paket manuell zu erstellen, müssen das Anwendungsmanifest und die Dienstmanifeste aktualisiert werden. Doch nur die geänderten Pakete dürfen in das endgültige Anwendungspaket eingeschlossen werden.
 
 Beispielsweise beginnen wir mit der folgenden Anwendung (Versionsnummern werden zum einfacheren Verständnis angegeben):
 
@@ -102,7 +102,6 @@ Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie i
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

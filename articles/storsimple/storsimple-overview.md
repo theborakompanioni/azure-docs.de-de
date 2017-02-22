@@ -1,5 +1,5 @@
 ---
-title: Was ist StorSimple? | Microsoft Docs
+title: "Lösungsübersicht zur StorSimple 8000-Serie | Microsoft-Dokumentation"
 description: "Beschreibt die StorSimple-Speicherstaffelung, das Gerät, das virtuelle Gerät, Dienste und die Speicherverwaltung und erläutert wichtige in StorSimple verwendete Begriffe."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 10/05/2016
 ms.author: v-sharos@microsoft.com
 translationtype: Human Translation
-ms.sourcegitcommit: aaef3322fc98b0874222e4a3728d54a38a34b602
-ms.openlocfilehash: 34b09279785d87f75d16e3baf320ffb66cf9b682
+ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
+ms.openlocfilehash: 3575e4f22e17608de7f3b66e9dd577a1d4a4c148
 
 
 ---
@@ -32,9 +32,9 @@ Mit Update 2 können Sie zudem virtuelle StorSimple-Geräte erstellen, die die n
 
 Zusätzlich zur Speicherverwaltung können Sie mithilfe der StorSimple-Funktionen zum Schutz von Daten bedarfsgesteuerte und geplante Sicherungen erstellen und anschließend lokal oder in der Cloud speichern. Sicherungen erfolgen in Form von inkrementellen Momentaufnahmen, sodass sie schnell erstellt und wiederhergestellt werden können. Cloud-Momentaufnahmen können bei Wiederherstellungen im Notfall extrem wichtig sein, da sie sekundäre Speichersystemen (z. B. Backup auf Bandlaufwerken) ersetzen und es Ihnen ermöglichen, Daten bei Bedarf in Ihrem Rechenzentrum oder an anderen Standorten wiederherzustellen.
 
-![Video-Symbol](./media/storsimple-overview/video_icon.png)  Sehen Sie sich das Video mit einer kurzen Einführung in Microsoft Azure StorSimple an.
+![Video-Symbol](./media/storsimple-overview/video_icon.png) Sehen Sie sich das Video mit einer kurzen Einführung in Microsoft Azure StorSimple an.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 > 
 > 
 
@@ -241,7 +241,7 @@ Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastruktu
 | Allgemein |DataCore FC |Ja* |Unterstützt mit DataCore SANsymphony |Alle Versionen |
 | Allgemein |DFSR |Ja* |Nur mit lokalen Volumes unterstützt |Alle Versionen |
 | Allgemein |Indizierung |Ja* |Bei mehrstufigen Volumes wird nur die Indizierung der Metadaten unterstützt (nicht der Daten).<br>Bei lokalen Volumes wird eine vollständige Indizierung unterstützt. |Alle Versionen |
-| Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br>  Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
+| Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br> Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
 
 *Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
@@ -310,6 +310,6 @@ Weitere Informationen zur [StorSimple-Sicherheit](storsimple-security.md).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

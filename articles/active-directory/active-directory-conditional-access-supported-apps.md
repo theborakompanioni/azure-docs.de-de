@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/26/2016
+ms.date: 01/24/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fbc03ebf0c66950ae92ca75cf34da86dfb15a349
+ms.sourcegitcommit: b9605eb10f87f107dffd9f631d043bf550cf030b
+ms.openlocfilehash: 5e293d7d3fa6b0a763663a5428878944660fc03e
 
 
 ---
@@ -41,8 +41,8 @@ Die folgenden Anwendungen unterstützen den bedingten Zugriff für Office 365 un
 | Microsoft Office 365 Exchange Online |Windows 8.1, Windows 7 |Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung) |
 | Microsoft Office 365 Exchange Online |iOS, Android |Outlook Mobile-App |
 | Microsoft Office 365 Exchange Online |Mac OS X |Outlook 2016 nur für mehrstufige Authentifizierung und Standort; geplante Unterstützung für gerätebasierte Richtlinien, geplante Unterstützung für Skype for Business |
-| Office 365 SharePoint Online |Windows 10 |Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), geplante Unterstützung für OneDrive for Business-App (NGSC oder Synchronisierungsclient der nächsten Generation), geplante Unterstützung für Office-Gruppen, geplante Unterstützung der SharePoint-App |
-| Office 365 SharePoint Online |Windows 8.1, Windows 7 |Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive for Business-App (Groove-Synchronisierungsclient) |
+| Office 365 SharePoint Online |Windows 10 |Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), geplante Unterstützung für Office-Gruppen, geplante Unterstützung der SharePoint-App |
+| Office 365 SharePoint Online |Windows 8.1, Windows 7 |Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) |
 | Office 365 SharePoint Online |iOS, Android |Office Mobile-Apps |
 | Office 365 SharePoint Online |Mac OS X |Outlook 2016 nur für mehrstufige Authentifizierung und Standort; geplante Unterstützung für gerätebasierte Richtlinien |
 | Office 365 Yammer |Windows 10, iOS und Android |Office Yammer-App |
@@ -111,6 +111,6 @@ Durch Anwenden der folgenden drei Regeln auf die AD FS-Vertrauensstellung der ve
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

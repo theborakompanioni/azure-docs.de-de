@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 388d733b52d32d77fa441c4045d4bce863c41866
-ms.openlocfilehash: 7558c41cbc9cde6748e1706a095598ea03e9ab6a
+ms.sourcegitcommit: 614038da2384b3efa48cd46ade347392ffef9d44
+ms.openlocfilehash: 2cb7b5aff47a81ae53d1ce68426b085eba4c96fc
 
 
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Verwenden der iOS-Clientbibliothek für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Dieser Artikel beschreibt gängige Szenarien für die Verwendung des aktuellen [Azure Mobile Apps-iOS-SDKs][1]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen und ein vorgefertigtes iOS-Xcode-Projekt herunterzuladen. In diesem Handbuch konzentrieren wir uns auf das clientseitige iOS-SDK. Weitere Informationen zum serverseitigen SDK für das Back-End finden Sie in den Anleitungen zum jeweiligen Server-SDK.
+Dieser Artikel beschreibt gängige Szenarien für die Verwendung des aktuellsten [Azure Mobile Apps-iOS-SDK][1]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen und ein vorgefertigtes iOS-Xcode-Projekt herunterzuladen. In diesem Handbuch konzentrieren wir uns auf das clientseitige iOS-SDK. Weitere Informationen zum serverseitigen SDK für das Back-End finden Sie in den Anleitungen zum jeweiligen Server-SDK.
 
 ## <a name="reference-documentation"></a>Referenzdokumentation
-Die Referenzdokumentation für das iOS-Client-SDK finden Sie hier: [Azure Mobile Apps iOS-Client-Referenz][2].
+Die Referenzdokumentation für das iOS-Client-SDK finden Sie hier: [iOS-Clientreferenz zu Azure Mobile Apps][2].
 
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
 Das iOS-SDK unterstützt Objective-C-Projekte, Swift 2.2-Projekte und Swift 2.3-Projekte für die iOS-Versionen 8.0 oder höher.
@@ -807,7 +807,7 @@ Mithilfe des Google-Anmelde-SDKs für iOS können Sie Benutzer über ein Google-
                [[GIDSignIn sharedInstance] signIn];
         }
 
-   **Swift:**
+   **Swift**:
 
        // ...
        func authenticate() {
@@ -818,54 +818,54 @@ Mithilfe des Google-Anmelde-SDKs für iOS können Sie Benutzer über ein Google-
 
 <!-- Anchors. -->
 
-[Was sind Mobile Services?]: #what-is
-[Konzepte]: #concepts
-[Einrichtung und Voraussetzungen]: #Setup
-[Gewusst wie: Erstellen des Mobile Services-Clients]: #create-client
-[Gewusst wie: Erstellen von Tabellenverweisen]: #table-reference
-[Gewusst wie: Abfragen von Daten aus einem mobilen Dienst]: #querying
-[Zurückgegebene Daten filtern]: #filtering
-[Zurückgegebene Daten sortieren]: #sorting
-[Daten seitenweise zurückgeben]: #paging
-[Bestimmte Spalten auswählen]: #selecting
-[Gewusst wie: Datenbindung in der Benutzeroberfläche]: #binding
-[Einfügen von Daten in einen mobilen Dienst]: #inserting
-[Ändern von Daten in einem mobilen Dienst]: #modifying
-[Authentifizieren von Benutzern]: #authentication
-[Zwischenspeichern von Authentifizierungstoken]: #caching-tokens
-[Gewusst wie: Hochladen von Bildern und großen Dateien]: #blobs
-[Fehlerbehandlung]: #errors
-[Gewusst wie: Design von Komponententests]: #unit-testing
-[Gewusst wie: Anpassen des Clients]: #customizing
-[Anpassen der Anforderungsheader]: #custom-headers
-[Anpassen der Datentyp-Serialisierung]: #custom-serialization
+[What is Mobile Services]: #what-is
+[Concepts]: #concepts
+[Setup and Prerequisites]: #Setup
+[How to: Create the Mobile Services client]: #create-client
+[How to: Create a table reference]: #table-reference
+[How to: Query data from a mobile service]: #querying
+[Filter returned data]: #filtering
+[Sort returned data]: #sorting
+[Return data in pages]: #paging
+[Select specific columns]: #selecting
+[How to: Bind data to the user interface]: #binding
+[How to: Insert data into a mobile service]: #inserting
+[How to: Modify data in a mobile service]: #modifying
+[How to: Authenticate users]: #authentication
+[Cache authentication tokens]: #caching-tokens
+[How to: Upload images and large files]: #blobs
+[How to: Handle errors]: #errors
+[How to: Design unit tests]: #unit-testing
+[How to: Customize the client]: #customizing
+[Customize request headers]: #custom-headers
+[Customize data type serialization]: #custom-serialization
 [Next Steps]: #next-steps
-[Gewusst wie: Verwenden von MSQuery]: #query-object
+[How to: Use MSQuery]: #query-object
 
 <!-- Images. -->
 
 <!-- URLs. -->
 [Schnellstart von Azure Mobile Apps]: app-service-mobile-ios-get-started.md
 
-[Hinzufügen von Mobile Services zu einer vorhandenen App]: /develop/mobile/tutorials/get-started-data
-[Erste Schritte mit Mobile Services]: /develop/mobile/tutorials/get-started-ios
-[Überprüfen und Ändern von Daten in Mobile Services mithilfe von Serverskripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-ios
-[Mobile Services-SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Authentifizierung]: /develop/mobile/tutorials/get-started-with-users-ios
+[Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
+[Validate and modify data in Mobile Services by using server scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-ios
+[Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
 
-[Umgang mit abgelaufenen Token]: http://go.microsoft.com/fwlink/p/?LinkId=301955
+[Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
-[Berechtigungen]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
-[Dienstseitige Autorisierung]: mobile-services-javascript-backend-service-side-authorization.md
-[Verwenden von Skripts zum Autorisieren von Benutzern]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
+[Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
+[Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
+[Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [dynamische Schema]: http://go.microsoft.com/fwlink/p/?LinkId=296271
-[Gewusst wie: Zugreifen auf benutzerdefinierte Parameter]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
-[Erstellen einer Tabelle]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
-[NSDictionary-Objekt]: http://go.microsoft.com/fwlink/p/?LinkId=301965
-[ASCII-Steuerzeichen C0 und C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[CLI zum Verwalten von Mobile Services-Tabellen]: ../virtual-machines-command-line-tools.md#Mobile_Tables
-[Konflikthandler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
+[How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
+[Create a table]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
+[NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
+[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
+[Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
 [Fabric Dashboard]: https://www.fabric.io/home
 [Fabric für iOS – Erste Schritte]: https://docs.fabric.io/ios/fabric/getting-started.html
@@ -882,6 +882,6 @@ Mithilfe des Google-Anmelde-SDKs für iOS können Sie Benutzer über ein Google-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

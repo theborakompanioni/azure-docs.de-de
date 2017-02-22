@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 02/07/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 67575bbbb7d99ffeef3cb5dab74f4a68065bacc1
+ms.sourcegitcommit: 1c4045bd9b705ab3e909a06035f27b85635fdf36
+ms.openlocfilehash: 3d83a919d8e7bc59bd51e226c56ff2bb42c87955
 
 
 ---
@@ -40,6 +40,7 @@ Die folgende Tabelle dient als Entscheidungshilfe bei der Auswahl zwischen der V
 | [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Domänenbeitritt**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**Domänenauthentifizierung mithilfe von NTLM und Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
+| [**Eingeschränkte Kerberos-Delegierung**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|Ressourcenbasiert|Ressourcen- und kontobasiert|
 | [**Benutzerdefinierte OE-Struktur**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
 | [**Schemaerweiterungen**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD-Domänen-/Gesamtstrukturvertrauensstellungen**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
@@ -57,6 +58,7 @@ Die verwaltete Domäne wird basierend auf den Microsoft Best Practices für AD-B
 
 #### <a name="dns-server"></a>DNS-Server
 Eine verwaltete Azure AD Domain Services-Domäne umfasst verwaltete DNS-Dienste. Mitglieder der Gruppe „AAD DC Adminstrators“ können das DNS-System in der verwalteten Domäne verwalten. Mitglieder dieser Gruppe erhalten vollständige DNS-Administratorrechte für die verwaltete Domäne. Die DNS-Verwaltung kann mithilfe der im RSAT-Paket (Remoteserver-Verwaltungstools) enthaltenen DNS-Verwaltungskonsole durchgeführt werden.
+[Weitere Informationen](active-directory-ds-admin-guide-administer-dns.md)
 
 #### <a name="domain-or-enterprise-administrator-privileges"></a>Berechtigungen als Domänen- oder Unternehmensadministrator
 Diese erhöhten Rechte werden in einer verwalteten AAD DS-Domäne nicht bereitgestellt. Anwendungen, die diese erhöhten Rechte für eine Installation/Ausführung benötigen, können in verwalteten Domänen nicht ausgeführt werden. Ein kleinerer Teilsatz der Administratorrechte steht Mitgliedern der Gruppe der delegierten Administratoren namens „AAD DC Administrators“ zur Verfügung. Mitglieder dieser Gruppe erhalten die Berechtigung zum Konfigurieren von DNS, können Gruppenrichtlinien konfigurieren, erhalten Administratorrechte auf in die Domäne eingebundenen Computern usw.
@@ -67,8 +69,13 @@ Sie können der verwalteten Domäne in ähnlicher Weise virtuelle Computer hinzu
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>Domänenauthentifizierung mithilfe von NTLM und Kerberos
 Mit den Azure AD Domain Services können Sie Ihre Unternehmensanmeldeinformationen zur Authentifizierung bei der verwalteten Domäne verwenden. Die Anmeldeinformationen werden mit Ihrem Azure AD-Mandanten synchronisiert. Für synchronisierte Mandanten stellt Azure AD Connect sicher, dass Änderungen, die lokal an den Anmeldeinformationen vorgenommen werden, mit Azure AD synchronisiert werden. Bei einem DIY-Domänensetup müssen Sie möglicherweise eine Domänenvertrauensstellung mit einer lokalen Kontogesamtstruktur einrichten, damit Benutzer sich mit ihren Unternehmensanmeldeinformationen authentifizieren können. Alternativ ist möglicherweise die Einrichtung einer AD-Replikation erforderlich, um sicherzustellen, dass Benutzerkennwörter mit Ihren Azure-Domänencontroller-VMs synchronisiert werden.
 
+#### <a name="kerberos-constrained-delegation"></a>Eingeschränkte Kerberos-Delegierung
+Sie besitzen in einer durch Active Directory Domain Services verwalteten Domäne keine Domänenadministratorberechtigungen. Deswegen können Sie keine herkömmliche kontobasierte eingeschränkte Kerberos-Delegierung konfigurieren. Die sicherere ressourcenbasierte eingeschränkte Delegierung können Sie dagegen konfigurieren.
+[Weitere Informationen](active-directory-ds-enable-kcd.md)
+
 #### <a name="custom-ou-structure"></a>Benutzerdefinierte OE-Struktur
-Mitglieder der Gruppe „AAD DC Adminstrators“ können benutzerdefinierte OEs in der verwalteten Domäne erstellen.
+Mitglieder der Gruppe „AAD DC Adminstrators“ können benutzerdefinierte OEs in der verwalteten Domäne erstellen. Benutzer, die benutzerdefinierte OEs erstellen, erhalten über die von ihnen erstellten OEs volle Administratorrechte. 
+[Weitere Informationen](active-directory-ds-admin-guide-create-ou.md)
 
 #### <a name="schema-extensions"></a>Schemaerweiterungen
 Sie können das Basisschema einer verwalteten Azure AD Domain Services-Domäne nicht erweitern. Daher können Anwendungen, die von Erweiterungen des AD-Schemas abhängen (beispielsweise neue Attribute unter dem Benutzerobjekt) nicht per „Lift and Shift“ in AAD DS-Domänen verschoben werden.
@@ -81,12 +88,14 @@ Die verwaltete Domäne unterstützt LDAP-Leseworkloads. Daher können Sie Anwend
 
 #### <a name="secure-ldap"></a>Sicheres LDAP (LDAPS)
 Sie können die Azure AD Domain Services so konfigurieren, dass ein Zugriff über sicheres LDAP auf Ihre verwaltete Domäne möglich ist – auch über das Internet.
+[Weitere Informationen](active-directory-ds-admin-guide-configure-secure-ldap.md)
 
 #### <a name="ldap-write"></a>LDAP-Schreibvorgänge
 Die verwaltete Domäne ist für Benutzerobjekte schreibgeschützt. Deshalb können Anwendungen, die LDAP-Schreibvorgänge für Attribute des Benutzerobjekts ausführen, nicht in einer verwalteten Domäne verwendet werden. Darüber hinaus können Benutzerkennwörter nicht innerhalb der verwalteten Domäne geändert werden. Das Ändern von Gruppenmitgliedschaften oder Gruppenattributen innerhalb der verwalteten Domäne ist ebenfalls unzulässig. Änderungen hingegen, die (über PowerShell/Azure-Portal) in Azure AD an Benutzerattributen oder -kennwörtern oder im lokalen AD-System durchgeführt werden, werden mit der verwalteten AAD DS-Domäne synchronisiert.
 
 #### <a name="group-policy"></a>Gruppenrichtlinie
-Komplexe Gruppenrichtlinienelemente werden in der verwalteten AAD DS-Domäne nicht unterstützt. Beispielsweise ist es nicht möglich, separate Gruppenrichtlinienobjekte (GPOs) für jede Organisationseinheit (OE) in der Domäne zu erstellen und bereitzustellen oder eine WMI-Filterung für Gruppenrichtlinienziele durchzuführen. Es ist jeweils ein integriertes GPO für die Container „AADDC Computers“ und „AADDC Users“ vorhanden, die zum Konfigurieren von Gruppenrichtlinien angepasst werden können.
+Es ist jeweils ein integriertes GPO für die Container „AADDC Computers“ und „AADDC Users“ vorhanden, die zum Konfigurieren von Gruppenrichtlinien angepasst werden können. Mitglieder der Gruppe „AAD DC Administrators“ können auch benutzerdefinierte GPOs erstellen und diese mit bestehenden OEs (auch benutzerdefinierten) verknüpfen.
+[Weitere Informationen](active-directory-ds-admin-guide-administer-group-policy.md)
 
 #### <a name="geo-dispersed-deployments"></a>Geografisch verteilte Bereitstellungen
 Verwaltete Azure AD Domain Services-Domänen stehen in einem einzigen virtuellen Netzwerk in Azure zur Verfügung. Für Szenarios, die es erforderlich machen, dass Domänencontroller in mehreren Azure-Regionen weltweit zur Verfügung stehen, stellt das Einrichten von Domänencontrollern in Azure-IaaS-VMs möglicherweise die bessere Alternative dar.
@@ -113,6 +122,6 @@ Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directo
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

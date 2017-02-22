@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte zum Erstellen eines Lastenausgleichs mit Internetzugriff im klassischen Bereitstellungsmodell für Clouddienste | Microsoft Docs"
+title: "Erstellen eines Lastenausgleichs für den Internetzugriff für Azure-Clouddienste | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie für Clouddienste einen Lastenausgleich mit Internetzugriff in einem klassischen Bereitstellungsmodell erstellen."
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/17/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: cf1eafc7bca5bddeb32f1e1e05e660d6877ed805
-ms.openlocfilehash: 6a471050a03c8399b0715c331b54636c68fd71cb
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 1ceaafebcaebecb04314c7da62c69b2e9b5ba39a
 
 ---
 
@@ -93,6 +93,6 @@ Die Testdefinition steuert auch die Häufigkeit des Tests. In unserem Fall teste
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

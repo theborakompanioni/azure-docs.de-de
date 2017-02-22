@@ -6,7 +6,7 @@
 2. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach „Microsoft Azure Relay“. Wählen Sie dann das Element **Microsoft Azure Relay** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
 
 ### <a name="write-some-code-to-receive-messages"></a>Schreiben von Code zum Empfangen von Nachrichten
-1. Fügen Sie am Anfang der Datei „Program.cs“ die folgenden `using`-Anweisungen hinzu:
+1. Ersetzen Sie die vorhandenen Anweisungen vom Typ `using` (am Anfang der Datei „Program.cs“) durch folgende Anweisungen:
    
     ```csharp
     using System;
@@ -23,7 +23,7 @@
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Fügen Sie der `Program`-Klasse folgendermaßen eine neue Methode namens `ProcessMessagesOnConnection` hinzu:
+3. Fügen Sie der `Program`-Klasse die folgende neue Methode namens `ProcessMessagesOnConnection` hinzu:
    
     ```csharp
     // Method is used to initiate connection
@@ -74,7 +74,7 @@
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. Fügen Sie der `Program`-Klasse folgendermaßen eine weitere neue Methode namens `RunAsync` hinzu:
+4. Fügen Sie der `Program`-Klasse wie folgt eine weitere neue Methode namens `RunAsync` hinzu:
    
     ```csharp
     private static async Task RunAsync()
@@ -242,6 +242,6 @@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: Grundlagen des PowerShell-Workflows
-description: "Dieser Artikel ist als kurze Lektion für Autoren gedacht, die mit PowerShell vertraut sind, um die Grundlagen der speziellen Unterschiede zwischen PowerShell und dem PowerShell-Workflow zu verdeutlichen."
+title: "Grundlagen des PowerShell-Workflows für Azure Automation | Microsoft-Dokumentation"
+description: "Dieser Artikel ist als kurze Lektion für Autoren gedacht, die mit PowerShell vertraut sind, um die Grundlagen der speziellen Unterschiede zwischen PowerShell und dem PowerShell-Workflow sowie Konzepte, die für Automation-Runbooks gelten, zu verdeutlichen."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -12,27 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
-ms.author: bwren
+ms.date: 01/23/2017
+ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 0ab72bd4ad531d1162726c6f5548fa253a4f5265
-ms.openlocfilehash: 3893d8508535ee605c3555d2ddf40d6f286d85fa
+ms.sourcegitcommit: 480a40bd5ecd58f11b10c27e7e0d2828bcae1f17
+ms.openlocfilehash: 50966ed518b79f2033680790432e29b0c9e7b289
 
 
 ---
-# <a name="learning-windows-powershell-workflow"></a>Grundlagen des Windows PowerShell-Workflows
-Runbooks in Azure Automation sind als Windows PowerShell-Workflows implementiert.  Ein Windows PowerShell-Workflow ähnelt einem Windows PowerShell-Skript, weist aber einige wesentliche Unterschiede auf, die für einen neuen Benutzer verwirrend sein können.  Dieser Artikel richtet sich an Benutzer, die bereits mit PowerShell vertraut sind. Er enthält kurze Erklärungen von Konzepten, mit denen Sie vertraut sein müssen, wenn Sie ein PowerShell-Skript zur Verwendung in einem Runbook in einen PowerShell-Workflow konvertieren.  
+# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks 
+Runbooks in Azure Automation sind als Windows PowerShell-Workflows implementiert.  Ein Windows PowerShell-Workflow ähnelt einem Windows PowerShell-Skript, weist aber einige wesentliche Unterschiede auf, die für einen neuen Benutzer verwirrend sein können.  Dieser Artikel ist zwar dazu vorgesehen, Sie beim Schreiben von Runbooks mithilfe des PowerShell-Workflows zu schreiben, wir empfehlen jedoch, dass Sie die Runbooks mithilfe von PowerShell schreiben, sofern Sie keine Prüfpunkte benötigen.  Beim Erstellen von PowerShell-Workflow-Runbooks gilt eine Reihe von Syntaxunterschieden, die etwas mehr Aufwand beim Schreiben effektiver Workflows erfordern.  
 
 Bei einem Workflow handelt es sich um eine Sequenz von programmierten, zusammenhängenden Schritten, mit denen zeitaufwändige Aufgaben ausgeführt werden oder für die mehrere Schritte auf verschiedenen Geräten oder verwalteten Knoten koordiniert werden müssen. Die Vorteile eines Workflows gegenüber einem normalen Skript liegen darin, dass eine Aktion gleichzeitig für mehrere Geräte ausgeführt und bei Auftreten von Fehlern eine automatische Wiederherstellung durchgeführt werden kann. Ein Windows PowerShell-Workflow ist ein Windows PowerShell-Skript, das Windows Workflow Foundation nutzt. Wenngleich der Workflow mit Windows PowerShell-Syntax geschrieben und über Windows PowerShell gestartet wird, erfolgt die Verarbeitung durch Windows Workflow Foundation.
 
 Ausführliche Informationen zu den Themen in diesem Artikel finden Sie unter [Erste Schritte mit dem Windows PowerShell-Workflow](http://technet.microsoft.com/library/jj134242.aspx).
-
-## <a name="types-of-runbook"></a>Arten von Runbooks
-Es gibt drei Arten von Runbooks in Azure Automation: *PowerShell-Workflow-Runbooks*, *PowerShell-Runbooks* und *grafische Runbooks*.  Sie können den Runbooktyp beim Erstellen des Runbooks definieren, und es ist nicht möglich, ein Runbook nach der Erstellung in den anderen Typ zu konvertieren.
-
-PowerShell-Workflow-Runbooks und PowerShell-Runbooks sind für Benutzer bestimmt, die lieber direkt mit dem PowerShell-Code arbeiten – entweder mit dem Text-Editor in Azure Automation oder mit einem Offline-Editor wie PowerShell ISE. Sie sollten die Informationen in diesem Artikel verstanden haben, wenn Sie ein PowerShell-Workflow-Runbook erstellen.
-
-Grafische Runbooks ermöglichen Ihnen die Erstellung von Runbooks mit den gleichen Aktivitäten und Cmdlets, aber Sie nutzen eine grafische Oberfläche, bei der die komplexen Zusammenhänge des zugrunde liegenden PowerShell-Workflows verborgen sind.  Die Konzepte in diesem Artikel, z. B. Prüfpunkte und parallele Ausführung, gelten auch für grafische Runbooks, aber Sie müssen sich dabei keine Gedanken über die ausführliche Syntax machen.
 
 ## <a name="basic-structure-of-a-workflow"></a>Grundlegende Struktur eines Workflows
 Der erste Schritt beim Konvertieren eines PowerShell-Skripts in einen PowerShell-Workflow ist das Umschließen mit einem **Workflow** -Schlüsselwort.  Ein Workflow beginnt mit dem Schlüsselwort **Workflow** , gefolgt vom Hauptteil des Skripts, der in Klammern gesetzt ist. Auf das Schlüsselwort **Workflow** folgt der Name des Workflows, wie in der folgenden Syntax gezeigt.
@@ -204,7 +197,6 @@ Das folgende Beispiel ähnelt dem vorherigen Beispiel mit dem parallelen Kopiere
 > [!NOTE]
 > Wir raten davon ab, untergeordnete Runbooks parallel auszuführen, da dies häufig zu unzuverlässigen Ergebnissen führt.  Die Ausgabe des untergeordneten Runbooks wird in einigen Fällen nicht angezeigt, und die Einstellungen in einem untergeordneten Runbook können sich auf andere untergeordnete Runbooks auswirken.
 >
->
 
 ## <a name="checkpoints"></a>Prüfpunkte
 Ein *Prüfpunkt* ist eine Momentaufnahme des aktuellen Zustands des Workflows, der den aktuellen Wert für Variablen und sämtliche Ausgaben einschließt, die bis zu diesem Punkt generiert wurden. Wenn ein Workflow mit einem Fehler endet oder angehalten wird, wird er bei der nächsten Ausführung am letzten Prüfpunkt gestartet, und nicht am Anfang des Workflows.  Sie können mithilfe der Aktivität **Checkpoint-Workflow** einen Prüfpunkt in einem Workflow setzen.
@@ -267,10 +259,10 @@ Dies ist nicht erforderlich, wenn die Authentifizierung mithilfe eines ausführe
 Weitere Informationen zu Prüfpunkten finden Sie unter [Hinzufügen von Prüfpunkten zu einem Skriptworkflow](http://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zu den ersten Schritten mit PowerShell-Workflow-Runbooks finden Sie unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
+* Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -66,7 +66,7 @@ sql-database-service-tiers.md
 | Poolgröße (eDTUs)  |  **2000** | **2500** | **3000** | **3500** | **4000** |
 |:---|---:|---:|---:| ---: | ---: | 
 | Max. Speicherkapazität pro Pool* | 750 GB | 750 GB | 750 GB | 750 GB | 750 GB |
-| Max. Speicherkapazität pro Pool* | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
+| Max. In-Memory-OLTP-Speicher pro Pool* | 16 GB | 20 GB | 24 GB | 28 GB | 32 GB |
 | Max. Anzahl Datenbanken pro Pool | 100 | 100 | 100 | 100 | 100 | 
 | Max. gleichzeitige Worker pro Pool |  3200 | 4000 | 4800 | 5600 | 6400 |
 | Max. gleichzeitige Anmeldungen pro Pool |  3200 | 4000 | 4800 | 5600 | 6400 |
@@ -79,6 +79,6 @@ sql-database-service-tiers.md
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

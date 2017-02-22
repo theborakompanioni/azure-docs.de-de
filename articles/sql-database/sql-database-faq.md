@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL-Datenbank – Häufig gestellte Fragen"
+title: "Häufig gestellte Fragen zu Azure SQL-Datenbank | Microsoft-Dokumentation"
 description: "Antworten auf häufig gestellte Fragen von Kunden zu Cloud-Datenbanken, zur Azure SQL-Datenbank, das Microsoft Managementsystem für relationale Datenbanken (RDBMS) und Database as a Service in der Cloud."
 services: sql-database
 documentationcenter: 
@@ -13,15 +13,31 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 12/19/2016
+ms.date: 02/06/2017
 ms.author: sashan;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ad6fb631f05b1e88e8cbaaca83f9863cfb643269
-ms.openlocfilehash: aba60bf5108a4e5ad95e3c634b9fcbca7393c700
+ms.sourcegitcommit: ff3ea3564d3cde5369f87d5f5102176229686acb
+ms.openlocfilehash: 6b828f7256c27aab567428706cd38c38b2f896eb
 
 
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
+
+## <a name="what-is-the-current-version-of-sql-database"></a>Wie lautet die aktuelle Version von SQL-Datenbank?
+Die aktuelle Version von SQL-Datenbank ist V12. Version V11 wurde eingestellt.
+
+## <a name="what-is-the-sla-for-sql-database"></a>Wie lautet die Vereinbarung zum Servicelevel (SLA) für SQL-Datenbank?
+Für die Tarife „Basic“, „Standard“ und „Premium“ von Microsoft Azure SQL-Datenbank (Einzeldatenbank oder elastische Datenbank) garantieren wir eine Konnektivität von mindestens 99,99 Prozent zwischen der Datenbank und unserem Internetgateway. Weitere Informationen finden Sie unter [SLA](http://azure.microsoft.com/support/legal/sla/).
+
+## <a name="how-do-i-reset-the-password-for-the-server-admin"></a>Wie setze ich das Kennwort für den Serveradministrator zurück?
+Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Server**, wählen Sie in der Liste den Server aus, und klicken Sie auf **Kennwort zurücksetzen**.
+
+## <a name="how-do-i-manage-databases-and-logins"></a>Wie verwalte ich Datenbanken und Anmeldungen?
+Informationen hierzu finden Sie unter [Steuern und Gewähren von Datenbankzugriff](sql-database-manage-logins.md).
+
+## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Wie stelle ich sicher, dass nur autorisierte IP-Adressen auf einen Server zugreifen dürfen?
+Siehe [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md).
+
 ## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill"></a>Wie wird die Nutzung der SQL-Datenbank auf meiner Rechnung ausgewiesen?
 Die Abrechnung der SQL-Datenbank erfolgt nach einer vorhersehbaren Stundenpauschale basierend auf Dienst- und Leistungsebene für Einzeldatenbanken oder eDTUs pro elastischem Pool. Der tatsächliche Verbrauch wird stündlich berechnet und anteilig aufgeführt, sodass auf Ihrer Rechnung auch Bruchteile einer Stunde auftauchen können. Wenn eine Datenbank beispielsweise innerhalb eines Monats 12 Stunden existiert, wird auf Ihrer Rechnung eine Nutzung von 0,5 Tagen aufgeführt. Zudem sind die Dienst- und Leistungsebenen sowie eDTUs pro Pool in der Rechnung aufgeschlüsselt, um die Anzahl der Datenbanktage einfacher zu erkennen, die jeweils in einem Monat angefallen sind.
 
@@ -35,7 +51,7 @@ Beispiele
 * Wenn Sie für eine Datenbank um 11:00 Uhr ein Downgrade von Premium auf Basic durchführen und der Vorgang um 14:15 Uhr abgeschlossen ist, wird für die Datenbank bis 15:00 Uhr die Premium-Rate berechnet. Danach werden die Basic-Raten berechnet.
 
 ## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>Wie wird die Nutzung des elastischen Pools auf meiner Rechnung ausgewiesen, und was passiert, wenn ich eDTUs pro Pool ändere?
-Die Abrechnung der Gebühren für den elastischen Pool erfolgt auf Ihrer Rechnung als elastische DTUs (eDTUs) in den Abstufungen, die unter den eDTUs pro Pool auf der [Preisseite](https://azure.microsoft.com/pricing/details/sql-database/) ausgewiesen sind. Für elastische Pools erfolgt keine Abrechnung pro Datenbank. Die Abrechnung erfolgt für jede Stunde, in der ein Pool im höchsten eDTU existiert, unabhängig von der Verwendung oder ob der Pool weniger als eine Stunde aktiv war. 
+Die Abrechnung der Gebühren für den Pool für elastische Datenbanken erfolgt auf Ihrer Rechnung als elastische DTUs (eDTUs) in den Abstufungen, die unter den eDTUs pro Pool auf der [Preisseite](https://azure.microsoft.com/pricing/details/sql-database/) ausgewiesen sind. Für elastische Pools erfolgt keine Abrechnung pro Datenbank. Die Abrechnung erfolgt für jede Stunde, in der ein Pool im höchsten eDTU existiert, unabhängig von der Verwendung oder ob der Pool weniger als eine Stunde aktiv war. 
 
 Beispiele
 
@@ -48,13 +64,14 @@ Elastische Pools werden anhand der folgenden Merkmale abgerechnet:
 
 * Ein elastischer Pool wird bei seiner Erstellung abgerechnet, auch wenn keine Datenbanken im Pool vorhanden sind.
 * Ein elastischer Pool wird stündlich abgerechnet. Dies ist die gleiche Häufigkeit wie für Leistungsstufen von Einzeldatenbanken.
-* Wenn ein elastischer Pool auf die Größe einer neuen Anzahl von eDTUs geändert wird, wird der Pool erst dann gemäß den neuen eDTUs berechnet, wenn die Größenänderung abgeschlossen ist. Dies erfolgt nach dem gleichen Muster wie beim Ändern der Leistungsstufe von Einzeldatenbanken.
+* Wenn ein Pool für elastische Datenbanken auf die Größe einer neuen Anzahl von eDTUs geändert wird, wird der Pool erst dann gemäß den neuen eDTUs berechnet, wenn die Größenänderung abgeschlossen ist. Dies erfolgt nach dem gleichen Muster wie beim Ändern der Leistungsstufe von Einzeldatenbanken.
 * Der Preis für einen elastischen Pool basiert auf der Anzahl von eDTUs des Pools. Der Preis eines elastischen Pools hängt nicht von der Anzahl und Auslastung der darin enthaltenen elastischen Datenbanken ab.
 * Der Preis wird wie folgt berechnet: (Anzahl von Pool-eDTUs) x (Einzelpreis pro eDTU).
 
 Der eDTU-Einzelpreis für einen elastischen Anwendungspool ist höher als der DTU-Stückpreis für eine Einzeldatenbank derselben Dienstebene. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
 
 Grundlegende Informationen zu eDTUs und Dienstebenen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md).
+
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Wie wird die Nutzung der aktiven Georeplikation in einem elastischen Pool auf meiner Rechnung ausgewiesen?
 Im Gegensatz zu Einzeldatenbanken hat die Nutzung der [aktiven Georeplikation](sql-database-geo-replication-overview.md) mit elastischen Datenbanken keine direkte Auswirkung auf die Abrechnung.  Ihnen werden nur die für die einzelnen Pools (primärer Pool und sekundärer Pool) bereitgestellten eDTUs in Rechnung gestellt.
 
@@ -106,6 +123,6 @@ Die Replikationsverzögerung zwischen der primären Datenbank und der geografisc
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

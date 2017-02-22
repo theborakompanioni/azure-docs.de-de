@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 664abe5887b3d96eb48e3b47df9a32648ee623dd
+ms.sourcegitcommit: 3b31bd036d9c3ff8036b314b93cbddd94874ff63
+ms.openlocfilehash: 8f7a679dc5b5726107503a9f7363ab162b1770d0
 
 
 ---
@@ -30,16 +30,15 @@ Die Vorschauoberfläche ermöglicht Ihnen das Verwalten vieler Verzeichnisressou
 Die Vorschauoberfläche führt Lese- und Schreibvorgänge für denselben Azure Active Directory-Mandanten durch wie das klassische Portal und das Office 365 Admin Center. Änderungen, die in einem dieser Portale durchgeführt werden, werden in allen anderen Portalen widergespiegelt.
 
 ## <a name="use-the-same-authorization-logic"></a>Verwendung derselben Autorisierungslogik
-Die Vorschauoberfläche verwendet dieselbe Autorisierungslogik wie die vorhandenen Active Directory-Clients. Benutzer sind basierend auf ihrer Verzeichnisrolle – z.B. globaler Administrator, Benutzeradministrator und Kennwortadministrator – dazu autorisiert, Änderungen an Verzeichnisressourcen vorzunehmen. Eine Rolle für Azure-Ressourcen oder ein Azure-Abonnement autorisiert einen Benutzer nicht, Verzeichnisressourcen zu verwalten. Weitere Informationen zu Azure AD-Verwaltungsrollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles.md). 
+Die Vorschauoberfläche verwendet dieselbe Autorisierungslogik wie die vorhandenen Active Directory-Clients. Benutzer sind basierend auf ihrer Verzeichnisrolle – z.B. globaler Administrator, Benutzeradministrator und Kennwortadministrator – dazu autorisiert, Änderungen an Verzeichnisressourcen vorzunehmen. Eine Rolle für Azure-Ressourcen oder ein Azure-Abonnement autorisiert einen Benutzer nicht, Verzeichnisressourcen zu verwalten. Weitere Informationen zu Azure AD-Verwaltungsrollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles.md).
 
 Die Vorschauoberfläche ist für globale Administratoren optimiert. Wenn Sie die Vorschauoberfläche verwenden, während Sie als ein Benutzer angemeldet sind, der nicht als globaler Administrator konfiguriert ist, ist das Benutzererlebnis möglicherweise beeinträchtigt. Zum Beispiel können Sie möglicherweise auf eine Schaltfläche zum Starten einer Aufgabe klicken, die Sie nicht im Verzeichnis ausführen können. Dieses Verhalten wird bald verbessert.
 
-## <a name="tell-us-what-you-think"></a>Sagen Sie uns Ihre Meinung
+## <a name="next-steps"></a>Nächste Schritte
 Sie können uns im Verwaltungsportalbereich des [Azure AD-Feedbackforums](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&filter=alltypes&sort=lastpostdesc)Feedback zur Vorschauoberfläche geben.
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

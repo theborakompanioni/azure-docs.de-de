@@ -130,6 +130,6 @@ Fahren Sie nun mit dem Artikel [Erstellen eines Anwendungsgateways zum Hosten me
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 12/20/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: afb51a4513a7f1bcbbc85394d8dc7ab8af762f43
+ms.sourcegitcommit: ce3379d5b5e883c6601c40aca191e8b84e3ad8d3
+ms.openlocfilehash: 0170b5d2435f6e856478ee9e55ae26c626288f75
 
 
 ---
@@ -28,11 +28,11 @@ Von Azure AD Identity Protection werden zwei Arten von automatisierten Benachric
 * Wöchentliche E-Mail mit Übersicht
 
 ## <a name="user-compromised-alert-email"></a>E-Mail als Warnung vor kompromittiertem Benutzer
-Eine E-Mail als Warnung vor einem kompromittiertem Benutzer wird generiert, wenn ein Konto von Azure AD Identity Protection als kompromittiert erkannt wird. Die E-Mail enthält einen Link zum Bericht vom Typ „Benutzer mit Risikokennzeichnung“ im Identity Protection Dashboard. Es wird empfohlen, dass Sie sofort Benachrichtigungen zu kompromittierten Benutzern untersuchen.
+Eine E-Mail als Warnung vor einem kompromittiertem Benutzer wird generiert, wenn ein Konto von Azure AD Identity Protection als kompromittiert erkannt wird. Die E-Mail enthält einen Link zum Bericht vom Typ „Benutzer mit Risikokennzeichnung“ im Identity Protection Dashboard. Es wird empfohlen, dass Sie Benachrichtigungen zu kompromittierten Konten sofort untersuchen.
 
 ## <a name="weekly-digest-email"></a>Wöchentliche E-Mail mit Übersicht
 Die wöchentliche E-Mail mit einer Übersicht enthält eine Zusammenfassung der neuen Risikoereignisse.<br>
- Sie hat folgenden Inhalt:
+Sie hat folgenden Inhalt:
 
 * Gefährdete Benutzer
 * Verdächtige Aktivitäten
@@ -40,8 +40,8 @@ Die wöchentliche E-Mail mit einer Übersicht enthält eine Zusammenfassung der 
 * Links zu verwandten Berichten in Identity Protection
 
 <br>
-![Korrektur](./media/active-directory-identityprotection-notifications/400.png "Remediation")
-<br> 
+![Wartung](./media/active-directory-identityprotection-notifications/400.png "Remediation")
+<br>
 
 Sie können das Senden einer wöchentlichen Übersichts-E-Mail deaktivieren.
 <br><br>
@@ -59,12 +59,11 @@ Sie können das Senden einer wöchentlichen Übersichts-E-Mail deaktivieren.
    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
    <br>
 
-## <a name="see-also"></a>Siehe auch
-* [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
+## <a name="see-also"></a>Weitere Informationen
+* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

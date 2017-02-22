@@ -6,6 +6,6 @@ Ein Azure-Speicherkonto können Sie auch mit [Azure PowerShell](../articles/stor
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Dec16_HO3-->
 
 

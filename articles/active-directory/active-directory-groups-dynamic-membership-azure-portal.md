@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 02/14/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: da120b0ea1bfa7a0afcb6eed864c4eadbd2bbec0
+ms.sourcegitcommit: e5103ccd0cc9ac46a29d98c613b58eead01f5e31
+ms.openlocfilehash: 6c7adb5d20c70c52400f1b003d4a81fdbf62b405
 
 
 ---
 # <a name="using-attributes-to-create-advanced-rules-for-group-membership-in-azure-active-directory-preview"></a>Verwenden von Attributen zum Erstellen erweiterter Regeln für Gruppenmitgliedschaften in der Azure Active Directory-Vorschau
-Im Azure-Portal haben Sie die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Gruppen in der Azure Active Directory-Vorschau (Azure AD) aktivieren können. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)  In diesem Artikel werden die Regelattribute und die Syntax zum Erstellen dieser erweiterten Regeln erläutert.
+Im Azure-Portal haben Sie die Möglichkeit, erweiterte Regeln zu erstellen, mit denen Sie komplexere attributbasierte, dynamische Mitgliedschaften für Gruppen in der Azure Active Directory-Vorschau (Azure AD) aktivieren können. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md) In diesem Artikel werden die Regelattribute und die Syntax zum Erstellen dieser erweiterten Regeln erläutert.
 
 ## <a name="to-create-the-advanced-rule"></a>So erstellen Sie eine erweiterte Regel
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
@@ -119,6 +119,7 @@ Zulässige Operatoren
 | --- | --- | --- |
 | city |Jeder string-Wert oder $null |(user.city -eq "value") |
 | country |Jeder string-Wert oder $null |(user.country -eq "value") |
+| CompanyName | Jeder string-Wert oder $null | (user.CompanyName -eq "value") |
 | department |Jeder string-Wert oder $null |(user.department -eq "value") |
 | displayName |Jeder string-Wert. |(user.displayName -eq "value") |
 | facsimileTelephoneNumber |Jeder string-Wert oder $null |(user.facsimileTelephoneNumber -eq "value") |
@@ -194,7 +195,7 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
 | isManaged |true false null |(device.isManaged -eq "false") |
 | isCompliant |true false null |(device.isCompliant -eq "true") |
 
-## <a name="additional-information"></a>Zusätzliche Informationen
+## <a name="next-steps"></a>Nächste Schritte
 Diese Artikel enthalten zusätzliche Informationen zu Gruppen in Azure Active Directory.
 
 * [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
@@ -205,6 +206,6 @@ Diese Artikel enthalten zusätzliche Informationen zu Gruppen in Azure Active Di
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

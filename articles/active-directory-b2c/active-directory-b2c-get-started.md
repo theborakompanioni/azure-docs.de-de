@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 12/06/2016
+ms.date: 01/26/2017
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 36268d0153f4f61d6e6132f4e6a878b11cf7f6c2
+ms.sourcegitcommit: 351149296a6d7dfa801b295ec21fc04215c7b051
+ms.openlocfilehash: 77b8e707b5743ce2d0b3eb52f75828c9ab0337d9
 
 
 ---
@@ -67,6 +67,14 @@ Führen Sie die folgenden Schritte aus, um einen neuen Azure AD B2C-Mandanten zu
    > 
    > 
 
+## <a name="step-4-link-your-azure-ad-b2c-tenant-to-your-azure-subscription"></a>Schritt 4: Verknüpfen Ihres Azure AD B2C-Mandanten mit Ihrem Azure-Abonnement
+Wenn Sie Ihren B2C-Mandanten für Produktions-Apps verwenden möchten, müssen Sie Ihren Azure AD B2C-Mandanten mit Ihrem Azure-Abonnement verknüpfen, um für Nutzungsgebühren zu bezahlen. Weitere Informationen hierzu finden Sie in [diesem Artikel](active-directory-b2c-how-to-enable-billing.md).
+
+   > [!IMPORTANT]
+   > Wenn Sie Ihren Azure AD B2C-Mandanten nicht mit Ihrem Azure-Abonnement verknüpfen, wird Ihnen im Azure-Portal auf dem Blatt mit den B2C-Funktionen eine Warnmeldung angezeigt („Mit diesem B2C-Mandanten ist kein Abonnement verknüpft, oder das Abonnement benötigt Ihre Aufmerksamkeit.“). Es ist wichtig, dass Sie diesen Schritt ausführen, bevor Sie Ihre Apps in die Produktion übertragen.
+   > 
+   > 
+
 ## <a name="easy-access-to-the-b2c-features-blade-on-the-azure-portal"></a>Einfacher Zugriff auf das Blatt „B2C-Funktionen“ im Azure-Portal
 Um die Auffindbarkeit zu verbessern, haben wir eine Verknüpfung zum Blatt „B2C-Funktionen“ im Azure-Portal hinzugefügt.
 
@@ -82,6 +90,6 @@ Informationen zum Registrieren einer Anwendung in Azure AD B2C und zum Erstellen
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

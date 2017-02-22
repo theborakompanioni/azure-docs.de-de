@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte zum Erstellen eines Lastenausgleichs mit Internetzugriff in einem klassischen Bereitstellungsmodell im klassischen Azure-Portal | Microsoft Docs
+title: "Erstellen eines Lastenausgleichs für den Internetzugriff – klassisches Azure-Portal | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie im klassischen Azure-Portal einen Load Balancer mit Internetzugriff in einem klassischen Bereitstellungsmodell erstellen
 services: load-balancer
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 7153d0321a95a19cf7de17aa1c77d1369330a79b
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: a022154f5eca6de2d2dbfc1b9aa30d2ea0a7d650
 
 ---
 
@@ -70,6 +70,6 @@ Wiederholen Sie die Schritte 8 bis 10 für die weiteren virtuellen Computer in 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

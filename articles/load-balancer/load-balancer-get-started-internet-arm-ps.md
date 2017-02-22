@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Lastenausgleichs mit Internetzugriff in Resource Manager mithilfe von PowerShell | Microsoft Docs
+title: "Erstellen einer Azure-Instanz mit Lastenausgleich für den Internetzugriff – PowerShell | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie im Resource Manager mithilfe von PowerShell einen Load Balancer mit Internetzugriff erstellen.
 services: load-balancer
 documentationcenter: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 01/23/2017
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 1a1c3c15c51b1e441f21158510e92cc8de057352
-ms.openlocfilehash: d489573e9a3efceb5bf8a4d6a7e0284c61bc24e9
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 5abd8365ed883831d4c85ebd14de31dbe45d815d
 
 ---
 
@@ -318,6 +318,6 @@ Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 12/06/2016
+ms.date: 01/04/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b4bd777b454a68ee06bbc4dffaff91213d58f28c
+ms.sourcegitcommit: ec13e72de7ccebefbaa88309f8248f29b569ef2f
+ms.openlocfilehash: e14b037f962afb803a2271b221e6309c7e8220cd
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: b4bd777b454a68ee06bbc4dffaff91213d58f28c
 Azure SQL-Datenbank verfügt über drei [Dienstebenen](sql-database-service-tiers.md): Basic, Standard und Premium. Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
 
 > [!NOTE]
-> In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für elastische Datenbankpools finden Sie unter [Überlegungen zum Preis und zur Leistung eines Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem Pool für elastische Datenbanken anwenden und ähnliche Leistungsvorteile erzielen können.
+> In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für elastische Pools finden Sie unter [Wo sollte ein elastischer Pool verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem elastischen Pool anwenden und ähnliche Leistungsvorteile erzielen können.
 > 
 > 
 
@@ -62,15 +62,8 @@ Jeder Dienstebene und Leistungsebene sind verschiedene Beschränkungen und Leist
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-Die nächsten Abschnitte enthalten weitere Informationen zum Anzeigen der Nutzung mit diesen Beschränkungen.
-
 ### <a name="maximum-in-memory-oltp-storage"></a>Maximaler In-Memory-OLTP-Speicher
 Sie können die **sys.dm_db_resource_stats**-Ansicht verwenden, um die Verwendung des Azure-In-Memory-Speichers zu überwachen. Weitere Informationen zur Überwachung finden Sie unter [Überwachen des In-Memory-OLTP-Speichers](sql-database-in-memory-oltp-monitoring.md).
-
-> [!NOTE]
-> Derzeit wird die Vorschauversion von Azure-In-Memory-OLTP (Online Transaction Processing) nur für Einzeldatenbanken unterstützt. Die Verwendung in Datenbanken in Pools für elastische Datenbanken ist nicht möglich.
-> 
-> 
 
 ### <a name="maximum-concurrent-requests"></a>Maximale Anzahl von gleichzeitigen Anforderungen
 Um die Anzahl gleichzeitiger Anforderungen anzuzeigen, führen Sie in der SQL-Datenbank diese Transact-SQL-Abfrage aus:
@@ -93,7 +86,7 @@ Sie können Ihre Benutzer- und Anmeldungsmuster analysieren, um Informationen zu
 Der Dienst authentifiziert jede Anmeldung, wenn mehrere Clients die gleiche Verbindungszeichenfolge verwenden. Wenn zehn Benutzer gleichzeitig mit dem gleichen Benutzernamen und Kennwort mit einer Datenbank verbunden sind, wären dies also zehn gleichzeitige Anmeldungen. Diese Obergrenze gilt nur für die Dauer der Anmeldung und Authentifizierung. Wenn sich die gleichen zehn Benutzer nacheinander an der Datenbank anmelden, wäre die Anzahl von gleichzeitigen Anmeldungen niemals höher als 1.
 
 > [!NOTE]
-> Diese Beschränkung gilt derzeit nicht für Datenbanken in Pools für elastische Datenbanken.
+> Diese Beschränkung gilt derzeit nicht für Datenbanken in elastischen Pools.
 > 
 > 
 
@@ -439,12 +432,12 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Dienstebenen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md)
-* Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Azure-Pool für elastische Datenbanken?](sql-database-elastic-pool.md)
-* Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein elastischer Datenbankpool in Frage kommt](sql-database-elastic-pool-guidance.md)
+* Weitere Informationen zu elastischen Pools finden Sie unter [Was ist ein elastischer Azure-Pool?](sql-database-elastic-pool.md).
+* Informationen zur Leistung und zu elastischen Pools finden Sie unter [Wann ein elastischer Pool in Frage kommt](sql-database-elastic-pool-guidance.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

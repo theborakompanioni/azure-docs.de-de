@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von DNS-Ressourceneintragssätzen und Einträgen mit dem Azure-Portal | Microsoft Docs"
-description: "Verwalten von DNS-Ressourceneintragssätzen und Einträgen, wenn Ihre Domäne in Azure DNS gehostet wird."
+title: "Verwalten von DNS-Ressourceneintragssätzen und -Einträgen in Azure DNS | Microsoft-Dokumentation"
+description: "Mit Azure DNS können Sie beim Hosten Ihrer Domäne DNS-Ressourceneintragssätze und -Einträge verwalten."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 42d47741e414b2de177f1fd75b3e1ac3fde96579
-ms.openlocfilehash: db14074ba4f3b5b675f608b76c496c84f7c22945
+ms.sourcegitcommit: efa52b5f30cab16bfde4202dbfe2c95f4464e2c4
+ms.openlocfilehash: b09b66c44ba94df12934211d5d09430adb667003
 
 ---
 
@@ -105,11 +105,11 @@ Automatisch erstellte NS- und SOA-Einträge werden anderes verwaltet als andere 
 
 ### <a name="modify-soa-records"></a>Ändern von SOA-Einträgen
 
-Sie können dem automatisch erstellten SOA-Eintragssatz an der Zonenspitze (Name = "@").) keine Einträge hinzufügen oder daraus entfernen, jedoch die Parameter im SOA-Eintrag (außer „Host“) und die Gültigkeitsdauer des Eintragssatzes ändern.
+Sie können dem automatisch erstellten SOA-Ressourceneintragssatz an der Zonenspitze (Name = "@") weder Einträge hinzufügen noch Einträge daraus entfernen. Allerdings können Sie jeden Parameter im SOA-Eintrag (mit Ausnahme von „Host“) und die Gültigkeitsdauer des Ressourceneintragssatzes ändern.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>Ändern von NS-Einträgen an der Zonenspitze
 
-Sie können dem automatisch erstellten NS-Ressourceneintragssatz an der Zonenspitze (Name = "@").) keine Einträge hinzufügen, keine Einträge daraus entfernen und keine Einträge ändern. Nur die Änderung der Gültigkeitsdauer (TTL) des Eintragssatzes ist erlaubt.
+Sie können dem automatisch erstellten NS-Ressourceneintragssatz an der Zonenspitze (Name = "@") keine Einträge hinzufügen, keine Einträge daraus entfernen und keine Einträge ändern. Sie können nur die Gültigkeitsdauer (TTL) des Ressourceneintragssatzes ändern.
 
 ### <a name="delete-soa-or-ns-record-sets"></a>Löschen von SOA- oder NS-Ressourceneintragssätzen
 
@@ -123,6 +123,6 @@ Sie können den SOA- und NS-Ressourceneintragssatz an der Zonenspitze (Name = "@
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

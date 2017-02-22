@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/29/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 9c800007ccac453744937807f54aa003732aa6a9
-ms.openlocfilehash: 68b52e1e5b5b65a4690eedacd62806f4ee15d6df
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 5d0a86742e4b238b94855464b2528db32b80526b
 
 
 ---
@@ -39,8 +39,8 @@ Sobald Sie das Data Lake-Speicherkonto authentifiziert haben, können Sie die Ei
 <table>
 <tbody>
 <tr>
-<td><B>Eigenschaftenname</B></td>
-<td><B>Beschreibung</B></td>
+<td><B>EIGENSCHAFTENNAME</B></td>
+<td><B>BESCHREIBUNG</B></td>
 </tr>
 <tr>
 <td>Ausgabealias</td>
@@ -91,6 +91,6 @@ Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln 
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

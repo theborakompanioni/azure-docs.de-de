@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/21/2016
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: ad39a17ae7aa6d7a1e2de0acee7259821e481728
+ms.sourcegitcommit: 7611f7940b076ba18b3966b0bc9a63fe53b55592
+ms.openlocfilehash: 0ebec265fe2ac2d53dbe3afcb660dddbe7b050ea
 
 
 ---
@@ -44,7 +44,7 @@ In diesem Abschnitt finden Sie die Voraussetzungen für das Ausführen der in di
 
 ### <a name="prerequisites"></a>Voraussetzungen
 * Sie benötigen ein Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie für einen Monat eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/) abonnieren, oder Sie besuchen die Seite mit den [Azure-Preisen](https://azure.microsoft.com/pricing/), die weitere Optionen bietet.
-* Zum Ausführen von PowerShell-Cmdlets benötigen Sie das Microsoft Azure PowerShell-Modul. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md) .
+* Zum Ausführen von PowerShell-Cmdlets benötigen Sie das Microsoft Azure PowerShell-Modul. Informationen zum Installationspunkt und zu Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 * Wenn Sie Azure-VMs unter Storage Premium nutzen möchten, müssen Sie Storage Premium-fähige VMs verwenden. Mit Storage Premium-fähigen virtuellen Computern können Sie Standard- und Storage Premium-Datenträger verwenden. Premium-Datenträger werden zukünftig mit mehreren VM-Typen verfügbar sein. Weitere Informationen zu den verfügbaren Typen und Größen von Azure-VM-Datenträgern finden Sie unter [Größen für virtuelle Computer in Azure](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) und [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md).
 
 ### <a name="considerations"></a>Überlegungen
@@ -313,7 +313,7 @@ Ein Beispielskript für die Migration wird am Ende dieses Abschnitts bereitgeste
 Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migration müssen Sie die gesamte Verarbeitung im aktuellen System beenden. Erst dann können Sie den konsistenten Zustand erreichen, den Sie auf die neue Plattform migrieren können. Die Dauer der Ausfallzeit hängt von der Datenmenge der zu migrierenden Datenträger ab.
 
 > [!NOTE]
-> Wenn Sie eine Azure Resource Manager-VM anhand eines speziellen VHD-Datenträger erstellen, lesen Sie die Informationen zu [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd) für die Bereitstellung einer Resource Manager-VM mithilfe eines vorhandenen Datenträgers.
+> Wenn Sie eine Azure Resource Manager-VM anhand eines speziellen VHD-Datenträger erstellen, lesen Sie die Informationen zu [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) für die Bereitstellung einer Resource Manager-VM mithilfe eines vorhandenen Datenträgers.
 >
 >
 
@@ -773,6 +773,6 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

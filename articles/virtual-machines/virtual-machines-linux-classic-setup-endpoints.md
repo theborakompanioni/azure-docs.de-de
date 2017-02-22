@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 07/13/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: d9da9db09e85b66d9714dd726a306d2b238cc47f
+ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
+ms.openlocfilehash: 9fe4e1356064d62d1a373ecbabf4f9cf276524f6
 
 
 ---
@@ -34,12 +34,12 @@ Wenn Sie einen virtuellen Linux-Computer im klassischen Azure-Portal erstellen, 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sie können einen VM-Endpunkt auch über die [Azure-Befehlszeilenschnittstelle](../virtual-machines-command-line-tools.md)erstellen. Führen Sie den Befehl **azure vm endpoint create** aus.
+* Sie können einen VM-Endpunkt auch über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)erstellen. Führen Sie den Befehl **azure vm endpoint create** aus.
 * Wenn Sie einen virtuellen Computer im Resource Manager-Bereitstellungsmodell erstellt haben, können Sie die Azure-CLI im Resource Manager-Modus verwenden, um [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-create-nsg-arm-cli.md) zum Steuern des Datenverkehrs an den virtuellen Computer zu erstellen.
 
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO5-->
 
 

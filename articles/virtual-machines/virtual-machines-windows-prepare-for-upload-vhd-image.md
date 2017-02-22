@@ -1,6 +1,6 @@
 ---
 title: "Vorbereiten einer Windows-VHD für das Hochladen in Azure | Microsoft Docs"
-description: Empfohlene Vorgehensweisen zum Vorbereiten einer Windows-VHD vor dem Hochladen in Azure.
+description: Vorbereiten einer Windows-VHD oder -VHDX vor dem Hochladen in Azure
 services: virtual-machines-windows
 documentationcenter: 
 author: genlin
@@ -13,167 +13,167 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2016
+ms.date: 1/11/2017
 ms.author: glimoli;genli
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 98aa7935322c873a9de6414090daab2e04ea19fe
+ms.sourcegitcommit: 5d8274f61c3de178c9d418adb9be1efe0fe62bc1
+ms.openlocfilehash: 6fbfc74cb1cce744b51345c0732b40b95be21c94
 
 
 ---
-# <a name="prepare-a-windows-vhd-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD für das Hochladen in Azure
-Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochzuladen, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD) ordnungsgemäß vorbereiten. Es gibt eine Reihe von Schritten, die Sie ausführen sollten, bevor Sie eine VHD in Azure hochladen. Dieser Artikel zeigt Ihnen, wie Sie eine Windows-VHD für das Hochladen in Microsoft Azure vorbereiten, und erläutert, [wann und wie Sie Sysprep verwenden](#step23).
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
+Um einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochzuladen, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt nur virtuelle Computer der 1. Generation , die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe haben. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateiformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers können Sie nicht ändern. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich einen virtuellen Computer der 1. oder 2. Generation in Hyper-V erstellen?)
 
-## <a name="prepare-the-virtual-disk"></a>Vorbereiten des virtuellen Datenträgers
-> [!NOTE]
-> Azure unterstützt nur [virtuelle Computer der 1. Generation](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx) , die das VHD-Dateiformat aufweisen. Das modernere VHDX-Format wird in Azure noch nicht unterstützt. 
-> 
-> Die VHD muss eine feste Größe aufweisen, keine dynamische. Folgen Sie bei Bedarf den unten stehenden Anweisungen, um eine VHDX oder einen dynamischen Datenträger zu konvertieren. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB.
-> 
-> 
+## <a name="convert-the-virtual-disk-to-vhd-and-fixed-size-disk"></a>Konvertieren des virtuellen Datenträgers in VHD und einen Datenträger mit fester Größe 
+Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format konvertieren müssen, verwenden Sie eine der in diesem Abschnitt beschriebenen Methoden. Sichern Sie den virtuellen Computer, bevor Sie die Konvertierung des virtuellen Datenträgers ausführen, und stellen Sie sicher, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
 
-Stellen Sie sicher, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
+Nachdem Sie den Datenträger konvertiert haben, erstellen Sie einen virtuellen Computer, der den konvertierten Datenträger verwendet. Starten Sie, und melden Sie sich bei dem virtuellen Computer an, um die Vorbereitung des virtuellen Computers für den Upload abzuschließen.
 
-Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format konvertieren müssen, verwenden Sie eine der in den folgenden Abschnitten beschriebenen Methoden. Sichern Sie den virtuellen Computer vor dem Ausführen von Prozessen zur Konvertierung virtueller Datenträger oder Sysprep.
+### <a name="convert-disk-using-hyper-v-manager"></a>Konvertieren eines Datenträgers mithilfe des Hyper-V-Managers
+1. Öffnen Sie den Hyper-V-Manager, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Klicken Sie im Menü darüber auf **Aktion** > **Datenträger bearbeiten**.
+2. Navigieren Sie auf dem Bildschirm **Virtuelle Festplatte suchen** zu Ihrem virtuellen Datenträger, und wählen Sie ihn aus.
+3. Wählen Sie im Bildschirm **Aktion auswählen** die Option **Konvertieren** und **Weiter**.
+4. Wenn Sie eine VHDX konvertieren müssen, wählen Sie **VHD** aus, und klicken Sie auf **Weiter**.
+5. Wenn Sie einen sich dynamisch erweiternden Datenträger konvertieren müssen, wählen Sie **Feste Größe** aus, und klicken Sie auf **Weiter**.
+6. Navigieren Sie zu einem Pfad zum Speichern der neuen VHD-Datei, und wählen Sie ihn aus.
+7. Klicken Sie zum Abschluss auf **Fertig stellen** .
 
-### <a name="convert-using-hyper-v-manager"></a>Konvertieren mithilfe des Hyper-V-Managers
-* Öffnen Sie den Hyper-V-Manager, und wählen Sie auf der linken Seite Ihren lokalen Computer aus. Klicken Sie im Menü darüber auf **Aktion** > **Datenträger bearbeiten**.
-  
-  * Navigieren Sie auf dem Bildschirm **Virtuelle Festplatte suchen** zu Ihrem virtuellen Datenträger, und wählen Sie ihn aus.
-  * Wählen Sie auf dem nächsten Bildschirm **Konvertieren** aus.
-    
-    * Wenn Sie eine VHDX konvertieren müssen, wählen Sie **VHD** aus, und klicken Sie auf **Weiter**.
-    * Wenn Sie einen dynamischen Datenträger konvertieren müssen, wählen Sie **Feste Größe** aus, und klicken Sie auf **Weiter**.
-  * Navigieren Sie zu **Pfad für die neue VHD-Datei**, und wählen Sie den Pfad aus.
-  * Klicken Sie zum Abschluss auf **Fertig stellen** .
-
-### <a name="convert-using-powershell"></a>Konvertieren mithilfe von PowerShell
-Sie können einen virtuellen Datenträger mithilfe des [PowerShell-Cmdlets „Convert-VHD“](http://technet.microsoft.com/library/hh848454.aspx)konvertieren. Im folgenden Beispiel wird eine VHDX in eine VHD und ein dynamischer Datenträger in einen Datenträger fester Größe konvertiert:
+### <a name="convert-disk-using-powershell"></a>Konvertieren eines Datenträgers mithilfe von PowerShell
+Sie können einen virtuellen Datenträger mithilfe des [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx)-Cmdlets in Windows PowerShell konvertieren. Wählen Sie beim Starten von PowerShell **Als Administrator ausführen**. Im folgenden Beispiel wird das Konvertieren von VHDX zu VHD und von einem dynamisch erweiterbaren Datenträger zu einem Datenträger fester Größe gezeigt:
 
 ```powershell
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
+Ersetzen Sie die Werte für „-Path“ durch den Pfad zu der virtuellen Festplatte, die Sie konvertieren möchten, und „-DestinationPath“ durch den neuen Pfad und den Namen für den konvertierten Datenträger.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Konvertieren des VMware-VMDK-Datenträgerformats
 Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.org/wiki/VMDK) verfügen, konvertieren Sie es mit dem [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) in eine virtuelle Festplatte. Weitere Informationen finden Sie im Blog [How to Convert a VMWare VMDK to Hyper-V VHD](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx) (Konvertieren von VMWare-VMDK in Hyper-V-VHD).
 
-## <a name="prepare-windows-configuration-for-upload"></a>Vorbereiten der Windows-Konfiguration für das Hochladen
-> [!NOTE]
-> Führen Sie alle folgenden Befehle mit [Administratorrechten](https://technet.microsoft.com/library/cc947813.aspx)aus.
-> 
-> 
+## <a name="set-windows-configurations-for-azure"></a>Festlegen der Windows-Konfigurationen für Azure
+
+Führen Sie alle folgenden Befehle auf dem virtuellen Computer, den Sie in Azure hochladen möchten, mit [Administratorrechten](https://technet.microsoft.com/library/cc947813.aspx) im Eingabeaufforderungsfenster aus.
 
 1. Entfernen Sie alle statischen persistenten Routen aus der Routingtabelle:
    
-   * Um die Routentabelle anzuzeigen, führen Sie `route print`aus.
+   * Führen Sie zum Anzeigen der Routingtabelle `route print` über das Eingabeaufforderungsfenster aus.
    * Überprüfen Sie die Abschnitte mit **Persistenzrouten** . Wenn eine persistente Route vorhanden ist, verwenden Sie [route delete](https://technet.microsoft.com/library/cc739598.apx) , um die Route zu entfernen.
 2. Entfernen Sie den WinHTTP-Proxy:
    
-    ```
+    ```CMD
     netsh winhttp reset proxy
     ```
-3. Konfigurieren Sie die Datenträger-SAN-Richtlinie als [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
+3. Legen Sie für die Datenträger-SAN-Richtlinie [Onlineall](https://technet.microsoft.com/library/gg252636.aspx) fest. 
    
+    ```CMD
+    diskpart 
+    san policy=onlineall
+    exit
     ```
-    diskpart san policy=onlineall
-    ```
-4. Verwenden Sie die koordinierte Weltzeit (UTC, Coordinated Universal Time) für Windows, und legen Sie den Starttyp des Windows-Zeitdiensts (w32time) auf **Automatisch**fest:
+    
+
+4. Legen Sie die koordinierte Weltzeit (UTC, Coordinated Universal Time) für Windows fest und als Starttyp des Windows-Zeitdiensts (w32time) **Automatisch**:
    
-    ```
+    ```CMD
     REG ADD HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
+    ```
+    ```CMD
     sc config w32time start= auto
     ```
 
-## <a name="configure-windows-services"></a>Konfigurieren von Windows-Diensten
-1. Stellen Sie sicher, dass jeder der folgenden Windows-Dienste auf die **Windows-Standardwerte**festgelegt ist. Sie sind mit den in der folgenden Liste aufgeführten Starteinstellungen konfiguriert. Sie können diese Befehle ausführen, um die Starteinstellungen zurückzusetzen:
+## <a name="set-services-startup-to-windows-default-values"></a>Festlegen des Starts von Diensten auf Windows-Standardwerte
+Stellen Sie sicher, dass jeder der folgenden Windows-Dienste auf die **Windows-Standardwerte**festgelegt ist. Um die Starteinstellungen zurückzusetzen, führen Sie die folgenden Befehle aus:
    
-    ```
-    sc config bfe start= auto
+```CMD
+sc config bfe start= auto
    
-    sc config dcomlaunch start= auto
+sc config dcomlaunch start= auto
    
-    sc config dhcp start= auto
+sc config dhcp start= auto
    
-    sc config dnscache start= auto
+sc config dnscache start= auto
    
-    sc config IKEEXT start= auto
+sc config IKEEXT start= auto
    
-    sc config iphlpsvc start= auto
+sc config iphlpsvc start= auto
    
-    sc config PolicyAgent start= demand
+sc config PolicyAgent start= demand
    
-    sc config LSM start= auto
+sc config LSM start= auto
    
-    sc config netlogon start= demand
+sc config netlogon start= demand
    
-    sc config netman start= demand
+sc config netman start= demand
    
-    sc config NcaSvc start= demand
+sc config NcaSvc start= demand
    
-    sc config netprofm start= demand
+sc config netprofm start= demand
    
-    sc config NlaSvc start= auto
+sc config NlaSvc start= auto
    
-    sc config nsi start= auto
+sc config nsi start= auto
    
-    sc config RpcSs start= auto
+sc config RpcSs start= auto
    
-    sc config RpcEptMapper start= auto
+sc config RpcEptMapper start= auto
    
-    sc config termService start= demand
+sc config termService start= demand
    
-    sc config MpsSvc start= auto
+sc config MpsSvc start= auto
    
-    sc config WinHttpAutoProxySvc start= demand
+sc config WinHttpAutoProxySvc start= demand
    
-    sc config LanmanWorkstation start= auto
+sc config LanmanWorkstation start= auto
    
-    sc config RemoteRegistry start= auto
-    ```
+sc config RemoteRegistry start= auto
+```
 
-## <a name="configure-remote-desktop-configuration"></a>Remotedesktopkonfiguration
+## <a name="update-remote-desktop-registry-settings"></a>Aktualisieren der Remotedesktop-Registrierungseinstellungen
 1. Wenn selbstsignierte Zertifikate vorhanden sind, die an den RDP-Listener (Remotedesktopprotokoll) gebunden sind, entfernen Sie diese:
    
-    ```
+    ```CMD
     REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\SSLCertificateSHA1Hash”
     ```
    
     Weitere Informationen zum Konfigurieren von Zertifikaten für den RDP-Listener finden Sie unter [Listener Certificate Configurations in Windows Server ](https://blogs.technet.microsoft.com/askperf/2014/05/28/listener-certificate-configurations-in-windows-server-2012-2012-r2/)
 2. Konfigurieren Sie die [KeepAlive](https://technet.microsoft.com/library/cc957549.aspx) -Werte für den RDP-Dienst:
    
-    ```
+    ```CMD
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v KeepAliveEnable /t REG_DWORD  /d 1 /f
-   
+    ```
+    ```CMD
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v KeepAliveInterval /t REG_DWORD  /d 1 /f
-   
+    ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v KeepAliveTimeout /t REG_DWORD /d 1 /f
     ```
 3. Konfigurieren Sie den Authentifizierungsmodus für den RDP-Dienst:
    
-    ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD  /d 1 /f
-   
+   ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD  /d 1 /f
-   
+   ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD  /d 1 /f
     ```
 4. Aktivieren Sie den RDP-Dienst, indem Sie die folgenden Unterschlüssel zur Registrierung hinzufügen:
    
-    ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD  /d 0 /f
     ```
 
 ## <a name="configure-windows-firewall-rules"></a>Konfigurieren von Windows-Firewallregeln
-1. Lassen Sie WinRM in den drei Firewallprofilen zu (Domäne, privat und öffentlich), und aktivieren Sie den PowerShell-Remotedienst:
+1. Führen Sie den folgenden Befehl in PowerShell aus, um WinRM in den drei Firewallprofilen (Domäne, privat und öffentlich) zuzulassen, und aktivieren Sie den PowerShell-Remotedienst:
    
-   ```
+   ```powershell
    Enable-PSRemoting -force
    ```
-2. Stellen Sie sicher, dass die folgenden Firewallregeln für Gastbetriebssysteme eingerichtet sind:
+2. Führen Sie die folgenden Befehle im Eingabeaufforderungsfenster aus, um sicherzustellen, dass die folgenden Firewallregeln für das Gastbetriebssystem erfüllt sind:
    
    * Eingehend
    
-   ```
+   ```CMD
    netsh advfirewall firewall set rule dir=in name="File and Printer Sharing (Echo Request - ICMPv4-In)" new enable=yes
    
    netsh advfirewall firewall set rule dir=in name="Network Discovery (LLMNR-UDP-In)" new enable=yes
@@ -197,7 +197,7 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
    
    * Eingehend und ausgehend
    
-   ```
+   ```CMD
    netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
    
    netsh advfirewall firewall set rule group="Core Networking" new enable=yes
@@ -205,7 +205,7 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
    
    * Ausgehend
    
-   ```
+   ```CMD
    netsh advfirewall firewall set rule dir=out name="Network Discovery (LLMNR-UDP-Out)" new enable=yes
    
    netsh advfirewall firewall set rule dir=out name="Network Discovery (NB-Datagram-Out)" new enable=yes
@@ -227,11 +227,11 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
    netsh advfirewall firewall set rule dir=out name="Network Discovery (WSD-Out)" new enable=yes
    ```
 
-## <a name="additional-windows-configuration-steps"></a>Zusätzliche Konfigurationsschritte für Windows
-1. Führen Sie `winmgmt /verifyrepository` aus, um zu bestätigen, dass das Repository für die Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) konsistent ist. Wenn das Repository beschädigt ist, informieren Sie sich in [diesem Blogbeitrag](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not).
-2. Stellen Sie sicher, dass die Einstellungen für die Startkonfigurationsdaten (Boot Configuration Data, BCD) den folgenden entsprechen:
+## <a name="verify-vm-is-healthy-secure-and-accessible-with-rdp"></a>Sicherstellen, dass der virtuelle Computer fehlerfrei, sicher und der Zugriff mit RDP darauf möglich ist 
+1. Führen Sie im Eingabeaufforderungsfenster `winmgmt /verifyrepository` aus, um zu bestätigen, dass das Repository für die Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) konsistent ist. Wenn das Repository beschädigt ist, lesen Sie den Blogbeitrag [WMI: Repository Corruption, or Not?](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not) (WMI: Repository beschädigt oder nicht?)
+2. Legen Sie die Startkonfigurationsdaten (Boot Configuration Data, BCD) fest:
    
-   ```
+   ```CMD
    bcdedit /set {bootmgr} integrityservices enable
    
    bcdedit /set {default} device partition=C:
@@ -245,15 +245,15 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
    bcdedit /set {default} bootstatuspolicy IgnoreAllFailures
    ```
 3. Entfernen Sie jegliche zusätzlichen Transport Driver Interface-Filter, wie beispielsweise Software, die TCP-Pakete analysiert.
-4. Um sicherzustellen, dass der Datenträger fehlerfrei und konsistent ist, führen Sie den `CHKDSK /f` -Befehl aus.
+4. Um sicherzustellen, dass der Datenträger fehlerfrei und konsistent ist, führen Sie den `CHKDSK /f`-Befehl im Eingabeaufforderungsfenster aus. Geben Sie „J“ ein, um die Überprüfung zu planen, und starten Sie den virtuellen Computer neu.
 5. Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
-6. Stellen Sie sicher, dass keine Drittanbieteranwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Sie können den `netstat -anob` -Befehl verwenden, um die Ports zu überprüfen, die von den Anwendungen genutzt werden.
+6. Stellen Sie sicher, dass keine Drittanbieteranwendung Port 3389 verwendet. Dieser Port wird für den RDP-Dienst in Azure verwendet. Sie können `netstat -anob` im Eingabeaufforderungsfenster ausführen, um die Ports anzuzeigen, die von den Anwendungen verwendet werden.
 7. Wenn es sich bei der Windows-VHD, die Sie hochladen möchten, um einen Domänencontroller handelt, führen Sie [diese zusätzlichen Schritte](https://support.microsoft.com/kb/2904015) aus, um den Datenträger vorzubereiten.
 8. Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist.
-9. Setzen Sie das aktuelle Kennwort des lokalen Administrators zurück, und stellen Sie sicher, dass Sie sich mit diesem Konto über die RDP-Verbindung bei Windows anmelden können.  Diese Zugriffsberechtigung wird über das Richtlinienobjekt „Anmelden über Remotedesktopdienste zulassen“ gesteuert. Dieses Objekt befindet sich unter „Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten“.
+9. Setzen Sie das aktuelle Kennwort des lokalen Administrators zurück, und stellen Sie sicher, dass Sie sich mit diesem Konto über die RDP-Verbindung bei Windows anmelden können. Diese Zugriffsberechtigung wird über das Gruppenrichtlinienobjekt „Anmelden über Remotedesktopdienste zulassen“ gesteuert. Sie können dieses Objekt im Editor für lokale Gruppenrichtlinien unter „Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten“ sehen.
 
 ## <a name="install-windows-updates"></a>Installieren von Windows-Updates
-1. Installieren Sie die neuesten Updates für Windows. Wenn dies nicht möglich ist, stellen Sie sicher, dass die folgenden Updates installiert sind:
+Installieren Sie die neuesten Updates für Windows. Wenn dies nicht möglich ist, stellen Sie sicher, dass die folgenden Updates installiert sind:
    
    * [KB3137061](https://support.microsoft.com/kb/3137061) Virtuelle Microsoft Azure-Computer können nach einem Netzwerkausfall nicht wiederhergestellt werden, und es treten Probleme mit beschädigten Daten auf
    * [KB3115224](https://support.microsoft.com/kb/3115224) Verbesserte Zuverlässigkeit für virtuelle Computer, die auf einem Windows Server 2012 R2- oder Windows Server 2012-Host ausgeführt werden
@@ -266,20 +266,21 @@ Wenn Sie über ein Windows-VM-Image im [VMDK-Dateiformat](https://en.wikipedia.o
    * [KB3082343](https://support.microsoft.com/kb/3082343) Standortübergreifende VPN-Konnektivität geht verloren, wenn Azure-Standort-zu-Standort-VPN-Tunnel Windows Server 2012 R2 RRAS verwenden
    * [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: Sicherheitsupdate für Microsoft Windows zum Unterbinden von Rechteerweiterungen: 8. März 2016
    * [KB3146723](https://support.microsoft.com/kb/3146723) MS16-048: Hinweise zum Sicherheitsupdate für CSRSS: 12. April 2016
-   * [KB2904100](https://support.microsoft.com/kb/2904100) System friert während E/A-Vorgängen in Windows ein. <a id="step23"></a>
-2. Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere Computer bereitstellen können, müssen Sie `sysprep` ausführen, um das Image zu generalisieren, bevor Sie die VHD in Azure hochladen. Sie müssen `sysprep` nicht ausführen, um eine spezielle VHD zu verwenden. Weitere Informationen zum Erstellen eines generalisierten Images finden Sie in den folgenden Artikeln:
+   * [KB2904100](https://support.microsoft.com/kb/2904100) System friert während Datenträger-E/A-Vorgängen in Windows ein
+     
+## <a name="run-sysprep--a-idstep23a"></a>Ausführen von Sysprep <a id="step23"></a>    
+Wenn Sie ein Image erstellen möchten, mit dem Sie mehrere virtuelle Computer bereitstellen können, müssen Sie [das Image durch Ausführen von Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) verallgemeinern, bevor Sie die VHD in Azure hochladen. Sie müssen Sysprep nicht ausführen, um eine spezielle VHD zu verwenden. Weitere Informationen finden Sie in den folgenden Artikeln:
    
-   * [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des Resource Manager-Bereitstellungsmodells](virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Erstellen eines VM-Images aus einem vorhandenen virtuellen Azure-Computer mithilfe des klassischen Bereitstellungsmodells](virtual-machines-windows-classic-capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+   * [Verallgemeinern eines virtuellen Windows-Computers mit Sysprep](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
    * [Sysprep-Unterstützung für Serverrollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
-## <a name="suggested-extra-configurations"></a>Empfohlene zusätzliche Konfigurationen
+## <a name="complete-recommended-configurations"></a>Abschließen empfohlener Konfigurationen
 Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es wird jedoch dringend empfohlen, diese Einstellungen zu konfigurieren.
 
 * Installieren Sie den [Azure-Agent für virtuelle Computer](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Nach der Installation des Agents können Sie VM-Erweiterungen aktivieren. Die VM-Erweiterungen implementieren die meisten der wichtigen Funktionen, die Sie für Ihre virtuellen Computer verwenden möchten, darunter das Zurücksetzen von Kennwörtern, das Konfigurieren von RDP und viele andere.
 * Das Abbildprotokoll kann bei der Problembehandlung nach Windows-Abstürzen hilfreich sein. Aktivieren Sie die Sammlung von Abbildprotokollen:
   
-    ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 2 /f`
   
     REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps" /v DumpFolder /t REG_EXPAND_SZ /d "c:\CrashDumps" /f
@@ -292,7 +293,7 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
     ```
 * Nachdem der virtuelle Computer in Azure erstellt wurde, konfigurieren Sie die Auslagerungsdatei mit systemdefinierter Größe auf Laufwerk D:
   
-    ```
+    ```CMD
     REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /t REG_MULTI_SZ /v PagingFiles /d "D:\pagefile.sys 0 0" /f
     ```
 
@@ -302,6 +303,6 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

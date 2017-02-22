@@ -1,5 +1,5 @@
 ---
-title: "Stretch-Datenbank-Übersicht | Microsoft Docs"
+title: "Archivieren von inaktiven Daten in Azure – Stretch-Datenbank | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Stretch-Datenbank Ihre inaktiven Daten transparent und sicher zu Microsoft Azure Cloud migriert.
 services: sql-server-stretch-database
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: douglasl
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f63900b0a4f32e1bc5a88c068091916bd96aafb8
+ms.sourcegitcommit: cfa45dbb2d6e7579ed151c0213d394581cb73c4d
+ms.openlocfilehash: 0c4355eb424f169238f274241747acff4532d589
 
 
 ---
-# <a name="stretch-database-overview"></a>Übersicht über Stretch-Datenbank
+# <a name="introduction-to-stretch-database"></a>Einführung in Stretch-Datenbank
 Stretch-Datenbank migriert Ihre inaktiven Daten (Cold Data) transparent und sicher zu Microsoft Azure Cloud.
 
 Wenn Sie sofort mit Stretch-Datenbank beginnen möchten, lesen Sie [Erste Schritte mit der Datenbank aktivieren für Stretch-Assistenten](sql-server-stretch-database-wizard.md).
@@ -29,13 +29,13 @@ Wenn Sie sofort mit Stretch-Datenbank beginnen möchten, lesen Sie [Erste Schrit
 Stretch-Datenbank bietet die folgenden Vorteile:
 
 ### <a name="provides-cost-effective-availability-for-cold-data"></a>Bietet kostengünstige Verfügbarkeit für inaktive Daten
-Verlagern Sie aktive und inaktive Transaktionsdaten mit SQL Server Stretch-Datenbank dynamisch von SQL Server zu Microsoft Azure. Im Gegensatz zu anderen Arten der Speicherung von inaktiven Daten, sind Ihre Daten immer online und jederzeit abfragbar. Sie können eine längere Dauer der Datenaufbewahrung anbieten, ohne für große Tabellen wie eine Kundenauftragshistorie hohe Ausgaben tätigen zu müssen. Profitieren Sie vom kostengünstigen Azure, statt teure lokale Speicher hochzuskalieren. Wählen Sie einen Tarif, und konfigurieren Sie die Einstellungen im Azure-Portal, um die Kontrolle über die Kosten zu behalten. Skalieren Sie je nach Bedarf hoch oder herunter. Einzelheiten finden Sie auf der Seite [SQL Server Stretch-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/) .
+Verlagern Sie aktive und inaktive Transaktionsdaten mit SQL Server Stretch-Datenbank dynamisch von SQL Server zu Microsoft Azure. Im Gegensatz zu anderen Arten der Speicherung von inaktiven Daten, sind Ihre Daten immer online und jederzeit abfragbar. Sie können eine längere Dauer der Datenaufbewahrung anbieten, ohne für große Tabellen wie eine Kundenauftragshistorie hohe Ausgaben tätigen zu müssen. Profitieren Sie von den Azure-Kostenvorteilen, anstatt teure lokale Speicher hochzuskalieren. Wählen Sie einen Tarif, und konfigurieren Sie die Einstellungen im Azure-Portal, um die Kontrolle über die Kosten zu behalten. Skalieren Sie je nach Bedarf hoch oder herunter. Einzelheiten finden Sie auf der Seite [SQL Server Stretch-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/) .
 
 ### <a name="doesnt-require-changes-to-queries-or-applications"></a>Keine Änderungen von Abfragen oder Anwendungen erforderlich
 Greifen Sie nahtlos auf Ihre SQL Server\-Daten zu – unabhängig davon, ob diese lokal gespeichert oder in die Cloud verlagert wurden.  Sie legen die Richtlinien dafür fest, wo Daten gespeichert werden, und wie SQL Server das Verschieben von Daten im Hintergrund handhabt. Die ganze Tabelle ist immer online und jederzeit abfragbar. Die Stretch-Datenbank benötigt außerdem keine Änderungen der vorhandenen Abfragen oder Anwendungen – der Speicherort der Daten ist für die Anwendung vollständig transparent.
 
 ### <a name="streamlines-on-premises-data-maintenance"></a>Optimierung der Wartung lokaler Daten
-Verringern Sie den lokalen Wartungs- und Speicheraufwand für Ihre Daten. Die Sicherungen für Ihre lokalen Daten werden schneller durchgeführt und enden innerhalb des Wartungsfensters. Sicherungen für den Teil Ihrer Daten, der sich in der Cloud befindet, werden automatisch ausgeführt. Ihr Bedarf an lokalem Speicher verringert sich in hohem Umfang. Azure-Speicher kann bis zu 80% günstiger sein als der Ausbau von lokalen SSD.
+Verringern Sie den lokalen Wartungs- und Speicheraufwand für Ihre Daten. Die Sicherungen für Ihre lokalen Daten werden schneller durchgeführt und enden innerhalb des Wartungsfensters. Sicherungen für den Teil Ihrer Daten, der sich in der Cloud befindet, werden automatisch ausgeführt. Ihr Bedarf an lokalem Speicher verringert sich in hohem Umfang. Azure-Speicher kann bis zu 80% günstiger als das Hinzufügen weiterer lokaler SSD-Einheiten sein.
 
 ### <a name="keeps-your-data-secure-even-during-migration"></a>Datensicherheit auch während der Migration
 Sie können Ihre wichtigsten Anwendungen ganz beruhigt auf sicherem Wege in die Cloud verlagern. Always Encrypted in SQL Server verschlüsselt Ihre sich in Bewegung befindlichen Daten. Sicherheit auf Zeilenebene (RLS) und andere erweiterte Sicherheitsfunktionen von SQL Server funktionieren auch mit Stretch-Datenbank zum Schutz Ihrer Daten.
@@ -46,7 +46,7 @@ Nachdem Sie Stretch-Datenbank für eine SQL Server-Instanz, eine Datenbank und m
 * Wenn Sie inaktive Daten in einer separaten Tabelle speichern, können Sie die ganze Tabelle migrieren.
 * Wenn die Tabelle sowohl aktive als auch inaktive Daten enthält, können Sie eine Filterfunktion zum Auswählen der zu migrierenden Zeilen angeben.
 
-**Sie müssen vorhandene Abfragen und Clientanwendungen nicht ändern.**  Sie haben weiterhin unkomplizierten Zugriff, sowohl auf lokale als auch auf Remotedaten, sogar während der Migration. Bei Remoteabfragen ist mit einer kurzen Latenzzeit zu rechnen, die allerdings nur bei der Abfrage von inaktiven Daten auftritt.
+**Sie müssen vorhandene Abfragen und Clientanwendungen nicht ändern.** Sie haben weiterhin unkomplizierten Zugriff, sowohl auf lokale als auch auf Remotedaten, sogar während der Migration. Bei Remoteabfragen ist mit einer kurzen Latenzzeit zu rechnen, die allerdings nur bei der Abfrage von inaktiven Daten auftritt.
 
 **Stretch-Datenbank stellt sicher, dass keine Daten verloren gehen** , falls während der Migration ein Failover auftritt. Stretch-Datenbank enthält außerdem die Wiederholungslogik, um mit Verbindungsproblemen umzugehen, die während der Migration auftreten können. Eine dynamische Verwaltungsansicht zeigt den Status der Migration.
 
@@ -75,7 +75,7 @@ Verwenden Sie den Stretch-Datenbank-Ratgeber, eine Funktion von SQL Server 2016-
 **Testen Sie Stretch-Datenbank mit der AdventureWorks-Beispieldatenbank.** Um die AdventureWorks-Beispieldatenbank zu erhalten, laden Sie [hier](https://www.microsoft.com/download/details.aspx?id=49502). Nachdem Sie die Beispieldatenbank auf einer Instanz von SQL Server 2016 wiederhergestellt haben, entpacken Sie die Datei „Stretch DB Samples“ aus dem Ordner „Stretch DB “. Führen Sie die Skripts in dieser Datei aus, um den von Ihren Daten verwendeten Speicherplatz vor und nach der Aktivierung von Stretch-Datenbank zu überprüfen, den Fortschritt der Datenmigration zu verfolgen, und um zu bestätigen, dass Sie weiterhin vorhandene Daten abfragen und neue Daten einfügen können, sowohl während als auch nach der Datenmigration.
 
 ## <a name="next-step"></a>Nächster Schritt
-**Identifizieren Sie Datenbanken und Tabellen, die sich für Stretch-Datenbank eignen.**  Laden Sie SQL Server 2016-Upgraderatgeber herunter, und führen Sie den Stretch-Datenbank-Ratgeber aus, um Datenbanken und Tabellen, die sich für Stretch-Datenbank eignen, zu identifizieren. Der Stretch-Datenbank-Ratgeber erkennt auch Blockierungsprobleme. Weitere Informationen finden Sie unter [Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank](sql-server-stretch-database-identify-databases.md).
+**Identifizieren Sie Datenbanken und Tabellen, die sich für Stretch-Datenbank eignen.** Laden Sie SQL Server 2016-Upgraderatgeber herunter, und führen Sie den Stretch-Datenbank-Ratgeber aus, um Datenbanken und Tabellen, die sich für Stretch-Datenbank eignen, zu identifizieren. Der Stretch-Datenbank-Ratgeber erkennt auch Blockierungsprobleme. Weitere Informationen finden Sie unter [Identifizieren von Datenbanken und Tabellen für Stretch-Datenbank](sql-server-stretch-database-identify-databases.md).
 
 <!--Image references-->
 [StretchOverviewImage1]: ./media/sql-server-stretch-database-overview/StretchDBOverview.png
@@ -84,6 +84,6 @@ Verwenden Sie den Stretch-Datenbank-Ratgeber, eine Funktion von SQL Server 2016-
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

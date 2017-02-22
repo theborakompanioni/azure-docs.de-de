@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 42428d9456c5ea00192a981265bd50263cbf66ba
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
 
 
 ---
@@ -28,6 +28,9 @@ So erreichen Sie dieses Ziel:
 * Codieren Sie den Datenstrom in einen Videodatenstrom mit mehreren Bitraten (adaptive Bitrate). So berücksichtigen Sie verschiedene Qualitäts- und Netzwerkbedingungen.
 * Verpacken Sie den Datenstrom mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) von Microsoft Azure Media Services neu in verschiedene Protokolle. So berücksichtigen Sie das Streaming auf verschiedene Geräte. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
 
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+
 Dieser Artikel bietet eine Übersicht der wichtigen Konzepte zur Inhaltsübermittlung.
 
 Bekannte Probleme werden unter [Bekannte Probleme](media-services-deliver-content-overview.md#known-issues)behandelt.
@@ -35,14 +38,11 @@ Bekannte Probleme werden unter [Bekannte Probleme](media-services-deliver-conten
 ## <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 Mit der dynamischen Paketerstellung von Media Services können Sie Ihre mit adaptiver Bitrate MP4- oder Smooth Streaming-codierten Inhalte in Streamingformaten, die von Media Services unterstützt werden (MPEG-DASH, HLS, Smooth Streaming), übermitteln, ohne dass Sie diese Streamingformate erneut packen müssen. Wir empfehlen Ihnen, Ihre Inhalte mit dynamischer Paketerstellung zu übermitteln.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie folgende Schritte ausführen:
-
-* Codieren Ihrer Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate.
-* Abrufen von mindestens einer On-Demand-Streamingeinheit für den Streamingendpunkt, von dem aus Sie die Übermittlung Ihrer Inhalte planen. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für bedarfsgesteuertes Streaming](media-services-portal-manage-streaming-endpoints.md).
+Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien oder Smooth Streaming-Dateien mit adaptiver Bitrate codieren.
 
 Mit der dynamischen Paketerstellung speichern Sie die Dateien in einem einzigen Speicherformat und zahlen auch nur für dieses eine Format. Media Services reagiert gemäß Ihren Anforderungen.
 
-Ergänzend zum Zugang zur dynamischen Paketerstellung bieten Ihnen die reservierten Einheiten für On-Demand-Streaming auch eine dedizierte Ausgangskapazität, die in Stufen von 200 MBit/s erworben werden kann. Standardmäßig wird das bedarfsgesteuerte Streaming in einem Modell mit einer gemeinsam genutzten Instanz konfiguriert, für das Serverressourcen (z.B. Rechen- oder Ausgangskapazität) mit allen anderen Benutzern gemeinsam genutzt werden. Sie können den Durchsatz des bedarfsgesteuerten Streamings erhöhen, indem Sie reservierte Einheiten für bedarfsgesteuertes Streaming kaufen.
+Dynamische Paketerstellung steht für Standard- und Premium-Streamingendpunkte zur Verfügung. 
 
 Weitere Informationen finden Sie unter [Dynamische Paketerstellung](media-services-dynamic-packaging-overview.md).
 
@@ -66,7 +66,7 @@ Locator verfügen über ein Ablaufdatum. Im Azure-Portal wird ein Ablaufdatum vo
 > 
 > 
 
-Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
+Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
 Locator sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Mit den Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM) können Sie einzelnen Benutzern verschiedene Zugriffsrechte erteilen. Weitere Informationen finden Sie unter [Sichern von Medien](http://msdn.microsoft.com/library/azure/dn282272.aspx).
 
@@ -78,9 +78,9 @@ Bei adaptiven Bitratentechnologien können Videoplayeranwendungen die Netzwerkbe
 Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt mit den Inhalten, die Sie streamen möchten. Um diese Inhalte streamen zu können, müssen Sie diesen Pfad jedoch ändern. Zum Erstellen einer vollständigen URL für die Streaming-Manifestdatei müssen Sie den Pfadwert des Locators mit dem Dateinamen des Manifests (dateiname.ism) verketten. Fügen Sie dem Locatorpfad anschließend **/Manifest** und (ggf.) ein geeignetes Format hinzu.
 
 > [!NOTE]
-> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen.
+> Sie können auch den Inhalt über eine SSL-Verbindung streamen. Zu diesem Zweck stellen Sie sicher, dass die Streaming-URLs mit HTTPS beginnen. Beachten Sie, dass AMS derzeit SSL mit benutzerdefinierten Domänen nicht unterstützt.  
 > 
-> 
+
 
 Sie können nur über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“. Streaming-URLs, die "origin.mediaservices.windows.net" (das alte Format) enthalten, unterstützen kein SSL. Wenn die URL im alten Format vorliegt und Sie über SSL streamen möchten, erstellen Sie einen neuen Streamingendpunkt. Verwenden Sie die URLs, die auf dem neuen Streamingendpunkt basieren, um Ihre Inhalte über SSL zu streamen.
 
@@ -143,7 +143,11 @@ Es gelten die folgenden Bedingungen:
 * Ein Download, der nicht innerhalb von 12 Stunden abgeschlossen wird, schlägt fehl.
 
 ## <a name="streaming-endpoints"></a>Streamingendpunkte
-Ein Streamingendpunkt stellt einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt in einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video on Demand-Medienobjekt in Ihrem Media Services-Konto sein. Sie können auch die Kapazität des Streamingendpunkt-Diensts für die Verarbeitung wachsender Bandbreitenanforderungen steuern, indem Sie die reservierten Einheiten für das Streaming anpassen. Anwendungen in einer Produktionsumgebung sollten Sie mindestens eine reservierte Einheit zuweisen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-portal-manage-streaming-endpoints.md).
+
+Ein Streamingendpunkt stellt einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt in einer Clientwiedergabeanwendung oder einem Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des Streamingendpunkt-Diensts kann ein Livestream oder ein Video on Demand-Medienobjekt in Ihrem Media Services-Konto sein. Es gibt zwei Arten von Streamingendpunkten: **Standard** und **Premium**. Weitere Informationen finden Sie unter [Übersicht über Streamingendpunkte](media-services-streaming-endpoints-overview.md).
+
+>[!NOTE]
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
 
 ## <a name="known-issues"></a>Bekannte Probleme
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Änderungen an der Smooth Streaming-Manifestversion
@@ -184,6 +188,6 @@ Einige ältere Smooth Streaming-Clients unterstützen möglicherweise nicht die 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

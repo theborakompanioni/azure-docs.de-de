@@ -1,6 +1,6 @@
 ---
-title: "Prognose mit exponentieller Glättung | Microsoft Docs"
-description: "Webdienst: Prognose mit exponentieller Glättung"
+title: "(Veraltet:) Prognose – exponentielle Glättung – Azure | Microsoft Docs"
+description: "(Veraltet:) Webdienst: Prognose – exponentielle Glättung"
 services: machine-learning
 documentationcenter: 
 author: yijichen
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/13/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: yijichen
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 47ef9bce59b62bbd5b2c630ee101a655814d96d2
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: c3fc7b8d7ba9faf79d80b55514ef09570e0d1655
 
 
 ---
-# <a name="forecasting---exponential-smoothing"></a>Prognose mit exponentieller Glättung
+# <a name="deprecated-forecasting---exponential-smoothing"></a>(Veraltet:) Prognose – exponentielle Glättung
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Dieser [Webdienst](https://datamarket.azure.com/dataset/aml_labs/ets) implementiert das Modell der exponentiellen Glättung (Exponential Smoothing, ETS), um Vorhersagen auf Grundlage der vom Benutzer bereitgestellten Verlaufsdaten zu erzeugen. Erhöht sich der Bedarf für ein bestimmtes Produkt in diesem Jahr? Kann ich meine Produktverkäufe für die Weihnachtssaison vorhersagen, damit ich meine Inventur effektiv planen kann? Planungsmodelle sind für solche Fragen die passende Lösung. Angesichts der letzten Daten, untersuchen diese Modelle versteckte Trends und Saisonabhängigkeit, um zukünftige Trends vorherzusagen.  
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -143,6 +150,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

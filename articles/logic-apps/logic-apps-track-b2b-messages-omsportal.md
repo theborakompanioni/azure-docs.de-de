@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: c73c057c97af9dccf25c724603c597b6792553fd
+ms.sourcegitcommit: 53195091ac4b93ed94f432990c84c407615fc03e
+ms.openlocfilehash: 9c3855c7fce5a9f38424f0bb6cd03f7a2c8d36be
 
 
 ---
@@ -36,35 +36,70 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 
 ## <a name="adding-logic-apps-b2b-solution-to-oms-portal"></a>Hinzufügen der B2B-Lösung für Logik-Apps zum OMS-Portal
 
-1. Wählen Sie im Portal **More Services** (Weitere Dienste), suchen Sie nach **Log Analytics**, und wählen Sie **Log Analytics**
-![Log Analytics suchen](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png).  
+1. Wählen Sie im Portal **Weitere Dienste**, suchen Sie nach **Log Analytics**, und wählen Sie **Log Analytics** .  
+![Log Analytics suchen](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)  
 
-2. Wählen Sie **Log Analytics**
-![Log Analytics auswählen](media/logic-apps-track-b2b-messages-omsportal/selectla.png).
+2. Wählen Sie Ihre **Log Analytics**.  
+![Log Analytics auswählen](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. Wählen Sie **OMS-Portal**. Die Startseite des OMS-Portals wird geöffnet![OMS-Portal durchsuchen](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png).
+3. Wählen Sie **OMS-Portal**. Die Startseite des OMS-Portals wird geöffnet.   
+![OMS-Portal durchsuchen](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
 4. Wählen Sie **Lösungskatalog**.    
 ![Lösungskatalog wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
-5. Wählen Sie **Logic Apps B2B** (Logik-Apps-B2B)
-![„Logic Apps B2B“ (Logik-Apps-B2B) auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png).
+5. Wählen Sie **Logic Apps B2B**   .  
+![„Logic Apps B2B“ wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
 
-6. Klicken Sie auf **Hinzufügen**, um **Logic Apps B2B Messages** (Logik-Apps-B2B-Nachrichten) zur Startseite hinzuzufügen![„Hinzufügen“ auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png).
+6. Klicken Sie auf **Hinzufügen**, um **Logic Apps B2B Messages** der Startseite hinzuzufügen.  
+![„Hinzufügen“ wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-7. Suchen Sie auf der Startseite, um **Logic Apps B2B Messages** (Logik-Apps-B2B-Nachrichten) anzuzeigen
-![Startseite auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png).
+7. Suchen Sie auf der Startseite, um **Logic Apps B2B Messages**  anzuzeigen.  
+![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 ## <a name="tracking-data-in-oms-portal"></a>Nachverfolgen von Daten im OMS-Portal
 
-1. Nachrichtenveröffentlichungsprozess. Die Nachrichtenanzahl auf der Startseite wird aktualisiert ![Startseite auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png).
+1. Nachrichtenveröffentlichungsprozess. Die Nachrichtenanzahl auf der Startseite wird aktualisiert.   
+![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
-2. Wenn Sie auf der Startseite **Logic Apps B2B Messages** (Logik-Apps-B2B-Nachrichten) auswählen, wird der AS2- und X12-Nachrichtenstatus angezeigt.  Die Daten basieren auf dem letzten Tag.
+2. Wenn Sie auf der Startseite **Logic Apps B2B Messages** auswählen, wird der AS2- und X12-Nachrichtenstatus angezeigt.  Die Daten basieren auf dem letzten Tag.
 ![„Logic Apps B2B Messages“ (Logik-Apps-B2B-Nachrichten) auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
-3. Durch die Auswahl von AS2- oder X12-Nachrichten nach Status wird die Nachrichtenliste angezeigt ![AS2-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
 
-    ![X12-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/x12messagelist.png)
+
+3. Durch die Auswahl von AS2- oder X12-Nachrichten nach Status wird die Nachrichtenliste angezeigt.   
+![AS2-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
+
+| Eigenschaft | Beschreibung |
+| --- | --- |
+| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
+| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
+| Logik-App | Logic App, in der die AS2-Aktionen konfiguriert sind |
+| Status | AS2-Nachrichtenstatus. Success = gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert; Success = gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und MDN empfangen oder gesendet; Failed = fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert; Pending = gute AS2-Nachricht empfangen oder gesendet, MDN; Funktionsbestätigung konfiguriert und wird erwartet; |
+| Ack | MDN-Nachrichtenstatus |
+| Richtung | Richtung der AS2-Nachricht |
+| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logic App |
+| Nachrichten-ID |  AS2-Nachrichten-ID, aus den Headern der AS2-Nachricht |
+| Zeitstempel | Uhrzeit, zu der die AS2-Aktion die Nachricht verarbeitet hat |
+|  |  |
+
+
+![X12-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/x12messagelist.png)
+
+| Eigenschaft | Beschreibung |
+| --- | --- |
+| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
+| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
+| Logik-App | Logic App, in der die AS2-Aktionen konfiguriert sind |
+| Status | X12-Nachrichtenstatus. Success = gute X12-Nachricht empfangen oder gesendet, keine Funktionsbestätigung konfiguriert; Success = gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und empfangen oder gesendet; Failed = fehlerhafte X12-Nachricht empfangen oder gesendet; Pending = gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und wird erwartet |
+| Ack | Status der Funktionsbestätigung (997).  Accepted = positive Funktionsbestätigung empfangen oder gesendet; Rejected = negative Funktionsbestätigung empfangen oder gesendet; Pending = Funktionsbestätigung wird erwartet, wurde jedoch nicht empfangen; Pending = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden |
+| Richtung | Richtung der X12-Nachricht |
+| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logic App |
+| Msg Type |  EDI-X12-Nachrichtentyp |
+| ICN | Austauschkontrollnummer der X12-Nachricht |
+| TSCN | Transaktionssatzkontrollnummer der X12-Nachricht |
+| Zeitstempel | Uhrzeit, zu der die X12-Aktion die Nachricht verarbeitet hat |
+| | |
 
 4. Wenn Sie eine Zeile in der AS2- oder X12-Nachrichtenliste auswählen, wird die Protokollsuche angezeigt.  In der Protokollsuche werden alle Aktionen mit derselben **Ausführungs-ID** angezeigt 
 ![Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/logsearch.png).
@@ -87,7 +122,7 @@ Auf der Suchseite können Sie eine Abfrage erstellen und die Ergebnisse dann bei
 
 ### <a name="how-to-use-a-saved-query"></a>Verwenden einer gespeicherten Abfrage
 
-1. Wählen Sie in der Protokollsuche **Favoriten**, um gespeicherte Abfragen anzuzeigen.  Auswählen eines der Abfrageergebnisse ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery5.png)
+* Wählen Sie in der Protokollsuche **Favoriten**, um gespeicherte Abfragen anzuzeigen.  Auswählen eines der Abfrageergebnisse ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery5.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -97,6 +132,6 @@ Auf der Suchseite können Sie eine Abfrage erstellen und die Ergebnisse dann bei
 [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

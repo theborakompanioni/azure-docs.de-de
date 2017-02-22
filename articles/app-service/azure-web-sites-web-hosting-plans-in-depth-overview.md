@@ -13,18 +13,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 12/02/2016
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5f4e2775a71c743c313831ce0cd567527c8ae5e2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: ceaf35eed16fda272e4b3c501e3e9ab570855101
 
 
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service-Pläne – Detaillierte Übersicht
-App Service-Pläne stellen einen Satz an Funktionen und Kapazitäten dar, die Sie App-übergreifend gemeinsam nutzen können. Web-Apps, Mobile Apps, Funktionen-Apps und API-Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) werden jeweils unter einem App Service-Plan ausgeführt. Für diese Pläne stehen fünf Tarife zur Verfügung: *Free*, *Shared*, *Basic*, *Standard*und *Premium*. Jeder Tarif verfügt über eigene Funktionen und Kapazitäten. Apps im selben Abonnement und am gleichen geografischen Standort können den gleichen Plan verwenden. Sämtliche Apps eines gemeinsamen Plans können alle Funktionen und Features nutzen, die durch die Preisstufe des Plans definiert sind. Alle einem Plan zugeordneten Apps werden auf den durch den Plan definierten Ressourcen ausgeführt.
+App Service-Pläne stellen die Sammlung physischer Ressourcen dar, die zum Hosten Ihrer Apps verwendet werden.
 
-Wenn Ihr Plan also etwa für die Verwendung von zwei kleinen Instanzen der Standard-Preisstufe konfiguriert ist, werden alle Apps, die diesem Plan zugeordnet sind, auf beiden Instanzen ausgeführt und haben Zugriff auf die Funktionen der Standard-Preisstufe. Planinstanzen, auf denen Apps ausgeführt werden, sind vollständig verwaltbar und hochverfügbar.
+In App Service-Plänen wird Folgendes definiert:
+
+- Region („USA, Westen“, „USA, Osten“ usw.)
+- Skalierung (Instanzenanzahl)
+- Instanzgröße (klein, mittel, groß)
+- SKU (Free, Shared, Basic, Standard, Premium)
+
+Web-Apps, Mobile Apps, Funktionen-Apps und API-Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) werden jeweils unter einem App Service-Plan ausgeführt.  Apps im gleichen Abonnement, in der gleichen Region und in der gleichen Ressourcengruppe können den gleichen App Service-Plan nutzen. 
+
+Alle einem **App Service-Plan** zugewiesenen Anwendungen teilen sich die durch den Plan definierten Ressourcen. Dies spart Kosten, wenn Sie mehrere Apps hosten.
+
+Ihr **App Service-Plan** kann von den SKUs **Free** und **Shared** auf die SKUs **Basic**, **Standard** und **Premium** skaliert werden, um Zugriff auf weitere Ressourcen und Features zu erhalten. 
+
+Wenn Ihr App Service-Plan mindestens auf **Basic** festgelegt ist, können Sie die **Größe** und die Skalierung der virtuellen Computer steuern.
+
+Wenn Ihr Plan also etwa für die Verwendung von zwei kleinen Instanzen der Standarddienstebene konfiguriert ist, werden alle Apps, die diesem Plan zugeordnet sind, unter beiden Instanzen ausgeführt. Außerdem haben die Apps Zugriff auf die Features der Standarddienstebene. Planinstanzen, auf denen Apps ausgeführt werden, sind vollständig verwaltbar und hochverfügbar. 
+
+**SKU** und **Skalierung** des App Service-Plans haben Einfluss auf die Kosten (nicht auf die Anzahl gehosteter Apps).
 
 Dieser Artikel beschäftigt sich mit zentralen Aspekten wie Tarif und Umfang eines App Service-Plans und deren Bedeutung für die App-Verwaltung.
 
@@ -40,15 +57,15 @@ Wenn eine einzelne Ressourcengruppe mehrere Pläne enthält, können Sie auch ei
 ## <a name="create-an-app-service-plan-or-use-existing-one"></a>Erstellen eines App Service-Plans oder Verwenden eines vorhandenen Plans
 Wenn Sie eine App erstellen, empfiehlt sich unter Umständen die Erstellung einer Ressourcengruppe. Wenn es sich bei der App, die Sie erstellen möchten, um eine Komponente einer größeren Anwendung handelt, muss sie allerdings in der Ressourcengruppe erstellt werden, die der größeren Anwendung zugeordnet ist.
 
-Zum Hosten der App können Sie einen vorhandenen App Service-Plan verwenden oder einen neuen Plan erstellen. Das gilt sowohl für ganz neue Apps als auch für Apps, die Teil einer größeren Anwendung sind. Dies ist eher eine Frage der Kapazität und erwarteten Auslastung.
+Zum Hosten der App können Sie einen vorhandenen Plan verwenden oder einen neuen erstellen. Das gilt sowohl für neue Anwendungen als auch für Apps, die Teil einer größeren Anwendung sind. Dies ist eher eine Frage der Kapazität und erwarteten Auslastung.
 
-Wenn die neue App einen hohen Ressourcenbedarf hat und sich ihre Skalierungsfaktoren von denen anderer Apps in einem vorhandenen Plan unterscheiden, empfiehlt es sich, sie in einem eigenen Plan zu isolieren.
+In folgenden Fällen empfiehlt es sich, die App in einem neuen App Service-Plan zu isolieren:
 
-Wenn Sie einen Plan erstellen, können Sie Ihrer App einen neuen Satz von Ressourcen zuordnen und die Ressourcenzuordnung besser steuern, da jeder Plan einen eigenen Satz von Instanzen erhält.
+- Die App ist ressourcenintensiv. 
+- Für die App gelten andere Skalierungsfaktoren als für die anderen Apps, die in einen vorhandenen Plan gehostet werden.
+- Die App benötigt Ressourcen in einer anderen geografischen Region.
 
-Apps können zwischen Plänen verschoben werden, um die Ressourcenzuordnung innerhalb der größeren Anwendung anzupassen.
-
-Wenn Sie schließlich eine App in einer anderen Region erstellen möchten und diese Region über keinen vorhandenen Plan verfügt, erstellen Sie einen Plan in dieser Region, damit Sie Ihre App darin hosten können.
+Dadurch können Sie einen neuen Satz von Ressourcen für die App zuordnen und Ihre Apps noch präziser steuern.
 
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 > [!TIP]
@@ -65,10 +82,10 @@ Sie können dann den App Service-Plan für die neue Anwendung auswählen oder er
 
  ![Erstellen eines App Service-Plans][createASP]
 
-Klicken Sie zum Erstellen eines neuen App Service-Plans auf **[+] Neu erstellen**, geben Sie den Namen für den **App Service-Plan** ein, und wählen Sie einen geeigneten **Speicherort** aus. Klicken Sie auf **Tarif**, und wählen Sie einen geeigneten Tarif für den Dienst aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
+Klicken Sie zum Erstellen eines App Service-Plans auf **[+] Neu erstellen**, geben Sie den Namen für den **App Service-Plan** ein, und wählen Sie einen geeigneten **Speicherort** aus. Klicken Sie auf **Tarif**, und wählen Sie einen geeigneten Tarif für den Dienst aus. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**. Klicken Sie nach dem Auswählen des Tarifs auf die Schaltfläche **Auswählen**.
 
 ## <a name="move-an-app-to-a-different-app-service-plan"></a>Wie kann ich eine App in einen anderen App Service-Plan verschieben?
-Eine App kann über das [Azure-Portal](https://portal.azure.com)in einen anderen App Service-Plan verschoben werden. Das Verschieben von Apps zwischen Plänen ist möglich, wenn sich die Pläne in der gleichen Ressourcengruppe und geografischen Region befinden.
+Eine App kann über das [Azure-Portal](https://portal.azure.com) in einen anderen App Service-Plan verschoben werden. Das Verschieben von Apps zwischen Plänen ist möglich, wenn sich die Pläne in der gleichen Ressourcengruppe und geografischen Region befinden.
 
 Navigieren Sie zu der App, die Sie in einen anderen Plan verschieben möchten. Suchen Sie im Menü **Einstellungen** nach der Option **App Service-Plan ändern**.
 
@@ -76,7 +93,7 @@ Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service
 
 ![Auswahlelement für App Service-Pläne][change]
 
-Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus dem Free-Tarif in den Standard-Tarif verschieben, kann Ihre App jetzt alle Features und Ressourcen des Standard-Tarifs nutzen.
+Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus dem Free-Tarif in den Standard-Tarif verschieben, können alle zugewiesenen Apps die Features und Ressourcen des Standard-Tarifs nutzen.
 
 ## <a name="clone-an-app-to-a-different-app-service-plan"></a>Klonen einer App in einen anderen App Service-Plan
 Wenn Sie die App in eine andere Region verschieben möchten, ist das Klonen der App eine Möglichkeit. Beim Klonen wird eine Kopie Ihrer App in einem neuen oder vorhandenen App Service-Plan oder einer App Service-Umgebung in einer beliebigen Region erstellt.
@@ -90,7 +107,7 @@ Beim Klonen gelten einige Einschränkungen, über die Sie sich unter [Klonen der
 ## <a name="scale-an-app-service-plan"></a>Skalieren eines App Service-Plans
 Es gibt drei Möglichkeiten, einen Plan zu skalieren:
 
-* **Ändern des Plantarifs:** Ein Plan für den Tarif „Basic“ kann beispielsweise in einen Plan für den Tarif „Standard“ oder „Premium“ geändert werden, sodass anschließend alle Apps, die diesem Plan zugeordnet sind, die von der neuen Dienstebene bereitgestellten Features nutzen können.
+* **Ändern des Plantarifs:** Ein Plan im Basic-Tarif kann in den Standard-Tarif überführt werden, und alle zugewiesenen Apps können die Features des Standard-Tarifs nutzen.
 * **Ändern der Instanzgröße des Plans:** Ein Plan der Preisstufe „Basic“ mit kleinen Instanzen kann beispielsweise geändert werden, um große Instanzen zu verwenden. Alle Apps, die diesem Plan zugeordnet sind, können jetzt die zusätzlichen Arbeitsspeicher- und CPU-Ressourcen nutzen, die aufgrund der größeren Instanzen verfügbar sind.
 * **Ändern der Instanzanzahl des Plans:** Ein horizontal auf drei Instanzen hochskalierter Standard-Plan kann beispielsweise auf zehn Instanzen skaliert werden. Ein Premium-Plan kann horizontal auf 20 Instanzen hochskaliert werden (sofern verfügbar). Alle Apps, die diesem Plan zugeordnet sind, können jetzt die zusätzlichen Arbeitsspeicher- und CPU-Ressourcen nutzen, die aufgrund der höheren Anzahl von Instanzen verfügbar sind.
 
@@ -117,6 +134,6 @@ App Service-Pläne stellen einen Satz an Funktionen und Kapazitäten dar, die Si
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

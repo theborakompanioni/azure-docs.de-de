@@ -15,8 +15,8 @@ ms.workload: tbd
 ms.date: 11/02/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1022f5a2bbb9b61ce7d941de9e2a5582db22b91b
+ms.sourcegitcommit: 4fbfb24a2e9d55d718902d468bd25e12f64e7d24
+ms.openlocfilehash: 925411deed422af00b10ff6787606f5039a5fb23
 
 
 ---
@@ -56,7 +56,7 @@ Im Folgenden wird erläutert, wie Sie Ihr eigenes Clouddienstprojekt auf die gle
 ## <a name="plan-resources-and-resource-groups"></a>Planen von Ressourcen und Ressourcengruppen
 Die Telemetriedaten aus Ihrer App werden in einer Azure-Ressource vom Typ Application Insights gespeichert, analysiert und angezeigt. 
 
-Jede Ressource gehört jeweils zu einer Ressourcengruppe. Ressourcengruppen werden zum Verwalten von Kosten, zum Gewähren des Zugriffs für Teammitglieder und zum Bereitstellen von Updates in einer koordinierten Transaktion verwendet. Beispielsweise können Sie [ein Skript zum Bereitstellen](../resource-group-template-deploy.md) eines Azure-Clouddiensts und der zugehörigen Application Insights-Überwachungsressourcen in einem kombinierten Vorgang schreiben.
+Jede Ressource gehört jeweils zu einer Ressourcengruppe. Ressourcengruppen werden zum Verwalten von Kosten, zum Gewähren des Zugriffs für Teammitglieder und zum Bereitstellen von Updates in einer koordinierten Transaktion verwendet. Beispielsweise können Sie [ein Skript zum Bereitstellen](../azure-resource-manager/resource-group-template-deploy.md) eines Azure-Clouddiensts und der zugehörigen Application Insights-Überwachungsressourcen in einem kombinierten Vorgang schreiben.
 
 ### <a name="resources-for-components"></a>Ressourcen für Komponenten
 Als Schema wird empfohlen, für die einzelnen Komponenten der Anwendung, d.h. für jede Webrolle und Workerrolle, jeweils eine separate Ressource zu erstellen. Sie können jede Komponente einzeln analysieren, können jedoch auch ein [Dashboard](app-insights-dashboards.md) erstellen, das die wichtigsten Diagramme aus allen Komponenten vereint, sodass Sie diese vergleichen und zusammen überwachen können. 
@@ -138,7 +138,7 @@ Fügen Sie mehr Telemetrie hinzu (siehe folgende Abschnitte), und veröffentlich
 * Öffnen Sie die Kachel [Suche][diagnostic], um einzelne Ereignisse anzuzeigen.
 * Verwenden Sie die Anwendung, und öffnen Sie verschiedene Seiten, damit einige Telemetriedaten generiert werden.
 * Warten Sie einige Sekunden, und klicken Sie auf "Aktualisieren".
-* Weitere Informationen finden Sie unter [Problembehandlung][qna].
+* Informationen hierzu finden Sie unter [Problembehandlung][qna].
 
 ## <a name="view-azure-diagnostic-events"></a>Anzeigen von Azure-Diagnoseereignissen
 Hier finden Sie die Diagnosedaten:
@@ -212,7 +212,7 @@ Das ist alles! Die Portalfunktionalität ist bereits angeschlossen, damit Sie al
 ![Korrelierte Telemetriedaten](./media/app-insights-cloudservices/bHxuUhd.png)
 
 ## <a name="client-telemetry"></a>Clienttelemetrie
-[Fügen Sie Ihren Webseiten das JavaScript-SDK][client] hinzu, um browserbasierte Telemetriedaten wie Anzahl der Seitenaufrufe, Seitenladezeiten oder Skriptausnahmen zu erhalten und benutzerdefinierte Telemetrie in Ihre Seitenskripts schreiben zu können.
+[Fügen Sie Ihren Webseiten das JavaScript SDK][client] hinzu, um browserbasierte Telemetriedaten wie Anzahl der Seitenaufrufe, Seitenladezeiten oder Skriptausnahmen zu erhalten und benutzerdefinierte Telemetrie in Ihre Seitenskripts schreiben zu können.
 
 ## <a name="availability-tests"></a>Verfügbarkeitstests
 [Richten Sie Webtests ein][availability], um sicherzustellen, dass die Anwendung online und reaktionsfähig bleibt.
@@ -248,6 +248,6 @@ Haben Sie für .NET 4.6 erstellt? 4.6 wird nicht automatisch in Azure Cloud Ser
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

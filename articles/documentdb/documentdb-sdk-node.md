@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB – Node.js-API und -SDK | Microsoft Docs"
+title: "Ressourcen zu Node.js-API und SDK – Azure DocumentDB | Microsoft-Dokumentation"
 description: "Wichtige Informationen zu Node.js-API und -SDK einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB-Node.js-SDK."
 services: documentdb
 documentationcenter: nodejs
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 12/22/2016
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 5e182811adc29ae00d40355bb4813c30eb0b904c
-ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 43d658a67eb55a2d2e35f79080d63c3effb6387e
 
 
 ---
@@ -54,6 +54,11 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name11011101a"></a><a name="1.10.1"/>1.10.1</a>
+* Deaktivieren Sie die SSL-Überprüfung, wenn als Ziel des SDK „emulator(hostname=localhost)“ verwendet wird.
+* Unterstützung für das Aktivieren der Skriptprotokollierung während der Ausführung einer gespeicherten Prozedur wurde hinzugefügt.
+
 ### <a name="a-name11001100a"></a><a name="1.10.0"/>1.10.0</a>
 * Unterstützung für parallele partitionsübergreifende Abfragen hinzugefügt.
 * Unterstützung für TOP-/ORDER BY-Abfragen für partitionierte Sammlungen hinzugefügt.
@@ -79,13 +84,13 @@ ms.openlocfilehash: fbe124f1df522426d26f21333bf4a50d32103e33
 * Problem mit „hashParitionResolver resolveForRead()“ behoben: Bei einem nicht angegebenen Partitionsschlüssel wurde eine Ausnahme ausgelöst, anstatt eine Liste aller registrierten Links zurückgegeben.
 
 ### <a name="a-name154154a"></a><a name="1.5.4"/>1.5.4</a>
-* Behebt Problem [Nr. 100](https://github.com/Azure/azure-documentdb-node/issues/100) – Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für DocumentDB-Zwecke. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
+* Behebt Problem [Nr.&100;](https://github.com/Azure/azure-documentdb-node/issues/100) – Dedizierter HTTPS-Agent: Vermeidung des Änderns des globalen Agents für DocumentDB-Zwecke. Verwenden Sie einen dedizierten-Agent für alle Anforderungen der Bibliothek.
 
 ### <a name="a-name153153a"></a><a name="1.5.3"/>1.5.3</a>
-* Behebt Problem [Nr. 81](https://github.com/Azure/azure-documentdb-node/issues/81) : Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.
+* Behebt Problem [Nr.&81;](https://github.com/Azure/azure-documentdb-node/issues/81) : Ordnungsgemäße Behandlung von Bindestrichen in Medien-IDs.
 
 ### <a name="a-name152152a"></a><a name="1.5.2"/>1.5.2</a>
-* Behebt Problem [Nr. 95](https://github.com/Azure/azure-documentdb-node/issues/95) : Warnung des EventEmitter-Listeners bei Arbeitsspeicherverlusten.
+* Behebt Problem [Nr.&95;](https://github.com/Azure/azure-documentdb-node/issues/95) : Warnung des EventEmitter-Listeners bei Arbeitsspeicherverlusten.
 
 ### <a name="a-name151151a"></a><a name="1.5.1"/>1.5.1</a>
 * Behebt Problem [92](https://github.com/Azure/azure-documentdb-node/issues/90) : Umbenennung des Ordners „Hash“ in „hash“ für Systeme, bei denen die Groß-/Kleinschreibung beachtet wird.
@@ -136,15 +141,11 @@ Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzuge
 
 Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
-> [!WARNING]
-> Alle Versionen des Azure DocumentDB SDK für Node.js vor Version **1.0.0** werden am **29. Februar 2016** deaktiviert.
-> 
-> 
-
 <br/>
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.10.1](#1.10.1) |22. Dezember 2016 |--- |
 | [1.10.0](#1.10.0) |3. Oktober 2016 |--- |
 | [1.9.0](#1.9.0) |7. Juli 2016 |--- |
 | [1.8.0](#1.8.0) |14. Juni 2016 |--- |
@@ -167,11 +168,6 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 | [1.0.2](#1.0.2) |23. Mai 2015 |--- |
 | [1.0.1](#1.0.1) |15. Mai 2015 |--- |
 | [1.0.0](#1.0.0) |8. April 2015 |--- |
-| 0.9.4 Prerelease |6. April 2015 |29. Februar 2016 |
-| 0.9.3 Prerelease |14. Januar 2015 |29. Februar 2016 |
-| 0.9.2 Prerelease |18. Dezember 2014 |29. Februar 2016 |
-| 0.9.1 Prerelease |22. August 2014 |29. Februar 2016 |
-| 0.9.0 Prerelease |21.08.14 |29. Februar 2016 |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -182,6 +178,6 @@ Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microso
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -12,22 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 2/2/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 5a73ee6865a09af68a9ab55f17c85136608c4d84
-ms.openlocfilehash: cfe10bc9c86835d228b09550cc98a846ee1a78ad
+ms.sourcegitcommit: 97edd5eaa3cfa4a122556583dff28c4a9b6f5adc
+ms.openlocfilehash: 18035fe2a30707f701098cef4b1391b1d5ab2012
 
 
 ---
 # <a name="overview-of-the-azure-activity-log"></a>Übersicht über das Azure-Aktivitätsprotokoll
-Das **Azure-Aktivitätsprotokoll** bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokolle“ oder „Vorgangsprotokolle“ bezeichnet, da es Ereignisse der Steuerungsebene für Ihre Abonnements enthält. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET).
+Das **Azure-Aktivitätsprotokoll** bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokolle“ oder „Vorgangsprotokolle“ bezeichnet, da es Ereignisse der Steuerungsebene für Ihre Abonnements enthält. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden.
 
 Es unterscheidet sich von [Diagnoseprotokollen](monitoring-overview-of-diagnostic-logs.md), da es sich dabei um alle ausgegebenen Protokolle einer Ressource handelt. Diese Protokolle enthalten Daten zum Betrieb der Ressource und nicht zu den Vorgängen einer Ressource.
 
 Sie können Ereignisse per Azure-Portal, Befehlszeilenschnittstelle, PowerShell-Cmdlets und Azure Monitor-REST-API aus dem Aktivitätsprotokoll abrufen.
 
 Sehen Sie sich diese [Videoeinführung in das Aktivitätsprotokoll](https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz) an.  
+
+> [!WARNING]
+> Das Azure-Aktivitätsprotokoll ist in erster Linie für Aktivitäten bestimmt, die in Azure Resource Manager stattfinden, nicht für solche, die das klassische Modell/RDFE-Modell verwenden. Beachten Sie, dass einige klassische Ressourcentypen einen Proxyressourcenanbieter in Azure Resource Manager aufweisen (z.B. Microsoft.ClassicCompute). Wenn ein Benutzer mithilfe dieser Proxyressourcenanbieter über Azure Resource Manager mit einem klassischen Ressourcentyp interagiert, werden die Vorgänge im Aktivitätsprotokoll aufgeführt. Wenn ein Benutzer mit einem klassischen Ressourcentyp im klassischen Portal oder an anderer Stelle außerhalb der Azure Resource Manager-Proxys interagiert, werden die Benutzeraktionen nur in das Vorgangsprotokoll aufgenommen, auf das nur im klassischen Portal zugegriffen werden kann.
+>
+>
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Möglichkeiten mit dem Aktivitätsprotokoll
 Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgeführt:
@@ -45,7 +50,7 @@ Das Speicherkonto oder der Event Hub-Namespace müssen sich nicht unter demselbe
 Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll exportiert wird. Mit einem Protokollprofil können Sie Folgendes konfigurieren:
 
 * Wohin das Aktivitätsprotokoll gesendet wird (Speicherkonto oder Event Hubs)
-* Welche Ereigniskategorien gesendet werden sollen („Write“, „Delete“, „Action“)
+* Welche Ereigniskategorien gesendet werden sollen („Write“, „Delete“, „Action“) *Beachten Sie, dass der Begriff „Kategorie“ im Kontext des Protokollprofils etwas anderes bedeutet als die Kategorie-Eigenschaft in einem Aktivitätsprotokollereignis. Eine Kategorie im Protokollprofil repräsentiert den Vorgangstyp („Write“, „Delete“, „Action“), die Kategorie-Eigenschaft in einem Aktivitätsprotokollereignis repräsentiert die Quelle oder den Typ des Ereignisses („Administration“, „ServiceHealth“, „Alert“ usw.).*
 * Welche Regionen (Standorte) exportiert werden sollen
 * Wie lange das Aktivitätsprotokoll in einem Speicherkonto aufbewahrt werden sollen. Bei Angabe einer Aufbewahrungsdauer von null Tagen werden die Protokolle dauerhaft aufbewahrt. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden. Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Event Hubs- oder die OMS-Option aktiviert ist), werden die Aufbewahrungsrichtlinien ignoriert. Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
@@ -87,7 +92,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Standorte |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von&0; werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Categories |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils
@@ -116,7 +121,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 | storageId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
 | locations |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von&0; werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | categories |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils
@@ -233,12 +238,12 @@ Jedes Ereignis im Aktivitätsprotokoll verfügt über ein JSON-Blob ähnlich die
 | nextLink |Fortsetzungstoken zum Abrufen des nächsten Satzes mit Ergebnissen, wenn diese in mehrere Antworten unterteilt werden. Normalerweise erforderlich, wenn mehr als 200 Datensätze vorhanden sind. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../resource-group-audit.md)
+* [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../azure-resource-manager/resource-group-audit.md)
 * [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](monitoring-stream-activity-logs-event-hubs.md)
 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

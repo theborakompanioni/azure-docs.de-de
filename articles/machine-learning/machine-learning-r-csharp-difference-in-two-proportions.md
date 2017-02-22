@@ -1,6 +1,6 @@
 ---
-title: Unterschied im Anteilstest | Microsoft Docs
-description: Unterschied im Anteilstest
+title: "(Veraltet:) Testen des Unterschieds zwischen Anteilen – Azure | Microsoft Docs"
+description: (Veraltet:) Testen des Unterschieds zwischen Anteilen
 services: machine-learning
 documentationcenter: 
 author: aniedea
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/12/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: aniedea
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 27e1626e72f9740e73a19e078868a7c4392baf1e
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 18023b5057d1eeca88a341d62cbeb543102b3abf
 
 
 ---
-# <a name="difference-in-proportions-test"></a>Unterschied im Anteilstest
+# <a name="deprecated-difference-in-proportions-test"></a>(Veraltet:) Testen des Unterschieds zwischen Anteilen
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Unterscheiden sich zwei Anteile statistisch? Angenommen, ein Benutzer möchte zwei Filme vergleichen, um zu bestimmen, ob ein Film einen wesentlich höheren Anteil an "Likes" im Vergleich zum anderen hat. Mit einer umfangreichen Stichprobe kann sich eine statistisch relevante Abweichung zwischen den Anteilen 0,50 und 0,51 ergeben. Mit einer kleinen Stichprobe sind möglicherweise nicht genügend Daten vorhanden, um zu bestimmen, ob sich diese Anteile tatsächlich unterscheiden. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -85,7 +92,7 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment mit zwei [Execute R Script][execute-r-script]-Modulen erstellt. Im ersten Modul wird das Schema definiert, während das zweite Modul den prop.test-Befehl in R verwendet, um die Hypothese für zwei Anteile zu testen. 
+In Azure Machine Learning wurde ein neues leeres Experiment mit zwei Modulen [Execute R Script][execute-r-script] erstellt. Im ersten Modul wird das Schema definiert, während das zweite Modul den prop.test-Befehl in R verwendet, um die Hypothese für zwei Anteile zu testen. 
 
 ### <a name="experiment-flow"></a>Experimentablauf:
 ![Experimentablauf][2]
@@ -129,6 +136,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

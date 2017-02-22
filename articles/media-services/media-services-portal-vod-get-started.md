@@ -1,5 +1,5 @@
 ---
-title: " Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem Azure-Portal | Microsoft-Dokumentations"
+title: "Erste Schritte zum Bereitstellen von VoD-Inhalten über das Azure-Portal | Microsoft-Dokumentation"
 description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Azure-Portals einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 01/23/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: b433c35817a0ba36003e8d506db9d2d6d97f9ff7
+ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
+ms.openlocfilehash: 76fd245f91e1bfab3df68120859c69e459283e5b
 
 
 ---
@@ -25,59 +25,19 @@ ms.openlocfilehash: b433c35817a0ba36003e8d506db9d2d6d97f9ff7
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Azure-Portals einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit der AMS-Anwendung (Azure Media Services) implementieren.
 
-> [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
-> 
-> 
+## <a name="prerequisites"></a>Voraussetzungen
+Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
+
+* Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
+* Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 
 Dieses Lernprogramm enthält die folgenden Aufgaben:
 
-1. Erstellen eines Azure Media Services-Kontos
-2. Starten des Streamingendpunkts
-3. Hochladen einer Videodatei
-4. Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
-5. Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download  
-6. Wiedergeben Ihrer Inhalte
-
-## <a name="create-an-azure-media-services-account"></a>Erstellen eines Azure Media Services-Kontos
-In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **+Neu** > **Web und mobil** > **Media Services**.
-   
-    ![Media Services – Erstellung](./media/media-services-portal-vod-get-started/media-services-new1.png)
-3. Geben Sie unter **CREATE MEDIA SERVICES ACCOUNT** (MEDIA SERVICES-KONTO ERSTELLEN) die erforderlichen Werte ein.
-   
-    ![Media Services – Erstellung](./media/media-services-portal-vod-get-started/media-services-new3.png)
-   
-   1. Geben Sie unter **Kontoname**den Namen des neuen AMS-Kontos ein. Der Name eines Media Services-Kontos darf nur Kleinbuchstaben oder Ziffern ohne Leerzeichen enthalten und muss aus 3 bis 24 Zeichen bestehen.
-   2. Wählen Sie unter „Abonnement“ das Azure-Abonnement aus, auf das Sie Zugriff haben.
-   3. Wählen Sie unter **Ressourcengruppe**die neue oder vorhandene Ressource aus.  Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../azure-resource-manager/resource-group-overview.md#resource-groups) erhalten Sie weitere Informationen.
-   4. Wählen Sie unter **Standort** die geografische Region aus, in der die Medien- und Metadaten-Datensätze für Ihr Media Services-Konto gespeichert werden. Dieser Bereich wird zum Verarbeiten und Streamen Ihrer Medien verwendet. Im Dropdownlistenfeld werden nur die verfügbaren Media Services-Regionen angezeigt. 
-   5. Wählen Sie unter **Speicherkonto**ein Speicherkonto aus, das als Blobspeicher für die Medieninhalte aus Ihrem Media Services-Konto dienen soll. Sie können ein vorhandenes Speicherkonto in der gleichen geografischen Region auswählen, in der sich auch Ihr Media Services-Konto befindet, oder ein Speicherkonto erstellen. Ein neues Speicherkonto wird in derselben Region erstellt. Für Namen von Speicherkonten gelten die gleichen Regeln wie für Namen von Media Services-Konten.
-      
-       Weitere Informationen zum Speicher finden Sie [hier](../storage/storage-introduction.md).
-   6. Wählen Sie **An Dashboard anheften** aus, um den Status der Kontobereitstellung anzuzeigen.
-4. Klicken Sie unten im Formular auf **Erstellen** .
-   
-    Nachdem die Erstellung des Kontos erfolgreich abgeschlossen wurde, wird die Seite mit der Übersicht geladen. In der Streamingendpunkt-Tabelle ist für das Konto ein Standard-Streamingendpunkt mit dem Status **Beendet** angegeben. Der Streamingendpunkt, von dem aus Sie unsere Inhalte streamen möchten, muss sich im Status **Wird ausgeführt** befinden. 
-   
-    ![Media Services – Einstellungen](./media/media-services-portal-vod-get-started/media-services-settings.png)
-   
-    Verwenden Sie zum Verwalten Ihres AMS-Kontos (Hochladen von Videos, Codieren von Ressourcen, Überwachen des Auftragsstatus und Ähnliches) das Fenster **Einstellungen** .
-
-## <a name="manage-keys"></a>Schlüssel verwalten
-Sie benötigen den Kontonamen und den Primärschlüssel, um programmgesteuert auf das Media Services-Konto zugreifen zu können.
-
-1. Wählen Sie im Azure-Portal Ihr Konto aus. 
-   
-    Das Fenster **Einstellungen** wird auf der rechten Seite angezeigt. 
-2. Wählen Sie im Fenster **Einstellungen** die Option **Schlüssel** aus. 
-   
-    Im Fenster **Schlüssel verwalten** werden der Kontoname sowie der Primär- und Sekundärschlüssel angezeigt. 
-3. Kopieren Sie die Werte mithilfe der Kopierschaltfläche.
-   
-    ![Media Services – Schlüssel](./media/media-services-portal-vod-get-started/media-services-keys.png)
+1. Starten des Streamingendpunkts
+2. Hochladen einer Videodatei
+3. Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
+4. Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download  
+5. Wiedergeben Ihrer Inhalte
 
 ## <a name="start-streaming-endpoints"></a>Starten von Streamingendpunkten 
 
@@ -88,13 +48,14 @@ Wenn Sie mit Azure Media Services arbeiten, besteht eines der häufigsten Szenar
 
 Führen Sie folgende Schritte aus, um den Streamingendpunkt zu starten:
 
-1. Klicken Sie im Fenster „Einstellungen“ auf „Streamingendpunkte“. 
-2. Klicken Sie auf den standardmäßigen Streamingendpunkt. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Klicken Sie im Fenster „Einstellungen“ auf „Streamingendpunkte“. 
+3. Klicken Sie auf den standardmäßigen Streamingendpunkt. 
 
     Das Fenster DEFAULT STREAMING ENDPOINT DETAILS (DETAILS ZUM STANDARD-STREAMINGENDPUNKT) wird angezeigt.
 
-3. Klicken Sie auf das Symbol „Start“.
-4. Klicken Sie auf die Schaltfläche „Speichern“, um die Änderungen zu speichern.
+4. Klicken Sie auf das Symbol „Start“.
+5. Klicken Sie auf die Schaltfläche „Speichern“, um die Änderungen zu speichern.
 
 ## <a name="upload-files"></a>Hochladen von Dateien
 Zum Streamen von Videos mit Azure Media Services müssen Sie die Quellvideos hochladen, in mehreren Bitraten codieren und das Ergebnis veröffentlichen. Der erste Schritt ist in diesem Abschnitt beschrieben. 
@@ -129,7 +90,7 @@ In diesem Abschnitt werden die Schritte beschrieben, die Sie ausführen können,
 1. Wählen Sie im Fenster **Einstellungen** die Option **Assets** aus.  
 2. Wählen Sie im Fenster **Ressourcen** das Objekt aus, das Sie codieren möchten.
 3. Klicken Sie auf die Schaltfläche **Codieren** .
-4. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Weitere Informationen zu Voreinstellungen finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/azure/mt269960.aspx). Es ist wichtig, dass Sie die Voreinstellung auswählen, die für Ihr Eingabevideo am besten geeignet ist. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die standardmäßige Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
+4. Wählen Sie im Fenster **Medienobjekt codieren** den Prozessor „Media Encoder Standard“ und eine Voreinstellung aus. Wenn Sie beispielsweise wissen, dass das Eingabevideo eine Auflösung von 1920x1080 Pixel hat, können Sie die Voreinstellung „H264 Multiple Bitrate 1080p“ wählen. Weitere Informationen zu Voreinstellungen finden Sie in [diesem Artikel](media-services-mes-presets-overview.md). Es ist wichtig, dass Sie die Voreinstellung auswählen, die für Ihr Eingabevideo am besten geeignet ist. Wenn Sie über ein Video mit niedriger Auflösung (640x360) verfügen, sollten Sie nicht die standardmäßige Voreinstellung „H264 Multiple Bitrate 1080p“ verwenden.
    
    Zur Vereinfachung der Verwaltung besteht die Möglichkeit, den Namen des Ausgabemedienobjekts und den Namen des Auftrags zu bearbeiten.
    
@@ -169,7 +130,7 @@ Eine SAS-URL weist das folgende Format auf.
 > 
 > 
 
-Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
+Verwenden Sie zum Aktualisieren eines Ablaufdatums für einen Locator die [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- oder [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-APIs. Wenn Sie das Ablaufdatum eines SAS-Locators aktualisieren, ändert sich auch die URL.
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>So verwenden Sie das Portal zum Veröffentlichen eines Objekts
 So veröffentlichen Sie ein Medienobjekt über das Portal:
@@ -207,6 +168,6 @@ Folgende Überlegungen sollten berücksichtigt werden:
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

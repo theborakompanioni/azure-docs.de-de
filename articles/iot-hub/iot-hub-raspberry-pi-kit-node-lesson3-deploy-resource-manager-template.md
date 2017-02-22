@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Azure-Funktionen-App und eines Azure-Speicherkontos | Microsoft-Dokumentation
+title: "Verbinden von Raspberry Pi (Node) mit Azure IoT – Lektion 3: Bereitstellung von Vorlagen | Microsoft-Dokumentation"
 description: Die Azure-Funktionen-App lauscht auf Azure IoT Hub-Ereignisse, verarbeitet eingehende Nachrichten und schreibt sie in Azure Table Storage.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: ffcb9214b8fa645a8a2378c5e7054b9f984addbb
-ms.openlocfilehash: df446b1a6b244761f39bfdcebb7e404435c2c35d
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: a3a7ec4c81556e4cb530f32c9997d8701db68b2c
 
 
 ---
@@ -58,7 +58,7 @@ Aktualisieren Sie die Datei `arm-template-param.json` in Visual Studio Code.
 
 ![Azure Resource Manager-Vorlagenparameter](media/iot-hub-raspberry-pi-lessons/lesson3/arm_para.png)
 
-* Ersetzen Sie **[Ihr IoT Hub-Name]** durch den Hub-Namen (**{my hub name}**), den Sie beim [Erstellen des IoT-Hubs und Registrieren von Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md) angegeben haben.
+* Ersetzen Sie **[your IoT Hub name]** (Ihr IoT Hub-Name) durch **{mein Hub-Name}**, den Sie beim [Erstellen des IoT-Hubs und Registrieren von Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md) angegeben haben.
 * Ersetzen Sie **[prefix string for new resources]** durch ein beliebiges Präfix. Durch das Präfix wird sichergestellt, dass der Ressourcenname global eindeutig ist, um Konflikte zu vermeiden. Verwenden Sie beim Präfix keine Gedankenstriche oder Zahlen als erstes Zeichen.
 
 Nach der Aktualisierung der Datei `arm-template-param.json` stellen Sie die Ressourcen in Azure bereit, indem Sie den folgenden Befehl ausführen:
@@ -78,6 +78,6 @@ Sie haben die Azure-Funktionen-App zum Verarbeiten von IoT Hub-Nachrichten sowie
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Jan17_HO4-->
 
 

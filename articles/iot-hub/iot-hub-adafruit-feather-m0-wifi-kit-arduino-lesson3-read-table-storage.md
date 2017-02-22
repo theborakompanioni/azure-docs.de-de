@@ -1,5 +1,5 @@
 ---
-title: Lesen von Nachrichten in Azure Storage | Microsoft-Dokumentation
+title: "Verbinden von Arduino (C) mit Azure IoT – Lektion 3: Table Storage | Microsoft-Dokumentation"
 description: "Sie überwachen D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud), während diese in Azure Table Storage geschrieben werden."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/13/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 946d66cc7ed1173e7b2b92dae90a1ce69ba3c165
-ms.openlocfilehash: 66d403fd63782d1945d6786220b8f329035ee456
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 7a49a15b00bf25c9416235f41da8cc86e54d0062
 
 
 ---
@@ -86,6 +86,6 @@ Sie haben das Arduino-Board erfolgreich mit Ihrer IoT Hub-Instanz in der Cloud v
 [send-cloud-to-device-messages]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

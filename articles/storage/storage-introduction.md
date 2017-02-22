@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Storage | Microsoft Docs"
+title: "Einführung in Azure Storage | Microsoft-Dokumentation"
 description: "Eine Übersicht über Azure Storage, dem Onlinedatenspeicher von Microsoft in der Cloud. Hier erfahren Sie, wie Sie in Ihren Anwendungen die beste verfügbare Cloudspeicherlösung verwenden."
 services: storage
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2016
+ms.date: 02/02/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 931503f56b32ce9d1b11283dff7224d7e2f015ae
-ms.openlocfilehash: 40ab7632f47de4d4eef277f4c4071ce2d4de1eed
+ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
+ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
 
 
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Einführung in Microsoft Azure Storage
+
 ## <a name="overview"></a>Übersicht
 Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen. In diesem Artikel finden Entwickler, IT-Experten und Entscheidungsträger Antworten auf folgende Fragen:
 
@@ -65,7 +66,7 @@ Ein Azure-Speicherkonto ist ein sicheres Konto, mit dem Sie auf Dienste in Azure
 
 [!INCLUDE [storage-versions-include](../../includes/storage-versions-include.md)]
 
-## <a name="blob-storage"></a>Blob Storage
+## <a name="blob-storage"></a>Blob-Speicher
 Blob Storage ist eine kostengünstige und skalierbare Lösung für Benutzer, die große Mengen an unstrukturierten Objektdaten in der Cloud speichern möchten. Mit Blob Storage lassen sich unter anderem folgende Inhalte speichern:
 
 * Dokumente
@@ -96,7 +97,7 @@ Genau wie bei Blobs und Warteschlangen können Entwickler Table Storage unter Ve
 
 Für moderne internetbasierte Anwendungen stellen NoSQL-Datenbanken wie Table Storage eine beliebte Alternative zu herkömmlichen relationalen Datenbanken dar.
 
-## <a name="queue-storage"></a>Queue Storage
+## <a name="queue-storage"></a>Warteschlangenspeicher
 Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, um eine unabhängige Skalierung zu ermöglichen. Queue Storage bietet eine zuverlässige Messaginglösung für die asynchrone Kommunikation zwischen Anwendungskomponenten – ganz gleich, ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder auf einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
 Ein Speicherkonto kann eine beliebige Anzahl von Warteschlangen enthalten. Eine Warteschlange kann eine beliebige Anzahl von Nachrichten enthalten (bis zur Kapazitätsgrenze des Speicherkontos). Einzelne Nachrichten können bis zu 64 KB groß sein.
@@ -207,7 +208,9 @@ Auf Azure Storage-Ressourcen kann über jede Sprache zugegriffen werden, die fü
 Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
 ### <a name="documentation"></a>Dokumentation
-* [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
+* [Erste Schritte mit Azure Storage – Einstieg in fünf Minuten](storage-getting-started-guide.md)
 
 ### <a name="for-administrators"></a>Für Administratoren
 * [Verwenden von Azure PowerShell mit Azure Storage](storage-powershell-guide-full.md)
@@ -246,12 +249,8 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 * [Gewusst wie: Verwenden von Queue Storage mit Python](storage-python-how-to-use-queue-storage.md)
 * [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
 
-## <a name="next-steps"></a>Nächste Schritte
-
-* [Erstellen Sie ein Speicherkonto](storage-create-storage-account.md)
-* [Erste Schritte mit Azure Storage – Einstieg in fünf Minuten](storage-getting-started-guide.md)
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 7b0dcf833981364abfbc77d0cd6dfde8beb081b7
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e8763f1ab7e51e10ae59cf2b6b2c609f0f45dcd3
 
 
 ---
@@ -47,7 +47,7 @@ Um eine App mit einem virtuellen Netzwerk zu verbinden, führen Sie die folgende
 2. Laden Sie das Web-App-Zertifikat in das virtuelle Netzwerk hoch, und rufen Sie dann den URI für das Punkt-zu-Standort-VPN-Paket ab.
 3. Aktualisieren Sie die virtuelle Netzwerkverbindung der Web-App mit dem Punkt-zu-Standort-Paket-URI.
 
-Der erste und der dritte Schritt können vollständig mit Skripts ausgeführt werden. Der zweite Schritt erfordert jedoch eine einmalige manuelle Aktion über das Portal oder Zugriff zum Ausführen von **PUT**- oder **PATCH**-Aktionen auf dem ARM-Endpunkt (Azure Resource Manager) des virtuellen Netzwerks. Wenden Sie sich an den Azure-Support, um diese Option aktivieren zu lassen. Bevor Sie beginnen, stellen Sie sicher, dass ein klassisches virtuelles Netzwerk mit Punkt-zu-Standort-Verbindung bereits aktiviert ist und ein Gateway bereitgestellt wurde. Zum Erstellen des Gateways und zum Aktivieren der Punkt-zu-Standort-Verbindung müssen Sie das Portal verwenden, wie unter [Erstellen eines VPN-Gateways][createvpngateway] beschrieben.
+Der erste und der dritte Schritt können vollständig mit Skripts ausgeführt werden. Der zweite Schritt erfordert jedoch eine einmalige manuelle Aktion über das Portal oder Zugriff zum Ausführen von **PUT**- oder **PATCH**-Aktionen auf dem ARM-Endpunkt (Azure Resource Manager) des virtuellen Netzwerks. Wenden Sie sich an den Azure-Support, um diese Option aktivieren zu lassen. Bevor Sie beginnen, stellen Sie sicher, dass ein klassisches virtuelles Netzwerk mit Punkt-zu-Standort-Verbindung bereits aktiviert ist und ein Gateway bereitgestellt wurde. Zum Erstellen des Gateways und zum Aktivieren der Punkt-zu-Site-Verbindung müssen Sie das Portal verwenden, wie unter [Erstellen eines VPN-Gateways][createvpngateway] beschrieben.
 
 Das klassische virtuelle Netzwerk muss zum gleichen Abonnement gehören wie der App Service-Plan mit der App, für die Sie die Integration einrichten.
 
@@ -119,7 +119,7 @@ Der erste Schritt ist das Generieren der CER-Datei. Der zweite Schritt ist das H
 
 Das Zertifikat befindet sich an dem durch **$Configuration.GeneratedCertificatePath** angegebenen Speicherort.
 
-Verwenden Sie zum manuellen Hochladen des Zertifikats das [Azure-Portal][azureportal], und wechseln Sie zu **Virtuelles Netzwerk (klassisch)** > **VPN-Verbindungen** > **Punkt-zu-Standort** > **Zertifikate verwalten**. Hier können Sie Ihr Zertifikat hochladen.
+Verwenden Sie zum manuellen Hochladen des Zertifikats das [Azure-Portal][azureportal], und wechseln Sie zu **Virtuelles Netzwerk (klassisch)** > **VPN-Verbindungen** > **Punkt-zu-Site** > **Zertifikate verwalten**. Hier können Sie Ihr Zertifikat hochladen.
 
 ##### <a name="get-the-point-to-site-package"></a>Abrufen des Punkt-zu-Standort-Pakets
 Der nächste Schritt beim Einrichten einer virtuellen Netzwerkverbindung in einer Web-App ist, das Punkt-zu-Standort-Paket abzurufen und Ihrer Web-App bereitzustellen.
@@ -706,6 +706,6 @@ Auch wenn das Skript „delete“ anzeigt, wird nicht das virtuelle Netzwerk gel
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

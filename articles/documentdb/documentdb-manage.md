@@ -1,30 +1,16 @@
 ---
-title: DocumentDB-Speicherung und -Leistung | Microsoft Docs
-description: "Informationen zur Speicherung von Daten und Dokumenten in DocumentDB und zum Skalieren von DocumentDB zum Erfüllen der Kapazitätsanforderungen Ihrer Anwendung."
-keywords: Speicherung von Dokumenten
-services: documentdb
-author: syamkmsft
-manager: jhubbard
-editor: cgronlun
-documentationcenter: 
-ms.assetid: d3c0bae3-1862-4203-9260-e36216a7823d
-ms.service: documentdb
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 08/18/2016
-ms.author: syamk
+redirect_url: https://azure.microsoft.com/services/documentdb/
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d5af6e3d9ba35558e0d7850820f4b9a479a259be
-ms.openlocfilehash: 8a387dbb4ae5c8ce64c397441613d6d1fc3f08b1
+ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
+ms.openlocfilehash: 27880401ccfca4c2c504eecc1aeb128d40c501a3
 
 
 ---
 # <a name="storage-and-predictable-performance-provisioning-in-documentdb"></a>Speicherung und vorhersagbare Leistungsbereitstellung in DocumentDB
 Azure DocumentDB ist ein vollständig verwalteter, skalierbarer dokumentorientierter NoSQL-Datenbankdienst für JSON-Dokumente. Mit DocumentDB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. DocumentDB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten.  
 
-Machen Sie sich mit DocumentDB durch [Erstellen eines Datenbankkontos](documentdb-create-account.md) und einer [DocumentDB-Datenbank](documentdb-create-database.md) über das [Azure-Portal](https://portal.azure.com/) vertraut. DocumentDB-Datenbanken werden in Einheiten aus SSD-gestütztem Speicher und Durchsatz angeboten. Diese Speichereinheiten werden durch [Erstellen von Datenbanksammlungen](documentdb-create-collection.md) innerhalb Ihres Datenbankkontos bereitgestellt. Dabei gilt für jede Sammlung ein reservierter Durchsatz, der jederzeit hoch- oder herunterskaliert werden kann, damit die Anforderungen Ihrer Anwendung erfüllt sind.
+Machen Sie sich mit DocumentDB durch [Erstellen eines Datenbankkontos](documentdb-create-account.md) und anschließender Erstellung einer [DocumentDB-Sammlung und -Datenbank](documentdb-create-collection.md) über das [Azure-Portal](https://portal.azure.com/) vertraut. DocumentDB-Datenbanken werden in Einheiten aus SSD-gestütztem Speicher und Durchsatz angeboten. Diese Speichereinheiten werden durch Erstellen von Datenbanksammlungen bereitgestellt. Dabei gilt für jede Sammlung ein reservierter Durchsatz, der jederzeit zentral hoch- oder herunterskaliert werden kann, damit die Anforderungen Ihrer Anwendung erfüllt sind.
 
 Wenn Ihre Anwendung den reservierten Durchsatz für eine oder mehrere Sammlungen überschreitet, werden die Anforderungen pro Sammlung beschränkt. Dies bedeutet, dass einige Anforderungen erfolgreich sind, während andere aufgrund der Beschränkung fehlschlagen.
 
@@ -142,6 +128,6 @@ Anweisungen zur Überwachung der Leistungsebenen im Azure-Portal finden Sie unte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/06/2017
-ms.author: billmath
+ms.date: 02/10/2017
+ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: c9ebe21acbe06aa25bcadb3b500c34cf89154388
-ms.openlocfilehash: 9abdfa7349bee74b89a23663969904110c730395
+ms.sourcegitcommit: 21e599fc2adf3d7dce84cc1c4130504b71928db7
+ms.openlocfilehash: c8c5f30e4cb0467f6ccdc65d96b57b766593ba31
 
 
 ---
@@ -89,13 +89,16 @@ Die ersten Schritte mit Azure AD Connect Health sind sehr einfach. Führen Sie d
 >
 
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Herunterladen und Installieren des Azure AD Connect Health-Agents
-* Vergewissern Sie sich, dass Sie die Anforderungen für Azure AD Connect Health erfolgen.
-* Für die ersten Schritte mit Azure AD Connect Health für AD FS können Sie die neueste Version des Agents hier herunterladen: [Azure AD Connect Health-Agent für AD FS – Download.](http://go.microsoft.com/fwlink/?LinkID=518973)
-  [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
-* Für die ersten Schritte mit Azure AD Connect Health für die Synchronisierung laden Sie die [aktuelle Version von Azure AD Connect](http://go.microsoft.com/fwlink/?linkid=615771)herunter, und installieren Sie sie.  Der Health-Agent wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher).  Azure AD Connect unterstützt ein direktes Upgrade von vorherigen Versionen.
-* Für die ersten Schritte mit Azure AD Connect Health für AD DS können Sie die neueste Version des Agents hier herunterladen: [Azure AD Connect Health-Agent für AD DS – Download.](http://go.microsoft.com/fwlink/?LinkID=820540)
-  [](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
-
+* Stellen Sie sicher, dass Sie für Azure AD Connect Health [die Anforderungen erfüllen] (active-directory-aadconnect-health-agent-install.md#requirements)
+* Erste Schritte mit Azure AD Connect Health für AD FS
+    * [Laden Sie den Azure AD Connect Health-Agent für AD FS herunter.](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Installationsanweisungen anzeigen](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
+* Erste Schritte mit Azure AD Connect Health für die Sychronisierung
+    * [Laden Sie die aktuelle Version von Azure AD Connect herunter, und installieren Sie sie](http://go.microsoft.com/fwlink/?linkid=615771). Der Health-Agent für die Synchronisierung wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher).
+* Erste Schritte mit Azure AD Connect Health für AD DS
+    * [Laden Sie den Azure AD Connect Health-Agent für AD DS herunter.](http://go.microsoft.com/fwlink/?LinkID=820540)
+    * [Installationsanweisungen anzeigen](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
+    
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health-Portal
 Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsdaten und Nutzungsanalysen anzeigen. Unter „https://aka.ms/aadconnecthealth“ gelangen Sie zum Hauptblatt von Azure AD Connect Health.  Sie können es sich wie ein Fenster vorstellen. Auf dem Hauptblatt werden die Option „Schnellstart“, die Dienste von Azure AD Connect Health und weitere Konfigurationsoptionen angezeigt. Der nachstehende Screenshot zeigt jedes dieser Elemente, die nachfolgend kurz beschrieben werden.  Nachdem Sie die Agents bereitgestellt haben, wird der Integritätsdienst für die Dienste automatisch identifiziert, die von Azure AD Connect Health überwacht werden.
 
@@ -120,7 +123,6 @@ Im Azure AD Connect Health-Portal können Sie Warnungen, Leistungsüberwachungsd
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

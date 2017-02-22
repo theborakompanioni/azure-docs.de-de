@@ -1,5 +1,5 @@
 ---
-title: Verwenden mehrerer Eingabedateien und Komponenteneigenschaften mit Premium-Encoder | Microsoft-Dokumentation
+title: "Mehrere Eingabedateien und Komponenteneigenschaften mit Premium-Encoder – Azure | Microsoft-Dokumentation"
 description: "In diesem Thema wird das Verwenden von „setRuntimeProperties“ zum Arbeiten mit mehreren Eingabedateien und Übergeben benutzerdefinierter Daten an den Medienprozessor „Media Encoder Premium Workflow“ erläutert."
 services: media-services
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 01/23/2017
 ms.author: xpouyat;anilmur;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: f8b0917b6eb0295641360c4e0a80e81100809f6e
-ms.openlocfilehash: 1d7f5aeb5fcdb6b80289bbd77c12957148d03732
+ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
+ms.openlocfilehash: c789a5518575706992c8719c1927a8566c504fbb
 
 
 ---
@@ -27,32 +27,51 @@ Es gibt Szenarien, in denen Sie Komponenteneigenschaften möglicherweise anpasse
 * Überlagern von Video mit Text und Festlegen des Textwerts (z.B. das aktuelle Datum) zur Laufzeit für jedes Eingabevideo.
 * Anpassen des XML-Codes von Cliplisten (zum Angeben einer oder mehrerer Quelldateien, einer Kürzung usw.).
 * Überlagern des Eingabevideos mit einem Logobild bei der Codierung des Videos.
+* Codierung mit mehreren Audiosprachen.
 
 Um den **Media Encoder Premium Workflow** zu informieren, dass Sie beim Erstellen des Tasks oder Senden mehrerer Eingabedateien einige Eigenschaften im Workflow ändern, müssen Sie eine Konfigurationszeichenfolge verwenden, die **setRuntimeProperties** und/oder **transcodeSource** enthält. In diesem Thema wird ihre Verwendung erläutert.
 
 ## <a name="configuration-string-syntax"></a>Syntax der Konfigurationszeichenfolge
 Für die im Codierungstask festzulegende Konfigurationszeichenfolge wird ein XML-Dokument wie das folgende verwendet:
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <transcodeRequest>
-      <transcodeSource>
-      </transcodeSource>
-      <setRuntimeProperties>
-        <property propertyPath="Media File Input/filename" value="MyInputVideo.mp4" />
-      </setRuntimeProperties>
-    </transcodeRequest>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<transcodeRequest>
+  <transcodeSource>
+  </transcodeSource>
+  <setRuntimeProperties>
+    <property propertyPath="Media File Input/filename" value="VideoFileName.mp4" />
+  </setRuntimeProperties>
+</transcodeRequest>
+```
 
+Der folgende C#-Code liest die XML-Konfiguration aus einer Datei, aktualisiert sie mit dem richtigen Videodateinamen und übergibt sie der Aufgabe in einem Auftrag:
 
-Der folgende C#-Code liest die XML-Konfiguration aus einer Datei und übergibt sie der Aufgabe in einem Auftrag:
+```c#
+string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
 
-    XDocument configurationXml = XDocument.Load(xmlFileName);
-    IJob job = _context.Jobs.CreateWithSingleTask(
-                                                  "Media Encoder Premium Workflow",
-                                                  configurationXml.ToString(),
-                                                  myAsset,
-                                                  "Output asset",
-                                                  AssetCreationOptions.None);
+// Declare a new job.
+IJob job = _context.Jobs.Create("Premium Workflow encoding job");
 
+// Get a media processor reference, and pass to it the name of the 
+// processor to use for the specific task.
+IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Premium Workflow");
+
+// Create a task with the encoding details, using a string preset.
+ITask task = job.Tasks.AddNew("Premium Workflow encoding task",
+                              processor,
+                              premiumConfiguration,
+                              TaskOptions.None);
+
+// Specify the input assets
+task.InputAssets.Add(workflow); // workflow asset
+task.InputAssets.Add(video); // video asset with multiple files
+
+// Add an output asset to contain the results of the job. 
+// This output is specified as AssetCreationOptions.None, which 
+// means the output asset is not encrypted. 
+task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
+```
 
 ## <a name="customizing-component-properties"></a>Anpassen von Komponenteneigenschaften
 ### <a name="property-with-a-simple-value"></a>Eigenschaft mit einem einfachen Wert
@@ -64,53 +83,53 @@ Angenommen, Sie haben einen Workflow entworfen, der Ihre Videos mit Text überla
 
 Beispiel:
 
-    <?xml version="1.0" encoding="utf-8"?>
-      <transcodeRequest>
-        <setRuntimeProperties>
-          <property propertyPath="Media File Input/filename" value="MyInputVideo.mp4" />
-          <property propertyPath="/primarySourceFile" value="MyInputVideo.mp4" />
-          <property propertyPath="Optional Overlay/Overlay/filename" value="MyLogo.png"/>
-          <property propertyPath="Optional Text Overlay/Text To Image Converter/text" value="Today is Friday the 13th of May, 2016"/>
-      </setRuntimeProperties>
-    </transcodeRequest>
-
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+  <transcodeRequest>
+    <setRuntimeProperties>
+      <property propertyPath="Media File Input/filename" value="MyInputVideo.mp4" />
+      <property propertyPath="/primarySourceFile" value="MyInputVideo.mp4" />
+      <property propertyPath="Optional Text Overlay/Text To Image Converter/text" value="Today is Friday the 13th of May, 2016"/>
+  </setRuntimeProperties>
+</transcodeRequest>
+```
 
 ### <a name="property-with-an-xml-value"></a>Eigenschaft mit einem XML-Wert
 Zum Festlegen einer Eigenschaft, die einen XML-Wert erwartet, nehmen Sie mithilfe von `<![CDATA[ and ]]>`eine Kapselung vor.
 
 Beispiel:
 
-    <?xml version="1.0" encoding="utf-8"?>
-      <transcodeRequest>
-        <setRuntimeProperties>
-          <property propertyPath="/primarySourceFile" value="start.mxf" />
-          <property propertyPath="/inactiveTimeout" value="65" />
-          <property propertyPath="clipListXml" value="xxx">
-          <extendedValue><![CDATA[<clipList>
-            <clip>
-              <videoSource>
-                <mediaFile>
-                  <file>start.mxf</file>
-                </mediaFile>
-              </videoSource>
-              <audioSource>
-                <mediaFile>
-                  <file>start.mxf</file>
-                </mediaFile>
-              </audioSource>
-            </clip>
-            <primaryClipIndex>0</primaryClipIndex>
-            </clipList>]]>
-          </extendedValue>
-          </property>
-          <property propertyPath="Media File Input Logo/filename" value="logo.png" />
-        </setRuntimeProperties>
-      </transcodeRequest>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+  <transcodeRequest>
+    <setRuntimeProperties>
+      <property propertyPath="/primarySourceFile" value="start.mxf" />
+      <property propertyPath="/inactiveTimeout" value="65" />
+      <property propertyPath="clipListXml" value="xxx">
+      <extendedValue><![CDATA[<clipList>
+        <clip>
+          <videoSource>
+            <mediaFile>
+              <file>start.mxf</file>
+            </mediaFile>
+          </videoSource>
+          <audioSource>
+            <mediaFile>
+              <file>start.mxf</file>
+            </mediaFile>
+          </audioSource>
+        </clip>
+        <primaryClipIndex>0</primaryClipIndex>
+        </clipList>]]>
+      </extendedValue>
+      </property>
+      <property propertyPath="Media File Input Logo/filename" value="logo.png" />
+    </setRuntimeProperties>
+  </transcodeRequest>
+```
 
 > [!NOTE]
 > Setzen Sie hinter `<![CDATA[` kein Wagenrücklaufzeichen.
->
->
 
 ### <a name="propertypath-value"></a>Wert von „propertyPath“
 In den vorherigen Beispielen hatte „propertyPath“ den Wert „/Media File Input/filename“ oder „/inactiveTimeout“ oder „clipListXml“.
@@ -152,99 +171,106 @@ Verbindungen im Workflow:
 ### <a name="clip-list-xml-customization"></a>Anpassung des Cliplisten-XML-Codes
 Sie können den Cliplisten-XML-Code im Workflow zur Laufzeit mithilfe von **transcodeSource** im XML-Code der Konfigurationszeichenfolge angeben. Hierfür muss der Pin „Cliplisten-XML-Code“ mit der Komponente „Medienquelle“ im Workflow verbunden werden.
 
-    <?xml version="1.0" encoding="utf-16"?>
-      <transcodeRequest>
-        <transcodeSource>
-          <clipList>
-            <clip>
-              <videoSource>
-                <mediaFile>
-                  <file>video-part1.mp4</file>
-                </mediaFile>
-              </videoSource>
-              <audioSource>
-                <mediaFile>
-                  <file>video-part1.mp4</file>
-                </mediaFile>
-              </audioSource>
-            </clip>
-            <primaryClipIndex>0</primaryClipIndex>
-          </clipList>
-        </transcodeSource>
-        <setRuntimeProperties>
-          <property propertyPath="Media File Input Logo/filename" value="logo.png" />
-        </setRuntimeProperties>
-      </transcodeRequest>
+```xml
+<?xml version="1.0" encoding="utf-16"?>
+  <transcodeRequest>
+    <transcodeSource>
+      <clipList>
+        <clip>
+          <videoSource>
+            <mediaFile>
+              <file>video-part1.mp4</file>
+            </mediaFile>
+          </videoSource>
+          <audioSource>
+            <mediaFile>
+              <file>video-part1.mp4</file>
+            </mediaFile>
+          </audioSource>
+        </clip>
+        <primaryClipIndex>0</primaryClipIndex>
+      </clipList>
+    </transcodeSource>
+    <setRuntimeProperties>
+      <property propertyPath="Media File Input Logo/filename" value="logo.png" />
+    </setRuntimeProperties>
+  </transcodeRequest>
+```
 
 Wenn Sie angeben möchten, dass „/primarySourceFile“ diese Eigenschaft zum Benennen der Ausgabedateien mithilfe von „Ausdrücken“ verwendet, sollten Sie den Cliplisten-XML-Code als Eigenschaft *nach* der /primarySourceFile-Eigenschaft übergeben. Dies verhindert, dass die Clipliste von der /primarySourceFile-Einstellung überschrieben wird.
 
-    <?xml version="1.0" encoding="utf-8"?>
-      <transcodeRequest>
-        <setRuntimeProperties>
-          <property propertyPath="/primarySourceFile" value="c:\temp\start.mxf" />
-          <property propertyPath="/inactiveTimeout" value="65" />
-          <property propertyPath="clipListXml" value="xxx">
-          <extendedValue><![CDATA[<clipList>
-            <clip>
-              <videoSource>
-                <mediaFile>
-                  <file>c:\temp\start.mxf</file>
-                </mediaFile>
-              </videoSource>
-              <audioSource>
-                <mediaFile>
-                  <file>c:\temp\start.mxf</file>
-                </mediaFile>
-              </audioSource>
-            </clip>
-            <primaryClipIndex>0</primaryClipIndex>
-            </clipList>]]>
-          </extendedValue>
-          </property>
-          <property propertyPath="Media File Input Logo/filename" value="logo.png" />
-        </setRuntimeProperties>
-      </transcodeRequest>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+  <transcodeRequest>
+    <setRuntimeProperties>
+      <property propertyPath="/primarySourceFile" value="c:\temp\start.mxf" />
+      <property propertyPath="/inactiveTimeout" value="65" />
+      <property propertyPath="clipListXml" value="xxx">
+      <extendedValue><![CDATA[<clipList>
+        <clip>
+          <videoSource>
+            <mediaFile>
+              <file>c:\temp\start.mxf</file>
+            </mediaFile>
+          </videoSource>
+          <audioSource>
+            <mediaFile>
+              <file>c:\temp\start.mxf</file>
+            </mediaFile>
+          </audioSource>
+        </clip>
+        <primaryClipIndex>0</primaryClipIndex>
+        </clipList>]]>
+      </extendedValue>
+      </property>
+      <property propertyPath="Media File Input Logo/filename" value="logo.png" />
+    </setRuntimeProperties>
+  </transcodeRequest>
+```
 
 Mit zusätzlicher framegenauer Kürzung:
 
-    <?xml version="1.0" encoding="utf-8"?>
-      <transcodeRequest>
-        <setRuntimeProperties>
-          <property propertyPath="/primarySourceFile" value="start.mxf" />
-          <property propertyPath="/inactiveTimeout" value="65" />
-          <property propertyPath="clipListXml" value="xxx">
-          <extendedValue><![CDATA[<clipList>
-            <clip>
-              <videoSource>
-                <trim>
-                  <inPoint fps="25">00:00:05:24</inPoint>
-                  <outPoint fps="25">00:00:10:24</outPoint>
-                </trim>
-                <mediaFile>
-                  <file>start.mxf</file>
-                </mediaFile>
-              </videoSource>
-              <audioSource>
-               <trim>
-                  <inPoint fps="25">00:00:05:24</inPoint>
-                  <outPoint fps="25">00:00:10:24</outPoint>
-                </trim>
-                <mediaFile>
-                  <file>start.mxf</file>
-                </mediaFile>
-              </audioSource>
-            </clip>
-            <primaryClipIndex>0</primaryClipIndex>
-            </clipList>]]>
-          </extendedValue>
-          </property>
-          <property propertyPath="Media File Input Logo/filename" value="logo.png" />
-        </setRuntimeProperties>
-      </transcodeRequest>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+  <transcodeRequest>
+    <setRuntimeProperties>
+      <property propertyPath="/primarySourceFile" value="start.mxf" />
+      <property propertyPath="/inactiveTimeout" value="65" />
+      <property propertyPath="clipListXml" value="xxx">
+      <extendedValue><![CDATA[<clipList>
+        <clip>
+          <videoSource>
+            <trim>
+              <inPoint fps="25">00:00:05:24</inPoint>
+              <outPoint fps="25">00:00:10:24</outPoint>
+            </trim>
+            <mediaFile>
+              <file>start.mxf</file>
+            </mediaFile>
+          </videoSource>
+          <audioSource>
+            <trim>
+              <inPoint fps="25">00:00:05:24</inPoint>
+              <outPoint fps="25">00:00:10:24</outPoint>
+            </trim>
+            <mediaFile>
+              <file>start.mxf</file>
+            </mediaFile>
+          </audioSource>
+        </clip>
+        <primaryClipIndex>0</primaryClipIndex>
+        </clipList>]]>
+      </extendedValue>
+      </property>
+      <property propertyPath="Media File Input Logo/filename" value="logo.png" />
+    </setRuntimeProperties>
+  </transcodeRequest>
+```
 
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Beispiel 1: Überlagern des Videos mit einem Bild
 
-## <a name="example"></a>Beispiel
-Nehmen wir ein Beispiel, bei dem Sie das Eingabevideo bei der Codierung mit einem Logobild überlagern möchten. In diesem Beispiel heißen das Eingabevideo „MyInputVideo.mp4“ und das Logo „MyLogo.png“. Führen Sie die folgenden Schritte aus:
+### <a name="presentation"></a>Präsentation
+Nehmen wir ein Beispiel, bei dem Sie das Eingabevideo bei der Codierung mit einem Logobild überlagern möchten. In diesem Beispiel heißt das Eingabevideo „Microsoft_HoloLens_Possibilities_816p24.mp4“, und das Logo heißt „logo.png“. Führen Sie die folgenden Schritte aus:
 
 * Erstellen eines Workflowobjekts mit der Workflowdatei (siehe folgendes Beispiel).
 * Erstellen eines Medienobjekts, das zwei Dateien enthält: „MyInputVideo.mp4“ als primäre Datei und „MyLogo.png“.
@@ -252,24 +278,23 @@ Nehmen wir ein Beispiel, bei dem Sie das Eingabevideo bei der Codierung mit eine
 
 Konfiguration:
 
-    <?xml version="1.0" encoding="utf-8"?>
-      <transcodeRequest>
-        <setRuntimeProperties>
-          <property propertyPath="Media File Input/filename" value="MyInputVideo.mp4" />
-          <property propertyPath="/primarySourceFile" value="MyInputVideo.mp4" />
-          <property propertyPath="Media File Input Logo/filename" value="MyLogo.png" />
-        </setRuntimeProperties>
-      </transcodeRequest>
-
+```xml
+<?xml version="1.0" encoding="utf-16"?>
+  <transcodeRequest>
+    <setRuntimeProperties>
+      <property propertyPath="Media File Input/filename" value="Microsoft_HoloLens_Possibilities_816p24.mp4" />
+      <property propertyPath="/primarySourceFile" value="Microsoft_HoloLens_Possibilities_816p24.mp4" />
+      <property propertyPath="Media File Input Logo/filename" value="logo.png" />
+    </setRuntimeProperties>
+  </transcodeRequest>
+```
 
 Im obigen Beispiel wird der Name der Videodatei an die „Media File Input“-Komponente und die Eigenschaft primarySourceFile gesendet. Der Name der Logodatei wird an eine andere „Media File Input“-Komponente gesendet, die mit der Grafiküberlagerungskomponente verbunden ist.
 
 > [!NOTE]
 > Der Name der Videodatei wird an die primarySourceFile-Eigenschaft übergeben. Der Grund dafür ist die Verwendung dieser Eigenschaft im Workflow, um z.B. mithilfe von Ausdrücken den ordnungsgemäßen Ausgabedateinamen zu erstellen.
->
->
 
-### <a name="step-by-step-workflow-creation-that-overlays-a-logo-on-top-of-the-video"></a>Schritte zum Erstellen eines Workflows zum Überlagern des Videos mit einem Logo
+### <a name="step-by-step-workflow-creation"></a>Schrittweise Workflowerstellung
 Es folgen die Schritte zum Erstellen eines Workflows, der zwei Dateien als Eingabe verwendet: ein Video und ein Bild. Das Bild soll das Video überlagern.
 
 Öffnen Sie den **Workflow-Designer**, und wählen Sie **Datei** > **Neuer Arbeitsbereich** > **Blaupause transcodieren**.
@@ -358,8 +383,6 @@ Dieses Tutorial zeigt Ihnen, wie Medienobjekte mit dem AMSE verwaltet werden. Es
 
 > [!NOTE]
 > Stellen Sie sicher, dass sich eine primäre Datei im Medienobjekt (der Hauptvideodatei) befindet.
->
->
 
 ![Medienobjektdateien im AMSE](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture18_assetinamse.png)
 
@@ -375,14 +398,16 @@ Klicken Sie auf die Schaltfläche, um Daten an den Prozessor zu übergeben, und 
 
 Fügen Sie dann die folgenden XML-Daten ein. Sie müssen für „Media File Input“ und „primarySourceFile“ den Namen der Videodatei angeben. Geben Sie auch den Namen der Datei mit dem Logo an.
 
-    <?xml version="1.0" encoding="utf-16"?>
-      <transcodeRequest>
-        <setRuntimeProperties>
-          <property propertyPath="Media File Input/filename" value="Microsoft_HoloLens_Possibilities_816p24.mp4" />
-          <property propertyPath="/primarySourceFile" value="Microsoft_HoloLens_Possibilities_816p24.mp4" />
-          <property propertyPath="Media File Input Logo/filename" value="logo.png" />
-        </setRuntimeProperties>
-      </transcodeRequest>
+```xml
+<?xml version="1.0" encoding="utf-16"?>
+  <transcodeRequest>
+    <setRuntimeProperties>
+      <property propertyPath="Media File Input/filename" value="Microsoft_HoloLens_Possibilities_816p24.mp4" />
+      <property propertyPath="/primarySourceFile" value="Microsoft_HoloLens_Possibilities_816p24.mp4" />
+      <property propertyPath="Media File Input Logo/filename" value="logo.png" />
+    </setRuntimeProperties>
+  </transcodeRequest>
+```
 
 ![setRuntimeProperties](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture20_amsexmldata.png)
 
@@ -390,7 +415,9 @@ Fügen Sie dann die folgenden XML-Daten ein. Sie müssen für „Media File Inpu
 
 Bei Verwendung des .NET SDK zum Erstellen und Ausführen des Tasks müssen diese XML-Daten als Konfigurationszeichenfolge übergeben werden.
 
-    public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
+```c#
+public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
+```
 
 Nach Abschluss des Auftrags wird die MP4-Datei im Ausgabemedienobjekt mit der Überlagerung angezeigt!
 
@@ -400,7 +427,44 @@ Nach Abschluss des Auftrags wird die MP4-Datei im Ausgabemedienobjekt mit der Ü
 
 Sie können den Beispielworkflow von [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)herunterladen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="example-2--multiple-audio-language-encoding"></a>Beispiel 2: Codierung mit mehreren Audiosprachen
+
+Ein Beispiel für einen Workflow zur mit mehreren Audiosprachen ist in [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding) verfügbar.
+
+Dieser Ordner enthält einen Beispielworkflow, der zum Codieren einer MXF-Datei als Objekt mit mehreren MP4-Dateien mit mehreren Audiospuren verwendet werden kann.
+
+Dieser Workflow setzt voraus, dass die MXF-Datei eine Audiospur enthält; die weiteren Audiospuren sollten als separate Audiodateien (WAV oder MP4...) übergeben werden.
+
+Führen Sie folgende Schritte für die Codierung aus:
+
+* Erstellen Sie ein Media Services-Objekt mit der MXF-Datei und den Audiodateien (0 bis 18 Audiodateien).
+* Stellen Sie sicher, dass die MXF-Datei als eine primäre Datei festgelegt ist.
+* Erstellen Sie mithilfe des Premium Workflow-Encoderprozessors einen Auftrag und eine Aufgabe. Verwenden Sie den bereitgestellten Workflow (MultiMP4-1080p-19audio-v1.workflow).
+* Übergeben Sie der Aufgabe die Daten aus „setruntime.xml“ (wenn Sie den Azure Media Services-Explorer nutzen, verwenden Sie dazu die Schaltfläche zum Übergeben von XML-Daten an den Workflow).
+  * Aktualisieren Sie die XML-Daten, um die richtigen Dateinamen und Sprach-Tags anzugeben.
+  * Der Workflow enthält Audiokomponenten mit den Namen Audio1 bis Audio 18.
+  * RFC5646 wird für das Sprach-Tag unterstützt.
+
+```xml
+<?xml version="1.0" encoding="utf-16"?>
+<transcodeRequest>
+  <setRuntimeProperties>
+    <property propertyPath="Media File Input Video/filename" value="MainVideo.mxf" />
+    <property propertyPath="Language/language_code" value="en" />
+    <property propertyPath="/primarySourceFile" value="MainVideo.mxf" />
+    <property propertyPath="Audio 1/Media File Input/filename" value="french-audio.wav" />
+    <property propertyPath="Audio 1/Language/language_code" value="fr" />
+    <property propertyPath="Audio 2/Media File Input/filename" value="german-audio.wav" />
+    <property propertyPath="Audio 2/Language/language_code" value="de" />
+    <property propertyPath="Audio 3/Media File Input/filename" value="japanese-audio.wav" />
+    <property propertyPath="Audio 3/Language/language_code" value="ja" />
+  </setRuntimeProperties>
+</transcodeRequest>
+```
+
+* Das codierte Objekt enthält Audiospuren für mehrere Sprachen, die in Azure Media Player auswählbar sein sollten.
+
+## <a name="see-also"></a>Siehe auch
 * [Introducing Premium Encoding in Azure Media Services (in englischer Sprache)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [How to Use Premium Encoding in Azure Media Services](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Codieren von On-Demand-Inhalten mit Azure Media Services](media-services-encode-asset.md#media-encoder-premium-workflow)
@@ -416,6 +480,6 @@ Sie können den Beispielworkflow von [GitHub](https://github.com/Azure/azure-med
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

@@ -16,13 +16,13 @@ ms.workload: NA
 ms.date: 07/16/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: cc256d2a164445a4ebbbaec9876d3fa86b56f65c
+ms.sourcegitcommit: 16f4e287a955b787a08cc6949094bd0f5224421a
+ms.openlocfilehash: 26a3e54b00b37d4488a3f1c787c44bbbb5078268
 
 
 ---
-# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pool"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool
-Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über eine Reihe von Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Elastische Pools](sql-database-elastic-pool.md) und eigenständige Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für elastische Pools beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
+# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool
+Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über eine Reihe von Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Elastische Pools](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für elastische Pools beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
 
 Im Rahmen dieses Artikels verwenden wir das kanonische SaaS-ISV-Anwendungsmuster:
 
@@ -33,7 +33,7 @@ Im weiteren Verlauf des Artikels werden Strategien für die Notfallwiederherstel
 ## <a name="scenario-1-cost-sensitive-startup"></a>Szenario 1: Kostenbewusste Anwendung für Startup-Unternehmen
 <i>Wir sind ein Startup-Unternehmen, bei dem stark auf die Kosten geachtet wird.  Wir möchten die Bereitstellung und Verwaltung der Anwendung vereinfachen und einen eingeschränkten Servicelevel (SLA) für einzelne Kunden verwenden. Es soll aber sichergestellt sein, dass die Anwendung als Ganzes niemals offline ist.</i>
 
-Zur Erfüllung der Anforderung zur Vereinfachung sollten Sie alle Mandantendatenbanken in einem elastischen Pool in der Azure-Region Ihrer Wahl bereitstellen und die Verwaltungsdatenbank(en) als georeplizierte eigenständige Datenbank(en) bereitstellen. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie in eine andere Region georepliziert werden (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
+Zur Erfüllung der Anforderung zur Vereinfachung sollten Sie alle Mandantendatenbanken in einem elastischen Pool in der Azure-Region Ihrer Wahl bereitstellen und die Verwaltungsdatenbank(en) als georeplizierte einzelne Datenbank(en) bereitstellen. Verwenden Sie für die Notfallwiederherstellung von Mandanten die Geowiederherstellung, für die keine zusätzlichen Kosten anfallen. Um die Verfügbarkeit der Verwaltungsdatenbanken sicherzustellen, sollten sie in eine andere Region georepliziert werden (Schritt 1). Die laufenden Kosten der Notfallwiederherstellungskonfiguration in diesem Szenario entsprechen den Gesamtkosten der sekundären Datenbanken. Diese Konfiguration ist im nächsten Diagramm dargestellt.
 
 ![Abbildung 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
@@ -71,7 +71,7 @@ Zur Unterstützung dieses Szenarios sollten Sie die Testmandanten von den zahlen
 
 ![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
-Wie beim ersten Szenario auch, sind die Verwaltungsdatenbanken ziemlich aktiv, sodass Sie dafür eine eigenständige georeplizierte Datenbank verwenden sollten (1). So wird die vorhersagbare Leistung für neue Kundenabonnements, Profilupdates und andere Verwaltungsvorgänge sichergestellt. Die Region, in der sich die primären Replikate der Verwaltungsdatenbanken befinden, ist die primäre Region, und die Region, in der sich die sekundären Replikate der Verwaltungsdatenbanken befinden, ist die Region für die Notfallwiederherstellung.
+Wie beim ersten Szenario auch, sind die Verwaltungsdatenbanken ziemlich aktiv, sodass Sie dafür eine einzelne georeplizierte Datenbank verwenden sollten (1). So wird die vorhersagbare Leistung für neue Kundenabonnements, Profilupdates und andere Verwaltungsvorgänge sichergestellt. Die Region, in der sich die primären Replikate der Verwaltungsdatenbanken befinden, ist die primäre Region, und die Region, in der sich die sekundären Replikate der Verwaltungsdatenbanken befinden, ist die Region für die Notfallwiederherstellung.
 
 Die Mandantendatenbanken der zahlenden Kunden verfügen über aktive Datenbanken im „bezahlten“ Pool, der in der primären Region bereitgestellt wird. Sie sollten in der Region für die Notfallwiederherstellung einen sekundären Pool gleichen Namens bereitstellen. Jeder Mandant wird dann in den sekundären Pool georepliziert (2). Dies ermöglicht eine schnelle Wiederherstellung aller Mandantendatenbanken per Failover. 
 
@@ -116,7 +116,7 @@ Um bei Ausfällen die kürzesten Wiederherstellungsdauern garantieren zu können
 
 ![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
-Wie in den vorherigen Szenarien auch, sind die Verwaltungsdatenbanken sehr aktiv, sodass Sie sie als eigenständige georeplizierte Datenbanken konfigurieren sollten (1). Auf diese Weise wird die vorhersagbare Leistung der neuen Kundenabonnements, Profilupdates und anderen Verwaltungsvorgänge sichergestellt. Region A ist die primäre Region für die Verwaltungsdatenbanken, und Region B wird für die Wiederherstellung der Verwaltungsdatenbanken verwendet.
+Wie in den vorherigen Szenarien auch, sind die Verwaltungsdatenbanken sehr aktiv, sodass Sie sie als einzelne georeplizierte Datenbanken konfigurieren sollten (1). Auf diese Weise wird die vorhersagbare Leistung der neuen Kundenabonnements, Profilupdates und anderen Verwaltungsvorgänge sichergestellt. Region A ist die primäre Region für die Verwaltungsdatenbanken, und Region B wird für die Wiederherstellung der Verwaltungsdatenbanken verwendet.
 
 Die Mandantendatenbanken der zahlenden Kunden werden auch georepliziert, aber die primären und sekundären Replikate werden auf Region A und Region B aufgeteilt (2). So kann für die primären Mandantendatenbanken, die vom Ausfall betroffen sind, ein Failover in die andere Region durchgeführt werden, damit sie verfügbar sind. Die andere Hälfte der Mandantendatenbanken ist davon nicht betroffen. 
 
@@ -176,6 +176,6 @@ In diesem Artikel geht es um die Notfallwiederherstellungsstrategien für die Da
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

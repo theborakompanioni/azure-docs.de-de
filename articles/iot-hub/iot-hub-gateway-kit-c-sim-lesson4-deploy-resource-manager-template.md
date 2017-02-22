@@ -1,5 +1,5 @@
 ---
-title: Speichern und Lesen von Nachrichten in der Azure-Cloud | Microsoft Dokumentation
+title: "Simuliertes Gerät und Azure IoT Gateway – Lektion 4: Speichern von Nachrichten | Microsoft-Dokumentation"
 description: Speichern Sie Nachrichten von Intel NUC in Ihrer IoT Hub-Instanz, schreiben Sie sie in Azure Table Storage, und lesen Sie diese aus der Cloud.
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: ac4204d6d253e59a367f110aaa3bd28fd94792ea
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 2116e2c2ef5808145b56e63c1e2b91f20e639a3d
 
 
 ---
@@ -34,7 +34,7 @@ Problemlösungen finden Sie auf der [Seite zur Problembehandlung](iot-hub-gatewa
 
 ## <a name="what-you-will-learn"></a>Sie lernen Folgendes
 
-In diesem Lektion lernen Sie Folgendes:
+In dieser Lektion lernen Sie Folgendes:
 
 - Verwenden von Azure Resource Manager zum Bereitstellen von Azure-Ressourcen
 - Verwenden einer Azure-Funktionen-App für das Verarbeiten von IoT Hub-Nachrichten und zum Schreiben der Nachrichten in eine Tabelle in Azure Table Storage
@@ -89,6 +89,6 @@ Sie haben die Azure-Funktionen-App zum Verarbeiten von IoT Hub-Nachrichten sowie
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

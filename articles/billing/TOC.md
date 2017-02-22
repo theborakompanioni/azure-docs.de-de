@@ -1,40 +1,40 @@
-# [Erste Schritte](billing-getting-started.md)
-## [Anmelden mit Office 365-Konto](../billing-use-existing-office-365-account-azure-subscription.md)
-## [Unterstützte Länder und Währungen](../billing-countries-and-currencies.md)
-## [Grenzen und Kontingente](../azure-subscription-service-limits.md)
-## [Häufig gestellte Fragen](../billing-subscription-faq.md)
+# Erste Schritte
+## [Vermeiden unerwarteter Kosten](billing-getting-started.md)
+## [Anmelden mit Office 365-Konto](billing-use-existing-office-365-account-azure-subscription.md)
+## [Grenzen und Kontingente](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)
 # Anleitung
 ## Nachverfolgen von Nutzung und Kosten
-### [Herunterladen von Rechnung und Nutzungsdaten](../billing-download-azure-invoice-daily-usage-date.md)
+### [Abrufen der Rechnung und Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md)
 ### [Erläuterungen zur Rechnung](billing-understand-your-bill.md)
-### [Grundlegendes zu Gebühren für externe Dienste](../billing-understand-your-azure-marketplace-charges.md)
-### [Einrichten von Abrechnungswarnungen](../billing-set-up-alerts.md)
-### [Begleichen überfälliger Zahlungen](../billing-azure-subscription-past-due-balance.md)
+### [Grundlegendes zu Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md)
+### [Einrichten von Abrechnungswarnungen](billing-set-up-alerts.md)
+### [Begleichen überfälliger Zahlungen](billing-azure-subscription-past-due-balance.md)
 ## Verwalten von Abonnements
-### [Verwalten von Administratorrollen](../billing-add-change-azure-subscription-administrator.md)
-### [Übertragen des Abonnements](../billing-subscription-transfer.md)
-### [Reaktivieren des deaktivierten Abonnements](../billing-subscription-become-disable.md)
-### [Upgrade eines kostenlosen Abonnements](../billing-upgrade-azure-subscription.md)
-### [Umstellen des Abonnementangebots](../billing-how-to-switch-azure-offer.md)
-### [Kündigen eines Abonnements](../billing-how-to-cancel-azure-subscription.md)
+### [Verwalten von Administratorrollen](billing-add-change-azure-subscription-administrator.md)
+### [Übertragen des Abonnements](billing-subscription-transfer.md)
+### [Reaktivieren des deaktivierten Abonnements](billing-subscription-become-disable.md)
+### [Upgrade eines kostenlosen Abonnements](billing-upgrade-azure-subscription.md)
+### [Umstellen des Abonnementangebots](billing-how-to-switch-azure-offer.md)
+### [Kündigen eines Abonnements](billing-how-to-cancel-azure-subscription.md)
 ## Verwalten eines Kontos
-### [Bearbeiten eines Profils](../billing-how-to-change-azure-account-profile.md)
-### [Aktualisieren von Zahlungsinformationen](../billing-how-to-change-credit-card.md)
-### [Verknüpfen des Office 365-Mandanten](../billing-add-office-365-tenant-to-azure-subscription.md)
+### [Bearbeiten eines Profils](billing-how-to-change-azure-account-profile.md)
+### [Aktualisieren von Zahlungsinformationen](billing-how-to-change-credit-card.md)
+### [Verknüpfen des Office 365-Mandanten](billing-add-office-365-tenant-to-azure-subscription.md)
 ## Problembehandlung
-### [Probleme bei der Registrierung](../billing-troubleshoot-azure-sign-up-issues.md)
-### [Karte abgelehnt](../billing-credit-card-fails-during-azure-sign-up.md)
-### [Probleme bei der Anmeldung](../billing-cannot-login-subscription.md)
+### [Probleme bei der Registrierung](billing-troubleshoot-azure-sign-up-issues.md)
+### [Karte abgelehnt](billing-credit-card-fails-during-azure-sign-up.md)
+### [Probleme bei der Anmeldung](billing-cannot-login-subscription.md)
 
 # Referenz
-## [API-Übersicht](../billing-usage-rate-card-overview.md)
+## [API-Übersicht](billing-usage-rate-card-overview.md)
 ## [REST-API-Referenz](https://msdn.microsoft.com/en-us/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
-## [Partnerlösung: Cloud Cruiser](../billing-usage-rate-card-partner-solution-cloudcruiser.md)
-## [Partnerlösung: Cloudyn](../billing-usage-rate-card-partner-solution-cloudyn.md)
+## [Partnerlösung: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
+## [Partnerlösung: Cloudyn](billing-usage-rate-card-partner-solution-cloudyn.md)
 
 # Ressourcen
-## [Support kontaktieren](../billing-how-to-create-billing-support-ticket.md)
+## [Support kontaktieren](../azure-supportability/how-to-create-azure-support-request.md)
 
-<!--HONumber=Jan17_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

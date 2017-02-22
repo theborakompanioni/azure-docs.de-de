@@ -4,8 +4,12 @@ Erweitern Sie die gewünschte Bereitstellung:
 
 ![](./media/web-sites-python-troubleshoot-deployment/portal-deployment-history.png)
 
-Klicken Sie auf **Protokoll anzeigen**, um die Ausgabe des benutzerdefinierten Bereitstellungsskripts anzuzeigen:
+Klicken Sie auf **Protokoll anzeigen** , um die Ausgabe des benutzerdefinierten Bereitstellungsskripts anzuzeigen:
 
 ![](./media/web-sites-python-troubleshoot-deployment/portal-deployment-log.png)
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

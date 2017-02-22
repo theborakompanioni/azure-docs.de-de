@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen des Machine Learning-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen | Microsoft Docs
+title: Bereitstellen eines Machine Learning-Arbeitsbereichs mit Azure Resource Manager | Microsoft-Dokumentation
 description: "Gewusst wie: Bereitstellen ein Arbeitsbereichs für Azure Machine Learning mit Azure Resource Manager-Vorlagen"
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/12/2016
 ms.author: ahgyger
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: e0a06c070159a87932cda4b31d9363e54c008a35
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: cf00c0c11f1572c0cca066ac1c0aac2a0f350393
 
 
 ---
@@ -152,6 +152,6 @@ Nach der Bereitstellung des Arbeitsbereichs können Sie viele Azure Machine Lear
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

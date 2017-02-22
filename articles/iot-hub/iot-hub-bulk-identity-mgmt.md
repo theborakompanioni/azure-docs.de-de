@@ -1,6 +1,6 @@
 ---
-title: "Importieren und Exportieren von IoT Hub-Geräteidentitäten | Microsoft Docs"
-description: "Konzepte und .NET-Codeausschnitte für die Massenverwaltung von IoT Hub-Geräte-Identitäten"
+title: "Importieren und Exportieren von Azure IoT Hub-Geräteidentitäten | Microsoft Docs"
+description: "Erfahren Sie, wie Sie mithilfe des Azure IoT-Dienst-SDK Massenvorgänge zum Importieren und Exportieren von Geräteidentitäten auf die Identitätsregistrierung anwenden. Mit Importvorgängen können Sie Geräteidentitäten per Massenvorgang erstellen, aktualisieren und löschen."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2016
+ms.date: 01/04/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: 7c50b4bd32d32ec33f35c2484a3c86e944830725
+ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
+ms.openlocfilehash: 668f6ab0d5c09d53edd85b568cc8c9941b2f9135
 
 
 ---
-# <a name="bulk-management-of-iot-hub-device-identities"></a>Massenverwaltung von IoT Hub-Geräte-Identitäten
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
 Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Hierzu zählt beispielsweise eine Warteschlange mit gesendeten C2D-Nachrichten. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben.
 
 Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das Anwenden von Massendienstvorgängen auf einen IoT Hub ermöglichen.
@@ -75,7 +75,7 @@ Die **ExportDevicesAsync** -Methode erfordert zwei Parameter:
    ```
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
-* Einen *booleschen* Wert, der angibt, ob Sie Authentifizierungsschlüssel aus Ihren Exportdaten ausschließen möchten. Bei **false** werden Authentifizierungsschlüssel in die Exportausgabe eingeschlossen. Andernfalls werden Schlüssel als **null** exportiert.
+* Einen *booleschen* Wert, der angibt, ob Sie Authentifizierungsschlüssel aus Ihren Exportdaten ausschließen möchten. Bei **FALSE** werden Authentifizierungsschlüssel in die Exportausgabe eingeschlossen. Andernfalls werden Schlüssel als **NULL** exportiert.
 
 Der folgende C#-Codeausschnitt zeigt, wie Sie einen Exportauftrag initiieren, der Geräteauthentifizierungsschlüssel in die exportierten Daten einbezieht und für den Abschluss eine Umfrage durchführt:
 
@@ -342,12 +342,12 @@ static string GetContainerSasUri(CloudBlobContainer container)
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregistrierung in einem IoT Hub angewendet werden. Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-* [Nutzungsmetriken][lnk-metrics]
+* [IoT Hub-Metriken][lnk-metrics]
 * [Vorgangsüberwachung][lnk-monitor]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 * [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
 
 [lnk-metrics]: iot-hub-metrics.md
@@ -358,6 +358,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

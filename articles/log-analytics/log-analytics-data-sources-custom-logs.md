@@ -1,5 +1,5 @@
 ---
-title: Benutzerdefinierte Protokolle in Log Analytics | Microsoft Docs
+title: Erfassen benutzerdefinierter Protokolle in OMS Log Analytics | Microsoft-Dokumentation
 description: "Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linux-Computern sammeln.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
 services: log-analytics
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 25c63021160e5259bc72a4f7bbfc248b7ac717aa
+ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
+ms.openlocfilehash: a9c70810c4f731b2d8b395873fa6b94db78306aa
 
 
 ---
@@ -122,7 +122,7 @@ Benutzerdefinierte Protokolldatensätze besitzen einen Typ mit dem von Ihnen ang
 | Eigenschaft | Beschreibung |
 |:--- |:--- |
 | TimeGenerated |Der Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz von Log Analytics gesammelt wurde.  Falls das Protokoll ein zeitbasiertes Trennzeichen verwendet, handelt es sich hierbei um die Zeitangabe aus dem Eintrag. |
-| SourceSystem |Die Art des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br>  Linux: Alle Linux-Agents |
+| SourceSystem |Die Art des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (Direktverbindung oder SCOM) <br> Linux: Alle Linux-Agents |
 | RawData |Der vollständige Text des gesammelten Eintrags. |
 | ManagementGroupName |Name der Verwaltungsgruppe für SCOM-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
 
@@ -177,6 +177,6 @@ Wir definieren mithilfe benutzerdefinierter Felder die Felder *EventTime*, *Code
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

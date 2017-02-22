@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 01/13/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: f480b8155c7bee797f1fed0f80200eec500e95a2
-ms.openlocfilehash: f8e0b05301b83223a7cb15d55be7001f3299213f
+ms.sourcegitcommit: ab863266e1462f970b7906f68be2bcf5edb0dfc3
+ms.openlocfilehash: ac64bb0de03053702a4663c9356b3f9ce332c7de
 
 
 ---
@@ -33,18 +33,18 @@ Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist e
 2. Klicken Sie auf dem Blatt **DocumentDB-Konto** für das ausgewählte Konto auf **Sammlung hinzufügen**.
 
     ![Screenshot mit „DocumentDB-Konten“ in der Navigationsleiste, mit dem Konto im Blatt „DocumentDB-Konten“ und mit der Datenbank im Blatt „DocumentDB-Konten“ im Fokus „Datenbanken“](./media/documentdb-create-collection/docdb-database-creation-3.png)
-3. Geben Sie auf dem Blatt **Sammlung hinzufügen** im Feld **ID** die ID für Ihre neue Sammlung ein. Der Namen einer Sammlung muss zwischen 1 und 255 Zeichen lang sein und darf weder `/ \ # ?` noch nachstehende Leerzeichen enthalten. Wenn der Name überprüft wurde, wird im ID-Feld ein grünes Häkchen angezeigt.
+3. Geben Sie auf dem Blatt **Sammlung hinzufügen** im Feld **Sammlungs-ID** die ID für Ihre neue Sammlung ein. Der Namen einer Sammlung muss zwischen 1 und 255 Zeichen lang sein und darf weder `/ \ # ?` noch nachstehende Leerzeichen enthalten. Wenn der Name überprüft wurde, wird im ID-Feld ein grünes Häkchen angezeigt.
 
     ![Screenshot mit Schaltfläche „Sammlung hinzufügen“ auf dem Blatt „Datenbank“, mit den Einstellungen im Blatt „Sammlung hinzufügen“ und Schaltfläche „OK“ – Azure-Portal für DocumentDB – Cloudbasierte Datenbankerstellung für NoSQL-JSON-Datenbanken](./media/documentdb-create-collection/docdb-collection-creation-5-8.png)
-4. Per Voreinstellung ist **Tarif** auf **Standard** festgelegt, damit Sie Durchsatz und Speicher für Ihre Sammlung anpassen können. Weitere Informationen zu den Tarifen finden Sie unter [Leistungsebenen in DocumentDB](documentdb-performance-levels.md).  
-5. Wählen Sie einen **Partitionierungsmodus** für die Sammlung aus, entweder **Einzelne Partition** oder **Partitioniert**.
+4. Die Voreinstellung für **Speicherkapazität** ist **250 GB**, um partitionierte Sammlungen verarbeiten zu können.
 
-    Eine **einzelne Partition** verfügt über eine reservierte Speicherkapazität von 10 GB und kann Durchsatzebenen von 400 bis 10.000 Anforderungseinheiten pro Sekunde (RU/Sek.) unterstützen. Eine Anforderungseinheit (Request Unit, RU) entspricht dem Durchsatz des Lesevorgangs eines Dokuments mit 1 KB. Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](documentdb-request-units.md).
+    Legen Sie die Speicherkapazität auf **10 GB** fest, wenn Sie eine [einzelne Partitionssammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) mit einem Durchsatz von 400 bis 10.000 Anforderungseinheiten pro Sekunde (Request Unit, RU/s) verwenden möchten. Eine Anforderungseinheit (Request Unit, RU) entspricht dem Durchsatz des Lesevorgangs eines Dokuments mit 1 KB. Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](documentdb-request-units.md).
 
-    Eine **partitionierte Sammlung** kann skaliert werden, um eine unbegrenzte Menge an Speicher über mehrere Partitionen verteilt zu verarbeiten. Es werden Durchsatzebenen ab 10.100 Anforderungseinheiten pro Sekunde unterstützt. Im Portal kann eine Speichermenge von maximal 250 GB und ein Durchsatz von maximal 250.000 Anforderungseinheiten pro Sekunde reserviert werden. Um eines der beiden Kontingente zu erhöhen, müssen Sie eine Anfrage stellen, wie unter [Anfordern von erhöhten DocumentDB-Kontolimits](documentdb-increase-limits.md) beschrieben. Weitere Informationen zu partitionierten Sammlungen finden Sie unter [Einzelne Partitionen und partitionierte Sammlungen](documentdb-partition-data.md#single-partition-and-partitioned-collections).
+    Legen Sie die Speicherkapazität auf **250 GB** fest, wenn Sie eine [partitionierte Sammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) verwenden möchten, die skaliert werden kann, um eine unbegrenzte Menge an Speicher über mehrere Partitionen verteilt zu verarbeiten. Es werden Durchsatzebenen ab 10.100 Anforderungseinheiten pro Sekunde unterstützt.
 
-    Standardmäßig ist der Durchsatz für eine neue einzelne Partition auf 1.000 Anforderungseinheiten pro Sekunde mit einer Speicherkapazität von 10 GB festgelegt. Für eine partitionierte Sammlung ist der Sammlungsdurchsatz auf 10.100 Anforderungseinheiten pro Sekunde mit einer Speicherkapazität von 250 GB festgelegt. Sie können den Durchsatz und Speicher für die Sammlung nach der Erstellung der Sammlung ändern.
-6. Wenn Sie eine partitionierte Sammlung erstellen, wählen Sie den **Partitionsschlüssel** für die Sammlung. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen zum Auswählen eines Partitionsschlüssels finden Sie unter [Entwerfen für Partitionierung](documentdb-partition-data.md#designing-for-partitioning).
+    Legen Sie die Speicherkapazität auf **Benutzerdefiniert** fest, wenn Sie einen anderen Betrag als 10 GB oder 250 GB bereitstellen möchten. DocumentDB ist praktisch unbegrenzt skalierbar. Sie sollten daher die angeforderte Speichergröße und den Durchsatzwert in die Supportanfrage einschließen.
+
+6. Geben Sie im Feld **Partitionsschlüssel** einen Partitionsschlüssel für die Sammlung ein. Dies ist für partitionierte Sammlungen erforderlich und für Sammlungen mit einer einzelnen Partition optional. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung einer leistungsfähigen Sammlung. Weitere Informationen zum Auswählen eines Partitionsschlüssels finden Sie unter [Entwerfen für Partitionierung](documentdb-partition-data.md#designing-for-partitioning).
 7. Erstellen Sie auf dem Blatt **Datenbank** entweder eine neue Datenbank, oder verwenden Sie eine vorhandene Datenbank. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/ \ # ?` noch nachgestellte Leerzeichen enthalten. Klicken Sie außerhalb des Textfelds, damit der Name überprüft wird. Nach der Überprüfung des Namens wird im Feld ein grünes Häkchen angezeigt.
 8. Klicken Sie am unteren Bildschirmrand auf **OK**, um die neue Sammlung zu erstellen.
 9. Die neue Sammlung wird jetzt im Fokus **Sammlungen** auf dem Blatt **Übersicht** angezeigt.
@@ -83,6 +83,6 @@ Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

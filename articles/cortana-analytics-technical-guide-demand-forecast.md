@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f36eb1e2bfa07ddc4ea93128e30817d3d8c22810
+ms.sourcegitcommit: 1fe845d442c7010580d4592f205e92e8ef70e34a
+ms.openlocfilehash: c3bbef8fee018dc54e7d3edb86e3f9434999bdae
 
 
 ---
@@ -24,14 +24,14 @@ ms.openlocfilehash: f36eb1e2bfa07ddc4ea93128e30817d3d8c22810
 ## <a name="overview"></a>**Übersicht**
 Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Intelligence Suite. Durch das Bereitstellen einer Vorlage wird für Ihr Abonnement die erforderliche Cortana Intelligence-Komponente bereitgestellt, und es wird eine Beziehung zwischen Vorlage und Komponente eingerichtet. Außerdem wird für die Datenpipeline ein Seeding mit Beispieldaten ausgeführt, die aus einer Anwendung zur Datensimulation generiert werden. Laden Sie den Datensimulator von dem bereitgestellten Link herunter, und installieren Sie ihn auf Ihrem lokalen Computer. Anweisungen zur Verwendung des Simulators finden Sie in der Datei „readme.txt“. Sobald die Datenpipeline mit den vom Simulator erzeugten Daten gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können.
 
-Die Lösungsvorlage finden Sie [hier](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1) 
+Die Lösungsvorlage finden Sie [hier](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)
 
 Im Zuge der Bereitstellung führen Sie mehrere Schritte aus, bei denen Sie die Anmeldeinformationen für die Lösung einrichten. Notieren Sie sich diese während der Bereitstellung angegebenen Anmeldeinformationen, z. B. Lösungsname, Benutzername und Kennwort, oder zeichnen Sie sie anderweitig auf.
 
 Das Ziel dieses Dokuments besteht darin, die Referenzarchitektur und die verschiedenen im Rahmen Ihres Abonnements bereitgestellten Komponenten zu beschreiben, die Teil dieser Lösungsvorlage sind. Das Dokument erklärt auch, wie Sie die Beispieldaten durch eigene echte Daten ersetzen, um Erkenntnisse und Vorhersagen aus Ihren eigenen Daten zu gewinnen. Außerdem erläutert das Dokument, welche Teile der Lösungsvorlage geändert werden müssen, wenn Sie die Lösung mit Ihren eigenen Daten anpassen möchten. Am Ende des Dokuments finden Sie Anweisungen zum Erstellen des Power BI-Dashboards für diese Lösungsvorlage.
 
 ## <a name="big-picture"></a>**Übersicht**
-![](media\\cortana-analytics-technical-guide-demand-forecast\\ca-topologies-energy-forecasting.png)
+![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
 ### <a name="architecture-explained"></a>Erläuterungen zur Architektur
 Beim Bereitstellen der Lösung werden verschiedene Azure-Dienste innerhalb der Cortana Analytics Suite aktiviert (**z.B. Event Hub, Stream Analytics, HDInsight, Data Factory, Machine Learning **usw.). Das oben abgebildete Architekturdiagramm ist eine allgemeine, umfassende Darstellung der Lösungsvorlage für die Prognose des Energiebedarfs. Sie können diese Dienste genauer kennenlernen, indem Sie in dem Lösungsvorlagendiagramm, das beim Bereitstellen der Lösung erstellt wurde, auf die Dienste klicken. In den folgenden Abschnitten werden die einzelnen Bestandteile beschrieben.
@@ -83,9 +83,9 @@ Bei der Lösungsvorlage für die Prognose des Energiebedarfs besteht die Azure S
 Sie finden die [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) -Abfrage, indem Sie folgende Schritte ausführen:
 
 * Melden Sie sich beim [Azure-Verwaltungsportal](https://manage.windowsazure.com/)
-* Suchen Sie die Stream Analytics-Aufträge vom Typ ![](media\\cortana-analytics-technical-guide-demand-forecast\\icon-stream-analytics.png), die beim Bereitstellen der Lösung generiert wurden. Einer dient zum Übertragen von Daten per Push an den Blobspeicher (z. B. mytest1streaming432822asablob), und der andere dient zum Übertragen von Daten per Push an Power BI (z. B. mytest1streaming432822asapbi).
+* Suchen Sie die Stream Analytics-Aufträge vom Typ ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png), die beim Bereitstellen der Lösung generiert wurden. Einer dient zum Übertragen von Daten per Push an den Blobspeicher (z. B. mytest1streaming432822asablob), und der andere dient zum Übertragen von Daten per Push an Power BI (z. B. mytest1streaming432822asapbi).
 * Wählen Sie Folgendes aus:
-  
+
   * ***EINGABEN*** zum Anzeigen der Abfrageeingabe
   * ***ABFRAGE*** zum Anzeigen der Abfrage selbst
   * ***AUSGABEN*** zum Anzeigen der verschiedenen Ausgaben
@@ -103,7 +103,7 @@ Der [Azure Data Factory](https://azure.microsoft.com/documentation/services/data
 
 In diesem Abschnitt werden die notwendigen [Pipelines](data-factory/data-factory-create-pipelines.md) und [Aktivitäten](data-factory/data-factory-create-pipelines.md) erläutert, die in der [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) enthalten sind. Im Folgenden ist die Diagrammansicht der Lösung dargestellt.
 
-![](media\\cortana-analytics-technical-guide-demand-forecast\\ADF2.png)
+![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
 Fünf der Pipelines dieser Factory enthalten [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -Skripts, die zum Partitionieren und Aggregieren der Daten verwendet werden. Wenn angemerkt, werden die Skripte in dem bei der Einrichtung erstellten [Azure Storage](https://azure.microsoft.com/services/storage/) -Konto abgelegt. Dabei wird folgender Speicherort verwendet: „demandforecasting\\\\script\\\\hive\\\\“ (oder „https://[Lösungsname].blob.core.windows.net/demandforecasting“).
 
@@ -146,15 +146,15 @@ Das für diese Lösungsvorlage verwendete [Azure Machine Learning](https://azure
 Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die verschiedenen Komponenten der Lösung beginnen, im Anschluss an die von der Data Factory aufgerufenen Befehle in Aktion zu treten. Es gibt zwei Möglichkeiten zum Überwachen der Pipeline.
 
 1. Prüfen Sie die Daten über Azure Blob Storage.
-   
+
     Einer der Stream Analytics-Aufträge schreibt die unformatierten eingehenden Daten in Blobspeicher. Wenn Sie auf dem Bildschirm, auf dem Sie die Lösung erfolgreich bereitgestellt haben, auf die Komponente **Azure Blob Storage** und anschließend im rechten Bereich auf **Öffnen** klicken, gelangen Sie zum [Azure-Verwaltungsportal](https://portal.azure.com). Klicken Sie dort auf **Blobs**. Im nächsten Bereich sehen Sie eine Liste mit Containern. Klicken Sie auf **energysadata**. Im nächsten Bereich wird der Ordner **demandongoing** angezeigt. Innerhalb des Ordners „rawdata“ befinden sich Ordner mit Namen wie „date=2016-01-28“ usw. Wenn diese Ordner angezeigt werden, bedeutet dies, dass die unformatierten Daten erfolgreich auf Ihrem Computer erstellt und im Blobspeicher gespeichert wurden. In diesen Ordnern sollten Sie Dateien mit begrenzten Größen in MB vorfinden.
 2. Prüfen Sie die Daten über Azure SQL-Datenbank.
-   
-    Der letzte Schritt der Pipeline ist das Schreiben von Daten (z. B. Prognosen aus Machine Learning) in die SQL-Datenbank. Möglicherweise müssen Sie bis zu zwei Stunden warten, bis die Daten in Azure SQL-Datenbank angezeigt werden. Die Menge der in Ihrer SQL-Datenbank verfügbaren Daten kann unter anderem über das [Azure-Verwaltungsportal](https://manage.windowsazure.com/) überwacht werden. Suchen Sie im linken Bereich nach SQL-DATENBANKEN![](media\\cortana-analytics-technical-guide-demand-forecast\\SQLicon2.png), und klicken Sie darauf. Suchen Sie anschließend Ihre Datenbank (also demo123456db), und klicken Sie darauf. Klicken Sie auf der nächsten Seite unter **Datenbankverbindung herstellen** auf **Transact-SQL-Abfragen an Ihrer SQL-Datenbank ausführen**.
-   
+
+    Der letzte Schritt der Pipeline ist das Schreiben von Daten (z. B. Prognosen aus Machine Learning) in die SQL-Datenbank. Möglicherweise müssen Sie bis zu zwei Stunden warten, bis die Daten in Azure SQL-Datenbank angezeigt werden. Die Menge der in Ihrer SQL-Datenbank verfügbaren Daten kann unter anderem über das [Azure-Verwaltungsportal](https://manage.windowsazure.com/) überwacht werden. Suchen Sie im linken Bereich nach SQL-DATENBANKEN![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png), und klicken Sie darauf. Suchen Sie anschließend Ihre Datenbank (also demo123456db), und klicken Sie darauf. Klicken Sie auf der nächsten Seite unter **Datenbankverbindung herstellen** auf **Transact-SQL-Abfragen an Ihrer SQL-Datenbank ausführen**.
+
     Klicken Sie hier auf „Neue Abfrage“, und fragen Sie die Anzahl der Zeilen ab (z. B. „select count(*) from DemandRealHourly“). Solange die Datenbank wächst, sollte sich die Anzahl der Zeilen in der Tabelle erhöhen.)
 3. Überprüfen Sie die Daten über das Power BI-Dashboard.
-   
+
     Sie können das Power BI-Dashboard für heiße Daten einrichten, um die eingehende Rohdaten zu überwachen. Befolgen Sie hierzu die Anweisung im Abschnitt „Power BI-Dashboard“.
 
 ## <a name="power-bi-dashboard"></a>**Power BI-Dashboard**
@@ -165,66 +165,66 @@ In diesem Abschnitt wird beschrieben, wie Sie das Power BI-Dashboard einrichten
 In den folgenden Schritten wird erklärt, wie Sie die Echtzeit-Datenausgabe aus den beim Bereitstellen der Lösung generierten Stream Analytics-Aufträgen visualisieren. Zum Ausführen der folgenden Schritte benötigen Sie ein Konto für [Power BI online](http://www.powerbi.com/) . Wenn Sie über kein Konto verfügen, können Sie [eines erstellen](https://powerbi.microsoft.com/pricing).
 
 1. Fügen Sie die Power BI-Ausgabe in Azure Stream Analytics hinzu.
-   
+
    * Folgen Sie den Anweisungen unter [Azure Stream Analytics und Power BI: Ein Dashboard mit Echtzeitanalyse und -sichtbarkeit von Streamingdaten](stream-analytics/stream-analytics-power-bi-dashboard.md), um die Ausgabe des Azure Stream Analytics-Auftrags an Ihr Power BI-Dashboard einzurichten.
    * Suchen Sie den Stream Analytics-Auftrag im [Azure-Verwaltungsportal](https://manage.windowsazure.com). Der Name des Auftrags sollte wie folgt lauten: NameIhrerLösung + „streamingjob“ + Zufallszahl + „asapbi“ (also „demostreamingjob123456asapbi“).
    * Fügen Sie eine Power BI-Ausgabe für den ASA-Auftrag hinzu. Legen Sie den **Ausgabealias** auf **PBIoutput** fest. Legen Sie **Datasetname** und **Tabellenname** auf **EnergyStreamData** fest. Nachdem Sie die Ausgabe hinzugefügt haben, klicken Sie im unteren Seitenbereich auf **Starten**, um den Stream Analytics-Auftrag zu starten. Sie sollten eine Bestätigungsmeldung erhalten. (**Beispiel: Der Stream Analytics-Auftrag „myteststreamingjob12345asablob“ wurde erfolgreich gestartet.)
 2. Melden Sie sich bei [Power BI online](http://www.powerbi.com)
-   
+
    * Im linken Bereich im Abschnitt „Datasets“ unter „Mein Arbeitsbereich“ sollte ein neues Dataset im linken Bereich von Power BI angezeigt werden. die Sie zuvor in den Power BI-Ausgabeeinstellungen des Azure Stream Analytics-Auftrags definiert haben.
    * Stellen Sie sicher, dass der Bereich ***Visualisierungen*** geöffnet ist und auf der rechten Seite des Bildschirms angezeigt wird.
 3. Erstellen Sie die Kachel „Bedarf nach Zeitstempel“:
-   
+
    * Klicken Sie im linken Bereich im Abschnitt „Datasets“ auf das Dataset **EnergyStreamData** .
-   * Klicken Sie auf das Symbol **Liniendiagramm** ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic8.png).
+   * Klicken Sie auf das Symbol **Liniendiagramm** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic8.png).
    * Klicken Sie im Bereich **Felder** auf „EnergyStreamData“.
    * Klicken Sie auf **Zeitstempel** , und vergewissern Sie sich, dass er unter „Achse“ angezeigt wird. Klicken Sie auf **Last** , und stellen Sie sicher, dass sie unter „Werte“ angezeigt wird.
    * Klicken Sie oben auf **SPEICHERN** , und nennen Sie den Bericht „EnergyStreamDataReport“. Der Bericht „EnergyStreamDataReport“ wird links im Bereich „Navigator“ im Abschnitt „Berichte“ angezeigt.
-   * Klicken Sie in der rechten oberen Ecke dieses Liniendiagramms auf das Symbol **Visualisierung anheften**![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic6.png). Unter Umständen wird ein Fenster „An Dashboard anheften“ angezeigt, in dem Sie ein Dashboard auswählen können. Wählen Sie „EnergyStreamDataReport“, und klicken Sie dann auf „Anheften“.
+   * Klicken Sie in der rechten oberen Ecke dieses Liniendiagramms auf das Symbol **Visualisierung anheften**![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png). Unter Umständen wird ein Fenster „An Dashboard anheften“ angezeigt, in dem Sie ein Dashboard auswählen können. Wählen Sie „EnergyStreamDataReport“, und klicken Sie dann auf „Anheften“.
    * Bewegen Sie den Mauszeiger auf diese Kachel im Dashboard, klicken Sie in der oberen rechten Ecke auf das Symbol „Bearbeiten“, und ändern Sie den Titel in „Bedarf nach Zeitstempel“.
 4. Erstellen Sie weitere Dashboardkacheln auf Basis der entsprechenden Datasets. Im Anschluss sehen Sie die endgültige Dashboarddarstellung.
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PBIFullScreen.png)
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>Einrichten des Dashboards für kalte Daten
 In einer Pipeline mit kalten Daten besteht das grundlegende Ziel darin, die Bedarfsprognose der einzelnen Regionen zu erhalten. Power BI stellt eine Verbindung mit einer Azure SQL-Datenbank als Datenquelle her, denn dort werden die Vorhersageergebnisse gespeichert.
 
 > [!NOTE]
 > 1) Es dauert einige Stunden, bis genügend Prognoseergebnisse für das Dashboard gesammelt wurden. Es wird empfohlen, diesen Vorgang 2 bis 3 Stunden nach dem Start des Datengenerators zu starten. 2) Für diesen Schritt muss die kostenlose Software [Power BI Desktop](https://powerbi.microsoft.com/desktop)heruntergeladen und installiert werden.
-> 
-> 
+>
+>
 
 1. Rufen Sie die Anmeldeinformationen für die Datenbank ab.
-   
+
    Sie benötigen **den Namen des Datenbankservers, den Namen der Datenbank, den Benutzernamen und das Kennwort** , um die nächsten Schritte ausführen zu können. Sie finden diese Informationen anhand der folgenden Schritte.
-   
+
    * Sobald **Azure SQL-Datenbank** in Ihrem Lösungsvorlagendiagramm grün dargestellt wird, klicken Sie auf diese Option und anschließend auf **Öffnen**. Sie gelangen zum Azure-Verwaltungsportal, und auch Ihre Seite mit den Datenbankinformationen wird geöffnet.
    * Auf der Seite finden Sie einen Abschnitt „Datenbank“. Darin wird die Datenbank aufgeführt, die Sie erstellt haben. Der Name der Datenbank sollte wie folgt lauten: **NameIhrerLösung + Zufallszahl + „db“** (Beispiel: mytest12345db).
-   * Klicken Sie auf die Datenbank. Im neuen Ausklappbereich finden Sie den Namen Ihres Datenbankservers am oberen Rand. Der Name Ihres Datenbankservers sollte wie folgt lauten: **NameIhrerLösung + Zufallszahl + „database.windows.net,1433“** (Beispiel: mytest12345.database.windows.net,1433).
+   * Klicken Sie auf die Datenbank. Im neuen Ausklappbereich finden Sie den Namen Ihres Datenbankservers am oberen Rand. Der Name Ihres Datenbankservers sollte wie folgt lauten: **NameIhrerLösung + Zufallszahl + „database.windows.net,1433“** (Beispiel: „mytest12345.database.windows.net,1433“).
    * Der **Benutzername** und das **Kennwort** für Ihre Datenbank sind identisch mit dem Benutzernamen und dem Kennwort, die Sie sich zuvor bei der Bereitstellung der Lösung notiert haben.
 2. Aktualisieren Sie die Datenquelle der Power BI-Datei für kalte Daten.
-   
+
    * Vergewissern Sie sich, dass die aktuelle Version von [Power BI Desktop](https://powerbi.microsoft.com/desktop)installiert ist.
    * Doppelklicken Sie im heruntergeladenen Ordner **DemandForecastingDataGeneratorv1.0** auf die Datei **Power BI Template\DemandForecastPowerBI.pbix**. Die anfänglichen Visualisierungen basieren auf unechten Daten. **Hinweis:** Sollte eine Fehlermeldung angezeigt werden, vergewissern Sie sich, dass die neueste Version von Power BI Desktop installiert ist.
-     
+
      Klicken Sie nach dem Öffnen des Programms über der Datei auf **Abfragen bearbeiten**. Doppelklicken Sie im Ausklappfenster im rechten Bereich auf **Quelle** .
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic1.png)
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)
    * Ersetzen Sie **Server** und **Datenbank** im Ausklappfenster durch Ihre eigenen Server- und Datenbanknamen, und klicken Sie anschließend auf **OK**. Geben Sie beim Servernamen unbedingt den Port 1433 an (**IhrLösungsname.database.windows.net, 1433**). Ignorieren Sie die auf dem Bildschirm angezeigten Warnmeldungen.
    * Im nächsten Ausklappfenster werden im linken Bereich zwei Optionen angezeigt: **Windows** und **Datenbank**. Klicken Sie auf **Datenbank**, und geben Sie **Benutzername** und **Kennwort** ein. (Hierbei handelt es sich um den Benutzernamen und das Kennwort, die Sie beim ersten Bereitstellen der Lösung und beim erstmaligen Erstellen einer Azure SQL-Datenbank eingegeben haben.) Aktivieren Sie unter ***Wählen Sie die Ebene aus, auf die diese Einstellungen anzuwenden sind*** die Option für die Datenbankebene. Klicken Sie anschließend auf **Verbinden**.
    * Wenn die vorherige Seite wieder angezeigt wird, schließen Sie das Fenster. Es wird eine Meldung angezeigt. Klicken Sie darin auf **Übernehmen**. Klicken Sie zum Schluss auf die Schaltfläche **Speichern**, um die Änderungen zu speichern. Für Ihre Power BI-Datei wurde nun eine Verbindung mit dem Server eingerichtet. Wenn Ihre Visualisierungen leer sind, stellen Sie sicher, dass Sie die Auswahl für die Visualisierungen aufheben, um alle Daten zu visualisieren. Klicken Sie dazu in der rechten oberen Ecke der Legenden auf das Radierersymbol. Klicken Sie auf die Schaltfläche zum Aktualisieren, damit neue Daten in den Visualisierungen widergespiegelt werden. Anfangs sehen Sie in den Visualisierungen nur die Seedingdaten, weil die Data Factory planmäßig alle drei Stunden aktualisiert wird. Wenn Sie die Daten nach drei Stunden aktualisieren, sehen Sie in den Visualisierungen neue Vorhersagen.
 3. (Optional) Veröffentlichen des Dashboards für kalte Daten in [Power BI online](http://www.powerbi.com/). Beachten Sie, dass Sie für diesen Schritt ein Power BI-Konto (oder ein Office 365-Konto) benötigen.
-   
+
    * Klicken Sie auf **Veröffentlichen** . Nach einigen Sekunden wird durch eine Meldung mit einem grünen Häkchen bestätigt, dass die Veröffentlichung in Power BI erfolgreich war. Klicken Sie auf den Link unter „demoprediction.pbix in Power BI öffnen“. Ausführliche Anweisungen finden Sie unter [Veröffentlichen aus Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Klicken Sie zum Erstellen eines neuen Dashboards im linken Bereich neben dem Abschnitt **Dashboards** auf das Symbol **+**. Geben Sie den Namen „Demo für Bedarfsprognose“ für das neue Dashboard ein.
-   * Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic6.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+   * Wenn Sie den Bericht geöffnet haben, klicken Sie auf ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png), um alle Visualisierungen an Ihr Dashboard anzuheften. Ausführliche Informationen finden Sie unter [Anheften einer Kachel an ein Power BI-Dashboard aus einem Bericht](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Wechseln Sie zur Dashboardseite, passen Sie die Größe und Position der Visualisierungen an, und bearbeiten Sie deren Titel. Ausführliche Anweisungen zum Bearbeiten der Titel finden Sie unter [Bearbeiten einer Kachel – Größe ändern, verschieben, umbenennen, anheften, löschen, Link hinzufügen](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Nachfolgend sehen Sie ein Beispieldashboard, an das einige Visualisierungen für kalte Daten angeheftet sind.
-     
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic7.png)
+
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic7.png)
 4. (Optional) Planen Sie die Aktualisierung der Datenquelle.
-   
-   * Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **EnergyBPI-Final**, klicken auf ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic3.png) und wählen dann **Aktualisierung planen** aus.
+
+   * Um eine Aktualisierung der Daten zu planen, zeigen Sie mit dem Mauszeiger auf das Dataset **EnergyBPI-Final**, klicken auf ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png) und wählen dann **Aktualisierung planen** aus.
      **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und vergewissern Sie sich, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 angegebenen Informationen identisch sind.
-     
-     ![](media\\cortana-analytics-technical-guide-demand-forecast\\PowerBIpic4.png)
+
+     ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic4.png)
    * Erweitern Sie den Abschnitt **Aktualisierung planen** . Aktivieren Sie „Halten Sie Ihre Daten aktuell“.
    * Legen Sie einen geeigneten Zeitplan für die Aktualisierung fest. Weitere Informationen finden Sie unter [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
 
@@ -242,7 +242,6 @@ Dieser Artikel wurde von der Datenanalystin Yijing Chen und dem Softwareentwickl
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

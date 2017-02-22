@@ -1,6 +1,6 @@
 ---
-title: Logik-App-Schleifen und -Bereiche | Microsoft Docs
-description: "Übersicht über die verschiedenen Methoden zum Verarbeiten von Schleifen und Bereichen in einer Logik-App"
+title: "Erstellen von Schleifen und Bereichen bzw. Auflösen von Datenbatches in Workflows – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Erstellen Sie Schleifen zum Durchlaufen von Daten, gruppieren Sie Aktionen in Bereiche, oder lösen Sie Datenbatches auf, um mehr Workflows in Azure Logic Apps zu starten."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 2556e43bba8f2080e292be4c5a7f2145f5718e57
+ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
+ms.openlocfilehash: 63ac171494e13f4451d585c3b704727eeed94fab
 
 
 ---
@@ -159,6 +159,6 @@ Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren
 ```
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

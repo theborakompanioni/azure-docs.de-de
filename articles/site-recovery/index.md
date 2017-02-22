@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Site Recovery – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mittels Bereitstellung und Verwaltung der Replikation die cloudbasierte Notfallwiederherstellung und Geschäftskontinuität für physische Server und virtuelle Computer einrichten."
+services: site-recovery
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: site-recovery
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: b8fe2704e7c68c1fe815d204d424f28fcbdfe75c
+ms.sourcegitcommit: 9816de3f1925e79fdd2814f5a65f80d0fe912137
+ms.openlocfilehash: d9bc1b35580377b8b5edd73c4b8797d9da30cf11
 
 ---
 # <a name="site-recovery-documentation"></a>Site Recovery-Dokumentation
@@ -84,6 +95,6 @@ Hier erfahren Sie, wie Sie Site Recovery in einer Geschäftskontinuitäts- und N
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

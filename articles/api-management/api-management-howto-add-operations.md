@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: sdanie
+ms.date: 12/15/2016
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 1bc391f5be5e41c6b6691950241ba5f3abdbf538
+ms.sourcegitcommit: d8b2f91a4d47513572fc5a56c60524d8338c8df4
+ms.openlocfilehash: 4527e27f760a7a0685f92a7108c4e8ff9759d33c
 
 
 ---
@@ -28,7 +28,7 @@ Operationen werden einer API im Herausgeberportal hinzugefügt und in diesem kon
 
 ![Herausgeberportal][api-management-management-console]
 
-> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Erstellen einer API Management-Dienstinstanz] im Tutorial [Erste Schritte mit Azure API Management][Erste Schritte mit Azure API Management].
+> Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] im Tutorial [Erste Schritte mit Azure API Management][Get started with Azure API Management].
 > 
 > 
 
@@ -47,6 +47,8 @@ Wählen Sie das gewünschte **HTTP-Verb** aus der Dropdownliste aus.
 <a name="url-template"></a>
 
 Definieren Sie die URL-Vorlage, indem Sie ein URL-Fragment bestehend aus einem oder mehreren URL-Pfadsegmenten und null oder mehreren Abfrageparametern ein. Die URL-Vorlage wird an die Basis-URL der API angehängt und identifiziert eine einzige HTTP-Operation. Die Vorlage enthält einen oder mehrere variable Bestandteile, die durch geschweifte Klammern gekennzeichnet sind. Diese variablen Teile nennt man Vorlageparameter. Sie enthalten dynamische Werte aus der URL der Anforderung, wenn die Anforderung von der API-Verwaltungsplattform verarbeitet wird.
+
+> Die URL-Vorlage kann Platzhaltermuster enthalten. Wenn Sie z.B. `/*` angeben, werden alle Anforderungen für diese HTTP-Methode an den Enddienst zurückgegeben.
 
 ![URL-Vorlage][api-management-url-template]
 
@@ -75,7 +77,7 @@ Wählen Sie die Registerkarte **Zwischenspeichern**, und markieren Sie das Kontr
 
 Cacheschlüssel werden zur Unterscheidung von Antworten verwendet, und die Antwort für jeden einzelnen Cacheschlüssel erhält einen eigenen Wert im Cache. Geben Sie optional Abfrageparameter und/oder HTTP-Header in die Textfelder **Nach Abfrageparametern variieren** bzw. **Nach Headern variieren** ein, die bei der Berechnung der Cacheschlüsselwerte verwendet werden sollen. Wenn Sie keine Parameter angeben, werden die komplette Anforderungs-URL und die folgenden HTTP-Headerwerte beim Generieren der Cacheschlüssel verwendet: **Accept** und **Accept-Charset**.
 
-> Weitere Informationen zum Zwischenspeichern und zu Richtlinien für das Zwischenspeichern finden Sie unter [Zwischenspeichern von Operationsergebnissen in Azure API Management][Zwischenspeichern von Operationsergebnissen in Azure API Management].
+> Weitere Informationen zum Zwischenspeichern und zu Richtlinien für das Zwischenspeichern finden Sie unter [Zwischenspeichern von Operationsergebnissen in Azure API Management][How to cache operation results in Azure API Management].
 > 
 > 
 
@@ -129,7 +131,7 @@ Wenn Sie die Operation konfiguriert haben, klicken Sie auf **Speichern**.
 ## <a name="next-steps"> </a>Nächste Schritte
 Nachdem Sie die Operationen zur API hinzugefügt haben, können Sie die API zu einem Produkt zuordnen und veröffentlichen, sodass Entwickler die Operationen aufrufen können.
 
-* [Erstellen und Veröffentlichen eines Produkts][Erstellen und Veröffentlichen eines Produkts]
+* [Erstellen und Veröffentlichen von Produkten][How to create and publish a product]
 
 [api-management-management-console]: ./media/api-management-howto-add-operations/api-management-management-console.png
 [api-management-operations]: ./media/api-management-howto-add-operations/api-management-operations.png
@@ -154,22 +156,22 @@ Nachdem Sie die Operationen zur API hinzugefügt haben, können Sie die API zu e
 [api-management-api-summary]: ./media/api-management-howto-add-operations/api-management-api-summary.png
 [api-management-echo-operations]: ./media/api-management-howto-add-operations/api-management-echo-operations.png
 
-[Hinzufügen einer Operation]: #add-operation
-[Zwischenspeichern von Operationen]: #operation-caching
-[Anforderungsparameter]: #request-parameters
-[Anforderungstext]: #request-body
-[Antworten]: #responses
-[Nächste Schritte]: #next-steps
+[Add an operation]: #add-operation
+[Operation caching]: #operation-caching
+[Request parameters]: #request-parameters
+[Request body]: #request-body
+[Responses]: #responses
+[Next steps]: #next-steps
 
-[Erste Schritte mit Azure API Management]: api-management-get-started.md
-[Erstellen einer API Management-Dienstinstanz]: api-management-get-started.md#create-service-instance
+[Get started with Azure API Management]: api-management-get-started.md
+[Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[Hinzufügen von Operationen zu einer API]: api-management-howto-add-operations.md
-[Erstellen und Veröffentlichen eines Produkts]: api-management-howto-add-products.md
-[Zwischenspeichern von Operationsergebnissen in Azure API Management]: api-management-howto-cache.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create and publish a product]: api-management-howto-add-products.md
+[How to cache operation results in Azure API Management]: api-management-howto-cache.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

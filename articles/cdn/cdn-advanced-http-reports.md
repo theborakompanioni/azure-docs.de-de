@@ -1,9 +1,9 @@
 ---
-title: Erweiterte HTTP-Berichte in Azure CDN | Microsoft Docs
-description: "Erweiterte HTTP-Berichte in Microsoft Azure CDN. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität."
+title: Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN | Microsoft-Dokumentation
+description: "Hier erfahren Sie, wie Sie erweiterte HTTP-Berichte in Microsoft Azure CDN erstellen. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität."
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: ef90adc1-580e-4955-8ff1-bde3f3cafc5d
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91cafe744e07416426da6ca5a5785a21e7874f6d
+ms.sourcegitcommit: 06bd0112eab46f3347dfb039a99641a37c2b0197
+ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
 
 
 ---
-# <a name="advanced-http-reports-in-microsoft-azure-cdn"></a>Erweiterte HTTP-Berichte in Microsoft Azure CDN
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN
 ## <a name="overview"></a>Übersicht
 In diesem Dokument werden die erweiterten HTTP-Berichte in Microsoft Azure CDN erläutert. Diese Berichte enthalten detaillierte Informationen zur CDN-Aktivität.
 
@@ -207,6 +207,6 @@ Direkt unterhalb des Balkendiagramms werden die folgenden Informationen für die
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

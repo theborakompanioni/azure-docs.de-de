@@ -3,7 +3,7 @@ title: Verwenden des Azure-Blobspeichers mit iOS | Microsoft Docs
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
 services: storage
 documentationcenter: ios
-author: micurd
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: df188021-86fc-4d31-a810-1b0e7bcd814b
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: micurd
+ms.date: 01/30/2017
+ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 11f6c46b03487e50ddd8a5808e41529660bf07ca
+ms.sourcegitcommit: 1bbb2cd3fae094305eb36e8d9958f9c94568e419
+ms.openlocfilehash: c23139a755be08fbdee24f4fd87a0347252a7101
 
 
 ---
@@ -38,22 +38,25 @@ Sie können die Azure Storage-iOS-Bibliothek entweder mithilfe von [Azure Storag
 ## <a name="cocoapod"></a>CocoaPod
 1. Sofern Sie es noch nicht getan haben, [installieren Sie CocoaPods](https://guides.cocoapods.org/using/getting-started.html#toc_3) auf Ihrem Computer, indem Sie ein Terminalfenster öffnen und den folgenden Befehl ausführen:
    
-        sudo gem install cocoapods
-2. Erstellen Sie als Nächstes im Projektverzeichnis (das Verzeichnis mit Ihrer `.xcodeproj`-Datei) eine neue Datei namens `Podfile` (ohne Erweiterung). Fügen Sie `Podfile` das Folgende hinzu, und speichern Sie die Datei.
+    sudo gem install cocoapods
+
+2. Erstellen Sie als Nächstes im Projektverzeichnis (das Verzeichnis mit Ihrer XCODEPROJ-Datei) eine neue Datei namens _Podfile_ (ohne Erweiterung). Fügen Sie _Podfile_ das Folgende hinzu, und speichern Sie die Datei.
    
-        pod 'AZSClient'
+    pod 'AZSClient'
+
 3. Navigieren Sie im Terminalfenster zu dem Projektverzeichnis, und führen Sie den folgenden Befehl aus:
    
-        pod install
-4. Wenn Ihre `.xcodeproj` -Datei in Xcode geöffnet ist, schließen Sie sie. Öffnen Sie im Projektverzeichnis die neu erstellte Projektdatei, die die Erweiterung `.xcworkspace` erhält. Dies ist die Datei, mit der Sie von jetzt an arbeiten.
+    pod install
+
+4. Wenn Ihre XCODEPROJ-Datei in Xcode geöffnet ist, schließen Sie sie. Öffnen Sie im Projektverzeichnis die neu erstellte Projektdatei, die die Erweiterung .xcworkspace erhält. Dies ist die Datei, mit der Sie von jetzt an arbeiten.
 
 ## <a name="framework"></a>Framework
 Um die Azure Storage-iOS-Bibliothek zu verwenden, müssen Sie zunächst die Frameworkdatei erstellen.
 
 1. Laden Sie zuerst das [azure-storage-ios-repo](https://github.com/azure/azure-storage-ios)herunter, oder klonen Sie es.
-2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie `AZSClient.xcodeproj` in Xcode.
+2. Wechseln Sie zu *azure-storage-ios* -> *Lib* -> *Azure Storage-Client-Bibliothek*, und öffnen Sie AZSClient.xcodeproj in Xcode.
 3. Ändern Sie oben links in Xcode das aktive Schema von "Azure Storage-Client Library" in "Framework".
-4. Erstellen Sie das Projekt (⌘+B). Dadurch wird eine `AZSClient.framework` -Datei auf Ihrem Desktop erstellt.
+4. Erstellen Sie das Projekt (⌘+B). Dadurch wird eine AZSClient.framework-Datei auf dem Desktop erstellt.
 
 Sie können die Frameworkdatei dann folgendermaßen in Ihre Anwendung importieren:
 
@@ -69,8 +72,10 @@ Sie können die Frameworkdatei dann folgendermaßen in Ihre Anwendung importiere
 ## <a name="import-statement"></a>Import-Anweisung
 Sie müssen die folgende Import-Anweisung in die Datei einschließen, in der Sie die Azure Storage-API aufrufen möchten.
 
-    // Include the following import statement to use blob APIs.
-    #import <AZSClient/AZSClient.h>
+```objc
+// Include the following import statement to use blob APIs.
+#import <AZSClient/AZSClient.h>
+```
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
@@ -83,29 +88,31 @@ Sie müssen die folgende Import-Anweisung in die Datei einschließen, in der Sie
 ## <a name="create-a-container"></a>Erstellen eines Containers
 Jeder Blob in Azure Storage muss sich in einem Container befinden. Das folgende Beispiel zeigt, wie Sie einen Container namens *newcontainer*in Ihrem Storage-Konto erstellen, wenn er noch nicht vorhanden ist. Wenn Sie einen Namen für den Container auswählen, achten Sie auf die oben genannten Benennungsregeln.
 
-    -(void)createContainer{
-      NSError *accountCreationError;
+```objc
+-(void)createContainer{
+    NSError *accountCreationError;
 
-      // Create a storage account object from a connection string.
-      AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-      if(accountCreationError){
-         NSLog(@"Error in creating account.");
-      }
-
-      // Create a blob service client object.
-      AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-      // Create a local container object.
-      AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"newcontainer"];
-
-      // Create container in your Storage account if the container doesn't already exist
-      [blobContainer createContainerIfNotExistsWithCompletionHandler:^(NSError *error, BOOL exists) {
-         if (error){
-             NSLog(@"Error in creating container.");
-         }
-      }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
+
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"newcontainer"];
+
+    // Create container in your Storage account if the container doesn't already exist
+    [blobContainer createContainerIfNotExistsWithCompletionHandler:^(NSError *error, BOOL exists) {
+        if (error){
+            NSLog(@"Error in creating container.");
+        }
+    }];
+}
+```
 
 Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass [newcontainer](http://storageexplorer.com) sich im *Microsoft Azure-Speicher-Explorer* in der Liste der Container für das Speicherkonto befindet.
 
@@ -118,69 +125,73 @@ Die Berechtigungen eines Containers werden standardmäßig für den **Privatzugr
 
 Das folgende Beispiel veranschaulicht das Erstellen eines Containers mit **Container** -Zugriffsberechtigungen, die allen Benutzern im Internet den öffentlichen, schreibgeschützten Zugriff gewähren:
 
-    -(void)createContainerWithPublicAccess{
-        NSError *accountCreationError;
+```objc
+-(void)createContainerWithPublicAccess{
+    NSError *accountCreationError;
 
-        // Create a storage account object from a connection string.
-        AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-        if(accountCreationError){
-            NSLog(@"Error in creating account.");
-        }
-
-        // Create a blob service client object.
-        AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-        // Create a local container object.
-        AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
-
-        // Create container in your Storage account if the container doesn't already exist
-        [blobContainer createContainerIfNotExistsWithAccessType:AZSContainerPublicAccessTypeContainer requestOptions:nil operationContext:nil completionHandler:^(NSError *error, BOOL exists){
-            if (error){
-                NSLog(@"Error in creating container.");
-            }
-        }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
+
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
+
+    // Create container in your Storage account if the container doesn't already exist
+    [blobContainer createContainerIfNotExistsWithAccessType:AZSContainerPublicAccessTypeContainer requestOptions:nil operationContext:nil completionHandler:^(NSError *error, BOOL exists){
+        if (error){
+            NSLog(@"Error in creating container.");
+        }
+    }];
+}
+```
 
 ## <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
 Wie im Abschnitt [Blobdienstkonzepte](#blob-service-concepts) erwähnt, bietet der Blobspeicher drei verschiedene Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblobs. Zu diesem Zeitpunkt unterstützt die Azure Storage-iOS-Bibliothek nur Blockblobs. In den meisten Fällen wird die Verwendung von Blockblobs empfohlen.
 
 Das folgende Beispiel zeigt den Upload eines Blockblobs aus einer NSString. Wenn in diesem Container bereits ein Blob mit demselben Namen vorhanden ist, wird der Inhalt dieses Blobs überschrieben.
 
-    -(void)uploadBlobToContainer{
-        NSError *accountCreationError;
+```objc
+-(void)uploadBlobToContainer{
+    NSError *accountCreationError;
 
-        // Create a storage account object from a connection string.
-        AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-        if(accountCreationError){
-            NSLog(@"Error in creating account.");
-        }
-
-        // Create a blob service client object.
-        AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-        // Create a local container object.
-        AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
-
-        [blobContainer createContainerIfNotExistsWithAccessType:AZSContainerPublicAccessTypeContainer requestOptions:nil operationContext:nil completionHandler:^(NSError *error, BOOL exists)
-         {
-             if (error){
-                 NSLog(@"Error in creating container.");
-             }
-             else{
-                 // Create a local blob object
-                 AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob"];
-
-                 // Upload blob to Storage
-                 [blockBlob uploadFromText:@"This text will be uploaded to Blob Storage." completionHandler:^(NSError *error) {
-                     if (error){
-                         NSLog(@"Error in creating blob.");
-                     }
-                 }];
-             }
-         }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
+
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
+
+    [blobContainer createContainerIfNotExistsWithAccessType:AZSContainerPublicAccessTypeContainer requestOptions:nil operationContext:nil completionHandler:^(NSError *error, BOOL exists)
+        {
+            if (error){
+                NSLog(@"Error in creating container.");
+            }
+            else{
+                // Create a local blob object
+                AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob"];
+
+                // Upload blob to Storage
+                [blockBlob uploadFromText:@"This text will be uploaded to Blob Storage." completionHandler:^(NSError *error) {
+                    if (error){
+                        NSLog(@"Error in creating blob.");
+                    }
+                }];
+            }
+        }];
+}
+```
 
 Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container *containerpublic* im [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) das Blob *sampleblob* enthält. In diesem Beispiel haben wir einen öffentlichen Container verwendet, sodass Sie die Funktion auch durch das Aufrufen der Blob-URI überprüfen können:
 
@@ -193,158 +204,165 @@ Das folgende Beispiel zeigt, wie alle Blobs in einem Container aufgelistet werde
 
 * **ContinuationToken** : Das Fortsetzungstoken gibt an, wo der Auflistungsvorgang beginnen soll. Wenn kein Token angegeben wird, listet es Blobs vom Anfang auf. Es kann eine beliebige Anzahl von Blobs aufgeführt werden, von 0 (null) bis zu einem festgelegten Maximum. Auch wenn diese Methode keine Ergebnisse zurückgibt, wenn `results.continuationToken` nicht Null ist, gibt es möglicherweise mehr Blobs für den Dienst, die nicht aufgelistet wurden.
 * **prefix** – Sie können das Präfix angeben, das für die Blobliste verwendet werden soll. Nur Blobs, die mit diesem Präfix beginnen, werden aufgelistet.
-* **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](#naming-and-referencing-containers-and-blobs) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit eine nicht flache Auflistung nicht unterstützt. Dies ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: `YES`.
+* **useFlatBlobListing** – Wie im Abschnitt [Benennen von Containern und Blobs und verweisen auf diese](#naming-and-referencing-containers-and-blobs) erwähnt, können Sie eine virtuelle Hierarchie durch Benennen von Blobs mit Pfadinformationen erstellen, selbst wenn der Blob-Dienst ein flaches Speicherschema ist. Allerdings wird derzeit eine nicht flache Auflistung nicht unterstützt. Dies ist in Kürze verfügbar. Bis dahin sollte der folgende Wert verwendet werden: **JA**.
 * **blobListingDetails** – Sie können angeben, welche Elemente beim Auflisten der Blobs einbezogen werden sollen.
-  * `AZSBlobListingDetailsNone`: Listen Sie nur zugesicherte Blobs auf, und geben Sie keine Blobmetadaten zurück.
-  * `AZSBlobListingDetailsSnapshots`: Listen Sie zugesicherte Blobs und Blobmomentaufnahmen auf.
-  * `AZSBlobListingDetailsMetadata`: Rufen Sie Blobmetadaten für jeden Blob auf, der in der Liste zurückgegeben wird.
-  * `AZSBlobListingDetailsUncommittedBlobs`: Listen Sie zugesicherte und nicht zugesicherte Blobs auf.
-  * `AZSBlobListingDetailsCopy`: Schließen Sie die Kopiereigenschaften in der Liste ein.
-  * `AZSBlobListingDetailsAll`: Listen Sie alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auf, und geben Sie alle Metadaten und Kopierstatus für diese Blobs zurück.
+  * _AZSBlobListingDetailsNone_: Nur zugesicherte Blobs auflisten und keine Blobmetadaten zurückgeben.
+  * _AZSBlobListingDetailsSnapshots_: Zugesicherte Blobs und Blobmomentaufnahmen auflisten.
+  * _AZSBlobListingDetailsMetadata_: Blobmetadaten für jeden Blob aufrufen, der in der Liste zurückgegeben wird.
+  * _AZSBlobListingDetailsUncommittedBlobs_: Zugesicherte und nicht zugesicherte Blobs auflisten.
+  * _AZSBlobListingDetailsCopy_: Kopieeigenschaften in die Auflistung einbeziehen.
+  * _AZSBlobListingDetailsAll_: Alle verfügbaren zugesicherten Blobs, nicht zugesicherten Blobs und Momentaufnahmen auflisten und alle Metadaten und Kopierstatus für diese Blobs zurückgeben.
 * **maxResults** – Die maximale Anzahl von Ergebnissen, die für diesen Vorgang zurückgegeben werden. Verwenden Sie -1, um keinen Grenzwert festzulegen.
 * **completionHandler** – Der auszuführende Codeblock mit den Ergebnissen des Auflistungsvorgangs.
 
 In diesem Beispiel wird eine Hilfsmethode verwendet, um jedes Mal die Methode zum Auflisten von Blobs wiederholt aufzurufen, wenn ein Fortsetzungstoken zurückgegeben wird.
 
-    -(void)listBlobsInContainer{
-        NSError *accountCreationError;
+```objc
+-(void)listBlobsInContainer{
+    NSError *accountCreationError;
 
-        // Create a storage account object from a connection string.
-        AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-        if(accountCreationError){
-            NSLog(@"Error in creating account.");
-        }
-
-        // Create a blob service client object.
-        AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-        // Create a local container object.
-        AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
-
-        //List all blobs in container
-        [self listBlobsInContainerHelper:blobContainer continuationToken:nil prefix:nil blobListingDetails:AZSBlobListingDetailsAll maxResults:-1 completionHandler:^(NSError *error) {
-            if (error != nil){
-                NSLog(@"Error in creating container.");
-            }
-        }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
 
-    //List blobs helper method
-    -(void)listBlobsInContainerHelper:(AZSCloudBlobContainer *)container continuationToken:(AZSContinuationToken *)continuationToken prefix:(NSString *)prefix blobListingDetails:(AZSBlobListingDetails)blobListingDetails maxResults:(NSUInteger)maxResults completionHandler:(void (^)(NSError *))completionHandler
-    {
-        [container listBlobsSegmentedWithContinuationToken:continuationToken prefix:prefix useFlatBlobListing:YES blobListingDetails:blobListingDetails maxResults:maxResults completionHandler:^(NSError *error, AZSBlobResultSegment *results) {
-            if (error)
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
+
+    //List all blobs in container
+    [self listBlobsInContainerHelper:blobContainer continuationToken:nil prefix:nil blobListingDetails:AZSBlobListingDetailsAll maxResults:-1 completionHandler:^(NSError *error) {
+        if (error != nil){
+            NSLog(@"Error in creating container.");
+        }
+    }];
+}
+
+//List blobs helper method
+-(void)listBlobsInContainerHelper:(AZSCloudBlobContainer *)container continuationToken:(AZSContinuationToken *)continuationToken prefix:(NSString *)prefix blobListingDetails:(AZSBlobListingDetails)blobListingDetails maxResults:(NSUInteger)maxResults completionHandler:(void (^)(NSError *))completionHandler
+{
+    [container listBlobsSegmentedWithContinuationToken:continuationToken prefix:prefix useFlatBlobListing:YES blobListingDetails:blobListingDetails maxResults:maxResults completionHandler:^(NSError *error, AZSBlobResultSegment *results) {
+        if (error)
+        {
+            completionHandler(error);
+        }
+        else
+        {
+            for (int i = 0; i < results.blobs.count; i++) {
+                NSLog(@"%@",[(AZSCloudBlockBlob *)results.blobs[i] blobName]);
+            }
+            if (results.continuationToken)
             {
-                completionHandler(error);
+                [self listBlobsInContainerHelper:container continuationToken:results.continuationToken prefix:prefix blobListingDetails:blobListingDetails maxResults:maxResults completionHandler:completionHandler];
             }
             else
             {
-                for (int i = 0; i < results.blobs.count; i++) {
-                    NSLog(@"%@",[(AZSCloudBlockBlob *)results.blobs[i] blobName]);
-                }
-                if (results.continuationToken)
-                {
-                    [self listBlobsInContainerHelper:container continuationToken:results.continuationToken prefix:prefix blobListingDetails:blobListingDetails maxResults:maxResults completionHandler:completionHandler];
-                }
-                else
-                {
-                    completionHandler(nil);
-                }
+                completionHandler(nil);
             }
-        }];
-    }
-
+        }
+    }];
+}
+```
 
 ## <a name="download-a-blob"></a>Herunterladen eines Blobs
 Das folgende Beispiel zeigt den Download eines Blobs in ein NSString-Objekt.
 
-    -(void)downloadBlobToString{
-        NSError *accountCreationError;
+```objc
+-(void)downloadBlobToString{
+    NSError *accountCreationError;
 
-        // Create a storage account object from a connection string.
-        AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-        if(accountCreationError){
-            NSLog(@"Error in creating account.");
-        }
-
-        // Create a blob service client object.
-        AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-        // Create a local container object.
-        AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
-
-        // Create a local blob object
-        AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob"];
-
-        // Download blob
-        [blockBlob downloadToTextWithCompletionHandler:^(NSError *error, NSString *text) {
-            if (error) {
-                NSLog(@"Error in downloading blob");
-            }
-            else{
-                NSLog(@"%@",text);
-            }
-        }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
+
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
+
+    // Create a local blob object
+    AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob"];
+
+    // Download blob
+    [blockBlob downloadToTextWithCompletionHandler:^(NSError *error, NSString *text) {
+        if (error) {
+            NSLog(@"Error in downloading blob");
+        }
+        else{
+            NSLog(@"%@",text);
+        }
+    }];
+}
+```
 
 ## <a name="delete-a-blob"></a>Löschen eines BLOBs
 Das folgende Beispiel zeigt den Löschvorgang eines Blobs.
 
-    -(void)deleteBlob{
-        NSError *accountCreationError;
+```objc
+-(void)deleteBlob{
+    NSError *accountCreationError;
 
-        // Create a storage account object from a connection string.
-        AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-        if(accountCreationError){
-            NSLog(@"Error in creating account.");
-        }
-
-        // Create a blob service client object.
-        AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-        // Create a local container object.
-        AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
-
-        // Create a local blob object
-        AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob1"];
-
-        // Delete blob
-        [blockBlob deleteWithCompletionHandler:^(NSError *error) {
-            if (error) {
-                NSLog(@"Error in deleting blob.");
-            }
-        }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
+
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
+
+    // Create a local blob object
+    AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:@"sampleblob1"];
+
+    // Delete blob
+    [blockBlob deleteWithCompletionHandler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Error in deleting blob.");
+        }
+    }];
+}
+```
 
 ## <a name="delete-a-blob-container"></a>Löschen eines Blob-Containers
 Das folgende Beispiel zeigt den Löschvorgang eines Containers.
 
-    -(void)deleteContainer{
-      NSError *accountCreationError;
+```objc
+-(void)deleteContainer{
+    NSError *accountCreationError;
 
-      // Create a storage account object from a connection string.
-      AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
+    // Create a storage account object from a connection string.
+    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
 
-      if(accountCreationError){
-         NSLog(@"Error in creating account.");
-      }
-
-      // Create a blob service client object.
-      AZSCloudBlobClient *blobClient = [account getBlobClient];
-
-      // Create a local container object.
-      AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
-
-      // Delete container
-      [blobContainer deleteContainerIfExistsWithCompletionHandler:^(NSError *error, BOOL success) {
-         if(error){
-             NSLog(@"Error in deleting container");
-         }
-      }];
+    if(accountCreationError){
+        NSLog(@"Error in creating account.");
     }
+
+    // Create a blob service client object.
+    AZSCloudBlobClient *blobClient = [account getBlobClient];
+
+    // Create a local container object.
+    AZSCloudBlobContainer *blobContainer = [blobClient containerReferenceFromName:@"containerpublic"];
+
+    // Delete container
+    [blobContainer deleteContainerIfExistsWithCompletionHandler:^(NSError *error, BOOL success) {
+        if(error){
+            NSLog(@"Error in deleting container");
+        }
+    }];
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Links, um weitere Informationen zur iOS-Bibliothek und dem Speicherdienst zu erhalten.
@@ -360,6 +378,6 @@ Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storag
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

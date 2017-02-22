@@ -15,8 +15,8 @@ ms.workload: data-services
 ms.date: 10/31/2016
 ms.author: barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: c1c23ab46d9b4e43154a62080cb8865b246489f9
-ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
+ms.sourcegitcommit: f9814fc0011153a25489d60d696bb567edfcebc4
+ms.openlocfilehash: a86b041424ce1757fd45c7a39350f4c4e66ee265
 
 
 ---
@@ -30,22 +30,13 @@ ms.openlocfilehash: 2e11486203f04d671548b6132e61f804acb7f90a
 >
 >
 
-Passen Sie die Leistung durch horizontales Hochskalieren der Computeressourcen und des Arbeitsspeichers an, um die wechselnden Anforderungen Ihrer Workload zu erfüllen. Sparen Sie außerhalb von Spitzenzeiten Kosten, indem Sie die zur Verfügung stehenden Ressourcen verringern oder den Computevorgang vollständig pausieren.
-
-Diese Sammlung von Tasks verwendet das Azure-Portal für folgende Aufgaben:
-
-* Skalieren von Computeressourcen
-* Anhalten von Computeressourcen
-* Fortsetzen von Computeressourcen
-
-Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)][Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)].
 
 ## <a name="scale-compute-power"></a>Skalieren von Computeleistung
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
 So ändern Sie Computeressourcen
 
-1. Öffnen Sie das [Azure-Portal][Azure-Portal], öffnen Sie Ihre Datenbank, und klicken Sie auf **Skalieren**.
+1. Öffnen Sie das [Azure-Portal][Azure portal], öffnen Sie Ihre Datenbank, und klicken Sie auf **Skalieren**.
 
     ![Klicken Sie auf Skalieren.][1]
 2. Verschieben Sie auf dem Blatt „Skalieren“ den Schieberegler nach links oder rechts, um die DWU-Einstellung zu ändern.
@@ -62,7 +53,7 @@ So ändern Sie Computeressourcen
 
 So halten Sie eine Datenbank an
 
-1. Öffnen Sie das [Azure-Portal][Azure-Portal], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Online**lautet.
+1. Öffnen Sie das [Azure-Portal][Azure portal], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Online**lautet.
 
     ![Onlinestatus][6]
 2. Klicken Sie auf **Anhalten**, um Compute- und Arbeitsspeicherressourcen anzuhalten. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zur Bestätigung auf **Ja** oder zum Abbrechen auf **Nein**.
@@ -80,7 +71,7 @@ So halten Sie eine Datenbank an
 
 So setzen Sie eine Datenbank fort
 
-1. Öffnen Sie das [Azure-Portal][Azure-Portal], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Angehalten**lautet.
+1. Öffnen Sie das [Azure-Portal][Azure portal], und öffnen Sie Ihre Datenbank. Beachten Sie, dass der Status **Angehalten**lautet.
 
     ![Datenbank anhalten][4]
 2. Klicken Sie zum Fortsetzen der Datenbank auf **Starten**. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zur Bestätigung auf **Ja** oder zum Abbrechen auf **Nein**.
@@ -94,7 +85,7 @@ So setzen Sie eine Datenbank fort
 <a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Verwaltungsübersicht][Verwaltungsübersicht].
+Weitere Informationen finden Sie unter [Verwaltungsübersicht][Management overview].
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-manage-compute-portal/click-scale.png
@@ -106,18 +97,18 @@ Weitere Informationen finden Sie unter [Verwaltungsübersicht][Verwaltungsübers
 [7]: ./media/sql-data-warehouse-manage-compute-portal/pause-confirm.png
 
 <!--Article references-->
-[Verwaltungsübersicht]: ./sql-data-warehouse-overview-manage.md
-[Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)]: ./sql-data-warehouse-manage-compute-overview.md
+[Management overview]: ./sql-data-warehouse-overview-manage.md
+[Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-[Azure-Portal]: http://portal.azure.com/
+[Azure portal]: http://portal.azure.com/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

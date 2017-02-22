@@ -12,26 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2016
+ms.date: 12/13/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: d5af6e3d9ba35558e0d7850820f4b9a479a259be
-ms.openlocfilehash: 7c73de46500ac565680f2d16da05b4821507cd93
+ms.sourcegitcommit: 803d295f0d9f08fdfe7ee4550bd093b98bd80631
+ms.openlocfilehash: 594f8c79e6e98a3e727416b0bf1867481b33dd2c
 
 
 ---
 # <a name="request-increased-documentdb-account-quotas"></a>Anfordern von höheren DocumentDB-Kontokontingenten
-[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) verfügt über Standardkontingente, die Sie anpassen können, indem Sie sich an den Azure-Support wenden.  In diesem Artikel wird veranschaulicht, wie Sie die Erhöhung eines Kontingents anfordern.
+[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ist eine Datenbank für globale Skalierung, in der Durchsatz und Speicher je nach den Anforderungen Ihrer Anwendung skaliert werden können. Wenn Sie Fragen zur Skalierung von DocumentDB haben, senden Sie eine E-Mail an askdocdb@microsoft.com.
 
-Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:  
-
-* Welche DocumentDB-Datenbankkontingente können Sie mithilfe des Azure-Supports anpassen?
-* Wie kann ich die Anpassung eines DocumentDB-Kontokontingents anfordern?
-
-## <a name="a-idquotasa-documentdb-account-quotas"></a><a id="Quotas"></a> DocumentDB-Kontokontingente
-In der folgenden Tabelle sind die DocumentDB-Kontingente beschrieben: Kontingente mit einem Sternchen (*) können angepasst werden. Wenden Sie sich dafür an den Azure-Support.
-
-[!INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
+In diesem Artikel wird veranschaulicht, wie Sie die Erhöhung eines Kontingents durch den Azure-Support anfordern.
 
 ## <a name="a-idrequestquotaincreasea-request-a-quota-adjustment"></a><a id="RequestQuotaIncrease"></a> Anfordern einer Kontingentanpassung
 Die folgenden Schritte zeigen, wie Sie eine Kontingentanpassung anfordern.
@@ -60,6 +52,6 @@ Sobald das Supportticket erstellt wurde, sollten Sie per E-Mail eine Supportanfo
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

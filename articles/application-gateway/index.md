@@ -1,9 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Application Gateway – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie einen Cloud-ADC (Application Delivery Controller) bereitstellen. Die Dokumentation zeigt, wie Sie auf Anwendungsebene Routing und Lastenausgleich für ein Web-Front-End einrichten."
+services: application-gateway
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: application-gateway
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 8f9b8cee583b9bc12df14bf5161cab1952e3e022
-ms.openlocfilehash: 5e7843adfb31fcfc56986cce44fc5d59ee558d58
+ms.sourcegitcommit: 50b30a64fab9a7c996040c5a0380975b11b5966f
+ms.openlocfilehash: 9d62ea6d75b48bbc84194635da792764871617e7
 
 ---
 #<a name="application-gateway-documentation"></a>Dokumentation zu Application Gateway
@@ -114,7 +125,7 @@ Hier erfahren Sie, wie Sie Application Gateway (Application Delivery Controller-
                     <div class="cardText">
                         <h3>Befehlszeile</h3>
                         <p><a href="/powershell/resourcemanager">PowerShell</a></p>
-                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0 Preview</a></p>
+                        <p><a href="/cli/azure/network/application-gateway">Azure CLI 2.0 (Vorschau)</a></p>
                     </div>
                 </div>
             </div>
@@ -149,18 +160,12 @@ Hier erfahren Sie, wie Sie Application Gateway (Application Delivery Controller-
             </div>
         </div>
     </li>
-</ul>   
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/application-gateway.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der Dokumentation zu Application Gateway </div>
-    </a>
-</div>
+</ul>    
 
 
 
-<!--HONumber=Dec16_HO3-->
+
+
+<!--HONumber=Feb17_HO2-->
 
 

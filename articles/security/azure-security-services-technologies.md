@@ -4,7 +4,7 @@ description: "Der Artikel enthält eine Aufstellung von Sicherheitsdiensten und 
 services: security
 documentationcenter: na
 author: TomShinder
-manager: StevenPo
+manager: MBaldwin
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
 ms.service: security
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 12/02/2016
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 354648461adf77ccf753cf24721ab7dd82b34d3c
-ms.openlocfilehash: 5d2d8503657269a7792667603e8b23d0183561ff
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: e9b9febe0c7533e0d2de24b97c98707d08f5e461
 
 
 ---
@@ -25,7 +25,7 @@ In unseren Diskussionen mit bestehenden und zukünftigen Azure-Kunden werden wir
 
 Wir wissen, dass es für Sie bei der Bewertung der technischen Optionen Ihres Clouddienstanbieters hilfreich ist, auf eine solche Liste zurückgreifen zu können, die Ihnen bei Bedarf fundierte Informationen liefert.
 
-Im Folgenden sehen Sie den Beginn unserer Bestrebungen, eine Liste zusammenzustellen. Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wachsen. Die Liste ist kategorisiert, und die Liste der Kategorien wird auch mit der Zeit wachsen. Besuchen Sie diese Seite regelmäßig, um stets über den neuesten Stand unserer Sicherheitsdienste und -technologien informiert zu sein. 
+Im Folgenden sehen Sie den Beginn unserer Bestrebungen, eine Liste zusammenzustellen. Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wachsen. Die Liste ist kategorisiert, und die Liste der Kategorien wird auch mit der Zeit wachsen. Besuchen Sie diese Seite regelmäßig, um stets über den neuesten Stand unserer Sicherheitsdienste und -technologien informiert zu sein.
 
 ## <a name="azure-security---general"></a>Azure-Sicherheit – allgemein
 * [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/)
@@ -46,18 +46,18 @@ Im Folgenden sehen Sie den Beginn unserer Bestrebungen, eine Liste zusammenzuste
 ## <a name="azure-database-security"></a>Azure-Datenbanksicherheit
 * [Azure SQL – Firewall](../sql-database/sql-database-firewall-configure.md)
 * [Azure SQL – Verschlüsselung auf Zellebene](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)
-* [Azure SQL – Verbindungsverschlüsselung](../sql-database/sql-database-security-guidelines.md)
-* [Azure SQL – Authentifizierung](../sql-database/sql-database-security-guidelines.md)
+* [Azure SQL – Verbindungsverschlüsselung](../sql-database/sql-database-control-access.md)
+* [Azure SQL – Authentifizierung](../sql-database/sql-database-control-access.md)
 * [Azure SQL – Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 * [Azure SQL – Verschlüsseln einer Datenspalte](https://msdn.microsoft.com/library/ms179331.aspx)
 * [Azure SQL – transparente Datenverschlüsselung](https://msdn.microsoft.com/library/dn948096.aspx)
-* [Azure SQL – Datenbanküberwachung](../sql-database/sql-database-auditing-get-started.md)
+* [Azure SQL – Datenbanküberwachung](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung in Azure
 * [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory-Domänendienste](https://azure.microsoft.com/documentation/services/active-directory-ds/)
+* [Azure Active Directory-Domänendienste](../active-directory-domain-services/active-directory-ds-overview.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>Sicherung und Notfallwiederherstellung
@@ -75,7 +75,6 @@ Im Folgenden sehen Sie den Beginn unserer Bestrebungen, eine Liste zusammenzuste
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

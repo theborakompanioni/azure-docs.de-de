@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.date: 10/17/2016
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a7a0c49b6fcac84a61005f330b07f5ea47ce1961
+ms.sourcegitcommit: 7a633460f249f7c7b6675a5ab23b1724549cccba
+ms.openlocfilehash: ca07067b73b72b5ff8b93a72fa7eef55e9d47cc2
 
 
 ---
@@ -34,7 +34,7 @@ Die Beispielanwendung wird mit Visual Studio 2013 in C# geschrieben. Wenn Sie ni
 
 Sie benötigen ein Azure-Abonnement und einen Azure Search-Dienst zum Abschließen dieses Lernprogramms. Hilfe beim Einrichten des Diensts finden Sie unter [Erstellen eines Search-Diensts im Portal](search-create-service-portal.md) .
 
- [Sie benötigen ein Microsoft Azure-Konto, um dieses Tutorial durchführen zu können:](../../includes/free-trial-note.md)]
+[!INCLUDE [You need an Azure account to complete this tutorial](../../includes/free-trial-note.md)]
 
 <a id="sub-2"></a>
 
@@ -125,6 +125,6 @@ Sie möchten einen Schritt zurückgehen und mehr über die Erstellung eines Inde
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

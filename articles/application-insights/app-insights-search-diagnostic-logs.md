@@ -1,5 +1,5 @@
 ---
-title: "Protokolle, Ausnahmen und benutzerdefinierte Diagnose für ASP.NET in Application Insights"
+title: "Protokolle und Diagnose für ASP.NET in Azure Application Insights | Microsoft-Dokumentation"
 description: Diagnostizieren von Problemen in ASP.NET-Web-Apps durch Durchsuchen von Anforderungen, Ausnahmen und Protokollen, die durch Trace, NLog oder Log4Net  generiert wurden.
 services: application-insights
 documentationcenter: 
@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 04/08/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 68d4b62b4915950dd18b6aa69b43043b4a90d9ff
+ms.sourcegitcommit: 08ce387dd37ef2fec8f4dded23c20217a36e9966
+ms.openlocfilehash: 874e9abb7ae7e06808645ae2ab7cd5b3c0d36e04
 
 
 ---
@@ -149,7 +149,7 @@ Sie sehen die Nachrichten in der Diagnosesuche, wenn Sie den Ablaufverfolgungsfi
 ### <a name="a-nameexceptionsaexceptions"></a><a name="exceptions"></a>Ausnahmen
 Das Abrufen von Ausnahmeberichten in Application Insights bietet eine Reihe von Vorteilen, insbesondere, da Sie zwischen den Anforderungen mit Fehlern und den Ausnahmen navigieren und den Ausnahmestapel lesen können.
 
-In einigen Fällen müssen Sie [einige Codezeilen einfügen][exceptions] , um sicherzustellen, dass die Ausnahmen automatisch aufgefangen werden.
+In einigen Fällen müssen Sie [einige Codezeilen einfügen][exceptions], um sicherzustellen, dass die Ausnahmen automatisch abgefangen werden.
 
 Sie können auch expliziten Code zum Senden von Telemetriedaten für Ausnahmen schreiben:
 
@@ -217,9 +217,9 @@ Klicken Sie auf einen Ausnahmetyp, um die jeweiligen Vorkommen anzuzeigen:
 Sie können auch die Diagnosesuche direkt öffnen, nach Ausnahmen filtern und den Ausnahmetyp auswählen, den Sie anzeigen möchten.
 
 ### <a name="reporting-unhandled-exceptions"></a>Berichterstellung für Ausnahmefehler
-Application Insights meldet nicht behandelte Ausnahmefehler – wann immer es möglich ist – von Geräten, [Webbrowsern][usage] oder Webservern, unabhängig davon, ob diese vom [Statusmonitor][redfield] oder dem [Application Insights SDK][greenbrown] ermittelt wurden. 
+Application Insights meldet Ausnahmefehler – wann immer es möglich ist – von Geräten, [Webbrowsern][usage] oder Webservern, unabhängig davon, ob diese vom [Statusmonitor][redfield] oder vom [Application Insights SDK][greenbrown] instrumentiert wurden. 
 
-In einigen Fällen ist dies jedoch nicht möglich, da die Ausnahmen vom .NET Framework aufgefangen werden.  Um sicherzustellen, dass Ihnen alle Ausnahmen angezeigt werden, müssen Sie daher einen kleinen Ausnahmehandler schreiben. Welches Verfahren sich am besten eignet, variiert je nach Technologie. Weitere Informationen finden Sie unter [Ausnahmetelemetrie für ASP.NET][exceptions] . 
+In einigen Fällen ist dies jedoch nicht möglich, da die Ausnahmen vom .NET Framework aufgefangen werden.  Um sicherzustellen, dass Ihnen alle Ausnahmen angezeigt werden, müssen Sie daher einen kleinen Ausnahmehandler schreiben. Welches Verfahren sich am besten eignet, variiert je nach Technologie. Weitere Informationen finden Sie unter [Ausnahmetelemetrie für ASP.NET][exceptions]. 
 
 ### <a name="correlating-with-a-build"></a>Korrelation mit einem Build
 Wenn Sie Diagnoseprotokolle lesen, ist es wahrscheinlich, dass der Quellcode seit Bereitstellung des Livecodes geändert wurde.
@@ -247,7 +247,7 @@ Gehen Sie im App-Initialisierer wie z. B. "Global.asax.cs" so vor:
     }
 
 ### <a name="a-namerequestsa-server-web-requests"></a><a name="requests"></a> Webanforderungen des Servers
-Telemetriedaten zu Anforderungen werden automatisch gesendet, wenn Sie [den Statusmonitor auf Ihrem Webserver installieren][redfield] oder [Ihrem Webprojekt Application Insights hinzufügen][greenbrown]. Diese Daten werden ebenfalls in die Diagramme zu Anforderungs- und Antwortzeiten im Metrik-Explorer und auf der Übersichtsseite übertragen.
+Telemetriedaten zu Anforderungen werden automatisch gesendet, wenn Sie [den Statusmonitor auf Ihrem Webserver installieren][redfield] oder [Application Insights zu Ihrem Webprojekt hinzufügen][greenbrown]. Diese Daten werden ebenfalls in die Diagramme zu Anforderungs- und Antwortzeiten im Metrik-Explorer und auf der Übersichtsseite übertragen.
 
 Wenn Sie zusätzliche Ereignisse senden möchten, können Sie die TrackRequest()-API verwenden.
 
@@ -264,8 +264,8 @@ Bis zu 500 Ereignisse pro Sekunde für jede Anwendung. Ereignisse werden sieben 
 Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 
 ## <a name="a-nameaddanext-steps"></a><a name="add"></a>Nächste Schritte
-* [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit][availability]
-* [Problembehandlung][qna]
+* [Einrichten von Tests zu Verfügbarkeit und Reaktionsfähigkeit][availability]
+* [Behandeln von Problemen][qna]
 
 <!--Link references-->
 
@@ -284,6 +284,6 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

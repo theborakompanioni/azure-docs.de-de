@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 01/20/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dece2cd1c8645c0a2d19177d433dbfe5d6e3f6cd
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: ac73b5c2ece8044d9f75e017428c43259f8a9357
 
 
 ---
@@ -47,8 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 * Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern. 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Promapp aus dem Katalog 
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -107,17 +106,16 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Azure AD – einmaliges Anmelden][8] 
    
-     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer Promapp-Website verwenden (beispielsweise *https://<Unternehmensname>.promapp.com/<Instanzname>*).
-
-     b. Klicken Sie auf **Next**.
+   1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die die Benutzer zur Anmeldung bei Ihrer Promapp-Website verwenden (beispielsweise *https://<Unternehmensname>.promapp.com/<Instanzname>*).
+   2. Klicken Sie auf **Weiter**.
 
 1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Promapp** die folgenden Schritte aus:
    
     ![Azure AD – einmaliges Anmelden][9] 
    
-    a. Klicken Sie auf "Zertifikat herunterladen", und speichern Sie das Zertifikat auf Ihrem Computer.
+   1. Klicken Sie auf "Zertifikat herunterladen", und speichern Sie das Zertifikat auf Ihrem Computer.
+   2. Klicken Sie auf **Weiter**.
    
-    b. Klicken Sie auf **Next**.
 2. Melden Sie sich bei Ihrer Promapp-Unternehmenswebsite als Administrator an. 
 3. Klicken Sie oben im Menü auf **Administrator**. 
    
@@ -129,11 +127,9 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Azure AD – einmaliges Anmelden][14] 
    
-    a. Kopieren Sie im klassischen Azure-Portal im Dialogfeld **Einmaliges Anmelden konfigurieren für Promapp** den Wert für **Remoteanmelde-URL**, fügen Sie ihn in das Textfeld **SSO-Login URL** (SSO-Anmelde-URL) ein, und klicken Sie dann auf **Speichern**.
-   
-    b. Wählen Sie für **SSO-Modus** die Option **Optional** aus, und klicken Sie dann auf **Speichern**.
-   
-    c. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie seinen Inhalt mit Ausnahme der ersten Zeile (*-----BEGIN CERTIFICATE-----*) und der letzten Zeile (*-----END CERTIFICATE-----*), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
+   1. Kopieren Sie im klassischen Azure-Portal im Dialogfeld **Einmaliges Anmelden konfigurieren für Promapp** den Wert für **Remoteanmelde-URL**, fügen Sie ihn in das Textfeld **SSO-Login URL** (SSO-Anmelde-URL) ein, und klicken Sie dann auf **Speichern**.
+   2. Wählen Sie für **SSO-Modus** die Option **Optional** aus, und klicken Sie dann auf **Speichern**.
+   3. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie seinen Inhalt mit Ausnahme der ersten Zeile (*-----BEGIN CERTIFICATE-----*) und der letzten Zeile (*-----END CERTIFICATE-----*), und fügen Sie ihn in das Textfeld **SSO-x.509-Zertifikat** ein. Klicken Sie anschließend auf **Speichern**.
 6. Wählen Sie im klassischen Azure AD-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**. 
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -162,23 +158,20 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png)  
    
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+   1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+   2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+   3. Klicken Sie auf **Weiter**.
    
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
    
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   e. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_07.png) 
@@ -186,9 +179,8 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-promapp-tutorial/create_aaduser_08.png) 
    
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   1. Notieren Sie den Wert von **Neues Kennwort**.
+   2. Klicken Sie auf **Fertig stellen**.   
 
 ### <a name="creating-a-promapp-test-user"></a>Erstellen eines Promapp-Testbenutzers
 Die Promapp-Anwendung unterstützt die Just-in-Time-Bereitstellung.
@@ -259,6 +251,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Promapp“ klicken, sollten Sie au
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

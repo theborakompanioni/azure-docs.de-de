@@ -1,5 +1,5 @@
 ---
-title: "Planen der Wartung für virtuelle Azure-Computer | Microsoft Docs"
+title: "Planen der Wartung für Windows-VMs in Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie die Wartung auf virtuellen Azure-Computern planen.
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/13/2016
 ms.author: igalf
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 2bb49a5533b2aef9cb22f5d0abd1862ad4274da4
+ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
+ms.openlocfilehash: 3c2ed5d8921df70dda2d43be599d018af81d4f64
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 2bb49a5533b2aef9cb22f5d0abd1862ad4274da4
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

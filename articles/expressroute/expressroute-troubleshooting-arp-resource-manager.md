@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute-Handbuch zur Problembehandlung: Abrufen von ARP-Tabellen | Microsoft Docs'
+title: 'Abrufen von ARP-Tabellen: Resource Manager: Azure ExpressRoute-Problembehandlung | Microsoft-Dokumentation'
 description: "Diese Seite enthält Anweisungen zum Abrufen der ARP-Tabellen für eine ExpressRoute-Verbindung."
 documentationcenter: na
 services: expressroute
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2016
+ms.date: 01/30/2017
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: e7931f1b08d09fbe1fa5a5a2d4a11da01e736462
-ms.openlocfilehash: e63a0e17d7c3794608130ad0b654c5c903d404a0
+ms.sourcegitcommit: 1a4206c80bc3581034b140de0003c64556b90303
+ms.openlocfilehash: 2a5a12899ea3bcc89be0244e252c552515f57150
 
 
 ---
-# <a name="expressroute-troubleshooting-guide---getting-arp-tables-in-the-resource-manager-deployment-model"></a>ExpressRoute-Handbuch zur Problembehandlung: Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell
+# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Abrufen von ARP-Tabellen im Resource Manager-Bereitstellungsmodell
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell – klassisch](expressroute-troubleshooting-arp-classic.md)
@@ -171,6 +171,6 @@ Die ARP-Tabelle eines Peerings dient zum Bestimmen und Überprüfen der Layer-2-
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

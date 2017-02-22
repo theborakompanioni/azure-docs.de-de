@@ -1,20 +1,20 @@
 ---
-layout: LandingPage
+title: "Dokumentation für virtuelle Azure-Computer unter Linux – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl einen virtuellen Computer erstellen. Die Dokumentation zeigt verschiedene Erstellungsmöglichkeiten für VM-Vorlagen."
-title: "Dokumentation zu Azure Virtual Machines für Linux – Tutorials und API-Referenz | Microsoft-Dokumentation"
-services: virtual-machines-linux
+services: virtual-machines\linux
 author: carolz
 manager: carolz
+layout: LandingPage
 ms.assetid: 
-ms.service: virtual-machines-linux
+ms.service: virtual-machines\linux
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 9bb4fb611c4f936317460040c4fbeff1a01f2c5c
-ms.openlocfilehash: 2728b18011e712d9f23f7645f8c83b053b3cf381
+ms.sourcegitcommit: 4736be260d3fa0ed7ec402959fd53604f55aceca
+ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Dokumentation zu virtuellen Linux-Computern
@@ -146,6 +146,6 @@ Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl 
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

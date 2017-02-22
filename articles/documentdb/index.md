@@ -1,13 +1,26 @@
 ---
+title: "Dokumentation für Azure DocumentDB – Tutorials, API-Referenz | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie DocumentDB (eine schemafreie NoSQL-Dokumentdatenbank) verwenden. Anhand von Tutorials wird gezeigt, wie die App-Integration funktioniert und wie Sie SQL-Abfragen für JSON-Dokumente verwenden."
+services: documentdb
+author: carolz
+manager: carolz
 layout: LandingPage
+ms.assetid: 
+ms.service: documentdb
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 3752a677351518195773a86c3824078a5aff6d03
-ms.openlocfilehash: c0911518e954131f1c8de783d71fb17a9eea1945
+ms.sourcegitcommit: be32b9d24db59618b42d0923b0ff4248f3329904
+ms.openlocfilehash: 347b2933a33d7a11505842ea437790d5fabf5b58
 
 ---
+
 #<a name="documentdb-documentation"></a>DocumentDB-Dokumentation
 
-Bei Azure DocumentDB handelt es sich um einen vollständig verwalteten NoSQL-Datenbankdienst, der für hohe und vorhersagbare Leistung, hohe Verfügbarkeit, elastische Skalierung, globale Verteilung und einfache Bereitstellung entworfen wurde. Als NoSQL-Datenbank ohne Schema stellt DocumentDB umfassende und vertraute SQL-Abfragefunktionen mit einheitlichen geringen Latenzen für JSON-Daten bereit.
+Hier erfahren Sie, wie Sie DocumentDB in Hochleistungsanwendungen für das Web und den Mobilbereich sowie für Spiele und das IoT verwenden. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie in diesem NoSQL-Datenbankdienst JSON-Daten speichern und SQL-Abfragen unter Verwendung eines flexiblen Schemas ausführen.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -201,7 +214,7 @@ Bei Azure DocumentDB handelt es sich um einen vollständig verwalteten NoSQL-Dat
                     <div class="cardText">
                         <h3>REST</h3>
                         <p><a href="/rest/api/documentdb/">REST-API</a></p>
-                        <p><a href="/rest/api/documentdbresourceprovider/">Ressourcenanbieter-REST-API</a></p>
+                        <p><a href="/rest/api/documentdbresourceprovider/">REST-API für Ressourcenanbieter</a></p>
                     </div>
                 </div>
             </div>
@@ -209,18 +222,10 @@ Bei Azure DocumentDB handelt es sich um einen vollständig verwalteten NoSQL-Dat
     </li>
 </ul>
 
----
-
-<div class="downloadHolder">
-    <a href="https://opbuildstorageprod.blob.core.windows.net/output-pdf-files/en-us/Azure.azure-documents/live/documentdb.pdf">
-        <div class="img"></div>
-        <div class="text">
-Herunterladen der DocumentDB-Dokumentation </div>
-    </a>
-</div>
 
 
 
-<!--HONumber=Dec16_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

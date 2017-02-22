@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/09/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 48a4cdf7d50e765ee42cb44d12d1dafd49c13795
-ms.openlocfilehash: 3147eba8bd31d3d05bd990571a986316d6f5093f
+ms.sourcegitcommit: adaf2a71e022d6d29493ab0a679bd593ea40195e
+ms.openlocfilehash: acb3b4d4a14ea546e94ccc38806251460e21a6bc
 
 
 ---
@@ -72,7 +72,7 @@ Die JSON-Datei für Gesichtserkennung und -nachverfolgung umfasst die folgenden 
 Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zeitbasierte Blöcke unterteilt werden können, sodass Sie nichts herunterladen müssen, was Sie nicht benötigen) und Segmentierung (wobei die Ereignisse aufgeteilt werden, falls sie zu groß werden). Einige einfache Berechnungen können Ihnen helfen, die Daten zu transformieren. Wenn ein Ereignis beispielsweise mit 6.300 (Ticks), einer Zeitskala von 2.997 (Ticks/s) und Framerate von 29,97 (Bilder/s) begonnen hat, dann gilt:
 
 * Start/Zeitskala = 2,1 Sekunden
-* Sekunden x (Framerate/Zeitskala) = 63 Bilder
+* Sekunden x Framerate = 63 Frames
 
 ## <a name="face-detection-input-and-output-example"></a>Eingabe- und Ausgabebeispiel für Gesichtserkennung
 ### <a name="input-video"></a>Videoeingang
@@ -81,7 +81,18 @@ Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zei
 ### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung ist nur zur Gesichtserkennung bestimmt.
 
-    {"version":"1.0"}
+    {
+      "version":"1.0"
+      "options":{
+          "TrackingMode": "Faster"
+      }
+    }
+
+#### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
+| Attributname | Beschreibung |
+| --- | --- |
+| Mode |Schneller: schnellere Verarbeitungsgeschwindigkeit, aber weniger genau (Standard). <br/>Qualität: Nachverfolgung mit höherer Genauigkeit, dafür längere Verarbeitungszeit. |
+
 
 ### <a name="json-output"></a>JSON-Ausgabe
 Das folgende Beispiel einer JSON-Ausgabe wurde abgeschnitten.
@@ -153,17 +164,17 @@ Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie ei
 #### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
 | Attributname | Beschreibung |
 | --- | --- |
-| Mode |Faces: Nur Gesichtserkennung  <br/>AggregateEmotion: Rückgabe der durchschnittlichen Emotionswerte für alle Gesichter im Frame. |
+| Mode |Faces: nur Gesichtserkennung.<br/>PerFaceEmotion: unabhängige Rückgabe der Emotionen für jede Gesichtserkennung.<br/>AggregateEmotion: Rückgabe der durchschnittlichen Emotionswerte für alle Gesichter im Frame. |
 | AggregateEmotionWindowMs |Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt die Länge des Videos, das jeweils zum Produzieren eines Aggregierergebnisses verwendet wird, in Millisekunden an. |
 | AggregateEmotionIntervalMs |Bei Auswahl des Modus „AggregateEmotion“ verwenden. Gibt an, mit welcher Häufigkeit Aggregierergebnisse erzeugt werden. |
 
 #### <a name="aggregate-defaults"></a>Aggregierstandardwerte
 Die folgenden Werte werden für Aggregierfenster und Intervalleinstellungen empfohlen. AggregateEmotionWindowMs sollte länger als AggregateEmotionIntervalMs sein.
 
-| Standardwerte (s) | Maximum (s) | Minimum (s) |
-| --- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |
-| AggregateEmotionIntervalMs |0,5 |1 |
+|| Standardwerte (s) | Minimum (s) | Maximum (s) |
+|--- | --- | --- | --- |
+| AggregateEmotionWindowMs |0,5 |2 |0,25|
+| AggregateEmotionIntervalMs |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON-Ausgabe
 JSON-Ausgabe für Emotionsaggregierung (abgeschnitten):
@@ -514,6 +525,6 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

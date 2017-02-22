@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/01/2017
 ms.author: carlrab; jognanay
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: c153f09741b9b063d67459bbb127f9c4e7942a5b
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 5d8fa8328bb2257b77a27fc2fa33565e20000e10
 
 
 ---
@@ -47,7 +47,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 * Gefiltert nach allgemeiner Verfügbarkeit [Ankündigungen](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) für SQL-Datenbankfunktionen.
 
 > [!TIP]
-> Siehe [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von SQL Server Data Tools für Visual Studio](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md), um eine vorhandene Datenbank auf Kompatibilität mit Azure SQL-Datenbank zu testen.
+> Informationen zum Testen einer vorhandenen Datenbank auf Kompatibilität mit Azure SQL-Datenbank finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure](sql-database-cloud-migrate.md).
 >
 
 | **Feature** | **SQL Server** | **Azure SQL-Datenbank** | 
@@ -57,12 +57,12 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 | AlwaysOn-Verfügbarkeitsgruppen | [Unterstützt](https://msdn.microsoft.com/library/hh510230.aspx) | Nicht unterstützt – siehe [aktive Georeplikation](sql-database-geo-replication-overview.md) |
 | Anfügen einer Datenbank | [Unterstützt](https://msdn.microsoft.com/library/ms190209.aspx) | Nicht unterstützt |
 | Anwendungsrollen | [Unterstützt](https://msdn.microsoft.com/library/ms190998.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms190998.aspx) |
-| Automatische Skalierung | Nicht unterstützt | [Unterstützt](sql-database-scale-up.md) |
+| Automatische Skalierung | Nicht unterstützt | [Unterstützt](sql-database-service-tiers.md) |
 | Azure Active Directory | Nicht unterstützt | [Unterstützt](sql-database-aad-authentication.md) |
 | Azure Data Factory | Nicht unterstützt – [SQL Server Integration Services (SSIS)](https://msdn.microsoft.com/library/ms141026.aspx) | [Unterstützt](https://azure.microsoft.com/services/data-factory/) |
-| Überwachung | [Unterstützt](https://msdn.microsoft.com/library/cc280386.aspx) | [Unterstützt](sql-database-auditing-get-started.md) |
+| Überwachung | [Unterstützt](https://msdn.microsoft.com/library/cc280386.aspx) | [Unterstützt](sql-database-auditing.md) |
 | BACPAC Datei (exportieren) | [Unterstützt](https://msdn.microsoft.com/library/hh213241.aspx) | [Unterstützt](sql-database-export.md) |
-| BACPAC Datei (importieren) | [Unterstützt](https://msdn.microsoft.com/library/hh710052.aspx) | [Unterstützt](sql-database-import.md) |
+| BACPAC Datei (importieren) | [Unterstützt](https://msdn.microsoft.com/library/hh710052.aspx) | [Unterstützt](sql-database-import-portal.md) |
 | BACKUP- und RESTORE-Anweisungen | [Unterstützt](https://msdn.microsoft.com/library/ff848768.aspx) | Nicht unterstützt |
 | Integrierte Funktionen | [Unterstützt](https://msdn.microsoft.com/library/ms174318.aspx) | [Die meisten](https://msdn.microsoft.com/library/ms174318.aspx) |
 | Erfassung geänderter Daten | [Unterstützt](https://msdn.microsoft.com/library/cc645937.aspx) | Nicht unterstützt |
@@ -132,7 +132,7 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 | SQL Server Integration Services (SSIS) | [Unterstützt](https://msdn.microsoft.com/library/ms141026.aspx) | Nicht unterstützt – siehe [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) |
 | SQL Server PowerShell | [Unterstützt](https://msdn.microsoft.com/library/hh245198.aspx) | [Unterstützt](https://msdn.microsoft.com/library/hh245198.aspx) |
 | SQL Server Profiler | [Unterstützt](https://msdn.microsoft.com/library/ms181091.aspx) | Nicht unterstützt – siehe [Erweiterte Ereignisse](https://msdn.microsoft.com/library/ms181091.aspx) |
-| SQL Server-Replikation | [Unterstützt](https://msdn.microsoft.com/library/ms151198.aspx) | [Nur für Transaktions- und Momentaufnahmenreplikationsabonnent](sql-database-cloud-migrate-compatible-using-transactional-replication.md) |
+| SQL Server-Replikation | [Unterstützt](https://msdn.microsoft.com/library/ms151198.aspx) | [Nur für Transaktions- und Momentaufnahmenreplikationsabonnent](sql-database-cloud-migrate.md) |
 | SQL Server Reporting Services (SSRS) | [Unterstützt](https://msdn.microsoft.com/library/ms159106.aspx) | Nicht unterstützt |
 | Gespeicherte Prozeduren | [Unterstützt](https://msdn.microsoft.com/library/ms190782.aspx) | [Unterstützt](https://msdn.microsoft.com/library/ms190782.aspx) |
 | Gespeicherte Systemfunktionen | [Unterstützt](https://msdn.microsoft.com/library/ff848780.aspx) | [Einige](https://msdn.microsoft.com/library/ff848780.aspx) |
@@ -161,6 +161,6 @@ Es werden auch weiterhin neue Funktionen zu V12 hinzugefügt. Daher empfehlen wi
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

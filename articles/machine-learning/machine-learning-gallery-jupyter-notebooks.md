@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 1573ae126f8b76983abe98b37b9ac4072e70d9d0
 
 
 ---
@@ -34,7 +34,7 @@ ms.openlocfilehash: a0d44e625d3898f014a9723ff005c00b3aaedcf1
  Auf der Seite **[Jupyter-Notebooks](https://gallery.cortanaintelligence.com/notebooks)**
  wird eine Liste der am häufigsten verwendeten Notebooks angezeigt.
 Klicken Sie auf **Alle anzeigen**, um alle Notebooks anzuzeigen.
-Auf dieser Seite können Sie alle Notebooks im Katalog durchsuchen oder eine Suche durchführen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf dieser Seite können Sie alle Notebooks im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
 
  Klicken Sie auf ein beliebiges Notebook, um die Detailseite des Notebooks zu öffnen und weitere Informationen zu erhalten. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum Notebook per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
 
@@ -75,6 +75,6 @@ Das Notebook wird zusammen mit den anderen Notebooks auf der Seite **Notizbüche
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

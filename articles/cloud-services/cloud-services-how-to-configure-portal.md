@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: ab97962175f4498200db428736a1cbd124fac285
-ms.openlocfilehash: 6c07bae5b0e6d16925da661e423cb6d80d4f3f15
+ms.sourcegitcommit: bb66627b170c9010414b24266fdae608e67f5c61
+ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
 
 
 ---
@@ -24,8 +24,8 @@ ms.openlocfilehash: 6c07bae5b0e6d16925da661e423cb6d80d4f3f15
 > [!div class="op_single_selector"]
 > * [Azure-Portal](cloud-services-how-to-configure-portal.md)
 > * [Klassisches Azure-Portal](cloud-services-how-to-configure.md)
-> 
-> 
+>
+>
 
 Im Azure-Portal können Sie die am häufigsten für einen Clouddienst verwendeten Einstellungen konfigurieren. Wenn Sie die Konfigurationsdateien jedoch direkt aktualisieren möchten, laden Sie eine zu aktualisierende Konfigurationsdatei herunter, laden Sie anschließend die aktualisierte Datei hoch, und aktualisieren Sie den Clouddienst mit den Konfigurationsänderungen. In beiden Fällen wird die aktualisierte Konfiguration an alle Rolleninstanzen übermittelt.
 
@@ -34,7 +34,7 @@ Sie können die Instanzen Ihrer Clouddienstrollen außerdem verwalten oder eine 
 Während der Konfigurationsupdates kann Azure nur dann eine Dienstverfügbarkeit von 99,95 Prozent sicherstellen, wenn Sie mindestens zwei Rolleninstanzen für jede Rolle haben. In diesem Fall kann ein virtueller Computer Clientanforderungen verarbeiten, während der andere aktualisiert wird. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
 ## <a name="change-a-cloud-service"></a>Ändern eines Clouddiensts
-Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu Ihrem Clouddienst. Von hier aus können Sie zahlreiche Aspekte des Clouddiensts verwalten. 
+Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu Ihrem Clouddienst. Von hier aus können Sie zahlreiche Aspekte des Clouddiensts verwalten.
 
 ![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
@@ -42,13 +42,20 @@ Während der Konfigurationsupdates kann Azure nur dann eine Dienstverfügbarkeit
 
 ![Blatt mit Einstellungen für den Azure-Clouddienst](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
-> [!NOTE]
-> Das für den Clouddienst verwendete Betriebssystem kann nicht über das **Azure-Portal** geändert werden. Diese Einstellung können Sie nur über das [klassische Azure-Portal](http://manage.windowsazure.com/) ändern. Weitere Informationen finden Sie [hier](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file).
-> 
-> 
+### <a name="manage-guest-os-version"></a>Verwalten der Gastbetriebssystem-Version
+
+Azure aktualisiert Ihr Gastbetriebssystem standardmäßig in regelmäßigen Abständen auf das neueste Image innerhalb der BS-Familie, die Sie in der Dienstkonfiguration (CSCFG-Datei) angegeben haben z B. Windows Server 2016.
+
+Wenn Sie auf ein bestimmtes Betriebssystemversion ausrichten müssen, legen Sie es auf dem Blatt **Konfiguration** fest.
+
+![Festlegen der Gastbetriebssystem-Version](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
+
+
+>[!IMPORTANT]
+> Die Auswahl einer bestimmten Betriebssystemversion deaktiviert die automatischen Betriebssystemupdates, sodass Sie für das Patchen verantwortlich sind. Sie müssen sicherstellen, dass Ihre Rolleninstanzen Updates erhalten, ansonsten ist Ihre Anwendungen u.U. Sicherheitsrisiken ausgesetzt.
 
 ## <a name="monitoring"></a>Überwachung
-Sie können Ihrem Clouddienst Warnungen hinzufügen. Klicken Sie auf **Einstellungen** > **Warnungsregeln** > **Warnung hinzufügen**. 
+Sie können Ihrem Clouddienst Warnungen hinzufügen. Klicken Sie auf **Einstellungen** > **Warnungsregeln** > **Warnung hinzufügen**.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -58,7 +65,7 @@ In dieser Ansicht können Sie eine Warnung einrichten. Über das Dropdownfeld **
 * Datenträgerschreibvorgänge
 * Eingehender Netzwerkverkehr
 * Ausgehender Netzwerkverkehr
-* CPU-Prozentsatz 
+* CPU-Prozentsatz
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
@@ -70,7 +77,7 @@ Statt die Ansicht **Einstellungen** > **Warnungsregeln** zu verwenden, können S
 Von hier aus können Sie das in der Kachel verwendete Diagramm anpassen oder eine Warnungsregel hinzufügen.
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>Neustart, Reimaging oder Remotedesktop
-Momentan ist eine Konfiguration von Remotedesktop mit dem **Azure-Portal**nicht möglich. Sie können die Konfiguration stattdessen jedoch über das [klassische Azure-Portal](cloud-services-role-enable-remote-desktop.md), mithilfe von [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) oder [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) durchführen. 
+Momentan ist eine Konfiguration von Remotedesktop mit dem **Azure-Portal**nicht möglich. Sie können die Konfiguration stattdessen jedoch über das [klassische Azure-Portal](cloud-services-role-enable-remote-desktop.md), mithilfe von [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) oder [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) durchführen.
 
 Klicken Sie zunächst auf die Instanz des Clouddiensts.
 
@@ -84,17 +91,17 @@ Auf dem so geöffneten Blatt können Sie eine Remotedesktopverbindung starten, d
 Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkonfiguration](cloud-services-model-and-package.md#cscfg) (.cscfg) neu konfigurieren. Dazu müssen Sie Ihre .cscfg-Datei herunterladen, sie bearbeiten und wieder hochladen.
 
 1. Klicken Sie auf das Symbol **Einstellungen** oder den Link **Alle Einstellungen**, um das Blatt **Einstellungen** zu öffnen.
-   
+
     ![Seite „Einstellungen“](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. Klicken Sie auf das Element **Konfiguration** .
-   
+
     ![Blatt „Konfiguration“](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. Klicken Sie auf die Schaltfläche **Herunterladen** .
-   
+
     ![Herunterladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Laden Sie nach dem Update der Dienstkonfigurationsdatei die Konfigurationsupdates hoch, und wenden Sie sie an:
-   
-    ![Hochladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png) 
+
+    ![Hochladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Wählen Sie die CSCFG-Datei aus, und klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -105,7 +112,6 @@ Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkon
 
 
 
-
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure | Microsoft Docs"
-description: " Die Workloadmigration zu Azure IaaS bietet die Gelegenheit, die vorhandenen Designs neu zu überdenken "
+description: " Die Workloadmigration zu Azure IaaS bietet die Gelegenheit, die vorhandenen Designs neu zu überdenkens "
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2016
+ms.date: 01/09/2017
 ms.author: barclayn
 translationtype: Human Translation
-ms.sourcegitcommit: f74352c9f9ef358441c4322dbe7f894db16c2619
-ms.openlocfilehash: f8af03050daf1864b5faf8b897dc4c71e2dd3194
+ms.sourcegitcommit: 3451bdde3be60df0f1e1ed977f23db65d39f535f
+ms.openlocfilehash: 8416de09a4a3c2cdf9c73b9f79e8df9e292514ca
 
 
 
@@ -246,6 +246,6 @@ Der folgende Screenshot zeigt ein Beispiel für die Art von Informationen, die v
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO2-->
 
 

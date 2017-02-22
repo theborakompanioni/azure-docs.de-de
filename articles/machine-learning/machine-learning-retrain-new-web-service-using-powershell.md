@@ -1,5 +1,5 @@
 ---
-title: "Erneutes Trainieren eines neuen Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning | Microsoft Docs"
+title: Erneutes Trainieren eines neuen Azure Machine Learning-Webdiensts mit PowerShell | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie Sie mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet."
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/13/2016
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 066ff1d2c8255c895fbfcb0ad8c0b1fef298f8c7
-ms.openlocfilehash: d0decc1da1444254c319e7c2e1bbe4f567ef386e
+ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
+ms.openlocfilehash: d57d3802e1678c6754b0d770acc4fe6c092329a3
 
 
 ---
@@ -112,6 +112,6 @@ Mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning können
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

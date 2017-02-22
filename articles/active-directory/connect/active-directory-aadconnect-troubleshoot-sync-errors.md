@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: b5b7ff810f36b14481572ec2e59f9d4999945c3f
+ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
+ms.openlocfilehash: 24e675ebd63554be0bbc51e1013c4ade94b56abe
 
 
 ---
@@ -35,7 +35,7 @@ Azure AD Connect führt 3 Arten von Vorgängen aus den Verzeichnissen heraus aus
 Im folgenden Abschnitt werden verschiedene Typen von Synchronisierungsfehlern beschrieben, die während des Exportvorgangs nach Azure AD mit dem Azure AD-Connector auftreten können. Dieser Connector kann anhand des Formats des Namens erkannt werden: „contoso.*onmicrosoft.com*“.
 Fehler, die während des Exportierens nach Azure AD auftreten, deuten an, dass der Vorgang \(hinzufügen, aktualisieren, löschen, usw.\) fehlgeschlagen ist, der durch das \(Synchronisierungsmodul\) von Azure AD Connect unter Azure Active Directory gestartet wurde.
 
-![Übersicht Exportieren von Fehlern](.\\media\\active-directory-aadconnect-troubleshoot-sync-errors\\Export_Errors_Overview_01.png)
+![Übersicht Exportieren von Fehlern](./media/active-directory-aadconnect-troubleshoot-sync-errors/Export_Errors_Overview_01.png)
 
 ## <a name="data-mismatch-errors"></a>Fehler durch Datenkonflikt
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch (Ungültiges Soft Match (mögliche Übereinstimmung))
@@ -114,7 +114,7 @@ Wenn Azure AD versucht, ein Soft Match mit zwei Objekten durchzuführen, kann es
 * In Office 365 wird eine E-Mail-aktivierte Sicherheitsgruppe erstellt. Der Administrator fügt einen neuen Benutzer oder Kontakt im lokalen AD hinzu (das noch nicht mit Azure AD synchronisiert wurde), der den gleichen Wert für das Attribut „ProxyAddresses“ hat wie das Attribut der Office 365-Gruppe.
 
 #### <a name="example-case"></a>Beispielfall
-1. Der Administrator erstellt in Office 365 eine neue E-Mail-aktivierte Sicherheitsgruppe für die Steuerabteilung, und stellt eine E-Mail Adresse als tax@contoso.com. bereit. Dadurch wird dem Attribut „ProxyAddresses“ für diese Gruppe der Wert **smtp:tax@contoso.com** zugewiesen.
+1. Der Administrator erstellt in Office 365 eine neue E-Mail-aktivierte Sicherheitsgruppe für die Steuerabteilung, und stellt eine E-Mail Adresse als tax@contoso.com bereit. Dadurch wird dem ProxyAddresses-Attribut für diese Gruppe der Wert **smtp:tax@contoso.com** zugewiesen.
 2. Ein neuer Benutzer tritt Contoso.com bei. Für diesen Benutzer wird ein lokales Konto mit „proxyAddress“ als **smtp:tax@contoso.com** erstellt.
 3. Wenn Azure AD Connect das neue Benutzerkonto synchronisiert, erscheint der Fehler „ObjectTypeMismatch“.
 
@@ -195,7 +195,7 @@ Bei einem synchronisierten Benutzer wurde das Suffix des „UserPrincipalName“
 #### <a name="how-to-fix"></a>So behebt man den Fehler
 Wenn das Suffix von „UserPrincipalName“ eines Benutzers von bob@**contoso.com** in bob@**fabrikam.com** geändert wurde, wobei sowohl **contoso.com** und **fabrikam.com** **Verbunddomänen** sind, befolgen Sie die folgenden Schritte um den Synchronisierungsfehler zu beheben.
 
-1. Aktualisieren Sie „UserPrincipalName“ des Benutzers in Azure AD von bob@contoso.com in bob@contoso.onmicrosoft.com.. Sie können den folgenden PowerShell-Befehl mit dem Azure AD PowerShell-Modul verwenden: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+1. Ändern Sie den UserPrincipalName des Benutzers in Azure AD von bob@contoso.com in bob@contoso.onmicrosoft.com. Sie können die folgenden PowerShell-Befehl mit dem Azure AD PowerShell-Modul verwenden: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Lassen Sie im nächsten Synchronisierungszyklus die Synchronisierung zu. Diesmal ist die Synchronisierung erfolgreich, und aktualisiert wie erwartet Bobs „UserPrincipalName“ in bob@fabrikam.com.
 
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
@@ -221,6 +221,6 @@ Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder A
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

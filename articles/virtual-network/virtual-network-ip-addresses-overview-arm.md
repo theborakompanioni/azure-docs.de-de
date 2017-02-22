@@ -1,5 +1,5 @@
 ---
-title: IP-Adressen | Microsoft Docs
+title: IP-Adresstypen in Azure | Microsoft-Dokumentation
 description: "Enthält Informationen zu öffentlichen und privaten IP-Adressen in Azure."
 services: virtual-network
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 6e96471c4f61e1ebe15c23f87ac646001d8e30ee
-ms.openlocfilehash: 38dc72d7248584006a478413b5da9a6b230e6b89
+ms.sourcegitcommit: 3de0b167d0ad32de17093caf7e66a6d08f5c1c61
+ms.openlocfilehash: 762b048056752abd24328433ceb57de492dbf884
 
 
 ---
-# <a name="ip-addresses-in-azure"></a>IP-Adressen in Azure
+# <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden.
 
 * **Öffentliche IP-Adressen**: Sie werden für die Kommunikation mit dem Internet verwendet. Hierzu zählen auch öffentliche Azure-Dienste.
@@ -149,6 +149,6 @@ Für öffentliche IP-Adressen wird unter Umständen eine geringe Gebühr berechn
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

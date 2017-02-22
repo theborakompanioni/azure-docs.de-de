@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/25/2016
+ms.date: 01/18/2017
 ms.author: markgal; jimpark; trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fd65e7acc10b3e750025279820bddbdef5de5498
+ms.sourcegitcommit: 152285bee4631acca7610eb5bd9167ec37296a26
+ms.openlocfilehash: d1ec8112b9fc347d9de5901c4b39a3291701da45
 
 
 ---
@@ -26,7 +26,8 @@ In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtu
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 > [!NOTE]
 > 1. Die Sicherung und Wiederherstellung von verschlüsselten VMs wird nur für virtuelle Computer unterstützt, die mit Resource Manager bereitgestellt wurden. Für klassisch bereitgestellte virtuelle Computer ist keine Unterstützung vorhanden. <br>
-> 2. Unterstützung besteht nur für virtuelle Computer, die sowohl per BitLocker-Verschlüsselungsschlüssel als auch per Schlüsselverschlüsselungsschlüssel verschlüsselt wurden. Es ist keine Unterstützung für virtuelle Computer vorhanden, die nur per BitLocker-Verschlüsselungsschlüssel verschlüsselt wurden. <br>
+> 2. Das Feature wird für virtuelle Windows- und Linux-Computer mit Azure Disk Encryption unterstützt, wobei die Datenträger mithilfe des BitLocker-Features von Windows (Branchenstandard) bzw. mithilfe des DM-Crypt-Features von Linux verschlüsselt werden. <br>
+> 3. Unterstützung besteht nur für virtuelle Computer, die sowohl per BitLocker-Verschlüsselungsschlüssel als auch per Schlüsselverschlüsselungsschlüssel verschlüsselt wurden. Es ist keine Unterstützung für virtuelle Computer vorhanden, die nur per BitLocker-Verschlüsselungsschlüssel verschlüsselt wurden. <br>
 > 
 > 
 
@@ -80,7 +81,7 @@ Verwenden Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definier
 Verwenden Sie die Schritte im Artikel zum Thema [Sichern von Azure-VMs im Recovery Services-Tresor](backup-azure-arm-vms.md), um den Sicherungsauftrag auszulösen.
 
 ## <a name="restore-encrypted-vm"></a>Wiederherstellen der verschlüsselten VM
-Die Benutzeroberfläche für die Wiederherstellung von verschlüsselten und nicht verschlüsselten virtuellen Computern ist identisch. Verwenden Sie die Schritte unter [Wiederherstellen virtueller Computer über das Azure-Portal](backup-azure-arm-restore-vms.md), um die verschlüsselte VM wiederherzustellen. Wenn Sie die Schlüssel und Geheimnisse wiederherstellen möchten, müssen Sie sicherstellen, dass der Schlüsseltresor für die Wiederherstellung bereits vorhanden ist.
+Stellen Sie zum Wiederherstellen verschlüsselter virtueller Computer zunächst Datenträger gemäß den Schritten des Abschnitts **Wiederherstellen von gesicherten Datenträgern** (unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)) wieder her. Führen Sie anschließend die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) beschriebenen PowerShell-Schritte aus, um auf der Grundlage der wiederhergestellten Datenträger einen vollständigen virtuellen Computer zu erstellen.
 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Vorgang | Fehlerdetails | Lösung |
@@ -88,10 +89,11 @@ Die Benutzeroberfläche für die Wiederherstellung von verschlüsselten und nich
 | Sicherung |Bei der Überprüfung ist ein Fehler aufgetreten, da der virtuelle Computer nur per BEK verschlüsselt wurde. Sicherungen können nur für virtuelle Computer aktiviert werden, die per BEK und KEK verschlüsselt wurden. |Der virtuelle Computer sollte per BEK und KEK verschlüsselt werden. Anschließend sollte die Sicherung aktiviert werden. |
 | Wiederherstellen |Sie können diese verschlüsselte VM nicht wiederherstellen, da der Schlüsseltresor, der dieser VM zugeordnet ist, nicht vorhanden ist. |Erstellen Sie den Schlüsseltresor anhand der Vorgehensweise unter [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md). Verwenden Sie die Informationen im Artikel zum Thema [Wiederherstellen des Schlüssels und Geheimnisses für den Schlüsseltresor per Azure Backup](backup-azure-restore-key-secret.md), um den Schlüssel und das Geheimnis wiederherzustellen, falls diese Angaben nicht schon vorhanden sind. |
 | Wiederherstellen |Sie können diese verschlüsselte VM nicht wiederherstellen, da der Schlüssel und das Geheimnis für diese VM nicht vorhanden sind. |Verwenden Sie die Informationen im Artikel zum Thema [Wiederherstellen des Schlüssels und Geheimnisses für den Schlüsseltresor per Azure Backup](backup-azure-restore-key-secret.md), um den Schlüssel und das Geheimnis wiederherzustellen, falls diese Angaben nicht schon vorhanden sind. |
+| Wiederherstellen |Der Speicherdienst ist nicht zum Zugreifen auf Ressourcen in Ihrem Abonnement autorisiert. |Stellen Sie wie weiter oben bereits erläutert zunächst Datenträger gemäß den Schritten des Abschnitts **Wiederherstellen von gesicherten Datenträgern** (unter [Auswählen einer Konfiguration für die VM-Wiederherstellung](backup-azure-arm-restore-vms.md#choosing-a-vm-restore-configuration)) wieder her. Verwenden Sie anschließend PowerShell zum [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

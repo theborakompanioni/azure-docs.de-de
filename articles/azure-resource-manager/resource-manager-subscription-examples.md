@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
-ms.openlocfilehash: 95dae0597cf9fc812bb04f070de2175a1ff4f45d
+ms.sourcegitcommit: c75d95ed554a78a02e5469915c21491e65edd8c2
+ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
 
 
 ---
@@ -121,7 +121,7 @@ Um diese Anforderungen zu erfüllen, aktiviert Dave das [Azure Security Center](
 Die Unternehmensführung in der Supply Chain-Unternehmenseinheit hat verschiedene Möglichkeiten identifiziert, um mithilfe einer Kundenkarte die Kundenbindung für Contoso zu verbessern. Das Team von Alice muss diese Anwendung erstellen und beschließt, dass mit Azure die Anforderungen ihres Unternehmens besser erfüllt werden können. Alice arbeitet mit Dave aus der ETS-Abteilung zusammen, um zwei Abonnements zum Entwickeln und Betreiben dieser Anwendung zu konfigurieren.
 
 ### <a name="azure-subscriptions"></a>Azure-Abonnements
-Dave meldet sich beim Azure Enterprise Portal an und stellt fest, dass die Supply Chain-Abteilung bereits vorhanden ist.  Da das Projekt jedoch das erste Entwicklungsprojekt für das Supply Chain-Team in Azure ist, erkennt Dave, dass ein neues Konto für das Entwicklungsteam von Alice eingerichtet werden muss.  Er erstellt das Konto „R&D“ für das Team und gewährt Alice Zugriff. Alice meldet sich über das Kontoportal an und erstellt zwei Abonnements: eines für die Entwicklungsserver und eines für die Produktionsserver.  Sie befolgt beim Erstellen der folgenden Abonnements die zuvor festgelegten Benennungsstandards:
+Dave meldet sich beim Azure Enterprise Portal an und stellt fest, dass die Supply Chain-Abteilung bereits vorhanden ist.  Da das Projekt jedoch das erste Entwicklungsprojekt für das Supply Chain-Team in Azure ist, erkennt Dave, dass ein neues Konto für das Entwicklungsteam von Alice eingerichtet werden muss.  Er erstellt das Konto „R&D“ für das Team und gewährt Alice Zugriff. Alice meldet sich über das Azure-Portal an und erstellt zwei Abonnements: eines für die Entwicklungsserver und eines für die Produktionsserver.  Sie befolgt beim Erstellen der folgenden Abonnements die zuvor festgelegten Benennungsstandards:
 
 | Abonnementnutzung | Name |
 | --- | --- |
@@ -200,6 +200,6 @@ Um diese Anforderungen zu erfüllen, aktiviert Dave das Azure Security Center. E
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

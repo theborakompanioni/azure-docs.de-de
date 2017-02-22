@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: femila
 translationtype: Human Translation
-ms.sourcegitcommit: f5b9a4d83e21dfefc12ea2931702a9dce3f03016
-ms.openlocfilehash: bd4352cd6f8a909d518b0c5527d6c0e63e4bad51
+ms.sourcegitcommit: 7d472733e80ae03294ba1ac9e97d1afd3aa0fa91
+ms.openlocfilehash: c7d8eefe560a361690cc4daf6550b2a8c894f318
 
 
 ---
@@ -120,23 +120,17 @@ Enterprise State Roaming wird nur für Windows 10-Client-SKUs unterstützt, nich
 Falls Ihre Organisation das Roaming unter Windows 10 bereits über das kostenlose, eingeschränkte Azure RMS-Abonnement nutzt, hat der Erwerb eines kostenpflichtigen Azure RMS-Abonnements keinerlei Auswirkungen auf die Funktionen des Roamingfeatures, und Ihr IT-Administrator muss keine Änderungen an der Konfiguration vornehmen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
-* Wenn Sie versuchen, sich mit einer Smartcard oder einer virtuellen Smartcard bei Ihrem Windows-Gerät anzumelden, funktioniert die Synchronisierung der Einstellungen nicht mehr. Dieses Problem wird im Rahmen von zukünftigen Updates für Windows 10 voraussichtlich behoben.
-* Sie benötigen das kumulative Juli-Update für Windows 10 (Build 10586.494 oder höher), damit die Synchronisierung von Internet Explorer-Favoriten funktioniert.
-* Mit Windows Information Protection geschützte Daten werden nicht durch Enterprise State Roaming synchronisiert. Darüber hinaus wird auf Computern, auf denen Windows Information Protection aktiviert ist, keine Designsynchronisierung ausgeführt.
-* In bestimmten Fällen werden Daten von Enterprise State Roaming nicht synchronisiert, wenn die Multi-Factor Authentication (MFA) konfiguriert ist.
-
-  * Wenn Ihr Windows 10-Gerät so konfiguriert ist, dass für die Anmeldung beim Azure Active Directory-Portal die [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) (MFA) erforderlich ist, werden die Einstellungen möglicherweise nicht synchronisiert, wenn Sie sich mit einem Kennwort bei dem Gerät anmelden. Diese Art der MFA-Konfiguration dient dem Schutz eines Azure-Administratorkontos. Administratoren können die Synchronisierung möglicherweise trotzdem durchführen, indem sie sich mit ihrer [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) -PIN bei ihrem Windows 10-Gerät anmelden oder indem sie die Multi-Factor Authentication durchführen, während sie auf andere Azure-Dienste wie Office 365 zugreifen.
-  * Bei der Synchronisierung kann ein Fehler auftreten, wenn der Administrator die Richtlinie für bedingten Zugriff mit Multi-Factor Authentication über die Azure Active Directory-Verbunddienste konfiguriert hat und das Zugriffstoken auf dem Gerät abläuft.  Stellen Sie sicher, dass Sie die [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) -PIN zum An- und Abmelden verwenden, oder führen Sie die Multi-Factor Authentication durch, während Sie auf andere Azure-Dienste wie Office 365 zugreifen.
-* Wenn ein Computer mit automatischer Registrierung bei Azure Active Directory-Geräten in die Domäne eingebunden ist und sich der Computer längere Zeit an einem externen Standort befindet, treten unter Umständen Synchronisierungsfehler auf, und die Domänenauthentifizierung kann nicht ausgeführt werden. Stellen Sie zum Beheben dieses Problems eine Verbindung zwischen dem Computer und einem Unternehmensnetzwerk her, sodass die Synchronisierung fortgesetzt werden kann.
+In der Dokumentation im Abschnitt [Problembehandlung](active-directory-windows-enterprise-state-roaming-troubleshooting.md) finden Sie eine Liste der bekannten Probleme. 
 
 ## <a name="related-topics"></a>Verwandte Themen
 * [Übersicht über Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 * [Aktivieren von Enterprise State Roaming in Azure Active Directory](active-directory-windows-enterprise-state-roaming-enable.md)
 * [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10-Roamingeinstellungen – Referenz](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
+* [Problembehandlung](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

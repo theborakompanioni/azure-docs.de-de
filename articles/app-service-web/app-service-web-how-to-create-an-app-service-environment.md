@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 09/22/2016
 ms.author: ccompy
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1fab186771728114084bbf66f398df684c9e8125
+ms.sourcegitcommit: af98ae3b425e2e0584da53721249dbcd605a17d1
+ms.openlocfilehash: 8d8e1ce7758691a392fdb6d6459e04c6b4f7f5f6
 
 
 ---
@@ -46,7 +46,7 @@ Es gibt zwei Möglichkeiten, auf die Benutzeroberfläche zur Erstellung der App 
 3. Wählen eine neue Ressourcengruppe aus, oder geben Sie eine an.  Die Ressourcengruppe, die für Ihre ASE verwendet wird, muss identisch mit derjenigen sein, die für das VNET verwendet wird.  Wenn Sie ein bereits vorhandenes VNET auswählen, wird die Auswahl der Ressourcengruppe für Ihre ASE entsprechend derjenigen Ihres VNET aktualisiert.
    
     ![][2]
-4. Treffen Sie Ihre Auswahl für „Virtuelles Netzwerk“ und „Speicherort“.  Sie können ein neues VNET erstellen oder ein bereits vorhandenes VNET auswählen.  Wenn Sie ein neues VNET auswählen, können Sie einen Namen und Speicherort angeben. Das neue VNET hat den Adressbereich 192.268.250.0/23 und ein Subnetz namens **default**, das als 192.168.250.0/24 definiert ist.  Sie können auch einfach ein bereits vorhandenes klassisches oder Resource Manager-VNET auswählen.  Die Auswahl des VIP-Adresstyps bestimmt, ob auf Ihre ASE ein direkter Zugriff aus dem Internet möglich ist (extern) oder ob ein interner·Load Balancer (ILB) verwendet wird.  Mehr hierzu erfahren Sie unter [Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE].  Wenn Sie einen VIP-Adresstyp des Typs „Extern“ auswählen, können Sie auswählen, mit wie vielen externen IP-Adressen das System für IPSSL-Zwecke erstellt wird.  Bei Auswahl von „Intern“ müssen Sie die Unterdomäne angeben, die Ihrer ASE verwenden soll.  ASEs können in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden.  Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das VNET vorab erstellen.  Bei Auswahl eines bereits bestehenden VNET müssen Sie während der Erstellung der ASE ein neues Subnetz erstellen.  **Eine vorab erstelltes Subnetz kann nicht im Portal verwendet werden.  Sie können eine ASE mit einem bereits vorhandenen Subnetz erstellen, wenn Sie Ihre ASE mithilfe einer Resource Manager-Vorlage erstellen.**  Zum Erstellen einer App anhand einer Vorlage befolgen Sie die Angaben unter [Erstellen einer App Service-Umgebung aus einer Vorlage][ILBAseTemplate] und [Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen][ASEfromTemplate].
+4. Treffen Sie Ihre Auswahl für „Virtuelles Netzwerk“ und „Speicherort“.  Sie können ein neues VNET erstellen oder ein bereits vorhandenes VNET auswählen.  Wenn Sie ein neues VNET auswählen, können Sie einen Namen und Speicherort angeben. Das neue VNET hat den Adressbereich 192.168.250.0/23 und ein Subnetz namens **default**, das als 192.168.250.0/24 definiert ist.  Sie können auch einfach ein bereits vorhandenes klassisches oder Resource Manager-VNET auswählen.  Die Auswahl des VIP-Adresstyps bestimmt, ob auf Ihre ASE ein direkter Zugriff aus dem Internet möglich ist (extern) oder ob ein interner·Load Balancer (ILB) verwendet wird.  Mehr hierzu erfahren Sie unter [Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE].  Wenn Sie einen VIP-Adresstyp des Typs „Extern“ auswählen, können Sie auswählen, mit wie vielen externen IP-Adressen das System für IPSSL-Zwecke erstellt wird.  Bei Auswahl von „Intern“ müssen Sie die Unterdomäne angeben, die Ihrer ASE verwenden soll.  ASEs können in virtuellen Netzwerken bereitgestellt werden, die *entweder* öffentliche Adressbereiche *oder* RFC1918-Adressräume (d.h. private Adressen) verwenden.  Um ein virtuelles Netzwerk mit einem öffentlichen Adressbereich zu verwenden, müssen Sie das VNET vorab erstellen.  Bei Auswahl eines bereits bestehenden VNET müssen Sie während der Erstellung der ASE ein neues Subnetz erstellen.  **Eine vorab erstelltes Subnetz kann nicht im Portal verwendet werden.  Sie können eine ASE mit einem bereits vorhandenen Subnetz erstellen, wenn Sie Ihre ASE mithilfe einer Resource Manager-Vorlage erstellen.**  Zum Erstellen einer App anhand einer Vorlage befolgen Sie die Angaben unter [Erstellen einer App Service-Umgebung aus einer Vorlage][ILBAseTemplate] und [Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen][ASEfromTemplate].
 
 ### <a name="details"></a>Details
 Eine ASE wird mit zwei Front-Ends und zwei Workern erstellt.  Die Front-Ends agieren als HTTP/HTTPS-Endpunkte und senden Datenverkehr an die Workers, d.h. die Rollen, die Ihre Apps hosten.   Sie können die Menge nach der Erstellung der ASE anpassen und sogar automatische Skalierungsregeln für diese Ressourcenpools einrichten.  Weitere Informationen zur manuellen Skalierung, Verwaltung und Überwachung von App Service-Umgebungen finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig]. 
@@ -70,7 +70,7 @@ Es gibt zusätzliche Abhängigkeiten, die nicht zur Anpassung zur Verfügung ste
 ## <a name="getting-started"></a>Erste Schritte
 Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentation zur App Service-Umgebung](../app-service/app-service-app-service-environments-readme.md)zur Verfügung.
 
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in App Service-Umgebungen][WhatisASE].
+Informationen zu den ersten Schritten mit App Service-Umgebungen finden Sie unter [Einführung in App Service-Umgebungen][WhatisASE].
 
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][AzureAppService].
 
@@ -94,6 +94,6 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

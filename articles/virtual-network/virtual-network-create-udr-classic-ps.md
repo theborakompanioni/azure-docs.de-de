@@ -1,5 +1,5 @@
 ---
-title: "Steuern des Routings und Verwenden virtueller Geräte mithilfe von PowerShell Microsoft Docs"
+title: "Steuern des Routings in einem virtuellen Azure-Netzwerk – PowerShell – klassisch | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie das Routing in VNets mithilfe von PowerShell steuern. | klassisch
 services: virtual-network
 documentationcenter: na
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: ba7a67b8ae57da165f45bd3552a3dfac5f4ef64b
-ms.openlocfilehash: 0bf0f3b64319a42a3b693f64ae705756b10be64e
+ms.sourcegitcommit: 39dafb04f2b155790d58db524a3ff52960891e16
+ms.openlocfilehash: fdce1c32d7c538a29328f0e1f0c847af2e731e17
 
 
 ---
@@ -134,6 +134,6 @@ Führen Sie zum Aktivieren der IP-Weiterleitung auf dem virtuellen Computer „F
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

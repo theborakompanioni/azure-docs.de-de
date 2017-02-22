@@ -1,5 +1,5 @@
 ---
-title: "Szenarien für die Advanced Analytics Process and Technology in Azure Machine Learning | Microsoft Docs"
+title: "Identifizieren erweiterter Analyseszenarien für Azure Machine Learning | Microsoft-Dokumentation"
 description: "Wählen Sie die geeigneten Szenarien für den erweiterten Predictive Analytics-Prozess im Team Data Science-Prozess."
 services: machine-learning
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 97cadfc4e94e425abf2b6b2268fe3478e92ef47f
+ms.sourcegitcommit: 69bb7e5fb0dafa3a9d0f6ad4eb271ab1af2edc50
+ms.openlocfilehash: cfb4b3e629a2c02c360cbba3c151ee1553dc2e7e
 
 
 ---
@@ -95,7 +95,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    * Erstellen Sie eine Datenbank und Zieltabellen.
    * Verwenden Sie eine der Methoden für den Massenimport, um Daten aus lokalen VM-Dateien zu laden.
    
-   Option\# 2: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
+   Option\#&2;: Verwenden von IPython Notebook – für mittlere und größere Datasets nicht empfehlenswert
    
    <!-- -->    
    * Verwenden Sie die ODBC-Verbindungszeichenfolge, um von der VM auf SQL Server zuzugreifen.
@@ -268,6 +268,6 @@ Umfassende exemplarische Vorgehensweisen zu Azure Machine Learning, die die Adva
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

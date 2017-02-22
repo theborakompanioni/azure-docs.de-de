@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: tobiast
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: df275d6ee1aed7e44eb26f999a068b6b56ca918f
+ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
+ms.openlocfilehash: 697a99ec828984d4e6f6e3dc446bc6dc8377cf57
 
 
 ---
@@ -78,7 +78,7 @@ Alternativ hierzu können Sie auch eine DSN-Datei mit dem Assistenten erstellen,
 Glückwunsch! Sie haben mit C++ und ODBC unter Windows jetzt eine Verbindung mit Azure SQL hergestellt. Sie können weiterlesen, um sich auch über die Vorgehensweise für die Linux-Plattform zu informieren. 
 
 ## <a name="a-idlinuxastep-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>Schritt 5: Herstellen einer Verbindung von einer Linux-C/C++-Anwendung
-Falls Sie es noch nicht gehört haben: Mit Visual Studio können Sie jetzt auch C++-Linux-Anwendungen entwickeln. Informationen zu diesem neuen Szenario finden Sie im Blog [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) (Visual C++ für Linux-Entwicklung). Für die Linux-Erstellung benötigen Sie einen Remotecomputer, auf dem Ihre Linux-Distribution ausgeführt wird. Falls Sie keinen Remotecomputer haben, können Sie diesen schnell einrichten, indem Sie die Informationen unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nutzen. 
+Falls Sie es noch nicht gehört haben: Mit Visual Studio können Sie jetzt auch C++-Linux-Anwendungen entwickeln. Informationen zu diesem neuen Szenario finden Sie im Blog [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) (Visual C++ für Linux-Entwicklung). Für die Linux-Erstellung benötigen Sie einen Remotecomputer, auf dem Ihre Linux-Distribution ausgeführt wird. Falls Sie keinen Remotecomputer haben, können Sie diesen schnell einrichten, indem Sie die Informationen unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle&2;.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nutzen. 
 
 Für die Zwecke dieses Tutorials nehmen wir an, dass Sie eine Linux-Distribution vom Typ Ubuntu 16.04 eingerichtet haben. Die hier angegebenen Schritte sollten auch für Ubuntu 15.10, Red Hat 6 und Red Hat 7 gelten. 
 
@@ -129,7 +129,7 @@ Sie finden die GetStarted-Projektmappe mit allen Beispielen dieses Artikels auf 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
-* Weitere Informationen: [ODBC-API-Referenz](https://msdn.microsoft.com/library/ms714562\(v=vs.85\).aspx)
+* Weitere Informationen: [ODBC-API-Referenz](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
@@ -138,6 +138,6 @@ Sie finden die GetStarted-Projektmappe mit allen Beispielen dieses Artikels auf 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

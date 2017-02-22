@@ -1,6 +1,6 @@
 ---
-title: "Schützen Ihrer IoT-Bereitstellung | Microsoft Docs"
-description: "Dieser Artikel enthält Informationen zum Schützen Ihrer IoT-Bereitstellung."
+title: "Schützen Ihrer Azure IoT-Bereitstellung | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Ihre IoT-Bereitstellung schützen. Enthält Richtlinien zum Schützen von Gerätebereitstellungen, Verbindungen und Zugriffen auf den IoT Hub-Dienst."
 services: iot-hub
 documentationcenter: 
 author: YuriDio
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2016
+ms.date: 02/16/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0fe48b3d8d9e2d8f167788cbbca7a9e564dfa51b
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: 12bb5b1b5f5ec860de347c1ea806da29eda3f88f
 
 
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 * [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
@@ -31,6 +31,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

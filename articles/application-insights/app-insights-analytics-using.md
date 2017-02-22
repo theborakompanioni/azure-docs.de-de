@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: f9c02c11c6f0143f8da7a329f23033120f31ba59
+ms.sourcegitcommit: 2389f1d785abc750dd165303f737a883b3f788d0
+ms.openlocfilehash: 6232a80417cf4581f6c6cbe6c11418dc8d0c3407
 
 
 ---
@@ -154,10 +154,10 @@ Wenn Sie sie an ein Dashboard anheften, sieht das folgendermaßen aus:
 ![Diagramm mit begrenzter Anzahl von Containern](./media/app-insights-analytics-using/pin-08.png)
 
 ## <a name="export-to-excel"></a>Exportieren in Excel
-Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterladen. Klicken Sie auf **Nach Excel exportieren**.
+Nachdem Sie eine Abfrage ausgeführt haben, können Sie eine CSV-Datei herunterladen. Klicken Sie auf **Exportieren, Excel**.
 
 ## <a name="export-to-power-bi"></a>Exportieren nach Power BI
-Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Nach Power BI exportieren**.
+Positionieren Sie den Cursor in einer Abfrage, und wählen Sie **Exportieren, Power BI** aus.
 
 ![Exportieren von Analytics nach Power BI](./media/app-insights-analytics-using/240.png)
 
@@ -167,10 +167,22 @@ Mit Power BI können Sie Dashboards erstellen, auf denen Daten aus verschiedenen
 
 [Weitere Informationen zum Exportieren nach Power BI](app-insights-export-power-bi.md)
 
+## <a name="deep-link"></a>Deep-Link
+
+Rufen Sie unter **Exportieren, Link freigeben** einen Link ab, den Sie an einen anderen Benutzer senden können. Sofern der Benutzer [Zugriff auf Ihre Ressourcengruppe](app-insights-resources-roles-access-control.md) hat, öffnet die Abfrage die Benutzeroberfläche von Analytics.
+
+(Im Link beginnt der Text der Abfrage nach „?q =“, und zwar mit gzip komprimiert und Base64-codiert. Sie können Code schreiben, um Deep-Links zu generieren, die Sie Benutzern bereitstellen können. Die empfohlene Vorgehensweise zum Ausführen von Analytics über Code stellt jedoch die [REST-API](https://dev.applicationinsights.io/) dar.)
+
 
 ## <a name="automation"></a>Automation
 
-Sie können Analytics-Abfragen über die [Data Access-REST-API](https://dev.applicationinsights.io/) ausführen, z.B. mithilfe von PowerShell.
+Verwenden Sie die [Data Access-REST-API](https://dev.applicationinsights.io/) zum Ausführen von Analytics-Abfragen. [Beispiel](https://dev.applicationinsights.io/apiexplorer/query?appId=DEMO_APP&apiKey=DEMO_KEY&query=requests%0A%7C%20where%20timestamp%20%3E%3D%20ago%2824h%29%0A%7C%20count) (mit PowerShell):
+
+```PS
+curl "https://api.applicationinsights.io/beta/apps/DEMO_APP/query?query=requests%7C%20where%20timestamp%20%3E%3D%20ago(24h)%7C%20count" -H "x-api-key: DEMO_KEY"
+```
+
+Im Gegensatz zur Benutzeroberfläche von Analytics fügt die REST-API Ihren Abfragen nicht automatisch Zeitstempel-Einschränkungen hinzu. Denken Sie daran, eine eigene Where-Klausel einzufügen, um zu umfangreiche Antworten zu vermeiden.
 
 
 
@@ -217,6 +229,6 @@ Bei Verwendung von [LogStash](https://www.elastic.co/guide/en/logstash/current/g
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

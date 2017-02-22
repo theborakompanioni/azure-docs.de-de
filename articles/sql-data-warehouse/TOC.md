@@ -6,10 +6,7 @@
 
 # Erste Schritte
 
-## Erstellen eines SQL Data Warehouse
-### [Azure-Portal](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
+## [Tutorial für Anfänger](sql-data-warehouse-get-started-tutorial.md)
 ## [bewährten Methoden](sql-data-warehouse-best-practices.md)
 ## [Verwalten](sql-data-warehouse-overview-manage.md)
 ## [Erhalten von Support](sql-data-warehouse-get-started-create-support-ticket.md)
@@ -32,6 +29,11 @@
 ### [SSMS](sql-data-warehouse-query-ssms.md)
 ### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 ### [Installieren von Visual Studio](sql-data-warehouse-install-visual-studio.md)
+
+## Erstellen
+### [Azure-Portal](sql-data-warehouse-get-started-provision.md)
+### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## Entwickeln
 
@@ -78,6 +80,7 @@
 
 ### [Übersicht](sql-data-warehouse-overview-load.md)
 ### [Beispieldaten](sql-data-warehouse-load-sample-databases.md)
+### [Azure Data Lake-Speicher](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [AZCopy](sql-data-warehouse-load-from-sql-server-with-azcopy.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [BCP aus SQL Server](sql-data-warehouse-load-from-sql-server-with-bcp.md)
@@ -145,6 +148,6 @@
 ### [Datenverwaltung](sql-data-warehouse-partner-data-management.md)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

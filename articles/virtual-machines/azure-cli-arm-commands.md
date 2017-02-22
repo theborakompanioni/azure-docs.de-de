@@ -13,18 +13,23 @@ ms.workload: multiple
 ms.tgt_pltfrm: command-line-interface
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2016
+ms.date: 01/03/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 028e09c031037f3c4001eccfb4543122eef2c055
+ms.sourcegitcommit: 9a2ab28a2dc456d5f21242ded1d348f411d3d994
+ms.openlocfilehash: ee42c2e4344fe712084208c25fb5c1a062dba1aa
 
 
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
 Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
 
-Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../xplat-cli-install.md) und [eine Verbindung mit Ihrem Azure-Abonnement herstellen](../xplat-cli-connect.md) (entweder mit einem Geschäfts-, Schul- oder Unikonto oder mit einer Microsoft-Kontoidentität).
+> [!NOTE]
+> In diesem Artikel werden Befehle der Azure-Befehlszeilenschnittstelle (auch Azure CLI 1.0) im Resource Manager-Modus vorgestellt. Um im Resource Manager-Modell zu arbeiten, können Sie auch die [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) ausprobieren, unsere Multi-Plattform-Befehlszeilenschnittstelle der nächsten Generation.
+>Erfahren Sie mehr über die [alte und die neue Azure-Befehlszeilenschnittstelle](/cli/azure/old-and-new-clis).
+>
+
+Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](../xplat-cli-connect.md).
 
 Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Ressourcen-Manager-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
@@ -1861,6 +1866,6 @@ Parameteroptionen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

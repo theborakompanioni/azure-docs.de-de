@@ -8,6 +8,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d601ce76281cac6df6d3184d9c65980b4bf7948a
+ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
+ms.openlocfilehash: 0d95f9f0e0c5b69aed6ba74a2488e46540589c00
 
 
 ---
@@ -72,8 +73,8 @@ Definieren Sie benutzerdefinierte Gruppen von Azure SQL-Datenbanken, und definie
 
 ## <a name="elastic-database-jobs-end-to-end"></a>Umfassender Überblick über Aufträge für die elastische Datenbank
 1. Installieren Sie die Komponenten der **Aufträge für die elastische Datenbank** . Weitere Informationen finden Sie unter [Installieren von elastischen Datenbankaufträgen](sql-database-elastic-jobs-service-installation.md). Wenn die Installation fehlschlägt, lesen Sie die Informationen zum [Deinstallieren](sql-database-elastic-jobs-uninstall.md).
-2. Verwenden Sie die PowerShell-APIs, um auf weitere Funktionen zuzugreifen, beispielsweise zum Erstellen von benutzerdefinierten Datenbanksammlungen, zum Hinzufügen von Zeitplänen und/oder dem Erfassen von Ergebnismengen. Verwenden Sie das Portal für die einfache Installation sowie die Erstellung und Überwachung von Aufträgen, die auf die Ausführung für einen **Pool für elastische Datenbanken**beschränkt sind. 
-3. Erstellen Sie verschlüsselte Anmeldeinformationen für die Auftragsausführung und [fügen Sie den Benutzer (oder die Rolle) jeder Datenbank in der Gruppe hinzu](sql-database-security.md).
+2. Verwenden Sie die PowerShell-APIs, um auf weitere Funktionen zuzugreifen, beispielsweise zum Erstellen von benutzerdefinierten Datenbanksammlungen, zum Hinzufügen von Zeitplänen und/oder dem Erfassen von Ergebnismengen. Verwenden Sie das Portal für die einfache Installation sowie die Erstellung und Überwachung von Aufträgen, die auf die Ausführung für einen **Pool für elastische Datenbanken** beschränkt sind. 
+3. Erstellen Sie verschlüsselte Anmeldeinformationen für die Auftragsausführung und [fügen Sie den Benutzer (oder die Rolle) jeder Datenbank in der Gruppe hinzu](sql-database-security-overview.md).
 4. Erstellen Sie ein idempotentes T-SQL-Skript, das für jede Datenbank in der Gruppe ausgeführt werden kann. 
 5. Führen Sie die im folgenden Artikel erläuterten Schritte aus, um Aufträge mithilfe des Azure-Portals zu erstellen: [Erstellen und Verwalten von Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-create-and-manage.md). 
 6. Alternativ können Sie auch PowerShell-Skripts verwenden: [Erstellen und Verwalten von Aufträgen für die elastische SQL-Datenbank mithilfe von PowerShell (Vorschau)](sql-database-elastic-jobs-powershell.md).
@@ -134,7 +135,7 @@ Es gibt mehrere Typen von Auftragsaufgaben, die die Ausführung von Aufträgen a
    Während der Auftragsausführung kann die PowerShell-API verwendet werden, um den aktuellen Status der Auftragsausführung anzuzeigen. Alle von den PowerShell-APIs zurückgegebenen Uhrzeiten werden in UTC angegeben. Gegebenenfalls kann eine Abbruchanforderung eingeleitet werden, um einen Auftrag zu beenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Installieren Sie die Komponenten](sql-database-elastic-jobs-service-installation.md). Danach [erstellen Sie ein Protokoll für jede Datenbank in der Gruppe der Datenbanken und fügen es hinzu](sql-database-security.md). Weitere Informationen zum Erstellen und Verwalten von Aufträgen finden Sie unter [Erstellen und Verwalten von elastischen Datenbankaufträgen](sql-database-elastic-jobs-create-and-manage.md). Informationen hierzu finden Sie auch unter [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md).
+[Installieren Sie die Komponenten](sql-database-elastic-jobs-service-installation.md). Danach [erstellen Sie ein Protokoll für jede Datenbank in der Gruppe der Datenbanken und fügen es hinzu](sql-database-manage-logins.md). Weitere Informationen zum Erstellen und Verwalten von Aufträgen finden Sie unter [Erstellen und Verwalten von elastischen Datenbankaufträgen](sql-database-elastic-jobs-create-and-manage.md). Informationen hierzu finden Sie auch unter [Erste Schritte mit Aufträgen für die elastische Datenbank](sql-database-elastic-jobs-getting-started.md).
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -146,6 +147,6 @@ Es gibt mehrere Typen von Auftragsaufgaben, die die Ausführung von Aufträgen a
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

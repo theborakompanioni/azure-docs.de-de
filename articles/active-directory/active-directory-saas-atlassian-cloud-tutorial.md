@@ -183,7 +183,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
     a. Kopieren Sie die SP-Identitäts-ID auf dem SAML-Bildschirm, und fügen Sie sie in Azure AD als Wert für **Bezeichner** ein.
 
-    b. Die Anmelde-URL ist die Mandanten-URL von Atlassian Cloud.   
+    b. Die Anmelde-URL ist die Mandanten-URL von Atlassian Cloud.     
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
     
@@ -335,6 +335,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Atlassian Cloud“ klicken, sollte
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

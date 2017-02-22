@@ -6,6 +6,6 @@ Damit Sie die Schritte in diesem Artikel ausführen können, müssen Sie [Azure 
 > Wenn Sie über kein Azure-Konto verfügen, müssen Sie eines erstellen. Sie können sich [hier](../articles/active-directory/sign-up-organization.md)für eine kostenlose Testversion registrieren.
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

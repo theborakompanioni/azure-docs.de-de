@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2016
+ms.date: 01/09/2017
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: 3e3d9daf8a45f87f0d1d666dc1054cd1b530e35f
+ms.sourcegitcommit: 5f62eef58c8a334013b000176f74cc8f7652f688
+ms.openlocfilehash: 312d1f417df612eee46bb078d784576a438ba0ab
 
 
 ---
@@ -178,7 +178,7 @@ Beachten Sie beim Entwerfen eines Schemas für die Datenpartitionierung folgende
 * **Halten Sie die Daten für die am häufigsten verwendeten Datenbankvorgänge nach Möglichkeit in jeder Partition zusammen, um partitionsübergreifende Datenzugriffsvorgänge zu minimieren.** Abfragen über Partitionen hinweg kann mehr Zeit in Anspruch nehmen als Abfragen innerhalb einer einzelnen Partition. Das Optimieren der Partitionen für eine Reihe von Abfragen könnte jedoch andere Sätze von Abfragen beeinträchtigen. Wenn sich partitionsübergreifende Abfragen nicht vermeiden lassen, minimieren Sie die Abfragezeit, indem Sie parallele Abfragen ausführen und die Ergebnisse innerhalb der Anwendung aggregieren. Diese Herangehensweise lässt sich möglicherweise nicht in allen Fällen umsetzen, z. B. wenn ein Ergebnis aus einer bestimmten Abfrage für die nächste Abfrage verwendet werden muss.
 * **Wenn in Abfragen relativ statische Referenzdaten genutzt werden, z.B. Tabellen mit Postleitzahlen oder Produktlisten, sollten Sie erwägen, diese Daten in allen Partitionen zu replizieren, um die Anforderungen für separate Suchvorgänge in den verschiedenen Partitionen zu reduzieren.** Dadurch lässt sich auch die Wahrscheinlichkeit verringern, dass Referenzdaten zu einem „heißen“ Dataset mit umfangreichem Datenverkehr aus dem gesamten System werden. Das Synchronisieren von Änderungen, die an diesen Referenzdaten vorgenommen werden, ist aber mit zusätzlichem Aufwand verbunden.
 * **Minimieren Sie nach Möglichkeit die Anforderungen für referenzielle Integrität über vertikale und funktionale Partitionen hinweg.** In diesen Schemen ist die Anwendung selbst für die Wahrung der referenziellen Integrität über Partitionen hinweg verantwortlich, wenn die Daten aktualisiert und verarbeitet werden. Abfragen, die Daten über mehrere Partitionen hinweg verknüpfen müssen, werden langsamer ausgeführt als Abfragen, die nur Daten in der gleichen Partition verknüpfen, da die Anwendung in der Regel aufeinanderfolgende Abfragen basierend auf einem Schlüssel und dann auf einem Fremdschlüssel durchführen muss. Ziehen Sie stattdessen in Betracht, die relevanten Daten zu replizieren oder zu denormalisieren. Um die Zeit für Abfragen zu minimieren, bei denen partitionsübergreifende Verknüpfungen notwendig sind, führen Sie parallele Abfragen über die Partitionen hinweg aus, und verknüpfen Sie die Daten innerhalb der Anwendung.
-* **Wägen Sie die Auswirkungen ab, die das Partitionierungsschema möglicherweise auf die Datenkonsistenz über die Partitionen hinweg hat.**  Überprüfen Sie, ob eine hohe Konsistenz tatsächlich erforderlich ist. Stattdessen ist eine gängige Vorgehensweise in der Cloud, letztendliche Konsistenz zu implementieren. Die Daten in jeder Partition werden separat aktualisiert, und die Anwendungslogik stellt sicher, dass alle Updates erfolgreich abgeschlossen werden. Die Logik verarbeitet auch alle Inkonsistenzen, die durch Abfragen von Daten während eines letztlich konsistenten Vorgangs entstehen. Weitere Informationen zum Implementieren von letztlicher Konsistenz finden Sie unter [Data Consistency Primer](Grundlagen der Datenkonsistenz).
+* **Wägen Sie die Auswirkungen ab, die das Partitionierungsschema möglicherweise auf die Datenkonsistenz über die Partitionen hinweg hat.** Überprüfen Sie, ob eine hohe Konsistenz tatsächlich erforderlich ist. Stattdessen ist eine gängige Vorgehensweise in der Cloud, letztendliche Konsistenz zu implementieren. Die Daten in jeder Partition werden separat aktualisiert, und die Anwendungslogik stellt sicher, dass alle Updates erfolgreich abgeschlossen werden. Die Logik verarbeitet auch alle Inkonsistenzen, die durch Abfragen von Daten während eines letztlich konsistenten Vorgangs entstehen. Weitere Informationen zum Implementieren von letztlicher Konsistenz finden Sie unter [Data Consistency Primer](Grundlagen der Datenkonsistenz).
 * **Überlegen Sie, wie Abfragen die richtige Partition finden.** Wenn eine Abfrage alle Partitionen durchsuchen muss, um die erforderlichen Daten zu finden, wirkt sich das erheblich auf die Leistung aus, auch wenn mehrere parallele Abfragen ausgeführt werden. Abfragen, die mit vertikalen und funktionalen Partitionierungsstrategien verwendet werden, können natürlich die Partitionen angeben. Allerdings kann bei Verwendung der horizontalen Partitionierung (Sharding) das Auffinden eines Elements schwierig sein, da jeder Shard über das gleiche Schema verfügt. Eine typische Lösung für Sharding ist, eine Zuordnung zu verwalten, die verwendet werden kann, um den Shard-Speicherort für bestimmte Datenelemente zu suchen. Diese Zuordnung kann in der Shardinglogik der Anwendung implementiert sein oder vom Datenspeicher verwaltet werden, wenn transparentes Sharding unterstützt wird.
 * **Bei Verwendung einer horizontalen Partitionierungsstrategie sollten Sie einen regelmäßigen Neuausgleich der Shards erwägen.** So lassen sich die Daten nach Größe und Workload gleichmäßig verteilen, um Hotspots zu minimieren, die Abfrageleistung zu maximieren und physische Speichereinschränkungen zu umgehen. Dies ist jedoch eine komplexe Aufgabe, die häufig ein benutzerdefiniertes Tool oder einen benutzerdefinierten Prozess erfordert.
 * **Die Replikation jeder Partition bietet zusätzlichen Schutz vor Ausfällen.** Wenn ein einzelnes Replikat fehlschlägt, können Abfragen gegen eine Arbeitskopie geleitet werden.
@@ -380,14 +380,7 @@ Dokumente werden in Auflistungen organisiert. In einer Sammlung können Sie verw
 
 Dokumentsammlungen bieten einen natürlichen Mechanismus zum Partitionieren von Daten innerhalb einer Einzeldatenbank. Intern kann eine DocumentDB-Datenbank mehrere Server umspannen und versucht möglicherweise, die Last zu verteilen, indem Sammlungen auf die Server aufgeteilt werden. Der einfachste Weg Sharding zu implementieren, ist für jedes Shard eine Auflistung zu erstellen.
 
-> [!NOTE]
-> Jede DocumentDB-Datenbank weist eine bestimmte *Leistungsebene* auf, mit der der Umfang der Ressourcen festgelegt wird, die von der Datenbank genutzt werden können. Jeder Leistungsstufe ist eine Ratenbegrenzung für *Anforderungseinheiten* (Request Unit, RU) zugeordnet. Die RU-Ratenbegrenzung gibt die Menge der Ressourcen an, die für diese Sammlung reserviert sind und für die ausschließliche Verwendung durch diese Sammlung zur Verfügung stehen. Die Kosten einer Sammlung richten sich nach der Leistungsstufe, die für diese Sammlung gewählt wurde. Je höher die Leistungsstufe (und die RU-Ratenbegrenzung), desto höher die Kosten. Sie können die Leistungsstufe einer Sammlung über das Azure-Portal anpassen. Weitere Informationen finden Sie unter [Leistungsebenen in DocumentDB] auf der Microsoft-Website.
->
->
-
 Alle Datenbanken werden im Kontext eines DocumentDB-Kontos erstellt. Ein einzelnes DocumentDB-Konto kann mehrere Datenbanken enthalten und gibt an, in welcher Region die Datenbanken erstellt werden. Jedes DocumentDB-Konto erzwingt auch seine eigene Zugriffskontrolle. Sie können DocumentDB-Konten verwenden, um Shards (Sammlungen in Datenbanken) geografisch in der Nähe der Benutzer zu platzieren, die darauf zugreifen müssen, und Einschränkungen erzwingen, sodass sich nur diese Benutzer mit ihnen verbinden können.
-
-Jedes DocumentDB-Konto verfügt über ein Kontingent, das die Anzahl von Datenbanken und Sammlungen, die es enthalten kann, sowie die Menge des verfügbaren Dokumentspeicherplatzes begrenzt. Die Einschränkungen unterliegen Veränderungen, aber werden unter [DocumentDB-Einschränkungen und Kontingente] auf der Microsoft-Website beschrieben. Theoretisch ist es möglich, dass bei der Implementierung eines Systems, in dem alle Shards zur gleichen Datenbank gehören, die Speicherkapazitätsgrenze des Kontos erreicht wird.
 
 In diesem Fall müssen Sie möglicherweise zusätzliche DocumentDB-Konten und -Datenbanken einrichten und die Shards auf diese Datenbanken verteilen. Auch wenn es unwahrscheinlich ist, dass die maximale Speicherkapazität einer Datenbank erreicht wird, empfiehlt es sich, mehrere Datenbanken zu verwenden. Da jede Datenbank über einen eigenen Satz an Benutzern und Berechtigungen verfügt, können Sie diesen Mechanismus verwenden, um den Zugriff auf Sammlungen basierend auf der Datenbank zu steuern.
 
@@ -405,12 +398,10 @@ Es ist Aufgabe der Clientanwendung, Anforderungen an den geeigneten Shard zu lei
 
 Berücksichtigen Sie folgende Punkte bei der Entscheidung, wie Daten mit einer DocumentDB-Datenbank partitioniert werden sollen:
 
-* **Die für eine DocumentDB-Datenbank verfügbaren Ressourcen unterliegen den Kontingentgrenzen für das DocumentDB-Konto**. Jede Datenbank kann eine Reihe von Sammlungen enthalten (mit erneuter Beschränkung) und jeder Sammlung ist eine Leistungsebene zugeordnet, die die RU-Ratenbegrenzung (reservierter Durchsatz) für diese Sammlung regelt. Weitere Informationen finden Sie auf der Microsoft-Website im Artikel [DocumentDB-Einschränkungen und Kontingente] .
 * **Jedes Dokument muss über ein Attribut verfügen, das verwendet werden kann, um das Dokument in der Sammlung, in der es enthalten ist, eindeutig zu identifizieren**. Dieses Attribut unterscheidet sich vom Shardschlüssel, der die Sammlung definiert, in der das Dokument enthalten ist. Eine Sammlung kann eine große Anzahl von Dokumenten enthalten. Theoretisch besteht die einzige Einschränkung in der maximalen Länge der Dokument-ID. Die Dokument-ID kann bis zu 255 Zeichen lang sein.
 * **Alle Vorgänge für ein Dokument werden im Kontext einer Transaktion ausgeführt. Transaktionen in DocumentDB-Datenbanken sind auf die Sammlung begrenzt, in der das Dokument enthalten ist.** Wenn ein Vorgang fehlschlägt, wird die Arbeit, die durch ihn ausgeführt wurde, zurückgesetzt. Während ein Vorgang für ein Dokument ausgeführt wird, unterliegen alle vorgenommenen Änderungen einer Isolierung auf Snapshotebene. Wenn z. B. eine Anforderung zum Erstellen eines neuen Dokuments fehlschlägt, stellt dieser Mechanismus sicher, dass einem anderen Benutzer, der die Datenbank gleichzeitig abfragt, kein Teildokument angezeigt wird, das dann entfernt wird.
 * **DocumentDB-Datenbankabfragen sind auch auf die Sammlungsebene begrenzt**. Eine einzelne Abfrage kann nur Daten aus einer Sammlung abrufen. Wenn Sie Daten aus mehreren Sammlungen abrufen müssen, müssen Sie jede Sammlung einzeln abfragen und die Ergebnisse in Ihrem Anwendungscode zusammenführen.
 * **DocumentDB-Datenbanken unterstützen programmierbare Elemente, die alle zusammen mit Dokumenten in einer Sammlung gespeichert werden können**. Hierzu gehören gespeicherte Prozeduren, benutzerdefinierte Funktionen und Trigger (geschrieben in JavaScript). Diese Elemente können auf alle Dokumente in der gleichen Auflistung zugreifen. Außerdem werden diese Elemente entweder im Rahmen der Ambient-Transaktion ausgeführt (im Fall eines Triggers, der als Ergebnis eines für ein Dokument ausgeführten Erstellungs-, Lösch- oder Ersetzungsvorgangs ausgelöst wird) oder durch Starten einer neuen Transaktion (im Fall einer gespeicherten Prozedur, die als Ergebnis einer expliziten Clientanforderung ausgeführt wird). Wenn der Code in einem programmierbaren Element eine Ausnahme auslöst, wird für die Transaktion ein Rollback ausgeführt. Sie können gespeicherte Prozeduren und Trigger verwenden, um die Integrität und Konsistenz zwischen den Dokumenten zu verwalten, aber diese Dokumente müssen alle derselben Auflistung angehören.
-* **Die Sammlungen, die Sie in den Datenbanken in einem DocumentDB-Konto speichern möchten, sollten die von den Leistungsstufen der Sammlungen definierten Durchsatzgrenzen nicht überschreiten**. Diese Grenzwerte werden auf der Microsoft-Website im Artikel [Speicherung und vorhersagbare Leistungsbereitstellung in DocumentDB] beschrieben. Wenn Sie davon ausgehen, diese Grenzwerte zu erreichen, sollten Sie in Betracht ziehen, die Auflistungen auf Datenbanken in verschiedenen DocumentDB-Konten zu verteilen, um die Last pro Auflistung zu verringern.
 
 ## <a name="partitioning-strategies-for-azure-search"></a>Partitionierungsstrategien für Azure Search
 Die Fähigkeit, nach Daten zu suchen, ist häufig die primäre Navigations- und Untersuchungsmethode, die von vielen Webanwendungen bereitgestellt wird. Damit können Benutzer Ressourcen anhand einer Kombination verschiedener Suchkriterien schnell finden (beispielsweise Produkte in einer E-Commerce-Anwendung). Azure Search bietet Volltext-Suchfunktionen über Web-Inhalte und umfasst Funktionen wie z. B. Type-ahead, vorgeschlagene Abfragen basierend auf Übereinstimmungen und Facettennavigation. Eine vollständige Beschreibung dieser Funktionen finden Sie auf der Microsoft-Website im Artikel [Was ist Azure Search?].
@@ -547,7 +538,6 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 * Im Artikel [Ausführen von Entitätsgruppentransaktionen] auf der Microsoft-Website erhalten Sie detaillierte Informationen zur Implementierung der Transaktionsvorgänge für Entitäten, die im Azure-Tabellenspeicher gespeichert sind.
 * Im Artikel [Azure-Speichertabellen – Entwurfshandbuch] auf der Microsoft-Website finden Sie ausführliche Informationen zum Partitionieren von Daten im Azure-Tabellenspeicher.
 * Im Artikel [Verwenden von Azure CDN] auf der Microsoft Website wird beschrieben, wie Daten in Azure-Blobspeichern mithilfe von Azure Content Delivery Network (CDN) repliziert werden können.
-* Der Artikel [Speicherung und vorhersagbare Leistungsbereitstellung in DocumentDB] auf der Microsoft-Website enthält Informationen dazu, wie Azure-DocumentDB-Datenbanken Ressourcen zuordnen.
 * Im Artikel [Was ist Azure Search?] auf der Microsoft-Website finden Sie eine vollständige Beschreibung der Funktionen von Azure Search.
 * Im Artikel [Grenzwerte für den Azure Search-Dienst] auf der Microsoft-Website finden Sie Informationen zur Kapazität der einzelnen Instanzen von Azure Search.
 * Im Artikel [Unterstützte Datentypen (Azure Search)] auf der Microsoft-Website sind die Datentypen zusammengefasst, die Sie in durchsuchbaren Dokumenten und Indizes verwenden können.
@@ -564,15 +554,13 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 [Data Consistency Primer]: http://aka.ms/Data-Consistency-Primer
 [Data Partitioning Guidance]: https://msdn.microsoft.com/library/dn589795.aspx
 [Data Types]: http://redis.io/topics/data-types
-[DocumentDB-Einschränkungen und Kontingente]: documentdb/documentdb-limits.md
 [Übersicht über Features für elastische Datenbanken]: sql-database/sql-database-elastic-scale-introduction.md
-[Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1 (Hilfsprogramm zum Migrieren von Verbunden)
+[Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [Index Table Pattern]: http://aka.ms/Index-Table-Pattern
-[Speicherung und vorhersagbare Leistungsbereitstellung in DocumentDB]: documentdb/documentdb-manage.md
 [Materialized View Pattern]: http://aka.ms/Materialized-View-Pattern
 [Abfragen von mehreren Shards]: sql-database/sql-database-elastic-scale-multishard-querying.md
 [Partitioning: how to split data among multiple Redis instances]: http://redis.io/topics/partitioning
-[Leistungsebenen in DocumentDB]: documentdb/documentdb-performance-levels.md
+[Performance levels in DocumentDB]: documentdb/documentdb-performance-levels.md
 [Performing Entity Group Transactions]: https://msdn.microsoft.com/library/azure/dd894038.aspx
 [Redis-Cluster-Lernprogramm]: http://redis.io/topics/cluster-tutorial
 [Running Redis on a CentOS Linux VM in Azure]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
@@ -588,6 +576,6 @@ Wenn Sie Strategien zum Implementieren der Datenkonsistenz in Betracht ziehen, k
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

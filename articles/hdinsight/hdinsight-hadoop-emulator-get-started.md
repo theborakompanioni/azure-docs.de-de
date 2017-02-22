@@ -14,42 +14,50 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2016
+ms.date: 01/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 74d50642911d59d13bed27324c3fca1867f2fa2d
+ms.sourcegitcommit: 1618ed7971ffef0eae55b73b4bdd04f3f14195ba
+ms.openlocfilehash: a070df78bf95173aa48da60d24d14d08d9be8d9a
 
 
 ---
 # <a name="get-started-in-the-hadoop-ecosystem-with-a-hadoop-sandbox-on-a-virtual-machine"></a>Erste Schritte im Hadoop-Ökosystem mit einer Hadoop-Sandbox auf einem virtuellen Computer
-Hier erfahren Sie, wie Sie die Hadoop-Sandbox von Hortonworks auf einem virtuellen Computer installieren, um sich mit dem Hadoop-Ökosystem vertraut zu machen. Die Sandbox bietet eine lokale Entwicklungsumgebung, in der Sie Hadoop, Hadoop Distributed File System (HDFS) und die Übermittlung von Aufträgen kennenlernen.
+
+Hier erfahren Sie, wie Sie die Hadoop-Sandbox von Hortonworks auf einem virtuellen Computer installieren, um sich mit dem Hadoop-Ökosystem vertraut zu machen. Die Sandbox bietet eine lokale Entwicklungsumgebung, in der Sie Hadoop, Hadoop Distributed File System (HDFS) und die Übermittlung von Aufträgen kennenlernen. Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Oracle VirtualBox](https://www.virtualbox.org/)
+* [Oracle VirtualBox](https://www.virtualbox.org/). Sie können die Software [hier](https://www.virtualbox.org/wiki/Downloads) herunterladen und installieren.
 
-Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+
 
 ## <a name="download-and-install-the-virtual-machine"></a>Herunterladen und Installieren des virtuellen Computers
-1. Wählen Sie unter [http://hortonworks.com/downloads/#sandbox](http://hortonworks.com/downloads/#sandbox) für „HDP 2.4 on Hortonworks Sandbox“ die Option **DOWNLOAD FOR VIRTUALBOX** (FÜR VIRTUALBOX HERUNTERLADEN) aus. Vor Beginn des Downloads werden Sie aufgefordert, sich bei Hortonworks zu registrieren.
+1. Navigieren Sie zur [Downloadseite von Hortonworks](http://hortonworks.com/downloads/#sandbox).
+2. Klicken Sie auf **DOWNLOAD FOR VIRTUALBOX** (Für VIRTUALBOX zum herunterladen), um die neueste Hortonworks Sandbox auf einen virtuellen Computer herunterzuladen. Vor Beginn des Downloads werden Sie aufgefordert, sich bei Hortonworks zu registrieren. Das Herunterladen dauert je nach Geschwindigkeit des Netzwerks ein bis zwei Stunden.
    
     ![Abbildung des Links zum Herunterladen von Hortonworks Sandbox für VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
-2. Wählen Sie auf der gleichen Webseite für „HDP 2.4 on Hortonworks Sandbox“ die Option **VirtualBox Install Guide** (VirtualBox-Installationshandbuch) aus. Dadurch wird eine PDF-Datei mit Installationsanweisungen für den virtuellen Computer heruntergeladen.
-   
-    ![Anzeigen des Installationshandbuchs](./media/hdinsight-hadoop-emulator-get-started/view-install-guide.png)
+3. Klicken Sie auf der gleichen Webseite auf den Link **Import on Virtual Box** (In VirtualBox importieren), um eine PDF-Datei mit Installationsanweisungen für den virtuellen Computer herunterzuladen.
+
+Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzuladen:
+
+![Hortonworks Sandbox archive (Hortonworks Sandbox-Archiv)](./media/hdinsight-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
+
 
 ## <a name="start-the-virtual-machine"></a>Starten des virtuellen Computers
-1. Starten Sie VirtualBox. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus.
+
+1. Öffnen Sie Oracle VirtualBox.
+2. Klicken Sie im Menü **File** (Datei) auf **Import Appliance** (Appliance importieren), und geben Sie dann das Bild Hortonworks Sandbox-Image an.
+1. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt.
    
     ![Normaler Start](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
-2. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel „http://127.0.0.1:8888“).
+2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel „http://127.0.0.1:8888“).
 
-## <a name="set-passwords"></a>Festlegen von Kennwörtern
+## <a name="set-sandbox-passwords"></a>Festlegen der Sandbox-Kennwörter
+
 1. Wählen Sie im Schritt **Get Started** (Erste Schritte) der Seite „Hortonworks Sandbox“ die Option **View Advanced Options** (Erweiterte Optionen anzeigen) aus. Verwenden Sie die Informationen auf dieser Seite, um sich mittels SSH bei der Sandbox anzumelden. Verwenden Sie den angegebenen Namen und das angegebene Kennwort.
    
    > [!NOTE]
    > Sollte kein SSH-Client installiert sein, können Sie die webbasierte SSH verwenden, die vom virtuellen Computer unter **http://localhost:4200/** bereitgestellt wird.
-   > 
    > 
    
     Beim erstmaligen Herstellen einer Verbindung über SSH werden Sie aufgefordert, das Kennwort für das Stammkonto zu ändern. Geben Sie ein neues Kennwort ein. Dieses Kennwort wird dann bei zukünftigen SSH-Anmeldungen verwendet.
@@ -59,7 +67,8 @@ Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure 
    
     Geben Sie ein Kennwort für das Ambari-Administratorkonto ein, wenn Sie dazu aufgefordert werden. Dieses wird verwendet, wenn Sie auf die Ambari-Webbenutzeroberfläche zugreifen.
 
-## <a name="use-the-hive-command"></a>Verwenden des Hive-Befehls
+## <a name="use-hive-commands"></a>Verwenden von Hive-Befehlen
+
 1. Verwenden Sie bei einer SSH-Verbindung mit der Sandbox den folgenden Befehl, um die Hive-Shell zu starten:
    
         hive
@@ -78,6 +87,6 @@ Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

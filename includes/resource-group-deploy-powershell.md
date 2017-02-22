@@ -1,4 +1,4 @@
-## Bereitstellen mit PowerShell
+## <a name="how-to-deploy-with-powershell"></a>Bereitstellen mit PowerShell
 1. Melden Sie sich bei Ihrem Azure-Konto an.
    
           Add-AzureAccount
@@ -31,7 +31,7 @@
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 5. Führen Sie zum Erstellen einer neuen Bereitstellung für die Ressourcengruppe den Befehl **New-AzureResourceGroupDeployment** aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten den Namen der Bereitstellung, den Namen der Ressourcengruppe, den Pfad oder die URL der erstellten Vorlage und alle anderen für Ihr Szenario erforderlichen Parameter. 
    
-   Sie haben die folgenden Möglichkeiten zum Angeben der Parameterwerte:
+   Sie haben die folgenden Möglichkeiten zum Angeben der Parameterwerte: 
    
    * Verwenden Sie Inlineparameter.
      
@@ -59,4 +59,8 @@
    
         Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Jan17_HO3-->
+
+

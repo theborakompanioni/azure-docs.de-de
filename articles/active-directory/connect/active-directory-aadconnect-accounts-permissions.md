@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b2baa9ea093a36cadb2251bbd1f4390552d8ec0e
+ms.sourcegitcommit: 68e475891a91e4ae45a467cbda2b7b51c8020dbd
+ms.openlocfilehash: e5f643d444fb2bf00aa91083f5d09962372e0dbb
 
 
 ---
@@ -29,11 +29,13 @@ Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
 ## <a name="related-documentation"></a>verwandten Dokumentation
 Wenn Sie die Dokumentation zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory-aadconnect.md) nicht gelesen haben, finden Sie in der folgenden Tabelle Links zu verwandten Themen:
 
-| Thema |
+|Thema |Link|  
 | --- | --- |
-| Installieren mit den Express-Einstellungen |
-| Installieren mit benutzerdefinierten Einstellungen |
-| Upgrade von DirSync |
+|Azure AD Connect herunterladen | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](./active-directory-aadconnect-get-started-express.md)|
+|Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](./active-directory-aadconnect-get-started-custom.md)|
+|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+|Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen ](active-directory-aadconnect-whats-next.md)|
 
 ## <a name="express-settings-installation"></a>Installation mit Express-Einstellungen
 In den Express-Einstellungen fordert der Installations-Assistent Sie zur Angabe von Anmeldeinformationen eines AD DS-Unternehmensadministrators auf, damit Ihr lokales Active Directory-System mit den erforderlichen Berechtigungen für Azure AD Connect konfiguriert werden kann. Bei einem Upgrade von DirSync werden die Anmeldeinformationen des AD DS-Unternehmensadministrators verwendet, um das Kennwort für das von DirSync verwendete Konto zurückzusetzen. Sie müssen außerdem über die Anmeldeinformationen eines globalen Azure AD-Administrators verfügen.
@@ -45,7 +47,7 @@ In den Express-Einstellungen fordert der Installations-Assistent Sie zur Angabe 
 | Herstellen einer Verbindung mit AD DS |Lokale Active Directory-Anmeldeinformationen |Mitglied der  Gruppe „Unternehmensadministratoren“ in Active Directory |<li>Erstellt ein [Konto](#active-directory-account) in Active Directory und gewährt Zugriff darauf. Dieses erstellte Konto dient zum Lesen und Schreiben von Verzeichnisinformationen während der Synchronisierung.</li> |
 
 ### <a name="enterprise-admin-credentials"></a>Enterprise-Administratoranmeldeinfos
-Diese Anmeldeinformationen werden während der Installation und nach Abschluss der Installation verwendet. Es handelt sich um Enterprise-Administratoren und nicht um Domänenadministratoren, um sicherzustellen, dass die Berechtigungen in Active Directory in allen Domänen festgelegt werden können.
+Diese Anmeldeinformationen werden während der Installation verwendet, nach Abschluss der Installation jedoch nicht mehr. Enterprise-Administratoren und nicht Domänenadministratoren sollten sicherstellen, dass die Berechtigungen in Active Directory in allen Domänen festgelegt werden können.
 
 ### <a name="global-admin-credentials"></a>Globale Administratoranmeldeinfos
 Diese Anmeldeinformationen werden während der Installation verwendet, nach Abschluss der Installation jedoch nicht mehr. Sie dienen zum Erstellen des [Azure AD-Kontos](#azure-ad-service-account) zum Synchronisieren der Änderungen mit Azure AD. Das Konto aktiviert auch die Synchronisierung als Feature in Azure AD.
@@ -55,7 +57,7 @@ Das [Konto](#active-directory-account) , das für Lese- und Schreibvorgänge in 
 
 | Berechtigung | Verwendung |
 | --- | --- |
-| <li>Verzeichnisänderungen replizieren</li><li> Verzeichnisänderungen replizieren: Alle |Kennwortsynchronisierung |
+| <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennwortsynchronisierung |
 | Alle Eigenschaften lesen/schreiben: Benutzer |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: iNetOrgPerson |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: Gruppe |Importieren und Exchange-Hybridbereitstellung |
@@ -83,10 +85,10 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 
 | Feature | Berechtigungen |
 | --- | --- |
-| Kennwortsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li> Verzeichnisänderungen replizieren: Alle |
-| Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
+| Kennwortsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
+| Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Rückschreiben von Kennwörtern |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions) für Benutzer dokumentiert sind |
-| Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](../active-directory-aadconnect-feature-device-writeback.md)beschrieben |
+| Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](active-directory-aadconnect-feature-device-writeback.md)beschrieben |
 | Gruppenrückschreiben |Lesen, Erstellen, Aktualisieren und Löschen von Gruppenobjekten in der Organisationseinheit, in der sich die Verteilergruppen befinden sollen. |
 
 ## <a name="upgrade"></a>Upgrade
@@ -134,6 +136,6 @@ Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Dire
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

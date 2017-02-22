@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 18234ad720d4e85b50d1871dacf243c65f45be33
+ms.sourcegitcommit: 27df1166a23e3ed89fdc86f861353c80a4a467ad
+ms.openlocfilehash: 2428c707ddeed281fddd1e57bc5574603f0b9b1c
 
 
 ---
 # <a name="network-resource-provider"></a>Anbieter von Netzwerkressourcen
-Ein zentrales Bedürfnis für den heutigen Geschäftserfolg ist die Fähigkeit, großmaßstäbliche netzwerksensible Anwendungen auf agile, flexible und wiederholbare Weise aufzubauen und zu verwalten. Mit Azure Resource Manager (ARM) können Sie solche Anwendungen als eine einzelne Ressourcensammlung in Ressourcengruppen erstellen. Solche Ressourcen werden durch mehrere Ressourcenanbieter unter ARM verwaltet.
+Ein zentrales Bedürfnis für den heutigen Geschäftserfolg ist die Fähigkeit, großmaßstäbliche netzwerksensible Anwendungen auf agile, flexible und wiederholbare Weise aufzubauen und zu verwalten. Mit Azure Resource Manager können Sie solche Anwendungen als eine einzelne Ressourcensammlung in Ressourcengruppen erstellen. Solche Ressourcen werden durch mehrere Ressourcenanbieter im Resource Manager verwaltet.
 
 Azure Resource Manager stützt sich auf verschiedene Ressourcenanbieter, um den Zugriff auf Ressourcen zu ermöglichen. Es gibt drei Hauptressourcenanbieter: Netzwerk, Speicher und Compute. In diesem Dokument werden Merkmale und Vorteile des Netzwerkressourcenanbieters wie die Folgenden beschrieben:
 
@@ -40,7 +40,7 @@ Azure Resource Manager stützt sich auf verschiedene Ressourcenanbieter, um den 
   * Java-SDK
   * Azure-Befehlszeilenschnittstelle
   * Vorschauportal
-  * ARM-Vorlagensprache
+  * Resource Manager-Vorlagensprache
 
 ## <a name="network-resources"></a>Netzwerkressourcen
 Die Verwaltung von Netzwerkressourcen kann nun unabhängig voneinander erfolgen, anstatt sie alle durch eine einzelne Computerressource (virtueller Computer) zu verwalten. Das stellt ein höheres Maß an Flexibilität und Agilität beim Verfassen einer komplexen und großmaßstäblichen Infrastruktur in einer Ressourcengruppe sicher.
@@ -103,8 +103,8 @@ Die folgenden HTTP-Methoden werden bei Aufrufen der REST API unterstützt:
 
 Sowohl die Anforderung als auch die Antwort entsprechen einem JSON-Nutzlast-Format. Weitere Informationen finden Sie unter [Azure Resource Management APIs](https://msdn.microsoft.com/library/azure/dn948464.aspx).
 
-### <a name="arm-template-language"></a>ARM-Vorlagensprache
-Neben dem unerlässlichen Verwalten von Ressourcen (über APIs oder SDK) können Sie auch einen deklarativen Programmierstil verwenden, um Netzwerkressourcen mithilfe der ARM-Vorlagensprache zu erstellen und zu verwalten.
+### <a name="resource-manager-template-language"></a>Resource Manager-Vorlagensprache
+Neben dem unerlässlichen Verwalten von Ressourcen (über APIs oder SDK) können Sie auch einen deklarativen Programmierstil verwenden, um Netzwerkressourcen mithilfe der Resource Manager-Vorlagensprache zu erstellen und zu verwalten.
 
 Nachstehend finden Sie eine Beispieldarstellung einer Vorlage –
 
@@ -234,13 +234,13 @@ Bei Verwendung einer Vorlage besteht die Option, die Parameterwerte manuell bere
 
 Die Hauptvorteile des Verwenden von Vorlagen sind:
 
-* Sie können in einem deklarativen Stil eine komplexe Infrastruktur in einer Ressourcengruppe erstellen. Die Orchestrierung der Ressourcenerstellung, einschließlich der Verwaltung von Abhängigkeiten, wird von ARM bearbeitet.
+* Sie können in einem deklarativen Stil eine komplexe Infrastruktur in einer Ressourcengruppe erstellen. Die Orchestrierung der Ressourcenerstellung, einschließlich der Verwaltung von Abhängigkeiten, wird von Resource Manager bearbeitet.
 * Die Infrastruktur kann auf wiederholbare Weise regionsübergreifend oder innerhalb einer Region erstellt werden, indem einfach die Parameter geändert werden.
 * Der deklarative Stil führt zu einer kürzeren Durchlaufzeit beim Erstellen der Vorlagen und Einführen der Infrastruktur.
 
 Beispielvorlagen finden Sie unter [Azure Schnellstart-Vorlagen](https://github.com/Azure/azure-quickstart-templates).
 
-Weitere Informationen zur ARM-Vorlagensprache finden Sie unter [Azure Resource Manager-Vorlagensprache](../resource-group-authoring-templates.md).
+Weitere Informationen zur Resource Manager-Vorlagensprache finden Sie unter [Azure Resource Manager-Vorlagensprache](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Die oben abgebildete Vorlage nutzt das virtuelle Netzwerk und Subnetzressourcen. Wie unten aufgeführt, gibt es weitere Netzwerkressourcen, die Sie nutzen können:
 
@@ -258,17 +258,17 @@ Sie können Dienste in Azure über eine Vorlage bereitstellen, indem Sie PowerSh
 ![Bereitstellung von Beispielvorlagen](./media/resource-groups-networking/Figure6.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure Resource Manager-Vorlagensprache](../resource-group-authoring-templates.md)
+[Azure Resource Manager-Vorlagensprache](../azure-resource-manager/resource-group-authoring-templates.md)
 
 [Azure-Netzwerk – Häufig verwendete Vorlagen](https://github.com/Azure/azure-quickstart-templates)
 
-[Azure Resource Manager vs. classic deployment (Azure Resource Manager vs. klassische Bereitstellung)](../resource-manager-deployment-model.md)
+[Azure Resource Manager vs. classic deployment (Azure Resource Manager vs. klassische Bereitstellung)](../azure-resource-manager/resource-manager-deployment-model.md)
 
 [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO4-->
 
 

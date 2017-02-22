@@ -1,5 +1,5 @@
 ---
-title: Generalisieren einer Windows-VHD | Microsoft Docs
+title: "Generalisieren eines virtuellen Windows-Computers für die Verwendung in Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie Sysprep verwenden, um eine Windows-VM zu verallgemeinern, um sie mit dem Resource Manager-Bereitstellungsmodell zu verwenden.
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 9e9d973ef36cde4f0a1ada2ba7bf7d01a8d8f687
+ms.sourcegitcommit: c70793c707252582d4ba77ac8b04c39521b245f8
+ms.openlocfilehash: a9b2cf638f52a6b7c371e443d9b5a104a57f910c
 
 
 ---
@@ -47,6 +47,6 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

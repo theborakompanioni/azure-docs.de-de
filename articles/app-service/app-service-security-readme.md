@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/16/2015
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4c9f70e87b6020afbb7411ff20f4fc5e2459fa0b
+ms.sourcegitcommit: 115505a2819a3e4c65353ac53676004ed288ce39
+ms.openlocfilehash: 7d26d52ad04bd4158a1450ae0f49fc7c1f8a04e8
 
 
 ---
@@ -25,11 +25,11 @@ Azure App Services erfüllt die wichtigsten Industriestandards für Sicherheit u
 
 [!INCLUDE [app-service-blueprint-security](../../includes/app-service-blueprint-security.md)]
 
-Azure App Service nutzt die gleiche Antischadsoftwarelösung, die auch von Azure Cloud Services und Virtual Machines verwendet wird. Weitere Informationen dazu finden Sie in der [Dokumentation zu Antischadsoftware](../security/azure-security-antimalware.md) 
+Azure App Service nutzt die gleiche Antischadsoftwarelösung, die auch von Azure Cloud Services und Virtual Machines verwendet wird. Weitere Informationen dazu finden Sie in der [Dokumentation zu Antischadsoftware](../security/azure-security-antimalware.md). 
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

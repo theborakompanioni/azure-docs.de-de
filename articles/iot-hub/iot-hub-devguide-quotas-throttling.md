@@ -1,6 +1,6 @@
 ---
-title: 'Entwicklungsleitfaden: Kontingente und Drosselung | Microsoft-Dokumentation'
-description: "Azure IoT Hub-Entwicklerhandbuch: Beschreibung der für IoT Hub geltenden Kontingente und des erwarteten Drosselungsverhaltens"
+title: Informationen zu Kontingenten und Drosselung bei Azure IoT Hub | Microsoft Docs
+description: "Entwicklerhandbuch: Beschreibung der für IoT Hub geltenden Kontingente und des erwarteten Drosselungsverhaltens"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,15 +12,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: c18a1b16cb561edabd69f17ecebedf686732ac34
-ms.openlocfilehash: c0f8c779d7f9552dc05ac3791b74c3d57cb1fe64
+ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
+ms.openlocfilehash: ebfafd5ee9049b5049070ad111c95746b89e755f
 
 
 ---
-# <a name="reference---quotas-and-throttling"></a>Referenz: Kontingente und Drosselung
+# <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
+
 ## <a name="quotas-and-throttling"></a>Kontingente und Drosselung
 Jedes Azure-Abonnement kann maximal zehn IoT-Hubs und höchstens einen Hub vom Typ „Free“ enthalten.
 
@@ -39,17 +40,17 @@ Die nachfolgende Liste zeigt alle erzwungenen Werte für die Drosselung. Die Wer
 | Geräteverbindungen | Max. 100/Sekunde oder 12/Sekunde/Einheit <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6.000/Sekunde/Einheit |
 | Senden von Nachrichten von Geräten an die Cloud | Max. 100/Sekunde oder 12/Sekunde/Einheit <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24 Sekunden. Es sind jedoch mindestens 100 Sekunden auf die Einheiten verteilt vorhanden. Mit neun S1-Einheiten erhalten Sie 108 Sekunden (9\*12) über alle Einheiten. | 120/Sekunde/Einheit | 6.000/Sekunde/Einheit |
 | C2D-Sendevorgänge | 100/Minute/Einheit | 100/Minute/Einheit | 5.000/Minute/Einheit |
-| C2D-Empfangsvorgänge <br/> (nur bei Verwendung von HTTP durch die Geräte)| 1000/Minuten/Einheit | 1000/Minuten/Einheit| 5.0000/Minute/Einheit |
+| C2D-Empfangsvorgänge <br/> (nur bei Verwendung von HTTP durch das Gerät)| 1000/Minuten/Einheit | 1000/Minuten/Einheit| 5.0000/Minute/Einheit |
 | Dateiupload | 100 Dateiuploadbenachrichtigungen/Minute/Einheit | 100 Dateiuploadbenachrichtigungen/Minute/Einheit | 5.000 Dateiuploadbenachrichtigungen/Minute/Einheit |
 | Direkte Methoden | 10/Sekunde/Einheit | 30/Sekunde/Einheit | 1.500/Sekunde/Einheit | 
-| Zwillingslesevorgänge | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
-| Zwillingsaktualisierungen | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
+| Gerätezwilling-Lesevorgänge | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
+| Gerätezwillingsaktualisierungen | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 100/Minute/Einheit | 100/Minute/Einheit | 5.000/Minute/Einheit |
 | Durchsatz für Vorgänge vom Typ „Aufträge pro Gerät“ | 10/Sekunde | Höchstens 10/Sekunde oder 1/Sekunde/Einheit | 50/Sekunde/Einheit |
 
 Hier muss gesagt werden, dass die Drosselung der *Geräteverbindungen* nicht die maximale Anzahl gleichzeitig verbundener Geräte bestimmt, sondern die Rate, mit der neue Geräteverbindungen mit einem IoT Hub eingerichtet werden können. Die Drosselung ist abhängig von der Anzahl der Einheiten, die für den IoT-Hub bereitgestellt werden.
 
-Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Das bedeutet, dass das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten) dauert. Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Identitätsregistrierung registriert sind.
+Wenn Sie beispielsweise eine S1-Einheit erwerben, erhalten Sie eine Drosselung von 100 Verbindungen pro Sekunde. Darum dauert das Herstellen einer Verbindung mit 100.000 Geräten mindestens 1.000 Sekunden (ca. 16 Minuten). Es können jedoch so viele Geräte gleichzeitig verbunden sein, wie in der Identitätsregistrierung registriert sind.
 
 Eine ausführliche Erläuterung der IoT Hub-Drosselung finden Sie in dem Blogbeitrag [IoT Hub throttling and you][lnk-throttle-blog] (Was habe ich mit der IoT Hub-Drosselung zu tun?).
 
@@ -67,8 +68,10 @@ IoT Hub erzwingt andere Grenzwerte für die verschiedenen Funktionen.
 
 | Vorgang | Begrenzung |
 | --------- | ----- |
-| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/>  10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/> &10; SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 | Aufträge | Der Auftragsverlauf wird bis zu 30 Tage lang gespeichert. <br/> Maximale Anzahl gleichzeitiger Aufträge: 1 (für Free und S1), 5 (für S2), 10 (für S3) |
+| Zusätzliche Endpunkte | Kostenpflichtige SKU-Hubs haben möglicherweise 10 zusätzliche Endpunkte. Kostenfreie SKU-Hubs haben möglicherweise einen zusätzlichen Endpunkt. |
+| Regeln für die Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs haben möglicherweise 100 Weiterleitungsregeln. Kostenfreie SKU-Hubs haben möglicherweise fünf Weiterleitungsregeln. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
@@ -87,6 +90,6 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

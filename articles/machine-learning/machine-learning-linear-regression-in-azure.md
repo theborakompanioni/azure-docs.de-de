@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/09/2016
 ms.author: kbaroni;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: eb6fc4b1451d9c1ba17d1787bc8a77507b694258
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: b519769502f9883c5be59dc453bce872660774b5
 
 
 ---
@@ -52,9 +52,9 @@ Wir berechneten den *Mean Absolute % Error* und verwendeten diesen Wert als Leis
 Das Erstellen unseres Experiments in Azure ML verlief in folgenden Schritten:  
 
 1. Hochladen des DataSets als CSV-Datei in Azure ML (sehr kleine Datei)
-2. Erstellen eines neuen Experiments und Verwenden des [Select Columns in Dataset][select-columns]-Moduls, um die gleichen Datenfeatures wie in Excel auszuwählen   
-3. Verwenden des [Split Data][split]-Moduls (im Modus *Relative Expression*), um die Daten in ebenso große Trainingssätze wie in Excel aufzugliedern  
-4. Experimentieren mit dem [Linear Regression][linear-regression]-Modul (nur Standardoptionen), Dokumentieren und Vergleichen mit den Ergebnissen unseres Excel-Regressionsmodells
+2. Erstellen eines neuen Experiments und Verwenden des Moduls [Select Columns in Dataset][select-columns], um die gleichen Datenfeatures wie in Excel auszuwählen   
+3. Verwenden des Moduls [Split Data][split] (im Modus *Relative Expression* (Relativer Ausdruck)), um die Daten in ebenso große Trainingssätze wie in Excel aufzugliedern  
+4. Experimentieren mit dem Modul [Linear Regression][linear-regression] (nur Standardoptionen), Dokumentieren und Vergleichen mit den Ergebnissen unseres Excel-Regressionsmodells
 
 ### <a name="review-initial-results"></a>Beurteilung erster Ergebnisse
 Zunächst war das Excel-Modell dem Azure-ML-Modell deutlich überlegen.  
@@ -69,7 +69,7 @@ Zunächst war das Excel-Modell dem Azure-ML-Modell deutlich überlegen.
 
 Als wir unser Verfahren und die Ergebnisse den Entwicklern und Data Scientists des Azure ML-Teams zeigten, konnte man uns dort ein paar rasche Tipps geben.  
 
-* Bei Verwendung des [Linear Regression][linear-regression]-Moduls in Azure ML werden zwei Methoden bereitgestellt:
+* Bei Verwendung des Moduls [Linear Regression][linear-regression] in Azure ML werden zwei Methoden bereitgestellt:
   * Online Gradient Descent: erscheint eher geeignet für umfangreichere Problemstellungen
   * Ordinary Least Squares: Diese Methode wird allgemein am häufigsten mit dem Stichwort lineare Regression assoziiert. Für kleine DataSets ist die "Ordinary Least Squares"-Methode möglicherweise besser geeignet.
 * Denken Sie an die Möglichkeit, den "L2 Regularization Weight"-Parameter anzupassen, um die Leistung zu verbessern. Standardmäßig ist er auf 0,001 eingestellt, aber für unser kleines DataSet haben wir durch Ändern des Werts auf 0,005 eine bessere Leistung erzielt.    
@@ -117,9 +117,9 @@ Kopieren Sie bei geöffnetem Arbeitsblatt Ihre vordefinierten Parameter in den b
 ![][2]
 
 ### <a name="optimization-and-further-experiments"></a>Optimieren und weitere Untersuchungen
-Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Azure ML zu optimieren.  Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, womit wir eine Leistungsverbesserung von 4,6% (mittlerer absoluter Fehler) erreichen konnten.   Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für das Modell erspart.  
+Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Azure ML zu optimieren.  Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, und konnten dadurch eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen.   Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für das Modell erspart.  
 
-Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayesian][bayesian-linear-regression] oder [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können.    
+Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayes][bayesian-linear-regression] oder [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können.    
 
 Ein gutes DataSet für eigene Versuche mit Regressions-Modellen ist das Beispiel-DataSet "Energy Efficiency Regression" mit einer Vielzahl numerischer Attribute. Dieses DataSet wird als Teil der Beispiel-DataSets in ML Studio bereitgestellt.  Zur Vorhersage der Kühl- bzw. Wärmelast lässt sich eine Vielzahl von Lernmodulen verwenden.  Das nachstehende Diagramm zeigt einen Leistungsvergleich verschiedener Regressions-Lernmodelle im Vergleich zum Energieeffizienz-DataSet für die Zielvariable Kühllast. 
 
@@ -131,7 +131,7 @@ Ein gutes DataSet für eigene Versuche mit Regressions-Modellen ist das Beispiel
 | Linear Regression (Ordinary Least Squares) |1,428273 |1,984461 |0,163767 |0,042074 |0,957926 |
 
 ## <a name="key-takeaways"></a>Wesentliche Punkte
-Wir haben durch das parallele Weiterführen von Excel-Regressionen und Azure Machine Learning-Experimenten viel gelernt. Durch das Erstellen des Benchmark-Modells in Excel und anschließendes Vergleichen mit Modellen, die Azure ML [Linear Regression][linear-regression] verwenden, konnten wir Azure ML erlernen und Möglichkeiten entdecken, die Datenauswahl und die Modellleistung zu verbessern.         
+Wir haben durch das parallele Weiterführen von Excel-Regressionen und Azure Machine Learning-Experimenten viel gelernt. Durch das Erstellen des Benchmark-Modells in Excel und anschließendes Vergleichen mit Modellen, die [Linear Regression][linear-regression] von Azure ML verwenden, konnten wir Azure ML erlernen und Möglichkeiten entdecken, die Datenauswahl und die Modellleistung zu verbessern.         
 
 Wir haben auch festgestellt, dass es ratsam ist, [Filter-Based Feature Selection][filter-based-feature-selection] zu verwenden, um zukünftige Vorhersageprojekte zu beschleunigen.  Durch Anwenden der Funktionsauswahl auf Ihre Daten lässt sich ein verbessertes Modell in Azure ML mit insgesamt besserer Leistung erstellen. 
 
@@ -159,6 +159,6 @@ Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

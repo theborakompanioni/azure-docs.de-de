@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2016
+ms.date: 01/05/2017
 ms.author: hascipio
 translationtype: Human Translation
-ms.sourcegitcommit: 98840e0bc1565eab0e5936cb65b68852e1423450
-ms.openlocfilehash: fd71f55f636fa1b7918536d7e6b51fb6a2a05903
+ms.sourcegitcommit: b76185c0a4a0e17b663affee9a02b65f222fedeb
+ms.openlocfilehash: d679096476406831c1fda4f695adff84e63d6ae8
 
 
 ---
@@ -42,10 +42,12 @@ Als Herausgeber einer Lösung müssen Sie zunächst definieren, welche Art von L
 ![Zeichnen](media/marketplace-publishing-getting-started/img01.png)
 
 ### <a name="1-nominate-your-solution-for-pre-approval"></a>1. Nominieren Ihrer Lösung für eine Vorabgenehmigung
-> [!IMPORTANT]
-> Bevor Sie im Azure Marketplace arbeiten können, müssen Sie über eine [Vorabgenehmigung](http://azure.com/certified)verfügen.
+- Füllen Sie [hier](https://createopportunity.azurewebsites.net) für Ihre Lösung das Nominierungsformular für **Microsoft Azure Certified für virtuelle Computer** aus.
 
-- [Anfordern einer Vorabgenehmigung für das Microsoft Azure Certified-Programm](marketplace-publishing-azure-certification.md)
+>[!NOTE]
+> Wenn Sie mit einem Partner Account Manager oder mit einem DX Partner Manager zusammenarbeiten, bitten Sie diesen, Ihre Lösung für das Azure Certified-Programm zu nominieren. Alternativ können Sie auch auf der Webseite [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) das Bewerbungsformular ausfüllen und die E-Mail-Adresse Ihres Partner Account Managers oder DX Partner Managers in das Kontaktfeld für den Microsoft-Sponsor eingeben.
+
+Wenn die Teilnahmekriterien gemäß den [Teilnahmerichtlinien für Microsoft Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833) erfüllt sind und Ihre Bewerbung angenommen wird, arbeiten wir gemeinsam mit Ihnen an der Aufnahme Ihrer Lösung in den Azure Marketplace.
 
 ### <a name="2-register-your-account-as-a-microsoft-seller"></a>2. Registrieren Ihres Kontos als Microsoft-Verkäufer
 - [Registrieren Sie Ihr Microsoft-Konto als Microsoft Developer-Konto.](marketplace-publishing-accounts-creation-registration.md)
@@ -93,6 +95,6 @@ Als Herausgeber einer Lösung müssen Sie zunächst definieren, welche Art von L
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure Resource Manager-Vorlagen | Microsoft Docs"
+title: "Hinzufügen von Überwachung und Diagnose zu einem virtuellen Azure-Computer | Microsoft-Dokumentation"
 description: Verwenden Sie eine Azure-Ressourcen-Manager-Vorlage, um einen neuen virtuellen Windows-Computer mit Azure-Diagnoseerweiterung zu erstellen.
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2015
+ms.date: 1/23/2017
 ms.author: saurabh
 translationtype: Human Translation
-ms.sourcegitcommit: 7167048a287bee7c26cfc08775dcb84f9e7c2eed
-ms.openlocfilehash: b84b4c0bd31d2e0bebafa2053a725e5e78bc3c9f
+ms.sourcegitcommit: e9258143cae9d9f8ba1f357617e2c45cf8487ab9
+ms.openlocfilehash: 2bd7efaaf45267ccdad390354ea98fafff1a6cb5
 
 
 ---
@@ -171,6 +171,6 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

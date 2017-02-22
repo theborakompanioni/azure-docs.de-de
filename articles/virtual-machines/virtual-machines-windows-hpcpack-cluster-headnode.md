@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines HPC Pack-Hauptknotens in einem virtuellen Azure-Computer | Microsoft Docs
-description: Sie erfahren, wie Sie das Azure-Portal und das Ressourcen-Manager-Bereitstellungsmodell verwenden, um einen Microsoft HPC Pack-Hauptknoten in einem virtuellen Azure-Computer zu erstellen.
+description: Erfahren Sie, wie Sie das Azure-Portal und das Resource Manager-Bereitstellungsmodell verwenden, um einen Microsoft HPC Pack 2012 R2-Hauptknoten auf einem virtuellen Azure-Computer zu erstellen.
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/17/2016
+ms.date: 12/29/2016
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: c07837fb7eb050f57a73d5bd217bd0dc73bac5f1
+ms.sourcegitcommit: 3d8300bbb54bd88e6ff3844208ec5d5fa25c5e8d
+ms.openlocfilehash: d935f45f87558dd7f9838ad3b370de0d9a7870a1
 
 
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Erstellen des Hauptknotens eines HPC Pack-Clusters auf einem virtuellen Azure-Computer mit einem Marketplace-Image
-Verwenden Sie ein [Microsoft HPC Pack-Image für einen virtuellen Computer](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) aus Azure Marketplace und das Azure-Portal, um den Hauptknoten eines HPC-Clusters zu erstellen. Das HPC Pack-VM-Image basiert auf Windows Server 2012 R2 Datacenter mit vorinstalliertem HPC Pack 2012 R2 Update 3. Verwenden Sie diesen Hauptknoten für eine Proof of Concept-Bereitstellung von HPC Pack in Azure. Sie können dem Cluster dann Computeknoten zum Ausführen von HPC-Workloads hinzufügen.
+Verwenden Sie ein [Microsoft HPC Pack 2012 R2-Image für einen virtuellen Computer](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) aus Azure Marketplace und das Azure-Portal, um den Hauptknoten eines HPC-Clusters zu erstellen. Das HPC Pack-VM-Image basiert auf Windows Server 2012 R2 Datacenter mit vorinstalliertem HPC Pack 2012 R2 Update 3. Verwenden Sie diesen Hauptknoten für eine Proof of Concept-Bereitstellung von HPC Pack in Azure. Sie können dem Cluster dann Computeknoten zum Ausführen von HPC-Workloads hinzufügen.
 
 > [!TIP]
-> Um einen vollständigen HPC Pack-Cluster in Azure bereitzustellen, der den Hauptknoten und Serverknoten enthält, sollten Sie eine automatisierte Methode verwenden. Zu den Optionen gehören das [HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) und die Resource Manager-Vorlage [HPC Pack-Cluster für Windows-Workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/). Zusätzliche Vorlagen finden Sie unter [HPC Pack-Clusteroptionen in Azure](virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+> Um einen vollständigen HPC Pack 2012 R2-Cluster in Azure bereitzustellen, der den Hauptknoten und Serverknoten enthält, sollten Sie eine automatisierte Methode verwenden. Zu den Optionen gehören das [HPC Pack-IaaS-Bereitstellungsskript](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) und Resource Manager-Vorlagen wie der [HPC Pack-Cluster für Windows-Workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/). Resource Manager-Vorlagen stehen auch für [Microsoft HPC Pack 2016-Cluster](https://github.com/MsHpcPack/HPCPack2016/tree/master/newcluster-templates) zur Verfügung. 
 > 
 > 
 
@@ -34,13 +34,16 @@ Wie in der folgenden Abbildung gezeigt, stellen Sie den HPC Pack-Hauptknoten in 
 
 ![HPC Pack-Hauptknoten][headnode]
 
-* **Active Directory-Domäne** – Der HPC Pack-Hauptknoten muss einer Active Directory-Domäne in Azure beigetreten sein, bevor Sie die HPC-Dienste auf dem virtuellen Computer starten. Wie in diesem Artikel gezeigt, können Sie die VM, die Sie für den Hauptknoten als Domänencontroller erstellen, für eine Proof of Concept-Bereitstellung höher stufen, bevor Sie die HPC-Dienste starten. Eine weitere Möglichkeit ist das Bereitstellen eines separaten Domänencontrollers und einer Gesamtstruktur in Azure, der der virtuelle Hauptknotencomputer beitritt.
-* **Virtuelles Azure-Netzwerk**: Wenn Sie das Resource Manager-Bereitstellungsmodell verwenden, um den Hauptknoten bereitzustellen, geben Sie ein virtuelles Azure-Netzwerk an bzw. erstellen es. Sie verwenden das virtuelle Netzwerk, um den Beitritt des Hauptknotens zu einer vorhandenen Active Directory-Domäne auszuführen. Damit fügen Sie dem Cluster auch später Serverknoten-VMs hinzu.
+* **Active Directory-Domäne:** Der HPC Pack 2012 R2-Hauptknoten muss einer Active Directory-Domäne in Azure beigetreten sein, bevor Sie die HPC-Dienste auf dem virtuellen Computer starten. Wie in diesem Artikel gezeigt, können Sie die VM, die Sie für den Hauptknoten als Domänencontroller erstellen, für eine Proof of Concept-Bereitstellung höher stufen, bevor Sie die HPC-Dienste starten. Eine weitere Möglichkeit ist das Bereitstellen eines separaten Domänencontrollers und einer Gesamtstruktur in Azure, der der virtuelle Hauptknotencomputer beitritt.
+
+* **Bereitstellungsmodell:** Für die meisten neuen Bereitstellungen empfiehlt Microsoft die Verwendung des Resource Manager-Bereitstellungsmodells. In diesem Artikel wird davon ausgegangen, dass Sie dieses Bereitstellungsmodell verwenden.
+
+* **Virtuelles Azure-Netzwerk:** Wenn Sie den Hauptknoten mithilfe des Resource Manager-Bereitstellungsmodells bereitstellen, geben Sie ein virtuelles Azure-Netzwerk an bzw. erstellen es. Sie verwenden das virtuelle Netzwerk, um den Beitritt des Hauptknotens zu einer vorhandenen Active Directory-Domäne auszuführen. Damit fügen Sie dem Cluster auch später Serverknoten-VMs hinzu.
 
 ## <a name="steps-to-create-the-head-node"></a>Schritte zum Erstellen des Hauptknotens
 Es folgen allgemeine Schritte zur Verwendung des Azure-Portals zum Erstellen einer Azure-VM für den HPC Pack-Hauptknoten mit dem Ressourcen-Manager-Bereitstellungsmodell. 
 
-1. Wenn Sie eine neue Active Directory-Gesamtstruktur in Azure mit separaten Domänencontroller-VMs erstellen möchten, ist die Verwendung einer [Resource Manager-Vorlage](https://azure.microsoft.com/documentation/templates/active-directory-new-domain-ha-2-dc/)eine Möglichkeit. Für eine einfache Proof of Concept-Bereitstellung können Sie diesen Schritt auslassen und die Hauptknoten-VM selbst als Domänencontroller konfigurieren. Diese Option wird weiter unten in diesem Artikel beschrieben.
+1. Wenn Sie eine neue Active Directory-Gesamtstruktur in Azure mit separaten Domänencontroller-VMs erstellen möchten, ist die Verwendung einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc)eine Möglichkeit. Für eine einfache Proof of Concept-Bereitstellung können Sie diesen Schritt auslassen und die Hauptknoten-VM selbst als Domänencontroller konfigurieren. Diese Option wird weiter unten in diesem Artikel beschrieben.
 2. Klicken Sie im Azure Marketplace auf der Seite [HPC Pack 2012 R2 unter Windows Server 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) auf **Virtuellen Computer erstellen**. 
 3. Wählen Sie im Portal auf der Seite **HPC Pack 2012 R2 unter Windows Server 2012 R2** das Bereitstellungsmodell **Resource Manage**, und klicken Sie dann auf **Erstellen**.
    
@@ -52,7 +55,7 @@ Es folgen allgemeine Schritte zur Verwendung des Azure-Portals zum Erstellen ein
    > 
    > 
 5. Wenn der virtuelle Computer, den Sie erstellt haben, ausgeführt wird, [stellen Sie über Remotedesktop die Verbindung mit dem virtuellen Computer her](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-6. Führen Sie den Beitritt der VM zu einer vorhandenen Gesamtstruktur aus, oder erstellen Sie auf der VM selbst eine Domänengesamtstruktur.
+6. Verbinden Sie den virtuellen Computer mit einer Active Directory-Domänengesamtstruktur durch Auswählen einer der folgenden Optionen:
    
    * Wenn Sie den virtuellen Computer in einem virtuellen Azure-Netzwerk mit einer vorhandenen Domänengesamtstruktur erstellt haben, verwenden Sie den standardmäßigen Server-Manager oder Windows PowerShell-Tools, um seinen Beitritt zur Gesamtstruktur auszuführen. Führen Sie anschließend einen Neustart durch.
    * Wenn Sie die VM in einem neuen virtuellen Netzwerk (ohne vorhandene Domänengesamtstruktur) erstellt haben, stufen Sie die VM zum Domänencontroller hoch. Installieren und konfigurieren Sie die Active Directory-Domänendienste-Rolle in standardmäßigen Schritten auf dem Hauptknoten. Ausführliche Schritte finden Sie unter [Installieren einer neuen Windows Server 2012 Active Directory-Gesamtstruktur](https://technet.microsoft.com/library/jj574166.aspx).
@@ -62,7 +65,7 @@ Es folgen allgemeine Schritte zur Verwendung des Azure-Portals zum Erstellen ein
    
     b. Starten Sie zur Durchführung einer Standardkonfiguration des Hauptknotens Windows PowerShell als Administrator, und geben Sie Folgendes ein:
    
-    ```
+    ```PowerShell
     & $env:CCP_HOME\bin\HPCHNPrepare.ps1 –DBServerInstance ".\ComputeCluster"
     ```
    
@@ -76,11 +79,11 @@ Es folgen allgemeine Schritte zur Verwendung des Azure-Portals zum Erstellen ein
 * Führen Sie eine Test-Workload auf dem Cluster aus. Ein Beispiel hierzu finden Sie im [Leitfaden für die ersten Schritte](https://technet.microsoft.com/library/jj884144)von HPC Pack.
 
 <!--Image references-->
-[Hauptknoten]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
-[Marketplace]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/marketplace.png
+[headnode]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
+[marketplace]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/marketplace.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

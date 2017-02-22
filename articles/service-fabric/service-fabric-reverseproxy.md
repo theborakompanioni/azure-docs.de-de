@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 10/04/2016
-ms.author: vturecek
+ms.date: 01/04/2017
+ms.author: bharatn
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fcc939fc1a70e179f714e73bc5757ed750974f17
+ms.sourcegitcommit: c738b9d6461da032f216b8a51c69204066d5cfd3
+ms.openlocfilehash: 9487209a8e5d976d56da50b8c70e69950d0ad129
 
 
 ---
@@ -47,7 +47,7 @@ Anstatt Ports für einzelne Dienste im Azure Load Balancer zu konfigurieren, rei
 ![Externe Kommunikation][0]
 
 > [!WARNING]
-> Durch das Konfigurieren des Ports des Reverseproxys im Load Balancer können alle Microservices im Cluster, die einen HTTP-Endpunkt verfügbar machen, von außerhalb des Clusters adressiert werden.
+> Durch das Konfigurieren des Ports des Reverseproxys im Lastenausgleich können alle Microservices im Cluster, die einen HTTP-Endpunkt verfügbar machen, von außerhalb des Clusters adressiert werden.
 > 
 > 
 
@@ -58,7 +58,7 @@ Der Reverseproxy verwendet ein bestimmtes URI-Format, um die Dienstpartition zu 
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&Timeout=<timeout_in_seconds>
 ```
 
-* **HTTP(S):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Bei HTTPS-Datenverkehr erfolgt die SSL-Beendigung im Reverseproxy. Anforderungen, die vom Reverseproxy an Dienste im Cluster weitergeleitet werden, erfolgen über HTTP.
+* **HTTP(S):** Der Reverseproxy kann zum Akzeptieren von HTTP- oder HTTPS-Datenverkehr konfiguriert werden. Bei HTTPS-Datenverkehr erfolgt die SSL-Beendigung im Reverseproxy. Anforderungen, die vom Reverseproxy an Dienste im Cluster weitergeleitet werden, erfolgen über HTTP. **Beachten Sie, dass HTTPS-Dienste derzeit nicht unterstützt werden.**
 * **FQDN des Clusters | interne IP**: Für externe Clients kann der Reverseproxy so konfiguriert werden, dass er über die Clusterdomäne erreichbar ist (Beispiel: mycluster.eastus.cloudapp.azure.com). Der Reverseproxy wird standardmäßig auf jedem Knoten ausgeführt. Bei internen Datenverkehr ist er daher unter „localhost“ oder einer beliebigen internen Knoten-IP (z.B. 10.0.0.1) erreichbar.
 * **Port:** Der Port, der für den Reverseproxy angegeben wurde. Beispiel: 19008.
 * **ServiceInstanceName:** Der vollqualifizierte Name der bereitgestellten Dienstinstanz des Diensts, den Sie erreichen möchten (ohne das Schema „fabric:/“). Um beispielsweise den Dienst *fabric:/myapp/myservice/* zu erreichen, müssen Sie *myapp/myservice* verwenden.
@@ -129,9 +129,9 @@ Dieser HTTP-Antwortheader gibt eine normale HTTP 404-Situation an, in der die an
 ## <a name="setup-and-configuration"></a>Setup und Konfiguration
 Der Service Fabric-Reverseproxy kann über die [Azure Resource Manager-Vorlage](service-fabric-cluster-creation-via-arm.md) für den Cluster aktiviert werden.
 
-Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen möchten (entweder aus den Beispielvorlagen oder durch Erstellen einer benutzerdefinierten Resource Manager-Vorlage), kann der Reverseproxy über die folgenden Schritte in der Vorlage aktiviert werden.
+Sobald Sie über die Vorlage für den Cluster verfügen, den Sie bereitstellen möchten (entweder aus den Beispielvorlagen oder durch Erstellen einer benutzerdefinierten Resource Manager-Vorlage), kann der Reverseproxy über die folgenden Schritte in der Vorlage aktiviert werden.
 
-1. Definieren Sie im Abschnitt [parameters](../resource-group-authoring-templates.md) der Vorlage einen Port für den Reverseproxy.
+1. Definieren Sie im Abschnitt [parameters](../azure-resource-manager/resource-group-authoring-templates.md) der Vorlage einen Port für den Reverseproxy.
    
     ```json
     "SFReverseProxyPort": {
@@ -142,7 +142,7 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         }
     },
     ```
-2. Geben Sie den Port für jedes der nodetype-Objekte im **Abschnitt der Ressourcentypen** [Clusters](../resource-group-authoring-templates.md)
+2. Geben Sie den Port für jedes der nodetype-Objekte im **Abschnitt der Ressourcentypen** [Clusters](../azure-resource-manager/resource-group-authoring-templates.md)
    
     Für eine ApiVersion vor „2016-09-01“ wird der Port anhand des Parameternamens ***httpApplicationGatewayEndpointPort*** identifiziert.
    
@@ -229,7 +229,7 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
         ]
     }
     ```
-4. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der httpApplicationGatewayCertificate-Eigenschaft im Abschnitt der **Abschnitt der Ressourcentypen** [Clusters](../resource-group-authoring-templates.md)
+4. Um SSL-Zertifikate für den Port des Reverseproxys zu konfigurieren, fügen Sie das Zertifikat der httpApplicationGatewayCertificate-Eigenschaft im Abschnitt der **Abschnitt der Ressourcentypen** [Clusters](../azure-resource-manager/resource-group-authoring-templates.md)
    
     Für eine ApiVersion vor „2016-09-01“ wird das Zertifikat anhand des Parameternamens ***httpApplicationGatewayCertificate*** identifiziert.
    
@@ -287,6 +287,6 @@ Sobald Sie über die Vorlage für den Cluster verfügen, die Sie bereitstellen m
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

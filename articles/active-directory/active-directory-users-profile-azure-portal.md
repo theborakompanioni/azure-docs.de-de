@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
@@ -26,14 +26,14 @@ In diesem Artikel wird erläutert, wie Sie in der Azure Active Directory-Vorscha
 ## <a name="to-change-profile-information"></a>So ändern Sie Profilinformationen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
-   
+
    ![Öffnen der Benutzerverwaltung](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Benutzer** aus.
-   
+
    ![Öffnen des Blatts „Benutzer“](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
 4. Wählen Sie auf dem Blatt **Benutzer und Gruppen – Benutzer** einen Benutzer aus der Liste aus.
 5. Wählen Sie auf dem Blatt für den ausgewählten Benutzer die Option **Profil**aus.
-   
+
     ![Öffnen der Arbeitsinformationen](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
 6. Fügen Sie Profilinformationen hinzu, oder ändern Sie diese. Wählen Sie dann auf der Befehlsleiste **Speichern** aus.
 
@@ -43,7 +43,6 @@ In diesem Artikel wird erläutert, wie Sie in der Azure Active Directory-Vorscha
 * [Zuweisen eines Benutzers zu Administratorrollen in der Azure Active Directory-Vorschau](active-directory-users-assign-role-azure-portal.md)
 * [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in der Azure Active Directory-Vorschau](active-directory-users-work-info-azure-portal.md)
 * [Löschen eines Benutzers aus einem Verzeichnis in der Azure Active Directory-Vorschau](active-directory-users-delete-user-azure-portal.md)
-
 
 
 

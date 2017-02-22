@@ -1,6 +1,6 @@
 ---
-title: Trigger und Bindungen in Azure Functions | Microsoft Docs
-description: "Hier wird erläutert, wie Trigger und Bindungen in Azure Functions verwendet werden."
+title: Arbeiten mit Triggern und Bindungen in Azure Functions | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Trigger und Bindungen in Azure Functions verwenden, um die Verbindung Ihrer Codeausführung mit Onlineereignissen und cloudbasierten Diensten herzustellen."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -14,20 +14,26 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/08/2016
+ms.date: 01/23/2017
 ms.author: chrande
 translationtype: Human Translation
-ms.sourcegitcommit: d809636cae48dd0ccca4c99370f41996430d89e4
-ms.openlocfilehash: b5d8d38f03514d89bf6c0b5e36adf0379f1bef1a
+ms.sourcegitcommit: b7ea1e3a72a9dc6f4f9ca9d2d9d6f8c9b1564972
+ms.openlocfilehash: 947f1f5e6d9bebe6708e6d29d3b71efc09573537
 
 
 ---
-# <a name="azure-functions-triggers-and-bindings-developer-reference"></a>Entwicklerreferenz zu Triggern und Bindungen in Azure Functions
-Dieses Thema enthält allgemeine Referenzinformationen für Trigger und Bindungen. Es werden einige erweiterte Bindungsfunktionen und Syntaxelemente beschrieben, die von allen Bindungstypen unterstützt werden.  
 
-Wenn Sie nach ausführlichen Informationen zur Konfiguration und Codierung einer bestimmten Art von Trigger oder Bindung suchen, können Sie stattdessen auf eine der unten aufgeführten Trigger oder Bindungen klicken:
+# <a name="learn-how-to-work-with-triggers-and-bindings-in-azure-functions"></a>Erfahren Sie, wie Sie in Azure Functions mit Triggern und Bindungen arbeiten 
+In diesem Thema wird gezeigt, wie Sie Trigger und Bindungen in Azure Functions verwenden, um die Verbindung Ihres Codes mit einer Reihe von Triggern, Azure-Diensten und anderen cloudbasierten Diensten herzustellen. Es werden einige erweiterte Bindungsfeatures und Syntaxelemente beschrieben, die von allen Bindungstypen unterstützt werden.  
 
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+Ausführliche Informationen zum Arbeiten mit einem bestimmten Trigger- oder Bindungstyp finden Sie in einem der folgenden Referenzthemen:
+
+| | | | |  
+| --- | --- | --- | --- |  
+| [HTTP/Webhook](functions-bindings-http-webhook.md) | [Zeitgeber](functions-bindings-timer.md) | [Mobile Apps](functions-bindings-mobile-apps.md) | [Service Bus](functions-bindings-service-bus.md)  |  
+| [DocumentDB](functions-bindings-documentdb.md) |  [Storage Blob](functions-bindings-storage-blob.md) | [Speicherwarteschlange](functions-bindings-storage-queue.md) |  [Storage-Tabelle](functions-bindings-storage-table.md) |  
+| [Event Hubs](functions-bindings-event-hubs.md) | [Notification Hubs](functions-bindings-notification-hubs.md) | [Twilio](functions-bindings-twilio.md) |   
+| | | | |  
 
 In diesen Artikeln wird davon ausgegangen, dass Sie die [Entwicklerreferenz zu Azure Functions](functions-reference.md) sowie die Referenzartikel zu [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md) bzw. [Node.js](functions-reference-node.md) für Entwickler gelesen haben.
 
@@ -61,7 +67,7 @@ Eine Warteschlangentrigger-Bindung enthält diese Informationen für eine Azure-
 }
 ```
 
-Ihr Code sendet unter Umständen unterschiedliche Arten von Ausgaben. Dies richtet sich danach, wie das neue Warteschlangenelement verarbeitet wird. Es kann beispielsweise sein, dass Sie einen neuen Datensatz in eine Azure Storage-Tabelle schreiben möchten.  Hierzu können Sie eine Ausgabebindung an eine Azure Storage-Tabelle einrichten. Hier ist ein Beispiel für die Datei *function.json* mit einer Speichertabellen-Ausgabebindung angegeben, die mit einem Warteschlangentrigger verwendet werden kann. 
+Ihr Code sendet unter Umständen unterschiedliche Arten von Ausgaben. Dies richtet sich danach, wie das neue Warteschlangenelement verarbeitet wird. Es kann beispielsweise sein, dass Sie einen neuen Datensatz in eine Azure Storage-Tabelle schreiben möchten.  Hierzu erstellen Sie eine Ausgabebindung an eine Azure Storage-Tabelle. Hier ist ein Beispiel für die Datei *function.json* mit einer Speichertabellen-Ausgabebindung angegeben, die mit einem Warteschlangentrigger verwendet werden kann. 
 
 ```json
 {
@@ -125,7 +131,7 @@ Weitere Codebeispiele und spezifischere Informationen zu den unterstützten Azur
 Klicken Sie zum Verwenden der erweiterten Bindungsfunktionen im Azure-Portal auf der Registerkarte **Integrieren** Ihrer Funktion auf **Erweiterter Editor**. Mit dem erweiterten Editor können Sie die Datei *function.json* direkt im Portal bearbeiten.
 
 ## <a name="random-guids"></a>Zufällige GUIDs
-Azure Functions enthält Syntax zum Generieren von zufälligen GUIDs mit Ihren Bindungen. Mit der folgenden Bindungssyntax wird die Ausgabe in ein neues BLOB mit einem eindeutigen Namen in einem Azure Storage-Container geschrieben: 
+Azure Functions enthält Syntax zum Generieren von zufälligen GUIDs mit Ihren Bindungen. Mit der folgenden Bindungssyntax wird die Ausgabe in ein neues Blob mit einem eindeutigen Namen in einem Speichercontainer geschrieben: 
 
 ```json
 {
@@ -182,7 +188,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 ```
 
 
-Diese Vorgehensweise wird auch unten mit Node.js veranschaulicht.
+Diese Vorgehensweise wird auch wie folgt mit Node.js veranschaulicht:
 
 ```javascript
 module.exports = function (context, input) {
@@ -192,7 +198,7 @@ module.exports = function (context, input) {
 }
 ```
 
-Unten ist ein F#-Beispiel angegeben.
+Es folgt ein F#-Beispiel:
 
 ```fsharp
 let Run(input: WorkItem, log: TraceWriter) =
@@ -229,7 +235,7 @@ Anstelle einer statischen Konfigurationseinstellung für Ihre Ausgabebindungseig
 ```json
 {
   "name" : "Customer Name",
-  "address" : "Customer's Address".
+  "address" : "Customer's Address",
   "mobileNumber" : "Customer's mobile number in the format - +1XXXYYYZZZZ."
 }
 ```
@@ -305,53 +311,61 @@ module.exports = function (context, myNewOrderItem) {
 Das Standardmuster für Eingabe- und Ausgabebindungen mit *function.json* wird als [*deklarative*](https://en.wikipedia.org/wiki/Declarative_programming) Bindung bezeichnet. Dabei wird die Bindung von der JSON-Deklaration definiert. Sie können jedoch auch [imperative](https://en.wikipedia.org/wiki/Imperative_programming) Bindungen verwenden. Mit diesem Muster ist die Bindung an eine beliebige Anzahl von unterstützten Eingabe- und Ausgabebindungen direkt im Funktionscode möglich.
 Möglicherweise benötigen Sie imperative Bindungen in Fällen, in denen die Berechnung des Bindungspfads oder anderer Eingaben zur Laufzeit in Ihrer Funktion erfolgen muss und nicht zur Entwurfszeit. 
 
-Um eine imperative Bindung auszuführen, führen Sie folgende Schritte aus:
+Definieren Sie eine imperative Bindung wie folgt:
 
 - Schließen Sie für die gewünschten imperativen Bindungen **keinen** Eintrag in *function.json* ein.
 - Übergeben Sie den Eingabeparameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) oder [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs). 
 - Verwenden Sie das folgende C#-Muster, um die Datenbindung auszuführen.
 
-        using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
-        {
-                ...
-        }
+```cs
+using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
+{
+    ...
+}
+```
 
 Dabei ist `BindingTypeAttribute` das .NET-Attribut, das die Bindung definiert, und `T` ist der Eingabe- oder Ausgabetyp, der von diesem Bindungstyp unterstützt wird. `T` darf auch kein `out`-Parametertyp sein (wie `out JObject`). Die ausgehende Bindung für die Tabelle „Mobile Apps“ unterstützt z.B. [sechs Ausgabetypen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), Sie können aber nur [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) oder [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) für `T` verwenden.
     
 Mit dem folgenden Beispielcode wird eine [ausgehende Speicherblob-Bindung](functions-bindings-storage-blob.md#storage-blob-output-binding) mit einem Blobpfad erstellt, der zur Laufzeit definiert wird. Dann wird eine Zeichenfolge in das Blob geschrieben.
 
-        using Microsoft.Azure.WebJobs;
-        using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-        
-        public static async Task Run(string input, Binder binder)
-        {
-                using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
-                {
-                        writer.Write("Hello World!!");
-                }
-        }
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    using (var writer = await binder.BindAsync<TextWriter>(new BlobAttribute("samples-output/path")))
+    {
+        writer.Write("Hello World!!");
+    }
+}
+```
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) ist ein unterstützter Ausgabenbindungstyp.
 So wie gezeigt ruft der Code die Standard-App-Einstellung für die Speicherkonto-Verbindungszeichenfolge ab (also `AzureWebJobsStorage`). Sie können eine zu verwendende benutzerdefinierte App-Einstellung angeben, indem Sie [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hinzufügen und das Attributarray an `BindAsync<T>()` übergeben. Beispiel:
 
-        using Microsoft.Azure.WebJobs;
-        using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
-        
-        public static async Task Run(string input, Binder binder)
-        {
-                var attributes = new Attribute[]
-                {
-                        new BlobAttribute("samples-output/path"),
-                        new StorageAccountAttribute("MyStorageAccount")
-                };
-                using (var writer = await binder.BindAsync<TextWriter>(attributes))
-                {
-                        writer.Write("Hello World!");
-                }
-        }
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host.Bindings.Runtime;
+
+public static async Task Run(string input, Binder binder)
+{
+    var attributes = new Attribute[]
+    {    
+        new BlobAttribute("samples-output/path"),
+        new StorageAccountAttribute("MyStorageAccount")
+    };
+
+    using (var writer = await binder.BindAsync<TextWriter>(attributes))
+    {
+        writer.Write("Hello World!");
+    }
+}
+```
 
 Die folgende Tabelle zeigt, welches .NET-Attribut für die einzelnen Bindungstypen verwendet und auf welches Paket verwiesen wird.
 
+> [!div class="mx-codeBreakAll"]
 | Bindung | Attribut | Hinzuzufügender Verweis |
 |------|------|------|
 | DocumentDB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.DocumentDB"` |
@@ -362,7 +376,7 @@ Die folgende Tabelle zeigt, welches .NET-Attribut für die einzelnen Bindungstyp
 | Speicherwarteschlange | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | Speicherblob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | Speichertabelle | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions"` |
+| Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 
 
@@ -375,6 +389,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Leistungsindikatoren-, Ereignis- und Überwa
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 2e699078-043f-48bd-8aa8-b011a32d98ca
@@ -13,120 +13,112 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/14/2016
+ms.date: 01/31/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 30542a5166dffda4a99fe2fccd9e1c5d6127cabd
+ms.sourcegitcommit: 8d370f98a4ef2501afc692af8a19a0625f54b678
+ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
 
 
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)
-Sie können in Azure verschiedene Protokolltypen verwenden, um NSGs zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle können Sie über das Portal zugreifen, und alle Protokolle können aus einem Azure-Blobspeicher extrahiert und in anderen Tools wie [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md),Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
-* **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge und deren Status anzuzeigen, die an Ihre Azure-Abonnements übermittelt werden. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Vorschauportal angezeigt werden.
-* **Ereignisprotokolle:** Mithilfe dieses Protokolls können Sie anzeigen, welche NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
-* **Leistungsindikatorenprotokolle:** Verwenden Sie dieses Protokoll, um anzuzeigen, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+Sie können die folgenden Diagnoseprotokoll-Kategorien für Netzwerksicherheitsgruppen aktivieren:
 
-> [!WARNING]
-> Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Für ein besseres Verständnis der beiden Modelle lesen Sie den Artikel [Grundlegendes zur Bereitstellung über den Ressourcen-Manager im Vergleich zur klassischen Bereitstellung](../resource-manager-deployment-model.md) .
-> 
-> 
+* **Ereignis:** Enthält Einträge, für die NSG-Regeln auf virtuelle Computer und Instanzrollen auf Grundlage der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
+* **Regelzähler**: Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
-## <a name="enable-logging"></a>Aktivieren der Protokollierung
-Die Überwachungsprotokollierung ist automatisch jederzeit für alle Ressourcen-Manager-Ressourcen aktiviert. Sie müssen die Ereignis- und Leistungsindikatorenprotokollierung aktivieren, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie zum Aktivieren der Protokollierung die folgenden Schritte aus.
+> [!NOTE]
+> Diagnoseprotokolle sind nur für NSGs verfügbar, die im Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können keine Diagnoseprotokollierung für Netzwerksicherheitsgruppen aktivieren, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Zum besseren Verständnis der beiden Modelle lesen Sie den Artikel [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../resource-manager-deployment-model.md) (Azure Resource Manager im Vergleich zur klassischen Bereitstellung: Grundlegendes zu den Bereitstellungsmodellen und zum Status Ihrer Ressourcen).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Wenn Sie noch keine Netzwerksicherheitsgruppe haben, [erstellen Sie eine NSG](virtual-networks-create-nsg-arm-ps.md) , bevor Sie fortfahren.
-2. Klicken Sie im Vorschauportal auf **Durchsuchen** >> **Netzwerksicherheitsgruppen**.
-   
-   ![Vorschauportal – Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable1.png)
-3. Wählen Sie eine vorhandene Netzwerksicherheitsgruppe aus.
-   
-    ![Vorschauportal – Einstellungen für Netzwerksicherheitsgruppen](./media/virtual-network-nsg-manage-log/portal-enable2.png)
-4. Klicken Sie auf dem Blatt **Einstellungen** auf **Diagnose** und dann im Bereich **Diagnose** neben **Status** auf **Ein**.
-5. Klicken Sie auf dem Blatt **Einstellungen** auf **Speicherkonto**, und wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.  
+Aktivitätsprotokollierung (vormals bekannt als Audit oder Betriebsprotokolle) ist für alle Netzwerksicherheitsgruppen unabhängig davon , in welchem Azure-Bereitstellungsmodell sie erstellt wurden, standardmäßig aktiviert. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten: Microsoft.ClassicNetwork/networkSecurityGroups, Microsoft.ClassicNetwork/networkSecurityGroups/securityRules, Microsoft.Network/networkSecurityGroups und Microsoft.Network/networkSecurityGroups/securityRules. Lesen Sie den Artikel [Overview of the Azure Activity Log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) (Übersicht zum Azure-Aktivitätsprotokoll), um weitere Informationen zu Aktivitätsprotokollen zu erhalten. 
 
-> [AZURE.INFORMATION] Für Überwachungsprotokolle ist kein separates Speicherkonto erforderlich. Bei der Nutzung von Speicher zur Ereignis- und Regelprotokollierung fallen Gebühren an.
-> 
-> 
+## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
 
-1. Wählen Sie in der Dropdownliste direkt unter **Speicherkonto** aus, ob Sie Ereignisse, Leistungsindikatoren oder beides protokollieren möchten, und klicken Sie dann auf **Speichern**.
-   
-    ![Vorschauportal – Diagnoseprotokolle](./media/virtual-network-nsg-manage-log/portal-enable3.png)
+Diagnoseprotokollierung muss für *jede* NSG aktiviert sein, für die Sie Daten sammeln möchten. Im Artikel [Overview of Azure Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zu Azure-Diagnoseprotokollen) wird erläutert, wohin Diagnoseprotokolle gesendet werden können. Wenn Sie nicht über eine NSG verfügen, führen Sie die Schritte im Artikel [Verwalten von NSGs mithilfe des Azure-Portals](virtual-networks-create-nsg-arm-pportal.md) aus, um eine zu erstellen. Sie können die NSG-Diagnoseprotokollierung mit einer der folgenden Methoden aktivieren:
 
-## <a name="audit-log"></a>Überwachungsprotokoll
-Dieses Protokoll (früher als "Betriebsprotokoll" bekannt) wird standardmäßig von Azure generiert.  Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md) .
+### <a name="azure-portal"></a>Azure-Portal
 
-## <a name="counter-log"></a>Leistungsindikatorenprotokoll
-Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die jeweiligen NSGs aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Wie unten dargestellt, wird jede Regel, die auf Ressourcen angewendet wurden, im JSON-Format protokolliert.
+Um die Protokollierung über das Portal zu aktivieren, melden Sie sich beim [Portal](https://portal.azure.com) an. Klicken Sie auf **Weitere Dienste**, und geben Sie dann *Netzwerksicherheitsgruppen* ein. Wählen Sie die NSG aus, für die Sie die Protokollierung aktivieren möchten. Befolgen Sie die Anweisungen für Nicht-Computeressourcen im Artikel [Enable Diagnostic Logs in the portal](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-in-the-portal) (Aktivieren von Diagnoseprotokollen im Portal). Wählen Sie **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter** oder beide Kategorien von Protokollen.
 
-    {
-        "time": "2015-09-11T23:14:22.6940000Z",
-        "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
-        "category": "NetworkSecurityGroupRuleCounter",
-        "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
-        "operationName": "NetworkSecurityGroupCounters",
-        "properties": {
-            "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
-            "subnetPrefix":"10.0.0.0/24",
-            "macAddress":"001517D9C43C",
-            "ruleName":"DenyAllOutBound",
-            "direction":"Out",
-            "type":"block",
-            "matchedConnections":0
-            }
-    }
+### <a name="powershell"></a>PowerShell
 
-## <a name="event-log"></a>Ereignisprotokoll
-Dieses Protokoll wird nur generiert, wenn Sie es wie oben beschrieben für die jeweiligen NSGs aktiviert haben. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
+Zur Aktivierung der Protokollierung mit PowerShell führen Sie die Anweisungen im Artikel [Enable diagnostic logs via PowerShell](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-powershell) (Aktivieren von Diagnoseprotokollen mit PowerShell) aus. Werten Sie die folgenden Informationen aus, bevor Sie einen Befehl aus dem Artikel eingeben:
 
-    {
-        "time": "2015-09-11T23:05:22.6860000Z",
-        "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
-        "category": "NetworkSecurityGroupEvent",
-        "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
-        "operationName": "NetworkSecurityGroupEvents",
-        "properties": {
-            "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
-            "subnetPrefix":"10.0.0.0/24",
-            "macAddress":"001517D9C43C",
-            "ruleName":"AllowVnetOutBound",
-            "direction":"Out",
-            "priority":65000,
-            "type":"allow",
-            "conditions":{
-                "destinationPortRange":"0-65535",
-                "sourcePortRange":"0-65535",
-                "destinationIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32",
-                "sourceIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32"
+- Sie können den für den `-ResourceId`-Parameter zu verwendenden Wert bestimmen, indem Sie den folgenden [Text] nach Bedarf ersetzen und dann den Befehl `Get-AzureRmNetworkSecurityGroup -Name [nsg-name] -ResourceGroupName [resource-group-name]` eingeben. Die ID-Ausgabe des Befehls sieht etwa wie folgt aus: */subscriptions/[Abonnement-ID]/resourceGroups/[Ressourcengruppe]/providers/Microsoft.Network/networkSecurityGroups/[NSG-Name]*.
+- Wenn Sie nur Daten aus der Protokollkategorie erfassen möchten, fügen Sie `-Categories [category]` am Ende des Befehls im Artikel hinzu, wobei die Kategorie entweder *NetworkSecurityGroupEvent* oder *NetworkSecurityGroupRuleCounter* ist. Wenn Sie den `-Categories`-Parameter nicht verwenden, wird die Datensammlung für beide Protokollkategorien aktiviert.
+
+### <a name="azure-command-line-interface-cli"></a>Azure-Befehlszeilenschnittstelle (CLI)
+
+Zur Aktivierung der Protokollierung mit CLI führen Sie die Anweisungen im Artikel [Enable diagnostic logs via CLI](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#enable-diagnostic-logs-via-cli) (Aktivieren von Diagnoseprotokollen mit CLI) aus. Werten Sie die folgenden Informationen aus, bevor Sie einen Befehl aus dem Artikel eingeben:
+
+- Sie können den für den `-ResourceId`-Parameter zu verwendenden Wert bestimmen, indem Sie den folgenden [Text] nach Bedarf ersetzen und dann den Befehl `azure network nsg show [resource-group-name] [nsg-name]` eingeben. Die ID-Ausgabe des Befehls sieht etwa wie folgt aus: */subscriptions/[Abonnement-ID]/resourceGroups/[Ressourcengruppe]/providers/Microsoft.Network/networkSecurityGroups/[NSG-Name]*.
+- Wenn Sie nur Daten aus der Protokollkategorie erfassen möchten, fügen Sie `-Categories [category]` am Ende des Befehls im Artikel hinzu, wobei die Kategorie entweder *NetworkSecurityGroupEvent* oder *NetworkSecurityGroupRuleCounter* ist. Wenn Sie den `-Categories`-Parameter nicht verwenden, wird die Datensammlung für beide Protokollkategorien aktiviert.
+
+## <a name="logged-data"></a>Protokollierte Daten
+
+JSON-formatierte Daten werden für beide Protokolle geschrieben. Die für jeden Protokolltyp geschriebenen spezifischen Daten werden in den folgenden Abschnitten aufgeführt:
+
+### <a name="event-log"></a>Ereignisprotokoll
+Dieses Protokoll enthält Informationen darüber, welche NSG-Regeln basierend auf der MAC-Adresse für virtuelle Computer und Clouddienst-Rolleninstanzen gelten. Die folgenden Beispieldaten werden für jedes Ereignis protokolliert:
+
+```json
+{
+    "time": "[DATE-TIME]",
+    "systemId": "007d0441-5d6b-41f6-8bfd-930db640ec03",
+    "category": "NetworkSecurityGroupEvent",
+    "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION-ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
+    "operationName": "NetworkSecurityGroupEvents",
+    "properties": {
+        "vnetResourceGuid":"{5E8AEC16-C728-441F-B0CA-B791E1DBC2F4}",
+        "subnetPrefix":"192.168.1.0/24",
+        "macAddress":"00-0D-3A-92-6A-7C",
+        "primaryIPv4Address":"192.168.1.4",
+        "ruleName":"UserRule_default-allow-rdp",
+        "direction":"In",
+        "priority":1000,
+        "type":"allow",
+        "conditions":{
+            "protocols":"6",
+            "destinationPortRange":"3389-3389",
+            "sourcePortRange":"0-65535",
+            "sourceIP":"0.0.0.0/0",
+            "destinationIP":"0.0.0.0/0"
             }
         }
-    }
+}
+```
 
-## <a name="view-and-analyze-the-audit-log"></a>Anzeigen und Analysieren des Überwachungsprotokolls
-Mit einer der folgenden Methoden können Sie die Überwachungsprotokolldaten anzeigen und analysieren:
+### <a name="rule-counter-log"></a>Regelzählerprotokoll
 
-* **Azure-Tools:** Rufen Sie Informationen aus den Überwachungsprotokollen über Azure PowerShell, die Azure-Befehlszeilenschnittstelle, die Azure REST-API oder über das Azure-Vorschauportal ab.  Schrittweise Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md) .
-* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing) -Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Audit Logs Content Pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
+Dieses Protokoll enthält Informationen über jede Regel, die auf Ressourcen angewendet. Die folgenden Beispieldaten werden jedes Mal protokolliert, wenn eine Regel angewendet wird:
 
-## <a name="view-and-analyze-the-counter-and-event-log"></a>Anzeigen und Analysieren der Leistungsindikatoren- und Ereignisprotokolle
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) kann die Leistungsindikator- und Ereignisprotokolldateien aus Ihrem Blobspeicherkonto erfassen und enthält Visualisierungen und leistungsfähige Suchfunktionen, um Ihre Protokolle zu analysieren.
+```json
+{
+    "time": "[DATE-TIME]",
+    "systemId": "007d0441-5d6b-41f6-8bfd-930db640ec03",
+    "category": "NetworkSecurityGroupRuleCounter",
+    "resourceId": "/SUBSCRIPTIONS/[SUBSCRIPTION ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME]TESTRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG-NAME]",
+    "operationName": "NetworkSecurityGroupCounters",
+    "properties": {
+        "vnetResourceGuid":"{5E8AEC16-C728-441F-B0CA-791E1DBC2F4}",
+        "subnetPrefix":"192.168.1.0/24",
+        "macAddress":"00-0D-3A-92-6A-7C",
+        "primaryIPv4Address":"192.168.1.4",
+        "ruleName":"UserRule_default-allow-rdp",
+        "direction":"In",
+        "type":"allow",
+        "matchedConnections":125
+        }
+}
+```
 
-Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Leistungsindikator- und Ereignisprotokolle abrufen. Sobald Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, PowerBI oder einem anderen Datenvisualisierungstool anzeigen.
+## <a name="view-and-analyze-logs"></a>Anzeigen und Analysieren von Protokollen
 
-> [!TIP]
-> Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von Github verwenden
-> 
-> 
-
-## <a name="next-steps"></a>Nächste Schritte
-* Visualisieren von Leistungsindikator- und Ereignisprotokollen mit [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
-* [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) .
-* [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) .
+Lesen Sie den Artikel [Overview of the Azure Activity Log](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zum Azure-Aktivitätsprotokoll), um zu erfahren, wie Sie Aktivitätsprotokolldaten anzeigen. Lesen Sie den Artikel [Overview of Azure Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zu Azure-Diagnoseprotokollen), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Wenn Sie Diagnosedaten an Log Analytics senden, können Sie mithilfe der Verwaltungslösung für die [Azure-Netzwerksicherheitsgruppen-Analyse](../log-analytics/log-analytics-azure-networking-analytics.md) (Vorschau) verbesserte Einblicke erhalten. 
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

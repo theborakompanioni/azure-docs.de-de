@@ -8,6 +8,6 @@ Virtuelle ExpressRoute-Netzwerkgateways können folgende SKUs verwenden:
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

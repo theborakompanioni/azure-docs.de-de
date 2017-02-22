@@ -1,5 +1,5 @@
 ---
-title: "Hinzufügen von Funktionen zu Ihrer ersten Web-App"
+title: "Hinzufügen von Funktionen zu Ihrer ersten Web-App | Microsoft-Dokumentation"
 description: "Fügen Sie Ihrer ersten Web-App in minutenschnelle tolle Features hinzu."
 services: app-service\web
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/12/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b2c501b6e048d569ebf43b8f40d6b08f687ab624
-ms.openlocfilehash: 549b84788259796c2146fa19763fb00d4e03019c
+ms.sourcegitcommit: 9916000ddf38fdda1dcbdcf8818c5833a445efc8
+ms.openlocfilehash: 3f099db9f75466b5571aa732bb60343af7bd86da
 
 
 ---
@@ -52,9 +52,9 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihrer App ganz einfach eine Authentifi
     Nach einer erfolgreichen Änderung sehen Sie, dass die Benachrichtigungsglocke grün und zusätzlich eine benutzerfreundliche Nachricht angezeigt wird.
 6. Klicken Sie auf dem Portalblatt Ihrer App auf den Link **URL** (oder auf der Menüleiste auf **Durchsuchen**). Der Link ist eine HTTP-Adresse.  
     ![Authentifizieren – Zu URL navigieren](./media/app-service-web-get-started/aad-login-browse-click.png)  
-     Aber sobald die App auf einer neuen Registerkarte geöffnet wird, führt das Feld „URL“ mehrere Umleitungen durch, bis Ihre App schließlich über eine HTTPS-Adresse verfügt. Sie sehen, dass Sie bereits beim Azure-Abonnement angemeldet sind, und Sie werden automatisch in der App authentifiziert.  
+    Aber sobald die App auf einer neuen Registerkarte geöffnet wird, führt das Feld „URL“ mehrere Umleitungen durch, bis Ihre App schließlich über eine HTTPS-Adresse verfügt. Sie sehen, dass Sie bereits beim Azure-Abonnement angemeldet sind, und Sie werden automatisch in der App authentifiziert.  
     ![Authentifizieren – Angemeldet](./media/app-service-web-get-started/aad-login-browse-http-postclick.png)  
-     Wenn Sie nun eine nicht authentifizierte Sitzung in einem anderen Browser öffnen, wird ein Anmeldebildschirm angezeigt, sobald Sie zur gleichen URL navigieren.  
+    Wenn Sie nun eine nicht authentifizierte Sitzung in einem anderen Browser öffnen, wird ein Anmeldebildschirm angezeigt, sobald Sie zur gleichen URL navigieren.  
     <!-- ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png)  -->
     Falls Sie Azure Active Directory noch nie verwendet haben, enthält Ihr Standardverzeichnis ggf. keine Azure AD-Benutzer. In diesem Fall ist darin als einziges Konto wahrscheinlich das Microsoft-Konto mit Ihrem Azure-Abonnement vorhanden. Dies ist der Grund dafür, warum Sie in demselben Browser zuvor automatisch an der App angemeldet wurden.
    Sie können dasselbe Microsoft-Konto verwenden, um sich auf dieser Anmeldeseite anzumelden.
@@ -157,6 +157,6 @@ Sie können sich darüber informieren, welche anderen Möglichkeiten Sie mit der
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

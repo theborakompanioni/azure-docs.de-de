@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2016
+ms.date: 01/11/2017
 ms.author: v-donglo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e7eecd1387823100af2e44f918450db3301f55fd
+ms.sourcegitcommit: 201b07536bcee58e2b7102379dff1c1c93c4b675
+ms.openlocfilehash: adf31b2e309e4ec19bb19e5683bd5298d27ad3eb
 
 
 ---
@@ -41,7 +41,7 @@ Beginnen Sie mit dem vorhandenen Webdienst und Experimenten, und führen Sie die
    6. Aktualisieren Sie den Webdienst mit der neuen Webdienstdefinition.
 
 ## <a name="deploy-the-training-experiment"></a>Bereitstellen des Trainingsexperiments
-Um das Trainingsexperiment als Webdienst zum erneuten Trainieren bereitzustellen, müssen Sie Webdienst-Eingaben und -Ausgaben dem Modell hinzufügen. Durch Herstellen einer Verbindung zwischen einem *Web Service Output* (Webdienst-Ausgabe)-Modul und dem Modul *[Train Model][train-model]* (Modell trainieren) aktivieren Sie das Trainingsexperiment, ein neues trainiertes Modell zu erstellen, das Sie in Ihrem Vorhersageexperiment verwenden können. Wenn Sie ein Modul *Evaluate Model* (Modell auswerten) haben, können Sie auch Webdienst-Ausgaben zum Abrufen der Ergebnisse der Auswertung als Ausgabe anfügen.
+Um das Trainingsexperiment als Webdienst zum erneuten Trainieren bereitzustellen, müssen Sie Webdienst-Eingaben und -Ausgaben dem Modell hinzufügen. Durch Herstellen einer Verbindung zwischen einem Modul *Web Service Output* und dem Modul *[Train Model][train-model]* ermöglichen Sie dem Trainingsexperiment, ein neues trainiertes Modell zu erstellen, das Sie in Ihrem Vorhersageexperiment verwenden können. Wenn Sie ein Modul *Evaluate Model* (Modell auswerten) haben, können Sie auch Webdienst-Ausgaben zum Abrufen der Ergebnisse der Auswertung als Ausgabe anfügen.
 
 So aktualisieren Sie das Trainingsexperiment:
 
@@ -182,7 +182,7 @@ Konvertieren Sie die geänderte JSON-Datei mithilfe des Cmdlets [Import-AzureRmM
 ## <a name="update-the-web-service"></a>Aktualisieren des Webdiensts
 Verwenden Sie abschließend das Cmdlet [Update-AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx), um das Vorhersageexperiment zu aktualisieren.
 
-    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -
+    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 [1]: ./media/machine-learning-retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png
 [4]: ./media/machine-learning-retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png
@@ -193,6 +193,6 @@ Verwenden Sie abschließend das Cmdlet [Update-AzureRmMlWebService](https://msdn
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

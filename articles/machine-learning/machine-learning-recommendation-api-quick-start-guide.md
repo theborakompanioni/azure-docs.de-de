@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstartanleitung: Machine Learning-Empfehlungs-API | Microsoft-Dokumentation'
+title: 'Schnellstart: Azure Machine Learning-Empfehlungs-API (Version&1;)  | Microsoft-Dokumentation'
 description: "Azure Machine Learning-Empfehlungen – Erste Schritte"
 services: machine-learning
 documentationcenter: 
@@ -12,22 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 02/07/2017
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 099090d06163f15a08592e25f6171cfacf24b0f1
-ms.openlocfilehash: bf47dd8f88405f2bed31c621e37531e3641ddc6c
+ms.sourcegitcommit: c5d1812a3bd7e1ad3621ca691339f01729882b08
+ms.openlocfilehash: 67131bbaccff549817bfe5fdf874d609ea22c2bc
 
 
 ---
-# <a name="quick-start-guide-for-the-machine-learning-recommendations-api"></a>Kurzanleitung für die Machine Learning Empfehlungen-API
+# <a name="quick-start-guide-for-the-machine-learning-recommendations-api-version-1"></a>Schnellstartanleitung für die Machine Learning-Empfehlungs-API (Version 1)
+
 > [!NOTE]
-> Beginnen Sie mit der Nutzung der Empfehlungs-API des Cognitive Service anstatt mit dieser Version. Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw.
-> Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate)
+> Beginnen Sie anstatt mit dieser Version mit der Nutzung der [Cognitive Service-Empfehlungs-API](https://www.microsoft.com/cognitive-services/recommendations-api). Der Recommendations Cognitive Service wird diesen Dienst ersetzen, weshalb alle neuen Features dafür entwickelt werden. Der Dienst bietet neue Funktionen wie Unterstützung der Batchverarbeitung, einen besseren API-Explorer, eine übersichtlichere API-Oberfläche, eine einheitlicherere Registrierungs-/Abrechnungsumgebung usw.
+>
+> Erfahren Sie mehr zur [Migration zum neuen Cognitive Service](http://aka.ms/recomigrate).
 > 
 > 
 
-Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung zur Verwendung von Microsoft Azure Machine Learning-Empfehlungen einrichten. Weitere Informationen zur Empfehlungs-API finden Sie im [Katalog](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
+Dieses Dokument beschreibt, wie Sie Ihren Dienst oder Ihre Anwendung zur Verwendung von Microsoft Azure Machine Learning-Empfehlungen einrichten. Weitere Informationen zur Empfehlungs-API finden Sie im [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -48,9 +50,9 @@ Die oben aufgeführten Schritte erfolgen über die Azure Machine Learning-Empfeh
 ## <a name="limitations"></a>Einschränkungen
 * Die Maximale Anzahl von Modellen pro Abonnement beträgt 10.
 * Die maximale Anzahl von Elementen, die ein Katalog aufnehmen kann, beträgt 100.000.
-* Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa 5.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
+* Die maximale Menge der Nutzungspunkte, die aufbewahrt werden, beträgt etwa&5;.000.000. Die ältesten werden gelöscht, wenn neue hochgeladen oder gemeldet werden.
 * Die maximale Größe der Daten, die in POST gesendet werden können (z.B. Importieren von Katalog- oder Nutzungsdaten), beträgt 200 MB.
-* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa 2 T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
+* Die Anzahl der Transaktionen pro Sekunde bei Empfehlungsmodellbuilds, die nicht aktiv sind, beträgt etwa&2; T/s. Bei aktiven Empfehlungsmodellbuilds sind bis zu 20 T/s möglich.
 
 ## <a name="integration"></a>Integration
 ### <a name="authentication"></a>Authentifizierung
@@ -81,7 +83,7 @@ Den Dienststamm-URI für die APIs zu Azure Machine Learning-Empfehlungen finden 
 Der vollständige Dienst-URI wird unter Verwendung von Elementen der OData-Spezifikation angegeben.
 
 ### <a name="api-version"></a>API-Version
-Jeder API-Aufruf enthält am Ende einen Abfrageparameter namens apiVersion. Dieser muss auf 1.0 festgelegt sein.
+Jeder API-Aufruf enthält am Ende einen Abfrageparameter namens apiVersion. Dieser muss auf&1;.0 festgelegt sein.
 
 ### <a name="ids-are-case-sensitive"></a>Groß-/Kleinschreibung bei IDs
 Bei IDs, die von den APIs zurückgegeben werden, muss die Groß-/Kleinschreibung beachtet werden, wenn sie in nachfolgenden API-Aufrufen als Parameter weitergegeben werden. Beispielsweise muss bei Modell- und Katalog-IDs die Groß-/Kleinschreibung beachtet werden.
@@ -698,11 +700,11 @@ OData-XML
     </feed>
 
 ## <a name="legal"></a>Rechtliche Hinweise
-Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt.  Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. © 2014 Microsoft. Alle Rechte vorbehalten. 
+Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Einige der in diesem Dokument dargestellten Beispiele dienen nur zu Illustrationszwecken und sind frei erfunden. Ähnlichkeiten oder Verbindungen sind rein zufällig und nicht beabsichtigt. Dieses Dokument gibt Ihnen keinerlei geistige Eigentums- oder anderweitige Rechte an irgendeinem Microsoft-Produkt. Sie dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden. © 2014 Microsoft. Alle Rechte vorbehalten. 
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO5-->
 
 

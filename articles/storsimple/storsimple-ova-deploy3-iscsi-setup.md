@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 07/18/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a5d3d1c9afd8023b201ff37318a3905b5fe791a2
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
 
 
 ---
@@ -52,7 +52,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
     Verwenden Sie die Verbindungs-URL aus dem vorherigen Schritt. Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website aufgetreten ist. Klicken Sie auf **Mit dieser Webseite fortfahren**.
    
     ![Sicherheitszertifikatfehler](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
-2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie unter „Schritt 3: Starten des virtuellen Geräts“ im Abschnitt [Bereitstellen des StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) bzw. [Bereitstellen des StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in VMware](storsimple-ova-deploy2-provision-vmware.md) geändert haben.
+2. Melden Sie sich bei der Webbenutzeroberfläche des virtuellen Geräts als **StorSimpleAdmin** an. Geben Sie das Geräteadministratorkennwort ein, das Sie unter „Schritt 3: Starten des virtuellen Geräts“ im Abschnitt [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) bzw. [Bereitstellen von StorSimple Virtual Array – Bereitstellen eines virtuellen Geräts in VMware](storsimple-ova-deploy2-provision-vmware.md) geändert haben.
    
     ![Anmeldeseite](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
 3. Sie gelangen auf die **Startseite** . Auf dieser Seite werden die verschiedenen Einstellungen beschrieben, die zum Konfigurieren und Registrieren des virtuellen Geräts beim StorSimple Manager-Dienst erforderlich sind. Beachten Sie, dass die **Netzwerkeinstellungen**, **Webproxyeinstellungen** und **Uhrzeiteinstellungen** optional sind. Die einzigen erforderlichen Einstellungen sind **Geräteeinstellungen** und **Cloudeinstellungen**.
@@ -72,7 +72,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
 6. Auf der Seite **Geräteeinstellungen** :
    
    1. Weisen Sie Ihrem Gerät einen eindeutigen **Namen** zu. Dieser Name kann 1 bis 15 Zeichen lang sein und Buchstaben, Zahlen und Bindestriche enthalten.
-   2. Klicken Sie auf das Symbol **iSCSI-Server** ![iSCSI-Serversymbol](./media/storsimple-ova-deploy3-iscsi-setup/image7.png) für den **Typ** von Gerät, den Sie erstellen. Ein iSCSI-Server ermöglicht Ihnen die Bereitstellung von Blockspeicher.
+   2. Klicken Sie auf das **iSCSI-Server**-Symbol ![iSCSI server icon](./media/storsimple-ova-deploy3-iscsi-setup/image7.png) für den **Typ** des Geräts, das Sie erstellen. Ein iSCSI-Server ermöglicht Ihnen die Bereitstellung von Blockspeicher.
    3. Geben Sie an, ob für das Gerät der Beitritt zu einer Domäne durchgeführt werden soll. Wenn es sich bei Ihrem Gerät um einen iSCSI-Server handelt, ist der Domänenbeitritt optional. Wenn Sie sich gegen den Beitritt des iSCSI-Servers zu einer Domäne entscheiden, klicken Sie auf **Übernehmen**, warten Sie das Anwenden der Einstellungen ab, und wechseln Sie dann zum nächsten Schritt.
       
        Gehen Sie wie folgt vor, wenn Sie für das Gerät den Domänenbeitritt durchführen möchten: Geben Sie einen **Domänennamen** ein, und klicken Sie dann auf **Übernehmen**.
@@ -81,7 +81,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
       > Stellen Sie beim Beitritt Ihres iSCSI-Servers zu einer Domäne sicher, dass sich Ihr virtuelles Array in seiner eigenen Organisationseinheit für Microsoft Azure Active Directory befindet und keine Gruppenrichtlinienobjekte darauf angewendet sind.
       > 
       > 
-   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
+   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-deploy3-iscsi-setup/image15.png)beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
       
        ![Anmeldeinformationen](./media/storsimple-ova-deploy3-iscsi-setup/image8.png)
    5. Klicken Sie auf **Übernehmen**. Die Geräteeinstellungen werden angewendet und überprüft.
@@ -135,7 +135,7 @@ Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um die erfor
    
    1. Geben Sie ein Speicherkonto für das Gerät an. In diesem Abonnement können Sie in der Dropdownliste ein vorhandenes Speicherkonto auswählen oder **Weitere hinzufügen** angeben, um ein Konto eines anderen Abonnements auszuwählen.
    2. Definieren Sie die Verschlüsselungseinstellungen für alle ruhenden Daten, die in die Cloud gesendet werden. (Für StorSimple wird die AES-256-Verschlüsselung verwendet.) Aktivieren Sie zum Verschlüsseln der Daten das Kontrollkästchen **Cloudspeicherverschlüsselung aktivieren**. Geben Sie eine Cloudspeicherverschlüsselung ein, die 32 Zeichen lang ist. Geben Sie den Schlüssel erneut ein, um ihn zu bestätigen.
-   3. Klicken Sie zum Speichern der Änderungen am Zeitplan auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) beschrieben.
+   3. Klicken Sie zum Speichern der Änderungen am Zeitplan auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-deploy3-iscsi-setup/image15.png)beschrieben.
       
       ![Grundlegende Einstellungen](./media/storsimple-ova-deploy3-iscsi-setup/image16.png)
       
@@ -171,7 +171,7 @@ Führen Sie die folgenden Schritte im klassischen Azure-Portal aus, um ein Volum
    3. Es wird empfohlen, eine Standardsicherung zu aktivieren, indem Sie das Kontrollkästchen **Standardsicherung für dieses Volume aktivieren** aktivieren. Die Standardsicherung erstellt eine Richtlinie, die jeden Tag um 22:30 Uhr ausgeführt wird (Uhrzeit des Geräts) und eine Cloud-Momentaufnahme dieses Volumes erstellt.
       
        ![Zusätzliche Einstellungen](./media/storsimple-ova-deploy3-iscsi-setup/image19.png)
-   4. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) beschrieben. Der Auftrag zur Erstellung des Volumes wird gestartet. Sie sehen eine Statusmeldung, die folgender Meldung ähnelt:
+   4. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-deploy3-iscsi-setup/image15.png)beschrieben. Der Auftrag zur Erstellung des Volumes wird gestartet. Sie sehen eine Statusmeldung, die folgender Meldung ähnelt:
       
        ![Statusmeldung](./media/storsimple-ova-deploy3-iscsi-setup/image20.png)
       
@@ -214,7 +214,7 @@ Führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Win
 12. Weisen Sie dem Volume einen Laufwerkbuchstaben zu, und klicken Sie dann auf **Weiter**.
     
     ![Assistent für neue Volumes 2](./media/storsimple-ova-deploy3-iscsi-setup/image30.png)
-13. Geben Sie die Parameter zum Formatieren des Volumes ein. **Unter Windows Server wird nur NTFS unterstützt.**  Legen Sie den AUS-Wert (Größe der Zuordnungseinheit) auf 64 K fest. Geben Sie eine Bezeichnung für das Volume an. Die empfohlene bewährte Methode besteht darin, dass dieser Name mit dem Volumenamen identisch ist, den Sie auf Ihrem virtuellen StorSimple-Gerät angegeben haben. Klicken Sie auf **Weiter**.
+13. Geben Sie die Parameter zum Formatieren des Volumes ein. **Unter Windows Server wird nur NTFS unterstützt.** Legen Sie den AUS-Wert (Größe der Zuordnungseinheit) auf 64 K fest. Geben Sie eine Bezeichnung für das Volume an. Die empfohlene bewährte Methode besteht darin, dass dieser Name mit dem Volumenamen identisch ist, den Sie auf Ihrem virtuellen StorSimple-Gerät angegeben haben. Klicken Sie auf **Weiter**.
     
     ![Assistent für neue Volumes 3](./media/storsimple-ova-deploy3-iscsi-setup/image31.png)
 14. Überprüfen Sie die Werte für Ihr Volume, und klicken Sie dann auf **Fertig stellen**.
@@ -246,6 +246,6 @@ Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9ba47b6b4783dee84daa8dae6d4838a3d84022e0
+ms.sourcegitcommit: e1c9957f64e9a0a17823a881b060543a9346f457
+ms.openlocfilehash: 8e69d4efe14e29d9f009a4b65416207bb39faa8b
 
 
 ---
@@ -26,7 +26,7 @@ Dieses Tutorial soll Ihnen zeigen, wie Sie Weekdone in Azure Active Directory (A
 Die Integration von Weekdone in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Weekdone hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Weekdone anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Weekdone anzumelden (einmaliges Anmelden).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -35,7 +35,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Weekdone konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein Weekdone-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Weekdone-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -110,29 +110,29 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD i
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_04.png) 
 
-    a. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: **„https://weekdone.com/a/azure“**.
+   1. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: **„https://weekdone.com/a/azure“**.
 
-    b. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: **„https://weekdone.com/a/azure/metadata“**.
+   2. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: **„https://weekdone.com/a/azure/metadata“**.
 
-    c. Klicken Sie auf **Weiter**.
+   3. Klicken Sie auf **Weiter**.
 
 1. Wenn die Anwendung im **SP-initiierten Modus** konfiguriert werden soll, klicken Sie auf der Dialogfeldseite **App-Einstellungen konfigurieren** auf **Zeigen Sie die erweiterten Einstellungen an (optional)**, geben Sie die **Anmelde-URL** und den **Bezeichner** ein, und klicken Sie dann auf **Weiter**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_06.png) 
    
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Weekdone-Anwendung verwendet wird, nach folgendem Muster ein: **„https://weekdone.com/a/azure“**.
+   1. Geben Sie im Textfeld **Anmelde-URL** die URL, die von Ihren Benutzern zur Anmeldung bei der Weekdone-Anwendung verwendet wird, nach folgendem Muster ein: **„https://weekdone.com/a/azure“**.
    
-    b. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: **„https://weekdone.com/a/azure/metadata“**.
+   2. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: **„https://weekdone.com/a/azure/metadata“**.
    
-    c. Klicken Sie auf **Weiter**.
+   3. Klicken Sie auf **Weiter**.
 2. Führen Sie auf der Seite **Einmaliges Anmelden bei Weekdone konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_05.png) 
    
-    a. Klicken Sie auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
-3. Wenden Sie sich unter hello@weekdone.com. Hängen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail-Nachricht an, und teilen Sie dem Weekdone-Team die Metadaten-URLs (Aussteller-URL, SAML-SSO-URL und Dienst-URL für das einmalige Abmelden) zum Einrichten von SSO auf seiner Seite mit.
+   1. Klicken Sie auf **Zertifikat herunterladen**, und speichern Sie das Zertifikat auf Ihrem Computer.
+   2. Klicken Sie auf **Weiter**.
+    
+3. Wenden Sie sich unter hello@weekdone.com an das Supportteam von Weekdone, um SSO für Ihre Anwendung konfigurieren zu lassen. Hängen Sie die heruntergeladene Zertifikatdatei an Ihre E-Mail-Nachricht an, und teilen Sie dem Weekdone-Team die Metadaten-URLs (Aussteller-URL, SAML-SSO-URL und Dienst-URL für das einmalige Abmelden) zum Einrichten von SSO auf seiner Seite mit.
 4. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
@@ -149,44 +149,50 @@ In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens 
 
 1. Klicken Sie im **klassischen Azure-Portal** im linken Navigationsbereich auf **Active Directory**.
    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_09.png) 
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_09.png) 
+    
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-   
+4.    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_03.png) 
+    
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_04.png) 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_05.png) 
+    
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_05.png) 
    
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    3. Klicken Sie auf **Weiter**.
+    
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_06.png) 
    
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
+  
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
+
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_07.png) 
-8. Führen Sie auf der Dialogfeldseite **Temporäres Kennwort abrufen** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
+    
+8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-weekdone-tutorial/create_aaduser_08.png) 
    
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   1. Notieren Sie den Wert von **Neues Kennwort**. 
+   2. Klicken Sie auf **Fertig stellen**.   
 
 ### <a name="creating-a-weekdone-test-user"></a>Erstellen einen Weekdone-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Weekdone. Weekdone unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Weekdone ein neuer Benutzer erstellt. [Konfigurieren der einmaligen Anmeldung in Azure AD](#configuring-azure-ad-single-single-sign-on)
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Weekdone ein neuer Benutzer erstellt. [Konfigurieren der einmaligen Anmeldung in Azure AD](#configuring-azure-ad-single-single-sign-on).
 
 > [!NOTE]
 > Setzen Sie sich über hello@weekdone.com mit dem Supportteam von Weekdone in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
@@ -243,6 +249,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel "Weekdone" klicken, sollten Sie autom
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

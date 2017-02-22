@@ -1,5 +1,5 @@
 ---
-title: Speichern und Lesen von Nachrichten in der Azure-Cloud | Microsoft Docs
+title: "SensorTag-Gerät und Azure IoT Gateway – Lektion 4: Erstellen der Funktionen-App | Microsoft-Dokumentation"
 description: Speichern Sie Nachrichten von Intel NUC in Ihrer IoT Hub-Instanz, schreiben Sie sie in Azure Table Storage, und lesen Sie diese aus der Cloud.
 services: iot-hub
 documentationcenter: 
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 10/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 65a25dd7a2f6a8d518217512f9e10fc9008ee728
-ms.openlocfilehash: 73c5268ece75776a3c5007b612f84bd29cc7784d
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: 3672804218dbbe3a545536b8c4baccb2b9171cdc
 
 
 ---
 # <a name="create-an-azure-function-app-and-storage-account"></a>Erstellen einer Azure-Funktionen-App und eines Speicherkontos
 
-Azure Functions ist eine Lösung, mit der Sie ganz einfach _Funktionen_ (kleinere Codeelemente) in der Cloud ausführen können. Eine Azure-Funktionen-App hostet die Ausführung Ihrer Funktionen in Azure. 
+Azure Functions ist eine Lösung, mit der Sie _Funktionen_ (kleinere Codeelemente) problemlos in der Cloud ausführen können. Eine Azure-Funktionen-App hostet die Ausführung Ihrer Funktionen in Azure. 
 
 ## <a name="what-you-will-do"></a>Aufgaben
 
@@ -58,7 +58,7 @@ gulp init
 code .
 ```
 
-![Repositorystruktur](media/iot-hub-gateway-kit-lessons/lesson4/arm_template.png)
+![repo structure](media/iot-hub-gateway-kit-lessons/lesson4/arm_template.png)
 
 - Die Datei `arm-template.json` ist die Azure Resource Manager-Vorlage mit der Azure-Funktionen-App und einem Azure-Speicherkonto.
 - Die Datei `arm-template-param.json` ist die Konfigurationsdatei, die von der Azure Resource Manager-Vorlage verwendet wird.
@@ -68,7 +68,7 @@ code .
 
 Aktualisieren Sie die Datei `arm-template-param.json` in Visual Studio Code.
 
-![ARM-Vorlage JSON](media/iot-hub-gateway-kit-lessons/lesson4/arm_template_param.png)
+![arm template json](media/iot-hub-gateway-kit-lessons/lesson4/arm_template_param.png)
 
 - Ersetzen Sie `[your IoT Hub name]` durch `{my hub name}`, den Sie in Lektion 2 angegeben haben.
 
@@ -85,10 +85,10 @@ Verwenden Sie `iot-gateway` als Wert von `{resource group name}`, sofern Sie ihn
 Sie haben die Azure-Funktionen-App zum Verarbeiten von IoT Hub-Nachrichten sowie ein Azure-Speicherkonto zum Speichern dieser Nachrichten erstellt. Sie können jetzt Nachrichten lesen, die durch das Gateway auf Ihre IoT Hub-Instanz gesendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Lesen von Nachrichten in Azure Storage](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
+[Lesen von persistent gespeicherten Nachrichten in Azure Storage](iot-hub-gateway-kit-c-lesson4-read-table-storage.md)
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

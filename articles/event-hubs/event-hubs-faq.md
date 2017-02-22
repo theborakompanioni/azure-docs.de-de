@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/01/2016
+ms.date: 12/07/2016
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: eb8a1f5b46ed5bfbdc61789ffc48a79927d9c19d
+ms.sourcegitcommit: fceb8f6c8f28e84eb8926586257cf39dc0cd14d4
+ms.openlocfilehash: 4977daeecd9e206906c2e0b3b95b63d4d55cb859
 
 
 ---
@@ -71,33 +71,30 @@ Für Absender fallen Verbindungsgebühren nur an, wenn das AMQP-Protokoll verwen
 Event Hubs im Standard-Tarif bieten mehr Features als der Basic-Tarif sowie einige vergleichbare Systeme. Zu diesen Features gehören Aufbewahrungszeiträume von mehr als 24 Stunden und die Fähigkeit, eine einzelne AMQP-Verbindung zum Senden von Befehlen an eine große Anzahl von Geräten mit einer Latenz von Sekundenbruchteilen sowie Telemetriedaten von diesen Geräten an Event Hubs zu senden. Die Liste der Funktionen finden Sie unter [Event Hubs – Preisdetails](https://azure.microsoft.com/pricing/details/event-hubs/)
 
 ## <a name="geographic-availability"></a>Geografische Verfügbarkeit
-Event Hubs ist in den folgenden Regionen verfügbar:
 
-| geografischer Raum | Regionen |
-| --- | --- |
-| USA |„USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Mitte-Süden“, „USA, Westen“ |
-| Europa |„Europa, Norden“, „Europa, Westen“ |
-| Asien-Pazifik |„Asien, Osten“, „Asien, Südosten“ |
-| Japan |„Japan, Osten“, „Japan, Westen“ |
-| Brasilien |Brasilien, Süden |
-| Australien |„Australien, Osten“, „Australien, Südosten“ |
+Azure Event Hubs ist in allen unterstützten Azure-Regionen verfügbar. Eine Liste finden Sie auf der Seite [Azure-Regionen][].  
 
 ## <a name="support-and-sla"></a>Support und SLA
 Technischer Support für Event Hubs steht über die [Communityforen](https://social.msdn.microsoft.com/forums/azure/home)bereit. Der Support für die Abrechnungs- und Abonnementverwaltung wird kostenlos bereitgestellt.
 
 Weitere Informationen zu unserem SLA finden Sie auf der Seite [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) .
 
+## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+
+Event Hubs unterstützt zwei Arten von [Diagnoseprotokollen](event-hubs-diagnostic-logs.md): Archivfehlerprotokolle und Betriebsprotokolle. Beide werden im JSON-Format dargestellt und können über das Azure-Portal aktiviert werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Event Hubs finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* [Übersicht über Event Hubs][Übersicht über Event Hubs].
-* Eine vollständige [Beispielanwendung zur Verwendung von Event Hubs][Beispielanwendung zur Verwendung von Event Hubs].
+* [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Erstellen eines Event Hubs](event-hubs-create.md)
 
-[Übersicht über Event Hubs]: event-hubs-overview.md
-[Beispielanwendung zur Verwendung von Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hubs overview]: event-hubs-overview.md
+[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Azure-Regionen]: https://azure.microsoft.com/regions/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

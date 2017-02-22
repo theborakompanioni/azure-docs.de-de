@@ -26,6 +26,7 @@
 ### [Nachverfolgen eines Runbookauftrags](automation-runbook-execution.md)
 ### [Ändern der Runbookeinstellungen](automation-runbook-settings.md)
 ### [Verwalten von Azure Automation-Daten](automation-managing-data.md)
+### [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](automation-invoke-runbook-from-omsla-alert.md)
 ## Bereitstellen der Konfigurationsverwaltung (DSC)
 ### [Konfigurieren des gewünschten Zustands (Desired State Configuration, DSC)](automation-dsc-overview.md)
 ### [Erste Schritte](automation-dsc-getting-started.md)
@@ -43,6 +44,7 @@
 ### [Integrationsmodule](automation-integration-modules.md)
 ### [Zeitpläne](automation-schedules.md)
 ### [Variablen](automation-variables.md)
+### [Aktualisieren von Azure PowerShell-Modulen](automation-update-azure-modules.md)
 ## Automatisieren von Szenarios
 ### [Runbook-Katalog](automation-runbook-gallery.md)
 ### [Starten und Beenden von virtuellen Computern](automation-solution-startstopvm-graphical.md)
@@ -53,7 +55,9 @@
 ### [Entfernen von Ressourcengruppen](automation-scenario-remove-resourcegroup.md)
 ### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 ### [Integration der Quellcodeverwaltung mit GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md)
-## [Überwachen](automation-manage-send-joblogs-log-analytics.md)
+## Überwachen
+### [Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [Aufheben der Verknüpfung eines Azure Automation-Kontos mit Log Analytics](automation-unlink-from-log-analytics.md)
 ## Migrieren
 ### [Migration von Orchestrator](automation-orchestrator-migration.md)
 ### [Verschieben des Automation-Kontos](automation-migrate-account-subscription.md)
@@ -78,6 +82,6 @@
 ## [Einführungsvideo für Automation](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/22/2016
+ms.date: 02/10/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f3787f72dbd8ee865899b71538816d2e8d30af32
+ms.sourcegitcommit: 8f171456f74925eba16ebd6f56ced558a11f9d99
+ms.openlocfilehash: 6c366a2b7e5017bbe67cf1dbefc0baec6cf1aed3
 
 
 ---
@@ -28,7 +28,7 @@ Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wi
 2. Wählen Sie **Active Directory**und dann den Namen des Verzeichnisses Ihrer Organisation.
 3. Wählen Sie die Registerkarte **Benutzer** und anschließend auf der Befehlsleiste die Option **Benutzer hinzufügen**.
 4. Wählen Sie auf der Seite **Informationen über diesen Benutzer** unter **Art des Benutzers** eine der folgenden Optionen aus:
-   
+
    * **Neuer Benutzer in Ihrem Unternehmen** : Dient zum Hinzufügen eines neuen Benutzerkontos zu Ihrem Verzeichnis.
    * **Benutzer mit einem vorhandenen Microsoft-Konto**: Dient zum Hinzufügen eines vorhandenen Microsoft-Kundenkontos (z.B. eines Outlook-Kontos) zu Ihrem Verzeichnis.
 5. Geben Sie je nach **Benutzertyp**einen Benutzernamen (für neue Benutzer) oder eine E-Mail-Adresse (für einen Benutzer mit einem Microsoft-Konto) ein.
@@ -37,11 +37,11 @@ Fügen Sie Benutzer hinzu, um Ihr Verzeichnis aufzufüllen. In diesem Artikel wi
 
 > [!IMPORTANT]
 > Achten Sie auf die folgenden Probleme, die beim Hinzufügen eines Benutzerkontos auftreten können, wenn Ihre Organisation mehr als eine Domäne verwendet:
-> 
-> * Um Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzuzufügen, können Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com,** und anschließend **geoffgrisso@contoso.com. hinzufügen.
-> * geoffgrisso@contoso.com **nicht** vorgeoffgrisso@contoso.onmicrosoft.com. hinzufügen: Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
-> 
-> 
+>
+> * Wenn Sie Benutzerkonten mit dem gleichen Benutzerprinzipalnamen (User Principal Name, UPN) domänenübergreifend hinzufügen möchten, fügen Sie **zuerst** beispielsweise geoffgrisso@contoso.onmicrosoft.com, und **anschließend ** geoffgrisso@contoso.com hinzu.
+> * Fügen Sie geoffgrisso@contoso.com **nicht** vor geoffgrisso@contoso.onmicrosoft.com hinzu. Diese Reihenfolge ist wichtig, und es kann umständlich sein, diesen Vorgang rückgängig zu machen.
+>
+>
 
 ## <a name="change-user-information"></a>Ändern von Benutzerinformationen
 Sie können alle Benutzerattribute ändern, mit Ausnahme der Objekt-ID.
@@ -87,6 +87,6 @@ Anschließend können Sie die Optionen zur Zugriffssteuerung für Gastbenutzer �
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

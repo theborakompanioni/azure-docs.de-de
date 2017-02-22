@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2016
+ms.date: 12/14/2016
 ms.author: magoedte;bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 09c1df79e9a4af666cdd46da115b9af78dd27d72
+ms.sourcegitcommit: e6033f089152c27713f98f12634c53012f5ff070
+ms.openlocfilehash: 04cfafc9e7a037d915f63723fd0b67a07954460b
 
 
 ---
@@ -26,7 +26,7 @@ Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie e
 Sie können Runbooks aus dem [Runbook-Katalog](#runbooks-in-runbook-gallery) und Module aus dem [PowerShell-Katalog](#modules-in-powerShell-gallery) abrufen.  Sie können auch etwas zur Community beitragen, indem Sie von Ihnen entwickelte Szenarien zur Verfügung stellen.
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbooks im Runbook-Katalog
-Der [Runbook-Katalog](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Sie können entweder ein Runbook aus dem Katalog im [TechNet Script Center](http://gallery.technet.microsoft.com/)herunterladen oder Runbooks direkt aus dem Katalog über das klassische Azure-Portal oder das Azure-Portal importieren.
+Der [Runbook-Katalog](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Sie können entweder ein Runbook aus dem Katalog im [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload)herunterladen oder Runbooks direkt aus dem Katalog über das klassische Azure-Portal oder das Azure-Portal importieren.
 
 Das direkte Importieren aus dem Runbook-Katalog ist nur über das klassische Azure-Portal oder das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von Windows PowerShell ausgeführt werden.
 
@@ -125,6 +125,6 @@ Sie können Anforderungen an [User Voice](https://feedback.azure.com/forums/2462
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Allgemeine Metriken für die automatische Skalierung in Azure Monitor | Microsoft Docs"
+title: "Allgemeine Metriken für die automatische Skalierung in Azure Monitor | Microsoft-Dokumentation"
 description: "Erfahren Sie, welche Metriken häufig für die automatische Skalierung von Cloud Services, Virtual Machines und Web-Apps verwendet werden."
 author: kamathashwin
 manager: carolz
@@ -12,24 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2016
+ms.date: 12/6/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 8d5f8dd454741f5946d6a2c265ce67808abdac9e
+ms.sourcegitcommit: 376e3ff9078cf0b53493dbfee9273c415da04e52
+ms.openlocfilehash: fa978644f2cd95b8eb21687e90d16d0df22b3d44
 
 
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor
 Mit der automatischen Skalierung in Azure Monitor können Sie die Anzahl der ausgeführten Instanzen basierend auf Telemetriedaten (Metriken) zentral hoch- oder herunterskalieren. Dieses Dokument beschreibt allgemeine Metriken, die Sie verwenden möchten. Im Azure-Portal für Cloud Services und Serverfarmen können Sie die Metrik der Ressource für die Skalierung auswählen. Sie können jedoch auch eine Metrik aus einer anderen Ressource für die Skalierung auswählen.
 
-Nachfolgend finden Sie Details dazu, wie Sie die Metriken suchen und auflisten, nach denen Sie skalieren möchten. Folgendes gilt auch für Skalierungsgruppen für virtuelle Computer.
+Die folgenden Informationen gelten auch beim Skalieren von VM-Skalierungsgruppen.
 
-## <a name="compute-metrics"></a>Berechnen von Metriken
-Standardmäßig ist die Diagnoseerweiterung bei Azure VM v2 konfiguriert, wobei die folgenden Metriken aktiviert sind.
+> [!NOTE]
+> Diese Informationen gelten nur für Resource Manager-basierende virtuelle Computer und VM-Skalierungsgruppen. 
+> 
 
-* [Gastmetriken für Windows-VM v2](#compute-metrics-for-windows-vm-v2-as-a-guest-os)
-* [Gastmetriken für Linux-VM v2](#compute-metrics-for-linux-vm-v2-as-a-guest-os)
+## <a name="compute-metrics-for-resource-manager-based-vms"></a>Berechnen von Metriken für Resource Manager-basierte virtuelle Computer
+Standardmäßig geben Resource Manager-basierte virtuelle Computer und VM-Skalierungsgruppen grundlegende Metriken (also Metriken auf der Hostebene) aus. Wenn Sie die Erfassung von Diagnosedaten für einen virtuellen Azure-Computer und eine VM-Skalierungsgruppe konfigurieren, gibt die Azure-Diagnoseerweiterung darüber hinaus Leistungsmetriken für das Gastbetriebssystem (so genannte „Gastbetriebssystem-Metriken“) aus.  Diese Metriken werden alle in Regeln für die automatische Skalierung verwendet. 
 
 Sie können die `Get MetricDefinitions`-API/PoSH/CLI zum Anzeigen der Metriken für Ihre verfügbare VMSS-Ressource verwenden. 
 
@@ -37,10 +38,16 @@ Wenn Sie VM-Skalierungsgruppen verwenden und eine bestimmte Metrik nicht aufgef�
 
 Wenn eine bestimmte Metrik nicht mit der gewünschten Häufigkeit geprüft oder übertragen wird, können Sie die Diagnosekonfiguration aktualisieren.
 
-Wenn einer der beiden oben genannten Fälle zutrifft, lesen Sie unter [Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), um mehr darüber zu erfahren, wie Sie mit PowerShell die Azure-VM-Diagnoseerweiterung zur Aktivierung der Metrik konfigurieren und aktualisieren. Dieser Artikel enthält auch eine beispielhafte Diagnosekonfigurationsdatei.
+Wenn einer der oben genannten Fälle zutrifft, lesen Sie unter [Aktivieren der Azure-Diagnose auf einem virtuellen Azure-Computer unter Windows mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md) weiter, um mehr darüber zu erfahren, wie Sie mit PowerShell die Azure-VM-Diagnoseerweiterung zur Aktivierung der Metrik konfigurieren und aktualisieren. Dieser Artikel enthält auch eine beispielhafte Diagnosekonfigurationsdatei.
 
-### <a name="compute-metrics-for-windows-vm-v2-as-a-guest-os"></a>Berechnen von Metriken für Windows-VM v2 als Gastbetriebssystem
-Wenn Sie einen neuen virtuellen Computer (v2) in Azure erstellen, ist die Diagnose mithilfe der Diagnoseerweiterung aktiviert.
+### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer
+Die folgenden Metriken auf Hostebene werden standardmäßig für virtuelle Azure-Computer und VM-Skalierungsgruppen ausgegeben (sowohl in Windows- als auch in Linux-Instanzen). Diese Metriken beschreiben Ihren virtuellen Azure-Computer, werden aber nicht per installiertem Agent auf dem virtuellen Gastcomputer, sondern vom Azure-VM-Host erfasst. Sie können diese Metriken in Regeln für die automatische Skalierung verwenden. 
+
+- [Hostmetriken für Resource Manager-basierte virtuelle Windows- und Linux-Computer](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)
+- [Hostmetriken für Resource Manager-basierte VM-Skalierungsgruppen unter Windows oder Linux](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)
+
+### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Gastbetriebssystem-Metriken für Resource Manager-basierte virtuelle Windows-Computer
+Wenn Sie in Azure einen virtuellen Computer erstellen, wird die Diagnose durch Verwenden der Diagnoseerweiterung aktiviert. Die Diagnoseerweiterung gibt einen Satz von Metriken aus dem virtuellen Computer aus. Das bedeutet, dass Sie für die automatische Skalierung Metriken verwenden können, die standardmäßig nicht ausgegeben werden.
 
 Sie können eine Liste der Metriken mithilfe des folgenden Befehls in PowerShell generieren.
 
@@ -48,7 +55,7 @@ Sie können eine Liste der Metriken mithilfe des folgenden Befehls in PowerShell
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Sie können eine Warnung für die folgenden Metriken erstellen.
+Sie können eine Warnung für die folgenden Metriken erstellen:
 
 | Metrikname | Einheit |
 | --- | --- |
@@ -80,8 +87,8 @@ Sie können eine Warnung für die folgenden Metriken erstellen.
 | \LogicalDisk(_Total)\%Freier Speicherplatz |Prozent |
 | \LogicalDisk(_Total)\MB frei |Count |
 
-### <a name="compute-metrics-for-linux-vm-v2-as-a-guest-os"></a>Berechnen von Metriken für Linux-VM v2 als Gastbetriebssystem
-Wenn Sie einen neuen virtuellen Computer (v2) in Azure erstellen, ist die Diagnose mithilfe der Diagnoseerweiterung standardmäßig aktiviert.
+### <a name="guest-os-metrics-linux-vms"></a>Gastbetriebssystem-Metriken für virtuelle Linux-Computer
+Wenn Sie in Azure einen virtuellen Computer erstellen, wird die Diagnose standardmäßig durch Verwenden der Diagnoseerweiterung aktiviert.
 
 Sie können eine Liste der Metriken mithilfe des folgenden Befehls in PowerShell generieren.
 
@@ -89,7 +96,7 @@ Sie können eine Liste der Metriken mithilfe des folgenden Befehls in PowerShell
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
- Sie können eine Warnung für die folgenden Metriken erstellen.
+ Sie können eine Warnung für die folgenden Metriken erstellen:
 
 | Metrikname | Unit |
 | --- | --- |
@@ -154,9 +161,9 @@ Anhand dieser Metriken können Sie Warnungen ausgeben oder skalieren.
 | BytesSent |Byte |
 
 ## <a name="commonly-used-storage-metrics"></a>Häufig verwendete Speichermetriken
-Sie können nach Speicherwarteschlangenlänge skalieren, wobei es sich um die Anzahl der Nachrichten in der Speicherwarteschlange handelt. Die Speicherwarteschlangenlänge ist eine spezielle Metrik und der angewendete Schwellenwert ist die Anzahl der Nachrichten pro Instanz. Dies bedeutet bei zwei Instanzen und bei einem Schwellenwert von 100 kommt es zu einer Skalierung, wenn die Gesamtanzahl der Nachrichten in der Warteschlange 200 beträgt. Beispiel: 100 Nachrichten pro Instanz.
+Sie können nach Speicherwarteschlangenlänge skalieren, wobei es sich um die Anzahl der Nachrichten in der Speicherwarteschlange handelt. Die Speicherwarteschlangenlänge ist eine spezielle Metrik, und der Schwellenwert entspricht der Anzahl von Nachrichten pro Instanz. Ein Beispiel: Bei zwei Instanzen und einem Schwellenwert von 100 kommt es zu einer Skalierung, wenn die Gesamtanzahl von Nachrichten in der Warteschlange 200 beträgt. Hierbei kann es sich dann um 100 Nachrichten pro Instanz, um 120 und 80 Nachrichten oder um eine beliebige andere Kombination handeln, die zusammengenommen mindestens 200 ergibt. 
 
-Sie können dies im Azure-Portal auf dem Blatt **Einstellungen** konfigurieren. Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der ARM-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
+Diese Einstellung kann im Azure-Portal auf dem Blatt **Einstellungen** konfiguriert werden. Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der Resource Manager-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
 
 Bei einem klassischen Speicherkonto würde die metricTrigger-Einstellung für die automatische Skalierung Folgendes enthalten:
 
@@ -175,9 +182,9 @@ Bei einem (nicht klassischen) Speicherkonto würde metricTrigger Folgendes entha
 ```
 
 ## <a name="commonly-used-service-bus-metrics"></a>Häufig verwendete Service Bus-Metriken
-Sie können nach Service Bus-Warteschlangenlänge skalieren, wobei es sich um die Anzahl der Nachrichten in der Service Bus-Warteschlange handelt. Die Service Bus-Warteschlangenlänge ist eine spezielle Metrik, und der angewendete Schwellenwert ist die Anzahl der Nachrichten pro Instanz. Dies bedeutet bei zwei Instanzen und bei einem Schwellenwert von 100 kommt es zu einer Skalierung, wenn die Gesamtanzahl der Nachrichten in der Warteschlange 200 beträgt. Beispiel: 100 Nachrichten pro Instanz.
+Sie können nach Service Bus-Warteschlangenlänge skalieren, wobei es sich um die Anzahl der Nachrichten in der Service Bus-Warteschlange handelt. Die Service Bus-Warteschlangenlänge ist eine spezielle Metrik, und der Schwellenwert entspricht der Anzahl von Nachrichten pro Instanz. Ein Beispiel: Bei zwei Instanzen und einem Schwellenwert von 100 kommt es zu einer Skalierung, wenn die Gesamtanzahl von Nachrichten in der Warteschlange 200 beträgt. Hierbei kann es sich dann um 100 Nachrichten pro Instanz, um 120 und 80 Nachrichten oder um eine beliebige andere Kombination handeln, die zusammengenommen mindestens 200 ergibt. 
 
-Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der ARM-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
+Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Skalierung in der Resource Manager-Vorlage aktualisieren, sodass *metricName* als *ApproximateMessageCount* verwendet und die ID der Speicherwarteschlange als *metricResourceUri* übergeben wird.
 
 ```
 "metricName": "MessageCount",
@@ -193,6 +200,6 @@ Für VM-Skalierungsgruppen können Sie die Einstellung für die automatische Ska
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: b3a588465a7abfb1f121a93de9e4613559ea5ca2
+ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
+ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
 
 
 ---
@@ -73,7 +73,7 @@ In Dienst-zu-Dienst-Szenarien kann App Service Ihre Anwendung mithilfe von Azure
 
 Wenn Sie ein Dienst-zu-Dienst-Szenario mit App Service-Authentifizierung verwenden möchten, können Sie Clientzertifikate oder die Standardauthentifizierung verwenden. Informationen zu Clientzertifikaten in Azure finden Sie unter [Konfigurieren von gegenseitiger TLS-Authentifizierung für Web-Apps](../app-service-web/app-service-web-configure-tls-mutual-auth.md). Informationen zur Standardauthentifizierung in ASP.NET finden Sie unter [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters)(Authentifizierungsfilter in ASP.NET-Web-API 2).
 
-Die Dienstkontoauthentifizierung zwischen einer App Service-Logik-App und einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../app-service-logic/app-service-logic-custom-hosted-api.md)erklärt wird.
+Die Dienstkontoauthentifizierung zwischen einer App Service-Logik-App und einer API-App ist ein Sonderfall, der in [Verwenden der in App Service gehosteten benutzerdefinierten API mit Logik-Apps](../logic-apps/logic-apps-custom-hosted-api.md)erklärt wird.
 
 ## <a name="a-nameauthorizationahow-authorization-works-in-app-service"></a><a name="authorization"></a>Funktionsweise der Autorisierung in App Service
 Sie haben uneingeschränkte Kontrolle über die Anforderungen, denen der Zugriff auf Ihre Anwendung gestattet werden soll. Die App Service-Authentifizierung/-Autorisierung kann mit folgenden Verhaltensweisen konfiguriert werden:
@@ -183,6 +183,6 @@ In den folgenden Tutorials erfahren Sie, wie Sie Ihre API-Apps schützen können
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

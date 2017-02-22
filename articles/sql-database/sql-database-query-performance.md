@@ -1,5 +1,5 @@
 ---
-title: "Query Performance Insight für Azure SQL-Datenbank"
+title: Einblicke in die Abfrageleistung der Azure SQL-Datenbank | Microsoft-Dokumentation
 description: "Mit der Überwachung der Abfrageleistung werden für eine Azure SQL-Datenbank die Abfragen mit der höchsten CPU-Auslastung identifiziert."
 services: sql-database
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 08/09/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 5031cefe906f01e14e0155a975dd7996ba70522d
+ms.sourcegitcommit: ddf93a0db278fffa2aa45fdc73a1c7f57a84fb39
+ms.openlocfilehash: 14140a6aa8c8cccf658f8e98305659e8ae76dcad
 
 
 ---
@@ -32,7 +32,6 @@ Das Verwalten und Abstimmen der Leistung von relationalen Datenbanken ist eine a
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Query Performance Insight ist nur unter Azure SQL-Datenbank V12 verfügbar.
 * Um Query Performance Insight nutzen zu können, muss der [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx) für Ihre Datenbank aktiv sein. Wenn der Abfragespeicher nicht ausgeführt wird, werden Sie vom Portal zum Aktivieren aufgefordert.
 
 ## <a name="permissions"></a>Berechtigungen
@@ -172,14 +171,14 @@ Der zweite Fall tritt ein, wenn der Abfragespeicher deaktiviert ist oder die Par
 ### <a name="recommended-retention-and-capture-policy"></a>Empfohlene Aufbewahrungs- und Erfassungsrichtlinie
 Es gibt zwei Arten von Aufbewahrungsrichtlinien:
 
-* Größenbasiert – bei Festlegung auf AUTO werden Daten automatisch bereinigt, wenn die maximale Größe fast erreicht ist.
+* Größenbasiert: Bei Festlegung auf AUTO werden Daten automatisch bereinigt, wenn die maximale Größe fast erreicht ist.
 * Zeitbasiert – standardmäßig legen wir ein Limit von 30 Tagen fest, d.h., wenn der Speicherplatz im Abfragespeicher zur Neige geht, werden Abfragedaten gelöscht, die älter als 30 Tage sind.
 
 Die Erfassungsrichtlinie sollte festgelegt werden auf:
 
-* **Alle:** Alle Abfragen werden aufgezeichnet.
+* **Alle:** Alle Abfragen werden erfasst.
 * **Auto:** Seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer werden ignoriert. Die Schwellenwerte für Ausführungszahl, Erstellungs- und Ausführungsdauer werden intern bestimmt. Dies ist die Standardoption.
-* **Keine** – der Abfragespeicher beendet die Erfassung neuer Abfragen, die Laufzeitstatistiken für bereits erfasste Abfragen werden jedoch weiter gesammelt.
+* **Keine:** Der Abfragespeicher beendet die Erfassung neuer Abfragen, die Laufzeitstatistiken für bereits erfasste Abfragen werden jedoch weiter gesammelt.
 
 Sie sollten alle Richtlinien auf AUTO und die Bereinigungsrichtlinie auf 30 Tage festlegen:
 
@@ -229,6 +228,6 @@ Um weitere Empfehlungen zur Verbesserung der Leistung Ihrer SQL-Datenbank zu erh
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO5-->
 
 

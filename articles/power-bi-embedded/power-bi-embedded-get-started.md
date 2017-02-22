@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 02/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: cedf69c6e50470e9d16d8e1e361bb51eb8abed72
+ms.sourcegitcommit: fd0ddf8275ab58eb3c411123b776654fb46cae5d
+ms.openlocfilehash: 5770bbfcf700b1cefea6d22e0d5f025c1660e744
 
 
 ---
@@ -41,7 +41,7 @@ Wir führen nun die Schritte zum Erstellen einer **Arbeitsbereichssammlung** mit
    
    ![](media/power-bi-embedded-get-started/create-workspace-1.png)
 3. Klicken Sie unter **Daten und Analysen** auf **Power BI Embedded**.
-4. Geben Sie im Blatt für die **Erstellung**die erforderlichen Informationen ein. Informationen zu **Preisen**finden Sie unter [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkID=760527).
+4. Geben Sie auf dem Blatt für die **Arbeitsbereichssammlung** die erforderlichen Informationen ein. Informationen zu **Preisen**finden Sie unter [Power BI Embedded – Preise](http://go.microsoft.com/fwlink/?LinkID=760527).
    
    ![](media/power-bi-embedded-get-started/create-workspace-2.png)
 5. Klicken Sie auf **Erstellen**.
@@ -68,6 +68,10 @@ Kopieren Sie diese Schlüssel, und speichern Sie sie sicher in Ihrer Anwendung. 
 Es sind zwar zwei Schlüssel aufgeführt, aber es wird nur jeweils ein Schlüssel benötigt. Der zweite Schlüssel wird bereitgestellt, damit Sie Schlüssel regelmäßig neu generieren können, ohne den Zugriff auf den Dienst zu unterbrechen.
 
 Nachdem Sie nun über eine Instanz von Power BI für Ihre Anwendung und **Zugriffsschlüssel**verfügen, können Sie einen Bericht in Ihre eigene App importieren. Bevor das Importieren eines Berichts erklärt wird, wird im nächsten Abschnitt beschrieben, wie Sie Power BI-Datasets und -Berichte zum Einbetten in eine App erstellen.
+
+## <a name="working-with-workspaces"></a>Verwenden von Arbeitsbereichen
+
+Nach der Erstellung Ihrer Arbeitsbereichssammlung müssen Sie einen Arbeitsbereich für Ihre Berichte und Datasets erstellen. Zum Erstellen eines Arbeitsbereichs müssen Sie die [REST-API „Post Workspace“](https://msdn.microsoft.com/library/azure/mt711503.aspx) verwenden.
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app"></a>Erstellen von Power BI-Datasets und -Berichten zum Einbetten in eine App
 Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel**verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://go.microsoft.com/fwlink/?LinkId=521662). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547)herunterladen.
@@ -109,6 +113,6 @@ Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

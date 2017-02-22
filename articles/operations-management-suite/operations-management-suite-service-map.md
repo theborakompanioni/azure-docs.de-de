@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 6cc30ace0b57555ea2b5815906d3e6a4f79d8fce
-ms.openlocfilehash: 505b4e3b7862657bcfd8eea1755677104a9b68eb
+ms.sourcegitcommit: cf3e083f17bf8b2245373bced5823afd21fe1af9
+ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
 
 
 ---
@@ -30,7 +30,7 @@ In diesem Artikel werden die Details der Verwendung von Service Map beschrieben.
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Anwendungsfälle: Berücksichtigen von Abhängigkeiten in IT-Prozessen
 
 ### <a name="discovery"></a>Ermittlung
-Service Map erstellt automatisch eine allgemeine Referenzzuordnung der Abhängigkeiten für all Ihre Server, Prozesse und Drittanbieterdienste.  Service Map ermittelt alle TCP-Abhängigkeiten und bildet diese ab. Dabei werden unerwartete Verbindungen, von Ihnen benötigte Remotesysteme von Drittanbietern und Abhängigkeiten von Elementen in traditionell weniger transparenten Netzwerkbereichen wie z.B. DNS und AD identifiziert.  Service Map ermittelt fehlerhafte Netzwerkverbindungen, die Ihre verwalteten Systeme herzustellen versuchen, sodass Sie mögliche Fehlkonfigurationen der Server, Dienstausfälle und Netzwerkprobleme erkennen können.
+Service Map erstellt automatisch eine allgemeine Referenzzuordnung der Abhängigkeiten für all Ihre Server, Prozesse und Drittanbieterdienste.  Service Map ermittelt alle TCP-Abhängigkeiten und bildet diese ab. Dabei werden unerwartete Verbindungen, von Ihnen benötigte Remotesysteme von Drittanbietern und Abhängigkeiten von Elementen in traditionell weniger transparenten Netzwerkbereichen wie z.B. Active Directory identifiziert.  Service Map ermittelt fehlerhafte Netzwerkverbindungen, die Ihre verwalteten Systeme herzustellen versuchen, sodass Sie mögliche Fehlkonfigurationen der Server, Dienstausfälle und Netzwerkprobleme erkennen können.
 
 ### <a name="incident-management"></a>Incident Management
 Service Map macht Schluss mit dem Rätselraten bei der Problemermittlung und zeigt Ihnen, wie Ihre Systeme miteinander verbunden sind und sich gegenseitig beeinflussen.  Sie erhalten nicht nur Informationen zu fehlerhaften Verbindungen, sondern auch zu verbundenen Clients, sodass Sie falsch konfigurierte Lastenausgleichsmodule, eine unerwartete oder übermäßige Auslastung kritischer Dienste und eine nicht autorisierte Clientkommunikation – z.B. zwischen Entwicklercomputern und Produktionssystemen – identifizieren können.  Dank integrierter Workflows und OMS-Änderungsnachverfolgung können Sie erkennen, ob sich die Ursache eines Incidents durch ein Änderungsereignis auf einem Back-End-Computer oder in einem Back-End-Dienst erklären lässt.
@@ -50,11 +50,9 @@ Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozes
 
 ![Service Map-Übersicht](media/oms-service-map/service-map-overview.png)
 
-Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozesse mit aktiven Netzwerkverbindungen während des ausgewählten Zeitraums anzuzeigen.  Wenn ein Remotecomputer mit einem Service Map-Agent erweitert wird, um Details zu den Prozessen anzuzeigen, werden nur die Prozesse angezeigt, die mit dem untersuchten Computer kommunizieren.  Die Anzahl der Front-End-Computer ohne Agents, die eine Verbindung mit dem untersuchten Computer herstellen, wird links neben den Prozessen angegeben, mit denen eine Verbindung hergestellt wird.  Wenn der untersuchte Computer eine Verbindung mit einem Back-End-Computer ohne Agent herstellt, wird dieses Back-End in der Zuordnung durch einen Knoten dargestellt, und der Knoten kann erweitert werden, um einzelne Ports und Dienste anzuzeigen, mit denen der untersuchte Computer kommuniziert.
+Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozesse mit aktiven Netzwerkverbindungen während des ausgewählten Zeitraums anzuzeigen.  Wenn ein Remotecomputer mit einem Service Map-Agent erweitert wird, um Details zu den Prozessen anzuzeigen, werden nur die Prozesse angezeigt, die mit dem untersuchten Computer kommunizieren.  Die Anzahl der Front-End-Computer ohne Agents, die eine Verbindung mit dem untersuchten Computer herstellen, wird links neben den Prozessen angegeben, mit denen eine Verbindung hergestellt wird.  Wenn der untersuchte Computer eine Verbindung mit einem Back-End-Computer ohne Agent herstellt, wird dieser Back-End-Server zusammen mit anderen Verbindungen mit derselben Portnummer einer Serverportgruppe hinzugefügt.
 
 Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 10 Minuten an.  Mithilfe der Zeitauswahl in der linken oberen Ecke können Zuordnungen nach historischen Zeiträumen (max. eine Stunde) abgefragt werden, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.    Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
-
-![Computerzuordnung mit ausgewählten Computereigenschaften](media/oms-service-map/machine-map.png)
 
 ## <a name="status-badges"></a>Statusbadges
 Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste der Statusbadges mit Statusinformationen über den Server angezeigt.  Die Badges weisen darauf hin, dass relevante Informationen für den Server aus einer der OMS-Lösungsintegrationen vorliegen.  Indem Sie auf einen Badge klicken, gelangen Sie direkt zu den Statusdetails im rechten Bereich.  Aktuell sind folgende Statusbadges verfügbar: Warnungen, Änderungen, Sicherheit und Updates.
@@ -67,6 +65,20 @@ Verbindungsfehler werden in Service Map-Zuordnungen für Prozesse und Computer a
 ![Verbindungsfehler](media/oms-service-map/failed-connections.png)
 
 Kenntnisse zu Verbindungsfehlern können Ihnen bei der Problembehandlung, der Überprüfung einer Migration, der Sicherheitsanalyse und dem allgemeinen Verständnis der Architektur helfen.  Manchmal sind Verbindungsfehler harmlos, häufig weisen sie aber auch direkt auf ein Problem hin, z.B. wenn eine Failoverumgebung plötzlich nicht mehr erreichbar ist oder zwei Anwendungsebenen nach einer Cloudmigration nicht mehr kommunizieren können.
+
+## <a name="client-groups"></a>Clientgruppen
+Clientgruppen sind die Felder auf der Karte, die Clientcomputer ohne Dependency-Agents darstellen.  Eine einzelne Clientgruppe stellt die Clients für einen einzelnen Prozess dar.
+
+![Clientgruppen](media/oms-service-map/client-groups.png)
+
+Um die IP-Adressen der Server in einer Clientgruppe anzuzeigen, wählen Sie die Gruppe aus.  Im Eigenschaftenbereich werden die Inhalte der Gruppe aufgeführt.
+
+![Eigenschaften von Clientgruppen](media/oms-service-map/client-group-properties.png)
+
+## <a name="server-port-groups"></a>Serverportgruppen
+Serverportgruppen sind Felder, die Serverports auf Servern darstellen, die über keinen Dependency-Agent verfügen.  Das Feld enthält den Serverport zusammen mit der Anzahl von Servern mit Verbindungen zu diesem Port.  Erweitern Sie das Feld, um die einzelnen Server und Verbindungen anzuzeigen.  Wenn das Feld nur einen Server enthält, wird der Name oder die IP-Adresse aufgeführt.
+
+![Serverportgruppen](media/oms-service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Kontextmenü
 Indem Sie in einem beliebigen Server auf die drei Punkte oben rechts klicken, wird das Kontextmenü für diesen Server angezeigt.
@@ -168,7 +180,7 @@ Datensätze des Typs **ServiceMapComputer_CL** enthalten Bestandsdaten für Serv
 | DnsNames_s | Array von DNS-Namen |
 | OperatingSystemFamily_s | Windows oder Linux |
 | OperatingSystemFullName_s | vollständiger Name des Betriebssystems  |
-| Bitness_s | Bitanzahl des Computers (32 Bit oder 64 Bit) |
+| Bitness_s | Bitanzahl des Computers (32 Bit oder&64; Bit) |
 | PhysicalMemory_d | Physischer Speicher in MB |
 | Cpus_d | Anzahl der CPUs |
 | CpuSpeed_d | CPU-Geschwindigkeit in MHz|
@@ -239,19 +251,21 @@ Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
 Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
 
 
-
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 Wenn Sie den Service Map-Dienst verwenden, sammelt Microsoft automatisch Nutzungs- und Leistungsdaten. Microsoft verwendet diese Daten, um die Qualität, Sicherheit und Integrität des Service Map-Diensts sicherzustellen und zu verbessern. Zu den Daten gehören Informationen zur Konfiguration Ihrer Software, z.B. Betriebssystem und Betriebssystemversion, sowie IP-Adresse, DNS-Name und Name der Arbeitsstation, um exakte und effiziente Funktionen für die Problembehandlung bereitzustellen. Wir erfassen weder Namen noch Adressen oder andere Kontaktinformationen.
 
 Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Datenschutzbestimmungen für Onlinedienste von Microsoft](hhttps://go.microsoft.com/fwlink/?LinkId=512132).
 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Protokollsuchvorgänge](../log-analytics/log-analytics-log-searches.md) in Log Analytics, um Daten abzurufen, die von Service Map gesammelt wurden.
 
 
+## <a name="feedback"></a>Feedback
+Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
 
-<!--HONumber=Dec16_HO1-->
+
+
+<!--HONumber=Jan17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: f946ef41f0fc5ab39351d85c37ed24715b92b882
-ms.openlocfilehash: cd58f24c356e6d1ec0ebe77b1c336ee8370a4a9a
+ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
+ms.openlocfilehash: 32d26fa811f1b5b34981e40d20e6c941d5f08477
 
 
 ---
@@ -84,7 +84,7 @@ Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure-Überwachungsprotokollen und Definitionen von Eigenschaften finden Sie unter:
 
-* [Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md)
+* [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/resource-group-audit.md)
 * [Auflisten der Verwaltungsereignisse in einem Abonnement](https://msdn.microsoft.com/library/azure/dn931934.aspx) : Enthält Informationen zum Abrufen von Überwachungsprotokollereignissen.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
@@ -95,6 +95,6 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Dec16_HO4-->
 
 

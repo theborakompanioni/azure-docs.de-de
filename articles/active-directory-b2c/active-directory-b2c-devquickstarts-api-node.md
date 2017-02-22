@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cea04afd22270c77d91148d3c4a95e87f37406db
+ms.sourcegitcommit: 3b5d9162e2d39e2b0f011383a478545644c57861
+ms.openlocfilehash: c9742c7f505417577857889ef307083afb9bab18
 
 
 ---
@@ -279,7 +279,7 @@ passReqToCallback: false // This is a node.js construct that lets you pass the r
 `policyName`: Die Richtlinie zur Überprüfung der auf Ihrem Server eingehenden Token. Hierbei muss es sich um die gleiche Richtlinie handeln, die Sie auch in der Clientanwendung für die Anmeldung verwenden.
 
 > [!NOTE]
-> Für unsere B2C-Vorschau verwenden Sie bei der Client- und Servereinrichtung dieselben Richtlinien. Wenn Sie bereits eine exemplarische Vorgehensweise abgeschlossen und diese Richtlinien erstellt haben, müssen Sie diese nicht erneut erstellen. Da Sie die exemplarische Vorgehensweise abgeschlossen haben, müssen Sie keine neuen Richtlinien einrichten, wenn Sie auf dieser Website exemplarische Vorgehensweisen für Clients befolgen.
+> Verwenden Sie einstweilen bei der Client- und Servereinrichtung dieselben Richtlinien. Wenn Sie bereits eine exemplarische Vorgehensweise abgeschlossen und diese Richtlinien erstellt haben, müssen Sie diese nicht erneut erstellen. Da Sie die exemplarische Vorgehensweise abgeschlossen haben, müssen Sie keine neuen Richtlinien einrichten, wenn Sie auf dieser Website exemplarische Vorgehensweisen für Clients befolgen.
 >
 >
 
@@ -763,6 +763,6 @@ Sie können nun mit den Themen für fortgeschrittenere Benutzer fortfahren. Beis
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

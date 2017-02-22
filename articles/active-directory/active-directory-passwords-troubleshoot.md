@@ -97,7 +97,7 @@ Wenn beim Konfigurieren der Kennwortzurücksetzung ein Fehler auftritt, kann die
               <p>Der Abschnitt <strong>Richtlinie zum Zurücksetzen des Benutzerkontos</strong> ist sichtbar, aber die einzige Option, die hier angezeigt wird, lautet <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert ist</strong>.</p>
             </td>
             <td>
-              <p>Die verbleibenden Optionen werden angezeigt, wenn Sie das Umschaltfeld <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert sind</strong> auf <strong>Ja festlegen.</strong></p>
+              <p>Die verbleibenden Optionen werden angezeigt, wenn Sie das Umschaltfeld <strong>Benutzer, für die das Zurücksetzen des Kennworts aktiviert sind</strong> auf <strong>Ja</strong> festlegen.</p>
             </td>
           </tr>
           <tr>
@@ -379,7 +379,7 @@ Wenn beim Zurücksetzen eines Kennworts für einen Benutzer ein Fehler auftritt,
               <p>Microsoft implementiert einen automatischen Drosselungsmechanismus, um Benutzer daran zu hindern, ihre Kennwörter innerhalb eines kurzen Zeitraums zu häufig zurückzusetzen. Dieser Mechanismus greift in den folgenden Fällen:</p>
               <ol class="ordered">
                 <li>
-Der Benutzer versucht, innerhalb von einer Stunde fünfmal, eine Telefonnummer zu überprüfen.<br\><br\></li>
+Der Benutzer versucht innerhalb von einer Stunde fünfmal, eine Telefonnummer zu überprüfen.<br\><br\></li>
                 <li>
 Der Benutzer versucht innerhalb von einer Stunde fünfmal, die Überprüfung mithilfe von Sicherheitsfragen zu verwenden.<br\><br\></li>
                 <li>
@@ -578,7 +578,7 @@ Ausgehende Verbindungen mit <br\><br\></li>
               <p>Dies ist ein bekannter Fehler in der veröffentlichten Version von Azure AD Connect, der in der folgenden Situation auftritt:</p>
               <ol class="ordered">
                 <li>
-Sie konfigurieren Azure AD Connect für den Mandanten "abc.com" (überprüfte Domäne) mithilfe von Anmeldeinformationen. Dies führt dazu, dass ein AAD-Connector namens „abc.com – AAD“ erstellt wird.<br\><br\></li>
+Sie konfigurieren Azure AD Connect für den Mandanten "abc.com" (überprüfte Domäne) mithilfe von Anmeldeinformationen. Dies führt dazu, dass ein AAD-Connector mit dem Namen „abc.com – AAD“ erstellt wird.<br\><br\></li>
                 <li>
 Anschließend ändern Sie die AAD-Anmeldeinformationen (mithilfe der alten Benutzeroberfläche) für den Connector (beachten Sie, dass der Mandant derselbe ist, aber der Domänenname abweicht). <br\><br\></li>
                 <li>
@@ -783,11 +783,11 @@ Das Benutzerkennwort entspricht nicht den für die Domäne geltenden Anforderung
               </ul>
               <ul>
                 <li class="unordered">
-Das MA-Dienstkonto weist nicht die geeigneten Berechtigungen zum Festlegen des neuen Kennworts für das betreffende Benutzerkonto auf.<br\><br\></li>
+Das MA-Dienstkonto weist keine geeigneten Berechtigungen zum Festlegen des neuen Kennworts für das betreffende Benutzerkonto auf.<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-Das Benutzerkonto befindet sich in einer geschützten Gruppe, z.B. „Domänen-Admins“ oder „Unternehmensadministratoren“. Für diese Gruppen ist eine Kennwortverwaltung nicht möglich.<br\><br\></li>
+Das Benutzerkonto befindet sich in einer geschützten Gruppe, zum Beispiel in der Gruppe „Domänen-Admins“ oder „Unternehmensadministratoren“. Für diese Gruppen ist eine Kennwortverwaltung nicht möglich.<br\><br\></li>
               </ul>
               <p>Informationen zu weiteren Situationen, die diesen Fehler auslösen können, finden Sie unter <a href="#troubleshoot-password-writeback">Problembehandlung: Kennwortrückschreibung</a>.</p>
             </td>
@@ -866,11 +866,11 @@ Das Benutzerkennwort entspricht nicht den für die Domäne geltenden Anforderung
               </ul>
               <ul>
                 <li class="unordered">
-Das MA-Dienstkonto weist nicht die geeigneten Berechtigungen zum Festlegen des neuen Kennworts für das betreffende Benutzerkonto auf.<br\><br\></li>
+Das MA-Dienstkonto weist keine geeigneten Berechtigungen zum Festlegen des neuen Kennworts für das betreffende Benutzerkonto auf.<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-Das Benutzerkonto befindet sich in einer geschützten Gruppe, z.B. „Domänen-Admins“ oder „Unternehmensadministratoren“. Für diese Gruppen ist eine Kennwortverwaltung nicht möglich.<br\><br\></li>
+Das Benutzerkonto befindet sich in einer geschützten Gruppe, zum Beispiel in der Gruppe „Domänen-Admins“ oder „Unternehmensadministratoren“. Für diese Gruppen ist eine Kennwortverwaltung nicht möglich.<br\><br\></li>
               </ul>
               <p>Informationen zu weiteren Situationen, die diesen Fehler auslösen können, finden Sie unter <a href="#troubleshoot-password-writeback">Problembehandlung: Kennwortrückschreibung</a>.</p>
             </td>
@@ -921,11 +921,11 @@ Das Benutzerkennwort entspricht nicht den für die Domäne geltenden Anforderung
               </ul>
               <ul>
                 <li class="unordered">
-Das MA-Dienstkonto weist nicht die geeigneten Berechtigungen zum Festlegen des neuen Kennworts für das betreffende Benutzerkonto auf.<br\><br\></li>
+Das MA-Dienstkonto weist keine geeigneten Berechtigungen zum Festlegen des neuen Kennworts für das betreffende Benutzerkonto auf.<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-Das Benutzerkonto befindet sich in einer geschützten Gruppe, z.B. „Domänen-Admins“ oder „Unternehmensadministratoren“. Für diese Gruppen ist eine Kennwortverwaltung nicht möglich.<br\><br\></li>
+Das Benutzerkonto befindet sich in einer geschützten Gruppe, zum Beispiel in der Gruppe „Domänen-Admins“ oder „Unternehmensadministratoren“. Für diese Gruppen ist eine Kennwortverwaltung nicht möglich.<br\><br\></li>
               </ul>
               <p>Informationen zu weiteren Situationen, die diesen Fehler auslösen können, finden Sie unter <a href="#troubleshoot-password-writeback">Problembehandlung: Kennwortrückschreibung</a>.</p>
             </td>
@@ -1519,6 +1519,6 @@ Im Folgenden finden Sie Links zu allen Webseiten mit Informationen zur Kennwortz
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

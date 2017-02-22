@@ -1,5 +1,5 @@
 
-## <a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
+## <a name="a-idadd-pushaadd-push-notifications-to-app"></a><a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
 * Importieren Sie das iOS-SDK und "QSTodoService.h" in "QSAppDelegate.m":
 
 ```
@@ -56,4 +56,7 @@
         }
 ```
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Jan17_HO3-->
+
+

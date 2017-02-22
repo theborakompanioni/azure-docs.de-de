@@ -5,18 +5,17 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-editor: na
 ms.assetid: f9c9d290-0e13-490b-b559-0be772d6a690
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 12/28/2016
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: aec25285cd0fa2f09e21a629648e015dffbeb11d
-ms.openlocfilehash: 9ea835787db25adabe9b8cb71551de49b330a6dd
+ms.sourcegitcommit: 6bbfc7e22e5cb70ed1466bda14831412aead76a6
+ms.openlocfilehash: bacabf7fe51e3c417a93a54f043c14aa5d65b31d
 
 
 ---
@@ -28,7 +27,7 @@ Die Integration von Convercent in Azure AD bietet Ihnen folgende Vorteile:
 
 - Sie können in Azure AD steuern, wer Zugriff auf Convercent hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Convercent anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im neuen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -40,20 +39,18 @@ Um die Azure AD-Integration mit Convercent konfigurieren zu können, benötigen 
 - Ein Convercent-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 
->[!NOTE] 
->Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
-
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Convercent aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -64,30 +61,26 @@ Zum Konfigurieren der Integration von Convercent in Azure AD müssen Sie Converc
 
 **Um Convercent aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Anwendungen][2]
-
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![Anwendungen][3]
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
+4. Geben Sie im Suchfeld den Suchbegriff **Convercent** ein.
 
-    ![Anwendungen][4]
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_001.png)
 
-6. Geben Sie im Suchfeld den Suchbegriff **Convercent** ein.
+5. Wählen Sie im Ergebnisbereich die Option **Convercent** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_01.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_0001.png)
 
-7. Wählen Sie im Ergebnisbereich die Option **Convercent** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_02.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Convercent basierend auf einem Testbenutzer mit dem Namen Britta Simon.
@@ -100,159 +93,90 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Convercent
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Convercent-Testbenutzers](#creating-a-convercent-test-user)**, um eine Entsprechung von Britta Simon in Convercent zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines Convercent-Testbenutzers](#creating-a-works-mobile-test-user)**, um eine Entsprechung von Britta Simon in Convercent zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Convercent-Anwendung.
-
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im neuen Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Convercent-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Convercent die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **Convercent** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-     
-    ![Einmaliges Anmelden konfigurieren][6] 
+1. Klicken Sie im neuen Azure Portal auf der Anwendungsintegrationsseite für **Convercent** auf **Einmaliges Anmelden**.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Convercent anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
+    ![Einmaliges Anmelden konfigurieren][4]
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_03.png) 
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_01.png)
 
-3. Klicken Sie auf der Seite **App-Einstellungen konfigurieren** auf „Weiter“. Hiermit konfigurieren Sie die Anwendung im IdP-initiierten Modus.
+3. Führen Sie im Abschnitt **Domäne und URLs für Convercent** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_02.png)
+
+    a. Geben Sie im Textfeld **Bezeichner** Folgendes ein: `https://sts.convercent.com/`
+
+    b. Klicken Sie auf **Erweiterte URL-Einstellungen anzeigen**.
+
+    c. Geben Sie im Textfeld **Relayzustand** Folgendes ein: `https://app.convercent.com/`
+    
+4. Führen Sie im Abschnitt **Domäne und URLs für Convercent** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+    
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_03.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** Folgendes ein: `https://app.convercent.com/`
+
+    > [!NOTE] 
+    > Hier sollten Sie den angegebenen eindeutigen Bezeichner verwenden. Wenden Sie sich an das [Supportteam von Convercent](mailTo:support@convercent.com), um diesen Wert zu erhalten.
+
+5. Klicken Sie im Abschnitt **Konfiguration für Convercent** auf **Convercent konfigurieren**, um das Dialogfeld **Anmelden konfigurieren** zu öffnen. Klicken Sie auf **SAML-XML-Metadaten**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_04.png) 
 
-    >[!NOTE] 
-    >Da Sie diese Anwendung im IdP-initiierten Modus konfigurieren, müssen Sie RelayState für die Anwendung konfigurieren. Andernfalls funktioniert die SSO-Integration nicht. Führen Sie Schritt 5 für die RelayState-Konfiguration aus.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_05.png)
 
-4. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, klicken Sie auf das Kontrollkästchen **Erweiterte Einstellungen anzeigen** und führen die folgenden Schritte aus:
+6. Wenden Sie sich an das [Supportteam von Convercent](mailTo:support@convercent.com), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladenen **Metadaten** bereit.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_05.png) 
-
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zur Anmeldung bei Ihrer Convercent-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: `https://app.convercent.com/`.
-    
-    b. Klicken Sie auf **Weiter**.
- 
-5. Wenn Sie die Anwendung im IdP-initiierten Modus konfiguriert haben, konfigurieren Sie den RelayState-Wert für die Anwendung. Führen Sie die folgenden Schritte aus, um den RelayState-Wert in Azure AD zu konfigurieren: 
-    
-    a. Melden Sie sich beim [Azure-Verwaltungsportal](https://portal.azure.com) als Administrator an.
-
-    b. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**. 
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_07.png)
-
-    c. Geben Sie im Textfeld **Suche** **Azure Active Directory** ein, und klicken Sie dann auf den entsprechenden Link.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_08.png)
-
-    d. Klicken Sie auf **Unternehmensanwendungen**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_09.png)
-
-    e. Klicken Sie im Bereich **Verwalten** auf **Alle Anwendungen**.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_10.png)
-
-    f. Geben Sie im Textfeld **Suche** **ADP eTime** ein, und klicken Sie dann auf den entsprechenden Link. 
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_11.png)
-
-    g. Klicken Sie im Bereich **Verwalten** auf **Einmaliges Anmelden**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_12.png)
-
-    h. Wählen Sie **Erweiterte URL-Einstellungen anzeigen**.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_13.png)
-    
-    i. Geben Sie im Textfeld **Relayzustand** einen Wert nach den folgenden Mustern ein: `https://app.convercent.com/`.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_14.png)
-
-    j. Speichern Sie die Einstellungen.
-
-6. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Convercent** die folgenden Schritte aus:
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_06.png)
-
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-
-    b. Klicken Sie auf **Weiter**.
-
-
-6. Wenden Sie sich an das [Supportteam](mailTo:support@convercent.com) von Convercent, um SSO (einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
-
-    a. Die heruntergeladenen **Metadaten**
-
-7. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
-    
-    ![Azure AD – einmaliges Anmelden][10]
-
-8. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
- 
-    ![Azure AD – einmaliges Anmelden][11]
-
+7. Klicken Sie im neuen Azure-Portal auf die Schaltfläche **Speichern**.  
+  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im neuen Portal.
 
-
-![Azure AD-Benutzer erstellen][20]
+![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf das Symbol für **Azure Active Directory**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_09.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_01.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
-
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_05.png) 
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von BrittaSimon ein.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    c. Klicken Sie auf **Weiter**.
-
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_06.png) 
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
-
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_07.png) 
-
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-convercent-tutorial/create_aaduser_08.png) 
-
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
+    d. Klicken Sie auf **Erstellen**. 
 
 
 
-### <a name="creating-an-convercent-test-user"></a>Erstellen eines Convercent-Testbenutzers
+### <a name="creating-a-convercent-test-user"></a>Erstellen eines Convercent-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Convercent einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam](mailTo:support@convercent.com) von Convercent, um die Benutzer der Convercent-Plattform hinzufügen zu lassen.
+In diesem Abschnitt erstellen Sie in Convercent einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Convercent](emailto:support@convercent.com), um die Benutzer der Convercent-Plattform hinzufügen zu lassen.
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
@@ -263,7 +187,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 **Um Britta Simon Convercent zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen** .
+1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
@@ -271,15 +195,20 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-convercent-tutorial/tutorial_convercent_50.png) 
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-    ![Benutzer zuweisen][205]
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+    
 
 
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
@@ -295,6 +224,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Convercent“ klicken, sollten Sie
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
+
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_01.png
@@ -302,19 +232,14 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Convercent“ klicken, sollten Sie
 [3]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-convercent-tutorial/tutorial_general_205.png
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

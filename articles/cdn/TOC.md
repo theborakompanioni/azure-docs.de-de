@@ -12,6 +12,7 @@
 ### [Cross-Origin Resource Sharing](cdn-cors.md)
 
 ## Verwalten
+### [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ### [Verwalten mit PowerShell](cdn-manage-powershell.md)
 ### Konfigurieren der Gültigkeitsdauer
 #### [Web-Apps/Cloud Services, ASP.NET oder IIS-Inhalt](cdn-manage-expiration-of-cloud-service-content.md)
@@ -40,7 +41,7 @@
 ### [Node.js](cdn-app-dev-node.md)
 
 ## Problembehandlung
-### [Status 404](cdn-troubleshoot-endpoint.md)
+### [Status&404;](cdn-troubleshoot-endpoint.md)
 ### [Dateikomprimierung](cdn-troubleshoot-compression.md)
 
 # Referenz
@@ -62,6 +63,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: cenkd;juliako
 translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: 7f775813920af8b8a7ffac45e5227df6ba3e6622
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 307c9a377fce32c056a54d35f173efd1bafc4df5
 
 
 ---
@@ -46,7 +46,7 @@ Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfa
 2. Im Abschnitt 3.3.2 in [1] wird ein optionales Feld mit dem Namen "StreamManifestBox" für die Echtzeiterfassung definiert. Aufgrund der Routinglogik des Microsoft Azure-Lastenausgleichsmoduls ist die Verwendung dieses Felds veraltet. Es SOLLTE bei der Erfassung in Microsoft Azure Media Services NICHT vorhanden sein. Wenn dieses Feld vorhanden ist, wird es in Azure Media Services ohne Meldung ignoriert.
 3. Das in Abschnitt 3.2.3.2 in [1] definierte Feld "TrackFragmentExtendedHeaderBox" MUSS für jedes Fragment vorhanden sein.
 4. Version 2 von TrackFragmentExtendedHeaderBox SOLLTE verwendet werden, um Mediensegmente mit identischen URLs in mehreren Rechenzentren zu generieren. Das Fragmentindexfeld ist ERFORDERLICH für das rechenzentrenübergreifende Failover indexbasierter Streaming-Formate wie z. B. Apple HTTP Live Streaming (HLS) und indexbasiertes MPEG-DASH.  Zum Aktivieren des rechenzentrenübergreifenden Failovers MUSS der Fragmentindex zwischen mehreren Encodern synchronisiert und für jedes folgende Medienfragment jeweils um 1 erhöht werden, auch bei Neustarts und Fehlern der Encoder.
-5. Im Abschnitt 3.3.6 in [1] wird das Feld mit der Bezeichnung MovieFragmentRandomAccessBox („mfra“) definiert, das am Ende der Echtzeiterfassung gesendet werden KANN, um das Ende des Streams (End-of-Stream, EOS) für den Kanal anzugeben. Aufgrund der Erfassungslogik von Azure Media Services ist die Verwendung von EOS (End-of-Stream) veraltet, und das Feld "mfra" für die Echtzeiterfassung SOLLTE NICHT gesendet werden. Wenn es dennoch gesendet wird, wird es in Azure Media Services ohne Meldung ignoriert. Es wird empfohlen, [Channel Reset](https://msdn.microsoft.com/library/azure/dn783458.aspx#reset_channels) zu verwenden, um den Status des Erfassungspunkts zurückzusetzen. Es wird auch empfohlen, [Program Stop](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) zum Beenden einer Präsentation und eines Streams zu verwenden.
+5. Im Abschnitt 3.3.6 in [1] wird das Feld mit der Bezeichnung MovieFragmentRandomAccessBox („mfra“) definiert, das am Ende der Echtzeiterfassung gesendet werden KANN, um das Ende des Streams (End-of-Stream, EOS) für den Kanal anzugeben. Aufgrund der Erfassungslogik von Azure Media Services ist die Verwendung von EOS (End-of-Stream) veraltet, und das Feld "mfra" für die Echtzeiterfassung SOLLTE NICHT gesendet werden. Wenn es dennoch gesendet wird, wird es in Azure Media Services ohne Meldung ignoriert. Es wird empfohlen, [Channel Reset](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels) zu verwenden, um den Status des Erfassungspunkts zurückzusetzen. Es wird auch empfohlen, [Program Stop](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) zum Beenden einer Präsentation und eines Streams zu verwenden.
 6. Die Dauer des MP4-Fragments SOLLTE konstant sein, um die Größe der Clientmanifeste zu reduzieren und die Clientdownloadheuristik durch Verwendung von Wiederholungstags zu verbessern.  Die Dauer KANN schwanken, um nicht ganzzahlige Frameraten auszugleichen.
 7. Die Dauer des MP4-Fragments SOLLTE zwischen ca. 2 und 6 Sekunden liegen.
 8. Zeitstempel und Indizes des MP4-Fragments (fragment_absolute_time und fragment_index für TrackFragmentExtendedHeaderBox) SOLLTEN in aufsteigender Reihenfolge eingehen.  Obwohl Fragmente in Azure Media Services dupliziert werden können, sind die Möglichkeiten, Fragmente entsprechend der Medienzeitachse neu anzuordnen, nur sehr begrenzt.
@@ -194,6 +194,6 @@ Es folgt eine empfohlene Implementierung für redundante Audiospuren:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

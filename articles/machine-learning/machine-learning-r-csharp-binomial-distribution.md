@@ -1,6 +1,6 @@
 ---
-title: Binomial Distribution Suite | Microsoft Docs
-description: Binomial Distribution Suite
+title: "(Veraltet:) Binomial Distribution Suite – Azure | Microsoft Docs"
+description: (Veraltet:) Binomial Distribution Suite
 services: machine-learning
 documentationcenter: 
 author: ireiter
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/04/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: ireiter
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 82e679e1565bfb18c09ffd30c8b49a69b67e0aeb
+ms.sourcegitcommit: f6ad106e769c807d1c281c8d19127eabc2048f30
+ms.openlocfilehash: 4d4a343be86909acf054eaaf9cc4a1b0df5a4209
 
 
 ---
-# <a name="binomial-distribution-suite"></a>Binomial Distribution Suite
+# <a name="deprecated-binomial-distribution-suite"></a>(Veraltet:) Binomial Distribution Suite
+
+> [!NOTE]
+> Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Die Binomial Distribution Suite ist ein Satz mit Beispielwebdiensten ([Binomial Generator](https://datamarket.azure.com/dataset/aml_labs/bdg5), [Probability Calculator](https://datamarket.azure.com/dataset/aml_labs/bdp4), [Quantile Calculator](https://datamarket.azure.com/dataset/aml_labs/bdq5)), mit denen Sie Binomialverteilungen generieren und verarbeiten können. Mit den Diensten können Sie eine Binomialverteilungssequenz beliebiger Länge generieren, die Quantile aus angegebenen Wahrscheinlichkeiten und Wahrscheinlichkeiten aus einem angegebenen Quantil errechnen. Alle Dienste machen unterschiedliche Ausgaben basierend auf dem ausgewählten Dienst (siehe Beschreibung unten). Die Binomial Distribution Suite basiert auf den R-Funktionen "qbinom", "rbinom" und "pbinom", die im R-Statistikpaket enthalten sind. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -289,6 +296,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

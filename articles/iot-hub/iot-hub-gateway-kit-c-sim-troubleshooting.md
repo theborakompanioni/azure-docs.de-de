@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei Ihrem Azure IoT-Gateway | Microsoft-Dokumentation
+title: "Simuliertes Gerät und Azure IoT Gateway – Problembehandlung | Microsoft-Dokumentation"
 description: "Problembehandlungsseite für Intel NUC-Gateway"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 10/21/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 44b61dbdad51e3d6b5505477c97de75c8fc5a1a4
-ms.openlocfilehash: ade52e99fd054ac79106742fc9a65769f6ff9893
+ms.sourcegitcommit: 61e9a9fc7876094c04238c61cfc38efdd97b05f7
+ms.openlocfilehash: a70de978d4636a31644702c6f3a8ca0d0b80f5c2
 
 
 ---
@@ -136,13 +136,13 @@ Bei der Installation von pip tritt ein Berechtigungsfehler auf, wenn frühere Pa
 
 ## <a name="azure-iot-hub-issues"></a>Probleme mit Azure IoT Hub
 
-Wenn Sie Azure IoT Hub erfolgreich mit der Azure CLI bereitgestellt haben und ein Tool benötigen, um die Geräte zu verwalten, die eine Verbindung mit IoT Hub herstellen, können Sie die unten angegebenen Tools ausprobieren.
+Wenn Sie Azure IoT Hub erfolgreich mit der Azure-Befehlszeilenschnittstelle bereitgestellt haben und ein Tool benötigen, um die Geräte zu verwalten, die eine Verbindung mit IoT Hub herstellen, können Sie die unten angegebenen Tools ausprobieren.
 
 ### <a name="device-explorer"></a>Geräte-Explorer
 
-[Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/):
+[Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/):
 
-- Geräteidentitätsverwaltung zum Bereitstellen und Verwalten von Geräten, die bei IoT Hub registriert sind
+- Geräteidentitätsverwaltung zum Bereitstellen und Verwalten von Geräten, die bei IoT Hub registriert sind.
 - Empfangen von Gerät-zu-Cloud, damit Sie von Ihrem Gerät an IoT Hub gesendete Nachrichten überwachen können.
 - Senden von Cloud-zu-Gerät ermöglicht es Ihnen, von Ihren Geräten Nachrichten an IoT Hub zu senden.
 
@@ -150,7 +150,7 @@ Konfigurieren Sie Ihre IoT Hub-Verbindungszeichenfolge in diesem Tool, um alle F
 
 ### <a name="iothub-explorer"></a>iothub-explorer
 
-[iothub-explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
+[iothub-explorer](https://github.com/Azure/iothub-explorer) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
 
 Zum Installieren der aktuellen Version (Vorabversion) des Tools „iothub-explorer“ führen Sie den folgenden Befehl aus:
 
@@ -174,6 +174,6 @@ Sie können eine vollständige CLI-Oberfläche nutzen, um alle Azure-Ressourcen 
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

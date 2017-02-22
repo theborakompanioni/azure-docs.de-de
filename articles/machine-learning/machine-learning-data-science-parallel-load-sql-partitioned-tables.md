@@ -1,5 +1,5 @@
 ---
-title: Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen | Microsoft Docs
+title: "Erstellen und Optimieren von Tabellen für schnelles paralleles Importieren von Daten in eine SQL Server-Instanz auf einer Azure-VM | Microsoft-Dokumentation"
 description: Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
 services: machine-learning
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/29/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: e6c45f4be168cef1a05958624f666097779e76f6
-ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
+ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
+ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
 
 
 ---
@@ -24,10 +24,8 @@ ms.openlocfilehash: 2486a00482ca873ccb5198b5ca13cdc104bd1505
 In diesem Dokument wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Erstellen einer neuen Datenbank und eines Satzes von Dateigruppen
-* [Erstellen einer neuen Datenbank](https://technet.microsoft.com/library/ms176061.aspx) (falls noch nicht vorhanden)
-* Fügen Sie der Datenbank Dateigruppen hinzu, die die partitionierten physischen Dateien enthalten werden.
-  
-  Dies kann bei einer neuen Datenbank mit [DATENBANK ERSTELLEN](https://technet.microsoft.com/library/ms176061.aspx) und bei einer bereits vorhandenen Datenbank mit [DATENBANK ÄNDERN](https://msdn.microsoft.com/library/bb522682.aspx) erfolgen.
+* [Erstellen einer neuen Datenbank](https://technet.microsoft.com/library/ms176061.aspx), falls noch nicht vorhanden.
+* Fügen Sie Datenbank-Dateigruppen der Datenbank hinzu, in der die partitionierten physischen Dateien gespeichert werden. Dies erreichen Sie mit [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx), wenn Sie eine Datenbank neu erstellen, oder mit [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) wenn die Datenbank bereits vorhanden ist.
 * Fügen Sie (je nach Anforderungen) den einzelnen Datenbank-Dateigruppen eine oder mehrere Dateien hinzu.
   
   > [!NOTE]
@@ -185,6 +183,6 @@ Eine umfassende exemplarische Vorgehensweise zur Verwendung des Cortana-Analysep
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

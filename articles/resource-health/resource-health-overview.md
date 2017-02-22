@@ -15,8 +15,8 @@ ms.workload: Supportability
 ms.date: 06/01/2016
 ms.author: BernardoAMunoz
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6de24842669e29ea7d6796f63fa2a8ae36930531
+ms.sourcegitcommit: d777bc6bd477c5b6645fc8bd7b6d57a5d2f89e22
+ms.openlocfilehash: e465e2c1503add186a4b134e85bd9aab61d5c0ad
 
 
 ---
@@ -43,7 +43,7 @@ Das Blatt „Ressourcenintegrität“ im Azure-Portal enthält ausführliche Inf
 Nachdem Sie sich am Azure-Portal angemeldet haben, haben Sie zwei Möglichkeiten zum Zugreifen auf das Blatt „Ressourcenintegrität“: 
 
 ### <a name="open-the-resource-blade"></a>Öffnen des Blatts „Ressource“
-Öffnen Sie das Blatt „Ressource“ für eine bestimmte Ressource. Klicken Sie auf dem Blatt „Einstellungen“, das neben dem Blatt „Ressource“ geöffnet wird, auf „Ressourcenintegrität“, um das Blatt „„Ressourcenintegrität““ zu öffnen. 
+Öffnen Sie das Blatt „Ressource“ für eine bestimmte Ressource. Klicken Sie auf dem Blatt links, das neben dem Blatt „Ressource“ geöffnet wird, unter „Support und Problembehandlung“ auf „Ressourcenintegrität“, um das Blatt „Ressourcenintegrität“ zu öffnen. 
 
 ![Blatt „Ressourcenintegrität“](./media/resource-health-overview/resourceBladeAndResourceHealth.png)
 
@@ -54,7 +54,7 @@ Nachdem Sie sich am Azure-Portal angemeldet haben, haben Sie zwei Möglichkeiten
 
 ![Hilfe und Support](./media/resource-health-overview/HelpAndSupport.png)
 
-Wenn Sie auf die Kachel klicken, wird das Blatt „Ressourcenintegrität“ für das Abonnement geöffnet, und alle Ressourcen Ihres Abonnements werden aufgelistet. Neben jeder Ressource wird mit einem Symbol die Integrität angegeben. Wenn Sie auf eine Ressource klicken, wird jeweils das entsprechende Blatt „Ressourcenintegrität“ geöffnet.
+Klicken Sie auf dem Blatt links, das neben dem Blatt „Hilfe und Support“ geöffnet wird, unter „Support und Problembehandlung“ auf „Ressourcenintegrität“. Damit öffnen Sie das Blatt „Ressourcenintegrität“ für das Abonnement, auf dem alle Ressourcen Ihres Abonnements aufgelistet werden. Neben jeder Ressource wird mit einem Symbol die Integrität angegeben. Wenn Sie auf eine Ressource klicken, wird jeweils das entsprechende Blatt „Ressourcenintegrität“ geöffnet.
 
 **Kachel „Ressourcenintegrität“**
 
@@ -110,6 +110,6 @@ Wir sind stets offen für Feedback und Vorschläge. Sie können uns gern Ihre [V
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

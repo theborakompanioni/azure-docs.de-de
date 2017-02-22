@@ -1,6 +1,6 @@
 ---
-title: "Datenabhängiges Routing | Microsoft Docs"
-description: "Erfahren Sie, wie Sie die ShardMapManager-Klasse in .NET-Apps für das datenabhängige Routing, einem Feature von elastischen Datenbanken für Azure SQL-Datenbank, verwenden können."
+title: "Datenabhängiges Routing mit Azure SQL-Datenbank | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie die ShardMapManager-Klasse in .NET-Apps für das datenabhängige Routing, einem Feature von Sharddatenbanken in Azure SQL-Datenbank, verwenden können."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c77996b8dfa0c2ad9785e42758278a621a52c93c
+ms.sourcegitcommit: 5024e5edbfaaf9b070f66e6b009bc6085de3fa7e
+ms.openlocfilehash: b0f700bd742e1a69245711ff7f87d7f35535b3ab
 
 
 ---
@@ -90,7 +90,7 @@ Eine bewährte Methode bei der Entwicklung von Anwendungen für den Datenzugriff
 
 Die Behandlung vorübergehender Fehler kann natürlich zusammen mit dem datenabhängigen Routing verwendet werden. Die wichtigste Anforderung besteht in einer Wiederholung der gesamten Datenzugriffsanforderung, darunter des **using** -Blocks, der die datenabhängige Routingverbindung abgerufen hat. Das obige Beispiel könnte wie folgt umgeschrieben werden (beachten Sie die hervorgehobenen Änderungen). 
 
-### <a name="example--data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
+### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
 <pre><code>int customerId = 12345; 
 int newPersonId = 4321; 
 
@@ -130,6 +130,6 @@ Weitere Informationen zum Trennen oder erneuten Anfügen eines Shards finden Sie
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

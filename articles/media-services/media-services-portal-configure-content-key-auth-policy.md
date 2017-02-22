@@ -12,11 +12,11 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 01/05/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff663f40507547ba561053b5c9a7a8ce93fbf213
-ms.openlocfilehash: 445074060f1cae200405b17d04be41075f7306d7
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: 096d67dc4880f4c0a50e3981485dbe2d8f4c22a7
 
 
 ---
@@ -39,7 +39,7 @@ Wenn Sie mehrere Inhaltsschlüssel verwenden oder eine andere **Schlüssel-/Lize
 [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit der REST-API](media-services-rest-configure-content-key-auth-policy.md)
 
 ### <a name="some-considerations-apply"></a>Folgende Überlegungen sollten berücksichtigt werden:
-* Zur Verwendung der dynamischen Paketerstellung und Verschlüsselung müssen Sie über mindestens eine reservierte Einheit für das Streaming verfügen. Weitere Informationen finden Sie unter [Skalieren eines Mediendiensts](media-services-portal-manage-streaming-endpoints.md).
+* Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt den Status **Wird ausgeführt** aufweisen. 
 * Ihr Medienobjekt muss einen Satz von MP4-Dateien bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-encode-asset.md).
 * ContentKeyAuthorizationPolicy und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst für 15 Minuten zwischengespeichert.  Wenn Sie ContentKeyAuthorizationPolicy erstellen und angeben, dass eine „Token“-Einschränkung verwendet werden soll, diese anschließend testen und dann die Richtlinie auf eine „Open“-Einschränkung aktualisieren, dauert es ungefähr 15 Minuten, bis die Richtlinie zur „Open“-Version der Richtlinie wechselt.
 
@@ -77,7 +77,7 @@ Wenn Sie Inhalte mit **PlayReady** schützen, müssen Sie in Ihrer Autorisierung
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-Klicken Sie auf die Schaltfläche **XML für Importrichtlinie** , und geben Sie anderen XML-Code an, der dem [hier](https://msdn.microsoft.com/library/azure/dn783459.aspx)definierten XML-Schema entspricht.
+Klicken Sie auf die Schaltfläche **XML für Importrichtlinie** , und geben Sie anderen XML-Code an, der dem [hier](media-services-playready-license-template-overview.md)definierten XML-Schema entspricht.
 
 ## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.
@@ -93,6 +93,6 @@ Klicken Sie auf die Schaltfläche **XML für Importrichtlinie** , und geben Sie 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

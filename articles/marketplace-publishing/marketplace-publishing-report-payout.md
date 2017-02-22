@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2016
+ms.date: 01/11/2017
 ms.author: v-jeana; hascipio; v-dabosl
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 76aa5a1d8023b108b4d7bee1dcf1386e14809df9
+ms.sourcegitcommit: e86e4dcc39f9d34dc04afbdccb017d89969f548f
+ms.openlocfilehash: fade348a599c41a7f099e7bbd8b45a3b4ccbf910
 
 
 ---
@@ -39,23 +39,23 @@ Berichte sind 45 Tage nach Ende des Quartals verfügbar und werden abzüglich e
 ### <a name="access-payout-reports-in-dev-center"></a>Zugriff auf Auszahlungsberichte im Dev Center
 1. Navigieren Sie unter https://dev.windows.com/en-us zum Dev Center.
 2. Klicken Sie auf **Dashboard**.
-   
+
     ![LandingPageDashboardHighlight][1]
 3. Klicken Sie auf **Auszahlungszusammenfassung**.
-   
+
     ![DashboardPayoutSummary][2]
 
 ## <a name="view-your-payout-reports-in-dev-center"></a>Anzeigen von Auszahlungsberichten im Dev Center
 Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für das betreffende Quartal erfasst.
 
-* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben).  Dieser Betrag beläuft sich zumeist auf 0 $, (es sei denn, ein Kunde zahlt weit im Voraus).
+* Der Betrag „Reserviert“ gibt Zahlungen an, die außerhalb des anstehenden Zahlungszyklus anfallen (dieser Betrag wird z. B. in die anstehende Zahlung im Folgemonat verschoben).  Dieser Betrag beläuft sich zumeist auf&0; $, (es sei denn, ein Kunde zahlt weit im Voraus).
 * Klicken Sie in den Bereichen „Anstehende Zahlungen“ oder „Letzte Zahlung“ auf den Link **Details anzeigen** , um einen Hinweis zu diesen Auszahlungen anzuzeigen.
 * Klicken Sie auf **Zahlungsaufstellungen** , um die Details unter „Einnahmen“ nach App oder Produkt anzuzeigen.
 * Klicken Sie auf den Link **Anzeigen** , um einzelne Aufstellungen anzuzeigen.
-  
+
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
 * Verwenden Sie den Filter **Aufschlüsselung der Erlöse** unten in einer Aufstellung, um mehrere Apps/Produkte anzuzeigen, sofern vorhanden.
-  
+
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
 ## <a name="view-your-payout-reports-in-publishing-portal"></a>Anzeigen von Auszahlungsberichten im Veröffentlichungsportal
@@ -64,7 +64,7 @@ Im Auszahlungsbericht für die einzelnen Quartale werden alle Transaktionen für
 1. Navigieren Sie zum Veröffentlichungsportal: https://publish.windowsazure.com.
 2. Klicken Sie im Abschnitt **Herausgeber** auf **Auszahlungsberichte**.
 3. Klicken Sie auf die Dropdownliste, um alle verfügbaren vierteljährlichen Auszahlungsberichte anzuzeigen.
-   
+
     ![accessingpayoutreport][5]
 
 ### <a name="read-your-payout-reports"></a>Lesen von Auszahlungsberichten
@@ -110,6 +110,6 @@ Erstellen Sie bei anderen Problemen eine Supportanfrage unter <https://portal.az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

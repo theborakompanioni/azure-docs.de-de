@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit Data Lake-Speicher mithilfe der plattformübergreifenden Befehlszeilenschnittstelle | Microsoft Docs"
+title: Erste Schritte mit Azure Data Lake Store unter Verwendung der Befehlszeilenschnittstelle | Microsoft Dokumentation
 description: "Verwenden Sie die plattformübergreifende Befehlszeile zum Erstellen eines Data Lake-Speicherkontos und Durchführen grundlegender Vorgänge."
 services: data-lake-store
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 01/31/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c157da7bf53e2d0762624e8e71e56e956db04a24
-ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
+ms.sourcegitcommit: f33ccee7dd520adf074856616005c929040116dd
+ms.openlocfilehash: 89d1811f3f336f2526ccba3b6be26e90ab7120ad
 
 
 ---
@@ -32,6 +32,11 @@ ms.openlocfilehash: 236563a8814640391130ba53886c5cebfea67a8f
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
+
+> [!NOTE]
+> Für das Hochladen und Herunterladen großer Datenmengen (große Dateien, eine große Anzahl von Dateien oder beides) empfehlen wir die Verwendung von [Python SDK](data-lake-store-get-started-python.md), [.NET SDK](data-lake-store-get-started-net-sdk.md) oder [Azure PowerShell](data-lake-store-get-started-powershell.md). Diese Optionen bieten eine bessere Leistung, da sie mehrere Threads verwenden, um die Datenverschiebung zu parallelisieren.
+> 
+>  
 
 Hier erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) ein Azure Data Lake-Speicherkonto erstellen und grundlegende Vorgänge ausführen (also etwa Ordner erstellen, Datendateien hoch- und herunterladen, Ihr Konto löschen und Ähnliches). Weitere Informationen zu Data Lake Store finden Sie unter [Übersicht über Data Lake Store](data-lake-store-overview.md).
 
@@ -177,6 +182,6 @@ Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: d36d806d14fbaa813ea9e8e6ec132fda998bb22c
+ms.sourcegitcommit: f0b0c3bc9daf1e44dfebecedf628b09c97394f94
+ms.openlocfilehash: d993ba4bdff690ee6f0867cdbf0a8059fb5847ee
 
 
 ---
@@ -27,8 +27,10 @@ In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen in „Nod
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website] oder [Node.js-Cloud-Dienst][Node.js-Cloud-Dienst] (mithilfe von Windows PowerShell).
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][Create and deploy a Node.js application to an Azure Website] und [Node.js-Clouddienst][Node.js Cloud Service] (mithilfe von Windows PowerShell).
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 Damit Azure Service Bus verwendet werden kann, laden Sie das Node.js-Azure-Paket herunter und verwenden es. Dieses Paket enthält eine Reihe von Bibliotheken, die mit den Service Bus-REST-Diensten kommunizieren.
@@ -55,27 +57,27 @@ Damit Azure Service Bus verwendet werden kann, laden Sie das Node.js-Azure-Paket
 ### <a name="import-the-module"></a>Importieren des Moduls
 Verwenden Sie Editor oder einen anderen Texteditor, um die folgende Zeile am Anfang der Datei **server.js** der Anwendung einzufügen:
 
-```
+```javascript
 var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Einrichten einer Azure Service Bus-Verbindung
 Das Azure-Modul liest die Umgebungsvariablen AZURE\_SERVICEBUS\_NAMESPACE und AZURE\_SERVICEBUS\_ACCESS\_KEY nach Informationen aus, die für eine Verbindung zu Ihrem Namespace benötigt werden. Wenn diese Umgebungsvariablen nicht festgelegt wurden, müssen Sie beim Aufruf von **createServiceBusService** die Kontoinformationen angeben.
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen in einer Konfigurationsdatei für einen Azure-Clouddienst finden Sie unter [Node.js-Cloud-Dienst mit Speicher][Node.js-Cloud-Dienst mit Speicher].
+Ein Beispiel zum Festlegen der Umgebungsvariablen in einer Konfigurationsdatei für einen Azure-Clouddienst finden Sie unter [Node.js-Clouddienst mit Speicher][Node.js Cloud Service with Storage].
 
-Ein Beispiel zum Festlegen der Umgebungsvariablen im [klassischen Azure-Portal][klassischen Azure-Portal] für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Speicher][Node.js-Webanwendung mit Speicher].
+Ein Beispiel zum Festlegen der Umgebungsvariablen im [klassischen Azure-Portal][Azure classic portal] für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Storage][Node.js Web Application with Storage].
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 Das **ServiceBusService**-Objekt ermöglicht Ihnen, mit Service Bus-Warteschlangen zu arbeiten. Der folgende Code erstellt ein **ServiceBusService**-Objekt. Fügen Sie ihn am Anfang der Datei **server.js** hinzu, nach der Anweisung zum Importieren des Azure-Moduls:
 
-```
+```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
 Durch Aufrufen von **createQueueIfNotExists** für das **ServiceBusService**-Objekt wird die angegebene Warteschlange (falls vorhanden) zurückgegeben, oder es wird eine neue Warteschlange mit dem angegebenen Namen erstellt. Der folgende Code verwendet **createQueueIfNotExists**, um die Warteschlange `myqueue` zu erstellen oder eine Verbindung mit dieser Warteschlange herzustellen:
 
-```
+```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
     if(!error){
         // Queue exists
@@ -85,7 +87,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 
 **createServiceBusService** unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für die Warteschlange überschreiben können, wie zum Beispiel die Gültigkeitsdauer von Nachrichten oder die maximale Warteschlangengröße. Das folgende Beispiel legt die maximale Warteschlangengröße auf 5 GB bei einer Gültigkeitsdauer (Time-to-live, TTL) von 1 Minute fest:
 
-```
+```javascript
 var queueOptions = {
       MaxSizeInMegabytes: '5120',
       DefaultMessageTimeToLive: 'PT1M'
@@ -101,13 +103,13 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 ### <a name="filters"></a>Filter
 Mit **ServiceBusService** können Sie optionale Filteroperationen auf Operationen ausführen. Filtervorgänge können Protokollierung, automatische Wiederholung usw. umfassen. Filter sind Objekte, die eine Methode mit der folgenden Signatur implementieren:
 
-```
+```javascript
 function handle (requestOptions, next)
 ```
 
 Nachdem die Vorverarbeitung der Anforderungsoptionen abgeschlossen ist, muss die Methode `next` aufrufen und hierbei eine Rückruffunktion mit der folgenden Signatur übergeben:
 
-```
+```javascript
 function (returnObject, finalCallback, next)
 ```
 
@@ -115,7 +117,7 @@ Nachdem das **returnObject**-Objekt (die Antwort auf die an den Server gesendete
 
 Zwei Filter, die eine Wiederholungslogik implementieren, sind im Azure SDK für Node.js enthalten: **ExponentialRetryPolicyFilter** und **LinearRetryPolicyFilter**. Der folgende Code erstellt ein **ServiceBusService**-Objekt, das den **ExponentialRetryPolicyFilter** verwendet:
 
-```
+```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
@@ -125,7 +127,7 @@ Um eine Nachricht an eine Service Bus-Warteschlange zu senden, ruft Ihre Anwendu
 
 Das folgende Beispiel zeigt, wie eine Testnachricht an die Warteschlange `myqueue` mithilfe von **sendQueueMessage** gesendet wird:
 
-```
+```javascript
 var message = {
     body: 'Test message',
     customProperties: {
@@ -138,7 +140,7 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 });
 ```
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus-Kontingente].
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 Nachrichten werden von einer Warteschlange über die Methode **receiveQueueMessage** auf dem **ServiceBusService**-Objekt empfangen. Nachrichten werden standardmäßig aus der Warteschlange gelöscht, wenn sie gelesen wurden. Sie können jedoch Nachrichten lesen (einen Blick darauf werfen) und sperren, ohne sie aus der Warteschlange zu löschen, indem Sie den optionalen Parameter **isPeekLock** auf **TRUE** festlegen.
@@ -149,7 +151,7 @@ Wenn der Parameter **isPeekLock** auf **TRUE** festgelegt ist, wird der Empfangs
 
 Im folgenden Beispiel wird veranschaulicht, wie Nachrichten mithilfe von **receiveQueueMessage** empfangen und verarbeitet werden. In diesem Beispiel wird zuerst eine Nachricht empfangen und gelöscht und anschließend eine Nachricht empfangen, wobei für **isPeekLock** der Wert **TRUE** festgelegt ist. Anschließend wird die Nachricht mithilfe von **deleteMessage** gelöscht:
 
-```
+```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
     if(!error){
         // Message received and deleted
@@ -177,22 +179,22 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der **
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
 
-* [Warteschlangen, Themen und Abonnements][Warteschlangen, Themen und Abonnements]
-* [Azure SDK für Node][Azure SDK für Node]-Repository auf GitHub
-* [Node.js Developer Center](/develop/nodejs/)
+* [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions]
+* [Azure SDK für Node][Azure SDK for Node]-Repository auf GitHub
+* [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
 
-[Azure SDK für Node]: https://github.com/Azure/azure-sdk-for-node
-[klassischen Azure-Portal]: http://manage.windowsazure.com
+[Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
+[Azure classic portal]: http://manage.windowsazure.com
 
-[Node.js-Cloud-Dienst]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Warteschlangen, Themen und Abonnements]: service-bus-queues-topics-subscriptions.md
-[Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
-[Node.js-Cloud-Dienst mit Speicher]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
-[Node.js-Webanwendung mit Speicher]: ../storage/storage-nodejs-how-to-use-table-storage.md
-[Service Bus-Kontingente]: service-bus-quotas.md
+[Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
+[Node.js Cloud Service with Storage]: ../storage/storage-nodejs-use-table-storage-cloud-service-app.md
+[Node.js Web Application with Storage]: ../storage/storage-nodejs-how-to-use-table-storage.md
+[Service Bus quotas]: service-bus-quotas.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

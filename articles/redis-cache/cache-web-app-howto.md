@@ -12,11 +12,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/11/2016
+ms.date: 01/27/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 4fc33ba185122496661f7bc49d14f7522d6ee522
-ms.openlocfilehash: 11b65d8f82a6440ec02582827696dba34f1e626c
+ms.sourcegitcommit: 8d1b9293a0b3958d0f478b6a0b6816b8d534883d
+ms.openlocfilehash: d7e98ef1205f0d88e12779a4ce9317128ae81e73
 
 
 ---
@@ -54,7 +54,7 @@ Sie benötigen ein Azure-Konto, um das Tutorial durchführen zu können. Sie kö
 * [Aktivieren Sie Visual Studio-Abonnementvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Ihr MSDN-Abonnement beinhaltet ein monatliches Guthaben, das Sie für zahlungspflichtige Azure-Dienste verwenden können.
 
 ### <a name="visual-studio-2015-with-the-azure-sdk-for-net"></a>Visual Studio 2015 mit dem Azure SDK für .NET
-Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio 2015 wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
+Das Tutorial wurde für Visual Studio 2015 mit dem [Azure SDK für .NET](../dotnet-sdk.md) 2.8.2 oder höher geschrieben. Das aktuelle Azure SDK für Visual Studio 2015 können Sie [hier](http://go.microsoft.com/fwlink/?linkid=518003) herunterladen. Visual Studio&2015; wird automatisch mit dem SDK installiert, wenn das Programm noch nicht vorhanden ist.
 
 Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für Visual Studio 2013 herunterladen](http://go.microsoft.com/fwlink/?LinkID=324322). Einige Bildschirme unterscheiden sich unter Umständen von den Abbildungen in diesem Tutorial.
 
@@ -65,7 +65,7 @@ Bei Verwendung von Visual Studio 2013 können Sie [das aktuelle Azure SDK für V
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 1. Öffnen Sie Visual Studio, und klicken Sie auf **Datei** > **Neu** > **Projekt**.
-2. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**, wählen Sie **Cloud** aus, und klicken Sie anschließend auf **ASP.NET-Webanwendung**. Vergewissern Sie sich, dass **.NET Framework 4.5.2** ausgewählt ist.  Geben Sie im Textfeld **Name** die Zeichenfolge **ContosoTeamStats** ein, und klicken Sie auf **OK**.
+2. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**, wählen Sie **Cloud** aus, und klicken Sie anschließend auf **ASP.NET-Webanwendung**. Vergewissern Sie sich, dass mindestens **.NET Framework 4.5.2** ausgewählt ist.  Geben Sie im Textfeld **Name** die Zeichenfolge **ContosoTeamStats** ein, und klicken Sie auf **OK**.
    
     ![Projekt erstellen][cache-create-project]
 3. Wählen Sie als Projekttyp die Option **MVC** aus. Deaktivieren Sie das Kontrollkästchen **In der Cloud hosten** . Die Schritte zum [Bereitstellen der Azure-Ressourcen](#provision-the-azure-resources) und [Veröffentlichen der Anwendung für Azure](#publish-the-application-to-azure) werden im weiteren Verlauf des Tutorials ausgeführt. Ein Beispiel, in dem eine App Service-Web-App über Visual Studio mit aktiviertem Kontrollkästchen **In der Cloud hosten** bereitgestellt wird, finden Sie unter [Erste Schritte mit Web-Apps in Azure App Service mit ASP.NET und Visual Studio](../app-service-web/web-sites-dotnet-get-started.md).
@@ -87,99 +87,106 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 2. Geben Sie als Klassenname die Zeichenfolge `Team` ein, und klicken Sie anschließend auf **Hinzufügen**.
    
     ![Modellklasse hinzufügen][cache-model-add-class-dialog]
-3. Ersetzen Sie die Anweisungen vom Typ `using` (am Anfang der Datei `Team.cs`) durch folgende using-Anweisungen:
+3. Ersetzen Sie die Anweisungen vom Typ `using` (am Anfang der Datei `Team.cs`) durch folgende `using`-Anweisungen:
 
-        using System;
-        using System.Collections.Generic;
-        using System.Data.Entity;
-        using System.Data.Entity.SqlServer;
+    ```c#
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.SqlServer;
+    ```
 
 
 1. Ersetzen Sie die Definition der `Team`-Klasse durch den folgenden Codeausschnitt. Dieser enthält eine aktualisierte Definition für die `Team`-Klasse sowie einige weitere Entity Framework-Hilfsklassen. Weitere Informationen zum in diesem Tutorial verwendeten Code First-Ansatz für Entity Framework finden Sie unter [Code First für eine neue Datenbank](https://msdn.microsoft.com/data/jj193542).
 
-        public class Team
+    ```c#
+    public class Team
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
+        public int Ties { get; set; }
+    
+        static public void PlayGames(IEnumerable<Team> teams)
         {
-            public int ID { get; set; }
-            public string Name { get; set; }
-            public int Wins { get; set; }
-            public int Losses { get; set; }
-            public int Ties { get; set; }
-
-            static public void PlayGames(IEnumerable<Team> teams)
+            // Simple random generation of statistics.
+            Random r = new Random();
+    
+            foreach (var t in teams)
             {
-                // Simple random generation of statistics.
-                Random r = new Random();
-
-                foreach (var t in teams)
-                {
-                    t.Wins = r.Next(33);
-                    t.Losses = r.Next(33);
-                    t.Ties = r.Next(0, 5);
-                }
+                t.Wins = r.Next(33);
+                t.Losses = r.Next(33);
+                t.Ties = r.Next(0, 5);
             }
         }
-
-        public class TeamContext : DbContext
+    }
+    
+    public class TeamContext : DbContext
+    {
+        public TeamContext()
+            : base("TeamContext")
         {
-            public TeamContext()
-                : base("TeamContext")
-            {
-            }
-
-            public DbSet<Team> Teams { get; set; }
         }
-
-        public class TeamInitializer : CreateDatabaseIfNotExists<TeamContext>
+    
+        public DbSet<Team> Teams { get; set; }
+    }
+    
+    public class TeamInitializer : CreateDatabaseIfNotExists<TeamContext>
+    {
+        protected override void Seed(TeamContext context)
         {
-            protected override void Seed(TeamContext context)
+            var teams = new List<Team>
             {
-                var teams = new List<Team>
-                {
-                    new Team{Name="Adventure Works Cycles"},
-                    new Team{Name="Alpine Ski House"},
-                    new Team{Name="Blue Yonder Airlines"},
-                    new Team{Name="Coho Vineyard"},
-                    new Team{Name="Contoso, Ltd."},
-                    new Team{Name="Fabrikam, Inc."},
-                    new Team{Name="Lucerne Publishing"},
-                    new Team{Name="Northwind Traders"},
-                    new Team{Name="Consolidated Messenger"},
-                    new Team{Name="Fourth Coffee"},
-                    new Team{Name="Graphic Design Institute"},
-                    new Team{Name="Nod Publishers"}
-                };
-
-                Team.PlayGames(teams);
-
-                teams.ForEach(t => context.Teams.Add(t));
-                context.SaveChanges();
-            }
+                new Team{Name="Adventure Works Cycles"},
+                new Team{Name="Alpine Ski House"},
+                new Team{Name="Blue Yonder Airlines"},
+                new Team{Name="Coho Vineyard"},
+                new Team{Name="Contoso, Ltd."},
+                new Team{Name="Fabrikam, Inc."},
+                new Team{Name="Lucerne Publishing"},
+                new Team{Name="Northwind Traders"},
+                new Team{Name="Consolidated Messenger"},
+                new Team{Name="Fourth Coffee"},
+                new Team{Name="Graphic Design Institute"},
+                new Team{Name="Nod Publishers"}
+            };
+    
+            Team.PlayGames(teams);
+    
+            teams.ForEach(t => context.Teams.Add(t));
+            context.SaveChanges();
         }
-
-        public class TeamConfiguration : DbConfiguration
+    }
+    
+    public class TeamConfiguration : DbConfiguration
+    {
+        public TeamConfiguration()
         {
-            public TeamConfiguration()
-            {
-                SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy());
-            }
+            SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy());
         }
+    }
+    ```
 
 
 1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **web.config**, um sie zu öffnen.
    
     ![Web.config][cache-web-config]
 2. Fügen Sie dem Abschnitt `connectionStrings` die folgende Verbindungszeichenfolge hinzu. Der Name der Verbindungszeichenfolge muss dem Namen der Entity Framework-Datenbankkontextklasse ( `TeamContext`) entsprechen.
-   
-       <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
+
+    ```xml   
+    <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
+    ```
 
     Anschließend muss der Abschnitt `connectionStrings` in etwa wie folgt aussehen:
 
-
-        <connectionStrings>
-            <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
-                providerName="System.Data.SqlClient" />
-            <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
-        </connectionStrings>
+    ```xml
+    <connectionStrings>
+        <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ContosoTeamStats-20160216120918.mdf;Initial Catalog=aspnet-ContosoTeamStats-20160216120918;Integrated Security=True"
+            providerName="System.Data.SqlClient" />
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+    </connectionStrings>
+    ```
 
 ### <a name="add-the-controller"></a>Hinzufügen des Controllers
 1. Drücken Sie F6 **** , um das Projekt zu erstellen. 
@@ -195,15 +202,19 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
 5. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Global.asax**, und doppelklicken Sie anschließend auf **Global.asax.cs**, um die Datei zu öffnen.
    
     ![Global.asax.cs][cache-global-asax]
-6. Fügen Sie den using-Anweisungen am Anfang der Datei die beiden folgenden using-Anweisungen hinzu:
+6. Fügen Sie den `using`-Anweisungen am Anfang der Datei die beiden folgenden `using`-Anweisungen hinzu:
 
-        using System.Data.Entity;
-        using ContosoTeamStats.Models;
+    ```c#
+    using System.Data.Entity;
+    using ContosoTeamStats.Models;
+    ```
 
 
 1. Fügen Sie am Ende der `Application_Start` -Methode folgenden Code hinzu:
 
-        Database.SetInitializer<TeamContext>(new TeamInitializer());
+    ```c#
+    Database.SetInitializer<TeamContext>(new TeamInitializer());
+    ```
 
 
 1. Erweitern Sie im **Projektmappen-Explorer** den Knoten `App_Start`, und doppelklicken Sie auf `RouteConfig.cs`.
@@ -211,11 +222,13 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
     ![RouteConfig.cs][cache-RouteConfig-cs]
 2. Ersetzen Sie `controller = "Home"` im folgenden Code der `RegisterRoutes`-Methode durch `controller = "Teams"`, wie im folgenden Beispiel gezeigt:
 
-        routes.MapRoute(
-            name: "Default",
-            url: "{controller}/{action}/{id}",
-            defaults: new { controller = "Teams", action = "Index", id = UrlParameter.Optional }
-        );
+    ```c#
+    routes.MapRoute(
+        name: "Default",
+        url: "{controller}/{action}/{id}",
+        defaults: new { controller = "Teams", action = "Index", id = UrlParameter.Optional }
+    );
+```
 
 
 ### <a name="configure-the-views"></a>Konfigurieren der Ansichten
@@ -224,7 +237,9 @@ In diesem Abschnitt des Tutorials wird die grundlegende Anwendung zum Lesen und 
     ![_Layout.cshtml][cache-layout-cshtml]
 2. Ändern Sie den Inhalt des `title`-Elements, und ersetzen Sie `My ASP.NET Application` durch `Contoso Team Stats`, wie im folgenden Beispiel gezeigt:
 
-        <title>@ViewBag.Title - Contoso Team Stats</title>
+    ```html
+    <title>@ViewBag.Title - Contoso Team Stats</title>
+    ```
 
 
 1. Aktualisieren Sie im `body`-Abschnitt die erste `Html.ActionLink`-Anweisung, und ersetzen Sie `Application name` durch `Contoso Team Stats` und `Home` durch `Teams`.
@@ -257,33 +272,41 @@ In diesem Abschnitt des Tutorials wird die Beispielanwendung zum Speichern und A
 3. Erweitern Sie im **Projektmappen-Explorer** den Ordner **Controller**, und doppelklicken Sie auf **TeamsController.cs**, um die Datei zu öffnen.
    
     ![Teamcontroller][cache-teamscontroller]
-4. Fügen Sie **TeamsController.cs**die beiden folgenden Anweisungen hinzu:
-   
-        using System.Configuration;
-        using StackExchange.Redis;
+4. Fügen Sie **TeamsController.cs** die beiden folgenden `using`-Anweisungen hinzu:
+
+    ```c#   
+    using System.Configuration;
+    using StackExchange.Redis;
+    ```
+
 5. Fügen Sie der `TeamsController` -Klasse die beiden folgenden Eigenschaften hinzu:
-   
-        // Redis Connection string info
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+
+    ```c#   
+    // Redis Connection string info
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+        return ConnectionMultiplexer.Connect(cacheConnection);
+    });
+    
+    public static ConnectionMultiplexer Connection
+    {
+        get
         {
-            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
-   
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
+            return lazyConnection.Value;
         }
+    }
+    ```
+
 6. Erstellen Sie auf Ihrem Computer eine Datei namens `WebAppPlusCacheAppSecrets.config` , und platzieren Sie sie an einem Ort, der nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird, falls Sie beschließen, ihn irgendwo einzuchecken. In diesem Beispiel befindet sich die Datei `AppSettingsSecrets.config` unter `C:\AppSecrets\WebAppPlusCacheAppSecrets.config`.
    
     Bearbeiten Sie die Datei `WebAppPlusCacheAppSecrets.config`, und fügen Sie ihr folgende Inhalte hinzu. Wenn Sie die Anwendung lokal ausführen, werden diese Informationen verwendet, um eine Verbindung mit Ihrer Azure Redis Cache-Instanz herzustellen. Im weiteren Verlauf dieses Tutorials stellen Sie eine Azure Redis Cache-Instanz bereit und aktualisieren den Cachenamen und das Kennwort. Wenn Sie die Beispielanwendung nicht lokal ausführen, können Sie die Erstellung dieser Datei und die nachfolgenden Schritte, die sich auf die Datei beziehen, überspringen. Bei einer Bereitstellung für Azure ruft die Anwendung die Cacheverbindungsinformationen nicht aus dieser Datei, sondern aus der App-Einstellung für die Web-App ab. Da `WebAppPlusCacheAppSecrets.config` nicht mit Ihrer Anwendung für Azure bereitgestellt wird, benötigen Sie sie nur, wenn Sie die Anwendung lokal ausführen möchten.
 
-        <appSettings>
-          <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
-        </appSettings>
+    ```xml
+    <appSettings>
+      <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
+    </appSettings>
+    ```
 
 
 1. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **web.config**, um sie zu öffnen.
@@ -294,7 +317,7 @@ In diesem Abschnitt des Tutorials wird die Beispielanwendung zum Speichern und A
    * Vorher: `<appSettings>`
    * Nachher: ` <appSettings file="C:\AppSecrets\WebAppPlusCacheAppSecrets.config">`
      
-     Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<appSettings>`-Element zusammen. Falls die angegebene Datei nicht gefunden wird, wird das Dateiattribut ignoriert. Ihre vertraulichen Daten (die Verbindungszeichenfolge für Ihren Cache) sind nicht Bestandteil des Quellcodes für die Anwendung. Wenn Sie Ihre Web-App für Azure bereitstellen, wird die Datei `WebAppPlusCacheAppSecrests.config` nicht bereitgestellt. (Dieses Verhalten ist so beabsichtigt.) Es gibt mehrere Möglichkeiten, die vertraulichen Daten in Azure anzugeben. In diesem Tutorial werden sie automatisch für Sie konfiguriert, wenn Sie in einem späteren Schritt des Tutorials die [Azure-Ressourcen bereitstellen](#provision-the-azure-resources). Weitere Informationen zur Verwendung vertraulicher Daten in Azure finden Sie unter [Best Practices für das Bereitstellen von Kennwörtern und anderen vertraulichen Daten in ASP.NET und Azure App Service](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure).
+   Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<appSettings>`-Element zusammen. Falls die angegebene Datei nicht gefunden wird, wird das Dateiattribut ignoriert. Ihre vertraulichen Daten (die Verbindungszeichenfolge für Ihren Cache) sind nicht Bestandteil des Quellcodes für die Anwendung. Wenn Sie Ihre Web-App für Azure bereitstellen, wird die Datei `WebAppPlusCacheAppSecrests.config` nicht bereitgestellt. (Dieses Verhalten ist so beabsichtigt.) Es gibt mehrere Möglichkeiten, die vertraulichen Daten in Azure anzugeben. In diesem Tutorial werden sie automatisch für Sie konfiguriert, wenn Sie in einem späteren Schritt des Tutorials die [Azure-Ressourcen bereitstellen](#provision-the-azure-resources). Weitere Informationen zur Verwendung vertraulicher Daten in Azure finden Sie unter [Best Practices für das Bereitstellen von Kennwörtern und anderen vertraulichen Daten in ASP.NET und Azure App Service](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure).
 
 ### <a name="update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database"></a>Aktualisieren der TeamsController-Klasse zum Zurückgeben von Ergebnissen aus dem Cache oder der Datenbank
 In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cache abgerufen werden. Teamstatistikdaten werden im Cache als serialisierte Daten vom Typ `List<Team>`sowie als sortierter Satz mit Redis-Datentypen gespeichert. Beim Abrufen von Elementen aus einem sortierten Satz können Sie einige oder alle Elemente abrufen oder bestimmte Elemente abfragen. Im vorliegenden Beispiel werden die fünf besten Teams aus dem sortierten Satz abgefragt und nach der Anzahl gewonnener Spiele sortiert.
@@ -304,282 +327,299 @@ In diesem Beispiel können Teamstatistikdaten aus der Datenbank oder aus dem Cac
 > 
 > 
 
-1. Fügen Sie den using-Anweisungen am Anfang der Datei `TeamsController.cs` folgende weitere using-Anweisungen hinzu:
-   
-        using System.Diagnostics;
-        using Newtonsoft.Json;
-2. Ersetzen Sie die aktuelle `public ActionResult Index()` -Methode durch die folgende Implementierung:
+1. Fügen Sie den `using`-Anweisungen am Anfang der Datei `TeamsController.cs` folgende weitere `using`-Anweisungen hinzu:
 
-        // GET: Teams
-        public ActionResult Index(string actionType, string resultType)
+    ```c#   
+    using System.Diagnostics;
+    using Newtonsoft.Json;
+    ```
+
+2. Ersetzen Sie die aktuelle Implementierung der `public ActionResult Index()`-Methode durch die folgende Implementierung:
+
+    ```c#
+    // GET: Teams
+    public ActionResult Index(string actionType, string resultType)
+    {
+        List<Team> teams = null;
+
+        switch(actionType)
         {
-            List<Team> teams = null;
+            case "playGames": // Play a new season of games.
+                PlayGames();
+                break;
 
-            switch(actionType)
-            {
-                case "playGames": // Play a new season of games.
-                    PlayGames();
-                    break;
+            case "clearCache": // Clear the results from the cache.
+                ClearCachedTeams();
+                break;
 
-                case "clearCache": // Clear the results from the cache.
-                    ClearCachedTeams();
-                    break;
-
-                case "rebuildDB": // Rebuild the database with sample data.
-                    RebuildDB();
-                    break;
-            }
-
-            // Measure the time it takes to retrieve the results.
-            Stopwatch sw = Stopwatch.StartNew();
-
-            switch(resultType)
-            {
-                case "teamsSortedSet": // Retrieve teams from sorted set.
-                    teams = GetFromSortedSet();
-                    break;
-
-                case "teamsSortedSetTop5": // Retrieve the top 5 teams from the sorted set.
-                    teams = GetFromSortedSetTop5();
-                    break;
-
-                case "teamsList": // Retrieve teams from the cached List<Team>.
-                    teams = GetFromList();
-                    break;
-
-                case "fromDB": // Retrieve results from the database.
-                default:
-                    teams = GetFromDB();
-                    break;
-            }
-
-            sw.Stop();
-            double ms = sw.ElapsedTicks / (Stopwatch.Frequency / (1000.0));
-
-            // Add the elapsed time of the operation to the ViewBag.msg.
-            ViewBag.msg += " MS: " + ms.ToString();
-
-            return View(teams);
+            case "rebuildDB": // Rebuild the database with sample data.
+                RebuildDB();
+                break;
         }
+
+        // Measure the time it takes to retrieve the results.
+        Stopwatch sw = Stopwatch.StartNew();
+
+        switch(resultType)
+        {
+            case "teamsSortedSet": // Retrieve teams from sorted set.
+                teams = GetFromSortedSet();
+                break;
+
+            case "teamsSortedSetTop5": // Retrieve the top 5 teams from the sorted set.
+                teams = GetFromSortedSetTop5();
+                break;
+
+            case "teamsList": // Retrieve teams from the cached List<Team>.
+                teams = GetFromList();
+                break;
+
+            case "fromDB": // Retrieve results from the database.
+            default:
+                teams = GetFromDB();
+                break;
+        }
+
+        sw.Stop();
+        double ms = sw.ElapsedTicks / (Stopwatch.Frequency / (1000.0));
+
+        // Add the elapsed time of the operation to the ViewBag.msg.
+        ViewBag.msg += " MS: " + ms.ToString();
+
+        return View(teams);
+    }
+    ```
 
 
 1. Fügen Sie der `TeamsController`-Klasse die drei folgenden Methoden hinzu, um die Aktionstypen `playGames`, `clearCache` und `rebuildDB` aus der im vorherigen Codeausschnitt hinzugefügten switch-Anweisung zu implementieren.
    
     Die `PlayGames` -Methode aktualisiert die Teamstatistik durch eine simulierte Spielesaison, speichert die Ergebnisse in der Datenbank und löscht die inzwischen veralteten Daten aus dem Cache.
 
-        void PlayGames()
-        {
-            ViewBag.msg += "Updating team statistics. ";
-            // Play a "season" of games.
-            var teams = from t in db.Teams
-                        select t;
+    ```c#
+    void PlayGames()
+    {
+        ViewBag.msg += "Updating team statistics. ";
+        // Play a "season" of games.
+        var teams = from t in db.Teams
+                    select t;
 
-            Team.PlayGames(teams);
+        Team.PlayGames(teams);
 
-            db.SaveChanges();
+        db.SaveChanges();
 
-            // Clear any cached results
-            ClearCachedTeams();
-        }
-
+        // Clear any cached results
+        ClearCachedTeams();
+    }
+    ```
 
     Die `RebuildDB` -Methode initialisiert die Datenbank mit dem Standardteamsatz neu, generiert die Statistik für die Teams und löscht die nun veralteten Daten aus dem Cache.
 
-        void RebuildDB()
-        {
-            ViewBag.msg += "Rebuilding DB. ";
-            // Delete and re-initialize the database with sample data.
-            db.Database.Delete();
-            db.Database.Initialize(true);
+    ```c#
+    void RebuildDB()
+    {
+        ViewBag.msg += "Rebuilding DB. ";
+        // Delete and re-initialize the database with sample data.
+        db.Database.Delete();
+        db.Database.Initialize(true);
 
-            // Clear any cached results
-            ClearCachedTeams();
-        }
-
+        // Clear any cached results
+        ClearCachedTeams();
+    }
+    ```
 
     Die `ClearCachedTeams` -Methode entfernt alle zwischengespeicherten Teamstatistikdaten aus dem Cache.
 
-
-        void ClearCachedTeams()
-        {
-            IDatabase cache = Connection.GetDatabase();
-            cache.KeyDelete("teamsList");
-            cache.KeyDelete("teamsSortedSet");
-            ViewBag.msg += "Team data removed from cache. ";
-        } 
+    ```c#
+    void ClearCachedTeams()
+    {
+        IDatabase cache = Connection.GetDatabase();
+        cache.KeyDelete("teamsList");
+        cache.KeyDelete("teamsSortedSet");
+        ViewBag.msg += "Team data removed from cache. ";
+    } 
+    ```
 
 
 1. Fügen Sie der `TeamsController` -Klasse die vier folgenden Methoden hinzu, um die verschiedenen Methoden zum Abrufen der Teamstatistik aus dem Cache und der Datenbank zu implementieren. Jede dieser Methoden gibt ein Element vom Typ `List<Team>` zurück, das dann in der Ansicht angezeigt wird.
    
     Die `GetFromDB` -Methode liest die Teamstatistik aus der Datenbank.
    
-        List<Team> GetFromDB()
-        {
-            ViewBag.msg += "Results read from DB. ";
-            var results = from t in db.Teams
-                orderby t.Wins descending
-                select t; 
-   
-            return results.ToList<Team>();
-        }
+    ```c#
+    List<Team> GetFromDB()
+    {
+        ViewBag.msg += "Results read from DB. ";
+        var results = from t in db.Teams
+            orderby t.Wins descending
+            select t; 
+
+        return results.ToList<Team>();
+    }
+    ```
 
     Die `GetFromList`-Methode liest die Teamstatistik aus dem Cache als serialisierte Daten vom Typ `List<Team>`. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank gelesen und für den nächsten Zugriff im Cache gespeichert. In diesem Beispiel verwenden wir die JSON.NET-Serialisierung, um die .NET-Objekte für den Cache zu serialisieren. Weitere Informationen finden Sie unter [Arbeiten mit .NET-Objekten im Cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
-        List<Team> GetFromList()
+    ```c#
+    List<Team> GetFromList()
+    {
+        List<Team> teams = null;
+
+        IDatabase cache = Connection.GetDatabase();
+        string serializedTeams = cache.StringGet("teamsList");
+        if (!String.IsNullOrEmpty(serializedTeams))
         {
-            List<Team> teams = null;
+            teams = JsonConvert.DeserializeObject<List<Team>>(serializedTeams);
 
-            IDatabase cache = Connection.GetDatabase();
-            string serializedTeams = cache.StringGet("teamsList");
-            if (!String.IsNullOrEmpty(serializedTeams))
-            {
-                teams = JsonConvert.DeserializeObject<List<Team>>(serializedTeams);
-
-                ViewBag.msg += "List read from cache. ";
-            }
-            else
-            {
-                ViewBag.msg += "Teams list cache miss. ";
-                // Get from database and store in cache
-                teams = GetFromDB();
-
-                ViewBag.msg += "Storing results to cache. ";
-                cache.StringSet("teamsList", JsonConvert.SerializeObject(teams));
-            }
-            return teams;
+            ViewBag.msg += "List read from cache. ";
         }
+        else
+        {
+            ViewBag.msg += "Teams list cache miss. ";
+            // Get from database and store in cache
+            teams = GetFromDB();
 
+            ViewBag.msg += "Storing results to cache. ";
+            cache.StringSet("teamsList", JsonConvert.SerializeObject(teams));
+        }
+        return teams;
+    }
+    ```
 
     Die `GetFromSortedSet` -Methode liest die Teamstatistik aus einem zwischengespeicherten sortierten Satz. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank gelesen und im Cache als sortierter Satz gespeichert.
 
-
-        List<Team> GetFromSortedSet()
+    ```c#
+    List<Team> GetFromSortedSet()
+    {
+        List<Team> teams = null;
+        IDatabase cache = Connection.GetDatabase();
+        // If the key teamsSortedSet is not present, this method returns a 0 length collection.
+        var teamsSortedSet = cache.SortedSetRangeByRankWithScores("teamsSortedSet", order: Order.Descending);
+        if (teamsSortedSet.Count() > 0)
         {
-            List<Team> teams = null;
-            IDatabase cache = Connection.GetDatabase();
-            // If the key teamsSortedSet is not present, this method returns a 0 length collection.
-            var teamsSortedSet = cache.SortedSetRangeByRankWithScores("teamsSortedSet", order: Order.Descending);
-            if (teamsSortedSet.Count() > 0)
+            ViewBag.msg += "Reading sorted set from cache. ";
+            teams = new List<Team>();
+            foreach (var t in teamsSortedSet)
             {
-                ViewBag.msg += "Reading sorted set from cache. ";
-                teams = new List<Team>();
-                foreach (var t in teamsSortedSet)
-                {
-                    Team tt = JsonConvert.DeserializeObject<Team>(t.Element);
-                    teams.Add(tt);
-                }
+                Team tt = JsonConvert.DeserializeObject<Team>(t.Element);
+                teams.Add(tt);
             }
-            else
-            {
-                ViewBag.msg += "Teams sorted set cache miss. ";
-
-                // Read from DB
-                teams = GetFromDB();
-
-                ViewBag.msg += "Storing results to cache. ";
-                foreach (var t in teams)
-                {
-                    Console.WriteLine("Adding to sorted set: {0} - {1}", t.Name, t.Wins);
-                    cache.SortedSetAdd("teamsSortedSet", JsonConvert.SerializeObject(t), t.Wins);
-                }
-            }
-            return teams;
         }
+        else
+        {
+            ViewBag.msg += "Teams sorted set cache miss. ";
 
+            // Read from DB
+            teams = GetFromDB();
+
+            ViewBag.msg += "Storing results to cache. ";
+            foreach (var t in teams)
+            {
+                Console.WriteLine("Adding to sorted set: {0} - {1}", t.Name, t.Wins);
+                cache.SortedSetAdd("teamsSortedSet", JsonConvert.SerializeObject(t), t.Wins);
+            }
+        }
+        return teams;
+    }
+    ```
 
     Die `GetFromSortedSetTop5` -Methode liest die fünf besten Teams aus dem zwischengespeicherten sortierten Satz. Dabei wird zunächst geprüft, ob der `teamsSortedSet` -Schlüssel im Cache vorhanden ist. Ist der Schlüssel nicht vorhanden, wird die `GetFromSortedSet` -Methode aufgerufen, um die Teamstatistik zu lesen und im Cache zu speichern. Als Nächstes werden aus dem zwischengespeicherten sortierten Satz die fünf besten Teams abgefragt und zurückgegeben.
 
+    ```c#
+    List<Team> GetFromSortedSetTop5()
+    {
+        List<Team> teams = null;
+        IDatabase cache = Connection.GetDatabase();
 
-        List<Team> GetFromSortedSetTop5()
+        // If the key teamsSortedSet is not present, this method returns a 0 length collection.
+        var teamsSortedSet = cache.SortedSetRangeByRankWithScores("teamsSortedSet", stop: 4, order: Order.Descending);
+        if(teamsSortedSet.Count() == 0)
         {
-            List<Team> teams = null;
-            IDatabase cache = Connection.GetDatabase();
+            // Load the entire sorted set into the cache.
+            GetFromSortedSet();
 
-            // If the key teamsSortedSet is not present, this method returns a 0 length collection.
-            var teamsSortedSet = cache.SortedSetRangeByRankWithScores("teamsSortedSet", stop: 4, order: Order.Descending);
-            if(teamsSortedSet.Count() == 0)
-            {
-                // Load the entire sorted set into the cache.
-                GetFromSortedSet();
-
-                // Retrieve the top 5 teams.
-                teamsSortedSet = cache.SortedSetRangeByRankWithScores("teamsSortedSet", stop: 4, order: Order.Descending);
-            }
-
-            ViewBag.msg += "Retrieving top 5 teams from cache. ";
-            // Get the top 5 teams from the sorted set
-            teams = new List<Team>();
-            foreach (var team in teamsSortedSet)
-            {
-                teams.Add(JsonConvert.DeserializeObject<Team>(team.Element));
-            }
-            return teams;
+            // Retrieve the top 5 teams.
+            teamsSortedSet = cache.SortedSetRangeByRankWithScores("teamsSortedSet", stop: 4, order: Order.Descending);
         }
 
+        ViewBag.msg += "Retrieving top 5 teams from cache. ";
+        // Get the top 5 teams from the sorted set
+        teams = new List<Team>();
+        foreach (var team in teamsSortedSet)
+        {
+            teams.Add(JsonConvert.DeserializeObject<Team>(team.Element));
+        }
+        return teams;
+    }
+    ```
 
 ### <a name="update-the-create-edit-and-delete-methods-to-work-with-the-cache"></a>Aktualisieren der Create-, Edit- und Delete-Methoden für den Cache
 Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinzufügen, Bearbeiten und Löschen. Sobald ein Team hinzugefügt, bearbeitet oder entfernt wurde, sind die Daten im Cache veraltet. In diesem Abschnitt werden diese drei Methoden geändert, um die zwischengespeicherten Teams zu löschen und dadurch zu verhindern, dass der Cache Daten enthält, die nicht mit der Datenbank synchronisiert sind.
 
 1. Navigieren Sie in der `TeamsController`-Klasse zur `Create(Team team)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
 
-        // POST: Teams/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
+    ```c#
+    // POST: Teams/Create
+    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Create([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
-            {
-                db.Teams.Add(team);
-                db.SaveChanges();
-                // When a team is added, the cache is out of date.
-                // Clear the cached teams.
-                ClearCachedTeams();
-                return RedirectToAction("Index");
-            }
-
-            return View(team);
-        }
-
-
-1. Navigieren Sie in der `TeamsController`-Klasse zur `Edit(Team team)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
-
-        // POST: Teams/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(team).State = EntityState.Modified;
-                db.SaveChanges();
-                // When a team is edited, the cache is out of date.
-                // Clear the cached teams.
-                ClearCachedTeams();
-                return RedirectToAction("Index");
-            }
-            return View(team);
-        }
-
-
-1. Navigieren Sie in der `TeamsController`-Klasse zur `DeleteConfirmed(int id)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
-
-        // POST: Teams/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Team team = db.Teams.Find(id);
-            db.Teams.Remove(team);
+            db.Teams.Add(team);
             db.SaveChanges();
-            // When a team is deleted, the cache is out of date.
+            // When a team is added, the cache is out of date.
             // Clear the cached teams.
             ClearCachedTeams();
             return RedirectToAction("Index");
         }
+
+        return View(team);
+    }
+    ```
+
+
+1. Navigieren Sie in der `TeamsController`-Klasse zur `Edit(Team team)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
+
+    ```c#
+    // POST: Teams/Edit/5
+    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit([Bind(Include = "ID,Name,Wins,Losses,Ties")] Team team)
+    {
+        if (ModelState.IsValid)
+        {
+            db.Entry(team).State = EntityState.Modified;
+            db.SaveChanges();
+            // When a team is edited, the cache is out of date.
+            // Clear the cached teams.
+            ClearCachedTeams();
+            return RedirectToAction("Index");
+        }
+        return View(team);
+    }
+    ```
+
+
+1. Navigieren Sie in der `TeamsController`-Klasse zur `DeleteConfirmed(int id)`-Methode. Fügen Sie einen Aufruf der `ClearCachedTeams` -Methode hinzu, wie im folgenden Beispiel zu sehen:
+
+    ```c#
+    // POST: Teams/Delete/5
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        Team team = db.Teams.Find(id);
+        db.Teams.Remove(team);
+        db.SaveChanges();
+        // When a team is deleted, the cache is out of date.
+        // Clear the cached teams.
+        ClearCachedTeams();
+        return RedirectToAction("Index");
+    }
+    ```
 
 
 ### <a name="update-the-teams-index-view-to-work-with-the-cache"></a>Aktualisieren der Teams-Indexansicht für den Cache
@@ -592,39 +632,43 @@ Der im Rahmen dieses Beispiels generierte Gerüstcode enthält Methoden zum Hinz
    
     Dies ist der Link zum Erstellen eines neuen Teams. Ersetzen Sie das Absatzelement durch die folgende Tabelle. Die Tabelle enthält Aktionslinks zum Erstellen eines neuen Teams, zum Spielen einer neuen Saison, zum Löschen des Cache, zum Abrufen der Teams aus dem Cache in unterschiedlichen Formaten, zum Abrufen der Teams aus der Datenbank sowie zum Neuerstellen der Datenbank mit frischen Beispieldaten.
 
-        <table class="table">
-            <tr>
-                <td>
-                    @Html.ActionLink("Create New", "Create")
-                </td>
-                <td>
-                    @Html.ActionLink("Play Season", "Index", new { actionType = "playGames" })
-                </td>
-                <td>
-                    @Html.ActionLink("Clear Cache", "Index", new { actionType = "clearCache" })
-                </td>
-                <td>
-                    @Html.ActionLink("List from Cache", "Index", new { resultType = "teamsList" })
-                </td>
-                <td>
-                    @Html.ActionLink("Sorted Set from Cache", "Index", new { resultType = "teamsSortedSet" })
-                </td>
-                <td>
-                    @Html.ActionLink("Top 5 Teams from Cache", "Index", new { resultType = "teamsSortedSetTop5" })
-                </td>
-                <td>
-                    @Html.ActionLink("Load from DB", "Index", new { resultType = "fromDB" })
-                </td>
-                <td>
-                    @Html.ActionLink("Rebuild DB", "Index", new { actionType = "rebuildDB" })
-                </td>
-            </tr>    
-        </table>
+    ```html
+    <table class="table">
+        <tr>
+            <td>
+                @Html.ActionLink("Create New", "Create")
+            </td>
+            <td>
+                @Html.ActionLink("Play Season", "Index", new { actionType = "playGames" })
+            </td>
+            <td>
+                @Html.ActionLink("Clear Cache", "Index", new { actionType = "clearCache" })
+            </td>
+            <td>
+                @Html.ActionLink("List from Cache", "Index", new { resultType = "teamsList" })
+            </td>
+            <td>
+                @Html.ActionLink("Sorted Set from Cache", "Index", new { resultType = "teamsSortedSet" })
+            </td>
+            <td>
+                @Html.ActionLink("Top 5 Teams from Cache", "Index", new { resultType = "teamsSortedSetTop5" })
+            </td>
+            <td>
+                @Html.ActionLink("Load from DB", "Index", new { resultType = "fromDB" })
+            </td>
+            <td>
+                @Html.ActionLink("Rebuild DB", "Index", new { actionType = "rebuildDB" })
+            </td>
+        </tr>    
+    </table>
+    ```
 
 
 1. Führen Sie einen Bildlauf zum unteren Rand der Datei **Index.cshtml** durch, und fügen Sie das folgende `tr`-Element als letzte Zeile der letzten Tabelle in der Datei hinzu:
    
-        <tr><td colspan="5">@ViewBag.Msg</td></tr>
+    ```html
+    <tr><td colspan="5">@ViewBag.Msg</td></tr>
+    ```
    
     Diese Zeile zeigt den Wert von `ViewBag.Msg` an. Dieses Element enthält einen Statusbericht für den aktuellen Vorgang, der festgelegt wird, wenn Sie auf einen der Aktionslinks aus dem vorherigen Schritt klicken.   
    
@@ -653,15 +697,13 @@ Nach dem Klicken auf die Schaltfläche zum Bereitstellen für Azure **** gelange
 
 ![Bereitstellen in Azure][cache-deploy-to-azure-step-1]
 
-1. Wählen Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** das gewünschte Azure-Abonnement und dann eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, und geben Sie den Speicherort der Ressourcengruppe an.
-2. Geben Sie auf dem Blatt **Parameter** einen Administratorkontonamen (**ADMINISTRATORLOGIN**, nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
-3. Die anderen Einstellungen können bei Bedarf geändert werden, aber Sie können auch die Standardwerte beibehalten. Klicken Sie anschließend auf **OK**.
+1. Wählen Sie im Abschnitt **Grundlagen** das gewünschte Azure-Abonnement und dann eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue, und geben Sie den Speicherort der Ressourcengruppe an.
+2. Geben Sie im Abschnitt **Einstellungen** einen Administratorkontonamen (**ADMINISTRATORLOGIN**, nicht: **admin**), ein Kennwort für die Administratoranmeldung (**ADMINISTRATORLOGINPASSWORD**) und einen Datenbanknamen (**DATABASENAME**) an. Die anderen Parameter sind für einen kostenlosen App Service-Hostingtarif (Free-Tarif) sowie mit kostengünstigen Optionen für SQL-Datenbank und Azure Redis Cache konfiguriert, die im Free-Tarif nicht enthalten sind.
 
-![Bereitstellen in Azure][cache-deploy-to-azure-step-2]
+    ![Bereitstellen in Azure][cache-deploy-to-azure-step-2]
 
-1. Klicken Sie auf **Prüfen Sie die rechtlichen Bedingungen**.
-2. Lesen Sie die Bedingungen auf dem Blatt **Erwerben**, und klicken Sie anschließend auf **Erwerben**.
-3. Klicken Sie zum Starten der Ressourcenbereitstellung auf dem Blatt **Benutzerdefinierte Bereitstellung** auf **Erstellen**.
+3. Nach dem Konfigurieren der gewünschten Einstellungen führen Sie einen Bildlauf zum Ende der Seite durch, lesen die Geschäftsbedingungen und aktivieren das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**.
+4. Klicken Sie zum Starten der Ressourcenbereitstellung auf **Kaufen**.
 
 Klicken Sie auf das Benachrichtigungssymbol und anschließend auf **Bereitstellung gestartet...**, um den Status der Bereitstellung anzuzeigen.
 
@@ -746,9 +788,11 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 1. Öffnen Sie die Datei `WebAppPlusCacheAppSecrets.config` , die Sie in diesem Tutorial beim [Konfigurieren der Anwendung für die Verwendung von Redis Cache](#configure-the-application-to-use-redis-cache) erstellt haben, mit einem beliebigen Editor.
 2. Bearbeiten Sie das `value`-Attribut, ersetzen Sie `MyCache.redis.cache.windows.net` durch den [Hostnamen](cache-configure.md#properties) Ihres Cache, und geben Sie den [primären oder sekundären Schlüssel](cache-configure.md#access-keys) des Cache als Kennwort an.
 
-        <appSettings>
-          <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
-        </appSettings>
+    ```xml
+    <appSettings>
+      <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
+    </appSettings>
+    ```
 
 
 1. Drücken Sie **STRG+F5** , um die Anwendung auszuführen.
@@ -808,6 +852,6 @@ Nachdem Sie den zu verwendenden Cache ausgewählt oder erstellt haben, navigiere
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

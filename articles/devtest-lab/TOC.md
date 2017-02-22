@@ -21,11 +21,19 @@
 ### [Hinzufügen eines Artefaktrepositorys](devtest-lab-add-artifact-repo.md)
 ### [Erstellen benutzerdefinierter Artefakte](devtest-lab-artifact-author.md)
 
-## Verwalten von VM-Grundlagen
-### [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md)
+## Verwalten von VM-Grundlagen und -Vorlagen
+### [Erstellen von Umgebungen mit mehreren virtuellen Computern mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
-### [Verwalten von Formeln](devtest-lab-manage-formulas.md)
 ### [Vergleichen von Images und Formeln](devtest-lab-comparing-vm-base-image-types.md)
+### [Verwalten von Formeln](devtest-lab-manage-formulas.md)
+### [Erstellen eines benutzerdefinierten Images von einem virtuellen Computer](devtest-lab-create-custom-image-from-vm-using-portal.md)
+### [Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe des Azure-Portals](devtest-lab-create-template.md)
+### [Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe von PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+### [Hochladen der VHD-Datei mit AzCopy](devtest-lab-upload-vhd-using-azcopy.md)
+### [Hochladen der VHD-Datei mithilfe von PowerShell](devtest-lab-upload-vhd-using-powershell.md)
+### [Hochladen der VHD-Datei mithilfe des Speicher-Explorers](devtest-lab-upload-vhd-using-storage-explorer.md)
+
+
 
 # Ressourcen
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=devtest-lab)
@@ -35,6 +43,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure Mobile Engagement – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Erkenntnisse zur Verwendung mobiler Apps und zur Benutzersegmentierung in Echtzeit gewinnen und wie Sie Pushbenachrichtigungen und In-App-Messaging in Abhängigkeit vom Kontext aktivieren."
+services: mobile-engagement
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: mobile-engagement
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: 37f08d8a03845b86d382d4c0b49b58f633cc1b0c
+ms.sourcegitcommit: 3de3024e93aee7ace0e243eef0beb4008dc50db5
+ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
 
 ---
+
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement-Dokumentation
 
 Hier erfahren Sie, wie Sie mithilfe von Mobile Engagement die Nutzung, Kundenbindung und Monetarisierung mobiler Apps verbessern. Anhand von Tutorials, SDKs und anderem Dokumentationsmaterial wird gezeigt, wie Sie Erkenntnisse zur App-Verwendung und zur Benutzersegmentierung in Echtzeit gewinnen und wie Sie Pushbenachrichtigungen und In-App-Messaging in Abhängigkeit vom Kontext aktivieren.
@@ -199,6 +211,6 @@ Hier erfahren Sie, wie Sie mithilfe von Mobile Engagement die Nutzung, Kundenbin
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

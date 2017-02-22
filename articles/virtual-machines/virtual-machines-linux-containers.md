@@ -1,5 +1,5 @@
 ---
-title: Virtuelle Computer und Container | Microsoft Docs
+title: Container in virtuellen Azure-Linux-Computern | Microsoft-Dokumentation
 description: "Beschreibt Virtual Machines, Docker und Linux-Container und ihre Verwendung in den entsprechenden Gruppen in Azure, einschließlich der jeweiligen Vorteile und von Szenarios, in denen jeder Ansatz gut funktioniert."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a523da03305224aedb9ae558846719c3a37b0b5b
+ms.sourcegitcommit: 518777dd312fc0e219dd05e44e26e2822bd9d2cf
+ms.openlocfilehash: 15eab47f914682f82d2d402b7f565adb051fd736
 
 
 ---
-# <a name="virtual-machines-and-containers-in-azure"></a>Virtuelle Computer und Container in Azure
+# <a name="virtual-machines-vs-containers-in-azure"></a>Virtuelle Computer und Container in Azure im Vergleich
 [!INCLUDE [virtual-machines-common-and-containers](../../includes/virtual-machines-common-containers.md)]
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

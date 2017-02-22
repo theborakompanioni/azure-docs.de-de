@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen bei Adafruit Feather M0 WiFi und dem Azure IoT Starterkit | Microsoft Docs
+title: "Verbinden von Arduino (C) mit Azure IoT – Problembehandlung | Microsoft-Dokumentation"
 description: "Seite „Problembehandlung“ zur Arduino-Benutzeroberfläche für den Adafruit Feather M0 WiFi"
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 9e8084fe26229ef9ed1676c0a3c34e0ee7be88b1
-ms.openlocfilehash: e855e43c14cac49598ff6d6bd3582efe81c50243
+ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
+ms.openlocfilehash: 448dc0370014ad295ed820d796f7af2eb5fe698e
 
 
 ---
@@ -74,7 +74,7 @@ Bei der Installation von **pip** tritt ein Berechtigungsfehler auf, wenn früher
 Wenn Sie Azure IoT Hub erfolgreich per `azure-cli` bereitgestellt haben und ein Tool benötigen, um die Geräte zu verwalten, die eine Verbindung mit IoT Hub herstellen, können Sie die unten angegebenen Tools ausprobieren:
 
 ### <a name="device-explorer"></a>Geräte-Explorer
-[Geräte-Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](iot-hub-devguide.md):
+[Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) wird auf Ihrem lokalen Windows-Computer ausgeführt und stellt eine Verbindung mit IoT-Hub in Azure her. Er kommuniziert mit den folgenden [IoT Hub-Endpunkten](iot-hub-devguide.md):
 
 * *Geräteidentitätsverwaltung* zum Bereitstellen und Verwalten von Geräten, die bei IoT Hub registriert sind.
 * *Empfangen von Gerät-zu-Cloud*, damit Sie von Ihrem Gerät an IoT Hub gesendete Nachrichten überwachen können.
@@ -83,7 +83,8 @@ Wenn Sie Azure IoT Hub erfolgreich per `azure-cli` bereitgestellt haben und ein 
 Konfigurieren Sie `IoT hub connection string` innerhalb dieses Tools, um all seine Eigenschaften zu verwenden.
 
 ### <a name="iot-hub-explorer"></a>ioT Hub-Explorer
-[iothub-explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
+[iothub-explorer](https://github.com/Azure/iothub-explorer) ist ein Beispiel für CLI-Tools für mehrere Plattformen, um Geräteclients zu verwalten. Mit dem Tool können Sie Geräte im Identitätsregister verwalten, Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Befehle senden.
+
 
 Um die aktuellste Version (Vorabversion) des iothub-explorer-Tools zu installieren, führen Sie den folgenden Befehl in Ihrer Befehlszeilenumgebung aus:
 
@@ -108,6 +109,6 @@ Sie können eine vollständige CLI-Oberfläche nutzen, um alle Azure-Ressourcen 
 [sample-repository]: https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

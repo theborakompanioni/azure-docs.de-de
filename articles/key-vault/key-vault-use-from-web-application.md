@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2016
+ms.date: 01/07/2017
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d41a332d0d4265bc2802be65c7f89aa07e46ae97
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: 1c94e442576d28a6e40bcc3a0720ed31db722af5
 
 
 ---
@@ -113,10 +113,10 @@ Sie benötigen nun Code zum Aufrufen der Schlüsseltresor-API, um den geheimen S
     // I put my GetToken method in a Utils class. Change for wherever you placed your method.
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
 
-    var sec = kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]).Result.Value;
+    var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
     //I put a variable in a Utils class to hold the secret for general  application use.
-    Utils.EncryptSecret = sec;
+    Utils.EncryptSecret = sec.Value;
 
 
 
@@ -142,29 +142,26 @@ Notieren Sie sich das Enddatum und das Kennwort für die PFX-Datei (in diesem Be
 
 Weitere Informationen zum Erstellen eines Testzertifikats finden Sie unter [How to: Create Your Own Test Certificate](https://msdn.microsoft.com/library/ff699202.aspx)
 
-**Zuordnen des Zertifikats zu einer Azure AD-Anwendung** Nachdem Sie ein Zertifikat erstellt haben, müssen Sie es einer Azure AD-Anwendung zuordnen. Dies wird jedoch noch nicht im Azure-Verwaltungsportal unterstützt. Sie müssen stattdessen PowerShell verwenden. Im Folgenden finden Sie die Befehle, die Sie ausführen müssen:
+**Zuordnen des Zertifikats zu einer Azure AD-Anwendung** Nachdem Sie ein Zertifikat erstellt haben, müssen Sie es einer Azure AD-Anwendung zuordnen. Das Azure-Portal unterstützt diesen Workflow derzeit nicht. Dies kann aber über PowerShell ausgeführt werden. Führen Sie die folgenden Befehle aus, um das Zertifikat der Azure AD-Anwendung zuzuordnen:
 
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-
-    PS C:\> $x509.Import("C:\data\KVWebApp.cer")
-
-    PS C:\> $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
-
-    PS C:\> $now = [System.DateTime]::Now
+    $x509.Import("C:\data\KVWebApp.cer")
+    $credValue = [System.Convert]::ToBase64String($x509.GetRawCertData())
+    $now = [System.DateTime]::Now
 
     # this is where the end date from the cert above is used
-    PS C:\> $yearfromnow = [System.DateTime]::Parse("2016-07-31")
+    $yearfromnow = [System.DateTime]::Parse("2016-07-31")
 
-    PS C:\> $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
+    $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
 
-    PS C:\> $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
+    $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
-    PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+    Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
 
     # get the thumbprint to use in your app settings
-    PS C:\>$x509.Thumbprint
+    $x509.Thumbprint
 
-Nachdem Sie diese Befehle ausgeführt haben, wird die Anwendung in Azure AD angezeigt. Wenn die Anwendung nicht sofort angezeigt wird, suchen Sie nach "Anwendungen im Besitz meines Unternehmens" anstelle von "Anwendungen, die mein Unternehmen verwendet".
+Nachdem Sie diese Befehle ausgeführt haben, wird die Anwendung in Azure AD angezeigt. Achten Sie darauf, um Suchdialogfeld „Anwendungen im Besitz meines Unternehmens“ und nicht „Anwendungen, die mein Unternehmen verwendet“ auszuwählen.
 
 Weitere Informationen zu Azure AD-Anwendungsobjekten und -Dienstprinzipalobjekten finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md)
 
@@ -243,6 +240,6 @@ Eine Referenz zur Programmierung finden Sie unter [C#-Client-API-Referenz für d
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

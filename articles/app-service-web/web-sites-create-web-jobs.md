@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2016
+ms.date: 11/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 9dd4539122de38221e229ad5799961b62a4f648a
+ms.sourcegitcommit: 10320f338d902ffefd8a98fd59f3e8fb22682b00
+ms.openlocfilehash: 578575877fc706076ac2fdf034cb1ac0e92b16ef
 
 
 ---
 # <a name="run-background-tasks-with-webjobs"></a>Ausführen von Hintergrundaufgaben mit WebJobs
 ## <a name="overview"></a>Übersicht
-Sie können Programme oder Skripts in WebJobs auf drei Arten in Ihrer [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) -Web-App ausführen: bei Bedarf, kontinuierlich oder nach einem Zeitplan. Für die Nutzung von WebJobs fallen keine zusätzlichen Kosten an.
+Sie können Programme oder Skripts in WebJobs auf drei Arten in Ihrer [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)-Web-App ausführen: bei Bedarf, kontinuierlich oder nach einem Zeitplan. Für die Nutzung von WebJobs fallen keine zusätzlichen Kosten an.
 
 Dieser Artikel zeigt, wie Sie WebJobs mithilfe des [Azure-Portals](https://portal.azure.com)bereitstellen. Informationen zum Bereitstellen über Visual Studio oder einen kontinuierlichen Bereitstellungsprozess finden Sie unter [Bereitstellen von Azure WebJobs in Azure-Web-Apps](websites-dotnet-deploy-webjobs.md).
 
 Das Azure WebJobs-SDK vereinfacht zahlreiche WebJobs-Programmieraufgaben. Weitere Informationen finden Sie unter [Was ist das WebJobs-SDK?](websites-dotnet-webjobs-sdk.md).
 
- Azure Functions (derzeit in der Vorschau) ist eine weitere Möglichkeit zum Ausführen von Programmen und Skripts in Azure App Service. Weitere Informationen hierzu finden Sie in der [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
+ Azure Functions bietet eine weitere Möglichkeit zum Ausführen von Programmen und Skripts aus einer serverlosen Umgebung oder einer App Service-App. Weitere Informationen hierzu finden Sie in der [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -207,6 +207,6 @@ Weitere Informationen finden Sie unter [Empfohlene Ressourcen für Azure-WebJobs
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

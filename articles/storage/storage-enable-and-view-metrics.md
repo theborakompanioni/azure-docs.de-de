@@ -4,7 +4,7 @@ description: "Aktivieren von Speichermetriken für die Blob-, Warteschlangen-, T
 services: storage
 documentationcenter: 
 author: robinsh
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
@@ -12,11 +12,11 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2016
+ms.date: 02/03/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 2721d804c1ce9ae2d6df60b1daa5a957848945b6
-ms.openlocfilehash: 3cf750343f431299b20a8b8147305dec00bde87d
+ms.sourcegitcommit: c3519943bf60aebc8510b7a7ac577bbe04587bd8
+ms.openlocfilehash: 05f4d8d6e9155f163ef44ef189067427ac606f46
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 3cf750343f431299b20a8b8147305dec00bde87d
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Übersicht
-Standardmäßig sind für Ihre Speicherdienste keine Speichermetriken aktiviert. Sie können die Überwachung über das [Azure-Portal](https://portal.azure.com) , über Windows PowerShell oder programmgesteuert über die Speicherclientbibliothek aktivieren.
+Standardmäßig sind für Ihre Speicherdienste keine Speichermetriken aktiviert. Sie können die Überwachung über das [Azure-Portal](https://portal.azure.com), über Windows PowerShell oder programmgesteuert über die Speicherclientbibliothek aktivieren.
 
 Wenn Sie Speichermetriken aktivieren, müssen Sie einen Aufbewahrungszeitraum für die Daten auswählen: Dieser Zeitraum bestimmt, wie lange der Speicherdienst die Metriken beibehält und Speicherplatz abgerechnet wird, der für ihre Speicherung erforderlich ist. Normalerweise sollten Sie einen kürzeren Aufbewahrungszeitraum für minütliche Metriken als für stündliche Metriken auswählen, weil für minütliche Metriken eine erhebliche Menge an zusätzlichem Speicherplatz erforderlich ist. Sie sollten den Aufbewahrungszeitraum so auswählen, dass ausreichend Zeit zum Analysieren der Daten und zum Herunterladen von Metriken verfügbar ist, die Sie für die Offlineanalyse oder zur Berichterstellung verwenden möchten. Denken Sie daran, dass auch für das Herunterladen von Metrikdaten aus Ihrem Speicherkonto Kosten anfallen.
 
@@ -32,10 +32,11 @@ Wenn Sie Speichermetriken aktivieren, müssen Sie einen Aufbewahrungszeitraum f�
 Gehen Sie wie folgt vor, um Metriken im [Azure-Portal](https://portal.azure.com)zu aktivieren:
 
 1. Navigieren Sie zum Speicherkonto.
-2. Öffnen Sie das Blatt **Einstellungen**, und wählen Sie **Diagnose**.
-3. Prüfen Sie, ob der **Status** auf **Ein** festgelegt ist.
-4. Wählen Sie die Metriken für die Dienste, die Sie überwachen möchten.
-5. Geben Sie eine Aufbewahrungsrichtlinie an, um festzulegen, wie lange Metriken und Protokolldaten beibehalten werden sollen.
+1. Wählen Sie auf dem Blatt **Menü** die Option **Diagnose**.
+1. Prüfen Sie, ob der **Status** auf **Ein** festgelegt ist.
+1. Wählen Sie die Metriken für die Dienste, die Sie überwachen möchten.
+1. Geben Sie eine Aufbewahrungsrichtlinie an, um festzulegen, wie lange Metriken und Protokolldaten beibehalten werden sollen.
+1. Wählen Sie **Speichern**aus.
 
 Beachten Sie, dass das [Azure-Portal](https://portal.azure.com) zurzeit die Konfiguration von minütlichen Metriken in Ihrem Speicherkonto nicht unterstützt. Sie müssen minütliche Metriken mithilfe von PowerShell oder programmgesteuert aktivieren.
 
@@ -60,7 +61,7 @@ Der folgende Befehl ruft die aktuelle stündliche Metrikstufe und die Aufbewahru
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
 
-Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>Programmgesteuertes Aktivieren von Speichermetriken
 Der folgende C#-Codeausschnitt zeigt, wie Metriken und Protokollierung für den Blob-Dienst mithilfe der Speicherclientbibliothek für .NET aktiviert werden:
@@ -96,12 +97,13 @@ blobClient.SetServiceProperties(properties);
 ```
 
 ## <a name="viewing-storage-metrics"></a>Anzeigen von Speichermetriken
-Nachdem Sie die Metriken der Speicheranalyse zum Überwachen Ihres Speicherkontos konfiguriert haben, erfasst die Speicheranalyse die Metriken in bekannten Tabellen in Ihrem Speicherkonto. Sie können Diagramme zum Anzeigen stündlicher Metriken im [Azure-Portal](https://portal.azure.com)konfigurieren:
+Nachdem Sie die Metriken der Speicheranalyse zum Überwachen Ihres Speicherkontos konfiguriert haben, erfasst die Speicheranalyse die Metriken in bekannten Tabellen in Ihrem Speicherkonto. Sie können Diagramme zum Anzeigen stündlicher Metriken im [Azure-Portal](https://portal.azure.com) konfigurieren:
 
 1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
-2. Klicken Sie im Abschnitt **Überwachung** auf **Kacheln hinzufügen**, um ein neues Diagramm hinzuzufügen. Wählen Sie im **Kachelkatalog** die Metrik aus, die Sie anzeigen möchten, und ziehen Sie sie in den Abschnitt **Überwachung**.
-3. Um einzustellen, welche Metriken in einem Diagramm angezeigt werden, klicken Sie auf den Link **Bearbeiten** . Sie können einzelne Metriken durch Aktivieren oder Deaktivieren hinzufügen oder entfernen.
-4. Klicken Sie auf **Speichern** , wenn Sie mit dem Bearbeiten der Metriken fertig sind.
+1. Wählen Sie für den Dienst, dessen Metriken Sie anzeigen möchten, auf dem Blatt **Menü** die Option **Metriken**.
+1. Wählen Sie **Bearbeiten** im Diagramm, das Sie konfigurieren möchten.
+1. Wählen Sie auf dem Blatt **Diagramm bearbeiten** die Optionen **Zeitbereich** und **Diagrammtyp** sowie die Metriken, die im Diagramm angezeigt werden sollen.
+1. Klicken Sie auf **OK**.
 
 Wenn Sie die Metriken zur langfristigen Speicherung oder für eine lokale Analyse herunterladen möchten, ist Folgendes erforderlich:
 
@@ -147,7 +149,7 @@ In diesen minütlichen Metrikbeispieldaten verwendet der Partitionsschlüssel di
 
 Die Beispieldaten oben zeigen alle Datensätze für eine einzelne Minute (Beginn um 11:00 Uhr). Die Anzahl der QueryEntities-Anforderungen zuzüglich der Anzahl der QueryEntity-Anforderungen zuzüglich der Anzahl der UpdateEntity-Anforderungen ergibt daher den Wert 7. Dies ist die Gesamtsumme, die in der Zeile "user:All" angezeigt wird. Analog können Sie die durchschnittliche End-to-End-Latenz 104,4286 für die Zeile "user:All" ableiten, indem Sie die Berechnung ((143,8 * 5) + 3 + 9)/7 ausführen.
 
-Sie sollten in Betracht ziehen, im [Azure-Portal](https://portal.azure.com) auf der Seite „Überwachen“ Benachrichtigungen einzurichten, damit die Speichermetriken Sie automatisch bei wichtigen Änderungen im Verhalten Ihrer Speicherdienste benachrichtigen können. Wenn Sie ein Speicher-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Format mit Trennzeichen verwenden, kann Microsoft Excel zum Analysieren der Daten verwendet werden. Im Blogbeitrag [Microsoft Azure Storage Explorers](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) (Microsoft Azure-Speicher-Explorer) finden Sie eine Liste der verfügbaren Speicher-Explorer-Tools.
+Sie sollten die Einrichtung von Warnungen auf der Überwachungsseite im [Azure-Portal](https://portal.azure.com) in Betracht ziehen, damit Sie mithilfe der Speichermetriken automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden können. Wenn Sie ein Speicher-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Trennzeichen-getrennten Format verwenden, können Sie die Daten mithilfe von Microsoft Excel analysieren. Im Blogbeitrag [Microsoft Azure Storage Explorers](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) (Microsoft Azure-Speicher-Explorer) finden Sie eine Liste der verfügbaren Speicher-Explorer-Tools.
 
 ## <a name="accessing-metrics-data-programmatically"></a>Programmgesteuertes Zugreifen auf Metrikdaten
 Das folgende Listing zeigt C#-Beispielcode, der auf die minütlichen Metriken für einen bestimmten Zeitraum von Minuten zugreift und die Ergebnisse in einem Konsolenfenster anzeigt. Er verwendet die Azure Storage-Bibliothek, Version 4, die die Klasse "CloudAnalyticsClient" enthält, durch die der Zugriff auf Metriktabellen im Speicher vereinfacht wird.
@@ -205,10 +207,10 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 * Wenn ein Dienst jede Stunde alle APIs in jedem Dienst nutzt, werden ungefähr 12 KB Daten pro Stunde in den Metriktransaktionstabellen gespeichert, wenn Sie die Zusammenfassung nur auf Dienstebene aktiviert haben.
 * In der Kapazitätstabelle für Blobs werden pro Tag zwei Zeilen hinzugefügt (wenn der Benutzer Protokolle abonniert hat): Dies bedeutet, dass die Größe dieser Tabelle pro Tag um ungefähr 300 Bytes zunimmt.
 
-## <a name="next-steps"></a>Nächste Schritte:
+## <a name="next-steps"></a>Nächste Schritte
 [Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

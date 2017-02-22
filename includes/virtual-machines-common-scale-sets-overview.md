@@ -16,7 +16,7 @@ Eine Reihe von Beispielvorlagen für VM-Skalierungsgruppen finden Sie im GitHub-
 
 Auf den Detailseiten für diese Vorlagen finden Sie eine Schaltfläche, die eine Verknüpfung mit dem Bereitstellungsfeature des Portals herstellt. Zum Bereitstellen der VM-Skalierungsgruppe klicken Sie auf diese Schaltfläche und geben dann alle Parameter an, die im Portal erforderlich sind. Wenn Sie sich nicht sicher sind, ob eine Ressource Großbuchstaben oder eine gemischte Groß- und Kleinbuchschreibung unterstützt, ist es sicherer, für die Parameterwerte nur Kleinbuchstaben zu verwenden. Es gibt auch ein anschauliches Video mit einer Analyse einer VM-Skalierungsgruppenvorlage:
 
-[Analyse einer VM-Skalierungsgruppenvorlage](https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player)
+[Analyse einer VM-Skalierungsgruppenvorlage](https://channel9.msdn.com/Blogs/Azure/VM-Scale-Set-Template-Dissection/player)
 
 ## <a name="scaling-a-vm-scale-set-out-and-in"></a>Hochskalieren und Herunterskalieren einer VM-Skalierungsgruppe
 Wenn Sie die Anzahl der virtuellen Computer in einer VM-Skalierungsgruppe erhöhen oder verringern möchten, ändern Sie einfach die Eigenschaft *capacity* und stellen die Vorlage erneut bereit. Diese Einfachheit erleichtert es, eine benutzerdefinierte Skalierungsschicht zu schreiben, falls Sie benutzerdefinierte Skalierungsereignisse definieren möchten, die von der automatischen Skalierung in Azure nicht unterstützt werden.
@@ -64,7 +64,7 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 ## <a name="vm-scale-set-frequently-asked-questions"></a>VM-Skalierungsgruppen – häufig gestellte Fragen
 **F.** Wie viele virtuelle Computer können in eine VM-Skalierungsgruppe aufgenommen werden?
 
-**A.** 100, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40, weil benutzerdefinierte Images während der Vorschau nur in einem einzelnen Speicherkonto platziert werden können.
+**A.** &100;, sofern Sie Plattformimages verwenden, die über mehrere Speicherkonten verteilt werden können. Wenn Sie benutzerdefinierte Images verwenden, bis zu 40, weil benutzerdefinierte Images während der Vorschau nur in einem einzelnen Speicherkonto platziert werden können.
 
 **F.** Welche anderen Ressourceneinschränkungen bestehen für VM-Skalierungsgruppen?
 
@@ -118,6 +118,6 @@ Dieser Abschnitt enthält einige typische Szenarien für VM-Skalierungsgruppen. 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

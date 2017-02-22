@@ -13,11 +13,11 @@ ms.topic: support-article
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.workload: required
-ms.date: 09/09/2016
+ms.date: 01/10/2017
 ms.author: delhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 9f85988268d4c832c46da1790c83d4a78141f489
+ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
+ms.openlocfilehash: f237c5ffe9e95d538959e2d622bb643c9986f0d2
 
 
 ---
@@ -26,12 +26,12 @@ Wenn Sie versuchen, einen beendeten virtuellen Azure-Computer zu starten oder di
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>Sammeln von Überwachungsprotokollen
-Sammeln Sie zur Problembehandlung zunächst die Überwachungsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise:
+## <a name="collect-activity-logs"></a>Erfassen von Aktivitätsprotokollen
+Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise:
 
-[Problembehandlung beim Bereitstellen von Ressourcengruppen mit dem Azure-Portal](../resource-manager-troubleshoot-deployments-portal.md)
+[Anzeigen von Bereitstellungsvorgängen](../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Überwachen von Vorgängen mit dem Ressourcen-Manager](../resource-group-audit.md)
+[Anzeigen von Aktivitätsprotokollen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-audit.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Problem: Fehler beim Starten eines angehaltenen virtuellen Computers
 Sie versuchen, einen angehaltenen virtuellen Computer zu starten, erhalten aber eine Zuordnungsfehlermeldung.
@@ -68,6 +68,6 @@ Wenn beim Erstellen eines neuen virtuellen Linux-Computers in Azure Probleme auf
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

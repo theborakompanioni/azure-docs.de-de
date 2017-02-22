@@ -1,5 +1,5 @@
 ---
-title: "Installieren des StorSimple 8600-Geräts | Microsoft Docs"
+title: "Installieren des Microsoft Azure StorSimple 8600-Geräts | Microsoft-Dokumentation"
 description: "Beschreibt, wie Sie das StorSimple 8600-Gerät auspacken, in ein Rack einbauen und verkabeln., bevor Sie die Software bereitstellen und konfigurieren."
 services: storsimple
 documentationcenter: NA
@@ -15,8 +15,8 @@ ms.workload: TBD
 ms.date: 10/24/2016
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5b250358c44e699082c27803027a6a861e206a7d
+ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
+ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
 
 
 ---
@@ -255,7 +255,7 @@ Führen Sie die folgenden Schritte aus, um den seriellen Anschluss zu verkabeln.
    * 8 Datenbits
    * 1 Stoppbit
    * Keine Parität
-   *  **Keine**
+   * **Keine**
 6. Stellen Sie sicher, dass die Verbindung funktioniert, indem Sie auf der Konsole die EINGABETASTE drücken. Ein Menü der seriellen Konsole sollte angezeigt werden.
 
 > [!NOTE]
@@ -271,6 +271,6 @@ Sie können nun [Ihr lokales StorSimple-Gerät bereitstellen und konfigurieren](
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

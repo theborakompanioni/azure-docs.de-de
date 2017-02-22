@@ -16,8 +16,8 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 84d3aa963f8538c0721f6c0a02cee5b8e7269770
-ms.openlocfilehash: 33433fb4e71ea6a88522c0bd50695d271fee1884
+ms.sourcegitcommit: 5ef9e96ae78b02da9dff1456608d73b9e78516a1
+ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
 
 
 ---
@@ -63,10 +63,10 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
 ### <a name="create-a-new-android-project"></a>Erstellen eines neuen Android-Projekts
 1. Starten Sie in Android Studio ein neues Android Studio-Projekt.
    
-     ![Android Studio – Neues Projekt][13]
+   ![Android Studio – Neues Projekt][13]
 2. Wählen Sie den Formfaktor **Phone and Tablet** und das **Minimum SDK** aus, das unterstützt werden soll. Klicken Sie auf **Weiter**.
    
-     ![Android Studio – Projekterstellungsworkflow][14]
+   ![Android Studio – Projekterstellungsworkflow][14]
 3. Wählen Sie **Empty Activity** als Hauptaktivität aus, und klicken Sie auf **Weiter** und anschließend auf **Fertig stellen**.
 
 ### <a name="add-google-play-services-to-the-project"></a>Hinzufügen von Google Play Services zum Projekt
@@ -619,13 +619,14 @@ Stellen Sie zusätzlich zu den obigen Punkten sicher, dass Ihr Google-Konto dem 
 #### <a name="running-the-application"></a>Ausführen der Anwendung
 1. Führen Sie die App aus, und prüfen Sie, ob die Registrierungs-ID als erfolgreiche Registrierung gemeldet wird.
    
-       ![Testing on Android - Channel registration][18]
+      ![Testen unter Android – Kanalregistrierung][18]
 2. Geben Sie eine Benachrichtigungsmeldung ein, die an alle für den Hub registrierten Android-Geräte gesendet werden soll.
    
-       ![Testing on Android - sending a message][19]
+      ![Testen unter Android – Senden einer Nachricht][19]
+
 3. Tippen Sie auf **Send Notification**. Auf allen Geräten, auf denen die App ausgeführt wird, wird eine `AlertDialog` -Instanz mit der Pushbenachrichtigungsnachricht angezeigt. Geräte, auf denen die App nicht ausgeführt wird, die aber zuvor für Pushbenachrichtigungen registriert wurden, erhalten im Android-Benachrichtigungs-Manager eine Benachrichtigung. Diese können durch Wischen von der linken oberen Ecke nach unten angezeigt werden.
    
-       ![Testing on Android - notifications][21]
+      ![Testen unter Android – Benachrichtigungen][21]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Als nächster Schritt wird das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer] empfohlen. Darin wird beschrieben, wie Sie Benachrichtigungen von einem ASP.NET-Back-End für bestimmte Benutzer mithilfe von Tags senden.
@@ -671,6 +672,6 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie in unserem [Not
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

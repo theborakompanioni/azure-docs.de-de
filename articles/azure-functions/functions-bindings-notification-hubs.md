@@ -3,7 +3,7 @@ title: Azure Functions Notification Hub-Bindung | Microsoft Docs
 description: Erfahren Sie, wie Azure Notification Hub-Bindungen in Azure Functions verwendet werden.
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: ggailey777
 manager: erikre
 editor: 
 tags: 
@@ -15,10 +15,10 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: wesmc
+ms.author: glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 7e9534afa8ecd224b4e3c1df2f4465b70d961d2c
-ms.openlocfilehash: 1e03a54956a9fd035cf40aa953a2c368d91b766b
+ms.sourcegitcommit: a64af1a9f969c5ce5a7e2f18ca23451ac96f1a13
+ms.openlocfilehash: 7abd7b0921c029ff159935d89905d3c502aba643
 
 
 ---
@@ -76,8 +76,8 @@ Sie können eine Verbindungszeichenfolge für einen vorhandenen Hub auch manuell
 
 1. Klicken Sie im Azure-Portal auf dem Blatt **Funktionen-App** auf **Funktionen-App-Einstellungen > Zu App Service-Einstellungen wechseln**.
 2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
-3. Scrollen Sie nach unten zum Abschnitt **Verbindungszeichenfolgen**, und fügen Sie einen benannten Eintrag für den *DefaultFullSharedAccessSignature*-Wert für Ihren Notification Hub hinzu. Ändern Sie den Typ in **Benutzerdefiniert**.
-4. Verweisen Sie in den Ausgabebindungen auf den Namen der Verbindungszeichenfolge, ähnlich wie bei **MyHubConnectionString** im obigen Beispiel.
+3. Blättern Sie nach unten zum Abschnitt **Anwendungseinstellungen**, und fügen Sie einen benannten Eintrag für den Wert *DefaultFullSharedAccessSignature* für Ihren Notification Hub hinzu.
+4. Verweisen Sie in den Ausgabebindungen auf den Namen Ihrer Anwendungseinstellungen, ähnlich wie bei **MyHubConnectionString** im obigen Beispiel.
 
 ## <a name="apns-native-notifications-with-c-queue-triggers"></a>Native APNS-Benachrichtigungen mit C#-Warteschlangentriggern
 In diesem Beispiel wird gezeigt, wie Sie in der [Bibliothek für Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) definierte Typen zum Senden einer nativen APNS-Benachrichtigung verwenden. 
@@ -298,6 +298,6 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

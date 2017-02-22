@@ -1,5 +1,5 @@
 ---
-title: Referenz der Kacheln im Ansicht-Designer in Log Analytics | Microsoft Docs
+title: "Kachelreferenz für den Ansicht-Designer in OMS Log Analytics | Microsoft-Dokumentation"
 description: "Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind."
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/26/2016
+ms.date: 01/23/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: c00a472e2dda12874dd7bee4ccb6c4d53bf104a7
-ms.openlocfilehash: 1f4a42ea42000c3a8dd25baea610332ea6cd6a71
+ms.sourcegitcommit: 4d6ea516717077ffb4b832caa9e8a064905fce09
+ms.openlocfilehash: 07938808a6ce39be80f38d93831db40130bcd4b5
 
 
 ---
-# <a name="log-analytics-view-designer-tile-reference"></a>Referenz der Kacheln im Ansicht-Designer in Log Analytics
+# <a name="log-analytics-view-designer-tile-reference"></a>Kachelreferenz für den Ansicht-Designer in Log Analytics
 Mit dem Ansicht-Designer in Log Analytics können Sie benutzerdefinierte Ansichten in der OMS-Konsole erstellen, die unterschiedliche Visualisierungen von Daten im OMS-Repository enthalten. Dieser Artikel enthält eine Referenz der Einstellungen für die einzelnen Kacheln, die zur Verwendung in Ihren benutzerdefinierten Ansichten verfügbar sind.
 
 Weitere verfügbare Artikel für den Ansicht-Designer:
@@ -180,6 +180,6 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

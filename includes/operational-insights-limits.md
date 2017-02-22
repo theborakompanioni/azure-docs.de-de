@@ -1,37 +1,35 @@
----
-title: Tabelle der Operational Insights-Begrenzungen
-description: "Beschreibt die Systembegrenzungen für Operational Insights."
-services: operational-insights
-documentationcenter: NA
-author: bandersmsft
-manager: jwhit
-editor: 
-ms.service: operational-insights
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 07/01/2015
-ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: e664ce9426a2852a35dfdade5d41a9ce8b37a3b7
-ms.openlocfilehash: 91ca8359e0f6fe1a58ca09cc0207e8a3639abfe1
+
+>[!NOTE]
+>Log Analytics hieß früher Operational Insights.
+>
+>
+
+Für Log Analytics-Ressourcen gelten pro Abonnement die folgenden Einschränkungen:
+
+| Ressource | Standardlimit | Kommentare
+| --- | --- | --- |
+| Anzahl von kostenlosen Arbeitsbereichen pro Abonnement | 10 | Dieser Grenzwert kann nicht erhöht werden. |
+| Anzahl von kostenpflichtigen Arbeitsbereichen pro Abonnement | – | Sie sind durch die Anzahl von Ressourcen innerhalb einer Ressourcengruppe und die Anzahl von Ressourcengruppen pro Abonnement eingeschränkt. | 
 
 
----
-Für abonnierte Operational Insights gelten folgende Begrenzungen.
+Die folgenden Grenzwerte gelten für jeden Log Analytics-Arbeitsbereich:
 
-|  | FREI | STANDARD | PREMIUM |
-| --- | --- | --- | --- |
-| Tägliche Begrenzung für die Datenübertragung |500 MB<sup>1</sup> |Keine |Keine |
-| Aufbewahrungszeitraum |7 Tage |1 Monat |12 Monate |
-| Speicherbegrenzung für Daten |500 MB * 7 Tage = 3,5 GB |Unbegrenzt |Unbegrenzt |
+|  | Kostenlos | Standard | Premium | Eigenständig | OMS |
+| --- | --- | --- | --- | --- | --- |
+| Pro Tag erfasstes Datenvolumen |500 MB<sup>1</sup> |Keine |Keine | Keine | Keine
+| Aufbewahrungszeitraum |7 Tage |1 Monat |12 Monate | 1 Monat<sup>2</sup> | 1 Monat<sup>2</sup>|
 
-<sup>1</sup>Wenn Kunden ihre tägliche Begrenzung von 500 MB für die Datenübertragung erreicht haben, wird die Datenanalyse beendet und am nächsten Morgen fortgesetzt. Ein Tag wird in UTC-Zeit ausgegeben.
+<sup>1</sup>Wenn Kunden bei der Datenübertragung das Tageslimit von 500 MB erreichen, wird die Datenanalyse beendet und am nächsten Morgen fortgesetzt. Ein Tag wird in UTC-Zeit ausgegeben.
+
+<sup>2</sup>Der Aufbewahrungszeitraum für die Tarife „Eigenständig“ und „OMS“ kann auf 730 Tage erhöht werden.
+
+| Kategorie | Grenzen | Kommentare
+| --- | --- | --- |
+| Data Collector API (Datensammler-API) | Die maximale Größe für einen einzelnen Beitrag beträgt 30 MB.<br>Die maximale Größe für Feldwerte beträgt 32 KB. | Teilen Sie größere Volumen auf mehrere Beiträge auf.<br>Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
+| Search-API | 5000 zurückgegebene Datensätze (nicht aggregierte Daten)<br>500.000 Datensätze (aggregierte Daten) | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `measure` enthält.
+ 
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

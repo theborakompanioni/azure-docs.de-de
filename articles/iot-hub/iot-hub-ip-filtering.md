@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub – IP-Filter | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird gezeigt, wie Sie bestimmte IP-Adressen für Azure IoT Hub auf eine Negativ- bzw. Positivliste setzen."
+title: "Azure IoT Hub – IP-Verbindungsfilter | Microsoft-Dokumentation"
+description: "Verwenden der IP-Filterung zum Blockieren von Verbindungen von bestimmten IP-Adressen für Ihren Azure IoT Hub. Sie können Verbindungen von einzelnen IP-Adressen oder Bereichen von IP-Adressen blockieren."
 services: iot-hub
 documentationcenter: 
 author: BeatriceOltean
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2016
+ms.date: 01/05/2017
 ms.author: boltean
 translationtype: Human Translation
-ms.sourcegitcommit: 457d0d97601e18de2a19b83be100954d01f9bbf8
-ms.openlocfilehash: 86622918a136da4c478c8d47a677a67e46eb093b
+ms.sourcegitcommit: ddb729d29072724f691c178967b6181f6ce06df4
+ms.openlocfilehash: a9207d116e9b7360865c950ba00210ed67c3e028
 
 
 ---
 
-# <a name="ip-filter"></a>IP-Filter
+# <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
 Die Sicherheit ist bei jeder IoT-Lösung, die auf Azure IoT Hub basiert, ein wichtiger Aspekt. Es kann sein, dass Sie bestimmte IP-Adressen im Rahmen Ihrer Sicherheitskonfiguration auf eine Negativ- oder Positivliste setzen müssen. Mit dem Feature _IP-Filter_ können Sie Regeln konfigurieren, mit denen Datenverkehr von bestimmten IPv4-Adressen abgelehnt oder zugelassen wird.
 
@@ -34,7 +34,7 @@ Wenn es hilfreich ist, die IoT Hub-Endpunkte für bestimmte IP-Adressen zu block
 
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
-Die IP-Filterregeln werden auf IoT Hub-Dienstebene angewendet. Daher gelten die IP-Filterregeln für alle Verbindungen von Geräten und Back-End-Anwendungen mit allen unterstützten Protokollen.
+Die IP-Filterregeln werden auf IoT Hub-Dienstebene angewendet. Daher gelten die IP-Filterregeln für alle Verbindungen von Geräten und Back-End-Apps mit allen unterstützten Protokollen.
 
 Alle Verbindungsversuche über eine IP-Adresse, die für eine IP-Ablehnungsregel in IoT Hub eine Übereinstimmung ergeben, werden mit dem Statuscode „401 – Nicht autorisiert“ und einer Beschreibung versehen. In der Antwortnachricht wird die IP-Regel nicht erwähnt.
 
@@ -61,6 +61,9 @@ Die Option **Hinzufügen** ist deaktiviert, wenn Sie das Maximum von zehn IP-Fil
 
 Sie können eine vorhandene Regel bearbeiten, indem Sie auf die Zeile mit der Regel doppelklicken.
 
+> [!NOTE]
+> Das Ablehnen von IP-Adressen kann andere Azure-Dienste (z. B. Azure Stream Analytics, Azure Virtual Machines oder den Geräte-Explorer im Portal) an der Interaktion mit dem IoT Hub hindern.
+
 ## <a name="delete-an-ip-filter-rule"></a>Löschen einer IP-Filterregel
 
 Wählen Sie zum Löschen einer IP-Filterregel im Raster mindestens eine Filterregel aus, und klicken Sie auf **Löschen**.
@@ -71,7 +74,7 @@ Wählen Sie zum Löschen einer IP-Filterregel im Raster mindestens eine Filterre
 
 IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
-Wenn Sie beispielsweise Adressen im Bereich 192.168.100.0/22 zulassen und alle anderen Adressen ablehnen möchten, sollte die erste Regel im Raster lauten, dass der Adressbereich 192.168.100.0/22 zulässig ist. Mit der nächsten Regel sollten alle Adressen abgelehnt werden, indem der Bereich 0.0.0.0/0 verwendet wird. Wenn Sie eine letzte Regel hinzufügen, mit der der Bereich 0.0.0.0/0 abgelehnt wird, ändern Sie das Standardverhalten so, dass eine Positivliste verwendet wird.
+Wenn Sie beispielsweise Adressen im Bereich 192.168.100.0/22 zulassen und alle anderen Adressen ablehnen möchten, sollte die erste Regel im Raster lauten, dass der Adressbereich 192.168.100.0/22 zulässig ist. Mit der nächsten Regel sollten alle Adressen abgelehnt werden, indem der Bereich 0.0.0.0/0 verwendet wird.
 
 Sie können die Reihenfolge der IP-Filterregeln im Raster ändern, indem Sie auf die drei vertikal angeordneten Punkte am Anfang der Zeile klicken und Drag&Drop nutzen.
 
@@ -96,13 +99,13 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 <!-- Links -->
 
-[Entwicklungsleitfaden für IoT Hub]: iot-hub-devguide.md
+[IoT Hub developer guide]: iot-hub-devguide.md
 [Azure Express Route]:  https://azure.microsoft.com/en-us/documentation/articles/expressroute-faqs/#supported-services
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
 [lnk-metrics]: iot-hub-metrics.md
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/16/2016
+ms.date: 12/05/2016
 ms.author: edmaca
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 15b22d577343667c9232b3394cf64bc307ccd777
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 64427583dba57716c23e1a01df820a263c5e7298
 
 
 ---
-# <a name="use-u-sql-catalog"></a>Verwenden des U-SQL-Katalogs
+# <a name="use-azure-data-lake-analytics-u-sql-catalog"></a>Verwenden des Azure Data Lake Analytics-Katalogs (U-SQL)
 Der U-SQL-Katalog wird zum Strukturieren von Daten und Code verwendet, damit diese von U-SQL-Skripts gemeinsam genutzt werden können. Der Katalog ermöglicht die höchstmögliche Leistung mit Daten in Azure Data Lake.
 
 Jedes Azure Data Lake Analytics-Konto ist genau einem U-SQL-Katalog zugeordnet. Der U-SQL-Katalog kann nicht gelöscht werden. Derzeit können U-SQL-Kataloge nicht von mehreren Data Lake-Speicherkonten gemeinsam verwendet werden.
@@ -51,8 +51,8 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
 
     - Zum Hinzufügen einer neuen Datenbank klicken Sie mit rechten Maustaste auf **Datenbank**, und klicken Sie dann auf **Datenbank erstellen**.
     - Zum Hinzufügen einer neuen Assembly klicken Sie mit der rechten Maustaste auf **Assemblys**, und klicken Sie dann auf **Assembly registrieren**.
-    - Zum Hinzufügen eines neuen Schemas klicken Sie mit der rechten Maustaste auf **Schemas**, und klicken Sie dann auf „Schema erstellen“.
-    - Zum Hinzufügen einer neuen Tabelle klicken Sie mit der rechten Maustaste auf **Tabellen**, und klicken Sie dann auf „Tabelle erstellen“.
+    - Zum Hinzufügen eines neuen Schemas klicken Sie mit der rechten Maustaste auf **Schemas**, und klicken Sie dann auf **Schema erstellen**.
+    - Zum Hinzufügen einer neuen Tabelle klicken Sie mit der rechten Maustaste auf **Tabellen**, und klicken Sie dann auf **Tabelle erstellen**.
     - Informationen zum Hinzufügen einer neuen Tabellenwertfunktion finden Sie unter [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md).
 
 
@@ -84,6 +84,6 @@ Sie können die Data Lake-Tools für Visual Studio zur Katalogverwaltung nutzen.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

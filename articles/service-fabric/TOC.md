@@ -21,11 +21,14 @@
 ## Erstellen einer Anwendung
 ### [Muster und Szenarien](service-fabric-patterns-and-scenarios.md)
 ### Grundlagen
-#### [Programmiermodell](service-fabric-choose-framework.md)
 #### [Anwendungsmodell](service-fabric-application-model.md)
+#### [Unterstütztes Programmiermodell](service-fabric-choose-framework.md)
+#### [Dienststatus](service-fabric-concepts-state.md)
 #### [Dienstkommunikation](service-fabric-connect-and-communicate-with-services.md)
+#### [Hinzufügen eines Web-Front-Ends](service-fabric-add-a-web-frontend.md)
 #### [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md)
-#### [Tools](service-fabric-manage-application-in-visual-studio.md)
+#### [Verwalten von Apps in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
+#### [Konfigurieren sicherer Verbindungen in Visual Studio](service-fabric-visualstudio-configure-secure-connections.md)
 #### Debuggen
 ##### [Debuggen eines C#-Diensts in VS](service-fabric-debugging-your-application.md)
 ##### [Debuggen eines Java-Diensts in Eclipse](service-fabric-debugging-your-application-java.md)
@@ -36,6 +39,15 @@
 #### [Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung](service-fabric-application-runas-security.md)  
 #### [Konfigurieren Ihrer Anwendung für mehrere Umgebungen](service-fabric-manage-multiple-environment-app-configuration.md)  
 #### [Allgemeine Fehler und Ausnahmen](service-fabric-errors-and-exceptions.md) 
+
+### Ausführbare Gastanwendungsdatei
+#### [Bereitstellen einer ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md)
+#### [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
+
+### Containeranwendung
+#### [Übersicht](service-fabric-containers-overview.md)
+#### [Bereitstellen von Windows Containern](service-fabric-deploy-container.md)
+#### [Bereitstellen von Docker-Containern](service-fabric-deploy-container-linux.md)
 
 ### Reliable Services-Anwendung
 #### [Übersicht](service-fabric-reliable-services-introduction.md)
@@ -73,15 +85,6 @@
 #### [Typserialisierung](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 #### [Konfigurieren von Kommunikationseinstellungen](service-fabric-reliable-actors-fabrictransportsettings.md) 
 
-### Ausführbare Gastanwendungsdatei
-#### [Bereitstellen einer ausführbaren Gastanwendungsdatei](service-fabric-deploy-existing-app.md)
-#### [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
-
-### Containeranwendung
-#### [Übersicht](service-fabric-containers-overview.md)
-#### [Bereitstellen von Windows Containern](service-fabric-deploy-container.md)
-#### [Bereitstellen von Docker-Containern](service-fabric-deploy-container-linux.md)
-
 ## Migrieren aus Cloud Services
 ### [Unterschiede zwischen Cloud Services und Service Fabric](service-fabric-cloud-services-migration-differences.md)
 ### [Migrieren zu Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -95,7 +98,7 @@
 #### [Visualisieren eines Clusters](service-fabric-visualizing-your-cluster.md)
 #### [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md)
 #### [Verwalten eines Clusters mithilfe der Azure-CLI](service-fabric-azure-cli.md) 
-#### [Sicherheit](service-fabric-cluster-security.md)
+#### [Schützen eines Clusters](service-fabric-cluster-security.md)
 #### [Notfallwiederherstellung](service-fabric-disaster-recovery.md)
 
 ### Cluster in Azure
@@ -108,6 +111,7 @@
 #### [Löschen eines Clusters](service-fabric-cluster-delete.md)
 #### [Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren eines Clusters](service-fabric-cluster-fabric-settings.md)
+#### [Sichern eines Clusters mithilfe von Zertifikaten](service-fabric-windows-cluster-x509-security.md)
 #### [Hinzufügen oder Ausführen eines Rollovers für Clusterzertifikate](service-fabric-cluster-security-update-certs-azure.md) 
 #### [Kostenloses Testen eines Partyclusters](http://aka.ms/tryservicefabric)
 
@@ -116,30 +120,15 @@
 #### [Erstellen eines eigenständigen Clusters in Azure Virtual Machines](service-fabric-cluster-creation-with-windows-azure-vms.md)
 #### [Skalieren eines Clusters](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Upgraden eines Clusters](service-fabric-cluster-upgrade-windows-server.md)
-#### [Schützen eines Clusters](service-fabric-windows-cluster-x509-security.md)
 #### [Zugriffssteuerung](service-fabric-cluster-security-roles.md)
 #### [Konfigurieren eines Clusters](service-fabric-cluster-manifest.md)
 #### [Sichern eines Clusters mithilfe von Zertifikaten](service-fabric-windows-cluster-x509-security.md)  
 #### [Sichern eines Clusters mit Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md) 
 
-## Verwalten und Orchestrieren von Clusterressourcen
-### [Übersicht über den Clusterressourcen-Manager](service-fabric-cluster-resource-manager-introduction.md)
-### [Architektur des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-architecture.md)
-### [Beschreiben eines Clusters](service-fabric-cluster-resource-manager-cluster-description.md)
-### [Übersicht über Anwendungsgruppen](service-fabric-cluster-resource-manager-application-groups.md)
-### [Konfigurieren der Einstellungen des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-configure-services.md)
-### [Metriken zum Ressourcenverbrauch](service-fabric-cluster-resource-manager-metrics.md)
-### [Nutzen der Dienstaffinität](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-### [Richtlinien zur Dienstplatzierung](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-### [Verwalten eines Clusters](service-fabric-cluster-resource-manager-management-integration.md)
-### [Clusterdefragmentierung](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-### [Ausbalancieren eines Clusters](service-fabric-cluster-resource-manager-balancing.md)
-### [Drosselung](service-fabric-cluster-resource-manager-advanced-throttling.md)
-### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
-
 ## Verwalten des Anwendungslebenszyklus
 ### [Übersicht](service-fabric-application-lifecycle.md)
 ### [Einrichten von Continuous Integration](service-fabric-set-up-continuous-integration.md)
+### [Grundlegendes zur ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md)
 ### Bereitstellen oder Entfernen von Anwendungen
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -161,6 +150,7 @@
 ### [Anzeigen von Integritätsberichten](service-fabric-view-entities-aggregated-health.md)
 
 ## Überwachen und Diagnostizieren
+### [Überwachen und Diagnostizieren von Anwendungen](service-fabric-diagnostics-overview.md)
 ### Lokales Überwachen und Diagnostizieren von Diensten
 #### [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 #### [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
@@ -168,8 +158,8 @@
 #### [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
 #### [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
 ### [Sammeln von Protokollen in einem Dienstprozess](service-fabric-diagnostic-collect-logs-without-an-agent.md)
-### [Diagnose in Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 ### [Diagnose für zustandsbehaftete Reliable Services](service-fabric-reliable-services-diagnostics.md)
+### [Diagnose in Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 ### [Behandeln von Problemen mit dem lokalen Cluster](service-fabric-troubleshoot-local-cluster-setup.md)
 ### [Häufig auftretende Probleme und Problembehandlung](service-fabric-diagnostics-troubleshoot-common-scenarios.md)
 
@@ -191,6 +181,21 @@
 #### [Verwenden der Knotenübergang-APIs](service-fabric-node-transition-apis.md)
 ### [Durchführen eines Auslastungstests für Ihre Anwendung](service-fabric-vso-load-test.md)
 
+## Verwalten und Orchestrieren von Clusterressourcen
+### [Übersicht über den Clusterressourcen-Manager](service-fabric-cluster-resource-manager-introduction.md)
+### [Architektur des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-architecture.md)
+### [Beschreiben eines Clusters](service-fabric-cluster-resource-manager-cluster-description.md)
+### [Übersicht über Anwendungsgruppen](service-fabric-cluster-resource-manager-application-groups.md)
+### [Konfigurieren der Einstellungen des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-configure-services.md)
+### [Metriken zum Ressourcenverbrauch](service-fabric-cluster-resource-manager-metrics.md)
+### [Nutzen der Dienstaffinität](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+### [Richtlinien zur Dienstplatzierung](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
+### [Verwalten eines Clusters](service-fabric-cluster-resource-manager-management-integration.md)
+### [Clusterdefragmentierung](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+### [Ausbalancieren eines Clusters](service-fabric-cluster-resource-manager-balancing.md)
+### [Drosselung](service-fabric-cluster-resource-manager-advanced-throttling.md)
+### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
+
 # Referenz
 ## [PowerShell](//powershell/servicefabric/vlatest/servicefabric)
 ## [Java-API](/java/api/microsoft.servicefabric.services)
@@ -208,6 +213,6 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

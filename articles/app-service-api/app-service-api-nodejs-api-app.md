@@ -1,5 +1,5 @@
 ---
-title: Node.js-API-App in Azure App Service | Microsoft-Dokumentation
+title: Node.js-API-App in Azure App Service | Microsoft Docs
 description: "Es wird beschrieben, wie Sie eine Node.js-RESTful-API erstellen und für eine API-App in Azure App Service bereitstellen."
 services: app-service\api
 documentationcenter: node
@@ -15,8 +15,8 @@ ms.topic: get-started-article
 ms.date: 05/26/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: c700bfbd4f50a892e182124eb596159d2eb63feb
-ms.openlocfilehash: b6f97d299b1c100e4bae111d7f95c9619c6c9399
+ms.sourcegitcommit: 633caca05835aa204d4fec5fe216043a50520000
+ms.openlocfilehash: 87d2792d4f7610c62ed96cb522958844d4dc982b
 
 
 ---
@@ -230,23 +230,29 @@ In diesem Abschnitt erstellen Sie ein lokales Git-Repository, das den Servercode
         git init
    
      ![Neues lokales Git-Repository](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
-3. Führen Sie den folgenden Befehl aus, um eine Git-Remoteinstanz für das Repository der API-App hinzuzufügen. 
+3. Wenn Sie den ersten Teil dieses Tutorials durchgearbeitet und den Ordner `ContactList` kopiert haben, war darin vermutlich der Ordner `node_modules` enthalten. Der Ordner `node_modules` sollte nicht in die Quellcodeverwaltung eingebunden werden, weil er während des Bereitstellungsprozesses über die Datei `package.json` und `npm install` für Sie erstellt wird. Fügen Sie daher eine `.gitignore`-Datei hinzu, indem Sie den folgenden Befehl im Stammverzeichnis Ihres Projektverzeichnisses ausführen.
+
+         touch .gitignore
+      
+   Öffnen Sie die .gitignore-Datei, und fügen Sie in der ersten Zeile der Datei `node_modules` hinzu. Sie können sich vergewissern, dass der Ordner `node_modules` von der Quellcodeverwaltung ignoriert wird, wenn Sie `git status` ausführen und das Verzeichnis nicht in der Liste enthalten ist. Falls Sie weitere Regeln hinzufügen möchten: Es gibt ein GitHub-Projekt [https://github.com/github/gitignore/blob/master/Node.gitignore] mit Informationen dazu, welche Dateien für ein NodeJS-Projekt ignoriert werden sollten.
+ 
+4. Führen Sie den folgenden Befehl aus, um eine Git-Remoteinstanz für das Repository der API-App hinzuzufügen. 
    
         git remote add azure YOUR_GIT_CLONE_URL_HERE
    
     **Hinweis**: Ersetzen Sie die Zeichenfolge „YOUR_GIT_CLONE_URL_HERE“ durch Ihre eigene Git-Klon-URL, die Sie zuvor kopiert haben. 
-4. Führen Sie die beiden folgenden Befehle aus, um ein Commit mit Ihrem gesamten Code zu erstellen: 
+5. Führen Sie die beiden folgenden Befehle aus, um ein Commit mit Ihrem gesamten Code zu erstellen: 
    
         git add .
         git commit -m "initial revision"
    
     ![Git-Commit-Ausgabe](media/app-service-api-nodejs-api-app/git-commit-output.png)
-5. Führen Sie den Befehl aus, um den Code an Azure zu übertragen. Geben Sie bei Aufforderung zur Eingabe eines Kennworts das Kennwort ein, das Sie zuvor im Azure-Portal erstellt haben.
+6. Führen Sie den Befehl aus, um den Code an Azure zu übertragen. Geben Sie bei Aufforderung zur Eingabe eines Kennworts das Kennwort ein, das Sie zuvor im Azure-Portal erstellt haben.
    
         git push azure master
    
     Hierdurch wird eine Bereitstellung für Ihre API-App ausgelöst.  
-6. Navigieren Sie in Ihrem Browser zurück zum Blatt **Bereitstellungen** für die API-App. Sie sehen, dass die Bereitstellung durchgeführt wird. 
+7. Navigieren Sie in Ihrem Browser zurück zum Blatt **Bereitstellungen** für die API-App. Sie sehen, dass die Bereitstellung durchgeführt wird. 
    
     ![Bereitstellung wird durchgeführt](media/app-service-api-nodejs-api-app/deployment-happening.png)
    
@@ -275,6 +281,6 @@ Sie haben nun erfolgreich eine API-App erstellt und dafür Node.js-API-Code bere
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

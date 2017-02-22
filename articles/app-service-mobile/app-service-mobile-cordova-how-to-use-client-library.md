@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 31632f9c88810d5cd26ad314dde2c28a4012dc75
+ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
+ms.openlocfilehash: 61aa9e5c004decff18337efe3b1baacfcf9279dc
 
 
 ---
@@ -28,10 +28,9 @@ Dieser Artikel beschreibt gängige Szenarien für die Verwendung des neuesten [A
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
 Dieses SDK unterstützt Apache Cordova v6.0.0 und höher auf iOS-, Android- und Windows-Geräten.  Folgende Plattformen werden unterstützt:
 
-* Android API 19 bis 24 (KitKat bis Nougat)
+* Android API 19–24 (KitKat bis Nougat)
 * iOS-Version 8.0 und höher.
-* Windows Phone 8.0
-* Windows Phone 8,1
+* Windows Phone 8.1
 * Universelle Windows-Plattform
 
 ## <a name="a-namesetupasetup-and-prerequisites"></a><a name="Setup"></a>Einrichtung und Voraussetzungen
@@ -42,6 +41,32 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
 Weitere Informationen zum Erstellen [Ihrer ersten Apache Cordova-App]finden Sie in der dazugehörigen Dokumentation.
+
+## <a name="a-nameionicasetting-up-an-ionic-v2-app"></a><a name="ionic"></a>Einrichten einer Ionic v2-App
+
+Erstellen Sie für die ordnungsgemäße Konfiguration eines Ionic v2-Projekts zunächst eine allgemeine App, und fügen Sie anschließend das Cordova-Plug-In hinzu:
+
+```
+ionic start projectName --v2
+cd projectName
+ionic plugin add cordova-plugin-ms-azure-mobile-apps
+```
+
+Fügen Sie `app.component.ts` die folgenden Zeilen hinzu, um das Clientobjekt zu erstellen:
+
+```
+declare var WindowsAzure: any;
+var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
+```
+
+Nun können Sie das Projekt im Browser erstellen und ausführen:
+
+```
+ionic platform add browser
+ionic run browser
+```
+
+Das Azure Mobile Apps-Cordova-Plug-In unterstützt Ionic v1- und v2-Apps.  Nur bei Ionic v2-Apps ist die zusätzliche Deklaration für das `WindowsAzure`-Objekt erforderlich.
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
@@ -74,12 +99,12 @@ Um die Konfiguration Ihrer lokalen Einstellungen hinzuzufügen, gehen Sie wie fo
 5. Erweitern Sie im linken Navigationsbereich die Knoten **Konfiguration** und **Authentifizierungseinstellungen** für Ihre Website.
 6. Klicken Sie auf **Bearbeiten**
 7. Suchen Sie nach dem Element allowedExternalRedirectUrls.  Das Element ist möglicherweise auf Null oder ein Wertearray festgelegt.  Ändern Sie den Wert folgendermaßen:
-   
+
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-   
+
     Ersetzen Sie die URLs mit den URLs Ihres Diensts.  Beispiele hierfür sind „http://localhost:3000“ (für den Node.js-Beispieldienst) oder „http://localhost:4400“ (für den Ripple-Dienst).  Diese URLs sind jedoch nur Beispiele – Ihre Situation kann auch für die Dienste, die im Beispiel dargestellt sind, ganz anders sein.
 8. Klicken Sie in der oberen rechten Ecke des Bildschirms auf die Schaltfläche **Lesen/Schreiben** .
 9. Klicken Sie auf die grüne Schaltfläche **PUT** .
@@ -97,7 +122,7 @@ Sie müssen auch die Loopback-URLs zu den CORS-Einstellungen für Ihre App Servi
 
 Es dauert ungefähr 10-15 Sekunden, bis die neuen Einstellungen wirksam sind.
 
-## <a name="a-nameregister-for-pushahow-to-register-for-push-notifications"></a><a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
+## <a name="a-nameregister-for-pushahow-to-register-for-push-notifications"></a><a name="register-for-push"></a>Gewusst wie: Registrieren für Pushbenachrichtigungen
 Installieren Sie das Plug-In [phonegap-plug-in-push] zum Verarbeiten von Pushbenachrichtigungen.  Dieses Plug-In kann problemlos mithilfe des `cordova plugin add` -Befehls über die Befehlszeile oder den Git-Installer für Plug-Ins in Visual Studio hinzugefügt werden.  Der folgende Code in der Apache Cordova-App registriert Ihr Gerät für Pushbenachrichtigungen:
 
 ```
@@ -139,11 +164,15 @@ pushHandler.on('error', function (error) {
 
 Verwenden Sie das Notification Hubs SDK zum Senden von Pushbenachrichtigungen vom Server.  Senden Sie Pushbenachrichtigungen niemals direkt von Clients. Diese Vorgehensweise könnte dazu missbraucht werden, einen Denial-of-Service-Angriff auf Notification Hubs oder den Pushbenachrichtigungsdienst auszulösen.  Als Folge solcher Angriffe könnte der Pushbenachrichtigungsdienst Ihren Datenverkehr sperren.
 
+## <a name="more-information"></a>Weitere Informationen
+
+Ausführliche Informationen zur API finden Sie in unserer [API-Dokumentation](http://azure.github.io/azure-mobile-apps-js-client/).
+
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com
 [Schnellstart von Azure Mobile Apps]: app-service-mobile-cordova-get-started.md
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-cordova-get-started-users.md
-[Hinzufügen von Authentifizierung zur App]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Apache Cordova-Plug-Ins für Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
 [Ihrer ersten Apache Cordova-App]: http://cordova.apache.org/#getstarted
@@ -151,10 +180,10 @@ Verwenden Sie das Notification Hubs SDK zum Senden von Pushbenachrichtigungen vo
 [phonegap-plug-in-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx (Dokumentation zum „Query-“Objekt“)
+[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

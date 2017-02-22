@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 12/22/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 91490e33ab2d524da90ae75bd71abe8005e45c54
+ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
+ms.openlocfilehash: 9ef430dfaa43f9bc4294593c8abbdaf457ef07c8
 
 
 ---
@@ -53,9 +53,9 @@ Dieses Dialogfeld kann auch über einen der Links **Accounts** in Dialogfeldern 
 Es kann mehrere Minuten dauern, bis das Speicherkonto erstellt wurde. Nachdem es erstellt wurde, klicken Sie auf **OK**, um das Dialogfeld **Add Storage Account** zu schließen. Das neue Speicherkonto wird der Liste verfügbarer Speicherkonten hinzugefügt.
 
 ## <a name="to-add-an-existing-storage-account-to-the-list"></a>Hinzufügen eines vorhandenen Speicherkontos zu der Liste
-1. Wenn Sie nicht bereits über ein Azure-Konto verfügen, erstellen Sie anhand der zuvor im Abschnitt **So erstellen Sie ein neues Speicherkonto** beschriebenen Schritte. (Sie können auch im [Azure-Verwaltungsportal][Azure-Verwaltungsportal] ein neues Speicherkonto erstellen.)
+1. Wenn Sie nicht bereits über ein Azure-Konto verfügen, erstellen Sie anhand der zuvor im Abschnitt **So erstellen Sie ein neues Speicherkonto** beschriebenen Schritte. (Alternativ können Sie im [Azure-Verwaltungsportal][Azure Management Portal] ein neues Speicherkonto erstellen.)
 2. Klicken Sie im Dialogfeld **Storage Accounts** auf **Add**.
-3. Geben Sie im Dialogfeld **Add Storage Account** Werte für **Name** und **Access Key** ein. Kontoname und Zugriffsschlüssel müssen ein vorhandenes Azure-Speicherkonto betreffen. Verwenden Sie den Abschnitt **Storage** im [Azure-Verwaltungsportal][Azure-Verwaltungsportal], um die Speicherkontonamen und Schlüssel anzuzeigen. Das Dialogfeld **Add Storage Account** sieht etwa wie folgt aus.
+3. Geben Sie im Dialogfeld **Add Storage Account** Werte für **Name** und **Access Key** ein. Kontoname und Zugriffsschlüssel müssen ein vorhandenes Azure-Speicherkonto betreffen. Verwenden Sie den Abschnitt **Storage** im [Azure-Verwaltungsportal][Azure Management Portal], um die Speicherkontonamen und -schlüssel anzuzeigen. Das Dialogfeld **Add Storage Account** sieht etwa wie folgt aus.
    
     ![][ic719497]
 4. Klicken Sie auf **OK**, um das Dialogfeld **Add Storage Account** zu schließen.
@@ -75,22 +75,22 @@ Es kann mehrere Minuten dauern, bis das Speicherkonto erstellt wurde. Nachdem es
 > 
 
 ## <a name="see-also"></a>Weitere Informationen
-[Azure-Toolkit für Eclipse][Azure-Toolkit für Eclipse]
+[Azure-Toolkit für Eclipse][Azure Toolkit for Eclipse]
 
-[Installieren des Azure-Toolkits für Eclipse][Installieren des Azure-Toolkits für Eclipse] 
+[Installieren des Azure-Toolkits für Eclipse][Installing the Azure Toolkit for Eclipse] 
 
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Erstellen einer Hello World-Anwendung für Azure in Eclipse]
+[Erstellen einer Hello World-Anwendung für Azure in Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
 Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure-Verwaltungsportal]: http://go.microsoft.com/fwlink/?LinkID=512959
-[Erstellen einer Hello World-Anwendung für Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installieren des Azure-Toolkits für Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[Neuerungen im Azure-Toolkit für Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
+[Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 
@@ -101,6 +101,6 @@ Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO1-->
 
 

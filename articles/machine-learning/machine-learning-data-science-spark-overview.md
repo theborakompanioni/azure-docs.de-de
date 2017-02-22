@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/07/2016
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: ca799d03076175d6a7193c0e58b349a6cb61693b
-ms.openlocfilehash: 35f07fba1421af1db9c8b6190737c3c220a911e1
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 091a753c8a183975c7aa340fa2f089adf4fe5574
 
 
 
@@ -37,7 +37,7 @@ Installationsschritte und Code in dieser exemplarischen Vorgehensweise beziehen 
 
 2. Sie benötigen einen HDInsight 3.4 Spark 1.6-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erstellen eines solchen Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md). Clustertyp und Version werden im Menü **Clustertyp auswählen** angegeben. 
 
-![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
+![Konfigurieren des Clusters](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
@@ -107,11 +107,11 @@ Wir haben eine Stichprobe von 0,1 % dieser Dateien entnommen und diese CSV-Datei
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Ausführen von Code über ein Jupyter-Notebook auf dem Spark-Cluster
 Sie können das Jupyter-Notebook über das Azure-Portal starten. Suchen Sie Ihren Spark-Cluster auf dem Dashboard, und klicken Sie darauf, um zur Verwaltungsseite für Ihren Cluster zu gelangen. Klicken Sie dann auf **Cluster-Dashboards** -> **Jupyter-Notebook**, um das dem Spark-Cluster zugeordnete Notebook zu öffnen.
 
-![](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
+![Cluster-Dashboards](./media/machine-learning-data-science-spark-overview/spark-jupyter-on-portal.png)
 
 Sie können auch zu ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** navigieren, um auf die Jupyter Notebooks zuzugreifen. Ersetzen Sie das Element CLUSTERNAME in dieser URL durch den Namen Ihres eigenen Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Notebooks zuzugreifen.
 
-![](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
+![Durchsuchen von Jupyter-Notebooks](./media/machine-learning-data-science-spark-overview/spark-jupyter-notebook.png)
 
 Wählen Sie „PySpark“ aus, um ein Verzeichnis mit einigen Beispielen für vorkonfigurierte Notebooks anzuzeigen, die die PySpark-API verwenden. Die Notebooks mit den Codebeispielen für diese Suite von Spark-Themen finden Sie auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark).
 
@@ -154,6 +154,6 @@ Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

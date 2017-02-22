@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 12/05/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 3a42093a67fe1ded29e97343affa5df89ea5fd1a
+ms.sourcegitcommit: 2b4a10c77ae02ac0e9eeecf6d7d6ade6e4c33115
+ms.openlocfilehash: 9eb581e6180a7ae6a5f24b3a991376264b0ecef9
 
 
 ---
@@ -43,8 +43,8 @@ Die folgende Tabelle enthält die Namen und Beschreibungen der Eigenschaften, di
 <table>
 <tbody>
 <tr>
-<td><B>Eigenschaftenname</B></td>
-<td><B>Beschreibung</B></td>
+<td><B>EIGENSCHAFTENNAME</B></td>
+<td><B>BESCHREIBUNG</B></td>
 </tr>
 <tr>
 <td>Ausgabealias</td>
@@ -285,7 +285,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Format |Gilt nur für den JSON-Typ. "Separate Zeile" gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. "Array" gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. |
 
 ## <a name="service-bus-topics"></a>Service Bus-Themen
-Während Service Bus-Warteschlangen eine 1:1-Kommunikationsmethode vom Absender zum Empfänger bereitstellen, bieten [Service Bus-Themen](https://msdn.microsoft.com/library/azure/hh367516.aspx) eine 1:n-Form der Kommunikation.
+Während Service Bus-Warteschlangen eine&1;:1-Kommunikationsmethode vom Absender zum Empfänger bereitstellen, bieten [Service Bus-Themen](https://msdn.microsoft.com/library/azure/hh367516.aspx) eine&1;:n-Form der Kommunikation.
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Tabellenausgabe.
 
@@ -303,40 +303,17 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 ## <a name="documentdb"></a>DocumentDB
 [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ist ein vollständig verwalteter NoSQL-Dokumentendatenbankdienst, der Abfragen und Transaktionen über schemafreie Daten, vorhersagbare und zuverlässige Leistung sowie schnelle Entwicklung bietet.
 
-Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer DocumentDB-Ausgabe.
+Die folgende Liste enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer DocumentDB-Ausgabe.
 
-<table>
-<tbody>
-<tr>
-<td>Eigenschaftenname</td>
-<td>BESCHREIBUNG</td>
-</tr>
-<tr>
-<td>Kontoname</td>
-<td>Der Name des DocumentDB-Kontos.  Dies kann auch der Endpunkt für das Konto sein.</td>
-</tr>
-<tr>
-<td>Kontoschlüssel</td>
-<td>Der gemeinsame Zugriffsschlüssel für das DocumentDB-Konto.</td>
-</tr>
-<tr>
-<td>Datenbank</td>
-<td>Der Name der DocumentDB-Datenbank.</td>
-</tr>
-<tr>
-<td>Muster des Sammlungsnamen</td>
-<td>Das Sammlungsnamenmuster für die zu verwendenden Sammlungen. Das Sammlungsnamenformat kann mit dem optionalen Token {partition} gebildet werden, wobei Partitionen bei 0 beginnen.<BR>Beispiel: Die Eingaben sind zulässig:<BR>MyCollection{partition}<BR>MyCollection<BR>Beachten Sie, dass Sammlungen vorhanden sein müssen, bevor der Stream Analytics-Auftrag gestartet wird, und nicht automatisch erstellt werden.</td>
-</tr>
-<tr>
-<td>Partitionsschlüssel</td>
-<td>Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die Partitionierung der Ausgabe über Sammlungen hinweg verwendet wird.</td>
-</tr>
-<tr>
-<td>Dokument-ID</td>
-<td>Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Updatevorgänge basieren.</td>
-</tr>
-</tbody>
-</table>
+* **Ausgabealias** : Ein Alias zum Verweisen auf diese Ausgabe in Ihrer ASA-Abfrage.  
+* **Kontoname** : Der Name oder Endpunkt-URI des DocumentDB-Kontos.  
+* **Kontoschlüssel** : Der gemeinsame Zugriffsschlüssel für das DocumentDB-Konto.  
+* **Datenbank** : Der Name der DocumentDB-Datenbank.  
+* **Muster für Sammlungsnamen**: Der Sammlungsname oder das Muster für die zu verwendenden Sammlungen. Das Sammlungsnamenformat kann mit dem optionalen Token {partition} gebildet werden, wobei Partitionen bei 0 beginnen. Im Folgenden finden Sie Beispiele gültiger Eingaben:  
+  1\) MyCollection – Eine Sammlung mit dem Namen „MyCollection“ muss vorhanden sein.  
+  2\) MyCollection{partition} – Solche Auflistungen müssen vorhanden sein: „MyCollection0“, „MyCollection1“, „MyCollection2“ usw.  
+* **Partitionsschlüssel**: Optional. Nur erforderlich, wenn Sie im Muster Ihres Sammlungsnamens ein {partition}-Token verwenden. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die Partitionierung der Ausgabe über Sammlungen hinweg verwendet wird. Für die Ausgabe einer einzelnen Sammlung kann eine beliebige Ausgabespalte wie „PartitionId“ verwendet werden.  
+* **Dokument-ID** : Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.  
 
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
@@ -360,6 +337,6 @@ Sie haben nun Stream Analytics kennengelernt, einen verwalteten Dienst für Stre
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

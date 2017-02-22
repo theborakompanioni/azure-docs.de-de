@@ -17,8 +17,8 @@ ms.workload: na
 ms.date: 11/10/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 96f253f14395ffaf647645176b81e7dfc4c08935
-ms.openlocfilehash: 3c406de579e3f09b521b60861230106c952f4357
+ms.sourcegitcommit: c9e736f7ce5330823f3890c669da40e2bb1ecf43
+ms.openlocfilehash: 13b69118c6732ed872bec11e880737db3b8fa3c5
 
 
 ---
@@ -159,6 +159,24 @@ Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-Ausgabebindung 
 
 Beim Schreiben in den Ausgabeparameter in Ihrer Funktion wird standardmäßig ein neues Dokument mit einer automatisch generierten GUID als Dokument-ID in Ihrer Datenbank erstellt. Sie können die Dokument-ID des Ausgabedokument angeben, indem Sie im Ausgabeparameter die JSON-Eigenschaft `id` festlegen. Wenn ein Dokument mit dieser ID bereits vorhanden ist, wird es vom Ausgabedokument überschrieben. 
 
+Sie können in die Ausgabe schreiben, indem Sie einen der folgenden Typen verwenden:
+
+* Beliebiges [Objekt](https://msdn.microsoft.com/library/system.object.aspx) – nützlich für JSON-Serialisierung.
+  Wenn Sie einen benutzerdefinierten Ausgabetyp deklarieren (z.B. `out FooType paramName`), versucht Azure Functions, das Objekt in JSON zu serialisieren. Wenn der Ausgabeparameter bei Beendigung der Funktion NULL ist, erstellt die Functions-Laufzeit ein Blob als NULL-Objekt.
+* Zeichenfolge – (`out string paramName`) nützlich für Textblobdaten. Die Functions-Laufzeit erstellt nur dann ein Blob, wenn der Zeichenfolgenparameter bei Rückgabe durch die Funktion ungleich NULL ist.
+
+In C#-Funktionen können Sie auch eine Ausgabe in einen der folgenden Typen erstellen:
+
+* `TextWriter`
+* `Stream`
+* `CloudBlobStream`
+* `ICloudBlob`
+* `CloudBlockBlob` 
+* `CloudPageBlob` 
+
+Für die Ausgabe mehrerer Dokumente können Sie auch eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
+
+
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Ausgabebeispiel
@@ -290,6 +308,7 @@ module.exports = function (context) {
 ```
 
 
-<!--HONumber=Nov16_HO3-->
+
+<!--HONumber=Dec16_HO1-->
 
 

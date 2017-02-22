@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines virtuellen Computers für eine Webanwendung | Microsoft Docs"
+title: "Erstellen eines virtuellen Linux-Computers für eine Webanwendung | Microsoft-Dokumentation"
 description: "Erstellen eines virtuellen Computers für ein Webprojekt mit Visual Studio und Linux"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: 3f8262e491065f078422ec16a3789a1cdfcbf8f7
+ms.sourcegitcommit: ed43a0ae9d1b184bfe059103cd2bee00c975537d
+ms.openlocfilehash: 90fff143845ad844e53a3ea63f83745f9c94693f
 
 
 ---
@@ -30,6 +30,6 @@ ms.openlocfilehash: 3f8262e491065f078422ec16a3789a1cdfcbf8f7
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

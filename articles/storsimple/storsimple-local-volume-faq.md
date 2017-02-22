@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2016
+ms.date: 1/11/2017
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: dbaa242b8969ad04c92e7a527f4cd585bc3763cb
-ms.openlocfilehash: bb2ae9d94a8f1e02a81ff46bdc29e6f9787ebf31
+ms.sourcegitcommit: a437ef2ba20970e2dd9a06fbc9e39fff2bb82da7
+ms.openlocfilehash: 22eb95bf0e3a20893acbb860ad10cfe6a3bcf088
 
 
 ---
@@ -35,14 +35,16 @@ Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 ## <a name="questions-about-creating-a-locally-pinned-volume"></a>Fragen zum Erstellen eines lokalen Volumes
 **F.** Wie groß kann ein lokales Volume auf Geräten der 8000-Serie maximal sein?
 
-**A** Sie können lokale Volumes von bis zu 8,5 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 22,5 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.
+**A** Auf Geräten mit StorSimple 8000 Series Update 3.0 können Sie lokale Volumes von bis zu 8,5 TB oder mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 22,5 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.    
+Auf Geräten mit StorSimple 8000 Series Update 2.x können Sie lokale Volumes von bis zu 8 TB oder mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Auf dem größeren 8600-Gerät können Sie lokale Volumes von bis zu 20 TB oder mehrstufige Volumes von bis zu 500 TB bereitstellen.   
 
-**F.** Ich habe vor Kurzem mein 8100-Gerät auf Update 2 aktualisiert. Wenn ich nun versuche, ein lokales Volume zu erstellen, beträgt die verfügbare maximale Größe statt 8,5 TB nur 6 TB. Warum kann ich kein Volume mit 8,5 TB erstellen?
+**F.** Ich habe vor Kurzem mein 8100-Gerät auf Update 2.0 aktualisiert. Wenn ich nun versuche, ein lokales Volume zu erstellen, beträgt die verfügbare maximale Größe statt 8 TB nur 6 TB. Warum kann ich kein Volume mit 8 TB erstellen?
 
-**A** You can provision locally pinned volumes up to 8.5 TB OR tiered volumes up to 200 TB on the 8100 device. Wenn auf Ihrem Gerät bereits mehrstufige Volumes bereitgestellt wurden, ist der Platz zum Erstellen eines lokalen Volumes proportional kleiner als diese Höchstgrenze. Beispiel: Wenn auf dem 8100-Gerät bereits mehrstufige Volumes mit 100 TB (also der Hälfte der Kapazität mehrstufiger Volumes) bereitgestellt wurden, verringert sich die maximale Größe eines lokalen Volumes, das Sie auf dem 8100-Gerät erstellen können, dementsprechend auf 4 TB (ca. die Hälfte der maximalen Kapazität lokaler Volumes).
+**A** Wenn auf dem Gerät Update 2.0 ausgeführt wird, können Sie lokale Volumes von bis zu 8 TB ODER mehrstufige Volumes von bis zu 200 TB auf dem 8100-Gerät bereitstellen. Wenn auf Ihrem Gerät bereits mehrstufige Volumes bereitgestellt wurden, ist der Platz zum Erstellen eines lokalen Volumes proportional kleiner als diese Höchstgrenze. Beispiel: Wenn auf dem 8100-Gerät bereits mehrstufige Volumes mit 100 TB (also der Hälfte der Kapazität mehrstufiger Volumes) bereitgestellt wurden, verringert sich die maximale Größe eines lokalen Volumes, das Sie auf dem 8100-Gerät erstellen können, dementsprechend auf 4 TB (ca. die Hälfte der maximalen Kapazität lokaler Volumes).
 
-Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssatzes mehrstufiger Volumes verwendet wird, verringert sich der verfügbare Speicherplatz für die Erstellung eines lokalen Volumes, wenn das Gerät über mehrstufige Volumes verfügt. Umgekehrt verringert sich beim Erstellen eines lokalen Volumes der verfügbare Speicherplatz für mehrstufige Volumes proportional. In der folgenden Tabelle wird die Kapazität für mehrstufige Volumes auf 8100- und 8600-Geräten bei der Erstellung lokaler Volumes zusammengefasst.
+Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssatzes mehrstufiger Volumes verwendet wird, verringert sich der verfügbare Speicherplatz für die Erstellung eines lokalen Volumes, wenn das Gerät über mehrstufige Volumes verfügt. Umgekehrt verringert sich beim Erstellen eines lokalen Volumes der verfügbare Speicherplatz für mehrstufige Volumes proportional. In den folgenden Tabellen wird die Kapazität für mehrstufige Volumes auf 8100- und 8600-Geräten bei der Erstellung lokaler Volumes zusammengefasst.
 
+####<a name="update-30"></a>Update 3.0 
 | Bereitgestellte Kapazität lokaler Volumes | Verfügbare Kapazität für mehrstufige Volumes – 8100 | Verfügbare Kapazität für mehrstufige Volumes – 8600 |
 | --- | --- | --- |
 | 0 |200 TB |500 TB |
@@ -52,6 +54,17 @@ Da ein Teil des lokalen Speicherplatzes auf dem Gerät zum Hosten des Arbeitssat
 | 10 TB |NA |277,8 TB |
 | 15 TB |NA |166,7 TB |
 | 22,5 TB |NA |0 TB |
+
+####<a name="update-2x"></a>Update 2.x  
+ | Bereitgestellte Kapazität lokaler Volumes | Verfügbare Kapazität für mehrstufige Volumes – 8100 | Verfügbare Kapazität für mehrstufige Volumes – 8600 |  
+ | --- | --- | --- |  
+ | 0 |200 TB |500 TB |  
+ | 1 TB |25 TB |475 TB |  
+ | 4 TB |100 TB |400 TB |  
+ | 8 TB |0 TB |300 TB |  
+ | 10 TB |NA |250 TB |  
+ | 15 TB |NA |125 TB |  
+ | 20 TB |NA |0 TB |   
 
 **F.** Warum dauert die Erstellung eines lokalen Volumes so lange? 
 
@@ -205,6 +218,6 @@ Weitere Informationen zu [Failover und Notfallwiederherstellung bei lokalen Volu
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO2-->
 
 

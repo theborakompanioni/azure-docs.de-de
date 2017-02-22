@@ -1,5 +1,5 @@
 ---
-title: Einrichten von MySQL auf einem virtuellen Linux-Computer | Microsoft Docs
+title: Einrichten von MySQL auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den MySQL-Stack auf einem virtuellen Linux-Computer (Betriebssystem der Ubuntu- oder RedHat-Familie) in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 02/01/2016
 ms.author: mingzhan
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: d75d1541671fac02e6373ae880137b76f15ec7ae
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 84722fffc5419f866250d4093250839066c54c46
 
 
 ---
@@ -36,9 +36,9 @@ Verwenden Sie in diesem Fall Port 3306 als MySQL-Port.
 
 Stellen Sie über PuTTY eine Verbindung mit dem virtuellen Linux-Computer her. Wenn Sie zum ersten Mal einen virtuellen Linux-Computer in Azure verwenden, finden Sie [hier](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Informationen zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer mit PuTTY.
 
-Wir verwenden zur Veranschaulichung in diesem Artikel das Repositorypaket, um MySQL 5.6 zu installieren. MySQL 5.6 zeichnet sich im Vergleich zu MySQL 5.5 durch mehr Leistung aus.  Weitere Informationen finden Sie [hier](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/).
+Wir verwenden zur Veranschaulichung in diesem Artikel das Repositorypaket, um MySQL&5;.6 zu installieren. MySQL&5;.6 zeichnet sich im Vergleich zu MySQL&5;.5 durch mehr Leistung aus.  Weitere Informationen finden Sie [hier](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/).
 
-### <a name="how-to-install-mysql56-on-ubuntu"></a>Installieren von MySQL 5.6 unter Ubuntu
+### <a name="how-to-install-mysql56-on-ubuntu"></a>Installieren von MySQL&5;.6 unter Ubuntu
 Wir verwenden in diesem Artikel eine Linux-VM mit Ubuntu von Azure.
 
 * Schritt 1: Installieren von MySQL Server 5.6 – Wechseln zum Benutzer `root`:
@@ -181,6 +181,6 @@ Weitere Informationen zur Verwendung von MySQL finden Sie [hier](https://www.mys
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

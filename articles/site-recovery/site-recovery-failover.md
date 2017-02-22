@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/05/2016
+ms.date: 1/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: 31d80e58071383aee22772e224c90289a610c0b3
+ms.sourcegitcommit: b70d2d709d0940964c4220b798207adaf3551d36
+ms.openlocfilehash: d31e987e636b178b5aa05722ff08707a6e53c3cf
 
 
 ---
@@ -35,7 +35,7 @@ Nachdem der Schutz für virtuelle Computer und physische Server eingerichtet wur
 | --- | --- | --- | --- |
 | **Test-Failover** |Überprüfung der Replikationsstrategie oder Durchführung einer Notfallwiederherstellungsübung |Kein Datenverlust und keine Ausfallzeiten<br/><br/>Keine Auswirkungen auf die Replikation<br/><br/>Keine Auswirkungen auf die Produktionsumgebung |Starten Sie das Failover.<br/><br/>Geben Sie an, wie Testcomputer nach einem Failover Netzwerkverbindungen herstellen sollen.<br/><br/>Überwachen Sie den Fortschritt auf der Registerkarte **Aufträge** . Testcomputer werden erstellt und am sekundären Standort gestartet.<br/><br/>Azure: Stellen Sie über das Azure-Portal eine Verbindung mit dem Computer her.<br/><br/>Sekundärer Standort: Greifen Sie auf den Computer über den gleichen Host und die gleiche Cloud zu.<br/><br/>Schließen Sie den Test ab, und führen Sie eine automatische Bereinigung der Einstellungen für das Test-Failover durch. |
 | **Geplantes Failover** |Erfüllung von Compliance-Anforderungen<br/><br/>Geplante Wartung<br/><br/>Datenfailover, um die Ausführung von Workloads bei bekannten Ausfällen weiter zu gewährleisten (beispielsweise im Falle eines erwartenden Stromausfalls oder bei Unwetterwarnungen)<br/><br/>Failback nach einem Failover vom primären zum sekundären Standort |Kein Datenverlust<br/><br/>Downtime entsteht, während der virtuelle Computer am primären Standort heruntergefahren und am sekundären Standort wieder verfügbar gemacht wird.<br/><br/>Auswirkungen auf virtuelle Computer: Zielcomputer werden nach dem Failover zu Quellcomputern. |Starten Sie das Failover.<br/><br/>Überwachen Sie den Fortschritt auf der Registerkarte **Aufträge** . Die Quellcomputer werden heruntergefahren.<br/><br/>Am sekundären Standort werden Replikatcomputer gestartet.<br/><br/>Azure: Stellen Sie über das Azure-Portal eine Verbindung mit dem Replikatcomputer her.<br/><br/>Sekundärer Standort: Greifen Sie auf den Computer über den gleichen Host und in der gleichen Cloud zu.<br/><br/>Führen Sie ein Commit für das Failover aus. |
-| **Nicht geplantes Failover** |Reaktives Failover, falls aufgrund eines unerwarteten Vorfalls (beispielsweise ein Stromausfall oder ein Virusangriff) nicht mehr auf einen primären Standort zugegriffen werden kann <br/><br/>  Ein nicht geplantes Failover kann auch durchgeführt werden, wenn der primäre Standort nicht verfügbar ist. |Datenverluste abhängig von der konfigurierten Replikationshäufigkeit<br/><br/>Daten sind jeweils auf dem Stand der letzten Synchronisierung |Starten Sie das Failover.<br/><br/>Überwachen Sie den Fortschritt auf der Registerkarte **Aufträge** . Optional: Fahren Sie die virtuellen Computer herunter, und synchronisieren Sie die aktuellen Daten.<br/><br/>Am sekundären Standort werden Replikatcomputer gestartet.<br/><br/>Azure: Stellen Sie über das Azure-Portal eine Verbindung mit dem Replikatcomputer her.<br/><br/>Sekundärer Standort: Greifen Sie auf den Computer über den gleichen Host und in der gleichen Cloud zu.<br/><br/>Führen Sie ein Commit für das Failover aus. |
+| **Nicht geplantes Failover** |Reaktives Failover, falls aufgrund eines unerwarteten Vorfalls (beispielsweise ein Stromausfall oder ein Virusangriff) nicht mehr auf einen primären Standort zugegriffen werden kann <br/><br/> Ein nicht geplantes Failover kann auch durchgeführt werden, wenn der primäre Standort nicht verfügbar ist. |Datenverluste abhängig von der konfigurierten Replikationshäufigkeit<br/><br/>Daten sind jeweils auf dem Stand der letzten Synchronisierung |Starten Sie das Failover.<br/><br/>Überwachen Sie den Fortschritt auf der Registerkarte **Aufträge** . Optional: Fahren Sie die virtuellen Computer herunter, und synchronisieren Sie die aktuellen Daten.<br/><br/>Am sekundären Standort werden Replikatcomputer gestartet.<br/><br/>Azure: Stellen Sie über das Azure-Portal eine Verbindung mit dem Replikatcomputer her.<br/><br/>Sekundärer Standort: Greifen Sie auf den Computer über den gleichen Host und in der gleichen Cloud zu.<br/><br/>Führen Sie ein Commit für das Failover aus. |
 
 Welche Failover konkret unterstützt werden, hängt von Ihrem Bereitstellungsszenario ab.
 
@@ -48,8 +48,8 @@ Welche Failover konkret unterstützt werden, hängt von Ihrem Bereitstellungssze
 | Azure zu VMM-Standort |Nicht unterstützt |Unterstützt |Nicht unterstützt |
 | Hyper-V-Standort zu Azure |Unterstützt |Unterstützt |Unterstützt |
 | Azure zu Hyper-V-Standort |Nicht unterstützt |Unterstützt |Nicht unterstützt |
-| VMware-Standort zu Azure |Unterstützt (erweitertes Szenario)<br/><br/>  Nicht unterstützt (älteres Szenario) |Nicht unterstützt |Unterstützt |
-| Physischer Server zu Azure |Unterstützt (erweitertes Szenario)<br/><br/>  Nicht unterstützt (älteres Szenario) |Nicht unterstützt |Unterstützt |
+| VMware-Standort zu Azure |Unterstützt (erweitertes Szenario)<br/><br/> Nicht unterstützt (älteres Szenario) |Nicht unterstützt |Unterstützt |
+| Physischer Server zu Azure |Unterstützt (erweitertes Szenario)<br/><br/> Nicht unterstützt (älteres Szenario) |Nicht unterstützt |Unterstützt |
 
 ## <a name="failover-and-failback"></a>Failover und Failback
 Als Failoverziel für virtuelle Computer wird abhängig von der verwendeten Bereitstellung entweder ein lokaler sekundärer Standort oder Azure verwendet. Ein Computer, für den ein Failover zu Azure durchgeführt wird, wird als virtueller Azure-Computer erstellt. Failover können für einen einzelnen virtuellen Computer oder physischen Server oder für einen Wiederherstellungsplan durchgeführt werden. Wiederherstellungspläne enthalten mindestens eine sortierte Gruppe mit geschützten virtuellen Computern oder physischen Servern. Sie dienen zur Orchestrierung des Failovers mehrerer Computer, deren Failover dann gemäß der jeweiligen Gruppe durchgeführt wird. [hier](site-recovery-create-recovery-plans.md) .
@@ -77,87 +77,8 @@ Wenn Sie ein Failover zu Azure durchgeführt haben, werden Ihre virtuellen Compu
 * **Laufwerkbuchstabe**: Wenn Sie nach dem Failover den Laufwerkbuchstaben des virtuellen Computers beibehalten möchten, können Sie die SAN-Richtlinie für den virtuellen Computer** **aktivieren. Die Datenträger von virtuellen Computern werden automatisch online geschaltet. [Weitere Informationen](https://technet.microsoft.com/library/gg252636.aspx)
 * **Weiterleiten von Clientanforderungen**: Site Recovery verwendet Azure Traffic Manager, um Clientanforderungen nach dem Failover an Ihre Anwendung weiterzuleiten.
 
-## <a name="run-a-test-failover"></a>Durchführen eines Test-Failovers
-Beim einem Test-Failover werden Sie zum Auswählen von Netzwerkeinstellungen für die Testreplikatcomputer aufgefordert. Hierbei stehen mehrere Optionen zur Verfügung:  
-
-| **Option für das Test-Failover** | **Beschreibung** | **Failoverprüfung** | **Details** |
-| --- | --- | --- | --- |
-| **Failover zu Azure (ohne Netzwerk)** |Wählen Sie kein Azure-Zielnetzwerk aus. |Beim Failover wird geprüft, ob der virtuelle Testcomputer erwartungsgemäß in Azure startet. |Alle virtuellen Testcomputer in einem Wiederherstellungsplan werden in einem einzelnen Clouddienst hinzugefügt und können untereinander Verbindungen herstellen.<br/><br/>Die Computer sind nach einem Failover nicht mit einem Azure-Netzwerk verbunden.<br/><br/>Benutzer können über eine öffentliche IP-Adresse eine Verbindung mit den Testcomputern herstellen. |
-| **Failover zu Azure (mit Netzwerk)** |Wählen Sie ein Azure-Zielnetzwerk aus. |Beim Failover wird geprüft, ob die Testcomputer mit dem Netzwerk verbunden sind. |Erstellen Sie ein Azure-Netzwerk, das von Ihrem Azure-Produktionsnetzwerk isoliert ist, und richten Sie die Infrastruktur ein, damit der virtuelle Replikatcomputer erwartungsgemäß funktioniert.<br/><br/>Das Subnetz des virtuellen Testcomputers basiert auf dem Subnetz, in dem der virtuelle Computer nach einem geplanten oder nicht geplanten Failover eine Verbindung herstellt. |
-| **Failover zu einem sekundären VMM-Standort (ohne Netzwerk)** |Wählen Sie kein VM-Netzwerk aus. |Beim Failover wird überprüft, ob die Testcomputer erstellt werden.<br/><br/>Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt, in der sich der replizierte virtuelle Computer befindet. |<p>Der Computer, für den das Failover ausgeführt wurde, ist mit keinem Netzwerk verbunden.<br/><br/>Der virtuelle Computer kann nach der Erstellung mit einem VM-Netzwerk verbunden werden. |
-| **Failover zu einem sekundären VMM-Standort (mit Netzwerk)** |Wählen Sie ein vorhandenes VM-Netzwerk aus. |Beim Failover wird geprüft, ob virtuelle Computer erstellt werden. |Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt, in der sich der replizierte virtuelle Computer befindet.<br/><br/>Erstellen Sie ein von Ihrem Produktionsnetzwerk isoliertes VM-Netzwerk.<br/><br/>Bei Verwendung eines VLAN-basierten Netzwerks empfiehlt es sich, hierzu in VMM ein separates logisches Netzwerk zu erstellen, das nicht in der Produktionsumgebung verwendet wird. Dieses logische Netzwerk dient zum Erstellen von VM-Netzwerken für das Testfailover.<br/><br/>Das logische Netzwerk muss mindestens einem der Netzwerkadapter aller Hyper-V-Server zugeordnet werden, die virtuelle Computer hosten.<br/><br/>Bei logischen VLAN-Netzwerken müssen die Netzwerkstandorte, die Sie dem logischen Netzwerk hinzufügen, isoliert sein.<br/><br/>Bei Verwendung eines logischen Netzwerks, das auf der Windows-Netzwerkvirtualisierung basiert, erstellt Azure Site Recovery automatisch isolierte VM-Netzwerke. |
-| **Failover zu einem sekundären VMM-Standort (mit Netzwerkerstellung)** |Auf der Grundlage der Einstellung, die Sie unter **Logisches Netzwerk** angeben, und den zugehörigen Netzwerkstandorten wird automatisch ein temporäres Testnetzwerk erstellt. |Beim Failover wird geprüft, ob virtuelle Computer erstellt werden. |Verwenden Sie diese Option, wenn für den Wiederherstellungsplan mehr als ein VM-Netzwerk verwendet wird. Im Falle von Netzwerken, die auf der Windows-Netzwerkvirtualisierung basieren, kann diese Option im Netzwerk des virtuellen Replikatcomputers automatisch VM-Netzwerke mit den gleichen Einstellungen (Subnetze und IP-Adresspools) erstellen. Diese VM-Netzwerke werden nach dem Test-Failover automatisch bereinigt.</p><p>Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt, in der sich der replizierte virtuelle Computer befindet. |
-
-> [!NOTE]
-> Die einem virtuellen Computer bei einem Testfailover zugewiesene IP-Adresse ist mit der IP-Adresse identisch, die ihm bei einem geplanten oder nicht geplanten Failover zugewiesen wird (sofern die IP-Adresse im Testfailovernetzwerk verfügbar ist). Wenn im Testfailovernetzwerk nicht dieselbe IP-Adresse verfügbar ist, wird dem virtuellen Computer eine andere IP-Adresse zugewiesen, die im Testfailovernetzwerk verfügbar ist.
->
->
-
-### <a name="run-a-test-failover-from-on-premises-to-azure"></a>Durchführen eines Test-Failovers (lokal zu Azure)
-Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen Computer durchführen.
-
-1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Test Failover**veröffentlichen.
-2. Geben Sie auf der Seite **Test-Failover bestätigen** an, wie die Replikatcomputer nach dem Failover mit einem Azure-Netzwerk verbunden werden sollen.
-3. Wenn Sie ein Failover zu Azure durchführen und die Datenverschlüsselung für die Cloud aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation ausgestellt wurde.
-4. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . Der Test-Replikatcomputer wird im Azure-Portal angezeigt.
-5. Sie können an Ihrem lokalen Standort über eine RDP-Verbindung auf Replikatcomputer in Azure zugreifen. Dabei muss am Endpunkt für den virtuellen Computer der Port 3389 geöffnet sein.
-6. Klicken Sie anschließend auf **Test abschließen**, wenn das Failover die Endphase des Tests** **erreicht.
-7. Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test-Failover.
-8. Klicken Sie auf **Das Test-Failover ist abgeschlossen.** , um eine automatische Bereinigung der Testumgebung durchzuführen. Nach Abschluss dieses Vorgangs wird für das Test-Failover der Status**Abgeschlossen** angezeigt.
-
-> [!NOTE]
-> Sollte das Test-Failover länger als zwei Wochen bestehen bleiben, wird der Abschluss des Vorgangs erzwungen. Alle Elemente und virtuellen Computer, die automatisch im Zuge des Test-Failovers erstellt wurden, werden gelöscht.
->
->
-
-### <a name="run-a-test-failover-from-a-primary-on-premises-site-to-a-secondary-on-premises-site"></a>Durchführen eines Testfailovers von einem primären lokalen Standort zu einem sekundären lokalen Standort
-Für ein Testfailover müssen einige Schritte durchgeführt werden. So müssen Sie unter anderem eine Kopie des Domänencontrollers erstellen und Ihre Testumgebung mit einem DHCP- und DNS-Testserver versehen. Dazu haben Sie mehrere Möglichkeiten:
-
-* Wenn Sie ein Test-Failover mit einem vorhandenen Netzwerk durchführen möchten, bereiten Sie Active Directory, DHCP und DNS in diesem Netzwerk vor.
-* Wenn Sie ein Test-Failover mit der Option für die automatische Erstellung von VM-Netzwerken durchführen möchten, fügen Sie vor der ersten Gruppe des Wiederherstellungsplans, den Sie für das Test-Failover verwenden möchten, einen manuellen Schritt ein, und fügen Sie dem automatisch erstellten Netzwerk dann vor der Durchführung des Test-Failovers die Infrastrukturressourcen hinzu.
-
-#### <a name="things-to-note"></a>Was Sie beachten sollten
-* Bei einer Replikation an einen sekundären Standort muss der Typ des vom Replikatcomputer verwendeten Netzwerks nicht dem Typ des logischen Netzwerks für das Test-Failover entsprechen. Einige Kombinationen funktionieren aber unter Umständen nicht. Wenn das Replikat DHCP und eine VLAN-basierte Isolation verwendet, benötigt das VM-Netzwerk für das Replikat keinen statischen IP-Adresspool. In diesem Fall könnte für das Test-Failover also keine Windows-Netzwerkvirtualisierung verwendet werden, da keine Adresspools verfügbar sind. Das Test-Failover funktioniert auch nicht, wenn das Replikatnetzwerk nicht isoliert ist und im Testnetzwerk die Windows-Netzwerkvirtualisierung verwendet wird. Der Grund: Das nicht isolierte Netzwerk verfügt nicht über die Subnetze, die zum Erstellen eines Netzwerks mit Windows-Netzwerkvirtualisierung erforderlich sind.
-* Welche Verbindung nach dem Failover zwischen virtuellen Replikatcomputern und zugeordneten VM-Netzwerken besteht, hängt davon ab, wie das VM-Netzwerk in der VMM-Konsole konfiguriert ist:
-  * **VM-Netzwerk ohne Isolation oder VLAN-Isolation**: Bei definiertem DHCP für das VM-Netzwerk wird der virtuelle Replikatcomputer mit der VLAN-ID verbunden. Hierbei kommen die Einstellungen zur Anwendung, die für den Netzwerkstandort im zugeordneten logischen Netzwerk angegeben sind. Der virtuelle Computer erhält seine IP-Adresse vom verfügbaren DHCP-Server. Für das VM-Zielnetzwerk muss kein statischer IP-Adresspool definiert sein. Bei Verwendung eines statischen IP-Adresspools für das VM-Netzwerk wird der virtuelle Replikatcomputer mit der VLAN-ID verbunden. Hierbei kommen die Einstellungen zur Anwendung, die für den Netzwerkstandort im zugeordneten logischen Netzwerk angegeben sind. Der virtuelle Computer erhält seine IP-Adresse aus dem für das VM-Netzwerk definierten Adresspool. Ist für das VM-Zielnetzwerk kein statischer IP-Adresspool definiert, ist die IP-Adresszuweisung nicht erfolgreich. Der IP-Adresspool muss sowohl auf dem Quell- als auch auf dem Ziel-VMM-Server erstellt werden, den Sie für den Schutz und die Wiederherstellung verwenden möchten.
-  * **VM-Netzwerk mit Windows-Netzwerkvirtualisierung**: Wenn ein VM-Netzwerk mit dieser Einstellung konfiguriert ist, muss für das VM-Zielnetzwerk ein statischer Adresspool definiert werden, und zwar unabhängig davon, ob für das VM-Quellnetzwerk die Verwendung von DHCP oder die Verwendung eines statischen IP-Adresspools konfiguriert ist. Bei Verwendung von DHCP fungiert der VMM-Zielserver als DHCP-Server und stellt eine IP-Adresse aus dem für das VM-Zielnetzwerk definierten Pool bereit. Ist für den Quellserver die Verwendung eines statischen IP-Adresspools definiert, weist der VMM-Zielserver eine IP-Adresse aus dem Pool zu. In beiden Fällen ist die IP-Adresszuweisung nicht erfolgreich, wenn kein statischer IP-Adresspool definiert ist.
-
-#### <a name="run-test"></a>Durchführen des Tests
-Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen virtuellen Computer oder physischen Server durchführen.
-
-1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Test Failover**veröffentlichen.
-2. Geben Sie auf der Seite **Test-Failover bestätigen** an, wie die virtuellen Computer nach dem Test-Failover mit Netzwerken verbunden werden sollen.
-3. Verfolgen Sie den Verlauf des Failovers auf der Registerkarte **Aufträge** . Klicken Sie auf **Test abschließen**, wenn das Failover die Phase **Tests abschließen** erreicht, um das Testfailover abzuschließen.
-4. Klicken Sie auf **Notizen** , um alle Beobachtungen im Zusammenhang mit dem Test-Failover aufzuzeichnen und zu speichern.
-5. Vergewissern Sie sich anschließend, dass die virtuellen Computer erfolgreich starten.
-6. Schließen Sie nach der Prüfung, ob die virtuellen Computer erfolgreich starten, das Test-Failover ab, um die isolierte Umgebung zu bereinigen. Wenn Sie die automatische Erstellung von VM-Netzwerken ausgewählt haben, werden bei der Bereinigung alle virtuellen Testcomputer und -netzwerke gelöscht.
-
-> [!NOTE]
-> Sollte das Test-Failover länger als zwei Wochen bestehen bleiben, wird der Abschluss des Vorgangs erzwungen. Alle Elemente und virtuellen Computer, die automatisch im Zuge des Test-Failovers erstellt wurden, werden gelöscht.
->
->
-
-#### <a name="prepare-dhcp"></a>Vorbereiten von DHCP
-Wenn die am Test-Failover beteiligten virtuellen Computer DHCP nutzen, muss innerhalb des für das Test-Failover erstellten isolierten Netzwerks ein DHCP-Testserver erstellt werden.
-
-### <a name="prepare-active-directory"></a>Vorbereiten von Active Directory
-Wenn Sie ein Test-Failover durchführen möchten, um eine Anwendung zu testen, muss in der Testumgebung eine Kopie der Active Directory-Produktionsumgebung vorhanden sein. Unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details. 
-
-### <a name="prepare-dns"></a>Vorbereiten von DNS
-Gehen Sie wie folgt vor, um einen DNS-Server für das Test-Failover vorzubereiten:
-
-* **DHCP**: Wenn virtuelle Computer DHCP nutzen, muss die IP-Adresse des Test-DNS auf dem DHCP-Testserver aktualisiert werden. Bei Verwendung der Windows-Netzwerkvirtualisierung fungiert der VMM-Server als DHCP-Server. Daher sollte die IP-Adresse des DNS im Testfailovernetzwerk aktualisiert werden. In diesem Fall werden die virtuellen Computer automatisch beim relevanten DNS-Server registriert.
-* **Statische Adresse**: Wenn virtuelle Computer eine statische IP-Adresse verwenden, muss die IP-Adresse des DNS-Testservers im Testfailovernetzwerk aktualisiert werden. Das DNS muss eventuell mit der IP-Adresse der virtuellen Testcomputer aktualisiert werden. Hierzu können Sie das folgende Beispielskript verwenden:
-
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
+Im Dokument [Testfailover in Azure](site-recovery-test-failover-to-azure.md) finden Sie Informationen zur Durchführung eines Testfailovers in Azure. Wenn Sie das Testfailover zu einem anderen lokal verwalteten VMM-Server durchführen möchten, lesen Sie das Dokument [Testfailover zu VMM](site-recovery-test-failover-vmm-to-vmm.md).  
 
 ## <a name="run-a-planned-failover-primary-to-secondary"></a>Durchführen eines geplanten Failovers (primär zu sekundär)
  Hier erfahren Sie, wie Sie ein geplantes Failover für einen Wiederherstellungsplan durchführen. Alternativ können Sie das Failover über die Registerkarte **Virtuelle Computer** auch für einen einzelnen virtuellen Computer durchführen.
@@ -201,7 +122,11 @@ Hier erfahren Sie, wie Sie ein nicht geplantes Failover für einen Wiederherstel
 
     - **Daten nur während Failover synchronisieren (vollständiger Download)**: Verwenden Sie diese Option, wenn Sie über einen längeren Zeitraum Azure verwendet haben. Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und keine Zeit mit der Prüfsummenberechnung verschwendet werden soll. Mit der Option wird ein Download des Datenträgers durchgeführt. Sie ist auch nützlich, wenn der lokale virtuelle Computer gelöscht wurde.
 
-    > [AZURE.NOTE] Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure seit einer Weile nutzen (einen Monat oder länger) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
+    > [!NOTE] 
+    > Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure seit einer Weile nutzen (einen Monat oder länger) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
+    >
+    >
+
 
 1. Wenn Sie ein Failover zu Azure durchführen und die Datenverschlüsselung für die Cloud aktiviert ist, wählen Sie unter **Verschlüsselungsschlüssel** das Zertifikat aus, das beim Aktivieren der Datenverschlüsselung im Rahmen der Anbieterinstallation auf dem VMM-Server ausgestellt wurde.
 2. Standardmäßig wird der letzte Wiederherstellungspunkt verwendet. Unter **Wiederherstellungspunkt ändern** können Sie bei Bedarf einen anderen Wiederherstellungspunkt angeben.
@@ -235,6 +160,6 @@ Wenn Sie den Schutz zwischen einem [Hyper-V-Standort und Azure](site-recovery-hy
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

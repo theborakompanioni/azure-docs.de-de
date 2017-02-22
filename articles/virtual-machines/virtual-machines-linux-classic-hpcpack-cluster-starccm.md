@@ -16,8 +16,8 @@ ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 666b9e47953674b17be6cc84dbc6aeec28e28b57
+ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
+ms.openlocfilehash: 94a6a0968336f74ff116bf71aaa2e7c2ee135105
 
 
 ---
@@ -31,7 +31,7 @@ Microsoft HPC Pack bietet eine Vielzahl von umfangreichen HPC- und parallelen An
 ## <a name="set-up-an-hpc-pack-cluster"></a>Einrichten eines HPC Pack-Clusters
 Laden Sie die HPC Pack-IaaS-Bereitstellungsskripts vom [Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=44949) herunter, und extrahieren Sie sie lokal.
 
-Azure PowerShell ist hierfür erforderlich. Sollte PowerShell auf Ihrem lokalen Computer nicht konfiguriert sein, lesen Sie den Artikel [Installieren und Konfigurieren von Azure PowerShell](../powershell-install-configure.md).
+Azure PowerShell ist hierfür erforderlich. Sollte PowerShell auf Ihrem lokalen Computer nicht konfiguriert sein, lesen Sie den Artikel [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 Zum Zeitpunkt der Erstellung dieses Artikels stehen Linux-Images aus dem Azure Marketplace (mit InfiniBand-Treibern für Azure) für SLES 12, CentOS 6.5 und CentOS 7.1 zur Verfügung. Dieser Artikel basiert auf der Verwendung von SLES 12. Die Namen aller im Marketplace verfügbaren Linux-Images mit HPC-Unterstützung können mithilfe des folgenden PowerShell-Befehls abgerufen werden:
 
@@ -336,6 +336,6 @@ Versuchen Sie, andere Linux-Workloads auszuführen. Siehe hierzu z.B.:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

@@ -198,6 +198,6 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [En
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

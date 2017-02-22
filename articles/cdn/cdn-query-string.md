@@ -1,9 +1,9 @@
 ---
-title: Steuern des Azure CDN-Zwischenspeicherverhaltens von Anforderungen mit Abfragezeichenfolgen | Microsoft Docs
+title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen | Microsoft-Dokumentation
 description: Das Zwischenspeichern von Azure CDN-Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn diese Abfragezeichenfolgen enthalten.
 services: cdn
 documentationcenter: 
-author: camsoper
+author: zhangmanling
 manager: erikre
 editor: 
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2016
-ms.author: casoper
+ms.date: 01/23/2017
+ms.author: mazha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 664c734e17e87ce2e088055759345ebd9b325f11
+ms.sourcegitcommit: 57d00f2192fed7a2e89ac94e110ebb7e84c83b72
+ms.openlocfilehash: 8d79626fa8516f226a82d3dac693c2033904c91d
 
 
 ---
-# <a name="controlling-caching-behavior-of-cdn-requests-with-query-strings"></a>Steuern des Zwischenspeicherverhaltens von CDN-Anforderungen mit Abfragezeichenfolgen
+# <a name="control-azure-cdn-caching-behavior-with-query-strings"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen
 > [!div class="op_single_selector"]
 > * [Standard](cdn-query-string.md)
 > * [Azure CDN Premium von Verizon](cdn-query-string-premium.md)
@@ -65,6 +65,6 @@ Die folgenden drei Modi sind verfügbar:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

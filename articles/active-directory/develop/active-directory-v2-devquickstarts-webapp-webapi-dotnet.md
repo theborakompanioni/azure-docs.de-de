@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD v2.0: .NET-Web-App | Microsoft Docs'
+title: Erste Schritte mit Azure AD v2.0 und einer .NET-Web-App, die eine API aufruft | Microsoft-Dokumentation
 description: "Vorgehensweise beim Erstellen einer .NET-MVC-Web-App, die Webdienste mit persönlichen Microsoft-Konten oder Geschäfts- oder Schulkonten für die Anmeldung aufruft."
 services: active-directory
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/27/2016
+ms.date: 01/23/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 587a5136004525f5badc5e72d006fc6dd07d42d8
+ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
+ms.openlocfilehash: c6cca8fda4ba6a26d5ee74b43e0bae37639865c5
 
 
 ---
@@ -202,6 +202,6 @@ Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

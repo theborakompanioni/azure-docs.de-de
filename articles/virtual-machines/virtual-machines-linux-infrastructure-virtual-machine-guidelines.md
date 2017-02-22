@@ -1,5 +1,5 @@
 ---
-title: "Richtlinien für virtuelle Linux-Computer | Microsoft Docs"
+title: "Richtlinien für virtuelle Azure-Computer unter Linux | Microsoft Docs"
 description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für die Bereitstellung virtueller Linux-Computer in Azure."
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 186abaff67bf4435e0ceb4490e600052e728428f
+ms.sourcegitcommit: a99ab839ec9ade0049e1cc59054e333048e0208c
+ms.openlocfilehash: 80044c0b16a16a214b4d8879a2d7f38012608ba0
 
 
 ---
-# <a name="virtual-machines-guidelines"></a>Richtlinien für virtuelle Computer
+# <a name="azure-virtual-machines-guidelines-for-linux"></a>Richtlinien für virtuelle Azure-Computer unter Linux
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel liegt das Hauptaugenmerk darauf, die erforderlichen Planungsschritte zum Erstellen und Verwalten virtueller Computer (VMs) in Ihrer Azure-Umgebung zu erläutern.
@@ -41,7 +41,7 @@ Aufgaben:
 * Erstellen Sie die virtuellen Computer mit der Azure-Befehlszeilenschnittstelle, mit dem Webportal oder mit Resource Manager-Vorlagen.
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
-Zu den wichtigsten Komponenten in Ihrer Azure-Umgebung gehören wahrscheinlich virtuelle Computer. Damit führen Sie Ihre Anwendungen, Datenbanken, Authentifizierungsdienste usw. aus.
+Virtuelle Computer gehören wahrscheinlich zu den wichtigsten Ressourcen in Ihrer Azure-Umgebung. Auf dieser Ressource führen Sie Ihre Anwendungen, Datenbanken, Authentifizierungsdienste usw. aus.
 
 Sie müssen die [unterschiedlichen Größen virtueller Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kennen, um die Größe Ihrer Umgebung im Hinblick auf Leistung und Kosten richtig festzulegen. Wenn Ihre virtuellen Computer nicht über genügend CPU-Kerne oder Arbeitsspeicher verfügen, leidet die Leistung der Anwendung unabhängig davon, wie gut sie entworfen und entwickelt wurde. Überprüfen Sie zunächst die vorgeschlagenen Workloads für jede Serie virtueller Computer, wenn Sie entscheiden, welche Größe Sie für virtuelle Computer für jede Komponente in Ihrer Infrastruktur verwenden möchten. Sie können [die Größe eines virtuellen Computers](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nach der Bereitstellung ändern.
 
@@ -59,6 +59,6 @@ Sie können Vorlagen erstellen, die durch deklarative JSON-Dateien definiert sin
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

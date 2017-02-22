@@ -1,5 +1,5 @@
 ---
-title: "Replizieren von lokalen virtuellen VMware-Computern oder physischen Servern an einen sekundären Standort | Microsoft Docs"
+title: Replizieren virtueller VMware-Computer oder physischer Server auf einen anderen Standort (klassisches Azure-Portal) | Microsoft-Dokumentation
 description: "Verwenden Sie diesen Artikel, wenn Sie VMware-VMs oder physische Windows-/Linux-Server mithilfe von Azure Site Recovery an einen sekundären Standort replizieren möchten."
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 02/06/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: 5614c39d914d5ae6fde2de9c0d9941e7b93fc10f
-ms.openlocfilehash: d325ce41e79ec85e08fbf4bb86e0cd7e0edf1c8f
+ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
+ms.openlocfilehash: cff6ef0c1c49110edc53ec82f88d9875439aab8a
 
 
 ---
-# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Replizieren von lokalen virtuellen VMware-Maschinen oder physischen Servern an einen sekundären Standort
+# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Replizieren lokaler virtueller VMware-Computer oder physischer Server an einen sekundären Standort im klassischen Azure-Portal
+
 ## <a name="overview"></a>Übersicht
 InMage Scout in Azure Site Recovery ermöglicht eine Echtzeitreplikation zwischen lokalen VMware-Standorten. InMage Scout ist Teil der Abonnements des Azure Site Recovery-Diensts.
 
@@ -83,7 +84,7 @@ Installieren Sie die Updates wie folgt:
 
 ## <a name="updates"></a>Aktualisierungen
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4
-Scout Update 4 ist ein kumulatives Update. Es verfügt über alle Fixes von Update 1 bis Update 3 und die folgenden neuen Bugfixes und Verbesserungen.
+Scout Update 4 ist ein kumulatives Update. Es verfügt über alle Fixes von Update&1; bis Update&3; und die folgenden neuen Bugfixes und Verbesserungen.
 
 **Unterstützung für die neue Plattform**
 
@@ -199,6 +200,6 @@ Etwaige Fragen können Sie im [Azure Recovery Services-Forum](https://social.msd
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

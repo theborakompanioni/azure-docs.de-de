@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: a5e0ba0128b7f20d6307f5dea784de007e71321c
+ms.sourcegitcommit: bc3921003bf3b91de88e70ff18b5c397687c288c
+ms.openlocfilehash: 6f4a825faac413652b1dc3880d899e0e40caedbc
 
 
 ---
-# <a name="different-ways-to-create-a-windows-virtual-machine-with-resource-manager"></a>Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers mit Ressourcen-Manager
+# <a name="different-ways-to-create-a-windows-vm"></a>Verschiedene Möglichkeiten zum Erstellen eines virtuellen Windows-Computers
 Azure bietet verschiedene Möglichkeiten zum Erstellen eines virtuellen Computers, da virtuelle Computer für verschiedene Benutzer und Zwecke geeignet sind. Daher müssen Sie einige Optionen für den virtuellen Computer und dessen Erstellung auswählen. Dieser Artikel bietet einen Überblick über diese Optionen sowie Links zu Anweisungen.
 
 ## <a name="azure-portal"></a>Azure-Portal
@@ -47,6 +47,6 @@ Verwenden Sie Visual Studio, um virtuelle Computer mit den Azure-Tools für Visu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO5-->
 
 

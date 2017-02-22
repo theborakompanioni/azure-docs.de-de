@@ -1,23 +1,22 @@
 ---
 title: "Azure Government-Überwachung und -Verwaltung | Microsoft Docs"
 description: "Diese bietet einen Vergleich der Features und Richtlinien zum Entwickeln von Anwendungen für Azure Government."
-services: Azure-Government
+services: azure-government
 cloud: gov
 documentationcenter: 
 author: ryansoc
 manager: zakramer
-editor: 
 ms.assetid: 4b7720c1-699e-432b-9246-6e49fb77f497
-ms.service: multiple
+ms.service: azure-government
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: azure-government
-ms.date: 10/31/2016
+ms.date: 1/13/2017
 ms.author: ryansoc
 translationtype: Human Translation
-ms.sourcegitcommit: 3e460dd2aaf51ef2ba9840513d236ce313320c80
-ms.openlocfilehash: 39a87bdbef7c532f9e50f1e71e9c12797bc9a33c
+ms.sourcegitcommit: ec62cc79aeffa21e5d9d772dcd2da6f973c18d81
+ms.openlocfilehash: 3d9f2308d20e723da324be7e3aec3106ff5ff846
 
 
 ---
@@ -30,7 +29,7 @@ Automation ist allgemein in Azure Government verfügbar.
 ### <a name="variations"></a>Variationen
 Die folgenden Automation-Features sind aktuell nicht in Azure Government verfügbar.
 
-* Erstellen von Speicherdienstprinzip-Anmeldeinformationen zur Authentifizierung
+* Erstellen von Dienstprinzipal-Anmeldeinformationen zur Authentifizierung
 
 Weitere Informationen finden Sie in der [öffentlichen Dokumentation zu Automation](../automation/automation-intro.md).
 
@@ -38,14 +37,6 @@ Weitere Informationen finden Sie in der [öffentlichen Dokumentation zu Automati
 Backup ist in Azure Government allgemein verfügbar.
 
 Weitere Informationen finden Sie unter [Azure Government Backup](documentation-government-services-backup.md).
-
-### <a name="variations"></a>Variationen
-Die folgenden Backup-Features sind aktuell nicht in Azure Government verfügbar:
-
-* Azure Resource Manager-Tresore
-* Verwaltung mit dem Azure-Portal (das klassische Azure-Portal wird unterstützt)
-
-Die URLs für Backup unterscheiden sich in Azure Government:
 
 ## <a name="site-recovery"></a>Site Recovery
 Site Recovery (ASR) ist in Azure Government allgemein verfügbar.
@@ -56,14 +47,16 @@ Weitere Informationen finden Sie in der [öffentlichen Site Recovery-Dokumentati
 Die folgenden Site Recovery-Features sind aktuell nicht in Azure Government verfügbar:
 
 * Azure Resource Manager-Site Recovery-Tresore
+* E-Mail-Benachrichtigung
 
-| Site Recovery | Klassisch | Ressourcen-Manager | 
+| Site Recovery | Klassisch | Ressourcen-Manager |
 | --- | --- | --- |
-| VMware/physisch  | Allgemein verfügbar | Geplant |
-| Hyper-V | Allgemein verfügbar | Geplant |
-| Standort-zu-Standort | Allgemein verfügbar | Geplant |
+| VMware/physisch  | Allgemein verfügbar | Allgemein verfügbar |
+| Hyper-V | Allgemein verfügbar | Allgemein verfügbar |
+| Standort-zu-Standort | Allgemein verfügbar | Allgemein verfügbar |
 
-Hinweise: Die Tabelle gilt für VA und Iowa. 
+>[!NOTE]
+>Die Tabelle gilt für „USA Gov Virginia“ und „USA Gov Iowa“.
 
 Die folgenden URLs für ASR unterscheiden sich in Azure Government:
 
@@ -74,8 +67,6 @@ Die folgenden URLs für ASR unterscheiden sich in Azure Government:
 | *.blob.core.windows.net | *.blob.core.usgovcloudapi.net | Zum Speichern der VM-Momentaufnahmen |
 | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi | Zum Herunterladen von MySQL |
 
-
-
 ## <a name="log-analytics"></a>Log Analytics
 Log Analytics ist allgemein in Azure Government verfügbar.
 
@@ -84,7 +75,7 @@ Die folgenden Log Analytics-Features und -Lösungen sind aktuell nicht in Azure 
 
 * Lösungen, die als Vorschau in Microsoft Azure enthalten sind, einschließlich:
   * Netzwerküberwachungslösung
-  * Anwendungsabhängigkeitsüberwachungs-Lösung
+  * Dienstzuordnung
   * Office 365-Lösung
   * Windows 10 Upgrade Analytics-Lösung
   * Application Insights-Lösung
@@ -127,21 +118,11 @@ Die folgenden Log Analytics-Features verhalten sich in Azure Government anders:
 
 Weitere Informationen finden Sie in der [öffentlichen Log Analytics-Dokumentation](../log-analytics/log-analytics-overview.md).
 
-## <a name="site-recovery"></a>Site Recovery
-Site Recovery ist in Azure Government allgemein verfügbar.
-
-Weitere Informationen finden Sie in der [öffentlichen Site Recovery-Dokumentation](../site-recovery/site-recovery-overview.md).
-
-### <a name="variations"></a>Variationen
-Die folgenden Site Recovery-Features sind aktuell nicht in Azure Government verfügbar:
-
-* Azure Resource Manager-Site Recovery-Tresore
-
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

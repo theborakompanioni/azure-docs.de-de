@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 01/06/2017
 ms.author: roopalik;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 889f68c774bc9da8465e597afe0508d69b060574
+ms.sourcegitcommit: 262ee4f092efa11150de61168e6b03c0477f0543
+ms.openlocfilehash: 6e0efe18c1170ef3b5a9b894888e926b31432e07
 
 
 ---
@@ -34,7 +34,7 @@ Wenn Sie im Katalog nach benutzerdefinierten Modulen suchen möchten, öffnen Si
  Die Seite **[Custom Modules](https://gallery.cortanaintelligence.com/customModules)**
  zeigt eine Liste der am häufigsten verwendeten benutzerdefinierten Module.
 Klicken Sie auf **Alle anzeigen**, um alle benutzerdefinierten Module anzuzeigen.
-Auf dieser Seite können Sie alle benutzerdefinierten Module im Katalog durchsuchen oder eine Suche durchführen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
+Auf dieser Seite können Sie alle benutzerdefinierten Module im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
 
 ### <a name="comment-and-share"></a>Kommentieren und teilen
  Klicken Sie auf ein beliebiges benutzerdefiniertes Modul zum Öffnen der Seite „Details“ des Moduls und zum Lesen von Informationen zur Funktionsweise des Moduls und dessen Verwendung. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum benutzerdefinierten Modul per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
@@ -88,6 +88,6 @@ Das benutzerdefinierte Modul ist in Ihren Arbeitsbereich kopiert und in der Modu
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO2-->
 
 

@@ -15,8 +15,8 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e0bd65366ef1162a4b82c35a86fc42708226e6ed
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
 
 
 ---
@@ -45,8 +45,8 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 ### <a name="causes"></a>Ursachen
 * Wenn Sie dieselbe Aktion über die Azure Mobile Engagement-Benutzeroberfläche ausführen können, wurde diese Funktion von Azure Mobile Engagement mit dem SDK ordnungsgemäß integriert.
 
-### <a name="see-also"></a>Siehe auch
-* [API-Dokumentation][Link 1]
+### <a name="see-also"></a>Weitere Informationen
+* [Dokumentation zur Benutzeroberfläche][Link 1]
 
 ## <a name="error-messages"></a>Fehlermeldungen
 ### <a name="issue"></a>Problem
@@ -86,7 +86,7 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 * In der Azure Mobile Engagement-Benutzeroberfläche werden viele Elemente deaktiviert, wenn sie nicht ordnungsgemäß integriert wurden. Bei der API hingegen treten nur "stille" Fehler (ohne Fehlermeldung) auf. Testen Sie deshalb mithilfe der Benutzeroberfläche, ob dieselbe Funktionalität dort korrekt arbeitet.
 * Azure Mobile Engagement und viele weitere Funktionen von Azure Mobile Engagement müssen einzeln mit dem SDK in Ihre App integriert werden, bevor sie genutzt werden können.
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 * [Handbuch zur Problembehandlung – SDK][Link 25]
 
 <!--Link references-->
@@ -123,6 +123,6 @@ Im Folgenden finden Sie mögliche Probleme, die auftreten können, wenn Administ
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO2-->
 
 

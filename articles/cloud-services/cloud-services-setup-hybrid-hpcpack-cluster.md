@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2016
+ms.date: 02/06/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: db3705c26ecb1b939c17829cc121c9ef0f3eaa31
+ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
+ms.openlocfilehash: da7102882b9dcf7db1285c0ec004ce1ad3859853
 
 
 ---
@@ -28,7 +28,7 @@ Nutzen Sie Microsoft HPC Pack 2012 R2 und Azure für die Einrichtung eines klein
 
 Dieses Tutorial veranschaulicht einen gelegentlich als Cloud-Bursting bezeichneten Ansatz. Es erklärt, wie mit skalierbaren, bei Bedarf verfügbaren Computeressourcen in Azure rechenintensive Anwendungen ausgeführt werden können.
 
-In diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit Serverclustern oder HPC Pack haben. Es soll Ihnen lediglich helfen, ein Hybrid-Rechencluster für Demonstrationszwecke schnell bereitzustellen. Welche Überlegungen und Schritte zur Bereitstellung eines größeren Hybrid-Clusters mit HPC-Pack in einer Produktionsumgebung anzustellen bzw. auszuführen sind, ist in der [ausführlichen Anleitung](http://go.microsoft.com/fwlink/p/?LinkID=200493) beschrieben. Informationen zu weiteren Szenarios mit HPC Pack, z.B. zur automatischen Bereitstellung von Clustern auf virtuellen Azure-Computern, finden Sie unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit Computeclustern oder HPC Pack 2012 R2 haben. Es soll Ihnen lediglich helfen, ein Hybrid-Rechencluster für Demonstrationszwecke schnell bereitzustellen. Welche Überlegungen und Schritte zur Bereitstellung eines größeren Hybridclusters mit HPC Pack in einer Produktionsumgebung anzustellen bzw. auszuführen sind oder wie Sie HPC Pack 2016 verwenden, ist in der [ausführlichen Anleitung](http://go.microsoft.com/fwlink/p/?LinkID=200493) beschrieben. Informationen zu weiteren Szenarios mit HPC Pack, z.B. zur automatischen Bereitstellung von Clustern auf virtuellen Azure-Computern, finden Sie unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Abonnement** – Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) einrichten.
@@ -38,6 +38,10 @@ In diesem Tutorial wird davon ausgegangen, dass Sie noch keine Erfahrung mit Ser
   * Damit das HPC Pack unterstützt werden kann, muss das Betriebssystem in einer der folgenden Sprachen installiert werden: Englisch, Japanisch oder Chinesisch (vereinfacht).
   * Stellen Sie sicher, dass wichtige und kritische Updates installiert wurden.
 * **HPC Pack 2012 R2** - [hier](http://go.microsoft.com/fwlink/p/?linkid=328024) das Installationspaket für die neueste Version kostenlos herunter, und kopieren Sie die Dateien auf den Hauptknotencomputer oder an einen Speicherort im Netzwerk. Wählen Sie Installationsdateien in derselben Sprache aus wie für die Installation von Windows Server.
+
+    >[!NOTE]
+    > Wenn Sie HPC Pack 2016 anstelle von HPC Pack 2012 R2 verwenden möchten, sind zusätzliche Konfigurationsschritte erforderlich. Informationen finden Sie in der [ausführlichen Anleitung](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+    > 
 * **Domänenkonto** : Dieses Konto muss für die HPC Pack-Installation mit lokalen Administratorberechtigungen auf dem Hauptknoten konfiguriert werden.
 * **TCP-Konnektivität an Port 443** vom Hauptknoten zu Azure.
 
@@ -177,7 +181,7 @@ In diesem Tutorial werden Sie zwei kleine Knoten hinzufügen.
 1. Klicken Sie in HPC-Cluster-Manager unter **Node Management** (Knotenverwaltung; in früheren Versionen von HPC Pack auch als **Ressourcenverwaltung** bezeichnet) im Bereich **Actions** (Aktionen) auf **Add Node** (Knoten hinzufügen).
    
     ![Add Node][add_node1]
-2. Klicken Sie im Assistenten zum Hinzufügen von Knoten auf der Seite **Select Deployment Method** (Bereitstellungsmethode auswählen) auf **Add Azure nodes** (Azure-Knoten hinzufügen) und dann auf **Weiter**.
+2. Klicken Sie im Assistenten zum Hinzufügen von Knoten auf der Seite **Select Deployment Method** (Bereitstellungsmethode auswählen) auf **Add Windows Azure nodes** (Windows Azure-Knoten hinzufügen) und dann auf **Weiter**.
    
     ![Hinzufügen eines Azure-Knotens][add_node1_1]
 3. Wählen Sie auf der Seite **Specify New Nodes** (Neue Knoten angeben) die Azure-Knotenvorlage aus, die Sie zuvor angelegt haben (Standardname **Default AzureNode Template** (AzureNode-Standardvorlage)). Geben Sie dann **2** Knoten der Größe **Small** an, und klicken Sie anschließend auf **Weiter**.
@@ -197,7 +201,7 @@ Wenn Sie die Clusterressourcen in Azure nutzen wollen, veranlassen Sie den Start
 1. Klicken Sie in HPC-Cluster-Manager unter **Node Management** (Knotenverwaltung; in früheren Versionen von HPC Pack auch als **Ressourcenverwaltung** bezeichnet) auf einen oder beide Knoten, und klicken Sie dann im Bereich **Actions** (Aktionen) auf **Start** (Starten).
    
    ![Starten von Knoten][add_node4]
-2. Klicken Sie im Dialogfeld **Start Azure Nodes** (Azure-Knoten starten) auf **Start** (Starten).
+2. Klicken Sie im Dialogfeld **Stop Windows Azure Nodes** (Windows Azure-Knoten beenden) auf **Start** (Starten).
    
     ![Starten von Knoten][add_node5]
    
@@ -250,7 +254,7 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
 1. Wählen Sie in HPC-Cluster-Manager unter **Node Management** (Knotenverwaltung; in früheren Versionen von HPC Pack auch als **Ressourcenverwaltung** bezeichnet) beide Azure-Knoten aus. Klicken Sie dann im Bereich **Actions** (Aktionen) auf **Stop** (Beenden).
    
     ![Knoten anhalten][stop_node1]
-2. Klicken Sie im Dialogfeld **Stop Azure Nodes** (Azure-Knoten beenden) auf **Stop** (Beenden).
+2. Klicken Sie im Dialogfeld **Stop Windows Azure Nodes** (Windows Azure-Knoten beenden) auf **Stop** (Beenden).
    
     ![Knoten anhalten][stop_node2]
 3. Die Knoten wechseln in den Status **Stopping** . Nach einigen Minuten zeigt HPC Cluster Manager an, dass die Knoten **Not-Deployed**sind.
@@ -263,12 +267,12 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
     Damit schließt dieses Tutorial.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie die Dokumentation zu [HPC Pack 2012 R2 und HPC Pack 2012](http://go.microsoft.com/fwlink/p/?LinkID=263697).
+* Lesen Sie die Dokumentation zu [HPC Pack](https://technet.microsoft.com/library/cc514029).
 * Informationen zum Einrichten einer umfangreicheren HPC Pack-Hybridclusterbereitstellung finden Sie unter [Burst to Azure with Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?LinkID=200493)(Burst zu Azure mit Microsoft HPC Pack).
 * Andere Methoden zum Erstellen eines HPC Pack-Clusters in Azure (einschließlich Azure Resource Manager-Vorlagen) sind unter [Optionen zum Erstellen und Verwalten eines Windows HPC-Clusters (High Performance Computing) in Azure mit Microsoft HPC Pack](../virtual-machines/virtual-machines-windows-hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) beschrieben.
 * Unter [Big Compute in Azure: Technische Ressourcen für Batch und HPC (High Performance Computing)](../batch/big-compute-resources.md) finden Sie weitere Informationen zu den verschiedenen Big Compute- und HPC-Cloudlösungen in Azure.
 
-[Übersicht]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
+[Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png
 [install_hpc1]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc1.png
 [install_hpc2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc2.png
 [install_hpc3]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/install_hpc3.png
@@ -307,6 +311,6 @@ Nachdem Sie den Cluster getestet haben, können Sie die Azure-Knoten stoppen, um
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

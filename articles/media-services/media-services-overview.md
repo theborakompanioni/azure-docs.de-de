@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
-ms.openlocfilehash: 946f6e480083a0007a88c85b744ddeafa0385990
+ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
+ms.openlocfilehash: f22b87fc5bdfe2db5de39adaafe9c71d8c32b26a
 
 
 ---
@@ -32,7 +32,7 @@ Sie können Ihre Inhalte live streamen oder sie bei Bedarf bereitstellen. In die
 
 Zum Entwickeln von Media Services-Lösungen können Sie folgende Komponenten verwenden:
 
-* [Media Services-REST-API](https://msdn.microsoft.com/library/azure/hh973617.aspx)
+* [Media Services-REST-API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Eines der verfügbaren Client-SDKs:
     * [Azure Media Services SDK für .NET](https://github.com/Azure/azure-sdk-for-media-services)
     * [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java)
@@ -46,7 +46,7 @@ Die folgende Abbildung zeigt einige der am häufigsten verwendeten Objekte beim 
 
 Klicken Sie auf Bild, um es in voller Größe anzeigen.  
 
-<a href="https://docs.microsoft.com/en-us/azure/media-services/media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a>  
+<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
 Sie können das gesamte Modell [hier](https://media.windows.net/API/$metadata?api-version=2.15) anzeigen.  
 
@@ -79,8 +79,8 @@ In diesem Abschnitt werden allgemeine Szenarien erläutert und Links zu relevant
 ![VoD-Workflow](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 >[!NOTE]
->Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
-    
+>Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen.
+
 ### <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Schützen von Inhalte im Speicher und Übermitteln von Streamingmedien ohne Verschlüsselung
 1. Laden Sie eine Zwischendatei (Mezzanine File) hoher Qualität in ein Medienobjekt hoch.
 
@@ -184,7 +184,8 @@ Von Media Services wird die Integration mit Azure CDN unterstützt. Informatione
 Sie können **Media Services** skalieren, indem Sie die Anzahl **reservierter Einheiten für das Streaming** und die Anzahl **reservierter Einheiten für die Codierung** angeben, die für Ihr Konto bereitgestellt werden sollen.
 
 Außerdem können Sie Ihr Media Services-Konto skalieren, indem Sie Speicherkonten hinzufügen. Jedes Speicherkonto ist auf 500 TB beschränkt. Um den Speicher über die Standardbeschränkungen hinaus zu erweitern, können Sie mehrere Speicherkonten mit einem einzelnen Media Services-Konto verknüpfen.
-Media Services-Kunden wählen je nach ihren Anforderungen entweder einen **Standard**-Streamingendpunkt oder mindestens einen **Premium**-Streamingendpunkt. Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Er umfasst die gleichen Features wie Premium-Streamingeinheiten. Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Wenn Sie über eine erweiterte Workload verfügen, Ihre Anforderungen an die Streamingkapazität nicht für die Durchsatzziele von Standard-Streamingendpunkten geeignet sind oder Sie die Kapazität des StreamingEndpoint-Diensts steuern möchten, um steigende Bandbreitenanforderungen durch die Anpassung von Skalierungseinheiten zu bewältigen (auch als Premium-Streamingeinheiten bezeichnet), empfehlen wir Ihnen die Zuordnung von Skalierungseinheiten.
+Media Services-Kunden wählen je nach ihren Anforderungen entweder einen **Standard**-Streamingendpunkt oder mindestens einen **Premium**-Streamingendpunkt. Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Er umfasst die gleichen Features wie Premium-Streamingeinheiten.
+Ein Standard-Streamingendpunkt eignet sich für die meisten Streamingworkloads. Wenn Sie über eine erweiterte Workload verfügen, Ihre Anforderungen an die Streamingkapazität nicht für die Durchsatzziele von Standard-Streamingendpunkten geeignet sind oder Sie die Kapazität des StreamingEndpoint-Diensts steuern möchten, um steigende Bandbreitenanforderungen durch die Anpassung von Skalierungseinheiten zu bewältigen (auch als Premium-Streamingeinheiten bezeichnet), empfehlen wir Ihnen die Zuordnung von Skalierungseinheiten.
 
 [Dieses Thema](media-services-portal-scale-streaming-endpoints.md) enthält Links zu relevanten Themen.
 

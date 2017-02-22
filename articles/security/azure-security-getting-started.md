@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/19/2016
-ms.author: yuridio
+ms.date: 01/09/2017
+ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: 2337c80ff0128c7ca4bf287ceb460dfc11404668
+ms.sourcegitcommit: a31a1b7909ea7440780c9a7af4cb908c9aa6a449
+ms.openlocfilehash: 3ad511b55e33653ea0cf7df2c885d27c1c07441d
 
 
 ---
@@ -84,7 +84,7 @@ Azure verwendet eine Hypervisorfirewall (Paketfilter), die im Hypervisor impleme
 Es gibt zwei Kategorien von Regeln, die hier programmiert werden:
 
 * **Computerkonfiguration oder Infrastrukturregeln**: In der Standardeinstellung wird die gesamte Kommunikation blockiert. Es gibt Ausnahmen, um einem virtuellen Computer das Senden und Empfangen von DHCP- und DNS-Datenverkehr zu ermöglichen. Virtuelle Computer können auch Datenverkehr an das „öffentliche“ Internet und an andere virtuelle Computer im Cluster und auf dem Betriebssystem-Aktivierungsserver senden. Die Liste mit zulässigen ausgehenden Zielen der virtuellen Computer enthält weder Azure-Routersubnetze noch das Azure-Verwaltungs-Back-End und andere Microsoft-Komponenten.
-* **Rollenkonfigurationsdatei**: Diese definiert die eingehenden Zugriffssteuerungslisten (ACLs) auf der Grundlage des Dienstmodells des Mandanten. Wenn ein Mandant beispielsweise über ein Web-Front-End an Port 80 auf einem bestimmten virtuellen Computer verfügt, öffnet Azure den TCP-Port 80 für alle IP-Adressen, wenn Sie einen Endpunkt im [klassischen Azure-Bereitstellungsmodell](../resource-manager-deployment-model.md) konfigurieren. Wenn auf dem virtuellen Computer ein Back-End oder eine Workerrolle ausgeführt wird, wird die Workerrolle nur für den virtuellen Computer innerhalb des gleichen Mandanten geöffnet.
+* **Rollenkonfigurationsdatei**: Diese definiert die eingehenden Zugriffssteuerungslisten (ACLs) auf der Grundlage des Dienstmodells des Mandanten. Wenn ein Mandant beispielsweise über ein Web-Front-End an Port 80 auf einem bestimmten virtuellen Computer verfügt, öffnet Azure den TCP-Port 80 für alle IP-Adressen, wenn Sie einen Endpunkt im [klassischen Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md) konfigurieren. Wenn auf dem virtuellen Computer ein Back-End oder eine Workerrolle ausgeführt wird, wird die Workerrolle nur für den virtuellen Computer innerhalb des gleichen Mandanten geöffnet.
 
 ## <a name="isolation"></a>Isolation
 Trennung ist eine weitere wichtige Cloudsicherheitsanforderung, um die nicht autorisierte und unbeabsichtigte Übertragung von Informationen zwischen Bereitstellungen in einer freigegebenen mehrinstanzenfähigen Architektur zu verhindern.
@@ -197,7 +197,6 @@ Azure verfügt über Sicherheitskontrollen, um die Bedrohungsabwehr zu implement
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Nov16_HO4-->
 
 

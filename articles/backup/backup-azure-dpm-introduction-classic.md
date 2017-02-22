@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Azure DPM Backup | Microsoft Docs"
+title: Sichern von DPM-Workloads im klassischen Azure-Portal | Microsoft-Dokumentation
 description: "Eine Einführung in die Sicherung von DPM-Servern mithilfe des Azure Backup-Diensts"
 services: backup
 documentationcenter: 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2016
-ms.author: trinadhk;giridham;jimpark;markgal
+ms.author: nkolli;giridham;markgal
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: f34bdb66a201c84ae340460e9e496adaa4c15eb7
+ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
+ms.openlocfilehash: f4a5412615e23cc90acc54a9c7430b01fe77dbcf
 
 
 ---
@@ -27,8 +27,8 @@ ms.openlocfilehash: f34bdb66a201c84ae340460e9e496adaa4c15eb7
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure Backup Server (klassisch)](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM (klassisch)](backup-azure-dpm-introduction-classic.md)
-> 
-> 
+>
+>
 
 Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Backup zum Schutz von DPM-Servern  und -Workloads (System Center Data Protection Manager). In diesem Artikel lernen Sie Folgendes:
 
@@ -55,8 +55,8 @@ Nachdem die Momentaufnahme erstellt wurde, werden die Daten vom Azure Backup-Die
 
 > [!NOTE]
 > Für virtuelle Linux-Computer können nur dateikonsistente Sicherungen durchgeführt werden.
-> 
-> 
+>
+>
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bereiten Sie Azure Backup wie folgt zum Sichern von DPM-Daten vor:
@@ -100,12 +100,11 @@ Diese werden nicht unterstützt:
 
 > [!NOTE]
 > Ab System Center 2012 DPM mit SP1 können Sie Workloads, die von DPM geschützt werden, in Azure mithilfe von Microsoft Azure Backup sichern.
-> 
-> 
+>
+>
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

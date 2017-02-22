@@ -1,6 +1,6 @@
 ---
-title: Erstellen von bedarfsgesteuerten Linux-basierten Hadoop-Clustern in HDInsight mit Azure Data Factory | Microsoft Docs
-description: Erfahren Sie, wie Sie bedarfsgesteuerte HDInsight-Cluster mit Azure Data Factory erstellen.
+title: Erstellen von Azure HDInsight (Hadoop)-Clustern mithilfe von Data Factory | Microsoft-Dokumentation
+description: Sie erfahren, wie Sie bedarfsgesteuerte Hadoop-Cluster in HDInsight mit Azure Data Factory erstellen.
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 5566e80f7d105944be6e10915b3b6ee2852c05e2
+ms.sourcegitcommit: bb700c7de96712666bc4be1f8e430a2e94761f69
+ms.openlocfilehash: ce32b22d60f89c82f0c416e736f41e3767bd8fc5
 
 
 ---
-# <a name="create-on-demand-linux-based-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Erstellen von bedarfsgesteuerten Linux-basierten Hadoop-Clustern in HDInsight mit Azure Data Factory
-[!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Erstellen bedarfsgesteuerter Hadoop-Cluster in HDInsight mit Azure Data Factory
+[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 [Azure Data Factory](../data-factory/data-factory-introduction.md) ist ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert. In diesem Artikel erfahren Sie, wie Sie Azure Data Factory zum Erstellen eines [bedarfsgesteuerten verknüpften Azure HDInsight-Diensts](../data-factory/data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) verwenden und wie Sie den Cluster zum Ausführen eines Hive-Auftrags verwenden. Der allgemeine Ablauf sieht wie folgt aus:
 
@@ -57,13 +57,14 @@ Es gibt viele Vorteile bei der Verwendung von HDInsight mit Data Factory:
 >
 >
 
-## <a name="prerequisites"></a>Voraussetzungen:
+## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * [Azure-Abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Azure-CLI oder Azure PowerShell
 
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
 ## <a name="prepare-storage-account"></a>Vorbereiten des Speicherkontos
 Sie können in diesem Szenario bis zu drei Speicherkonten verwenden:
@@ -106,7 +107,7 @@ Zur Vereinfachung des Tutorials verwenden Sie ein Speicherkonto für die drei Au
     azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted"
     azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted"
 
-Der Containername lautet *adfgetstarted*.  Ändern Sie ihn nicht. Andernfalls müssen Sie die Ressourcenverwaltungsvorlage aktualisieren.
+Der Containername lautet *adfgetstarted*.  Ändern Sie ihn nicht. Andernfalls müssen Sie die Resource Manager-Vorlage aktualisieren.
 
 Wenn Sie Hilfe mit diesem Skript der Befehlszeilenschnittstelle benötigen, lesen Sie [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage](../storage/storage-azure-cli.md).
 
@@ -197,9 +198,9 @@ Wenn Sie Hilfe mit diesem PowerShell-Skript benötigen, lesen Sie [Verwenden von
 7. Öffnen Sie die Ordner, und überprüfen Sie die Dateien in den Ordnern.
 
 ## <a name="create-data-factory"></a>Erstellen einer Data Factory
-Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind, können Sie eine Azure Data Factory erstellen. Es gibt mehrere Methoden zum Erstellen einer Data Factory. In diesem Tutorial verwenden Sie das Azure-Portal zum Aufrufen einer benutzerdefinierten Ressourcenverwaltungsvorlage. Sie können die Ressourcenverwaltungsvorlage auch über die [Azure-Befehlszeilenschnittstelle](../resource-group-template-deploy-cli.md) und [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) aufrufen. Andere Methoden für die Erstellung einer Data Factory finden Sie unter [Tutorial: Erstellen Ihrer ersten Data Factory](../data-factory/data-factory-build-your-first-pipeline.md).
+Wenn das Speicherkonto, die Eingabedaten und das HiveQL-Skript vorbereitet sind, können Sie eine Azure Data Factory erstellen. Es gibt mehrere Methoden zum Erstellen einer Data Factory. In diesem Tutorial verwenden Sie das Azure-Portal zum Aufrufen einer benutzerdefinierten Resource Manager-Vorlage. Sie können die Resource Manager-Vorlage auch über die [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md) und [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md#deploy) aufrufen. Andere Methoden für die Erstellung einer Data Factory finden Sie unter [Tutorial: Erstellen Ihrer ersten Data Factory](../data-factory/data-factory-build-your-first-pipeline.md).
 
-Die Ressourcenverwaltungsvorlage der obersten Ebene enthält Folgendes:
+Die Resource Manager-Vorlage der obersten Ebene enthält Folgendes:
 
     {
         "contentVersion": "1.0.0.0",
@@ -327,9 +328,9 @@ Die Ressource *hdinsight-hive-on-demand* enthält vier Ressourcen:
 
 **So erstellen Sie eine Data Factory**
 
-1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Ressourcenverwaltungsvorlage im Azure-Portal zu öffnen. Die Vorlage befindet sich unter „https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json“.
+1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden, und öffnen Sie die Resource Manager-Vorlage im Azure-Portal. Die Vorlage befindet sich unter „https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json“.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-adf/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Geben Sie **DATAFACTORYNAME**, **STORAGEACCOUNTNAME** und **STORAGEACCOUNTKEY** für das Konto ein, das Sie im vorherigen Abschnitt erstellt haben, und klicken Sie dann auf **OK**. Der Data Factory-Name muss global eindeutig sein.
 3. Wählen Sie unter **Ressourcengruppe**dieselbe Ressourcengruppe aus, die Sie im vorherigen Abschnitt verwendet haben.
 4. Klicken Sie auf **Rechtliche Bedingungen** und dann auf **Erstellen**.
@@ -340,7 +341,7 @@ Die Ressource *hdinsight-hive-on-demand* enthält vier Ressourcen:
 
     ![Azure Data Factory – Diagramm der bedarfsgesteuerten HDInsight Hive-Aktivitätspipeline](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-pipeline-diagram.png)
 
-    Die Namen werden in der Ressourcenverwaltungsvorlage definiert.
+    Die Namen werden in der Resource Manager-Vorlage definiert.
 9. Doppelklicken Sie auf **AzureBlobOutput**.
 10. Unter **Zuletzt aktualisierte Slices**sollte ein Slice angezeigt werden. Wenn der Status **In Bearbeitung** ist, warten Sie, bis er in **Bereit** geändert wird.
 
@@ -351,7 +352,7 @@ Die Ressource *hdinsight-hive-on-demand* enthält vier Ressourcen:
    * adfhdinsight-hive-on-demand-hdinsightondemandlinked-xxxxxxxxxxxxx: Dies ist der Standardcontainer für den HDInsight-Cluster. Namen für Standardcontainer basieren auf dem Muster: „adf<yourdatafactoryname>-nameverknüpfterdienst-datumuhrzeitstempel“.
    * adfjobs: Dies ist der Container für die ADF-Auftragsprotokolle.
 
-     Die Data Factory-Ausgabe wird in „afgetstarted“ gespeichert, wie in der Ressourcenverwaltungsvorlage konfiguriert.
+     Die Data Factory-Ausgabe wird in „afgetstarted“ gespeichert, wie in der Resource Manager-Vorlage konfiguriert.
 2. Klicken Sie auf **adfgetstarted**.
 3. Doppelklicken Sie auf **partitioneddata**. Ein Ordner **year=2014** wird angezeigt, da alle Webprotokolle ein Datum aus dem Jahr 2014 haben.
 
@@ -377,7 +378,7 @@ Beim bedarfsgesteuerten verknüpften HDInsight-Dienst wird jedes Mal ein HDInsig
 
 Für den Fall, dass Sie das Speicherkonto nicht löschen möchten, wenn Sie die Ressourcengruppe löschen, können Sie den folgenden Architekturentwurf in Betracht ziehen und die Geschäftsdaten vom Standardspeicherkonto trennen. In diesem Fall verfügen Sie über eine Ressourcengruppe für das Speicherkonto mit den Geschäftsdaten und eine andere Ressourcengruppe für das Standardspeicherkonto und die Data Factory.  Wenn Sie die zweite Ressourcengruppe löschen, hat dies keinen Einfluss auf das Speicherkonto für Geschäftsdaten.  Gehen Sie dazu wie folgt vor:
 
-* Fügen Sie Folgendes der Ressourcengruppe der obersten Ebene zusammen mit der Ressource „Microsoft.DataFactory/datafactories“ in der Ressourcenverwaltungsvorlage hinzu. Es wird ein neues Speicherkonto erstellt:
+* Fügen Sie der Ressourcengruppe der obersten Ebene Folgendes zu, zusammen mit der Ressource „Microsoft.DataFactory/datafactories“ in der Resource Manager-Vorlage. Es wird ein neues Speicherkonto erstellt:
 
         {
             "name": "[parameters('defaultStorageAccountName')]",
@@ -443,6 +444,6 @@ In diesem Artikel haben Sie gelernt, wie Sie mit Azure Data Factory einen bedarf
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

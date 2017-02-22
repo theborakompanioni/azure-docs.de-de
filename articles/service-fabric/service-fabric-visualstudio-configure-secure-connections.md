@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren sicherer Verbindungen mit Unterstützung durch Service Fabric-Cluster | Microsoft Docs"
+title: Konfigurieren sicherer Azure Service Fabric-Clusterverbindungen | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie mit Visual Studio sichere Verbindungen konfigurieren, die vom Azure Service Fabric-Cluster unterstützt werden."
 services: service-fabric
 documentationcenter: na
@@ -15,8 +15,8 @@ ms.workload: multiple
 ms.date: 10/08/2015
 ms.author: cawa
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a02d3840555df0d9c16d179023b3bc763274701a
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: b6705e14e52e98759027389758d7fa57c4e11462
 
 
 ---
@@ -74,6 +74,6 @@ Weitere Informationen zum Zugreifen auf die Service Fabric-Cluster finden Sie u
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

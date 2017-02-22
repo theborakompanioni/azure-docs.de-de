@@ -1,5 +1,5 @@
 ---
-title: Einfache Anwendungsinstallation und -verwaltung in Azure Batch | Microsoft Docs
+title: "Installieren von Anwendungspaketen auf Computeknoten – Azure Batch | Microsoft-Dokumentation"
 description: "Verwenden Sie das Feature „Anwendungspakete“ von Azure Batch zur einfachen Verwaltung mehrerer Anwendungen und Versionen für die Installation auf Batch-Serverknoten."
 services: batch
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 10/21/2016
+ms.date: 01/30/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: dfcf1e1d54a0c04cacffb50eca4afd39c6f6a1b1
-ms.openlocfilehash: 8bd78e80347175161053b28e4350fdeb78b3299b
+ms.sourcegitcommit: 08db84f3f3f66930a81e3627dadebbe181dd7da3
+ms.openlocfilehash: 1c89f86c382d627def6cbaf23d8a67a71cd9e890
 
 
 ---
@@ -251,7 +251,9 @@ Die Pakete, die Sie für einen Pool oder Task angegeben haben, werden herunterge
 
 `AZ_BATCH_APP_PACKAGE_BLENDER#2.7`
 
-Wenn Sie eine Standardversion für eine Anwendung angeben, können Sie das Versionssuffix auslassen. Wenn Sie beispielsweise“2.7“ als Standardversion für die Anwendung *Blender*angegeben haben, können Ihre Tasks auf die folgende Umgebungsvariable verweisen, und sie führen Version 2.7 aus:
+Wenn Sie ein Anwendungspaket hochladen, können Sie eine Standardversion festlegen, die für Ihre Serverknoten bereitgestellt werden soll. Wenn Sie eine Standardversion für eine Anwendung angegeben haben, können Sie beim Verweisen auf die Anwendung das Versionssuffix weglassen. Sie können die Standardanwendungsversion im Azure-Portal auf dem Blatt „Anwendungen“ angeben, wie unter [Hochladen und Verwalten von Anwendungen](#upload-and-manage-applications) gezeigt.
+
+Wenn Sie beispielsweise“2.7“ als Standardversion für die Anwendung *Blender*angegeben haben, können Ihre Tasks auf die folgende Umgebungsvariable verweisen, und sie führen Version 2.7 aus:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
@@ -349,6 +351,6 @@ Mit Anwendungspaketen können Sie Ihre Kunden dabei unterstützen, die passende 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

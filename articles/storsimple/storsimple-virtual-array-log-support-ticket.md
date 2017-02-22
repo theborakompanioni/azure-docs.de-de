@@ -1,5 +1,5 @@
 ---
-title: "StorSimple-Geräte-Manager – Erstellen einer Supportanfrage für Ihr Microsoft Azure StorSimple Virtual Array | Microsoft Docs"
+title: "Anmelden eines Supporttickets über den StorSimple-Geräte-Manager | Microsoft-Dokumentation"
 description: "Beschreibt die Diagnosefunktionen des StorSimple-Geräte-Manager-Diensts und erläutert, wie Sie sie zum Behandeln von Problemen mit Ihrem StorSimple Virtual Array verwenden können."
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: 5c31ac5284f3ba8fecc1e9f33838a778254658e5
-ms.openlocfilehash: adf6454fef9cfdea60241909453266c79416ac4e
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts, um eine Supportanfrage für StorSimple Virtual Array zu erstellen
@@ -70,6 +70,6 @@ Weitere Informationen erhalten Sie unter [Use the StorSimple Device Manager serv
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

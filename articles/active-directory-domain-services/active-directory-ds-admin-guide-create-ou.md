@@ -12,16 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 02/07/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0707a8efd91d646bf7c417f881ccb9ebb6f2a470
+ms.sourcegitcommit: 6e0da01df8ac5fd3cdb6b4e42dfbc08fab7d9615
+ms.openlocfilehash: 5931d532a0790f1570d1d99687611231aafc7596
 
 
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 Zu den durch Azure AD Domain Services verwalteten Domänen gehören zwei integrierte Container mit den Bezeichnungen „AADDC Computers“ und „AADDC Users“. Der Container „AADDC Computers“ enthält Computerobjekte für alle Computer, die in die verwaltete Domäne eingebunden sind. Der Container „AADDC Users“ enthält die Benutzer und Gruppen im Azure AD-Mandanten. Gelegentlich kann es notwendig werden, Dienstkonten für die verwaltete Domäne zu erstellen, um Workloads bereitzustellen. Zu diesem Zweck können Sie eine benutzerdefinierte Organisationseinheit (OE) in der verwalteten Domäne erstellen und innerhalb dieser Organisationseinheit Dienstkonten erstellen. In diesem Artikel wird gezeigt, wie Sie in der verwalteten Domäne eine Organisationseinheit erstellen.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Folgendes:
+
+1. Ein gültiges **Azure-Abonnement**.
+2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
+3. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](active-directory-ds-getting-started.md)aus.
+4. Einen in die Domäne eingebundenen virtuellen Computer, über den Sie die mit den Azure AD-Domänendiensten verwaltete Domäne verwalten. Wenn Sie nicht über einen virtuellen Computer dieser Art verfügen, führen Sie alle Schritte wie in Artikel [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne](active-directory-ds-admin-guide-join-windows-vm.md) beschriebenen aus.
+5. Sie benötigen die Anmeldeinformationen eines **Benutzerkontos, das in Ihrem Verzeichnis der Administratorengruppe für AAD-Domänencontroller angehört**, um innerhalb Ihrer verwalteten Domäne eine benutzerdefinierte Organisationseinheit (OE) erstellen zu können.
 
 ## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>Installieren von AD-Verwaltungstools auf einem in die Domäne eingebundenen virtuellen Computer für die Remoteverwaltung
 Durch die Azure AD Domain Services verwaltete Domänen können mithilfe bekannter Active Directory-Verwaltungstools verwaltet werden, beispielsweise über das Active Directory-Verwaltungscenter (Active Directory Administrative Center, ADAC) oder AD PowerShell. Mandantenadministratoren besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Um die verwaltete Domäne zu verwalten, installieren Sie die AD-Verwaltungstools auf einem virtuellen Computer, der per Domänenbeitritt in die verwaltete Domäne eingebunden wurde. Anweisungen hierzu finden Sie im Artikel [Verwalten einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md) .
@@ -60,7 +69,7 @@ Standardmäßig erhält der Benutzer, der die benutzerdefinierte Organisationsei
  ![ADAC – Sicherheit für neue Organisationseinheit](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 
 ## <a name="notes-on-administering-custom-ous"></a>Hinweise zum Verwalten von benutzerdefinierten Organisationseinheiten
-Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in dieser Organisationseinheit Benutzer, Gruppen, Computer und Dienstkonten erstellen. Sie können keine Benutzer oder Gruppen aus der Organisationseinheit „AAD DC Users“ in benutzerdefinierte Organisationseinheiten verschieben.
+Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in dieser Organisationseinheit Benutzer, Gruppen, Computer und Dienstkonten erstellen. Sie können keine Benutzer oder Gruppen aus der Organisationseinheit „AADDC Users“ in benutzerdefinierte Organisationseinheiten verschieben.
 
 > [!WARNING]
 > Benutzerkonten, Gruppen, Dienstkonten und Computerobjekte, die Sie in benutzerdefinierten Organisationseinheiten erstellen, stehen in Ihrem Azure AD-Mandanten nicht zur Verfügung. Anders ausgedrückt: Diese Objekte können also mit der Azure AD Graph-API oder in der Azure AD-Benutzeroberfläche angezeigt werden. Sie stehen nur in Ihrer durch Azure AD Domain Services verwalteten Domäne zur Verfügung.
@@ -68,13 +77,14 @@ Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in
 > 
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* [Verwalten einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+* [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+* [Konfigurieren von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory-Verwaltungscenter: Erste Schritte](https://technet.microsoft.com/library/dd560651.aspx)
 * [Schrittweise Anleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)
 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

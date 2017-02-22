@@ -1,5 +1,5 @@
 ---
-title: "StorSimple-Geräte-Manager – Behandeln von Problemen mit Ihrem Microsoft Azure StorSimple Virtual Array | Microsoft Docs"
+title: "Problembehandlung für StorSimple Virtual Array | Microsoft-Dokumentation"
 description: "Beschreibt die Diagnosefunktionen des StorSimple-Geräte-Manager-Diensts und erläutert, wie Sie sie zum Behandeln von Problemen mit Ihrem StorSimple Virtual Array verwenden können."
 services: storsimple
 documentationcenter: 
@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 849e567a68998d4ceb91c3f5c84324653c4c51dc
+ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
+ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Behandeln von Problemen mit dem StorSimple Virtual Array
@@ -46,6 +46,6 @@ Erfahren Sie, wie Sie [eine Supportanfrage erstellen](storsimple-virtual-array-l
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

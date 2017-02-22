@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: d6e68497cf0a4c48e6f611834089224b50b9bd5e
-ms.openlocfilehash: 79743cab91f8c22d06796803eb7e31681a581233
+ms.sourcegitcommit: 013956232d1fdfdc1f35741c25294a37b7e9bd92
+ms.openlocfilehash: 3914d5bdc8feff7d7de5c6f7255396acade341b9
 
 
 ---
@@ -68,7 +68,7 @@ Mehrere JavaScript-Anwendungen verwenden eine Loopback-Funktion, um Abläufe in 
 
 * Lokale Ausführung Ihres Dienstes
 * Verwendung von Live Reload mit den Ionic-Framework
-* Umleitung an den App Service zur Authentifizierung. 
+* Umleitung an den App Service zur Authentifizierung.
 
 Lokale Ausführung kann problematisch sein, da die App Service-Authentifizierung in der Standardkonfiguration nur Zugriffe von Ihrem Back-End für mobile Apps zulässt. Führen Sie die folgenden Schritte aus, um die App Service-Einstellungen zu ändern und die Authentifizierung bei lokaler Serverausführung zu ermöglichen:
 
@@ -79,12 +79,12 @@ Lokale Ausführung kann problematisch sein, da die App Service-Authentifizierung
 5. Erweitern Sie den Knoten **config** > **authsettings** für Ihre App.
 6. Klicken Sie auf die Schaltfläche **Bearbeiten** , um die Bearbeitung der Ressource zu ermöglichen.
 7. Suchen Sie nach dem Element **allowedExternalRedirectUrls** , das den Wert NULL haben sollte. Fügen Sie Ihre URLs in einem Array hinzu:
-   
+
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
              "https://localhost:3000"
          ],
-   
+
     Ersetzen Sie die URLs im Array durch die URLs Ihres Diensts (in diesem Beispiel `http://localhost:3000` für den lokalen Node.js-Beispieldienst). Alternativ könnten Sie auch `http://localhost:4400` für den Ripple-Dienst oder eine andere URL verwenden (je nach Konfiguration Ihrer App).
 8. Klicken Sie oben auf der Seite auf **Lesen/Schreiben** und anschließend auf **PUT**, um Ihre Änderungen zu speichern.
 

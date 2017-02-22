@@ -1,5 +1,5 @@
 ---
-title: "Zuweisen von Lizenzen für Azure MFA | Microsoft Docs"
+title: "Zuweisen von Lizenzen für Azure MFA | Microsoft-Dokumentation"
 description: "Erfahren Sie wie Sie Benutzerlizenzen für Microsoft Azure Multi-Factor Authentication zuweisen."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/17/2016
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c93db18866478556e91da8acbc9f0c749b65dc62
+ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
+ms.openlocfilehash: 536968a803e14019c42e7beed4c948ab760cf020
 
 
 ---
@@ -38,9 +38,11 @@ Wenn Sie Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen e
 9. Anschließend erscheint eine Nachricht, die angibt, wie viele Lizenzen zugewiesen wurden und wie viele fehlgeschlagen sind.  Klicken Sie auf **OK**.
    ![Lizenzen zuweisen](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- Weitere Informationen finden Sie unter [Was ist Microsoft Azure Active Directory-Lizenzierung?](../active-directory/active-directory-licensing-what-is.md)
 
 
-
-<!--HONumber=Nov16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

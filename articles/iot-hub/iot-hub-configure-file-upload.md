@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren des Dateiuploads im Azure-Portal | Microsoft Docs
-description: "Eine Übersicht über das Konfigurieren des Dateiuploads im Azure-Portal"
+description: "Konfigurieren des IoT Hubs im Azure-Portal zum Aktivieren von Dateiuploads von verbundenen Geräten. Enthält Informationen zum Konfigurieren des Azure-Zielspeicherkontos."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 01/05/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e3ac3e8cee2724b76f51423d1a6757382cca04f0
+ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
+ms.openlocfilehash: aadbee1388e2c2aafaf0a5c50d2af195284d2bec
 
 
 ---
-# <a name="configure-file-uploads-using-the-azure-portal"></a>Konfigurieren des Dateiuploads im Azure-Portal
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurieren des Dateiuploads in IoT Hub im Azure-Portal
 ## <a name="file-upload"></a>Dateiupload
 Damit Sie die [Dateiuploadfunktion in IoT Hub][lnk-upload] verwenden können, müssen Sie Ihrem Hub zunächst ein Azure Storage-Konto zuordnen. Wählen Sie die **Dateiupload**-Einstellungen zum Anzeigen einer Liste der Dateiuploadeigenschaften für den IoT Hub, der geändert wird.
 
@@ -41,17 +41,17 @@ Damit Sie die [Dateiuploadfunktion in IoT Hub][lnk-upload] verwenden können, m�
 ![][15]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät][lnk-upload] im Entwicklerhandbuch.
+Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät][lnk-upload] im IoT Hub-Entwicklerhandbuch.
 
 Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
 * [Massenverwaltung von IoT-Geräten][lnk-bulk]
-* [Nutzungsmetriken][lnk-metrics]
+* [IoT Hub-Metriken][lnk-metrics]
 * [Vorgangsüberwachung][lnk-monitor]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 * [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
 * [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
 
@@ -71,6 +71,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

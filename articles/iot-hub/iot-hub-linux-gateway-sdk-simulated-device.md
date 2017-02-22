@@ -1,12 +1,12 @@
 ---
-title: Simulieren eines Geräts mit dem Gateway SDK | Microsoft Docs
-description: Exemplarische Vorgehensweise für das Azure IoT Hub Gateway SDK unter Verwendung von Linux, um zu veranschaulichen, wie Telemetriedaten mithilfe des Azure IoT Hub Gateway SDK von einem simulierten Gerät gesendet werden.
+title: Simulieren eines mit dem Azure IoT Gateway SDK (Linux) | Microsoft Docs
+description: "Erfahren Sie, wie Sie das Azure IoT Gateway SDK unter Linux verwenden, um ein simuliertes Gerät zu erstellen, das Telemetriedaten über ein Gateway an eine IoT Hub-Instanz sendet."
 services: iot-hub
-documentationcenter: ''
+documentationcenter: 
 author: chipalost
 manager: timlt
-editor: ''
-
+editor: 
+ms.assetid: 11e7bf28-ee3d-48d6-a386-eb506c7a31cf
 ms.service: iot-hub
 ms.devlang: cpp
 ms.topic: article
@@ -14,23 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2016
 ms.author: andbuc
+translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: e2e814559282de3e5409e3215d824e1309debe5a
+
 
 ---
-# <a name="iot-gateway-sdk-(beta)-–-send-device-to-cloud-messages-with-a-simulated-device-using-linux"></a>IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem simulierten Gerät unter Linux
+# <a name="use-the-azure-iot-gateway-sdk-to-send-device-to-cloud-messages-with-a-simulated-device-linux"></a>Senden von D2C-Nachrichten mit einem simulierten Gerät mithilfe des Azure IoT Gateway SDKs (Linux)
 [!INCLUDE [iot-hub-gateway-sdk-simulated-selector](../../includes/iot-hub-gateway-sdk-simulated-selector.md)]
 
 ## <a name="build-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 Bevor Sie beginnen, müssen Sie Folgendes ausführen:
 
 * [Richten Sie eine Entwicklungsumgebung ein][lnk-setupdevbox], um mit dem SDK unter Linux arbeiten zu können.
-* [Erstellen Sie einen IoT Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird später in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie nicht bereits über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen][lnk-free-trial].
-* Fügen Sie Ihrem IoT Hub zwei Geräte hinzu, und notieren Sie die IDs und Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um Geräte zu dem im vorherigen Schritt erstellten IoT Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen.
+* [Erstellen Sie einen IoT-Hub][lnk-create-hub] in Ihrem Azure-Abonnement. Der Name des Hubs wird später in dieser exemplarischen Vorgehensweise benötigt. Wenn Sie kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
+* Fügen Sie Ihrem IoT Hub zwei Geräte hinzu, und notieren Sie die IDs und Geräteschlüssel. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um Geräte zu dem im vorherigen Schritt erstellten IoT-Hub hinzuzufügen und die zugehörigen Schlüssel abzurufen.
 
 So erstellen Sie das Beispiel:
 
 1. Öffnen Sie eine Shell.
 2. Navigieren Sie in Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk** zum Stammordner.
-3. Führen Sie das Skript **tools/build.sh** aus. Dieses Skript verwendet das Hilfsprogramm **cmake**, um einen Ordner namens **build** im Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys zu erstellen und ein Makefile zu generieren. Das Skript erstellt dann die Lösung und führt die Tests aus.
+3. Führen Sie das Skript **tools/build.sh --skip-unittests** aus. Dieses Skript verwendet das Hilfsprogramm **cmake**, um einen Ordner namens **build** im Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys zu erstellen und ein Makefile zu generieren. Das Skript erstellt dann die Lösung und überspringt die Komponententests. Entfernen Sie den Parameter **--skip-unittests**, wenn Sie die Komponententests erstellen und ausführen möchten. 
 
 > [!NOTE]
 > Bei jeder Ausführung löscht das Skript **build.sh** den Ordner **build** im Stammordner Ihrer lokalen Kopie des **azure-iot-gateway-sdk**-Repositorys und erstellt ihn neu.
@@ -50,91 +54,121 @@ So führen Sie das Beispiel aus:
 
 ```
 {
-    "modules" :
-    [ 
+    "modules": [
         {
-            "module name" : "IoTHub",
-            "module path" : "./build/modules/iothub/libiothub_hl.so",
-            "args" : 
-            {
-                "IoTHubName" : "{Your IoT hub name}",
-                "IoTHubSuffix" : "azure-devices.net",
-                "Transport": "HTTP"
+            "name": "IotHub",
+          "loader": {
+            "name": "native",
+            "entrypoint": {
+              "module.path": "./modules/iothub/libiothub.so"
             }
-        },
+            },
+            "args": {
+              "IoTHubName": "<<insert here IoTHubName>>",
+              "IoTHubSuffix": "<<insert here IoTHubSuffix>>",
+              "Transport": "HTTP"
+            }
+          },
         {
-            "module name" : "mapping",
-            "module path" : "./build/modules/identitymap/libidentity_map_hl.so",
-            "args" : 
-            [
-                {
-                    "macAddress" : "01-01-01-01-01-01",
-                    "deviceId"   : "{Device ID 1}",
-                    "deviceKey"  : "{Device key 1}"
-                },
-                {
-                    "macAddress" : "02-02-02-02-02-02",
-                    "deviceId"   : "{Device ID 2}",
-                    "deviceKey"  : "{Device key 2}"
-                }
+            "name": "mapping",
+          "loader": {
+            "name": "native",
+            "entrypoint": {
+              "module.path": "./modules/identitymap/libidentity_map.so"
+            }
+            },
+            "args": [
+              {
+                "macAddress": "01:01:01:01:01:01",
+                "deviceId": "<<insert here deviceId>>",
+                "deviceKey": "<<insert here deviceKey>>"
+              },
+              {
+                "macAddress": "02:02:02:02:02:02",
+                "deviceId": "<<insert here deviceId>>",
+                "deviceKey": "<<insert here deviceKey>>"
+              }
             ]
-        },
+          },
         {
-            "module name":"BLE1",
-            "module path" : "./build/modules/simulated_device/libsimulated_device_hl.so",
-            "args":
-            {
-                "macAddress" : "01-01-01-01-01-01"
+            "name": "BLE1",
+          "loader": {
+            "name": "native",
+            "entrypoint": {
+              "module.path": "./modules/simulated_device/libsimulated_device.so"
             }
-        },
+            },
+            "args": {
+              "macAddress": "01:01:01:01:01:01"
+            }
+          },
         {
-            "module name":"BLE2",
-            "module path" : "./build/modules/simulated_device/libsimulated_device_hl.so",
-            "args":
-            {
-                "macAddress" : "02-02-02-02-02-02"
+            "name": "BLE2",
+          "loader": {
+            "name": "native",
+            "entrypoint": {
+              "module.path": "./modules/simulated_device/libsimulated_device.so"
             }
-        },
+            },
+            "args": {
+              "macAddress": "02:02:02:02:02:02"
+            }
+          },
         {
-            "module name":"Logger",
-            "module path" : "./build/modules/logger/liblogger_hl.so",
-            "args":
-            {
-                "filename":"./deviceCloudUploadGatewaylog.log"
+            "name": "Logger",
+          "loader": {
+            "name": "native",
+            "entrypoint": {
+              "module.path": "./modules/logger/liblogger.so"
             }
-        }
+            },
+            "args": {
+              "filename": "deviceCloudUploadGatewaylog.log"
+            }
+          }
     ],
-    "links" : [
-        { "source" : "*", "sink" : "Logger" },
-        { "source" : "BLE1", "sink" : "mapping" },
-        { "source" : "BLE2", "sink" : "mapping" },
-        { "source" : "mapping", "sink" : "IoTHub" }
+    "links": [
+        {
+            "source": "*",
+            "sink": "Logger"
+        },
+        {
+            "source": "BLE1",
+            "sink": "mapping"
+        },
+        {
+            "source": "BLE2",
+            "sink": "mapping"
+        },
+        {
+            "source": "mapping",
+            "sink": "IotHub"
+        }
     ]
 }
-
 ```
 
 Speichern Sie alle Änderungen, die Sie an der Konfigurationsdatei vorgenommen haben.
 
 So führen Sie das Beispiel aus:
 
-1. Navigieren Sie in der Shell zum Stammordner in Ihrer lokalen Kopie des Repositorys **azure-iot-gateway-sdk** .
+1. Navigieren Sie in der Shell zum Ordner **azure-iot-gateway-sdk/build**.
 2. Führen Sie den folgenden Befehl aus:
    
     ```
-    ./build/samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
+    ./samples/simulated_device_cloud_upload/simulated_device_cloud_upload_sample ./../samples/simulated_device_cloud_upload/src/simulated_device_cloud_upload_lin.json
     ```
 3. Sie können die Tools [Geräte-Explorer oder iothub-explorer][lnk-explorer-tools] verwenden, um die Nachrichten zu überwachen, die IoT Hub vom Gateway empfängt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie noch mehr über das Gateway SDK wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials und Ressourcen für Entwickler an:
+Wenn Sie noch mehr über das IoT Gateway SDK wissen und mit einigen Codebeispielen experimentieren möchten, sehen Sie sich die folgenden Tutorials und Ressourcen für Entwickler an:
 
-* [Senden von Device-to-Cloud-Nachrichten von einem echten Gerät mit dem Gateway-SDK][lnk-physical-device]
-* [Azure IoT-Gateway-SDK][lnk-gateway-sdk]
+* [IoT Gateway SDK (Beta) – Senden von D2C-Nachrichten mit einem realen Gerät unter Linux][lnk-physical-device]
+* [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 * [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
 
 <!-- Links -->
@@ -150,6 +184,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-create-hub]: iot-hub-create-through-portal.md
 
 
-<!--HONumber=Oct16_HO2-->
+
+<!--HONumber=Dec16_HO2-->
 
 

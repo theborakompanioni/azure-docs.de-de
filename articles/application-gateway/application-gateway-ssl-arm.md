@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren eines Anwendungsgateways für SSL-Auslagerung mit Azure Resource Manager | Microsoft Docs"
+title: "Konfigurieren der SSL-Auslagerung – Azure Application Gateway (PowerShell) | Microsoft-Dokumentation"
 description: "Diese Seite enthält Anweisungen zum Erstellen eines Anwendungsgateways mit SSL-Auslagerung mit dem Azure-Ressourcen-Manager."
 documentationcenter: na
 services: application-gateway
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: ee8cfffdbf054b4251ed269745f6b9ee5a5e6c64
-ms.openlocfilehash: a6100af0ba746ea244a2ccc6e1ddf843a8be416e
+ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
+ms.openlocfilehash: 2982cf9154780166f1363ae6380702299c717236
 
 
 ---
@@ -266,6 +266,6 @@ Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

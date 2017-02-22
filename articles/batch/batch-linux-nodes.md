@@ -1,5 +1,5 @@
 ---
-title: Linux-Knoten in Azure Batch-Pools | Microsoft-Dokumentation
+title: "Bereitstellen von Linux-Computeknoten in Pools – Azure Batch | Microsoft-Dokumentation"
 description: Erfahren Sie, wie parallele Compute-Workloads auf Pools auf virtuellen Linux-Computern in Azure Batch verarbeitet werden.
 services: batch
 documentationcenter: python
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: na
-ms.date: 11/30/2016
+ms.date: 01/23/2017
 ms.author: tamram
 translationtype: Human Translation
-ms.sourcegitcommit: eb041d3ee7e097a05bcaeb57f170e26652fa5551
-ms.openlocfilehash: 251c454b0502746817ad5c97f1b3367eba98ac92
+ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
+ms.openlocfilehash: 85aa18c7eab56c390dc9a9f7865a3468a43739f2
 
 
 ---
@@ -351,6 +351,6 @@ Im [Azure Batch-Forum][forum] auf MSDN erhalten Sie Informationen zu Batch und k
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO4-->
 
 

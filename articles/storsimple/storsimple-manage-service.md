@@ -3,8 +3,8 @@ title: Bereitstellen des StorSimple Manager-Diensts | Microsoft Docs
 description: "Erläutert das Erstellen und Löschen des StorSimple Manager-Diensts im klassischen Azure-Portal und beschreibt die Verwaltung des Dienstregistrierungsschlüssels."
 services: storsimple
 documentationcenter: 
-author: SharS
-manager: carmonm
+author: alkohli
+manager: byronr
 editor: 
 ms.assetid: bc1d5650-275c-42ed-bc77-cdb596f85943
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2016
-ms.author: v-sharos
+ms.date: 12/05/2016
+ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf39b922e51dd60b5b2c51cb7030436c60232a5
-ms.openlocfilehash: 51c414bacb825dd51bcd76a06e1f9e0f0c001b93
+ms.sourcegitcommit: f507eb6986f7c62965dc00673ee5ebe38e70f1d7
+ms.openlocfilehash: 1858fa9e1223d0938bb1eb6195c42fb1ec3b007d
 
 
 ---
@@ -51,6 +51,9 @@ Sie können beim Erstellen des Diensts auch ein Standardspeicherkonto generieren
 
 Mit einem Dienst können mehrere Geräte verwaltet werden. Ein Gerät kann jedoch nicht mehrere Dienste umfassen. Große Unternehmen können mit mehreren Dienstinstanzen mit verschiedenen Abonnements, Organisationen oder sogar Bereitstellungsstandorten arbeiten. Beachten Sie, dass Sie separate Instanzen des StorSimple Manager-Diensts benötigen, um StorSimple-Geräte der Serie 8000 und StorSimple Virtual Arrays zu verwalten.
 
+> [!IMPORTANT] 
+> Wenn Sie vor August 2016 einen nicht verwendeten Dienst erstellt haben (für diese Ressource wurden keine Gerätevorgänge ausgeführt), kann dieser nicht über das Azure-Portal oder das klassische Azure-Portal verwaltet werden. Es wird empfohlen, dass Sie einen neuen Dienst im Azure-Portal erstellen.
+
 Führen Sie die folgenden Schritte aus, um einen Dienst zu erstellen.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
@@ -58,7 +61,8 @@ Führen Sie die folgenden Schritte aus, um einen Dienst zu erstellen.
 ## <a name="delete-a-service"></a>Löschen von Diensten
 Bevor Sie einen Dienst löschen, stellen Sie sicher, dass er von keinen verbundenen Geräten verwendet wird. Wenn der Dienst verwendet wird, deaktivieren Sie die verbundenen Geräte. Der deaktivierte Vorgang trennt die Verbindung zwischen dem Gerät und dem Dienst, behält aber die Gerätedaten in der Cloud bei.
 
-[AZURE.IMPORTANT] Das Löschen eines Diensts kann nicht rückgängig gemacht werden. Jedes Gerät, das den Dienst verwendet hat, muss auf die Werkseinstellungen zurückgesetzt werden, bevor es mit einem anderen Dienst verwendet werden kann. In diesem Szenario gehen sowohl die lokalen Daten auf dem Gerät als auch die Konfiguration verloren.
+> [!IMPORTANT] 
+> Das Löschen eines Diensts kann nicht rückgängig gemacht werden. Jedes Gerät, das den Dienst verwendet hat, muss auf die Werkseinstellungen zurückgesetzt werden, bevor es mit einem anderen Dienst verwendet werden kann. In diesem Szenario gehen sowohl die lokalen Daten auf dem Gerät als auch die Konfiguration verloren.
 
 Führen Sie die folgenden Schritte aus, um einen Dienst zu löschen.
 
@@ -92,12 +96,12 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 6. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-manage-service/HCS_CheckIcon.png) , um das Dialogfeld zu schließen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum [StorSimple-Bereitstellungsprozess](storsimple-deployment-walkthrough.md)
+* Weitere Informationen zum [StorSimple-Bereitstellungsprozess](storsimple-deployment-walkthrough-u2.md)
 * Weitere Informationen über das [Verwalten des StorSimple-Speicherkontos](storsimple-manage-storage-accounts.md)
 * Weitere Informationen über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO1-->
 
 

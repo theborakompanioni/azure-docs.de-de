@@ -1,9 +1,9 @@
 ---
-title: "Verwenden des Überwachungsprotokolls | Microsoft Docs"
+title: "Verwenden des Überwachungsprotokolls in Azure AD Privileged Identity Management | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie in der Erweiterung Azure Privileged Identity Management das Überwachungsprotokoll verwenden."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 editor: 
 ms.assetid: 5d13a6dd-1fcb-4e76-82fb-cb2f4f0e4357
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2016
-ms.author: kgremban
+ms.date: 02/14/2017
+ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5ac402f1a5f76c02f22a189eec8cada0cc9b4a0f
+ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
+ms.openlocfilehash: a36231d9326158068e9460ed4594a79c744d3087
 
 
 ---
-# <a name="how-to-use-the-audit-log-in-azure-ad-privileged-identity-management"></a>Verwenden des Überwachungsprotokolls in Azure AD Privileged Identity Management
+# <a name="using-the-audit-log-in-pim"></a>Verwenden des Überwachungsprotokolls in PIM
 Im Privileged Identity Management (PIM)-Überwachungsprotokoll werden alle Benutzerzuweisungen und Aktivierungen in einem angegebenen Zeitraum angezeigt. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](active-directory-view-access-usage-reports.md)
 
 ## <a name="navigate-to-the-audit-log"></a>Navigieren zum Überwachungsprotokoll
@@ -62,6 +62,6 @@ Aktivieren oder deaktivieren Sie das Kontrollkästchen **Rolle** neben jeder Rol
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

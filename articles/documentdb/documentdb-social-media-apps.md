@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: d9f6c8c73cb7803547053ec495812f993eb44c43
-ms.openlocfilehash: b2f8683be1dea938cba84766efe32287eeebb712
+ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
+ms.openlocfilehash: 19e8c9de137e10abb563fcd60cf89502dbf94cfd
 
 
 ---
@@ -64,7 +64,7 @@ Es gibt spezielle Diagrammdatenbanken, die [in Azure](http://neo4j.com/developer
 
 Und dies erfolgt mit einer einzigen Abfrage und keinerlei Joins. Diese Lösung ist sehr viel unkomplizierter und erfordert auch von Budgetseite weniger Ressourcen, um ein besseres Ergebnis zu erzielen.
 
-Azure DocumentDB stellt sicher, dass alle Eigenschaften mit der [automatischen Indizierung](documentdb-indexing.md) indiziert werden. Diese kann sogar [benutzerdefiniert](documentdb-indexing-policies.md) angepasst werden. Der schemafreie Ansatz ermöglicht es uns, Dokumente mit verschiedenen und dynamischen Strukturen zu speichern. Wenn den Beiträgen morgen eine Liste von Kategorien oder Hashtags zugeordnet werden soll, wird DocumentDB die neuen Dokumente mit den hinzugefügten Attributen bearbeiten, ohne zusätzlichen Arbeitsaufwand von unserer Seite.
+Azure DocumentDB stellt sicher, dass alle Eigenschaften mit der automatischen Indizierung indiziert werden. Diese kann sogar [angepasst](documentdb-indexing-policies.md) werden. Der schemafreie Ansatz ermöglicht es uns, Dokumente mit verschiedenen und dynamischen Strukturen zu speichern. Wenn den Beiträgen morgen eine Liste von Kategorien oder Hashtags zugeordnet werden soll, wird DocumentDB die neuen Dokumente mit den hinzugefügten Attributen bearbeiten, ohne zusätzlichen Arbeitsaufwand von unserer Seite.
 
 Kommentare zu einem Beitrag können schlicht als weitere Beiträge mit einer übergeordneten Eigenschaft behandelt werden (was unsere Objektzuordnung vereinfacht). 
 
@@ -168,7 +168,7 @@ Die mittlere Ebene heißt „der Benutzer“. Dabei handelt es sich um die gesam
 
 Die umfangreichste Ebene ist der „Erweiterte Benutzer“. Sie enthält alle wichtigen Benutzerinformationen und andere Daten, die nicht schnell gelesen werden müssen oder nur sporadisch verwendet werden (z.B. beim Anmeldeprozess). Diese Daten können außerhalb von DocumentDB, in Azure SQL-Datenbanken oder Azure Storage-Tabellen gespeichert werden.
 
-Warum empfiehlt es sich, die Benutzerinformationen aufzuteilen und sogar an verschiedenen Orten zu speichern? Weil der Speicherplatz in DocumentDB [nicht unbegrenzt](documentdb-limits.md) ist und weil die Abfragen von der Leistungsseite betrachtet immer kostenaufwendiger werden, je größer die Dokumente sind. Achten Sie auf schlanke Dokumente, die die entscheidenden Informationen für all Ihre leistungsabhängigen Abfragen für Ihr soziales Netzwerk enthalten. Speichern Sie alle weiteren Informationen für mögliche Szenarios wie eine vollständige Profilbearbeitung, Anmeldungen, sogar für Data Mining für eine Nutzungsanalyse und Big Data-Initiativen. Dabei ist nicht relevant, ob die Datensammlung für das Data Mining langsamer ist, weil es auf einer Azure SQL-Datenbank ausgeführt wird. Was zählt, ist eine schnelle und schlanke Funktionsweise für unsere Benutzer. Ein in DocumentDB gespeicherter Benutzer würde wie folgt aussehen:
+Warum empfiehlt es sich, die Benutzerinformationen aufzuteilen und sogar an verschiedenen Orten zu speichern? Weil der Speicherplatz in DocumentDB nicht unbegrenzt ist und weil die Abfragen, von der Leistungsseite betrachtet, immer kostenaufwendiger werden, je größer die Dokumente sind. Achten Sie auf schlanke Dokumente, die die entscheidenden Informationen für all Ihre leistungsabhängigen Abfragen für Ihr soziales Netzwerk enthalten. Speichern Sie alle weiteren Informationen für mögliche Szenarios wie eine vollständige Profilbearbeitung, Anmeldungen, sogar für Data Mining für eine Nutzungsanalyse und Big Data-Initiativen. Dabei ist nicht relevant, ob die Datensammlung für das Data Mining langsamer ist, weil es auf einer Azure SQL-Datenbank ausgeführt wird. Was zählt, ist eine schnelle und schlanke Funktionsweise für unsere Benutzer. Ein in DocumentDB gespeicherter Benutzer würde wie folgt aussehen:
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -200,7 +200,7 @@ Dank und aufgrund von Azure DocumentDB können wir mit [Azure Search](https://az
 
 Warum ist das so einfach?
 
-Azure Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch den Indizes hinzufügen, sie aktualisieren oder daraus entfernen. Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobs-Indexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure DocumentDB-Indexer](documentdb-search-indexer.md). Die Übertragung von Informationen von DocumentDB an Azure Search ist unkompliziert, da Informationen in beiden Fällen im JSON-Format gespeichert werden. Wir müssen lediglich [unseren Index erstellen](../search/search-create-index-portal.md) und angeben, welche Attribute aus unseren Dokumenten indiziert werden sollen. Bereits wenige Minuten später (abhängig von der Datengröße) stehen alle unsere Inhalte für die Suche zur Verfügung, für die beste Search-as-a-Service-Lösung in der Cloudinfrastruktur. 
+Azure Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch den Indizes hinzufügen, sie aktualisieren oder daraus entfernen. Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobs-Indexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure DocumentDB-Indexer](../search/search-howto-index-documentdb.md). Die Übertragung von Informationen von DocumentDB an Azure Search ist unkompliziert, da Informationen in beiden Fällen im JSON-Format gespeichert werden. Wir müssen lediglich [unseren Index erstellen](../search/search-create-index-portal.md) und angeben, welche Attribute aus unseren Dokumenten indiziert werden sollen. Bereits wenige Minuten später (abhängig von der Datengröße) stehen alle unsere Inhalte für die Suche zur Verfügung, für die beste Search-as-a-Service-Lösung in der Cloudinfrastruktur. 
 
 Weitere Informationen zu Azure Search finden Sie im [Hitchhiker’s Guide to Search](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)(Per Anhalter durch Azure Search).
 
@@ -234,6 +234,6 @@ Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

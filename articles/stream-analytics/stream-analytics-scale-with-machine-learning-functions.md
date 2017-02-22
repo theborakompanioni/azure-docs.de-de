@@ -1,5 +1,5 @@
 ---
-title: Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning-Funktionen | Microsoft Docs
+title: Auftragsskalierung mit Azure Stream Analytics und Azure ML-Funktionen | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie Stream Analytics-Aufträge (Partitionierung, SU-Menge usw.) richtig skalieren, wenn Sie Azure Machine Learning-Funktionen verwenden."
 keywords: 
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/26/2016
+ms.date: 01/24/2017
 ms.author: jeffstok
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ad7ac0056cead32332b63add61655dbc1d2cb37c
+ms.sourcegitcommit: b36fd0b4a52ae2e13a5b5dcde412994a0656e3d3
+ms.openlocfilehash: 27f2ac3d54226501e254d9a8fef6cc378eb9a860
 
 
 ---
@@ -36,13 +36,13 @@ Nachdem eine Batchgröße bestimmt wurde, kann die Menge an Streamingeinheiten b
 
 Im Allgemeinen sind 20 gleichzeitige Verbindungen mit dem Machine Learning-Webdienst für jeweils sechs SUs vorhanden, aber mit der Ausnahme, dass auch Aufträge mit einer SU und Aufträge mit drei SUs 20 gleichzeitige Verbindungen erhalten.  Wenn die Eingangsdatenrate beispielsweise 200.000 Ereignisse pro Sekunde beträgt und für die Batchgröße die Standardeinstellung von 1.000 beibehalten wird, beträgt die sich ergebende Webdienstlatenz für 1.000 Ereignisse pro Mini-Batch 200ms. Dies bedeutet, dass jede Verbindung pro Sekunde fünf Anforderungen an den Machine Learning-Webdienst durchführen kann. Mit 20 Verbindungen kann der Stream Analytics-Auftrag 20.000 Ereignisse in 200 ms verarbeiten, also 100.000 Ereignisse pro Sekunde. Zum Verarbeiten von 200.000 Ereignissen pro Sekunde benötigt der Stream Analytics-Auftrag also 40 gleichzeitige Verbindungen und somit 12 SUs. Unten im Diagramm ist der Verlauf der Anforderungen vom Stream Analytics-Auftrag zum Machine Learning-Webdienst-Endpunkt dargestellt. Für sechs SUs sind jeweils maximal 20 gleichzeitige Verbindungen mit dem Machine Learning-Webdienst vorhanden.
 
-![Skalieren von Stream Analytics mit Machine Learning-Funktionen – Beispiel mit zwei Aufträgen](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Scale Stream Analytics with Machine Learning Functions 2 job example")
+![Skalieren von Stream Analytics mit Machine Learning-Funktionen – Beispiel mit zwei Aufträgen](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Skalieren von Stream Analytics mit Machine Learning-Funktionen – Beispiel mit zwei Aufträgen")
 
 Wenn ***B*** die Batchgröße und ***L*** die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit ***N*** SUs:
 
-![Skalieren von Stream Analytics mit Machine Learning-Funktionen – Formel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Scale Stream Analytics with Machine Learning Functions Formula")
+![Skalieren von Stream Analytics mit Machine Learning-Funktionen – Formel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Skalieren von Stream Analytics mit Machine Learning-Funktionen – Formel")
 
-Ein weiterer zu berücksichtigender Aspekt kann auch der Wert für die „maximalen gleichzeitigen Aufrufe“ auf der Seite des Machine Learning-Webdiensts sein. Es wird empfohlen, hierfür den maximalen Wert festzulegen (derzeit 200).
+Ein weiterer zu berücksichtigender Aspekt kann auch der Wert für die „maximalen gleichzeitigen Aufrufe“ auf der Seite des Machine Learning-Webdiensts sein. Es wird empfohlen, hierfür den maximalen Wert festzulegen (derzeit&200;).
 
 Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierung für Machine Learning-Webdienste](../machine-learning/machine-learning-scaling-webservice.md).
 
@@ -95,7 +95,7 @@ Normalerweise lässt sich die Batchgröße, die wir für Machine Learning-Funkti
 ## <a name="new-function-related-monitoring-metrics"></a>Neue funktionsbezogene Überwachungsmetriken
 Im Überwachungsbereich eines Stream Analytics-Auftrags wurden drei zusätzliche funktionsbezogene Metriken hinzugefügt. Dies sind FUNKTIONSANFORDERUNGEN, FUNKTIONSEREIGNISSE und FEHLER BEI FUNKTIONSANFORDERUNGEN, wie in der Grafik dargestellt.
 
-![Skalieren von Stream Analytics mit Machine Learning-Funktionen – Metriken](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Scale Stream Analytics with Machine Learning Functions Metrics")
+![Skalieren von Stream Analytics mit Machine Learning-Funktionen – Metriken](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Skalieren von Stream Analytics mit Machine Learning-Funktionen – Metriken")
 
 Diese sind wie folgt definiert:
 
@@ -125,6 +125,6 @@ Weitere Informationen zu Stream Analytics finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

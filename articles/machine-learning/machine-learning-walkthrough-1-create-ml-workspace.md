@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 12/16/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a2d71016eee5dfee1085be0380d79ba4a4f8d8f
+ms.sourcegitcommit: a9ebbbdc431a34553de04e920efbbc8c2496ce5f
+ms.openlocfilehash: 116dbf0ee30497d82c984b10e61ae02301e820a4
 
 
 ---
@@ -35,17 +35,25 @@ Dies ist der erste Schritt der exemplarischen Vorgehensweise zum [Entwickeln ein
 
 Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft Azure Machine Learning-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
 
-## <a name="to-create-a-workspace"></a>Erstellen eines Arbeitsbereichs
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Klicken Sie im Azure-Dienstbereich auf **MACHINE LEARNING**.  
-   ![Arbeitsbereich erstellen][1]
-3. Klicken Sie auf **ML-ARBEITSBEREICH ERSTELLEN**.
-4. Geben Sie auf der Seite **SCHNELLERFASSUNG** Ihre Arbeitsbereichsinformationen ein, und klicken Sie dann auf **ML-ARBEITSBEREICH ERSTELLEN**.
+<!--
+## To create a workspace
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
+2. In the  Azure services panel, click **MACHINE LEARNING**.  
+   ![Create workspace][1]
+3. Click **CREATE AN ML WORKSPACE**.
+4. On the **QUICK CREATE** page, enter your workspace information and then click **CREATE AN ML WORKSPACE**.
+-->
 
-Nach dem Erstellen Ihres Machine Learning-Arbeitsbereichs wird dieser im klassischen Azure-Portal auf der Seite **Machine Learning** angezeigt. Weitere Details zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md).
+Der Administrator für Ihr Azure-Abonnement muss den Arbeitsbereich erstellen und Sie dann als Besitzer oder Mitwirkenden hinzufügen. Details finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs](machine-learning-create-workspace.md).
+
+Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). Wenn dies Ihr einziger Arbeitsbereich ist, wird er in Studio automatisch geöffnet. Andernfalls können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
+
+![Auswählen eines Arbeitsbereichs in Studio][2]
 
 > [!TIP]
-> Sie können die Experimente, an denen Sie arbeiten, mit anderen teilen, indem Sie andere Personen zum Arbeitsbereich einladen. Dies können Sie in Machine Learning Studio auf der Seite **EINSTELLUNGEN** vornehmen. Sie benötigen nur das Microsoft-Konto oder Organisationskonto des betreffenden Benutzers.
+> Wenn Sie als Besitzer des Arbeitsbereichs hinzugefügt wurden, können Sie die Experimente, an denen Sie arbeiten, mit anderen Personen teilen, indem Sie sie zum Arbeitsbereich einladen. Dies können Sie in Machine Learning Studio auf der Seite **EINSTELLUNGEN** vornehmen. Sie benötigen nur das Microsoft-Konto oder Organisationskonto des betreffenden Benutzers.
+> 
+> Klicken Sie auf der Seite **EINSTELLUNGEN** auf **BENUTZER** und dann unten in Fenster auf **INVITE MORE USERS** (WEITERE BENUTZER EINLADEN).
 > 
 > 
 
@@ -53,9 +61,10 @@ Nach dem Erstellen Ihres Machine Learning-Arbeitsbereichs wird dieser im klassis
 **Nächster Schritt: [Hochladen vorhandener Daten](machine-learning-walkthrough-2-upload-data.md)**
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
+[2]: ./media/machine-learning-walkthrough-1-create-ml-workspace/open-workspace.png
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

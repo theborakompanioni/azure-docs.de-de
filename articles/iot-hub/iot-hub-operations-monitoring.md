@@ -1,6 +1,6 @@
 ---
-title: "IoT Hub-Vorgangsüberwachung"
-description: "Eine Übersicht über die IoT Hub-Vorgangsüberwachung, die Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT-Hub in Echtzeit ermöglicht"
+title: "Azure IoT Hub-Vorgangsüberwachung | Microsoft Docs"
+description: "Verwenden der Azure IoT Hub-Vorgangsüberwachung zum Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit."
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: ce514e19370d2b42fb16b4e96b66f212d5fa999c
-ms.openlocfilehash: 3c1ae13409c11ec49810209dd155e934b34c3a9b
+ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
+ms.openlocfilehash: f6f894157a31641b1d0294e84795563c727caaac
 
 
 ---
-# <a name="introduction-to-operations-monitoring"></a>Einführung in Vorgangsüberwachung
+# <a name="operations-monitoring"></a>Vorgangsüberwachung
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT-Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
 IoT Hub überwacht fünf Ereigniskategorien:
 
 * Geräte-Identitätsvorgänge
 * Gerätetelemetrie
-* C2D-Befehle
+* C2D-Nachrichten
 * Verbindungen
 * Dateiuploads
 
@@ -81,7 +81,7 @@ Die Kategorie für Gerätetelemetrie dient der Nachverfolgung von Fehlern, die a
     }
 
 ### <a name="cloud-to-device-commands"></a>C2D-Befehle
-Die Kategorie der C2D-Befehle dient der Nachverfolgung von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Gerätebefehlspipeline stehen. Zu dieser Kategorie gehören Fehler, die beim Senden von Befehlen (z.B. nicht autorisierter Absender), Empfangen von Befehlen (Zustellungsanzahl überschritten) und Empfangen von Feedback zu Befehlen (z.B. Feedback abgelaufen) auftreten. Diese Kategorie fängt keine Fehler eines Geräts ab, das einen Befehl nicht ordnungsgemäß verarbeitet, wenn der Befehl erfolgreich übermittelt wurde.
+Die Kategorie der C2D-Befehle dient der Nachverfolgung von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur C2D-Nachrichtenpipeline stehen. Zu dieser Kategorie gehören Fehler, die beim Senden von C2D-Nachrichten (z.B. nicht autorisierter Absender), Empfangen von C2D-Nachrichten (z.B. Zustellungsanzahl überschritten) und C2D-Nachrichtenfeedback (z.B. Feedback abgelaufen) auftreten. Diese Kategorie fängt keine Fehler eines Geräts ab, das eine C2D-Nachricht nicht ordnungsgemäß verarbeitet, wenn die C2D-Nachricht erfolgreich übermittelt wurde.
 
     {
          "messageSizeInBytes": 1234,
@@ -147,7 +147,7 @@ Beachten Sie, dass diese Kategorie keine Fehler abfangen kann, die auftreten, w�
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch][lnk-devguide]
+* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 * [Simulieren eines Geräts mit dem IoT Gateway SDK][lnk-gateway]
 
 <!-- Links and images -->
@@ -164,6 +164,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Dec16_HO1-->
 
 

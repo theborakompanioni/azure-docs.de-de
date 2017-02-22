@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von PowerShell zum Erstellen von Warnungen für Azure-Dienste | Microsoft Docs"
-description: "Verwenden Sie PowerShell, um Azure-Warnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind."
+title: "Erstellen von Warnungen für Azure-Dienste: PowerShell | Microsoft-Dokumentation"
+description: "E-Mails, Benachrichtigungen oder Automatisierung werden ausgelöst und URLs (Webhooks) von Websites aufgerufen, wenn die von Ihnen angegebenen Bedingungen erfüllt sind."
 author: rboucher
-manager: carolz
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: db8ed8980335e2af9654bfe56b4e4c5807674040
+ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
+ms.openlocfilehash: 0a6a6e5b76e03eba113600b5be558daa8c924f0f
 
 
 ---
-# <a name="use-powershell-to-create-alerts-for-azure-services"></a>Verwenden von PowerShell zum Erstellen von Warnungen für Azure-Dienste
+# <a name="create-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Erstellen von Warnungen in Azure Monitor für Azure-Dienste – plattformübergreifende Befehlszeilenschnittstelle 
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](insights-alerts-command-line-interface.md)
-> 
-> 
+>
+>
 
 ## <a name="overview"></a>Übersicht
 In diesem Artikel erfahren Sie, wie Sie Warnungen mit PowerShell einrichten können.  
@@ -50,58 +50,58 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 * [Befehlszeilenschnittstelle (CLI)](insights-alerts-command-line-interface.md)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-Um weitere Informationen zu erhalten, geben Sie ```get-help``` und dann den PowerShell-Befehl ein, zu dem Sie Hilfe benötigen.
+Um weitere Informationen zu erhalten, geben Sie ```Get-Help``` und dann den PowerShell-Befehl ein, zu dem Sie Hilfe benötigen.
 
 ## <a name="create-alert-rules-in-powershell"></a>Erstellen von Warnregeln in PowerShell
 1. Melden Sie sich bei Azure an.   
-   
+
     ```PowerShell
     Login-AzureRmAccount
-   
+
     ```
 2. Rufen Sie eine Liste der Abonnements ab, die Ihnen zur Verfügung stehen. Stellen Sie sicher, dass Sie das richtige Abonnement verwenden. Falls nicht, legen Sie mithilfe der Ausgabe von `Get-AzureRmSubscription`das richtige fest.
-   
+
     ```PowerShell
     Get-AzureRmSubscription
     Get-AzureRmContext
     Set-AzureRmContext -SubscriptionId <subscriptionid>
     ```
 3. Um vorhandene Regeln für eine Ressourcengruppe aufzulisten, verwenden Sie den folgenden Befehl:
-   
+
    ```PowerShell
    Get-AzureRmAlertRule -ResourceGroup <myresourcegroup> -DetailedOutput
    ```
-4. Um eine Regel zu erstellen, benötigen Sie zunächst verschiedene wichtige Informationen. 
-   
+4. Um eine Regel zu erstellen, benötigen Sie zunächst verschiedene wichtige Informationen.
+
    * Die **Ressourcen-ID** der Ressource, für die Sie eine Warnung festlegen möchten
    * Die für diese Ressource verfügbaren **Metrikdefinitionen**
-     
-     Eine Möglichkeit zum Abrufen der Ressourcen-ID ist das Azure-Portal. Falls die Ressource bereits erstellt wurde, wählen Sie sie im Portal aus. Wählen Sie auf dem nächsten Blatt *Eigenschaften* im Abschnitt *Einstellungen* aus. Die RESSOURCEN-ID ist ein Feld auf dem nächsten Blatt. Eine andere Möglichkeit ist der [Azure-Ressourcen-Explorer](https://resources.azure.com/).
-     
+
+     Eine Möglichkeit zum Abrufen der Ressourcen-ID ist das Azure-Portal. Falls die Ressource bereits erstellt wurde, wählen Sie sie im Portal aus. Wählen Sie dann auf dem nächsten Blatt im Abschnitt *Einstellungen* die Option *Eigenschaften* aus. **RESSOURCEN-ID** ist ein Feld auf dem nächsten Blatt. Eine andere Möglichkeit ist der [Azure-Ressourcen-Explorer](https://resources.azure.com/).
+
      Es folgt ein Beispiel einer Ressourcen-ID für eine Web-App:
-     
+
      ```
      /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename
      ```
-     
+
      Sie können `Get-AzureRmMetricDefinition` zum Anzeigen der Liste aller Definitionen von Metriken für eine bestimmte Ressource verwenden.
-     
+
      ```PowerShell
      Get-AzureRmMetricDefinition -ResourceId <resource_id>
      ```
-     
+
      Im folgenden Beispiel wird eine Tabelle mit der Metrik „Name“ und der Einheit für diese Metrik generiert.
-     
+
      ```PowerShell
      Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
-     
+
      ```
      Eine vollständige Liste der verfügbaren Optionen für „Get-AzureRmMetricDefinition“ wird durch Ausführen von „Get-MetricDefinitions“ verfügbar.
 5. Im folgenden Beispiel wird eine Warnung für eine Websiteressource eingerichtet. Die Warnung wird ausgelöst, wenn fünf Minuten durchgängig Datenverkehr empfangen wird. Sie wird erneut ausgelöst, wenn fünf Minuten lang kein Datenverkehr empfangen wird.
-   
+
     ```PowerShell
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Description "alert on any website activity"
-   
+
     ```
 6. Um einen Webhook zu erstellen oder E-Mail zu senden, wenn eine Warnung ausgelöst wird, müssen Sie zunächst die E-Mail und/oder Webhooks erstellen. Erstellen Sie anschließend sofort die Regel mit dem „-Actions“-Tag (wie im folgenden Beispiel gezeigt). Über PowerShell können Sie bereits erstellten Regeln keine Webhooks oder E-Mails zuordnen.
 
@@ -114,26 +114,26 @@ Um weitere Informationen zu erhalten, geben Sie ```get-help``` und dann den Powe
 
 
 1. Zum Erstellen einer Warnung, die bei einer bestimmten Bedingung im Aktivitätsprotokoll ausgelöst wird, wählen Sie Befehle im folgenden Format:
-   
+
     ```PowerShell
     $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
     $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://www.contoso.com?token=mytoken
-   
+
     Add-AzureRmLogAlertRule -Name myLogAlertRule -Location "East US" -ResourceGroup myresourcegroup -OperationName microsoft.web/sites/start/action -Status Succeeded -TargetResourceGroup resourcegroupbeingmonitored -Actions $actionEmail, $actionWebhook
     ```
-   
+
     „-OperationName“ entspricht einem Ereignistyp eines Eintrags im Aktivitätsprotokoll. Beispiele sind *Microsoft.Compute/virtualMachines/delete* und *microsoft.insights/diagnosticSettings/write*.
-   
+
     Sie können den PowerShell-Befehl [Get-AzureRmProviderOperation](https://msdn.microsoft.com/library/mt603720.aspx) zum Abrufen einer Liste möglicher Vorgangsnamen verwenden. Alternativ können Sie im Azure-Portal das Aktivitätsprotokoll abfragen und bestimmte erfolgte Vorgänge suchen, für die Sie eine Warnung erstellen möchten. Die Vorgänge werden in der grafischen Protokollansicht mit dem Anzeigenamen angezeigt. Suchen Sie im JSON-Code nach dem Eintrag, und entnehmen Sie den Wert des Vorgangsnamen.   
 2. Überprüfen Sie, ob Warnungen ordnungsgemäß erstellt wurden, indem Sie sich die einzelnen Regeln ansehen.
-   
+
     ```PowerShell
     Get-AzureRmAlertRule -Name myMetricRuleWithWebhookAndEmail -ResourceGroup myresourcegroup -DetailedOutput
-   
+
     Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
 3. Löschen Sie Ihre Warnungen. Mit diesen Befehlen werden die zuvor in diesem Artikel erstellten Regeln gelöscht.
-   
+
     ```PowerShell
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myrule
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myMetricRuleWithWebhookAndEmail
@@ -149,7 +149,6 @@ Um weitere Informationen zu erhalten, geben Sie ```get-help``` und dann den Powe
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

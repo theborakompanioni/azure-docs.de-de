@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von DocumentDB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource-Managers| Microsoft Docs
+title: "Bereitstellen einer Web-App mit einer Vorlage – Azure DocumentDB | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie ein DocumentDB-Konto, eine Azure App-Service-Web-App und eine Beispielwebanwendung mithilfe einer Vorlage des Azure-Ressourcen-Managers bereitstellen.
 services: documentdb, app-service\web
 author: h0n
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: hawong
 translationtype: Human Translation
-ms.sourcegitcommit: 08b101f42558280d8ffa690829570257d8d6deca
-ms.openlocfilehash: 6f519ac78d28fac69171b083f18d783cf1d9b24a
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 7bef38eaea90d950c195dee0d741750cf65870df
 
 
 ---
@@ -148,6 +148,6 @@ Glückwunsch! Sie haben DocumentDB, eine App Service-Web-App und eine Beispielwe
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

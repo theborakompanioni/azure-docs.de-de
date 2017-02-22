@@ -1,6 +1,6 @@
 ---
-title: Multivariate lineare Regression | Microsoft Docs
-description: Multivariate lineare Regression
+title: "(veraltet) Multivariate lineare Regression – Azure | Microsoft-Dokumentation"
+description: (veraltet) Multivariate lineare Regression
 services: machine-learning
 documentationcenter: 
 author: jaymathe
@@ -11,16 +11,23 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/21/2016
+ms.topic: deprecated
+ms.date: 01/06/2017
 ms.author: jaymathe
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 01d90591f61920769dbdca360f69156281145517
+ms.sourcegitcommit: b1ee1eae91185c1893b55be2046343d78dd6c48b
+ms.openlocfilehash: 96780fccdf887548b0f6e525736f1d507cf30486
 
 
 ---
-# <a name="multivariate-linear-regression"></a>Multivariate lineare Regression
+# <a name="deprecated-multivariate-linear-regression"></a>(veraltet) Multivariate lineare Regression
+
+> [!NOTE]
+> (veraltet) Der Microsoft DataMarket wird eingestellt, und diese API gilt nun als veraltet. 
+> 
+> Im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) finden Sie viele nützliche Beispielexperimente und -APIs. Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog](machine-learning-gallery-how-to-use-contribute-publish.md).
+
 Angenommen, Sie verfügen über ein Dataset und möchten schnell eine abhängige Variable (y) für einzelne Personen (i) basierend auf unabhängigen Variablen vorhersagen. Die lineare Regression ist ein beliebtes statistisches Verfahren für eine solche Vorhersage. Hier wird angenommen, dass die abhängige Variable y ein kontinuierlicher Wert ist.  
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -79,7 +86,7 @@ Es gibt mehrere Möglichkeiten, den Dienst auf automatisierte Weise zu nutzen ([
 > 
 > 
 
-In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei [Execute R Script][execute-r-script]-Module in den Arbeitsbereich gezogen. Dieser Webdienst führt ein Azure Machine Learning-Experiment mit einem zugrunde liegenden R-Skript aus. Das Experiment besteht aus zwei Teilen: Schemadefinition und Trainieren/Bewerten des Modells. Das erste Modul definiert die erwartete Struktur des Eingabedatasets, wobei die erste Variable die abhängige Variable ist und die restlichen Variablen unabhängig sind. Das zweite Modul passt ein generisches lineares Regressionsmodell den Eingabedaten an.  
+In Azure Machine Learning wurde ein neues leeres Experiment erstellt, und es wurden zwei Module [Execute R Script][execute-r-script] in den Arbeitsbereich gezogen. Dieser Webdienst führt ein Azure Machine Learning-Experiment mit einem zugrunde liegenden R-Skript aus. Das Experiment besteht aus zwei Teilen: Schemadefinition und Trainieren/Bewerten des Modells. Das erste Modul definiert die erwartete Struktur des Eingabedatasets, wobei die erste Variable die abhängige Variable ist und die restlichen Variablen unabhängig sind. Das zweite Modul passt ein generisches lineares Regressionsmodell den Eingabedaten an.  
 
 ![Experimentablauf][3]
 
@@ -121,6 +128,6 @@ Häufig gestellte Fragen zur Nutzung des Webdiensts und zum Veröffentlichen im 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO3-->
 
 

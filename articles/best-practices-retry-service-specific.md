@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: f5bdbd801107650f87993b395338adfb1b26d17e
-ms.openlocfilehash: 28f0a833ca410a518291c99b308ac52a1318761e
+ms.sourcegitcommit: e7f09966e2b15735081cf2ac4d244a7ae8b92df8
+ms.openlocfilehash: 397bbc7d556338ff347d59d000fe7442acda560a
 
 
 ---
@@ -42,7 +42,7 @@ In der folgende Tabelle werden die Wiederholungsfunktionen für die in dieser An
 | **[Azure Search](#azure-storage-retry-guidelines)** |Systemeigen in Client |Programmgesteuert |Client- |ETW oder benutzerdefiniert |
 | **[Active Directory](#azure-active-directory-retry-guidelines)** |Topaz* (mit benutzerdefinierter Strategie zur Erkennung) |Deklarativ und programmatisch |Codeblöcke |Benutzerdefiniert |
 
-*Topaz ist der Anzeigename für den Anwendungsblock zur Handhabung vorübergehender Fehler, der Bestandteil von [Enterprise Library 6.0][entlib] ist. Sie können für die meisten Dienste wie in diesem Handbuch beschrieben eine benutzerdefinierte Strategie zur Erkennung mit Topaz verwenden. Standardstrategien für Topaz werden Abschnitt [Strategien für den Anwendungsblock zur Handhabung vorübergehender Fehler (Topaz)](#transient-fault-handling-application-block-topaz-strategies) am Ende dieses Handbuchs gezeigt. Beachten Sie, dass der Block jetzt ein Open Source-Framework ist und nicht direkt von Microsoft unterstützt wird.
+*Topaz im Anzeigenamen für den Anwendungsblock zur Handhabung vorübergehender Fehler, der Bestandteil von [Enterprise Library 6.0][entlib] ist. Sie können für die meisten Dienste wie in diesem Handbuch beschrieben eine benutzerdefinierte Strategie zur Erkennung mit Topaz verwenden. Standardstrategien für Topaz werden Abschnitt [Strategien für den Anwendungsblock zur Handhabung vorübergehender Fehler (Topaz)](#transient-fault-handling-application-block-topaz-strategies) am Ende dieses Handbuchs gezeigt. Beachten Sie, dass der Block jetzt ein Open Source-Framework ist und nicht direkt von Microsoft unterstützt wird.
 
 > [!NOTE]
 > Für die meisten der integrierten Azure Mechanismen gibt es derzeit keine Möglichkeit, unterschiedliche Wiederholungsrichtlinien für verschiedene Typen von Fehler oder Ausnahmen anzuwenden, die über die in der Wiederholungsrichtlinie integrierte Funktionalität hinausgeht. Daher ist die beste gegenwärtige Anweisung zum Redaktionszeitpunkt eine Richtlinie zu konfigurieren, die die optimale durchschnittliche Leistung und Verfügbarkeit bietet. Eine Möglichkeit zur Optimierung der Richtlinie ist die Analyse von Protokolldateien, um den Typ der vorübergehenden Fehler zu bestimmen, die auftreten. Wenn z. B. die meisten Fehler mit der Netzwerkkonnektivität verknüpft sind, können Sie eine sofortige Wiederholung versuchen, anstatt langer für die erste Wiederholung zu warten.
@@ -1084,7 +1084,7 @@ Der Anwendungsblock zur Handhabung von vorübergehenden Fehlern verfügt über d
 
 | **Strategie** | **Einstellung** | **Standardwert** | **Bedeutung** |
 | --- | --- | --- | --- |
-| **Exponentiell** |retryCount<br />minBackoff<br /><br />MaxBackoff<br /><br />deltaBackoff<br /><br />fastFirstRetry |10<br />1 Sekunde<br /><br />30 Sekunden<br /><br />10 Sekunden<br /><br />true |Die Anzahl der Wiederholungsversuche.<br />Die minimale Backoff-Zeit. Der höhere dieser Werte oder das berechnete Backoff wird als Wiederholungsverzögerung verwendet.<br />Die minimale Backoff-Zeit. Der niedrigere dieser Werte oder das berechnete Backoff wird als Wiederholungsverzögerung verwendet.<br />Der Wert, der zur Berechnung eines zufälligen Deltas für die exponentielle Verzögerung zwischen den Wiederholungsversuchen verwendet wird.<br />Gibt an, ob der erste Wiederholungsversuch sofort erfolgt. |
+| **Exponentiell** |retryCount<br />minBackoff<br /><br />MaxBackoff<br /><br />deltaBackoff<br /><br />fastFirstRetry |10<br />1 Sekunde<br /><br />30 Sekunden<br /><br />10 Sekunden<br /><br />true |Die Anzahl der Wiederholungsversuche.<br />Die maximale Backoff-Zeit. Der höhere dieser Werte oder das berechnete Backoff wird als Wiederholungsverzögerung verwendet.<br />Die minimale Backoff-Zeit. Der niedrigere dieser Werte oder das berechnete Backoff wird als Wiederholungsverzögerung verwendet.<br />Der Wert, der zur Berechnung eines zufälligen Deltas für die exponentielle Verzögerung zwischen den Wiederholungsversuchen verwendet wird.<br />Gibt an, ob der erste Wiederholungsversuch sofort erfolgt. |
 | **Inkrementell** |retryCount<br />initialInterval<br />increment<br /><br />fastFirstRetry<br /> |10<br />1 Sekunde<br />1 Sekunde<br /><br />true |Die Anzahl der Wiederholungsversuche.<br />Das anfängliche Intervall, das für die erste Wiederholung angewendet wird.<br />Der inkrementelle Zeitwert, der zur Berechnung der progressiven Verzögerung zwischen Wiederholungen verwendet wird.<br />Gibt an, ob der erste Wiederholungsversuch sofort erfolgt. |
 | **Linear (festgelegtes Intervall)** |retryCount<br />retryInterval<br />fastFirstRetry<br /> |10<br />1 Sekunde<br />true |Die Anzahl der Wiederholungsversuche.<br />Die Verzögerung zwischen den Wiederholungsversuchen.<br />Gibt an, ob der erste Wiederholungsversuch sofort erfolgt. |
 
@@ -1101,6 +1101,6 @@ Beispiele für die Verwendung des Anwendungsblocks zur Handhabung von vorüberge
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

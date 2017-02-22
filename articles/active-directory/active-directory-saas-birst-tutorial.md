@@ -247,6 +247,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Birst Agile Business Analytics“ 
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

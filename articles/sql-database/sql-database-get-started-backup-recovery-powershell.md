@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit der Sicherung und Wiederherstellung von Azure SQL-Datenbanken für Datenschutz und -wiederherstellung mithilfe von Azure PowerShell | Microsoft-Dokumentation"
+title: 'PowerShell: Sichern und Wiederherstellen von Azure SQL-Datenbanken | Microsoft-Dokumentation'
 description: In diesem Tutorial wird gezeigt, wie Sie mithilfe von PowerShell Daten aus automatisierten Sicherungen in einem bestimmten Zustand wiederherstellen, automatisierte Sicherungen im Azure Recovery Services-Tresor speichern und Daten aus dem Azure Recovery Services-Tresor wiederherstellen.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
@@ -17,16 +17,16 @@ ms.topic: hero-article
 ms.date: 12/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 68a4ed7aad946dda644a0f085c48fd33f453e018
-ms.openlocfilehash: 15d5cb803332133c8015a8ba23ca5751b8abc29a
+ms.sourcegitcommit: d026933869d98c469855e02a6906ed74f8ee03a3
+ms.openlocfilehash: fd1412bcc367472990f645ef7f90ad94def562d6
 
 
 ---
 
 
-# <a name="get-started-with-backup-and-restore-for-data-protection-and-recovery-using-powershell"></a>Erste Schritte mit der Sicherung und Wiederherstellung für Datenschutz und -wiederherstellung mithilfe von PowerShell
+# <a name="tutorial-back-up-and-restore-an-azure-sql-database-using-powershell"></a>Tutorial: Sichern und Wiederherstellen einer Azure SQL-Datenbank mithilfe von PowerShell
 
-In diesem Einstiegstutorial erfahren Sie, wie Sie Azure PowerShell für folgende Aufgaben verwenden:
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell Folgendes ausführen:
 
 - Anzeigen vorhandener Sicherungen einer Datenbank
 - Wiederherstellen eines früheren Zustands einer Datenbank
@@ -380,6 +380,7 @@ $restoredDbFromLtr
 - Weitere Informationen zum Wiederherstellen von Daten aus Sicherungen finden Sie im Artikel zur [Wiederherstellung aus einer Sicherung](sql-database-recovery-using-backups.md).
 
 
-<!--HONumber=Dec16_HO4-->
+
+<!--HONumber=Feb17_HO1-->
 
 

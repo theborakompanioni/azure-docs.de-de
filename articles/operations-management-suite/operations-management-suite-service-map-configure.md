@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 6cc30ace0b57555ea2b5815906d3e6a4f79d8fce
-ms.openlocfilehash: 94bf7729ceb55eaed5efc0290c1a34227888211f
+ms.sourcegitcommit: 496e00c2b9a0b374450f9a6f9dff5d41c805261c
+ms.openlocfilehash: 591f3440977b1c952b1b360f6d3f221cdbc5a7a7
 
 
 ---
@@ -75,7 +75,7 @@ Der Name des Management Packs lautet „Microsoft.IntelligencePacks.ApplicationD
 
 
 ## <a name="configuration"></a>Konfiguration
-Auf Computern mit Windows oder Linux muss nicht nur ein Agent installiert und mit OMS verbunden sein, sondern Sie müssen auch das Dependency-Agent-Installationsprogramm von der Service Map-Lösung herunterladen und auf jedem verwalteten Server als Administrator bzw. mit Root-Berechtigungen installieren.  Nachdem der Service Map-Agent auf einem Server installiert wurde, der Berichte an OMS sendet, werden innerhalb von 10 Minuten Service Map-Abhängigkeitsstrukturen angezeigt.  Wenn Probleme auftreten, senden Sie eine E-Mail an [oms-adm-support@microsoft.com](mailto:oms-adm-support@microsoft.com).
+Auf Computern mit Windows oder Linux muss nicht nur ein Agent installiert und mit OMS verbunden sein, sondern Sie müssen auch das Dependency-Agent-Installationsprogramm von der Service Map-Lösung herunterladen und auf jedem verwalteten Server als Administrator bzw. mit Root-Berechtigungen installieren.  Nachdem der Service Map-Agent auf einem Server installiert wurde, der Berichte an OMS sendet, werden innerhalb von 10 Minuten Service Map-Abhängigkeitsstrukturen angezeigt.
 
 
 ### <a name="migrating-from-bluestripe-factfinder"></a>Migrieren von BlueStripe FactFinder
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Linux-
 3.  Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis */var/opt/microsoft/dependency-agent/log*.
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>Deinstallieren des Dependency-Agent für Linux
-Wenn Sie den Dependency-Agent unter Linux vollständig deinstallieren möchten, müssen Sie den Agent selbst und den Proxy entfernen, der automatisch mit dem Agent installiert wird.  Mit dem folgenden einzelnen Befehl können Sie beide Komponenten deinstallieren:
+Wenn Sie den Dependency-Agent unter Linux vollständig deinstallieren möchten, müssen Sie den Agent selbst und den Connector entfernen, der automatisch mit dem Agent installiert wird.  Mit dem folgenden einzelnen Befehl können Sie beide Komponenten deinstallieren:
 
     rpm -e dependency-agent dependency-agent-connector
 
@@ -325,6 +325,6 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

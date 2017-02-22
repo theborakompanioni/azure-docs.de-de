@@ -13,73 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/05/2016
+ms.date: 01/08/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: d65505182267bec053fca0ab5045cbcae9381ac7
-ms.openlocfilehash: 245e49d36142ef8e927a5e494113e4dd7809fc16
+ms.sourcegitcommit: 251d7b973426afb50206c428873021144b8bffdf
+ms.openlocfilehash: 63e2509b92b4d97bfdc98629cc356816839b03b5
 
 
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>OMS-Azure-VM-Erweiterung für Windows
 
-## <a name="overview"></a>Übersicht
-
 Die Operations Management Suite (OMS) bietet Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die OMS-Agent-VM-Erweiterung für Windows wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den OMS-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen OMS-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die OMS-VM-Erweiterung für Windows.
-
-Allgemeine Informationen zu Azure-VM-Erweiterungen finden Sie in der [Übersicht über VM-Erweiterungen](./virtual-machines-windows-extensions-features.md).
-
-Weitere Informationen zur Operations Management Suite finden Sie in der [Übersicht über die Operations Management Suite](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
+Die OMS-Agent-Erweiterung für Windows ist für Windows Server 2008 R2, 2012, 2012 R2 und 2016 geeignet.
 
-Die OMS-Agent-Erweiterung für Windows ist für Windows Server 2012, 2012 R2 und 2016 geeignet.
-
-### <a name="connectivity"></a>Konnektivität
-
+### <a name="internet-connectivity"></a>Internetkonnektivität
 Um die OMS-Agent-Erweiterung für Windows verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. 
 
-## <a name="extension-configuration"></a>Konfiguration der Erweiterung
+## <a name="extension-schema"></a>Erweiterungsschema
 
-Für die OMS-Agent-VM-Erweiterung für Windows werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem OMS-Zielarbeitsbereich benötigt. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, wird er in einer geschützten Konfiguration gespeichert. Die geschützten Konfigurationsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Die öffentliche und die private Konfiguration werden zum Zeitpunkt der Bereitstellung angegeben, wie in den folgenden Abschnitten dieses Dokuments erläutert.
-
-### <a name="public-configuration"></a>Öffentliche Konfiguration
-
-Schema für die öffentliche Konfiguration:
-
-- workspaceId – erforderliche Zeichenfolge: Die ID des OMS-Arbeitsbereichs, in den der virtuelle Computer integriert werden soll.
-
-```json
-{
-  "workspaceId": "myWorkspaceId"
-}
-```
-
-### <a name="private-configuration"></a>Private Konfiguration
-
-Schema für die öffentliche Konfiguration:
-
-- workspaceKey – erforderliche Zeichenfolge: Der primäre/sekundäre gemeinsam verwendete Schlüssel des Arbeitsbereichs.
-
-```json
-{
-  "workspaceKey": "myWorkSpaceKey"
-}
-```
-
-## <a name="template-deployment"></a>Bereitstellung von Vorlagen
-
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen (beispielsweise, um sie in OMS zu integrieren). Eine Resource Manager-Beispielvorlage mit der OMS-Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
-
-Das Beispiel kann über dieses Dokument mithilfe der folgenden Schaltfläche bereitgestellt werden:
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-oms-extension-windows-vm%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
-
-Der JSON-Code zum Bereitstellen der OMS-Agent-VM-Erweiterung sieht wie im folgenden JSON-Beispiel aus:
+Der folgende JSON-Code zeigt das Schema für die OMS Agent-Erweiterung. Für Erweiterung werden die Arbeitsbereichs-ID und der Arbeitsbereichsschlüssel aus dem OMS-Zielarbeitsbereich benötigt. Diese sind im OMS-Portal zu finden. Da der Arbeitsbereichsschlüssel als vertrauliche Information behandelt werden muss, sollte er in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt.
 
 ```json
 {
@@ -96,14 +52,29 @@ Der JSON-Code zum Bereitstellen der OMS-Agent-VM-Erweiterung sieht wie im folgen
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "workspaceId": "myWorkSpaceKey"
+            "workspaceId": "myWorkSpaceId"
         },
         "protectedSettings": {
-            "workspaceKey": "myWorkspaceId"
+            "workspaceKey": "myWorkspaceKey"
         }
     }
 }
 ```
+
+### <a name="property-values"></a>Eigenschaftswerte
+
+| Name | Wert/Beispiel |
+| ---- | ---- |
+| apiVersion | 2015-06-15 |
+| Herausgeber | Microsoft.EnterpriseCloud.Monitoring |
+| Typ | MicrosoftMonitoringAgent |
+| typeHandlerVersion | 1,0 |
+| workspaceId (z.B.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (z.B.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+
+## <a name="template-deployment"></a>Bereitstellung von Vorlagen
+
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage zum Ausführen der OMS Agent-Erweiterung im Rahmen einer Azure Resource Manager-Bereitstellung verwendet werden. Eine Beispielvorlage mit der OMS Agent-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
@@ -128,17 +99,17 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 
 ### <a name="troubleshoot"></a>Problembehandlung
 
-Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe der Azure-Befehlszeilenschnittstelle abgerufen werden. Führen Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für einen bestimmten virtuellen Computer anzuzeigen.
+Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe des Azure PowerShell-Moduls abgerufen werden. Führen Sie über das Azure PowerShell-Modul den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für einen bestimmten virtuellen Computer anzuzeigen.
 
-```azurecli
+```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis protokolliert:
 
-`
+```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
-`
+```
 
 ### <a name="support"></a>Support
 
@@ -146,6 +117,6 @@ Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benö
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

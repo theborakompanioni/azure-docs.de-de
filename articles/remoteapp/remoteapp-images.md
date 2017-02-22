@@ -40,7 +40,7 @@ Ihr Azure RemoteApp-Abonnement beinhaltet drei Vorlagenimages:
 
 Im Folgenden erhalten Sie ausführliche Informationen zum Inhalt der einzelnen Images.
 
-## <a name="windows-server-2012-r2-the-vanilla-image"></a>Windows Server 2012 R2 („einfaches Image“)
+## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2 („einfaches Image“)
 Dieses Image basiert auf dem Betriebssystem Microsoft Windows Server 2012 R2 Datacenter und weist die folgenden Rollen und Features auf, die zum Erfüllen der Anforderungen an Azure RemoteApp-Vorlagenimages installiert wurden:
 
 * .NET Framework 4.5, 3.5.1 und 3.5

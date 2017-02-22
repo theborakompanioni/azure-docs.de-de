@@ -1,5 +1,5 @@
 ---
-title: "Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace | Microsoft-Dokumentation"
+title: "Überwachen eines Azure-DC/OS-Clusters – Dynatrace | Microsoft-Dokumentation"
 description: "Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace. Bereitstellen von Dynatrace OneAgent mithilfe des DC/OS-Dashboards."
 services: container-service
 documentationcenter: 
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 12/13/2016
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 96d35fbc4a8dfb620a2cfe67df449134d2f1e542
-ms.openlocfilehash: 48bb16972f2e846997e081e702ffbce57736c484
+ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
+ms.openlocfilehash: 8878baa230bc8e91f814fd97fdc852c76b17e823
 
 
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-dynatrace-saasmanaged"></a>Überwachen eines Azure Container Service-Clusters mit Dynatrace SaaS/Managed
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace SaaS/Managed
 In diesem Artikel erfahren Sie, wie Sie [Dynatrace](https://www.dynatrace.com/) OneAgent zum Überwachen aller Agentknoten in Ihrem Azure Container Service-Cluster bereitstellen. Für diese Konfiguration benötigen Sie ein Konto mit Dynatrace SaaS/Managed. 
 
 ## <a name="dynatrace-saasmanaged"></a>Dynatrace SaaS/Managed
@@ -63,6 +63,6 @@ Im Folgenden wird erläutert, wie Sie Dynatrace-Anwendungen für Ihren Cluster m
 Kehren Sie zum Dynatrace-Dashboard zurück, nachdem Sie das Paket installiert haben. Sie können nun die verschiedenen Nutzungsmetriken für die Container in Ihrem Cluster erkunden. 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

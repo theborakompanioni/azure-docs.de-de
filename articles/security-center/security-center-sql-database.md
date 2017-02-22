@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 6b1c05963afa27ff4d24270048d3071f0fb02c00
+ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
+ms.openlocfilehash: ba8fd7ea8979c8c2afbace60a5675b411438d6b4
 
 
 ---
@@ -38,7 +38,7 @@ Security Center ermöglicht nicht nur den Schutz Ihrer SQL-Datenbank-Ressourcen,
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Der Free-Tarif für Security Center wird mit Ihrem Abonnement aktiviert. Weitere Informationen zum Free- und Standard-Tarif von Security Center finden Sie unter [Security Center Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
-Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md). Im Artikel mit häufig gestellten Fragen zu Security Center finden Sie Informationen zur [Behandlung von Berechtigungen in Security Center](security-center-faq.md#how-are-permissions-handled-in-azure-security-center).
+Security Center unterstützt rollenbasierten Zugriff. Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Azure finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md). Im Artikel mit häufig gestellten Fragen zu Security Center finden Sie Informationen zur [Behandlung von Berechtigungen in Security Center](security-center-faq.md#permissions).
 
 ## <a name="access-security-center"></a>Zugreifen auf Security Center
 Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. [Melden Sie sich beim Portal](https://portal.azure.com/) an, und wählen Sie die Option **Security Center** aus.
@@ -118,6 +118,6 @@ Weitere Informationen finden Sie unter [Verwalten von und Reagieren auf Sicherhe
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Dec16_HO3-->
 
 

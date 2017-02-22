@@ -1,28 +1,33 @@
 ---
-title: 'Machine Learning-App: Anomaly Detection Service | Microsoft Docs'
-description: Die Anomaly Detection-API ist ein mit Microsoft Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
+title: '(Veraltet) Azure Machine Learning-App: Anomaly Detection Service | Microsoft-Dokumentation'
+description: (Veraltet) Anomaly Detection Service ist ein mit Microsoft Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
 services: machine-learning
 documentationcenter: 
 author: alokkirpal
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
 ms.devlang: na
-ms.topic: article
+ms.topic: deprecated
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 10/11/2016
+ms.date: 01/18/2017
 ms.author: alok
+ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cbcd469f39b42d741d73f9d96daf17d011b7ebc7
+ms.sourcegitcommit: eff129aceac18342a79f06376023301afc676763
+ms.openlocfilehash: 847c24f8baf5f5db93474b469eb402d3ab7d4880
 
 
 ---
-# <a name="machine-learning-anomaly-detection-service"></a>Machine Learning Anomaly Detection Service
+# <a name="machine-learning-anomaly-detection-service-deprecated"></a>Machine Learning Anomaly Detection Service (veraltet)
+> [!NOTE]
+> Sie können diese API jetzt mithilfe der neuen **Registrierungsoption** in [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) in Ihrem Azure-Abonnement bereitstellen. Weitere Informationen finden Sie unter [Machine Learning Anomaly Detection-API](machine-learning-apps-anomaly-detection-api.md).
+> 
+> Die in diesem Artikel beschriebene Methode für den Zugriff auf die API über Azure DataMarket wurde als veraltet markiert.
+
 ## <a name="overview"></a>Übersicht
-Die [Anomaly Detection-API](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind. 
+Die [Anomaly Detection-API (veraltet)](https://datamarket.azure.com/dataset/aml_labs/anomalydetection) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind. 
 
 Diese API kann die folgenden Arten anomaler Muster in Zeitreihendaten erkennen:
 
@@ -169,14 +174,14 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
 | preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |N/V |
 | preprocess.replaceMissing |Werte zum Zuordnen fehlender Daten |lkv (last known value) |enumerated |zero, lkv, mean |N/V |
-| detectors.historyWindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
-| upleveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für Pegeländerungen in Aufwärtsrichtung |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| trenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
+| detectors.historyWindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 -&2;.000 |Von Zeitreihe abhängig |
+| upleveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für Pegeländerungen in Aufwärtsrichtung |3.25 |double |Keine |3,25 -&5; (niedrigerer Wert = höhere Empfindlichkeit) |
+| bileveldetector.sensitivity |Empfindlichkeit für Erkennungsmodul für bidirektionale Pegeländerungen. |3.25 |double |Keine |3,25 -&5; (niedrigerer Wert = höhere Empfindlichkeit) |
+| trenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für positive Trends |3.25 |double |Keine |3,25 -&5; (niedrigerer Wert = höhere Empfindlichkeit) |
+| tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul |3 |integer |1 -&10; |3 -&5; (niedrigerer Wert = höhere Empfindlichkeit) |
+| zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 -&10; |3 -&5; (niedrigerer Wert = höhere Empfindlichkeit) |
 | seasonality.enable |Gibt an, ob eine saisonabhängige Analyse durchgeführt wird. |true |Boolescher Wert |true, false |Von Zeitreihe abhängig |
-| seasonality.numSeasonality |Maximale Anzahl von zu erkennenden periodischen Zyklen |1 |integer |1, 2 |1 - 2 |
+| seasonality.numSeasonality |Maximale Anzahl von zu erkennenden periodischen Zyklen |1 |integer |1, 2 |1 -&2; |
 | seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |N/V |
 | postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |N/V |
 
@@ -208,6 +213,6 @@ Diese Ausgabe kann mit einem [einfachen Parser](https://adresultparser.codeplex.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO3-->
 
 

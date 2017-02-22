@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal | Microsoft Docs
+title: Verwalten von Windows-basierten Hadoop-Clustern in HDInsight mit dem Azure-Portal | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie Sie den HDInsight-Dienst verwalten. Erstellen Sie ein HDInsight-Cluster, öffnen Sie die interaktive JavaScript-Konsole, und öffnen Sie die Hadoop-Befehlszeile."
 services: hdinsight
 documentationcenter: 
@@ -13,24 +13,25 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 01/17/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: b52cf6f7c472d169608bc3e40096e1891f9a687b
+ms.sourcegitcommit: 58011fe25a96edfe2744990180b2f2866537bd37
+ms.openlocfilehash: ec35e177d1bb94671b1703020c9aa863a3805af1
 
 
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Windows-basierten Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
-Mit dem [Azure-Portal][azure-portal] können Sie Hadoop-Cluster in Azure HDInsight erstellen, das Hadoop-Benutzerkennwort ändern und das Remotedesktopprotokoll (RDP) aktivieren, sodass Sie auf die Hadoop-Befehlskonsole im Cluster zugreifen können.
+Mit dem [Azure-Portal][azure-portal] können Sie Windows-basierte Hadoop-Cluster in Azure HDInsight erstellen, das Hadoop-Benutzerkennwort ändern und das Remotedesktopprotokoll (RDP) aktivieren, sodass Sie auf die Hadoop-Befehlskonsole im Cluster zugreifen können.
 
-Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Klicken Sie auf die Registerkartenauswahl oben, um Informationen zum Verwalten von Linux-basierten Clustern zu erhalten.
+Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Informationen zur Verwaltung von Linux-basierten Clustern finden Sie unter [Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md).
 
-Klicken Sie auf die Registerkartenauswahl, um Informationen zum Erstellen von Hadoop-Clustern in HDInsight mit anderen Tools zu erhalten.
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
-**Voraussetzungen**
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
@@ -122,7 +123,7 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
      >
 6. Klicken Sie auf **Eigenschaften**.
 
-    Die Eigenschaften umfassen Folgendes:
+    Der Abschnitt „Eigenschaften“ umfasst Folgendes:
 
    * **Hostname**: Der Clustername
    * **Cluster-URL**
@@ -188,10 +189,10 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
 
     Es folgt ein Beispiel, wie die Storm-Topologie mithilfe des CLI-Befehls neu ausgeglichen werden kann:
 
-    ## <a name="reconfigure-the-topology-mytopology-to-use-5-worker-processes"></a>Konfigurieren Sie die Topologie „mytopology“ so neu, dass sie fünf Workerprozesse verwendet,
-    ## <a name="the-spout-blue-spout-to-use-3-executors-and"></a>das Spout „blue-spout“ so, dass es drei Executors verwendet, und
-    ## <a name="the-bolt-yellow-bolt-to-use-10-executors"></a>das Bolt „yellow-bolt“ so, dass es zehn Executors verwendet.
-      $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+        ## Reconfigure the topology "mytopology" to use 5 worker processes,
+        ## the spout "blue-spout" to use 3 executors, and
+        ## the bolt "yellow-bolt" to use 10 executors
+        $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
 **So skalieren Sie Cluster**
 
@@ -269,7 +270,6 @@ Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](#lis
 ## <a name="open-hdinsight-query-console"></a>Öffnen der HDInsight-Abfragekonsole
 Die HDInsight-Abfragekonsole umfasst die folgenden Features:
 
-* **Katalog für erste Schritte**: Informationen zur Verwendung des Katalogs finden Sie unter [Kennenlernen von Hadoop mithilfe der Azure HDInsight-Galerie für erste Schritte](hdinsight-learn-hadoop-use-sample-gallery.md).
 * **Hive-Editor**: Eine grafische Weboberfläche zum Übermitteln von Hive-Aufträgen.  Weitere Informationen hierzu finden Sie unter [Ausführen von Hive-Abfragen mithilfe der Abfragekonsole](hdinsight-hadoop-use-hive-query-console.md).
 
     ![HDInsight-Portal – Hive-Editor](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
@@ -379,6 +379,6 @@ In diesem Artikel haben Sie erfahren, wie ein HDInsight-Cluster mit dem Azure-Po
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

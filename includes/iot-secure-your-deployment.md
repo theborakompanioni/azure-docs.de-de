@@ -109,6 +109,6 @@ Dieser Artikel bietet eine Übersicht über die Details auf Implementierungseben
 [lnk-blob]: https://azure.microsoft.com/services/storage/
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

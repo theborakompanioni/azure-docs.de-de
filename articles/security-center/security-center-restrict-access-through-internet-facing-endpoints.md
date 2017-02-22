@@ -1,6 +1,6 @@
 ---
 title: "Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird gezeigt, wie Sie die Security Center-Empfehlung „Zugriff über Endpunkt mit Internetzugriff einschränken“ umsetzen."
+description: "In diesem Dokument wird gezeigt, wie Sie die Azure Security Center-Empfehlung **Zugriff über Endpunkt mit Internetzugriff einschränken** umsetzen."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 9316339551fdc6b8b266886b120fea5d7c1ef28f
+ms.sourcegitcommit: 6b7d2da8ababba65146503ecfbe6fd6e142a359c
+ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
 
 
 ---
@@ -27,23 +27,28 @@ Diese Empfehlung wird für alle Ports generiert, bei denen es sich nicht um Webp
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Zugriff über Endpunkt mit Internetzugriff einschränken**.
+
    ![Zugriff über Endpunkt mit Internetzugriff einschränken][1]
 2. Hierdurch wird das Blatt **Zugriff über Endpunkt mit Internetzugriff einschränken**geöffnet. Dieses Blatt listet die virtuellen Computer (VMs) mit Eingangsregeln auf, die ein potenzielles Sicherheitsproblem darstellen. Wählen Sie einen virtuellen Computer aus.
+
    ![Auswählen eines virtuellen Computers][2]
 3. Auf dem Blatt **NSG** werden Informationen zur Netzwerksicherheitsgruppe, geltende Eingangsregeln und der zugehörige virtuelle Computer angezeigt. Wählen Sie **Eingangsregeln bearbeiten** aus, um mit dem Bearbeiten einer Eingangsregel fortzufahren.
+
    ![Blatt „Netzwerksicherheitsgruppe“][3]
 4. Wählen Sie auf dem Blatt **Eingangssicherheitsregeln** die zu bearbeitende Eingangsregel aus. In diesem Beispiel wählen wir **AllowWeb**aus.
+
    ![Eingangssicherheitsregeln][4]
-   
+
    Sie können auch **Standardregeln** auswählen, um die Standardregeln anzuzeigen, die in allen NSGs enthalten sind. Die Standardregeln können zwar nicht gelöscht werden, haben aber eine niedrigere Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden. Erfahren Sie mehr über [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules).
+
    ![Standardregeln][5]
 5. Bearbeiten Sie auf dem Blatt **AllowWeb** die Eigenschaften der Eingangsregel, sodass die **Quelle** eine IP-Adresse oder ein Block von IP-Adressen ist. Weitere Informationen zu den Eigenschaften von Eingangsregeln finden Sie unter [NSG-Regeln](../virtual-network/virtual-networks-nsg.md#nsg-rules).
-   
+
    ![Eingangsregel bearbeiten][6]
 
 ## <a name="see-also"></a>Weitere Informationen
@@ -72,6 +77,6 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Data Lake Store | Microsoft Docs
-description: "Verwenden des Portals zum Erstellen eines Data Lake-Speicherkontos und Ausführen grundlegender Vorgänge im Data Lake-Speicher"
+title: "Verwenden des Azure-Portals für die ersten Schritte mit Data Lake Store | Microsoft-Dokumentation"
+description: "Verwenden des Azure-Portals zum Erstellen eines Data Lake Store-Kontos und Ausführen grundlegender Vorgänge im Data Lake Store"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/21/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 7d02b9fd741310a39aaadee0358af6c7b5990cf2
-ms.openlocfilehash: dfa7a41c7acd71eca39ac1360b1699bed9309e09
+ms.sourcegitcommit: a939a0845d7577185ff32edd542bcb2082543a26
+ms.openlocfilehash: db53f991aab10bace2d253fa96f739f99640bd77
 
 
 ---
@@ -51,7 +51,7 @@ Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speic
 2. Klicken Sie auf **NEU**, auf **Daten und Speicher** und anschließend auf **Azure Data Lake Store**. Prüfen Sie die Informationen auf dem Blatt **Azure Data Lake Store**, und klicken Sie dann in der unteren linken Ecke des Blatts auf **Erstellen**.
 3. Geben Sie auf dem Blatt **Neuer Data Lake-Speicher** die Werte wie im folgenden Screenshot gezeigt an:
    
-    ![Erstellen eines neuen Azure Data Lake-Speicherkontos](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Create a new Azure Data Lake account")
+    ![Erstellen eines neuen Azure Data Lake Store-Kontos](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Erstellen eines neuen Azure Data Lake-Kontos")
    
    * **Name**. Geben Sie einen eindeutigen Namen für das Data Lake Store-Konto ein.
    * **Abonnement**. Wählen Sie das Abonnement aus, unter dem Sie ein neues Data Lake Store-Konto erstellen möchten.
@@ -62,10 +62,10 @@ Sehen Sie sich die folgenden Videos mit ersten Schritten mit dem Data Lake-Speic
      * (Optional) Wählen Sie in der Dropdownliste die Option **Verschlüsselung nicht aktivieren**, wenn Sie die Verschlüsselung nicht verwenden möchten.
      * (Standard) Wählen Sie **Von Azure Data Lake verwaltete Schlüssel verwenden**, wenn Sie möchten, dass Ihre Verschlüsselungsschlüssel von Azure Data Lake Store verwaltet werden sollen.
        
-         ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store encryption")
+         ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-1.png "Data Lake Store-Verschlüsselung")
      * (Optional) Wählen Sie **Schlüssel aus Azure Key Vault auswählen**, wenn Sie Ihre eigenen Schlüssel verwenden möchten, die in Azure Key Vault enthalten sind. Mit dieser Option können Sie auch ein Key Vault-Konto und Schlüssel erstellen, falls Sie dies noch nicht durchgeführt haben.
        
-         ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store encryption")
+         ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store-Verschlüsselung")
        
        Klicken Sie auf dem Blatt **Verschlüsselungseinstellungen** auf **OK**.
        
@@ -80,7 +80,7 @@ Wenn Sie Schlüssel aus einem Azure Key Vault zum Konfigurieren der Verschlüsse
 
 1. Wenn Sie Schlüssel aus dem Azure Key Vault verwendet haben, wird oben auf dem Blatt für das Data Lake Store-Konto eine Warnung angezeigt. Klicken Sie auf die Warnung, um das Blatt **Key Vault-Berechtigungen konfigurieren** zu öffnen.
    
-    ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Store encryption")
+    ![Data Lake Store-Verschlüsselung](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Store-Verschlüsselung")
 2. Das Blatt enthält zwei Optionen zum Konfigurieren des Zugriffs.
    
    * Klicken Sie unter der ersten Option auf **Berechtigung erteilen**, um den Zugriff zu konfigurieren. Die erste Option ist nur aktiviert, wenn der Benutzer, der das Data Lake Store-Konto erstellt hat, auch ein Azure Key Vault-Administrator ist.
@@ -92,30 +92,30 @@ Sie können in Ihrem Data Lake-Speicherkonto Ordner zum Verwalten und Speichern 
 1. Öffnen Sie das eben erstellte Data Lake-Speicherkonto. Klicken Sie im linken Bereich auf **Durchsuchen** und dann auf **Data Lake Store**. Klicken Sie anschließend auf dem Blatt „Data Lake Store“ auf den Namen des Kontos, in dem Sie Ordner erstellen möchten. Wenn Sie das Konto an das Startmenü angeheftet haben, klicken Sie auf die Kontokachel.
 2. Klicken Sie auf dem Blatt Ihres Data Lake-Speicherkontos auf **Daten-Explorer**.
    
-    ![Erstellen von Ordnern im Data Lake-Speicherkonto](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Create folders in Data Lake Store account")
+    ![Erstellen von Ordnern im Data Lake Store-Konto](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Erstellen von Ordnern im Data Lake Store-Konto")
 3. Klicken Sie auf dem Blatt Ihres Data Lake Store-Kontos auf **Neuer Ordner**, geben Sie einen Namen für den neuen Ordner ein, und klicken Sie dann auf **OK**.
    
-    ![Erstellen von Ordnern im Data Lake-Speicherkonto](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Create folders in Data Lake Store account")
+    ![Erstellen von Ordnern im Data Lake Store-Konto](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Erstellen von Ordnern im Data Lake Store-Konto")
    
     Der neu erstellte Ordner wird auf dem Blatt **Daten-Explorer** aufgelistet. Sie können geschachtelte Ordner mit beliebig vielen Schachtelungsebenen erstellen.
    
-    ![Erstellen von Ordnern im Data Lake-Konto](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Create folders in Data Lake account")
+    ![Erstellen von Ordnern im Data Lake-Konto](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Erstellen von Ordnern im Data Lake-Konto")
 
 ## <a name="a-nameuploaddataaupload-data-to-azure-data-lake-store-account"></a><a name="uploaddata"></a>Hochladen von Daten in das Azure Data Lake-Speicherkonto
 Sie können Ihre Daten direkt auf die Stammebene eines Azure Data Lake-Speicherkontos oder in einen im Konto erstellten Ordner hochladen. Gehen Sie wie im folgenden Screenshot gezeigt vor, um auf dem Blatt **Daten-Explorer** eine Datei in einen Unterordner hochzuladen. In diesem Screenshot wird die Datei in den auf der Breadcrumb-Leiste (rot markiert) angezeigten Unterordner hochgeladen.
 
 Wenn Sie Beispieldaten zum Hochladen verwenden möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)herunterladen.
 
-![Hochladen von Daten](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Upload data")
+![Hochladen von Daten](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "Hochladen von Daten")
 
 ## <a name="a-namepropertiesaproperties-and-actions-available-on-the-stored-data"></a><a name="properties"></a>Verfügbare Eigenschaften und Aktionen für die gespeicherten Daten
 Klicken Sie auf die neu hinzugefügte Datei, um das Blatt **Eigenschaften** zu öffnen. Auf diesem Blatt werden die Eigenschaften der Datei und die verfügbaren Aktionen für die Datei angezeigt. Sie können auch den vollständigen Pfad der Datei in Ihrem Azure Data Lake-Speicherkonto kopieren (rot markiert im folgenden Screenshot).
 
-![Eigenschaften der Daten](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Properties on the data")
+![Eigenschaften der Daten](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "Eigenschaften der Daten")
 
 * Klicken Sie auf **Vorschau**, um direkt im Browser eine Vorschau der Datei anzuzeigen. Sie können auch das Format der Vorschau angeben. Klicken Sie auf **Vorschau**, klicken Sie auf dem Blatt **Dateivorschau** auf **Format**, und geben Sie dann auf dem Blatt **Format der Dateivorschau** Optionen wie die Anzahl anzuzeigender Zeilen, die zu verwendende Codierung, das Trennzeichen usw. an.
   
-  ![Format der Dateivorschau](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "File preview format")
+  ![Format der Dateivorschau](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "Format der Dateivorschau")
 * Klicken Sie auf **Herunterladen** , um die Datei auf Ihren Computer herunterzuladen.
 * Klicken Sie auf **Datei umbenennen** , um die Datei umzubenennen.
 * Klicken Sie auf **Datei löschen** , um die Datei zu löschen.
@@ -126,7 +126,7 @@ Sie können die in Ihrem Azure Data Lake-Speicherkonto gespeicherten Daten mithi
 ## <a name="delete-azure-data-lake-store-account"></a>Löschen des Azure Data Lake-Speicherkontos
 Um ein Azure Data Lake-Speicherkonto zu löschen, klicken Sie auf dem Blatt „Data Lake-Speicher“ auf **Löschen**. Sie werden aufgefordert, den Namen des zu löschenden Kontos einzugeben, um die Aktion zu bestätigen. Geben Sie den Namen des Kontos ein, und klicken Sie dann auf **Löschen**.
 
-![Löschen eines Data Lake-Kontos](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Delete Data Lake account")
+![Löschen eines Data Lake-Kontos](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Löschen eines Data Lake-Kontos")
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
@@ -137,6 +137,6 @@ Um ein Azure Data Lake-Speicherkonto zu löschen, klicken Sie auf dem Blatt „D
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Jan17_HO4-->
 
 

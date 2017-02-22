@@ -1,5 +1,5 @@
 ---
-title: "Richtlinien für Abonnements und Konten | Microsoft Docs"
+title: "Abonnement und Konto für Linux-VMs in Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementierungsrichtlinien für Abonnements und Konten in Azure."
 documentationcenter: 
 services: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2016
+ms.date: 12/16/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2b22f5fe87e1bf741e59ed71a3f57e756e2fad88
+ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
+ms.openlocfilehash: 0a4ddfa550913df1c987d1782bcd4bc3c41eb048
 
 
 ---
-# <a name="subscription-and-accounts-guidelines"></a>Richtlinien für Abonnements und Konten
+# <a name="azure-subscription-and-accounts-guidelines"></a>Richtlinien für Azure-Abonnements und -Konten
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel wird erläutert, wie Sie die Abonnement- und-Kontoverwaltung bewältigen können, wenn die Umgebung und die Benutzerbasis wachsen.
@@ -57,7 +57,7 @@ Wenn sich eine Region dazu entscheidet, mehr als ein Abonnement einer bestimmten
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-Die Organisation kann folgendermaßen aussehen:
+Die Organisation kann wie im folgenden Beispiel aussehen:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
@@ -69,6 +69,6 @@ Wir stellen ausführliche Abrechnungen in einer herunterladbaren Datei für einz
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

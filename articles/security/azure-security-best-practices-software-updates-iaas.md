@@ -1,6 +1,6 @@
 ---
-title: "Best Practices für Softwareupdates in Microsoft Azure IaaS | Microsoft Docs"
-description: "In diesem Artikel werden verschiedene Best Practices für Softwareupdates in einer Microsoft Azure IaaS-Umgebung beschrieben.  Er richtet sich an IT-Experten und Sicherheitsanalysten, deren tägliche Aufgaben das Änderungsmanagement, Softwareupdates und Assetverwaltung umfassen, oder die für  Sicherheit und Compliance in ihrer Organisation verantwortlich sind."
+title: "Bewährte Methoden für Softwareupdates für Azure IaaS | Microsoft-Dokumentation"
+description: "In diesem Artikel werden verschiedene bewährte Methoden für Softwareupdates in einer Microsoft Azure IaaS-Umgebung beschrieben.  Er richtet sich an IT-Experten und Sicherheitsanalysten, deren tägliche Aufgaben das Änderungsmanagement, Softwareupdates und Assetverwaltung umfassen, oder die für  Sicherheit und Compliance in ihrer Organisation verantwortlich sind."
 services: security
 documentationcenter: na
 author: YuriDio
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 01/30/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c52a2d6be31b1a8f581313932c0af87120ccd9fe
+ms.sourcegitcommit: 3cba38d95535ff5ed3cd62aac5c0aa04a310f48c
+ms.openlocfilehash: 43d760ffcc108a70212e47ee8eab9ec2aca02a17
 
 
 ---
@@ -27,14 +27,14 @@ Bevor wir näher auf die bewährten Methoden für eine Azure [IaaS](https://azur
 
 In der linken Spalte finden Sie sieben Zuständigkeitsbereiche (diese werden in den folgenden Abschnitten näher definiert), die Organisationen berücksichtigen sollten. All diese Bereiche tragen zur Sicherheit und zum Datenschutz in einer Computerumgebung bei.
 
-Datenklassifizierung und -verantwortlichkeit sowie Schutz von Client und Endpunkt fallen ausschließlich in den Zuständigkeitsbereich des Kunden. In PaaS- und SaaS-Modellen ist der Clouddienstanbieter für die physischen Komponenten, die Hosts und das Netzwerk verantwortlich. 
+Datenklassifizierung und -verantwortlichkeit sowie Schutz von Client und Endpunkt fallen ausschließlich in den Zuständigkeitsbereich des Kunden. In PaaS- und SaaS-Modellen ist der Clouddienstanbieter für die physischen Komponenten, die Hosts und das Netzwerk verantwortlich.
 
 Die verbleibenden Zuständigkeiten werden zwischen Kunde und Clouddienstanbieter aufgeteilt. Einige Zuständigkeiten erfordern eine Zusammenarbeit zwischen Clouddienstanbieter und Kunde, darunter die Überwachung ihrer Domänen. Betrachten wir beispielsweise die Identitäts- und Zugriffsverwaltung bei Verwendung von Azure Active Directory-Diensten: Während die Konfiguration von Diensten wie der Multi-Factor Authentication durch den Kunden erfolgt, ist Microsoft Azure dafür verantwortlich, die effektive Funktionalität zu gewährleisten.
 
 > [!NOTE]
-> Weitere Informationen zur gemeinsamen Zuständigkeit in der Cloud finden Sie unter [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) (Gemeinsame Zuständigkeiten für Cloud Computing). 
-> 
-> 
+> Weitere Informationen zur gemeinsamen Zuständigkeit in der Cloud finden Sie unter [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) (Gemeinsame Zuständigkeiten für Cloud Computing).
+>
+>
 
 Dieselben Prinzipien gelten in einem Hybridszenario, bei der Ihr Unternehmen Azure IaaS-VMs verwendet, die mit lokalen Ressourcen kommunizieren (siehe nachstehendes Diagramm).
 
@@ -110,7 +110,6 @@ Verwenden Sie die in diesem Artikel beschriebenen Richtlinien, um die optimalen 
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO5-->
 
 

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e2e81139152549eaa40d788c80cfdd2388b2d55d
-ms.openlocfilehash: 3b3a203ce261405ee7392561ffbc19c047c0d370
+ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
+ms.openlocfilehash: f0cbb7f78d73c6f39dc4e8a2227b144e8a49c83a
 
 
 ---
@@ -34,7 +34,7 @@ Der standardmäßig verfügbare Abhängigkeitsmonitor meldet derzeit Aufrufe an 
 * Webseiten
   * AJAX-Aufrufe
 
-Mit [TrackDependency-API](app-insights-api-custom-events-metrics.md#track-dependency)können Sie auch eigene SDK-Aufrufe zum Überwachen anderer Abhängigkeiten schreiben, sowohl in Client- als auch Servercode.
+Mit [TrackDependency-API](app-insights-api-custom-events-metrics.md#trackdependency)können Sie auch eigene SDK-Aufrufe zum Überwachen anderer Abhängigkeiten schreiben, sowohl in Client- als auch Servercode.
 
 ## <a name="set-up-dependency-monitoring"></a>Einrichten der Abhängigkeitsüberwachung
 Teilinformationen von Abhängigkeiten werden automatisch durch das [Application Insights-SDK](app-insights-asp-net.md) gesammelt. Installieren Sie den entsprechenden Agent für den Hostserver, um umfassende Daten zu erhalten.
@@ -118,7 +118,7 @@ Es scheint eine große Unterbrechung nach dem ersten Abhängigkeitsaufruf zu geb
 
 ### <a name="profiling-your-live-site"></a>Profilerstellung Ihrer Live-Website
 
-Sie möchten wissen, was am längsten gedauert hat? Der Application Insights-Profiler verfolgt HTTP-Aufrufe zu Ihrer Live-Website zurück, und zeigt an, welche Funktionen im Code die meiste Zeit in Anspruch genommen haben. Der Profiler befindet sich derzeit in der eingeschränkten Vorschau – Sie können sich [anmelden, um ihn auszuprobieren](https://aka.ms/AIProfilerPreview).
+Sie möchten wissen, was am längsten gedauert hat? Der Application Insights-Profiler verfolgt HTTP-Aufrufe zu Ihrer Livewebsite zurück, und zeigt an, welche Funktionen im Code die meiste Zeit in Anspruch genommen haben. Der Profiler befindet sich derzeit in der eingeschränkten Vorschau – Sie können sich [anmelden, um ihn auszuprobieren](https://aka.ms/AIProfilerPreview).
 
 ## <a name="failed-requests"></a>Failed requests
 Anforderungsfehler können auch fehlgeschlagenen Aufrufen von Abhängigkeiten zugeordnet werden. Wir können erneut bis zum Problem durchklicken.
@@ -172,7 +172,7 @@ Sie können Abhängigkeiten in der [Analytics Abfragesprache](app-insights-analy
 ## <a name="custom-dependency-tracking"></a>Benutzerdefinierte Nachverfolgung von Abhängigkeiten
 Das Standardmodul für die Nachverfolgung von Abhängigkeiten ermittelt automatisch externe Abhängigkeiten wie Datenbanken und REST-APIs. Es kann jedoch gewünscht sein, einige zusätzliche Komponenten auf die gleiche Weise zu behandeln.
 
-Sie können Code schreiben, der Abhängigkeitsinformationen unter Verwendung der gleichen [TrackDependency-API](app-insights-api-custom-events-metrics.md#track-dependency) sendet, die von den Standardmodulen verwendet wird.
+Sie können Code schreiben, der Abhängigkeitsinformationen unter Verwendung der gleichen [TrackDependency-API](app-insights-api-custom-events-metrics.md#trackdependency) sendet, die von den Standardmodulen verwendet wird.
 
 Beispiel: Wenn Sie Ihren Code mit einer Assembly erstellen, die Sie nicht selbst geschrieben haben, könnten Sie die Zeit aller Aufrufe ermitteln, um herauszufinden, welchen Beitrag sie an Ihren Reaktionszeiten hat. Um diese Daten in den Abhängigkeitsdiagrammen in Application Insights anzuzeigen, senden Sie sie mit `TrackDependency`.
 
@@ -209,6 +209,6 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

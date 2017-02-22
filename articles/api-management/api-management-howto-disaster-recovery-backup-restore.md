@@ -1,5 +1,5 @@
 ---
-title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management | Microsoft Docs
+title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen in Azure API Management | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Sichern und Wiederherstellen zur Notfallwiederherstellung in Azure API Management verwenden.
 services: api-management
 documentationcenter: 
@@ -12,12 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
-ms.author: apipm
+ms.date: 01/23/2017
+ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: a7ff82a47b4e972db96929acb47fcce760b244b3
-ms.openlocfilehash: 73bb12643a5c94e364ac4040f6e1678cb1495fb2
-
+ms.sourcegitcommit: 809fc7a5454c814d1d3edb8ebcdd40978952bc2c
+ms.openlocfilehash: d05404ed6893978a857a3ad66d5129998272ebbd
 
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
@@ -30,7 +29,7 @@ In dieser Anleitung wird erläutert, wie Anforderungen des Azure-Ressourcen-Mana
 > [!NOTE]
 > Der Vorgang zum Sichern und Wiederherstellen einer API Management-Dienstinstanz für die Notfallwiederherstellung kann auch zum Replizieren von API Management-Dienstinstanzen für Szenarios wie z. B. das Staging verwendet werden.
 >
-> Beachten Sie, dass jede Sicherung nach 7 Tagen abläuft. Wenn Sie versuchen, eine Sicherung nach dem Ablaufzeitraum von 7 Tagen wiederherzustellen, schlägt die Wiederherstellung mit der Meldung `Cannot restore: backup expired` fehl.
+> Beachten Sie, dass jede Sicherung nach 30 Tagen abläuft. Wenn Sie versuchen, eine Sicherung nach dem Ablaufzeitraum von 30 Tagen wiederherzustellen, erhalten Sie eine `Cannot restore: backup expired`-Fehlermeldung.
 >
 >
 
@@ -214,6 +213,6 @@ Sehen Sie sich die folgenden Microsoft-Blogs für zwei verschiedene Vorgehenswei
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

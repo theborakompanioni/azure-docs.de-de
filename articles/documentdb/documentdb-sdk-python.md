@@ -1,5 +1,5 @@
 ---
-title: DocumentDB Python-API und SDK | Microsoft Docs
+title: "Ressourcen zu Python-API und SDK für Azure DocumentDB | Microsoft-Dokumentation"
 description: "Wichtige Informationen zur Python-API und zum SDK, einschließlich Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen des DocumentDB Python SDK."
 services: documentdb
 documentationcenter: python
@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 5e182811adc29ae00d40355bb4813c30eb0b904c
-ms.openlocfilehash: 6e2ab89f3895edcfb818ad918dfffd597f4905d3
+ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
+ms.openlocfilehash: 377b1c5a5f1a3425f255d227c6d2800b9ec61a33
 
 
 ---
@@ -115,7 +115,7 @@ Anforderungen von DocumentDB mithilfe eines deaktivierten SDK werden vom Dienst 
 | --- | --- | --- |
 | [2.0.1](#2.0.1) |30. Oktober 2016 |--- |
 | [2.0.0](#2.0.0) |29. September 2016 |--- |
-| [1.9.0](#1.9.0) |07. Juli 2016 |--- |
+| [1.9.0](#1.9.0) |7. Juli 2016 |--- |
 | [1.8.0](#1.8.0) |14. Juni 2016 |--- |
 | [1.7.0](#1.7.0) |26. April 2016 |--- |
 | [1.6.1](#1.6.1) |8. April 2016 |--- |
@@ -142,6 +142,6 @@ Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microso
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

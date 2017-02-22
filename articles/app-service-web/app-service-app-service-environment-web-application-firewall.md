@@ -29,7 +29,7 @@ Web Application Firewalls wie [Barracuda WAF for Azure](https://www.barracuda.co
 ## <a name="setup"></a>Einrichtung
 Für dieses Dokument konfigurieren wir unsere App Service-Umgebung hinter mehreren Barracuda WAF-Instanzen mit Lastenausgleich, sodass nur Datenverkehr von der WAF die App Service-Umgebung erreichen kann und kein Zugriff aus der DMZ möglich ist. Außerdem haben wir Azure Traffic Manager unseren Barracuda WAF-Instanzen für den Lastenausgleich von Azure-Datencentern und Regionen vorgelagert. Ein allgemeines Diagramm der Einrichtung wird nachstehend gezeigt.
 
-![Architektur][Architecture] 
+![Architecture][Architecture] 
 
 > Hinweis: Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md)können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht. 
 > 
@@ -59,7 +59,7 @@ Fügen Sie, wie in der folgenden Abbildung gezeigt, den Verwaltungsendpunkt hinz
 
 ![Verwaltungsendpunkt hinzufügen][AddManagementEndpoint]
 
-Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu „http://test.cloudapp.net:8000“ navigieren. Es sollte, wie nachstehend gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
+Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu „ http://test.cloudapp.net:8000 “ navigieren. Es sollte, wie nachstehend gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
 
 ![Anmeldeseite für die Verwaltung][ManagementLoginPage]
 
@@ -100,7 +100,7 @@ Ersetzen Sie "SourceAddressPrefix" durch die virtuelle IP-Adresse (VIP) des Clou
 > 
 
 <!-- IMAGES -->
-[Architektur]: ./media/app-service-app-service-environment-web-application-firewall/Architecture.png
+[Architecture]: ./media/app-service-app-service-environment-web-application-firewall/Architecture.png
 [ConfigureEndpoint]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureEndpoint.png
 [AddManagementEndpoint]: ./media/app-service-app-service-environment-web-application-firewall/AddManagementEndpoint.png
 [ManagementAddServices]: ./media/app-service-app-service-environment-web-application-firewall/ManagementAddServices.png

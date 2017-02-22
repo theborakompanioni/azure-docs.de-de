@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte mit Aufträgen für die elastische Datenbank"
+title: "Erste Schritte mit Aufträgen für die elastische Datenbank | Microsoft Docs"
 description: "Verwenden von Aufträgen für die elastische Datenbank"
 services: sql-database
 documentationcenter: 
@@ -7,6 +7,7 @@ manager: jhubbard
 author: ddove
 ms.assetid: 2540de0e-2235-4cdd-9b6a-b841adba00e5
 ms.service: sql-database
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,8 +15,8 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 5a101aa78dbac4f1a0edb7f414b44c14db392652
-ms.openlocfilehash: a75137f0918d646516d3cf75c89f3e0131bc224d
+ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
+ms.openlocfilehash: 1765e009438684373c89dc8364efd20dd1b7c84b
 
 
 ---
@@ -32,17 +33,19 @@ Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen a
 
 1. Erstellen Sie die Beispielanwendung aus **Erste Schritte mit den Tools für die elastische Datenbank** , und führen Sie sie aus. Führen Sie die Schritte bis Schritt 7 im Abschnitt [Herunterladen und Ausführen der Beispiel-App](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) aus. Am Ende von Schritt 7 wird die folgende Eingabeaufforderung angezeigt:
 
-    ![Eingabeaufforderung][1]
+   ![Eingabeaufforderung](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
+
 2. Geben Sie im Befehlsfenster „1“ ein, und drücken Sie die **EINGABETASTE**. Dadurch wird der Shardzuordnungs-Manager erstellt, und es werden zwei Shards zum Server hinzugefügt. Geben Sie dann „3“ ein, und drücken Sie die **Eingabetaste**. Wiederholen Sie diesen Vorgang viermal. Dadurch werden Beispieldatenzeilen in die Shards eingefügt.
 3. Im [Azure-Portal](https://portal.azure.com) sollten drei neue Datenbanken auf dem V12-Server angezeigt werden:
 
-   ![Visual Studio-Bestätigung][2]
+   ![Visual Studio-Bestätigung](./media/sql-database-elastic-query-getting-started/portal.png)
 
    An diesem Punkt erstellen wir eine benutzerdefinierte Datenbanksammlung, die alle Datenbanken in der Shardzuordnung berücksichtigt. Auf diese Weise können wir einen Auftrag erstellen und ausführen, mit dem eine neue, Shards übergreifende Tabelle hinzugefügt wird.
 
 Wir würden hier normalerweise ein Shardzuordnungsziel mithilfe des Cmdlets **New-AzureSqlJobTarget** erstellen. Die Datenbank des Shardzuordnungs-Managers muss dann als Datenbankziel festgelegt werden, anschließend wird die bestimmte Shardzuordnung als Ziel angegeben. Stattdessen zählen wir alle Datenbanken auf dem Server auf, und fügen die Datenbanken mit Ausnahme der Masterdatenbank der neuen benutzerdefinierten Sammlung hinzu.
 
-## <a name="creates-a-custom-collection-and-adds-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Erstellt eine benutzerdefinierte Sammlung und fügt ihr alle Datenbanken auf dem Server mit Ausnahme der Masterdatenbank hinzu.
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Erstellt eine benutzerdefinierte Sammlung und fügt ihr alle Datenbanken auf dem Server mit Ausnahme der Masterdatenbank hinzu.
+   ```
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -104,9 +107,10 @@ Wir würden hier normalerweise ein Shardzuordnungsziel mithilfe des Cmdlets **Ne
         }
     }
     $ErrorActionPreference = "Continue"
-}
-
+   }
+   ```
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Erstellen eines T-SQL-Skripts für die datenbankübergreifende Ausführung
+   ```
     $scriptName = "NewTable"
     $scriptCommandText = "
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'Test')
@@ -122,8 +126,11 @@ Wir würden hier normalerweise ein Shardzuordnungsziel mithilfe des Cmdlets **Ne
 
     $script = New-AzureSqlJobContent -ContentName $scriptName -CommandText $scriptCommandText
     Write-Output $script
+   ```
 
 ## <a name="create-the-job-to-execute-a-script-across-the-custom-group-of-databases"></a>Erstellen Sie den Auftrag zum Ausführen eines Skripts über die gesamte benutzerdefinierte Gruppe von Datenbanken.
+
+   ```
     $jobName = "create on server dbs"
     $scriptName = "NewTable"
     $customCollectionName = "dbs_in_server"
@@ -131,77 +138,97 @@ Wir würden hier normalerweise ein Shardzuordnungsziel mithilfe des Cmdlets **Ne
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $credentialName -ContentName $scriptName -TargetId $target.TargetId
     Write-Output $job
-
+   ```
 
 ## <a name="execute-the-job"></a>Führen Sie den Auftrag aus.
 Das folgende PowerShell-Skript kann verwendet werden, um einen vorhandenen Auftrag auszuführen:
 
 Aktualisieren Sie die folgende Variable, sodass sie den gewünschten Auftragsnamen für die Ausführung angibt:
 
+   ```
     $jobName = "create on server dbs"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
+   ```
 
 ## <a name="retrieve-the-state-of-a-single-job-execution"></a>Abrufen des Ausführungsstatus eines einzelnen Auftrags
 Verwenden Sie das gleiche Cmdlet **Get-AzureSqlJobExecution** mit dem Parameter **IncludeChildren**, um den Ausführungsstatus untergeordneter Aufträge anzuzeigen, insbesondere den spezifischen Status für die Ausführung der einzelnen Aufträge in jeder der im Auftrag enthaltenen Datenbanken.
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions
+   ```
 
 ## <a name="view-the-state-across-multiple-job-executions"></a>Übergreifendes Anzeigen des Ausführungsstatus über mehrere Aufträge
 Das Cmdlet **Get-AzureSqlJobExecution** weist mehrere optionale Parameter auf, die zum Anzeigen der Ausführung mehrerer Aufträge verwendet werden können, die anhand der angegebenen Parameter gefiltert werden. Die folgenden Beispiele zeigen einige der möglichen Verwendungsweisen von „Get-AzureSqlJobExecution“:
 
 Abrufen aller aktiven Auftragsausführungen auf der obersten Ebene:
 
+   ```
     Get-AzureSqlJobExecution
+   ```
 
 Abrufen aller Auftragsausführungen auf der obersten Ebene, einschließlich der inaktiven Auftragsausführungen:
 
+   ```
     Get-AzureSqlJobExecution -IncludeInactive
+   ```
 
 Abrufen der Ausführung aller untergeordneten Aufträge mit einer angegebenen Auftragsausführungs-ID, einschließlich inaktiver Auftragsausführungen:
 
+   ```
     $parentJobExecutionId = "{Job Execution Id}"
-    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId –IncludeInactive -IncludeChildren
+    Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
+   ```
 
 Abrufen aller Auftragsausführungen, die eine bestimmte Kombination aus Zeitplan und Auftrag verwenden, einschließlich inaktiver Aufträge:
 
+   ```
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Get-AzureSqlJobExecution -JobName $jobName -ScheduleName $scheduleName -IncludeInactive
+   ```
 
 Abrufen aller Aufträge, die eine angegebene Shardzuordnung als Ziel haben, einschließlich inaktiver Aufträge:
 
+   ```
     $shardMapServerName = "{Shard Map Server Name}"
     $shardMapDatabaseName = "{Shard Map Database Name}"
     $shardMapName = "{Shard Map Name}"
     $target = Get-AzureSqlJobTarget -ShardMapManagerDatabaseName $shardMapDatabaseName -ShardMapManagerServerName $shardMapServerName -ShardMapName $shardMapName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
+   ```
 
 Abrufen aller Aufträge, die eine angegebene benutzerdefinierte Sammlung als Ziel haben, einschließlich inaktiver Aufträge:
 
+   ```
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
-    Get-AzureSqlJobExecution -TargetId $target.TargetId –IncludeInactive
+    Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
+   ```
 
 Abrufen der Liste der Ausführungen von Auftragsaufgaben innerhalb einer bestimmten Auftragsausführung:
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Write-Output $jobTaskExecutions
+   ```
 
 Abrufen von Ausführungsdetails zu Auftragsaufgaben:
 
 Das folgende PowerShell-Skript kann zum Anzeigen der Ausführungsdetails einer Auftragsaufgabe verwendet werden, was besonders beim Debuggen von Ausführungsfehlern nützlich ist.
-
+   ```
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
+   ```
 
 ## <a name="retrieve-failures-within-job-task-executions"></a>Abrufen von Ausführungsfehlern innerhalb von Auftragsaufgaben
 Das Objekt „JobTaskExecution“ enthält eine Eigenschaft für den Lebenszyklus der Aufgabe und darüber hinaus eine Message-Eigenschaft. Bei einem Ausführungsfehler einer Auftragsaufgabe wird die Eigenschaft „Lifecycle“ auf *Failed* festgelegt, und die Eigenschaft „Message“ übernimmt die resultierende Ausnahmenachricht und deren Stapel als Inhalt. Wenn ein Auftrag nicht erfolgreich abgeschlossen wurde, müssen die Details der Auftragsaufgaben angezeigt werden, die für einen bestimmten Auftrag nicht erfolgreich abgeschlossen wurden.
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Foreach($jobTaskExecution in $jobTaskExecutions)
@@ -211,12 +238,15 @@ Das Objekt „JobTaskExecution“ enthält eine Eigenschaft für den Lebenszyklu
             Write-Output $jobTaskExecution
             }
         }
+   ```
 
 ## <a name="waiting-for-a-job-execution-to-complete"></a>Warten auf den Abschluss einer Auftragsausführung
 Das folgende PowerShell-Skript kann verwendet werden, um auf den Abschluss einer Auftragsaufgabe zu warten:
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId
+   ```
 
 ## <a name="create-a-custom-execution-policy"></a>Erstellen einer benutzerdefinierten Ausführungsrichtlinie
 Aufträge für die elastische Datenbank unterstützen das Erstellen benutzerdefinierter Ausführungsrichtlinien, die beim Starten von Aufträgen angewendet werden können.
@@ -241,6 +271,7 @@ Für die standardmäßige Ausführungsrichtlinie werden diese Werte verwendet:
 
 Erstellen Sie die gewünschte Ausführungsrichtlinie:
 
+   ```
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -249,10 +280,12 @@ Erstellen Sie die gewünschte Ausführungsrichtlinie:
     $retryIntervalBackoffCoefficient = 1.5
     $executionPolicy = New-AzureSqlJobExecutionPolicy -ExecutionPolicyName $executionPolicyName -InitialRetryInterval $initialRetryInterval -JobTimeout $jobTimeout -MaximumAttempts $maximumAttempts -MaximumRetryInterval $maximumRetryInterval -RetryIntervalBackoffCoefficient $retryIntervalBackoffCoefficient
     Write-Output $executionPolicy
+   ```
 
 ### <a name="update-a-custom-execution-policy"></a>Aktualisieren einer benutzerdefinierten Ausführungsrichtlinie
 Aktualisieren Sie die gewünschte Ausführungsrichtlinie:
 
+   ```
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 15
     $jobTimeout = New-TimeSpan -Minutes 30
@@ -261,6 +294,7 @@ Aktualisieren Sie die gewünschte Ausführungsrichtlinie:
     $retryIntervalBackoffCoefficient = 1.5
     $updatedExecutionPolicy = Set-AzureSqlJobExecutionPolicy -ExecutionPolicyName $executionPolicyName -InitialRetryInterval $initialRetryInterval -JobTimeout $jobTimeout -MaximumAttempts $maximumAttempts -MaximumRetryInterval $maximumRetryInterval -RetryIntervalBackoffCoefficient $retryIntervalBackoffCoefficient
     Write-Output $updatedExecutionPolicy
+   ```
 
 ## <a name="cancel-a-job"></a>Abbrechen eines Auftrags
 Aufträge für die elastische Datenbank unterstützen Abbruchanforderungen für Aufträge.  Wenn Aufträge für die elastische Datenbank eine Abbruchanforderung für einen aktuell ausgeführten Auftrag erkennen, versuchen sie, den Auftrag zu beenden.
@@ -274,8 +308,10 @@ Wenn für einen übergeordneten Auftrag ein Auftragsabbruch angefordert wird, wi
 
 Verwenden Sie zum Senden von Abbruchanforderungen das Cmdlet **Stop-AzureSqlJobExecution**, und legen Sie den Parameter **JobExecutionId** fest.
 
+   ```
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
+   ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>Löschen eines Auftrags anhand seines Namens und seines Verlaufs
 Aufträge für die elastische Datenbank unterstützen die asynchrone Löschung von Aufträgen. Ein Auftrag kann für die Löschung markiert werden, und das System löscht den Auftrag und seinen gesamten Verlauf, nachdem die gesamte Ausführung von Unteraufträgen für den Auftrag abgeschlossen wurde. Das System bricht aktiv ausgeführte Aufträge nicht automatisch ab.  
@@ -284,47 +320,58 @@ Stattdessen muss „Stop-AzureSqlJobExecution“ aufgerufen werden, um die Ausf�
 
 Verwenden Sie zum Auslösen der Löschung von Aufträgen das Cmdlet **Remove-AzureSqlJob**, und legen Sie den Parameter **JobName** fest.
 
+   ```
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
+   ```
 
 ## <a name="create-a-custom-database-target"></a>Erstellen eines benutzerdefinierten Datenbankziels
-In Aufträgen für die elastische Datenbank können benutzerdefinierte Datenbankziele definiert werden, die entweder direkt für die Ausführung oder für die Aufnahme in eine benutzerdefinierte Datenbankgruppe verwendet werden können. Da **elastische Datenbankpools** durch die PowerShell-APIs noch nicht direkt unterstützt werden, erstellen Sie einfach ein benutzerdefiniertes Datenbankziel und ein benutzerdefiniertes Datenbanksammlungsziel, das sämtliche Datenbanken im Pool enthält.
+In Aufträgen für die elastische Datenbank können benutzerdefinierte Datenbankziele definiert werden, die entweder direkt für die Ausführung oder für die Aufnahme in eine benutzerdefinierte Datenbankgruppe verwendet werden können. Da **Pools für elastische Datenbanken** durch die PowerShell-APIs noch nicht direkt unterstützt werden, erstellen Sie einfach ein benutzerdefiniertes Datenbankziel und ein benutzerdefiniertes Datenbanksammlungsziel, das sämtliche Datenbanken im Pool enthält.
 
 Legen Sie die folgenden Variablen fest, um die gewünschten Datenbankinformationen anzugeben:
 
+   ```
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName
+   ```
 
 ## <a name="create-a-custom-database-collection-target"></a>Erstellen eines benutzerdefinierten Datenbanksammlungsziels
 Um die übergreifende Ausführung für mehrere definierte Datenbankziele zu ermöglichen, kann ein benutzerdefiniertes Datenbanksammlungsziel definiert werden. Nach dem Erstellen einer Datenbankgruppe können Datenbanken dem benutzerdefinierten Sammlungsziel zugeordnet werden.
 
 Legen Sie die folgenden Variablen fest, um die gewünschte Konfiguration für das benutzerdefinierte Sammlungsziel anzugeben:
 
+   ```
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
+   ```
 
 ### <a name="add-databases-to-a-custom-database-collection-target"></a>Hinzufügen von Datenbanken zu einem benutzerdefinierten Datenbanksammlungsziel
 Datenbankziele können benutzerdefinierten Datenbanksammlungszielen zugeordnet werden, um eine Gruppe von Datenbanken zu erstellen. Jeder erstellte Auftrag mit einem benutzerdefinierten Datenbanksammlungsziel als Ziel wird bei der Ausführung auf die der Gruppe zugeordneten Datenbanken erweitert.
 
 Fügen Sie die gewünschte Datenbank einer bestimmten benutzerdefinierten Sammlung hinzu:
 
+   ```
     $serverName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName
+   ```
 
 #### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Überprüfen der Datenbanken in einem benutzerdefinierten Datenbanksammlungsziel
 Verwenden Sie das Cmdlet **Get-AzureSqlJobTarget** , um die untergeordneten Datenbanken in einem benutzerdefinierten Datenbankziel abzurufen.
 
+   ```
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
     Write-Output $childTargets
+   ```
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Erstellen eines Auftrags zum Ausführen eines Skripts für ein benutzerdefiniertes Datenbanksammlungsziel
 Verwenden Sie das Cmdlet **New-AzureSqlJob** , um einen Auftrag für eine Gruppe von Datenbanken zu erstellen, die durch ein benutzerdefiniertes Datenbanksammlungsziel definiert ist. Aufträge für die elastische Datenbank erweitern den Auftrag in mehrere untergeordnete Aufträge, von denen jeder einer dem benutzerdefinierten Datenbanksammlungsziel zugeordneten Datenbank entspricht, und stellen sicher, dass das Skript für jede der Datenbanken ausgeführt wird. Um Wiederholungsresilienz sicherzustellen, müssen die Skripts idempotent sein.
 
+   ```
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $customCollectionName = "{Custom Collection Name}"
@@ -332,6 +379,7 @@ Verwenden Sie das Cmdlet **New-AzureSqlJob** , um einen Auftrag für eine Gruppe
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $credentialName -ContentName $scriptName -TargetId $target.TargetId
     Write-Output $job
+   ```
 
 ## <a name="data-collection-across-databases"></a>Datenbankübergreifende Datensammlung
 **Aufträge für die elastische Datenbank** unterstützt das übergreifende Ausführen einer Abfrage für eine Gruppe von Datenbanken und sendet die Ergebnisse an eine Tabelle einer angegebenen Datenbank zurück. Anschließend kann eine Abfrage für die Tabelle ausgeführt werden, um die Ergebnisse der Abfrage für die einzelnen Datenbanken anzuzeigen. Dadurch wird ein asynchrones Verfahren zum übergreifenden Ausführen einer Abfrage in vielen Datenbanken bereitgestellt. Auftretende Fehler, wie die vorübergehende Nichtverfügbarkeit einer Datenbank, werden automatisch mithilfe von Wiederholungsversuchen behandelt.
@@ -342,6 +390,7 @@ Das folgende PowerShell-Skript kann verwendet werden, um ein Skript auszuführen
 
 Legen Sie die folgenden Werte fest, um das gewünschte Skript, die Anmeldeinformationen und das Ausführungsziel anzugeben:
 
+   ```
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
     $executionCredentialName = "{Execution Credential Name}"
@@ -352,45 +401,49 @@ Legen Sie die folgenden Werte fest, um das gewünschte Skript, die Anmeldeinform
     $destinationSchemaName = "{Destination Schema Name}"
     $destinationTableName = "{Destination Table Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
+   ```
 
 ### <a name="create-and-start-a-job-for-data-collection-scenarios"></a>Erstellen und Starten eines Auftrags für Datensammlungsszenarien
+   ```
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $executionCredentialName -ContentName $scriptName -ResultSetDestinationServerName $destinationServerName -ResultSetDestinationDatabaseName $destinationDatabaseName -ResultSetDestinationSchemaName $destinationSchemaName -ResultSetDestinationTableName $destinationTableName -ResultSetDestinationCredentialName $destinationCredentialName -TargetId $target.TargetId
     Write-Output $job
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
+   ```
 
 ## <a name="create-a-schedule-for-job-execution-using-a-job-trigger"></a>Erstellen eines Zeitplans für die Auftragsausführung mithilfe eines Auftragsauslösers
 Das folgende PowerShell-Skript kann zum Erstellen eines wiederkehrenden Zeitplans verwendet werden. Dieses Skript verwendet ein einminütiges Intervall, „New-AzureSqlJobSchedule“ unterstützt aber außerdem auch die Parameter „-DayInterval“, „-HourInterval“, „-MonthInterval“ und „-WeekInterval“. Zeitpläne, die nur einmalig ausgeführt werden sollen, können durch Angeben von „-OneTime“ erstellt werden.
 
 Erstellen Sie einen neuen Zeitplan:
-
+   ```
     $scheduleName = "Every one minute"
     $minuteInterval = 1
     $startTime = (Get-Date).ToUniversalTime()
     $schedule = New-AzureSqlJobSchedule -MinuteInterval $minuteInterval -ScheduleName $scheduleName -StartTime $startTime
     Write-Output $schedule
+   ```
 
 ### <a name="create-a-job-trigger-to-have-a-job-executed-on-a-time-schedule"></a>Erstellen eines Auftragsauslösers, um einen Auftrag nach einem Zeitplan auszuführen
 Ein Auftragsauslöser kann so definiert werden, dass ein Auftrag gemäß einem Zeitplan ausgeführt wird. Das folgenden PowerShell-Skript kann zum Erstellen eines Auftragsauslösers verwendet werden.
 
 Legen Sie die folgenden Variablen entsprechend dem gewünschten Auftrag und Zeitplan fest:
 
+   ```
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
-    $jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName –JobName $jobName
+    $jobTrigger = New-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
     Write-Output $jobTrigger
+   ```
 
 ### <a name="remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Entfernen einer Zeitplanzuordnung, um die Ausführung eines Auftrags gemäß einem Zeitplan zu beenden
 Um die Fortsetzung der Auftragsausführung durch einen Auftragsauslöser aufzuheben, kann der Auftragsauslöser entfernt werden.
 Entfernen Sie einen Auftragsauslöser, um die fortlaufende Ausführung eines Auftrags gemäß einem Zeitplan zu beenden, mithilfe des Cmdlets **Remove-AzureSqlJobTrigger** .
 
+   ```
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Remove-AzureSqlJobTrigger -ScheduleName $scheduleName -JobName $jobName
-
-
-
-
+   ```
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>Importieren der Ergebnisse der Abfrage für die elastische Datenbank in Excel
  Sie können die Ergebnisse einer Abfrage in eine Excel-Datei importieren.
@@ -399,7 +452,8 @@ Entfernen Sie einen Auftragsauslöser, um die fortlaufende Ausführung eines Auf
 2. Navigieren Sie zum Menüband **Daten** .
 3. Klicken Sie auf **Aus anderen Quellen** und dann auf **Von SQL Server**.
 
-   ![Excel-Import aus anderen Quellen][5]
+   ![Excel-Import aus anderen Quellen](./media/sql-database-elastic-query-getting-started/exel-sources.png)
+
 4. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen ein. Klicken Sie auf **Weiter**.
 5. Wählen Sie im Dialogfeld **Wählen Sie die Datenbank, die die benötigten Daten enthält** die Datenbank **ElasticDBQuery** aus.
 6. Wählen Sie in der Listenansicht die Tabelle **Customers** aus, und klicken Sie auf **Weiter**. Klicken Sie auf **Fertig stellen**.
@@ -427,6 +481,6 @@ Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://az
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

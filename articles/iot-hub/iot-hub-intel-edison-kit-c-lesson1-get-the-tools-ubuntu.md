@@ -1,5 +1,5 @@
 ---
-title: "Abrufen der Tools für Ihr Azure IoT Starter Kit (Ubuntu 16.04) | Microsoft Docs"
+title: "Verbinden von Intel Edison (C) mit Azure IoT – Lektion 1: Abrufen der Tools (Ubuntu) | Microsoft-Dokumentation"
 description: "Laden Sie die erforderlichen Tools und die Software für die erste Beispielanwendung für Edison auf Ubuntu herunter, und installieren Sie sie."
 services: iot-hub
 documentationcenter: 
@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 11/8/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: add691f1349ab27c057263b9aa0561b84fd8f262
-ms.openlocfilehash: dbf1a2c1af218d4285b2e20a5a6914e2b3cf6864
+ms.sourcegitcommit: 475b25f02715a60493e79ecd2170854019dfc4ac
+ms.openlocfilehash: d9c7eee6cb104e3ec0b8faa1bb84f8bbe1ce0640
 
 
 ---
@@ -89,6 +89,6 @@ Sie haben die erforderlichen Entwicklungstools und die Software für die erste B
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Jan17_HO4-->
 
 

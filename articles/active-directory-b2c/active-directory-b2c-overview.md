@@ -15,8 +15,8 @@ ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: swkrish
 translationtype: Human Translation
-ms.sourcegitcommit: 4b13c040a15bef2f04d2cd2126e2270d061898bd
-ms.openlocfilehash: 37c9d6808b3282d86583f6305672405775a7f306
+ms.sourcegitcommit: f37fa3a212a0dca46c76b3928cf78756722f0340
+ms.openlocfilehash: 2c6765e28f40210730823a9af0b6fb80a5ddc4d1
 
 
 ---
@@ -33,7 +33,7 @@ Sie können Ihre Anwendung für den Azure Active Directory B2C-Dienst programmie
 [!INCLUDE [active-directory-b2c-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
 ## <a name="whats-new"></a>Neuigkeiten
-Sie sollten diese Seite häufiger aufrufen, da Informationen über zukünftige Änderungen an Azure Active Directory B2C hier aufgeführt werden. Außerdem veröffentlichen wir Tweets zu Updates unter @AzureAD.
+Sie sollten diese Seite häufiger aufrufen, da Informationen über zukünftige Änderungen an Azure Active Directory B2C hier aufgeführt werden. Unter @AzureAD veröffentlichen wir außerdem Tweets zu Updates.
 
 * Informieren Sie sich über das [erweiterbare Richtlinienframework](active-directory-b2c-reference-policies.md) und die Typen von Richtlinien, die Sie in Ihren Anwendungen erstellen und verwenden können.
 * Legen Sie sich ein Lesezeichen für unseren [Dienst-Blog](https://blogs.msdn.microsoft.com/azureadb2c/) an, damit Sie keine Benachrichtigungen zu kleineren Dienstproblemen, Updates, zum Status oder zu Lösungen verpassen. Verfolgen Sie den Stand außerdem weiter im [Azure-Statusdashboard](https://azure.microsoft.com/status/) .
@@ -54,6 +54,7 @@ Informieren Sie sich über die Verwendung bestimmter Azure Active Directory B2C-
 Unter den folgenden Links finden Sie ausführliche Informationen zum Dienst:
 
 * Hier finden Sie [Azure Active Directory B2C-Preisinformationen](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+* Sehen Sie sich unsere [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c) für Azure Active Directory B2C an. 
 * Hilfe zu Stack Overflow mit [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory)- oder [adal](http://stackoverflow.com/questions/tagged/adal)-Tags
 * Teilen Sie uns Ihre Meinung über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/)mit. Verwenden Sie den Ausdruck "AzureADB2C:" im Titel Ihres Beitrags, damit wir ihn einfacher finden können.
 * Lesen Sie die [Referenz zu Azure AD B2C-Protokollen](active-directory-b2c-reference-protocols.md).
@@ -67,6 +68,6 @@ Wir empfehlen Ihnen, den Erhalt von Benachrichtigungen zu Sicherheitsvorfällen 
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

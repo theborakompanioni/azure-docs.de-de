@@ -1,6 +1,6 @@
 ---
 title: "Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure | Microsoft Docs"
-description: " In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern. "
+description: " In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierbaren Azure-Dienste und -Features die Sicherheit von Lösungen für das Gesundheitswesen verbessern.. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2016
+ms.date: 01/07/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 050128d937b7cbb7728264594a4399eaae0da57d
+ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
+ms.openlocfilehash: 34ded89eb7fe005be2341f96e5b883ec73d9e0a5
 
 
 ---
@@ -34,7 +34,6 @@ Wir hoffen, Ihnen mit der [praktischen Anleitung zur Entwicklung sicherer Lösun
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

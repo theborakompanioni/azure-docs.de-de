@@ -1,5 +1,5 @@
 ---
-title: "Übersicht über die Konfiguration von Azure Service Fabric Reliable Services | Microsoft Docs"
+title: "Konfigurieren zuverlässiger Azure-Microservices | Microsoft-Dokumentation"
 description: "Erfahren Sie mehr über das Konfigurieren zustandsbehafteter Reliable Services in Azure Service Fabric."
 services: Service-Fabric
 documentationcenter: .net
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/18/2016
+ms.date: 1/4/2017
 ms.author: sumukhs
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3be308b94e57a52bb054c2404607ef68a4650532
+ms.sourcegitcommit: f7edee399717ecb96fb920d0a938da551101c9e1
+ms.openlocfilehash: 438ecec47e35619442ed2fdad4e835a674e1a2dc
 
 
 ---
@@ -178,6 +178,6 @@ Die Einstellungen SharedLogId und SharedLogPath werden immer zusammen verwendet.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Jan17_HO4-->
 
 

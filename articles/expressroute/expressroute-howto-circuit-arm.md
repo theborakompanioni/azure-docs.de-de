@@ -1,10 +1,10 @@
 ---
-title: "Erstellen und Ändern einer ExpressRoute-Verbindung mit Resource Manager und PowerShell | Microsoft Docs"
+title: "Erstellen und Ändern einer ExpressRoute-Verbindung: PowerShell: Azure Resource Manager | Microsoft-Dokumentation"
 description: "Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung."
 documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
@@ -14,20 +14,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
-ms.author: ganesr
+ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 4acb64838288d36f0dc1b1eb9736b00faef21a0c
-ms.openlocfilehash: 3e11bc1e196b263f758394d1abd4c21d9e12aeef
+ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
+ms.openlocfilehash: 0aacbdafdb5ded81dbc8495a30837e2f4941075f
 
 
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Azure-Portal – Resource Manager](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell – Resource Manager](expressroute-howto-circuit-arm.md)
-> * [PowerShell – klassisch](expressroute-howto-circuit-classic.md)
+> * [Resource Manager – Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Resource Manager – PowerShell](expressroute-howto-circuit-arm.md)
+> * [Klassisch – PowerShell](expressroute-howto-circuit-classic.md)
+> * [Video – Azure-Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > 
-> 
+>
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung mithilfe von Windows PowerShell-Cmdlets und des Azure Resource Manager-Bereitstellungsmodells erstellen. Der Artikel veranschaulicht auch, wie Sie den Status der Verbindung prüfen, aktualisieren, löschen oder die Bereitstellung aufheben.
 
@@ -38,6 +39,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure ExpressRoute-Verbindung m
 ## <a name="before-you-begin"></a>Voraussetzungen
 * Rufen Sie die neueste Version der Azure PowerShell-Module ab (mindestens Version 1.0). Eine Schrittanleitung zum Konfigurieren des Computers für die Verwendung der PowerShell-Module erhalten Sie auf der Seite [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
+
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
@@ -376,6 +378,7 @@ Sie können die ExpressRoute-Verbindung löschen, indem Sie den folgenden Befehl
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 
 * [Erstellen und Ändern des Routings für Ihre ExpressRoute-Verbindung](expressroute-howto-routing-arm.md)
@@ -384,6 +387,6 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/28/2016
+ms.date: 02/06/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: c881b378a96b9d3eca7018bc32154a265ec524ea
-ms.openlocfilehash: 893892759b0cac38c0baa5ed3d56addb0dd75065
+ms.sourcegitcommit: 59f072c7a8272fc04e1d662c0ab17e7ee4500fa6
+ms.openlocfilehash: b589742e23ba9cca919a845e4d262ccfea4c9aca
 
 
 ---
@@ -40,17 +40,17 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 1. Navigieren Sie zu `https://azure.microsoft.com/services/data-catalog`, und klicken Sie auf **Erste Schritte**.
 2. Melden Sie sich beim Azure Data Catalog-Portal an, und klicken Sie auf **Daten veröffentlichen**.
 
-    ![Registrieren einer Datenquelle](./media/data-lake-store-with-data-catalog/register-data-source.png "Register a data source")
+    ![Registrieren einer Datenquelle](./media/data-lake-store-with-data-catalog/register-data-source.png "Registrieren einer Datenquelle")
 3. Klicken Sie auf der nächsten Seite auf **Anwendung starten**. Dadurch wird die Manifestdatei der Anwendung auf Ihren Computer heruntergeladen. Doppelklicken Sie auf die Manifestdatei, um die Anwendung zu starten.
 4. Klicken Sie auf der Seite „Willkommen“ auf **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein.
 
-    ![Bildschirm „Willkommen“](./media/data-lake-store-with-data-catalog/welcome.screen.png "Welcome screen")
+    ![Begrüßungsbildschirm](./media/data-lake-store-with-data-catalog/welcome.screen.png "Begrüßungsbildschirm")
 5. Wählen Sie auf der Seite „Datenquelle auswählen“ die Option **Azure Data Lake** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Auswählen einer Datenquelle](./media/data-lake-store-with-data-catalog/select-source.png "Select data source")
+    ![Auswählen einer Datenquelle](./media/data-lake-store-with-data-catalog/select-source.png "Auswählen einer Datenquelle")
 6. Geben Sie auf der nächsten Seite den Namen des Data Lake-Speicherkontos ein, das Sie in Data Catalog registrieren möchten. Behalten Sie für die anderen Optionen die Standardwerte bei, und klicken Sie dann auf **Verbinden**.
 
-    ![Verbinden mit einer Datenquelle](./media/data-lake-store-with-data-catalog/connect-to-source.png "Connect to data source")
+    ![Herstellen einer Verbindung mit der Datenquelle](./media/data-lake-store-with-data-catalog/connect-to-source.png "Herstellen einer Verbindung mit der Datenquelle")
 7. Die nächste Seite kann in die folgenden Segmente aufgeteilt werden.
 
     a. Das Feld **Serverhierarchie** stellt die Ordnerstruktur des Data Lake-Speicherkontos dar. **$Root** stellt den Stamm des Data Lake-Speicherkontos dar, und **AmbulanceData** steht für den Ordner, der im Stamm des Data Lake Store-Kontos erstellt wurde.
@@ -59,20 +59,20 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
     c. **Zu registrierende Objekte** werden die Dateien und Ordner aufgeführt, die Sie in Azure Data Catalog registrieren möchten.
 
-    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-data-structure.png "View data structure")
-8. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche![Verschieben von Objekten](./media/data-lake-store-with-data-catalog/move-objects.png "Move objects"), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
+    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
+8. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche (![Objekte verschieben](./media/data-lake-store-with-data-catalog/move-objects.png "Objekte verschieben")), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
 
     Da die Daten in einem organisationsweiten Datenkatalog registriert werden, empfiehlt es sich, einige Metadaten hinzuzufügen, die Sie später verwenden können, um die Daten schnell zu finden. Sie können z.B. eine E-Mail-Adresse für den Besitzer der Daten (z.B. der, der die Daten hochlädt) oder ein Tag zum Identifizieren der Daten hinzufügen. Der Screenshot unten zeigt ein Tag, dass wir den Daten hinzufügen.
 
-    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "View data structure")
+    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Anzeigen der Datenstruktur")
 
     Klicken Sie auf **Registrieren**.
 9. Die folgende Screenshot gibt an, dass die Daten erfolgreich in Data Catalog registriert wurden.
 
-    ![Registrierung abgeschlossen](./media/data-lake-store-with-data-catalog/registration-complete.png "View data structure")
+    ![Registrierung abgeschlossen](./media/data-lake-store-with-data-catalog/registration-complete.png "Anzeigen der Datenstruktur")
 10. Klicken Sie auf **Portal anzeigen** , um zum Data Catalog-Portal zurückzukehren, und stellen Sie sicher, dass Sie jetzt über das Portal auf die registrierten Daten zugreifen können. Um die Daten zu suchen, können Sie das Tag verwenden, das Sie beim Registrieren der Daten angegeben haben.
 
-     ![Suchen von Daten im Katalog](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Search data in catalog")
+     ![Suchen von Daten im Katalog](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Suchen von Daten im Katalog")
 11. Sie können nun Vorgänge wie Hinzufügen von Anmerkungen und Dokumenten zu den Daten ausführen. Weitere Informationen finden Sie unter den folgenden Links.
 
     * [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
@@ -85,6 +85,6 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 
