@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 535badb5444fd4c29211f83556c0a750ee8adf70
-ms.openlocfilehash: 0e031760b84aa59fefda2469606475b36dbc1ff7
+ms.sourcegitcommit: 1b12d8ef3bbbfd2688f7bbd47968332e83a35252
+ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
 
 
 ---
@@ -93,13 +93,14 @@ Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs-
 
   - Es gibt kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD in der Active Directory-Gesamtstruktur verweist, zu der der Computer gehört.
 
-  - Ein Benutzer hat den Grenzwert von Geräten erreicht. Weitere Informationen hierzu finden Sie unter „Erste Schritte bei der Azure Active Directory-Geräteregistrierung“.
+  - Ein Benutzer hat den Grenzwert von Geräten erreicht. Weitere Informationen finden Sie unter „Erste Schritte bei der Azure Active Directory-Geräteregistrierung“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur automatischen Geräteregistrierung](active-directory-conditional-access-automatic-device-registration-faq.md). 
 
 
-<!--HONumber=Feb17_HO1-->
+
+<!--HONumber=Feb17_HO2-->
 
 

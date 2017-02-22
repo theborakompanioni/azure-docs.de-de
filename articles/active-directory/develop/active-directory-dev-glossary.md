@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: bryanla
 translationtype: Human Translation
-ms.sourcegitcommit: 0b035ad1505e45c8c0820c825ff609df6e6100f0
-ms.openlocfilehash: bcbd421e4e8a4643695011b27482722029611a3d
+ms.sourcegitcommit: 186541bee40ada7fc9e6be31d6b989e9bd34e0d1
+ms.openlocfilehash: acc585d139e91b4954658fb061587a69e701bbe2
 
 
 ---
@@ -34,10 +34,10 @@ Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegent
 Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
 
 ## <a name="application-manifest"></a>Anwendungsmanifest
-Ein Feature des [klassischen Azure-Portals][AZURE-classic-portal], das eine JSON-Darstellung der Identitätskonfiguration der Anwendung generiert. Diese wird als Mechanismus für die Aktualisierung der zugehörigen Entitäten [Anwendung][AAD-Graph-App-Entity] und [ServicePrincipal][AAD-Graph-Sp-Entity] verwendet. Ausführlichere Informationen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest][AAD-App-Manifest].
+Ein Feature des [Azure-Portals][AZURE-portal], das eine JSON-Darstellung der Identitätskonfiguration der Anwendung generiert. Diese wird als Mechanismus für die Aktualisierung der zugehörigen Entitäten [Anwendung][AAD-Graph-App-Entity] und [Dienstprinzipal][AAD-Graph-Sp-Entity] verwendet. Ausführlichere Informationen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest][AAD-App-Manifest].
 
 ## <a name="application-object"></a>Anwendungsobjekt
-Wenn Sie eine Anwendung im [klassischen Azure-Portal][AZURE-classic-portal] registrieren/aktualisieren, erstellt/aktualisiert das Portal sowohl ein Anwendungsobjekt als auch ein entsprechendes [Dienstprinzipalobjekt](#service-principal-object) für den Mandanten. Das Anwendungsobjekt *definiert* die Identitätskonfiguration der Anwendung global (also für alle Mandanten, auf die es Zugriff hat) und stellte eine Vorlage bereit, von der die entsprechenden Dienstprinzipalobjekte für die lokale Verwendung zur Laufzeit (in einem bestimmten Mandanten) *abgeleitet* werden.
+Wenn Sie eine Anwendung im [Azure-Portal][AZURE-portal] registrieren bzw. aktualisieren, erstellt bzw. aktualisiert das Portal sowohl ein [Anwendungsobjekt](#service-principal-object) als auch ein entsprechendes Dienstprinzipalobjekt für den Mandanten. Das Anwendungsobjekt *definiert* die Identitätskonfiguration der Anwendung global (also für alle Mandanten, auf die es Zugriff hat) und stellte eine Vorlage bereit, von der die entsprechenden Dienstprinzipalobjekte für die lokale Verwendung zur Laufzeit (in einem bestimmten Mandanten) *abgeleitet* werden.
 
 Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte][AAD-App-SP-Objects].
 
@@ -109,7 +109,7 @@ Eine [Clientanwendung](#client-application) erhält Zugriff auf einen [Ressource
 
 Darüber hinaus werden sie im Rahmen des [Zustimmungsprozesses](#consent) verwendet, um dem Administrator oder Ressourcenbesitzer die Möglichkeit zu geben, den Clientzugriff auf Ressourcen in seinem Mandanten zu gewähren oder zu verweigern.
 
-Berechtigungsanforderungen werden im [klassischen Azure-Portal][AZURE-classic-portal] auf der Registerkarte „Anwendungen“ in der Option „Konfigurieren“ unter „Berechtigungen für andere Anwendungen“ konfiguriert. Wählen Sie hier die gewünschten delegierten Berechtigungen und die gewünschten Anwendungsberechtigungen aus. (Für Letzteres wird die globale Administratorrolle benötigt.) Da ein [öffentlicher Client](#client-application) keine Anmeldeinformationen verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][AAD-Graph-App-Entity].
+Berechtigungsanforderungen werden im [Azure-Portal][AZURE-portal] unter „Einstellungen“ auf der Registerkarte „Anwendungen“ unter „Erforderliche Berechtigungen“ konfiguriert. Hier wählen Sie die gewünschten delegierten Berechtigungen sowie die gewünschten Anwendungsberechtigungen aus (für Letzteres ist die globale Administratorrolle erforderlich). Da ein [öffentlicher Client](#client-application) keine Anmeldeinformationen verwalten kann, kann er nur delegierte Berechtigungen anfordern. Ein [vertraulicher Client](#client-application) kann dagegen sowohl delegierte Berechtigungen als auch Anwendungsberechtigungen anfordern. Das [Anwendungsobjekt](#application-object) des Clients speichert die deklarierten Berechtigungen in der [requiredResourceAccess-Eigenschaft][AAD-Graph-App-Entity].
 
 ## <a name="resource-owner"></a>Ressourcenbesitzers
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] eine Entität, die Zugriff auf eine geschützte Ressource gewähren kann. Handelt es sich bei dem Ressourcenbesitzer um eine Person, wird er als Endbenutzer bezeichnet. Wenn also beispielsweise eine [Clientanwendung](#client-application) über die [Microsoft Graph-API][Microsoft-Graph] auf das Postfach eines Benutzers zugreifen möchte, benötigt sie die Berechtigung des Ressourcenbesitzers für das Postfach.
@@ -124,14 +124,14 @@ Genau wie bei einer Clientanwendung wird auch die Identitätskonfiguration einer
 ## <a name="roles"></a>Rollen
 Mithilfe von Rollen kann ein [Ressourcenserver](#resource-server) ähnlich wie mit [Bereichen](#scopes) den Zugriff auf seine geschützten Ressourcen steuern. Zwei Arten stehen zur Verfügung: Eine Benutzerrolle implementiert eine rollenbasierte Zugriffssteuerung für Benutzer/Gruppen, die Zugriff auf die Ressource benötigen. Eine Anwendungsrolle implementiert das Gleiche für [Clientanwendungen](#client-application), die Zugriff benötigen.
 
-Bei Rollen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Ausgabengenehmiger“, „Schreibgeschützt“, „Directory.ReadWrite.All“). Sie werden im [klassischen Azure-Portal][AZURE-classic-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [appRoles-Eigenschaft][AAD-Graph-Sp-Entity] der Ressource gespeichert. Über das klassische Azure-Portal können Benutzer zu Benutzerrollen zugewiesen und [Clientanwendungsberechtigungen](#permissions) für den Zugriff auf eine Anwendungsrolle konfiguriert werden.
+Bei Rollen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Ausgabengenehmiger“, „Schreibgeschützt“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [appRoles-Eigenschaft][AAD-Graph-Sp-Entity] der Ressource gespeichert. Über das Azure-Portal können Benutzer zu Benutzerrollen zugewiesen und [Clientanwendungsberechtigungen](#permissions) für den Zugriff auf eine Anwendungsrolle konfiguriert werden.
 
 Ausführliche Informationen zu den Anwendungsrollen, die von der Graph-API von Azure AD verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][AAD-Graph-Perm-Scopes]. Ein detailliertes Implementierungsbeispiel finden Sie unter [Roles based access control in cloud applications using Azure AD][Duyshant-Role-Blog] (Rollenbasierte Zugriffssteuerung in Cloudanwendungen mit Azure AD).
 
 ## <a name="scopes"></a>Bereiche
 Mithilfe von Bereichen kann ein [Ressourcenserver](#resource-server) ähnlich wie mit [Rollen](#roles) den Zugriff auf seine geschützten Ressourcen steuern. Bereiche dienen zum Implementieren einer [bereichsbasierten][OAuth2-Access-Token-Scopes] Zugriffssteuerung für eine [Clientanwendung](#client-application), der durch den Ressourcenbesitzer delegierter Zugriff auf die Ressource gewährt wurde.
 
-Bei Bereichen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Mail.Read“, „Directory.ReadWrite.All“). Sie werden im [klassischen Azure-Portal][AZURE-classic-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [oauth2Permissions-Eigenschaft][AAD-Graph-Sp-Entity] der Ressource gespeichert. Über das klassische Azure-Portal können zudem [delegierte Berechtigungen](#permissions) für Clientanwendungen konfiguriert werden, die Zugriff auf einen Bereich ermöglichen.
+Bei Bereichen handelt es sich um ressourcendefinierte Zeichenfolgen (wie etwa „Mail.Read“, „Directory.ReadWrite.All“). Sie werden im [Azure-Portal][AZURE-portal] über das [Anwendungsmanifest](#application-manifest) der Ressource verwaltet und in der [oauth2Permissions-Eigenschaft][AAD-Graph-Sp-Entity] der Ressource gespeichert. Über das Azure-Portal können zudem [delegierte Berechtigungen](#permissions) für Clientanwendungen konfiguriert werden, die Zugriff auf einen Bereich ermöglichen.
 
 Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung“ bewährt. Ausführliche Informationen zu den Bereichen, die von der Azure AD Graph-API verfügbar gemacht werden, finden Sie unter [Graph-API-Berechtigungsbereiche][AAD-Graph-Perm-Scopes]. Informationen zu von Office 365-Diensten verfügbar gemachten Bereichen finden Sie unter [Office 365 API permissions reference][O365-Perm-Ref] (API-Berechtigungsreferenz für Office 365).
 
@@ -139,7 +139,7 @@ Als Benennungskonvention hat sich das Format „Ressource.Vorgang.Einschränkung
 Ein signiertes Dokument mit Ansprüchen (etwa ein OAuth2-Token oder eine SAML 2.0-Assertion). Im Falle einer OAuth2-[Autorisierungsgewährung](#authorization-grant) handelt es sich bei einem [Zugriffstoken](#access-token) (OAuth2) und einem [ID-Token](http://openid.net/specs/openid-connect-core-1_0.html#IDToken) um Arten von Sicherheitstoken, und beide werden jeweils als [JSON Web Token (JWT)][JWT] implementiert.
 
 ## <a name="service-principal-object"></a>Dienstprinzipalobjekt
-Wenn Sie eine Anwendung im [klassischen Azure-Portal][AZURE-classic-portal] registrieren/aktualisieren, erstellt/aktualisiert das Portal sowohl ein [Anwendungsobjekt](#application-object) als auch ein entsprechendes Dienstprinzipalobjekt für den Mandanten. Das Anwendungsobjekt *definiert* die Identitätskonfiguration der Anwendung global (also für alle Mandanten, für die der zugeordneten Anwendung Zugriff gewährt wurde) und fungiert als Vorlage, von der die entsprechenden Dienstprinzipalobjekte für die lokale Verwendung zur Laufzeit (in einem bestimmten Mandanten) *abgeleitet* werden.
+Wenn Sie eine Anwendung im [Azure-Portal][AZURE-portal] registrieren bzw. aktualisieren, erstellt bzw. aktualisiert das Portal sowohl ein [Anwendungsobjekt](#application-object) als auch ein entsprechendes Dienstprinzipalobjekt für den Mandanten. Das Anwendungsobjekt *definiert* die Identitätskonfiguration der Anwendung global (also für alle Mandanten, für die der zugeordneten Anwendung Zugriff gewährt wurde) und fungiert als Vorlage, von der die entsprechenden Dienstprinzipalobjekte für die lokale Verwendung zur Laufzeit (in einem bestimmten Mandanten) *abgeleitet* werden.
 
 Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte][AAD-App-SP-Objects].
 
@@ -195,7 +195,7 @@ Verwenden Sie den folgenden Disqus-Kommentarabschnitt, um uns Feedback zu senden
 [AAD-Multi-Tenant-Overview]: active-directory-devhowto-multi-tenant-overview.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
-[AZURE-classic-portal]: https://manage.windowsazure.com
+[AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
@@ -211,6 +211,6 @@ Verwenden Sie den folgenden Disqus-Kommentarabschnitt, um uns Feedback zu senden
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

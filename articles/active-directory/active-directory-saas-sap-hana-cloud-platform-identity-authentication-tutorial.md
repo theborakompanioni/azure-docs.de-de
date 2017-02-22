@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 18fa3fd2fc9bb68b9e68c0c5ac5663a8a8348fd7
-ms.openlocfilehash: e02cb1916c65d137dc06b1ce6a9dd9621a31b56c
+ms.sourcegitcommit: 16ec322d0c921f97819375cfe52d2c3f02a2c53b
+ms.openlocfilehash: d573090fb2dc4ea02308e0711c24371e17fb3cde
 
 
 ---
@@ -135,7 +135,7 @@ Die SAP HANA Cloud Platform Identity Authentication-Anwendung erwartet die SAML-
  
     ![Einmaliges Anmelden konfigurieren][5]
 
-3. Im Abschnitt **Benutzerattribute** des Dialogfelds **Einmaliges Anmelden** erwartet die SAP-Anwendung möglicherweise ein Attribut, z.B. „firstName“. Fügen Sie das Attribut „firstName“ im Dialogfeld „SAML-Tokenattribute“ hinzu.
+3. Wenn Ihre SAP-Anwendung im Abschnitt **Benutzerattribute** des Dialogfelds **Einmaliges Anmelden** ein Attribut erwartet, zum Beispiel „firstName“, fügen Sie dieses Attribut, also in diesem Fall „firstName“, im Dialogfeld „SAML-Tokenattribute“ hinzu.
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
@@ -196,7 +196,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von BrittaSimon ein.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
@@ -233,7 +233,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
@@ -241,7 +241,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 
 
@@ -276,6 +276,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel für SAP HANA Cloud Platform Identity
 [203]: ./media/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_203.png
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

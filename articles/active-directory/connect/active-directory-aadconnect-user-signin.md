@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bddd581b5164b03ccba75370cd89a7831101cf37
-ms.openlocfilehash: 5b77d16c4a373936dfa5fbba35bc3dc4c9a37e78
+ms.sourcegitcommit: 4fbe7bd802e9cc32d43f019980650c4723b75d5f
+ms.openlocfilehash: 7e821117e62eda286cefb59a5ded85b2f99f3ef7
 
 
 ---
@@ -97,7 +97,7 @@ Wenn Sie die Cloudanmeldung bereits mit einer früheren Version von AD FS (z.B. 
 ### <a name="understanding-user-principal-name"></a>Grundlegendes zu Benutzerprinzipalnamen
 In Active Directory ist das UPN-Standardsuffix der DNS-Name der Domäne, in der das Benutzerkonto erstellt wurde. In den meisten Fällen ist dies der Domänenname, der als Organisationsdomäne im Internet registriert ist. Allerdings können Sie weitere UPN-Suffixe mithilfe von Active Directory-Domänen und -Vertrauensstellungen hinzufügen.
 
-Der UPN des Benutzers hat das Format username@domain. Der Benutzer John könnte für die Active Directory-Domäne „contoso.com“ beispielsweise den folgenden UPN haben: 'john@contoso.com'.. Der UPN des Benutzers basiert auf RFC 822. Obwohl UPN und E-Mail-Adresse das gleiche Format verwenden, entspricht der Wert des UPN für einen Benutzer möglicherweise nicht der E-Mail-Adresse dieses Benutzers.
+Der UPN des Benutzers hat das Format username@domain. Für eine Active Directory-Domäne mit dem Namen „contoso.com“ hat Benutzer John beispielsweise den UPN 'john@contoso.com'. Der UPN des Benutzers basiert auf RFC 822. Obwohl UPN und E-Mail-Adresse das gleiche Format verwenden, entspricht der Wert des UPN für einen Benutzer möglicherweise nicht der E-Mail-Adresse dieses Benutzers.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Benutzerprinzipalnamen in Azure AD
 Der Azure AD Connect-Assistent verwendet entweder das userPrincipalName-Attribut, oder Sie können das Attribut (bei der benutzerdefinierten Installation) angeben, das lokal als Benutzerprinzipalname in Azure AD verwendet werden soll. Dies ist der Wert, der zur Anmeldung bei Azure AD verwendet wird. Wenn der Wert des Attributs für den Benutzerprinzipalnamen nicht einer überprüften Domäne in Azure AD entspricht, ersetzt ihn Azure AD durch den Standardwert „.onmicrosoft.com“.
@@ -148,7 +148,7 @@ Wenn Sie die Benutzeranmeldeoption „Verbund mit AD FS“ ausgewählt haben, m�
 
 | Zustand | Auswirkung auf die Azure-Benutzeranmeldung |
 |:---:|:--- |
-| Nicht hinzugefügt |In diesem Fall konnte Azure AD Connect im Azure AD-Verzeichnis keine übereinstimmende benutzerdefinierte Domäne für das UPN-Suffix „contoso.com“ finden. Sie müssen die benutzerdefinierte Domäne „contoso.com“ hinzufügen, wenn Benutzer sich mithilfe von AD FS mit ihrem lokalen Benutzerprinzipalnamen (z.B. „user@contoso.com“) anmelden sollen. |
+| Nicht hinzugefügt |In diesem Fall konnte Azure AD Connect im Azure AD-Verzeichnis keine übereinstimmende benutzerdefinierte Domäne für das UPN-Suffix „contoso.com“ finden. Sie müssen die benutzerdefinierte Domäne „contoso.com“ hinzufügen, wenn Benutzer sich mithilfe von AD FS mit ihren lokalen Benutzerprinzipalnamen, z. B. user@contoso.com, anmelden sollen. |
 | Nicht überprüft |In diesem Fall zeigt Azure AD Connect entsprechende Angaben an, damit Sie Ihre Domäne zu einem späteren Zeitpunkt überprüfen können. |
 | Überprüft |In diesem Fall können Sie ohne weitere Aktionen direkt mit der Konfiguration fortfahren. |
 
@@ -178,6 +178,6 @@ Erfahren Sie mehr über [Entwurfskonzepte für Azure AD Connect](active-director
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

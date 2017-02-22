@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c94d114c50d44a3ca2933ec3464e7a2396867d60
-ms.openlocfilehash: eb94a0e383be4a2c125b9f5a2e7c1e49beacd4df
+ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
+ms.openlocfilehash: 5c43e6c646928ef17e1bf2e5b9bce90f9038d5d0
 
 
 ---
@@ -38,7 +38,7 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop", 
+      "name": "virtualMachineLoop",    
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -230,7 +230,7 @@ Wenn Sie mehr als einen virtuellen Computer für Ihre Anwendung benötigen, kön
 
 ```
 "copy": {
-  "name": "virtualMachineLoop", 
+  "name": "virtualMachineLoop",    
   "count": "[parameters('numberOfInstances')]"
 },
 ```
@@ -307,7 +307,7 @@ Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Eini
 
 ## <a name="disks-and-images"></a>Datenträger und Images
    
-In Azure können VHD-Dateien für [Datenträger oder Images](virtual-machines-windows-about-disks-vhds.md) stehen. Wenn das Betriebssystem in einer VHD-Datei für eine spezifische VM spezialisiert wurde, wird dies als Datenträger bezeichnet. Wenn das Betriebssystem in einer VHD-Datei allgemein gehalten ist, um für die Erstellung von vielen VMs verwendet zu werden, wird es als Image bezeichnet.   
+In Azure können VHD-Dateien für [Datenträger oder Images](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) stehen. Wenn das Betriebssystem in einer VHD-Datei für eine spezifische VM spezialisiert wurde, wird dies als Datenträger bezeichnet. Wenn das Betriebssystem in einer VHD-Datei allgemein gehalten ist, um für die Erstellung von vielen VMs verwendet zu werden, wird es als Image bezeichnet.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Erstellen neuer virtueller Computer und neuer Datenträger aus einem Plattformimage
 
@@ -500,6 +500,6 @@ Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualis
 - Informationen zur Verwaltung der erstellten VM finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

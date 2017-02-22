@@ -10,11 +10,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/09/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 47c3491b067d5e112db589672b68e7cfc7cbe921
-ms.openlocfilehash: eb89c6f485f2321f729dcfe650af4355de84a9ac
+ms.sourcegitcommit: 938f325e2cd4dfc1a192256e033aabfc39b85dac
+ms.openlocfilehash: 6bb1f31407f9af67e699bd110ee528dddee1a70f
 
 
 ---
@@ -24,7 +24,7 @@ Importieren Sie Tabellendaten in [Analytics](app-insights-analytics.md), um sie 
 
 Sie können Daten mithilfe Ihres eigenen Schemas in Analytics importieren. Sie müssen nicht die Application Insights-Standardschemas wie „Anforderung“ oder „Ablaufverfolgung“ nutzen.
 
-Derzeit können Sie CSV-Dateien oder ähnliche Formate importieren, die Tabulatoren oder Semikolons als Trennzeichen aufweisen.
+Sie können JSON- oder DSV-Dateien importieren. (DSV steht für Delimiter-separated Values, d. h. durch Trennzeichen getrennte Werte, wobei das Trennzeichen ein Komma, Semikolon oder Tabulatorzeichen sein kann.)
 
 Es gibt drei Situationen, in denen das Importieren von Daten in Analytics nützlich ist:
 
@@ -72,12 +72,15 @@ Bevor Sie Daten importieren können, müssen Sie eine *Datenquelle* definieren, 
 
     ![Hinzufügen einer neuen Datenquelle](./media/app-insights-analytics-import/add-new-data-source.png)
 
-2. Befolgen Sie die Anweisungen zum Hochladen einer Beispieldatendatei.
+2. Laden Sie eine Beispieldatendatei hoch. (Optional, wenn Sie eine Schemadefinition hochladen.)
 
- * Die erste Zeile der Beispieldaten kann Spaltenüberschriften enthalten. (Sie können die Feldnamen im nächsten Schritt ändern.)
- * Die Beispieldaten sollten mindestens 10 Zeilen enthalten.
+    Die erste Zeile der Beispieldaten kann Spaltenüberschriften enthalten. (Sie können die Feldnamen im nächsten Schritt ändern.)
 
-3. Überprüfen Sie das Schema, das der Assistent von Ihren Beispieldaten abgeleitet hat. Bei Bedarf können Sie die abgeleiteten Typen der Spalten anpassen.
+    Die Beispieldaten sollten mindestens 10 Zeilen enthalten.
+
+3. Überprüfen Sie das vom Assistenten verwendete Schema. Leitet es die Typen aus einem Beispiel ab, so müssen Sie die abgeleiteten Spaltentypen vermutlich anpassen.
+
+   (Optional.) Laden Sie eine Schemadefinition hoch. Sehen Sie sich hierzu das folgende Format an.
 
 4. Wählen Sie einen Zeitstempel aus. Alle Daten in Analytics müssen ein Zeitstempelfeld aufweisen. Es muss den Typ `datetime` haben, jedoch nicht als „timestamp“ benannt sein. Wenn Ihre Daten eine Spalte mit einer Datums- und Uhrzeitangabe im ISO-Format aufweisen, wählen Sie diese als Zeitstempelspalte. Wählen Sie andernfalls „gemäß Dateneingang“, woraufhin der Importvorgang ein Zeitstempelfeld hinzufügt.
 
@@ -85,8 +88,39 @@ Bevor Sie Daten importieren können, müssen Sie eine *Datenquelle* definieren, 
 
 5. Erstellen Sie die Datenquelle.
 
+### <a name="schema-definition-file-format"></a>Format von Schemadefinitionsdateien
 
-## <a name="import-data"></a>Importieren von Daten
+Anstatt das Schema in der Benutzeroberfläche zu bearbeiten, können Sie die Schemadefinition auch aus einer Datei hochladen. Das Schemadefinitionsformat sieht wie folgt aus: 
+
+DSV-Format (mit Trennzeichen) 
+```
+[ 
+    {"location": "0", "name": "RequestName", "type": "string"}, 
+    {"location": "1", "name": "timestamp", "type": "datetime"}, 
+    {"location": "2", "name": "IPAddress", "type": "string"} 
+] 
+```
+
+JSON-Format 
+```
+[ 
+    {"location": "$.name", "name": "name", "type": "string"}, 
+    {"location": "$.alias", "name": "alias", "type": "string"}, 
+    {"location": "$.room", "name": "room", "type": "long"} 
+]
+```
+ 
+Jede Spalte wird durch ihre Position, ihren Namen und ihren Typ identifiziert. 
+
+* Position: Im DSV-Format die Position des zugeordneten Werts. Im JSON-Format der „jpath“ des zugeordneten Schlüssels.
+* Name: Der Anzeigename der Spalte.
+* Typ: Der Datentyp der Spalte.
+ 
+Bei Verwendung von Beispieldaten im DSV-Dateiformat müssen in der Schemadefinition alle Spalten zugeordnet sein, wobei neue Spalten am Ende hinzugefügt werden. 
+
+JSON unterstützt auch eine partielle Datenzuordnung. Daher müssen in der Schemadefinition des JSON-Formats nicht alle in den Beispieldaten vorkommenden Schlüssel zugeordnet sein. In der Definition können auch Spalten zugeordnet sein, die nicht in den Beispieldaten enthalten sind. 
+
+## <a name="import-data"></a>Daten importieren
 
 Zum Importieren von Daten laden Sie sie in Azure-Speicher hoch, erstellen einen Zugriffsschlüssel dafür und rufen dann eine REST-API auf.
 
@@ -271,7 +305,6 @@ namespace IngestionClient
             requestStream.Write(notificationBytes, 0, notificationBytes.Length); 
             requestStream.Close(); 
 
-            HttpWebResponse response; 
             try 
             { 
                 using (var response = (HttpWebResponse)await request.GetResponseAsync())
@@ -334,6 +367,6 @@ Verwenden Sie für jedes Blob diesen Code.
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

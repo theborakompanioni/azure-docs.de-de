@@ -3,7 +3,7 @@ title: Technische Artikel zu virtuellen Windows-Computern (klassisch) | Microsof
 description: "Vollständige Liste der Microsoft Azure-Artikel zu virtuellen Windows-Computern im klassischen Bereitstellungsmodell"
 services: virtual-machines-windows
 documentationcenter: 
-author: dlepow
+author: cynthn
 manager: timlt
 tags: azure-service-management
 editor: 
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/05/2016
+ms.date: 02/13/2017
 ms.author: danlep
 translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: bc303bb08366f5bcf86b2ae84db5751ea620d05c
+ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
+ms.openlocfilehash: 263b3a1edc94a60e756850b2d917840be87e7a5a
 
 
 ---
@@ -103,7 +103,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Einrichten von Endpunkten auf einer klassischen virtuellen Azure-Maschine](virtual-machines-windows-classic-setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="storage"></a>Speicher
-[Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer](virtual-machines-windows-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Informationen zu Datenträgern und VHDs für virtuelle Azure-Computer](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [How to attach a data disk to a classic Windows virtual machine (Anfügen eines Datenträgers an einen klassischen virtuellen Windows-Computer)](virtual-machines-windows-classic-attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -145,7 +145,7 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Tomcat](virtual-machines-windows-classic-java-run-tomcat-app-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 ## <a name="reference"></a>Referenz
-[Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](../virtual-machines-command-line-tools.md)
+[Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 
 [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
@@ -166,6 +166,6 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

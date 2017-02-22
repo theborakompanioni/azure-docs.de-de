@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/23/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 91f8a95bdab98f079b748b5391e9b611378c6e79
-ms.openlocfilehash: 040cfb1c9f5a0b6a12c62ca6706576c4173c0636
+ms.sourcegitcommit: bf5588885de9c280eb70712dbf800efe509ee912
+ms.openlocfilehash: 96eb66f35a91e769418d179b0997cd32e02cdc97
 
 
 ---
@@ -35,7 +35,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789512.png "Configure Single Sign-On")
+![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789512.png "Einmaliges Anmelden konfigurieren")
 
 ## <a name="enabling-the-application-integration-for-gigya"></a>Aktivieren der Anwendungsintegration für Gigya
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Gigya aktivieren.
@@ -49,19 +49,19 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Gig
 
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-    ![Anwendungen](./media/active-directory-saas-gigya-tutorial/IC700994.png "Applications")
+    ![Anwendungen](./media/active-directory-saas-gigya-tutorial/IC700994.png "Anwendungen")
 
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-    ![Anwendung hinzufügen](./media/active-directory-saas-gigya-tutorial/IC749321.png "Add application")
+    ![Anwendung hinzufügen](./media/active-directory-saas-gigya-tutorial/IC749321.png "Anwendung hinzufügen")
 
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-gigya-tutorial/IC749322.png "Add an application from gallerry")
+    ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-gigya-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 
 6. Geben Sie im **Suchfeld** das Wort **Gigya** ein.
    
-    ![Anwendungskatalog](./media/active-directory-saas-gigya-tutorial/IC789513.png "Application Gallery")
+    ![Anwendungskatalog](./media/active-directory-saas-gigya-tutorial/IC789513.png "Anwendungskatalog")
 
 7. Wählen Sie im Ergebnisbereich **Gigya** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
@@ -76,29 +76,29 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 ### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Gigya** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789528.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789528.png "Einmaliges Anmelden konfigurieren")
 
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Gigya anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789529.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789529.png "Einmaliges Anmelden konfigurieren")
 
 3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Gigya-Anmelde-URL** Ihre URL im Format *http://Unternehmen.gigya.com* ein, und klicken Sie dann auf **Weiter**.
    
-    ![App-URL konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789530.png "Configure App URL")
+    ![App-URL konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789530.png "App-URL konfigurieren")
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Gigya** auf **Zertifikat herunterladen**, und speichern Sie die Zertifikatsdatei auf Ihrem Computer.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789531.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789531.png "Einmaliges Anmelden konfigurieren")
 
 5. Melden Sie sich in einem anderen Webbrowserfenster bei der Gigya-Unternehmenswebsite als Administrator an.
 
 6. Navigieren Sie zu **Einstellungen \> SAML-Anmeldung**, und klicken Sie dann auf die Schaltfläche **Hinzufügen**.
    
-    ![SAML-Anmeldung](./media/active-directory-saas-gigya-tutorial/IC789532.png "SAML Login")
+    ![SAML-Anmeldung](./media/active-directory-saas-gigya-tutorial/IC789532.png "SAML-Anmeldung")
 
 7. Führen Sie im Abschnitt **SAML-Anmeldung** die folgenden Schritte aus:
    
-    ![SAML-Konfiguration](./media/active-directory-saas-gigya-tutorial/IC789533.png "SAML Configuration")
+    ![SAML-Konfiguration](./media/active-directory-saas-gigya-tutorial/IC789533.png "SAML-Konfiguration")
    
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.
    
@@ -121,7 +121,7 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to con
 
 8. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789534.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gigya-tutorial/IC789534.png "Einmaliges Anmelden konfigurieren")
    
 ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
@@ -132,11 +132,11 @@ Im Fall von Gigya ist die Bereitstellung eine manuelle Aufgabe.
 1. Melden Sie sich bei der **Gigya** -Unternehmenswebsite als Administrator an.
 2. Navigieren Sie zu **Administrator \> Benutzer verwalten**, und klicken Sie dann auf **Benutzer einladen**.
    
-    ![Benutzer verwalten](./media/active-directory-saas-gigya-tutorial/IC789535.png "Manage Users")
+    ![Benutzer verwalten](./media/active-directory-saas-gigya-tutorial/IC789535.png "Benutzer verwalten")
 
 3. Führen Sie im Dialogfeld „Benutzer einladen“ die folgenden Schritte aus:
    
-    ![Benutzer einladen](./media/active-directory-saas-gigya-tutorial/IC789536.png "Invite Users")
+    ![Benutzer einladen](./media/active-directory-saas-gigya-tutorial/IC789536.png "Benutzer einladen")
    
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten.
     
@@ -156,17 +156,17 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie d
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Gigya** auf **Benutzer zuweisen**.
    
-    ![Benutzer zuweisen](./media/active-directory-saas-gigya-tutorial/IC789537.png "Assign Users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-gigya-tutorial/IC789537.png "Zuweisen von Benutzern")
 
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-    ![Ja](./media/active-directory-saas-gigya-tutorial/IC767830.png "Yes")
+    ![Ja](./media/active-directory-saas-gigya-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

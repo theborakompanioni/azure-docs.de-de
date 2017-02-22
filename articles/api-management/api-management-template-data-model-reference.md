@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 translationtype: Human Translation
-ms.sourcegitcommit: 77fd7b5b339a8ede8a297bec96f91f0a243cc18d
-ms.openlocfilehash: 5df4ff1e0d68a62f5e470c7b05e1507ff019d0dc
+ms.sourcegitcommit: 080ac72246e62948c3defe329028f27751e8c78d
+ms.openlocfilehash: 5f8dd5c6a106e5dc523624d8930e6297dbdc368f
 
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
@@ -55,7 +55,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |Eigenschaft|Typ|Beschreibung|  
 |--------------|----------|-----------------|  
 |id|string|Ressourcenbezeichner. Zur eindeutigen Identifizierung der API in der aktuellen Instanz des API Management-Diensts. Der Wert ist eine gültige relative URL im Format `apis/{id}`, wobei `{id}` einen API-Bezeichner darstellt. Diese Eigenschaft ist schreibgeschützt.|  
-|name|string|Der Name der API. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
+|Name|string|Der Name der API. Darf nicht leer sein. Die maximale Länge beträgt 100 Zeichen.|  
 |description|string|Beschreibung der API. Darf nicht leer sein. Kann HTML-Formatierungstags umfassen. Die maximale Länge beträgt 1000 Zeichen.|  
 |serviceUrl|string|Absolute URL des Back-End-Diensts, der diese API implementiert.|  
 |path|string|Relative URL, die diese API und all ihre Ressourcenpfade in der Instanz des API Management-Diensts eindeutig identifiziert. Sie wird an die Basis-URL des API-Endpunkts angehängt, die während der Dienstinstanzerstellung angegeben wurde, um eine öffentliche URL für diese API zu erstellen.|  
@@ -156,7 +156,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
   
 |Eigenschaft|Beschreibung|Typ|  
 |--------------|-----------------|----------|  
-|name|string|Parametername.|  
+|Name|string|Parametername.|  
 |description|string|Beschreibung des Parameters.|  
 |value|string|Headerwert.|  
 |typeName|string|Der Datentyp des Headerwerts.|  
@@ -358,6 +358,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

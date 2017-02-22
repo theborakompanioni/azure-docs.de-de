@@ -16,8 +16,8 @@ ms.workload: na
 ms.date: 01/20/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 4dbd2c87d648f6923772b070fdfe7379de22e6c5
-ms.openlocfilehash: e1adeaca702de3bad1c2e572f89ade9eba753173
+ms.sourcegitcommit: 13eb8ab1bf3c218f14b4c23ca1a46e9552d55b25
+ms.openlocfilehash: d70b9f2c2a0cb1abe11dcfee9acb51dcb5552a60
 
 
 ---
@@ -40,10 +40,10 @@ Datenanbieter für Clientverbindungen unterscheiden sich von Datenanbietern, die
 [ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)</br>
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn die neuesten Datenanbieter installiert sind, kann die Clientanwendung eine Verbindung mit einem Server herstellen. Weitere Informationen zum Herstellen von Verbindungen finden Sie unter [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md).
+Wenn die neuesten Datenanbieter installiert sind, kann die Clientanwendung eine Verbindung mit einem Server herstellen. Weitere Informationen zum Herstellen einer Verbindung von einem Client finden Sie unter [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md).
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
