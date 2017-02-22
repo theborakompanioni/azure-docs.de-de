@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/20/2017
+ms.date: 02/14/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: d634db213f73341ed09be58c720d4e058986a38e
-ms.openlocfilehash: ef5f574712cf6fc6f10261d14e280a697163ec4c
+ms.sourcegitcommit: 09577d3160137b7879a5c128552d8dcbef89bb0d
+ms.openlocfilehash: c025629c7700c0ee7b6495a922b9bf6823769cfa
 
 
 ---
@@ -39,8 +39,8 @@ Sie können Shared Access Signature-Autorisierungsregeln in [Relays](service-bus
 
 Die SAS-Authentifizierung verwendet die folgenden Elemente:
 
-* [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule): ein primärer 256-Bit-Kryptografieschlüssel in Base64-Darstellung, ein optionaler sekundärer Schlüssel und ein Schlüsselname sowie zugehörige Rechte (eine Sammlung der Rechte *Listen* [Lauschen], *Send* [Senden] und *Manage* [Verwalten]).
-* [SharedAccessSignature](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -Token: Wird mithilfe des HMAC-SHA256-Codes einer Ressourcenzeichenfolge generiert und besteht aus dem URI der Ressource, auf die zugegriffen wird, sowie einer Ablaufangabe mit dem kryptografischen Schlüssel. Die Signatur und andere in den folgenden Abschnitten beschriebene Elemente werden als Zeichenfolge formatiert, um das SAS-Token zu bilden.
+* [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule): ein primärer 256-Bit-Kryptografieschlüssel in Base64-Darstellung, ein optionaler sekundärer Schlüssel und ein Schlüsselname sowie zugehörige Rechte (eine Sammlung der Rechte *Listen* [Lauschen], *Send* [Senden] und *Manage* [Verwalten]).
+* [SharedAccessSignature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -Token: Wird mithilfe des HMAC-SHA256-Codes einer Ressourcenzeichenfolge generiert und besteht aus dem URI der Ressource, auf die zugegriffen wird, sowie einer Ablaufangabe mit dem kryptografischen Schlüssel. Die Signatur und andere in den folgenden Abschnitten beschriebene Elemente werden als Zeichenfolge formatiert, um das SAS-Token zu bilden.
 
 ## <a name="shared-access-policy"></a>SAS-Richtlinie
 
@@ -55,6 +55,26 @@ Die verfügbaren Berechtigungen für eine Richtlinie sind größtenteils selbste
 Nach Erstellung der Richtlinie werden ihr ein *Primärschlüssel* und ein *Sekundärschlüssel* zugewiesen. Hierbei handelt es sich um kryptografisch starke Schlüssel. Achten Sie darauf, dass sie Ihnen nicht abhanden kommen: Sie sind immer im [Azure-Portal][Azure portal] verfügbar. Sie können einen beliebigen der generierten Schlüssel verwenden und die Schlüssel jederzeit erneut generieren. Wenn Sie allerdings den Primärschlüssel neu generieren oder in der Richtlinie ändern, werden alle auf deren Grundlage erstellten SAS ungültig.
 
 Wenn Sie einen Service Bus-Namespace erstellen, wird automatisch eine Richtlinie namens **RootManageSharedAccessKey**für den gesamten Namespace erstellt. Da Sie sich nicht als **Root** anmelden, verwenden Sie diese Richtlinie nur, wenn ein wirklich guter Grund dafür vorliegt. Da Sie sich nicht als **Root** anmelden, verwenden Sie diese Richtlinie nur, wenn ein wirklich guter Grund dafür vorliegt. Beachten Sie, dass pro Ebene der Service Bus-Struktur (Namespace, Warteschlange usw.) maximal 12 Richtlinien zugeordnet werden können.
+
+## <a name="configuration-for-shared-access-signature-authentication"></a>Konfiguration für SAS-Authentifizierung (Shared Access Signature)
+Sie können die Regel [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) für Service Bus-Namespaces, -Warteschlangen oder -Themen konfigurieren. Das Konfigurieren einer [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) für ein Service Bus-Abonnement wird zurzeit nicht unterstützt, aber Sie können Regeln, die für einen Namespace oder ein Thema konfiguriert wurden, auch zum Sichern des Zugriffs auf Abonnements verwenden. Ein funktionierendes Beispiel, das dieses Verfahren veranschaulicht, finden Sie unter [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) (Verwenden der SAS-Authentifizierung mit Service Bus-Abonnements).
+
+Maximal zwölf solcher Regeln können für einen Service Bus-Namespace, eine Service Bus-Warteschlange oder ein Service Bus-Thema konfiguriert werden. Regeln, die für einen Service Bus-Namespace konfiguriert werden, gelten für alle Entitäten in dem jeweiligen Namespace.
+
+![SAS](./media/service-bus-sas/service-bus-namespace.png)
+
+In dieser Abbildung gelten die Autorisierungsregeln *manageRuleNS*, *sendRuleNS* und *listenRuleNS* sowohl für die Warteschlange Q1 als auch für das Thema T1. *listenRuleQ* und *sendRuleQ* gelten nur für Warteschlange Q1, und *sendRuleT* gilt nur für Thema T1.
+
+Die folgenden Schlüsselparameter gelten für ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt:
+
+| Parameter | Beschreibung |
+| --- | --- |
+| *KeyName* |Eine Zeichenfolge, die die Autorisierungsregel beschreibt. |
+| *PrimaryKey* |Ein primärer Base64-codierter 256-Bit-Schlüssel zum Signieren und Überprüfen des SAS-Tokens. |
+| *SecondaryKey* |Ein sekundärer Base64-codierter 256-Bit-Schlüssel zum Signieren und Überprüfen des SAS-Tokens. |
+| *AccessRights* |Eine Liste der Zugriffsrechte, die von der Autorisierungsregel erteilt werden. Bei diesen Rechten kann es sich um eine beliebige Auflistung von Lausch-, Sende- und Verwaltungsrechten ("Listen", "Send" und "Manage") handeln. |
+
+Wenn ein Service Bus-Namespace bereitgestellt wird, wird standardmäßig eine [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) erstellt, in der [KeyName](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_KeyName) auf **RootManageSharedAccessKey** festgelegt ist.
 
 ## <a name="generate-a-shared-access-signature-token"></a>Generieren einer Shared Access Signature (Token)
 
@@ -85,13 +105,13 @@ Die zum Signieren verwendete SAS-Autorisierungsregel muss für die durch diesen 
 
 Ein SAS-Token ist für alle Ressourcen unter dem `<resourceURI>` gültig, der in der `signature-string` verwendet wird.
 
-Der [KeyName](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_KeyName) im SAS-Token bezieht sich auf den **keyName** der SAS-Autorisierungsregel, die zum Generieren des Tokens verwendet wird.
+Der [KeyName](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_KeyName) im SAS-Token bezieht sich auf den **keyName** der SAS-Autorisierungsregel, die zum Generieren des Tokens verwendet wird.
 
 *URL-encoded-resourceURI* muss mit dem URI identisch sein, der in der Zeichenfolge für die Signatur während der Berechnung der Signatur verwendet wird. Er sollte als [Prozentwert codiert](https://msdn.microsoft.com/library/4fkewx0t.aspx)sein.
 
-Es wird empfohlen, die im [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt verwendeten Schlüssel in regelmäßigen Abständen neu zu generieren. Anwendungen sollten im Allgemeinen den [PrimaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) zum Generieren eines SAS-Tokens verwenden. Wenn die Schlüssel erneut generiert werden, sollten Sie den [SecondaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) durch den alten primären Schlüssel ersetzen und dann einen neuen Schlüssel als neuen primären Schlüssel generieren. Auf diese Weise können Sie Token weiterhin für die Autorisierung verwenden, die mit dem alten primären Schlüssel ausgestellt wurden und noch nicht abgelaufen sind.
+Es wird empfohlen, die im [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt verwendeten Schlüssel in regelmäßigen Abständen neu zu generieren. Anwendungen sollten im Allgemeinen den [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) zum Generieren eines SAS-Tokens verwenden. Wenn die Schlüssel erneut generiert werden, sollten Sie den [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) durch den alten primären Schlüssel ersetzen und dann einen neuen Schlüssel als neuen primären Schlüssel generieren. Auf diese Weise können Sie Token weiterhin für die Autorisierung verwenden, die mit dem alten primären Schlüssel ausgestellt wurden und noch nicht abgelaufen sind.
 
-Wenn ein Schlüssel gefährdet ist und Sie die Schlüssel widerrufen müssen, können Sie sowohl den [PrimaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) als auch den [SecondaryKey](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) eines [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekts neu generieren und so durch neue Schlüssel ersetzen. Durch dieses Verfahren werden alle Token, die mit den alten Schlüsseln signiert wurden, für ungültig erklärt.
+Wenn ein Schlüssel gefährdet ist und Sie die Schlüssel widerrufen müssen, können Sie sowohl den [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) als auch den [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) eines [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekts neu generieren und so durch neue Schlüssel ersetzen. Durch dieses Verfahren werden alle Token, die mit den alten Schlüsseln signiert wurden, für ungültig erklärt.
 
 ## <a name="how-to-use-shared-access-signature-authentication-with-service-bus"></a>Verwenden der SAS-Authentifizierung mit Service Bus
 
@@ -109,7 +129,7 @@ Der Endpunkt für den Zugriff auf SAS-Autorisierungsregeln für einen Service Bu
 https://management.core.windows.net/{subscriptionId}/services/ServiceBus/namespaces/{namespace}/AuthorizationRules/
 ```
 
-Um ein [SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt für einen Service Bus-Namespace zu erstellen, führen Sie einen POST-Vorgang für diesen Endpunkt mit den Regelinformationen aus, die als JSON oder XML serialisiert wurden. Beispiel:
+Um ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt für einen Service Bus-Namespace zu erstellen, führen Sie einen POST-Vorgang für diesen Endpunkt mit den Regelinformationen aus, die als JSON oder XML serialisiert wurden. Beispiel:
 
 ```csharp
 // Base address for accessing authorization rules on a namespace
@@ -144,13 +164,13 @@ Verwenden Sie in ähnlicher Weise einen GET-Vorgang für den Endpunkt, um die f�
 
 Zum Aktualisieren oder Löschen einer bestimmten Autorisierungsregel verwenden Sie den folgenden Endpunkt:
 
-```
+```http
 https://management.core.windows.net/{subscriptionId}/services/ServiceBus/namespaces/{namespace}/AuthorizationRules/{KeyName}
 ```
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Zugreifen auf SAS-Autorisierungsregeln für eine Entität
 
-Sie können auf ein [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekt, das in einer Service Bus-Warteschlange oder einem Service Bus-Thema konfiguriert wurde, über die [AuthorizationRules](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.authorizationrules)-Sammlung der entsprechenden [QueueDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription)- oder [TopicDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription)-Objekte zugreifen.
+Sie können auf ein [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekt, das in einer Service Bus-Warteschlange oder einem Service Bus-Thema konfiguriert wurde, über die [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules)-Sammlung der entsprechenden [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription)- oder [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription)-Objekte zugreifen.
 
 Der folgende Code zeigt, wie Sie Autorisierungsregeln für eine Warteschlange hinzufügen.
 
@@ -185,7 +205,7 @@ nsm.CreateQueue(qd);
 
 ## <a name="use-shared-access-signature-authorization"></a>Verwenden der Shared Access Signature-Authentifizierung
 
-Anwendungen, die das Azure .NET SDK mit den .NET-Bibliotheken von Service Bus nutzen, können die SAS-Autorisierung über die [SharedAccessSignatureTokenProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -Klasse verwenden. Der folgende Code veranschaulicht die Verwendung des Tokenanbieters zum Senden von Nachrichten an eine Service Bus-Warteschlange.
+Anwendungen, die das Azure .NET SDK mit den .NET-Bibliotheken von Service Bus nutzen, können die SAS-Autorisierung über die [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) -Klasse verwenden. Der folgende Code veranschaulicht die Verwendung des Tokenanbieters zum Senden von Nachrichten an eine Service Bus-Warteschlange.
 
 ```csharp
 Uri runtimeUri = ServiceBusEnvironment.CreateServiceUri("sb",
@@ -202,7 +222,7 @@ sendClient.Send(helloMessage);
 
 Anwendungen können SAS auch zur Authentifizierung verwenden, indem sie eine SAS-Verbindungszeichenfolge in Methoden einsetzen, die Verbindungszeichenfolgen akzeptieren.
 
-Beachten Sie, dass Sie zum Verwenden der SAS-Autorisierung mit Service Bus Relays SAS-Schlüssel nutzen können, die für den Service Bus-Namespace konfiguriert sind. Wenn Sie ein Relay explizit im Namespaceobjekt ([NamespaceManager](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.namespacemanager) mit [RelayDescription](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.relaydescription)) erstellen, können Sie die SAS-Regeln nur für dieses jeweilige Relay festlegen. Zum Verwenden der SAS-Autorisierung mit Service Bus-Abonnements können Sie SAS-Schlüssel nutzen, die für einen Service Bus-Namespace oder ein Thema konfiguriert sind.
+Beachten Sie, dass Sie zum Verwenden der SAS-Autorisierung mit Service Bus Relays SAS-Schlüssel nutzen können, die für den Service Bus-Namespace konfiguriert sind. Wenn Sie ein Relay explizit im Namespaceobjekt ([NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) mit [RelayDescription](/dotnet/api/microsoft.servicebus.messaging.relaydescription)) erstellen, können Sie die SAS-Regeln nur für dieses jeweilige Relay festlegen. Zum Verwenden der SAS-Autorisierung mit Service Bus-Abonnements können Sie SAS-Schlüssel nutzen, die für einen Service Bus-Namespace oder ein Thema konfiguriert sind.
 
 ## <a name="use-the-shared-access-signature-at-http-level"></a>Verwenden einer Shared Access Signature (auf HTTP-Ebene)
 
@@ -350,6 +370,6 @@ Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
 [Azure portal]: https://portal.azure.com
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

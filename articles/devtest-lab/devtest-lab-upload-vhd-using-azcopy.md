@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
-ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: f79e76d2efbd71cdd828dbdf43353076c063f23b
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 8ac76a3b15303bb3e3d36a1a9b878ec0fe25d4d4
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen. Diese können wiederum verwendet werden, um virtuelle Computer bereitzustellen. Die folgenden Schritte führen Sie durch die Verwendung des Befehlszeilenprogramms AzCopy für das Hochladen einer VHD-Datei in das Speicherkonto eines Labs. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Ausführlichere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../virtual-machines/virtual-machines-linux-about-disks-vhds.md).
+In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen. Diese können wiederum verwendet werden, um virtuelle Computer bereitzustellen. Die folgenden Schritte führen Sie durch die Verwendung des Befehlszeilenprogramms AzCopy für das Hochladen einer VHD-Datei in das Speicherkonto eines Labs. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Ausführlichere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../storage/storage-about-disks-and-vhds-linux.md).
 
 > [!NOTE] 
 >  
@@ -51,9 +51,9 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei nach Azur
 
 1. Wählen Sie auf dem Blatt **Benutzerdefinierte Images** die Option **VHD** aus.
 
-1. Wählen Sie auf dem Blatt **VHD** die Option **Upload a VHD using PowerShell** (Hochladen einer VHD mit PowerShell) aus.
+1. Wählen Sie auf dem Blatt **VHD** die Option **Hochladen einer VHD mithilfe von PowerShell** aus.
 
-    ![Hochladen der VHD-Datei mithilfe von PowerShell](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
+    ![Hochladen der VHD mithilfe von PowerShell](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
 1. Auf dem Blatt **Upload an image using PowerShell** (Ein Abbild mit PowerShell hochladen) wird ein Aufruf des Cmdlets **Add-AzureVhd** angezeigt. Der erste Parameter (*Ziel*) enthält den URI für einen Blobcontainer (*uploads*) im folgenden Format:
 
@@ -85,6 +85,6 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei nach Azur
 - [Erstellen eines benutzerdefinierten Azure DevTest Labs-Images aus einer VHD-Datei mithilfe von PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

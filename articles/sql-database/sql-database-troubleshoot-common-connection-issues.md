@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: daleche
 translationtype: Human Translation
-ms.sourcegitcommit: c033c1b32ad7b69565f870636110d317d01266df
-ms.openlocfilehash: 28489985797a638c04e1fabba30f42dac56d4d9c
+ms.sourcegitcommit: 676cecdd886cfb557e7859e1e9583f0a0f9f749c
+ms.openlocfilehash: 222b9fe98592e0c78ec3d7c5ae4804bf75dd0d1e
 
 
 ---
@@ -82,7 +82,6 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Behandlung von Leistungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-performance.md)
-* [Behandlung von Berechtigungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-permissions.md)
 * [Durchsuchen der Dokumentation zu Microsoft Azure](http://azure.microsoft.com/search/documentation/)
 * [Anzeigen der neuesten Updates zum Azure SQL-Datenbankdienst](http://azure.microsoft.com/updates/?service=sql-database)
 
@@ -90,12 +89,10 @@ Die folgende Tabelle enthält alle Themen im Zusammenhang mit Verbindungsproblem
 * [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 * [Allgemeiner Leitfaden zur Behandlung vorübergehender Fehler](../best-practices-retry-general.md)
 * [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
-* [Der Lernpfad für die Verwendung der Azure SQL-Datenbank](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
-* [Der Lernpfad für die Verwendung elastischer Datenbankfeatures und -tools](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

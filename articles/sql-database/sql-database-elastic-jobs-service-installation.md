@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: e5b5751facb68ae4a62e3071fe4dfefc02434a9f
-ms.openlocfilehash: 4aac611e857c0b5b985f887f8536d212c28fd6e4
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: 045e4486920f147a66b2ea81552ce1b75aa119c2
 
 
 ---
@@ -147,7 +147,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Installieren der Komponenten der Aufträge für die elastische Datenbank mithilfe des Portals
-Nachdem Sie einen [Pool für elastische Datenbanken erstellt](sql-database-elastic-pool-create-portal.md) haben, können Sie die Komponenten der **Aufträge für die elastische Datenbank** installieren, um die Ausführung von Verwaltungsaufgaben für jede der Datenbanken im Pool für elastische Datenbanken zu ermöglichen. Anders als bei der Verwendung der PowerShell-APIs für die **Aufträge für die elastische Datenbank** , ist die Portalschnittstelle aktuell auf die Ausführung auf einem vorhandenen Pool beschränkt.
+Nachdem Sie einen [Pool für elastische Datenbanken erstellt](sql-database-elastic-pool-manage-portal.md) haben, können Sie die Komponenten der **Aufträge für die elastische Datenbank** installieren, um die Ausführung von Verwaltungsaufgaben für jede der Datenbanken im Pool für elastische Datenbanken zu ermöglichen. Anders als bei der Verwendung der PowerShell-APIs für die **Aufträge für die elastische Datenbank** , ist die Portalschnittstelle aktuell auf die Ausführung auf einem vorhandenen Pool beschränkt.
 
 **Geschätzter Zeitaufwand:** 10 Minuten.
 
@@ -181,6 +181,6 @@ Informationen zum Einstieg finden Sie unter [Erstellen und Verwalten von Aufträ
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO3-->
 
 

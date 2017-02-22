@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: f6ab5e3807684abb64a18e0a4bfc732afa091143
-ms.openlocfilehash: e8c155a42b33aafeca0c641bc4f6162f3278a89f
+ms.sourcegitcommit: 0400369eb7ae3a2ebd506605b50afe08fe563d22
+ms.openlocfilehash: 33b3e7322afafd623a10661e33abe7b959eeb512
 
 
 ---
@@ -54,7 +54,7 @@ Folgendes benötigen Sie am primären und sekundären lokalen Standort, um diese
 
 | **Voraussetzungen** | **Details** |
 | --- | --- |
-| **VMM** |Wir empfehlen Ihnen, am primären und am sekundären Standort je einen VMM-Server bereitzustellen.<br/><br/> Eine [Replikation zwischen Clouds auf einem einzelnen VMM-Server](site-recovery-single-vmm.md). Zu diesem Zweck benötigen Sie mindestens zwei auf dem VMM-Server konfigurierte Clouds.<br/><br/> Auf den VMM-Servern muss mindestens System Center 2012 SP1 mit den neuesten Updates ausgeführt werden.<br/><br/> Für jeden VMM-Server muss mindestens eine Cloud konfiguriert sein, und für alle Clouds muss das Hyper-V-Kapazitätsprofil festgelegt sein. <br/><br/>Die Clouds müssen mindestens eine VMM-Hostgruppe enthalten.<br/><br/>Weitere Informationen zum Einrichten von VMM-Clouds finden Sie unter [Vorbereiten der Azure Site Recovery-Bereitstellung](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric) sowie unter [Exemplarische Vorgehensweise: Erstellen von privaten Clouds mit System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/> VMM-Server sollten über Internetzugriff verfügen. |
+| **VMM** |Wir empfehlen Ihnen, am primären und am sekundären Standort je einen VMM-Server bereitzustellen.<br/><br/> Eine [Replikation zwischen Clouds auf einem einzelnen VMM-Server](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment). Zu diesem Zweck benötigen Sie mindestens zwei auf dem VMM-Server konfigurierte Clouds.<br/><br/> Auf den VMM-Servern muss mindestens System Center 2012 SP1 mit den neuesten Updates ausgeführt werden.<br/><br/> Für jeden VMM-Server muss mindestens eine Cloud konfiguriert sein, und für alle Clouds muss das Hyper-V-Kapazitätsprofil festgelegt sein. <br/><br/>Die Clouds müssen mindestens eine VMM-Hostgruppe enthalten.<br/><br/>Weitere Informationen zum Einrichten von VMM-Clouds finden Sie unter [Vorbereiten der Azure Site Recovery-Bereitstellung](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric) sowie unter [Exemplarische Vorgehensweise: Erstellen von privaten Clouds mit System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/> VMM-Server sollten über Internetzugriff verfügen. |
 | **Hyper-V** |Auf den Hyper-V-Servern muss mindestens Windows Server 2012 mit der Hyper-V-Rolle ausgeführt werden, und die neuesten Updates müssen installiert sein.<br/><br/> Ein Hyper-V-Server muss mindestens einen virtuellen Computer enthalten.<br/><br/>  Hyper-V-Hostserver müssen sich in Hostgruppen in der primären und in der sekundären VMM-Cloud befinden.<br/><br/> Wenn Sie Hyper-V in einem Cluster unter Windows Server 2012 R2 ausführen, müssen Sie das [Update 2961977](https://support.microsoft.com/kb/2961977) installieren.<br/><br/> Wenn Sie Hyper-V unter Windows Server 2012 in einem Cluster ausführen, beachten Sie, dass der Clusterbroker nicht automatisch erstellt wird, falls Sie einen auf statischen IP-Adressen basierenden Cluster haben. Sie müssen den Clusterbroker manuell konfigurieren. [Weitere Informationen](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx) |
 | **Anbieter** |Während der Site Recovery-Bereitstellung installieren Sie den Azure Site Recovery-Anbieter auf VMM-Servern. Der Anbieter kommuniziert mit Azure Site Recovery über HTTPS 443, um die Replikation zu orchestrieren. Die Datenreplikation erfolgt über das LAN oder eine VPN-Verbindung zwischen dem primären und sekundären Hyper-V-Server.<br/><br/> Der auf dem VMM-Server ausgeführte Anbieter benötigt Zugriff auf folgende URLs: *.hypervrecoverymanager.windowsazure.com, *.accesscontrol.windows.net, *.backup.windowsazure.com, *.blob.core.windows.net, *.store.core.windows.net.<br/><br/> Ermöglichen Sie darüber hinaus die Firewallkommunikation der VMM-Server mit den [IP-Bereichen des Azure-Rechenzentrums](https://www.microsoft.com/download/confirmation.aspx?id=41653) , und lassen Sie das HTTPS-Protokoll (443) zu. |
 
@@ -74,7 +74,7 @@ Weitere Informationen zur Konfiguration von VMM-Netzwerken finden Sie in unten s
 * [Konfigurieren von logischen Netzwerken in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
 * [Konfiguration von VM-Netzwerken und Gateways in VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[hier](site-recovery-network-mapping.md) .
+[hier](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) .
 
 ### <a name="powershell-prerequisites"></a>PowerShell-Voraussetzungen
 Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx)anzeigen.
@@ -322,6 +322,6 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

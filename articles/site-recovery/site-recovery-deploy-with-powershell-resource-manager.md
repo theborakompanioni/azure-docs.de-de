@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: ec08ab30003994f3e60c3f37d39bb5b4ef498173
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 3df4aaa018d31e9ee9526679ac1febbe5b75bb7e
 
 
 ---
@@ -62,7 +62,7 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 * Ein Hyper-V-Host unter Windows Server 2012 R2 oder Microsoft Hyper-V Server 2012 R2 mit einem oder mehreren virtuellen Computern.
 * Direkt oder über einen Proxy mit dem Internet verbundene Hyper-V-Server.
-* Die zu schützenden virtuellen Computer müssen die [Voraussetzungen für virtuelle Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+* Die zu schützenden virtuellen Computer müssen die [Voraussetzungen für virtuelle Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Schritt 1: Anmelden bei Ihrem Azure-Konto
 1. Öffnen Sie eine PowerShell-Konsole, und führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Konto anzumelden. Das Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert.
@@ -247,6 +247,6 @@ In diesem Artikel wird das Verwenden von Azure PowerShell mit Azure Resource Man
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

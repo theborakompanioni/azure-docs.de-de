@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: bsiva
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: d3bf50e9e686acdac33ffaf9d781f02193406298
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: d5fed9feb2292002a06c426cdd9e4e18f67bd3ec
 
 
 ---
@@ -49,7 +49,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 ### <a name="azure-prerequisites"></a>Voraussetzungen für Azure
 * Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Für den Einstieg steht ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/)zur Verfügung.
 * Sie benötigen ein Azure-Speicherkonto, um replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Tresor befinden und dem gleichen Abonnement zugeordnet sein. [Weitere Informationen zu Azure Storage](../storage/storage-introduction.md)
-* Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, den [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements)entsprechen.
+* Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, den [Anforderungen an virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)entsprechen.
 
 ### <a name="vmm-prerequisites"></a>VMM-Voraussetzungen
 * Sie benötigen einen VMM-Server, der unter System Center 2012 R2 ausgeführt wird.
@@ -74,7 +74,6 @@ Wenn Sie eine Netzwerkzuordnung bereitstellen möchten, benötigen Sie Folgendes
 
 * Die virtuellen Computer, die Sie auf dem VMM-Quellserver schützen möchten, sollten mit einem VM-Netzwerk verbunden sein. Dieses Netzwerk sollte mit einem logischen Netzwerk verbunden sein, das der Cloud zugeordnet ist.
 * Ein Azure-Netzwerk, mit dem replizierte virtuelle Computer nach einem Failover eine Verbindung herstellen können. Dieses Netzwerk wählen Sie zum Zeitpunkt des Failovers aus. Das Netzwerk sollte sich in derselben Region wie Ihr Azure Site Recovery-Abonnement befinden.
-* [Informationen zur Netzwerkzuordnung](site-recovery-network-mapping.md) finden Sie unter:
 
 ### <a name="powershell-prerequisites"></a>PowerShell-Voraussetzungen
 Stellen Sie sicher, dass Azure PowerShell einsatzbereit ist. Wenn Sie PowerShell bereits verwenden, müssen Sie auf Version 0.8.10 oder höher aktualisieren. Ausführliche Informationen zum Einrichten von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs). Nach dem Einrichten und Konfigurieren von PowerShell können Sie alle verfügbaren Cmdlets für den Dienst [hier](https://msdn.microsoft.com/library/dn850420.aspx)anzeigen.
@@ -302,7 +301,7 @@ Das letzte Cmdlet erstellt eine Zuordnung zwischen dem primären Netzwerk und de
 ## <a name="step-9-enable-protection-for-virtual-machines"></a>Schritt 9: Aktivieren des Schutzes für virtuelle Computer
 Nach der korrekten Konfiguration von Servern, Clouds und Netzwerken können Sie den Schutz für die virtuellen Computer in der Cloud aktivieren. Beachten Sie Folgendes:
 
-Die virtuellen Computer müssen die [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+Die virtuellen Computer müssen die [Anforderungen an virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 Um den Schutz zu aktivieren, müssen die Eigenschaften "Betriebssystem" und "Betriebssystem-Datenträger" für den virtuellen Computer gesetzt sein. Sie können diese Eigenschaften setzen, wenn Sie den virtuellen Computer in VMM mithilfe einer Vorlage für virtuelle Computer erstellen. Außerdem können Sie diese Eigenschaften für vorhandene virtuelle Computer auf den Registerkarten **Allgemein** und **Hardwarekonfiguration** in den Eigenschaften der virtuellen Computer festlegen. Falls diese Eigenschaften in VMM nicht angezeigt werden, sollten Sie sie dennoch im Azure Site Recovery-Portal konfigurieren können.
 
@@ -408,6 +407,6 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO4-->
 
 

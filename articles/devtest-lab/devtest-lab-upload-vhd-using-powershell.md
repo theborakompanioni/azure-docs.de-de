@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
-ms.openlocfilehash: 36edca0969eb2895777a85dc4ee826abeb42601f
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: 379544e6592e933e510308bb0ae7193542c099f2
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 36edca0969eb2895777a85dc4ee826abeb42601f
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen, mit denen virtuelle Computer bereitgestellt werden. Die folgenden Schritte führen Sie durch die Verwendung von PowerShell zum Hochladen einer VHD-Datei in das Speicherkonto eines Labs. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../virtual-machines/virtual-machines-linux-about-disks-vhds.md).
+In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen, mit denen virtuelle Computer bereitgestellt werden. Die folgenden Schritte führen Sie durch die Verwendung von PowerShell zum Hochladen einer VHD-Datei in das Speicherkonto eines Labs. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../storage/storage-about-disks-and-vhds-linux.md).
 
 ## <a name="step-by-step-instructions"></a>Schrittweise Anweisungen
 
@@ -66,6 +66,6 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in Azure 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

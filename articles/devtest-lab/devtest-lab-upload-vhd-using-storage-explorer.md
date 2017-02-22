@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 38d70ed302eeab912ce4fe33272f85e96f1b1eda
-ms.openlocfilehash: 819e627df382e03c03d9a98f85f1b68c518fffcf
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: 0506cf13223f0555abf841143a8fe8a77cd19b70
 
 
 ---
@@ -25,7 +25,7 @@ ms.openlocfilehash: 819e627df382e03c03d9a98f85f1b68c518fffcf
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen, mit denen virtuelle Computer bereitgestellt werden. Dieser Artikel veranschaulicht, wie Sie den [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um eine VHD-Datei in das Speicherkonto eines Labs hochzuladen. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../virtual-machines/virtual-machines-linux-about-disks-vhds.md).
+In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen, mit denen virtuelle Computer bereitgestellt werden. Dieser Artikel veranschaulicht, wie Sie den [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um eine VHD-Datei in das Speicherkonto eines Labs hochzuladen. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../storage/storage-about-disks-and-vhds-linux.md).
 
 ## <a name="step-by-step-instructions"></a>Schrittweise Anweisungen
 
@@ -140,6 +140,6 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 899fbfb63633286a1065546b1f262cbc1d7d39c4
-ms.openlocfilehash: d11d57a352138e43f7a7e9d2ec91663361be6f95
+ms.sourcegitcommit: 239702c8b099dd422e6b67a267b1185a27a21807
+ms.openlocfilehash: 52d9194920019291696d5ace3ac24751fde674ab
 
 
 ---
@@ -245,11 +245,11 @@ Weitere Informationen zur Liste der Partner und Standorte, die ExpressRoute unte
 Ja. Office 365-Dienstendpunkte sind über das Internet erreichbar, selbst wenn ExpressRoute für Ihr Netzwerk konfiguriert wurde. Wenn Sie sich an einem Ort befinden, an dem die Verbindung mit Office 365-Diensten über ExpressRoute konfiguriert wurde, wird die Verbindung über ExpressRoute hergestellt.
 
 ### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>Kann ich über eine ExpressRoute-Verbindung auf Dynamics 365 for Operations (früher als Dynamics AX Online bekannt) zugreifen?
-Ja. [Dynamics 365 for Operations](https://www.microsoft.com/en-us/dynamics365/operations) wird in Azure gehostet. Sie können das öffentliche Azure-Peering in Ihrer ExpressRoute-Leitung aktivieren, um eine Verbindung mit ExpressRoute herzustellen. 
+Ja. [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) wird in Azure gehostet. Sie können das öffentliche Azure-Peering in Ihrer ExpressRoute-Leitung aktivieren, um eine Verbindung mit ExpressRoute herzustellen. 
 
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

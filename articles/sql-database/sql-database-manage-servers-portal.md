@@ -16,8 +16,8 @@ ms.tgt_pltfrm: NA
 ms.date: 02/06/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 325ef2cd13a090ad0ee0c09cc16c81d80672a70b
-ms.openlocfilehash: a170cca6b92e8278afe41f8876b9954df1e314e4
+ms.sourcegitcommit: 144774c9106bf5a0e389c99075c822d1c5282692
+ms.openlocfilehash: 74f94ad347b31e8c7848e1fd72692732431338b2
 
 
 ---
@@ -53,7 +53,7 @@ Sie können einen Azure SQL-Datenbankserver mit dem [Azure-Portal](https://porta
 > Ein Tutorial mit ersten Schritten, in dem ein Server mit dem Azure-Portal erstellt wird, finden Sie unter [SQL-Datenbank-Tutorial: Enthält Informationen zu den ersten Schritten mit Azure SQL-Datenbankservern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started.md).
 >
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="next-steps"></a>Nächste Schritte
 * Eine Übersicht über Verwaltungstools finden Sie unter [Übersicht: Verwaltungstools für SQL-Datenbank](sql-database-manage-overview.md).
 * Informationen zum Ausführen von Verwaltungsaufgaben mit dem Azure-Portal finden Sie unter [Verwalten von Azure SQL-Datenbanken über das Azure-Portal](sql-database-manage-portal.md).
 * Informationen zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell finden Sie unter [Verwalten von Azure SQL-Datenbank mithilfe von PowerShell](sql-database-manage-powershell.md).
@@ -63,6 +63,6 @@ Sie können einen Azure SQL-Datenbankserver mit dem [Azure-Portal](https://porta
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

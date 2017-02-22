@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 09/26/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: e580886bae72aee3bb3569299a831529ef18821c
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
 
 
 ---
@@ -26,28 +26,13 @@ Mit der aktiven Georeplikation können Sie bis zu vier lesbare sekundäre Datenb
 
 > [!NOTE]
 > Die aktive Georeplikation (lesbare sekundäre Datenbanken) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar. Im April 2017 wird der nicht lesbare sekundäre Typ eingestellt, und vorhandene nicht lesbare Datenbanken werden automatisch auf lesbare sekundäre Datenbanken aktualisiert.
-> 
-> 
+>  
 
  Sie können die aktive Georeplikation auf folgende Weise konfigurieren: im [Azure-Portal](sql-database-geo-replication-portal.md), mit [PowerShell](sql-database-geo-replication-powershell.md), mit [Transact-SQL](sql-database-geo-replication-transact-sql.md) oder mit der [REST-API – Create or Update Database](https://msdn.microsoft.com/library/azure/mt163685.aspx).
-
-> [!div class="op_single_selector"]
-> * [Konfigurieren: im Azure-Portal](sql-database-geo-replication-portal.md)
-> * [Konfigurieren: mit PowerShell](sql-database-geo-replication-powershell.md)
-> * [Konfigurieren: mit T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
 
 Falls Ihre primäre Datenbank aus irgendeinem Grund ausfällt oder einfach offline geschaltet werden muss, können Sie ein *Failover* auf eine der sekundären Datenbanken durchführen. Wenn das Failover auf eine sekundäre Datenbank aktiviert ist, werden alle anderen sekundären Datenbanken automatisch mit der neuen primären Datenbank verknüpft.
 
 Das Failover auf eine sekundäre Datenbank können Sie auf folgende Weise ausführen: im [Azure-Portal](sql-database-geo-replication-failover-portal.md), mit [PowerShell](sql-database-geo-replication-failover-powershell.md), mit [Transact-SQL](sql-database-geo-replication-failover-transact-sql.md), mit der [REST-API – Planned Failover](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx) oder mit der [REST-API – Unplanned Failover](https://msdn.microsoft.com/library/azure/mt582027.aspx).
-
-> [!div class="op_single_selector"]
-> * [Failover: im Azure-Portal](sql-database-geo-replication-failover-portal.md)
-> * [Failover: mit PowerShell](sql-database-geo-replication-failover-powershell.md)
-> * [Failover: mit T-SQL](sql-database-geo-replication-failover-transact-sql.md)
-> 
-> 
 
 Stellen Sie nach dem Failover sicher, dass die Authentifizierungsanforderungen für Ihren Server und Ihre Datenbank auf der neuen primären konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 
@@ -149,6 +134,6 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

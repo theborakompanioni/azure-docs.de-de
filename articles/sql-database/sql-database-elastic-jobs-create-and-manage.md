@@ -1,6 +1,6 @@
 ---
-title: "Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken mithilfe von elastischen Aufträgen | Microsoft Docs"
-description: "Führen Sie die Schritte zur Erstellung und Verwaltung eines elastischen Datenbankauftrags aus."
+title: Verwalten von Gruppen mit Azure SQL-Datenbanken | Microsoft-Dokumentation
+description: "Führen Sie die Schritte zur Erstellung und Verwaltung eines elastischen Auftrags aus."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -8,7 +8,7 @@ author: ddove
 editor: 
 ms.assetid: f858344d-085b-4022-935e-1b5fa20adbac
 ms.service: sql-database
-ms.custom: jobs
+ms.custom: multiple databases
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,23 +16,19 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 7b3c6d29ad7ded2ea65f378a1f807235c688d738
-ms.openlocfilehash: 2e652979d56e8f14179102a946761874553219df
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 7058139814a0a20d6fb6305e1e469946bb6b7d77
 
 
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Erstellen und Verwalten von horizontal hochskalierten Azure SQL-Datenbanken mithilfe von elastischen Aufträgen (Vorschau)
-> [!div class="op_single_selector"]
-> * [Azure-Portal](sql-database-elastic-jobs-create-and-manage.md)
-> * [PowerShell](sql-database-elastic-jobs-powershell.md)
-> 
-> 
 
-**Aufträge für die elastische Datenbank** vereinfachen die Verwaltung von Datenbankengruppen durch die Ausführung von administrativen Vorgängen wie Schemaänderungen, Verwaltung von Anmeldeinformationen, Aktualisierungen von Verweisdaten, Sammlung von Leistungsdaten und Sammlung von Telemetriedaten zu Mandanten (Kunden). Elastische Datenbankaufträge sind derzeit über das Azure-Portal und PowerShell-Cmdlets verfügbar. Das Azure-Portal bietet allerdings nur eingeschränkte Funktionalität, die auf die Ausführung in allen Datenbanken in einem [elastischen Datenbankpool (Vorschau)](sql-database-elastic-pool.md)begrenzt ist. Informationen zum Zugriff auf zusätzliche Features und zum Anwenden von Skripts auf eine Gruppe von Datenbanken, einschließlich einer benutzerdefinierten Sammlung oder eines Shardsatzes (erstellt mithilfe der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-introduction.md)) finden Sie unter [Erstellen und Verwalten von Aufträgen mithilfe von PowerShell](sql-database-elastic-jobs-powershell.md). Weitere Informationen zu Aufträgen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md). 
+
+**Aufträge für die elastische Datenbank** vereinfachen die Verwaltung von Datenbankengruppen durch die Ausführung von administrativen Vorgängen wie Schemaänderungen, Verwaltung von Anmeldeinformationen, Aktualisierungen von Verweisdaten, Sammlung von Leistungsdaten und Sammlung von Telemetriedaten zu Mandanten (Kunden). Elastische Datenbankaufträge sind derzeit über das Azure-Portal und PowerShell-Cmdlets verfügbar. Das Azure-Portal bietet allerdings nur eingeschränkte Funktionalität, die auf die Ausführung in allen Datenbanken in einem [Pool für elastische Datenbanken (Vorschau)](sql-database-elastic-pool.md) begrenzt ist. Informationen zum Zugriff auf zusätzliche Features und zum Anwenden von Skripts auf eine Gruppe von Datenbanken, einschließlich einer benutzerdefinierten Sammlung oder eines Shardsatzes (erstellt mithilfe der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-introduction.md)) finden Sie unter [Erstellen und Verwalten von Aufträgen mithilfe von PowerShell](sql-database-elastic-jobs-powershell.md). Weitere Informationen zu Aufträgen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
-* Ein elastischer Datenbankpool. Siehe [Informationen zu elastischen Datenbankpools](sql-database-elastic-pool.md)
+* Ein Azure-Abonnement. Eine kostenlose Testversion finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Pool für elastische Datenbanken. Informationen finden Sie unter [Was ist ein elastischer Azure-Pool?](sql-database-elastic-pool.md).
 * Installation von Dienstkomponenten für elastische Datenbankaufträge. Siehe [Installieren des Diensts für elastische Datenbankaufträge](sql-database-elastic-jobs-service-installation.md).
 
 ## <a name="creating-jobs"></a>Erstellen von Aufträgen
@@ -89,7 +85,7 @@ Dieses Skript aktualisiert dann die zuvor erstellte Tabelle.
 ## <a name="checking-job-status"></a>Überprüfen des Auftragsstatus
 Nachdem ein Auftrag gestartet wurde, können Sie seinen Fortschritt überprüfen.
 
-1. Klicken Sie auf der Seite "Pool für elastische Datenbank" auf **Aufträge verwalten**.
+1. Klicken Sie auf der Seite für Pools für elastische Datenbanken auf **Aufträge verwalten**.
    
     ![Klicken Sie auf "Aufträge verwalten".][2]
 2. Klicken Sie auf den Namen (a) eines Auftrags. Der **STATUS** kann "Abgeschlossen" oder "Fehlgeschlagen" lauten. Die Auftragsdetails (b) werden mit Datum und Uhrzeit der Erstellung und Ausführung angezeigt. Die Liste (c) zeigt den Fortschritt des Skripts für jede Datenbank im Pool unter Angabe des Datums und der Uhrzeit an.
@@ -114,6 +110,6 @@ Wenn ein Auftrag fehlschlägt, wird ein Protokoll zu seiner Ausführung erstellt
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

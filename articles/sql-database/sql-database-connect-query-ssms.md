@@ -15,20 +15,15 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 02/01/2017
 ms.author: sstein;carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 2a85b3dc1078bad9e5e2fc0ce0bec7e994b29150
-ms.openlocfilehash: a6b147521525fad343376db0454f786a77b55c42
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: a5eaf43aa01e5d30171ea038db7ba985c9684fb7
 
 
 ---
 # <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-t-sql-query"></a>Herstellen einer Verbindung mit einer SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage
-> [!div class="op_single_selector"]
-> * [Visual Studio](sql-database-connect-query.md)
-> * [SSMS](sql-database-connect-query-ssms.md)
-> * [Excel](sql-database-connect-excel.md)
-> 
 
 In diesem Artikel wird beschrieben, wie Sie über SQL Server Management Studio (SSMS) eine Verbindung mit einer Azure SQL-Datenbank herstellen. Nach der erfolgreichen Verbindungsherstellung führen wir eine einfache Transact-SQL-Abfrage (T-SQL) aus, um die Kommunikation mit der Datenbank zu überprüfen.
 
@@ -60,19 +55,20 @@ In diesem Artikel wird beschrieben, wie Sie über SQL Server Management Studio (
     ![Abfragen von Systemobjekten in der neuen Beispieldatenbank mit SSMS](./media/sql-database-get-started/new-sample-db-query-objects-ssms.png)
 
 > [!Tip]
-> Ein Tutorial finden Sie unter [SQL-Datenbank-Tutorial: Erstellen eines Servers, einer Firewallregel auf Serverebene, einer Beispieldatenbank und einer Firewallregel auf Datenbankebene und Herstellen der Verbindung mit SQL Server Management Studio](sql-database-get-started.md).    
+> Ein Tutorial finden Sie unter [Tutorial: Bereitstellen und Verwenden einer Azure SQL-Datenbank mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started.md).    
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Mit T-SQL-Anweisungen können Sie Datenbanken in Azure auf gleiche Weise wie mit SQL Server erstellen und verwalten. Wenn Sie mit der Verwendung von T-SQL mit SQL Server vertraut sind, finden Sie unter [Azure SQL-Datenbank – Transact-SQL-Informationen](sql-database-transact-sql-information.md) eine Zusammenfassung der Unterschiede.
 - Wenn Sie mit T-SQL nicht vertraut sind, siehe [Tutorial: Schreiben von Transact-SQL-Anweisungen](https://msdn.microsoft.com/library/ms365303.aspx) und [Transact-SQL-Referenz (Datenbankmodul)](https://msdn.microsoft.com/library/bb510741.aspx).
-- Informationen zu den ersten Schritten zum Erstellen von Datenbankbenutzern und Datenbankbenutzeradministratoren finden Sie unter [SQL Datenbank-Tutorial: Erstellen von SQL-Datenbankbenutzerkonten für den Zugriff auf und die Verwaltung von Datenbanken über das Azure-Portal](sql-database-control-access-sql-authentication-get-started.md)
+- Informationen zu den ersten Schritten im SQL Server-Authentifizierungstutorial finden Sie unter [SQL-Authentifizierung und -Autorisierung](sql-database-control-access-sql-authentication-get-started.md).
+- Informationen zu den ersten Schritten im Azure Active Directory-Authentifizierungstutorial finden Sie unter [Azure AD-Authentifizierung und Autorisierung](sql-database-control-access-aad-authentication-get-started.md).
 - Weitere Informationen zu SSMS finden Sie unter [Verwenden Sie SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -11,14 +11,14 @@ ms.assetid: 18e5d3f1-bfe5-4089-b6fd-76988ab29822
 ms.service: sql-database
 ms.custom: business continuity
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
-ms.openlocfilehash: d04eb659bcf4df53c5f44c1a4b01763844476267
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: 8fefa688ee52395d7dee2f53da12ebc50e84fb8e
 
 
 ---
@@ -38,7 +38,7 @@ Die folgende Tabelle vergleicht ERT und RPO für die drei häufigsten Szenarien.
 | Aktive Georeplikation |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |
 
 ### <a name="use-database-backups-to-recover-a-database"></a>Verwenden von Datenbanksicherungen zum Wiederherstellen einer Datenbank
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Diese Sicherungen werden in georedundantem Speicher gespeichert – für Datenbanken der Tarife „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Informationen zu Tarifen finden Sie unter [Tarife](sql-database-service-tiers.md). Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-scale-up.md). Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Informationen hierzu finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
+SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Diese Sicherungen werden in georedundantem Speicher gespeichert – für Datenbanken der Tarife „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Informationen zu Tarifen finden Sie unter [Tarife](sql-database-service-tiers.md). Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-service-tiers.md). Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Informationen hierzu finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
 
 Wenn die integrierte Aufbewahrungsdauer für Ihre Anwendung nicht ausreicht, können Sie diese verlängern, indem Sie die langfristige Aufbewahrungsrichtlinie für Ihre Datenbank(en) konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md). 
 
@@ -158,6 +158,6 @@ Zuweilen muss eine Anwendung aufgrund geplanter Wartungsmaßnahmen offline gesch
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
