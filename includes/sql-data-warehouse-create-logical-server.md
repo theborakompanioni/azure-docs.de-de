@@ -38,7 +38,7 @@
     ![Serverstandort](./media/sql-data-warehouse-create-logical-server/server-location.png)
     
     > [!TIP]
-    > Das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben** kann auf diesem Blatt nicht geändert werden. Sie können diese Einstellung auf dem Blatt für die Serverfirewall ändern. Weitere Informationen finden Sie unter [Erste Schritte mit der Sicherheit](../articles/sql-database/sql-database-get-started-security.md).
+    > Das Kontrollkästchen **Azure-Diensten Zugriff auf den Server erlauben** kann auf diesem Blatt nicht geändert werden. Sie können diese Einstellung auf dem Blatt für die Serverfirewall ändern. Weitere Informationen finden Sie unter [Erste Schritte mit der Sicherheit](../articles/sql-database/sql-database-manage-servers-portal.md).
     >
     
 9. Klicken Sie auf **Erstellen**.
@@ -47,6 +47,6 @@
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 
