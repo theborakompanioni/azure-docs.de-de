@@ -3,7 +3,7 @@ title: "Hinzufügen des benutzerdefinierten Domänennamens und Einrichten der Ve
 description: "Es wird beschrieben, wie Sie Azure Active Directory die Domänennamen Ihres Unternehmens hinzufügen und die Verbundanmeldung zwischen Azure Active Directory und Ihrer lokalen Verbundlösung einrichten."
 services: active-directory
 documentationcenter: 
-author: jeffsta
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 27126c7e-e6d6-4ef3-a4fb-f5f0706e749d
