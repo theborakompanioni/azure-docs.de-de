@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 1/31/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 7db56a4c0efb208591bb15aa03a4c0dbf833d22e
-ms.openlocfilehash: 24e675ebd63554be0bbc51e1013c4ade94b56abe
+ms.sourcegitcommit: 55ee9f685427168c02865d204fda34066c6779c5
+ms.openlocfilehash: a8533926bbb26770d8e665436e38172aeffbb035
 
 
 ---
@@ -56,8 +56,8 @@ Ein Azure Active Directory Schema lässt es nicht zu, dass zwei oder mehr Objekt
 > [!NOTE]
 > Das Feature [Azure Active Directory Resilienz bei doppelten Attributen](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) wird auch als Standardverhalten von Azure Active Directory eingeführt.  Dadurch wird die Anzahl der Synchronisierungsfehler, die in Azure AD Connect (sowie in anderen Clients für die Synchronisierung) auftreten, verringert, nachdem Azure AD weniger fehleranfällig beim Umgang mit duplizierten Attributen „ProxyAddresses“ und „UserPrincipalName“ ist, die in lokalen AD-Umgebungen vorkommen. Dieses Feature behebt allerdings nicht die Duplizierungsfehler. Daher müssen die Daten immer noch bereinigt werden. Allerdings wird die Bereitstellung neuer Objekte ermöglicht, die sonst aufgrund der Duplizierungswerte in Azure AD nicht bereitgestellt werden konnten. Dadurch wird auch die Anzahl der Fehler bei der Synchronisierung verringert, die an den Client für Synchronisierung zurückgegeben werden.
 > Wenn dieses Feature für Ihren Mandanten aktiviert ist, werden die Synchronisierungsfehler „InvalidSoftMatch“ während der Bereitstellung neuer Objekte nicht auftreten.
-> 
-> 
+>
+>
 
 #### <a name="example-scenarios-for-invalidsoftmatch"></a>Beispielszenarios für „InvalidSoftMatch“
 1. Zwei oder mehr Objekte mit dem gleichen Wert des Attributs „ProxyAddresses“ bestehen im lokalen Active Directory. Nur eines wird in Azure AD bereitgestellt.
@@ -100,8 +100,8 @@ Beachten Sie, dass der Synchronisierungsfehlerbericht in Azure AD Connect Health
 
 > [!NOTE]
 > ImmutableId sollte per Definition während der Lebensdauer des Objekts nicht geändert werden. Wenn Azure AD Connect nicht unter Berücksichtigung einiger der Szenarios der obigen Liste konfiguriert wurde, könnten Sie in eine Situation kommen, in der Azure AD Connect einen anderen Wert für „SourceAnchor“ des AD-Objekts berechnet, das die gleiche Entität (gleiche Benutzer/Gruppe/Kontakt usw.) darstellt, die ein bestehendes Azure AD-Objekt hat, das Sie weiterhin verwenden möchten.
-> 
-> 
+>
+>
 
 #### <a name="related-articles"></a>Verwandte Artikel
 * [Duplicate or invalid attributes prevent directory synchronization in Office 365 (Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisation in Office 365)](https://support.microsoft.com/en-us/kb/2647098)
@@ -134,7 +134,7 @@ Ein Azure Active Directory Schema lässt es nicht zu, dass zwei oder mehr Objekt
 * ProxyAddresses
 * UserPrincipalName
 
-Wenn Azure AD Connect versucht, ein neues Objekt hinzuzufügen, oder ein bestehendes Objekt zu aktualisieren, das einen Wert für obige Attribute hat, der bereits einem anderen Objekt in Azure Active Directory zugewiesen ist, tritt bei diesem Vorgang der Synchronisierungsfehler „AttributeValueMustBeUnique“.
+Wenn Azure AD Connect versucht, ein neues Objekt hinzuzufügen oder ein vorhandenes Objekt zu aktualisieren, dessen Wert für obige Attribute bereits einem anderen Objekt in Azure Active Directory zugewiesen ist, tritt bei diesem Vorgang der Synchronisierungsfehler „AttributeValueMustBeUnique“ auf.
 
 #### <a name="possible-scenarios"></a>Mögliche Szenarios:
 1. Ein duplizierter Wert wird einem bereits synchronisierten Objekt zugewiesen, das mit einem anderen synchronisierten Objekt in Konflikt steht.
@@ -181,9 +181,9 @@ a. Stellen Sie sicher, dass das Attribut „UserPrincipalName“ nur unterstütz
 
 ### <a name="datavalidationfailed"></a>DataValidationFailed (Datenüberprüfung schlug fehl)
 #### <a name="description"></a>Beschreibung
-Es ist ein sehr spezieller Fall, bei dem der Synchronisierungsfehler **„DataValidationFailed“** auftritt, wenn das Suffix des Attributs „UserPrincipalName“ eines Benutzers von einer Verbunddomäne zu einer anderen Verbunddomäne geändert wird.
+Es ist ein spezieller Fall, bei dem der Synchronisierungsfehler **DataValidationFailed** auftritt, wenn das Suffix des Attributs „UserPrincipalName“ eines Benutzers von einer Verbunddomäne in eine andere Verbunddomäne geändert wird.
 
-#### <a name="scenarios"></a>Szenarien
+#### <a name="scenarios"></a>Szenarios
 Bei einem synchronisierten Benutzer wurde das Suffix des „UserPrincipalName“ von einer Verbunddomäne zu einer anderen lokalen Verbunddomäne geändert. Beispiel: *UserPrincipalName = bob@contoso.com* wurde in *UserPrincipalName = bob@fabrikam.com* geändert.
 
 #### <a name="example"></a>Beispiel
@@ -193,22 +193,25 @@ Bei einem synchronisierten Benutzer wurde das Suffix des „UserPrincipalName“
 4. Bobs „userPrincipalName“ wird nicht aktualisiert und verursacht den Synchronisierungsfehler „DataValidationFailed“.
 
 #### <a name="how-to-fix"></a>So behebt man den Fehler
-Wenn das Suffix von „UserPrincipalName“ eines Benutzers von bob@**contoso.com** in bob@**fabrikam.com** geändert wurde, wobei sowohl **contoso.com** und **fabrikam.com** **Verbunddomänen** sind, befolgen Sie die folgenden Schritte um den Synchronisierungsfehler zu beheben.
+Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob@**fabrikam.com** geändert wurde und es sich sowohl bei **contoso.com** als auch bei **fabrikam.com** um **Verbunddomänen** handelt, führen Sie die folgenden Schritte aus, um den Synchronisierungsfehler zu beheben.
 
 1. Ändern Sie den UserPrincipalName des Benutzers in Azure AD von bob@contoso.com in bob@contoso.onmicrosoft.com. Sie können die folgenden PowerShell-Befehl mit dem Azure AD PowerShell-Modul verwenden: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Lassen Sie im nächsten Synchronisierungszyklus die Synchronisierung zu. Diesmal ist die Synchronisierung erfolgreich, und aktualisiert wie erwartet Bobs „UserPrincipalName“ in bob@fabrikam.com.
 
+#### <a name="related-articles"></a>Verwandte Artikel
+* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
 ### <a name="description"></a>Beschreibung
-Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder Anzahl überschreitet, die durch das Azure Active Directory-Schema festgelegt sind, tritt beim Synchronisierungsvorgang der Synchronisierungsfehler **LargeObject** oder **ExceededAllowedLength** (erlaubte Länge überschritten) auf. In der Regel tritt dieser Fehler für die folgenden Attribute auf:
+Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder Anzahl überschreitet, die durch das Azure Active Directory-Schema festgelegt sind, tritt beim Synchronisierungsvorgang der Synchronisierungsfehler **LargeObject** oder **ExceededAllowedLength** auf. In der Regel tritt dieser Fehler für die folgenden Attribute auf:
 
 * userCertificate
 * thumbnailPhoto
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>Mögliche Szenarien
-1. Bobs Attribut „userCertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören.
-2. Bobs „thumbnailPhoto“ das in Active Directory festgelegt ist, ist zu groß, um in Azure AD synchronisiert zu werden.
+1. Bobs Attribut „userCertificate“ speichert zu viele Zertifikate, die Bob zugewiesen sind. Dazu können auch ältere, abgelaufene Zertifikate gehören. Der Grenzwert ist auf 50 Zertifikate festgelegt, es wird jedoch empfohlen, weniger als 25 Zertifikate zu verwenden.
+2. Bobs „thumbnailPhoto“, das in Active Directory festgelegt ist, ist zu groß, um in Azure AD synchronisiert zu werden.
 3. Während des automatischen Auffüllens des Attributs „ProxyAddresses“ in Active Directory, wurden einem Objekt >500 „ProxyAddresses“ zugewiesen.
 
 ### <a name="how-to-fix"></a>So behebt man den Fehler
@@ -220,7 +223,6 @@ Wenn ein Attribut die maximal zulässigen Grenzwerte für Größe, Länge oder A
 
 
 
-
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

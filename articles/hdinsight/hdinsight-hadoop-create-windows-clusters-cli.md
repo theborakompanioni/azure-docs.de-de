@@ -1,6 +1,6 @@
 ---
 title: Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit der Azure-Befehlszeilenschnittstelle
-description: "Erfahren Sie, wie Sie Cluster für Azure HDInsight mithilfe der Azure-Befehlszeilenschnittstelle erstellen."
+description: "Erfahren Sie, wie Sie Windows-basierte Hadoop-Cluster für Azure HDInsight mithilfe der Azure CLI erstellen."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -13,18 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 984ebf0e93b8c36d1f09876d59feb7f74053622e
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: 393b7e44b21fe510e07b4048ddd3bdbcc31d90a9
 
 
 ---
 # <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-cli"></a>Erstellen Windows-basierter Hadoop-Cluster in HDInsight mit der Azure-Befehlszeilenschnittstelle
+
 [!INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-Erfahren Sie, wie Sie HDInsight-Cluster mit der Azure-Befehlszeilenschnittstelle erstellen. Andere Tools und Features zur Clustererstellung finden Sie, indem Sie oben auf dieser Seite auf die Registerkartenauswahl klicken, oder unter [Methoden zur Clustererstellung](hdinsight-provision-clusters.md#cluster-creation-methods).
+Erfahren Sie, wie Sie Windows-basierte Hadoop-Cluster in HDInsight mithilfe der Azure CLI erstellen. 
+
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Die Informationen in diesem Artikel gelten nur für Windows-basierte HDInsight-Cluster. Informationen zum Erstellen von Linux-basierten Clustern finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mit der Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen:
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -34,7 +38,7 @@ Bevor Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * **Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Azure-Befehlszeilenschnittstelle**.
   
-    [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
 
 ### <a name="access-control-requirements"></a>Voraussetzungen für die Zugriffssteuerung
 [!INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
@@ -46,7 +50,7 @@ Stellen Sie über den folgenden Befehl eine Verbindung mit Azure her:
 
 Weitere Informationen zur Authentifizierung mit einem Geschäfts- oder Schulkonto finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](../xplat-cli-connect.md).
 
-Wechseln Sie mit dem folgenden Befehl in den ARM-Modus:
+Führen Sie den folgenden Befehl aus, um in den Azure Resource Manager-Modus zu wechseln:
 
     azure config mode arm
 
@@ -55,9 +59,9 @@ Um Hilfe zu erhalten, verwenden Sie die Option **-h** .  Beispiel:
     azure hdinsight cluster create -h
 
 ## <a name="create-clusters"></a>Erstellen von Clustern
-Sie benötigen zum Erstellen eines HDInsight-Clusters ein Konto für Azure Resource Manager (ARM) und ein Konto für Azure Blob Storage. Zum Erstellen eines HDInsight-Clusters müssen Sie Folgendes angeben:
+Zum Erstellen eines HDInsight-Clusters benötigen Sie eine Ressourcenverwaltungsgruppe und ein Azure Blob Storage-Konto. Zum Erstellen eines HDInsight-Clusters müssen Sie Folgendes angeben:
 
-* **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss in einer Azure-Ressourcengruppe erstellt werden. Azure Resource Manager ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
+* **Azure-Ressourcengruppe**: Ein Data Lake Analytics-Konto muss innerhalb einer Azure-Ressourcengruppe erstellt werden. Azure Resource Manager ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
   
     So listen Sie die Ressourcengruppen in Ihrem Abonnement auf:
   
@@ -80,7 +84,7 @@ Sie benötigen zum Erstellen eines HDInsight-Clusters ein Konto für Azure Resou
   > 
   > 
   
-    Informationen zum Erstellen von Azure-Speicherkonten im Azure-Portal finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos][azure-create-storageaccount].
+    Informationen zum Erstellen eines Azure Storage-Kontos im Azure-Portal finden Sie unter [Erstellen, Verwalten oder Löschen eines Speicherkontos][azure-create-storageaccount].
   
     Falls Sie bereits ein Speicherkonto haben, aber dessen Kontonamen und Kontoschlüssel nicht kennen, können Sie diese Daten mit den folgenden Befehlen abrufen:
   
@@ -127,18 +131,18 @@ Erstellen eines Clusters mit einer Skriptaktion
 
 Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen (Linux)](hdinsight-hadoop-customize-cluster.md).
 
-## <a name="create-clusters-using-arm-templates"></a>Erstellen von Clustern mithilfe von ARM-Vorlagen
-Sie können die Befehlszeilenschnittstelle zum Erstellen von Clustern verwenden, indem ARM-Vorlagen aufgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen über die Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli).
+## <a name="create-clusters-using-resource-manager-templates"></a>Erstellen von Clustern mit Resource Manager-Vorlagen
+Sie können die CLI zum Erstellen von Clustern verwenden, indem Azure Resource Manager-Vorlagen aufgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen über die Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-windows-clusters-arm-templates.md#deploy-with-azure-cli).
 
 ## <a name="see-also"></a>Siehe auch
 * [Erste Schritte mit Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) – Erfahren Sie, wie Sie die Arbeit mit Ihrem HDInsight-Cluster aufnehmen können.
 * [Programmgesteuerte Übermittlung von Hadoop-Jobs](hdinsight-submit-hadoop-jobs-programmatically.md) – Erfahren Sie, wie Sie Aufträge programmgesteuert an HDInsight übermitteln können.
 * [Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)
-* [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](../virtual-machines-command-line-tools.md)
+* [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Dienstverwaltung](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

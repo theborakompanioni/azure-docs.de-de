@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2016
+ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 53a67a2bccb622bfd79eb082baf9688336760cf1
+ms.sourcegitcommit: e358f6d1937a45f375777cea1153b975a745a719
+ms.openlocfilehash: 9b1a297b19b07ca8b77525484e59389255567ed3
 
 
 ---
+
 # <a name="upgrade-windows-azure-active-directory-sync-dirsync-and-azure-active-directory-sync-azure-ad-sync"></a>Aktualisieren des Windows Azure Active Directory-Synchronisierungstools („DirSync“) und Azure Active Directory-Synchronisierungstools („Azure AD Sync“)
 Azure AD Connect bietet die beste Möglichkeit, um Ihr lokales Verzeichnis mit Azure AD und Office 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync veraltet sind und der Support für diese Tools am 13. April 2017 endet, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.
 
@@ -46,21 +47,21 @@ Wenn Sie Azure AD Sync verwenden, wird ein direktes Upgrade empfohlen. Sie könn
 | [Upgrade von DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>Bei einem vorhandenen DirSync-Server, der bereits ausgeführt wird</li> |
 | [Upgrade von Azure AD Sync](active-directory-aadconnect-upgrade-previous-version.md) |<li>Bei einer Migration von Azure AD Sync</li> |
 
-Informationen zu einem direkten Upgrade von DirSync zu Azure AD Connect finden Sie in diesem Channel 9-Video:
+Informationen zu einem direkten Upgrade von DirSync auf Azure AD Connect finden Sie in diesem Channel 9-Video:
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools/player]
-> 
-> 
+>
+>
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **F: Ich habe eine E-Mail-Benachrichtigung vom Azure-Team bzw. eine Nachricht vom Office 365-Nachrichtencenter erhalten, ich verwende aber Connect.**  
-Die Benachrichtigung wurde auch an Kunden gesendet, die Azure AD Connect mit Buildnummer 1.0.\*.0 (also eine Version vor Version 1.1) verwenden. Microsoft empfiehlt Kunden, immer die neueste Azure AD Connect-Versionen zu verwenden. Mit der [automatischen Upgradefunktion](active-directory-aadconnect-feature-automatic-upgrade.md) von 1.1 lässt sich einfach sicherstellen, dass eine aktuelle Version von Azure AD Connect installiert ist.
+Die Benachrichtigung wurde auch an Kunden gesendet, die Azure AD Connect mit Buildnummer 1.0.\*.0 (also eine Version vor Version 1.1) verwenden. Microsoft empfiehlt Kunden, immer die neueste Azure AD Connect-Versionen zu verwenden. Mit der in 1.1 eingeführten [automatischen Upgradefunktion](active-directory-aadconnect-feature-automatic-upgrade.md) lässt sich einfach sicherstellen, dass immer eine aktuelle Version von Azure AD Connect installiert ist.
 
 **F: Funktioniert DirSync/Azure AD Sync ab dem 13. April 2017 nicht mehr?**  
- Nein. Das Datum, ab dem diese Tools nicht mehr mit Azure AD kommunizieren können, wird zu einem späteren Zeitpunkt bekanntgegeben. Sie finden diese Information in diesem Thema, sobald die verfügbar ist.
+Nein. Das Datum, ab dem diese Produkte nicht mehr mit Azure AD kommunizieren können, wird zu einem späteren Zeitpunkt bekanntgegeben. Sie finden diese Information in diesem Thema, sobald die verfügbar ist.
 
 **F: Von welchen DirSync-Versionen kann ich ein Upgrade durchführen?**  
- Ein Upgrade kann von allen aktuell verwendeten DirSync-Versionen durchgeführt werden.
+Ein Upgrade kann von allen aktuell verwendeten DirSync-Versionen durchgeführt werden.
 
 **F: Und was ist mit dem Azure AD-Connector für FIM/MIM?**  
 Der Azure AD-Connector für FIM/MIM wurde **nicht** als veraltet bekanntgegeben. Dabei handelt es sich lediglich um ein **Feature Freeze**, d.h., es wird keine neue Funktionalität hinzugefügt, und es werden keine Programmfehlerbehebungen bereitgestellt. Kunden, die den Connector verwenden, sollten eine Migration zu Azure AD Connect planen. Es wird dringend empfohlen, keine neuen Bereitstellungen mit diesem Connector durchzuführen. Dieser Connector wird in der Zukunft als veraltet bekanntgegeben.
@@ -70,7 +71,6 @@ Der Azure AD-Connector für FIM/MIM wurde **nicht** als veraltet bekanntgegeben.
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

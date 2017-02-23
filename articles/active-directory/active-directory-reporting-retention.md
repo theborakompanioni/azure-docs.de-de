@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/30/2016
 ms.author: dhanyahk
 translationtype: Human Translation
-ms.sourcegitcommit: 8a7d1bd1db8abdac5b741d79b10c9b363afecd24
-ms.openlocfilehash: 9f8d9c845c391ec24aa3b265aa3078840fe3240a
+ms.sourcegitcommit: 47594d1d435ee92d57150a01a99765bab0e87846
+ms.openlocfilehash: 2ac62c2c04975167b243b49bf2c536900e77df73
 
 
 ---
@@ -30,8 +30,8 @@ Wie wird die Erfassung von Aktivitätsdaten gestartet?
 
 | Azure AD-Edition | Start der Erfassung |
 | :--              | :--   |
-|Premium und Premium 2 | Bei der Registrierung für eine Lizenz |
-| Free | Beim ersten Öffnen des Blatts [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oder bei der ersten Verwendung der [Berichterstellungs-APIs](https://aka.ms/aadreports)  |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Bei der Registrierung für ein Abonnement |
+| Azure AD Free | Beim ersten Öffnen des Blatts [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oder bei der ersten Verwendung der [Berichterstellungs-APIs](https://aka.ms/aadreports)  |
 
 
 Wann sind die Aktivitätsdaten im Azure-Portal verfügbar?
@@ -46,14 +46,14 @@ Wie lange werden die gesammelten Daten gespeichert?
 
 **Aktivitätsberichte**    
 
-| Bericht | Azure AD Free | Azure AD Premium 1 | Azure AD Premium 2 |
+| Bericht | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--    | :--           | :--                | :--                |
 | Verzeichnisprüfbericht | 7 Tage | 30 Tage | 30 Tage |
 | Benutzeranmeldeaktivität |    7 Tage | 30 Tage | 30 Tage |
 
 **Sicherheitssignale**
 
-| Bericht | Azure AD Free | Azure AD Premium 1 | Azure AD Premium 2 |
+| Bericht | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--    | :--           | :--                | :--                |
 | Riskante Anmeldungen | 7 Tage | 30 Tage | 90 Tage |
 
@@ -61,6 +61,6 @@ Wie lange werden die gesammelten Daten gespeichert?
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

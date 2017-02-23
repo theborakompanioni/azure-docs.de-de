@@ -1,6 +1,6 @@
 ---
 title: "Hinzufügen einer Firewall der nächsten Generation in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Firewall der nächsten Generation hinzufügen** und **Datenverkehr nur über NGFW routen** umsetzen."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Firewall der nächsten Generation hinzufügen** und **Datenverkehr nur über NGFW routen** implementieren."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4cc9541251157a3c8c632a01fafb52ea87ba58dd
+ms.sourcegitcommit: 0046a088f908a8cfdcab2cf6baad62524def6468
+ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
 
 
 ---
@@ -25,17 +25,17 @@ In Azure Security Center wird unter Umständen empfohlen, dass Sie zum Verbesser
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Firewall der nächsten Generation hinzufügen** aus.
    ![Firewall der nächsten Generation hinzufügen][1]
 2. Wählen Sie auf dem Blatt **Firewall der nächsten Generation hinzufügen** einen Endpunkt aus.
    ![Auswählen eines Endpunkts][2]
-3. Ein zweites Blatt **Firewall der nächsten Generation hinzufügen** wird geöffnet. Sie können eine vorhandene Lösung verwenden, sofern verfügbar, oder eine neue erstellen. Bei diesem Beispiel sind keine vorhandenen Lösungen verfügbar. Daher erstellen wir eine neue Firewall der nächsten Generation.
-   ![Erstellen einer neuen Firewall der nächsten Generation][3]
-4. Wählen Sie zum Erstellen einer neuen Firewall der nächsten Generation in der Liste der angezeigten Partner eine Lösung aus. Bei diesem Beispiel wählen wir **Check Point**.
+3. Ein zweites Blatt **Firewall der nächsten Generation hinzufügen** wird geöffnet. Sie können eine vorhandene Lösung verwenden, sofern verfügbar, oder eine neue erstellen. In diesem Beispiel sind keine vorhandenen Lösungen verfügbar. Daher erstellen wir eine Firewall der nächsten Generation.
+   ![Erstellen einer Firewall der nächsten Generation][3]
+4. Wählen Sie zum Erstellen einer Firewall der nächsten Generation eine Lösung aus der Liste der integrierten Partner aus. In diesem Beispiel wählen wir **Check Point**.
    ![Auswählen der Firewalllösung der nächsten Generation][4]
 5. Auf dem eingeblendeten Blatt **Check Point** werden Informationen zu dieser Partnerlösung angezeigt. Klicken Sie auf dem Informationsblatt auf **Erstellen** .
    ![Blatt mit Firewallinformationen][5]
@@ -47,7 +47,7 @@ Kehren Sie zum Blatt **Empfehlungen** zurück. Nachdem Sie über Security Center
 
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Datenverkehr nur über NGFW routen** aus.
    ![Datenverkehr nur durch Firewall der nächsten Generation leiten][7]
-2. Daraufhin wird das Blatt **Datenverkehr nur über NGFW routen** geöffnet, das die virtuellen Computer enthält, an die Sie Datenverkehr weiterleiten können. Wählen Sie einen virtuellen Computer aus der Liste aus.
+2. Daraufhin wird das Blatt **Datenverkehr nur über NGFW routen** geöffnet, das die virtuellen Computer enthält, an die Sie Datenverkehr weiterleiten können. Wählen Sie in der Liste eine VM aus.
    ![Auswählen eines virtuellen Computers][8]
 3. Ein Blatt für den ausgewählten virtuellen Computer wird geöffnet, auf dem dazugehörige Eingangsregeln angezeigt werden. In einer Beschreibung erhalten Sie weitere Informationen zu den möglichen nächsten Schritten. Wählen Sie **Eingangsregeln bearbeiten** aus, um mit dem Bearbeiten einer Eingangsregel fortzufahren. Es wird erwartet, dass **Quelle** für die Endpunkte mit Internetzugriff, die mit der Firewall der nächsten Generation verknüpft sind, nicht auf **Beliebig** festgelegt wird. Weitere Informationen zu den Eigenschaften von Eingangsregeln finden Sie unter [NSG-Regeln](../virtual-network/virtual-networks-nsg.md#nsg-rules).
    ![Konfigurieren von Regeln zum Begrenzen des Zugriffs][9]
@@ -83,6 +83,6 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

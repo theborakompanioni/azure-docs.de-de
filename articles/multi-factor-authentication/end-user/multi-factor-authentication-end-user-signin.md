@@ -1,6 +1,6 @@
 ---
-title: "Der Azure MFA-Anmeldevorgang mit Überprüfung in zwei Schritten | Microsoft Docs"
-description: "Auf dieser Seite finden Sie Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind."
+title: "Azure MFA-Anmeldevorgang mit Überprüfung in zwei Schritten | Microsoft-Dokumentation"
+description: "Auf dieser Seite finden Sie eine Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind."
 keywords: "Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon"
 services: multi-factor-authentication
 documentationcenter: 
@@ -13,84 +13,79 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 02/02/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
-ms.openlocfilehash: 63951136d4f7bc2eb81c24ddfd58e696fc31cf37
+ms.sourcegitcommit: c0af680c83a72a9f2a415999141f9913c8b724a4
+ms.openlocfilehash: 85e0212ed9d7bde001f9b5cd4776d34ad1f01816
 
 
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Der Anmeldevorgang mit Azure Multi-Factor Authentication
 > [!NOTE]
-> Die folgende Dokumentation auf dieser Seite zeigt eine normale Anmeldeumgebung.  Hilfe zur Anmeldung finden Sie unter [Beheben von Problemen mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-manage-settings.md)
->
->
+> Zweck dieses Artikels ist eine exemplarische Vorgehensweise für einen typischen Anmeldevorgang. Hilfe zur Anmeldung oder zur Behebung von Problemen finden Sie unter [Beheben von Problemen mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
 ## <a name="what-will-your-sign-in-experience-be"></a>Was sieht Ihr Anmeldevorgang aus?
-Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authentication verwenden.  In diesem Abschnitt finden Sie Informationen dazu, was Sie bei der Anmeldung erwartet.  Wählen Sie die Option aus, die am besten auf Sie zutrifft.
+Der Anmeldevorgang hängt davon ab, wie Sie sich anmelden und Multi-Factor Authentication verwenden. Wählen Sie die Option aus, die am besten auf Sie zutrifft:
 
-| Vorgehensweise | Beschreibung |
-|:--- |:--- |
-| [Anmeldung mit Mobil- oder Bürotelefon](#signing-in-with-mobile-or-office-phone) |Beschreibt die Anmeldung mit einem Mobil- oder Bürotelefon. |
-| [Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung](#signing-in-with-the-microsoft-authenticator-app-using-notification) |Beschreibt die benachrichtigungsbasierte Anmeldung mit der Microsoft Authenticator-App. |
-| [Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |Beschreibt die prüfcodebasierte Anmeldung mit der Microsoft Authenticator-App. |
-| [Anmelden mit einer alternativen Methode](#signing-in-with-an-alternate-method) |Hier erfahren Sie, was Sie erwartet, wenn Sie eine alternative Methode verwenden möchten. |
+| Wie melden Sie sich an? | 
+| --- |
+| [Mit einem Mobil- oder Bürotelefon](#signing-in-with-mobile-or-office-phone) |
+| [Mit Benachrichtigungen aus der Microsoft Authenticator-App](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
+| [Mit Bestätigungscodes aus der Microsoft Authenticator-App](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| [Mit einer alternativen Methode, da ich meine bevorzugte Methode derzeit nicht verwenden kann](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-mobile-or-office-phone"></a>Anmeldung mit Mobil- oder Bürotelefon
 Im Folgenden wird der Vorgang für Multi-Factor Authentication mit dem Büro- oder Mobiltelefon beschrieben.
 
-### <a name="to-sign-in-with-a-call-to-your-office-or-mobile-phone"></a>So melden Sie sich über einen Aufruf bei Ihrem Büro- oder Mobiltelefon an
-* Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.  
-* Sie erhalten einen Anruf von Microsoft.  
-* Nehmen Sie den Anruf entgegen, und drücken Sie die #-Taste.  
-* Sie sollten jetzt angemeldet sein.  
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.  
+2. Sie erhalten einen Anruf von Microsoft.  
+3. Nehmen Sie den Anruf entgegen, und drücken Sie die #-Taste.  
+4. Sie sollten jetzt angemeldet sein.  
 
-## <a name="signing-in-with-the-microsoft-authenticator-app-using-notification"></a>Anmelden mit der Microsoft Authenticator-App über eine Benachrichtigung
-Die folgenden Informationen beschreiben die Verwendung der Multi-Factor Authentication mit der Microsoft Authenticator-App über eine an Sie gesendete Benachrichtigung.
+## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Anmelden mit der Microsoft Authenticator-App 
+Nachstehend wird der Anmeldevorgang mit der Microsoft Authenticator-App für Überprüfungen in zwei Schritten beschrieben. Es gibt zwei Möglichkeiten, die App zu verwenden. Sie können entweder Pushbenachrichtigungen auf Ihrem Gerät erhalten oder die App öffnen, um einen Prüfcode abzurufen.
 
-### <a name="to-sign-in-with-a-notification-sent-the-microsoft-authenticator-app"></a>So melden Sie sich mit der Microsoft Authenticator-App über eine Benachrichtigung an
-* Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-* Sie erhalten eine Benachrichtigung von Microsoft.
+### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>So melden Sie sich mit einer von der Microsoft Authenticator-App gesendeten Benachrichtigung an
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+2. Microsoft sendet eine Benachrichtigung an die Microsoft Authenticator-App auf Ihrem Gerät.
 
-![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin/notify.png)
+  ![Microsoft sendet Benachrichtigung](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-* Rufen Sie die Benachrichtigung auf Ihrem Mobiltelefon auf, und tippen Sie auf die Schaltfläche "Überprüfen".  Wenn Ihr Unternehmen eine PIN anfordert, werden Sie hier zur Eingabe gebeten.
-
-![Überprüfen](./media/multi-factor-authentication-end-user-signin/phone2.png)
-
-![Einrichtung](./media/multi-factor-authentication-end-user-first-time/scan3.png)
-
-* Sie sollten jetzt angemeldet sein.
-
-## <a name="signing-in-with-the-microsoft-authenticator-app-using-verification-code"></a>Anmelden mit der Microsoft Authenticator-App über einen Überprüfungscode
-Im Folgenden wird der Vorgang für die Multi-Factor Authentication mit der Microsoft Authenticator-App unter Verwendung eines Überprüfungscodes beschrieben.
+3. Öffnen Sie die Benachrichtigung auf Ihrem Telefon, und wählen den Schlüssel **Überprüfen** aus. Wenn Ihr Unternehmen eine PIN anfordert, geben Sie sie hier ein.
+4. Sie sollten jetzt angemeldet sein.
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>So melden Sie sich mit der Microsoft Authenticator-App über einen Überprüfungscode an
-* Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-* Sie werden von Microsoft aufgefordert, einen Bestätigungscode einzugeben.
 
-![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin/verify3.png)
+Wenn Sie die Microsoft-Authenticator-App zum Abrufen von Prüfcodes verwenden, wird Ihnen beim Öffnen der App unter dem Namen Ihres Kontos eine Zahl angezeigt. Diese Zahl ändert sich alle&30; Sekunden, damit Sie die gleiche Zahl nicht zweimal verwenden. Wenn ein Prüfcode angefordert wird, öffnen Sie die App und verwenden die derzeit angezeigte Zahl. 
 
-* Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+2. Sie werden von Microsoft aufgefordert, einen Bestätigungscode einzugeben.
 
-![Abrufen des Codes](./media/multi-factor-authentication-end-user-signin/phone3.png)
+  ![Eingeben des Überprüfungscodes](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-* Sie sollten jetzt angemeldet sein.
+3. Öffnen Sie die Microsoft Authenticator-App auf Ihrem Smartphone, und geben Sie den Code bei der Anmeldung in das entsprechende Feld ein.
+4. Sie sollten jetzt angemeldet sein.
 
 ## <a name="signing-in-with-an-alternate-method"></a>Anmelden mit einer alternativen Methode
-Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
+Mitunter verfügen Sie nicht über das Telefon oder Gerät, das Sie als Ihre bevorzugte Überprüfungsmethode festgelegt haben. Genau aus diesem Grund empfehlen wird, alternative Anmeldemethoden für Ihr Konto einzurichten. Im folgenden Abschnitt erfahren Sie, wie Sie sich über eine alternative Methode anmelden, wenn die primäre Methode nicht verfügbar ist.
 
-### <a name="to-sign-in-with-an-alternate-method"></a>So melden Sie sich mit einer alternativen Methode an
-* Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
-* Wählen Sie eine andere Überprüfungsoption aus.  Es stehen verschiedene Optionen zur Auswahl. Die Anzahl der verfügbaren Optionen hängt davon ab, wie viele Sie eingerichtet haben.
+1. Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei einer Anwendung oder einem Dienst wie Office 365 an.
+2. Wählen Sie **Andere Überprüfungsoption verwenden** aus. Es werden verschiedene Überprüfungsoptionen abhängig davon angezeigt, wie viele Sie eingerichtet haben.
 
-![Anwenden einer alternativen Methode](./media/multi-factor-authentication-end-user-signin/alt.png)
+  ![Anwenden einer alternativen Methode](./media/multi-factor-authentication-end-user-signin/alt.png)
 
-* Wählen Sie eine alternative Methode aus, und melden Sie sich an.
+3. Wählen Sie eine alternative Methode aus, und melden Sie sich an.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Wenn Sie Probleme bei der Anmeldung mit der Überprüfung in zwei Schritten haben, finden Sie unter [Probleme mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-troubleshoot.md) weitere Informationen.
+
+Lesen Sie den Artikel [Verwalten der Einstellungen für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-manage-settings.md).
+
+In [Erste Schritte mit der Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können. 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

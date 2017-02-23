@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/01/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 950b6de5b579cac1a2b10db299e6f7bcfd8c7b04
+ms.sourcegitcommit: 79f5bad314b230df27c73fb7e60e173778c96865
+ms.openlocfilehash: da31e1ceebfecf766828fa761b01f4e346cd13aa
 
 
 ---
@@ -69,8 +69,6 @@ Gehen Sie folgendermaßen vor, um die Azure-Diagnose mithilfe des Microsoft Azur
    4. Legen Sie den **Status** auf **EIN** fest.
    5. Wählen Sie alle Diagnoseprotokolle aus, die Sie sammeln möchten.
    6. Klicken Sie auf **OK**.
-
-Mit Azure PowerShell können Sie die Ereignisse genauer angeben, die in Azure Storage geschrieben werden. Weitere Informationen finden Sie unter [Sammeln von Daten mithilfe von Azure-Diagnose, die in Table Storage oder IIS-Protokollen in Blobs geschrieben sind](log-analytics-azure-storage-json.md).
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Aktivieren der Azure-Diagnose in einer Webrolle für die Sammlung von IIS-Protokollen und -Ereignissen
 Allgemeine Schritte zur Aktivierung der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in einem Clouddienst](../cloud-services/cloud-services-dotnet-diagnostics.md). Diese Informationen werden in den unten stehenden Anweisungen verwendet und für den Einsatz mit Log Analytics angepasst.
@@ -192,12 +190,12 @@ Das Skript verwendet Cmdlets für klassische virtuelle Computer.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwenden Sie JSON-Dateien in Blob Storage](log-analytics-azure-storage-json.md), um Protokolle von Azure-Diensten zu lesen, die Diagnosedaten im JSON-Format in Blob Storage schreiben.
+* [Sammeln von Protokollen und Metriken für Azure-Dienste](log-analytics-azure-storage.md) für unterstützte Azure-Dienste.
 * [Aktivieren Sie Lösungen](log-analytics-add-solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](log-analytics-log-searches.md) , um die Daten zu analysieren.
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

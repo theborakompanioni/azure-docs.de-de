@@ -17,24 +17,25 @@ ms.workload: big-data
 ms.date: 03/07/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 0587dfcd6079fc8df91bad5a5f902391d3657a6b
-ms.openlocfilehash: 176c06bd1d8117fda70001762f86f1a98829f78b
+ms.sourcegitcommit: e2d78b7e71cd17c88ce4e283cc0b0ddc9bf7b479
+ms.openlocfilehash: 0b12dcfbf69c0f66df7587f6a755f74089090960
 
 
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight-on-windows"></a>Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight unter Windows
+
 > [!div class="op_single_selector"]
 > * [Linux-basiert](hdinsight-hadoop-linux-tutorial-get-started.md)
 > * [Windows-basiert](hdinsight-hadoop-tutorial-get-started-windows.md)
 > 
 > 
 
+
+
 In diesem Lernprogramm lernen Sie Hadoop unter Windows kennen und unternehmen erste Schritte mit HDInsight. Das Lernprogramm beschreibt, wie Sie eine Hive-Abfrage für unstrukturierte Daten in einem Hadoop-Cluster ausführen und die Ergebnisse anschließend in Microsoft Excel analysieren.
 
-> [!NOTE]
-> Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten Clustern finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
-> 
-> 
+> [!IMPORTANT]
+> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Informationen zum Erstellen Linux-basierter Cluster finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Linux-basiertem Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
 Angenommen, Sie verfügen über einen großen unstrukturierten Datensatz und möchten eine Hive-Abfrage für diesen ausführen, um aussagekräftige Informationen zu extrahieren. Genau darum geht es in diesem Tutorial. Und so geht's:
 
@@ -81,7 +82,7 @@ Beim Erstellen eines Clusters werden Azure-Computeressourcen erstellt, die Hadoo
    | Abonnement |Wählen Sie das Azure-Abonnement aus, das für den Cluster verwendet werden soll. |
    | Ressourcengruppe |Wählen Sie eine vorhandene Azure-Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. Ein grundlegender HDInsight-Cluster enthält einen Cluster und dessen Standardspeicherkonto.  Sie können die beiden in einer Ressourcengruppe gruppieren, um die Verwaltung zu vereinfachen. |
    | Anmeldeinformationen |Geben Sie den Anmeldebenutzernamen und das Kennwort für den Cluster ein. Windows-basierte Cluster können über 2 Benutzerkonten verfügen.  Der Clusterbenutzer (oder HTTP-Benutzer) wird verwendet, um den Cluster zu verwalten und Aufträge zu übermitteln.  Optional können Sie ein Remotedesktop-Benutzerkonto (RDP) erstellen, um eine Remoteverbindung mit dem Cluster herzustellen. Wenn Sie den Remotedesktop aktivieren möchten, erstellen Sie das RDP-Benutzerkonto. |
-   | Datenquelle |Klicken Sie auf "Neu erstellen", um ein neues standardmäßiges Speicherkonto zu erstellen. Verwenden Sie den Clusternamen als standardmäßigen Containernamen. Jeder HDinsight-Cluster besitzt einen Standardblobcontainer auf einem Azure-Speicherkonto.  Der Speicherort für das standardmäßige Azure-Speicherkonto bestimmt den Speicherort des HDInsight-Clusters. |
+   | Datenquelle |Klicken Sie auf "Neu erstellen", um ein neues standardmäßiges Speicherkonto zu erstellen. Verwenden Sie den Clusternamen als standardmäßigen Containernamen. Jeder HDinsight-Cluster hat einen Standardblobcontainer in einem Azure-Speicherkonto.  Der Speicherort für das standardmäßige Azure-Speicherkonto bestimmt den Speicherort des HDInsight-Clusters. |
    | Knotentarife |Verwenden Sie für dieses Tutorial einen oder zwei Workerknoten mit dem Standardtarif für Workerknoten und Hauptknoten. |
    | Optionale Konfiguration |Überspringen Sie diesen Teil. |
 4. Vergewissern Sie sich auf dem Blatt **Neuer HDInsight-Cluster**, dass **An Startmenü anheften** ausgewählt ist, und klicken Sie dann auf **Erstellen**. Der Cluster wird erstellt, und dem Startmenü Ihres Azure-Portals wird eine Kachel für den Cluster hinzugefügt. Das Symbol zeigt an, dass der Cluster erstellt wird. Sobald die Erstellung abgeschlossen ist, ändert es sich in das HDInsight-Symbol.
@@ -165,7 +166,7 @@ Sie benötigen Excel 2013 oder 2010, um diesen Teil des Lernprogramms durchführ
 7. Klicken Sie in der oberen linken Ecke auf **Schließen und laden**, um die Ausgabe des Hive-Auftrags in Excel zu importieren.
 
 ## <a name="run-samples"></a>Ausführen von Beispielen
-Der HDInsight-Cluster stellt eine Abfragekonsole mit einem Katalog für den Einstieg bereit, damit Beispiele direkt im Portal ausgeführt werden können. Mit diesen Beispielen können Sie das Arbeiten mit HDInsight erlernen, indem Sie einige einfache Szenarien durcharbeiten. Die Beispiele enthalten alle benötigten Komponenten wie z. B. die zu analysierenden Daten und die entsprechenden Abfragen für die Daten. Um weitere Informationen zu den Beispielen im Katalog für den Einstieg zu erhalten, lesen Sie [Kennenlernen von Hadoop mithilfe des Azure HDInsight-Katalogs für den Einstieg](hdinsight-learn-hadoop-use-sample-gallery.md).
+Der HDInsight-Cluster stellt eine Abfragekonsole mit einem Katalog für den Einstieg bereit, damit Beispiele direkt im Portal ausgeführt werden können. Mit diesen Beispielen können Sie das Arbeiten mit HDInsight erlernen, indem Sie einige einfache Szenarien durcharbeiten. Die Beispiele enthalten alle benötigten Komponenten wie z. B. die zu analysierenden Daten und die entsprechenden Abfragen für die Daten.
 
 **So führen Sie das Beispiel aus**
 
@@ -255,6 +256,6 @@ In diesem Hadoop-Tutorial haben Sie erfahren, wie ein Hadoop-Cluster unter Windo
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Tipps zur Verwendung von Hadoop unter Linux-basiertem HDInsight | Microsoft Docs
+title: Tipps zur Verwendung von Hadoop unter Linux-basiertem HDInsight in Azure | Microsoft-Dokumentation
 description: "Hier erhalten Sie Implementierungstipps für die Verwendung von Linux-basierten HDInsight (Hadoop)-Clustern in einer vertrauten Linux-Umgebung, die in der Azure-Cloud ausgeführt wird."
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 02/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 854df55045d4d9a062ade3905b9be1daad0a7d8c
-ms.openlocfilehash: 3ce0444427ba10e7247aec500017ea4bae3af161
+ms.sourcegitcommit: 1d2d3d9d6c8dee02f2eb96ba20894e1d52541102
+ms.openlocfilehash: 584af73f3f2d428f7551de0b12b498b1a118e5dc
 
 
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
-Auf Linux basierende Azure HDInsight-Cluster stellen Hadoop in einer vertrauten Linux-Umgebung bereit, die in der Azure-Cloud ausgeführt wird. Die Lösung sollte sich größtenteils genauso wie jede andere Installation von Hadoop unter Linux verhalten. In diesem Dokument werden bestimmte Unterschiede aufgeführt, die Sie kennen sollten.
+Azure HDInsight-Cluster stellen Hadoop in einer vertrauten Linux-Umgebung bereit, die in der Azure-Cloud ausgeführt wird. Die Lösung sollte sich größtenteils genauso wie jede andere Installation von Hadoop unter Linux verhalten. In diesem Dokument werden bestimmte Unterschiede aufgeführt, die Sie kennen sollten.
+
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,36 +40,36 @@ In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwe
 
 Sofern es nicht [in eine Domäne eingebunden](hdinsight-domain-joined-introduction.md) ist, sollte HDInsight als **Einzelbenutzersystem** betrachtet werden. Ein SSH-Einzelbenutzerkonto wird mit dem Cluster mit Administratorrechten erstellt. Zusätzliche SSH-Konten können erstellt werden, haben jedoch auch Administratorzugriff auf den Cluster.
 
-In die Domäne eingebundenes HDInsight bietet Unterstützung für mehrere Benutzer sowie präzisere Einstellungen für Berechtigungen und Rollen. Weitere Informationen finden Sie unter [Manage Domain-joined HDInsight clusters](hdinsight-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern).
+In die Domäne eingebundenes HDInsight bietet Unterstützung mehrerer Benutzer sowie präzisere Einstellungen für Berechtigungen und Rollen. Weitere Informationen finden Sie unter [Manage Domain-joined HDInsight clusters](hdinsight-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern).
 
 ## <a name="domain-names"></a>Domänennamen
 
 Der vollqualifizierte Domänenname (FQDN) für die Verbindung zum Cluster aus dem Internet lautet **&lt;Clustername>.azurehdinsight.net** oder (nur für SSH) **&lt;Clustername>-ssh.azurehdinsight.net**.
 
-Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Zum Suchen der Clusternamen können Sie die Seite **Hosts** auf der Ambari-Webbenutzeroberfläche besuchen oder wie folgt eine Liste der Hosts über die Ambari REST-API zurückgeben:
+Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Die Clusternamen finden Sie auf der Ambari-Webbenutzeroberfläche auf der Seite **Hosts**. Sie können auch Folgendes verwenden, um eine Liste mit Hosts aus der Ambari-REST-API abzurufen:
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-Ersetzen Sie **PASSWORD** durch das Kennwort des Administratorkontos und **CLUSTERNAME** durch den Namen des Clusters. Hiermit wird ein JSON-Dokument mit einer Liste der Hosts im Cluster zurückgegeben, dann ruft jq den Wert des `host_name` -Elements für die einzelnen Hosts im Cluster ab.
+Ersetzen Sie **PASSWORD** durch das Kennwort des Administratorkontos und **CLUSTERNAME** durch den Namen des Clusters. Hiermit wird ein JSON-Dokument mit einer Liste der Hosts im Cluster zurückgegeben. Dann ruft jq den Wert des `host_name`-Elements für die einzelnen Hosts im Cluster ab.
 
 Wenn Sie den Namen des Knotens für einen bestimmten Dienst suchen müssen, können Sie Ambari nach dieser Komponente abfragen. Beispiel: Um die Hosts für den HDFS-Namensknoten zu suchen, verwenden Sie Folgendes.
 
     curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-Hiermit wird ein JSON-Dokument mit einer Beschreibung des Diensts zurückgegeben, dann ruft jq nur den `host_name` -Wert für die Hosts ab.
+Mit dieser Anforderung wird ein JSON-Dokument mit einer Beschreibung des Diensts zurückgegeben. Dann ruft jq nur den `host_name`-Wert für die Hosts ab.
 
 ## <a name="remote-access-to-services"></a>Remotezugriff auf Dienste
 
 * **Ambari (Web)** – https://&lt;Clustername>.azurehdinsight.net
 
-    Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators, und melden Sie sich anschließend bei Ambari an. Hierbei werden ebenfalls Benutzername und Kennwort des Clusteradministrators verwendet.
+    Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators, und melden Sie sich anschließend bei Ambari an. Sie müssen sich mit dem Benutzernamen und Kennwort des Clusteradministrators authentifizieren.
 
     Die Authentifizierung erfolgt unverschlüsselt. Verwenden Sie immer HTTPS, um eine sichere Verbindung zu gewährleisten.
 
     > [!IMPORTANT]
-    > Während Ambari für Ihren Cluster direkt über das Internet zugänglich ist, benötigen einige Funktionen den Knotenzugriff über den internen Domänennamen, der vom Cluster verwendet wird. Da dies ein interner und somit nicht öffentlicher Domänenname ist, erhalten Sie die Fehlermeldung, dass der Server nicht gefunden wurde, wenn Sie versuchen, auf einige Features über das Internet zuzugreifen.
+    > Während Ambari für Ihren Cluster direkt über das Internet zugänglich ist, benötigen einige Funktionen den Knotenzugriff über den internen Domänennamen, der vom Cluster verwendet wird. Da dies ein interner und somit nicht öffentlicher Domänenname ist, erhalten Sie ggf. die Fehlermeldung, dass der Server nicht gefunden wurde, wenn Sie versuchen, auf einige Features über das Internet zuzugreifen.
     >
-    > Damit Sie die Funktionalität der Ambari-Webbenutzeroberfläche vollständig nutzen können, verwenden Sie einen SSH-Tunnel, um den Webdatenverkehr per Proxy an den Clusterhauptknoten weiterzuleiten. Weitere Informationen finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md)
+    > Damit Sie die Funktionalität der Ambari-Webbenutzeroberfläche vollständig nutzen können, verwenden Sie einen SSH-Tunnel, um den Webdatenverkehr per Proxy an den Clusterhauptknoten weiterzuleiten. Weitere Informationen finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
 * **Ambari (REST)** – https://&lt;Clustername>.azurehdinsight.net/ambari
 
@@ -94,67 +97,91 @@ Zu Hadoop zugehörige Dateien befinden sich auf den Clusterknoten in `/usr/hdp`.
 * **2.2.4.9-1**: Dieses Verzeichnis wird gemäß der Version von Hortonworks Data Platform benannt, die von HDInsight verwendet wird. Die Zahl für Ihren Cluster kann sich daher von der hier angegebenen Zahl unterscheiden.
 * **current**: Dieses Verzeichnis enthält Links zu Verzeichnissen im Verzeichnis **2.2.4.9-1**. Dadurch müssen Sie nicht bei jedem Dateizugriff eine Versionsnummer eingeben (die sich außerdem ändern kann).
 
-Beispieldaten und JAR-Dateien für Hadoop Distributed File System (HDFS) oder Azure-Blobspeicher finden Sie unter '/example' oder 'wasbs:///example'.
+Beispieldaten und JAR-Dateien für Hadoop Distributed File System (HDFS) oder Azure-Blobspeicher finden Sie unter `/example` und `/HdiSamples`.
 
-## <a name="hdfs-azure-blob-storage-and-storage-best-practices"></a>Bewährte Methoden für HDFS, Azure-Blobspeicher und Speicher
+## <a name="hdfs-blob-storage-and-data-lake-store"></a>HDFS, Blobspeicher und Data Lake Store
 
 In den meisten Hadoop-Distributionen wird HDFS auf den Computern im Cluster durch lokalen Speicher gesichert. Obwohl dies effizient ist, kann es für eine cloudbasierte Lösung mit zeitabhängiger Abrechnung (pro Stunde oder pro Minute) für Computeressourcen kostenintensiv sein.
 
-HDInsight verwendet Azure-Blobspeicher als Standardspeicher, der folgende Vorteile bietet:
+HDInsight verwendet als Standardspeicher entweder Azure-Blobspeicher oder Azure Data Lake Store. Dies bietet die folgenden Vorteile:
 
 * Kostengünstige langfristige Speicherung
 * Zugriff über externe Dienste wie Websites, Hilfsprogramme zum Hochladen/Herunterladen von Dateien, SDKs für verschiedene Sprachen und Webbrowser
 
-Da dies der Standardspeicher für HDInsight ist, sind für seine Verwendung in der Regel keine weiteren Maßnahmen erforderlich. Der folgende Befehl listet z.B. Dateien im Ordner **/example/data** auf, der in Azure Blob Storage gespeichert wird:
+> [!IMPORTANT]
+> Blobspeicher kann bis zu 4,75 TB Daten aufnehmen, obwohl einzelne Blobs (oder Dateien aus HDInsight-Sicht) nur bis zu 195 GB aufnehmen können. Azure Data Lake Store kann dynamisch wachsen, und Billionen von Dateien aufnehmen, wobei einzelne Dateien größer als ein Petabyte sein können.
+>
+> Weitere Informationen finden Sie unter [Grundlegendes zu Blobs](https://docs.microsoft.com/rest/api/storageservices/fileservices/understanding-block-blobs--append-blobs--and-page-blobs) und [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+
+Wenn Sie entweder Azure Storage oder Data Lake Store nutzen, müssen Sie in HDInsight für den Datenzugriff keine besonderen Schritte ausführen. Der folgende Befehl listet z.B. Dateien im Ordner `/example/data` unabhängig davon auf, ob dieser in Azure Blob Storage oder Data Lake Store gespeichert wird:
 
     hdfs dfs -ls /example/data
 
-Bei einigen Befehlen müssen Sie möglicherweise angeben, dass Sie Blobspeicher verwenden. Für diese Befehle können Sie die Zeichenfolge **wasb://** oder **wasbs://** voranstellen.
+### <a name="uri-and-scheme"></a>URI und Schema
 
-Mit HDInsight können Sie auch mehrere Blobspeicherkonten einem Cluster zuordnen. Für den Zugriff auf Daten in einem nicht standardmäßigen Blobspeicherkonto können Sie das Format **wasbs://&lt;container-name>@&lt;Kontoname>.blob.core.windows.net/** verwenden. Der folgende Befehl listet z.B. den Inhalt des Verzeichnisses **/example/data** für den angegebenen Container und das Blobspeicherkonto auf:
+Einige Befehle erfordern ggf. die Angabe des Schemas als Teil des URI, wenn auf eine Datei zugegriffen wird. Beispielsweise erfordert die Komponente Storm-HDFS, dass Sie das Schema angeben. Bei Verwendung von nicht standardmäßigem Speicher (der dem Cluster als „zusätzlicher“ Speicher hinzugefügt wird), müssen Sie stets das Schema als Teil des URI angeben.
 
-    hdfs dfs -ls wasbs://mycontainer@mystorage.blob.core.windows.net/example/data
+Bei Verwendung von __Blobspeicher__ kann das Schema eines der folgenden sein:
 
-### <a name="what-blob-storage-is-the-cluster-using"></a>Welchen Blobspeicher verwendet der Cluster?
+* `wasb:///`: Zugriff auf Standardspeicher über unverschlüsselte Verbindungen.
 
-Während der Clustererstellung haben Sie entweder die Verwendung eines vorhandenen Azure-Speicherkontos und -containers ausgewählt, oder Sie erstellen diese neu. Dann haben Sie diese möglicherweise wieder vergessen. Sie können das Speicherkonto und den Container mithilfe der Ambari-REST-API finden.
+* `wasbs:///`: Zugriff auf Standardspeicher über verschlüsselte Verbindungen.
 
-1. Verwenden Sie den folgenden Befehl, um HDFS-Konfigurationsinformationen über „curl“ abzurufen, und filtern Sie sie mit [jq](https://stedolan.github.io/jq/):
+* `wasbs://<container-name>@<account-name>.blob.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
-        curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+Bei Verwendung von __Data Lake Store__ kann das Schema eines der folgenden sein:
 
-    > [!NOTE]
-    > Hierdurch wird die erste auf den Server angewendete Konfiguration (`service_config_version=1`) zurückgegeben, die diese Information enthält. Wenn Sie einen Wert abrufen, der nach der Erstellung des Clusters geändert wurde, müssen Sie möglicherweise die Konfigurationsversionen auflisten und die letzte Version abrufen.
+* `adl:///`: Zugriff auf den standardmäßigen Data Lake Store für den Cluster.
 
-    Dadurch wird ein ähnlicher Wert wie der folgende zurückgegeben, wobei **CONTAINER** der Standardcontainer und **ACCOUNTNAME** der Name des Azure Storage-Kontos ist:
+* `adl://<storage-name>.azuredatalakestore.net/`: Wird verwendet bei einer Verbindung mit einem nicht standardmäßigen Data Lake Store oder bei Zugriff auf Daten außerhalb des Stammverzeichnisses Ihres HDInsight-Clusters.
 
-        wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net
+> [!IMPORTANT]
+> Wenn Data Lake Store als Standardspeicher für HDInsight verwendet wird, müssen Sie einen Pfad innerhalb des Speichers als Stamm des HDInsight-Speichers angeben. Der Standardpfad lautet `/clusters/<cluster-name>/`.
+>
+> Bei Verwendung von `/` oder `adl:///` für den Zugriff auf Daten können Sie nur auf Daten zugreifen, die im Stammverzeichnis (z.B. `/clusters/<cluster-name>/`) des Clusters gespeichert sind. Um auf Daten an beliebiger Stelle im Speicher zuzugreifen, verwenden Sie das Format `adl://<storage-name>.azuredatalakestore.net/`.
 
-2. Verwenden Sie den folgenden Befehl, um die eindeutige ID für das Speicherkonto abzurufen. Ersetzen Sie im folgenden Befehl **ACCOUNTNAME** durch den aus Ambari abgerufenen Namen des Speicherkontos:
+### <a name="what-storage-is-the-cluster-using"></a>Der vom Cluster verwendete Speicher
 
-        az storage account list --query "[?name=='ACCOUNTNAME'].id --out list
+Mithilfe von Ambari können Sie die Standardspeicherkonfiguration des Clusters abrufen. Verwenden Sie den folgenden Befehl, um HDFS-Konfigurationsinformationen über „curl“ abzurufen, und filtern Sie sie mit [jq](https://stedolan.github.io/jq/):
 
-3. Verwenden Sie den folgenden Befehl, um einen Schlüssel für das Speicherkonto abzurufen. Ersetzen Sie **STORAGEID** durch die ID des Speicherkontos:
+```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
 
-        az storage account keys list --ids STORAGEID --out list
+> [!NOTE]
+> Hierdurch wird die erste auf den Server angewendete Konfiguration (`service_config_version=1`) zurückgegeben, die diese Informationen enthält. Wenn Sie einen Wert abrufen, der nach der Erstellung des Clusters geändert wurde, müssen Sie möglicherweise die Konfigurationsversionen auflisten und die letzte Version abrufen.
 
-    Hierdurch wird der Primärschlüssel für das Konto zurückgegeben.
+Der zurückgegebene Wert sieht in etwa wie folgt aus:
 
-Sie können die Speicherinformationen auch über das Azure-Portal finden:
+* `wasbs://<container-name>@<account-name>.blob.core.windows.net` bei Verwenden eines Azure Storage-Kontos.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/)Ihren HDInsight-Cluster aus.
-2. Klicken Sie im Abschnitt **Zusammenfassung** auf **Alle Einstellungen**.
-3. Wählen Sie unter **Einstellungen** die Option **Azure-Speicherschlüssel** aus.
-4. Wählen Sie unter **Azure-Speicherschlüssel** eines der aufgeführten Speicherkonten aus. Damit werden Informationen zum Speicherkonto angezeigt.
-5. Wählen Sie das Schlüsselsymbol aus. Damit werden die Schlüssel für dieses Speicherkonto angezeigt.
+    Der Kontoname ist der Name des Azure Storage-Kontos, während der Containername zum Blobcontainer gehört, der das Stammverzeichnis des Clusterspeichers darstellt.
 
-### <a name="how-do-i-access-blob-storage"></a>Wie kann ich auf Blobspeicher zugreifen?
+* `adl://home` bei Verwenden von Azure Data Lake Store. Verwenden Sie zum Abrufen des Data Lake Store-Namens den folgenden REST-Aufruf:
 
-Neben dem vom Cluster aus gestarteten Hadoop-Befehl steht eine Vielzahl von Möglichkeiten für den Zugriff auf Blobs zur Verfügung:
+    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+
+    Dadurch wird der folgende Hostname zurückgegeben: `<data-lake-store-account-name>.azuredatalakestore.net`.
+
+    Verwenden Sie zum Abrufen des Verzeichnisses innerhalb des Speichers, der das Stammverzeichnis für HDInsight ist, den folgenden REST-Aufruf:
+
+    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+
+    Der zurückgegebene Pfad sieht in etwa wie folgt aus: `/clusters/<hdinsight-cluster-name>/`.
+
+Sie können die Speicherinformationen auch über das Azure-Portal finden, indem Sie die folgenden Schritte ausführen:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren HDInsight-Cluster aus.
+
+2. Wählen Sie im Abschnitt **Eigenschaften** den Eintrag **Speicherkonten** aus. Die Speicherinformationen für den Cluster werden angezeigt.
+
+### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Zugreifen auf Daten außerhalb von HDInsight
+
+Es gibt eine Vielzahl von Möglichkeiten, außerhalb des HDInsight-Clusters auf Daten zuzugreifen. Es folgen einige Links zu Hilfsprogrammen und SDKs, die zum Arbeiten mit Ihren Daten verwendet werden können:
+
+Wenn Sie __Azure Storage__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
 
 * [Azure CLI 2.0:](https://docs.microsoft.com/cli/azure/install-az-cli2) Befehlszeilenschnittstelle für die Arbeit mit Azure. Verwenden Sie nach der Installation den Befehl `az storage`, um Hilfe zur Speicherung abzurufen, oder `az storage blob` für blobspezifische Befehle.
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Python-Skript zum Arbeiten mit Blobs im Azure-Speicher.
-* Eine Vielzahl von SDKs:
+* Verschiedene SDKs:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
     * [Node.js](https://github.com/Azure/azure-sdk-for-node)
@@ -164,11 +191,20 @@ Neben dem vom Cluster aus gestarteten Hadoop-Befehl steht eine Vielzahl von Mög
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
+Wenn Sie __Azure Data Lake Store__ nutzen, finden Sie unter den folgenden Links Methoden für den Zugriff auf Ihre Daten:
+
+* [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
+* [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
+* [Azure-Befehlszeilenschnittstelle](../data-lake-store/data-lake-store-get-started-cli.md)
+* [WebHDFS-REST-API](../data-lake-store/data-lake-store-get-started-rest-api.md)
+* [Data Lake-Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
+* [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
+* [Python](../data-lake-store/data-lake-store-get-started-python.md)
+
 ## <a name="a-namescalingascaling-your-cluster"></a><a name="scaling"></a>Skalieren des Clusters
 
-Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDInsight ausgeführten Cluster verwendeten Datenknoten ändern, ohne den Cluster löschen und neu erstellen zu müssen.
-
-Sie können Skalierungsvorgänge ausführen, während andere Aufträge oder Prozesse auf einem Cluster ausgeführt werden.
+Mithilfe der Clusterskalierung können Sie die Anzahl der von einem Cluster verwendeten Datenknoten ändern, ohne den Cluster löschen und neu erstellen zu müssen. Sie können Skalierungsvorgänge ausführen, während andere Aufträge oder Prozesse auf einem Cluster ausgeführt werden.
 
 Folgende Clustertypen sind von der Skalierung betroffen:
 
@@ -194,7 +230,7 @@ Folgende Clustertypen sind von der Skalierung betroffen:
 
             storm rebalance TOPOLOGYNAME
 
-        Sie können auch Parameter angeben, um die ursprünglich von der Topologie bereitgestellten Parallelitätshinweise zu überschreiben. Der Befehl `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` z. B. konfiguriert die Topologie neu mit 5 Workerprozessen, 3 Executors für die Komponente "blue-spout" und 10 Executors für die Komponente "yellow-bolt".
+        Sie können auch Parameter angeben, um die ursprünglich von der Topologie bereitgestellten Parallelitätshinweise zu überschreiben. Der Befehl `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` konfiguriert z.B. die Topologie mit 5 Workerprozessen, 3 Executors für die Komponente „blue-spout“ und 10 Executors für die Komponente „yellow-bolt“ neu.
 
     * **Storm-Benutzeroberfläche**: Führen Sie die folgenden Schritte aus, um eine Topologie mithilfe der Storm-Benutzeroberfläche erneut auszugleichen.
 
@@ -213,7 +249,7 @@ HDInsight ist ein verwalteter Dienst – dies bedeutet, dass Knoten in einem Clu
 * Einen Dienst oder eine Website, z. B. Spark oder Hue.
 * Eine Komponente, für die Konfigurationsänderungen auf mehreren Knoten im Cluster erforderlich sind. Z. B. eine erforderliche Umgebungsvariable, Erstellen eines Protokollierungsverzeichnisses oder Erstellen einer Konfigurationsdatei.
 
-Bei Skriptaktionen handelt es sich um Bash-Skripts, die während der Clusterbereitstellung ausgeführt werden und zur Installation und Konfiguration zusätzlicher Komponenten auf dem Cluster verwendet werden können. Zur Installation der folgenden Komponenten werden Beispielskripts bereitgestellt:
+Bei Skriptaktionen handelt es sich um Bash-Skripts, die während der Clusterbereitstellung ausgeführt werden und zur Installation und Konfiguration zusätzlicher Komponenten im Cluster verwendet werden können. Zur Installation der folgenden Komponenten werden Beispielskripts bereitgestellt:
 
 * [Hue](hdinsight-hadoop-hue-linux.md)
 * [Giraph](hdinsight-hadoop-giraph-install-linux.md)
@@ -223,7 +259,7 @@ Informationen zum Entwickeln eigener Skriptaktionen finden Sie unter [Entwickeln
 
 ### <a name="jar-files"></a>JAR-Dateien
 
-Einige Hadoop-Technologien werden in eigenständigen JAR-Dateien mit Funktionen bereitgestellt, die als Teil eines MapReduce-Auftrags oder aus Pig oder Hive verwendet werden. Diese können mit Skriptaktionen erstellt werden, häufig ist jedoch kein Setup erforderlich und sie können nach der Bereitstellung einfach in den Cluster hochgeladen und direkt verwendet werden. Wenn Sie sicherstellen möchten, dass die Komponente bei einem Reimaging des Clusters nicht beschädigt wird, können Sie die JAR-Datei im WASB speichern.
+Einige Hadoop-Technologien werden in eigenständigen JAR-Dateien mit Funktionen bereitgestellt, die als Teil eines MapReduce-Auftrags oder aus Pig oder Hive verwendet werden. Diese können mit Skriptaktionen erstellt werden, häufig ist jedoch kein Setup erforderlich und sie können nach der Bereitstellung in den Cluster hochgeladen und direkt verwendet werden. Wenn Sie sicherstellen möchten, dass die Komponente bei einem Re-Imaging des Clusters nicht beschädigt wird, können Sie die JAR-Datei im Standardspeicher Ihres Clusters (WASB oder ADL) speichern.
 
 Wenn Sie beispielsweise die neueste Version von [DataFu](http://datafu.incubator.apache.org/)verwenden möchten, können Sie eine JAR-Datei mit dem Projekt herunterladen und in den HDInsight-Cluster hochladen. Führen Sie dann die Anweisungen in der DataFu-Dokumentation aus, um sie aus Pig oder Hive zu verwenden.
 
@@ -232,7 +268,7 @@ Wenn Sie beispielsweise die neueste Version von [DataFu](http://datafu.incubator
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
 >
-> Dadurch wird den Pfad aller entsprechenden JAR-Dateien zurückgegeben.
+> Dies gibt den Pfad aller übereinstimmenden JAR-Dateien zurück.
 
 Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Datei enthält, Sie jedoch eine andere Version verwenden möchten, können Sie eine neue Version der Komponente in den Cluster hochladen und versuchen, sie in Ihren Aufträgen zu verwenden.
 
@@ -250,6 +286,6 @@ Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Da
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

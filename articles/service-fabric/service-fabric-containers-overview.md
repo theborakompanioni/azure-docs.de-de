@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/4/2017
+ms.date: 2/6/2017
 ms.author: msfussell
 translationtype: Human Translation
-ms.sourcegitcommit: 9349c6c60801c87726eb9f848706b39b08eb2b5d
-ms.openlocfilehash: 7c6d232bce7ac9d364ad9d7b26c3164e00fc18ac
+ms.sourcegitcommit: 93e0493e6a62a70a10b8315142765a3c3892acd1
+ms.openlocfilehash: abf5e4bc69aa32ca9af8998ef81de20baae24560
 
 
 ---
@@ -26,7 +26,10 @@ ms.openlocfilehash: 7c6d232bce7ac9d364ad9d7b26c3164e00fc18ac
 >   
 
 ## <a name="introduction"></a>Einführung
-Azure Service Fabric ist ein [Orchestrator](service-fabric-cluster-resource-manager-introduction.md) von Diensten in einem Cluster mit Computern. Dienste können auf vielerlei Arten entwickelt werden – von der Nutzung von [Service Fabric](service-fabric-choose-framework.md)-Programmiermodellen bis zur Bereitstellung von [ausführbaren Gastanwendungsdateien](service-fabric-deploy-existing-app.md). Standardmäßig werden diese Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Prozesse ermöglichen die schnellste Aktivierung und Nutzung von Ressourcen in einem Cluster mit der höchsten Dichte. Service Fabric kann Dienste auch in Containerimages bereitstellen. Wichtig ist, dass Sie in derselben Anwendung Dienste in Prozessen und Dienste in Containern mischen können. Sie erhalten also für jedes Szenario die beste Lösung.
+Azure Service Fabric ist ein [Orchestrator](service-fabric-cluster-resource-manager-introduction.md) von Diensten in einem Cluster von Computern, der seit Jahren für zahlreiche Dienste bei Microsoft verwendet und optimiert wird. Dienste können auf vielerlei Arten entwickelt werden – von der Nutzung von [Service Fabric](service-fabric-choose-framework.md)-Programmiermodellen bis zur Bereitstellung von [ausführbaren Gastanwendungsdateien](service-fabric-deploy-existing-app.md). Standardmäßig werden diese Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Prozesse ermöglichen die schnellste Aktivierung und Nutzung von Ressourcen in einem Cluster mit der höchsten Dichte. Service Fabric kann Dienste auch in Containerimages bereitstellen. Wichtig ist, dass Sie in derselben Anwendung Dienste in Prozessen und Dienste in Containern mischen können. 
+
+## <a name="containers-and-service-fabric-roadmap"></a>Roadmap für Container und Service Fabric
+In den nächsten Releases wird die Service Fabric-Unterstützung für Container unter Windows und Linux weiter ausgebaut. Dazu gehören Verbesserungen bei Netzwerken, Einschränkungen von Ressourcen, Sicherheit, Diagnose, Volumetreiber und Toolunterstützung, insbesondere in Visual Studio. Dies führt zu einer großen Benutzerfreundlichkeit bei der Verwendung von Containerimages zum Bereitstellen von Diensten. Sie haben die Wahl zwischen der Verwendung von Containern zum Packen von vorhandenem Code (z.B. IIS MVC-Apps) oder Service Fabric-Programmiermodellen. Da diese Optionen in Service Fabric gleich behandelt werden, können Sie sie in Ihren Anwendungen kombinieren und bleiben beim Bereitstellen von Code flexibel. Sie erhalten also für jedes Szenario die beste Lösung.
 
 ## <a name="what-are-containers"></a>Was sind Container?
 Container sind gekapselte, individuell bereitstellbare Komponenten, die als isolierte Instanzen in demselben Kernel ausgeführt werden. Hierbei wird die von einem Betriebssystem bereitgestellte Virtualisierung genutzt. Dies bedeutet, dass jede Anwendung und ihre Laufzeit, Abhängigkeiten und Systembibliotheken in einem Container mit privatem Vollzugriff auf die eigene isolierte Containersicht von Betriebssystemkonstrukten ausgeführt werden. Zusammen mit der Portabilität ist dieser hohe Grad an Sicherheit und Ressourcenisolierung der Hauptvorteil bei der Verwendung von Containern mit Service Fabric. Unter Service Fabric werden Dienste ansonsten in Prozessen ausgeführt.
@@ -49,7 +52,7 @@ Eine exemplarische Vorgehensweise dazu finden Sie unter [Deploy a Docker contain
 ### <a name="windows-server-containers"></a>Windows Server-Container
 Unter Windows Server 2016 werden zwei verschiedene Arten von Containern bereitgestellt, die sich anhand des Isolationsgrads unterscheiden. Windows Server-Container und Docker-Containern ähneln sich, da beide über eine Namespace- und Dateisystemisolation verfügen, den Kernel aber gemeinsam mit dem Host nutzen, auf dem sie ausgeführt werden. Unter Linux wurde diese Isolation üblicherweise mit „cgroups“ und Namespaces erzielt. Windows Server-Container verhalten sich ähnlich.
 
-Windows Hyper-V-Container bieten mehr Isolation und Sicherheit, da kein Container den Betriebssystemkernel mit anderen Containern oder mit dem Host gemeinsam verwendet. Aufgrund dieses höheren Grads an Sicherheitsisolation sind Hyper-V-Container besonders für kritischere Szenarien mit mehreren Mandanten geeignet.
+Windows Hyper-V-Container bieten mehr Isolation und Sicherheit, da kein Container den Betriebssystemkernel mit anderen Containern oder mit dem Host gemeinsam verwendet. Aufgrund dieses höheren Grads an Sicherheitsisolation sind Hyper-V-Container für kritischere Szenarien mit mehreren Mandanten geeignet.
 
 Eine exemplarische Vorgehensweise dazu finden Sie unter [Vorschau: Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).
 
@@ -60,8 +63,8 @@ In der folgenden Abbildung sind die unterschiedlichen Arten der Virtualisierung 
 In den folgenden typischen Beispielen ist ein Container eine gute Wahl:
 
 * **IIS-Lift und -Shift:** Wenn bereits [ASP.NET MVC](https://www.asp.net/mvc)-Apps vorhanden sind, die Sie weiterhin verwenden möchten, migrieren Sie sie nicht zu ASP.NET Core, sondern platzieren Sie sie in einem Container. Diese ASP.NET MVC-Apps sind abhängig von ISS (Internet Information Services, Internetinformationsdienste). Sie können diese in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zur Erstellung von IIS-Images finden Sie unter [Containerimages unter Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/quick_start_images).
-* **Mischen von Containern und Service Fabric-Microservices:** Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste, die mit Reliable Services erstellt wurden, für die rechenintensiveren Back-End-Vorgänge verwenden. Ein Beispiel für dieses Szenario sind Gaminganwendungen.
-* **Reduzieren der Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors):** Sie können die Funktion zur Ressourcenkontrolle für Container verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen verbrauchen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
+* **Mischen von Containern und Service Fabric-Microservices:** Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
+* **Reduzieren der Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors):** Sie können die Funktion zur Ressourcenkontrolle für Container verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-Unterstützung für Container
 Service Fabric unterstützt derzeit die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016. Die Unterstützung für Hyper-V-Container wird in einer zukünftigen Version hinzugefügt.
@@ -92,6 +95,6 @@ In diesem Artikel wurde beschrieben, was Container sind, dass Service Fabric ein
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

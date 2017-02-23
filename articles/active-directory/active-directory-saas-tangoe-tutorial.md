@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 560feea958c6cb3021395ca88dfe07fd1ead2842
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: bb140097831453d46f6bfef1c9fbe569eefb3020
 
 
 ---
@@ -27,7 +27,7 @@ Die Integration von Tangoe Command Premium Mobile in Azure AD bietet die folgend
 
 * Sie können in Azure AD steuern, wer Zugriff auf Tangoe Command Premium Mobile hat.
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Tangoe Command Premium Mobile anzumelden (einmaliges Anmelden).
-* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+* Mit dem klassischen Azure-Portal können Sie Ihre Konten an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -35,7 +35,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Tangoe Command Premium Mobile konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement
-* Ein Tangoe Command Premium Mobile-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Tangoe Command Premium Mobile-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -89,11 +89,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Tangoe Command Premium Mobile müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Tangoe Command Premium Mobile-Testbenutzers](#creating-an-tangoe-test-user)** , um eine Entsprechung von Britta Simon in Tangoe Command Premium Mobile zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Testen des einmaligen Anmeldens](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Tangoe Command Premium Mobile-Anwendung.
@@ -110,40 +110,39 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_04.png) 
 
-    a. Geben Sie in das Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern für die Anmeldung bei Ihrer Tangoe Command Premium Mobile-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: **„https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=\<Mandantenaussteller\>&Ziel=\<URL der Zielseite\>”**.
+   1. Geben Sie in das Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern für die Anmeldung bei Ihrer Tangoe Command Premium Mobile-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: **„https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=\<Mandantenaussteller\>&Ziel=\<URL der Zielseite\>”**.
 
-    b. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: **https://sso.tangoe.com/sp/ACS.saml2**
+   2. Geben Sie im Textfeld **Antwort-URL** die URL nach folgendem Muster ein: **https://sso.tangoe.com/sp/ACS.saml2**
 
-    > [AZURE.NOTE]  Wenn Sie die richtigen Werte für die URLs nicht kennen, können Sie die oben stehenden Werte als Platzhalter verwenden und die richtigen Werte vom Tangoe-Kundensupport anfordern.
+    > [!NOTE]  
+    > Wenn Sie die richtigen Werte für die URLs nicht kennen, können Sie die oben stehenden Werte als Platzhalter verwenden und die richtigen Werte vom Tangoe-Kundensupport anfordern.
+    >
 
-
-1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Tangoe Command Premium Mobile** die folgenden Schritte aus:
+4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Tangoe Command Premium Mobile** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_05.png) 
    
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
-2. Wenden Sie sich an den Tangoe-Kundensupport, und stellen Sie Folgendes bereit, um das einmalige Anmelden für Ihre Anwendung konfigurieren zu lassen:
+   1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+   2. Klicken Sie auf **Weiter**.
 
-    - Die heruntergeladene Metadatendatei
-    - Die **Aussteller-URL**
-    - Die **SAML-SSO-URL**
-    - Die **Dienst-URL für einmaliges Abmelden**
+5. Wenden Sie sich an den Tangoe-Kundensupport, und stellen Sie Folgendes bereit, um das einmalige Anmelden für Ihre Anwendung konfigurieren zu lassen:
 
+   - Die heruntergeladene Metadatendatei
+   - Die **Aussteller-URL**
+   - Die **SAML-SSO-URL**
+   - Die **Dienst-URL für einmaliges Abmelden**
 
-
-1. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus und klicken Sie dann auf **Weiter**.
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
-2. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
-Wählen Sie in der Benutzerliste **Britta Simon**aus.
+* Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -172,15 +171,11 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+  1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+  2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+  3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+  4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+  5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/create_aaduser_07.png) 
@@ -188,16 +183,14 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-tangoe-tutorial/create_aaduser_08.png) 
    
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+  1. Notieren Sie den Wert von **Neues Kennwort**.
+  2. Klicken Sie auf **Fertig stellen**.   
 
 ### <a name="creating-an-tangoe-command-premium-mobile-test-user"></a>Erstellen eines Tangoe Command Premium Mobile-Testbenutzers
 In diesem Abschnitt erstellen Sie in Tangoe Command Premium Mobile einen Benutzer mit dem Namen Britta Simon. In der Tangoe Command Premium Mobile-Anwendung müssen alle Benutzer bereitgestellt werden, bevor das einmalige Anmelden verwendet werden kann. Wenden Sie sich daher an den Tangoe-Kundensupport, um sämtliche Benutzer in der Anwendung bereitzustellen. 
 
 > [!NOTE]
 > Wenn Sie einen Benutzer manuell oder eine Gruppe von Benutzern erstellen müssen, wenden Sie sich an das Tangoe Command Premium Mobile-Supportteam.
-> 
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
@@ -209,18 +202,18 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
 
 1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
 
-![Benutzer zuweisen][201] 
+ ![Benutzer zuweisen][201] 
 
-1. Wählen Sie in der Anwendungsliste **Tangoe Command Premium Mobile**aus.
+2. Wählen Sie in der Anwendungsliste **Tangoe Command Premium Mobile**aus.
 
-![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_50.png) 
+ ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_50.png) 
+ 
+3. Klicken Sie im oberen Menü auf **Benutzer**.
 
-1. Klicken Sie im oberen Menü auf **Benutzer**.
+ ![Benutzer zuweisen][203] 
 
-![Benutzer zuweisen][203] 
-
-1. Wählen Sie in der Benutzerliste **Britta Simon**aus.
-2. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
 
 ![Benutzer zuweisen][205]
 
@@ -253,6 +246,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Tangoe Command Premium Mobile“ k
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

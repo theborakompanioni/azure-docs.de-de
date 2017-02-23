@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 783952ef1a19d18c3dd5d25c9ccf25cf3b29af45
+ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
+ms.openlocfilehash: 5eacb832ba2a20eae35c58704296c9d03e94ef0e
 
 
 ---
@@ -33,7 +33,7 @@ Bei Verweisen auf IETF-RFCs wird in diesem Dokument folgendes Format verwendet: 
 Weitere Informationen finden Sie unter „http://tools.ietf.org/html/rfc4500“. (4500 muss durch die korrekte RFC-Nummer ersetzt werden.)
 
 ## <a name="overview-of-the-generic-ldap-connector"></a>Übersicht über den generischen LDAP-Connector
-Der generische LDAP-Connector ermöglicht die Integration des Synchronisierungsdiensts in einen LDAP-Server (Version 3).
+Der generische LDAP-Connector ermöglicht die Integration des Synchronisierungsdiensts in einen LDAP-Server (Version&3;).
 
 Bestimmte Vorgänge und Schema-Elemente (etwa zum Ausführen eines Deltaimports) werden in den IETF-RFCs nicht behandelt. Für diese Vorgänge werden nur explizit angegebene LDAP-Verzeichnisse unterstützt.
 
@@ -114,7 +114,7 @@ Damit der Connector ordnungsgemäß verwendet werden kann, müssen auf dem LDAP-
 
 Der True/False-Filter wird oftmals nicht als von LDAP-Verzeichnissen unterstützt gemeldet und möglicherweise auf der globalen Seite** **unter **Nicht gefundene erforderliche Features** angezeigt. Er dient zum Erstellen von OR-Filtern **** in LDAP-Abfragen (beispielsweise beim Importieren mehrerer Objekttypen). Wenn Sie mehrere Objekttypen importieren können, wird dieses Feature von Ihrem LDAP-Server unterstützt.
 
-Wenn Sie ein Verzeichnis verwenden, bei dem ein eindeutiger Bezeichner als Anker fungiert, muss auch Folgendes verfügbar sein. (Weitere Informationen finden Sie weiter unten in diesem Artikel unter der [Konfigurieren von Ankern](#configure-anchors).)  
+Wenn Sie ein Verzeichnis verwenden, bei dem ein eindeutiger Bezeichner als Anker fungiert, muss auch Folgendes verfügbar sein (weitere Informationen finden Sie im Abschnitt [Konfigurieren von Ankern](#configure-anchors)):  
 `1.3.6.1.4.1.4203.1.5.1` Alle Betriebsattribute
 
 Falls das Verzeichnis mehr Objekte enthält als in einem einzelnen Verzeichnisaufruf Platz finden, empfiehlt sich der Einsatz von Paginierung. Die Auslagerung setzt eine der folgenden Optionen voraus:
@@ -162,7 +162,7 @@ Auf der Konnektivitätsseite müssen Informationen zu Host, Port und Bindung ang
 * Geben Sie bei anderen Bindungen entweder Benutzername und Kennwort an, oder wählen Sie ein Zertifikat aus.
 * Geben Sie bei Verwendung der Kerberos-Authentifizierung außerdem den Bereich und die Domäne des Benutzers an.
 
-Das Textfeld für Attributaliase **** wird für Attribute verwendet, die im Schema mit der RFC4522-Syntax definiert sind. Diese Attribute können bei der Schemaerkennung nicht erkannt werden, und der Connector kann sie nicht selbstständig identifizieren. Damit etwa das userCertificate-Attribut korrekt als binäres Attribut identifiziert wird, muss das Feld für Attributaliase Folgendes enthalten:
+Das Textfeld für Attributaliase **** wird für Attribute verwendet, die im Schema mit der RFC4522-Syntax definiert sind. Diese Attribute können bei der Schemaerkennung nicht erkannt werden, und der Connector kann sie nicht selbstständig identifizieren. Damit etwa das userCertificate-Attribut ordnungsgemäß als binäres Attribut identifiziert wird, muss das Feld für Attributaliase Folgendes enthalten:
 
 `userCertificate;binary`
 
@@ -264,7 +264,6 @@ Bei Verzeichnissen mit einem datums-/uhrzeitbasierten Delta-Änderungsprotokoll 
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -13,21 +13,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f03c595977f098f19d396cc460c73e27163f070c
+ms.sourcegitcommit: dd5471da4d1e69b51d355784dfa2551bc61e9ad9
+ms.openlocfilehash: 508ea94278dc2410e5b9ea1ba760a8a923f12bbd
 
 
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
 Dieses Dokument erläutert den Zugriff auf Protokolle für YARN (Yet Another Resource Negotiator)-Anwendungen, die auf einem Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
 
-> [!NOTE]
-> Die Informationen in diesem Artikel gelten für Linux-basierte HDInsight-Cluster. Informationen zu Windows-basierten Clustern finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle in Windows-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs.md)
-> 
-> 
+> [!IMPORTANT]
+> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Linux-basierter HDInsight-Cluster.
@@ -47,11 +45,12 @@ Zu den allgemeinen Informationen zu Anwendungen zählen die folgenden Datenarten
 * Die bei Anwendungsversuchen verwendeten Container
 
 ## <a name="a-nameyarnappsandlogsayarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN-Anwendungen und -Protokolle
+
 YARN unterstützt mehrere Programmierungsmodelle (u. a. MapReduce), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. Dies erfolgt über einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
 
-Darüber hinaus kann jede Anwendung aus mehreren *Anwendungsversuchen* mit dem Zweck bestehen, die Anwendung bei Abstürzen oder Unterbrechungen der Kommunikation zwischen einem AM und RM abzuschließen. Demzufolge werden Container einem bestimmten Versuch einer Anwendung zugewiesen. In gewisser Weise stellt ein Container den Kontext für eine Basiseinheit von Aufgaben bereit, die von einer YARN-Anwendung ausgeführt werden. Sämtliche Aufgaben, die im Kontext eines Containers ausgeführt werden, erfolgen auf dem einzelnen Arbeitsknoten, dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
+Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Dies ermöglicht einer Anwendung das Wiederholen eines Vorgangs, wenn es zu einem Absturz oder einem Verlust der Kommunikation zwischen einem AM und einem RM kommt. Jeder Versuch wird in einem Container ausgeführt. In gewisser Weise stellt ein Container den Kontext für die Standardeinheit für Aufgaben, die von einer YARN-Anwendung ausgeführt werden. Alle Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, auf dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [YARN-Konzepte][YARN-concepts].
 
-Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch "Log Aggregation" lässt sich der Zugriff auf Anwendungsprotokolle besser steuern, denn Protokolle für alle Container auf einem Arbeitsknoten werden zusammengeführt und als zentrale Protokolldatei pro Workerknoten im Standarddateisystem gespeichert, nachdem eine Anwendung abgeschlossen wurde. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Arbeitsknoten vorhandenen Container werden zu einer zentralen Datei zusammengeführt, was in einer Protokolldatei pro Arbeitsknoten mündet, die von Ihrer Anwendung genutzt werden. Log Aggregation ist für HDInsight-Cluster (ab Version 3.0) standardmäßig aktiviert. Zusammengeführte Protokolle befinden sich im Standardcontainer Ihres Clusters am folgenden Speicherort:
+Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation][log-aggregation] ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch die Protokollaggregationsfunktion wird der Zugriff auf Anwendungsprotokolle deterministischer. Sie aggregiert Protokolle in allen Containern auf einem Workerknoten und speichert sie als eine aggregierte Protokolldatei pro Workerknoten. Das Protokoll wird, nachdem eine Anwendung beendet wurde, im Standarddateisystem gespeichert. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Arbeitsknoten vorhandenen Container werden zu einer zentralen Datei zusammengeführt. Dies mündet in einer Protokolldatei pro Workerknoten, die von Ihrer Anwendung genutzt wird. Log Aggregation ist für HDInsight-Cluster (ab Version 3.0) standardmäßig aktiviert. Zusammengeführte Protokolle befinden sich im Standardcontainer Ihres Clusters am folgenden Speicherort:
 
     wasbs:///app-logs/<user>/logs/<applicationId>
 
@@ -60,7 +59,8 @@ An diesem Speicherort ist *user* der Name des Benutzers, der die Anwendung gesta
 Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in [TFile][T-file] geschrieben werden, einem nach Container indiziertem [Binärformat][binary-format]. Sie müssen die YARN-ResourceManager-Protokolle oder CLI-Tools verwenden, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen. 
 
 ## <a name="yarn-cli-tools"></a>YARN-CLI-Tools
-Zur Verwendung der YARN-CLI-Tools müssen Sie zuerst über SSH eine Verbindung mit dem HDInsight-Cluster herstellen. Verwenden Sie eines der folgenden Dokumente, um Informationen zur Verwendung von SSH mit HDInsight zu erhalten:
+
+Zur Verwendung der YARN CLI-Tools müssen Sie zuerst über SSH eine Verbindung mit dem HDInsight-Cluster herstellen. Verwenden Sie eines der folgenden Dokumente, um Informationen zur Verwendung von SSH mit HDInsight zu erhalten:
 
 * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -83,9 +83,9 @@ Nachdem Sie einen SSH-Tunnel erstellt haben, zeigen Sie die YARN-Protokolle mith
     ![Ausgewählter YARN-Dienst](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnservice.png)
 3. Wählen Sie aus der Dropdownliste **QuickLinks** einen der Clusterhauptknoten und dann **ResourceManager-Protokoll** aus.
    
-    ![YARN-QuickLinks](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
+    ![YARN-Direktlinks](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarnquicklinks.png)
    
-    Es wird eine Liste mit Links zu YARN-Protokollen angezeigt.
+    Eine Liste mit Links zu YARN-Protokollen wird angezeigt.
 
 [YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
@@ -95,6 +95,6 @@ Nachdem Sie einen SSH-Tunnel erstellt haben, zeigen Sie die YARN-Protokolle mith
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

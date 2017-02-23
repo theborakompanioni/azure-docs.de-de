@@ -1,5 +1,5 @@
 ---
-title: Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
+title: "Rollenbasierte Zugriffssteuerung mit REST – Azure AD | Microsoft-Dokumentation"
 description: Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 services: active-directory
 documentationcenter: na
@@ -12,21 +12,19 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
-ms.date: 08/04/2016
+ms.date: 02/06/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d50031941be34d1e543d901747018ba0635be4d8
+ms.sourcegitcommit: 4547a805c1827a703bf0ef118387882e45c3f241
+ms.openlocfilehash: f63381e3349063ba9dd4ceb67d644c1d71d73369
 
 
 ---
-# <a name="managing-role-based-access-control-with-the-rest-api"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
+# <a name="manage-role-based-access-control-with-the-rest-api"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md)
 > * [REST-API](role-based-access-control-manage-access-rest.md)
-> 
-> 
 
 Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal und der Azure Resource Manager-API können Sie den Zugriff auf Ihr Abonnement und Ihre Ressourcen differenziert steuern. Mithilfe dieser Funktion lassen sich Zugriffsberechtigungen für Active Directory-Benutzer, -Gruppen oder -Dienstprinzipale festlegen, indem ihnen bestimmte Rollen für einen bestimmten Bereich zugewiesen werden.
 
@@ -43,13 +41,13 @@ Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 3. Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollenzuweisungen anwenden möchten:
-   
+
    * Auflisten der Rollenzuweisungen nur für den angegebenen Bereich, ohne die Rollenzuweisungen der Unterbereiche: `atScope()`    
    * Auflisten der Rollenzuweisungen für spezielle Benutzer, Gruppen oder Anwendungen: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * Auflisten der Rollenzuweisungen für spezielle Benutzer, einschließlich von Gruppen geerbter: `assignedTo('{objectId of user}')`
@@ -93,7 +91,7 @@ Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -134,7 +132,7 @@ Verwenden Sie die **PUT** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Wenn Sie eine Rollenzuweisung für einen übergeordneten Bereich erstellen, erben alle untergeordneten Bereiche die gleiche Rollenzuweisung. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1   
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -192,7 +190,7 @@ Verwenden Sie die **DELETE** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen erstellen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -233,13 +231,13 @@ Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Ersetzen Sie *{api-version}* durch „2015-07-01“.
 3. Ersetzen Sie *{filter}* durch die Bedingung, die Sie zum Filtern der Liste mit den Rollen anwenden möchten:
-   
+
    * Dient zum Auflisten der Rollen, die im angegebenen Bereich und in allen untergeordneten Bereichen verfügbar sind: `atScopeAndBelow()`
    * Suchen nach einer Rolle mit dem genauen Anzeigenamen: `roleName%20eq%20'{role-display-name}'`. Verwenden Sie die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
@@ -316,7 +314,7 @@ Verwenden Sie die **GET** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollenzuweisungen auflisten möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -396,7 +394,7 @@ Verwenden Sie die **PUT** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -499,7 +497,7 @@ Verwenden Sie die **PUT** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den ersten *AssignableScope* der benutzerdefinierten Rolle. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -602,7 +600,7 @@ Verwenden Sie die **DELETE** -Methode mit dem folgenden URI:
 Führen Sie für den URI folgende Schritte aus, um Ihre Anforderung anzupassen:
 
 1. Ersetzen Sie *{scope}* durch den Bereich, für den Sie die Rollendefinition löschen möchten. Die folgenden Beispiele zeigen, wie Sie den Bereich für unterschiedliche Ebenen angeben:
-   
+
    * Abonnement: /subscriptions/{subscription-id}  
    * Ressourcengruppe: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
    * Ressource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
@@ -649,12 +647,12 @@ Statuscode: 200
 
 ```
 
+## <a name="next-steps"></a>Nächste Schritte
 
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

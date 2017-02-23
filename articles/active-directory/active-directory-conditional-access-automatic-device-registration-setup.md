@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/04/2016
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: da1a8c45a1753d617e0cb62f99bc47d22838a8e8
-ms.openlocfilehash: ac58f3f5498edbd6f7b19db647a9513a485d6dbf
+ms.sourcegitcommit: 617599c7df6284e6319a1b3331d1e894e5d4b2d1
+ms.openlocfilehash: 2ced7d0d4e2e653013c605932066c412c4202082
 
 
 ---
@@ -353,11 +353,15 @@ Stellen Sie das Paket mithilfe eines Softwareverteilungssystems wie System Cente
 Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung durch IWA registriert der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers im Hintergrund bei Azure AD. Um den geplanten Task anzuzeigen, wechseln Sie zu **Microsoft** > **Arbeitsbereichverknüpfung**, und navigieren Sie dann zur Aufgabenplanungsbibliothek.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md)
+
+- Wenn während der automatischen Geräteregistrierung ein Fehler auftritt, finden Sie hilfreiche Informationen in den folgenden Themen zur Problembehandlung:
+    - [Für Windows 10 und Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
+    - [Für kompatible Windows-Clients](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
+- Antworten auf häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zur automatischen Geräteregistrierung](active-directory-conditional-access-automatic-device-registration-faq.md).
 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

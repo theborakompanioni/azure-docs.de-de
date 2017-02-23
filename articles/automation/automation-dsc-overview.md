@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: TBD
-ms.date: 12/13/2016
+ms.date: 02/02/2017
 ms.author: magoedte;eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: f2fe96faf9e9c34640bb06e49d7c7e384bf33c53
+ms.sourcegitcommit: f0d3a5c1929bb6dafef735ae3f4291e329861cc9
+ms.openlocfilehash: b750878703baf143a2e8247bdd01f358e462e598
 
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – Übersicht
@@ -27,7 +27,7 @@ Das Bereitstellen und Beibehalten des gewünschten Zustands von Servern und Anwe
 
 Azure Automation DSC setzt auf den mit PowerShell DSC eingeführten Grundlagen auf, um eine einfachere Konfigurationsverwaltung zu ermöglichen. Azure Automation DSC führt dieselbe Verwaltungsschicht in [PowerShell Desired State Configuration](https://msdn.microsoft.com/powershell/dsc/overview) ein, wie Azure Automation sie bereits für die PowerShell-Skripterstellung bietet.
 
-Mithilfe von Azure Automation DSC können Sie [PowerShell DSC-Konfigurationen erstellen und verwalten](https://technet.microsoft.com/library/dn249918.aspx), [DSC-Ressourcen importieren](https://technet.microsoft.com/library/dn282125.aspx) und DSC-Knotenkonfigurationen (MOF-Dokumente) generieren – und das alles in der Cloud. Diese DSC-Elemente werden auf dem [DSC-Pullserver](https://technet.microsoft.com/library/dn249913.aspx) für Azure Automation platziert, sodass Zielknoten (beispielsweise physische und virtuelle Computer) diese in der Cloud oder lokal abrufen können, sich automatisch an den festgelegten Zustand anpassen und ihre Kompatibilität mit dem gewünschten Zustand an Azure Automation zurückmelden.
+Mithilfe von Azure Automation DSC können Sie [PowerShell DSC-Konfigurationen erstellen und verwalten](https://technet.microsoft.com/library/dn249918.aspx), [DSC-Ressourcen importieren](https://technet.microsoft.com/library/dn282125.aspx) und DSC-Knotenkonfigurationen (MOF-Dokumente) generieren – und das alles in der Cloud. Diese DSC-Elemente werden auf dem [DSC-Pullserver](https://technet.microsoft.com/library/dn249913.aspx) von Azure Automation abgelegt, sodass Zielknoten Konfigurationen automatisch empfangen, dem gewünschten Zustand entsprechen und ihre Konformität melden. Azure Automation eignet sich für virtuelle oder physische Computer in Cloud- oder lokalen Umgebungen. 
 
 Möchten Sie sich lieber ein Video ansehen? Betrachten Sie das folgende Video vom Mai 2015, als Azure Automation DSC erstmals angekündigt wurde. **Hinweis:** Die Konzepte und der Lebenszyklus, die in diesem Video erläutert werden, sind noch zutreffend, jedoch wurde Azure Automation DSC seit der Aufzeichnung des Videos beträchtlich weiterentwickelt. Es ist jetzt allgemeine verfügbar, besitzt eine umfangreichere Benutzeroberfläche im Azure-Portal und unterstützt viele zusätzliche Funktionen.
 
@@ -37,11 +37,11 @@ Möchten Sie sich lieber ein Video ansehen? Betrachten Sie das folgende Video vo
 
 ### <a name="configuration"></a>Konfiguration
 
-PowerShell DSC führt ein neues Konzept der sogenannten Konfigurationen ein. Mithilfe von Konfigurationen können Sie über die PowerShell-Syntax den gewünschten Zustand Ihrer Umgebung definieren. Um DSC zum Konfigurieren Ihrer Umgebung zu verwenden, definieren Sie zunächst einen Windows PowerShell-Skriptblock mit dem Schlüsselwort "Configuration". Auf den Block muss ein Bezeichner folgen, anschließend wird der Block mit Klammern ({}) abgetrennt.
+PowerShell DSC führt ein neues Konzept der sogenannten Konfigurationen ein. Mithilfe von Konfigurationen können Sie über die PowerShell-Syntax den gewünschten Zustand Ihrer Umgebung definieren. Um DSC zum Konfigurieren Ihrer Umgebung zu verwenden, definieren Sie zunächst einen Windows PowerShell-Skriptblock mit dem Schlüsselwort „Configuration“. Auf den Block muss ein Bezeichner folgen. Anschließend wird der Block mit Klammern ({}) abgetrennt.
 
 ![alt text](./media/automation-dsc-overview/AADSC_1.png)
 
-Innerhalb des Konfigurationsblocks können Sie Knotenkonfigurationsblöcke definieren, mit denen die gewünschte Konfiguration für einen Satz an Knoten (Computern) in Ihrer Umgebung festgelegt wird, die exakt gleich konfiguriert werden sollen. Auf diese Weise stellt eine Knotenkonfiguration eine „Rolle“ für einen oder mehrere Knoten dar. Ein Knotenkonfigurationsblock beginnt mit dem Schlüsselwort "Node". Nach diesem Schlüsselwort folgt der Name der Rolle, hierbei kann es sich um eine Variable oder einen Ausdruck handeln. Verwenden Sie nach dem Rollennamen Klammern {}, um den Knotenkonfigurationsblock abzutrennen.
+Innerhalb des Konfigurationsblocks können Sie Knotenkonfigurationen definieren, mit denen die gewünschte Konfiguration für eine Gruppe von Knoten (Computern) in Ihrer Umgebung festgelegt wird, die gleich konfiguriert werden sollen. Auf diese Weise stellt eine Knotenkonfiguration eine „Rolle“ für einen oder mehrere Knoten dar. Ein Knotenkonfigurationsblock beginnt mit dem Schlüsselwort "Node". Nach diesem Schlüsselwort folgt der Name der Rolle, hierbei kann es sich um eine Variable oder einen Ausdruck handeln. Verwenden Sie nach dem Rollennamen Klammern {}, um den Knotenkonfigurationsblock abzutrennen.
 
 ![alt text](./media/automation-dsc-overview/AADSC_2.png)
 
@@ -49,7 +49,7 @@ Im Knotenkonfigurationsblock können Sie Ressourcenblöcke definieren, um spezif
 
 ![alt text](./media/automation-dsc-overview/AADSC_3.png)
 
-Ausführlichere Informationen zum Schlüsselwort "Configuration" finden Sie unter [Grundlegendes zum Schlüsselwort "Configuration" in DSC](http://blogs.msdn.com/b/powershell/archive/2013/11/05/understanding-configuration-keyword-in-desired-state-configuration.aspx "Grundlegendes zum Schlüsselwort "Configuration" in DSC")
+Ausführlichere Informationen zum Schlüsselwort „Configuration“ finden Sie unter [DSC-Konfigurationen](https://msdn.microsoft.com/en-us/powershell/dsc/configurations "DSC-Konfigurationen").
 
 Das Ausführen (Kompilieren) einer DSC-Konfiguration führt zur Erstellung von einer oder mehreren DSC-Knotenkonfigurationen (MOF-Dokumenten), die die Einstellungen vorgeben, die von den DSC-Knoten zum Erreichen des gewünschten Zustands angewendet werden müssen.
 
@@ -60,27 +60,27 @@ Azure Automation DSC ermöglicht Ihnen das Importieren, Erstellen und Kompiliere
 
 ### <a name="node-configuration"></a>Knotenkonfiguration
 
-Wenn eine DSC-Konfiguration kompiliert wird, werden in Abhängigkeit von den Node-Blöcken in der Konfiguration eine oder mehrere Knotenkonfigurationen erstellt. Eine Knotenkonfiguration ist dasselbe wie ein MOF- oder Konfigurationsdokument (falls Sie mit diesen PS DSC-Begriffen vertraut sind) und repräsentiert eine „Rolle“, etwa einen Webserver oder Worker, deren gewünschten Zustand einer oder mehrere Knoten annehmen sollen oder deren Kompatibilität geprüft werden soll. Namen von Knotenkonfigurationen in Azure Automation DSC weisen das Format „Konfigurationsname.NodeConfigurationBlockName“ auf.
+Wenn eine DSC-Konfiguration kompiliert wird, werden in Abhängigkeit von den Node-Blöcken in der Konfiguration eine oder mehrere Knotenkonfigurationen erstellt. Eine Knotenkonfiguration entspricht einem „MOF“- oder „Konfigurationsdokument“. Knotenkonfigurationen stellen eine „Rolle“ dar, z.B. Webserver oder Worker, deren gewünschten Zustand ein oder mehrere Knoten aufweisen sollen oder deren Konformität geprüft werden soll. Namen von Knotenkonfigurationen in Azure Automation DSC weisen das Format „Konfigurationsname.NodeConfigurationBlockName“ auf.
 
 PS DSC-Knoten erkennen Knotenkonfigurationen, die entweder per DSC-Push oder mithilfe von Pullmethoden angewendet werden sollen. Azure Automation DSC basiert auf der DSC-Pullmethode, bei der Knoten Knotenkonfigurationen anfordern, die sie von Azure Automation DSC-Pullservern anwenden sollen. Da die Knoten die Anforderung an Azure Automation DSC senden, können sich die Knoten hinter Firewalls befinden, keine eingehenden Ports geöffnet haben usw. Sie benötigen nur ausgehenden Zugriff auf das Internet (entweder direkt oder über einen Proxy).
 
 ### <a name="node"></a>Knoten
 
-Jeder Computer, dessen Konfiguration von DSC verwaltet wird, ist ein DSC-Knoten. Dabei kann es sich um einen virtuellen Azure-Computer unter Windows oder Linux, eine lokale VM, einen physischen Host oder eine VM in einer anderen öffentlichen Cloud handeln. Knoten wenden Knotenkonfigurationen an, um Kompatibilität mit dem gewünschten definierten Zustand zu erzielen und zu erhalten, und sie können ihren Konfigurationsstatus und ihre Kompatibilität mit dem gewünschten Zustand einem Berichtserver melden.
+Jeder Computer, dessen Konfiguration von DSC verwaltet wird, ist ein DSC-Knoten. Bei diesem Computer kann es sich um einen virtuellen Azure-Computer unter Windows oder Linux, eine lokale VM, einen physischen Host oder eine VM in einer anderen öffentlichen Cloud handeln. Knoten stellen Knotenkonfigurationen dar, die übernommen werden sollen, und bewahren die Konformität mit dem gewünschten Zustand, den sie definieren. Knoten melden ferner einem Berichtsserver ihre Konfiguration und ihren Konformitätszustand.
 
-Azure Automation DSC vereinfacht die Integration von Knoten zur Verwaltung durch Azure Automation DSC und erlaubt das Ändern der Knotenkonfiguration, die jedem Knoten serverseitig zugewiesen ist. Wenn also ein Knoten den Server das nächste Mal auf Anweisungen überprüft, wird eine andere Rolle angenommen und sowohl die Konfiguration als auch der zu meldende Kompatibilitätsstatus entsprechend geändert.
+Mithilfe von Azure Automation DSC wird die Einbindung von Knoten einfach und flexibel. Azure Automation DSC erlaubt das Ändern der Knotenkonfiguration, die jedem Knoten zugewiesen ist. Wenn eine Knotenkonfigurationsänderung erfolgt, übernimmt der Knoten automatisch eine andere Rolle, indem er seine Konfiguration ändert und beginnt, Informationen zu seiner neuen Rolle zu melden. 
 
 ### <a name="resource"></a>Ressource
 
-DSC-Ressourcen sind Bausteine, die Sie zum Definieren einer Windows PowerShell DSC-Konfiguration (Desired State Configuration) verwenden können. DSC verfügt über einen Satz integrierter Ressourcen, beispielsweise für Dateien und Ordner, Serverfunktionen und -rollen, Registrierungseinstellungen, Umgebungsvariablen sowie Dienste und Prozesse. Eine vollständige Liste der integrierten DSC-Ressourcen und Informationen zu deren Verwendung finden Sie unter [Integrierte Windows PowerShell DSC-Ressourcen](https://technet.microsoft.com/library/dn249921.aspx).
+DSC-Ressourcen sind Bausteine, die Sie zum Definieren einer Windows PowerShell DSC-Konfiguration (Desired State Configuration) verwenden können. DSC verfügt über einen Satz integrierter Ressourcen, beispielsweise für Dateien und Ordner, Serverfunktionen und -rollen, Registrierungseinstellungen, Umgebungsvariablen sowie Dienste und Prozesse. Eine vollständige Liste der integrierten DSC-Ressourcen und Informationen zu deren Verwendung finden Sie unter [Integrierte Windows PowerShell DSC-Ressourcen](https://msdn.microsoft.com/powershell/dsc/builtinresource).
 
-DSC-Ressourcen können auch als Bestandteil der PowerShell-Module importiert werden, um den Satz der integrierten DSC-Ressourcen zu erweitern. Nicht standardmäßige Ressourcen werden von den DSC-Knoten vom DSC-Pullserver abgerufen, wenn eine durch den Knoten anzuwendende Knotenkonfiguration Verweise auf diese Ressourcen enthält. Informationen zum Erstellen von benutzerdefinierten Ressourcen finden Sie unter [Erstellen von benutzerdefinierten Windows PowerShell DSC-Ressourcen](https://technet.microsoft.com/library/dn249927.aspx).
+DSC-Ressourcen können auch als Bestandteil der PowerShell-Module importiert werden, um den Satz der integrierten DSC-Ressourcen zu erweitern. Wenn eine Knotenkonfiguration des Knotens Verweise auf nicht standardmäßige Ressourcen aufweist, werden diese Ressourcen über den DSC-Pullserver von DSC-Knoten abgerufen. Informationen zum Erstellen von benutzerdefinierten Ressourcen finden Sie unter [Erstellen von benutzerdefinierten Windows PowerShell DSC-Ressourcen](https://msdn.microsoft.com/powershell/dsc/authoringresource).
 
 Zum Lieferumfang von Azure Automation DSC gehören dieselben integrierten DSC-Ressourcen wie bei PS DSC. Sie können Azure Automation DSC zusätzliche Ressourcen hinzufügen, indem Sie PowerShell-Module mit den gewünschten Ressourcen in Azure Automation importieren.
 
 ### <a name="compilation-job"></a>Kompilierungsauftrag
 
-Ein Kompilierungsauftrag in Azure Automation DSC ist eine Instanz einer Konfigurationskompilierung, um eine oder mehrere Knotenkonfigurationen zu erstellen. Sie ähneln Runbookaufträgen in Azure Automation, führen jedoch abgesehen von der Erstellung von Knotenkonfigurationen keine wirklichen Aufgaben aus. Alle durch einen Kompilierungsauftrag erstellten Knotenkonfigurationen werden automatisch auf dem Azure Automation DSC-Pullserver platziert und überschreiben vorherige Versionen der Knotenkonfigurationen, sofern vorhanden. Der Name einer über einen Kompilierungsauftrag erstellten Knotenkonfiguration weist das Format „Konfigurationsname.NodeConfigurationBlockName“ auf. Beispielsweise würde durch das Kompilieren der nachstehenden Konfiguration eine einzelne Knotenkonfiguration mit dem Namen „MyConfiguration.webserver“ erstellt werden.
+Ein Kompilierungsauftrag in Azure Automation DSC ist eine Instanz einer Konfigurationskompilierung, um eine oder mehrere Knotenkonfigurationen zu erstellen. Sie ähneln Runbookaufträgen in Azure Automation, führen jedoch abgesehen von der Erstellung von Knotenkonfigurationen keine wirklichen Aufgaben aus. Alle durch einen Kompilierungsauftrag erstellten Knotenkonfigurationen werden automatisch auf dem Azure Automation DSC-Pullserver platziert und überschreiben vorherige Versionen der Knotenkonfigurationen, sofern vorhanden. Der Name einer über einen Kompilierungsauftrag erstellten Knotenkonfiguration weist das Format „Konfigurationsname.NodeConfigurationBlockName“ auf. Beispielsweise würde durch das Kompilieren der folgenden Konfiguration eine einzelne Knotenkonfiguration mit dem Namen „MyConfiguration.webserver“ erstellt werden.
 
 ![alt text](./media/automation-dsc-overview/AADSC_5.png)
 
@@ -94,22 +94,22 @@ Der Weg von einem leeren Automation-Konto zu einer verwalteten und ordnungsgemä
 
 ![alt text](./media/automation-dsc-overview/DSCLifecycle.png)
 
-Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Lebenszyklus. Dies umfasst verschiedene Arten, auf die eine Konfiguration importiert und auf Knoten in Azure Automation angewendet werden kann, sowie Komponenten, die erforderlich sind, damit ein lokaler Computer DCS und Interaktionen zwischen verschiedenen Komponenten unterstützen kann.
+Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Lebenszyklus. Dies umfasst verschiedene Arten, auf die eine Konfiguration importiert und auf Knoten in Azure Automation angewendet werden kann, sowie Komponenten, die erforderlich sind, damit ein lokaler Computer DSC und Interaktionen zwischen verschiedenen Komponenten unterstützen kann.
 
 ![DSC-Architektur](./media/automation-dsc-overview/dsc-architecture.png)
 
 ## <a name="gotchas--known-issues"></a>Häufige / bekannte Probleme:
 
-* Wenn beim Upgrade auf WMF 5 RTM der Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut.
-* Azure Automation DSC bietet zurzeit keine Unterstützung für teilweise oder zusammengesetzte DSC-Konfigurationen. Zusammengesetzte DSC-Ressourcen können jedoch importiert und in Azure Automation DSC-Konfigurationen genau wie in der lokalen PowerShell verwendet werden, um die Wiederverwendung von Konfigurationen zu ermöglichen.
 * Für den PowerShell DSC-Agent für Windows muss die neueste Version von WMF 5 installiert werden, um eine Kommunikation mit Azure Automation zu ermöglichen. Die neueste Version des PowerShell DSC-Agents für Linux muss installiert sein, um unter Linux eine Kommunikation mit Azure Automation zu ermöglichen.
+* Wenn vor dem Upgrade auf WMF 5 RTM ein Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut. Löschen Sie vor der Neuregistrierung die Datei „$env:windir\system32\configuration\DSCEngineCache.mof“.
+* Wenn WMF 5 RTM zusätzlich zu WMF 5 Produktion Preview installiert ist, funktioniert DSC möglicherweise nicht ordnungsgemäß. Um dieses Problem zu beheben, führen Sie den folgenden Befehl in einer PowerShell-Sitzung mit erhöhten Rechten (als Administrator) aus: `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
+* Azure Automation DSC bietet derzeit keine Unterstützung für teilweise oder zusammengesetzte DSC-Konfigurationen. Zusammengesetzte DSC-Ressourcen können jedoch importiert und in Azure Automation DSC-Konfigurationen wie in der lokalen PowerShell verwendet werden, um die Wiederverwendung von Konfigurationen zu ermöglichen.
 * Der traditionelle PowerShell DSC-Pullserver erwartet, dass Modul-ZIP-Dateien im Format **Modulname_Version.zip** auf dem Pullserver platziert werden. Azure Automation erwartet, dass PowerShell-Module mit Namen im Format **Modulname.zip**importiert werden. In [diesem Blogbeitrag](https://azure.microsoft.com/blog/2014/12/15/authoring-integration-modules-for-azure-automation/) finden Sie weitere Informationen zum erforderlichen Format von Integrationsmodulen, um diese Module in Azure Automation zu importieren.
 * In Azure Automation importierte PowerShell-Module dürfen keine DOC- oder DOCX-Dateien enthalten. Einige PowerShell-Module mit DSC-Ressourcen enthalten diese Dateien zur Bereitstellung von Hilfeinformationen. Diese Dateien müssen vor dem Import in Azure Automation aus den Modulen entfernt werden.
-* Wenn ein Knoten zum ersten Mal für ein Azure Automation-Konto registriert oder wenn der Knoten serverseitig einer anderen Knotenkonfiguration zugewiesen wird, ist sein Zustand kompatibel – selbst, wenn der Knotenzustand tatsächlich nicht mit der Knotenkonfiguration kompatibel ist, der er jetzt zugeordnet ist. Nachdem der Knoten nach der Registrierung oder einer Änderung der Knotenkonfigurationszuweisung einen ersten Pullvorgang ausgeführt oder einen ersten Bericht gesendet hat, kann der Knotenzustand als vertrauenswürdig eingestuft werden.
+* Wenn ein Knoten zuerst bei einem Azure Automation-Konto registriert wurde oder der Knoten so geändert wurde, dass er einer anderen Knotenkonfiguration auf Serverseite zugeordnet ist, lautet sein Zustand „Konform“. Dies ist auch der Fall, wenn der Zustand des Knotens nicht konform mit der Knotenkonfiguration ist, der er nun zugeordnet ist. Sobald der Knoten nach der Registrierung oder einer Änderungen der Knotenkonfigurationszuweisung seinen ersten Bericht sendet, kann der Knotenzustand als vertrauenswürdig eingestuft werden.
 * Beim Integrieren eines virtuellen Azure-Computers in die Verwaltung durch Azure Automation DSC mithilfe einer unserer Methoden für die direkte Integration kann es bis zu einer Stunde dauern, bis ein DSC-Knoten in Azure Automation angezeigt wird. Dies liegt an der Installation von Windows Management Framework 5.0 auf dem virtuellen Computer durch die Azure VM-Erweiterung für DSC, mit der der virtuelle Computer in Azure Automation DSC integriert werden muss.
-* Nach der Registrierung handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, die nach einem Jahr abläuft. Zu diesem Zeitpunkt kann das Registrierungsprotokoll für PowerShell DSC Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern. Daher müssen Sie die Knoten nach einem Jahr erneut registrieren. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, schlägt die Kommunikation mit Azure Automation fehl und der Knoten wird als „nicht reagierend“ markiert. Die erneute Registrierung erfolgt auf dieselbe Weise wie die ursprüngliche Registrierung des Knotens. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.
-* Wenn beim Upgrade auf WMF 5 RTM der Computer bereits als Knoten in Azure Automation DSC registriert ist, heben Sie seine Registrierung in Azure Automation DSC auf, und registrieren Sie ihn nach dem Upgrade auf WMF 5 RTM erneut. Löschen Sie vor der Neuregistrierung die Datei „$env:windir\system32\configuration\DSCEngineCache.mof“.
-* PowerShell DSC-Cmdlets funktionieren möglicherweise nicht, wenn WMF 5 RTM zusätzlich zu WMF 5 Produktion Preview installiert ist. Um dieses Problem zu beheben, führen Sie den folgenden Befehl in einer PowerShell-Sitzung mit erhöhten Rechten (als Administrator) aus: `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
+* Nach der Registrierung handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, die nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, schlägt die Kommunikation mit Azure Automation fehl und der Knoten wird als „Nicht reagierend“ markiert. Die erneute Registrierung erfolgt auf dieselbe Weise wie die ursprüngliche Registrierung des Knotens. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.
+
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
@@ -122,6 +122,6 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 
