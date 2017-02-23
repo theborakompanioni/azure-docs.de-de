@@ -27,7 +27,6 @@
 ### [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md)
 ### [Portal](resource-group-template-deploy-portal.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
-### [Entwicklungs- und Testumgebungen](solution-dev-test-environments.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Verwalten
 ### [PowerShell](powershell-azure-resource-manager.md)
@@ -43,20 +42,23 @@
 ### [Erstellen des Dienstprinzipals über die Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
 ### [Erstellen des Dienstprinzipals über das Portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
-### [Festlegen von Verwaltungsrichtlinien](resource-manager-policy.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
 ### [Sicherheitshinweise](best-practices-resource-manager-security.md)
+## Festlegen von Ressourcenrichtlinien
+### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
+### [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md)
+### [Tagrichtlinien für Ressourcen](resource-manager-policy-tags.md)
+### [Speicherrichtlinien](resource-manager-policy-storage.md)
+### [Richtlinien für virtuelle Linux-Computer](../virtual-machines/virtual-machines-linux-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Richtlinien für virtuelle Windows-Computer](../virtual-machines/virtual-machines-windows-policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ## Überwachung und Problembehandlung
 ### [Behandeln verbreiteter Bereitstellungsfehler](resource-manager-common-deployment-errors.md)
 ### [Anzeigen von Aktivitätsprotokollen](resource-group-audit.md)
-### [Anzeigen von Bereitstellungsvorgängen über das Portal](resource-manager-troubleshoot-deployments-portal.md)
-### [Anzeigen von Bereitstellungsvorgängen mit PowerShell](resource-manager-troubleshoot-deployments-powershell.md)
-### [Anzeigen von Bereitstellungsvorgängen mit der Azure-Befehlszeilenschnittstelle](resource-manager-troubleshoot-deployments-cli.md)
-### [Anzeigen von Bereitstellungsvorgängen mit der REST-API](resource-manager-troubleshoot-deployments-rest.md)
+### [Bereitstellungsvorgänge anzeigen](resource-manager-deployment-operations.md)
 
 # Referenz
-## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources)
-## [Azure 2.0 CLI (Vorschau)](/cli/azure/resource)
+## [PowerShell](/powershell/resourcemanager/azurerm.resources/v3.5.0/azurerm.resources)
+## [Azure 2.0 CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
@@ -65,11 +67,12 @@
 
 # Ressourcen
 ## [Drosselungsanforderungen](resource-manager-request-limits.md)
+## [Nachverfolgen asynchroner Vorgänge](resource-manager-async-operations.md)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

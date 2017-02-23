@@ -7,11 +7,10 @@
 ## Verwenden eines simulierten Geräts
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
-### [Knoten](iot-hub-node-node-getstarted.md)
+### [Node.js](iot-hub-node-node-getstarted.md)
 
 ## Verwenden eines Raspberry Pi
-### Node.js
-#### [Starten](iot-hub-raspberry-pi-kit-node-get-started.md)
+### [Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### Lektion 1: Konfigurieren Ihres Geräts
 ##### [Konfigurieren des Geräts](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
 ##### [Herunterladen der Tools (ab Windows 7)](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
@@ -32,8 +31,7 @@
 ##### [Optional: Ändern des LED-Verhaltens](iot-hub-raspberry-pi-kit-node-lesson4-change-led-behavior.md)
 #### [Problembehandlung](iot-hub-raspberry-pi-kit-node-troubleshooting.md)
 
-### C
-#### [Starten](iot-hub-raspberry-pi-kit-c-get-started.md)
+### [C](iot-hub-raspberry-pi-kit-c-get-started.md)
 #### Lektion 1: Konfigurieren Ihres Geräts
 ##### [Konfigurieren des Geräts](iot-hub-raspberry-pi-kit-c-lesson1-configure-your-device.md)
 ##### [Herunterladen der Tools (ab Windows 7)](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
@@ -55,8 +53,7 @@
 #### [Problembehandlung](iot-hub-raspberry-pi-kit-c-troubleshooting.md)
 
 ## Verwenden eines Intel Edison
-### Node.js
-#### [Starten](iot-hub-intel-edison-kit-node-get-started.md)
+### [Node.js](iot-hub-intel-edison-kit-node-get-started.md)
 #### Lektion 1: Konfigurieren Ihres Geräts
 ##### [Konfigurieren des Geräts](iot-hub-intel-edison-kit-node-lesson1-configure-your-device.md)
 ##### [Herunterladen der Tools (ab Windows 7)](iot-hub-intel-edison-kit-node-lesson1-get-the-tools-win32.md)
@@ -77,8 +74,7 @@
 ##### [Optional: Ändern des LED-Verhaltens](iot-hub-intel-edison-kit-node-lesson4-change-led-behavior.md)
 #### [Problembehandlung](iot-hub-intel-edison-kit-node-troubleshooting.md)
 
-### C
-#### [Starten](iot-hub-intel-edison-kit-c-get-started.md)
+### [C](iot-hub-intel-edison-kit-c-get-started.md)
 #### Lektion 1: Konfigurieren Ihres Geräts
 ##### [Konfigurieren des Geräts](iot-hub-intel-edison-kit-c-lesson1-configure-your-device.md)
 ##### [Herunterladen der Tools (ab Windows 7)](iot-hub-intel-edison-kit-c-lesson1-get-the-tools-win32.md)
@@ -100,8 +96,7 @@
 #### [Problembehandlung](iot-hub-intel-edison-kit-c-troubleshooting.md)
 
 ## Verwenden eines Arduino
-### Node.js
-#### [Starten](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+### [Node.js](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 #### Lektion 1: Konfigurieren Ihres Geräts
 ##### [Konfigurieren des Geräts](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-configure-your-device.md)
 ##### [Herunterladen der Tools (ab Windows 7)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson1-get-the-tools-win32.md)
@@ -127,9 +122,7 @@
 ### [Simulation unter Windows](iot-hub-windows-gateway-sdk-get-started.md)
 
 ## Verwenden des Starter Kits für IoT Gateway
-### Simuliertes Gerät
-
-#### [Starten](iot-hub-gateway-kit-c-sim-get-started.md)
+### [Simuliertes Gerät](iot-hub-gateway-kit-c-sim-get-started.md)
 #### Lektion 1: Konfigurieren Ihres NUC-Geräts
 ##### [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-sim-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
 
@@ -149,8 +142,7 @@
 
 #### [Problembehandlung](iot-hub-gateway-kit-c-sim-troubleshooting.md)
 
-### SensorTag-Gerät
-#### [Starten](iot-hub-gateway-kit-c-get-started.md)
+### [SensorTag-Gerät](iot-hub-gateway-kit-c-get-started.md)
 #### Lektion 1: Konfigurieren Ihres NUC-Geräts
 ##### [Set up Intel NUC as an IoT gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) (Einrichten von Intel NUC als IoT Gateway)
 
@@ -170,8 +162,7 @@
 
 ##### [Problembehandlung](iot-hub-gateway-kit-c-troubleshooting.md)
 
-## Verwenden des Azure IoT-Geräte-SDKs für C
-### [Einführung](iot-hub-device-sdk-c-intro.md)
+## [Verwenden des Azure IoT-Geräte-SDKs für C](iot-hub-device-sdk-c-intro.md)
 ### [Verwenden von IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [Verwenden des Serialisierungsprogramms](iot-hub-device-sdk-c-serializer.md)
 
@@ -280,6 +271,6 @@
 ## [Katalog mit Azure Certified for IoT-Geräten](https://catalog.azureiotsuite.com/)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 

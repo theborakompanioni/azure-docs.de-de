@@ -55,6 +55,7 @@
 ### [Entfernen von Ressourcengruppen](automation-scenario-remove-resourcegroup.md)
 ### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 ### [Integration der Quellcodeverwaltung mit GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md)
+### [Integration der Quellcodeverwaltung mit VSTS](automation-scenario-source-control-integration-with-VSTS.md)
 ## Überwachen
 ### [Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Aufheben der Verknüpfung eines Azure Automation-Kontos mit Log Analytics](automation-unlink-from-log-analytics.md)
@@ -82,6 +83,6 @@
 ## [Einführungsvideo für Automation](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 
 
-<!--HONumber=Feb17_HO3-->
+<!--HONumber=Feb17_HO4-->
 
 
