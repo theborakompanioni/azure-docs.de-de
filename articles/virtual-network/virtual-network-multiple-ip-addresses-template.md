@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3c3db5ba37844f6a77eece2f20bdce080d0ab8b7
-ms.openlocfilehash: 10466164f5454120e99ce7a2a368c9c548b46bc3
+ms.sourcegitcommit: 3eda8b459b5f095a40c6ea1ed355472daf23a6e3
+ms.openlocfilehash: ae5c430e702b561ddf156aa29016cfec6a0a8153
 
 
 ---
@@ -98,9 +98,26 @@ Unabhängig von der Methode, für die Sie sich entscheiden, müssen Sie Werte f�
 
 Wenn Sie die Vorlage mit PowerShell bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Wenn Sie sich für die Vorschau registrieren möchten, senden Sie eine E-Mail an [Mehrere IPs](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e), und geben Sie Ihre Abonnement-ID und die beabsichtigte Verwendung an. Versuchen Sie nicht, die verbleibenden Schritte auszuführen:
-    - Führen Sie die verbleibenden Schritte erst aus, wenn Sie eine E-Mail-Benachrichtigung mit dem Hinweis erhalten haben, dass Sie für die Vorschauversion akzeptiert wurden.
-    - Ohne den in der E-Mail enthaltenen Anweisungen zu folgen, erhalten Sie:
+1. Registrieren Sie sich für die Vorschau, indem Sie in PowerShell die folgenden Befehle ausführen, nachdem Sie sich angemeldet und das entsprechende Abonnement ausgewählt haben:
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    Führen Sie die restlichen Schritte erst aus, nachdem nach Ausführen des Befehls ```Get-AzureRmProviderFeature``` die folgende Ausgabe angezeigt wird:
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >Dies kann einige Minuten dauern.
+
 2. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md#deploy) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen einer Vorlage beschrieben. Wenn Sie das Bereitstellen über den `-TemplateUri parameter`, ausführen möchten, hat diese Vorlage den URI *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `-TemplateFile` ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
     Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `-TemplateParameterFile`.
@@ -116,14 +133,31 @@ Wenn Sie die Vorlage mit PowerShell bereitstellen möchten, führen Sie die folg
 
 Wenn Sie die Vorlage über die Azure-Befehlszeilenschnittstelle 1.0 bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Wenn Sie sich für die Vorschau registrieren möchten, senden Sie eine E-Mail an [Mehrere IPs](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e), und geben Sie Ihre Abonnement-ID und die beabsichtigte Verwendung an. Versuchen Sie nicht, die verbleibenden Schritte auszuführen:
-    - Führen Sie die verbleibenden Schritte erst aus, wenn Sie eine E-Mail-Benachrichtigung mit dem Hinweis erhalten haben, dass Sie für die Vorschauversion akzeptiert wurden.
-    - Ohne den in der E-Mail enthaltenen Anweisungen zu folgen, erhalten Sie:
+1. Registrieren Sie sich für die Vorschau, indem Sie in PowerShell die folgenden Befehle ausführen, nachdem Sie sich angemeldet und das entsprechende Abonnement ausgewählt haben:
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    Führen Sie die restlichen Schritte erst aus, nachdem nach Ausführen des Befehls ```Get-AzureRmProviderFeature``` die folgende Ausgabe angezeigt wird:
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >Dies kann einige Minuten dauern.
+
 2. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md#deploy) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen der Vorlage beschrieben. Wenn Sie das Bereitstellen über `--template-uri` (-f) ausführen möchten, hat diese Vorlage den URI *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `--template-file` (-f) ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
     Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `--parameters-file` (-e).
     
-    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#azure-cli) aus.
+    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#azure-cli-10) aus.
 
 3. Nachdem der virtuelle Computer bereitgestellt ist, stellen Sie eine Verbindung mit dem virtuellen Computer her, und fügen Sie dem von Ihnen bereitgestellten Betriebssystem die privaten IP-Adressen hinzu. Führen Sie dazu die Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
@@ -131,6 +165,6 @@ Wenn Sie die Vorlage über die Azure-Befehlszeilenschnittstelle 1.0 bereitstelle
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 02/09/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
-ms.openlocfilehash: 65b73f61b91cab719efef44a524ab8a129a435aa
+ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
+ms.openlocfilehash: c01b8c174567f745e2803a1498ec0b9a762e94ae
 
 
 ---
@@ -35,7 +35,7 @@ Es gibt drei Azure SQL-Datenbank-Dienstebenen (Tarife), aus denen Sie wählen k�
 * **Standard**: Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und ist für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert, z.B. Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und gute Leistung, die für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert sind, z.B. Arbeitsgruppen und Webanwendungen. Wenn Sie eine Datenbank der Dienstebene Standard wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf einer minutengenauen vorhersagbaren Leistung festlegen.
 * **Premium**. Die Dienstebene Premium bietet für jede Premium-Datenbank eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen.
 
-Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-scale-up.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
+Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-service-tiers.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
 
 ## <a name="why-service-tiers"></a>Warum werden Dienstebenen verwendet?
 Jede Datenbankworkload kann sich zwar unterscheiden, aber der Zweck von Dienstebenen besteht darin, für verschiedene Leistungsebenen eine Vorhersagbarkeit der Leistung zu ermöglichen. Kunden mit höheren Anforderungen an Datenbankressourcen können in einer dedizierteren Computingumgebung arbeiten.
@@ -441,6 +441,6 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 
 
 
-<!--HONumber=Feb17_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 
