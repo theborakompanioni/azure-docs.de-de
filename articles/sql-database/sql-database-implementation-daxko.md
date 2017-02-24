@@ -16,8 +16,8 @@ ms.workload: NA
 ms.date: 01/10/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 98a83c735a79cdba080dd74af8e2677788c075e3
+ms.sourcegitcommit: b759e9936a45f989088de5e89a59371c5ea64e1c
+ms.openlocfilehash: 079a05d16ccebb705f410e25f0ed5762db20ae22
 
 
 ---
@@ -89,7 +89,7 @@ Azure SQL-Datenbank ist nicht nur ein Segen für SpectrumNG-Kunden, die sich üb
 ## <a name="more-information"></a>Weitere Informationen
 * Weitere Informationen zu elastischen Azure-Pools finden Sie unter [Elastische Pools](sql-database-elastic-pool.md).
 * Weitere Informationen zu Datenbanktools und elastischer Skalierung finden Sie unter [Tools für elastische Datenbanken und elastische Skalierung](sql-database-elastic-scale-get-started.md).
-* Weitere Informationen zum Migrieren einer SQL Server-Datenbank finden Sie unter [Azure SQL-Migrations-Assistent](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md).
+* Weitere Informationen zum Migrieren einer SQL Server-Datenbank finden Sie unter [Migrieren einer SQL Server-Datenbank in Azure](sql-database-cloud-migrate.md).
 * Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 * Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
@@ -98,6 +98,6 @@ Azure SQL-Datenbank ist nicht nur ein Segen für SpectrumNG-Kunden, die sich üb
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

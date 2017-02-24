@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Manager-Richtlinien für Speicher | Microsoft-Dokumentation"
+title: "Azure-Ressourcenrichtlinien für Speicherkonten | Microsoft-Dokumentation"
 description: Beschreibt Azure Resource Manager-Richtlinien zur Verwaltung der Bereitstellung von Speicherkonten.
 services: azure-resource-manager
 documentationcenter: na
@@ -12,18 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2017
+ms.date: 02/09/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: ce31bbcb96a6afe19cf6c25dd9a68d6c2d4d080c
-ms.openlocfilehash: f2141304f6db6d137065e06558e10c721b11f892
+ms.sourcegitcommit: 5ea75843bf671ad4d879c01cdd20d5bbc5e889c2
+ms.openlocfilehash: 08c991e9f217c49828889d0b806888e193b245a8
 
 
 ---
-# <a name="apply-azure-resource-policies-to-storage-accounts"></a>Anwenden von Azure-Ressourcenrichtlinien auf Speicherkonten
-Mithilfe von Azure Resource Manager-Richtlinien können Sie konsistente Regeln für die Bereitstellung von Ressourcen in Ihrer Organisation definieren. Durch die Erstellung benutzerdefinierter Richtlinien stellen Sie sicher, dass die Benutzer in Ihrer Organisation nicht gegen Konventionen verstoßen, die zum Verwalten der Ressourcen Ihrer Organisation erforderlich sind. Dieses Thema enthält mehrere Richtlinien, die Regeln für Azure Storage-Konten definieren. Weitere Informationen zu Richtlinien finden Sie unter [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](resource-manager-policy.md).
-
-Die Beispiele in diesem Thema enthalten hartcodierte Werte in der Richtlinienregel. Sie können jedoch auch Parameter verwenden, um Werte zu übergeben, die beim Zuweisen der Richtlinie verwendet werden. Weitere Informationen finden Sie unter [Parameter](resource-manager-policy.md#parameters).
+# <a name="apply-resource-policies-to-storage-accounts"></a>Anwenden von Ressourcenrichtlinien auf Speicherkonten
+Dieses Thema zeigt mehrere [Ressourcenrichtlinien](resource-manager-policy.md), die Sie auf Azure-Speicherkonten anwenden können. Diese Richtlinien sorgen bei den in Ihrer Organisation bereitgestellten Speicherkonten für Konsistenz. 
 
 ## <a name="define-permitted-storage-account-types"></a>Definieren zulässiger Speicherkontotypen
 
@@ -53,6 +51,8 @@ Die folgende Richtlinie schränkt die bereitstellbaren [Speicherkontotypen](../s
   }
 }
 ```
+
+Eine ähnliche Richtlinienregel mit einem Parameter zum Akzeptieren zulässiger SKUs steht als integrierte Richtliniendefinition zur Verfügung. Die integrierte Richtlinie besitzt die Ressourcen-ID `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1`. 
 
 ## <a name="define-permitted-access-tier"></a>Definieren der zulässigen Zugriffsebene
 
@@ -110,16 +110,15 @@ Die folgende Richtlinie gibt vor, dass die [Speicherdienstverschlüsselung](../s
 }
 ```
 
-## <a name="create-and-assign-policies"></a>Erstellen und Zuweisen von Richtlinien
-
-Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtlinie erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Beispiele zum Erstellen und Zuweisen von Richtlinien finden Sie unter [Erstellen und Zuweisen einer Richtlinie](resource-manager-policy.md#create-and-assign-a-policy). 
+Diese Richtlinienregel steht auch als integrierte Richtliniendefinition mit der Ressourcen-ID `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f` zur Verfügung.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtliniendefinition erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Beispiele zum Erstellen und Zuweisen von Richtlinien finden Sie unter [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md). 
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

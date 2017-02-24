@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 628dfc48c00e61fe5c4883f6237a44e0f1309f0e
+ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
+ms.openlocfilehash: bc8c54b51f9eee653fbe84351081dcef562e62d4
 
 
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Konfigurieren von Datenpersistenz für Azure Redis Cache vom Typ "Premium"
-Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich des neuen Premium-Tarifs.
-
-Der Premium-Tarif für Azure Redis Cache umfasst Clustering, Persistenz und Unterstützung virtueller Netzwerke. In diesem Artikel wird erläutert, wie die Persistenz in einer Azure Redis Cache-Instanz vom Typ "Premium" konfiguriert wird.
+Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel wird erläutert, wie die Persistenz in einer Azure Redis Cache-Instanz vom Typ "Premium" konfiguriert wird.
 
 Weitere Informationen zu anderen Premium-Cache-Features finden Sie unter [Einführung in den Premium-Tarif von Azure Redis Cache](cache-premium-tier-intro.md).
 
@@ -32,16 +30,9 @@ Mithilfe der Redis-Persistenz können Sie die in Redis gespeicherten Daten dauer
 
 Azure Redis Cache bietet mit dem [RDB-Modell](http://redis.io/topics/persistence)Redis-Persistenz, bei der die Daten in einem Azure-Speicherkonto gespeichert werden. Wenn Persistenz konfiguriert ist, speichert Azure Redis Cache basierend auf einer wählbaren Sicherungshäufigkeit eine Momentaufnahme des Redis-Caches in einem binären Redis-Format dauerhaft auf dem Datenträger. Bei einem schwerwiegenden Fehler, bei dem der primäre sowie der Replikatcache deaktiviert werden, wird der Cache mithilfe der neuesten Momentaufnahme wiederhergestellt.
 
-Persistenz kann auf dem Blatt **Neuer Redis-Cache** während der Erstellung des Caches sowie für vorhandene Premium-Caches auf dem Blatt **Einstellungen** konfiguriert werden.
+Persistenz kann während der Erstellung des Caches auf dem Blatt **Neuer Redis Cache** sowie für vorhandene Premium-Caches im **Ressourcenmenü** konfiguriert werden.
 
-## <a name="create-a-premium-cache"></a>Erstellen eines Premium-Caches
-Um einen Cache zu erstellen und die Persistenz zu konfigurieren, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Neu**->**Daten und Speicher**>**Redis-Cache**.
-
-![Erstellen eines Redis-Cache][redis-cache-new-cache-menu]
-
-Zum Konfigurieren der Persistenz wählen Sie zunächst auf dem Blatt **Wählen Sie Ihren Tarif** eine der **Premium**-Optionen für den Cache aus.
-
-![Tarif auswählen][redis-cache-premium-pricing-tier]
+[!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 Wenn Sie einen Premium-Tarif ausgewählt haben, klicken Sie auf **Redis persistence**.
 
@@ -50,7 +41,7 @@ Wenn Sie einen Premium-Tarif ausgewählt haben, klicken Sie auf **Redis persiste
 Die Schritte im folgenden Abschnitt beschreiben, wie Sie Redis-Persistenz für Ihren neuen Premium-Cache konfigurieren. Nachdem Redis-Persistenz konfiguriert wurde, klicken Sie auf **Erstellen** , um den neuen Premium-Cache mit Redis-Persistenz zu erstellen.
 
 ## <a name="configure-redis-persistence"></a>Konfigurieren von Redis-Persistenz
-Redis-Persistenz wird auf dem Blatt **Redis-Datenpersistenz** konfiguriert. Bei einem neuen Cache wird während der Erstellung des Caches auf dieses Blatt zugegriffen, wie im vorherigen Abschnitt beschrieben. Für vorhandene Caches erfolgt der Zugriff auf das Blatt **Redis-Datenpersistenz** über das Blatt **Einstellungen** für Ihren Cache.
+Redis-Persistenz wird auf dem Blatt **Redis-Datenpersistenz** konfiguriert. Bei einem neuen Cache wird während der Erstellung des Caches auf dieses Blatt zugegriffen, wie im vorherigen Abschnitt beschrieben. Für vorhandene Caches erfolgt der Zugriff auf das Blatt **Redis-Datenpersistenz** über das **Ressourcenmenü** für Ihren Cache.
 
 ![Redis-Einstellungen][redis-cache-settings]
 
@@ -61,7 +52,7 @@ Zum Konfigurieren des Sicherungsintervalls wählen Sie in der Dropdownliste eine
 Klicken Sie auf **Speicherkonto**, um das Speicherkonto auszuwählen, und wählen Sie entweder den **primären** oder den **sekundären Schlüssel** aus der Dropdownliste **Speicherschlüssel** aus. Sie müssen ein Speicherkonto auswählen, das aus der gleichen Region wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist. 
 
 > [!IMPORTANT]
-> Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel erneut in der Dropdownliste **Speicherschlüssel** auswählen.
+> Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren.
 > 
 > 
 
@@ -116,6 +107,6 @@ Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie i
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

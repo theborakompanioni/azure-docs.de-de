@@ -1,6 +1,6 @@
 ---
-title: "Kopieren der Data Science-Arbeit von anderen – Machine Learning-Beispiel | Microsoft Docs"
-description: 'Branchengeheimnis von Data Science: Lassen Sie andere Ihre Arbeit erledigen. Siehe Beispiele im Cortana Analytics-Katalog, z.B. ein Beispiel eines Clusteringalgorithmus.'
+title: "Kopieren der Data Science-Beispiele von anderen – Machine Learning | Microsoft-Dokumentation"
+description: 'Branchengeheimnis von Data Science: Lassen Sie andere Ihre Arbeit erledigen. Abrufen von Machine Learning-Beispielen aus dem Cortana Analytics-Katalog.'
 keywords: Data Science-Beispiele,Machine Learning-Beispiel,Clusteringalgorithmus,Beispiel eines Clusteringalgorithmus
 services: machine-learning
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d97427b0f20d15a48ebcef47cbf4e4d100c983c3
+ms.sourcegitcommit: 1e941778c194462b311e6347c56670d3e0193e90
+ms.openlocfilehash: ebc44a4190bac697697e0b651039a0e8ee8e4a95
 
 
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Video der Reihe „Data Science für Einsteiger“
-Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von anderen erledigen zu lassen. Suchen Sie ein Beispiel eines Clusteringalgorithmus, das Sie für Ihr eigenes Machine Learning-Experiment verwenden können.
+Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von anderen erledigen zu lassen. Suchen Sie im Cortana Analytics-Katalog ein Beispiel für einen Clusteringalgorithmus, das Sie für Ihr eigenes Machine Learning-Experiment verwenden können.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-copy-other-peoples-work-to-do-data-science/player]
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
-In *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
+*Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* 1. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
-* 2. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
+* Video 1: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* Video 2: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * 3. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
 * 4. Video: [Vorhersagen einer Antwort mit einem einfachen Modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7:42 Min.)*
 * 5. Video: Kopieren der Arbeit anderer für Ihre Data Science
@@ -84,7 +84,7 @@ Außerdem verfüge ich jetzt über einen Ausgangspunkt. Ich kann die Daten des E
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Suchen nach Experimenten zur Veranschaulichung von Machine Learning-Verfahren
 Die [Cortana Intelligence Gallery](http://aka.ms/CortanaIntelligenceGallery) enthält noch weitere Experimente, die speziell als Gewusst-wie-Beispiele für Personen bereitgestellt wurden, für die Data Science neu ist. Im Katalog ist beispielsweise ein Experiment enthalten, das veranschaulicht, wie Sie mit fehlenden Werten umgehen ([Methods for handling missing values](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)Methoden zum Behandeln fehlender Werte). Es werden 15 unterschiedliche Wege zum Ersetzen leerer Werte beschrieben, und es werden jeweils die Vorteile der einzelnen Methoden und die Anwendungsmöglichkeiten erläutert.
 
-![In Machine Learning Studio geöffnetes Katalogexperiment – Methoden für fehlende Werte](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![In Machine Learning Studio geöffnete Katalogexperimente – Methoden für fehlende Werte](./media/machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
 [Cortana Intelligence Gallery](http://aka.ms/CortanaIntelligenceGallery) ist der Ort, an dem Sie funktionierende Experimente finden, die Sie als Ausgangspunkt für Ihre eigenen Lösungen verwenden können.
 
@@ -96,7 +96,6 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

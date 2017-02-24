@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/09/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 23979aec895649d80aab21d729833a846c4aeb19
-ms.openlocfilehash: 176aad9c25af6f4f31cf9f7c2152c8d63b3126a4
+ms.sourcegitcommit: fcb2c38b18e40d3ca4406810e523ae339d612bcf
+ms.openlocfilehash: b2049e2b3673ddc0455fc07c298f1054c8c8e78e
 
 
 ---
@@ -32,8 +32,7 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 
 | Dienst                 | Ressourcentyp                           | Protokolle        | Metriken     | Lösung |
 | --- | --- | --- | --- | --- |
-| Anwendungsgateways    | Microsoft.Network/applicationGateways   | Diagnose | Diagnose | [Azure Networking Analytics (Vorschau)](log-analytics-azure-networking-analytics.md) |
-| API Management          | Microsoft.ApiManagement/service         |             | Diagnose | |
+| Anwendungsgateways    | Microsoft.Network/applicationGateways   | Diagnose | Diagnose | [Azure Application Gateway-Analyse](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Application Insights    |                                         | Connector   | Connector   | [Application Insights-Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Vorschau) |
 | Automation-Konten     | Microsoft.Automation/AutomationAccounts | Diagnose |             | [Weitere Informationen](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Batch-Konten          | Microsoft.Batch/batchAccounts           | Diagnose | Diagnose | |
@@ -43,10 +42,10 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | Diagnose |             | |
 | Event Hub-Namespace     | Microsoft.EventHub/namespaces           | Diagnose | Diagnose | |
 | IoT Hubs                | Microsoft.Devices/IotHubs               |             | Diagnose | |
-| Schlüsseltresor               | Microsoft.KeyVault/vaults               | Diagnose |             | [Key Vault-Analysen (Vorschau)](log-analytics-azure-key-vault.md) |
+| Schlüsseltresor               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](log-analytics-azure-key-vault.md) |
 | Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
 | Logik-Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
-| Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure Networking Analytics (Vorschau)](log-analytics-azure-networking-analytics.md) |
+| Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
 | Service Bus-Namespace   | Microsoft.ServiceBus/namespaces         | Diagnose | Diagnose | |
 | Service Fabric          |                                         | Speicher     |             | [Service Fabric-Analysen (Vorschau)](log-analytics-service-fabric.md) |
@@ -112,6 +111,7 @@ Wenn die Diagnose für eine Ressource bei deren Erstellung aktiviert und an Ihre
         }
 ```
 
+[!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Azure-Diagnose über den Speicher an Log Analytics
 
@@ -152,6 +152,6 @@ Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Auto
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

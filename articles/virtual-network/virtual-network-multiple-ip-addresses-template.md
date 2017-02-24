@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 2e7d60b453fec2ce4c78179419362eee30ab7cb2
-ms.openlocfilehash: d3ac0587a89625501ea3d295ef19826205ab5cc8
+ms.sourcegitcommit: 3c3db5ba37844f6a77eece2f20bdce080d0ab8b7
+ms.openlocfilehash: 10466164f5454120e99ce7a2a368c9c548b46bc3
 
 
 ---
@@ -48,7 +48,7 @@ Das Bereitstellen einer Vorlage ermöglicht es Ihnen, schnell und konsistent Azu
 
 |Name|Beschreibung|
 |---|---|
-|adminUsername|Benutzername des Administrators. Der Benutzername muss den [Azure-Anforderungen für Benutzernamen](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm) entsprechen.|
+|adminUsername|Benutzername des Administrators. Der Benutzername muss den [Azure-Anforderungen für Benutzernamen](../virtual-machines/virtual-machines-windows-faq.md) entsprechen.|
 |adminPassword|Kennwort des Administrators. Das Kennwort muss den [Azure-Anforderungen für Kennwörter](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-password-requirements-when-creating-a-vm) entsprechen.|
 |dnsLabelPrefix|DNS-Name für PublicIPAddressName1. Der DNS-Name wird zu einer der öffentlichen IP-Adressen aufgelöst, die dem virtuellen Computer zugewiesen sind. Der Name muss innerhalb der Azure-Region (Standort), in der Sie den virtuellen Computer erstellen, eindeutig sein.|
 |dnsLabelPrefix1|DNS-Name für PublicIPAddressName2. Der DNS-Name wird zu einer der öffentlichen IP-Adressen aufgelöst, die dem virtuellen Computer zugewiesen sind. Der Name muss innerhalb der Azure-Region (Standort), in der Sie den virtuellen Computer erstellen, eindeutig sein.|
@@ -67,9 +67,26 @@ Sie können das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstel
 
 Wenn Sie die Vorlage über das Azure-Portal bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Wenn Sie sich für die Vorschau registrieren möchten, senden Sie eine E-Mail an [Mehrere IPs](mailto:MultipleIPsPreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e), und geben Sie Ihre Abonnement-ID und die beabsichtigte Verwendung an. Versuchen Sie nicht, die verbleibenden Schritte auszuführen:
-    - Führen Sie die verbleibenden Schritte erst aus, wenn Sie eine E-Mail-Benachrichtigung mit dem Hinweis erhalten haben, dass Sie für die Vorschauversion akzeptiert wurden.
-    - Ohne den in der E-Mail enthaltenen Anweisungen zu folgen, erhalten Sie: 
+1. Registrieren Sie sich für die Vorschau, indem Sie in PowerShell die folgenden Befehle ausführen, nachdem Sie sich angemeldet und das entsprechende Abonnement ausgewählt haben:
+    ```
+    Register-AzureRmProviderFeature -FeatureName AllowMultipleIpConfigurationsPerNic -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmProviderFeature -FeatureName AllowLoadBalancingonSecondaryIpconfigs -ProviderNamespace Microsoft.Network
+
+    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network    
+    ```
+    Führen Sie die restlichen Schritte erst aus, nachdem nach Ausführen des Befehls ```Get-AzureRmProviderFeature``` die folgende Ausgabe angezeigt wird:
+        
+    ```powershell
+    FeatureName                            ProviderName      RegistrationState
+    -----------                            ------------      -----------------      
+    AllowLoadBalancingOnSecondaryIpConfigs Microsoft.Network Registered       
+    AllowMultipleIpConfigurationsPerNic    Microsoft.Network Registered       
+    ```
+        
+    >[!NOTE] 
+    >Dies kann einige Minuten dauern.
+
 2. Ändern Sie ggf. die Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 3. Stellen Sie die Vorlage mit einer der folgenden Methoden bereit:
     - **Auswählen der Vorlage im Portal:** Führen die Schritte im Artikel [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) aus. Wählen Sie die bereits vorhandene Vorlage *101-vm-multiple-ipconfig* aus.
@@ -114,6 +131,6 @@ Wenn Sie die Vorlage über die Azure-Befehlszeilenschnittstelle 1.0 bereitstelle
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

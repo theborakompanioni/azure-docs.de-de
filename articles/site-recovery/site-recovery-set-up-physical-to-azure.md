@@ -15,8 +15,8 @@ ms.workload: backup-recovery
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: 9dfcdeb4dc3e84089eb8031272b870f87d90b689
-ms.openlocfilehash: 9416ec83089a6892099634b0572b2c794dc74dba
+ms.sourcegitcommit: f849ea027022cc753bf818d7980170b5875221f0
+ms.openlocfilehash: 47431f934f092ea7c614599b6c8e3fe3a946a955
 
 ---
 
@@ -29,13 +29,13 @@ Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem R
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes bereits verfügen
-1. Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal").
-3. Physischer Computer, um den Konfigurationsserver zu installieren.
+In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes bereits verfügen:
+1. Einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal").
+3. Einen physischen Computer, um den Konfigurationsserver zu installieren.
 
 ### <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
 Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.
-[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-server-requirements.md)]
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
 > HTTPS-basierte Proxyserver werden vom Konfigurationsserver nicht unterstützt.
@@ -43,10 +43,10 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 ## <a name="choose-your-protection-goals"></a>Auswählen der Schutzziele
 
 1. Navigieren Sie im Azure-Portal zum Blatt **Recovery Services-Tresore**, und wählen Sie den Tresor aus.
-2. Klicken Sie im Ressourcenmenü des Tresors auf **Erste Schritte** > **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
+2. Klicken Sie im Menü **Ressource** des Tresors auf **Erste Schritte** > **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
 
     ![Ziele wählen](./media/site-recovery-set-up-physical-to-azure/choose-goals.png)
-3. Wählen Sie unter **Schutzziel** die Option **In Azure** und dann **Nicht virtualisiert/Andere** aus. Klicken Sie dann auf **OK**.
+3. Wählen Sie unter **Schutzziel** die Option **In Azure** und dann **Nicht virtualisiert/Andere** aus. Klicken Sie anschließend auf **OK**.
 
     ![Ziele wählen](./media/site-recovery-set-up-physical-to-azure/physical-protection-goal.PNG)
 
@@ -57,20 +57,20 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
   ![Quelle einrichten](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
 2. Überprüfen Sie auf dem Blatt **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
 4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
-5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen den Registrierungsschlüssel, wenn Sie das einheitliche Setup ausführen. Der Schlüssel ist nach der Erstellung **fünf** Tage lang gültig.
+5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen den Registrierungsschlüssel, wenn Sie das einheitliche Setup ausführen. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
     ![Quelle einrichten](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
 6. Führen Sie auf dem Computer, den Sie als Konfigurationsserver verwenden, das **einheitliche Setup von Azure Site Recovery** aus, um den Konfigurationsserver, den Prozessserver und den Masterzielserver zu installieren.
 
-#### <a name="running-the-azure-site-recovery-unified-setup"></a>Ausführen des einheitlichen Setups für Azure Site Recovery
+#### <a name="run-azure-site-recovery-unified-setup"></a>Ausführen des einheitlichen Setups von Azure Site Recovery
 
 > [!TIP]
-> Die Registrierung des Konfigurationsservers schlägt fehl, wenn die Uhrzeit der Systemuhr auf Ihren Computern um mehr als fünf Minuten von der Ortszeit abweicht.  Synchronisieren Sie vor der Installation die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service).
+> Die Registrierung des Konfigurationsservers schlägt fehl, wenn die Systemuhr auf Ihrem Computer um mehr als fünf Minuten von der Ortszeit abweicht. Synchronisieren Sie vor der Installation die Systemuhr mit einem [Zeitserver](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service).
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Der Konfigurationsserver kann über die Befehlszeile installiert werden. Erfahren Sie mehr über das [Installieren eines Konfigurationsservers mithilfe von Befehlszeilentools](http://aka.ms/installconfigsrv).
+> Der Konfigurationsserver kann über eine Befehlszeile installiert werden. Weitere Informationen finden Sie im Thema zum [Installieren eines Konfigurationsservers mithilfe von Befehlszeilentools](http://aka.ms/installconfigsrv).
 
 
 ## <a name="common-issues"></a>Häufige Probleme
@@ -79,10 +79,12 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Als Nächstes können Sie [Ihre Zielumgebung](./site-recovery-vmware-to-azure.md#step-3-set-up-the-target-environment) in Azure einrichten.
+
+Als Nächstes können Sie [Ihre Zielumgebung](./site-recovery-prepare-target-physical-to-azure.md) in Azure einrichten.
 
 
 
-<!--HONumber=Jan17_HO2-->
+
+<!--HONumber=Feb17_HO2-->
 
 

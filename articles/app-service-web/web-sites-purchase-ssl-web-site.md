@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: a86b3e7c653d0767e91ebfaaeaa650b0328c291c
+ms.sourcegitcommit: a1b492b7884deb2d0d4f255af0737e1633606384
+ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
 
 
 ---
@@ -107,18 +107,8 @@ In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat, das Sie erworben hab
 ## <a name="a-namebkmkverifyownershipastep-2-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>Schritt 2: Überprüfen des Domänenbesitzes
 In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes für ein SSL-Zertifikat ausführen, das Sie gerade bestellt haben. 
 
-1. Klicken Sie auf **Schritt 2: Überprüfen** auf dem Blatt **Zertifikatkonfiguration**. Vier Typen von Domänenüberprüfungen werden von App Service-Zertifikaten unterstützt.
+1. Klicken Sie auf **Schritt 2: Überprüfen** auf dem Blatt **Zertifikatkonfiguration**. Drei Typen von Domänenüberprüfungen werden von App Service-Zertifikaten unterstützt.
    
-   * **App Service-Überprüfung** 
-     
-     * Dies ist die einfachste Vorgehensweise, falls Sie bereits **Ihre benutzerdefinierte Domäne den App Service-Apps zugewiesen haben**. Diese Methode listet alle App Service-Apps auf, die diese Kriterien erfüllen. 
-        In diesem Fall ist z.B. **contosocertdemo.com** eine benutzerdefinierte Domäne, die der App Service-App **ContosoCertDemo** zugewiesen ist und daher als einzige App Service-App hier aufgeführt wird. Bei einer Bereitstellung in mehreren Regionen würde sie in allen Regionen aufgelistet.
-       
-        Die Überprüfungsmethode ist NUR für Käufe von Standardzertifikaten (Basic) verfügbar. Für Platzhalterzertifikate überspringen Sie diesen Schritt bitte und fahren Sie mit Option B, C oder D unten fort.
-     * Klicken Sie auf die Schaltfläche **„Überprüfen“** , um diesen Schritt abzuschließen.
-     * Klicken Sie auf **„Aktualisieren“** , um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
-     
-     ![Bild von App Service-Überprüfung einfügen](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)     
    * **Domänenüberprüfung** 
      
      * Dies ist **NUR DANN** der zweckmäßigste Prozess, wenn Sie **[Ihre benutzerdefinierte Domäne von Azure App Service](custom-dns-web-site-buydomains-web-app.md)** erworben haben.
@@ -131,15 +121,7 @@ In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes f
      * Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **„E-Mail erneut senden“** .
    * **Manuelle Überprüfung**    
      
-     1. **Überprüfung der HTML-Webseite**
-        
-        * Erstellen Sie eine HTML-Datei mit dem Namen **{Domänenüberprüfungstoken}**.html (Sie können das Token aus dem Blatt „Domänenüberprüfungsstatus“ kopieren).
-        * Der Inhalt dieser Datei sollte genau dem Namen des **Domänenüberprüfungstokens**entsprechen.
-        * Aktualisieren Sie diese Datei im Stammverzeichnis des Webservers, der Ihre Domäne hostet.
-        * Klicken Sie auf **„Aktualisieren“** , um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
-          
-          Wenn Sie beispielsweise ein Standardzertifikat für contosocertdemo.com mit dem Domänenüberprüfungstoken **cAGgQrKc** und einer Webanforderung an **http://contosocertdemo.com/cAGgQrKc.html** kaufen, sollte **cAGgQrKc** zurückgeben werden.
-     2. **Überprüfung des DNS-TXT-Eintrags**
+      **Überprüfung des DNS-TXT-Eintrags**
         
         * Erstellen Sie mithilfe des DNS-Managers einen TXT-Eintrag in der Unterdomäne **DZC** mit einem Wert, der dem **Domänenüberprüfungstoken** entspricht.
         * Klicken Sie auf **„Aktualisieren“** , um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.

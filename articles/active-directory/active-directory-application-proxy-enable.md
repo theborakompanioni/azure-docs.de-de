@@ -5,21 +5,21 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 07/19/2016
+ms.topic: article
+ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 45ecd5b16b874dcf0ddf16c58f6d9dea6f4afb00
+ms.sourcegitcommit: 2d5ea8109f5fde5f2b480ceeea34c365b619fab5
+ms.openlocfilehash: 5f42292fa9238dadd717d5c2e9530b22ee10d943
 
 
 ---
+
 # <a name="enable-application-proxy-in-the-azure-portal"></a>Aktivieren des Anwendungsproxys über das Azure-Portal
 In diesem Artikel wird anhand der erforderlichen Schritte beschrieben, wie Sie den Microsoft Azure AD-Anwendungsproxy für Ihr Cloudverzeichnis in Azure AD aktivieren.
 
@@ -31,14 +31,14 @@ Bevor Sie die Anwendungsproxydienste aktivieren und verwenden können, benötige
 * Ein [Basic- oder Premium-Abonnement](active-directory-editions.md) für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren.
 * Einen Server, auf dem Windows Server 2012 R2 bzw. Windows 8.1 oder höher installiert ist und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server sendet Anforderungen an die Anwendungsproxydienste in der Cloud und benötigt eine HTTP- oder HTTPS-Verbindung mit den Anwendungen, die Sie veröffentlichen.
   
-  * Für das einmalige Anmelden an Ihren veröffentlichten Anwendungen sollte dieser Computer in dieselbe AD-Domäne wie die veröffentlichten Anwendungen eingebunden sein.
+  * Für das einmalige Anmelden an Ihren veröffentlichten Anwendungen sollte dieser Computer in dieselbe AD-Domäne wie die veröffentlichten Anwendungen eingebunden sein. Weitere Informationen finden Sie unter [Einmaliges Anmelden mit Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md).
 * Wenn der Pfad durch eine Firewall geschützt ist, sollten Sie sich vergewissern, dass diese so konfiguriert ist, dass der Connector HTTPS-Anforderungen (TCP) an den Anwendungsproxy richten kann. Der Connector verwendet diese Ports zusammen mit untergeordneten Domänen, die Teil der übergeordneten Domänen „msappproxy.net“ und „servicebus.windows.net“ sind. Stellen Sie sicher, dass die folgenden Ports für den **ausgehenden** Datenverkehr geöffnet sind:
   
   | Portnummer | Beschreibung |
   | --- | --- |
   | 80 |Ermöglicht ausgehenden HTTP-Verkehr für die Sicherheitsüberprüfung. |
   | 443 |Ermöglicht die Benutzerauthentifizierung für Azure AD (nur für den Connectorregistrierungsprozess erforderlich). |
-  | 10100 - 10120 |Ermöglicht das Zurücksenden von LOB HTTP-Antworten an den Proxy. |
+  | 10100 -&10120; |Ermöglicht das Zurücksenden von LOB HTTP-Antworten an den Proxy. |
   | 9352, 5671 |Ermöglicht eine Kommunikation zwischen Connector und Azure-Dienst für eingehende Anforderungen. |
   | 9350 |Optional; verbessert die Leistung für eingehende Anforderungen. |
   | 8080 |Aktiviert die Bootstrapsequenz des Connectors sowie eine automatische Aktualisierung des Connectors. |
@@ -77,6 +77,8 @@ Bevor Sie die Anwendungsproxydienste aktivieren und verwenden können, benötige
      ![Anwendungsproxy-Connectordienste – Screenshot](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 5. Klicken Sie im Installationsfenster auf **Fertig stellen** .
 
+Informationen zu Connectors finden Sie unter [Understand Azure AD Application Proxy connectors](application-proxy-understand-connectors.md) (Grundlegendes zu Azure AD-Anwendungsproxyconnectors). 
+
 Falls Sie hohe Verfügbarkeit benötigen, sollten Sie mindestens zwei Connectors bereitstellen. Wiederholen Sie dazu die oben angegebenen Schritte 2 und 3. Jeder Connector muss separat registriert werden.
 
 Wenn Sie den Connector deinstallieren möchten, müssen Sie sowohl den Connector- als auch den Updatedienst deinstallieren. Starten Sie den Computer neu, um den Dienst vollständig zu entfernen.
@@ -89,6 +91,6 @@ Wenn Sie über Anwendungen verfügen, die sich in separaten Netzwerken oder an u
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

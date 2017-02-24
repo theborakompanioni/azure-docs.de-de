@@ -1,6 +1,6 @@
 ---
-title: "Verwalten von Reverse-DNS-Einträgen für Ihre (klassischen) Azure-Dienste mit PowerShell | Microsoft Docs"
-description: "Mit PowerShell im klassischen Bereitstellungsmodell Reverse-DNS-Einträge oder PTR-Einträge für Azure-Dienste verwalten  "
+title: "Reverse-DNS-Einträge für Ihre klassischen Azure-Dienste mit PowerShell | Microsoft-Dokumentation"
+description: "Azure DNS ermöglicht die Verwaltung von Reverse-DNS-Einträgen oder PTR-Einträgen für Azure-Dienste mithilfe von PowerShell im klassischen Bereitstellungsmodell."
 services: DNS
 documentationcenter: na
 author: s-malone
@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2016
 ms.author: smalone
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fe5c9cfe0edd769635301fdcb40fc1f71d430165
+ms.sourcegitcommit: dd020bf625510eb90af2e1ad19c155831abd7e75
+ms.openlocfilehash: 399cfcad5c17cdb12a4063e11e1ff353e88e56a7
 
 
 ---
@@ -43,22 +43,30 @@ Um sicherzustellen, dass kein Dritter Reverse-DNS-Einträge erstellen kann, die 
 ## <a name="add-reverse-dns-to-existing-cloud-services"></a>Hinzufügen von Reverse-DNS zu vorhandenen Clouddiensten
 Sie können einem vorhandenen Clouddienst einen Reverse-DNS-Eintrag mit dem Cmdlet „Set-AzureService“ hinzufügen:
 
-    PS C:\> Set-AzureService –ServiceName “contosoapp1” –Description “App1 with Reverse DNS” –ReverseDnsFqdn “contosoapp1.cloudapp.net.”
+```powershell
+Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
+```
 
 ## <a name="create-a-cloud-service-with-reverse-dns"></a>Erstellen eines Clouddiensts mit Reverse-DNS
-Sie können einen neuen Clouddienst mit der angegebenen Reverse-DNS-Eigenschaft hinzufügen, indem Sie das Cmdlet Set-AzureService verwenden:
+Sie können einen neuen Clouddienst mit der angegebenen Reverse-DNS-Eigenschaft hinzufügen, indem Sie das Cmdlet „Set-AzureService“ verwenden:
 
-    PS C:\> New-AzureService –ServiceName “contosoapp1” –Location “West US” –Description “App1 with Reverse DNS” –ReverseDnsFqdn “contosoapp1.cloudapp.net.”
+```powershell
+New-AzureService –ServiceName "contosoapp1" –Location "West US" –Description "App1 with Reverse DNS" –ReverseDnsFqdn "contosoapp1.cloudapp.net."
+```
 
 ## <a name="view-reverse-dns-for-existing-cloud-services"></a>Anzeigen von Reverse-DNS für vorhandene Clouddienste
 Sie können den konfigurierten Wert für einen vorhandenen Clouddienst mithilfe des Cmdlets „Get-AzureService“ anzeigen:
 
-    PS C:\> Get-AzureService "contosoapp1"
+```powershell
+Get-AzureService "contosoapp1"
+```
 
 ## <a name="remove-reverse-dns-from-existing-cloud-services"></a>Entfernen von Reverse-DNS aus vorhandenen Clouddiensten
-Sie können eine Reverse-DNS-Eingenschaft mit dem Cmdlet Set-AzureService aus einem vorhandenen Clouddienst entfernen. Dies erfolgt, indem der Wert für die Reverse-DNS-Eigenschaft auf „leer“ gesetzt wird:
+Sie können eine Reverse-DNS-Eigenschaft mit dem Cmdlet „Set-AzureService“ aus einem vorhandenen Clouddienst entfernen. Dies erfolgt, indem der Wert für die Reverse-DNS-Eigenschaft auf „leer“ gesetzt wird:
 
-    PS C:\> Set-AzureService –ServiceName “contosoapp1” –Description “App1 with Reverse DNS” –ReverseDnsFqdn “”
+```powershell
+Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
+```
 
 [!INCLUDE [FAQ1](../../includes/dns-reverse-dns-record-operations-faq-host-own-arpa-zone-include.md)]
 
@@ -67,6 +75,6 @@ Sie können eine Reverse-DNS-Eingenschaft mit dem Cmdlet Set-AzureService aus ei
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

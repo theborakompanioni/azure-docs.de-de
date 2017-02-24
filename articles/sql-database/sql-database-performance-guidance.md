@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL-Datenbank und Leistung für Einzeldatenbanken | Microsoft Docs"
+title: "Azure SQL-Datenbank-Leistung für Einzeldatenbanken | Microsoft-Dokumentation"
 description: "Mit den Informationen in diesem Artikel können Sie ermitteln, welche Dienstebene für Ihre Anwendung am besten geeignet ist. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung empfohlen, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen."
 services: sql-database
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 01/04/2017
+ms.date: 02/09/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: ec13e72de7ccebefbaa88309f8248f29b569ef2f
-ms.openlocfilehash: e14b037f962afb803a2271b221e6309c7e8220cd
+ms.sourcegitcommit: f2e48e290f59efb5ab6271b7b2882ca8ea8887a6
+ms.openlocfilehash: 65b73f61b91cab719efef44a524ab8a129a435aa
 
 
 ---
@@ -29,10 +29,10 @@ Azure SQL-Datenbank verfügt über drei [Dienstebenen](sql-database-service-tier
 > 
 > 
 
-Dies sind die drei Azure SQL-Datenbank-Dienstebenen (Tarife), aus denen Sie wählen können (Leistung wird in Datenbankdurchsatzeinheiten (Database Throughput Units, [DTUs](sql-database-what-is-a-dtu.md)) gemessen):
+Es gibt drei Azure SQL-Datenbank-Dienstebenen (Tarife), aus denen Sie wählen können (die Leistung wird in Datenbankdurchsatzeinheiten [Database Throughput Units, [DTUs](sql-database-what-is-a-dtu.md)] gemessen):
 
 * **Basic**. Die Dienstebene Basic bietet eine gute Vorhersagbarkeit der Leistung für jede Datenbankstunde. In einer Basic-Datenbank sorgen ausreichende Ressourcen für eine gute Leistung einer kleinen Datenbank, in der nicht mehrere gleichzeitige Anforderungen auftreten.
-* **Standard**: Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und ist für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert, z.B. Arbeitsgruppen und Webanwendungen. Wenn Sie eine Datenbank der Dienstebene Standard wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf einer minutengenauen vorhersagbaren Leistung festlegen.
+* **Standard**: Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und ist für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert, z.B. Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und gute Leistung, die für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert sind, z.B. Arbeitsgruppen und Webanwendungen. Wenn Sie eine Datenbank der Dienstebene Standard wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf einer minutengenauen vorhersagbaren Leistung festlegen.
 * **Premium**. Die Dienstebene Premium bietet für jede Premium-Datenbank eine sekundengenau vorhersagbare Leistung. Wenn Sie die Dienstebene Premium wählen, können Sie die Größe Ihrer Datenbankanwendung basierend auf der Spitzenlast der Datenbank festlegen. Bei diesem Plan werden Fälle verhindert, in denen die Leistungsvarianz bewirkt, dass kleinere Abfragen bei latenzanfälligen Vorgängen länger als erwartet dauern. Dieses Modell kann für eine starke Vereinfachung bei Entwicklungs- und Produktprüfungszyklen für Anwendungen sorgen, bei denen in Bezug auf Ressourcenspitzenlast, Leistungsvarianz oder Abfragewartezeit hohe Anforderungen bestehen.
 
 Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-scale-up.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
@@ -106,10 +106,13 @@ Um die Anzahl aktueller aktiver Sitzungen anzuzeigen, führen Sie in der SQL-Dat
 
 Diese Abfragen geben wieder eine Anzahl zu einem bestimmten Zeitpunkt zurück. Wenn Sie im Laufe der Zeit mehrere Beispielwerte sammeln, können Sie sich am besten über Ihre Sitzungsnutzung informieren.
 
-Für die SQL-Datenbankanalyse können Sie eine Verlaufsstatistik für Sitzungen abrufen. Fragen Sie **sys.resource_stats** ab, und verwenden Sie die Spalte **active_session_count**. Weitere Informationen zur Verwendung dieser Sicht finden Sie im nächsten Abschnitt.
+Für die SQL-Datenbankanalyse können Sie Verlaufsstatistiken für Sitzungen abrufen, indem Sie [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) abfragen und die Spalte **active_session_count** überprüfen. 
 
 ## <a name="monitor-resource-use"></a>Überwachen der Ressourcennutzung
-Zwei Sichten unterstützen Sie bei der Überwachung der Ressourcennutzung für eine SQL-Datenbank relativ zur Dienstebene:
+
+Sie können die Ressourcennutzung mithilfe von [Query Performance Insight für SQL-Datenbank](sql-database-query-performance.md) und [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx) überwachen.
+
+Außerdem lässt sich die Nutzung über diese beiden Ansichten überwachen:
 
 * [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
 * [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
@@ -141,7 +144,7 @@ Der folgende Graph zeigt die CPU-Ressourcennutzung für eine Premium-Datenbank m
 
 Die Daten verdeutlichen, dass diese Datenbank derzeit über eine CPU-Spitzenlast von etwas mehr als 50 Prozent CPU-Auslastung relativ zur Leistungsebene P2 verfügt (Dienstagmittag). Falls die CPU der entscheidende Faktor im Ressourcenprofil der Anwendung ist, entscheiden Sie sich ggf. für die Leistungsebene P2, um die Bewältigung der Workload stets sicherstellen zu können. Wenn eine Anwendung im Laufe der Zeit voraussichtlich größer wird, ist die Verwendung eines zusätzlichen Ressourcenpuffers ratsam, damit für die Anwendung nie der Grenzwert für die Leistungsebene erreicht wird. Wenn Sie die Leistungsebene erhöhen, können Sie für den Kunden sichtbare Fehler vermeiden. Diese können ggf. auftreten, wenn eine Datenbank nicht über genügend Leistung zum effektiven Verarbeiten von Anforderungen verfügt, vor allem in latenzanfälligen Umgebungen. Ein Beispiel ist eine Datenbank für eine Anwendung, mit der Webseiten basierend auf den Ergebnissen von Datenbankaufrufen farbig gestaltet werden.
 
-Beachten Sie, dass andere Anwendungstypen denselben Graph unter Umständen anders interpretieren. Wenn eine Anwendung beispielsweise jeden Tag versucht, Gehaltsabrechnungsdaten zu verarbeiten, und dasselbe Diagramm gilt, wird diese Art von „Batchauftrag“-Modell bei Leistungsebene P1 ggf. zufriedenstellend ausgeführt. Die Leistungsebene P1 verfügt über 100 DTUs, während Leistungsebene P2 über 200 DTUs verfügt. Die Leistungsebene P1 bietet also die Hälfte der Leistung von Leistungsebene P2. Eine Nutzung von 50 Prozent CPU-Auslastung bei P2 entspricht also 100 Prozent CPU-Auslastung bei P1. Wenn die Anwendung nicht über Timeouts verfügt, spielt es unter Umständen keine Rolle, ob ein Auftrag 2 oder 2,5 Stunden dauert, solange er noch am selben Tag abgeschlossen wird. Für eine Anwendung in dieser Kategorie reicht wahrscheinlich die Leistungsebene P1 aus. Sie können die Tatsache nutzen, dass es am Tag Zeiten gibt, in denen die Ressourcennutzung niedriger ist. Dies bedeutet, dass „Spitzen“ ggf. in einen der Zeiträume später am Tag verlagert werden können. Die Leistungsebene P1 ist für diese Art von Anwendung ggf. gut geeignet (und spart Kosten), solange die Aufträge am selben Tag abgeschlossen werden können.
+Andere Anwendungstypen können denselben Graphen unter Umständen anders interpretieren. Wenn eine Anwendung beispielsweise jeden Tag versucht, Gehaltsabrechnungsdaten zu verarbeiten, und dasselbe Diagramm gilt, wird diese Art von „Batchauftrag“-Modell bei Leistungsebene P1 ggf. zufriedenstellend ausgeführt. Die Leistungsebene P1 verfügt über 100 DTUs, während Leistungsebene P2 über 200 DTUs verfügt. Die Leistungsebene P1 bietet also die Hälfte der Leistung von Leistungsebene P2. Eine Nutzung von 50 Prozent CPU-Auslastung bei P2 entspricht also 100 Prozent CPU-Auslastung bei P1. Wenn die Anwendung nicht über Timeouts verfügt, spielt es unter Umständen keine Rolle, ob ein Auftrag 2 oder 2,5 Stunden dauert, solange er noch am selben Tag abgeschlossen wird. Für eine Anwendung in dieser Kategorie reicht wahrscheinlich die Leistungsebene P1 aus. Sie können die Tatsache nutzen, dass es am Tag Zeiten gibt, in denen die Ressourcennutzung niedriger ist. Dies bedeutet, dass „Spitzen“ ggf. in einen der Zeiträume später am Tag verlagert werden können. Die Leistungsebene P1 ist für diese Art von Anwendung ggf. gut geeignet (und spart Kosten), solange die Aufträge am selben Tag abgeschlossen werden können.
 
 Azure SQL-Datenbank macht die verbrauchten Ressourceninformationen für jede aktive Datenbank in der Sicht **sys.resource_stats** der **master**-Datenbank jedes Servers verfügbar. Die Daten in der Tabelle werden zu Intervallen von fünf Minuten zusammengefasst. Bei den Dienstebenen Basic, Standard und Premium kann es länger als fünf Minuten dauern, bis sie in der Tabelle angezeigt werden. Diese Daten sind also besser für Verlaufsanalysen als für Analysen nahezu in Echtzeit geeignet. Fragen Sie die Sicht **sys.resource_stats** ab, um den kürzlichen Verlauf einer Datenbank anzuzeigen und zu überprüfen, ob die gewählte Reservierung zur gewünschten Leistung zur richtigen Zeit geführt hat.
 
@@ -204,7 +207,7 @@ Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der *
    | --- | --- |
    | 24,5 |100,00 |
    
-    Der durchschnittliche CPU-Wert beträgt ca. ein Viertel der Obergrenze der Leistungsebene. Dies würde also gut zur Leistungsebene der Datenbank passen. Der Höchstwert zeigt aber, dass die Datenbank die Obergrenze der Leistungsebene erreicht. Müssen Sie also zur nächsthöheren Leistungsebene wechseln? Sehen Sie sich an, wie häufig Ihre Workload 100 Prozent erreicht, und vergleichen Sie dies dann mit Ihrem Servicelevelziel für die Datenbankworkload.
+    Der durchschnittliche CPU-Wert beträgt ca. ein Viertel der Obergrenze der Leistungsebene. Dies würde also gut zur Leistungsebene der Datenbank passen. Der Höchstwert zeigt aber, dass die Datenbank die Obergrenze der Leistungsebene erreicht. Müssen Sie also zur nächsthöheren Leistungsebene wechseln? Prüfen Sie, wie häufig Ihre Workload 100 Prozent erreicht, und vergleichen Sie dies dann mit Ihrem Servicelevelziel für die Datenbankworkload.
    
         SELECT
         (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
@@ -231,7 +234,7 @@ Azure SQL-Datenbank-Dienstebenen sind zwar für die Verbesserung der Leistungsst
 In diesem Abschnitt werden einige Verfahren beschrieben, mit denen Sie Azure SQL-Datenbank so optimieren können, dass Sie für Ihre Anwendung die beste Leistung erzielen und für die Ausführung die kleinstmögliche Leistungsebene wählen können. Einige Verfahren dieser Art sind mit herkömmlichen bewährten Methoden zum Optimieren von SQL Server identisch, aber die anderen Verfahren gelten speziell für Azure SQL-Datenbank. In einigen Fällen können Sie die verbrauchten Ressourcen für eine Datenbank untersuchen, um Bereiche zu ermitteln, in denen eine weitere Optimierung möglich ist und herkömmliche SQL Server-Verfahren so erweitert werden können, dass sie auch für Azure SQL-Datenbank funktionieren.
 
 ### <a name="azure-portal-tools"></a>Tools des Azure-Portals
-Das Azure-Portal enthält zwei Tools, mit denen Sie Leistungsprobleme der SQL-Datenbank analysieren und beheben können:
+Mit den folgenden Tools im Azure-Portal können Sie Leistungsprobleme der SQL-Datenbank analysieren und beheben:
 
 * [Query Performance Insight](sql-database-query-performance.md)
 * [SQL-Datenbankratgeber](sql-database-advisor.md)
@@ -387,7 +390,7 @@ Im zweiten Teil des Beispiels wird ein Abfragehinweis verwendet, um den Optimier
 
 ![Abfragenoptimierung per Abfragehinweis](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-Sie sehen das Ergebnis in der Tabelle **sys.resource_stats** (zwischen der Ausführung des Tests und dem Füllen der Tabelle mit den Daten liegt eine Verzögerung). In diesem Beispiel wurde Teil 1 während des Zeitfensters 22:25:00 und Teil 2 um 22:35:00 ausgeführt. Beachten Sie, dass für das frühere Zeitfenster mehr Ressourcen als für das spätere Zeitfenster verwendet wurden (aufgrund von Verbesserungen der Planeffizienz).
+Sie sehen das Ergebnis in der Tabelle **sys.resource_stats** (zwischen der Ausführung des Tests und dem Füllen der Tabelle mit den Daten liegt eine Verzögerung). In diesem Beispiel wurde Teil 1 während des Zeitfensters 22:25:00 und Teil 2 um 22:35:00 ausgeführt. Im früheren Zeitfenster wurden in diesem Zeitraum mehr Ressourcen als im späteren Zeitfenster verwendet (aufgrund von Verbesserungen der Planungseffizienz).
 
     SELECT TOP 1000 *
     FROM sys.resource_stats
@@ -438,6 +441,6 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

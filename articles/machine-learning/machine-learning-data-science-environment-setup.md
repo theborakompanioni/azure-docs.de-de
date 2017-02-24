@@ -1,6 +1,6 @@
 ---
-title: "Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess | Microsoft Docs"
-description: "Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess"
+title: Einrichten von Data Science-Umgebungen in Azure | Microsoft-Dokumentation
+description: "Einrichten von Data Science-Umgebungen in Azure für die Verwendung im Team Data Science-Prozess."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 02/08/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6c7fc92d72504e853a1c4cf4aaac309097e44c44
+ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
+ms.openlocfilehash: 4f2f66288428aa0aa41abb40ce0e43c4848543ff
 
 
 ---
@@ -35,6 +35,6 @@ Die **Microsoft Data Science Virtual Machine (DSVM)** ist auch als Image des vir
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/23/2017
+ms.date: 02/08/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 814292d76601452493c1d708c39d42da909036d9
-ms.openlocfilehash: c3f547fade400ba35619217dac503ab7ea2fbb40
+ms.sourcegitcommit: bf06b5623ca6bd6005cdde6fd587048ded6412dd
+ms.openlocfilehash: 3e33d1c815589fdb40af46f3c3410e037f77a34c
 
 ---
 
@@ -71,7 +71,10 @@ Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Sear
 
 ### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung###
 
-Die hohe Verfügbarkeit von Azure Search gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld hinzufügen oder löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
+Die hohe Verfügbarkeit von Azure Search gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
+
+> [!NOTE]
+> Sie können einem Azure Search-Index neue Felder hinzufügen, ohne den Index neu zu erstellen. Der Wert des neuen Felds lautet NULL für alle Dokumente, die bereits im Index vorhanden sind.
 
 Um die Verfügbarkeit des Index während einer Neuerstellung zu gewährleisten, muss im gleichen Dienst eine Kopie des Index mit einem anderen Namen oder eine Kopie des Index mit dem gleichen Namen in einem anderen Dienst vorhanden sein und Ihr Code mit einer Umleitungs- oder Failoverlogik versehen werden.
 
@@ -122,6 +125,6 @@ Die Kosten pro SU sind durch den Tarif vorgegeben. Der Kostensatz pro SU für de
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: Verwenden dynamischer Telemetriedaten | Microsoft Docs
-description: "In diesem Tutorial erfahren Sie, wie Sie dynamische Telemetriedaten mit der vorkonfigurierten Lösung für die Remoteüberwachung verwenden."
+description: "In diesem Tutorial erfahren Sie, wie Sie dynamische Telemetriedaten mit der vorkonfigurierten Lösung für die Remoteüberwachung von Azure IoT Suite verwenden."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/09/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c67cfcc8b01786dcd39fa683898ba076059be0b4
+ms.sourcegitcommit: 37a1653ca058c60a39df95f646127bd9e7fdd556
+ms.openlocfilehash: 7fe03bcb918997971208554d030264d67bedb1ff
 
 
 ---
 # <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Verwenden dynamischer Telemetriedaten mit der vorkonfigurierten Lösung für die Remoteüberwachung
 ## <a name="introduction"></a>Einführung
-Die an die vorkonfigurierte Lösung für die Remoteüberwachung gesendeten dynamischen Telemetriedaten lassen sich visualisieren. Die simulierten Geräte, die mit der vorkonfigurierten Lösung bereitgestellt werden, senden Telemetriedaten zu Temperatur und Luftfeuchtigkeit, die Sie im Dashboard visualisieren können. Wenn Sie die vorhandenen simulierten Geräte anpassen, neue simulierte Geräte erstellen oder physische Geräte mit der vorkonfigurierten Lösung verbinden, können Sie andere Telemetriewerte wie Außentemperatur, U/min. oder Windgeschwindigkeit senden. Sie können diese zusätzlichen Telemetriedaten dann im Dashboard visualisieren.
+Die an die vorkonfigurierte Lösung für die Remoteüberwachung gesendeten dynamischen Telemetriedaten lassen sich visualisieren. Die simulierten Geräte, die mit der vorkonfigurierten Lösung bereitgestellt werden, senden Telemetriedaten zu Temperatur und Luftfeuchtigkeit, die Sie im Dashboard visualisieren können. Wenn Sie die vorhandenen simulierten Geräte anpassen, neue simulierte Geräte erstellen oder physische Geräte mit der vorkonfigurierten Lösung verbinden, können Sie andere Telemetriewerte wie Außentemperatur, U/min oder Windgeschwindigkeit senden. Sie können diese zusätzlichen Telemetriedaten dann im Dashboard visualisieren.
 
 Dieses Tutorial verwendet ein einfaches simuliertes Node.js-Gerät, das Sie problemlos anpassen können, um mit dynamischen Telemetriedaten zu experimentieren.
 
@@ -36,47 +36,7 @@ Sie können dieses Tutorial unter allen Betriebssystemen durcharbeiten, die die 
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-## <a name="configure-the-nodejs-simulated-device"></a>Konfigurieren des simulierten Node.js-Geräts
-1. Klicken Sie im Dashboard für die Remoteüberwachung auf **+ Gerät hinzufügen** , und fügen Sie ein benutzerdefiniertes Gerät hinzu. Notieren Sie sich den IoT Hub-Hostnamen, die Geräte-ID und den Geräteschlüssel. Sie benötigen diese Informationen im weiteren Verlauf dieses Tutorials, wenn Sie die Geräteclientanwendung „remote_monitoring.js“ vorbereiten.
-2. Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die Node.js-Version 0.12.x installiert ist. Führen Sie an einer Eingabeaufforderung oder in der Shell `node --version` aus, um die Version zu überprüfen. Informationen zur Verwendung eines Paket-Managers zum Installieren von Node.js unter Linux finden Sie unter [Installieren von Node.js mithilfe eines Paket-Managers][node-linux].
-3. Wenn Sie Node.js installiert haben, klonen Sie die neueste Version des Repositorys [azure-iot-sdks][lnk-github-repo] auf Ihren Entwicklungscomputer. Verwenden Sie stets die Verzweigung **master** , die die neueste Version der Bibliotheken und Beispiele bietet.
-4. Kopieren Sie in Ihrer lokalen Kopie des Repositorys [azure-iot-sdks][lnk-github-repo] die folgenden beiden Dateien aus dem Ordner „node/device/samples“ in einen leeren Ordner auf Ihrem Entwicklungscomputer:
-   
-   * packages.json
-   * remote_monitoring.js
-5. Öffnen Sie die Datei „remote_monitoring.js“, und suchen Sie nach der folgenden Variablendefinition:
-   
-    ```
-    var connectionString = "[IoT Hub device connection string]";
-    ```
-6. Ersetzen Sie **[IoT Hub device connection string]** durch Ihre Geräteverbindungszeichenfolge. Verwenden Sie die Werte für Ihren IoT Hub-Hostnamen, die Geräte-ID und den Geräteschlüssel, die Sie in Schritt 1 notiert haben. Eine Geräteverbindungszeichenfolge hat folgendes Format:
-   
-    ```
-    HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
-    ```
-   
-    Wenn der IoT Hub-Hostname **contoso** und die Geräte-ID **mydevice** lautet, sieht Ihre Verbindungszeichenfolge folgendermaßen aus:
-   
-    ```
-    var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
-    ```
-7. Speichern Sie die Datei . Führen Sie die folgenden Befehle in einer Shell oder an einer Eingabeaufforderung im Ordner mit diesen Dateien aus, um die erforderlichen Pakete zu installieren. Führen Sie dann die Beispielanwendung aus:
-   
-    ```
-    npm install
-    node remote_monitoring.js
-    ```
-
-## <a name="observe-dynamic-telemetry-in-action"></a>Beobachten dynamischer Telemetriedaten in Aktion
-Das Dashboard zeigt die Telemetriedaten zu Temperatur und Feuchtigkeit von den vorhandenen simulierten Geräten:
-
-![Das Standarddashboard][image1]
-
-Wenn Sie das simulierte Node.js-Gerät auswählen, das Sie im vorherigen Abschnitt ausgeführt haben, werden Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Außentemperatur angezeigt:
-
-![Hinzufügen von Außentemperaturen zum Dashboard][image2]
-
-Die Remoteüberwachungslösung erkennt automatisch die zusätzlichen Telemetriedaten zur Außentemperatur und fügt sie dem Diagramm im Dashboard hinzu.
+[!INCLUDE [iot-suite-send-external-temperature](../../includes/iot-suite-send-external-temperature.md)]
 
 ## <a name="add-a-telemetry-type"></a>Hinzufügen eines Telemetriedatentyps
 Der nächste Schritt besteht im Ersetzen der vom simulierten Node.js-Gerät generierten Telemetriedaten durch eine neue Menge von Werten:
@@ -236,19 +196,15 @@ Sie wissen nun, wie Sie dynamische Telemetriedaten verwenden. Weitere Informatio
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
-[image1]: media/iot-suite-dynamic-telemetry/image1.png
-[image2]: media/iot-suite-dynamic-telemetry/image2.png
 [image3]: media/iot-suite-dynamic-telemetry/image3.png
 [image4]: media/iot-suite-dynamic-telemetry/image4.png
 [image5]: media/iot-suite-dynamic-telemetry/image5.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-node]: http://nodejs.org
-[node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
-[lnk-github-repo]: https://github.com/Azure/azure-iot-sdks
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

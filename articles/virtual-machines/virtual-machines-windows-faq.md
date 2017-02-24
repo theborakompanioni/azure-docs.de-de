@@ -1,5 +1,5 @@
 ---
-title: "Häufig gestellte Fragen zu virtuellen Windows-Computern | Microsoft Docs"
+title: "Häufig gestellte Fragen zu virtuellen Windows-Computern in Azure | Microsoft-Dokumentation"
 description: "Hier finden Sie Antworten auf die häufigsten Fragen zu virtuellen Windows-Computern, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden."
 services: virtual-machines-windows
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2016
+ms.date: 01/17/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: ee34a7ebd48879448e126c1c9c46c751e477c406
-ms.openlocfilehash: f78c66904a3e07ffde5908167f27882e51e781e7
+ms.sourcegitcommit: cfc58b84ccd671b3a34a399bad11d15c9bc3b713
+ms.openlocfilehash: f338a124537090894773bb6fce1052fc7f590a33
 
 
 ---
@@ -46,12 +46,12 @@ Verwenden Sie den temporären Datenträger nicht zum Speichern von Daten. Dieser
 
 Wenn eine Anwendung den Laufwerkbuchstaben „D:“ benötigt, können Sie die Laufwerkbuchstaben neu zuweisen, damit der temporäre Datenträger einen anderen Buchstaben als „D:“ verwendet. Anweisungen finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
+
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>Wie kann ich den Laufwerkbuchstaben des temporären Datenträgers ändern?
 Sie können den Laufwerkbuchstaben ändern, indem Sie die Auslagerungsdatei verschieben und die Laufwerkbuchstaben neu zuweisen. Sie müssen dabei jedoch sicherstellen, dass Sie die Schritte in einer bestimmten Reihenfolge ausführen. Anweisungen finden Sie unter [Ändern des Datenträgerbuchstabens des temporären Windows-Datenträgers](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Kann ich einen vorhandenen virtuellen Computer zu einer Verfügbarkeitsgruppe hinzufügen?
 Nein. Wenn der virtuelle Computer einer Verfügbarkeitsgruppe angehören soll, müssen Sie ihn innerhalb der Gruppe erstellen. Derzeit ist es nicht möglich, einen virtuellen Computer einer Verfügbarkeitsgruppe hinzuzufügen, nachdem er erstellt wurde.
-
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>Kann ich einen virtuellen Computer in Azure hochladen?
 Ja. Anweisungen dazu finden Sie unter [Hochladen eines Windows-VM-Images in Microsoft Azure ](virtual-machines-windows-upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -62,11 +62,11 @@ Ja. Anweisungen finden Sie unter [So erweitern Sie das Betriebssystemlaufwerk ei
 Ja. Anweisungen hierzu finden Sie unter [Create a copy of a specialized Windows VM running in Azure](virtual-machines-windows-vhd-copy.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Erstellen einer Kopie eines spezialisierten virtuellen Windows-Computers in Azure).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Warum werden die Regionen „Kanada, Mitte“ und „Kanada, Osten“ nicht in Azure Resource Manager angezeigt?
+
 Die beiden neuen Regionen „Kanada, Mitte“ und „Kanada, Osten“ werden nicht automatisch für das Erstellen von virtuellen Computern im Rahmen von vorhandenen Azure-Abonnements registriert. Diese Registrierung erfolgt automatisch, wenn ein virtueller Computer mit Azure Resource Manager über das Azure-Portal für eine andere Region bereitgestellt wird. Nach der Bereitstellung eines virtuellen Computers in einer anderen Azure-Region sollten die neuen Regionen für nachfolgende virtuelle Computer verfügbar sein.
 
 ## <a name="does-azure-support-linux-vms"></a>Unterstützt Azure virtuelle Linux-Computer?
 Ja. Unter [Erstellen eines virtuellen Linux-Computers in Azure mithilfe des Portals](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)finden Sie Informationen, wie Sie schnell einen virtuellen Linux-Computer erstellen und ausprobieren können.
-
 ## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Kann ich meinem virtuellen Computer nach der Erstellung eine NIC hinzufügen?
 Nein. Das Hinzufügen einer Netzwerkkarte ist nur zum Zeitpunkt der Erstellung möglich.
 
@@ -74,18 +74,18 @@ Nein. Das Hinzufügen einer Netzwerkkarte ist nur zum Zeitpunkt der Erstellung m
 Ja. Der Computername kann maximal 15 Zeichen lang sein. Weitere Informationen zur Benennung von Ressourcen finden Sie unter [Benennungsrichtlinien für die Infrastruktur](virtual-machines-windows-infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Welche Anforderungen an den Benutzernamen gelten beim Erstellen eines virtuellen Computers?
+
 Benutzernamen können maximal 20 Zeichen lang sein und dürfen nicht mit einem Punkt („.“) enden. 
 
-Die folgenden Benutzernamen sind nicht zulässig:
 
+Die folgenden Benutzernamen sind nicht zulässig:
 <table>
     <tr>
         <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
     </tr>
     <tr>
         <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
-    </tr>
-    <tr>
+    </tr>    <tr>
         <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
@@ -106,7 +106,7 @@ Die folgenden Benutzernamen sind nicht zulässig:
 </table>
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?
-Kennwörter müssen 8 bis 123 Zeichen lang sein und 3 der 4 folgenden Komplexitätsanforderungen erfüllen:
+Kennwörter müssen 12 bis 123 Zeichen lang sein und 3 der 4 folgenden Komplexitätsanforderungen erfüllen:
 
 * Kleinbuchstaben
 * Großbuchstaben
@@ -117,15 +117,23 @@ Die folgenden Kennwörter sind nicht zulässig:
 
 <table>
     <tr>
-        <td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+        <td>abc@123 </td>
+        <td>P@$$w0rd </td>
+        <td>P@ssw0rd </td>
+        <td>P@ssword123 </td>
+        <td>Pa$$word </td>
     </tr>
     <tr>
-        <td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+        <td>pass@word1 </td>
+        <td>Password! </td>
+        <td>Password1 </td>
+        <td>Password22 </td>
+        <td>iloveyou! </td>
     </tr>
 </table>
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

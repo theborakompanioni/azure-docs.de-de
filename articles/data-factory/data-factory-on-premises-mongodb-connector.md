@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2017
+ms.date: 02/09/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: 6ec8ac288a4daf6fddd6d135655e62fad7ae17c2
-ms.openlocfilehash: 2a590795178d819d9df1b010dc68809492d6bdbc
+ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
+ms.openlocfilehash: 2de70faa090fb3da25fec8f8946e52fcae2677d3
 
 
 ---
@@ -33,7 +33,7 @@ Der Data Factory-Dienst unterstützt das Herstellen einer Verbindung mit lokalen
 Data Factory unterstützt derzeit nur das Verschieben von Daten aus MongoDB in andere Datenspeicher und nicht das Verschieben aus anderen Datenspeichern in MongoDB.
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
-Dieser MongoDB-Connector unterstützt MongoDB Version 2.4 und höher.
+Dieser MongoDB-Connector unterstützt MongoDB, Version 2.4, 2.6, 3.0 und 3.2.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Datenbank herstellen kann, müssen die folgenden Komponenten installiert werden:
@@ -358,6 +358,6 @@ Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-f
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/08/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 2abfeebeac222f4371b0945e1aeb6fcf8e51595d
-ms.openlocfilehash: 826e359ebeaf9af4df3c3b1559549a57e8228f72
+ms.sourcegitcommit: c4330dd4b32119c1950f402c5c589d403960c80f
+ms.openlocfilehash: 0e5f420833276d23565ae0aa83f79bbbe47faf67
 
 
 ---
@@ -44,7 +44,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 3. Markieren Sie im NuGet-Paket-Manager die Option **Vorabversion einbeziehen**, und suchen Sie nach **Microsoft.Azure.Management.ResourceManager**. Klicken Sie auf **Installieren**, dann unter **Änderungen überprüfen** auf **OK**. Klicken Sie anschließend auf **Ich akzeptiere**, um die Lizenzen zu akzeptieren.
 4. Suchen Sie im NuGet-Paket-Manager nach **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Klicken Sie auf **Installieren**, dann unter **Änderungen überprüfen** auf **OK**. Klicken Sie anschließend auf **Ich akzeptiere**, um die Lizenz zu akzeptieren.
-5. Ersetzen Sie in „Program.cs“ die vorhandenen **using** -Anweisungen durch folgenden Text:
+5. Ersetzen Sie in „Program.cs“ die vorhandenen **using**-Anweisungen durch folgenden Code:
    
     ```
     using System;
@@ -84,13 +84,13 @@ Verwenden Sie die [IoT-Ressourcenanbieter-REST-API][lnk-rest-api], um einen IoT-
    
     }
     ```
-2. Fügen Sie den folgenden Code der Methode **CreateIoTHub** hinzu, um ein **HttpClient**-Objekt mit dem Authentifizierungstoken in den Headern zu erstellen:
+2. Fügen Sie den folgenden Code in die Methode **CreateIoTHub** ein. Dieser Code erstellt ein **HttpClient**-Objekt mit dem Authentifizierungstoken in den Headern:
    
     ```
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
-3. Fügen Sie den folgenden Code der **CreateIoTHub**-Methode hinzu, um den zu erstellenden IoT-Hub zu beschreiben und eine JSON-Darstellung zu erzeugen. Die aktuelle Liste der Standorte, die IoT Hub unterstützen, finden Sie unter [Azure-Status][lnk-status].
+3. Fügen Sie den folgenden Code in die Methode **CreateIoTHub** ein. Dieser Code beschreibt den zu erstellenden IoT Hub und generiert eine JSON-Darstellung. Die aktuelle Liste der Standorte, die IoT Hub unterstützen, finden Sie unter [Azure-Status][lnk-status].
    
     ```
     var description = new
@@ -107,7 +107,7 @@ Verwenden Sie die [IoT-Ressourcenanbieter-REST-API][lnk-rest-api], um einen IoT-
    
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
-4. Fügen Sie den folgenden Code der Methode **CreateIoTHub** hinzu, um die REST-Anforderung an Azure zu übermitteln, die Antwort zu überprüfen und die URL abzurufen, die Sie zum Überwachen des Status der Bereitstellungsaufgabe verwenden können:
+4. Fügen Sie den folgenden Code in die Methode **CreateIoTHub** ein. Dieser Code übermittelt die REST-Anforderung an Azure, überprüft die Antwort und ruft die URL ab, die Sie zum Überwachen des Status der Bereitstellungsaufgabe verwenden können:
    
     ```
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -122,7 +122,7 @@ Verwenden Sie die [IoT-Ressourcenanbieter-REST-API][lnk-rest-api], um einen IoT-
    
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
-5. Fügen Sie den folgenden Code am Ende der Methode **CreateIoTHub** hinzu, um die im vorherigen Schritt abgerufene Adresse **asyncStatusUri** zu verwenden, um zu warten, bis die Bereitstellung abgeschlossen ist:
+5. Fügen Sie den folgenden Code am Ende der **CreateIoTHub**-Methode hinzu. Dieser Code verwendet die **asyncStatusUri**-Adresse, die im vorherigen Schritt zum Warten auf den Abschluss der Bereitstellung abgerufen wurde:
    
     ```
     string body;
@@ -133,7 +133,7 @@ Verwenden Sie die [IoT-Ressourcenanbieter-REST-API][lnk-rest-api], um einen IoT-
       body = deploymentstatus.Content.ReadAsStringAsync().Result;
     } while (body == "{\"status\":\"Running\"}");
     ```
-6. Fügen Sie den folgenden Code am Ende der Methode **CreateIoTHub** hinzu, um die Schlüssel des IoT Hubs abzurufen, den Sie erstellt haben, und sie auf der Konsole auszugeben:
+6. Fügen Sie den folgenden Code am Ende der **CreateIoTHub**-Methode hinzu. Dieser Code ruft die Schlüssel des IoT Hub ab, den Sie erstellt haben, und gibt sie an der Konsole aus:
    
     ```
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -166,7 +166,7 @@ Nachdem Sie nun einen IoT-Hub mit der Ressourcenanbieter-REST-API bereitgestellt
 * Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API][lnk-rest-api].
 * Weitere Informationen zu den Funktionen des Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager][lnk-azure-rm-overview].
 
-Weitere Informationen zum Entwickeln für IoT Hub finden Sie unter:
+Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 
 * [Einführung in das C SDK][lnk-c-sdk]
 * [Azure IoT SDKs][lnk-sdks]
@@ -190,6 +190,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

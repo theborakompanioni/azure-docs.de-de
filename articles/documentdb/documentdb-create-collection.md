@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/08/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ab863266e1462f970b7906f68be2bcf5edb0dfc3
-ms.openlocfilehash: ac64bb0de03053702a4663c9356b3f9ce332c7de
+ms.sourcegitcommit: a87b2811175193377142e391597011f48f169f11
+ms.openlocfilehash: 4c16c843ba43a9e38d73fc1fd44d06f6f72de60c
 
 
 ---
@@ -40,7 +40,7 @@ Sie wissen nicht, was eine Sammlung ist? Dann lesen Sie den Abschnitt [Was ist e
 
     Legen Sie die Speicherkapazität auf **10 GB** fest, wenn Sie eine [einzelne Partitionssammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) mit einem Durchsatz von 400 bis 10.000 Anforderungseinheiten pro Sekunde (Request Unit, RU/s) verwenden möchten. Eine Anforderungseinheit (Request Unit, RU) entspricht dem Durchsatz des Lesevorgangs eines Dokuments mit 1 KB. Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](documentdb-request-units.md).
 
-    Legen Sie die Speicherkapazität auf **250 GB** fest, wenn Sie eine [partitionierte Sammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) verwenden möchten, die skaliert werden kann, um eine unbegrenzte Menge an Speicher über mehrere Partitionen verteilt zu verarbeiten. Es werden Durchsatzebenen ab 10.100 Anforderungseinheiten pro Sekunde unterstützt.
+    Legen Sie die Speicherkapazität auf **250 GB** fest, wenn Sie eine [partitionierte Sammlung](documentdb-partition-data.md#single-partition-and-partitioned-collections) verwenden möchten, die skaliert werden kann, um eine unbegrenzte Menge an Speicher über mehrere Partitionen verteilt zu verarbeiten. Es werden Durchsatzebenen ab 2.500 Anforderungseinheiten pro Sekunde unterstützt.
 
     Legen Sie die Speicherkapazität auf **Benutzerdefiniert** fest, wenn Sie einen anderen Betrag als 10 GB oder 250 GB bereitstellen möchten. DocumentDB ist praktisch unbegrenzt skalierbar. Sie sollten daher die angeforderte Speichergröße und den Durchsatzwert in die Supportanfrage einschließen.
 
@@ -83,6 +83,6 @@ Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentd
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

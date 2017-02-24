@@ -1,9 +1,9 @@
 ---
-title: Migrieren zu Azure Storage Premium | Microsoft Docs
-description: "Migrieren Sie die vorhandenen virtuellen Computer zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
+title: Migrieren von VMs zu Azure Storage Premium | Microsoft-Dokumentation
+description: "Migrieren Sie Ihre vorhandenen virtuellen Computer zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
 services: storage
 documentationcenter: na
-author: aungoo-msft
+author: yuemlu
 manager: tadb
 editor: tysonn
 ms.assetid: 272250b3-fd4e-41d2-8e34-fd8cc341ec87
@@ -12,16 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 7611f7940b076ba18b3966b0bc9a63fe53b55592
-ms.openlocfilehash: 0ebec265fe2ac2d53dbe3afcb660dddbe7b050ea
+ms.sourcegitcommit: 4582049fa1d369ea63395514336d26a524dbfdbe
+ms.openlocfilehash: b3f1b2b4e257fea0dd9324b02ea9aad3e1a645e4
 
 
 ---
-# <a name="migrating-to-azure-premium-storage"></a>Migrieren zu Azure Premium-Speicher
-## <a name="overview"></a>Übersicht
+# <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
+
+> [!NOTE]
+> In diesem Artikel wird erläutert, wie eine VM mit nicht verwalteten Standarddatenträgern zu einer VM mit nicht verwalteten Premium-Datenträgern migriert wird. Wir empfehlen, Azure Managed Disks für neue virtuelle Computer zu verwenden und bislang nicht verwaltete Datenträger in verwaltete Datenträger umzuwandeln. Das Feature „Managed Disks“ (Verwaltete Datenträger) nimmt Ihnen nämlich die Verwaltung der zugrunde liegenden Speicherkonten ab. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](storage-managed-disks-overview.md).
+>
+
 Azure Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Sie können die VM-Datenträger Ihrer Anwendung zu Azure Storage Premium migrieren, um von der Geschwindigkeit und Leistung dieser Laufwerke zu profitieren.
 
 Der Zweck dieser Anleitung ist es, neue Benutzer von Azure Storage Premium besser auf einen reibungslosen Übergang vom aktuellen System hin zu Storage Premium vorzubereiten. In dieser Anleitung werden drei der Hauptkomponenten bei diesem Vorgang behandelt:
@@ -34,7 +38,6 @@ Sie können virtuelle Computer von anderen Plattformen zu Azure Storage Premium 
 
 > [!NOTE]
 > Eine Funktionsübersicht und die Preise von Azure Storage Premium finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads virtueller Azure-Computer](storage-premium-storage.md). Es wird empfohlen, alle Datenträger von virtuellen Computer, die eine hohe IOPS-Leistung erfordern, zu Azure Storage Premium zu migrieren, um die beste Leistung für Ihre Anwendung zu erzielen. Wenn Ihr Datenträger keine hohe IOPS-Leistung erfordert, können Sie die Kosten beschränken, indem Sie sie im Standard-Speicher belassen. Dieser Speicher speichert Daten auf Datenträgern virtueller Computer auf Festplatten (Hard Disk Drives, HDDs) anstelle von SSDs.
->
 >
 
 Für den Abschluss des vollständigen Migrationsprozesses sind möglicherweise zusätzliche Aktionen vor und nach den in dieser Anleitung angegebenen Schritten erforderlich. Beispiele sind das Konfigurieren von virtuellen Netzwerken oder Endpunkten oder Ändern von Code innerhalb der Anwendung selbst, wofür ggf. in Ihrer Anwendung Ausfallzeiten anfallen. Diese Aktionen sind für jede Anwendung eindeutig. Sie sollten sie zusammen mit den Schritten in dieser Anleitung ausführen, um den kompletten Wechsel zu Storage Premium so reibungslos wie möglich zu gestalten.
@@ -773,6 +776,6 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Az
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -13,25 +13,45 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2016
+ms.date: 02/14/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 602d45c53f2e158a686e12325655b15666ef75ac
+ms.sourcegitcommit: acce9907fca6e411d8028e87eff7b50ffa04d575
+ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
 
 
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>Übermitteln von Hadoop-Aufträgen in HDInsight
-Siehe: 
 
-* [Verwenden von Hive in HDInsight](hdinsight-use-hive.md)
-* [Verwenden von Pig in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von Sqoop in HDInsight](hdinsight-use-sqoop.md)
-* [Verwenden von Oozie in HDInsight](hdinsight-use-oozie.md)
+Sie können die Hadoop-Aufträge mit .NET SDK, Curl und Azure PowerShell senden:
+
+- Verwenden von .NET SDK
+
+  - [Erstellen von .NET-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
+  - [Ausführen von Hive-Abfragen per HDInsight .NET-SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md)
+  - [Ausführen von Pig-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+  - [Ausführen von Sqoop-Aufträgen mithilfe des .NET SDK für Hadoop in HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
+  - [Ausführen von MapReduce-Jobs mit HDInsight .NET SDK](hdinsight-hadoop-use-mapreduce-dotnet-sdk.md)
+
+- CURL
+
+  - [Ausführen von Hive-Abfragen mit Hadoop in HDInsight mit Curl](hdinsight-hadoop-use-hive-curl.md)
+  - [Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hdinsight-hadoop-use-pig-curl.md)
+  - [Ausführen von Sqoop-Aufträgen mit Hadoop in HDInsight mit Curl](hdinsight-hadoop-use-sqoop-curl.md)
+  - [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hdinsight-hadoop-use-mapreduce-curl.md)
+
+- PowerShell
+
+  - [Ausführen von Hive-Abfragen mit PowerShell](hdinsight-hadoop-use-hive-powershell.md)
+  - [Ausführen von Pig-Aufträgen mit PowerShell](hdinsight-hadoop-use-pig-powershell.md)
+  - [Verwenden von Sqoop mit Hadoop in HDInsight](hdinsight-hadoop-use-sqoop-powershell.md)
+  - [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von PowerShell](hdinsight-hadoop-use-mapreduce-powershell.md)
+
+## <a name="see-also"></a>Weitere Informationen
+
+- [Azure HDInsight-Dokumentation](https://docs.microsoft.com/azure/hdinsight/)
 
 
-
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

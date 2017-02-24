@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/08/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 822bace005a6244a47c9484487dab85b1aec9d9a
-ms.openlocfilehash: e20b1ca582c56da7b4fb1e2df3be90bd1c29a8b6
+ms.sourcegitcommit: d3d59e19ff654a953be43706dce926c4450c6179
+ms.openlocfilehash: 6493230295dbfc939df3daf8504a7d8662083f51
 
 
 ---
@@ -36,29 +36,21 @@ Suchen Sie in den Azure-Foren zu [MSDN und Stack Overflow](https://azure.microso
 Im folgenden Abschnitt werden häufige Fehler aufgeführt, die beim Versuch, Azure-Speicherkonten, -Container oder -VHDs zu löschen, auftreten können:
 
 ### <a name="scenario-1-unable-to-delete-a-storage-account"></a>Szenario 1: Speicherkonto kann nicht gelöscht werden
-Wenn Sie im [Azure-Portal](https://portal.azure.com/) oder [klassischen Azure-Portal](https://manage.windowsazure.com/) zum Speicherkonto navigieren und **Löschen** auswählen, wird möglicherweise die folgende Fehlermeldung angezeigt:
+Wenn Sie im [Azure-Portal](https://portal.azure.com/) zum klassischen Speicherkonto navigieren und **löschen** auswählen, wird Ihnen möglicherweise eine Liste mit Objekten angezeigt, die das Löschen des Speicherkontos verhindern:
 
-*Speicherkonto "StorageAccountName" enthält VM-Images. Stellen Sie sicher, dass diese VM-Images entfernt werden, bevor dieses Speicherkonto gelöscht wird.*
+  ![Abbildung des Fehlers beim Löschen des Speicherkontos](./media/storage-cannot-delete-storage-account-container-vhd/newerror.png)
 
-Auch der folgende Fehler kann angezeigt werden:
+Wenn Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) zum Speicherkonto navigieren und **Löschen** auswählen, wird möglicherweise eine der folgenden Fehlermeldungen angezeigt:
 
-**Im Azure-Portal**:
+- *Speicherkonto "StorageAccountName" enthält VM-Images. Stellen Sie sicher, dass diese VM-Images entfernt werden, bevor dieses Speicherkonto gelöscht wird.*
 
-*Das Speicherkonto <VM-Speicherkontoname> konnte nicht gelöscht werden. Fehler beim Löschen des Speicherkontos <VM-Speicherkontoname>: „Speicherkonto <VM-Speicherkontoname> hat einige aktive Images und/oder Datenträger. Entfernen Sie diese Bilder und/oder Datenträger, bevor Sie dieses Speicherkonto löschen.“*
+- *Das Speicherkonto <VM-Speicherkontoname> konnte nicht gelöscht werden. Fehler beim Löschen des Speicherkontos <VM-Speicherkontoname>: „Speicherkonto <VM-Speicherkontoname> hat einige aktive Images und/oder Datenträger. Entfernen Sie diese Bilder und/oder Datenträger, bevor Sie dieses Speicherkonto löschen.“*
 
-**Im klassischen Azure-Portal**:
+- *Speicherkonto <VM-Speicherkontoname> hat einige aktive Images und/oder Datenträger, z.B. „xxxxxxxxx- xxxxxxxxx-O-209490240936090599“. Entfernen Sie diese Bilder und/oder Datenträger, bevor Sie dieses Speicherkonto löschen.*
 
-*Speicherkonto <VM-Speicherkontoname> hat einige aktive Images und/oder Datenträger, z.B. „xxxxxxxxx- xxxxxxxxx-O-209490240936090599“. Entfernen Sie diese Bilder und/oder Datenträger, bevor Sie dieses Speicherkonto löschen.*
+- *Das Speicherkonto <VM-Speicherkontoname> verfügt über 1 Container, der/die über ein aktives Image und/oder Datenträgerartefakte verfügt/verfügen. Stellen Sie sicher, dass diese Artefakte aus dem Image-Repository entfernt werden, bevor Sie dieses Speicherkonto löschen.*
 
-oder
-
-**Im Azure-Portal**:
-
-*Das Speicherkonto <VM-Speicherkontoname> verfügt über 1 Container, der/die über ein aktives Image und/oder Datenträgerartefakte verfügt/verfügen. Stellen Sie sicher, dass diese Artefakte aus dem Image-Repository entfernt werden, bevor Sie dieses Speicherkonto löschen.*
-
-**Im klassischen Azure-Portal**:
-
-* Übermitteln fehlgeschlagen – das Speicherkonto <VM-Speicherkontoname> verfügt über 1 Container, der/die über ein aktives Image und/oder Datenträgerartefakte verfügt/verfügen. Stellen Sie sicher, dass diese Artefakte aus dem Image-Repository entfernt werden, bevor Sie dieses Speicherkonto löschen. Wenn Sie versuchen, ein Speicherkonto zu löschen, und dem Speicherkonto aktive Datenträger zugeordnet sind, werden Sie mit einer Meldung darüber informiert, dass aktive Datenträger vorhanden sind, die gelöscht werden müssen.*
+- * Übermitteln fehlgeschlagen – das Speicherkonto <VM-Speicherkontoname> verfügt über 1 Container, der/die über ein aktives Image und/oder Datenträgerartefakte verfügt/verfügen. Stellen Sie sicher, dass diese Artefakte aus dem Image-Repository entfernt werden, bevor Sie dieses Speicherkonto löschen. Wenn Sie versuchen, ein Speicherkonto zu löschen, und dem Speicherkonto aktive Datenträger zugeordnet sind, werden Sie mit einer Meldung darüber informiert, dass aktive Datenträger vorhanden sind, die gelöscht werden müssen.*
 
 ### <a name="scenario-2-unable-to-delete-a-container"></a>Szenario 2: Container kann nicht gelöscht werden
 Wenn Sie versuchen, den Speichercontainer zu löschen, wird u. U die folgende Fehlermeldung angezeigt:
@@ -125,7 +117,7 @@ Um die häufigsten Probleme zu beheben, verwenden Sie die folgende Methode:
     Versuchen Sie danach erneut, das Speicherkonto, den Container oder die VHD zu löschen.
 
 > [!WARNING]
-> Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Es ist nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Inhalte abzurufen, die das Konto vor dem Löschen enthielt. Dies gilt auch für alle Ressourcen im Konto – gelöschte VHDs, Blobs, Tabellen, Warteschlangen oder Dateien können nicht wiederhergestellt werden. Stellen Sie sicher, dass die Ressource nicht verwendet wird.
+> Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Wenn Sie eine VHD, ein Blob, eine Tabelle, Warteschlange oder Datei löschen, ist der Löschvorgang nicht umkehrbar. Stellen Sie sicher, dass die Ressource nicht verwendet wird.
 >
 >
 
@@ -148,6 +140,6 @@ Der Status „Beendet (Zuordnung aufgehoben)“ gibt Computerressourcen wie CPU,
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

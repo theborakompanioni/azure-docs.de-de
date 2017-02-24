@@ -15,8 +15,8 @@ ms.date: 01/17/2017
 ms.author: spelluru
 published: true
 translationtype: Human Translation
-ms.sourcegitcommit: 65c036240618f3e426707d57eeb6b194410a9084
-ms.openlocfilehash: 0110a2d21e7e83d2a185962eb120c560cc0ac0b6
+ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
+ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
@@ -27,15 +27,36 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 *  [Gateway zur Datenverwaltung](data-factory-data-management-gateway.md)
 *  [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md) 
 
-## <a name="current-version-2561641"></a>AKTUELLE VERSION (2.5.6164.1)
+
+## <a name="current-version-2762192"></a>AKTUELLE VERSION (2.7.6219.2)
+
+### <a name="whats-new"></a>Neuigkeiten
+- Sie können sich jetzt über den Dienstprinzipal bei Ihrem Azure Data Lake Store authentifizieren. Zuvor wurde nur OAuth unterstützt.
+- Wir haben einen neuen Treiber für das Auslesen von Daten aus Oracle in lokalen Datenspeicher im Gateway in das Paket integriert.
+
+### <a name="enhancements-"></a>Verbesserungen
+- Verbesserte Leistung beim Lesen von Daten aus Oracle-Datenquellen.
+- Behoben: Problem beim Ablauf des OAuth-Tokens der OData-Quelle.
+- Behoben: Problem beim Lesen von Oracle-Dezimalzahl von mehr als 28 Bits.
+
+
+## <a name="earlier-versions"></a>Frühere Versionen
+
+## <a name="2661922"></a>2.6.6192.2
+### <a name="whats-new"></a>Neuigkeiten
+- Kunden können Feedback zur Gatewayregistrierung bereitstellen.
+- Ein neues Komprimierungsformat wird unterstützt: ZIP (verkleinern)
+
+### <a name="enhancements-"></a>Verbesserungen
+- Leistungsverbesserung für Oracle Sink, HDFS-Quelle.
+- Fehlerbehebung für automatische Gatewayaktualisierung, Kapazität für parallele Gatewayverarbeitung.
+
+
+## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>Verbesserungen
 - Verbesserte und stabilere Gatewayregistrierung: Während der Gatewayregistrierung kann nun der Fortschrittsstatus nachverfolgt werden. Die Registrierung wird dadurch benutzerfreundlicher.
 - Optimierter Vorgang zur Gatewaywiederherstellung: Sie können das Gateway auch ohne die Gatewaysicherungsdatei mit diesem Update wiederherstellen. Dazu müssen Sie die Anmeldeinformationen für den verknüpften Dienst im Portal zurücksetzen.
 - Fehlerbehebung
-
-
-
-## <a name="earlier-versions"></a>Frühere Versionen
 
 ## <a name="2461511"></a>2.4.6151.1
 
@@ -216,6 +237,6 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

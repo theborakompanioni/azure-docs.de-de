@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ „Premium“ | Microsoft Docs"
+title: "Konfigurieren eines virtuellen Netzwerks für einen Azure Redis Cache vom Typ „Premium“ | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Redis Cache-Instanzen im Tarif &quot;Premium&quot; erstellen und verwalten."
 services: redis-cache
 documentationcenter: 
@@ -12,18 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/09/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: a3e1472ed737039157a4593404dce371c57906da
+ms.sourcegitcommit: 50d8db29ccce1244387f1fe0e3e42e610575e483
+ms.openlocfilehash: 057affeccd955245ac07fc5e174447562e81b959
 
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ "Premium"
-Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich des neuen Premium-Tarifs.
-
-Der Premium-Tarif für Azure Redis Cache umfasst Clustering, Persistenz und die Unterstützung virtueller Netzwerke (VNet). Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Redis Cache-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden. In diesem Artikel wird erläutert, wie die Unterstützung eines virtuellen Netzwerks für eine Azure Redis Cache-Instanz vom Typ „Premium“ konfiguriert wird.
+Für Azure Redis Cache stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Redis Cache-Instanz mit einem VNet konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNet kann nur über virtuelle Computer und Anwendungen innerhalb des VNet zugegriffen werden. In diesem Artikel wird erläutert, wie die Unterstützung eines virtuellen Netzwerks für eine Azure Redis Cache-Instanz vom Typ „Premium“ konfiguriert wird.
 
 > [!NOTE]
 > Azure Redis Cache unterstützt sowohl klassische als auch ARM-VNets.
@@ -60,7 +58,7 @@ Wählen Sie in der Dropdownliste **Subnetz** das gewünschte Subnetz aus, und ge
 > 
 > 
 
-Nachdem der Cache erstellt wurde, können Sie die Konfiguration für das virtuelle Netzwerk anzeigen, indem Sie auf dem Blatt **Einstellungen** auf **Virtuelles Netzwerk** klicken.
+Nachdem der Cache erstellt wurde, können Sie die Konfiguration für das virtuelle Netzwerk anzeigen, indem Sie im **Ressourcenmenü** auf **Virtuelles Netzwerk** klicken.
 
 ![Virtuelles Netzwerk][redis-cache-vnet-info]
 
@@ -168,6 +166,6 @@ Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie i
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

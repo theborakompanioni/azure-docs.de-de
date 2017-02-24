@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 10/28/2016
 ms.author: rachelap
 translationtype: Human Translation
-ms.sourcegitcommit: 148ab898194fc1ab8a10d49dbb2f125f68cc2b1e
-ms.openlocfilehash: c30a69350136273bdaf010cb033dcbb7a26cd39e
+ms.sourcegitcommit: 3c18b1929a78137ff3b53b8e084dc35e0c8dcaac
+ms.openlocfilehash: 478db825a269beeaa9fbb0afef3488fc7d49d024
 
 
 ---
@@ -31,7 +31,7 @@ Sie können Azure Funktionen-App-Einstellungen verwalten, indem Sie auf den Link
 
 ## <a name="develop"></a>Entwickeln
 ### <a name="app-service-editor"></a>App Service-Editor
-Der App Service-Editor ist ein leistungsstarker Editor im Portal, mit dem Sie Json-Konfigurationsdateien und Codedateien gleichermaßen bearbeiten können. Bei Auswahl dieser Option wird eine separate Browserregisterkarte mit einem einfachen Editor gestartet. Sie können damit in GitHub arbeiten, Code ausführen und debuggen und Einstellungen von Funktionen-Apps ändern.
+Der App Service-Editor ist ein leistungsstarker Editor im Portal, mit dem Sie JSON-Konfigurationsdateien und Codedateien gleichermaßen bearbeiten können. Bei Auswahl dieser Option wird eine separate Browserregisterkarte mit einem einfachen Editor gestartet. Sie können damit in GitHub arbeiten, Code ausführen und debuggen und Einstellungen von Funktionen-Apps ändern.
 
 ![Der App Service-Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -137,6 +137,6 @@ Mit Azure Functions können Sie die Plattformnutzung vorhersagbar einschränken,
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

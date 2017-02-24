@@ -16,21 +16,18 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: a877c17a503e58c49ae781aed61ed120d069c737
-ms.openlocfilehash: 0f2a77892b6ed6c2b1f78e5c6ccefafdca3b5ed5
+ms.sourcegitcommit: edfbc0d94d9d5b33a25788772a98173187e394b8
+ms.openlocfilehash: 031a17d179cee8d6cceb9ed3aefd993add1958b8
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-powershell"></a>Kopieren einer Azure SQL-Datenbank mithilfe von PowerShell
-> [!div class="op_single_selector"]
-> * [Übersicht](sql-database-copy.md)
-> * [Azure-Portal](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
 Dieser Artikel zeigt, wie Sie eine SQL-Datenbank mit PowerShell auf den gleichen oder einen anderen Server kopieren und wie Sie eine Datenbank in einen [Pool für elastische Datenbanken](sql-database-elastic-pool.md) kopieren. Zum Kopieren der Datenbank wird das Cmdlet [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx) verwendet. 
+
+> [!NOTE]
+> Sie können eine SQL-Datenbank auch über das [Azure-Portal](sql-database-copy-portal.md) oder [Transact-SQL](sql-database-copy-transact-sql.md) kopieren.
+>
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
@@ -55,7 +52,7 @@ Um die Kopie auf einem anderen Server zu erstellen, geben den `-CopyServerName` 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -CopyServerName "server2" -CopyDatabaseName "database1_copy"
 
 
-## <a name="copy-a-sql-database-into-an-elastic-database-pool"></a>Kopieren einer SQL-Datenbank in einen Pool für elastische Datenbanken
+## <a name="copy-a-sql-database-into-an-elastic-pool"></a>Kopieren einer SQL-Datenbank in einen Pool für elastische Datenbanken
 Um eine Kopie einer SQL-Datenbank in einem Pool zu erstellen, legen den `-ElasticPoolName` -Parameter auf einen vorhandenen Pool fest.
 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegoup1" -ServerName "server1" -DatabaseName "database1" -CopyResourceGroupName "poolResourceGroup" -CopyServerName "poolServer1" -CopyDatabaseName "database1_copy" -ElasticPoolName "poolName"
@@ -94,7 +91,7 @@ Das folgende Skript setzt voraus, dass alle Ressourcengruppen, Server und der Po
     # -------------------------------------
     New-AzureRmSqlDatabaseCopy -ResourceGroupName $sourceDbResourceGroupName -ServerName $sourceDbServerName -DatabaseName $sourceDbName -CopyResourceGroupName $copyDbResourceGroupName -CopyServerName $copyDbServerName -CopyDatabaseName $copyDbName
 
-    # Copy a database into an elastic database pool
+    # Copy a database into an elastic pool
     # ---------------------------------------------
     $poolName = "pool1"
 
@@ -105,10 +102,10 @@ Das folgende Skript setzt voraus, dass alle Ressourcengruppen, Server und der Po
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Einen Überblick über das Kopieren einer Azure SQL-Datenbank finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md) .
-* Informationen zum Kopieren einer Datenbank mithilfe des Azure-Portals finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals](sql-database-copy-portal.md) .
-* Informationen zum Kopieren einer Datenbank mithilfe von Transact-SQL finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von T-SQL](sql-database-copy-transact-sql.md) .
-* Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md) .
+* Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+* Informationen zum Exportieren einer Datenbank in eine BACPAC-Datei über PowerShell finden Sie unter [Exportieren der Datenbank in eine BACPAC-Datei über PowerShell](sql-database-export-powershell.md).
+* [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
+* [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt603644\(v=azure.300\).aspx)
@@ -123,6 +120,6 @@ Das folgende Skript setzt voraus, dass alle Ressourcengruppen, Server und der Po
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

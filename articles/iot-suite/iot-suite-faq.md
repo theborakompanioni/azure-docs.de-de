@@ -4,7 +4,7 @@ description: "Häufig gestellte Fragen zu IoT Suite"
 services: 
 suite: iot-suite
 documentationcenter: 
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
@@ -14,10 +14,10 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-ms.author: araguila
+ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 69d4439a20fec8caaabdb43444cabd81f7d1b7c8
-ms.openlocfilehash: 6245c2a0f73ff63e3bfb5fe16112f89ed0efdf30
+ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
+ms.openlocfilehash: ff2e371f0c75dca36cceda36f477e30588dea8e4
 
 
 ---
@@ -27,7 +27,7 @@ ms.openlocfilehash: 6245c2a0f73ff63e3bfb5fe16112f89ed0efdf30
 * Wenn Sie die Ressourcengruppe im [Azure-Portal][lnk-azure-portal] löschen, werden nur die Ressourcen in dieser Ressourcengruppe gelöscht. Sie müssen auch die zugeordnete Azure Active Directory-Anwendung löschen, die der vorkonfigurierten Lösung im [klassischen Azure-Portal][lnk-classic-portal] zugeordnet ist.
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Wie viele IoT Hub-Instanzen kann ich in einem Abonnement bereitstellen?
-Zehn. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um diesen Grenzwert zu erhöhen. Standardmäßig können Sie aber nur zehn IoT Hubs pro Abonnement bereitstellen, wie unter [Einschränkungen für Azure-Abonnements][link-azuresublimits] beschrieben. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie somit in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen. 
+Sie können 10 IoT Hubs pro Abonnement bereitstellen. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um diesen Grenzwert zu erhöhen. Standardmäßig können Sie aber nur zehn IoT Hubs pro Abonnement bereitstellen, wie unter [Einschränkungen für Azure-Abonnements][link-azuresublimits] beschrieben. Da jede vorkonfigurierte Lösung einen neuen IoT Hub bereitstellt, können Sie somit in einem Abonnement nur bis zu zehn vorkonfigurierte Lösungen bereitstellen. 
 
 ### <a name="how-many-documentdb-instances-can-i-provision-in-a-subscription"></a>Wie viele Instanzen von DocumentDB kann ich in einem Abonnement bereitstellen?
 50. Sie können ein [Azure-Supportticket][link-azuresupportticket] erstellen, um dieses Limit zu erhöhen. Standardmäßig können Sie jedoch nur 50 DocumentDB-Instanzen pro Abonnement bereitstellen. 
@@ -80,6 +80,6 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

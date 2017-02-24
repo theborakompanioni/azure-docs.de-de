@@ -11,11 +11,11 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2016
+ms.date: 02/03/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 6c644b124ad8c994170152006ff61c11e363e7ab
-ms.openlocfilehash: 951aac469ab7bca90014a8af115448833152bb6a
+ms.sourcegitcommit: f3a8ef4a166a061e1f4e7ce056255e02b810c196
+ms.openlocfilehash: 1f8083e095ee3c207d3d6d9178017e2dc1670fde
 
 
 ---
@@ -35,7 +35,7 @@ Sie können den Zeitbereich der Diagramme oder Raster auf jedem Blatt ändern.
 
 ![Öffnen Sie das Blatt "Übersicht" Ihrer Anwendung im Azure-Portal](./media/app-insights-metrics-explorer/03-range.png)
 
-Klicken Sie auf "Aktualisieren", wenn Sie einige Daten erwarten, die noch nicht angezeigt wurden. Diagramme aktualisieren sich regelmäßig selbst, wobei die Intervalle für größere Zeiträume länger sind. Im Freigabemodus kann es eine Weile dauern, bis Daten durch die Analysepipeline in ein Diagramm gelangen.
+Klicken Sie auf "Aktualisieren", wenn Sie einige Daten erwarten, die noch nicht angezeigt wurden. Diagramme aktualisieren sich regelmäßig selbst, wobei die Intervalle für größere Zeiträume länger sind. Es kann eine Weile dauern, bis Daten durch die Analysepipeline in ein Diagramm gelangen.
 
 Zum Vergrößern eines Teils eines Diagramms ziehen Sie die Maus darüber:
 
@@ -115,6 +115,11 @@ Die Standardmethode für die einzelnen Metriken wird bei der Erstellung eines ne
 
 ![Heben Sie die Auswahl aller Metriken auf, um die Standardwerte anzuzeigen](./media/app-insights-metrics-explorer/06-total.png)
 
+## <a name="pin-y-axis"></a>Anheften der Y-Achse 
+Standardmäßig zeigt ein Diagramm Y-Werte von Null bis zu den Maximalwerten des Datenbereichs an, um das Quantum der Werte optisch aufzubereiten. In manchen Fällen kann es jedoch hilfreich sein, anstelle des Quantums geringfügige Wertänderungen in einer optischen Darstellung zu untersuchen. Für solche Anpassungen können Sie das Bereichsbearbeitungsfeature für die Y-Achse verwenden, um den minimalen oder maximalen Wert der Y-Achse am gewünschten Ort anzuheften.
+Klicken Sie auf das Kontrollkästchen „Erweiterte Einstellungen“ , um die Bereichseinstellungen für die Y-Achse anzuzeigen.
+
+![Klicken Sie auf „Erweiterte Einstellungen“, wählen Sie „Benutzerdefinierter Bereich“ aus, und geben Sie den minimalen/maximalen Wert an.](./media/app-insights-metrics-explorer/y-axis-range.png)
 
 ## <a name="filter-your-data"></a>Filtern der Daten
 So zeigen Sie nur die Metriken für eine ausgewählte Gruppe von Eigenschaftswerten an:
@@ -158,23 +163,9 @@ Wenn Sie ein Blatt bearbeiten, aber dann lieber wieder mit den ursprünglich ges
 
 ![In den Schaltflächen am oberen Rand des Metrik-Explorers](./media/app-insights-metrics-explorer/17-reset.png)
 
-<a name="live-metrics-stream"></a>
+## <a name="live-metrics-stream"></a>Live Metrics Stream
 
-## <a name="live-metrics-stream-instant-metrics-for-close-monitoring"></a>Live Metrics Stream: sofortige Metriken für eine genaue Überwachung
-Live Metrics Stream zeigt Ihnen Ihre Anwendungsmetriken für den aktuellen Zeitpunkt an – nahezu in Echtzeit, mit einer Latenz von 1 Sekunde. Dies ist äußerst nützlich, wenn Sie einen neuen Build freigeben und sicherstellen möchten, dass alles wie erwartet funktioniert, oder wenn Sie einen Incident in Echtzeit untersuchen möchten.
-
-![Klicken Sie auf dem Blatt „Übersicht“ auf „Livedatenstrom“.](./media/app-insights-metrics-explorer/live-stream.png)
-
-Im Gegensatz zum Metrik-Explorer zeigt Live Metrics Stream einen festen Satz von Metriken an. Die Daten werden nur so lange beibehalten, wie sie im Diagramm angezeigt werden. Anschließend werden sie verworfen.
-
-### <a name="live-failures"></a>Live-Fehler
-
-Wenn Fehler oder Ausnahmen protokolliert werden, wählt Live Stream eine Auswahl daraus aus. Klicken Sie auf **Anhalten**, um ein bestimmtes Beispiel anzuzeigen, und wählen Sie ein Ereignis, um dessen Details anzuzeigen.
-
-![Auswahl der Live-Fehler](./media/app-insights-metrics-explorer/live-stream-failures.png)
-
-
-Live Metrics Stream steht mit der neuesten Webversion von [Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zur Verfügung.
+Öffnen Sie für eine unmittelbarere Ansicht Ihrer Telemetriedaten [Live Stream](app-insights-live-stream.md). Die meisten Metriken werden aufgrund der Aggregation erst nach einigen Minuten angezeigt. Im Gegensatz dazu sind Livemetriken für geringe Latenz optimiert. 
 
 ## <a name="set-alerts"></a>Festlegen von Benachrichtigungen
 Fügen Sie eine Benachrichtigung hinzu, wenn Sie per E-Mail über ungewöhnliche Werte einer beliebigen Metrik informiert werden möchten. Sie können auswählen, ob die E-Mail an die Kontoadministratoren oder an bestimmte E-Mail-Adressen gesendet wird.
@@ -201,7 +192,7 @@ Wenn Sie Daten zur externen Verarbeitung fortlaufend exportieren möchten, sollt
 Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Power BI exportieren](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analyse
-[Analytics](app-insights-analytics.md) bietet eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erzielten Leistung Ihrer App durchführen möchten. Verwenden Sie dagegen den Metrik-Explorer, wenn Sie eine automatische Aktualisierung, Diagramme im Dashboard und Warnungen verwenden möchten.
+[Analytics](app-insights-analytics.md) bietet eine vielseitigere Möglichkeit zum Analysieren Ihrer Telemetriedaten mit einer leistungsfähigen Abfragesprache. Verwenden Sie sie, wenn Sie Ergebnisse von Metriken kombinieren oder berechnen oder eine eingehende Untersuchung der kürzlich erreichten Leistung Ihrer App durchführen möchten. Verwenden Sie dagegen den Metrik-Explorer, wenn Sie eine automatische Aktualisierung, Diagramme im Dashboard und Warnungen verwenden möchten.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 *In meinem Diagramm werden keine Daten angezeigt.*
@@ -224,6 +215,6 @@ Wenn Sie umfangreichere Ansichten der Daten wünschen, können Sie sie [nach Pow
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

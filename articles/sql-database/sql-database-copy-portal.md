@@ -3,34 +3,31 @@ title: Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals | Microsoft
 description: Erstellen der Kopie einer Azure SQL-Datenbank
 services: sql-database
 documentationcenter: 
-author: stevestein
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: daa6f079-13ed-462f-b346-e201aa61681b
 ms.service: sql-database
 ms.custom: migrate and move
 ms.devlang: NA
-ms.date: 09/19/2016
-ms.author: sstein
+ms.date: 02/07/2017
+ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 translationtype: Human Translation
-ms.sourcegitcommit: 867f06c1fae3715ab03ae4a3ff4ec381603e32f7
-ms.openlocfilehash: 57bc3c00a1ea79ac69b62965a77debea91c6002e
+ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
+ms.openlocfilehash: 5da07683a4ca9fe1751debc163a0a5a595b6f82b
 
 
 ---
 # <a name="copy-an-azure-sql-database-using-the-azure-portal"></a>Kopieren einer Azure SQL-Datenbank mithilfe des Azure-Portals
-> [!div class="op_single_selector"]
-> * [Übersicht](sql-database-copy.md)
-> * [Azure-Portal](sql-database-copy-portal.md)
-> * [PowerShell](sql-database-copy-powershell.md)
-> * [T-SQL](sql-database-copy-transact-sql.md)
-> 
-> 
 
-Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank über das [Azure-Portal](https://portal.azure.com) auf den gleichen oder einen anderen Server kopieren.
+Die folgenden Schritte veranschaulichen, wie Sie eine SQL-Datenbank über das [Azure-Portal](https://portal.azure.com) auf den gleichen oder einen anderen Server kopieren. 
+
+> [!NOTE]
+> Sie können eine SQL-Datenbank auch über [PowerShell](sql-database-copy-powershell.md) oder [Transact-SQL](sql-database-copy-transact-sql.md) kopieren.
+>
 
 Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
 
@@ -66,15 +63,8 @@ Zum Kopieren einer SQL-Datenbank benötigen Sie Folgendes:
 Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlossen wurde, finden Sie unter [Auflösen von Anmeldungen](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Einen Überblick über das Kopieren einer Azure SQL-Datenbank finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md) .
-* Informationen zum Kopieren einer Datenbank mithilfe von PowerShell finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von PowerShell](sql-database-copy-powershell.md) .
-* Informationen zum Kopieren einer Datenbank mithilfe von Transact-SQL finden Sie unter [Kopieren einer Azure SQL-Datenbank mithilfe von T-SQL](sql-database-copy-transact-sql.md) .
-* Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md) .
-
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Verwalten von Anmeldungen](sql-database-manage-logins.md)
-* [Herstellen einer Verbindung mit einer Azure SQL-Datenbank mit SQL Server Management Studio und Ausführen einer T-SQL-Beispielabfrage](sql-database-connect-query-ssms.md)
-* [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export.md)
+* Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
+* Informationen zum Exportieren einer Datenbank in eine BACPAC-Datei im Azure-Portal finden Sie unter [Exportieren der Datenbank in eine BACPAC-Datei im Azure-Portal](sql-database-export-portal.md).
 * [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 * [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
 
@@ -87,6 +77,6 @@ Informationen zum Auflösen von Anmeldungen, nachdem der Kopiervorgang abgeschlo
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

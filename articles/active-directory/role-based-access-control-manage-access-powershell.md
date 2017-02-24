@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 07/22/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: d6dbbee1f977245cc16710ace3b25d6e167cbc7e
-ms.openlocfilehash: cdd7aab27943df568abfda27265ed970e6dd789c
+ms.sourcegitcommit: 45f1716d7520981845fbfb96cfaf24cde9dd5c5d
+ms.openlocfilehash: 8b906c402dde8d2bbaa2354a370a775058c146a7
 
 
 ---
@@ -127,7 +127,14 @@ So entfernen Sie den Zugriff für Benutzer, Gruppen und Anwendungen:
 ![RBAC PowerShell – Remove-AzureRmRoleAssignment - screenshot](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
 ## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
-Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den Befehl `New-AzureRmRoleDefinition` . Es gibt zwei Methoden zum Strukturieren der Rolle: mithilfe von „PSRoleDefinitionObject“ oder einer JSON-Vorlage. 
+Verwenden Sie zum Erstellen einer benutzerdefinierten Rolle den Befehl ```New-AzureRmRoleDefinition``` . Es gibt zwei Methoden zum Strukturieren der Rolle: mithilfe von „PSRoleDefinitionObject“ oder einer JSON-Vorlage. 
+
+## <a name="get-actions-from-particular-resource-provider"></a>Abrufen von Aktionen von einem bestimmten Ressourcenanbieter
+Wenn Sie benutzerdefinierte Rollen von Grund auf neu erstellen, ist es wichtig, alle möglichen Vorgänge der Ressourcenanbieter zu kennen.
+Dies erreichen Sie mit dem Befehl ```Get-AzureRMProviderOperation```. Wenn Sie beispielsweise alle verfügbaren Vorgänge für den virtuellen Computer überprüfen möchten, lautet der Befehl folgendermaßen:
+
+```Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation , Description -AutoSize```
+
 
 ### <a name="create-role-with-psroledefinitionobject"></a>Erstellen der Rolle mit „PSRoleDefinitionObject“
 Wenn Sie eine benutzerdefinierte Rolle mithilfe von PowerShell erstellen, können Sie von Grund auf beginnen oder eine der [integrierten Rollen](role-based-access-built-in-roles.md) als Ausgangspunkt verwenden, wobei letzteres in diesem Beispiel erfolgt. Bearbeiten Sie die Attribute, und fügen Sie die gewünschten *Actions*, *notActions* oder *scopes* hinzu. Speichern Sie die Änderungen anschließend als neue Rolle.
@@ -276,6 +283,6 @@ Im folgenden Beispiel ist die benutzerdefinierte Rolle *Virtual Machine Operator
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

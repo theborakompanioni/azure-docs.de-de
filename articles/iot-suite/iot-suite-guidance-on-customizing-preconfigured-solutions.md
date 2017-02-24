@@ -4,7 +4,7 @@ description: "Dieses Dokument bietet eine Anleitung zum Anpassen vorkonfiguriert
 services: 
 suite: iot-suite
 documentationcenter: .net
-author: aguilaaj
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/11/2016
-ms.author: araguila
+ms.date: 02/08/2017
+ms.author: corywink
 translationtype: Human Translation
-ms.sourcegitcommit: 45fd461defc00c5dc018496b85b8bf85614f03dd
-ms.openlocfilehash: 0037b9e28b20c9a85f810cba45aa5b4cbcf6ab6b
+ms.sourcegitcommit: 14e2fcea9a6afbac640d665d5e44a700f855db4b
+ms.openlocfilehash: bbec0c01e8760c975222768e694e57b8b447bb3b
 
 
 ---
@@ -33,9 +33,9 @@ Der Quellcode für die vorkonfigurierten Lösungen ist auf GitHub in den folgend
 Der Quellcode für die vorkonfigurierten Lösungen wird bereitgestellt, um Muster und Verfahren zum Implementieren der umfassenden Funktionalität von IoT-Lösungen mithilfe von Azure IoT Suite zu veranschaulichen. Weitere Informationen zur Erstellung und Bereitstellung von Lösungen finden Sie in den GitHub-Repositorys.
 
 ## <a name="changing-the-preconfigured-rules"></a>Ändern der vorkonfigurierten Regeln
-Die Remoteüberwachungslösung enthält drei [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Aufträge, um die Geräteinformationen, Telemetriedaten und Regellogik für die Lösung zu implementieren.
+Die Remoteüberwachungslösung enthält drei [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Aufträge, um Geräteinformationen, Telemetriedaten und Regellogik in der Lösung zu behandeln.
 
-Die drei Stream Analytics-Aufträge und ihre Syntax werden ausführlich unter [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md)beschrieben. 
+Die drei Stream Analytics-Aufträge und ihre Syntax werden ausführlich unter [Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md) beschrieben. 
 
 Sie können diese Aufträge direkt bearbeiten, um die Logik zu ändern oder spezifische Logik für das Szenario hinzuzufügen. Sie finden die Stream Analytics-Aufträge wie folgt:
 
@@ -45,7 +45,7 @@ Sie können diese Aufträge direkt bearbeiten, um die Logik zu ändern oder spez
 4. Beenden Sie den Auftrag, indem Sie aus den Befehlen **Beenden**auswählen. 
 5. Bearbeiten Sie die Eingaben, die Abfrage und die Ausgaben.
    
-    Eine einfache Änderung besteht darin, die Abfrage für den Auftrag **Regeln** so zu ändern, dass **„<“** anstelle von **„>“** verwendet wird. Das Lösungsportal zeigt weiterhin **„>“** an, wenn Sie eine Regel bearbeiten. Sie werden allerdings feststellen, dass sich das Verhalten aufgrund der Änderung am zugrunde liegenden Auftrag umkehrt.
+    Eine einfache Änderung besteht darin, die Abfrage für den Auftrag **Regeln** so zu ändern, dass **„<“** anstelle von **„>“** verwendet wird. Das Lösungsportal zeigt weiterhin **„>“** an, wenn Sie eine Regel bearbeiten, aber beachten Sie, wie sich das Verhalten aufgrund der Änderung am zugrunde liegenden Auftrag umkehrt.
 6. Starten des Auftrags
 
 > [!NOTE]
@@ -59,12 +59,12 @@ Sie können nicht nur die vorkonfigurierten Azure Stream Analytics-Aufträge än
 ## <a name="customizing-devices"></a>Anpassen von Geräten
 Eine der am häufigsten Erweiterungsaktivitäten ist das Arbeiten mit speziellen Geräten für Ihr Szenario. Es gibt mehrere Methoden zum Arbeiten mit Geräten. Dazu gehören das Anpassen eines simulierten Geräts an Ihr Szenario und das Verknüpfen des physischen Geräts mit der Lösung mithilfe des [IoT-Geräte-SDK][IoT Device SDK].
 
-Eine schrittweise Anleitung zum Hinzufügen von Geräten zur vorkonfigurierten Remoteüberwachungslösung finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite](iot-suite-connecting-devices.md) und im [C-SDK-Beispiel zur Remoteüberwachung](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring), das für den Einsatz mit der vorkonfigurierten Remoteüberwachungslösung konzipiert ist.
+Eine schrittweise Anleitung zum Hinzufügen von Geräten finden Sie im Artikel [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung von IoT Suite](iot-suite-connecting-devices.md) und im [C-SDK-Beispiel zur Remoteüberwachung](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring), das für den Einsatz mit der vorkonfigurierten Remoteüberwachungslösung konzipiert ist.
 
 ### <a name="creating-your-own-simulated-device"></a>Erstellen eines eigenen simulierten Geräts
-Der Quellcode der Remoteüberwachungslösung (auf den oben verwiesen wird) enthält einen .NET-Simulator. Dieser Simulator wird als Teil der Lösung bereitgestellt und kann geändert werden, um andere Metadaten oder Telemetrie zu senden oder auf andere Befehle zu reagieren.
+Der [Quellcode der Remoteüberwachungslösung](https://github.com/Azure/azure-iot-remote-monitoring) enthält einen .NET-Simulator. Dieser Simulator wird als Teil der Lösung bereitgestellt, und Sie können ihn ändern, um andere Metadaten oder Telemetriedaten zu senden und auf andere Befehle zu reagieren.
 
-Der vorkonfigurierte Simulator in der vorkonfigurierten Lösung zur Remoteüberwachung ist ein Kühlgerät, das Telemetriedaten zu Temperatur und Feuchtigkeit ausgibt. Sie können den Simulator im Projekt [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) ändern, wenn Sie das GitHub-Repository verzweigt haben.
+Der vorkonfigurierte Simulator in der vorkonfigurierten Remoteüberwachungslösung simuliert ein kühleres Gerät, das Temperatur- und Luftfeuchtigkeits-Telemetriedaten ausgibt. Sie können den Simulator im [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob)-Projekt ändern, wenn Sie das GitHub-Repository aufgesucht haben.
 
 ### <a name="available-locations-for-simulated-devices"></a>Verfügbare Standorte für simulierte Geräte
 Die Standorte befinden sich standardmäßig in Seattle/Redmond, Washington, USA. Diese Standorte können in [SampleDeviceFactory.cs][lnk-sample-device-factory] geändert werden.
@@ -80,7 +80,7 @@ Standardwert: 200. Diese Zahl kann in [DashboardController.cs][lnk-dashboard-con
 Standardwert: 200. Diese Zahl kann in [TelemetryApiController.cs][lnk-telemetry-api-controller-01] geändert werden.
 
 ### <a name="time-period-of-telemetry-graph"></a>Zeitraum der Telemetriegrafik
-Standardwert: 10 Minuten. Dieser Wert kann in [TelemetryApiController.cs][lnk-telemetry-api-controller-02] geändert werden.
+Standardwert: 10 Minuten. Diesen Wert können Sie in [TelemetryApiController.cs][lnk-telemetry-api-controller-02] ändern.
 
 ## <a name="manually-setting-up-application-roles"></a>Manuelles Einrichten der Anwendungsrollen
 Das folgende Verfahren beschreibt das Hinzufügen von **Admin**- und **ReadOnly**-Anwendungsrollen zu einer vorkonfigurierten Lösung. In von „azureiotsuite.com“ bereitgestellten, vorkonfigurierten Lösungen sind die **Admin**- und die **ReadOnly**-Rolle bereits enthalten.
@@ -94,12 +94,12 @@ Mitglieder der **ReadOnly** -Rolle können das Dashboard und die Geräteliste an
 5. Klicken Sie auf den Namen der Anwendung, der mit dem Namen der vorkonfigurierten Lösung übereinstimmt. Sollte Ihre Anwendung nicht in der Liste angezeigt werden, wählen Sie in der Dropdownliste **Anzeigen** die Option **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
 6. Klicken Sie unten auf der Seite auf **Manifest verwalten** und dann auf **Manifest herunterladen**.
 7. Dadurch wird eine JSON-Datei auf Ihren lokalen Computer heruntergeladen.  Öffnen Sie diese Datei zur Bearbeitung in einem Text-Editor Ihrer Wahl.
-8. In der dritten Zeile der JSON-Datei steht:
+8. In der dritten Zeile der JSON-Datei lesen Sie:
    
    ```
    "appRoles" : [],
    ```
-   Ersetzen Sie dies durch Folgendes:
+   Ersetzen Sie diese Zeile durch den folgenden Code:
    
    ```
    "appRoles": [
@@ -125,12 +125,12 @@ Mitglieder der **ReadOnly** -Rolle können das Dashboard und die Geräteliste an
    } ],
    ```
 9. Speichern Sie die aktualisierte JSON-Datei (Sie können die vorhandene Datei überschreiben).
-10. Wählen Sie im Azure-Verwaltungsportal am unteren Seitenrand die Option **Manifest verwalten** und anschließend **Manifest hochladen** aus, um die zuvor gespeicherte JSON-Datei hochzuladen.
+10. Wählen Sie im klassischen Azure-Portal am unteren Seitenrand die Option **Manifest verwalten** und anschließend **Manifest hochladen** aus, um die zuvor gespeicherte JSON-Datei hochzuladen.
 11. Sie haben nun die **Admin**- und die **ReadOnly**-Rolle Ihrer Anwendung hinzugefügt.
 12. Unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] erfahren Sie, wie Sie einem Benutzer in Ihrem Verzeichnis eine dieser Rollen zuweisen.
 
 ## <a name="feedback"></a>Feedback
-Möchten Sie Anpassungsvorschläge zu diesem Dokument machen? Nutzen Sie [UserVoice](https://feedback.azure.com/forums/321918-azure-iot), um neue Features vorzuschlagen, oder verfassen Sie weiter unten einen Kommentar zu diesem Artikel. 
+Möchten Sie Anpassungsvorschläge zu diesem Dokument machen? Nutzen Sie [UserVoice](https://feedback.azure.com/forums/321918-azure-iot), um neue Features vorzuschlagen, oder verfassen Sie einen Kommentar zu diesem Artikel. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Optionen zum Anpassen der vorkonfigurierten Lösungen finden Sie unter:
@@ -153,6 +153,6 @@ Weitere Informationen zu den Optionen zum Anpassen der vorkonfigurierten Lösung
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

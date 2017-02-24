@@ -1,6 +1,6 @@
 ---
-title: Klassische Endpunkte in Resource Manager | Microsoft Docs
-description: "Hier wird erklärt, wie Endpunkte aus dem klassischen Bereitstellungsmodell für Resource Manager implementiert werden. Zu diesem Zweck werden Netzwerksicherheitsgruppen und ACL-Regeln verwendet."
+title: "Grundlegendes zu Endpunkten für virtuelle Windows-Computer in Azure | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Endpunkte aus dem klassischen Bereitstellungsmodell jetzt mithilfe von Netzwerksicherheitsgruppen und ACL-Regeln in Resource Manager implementiert werden.
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/27/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 1b6342ef22a00a4d760d8b13d1a2945ab3754463
+ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
+ms.openlocfilehash: 21df6d8ff572295e27c9aaed83c3af189c700aee
 
 
 ---
-# <a name="classic-endpoints-in-resource-manager"></a>Klassische Endpunkte in Resource Manager
+# <a name="classic-endpoints-for-windows-vms-with-azure-resource-manager"></a>Klassische Endpunkte für virtuelle Windows-Computer mit Azure Resource Manager
 [!INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -35,6 +35,6 @@ In den folgenden Artikeln finden Sie ausführlichere Informationen zu den hier e
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

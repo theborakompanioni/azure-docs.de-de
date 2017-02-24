@@ -1,5 +1,5 @@
 ---
-title: "Verwenden von inkrementellen Momentaufnahmen für Sicherung und Wiederherstellung von virtuellen Azure-Computern | Microsoft Docs"
+title: "Verwenden von inkrementellen Momentaufnahmen für Sicherung und Wiederherstellung von nicht verwalteten virtuellen Azure-Datenträgern | Microsoft-Dokumentation"
 description: "Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Computer mithilfe inkrementeller Momentaufnahmen."
 services: storage
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2016
+ms.date: 01/23/2017
 ms.author: aungoo
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9ade78c954ca6443354b198c7141b6fb5c88afdb
+ms.sourcegitcommit: bfb29928783283336b6116f198d70b0b7117750d
+ms.openlocfilehash: 880b1c2ca069e3e4a5ce9cb2af881b95e84687f4
 
 
 ---
-# <a name="back-up-azure-virtual-machine-disks-with-incremental-snapshots"></a>Sichern von Azure-VM-Datenträgern mit inkrementellen Momentaufnahmen
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen
 ## <a name="overview"></a>Übersicht
 Azure Storage bietet die Möglichkeit, Momentaufnahmen von Blobs zu erstellen. Momentaufnahmen erfassen den Blobzustand zum jeweiligen Zeitpunkt. In diesem Artikel wird ein Szenario beschrieben, in dem Sie Sicherungen von Datenträgern des virtuellen Computers mithilfe von Momentaufnahmen verwalten können. Wenn Sie Azure Backup und den Wiederherstellungsdienst nicht verwenden, und eine benutzerdefinierte Sicherungsstrategie für die Datenträger Ihres virtuellen Computers erstellen möchten, können Sie diese Methodik anwenden.
 
@@ -60,7 +60,7 @@ Mit der inkrementellen Kopie der Momentaufnahme können Sie von einem Speicherko
 
 Vorausgesetzt, die folgenden Bedingungen sind erfüllt:
 
-* Das Blob wurde am 1. Januar 2016 oder später erstellt.
+* Das Blob wurde am&1;. Januar&2016; oder später erstellt.
 * Das Blob wurde zwischen zwei Momentaufnahmen nicht mit [PutPage](https://msdn.microsoft.com/library/azure/ee691975.aspx) oder [Copyblob](https://msdn.microsoft.com/library/azure/dd894037.aspx) überschrieben.
 
 **Hinweis**: Diese Funktion steht für Premium- und Standard-Azure-Seitenblobs zur Verfügung.
@@ -123,6 +123,6 @@ Mit den unten beschriebenen Schritten wird der Premium-Datenträger *mypremiumdi
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 02/08/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 486ab53ede1465da2cba16ff4160599b50c2b092
-ms.openlocfilehash: 7cad771f5f134a9dffe7846a2c82017e3da9d9bc
+ms.sourcegitcommit: 57c0228c398ba4ba3fd18a1088472749bed3ac69
+ms.openlocfilehash: 9ebbed56bdbc8385bb651c7aa1e77f369da1d727
 
 
 ---
 # <a name="enable-data-collection-in-azure-security-center"></a>Aktivieren der Datensammlung in Azure Security Center
-Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Computern (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle und mehr), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle virtuellen Computer in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden (siehe [Deaktivieren der Datensammlung](#disabling-data-collection)). Wenn Sie die Datensammlung deaktivieren, empfiehlt Security Center, die Datensammlung in der Sicherheitsrichtlinie für dieses Abonnement zu aktivieren.
+Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Computern (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle und mehr), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Beim ersten Zugriff auf Security Center wird die Datensammlung für alle virtuellen Computer in Ihrem Abonnement aktiviert. Die Datensammlung wird zwar empfohlen, kann aber in der Security Center-Richtlinie deaktiviert werden. (Informationen hierzu finden Sie unter [Deaktivieren der Datensammlung](#disabling-data-collection).) Wenn Sie die Datensammlung deaktivieren, empfiehlt Security Center, die Datensammlung in der Sicherheitsrichtlinie für dieses Abonnement zu aktivieren.
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt. Es ist keine schrittweise Anleitung.
@@ -34,12 +34,12 @@ Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Co
 2. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Sammlung von Daten für Abonnements aktivieren** aus.  Das Blatt **Turn on data collection** (Datensammlung aktivieren) wird geöffnet.
    ![Blatt „Empfehlungen“][2]
 3. Wählen Sie auf dem Blatt **Turn on data collection** (Datensammlung aktivieren) Ihr Abonnement aus. Das Blatt **Sicherheitsrichtlinie** für das Abonnement wird geöffnet.
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** unter **Datensammlung** die Option **Ein** aus, um automatisch Protokolle zu erfassen. Durch Aktivieren der Datensammlung wird auch die Überwachungserweiterung auf allen aktuellen und neuen unterstützten VMs im Abonnement bereitgestellt.
+4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** unter **Datensammlung** die Option **Ein** aus, um automatisch Protokolle zu erfassen. Durch Aktivieren der Datensammlung wird die Überwachungserweiterung auf allen aktuellen und neuen unterstützten VMs im Abonnement bereitgestellt.
 
    ![Blatt „Sicherheitsrichtlinie“][3]
 
 5. Wählen Sie **Speichern**aus.
-6. Wählen Sie **Ein Speicherkonto pro Region auswählen**aus. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird automatisch ein Speicherkonto für Sie erstellt. In diesem Beispiel wählen wir **newstoracct**aus. Sie können das Speicherkonto später ändern, indem Sie zur Sicherheitsrichtlinie für Ihr Abonnement zurückkehren und ein anderes Speicherkonto auswählen.
+6. Wählen Sie **Ein Speicherkonto pro Region auswählen**aus. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto, in dem Daten dieser virtuellen Computer gespeichert werden. Wenn Sie nicht für jede Region ein Speicherkonto auswählen, wird ein Speicherkonto für Sie erstellt und in der securitydata-Ressourcengruppe platziert. In diesem Beispiel wählen wir **newstoracct**. Sie können das Speicherkonto später ändern, indem Sie zur Sicherheitsrichtlinie für Ihr Abonnement zurückkehren und ein anderes Speicherkonto auswählen.
    ![Auswählen eines Speicherkontos][4]
 7. Klicken Sie auf **OK**.
 
@@ -52,7 +52,7 @@ Azure Security Center erfasst und verarbeitet Daten zu Ihren virtuellen Azure-Co
 Datensammlung wird über den Azure-Überwachungs-Agent und die Azure-Erweiterung für Sicherheitsüberwachung aktiviert. Die Azure-Erweiterung für die Sicherheitsüberwachung sucht nach verschiedenen sicherheitsrelevanten Konfigurationen und sendet diese in [Ereignisablaufverfolgungen für Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW, Event Tracing for Windows). Außerdem erstellt das Betriebssystem Einträge im Ereignisprotokoll. Der Azure-Überwachungs-Agent liest Ereignisprotokolleinträge und ETW-Ablaufverfolgungen und kopiert diese zur Analyse in Ihr Speicherkonto. Darüber hinaus kopiert der Überwachungs-Agent Absturzabbilddateien in Ihr Speicherkonto. Dies ist das Speicherkonto, das Sie in der Sicherheitsrichtlinie konfiguriert haben.
 
 ## <a name="disabling-data-collection"></a>Deaktivieren der Datensammlung
-Die Datensammlung kann jederzeit deaktiviert werden. Dadurch werden automatisch sämtliche Überwachungs-Agents entfernt, die zuvor von Security Center installiert wurden.  Sie müssen ein Abonnement auswählen, um die Datensammlung zu deaktivieren.
+Die Datensammlung kann jederzeit deaktiviert werden. Dadurch werden automatisch sämtliche Überwachungs-Agents entfernt, die zuvor von Security Center installiert wurden. Sie müssen ein Abonnement auswählen, um die Datensammlung zu deaktivieren.
 
 > [!NOTE]
 > Sicherheitsrichtlinien können auf der Ebene des Azure-Abonnements und der Ressourcengruppe festgelegt werden. Zum Deaktivieren der Datensammlung muss allerdings ein Abonnement ausgewählt werden.
@@ -67,7 +67,7 @@ Die Datensammlung kann jederzeit deaktiviert werden. Dadurch werden automatisch 
 4. Wählen Sie im oberen Menüband die Option **Speichern** aus.
 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Datensammlung aktivieren“ implementieren. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
@@ -88,6 +88,6 @@ In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Daten
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

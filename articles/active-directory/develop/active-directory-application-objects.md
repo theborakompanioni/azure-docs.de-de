@@ -15,8 +15,8 @@ ms.workload: identity
 ms.date: 11/29/2016
 ms.author: bryanla;mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 146d1377a017becdcdcd7fed7b97f07c2cb2bb39
-ms.openlocfilehash: 6d2b0d0c28963693f8fa5607200e73572ea748a0
+ms.sourcegitcommit: 8f70d9aeb0a407cdb76a5ce25eb620be58bb2659
+ms.openlocfilehash: f453dcafe629c871dc29742208e4864454f4c57e
 
 
 ---
@@ -27,7 +27,7 @@ Manchmal kann die Bedeutung des Azure Active Directory-Begriffs (Azure AD) „An
 Eine Azure AD-Anwendung ist nicht nur eine einfache Software. Es ist ein konzeptueller Begriff, der sich nicht nur auf die Anwendungssoftware bezieht, sondern auch auf die Registrierung (also: Identitätskonfiguration) bei Azure AD, um die Teilnahme an „Gesprächen“ zur Authentifizierung und Autorisierung zur Laufzeit zu ermöglichen. Der Definition nach kann eine Anwendung in einer [Client](active-directory-dev-glossary.md#client-application)rolle (Nutzung einer Ressource), einer [Ressourcenserver](active-directory-dev-glossary.md#resource-server)rolle (APIs werden für Clients verfügbar gemacht) oder beiden Rollen funktionieren. Das Konversationsprotokoll ist durch einen [Ablauf zur Erteilung einer OAuth 2.0-Autorisierung](active-directory-dev-glossary.md#authorization-grant) definiert und hat das Ziel, dem Client bzw. der Ressource das Zugreifen auf bzw. das Schützen der Daten einer Ressource zu ermöglichen. Nun gehen wir eine Ebene tiefer und sehen uns an, wie das Azure AD-Anwendungsmodell eine Anwendung intern darstellt. 
 
 ## <a name="application-registration"></a>Anwendungsregistrierung
-Wenn Sie eine Anwendung im [klassischen Azure-Portal][AZURE-Classic-Portal] registrieren, werden im Azure AD-Mandanten zwei Objekte erstellt: ein Anwendungsobjekt und ein Dienstprinzipalobjekt.
+Wenn Sie eine Anwendung im [Azure-Portal][AZURE-Portal] registrieren, werden im Azure AD-Mandanten zwei Objekte erstellt: ein Anwendungsobjekt und ein Dienstprinzipalobjekt.
 
 #### <a name="application-object"></a>Anwendungsobjekt
 Eine Azure AD-Anwendung wird durch ihr alleiniges Anwendungsobjekt *definiert*. Es befindet sich im Azure AD-Mandanten, in dem die Anwendung registriert ist und der als „Home“-Mandant der Anwendung bezeichnet wird. Das Anwendungsobjekt enthält identitätsbezogene Informationen für eine Anwendung und ist die Vorlage, von der die entsprechenden Dienstprinzipalobjekte für die Verwendung zur Laufzeit *abgeleitet* werden. 
@@ -69,10 +69,10 @@ Sie können auf das Dienstprinzipalobjekt einer Anwendung über die Azure AD Gra
 <!--Reference style links -->
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AZURE-Classic-Portal]: https://manage.windowsazure.com
+[AZURE-Portal]: https://portal.azure.com
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

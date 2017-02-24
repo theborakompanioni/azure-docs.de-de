@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über die Überwachung in Azure | Microsoft Docs"
-description: "Allgemeine Übersicht über das Feature „Azure Monitor“ in Microsoft Azure mit Warnungen, Webhooks, automatischer Skalierung und mehr."
+title: "Übersicht über Azure Monitor | Microsoft-Dokumentation"
+description: "Azure Monitor erfasst Statistiken zur Verwendung in Warnungen, in Webhooks, bei der automatischen Skalierung und bei der Automatisierung. Im Artikel werden auch andere Microsoft-Überwachungsoptionen aufgeführt."
 author: rboucher
 manager: carmonm
 editor: 
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 02/01/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: c0d101266fecf04a84b5717c1b81cefed90cab40
-ms.openlocfilehash: 2d16a04bb261552dc9eb86bde301d4285dbf4434
+ms.sourcegitcommit: 09b2847586eec50d8512ec5eabdc05a11d8b238a
+ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
 
 
 ---
 
-# <a name="overview-of-monitoring-in-microsoft-azure"></a>Überblick über die Überwachung in Microsoft Azure
+# <a name="overview-of-azure-monitor"></a>Übersicht über Azure Monitor
 Dieser Artikel enthält eine konzeptionelle Übersicht über das Überwachen von Azure-Ressourcen. Es enthält Verweise auf Informationen zu bestimmten Ressourcentypen.  Allgemeine Informationen zur Überwachung Ihrer Anwendung aus einer Nicht-Azure-basierten Perspektive finden Sie unter [Anleitung zur Überwachung und Diagnose](../best-practices-monitoring.md).
 
 Ein Video mit einer exemplarischen Vorgehensweise für Azure Monitor steht unter  
@@ -148,6 +148,6 @@ Weitere Informationen
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

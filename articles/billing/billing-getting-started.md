@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2016
+ms.date: 02/03/2017
 ms.author: jlian
 translationtype: Human Translation
-ms.sourcegitcommit: 249d08341311e48a93db8031439f0bc35162f823
-ms.openlocfilehash: 28c70685cfa3da94cc0648cebae7ec296af60986
+ms.sourcegitcommit: 1b738d952685fe71e5a1eecd809afae1c9904267
+ms.openlocfilehash: 8f32c2c85d2f6c2265048e58d5c2b0256fa020bd
 
 
 ---
@@ -41,13 +41,13 @@ Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Preisen](h
 
 ### <a name="check-your-subscription-and-access"></a>Überprüfen von Abonnement und Zugriff
 
-Zum Anzeigen der Kosten benötigen Sie [Zugriff auf Abonnementebene](../active-directory/role-based-access-control-configure.md), aber nur der Kontoadministrator kann auf das [Kontocenter](https://account.windowsazure.com/Home/Index) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing-add-change-azure-subscription-administrator.md).
+Zum Anzeigen der Kosten benötigen Sie [Zugriff auf Abonnementebene](../active-directory/role-based-access-control-configure.md), aber nur der Kontoadministrator kann auf das [Kontocenter](https://account.windowsazure.com/Home/Index) zugreifen, Abrechnungsinformationen ändern und Abonnements verwalten. Der Kontoadministrator ist die Person, die den Registrierungsprozess durchlaufen hat. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](billing-add-change-azure-subscription-administrator.md).
 
 Um zu ermitteln, ob Sie der Kontoadministrator sind, [navigieren Sie im Azure-Portal zum Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und sehen Sie sich die Liste mit den Abonnements an, auf die Sie Zugriff haben. Ausschlaggebend ist die Angabe unter **Meine Rolle**. Wenn hier *Kontoadministrator* angegeben ist, ist alles in Ordnung. Bei einer Angabe wie *Besitzer* verfügen Sie nicht über sämtliche Berechtigungen.
 
 ![Screenshot Ihrer Rolle in der Ansicht „Abonnements“ im Azure-Portal](./media/billing-getting-started/sub-blade-view.PNG)
 
-Falls Sie nicht der Kontoadministrator sind, wurde Ihnen wahrscheinlich von einer anderen Person über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Active Directory](../active-directory/role-based-access-control-configure.md) eingeschränkter Zugriff gewährt. Um Abonnements verwalten und Abrechnungsinformationen ändern zu können, müssen Sie [den Kontoadministrator ermitteln](../billing-subscription-transfer.md#whoisaa) und ihn bitten, die Aufgaben für Sie auszuführen oder das [Abonnement auf Sie zu übertragen](../billing-subscription-transfer.md).
+Falls Sie nicht der Kontoadministrator sind, wurde Ihnen wahrscheinlich von einer anderen Person über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure Active Directory](../active-directory/role-based-access-control-configure.md) eingeschränkter Zugriff gewährt. Um Abonnements verwalten und Abrechnungsinformationen ändern zu können, müssen Sie [den Kontoadministrator ermitteln](billing-subscription-transfer.md#whoisaa) und ihn bitten, die Aufgaben für Sie auszuführen oder das [Abonnement auf Sie zu übertragen](billing-subscription-transfer.md).
 
 Falls der Kontoadministrator Ihre Organisation verlassen hat und Sie die Abrechnung verwalten müssen, wenden Sie sich an den [Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 
@@ -65,7 +65,7 @@ Klicken Sie auf das Banner, und folgen Sie den Anweisungen, um das Ausgabenlimit
 
 ### <a name="set-up-billing-alerts"></a>Einrichten von Abrechnungswarnungen
 
-Richten Sie Abrechnungswarnungen ein, um sich per E-Mail benachrichtigen zu lassen, wenn Ihre Nutzungskosten einen bestimmten Betrag übersteigen. Falls Sie über monatliches Guthaben verfügen, richten Sie Warnungen für den Verbrauch eines bestimmten Betrags ein. Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](../billing-set-up-alerts.md).
+Richten Sie Abrechnungswarnungen ein, um sich per E-Mail benachrichtigen zu lassen, wenn Ihre Nutzungskosten einen bestimmten Betrag übersteigen. Falls Sie über monatliches Guthaben verfügen, richten Sie Warnungen für den Verbrauch eines bestimmten Betrags ein. Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](billing-set-up-alerts.md).
 
 ![Screenshot einer E-Mail mit einer Abrechnungswarnung](./media/billing-getting-started/billing-alert.png)
 
@@ -154,9 +154,9 @@ Daraufhin stehen auf der Registerkarte **Kosten** des Advisor-Dashboards nützli
 
 Weitere Informationen finden Sie unter [Advisor-Empfehlungen zu Kosten](../advisor/advisor-cost-recommendations.md).
 
-### <a name="a-nameinvoice-and-usagea-download-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a> Herunterladen der Rechnung und der Nutzungsdetails nach dem ersten Abrechnungszeitraum
+### <a name="a-nameinvoice-and-usagea-get-your-invoice-and-detail-usage-after-your-first-billing-period"></a><a name="invoice-and-usage"></a> Abrufen der Rechnung und der Nutzungsdetails nach dem ersten Abrechnungszeitraum
 
-Nach dem ersten Abrechnungszeitraum können Sie Ihre Rechnung als PDF-Datei und die Nutzungsdetails als CSV-Datei herunterladen. Diese Dateien geben Aufschluss darüber, welche Kosten letztendlich nach Steuern, Rabatten und Gutschriften abgerechnet werden. Falls Sie keine Zahlungsmethode mit Ihrem Abonnement verknüpft haben, stehen diese Dateien unter Umständen nicht zur Verfügung. Weitere Informationen finden Sie unter [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../billing-download-azure-invoice-daily-usage-date.md) sowie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](/billing-understand-your-bill.md).
+Nach dem ersten Abrechnungszeitraum können Sie Ihre Rechnung als PDF-Datei und die Nutzungsdetails als CSV-Datei herunterladen. Wahlweise kann Ihnen Ihre Rechnung auch per E-Mail gesendet werden. Diese Dateien geben Aufschluss darüber, welche Kosten letztendlich nach Steuern, Rabatten und Gutschriften abgerechnet werden. Falls Sie keine Zahlungsmethode mit Ihrem Abonnement verknüpft haben, stehen diese Dateien unter Umständen nicht zur Verfügung. Weitere Informationen finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md) sowie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md).
 
 ![Screenshot einer PDF-Rechnung](./media/billing-getting-started/invoice.png)
 
@@ -166,7 +166,7 @@ Die zuvor festgelegten Tags werden in den CSV-Dateien mit den Nutzungsdetails an
 
 ### <a name="billing-api"></a>Abrechnungs-API
 
-Über unsere Abrechnungs-API können Sie Nutzungsdaten programmgesteuert abrufen. Verwenden Sie die RateCard-API und die Usage-API, um Ihre abgerechnete Nutzung abzurufen. Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../billing-usage-rate-card-overview.md).
+Über unsere Abrechnungs-API können Sie Nutzungsdaten programmgesteuert abrufen. Verwenden Sie die RateCard-API und die Usage-API, um Ihre abgerechnete Nutzung abzurufen. Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](billing-usage-rate-card-overview.md).
 
 ## <a name="a-nameother-offersa-additional-resources-for-ea-csp-and-sponsorship"></a><a name="other-offers"></a> Zusätzliche Ressourcen für EA, CSP und Sponsorship
 
@@ -174,7 +174,7 @@ Wenden Sie sich an Ihren Kundenbetreuer oder Azure-Partner.
 
 | Angebot | Ressourcen |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Enterprise Agreement (EA) | [EA-Portal](https://ea.azure.com/) und [Hilfedokumente](https://ea.azure.com/helpdocs) |
+| Enterprise Agreement (EA) | [EA-Portal](https://ea.azure.com/), [Hilfedokumente](https://ea.azure.com/helpdocs) und [Power BI-Bericht](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud-Lösungsanbieter (CSP) | Wenden Sie sich an Ihren Anbieter. |
 | Azure Sponsorship | [Sponsorship-Portal](https://www.microsoftazuresponsorships.com/) |
 
@@ -182,6 +182,6 @@ Für IT-Manager großer Organisationen empfehlen wir den Artikel zum [Azure-Unte
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
