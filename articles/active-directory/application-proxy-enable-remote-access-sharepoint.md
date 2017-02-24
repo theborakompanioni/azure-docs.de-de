@@ -226,7 +226,7 @@ Mit dem letzten erforderlichen Schritt stellen Sie sicher, dass SharePoint die W
 
   ![Azure AD-Anwendungsproxyconnectors](./media/application-proxy-remote-sharepoint/remote-sharepoint-alternate-access1.png)
 
-3. Wählen Sie in der Dropdownliste neben **Alternative Access Mapping Collections** (Alternative Zugriffszuordnungen – Sammlungen) die Option **Change Alternative Access Mapping Collection** (Alternative Zugriffszuordnungen – Sammlung ändern).
+3. Wählen Sie in der Dropdownliste neben **Alternative Access Mapping Collections** (Alternative Zugriffszuordnungssammlungen) die Option **Change Alternative Access Mapping Collection** (Alternative Zugriffszuordnungssammlung ändern).
 4. Wählen Sie Ihre Website aus, z.B. **SharePoint – 80**.
 
   ![Azure AD-Anwendungsproxyconnectors](./media/application-proxy-remote-sharepoint/remote-sharepoint-alternate-access2.png)
