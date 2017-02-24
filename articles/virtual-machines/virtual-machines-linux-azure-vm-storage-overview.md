@@ -1,6 +1,6 @@
 ---
-title: Azure- und Linux-VM-Speicher | Microsoft Docs
-description: Beschreibt die Verwendung von Azure-Standardspeicher und Storage Premium mit virtuellen Linux-Computern.
+title: Azure-Linux-VMs und Azure Storage | Microsoft-Dokumentation
+description: "Beschreibt die Verwendung von Azure Storage Standard und Azure Storage Premium sowie von verwalteten und nicht verwalteten Datenträgern mit virtuellen Linux-Computern."
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -12,28 +12,84 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/04/2016
-ms.author: v-livech
+ms.date: 2/7/2017
+ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: bc18d25044fb790ef85ce950a785259cc1204fe4
+ms.sourcegitcommit: 8651566079a0875e1a3a549d4bf1dbbc6ac7ce21
+ms.openlocfilehash: 410159ad7b5abc5eb3cb1a212895eda7ac225323
 
 
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure- und Linux-VM-Speicher
 Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen.  Mit Azure Storage können Entwickler nicht nur umfangreiche Anwendungen für neue Szenarien entwickeln, es bildet auch die Speichergrundlage für Azure Virtual Machines.
 
-## <a name="azure-storage-standard-and-premium"></a>Azure Storage: Standard und Premium
-Azure-VMs können auf der Basis von Standardspeicher- oder Storage Premium-Datenträgern erstellt werden.  Wenn Sie das Portal zur Auswahl Ihres virtuellen Computers verwenden, müssen Sie eine Dropdownliste auf dem Grundeinstellungenbildschirm zum Anzeigen von Standard- und Premium-Datenträgern umschalten.  Der folgende Screenshot hebt das Umschaltmenü hervor.  Beim Umschalten zu SSD werden nur für Storage Premium geeignete VMs angezeigt, die alle durch SSD-Laufwerke gestützt werden.  Beim Umschalten zu HDD werden für Standardspeicher geeignete VMs, die durch rotierende Datenträger gestützt werden, zusammen mit für Storage Premium geeigneten VMs angezeigt, die durch SSD-Laufwerke gestützt werden.
+## <a name="managed-disks"></a>Verwaltete Datenträger
 
-  ![Bildschirm 1](../virtual-machines/media/virtual-machines-linux-azure-vm-storage-overview/screen1.png)
+Für virtuelle Azure-Computer ist jetzt [Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar – dieser Dienst ermöglicht Ihnen das Erstellen von virtuellen Computern, ohne dass Sie selbst [Azure Storage-Konten](../storage/storage-introduction.md) erstellen oder verwalten müssen. Sie geben an, ob Sie Storage Standard oder Premium verwenden möchten, und wie groß der Datenträger sein soll – Azure erstellt die Datenträger für die virtuellen Computer für Sie. Virtuelle Computer mit verwalteten Datenträgern bietet eine Vielzahl wichtiger Features, wie z.B.:
+
+- Unterstützung für automatische Skalierbarkeit. Azure erstellt die Datenträger und verwaltet den zugrunde liegenden Speicher, um bis zu 10.000 Datenträger pro Abonnement zu unterstützen.
+- Höhere Zuverlässigkeit mit Verfügbarkeitsgruppen. Azure stellt sicher, dass Datenträger für virtuelle Computer innerhalb der gleichen Verfügbarkeitsgruppe automatisch voneinander isoliert werden.
+- Verbesserte Zugriffssteuerung. Verwaltete Datenträger machen verschiedene Vorgänge verfügbar, die über die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-what-is.md) gesteuert werden. 
+
+Die Preise für verwaltete Datenträger unterscheiden sich von denen für nicht verwaltete Datenträger. Informationen dazu finden Sie unter [Preise und Abrechnung für verwaltete Datenträger](../storage/storage-managed-disks-overview.md#pricing-and-billing). 
+
+Sie können vorhandene virtuelle Computer, die nicht verwaltete Datenträger verwenden, mithilfe von [az vm convert](/cli/azure/vm#convert) zur Verwendung von verwalteten Datenträgern konvertieren. Weitere Informationen finden Sie unter [Konvertieren eines virtuellen Linux-Computers von nicht verwalteten Datenträgern zu Azure Managed Disks](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Sie können einen nicht verwalteten Datenträger nicht in einen verwalteten Datenträger konvertieren, wenn der nicht verwaltete Datenträger sich in einem Speicherkonto befindet, das mithilfe von [Azure Storage Service Encryption (SSE)](../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verschlüsselt ist oder jemals war. Die folgenden Schritte beschreiben, wie Sie nicht verwaltete Datenträger konvertieren, die sich in einem verschlüsselten Speicherkonto befinden oder jemals befanden:
+
+- [Kopieren Sie die virtuelle Festplatte (VHD)](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unmanaged-disks) mit [az storage blob copy start](/cli/azure/storage/blob/copy#start) in ein Speicherkonto, das nie für Azure Storage Service Encryption aktiviert war.
+- Erstellen Sie einen virtuellen Computer, der verwaltete Datenträger verwendet, und geben Sie diese VHD-Datei während der Erstellung mit [az vm create](/cli/azure/vm#create) an. Alternativ dazu:
+- Fügen Sie die kopierte VHD mit [az vm disk attach](/cli/azure/vm/disk#attach) an einen ausgeführten virtuellen Computer mit verwalteten Datenträgern an.
+
+
+## <a name="azure-storage-standard-and-premium"></a>Azure Storage: Standard und Premium
+Virtuelle Azure-Computer – unabhängig davon, ob sie verwaltete oder nicht verwaltete Datenträger verwenden – können basierend auf Standard- oder Premium-Speicherdatenträgern erstellt werden. Wenn Sie zum Auswählen Ihres virtuellen Computers das Portal verwenden, müssen Sie auf dem Bildschirm **Grundlagen** eine Dropdownliste umschalten, um sowohl Standard- als auch Premium-Datenträger anzuzeigen. Beim Umschalten zu SSD werden nur für Storage Premium geeignete VMs angezeigt, die alle durch SSD-Laufwerke gestützt werden.  Bei Auswahl von HDD werden für Storage Standard geeignete virtuelle Computer mit rotierenden Datenträgern sowie für Storage Premium geeignete virtuelle Computer mit SSD-Laufwerken angezeigt.
 
 Beim Erstellen eines virtuellen Computers aus der `azure-cli` können Sie über das `-z`- oder `--vm-size`-CLI-Flag bei der Auswahl der VM-Größe zwischen Standard und Premium wählen.
 
-### <a name="create-a-vm-with-standard-storage-vm-on-the-cli"></a>Erstellen einer VM mit Standardspeicher über die CLI
-Das CLI-Flag `-z` dient zur Wahl von Standard_A1, wobei A1 eine auf Standardspeicher basierende Linux-VM ist.
+## <a name="creating-a-vm-with-a-managed-disk"></a>Erstellen eines virtuellen Computers mit einem verwalteten Datenträger
 
-```bash
+Das folgende Beispiel erfordert die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau), die Sie [hier installieren] können.
+
+Erstellen Sie zuerst eine Ressourcengruppe für die Verwaltung der Ressourcen:
+
+```azurecli
+az group create --location westus --name myResourceGroup
+```
+
+Erstellen Sie dann mit dem Befehl `az vm create` den virtuellen Computer, wie in folgendem Beispiel gezeigt. Denken Sie daran, ein eindeutiges `--public-ip-address-dns-name`-Argument anzugeben, da wahrscheinlich `manageddisks` verwendet wird.
+
+```azurecli
+az vm create \
+--image credativ:Debian:8:latest \
+--admin-username azureuser \
+--ssh-key-value ~/.ssh/id_rsa.pub 
+--public-ip-address-dns-name manageddisks \
+--resource-group myResourceGroup \
+--location westus \
+--name myVM
+```
+
+Im vorherigen Beispiel wurde ein virtueller Computer mit einem verwalteten Datenträger in einem Standard-Speicherkonto erstellt. Um ein Premium-Speicherkonto zu verwenden, fügen Sie das `--storage-sku Premium_LRS`-Argument hinzu, wie in diesem Beispiel gezeigt:
+
+```azurecli
+az vm create \
+--storage-sku Premium_LRS
+--image credativ:Debian:8:latest \
+--admin-username azureuser \
+--ssh-key-value ~/.ssh/id_rsa.pub 
+--public-ip-address-dns-name manageddisks \
+--resource-group myResourceGroup \
+--location westus \
+--name myVM
+```
+
+
+### <a name="create-a-vm-with-an-unmanaged-standard-disk-using-the-azure-cli-10"></a>Erstellen eines virtuellen Computers mit einem nicht verwalteten Standarddatenträger über die Azure-Befehlszeilenschnittstelle 1.0
+
+Sie können natürlich auch die Azure-Befehlszeilenschnittstelle 1.0 verwenden, um virtuelle Computer mit Standard- und Premium-Datenträgern zu erstellen. Zurzeit ist die Erstellung von virtuellen Computern mit verwalteten Datenträgern über die Azure-Befehlszeilenschnittstelle 1.0 nicht möglich.
+
+Die Option `-z` dient zur Auswahl von Standard_A1, einem auf Standardspeicher basierenden virtuellen Linux-Computer.
+
+```azurecli
 azure vm quick-create -g rbg \
 exampleVMname \
 -l westus \
@@ -44,10 +100,10 @@ exampleVMname \
 -z Standard_A1
 ```
 
-### <a name="create-a-vm-with-premium-storage-on-the-cli"></a>Erstellen einer VM mit Storage Premium über die CLI
-Das CLI-Flag `-z` dient zur Wahl von Standard_DS1, wobei DS1 eine auf Storage Premium basierende Linux-VM ist.
+### <a name="create-a-vm-with-premium-storage-using-the-azure-cli-10"></a>Erstellen einer VM mit Storage Premium über die Azure-Befehlszeilenschnittstelle 1.0
+Die Option `-z` dient zur Auswahl von Standard_DS1, einem auf Premium-Speicher basierenden virtuellen Linux-Computer.
 
-```bash
+```azurecli
 azure vm quick-create -g rbg \
 exampleVMname \
 -l westus \
@@ -186,6 +242,6 @@ Wir erläutern Storage Service Encryption (SSE) und beschreiben, und wie Sie die
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

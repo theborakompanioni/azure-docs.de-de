@@ -1,6 +1,6 @@
 ---
 title: "Verwenden von Docker Compose für einen virtuellen Linux-Computer in Azure | Microsoft Docs"
-description: "Verwenden von Docker und Compose für virtuelle Linux-Computer in Azure"
+description: "Verwenden von Docker und Compose für virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/16/2016
+ms.date: 02/13/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 3295120664e409440641818b13dd1abab6f2f72f
-ms.openlocfilehash: 06ad7f9267f24ee1f2fe417ad4aa0bf1096832d6
+ms.sourcegitcommit: 9fc3f1fbe9ab03257d613e31f5890a63d1aeba1f
+ms.openlocfilehash: 70796d5dc7c1a47d65d51d4873705606ef32c869
 
 
 ---
@@ -27,9 +27,16 @@ Bei [Compose](http://github.com/docker/compose) verwenden Sie eine einfache Text
 ## <a name="step-1-set-up-a-linux-vm-as-a-docker-host"></a>Schritt 1: Einrichten eines virtuellen Linux-Computers als Docker-Host
 Im Azure Marketplace stehen Ihnen verschieden Azure-Verfahren und Images oder Resource Manager-Vorlagen zur Verfügung, um einen virtuellen Linux-Computer zu erstellen und als Docker-Host einzurichten. So finden Sie etwa unter [Verwenden der Docker-VM-Erweiterung zum Bereitstellen Ihrer Umgebung](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ein schnelles Verfahren zum Erstellen eines virtuellen Ubuntu-Computers mit der Azure Docker-VM-Erweiterung unter Verwendung einer [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). 
 
-Bei Verwendung der Docker-VM-Erweiterung wird Ihr virtueller Computer automatisch als Docker-Host eingerichtet, und Compose ist bereits installiert. Das Beispiel in diesem Artikel zeigt, wie die [Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md) im Resource Manager-Modus zum Erstellen des virtuellen Computers verwendet wird.
+Bei Verwendung der Docker-VM-Erweiterung wird Ihr virtueller Computer automatisch als Docker-Host eingerichtet, und Compose ist bereits installiert. Sie können eine der folgenden Versionen der Befehlszeilenschnittstelle verwenden, um einen virtuellen Computer zu erstellen und die Docker-VM-Erweiterung zu nutzen:
 
-Mit dem grundlegenden Befehl aus dem vorherigen Dokument wird eine Ressourcengruppe mit dem Namen `myResourceGroup` für den Standort `West US` erstellt und eine VM mit der Docker-VM-Erweiterung von Azure installiert:
+- [Azure CLI 1.0:](#azure-cli-10) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](#azure-cli-20-preview) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+
+
+### <a name="azure-cli-10"></a>Azure-Befehlszeilenschnittstelle 1.0
+Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md), und melden Sie sich bei einem Azure-Konto an. Stellen Sie sicher, dass der Resource Manager-Modus (`azure config mode arm`) aktiviert ist, bevor Sie den virtuellen Computer erstellen.
+
+Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` im Standort `West US` und stellt einen virtuellen Computer mit der Azure Docker-VM-Erweiterung bereit. Zum Bereitstellen der Umgebung wird eine [Azure Resource Manager-Vorlage von GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) verwendet:
 
 ```azurecli
 azure group create --name myResourceGroup --location "West US" \
@@ -42,10 +49,39 @@ In der Azure-Befehlszeilenschnittstelle gelangen Sie nach wenigen Sekunden zurü
 azure vm show --resource-group myResourceGroup --name myDockerVM
 ```
 
-Im oberen Bereich der Ausgabe finden Sie den `ProvisioningState` -Wert für den virtuellen Computer. Wenn hier `Succeeded`angezeigt wird, ist die Bereitstellung abgeschlossen, und Sie können sich per SSH beim virtuellen Computer anmelden.
+### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
+
+Erstellen Sie zuerst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe für Ihre Docker-Umgebung. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `West US`:
+
+```azurecli
+az group create --name myResourceGroup --location westus
+```
+
+Stellen Sie als Nächstes mit [az group deployment create](/cli/azure/group/deployment#create) einen virtuellen Computer bereit, der die Azure Docker-VM-Erweiterung aus [dieser Azure Resource Manager-Vorlage auf GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) enthält. Geben Sie eigene Werte für `newStorageAccountName`, `adminUsername`, `adminPassword` und `dnsNameForPublicIP` an:
+
+```azurecli
+az group deployment create --resource-group myResourceGroup \
+  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
+    "adminUsername": {"value": "azureuser"},
+    "adminPassword": {"value": "P@ssw0rd!"},
+    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+```
+
+Es dauert einige Minuten, bis die Bereitstellung abgeschlossen ist. Wenn die Bereitstellung abgeschlossen ist, [fahren Sie mit dem nächsten Schritt fort](#step-2-verify-that-compose-is-installed), um eine SSH-Verbindung mit Ihrem virtuellen Computer herzustellen. 
+
+Optional können Sie dem vorherigen Befehl das `--no-wait`-Flag hinzufügen, um stattdessen die Steuerung an die Eingabeaufforderung zurückzugeben und die Bereitstellung im Hintergrund auszuführen. Auf diese Weise können Sie die Befehlszeilenschnittstelle für andere Aufgaben nutzen, während die Bereitstellung ausgeführt wird. Sie können dann mit dem Befehl [az vm show](/cli/azure/vm#show) Details zum Docker-Hoststatus anzeigen. Im folgenden Beispiel wird der Status des virtuellen Computers `myDockerVM` (der Standardname aus der Vorlage – ändern Sie diesen Namen nicht) in der Ressourcengruppe `myResourceGroup` überprüft:
+
+```azurecli
+az vm show --resource-group myResourceGroup --name myDockerVM \
+  --query [provisioningState] --output tsv
+```
+
+Wenn diese Befehl `Succeeded` zurückgibt, ist die Bereitstellung abgeschlossen, und Sie können im nächsten Schritt eine SSH-Verbindung mit dem virtuellen Computer herstellen.
 
 ## <a name="step-2-verify-that-compose-is-installed"></a>Schritt 2: Vergewissern, dass Compose installiert ist
-Stellen Sie nach Abschluss der Bereitstellung eine SSH-Verbindung mit dem neuen Docker-Host her. Verwenden Sie dazu den DNS-Namen, den Sie während der Bereitstellung angegeben haben. Sie können `azure vm show -g myDockerResourceGroup -n myDockerVM` verwenden, um die Details Ihrer VM anzuzeigen, einschließlich DNS-Name.
+Stellen Sie nach Abschluss der Bereitstellung eine SSH-Verbindung mit dem neuen Docker-Host her. Verwenden Sie dazu den DNS-Namen, den Sie während der Bereitstellung angegeben haben. Sie können `azure vm show -g myResourceGroup -n myDockerVM` (Azure-Befehlszeilenschnittstelle 1.0) oder `az vm show -g myResourceGroup -n myDockerVM -d --query [fqdns] -o tsv` (Azure-Befehlszeilenschnittstelle 2.0 [Vorschau]) verwenden, um die Details Ihres virtuellen Computers anzuzeigen, beispielsweise den DNS-Namen.
 
 Führen Sie den folgenden Befehl aus, um sicherzustellen, dass Compose auf dem virtuellen Computer installiert ist:
 
@@ -137,6 +173,6 @@ Sie können nun auf dem virtuellen Computer über Port 80 eine direkte Verbindun
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

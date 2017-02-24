@@ -14,11 +14,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.date: 09/06/2016
-ms.author: rclaus
+ms.date: 02/02/2017
+ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 17ddda372f3a232be62e565b700bb1be967fb8e3
-ms.openlocfilehash: 5e9fb48fdf0da9a1c75f4d08ab7d97976859340c
+ms.sourcegitcommit: 50a71382982256e98ec821fd63c95fbe5a767963
+ms.openlocfilehash: 91f4ada749c3f37903a8757843b10060b73d95a2
 
 
 ---
@@ -28,12 +28,72 @@ In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den v
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
+Für verwaltete Datenträger:
+
+```azurecli
+az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk –-new
+```
+
+Für nicht verwaltete Datenträger:
+
 ```azurecli
 azure vm disk attach-new myResourceGroup myVM 50
 ```
 
-## <a name="attach-a-disk"></a>Anfügen eines Datenträgers
-Neue Datenträger lassen sich schnell anfügen. Geben Sie `azure vm disk attach-new myResourceGroup myVM sizeInGB` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
+## <a name="attach-a-managed-disk"></a>Anfügen eines verwalteten Datenträgers
+
+Durch die Verwendung von verwalteten Datenträgern können Sie sich auf Ihre virtuellen Computer und die zugehörigen Datenträger konzentrieren und müssen sich nicht um Azure Storage-Konten kümmern. Sie können einen verwalteten Datenträger schnell erstellen und an einen virtuellen Computer anfügen, indem Sie die gleiche Azure-Ressourcengruppe verwenden. Alternativ dazu können Sie eine beliebige Anzahl von Datenträgern erstellen und diese dann anfügen.
+
+
+### <a name="attach-a-new-disk-to-a-vm"></a>Anfügen eines neuen Datenträgers an einen virtuellen Computer
+
+Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, können Sie den Befehl `az vm disk attach` verwenden.
+
+```azurecli
+az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk –-new
+```
+
+### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 
+
+In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Hierbei müssen Sie die Datenträger-ID finden und diese an den Befehl `az vm disk attach-disk` übergeben. Der folgende Code verwendet einen Datenträger, der mit `az disk create -g myResourceGroup -n myDataDisk --size-gb 50` erstellt wurde.
+
+```azurecli
+# find the disk id
+diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
+az vm disk attach-disk -g myResourceGroup --vm-name myVM --disk $diskId
+```
+
+Die Ausgabe sieht in etwa wie folgt aus (Sie können die Option `-o table` bei jedem Befehl zum Formatieren der Ausgabe verwenden):
+
+```json
+{
+  "accountType": "Standard_LRS",
+  "creationData": {
+    "createOption": "Empty",
+    "imageReference": null,
+    "sourceResourceId": null,
+    "sourceUri": null,
+    "storageAccountId": null
+  },
+  "diskSizeGb": 50,
+  "encryptionSettings": null,
+  "id": "/subscriptions/<guid>/resourceGroups/rasquill-script/providers/Microsoft.Compute/disks/myDataDisk",
+  "location": "westus",
+  "name": "myDataDisk",
+  "osType": null,
+  "ownerId": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "tags": null,
+  "timeCreated": "2017-02-02T23:35:47.708082+00:00",
+  "type": "Microsoft.Compute/disks"
+}
+```
+
+
+## <a name="attach-an-unmanaged-disk"></a>Anfügen eines nicht verwalteten Datenträgers
+
+Das Anfügen eines neuen Datenträgers lässt sich schnell erledigen, wenn Sie den Datenträger im gleichen Speicherkonto erstellen können, in dem sich auch Ihr virtueller Computer befindet. Geben Sie `azure vm disk attach-new` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
 ```azurecli
 azure vm disk attach-new myResourceGroup myVM 50
@@ -292,6 +352,6 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
