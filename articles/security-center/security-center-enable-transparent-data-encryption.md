@@ -1,6 +1,6 @@
 ---
 title: Aktivieren von Transparent Data Encryption in Azure Security Center | Microsoft Docs
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Aktivieren von Transparent Data Encryption“ umsetzen."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Transparent Data Encryption aktivieren** implementieren."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6944454190d2744cd7cd9a25d9876c5c7427b5f8
+ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
+ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
 
 
 ---
@@ -27,8 +27,8 @@ Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren vir
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Transparent Data Encryption aktivieren** aus.
@@ -37,9 +37,9 @@ Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren vir
    ![Auswählen einer SQL-Datenbank, um TDE zu aktivieren][2]
 3. Wählen Sie auf dem Blatt **Transparent Data Encryption** unter „Datenverschlüsselung“ **EIN** und dann auf dem oberen Menüband des Blatts **Speichern** aus.
    ![Aktivieren von TDE][3]
-   
+
    Nach der Aktivierung von TDE für die ausgewählte SQL-Datenbank ändert sich **Verschlüsselungsstatus** in **Verschlüsselt**.    
-   
+
    ![Verschlüsselungsstatus][4]
 
 ## <a name="see-also"></a>Weitere Informationen
@@ -66,6 +66,6 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

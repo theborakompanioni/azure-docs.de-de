@@ -1,5 +1,5 @@
 ---
-title: "Sind Ihre Daten für Data Science bereit? Datenbewertung | Microsoft Docs"
+title: "Sind Ihre Daten für Data Science bereit? Datenbewertung – Azure | Microsoft-Dokumentation"
 description: "Lernen Sie die vier Kriterien zum Prüfen der Bereitschaft Ihrer Daten für Data Science kennen. Das 2. Video von „Data Science für Einsteiger“ bietet konkrete Beispiele für eine grundlegende Bewertung von Daten."
 keywords: relevante Daten,Bewerten von Daten,Vorbereiten von Daten,Kriterien von Daten,vorbereitete Daten
 services: machine-learning
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 35579eda8b92a481525ad987e99e7d9c9ed6b942
-ms.openlocfilehash: 902d83db4630bad443208e0aad039d3ad199d2a1
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: 3d2b259c29a52394ac42afba0c5572364cfeea39
 
 
 ---
@@ -113,6 +113,6 @@ Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

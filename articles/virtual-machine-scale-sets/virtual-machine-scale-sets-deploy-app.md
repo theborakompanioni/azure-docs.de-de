@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2016
+ms.date: 02/07/2017
 ms.author: guybo
 translationtype: Human Translation
-ms.sourcegitcommit: da5ad10e01d83d714b47f8d478dc73a824797dea
-ms.openlocfilehash: 714e0dd907b1efe8d2c4d6e062a6cedd08f44c4c
+ms.sourcegitcommit: f13545d753690534e0e645af67efcf1b524837eb
+ms.openlocfilehash: dad27b11b5f02ed41826b82882cc5089eb69cb04
 
 
 ---
@@ -33,6 +33,10 @@ Ein Vorteil dieses Ansatzes ist die Trennung von Anwendungscode und Betriebssyst
 **Wenn Sie vertrauliche Informationen im Befehl der benutzerdefinierten Skripterweiterung übergeben (z.B. ein Kennwort), müssen Sie den `commandToExecute` im `protectedSettings`-Attribut der benutzerdefinierten Skripterweiterung angeben, nicht im `settings`-Attribut.**
 
 * Erstellen Sie ein benutzerdefiniertes VM-Image, das das Betriebssystem und die Anwendung in einer einzelnen VHD enthält. Hier besteht die Skalierungsgruppe aus einer Gruppe von VMs, die aus einem von Ihnen erstellten Image kopiert wird, das Sie verwalten müssen. Dieser Ansatz erfordert keine zusätzliche Konfiguration zum Zeitpunkt der VM-Bereitstellung. In der Version `2016-03-30` der VM-Skalierungsgruppen (und in früheren Versionen) sind die Betriebssystemdatenträger für die VMs in der Skalierungsgruppe allerdings auf ein einzelnes Speicherkonto beschränkt. Folglich können Sie höchstens 40 VMs in einer Skalierungsgruppe verwenden, im Unterschied zum Höchstwert von 100 VM pro Skalierungsgruppe für Plattformimages. Weitere Details finden Sie unter [Entwerfen von VM-Skalierungsgruppen für die Skalierung](virtual-machine-scale-sets-design-overview.md).
+
+    >[!NOTE]
+    >Die VM-Skalierungsgruppen-API mit der Version `2016-04-30-preview` unterstützt das Verwenden von Azure Managed Disks für den Betriebssystem-Datenträger und alle zusätzlichen Datenträger. Weitere Informationen finden Sie unter [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md) und [Verwenden angefügter Datenträger](virtual-machine-scale-sets-attached-disks.md). 
+
 * Stellen Sie eine Plattform oder ein benutzerdefiniertes Image bereit, bei der bzw. dem es sich im Grunde um einen Containerhost handelt, und installieren Sie die Anwendung als einen oder mehrere Container, die Sie mit einem Orchestrator oder einem Tool für die Konfigurationsverwaltung verwalten. Das Schöne an diesem Ansatz ist, dass Sie Ihre Cloudinfrastruktur von der Anwendungsebene abstrahiert haben und beides separat verwalten können.
 
 ## <a name="what-happens-when-a-vm-scale-set-scales-out"></a>Was geschieht, wenn eine VM-Skalierungsgruppe horizontal hochskaliert wird?
@@ -42,6 +46,7 @@ Wenn Sie einer Skalierungsgruppe VMs hinzufügen, indem Sie die Kapazität erhö
 Für Anwendungsupdates in VM-Skalierungsgruppen ergeben sich aus den drei vorherigen Bereitstellungsmethoden für Anwendungen drei Verfahren:
 
 * Aktualisieren mit VM-Erweiterungen. VM-Erweiterungen, die für eine VM-Skalierungsgruppe definiert wurden, werden jedes Mal ausgeführt, wenn eine neue VM bereitgestellt, für eine vorhandene VM ein Reimaging durchgeführt oder eine VM-Erweiterung aktualisiert wird. Wenn Sie die Anwendung aktualisieren müssen, ist das direkte Aktualisieren einer Anwendung über Erweiterungen eine geeignete Vorgehensweise: Sie aktualisieren einfach die Definition der Erweiterung. Dazu können Sie einfach die fileUris so ändern, dass sie auf die neue Software verweisen.
+
 * Das Verfahren mit einem unveränderlichen benutzerdefinierten Image. Wenn Sie die Anwendung (oder App-Komponenten) in ein VM-Image integrieren, können Sie sich darauf konzentrieren, eine verlässliche Pipeline zum Automatisieren von Builds, Tests und Bereitstellungen der Images zu erstellen. Sie können Ihre Architektur so entwerfen, dass der schnelle Austausch einer bereitgestellten Skalierungsgruppe in der Produktion erleichtert wird. Ein gutes Beispiel dieses Verfahrens ist die [Azure Spinnaker-Treibermethode](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure) - [http://www.spinnaker.io/](http://www.spinnaker.io/).
 
 Packer und Terraform unterstützen Azure Resource Manager ebenfalls. Daher können Sie Images auch „als Code“ definieren und in Azure erstellen und dann die VHD in der Skalierungsgruppe verwenden. Allerdings entstehen dadurch Probleme mit Marketplace-Images, in denen Erweiterungen/benutzerdefinierte Skripts wichtiger werden, da Sie Marketplace-Elemente nicht direkt bearbeiten.
@@ -51,11 +56,11 @@ Packer und Terraform unterstützen Azure Resource Manager ebenfalls. Daher könn
 Die Skalierungsgruppen-VMs werden dann zu einem stabilen Substrat für die Container und erfordern nur gelegentliche Sicherheits- und Betriebssystemupdates. Wie bereits erwähnt, ist Azure Container Service ein gutes Beispiel für diesen Ansatz und das Erstellen eines entsprechenden Diensts.
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>Wie verteilen Sie ein Betriebssystemupdate auf Updatedomänen?
-Nehmen wir an, dass Sie das Betriebssystemimage aktualisieren möchten, während gleichzeitig die VM-Skalierungsgruppe weiter ausgeführt wird. Eine Möglichkeit ist, die VM-Images der einzelnen VMs nacheinander zu aktualisieren. Sie können dazu PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Es gibt gesonderte Befehle zum Aktualisieren des VM-Skalierungsgruppenmodells (der Konfigurationsdefinition) und zur Ausgabe von Aufrufen zum „manuellen Upgrade“ auf einzelnen VMs. Das Azure-Dokument [Upgrade a Virtual Machine Scale Set](./virtual-machine-scale-sets-upgrade-scale-set.md) (Aktualisieren einer VM-Skalierungsgruppe) bietet auch weitere Informationen zu Optionen zum Ausführen von Betriebssystemupgrades in einer VM-Skalierungsgruppe.
+Nehmen wir an, dass Sie das Betriebssystemimage aktualisieren möchten, während gleichzeitig die VM-Skalierungsgruppe weiter ausgeführt wird. Eine Möglichkeit ist, die VM-Images der einzelnen VMs nacheinander zu aktualisieren. Sie können dazu PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Es gibt gesonderte Befehle zum Aktualisieren des VM-Skalierungsgruppenmodells (der Konfigurationsdefinition) und zur Ausgabe von Aufrufen zum „manuellen Upgrade“ auf einzelnen VMs. Das Azure-Dokument [Upgraden einer VM-Skalierungsgruppe](./virtual-machine-scale-sets-upgrade-scale-set.md) bietet auch weitere Informationen zu Optionen zum Ausführen von Betriebssystemupgrades in einer VM-Skalierungsgruppe.
 
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

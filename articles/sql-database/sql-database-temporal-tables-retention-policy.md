@@ -16,8 +16,8 @@ ms.workload: sql-database
 ms.date: 10/12/2016
 ms.author: bonova
 translationtype: Human Translation
-ms.sourcegitcommit: 239d009a1fc7273a50d335a0d55d61f414d99b11
-ms.openlocfilehash: dac4a96f9b62f390aeb84fe237788350c70ea5cd
+ms.sourcegitcommit: dd09cf5f9ad4bc82d9685b656eb40d31ac13fbd2
+ms.openlocfilehash: a0f5ef966bf4de86d337a561a4b9e2ded8b55488
 
 
 ---
@@ -42,7 +42,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ````
 
-Das Datenbank-Flag **is_temporal_history_retention_enabled** ist standardmäßig auf ON gesetzt, Benutzer können es jedoch mit der ALTER DATABASE-Anweisung ändern. Nach dem Vorgang [Point-in-Time-Wiederherstellung](sql-database-point-in-time-restore.md) wird es außerdem automatisch auf OFF gesetzt. Um die Bereinigung der temporalen Verlaufsdatenaufbewahrung für Ihre Datenbank zu aktivieren, führen Sie die folgende Anweisung aus:
+Das Datenbank-Flag **is_temporal_history_retention_enabled** ist standardmäßig auf ON gesetzt, Benutzer können es jedoch mit der ALTER DATABASE-Anweisung ändern. Nach dem Vorgang [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md) wird es außerdem automatisch auf OFF gesetzt. Um die Bereinigung der temporalen Verlaufsdatenaufbewahrung für Ihre Datenbank zu aktivieren, führen Sie die folgende Anweisung aus:
 
 ````
 ALTER DATABASE <myDB>
@@ -169,7 +169,7 @@ Wenn Sie allerdings die Verlaufstabelle direkt abfragen, sehen Sie möglicherwei
 Basieren Sie Ihre Geschäftslogik nicht auf das Lesen der Verlaufstabelle nach der Beibehaltungsdauer, da Sie inkonsistente oder unerwartete Ergebnisse erhalten könnten. Es empfiehlt sich, temporale Abfragen mit der Klausel „FOR SYSTEM_TIME“ zu verwenden, um Daten in temporalen Tabellen zu analysieren.
 
 ## <a name="point-in-time-restore-considerations"></a>Überlegungen zur Point-in-Time-Wiederherstellung
-Wenn Sie eine neue Datenbank erstellen, indem Sie eine [vorhandene Datenbank zu einem bestimmten Zeitpunkt wiederherstellen](sql-database-point-in-time-restore.md), ist die temporale Beibehaltungsdauer auf Datenbankebene deaktiviert. (Das Flag **is_temporal_history_retention_enabled** ist auf OFF gesetzt.) Mit dieser Funktion können Sie bei der Wiederherstellung alle Zeilen mit Verlaufsdaten untersuchen, ohne dass veraltete Zeilen entfernt werden, bevor Sie diese abfragen können. Sie können diese Funktion verwenden, um *Verlaufsdaten außerhalb der konfigurierten Beibehaltungsdauer zu überprüfen*.
+Wenn Sie eine neue Datenbank erstellen, indem Sie eine [vorhandene Datenbank zu einem bestimmten Zeitpunkt wiederherstellen](sql-database-point-in-time-restore-portal.md), ist die temporale Beibehaltungsdauer auf Datenbankebene deaktiviert. (Das Flag **is_temporal_history_retention_enabled** ist auf OFF gesetzt.) Mit dieser Funktion können Sie bei der Wiederherstellung alle Zeilen mit Verlaufsdaten untersuchen, ohne dass veraltete Zeilen entfernt werden, bevor Sie diese abfragen können. Sie können diese Funktion verwenden, um *Verlaufsdaten außerhalb der konfigurierten Beibehaltungsdauer zu überprüfen*.
 
 Ein Beispiel: Für eine temporale Tabelle wurde eine Beibehaltungsdauer von einem MONAT angegeben. Wenn Ihre Datenbank im Premium-Tarif erstellt wurde, könnten Sie eine Datenbankkopie mit dem Status der Datenbank vor 35 Tagen erstellen. So könnten Sie effektiv Zeilen mit Verlaufsdaten analysieren, die bis zu 65 Tage alt sind, indem Sie die Verlaufstabelle direkt abfragen.
 
@@ -190,6 +190,6 @@ Ausführliche Informationen zu temporalen Tabellen finden Sie in der [MSDN-Dokum
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

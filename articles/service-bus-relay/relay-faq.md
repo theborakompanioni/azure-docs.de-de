@@ -1,5 +1,5 @@
 ---
-title: "Relay – häufig gestellte Fragen| Microsoft Docs"
+title: "Häufig gestellte Fragen (FAQ) zu Azure Relay | Microsoft-Dokumentation"
 description: "Enthält Antworten auf einige häufig gestellte Fragen zu Azure Relay."
 services: service-bus-relay
 documentationcenter: na
@@ -12,32 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2016
-ms.author: jotaub,sethm
+ms.date: 02/02/2017
+ms.author: jotaub;sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 849d7995e9c74bc929c4f791ae9155ca18ddb77b
-ms.openlocfilehash: 12702f585605a88ed6e753a0ff301095e8629e05
+ms.sourcegitcommit: 4b54ad027a7de02cba7821f2a9b7fd06ef3a825b
+ms.openlocfilehash: ca2767340cb232722def8f06277cc84d5c76c1bf
 
 
 ---
 # <a name="relay-faq"></a>Relay – Häufig gestellte Fragen
-In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Relay beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
+
+In diesem Artikel werden einige häufig gestellte Fragen zu [Microsoft Azure Relay](https://azure.microsoft.com/services/service-bus/) beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 ### <a name="what-is-azure-relay"></a>Was ist Azure Relay?
-Der Azure-[Relaydienst](relay-what-is-it.md) unterstützt Ihre Hybridanwendungen, indem er Ihnen die Möglichkeit bietet, Dienste in einem Unternehmensnetzwerk sicher in der öffentlichen Cloud verfügbar zu machen, ohne dass eine Firewallverbindung geöffnet werden muss oder tiefgreifende Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
+Der [Azure-Relaydienst](relay-what-is-it.md) unterstützt Ihre Hybridanwendungen, indem er Ihnen die Möglichkeit bietet, Dienste aus einem Unternehmensnetzwerk sicher in der öffentlichen Cloud verfügbar zu machen, ohne dass eine Firewallverbindung geöffnet werden muss oder tiefgreifende Änderungen an der unternehmensinternen Netzwerkinfrastruktur erforderlich werden.
 
 ### <a name="what-is-a-relay-namespace"></a>Was ist ein Relay-Namespace?
-Ein [Namespace](relay-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Relay-Ressourcen innerhalb Ihrer Anwendung. Die Namespace-Erstellung ist für die Verwendung von Relay erforderlich und ist einer der ersten Schritte.
+Ein [Namespace](relay-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Relay-Ressourcen innerhalb Ihrer Anwendung. Die Erstellung eines Namespace ist für die Verwendung von Relay erforderlich und einer der ersten Schritte.
 
 ### <a name="what-happened-to-the-previously-named-relay-service"></a>Was ist mit dem vorherigen Relaydienst passiert?
-Der früher **Relay** genannte Dienst heißt jetzt *WCF-Relay*. Sie können den Dienst weiter wie gewohnt verwenden. Hybridverbindungen sind eine aktualisierte Version eines Diensts, der von BizTalk übernommen wurde. Sowohl WCF-Relay als auch Hybridverbindungen werden in Zukunft weiterhin unterstützt.
+Der früher **Relay** genannte Service Bus-Dienst heißt jetzt *WCF-Relay*. Sie können den Dienst weiter wie gewohnt verwenden. Hybridverbindungen sind eine aktualisierte Version eines Diensts, der von BizTalk übernommen wurde. Sowohl WCF-Relay als auch Hybridverbindungen werden in Zukunft weiterhin unterstützt.
 
 ## <a name="pricing"></a>Preise
 In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Sie können auch die [Azure-Support-FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Microsoft Azure-Preisinformationen suchen. Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Wie werden Hybridverbindungen und WCF-Relay abgerechnet?
-Umfassende Informationen zu Relay-Preisen finden Sie unter [Service Bus Preise][Preisübersicht]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
+Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Wie werden Hybridverbindungen abgerechnet?
 Im Folgenden finden Sie drei Beispielszenarien:
@@ -86,18 +87,21 @@ Die Namen für einen Relay-Namespace können nur zwischen 6 und 50 Zeichen lang 
 
 ## <a name="subscription-and-namespace-management"></a>Abonnement- und Namespace-Verwaltung
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Wie migriere ich einen Namespace zu einem anderen Azure-Abonnement?
-Sie können PowerShell-Befehle verwenden (siehe [diesen Artikel](../service-bus-messaging/service-bus-powershell-how-to-provision.md#migrate-a-namespace-to-another-azure-subscription)), um einen Namespace von einem Azure-Abonnement in ein anderes zu verschieben. Der Namespace muss bereits aktiv sein, um diesen Vorgang durchführen zu können. Außerdem muss der Benutzer, der die Befehle ausführt, sowohl im Quellabonnement als auch im Zielabonnement Administrator sein.
+Sie können PowerShell-Befehle verwenden (siehe [diesen Artikel](../service-bus-messaging/service-bus-powershell-how-to-provision.md)), um einen Namespace von einem Azure-Abonnement in ein anderes zu verschieben. Der Namespace muss bereits aktiv sein, um diesen Vorgang durchführen zu können. Außerdem muss der Benutzer, der die Befehle ausführt, sowohl im Quellabonnement als auch im Zielabonnement Administrator sein.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Azure Relay-APIs generiert werden, und die vorgeschlagenen Aktionen?
-Im Artikel [Relay exceptions (Relay-Ausnahmen)][Relay exceptions (Relay-Ausnahmen)] (Relay-Ausnahmen) werden einige Ausnahmen mit Vorschlägen für Aktionen beschrieben.
+Im Artikel [Relay-Ausnahmen][Relay exceptions] werden einige Ausnahmen mit Vorschlägen für Aktionen beschrieben.
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Was ist eine Shared Access Signature, und welche Sprachen unterstützen die Generierung einer Signatur?
 SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node, PHP, Java und C\# generieren, finden Sie im Artikel [Shared Access Signatures][Shared Access Signatures].
 
-[Preisübersicht]: https://azure.microsoft.com/pricing/details/service-bus/
-[Relay exceptions (Relay-Ausnahmen)]: relay-exceptions.md
+[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Relay exceptions]: relay-exceptions.md
 [Shared Access Signatures]: ../service-bus-messaging/service-bus-sas-overview.md
+
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Ist es möglich, Relay-Endpunkte in eine Whitelist aufzunehmen?
+Ja. Der Relay-Client stellt mithilfe vollqualifizierter Domänennamen Verbindungen mit dem Relay-Dienst her. Dadurch können Kunden einen Eintrag für `*.servicebus.windows.net` für Firewalls hinzufügen, die DNS-Whitelists unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
@@ -106,6 +110,6 @@ SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf s
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,10 +1,10 @@
 ---
-title: Windows Universal-SDK-Integration
+title: "Azure Mobile Engagement – Versionshinweise für die Windows Universal SDK-Integration | Microsoft-Dokumentation"
 description: "Windows Universal-SDK-Integration für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9ded187d-5c07-4377-a41c-ce205dd38b50
 ms.service: mobile-engagement
@@ -12,11 +12,11 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-store
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: piyushjo;ricksal
+ms.date: 11/03/2016
+ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: acf599588de4dac04d51a66348ea9336fe6ce2f7
+ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
+ms.openlocfilehash: d616ad58156a19e89b3e106639a38df67cbd0abb
 
 
 ---
@@ -40,10 +40,9 @@ Sie können die folgenden Funktionen hinzufügen:
 [Verwenden der Engagement-API auf der universellen Windows-Plattform](mobile-engagement-windows-store-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Versionshinweise
-### <a name="340-04192016"></a>3.4.0 (19.04.2016)
-* Reach-Overlayverbesserungen.
-* „TestLogLevel“-API zum Aktivieren/Deaktivieren/Filtern von Konsolenprotokollen, die vom SDK ausgegeben wurden, wurde hinzugefügt.
-* Behebung des Problems mit Inaktivitätsbenachrichtigungen, die sich darauf bezogen, dass die erste Aktivität beim App-Start nicht angezeigt wurde.
+### <a name="341-11032016"></a>3.4.1 (11/03/2016)
+
+* Verbesserungen der Stabilität.
 
 Frühere Versionen finden Sie unter [Vollständige Versionshinweise](mobile-engagement-windows-store-release-notes.md)
 
@@ -78,6 +77,6 @@ Siehe [Upgrade-Verfahren](mobile-engagement-windows-store-upgrade-procedure.md)
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -1,41 +1,36 @@
-
 ---
-title: Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
-description: Erfahren Sie, wie Sie Medienobjekte und verwandte Entitäten mit dem Media Services SDK für .NET verwalten.
+title: "Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK"
+description: "Erfahren Sie, wie Sie Medienobjekte und verwandte Entitäten mit dem Media Services SDK für .NET verwalten."
 author: juliako
-manager: dwrede
-editor: ''
+manager: erikre
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 1bd8fd42-7306-463d-bfe5-f642802f1906
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/12/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 3a8f878502f6a7237212b467b2259fcbb48000ff
+ms.openlocfilehash: d0775971c76c5745f90cb6c5268fda5a2c905093
+
 
 ---
-# <a name="managing-assets-and-related-entities-with-media-services-.net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
+# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-manage-entities.md)
 > * [REST](media-services-rest-manage-entities.md)
 > 
 > 
 
-In diesem Thema wird gezeigt, wie Sie die folgenden Media Services-Verwaltungsaufgaben ausführen:
+Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit .NET. 
 
-* Abrufen eines Verweises auf ein Medienobjekt 
-* Abrufen eines Verweises auf einen Auftrag 
-* Auflisten aller Medienobjekte 
-* Auflisten von Aufträgen und Medienobjekten 
-* Auflisten aller Zugriffsrichtlinien 
-* Auflisten aller Locators
-* Auflisten von großen Auflistungen von Entitäten
-* Löschen eines Medienobjekts 
-* Löschen eines Auftrags 
-* Löschen einer Zugriffsrichtlinie 
+>[!NOTE]
+> Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Siehe [Einrichten der Umgebung](media-services-set-up-computer.md)
@@ -55,24 +50,6 @@ Im folgenden Codebeispiel wird eine Linq-Abfrage zum Abrufen eines Verweises auf
         IAsset asset = assetInstance.FirstOrDefault();
 
         return asset;
-    }
-
-## <a name="get-a-job-reference"></a>Abrufen eines Verweises auf einen Auftrag
-Bei der Verarbeitung von Aufgaben in Media Services-Code müssen Sie häufig einen Verweis auf einen vorhandenen Auftrag anhand einer ID abrufen. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf ein IJob-Objekt aus der Sammlung der Aufträge abrufen.
-Warnung: Möglicherweise müssen Sie einen Verweis auf einen Auftrag beim Starten eines Codierungsauftrags mit langer Laufzeit abrufen und den Auftragsstatus für einen Thread überprüfen. Wenn die Rückgabe der Methode in einem solchen Fall aus einem Thread erfolgt, müssen Sie einen aktualisierten Verweis auf einen Auftrag abrufen.
-
-    static IJob GetJob(string jobId)
-    {
-        // Use a Linq select query to get an updated 
-        // reference by Id. 
-        var jobInstance =
-            from j in _context.Jobs
-            where j.Id == jobId
-            select j;
-        // Return the job reference as an Ijob. 
-        IJob job = jobInstance.FirstOrDefault();
-
-        return job;
     }
 
 ## <a name="list-all-assets"></a>Auflisten aller Medienobjekte
@@ -112,6 +89,26 @@ Wenn die Anzahl der Medienobjekte im Speicher steigt, ist es hilfreich, diese Me
 
         // Display output in console.
         Console.Write(builder.ToString());
+    }
+
+## <a name="get-a-job-reference"></a>Abrufen eines Verweises auf einen Auftrag
+
+Bei der Verarbeitung von Aufgaben in Media Services-Code müssen Sie häufig einen Verweis auf einen vorhandenen Auftrag anhand einer ID abrufen. Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf ein IJob-Objekt aus der Sammlung der Aufträge abrufen.
+
+Möglicherweise müssen Sie einen Verweis auf einen Auftrag beim Starten eines Codierungsauftrags mit langer Laufzeit abrufen und den Auftragsstatus für einen Thread überprüfen. Wenn die Rückgabe der Methode in einem solchen Fall aus einem Thread erfolgt, müssen Sie einen aktualisierten Verweis auf einen Auftrag abrufen.
+
+    static IJob GetJob(string jobId)
+    {
+        // Use a Linq select query to get an updated 
+        // reference by Id. 
+        var jobInstance =
+            from j in _context.Jobs
+            where j.Id == jobId
+            select j;
+        // Return the job reference as an Ijob. 
+        IJob job = jobInstance.FirstOrDefault();
+
+        return job;
     }
 
 ## <a name="list-jobs-and-assets"></a>Auflisten von Aufträgen und Medienobjekten
@@ -211,6 +208,45 @@ Im folgenden Codebeispiel wird veranschaulicht, wie alle Zugriffsrichtlinien auf
 
         }
     }
+    
+## <a name="limit-access-policies"></a>Einschränken von Zugriffsrichtlinien 
+
+>[!NOTE]
+> Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. 
+
+Beispielsweise können Sie einen allgemeinen Satz von Richtlinien mit dem folgenden Code erstellen, der nur einmal in Ihrer Anwendung ausgeführt wird. Sie können IDs zur späteren Verwendung in einer Protokolldatei protokollieren:
+
+    double year = 365.25;
+    double week = 7;
+    IAccessPolicy policyYear = _context.AccessPolicies.Create("One Year", TimeSpan.FromDays(year), AccessPermissions.Read);
+    IAccessPolicy policy100Year = _context.AccessPolicies.Create("Hundred Years", TimeSpan.FromDays(year * 100), AccessPermissions.Read);
+    IAccessPolicy policyWeek = _context.AccessPolicies.Create("One Week", TimeSpan.FromDays(week), AccessPermissions.Read);
+
+    Console.WriteLine("One year policy ID is: " + policyYear.Id);
+    Console.WriteLine("100 year policy ID is: " + policy100Year.Id);
+    Console.WriteLine("One week policy ID is: " + policyWeek.Id);
+
+Anschließend können Sie die vorhandenen IDs wie folgt in Ihrem Code verwenden:
+
+    const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
+
+
+    // Get the standard policy for 1 year read only
+    var tempPolicyId = from b in _context.AccessPolicies
+                       where b.Id == policy1YearId
+                       select b;
+    IAccessPolicy policy1Year = tempPolicyId.FirstOrDefault();
+
+    // Get the existing asset
+    var tempAsset = from a in _context.Assets
+                where a.Id == assetID
+                select a;
+    IAsset asset = tempAsset.SingleOrDefault();
+
+    ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
+        policy1Year,
+        DateTime.UtcNow.AddMinutes(-5));
+    Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
 
 ## <a name="list-all-locators"></a>Auflisten aller Locators
 Ein Locator ist eine URL, die einen direkten Pfad für den Zugriff auf ein Medienobjekt zusammen mit den entsprechenden Berechtigungen bereitstellt, die durch die zugehörige Zugriffsrichtlinie des Locators definiert sind. Jedem Medienobjekt kann eine Sammlung von ILocator-Objekten über die Locators-Eigenschaft zugeordnet sein. Der Serverkontext enthält ebenfalls eine Locators-Sammlung, die alle Locators enthält.
@@ -238,9 +274,9 @@ Beachten Sie, dass ein Locator-Pfad für ein Medienobjekt nur eine Basis-URL des
     }
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Auflisten von großen Auflistungen von Entitäten
-Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen für das Auflisten großer Auflistungen von Entitäten „Skip“ und „Take“ verwenden. 
+Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Sie müssen für das Auflisten großer Auflistungen von Entitäten „Skip“ und „Take“ verwenden. 
 
-Die folgende Funktion durchläuft alle Aufträge im bereitgestellten Media Services-Konto. Media Services gibt 1.000 Aufträge aus der Auftragsauflistung zurück. Die Funktion nutzt „Skip“ und „Take“, damit alle Aufträge aufgezählt werden (falls Sie mehr als 1.000 Aufträge in Ihrem Konto haben).
+Die folgende Funktion durchläuft alle Aufträge im bereitgestellten Media Services-Konto. Media Services gibt 1.000 Aufträge aus der Auftragsauflistung zurück. Die Funktion nutzt „Skip“ und „Take“, damit alle Aufträge aufgezählt werden (falls Sie mehr als 1.000 Aufträge in Ihrem Konto haben).
 
     static void ProcessJobs()
     {
@@ -293,7 +329,8 @@ Im folgenden Beispiel wird ein Medienobjekt gelöscht.
     }
 
 ## <a name="delete-a-job"></a>Löschen eines Auftrags
-Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden.
+Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden.
+
 Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Dieser Code benötigt die Informationen im vorherigen Abschnitt dieses Themas, um einen Verweis auf einen Job zu erhalten: Abrufen eines Verweises auf einen Auftrag.
 
     static void DeleteJob(string jobId)
@@ -367,6 +404,9 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie einen Verweis auf eine Z
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

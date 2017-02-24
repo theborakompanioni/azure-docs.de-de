@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c4eef02a10cbb646e3d96ed444a0b3d957e0361d
-ms.openlocfilehash: 8a6c84ba559545cd1b786fc42cbbb7b190585e66
+ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
+ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
 
 
 ---
@@ -157,7 +157,7 @@ Der generische SQL-Connector unterstützt folgende Methoden für den Deltaimport
   * Die Wasserzeichenstrategie unterstützt keine gelöschten Objekte.
 * **Momentaufnahme**: (Kann nur mit Microsoft SQL Server verwendet werden.) [Generieren von Deltasichten mithilfe von Momentaufnahmen](https://technet.microsoft.com/library/cc720640.aspx)
 * **Änderungsnachverfolgung**: (Kann nur mit Microsoft SQL Server verwendet werden.) [About Änderungsnachverfolgung](https://msdn.microsoft.com/library/bb933875.aspx)  
-   Einschränkungen:
+  Einschränkungen:
   * Anker- und DN-Attribut müssen Teil des Primärschlüssels für das ausgewählte Objekt in der Tabelle sein.
   * Die SQL-Abfrage wird beim Importieren und Exportieren mit Änderungsnachverfolgung nicht unterstützt.
 
@@ -259,7 +259,7 @@ Der generische SQL-Connector unterstützt vier Methoden für den Export:
 * SQL-Abfrage
 
 **Table/View**  
- (Tabelle/Sicht) Bei Verwendung der Option „Table/View“ (Tabelle/Sicht) generiert der Connector die entsprechenden Abfragen und führt den Exportvorgang aus.
+(Tabelle/Sicht) Bei Verwendung der Option „Table/View“ (Tabelle/Sicht) generiert der Connector die entsprechenden Abfragen und führt den Exportvorgang aus.
 
 **Gespeicherte Prozeduren**  
 ![runstep8](./media/active-directory-aadconnectsync-connector-genericsql/runstep8.png)
@@ -287,7 +287,6 @@ Bei Verwendung der Option „SQL-Abfrage“ werden drei verschiedene Abfragen f�
 
 
 
-
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

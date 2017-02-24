@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte zur Integration von Anwendungen in Azure Active Directory | Microsoft Docs
+title: Erste Schritte bei der Integration von Apps in Azure AD | Microsoft-Dokumentation
 description: "In diesem Artikel sind die ersten Schritte für die Integration von lokalen Anwendungen und Cloudanwendungen in Azure Active Directory (AD)  aufgeführt."
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2016
+ms.date: 01/23/2017
 ms.author: inhenk
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 66276b94f0b2fa124ba2b197d6e8467632f93ce8
+ms.sourcegitcommit: 54e6bf0953135855d4dda2bc83c8dc06212c6eb5
+ms.openlocfilehash: 6b3f6889c747e72ee1c592b1b0dfb1d03d700ad3
 
 
 ---
@@ -95,6 +95,6 @@ Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufüg
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

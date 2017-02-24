@@ -1,6 +1,6 @@
 ---
-title: "Einrichten des Zugriffs auf WinRM für virtuelle Computer in Azure Resource Manager | Microsoft Docs"
-description: Vorgehensweise zum Einrichten des WinRM-Zugriffs zur Verwendung mit einem virtuellen Azure Resource Manager-Computer
+title: "Einrichten des WinRM-Zugriffs für eine Azure-VM | Microsoft-Dokumentation"
+description: "Richten Sie den WinRM-Zugriff für eine Azure-VM ein, die mit dem Ressourcen-Manager-Bereitstellungsmodell erstellt wurde."
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
-ms.author: singhkay
+ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 66b1bcdf0f79ff4743f466c3737696f53ef6a44c
-ms.openlocfilehash: 84a5272844b36951bb0132b21be9913ca50ee817
+ms.sourcegitcommit: ebc2195bbb3526171359cc126ea6b59d0089f4a0
+ms.openlocfilehash: 6559b8605a311bb774f6c8b38a9298875d3a5362
 
 
 ---
@@ -167,6 +167,6 @@ Wenn das Setup abgeschlossen ist, können Sie mit dem folgenden Befehl eine Verb
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

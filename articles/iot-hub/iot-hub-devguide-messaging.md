@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
-ms.openlocfilehash: 768e21205e341f4915f8be50129fd246285a2efc
+ms.sourcegitcommit: b6c79691c75cb01eb4eea4d0e66b01d1792cfb11
+ms.openlocfilehash: 0e3f0166517d3fd0ddd5f04a12afa393d0ac2a92
 
 
 ---
@@ -97,7 +97,7 @@ Mit dem IoT Hub können Sie außerdem Consumergruppen auf dem integrierten D2C-E
 
 Standardmäßig werden alle Nachrichten, für die sich nicht explizit eine Übereinstimmung mit einer Nachrichtenroutingregel ergibt, auf den integrierten Endpunkt geschrieben. Wenn Sie diese Fallbackroute deaktivieren, werden Nachrichten verworfen, für die sich keine expliziten Übereinstimmungen mit Nachrichtenroutingregeln ergeben.
 
-Sie können all diese Eigenschaften sowohl programmgesteuert über die [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] als auch über das [Azure-Portal][lnk-management-portal] ändern.
+Sie können die Aufbewahrungsdauer sowohl programmgesteuert über die [IoT Hub-Ressourcenanbieter-REST-APIs][lnk-resource-provider-apis] als auch über das [Azure-Portal][lnk-management-portal] ändern.
 
 ### <a name="anti-spoofing-properties"></a>Eigenschaften zum Schutz vor Spoofing
 Um ein Gerätespoofing beim D2C-Messaging zu verhindern, versieht IoT Hub alle Nachrichten mit den folgenden Eigenschaften:
@@ -438,6 +438,6 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 
 
 
-<!--HONumber=Jan17_HO5-->
+<!--HONumber=Feb17_HO1-->
 
 

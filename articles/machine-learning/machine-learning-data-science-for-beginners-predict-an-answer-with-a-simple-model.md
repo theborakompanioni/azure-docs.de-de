@@ -1,5 +1,5 @@
 ---
-title: "Vorhersagen einer Antwort mit einem einfachen Modell – Regressionsmodell | Microsoft Docs"
+title: "Vorhersagen einer Antwort mit einem einfachen Regressionsmodell – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das Erstellen eines Regressionsmodells zum Vorhersagen eines Preises. Enthält eine lineare Regression mit Zieldaten."
 keywords: Erstellen eines Modells,einfaches Modell,Preisvorhersage,einfaches Regressionsmodell
 services: machine-learning
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27a9ee1b170f090e626ce332eb518028877fd0d4
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
 
 
 ---
@@ -27,15 +27,15 @@ Erfahren Sie im 4. Video von „Data Science für Einsteiger“ mehr über das E
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/data-science-for-beginners-series-predict-an-answer-with-a-simple-model/player]
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
 
-* 1. Video: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
-* 2. Video: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
+* Video 1: [Die 5 Fragen, die Data Science beantwortet](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5:14 Min.)*
+* Video 2: [Sind Ihre Daten für Data Science bereit?](machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4:56 Min.)*
 * 3. Video: [Stellen einer Frage, die Sie mit Daten beantworten können](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4:17 Min.)*
 * 4. Video: Vorhersagen einer Antwort mit einem einfachen Modell
 * 5. Video: [Kopieren der Arbeit anderer für Ihre Data Science](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3:18 Min.)*
@@ -75,7 +75,7 @@ Als Nächstes zeichnen wir eine vertikale Achse zum Aufzeichnen des Preises und 
 
 Anhand dieser Daten erstellen wir nun ein *Punktdiagramm*. Dies ist eine hervorragende Möglichkeit zum Visualisieren numerischer Datasets.
 
-Für den ersten Datenpunkt zeichnen wir Pi mal Daumen eine vertikale Gerade bei 1,01 Karat. Dann zeichnen wir ebenso eine horizontale Gerade bei 7.366 US-Dollar. An ihrem Schnittpunkt zeichnen wir einen Punkt. Dieser stellt unseren ersten Diamanten dar.
+Für den ersten Datenpunkt zeichnen wir Pi mal Daumen eine vertikale Gerade bei 1,01 Karat. Dann zeichnen wir ebenso eine horizontale Gerade bei&7;.366 US-Dollar. An ihrem Schnittpunkt zeichnen wir einen Punkt. Dieser stellt unseren ersten Diamanten dar.
 
 Dasselbe machen wir nun für jeden Diamanten in dieser Liste. Wenn wir damit fertig sind, erhalten wir das hier: eine Menge von Punkten, einer für jeden Diamanten.
 
@@ -135,7 +135,6 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

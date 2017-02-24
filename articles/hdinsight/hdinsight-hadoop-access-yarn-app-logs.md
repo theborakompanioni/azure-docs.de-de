@@ -13,21 +13,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e36ddba193295fc474d09a484d6a99f4b522e00c
+ms.sourcegitcommit: 6407c371bc51461a05429fabaf38d3f9bc80d32c
+ms.openlocfilehash: bd9133fde0c3ebfd915c8ae33daa6d0113b37889
 
 
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Windows-basiertem HDInsight
-Dieses Thema erläutert den Zugriff auf Protokolle für YARN-Anwendungen (Yet Another Resource Negotiator), die in einem Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
+In diesem Thema wird der Zugriff auf Protokolle für YARN-Anwendungen (Yet Another Resource Negotiator) erläutert, die in einem auf Windows basierenden Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.
 
-> [!NOTE]
-> Die Informationen in diesem Dokument gelten nur für Windows-basierte HDInsight-Cluster. Weitere Informationen zum Zugriff auf YARN-Protokolle auf Linux-basierten HDInsight-Clustern finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle auf Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> [!IMPORTANT]
+> Die Informationen in diesem Dokument gelten nur für Windows-basierte HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Weitere Informationen zum Zugriff auf YARN-Protokolle auf Linux-basierten HDInsight-Clustern finden Sie unter [Zugriff auf YARN-Anwendungsprotokolle auf Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 > 
-> 
+
 
 ### <a name="prerequisites"></a>Voraussetzungen
 * Ein Windows-basierter HDInsight-Cluster  Siehe [Erstellen Windows-basierter Hadoop-Cluster in HDInsight](hdinsight-provision-clusters.md).
@@ -83,6 +83,6 @@ Die YARN-ResourceManager-Benutzeroberfläche wird auf dem Hauptknoten des Cluste
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

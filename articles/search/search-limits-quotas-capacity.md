@@ -13,11 +13,11 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/15/2016
+ms.date: 02/08/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: ffdd03fb1e9718b0f72f5a13bb80de4a4bfe2709
-ms.openlocfilehash: ed21cb2c0f1fce23ed00a50ad181edaacae95ce6
+ms.sourcegitcommit: 99c7ca60b472d2481d9ebb1ec4be3d2eee088c26
+ms.openlocfilehash: e1b76cb4c6393d7c5783f55bf9a0f141786a9602
 
 
 ---
@@ -39,7 +39,7 @@ Ein Dienst wird für einen bestimmten Tarif bereitgestellt. Wenn Sie den Tarif w
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
 ## <a name="per-index-limits"></a>Nach Indexlimits
-Es gibt eine 1:1-Entsprechung zwischen Grenzwerten für Indizes und Grenzwerten für Indexer. Bei einem Grenzwert von 200 Indizes beträgt die maximale Zahl von Indexern für den gleichen Dienst auch 200.
+Es gibt eine&1;:1-Entsprechung zwischen Grenzwerten für Indizes und Grenzwerten für Indexer. Bei einem Grenzwert von 200 Indizes beträgt die maximale Zahl von Indexern für den gleichen Dienst auch 200.
 
 | Ressource | Kostenlos | Basic | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -96,6 +96,6 @@ API-Schlüssel werden für die Dienstauthentifizierung verwendet. Es gibt zwei A
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/22/2016
+ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: c89ce056cb0fa84b2169df161660916d083bec3f
-ms.openlocfilehash: bcef9de167fa31001ee4086d7e5b85c2d8bc4613
+ms.sourcegitcommit: 2826f825b2d34005ce6e7142dd4371285a452ca8
+ms.openlocfilehash: bd1952281dde6f262848d1520995efdb131a3b38
 
 
 ---
 
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli"></a>Erweitern des Betriebssystemdatenträgers auf einer Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle
-Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch den Betriebssystemdatenträger erweitern. Dieser Artikel erläutert, wie die Betriebssystemdatenträger für eine Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle erweitert werden können.
+Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch den Betriebssystemdatenträger erweitern. Dieser Artikel erläutert, wie der Betriebssystemdatenträger für einen virtuellen Linux-Computer mit nicht verwalteten Datenträgern mithilfe der Azure-Befehlszeilenschnittstelle erweitert werden kann.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -46,7 +46,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     > [!NOTE]
     > `azure vm stop` gibt die Computerressourcen nicht frei. Verwenden Sie `azure vm deallocate`, um Computerressourcen freizugeben. Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern.
 
-2. Aktualisieren Sie die Größe des Betriebssystemdatenträgers unter Verwendung des Befehls `azure vm set`. Im folgenden Beispiel wird die VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` auf `50` GB aktualisiert:
+2. Aktualisieren Sie mit dem Befehl `azure vm set` die Größe des nicht verwalteten Betriebssystemdatenträgers. Im folgenden Beispiel wird die VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` auf `50` GB aktualisiert:
 
     ```azurecli
     azure vm set --resource-group myResourceGroup --name myVM --new-os-disk-size 50
@@ -72,6 +72,6 @@ Wenn Sie zusätzlichen Speicher benötigen, [fügen Sie Datenträger zu einer Li
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

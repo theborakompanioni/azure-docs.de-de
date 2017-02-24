@@ -1,5 +1,5 @@
 ---
-title: 'HBase-Tutorial: Erste Schritte mit HBase in Hadoop | Microsoft-Dokumentation'
+title: 'HBase-Tutorial: Erste Schritte mit Windows-basierten HBase-Clustern in Hadoop | Microsoft-Dokumentation'
 description: "Führen Sie dieses HBase-Lernprogramm aus, um sich in Apache HBase mit Hadoop in HDInsight einzuarbeiten. Erstellen Sie über die HBase-Shell Tabellen und fragen Sie diese mit Hive ab."
 keywords: Apache Hbase, Hbase, Hbase-Shell, Hbase-Tutorial
 services: hdinsight
@@ -13,25 +13,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 501c44ff8db2b825b58d98b9b89219ec9fff8b7c
-ms.openlocfilehash: 6384d7b0f4851ce4d1612857203e7c3c1381d6fc
+ms.sourcegitcommit: 541c06240f0c437ad92ea955caee67456851a6e1
+ms.openlocfilehash: 59aee407be91279276ec6eaafed608e354030676
 
 
 ---
 # <a name="hbase-tutorial-get-started-using-apache-hbase-with-windows-based-hadoop-in-hdinsight"></a>HBase-Tutorial: Erste Schritte mit Apache HBase mit Windows-basiertem Hadoop in HDInsight
-[!INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
 Erfahren Sie, wie Sie HBase-Cluster in HDInsight erstellen, HBase-Tabellen erstellen und die Tabellen mit Apache Hive abfragen. Allgemeine Informationen zu HBase finden Sie unter [Überblick zu HDInsight HBase][hdinsight-hbase-overview].
 
-Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Windows-basierten Clustern erhalten Sie, indem Sie die Registerkartenauswahl oben auf der Seite zum Umschalten verwenden.
-
-> [!NOTE]
-> HBase (Version 0.98.0) für Windows-basiertes HDInsight ist nur für HDInsight-Cluster der Version 3.1 verfügbar (basiert auf Apache Hadoop und YARN 2.4.0). Versionshinweise finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen][hdinsight-versions].
-> 
-> 
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zu Linux-basierten Clustern finden Sie unter [HBase-Tutorial: Erste Schritte mit Apache HBase mit Linux-basiertem Hadoop in HDInsight](hdinsight-hbase-tutorial-get-started-linux.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
@@ -329,6 +324,6 @@ Weitere Informationen finden Sie unter:
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

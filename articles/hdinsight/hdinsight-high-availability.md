@@ -13,17 +13,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/21/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: cc59d7785975e3f9acd574b516d20cd782c22dac
-ms.openlocfilehash: 1f40d6119d5fefc48c1e12d510423f996239fe14
+ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
+ms.openlocfilehash: dd28e295df7acead773f9076d790e0e96b66adb9
 
 
 ---
 # <a name="availability-and-reliability-of-windows-based-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Windows-basierten Hadoop-Clustern in HDInsight
-> [!NOTE]
-> Die Schritte in diesem Dokument gelten speziell für Windows-basierte HDInsight-Cluster. Wenn Sie einen Linux-basierten Cluster verwenden, finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md) entsprechende Informationen für Linux.
+> [!IMPORTANT]
+> Die Schritte in diesem Dokument gelten speziell für Windows-basierte HDInsight-Cluster. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Wenn Sie einen Linux-basierten Cluster verwenden, finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md) entsprechende Informationen für Linux.
 >
 >
 
@@ -58,7 +58,7 @@ Um festzustellen, welcher Hauptknoten aktiv ist und den Status der dort laufende
 Im Screenshot ist *headnode0*der aktive Hauptknoten.
 
 ## <a name="access-log-files-on-the-secondary-head-node"></a>Zugreifen auf Protokolldateien auf dem sekundären Hauptknoten
-Wenn der sekundäre Hauptknoten der aktive Hauptknoten ist, können Sie für den Zugriff auf Auftragsprotokolle auf dem sekundären Hauptknoten weiterhin die JobTracker-Benutzeroberfläche verwenden, ebenso wie Sie dies für den aktiven primären Knoten tun würden. Um auf JobTracker zuzugreifen, müssen Sie, wie im vorigen Abschnitt beschrieben, unter Verwendung von RDP eine Verbindung mit dem Hadoop-Cluster herstellen. Sobald Sie die Remoteverbindung mit dem Cluster hergestellt haben, doppelklicken Sie auf dem Desktop auf das Symbol **Hadoop-Namensknotenstatus**. Klicken Sie anschließend auf die **NameNode-Protokolle**, um das Protokollverzeichnis auf dem sekundären Hauptknoten zu öffnen.
+Wenn der sekundäre Hauptknoten der aktive Hauptknoten ist, können Sie für den Zugriff auf Auftragsprotokolle auf dem sekundären Hauptknoten weiterhin die JobTracker-Benutzeroberfläche verwenden, ebenso wie Sie dies für den aktiven primären Knoten tun würden. Um auf JobTracker zuzugreifen, müssen Sie, wie im vorigen Abschnitt beschrieben, unter Verwendung von RDP eine Verbindung mit dem Hadoop-Cluster herstellen. Sobald Sie die Verbindung mit dem Cluster über RDP hergestellt haben, doppelklicken Sie auf dem Desktop auf das Symbol **Hadoop-Namensknotenstatus**. Klicken Sie anschließend auf die **NameNode-Protokolle**, um das Protokollverzeichnis auf dem sekundären Hauptknoten zu öffnen.
 
 ![](./media/hdinsight-high-availability/Hadoop.Head.Node.Log.Files.png)
 
@@ -106,6 +106,6 @@ Das Verfahren für das SDK ist ähnlich. Die Erstellung und Bereitstellung eines
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

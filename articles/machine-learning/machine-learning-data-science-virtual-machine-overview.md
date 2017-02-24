@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2016
+ms.date: 02/01/2017
 ms.author: bradsev
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 9d4df15fb4514817d9233ab4e5bd0eb65e5a95dc
+ms.sourcegitcommit: 6c664a055e577881d4fcccd5b0ba4047d88aa9ef
+ms.openlocfilehash: 64b413451c6ce47cc3aa14322b2aa0342e1e3ffe
 
 
 ---
@@ -50,18 +50,23 @@ Die Data Science-VM kann zur Auswertung oder zum Lernen von Tools wie Microsoft 
 Der virtuelle Computer für Data Science hat viele beliebte Data Science-Tools bereits installiert und konfiguriert. Darüber hinaus enthält er Tools, die die Arbeit mit verschiedenen Azure-Daten und Analyse-Produkten erleichtern. Sie können Vorhersagemodelle für umfangreiche Datasets mithilfe von Microsoft R Server oder SQL Server 2016 untersuchen und erstellen. Eine Reihe von anderen Tools der Open-Source-Community und von Microsoft sind ebenfalls enthalten, sowie Beispiel-Code und Notebooks. Die folgende Tabelle enthält eine Aufzählung und einen Vergleich der wichtigsten Komponenten Windows- und Linux-Editionen des virtuellen Computers für Data Science.
 
 | **Windows-Edition** | **Linux-Edition** |
-| --- | --- |
-| Microsoft R Server Developer Edition |Microsoft R Server Developer Edition |
-| Anaconda Python 2.7, 3.5 |Anaconda Python 2.7, 3.5 |
-| Jupyter Notebook Server (R, Python) |JupyterHub: Multiuser Jupyter Notebooks (R, Python, Julia) |
-| SQL Server 2016 Developer Edition: Skalierbare In-Database-Analyse mit R Services |Postgres, SQuirreL SQL (Datenbanktool), SQL Server-Treiber und Befehlszeile (bcp, sqlcmd) |
-| Visual Studio Community Edition 2015 (IDE) </br> - Azure HDInsight (Hadoop), Data Lake, SQL Server Data Tools </br> - Node.js, Python, und R Tools für Visual Studio |IDEs und Editoren </br> - Eclipse mit Azure Toolkit Plugin </br> - Emacs (mit ESS, auctex) gedit |
+| -- | --|
+| Microsoft R Open mit beliebten vorinstallierten Paketen | Microsoft R Open mit beliebten vorinstallierten Paketen |
+| Microsoft R Server Developer Edition mit MicrosoftML-Algorithmen und Microsoft R-Operationalisierung  |Microsoft R Server Developer Edition |
+| Anaconda Python 2.7, 3.5 |Anaconda Python 2.7 und 3.5 mit beliebten vorinstallierten Paketen|
+| JuliaPro mit beliebten vorinstallierten Paketen | JuliaPro mit beliebten vorinstallierten Paketen |
+| Jupyter Notebook Server (R, Python, Julia) |JupyterHub: Jupyter Notebooks für mehrere Benutzer (R, Python, Julia, PySpark) |
+| SQL Server 2016 SP1 Developer Edition: Skalierbare In-Database-Analyse mit R Services |PostgreSQL, SQuirreL SQL (Datenbanktool), SQL Server-Treiber und Befehlszeile (bcp, sqlcmd) |
+|- Visual Studio Community Edition 2015 (IDE) </br> - Azure HDInsight (Hadoop), Data Lake, SQL Server Data Tools </br> - Node.js, Python und R Tools für Visual Studio (RTVS 0.5) </br>- R Studio Desktop|IDEs und Editoren </br> - Eclipse mit Azure Toolkit Plugin </br> - Emacs (mit ESS, auctex) gedit </br> - IntelliJ IDEA</br> - PyCharm</br> - Atom</br> - Visual Studio Code|
 | Power BI Desktop |-- |
-| Machine Learning-Tools </br> - Integration mit Azure Machine Learning </br> - CNTK (vertieftes Lernen/AI) </br> - Xgboost (beliebtes ML-Tool in Data Science Wettbewerben) </br> - Vowpal Wabbit (schnelles Online-Lernsystem) </br> - Rattle (visuelles Schnellstart-Daten- und Analysetool) </br> - Mxnet (vertieftes Lernen/AI) |Machine Learning-Tools </br> - Integrationen mit Azure Machine Learning </br> - CNTK (vertieftes Lernen/AI) </br> - Xgboost (beliebtes ML-Tool in Data Science Wettbewerben) </br> - Vowpal Wabbit (schnelles Online-Lernsystem) </br> - Rattle (visuelles Schnellstart-Daten- und Analysetool) |
+| Machine Learning-Tools </br> - Integration mit Azure Machine Learning </br> - Microsoft Cognitive Toolkit (CNTK 2.0) Deep Learning/AI </br> - Xgboost (beliebtes ML-Tool in Data Science Wettbewerben) </br> - Vowpal Wabbit (schnelles Online-Lernsystem) </br> - Rattle (visuelles Schnellstart-Daten- und Analysetool) </br> - Mxnet (vertieftes Lernen/AI) </br> - Tensorflow  |Machine Learning-Tools </br> - Integrationen mit Azure Machine Learning </br> - CNTK (vertieftes Lernen/AI) </br> - Xgboost (beliebtes ML-Tool in Data Science Wettbewerben) </br> - Vowpal Wabbit (schnelles Online-Lernsystem) </br> - Rattle (visuelles Schnellstart-Daten- und Analysetool) </br> - Mxnet (Deep Learning/AI)|
 | SDKs zum Zugriff auf Azure und Cortana Intelligence Sammlung von Diensten |SDKs zum Zugriff auf Azure und Cortana Intelligence Sammlung von Diensten |
 | Tools zum Verschieben von Daten und Verwalten von Azure- und Big Data-Ressourcen: Azure-Speicher-Explorer, CLI, PowerShell, AdlCopy (Azure Data Lake), AzCopy, dtui (für DocumentDB), Microsoft Data Management Gateway |Tools zum Verschieben von Daten und Verwaltung von Azure und Big Data-Ressourcen: Azure-Speicher-Explorer, CLI |
 | Git, Visual Studio Team Services Plugin |Git |
 | Windows-Port der gängigsten Linux/Unix-Befehlszeilenprogramme, die über GitBash/Eingabeaufforderung zugänglich sind |-- |
+| Weka | Weka |
+| Drill | Drill |
+| --| Spark lokal |
 
 ## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Erste Schritte mit der Windows Data Science-VM
 * Erstellen Sie eine Instanz des virtuellen Computers unter Windows auf [dieser Seite](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) und wählen Sie die grüne Schaltfläche **Virtuellen Computer erstellen**.
@@ -86,6 +91,6 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science-Tools b
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

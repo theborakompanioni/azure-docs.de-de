@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 01/17/2017
+ms.date: 02/08/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: efa4a720a306aaedcd2d5857d30d34394a76f5f6
-ms.openlocfilehash: b2f8537aa58e6dc78051752a13f555331042972a
+ms.sourcegitcommit: d19a85e127b548e5f8979358879e8b9354934904
+ms.openlocfilehash: ca09ac90dfcf125291bc0b312b16e28160a18527
 
 
 ---
@@ -27,6 +27,9 @@ Wenn Sie eine großartige Suchumgebung für Ihre DocumentDB-Daten realisieren m�
 Um dies einzurichten, benötigen Sie einen [Azure Search-Dienst](search-create-service-portal.md) sowie einen Indexer, Index und eine Datenquelle. Sie können diese Objekte mithilfe einer der folgenden Methoden erstellen: [Portal](search-import-data-portal.md), [.NET SDK](/dotnet/api/microsoft.azure.search) oder [REST-API](/rest/api/searchservice/) für alle Nicht-.NET Framework-Sprachen. 
 
 Wenn Sie sich für das Portal entscheiden, begleitet Sie der [Datenimport-Assistent](search-import-data-portal.md) durch die Erstellung aller dieser Objekte. Ein Standardindex kann in der Regel für Sie generiert werden.
+
+> [!NOTE]
+> Starten Sie über das DocumentDB-Dashboard den **Datenimport-Assistenten**, um die Indizierung für diese Datenquelle zu vereinfachen. Navigieren Sie im linken Navigationsbereich zu **Sammlungen** > **Azure Search hinzufügen**, um mit dem Vorgang zu beginnen.
 
 ## <a name="a-idconceptsaazure-search-indexer-concepts"></a><a id="Concepts"></a>Azure Search Indexer-Konzepte
 Azure Search unterstützt die Erstellung und Verwaltung von Datenquellen (einschließlich DocumentDB) und von Indexern, die gegenläufig zu diesen Datenquellen fungieren.
@@ -291,6 +294,6 @@ Glückwunsch! Sie wissen nun, wie Azure DocumentDB mit Azure Search unter Verwen
 * Weitere Informationen zu Azure Search finden Sie auf der [Seite des Search-Diensts](https://azure.microsoft.com/services/search/).
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

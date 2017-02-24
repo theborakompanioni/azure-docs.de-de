@@ -1,11 +1,23 @@
 ---
-layout: LandingPage
+title: "Dokumentation für Azure IoT Hub – Tutorials, API-Referenz | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Internets der Dinge (Internet of Things, IoT) verbinden, überwachen und steuern. Tutorials, API-Referenzen, Videos und anderes Dokumentationsmaterial."
+services: iot-hub
+author: carolz
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: iot-hub
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 01/23/2017
+ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: b4080529e9ff4500cef20e1dd735765051f6ce1f
-ms.openlocfilehash: da0387255c538afd5490f313c10509a1b40e6dd9
+ms.sourcegitcommit: eb364084e5f5155399c8a052b036ec0316616366
+ms.openlocfilehash: 36b9070260b334f1713cf575eb94007ce1b556f5
 
 ---
+
 #<a name="iot-hub-documentation"></a>Dokumentation zu IoT Hub
 
 Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Internets der Dinge (Internet of Things, IoT) verbinden, überwachen und steuern. Anhand von Tutorials, API-Referenzen, Videos und anderem Dokumentationsmaterial wird gezeigt, wie Sie eine zuverlässige, bidirektionale Kommunikation zwischen IoT-Geräten und einem Lösungs-Back-End bereitstellen. 
@@ -127,8 +139,10 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
                         <h3>Sprachen</h3>
                         <p><a href="/dotnet/api/microsoft.azure.devices">.NET (Dienst)</a></p>
                         <p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Geräte)</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.iot.service.auth">Java (Dienst)</a></p>
-                        <p><a href="/java/api/com.microsoft.azure.iothub">Java (Geräte)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.service.auth">Java (Dienst)</a></p>
+                        <p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Geräte)</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.17/index.html">Knoten (Dienst)</a></p>
+                        <p><a href="http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.15/index.html">Knoten (Geräte)</a></p>
                         <p><a href="http://azure.github.io/azure-iot-sdks/">Azure IoT SDKs</a></p>
                         <p><a href="http://azure.github.io/azure-iot-gateway-sdk">Gateway-SDK</a></p>
                     </div>
@@ -157,6 +171,6 @@ Hier erfahren Sie, wie Sie mithilfe von IoT Hub Millionen von Ressourcen des Int
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

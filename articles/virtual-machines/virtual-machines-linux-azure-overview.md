@@ -1,5 +1,5 @@
 ---
-title: Azure und Linux | Microsoft Docs
+title: "Übersicht über virtuelle Linux-Computer in Azure | Microsoft-Dokumentation"
 description: Beschreibt die Azure Compute-, Speicher- und Netzwerkdienste in Bezug auf virtuelle Linux-Computer.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
-ms.author: v-livech
+ms.author: squillace
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: e9625a14486cdcfbd9a23625b6399cf391574e64
+ms.sourcegitcommit: 4d2bd4bbcaf889ee25cc4567772384b167166c10
+ms.openlocfilehash: 736f30768da968f8e1d39ff94fe9de66cc219321
 
 
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
-Microsoft Azure umfasst eine wachsende Sammlung von integrierten Public Cloud-Diensten, z.B. Analyse, Virtual Machines, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web, und ist somit ideal für das Hosten Ihrer Lösungen geeignet.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
+Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web – damit eignet Azure sich ideal zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
 
 Wenn Sie mit den Funktionen der verschiedenen Amazon Web Services (AWS) vertraut sind, sehen Sie sich den [Vergleich der Dienste von Azure und AWS](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)an.
 
@@ -31,8 +31,14 @@ Microsoft Azure-Ressourcen sind auf mehrere geografische Regionen weltweit verte
 * [Azure-Regionen](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>Availability
-Damit Ihre Bereitstellung die Qualifikation für unsere VM-Vereinbarung zum Servicelevel von 99,95% erreicht, müssen Sie mindestens zwei VMs bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. So wird sichergestellt, dass Ihre VMs auf mehrere Fehlerdomänen in unseren Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
+Damit Ihre Bereitstellung die Qualifikation für unsere VM-Vereinbarung zum Servicelevel von 99,95% erreicht, müssen Sie mindestens zwei VMs bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. So wird sichergestellt, dass Ihre VMs auf mehrere Fehlerdomänen in unseren Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) erläutert die garantierte Verfügbarkeit von Azure insgesamt. 
 
+## <a name="managed-disks"></a>Verwaltete Datenträger
+
+Der Managed Disks-Dienst erledigt die Erstellungs- und Verwaltungsaufgaben in Ihrem Azure Storage-Konto im Hintergrund und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzen des Speicherkontos machen müssen. Sie geben einfach die Datenträgergröße und die Leistungsstufe (Standard/Premium) an und überlassen Azure die Erstellung und Verwaltung der Datenträger. So müssen Sie sich selbst beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. Wenn Sie neue virtuelle Computer erstellen, [verwenden Sie die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder das Azure-Portal, um virtuelle Computer mit verwalteten Datenträgern für Betriebssystem und Daten zu erstellen. Wenn Sie bereits über virtuelle Computer mit nicht verwalteten Datenträgern verfügen, können Sie [Ihre virtuellen Computer für die Verwendung mit verwalteten Datenträgern konvertieren](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ 
+Darüber hinaus können Sie Ihre benutzerdefinierten Images in einem einzelnen Speicherkonto pro Azure-Region verwalten und mit diesen Hunderte von virtuellen Computern im gleichen Abonnement erstellen. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Verwaltete Datenträger – Übersicht](../storage/storage-managed-disks-overview.md).
+ 
 ## <a name="azure-virtual-machines--instances"></a>Virtuelle Azure-Computer und -Instanzen
 Microsoft Azure unterstützt die Ausführung einer Reihe von beliebten Linux-Distributionen, die von verschiedenen Partnerunternehmen bereitgestellt und gepflegt werden.  Im Azure Marketplace finden Sie Distributionen wie Red Hat Enterprise, CentOS, Debian, Ubuntu, CoreOS, RancherOS, FreeBSD und viele weitere. Wir arbeiten aktiv mit verschiedenen Linux-Communitys zusammen, um der Liste der [von Azure unterstützten Linux-Distributionen](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weitere Varianten hinzuzufügen.
 
@@ -98,29 +104,27 @@ Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azure.micros
 ## <a name="getting-setup-on-azure"></a>Erste Schritte mit Azure
 Um mit der Verwendung von Azure zu beginnen, benötigen Sie ein Azure-Konto, die installierte Azure-Befehlszeilenschnittstelle und ein Paar aus öffentlichen und privaten SSH-Schlüsseln.
 
-## <a name="sign-up-for-an-account"></a>Registrieren für ein Konto
+### <a name="sign-up-for-an-account"></a>Registrieren für ein Konto
 Der erste Schritt zur Verwendung der Azure-Cloud besteht darin, sich für ein Azure-Konto zu registrieren.  Besuchen Sie die Seite [Erstellen eines kostenlosen Azure-Kontos](https://azure.microsoft.com/pricing/free-trial/) , um zu beginnen.
 
-## <a name="install-the-cli"></a>Installieren der Befehlszeilenschnittstelle
-Mit Ihrem neuen Azure-Konto können Sie sofort mit dem Azure-Portal loslegen, einem webbasierten Verwaltungsbereich.  Um die Azure-Cloud über die Befehlszeile zu verwalten, installieren Sie die `azure-cli`.  Installieren Sie die [Azure-Befehlszeilenschnittstelle ](../xplat-cli-install.md)auf Ihrem Mac oder Ihrer Linux-Arbeitsstation.
+### <a name="install-the-cli"></a>Installieren der Befehlszeilenschnittstelle
+Mit Ihrem neuen Azure-Konto können Sie sofort mit dem Azure-Portal loslegen, einem webbasierten Verwaltungsbereich.  Um die Azure-Cloud über die Befehlszeile zu verwalten, installieren Sie die `azure-cli`.  Installieren Sie die [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install) auf Ihrem Mac oder Ihrer Linux-Arbeitsstation.
 
-## <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
+### <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 Jetzt verfügen Sie über ein Azure-Konto, das Azure-Webportal und die Azure-Befehlszeilenschnittstelle.  Der nächste Schritt besteht darin, ein SSH-Schlüsselpaar zu erstellen, um über SSH eine Verbindung mit Linux herzustellen, ohne ein Kennwort zu verwenden.  [Erstellen Sie SSH-Schlüssel unter Linux und Mac](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), um Anmeldungen ohne Kennwort und eine höhere Sicherheit zu ermöglichen.
 
-## <a name="getting-started-with-linux-on-microsoft-azure"></a>Erste Schritte mit Linux unter Microsoft Azure
-Nachdem Sie Ihr Azure-Konto eingerichtet, die Azure-Befehlszeilenschnittstelle installiert und SSH-Schlüssel erstellt haben, sind Sie jetzt bereit, eine Infrastruktur in der Azure-Cloud aufzubauen.  Die erste Aufgabe besteht darin, einige virtuelle Computer zu erstellen.
 
-## <a name="create-a-vm-using-the-cli"></a>Erstellen eines virtuellen Computers mit der Befehlszeilenschnittstelle
+### <a name="create-a-vm-using-the-cli"></a>Erstellen eines virtuellen Computers mit der Befehlszeilenschnittstelle
 Die Erstellung eines virtuellen Linux-Computers mit der CLI ist eine schnelle Möglichkeit, einen virtuellen Computer bereitzustellen, ohne das Terminal zu verlassen, an dem Sie gerade arbeiten.  Alle Elemente, die Sie im Webportal festlegen können, stehen auch über ein Flag bzw. eine Option in der Befehlszeile zur Verfügung.  
 
 * [Erstellen eines virtuellen Linux-Computers über die Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="create-a-vm-in-the-portal"></a>Erstellen eines virtuellen Computers im Portal
+### <a name="create-a-vm-in-the-portal"></a>Erstellen eines virtuellen Computers im Portal
 Die Erstellung eines virtuellen Linux-Computers im Azure-Webportal ist eine einfache Möglichkeit, per Klick auf verschiedene Optionen zu einer Bereitstellung zu gelangen.  Anstatt manuell Befehlszeilenflags oder -optionen einzugeben, können Sie die verschiedenen Optionen und Einstellungen in einem benutzerfreundlichen Weblayout anzeigen.  Alle über die Befehlszeilenschnittstelle verfügbaren Optionen stehen auch im Portal zur Verfügung.
 
 * [Erstellen eines virtuellen Linux-Computers mithilfe des Portals](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="login-using-ssh-without-a-password"></a>Anmelden ohne Kennwort über SSH
+### <a name="login-using-ssh-without-a-password"></a>Anmelden ohne Kennwort über SSH
 Der virtuelle Computer wird jetzt in Azure ausgeführt, und Sie können sich anmelden.  Die Verwendung von Kennwörtern zur Anmeldung über SSH ist unsicher und zeitaufwendig.  SSH-Schlüssel sind die sicherste und gleichzeitig schnellste Möglichkeit zur Anmeldung.  Beim Erstellen eines virtuellen Linux-Computers im Portal oder über die Befehlszeilenschnittstelle stehen Ihnen zwei Authentifizierungsoptionen zur Verfügung.  Wenn Sie ein Kennwort für SSH auswählen, konfiguriert Azure den virtuellen Computer so, dass Anmeldungen mit Kennwort zulässig sind.  Wenn Sie sich für einen öffentlichen SSH-Schlüssel entschieden haben, konfiguriert Azure den virtuellen Computer so, dass Anmeldungen nur mit SSH-Schlüsseln möglich sind. Anmeldungen per Kennwort werden deaktiviert. Um Ihren virtuellen Linux-Computer zu sichern, indem Sie nur Anmeldungen per SSH-Schlüssel zulassen, verwenden Sie beim Erstellen des virtuellen Computers im Portal oder über die Befehlszeilenschnittstelle die Option für öffentliche SSH-Schlüssel.
 
 * [Deaktivieren von SSH-Kennwörtern auf Ihrer Linux-VM durch Konfigurieren von SSHD](virtual-machines-linux-mac-disable-ssh-password-usage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -150,6 +154,6 @@ Sie haben nun einen Überblick über die Verwendung von Linux in Azure.  Jetzt k
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 02/08/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: cbc91181f2531ea5e60bb426d6b8b42e2c7684d3
-ms.openlocfilehash: 0bb6db67df25fb3c3484c819398890efef343943
+ms.sourcegitcommit: 40f8f1b52c39a170a57168db9227a7c2fa069570
+ms.openlocfilehash: 12abed3f1220398574e04d6b367f57d86547bc61
 
 
 ---
@@ -61,7 +61,7 @@ Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressource
    ![Sicherheitsrichtlinie][3]
 2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement oder Ressourcengruppe definieren** ein Abonnement aus.
 3. Auf dem Blatt **Sicherheitsrichtlinie** ist die Option **Datensammlung** aktiviert, um automatisch Protokolle zu erfassen. Die Überwachungserweiterung wird auf allen aktuellen und neuen VMs im Abonnement bereitgestellt. (Sie können die Datensammlung auch deaktivieren, indem Sie die Option **Datensammlung** auf **Aus** festlegen. Security Center kann dann aber keine Sicherheitswarnungen und Empfehlungen mehr bereitstellen.)
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speicherkonto nach Region auswählen**. Wählen Sie für jede Region, in der Sie VMs ausführen, ein Speicherkonto, in dem Daten dieser VMs gespeichert werden. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird ein Speicherkonto für Sie erstellt. Die gesammelten Daten werden aus Sicherheitsgründen logisch von anderen Kundendaten getrennt.
+4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Option **Speicherkonto nach Region auswählen**. Wählen Sie für jede Region, in der Sie VMs ausführen, ein Speicherkonto, in dem Daten dieser VMs gespeichert werden. Wenn Sie nicht für jede Region ein Speicherkonto auswählen, wird ein Speicherkonto für Sie erstellt und in der securitydata-Ressourcengruppe platziert. Die gesammelten Daten werden aus Sicherheitsgründen logisch von anderen Kundendaten getrennt.
 
    > [!NOTE]
    > Es wird empfohlen, dass Sie zunächst die Datensammlung aktivieren und ein Speicherkonto auf Abonnementebene auswählen. Sicherheitsrichtlinien können auf der Ebene von Azure-Abonnement und Ressourcengruppe festgelegt werden, aber die Konfiguration von Datensammlung und Speicherkonten erfolgt nur auf Abonnementebene.
@@ -126,6 +126,6 @@ In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüb
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

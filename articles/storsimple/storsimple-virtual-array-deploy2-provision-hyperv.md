@@ -1,10 +1,10 @@
 ---
-title: Bereitstellen von Microsoft Azure StorSimple Virtual Array in Hyper-V | Microsoft Docs
+title: Bereitstellen eines StorSimple Virtual Array in Hyper-V | Microsoft-Dokumentation
 description: In diesem zweiten Tutorial zum Thema StorSimple Virtual Array-Bereitstellungen geht es um das Bereitstellen eines virtuellen Arrays in Hyper-V.
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/12/2017
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 9f70fbaeef95edd6740d54be7650f39a17090bc5
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: d623c4172a654b90d68c6e6e488a2c791abe8647
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen eines Virtual Array in Hyper-V
@@ -48,7 +48,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Array bereitstellen:
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Arrays über die folgenden Ressourcen:
 
   * Mindestens 4 Kerne
-  * Mindestens 8 GB RAM
+  * Mindestens 8 GB RAM Wenn Sie planen, das virtuelle Array als Dateiserver zu konfigurieren, unterstützen 8 GB weniger als 2 Millionen Dateien. Sie benötigen 16 GB RAM, um 2–4 Millionen Dateien zu unterstützen.
   * Eine Netzwerkschnittstelle
   * Einen virtuellen Datenträger mit 500 GB
 
@@ -73,7 +73,7 @@ Um ein virtuelles Array zu erstellen, benötigen Sie Folgendes:
 Sie müssen gewährleisten, dass die zugrunde liegende Hardware (Hostsystem), auf der Sie das virtuelle Array erstellen, die folgenden Ressourcen für Ihr virtuelles Array zur Verfügung stellen kann:
 
 * Mindestens 4 Kerne
-* Mindestens 8 GB RAM
+* Mindestens 8 GB RAM Wenn Sie planen, das virtuelle Array als Dateiserver zu konfigurieren, unterstützen 8 GB weniger als 2 Millionen Dateien. Sie benötigen 16 GB RAM, um 2–4 Millionen Dateien zu unterstützen.
 * Eine Netzwerkschnittstelle
 * Einen virtuellen Datenträger mit 500 GB für Systemdaten
 
@@ -217,6 +217,6 @@ Falls bei der anfänglichen Konfiguration über die lokale Webbenutzeroberfläch
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

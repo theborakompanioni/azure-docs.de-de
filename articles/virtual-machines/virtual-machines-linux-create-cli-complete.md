@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure-CLI 2.0 Preview | Microsoft-Dokumente"
+title: "Erstellen einer Linux-Umgebung über die Azure-Befehlszeilenschnittstelle 2.0 | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Speicherplatz, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI 2.0 (Preview) von Grund auf neu erstellen."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,8 +16,8 @@ ms.workload: infrastructure
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 95b924257c64a115728c66956d5ea38eb8764a35
-ms.openlocfilehash: b02be35b0a3e97dbab32467eb8f654ea9609e7aa
+ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
+ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
 
 
 ---
@@ -53,7 +53,7 @@ Erstellen Sie zunächst die Ressourcengruppe mithilfe von [az group create](/cli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Erstellen Sie das Speicherkonto mithilfe von [az storage account create](/cli/azure/storage/account#create). Im folgenden Beispiel wird ein Speicherkonto mit dem Namen `mystorageaccount` erstellt. (Der Name des Speicherkontos muss eindeutig sein, geben Sie daher einen eigenen eindeutigen Namen an.)
+Der nächste Schritt ist optional. Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) ist die Verwendung von Azure Managed Disks. Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md). Wenn Sie stattdessen nicht verwaltete Datenträger verwenden möchten, müssen Sie mithilfe von [az storage account create](/cli/azure/storage/account#create) ein Speicherkonto erstellen. Im folgenden Beispiel wird ein Speicherkonto mit dem Namen `mystorageaccount` erstellt. (Der Name des Speicherkontos muss eindeutig sein, geben Sie daher einen eigenen eindeutigen Namen an.)
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -164,10 +164,11 @@ Erstellen Sie mithilfe von [az vm availability-set create](/cli/azure/vm/availab
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
-Erstellen Sie den ersten virtuellen Linux-Computer mit [az vm create](/cli/azure/vm#create). Im folgenden Beispiel wird ein virtueller Computer namens `myVM1` erstellt:
+Erstellen Sie den ersten virtuellen Linux-Computer mit [az vm create](/cli/azure/vm#create). Im folgenden Beispiel wird ein virtueller Computer namens `myVM1` erstellt, der Azure Managed Disks verwendet. Wenn Sie nicht verwaltete Datenträger verwenden möchten, finden Sie weitere Informationen im obigen Zusatzhinweis.
 
 ```azurecli
 az vm create \
@@ -176,13 +177,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+Wenn Sie Azure Managed Disks verwenden, überspringen Sie diesen Schritt. Wenn Sie nicht verwaltete Datenträger verwenden möchten und in den vorherigen Schritten ein Speicherkonto erstellt haben, müssen Sie dem oben stehenden Befehl einige zusätzliche Parameter hinzufügen. Fügen Sie dem oben stehenden Befehl die folgenden zusätzlichen Parameter hinzu, um die nicht verwalteten Datenträger im Speicherkonto `mystorageaccount` zu erstellen: 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 Erstellen Sie den zweiten virtuellen Linux-Computer, wiederum mit **az vm create**. Im folgenden Beispiel wird ein virtueller Computer namens `myVM2` erstellt:
@@ -194,14 +198,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+Auch hier gilt: Wenn Sie die Standardeinstellung „Azure Managed Disks“ nicht verwenden, fügen Sie dem oben stehenden Befehl die folgenden zusätzlichen Parameter hinzu, um die nicht verwalteten Datenträger im Speicherkonto `mystorageaccount` zu erstellen:
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 Überprüfen Sie mit [az vm show](/cli/azure/vm#show), ob alles ordnungsgemäß erstellt wurde:
 
@@ -245,7 +252,9 @@ Standardmäßig erfolgt die Ausgabe in JSON (JavaScript Object Notation). Um bei
 ```
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
-Sie benötigen unter anderem Speicherkonten für Ihre VM-Datenträger und für alle zusätzlichen Datenträger, die Sie hinzufügen möchten. Sie erstellen Speicherkonten normalerweise immer direkt nach der Erstellung von Ressourcengruppen.
+Der nächste Schritt ist optional. Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) ist die Verwendung von Azure Managed Disks. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md). Fahren Sie mit [Erstellen eines virtuellen Netzwerks und des Subnetzes](#create-a-virtual-network-and-subnet) fort, wenn Sie Azure Managed Disks verwenden möchten. 
+
+Wenn Sie nicht verwaltete Datenträger verwenden möchten, müssen Sie ein Speicherkonto für Ihre VM-Datenträger und für alle zusätzlichen Datenträger erstellen, die Sie hinzufügen möchten.
 
 Hier verwenden wir den Befehl [az storage account create](/cli/azure/storage/account#create) und übergeben den Speicherort des Kontos, die Ressourcengruppe, mit der es gesteuert wird, und den Typ der gewünschten Speicherunterstützung. Das folgende Beispiel erstellt ein Speicherkonto namens `mystorageaccount`:
 
@@ -983,7 +992,8 @@ Mit Verfügbarkeitsgruppen können die virtuellen Computer auf Fehlerdomänen un
 
 ```azurecli
 az vm availability-set create --resource-group myResourceGroup --location westeurope \
-  --name myAvailabilitySet
+  --name myAvailabilitySet \
+  --platform-fault-domain-count 3 --platform-update-domain-count 2
 ```
 
 Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen. Die innerhalb der Verfügbarkeitsgruppe konfigurierten virtuellen Computer werden standardmäßig auf bis zu drei Fehlerdomänen verteilt. Dadurch wirkt sich ein Hardwareproblem in einer dieser Fehlerdomänen nicht auf jeden virtuellen Computer aus, auf dem Ihre Anwendung ausgeführt wird. Azure verteilt virtuelle Computer automatisch auf die Fehlerdomänen, wenn sie in einer Verfügbarkeitsgruppe platziert werden.
@@ -994,11 +1004,11 @@ Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller 
 
 
 ## <a name="create-the-linux-vms"></a>Erstellen der Linux-VMs
-Sie haben die Speicher- und Netzwerkressourcen zur Unterstützung von über das Internet erreichbaren virtuellen Computern erstellt. Wir erstellen jetzt diese virtuellen Computer und schützen sie mit einem SSH-Schlüssel ohne Kennwort. In diesem Fall erstellen wir eine Ubuntu-VM basierend auf dem aktuellen LTS-Stand. Wir ermitteln diese Imageinformationen mithilfe von [az vm image list](/cli/azure/vm/image#list). Dies wird unter [Suchen nach Azure VM-Images](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) beschrieben.
+Sie haben die Netzwerkressourcen zur Unterstützung von über das Internet erreichbaren virtuellen Computern erstellt. Wir erstellen jetzt diese virtuellen Computer und schützen sie mit einem SSH-Schlüssel ohne Kennwort. In diesem Fall erstellen wir eine Ubuntu-VM basierend auf dem aktuellen LTS-Stand. Wir ermitteln diese Imageinformationen mithilfe von [az vm image list](/cli/azure/vm/image#list). Dies wird unter [Suchen nach Azure VM-Images](virtual-machines-linux-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) beschrieben.
 
 Wir legen außerdem einen SSH-Schlüssel an, der für die Authentifizierung verwendet wird. Wenn Sie nicht über SSH-Schlüssel verfügen, können Sie sie mithilfe [dieser Anweisungen](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) erstellen. Alternativ können Sie Ihre SSH-Verbindungen nach der Erstellung des virtuellen Computers mithilfe der `--admin-password`-Methode authentifizieren. Diese Methode ist in der Regel weniger sicher.
 
-Wir erstellen den virtuellen Computer, indem wir alle Ressourcen und Informationen mit dem Befehl [az vm create](/cli/azure/vm#create) zusammenfassen:
+Wir erstellen den virtuellen Computer, indem wir alle Ressourcen und Informationen mit dem Befehl [az vm create](/cli/azure/vm#create) zusammenfassen. Im folgenden Beispiel wird ein virtueller Computer namens `myVM1` erstellt, der Azure Managed Disks verwendet. Wenn Sie nicht verwaltete Datenträger verwenden möchten, finden Sie weitere Informationen im obigen Zusatzhinweis.
 
 ```azurecli
 az vm create \
@@ -1007,13 +1017,16 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic1 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
+```
+
+Wenn Sie Azure Managed Disks verwenden, überspringen Sie diesen Schritt. Wenn Sie nicht verwaltete Datenträger verwenden möchten und in den vorherigen Schritten ein Speicherkonto erstellt haben, müssen Sie dem oben stehenden Befehl einige zusätzliche Parameter hinzufügen. Fügen Sie dem oben stehenden Befehl die folgenden zusätzlichen Parameter hinzu, um die nicht verwalteten Datenträger im Speicherkonto `mystorageaccount` zu erstellen: 
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
 ```
 
 Ausgabe:
@@ -1066,14 +1079,17 @@ az vm create \
     --location westeurope \
     --availability-set myAvailabilitySet \
     --nics myNic2 \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup \
-    --storage-account mystorageaccount \
     --image UbuntuLTS \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --admin-username ops
+    --admin-username azureuser
 ```
+
+Auch hier gilt: Wenn Sie die Standardeinstellung „Azure Managed Disks“ nicht verwenden, fügen Sie dem oben stehenden Befehl die folgenden zusätzlichen Parameter hinzu, um die nicht verwalteten Datenträger im Speicherkonto `mystorageaccount` zu erstellen:
+
+```azurecli
+  --use-unmanaged-disk \
+  --storage-account mystorageaccount
+``` 
 
 Nun werden die virtuellen Ubuntu-Computer, bei denen Sie sich nur mit Ihrem SSH-Schlüsselpaar anmelden können (weil Kennwörter deaktiviert sind), hinter einem Load Balancer in Azure ausgeführt. Sie können „nginx“ oder „httpd“ installieren und eine Web-App bereitstellen. Zudem können Sie den Datenverkehrsfluss durch den Load Balancer an beide virtuellen Computer sehen.
 
@@ -1101,6 +1117,6 @@ Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

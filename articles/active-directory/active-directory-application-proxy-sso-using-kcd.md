@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1eada96773b1d9c6adb9326c9100da7cde8abf77
-ms.openlocfilehash: 8df936a03868412adf34672108f40829c41f33ab
+ms.sourcegitcommit: c308524e41047220fbad026edb6a87f196d89580
+ms.openlocfilehash: 3f293996d2565c495f707f99a0bb75bb7c24054e
 
 ---
 
@@ -62,7 +62,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 #### <a name="connector-and-published-server-in-the-same-domain"></a>Connector und veröffentlichter Server in der gleichen Domäne
 1. Wechseln Sie in Active Directory zu **Extras** > **Benutzer und Computer**.
 2. Wählen Sie den Server aus, der den Connector ausführt.
-3. Klicken Sie mit der rechten Maustaste, und wählen Sie **Eigenschaften** > **Delegierung** aus.
+.3. Klicken Sie mit der rechten Maustaste, und wählen Sie **Eigenschaften** > **Delegierung** aus.
 4. Wählen Sie **Computer nur bei Delegierungen angegebener Dienste vertrauen**. Fügen Sie unter **Dienste, für die dieses Konto delegierte Anmeldeinformationen verwenden kann** den Wert für die Dienstprinzipalnamen-Identität (SPN) des Anwendungsservers hinzu.
 5. Auf diese Weise kann der Anwendungsproxy-Connector die Identität von Benutzern in AD für die Anwendungen annehmen, die in der Liste definiert sind.
 
@@ -105,6 +105,8 @@ Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet,
 
 ![Nicht-Windows-SSO-Diagramm](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_nonwindows_diagram.png)
 
+Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
+
 ### <a name="delegated-login-identity"></a>delegierte Identität für die Anmeldung
 Die Delegierte Identität für Anmeldung unterstützt zwei verschiedene Anmeldeszenarien:
 
@@ -130,7 +132,7 @@ Diese Funktion ermöglicht vielen Organisationen mit unterschiedlichen lokalen I
 Dies hilft auch bei Anwendungen, die keine Adressen in Form von E-Mail-Adressen akzeptieren – einem häufigen Szenario bei nicht auf Windows basierenden Back-End-Servern.
 
 ### <a name="setting-sso-for-different-cloud-and-on-prem-identities"></a>Festlegen von SSO für unterschiedliche lokale und cloudbasierte Identitäten
-1. Konfigurieren Sie die Azure AD Connect-Einstellungen so, dass die E-Mail-Adresse die Hauptidentität ist. Dies erfolgt als Teil des Anpassungsvorgangs durch Änderung des **Benutzerprinzipalnamens** in den Synchronisierungseinstellungen. Diese Einstellungen bestimmen auch, wie sich Benutzer bei Office 365, Windows 10-Geräten und anderen Anwendungen anmelden, die Azure AD als Identitätsspeicher verwenden.  
+1. Konfigurieren Sie die Azure AD Connect-Einstellungen so, dass die E-Mail-Adresse die Hauptidentität ist. Dies erfolgt als Teil des Anpassungsvorgangs durch Änderung des **Benutzerprinzipalnamens** in den Synchronisierungseinstellungen. Diese Einstellungen bestimmen auch, wie sich Benutzer bei Office&365;, Windows&10;-Geräten und anderen Anwendungen anmelden, die Azure AD als Identitätsspeicher verwenden.  
    ![Screenshot: Benutzer identifizieren – Dropdownliste für Benutzerprinzipalname](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. Wählen Sie in den Anwendungskonfigurationseinstellungen für die zu modifizierende Anwendung die **Delegierte Identität für Anmeldung** aus:
 

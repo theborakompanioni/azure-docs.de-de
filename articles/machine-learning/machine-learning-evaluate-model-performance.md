@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2016
+ms.date: 12/12/2016
 ms.author: bradsev;garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 53c84ff1e99236343585ff31ef1bcb57e0250fdc
+ms.sourcegitcommit: 46c624608773fcd55e7ee3548aaa32fbbc630056
+ms.openlocfilehash: b6d0c877e0f0515dd82c0615850009910aa0b0be
 
 
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Auswerten der Modellleistung in Azure Machine Learning
-Dieses Thema veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
+Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine Learning Studio ausgewertet wird, und erläutert die für diese Aufgabe verfügbaren Metriken. Es werden drei häufig eingesetzte Szenarios des beaufsichtigten Lernens vorgestellt: 
 
 * Regression
 * Binäre Klassifizierung 
@@ -36,9 +36,9 @@ In Azure Machine Learning wird die Auswertung von Modellen durch zwei der wichti
 ## <a name="evaluation-vs-cross-validation"></a>Auswertung und Kreuzvalidierung im Vergleich
 Die Auswertung und die Kreuzvalidierung sind Standardmethoden zum Messen der Leistung von Modellen. Bei beiden Methoden werden Auswertungskennzahlen generiert, die mit denen anderer Modelle geprüft oder verglichen werden können.
 
-Beim [Evaluate Model][evaluate-model] wird ein bewertetes Dataset als Eingabe erwartet (oder zwei Datasets, wenn Sie die Leistung zweier verschiedener Modelle vergleichen möchten). Das bedeutet, dass Sie Ihr Modell mit dem Modul [Train Model][train-model] trainieren und mit dem Modul [Score Model][score-model] Vorhersagen für ein Dataset treffen müssen, bevor Sie die Ergebnisse auswerten können. Die Auswertung basiert auf den bewerteten Bezeichnern/Wahrscheinlichkeiten sowie auf den tatsächlichen Bezeichnern, die alle vom Modul [Score Model ausgegeben][score-model] werden.
+Beim [Evaluate Model][evaluate-model] wird ein bewertetes Dataset als Eingabe erwartet (oder zwei Datasets, wenn Sie die Leistung zweier verschiedener Modelle vergleichen möchten). Das bedeutet, dass Sie Ihr Modell mit dem Modul [Train Model][train-model] trainieren und mit dem Modul [Score Model][score-model] Vorhersagen für ein Dataset treffen müssen, bevor Sie die Ergebnisse auswerten können. Die Auswertung basiert auf den bewerteten Bezeichnern/Wahrscheinlichkeiten sowie auf den tatsächlichen Bezeichnern, die alle vom Modul [Score Model][score-model] ausgegeben werden.
 
-Alternativ können Sie mithilfe der Kreuzvalidierung automatisch mehrere Trainings-/Bewertungs-/Auswertungsvorgänge (Aufteilung in 10 Teildatensätze) für verschiedene Teilmengen der Eingabedaten durchführen. Die Eingabedaten werden in 10 Teilmengen aufgeteilt, wobei eine Teilmenge zum Testen und die anderen 9 zum Trainieren vorgesehen sind. Dieser Vorgang wird 10-mal wiederholt, und die Auswertungskennzahlen werden gemittelt. Damit lässt sich feststellen, wie gut ein Modell neue Datasets verallgemeinert. Das Modul [Cross Validate Model][cross-validate-model] akzeptiert ein untrainiertes Modell und ein Dataset mit Bezeichnern und gibt die Auswertungsergebnisse aller zehn Aufteilungen sowie die gemittelten Ergebnisse aus.
+Alternativ können Sie mithilfe der Kreuzvalidierung automatisch mehrere Trainings-/Bewertungs-/Auswertungsvorgänge (Aufteilung in&10; Teildatensätze) für verschiedene Teilmengen der Eingabedaten durchführen. Die Eingabedaten werden in 10 Teilmengen aufgeteilt, wobei eine Teilmenge zum Testen und die anderen 9 zum Trainieren vorgesehen sind. Dieser Vorgang wird 10-mal wiederholt, und die Auswertungskennzahlen werden gemittelt. Damit lässt sich feststellen, wie gut ein Modell neue Datasets verallgemeinert. Das Modul [Cross Validate Model][cross-validate-model] akzeptiert ein untrainiertes Modell und ein Dataset mit Bezeichnern und gibt die Auswertungsergebnisse aller zehn Aufteilungen sowie die gemittelten Ergebnisse aus.
 
 In den folgenden Abschnitten werden einfache Regressions- und Klassifizierungsmodelle erstellt, und deren Leistung wird evaluiert. Dazu werden die beiden Module [Evaluate Model][evaluate-model] und [Cross-Validate Model][cross-validate-model] verwendet.
 
@@ -115,7 +115,9 @@ Abbildung 6. Wahrheitsmatrix der binären Klassifizierung.
 
 Im Hinblick auf die Klassifizierung des Einkommens in unserem Beispiel sollen mehrere Auswertungsfragen gestellt werden, mit denen die Leistung des verwendeten Klassifikators bewertet werden kann. Eine sehr nahe liegende Frage ist: "Wie viele der Personen, für die im Modell vorhergesagt wurde, dass ihr Einkommen >50K beträgt (RP+FP), wurden richtig klassifiziert (RP)?" Diese Frage kann durch Prüfen der Genauigkeit (**Precision**) des Modells beantwortet werden, die den Anteil der positiven Fälle angibt, die richtig klassifiziert wurden: RP/(RP+FP). Eine weitere Frage lautet: "Wie viele aller besserverdienenden Mitarbeiter mit einem Einkommen von >50K (RP+FN) wurden mit dem Klassifikator richtig klassifiziert (RP)?" Dies ist die Sensitivität (**Recall**) oder die Richtig-Positiv-Rate: RP/(RP+FN) des Klassifikators. Sie können feststellen, dass ein offensichtlicher Zusammenhang zwischen Präzision und Sensitivität besteht. Ein relativ ausgeglichenes Dataset vorausgesetzt, weist ein Klassifikator, der überwiegend positive Fälle vorhersagt, eine hohe Sensitivität, jedoch eine eher geringe Präzision auf, da viele der negativen Fälle falsch klassifiziert werden, was zu einer hohen Anzahl falsch-negativer Fälle führt. Um grafisch darzustellen, wie diese beiden Kennzahlen variieren, können Sie in der Ausgabeseite der Auswertungsergebnisse auf die Kurve für Präzision/Sensitivität ("PRECISION/RECALL") klicken (links oben in Abbildung 7).
 
-![Auswertungsergebnisse der binären Klassifizierung](media/machine-learning-evaluate-model-performance/7.png) Abbildung 7. Auswertungsergebnisse der binären Klassifizierung.
+![Auswertungsergebnisse der binären Klassifizierung.](media/machine-learning-evaluate-model-performance/7.png)
+
+Abbildung 7. Auswertungsergebnisse der binären Klassifizierung.
 
 Eine weitere zugehörige, häufig verwendete Kennzahl ist das sogenannte F-Maß (**F1 Score**), das sowohl Genauigkeit als auch Sensitivität berücksichtigt. Es handelt sich um das harmonische Mittel dieser 2 Kennzahlen, das wie folgt berechnet wird: F1 = 2 (Genauigkeit x Sensitivität) / (Genauigkeit + Sensitivität). Das F-Maß ist eine gute Möglichkeit, die Auswertung in einer Zahl zusammenzufassen. Es empfiehlt sich jedoch auch immer, die Präzision und Sensitivität zusammen zu betrachten, um besser einschätzen zu können, wie sich ein Klassifikator verhält.
 
@@ -151,7 +153,7 @@ Legen Sie den Index der Spalte „Label“ des Moduls [Train Model][train-model]
 
 Klicken Sie auf das Modul [Import Data][import-data], und legen Sie die Eigenschaft *Data source* auf *Web URL via HTTP* und die *URL* auf „http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data“ fest.
 
-Legen Sie im Modul [Split Data][split] den Anteil der Fälle fest, die für das Training verwendet werden sollen (beispielsweise 0,7).
+Legen Sie im Modul [Split Data][split] den Anteil der Fälle fest, die für das Training verwendet werden sollen (beispielsweise&0;,7).
 
 ![Auswerten eines Multiklassenklassifikators](media/machine-learning-evaluate-model-performance/10.png)
 
@@ -189,6 +191,6 @@ Abbildung 13: Ergebnisse der Kreuzvalidierung eines Modells für die Multiklass
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

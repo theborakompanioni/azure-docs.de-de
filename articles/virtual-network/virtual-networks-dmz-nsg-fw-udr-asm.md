@@ -25,7 +25,7 @@ ms.openlocfilehash: 24d6a25e872eabb7d64d57d5ee66969401e4f1cd
 
 In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern, benutzerdefiniertem Routing, IP-Weiterleitung und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
 
-![Bidirektionale DMZ mit virtuellem Netzwerkgerät, Netzwerksicherheitsgruppe und benutzerdefiniertem Routing][1]
+![Bidirektionale DMZ mit virtuellem Netzwerkgerät, NSG und benutzerdefiniertem Routing][1]
 
 ## <a name="environment-setup"></a>Einrichten der Umgebung
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
@@ -274,11 +274,11 @@ Wiederholen Sie den Prozess, um die RDP-Dienste für die anderen Server zu erste
 ### <a name="firewall-rules-creation"></a>Erstellen von Firewallregeln
 In diesem Beispiel werden drei Arten von Firewallregeln verwendet, die jeweils unterschiedliche Symbole aufweisen:
 
-Die Regel zur Anwendungsumleitung:  ![Symbol der Regel zur Anwendungsumleitung][7]
+Die Regel zur Anwendungsumleitung: ![Symbol der Regel zur Anwendungsumleitung][7]
 
-Die Ziel-NAT-Regel:  ![Symbol der Ziel-NAT-Regel][8]
+Die Ziel-NAT-Regel: ![Symbol der Ziel-NAT-Regel][8]
 
-Die Übergaberegel:  ![Symbol der Übergaberegel][9]
+Die Übergaberegel: ![Symbol der Übergaberegel][9]
 
 Weitere Informationen zu diesen Regeln finden Sie auf der Barracuda-Website.
 
@@ -370,7 +370,7 @@ Die Einzelheiten zu allen Regeln, die für dieses Beispiel erforderlich sind, we
     **Hinweis**: Das Kontrollkästchen für bidirektionalen Datenverkehr ist deaktiviert (dies gilt für die meisten Regeln). Dies ist für diese Regel von großer Bedeutung, da die Regel damit unidirektional ist, eine Verbindung also nur vom Back-End-Subnetz zum Front-End-Netzwerk initiiert werden kann, nicht jedoch umgekehrt. Wäre dieses Kontrollkästchen aktiviert, würde die Regel bidirektionalen Datenverkehr zulassen, was in unserem logischen Diagramm nicht vorgesehen ist.
 * **Regel zum Ablehnen jeglichen Datenverkehrs**: Dies sollte (hinsichtlich der Priorität) die letzte Regel sein. Sollte ein Datenverkehrsfluss keiner der vorherigen Regeln entsprechen, wird er durch diese Regel verworfen. Dies ist eine Standardregel, die üblicherweise aktiviert ist. Im Allgemeinen sind keine Änderungen erforderlich. 
   
-    ![Firewallregel "Alle ablehnen"][17]
+    ![Firewallablehnungsregel][17]
 
 > [!IMPORTANT]
 > Nachdem alle oben genannten Regeln erstellt wurden, ist es wichtig, die Priorität jeder einzelnen Regel zu prüfen, um sicherzustellen, dass der Datenverkehr wie gewünscht zugelassen oder abgelehnt wird. In diesem Beispiel befinden sich die Regeln im Barracuda-Verwaltungsclient in der Hauptanzeige der Weiterleitungsregeln in der gewünschten Reihenfolge.

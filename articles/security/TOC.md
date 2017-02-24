@@ -52,8 +52,19 @@
 ## [Cybersecurity-Consulting](azure-security-cyber-services.md)
 ## [Sicherheitskurse der Virtual Academy](security-microsoft-virtual-academy.md)
 ## [Sicherheitsvideos auf Channel 9](security-channel-nine.md)
+## [Threat Modeling Tool](azure-security-threat-modeling-tool.md)
+###[Überwachung und Protokollierung](azure-security-threat-modeling-tool-auditing-and-logging.md)
+###[Authentifizierung](azure-security-threat-modeling-tool-authentication.md)
+###[Autorisierung](azure-security-threat-modeling-tool-authorization.md)
+###[Kommunikationssicherheit](azure-security-threat-modeling-tool-communication-security.md)
+###[Konfigurationsverwaltung](azure-security-threat-modeling-tool-configuration-management.md)
+###[Kryptografie](azure-security-threat-modeling-tool-cryptography.md)
+###[Verwaltung von Ausnahmen](azure-security-threat-modeling-tool-exception-management.md)
+###[Eingabeüberprüfung](azure-security-threat-modeling-tool-input-validation.md)
+###[Sensible Daten](azure-security-threat-modeling-tool-sensitive-data.md)
+###[Sitzungsverwaltung](azure-security-threat-modeling-tool-session-management.md)
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO4-->
 
 

@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 02/13/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 1fcec43ad50b9c78443ada116b9ca444605c4730
-ms.openlocfilehash: dc30e18b92e492137e016e7a7372bfdf3285e5fe
+ms.sourcegitcommit: 5acfbfbe7327fc28fa909e6ef7e0f9b6ce8b0e54
+ms.openlocfilehash: e0be8f4617c2fdbe1cb6fe2f904bf9ea7056c55e
 
 ---
 
@@ -45,17 +45,13 @@ Wenn Sie mit dem Anwendungsproxy noch nicht vertraut sind, erfahren Sie im Artik
 
   ![Hinzufügen einer Unternehmensanwendung](./media/application-proxy-publish-azure-portal/add-app.png)
 
-3. Wählen Sie auf der Seite „Kategorien“ die Option **oder fügen Sie eine eigene hinzu** aus.  
+3. Wählen Sie auf der Seite „Kategorien“ die Option **Lokale Anwendung** aus.  
 
   ![Hinzufügen einer eigenen Anwendung](./media/application-proxy-publish-azure-portal/add-your-own.png)
 
-4. Wählen Sie aus dem Dropdownmenü **Vorhandene Anwendung bereitstellen** aus.
-5. Geben Sie einen Namen für Ihre App an, und wählen Sie dann **Hinzufügen** aus. Ein Ladevorgang wird durchgeführt. Nachdem Ihre App hinzugefügt wurde, wird das Blatt „Schnellstart“ geöffnet.
-6. Wählen Sie auf dem Blatt „Schnellstart“ die Option **Remotezugriff für Ihre lokale Anwendung aktivieren** aus.
+4. Geben Sie die folgenden Informationen zur Anwendung an:
 
-  ![Aktivieren von Remotezugriff für Ihre lokale Anwendung](./media/application-proxy-publish-azure-portal/enable-remote-access.png)
-
-7. Geben Sie die folgenden Informationen zur Anwendung an:
+   - **Name**: Der Name der Anwendung, der im Zugriffsbereich angezeigt wird. 
 
    - **Interne URL**: Die Adresse, die vom Anwendungsproxy-Connector verwendet wird, um aus dem privaten Netzwerk auf die Anwendung zuzugreifen. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server als unterschiedliche Apps veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.
 
@@ -72,9 +68,8 @@ Wenn Sie mit dem Anwendungsproxy noch nicht vertraut sind, erfahren Sie im Artik
 
    ![Konfigurieren der Anwendung](./media/application-proxy-publish-azure-portal/configure-app.png)
 
-8. Wählen Sie **Speichern**aus.
+8. Wählen Sie **Hinzufügen**.
 
-   ![Speichern der Einstellungen des Anwendungsproxys](./media/application-proxy-publish-azure-portal/save-app-proxy.png)
 
 ## <a name="add-a-test-user"></a>Hinzufügen eines Testbenutzers 
 
@@ -105,6 +100,6 @@ Navigieren Sie in Ihrem Browser zur externen URL, die Sie beim Veröffentlichen 
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

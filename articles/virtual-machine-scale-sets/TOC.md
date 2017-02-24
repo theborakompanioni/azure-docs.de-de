@@ -3,6 +3,7 @@
 
 # Erste Schritte
 ## [Erstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
+## [Erstellen einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -10,12 +11,18 @@
 
 ## Bereitstellen
 ### [Skalierungsgruppe unter Verwendung des Portals](virtual-machine-scale-sets-portal-create.md)
+### [Skalierungsgruppe mit verwalteten Datenträgern](virtual-machine-scale-sets-managed-disks.md)
 ### [Skalierungsgruppe unter Verwendung von Visual Studio](virtual-machine-scale-sets-vs-create.md)
 ### [Skalierungsgruppe unter Verwendung von PowerShell](virtual-machine-scale-sets-windows-create.md)
 ### [Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
 ### [Linux-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-linux-autoscale.md)
 ### [Windows-Skalierungsgruppe mit automatischer Skalierung](virtual-machine-scale-sets-windows-autoscale.md)
 ### [Anwendungen in Skalierungsgruppen](virtual-machine-scale-sets-deploy-app.md)
+### [Verwenden von Datenträgern mit Skalierungsgruppen](virtual-machine-scale-sets-attached-disks.md)
+### [Verwenden umfangreicher Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md)
+### [Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger](virtual-machine-scale-sets-convert-template-to-md.md)
+
+
 
 ## Verwalten
 ### [Windows-Skalierungsgruppe unter Verwendung von PowerShell](virtual-machine-scale-sets-windows-manage.md)
@@ -24,6 +31,7 @@
 ### [Upgrades für Skalierungsgruppen](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [Erweiterte automatische Skalierung](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Verwenden von DSC und Skalierungsgruppen](virtual-machine-scale-sets-dsc.md)
+### [Konvertieren einer Vorlage in verwaltete Datenträger](virtual-machine-scale-sets-convert-template-to-md.md)
 
 ## Problembehandlung
 ### [Automatische Skalierung](virtual-machine-scale-sets-troubleshoot.md)
@@ -31,7 +39,7 @@
 # Referenz
 ## [PowerShell](/powershell/azureps-cmdlets-docs)
 ## [Azure-Befehlszeilenschnittstelle](../virtual-machines/azure-cli-arm-commands.md)
-## [REST](/rest/api/compute/)
+## [REST](/rest/api/virtualmachinescalesets/)
 
 # Ressourcen
 ## Preise 
@@ -40,6 +48,6 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

@@ -13,11 +13,11 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 01/03/2016
+ms.date: 02/03/2017
 ms.author: meetb
 translationtype: Human Translation
-ms.sourcegitcommit: 631baac839f4045c4b0fcf23810d9459c45a4998
-ms.openlocfilehash: 558d6660235a76bc7f5d23e7b28025496c2d8271
+ms.sourcegitcommit: 2793ddb1c903f6732a193276a2d804192b7ab53b
+ms.openlocfilehash: 86524dd1a73df3b60245cb664c0e17a63df00763
 
 
 ---
@@ -31,100 +31,103 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 
 ## <a name="step-2-configure-development-environment"></a>Schritt 2: Konfigurieren der Entwicklungsumgebung
 ### <a name="mac-os"></a>**Mac OS**
-Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Python-Skript erstellen möchten. Geben Sie die folgenden Befehle ein, um **brew**, **FreeTDS** und **pyodbc** zu installieren. pyodbc verwendet FreeTDS unter macOS, um eine Verbindung mit den SQL-Datenbank-Instanzen herzustellen.
+Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Python-Skript erstellen möchten. Geben Sie die folgenden Befehle ein, um **brew**, den **Microsoft ODBC-Treiber für Mac** und **pyodbc** zu installieren. pyodbc verwendet den Microsoft ODBC-Treiber unter Linux zum Herstellen von Verbindungen mit SQL-Datenbank-Instanzen.
 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew uninstall FreeTDS #if you have an existing installed FreeTDS
-    brew update
-    brew doctor
-    brew install freetds --with-unixodbc
-    sudo pip install pyodbc==3.1.1
+```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap microsoft/msodbcsql https://github.com/Microsoft/homebrew-msodbcsql
+brew update
+brew install msodbcsql 
+#for silent install ACCEPT_EULA=y brew install msodbcsql
+sudo pip install pyodbc==3.1.1
+```
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Öffnen Sie das Terminal, und navigieren Sie zu einem Verzeichnis, in dem Sie Ihr Python-Skript erstellen möchten. Geben Sie die folgenden Befehle ein, um den **Microsoft ODBC-Treiber für Linux** und **pyodbc** zu installieren. pyodbc verwendet den Microsoft ODBC-Treiber unter Linux zum Herstellen von Verbindungen mit SQL-Datenbank-Instanzen.
 
-    sudo su
-    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql.list
-    exit
-    sudo apt-get update
-    sudo apt-get install msodbcsql mssql-tools unixodbc-dev-utf16
-    sudo pip install pyodbc==3.1.1
+```
+sudo su
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql.list
+exit
+sudo apt-get update
+sudo apt-get install msodbcsql mssql-tools unixodbc-dev-utf16
+sudo pip install pyodbc==3.1.1
+```
 
 ### <a name="windows"></a>**Windows**
 Installieren Sie den [Microsoft ODBC-Treiber 13.1](https://www.microsoft.com/en-us/download/details.aspx?id=53339). pyodbc verwendet den Microsoft ODBC-Treiber unter Linux zum Herstellen von Verbindungen mit SQL-Datenbank-Instanzen. 
 
 Installieren Sie anschließend pyodbc mithilfe von pip.
 
-    pip install pyodbc==3.1.1
+```
+pip install pyodbc==3.1.1
+```
 
 Anweisungen zum Aktivieren der Verwendung von pip finden Sie [hier](http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows).
 
 ## <a name="step-3-run-sample-code"></a>Schritt 3: Ausführen von Beispielcode
 Erstellen Sie eine Datei namens **sql_sample.py**, und fügen Sie den folgenden Code in die Datei ein. Sie können dies mithilfe dieser Befehle von der Befehlszeile ausführen:
 
-    python sql_sample.py
+```
+python sql_sample.py
+```
 
 ### <a name="connect-to-your-sql-database"></a>Herstellen von Verbindungen mit der SQL-Datenbank
 Die [pyodbc.connect](https://mkleehammer.github.io/pyodbc/api-connection.html)-Funktion dient zum Herstellen einer Verbindung mit SQL-Datenbank.
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    #driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux of windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("select @@VERSION")
-    row = cursor.fetchone()
-    if row:
-        print row
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("select @@VERSION")
+row = cursor.fetchone()
+if row:
+    print row
+```
 
 ### <a name="execute-an-sql-select-statement"></a>Ausführen von SQL-SELECT-Anweisungen
 Mit der [cursor.execute](https://mkleehammer.github.io/pyodbc/api-cursor.html) -Funktion können Sie ein Resultset aus einer Abfrage einer SQL-Datenbank abrufen. Diese Funktion akzeptiert praktisch jede Abfrage und gibt ein Resultset zurück, das mithilfe von [cursor.fetchone()](https://mkleehammer.github.io/pyodbc/api-cursor.html)durchlaufen werden kann.
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux or windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("select @@VERSION")
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("select @@VERSION")
+row = cursor.fetchone()
+while row:
+    print str(row[0]) + " " + str(row[1]) + " " + str(row[2])
     row = cursor.fetchone()
-    while row:
-        print str(row[0]) + " " + str(row[1]) + " " + str(row[2])     
-        row = cursor.fetchone()
-
+```
 
 ### <a name="insert-a-row-pass-parameters-and-retrieve-the-generated-primary-key"></a>Einfügen von Zeilen, Übergeben von Parametern und Abrufen von generierten Primärschlüsseln
 In SQL-Datenbank können die [IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx)-Eigenschaft und das [SEQUENCE](https://msdn.microsoft.com/library/ff878058.aspx)-Objekt zum automatischen Generieren von Werten für [Primärschlüssel](https://msdn.microsoft.com/library/ms179610.aspx) verwendet werden. 
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    #driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux or windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("select @@VERSION")
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("select @@VERSION")
+row = cursor.fetchone()
+while row:
+    print "Inserted Product ID : " +str(row[0])
     row = cursor.fetchone()
-    while row:
-        print "Inserted Product ID : " +str(row[0])
-        row = cursor.fetchone()
-
+```
 
 ### <a name="transactions"></a>Transaktionen
 Dieses Codebeispiel veranschaulicht die Verwendung von Transaktionen für folgende Aufgaben:
@@ -135,24 +138,23 @@ Dieses Codebeispiel veranschaulicht die Verwendung von Transaktionen für folgen
 
 Fügen Sie folgenden Code in „sql_sample.py“ ein.
 
-    import pyodbc
-    server = 'yourserver.database.windows.net'
-    database = 'yourdatabase'
-    username = 'yourusername'
-    password = 'yourpassword'
-    #for mac
-    #driver = '{/usr/local/lib/libtdsodbc.so}'
-    #for linux or windows
-    driver= '{ODBC Driver 13 for SQL Server}'
-    cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
-    cursor = cnxn.cursor()
-    cursor.execute("BEGIN TRANSACTION")
-    cursor.execute("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New', 'SQLEXPRESS New', 0, 0, CURRENT_TIMESTAMP)")
-    cnxn.rollback()
+```
+import pyodbc
+server = 'yourserver.database.windows.net'
+database = 'yourdatabase'
+username = 'yourusername'
+password = 'yourpassword'
+driver= '{ODBC Driver 13 for SQL Server}'
+cnxn = pyodbc.connect('DRIVER='+driver+';PORT=1433;SERVER='+server+';PORT=1443;DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+cursor.execute("BEGIN TRANSACTION")
+cursor.execute("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New', 'SQLEXPRESS New', 0, 0, CURRENT_TIMESTAMP)")
+cnxn.rollback()
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lesen Sie die [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
-* Weitere Informationen zum [Microsoft Python-Treiber für SQL Server](https://msdn.microsoft.com/library/mt652092.aspx)
+* Weitere Informationen zum [Microsoft Python-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
 * Besuchen Sie das [Python Developer Center](/develop/python/).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -161,6 +163,6 @@ Fügen Sie folgenden Code in „sql_sample.py“ ein.
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

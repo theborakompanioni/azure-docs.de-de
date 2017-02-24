@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 01/26/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 66b3bbe84f966c3f8ec782fbf7c3bb20a8a832d0
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: 35c1dfb5aaee4427f40e72a2293c756ae4fcb76c
 
 
 ---
@@ -26,7 +26,7 @@ Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits ü
 * Ein gültiges Azure-Abonnement
 * Ein OverDrive-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-Nach Abschluss dieses Lernprogramms können sich die Azure AD-Benutzer, die Sie OverDrive zugewiesen haben, mittels einmaliger Anmeldung auf Ihrer OverDrive-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können Sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
+Nach Abschluss dieses Lernprogramms können sich die Azure AD-Benutzer, die Sie OverDrive zugewiesen haben, mittels einmaliger Anmeldung (Single Sign-On, SSO) auf Ihrer OverDrive-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
@@ -35,49 +35,51 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-overdrive-books-tutorial/IC784462.png "Scenario")
+![Szenario](./media/active-directory-saas-overdrive-books-tutorial/IC784462.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-overdrive"></a>Aktivieren der Anwendungsintegration für OverDrive
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für OverDrive aktivieren.
 
-### <a name="to-enable-the-application-integration-for-overdrive-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für OverDrive
+**Zum Aktivieren der Anwendungsintegration für OverDrive führen Sie die folgenden Schritte durch:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-overdrive-books-tutorial/IC700993.png "Active Directory")
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-overdrive-books-tutorial/IC700994.png "Applications")
+   ![Anwendungen](./media/active-directory-saas-overdrive-books-tutorial/IC700994.png "Anwendungen")
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-overdrive-books-tutorial/IC749321.png "Add application")
+   ![Anwendung hinzufügen](./media/active-directory-saas-overdrive-books-tutorial/IC749321.png "Anwendung hinzufügen")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-overdrive-books-tutorial/IC749322.png "Add an application from gallerry")
+   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-overdrive-books-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 6. Geben Sie im **Suchfeld** das Wort **OverDrive** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-overdrive-books-tutorial/IC784463.png "Application Gallery")
+   ![Anwendungskatalog](./media/active-directory-saas-overdrive-books-tutorial/IC784463.png "Anwendungskatalog")
 7. Wählen Sie im Ergebnisbereich **OverDrive** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
    ![OverDrive](./media/active-directory-saas-overdrive-books-tutorial/IC799950.png "OverDrive")
    
-   ## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei OverDrive zu authentifizieren.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **OverDrive** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden aktivieren](./media/active-directory-saas-overdrive-books-tutorial/IC784465.png "Enable single sign-on")
+   ![Einmaliges Anmelden aktivieren](./media/active-directory-saas-overdrive-books-tutorial/IC784465.png "Einmaliges Anmelden aktivieren")
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei OverDrive anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784466.png "Configure single sign-on")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784466.png "Einmaliges Anmelden konfigurieren")
 3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **OverDrive-Anmelde-URL** Ihre URL im Format „*http://mslibrarytest.libraryreserve.com*“ ein, und klicken Sie dann auf **Weiter**.
    
-   ![App-URL konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784467.png "Configure App URL")
+   ![App-URL konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784467.png "App-URL konfigurieren")
 4. Laden Sie auf der Seite **Einmaliges Anmelden konfigurieren für OverDrive** die Metadatendatei herunter, und senden Sie sie an das Supportteam von OverDrive.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784468.png "Configure single sign-on")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784468.png "Einmaliges Anmelden konfigurieren")
    
    > [!NOTE]
    > Das Supportteam von OverDrive konfiguriert einmaliges Anmelden für Sie. Sie erhalten eine Benachrichtigung, wenn die Konfiguration abgeschlossen ist.
@@ -85,9 +87,9 @@ In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbund
    > 
 5. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-   ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784469.png "Configure single sign-on")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-overdrive-books-tutorial/IC784469.png "Einmaliges Anmelden konfigurieren")
    
-   ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
 Für das Konfigurieren der Benutzerbereitstellung in OverDrive steht kein Aktionselement zur Verfügung.  
 Wenn ein zugewiesener Benutzer versucht, sich bei OverDrive anzumelden, wird ggf. automatisch ein OverDrive-Konto erstellt.
@@ -95,25 +97,27 @@ Wenn ein zugewiesener Benutzer versucht, sich bei OverDrive anzumelden, wird ggf
 > [!NOTE]
 > Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von OverDrive-Benutzerkonten oder mithilfe der von OverDrive bereitgestellten APIs erstellen.
 > 
-> 
+ 
 
 ## <a name="assigning-users"></a>Zuweisen von Benutzern
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-overdrive-perform-the-following-steps"></a>So weisen Sie OverDrive Benutzer zu
+**Um OverDrive Benutzer hinzuzufügen, führen Sie die folgenden Schritte durch:**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **OverDrive** auf **Benutzer zuweisen**.
    
-   ![Benutzer zuweisen](./media/active-directory-saas-overdrive-books-tutorial/IC784470.png "Assign Users")
+   ![Zuweisen von Benutzern](./media/active-directory-saas-overdrive-books-tutorial/IC784470.png "Zuweisen von Benutzern")
+   
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-   ![Ja](./media/active-directory-saas-overdrive-books-tutorial/IC767830.png "Yes")
+   ![Ja](./media/active-directory-saas-overdrive-books-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
 
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

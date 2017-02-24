@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD und Anwendungen: Erfordern der Benutzerzuweisung | Microsoft Docs'
+title: "Erfordern der Benutzerzuweisung – Azure AD | Microsoft-Dokumentation"
 description: "Informationen zum Erfordern der Benutzerzuweisung für Azure-Anwendungen"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2015
+ms.date: 02/06/2017
 ms.author: inhenk
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: de23d1d775cefa818b6f8a104194eecaa5d740e3
+ms.sourcegitcommit: e66b606433f8924a509f2d04dae67ff00ded6dca
+ms.openlocfilehash: f5804d258c609f2bf289dcf4d173dc67137e7691
 
 
 ---
-# <a name="azure-ad-and-applications-requiring-user-assignment"></a>Azure AD und Clientanwendungen: Erfordern der Benutzerzuweisung
+# <a name="azure-ad-and-applications-require-user-assignment"></a>Azure AD und Anwendungen: Erfordern der Benutzerzuweisung
 ## <a name="requiring-user-assignment"></a>Erfordern der Benutzerzuweisung
 1. Melden Sie sich beim Azure-Portal mit dem Administratorkonto an.
 2. Klicken Sie im Hauptmenü auf **Alle Elemente** .
@@ -38,7 +38,6 @@ Sie müssen jetzt der Anwendung Benutzer und/oder Gruppen zuweisen. Weitere Info
 
 
 
-
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

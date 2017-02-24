@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 12/13/2016
 ms.author: nberdy
 translationtype: Human Translation
-ms.sourcegitcommit: e223d0613cd48994315451da87e6b7066585bdb6
-ms.openlocfilehash: f6f894157a31641b1d0294e84795563c727caaac
+ms.sourcegitcommit: 8f72f2ca66a5d1394e87c7c0f8d8dff9da73732f
+ms.openlocfilehash: 612ef94efb9776ae0ce768de1b59fb208824da93
 
 
 ---
-# <a name="operations-monitoring"></a>Vorgangsüberwachung
+# <a name="iot-hub-operations-monitoring"></a>IoT Hub-Vorgangsüberwachung
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT-Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
-IoT Hub überwacht fünf Ereigniskategorien:
+IoT Hub überwacht sechs Ereigniskategorien:
 
 * Geräte-Identitätsvorgänge
 * Gerätetelemetrie
 * C2D-Nachrichten
 * Verbindungen
 * Dateiuploads
+* Nachrichtenweiterleitung
 
 ## <a name="how-to-enable-operations-monitoring"></a>Aktivieren der Vorgangsüberwachung
 1. Erstellen Sie einen IoT Hub. Anweisungen zum Erstellen eines IoT-Hubs finden Sie in der Anleitung mit den [ersten Schritten][lnk-get-started].
@@ -39,6 +40,9 @@ IoT Hub überwacht fünf Ereigniskategorien:
 3. Wählen Sie die Kategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse können aus dem Event Hub-kompatiblen Endpunkt gelesen werden, der in **Überwachungseinstellungen**aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
    
     ![][2]
+
+> [!NOTE]
+> Die Auswahl von **Ausführlich** für die Überwachung für die Kategorie **Verbindungen** bewirkt, dass IoT Hub zusätzliche Diagnosemeldungen generiert. Für alle anderen Kategorien ändert die Einstellung **Ausführlich** die Menge der Informationen, die IoT Hub in jede Fehlermeldung einbezieht.
 
 ## <a name="event-categories-and-how-to-use-them"></a>Ereigniskategorien und ihre Verwendung
 Jede Vorgangsüberwachungskategorie dient der Nachverfolgung eines anderen Interaktionstyps mit dem IoT Hub. Jede Überwachungskategorie hat ein Schema, das festlegt, wie Ereignisse in dieser Kategorie strukturiert sind.
@@ -144,6 +148,22 @@ Beachten Sie, dass diese Kategorie keine Fehler abfangen kann, die auftreten, w�
          "durationMs": 1234
     }
 
+### <a name="message-routing"></a>Nachrichtenweiterleitung
+Die Kategorie „Nachrichtenweiterleitung“ verfolgt Fehler, die während der Auswertung der Nachrichtenweiterleitung auftreten, und die durch IoT Hub wahrgenommene Endpunktintegrität. Diese Kategorie umfasst z.B. folgende Ereignisse: Eine Regel wird als „nicht definiert“ ausgewertet, IoT Hub markiert einen Endpunkt als inaktiv und alle anderen Fehler, die von einem Endpunkt empfangen werden. Beachten Sie, dass diese Kategorie keine bestimmten Fehler zu den Nachrichten selbst umfasst (z.B. Gerätedrosselungsfehler), die in der Kategorie „Gerätetelemetrie“ gemeldet werden.
+        
+    {
+        "messageSizeInBytes": 1234,
+        "time": "UTC timestamp",
+        "operationName": "ingress",
+        "category": "routes",
+        "level": "Error",
+        "deviceId": "device-ID",
+        "messageId": "ID of message",
+        "routeName": "myroute",
+        "endpointName": "myendpoint",
+        "details": "ExternalEndpointDisabled"
+    }
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
@@ -164,6 +184,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

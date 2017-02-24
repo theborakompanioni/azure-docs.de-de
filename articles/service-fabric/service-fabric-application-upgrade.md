@@ -15,8 +15,8 @@ ms.workload: NA
 ms.date: 11/15/2016
 ms.author: subramar
 translationtype: Human Translation
-ms.sourcegitcommit: 5e4aebee48754f1f6762898d9571a4fff7d7283e
-ms.openlocfilehash: ab167a74ddab1e38369ce9fa466022365ca08bee
+ms.sourcegitcommit: b4637922e7b280b0e9954c9e51788202e784b4f9
+ms.openlocfilehash: 743223f78f279fedf33f73ff52b56f4a7358cd51
 
 
 ---
@@ -44,6 +44,18 @@ Der Modus, den wir für Upgrades von Anwendungen empfehlen, ist der überwachte 
 
 Der nicht überwachte manuelle Modus benötigt nach jedem Upgrade in einer Updatedomäne einen manuellen Eingriff, um das Upgrade für die nächste Updatedomäne zu starten. Es werden keine Service Fabric-Integritätsprüfungen ausgeführt. Der Administrator überprüft den Zustand oder Status vor dem Upgrade in der nächsten Updatedomäne.
 
+## <a name="upgrade-default-services"></a>Durchführen eines Upgrades von Standarddiensten
+Standarddienste in der Service Fabric-Anwendung können während des Upgradevorgangs einer Anwendung aktualisiert werden. Standarddienste werden im [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application) definiert. Für das Aktualisieren von Standarddiensten gelten folgende Standardregeln:
+
+1. Standarddienste im neuen [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application), die im Cluster nicht vorhanden sind, werden erstellt.
+> [!TIP]
+> [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md#fabric-settings-that-you-can-customize) muss auf TRUE festgelegt werden, um die folgenden Regeln zu aktivieren. Dieses Feature wird ab Version&5;.5 unterstützt.
+
+2. Standarddienste, die sowohl im vorherigen [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application) als auch in der neuen Version vorhanden sind, werden aktualisiert. Die im Cluster bereits vorhandenen Dienstbeschreibungen werden durch die der neuen Version überschrieben. Das Anwendungsupgrade führt bei einem Fehler beim Aktualisieren des Standarddiensts automatisch einen Rollback durch.
+3. Standarddienste, die im vorherigen [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application), aber nicht in der neuen Version enthalten sind, werden gelöscht. **Beachten Sie, dass dieses Löschen von Standarddiensten nicht rückgängig gemacht werden kann.**
+
+Falls für ein Anwendungsupgrade ein Rollback ausgeführt wird, werden Standarddienste auf den Status vor Beginn des Upgrades zurückgesetzt. Gelöschte Dienste können jedoch nicht erstellt werden.
+
 ## <a name="application-upgrade-flowchart"></a>Flussdiagramm eines Anwendungsupgrades
 Das Flussdiagramm unter diesem Absatz kann Ihnen dabei helfen, den Upgradevorgang einer Service Fabric-Anwendung zu verstehen. Im Speziellen ist hier schematisch dargestellt, wie die Timeouts, z.B. *HealthCheckStableDuration*, *HealthCheckRetryTimeout* und *UpgradeHealthCheckInterval*, beim Steuern helfen, wenn das Upgrade in einer Updatedomäne als erfolgreich oder fehlgeschlagen gilt.
 
@@ -66,6 +78,6 @@ Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie i
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

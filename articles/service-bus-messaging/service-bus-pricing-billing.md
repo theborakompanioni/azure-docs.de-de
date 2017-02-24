@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2016
+ms.date: 02/16/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 57aec98a681e1cb5d75f910427975c6c3a1728c3
-ms.openlocfilehash: 58d1b84c1a9fe19937846842f30f5e7b48cda1c7
+ms.sourcegitcommit: 182e28e37eb56c547e28524f2a3e13f042238cb4
+ms.openlocfilehash: bd042908fec2dcf499dd1cb5230f62ec4be9fdea
 
 
 ---
@@ -24,7 +24,7 @@ ms.openlocfilehash: 58d1b84c1a9fe19937846842f30f5e7b48cda1c7
 Service Bus wird in den Tarifen Basic, Standard und [Premium](service-bus-premium-messaging.md) angeboten. Sie können einen Diensttarif für jeden von Ihnen erstellten Service Bus-Dienstnamespace auswählen, und diese Tarifauswahl gilt für alle Warteschlangen, Entitäten, die in diesem Namespace erstellt werden.
 
 > [!NOTE]
-> Ausführliche Informationen zu den aktuellen Service Bus-Preisen finden Sie auf der [Azure Service Bus-Preisseite](https://azure.microsoft.com/pricing/details/service-bus/) und in den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#service-bus-pricing).
+> Ausführliche Informationen zu den aktuellen Service Bus-Preisen finden Sie auf der [Azure Service Bus-Preisseite](https://azure.microsoft.com/pricing/details/service-bus/) und in den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#pricing).
 >
 >
 
@@ -39,7 +39,7 @@ Der Tarif **Premium** bietet Ressourcenisolierung auf CPU- und Arbeitsspeichereb
 
 Beachten Sie, dass die Standardbasisgebühr nur einmal pro Monat pro Azure-Abonnement berechnet wird. Dies bedeutet, dass Sie nach dem Erstellen eines einzelnen Service Bus-Namespaces des Tarifs „Standard“ oder „Premium“ beliebig viele weitere Namespaces des Tarifs „Standard“ oder „Premium“ unter dem gleichen Azure-Abonnement erstellen können, ohne dass zusätzliche Basisgebühren entstehen.
 
-Alle vorhandenen Service Bus-Namespaces, die vor dem 1. November 2014 erstellt wurden, werden automatisch dem Tarif „Standard“ zugeordnet. Dadurch wird sichergestellt, dass Sie auch weiterhin Zugriff auf alle Funktionen haben, die derzeit mit Service Bus verfügbar sind. Anschließend können Sie über das [klassische Azure-Portal][Klassisches Azure-Portal] bei Bedarf eine Herabstufung auf den Tarif „Basic“ durchführen.
+Alle vorhandenen Service Bus-Namespaces, die vor dem 1. November 2014 erstellt wurden, werden automatisch dem Tarif „Standard“ zugeordnet. Dadurch wird sichergestellt, dass Sie auch weiterhin Zugriff auf alle Funktionen haben, die derzeit mit Service Bus verfügbar sind. Anschließend können Sie über das [klassische Azure-Portal][Azure classic portal] bei Bedarf eine Herabstufung auf den Tarif „Basic“ durchführen.
 
 In der folgenden Tabelle sind die Funktionsunterschiede zwischen den Tarifen „Basic“ und „Standard“/„Premium“ zusammengefasst.
 
@@ -71,15 +71,15 @@ Seit dem 1. November 2014 gelten die folgenden Preise:
 
 | Basic | Kosten |
 | --- | --- |
-| Vorgänge |0,05 US-Dollar pro 1 Million Vorgänge |
+| Vorgänge |0,05 US-Dollar pro&1; Million Vorgänge |
 
 | Standard | Kosten |
 | --- | --- |
 | Basisgebühr |10 US-Dollar/Monat |
 | Erste 12,5 Millionen Vorgänge/Monat |Enthalten |
-| 12,5–100 Millionen Vorgänge/Monat |0,80 US-Dollar pro 1 Million Vorgänge |
-| 100–2.500 Millionen Vorgänge/Monat |0,50 US-Dollar pro 1 Million Vorgänge |
-| Mehr als 2.500 Millionen Vorgänge/Monat |0,20 US-Dollar pro 1 Million Vorgänge |
+| 12,5–100 Millionen Vorgänge/Monat |0,80 US-Dollar pro&1; Million Vorgänge |
+| 100–2.500 Millionen Vorgänge/Monat |0,50 US-Dollar pro&1; Million Vorgänge |
+| Mehr als 2.500 Millionen Vorgänge/Monat |0,20 US-Dollar pro&1; Million Vorgänge |
 
 | Premium | Kosten |
 | --- | --- |
@@ -147,12 +147,12 @@ Ja. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTT
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Service Bus-Preisen finden Sie auf der [Azure Service Bus-Preisseite](https://azure.microsoft.com/pricing/details/service-bus/).
-* In den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#service-bus-pricing) werden einige allgemeine Fragen zur Preisgestaltung und Abrechnung für Service Bus beantwortet.
+* In den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#pricing) werden einige allgemeine Fragen zur Preisgestaltung und Abrechnung für Service Bus beantwortet.
 
-[Klassisches Azure-Portal]: http://manage.windowsazure.com
+[Azure classic portal]: http://manage.windowsazure.com
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

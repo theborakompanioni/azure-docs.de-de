@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: elioda
 translationtype: Human Translation
-ms.sourcegitcommit: e6d559a78fbd73be1dd5e745496515ce71404cad
-ms.openlocfilehash: ea7000d3e56c5132dba3f144c7bad671d0e3054a
+ms.sourcegitcommit: 64f44c176633db4179f954d2f70cdf26d08b60b4
+ms.openlocfilehash: 28ea238484d86b044899aa9f95861bbdbbf3a06c
 
 
 ---
@@ -246,15 +246,31 @@ Mit [D2C-Routen][lnk-devguide-messaging-routes] können Sie IoT Hub dazu konfigu
 Die [Routenbedingung][lnk-query-expressions] verwendet die gleiche IoT Hub-Abfragesprache wie Bedingungen in Zwillings- und Auftragsabfragen. Routenbedingungen werden anhand der Nachrichteneigenschaften unter Annahme folgender JSON-Darstellung ausgewertet:
 
         {
+            "$messageId": "",
+            "$enqueuedTime": "",
+            "$to": "",
+            "$expiryTimeUtc": "",
+            "$correlationId": "",
+            "$userId": "",
+            "$ack": "",
+            "$connectionDeviceId": "",
+            "$connectionDeviceGenerationId": "",
+            "$connectionAuthMethod": "",
+            "$content-type": "",
+            "$content-encoding": ""
+
             "userProperty1": "",
             "userProperty2": ""
         }
+
+Nachrichtensystemeigenschaften ist das Symbol `'$'` vorangestellt.
+Auf Benutzereigenschaften wird stets über deren Namen zugegriffen. Wenn der Name einer Benutzereigenschaft mit dem einer Systemeigenschaft übereinstimmt (wie z.B. `$to`), wird die Benutzereigenschaft mit dem Ausdruck `$to` abgerufen.
+Sie können stets mithilfe von Klammern `{}` auf die Systemeigenschaft zugreifen. Sie können beispielsweise über den Ausdruck `{$to}` auf die Systemeigenschaft `to` zuweisen. Über Eigenschaftsnamen in Klammern wird stets die entsprechende Systemeigenschaft abgerufen.
 
 Beachten Sie, dass bei Eigenschaftennamen nicht zwischen Groß- und Kleinschreibung unterschieden wird.
 
 > [!NOTE]
 > Alle Nachrichteneigenschaften sind Zeichenfolgen. Systemeigenschaften, wie im [Entwicklerhandbuch][lnk-devguide-messaging-format] beschrieben, sind derzeit nicht zur Verwendung in Abfragen verfügbar.
->
 >
 
 Wenn Sie z.B. eine `messageType`-Eigenschaft verwenden, möchten Sie vielleicht alle Telemetrie zu einem bestimmten Endpunkt weiterleiten und alle Warnungen zu einem anderen Endpunkt. Sie können den folgenden Ausdruck schreiben, um die Telemetrie weiterzuleiten:
@@ -458,6 +474,6 @@ Informieren Sie sich darüber, wie Sie Abfragen in Ihren Apps mit [Azure IoT SDK
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

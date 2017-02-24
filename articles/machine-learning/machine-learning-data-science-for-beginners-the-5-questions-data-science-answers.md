@@ -1,7 +1,7 @@
 ---
-title: "Die 5 Data Science-Fragen: Data Science für Einsteiger | Microsoft Docs"
+title: "Die fünf Data Science-Fragen – Data Science für Einsteiger – Azure | Microsoft-Dokumentation"
 description: "Kurze Einführung in Data Science mithilfe der aus fünf Kurzvideos bestehenden Reihe „Data Science für Einsteiger“, die mit „Die 5 Fragen, die Data Science beantwortet“ beginnt."
-keywords: "Ausführen von Data Science,Data Science-Einsteiger,Data Science für Einsteiger,Arten von Fragen,Data Science-Fragen,Data Science-Video"
+keywords: "Ausführen von Data Science,Data Science-Einsteiger,Data Science für Einsteiger,Data Science-Grundlagen,Data Science-Fragen,Data Science-Video,Data Science-Einführung"
 services: machine-learning
 documentationcenter: na
 author: cjgronlund
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: da5960c6ca030218a405e8827737680d24af4228
+ms.sourcegitcommit: 50d1f8dfc7ce2d8bf4b04cff68698eafd56ce9c2
+ms.openlocfilehash: 518a7d2b5e43d8133d54ab583e4545a3ee9b3cba
 
 
 ---
@@ -27,8 +27,8 @@ In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Da
 In diesem ersten Video geht es um die Arten von Fragen, die Data Science beantworten kann. Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/8/player]
-> 
-> 
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 In *Data Science für Einsteiger* erhalten Sie eine ca. 25 Minuten dauernde Schnelleinführung in Data Science. Sehen Sie sich die anderen vier Videos an:
@@ -55,7 +55,7 @@ Es mag Sie vielleicht überraschen, doch *es gibt nur fünf Fragen, die Data Sci
 * Wie viel – oder – wie viele?
 * Wie ist dies organisiert?
 * Was soll ich als Nächstes tun?
-  
+
   Jede dieser Fragen wird mithilfe einer eigenen Gruppe von Machine Learning-Methoden beantwortet, die Algorithmen genannt werden.
 
 Es ist hilfreich, sich einen Algorithmus als Rezept und Ihre Daten als die Zutaten vorzustellen. Ein Algorithmus gibt vor, wie die Daten zu kombinieren und zu mischen sind, um eine Antwort zu erhalten. Computer fungieren dabei als ein Mixer. Sie übernehmen einen Großteil der harten Arbeit des Algorithmus für Sie, und zwar ziemlich schnell.
@@ -143,7 +143,6 @@ Das sind sie also: Die 5 Fragen, die Data Science beantworten kann.
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

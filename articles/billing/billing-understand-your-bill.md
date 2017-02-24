@@ -1,10 +1,10 @@
 ---
-title: Informationen zu Ihrer Rechnung | Microsoft-Dokumentation
+title: "Informationen zu Ihrer Rechnung für Azure | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und verstehen.
 services: 
 documentationcenter: 
 author: genlin
-manager: stevenpo
+manager: ruchic
 editor: 
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2016
+ms.date: 02/03/2017
 ms.author: erihur;genli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: b107405081429626bf1e758567ae5427e2dbca15
+ms.sourcegitcommit: 29a6290a19186d5bc8a07d87617b47d21529d6b7
+ms.openlocfilehash: 2e99332e2a2b023c00669b3ad5ea07f0c791a805
 
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Informationen zu Ihrer Rechnung für Microsoft Azure
-Um Ihre Azure-Rechnung zu verstehen, schauen Sie sich die Rechnung mit der Zusammenfassung der Gebühren und die separate Datei mit den detaillierten Informationen zur täglichen Nutzung an. In diesem Artikel werden die meisten der in Rechnung und täglichen Nutzungsdaten verwendeten Begriffe beschrieben. Informationen zum Beziehen dieser Dateien finden Sie unter [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../billing-download-azure-invoice-daily-usage-date.md). Wenn Sie ein kostenloses Testabonnement verwenden, können Sie Ihre täglichen Nutzungsinformationen abrufen, aber es ist keine Rechnung verfügbar.
+Um Ihre Azure-Rechnung zu verstehen, schauen Sie sich die Rechnung mit der Zusammenfassung der Gebühren und die separate Datei mit den detaillierten Informationen zur täglichen Nutzung an. In diesem Artikel werden die meisten der in Rechnung und täglichen Nutzungsdaten verwendeten Begriffe beschrieben. Informationen zum Abrufen dieser Dateien finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). Wenn Sie ein kostenloses Testabonnement verwenden, können Sie Ihre täglichen Nutzungsinformationen abrufen, aber es ist keine Rechnung verfügbar.
 
 Die Gebühren für Microsoft Azure-Abonnements variieren je nach Preisliste. Einige Tarife, z.B. Visual Studio Enterprise (MPN), umfassen monatliche Guthaben für Abonnenten, die Sie Ihren Anforderungen entsprechend für jeden Azure-Dienst verwenden können.
 
-In der aktuellen Rechnung können bis zu 24 Stunden der Nutzung am Ende des vorherigen Abrechnungszeitraums angezeigt werden. Bei Abrechnungen für internationale Kunden sind die aufgeführten Gebühren zudem nur Schätzwerte,  da Banken unterschiedliche Umrechnungsgebühren erheben.
+In der aktuellen Rechnung können bis zu 24 Stunden der Nutzung am Ende des vorherigen Abrechnungszeitraums angezeigt werden. Bei Abrechnungen für internationale Kunden sind die aufgeführten Gebühren zudem nur Schätzwerte, da Banken unterschiedliche Umrechnungsgebühren erheben.
 
 ## <a name="a-namepdfa-understand-your-invoice-pdf"></a><a name="pdf"></a>Informationen zu Ihrer Rechnung (PDF)
-Die Rechnung stellt eine Zusammenfassung der Gebühren bereit. Die Rechnung steht im [Azure-Portal](https://portal.azure.com) im PDF-Format (Portable Document Format) zum Download bereit. Weitere Informationen finden Sie unter [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../billing-download-azure-invoice-daily-usage-date.md). 
+Die Rechnung stellt eine Zusammenfassung der Gebühren bereit. Die Rechnung steht im [Azure-Portal](https://portal.azure.com) im PDF-Format (Portable Document Format) zum Download bereit. Weitere Informationen finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md). 
 
 In den folgenden Abschnitten werden die meisten Begriffe, die Sie auf Ihrer Rechnung finden, sowie die Beschreibungen für jeden Begriff aufgeführt.
 
@@ -43,10 +43,10 @@ Der Abschnitt mit den Kontoinformationen enthält Angaben zu Ihrer Nutzung und I
 | Invoice No. |Die eindeutige Rechnungsnummer für die Nachverfolgung |
 | Billing Cycle |Datumsbereich, den diese Rechnung abdeckt |
 | Invoice Date |Das Datum, an dem die Rechnung generiert wurde. |
-| Payment Method |Die Zahlungsart, die für das Konto verwendet wird (Rechnung oder Kreditkarte). Weitere Informationen zum Aktualisieren einer Kreditkarte finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](../billing-how-to-change-credit-card.md). Wenn Sie Mitarbeiter eines Unternehmens sind, können Sie die Rechnungen für das Azure-Abonnement auch per Scheck, Express-Scheck und Überweisung begleichen. Informationen finden Sie unter [Azure-Abrechnung – Bezahlen per Rechnung](https://azure.microsoft.com/pricing/invoicing/). |
-| Bill to |Anschrift für Microsoft Azure-Rechnungen. Sie können die für Ihre Kreditkarte hinterlegte Rechnungsadresse ändern, indem Sie im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) zur Abonnementseite wechseln. |
-| Abonnementangebot |Die Art des erworbenen Abonnementangebots (nutzungsbasierte Bezahlung, BizSpark Plus, Azure Pass usw.). Wie Sie von einem nutzungsbasierten Tarif zu einem anderen Abonnementangebot wechseln können, erfahren Sie unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](../billing-how-to-switch-azure-offer.md) . |
-| Account Owner Email |Die E-Mail-Adresse, unter der das Microsoft Azure-Konto registriert ist. Weitere Informationen zum Ändern der E-Mail-Adresse finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](../billing-how-to-change-azure-account-profile.md). |
+| Payment Method |Die Zahlungsart, die für das Konto verwendet wird (Rechnung oder Kreditkarte). Weitere Informationen zum Aktualisieren einer Kreditkarte finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md). Wenn Sie Mitarbeiter eines Unternehmens sind, können Sie die Rechnungen für das Azure-Abonnement auch per Scheck, Express-Scheck und Überweisung begleichen. Informationen finden Sie unter [Azure-Abrechnung – Bezahlen per Rechnung](https://azure.microsoft.com/pricing/invoicing/). |
+| Bill to |Anschrift für Microsoft Azure-Rechnungen. Weitere Informationen zum Aktualisieren der Abrechnungsinformationen finden Sie unter [Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte](billing-how-to-change-credit-card.md). |
+| Abonnementangebot |Die Art des erworbenen Abonnementangebots (nutzungsbasierte Bezahlung, BizSpark Plus, Azure Pass usw.). Wie Sie von einem nutzungsbasierten Tarif zu einem anderen Abonnementangebot wechseln können, erfahren Sie unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](billing-how-to-switch-azure-offer.md) . |
+| Account Owner Email |Die E-Mail-Adresse, unter der das Microsoft Azure-Konto registriert ist. Weitere Informationen zum Ändern der E-Mail-Adresse finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](billing-how-to-change-azure-account-profile.md). |
 
 ### <a name="understand-the-invoice-summary"></a>Grundlegendes zur Rechnungsübersicht
 Die **Rechnungsübersicht** fasst die Transaktionen seit der letzten Rechnung und die aktuellen Nutzungsgebühren zusammen.
@@ -76,11 +76,11 @@ In der folgenden Tabelle werden Angaben zu Käufer und Zahlungsanweisungen auf I
 
 | Begriff | Beschreibung |
 | --- | --- |
-| Sold To |In diesem Abschnitt wird automatisch die Profiladresse des Kontos eingetragen. Weitere Informationen zum Ändern dieser Daten finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](../billing-how-to-change-azure-account-profile.md). |
+| Sold To |In diesem Abschnitt wird automatisch die Profiladresse des Kontos eingetragen. Weitere Informationen zum Ändern dieser Daten finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](billing-how-to-change-azure-account-profile.md). |
 | Payment Instructions |Wenn Sie als Zahlungsweise „Rechnung“ ausgewählt haben, finden sich in diesem Abschnitt Anweisungen für die Zahlung per Scheck, Überweisung oder Scheckzahlungen über Nacht. Weitere Informationen finden Sie unter [Azure-Abrechnung – Bezahlen per Rechnung](https://azure.microsoft.com/pricing/invoicing/). |
 
 ## <a name="a-namecsva-understand-detailed-usage-charges-csv"></a><a name="csv"></a> Erläuterungen zu den detaillierten Nutzungsgebühren (CSV)
-Die Nutzungsdatei zeigt, welche Menge der einzelnen Ressourcen innerhalb des aktuellen Abrechnungszeitraums verwendet wurde. Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem Tabellenkalkulationsprogramm öffnen können. Wenn zwei Versionen verfügbar sind, laden Sie Version 2 herunter. Das ist das aktuellste Dateiformat. Weitere Informationen finden Sie unter [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../billing-download-azure-invoice-daily-usage-date.md).
+Die Nutzungsdatei zeigt, welche Menge der einzelnen Ressourcen innerhalb des aktuellen Abrechnungszeitraums verwendet wurde. Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem Tabellenkalkulationsprogramm öffnen können. Wenn zwei Versionen verfügbar sind, laden Sie Version 2 herunter. Das ist das aktuellste Dateiformat. Weitere Informationen finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
 
 Dies sind die **monatlichen** Gesamtgebühren für ein Abonnement nach Abzug von Gutschriften oder Rabatten. Der Verbrauch für den vergangenen Monat wird Ihnen in Rechnung gestellt.  
 
@@ -131,14 +131,23 @@ Im Abschnitt „Daily Usage“ der Datei werden Nutzungsdetails angezeigt, die s
 |Service Info 1 |Der Name des Projekts, zu dem der Dienst in Ihrem Abonnement gehört. |
 |Service Info 2 |Dies ist ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden. |
 
+## <a name="tips-for-cost-management"></a>Tipps für das Kostenmanagement
+Es empfiehlt sich, Kosten proaktiv zu kontrollieren:
+
+- Schätzen Sie Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/), dem [Gesamtbetriebskosten-Rechner](https://aka.ms/azure-tco-calculator) und wenn Sie einen Dienst hinzufügen.
+- [Einrichten von Abrechnungswarnungen](billing-set-up-alerts.md)
+- [Regelmäßiges Überprüfen Ihrer Nutzung und Kosten im Azure-Portal](billing-getting-started.md#costs)
+
+Weitere Informationen finden Sie unter [Erste Schritte mit der Abrechnungs- und Kostenverwaltung in Azure](billing-getting-started.md).
+
 ## <a name="how-do-i-make-a-payment"></a>Wie kann ich bezahlen?
-Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festlegen, erfolgt die Zahlung automatisch. Wenn Sie die [Zahlung per Rechnung](https://azure.microsoft.com/pricing/invoicing/) festgelegt haben, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Sie können den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Unterstützung benötigen.
+Wenn Sie eine Kredit- oder Debitkarte als Zahlungsmethode festlegen, erfolgt die Zahlung automatisch. Wenn Sie die [Zahlung per Rechnung](https://azure.microsoft.com/pricing/invoicing/)festgelegt haben, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist. Sie können den [Support kontaktieren](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Unterstützung benötigen.
 
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>Wie überprüfe ich den Status einer per Kreditkarte erfolgten Zahlung?
 [Erstellen Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um den Status Ihrer Zahlung zu erfragen. 
 
 ## <a name="what-about-marketplace-orders-or-external-service-charges"></a>Was ist mit Marketplace-Bestellungen oder Gebühren für externe Dienste?
-Externe Dienste wurden in der Vergangenheit als Marketplace-Bestellungen bezeichnet. Externe Dienste werden von unabhängigen Dienstanbietern angeboten, sind jedoch in das Azure-Ökosystem integriert. Weitere Informationen finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](../billing-understand-your-azure-marketplace-charges.md).
+Externe Dienste wurden in der Vergangenheit als Marketplace-Bestellungen bezeichnet. Externe Dienste werden von unabhängigen Dienstanbietern angeboten, sind jedoch in das Azure-Ökosystem integriert. Weitere Informationen finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support. 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
@@ -149,6 +158,6 @@ Externe Dienste wurden in der Vergangenheit als Marketplace-Bestellungen bezeich
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

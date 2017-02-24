@@ -8,6 +8,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [Hinzufügen von Daten](search-what-is-data-import.md)
+### [Azure-Portal](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [Durchsuchen eines Index](search-query-overview.md)
@@ -25,7 +26,6 @@
 ### [Diensteinschränkungen](search-limits-quotas-capacity.md)
 ### [Dienstskalierbarkeit](search-capacity-planning.md)
 ### [Entwurfsmuster für Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md)
-
 
 ## Entwickeln
 ### [Upgraden des SDK](search-dotnet-sdk-migration.md)
@@ -49,15 +49,16 @@
 ### [Indizieren von JSON-Blobs](search-howto-index-json-blobs.md)
 ### [Konfigurieren von Indexerverbindungen mit SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Feldzuordnungen in Indexern](search-indexer-field-mappings.md)
-##  Entwerfen der Suchoberfläche
+##  Suchoberfläche
+### [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
+### [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 ### [Beispiele für Lucene-Syntaxabfragen](search-query-lucene-examples.md)
-### [Bewertungsprofile](search-get-started-scoring-profiles.md)
-### [Vorschläge](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)
-### [Höherstufen von Tags](https://azure.microsoft.com/blog/2015/02/05/personalizing-search-results-announcing-tag-boosting-in-azure-search/)
+### [Filterausdruckssyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+### [Bewertung](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
+### [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [Facettennavigation](search-faceted-navigation.md)
-### [Sprachanalysen](https://msdn.microsoft.com/library/azure/dn879793)
-### [Benutzerdefinierte Analysen](https://msdn.microsoft.com/library/azure/mt605304)
-### [Mehrsprachige Suche](search-language-support.md)
+### [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support)
+### [Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 
 # Referenz
 ## [.NET](/dotnet/api/microsoft.azure.search)
@@ -86,6 +87,6 @@
 ### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

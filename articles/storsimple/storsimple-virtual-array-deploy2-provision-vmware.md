@@ -4,7 +4,7 @@ description: "In diesem zweiten Tutorial der Reihe zur StorSimple Virtual Array-
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/12/2017
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 2c9411312f561d03ab6bd29e8e007db309cb5f00
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: 655c00e3042cca78872df052cb89bab43fbc35a4
 
 ---
 # <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen eines Virtual Array in VMware
@@ -43,7 +43,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Gerät bereitstellen:
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Geräts über die folgenden Ressourcen:
 
   * Mindestens 4 Kerne
-  * Mindestens 8 GB RAM
+  * Mindestens 8 GB RAM Wenn Sie planen, das virtuelle Array als Dateiserver zu konfigurieren, unterstützen 8 GB weniger als 2 Millionen Dateien. Sie benötigen 16 GB RAM, um 2–4 Millionen Dateien zu unterstützen.
   * Eine Netzwerkschnittstelle
   * Einen virtuellen Datenträger mit 500 GB für Systemdaten
 
@@ -66,7 +66,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 * VMware vSphere-Client auf Ihrem System zum Verwalten des ESXi-Hosts
 
   * Mindestens 4 Kerne
-  * Mindestens 8 GB RAM
+  * Mindestens 8 GB RAM Wenn Sie planen, das virtuelle Array als Dateiserver zu konfigurieren, unterstützen 8 GB weniger als 2 Millionen Dateien. Sie benötigen 16 GB RAM, um 2–4 Millionen Dateien zu unterstützen.
   * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann. Die Internetbandbreite sollte mindestens 5 MBit/s betragen, um die optimale Nutzung des Geräts zu ermöglichen.
   * Einen virtuellen Datenträger mit 500 GB
 
@@ -77,6 +77,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 
    1. Stellen Sie sicher, dass Sie die neueste Imagedatei heruntergeladen haben. Falls Sie das Image zuvor heruntergeladen haben, laden Sie es erneut herunter, um sicherzustellen, dass Sie das neuste Image haben. Das neueste Image hat zwei Dateien (statt einer).
    2. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
+
 2. Melden Sie sich mit dem vSphere-Client am ESXi-Server an. Sie benötigen Administratorrechte, um einen virtuellen Computer zu erstellen.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image1.png)
@@ -243,6 +244,6 @@ Falls bei der anfänglichen Konfiguration über die lokale Webbenutzeroberfläch
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

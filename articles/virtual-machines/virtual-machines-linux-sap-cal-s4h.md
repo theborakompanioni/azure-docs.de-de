@@ -26,7 +26,7 @@ ms.openlocfilehash: f653e69590ee15d272543dc58840b1ee6983e953
 In diesem Artikel wird beschrieben, wie Sie S/4 HANA unter Microsoft Azure über die SAP Cloud Appliance Library 3.0 bereitstellen.
 In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Das Bereitstellen von anderen SAP HANA-basierten Lösungen wie BW/4 HANA funktioniert in Bezug auf den Prozess genauso. Sie müssen lediglich eine andere Lösung auswählen.
 
-[Hier](https://cal.sap.com/)können Sie mit der Nutzung der SAP Cloud Appliance Library (SAP CAL) beginnen. Es gibt auch einen Blog von SAP zur neuen [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+[Hier](https://cal.sap.com/)können Sie mit der Nutzung der SAP Cloud Appliance Library (SAP CAL) beginnen. Es gibt auch einen Blog von SAP zur neuen [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
 
 In den folgenden Screenshots ist Schritt für Schritt dargestellt, wie Sie S/4 HANA unter Microsoft Azure bereitstellen. Der Prozess funktioniert für andere Lösungen wie BW/4 HANA genauso.
 
@@ -46,8 +46,6 @@ Außerdem muss die ID des Azure-Abonnements eingegeben werden, die Sie im Azure-
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic6b.jpg)
 
 Im neuen Azure-Portal befindet sich das Element „Abonnements“ auf der linken Seite. Klicken Sie darauf, um alle aktiven Abonnements für den Benutzer anzuzeigen.
-
-![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic7b.jpg)
 
 Durch die Auswahl eines Abonnements und der anschließenden Auswahl von „Verwaltungszertifikate“ wird veranschaulicht, dass für das neue Azure Resource Manager-Modell ein neues Konzept mit „Dienstprinzipalen“ verwendet wird.
 SAP CAL ist für dieses neue Modell noch nicht angepasst worden, sodass es weiterhin erforderlich ist, dass das „klassische“ Modell und das frühere Azure-Portal mit Verwaltungszertifikaten funktioniert.
@@ -92,7 +90,6 @@ Nun ist es möglich, für die Lösung über die Schaltfläche „Verbinden“ im
 ![](./media/virtual-machines-linux-sap-cal-s4h/s4h-pic15.jpg)
 
 Eine weitere Option ist die Anmeldung an der Windows-Client-VM und beispielsweise das Starten der vorkonfigurierten SAP GUI.
-
 
 
 

@@ -16,8 +16,8 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
 translationtype: Human Translation
-ms.sourcegitcommit: ca5291e00fcf4fbd9927fe3cadad01f62b235d10
-ms.openlocfilehash: c6829c94bb8e5de3bec155bf326ac61c300477cb
+ms.sourcegitcommit: d65b354bc972c8268f1b4f072843b5bf4977a7c4
+ms.openlocfilehash: 2b37bf92ce8945996eb64477c28bea845b7df516
 
 
 ---
@@ -210,6 +210,9 @@ Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten
 }
 ```
 
+> [!NOTE]
+> Latenz wird von dem Zeitpunkt, zu dem das erste Byte der HTTP-Anforderung empfangen wird, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der HTTP-Antwort gesendet wird. Es ist die Summe der Application Gateway-Verarbeitungszeit zuzüglich der Netzwerklast zum Back-End zuzüglich der Zeit für die Verarbeitung der Anforderung auf dem Back-End.
+
 ### <a name="firewall-log"></a>Firewallprotokoll
 
 Dieses Protokoll wird nur generiert, wenn Sie es wie in den vorherigen Schritten für die jeweiligen Application Gateways aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden im Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
@@ -314,6 +317,6 @@ Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie 
 [10]: ./media/application-gateway-diagnostics/figure10.png
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

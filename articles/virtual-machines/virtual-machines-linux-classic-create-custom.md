@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines klassischen Linux-Computers mit der Azure-CLI | Microsoft Docs
-description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle und dem klassischen Bereitstellungsmodell erstellen.
+title: "Erstellen eines klassischen virtuellen Linux-Computers über die Azure-Befehlszeilenschnittstelle 1.0 | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle 1.0 und dem klassischen Bereitstellungsmodell einen virtuellen Linux-Computer erstellen.
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: f6537e4ebac76b9f3328223ee30647885ee15d3e
-ms.openlocfilehash: d3817e5e0f2c237375cb36993661968358c28b55
+ms.sourcegitcommit: 35f75c6feba187b15857c8e01df02bf918662fae
+ms.openlocfilehash: 0c667a20ba813ac37e49805c339cccb52832fdf0
 
 
 ---
-# <a name="how-to-create-a-linux-vm-with-the-azure-cli"></a>Erstellen einer Linux-VM mit der Azure-Befehlszeilenschnittstelle
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Erstellen eines klassischen virtuellen Linux-Computers über die Azure-Befehlszeilenschnittstelle 1.0
 > [!IMPORTANT] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Die Resource Manager-Version finden Sie [hier](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Dieses Thema enthält Informationen zum Erstellen eines virtuellen Linux-Computers (VM, Virtual Machine) mithilfe der Azure-Befehlszeilenschnittstelle und des klassischen Bereitstellungsmodells. Wir verwenden ein Linux-Image aus den verfügbaren **IMAGES** in Azure. Die Azure-Befehlszeilenschnittstellen-Befehle enthalten u.a. folgende Konfigurationsoptionen:
+Dieses Thema beschreibt die Erstellung eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 1.0 und des klassischen Bereitstellungsmodells. Wir verwenden ein Linux-Image aus den verfügbaren **IMAGES** in Azure. Die Befehle der Azure-Befehlszeilenschnittstelle 1.0 bieten u.a. folgende Konfigurationsoptionen:
 
 * Verbinden des virtuellen Computers mit einem virtuellen Netzwerk
 * Hinzufügen des virtuellen Computers zu einem vorhandenen Clouddienst
@@ -43,6 +43,6 @@ Dieses Thema enthält Informationen zum Erstellen eines virtuellen Linux-Compute
 
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

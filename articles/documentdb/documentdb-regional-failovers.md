@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2017
+ms.date: 02/09/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: 888e88c3e8ede6b67b9cf26b426d73b86b2aff62
-ms.openlocfilehash: 17e9d5d8afe3b11ca5d3944158dcd6c9126ceeda
+ms.sourcegitcommit: 0921464c10d5ca3d426a535d434eab6cf02013e6
+ms.openlocfilehash: c234958f5fc1ba0dbcb727e18e733d13ad0c7e71
 
 
 ---
@@ -28,6 +28,10 @@ Azure DocumentDB unterstützt sowohl explizite als auch richtlinienbasiere Failo
 * Wie funktionieren manuelle Failover in DocumentDB?
 * Wie funktionieren automatische Failover in DocumentDB?
 * Wie können Sie manuelle Failover in Anwendungsarchitekturen verwenden?
+
+Informationen zu regionalen Failovern erhalten Sie auch in diesem Azure Friday-Video mit Scott Hanselman und Karthik Raman, dem Principal Engineering Manager.
+
+>[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Planet-Scale-NoSQL-with-DocumentDB/player]  
 
 ## <a name="a-idconfiguremultiregionapplicationsaconfiguring-multi-region-applications"></a><a id="ConfigureMultiRegionApplications"></a>Konfigurieren von Anwendungen für mehrere Regionen
 Bevor wir uns mit Failovermodi beschäftigen, sehen wir uns an, wie Sie eine Anwendung so konfigurieren, dass diese von der Verfügbarkeit in mehreren Regionen profitiert und im bei einem regionalen Failover nicht ausfällt.
@@ -119,6 +123,6 @@ In diesem Artikel wurde erläutert, wie manuelle und automatische Failover in Az
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

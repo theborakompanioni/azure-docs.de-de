@@ -1,7 +1,7 @@
 ---
 
-title: Verwenden einer Problembehebungs-VM von Linux mithilfe der CLI | Microsoft Docs
-description: "Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe der Azure-CLI eine Verbindung zwischen dem Betriebssystemdatenträger und einer Wiederherstellungs-VM herstellen"
+title: Verwenden einer Linux-Problembehebungs-VM mit der Azure-Befehlszeilenschnittstelle 1.0 | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe der Azure-Befehlszeilenschnittstelle 1.0 den Betriebssystemdatenträger mit einer Wiederherstellungs-VM verbinden."
 services: virtual-machines-linux
 documentationCenter: 
 authors: iainfoulds
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2016
+ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 08499c4242fdc59ef932d6b8f2e8442e5cdc55b2
-ms.openlocfilehash: 89094f69fab8b30a16fcc5bc1bcd628ed52da757
+ms.sourcegitcommit: cb876ea4281fefa334e0aaf4ed66d87fa5653099
+ms.openlocfilehash: 2d0eedd3dfd2b9c754b450228fa65d06fe0514f5
 
 
 ---
 
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli"></a>Beheben Sie die Probleme einer Linux-VM, indem Sie den Betriebssystemdatenträger mithilfe der Azure CLI zu einer Wiederherstellungs-VM hinzufügen
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli-10"></a>Beheben Sie die Probleme einer Linux-VM, indem Sie den Betriebssystemdatenträger mithilfe der Azure-Befehlszeilenschnittstelle 1.0 an eine Wiederherstellungs-VM anfügen.
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie die Azure CLI die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
 
 
@@ -34,11 +34,12 @@ Der Problembehebungsprozess sieht wie folgt aus:
 4. Heben Sie die Bereitstellung auf, und trennen Sie die virtuelle Festplatte von der Problembehebungs-VM.
 5. Erstellen Sie eine VM mithilfe der ursprünglichen virtuellen Festplatte.
 
-Vergewissern Sie sich, dass die [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) angemeldet ist und den Resource Manager-Modus nutzt:
+Vergewissern Sie sich, dass Sie die [neueste Azure-Befehlszeilenschnittstelle 1.0](../xplat-cli-install.md) installiert haben, angemeldet sind und den Resource Manager-Modus verwenden:
 
 ```azurecli
 azure config mode arm
 ```
+
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
 
 
@@ -235,6 +236,6 @@ azure vm enable-diag --resource-group myResourceGroup --name myDeployedVM
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, finden Sie unter [Problembehandlung von SSH-Verbindungen mit einer Azure-VM](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Hilfestellungen. Konsultieren Sie [Beheben von Anwendungskonnektivitätsproblemen auf einer Linux-VM](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

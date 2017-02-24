@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2016
+ms.date: 02/06/2017
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 5b8aaa7e7b04224fd51c264822d619866e0161af
+ms.sourcegitcommit: 4ba60cee8848079935111ed3de480081a4aa58f6
+ms.openlocfilehash: a586d437ed7636874d324c9d3fc5274fe9001627
 
 
 ---
@@ -29,7 +29,7 @@ Im Tutorial [Get started with device management][lnk-dm-getstarted] (Erste Schri
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Erstellen einer .NET-Konsolen-App, die die direkte firmwareUpdate-Methode in der simulierten Geräte-App über Ihre IoT Hub-Instanz aufruft
-* Erstellen einer simulierten Geräte-App, die eine direkte firmwareUpdate-Methode implementiert, die einen mehrstufigen Prozess durchläuft und über diesen auf das Herunterladen des Firmwareimages wartet, das Firmwareimage herunterlädt und schließlich das Firmwareimage übernimmt.  Während der gesamten Ausführung aller Phasen aktualisiert das Gerät den Fortschritt über die gemeldeten Eigenschaften.
+* Erstellen Sie eine simulierte Gerät-App, die eine direkte **FirmwareUpdate**-Methode implementiert. Diese Methode löst einen mehrstufigen Prozess aus, der auf das Herunterladen des Firmware-Images wartet, das Firmware-Image herunterlädt und schließlich das Firmware-Image anwendet. In allen Phasen des Updates nutzt das Gerät die gemeldeten Eigenschaften zum Berichten des Fortschritts.
 
 Am Ende dieses Tutorials verfügen Sie über eine Node.js-Konsolen-Geräte-App und eine .NET-Konsolen-Back-End-App (C#):
 
@@ -50,7 +50,7 @@ Befolgen Sie die Schritte im Artikel [Erste Schritte mit der Geräteverwaltung](
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Auslösen eines Remotefirmwareupdates auf dem Gerät über eine direkte Methode
-In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mit C#), die mit einer direkten Methode ein Remotefirmwareupdate auf einem Gerät initiiert und mithilfe von Gerätezwillingsabfragen in regelmäßigen Abständen den Status des aktiven Firmwareupdates auf diesem Gerät abruft.
+In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die auf einem Gerät ein Remotefirmwareupdate auslöst. Die App verwendet eine direkte Methode zum Auslösen des Updates und Gerätzwillingsabfragen, um in regelmäßigen Abständen den Status des aktiven Firmwareupdates abzurufen.
 
 1. Fügen Sie in Visual Studio in der aktuellen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Nennen Sie das Projekt **TriggerFWUpdate**.
 
@@ -63,8 +63,9 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mit C#), die mit einer
 4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
    
         using Microsoft.Azure.Devices;
+        using Microsoft.Azure.Devices.Shared;
         
-5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den mehrfachen Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben.
+5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie die mehrfachen Platzhalterwerte durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben, und die ID Ihres Geräts.
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -107,235 +108,24 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mit C#), die mit einer
         
 8. Erstellen Sie die Projektmappe.
 
-## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
-In diesem Abschnitt werden Sie folgende Schritte ausführen:
-
-* Erstellen einer Node.js-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet
-* Auslösen eines simulierten Firmwareupdates
-* Ermöglichen von Gerätezwillingabfragen mit den gemeldeten Eigenschaften, um Geräte und den Zeitpunkt ihres letzten abgeschlossenen Firmwareupdates zu identifizieren
-
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl verwenden.  Übernehmen Sie alle Standardeinstellungen:
-   
-    ```
-    npm init
-    ```
-2. Führen Sie an der Eingabeaufforderung im Ordner **manageddevice** den folgenden Befehl aus, um das Geräte-SDK-Paket **azure-iot-device** und das Paket **azure-iot-device-mqtt** zu installieren:
-   
-    ```
-    npm install azure-iot-device azure-iot-device-mqtt --save
-    ```
-3. Erstellen Sie mit einem Text-Editor im Ordner **manageddevice** die neue Datei **dmpatterns_fwupdate_device.js**.
-4. Fügen Sie am Anfang der Datei **dmpatterns_fwupdate_device.js** die folgenden require-Anweisungen ein:
-   
-    ```
-    'use strict';
-   
-    var Client = require('azure-iot-device').Client;
-    var Protocol = require('azure-iot-device-mqtt').Mqtt;
-    ```
-5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz.  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
-    var client = Client.fromConnectionString(connectionString, Protocol);
-    ```
-6. Fügen Sie die folgende Funktion hinzu, mit der die gemeldeten Eigenschaften aktualisiert werden.
-   
-    ```
-    var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
-      var patch = {
-          iothubDM : {
-            firmwareUpdate : firmwareUpdateValue
-          }
-      };
-   
-      twin.properties.reported.update(patch, function(err) {
-        if (err) throw err;
-        console.log('twin state reported')
-      });
-    };
-    ```
-7. Fügen Sie die folgenden Funktionen hinzu, die das Herunterladen und Übernehmen des Firmwareimages simulieren.
-   
-    ```
-    var simulateDownloadImage = function(imageUrl, callback) {
-      var error = null;
-      var image = "[fake image data]";
-   
-      console.log("Downloading image from " + imageUrl);
-   
-      callback(error, image);
-    }
-   
-    var simulateApplyImage = function(imageData, callback) {
-      var error = null;
-   
-      if (!imageData) {
-        error = {message: 'Apply image failed because of missing image data.'};
-      }
-   
-      callback(error);
-    }
-    ```
-8. Fügen Sie die folgende Funktion hinzu, die den Status des Firmwareupdates über die gemeldeten Eigenschaften für das Warten auf den Download aktualisiert.  Normalerweise werden Geräte über verfügbare Updates informiert. Außerdem sorgt eine vom Administrator definierte Richtlinie für das Herunterladen und Übernehmen des Updates durch das Gerät.  An dieser Stelle wird dann die Logik zum Aktivieren dieser Richtlinie ausgeführt.  Der Einfachheit halber führen wir eine Verzögerung von 4 Sekunden aus und laden dann das Firmwareimage herunter. 
-   
-    ```
-    var waitToDownload = function(twin, fwPackageUriVal, callback) {
-      var now = new Date();
-   
-      reportFWUpdateThroughTwin(twin, {
-        fwPackageUri: fwPackageUriVal,
-        status: 'waiting',
-        error : null,
-        startedWaitingTime : now.toISOString()
-      });
-      setTimeout(callback, 4000);
-    };
-    ```
-9. Fügen Sie die folgende Funktion hinzu, die den Status des Firmwareupdates über die gemeldeten Eigenschaften für den Download des Firmwareimages aktualisiert.  Anschließend wird ein Firmwaredownload simuliert, und schließlich wird der Status des Firmwareupdates aktualisiert, um über Erfolg oder Fehler des Downloads zu informieren.
-   
-    ```
-    var downloadImage = function(twin, fwPackageUriVal, callback) {
-      var now = new Date();   
-   
-      reportFWUpdateThroughTwin(twin, {
-        status: 'downloading',
-      });
-   
-      setTimeout(function() {
-        // Simulate download
-        simulateDownloadImage(fwPackageUriVal, function(err, image) {
-   
-          if (err)
-          {
-            reportFWUpdateThroughTwin(twin, {
-              status: 'downloadfailed',
-              error: {
-                code: error_code,
-                message: error_message,
-              }
-            });
-          }
-          else {        
-            reportFWUpdateThroughTwin(twin, {
-              status: 'downloadComplete',
-              downloadCompleteTime: now.toISOString(),
-            });
-   
-            setTimeout(function() { callback(image); }, 4000);   
-          }
-        });
-   
-      }, 4000);
-    }
-    ```
-10. Fügen Sie die folgende Funktion hinzu, die den Status des Firmwareupdates über die gemeldeten Eigenschaften für die Übernahme des Firmwareimages aktualisiert.  Anschließend wird ein Anwenden des Firmwareimages simuliert, und schließlich wird der Status des Firmwareupdates aktualisiert, um über den Erfolg oder Fehler des Übernehmens zu informieren.
-    
-    ```
-    var applyImage = function(twin, imageData, callback) {
-      var now = new Date();   
-    
-      reportFWUpdateThroughTwin(twin, {
-        status: 'applying',
-        startedApplyingImage : now.toISOString()
-      });
-    
-      setTimeout(function() {
-    
-        // Simulate apply firmware image
-        simulateApplyImage(imageData, function(err) {
-          if (err) {
-            reportFWUpdateThroughTwin(twin, {
-              status: 'applyFailed',
-              error: {
-                code: err.error_code,
-                message: err.error_message,
-              }
-            });
-          } else { 
-            reportFWUpdateThroughTwin(twin, {
-              status: 'applyComplete',
-              lastFirmwareUpdate: now.toISOString()
-            });    
-    
-          }
-        });
-    
-        setTimeout(callback, 4000);
-    
-      }, 4000);
-    }
-    ```
-11. Fügen Sie die folgende Funktion hinzu, mit der die **firmwareUpdate**-Methode verwaltet und der mehrstufige Firmwareupdatevorgang initiiert wird.
-    
-    ```
-    var onFirmwareUpdate = function(request, response) {
-    
-      // Respond the cloud app for the direct method
-      response.send(200, 'FirmwareUpdate started', function(err) {
-        if (!err) {
-          console.error('An error occured when sending a method response:\n' + err.toString());
-        } else {
-          console.log('Response to method \'' + request.methodName + '\' sent successfully.');
-        }
-      });
-    
-      // Get the parameter from the body of the method request
-      var fwPackageUri = JSON.parse(request.payload).fwPackageUri;
-    
-      // Obtain the device twin
-      client.getTwin(function(err, twin) {
-        if (err) {
-          console.error('Could not get device twin.');
-        } else {
-          console.log('Device twin acquired.');
-    
-          // Start the multi-stage firmware update
-          waitToDownload(twin, fwPackageUri, function() {
-            downloadImage(twin, fwPackageUri, function(imageData) {
-              applyImage(twin, imageData, function() {});    
-            });  
-          });
-    
-        }
-      });
-    }
-    ```
-12. Fügen Sie abschließend den folgenden Code hinzu, der eine Verbindung mit dem IoT Hub als Gerät herstellt. 
-    
-    ```
-    client.open(function(err) {
-      if (err) {
-        console.error('Could not connect to IotHub client');
-      }  else {
-        console.log('Client connected to IoT Hub.  Waiting for firmwareUpdate direct method.');
-      }
-    
-      client.onDeviceMethod('firmwareUpdate', onFirmwareUpdate(request, response));
-    });
-    ```
-
-> [!NOTE]
-> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Transient Fault Handling (Behandeln vorübergehender Fehler)][lnk-transient-faults] beschrieben.
-> 
-> 
+[!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
 
 ## <a name="run-the-apps"></a>Ausführen der Apps
 Sie können die Apps nun ausführen.
 
-1. Führen Sie an der Befehlszeile im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
+1. Führen Sie an der Eingabeaufforderung im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
    
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. Führen Sie die C#-Konsolen-App **TriggerFWUpdate** aus – klicken Sie mit der rechten Maustaste auf das **TriggerFWUpdate**-Projekt, wählen Sie **Debuggen** und **Neue Instanz starten**.
+2. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt **TriggerFWUpdate**, um die C#-Konsolen-App auszuführen. Wählen Sie **Debuggen** und dann **Neue Instanz starten** aus.
 
 3. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie mit einer direkten Methode ein Remotefirmwareupdate auf einem Gerät ausgelöst und mithilfe der gemeldeten Eigenschaften in regelmäßigen Abständen den Fortschritt des Firmwareaktualisierungsvorgangs überprüft.  
+In diesem Tutorial haben Sie mit einer direkten Methode ein Remotefirmwareupdate auf einem Gerät ausgelöst und mithilfe der gemeldeten Eigenschaften den Fortschritt der Firmwareaktualisierung überprüft.
 
-Im Tutorial [Schedule and broadcast jobs][lnk-tutorial-jobs] (Planen und Senden von Aufträgen) erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
+Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-firmware-update/servicesdknuget.png
@@ -353,6 +143,6 @@ Im Tutorial [Schedule and broadcast jobs][lnk-tutorial-jobs] (Planen und Senden 
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 
-<!--HONumber=Dec16_HO1-->
+<!--HONumber=Feb17_HO1-->
 
 

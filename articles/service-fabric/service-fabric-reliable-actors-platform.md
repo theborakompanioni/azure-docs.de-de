@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/19/2016
+ms.date: 02/10/2017
 ms.author: vturecek
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 12565a57415642d68397982decb834a0c573ccbe
+ms.sourcegitcommit: c2e8f2d2f26bb93af5c2858242392b3dc207beb4
+ms.openlocfilehash: 2a3a5647f506d61e853f465f241d66fbe8c4ced0
 
 
 ---
@@ -30,7 +30,7 @@ In diesem Artikel wird die Funktionsweise von Reliable Actors auf der Service Fa
 Diese Komponenten bilden zusammen das Reliable Actors-Framework. 
 
 ## <a name="service-layering"></a>Dienstebenen
-Da der Actordienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-application-model.md#package-an-application), [Bereitstellung](service-fabric-deploy-remove-applications.md#deploy-an-application), Upgrade und Skalierung auch für Actordienste. 
+Da der Actordienst selbst einer der Reliable Services ist, gelten alle Konzepte für Reliable Services wie [Anwendungsmodell](service-fabric-application-model.md), Lebenszyklus, [Verpackung](service-fabric-application-model.md#package-an-application), [Bereitstellung](service-fabric-deploy-remove-applications.md), Upgrade und Skalierung auch für Actordienste. 
 
 ![Actordienstebenen][1]
 
@@ -251,6 +251,6 @@ Bei Verwendung von GUIDs und Zeichenfolgen werden für die Werte Int64-Hashwerte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

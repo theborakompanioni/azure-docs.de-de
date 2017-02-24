@@ -1,34 +1,34 @@
 ---
-title: "Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy | Microsoft Docs"
-description: "In diesem Artikel wird erläutert, wie Sie mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy arbeiten."
+title: "Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation"
+description: "Verwalten Sie benutzerdefinierte Domänen im Azure AD-Anwendungsproxy, sodass die URL für die App immer die gleiche ist – unabhängig davon, wo Ihre Benutzer darauf zugreifen."
 services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
+editor: harshja
 ms.assetid: 2fe9f895-f641-4362-8b27-7a5d08f8600f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2016
+ms.date: 02/03/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: fedd64ad885bacedf01afd91adf0c4d05265c476
+ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
+ms.openlocfilehash: b8edebd4e7dfdbf85a9beb6d126acaf7ec66dd01
 
 
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
-Durch das Verwenden von Standarddomänen können Sie dieselbe URL als interne und externe URL für den Zugriff auf eine Anwendung festlegen, sodass Ihre Benutzer sich nur eine URL für den Zugriff merken müssen – unabhängig davon, von wo sie auf die Anwendung zugreifen. Außerdem können Sie im Zugriffsbereich eine zentrale Verknüpfung für die Anwendung erstellen. Wenn Sie die von Azure AD-Anwendungsproxy bereitgestellte Standarddomäne verwenden, ist keine weitere Konfiguration zum Aktivieren Ihrer Domäne erforderlich. Falls Sie eine benutzerdefinierte Domäne einsetzen, müssen Sie verschiedene Punkte berücksichtigen, damit der Anwendungsproxy Ihre Domäne erkennt und die zugehörigen Zertifikate überprüft.
+Durch das Verwenden von Standarddomänen können Sie dieselbe URL als interne und externe URL für den Zugriff auf eine Anwendung festlegen, sodass Ihre Benutzer sich nur eine URL für den Zugriff merken müssen – unabhängig davon, von wo sie auf die Anwendung zugreifen. Außerdem können Sie im Zugriffsbereich eine zentrale Verknüpfung für die Anwendung erstellen. Wenn Sie die von Azure AD-Anwendungsproxy bereitgestellte Standarddomäne verwenden, ist keine weitere Konfiguration zum Aktivieren Ihrer Domäne erforderlich. Wenn Sie eine benutzerdefinierte Domäne verwenden, müssen Sie verschiedene Punkte berücksichtigen, damit der Anwendungsproxy Ihre Domäne erkennt und die zugehörigen Zertifikate überprüft.
 
 ## <a name="selecting-your-custom-domain"></a>Auswählen Ihrer benutzerdefinierten Domäne
 1. Veröffentlichen Sie Ihre Anwendung, indem Sie die Anweisungen im Abschnitt [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)befolgen.
 2. Sobald die Anwendung in der Liste der Anwendungen angezeigt wird, wählen Sie sie aus, und klicken Sie auf **Konfigurieren**.
 3. Geben Sie unter **Externe URL**Ihre benutzerdefinierte Domäne ein.
 4. Wenn Sie eine externe HTTPS-URL verwenden, werden Sie aufgefordert, ein Zertifikat hochzuladen, damit Azure die Gültigkeit der Anwendungs-URL überprüfen kann. Sie haben auch die Möglichkeit, ein Platzhalterzertifikat hochzuladen, das der externen URL der Anwendung entspricht. Diese Domäne muss in der Liste der [von Azure verifizierten Domänen](https://msdn.microsoft.com/library/azure/jj151788.aspx)enthalten sein. Azure muss über ein Zertifikat für die Domänen-URL der Anwendung oder ein Platzhalterzertifikat verfügen, das der externen URL der Anwendung entspricht.
-5. Stellen Sie sicher, dass ein DNS-Eintrag hinzugefügt wird, der die interne URL an die Anwendung weiterleitet. Auf diese Weise können Sie dieselbe URL für den internen und den externen Zugriff und eine einzige Verknüpfung mit der Anwendung in der Liste der Benutzeranwendungen verwenden.
+5. Fügen Sie einen DNS-Eintrag hinzu, der die interne URL an die Anwendung weiterleitet. Dank dieses Eintrags können Sie die gleiche URL für den internen und externen Zugriff auf die Anwendung sowie eine einzige Verknüpfung in der Anwendungsliste der Benutzer verwenden.
 
 ## <a name="frequently-asked-questions-about-working-with-custom-domains"></a>Häufig gestellte Fragen zur Arbeit mit benutzerdefinierten Domänen
 F: Kann ich ein bereits hochgeladenes Zertifikat auswählen, ohne es erneut hochzuladen?  
@@ -70,17 +70,15 @@ A: Ja, selbstsignierte Zertifikate sind zulässig. Beachten Sie, dass bei Verwen
 F: Gibt es eine Ansicht, über die alle Zertifikate für einen Mandanten angezeigt werden können?  
 A: Diese Funktion wird in der aktuellen Version nicht unterstützt.  
 
-## <a name="see-also"></a>Weitere Informationen
-* [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
-* [Einmaliges Anmelden aktivieren](active-directory-application-proxy-sso-using-kcd.md)
-* [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
+## <a name="next-steps"></a>Nächste Schritte
+* [Aktivieren des einmaligen Anmeldens](active-directory-application-proxy-sso-using-kcd.md) bei Ihren veröffentlichten Apps mithilfe der Azure AD-Authentifizierung.
+* [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md) auf Ihre veröffentlichten Apps.
 * [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-add-domain.md)
 
-Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)
 
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

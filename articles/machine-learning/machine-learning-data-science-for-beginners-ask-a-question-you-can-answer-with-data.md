@@ -1,7 +1,7 @@
 ---
-title: "Stellen einer Frage, die Sie mit Daten beantworten können – Formulieren von Fragen | Microsoft Docs"
-description: "Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen."
-keywords: Data Science-Fragen,Formulieren von Fragen, Regressionsfragen,Klassifizierungsfragen,genaue Frage
+title: "Stellen Sie eine Frage, die durch Daten beantwortet werden kann – Data Science-Probleme – Azure | Microsoft-Dokumentation"
+description: "Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine gezielte Data Science-Frage formulieren. Enthält einen Vergleich von Klassifizierungs- und Regressionsfragen."
+keywords: Data Science-Probleme,Data Science-Fragen,Formulieren von Fragen,Regressionsfragen,Klassifizierungsfragen,genaue Frage
 services: machine-learning
 documentationcenter: na
 author: cjgronlund
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2016
+ms.date: 02/09/2017
 ms.author: cgronlun;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f6cb2a15ab8ef87672c0abbc93ee68478d0efb48
+ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
+ms.openlocfilehash: 3c476cf99ebfe78f5681019fc055d1a07b61ef02
 
 
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Stellen einer Frage, die Sie mit Daten beantworten können
 ## <a name="video-3-data-science-for-beginners-series"></a>3. Video der Reihe „Data Science für Einsteiger“
-Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie eine Data Science-Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
+Erfahren Sie im 3. Video von „Data Science für Einsteiger“, wie Sie ein Data Science-Problem in einer Frage formulieren. Dieses Video enthält einen Vergleich von Fragen zu Klassifizierungs- und Regressionsalgorithmen.
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
-> 
-> 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player]
+>
+>
 
 ## <a name="other-videos-in-this-series"></a>Andere Videos in dieser Reihe
 *Data Science für Einsteiger* erhalten Sie eine Schnelleinführung in Data Science.
@@ -100,7 +100,6 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

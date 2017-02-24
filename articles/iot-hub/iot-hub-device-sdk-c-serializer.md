@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 translationtype: Human Translation
-ms.sourcegitcommit: 5d7eed340d2021c58f68c69100be5a9e13655146
-ms.openlocfilehash: 7d4b322cd6528fa4798362d2ee620dae4291b956
+ms.sourcegitcommit: ef066a50b71389cb1cdd3bb0f8d342a34a4cc722
+ms.openlocfilehash: 587412f02c6bb6bd2c5b1896a890607fa1c058f8
 
 
 ---
@@ -29,7 +29,7 @@ Zum Abschluss werden einige in vorherigen Artikeln bereits erläuterte Themen er
 
 Sämtliche in diesem Artikel beschriebenen Elemente basieren auf den Beispielen für das SDK des **Serialisierungsprogramms** . Wenn Sie die Beschreibungen in diesem Artikel nachvollziehen möchten, sehen Sie sich die Anwendungen **simplesample\_amqp** und **simplesample\_http** an, die im Azure IoT-Geräte-SDK für C enthalten sind.
 
-Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](http://azure.github.io/azure-iot-sdks/c/api_reference/index.html).
+Das [**Azure IoT-Geräte-SDK für C**](https://github.com/Azure/azure-iot-sdk-c) finden Sie im GitHub-Repository und ausführliche Informationen zur API in der [C-API-Referenz](https://azure.github.io/azure-iot-sdk-c/index.html).
 
 ## <a name="the-modeling-language"></a>Die Modelliersprache
 Im [Einführungsartikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde anhand des in der Anwendung **simplesample\_amqp** bereitgestellten Beispiels die Modelliersprache des **Azure IoT-Geräte-SDK für C** vorgestellt:
@@ -526,6 +526,13 @@ Um beispielsweise **SetAirResistance** aufzurufen, können Sie folgende Nachrich
 
 Der Name der Aktion muss genau mit einer in Ihrem Modell definierten Aktion übereinstimmen. Die Parameternamen müssen ebenfalls übereinstimmen. Beachten Sie auch die Groß-/Kleinschreibung. **Name** und **Parameters** werden immer mit Großbuchstaben geschrieben. Achten Sie auf die richtige Groß-/Kleinschreibung beim Namen der Aktion und bei den Parametern in Ihrem Modell. In diesem Beispiel lautet der Name der Aktion „SetAirResistance“, nicht „setairresistance“.
 
+Die beiden anderen Aktionen, **TurnFanOn** und **TurnFanOff**, können durch Senden dieser Nachrichten an ein Gerät aufgerufen werden:
+
+```
+{"Name" : "TurnFanOn", "Parameters" : {}}
+{"Name" : "TurnFanOff", "Parameters" : {}}
+```
+
 In diesem Abschnitt wurde alles beschrieben, was Sie über das Senden von Ereignissen und das Empfangen von Nachrichten mit der Bibliothek des **Serialisierungsprogramms** wissen müssen. Bevor wir fortfahren, möchten wir Ihnen einige Parameter erläutern, die Sie konfigurieren können, um die Größe Ihres Modells zu steuern.
 
 ## <a name="macro-configuration"></a>Konfiguration von Makros
@@ -672,6 +679,6 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

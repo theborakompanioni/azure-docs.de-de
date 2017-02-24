@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 01/06/2017
+ms.date: 02/10/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 65385aa918222837468f88246d0527c22c677ba7
-ms.openlocfilehash: 530530952a4f69ae0a78e02cc1c079532f0c5b0f
+ms.sourcegitcommit: 1c002b796ed926fb8b0c6cedf3e361816e50b803
+ms.openlocfilehash: d51eeebba7ce2a1ca1005954feb0471f6ad7e05b
 
 
 ---
@@ -31,9 +31,11 @@ In diesem Thema wird beschrieben, wie Sie die Konfiguration für Ihre Azure Redi
 ## <a name="configure-redis-cache-settings"></a>Konfigurieren von Redis Cache-Einstellungen
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Redis Cache ermöglicht im **Ressourcenmenü** die folgenden Einstellungen.
+Azure Redis Cache-Einstellungen werden auf dem Blatt **Redis Cache** über das **Ressourcenmenü** angezeigt und konfiguriert.
 
 ![Redis Cache: Einstellungen](./media/cache-configure/redis-cache-settings.png)
+
+Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen und konfigurieren.
 
 * [Übersicht](#overview)
 * [Aktivitätsprotokoll](#activity-log)
@@ -476,6 +478,6 @@ Informationen zum Verschieben von Ressourcen zwischen Ressourcengruppen und zwis
 
 
 
-<!--HONumber=Jan17_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

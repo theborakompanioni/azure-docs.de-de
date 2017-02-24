@@ -1,5 +1,5 @@
 ---
-title: 'RBAC: integrierte Rollen | Microsoft Docs'
+title: "Actions und NotActions – Rollen in Azure RBAC | Microsoft-Dokumentation"
 description: Dieses Thema beschreibt die integrierten Rollen der rollenbasierten Zugriffssteuerung (RBAC).
 services: active-directory
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/25/2016
+ms.date: 01/31/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 386e8479a64af20469e3e03180348f674b08ef8f
+ms.sourcegitcommit: becd7fbcfa094257408ed96eda0c62deefceb44d
+ms.openlocfilehash: 59067ef58d276265e0431119986774ff14212067
 
 
 ---
@@ -28,14 +28,17 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 
 > [!NOTE]
 > Die Definitionen von Azure-Rollen werden ständig weiterentwickelt. Dieser Artikel wird so aktuell wie möglich gehalten. Die aktuellsten Definitionen von Rollen finden Sie jedoch immer in Azure PowerShell. Verwenden Sie je nachdem das Cmdlet `(get-azurermroledefinition "<role name>").actions` oder `(get-azurermroledefinition "<role name>").notactions`.
-> 
-> 
+>
+>
 
 | Rollenname | Beschreibung |
 | --- | --- |
 | [Mitwirkender des API-Verwaltungsdienstes](#api-management-service-contributor) |Kann API-Verwaltungsdienste verwalten |
 | [Mitwirkender der Application Insights-Komponente](#application-insights-component-contributor) |Kann Application Insights-Komponenten verwalten |
 | [Operator für Automation](#automation-operator) |Kann Aufträge starten, unterbrechen und fortsetzen |
+| [Mitwirkender für Sicherungen](#backup-contributor) | Kann Sicherungen in einem Recovery Services-Tresor verwalten |
+| [Sicherungsoperator](#backup-operator) | Kann Sicherungen in einem Recovery Services-Tresor verwalten, aber nicht entfernen |
+| [Sicherungsleser](#backup-reader) | Kann alle Dienste für die Sicherungsverwaltung anzeigen  |
 | [Mitwirkender von BizTalk](#biztalk-contributor) |Kann BizTalk-Dienste verwalten |
 | [Mitwirkender von ClearDB-MySQL-DB](#cleardb-mysql-db-contributor) |Kann ClearDB MySQL-Datenbanken verwalten |
 | [Mitwirkender](#contributor) |Kann alles außer den Zugriff verwalten |
@@ -117,6 +120,98 @@ Kann Aufträge starten, unterbrechen und fortsetzen
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="backup-contributor"></a>Mitwirkender für Sicherungen
+Kann alle Aktionen für die Sicherungsverwaltung durchführen, außer dem Erstellen eines Recovery Services-Tresors und dem Erteilen von Zugriff für andere
+
+| **Aktionen** | |
+| --- | --- |
+| Microsoft.Network/virtualNetworks/read | Lesen von virtuellen Netzwerken |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | Verwalten der Ergebnisse eines Vorgangs in der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Erstellen und Verwalten von Sicherungscontainern in Sicherungsfabrics des Recovery Services-Tresors |
+| Microsoft.RecoveryServices/Vaults/backupJobs/* | Erstellen und Verwalten von Sicherungsaufträgen |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportieren von Sicherungsaufträgen in Excel-Tabellen |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Erstellen und Verwalten von Metadaten in Zusammenhang mit der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Erstellen und Verwalten der Ergebnisse von Sicherungsverwaltungsvorgängen |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/* | Erstellen und Verwalten von Sicherungsrichtlinien |
+| Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Erstellen und Verwalten von Elementen, die gesichert werden können |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/* | Erstellen und Verwalten von gesicherten Elementen |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/* | Erstellen und Verwalten von Containern mit Sicherungselementen |
+| Microsoft.RecoveryServices/Vaults/certificates/* | Erstellen und Verwalten von Zertifikaten in Zusammenhang mit Sicherungen in einem Recovery Services-Tresor |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/* | Erstellen und Verwalten erweiterter Informationen in Zusammenhang mit einem Tresor | 
+| Microsoft.RecoveryServices/Vaults/read | Lesen von Recovery Services-Tresoren |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/* | Verwalten von Ermittlungsvorgängen zum Abrufen neu erstellter Container |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Erstellen und Verwalten von registrierten Identitäten |
+| Microsoft.RecoveryServices/Vaults/usages/* | Erstellen und Verwalten der Nutzung des Recovery Services-Tresors |
+| Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |
+| Microsoft.Storage/storageAccounts/read | Lesen von Speicherkonten |
+| Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
+
+### <a name="backup-operator"></a>Sicherungsoperator
+Kann alle Aktionen für die Sicherungsverwaltung durchführen, außer dem Erstellen von Tresoren, dem Entfernen von Sicherungen und dem Erteilen von Zugriff für andere
+
+| **Aktionen** | |
+| --- | --- |
+| Microsoft.Network/virtualNetworks/read | Lesen von virtuellen Netzwerken |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Lesen der Ergebnisse eines Vorgangs in der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | Einlesen von Vorgangsergebnissen in Schutzcontainer |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | Durchführen von Sicherungsvorgängen in einem gesicherten Element nach Bedarf |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | Lesen der Ergebnisse eines für ein gesichertes Element ausgeführten Vorgangs |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationStatus/read | Lesen des Status eines für ein gesichertes Element ausgeführten Vorgangs |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Lesen von gesicherten Elementen |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Lesen des Wiederherstellungspunkts eines gesicherten Elements |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Durchführen eines Wiederherstellungsvorgangs unter Verwendung eines Wiederherstellungspunkts eines gesicherten Elements |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Erstellen eines Sicherungselements |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Lesen von Containern mit Sicherungselementen |
+| Microsoft.RecoveryServices/Vaults/backupJobs/* | Erstellen und Verwalten von Sicherungsaufträgen |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportieren von Sicherungsaufträgen in Excel-Tabellen |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Lesen von Metadaten in Zusammenhang mit der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Erstellen und Verwalten der Ergebnisse von Sicherungsverwaltungsvorgängen |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Lesen der Ergebnisse von in Sicherungsrichtlinien durchgeführten Vorgängen |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/read | Lesen von Sicherungsrichtlinien |
+| Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Erstellen und Verwalten von Elementen, die gesichert werden können |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Lesen von gesicherten Elementen |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Lesen von gesicherten Containern mit Sicherungselementen |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read | Lesen von erweiterten Informationen in Zusammenhang mit einem Tresor | 
+| Microsoft.RecoveryServices/Vaults/extendedInformation/write | Schreiben von erweiterten Informationen in Zusammenhang mit einem Tresor | 
+| Microsoft.RecoveryServices/Vaults/read | Lesen von Recovery Services-Tresoren |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/* | Verwalten von Ermittlungsvorgängen zum Abrufen neu erstellter Container |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Lesen der Ergebnisse eines mit registrierten Elementen des Tresors durchgeführten Vorgangs |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Lesen von registrierten Elementen des Tresors |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Schreiben von registrierten Elementen in den Tresor |
+| Microsoft.RecoveryServices/Vaults/usages/read | Lesen der Nutzung des Recovery Services-Tresors |
+| Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Lesen von Ressourcengruppen |
+| Microsoft.Storage/storageAccounts/read | Lesen von Speicherkonten |
+| Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+
+### <a name="backup-reader"></a>Sicherungsleser
+Kann die Sicherungsverwaltung im Recovery Services-Tresor überwachen
+
+| **Aktionen** | |
+| --- | --- |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read  | Lesen der Ergebnisse eines Vorgangs in der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read  | Einlesen von Vorgangsergebnissen in Schutzcontainer |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read  | Lesen der Ergebnisse eines für ein gesichertes Element ausgeführten Vorgangs |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationStatus/read  | Lesen des Status eines für ein gesichertes Element ausgeführten Vorgangs |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read  | Lesen von gesicherten Elementen |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read  | Lesen von Containern mit Sicherungselementen |
+| Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read  | Lesen der Ergebnisse von Sicherungsaufträgen |
+| Microsoft.RecoveryServices/Vaults/backupJobs/read  | Lesen von Sicherungsaufträgen |
+| Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Exportieren von Sicherungsaufträgen in Excel-Tabellen |
+| Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read  | Lesen von Metadaten in Zusammenhang mit der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupOperationResults/read  | Lesen der Ergebnisse von Vorgängen der Sicherungsverwaltung |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read  | Lesen der Ergebnisse von in Sicherungsrichtlinien durchgeführten Vorgängen |
+| Microsoft.RecoveryServices/Vaults/backupPolicies/read  | Lesen von Sicherungsrichtlinien |
+| Microsoft.RecoveryServices/Vaults/backupProtectedItems/read  |  Lesen von gesicherten Elementen |
+| Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read  | Lesen von gesicherten Containern mit Sicherungselementen |
+| Microsoft.RecoveryServices/Vaults/extendedInformation/read  | Lesen von erweiterten Informationen in Zusammenhang mit einem Tresor |
+| Microsoft.RecoveryServices/Vaults/read  | Lesen von Recovery Services-Tresoren |
+| Microsoft.RecoveryServices/Vaults/refreshContainers/read  | Lesen der Ergebnisse von Ermittlungsvorgängen zum Abrufen neu erstellter Container |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read  | Lesen der Ergebnisse eines mit registrierten Elementen des Tresors durchgeführten Vorgangs |
+| Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | Lesen von registrierten Elementen des Tresors |
+| Microsoft.RecoveryServices/Vaults/usages/read  |  Lesen der Nutzung des Recovery Services-Tresors |
 
 ### <a name="biztalk-contributor"></a>Mitwirkender von BizTalk
 Kann BizTalk-Dienste verwalten
@@ -555,7 +650,6 @@ Kann Websites verwalten, jedoch nicht die Webpläne, mit denen sie verbunden sin
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Web-App mit App Service unter Linux | Microsoft Docs
+title: "Erstellen einer Azure-Web-App, die unter Linux ausgeführt wird | Microsoft-Dokumentation"
 description: "Enthält eine Beschreibung des Workflows zur Erstellung einer Web-App für App Service unter Linux."
 keywords: Azure App Service, Web-App, Linux, OSS
 services: app-service
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8d87315ec97631c7ad3f0163aeaa0abde11b7416
+ms.sourcegitcommit: 2956b15e6284b529ccf4ca40c0c97b857eabcdbb
+ms.openlocfilehash: 50d90bfa5e6fb4462bd7d4719e5505d8ad144855
 
 
 ---
-# <a name="create-a-web-app-with-app-service-on-linux"></a>Erstellen einer Web-App mit App Service unter Linux
+# <a name="create-an-azure-web-app-running-on-linux"></a>Erstellen einer Azure-Web-App, die unter Linux ausgeführt wird
 ## <a name="use-the-azure-portal-to-create-your-web-app"></a>Verwenden des Azure-Portals zum Erstellen Ihrer Web-App
 Sie können im [Azure-Portal](https://portal.azure.com) mit dem Erstellen Ihrer Web-App unter Linux beginnen. Dies ist in der folgenden Abbildung dargestellt:
 
@@ -34,7 +34,7 @@ Als Nächstes wird wie hier dargestellt das Blatt **Erstellen** geöffnet:
 1. Geben Sie der Web-App einen Namen.
 2. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. (Die verfügbaren Regionen sind im [Abschnitt „Einschränkungen“](app-service-linux-intro.md) angegeben.)
 3. Wählen Sie einen vorhandenen Azure App Service-Plan aus, oder erstellen Sie einen neuen. (Hinweise zu App Service-Plänen finden Sie im [Abschnitt „Einschränkungen“](app-service-linux-intro.md).)
-4. Wählen Sie den gewünschten Anwendungsstapel aus. Sie können zwischen mehreren Versionen von Node.js und PHP wählen.
+4. Wählen Sie den gewünschten Anwendungsstapel aus. Sie können zwischen mehreren Versionen von Node.js, PHP, .NET Core und Ruby wählen.
 
 Nachdem Sie die App erstellt haben, können Sie den Anwendungsstapel in den Anwendungseinstellungen wie hier gezeigt ändern:
 
@@ -59,6 +59,6 @@ Außerdem können Sie FTP verwenden, um die Anwendung auf Ihre Website hochzulad
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

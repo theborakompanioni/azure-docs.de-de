@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 02/14/2017
 ms.author: hermannd
 translationtype: Human Translation
-ms.sourcegitcommit: d4fa4187b25dcbb7cf3b75cb9186b5d245c89227
-ms.openlocfilehash: fe07622d3a3e60c6d3520b6983195b410c3edc6a
+ms.sourcegitcommit: 046f58eba906980f23ce1177794b28930e3314a1
+ms.openlocfilehash: e7255c4123849f8f3fb29767308b433b5c0e511b
 
 
 ---
@@ -33,6 +33,9 @@ Verwenden Sie zum Ausführen von SAP NetWeaver in Azure ausschließlich SUSE Lin
 
 Für alle neuen Tests und Installationen in Azure sollte Azure Resource Manager verwendet werden. Für die Suche nach SUSE SLES-Images und Versionen mit Azure PowerShell oder der Azure Befehlszeilenschnittstelle (CLI) verwenden Sie die nachstehenden Befehle. Die Ausgabe kann dann z. B. verwendet werden, um das OS-Image in einer JSON-Vorlage für die Bereitstellung einer neuen SUSE Linux-VM zu definieren.
 Die folgenden PowerShell-Befehle gelten für Azure PowerShell Version 1.0.1 und höher.
+
+Sie können die SLES-Standardimages zwar weiterhin für SAP-Installationen verwenden, es wird aber empfohlen, die neuen SLES für SAP-Images zu verwenden, die jetzt im Azure-Imagekatalog zur Verfügung stehen. Weitere Informationen zu diesen Images erhalten Sie auf der entsprechenden [Azure Marketplace-Seite]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SLES-SAP ) oder auf der Seite [Häufig gestellte Fragen: SUSE Linux Enterprise Server für SAP-Anwendungen]( https://www.suse.com/products/sles-for-sap/frequently-asked-questions/ ).
+
 
 * Suchen nach vorhandenen Herausgebern einschließlich SUSE:
   
@@ -50,13 +53,17 @@ Die folgenden PowerShell-Befehle gelten für Azure PowerShell Version 1.0.1 und 
   
    ```
    PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES"
+   PS  : Get-AzureRmVMImageSku -Location "West Europe" -Publisher "SUSE" -Offer "SLES-SAP"
    CLI : azure vm image list-skus westeurope SUSE SLES
+   CLI : azure vm image list-skus westeurope SUSE SLES-SAP
    ```
 * Suchen nach einer bestimmten Version einer SLES-SKU:
   
    ```
-   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12"
-   CLI : azure vm image list westeurope SUSE SLES 12
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES" -skus "12-SP2"
+   PS  : Get-AzureRmVMImage -Location "West Europe" -Publisher "SUSE" -Offer "SLES-SAP" -skus "12-SP2"
+   CLI : azure vm image list westeurope SUSE SLES 12-SP2
+   CLI : azure vm image list westeurope SUSE SLES-SAP 12-SP2
    ```
 
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>Installieren von WALinuxAgent in einer SUSE-VM

@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 7c481cfae5f97b71c0ab184419ceaa46ab3f5a5b
-ms.openlocfilehash: 394d82e444bdbc8b07243d92743ceb660f142509
+ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
+ms.openlocfilehash: 31d7f4620420839ade1ca58391fad78e94d4e929
 
 
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-vm-in-the-azure-portal"></a>Anfügen eines Datenträgers an eine Linux-VM im Azure-Portal 
-In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Lesen Sie die folgenden Tipps, bevor Sie mit diesem Vorgang fortfahren:
+In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sie können entweder verwaltete oder nicht verwaltete Azure-Datenträger verwenden. Verwaltete Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Nicht verwaltete Datenträger erfordern ein Speicherkonto, und es gelten einige [Kontingente und Grenzwerte](../azure-subscription-service-limits.md#storage-limits). Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md).
+
+Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Tipps:
 
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können Datenträger aus Premium- und aus Standard-Speicherkonten für diese virtuellen Computer verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Bei Datenträgern, die an virtuelle Computer angefügt werden, handelt es sich um VHD-Dateien in einem Azure-Speicherkonto. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Neue Datenträger werden von Azure beim Anfügen automatisch erstellt. Sie müssen den Datenträger also nicht manuell erstellen.
-* Bei einem bereits vorhandenen Datenträger muss die VHD-Datei in einem Azure-Speicherkonto verfügbar sein. Sie können eine bereits vorhandene VHD verwenden, die noch nicht an einen anderen virtuellen Computer angefügt wurde, oder eine eigene VHD-Datei in das Speicherkonto hochladen.
+* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können für diese virtuellen Computer sowohl Premium- als auch Standard-Datenträger verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Bei an virtuelle Computer angefügten Datenträgern handelt es sich um VHD-Dateien, die in Azure gespeichert sind. Weitere Informationen finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../storage/storage-about-disks-and-vhds-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
@@ -39,17 +39,53 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorh
    
     ![Öffnen der Datenträgereinstellungen](./media/virtual-machines-linux-attach-disk-portal/find-disk-settings.png)
 
-Folgen Sie den Anweisungen zum Anfügen eines [neuen](#option-1-attach-a-new-disk) oder eines [vorhandenen](#option-2-attach-an-existing-disk) Datenträgers.
+Folgen Sie den Anweisungen zum Anfügen eines [verwalteten](#use-azure-managed-disks) oder eines [nicht verwalteten](#use-unmanaged-disks) Datenträgers.
 
-## <a name="option-1-attach-a-new-disk"></a>Option 1: Anfügen eines neuen Datenträgers
-1. Klicken Sie auf dem Blatt **Datenträger** auf **Neuen anfügen**.
+## <a name="use-azure-managed-disks"></a>Verwenden von verwalteten Azure-Datenträgern
+
+### <a name="attach-a-new-disk"></a>Anfügen eines neuen Datenträgers
+
+1. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
+2. Klicken Sie auf das Dropdownmenü **Name**, und wählen Sie **Datenträger erstellen** aus:
+
+    ![Erstellen eines verwalteten Azure-Datenträgers](./media/virtual-machines-linux-attach-disk-portal/create-new-md.png)
+
+3. Geben Sie einen Namen für Ihren verwalteten Datenträger ein. Überprüfen und aktualisieren Sie bei Bedarf die Standardeinstellungen, und klicken Sie dann auf **Erstellen**.
+   
+   ![Überprüfen der Datenträgereinstellungen](./media/virtual-machines-linux-attach-disk-portal/create-new-md-settings.png)
+
+4. Klicken Sie auf **Speichern**, um den verwalteten Datenträger zu speichern und die Konfiguration des virtuellen Computers zu aktualisieren:
+
+   ![Speichern des neuen verwalteten Azure-Datenträgers](./media/virtual-machines-linux-attach-disk-portal/confirm-create-new-md.png)
+
+5. Nachdem der Datenträger von Azure erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt. Da es sich bei verwalteten Datenträgern um Ressourcen der obersten Ebene handelt, werden sie im Stammverzeichnis der Ressourcengruppe angezeigt:
+
+   ![Verwalteter Azure-Datenträger in Ressourcengruppe](./media/virtual-machines-linux-attach-disk-portal/view-md-resource-group.png)
+
+### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers
+1. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
+2. Klicken Sie auf das Dropdownmenü **Name**, um eine Liste der vorhandenen verwalteten Datenträger anzuzeigen, auf die von Ihrem Azure-Abonnement aus zugegriffen werden kann. Wählen Sie den verwalteten Datenträger aus, den Sie anfügen möchten:
+
+   ![Anfügen eines vorhandenen verwalteten Azure-Datenträgers](./media/virtual-machines-linux-attach-disk-portal/select-existing-md.png)
+
+3. Klicken Sie auf **Speichern**, um den vorhandenen verwalteten Datenträger anzufügen und die Konfiguration des virtuellen Computers zu aktualisieren:
+   
+   ![Speichern von Aktualisierungen verwalteter Azure-Datenträger](./media/virtual-machines-linux-attach-disk-portal/confirm-attach-existing-md.png)
+
+4. Nachdem der Datenträger von Azure an den virtuellen Computer angefügt wurde, wird er in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
+
+## <a name="use-unmanaged-disks"></a>Verwenden von nicht verwalteten Datenträgern
+
+### <a name="attach-a-new-disk"></a>Anfügen eines neuen Datenträgers
+
+1. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
 2. Überprüfen und aktualisieren Sie nach Bedarf die Standardeinstellungen, und klicken Sie anschließend auf **OK**.
    
    ![Überprüfen der Datenträgereinstellungen](./media/virtual-machines-linux-attach-disk-portal/attach-new.png)
 3. Nachdem der Datenträger von Azure erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
 
-## <a name="option-2-attach-an-existing-disk"></a>Option 2: Anfügen eines vorhandenen Datenträgers
-1. Klicken Sie auf dem Blatt **Datenträger** auf **Vorhandenen anfügen**.
+### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers
+1. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
 2. Klicken Sie unter **Vorhandenen Datenträger anfügen** auf **VHD-Datei**.
    
    ![Anfügen eines vorhandenen Datenträgers](./media/virtual-machines-linux-attach-disk-portal/attach-existing.png)
@@ -61,12 +97,11 @@ Folgen Sie den Anweisungen zum Anfügen eines [neuen](#option-1-attach-a-new-dis
 6. Nachdem der Datenträger von Azure an den virtuellen Computer angefügt wurde, wird er in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem der Datenträger hinzugefügt wurde, müssen Sie ihn für die Verwendung vorbereiten. Weitere Informationen finden Sie unter [Initialisieren eines neuen Datenträgers unter Linux](virtual-machines-linux-classic-attach-disk.md#initialize-a-new-data-disk-in-linux).
 
 
 
-<!--HONumber=Nov16_HO5-->
+<!--HONumber=Feb17_HO3-->
 
 

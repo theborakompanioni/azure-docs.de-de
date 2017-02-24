@@ -1,5 +1,5 @@
 ---
-title: "Ändern der Größe eines virtuellen Linux-Computers| Microsoft Docs"
+title: "Ändern der Größe eines virtuellen Linux-Computers über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation"
 description: "So skalieren Sie einen virtuellen Linux-Computer zentral hoch oder herunter, indem Sie die VM-Größe ändern."
 services: virtual-machines-linux
 documentationcenter: na
@@ -13,68 +13,61 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/16/2016
+ms.date: 02/10/2017
 ms.author: mwasson
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: 788efb5d1cbbd5fd20096c54ca702b99eb2b5a18
+ms.sourcegitcommit: b95ab7b023dddc77231a59151b0c2d44cf968b6e
+ms.openlocfilehash: fb2adcfafca35c35d0b526c30d242927b3ef58fe
 
 
 ---
 # <a name="how-to-resize-a-linux-vm"></a>So ändern Sie die Größe eines virtuellen Linux-Computers
-## <a name="overview"></a>Übersicht
-Nachdem Sie einen virtuellen Computer (VM) bereitstellen, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Dies ist möglicherweise der Fall, falls die neue Größe auf dem Hardwarecluster nicht verfügbar ist, auf dem die VM gehostet wird.
+Nachdem Sie einen virtuellen Computer (VM) bereitstellen, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Sie müssen die Zuordnung aufheben, wenn die gewünschte Größe in dem Hardwarecluster nicht verfügbar ist, in dem der virtuelle Computer gehostet wird. In diesem Artikel wird erläutert, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) die Größe eines virtuellen Linux-Computers ändern.
 
-In diesem Artikel wird beschrieben, wie Sie die Größe eines virtuellen Linux-Computers mithilfe der [Azure-Befehlszeilenschnittstelle][azure-cli] ändern.
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
+- [Azure CLI 1.0:](virtual-machines-linux-change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](#resize-a-linux-vm) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
 
 ## <a name="resize-a-linux-vm"></a>Ändern der Größe eines virtuellen Linux-Computers
-Führen Sie zum Ändern der Größe eines virtuellen Computers die folgenden Schritte aus.
+Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
 
-1. Führen Sie den folgenden CLI-Befehl aus. Der Befehl listet die VM-Größen auf, die auf dem Hardwarecluster verfügbar sind, auf dem die VM gehostet wird.
+1. Zeigen Sie mit [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) die Liste der verfügbaren VM-Größen in dem Hardwarecluster an, in dem der virtuelle Computer gehostet wird. Das folgende Beispiel listet VM-Größen für den virtuellen Computer `myVM` in der Region der Ressourcengruppe `myResourceGroup` auf:
    
     ```azurecli
-    azure vm sizes -g myResourceGroup --vm-name myVM
+    az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
-2. Führen Sie den folgenden Befehl aus, um die Größe der VM zu ändern, sofern die gewünschte Größe aufgelistet ist.
+
+2. Wenn die gewünschte VM-Größe aufgeführt wird, ändern Sie mithilfe von [az vm resize](/cli/azure/vm#resize) die Größe des virtuellen Computers. Das folgende Beispiel ändert den virtuellen Computer `myVM` in die Größe `Standard_DS3_v2`:
    
     ```azurecli
-    azure vm set -g myResourceGroup --vm-size <new-vm-size> -n myVM  \
-        --enable-boot-diagnostics
-        --boot-diagnostics-storage-uri https://mystorageaccount.blob.core.windows.net/ 
+    az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
     ```
    
     Der virtuelle Computer wird während dieses Vorgangs neu gestartet. Nach dem Neustart werden Ihr vorhandenes Betriebssystem und die Datenträger neu zugeordnet. Alle Daten auf dem temporären Datenträger gehen verloren.
-   
-    Verwenden Sie die Option `--enable-boot-diagnostics`, damit die [Startdiagnose][boot-diagnostics] alle Fehler protokollieren kann, die mit dem Startvorgang verbunden sind.
-3. Führen Sie die folgenden Befehle aus, falls die gewünschte Größe nicht aufgelistet ist. Damit heben Sie die Zuordnung der VM auf, ändern ihre Größe und starten sie neu.
+
+3. Wenn die gewünschte VM-Größe nicht aufgeführt wird, müssen Sie zuerst mit [az vm deallocate](/cli/azure/vm#deallocate) die Zuordnung des virtuellen Computers aufheben. Nach diesem Vorgang kann der virtuelle Computer auf eine beliebige, in der Region unterstützte Größe geändert und dann gestartet werden. Mit den folgenden Schritten wird für den virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` die Zuordnung aufgehoben und die Größe geändert. Anschließend wird der Computer gestartet:
    
     ```azurecli
-    azure vm deallocate -g myResourceGroup myVM
-    azure vm set -g myResourceGroup --vm-size <new-vm-size> -n myVM \
-        --enable-boot-diagnostics --boot-diagnostics-storage-uri \
-        https://mystorageaccount.blob.core.windows.net/ 
-    azure vm start -g myResourceGroup myVM
+    az vm deallocate --resource-group myResourceGroup --name myVM
+    az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
+    az vm start --resource-group myResourceGroup --name myVM
     ```
    
    > [!WARNING]
    > Die Aufhebung der Zuordnung der VM gibt auch jegliche dynamische IP-Adressen frei, die der VM zugewiesen sind. Das Betriebssystem und die Datenträger sind nicht betroffen.
-   > 
-   > 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Linux-Computern in einer VM-Skalierungsgruppe][scale-set]. 
 
 <!-- links -->
-
-[azure-cli]: ../xplat-cli-install.md
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]: virtual-machines-linux-sizes.md
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

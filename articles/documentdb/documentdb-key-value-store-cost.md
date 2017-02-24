@@ -17,9 +17,8 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: acomet
 translationtype: Human Translation
-ms.sourcegitcommit: 6fc5dfd3fbdd2e0690b60f4b232e624c34bf53b6
-ms.openlocfilehash: c1022a127266d28d3b59bfebd0543a840fe11e3a
-
+ms.sourcegitcommit: faf363eb5848752b27faacd971867391b6393337
+ms.openlocfilehash: 1a693477a51a05fb28e7c4772aeee77fd0c4e1dd
 
 ---
 
@@ -35,29 +34,23 @@ Die DocumentDB-Leistung basiert auf der Menge der für die Partition bereitgeste
 
 Als global verteiltes Datenbanksystem ist DocumentDB der einzige Azure-Dienst, der außer zur hohen Verfügbarkeit eine SLA zu Latenz, Durchsatz und Konsistenz bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewendet, die Ihrem DocumentDB-Datenbankkonto zugeordnet ist. Für Lesevorgänge bietet DocumentDB mehrere klar definierte [Konsistenzebenen](documentdb-consistency-levels.md), zwischen denen Sie wählen können. 
 
-Die folgende Tabelle zeigt auf Basis einiger Dokumentgrößen, wie viel RUs erforderlich sind, um Lese- und Schreibtransaktionen durchzuführen. 
+Die folgende Tabelle zeigt, wie viel RUs erforderlich sind, um Lese- und Schreibtransaktionen durchzuführen, basierend auf Dokumentgrößen von 1 bzw. 100 KB.
 
 |Dokumentgröße|1 Lesevorgang|1 Schreibvorgang|
 |-------------|------|-------|
 |1 KB|1 RU|5 RUs|
-|5KB|5 RUs|25 RUs|
-|10 KB|10 RUs|50 RUs|
-|50KB|50 RUs|250 RUs|
-|100 KB|100 RUs|500 RUs|
+|100 KB|10 RUs|50 RUs|
 
-## <a name="cost-of-running-documentdb-in-readwrite-mode-without-indexing"></a>Kosten der Ausführung von DocumentDB im Lese-/Schreibmodus ohne Indizierung
+## <a name="cost-of-reads-and-writes"></a>Kosten für Lese- und Schreibvorgänge
 
 Wenn Sie 1.000 RUs/Sekunde bereitstellen, ergibt dies 3,6 Mio. RUs/Stunde und kostet 0,08 US-Dollar pro Stunde (in den USA und Europa). Für ein Dokument von 1KB Größe können Sie demnach mit dem von Ihnen bereitgestellten Durchsatz 3,6 Mio. Lesevorgänge oder 0,72 Mio. Schreibvorgänge (3,6 Mio. RU / 5) durchführen. Normalisiert auf eine Million Lese- und Schreibvorgänge würden die Kosten für Lesevorgänge 0,022 US-Dollar/Million (0,08 US-Dollar / 3,6) und für Schreibvorgänge 0,111 US-Dollar/Million (0,08 US-Dollar / 0,72) betragen. Wie in der folgenden Tabelle gezeigt, werden die Kosten pro Million minimal.
 
 |Dokumentgröße|1 Mio. Lesevorgänge|1 Mio. Schreibvorgänge|
 |-------------|-------|--------|
 |1 KB|$0.022|$0.111|
-|5KB|$0.111|$0.556|
-|10 KB|$0.222|$1.111|
-|50KB|$1.111|$5.556|
-|100 KB|$2.222|$11.111|
+|100 KB|$0.222|$1.111|
 
-Die meisten grundlegenden Blob- oder Objektspeicher wie AWS S3 oder Azure Blob Storage-Dienste berechnen Gebühren von&0;,40 US-Dollar pro Million Lesetransaktionen und&5; US-Dollar pro Million Schreibtransaktionen. Bei optimaler Nutzung kann DocumentDB bis zu 98% günstiger sein als diese anderen Lösungen (für Transaktionen von 1KB).
+Die meisten grundlegenden Blob- oder Objektspeicherdienste berechnen Gebühren von&0;,40 US-Dollar pro Million Lesetransaktionen und&5; US-Dollar pro Million Schreibtransaktionen. Bei optimaler Nutzung kann DocumentDB bis zu 98% günstiger sein als diese anderen Lösungen (für Transaktionen von 1KB).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,7 +16,8 @@
 
 # Ressourcen
 ##[Datenquellenverbindungen](analysis-services-datasource.md)
-##[Datenanbieter](analysis-services-data-providers.md) 
+##[Datenanbieter](analysis-services-data-providers.md)
+##[Erstellen einer ODC-Datei](analysis-services-odc.md)
 
 
 <!--HONumber=Feb17_HO3-->

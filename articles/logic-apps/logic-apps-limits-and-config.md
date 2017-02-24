@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 11/23/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: b2845e1835c5571909a911b1eb0bfd61ac00da86
+ms.sourcegitcommit: fa27b0399d98f13ee3c4f4059067fb78e087befd
+ms.openlocfilehash: 933e14358875b384a254ab3c1d0bdb453a0fa8ae
 
 
 ---
@@ -81,7 +81,7 @@ Dies sind die Grenzwerte für eine einzelne Instanz der Logik-App.
 
 |Name|Begrenzung|Hinweise|
 |----|----|----|
-|Trigger pro Sekunde|100|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
+|Aktionsausführungen pro Sekunde|100|Bei Bedarf können Workflows auf mehrere Apps verteilt werden.|
 
 ### <a name="definition-limits"></a>Definitionslimits
 
@@ -182,6 +182,7 @@ Aufrufe, die über einen [Connector](../connectors/apis-list.md) durchgeführt w
 - [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
 
 
-<!--HONumber=Jan17_HO3-->
+
+<!--HONumber=Feb17_HO2-->
 
 

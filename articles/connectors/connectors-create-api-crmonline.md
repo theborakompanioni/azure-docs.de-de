@@ -1,121 +1,180 @@
 ---
-title: "Hinzufügen des Dynamics CRM Online-Connectors zu Ihren Logik-Apps | Microsoft Docs"
-description: "Erstellen Sie Logik-Apps mit Azure App Service. Der Dynamics CRM Online-Verbindungsanbieter stellt eine API für die Verwendung von Entitäten unter Dynamics CRM Online bereit."
+title: "Hinzufügen des Dynamics 365 (online)-Connectors zu Azure Logic Apps | Microsoft-Dokumentation"
+description: "Erstellen Sie Logik-Apps mit Azure App Service. Der Dynamics 365 (online)-Verbindungsanbieter stellt eine API für die Verwendung von Entitäten unter Dynamics 365 (online) bereit."
 services: logic-apps
+cloud: Azure Stack
 documentationcenter: 
-author: MandiOhlinger
+author: Mattp123
 manager: anneta
-editor: 
-tags: connectors
 ms.assetid: 0dc2abef-7d2c-4a2d-87ca-fad21367d135
 ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 11/07/2016
-ms.author: mandia
+ms.date: 02/10/2017
+ms.author: matp
 translationtype: Human Translation
-ms.sourcegitcommit: 66fc8f7e1da55dbe6bb1dd8b8d6a535c498c1cf7
-ms.openlocfilehash: a1ea6c09621aeeb1e98bbbf5edf1d5deb5e4b721
+ms.sourcegitcommit: fa426f474f4efd4023da5dfd9954dacf96f635ab
+ms.openlocfilehash: 99d5379ad1e6965dd9ed88de456cc850d7e40d5a
 
 
 ---
-# <a name="get-started-with-the-dynamics-crm-online-connector"></a>Erste Schritte mit dem Dynamics CRM Online-Connector
-Verbinden Sie sich mit Dynamics CRM Online, um z. B. einen neuen Datensatz zu erstellen oder ein Element zu aktualisieren. CRM Online ermöglicht Folgendes:
+# <a name="create-a-logic-app-with-the-dynamics-365-connector"></a>Erstellen einer Logik-App mit dem Dynamics 365-Connector
 
-* Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus CRM Online abgerufen werden. 
-* Verwenden von Aktionen, die z. B. einen Datensatz löschen oder Entitäten abrufen. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn ein Element in CRM aktualisiert wird, können Sie z. B. über Office 365 eine E-Mail senden.
+Mit Logic Apps können Sie eine Verbindung mit Dynamics 365 (online) herstellen und praktische Geschäftsflows erstellen, die neue Datensätze erstellen, Elemente aktualisieren oder eine Liste mit Datensätzen zurückgeben. Der Dynamics 365-Connector bietet folgende Möglichkeiten:
 
-Dieses Thema beschreibt, wie Sie den Dynamics CRM Online-Connector in einer Logik-App verwenden, und enthält eine Liste mit den Triggern und Aktionen.
+* Erstellen eines Geschäftsflows auf der Grundlage der Daten, die Sie von Dynamics 365 (online) erhalten.
+* Verwenden von Aktionen, die eine Antwort generieren, und anschließendes Verfügbarmachen der Ausgabe für andere Aktionen. Wenn also beispielsweise ein Element in Dynamics 365 (online) aktualisiert wird, können Sie über Office 365 eine E-Mail senden.
 
-> [!NOTE]
-> Diese Version des Artikels gilt für die allgemein verfügbare Version von Logic Apps.
-> 
-> 
+In diesem Thema erfahren Sie, wie Sie eine Logik-App erstellen, die eine Aufgabe in Dynamics 365 erstellt, sobald in Dynamics 365 ein neuer Lead erstellt wird.
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/logic-apps-create-a-logic-app.md).
+## <a name="prerequisites"></a>Voraussetzungen
+* Ein Azure-Konto.
+* Eine Dynamics 365 (online)-Konto.
 
-## <a name="connect-to-dynamics-crm-online"></a>Herstellen einer Verbindung mit Dynamics CRM Online
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Wenn Sie also beispielsweise eine Verbindung mit Dynamics herstellen möchten, müssen Sie zunächst eine Dynamics CRM Online-*Verbindung* erstellen. Geben Sie zum Erstellen einer Verbindung die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Dynamics also die Anmeldeinformationen Ihres Dynamics CRM Online-Kontos ein, um die Verbindung zu erstellen.
+## <a name="walkthrough-create-a-task-whenever-a-new-lead-is-created-in-dynamics-365"></a>Exemplarische Vorgehensweise: Erstellen einer Aufgabe, wenn in Dynamics 365 ein neuer Lead erstellt wird
+1.    [Melden Sie sich bei Azure an.](https://portal.azure.com)
+2.    Geben Sie *Logic Apps* in das Feld **Suche** ein, und drücken Sie anschließend die EINGABETASTE.
+3.    Klicken Sie im Bereich des Logic Apps-Diensts auf **Hinzufügen**.
 
-### <a name="create-the-connection"></a>Erstellen der Verbindung
-> [!INCLUDE [Steps to create a connection to Dynamics CRM Online Connection Provider](../../includes/connectors-create-api-crmonline.md)]
-> 
-> 
+  ![Hinzufügen einer Logik-App](./media/connectors-create-api-crmonline/add-logic-app.png)
 
-## <a name="use-a-trigger"></a>Verwenden eines Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Trigger fragen den Dienst im gewünschten Intervall und mit der gewünschten Häufigkeit ab. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+4.    Füllen Sie zum Erstellen des Logik-App-Objekts die Felder **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** aus, und klicken Sie anschließend auf **Erstellen**.
 
-1. Geben Sie in der Logik-App „dynamics“ ein, um eine Liste mit den Triggern abzurufen:  
-   
-    ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
-2. Wählen Sie **Dynamics CRM Online – When a record is created** (Dynamics CRM Online – wenn ein Datensatz erstellt wird) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie in der Dropdownliste eine Organisation und eine Entität aus.
-   
-    ![](./media/connectors-create-api-crmonline/select-organization.png)
-   
-    Wenn Sie zur Anmeldung aufgefordert werden, geben Sie die Anmeldeinformationen ein, um die Verbindung zu erstellen. Die erforderlichen Schritte sind in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-crmonline.md#create-the-connection) aufgeführt. 
-   
-   > [!NOTE]
-   > In diesem Beispiel wird die Logik-App ausgeführt, wenn ein Datensatz erstellt wird. Fügen Sie zum Anzeigen der Ergebnisse dieses Triggers eine weitere Aktion hinzu, die Ihnen eine E-Mail sendet. Fügen Sie beispielsweise die Office 365-Aktion *E-Mail senden* hinzu, um eine E-Mail zu erhalten, wenn der neue Datensatz hinzugefügt wird. 
-   > 
-   > 
-3. Wählen Sie die Schaltfläche **Bearbeiten** aus, und legen Sie Werte für **Häufigkeit** und **Intervall** fest. Falls die Abfrage durch den Trigger also beispielsweise alle 15 Minuten erfolgen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf **15** fest. 
-   
-    ![](./media/connectors-create-api-crmonline/edit-properties.png)
-4. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+5.    Wählen Sie die neue Logik-App aus. Klicken Sie auf **Aktualisieren**, wenn Sie die Benachrichtigung **Bereitstellung erfolgreich** erhalten.
 
-## <a name="use-an-action"></a>Verwenden einer Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+6.    Klicken Sie unter den Entwicklungstools auf **Logik-App-Designer** und anschließend in der Liste mit den verfügbaren Vorlagen auf **Leere LogicApp**.
 
-1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
-   
-    ![](./media/connectors-create-api-crmonline/add-action.png)
-2. Wählen Sie **Aktion hinzufügen**aus.
-3. Geben Sie im Textfeld die Zeichenfolge „dynamics“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
-   
-    ![](./media/connectors-create-api-crmonline/dynamics-actions.png)
-4. Wählen Sie in unserem Beispiel die Option **Dynamics CRM Online – Update a record** (Dynamics CRM Online – Datensatz aktualisieren) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie **Organisationsname**, **Entitätsname** und andere Eigenschaften aus:  
-   
-    ![](./media/connectors-create-api-crmonline/sample-action.png)
-   
-    Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-crmonline.md#create-the-connection) beschrieben. 
-   
-   > [!NOTE]
-   > In diesem Beispiel aktualisieren wir einen vorhandenen Datensatz in CRM Online. Für die Aktualisierung des Datensatzes kann die Ausgabe eines anderen Triggers verwendet werden. Fügen Sie beispielsweise den SharePoint-Trigger *When an existing item is modified* (Wenn ein vorhandenes Element geändert wird) hinzu. Fügen Sie dann die CRM Online-Aktion *Update a record* (Datensatz aktualisieren) hinzu, die den vorhandenen Datensatz in CRM Online mithilfe der SharePoint-Felder aktualisiert. 
-   > 
-   > 
-5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+7.    Geben Sie *Dynamics 365* ein. Die Liste enthält mehrere Dynamics 365-Trigger. Klicken Sie auf **Dynamics 365 – Wenn ein Datensatz erstellt wird**.
+
+8.    Melden Sie sich bei Dynamics 365 an, falls Sie dazu aufgefordert werden.
+
+9.    Geben Sie unter den Triggerdetails folgende Informationen ein:
+
+  * **Name der Organisation**: Wählen Sie die Dynamics 365-Instanz aus, die die Logik-App überwachen soll.
+
+  * **Entitätsname**: Wählen Sie die zu überwachende Entität aus. Diese fungiert als Trigger für die Initiierung der Logik-App. In dieser exemplarischen Vorgehensweise wird **Leads** ausgewählt.
+
+  * **Wie oft möchten Sie auf Elemente prüfen?**: Mit diesen Werten legen Sie fest, wie oft die Logik-App nach Trigger-bezogenen Aktualisierungen suchen soll. Standardmäßig findet alle drei Minuten eine Prüfung auf Aktualisierungen statt.
+
+    * **Häufigkeit**: Wählen Sie Sekunden, Minuten, Stunden oder Tage aus.
+
+    * **Intervall**: Geben Sie die Anzahl von Sekunden, Minuten, Stunden oder Tagen bis zur nächsten Überprüfung ein.
+
+    ![Triggerdetails der Logik-App](./media/connectors-create-api-crmonline/trigger-details.png)
+
+10.    Klicken Sie auf **Neuer Schritt** und anschließend auf **Aktion hinzufügen**.
+
+11.    Geben Sie *Dynamics 365* ein, und klicken Sie in der Liste auf **Dynamics 365 – Neuen Datensatz erstellen**.
+
+12.    Geben Sie Folgendes ein:
+  * **Name der Organisation**: Wählen Sie die Dynamics 365-Instanz aus, in der der Flow den Datensatz erstellen soll. Dabei muss es sich nicht um die gleiche Instanz handeln, durch die das Ereignis ausgelöst wird.
+  * **Entitätsname**: Wählen Sie die Entität aus, die einen Datensatz erstellen soll, wenn das Ereignis ausgelöst wird. In dieser exemplarischen Vorgehensweise wird **Aufgaben** ausgewählt.
+
+13.    Ein Betrefffeld wird angezeigt. Wenn Sie auf das Feld klicken, erscheint ein dynamischer Inhaltsbereich, in dem folgende Felder zur Auswahl stehen:
+  * **Nachname**: Wenn Sie dieses Feld auswählen, wird bei der Erstellung des Aufgabendatensatzes der Nachname des Leads in das Betrefffeld der Aufgabe eingefügt.
+  * **Thema**: Wenn Sie dieses Feld auswählen, wird bei der Erstellung des Aufgabendatensatzes das Themenfeld für den Lead in das Betrefffeld der Aufgabe eingefügt.
+Klicken Sie auf **Thema**, um es dem Feld **Betreff** hinzuzufügen.
+
+  ![Logik-App – Details zum Erstellen eines neuen Datensatzes](./media/connectors-create-api-crmonline/create-record-details.png)
+
+14.    Klicken Sie auf der Symbolleiste des Logik-App-Designers auf **Speichern**.
+
+  ![„Speichern“ auf der Symbolleiste des Logik-App-Designers](./media/connectors-create-api-crmonline/designer-toolbar-save.png)
+
+15.    Klicken Sie zum Starten der Logik-App auf **Ausführen**.
+
+  ![„Speichern“ auf der Symbolleiste des Logik-App-Designers](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
+
+16. Erstellen Sie nun in Dynamics 365 for Sales einen Leaddatensatz, und beobachten Sie Ihren Flow in Aktion.
+
+## <a name="using-advanced-options"></a>Verwenden erweiterter Optionen
+Wenn Sie einer Logik-App einen Schritt hinzufügen, können Sie auf **Erweiterte Optionen anzeigen** klicken und einen Filter oder eine Sortierung hinzufügen, um die Filterung der Daten in dem Schritt zu steuern.
+
+So können Sie beispielsweise eine Filterabfrage verwenden, um nur aktive Konten abzurufen, und die Daten nach Kontoname sortieren. Geben Sie hierzu die OData-Filterabfrage **statuscode eq 1** ein, und wählen Sie im dynamischen Inhaltsbereich die Option **Kontoname** aus. Weitere Informationen finden Sie unter [MSDN: $filter](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_1) und [$orderby](https://msdn.microsoft.com/library/gg309461.aspx#Anchor_2).
+
+  ![Erweiterte Optionen für Logik-Apps](./media/connectors-create-api-crmonline/advanced-options.png)
+
+### <a name="best-practices-when-using-advanced-options"></a>Bewährte Methoden bei der Verwendung erweiterter Optionen
+Wenn Sie einem Feld einen Wert hinzufügen, muss dieser auf die Art des Felds abgestimmt sein. Dabei spielt es keine Rolle, ob Sie einen Wert eingeben oder ihn aus dem angezeigten dynamischen Inhalt auswählen.
+
+Feldtyp  |Verwendung  |Ort  |Name  |Datentyp  
+---------|---------|---------|---------|---------
+Textfelder|Textfelder erfordern eine einzelne Textzeile oder dynamischen Inhalt, bei dem es sich um ein Textfeld handelt. Beispiele: „Kategorie“ und „Unterkategorie“|Einstellungen > Anpassungen > System anpassen > Entitäten > Aufgabe > Felder |category |Einzelne Textzeile       
+Ganzzahlige Felder | Einige Felder erfordern eine ganze Zahl oder dynamischen Inhalt, bei dem es sich um ein ganzzahliges Feld handelt. Beispiele: „Prozent abgeschlossen“ und „Dauer“ |Einstellungen > Anpassungen > System anpassen > Entitäten > Aufgabe > Felder |percentcomplete |Ganze Zahl         
+Datumsfelder | Einige Felder erfordern ein Datum im Format MM/TT/JJJJ oder dynamischen Inhalt, bei dem es sich um ein Datumsfeld handelt. Beispiele: „Erstellt am“, „Startdatum“, „Tatsächlicher Beginn“, „Letzte Zeit der Zurückstellung“, „Tatsächliches Ende“ und „Fälligkeitsdatum“ | Einstellungen > Anpassungen > System anpassen > Entitäten > Aufgabe > Felder |createdon |Datum und Uhrzeit         
+Felder, die sowohl eine Datensatz-ID als auch einen Suchtyp erfordern |Einige Felder, die auf einen anderen Entitätsdatensatz verweisen, erfordern sowohl die Datensatz-ID als auch den Suchtyp. |Einstellungen > Anpassungen > System anpassen > Entitäten > Konto > Felder  | accountid   | Primärschlüssel
+
+### <a name="more-examples-of-fields-that-require-both-a-record-id-and-lookup-type"></a>Weitere Beispiele für Felder, die sowohl eine Datensatz-ID als auch einen Suchtyp erfordern
+Ergänzend zur obigen Tabelle finden Sie hier weitere Beispiele für Felder, für die keine Werte aus der Liste dynamischer Inhalte verwendet werden können. Für diese Felder muss stattdessen sowohl eine Datensatz-ID als auch ein Suchtyp in die Felder in PowerApps eingegeben werden.  
+*  Besitzer und Besitzertyp: Bei dem Feld „Besitzer“ muss es sich um eine gültige Benutzer- oder Teamdatensatz-ID handeln. Der Besitzertyp muss entweder **systemusers** oder **teams** lauten.
+* Kunde und Kundentyp: Bei dem Feld „Kunde“ muss es sich um eine gültige Konto- oder Kontaktdatensatz-ID handeln. Der Kundentyp muss entweder **accounts** oder **contacts** lauten.
+* Betreff und Betrefftyp: Bei dem Feld „Betreff“ muss es sich um eine gültige Datensatz-ID handeln (beispielsweise eine Konto- oder Kontaktdatensatz-ID). Beim Betrefftyp muss es sich um den Suchtyp für den Datensatz handeln (beispielsweise **accounts** oder **contacts**).
+
+Im folgenden Aufgabenerstellungsbeispiel wird ein der Datensatz-ID entsprechender Kontodatensatz dem Betrefffeld der Aufgabe hinzugefügt.
+
+  ![Flow mit Datensatz-ID und Konto](./media/connectors-create-api-crmonline/recordid-type-account.png)
+
+Außerdem wird die Aufgabe in diesem Beispiel auf der Grundlage der Datensatz-ID des Benutzers einem bestimmten Benutzer zugewiesen.
+  ![Flow mit Datensatz-ID und Konto](./media/connectors-create-api-crmonline/recordid-type-user.png)
+
+Informationen zum Ermitteln einer Datensatz-ID finden Sie weiter unten im Abschnitt *Ermitteln der Datensatz-ID*.
+
+## <a name="find-the-record-id"></a>Ermitteln der Datensatz-ID
+1. Öffnen Sie einen Datensatz (beispielsweise einen Kontodatensatz).
+
+2. Klicken Sie auf der Aktionssymbolleiste auf **Aufklappen** ![Datensatz aufklappen](./media/connectors-create-api-crmonline/popout-record.png).
+Oder: Klicken Sie auf der Aktionssymbolleiste auf **LINK PER E-MAIL SENDEN**, um die vollständige URL in Ihr Standard-E-Mail-Programm zu kopieren.
+
+3. Die Datensatz-ID befindet sich zwischen den Codierungszeichen „%7b“ und „%7d“ der URL.
+
+  ![Flow mit Datensatz-ID und Konto](./media/connectors-create-api-crmonline/recordid.png)
+
+## <a name="troubleshooting"></a>Problembehandlung
+Sehen Sie sich zur Problembehandlung im Falle eines nicht erfolgreichen Schritts in einer Logik-App die Statusdetails des Ereignisses an.
+
+1. Klicken Sie im Logic Apps-Bereich auf Ihre Logik-App und anschließend auf **Übersicht**. Der daraufhin angezeigte Zusammenfassungsbereich enthält den Ausführungsstatus der Logik-App. Sollten nicht erfolgreiche Ausführungen vorhanden sein, klicken Sie auf das fehlerhafte Ereignis, für das Sie weitere Informationen anzeigen möchten.
+
+  ![Logik-App – Problembehandlungsschritt 1](./media/connectors-create-api-crmonline/tshoot1.png)
+
+2. Klicken Sie auf den nicht erfolgreichen Schritt, um ihn zu erweitern.
+
+  ![Logik-App – Problembehandlungsschritt 2](./media/connectors-create-api-crmonline/tshoot2.png)
+
+3. Die angezeigten Schrittdetails können zum Behandeln der Fehlerursache herangezogen werden.
+
+    ![Logik-App – Problembehandlungsschritt 2](./media/connectors-create-api-crmonline/tshoot3.png)
+
+Weitere Informationen zum Behandeln von Problemen mit Logik-Apps finden Sie unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md).
 
 ## <a name="technical-details"></a>Technische Details
 ## <a name="triggers"></a>Trigger
 | Trigger | Beschreibung |
 | --- | --- |
-| [When a record is created](connectors-create-api-crmonline.md#when-a-record-is-created) (Wenn ein Datensatz erstellt wird) |Löst einen Ablauf aus, wenn ein Objekt in CRM erstellt wird. |
-| [When a record is updated](connectors-create-api-crmonline.md#when-a-record-is-updated) (Wenn ein Datensatz aktualisiert wird) |Löst einen Ablauf aus, wenn ein Objekt in CRM geändert wird. |
-| [When a record is deleted](connectors-create-api-crmonline.md#when-a-record-is-deleted) (Wenn ein Datensatz gelöscht wird) |Löst einen Ablauf aus, wenn ein Objekt in CRM gelöscht wird. |
+| When a record is created (Wenn ein Datensatz erstellt wird) |Löst einen Flow aus, wenn ein Objekt in Dynamics 365 erstellt wird. |
+| When a record is updated (Wenn ein Datensatz aktualisiert wird) |Löst einen Flow aus, wenn ein Objekt in Dynamics 365 aktualisiert wird. |
+| When a record is deleted (Wenn ein Datensatz gelöscht wird) |Löst einen Flow aus, wenn ein Objekt in Dynamics 365 gelöscht wird. |
 
-## <a name="actions"></a>Aktionen
+## <a name="actions"></a>Actions
 | Aktion | Beschreibung |
 | --- | --- |
-| [List records](connectors-create-api-crmonline.md#list-records) (Datensätze auflisten) |Dieser Vorgang ruft die Datensätze für eine Entität ab. |
-| [Create a new record](connectors-create-api-crmonline.md#create-a-new-record) (Neuen Datensatz erstellen) |Dieser Vorgang erstellt einen neuen Datensatz einer Entität. |
-| [Get record](connectors-create-api-crmonline.md#get-record) (Datensatz abrufen) |Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab. |
-| [Delete a record](connectors-create-api-crmonline.md#delete-a-record) (Datensatz löschen) |Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung. |
-| [Update a record](connectors-create-api-crmonline.md#update-a-record) (Datensatz aktualisieren) |Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität. |
+| List records (Datensätze auflisten) |Dieser Vorgang ruft die Datensätze für eine Entität ab. |
+| Create a new record (Neuen Datensatz erstellen) |Dieser Vorgang erstellt einen neuen Datensatz einer Entität. |
+| Get record (Datensatz abrufen) |Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab. |
+| Delete a record (Datensatz löschen) |Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung. |
+| Aktualisieren eines Eintrags |Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität. |
 
 ### <a name="trigger-and-action-details"></a>Trigger- und Aktionsdetails
 Dieser Abschnitt enthält spezifische Details zu den einzelnen Triggern und Aktionen. Hierzu zählen unter anderem erforderliche oder optionale Eingabeeigenschaften sowie entsprechende Ausgaben im Zusammenhang mit dem Connector.
 
 #### <a name="when-a-record-is-created"></a>When a record is created (Wenn ein Datensatz erstellt wird)
-Löst einen Ablauf aus, wenn ein Objekt in CRM erstellt wird. 
+Löst einen Flow aus, wenn ein Objekt in Dynamics 365 erstellt wird.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
-| $skip |Auslassungsanzahl |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |Maximale Anzahl von Get-Anforderungen |Maximale Anzahl abzurufender Einträge (Standardwert: 256) |
 | $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge |
 | $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
 
@@ -129,16 +188,12 @@ ItemsList
 | value |array |
 
 #### <a name="when-a-record-is-updated"></a>When a record is updated (Wenn ein Datensatz aktualisiert wird)
-Löst einen Ablauf aus, wenn ein Objekt in CRM geändert wird. 
+Löst einen Flow aus, wenn ein Objekt in Dynamics 365 aktualisiert wird.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
-| $skip |Auslassungsanzahl |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |Maximale Anzahl von Get-Anforderungen |Maximale Anzahl abzurufender Einträge (Standardwert: 256) |
-| $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge |
-| $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
 
 Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
 
@@ -150,16 +205,13 @@ ItemsList
 | value |array |
 
 #### <a name="when-a-record-is-deleted"></a>When a record is deleted (Wenn ein Datensatz gelöscht wird)
-Löst einen Ablauf aus, wenn ein Objekt in CRM gelöscht wird. 
+Löst einen Flow aus, wenn ein Objekt in Dynamics 365 gelöscht wird.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
-| $skip |Auslassungsanzahl |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |Maximale Anzahl von Get-Anforderungen |Maximale Anzahl abzurufender Einträge (Standardwert: 256) |
-| $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge |
-| $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
+
 
 Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
 
@@ -171,14 +223,12 @@ ItemsList
 | value |Array |
 
 #### <a name="list-records"></a>List records (Datensätze auflisten)
-Dieser Vorgang ruft die Datensätze für eine Entität ab. 
+Dieser Vorgang ruft die Datensätze für eine Entität ab.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
-| $skip |Auslassungsanzahl |Anzahl der zu überspringenden Einträge (Standardeinstellung = 0) |
-| $top |Maximale Anzahl von Get-Anforderungen |Maximale Anzahl abzurufender Einträge (Standardwert: 256) |
 | $filter |Filterabfrage |Eine ODATA-Filterabfrage zum Einschränken der Anzahl zurückgegebener Einträge |
 | $orderby |Sortieren nach |Eine ODATA-orderBy-Abfrage zum Angeben der Reihenfolge von Einträgen |
 
@@ -192,11 +242,11 @@ ItemsList
 | value |Array |
 
 #### <a name="create-a-new-record"></a>Create a new record (Neuen Datensatz erstellen)
-Dieser Vorgang erstellt einen neuen Datensatz einer Entität. 
+Dieser Vorgang erstellt einen neuen Datensatz einer Entität.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
 
 Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
@@ -205,11 +255,11 @@ Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
 Keine
 
 #### <a name="get-record"></a>Get record (Datensatz abrufen)
-Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab. 
+Dieser Vorgang ruft den angegebenen Datensatz für eine Entität ab.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
 | id* |Item identifier (Elementbezeichner) |Bezeichner für den Datensatz |
 
@@ -219,22 +269,22 @@ Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
 Keine
 
 #### <a name="delete-a-record"></a>Delete a record (Datensatz löschen)
-Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung. 
+Dieser Vorgang löscht einen Datensatz aus einer Entitätssammlung.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
 | id* |Item identifier (Elementbezeichner) |Bezeichner für den Datensatz |
 
 Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
 
 #### <a name="update-a-record"></a>Update a record (Datensatz aktualisieren)
-Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität. 
+Dieser Vorgang aktualisiert einen vorhandenen Datensatz für eine Entität.
 
 | Eigenschaftenname | Anzeigename | Beschreibung |
 | --- | --- | --- |
-| dataset* |Name der Organisation |Name der CRM-Organisation (beispielsweise Contoso) |
+| dataset* |Name der Organisation |Name der Dynamics 365-Organisation (beispielsweise Contoso) |
 | table* |Entitätsname |Name der Entität |
 | id* |Record identifier (Datensatzbezeichner) |Bezeichner für den Datensatz |
 
@@ -244,7 +294,7 @@ Ein Sternchen (*) bedeutet, dass die Eigenschaft erforderlich ist.
 Keine
 
 ## <a name="http-responses"></a>HTTP-Antworten
-Von den angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden: 
+Von den angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zurückgegeben werden:
 
 | Name | Beschreibung |
 | --- | --- |
@@ -258,8 +308,7 @@ Von den angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zur�
 | die Standardeinstellung |Fehler beim Vorgang. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
-
+Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
 
 

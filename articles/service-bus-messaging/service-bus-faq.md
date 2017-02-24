@@ -1,5 +1,5 @@
 ---
-title: "Service Bus – Häufig gestellte Fragen | Microsoft Docs"
+title: "Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumentation"
 description: "Enthält Antworten auf einige häufig gestellte Fragen zu Azure Service Bus."
 services: service-bus-messaging
 documentationcenter: na
@@ -12,27 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2016
-ms.author: sethm;juconway
+ms.date: 02/09/2017
+ms.author: sethm;jotaub
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b350bac36f1d46c97da37a2807ead8c9c732d69a
+ms.sourcegitcommit: da7f8e3e61705cf07ff65c9dd1d8f292f4fb9f62
+ms.openlocfilehash: 9061829e42ed5563d64860774aa7d80f2ab011bd
 
 
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
-In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen. Die folgenden Themen werden behandelt:
+In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
 
-* [Allgemeine Fragen zu Azure Service Bus Messaging](#general-questions-about-azure-service-bus-messaging)
-* [Service Bus – Bewährte Methoden](#service-bus-best-practices)
-* [Service Bus Preise](#service-bus-pricing)
-* [Service Bus-Kontingente](#service-bus-quotas)
-* [Abonnement- und Namespace-Verwaltung](#subscription-and-namespace-management)
-* [Problembehandlung](#service-bus-troubleshooting)
-
-## <a name="general-questions-about-azure-service-bus-messaging"></a>Allgemeine Fragen zu Azure Service Bus Messaging
-### <a name="what-is-azure-service-bus-messaging"></a>Was ist Azure Service Bus Messaging?
-[Azure Service Bus Messaging](service-bus-messaging-overview.md) ist eine asynchrone Cloudplattform für Messaging, mit der Sie Daten zwischen entkoppelten Systemen senden können. Microsoft stellt dieses Feature als Dienst bereit. Dies bedeutet, dass Sie Ihre Hardware nicht selbst hosten müssen, um sie verwenden zu können.
+## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
+### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
+[Azure Service Bus](service-bus-messaging-overview.md) ist eine asynchrone Cloudplattform für Messaging, mit der Sie Daten zwischen entkoppelten Systemen senden können. Microsoft stellt dieses Feature als Dienst bereit. Dies bedeutet, dass Sie Ihre Hardware nicht selbst hosten müssen, um sie verwenden zu können.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Was ist ein Service Bus-Namespace?
 Ein [Namespace](service-bus-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Die Namespace-Erstellung ist für die Verwendung von Service Bus erforderlich und ist einer der ersten Schritte.
@@ -41,18 +34,18 @@ Ein [Namespace](service-bus-create-namespace-portal.md) ist ein Bereichscontaine
 Eine [Service Bus-Warteschlange](service-bus-queues-topics-subscriptions.md) ist eine Entität, in der Nachrichten gespeichert werden. Warteschlangen sind besonders nützlich, wenn Sie über mehrere Anwendungen oder mehrere Teile einer verteilten Anwendung verfügen, die miteinander kommunizieren müssen. Die Warteschlange ähnelt einem Verteilzentrum, in dem mehrere Produkte (Nachrichten) eingehen und von diesem Standort aus dann weiterverschickt werden.
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Was sind Azure Service Bus-Themen und -Abonnements?
-Eine Thema kann als Warteschlange visualisiert werden, und bei Verwendung mehrerer Abonnements ergibt sich ein umfassenderes Messagingmodell. Im Wesentlichen handelt es sich um ein Tool für die 1:n-Kommunikation. Bei diesem Modell vom Typ „Veröffentlichen/Abonnieren“ (*Pub/Sub*) kann für eine Anwendung, die eine Nachricht an ein Thema mit mehreren Abonnements sendet, erreicht werden, dass die Nachricht von mehreren Anwendungen empfangen wird.
+Eine Thema kann als Warteschlange visualisiert werden, und bei Verwendung mehrerer Abonnements ergibt sich ein umfassenderes Messagingmodell. Im Wesentlichen handelt es sich um ein Tool für die&1;:n-Kommunikation. Bei diesem Modell vom Typ „Veröffentlichen/Abonnieren“ (*Pub/Sub*) kann für eine Anwendung, die eine Nachricht an ein Thema mit mehreren Abonnements sendet, erreicht werden, dass die Nachricht von mehreren Anwendungen empfangen wird.
 
 ### <a name="what-is-a-partitioned-entity"></a>Was ist eine partitionierte Entität?
 Eine herkömmliche Warteschlange oder ein Thema werden von einem einzelnen Nachrichtenbroker verarbeitet und in einem Nachrichtenspeicher gespeichert. Eine [partitionierte Warteschlange bzw. ein Thema](service-bus-partitioning.md) wird mit mehreren Nachrichtenbrokern verarbeitet und in mehreren Nachrichtenspeichern gespeichert. Dies bedeutet, dass der Gesamtdurchsatz einer partitionierten Warteschlange oder eines Themas nicht mehr durch die Leistung eines einzelnen Nachrichtenbrokers oder Nachrichtenspeichers beschränkt wird. Außerdem führt ein vorübergehender Ausfall eines Nachrichtenspeichers nicht dazu, dass eine partitionierte Warteschlange oder ein Thema nicht verfügbar ist.
 
 Beachten Sie, dass die Sortierung bei der Verwendung von partitionierten Entitäten nicht sichergestellt ist. Wenn eine Partition nicht verfügbar ist, ist es trotzdem möglich, Nachrichten zu senden und von anderen Partitionen zu empfangen.
 
-## <a name="service-bus-best-practices"></a>Service Bus – Bewährte Methoden
+## <a name="best-practices"></a>Bewährte Methoden
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Gibt es Beispiele für bewährte Azure Service Bus-Methoden?
-* [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging][Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging]: In diesem Artikel wird beschrieben, wie Sie die Leistung beim Austauschen von im Broker gespeicherten Nachrichten optimieren.
+* [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus][Best practices for performance improvements using Service Bus]: In diesem Artikel wird beschrieben, wie Sie die Leistung beim Austauschen von Nachrichten optimieren können.
 
-### <a name="what-should-i-know-before-creating-messaging-entities"></a>Was muss ich vor der Erstellung von Nachrichtenentitäten wissen?
+### <a name="what-should-i-know-before-creating-entities"></a>Was muss ich vor der Erstellung von Entitäten wissen?
 Die folgenden Eigenschaften einer Warteschlange und eines Themas sind unveränderlich. Berücksichtigen Sie dies beim Bereitstellen Ihrer Entitäten, da eine Änderung nicht möglich ist, ohne eine neue Ersatzentität zu erstellen.
 
 * Größe
@@ -61,25 +54,23 @@ Die folgenden Eigenschaften einer Warteschlange und eines Themas sind unverände
 * Duplikaterkennung
 * Express-Entität
 
-## <a name="service-bus-pricing"></a>Service Bus – Preise
+## <a name="pricing"></a>Preise
 In diesem Abschnitt werden einige häufig gestellte Fragen zur Service Bus-Preisstruktur beantwortet. Sie können auch die [Azure-Support-FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Microsoft Azure-Preisinformationen suchen. Vollständige Informationen zu Service Bus-Preisen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Wie werden die Kosten für Service Bus berechnet?
-Umfassende Informationen zu Service Bus-Preisen finden Sie unter [Service Bus Preise][Preisübersicht]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Datencenter ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
+Umfassende Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise][Pricing overview]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Bei welcher Nutzung von Service Bus werden Daten übertragen? Bei welcher nicht?
-Jede Datenübertragung innerhalb der jeweiligen Azure-Region ist kostenfrei. Bei ausgehenden Datenübertragungen außerhalb einer Region fallen Kosten zu einem Tarif von $0,15 pro GB von den Regionen Nordamerika und Europa an sowie $0,20 pro GB von der Region Asien-Pazifik. Sämtliche eingehenden Datenübertragungen sind kostenfrei.
+Jede Datenübertragung innerhalb der jeweiligen Azure-Region ist ebenso wie jede eingehende Datenübertragung kostenfrei. Für die Datenübertragung außerhalb einer Region gelten Gebühren für ausgehenden Datenverkehr, die [hier](https://azure.microsoft.com/pricing/details/bandwidth/) aufgeführt sind.
 
 ### <a name="does-service-bus-charge-for-storage"></a>Fallen für Service Bus Speicherkosten an?
 Nein, für Service Bus fallen keine Speicherkosten an. Es gibt allerdings ein Kontingent, das die Höchstmenge an Daten begrenzt, die pro Warteschlange/Thema beibehalten werden kann. Weitere Informationen finden Sie im nächsten Abschnitt.
 
-## <a name="service-bus-quotas"></a>Service Bus-Kontingente
-Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Kontingente][Übersicht über Kontingente].
+## <a name="quotas"></a>Kontingente
+Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Kontingente][Quotas overview].
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Gibt es für Service Bus Nutzungskontingente?
-Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Uns ist bewusst, dass Sie möglicherweise mehr benötigen als diese Grenzwerte. Sie können sich gerne jederzeit an unseren Kundendienst wenden und uns Ihre Anforderungen mitteilen, damit wir die Grenzwerte entsprechend anpassen können. Für Service Bus gelten die folgenden aggregierten Nutzungskontingente:
-
-* 5 Milliarden Nachrichten
+Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Uns ist bewusst, dass Sie möglicherweise mehr benötigen als diese Grenzwerte. Sie können sich gerne jederzeit an unseren Kundendienst wenden und uns Ihre Anforderungen mitteilen, damit wir die Grenzwerte entsprechend anpassen können. Für Service Bus liegen die aggregierten Nutzungskontingente bei 5 Milliarden Nachrichten pro Monat.
 
 Wir behalten uns das Recht vor, ein Kundenkonto zu deaktivieren, das die Nutzungskontingente in einem Monat überschritten hat. Wir informieren allerdings per E-Mail darüber und unternehmen mehrere Versuche, den Kunden zu kontaktieren, ehe wir diese Maßnahme ergreifen. Kunden, die diese Kontingente überschreiten, haben die Kosten für die Überschreitung zu tragen.
 
@@ -111,45 +102,48 @@ Nachrichten, die diese Größenkontingente überschreiten, werden abgelehnt, und
 
 **Anzahl von Korrelationsfiltern pro Thema** : Die maximale Anzahl von Korrelationsfiltern pro Thema ist auf 100.000 beschränkt. Wenn dieses Kontingent erreicht ist, werden nachfolgende Anforderungen für die Erstellung weiterer Filter für das Thema zurückgewiesen, und der aufrufende Code empfängt eine Ausnahme.
 
-## <a name="subscription-and-namespace-management"></a>Abonnement- und Namespace-Verwaltung
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Wie migriere ich einen Namespace zu einem anderen Azure-Abonnement?
-Sie können PowerShell-Befehle verwenden (siehe [hier][hier]), um einen Namespace von einem Azure-Abonnement in ein anderes zu verschieben. Der Namespace muss bereits aktiv sein, um diesen Vorgang durchführen zu können. Außerdem muss der Benutzer, der die Befehle ausführt, sowohl im Quellabonnement als auch im Zielabonnement ein Administrator sein.
-
-## <a name="service-bus-troubleshooting"></a>Problembehandlung in Service Bus
-[Übersicht über Ausnahmen][Übersicht über Ausnahmen]
-
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-messaging-apis-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Azure Service Bus-Messaging-APIs generiert werden, und die vorgeschlagenen Aktionen?
-Die Ausnahmen, die von Messaging-APIs generiert werden können, können in die folgenden Kategorien fallen:
-
-* Codierfehler des Benutzers
-* Einrichtungs-/Konfigurationsfehler
-* Vorübergehende Ausnahmen
-* Andere Ausnahmen
-
-Im Artikel [Service Bus-Messagingausnahmen][Übersicht über Ausnahmen] werden einige Ausnahmen mit Vorschlägen für Aktionen beschrieben.
+## <a name="troubleshooting"></a>Problembehandlung
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Azure Service Bus-APIs generiert werden, und die vorgeschlagenen Aktionen?
+Eine Liste der möglichen Service Bus-Ausnahmen finden Sie in der [Übersicht über Ausnahmen][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Was ist eine Shared Access Signature, und welche Sprachen unterstützen die Generierung einer Signatur?
 SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node, PHP, Java und C\# generieren, finden Sie im Artikel [Shared Access Signatures][Shared Access Signatures].
 
-## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
+## <a name="subscription-and-namespace-management"></a>Abonnement- und Namespace-Verwaltung
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Wie migriere ich einen Namespace zu einem anderen Azure-Abonnement?
+Mithilfe des Azure-Portals können Sie Service Bus-Namespaces auf ein anderes Abonnement übertragen, indem Sie den [hier](../azure-resource-manager/resource-group-move-resources.md#use-portal) aufgeführten Anweisungen folgen. Wenn Sie lieber PowerShell verwenden möchten, führen Sie die folgenden Anweisungen aus: 
 
-* [Einführung in Azure Service Bus Premium-Messaging (Blogbeitrag)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Einführung in Azure Service Bus Premium-Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Übersicht über Service Bus-Messaging](service-bus-messaging-overview.md)
+Mit der folgenden Befehlssequenz wird ein Namespace aus einem Azure-Abonnement in ein anderes verschoben. Um diesen Vorgang auszuführen, muss der Namespace bereits aktiv sein und der Benutzer, der die PowerShell-Befehle ausführt, muss sowohl im Quell- als auch im Zielabonnement Administratorrechte besitzen.
+
+```powershell
+# Create a new resource group in target subscription
+Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
+
+# Move namespace from source subscription to target subscription
+Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Service Bus finden Sie in den folgenden Themen:
+
+* [Einführung in Azure Service Bus Premium (Blogbeitrag)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Einführung in Azure Service Bus Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Übersicht über Service Bus](service-bus-messaging-overview.md)
 * [Übersicht über die Architektur von Azure Service Bus](service-bus-fundamentals-hybrid-solutions.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
-[Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus-Brokermessaging]: service-bus-performance-improvements.md
-[Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen]: service-bus-outages-disasters.md
-[Preisübersicht]: https://azure.microsoft.com/pricing/details/service-bus/
-[Übersicht über Kontingente]: service-bus-quotas.md
-[hier]: service-bus-powershell-how-to-provision.md#migrate-a-namespace-to-another-azure-subscription
-[Übersicht über Ausnahmen]: service-bus-messaging-exceptions.md
+[Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md
+[Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
+[Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
+[Quotas overview]: service-bus-quotas.md
+[Exceptions overview]: service-bus-messaging-exceptions.md
 [Shared Access Signatures]: service-bus-sas-overview.md
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

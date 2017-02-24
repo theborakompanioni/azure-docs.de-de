@@ -12,21 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 2/10/2017
 ms.author: johnkem
 translationtype: Human Translation
-ms.sourcegitcommit: 244cc5e4f053901a8de94adb8fc983edf30ca516
-ms.openlocfilehash: 46b3ade8bb58ccd0637ce4f2cf5c484f599e6173
+ms.sourcegitcommit: 7a3b8c4d373a97db1a1fae4af6d6ee4d8c35d4c4
+ms.openlocfilehash: ae3d9963045749f5487b4baac77e5eacc16ac9fc
 
 
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 | Partner |  |  |
 | --- | --- | --- |
-| [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] |[![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] |[![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] |[![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |[![Partner Logo][datadog-logo]<br/>**DataDog**][datadog-anchor] |
-| [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] |[![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |[![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] |
-| [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |[![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] |[![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] |
+| [![Partner Logo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partner Logo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partner Logo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
+| [![Partner Logo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] | [![Partner Logo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![Partner Logo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] |
+| [![Partner Logo][datadog-logo]<br/>**DataDog**][datadog-anchor] | [![Partner Logo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partner Logo][newrelic-logo]<br/>**NewRelic**][newrelic-anchor] |
+| [![Partner Logo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partner Logo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] | [![Partner Logo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] |
+| [![Partner Logo][splunk-logo]<br/>**Splunk**][splunk-anchor] | [![Partner Logo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | |
 
 ## <a name="alertlogic-log-manager"></a>Alert Logic Log Manager
 Alert Logic Log Manager erfasst Protokolldateien von virtuellen Computern, Anwendungen und der Azure-Plattform für Sicherheitsanalysen und zur Datenaufbewahrung. Dies beinhaltet auch Azure-Überwachungsprotokolle über die Azure Monitor-API.  Diese Informationen werden dazu verwendet, Complianceanforderungen zu erfüllen und Verstöße zu erkennen.
@@ -42,6 +43,11 @@ Application Performance Management (APM) von AppDynamics ermöglicht Anwendungsb
 Sie können für Azure Monitor-Warnungen JIRA-Tickets erstellen.
 
 [Zur Dokumentation][atlassian-doc]
+
+## <a name="cloudhealth"></a>CloudHealth
+Vereinheitlichen und automatisieren Sie Ihre Cloud mit einer Plattform, die extra konzipiert wurde, damit Sie in erheblichem Umfang Zeit und Geld sparen. Mit unvergleichlicher Transparenz, intuitiver Optimierung und extrem stabilen Governancemethoden setzt CloudHealth bei der Cloudverwaltung ganz neue Maßstäbe. Mit der Cloudhealth-Plattform können Unternehmen und MSPs eine maximale Rendite für Cloudinvestitionen erzielen und fundierte Entscheidungen zu Kosten, Nutzung, Leistung und Sicherheit treffen.
+
+[Weitere Informationen.][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 CloudMonix bietet Überwachung, Automatisierung und selbstheilende Dienste für die Microsoft Azure Platform.
@@ -79,6 +85,11 @@ PagerDuty, die führende Incidentmanagementlösung, liefert bereits erstklassige
 
 [Zur Dokumentation][pagerduty-doc]
 
+## <a name="sciencelogic"></a>ScienceLogic
+ScienceLogic stellt die IT-Dienstüberprüfungsplattform der nächsten Generation bereit, mit der Sie jede Technologie überall verwalten können.  In einer einzigen Plattform bietet ScienceLogic die Skalierung, Sicherheit, Automatisierung und Resilienz, die zum Vereinfachen der immer komplexeren Verwaltung sich ständig wandelnder IT-Ressourcen, Dienste und Anwendungen erforderlich sind.  Die ScienceLogic-Plattform verwendet Azure-APIs für die Kommunikation mit Microsoft Azure.  Mit ScienceLogic erhalten Sie in Echtzeit Einblicke in Ihre Azure-Dienste und -Ressourcen, damit Sie sofort über Fehler informiert werden und diese schneller beheben können. Sie können Azure auch zusammen mit Ihren anderen Clouds und Ihren Systemen und Diensten im Rechenzentrum verwalten.
+
+[Weitere Informationen][sciencelogic-doc]
+
 ## <a name="splunk-add-on-for-microsoft-cloud-services"></a>Splunk-Add-On für Microsoft Cloud Services
 Das Splunk-Add-On für Microsoft Cloud Services steht [in der Splunkbase hier zur Verfügung](https://splunkbase.splunk.com/app/3110/).
 
@@ -90,13 +101,16 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [Weitere Informationen][sumologic-doc]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../azure-resource-manager/resource-group-audit.md)
-* [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](monitoring-stream-activity-logs-event-hubs.md)
+* [Weitere Informationen zu Azure Monitor](monitoring-overview.md)
+* [Zugreifen auf Metriken über die REST-API](monitoring-rest-api-walkthrough.md)
+* [Streamen des Aktivitätsprotokolls an einen Drittanbieterdienst](monitoring-stream-activity-logs-event-hubs.md)
+* [Streamen von Diagnoseprotokollen an einen Drittanbieterdienst](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
-<!--Connectors Documentation-->
+<!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
 [atlassian-anchor]: #atlassian-jira "Atlassian"
+[cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
 [cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "DataDog"
@@ -104,6 +118,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [newrelic-anchor]: #newrelic "NewRelic"
 [opsgenie-anchor]: #opsgenie "OpsGenie"
 [pagerduty-anchor]: #pagerduty "PagerDuty"
+[sciencelogic-anchor]: #sciencelogic "ScienceLogic"
 [splunk-anchor]: #splunk-add-on-for-microsoft-cloud-services "Splunk"
 [sumologic-anchor]: #sumo-logic "Sumo Logic"
 
@@ -111,6 +126,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [alertlogic-logo]: ./media/partner-logos/alertlogic.png
 [appdynamics-logo]: ./media/partner-logos/appdynamics.png
 [atlassian-logo]: ./media/partner-logos/atlassian.png
+[cloudhealth-logo]: ./media/partner-logos/cloudhealth.png
 [cloudmonix-logo]: ./media/partner-logos/cloudmonix.png
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
@@ -118,6 +134,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [opsgenie-logo]: ./media/partner-logos/opsgenie.png
 [pagerduty-logo]: ./media/partner-logos/pagerduty.png
+[sciencelogic-logo]: ./media/partner-logos/sciencelogic.png
 [splunk-logo]: ./media/partner-logos/splunk.png
 [sumologic-logo]: ./media/partner-logos/sumologic.png
 
@@ -125,6 +142,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic-Dokumentation"
 [appdynamics-doc]: https://docs.appdynamics.com/display/PRO42/Register+for+AppDynamics+for+Windows+Azure "AppDynamics-Dokumentation"
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
+[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "Einführung in CloudMonix"
 [cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Einführung in Cloudyn"
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadog-Dokumentation"
@@ -132,11 +150,12 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [newrelic-doc]: https://newrelic.com/azure "NewRelic-Dokumentation"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie-Dokumentation"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-Dokumentation"
+[sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic-Dokumentation"
 [splunk-doc]: http://docs.splunk.com/Documentation/AddOns/released/MSCloudServices/About "Splunk-Dokumentation"
-[sumologic-doc]: https://www.sumologic.com/azure "Sumo Logic-Dokumentation"
+[sumologic-doc]: https://www.sumologic.com/azure "SumoLogic-Dokumentation"
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

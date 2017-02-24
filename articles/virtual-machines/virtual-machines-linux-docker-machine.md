@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Docker-Hosts in Azure mit Docker Machine | Microsoft Docs
+title: Erstellen von Linux-Hosts in Azure mithilfe von Docker Machine | Microsoft-Dokumentation
 description: Beschreibt die Verwendung von Docker Machine zum Erstellen von Docker-Hosts in Azure.
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 8fe34e543d8860d80016d35d27159298c17e486e
+ms.sourcegitcommit: b64bafe1a8572369aa7a7e6f0d8b924fc182cd53
+ms.openlocfilehash: 9440474db7eb7e3ae082505f8c95cbcf8c285cdf
 
 
 ---
 # <a name="use-docker-machine-with-the-azure-driver"></a>Verwenden eines Docker-Computers mit dem Azure-Treiber
-[Docker](https://www.docker.com/) ist einer der beliebtesten Virtualisierungsansätze, bei dem Linux-Container anstelle virtueller Computer genutzt werden, um Anwendungsdaten und Computing auf gemeinsam genutzten Ressourcen zu isolieren. Dieses Thema beschreibt, wann und wie [Docker Machine](https://docs.docker.com/machine/) (der `docker-machine`-Befehl) verwendet wird, um neue virtuelle Linux-Computer in Azure zu erstellen, die als Docker-Host für Ihre Linux-Container aktiviert sind.
+[Docker](https://www.docker.com/) ermöglicht die Virtualisierung mithilfe von Linux-Containern, nicht mit virtuellen Computern, um Anwendungsdaten und Berechnungen auf einer gemeinsam genutzten Ressource voneinander zu trennen. Dieses Thema beschreibt die Verwendung von [Docker Machine](https://docs.docker.com/machine/). Der `docker-machine`-Befehl erstellt einen neuen virtuellen Linux-Computer in Azure, der als Docker-Host für Linux-Container aktiviert ist.
 
 ## <a name="create-vms-with-docker-machine"></a>Erstellen von virtuellen Computern mit dem Befehl „docker- machine“
 Erstellen Sie virtuelle Docker-Hostcomputer in Azure mit dem `docker-machine create`-Befehl mithilfe des `azure`-Treiberarguments für die Treiberoption (`-d`) und sowie weiteren Argumenten. 
@@ -132,6 +132,6 @@ Weitere Beispiele zum Arbeiten mit Docker finden Sie unter [Working with Docker]
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 

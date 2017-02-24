@@ -1,10 +1,10 @@
 ---
-title: "Bereitstellen von Microsoft Azure StorSimple Virtual Array 1 – Vorbereitung im Portal | Microsoft Docs"
+title: "Portalvorbereitung für StorSimple Virtual Array | Microsoft-Dokumentation"
 description: Erstes Tutorial zum Bereitstellen von virtuellen StorSimple-Arrays mit Vorbereitung des Azure-Portals
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -12,11 +12,11 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/03/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 97e29de986ab43ee51a311dee8d2cbf66f7408e4
+ms.sourcegitcommit: 37f2816cb1fa9c7db43359f16669e6521b0fe46a
+ms.openlocfilehash: 8539540f96d1a6fbb34736eebb0a5897b4754c9f
 
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Portals
@@ -72,7 +72,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Array bereitstellen:
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Arrays über die folgenden Ressourcen:
   
   * Mindestens 4 Kerne
-  * Mindestens 8 GB RAM
+  * Mindestens 8 GB RAM Wenn Sie planen, das virtuelle Array als Dateiserver zu konfigurieren, unterstützen 8 GB 2 Millionen Dateien. Sie benötigen 16 GB RAM, um 2–4 Millionen Dateien zu unterstützen.
   * Eine Netzwerkschnittstelle
   * Einen virtuellen Datenträger mit 500 GB für Systemdaten
 
@@ -172,6 +172,6 @@ Im nächsten Schritt wird ein virtueller Computer für Ihr StorSimple Virtual Ar
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO1-->
 
 

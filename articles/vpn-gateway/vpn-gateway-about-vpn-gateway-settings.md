@@ -1,10 +1,10 @@
 ---
-title: "Informationen zu VPN-Gatewayeinstellungen für Gateways virtueller Netzwerke | Microsoft Docs"
-description: "Hier erhalten Sie Informationen zu VPN Gateway-Einstellungen für Azure Virtual Network."
+title: "VPN Gateway-Einstellungen für standortübergreifende Azure-Verbindungen | Microsoft-Dokumentation"
+description: "Hier erhalten Sie Informationen zu VPN Gateway-Einstellungen für virtuelle Azure-Netzwerkgateways."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 02/13/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: fc3c8469657b50e4e09a1849d9c63f4ef1e0c414
+ms.sourcegitcommit: b902d2e79633959a6f76ddd45b1193177b0e8465
+ms.openlocfilehash: 1ac5a78c8d9419e4c641bf66f8dac7aa8cbcd179
 
 
 ---
-# <a name="about-vpn-gateway-settings"></a>Informationen zu VPN Gateway-Einstellungen
-Für eine Verbindungslösung mit VPN-Gateways müssen mehrere Ressourcen konfiguriert werden, um den Netzwerkdatenverkehr zwischen virtuellen Netzwerken und lokalen Standorten zu senden. Jede Ressource enthält konfigurierbare Einstellungen. Die Kombination von Ressourcen und Einstellungen bestimmt die resultierende Verbindung.
+# <a name="about-vpn-gateway-configuration-settings"></a>Informationen zu VPN Gateway-Einstellungen
+Ein VPN Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr zwischen Ihrem virtuellen Netzwerk und Ihrem lokalen Standort über eine öffentliche Verbindung gesendet wird. Über ein VPN Gateway können Sie auch Datenverkehr zwischen virtuellen Netzwerken über den Azure-Backbone senden.
 
-In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich im **Resource Manager** -Bereitstellungsmodell auf ein VPN-Gateway beziehen. Vielleicht finden Sie es hilfreich, die verfügbaren Konfigurationen mithilfe von Verbindungstopologiediagrammen anzuzeigen. Die Beschreibungen und Topologiediagramme für jede Verbindungslösung finden Sie im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) . 
+Für eine VPN Gateway-Verbindung müssen mehrere Ressourcen konfiguriert werden, die jeweils konfigurierbare Einstellungen enthalten. In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf ein im Resource Manager-Bereitstellungsmodell erstelltes VPN-Gateway beziehen. Beschreibungen und Topologiediagramme für jede Verbindungslösung finden Sie im Artikel [Informationen zu VPN Gateway](vpn-gateway-about-vpngateways.md) .  
 
 ## <a name="a-namegwtypeagateway-types"></a><a name="gwtype"></a>Gatewaytypen
 Jedes virtuelle Netzwerk kann nur über ein einziges virtuelles Netzwerkgateway jedes Typs verfügen. Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie sicherstellen, dass der Gatewaytyp für Ihre Konfiguration korrekt ist.
@@ -47,13 +47,13 @@ Beispiel:
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ### <a name="configuring-the-gateway-sku"></a>Konfigurieren der Gateway-SKU
-**Angeben der Gateway-SKU im Azure-Portal**
+####<a name="specifying-the-gateway-sku-in-the-azure-portal"></a>Angeben der Gateway-SKU im Azure-Portal
 
 Wenn Sie das Azure-Portal verwenden, um ein Resource Manager-Gateway für virtuelle Netzwerke zu erstellen, können Sie die Gateway-SKU in der Dropdownliste auswählen. Die angegebenen Optionen entsprechen dem ausgewählten Gateway- und VPN-Typ.
 
 Beispiel: Wenn Sie als Gatewaytyp „VPN“ und als VPN-Typ „Richtlinienbasiert“ auswählen, wird nur die SKU „Basic“ angezeigt, da nur diese SKU für richtlinienbasierte VPNs verfügbar ist. Wenn Sie „Routenbasiert“ festlegen, können Sie zwischen den SKUs „Basic“, „Standard“ und „HighPerformance“ wählen. 
 
-**Angeben der Gateway-SKU mithilfe von PowerShell**
+####<a name="specifying-the-gateway-sku-using-powershell"></a>Angeben der Gateway-SKU mithilfe von PowerShell
 
 Das folgende PowerShell-Beispiel gibt `-GatewaySku` als *Standard*an.
 
@@ -61,7 +61,7 @@ Das folgende PowerShell-Beispiel gibt `-GatewaySku` als *Standard*an.
     -Location 'West US' -IpConfigurations $gwipconfig -GatewaySku Standard `
     -GatewayType Vpn -VpnType RouteBased
 
-**Ändern einer Gateway-SKU**
+####<a name="changing-a-gateway-sku"></a>Ändern einer Gateway-SKU
 
 Wenn Sie für Ihre Gateway-SKU ein Upgrade auf eine leistungsfähigere SKU (von „Basic“/„Standard“ auf „HighPerformance“) ausführen möchten, können Sie das PowerShell-Cmdlet `Resize-AzureRmVirtualNetworkGateway` verwenden. Sie können mit diesem Cmdlet auch ein Downgrade der Gateway-SKU-Größe durchführen.
 
@@ -107,11 +107,9 @@ Das folgende PowerShell-Beispiel gibt `-VpnType` als *RouteBased*an. Beim Erstel
 [!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
 ## <a name="a-namegwsubagateway-subnet"></a><a name="gwsub"></a>Gatewaysubnetz
-Sie müssen zuerst ein Gatewaysubnetz für Ihr VNet erstellen, um ein Gateway des virtuellen Netzwerks zu konfigurieren. Das Gatewaysubnetz muss den Namen *GatewaySubnet* aufweisen, damit es einwandfrei funktioniert. Durch diesen Namen weiß Azure, dass dieses Subnetz für das Gateway verwendet werden soll.
+Um ein virtuelles Netzwerkgateway für Ihr VNet zu konfigurieren, müssen Sie ein Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des virtuellen Netzwerkgateways verwendet werden. Das Gatewaysubnetz muss den Namen *GatewaySubnet* aufweisen, damit es einwandfrei funktioniert. Durch diesen Namen weiß Azure, dass dieses Subnetz für das Gateway verwendet werden soll.
 
-Die Mindestgröße des Gatewaysubnetzes hängt gänzlich von der Konfiguration ab, die Sie erstellen möchten. Obwohl es möglich ist, ein Gatewaysubnetz mit einer Größe von nur /29 zu erstellen, empfehlen wir, ein Gatewaysubnetz von mindestens /28 (/ 28, / 27, /26 usw.) zu erstellen. 
-
-Wenn Sie eine höhere Gatewaygröße wählen, wird verhindert, dass Sie die Größenbeschränkung für Gateways erreichen. Beispiel: Sie könnten ein Gateway für ein virtuelles Netzwerk mit einem Gatewaysubnetz der Größe /29 für eine S2S-Verbindung erstellt haben. Sie möchten jetzt eine Konfiguration einrichten, in der S2S und ExpressRoute gleichzeitig verwendet werden. Diese Konfiguration erfordert ein Gatewaysubnetz mit einer Mindestgröße von /28. Um Ihre Konfiguration zu erstellen, müssten Sie das Gatewaysubnetz an die Mindestanforderung für die Verbindung anpassen, und das ist /28.
+Bei der Gatewayerstellung geben Sie die Anzahl der im Subnetz enthaltenen IP-Adressen an. Die IP-Adressen im Gatewaysubnetz werden dem Gatewaydienst zugeordnet. Die Anzahl von IP-Adressen, die dem Gatewaydienst zugeordnet werden müssen, ist abhängig von der jeweiligen Konfiguration. Stellen Sie sicher, dass Ihr Gatewaysubnetz über genügend IP-Adressen verfügt, und berücksichtigen Sie dabei auch zukünftiges Wachstum sowie mögliche neue Verbindungskonfigurationen. Sie können zwar ein Gatewaysubnetz mit einer Größe von nur /29 erstellen, es empfiehlt sich jedoch, ein Gatewaysubnetz mit einer Größe von mindestens /28 (/28, /27, /26 usw.) zu erstellen. Sehen Sie sich die Anforderungen für die Konfiguration an, die Sie erstellen möchten, und vergewissern Sie sich, dass Ihr Gatewaysubnetz diese Anforderungen erfüllt.
 
 Im folgenden Resource Manager-PowerShell-Beispiel ist ein Gatewaysubnetz mit dem Namen GatewaySubnet zu sehen. Sie erkennen, das mit der CIDR-Notation die Größe /27 angegeben wird. Dies ist für eine ausreichende Zahl von IP-Adressen für die meisten Konfigurationen, die derzeit üblich sind, groß genug.
 
@@ -145,6 +143,6 @@ Weitere Informationen zu verfügbaren Verbindungskonfigurationen finden Sie unte
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

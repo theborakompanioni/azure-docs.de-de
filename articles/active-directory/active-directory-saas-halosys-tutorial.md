@@ -11,7 +11,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2016
+ms.date: 02/22/2017
 ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 37dc0772ccf74b19656b60f11e66e065815dc2a6
@@ -124,7 +124,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zur Anmeldung bei Ihrer Halosys-Anwendung verwendet wird, und verwenden Sie dabei folgendes Muster: `https://<company-name>.Halosys.com/client-api/api`.
 
-    b. Geben Sie im Textfeld **Identifier URL** (Bezeichner-URL) eine URL nach folgendem Muster ein: `https://<company-name>.Halosys.com`.   
+    b. Geben Sie im Textfeld **Identifier URL** (Bezeichner-URL) eine URL nach folgendem Muster ein: `https://<company-name>.Halosys.com`.    
          
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Halosys** auf **Metadaten herunterladen**, und speichern Sie die Datei auf Ihrem Computer:
 

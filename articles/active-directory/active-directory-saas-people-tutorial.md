@@ -12,11 +12,11 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 01/25/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1ba2e051f4f14db10a83d6aaf90fc6355cef586a
+ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
+ms.openlocfilehash: eb24c4fe5f382a30acc524065f2ee9e3a27ce94f
 
 
 ---
@@ -27,7 +27,7 @@ Die Integration von People in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf People hat.
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei People anzumelden (einmaliges Anmelden).
-* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+* Mit dem klassischen Azure-Portal können Sie Ihre Konten an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -35,7 +35,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit People konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement
-* Ein People-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein People-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -104,33 +104,24 @@ Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_04.png) 
    
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zur Anmeldung bei der People-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: „**https://\<company name\>.peoplehr.com/**“. 
-   
-    b. Wenn Sie die Mandanten-URL nicht kennen, wenden Sie sich über [customerservices@peoplehr.com](mailto:customerservices@peoplehr.com) an das People-Supportteam, um diese URL zu erfragen.  
-   
-    c. Geben Sie im Textfeld **Bezeichner** die Mandanten-URL ein. 
-   
-    d. Geben Sie in der **Antwort-URL**-Textbox die URL ein. Gehen Sie dabei nach dem folgenden Muster vor: „**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**“.
-   
-    e. Klicken Sie auf **Weiter**
+   1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern zur Anmeldung bei der People-Anwendung verwendet wird. Verwenden Sie dabei das folgende Muster: „**https://\<company name\>.peoplehr.com/**“. 
+   2. Wenn Sie die Mandanten-URL nicht kennen, wenden Sie sich über [customerservices@peoplehr.com](mailto:customerservices@peoplehr.com) an das People-Supportteam, um diese URL zu erfragen.    3. Geben Sie im Textfeld **Bezeichner** die Mandanten-URL ein. 
+   4. Geben Sie in der **Antwort-URL**-Textbox die URL ein. Gehen Sie dabei nach dem folgenden Muster vor: „**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**“.
+   5. Klicken Sie auf **Weiter**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für People** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_05.png) 
    
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+   1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+   2. Klicken Sie auf **Weiter**.
 5. Zum Konfigurieren des einmaligen Anmeldens für Ihre Anwendung müssen Sie sich als Administrator bei Ihrem People-Mandanten anmelden.
    
-    a. Klicken Sie im Menü links auf **Settings**.
-   
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_001.png) 
-   
-    b. Klicken Sie auf **Company**.
+   1. Klicken Sie im Menü links auf **Settings**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_001.png)    
+   2. Klicken Sie auf **Company**.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_002.png) 
-   
-    c. Klicken Sie neben **Upload 'Single Sign On' SAML meta-data file** auf **Browse**, um die heruntergeladene Metadatendatei hochzuladen.
+    3. Klicken Sie neben **Upload 'Single Sign On' SAML meta-data file** auf **Browse**, um die heruntergeladene Metadatendatei hochzuladen.
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-people-tutorial/tutorial_people_003.png)
 6. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
@@ -162,24 +153,18 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_05.png) 
    
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_07.png) 
@@ -187,9 +172,8 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-people-tutorial/create_aaduser_08.png) 
    
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   1. Notieren Sie den Wert von **Neues Kennwort**.
+   2. Klicken Sie auf **Fertig stellen**.   
 
 ### <a name="creating-a-people-test-user"></a>Erstellen eines People-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in People. People bietet keine Unterstützung für die Just-in-Time-Bereitstellung. Wenden Sie sich an das People-Supportteam, um manuell einen Benutzer zu erstellen.
@@ -243,6 +227,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „People“ klicken, sollten Sie aut
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

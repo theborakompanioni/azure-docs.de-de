@@ -25,7 +25,7 @@ ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
 
 In diesem Beispiel wird eine DMZ mit einer Firewall, vier Windows-Servern und Netzwerksicherheitsgruppen erstellt. Jeder der relevanten Befehle wird genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Es gibt außerdem einen Abschnitt mit verschiedenen Szenarien zum Datenverkehr, in denen Schritt für Schritt erläutert wird, wie der Datenverkehr durch die verschiedenen Sicherheitsstufen in der DMZ geleitet wird. Der Referenzabschnitt schließlich enthält den vollständigen Code sowie Anweisungen zum Aufbau dieser Umgebung, damit Sie verschiedene Szenarien testen und ausprobieren können. 
 
-![Eingehende DMZ mit NVA und NSG][1]
+![Eingehende DMZ mit virtuellem Netzwerkgerät und NSG][1]
 
 ## <a name="environment-description"></a>Beschreibung der Umgebung
 Dieses Beispiel umfasst ein Abonnement, das Folgendes enthält:
@@ -94,7 +94,7 @@ Um die folgende Regel zu erstellen (oder vorhandene Standardregeln zu überprüf
 
 Erstellen Sie eine neue Regel, und geben Sie einen Namen ein, z. B. „WebTraffic“. 
 
-Das Symbol für die Destination NAT-Regel sieht wie folgt aus:  ![Destination NAT-Symbol][2]
+Das Symbol für die Ziel-NAT-Regel sieht wie folgt aus: ![Symbol der Ziel-NAT-Regel][2]
 
 Die Regel selbst würde wie folgt aussehen:
 

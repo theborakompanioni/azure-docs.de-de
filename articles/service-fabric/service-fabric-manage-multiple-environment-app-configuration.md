@@ -12,11 +12,11 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/01/2016
+ms.date: 2/06/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: cd256c403cc8094a135157cdc69dbdd3971978ca
-ms.openlocfilehash: 9f8a898f265bc27fc47ea2e3d00d123f3f47dad6
+ms.sourcegitcommit: b57655c8041fa366d0aeb13e744e30e834ec85fa
+ms.openlocfilehash: 7432e45ef33bd4d51fca8e8db8ec880e8beaf3ab
 
 
 ---
@@ -96,6 +96,94 @@ Dieser Parameter kann dann wie oben gezeigt nach der jeweiligen Umgebung konfigu
 > 
 > 
 
+### <a name="setting-and-using-environment-variables"></a>Festlegen und Verwenden von Umgebungsvariablen 
+Sie können Umgebungsvariablen in der Datei „ServiceManifest.xml“ angeben und festlegen und diese dann in der Datei „ApplicationManifest.xml“ auf Instanzebene überschreiben.
+Das folgende Beispiel zeigt zwei Umgebungsvariablen – für eine wurde ein Wert festgelegt, und die andere wird überschrieben. Sie können Anwendungsparameter verwenden, um die Werte von Umgebungsvariablen auf die gleiche Weise festzulegen wie bei Konfigurationsüberschreibungen.
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ServiceManifest Name="MyServiceManifest" Version="SvcManifestVersion1" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Description>An example service manifest</Description>
+  <ServiceTypes>
+    <StatelessServiceType ServiceTypeName="MyServiceType" />
+  </ServiceTypes>
+  <CodePackage Name="MyCode" Version="CodeVersion1">
+    <SetupEntryPoint>
+      <ExeHost>
+        <Program>MySetup.bat</Program>
+      </ExeHost>
+    </SetupEntryPoint>
+    <EntryPoint>
+      <ExeHost>
+        <Program>MyServiceHost.exe</Program>
+      </ExeHost>
+    </EntryPoint>
+    <EnvironmentVariables>
+      <EnvironmentVariable Name="MyEnvVariable" Value=""/>
+      <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+    </EnvironmentVariables>
+  </CodePackage>
+  <ConfigPackage Name="MyConfig" Version="ConfigVersion1" />
+  <DataPackage Name="MyData" Version="DataVersion1" />
+</ServiceManifest>
+```
+Um die Umgebungsvariablen in der Datei „ApplicationManifest.xml“ zu überschreiben, verweisen mit dem `EnvironmentOverrides`-Element auf das Codepaket in ServiceManifest.
+
+```xml
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="FrontEndServicePkg" ServiceManifestVersion="1.0.0" />
+    <EnvironmentOverrides CodePackageRef="MyCode">
+      <EnvironmentVariable Name="MyEnvVariable" Value="mydata"/>
+    </EnvironmentOverrides>
+  </ServiceManifestImport>
+ ``` 
+ Sobald die benannte Dienstinstanz erstellt wurde, können Sie im Code auf die Umgebungsvariablen zugreifen. Sie können in C# z.B. Folgendes durchführen:
+
+```csharp
+    string EnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
+```
+
+### <a name="service-fabric-environment-variables"></a>Service Fabric-Umgebungsvariablen
+Service Fabric verfügt über Umgebungsvariablen, die für jede Dienstinstanz festgelegt werden. Die vollständige Liste von Umgebungsvariablen ist unten aufgeführt. Die fett formatierten sind diejenigen, die Sie in Ihrem Dienst verwenden. Die anderen werden von der Service Fabric-Runtime verwendet. 
+
+* Fabric_ApplicationHostId
+* Fabric_ApplicationHostType
+* Fabric_ApplicationId
+* **Fabric_ApplicationName**
+* Fabric_CodePackageInstanceId
+* **Fabric_CodePackageName**
+* **Fabric_Endpoint_[IhrDienstname]TypeEndpoint**
+* **Fabric_Folder_App_Log**
+* **Fabric_Folder_App_Temp**
+* **Fabric_Folder_App_Work**
+* **Fabric_Folder_Application**
+* Fabric_NodeId
+* **Fabric_NodeIPOrFQDN**
+* **Fabric_NodeName**
+* Fabric_RuntimeConnectionAddress
+* Fabric_ServicePackageInstanceId
+* Fabric_ServicePackageName
+* Fabric_ServicePackageVersionInstance
+* FabricPackageFileName
+
+Der folgende Code zeigt, wie die Service Fabric-Umgebungsvariablen aufgelistet werden.
+ ```csharp
+    foreach (DictionaryEntry de in Environment.GetEnvironmentVariables())
+    {
+        if (de.Key.ToString().StartsWith("Fabric"))
+        {
+            Console.WriteLine(" Environment variable {0} = {1}", de.Key, de.Value);
+        }
+    }
+```
+Das Folgende ist ein Beispiel für Umgebungsvariablen für einen Anwendungstyp namens `GuestExe.Application` mit einem Diensttyp namens `FrontEndService` bei einer Ausführung auf dem lokalen Entwicklungscomputer.
+
+* **Fabric_ApplicationName = fabric:/GuestExe.Application**
+* **Fabric_CodePackageName = Code**
+* **Fabric_Endpoint_FrontEndServiceTypeEndpoint = 80**
+* **Fabric_NodeIPOrFQDN = localhost**
+* **Fabric_NodeName = _Node_2**
+
 ### <a name="application-parameter-files"></a>Anwendungsparameterdateien
 Das Service Fabric-Anwendungsprojekt kann eine oder mehrere Anwendungsparameterdateien enthalten. In jeder Datei sind die spezifischen Werte für die Parameter definiert, die im Anwendungsmanifest definiert sind:
 
@@ -141,6 +229,6 @@ Weitere Informationen zu einigen grundlegenden Konzepten, die in diesem Thema be
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

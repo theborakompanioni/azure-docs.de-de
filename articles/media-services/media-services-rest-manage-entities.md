@@ -1,23 +1,26 @@
-
 ---
-title: Verwalten von Media Services-Entitäten mit der REST-API | Microsoft Docs
-description: Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten.
+title: "Verwalten von Media Services-Entitäten mit REST | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten."
 author: juliako
 manager: dwrede
-editor: ''
+editor: 
 services: media-services
-documentationcenter: ''
-
+documentationcenter: 
+ms.assetid: 95262a32-0f2a-4286-b9e2-1a1ca6399b5b
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/09/2017
 ms.author: juliako
+translationtype: Human Translation
+ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
+ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
+
 
 ---
-# <a name="managing-media-services-entities-with-rest-api"></a>Verwalten von Media Services-Entitäten mit der REST-API
+# <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST 
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-manage-entities.md)
 > * [.NET](media-services-dotnet-manage-entities.md)
@@ -26,15 +29,17 @@ ms.author: juliako
 
 Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von OData v3. Aus diesem Grund können Sie Entitäten genauso wie bei anderen OData-Diensten hinzufügen, abfragen, aktualisieren und löschen. Auf Ausnahmen wird ggf. hingewiesen. Weitere Informationen zu OData finden Sie in der [Dokumentation zu Open Data Protocol](http://www.odata.org/documentation/).
 
-* Hinzufügen von Entitäten 
-* Abfragen von Entitäten 
-* Auflisten von großen Auflistungen von Entitäten
-* Aktualisieren von Entitäten 
-* Löschen von Entitäten 
+Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit REST.
+
+
+>[!NOTE]
+> Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
+
+## <a name="considerations-when-working-with-ams-rest"></a>Überlegungen beim Arbeiten mit AMS REST
+
+Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
 
 > [!NOTE]
-> Beim Verwenden der Media Services REST-API gelten die folgenden Überlegungen:
-> 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
 > Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Entsprechend der Beschreibung unter [Herstellen einer Verbindung mit einem Media Services-Konto über die Media Services-REST-API](media-services-rest-connect-programmatically.md)müssen Sie nachfolgende Aufrufe an den neuen URI senden. 
@@ -42,7 +47,7 @@ Microsoft Azure Media Services ist ein REST-basierter Dienst auf Grundlage von O
 > 
 
 ## <a name="adding-entities"></a>Hinzufügen von Entitäten
-Jede Entität in Media Services wird über eine POST-HTTP-Anforderung einer Entitätenmenge hinzugefügt, z. B. Medienobjekten.
+Jede Entität in Media Services wird über eine POST-HTTP-Anforderung einer Entitätenmenge hinzugefügt, z. B. Medienobjekten.
 
 Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
 
@@ -121,7 +126,7 @@ Das folgende Beispiel gibt alle JobTemplates mit dem Namen „SampleTemplate“ 
 > 
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Auflisten von großen Auflistungen von Entitäten
-Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Verwenden Sie **skip** und **top**, um die große Sammlung von Entitäten aufzuzählen. 
+Beim Abfragen von Entitäten gibt es ein Limit von 1.000 Entitäten, die gleichzeitig zurückgegeben werden können, da die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. Verwenden Sie **skip** und **top**, um die große Sammlung von Entitäten aufzuzählen. 
 
 Das folgende Beispiel zeigt, wie Sie **skip** und **top** zum Überspringen der ersten 2000 Aufträge und Abrufen der nächsten 1000 Aufträge verwenden.  
 
@@ -153,7 +158,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie die Name-Eigenschaft für ei
     {"Name" : "NewName" }
 
 ## <a name="deleting-entities"></a>Löschen von Entitäten
-Entitäten können in Media Services mithilfe der HTTP-Anforderung DELETE gelöscht werden. Abhängig von der Entität kann die Reihenfolge, in der Sie Entitäten löschen, wichtig sein. Für Entitäten wie Medienobjekte müssen Sie z. B. alle Locators widerrufen (oder löschen), die auf ein bestimmtes Medienobjekt verweisen, bevor das Medienobjekt gelöscht wird.
+Entitäten können in Media Services mithilfe der HTTP-Anforderung DELETE gelöscht werden. Abhängig von der Entität kann die Reihenfolge, in der Sie Entitäten löschen, wichtig sein. Für Entitäten wie Medienobjekte müssen Sie z. B. alle Locators widerrufen (oder löschen), die auf ein bestimmtes Medienobjekt verweisen, bevor das Medienobjekt gelöscht wird.
 
 Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem eine Datei in den BLOB-Speicher hochgeladen wurde.
 
@@ -175,6 +180,9 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!--HONumber=Oct16_HO2-->
+
+
+
+<!--HONumber=Feb17_HO2-->
 
 

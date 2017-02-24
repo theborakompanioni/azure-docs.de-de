@@ -1,10 +1,10 @@
 
 ---
 title: Verwenden von Zertifikaten mit dem Enterprise Integration Pack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Zertifikate mit dem Enterprise Integration Pack und Logic Apps verwenden
+description: Informationen zum Verwenden von Zertifikaten mit Enterprise Integration Pack | Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
+author: padmavc
 manager: anneta
 editor: cgronlun
 ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
@@ -13,11 +13,11 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
-ms.author: deonhe
+ms.date: 02/03/2016
+ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: a1baafa9a2b4552ad711615e5e0abb0180a0d562
-ms.openlocfilehash: e6c8ed2fe6ff574fb40991d7060865ea08887df9
+ms.sourcegitcommit: c8cfe5fb933cf9056b971d3e524f3c9ebc910215
+ms.openlocfilehash: b494d5abfdd4045776b408cbb8ec99ee3905cf72
 
 
 ---
@@ -37,9 +37,9 @@ Die Kommunikation zwischen zwei Unternehmen (Business-to-Business, B2B)muss mitu
 * Verschlüsseln des Inhalts von Nachrichten
 * Digitales Signieren von Nachrichten  
 
-## <a name="how-do-you-upload-certificates"></a>Hochladen von Zertifikaten
-### <a name="public-certificates"></a>Öffentliche Zertifikate
-Um ein *öffentliches Zertifikat* in Ihren Logik-Apps mit B2B-Funktionen zu verwenden, müssen Sie das Zertifikat zuerst in Ihr Integrationskonto hochladen. Um ein *selbstsigniertes Zertifikat*verwenden, müssen Sie es zuerst in [Azure Key Vault](../key-vault/key-vault-get-started.md "Informationen zu Key Vault")hochladen.
+## <a name="upload-a-public-certificate"></a>Hochladen eines öffentlichen Zertifikats
+
+Um ein *öffentliches Zertifikat* in Ihren Logik-Apps mit B2B-Funktionen zu verwenden, müssen Sie das Zertifikat zuerst in Ihr Integrationskonto hochladen.  
 
 Hochgeladene Zertifikate stehen zum Sichern Ihrer B2B-Nachrichten zur Verfügung, wenn Sie deren Eigenschaften in von Ihnen erstellten [Vereinbarungen](logic-apps-enterprise-integration-agreements.md) definieren.  
 
@@ -61,8 +61,9 @@ Hier finden Sie die einzelnen Schritte, mit denen Sie Ihre öffentlichen Zertifi
 9. Wählen Sie die Kachel **Zertifikate** aus. Das neu hinzugefügte Zertifikat wird angezeigt.  
 ![Neues Zertifikat anzeigen](media/logic-apps-enterprise-integration-certificates/certificate-4.png)  
 
-### <a name="private-certificates"></a>Private Zertifikate
-Sie können private Zertifikate in Ihr Integrationskonto hochladen, indem Sie die folgenden Schritte ausführen:  
+## <a name="upload-a-private-certificate"></a>Hochladen eines privaten Zertifikats
+
+Um ein *privates Zertifikat* in Ihren Logik-Apps mit B2B-Funktionen zu verwenden, können Sie ein privates Zertifikat in Ihr Integrationskonto hochladen, indem Sie die folgenden Schritte ausführen.
 
 1. [Laden Sie Ihren privaten Schlüssel in Key Vault hoch](../key-vault/key-vault-get-started.md "Informationen zu Key Vault"), und geben Sie einen Schlüsselnamen** **an. 
    
@@ -100,6 +101,6 @@ Hier finden Sie die einzelnen Schritte, mit denen Sie Ihre privaten Zertifikate 
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO1-->
 
 

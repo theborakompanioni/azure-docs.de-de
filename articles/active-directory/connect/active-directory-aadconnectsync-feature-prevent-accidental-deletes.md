@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/04/2017
+ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: aa20b20c86763791eb579883b5273ea79cc714b5
-ms.openlocfilehash: 449cfa39e17a3b753cf3e267aed2d6a439fc5f36
+ms.sourcegitcommit: 2048c2786cbe7e237f7a72f5a73a4b135ed60088
+ms.openlocfilehash: cf4ee6d18d5ab3b0f53ec5e8ab80d6e91864a103
 
 
 ---
@@ -25,6 +25,7 @@ In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen
 
 Bei der Installation von Azure AD Connect wird die Funktion zum Schutz vor unbeabsichtigtem Löschen standardmäßig aktiviert und so konfiguriert, das Exporte mit mehr als 500 Löschungen unterbunden werden. Diese Funktion dient zum Schutz vor unbeabsichtigten Konfigurationsänderungen und Änderungen an Ihrem lokalen Verzeichnis, die sich auf viele Benutzer und andere Objekte auswirken würden.
 
+## <a name="what-is-prevent-accidental-deletes"></a>Verhindern von versehentlichen Löschungen
 Häufige Szenarios für Löschvorgänge sind beispielsweise:
 
 * Änderungen an der [Filterung](active-directory-aadconnectsync-configure-filtering.md), bei denen die Auswahl einer gesamten [Organisationseinheit](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) oder [Domäne](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) aufgehoben wird.
@@ -38,7 +39,7 @@ Wenn zu viele Löschungen in Azure AD exportiert werden sollen, wird der Export 
 ![E-Mail zum Verhindern von versehentlichen Löschungen](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
 > *Hallo (Ansprechpartner für Technik), am (Datum und Uhrzeit) hat der Dienst für die Identitätssynchronisierung festgestellt, dass die Anzahl von Löschvorgängen den für (Name der Organisation) konfigurierten Schwellenwert überschritten hat. Es wurden insgesamt (Anzahl) Objekte bei dieser Ausführung der Identitätssynchronisierung zum Löschen gesendet. Dies entspricht dem konfigurierten Schwellenwert für Löschungen von (Anzahl) Objekten bzw. überschreitet ihn. Sie müssen vor dem Fortfahren bestätigen, dass diese Löschvorgänge durchgeführt werden sollen. Weitere Informationen zu dem in dieser E-Mail-Nachricht genannten Fehler finden Sie unter „Verhindern von zufälligem Löschen“.*
-> 
+>
 > 
 
 Sie können den Status `stopped-deletion-threshold-exceeded` auch auf der **Synchronization Service Manager** -Benutzeroberfläche für das Exportprofil sehen.
@@ -69,7 +70,6 @@ Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 
 
 
-
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO1-->
 
 

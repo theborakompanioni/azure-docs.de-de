@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 02/10/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 45358e89561ef2265ca5d8ae522b823c4629b3fc
-ms.openlocfilehash: f869e456ef40d04f7dd085d4ce7c3d654cdf2091
+ms.sourcegitcommit: 28846f2effd26c5b7ca7a79fba52d8ba1cb4ea91
+ms.openlocfilehash: 9abf35aebceb4a109becba6e97e0a506fc4375d7
 
 
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator-App – häufig gestellte Fragen
+
+In diesem Artikel werden häufig gestellte Fragen beantwortet, die wir zur Microsoft Authenticator-App erhalten. Wenn Sie keine Antwort auf Ihre Frage finden, wechseln Sie zum [Forum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Wir bieten auch ein weiteres FAQ zu einem bestimmten Feature der App an, das [FAQ zur Anmeldung über das Telefon](microsoft-authenticator-app-phone-signin-faq.md).
+
 Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die empfohlene App, wenn Sie Azure Multi-Factor Authentication verwenden. Diese App ist für Windows Phone, Android und iOS verfügbar.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
@@ -40,7 +43,7 @@ Wenn Sie Microsoft Authenticator für Ihr Geschäfts- oder Schulkonto verwenden,
 Nein, Pushbenachrichtigungen funktionieren nur mit Microsoft-Konten und Azure Active Directory-Konten. Wenn Ihre Organisation oder Schule Azure AD-Konten verwendet, kann sie diese Funktion deaktivieren.  
 
 ### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>Ich habe mein Gerät aus einer Sicherung wiederhergestellt, doch meine Kontocodes fehlen oder funktionieren nicht. Was ist passiert?
-Aus Sicherheitsgründen werden keine Konten aus App-Sicherungen wiederhergestellt. Wenn Sie die iOS-App aus einer Sicherung wiederherstellen, werden Ihre Konten zwar weiterhin angezeigt, ohne allerdings Anmeldeüberprüfungen zu empfangen oder Sicherheitscodes zu generieren. Nach der Wiederherstellung der App müssen Sie Ihre Konten löschen und dann erneut hinzufügen.
+Aus Sicherheitsgründen werden keine Konten aus App-Sicherungen wiederhergestellt.  Nach der Wiederherstellung der App müssen Sie Ihre Konten löschen und dann erneut hinzufügen.
 
 ### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>Ich habe ein neues Gerät. Wie kann ich Microsoft Authenticator von meinem alten Gerät entfernen, und zum neuen Gerät wechseln?
 Das Installieren der Microsoft Authenticator-App auf einem neuen Gerät entfernt die App nicht automatisch von anderen Geräten. Wenn Sie verwalten möchten, welche Geräte für Ihr Konto konfiguriert werden, besuchen Sie die gleiche Website, mit der Sie die Überprüfung in zwei Schritten verwalten, und wählen Sie aus, alte Apps zu entfernen.
@@ -52,10 +55,10 @@ Bei persönlichen Microsoft-Konten ist dies die Website [Kontosicherheit](https:
 * Windows Phone: Wählen Sie im Hauptbildschirm die Menütaste und anschließend **Konten bearbeiten** aus. Tippen Sie auf das **X** neben dem Kontonamen.
 * Android: Wählen Sie im Hauptbildschirm die Menütaste und anschließend **Konten bearbeiten** aus. Tippen Sie auf das **X** neben dem Kontonamen.
 
-Wenn Sie ein Android-Gerät besitzen, das bei Ihrer Organisation registriert ist, müssen Sie möglicherweise einen weiteren Schritt befolgen, um Ihr Konto zu entfernen. Auf diesen Geräten wird die Microsoft Authenticator-App automatisch als Geräteadministrator registriert. Wenn Sie die App vollständig deinstallieren möchten, müssen Sie die Registrierung der App zuerst in den App-Einstellungen aufheben.
+Wenn Sie ein Gerät besitzen, das bei Ihrer Organisation registriert ist, müssen Sie möglicherweise einen weiteren Schritt befolgen, um Ihr Konto zu entfernen. Auf diesen Geräten wird die Microsoft Authenticator-App automatisch als Geräteadministrator registriert. Wenn Sie die App vollständig deinstallieren möchten, müssen Sie die Registrierung der App zuerst in den App-Einstellungen aufheben.
 
 ### <a name="why-does-the-app-request-so-many-permissions"></a>Warum fordert die App so viele Berechtigungen an?
-Hier finden Sie eine vollständige Liste der Berechtigungen, die wir erfragen, und wie diese in der App verwendet werden:
+Hier finden Sie eine vollständige Liste der Berechtigungen, die möglicherweise erforderlich sind, und Hinweise zu deren Verwendung in der App. Die jeweils angezeigten Berechtigungen hängen vom Typ des Telefons ab.
 
 * **Kamera**: Wir verwenden Ihre Kamera, um QR-Codes zu scannen, wenn Sie ein Geschäfts-, Schulkonto oder ein nicht-Microsoft-Konto hinzufügen.
 * **Kontakte und Telefon**: Wenn Sie sich mit Ihrem persönlichen Microsoft-Konto anmelden, versuchen wir, den Vorgang zu vereinfachen, indem wir bereits vorhandene Konten suchen, die Sie auf Ihrem Telefon verwenden.
@@ -77,16 +80,17 @@ Dies ist beabsichtigt. Bei der Überprüfung in zwei Schritten werden zwei Dinge
 ## <a name="next-steps"></a>Nächste Schritte
 
 ### <a name="contact-us"></a>Kontakt
-Falls Ihre Frage hier nicht beantwortet wurde, lassen Sie es uns wissen. Posten Sie Ihre Frage im [Forum der Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), um Hilfe aus der Community zu erhalten, hinterlassen Sie einen Kommentar auf dieser Seite, oder [wenden Sie sich an den Support](https://support.microsoft.com/contactus), und wir werden uns schnellstmöglich mit Ihrem Problem beschäftigen.
+Falls Ihre Frage hier nicht beantwortet wurde, lassen Sie es uns wissen. Posten Sie Ihre Frage im [Forum der Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), um Hilfe aus der Community zu erhalten, oder hinterlassen Sie einen Kommentar auf dieser Seite.
 
 
 ### <a name="related-topics"></a>Verwandte Themen
 * [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) für Microsoft-Konten
 * [Probleme beim Einrichten der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md) für Ihr Geschäfts-, Schul- oder Unikonto?
+* [Verwenden von Microsoft Authenticator für die Anmeldung über Ihr Telefon](microsoft-authenticator-app-phone-signin-faq.md)
 
 
 
 
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

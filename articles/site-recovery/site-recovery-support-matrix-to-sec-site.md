@@ -1,5 +1,5 @@
 ---
-title: "Azure Site Recovery-Supportmatrix zum Replizieren am sekundären Standort | Microsoft-Dokumentation"
+title: "Unterstützungsmatrix für die Replikation an einen sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation"
 description: "Enthält eine Zusammenfassung der unterstützten Betriebssysteme und Komponenten für Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
@@ -12,67 +12,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 01/24/2017
+ms.date: 02/08/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e858a70f2ce173eb6b99cbe7a130abb5fdc265e1
-ms.openlocfilehash: 0a2c3bec5fc6fb44b4baddc393d6f9387bbb5b94
+ms.sourcegitcommit: 2541236d84100ed7889d06f9b0580fcbc55ecfdb
+ms.openlocfilehash: f9443b633601272c79739c92995d53ba1a7d2b4e
 
 
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-to-customer-owned-secondary-site"></a>Azure Site Recovery-Unterstützungsmatrix zum Replizieren am sekundären Standort im Besitz des Kunden
+# <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Unterstützungsmatrix für die Replikation an einen sekundären Standort mit Azure Site Recovery
 
 > [!div class="op_single_selector"]
 > * [Replizieren in Azure](site-recovery-support-matrix-to-azure.md)
-> * [Replizieren am sekundären Standort im Besitz des Kunden](site-recovery-support-matrix-to-sec-site.md)
+> * [Replizieren an einen lokalen Speicherort](site-recovery-support-matrix-to-sec-site.md)
 
-Eine Liste der Voraussetzungen für Azure Site Recovery finden Sie [hier](site-recovery-best-practices.md). Im folgenden Artikel werden die unterstützten Konfigurationen und Komponenten für Azure Site Recovery beim Replizieren und Wiederherstellen am sekundären Standort im Besitz des Kunden zusammengefasst.
+Dieser Artikel beschreibt, was unterstützt wird, wenn Sie Azure Site Recovery für die Replikation an einen sekundären lokalen Standort verwenden.
 
-## <a name="support-for-deployment-options"></a>Unterstützung für Bereitstellungsoptionen
+## <a name="deployment-options"></a>Bereitstellungsoptionen
 
 **Bereitstellung** | **VMware-/physische Server** | **Hyper-V (keine VMM)** | **Hyper-V (mit VMM)**
 --- | --- | --- | ---
-**Azure-Portal** | Lokale virtuelle VMware-Computer zu sekundärem VMware-Standort.<br/><br/> Hilfehandbuch herunterladen](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) InMage Scout-Benutzerhandbuch. Nicht im Azure-Portal verfügbar. | Nicht unterstützt | Lokale virtuelle Hyper-V-Computer in VMM-Clouds zu einer sekundären VMM-Cloud<br/><br/> Nur Hyper-V-Standardreplikation, keine SAN-Unterstützung
-**Klassisches Portal** | Nur im Wartungsmodus. Neue Tresore können nicht erstellt werden. | Nicht unterstützt | Nur im Wartungsmodus.
-**PowerShell** | Nicht unterstützt. | Nicht unterstützt | Unterstützt
+**Azure-Portal** | Lokale virtuelle VMware-Computer zu sekundärem VMware-Standort.<br/><br/> Laden Sie das [InMage Scout-Benutzerhandbuch](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) herunter (das nicht im Azure-Portal verfügbar ist). | Nicht unterstützt | Lokale virtuelle Hyper-V-Computer in VMM-Clouds in eine sekundäre VMM-Cloud.<br/><br/> Nur standardmäßige Hyper-V-Replikation. SAN nicht unterstützt.
+**Klassisches Portal** | Nur im Wartungsmodus. Neue Tresore können nicht erstellt werden. | Nicht unterstützt | Nur im Wartungsmodus
+**PowerShell** | Nicht unterstützt | Nicht unterstützt | Unterstützt
 
+## <a name="on-premises-servers"></a>Lokale Server
 
-
-## <a name="support-for-datacenter-management-servers"></a>Unterstützung für Datencenter-Verwaltungsserver
-
-### <a name="virtualization-management-entities"></a>Virtualisierungsverwaltungsentitäten
+### <a name="virtualization-servers"></a>Virtualisierungsserver
 
 **Bereitstellung** | **Unterstützung**
 --- | ---
 **VMware-VM/physische Server** | vSphere 6.0, 5.5 oder 5.1 mit aktuellem Update
-**Hyper-V (mit VMM)** | SCVMM 2016 und SCVMM 2012 R2
+**Hyper-V (mit VMM)** | VMM 2016 und VMM 2012 R2
 
   >[!Note]
-  > Eine SCVMM 2016-Cloud mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts wird derzeit nicht unterstützt.
+  > VMM 2016-Clouds mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts werden derzeit nicht unterstützt.
 
 ### <a name="host-servers"></a>Hostserver
 
 **Bereitstellung** | **Unterstützung**
 --- | ---
 **VMware-VM/physische Server** | vCenter 5.5 oder 6.0 (Unterstützung nur für 5.5-Features) 
-**Hyper-V (keine VMM)** | Keine unterstützte Konfiguration zum Replizieren am sekundären Standort
-**Hyper-V mit VMM** | Windows Server 2016, Windows Server 2012 R2 mit aktuellen Updates<br/><br/> Windows Server 2016-Hosts müssen mit SCVMM 2016 verwaltet werden.
+**Hyper-V (keine VMM)** | Keine unterstützte Konfiguration zum Replizieren an einen sekundären Standort
+**Hyper-V mit VMM** | Windows Server 2016 und Windows Server 2012 R2 mit den neuesten Updates.<br/><br/> Windows Server 2016-Hosts müssen mit VMM 2016 verwaltet werden.
 
-## <a name="support-for-replicated-machine-machine-os-versions"></a>Unterstützung für replizierte Computer-Betriebssystemversionen
-Die folgende Tabelle fasst die Unterstützung von Betriebssystemen in verschiedenen Bereitstellungsszenarien bei der Verwendung von Azure Site Recovery zusammen. Diese Unterstützung gilt für **alle Workloads** auf dem zuvor erwähnten Betriebssystem.
+## <a name="support-for-replicated-machine-os-versions"></a>Unterstützung für replizierte Computer-Betriebssystemversionen
+Die folgende Tabelle fasst die Unterstützung von Betriebssystemen in verschiedenen Bereitstellungsszenarien bei Verwendung von Azure Site Recovery zusammen. Diese Unterstützung gilt für alle Workloads unter dem zuvor erwähnten Betriebssystem.
 
 **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-64-Bit-Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux 6.7, 7.1, 7.2 <br/><br/> CentOS 6.5, 6.6, 6.7, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/> SUSE Linux Enterprise Server 11 SP3 | Alle [von Hyper-V unterstützten](https://technet.microsoft.com/library/mt126277.aspx)
+64-Bit-Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux 6.7, 7.1, 7.2 <br/><br/> CentOS 6.5, 6.6, 6.7, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6.4 oder 6.5, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/> SUSE Linux Enterprise Server 11 SP3 | Alle [von Hyper-V unterstützten](https://technet.microsoft.com/library/mt126277.aspx) Gastbetriebssysteme
 
 >[!Note]
->**Speicherunterstützung für Linux-Versionen** Dateisystem (EXT3, ETX4, ReiserFS, XFS) Multipfad-Software-Gerätemapper (Multipfad) Volume-Manager: (LVM2) Physische Server mit HP CCISS-Controller-Speicher werden **nicht** unterstützt.
+>Nur Linux-Computer mit folgendem Speicher können repliziert werden: Dateisystem (EXT3, ETX4, ReiserFS, XFS), Multipath-Softwaregeräte-Mapper, Volume-Manager (LVM2).
+>Physische Server mit HP CCISS-Controllerspeicher werden nicht unterstützt.
 >Das ReiserFS-Dateisystem wird nur unter SUSE Linux Enterprise Server 11 SP3 unterstützt.
 
-## <a name="support-for-network"></a>Unterstützung für Netzwerke
-Die folgenden Tabellen fassen die Unterstützung der Netzwerkkonfiguration in verschiedenen Bereitstellungsszenarien bei der Verwendung von Azure Site Recovery zur Replikation in Azure zusammen.
+## <a name="network-configuration"></a>Network Configuration
 
-### <a name="host-network-configuration"></a>Konfiguration von Hostnetzwerken
+### <a name="hosts"></a>Host
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
@@ -81,7 +79,7 @@ VLAN | Ja | Ja
 IPv4 | Ja | Ja
 IPv6 | Nein | Nein
 
-### <a name="guest-vm-network-configuration"></a>Konfiguration von Gast-VM-Netzwerken
+### <a name="guest-vms"></a>Gast-VMs
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
@@ -93,58 +91,58 @@ Statische IP-Adresse (Linux) | Ja | Ja
 Multi-NIC | Ja | Ja
 
 
-## <a name="support-for-storage"></a>Speicherunterstützung
-Die folgenden Tabellen fassen die Unterstützung der Speicherkonfiguration in verschiedenen Bereitstellungsszenarien bei der Verwendung von Azure Site Recovery zur Replikation in Azure zusammen.
+## <a name="storage"></a>Speicher
 
-### <a name="host-storage-configuration"></a>Konfiguration von Hostspeichern
+### <a name="host-storage"></a>Hostspeicher
 
 **Speicher (Host)** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-NFS | Ja | NA
-SMB 3.0 | NA | Ja
+NFS | Ja | –
+SMB 3.0 | – | Ja
 SAN (ISCSI) | Ja | Ja
 Multipfad (MPIO) | Ja | Ja
 
-### <a name="guest-physical-server-storage-configuration"></a>Konfiguration des Gastserverspeichers/physischen Serverspeichers
+### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-VMDK | Ja | NA
-VHD/VHDX | NA | Ja (bis zu 16 Datenträger)
-Gen 2-VM | NA | Ja
+VMDK | Ja | –
+VHD/VHDX | N/V | Ja (bis zu 16 Datenträger)
+Gen 2-VM | N/V | Ja
 Freigegebener Clusterdatenträger | Ja  | Nein
 Verschlüsselter Datenträger | Nein | Nein
-UEFI| Nein | NA
+UEFI| Nein | –
 NFS | Nein | Nein
 SMB 3.0 | Nein | Nein
-RDM | Ja | NA
+RDM | Ja | N/V
 Datenträger > 1 TB | Nein | Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja | Ja
 Speicherplätze | Nein | Ja
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein
 Ausschließen von Datenträgern | Nein | Nein
-Multipfad (MPIO) | NA | Ja
+Multipfad (MPIO) | N/V | Ja
 
-## <a name="support-for-recovery-services-vault-actions"></a>Support für Recovery Services-Tresoraktionen
+## <a name="vaults"></a>Tresore
 
 **Aktion** | **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | --- | ---
-Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein | Nein
-Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein | Nein
+Verschieben von Tresoren zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein | Nein
+Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein | Nein
 
-## <a name="support-for-provider-and-agent"></a>Unterstützung für Anbieter und Agent
+## <a name="provider-and-agent"></a>Anbieter und Agent
 
 **Name** | **Beschreibung** | **Aktuelle Version** | **Details**
 --- | --- | --- | --- | ---
-**Azure Site Recovery-Anbieter** | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Installiert auf lokalen VMM-Servern oder auf Hyper-V-Servern, falls kein VMM-Server vorhanden ist | 5.1.19 ([verfügbar über das Portal](http://aka.ms/downloaddra)) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
-**Mobilitätsdienst** | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und dem sekundären Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten  | NV (verfügbar über das Portal) | NA
+**Azure Site Recovery-Anbieter** | Koordiniert die Kommunikation zwischen lokalen Servern und Azure <br/><br/> Installiert auf lokalen VMM-Servern oder auf Hyper-V-Servern, falls kein VMM-Server vorhanden ist | 5.1.19 ([über das Portal verfügbar](http://aka.ms/downloaddra)) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
+**Mobilitätsdienst** | Koordiniert die Replikation zwischen lokalen VMware-Servern oder physischen Servern und dem sekundärem Standort<br/><br/> Wird auf einer VMware-VM oder physischen Servern installiert, die Sie replizieren möchten  | Nicht verfügbar (über das Portal verfügbar) | N/V
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Vorbereiten der Bereitstellung](site-recovery-best-practices.md)
+
+Erfahren Sie mehr über die [Voraussetzungen für die Bereitstellung](site-recovery-prereq.md).
 
 
 
-<!--HONumber=Jan17_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

@@ -23,7 +23,7 @@ ms.openlocfilehash: d1ab1ab2132d12bf06dbe2504b7d7111ef2ae851
 ---
 # <a name="how-app-service-works"></a>So funktioniert App Service
 Azure App Service ist ein Clouddienst, der entwickelt wurde, um die praktischen Probleme zu lösen, mit denen Entwickler heutzutage konfrontiert werden.
-App Service zielt darauf ab, einzigartige Entwicklerproduktivität bereitzustellen, ohne Abstriche bei dem Bedürfnis machen zu müssen, die Anwendungen auf Cloudniveau bereitzustellen.
+App Service zielt darauf ab, einzigartige Entwicklerproduktivität bereitzustellen, ohne Abstriche bei dem Bedürfnis machen zu müssen, die Anwendungen auf Cloudniveau bereitzustellen. 
 
 App Service bietet auch Funktionen und Frameworks zum Erstellen von Branchenanwendungen. Gleichzeitig werden Entwickler durch die mögliche Verwendung der beliebtesten Entwicklungssprachen (Microsoft .NET, Java, PHP, Node.js und Python) unterstützt.
 App Service ermöglicht Entwicklern Folgendes:

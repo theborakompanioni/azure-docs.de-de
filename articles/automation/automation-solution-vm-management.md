@@ -4,7 +4,7 @@ description: "Mit den Lösungen für die VM-Verwaltung werden Ihre virtuellen Az
 services: automation
 documentationCenter: 
 authors: mgoedtel
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2016
+ms.date: 02/14/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: adb787b4ff1b4164bcf7ac08e7b6a227acfce423
-ms.openlocfilehash: 1f29554cce2ba5fe7b02c546c705cce3d9e13019
+ms.sourcegitcommit: 5ae60cb8ba3d391d3babd1ab575b4f32e139a185
+ms.openlocfilehash: f2c9a5ef2a8f517b9b2072be57f4d8c51b7694c6
 
 ---
 
 # <a name="startstop-vms-during-off-hours-preview-solution-in-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] in Automation
 
-Mit der Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] können Sie Ihre Azure Resource Manager-VMs und ihre klassichen virtuellen Computer nach einem benutzerdefinierten Zeitplan starten und beenden. Außerdem können Sie die erfolgreiche Ausführung der Automation-Aufträge, mit denen die virtuellen Computer gestartet und beendet werden, mit OMS Log Analytics verfolgen.  
+Mit der Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit [Vorschau] können Sie Ihre Azure Resource Manager-VMs nach einem benutzerdefinierten Zeitplan starten und beenden. Außerdem können Sie die erfolgreiche Ausführung der Automation-Aufträge, mit denen die virtuellen Computer gestartet und beendet werden, mit OMS Log Analytics verfolgen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -79,8 +79,8 @@ StopByResourceGroup-TargetSubscriptionID-MS-Mgmt-VM | Gibt das Abonnement an, un
 
 Schedule | Beschreibung|
 ---------|------------|
-StartByResourceGroup-Schedule-MS-Mgmt | Zeitplan für das Runbook „StartByResourceGroup“, mit dem das Starten von VMs durchgeführt wird, die von dieser Lösung verwaltet werden.|
-StopByResourceGroup-Schedule-MS-Mgmt | Zeitplan für das Runbook „StopByResourceGroup“, mit dem das Herunterfahren von VMs durchgeführt wird, die von dieser Lösung verwaltet werden.|
+StartByResourceGroup-Schedule-MS-Mgmt | Zeitplan für das Runbook „StartByResourceGroup“, mit dem das Starten von VMs durchgeführt wird, die von dieser Lösung verwaltet werden. Nach der Erstellung wird standardmäßig die UTC-Zeitzone verwendet.|
+StopByResourceGroup-Schedule-MS-Mgmt | Zeitplan für das Runbook „StopByResourceGroup“, mit dem das Herunterfahren von VMs durchgeführt wird, die von dieser Lösung verwaltet werden. Nach der Erstellung wird standardmäßig die UTC-Zeitzone verwendet.|
 
 ### <a name="credentials"></a>Anmeldeinformationen
 
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
 
 8. Wählen Sie auf dem Blatt **Lösung hinzufügen** die Option **Konfiguration**. Das Blatt **Parameter** wird angezeigt.  Auf dem Blatt **Parameter** werden Sie zur Ausführung der folgenden Schritte aufgefordert:  
    - Geben Sie die **Zielressourcengruppennamen** an. Dies sind Ressourcengruppennamen, die mit dieser Lösung verwaltete VMs enthalten.  Sie können mehr als einen Namen eingeben, wenn Sie ein Semikolon als Trennzeichen verwenden (Groß-/Kleinschreibung wird berücksichtigt).  Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten.
-   - Wählen Sie einen **Zeitplan** mit einem wiederkehrenden Datum und einer Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen.  
+   - Wählen Sie einen **Zeitplan** mit einem wiederkehrenden Datum und einer Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen.  Standardmäßig wird der Zeitplan für die UTC-Zeitzone konfiguriert, und die Auswahl einer anderen Region ist nicht möglich.  Wenn Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, finden Sie weitere Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modifying-the-startup-and-shutdown-schedule).    
 
 10. Wählen Sie **Erstellen**, nachdem Sie die Konfiguration der erforderlichen Anfangseinstellungen für die Lösung abgeschlossen haben.  Alle Einstellungen werden überprüft, und anschließend wird versucht, die Lösung unter Ihrem Abonnement bereitzustellen.  Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. 
 
@@ -159,7 +159,7 @@ Führen Sie die folgenden Schritte aus, um die oben beschriebenen Variablen zu k
 
 ### <a name="modifying-the-startup-and-shutdown-schedule"></a>Ändern des Zeitplans für das Starten und Herunterfahren
 
-Bei der Verwaltung des Zeitplans für das Starten und Herunterfahren werden bei dieser Lösung die gleichen Schritte ausgeführt, die unter [Planen eines Runbooks in Azure Automation](automation-scheduling-a-runbook.md) beschrieben werden.  Beachten Sie, dass Sie die Zeitplankonfiguration nicht ändern können.  Sie müssen den vorhandenen Zeitplan deaktivieren und dann einen neuen erstellen und eine Verknüpfung mit dem Runbook **StartByResourceGroup-MS-Mgmt-VM** oder **StopByResourceGroup-MS-Mgmt-VM** einrichten, für das der Zeitplan gelten soll.   
+Bei der Verwaltung des Zeitplans für das Starten und Herunterfahren werden bei dieser Lösung die gleichen Schritte ausgeführt, die unter [Planen eines Runbooks in Azure Automation](automation-schedules.md) beschrieben werden.  Beachten Sie, dass Sie die Zeitplankonfiguration nicht ändern können.  Sie müssen den vorhandenen Zeitplan deaktivieren und dann einen neuen erstellen und eine Verknüpfung mit dem Runbook **StartByResourceGroup-MS-Mgmt-VM** oder **StopByResourceGroup-MS-Mgmt-VM** einrichten, für das der Zeitplan gelten soll.   
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 
@@ -247,6 +247,6 @@ Das Automation-Konto und der OMS-Arbeitsbereich werden im Rahmen dieses Vorgangs
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO3-->
 
 

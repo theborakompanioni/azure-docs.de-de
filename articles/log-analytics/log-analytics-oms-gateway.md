@@ -12,11 +12,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/10/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: a3d79c2df96c21d1af77c8ea1f53a2cc4e28343e
-ms.openlocfilehash: 30b1a9144e06db92ba12030dfe37a83e79d62857
+ms.sourcegitcommit: 6f9974c109905f432705b85dcc8fc4d3549f16e9
+ms.openlocfilehash: 445bc1259cb3fa6f02fa1cadec11b1ac4b186e78
 
 
 ---
@@ -72,9 +72,9 @@ Die Setupdatei für das OMS-Gateway kann auf drei Arten bezogen werden:
 
 ### <a name="oms-portal"></a>OMS-Portal
 
-1.  Melden Sie sich bei Ihrem OMS-Arbeitsbereich an.
-2.  Wählen Sie **Einstellungen** > **Verbundene Quellen** > **Windows-Server** aus.
-3.  Klicken Sie auf **Download OMS Gateway** (OMS-Gateway herunterladen).
+1.    Melden Sie sich bei Ihrem OMS-Arbeitsbereich an.
+2.    Wählen Sie **Einstellungen** > **Verbundene Quellen** > **Windows-Server** aus.
+3.    Klicken Sie auf **Download OMS Gateway** (OMS-Gateway herunterladen).
 
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -100,11 +100,11 @@ Voraussetzungen: .Net Framework 4.5, Windows Server 2012 R2 SP1 und höher
 4. Auf der Port- und Proxy-Adressseite:
    1. Geben Sie die für das Gateway zu verwendende TCP-Portnummer ein. Setup öffnet diese Portnummer über die Windows-Firewall. Der Standardwert ist 8080.
       Der gültige Bereich der Portnummer ist 1 bis 65535. Wenn die Eingabe außerhalb dieses Bereichs liegt, wird eine Fehlermeldung angezeigt.
-   2. Falls der Server, auf dem das Gateway installiert ist, einen Proxy verwenden muss, geben Sie die Proxyadresse ein, an der das Gateway eine Verbindung herstellen muss. Beispiel `http://myorgname.corp.contoso.com:80`. Wenn leer,versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen. Andernfalls stellt das Gateway eine Verbindung mit dem Proxy her. Wenn der Proxyserver eine Authentifizierung erfordert, geben Sie den Benutzernamen und das Kennwort ein.
+   2. Falls der Server, auf dem das Gateway installiert ist, einen Proxy verwenden muss, geben Sie die Proxyadresse ein, an der das Gateway eine Verbindung herstellen muss. Beispiel `http://myorgname.corp.contoso.com:80`. Wenn leer,versucht das Gateway, eine direkte Verbindung mit dem Internet herzustellen. Andernfalls stellt das Gateway eine Verbindung mit dem Proxy her. Wenn der Proxyserver eine Authentifizierung erfordert, geben Sie den Benutzernamen und das Kennwort ein.  
        ![Gateway-Assistent-Proxykonfiguration](./media/log-analytics-oms-gateway/gateway-wizard02.png)  
    3. Klicken Sie auf **Weiter**
 5. Wenn Sie Microsoft-Updates nicht aktiviert haben, wird die Seite „Microsoft-Update“ angezeigt, auf der Sie angeben können, dass Microsoft-Updates aktiviert werden sollen. Treffen Sie eine Auswahl, und klicken Sie dann auf **Weiter**. Fahren Sie andernfalls mit dem nächsten Schritt fort.
-6. Übernehmen Sie auf der Seite „Zielordner“ den Standardordner **%ProgramFiles%\OMS Gateway**, oder geben Sie den Speicherort zum Installieren des Gateways ein, und klicken Sie dann auf **Weiter**.
+6. Übernehmen Sie auf der Seite „Zielordner“ den Standardordner „c:\ProgramFiles\OMS Gateway“, oder geben Sie den Speicherort zum Installieren des Gateways ein, und klicken Sie dann auf **Weiter**.
 7. Klicken Sie auf der Seite „Bereit zur Installation“ auf **Installieren**. Möglicherweise wird eine Benutzerkontensteuerung angezeigt, die die Berechtigung zum Installieren anfordert. Ist dies der Fall, klicken Sie auf **Ja**.
 8. Nachdem Setup abgeschlossen ist, klicken Sie auf **Fertig stellen**. Sie können überprüfen, ob der Dienst ausgeführt wird, indem Sie das Snap-In services.msc öffnen und überprüfen, ob **OMS-Gateway** in der Liste der Dienste angezeigt wird.  
     ![Dienste – OMS-Gateway](./media/log-analytics-oms-gateway/gateway-service.png)
@@ -250,7 +250,7 @@ Die folgende Tabelle enthält die Ereignis-IDs und Beschreibungen für OMS Gatew
 | 103 |HTTP CONNECT-Befehl vom Client empfangen |
 | 104 |Kein HTTP CONNECT-Befehl |
 | 105 |Zielserver ist nicht in der Liste zulässiger Elemente enthalten, oder der Zielport ist kein sicherer Port (443) <br> <br> Stellen Sie sicher, dass der MMA-Agent auf dem Gatewayserver und die Agents, die mit dem Gateway kommunizieren, mit dem gleichen Log Analytics-Arbeitsbereich verbunden sind. |
-| 105 |FEHLER TcpConnection – Ungültiges Clientzertifikat: CN=Gateway <br><br> Stellen Sie Folgendes sicher: <br>    <br> &#149; Sie verwenden ein Gateway mit der Versionsnummer 1.0.395.0 oder höher. <br> &#149; Der MMA-Agent auf dem Gatewayserver und die Agents, die mit dem Gateway kommunizieren, sind mit dem gleichen Log Analytics-Arbeitsbereich verbunden. |
+| 105 |FEHLER TcpConnection – Ungültiges Clientzertifikat: CN=Gateway <br><br> Stellen Sie Folgendes sicher: <br>    <br> & #149; Sie verwenden ein Gateway mit der Versionsnummer 1.0.395.0 oder höher. <br> &#149; Der MMA-Agent auf dem Gatewayserver und die Agents, die mit dem Gateway kommunizieren, sind mit dem gleichen Log Analytics-Arbeitsbereich verbunden. |
 | 106 |Beliebiger Grund dafür, dass die TLS-Sitzung verdächtig ist und abgelehnt wird |
 | 107 |Die TLS-Sitzung wurde überprüft |
 
@@ -280,6 +280,6 @@ Sie können auch Feedback zur OMS oder Log Analytics im [Microsoft Azure-Feedbac
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

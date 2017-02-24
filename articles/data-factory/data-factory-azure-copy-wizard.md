@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/08/2017
 ms.author: spelluru
 translationtype: Human Translation
-ms.sourcegitcommit: 619fec5dc02b026ae2cbb5eba18609fd020a551b
-ms.openlocfilehash: d51d9416ef56e119bc765e536a09206fb36c55fe
+ms.sourcegitcommit: 445dd0dcd05aa25cc531e2d10cc32ad8f32a6e8c
+ms.openlocfilehash: def038842dc3c1037d5dd11ffef6a9e2de3cf09f
 
 
 ---
@@ -44,6 +44,10 @@ Sie können eine Vorschau für einen Teil der Daten aus der ausgewählten Datenq
 
 ## <a name="schema-capture-and-mapping"></a>Schemaerfassung und -zuordnung
 Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgabedaten überein. In diesem Szenario müssen die Spalten des Quellschemas den Spalten des Zielschemas zugeordnet werden.
+
+> [!TIP]
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure SQL Data Warehouse unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+>
 
 Verwenden Sie eine Dropdownliste, um eine Spalte aus dem Quellschema auszuwählen, die einer Spalte im Zielschema zugeordnet werden soll. Der Kopier-Assistent versucht, das Muster für die Spaltenzuordnung zu verstehen. Er wendet das gleiche Muster auf die restlichen Spalten an, damit Sie nicht jede Spalte einzeln auswählen müssen, um die Schemazuordnung abzuschließen. Falls gewünscht, können Sie diese Zuordnungen überschreiben, indem Sie mithilfe der Dropdownlisten die Spalten einzeln zuordnen. Das Muster wird genauer, wenn Sie mehr Spalten zugeordnet haben. Der Kopier-Assistent aktualisiert das Muster ständig und erreicht letztlich das richtige Muster für die Spaltenzuordnung, die Sie erreichen möchten.     
 
@@ -87,6 +91,6 @@ Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mit einer K
 
 
 
-<!--HONumber=Nov16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 
