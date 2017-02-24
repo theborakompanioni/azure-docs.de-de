@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Azure Logic Apps in Visual Studio | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie in Visual Studio ein Projekt erstellen, um die Logik-App erstellen und bereitstellen zu können."
+title: Erstellen und Bereitstellen von Azure-Logik-Apps in Visual Studio | Microsoft-Dokumentation
+description: Erstellen Sie Visual Studio-Projekte zum Entwerfen, Erstellen und Bereitstellen von Logik-Apps in Azure.
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,119 +12,202 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 2/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: a9f786259676a1bc9aa616f2db2935dff45475e2
-ms.openlocfilehash: db818b2b76d3a8d8c3324c9556237139d319efb9
+ms.sourcegitcommit: bbee0bae5a20375f0de8adaedadd682dc051fb64
+ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
 
 
 ---
-# <a name="build-and-deploy-logic-apps-in-visual-studio"></a>Erstellen und Bereitstellen von Logik-Apps in Visual Studio
-Auch wenn das [Azure-Portal](https://portal.azure.com/) Ihnen eine hervorragende Möglichkeit zum Entwerfen und Verwalten von Logik-Apps bietet, können Sie die Logik-App stattdessen auch mit Visual Studio entwerfen und bereitstellen.  Logik-Apps verfügen über ein umfassendes Visual Studio-Toolset, mit dem Sie eine Logik-App mit dem Designer erstellen, Vorlagen für Bereitstellung und Automation konfigurieren und die Bereitstellung in einer beliebigen Umgebung durchführen können.  
+# <a name="build-and-deploy-azure-logic-apps-in-visual-studio"></a>Erstellen und Bereitstellen von Azure-Logik-Apps in Visual Studio
+
+Logik-Apps lassen sich zwar hervorragend über das [Azure-Portal](https://portal.azure.com/) entwerfen und verwalten, für die Erstellung und Bereitstellung von Logik-Apps empfiehlt sich aber unter Umständen die Verwendung von Visual Studio. Visual Studio bietet umfassende Tools zum Erstellen von Logik-Apps mithilfe des Designers für Logik-Apps, zum Konfigurieren von Bereitstellungs- und Automatisierungsvorlagen sowie zum Bereitstellen in einer beliebigen Umgebung.
 
 ## <a name="installation-steps"></a>Installationsschritte
-Unten sind die Schritte zum Installieren und Konfigurieren der Visual Studio-Tools für Logik-Apps angegeben.
+
+Führen Sie zum Installieren und Konfigurieren der Visual Studio-Tools für Azure Logic Apps die folgenden Schritte aus.
 
 ### <a name="prerequisites"></a>Voraussetzungen
+
 * [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * [Aktuelles Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 oder höher)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 * Internetzugriff bei Verwendung des eingebetteten Designers
 
-### <a name="install-visual-studio-tools-for-logic-apps"></a>Installieren der Visual Studio-Tools für Logik-Apps
-Gehen Sie nach der Installation der erforderlichen Komponenten wie folgt vor: 
+### <a name="install-visual-studio-tools-for-azure-logic-apps"></a>Installieren der Visual Studio-Tools für Azure Logic Apps
 
-1. Öffnen Sie in Visual Studio 2015 das Menü **Extras**, und wählen Sie **Erweiterungen und Updates** aus.
-2. Wählen Sie die Kategorie **Online** für die Onlinesuche aus.
-3. Suchen Sie nach **Logic Apps**, um die **Azure Logic Apps-Tools für Visual Studio** anzuzeigen.
-4. Klicken Sie auf die Schaltfläche **Herunterladen** , um die Erweiterung herunterzuladen und zu installieren.
+Gehen Sie nach der Installation der erforderlichen Komponenten wie folgt vor:
+
+1. Öffnen Sie Visual Studio 2015. Wählen Sie im Menü **Extras** die Option **Erweiterungen und Updates** aus.
+2. Erweitern Sie die Kategorie **Online**, um eine Onlinesuche durchzuführen.
+3. Navigieren Sie zu **Logic Apps** (oder suchen Sie danach), um **Azure Logic Apps-Tools für Visual Studio** zu finden.
+4. Klicken Sie auf **Herunterladen**, um die Erweiterung herunterzuladen und zu installieren.
 5. Starten Sie Visual Studio nach der Installation neu.
 
 > [!NOTE]
-> Sie können die Erweiterung auch direkt über [diesen Link](https://visualstudiogallery.msdn.microsoft.com/e25ad307-46cf-412e-8ba5-5b555d53d2d9)
-> 
-> 
+> Die Azure Logic Apps-Tools für Visual Studio können auch direkt über den [Visual Studio Marketplace](https://visualstudiogallery.msdn.microsoft.com/e25ad307-46cf-412e-8ba5-5b555d53d2d9) heruntergeladen werden.
 
-Nach der Installation können Sie das Azure-Ressourcengruppenprojekt mit dem Logik-App-Designer verwenden.
+Nach Abschluss der Installation können Sie das Azure-Ressourcengruppenprojekt mit dem Designer für Logik-Apps verwenden.
 
-## <a name="create-a-project"></a>Erstellen eines Projekts
-1. Klicken Sie auf das Menü **Datei**, und wählen Sie **Neu** >  **Projekt** (oder wählen Sie **Hinzufügen** und dann **Neues Projekt**, um es einer vorhandenen Projektmappe hinzuzufügen):  ![Dateimenü](./media/logic-apps-deploy-from-vs/filemenu.png)
-2. Suchen Sie im Dialogfeld den Eintrag **Cloud**, und wählen Sie dann **Azure-Ressourcengruppe**. Geben Sie unter **Name** einen Namen ein, und klicken Sie dann auf **OK**.
+## <a name="create-your-project"></a>Erstellen Ihres Projekts
+
+1. Navigieren Sie im Menü **Datei** zu **Neu**, und wählen Sie **Projekt** aus. Oder: Navigieren Sie zu **Hinzufügen**, und wählen Sie **Neues Projekt** aus, um Ihr Projekt einer bereits vorhandenen Projektmappe hinzuzufügen.
+
+    ![Menü "Datei"](./media/logic-apps-deploy-from-vs/filemenu.png)
+
+2. Navigieren Sie im Fenster **Neues Projekt** zu **Cloud**, und wählen Sie **Azure-Ressourcengruppe** aus. Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.
+
     ![Neues Projekt hinzufügen](./media/logic-apps-deploy-from-vs/addnewproject.png)
-3. Wählen Sie die Vorlage **Logik-App** aus. Als Starthilfe wird eine leere Vorlage für die Bereitstellung einer Logik-App erstellt.
-    ![Azure-Vorlage auswählen](./media/logic-apps-deploy-from-vs/selectazuretemplate1.png)
-4. Nachdem Sie die **Vorlage** ausgewählt haben, klicken Sie auf **OK**.
-   
-    Ihr Logik-App-Projekt wird der Projektmappe hinzugefügt. Die Bereitstellungsdatei sollte im Projektmappen-Explorer angezeigt werden:  
-   
-    ![Bereitstellung](./media/logic-apps-deploy-from-vs/deployment.png)
 
-## <a name="using-the-logic-app-designer"></a>Verwenden des Logik-App-Designers
-Wenn Sie über ein Azure-Ressourcengruppenprojekt mit einer Logik-App verfügen, können Sie den Designer als Hilfe beim Erstellen des Workflows in Visual Studio öffnen.  Für den Designer ist eine Internetverbindung erforderlich, um die Connectors für die verfügbaren Eigenschaften und Daten abzufragen (z.B. fragt der Designer bei Verwendung des Dynamics CRM Online-Connectors Ihre CRM-Instanz ab, um die verfügbaren benutzerdefinierten Eigenschaften und Standardeigenschaften aufzulisten).
+3. Wählen Sie die Vorlage **Logik-App** aus, um eine leere Logik-App-Bereitstellungsvorlage zu erstellen, mit der Sie arbeiten können. Klicken Sie nach der Wahl der Vorlage auf **OK**.
 
-1. Klicken Sie mit der rechten Maustaste auf die Datei `<template>.json`, und wählen Sie die Option **Mit Logik-App-Designer öffnen** (oder drücken Sie `Ctrl+L`).
-2. Wählen Sie das Abonnement, die Ressourcengruppe und den Speicherort für die Bereitstellungsvorlage aus.
-   * Beachten Sie unbedingt, dass beim Entwerfen einer Logik-App Ressourcen vom Typ **API-Verbindung** erstellt werden, um während des Entwurfsvorgangs Eigenschaften abfragen zu können.  Die ausgewählte Ressourcengruppe wird zum Erstellen dieser Verbindungen zur Entwurfszeit verwendet.  Sie können alle API-Verbindungen anzeigen oder ändern, indem Sie auf das Azure-Portal zugreifen und nach **API-Verbindungen** suchen.
-   
-     ![Abonnementauswahl](./media/logic-apps-deploy-from-vs/designer_picker.png)
-3. Der Designer sollte basierend auf der Definition in der Datei `<template>.json` gerendert werden.
-4. Sie können die Logik-App jetzt erstellen und entwerfen. Die Änderungen werden in der Bereitstellungsvorlage aktualisiert.
-    ![Designer in Visual Studio](./media/logic-apps-deploy-from-vs/designer_in_vs.png)
+    ![Auswählen der Logik-App-Vorlage](./media/logic-apps-deploy-from-vs/selectazuretemplate1.png)
 
-`Microsoft.Web/connections`-Ressourcen werden Ihrer Ressourcendatei für alle Verbindungen hinzugefügt, die für die Funktion der Logik-App benötigt werden.  Diese Verbindungseigenschaften können während der Bereitstellung festgelegt und nach der Bereitstellung im Azure-Portal unter **API-Verbindungen** verwaltet werden.
+    Damit haben Sie Ihr Logik-App-Projekt Ihrer Projektmappe hinzugefügt. 
+    Im Projektmappen-Explorer sollte nun Ihre Bereitstellungsdatei angezeigt werden.
 
-### <a name="switching-to-the-json-code-view"></a>Wechseln zur JSON-Codeansicht
-Sie können unten im Designer die Registerkarte **Codeansicht** wählen, um zur JSON-Darstellung der Logik-App zu wechseln.  Um zurück zum vollständigen JSON-Ressourcencode zu wechseln, klicken Sie mit der rechten Maustaste auf die Datei `<template>.json` und wählen **Öffnen**.
+    ![Bereitstellungsdatei](./media/logic-apps-deploy-from-vs/deployment.png)
 
-### <a name="saving-the-logic-app"></a>Speichern der Logik-App
-Sie können die Logik-App jederzeit mit der Schaltfläche **Speichern** oder der Tastenkombination `Ctrl+S` speichern.  Falls beim Speichern der Logik-App Fehler auftreten, werden diese im Visual Studio-Fenster **Ausgaben** angezeigt.
+## <a name="create-your-logic-app-in-logic-app-designer"></a>Erstellen Ihrer Logik-App im Designer für Logik-Apps
 
-## <a name="deploying-your-logic-app"></a>Bereitstellen Ihrer Logik-App
-Nach der Konfiguration Ihrer App können Sie diese in nur wenigen Schritten direkt von Visual Studio aus bereitstellen. 
-
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wechseln Sie zu **Bereitstellen** > **Neue Bereitstellung...**
-    ![Neue Bereitstellung](./media/logic-apps-deploy-from-vs/newdeployment.png).
-2. Sie werden dazu aufgefordert, sich bei Ihrem Azure-Abonnement anzumelden. 
-3. Nun müssen Sie die Details der Ressourcengruppe auswählen, der Sie die Logik-App bereitstellen möchten. 
-    ![Für Ressourcengruppe bereitstellen](./media/logic-apps-deploy-from-vs/deploytoresourcegroup.png)
-   
-   > [!NOTE]
-   > Achten Sie darauf, die richtigen Vorlagen- und Parameterdateien für die Ressourcengruppe auszuwählen. (Wenn Sie die App zum Beispiel in einer Produktionsumgebung bereitstellen möchten, sollten Sie die Parameterdatei der Produktion auswählen). 
-   > 
-   > 
-4. Klicken Sie auf die Schaltfläche „Bereitstellen“.
-5. Der Status der Bereitstellung wird im Fenster **Ausgabe** angezeigt (möglicherweise müssen Sie die Option **Azure-Bereitstellung** auswählen). 
-    ![Ausgabe](./media/logic-apps-deploy-from-vs/output.png)
-
-In Zukunft können Sie Ihre Logik-App in der Quellcodeverwaltung überarbeiten und Visual Studio zum Bereitstellen neuer Versionen verwenden. 
+Wenn Sie über ein Azure-Ressourcengruppenprojekt mit einer Logik-App verfügen, können Sie in Visual Studio den Designer für Logik-Apps öffnen, um Ihren Workflow zu erstellen. 
 
 > [!NOTE]
-> Wenn Sie die Definition direkt im Azure-Portal ändern, werden diese Änderungen bei der nächsten Bereitstellung in Visual Studio überschrieben.
-> 
-> 
+> Der Designer erfordert eine Internetverbindung, um verfügbare Eigenschaften und Daten von Connectors abfragen zu können. Bei Verwendung des Dynamics CRM Online-Connectors fragt der Designer beispielsweise Ihre CRM-Instanz ab, um die verfügbaren benutzerdefinierten und standardmäßigen Eigenschaften anzuzeigen.
 
-## <a name="adding-a-logic-app-to-an-existing-resource-group-project"></a>Hinzufügen einer Logik-App zu einem vorhandenen Ressourcengruppenprojekt
-Wenn Sie ein vorhandenes Ressourcengruppenprojekt haben, können Sie diesem im Fenster mit der JSON-Gliederung eine Logik-App hinzufügen oder die zuvor erstellte Logik-App mit einer weiteren ergänzen.
+1. Klicken Sie mit der rechten Maustaste auf die Datei `<template>.json`, und wählen Sie **Open with Logic App Designer** (Mit Designer für Logik-Apps öffnen) aus. (`Ctrl+L`)
+
+2. Wählen Sie Ihr Azure-Abonnement, die Ressourcengruppe und den Speicherort für Ihre Bereitstellungsvorlage aus.
+
+    > [!NOTE]
+    > Beim Entwerfen einer Logik-App werden API-Verbindungsressourcen zum Abfragen von Eigenschaften erstellt. Diese Verbindungen werden von Visual Studio zur Entwurfszeit unter Verwendung der ausgewählte Ressourcengruppe erstellt. Navigieren Sie zum Anzeigen oder Ändern von API-Verbindungen im Azure-Portal zu **API-Verbindungen**.
+
+    ![Abonnementauswahl](./media/logic-apps-deploy-from-vs/designer_picker.png)
+
+    Für das Rendering verwendet der Designer die Definition in der Datei `<template>.json`.
+
+4. Erstellen und gestalten Sie Ihre Logik-App. Ihre Bereitstellungsvorlage wird mit Ihren Änderungen aktualisiert.
+
+    ![Designer für Logik-Apps in Visual Studio](./media/logic-apps-deploy-from-vs/designer_in_vs.png)
+
+Für alle Verbindungen, die Ihre Logik-App benötigt, fügt Visual Studio Ihrer Ressourcendatei Ressourcen vom Typ `Microsoft.Web/connections` hinzu. Diese Verbindungseigenschaften können während der Bereitstellung festgelegt und nach der Bereitstellung im Azure-Portal unter **API-Verbindungen** verwaltet werden.
+
+### <a name="switch-to-json-code-view"></a>Wechseln zur JSON-Codeansicht
+
+Über die Registerkarte **Codeansicht** am unteren Rand des Designers können Sie zur JSON-Darstellung Ihrer Logik-App wechseln.
+
+Wenn Sie wieder zum vollständigen JSON-Ressourcencode zurückkehren möchten, klicken Sie mit der rechten Maustaste auf die Datei `<template>.json`, und wählen Sie **Öffnen** aus.
+
+### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>Hinzufügen von Verweisen auf abhängige Ressourcen zu Visual Studio-Bereitstellungsvorlagen
+
+Wenn Ihre Logik-App auf abhängige Ressourcen verweisen soll, können Sie in Ihrer Logik-App-Bereitstellungsvorlage [Azure Resource Manager-Vorlagenfunktionen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) (etwa Parameter) verwenden. So kann Ihre Logik-App beispielsweise auf eine Azure-Funktion oder auf ein Integrationskonto verweisen, die bzw. das Sie zusammen mit Ihrer Logik-App bereitstellen möchten. Halten Sie sich bei der Verwendung von Parametern in Ihrer Bereitstellungsvorlage an die folgenden Richtlinien, damit das Rendering des Designers für Logik-Apps ordnungsgemäß funktioniert. 
+
+Logik-App-Parameter können in folgenden Arten von Triggern und Aktionen verwendet werden:
+
+*   Untergeordneter Workflow
+*   Funktionen-App
+*   APIM-Aufruf
+*   Laufzeit-URL für API-Verbindung
+
+Außerdem können Sie folgende Vorlagenfunktionen verwenden: „list below“, „includes parameters“, „variables“, „resourceId“, „concat“ usw. Das folgende Beispiel zeigt, wie Sie die Ressourcen-ID einer Azure-Funktion ersetzen können:
+
+```
+"parameters":{
+    "functionName": {
+    "type":"string",
+    "minLength":1,
+    "defaultValue":"<FunctionName>"
+    }
+},
+```
+
+Und hier sehen Sie, wo Sie „parameters“ verwenden können:
+
+```
+"MyFunction": {
+        "type": "Function",
+        "inputs": {
+        "body":{},
+        "function":{
+        "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
+        }
+    },
+    "runAfter":{}
+}
+```
+
+> [!NOTE] 
+> Damit der Designer für Logik-Apps bei Verwendung von „parameters“ ordnungsgemäß funktioniert, müssen Standardwerte angegeben werden. Beispiel:
+> 
+> ```
+> "parameters": {
+>     "IntegrationAccount": {
+>     "type":"string",
+>     "minLength":1,
+>     "defaultValue":"/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Logic/integrationAccounts/<integrationAccountName>"
+>     }
+> },
+> ```
+
+### <a name="save-your-logic-app"></a>Speichern Ihrer Logik-App
+
+Sie können Ihre Logik-App jederzeit über **Datei** > **Speichern** speichern. (`Ctrl+S`) 
+
+Falls Ihre Logik-App beim Speichern einen Fehler enthält, wird dieser im Visual Studio-Fenster **Ausgaben** angezeigt.
+
+## <a name="deploy-your-logic-app"></a>Bereitstellen Ihrer Logik-App
+
+Nachdem Sie Ihre App konfiguriert haben, können Sie sie in nur wenigen Schritten direkt über Visual Studio bereitstellen. 
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und navigieren Sie zu **Bereitstellen** > **Neue Bereitstellung...**.
+
+    ![Neue Bereitstellung](./media/logic-apps-deploy-from-vs/newdeployment.png)
+
+2. Melden Sie sich bei Ihrem Azure-Abonnement an, wenn Sie dazu aufgefordert werden. 
+
+3. Wählen Sie nun die Details für die Ressourcengruppe aus, in der Sie Ihre Logik-App bereitstellen möchten. Wählen Sie anschließend **Bereitstellen** aus.
+
+    > [!NOTE]
+    > Achten Sie darauf, die richtige Vorlage und Parameterdatei für die Ressourcengruppe auszuwählen. Wählen Sie also beispielsweise die Produktionsparameterdatei aus, um eine Bereitstellung in einer Produktionsumgebung durchzuführen.
+
+    ![Für Ressourcengruppe bereitstellen](./media/logic-apps-deploy-from-vs/deploytoresourcegroup.png)
+
+    Der Bereitstellungsstatus wird im Fenster **Ausgabe** angezeigt. 
+    Unter Umständen muss in der Liste **Ausgabe anzeigen von** die Option **Azure-Bereitstellung** ausgewählt werden.
+
+    ![Ausgabe des Bereitstellungsstatus](./media/logic-apps-deploy-from-vs/output.png)
+
+In Zukunft können Sie Ihre Logik-App in der Quellcodeverwaltung bearbeiten und Visual Studio zum Bereitstellen neuer Versionen verwenden.
+
+> [!NOTE]
+> Wenn Sie die Definition direkt im Azure-Portal ändern, werden die vorgenommenen Änderungen bei der nächsten Bereitstellung über Visual Studio überschrieben. 
+
+## <a name="add-your-logic-app-to-an-existing-resource-group-project"></a>Hinzufügen Ihrer Logik-App zu einem vorhandenen Ressourcengruppenprojekt
+
+Wenn Sie über ein vorhandenes Ressourcengruppenprojekt verfügen, können Sie Ihre Logik-App im Fenster mit der JSON-Gliederung dem Projekt hinzufügen. Außerdem können Sie eine weitere Logik-App zusammen mit der zuvor erstellten App hinzufügen.
+
 1. Öffnen Sie die Datei `<template>.json` .
-2. Öffnen Sie das Fenster mit der JSON-Gliederung.  Das Fenster „JSON-Gliederung“ finden Sie unter **Ansicht** > **Andere Fenster** > **JSON-Gliederung**.
-3. Zum Hinzufügen einer Ressource klicken Sie entweder oben im Fenster „JSON-Gliederung“ auf die Schaltfläche „Ressource hinzufügen“ oder mit der rechten Maustaste auf **Ressourcen** und wählen dann **Neue Ressource** hinzufügen.
 
-    ![JSON-Gliederung](./media/logic-apps-deploy-from-vs/jsonoutline.png)
+2. Navigieren Sie zum Öffnen des Fensters mit der JSON-Gliederung zu **Ansicht** > **Andere Fenster** > **JSON-Gliederung**.
+
+3. Klicken Sie am oberen Rand des Fensters mit der JSON-Gliederung auf **Ressource hinzufügen**, um der Vorlagendatei eine Ressource hinzuzufügen. Klicken Sie im Fenster mit der JSON-Gliederung mit der rechten Maustaste auf **Ressourcen**, und wählen Sie **Neue Ressource hinzufügen** aus.
+
+    ![Fenster mit der JSON-Gliederung](./media/logic-apps-deploy-from-vs/jsonoutline.png)
     
-4. Navigieren Sie im Dialogfeld **Ressource hinzufügen** zur Option **Logik-App**, wählen Sie sie aus, geben Sie ihr einen Namen, und wählen Sie **Hinzufügen**.
+4. Wählen Sie im Dialogfeld **Ressource hinzufügen** die Option **Logik-App** aus. Benennen Sie Ihre Logik-App, und wählen Sie **Hinzufügen** aus.
 
     ![Ressource hinzufügen](./media/logic-apps-deploy-from-vs/addresource.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Befolgen Sie zum Einstieg in Logik-Apps das Lernprogramm [Erstellen einer Logik-App](logic-apps-create-a-logic-app.md) .  
+
+* Eine Einführung in Azure Logic Apps finden Sie im Tutorial [Erstellen Ihrer ersten Logik-App](logic-apps-create-a-logic-app.md).
 * [Anzeigen allgemeiner Beispiele und Szenarien](logic-apps-examples-and-scenarios.md)
-* [Sie können Geschäftsprozesse mit Logik-Apps automatisieren.](http://channel9.msdn.com/Events/Build/2016/T694) 
-* [Erfahren Sie, wie Sie Ihre Systeme in Logik-Apps integrieren.](http://channel9.msdn.com/Events/Build/2016/P462)
+* [Automatisieren von Geschäftsprozessen mit Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694)
+* [Integrieren Ihrer Systeme in Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
 
 
 
-
-<!--HONumber=Jan17_HO3-->
+<!--HONumber=Feb17_HO3-->
 
 
