@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 9b26cfed4102bc09512f5ef1270aa0275a7f8f69
-ms.openlocfilehash: 58e1f5862cd147d7664248cf393f77a5e9af10d3
+ms.sourcegitcommit: df0ab8e6828033b783449e9478a5884355a7f1fe
+ms.openlocfilehash: 453aa0e98e639872184b697ad8ed91d9545e152f
 
 
 ---
@@ -40,6 +40,7 @@ Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights
 
 * Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen: Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights aus Ihrer Anwendung empfängt.
 * Für jede App ist 1 GB kostenlos. Wenn Sie also nur experimentieren oder entwickeln, ist es unwahrscheinlich, dass Sie dafür zahlen müssen.
+* [Live Metrics Stream](app-insights-live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
 * [Fortlaufender Export](app-insights-export-telemetry.md) ist gegen eine Zusatzgebühr pro GB im Basic-Tarif verfügbar. Bis Anfang März 2017 ist die Funktion allerdings kostenlos.
 
 ### <a name="enterprise-plan"></a>Enterprise-Tarif
@@ -49,6 +50,7 @@ Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights
  * Ein *Knoten* ist entweder ein physischer oder ein virtueller Servercomputer oder eine PaaS-Rolleninstanz (Platform-as-a-Service), der bzw. die Ihre App hostet.
  * Entwicklungscomputer, Clientbrowser und mobile Geräte werden nicht als Knoten gezählt.
  * Wenn die App mehrere Komponenten aufweist, die Telemetriedaten senden, z.B. ein Webdienst und ein Back-End-Worker, werden sie separat gezählt.
+ * [Live Metrics Stream](app-insights-live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
 * In einem Abonnement fallen die Gebühren pro Knoten und nicht pro App an. Wenn Sie fünf Knoten haben, die Telemetriedaten für 12 Apps senden, wird die Gebühr für fünf Knoten berechnet.
 * Obwohl Gebühren pro Monat angegeben sind, müssen Sie nur für jede Stunde bezahlen, in der ein Knoten Telemetriedaten von einer App sendet. Die Stundengebühr wird als Monatsgebühr angegeben: 744 (die Anzahl der Stunden pro Monat mit 31 Tagen).
 * Eine Datenvolumenzuteilung von 200 MB pro Tag ist für jeden erkannten Knoten vorgesehen (mit stundenbezogener Granularität). Eine nicht genutzte Datenzuteilung wird nicht von einem Tag auf den nächsten übertragen.
@@ -98,7 +100,7 @@ Es gibt drei Möglichkeiten zum Begrenzen des gesendeten Datenvolumens:
 
 * **Tägliche Obergrenze.** Standardmäßig ist diese Einstellung auf 500 GB pro Tag festgelegt. Wenn Ihre App die Obergrenze erreicht, senden wir eine E-Mail und verwerfen Daten bis zum Ende des Tages. Ändern Sie diesen Wert auf dem Blatt für die Datenvolumenverwaltung.
 * **[Stichproben](app-insights-sampling.md).** Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern.
-* Eine **Drosselung** schränkt die Datenrate auf 16.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute). 
+* Eine **Drosselung** schränkt die Datenrate auf 32.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute). 
 
 
 *Was geschieht, wenn meine App die Drosselungsrate überschreitet?*
@@ -174,6 +176,6 @@ Für vorhandene Anwendungen können noch bis Februar 2017 die alten Tarife verwe
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

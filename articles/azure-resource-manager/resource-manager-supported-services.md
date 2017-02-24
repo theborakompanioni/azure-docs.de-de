@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 12/27/2016
 ms.author: magoedte;tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: dabe7d9796ab24a257ea904bc5d978cb71d7e149
-ms.openlocfilehash: af96c2b6063f7200cdeb6b51e5c729aa4643127f
+ms.sourcegitcommit: 53e57807e97671bd279c03ada4c147fc1e7f1e45
+ms.openlocfilehash: c7bfc5584c11a7e69aedeb93f143a78d97c9369a
 
 
 ---
@@ -33,7 +33,8 @@ Die folgenden Tabellen zeigen, welche Microsoft-Dienste Bereitstellung und Verwa
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Schema | Schnellstartvorlagen |
 | --- | --- | --- | --- | --- |
 | Batch |Ja |[Batch REST (in englischer Sprache)](/rest/api/batchservice) |[Batch-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-12-01/Microsoft.Batch.json) | |
-| Container |Ja |[Container Service REST](/rest/api/containerregistry) |[Containerschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-03-30/Microsoft.ContainerService.json) |[Microsoft.ContainerService](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerService%22&type=Code) |
+| Containerregistrierung |Ja |[Containerregistrierung – REST](/rest/api/containerregistry) |[Containerregistrierungsschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-06-27-preview/Microsoft.ContainerRegistry.json) |[Microsoft.ContainerRegistry](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerRegistry%22&type=Code) |
+| Container Service |Ja |[Container Service REST](/rest/api/compute/containerservices) |[Containerschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-03-30/Microsoft.ContainerService.json) |[Microsoft.ContainerService](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ContainerService%22&type=Code) |
 | Dynamics Lifecycle Services |Ja | | | |
 | Skalierungsgruppen |Ja |[Scale Set REST](/rest/api/compute/virtualmachinescalesets) |[Skalierungsgruppenschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) |[virtualMachineScaleSets](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=virtualMachineScaleSets&type=Code) |
 | Service Fabric |Ja |[Service Fabric REST](/rest/api/servicefabric) | [Service Fabric-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-09-01/Microsoft.ServiceFabric.json) |[Microsoft.ServiceFabric](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.ServiceFabric%22&type=Code) |
@@ -91,8 +92,8 @@ Clouddienste (klassisch) können mit anderen klassischen Ressourcen verwendet we
 | Cognitive Services |Ja | [Cognitive Services REST](/rest/api/cognitiveservices) |[Cognitive Services-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-02-01-preview/Microsoft.CognitiveServices.json) | |
 | Datenkatalog |Ja |[Data Catalog REST](/rest/api/datacatalog) |[Data Catalog-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-03-30/Microsoft.DataCatalog.json) | |
 | Data Factory |Ja |[Data Factory REST](/rest/api/datafactory) | |[Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
-| Data Lake Analytics |Ja | [Data Lake REST](/rest/api/datalakeanalytics) |[Data Lake-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-01-preview/Microsoft.DataLakeAnalytics.json) |[Microsoft.DataLakeAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataLakeAnalytics%22&type=Code) |
-| Data Lake-Speicher |Ja |[Data Lake Store REST](/rest/api/datalakestore) |[Data Lake-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-01-preview/Microsoft.DataLakeAnalytics.json) |[Microsoft.DataLakeStore](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataLakeStore%22&type=Code) |
+| Data Lake Analytics |Ja | [Data Lake REST](/rest/api/datalakeanalytics) |[Data Lake Analytics-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-01-preview/Microsoft.DataLakeAnalytics.json) |[Microsoft.DataLakeAnalytics](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataLakeAnalytics%22&type=Code) |
+| Data Lake-Speicher |Ja |[Data Lake Store REST](/rest/api/datalakestore) |[Data Lake Store-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-01-preview/Microsoft.DataLakeStore.json) |[Microsoft.DataLakeStore](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataLakeStore%22&type=Code) |
 | HDInsights |Ja |[HDInsights REST](/rest/api/hdinsight) | |[Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
 | Machine Learning |Ja |[Machine Learning REST](/rest/api/machinelearning) |[Machine Learning-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-05-01-preview/Microsoft.MachineLearning.json) | |
 | Stream Analytics |Ja |[Stream Analytics REST](/rest/api/streamanalytics) | | |
@@ -110,7 +111,7 @@ Clouddienste (klassisch) können mit anderen klassischen Ressourcen verwendet we
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Schema | Schnellstartvorlagen |
 | --- | --- | --- | --- | --- |
 | CDN |Ja |[CDN REST](/rest/api/cdn) |[CDN-Schema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2016-04-02/Microsoft.Cdn.json) |[Microsoft.Cdn](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Cdn%22&type=Code) |
-| Mediendienst |Ja |[Media Services REST](/rest/api/media) |[Medienschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-01/Microsoft.Media.json) | |
+| Mediendienst |Ja |[Media Services REST](/rest/api/media) |[Medienschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-10-01/Microsoft.Media.json) |[Microsoft.Media](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Media%22&type=Code)  |
 
 ## <a name="hybrid-integration"></a>Hybridintegration
 | Dienst | Ressourcen-Manager aktiviert | REST-API | Schema | Schnellstartvorlagen |
@@ -304,6 +305,6 @@ Sie können die Datei öffnen und nach dem Element **apiVersions** suchen.
 
 
 
-<!--HONumber=Dec16_HO2-->
+<!--HONumber=Feb17_HO2-->
 
 

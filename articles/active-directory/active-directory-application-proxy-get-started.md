@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 08/25/2016
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 3c0f17c4ff79bab7f5b13f42cd31e170780fc0c2
+ms.sourcegitcommit: 2e7815702f2d2f4ce935826c4769838727a83696
+ms.openlocfilehash: 7d1be1dea6ed4ecda196743f592456a5b977e9b0
 
 
 ---
@@ -53,8 +53,10 @@ Mit dem Azure AD-Anwendungsproxy können Sie auf verschiedene Arten von internen
 * Web-APIs, die Sie für umfassende Anwendungen auf unterschiedlichen Geräten verfügbar machen möchten  
 * Hinter einem Remotedesktopgateway gehostete Anwendungen  
 
-## <a name="how-does-it-work"></a>Wie funktioniert dies?
+## <a name="how-does-the-service-work-with-connectors"></a>Wie funktioniert der Dienst mit Connectors?
 Um den Anwendungsproxy nutzen zu können, müssen Sie einen als Connector bezeichneten schlanken Windows Server-Dienst in Ihrem Netzwerk installieren. Mit dem Connector müssen Sie keine eingehenden Ports öffnen oder Ressourcen in der DMZ anordnen. Bei hohem Datenverkehrsaufkommen für Ihre Apps können Sie weitere Connectors hinzufügen. Der Lastenausgleich wird vom Dienst übernommen. Connectors sind zustandslos und rufen alle Informationen nach Bedarf aus der Cloud ab.
+
+Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md). 
 
 Wenn Benutzer per Remotezugriff auf Anwendungen zugreifen, stellen sie eine Verbindung mit dem veröffentlichten Endpunkt her. Benutzer authentifizieren sich in Azure AD und werden dann über den Connector an die lokale Anwendung geleitet.
 
@@ -71,18 +73,21 @@ Wenn Benutzer per Remotezugriff auf Anwendungen zugreifen, stellen sie eine Verb
 ### <a name="single-sign-on"></a>Einmaliges Anmelden
 Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden oder Ansprüche unterstützen. Wenn Ihre Anwendung die integrierte Windows-Authentifizierung verwendet, nimmt der Anwendungsproxy mithilfe der eingeschränkten Kerberos-Delegierung die Identität des Benutzers an, um das einmalige Anmelden zu ermöglichen. Wenn Sie über eine Anwendung verfügen, die Ansprüche unterstützt und die Azure Active Directory vertraut, wird das einmalige Anmelden möglich, weil der Benutzer bereits über Azure Active Directory authentifiziert wurde.
 
+Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
+
 ## <a name="how-to-get-started"></a>Erste Schritte
 Stellen Sie sicher, dass Sie über ein Azure AD Basic- oder Premium-Abonnement und ein Azure AD-Verzeichnis verfügen, für die Sie als globaler Administrator angemeldet sind. Sie benötigen auch Azure AD Basic- oder Premium-Lizenzen für den Verzeichnisadministrator und Benutzer, die auf die Apps zugreifen. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md) .
 
 Das Einrichten des Anwendungsproxys erfolgt in zwei Schritten:
 
-1. [Aktivieren des Anwendungsproxys und Konfigurieren des Connectors](active-directory-application-proxy-enable.md)    
+1. [Aktivieren des Anwendungsproxys und Konfigurieren des Connectors](active-directory-application-proxy-enable.md).    
 2. [Veröffentlichen von Anwendungen](active-directory-application-proxy-publish.md) – Verwenden Sie den schnell und einfach einzusetzenden Assistenten, um Ihre lokalen Apps zu veröffentlichen und den Remotezugriff darauf zu ermöglichen.
 
 ## <a name="whats-next"></a>Wie geht es weiter?
 Der Anwendungsproxy bietet Ihnen noch viele weitere Möglichkeiten:
 
 * [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
+* [Arbeiten mit vorhandenen lokalen Proxyservern](application-proxy-working-with-proxy-servers.md) 
 * [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
 * [Arbeiten mit Anwendungen, die Ansprüche unterstützen](active-directory-application-proxy-claims-aware-apps.md)
 * [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
@@ -92,6 +97,6 @@ Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http:/
 
 
 
-<!--HONumber=Nov16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 

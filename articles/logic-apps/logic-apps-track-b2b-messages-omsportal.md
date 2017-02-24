@@ -1,6 +1,6 @@
 ---
-title: Nachverfolgen von B2B-Nachrichten im OMS-Portal | Microsoft-Dokumentation
-description: Nachverfolgen von B2B-Nachrichten im OMS-Portal
+title: "Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal – Azure | Microsoft-Dokumentation"
+description: Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal
 author: padmavc
 manager: anneta
 editor: 
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 53195091ac4b93ed94f432990c84c407615fc03e
-ms.openlocfilehash: 9c3855c7fce5a9f38424f0bb6cd03f7a2c8d36be
+ms.sourcegitcommit: 91eb30aaa1ab3891d8e97d48a9a0fe9fa9b2b82b
+ms.openlocfilehash: 3130104427b2a1873690617c6d726375c89876cf
 
 
 ---
-# <a name="tracking-b2b-messages-in-oms-portal"></a>Nachverfolgen von B2B-Nachrichten im OMS-Portal
-Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden Geschäftsprozessen oder Anwendungen. Bei der Nachverfolgung von B2B-Nachrichten im OMS-Portal werden umfangreiche webbasierte Nachverfolgungsfunktionen bereitgestellt, mit denen angezeigt werden kann, ob Nachrichten richtig verarbeitet werden.  Sie können Folgendes nachverfolgen:
+# <a name="track-b2b-messages-in-the-operations-management-suite-portal"></a>Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal
+Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden Geschäftsprozessen oder Anwendungen. Verwenden Sie die folgenden webbasierten Nachverfolgungsfunktionen im Operations Management Suite-Portal, um zu bestätigen, ob Nachrichten richtig verarbeitet werden:
 
 * Anzahl und Status von Nachrichten
 * Bestätigungsstatus
@@ -31,107 +31,108 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Konto. Sie können ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* Ein Integrationskonto. Sie können ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) erstellen und die Protokollierung aktivieren. Entsprechende Schritte finden Sie [hier](logic-apps-monitor-b2b-message.md).
-* Eine Logik-App. Sie können eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) erstellen und die Protokollierung aktivieren. Entsprechende Schritte finden Sie [hier](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics-and-alerts).
+* Ein Integrationskonto. Sie können ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) erstellen und die Protokollierung einrichten. Informationen zum Einrichten der Protokollierung finden Sie unter [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md).
+* Eine Logik-App. Sie können eine [Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) erstellen und die Protokollierung einrichten. Informationen zum Einrichten der Protokollierung finden Sie unter [Azure-Diagnose und -Warnungen](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics-and-alerts).
 
-## <a name="adding-logic-apps-b2b-solution-to-oms-portal"></a>Hinzufügen der B2B-Lösung für Logik-Apps zum OMS-Portal
+## <a name="add-logic-apps-b2b-solution-to-the-operations-management-suite-portal"></a>Hinzufügen der B2B-Lösung für Logic Apps zum Operations Management Suite-Portal
 
-1. Wählen Sie im Portal **Weitere Dienste**, suchen Sie nach **Log Analytics**, und wählen Sie **Log Analytics** .  
+1. Wählen Sie im Azure-Portal **More Services** (Weitere Dienste), suchen Sie nach Log Analytics und wählen Sie **Log Analytics** aus.   
 ![Log Analytics suchen](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)  
 
 2. Wählen Sie Ihre **Log Analytics**.  
 ![Log Analytics auswählen](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. Wählen Sie **OMS-Portal**. Die Startseite des OMS-Portals wird geöffnet.   
-![OMS-Portal durchsuchen](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+3. Wählen Sie **OMS-Portal**. Das Operations Management Suite-Portal wird angezeigt.   
+![Suchen im Microsoft Operations Management Suite-Portal](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
 4. Wählen Sie **Lösungskatalog**.    
 ![Lösungskatalog wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
-5. Wählen Sie **Logic Apps B2B**   .  
+5. Wählen Sie **Logic Apps B2B**.     
 ![„Logic Apps B2B“ wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
 
-6. Klicken Sie auf **Hinzufügen**, um **Logic Apps B2B Messages** der Startseite hinzuzufügen.  
+6. Wählen Sie **Hinzufügen**, um **Logic Apps B2B**-Nachrichten der Startseite hinzuzufügen.  
 ![„Hinzufügen“ wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-7. Suchen Sie auf der Startseite, um **Logic Apps B2B Messages**  anzuzeigen.  
+7. **Logic Apps B2B Messages** wird auf der Startseite angezeigt.   
 ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
-## <a name="tracking-data-in-oms-portal"></a>Nachverfolgen von Daten im OMS-Portal
+## <a name="track-data-in-the-operations-management-suite-portal"></a>Nachverfolgen von Daten im Operations Management Suite-Portal
 
-1. Nachrichtenveröffentlichungsprozess. Die Nachrichtenanzahl auf der Startseite wird aktualisiert.   
-![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+1. Nach dem Verarbeiten der Nachrichten wird die aktualisierte Nachrichtenanzahl angezeigt.   
+![Aktualisierte Nachrichten](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
-2. Wenn Sie auf der Startseite **Logic Apps B2B Messages** auswählen, wird der AS2- und X12-Nachrichtenstatus angezeigt.  Die Daten basieren auf dem letzten Tag.
+2. Wählen Sie auf der Startseite **Logic Apps B2B Messages**, um den AS2- und X12-Nachrichtenstatus anzuzeigen.  Die Daten basieren auf einem einzelnen Tag.
 ![„Logic Apps B2B Messages“ (Logik-Apps-B2B-Nachrichten) auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
-
-
-3. Durch die Auswahl von AS2- oder X12-Nachrichten nach Status wird die Nachrichtenliste angezeigt.   
+3. Wählen Sie eine AS2 oder X12-Nachricht nach Status und fahren Sie mit der Nachrichtenliste fort. Im nächsten Screenshot wird der AS2-Nachrichtenstatus angezeigt. Die Eigenschaftsbeschreibungen des AS2- und X12-Nachrichtenstatus finden Sie unter „Beschreibungen der Nachrichtenlisteneigenschaften“.  
 ![AS2-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
+4. Wählen Sie eine Zeile in der AS2- oder X12-Nachrichtenliste aus, um die Protokollsuche anzuzeigen.  In der Protokollsuche werden alle Aktionen mit derselben Ausführungs-ID angezeigt.
+![Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
+
+## <a name="message-list-property-descriptions"></a>Beschreibungen der Nachrichtenlisteneigenschaften
+
+#### <a name="as2-message-list-property-descriptions"></a>Beschreibungen der AS2-Nachrichtenlisteneigenschaften
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
-| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
-| Logik-App | Logic App, in der die AS2-Aktionen konfiguriert sind |
-| Status | AS2-Nachrichtenstatus. Success = gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert; Success = gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und MDN empfangen oder gesendet; Failed = fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert; Pending = gute AS2-Nachricht empfangen oder gesendet, MDN; Funktionsbestätigung konfiguriert und wird erwartet; |
+| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
+| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
+| Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
+| Status | AS2-Nachrichtenstatus. Success = gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert; Success = gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und MDN empfangen oder gesendet; Failed = fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert; Pending = gute AS2-Nachricht empfangen oder gesendet, MDN ist konfiguriert und eine Funktionsbestätigung wird erwartet |
 | Ack | MDN-Nachrichtenstatus |
 | Richtung | Richtung der AS2-Nachricht |
-| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logic App |
-| Nachrichten-ID |  AS2-Nachrichten-ID, aus den Headern der AS2-Nachricht |
+| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logik-App |
+| Nachrichten-ID |  AS2-Nachrichten-ID aus den Headern der AS2-Nachricht |
 | Zeitstempel | Uhrzeit, zu der die AS2-Aktion die Nachricht verarbeitet hat |
-|  |  |
 
-
-![X12-Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/x12messagelist.png)
+#### <a name="x12-message-list-property-descriptions"></a>Beschreibungen der X12-Nachrichtenlisteneigenschaften
 
 | Eigenschaft | Beschreibung |
 | --- | --- |
-| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
-| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner, oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
-| Logik-App | Logic App, in der die AS2-Aktionen konfiguriert sind |
+| Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
+| Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
+| Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
 | Status | X12-Nachrichtenstatus. Success = gute X12-Nachricht empfangen oder gesendet, keine Funktionsbestätigung konfiguriert; Success = gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und empfangen oder gesendet; Failed = fehlerhafte X12-Nachricht empfangen oder gesendet; Pending = gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und wird erwartet |
 | Ack | Status der Funktionsbestätigung (997).  Accepted = positive Funktionsbestätigung empfangen oder gesendet; Rejected = negative Funktionsbestätigung empfangen oder gesendet; Pending = Funktionsbestätigung wird erwartet, wurde jedoch nicht empfangen; Pending = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden |
 | Richtung | Richtung der X12-Nachricht |
-| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logic App |
-| Msg Type |  EDI-X12-Nachrichtentyp |
+| Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logik-App |
+| Msg type |  EDI-X12-Nachrichtentyp |
 | ICN | Austauschkontrollnummer der X12-Nachricht |
 | TSCN | Transaktionssatzkontrollnummer der X12-Nachricht |
 | Zeitstempel | Uhrzeit, zu der die X12-Aktion die Nachricht verarbeitet hat |
-| | |
 
-4. Wenn Sie eine Zeile in der AS2- oder X12-Nachrichtenliste auswählen, wird die Protokollsuche angezeigt.  In der Protokollsuche werden alle Aktionen mit derselben **Ausführungs-ID** angezeigt 
-![Nachrichtenstatus auswählen](media/logic-apps-track-b2b-messages-omsportal/logsearch.png).
+## <a name="queries-in-the-operations-management-suite-portal"></a>Abfragen im Operations Management Suite-Portal
 
-## <a name="queries-in-oms-portal"></a>Abfragen im OMS-Portal
+Auf der Suchseite können Sie eine Abfrage erstellen. Bei der Suche können Sie die Ergebnisse anhand von Facetsteuerelementen filtern.
 
-Auf der Suchseite können Sie eine Abfrage erstellen und die Ergebnisse dann bei der Suche anhand von Facetsteuerelementen filtern.
+### <a name="create-a-query"></a>Erstellen einer Abfrage
 
-### <a name="how-to-create-a-query"></a>Erstellen einer Abfrage
+1. Schreiben Sie in der Protokollsuche eine Abfrage, und wählen Sie **Speichern**. **Suche speichern** wird angezeigt. Informationen zum Erstellen von Abfragen finden Sie unter [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal mit einer Abfrage](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md).
+![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery.png)
 
-1. Schreiben Sie in der Protokollsuche eine Abfrage, und wählen Sie **Speichern**.  [Hier](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md) finden Sie die Schritte zum Schreiben einer Abfrage.![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery.png)
-
-2. **Suche speichern** wird geöffnet.  Geben Sie einen **Namen** und eine **Kategorie** ein, und klicken Sie auf **Speichern** .  
+2. Fügen Sie unter **Suche speichern** einen **Namen** und eine **Kategorie** hinzu, und wählen Sie dann **speichern**.   
 ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery1.png)
 
-3. Wählen Sie zum Anzeigen der Abfrage **Favoriten**  .  
+3. Wählen Sie zum Anzeigen der Abfrage **Favoriten**.    
 ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery3.png)
 
     ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery4.png)
 
-### <a name="how-to-use-a-saved-query"></a>Verwenden einer gespeicherten Abfrage
+### <a name="use-a-saved-query"></a>Verwenden einer gespeicherten Abfrage
 
-* Wählen Sie in der Protokollsuche **Favoriten**, um gespeicherte Abfragen anzuzeigen.  Auswählen eines der Abfrageergebnisse ![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery5.png)
+* Wählen Sie in der Protokollsuche **Favoriten**, um gespeicherte Abfragen anzuzeigen.  Wählen Sie eine Abfrage aus, um Abfrageergebnisse anzuzeigen.
+![Startseite wählen](media/logic-apps-track-b2b-messages-omsportal/logsearchaddquery5.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Benutzerdefiniertes Nachverfolgungsschema](logic-apps-track-integration-account-custom-tracking-schema.md "Learn about Custom Tracking Schema")   
 [AS2-Nachverfolgungsschema](logic-apps-track-integration-account-as2-tracking-schemas.md "Learn about AS2 Tracking Schema")    
 [X12-Nachverfolgungsschema](logic-apps-track-integration-account-x12-tracking-schema.md "Learn about X12 Tracking Schema")  
-[Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
+[Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")
 
 
-<!--HONumber=Jan17_HO4-->
+
+<!--HONumber=Feb17_HO2-->
 
 

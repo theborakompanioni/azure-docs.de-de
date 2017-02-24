@@ -16,8 +16,8 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 63485f0c9e151db22f23d291e2a4425dd01fb7ee
-ms.openlocfilehash: b22ac95ee11fe059d36a9416434a14814da1ee7d
+ms.sourcegitcommit: 34e9b401444aeec233d846a6b52f4a452c54cdaf
+ms.openlocfilehash: 106571bf36454ab20e75cb4ee42b2aca787a9d5a
 
 
 ---
@@ -53,12 +53,9 @@ az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Debian \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup
+    --nics myNic
 ```
 
 ## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
@@ -154,17 +151,23 @@ Wir verfügen jetzt über ein virtuelles Netzwerk, ein Subnetz und eine Netzwerk
 
 Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#create). Weitere Informationen zu den Flags, die mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) zur Bereitstellung eines vollständigen virtuellen Computers verwendet werden, finden Sie unter [Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure-CLI](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
+Im folgenden Beispiel wird ein virtueller Computer erstellt, der Azure Managed Disks verwendet. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../storage/storage-managed-disks-overview.md). Wenn Sie nicht verwaltete Datenträger verwenden möchten, finden Sie weitere Informationen im obigen Zusatzhinweis.
+
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
     --image Debian \
-    --admin-username ops \
+    --admin-username azureuser \
     --ssh-key-value ~/.ssh/id_rsa.pub \
-    --nics myNic \
-    --vnet myVnet \
-    --subnet-name mySubnet \
-    --nsg myNetworkSecurityGroup
+    --nics myNic
+```
+
+Wenn Sie Managed Disks verwenden, überspringen Sie diesen Schritt. Wenn Sie nicht verwaltete Datenträger verwenden möchten, fügen Sie dem oben stehenden Befehl die folgenden zusätzlichen Parameter hinzu, um die nicht verwalteten Datenträger im Speicherkonto `mystorageaccount` zu erstellen: 
+
+```azurecli
+    --use-unmanaged-disk \
+    --storage-account mystorageaccount
 ```
 
 Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, die VM im vorhandenen Netzwerk bereitzustellen. Nochmals: Sobald ein virtuelles Netzwerk und ein Subnetz bereitgestellt wurden, können sie als statische oder permanente Ressourcen innerhalb Ihrer Azure-Region beibehalten werden. In diesem Beispiel haben wir keine öffentliche IP-Adresse erstellt und der VNic zugewiesen, daher ist dieser virtuelle Computer nicht öffentlich über das Internet zugänglich. Weitere Informationen finden Sie unter [Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -178,6 +181,6 @@ Weitere Informationen zu verschiedenen Methoden zum Erstellen von virtuellen Com
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

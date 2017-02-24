@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Apache Phoenix und SQuirreL in HDInsight | Microsoft Docs
+title: Verwenden von Apache Phoenix und SQuirreL mit Azure HDInsight auf Windows-Basis | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie Apache Phoenix in HDInsight verwenden und wie Sie SQuirreL auf Ihrer Arbeitsstation für die Verbindung mit einem HBase-Cluster in HDInsight installieren und konfigurieren."
 services: hdinsight
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
+ms.date: 02/09/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 58212ae80ef2b930661e739aeb4779c6f9bd1bec
-ms.openlocfilehash: c1faf24f1f11eba9bfa3042f5d1cd279363e4eca
+ms.sourcegitcommit: cd7e8564d24e45bad291c3632021f96fb1584b6f
+ms.openlocfilehash: 730cf9be80be5c5381148f138c3a437beb95c340
 
 
 ---
@@ -26,9 +26,12 @@ Erfahren Sie, wie Sie [Apache Phoenix](http://phoenix.apache.org/) in HDInsight 
 > [!NOTE]
 > Versionshinweise für Phoenix finden Sie in HDInsight unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md).
 >
-> Die Informationen in diesem Artikel gelten für Windows-basierte HDInsight-Cluster. Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDinsight](hdinsight-hbase-phoenix-squirrel-linux.md).
+
+> [!IMPORTANT]
+> Die Schritte in diesem Dokument funktionieren nur mit Windows-basierten HDInsight-Clustern. HDInsight ist unter Windows nur für HDInsight-Versionen vor 3.4 verfügbar. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date). Informationen zur Verwendung von Phoenix in Linux-basierten HDInsight-Clustern finden Sie unter [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md).
 >
->
+
+
 
 ## <a name="use-sqlline"></a>Verwendung von SQLLine
 [SQLLine](http://sqlline.sourceforge.net/) ist ein Befehlszeilenprogramm zum Ausführen von SQL.
@@ -56,7 +59,7 @@ Bevor Sie SQLLine verwenden können, benötigen Sie Folgendes:
         cd %phoenix_home%\bin
         sqlline.py [The FQDN of one of the Zookeepers]
 
-    ![HdInsight Hbase Phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
+    ![HDInsight HBase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
 
     Die im Beispiel verwendeten Befehle:
 
@@ -80,10 +83,6 @@ Bevor Sie die Vorgehensweise befolgen, müssen Sie über Folgendes verfügen:
 
 * Ein HBase-Cluster das auf einem virtuellen Azure-Netzwerk mit einem virtuellen DNS-Computer bereitgestellt wird.  Anweisungen finden Sie unter [Erstellen von HBase-Clustern in Azure Virtual Network][hdinsight-hbase-provision-vnet].
 
-  > [!IMPORTANT]
-  > Sie müssen einen DNS-Server auf dem virtuellen Netzwerk installieren. Anweisungen finden Sie unter [Konfigurieren von DNS zwischen zwei virtuellen Netzwerken in Azure](hdinsight-hbase-geo-replication-configure-dns.md).
-  >
-  >
 * Rufen Sie das verbindungsspezifische DNS-Suffix des HBase-Clusters ab. Rufen Sie dazu mittels RDP den Cluster auf und führen Sie IPConfig aus.  Das DNS-Suffix ähnelt:
 
         myhbase.b7.internal.cloudapp.net
@@ -155,7 +154,7 @@ Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist mithilfe des Tools z
 
     Sowohl das Stammzertifikat als auch das Clientzertifikat werden in Ihrem persönlichen Zertifikatspeicher auf Ihrem Computer gespeichert. Verwenden Sie zur Überprüfung den Zertifikatmanager "certmgr.msc".
 
-    ![Punkt-zu-Standort-VPN-Zertifikat für virtuelles Azure-Netzwerk][img-certificate]
+    ![Punkt-zu-Site-VPN-Zertifikat für Azure Virtual Network][img-certificate]
 
     Auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten,muss ein Clientzertifikat installiert werden. Es wird empfohlen, dass Sie für alle Computer, die Sie mit dem virtuellen Netzwerk verbinden möchten, jeweils eindeutige Clientzertifikate erstellen. Verwenden Sie zum Exportieren der Clientzertifikate den Zertifikatmanager "certmgr.msc".
 
@@ -203,7 +202,7 @@ Eine Möglichkeit zum Erstellen eines X.509-Zertifikats ist mithilfe des Tools z
   > [!NOTE]
   > Der Standardinstallationsordner ist im Ordner „C:\Programme\Microsoft Files\squirrel-Sql-3.6“.  Um in diesen Pfad schreiben zu können, müssen dem Installationsprogramm  Administratorrechte gewährt werden. Sie können eine Eingabeaufforderung als Administrator öffnen, zum Ordner „bin“ von Java navigieren und dann Folgendes ausführen:
   >
-  >     java.exe -jar [the path of the SQuirreL jar file]
+  >     java.exe -jar [der Pfad der SQuirreL-JAR-Datei]
 5. Klicken Sie auf **OK** , um das Zielverzeichnis zu erstellen.
 6. Die Standardeinstellung ist die Installation der Basis- und Standardpakete.  Klicken Sie auf **Weiter**.
 7. Klicken Sie zwei Mal auf **Weiter** und anschließend auf **Fertig**.
@@ -294,6 +293,6 @@ In diesem Artikel haben Sie erfahren, wie Sie Apache Phoenix in HDInsight verwen
 
 
 
-<!--HONumber=Dec16_HO3-->
+<!--HONumber=Feb17_HO2-->
 
 
