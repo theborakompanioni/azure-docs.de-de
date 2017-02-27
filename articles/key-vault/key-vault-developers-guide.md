@@ -33,6 +33,7 @@ Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlü
 ## <a name="videos"></a>Videos
 Dieses Video zeigt Ihnen, wie Sie selbst einen Schlüsseltresor erstellen und diesen in der Beispielanwendung „Hello Key Vault“ verwenden.
 
+
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player]
 
 
