@@ -60,7 +60,7 @@ Standardmäßig sind vorab vier Leistungsindikatoren ausgewählt. Sie können ab
 * [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md)
 * [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
-* [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md) 
+* [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
 
 
 
