@@ -1,5 +1,5 @@
 ---
-title: Sichern von Dateien und Ordnern aus Windows in Azure mit Azure Backup unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft-Dokumentation
+title: Sichern von Dateien und Ordnern aus Windows in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie in einer Resource Manager-Bereitstellung Windows-Dateien und -Ordner in Azure sichern.
 services: backup
 documentationcenter: 
@@ -16,8 +16,9 @@ ms.topic: hero-article
 ms.date: 2/10/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: cdccfe1215bb8f62381c73becdc9d90f45800966
-ms.openlocfilehash: 337e1101fe044f22d6389b83b79794560b84f273
+ms.sourcegitcommit: 1a87af9efeb6c00f3c67f2c2d8d8f2e0491d248d
+ms.openlocfilehash: cb464ad823b9123ad0bfa66e0df64a616e3fb5d0
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -229,9 +230,4 @@ Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möch
 * Informieren Sie sich ausführlicher über das [Sichern von Windows-Computern](backup-configure-vault.md).
 * Nachdem Sie nun Ihre Dateien und Ordner gesichert haben, können Sie [Ihre Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 * Informationen zum Wiederherstellen einer Sicherung finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

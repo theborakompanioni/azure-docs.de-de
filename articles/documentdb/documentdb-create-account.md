@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 02/10/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: ed44ca2076860128b175888748cdaa8794c2310d
-ms.openlocfilehash: b922127076a8cb29ffb89c7fd184d4b8fa2d7e13
+ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
+ms.openlocfilehash: 1f7faf166c1ddab8b25fb6a1fe4cc432b8a47432
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -38,9 +39,9 @@ Zum Erstellen eines DocumentDB-Kontos können Sie das Azure-Portal, die Azure Re
 Arbeiten Sie zum ersten Mal mit DocumentDB? In [diesem](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) vierminütigen Video von Scott Hanselman wird die Durchführung der gängigsten Aufgaben im Onlineportal erläutert.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Navigationsbereich auf **Neu**, dann auf **Datenbanken** und anschließend auf **DocumentDB (NoSQL)**.
+2. Klicken Sie im Navigationsbereich auf der linken Seite auf **Neu**, **Datenbanken** und dann auf **NoSQL (DocumentDB)**.
 
-   ![Screenshot des Azure-Portals mit Hervorhebung von „Weitere Dienste“ und „DocumentDB (NoSQL)“](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)  
+   ![Screenshot des Azure-Portals mit Hervorhebung von „Weitere Dienste“ und „NoSQL (DocumentDB)“](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)  
 3. Legen Sie auf dem Blatt **Neues Konto** die gewünschte Konfiguration für das DocumentDB-Konto fest.
 
     ![Screenshot des Blatts „Neues Konto“ für DocumentDB](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-2.png)
@@ -87,9 +88,4 @@ Weitere Informationen zu DocumentDB finden Sie in folgenden Ressourcen:
 
 * [Lernpfad für DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 * [Hierarchisches Ressourcenmodell und Konzepte von DocumentDB](documentdb-resources.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

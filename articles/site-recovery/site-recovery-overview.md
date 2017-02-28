@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 7455d6f99ed8ceb401224f98105f7b651f55c724
-ms.openlocfilehash: 98bf94960c39565243995a1c4dd45787478b8f40
+ms.sourcegitcommit: 5adacea6033070e808f9bf5e76bae0f45f7f1199
+ms.openlocfilehash: e922590c500517c93f7682b5cca5ef6a2c89de53
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -49,6 +50,9 @@ Site Recovery hat für Ihr Unternehmen folgende Vorteile:
 * **Failover über mehrere VMs hinweg:** Sie können Wiederherstellungspläne einrichten, die Skripts und Azure Automation-Runbooks enthalten. Mit Wiederherstellungsplänen können Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen, die auf mehrere VMs verteilt sind, modellieren und anpassen.
 * **Integration mit vorhandenen BCDR-Technologien:** Site Recovery kann mit anderen BCDR-Technologien integriert werden. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen, einschließlich der nativen Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
 
+## <a name="which-regions-are-supported"></a>Welche Regionen werden unterstützt?
+Weitere Informationen zu den Regionen, in denen Azure Site Recovery verfügbar ist, finden Sie [hier](https://azure.microsoft.com/en-us/regions/services/). 
+
 ## <a name="what-can-i-replicate"></a>Was kann ich replizieren?
 Hier ist eine Übersicht dazu angegeben, was Sie mit Site Recovery replizieren können.
 
@@ -75,10 +79,4 @@ Site Recovery ermöglicht die anwendungsorientierte Replikation, damit Workloads
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [Welche Workloads kann Site Recovery schützen?](site-recovery-workload.md)
 * Weitere Informationen zur Site Recovery-Architektur finden Sie unter [Wie funktioniert Site Recovery?](site-recovery-components.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 
