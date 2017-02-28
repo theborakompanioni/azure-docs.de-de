@@ -3,7 +3,7 @@
     ![Vorbereitung](./media/site-recovery-add-configuration-server/combined-wiz1.png)
 3. Klicken Sie unter **Third-Party Software License** (Drittanbietersoftwarelizenz) auf **I Accept** (Ich stimme zu), um MySQL herunterzuladen und zu installieren.
 
-    ![Drittanbietersoftware](./media/site-recovery-add-configuration-server/combined-wiz105.PNG)
+    ![Drittanbietersoftware](./media/site-recovery-add-configuration-server/combined-wiz2.png)
 4. Wählen Sie unter **Registration** (Registrierung) den Registrierungsschlüssel aus, den Sie aus dem Tresor heruntergeladen haben.
 
     ![Registrierung](./media/site-recovery-add-configuration-server/combined-wiz3.png)
@@ -14,7 +14,7 @@
    * Falls für den vorhandenen Proxy eine Authentifizierung erforderlich ist oder Sie für die Anbieterverbindung einen benutzerdefinierten Proxy verwenden möchten, wählen Sie **Mit benutzerdefinierten Proxyeinstellungen verbinden**aus.
 
      * Bei Verwendung eines benutzerdefinierten Proxys müssen Sie die Adresse, den Port und die Anmeldeinformationen eingeben.
-     * Bei Verwendung eines Proxys sollten Sie die unter [Voraussetzungen](#configuration-server-prerequisites) beschriebenen URLs bereits zugelassen haben.
+     * Bei Verwendung eines Proxys sollten Sie die unter [Voraussetzungen](#prerequisites) beschriebenen URLs bereits zugelassen haben.
 
      ![Firewall](./media/site-recovery-add-configuration-server/combined-wiz4.png)
 6. Bei der **Voraussetzungsüberprüfung** führt das Setup eine Überprüfung durch, um sicherzustellen, dass die Installation ausgeführt werden kann. Falls beim **Überprüfen der Synchronisierung der globalen Zeit** eine Warnung angezeigt wird, stellen Sie sicher, dass die Zeit der Systemuhr (Einstellungen für **Datum und Uhrzeit**) mit der Zeitzone übereinstimmt.
@@ -40,8 +40,3 @@
     ![Zusammenfassung](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
 Nach Abschluss der Registrierung wird der Server auf dem Blatt **Einstellungen** > **Server** im Tresor angezeigt.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

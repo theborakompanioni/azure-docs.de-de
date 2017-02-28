@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer VM-Skalierungsgruppe mit PowerShell | Microsoft Docs
-description: Erstellen einer VM-Skalierungsgruppe mit PowerShell
+title: Erstellen einer Azure-VM-Skalierungsgruppe mit PowerShell | Microsoft-Dokumentation
+description: Erstellen einer Azure-VM-Skalierungsgruppe mit PowerShell
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: Thraka
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/18/2016
+ms.date: 02/21/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 5abaa31828e624f77b6a9efb4496327977b483e4
+ms.sourcegitcommit: 1f8e66fac5b82698525794f0486dd0432c7421a7
+ms.openlocfilehash: 7286fed39839675eb960b749f3235f83e36c5e9a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -56,47 +57,7 @@ Eine VM-Skalierungsgruppe muss in einer Ressourcengruppe enthalten sein.
         Tags              :
         ResourceId        : /subscriptions/########-####-####-####-############/resourceGroups/myrg1
 
-### <a name="storage-account"></a>Speicherkonto
-Ein Speicherkonto wird von einem virtuellen Computer verwendet, um den Betriebssystemdatenträger und die Diagnosedaten für die Skalierung zu speichern. Nach Möglichkeit sollte in einer Skalierungsgruppe für jeden virtuellen Computer ein Speicherkonto erstellt werden. Sollte dies nicht möglich sein, planen Sie mit maximal 20 virtuellen Computern pro Speicherkonto. In dem Beispiel in diesem Artikel werden für drei virtuelle Computer drei Speicherkonten erstellt.
-
-1. Ersetzen Sie den Wert von **$saName** durch den Namen des Speicherkontos. Testen Sie den Namen auf Eindeutigkeit. 
-   
-        $saName = "storage account name"
-        Get-AzureRmStorageAccountNameAvailability $saName
-   
-    Lautet die Antwort **True**, ist der vorgeschlagene Name eindeutig.
-2. Ersetzen Sie den Wert von **$saType** durch den Typ des Speicherkontos, und erstellen Sie dann die Variable:  
-   
-        $saType = "storage account type"
-   
-    Mögliche Werte: Standard_LRS, Standard_GRS, Standard_RAGRS oder Premium_LRS.
-3. Erstellen Sie das Konto:
-   
-        New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
-   
-    Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
-   
-        ResourceGroupName   : myrg1
-        StorageAccountName  : myst1
-        Id                  : /subscriptions/########-####-####-####-############/resourceGroups/myrg1/providers/Microsoft
-                              .Storage/storageAccounts/myst1
-        Location            : centralus
-        AccountType         : StandardLRS
-        CreationTime        : 3/15/2016 4:51:52 PM
-        CustomDomain        :
-        LastGeoFailoverTime :
-        PrimaryEndpoints    : Microsoft.Azure.Management.Storage.Models.Endpoints
-        PrimaryLocation     : centralus
-        ProvisioningState   : Succeeded
-        SecondaryEndpoints  :
-        SecondaryLocation   :
-        StatusOfPrimary     : Available
-        StatusOfSecondary   :
-        Tags                : {}
-        Context             : Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext
-4. Wiederholen Sie die Schritte 1 bis 4, um drei Speicherkonten (beispielsweise „myst1“, „myst2“ und „myst3“) zu erstellen.
-
-### <a name="virtual-network"></a>virtuelles Netzwerk
+### <a name="virtual-network"></a>Virtuelles Netzwerk
 Für die virtuellen Computer in der Skalierungsgruppe ist ein virtuelles Netzwerk erforderlich.
 
 1. Ersetzen Sie den Wert von **$subnetName** durch den Namen, den Sie für das Subnetz im virtuellen Netzwerk verwenden möchten, und erstellen Sie dann die Variable: 
@@ -173,12 +134,10 @@ Sie haben alle Ressourcen, die Sie für die Skalierungsgruppenkonfiguration ben�
         $imageSku = "2012-R2-Datacenter"
    
     Weitere Informationen zu anderen zu verwendenden Images finden Sie unter [Navigate and select Azure virtual machine images with Windows PowerShell and the Azure CLI](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Navigieren zwischen und Auswählen von Images virtueller Azure-Computer mit Windows PowerShell und der Azure-Befehlszeilenschnittstelle).
-3. Ersetzen Sie den Wert von **$vhdContainers** durch eine Liste mit den Pfaden, an denen die virtuellen Festplatten gespeichert sind (beispielsweise „https://mystorage.blob.core.windows.net/vhds), und erstellen Sie dann die Variable:
+
+3. Erstellen Sie das Speicherprofil:
    
-        $vhdContainers = @("https://myst1.blob.core.windows.net/vhds","https://myst2.blob.core.windows.net/vhds","https://myst3.blob.core.windows.net/vhds")
-4. Erstellen Sie das Speicherprofil:
-   
-        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -Name $storageProfile -VhdContainer $vhdContainers -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
+        Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet $vmss -ImageReferencePublisher $imagePublisher -ImageReferenceOffer $imageOffer -ImageReferenceSku $imageSku -ImageReferenceVersion "latest" -OsDiskCreateOption "FromImage" -OsDiskCaching "None"  
 
 ### <a name="virtual-machine-scale-set"></a>VM-Skalierungsgruppe
 Jetzt können Sie die Skalierungsgruppe erstellen.
@@ -221,10 +180,5 @@ Untersuchen Sie die erstellte VM-Skalierungsgruppe mithilfe der folgenden Ressou
 * Verwalten Sie die Skalierungsgruppe, die Sie gerade erstellt haben, mithilfe der Informationen unter [Verwalten virtueller Computer in einer VM-Skalierungsgruppe](virtual-machine-scale-sets-windows-manage.md)
 * Ziehen Sie die automatische Skalierung Ihrer Skalierungsgruppe in Betracht. Lesen Sie dazu die Informationen unter [Automatische Skalierung und Skalierungsgruppen für virtuelle Computer](virtual-machine-scale-sets-autoscale-overview.md).
 * Informieren Sie sich unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md)
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

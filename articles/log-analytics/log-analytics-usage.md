@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 668cde23cb717fcad52fd7823561d10735e6df1b
+ms.sourcegitcommit: 7e3d4b83fefdc70f292cf85b682cf8ed756bf4c5
+ms.openlocfilehash: e7f04df679604f274c8ad9bf4daddc63c8b5418a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -47,6 +48,12 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
     - Zeit zum Erfassen und Indizieren von Daten
 - Liste der Abfragen
 
+## <a name="understanding-nodes-for-oms-offers"></a>Informationen zu Knoten für OMS-Angebote
+
+Wenn Sie den Tarif *Pro Knoten (OMS)* nutzen, werden Ihre Gebühren basierend auf der Anzahl von aktivierten Knoten und Lösungen berechnet. Sie können im Dashboard „Nutzung“ im Abschnitt mit den *Angeboten* anzeigen, wie viele Knoten eines Angebots jeweils verwendet werden.
+
+![Dashboard „Nutzung“](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+
 ## <a name="to-work-with-usage-data"></a>So arbeiten Sie mit Nutzungsdaten
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
 2. Klicken Sie im Menü **Hub** auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
@@ -63,9 +70,4 @@ Im Log Analytics-Dashboard zur **Nutzung** werden die folgenden Informationen an
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Ausführliche Informationen, die von Features und Lösungen gesammelt und an OMS gesendet werden, finden Sie unter [Protokollsuchen in Log Analytics](log-analytics-log-searches.md).
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

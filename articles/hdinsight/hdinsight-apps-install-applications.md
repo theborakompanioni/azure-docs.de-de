@@ -1,6 +1,6 @@
 ---
-title: Installieren von Hadoop-Anwendungen in HDInsight | Microsoft Docs
-description: Hier erfahren Sie, wie Sie Hadoop-Anwendungen in HDInsight installieren.
+title: Installieren von Hadoop-Anwendungen von Drittanbietern in Azure HDInsight | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Hadoop-Anwendungen von Drittanbietern in Azure HDInsight installieren.
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -13,19 +13,24 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/23/2016
+ms.date: 02/06/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 71aef298af187cd4c370edf9fedc42e75ec10c41
-ms.openlocfilehash: 57fbf532c64621ef7d171fc5092708737cd36c33
+ms.sourcegitcommit: 8e7911a3a8080ef8fa125779aa1f6778b9655cde
+ms.openlocfilehash: 8780c193c6aa4b6b183723f88d67ac0990347d1e
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="install-hdinsight-applications"></a>Installieren von HDInsight-Anwendungen
-Eine HDInsight-Anwendung kann von Benutzern in einem Linux-basierten HDInsight-Cluster installiert werden. Diese Anwendungen können von Microsoft oder von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) bezogen oder aber selbst entwickelt werden. In diesem Artikel erfahren Sie, wie Sie eine veröffentlichte Anwendung installieren. Informationen zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md). 
+# <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Installieren von Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
-Derzeit gibt es drei veröffentlichte Anwendungen:
+In diesem Artikel wird beschrieben, wie Sie eine bereits veröffentlichte Hadoop-Anwendung eines Drittanbieters in Azure HDInsight installieren. Eine Anleitung zur Installation Ihrer eigenen Anwendung finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).
 
+Eine HDInsight-Anwendung kann von Benutzern in einem Linux-basierten HDInsight-Cluster installiert werden. Diese Anwendungen können von Microsoft oder von unabhängigen Softwareanbietern (Independent Software Vendors, ISVs) bezogen oder aber selbst entwickelt werden.  
+
+Derzeit stehen vier veröffentlichte Anwendungen zur Verfügung:
+
+* **DATAIKU DDS unter HDInsight**: Dataiku DSS (Data Science Studio) ist eine Software, mit der Datenexperten (Datenanalysten, Unternehmensanalysten, Entwickler...) Prototypen für hochspezifische Dienste entwickeln und diese Dienste anschließend erstellen und bereitstellen können, um Rohdaten in wirkungsvolle Unternehmensprognosen zu verwandeln.
 * **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) bietet Analysten eine Möglichkeit, Big-Data-Ergebnisse interaktiv zu ermitteln, zu analysieren und zu visualisieren. Binden Sie zusätzliche Datenquellen auf einfache Weise ein, um neue Beziehungen zu ermitteln und die benötigten Antworten schnell zu erhalten.
 * **Streamsets Data Collector für HDInsight** stellt eine voll ausgestattete integrierte Entwicklungsumgebung (IDE) bereit, mit der Sie n:n-Erfassungspipelines entwerfen, testen, bereitstellen und verwalten können. Diese Pipelines mischen Strom- und Batchdaten und enthalten eine Reihe von datenstrominternen Transformationen – ohne benutzerdefinierten Code schreiben zu müssen. 
 * **Cask CDAP 3.5 für HDInsight** stellt die erste einheitliche Integrationsplattform für Big Data bereit, die die Produktionszeit für Datenanwendungen und Data Lakes um 80 % reduziert. Diese Anwendung unterstützt nur Standard HBase 3.4-Cluster.
@@ -42,9 +47,9 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
 **So installieren Sie eine HDInsight-Anwendung**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .  Sollte diese Option nicht angezeigt werden, klicken Sie auf **Durchsuchen** und anschließend auf **HDInsight-Cluster**.
+2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .  Sollte diese Option nicht angezeigt werden, klicken Sie auf **Weitere Dienste** und anschließend auf **HDInsight-Cluster**.
 3. Klicken Sie auf einen HDInsight-Cluster.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. Klicken Sie in der Kategorie **Konfigurationen** auf **Anwendungen**. Sofern vorhanden, wird eine Liste der installierten Anwendungen angezeigt.
+4. Klicken Sie in der Kategorie **Konfigurationen** auf **Anwendungen**. Sofern vorhanden, wird eine Liste der installierten Anwendungen angezeigt. Sollte „Anwendungen“ nicht angezeigt werden, sind für diese Version des HDInsight-Clusters keine Anwendungen vorhanden.
    
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Klicken Sie im Menü des Blatts auf **Hinzufügen** . 
@@ -114,10 +119,5 @@ Weitere Informationen finden Sie unter [Behandeln von Installationsproblemen](hd
 * [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md): Hier erfahren Sie, wie Sie mithilfe der Skriptaktion zusätzliche Anwendungen installieren.
 * [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Hier erfahren Sie, wie Sie Resource Manager-Vorlagen für die Erstellung von HDInsight-Clustern aufrufen.
 * [Verwenden leerer Edgeknoten in HDInsight](hdinsight-apps-use-edge-node.md): Erfahren Sie, wie Sie einen leeren Edgeknoten zum Zugreifen auf HDInsight-Cluster, Testen von HDInsight-Anwendungen und Hosten von HDInsight-Anwendungen verwenden.
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

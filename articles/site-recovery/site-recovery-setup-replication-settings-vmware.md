@@ -15,79 +15,76 @@ ms.topic: hero-article
 ms.date: 01/19/2017
 ms.author: sutalasi
 translationtype: Human Translation
-ms.sourcegitcommit: 74d51269cdd55e39eaa2963fec2b409decb47d0a
-ms.openlocfilehash: a279fdc35c62c76e6f0858d52c64240032669f15
+ms.sourcegitcommit: 28e905a20d878eab1428a4b88113544aa742124a
+ms.openlocfilehash: 9c34ea792aa561b8155a915845ffb857dfef7a90
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="manage-replication-policy-for-vmware-to-azure"></a>Verwalten der Replikationsrichtlinie für VMware in Azure
 
 
-## <a name="create-a-new-replication-policy"></a>Erstellen einer neuen Replikationsrichtlinie
+## <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
 
-1. Klicken Sie im Menü auf der linken Seite auf „Verwalten -> Site Recovery-Infrastruktur“. 
-2. Wählen Sie im Abschnitt „For VMware and Physical machines“ (Für VMware und physische Computer) die Option „Replikationsrichtlinien“ aus.
-3. Klicken Sie oben auf „+Replikationsrichtlinie“.
+1. Wählen Sie **Verwalten** > **Site Recovery-Infrastruktur**.
+2. Wählen Sie unter **For VMware and Physical machines** (Für VMware und physische Computer) die Option **Replikationsrichtlinien**.
+3. Wählen Sie die Option **+Replikationsrichtlinie**.
 
-    ![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/createpolicy.png)
+      ![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/createpolicy.png)
 
 4. Geben Sie den Namen der Richtlinie ein.
 
-5. Geben Sie unter „RPO-Schwellenwert“ den RPO-Grenzwert an. Warnungen werden generiert, wenn die fortlaufende Replikation diesen Grenzwert überschreitet.
-6. Geben Sie unter „Aufbewahrungszeitraum des Wiederherstellungspunkts“ das Aufbewahrungszeitfenster für die einzelnen Wiederherstellungspunkte in Stunden an. Geschützte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden. 
+5. Geben Sie unter **RPO-Schwellenwert** den RPO-Grenzwert an. Warnungen werden generiert, wenn die fortlaufende Replikation diesen Grenzwert überschreitet.
+6. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Dauer des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte (in Stunden) an. Geschützte Computer können innerhalb eines Aufbewahrungszeitfensters an einem beliebigen Punkt wiederhergestellt werden.
 
-    > [!NOTE] 
-    > Für Computer, die in Storage Premium repliziert werden, wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt. Für Computer, die im Standardspeicher repliziert werden, wird eine Aufbewahrungsdauer von 72 Stunden unterstützt.
-    
-    > [!NOTE] 
-    > Eine Replikationsrichtlinie für ein Failback wird automatisch erstellt.
+    > [!NOTE]
+    > Für in Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt. Für in Standardspeicher replizierte Computer wird eine Aufbewahrungsdauer von bis zu 72 Stunden unterstützt.
 
-7. Geben Sie unter „App-konsistente Momentaufnahmehäufigkeit“ an, wie häufig (in Minuten) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten.
+    > [!NOTE]
+    > Eine Replikationsrichtlinie für das Failback wird automatisch erstellt.
 
-8. Klicken Sie auf „OK“. Die Richtlinie sollte in etwa 30 bis 60 Sekunden erstellt werden.
+7. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (in Minuten) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten.
 
-![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Creating-Policy.png)
+8. Klicken Sie auf **OK**. Die Richtlinie sollte innerhalb von 30 bis 60 Sekunden erstellt werden.
 
-## <a name="associate-configuration-server-with-replication-policy"></a>Zuordnen des Konfigurationsservers zur Replikationsrichtlinie
-1. Klicken Sie auf die Replikationsrichtlinie, der der Konfigurationsserver zugeordnet werden soll.
-2. Klicken Sie oben auf „Zuordnen“.
-![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
+![Generierung der Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Creating-Policy.png)
 
-3. Wählen Sie aus der Liste der Server „Konfigurationsserver“ aus.
-4. Klicken Sie auf OK. Der Konfigurationsserver sollte in etwa ein bis zwei Minuten zugeordnet sein.
+## <a name="associate-a-configuration-server-with-a-replication-policy"></a>Zuordnen eines Konfigurationsservers zu einer Replikationsrichtlinie
+1. Wählen Sie die Replikationsrichtlinie aus, der Sie den Konfigurationsserver zuordnen möchten.
+2. Klicken Sie auf **Zuordnen**.
+![Zuordnen des Konfigurationsservers](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
-![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
+3. Wählen Sie den Konfigurationsserver in der Serverliste aus.
+4. Klicken Sie auf **OK**. Die Zuordnung des Konfigurationsservers sollte innerhalb von ein bis zwei Minuten abgeschlossen sein.
 
-## <a name="edit-replication-policy"></a>Bearbeiten einer Replikationsrichtlinie
-1. Klicken Sie auf die Replikationsrichtlinie, für die Sie die Replikationseinstellungen bearbeiten möchten.
-![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Select-Policy.png)
+![Zuordnung des Konfigurationsservers](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
-2. Klicken Sie oben auf „Einstellungen bearbeiten“.
-![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
+## <a name="edit-a-replication-policy"></a>Bearbeiten einer Replikationsrichtlinie
+1. Wählen Sie die Replikationsrichtlinie aus, für die Sie die Replikationseinstellungen bearbeiten möchten.
+![Bearbeiten einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Select-Policy.png)
+
+2. Klicken Sie auf **Edit Settings**.
+![Bearbeiten der Einstellungen für eine Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
 3. Ändern Sie die Einstellungen abhängig von Ihren Anforderungen.
-4. Klicken Sie oben auf „Speichern“. Die Richtlinie sollte in etwa zwei bis fünf Minuten gespeichert werden, je nachdem, wie viele virtuelle Computer diese Replikationsrichtlinie verwenden.
+4. Klicken Sie auf **Speichern**. Die Richtlinie sollte innerhalb von zwei bis fünf Minuten gespeichert werden, je nachdem, wie viele virtuelle Computer diese Replikationsrichtlinie verwenden.
 
-![Erstellen einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
+![Speichern einer Replikationsrichtlinie](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
-## <a name="dissociate-configuration-server-from-replication-policy"></a>Aufheben der Zuordnung des Konfigurationsservers zur Replikationsrichtlinie
-1. Klicken Sie auf die Replikationsrichtlinie, der der Konfigurationsserver zugeordnet werden soll.
-2. Klicken Sie oben auf „Zuordnung aufheben“.
-3. Wählen Sie aus der Liste der Server „Konfigurationsserver“ aus.
-4. Klicken Sie auf OK. Die Zuordnung des Konfigurationsservers sollte in etwa ein bis zwei Minuten aufgehoben sein.
-    
-    > [!NOTE] 
-    > Sie können die Zuordnung eines Konfigurationsservers nicht aufheben, wenn mindestens ein mithilfe der Richtlinie repliziertes Element vorhanden ist. Stellen Sie sicher, dass keine mithilfe der Richtlinie replizierten Elemente vorhanden sind, ehe Sie die Zuordnung des Konfigurationsservers aufheben.
+## <a name="dissociate-a-configuration-server-from-a-replication-policy"></a>Aufheben der Zuordnung des Konfigurationsservers zu einer Replikationsrichtlinie
+1. Wählen Sie die Replikationsrichtlinie aus, der Sie den Konfigurationsserver zuordnen möchten.
+2. Klicken Sie auf **Zuordnung aufheben**.
+3. Wählen Sie den Konfigurationsserver in der Serverliste aus.
+4. Klicken Sie auf **OK**. Die Aufhebung der Zuordnung des Konfigurationsservers sollte innerhalb von ein bis zwei Minuten abgeschlossen sein.
 
-## <a name="delete-replication-policy"></a>Löschen einer Replikationsrichtlinie 
+    > [!NOTE]
+    > Sie können die Zuordnung eines Konfigurationsservers nicht aufheben, wenn mindestens ein mithilfe der Richtlinie repliziertes Element vorhanden ist. Stellen Sie sicher, dass keine mithilfe der Richtlinie replizierten Elemente vorhanden sind, bevor Sie die Zuordnung des Konfigurationsservers aufheben.
 
-1. Klicken Sie auf die Replikationsrichtlinie, die Sie löschen möchten.
-2. Klicken Sie auf „Löschen“. Die Richtlinie sollte in etwa 30 bis 60 Sekunden gelöscht werden.
+## <a name="delete-a-replication-policy"></a>Löschen einer Replikationsrichtlinie
 
-    > [!NOTE] 
+1. Wählen Sie die Replikationsrichtlinie aus, die Sie löschen möchten.
+2. Klicken Sie auf **Löschen**. Die Richtlinie sollte innerhalb von 30 bis 60 Sekunden gelöscht werden.
+
+    > [!NOTE]
     > Sie können eine Replikationsrichtlinie nicht löschen, wenn ihr mindestens ein Konfigurationsserver zugeordnet ist. Stellen Sie sicher, dass keine mithilfe der Richtlinie replizierten Elemente vorhanden sind, und löschen Sie alle zugeordneten Konfigurationsserver, bevor Sie die Richtlinie löschen.
-
-
-<!--HONumber=Jan17_HO4-->
-
 
