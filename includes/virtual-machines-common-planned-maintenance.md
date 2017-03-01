@@ -79,19 +79,14 @@ Informationen zu aktuellen Regionspaaren finden Sie in der folgenden Tabelle:
 | US Government, Iowa |US Government, Virginia |
 
 <!--Anchors-->
-[Bild1]: ./media/virtual-machines-common-planned-maintenance/vmplanned1.png
-[Abbildung 2]: ./media/virtual-machines-common-planned-maintenance/EventViewerPostReboot.png
-[Abbildung 3]: ./media/virtual-machines-planned-maintenance/RegionPairs.PNG
-[Abbildung 4]: ./media/virtual-machines-common-planned-maintenance/AvailabilitySetExample.png
+[image1]: ./media/virtual-machines-common-planned-maintenance/vmplanned1.png
+[image2]: ./media/virtual-machines-common-planned-maintenance/EventViewerPostReboot.png
+[image3]: ./media/virtual-machines-planned-maintenance/RegionPairs.PNG
+[image4]: ./media/virtual-machines-common-planned-maintenance/AvailabilitySetExample.png
 
 
 <!--Link references-->
 [Verwaltungsverfügbarkeit virtueller Computer]: ../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md
 
 [Unterschied zwischen geplanter und ungeplanter Wartung]: ../articles/virtual-machines/virtual-machines-windows-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 
