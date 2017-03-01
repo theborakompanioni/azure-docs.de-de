@@ -3,7 +3,7 @@
 ## [Was ist Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 ## [Geräteverwaltung – Übersicht](iot-hub-device-management-overview.md)
 
-# Erste Schritte
+# [Erste Schritte](iot-hub-get-started.md)
 ## Verwenden eines simulierten Geräts
 ### [.NET](iot-hub-csharp-csharp-getstarted.md)
 ### [Java](iot-hub-java-java-getstarted.md)
@@ -23,7 +23,7 @@
 ##### [Herunterladen der Azure-Tools (macOS 10.10)](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [Erstellen eines IoT Hub und Registrieren des Raspberry Pi](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)
 #### Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
-##### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos]#(iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
+##### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos](iot-hub-raspberry-pi-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [Ausführen der Beispielanwendung zum Senden von Nachrichten](iot-hub-raspberry-pi-kit-node-lesson3-run-azure-blink.md)
 ##### [Lesen von Nachrichten im Speicher](iot-hub-raspberry-pi-kit-node-lesson3-read-table-storage.md)
 #### Lektion 4: Senden von C2D-Nachrichten
@@ -66,7 +66,7 @@
 ##### [Herunterladen der Azure-Tools (macOS 10.10)](iot-hub-intel-edison-kit-node-lesson2-get-azure-tools-mac.md)
 ##### [Erstellen eines IoT Hub und Registrieren des Raspberry Pi](iot-hub-intel-edison-kit-node-lesson2-prepare-azure-iot-hub.md)
 #### Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
-##### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos]#(iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
+##### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos](iot-hub-intel-edison-kit-node-lesson3-deploy-resource-manager-template.md)
 ##### [Ausführen der Beispielanwendung zum Senden von Nachrichten](iot-hub-intel-edison-kit-node-lesson3-run-azure-blink.md)
 ##### [Lesen von Nachrichten im Speicher](iot-hub-intel-edison-kit-node-lesson3-read-table-storage.md)
 #### Lektion 4: Senden von C2D-Nachrichten
@@ -107,13 +107,13 @@
 ##### [Herunterladen der Azure-Tools (ab Windows 7)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-win32.md)
 ##### [Herunterladen der Azure-Tools (Ubuntu 16.04)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-ubuntu.md)
 ##### [Herunterladen der Azure-Tools (macOS 10.10)](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-get-azure-tools-mac.md)
-##### [Erstellen Ihres IoT Hubs und Registrieren Ihres Raspberry Pi]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
+##### [Erstellen eines IoT Hub und Registrieren des Raspberry Pi](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson2-prepare-azure-iot-hub.md)
 #### Lektion 3: Senden von Gerät-an-Cloud-Nachrichten
-##### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
+##### [Erstellen einer Azure-Funktionen-App und eines Speicherkontos](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-deploy-resource-manager-template.md)
 ##### [Ausführen der Beispielanwendung zum Senden von Nachrichten](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink.md)
 ##### [Lesen von Nachrichten im Speicher](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-read-table-storage.md)
 #### Lektion 4: Senden von C2D-Nachrichten
-##### [Ausführen der Beispielanwendung zum Empfangen von Nachrichten]#(iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
+##### [Ausführen der Beispielanwendung zum Empfangen von Nachrichten](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-send-cloud-to-device-messages.md)
 ##### [Optional: Ändern des LED-Verhaltens](iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson4-change-led-behavior.md)
 #### [Problembehandlung](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md)
 
@@ -172,7 +172,7 @@
 ### [Skalieren Ihrer Lösung](iot-hub-scaling.md)
 ### [Hohe Verfügbarkeit und Notfallwiederherstellung](iot-hub-ha-dr.md)
 ### [Unterstützung zusätzlicher Protokolle](iot-hub-protocol-gateway.md)
-## Entwickeln
+## [Entwickeln](iot-hub-how-to.md)
 ### [Entwicklerhandbuch](iot-hub-devguide.md)
 #### [Senden und Empfangen von Nachrichten](iot-hub-devguide-messaging.md)
 #### [D2C-Featureleitfaden](iot-hub-devguide-d2c-guidance.md)
@@ -269,8 +269,3 @@
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot/)
 ## [Katalog mit Azure Certified for IoT-Geräten](https://catalog.azureiotsuite.com/)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
