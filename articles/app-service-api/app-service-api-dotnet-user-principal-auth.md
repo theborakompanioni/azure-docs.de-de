@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie eine API-App in Azure App Service schützen,
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 3896760d-46ff-4b67-b98a-edd233f24758
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: 16a2c6f8e704528c38054bba394e3d11098077e0
 ms.openlocfilehash: c39e7bca6f339a1797a9344778e6a01ffa8adecc
+ms.lasthandoff: 01/24/2017
 
 
 ---
@@ -280,10 +281,5 @@ Weitere Informationen zum Erstellen einer einseitigen AngularJS-Anwendung mit ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie Sie die App Service-Authentifizierung für eine API-App verwenden und die API-App mit der ADAL-JS-Bibliothek aufrufen. Im nächsten Tutorial geht es um das [Schützen des Zugriffs auf Ihre API-App für Dienst-zu-Dienst-Szenarien](app-service-api-dotnet-service-principal-auth.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

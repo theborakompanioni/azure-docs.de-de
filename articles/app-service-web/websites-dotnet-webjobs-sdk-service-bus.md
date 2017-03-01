@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über die Verwendung von Azure Service Bus-Warte
 services: app-service\web, service-bus
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 2114a934-135b-42b8-871c-6cc040214e76
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 4d5205b1c693b8c1f199235784263f3f7b6189ff
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -172,10 +173,5 @@ In diesem Artikel werden u. a. die folgenden Themen behandelt:
 
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
 In dieser Anleitung wurde anhand von Codebeispielen veranschaulicht, wie häufige Szenarien für das Arbeiten mit Azure Service Bus behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

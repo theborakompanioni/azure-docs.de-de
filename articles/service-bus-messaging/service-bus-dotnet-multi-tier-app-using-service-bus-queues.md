@@ -1,5 +1,5 @@
 ---
-title: .NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen | Microsoft-Dokumentation
+title: .NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus | Microsoft-Dokumentation
 description: "Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet."
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/10/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 9849b15115de5b17a50e0f46781c8aa16a53d297
-ms.openlocfilehash: c68125afe8979c595ae0f6e78fa90f6a365c435f
+ms.sourcegitcommit: 94f4d852aeaed1eec20f178e2721650660ebec49
+ms.openlocfilehash: 0f2caeed40b59a65ec08e7d94701c93b862199fc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -61,7 +62,7 @@ In den folgenden Abschnitten wird der Code für die Implementierung dieser Archi
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Sie über die entsprechenden Tools verfügen und die Entwicklungsumgebung einrichten.
 
-1. Installieren Sie das Azure-SDK für .NET über [Tools und SDK herunterladen](https://azure.microsoft.com/downloads/).
+1. Installieren Sie das Azure SDK für .NET über die [Downloadseite](https://azure.microsoft.com/downloads/) des SDK.
 2. Klicken Sie in der Spalte **.NET** auf die Version von Visual Studio, die Sie verwenden. Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet.
 3. Wenn Sie aufgefordert werden, das Installationsprogramm auszuführen oder zu speichern, klicken Sie auf **Ausführen**.
 4. Klicken Sie im **Webplattform-Installer** auf **Installieren**, und setzen Sie die Installation fort.
@@ -394,9 +395,4 @@ Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

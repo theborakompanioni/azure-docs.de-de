@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 3eda8b459b5f095a40c6ea1ed355472daf23a6e3
-ms.openlocfilehash: ae5c430e702b561ddf156aa29016cfec6a0a8153
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 080404a7b4fde0e2fd8b8be407090190d07c6f2a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -122,7 +123,7 @@ Wenn Sie die Vorlage mit PowerShell bereitstellen möchten, führen Sie die folg
 
     Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `-TemplateParameterFile`.
     
-    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#powershell) aus.
+    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md) aus.
 
     >[!TIP]
     >Wenn Sie nicht sicher sind, ob ein „dnslabelprefix“ verfügbar ist, geben Sie den Befehl `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` ein, um dies festzustellen. Ist das Präfix verfügbar, gibt der Befehl den Wert `True` zurück.
@@ -157,14 +158,9 @@ Wenn Sie die Vorlage über die Azure-Befehlszeilenschnittstelle 1.0 bereitstelle
 
     Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `--parameters-file` (-e).
     
-    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md#azure-cli-10) aus.
+    Um gültige Werte für die Parameter „OSVersion“, „ImagePublisher“ und „imageOffer“ zu ermitteln, führen Sie die Schritte im Artikel [Navigieren zu und Auswählen von Images virtueller Windows-Computer](../virtual-machines/virtual-machines-windows-cli-ps-findimage.md) aus.
 
 3. Nachdem der virtuelle Computer bereitgestellt ist, stellen Sie eine Verbindung mit dem virtuellen Computer her, und fügen Sie dem von Ihnen bereitgestellten Betriebssystem die privaten IP-Adressen hinzu. Führen Sie dazu die Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus. Fügen Sie dem Betriebssystem nicht die öffentlichen IP-Adressen hinzu.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

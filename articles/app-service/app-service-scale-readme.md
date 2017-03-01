@@ -5,7 +5,7 @@ keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, App Services-Pl
 services: app-service
 documentationcenter: 
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f403c971-4450-432b-8cea-3eeb426c0147
 ms.service: app-service
@@ -18,6 +18,7 @@ ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ec043a9e01aca2e843e50cef8b90328ba1939ea5
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -41,10 +42,5 @@ Das Skalieren einer Anwendung ist jedoch komplex, und es gibt keine Lösung, die
 Dieser Abschnitt hilft Ihnen dabei, all diese Faktoren zu verstehen und eine Strategie zu entwickeln, bei der die benötigten App Service-Funktionen optimal genutzt werden, damit Sie ihre Skalierungsziele erreichen.
 
 [!INCLUDE [app-service-blueprint-scaling-app-service-applications](../../includes/app-service-blueprint-scaling-app-service-applications.md)]
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

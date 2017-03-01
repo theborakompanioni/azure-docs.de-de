@@ -2,8 +2,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: 23663ecbba3507bc0443a28e1a06e5c44769f085
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: ee193a9b4e99c2a1e24ca7e725cfa7c50eb62677
+ms.lasthandoff: 02/23/2017
 
 
 
@@ -462,7 +463,7 @@ Das folgende Diagramm veranschaulicht, wie die DocumentDB-SQL-Abfragesyntax gege
 
 ![Diagramm zur Veranschaulichung des Bereichs und der Bedeutung der Abfrage, die vom NoSQL-Tutorial zum Erstellen einer C#-Konsolenanwendung verwendet wird.](./media/documentdb-get-started/nosql-tutorial-collection-documents.png)
 
-Das [FROM](documentdb-sql-query.md#from-clause) -Schlüsselwort ist in der Abfrage optional, da DocumentDB Abfragen auf eine Sammlung begrenzt. Aus diesem Grund ist "FROM Familien f" austauschbar mit "FROM Stamm r" oder einem anderen variablen Namen, den Sie auswählen. DocumentDB wird ableiten, dass Familien, Stamm oder der variable Name, den Sie ausgewählt haben, standardmäßig auf die aktuelle Sammlung verweisen.
+Das [FROM](documentdb-sql-query.md#FromClause) -Schlüsselwort ist in der Abfrage optional, da DocumentDB Abfragen auf eine Sammlung begrenzt. Aus diesem Grund ist "FROM Familien f" austauschbar mit "FROM Stamm r" oder einem anderen variablen Namen, den Sie auswählen. DocumentDB wird ableiten, dass Familien, Stamm oder der variable Name, den Sie ausgewählt haben, standardmäßig auf die aktuelle Sammlung verweisen.
 
 ## <a name="a-idreplacedocumentastep-8-replace-json-document"></a><a id="ReplaceDocument"></a>Schritt 8: Ersetzen eines JSON-Dokuments
 DocumentDB unterstützt das Ersetzen von JSON-Dokumenten.  
@@ -587,10 +588,5 @@ Glückwunsch! Sie haben dieses NoSQL-Tutorial abgeschlossen und verfügen über 
 
 [documentdb-create-account]: documentdb-create-account.md
 [keys]: media/documentdb-get-started-quickstart/nosql-tutorial-keys.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

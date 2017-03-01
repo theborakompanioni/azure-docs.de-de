@@ -136,7 +136,7 @@ Arbeiten Sie mit der [rollenbasierten Zugriffssteuerung][rbac] (Role-Based Acces
 
 Ein Benutzer kann mehreren Rollen zugewiesen werden. Außerdem können Sie für noch präzisere Berechtigungen benutzerdefinierte Rollen erstellen.
 
-> [!NOTE]
+d> [!NOTE]
 > Die RBAC schränkt nicht die Aktionen eines Benutzers ein, der bei einer VM angemeldet ist. Diese Berechtigungen werden vom Kontotyp im Gastbetriebssystem bestimmt.   
 > 
 > 
@@ -146,7 +146,6 @@ Verwenden Sie [Überwachungsprotokolle][audit-logs], um Bereitstellungsaktionen 
 Ziehen Sie [Azure Disk Encryption][disk-encryption] in Betracht, wenn Sie die Datenträger für Betriebssystem und Daten verschlüsseln müssen. 
 
 ## <a name="solution-deployment"></a>Bereitstellung von Lösungen
-
 Eine Bereitstellung für diese Referenzarchitektur ist auf [GitHub][github-folder] verfügbar. Sie enthält ein VNet, eine NSG und einen einzelnen virtuellen Computer. Um die Architektur bereitzustellen, gehen Sie folgendermaßen vor: 
 
 1. Klicken Sie mit der rechten Maustaste auf die Schaltfläche unten, und wählen Sie entweder „Link in neuer Registerkarte öffnen“ oder „Link in neuem Fenster öffnen“.
@@ -156,7 +155,7 @@ Eine Bereitstellung für diese Referenzarchitektur ist auf [GitHub][github-folde
    * Der Name der **Ressourcengruppe** ist bereits in der Parameterdatei definiert. Wählen Sie also **Neu erstellen**, und geben Sie im Textfeld `ra-single-vm-rg` ein.
    * Wählen Sie im Dropdownfeld **Standort** die Region aus.
    * Lassen Sie die Textfelder für den **Vorlagenstamm-URI** bzw. **Parameterstamm-URI** unverändert.
-   * Wählen Sie im Dropdownfeld **Betriebssystemtyp** die Option **Linux**.
+verfügbar.   * Wählen Sie im Dropdownfeld **Betriebssystemtyp** die Option **Linux**.
    * Überprüfen Sie die allgemeinen Geschäftsbedingungen, und aktivieren Sie dann das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**.
    * Klicken Sie auf die Schaltfläche **Kaufen**.
 3. Warten Sie, bis die Bereitstellung abgeschlossen ist.
@@ -176,7 +175,7 @@ Stellen Sie zwei oder mehr VMs hinter einem Lastenausgleichsmodul bereit, um ein
 [blob-storage]: ../articles/storage/storage-introduction.md
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
-[data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
+[data-disk]: ../articles/storage/storage-about-disks-and-vhds-linux.md
 [disk-encryption]: ../articles/security/azure-security-disk-encryption.md
 [enable-monitoring]: ../articles/monitoring-and-diagnostics/insights-how-to-use-diagnostics.md
 [fqdn]: ../articles/virtual-machines/virtual-machines-linux-portal-create-fqdn.md
@@ -215,9 +214,4 @@ Stellen Sie zwei oder mehr VMs hinter einem Lastenausgleichsmodul bereit, um ein
 [components]: #Solution-components
 [blocks]: https://github.com/mspnp/template-building-blocks
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Architektur einer einzelnen Linux-VM in Azure"
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

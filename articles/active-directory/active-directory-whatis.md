@@ -12,24 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2017
+ms.date: 02/23/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: c28d84bf59c161cfe6a80062f13f10f44bf43f34
-ms.openlocfilehash: 09261f739d2cd3976f68c499d0e83fe25beef0b8
+ms.sourcegitcommit: b40ae90ea313638cbd0b60792dc4803d3d08aa0a
+ms.openlocfilehash: 03c1442daf07f57476af64491229f1f38f6ffeff
+ms.lasthandoff: 02/24/2017
 
 
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft.
 
-Für IT-Administratoren bietet Azure AD eine kostengünstige, benutzerfreundliche Lösung, um Mitarbeitern und Geschäftspartnern SSO-Zugriff (Single Sign-On, einmaliges Anmelden) auf [Tausende von Cloud-SaaS-Anwendungen](http://blogs.technet.com/b/ad/archive/2014/09/03/50-saas-apps-now-support-federation-with-azure-ad.aspx) wie Office&365;, Salesforce.com, DropBox und Concur bereitzustellen.
+Für IT-Administratoren bietet Azure AD eine kostengünstige, benutzerfreundliche Lösung, um Mitarbeitern und Geschäftspartnern SSO-Zugriff (Single Sign-On, einmaliges Anmelden) auf [Tausende von Cloud-SaaS-Anwendungen](active-directory-saas-tutorial-list.md) wie Office&365;, Salesforce.com, DropBox und Concur bereitzustellen.
 
 Anwendungsentwickler können sich dank Azure AD vollständig auf die Erstellung von Anwendungen konzentrieren, da Azure AD die schnelle und einfache Integration in eine erstklassige Identitätsverwaltungslösung ermöglicht, die von Millionen von Unternehmen auf der ganzen Welt verwendet wird.
 
 Azure AD bietet auch einen vollständigen Satz von Identitätsverwaltungsfunktionen, wie z. B.: mehrstufige Authentifizierung, Geräteregistrierung, Self-Service-Kennwortverwaltung, Self-Service-Gruppenverwaltung, privilegierte Kontenverwaltung, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, umfassende Auditfunktionen sowie Sicherheitsüberwachung und -warnungen. Mit diesen Funktionen können Sie cloudbasierte Anwendungen sichern, IT-Prozesse optimieren, Kosten senken und sicherstellen, dass unternehmensweite Kompatibilitätsziele erreicht werden.
 
-Darüber hinaus lässt sich Azure AD mit nur [vier Klicks](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)in eine vorhandene Windows Server Active Directory-Instanz integrieren, sodass Unternehmen ihre Investitionen in vorhandene lokale Identitätsverwaltungslösungen nutzen können, um den Zugriff auf cloudbasierte SaaS-Anwendungen zu verwalten.
+Darüber hinaus lässt sich Azure AD mit nur [vier Klicks](./connect/active-directory-aadconnect-get-started-express.md)in eine vorhandene Windows Server Active Directory-Instanz integrieren, sodass Unternehmen ihre Investitionen in vorhandene lokale Identitätsverwaltungslösungen nutzen können, um den Zugriff auf cloudbasierte SaaS-Anwendungen zu verwalten.
 
 Wenn Sie Office 365-, Azure- oder Dynamics CRM Online-Kunde sind, haben Sie möglicherweise noch nicht bemerkt, dass Sie bereits Azure AD verwenden. Jeder Azure-, Office 365- und Dynamics CRM-Mandant ist bereits ein Azure AD-Mandant. Sie können jederzeit damit beginnen, diesen Mandanten zum Verwalten des Zugriffs auf Tausende anderer Cloudanwendungen zu verwenden, in die Azure AD integriert ist!
 
@@ -58,86 +59,6 @@ Azure Active Directory (Azure AD) und das lokale Active Directory (Active Direct
 AD DS ist eine Serverrolle in Windows Server, was bedeutet, dass sie auf physischen oder virtuellen Computern bereitgestellt werden kann. Die Rolle weist eine hierarchische Struktur auf, die auf X.500 basiert. AD DS verwendet DNS für die Suche nach Objekten, kann über LDAP interagieren und nutzt in erster Linie Kerberos für die Authentifizierung. Active Directory aktiviert Organisationseinheiten (Organizational Units, OUs) und Gruppenrichtlinienobjekte (Group Policy Objects, GPOs), bindet Computer in die Domäne ein, und erstellt Vertrauensstellungen zwischen den Domänen.
 
 Azure AD ist ein öffentlicher Verzeichnisdienst mit mehreren Kunden, was bedeutet, dass Sie in Azure AD einen Mandanten für Ihre Cloudserver und Anwendungen, wie z.B. Office 365, erstellen können. Benutzer und Gruppen werden in einer flachen Struktur ohne Organisationseinheiten oder Gruppenrichtlinienobjekte erstellt. Die Authentifizierung erfolgt über Protokolle wie SAML, WS-Federation und OAuth. Es ist zwar möglich, Azure AD abzufragen, dann müssen Sie aber statt LDAP eine REST-API namens „AD Graph-API“ verwenden. All diese Komponenten arbeiten mit HTTP und HTTPS.
-
-Sie können Azure AD Connect zum Synchronisieren Ihrer lokalen Identitäten mit Azure AD verwenden.
-
----
-
-### <a name="authentication-and-authorization-details"></a>Informationen zu Authentifizierung und Autorisierung
-
-#### <a name="azure-ad"></a>Azure AD
-`SAML`, `WS-Federation`, interaktiv mit unterstützten Anmeldeinformationen, OAuth 2.0, OpenID Connect 
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-`SAML`, `WS-Federation`, NTLM, Kerberos, MD5, Basic
-
----
-
-### <a name="object-repository-details"></a>Informationen zum Objektrepository
-
-#### <a name="azure-ad"></a>Azure AD
-Zugriff über Azure AD Graph und Microsoft Graph 
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-X.500 LDAP  
-
----
-
-
-### <a name="programmatic-access-details"></a>Informationen zum programmgesteuerten Zugriff
-
-#### <a name="azure-ad"></a>Azure AD
-MS/Azure AD Graph REST-APIs 
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-LDAP 
-
----
-
-### <a name="sso-to-applications-details"></a>Informationen zum einmaligen Anmelden bei Anwendungen
-
-#### <a name="azure-ad"></a>Azure AD
-`OpenID Connect`, `SAML` 
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-`Open-ID Connect`, `SAML`, WS-Fed 
-
----
-
-### <a name="access-management-details"></a>Informationen zur Zugriffsverwaltung
-
-#### <a name="azure-ad"></a>Azure AD
-Ressourcendefinierter Bereich und rollenbasierte Access Control, clientdefinierte Delegierung und Anwendungsberechtigungen, Consent Framework (erzwingt die ordnungsgemäße Zustimmung durch Benutzer/Administrator, wie von der Ressource/vom Client definiert bzw. angefordert) 
-
-Über App-Rolle, individuell oder über Gruppen angewendet, unterstützt: Verwaltung durch Administrator, Self-Service-Anwendungszugriff, Benutzerzustimmung
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-Über Zugriffssteuerungslisten, individuell oder über Gruppen angewendet, unterstützt: Verwaltung durch Administrator 
-
----
-
-### <a name="group-management-details"></a>Informationen zur Gruppenverwaltung
-
-#### <a name="azure-ad"></a>Azure AD
-`Admin managed`, Verwaltung durch Regeln oder dynamisch, Self-Service-Gruppenverwaltung 
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-`Admin managed`, externes System (FIM oder anderes) erforderlich für Verwaltung durch Regeln oder dynamisch |
-
----
-
-### <a name="supported-credentials-details"></a>Unterstützte Anmeldeinformationen
-
-#### <a name="azure-ad"></a>Azure AD
-`Username + password`, `Smartcard` 
-
-#### <a name="on-premises-ad-ds"></a>AD DS lokal
-`Username + password`, `Smartcard` 
- 
----
-
-
-
 
 
 
@@ -170,9 +91,4 @@ Wir haben viele hervorragende Ressourcen online gestellt, in denen Sie alles Wis
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](active-directory-manage-groups.md)
 * [Was ist Microsoft Azure Active Directory-Lizenzierung?](active-directory-licensing-what-is.md)
 * [Wie ermittle ich nicht genehmigte Cloud-Apps, die in meiner Organisation verwendet werden?](active-directory-cloudappdiscovery-whatis.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

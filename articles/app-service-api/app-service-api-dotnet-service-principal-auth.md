@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie eine API-App in Azure App Service für Diens
 services: app-service\api
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 7ca0bab2-1d29-4d51-b779-dce0edd34f8b
 ms.service: app-service-api
@@ -17,6 +17,7 @@ ms.author: rachelap
 translationtype: Human Translation
 ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
 ms.openlocfilehash: 232446806309148f7958609608d4afc28ffea98d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -348,10 +349,5 @@ Weitere Informationen zu Azure Active Directory finden Sie in den folgenden Ress
     Das Beispiel [WebApp-WebAPI-OAuth2-AppIdentity-DotNet](http://github.com/AzureADSamples/WebApp-WebAPI-OAuth2-AppIdentity-DotNet) ähnelt der Vorgehensweise in diesem Tutorial, aber ohne Verwendung der App Service-Authentifizierung.
 
 Informationen zu anderen Möglichkeiten der Bereitstellung von Visual Studio-Projekten für API-Apps mit Visual Studio oder durch die [Automatisierung der Bereitstellung](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) über ein [Quellcodeverwaltungssystem](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control) finden Sie unter [Bereitstellen der App in Azure App Service](../app-service-web/web-sites-deploy.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -3,7 +3,7 @@ title: Synchronisierung von Offlinedaten in Azure Mobile Apps | Microsoft-Dokume
 description: "Eine grundlegende Übersicht über das Feature zur Synchronisierung von Offlinedaten für Azure Mobile Apps"
 documentationcenter: windows
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -17,6 +17,7 @@ ms.author: adrianha
 translationtype: Human Translation
 ms.sourcegitcommit: 15a3f9f40bdb84b939b30e33e5f2033411adc3cc
 ms.openlocfilehash: dc179f6186d501bc7c8e4ca72b2bf23e89a9443e
+ms.lasthandoff: 12/01/2016
 
 
 ---
@@ -102,9 +103,4 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
 [Xamarin iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -2,7 +2,7 @@
 title: "Verwalten von Media Services-Entitäten mit REST | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten."
 author: juliako
-manager: dwrede
+manager: erikre
 editor: 
 services: media-services
 documentationcenter: 
@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 946ec4d9c2638cf65f725341dfad1d08751473c6
 ms.openlocfilehash: 534c6e42ace9f42b25fe287de14b02732ed496a4
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -179,10 +180,5 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

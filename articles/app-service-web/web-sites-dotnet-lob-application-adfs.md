@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie eine Branchen-App in Azure App Service erste
 services: app-service\web
 documentationcenter: .net
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 0fa9f7a1-37bd-4d11-845f-aeff6fc9e4ca
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 29b7146837f8a88baebd67fc448954f01388d67b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -338,10 +339,5 @@ Azure App Service-Web-Apps unterstützen zwei Methoden für den Zugriff auf loka
 * [Migrate a VS2013 Web Project From WIF to Katana (Migrieren eines VS2013-Webprojekts von WIF nach Katana, in englischer Sprache)](http://www.cloudidentity.com/blog/2014/09/15/MIGRATE-A-VS2013-WEB-PROJECT-FROM-WIF-TO-KATANA/)
 * [Active Directory-Verbunddienste: Übersicht](http://technet.microsoft.com/library/hh831502.aspx)
 * [WS-Federation 1.1 specification (WS-Verbund 1.1 – Spezifikationen, in englischer Sprache)](http://download.boulder.ibm.com/ibmdl/pub/software/dw/specs/ws-fed/WS-Federation-V1-1B.pdf?S_TACT=105AGX04&S_CMP=LP)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

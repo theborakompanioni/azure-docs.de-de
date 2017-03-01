@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Azure-Warteschlangenspeicher mit dem WebJobs
 services: app-service\web, storage
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: dbfac5d9-f4a0-4e3e-9ecc-af3d7bf80463
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
 ms.openlocfilehash: 5110a86c3cc25ada27ddba9b0caef68e4509aa73
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -578,9 +579,4 @@ Sie können zudem Funktionen dynamisch deaktivieren und aktivieren, um festzuleg
 
 ## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
 In dieser Anleitung wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Warteschlangen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

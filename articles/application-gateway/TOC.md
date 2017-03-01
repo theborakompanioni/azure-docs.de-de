@@ -14,7 +14,7 @@
 #### [Portal](application-gateway-create-gateway-portal.md)
 #### [PowerShell](application-gateway-create-gateway-arm.md)
 #### [Resource Manager: Vorlage](application-gateway-create-gateway-arm-template.md)
-#### [BEFEHLSZEILENSCHNITTSTELLE (CLI)](application-gateway-create-gateway-cli.md)
+#### [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 #### [PowerShell (klassisch)](application-gateway-create-gateway.md)
 ### Intern
 #### [PowerShell](application-gateway-ilb-arm.md)
@@ -44,7 +44,7 @@
 ### [Diagnoseprotokollierung und -metriken](application-gateway-diagnostics.md)
 # Referenz
 ## [PowerShell](https://docs.microsoft.com/powershell/resourcemanager)
-## [Azure CLI 2.0 (Vorschau)](/cli/azure/network/application-gateway)
+## [Azure CLI 2.0](/cli/azure/network/application-gateway)
 ## [.NET](/dotnet/api)
 ## [Java](/java/api/com.microsoft.azure.management.network)
 ## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways)
@@ -65,8 +65,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

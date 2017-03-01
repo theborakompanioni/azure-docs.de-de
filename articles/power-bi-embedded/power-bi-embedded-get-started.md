@@ -16,8 +16,9 @@ ms.workload: powerbi
 ms.date: 02/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: fd0ddf8275ab58eb3c411123b776654fb46cae5d
-ms.openlocfilehash: 5770bbfcf700b1cefea6d22e0d5f025c1660e744
+ms.sourcegitcommit: bd7925f3fa9a717cbe0649bf899cdd00511d5ca6
+ms.openlocfilehash: b9dff45d1bb60d50c882c6daf363fca86a7f8f4c
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -77,7 +78,7 @@ Nach der Erstellung Ihrer Arbeitsbereichssammlung müssen Sie einen Arbeitsberei
 Nachdem Sie nun eine Instanz von Power BI für Ihre Anwendung erstellt haben und über **Zugriffsschlüssel**verfügen, müssen Sie die Power BI-Datasets und -Berichte erstellen, die eingebettet werden sollen. Sie können Datasets und Berichte mit **Power BI Desktop** erstellen. Sie können [Power BI Desktop kostenlos herunterladen](https://go.microsoft.com/fwlink/?LinkId=521662). Alternativ können Sie als schnellen Einstieg das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547)herunterladen.
 
 > [!NOTE]
-> Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/en-us/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
+> Weitere Informationen zur Verwendung von **Power BI Desktop** finden Sie unter [Getting Started with Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) (Erste Schritte mit Power BI Desktop).
 
 Mit **Power BI Desktop** stellen Sie eine Verbindung mit der Datenquelle her, indem Sie eine Kopie der Daten in **Power BI Desktop** importieren oder per **DirectQuery** eine direkte Verbindung mit der Datenquelle herstellen.
 
@@ -109,10 +110,5 @@ In den obigen Schritten haben Sie eine Arbeitsbereichssammlung und Ihren ersten 
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
 Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

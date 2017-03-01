@@ -17,6 +17,7 @@ ms.author: mihauss
 translationtype: Human Translation
 ms.sourcegitcommit: c75658d173bcb3438d6f2725ec9ef2c4127013d7
 ms.openlocfilehash: 0d0ca29a4733c681e044884697030ccd2916b6cb
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -84,27 +85,27 @@ In der folgenden Tabelle werden die beiden Speicherebenen miteinander verglichen
     <td><strong><center>Speicherebene „Kalt“ (Cool)</center></strong></td
 </tr>
 <tr>
-    <td><strong><center>Availability</center></strong></td>
-    <td><center>99,9 %</center></td>
-    <td><center>99 %</center></td>
+    <td><strong><center>Verfügbarkeit</center></strong></td>
+    <td><center>99,9%</center></td>
+    <td><center>99%</center></td>
 </tr>
 <tr>
-    <td><strong><center>Availability<br>(RA-GRS-Lesevorgänge)</center></strong></td>
-    <td><center>99,99 %</center></td>
-    <td><center>99,9 %</center></td>
+    <td><strong><center>Verfügbarkeit<br>(RA-GRS-Lesevorgänge)</center></strong></td>
+    <td><center>99,99%</center></td>
+    <td><center>99,9%</center></td>
 </tr>
 <tr>
-    <td><strong><center>Usage Charges</center></strong></td>
+    <td><strong><center>Nutzungsgebühren</center></strong></td>
     <td><center>Höhere Speicherkosten<br>Geringere Zugriffs- und Transaktionskosten</center></td>
     <td><center>Geringere Speicherkosten<br>Höhere Zugriffs- und Transaktionskosten</center></td>
 </tr>
 <tr>
     <td><strong><center>Minimale Objektgröße<center></strong></td>
-    <td colspan="2"><center>–</center></td>
+    <td colspan="2"><center>N/V</center></td>
 </tr>
 <tr>
     <td><strong><center>Minimale Speicherdauer<center></strong></td>
-    <td colspan="2"><center>–</center></td>
+    <td colspan="2"><center>N/V</center></td>
 </tr>
 <tr>
     <td><strong><center>Latenz<br>(Zeit bis zum ersten Byte)<center></strong></td>
@@ -341,10 +342,5 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md)
 
 [Durchsuchen und Erkunden von Speicherkonten](http://storageexplorer.com/)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

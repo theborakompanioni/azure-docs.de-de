@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über die verschiedenen Optionen für Branchen-A
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: dde6b7e6-bf6a-4fa5-8390-3a18155d21bd
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: f989ea86c76706af9413b2bb945956b1c6432e1d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -41,10 +42,5 @@ Bei Verwendung eines lokalen Sicherheitstokendiensts (Secure Token Service, STS)
 * Für den Zugriff auf lokale AD-Daten über die Unternehmensfirewall ist eine separate Lösung erforderlich.
 
 Informationen zum Schreiben einer Azure-Branchen-App, die sich mit einem lokalen STS authentifiziert, finden Sie unter [Erstellen einer Azure-Branchen-App mit AD FS-Authentifizierung](web-sites-dotnet-lob-application-adfs.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

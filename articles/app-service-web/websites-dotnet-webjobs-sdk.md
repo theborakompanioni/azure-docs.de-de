@@ -4,7 +4,7 @@ description: "Eine Einführung in Bezug auf das Azure WebJobs-SDK. Erläutert, w
 services: app-service\web, storage
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: 8281267b-572b-4b14-a328-6704493ea682
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 2d21cd34427921ad789b4c95212c07caddd5a966
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -166,10 +167,5 @@ Weitere Informationen finden Sie im Thema [Gewusst wie: Manuelles Aufrufen einer
 Weitere Informationen über das WebJobs-SDK finden Sie im Thema über die [empfohlenen Azure WebJobs-Ressourcen](http://go.microsoft.com/fwlink/?linkid=390226).
 
 Informationen zu den neuesten Verbesserungen für das WebJobs SDK finden Sie in den [Versionshinweisen](https://github.com/Azure/azure-webjobs-sdk/wiki/Release-Notes).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

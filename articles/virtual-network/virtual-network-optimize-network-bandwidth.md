@@ -15,8 +15,8 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2017
 ms.author: steveesp
 translationtype: Human Translation
-ms.sourcegitcommit: 6af1fdb533e0c5da56232b1aa2d9b8d1c08ad9fd
-ms.openlocfilehash: eb3c64fa467a3dcd90b6b240b61816522534cb68
+ms.sourcegitcommit: 50be31e179bf52e009596fbc68339dfb5a1aa1e4
+ms.openlocfilehash: d53b1cae9845be32bd053ef196203ea83df06b10
 
 
 ---
@@ -32,21 +32,21 @@ Ein virtueller Computer, der die empfangsseitige Skalierung (Receive Side Scalin
 1. Geben Sie den PowerShell-Befehl `Get-NetAdapterRss` ein, um anzuzeigen, ob RSS für ein Netzwerk aktiviert ist. In der folgenden Beispielausgabe aus `Get-NetAdapterRss` ist RSS nicht aktiviert.
 
     ```powershell
-    Name                    :Ethernet
-    InterfaceDescription            : Microsoft Hyper-V Network Adapter
+    Name                    : Ethernet
+    InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
 2. Geben Sie den folgenden Befehl zum Aktivieren von RSS ein:
 
     ```powershell
-    Get-NetAdapter | % {Enable-NetAdapterRss -Name \$\_.Name}
+    Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
     Der vorherige Befehl weist keine Ausgabe auf. Mit dem Befehl wurden die NIC-Einstellungen geändert und dadurch etwa eine Minute lang vorübergehende Konnektivitätsverluste verursacht. Während des Konnektivitätsverlusts wird das Dialogfeld „Verbindung wird wiederhergestellt“ angezeigt. In der Regel ist die Konnektivität nach dem dritten Versuch wiederhergestellt.
 3. Bestätigen Sie, dass RSS auf dem virtuellen Computer aktiviert ist, indem Sie den Befehl `Get-NetAdapterRss` erneut eingeben. Bei Erfolg wird die folgende Beispielausgabe zurückgegeben:
 
     ```powershell
     Name                    :Ethernet
-    InterfaceDescription            : Microsoft Hyper-V Network Adapter
+    InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : True
     ```
 
@@ -57,9 +57,12 @@ RSS ist auf einem virtuellen Azure Linux-Computer immer standardmäßig aktivier
 ### <a name="ubuntu"></a>Ubuntu
 
 Zur Optimierung führen Sie zuerst ein Update auf die neueste unterstützte Version aus (Stand Januar 2017):
-
-„Publisher“: „Canonical“, „Offer“: „UbuntuServer“, „Sku“: „16.04.0-LTS“, „Version“: „16.04.201609071“
-
+```json
+"Publisher": "Canonical",
+"Offer": "UbuntuServer",
+"Sku": "16.04.0-LTS",
+"Version": "16.04.201609071"
+```
 Nach dem Update geben Sie die folgenden Befehle zum Abrufen des neuesten Kernels ein:
 
 ```bash
@@ -77,14 +80,19 @@ Optionaler Befehl:
 ### <a name="centos"></a>CentOS
 
 Zur Optimierung führen Sie zuerst ein Update auf die neueste unterstützte Version aus (Stand Januar 2017):
-
-„Publisher“: „OpenLogic“, „Offer“: „CentOS“,* „Sku“: „7.3“, „Version“: „latest“
-
+```json
+"Publisher": "OpenLogic",
+"Offer": "CentOS",
+"Sku": "7.3",
+"Version": "latest"
+```
 Nach dem Update installieren Sie die neuesten Linux Integration Services (LIS).
-Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.1.3. Geben Sie den folgenden Befehl für die Installation von LIS ein:
+Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.1.3. Geben Sie die folgenden Befehle zum Installieren von LIS ein:
 
 ```bash
-sudo yum install microsoft-hyper-v-4.1.3 kmod-microsoft-hyper-v-4.1.3*
+sudo yum update
+sudo reboot
+sudo yum install microsoft-hyper-v-4.1.3 kmod-microsoft-hyper-v-4.1.3
 ```
 
 ### <a name="red-hat"></a>Red Hat
@@ -102,13 +110,13 @@ cd lis4.1.3
 wget https://download.microsoft.com/download/7/6/B/76BE7A6E-E39F-436C-9353-F4B44EF966E9/lis-rpms-4.1.3.tar.gz
 tar xvzf lis-rpms-4.1.3.tar.gz
 cd LISISO
-install.sh  \#or upgrade.sh if previous LIS was previously installed
+install.sh  #or upgrade.sh if previous LIS was previously installed
 ```
-
+ 
 Weitere Informationen zu Linux Integration Services Version 4.1 für Hyper-V erhalten Sie auf der [Downloadseite](https://www.microsoft.com/download/details.aspx?id=51612).
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO3-->
 
 

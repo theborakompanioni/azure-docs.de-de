@@ -44,8 +44,9 @@
 ### [Sichern und Wiederherstellen](documentdb-online-backup-and-restore.md)
 ### [Ausmusterung von S1, S2, S3](documentdb-performance-levels.md)
 ### [Anforderungseinheiten](documentdb-request-units.md)
-### Azure-Befehlszeilenschnittstelle
-#### [Erstellen eines Kontos](documentdb-automation-resource-manager-cli.md)
+### [Azure CLI 2.0](documentdb-automation-resource-manager-cli.md)
+### Azure-Befehlszeilenschnittstelle 1.0
+#### [Erstellen eines Kontos](documentdb-automation-resource-manager-cli-nodejs.md)
 #### [Hinzufügen oder Entfernen von Regionen](documentdb-automation-region-management.md)
 ### [Azure PowerShell](documentdb-manage-account-with-powershell.md)
 ### [Firewallunterstützung](documentdb-firewall-support.md)
@@ -124,8 +125,3 @@
 ## [Datenkonsistenz – erläutert am Beispiel Baseball](http://research.microsoft.com/apps/pubs/default.aspx?id=206913)
 ## [Buch: Verwendung von Microsoft Azure DocumentDB in einer Node.js-Anwendung](https://go.microsoft.com/fwlink/?LinkId=828428&clcid=0x409)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

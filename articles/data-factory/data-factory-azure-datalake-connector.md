@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: jingwang
 translationtype: Human Translation
-ms.sourcegitcommit: d95d42592e1102d635e5eaad473196c4fa461136
-ms.openlocfilehash: e633562e35276b2d0c6dd19ada5a17bae7b1b0b6
+ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
+ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
 
 
 ---
@@ -423,8 +423,10 @@ Die folgende Tabelle beschreibt spezifische JSON-Elemente für den verknüpften 
 ### <a name="using-service-principal-authentication-recommended"></a>Verwenden der Dienstprinzipalauthentifizierung (empfohlen)
 Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst in Azure Active Directory (AAD) eine Anwendungsentität registrieren und ihr in Data Lake Store Zugriff gewähren. Anschließend können Sie in Azure Data Factory die folgenden Eigenschaften mit entsprechenden Werten für Anwendungs-ID, Anwendungsschlüssel und Mandant angeben, um Daten aus bzw. in Data Lake Store zu kopieren. Informationen zur Einrichtung sowie zum Abrufen der erforderlichen Informationen finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
->[!NOTE]
->Wenn Sie einen Dienstprinzipal in AAD neu erstellen, kann es einige Minuten dauern, bis er tatsächlich wirksam wird. Wenn in den Fehlerdetails des Kopierassistenten oder Kopiervorgangs die Meldung „Die angegebenen Anmeldeinformationen sind ungültig.“ angezeigt wird, warten Sie etwas und versuchen es dann erneut.
+> [!IMPORTANT]
+> Wenn Sie den Assistenten zum Kopieren verwenden, müssen Sie dem Dienstprinzipal mindestens Leseberechtigung für den ADLS-Stamm („/“) gewähren oder die Reader-Rolle für das ADLS-Konto zuweisen, damit Sie durch die Ordner navigieren können. Andernfalls wird möglicherweise der Fehler „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
+>
+> Wenn Sie einen Dienstprinzipal in AAD neu erstellen oder aktualisieren, kann es einige Minuten dauern, bis er tatsächlich wirksam wird. Überprüfen Sie den Dienstprinzipal und die ADLS-ACL-Konfiguration zunächst gründlich, wenn weiterhin die Fehlermeldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt wird. Warten Sie dann einen Moment, und wiederholen Sie den Vorgang.
 >
 
 | Eigenschaft | Beschreibung | Erforderlich |
@@ -594,6 +596,6 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

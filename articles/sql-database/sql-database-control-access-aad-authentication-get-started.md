@@ -17,13 +17,14 @@ ms.topic: hero-article
 ms.date: 01/17/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 25de4caa583f128dd049899de288bd214e5918ba
-ms.openlocfilehash: 92a8ce45ba6b9938581778f37a544a323cd90b7c
+ms.sourcegitcommit: 7d061c083b23de823d373c30f93cccfe1c856ba3
+ms.openlocfilehash: 8a6dc7d3dca80782a55e13b53180b1542b61544b
+ms.lasthandoff: 02/18/2017
 
 
 ---
-# <a name="sql-database-tutorial-azure-ad-authentication-access-and-database-level-firewall-rules"></a>SQL-Datenbank-Tutorial: Azure AD-Authentifizierung, Zugriff und Firewallregeln auf Datenbankebene
-In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie mithilfe von SQL Server Management Studio Azure Active Directory-Authentifizierung, -Anmeldenamen, -Benutzer und -Datenbankrollen verwenden, die Zugriff auf und Berechtigungen für Server und Datenbanken von Azure SQL-Datenbank gewähren. Folgendes wird beschrieben:
+# <a name="azure-ad-authentication-access-and-database-level-firewall-rules"></a>Azure AD-Authentifizierung, Zugriff und Firewallregeln auf Datenbankebene
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von SQL Server Management Studio Azure Active Directory-Authentifizierung, -Anmeldenamen, -Benutzern und -Datenbankrollen verwenden, die Zugriff auf und Berechtigungen für Server und Datenbanken von Azure SQL-Datenbank gewähren. Folgendes wird beschrieben:
 
 - Anzeigen von Benutzerberechtigungen in der Masterdatenbank und in Benutzerdatenbanken
 - Erstellen von Anmeldungen und Benutzern basierend auf der Azure Active Directory-Authentifizierung
@@ -36,17 +37,17 @@ In diesem Tutorial zu den ersten Schritten erfahren Sie, wie Sie mithilfe von SQ
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/) oder [Visual Studio-Abonnementvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/). 
 
 * Sie müssen mit einem Konto, das über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügt, eine Verbindung mit dem Azure-Portal herstellen können. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
 
 * Sie haben das Tutorial [Erste Schritte mit Azure SQL-Datenbankservern, -Servern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started.md) oder die entsprechende [PowerShell-Version](sql-database-get-started-powershell.md) des Tutorials abgeschlossen. Arbeiten Sie andernfalls entweder dieses vorbereitende Tutorial durch, oder führen Sie das PowerShell-Skript am Ende der [PowerShell-Version](sql-database-get-started-powershell.md) des Tutorials aus, bevor Sie fortfahren.
 
    > [!NOTE]
-   > Der Abschluss des verwandten Tutorials für die SQL Server-Authentifizierung ([Tutorial zu SQL-Datenbank: SQL-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md)) ist optional. In diesem Tutorial werden aber Konzepte behandelt, die hier nicht wiederholt werden. Die Verfahren in diesem Tutorial zu Firewalls auf Server- und Datenbankebene sind nicht erforderlich, wenn Sie dieses verwandte Tutorial auf denselben Computern (mit der gleichen IP-Adresse) durchgeführt haben. Aus diesem Grund sind sie als optional gekennzeichnet. Bei den Screenshots in diesem Tutorial wird außerdem davon ausgegangen, dass Sie dieses verwandte Tutorial abgeschlossen haben. 
+   > Das Durcharbeiten des verwandten Tutorials für die SQL Server-Authentifizierung ([SQL-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md)) ist optional. In diesem Tutorial werden aber Konzepte behandelt, die hier nicht wiederholt werden. Die Verfahren in diesem Tutorial zu Firewalls auf Server- und Datenbankebene sind nicht erforderlich, wenn Sie das verwandte Tutorial auf denselben Computern (mit der gleichen IP-Adresse) durchgeführt haben. Aus diesem Grund sind sie als optional gekennzeichnet. Bei den Screenshots in diesem Tutorial wird außerdem davon ausgegangen, dass Sie dieses verwandte Tutorial abgeschlossen haben. 
    >
 
-* Sie haben eine Azure Active Directory-Instanz erstellt und mit Daten gefüllt. Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-add-domain.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx) sowie unter [Verwalten von Azure AD mit Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) und [Erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/active-directory-aadconnect-ports.md).
+* Sie haben eine Azure Active Directory-Instanz erstellt und mit Daten gefüllt. Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-add-domain.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx)[ sowie unter Verwalten von Azure AD mit Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) und [erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/active-directory-aadconnect-ports.md).
 
 > [!NOTE]
 > Dieses Tutorial dient Ihnen als Hilfe beim Erlernen des Inhalts dieser Lernthemen: [Azure SQL Database access control (SQL-Datenbank – Zugriffssteuerung)](sql-database-control-access.md), [Anmeldungen, Benutzer und Datenbankrollen](sql-database-manage-logins.md), [Prinzipale](https://msdn.microsoft.com/library/ms181127.aspx), [Datenbankrollen](https://msdn.microsoft.com/library/ms189121.aspx), [Firewallregeln für SQL-Datenbank](sql-database-firewall-configure.md)und [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md). 
@@ -85,7 +86,7 @@ In diesem Abschnitt des Tutorials zeigen Sie Informationen zur Sicherheitskonfig
    ![Speichern des ausgewählten AAD-Administratorkontos](./media/sql-database-control-access-aad-authentication-get-started/aad_admin_save.png)
 
 > [!NOTE]
-> Navigieren Sie zu [Anzeigen oder Aktualisieren von Servereinstellungen](sql-database-view-update-server-settings.md), um Verbindungsinformationen für diesen Server zu erhalten. Für diese Tutorialreihe lautet der vollqualifizierte Servername „sqldbtutorialserver.database.windows.net“.
+> Unter [Verwalten von Servern](sql-database-manage-servers-portal.md) finden Sie Verbindungsinformationen zu diesem Server. Für diese Tutorialreihe lautet der vollqualifizierte Servername „sqldbtutorialserver.database.windows.net“.
 >
 
 ## <a name="connect-to-sql-server-using-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit der SQL Server-Instanz mit SQL Server Management Studio (SSMS)
@@ -256,7 +257,7 @@ In diesem Abschnitt des Tutorials erstellen Sie ein Benutzerkonto in der Adventu
 ## <a name="create-a-database-level-firewall-rule-for-adventureworkslt-database-users"></a>Erstellen einer Firewallregel auf Datenbankebene für AdventureWorksLT-Datenbankbenutzer
 
 > [!NOTE]
-> Sie müssen dieses Verfahren nicht durchführen, falls Sie das gleichwertige Verfahren im verwandten Tutorial für die SQL Server-Authentifizierung ([Tutorial zu SQL-Datenbank: SQL-Authentifizierung, Anmeldungen und Benutzerkonten, Datenbankrollen, Berechtigungen, Firewallregeln auf Serverebene und Firewallregeln auf Datenbankebene](sql-database-control-access-sql-authentication-get-started.md) abgeschlossen haben und gerade lernen, wie Sie denselben Computer mit der gleichen IP-Adresse verwenden.
+> Sie müssen dieses Verfahren nicht durcharbeiten, wenn Sie das entsprechende Verfahren im verwandten Tutorial für die SQL Server-Authentifizierung ([SQL-Authentifizierung und -Autorisierung](sql-database-control-access-sql-authentication-get-started.md)) durchgeführt haben und zum Lernen immer denselben Computer mit derselben IP-Adresse verwenden.
 >
 
 In diesem Abschnitt des Tutorials versuchen Sie, sich mit dem neuen Benutzerkonto von einem Computer mit einer anderen IP-Adresse anzumelden, als Serveradministrator eine Firewallregel auf Datenbankebene zu erstellen und sich dann mit dieser neuen Firewallregel auf Datenbankebene anzumelden. 
@@ -313,10 +314,5 @@ In diesem Abschnitt des Tutorials versuchen Sie, sich mit dem neuen Benutzerkont
 - Weitere Informationen zu Datenbankprinzipalen finden Sie unter [Prinzipale](https://msdn.microsoft.com/library/ms181127.aspx).
 - Weitere Informationen zu Datenbankrollen finden Sie unter [Datenbankrollen](https://msdn.microsoft.com/library/ms189121.aspx).
 - Weitere Informationen zu Firewallregeln in SQL-Datenbank finden Sie unter [Übersicht über Firewallregeln für Azure SQL-Datenbank](sql-database-firewall-configure.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

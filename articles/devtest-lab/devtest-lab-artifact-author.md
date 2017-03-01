@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 2615e5c063a54b8cebc208c155f99460fcfa7e05
+ms.sourcegitcommit: 51901a28878f25292ba3d09848bc45a04f867345
+ms.openlocfilehash: 75fb695ea2ce9d859119445ae42eb170a9493876
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -75,7 +76,7 @@ Sie definieren Parameter mit der folgenden Struktur.
 | Elementname | Erforderlich | Beschreibung |
 | --- | --- | --- |
 | Typ |Ja |Der Typ des Parameterwerts. Die nachstehende Liste zeigt die zulässigen Typen: |
-| displayName    Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. | |
+| displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. | |
 | Beschreibung |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
 
 Folgende Typen sind zulässig:
@@ -129,10 +130,5 @@ Erstellen Sie Ihr benutzerdefiniertes Artefakt anhand der nachstehend aufgeführ
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie einem [ein Git-Artefaktrepository zu einem Lab hinzufügen](devtest-lab-add-artifact-repo.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

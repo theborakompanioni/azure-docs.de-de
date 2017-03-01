@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: bdd7d3d6e532efe7c3ed8225dd29a895725f2ff9
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 9ee2d2ef7b21fab8cfc4a70561d612be7367d366
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -182,7 +183,7 @@ Hier ist ein Beispiel für diese Art von Warnung angegeben:
 ![Ausgehender DoS-Angriff](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
 ## <a name="resource-analysis"></a>Ressourcenanalyse
-Bei der Security Center-Ressourcenanalyse liegt der Schwerpunkt auf PaaS-Diensten, z.B. der Integration in das Feature für die [Azure SQL DB-Bedrohungserkennung](../sql-database/sql-database-threat-detection-get-started.md). Basierend auf den Analyseergebnissen aus diesen Bereichen löst Security Center eine ressourcenbezogene Warnung aus.
+Bei der Security Center-Ressourcenanalyse liegt der Schwerpunkt auf PaaS-Diensten, z.B. der Integration in das Feature für die [Azure SQL-Datenbank-Bedrohungserkennung](../sql-database/sql-database-threat-detection.md). Basierend auf den Analyseergebnissen aus diesen Bereichen löst Security Center eine ressourcenbezogene Warnung aus.
 
 ### <a name="potential-sql-injection"></a>Potenzielle Einschleusung von SQL-Befehlen
 Eine Einschleusung von SQL-Befehlen ist ein Angriff, bei dem Schadcode in Zeichenfolgen eingefügt wird, die später zur Analyse und Ausführung an eine Instanz von SQL Server übergeben werden. Jedes Verfahren, bei dem SQL-Anweisungen erstellt werden, sollte auf Sicherheitsrisiken in Bezug auf Einschleusungen überprüft werden, da SQL Server alle syntaktisch gültigen Abfragen ausführt, die empfangen werden. Für die SQL-Bedrohungserkennung werden Machine Learning, Verhaltensanalyse und Anomalieerkennung genutzt, um verdächtige Ereignisse zu ermitteln, die in Ihren Azure SQL-Datenbanken unter Umständen auftreten. Beispiel:
@@ -213,9 +214,4 @@ In diesem Dokument wurden die unterschiedlichen Arten von Sicherheitswarnungen i
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

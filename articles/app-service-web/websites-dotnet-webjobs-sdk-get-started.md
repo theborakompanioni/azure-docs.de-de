@@ -4,7 +4,7 @@ description: "Erstellen Sie mit ASP.NET MVC und Azure eine Anwendung mit mehrere
 services: app-service
 documentationcenter: .net
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: 99cb9917-483a-45f8-a98d-07d19c68c753
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: tdykstra
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: b4a64bbccabf0e7b0e7aec659d066883139c8207
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -724,9 +725,4 @@ Weitere Informationen finden Sie unter [Einrichten eines Dashboards für die lok
 
 ### <a name="more-webjobs-documentation"></a>Weitere WebJobs-Dokumentation
 Weitere Informationen finden Sie unter [Dokumentationsressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

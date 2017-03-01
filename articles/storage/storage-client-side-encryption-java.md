@@ -3,7 +3,7 @@ title: "Clientseitige Verschlüsselung mit Java für Microsoft Azure Storage | M
 description: "Die Azure Storage-Clientbibliothek für Java bietet Unterstützung für die clientseitige Verschlüsselung und die Integration in den Azure-Schlüsseltresor. Dies bietet eine maximale Sicherheit für Ihre Azure Storage-Anwendungen."
 services: storage
 documentationcenter: java
-author: dineshmurthy
+author: seguler
 manager: jahogg
 editor: tysonn
 ms.assetid: 3df49907-554c-404a-9b0c-b3e3269ad04f
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
-ms.author: dineshm
+ms.date: 02/28/2017
+ms.author: seguler
 translationtype: Human Translation
 ms.sourcegitcommit: 7e182ee18e3c2c12eb29f864dd875d764ca5d534
 ms.openlocfilehash: 116693fdb8a8fa0e332b74459f7827bbf44c9ed7
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -254,8 +255,3 @@ Beachten Sie, dass ein Verschlüsseln Ihrer Storage-Daten einen zusätzlichen Le
   * [Core](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) -Paket
   * [Client](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) -Paket
 * Anzeigen der [Azure Key Vault-Dokumentation](../key-vault/key-vault-whatis.md)
-
-
-<!--HONumber=Nov16_HO4-->
-
-

@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/06/2017
-ms.author: markgal; jimpark
+ms.date: 02/15/2017
+ms.author: markgal;jimpark
 translationtype: Human Translation
-ms.sourcegitcommit: b73d5bb1f4f9e7adc65bf38a3c98db846a341cb3
-ms.openlocfilehash: 2d8bedcf51cf55e13cc22d5a2d258218f0a786bb
+ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
+ms.openlocfilehash: 7aa9305bf8a32bb7e911dfda3d331adcf1c70383
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -33,11 +34,11 @@ In diesem Tutorial werden die Schritte zum Erstellen eines Recovery Services-Tre
 * Mit Azure Resource Manager bereitgestellte virtuelle Computer
 * Klassische virtuelle Computer
 * Virtuelle Standardspeichercomputer
-* Virtuelle Storage Premium-Computer 
+* Virtuelle Storage Premium-Computer
 * Auf verwalteten Datenträgern ausgeführte virtuelle Computer
 * Per Azure Disk Encryption verschlüsselte VMs mit BEK und KEK
 
-Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie unter [Sichern und Wiederherstellen virtueller Storage Premium-Computer](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Weitere Informationen zur Unterstützung für virtuelle Computer auf verwalteten Datenträgern finden Sie unter [Sichern und Wiederherstellen von virtuellen Computern auf verwalteten Datenträgern](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie im Artikel [Sichern und Wiederherstellen virtueller Storage Premium-Computer](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Weitere Informationen zur Unterstützung für virtuelle Computer auf verwalteten Datenträgern finden Sie unter [Sichern und Wiederherstellen von virtuellen Computern auf verwalteten Datenträgern](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 > [!NOTE]
 > Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben.
@@ -46,37 +47,74 @@ Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie 
 
 [!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-Basierend auf der Anzahl von zu schützenden VMs können Sie von unterschiedlichen Ausgangspunkten aus beginnen. Wenn Sie mehrere virtuelle Computer in einem einzelnen Vorgang sichern möchten, können Sie zum Recovery Services-Tresor navigieren und die Sicherung über das Tresordashboard starten. Falls Sie eine einzelne VM sichern möchten, können Sie die Sicherung direkt über das Blatt für die VM-Verwaltung durchführen.
+Je nach Anzahl von virtuellen Computern, die Sie schützen möchten, können Sie von unterschiedlichen Ausgangspunkten starten. Wenn Sie mit einem Vorgang mehrere virtuelle Computer sichern möchten, können Sie zum Recovery Services-Tresor navigieren und [den Sicherungsauftrag über das Tresordashboard initiieren](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault). Beim Sichern eines einzelnen virtuellen Computers können Sie den Sicherungsauftrag über das Blatt „VM-Verwaltung“ initiieren.
 
-## <a name="configure-backup-from-vm-management-blade"></a>Konfigurieren der Sicherung über das Blatt „VM-Verwaltung“
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Virtuelle Computer** ein.  Die Liste mit den virtuellen Computern wird angezeigt. Wählen Sie in der Liste mit den virtuellen Computern einen virtuellen Computer aus, den Sie sichern möchten. Das Blatt für die VM-Verwaltung wird geöffnet.
+## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>Konfigurieren des Sicherungsauftrags über das Blatt „VM-Verwaltung“
+
+Mit den folgenden Schritten wird die Konfiguration des Sicherungsauftrags über das Blatt „VM-Verwaltung“ im Azure-Portal beschrieben. Diese Schritte gelten nicht für die virtuellen Computer im klassischen Portal.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Virtuelle Computer** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn Sie den Eintrag „Virtuelle Computer“ sehen, können Sie ihn auswählen.
+
+  ![Klicken Sie im Menü „Hub“ auf „Weitere Dienste“, um das Textdialogfeld zu öffnen, und geben Sie „Virtuelle Computer“ ein.](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+
+  Die Liste mit den virtuellen Computern (VMs) des Abonnements wird angezeigt.
+
+  ![Die Liste mit den VMs des Abonnements wird angezeigt.](./media/backup-azure-vms-first-look-arm/list-of-vms.png)
+
+3. Wählen Sie in der Liste eine zu sichernde VM aus.
+
+  ![Die Liste mit den VMs des Abonnements wird angezeigt.](./media/backup-azure-vms-first-look-arm/list-of-vms-selected.png)
+
+  Wenn Sie die VM auswählen, wird die Liste mit den virtuellen Computern nach links verschoben, und das Blatt „VM-Verwaltung“ und das VM-Dashboard werden geöffnet.
  ![Blatt „VM-Verwaltung“](./media/backup-azure-vms-first-look-arm/vm-management-blade.png)
 
-3. Klicken Sie auf dem Blatt „VM-Verwaltung“ links unter „Einstellungen“ auf die Option „Sicherung“.
+4. Klicken Sie auf dem Blatt „VM-Verwaltung“ im Abschnitt **Einstellungen** auf **Sicherung**.
 ![Option „Sicherung“ auf dem Blatt „VM-Verwaltung“](./media/backup-azure-vms-first-look-arm/backup-option-vm-management-blade.png)
+    Das Blatt „Sicherung aktivieren“ wird geöffnet.
 
-4. Das Blatt „Sicherung aktivieren“ wird geöffnet. Auf diesem Blatt werden zwei Eingaben erwartet: Recovery Services-Tresor: Eine Azure Backup-Ressource, die zum Speichern von Sicherungen der VMs verwendet wird. Sicherungsrichtlinie: Mit der Sicherungsrichtlinie werden der Zeitplan für die Sicherungen und die Aufbewahrungsdauer für Sicherungskopien angegeben. Dieses Blatt verfügt über Standardeinstellungen. Sie können die Standardeinstellungen je nach Ihren Sicherungsanforderungen anpassen.
+  ![Option „Sicherung“ auf dem Blatt „VM-Verwaltung“](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-  ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
+5. Klicken Sie für den Recovery Services-Tresor auf **Vorhandene auswählen**, und wählen Sie in der Dropdownliste den Wert aus.
 
-5. Für den Recovery Services-Tresor können Sie einen vorhandenen Tresor auswählen oder einen neuen erstellen. Bei einer Neuerstellung wird der Tresor in derselben Ressourcengruppe und an demselben Standort wie für den virtuellen Computer erstellt. Gehen Sie wie folgt vor, wenn Sie einen Recovery Services-Tresor mit anderen Werten erstellen möchten: [Erstellen Sie einen Recovery Services-Tresor](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm), bevor Sie in Schritt&3; auf die Option „Sicherung“ klicken, und treffen Sie auf diesem Blatt die entsprechende Auswahl.
+    ![Aktivieren des Sicherungs-Assistenten](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-6. Wählen Sie auf dem Blatt „Sicherungsrichtlinie“ die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten, und klicken Sie auf **OK**.
-    ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+    Wenn keine Recovery Services-Tresore vorhanden sind oder wenn Sie einen neuen Tresor verwenden möchten, können Sie auf **Neu erstellen** klicken und den Namen für den neuen Tresor angeben. Ein neuer Tresor wird in derselben Ressourcengruppe und an demselben Standort wie der virtuelle Computer erstellt. Wenn Sie einen Recovery Services-Tresor mit anderen Werten erstellen möchten, helfen Ihnen die Informationen im Abschnitt [Erstellen eines Recovery Services-Tresors](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm) weiter.
 
-    In den Details werden die Informationen zur Standardrichtlinie aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen** , wenn Sie eine Richtlinie erstellen möchten. Im Dropdownmenü steht auch eine Option zur Verfügung, mit der die Zeit der Momentaufnahmenerstellung festgelegt werden kann. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Nachdem Sie auf **OK** geklickt haben, wird die Sicherungsrichtlinie dem virtuellen Computer zugeordnet.
+6. Klicken Sie auf **Sicherungsrichtlinie**, um die Details der Sicherungsrichtlinie anzuzeigen.
 
-7. Klicken Sie auf „Sicherung aktivieren“, um die Sicherung auf dem virtuellen Computer zu konfigurieren. Hierdurch wird eine Bereitstellung ausgelöst.
-![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+    Das Blatt **Sicherungsrichtlinie** wird geöffnet und enthält die Details zur ausgewählten Richtlinie. Bei Vorhandensein weiterer Richtlinien können Sie das Dropdownmenü verwenden, um eine andere Sicherungsrichtlinie auszuwählen. Wählen Sie im Dropdownmenü die Option **Neu erstellen** aus, wenn Sie eine neue Richtlinie erstellen möchten. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Klicken Sie auf **OK**, um die Änderungen an der Sicherungsrichtlinie zu speichern und zum Blatt „Sicherung aktivieren“ zurückzukehren.
 
-8. Sie können den Status der Konfiguration mithilfe von Benachrichtigungen nachverfolgen.
+    ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new-2.png)
+
+7. Klicken Sie auf dem Blatt zum Aktivieren der Sicherungsrichtlinie auf **Sicherung aktivieren**, um die Richtlinienbereitstellung auszulösen, bei der die Richtlinie dem Tresor und mindestens einer VM zugeordnet wird.
+
+  ![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-button.png)
+
+8. Sie können den Konfigurationsprozess über die Benachrichtigungen nachverfolgen, die im Portal angezeigt werden. Im folgenden Beispiel wird veranschaulicht, dass die Bereitstellung gestartet wurde.
 ![Benachrichtigung zu „Sicherung aktivieren“](./media/backup-azure-vms-first-look-arm/vm-management-blade-enable-backup-notification.png)
 
-9. Nachdem die Bereitstellung für „Sicherung konfigurieren“ abgeschlossen ist, gelangen Sie beim Klicken auf die Option „Sicherung“ auf dem Blatt „VM-Verwaltung“ zum Blatt „Sicherungselement“ für die gesicherte VM.
-![VM-Ansicht „Sicherungselement“](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+9. Klicken Sie nach Abschluss des Konfigurationsprozesses auf dem Blatt „VM-Verwaltung“ auf **Sicherung**, um das Blatt „Sicherungselement“ zu öffnen und die Details anzuzeigen.
 
-## <a name="configure-backup-from-recovery-services-vault-view"></a>Konfigurieren der Sicherung über die Ansicht „Recovery Services-Tresor“
+  ![VM-Ansicht „Sicherungselement“](./media/backup-azure-vms-first-look-arm/backup-item-view.png)
+
+  Bis zum Abschluss des ersten Sicherungsvorgangs wird **Status der letzten Sicherung** als **Warnung (anfängliche Sicherung steht aus)** angezeigt. Klicken Sie unter **Sicherungsrichtlinie** auf den Namen der Richtlinie, um anzuzeigen, wann der nächste geplante Sicherungsauftrag ansteht. Das Blatt „Sicherungsrichtlinie“ wird geöffnet und zeigt den Zeitpunkt der geplanten Sicherung an.
+
+10. Klicken Sie zum Ausführen eines Sicherungsauftrags und Erstellen des ersten Wiederherstellungspunkts auf dem Blatt „Sicherungstresor“ auf **Jetzt sichern**.
+
+  ![Klicken Sie jetzt auf „Sichern“, um die erste Sicherung durchzuführen.](./media/backup-azure-vms-first-look-arm/backup-now.png)
+
+  Das Blatt „Jetzt sichern“ wird geöffnet.
+
+  ![Blatt „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+11. Klicken Sie auf dem Blatt „Jetzt sichern“ auf das Kalendersymbol, verwenden Sie das Kalendersteuerelement zum Auswählen des letzten Aufbewahrungstags des Wiederherstellungspunkts, und klicken Sie auf **Sicherung**.
+
+  ![Festlegen des letzten Aufbewahrungstags für den Wiederherstellungspunkt für „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  Anhand von Bereitstellungsbenachrichtigungen werden Sie darüber informiert, dass der Sicherungsauftrag ausgelöst wurde und dass Sie den Status des Auftrags auf der Seite „Sicherungsaufträge“ überwachen können.
+
+## <a name="configure-the-backup-job-from-the-recovery-services-vault"></a>Konfigurieren des Sicherungsauftrags über den Recovery Services-Tresor
 Dies sind die allgemeinen Schritte, die auszuführen sind:  
 
 1. Erstellen Sie einen Recovery Services-Tresor für eine VM.
@@ -93,31 +131,47 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 
 So erstellen Sie einen Recovery Services-Tresor:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
+1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
+2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Recovery Services** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Klicken Sie in der Liste auf „Recovery Services-Tresore“, wenn der Eintrag angezeigt wird.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-    Die Liste mit den Recovery Services-Tresoren wird angezeigt.
+    Wenn Recovery Services-Tresore im Abonnement vorhanden sind, werden die Tresore aufgeführt.
+
+    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-vms-first-look-arm/list-of-rs-vault.png)
 3. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
+    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
     Das Blatt „Recovery Services-Tresor“ wird geöffnet, und Sie werden aufgefordert, **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** anzugeben.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
+    ![Erstellen eines Recovery Services-Tresors – Schritt 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
+
 4. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-5. Klicken Sie auf **Abonnement** , um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
-6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen. Der Tresor **muss** sich in derselben Region wie die zu schützenden virtuellen Computer befinden.
 
-   > [!IMPORTANT]
-   > Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, sollten Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Es müssen keine Speicherkonten zum Speichern der Sicherungsdaten angegeben werden. Dies erfolgt automatisch über den Recovery Services-Tresor und den Azure Backup-Dienst.
-   >
-   >
-8. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt.
+5. Wählen Sie im Abschnitt **Abonnement** über das Dropdownmenü das Azure-Abonnement aus. Wenn Sie nur ein Abonnement verwenden, wird dieses Abonnement angezeigt, und Sie können mit dem nächsten Schritt fortfahren. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 
-    ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
+6. Gehen Sie im Abschnitt **Ressourcengruppe** wie folgt vor:
+
+    * Wählen Sie **Neu erstellen** aus, wenn Sie eine neue Ressourcengruppe erstellen möchten.
+    Oder
+    * Wählen Sie **Use existing** (Vorhandene verwenden) aus, und klicken Sie auf das Dropdownmenü, um eine Liste mit verfügbaren Ressourcengruppen anzuzeigen.
+
+  Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+
+7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden.
+
+  > [!IMPORTANT]
+  > Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, sollten Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Es müssen keine Speicherkonten zum Speichern der Sicherungsdaten angegeben werden. Dies erfolgt automatisch über den Recovery Services-Tresor und den Azure Backup-Dienst.
+  >
+
+8. Klicken Sie im unteren Bereich des Blatts für den Recovery Services-Tresor auf **Erstellen**.
+
+    Die Erstellung des Recovery Services-Tresors kann mehrere Minuten dauern. Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor auch nach mehreren Minuten nicht angezeigt werden, klicken Sie auf **Aktualisieren**.
+
+    ![Klicken auf die Schaltfläche „Aktualisieren“](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
+
+    Sobald Ihr Tresor in der Liste mit den Recovery Services-Tresoren angezeigt wird, können Sie die Speicherredundanz festlegen.
 
 Nachdem Sie Ihren Tresor erstellt haben, widmen wir uns nun dem Festlegen der Speicherreplikation.
 
@@ -126,59 +180,72 @@ Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher 
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
-1. Wählen Sie Ihren Tresor aus, um das Tresordashboard und das Blatt „Einstellungen“ zu öffnen. Sollte das Blatt **Einstellungen** nicht geöffnet werden, klicken Sie im Tresordashboard auf **Alle Einstellungen**.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen. Wählen Sie auf dem Blatt **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
+1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor.
 
-    ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+  ![Auswählen des neuen Tresors in der Liste mit Recovery Services-Tresoren](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
+  Wenn Sie den Tresor auswählen, wird das Blatt **Recovery Services-Tresor** schmaler, und das Blatt mit den Einstellungen (*auf dem oben der Name des Tresors angegeben ist*) sowie das Blatt mit den Tresordetails werden geöffnet.
+
+    ![Anzeigen der Speicherkonfiguration für den neuen Tresor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+2. Scrollen Sie auf dem Blatt mit den Einstellungen des neuen Tresors mithilfe des vertikalen Schiebereglers nach unten zum Verwaltungsabschnitt, und klicken Sie auf **Sicherungsinfrastruktur**.
+    Das Blatt der Sicherungsinfrastruktur wird geöffnet.
+3. Klicken Sie auf dem Blatt der Sicherungsinfrastruktur auf **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen.
+
+    ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+4. Wählen Sie die passende Speicherreplikationsoption für Ihren Tresor aus.
+
+    ![Speicherkonfigurationsoptionen](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+
+    Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin die Option **Georedundant**. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie **Lokal redundant** aus. Dadurch verringern sich die Kosten für Azure-Speicher. Weitere Informationen zu den Optionen für [georedundanten](../storage/storage-redundancy.md#geo-redundant-storage) und [lokal redundanten](../storage/storage-redundancy.md#locally-redundant-storage) Speicher finden Sie in [dieser Übersicht über Speicherredundanz](../storage/storage-redundancy.md).
+
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Auswählen eines Sicherungsziels, Festlegen der Richtlinie und Definieren von zu schützenden Elementen
 Führen Sie zunächst den Ermittlungsprozess durch, bevor Sie einen virtuellen Computer registrieren, um sicherzustellen, dass alle neuen virtuellen Computer, die dem Abonnement hinzugefügt wurden, identifiziert werden. Bei diesem Vorgang wird Azure nach der Liste virtueller Computer im Abonnement abgefragt. Außerdem werden zusätzliche Informationen wie der Clouddienstname und die Region erfasst. „Szenario“ bezeichnet im Kontext des Azure-Portals das, was Sie dem Recovery Services-Tresor hinzufügen möchten. Die Richtlinie gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte.
 
-1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie im Hub-Menü auf **Durchsuchen**.
+1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 2 fortfahren. Klicken Sie andernfalls im Hub-Menü auf **More Services** (Weitere Dienste), geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
 
-   * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
-   * Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wenn **Recovery Services-Tresore**angezeigt wird, klicken Sie auf den Eintrag.
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
+    Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 
-     Die Liste mit den Recovery Services-Tresoren wird angezeigt.
-   * Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
+    ![Ansicht der Liste mit den Recovery Services-Tresoren](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-     Das ausgewählte Tresor-Dashboard wird geöffnet.
+    Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, um das dazugehörige Dashboard zu öffnen.
 
-     ![Tresorblatt öffnen](./media/backup-azure-vms-first-look-arm/vault-settings.png)
-2. Klicken Sie im Menü des Tresordashboards auf **Sicherung** , um das Blatt „Sicherung“ zu öffnen.
+     ![Tresorblatt öffnen](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
-    ![Blatt „Sicherung“ öffnen](./media/backup-azure-vms-first-look-arm/backup-button.png)
+2. Klicken Sie im Menü des Tresordashboards auf **Sicherung**, um das Blatt „Sicherung“ zu öffnen.
 
-    Nachdem das Blatt geöffnet wurde, sucht der Backup-Dienst nach neuen virtuellen Computern im Abonnement.
+    ![Blatt „Sicherung“ öffnen](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-    ![VMs ermitteln](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
-3. Klicken Sie auf dem Blatt „Sicherung“ auf **Sicherungsziel** , um das gleichnamige Blatt zu öffnen.
+    Die Blätter „Sicherung“ und „Sicherungsziel“ werden geöffnet.
 
-    ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
-4. Legen Sie auf dem Blatt für das Sicherungsziel die Option **Wo wird Ihre Workload ausgeführt?** auf „Azure“ und die Option **Was möchten Sie sichern?** auf „Virtueller Computer“ fest, und klicken Sie anschließend auf **OK**.
+    ![Blatt „Szenario“ öffnen](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
+3. Wählen Sie auf dem Blatt „Sicherungsziel“ im Dropdownmenü **Wo wird Ihre Workload ausgeführt?** die Option „Azure“. Wählen Sie im Dropdownmenü **Was möchten Sie sichern?** die Option „Virtueller Computer“, und klicken Sie dann auf **OK**.
 
-    Das Blatt für das Sicherungsziel wird geschlossen, und das Blatt „Sicherungsrichtlinie“ wird geöffnet.
+    Die VM-Erweiterung wird im Tresor registriert. Das Blatt „Sicherungsziel“ wird geschlossen, und das Blatt **Sicherungsrichtlinie** wird geöffnet.
 
-    ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
-5. Wählen Sie auf dem Blatt „Sicherungsrichtlinie“ die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten, und klicken Sie auf **OK**.
+    ![Blatt „Szenario“ öffnen](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
 
-    ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
+4. Wählen Sie auf dem Blatt „Sicherungsrichtlinie“ die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten.
 
-    In den Details werden die Informationen zur Standardrichtlinie aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen** , wenn Sie eine Richtlinie erstellen möchten. Im Dropdownmenü steht auch eine Option zur Verfügung, mit der die Zeit der Momentaufnahmenerstellung auf 19 Uhr festgelegt werden kann. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Nachdem Sie auf **OK**geklickt haben, wird die Sicherungsrichtlinie dem Tresor zugeordnet.
+    ![Sicherungsrichtlinie auswählen](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
-    Wählen Sie als Nächstes die VMs aus, die dem Tresor zugeordnet werden sollen.
-6. Wählen Sie die virtuellen Computer aus, die der angegebenen Richtlinie zugeordnet werden sollen, und klicken Sie auf **Auswählen**.
+    Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt. Wählen Sie im Dropdownmenü die Option **Neu erstellen** aus, wenn Sie eine neue Richtlinie erstellen möchten. Eine Anleitung zum Definieren einer Sicherungsrichtlinie finden Sie unter [Definieren einer Sicherungsrichtlinie](backup-azure-vms-first-look-arm.md#defining-a-backup-policy).
+    Klicken Sie auf **OK**, um die Sicherungsrichtlinie mit dem Tresor zu verknüpfen.
 
-    ![Workload auswählen](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
+    Das Blatt „Sicherungsrichtlinie“ wird geschlossen, und das Blatt **Virtuelle Computer auswählen** wird geöffnet.
+5. Wählen Sie auf dem Blatt **Virtuelle Computer auswählen** die virtuellen Computer aus, die der angegebenen Richtlinie zugeordnet werden sollen, und klicken Sie auf **OK**.
 
-    Sollte der gewünschte virtuelle Computer nicht angezeigt werden, überprüfen Sie, ob er sich am gleichen Azure-Standort befindet wie der Recovery Services-Tresor.
-7. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf dem Blatt „Sicherung“ auf **Sicherung aktivieren** . Die Richtlinie wird im Tresor und auf den VMs bereitgestellt.
+    ![Workload auswählen](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    ![Sicherung aktivieren](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
+    Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich am gleichen Azure-Standort wie der Recovery Services-Tresor befinden. Der Standort des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
+
+6. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie auf dem Blatt „Sicherung“ auf **Sicherung aktivieren**. Die Richtlinie wird im Tresor und auf den VMs bereitgestellt. Dadurch wird nicht der erste Wiederherstellungspunkt für den virtuellen Computer erstellt.
+
+    ![Sicherung aktivieren](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+
+Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie nach dem Zeitplan ausgeführt. Fahren Sie hier aber mit dem Initiieren des ersten Sicherungsauftrags fort.
 
 ## <a name="initial-backup"></a>Erste Sicherung
 Nachdem eine Sicherungsrichtlinie auf dem virtuellen Computer bereitgestellt wurde, bedeutet dies nicht, dass die Daten gesichert wurden. Die erste geplante Sicherung (gemäß Definition in der Sicherungsrichtlinie) ist die erste Sicherung. Bis zur Durchführung der ersten Sicherung wird der Status der letzten Sicherung auf dem Blatt **Sicherungsaufträge** als **Warnung (anfängliche Sicherung steht aus)** angezeigt.
@@ -187,34 +254,60 @@ Nachdem eine Sicherungsrichtlinie auf dem virtuellen Computer bereitgestellt wur
 
 Falls die erste Sicherung nicht ohnehin in Kürze durchgeführt wird, empfiehlt es sich, **Jetzt sichern**auszuführen.
 
-So führen Sie **Jetzt sichern**aus
+So führen Sie den ersten Sicherungsauftrag aus:
 
-1. Klicken Sie im Tresordashboard auf der Kachel **Sicherung** auf **Virtuelle Azure-Computer**. <br/>
-    ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. Klicken Sie im Tresordashboard auf die Zahl unter **Sicherungselemente**, oder klicken Sie auf die Kachel **Sicherungselemente**. <br/>
+  ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-    Das Blatt **Sicherungselemente** wird geöffnet.
-2. Klicken Sie auf dem Blatt **Sicherungselemente** mit der rechten Maustaste auf den Tresor, den Sie sichern möchten, und klicken Sie dann auf **Jetzt sichern**.
+  Das Blatt **Sicherungselemente** wird geöffnet.
 
-    ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+  ![Sicherungselemente](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-    Der Sicherungsauftrag wird ausgelöst. <br/>
+2. Wählen Sie das Element auf dem Blatt **Sicherungselemente** aus.
 
-    ![Sicherungsauftrag ausgelöst](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
-3. Klicken Sie im Tresordashboard auf der Kachel **Sicherungsaufträge** auf **Virtuelle Azure-Computer**, um zu prüfen, ob die erste Sicherung abgeschlossen wurde.
+  ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-    ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+  Die Liste **Sicherungselemente** wird geöffnet. <br/>
 
-    Das Blatt „Sicherungsaufträge“ wird geöffnet.
-4. Im Blatt „Sicherungsaufträge“ wird der Status aller Aufträge angezeigt.
+  ![Sicherungsauftrag ausgelöst](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-    ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+3. Klicken Sie in der Liste **Sicherungselemente** auf die Auslassungszeichen (**...**), um das Kontextmenü zu öffnen.
 
-   > [!NOTE]
-   > Als Teil des Sicherungsvorgangs gibt der Azure Backup-Dienst einen Befehl an die Sicherungserweiterung auf jeder VM aus, damit alle Schreibvorgänge geleert werden und eine konsistente Momentaufnahme erstellt wird.
-   >
-   >
+  ![Kontextmenü](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-    Wenn der Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
+  Das Kontextmenü wird angezeigt.
+
+  ![Kontextmenü](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
+
+4. Klicken Sie im Kontextmenü auf **Jetzt sichern**.
+
+  ![Kontextmenü](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
+
+  Das Blatt „Jetzt sichern“ wird geöffnet.
+
+  ![Blatt „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+5. Klicken Sie auf dem Blatt „Jetzt sichern“ auf das Kalendersymbol, verwenden Sie das Kalendersteuerelement zum Auswählen des letzten Aufbewahrungstags des Wiederherstellungspunkts, und klicken Sie auf **Sicherung**.
+
+  ![Festlegen des letzten Aufbewahrungstags für den Wiederherstellungspunkt für „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  Anhand von Bereitstellungsbenachrichtigungen werden Sie darüber informiert, dass der Sicherungsauftrag ausgelöst wurde und dass Sie den Status des Auftrags auf der Seite „Sicherungsaufträge“ überwachen können. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
+
+6. Klicken Sie im Tresordashboard auf der Kachel **Sicherungsaufträge** auf **In Bearbeitung**, um den Status der ersten Sicherung anzuzeigen oder nachzuverfolgen.
+
+  ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
+
+  Das Blatt „Sicherungsaufträge“ wird geöffnet.
+
+  ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
+
+  Im Blatt **Sicherungsaufträge** wird der Status aller Aufträge angezeigt. Überprüfen Sie, ob der Sicherungsvorgang für Ihre VM noch aktiv ist oder beendet wurde. Wenn ein Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
+
+  > [!NOTE]
+  > Als Teil des Sicherungsvorgangs gibt der Azure Backup-Dienst einen Befehl an die Sicherungserweiterung auf jeder VM aus, damit alle Schreibvorgänge geleert werden und eine konsistente Momentaufnahme erstellt wird.
+  >
+  >
+
 
 [!INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
@@ -244,9 +337,4 @@ Der Preis für die Sicherung von virtuellen Azure-Computern wird auf Grundlage d
 
 ## <a name="questions"></a>Fragen?
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](http://aka.ms/azurebackup_feedback).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

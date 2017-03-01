@@ -4,7 +4,7 @@ description: "Informationen zum Überwachen von Echtzeitdaten zu Ihrer Anwendung
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: a2971c3b66b31e2936ca7ebc95d103ff5daf5881
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -154,9 +155,4 @@ Sie können auch eine Mindesterkennungsrate angeben, wobei es sich um den Mindes
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

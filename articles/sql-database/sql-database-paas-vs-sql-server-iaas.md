@@ -17,8 +17,9 @@ ms.topic: get-started-article
 ms.date: 02/01/2017
 ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 7402249aa87ffe985ae13f28a701e22af3afd450
-ms.openlocfilehash: a2e65de2ec77da9005cea18876fd86fd2928b9da
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: bdcf28703f007d32144278c7f0956fe4c27c3b27
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -142,14 +143,8 @@ Entscheiden Sie sich für **SQL Server auf Azure Virtual Machines** , wenn für 
 * Sie verfügen bereits über IT-Ressourcen und können sich letztendlich selbst um Patching, Sicherungen und hohe Datenbankverfügbarkeit kümmern. Beachten Sie, dass diese Aspekte durch einige automatisierte Features erheblich vereinfacht werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erste Schritte für die SQL-Datenbank finden Sie unter [SQL-Datenbank-Tutorial: Erstellen einer SQL-Datenbank in Minuten mit dem Azure-Portal](sql-database-get-started.md) .
+* Informationen zu den ersten Schritten für SQL-Datenbank finden Sie unter [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started.md).
 * Informationen finden Sie unter [Preise für SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
 * Informationen zu den ersten Schritten mit SQL Server auf virtuellen Azure-Computern finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) .
-* Weitere Informationen finden Sie unter [SQL Server auf Azure Virtual Machines: Lernpfad](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

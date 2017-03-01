@@ -4,7 +4,7 @@ description: "Neueste Updates und Verfahren für das iOS-SDK für Azure Mobile E
 services: mobile-engagement
 documentationcenter: mobile
 author: MehrdadMzfr
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 2566eeb6-be82-4d83-aaf6-ebdcb8841189
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 8980a560f3459adf328afb9cc08ff27bde0c284b
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -49,10 +50,5 @@ Dieses Dokument enthält eine Liste und beschreibt den Inhalt des SDK-Archivs.
 > Engagement-Ansichtencontroller und Reach-SDK-Quellcode (für erfahrene Benutzer, die Engagement-Klassen an Ihre Anforderungen anpassen möchten).
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

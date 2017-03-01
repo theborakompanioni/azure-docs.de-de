@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Anmeldeinformationen für die Azure App Serv
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.service: app-service
 ms.workload: na
@@ -16,6 +16,7 @@ ms.author: dariagrigoriu
 translationtype: Human Translation
 ms.sourcegitcommit: 0ab2e30165fe3dca0e00109e9b4e22a9a1433de5
 ms.openlocfilehash: 43cf4dad58ee0e12a233125049ab4e62411459fe
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -88,8 +89,3 @@ So setzen Sie die Anmeldeinformationen auf App-Ebene zurück
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie diese Anmeldeinformationen zum Bereitstellen Ihrer App über [lokales Git](app-service-deploy-local-git.md) oder [FTP/S](app-service-deploy-ftp.md) verwenden.
-
-
-<!--HONumber=Jan17_HO1-->
-
-

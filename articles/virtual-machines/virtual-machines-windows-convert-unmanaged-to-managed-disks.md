@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: be2752f46ebedf35a28277ad853207ae8038e345
-ms.openlocfilehash: 16d18b375ba91338aafa0eaef106fdb9107bb872
+ms.sourcegitcommit: e25eaee75b1637447447ace88c2bf1d9aed83880
+ms.openlocfilehash: 484cc6419150b84ee6ed7d2c92960a4d0202e10b
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -39,17 +40,17 @@ Sie können einen nicht verwalteten virtuellen Computer, der im Resource Manager
 
 **Datenträger:**
 1.    Trennen Sie den Datenträger vom virtuellen Computer.
-2.    Kopieren Sie die VHD-Datei in ein Speicherkonto, das nie für SSE aktiviert war. Verwenden Sie [AzCopy](../storage/storage-use-azcopy.md) zum Kopieren des Datenträgers in ein anderes Speicherkonto: `https://sourceaccount.blob.core.windows.net/myvhd.vhd  https://destaccount.blob.core.windows.net/myvhd_no_encrypt.vhd /sourcekey:key1 /destkey:key1`
+2.    Kopieren Sie die VHD-Datei in ein Speicherkonto, das nie für SSE aktiviert war. Verwenden Sie [AzCopy](../storage/storage-use-azcopy.md) zum Kopieren des Datenträgers in ein anderes Speicherkonto: `AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myDataDisk.vhd`
 3.    Fügen Sie den kopierten Datenträger an den virtuellen Computer an, und konvertieren Sie den virtuellen Computer.
 
 **Betriebssystemdatenträger:**
 1.    Beenden Sie die Freigabe des virtuellen Computers. Speichern Sie bei Bedarf die Konfiguration des virtuellen Computers.
-2.    Kopieren Sie die Betriebssystem-VHD in ein Speicherkonto, das nie für SSE aktiviert war. Verwenden Sie [AzCopy](../storage/storage-use-azcopy.md) zum Kopieren des Datenträgers in ein anderes Speicherkonto: `https://sourceaccount.blob.core.windows.net/myvhd.vhd  https://destaccount.blob.core.windows.net/myvhd_no_encrypt.vhd /sourcekey:key1 /destkey:key1`
+2.    Kopieren Sie die Betriebssystem-VHD in ein Speicherkonto, das nie für SSE aktiviert war. Verwenden Sie [AzCopy](../storage/storage-use-azcopy.md) zum Kopieren des Datenträgers in ein anderes Speicherkonto: `AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myVhd.vhd`
 3.    Erstellen Sie einen virtuellen Computer, der verwaltete Datenträger verwendet, und fügen Sie diese VHD-Datei während der Erstellung als Betriebssystemdatenträger hinzu.
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Wenn Sie PowerShell verwenden, stellen Sie sicher, dass Sie über die neueste Version des AzureRM.Compute-PowerShell-Moduls verfügen. Führen Sie den folgenden Befehl aus, um es zu installieren.
+Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -176,10 +177,5 @@ Sie können auch eine Mischung von Datenträgern besitzen, die Standard- und Pre
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erstellen Sie eine schreibgeschützte Kopie eines virtuellen Computers mit [Momentaufnahmen](virtual-machines-windows-snapshot-copy-managed-disk.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

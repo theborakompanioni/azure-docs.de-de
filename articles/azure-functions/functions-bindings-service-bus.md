@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 10/31/2016
 ms.author: chrande; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: 7ff4286d6006eb362b6fba705e2afca1fd872f72
-ms.openlocfilehash: afefa826577999897a537add7a6c6301144fa38c
+ms.sourcegitcommit: 6aed248b91d25572c4eae691f4e5392e37c01400
+ms.openlocfilehash: e2d81d140c194a33ea6f1462effb09a9e283d3af
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -71,7 +72,7 @@ Beachten Sie Folgendes:
 * Verfügbare Werte für `accessRights` sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht die Berechtigung **Manage** hat, legen Sie `accessRights` auf `listen` fest. Andernfalls versucht die Functions-Laufzeit ggf. erfolglos Vorgänge, die Verwaltungsrechte erfordern.
 
 ## <a name="trigger-behavior"></a>Triggerverhalten
-* **Single-Threading**: Die Functions-Laufzeit verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `serviceBus.maxConcurrrentCalls` in *host.json* auf „1“ fest. 
+* **Single-Threading**: Die Functions-Laufzeit verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `serviceBus.maxConcurrentCalls` in *host.json* auf „1“ fest. 
   Informationen zu *host.json* finden Sie unter [Ordnerstruktur](functions-reference.md#folder-structure) und [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 * **Behandlung von nicht verarbeitbaren Nachrichten**: Service Bus kümmert sich selbst um die Handhabung nicht verarbeitbarer Nachrichten, die in Azure Functions-Konfigurationen und -Code nicht gesteuert oder konfiguriert werden kann. 
 * **PeekLock-Verhalten**: Die Functions-Runtime empfängt eine Nachricht im [`PeekLock`-Modus](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) und ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Tritt bei der Ausführung ein Fehler auf, wird `Abandon` aufgerufen. 
@@ -299,10 +300,5 @@ module.exports = function (context, myTimer) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

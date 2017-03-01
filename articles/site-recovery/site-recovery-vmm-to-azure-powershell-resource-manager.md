@@ -1,5 +1,5 @@
 ---
-title: Replizieren von Hyper-V-VMs in VMM mithilfe von Azure Site Recovery und PowerShell (Resource Manager) | Microsoft-Dokumentation
+title: Replizieren virtueller Hyper-V-Computer in VMM-Clouds mithilfe von Azure Site Recovery und PowerShell (Resource Manager) | Microsoft Docs
 description: Replizieren von virtuellen Hyper-V-Computern in VMM-Clouds mithilfe von Azure Site Recovery und PowerShell
 services: site-recovery
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 19/01/2017
+ms.date: 02/02/2017
 ms.author: rajanaki
 translationtype: Human Translation
-ms.sourcegitcommit: 75653b84d6ccbefe7d5230449bea81f498e10a98
-ms.openlocfilehash: 7159ea10e05dd6cc9ffd170719fecdb87421515c
+ms.sourcegitcommit: 2c070a6f46e41023ecd2ff7fb5c39b0d021aaef0
+ms.openlocfilehash: 0a900d4ddf6a751a4bf54720d3b62cf9e59e0a71
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -58,7 +59,7 @@ Stellen Sie sicher, dass diese Voraussetzungen erfüllt werden:
 * Sie benötigen ein [Microsoft Azure](https://azure.microsoft.com/) -Konto. Wenn Sie keins besitzen, beginnen Sie mit einem [kostenloses Konto](https://azure.microsoft.com/free). Darüber hinaus können Sie sich über die [Preisgestaltung für Azure Site Recovery Manager](https://azure.microsoft.com/pricing/details/site-recovery/)informieren.
 * Sie benötigen ein CSP-Abonnement, wenn Sie das Szenario zur Replikation zu einem CSP-Abonnement ausprobieren möchten. Erfahren Sie mehr über das CSP-Programm unter [Registrieren für das CSP-Programm](https://msdn.microsoft.com/library/partnercenter/mt156995.aspx).
 * Sie benötigen ein Azure-Speicherkonto der Version&2; (Resource Manager), um in Azure replizierte Daten zu speichern. Für das Konto muss Georeplikation aktiviert sein. Es muss sich in der gleichen Region wie der Azure Site Recovery-Dienst befinden und dem gleichen Abonnement oder dem CSP-Abonnement zugeordnet sein. Weitere Informationen zum Einrichten von Azure Storage finden Sie unter [Einführung in Microsoft Azure Storage](../storage/storage-introduction.md) .
-* Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, die [Anforderungen an virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+* Sie müssen sicherstellen, dass die virtuellen Computer, die Sie schützen möchten, die [Anforderungen an virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 > [!NOTE]
 > Derzeit sind nur Vorgänge auf VM-Ebene über Powershell möglich. Die Unterstützung für Vorgänge auf Wiederherstellungsplanebene ist bald erhältlich.  Derzeit können Sie Failover nur auf der Ebene von geschützten VMs und nicht auf der Ebene von Wiederherstellungsplänen durchführen.
@@ -132,7 +133,7 @@ Tipps für die Verwendung von Cmdlets, beispielsweise wie Parameterwerte, Eingab
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>Schritt 3: Festlegen des Kontexts des Recovery Services-Tresors
 
 Legen Sie den Tresorkontext durch Ausführen des nachstehenden Befehls fest.
-   
+
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## <a name="step-4-install-the-azure-site-recovery-provider"></a>Schritt 4: Installieren des Azure Site Recovery-Anbieters
@@ -166,7 +167,7 @@ Legen Sie den Tresorkontext durch Ausführen des nachstehenden Befehls fest.
 ## <a name="step-5-create-an-azure-storage-account"></a>Schritt 5: Erstellen eines Azure-Speicherkontos
 
 Wenn Sie kein Azure-Speicherkonto haben, erstellen Sie durch Ausführen des folgenden Befehls ein Konto für die Georeplikation in derselben geografischen Region, in der sich der Tresor befindet:
-   
+
         $StorageAccountName = "teststorageacc1"    #StorageAccountname
         $StorageAccountGeo  = "Southeast Asia"     
         $ResourceGroupName =  “myRG”             #ResourceGroupName
@@ -243,7 +244,7 @@ Nach der korrekten Konfiguration der Server, Clouds und Netzwerke können Sie de
 
  Beachten Sie Folgendes:
 
-* Die virtuellen Computer müssen die Azure-Anforderungen erfüllen. Diese finden Sie im Planungshandbuch unter [Voraussetzungen und Support](site-recovery-best-practices.md) .
+* Die virtuellen Computer müssen die Azure-Anforderungen erfüllen. Diese finden Sie im Planungshandbuch unter [Voraussetzungen und Support](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) .
 * Um den Schutz zu aktivieren, müssen die Eigenschaften „Betriebssystem“ und „Betriebssystem-Datenträger“ für den virtuellen Computer festgelegt sein. Sie können diese Eigenschaften setzen, wenn Sie den virtuellen Computer in VMM mithilfe einer Vorlage für virtuelle Computer erstellen. Außerdem können Sie diese Eigenschaften für vorhandene virtuelle Computer auf den Registerkarten **Allgemein** und **Hardwarekonfiguration** in den Eigenschaften der virtuellen Computer festlegen. Falls diese Eigenschaften in VMM nicht angezeigt werden, sollten Sie sie dennoch im Azure Site Recovery-Portal konfigurieren können.
 
 1. Führen Sie den folgenden Befehl aus, um den Schutzcontainer abzurufen und den Schutz zu aktivieren:
@@ -307,9 +308,4 @@ Verwenden Sie die folgenden Befehle zum Überwachen der Aktivität. Beachten Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

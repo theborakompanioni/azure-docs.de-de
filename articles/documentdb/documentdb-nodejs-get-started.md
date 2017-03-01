@@ -1,7 +1,7 @@
 ---
-title: "NoSQL Node.js-Tutorial für DocumentDB | Microsoft-Dokumentation"
+title: "NoSQL Node.js-Tutorial für DocumentDB | Microsoft Docs"
 description: "Ein NoSQL Node.js-Tutorial, in dem Sie eine NoSQL-Datenbank und eine Konsolenanwendung mit dem DocumentDB Node.js SDK erstellen. DocumentDB ist eine NoSQL-Datenbank für JSON."
-keywords: Node.js-Tutorial, Node-Datenbank
+keywords: node.js tutorial, node database
 services: documentdb
 documentationcenter: node.js
 author: AndrewHoh
@@ -16,8 +16,9 @@ ms.topic: hero-article
 ms.date: 12/25/2016
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: 16bff1b5708652a75ea603f596c864901b12a88d
-ms.openlocfilehash: 08f4cd48ea41d66203e296415181d5da14327854
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: 49b765010be87bacdb486391c28bf58aad1a9d24
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -406,7 +407,7 @@ Das folgende Diagramm veranschaulicht, wie die DocumentDB-SQL-Abfragesyntax für
 
 ![Node.js-Tutorial – Diagramm zur Veranschaulichung des Bereichs und der Bedeutung der Abfrage – Node-Datenbank](./media/documentdb-nodejs-get-started/node-js-tutorial-collection-documents.png)
 
-Das [FROM](documentdb-sql-query.md#from-clause) -Schlüsselwort ist in der Abfrage optional, da DocumentDB Abfragen auf eine Sammlung begrenzt. Aus diesem Grund ist "FROM Familien f" austauschbar mit "FROM Stamm r" oder einem anderen variablen Namen, den Sie auswählen. DocumentDB wird ableiten, dass Familien, Stamm oder der variable Name, den Sie ausgewählt haben, standardmäßig auf die aktuelle Sammlung verweisen.
+Das [FROM](documentdb-sql-query.md#FromClause) -Schlüsselwort ist in der Abfrage optional, da DocumentDB Abfragen auf eine Sammlung begrenzt. Aus diesem Grund ist "FROM Familien f" austauschbar mit "FROM Stamm r" oder einem anderen variablen Namen, den Sie auswählen. DocumentDB wird ableiten, dass Familien, Stamm oder der variable Name, den Sie ausgewählt haben, standardmäßig auf die aktuelle Sammlung verweisen.
 
 Fügen Sie den kopierten Code unterhalb des Aufrufs von **getFamilyDocument** ein, um die **queryCollection**-Funktion auszuführen.
 
@@ -627,9 +628,4 @@ Das ist alles, nun müssen Sie nur noch die Erstellung durchführen.
 
 [documentdb-create-account]: documentdb-create-account.md
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -42,13 +42,35 @@ Wenn Sie Tags auf eine Ressource oder Ressourcengruppe anwenden, werden die bere
   Set-AzureRmResource -Tag $tags -ResourceName storageexample -ResourceGroupName TagTestGroup -ResourceType Microsoft.Storage/storageAccounts
   ```
 
-Mit dem folgenden Skript können Sie alle Tags aus einer Ressourcengruppe auf die Ressourcen in der Ressourcengruppe anwenden, **ohne bereits vorhandene Tags für die Ressourcen beizubehalten**:
+Verwenden Sie das folgende Skript, um alle Tags einer Ressourcengruppe auf die darin enthaltenen Ressourcen anzuwenden und **vorhandene Tags für die Ressourcen nicht beizubehalten**:
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
 foreach ($g in $groups) 
 {
     Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force } 
+}
+```
+
+Verwenden Sie das folgende Skript, um alle Tags einer Ressourcengruppe auf die darin enthaltenen Ressourcen anzuwenden und **vorhandene Tags für Ressourcen beizubehalten, die keine Duplikate sind**:
+
+```powershell
+$groups = Get-AzureRmResourceGroup
+foreach ($g in $groups) 
+{
+    if ($g.Tags -ne $null) {
+        $resources = Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName 
+        foreach ($r in $resources)
+        {
+            $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
+            foreach ($key in $g.Tags.Keys)
+            {
+                if ($resourcetags.ContainsKey($key)) { $resourcetags.Remove($key) }
+            }
+            $resourcetags += $g.Tags
+            Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
+        }
+    }
 }
 ```
 
@@ -69,9 +91,4 @@ Mit dem Cmdlet `Find-AzureRmResource` können Sie alle Ressourcen mit einem best
 ```powershell
 (Find-AzureRmResource -TagName Dept -TagValue Finance).Name
 ```
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

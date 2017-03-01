@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 translationtype: Human Translation
-ms.sourcegitcommit: 8a4e26b7ccf4da27b58a6d0bcfe98fc2b5533df8
-ms.openlocfilehash: 4afdde65fe4c69d1944c0e1a3c5dd3300c5b970c
+ms.sourcegitcommit: e1b909f419c8c04a9332a29669148321ab3dbd2d
+ms.openlocfilehash: 2afd8e04ac325f1c9f2dee8aed867b0d0a6b558d
 
 
 ---
-# <a name="change-signature-hash-algorithm-for-office-365-replying-party-trust"></a>Ändern des Signaturhashalgorithmus für die Vertrauensstellung der vertrauenden Seite für Office 365
+# <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Ändern des Signaturhashalgorithmus für die Vertrauensstellung der vertrauenden Seite für Office 365
 ## <a name="overview"></a>Übersicht
-Azure Active Directory-Verbunddienste (Active Directory Federation Services, AD FS) signiert seine Token in Microsoft Azure Active Directory, um sicherzustellen, dass sie nicht manipuliert werden können. Diese Signatur kann auf SHA-1 oder SHA-256 basieren. Azure Active Directory unterstützt jetzt Token, die mit einem SHA-256-Algorithmus signiert wurden, und es wird empfohlen, den Signaturalgorithmus für Token auf SHA-256 festzulegen, um ein Höchstmaß an Sicherheit zu erzielen. Dieser Artikel erläutert, wie Sie den Tokensignaturalgorithmus auf das sicherere Level SHA-256 festlegen.
+Active Directory-Verbunddienste (Active Directory Federation Services, AD FS) signieren die eigenen Token in Microsoft Azure Active Directory, um sicherzustellen, dass sie nicht manipuliert werden können. Diese Signatur kann auf SHA-1 oder SHA-256 basieren. Azure Active Directory unterstützt jetzt Token, die mit einem SHA-256-Algorithmus signiert wurden, und es wird empfohlen, den Signaturalgorithmus für Token auf SHA-256 festzulegen, um ein Höchstmaß an Sicherheit zu erzielen. Dieser Artikel erläutert, wie Sie den Tokensignaturalgorithmus auf das sicherere Level SHA-256 festlegen.
 
 ## <a name="change-the-token-signing-algorithm"></a>Ändern des Tokensignaturalgorithmus
 Nachdem Sie den Signaturalgorithmus mit einer der beiden unten aufgeführten Vorgehensweisen festgelegt haben, signiert AD FS die Token für die Vertrauensstellung der vertrauenden Seite für Office 365 mit SHA-256. Sie müssen keine zusätzlichen Konfigurationsänderungen vornehmen, und Sie können trotz dieser Änderung auf Office 365 oder andere Azure AD-Anwendungen zugreifen.
@@ -49,6 +49,6 @@ Nachdem Sie den Signaturalgorithmus mit einer der beiden unten aufgeführten Vor
 
 
 
-<!--HONumber=Dec16_HO4-->
+<!--HONumber=Feb17_HO2-->
 
 

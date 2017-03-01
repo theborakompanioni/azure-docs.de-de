@@ -4,7 +4,7 @@ description: "Behebung der Fehler „502 Ungültiges Gateway“ und „503 Diens
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: top-support-issue
 keywords: "„502 Ungültiges Gateway“, „503 Dienst nicht verfügbar“, Fehler 503, Fehler 502"
@@ -19,6 +19,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f6ef85e0c05911bb3ad13a8ffb029bf9fadd8bfd
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -129,10 +130,5 @@ Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-P
  ![Neustart der App zur Behebung der HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
 Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

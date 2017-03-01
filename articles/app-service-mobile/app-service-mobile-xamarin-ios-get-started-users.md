@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren Ihrer Xamar
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a7a4f4b5884c7c8536ad969558eaad4262be52c7
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: cdc8d62c0adb81330353b73be8a0a9db8cef0052
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -99,12 +100,7 @@ In diesem Abschnitt modifizieren Sie die App, sodass vor der Anzeige von Daten e
     Führen Sie die Aktualisierungsgeste durch Herunterziehen der Objektliste, was die Anzeige des Anmeldebildschirms auslöst. Nachdem Sie erfolgreich gültige Anmeldeinformationen eingegeben haben, zeigt die App die Liste der To-Do-Objekte an, und Sie können die Daten ändern.
 
 <!-- URLs. -->
-[Anwendungsseite senden]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[Meine Anwendungen]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Erstellen einer Xamarin.iOS-App]: app-service-mobile-xamarin-ios-get-started.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

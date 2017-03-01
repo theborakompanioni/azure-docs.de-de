@@ -39,6 +39,7 @@
 ### [Partitionierte Warteschlangen und Themen](service-bus-partitioning.md)
 ### [Warteschlangen für unzustellbare Nachrichten](service-bus-dead-letter-queues.md)
 ### [Transaktionsverarbeitung](service-bus-transactions.md)
+### [Diagnoseprotokolle](service-bus-diagnostic-logs.md)
 ### AMQP
 #### [.NET](service-bus-amqp-dotnet.md)
 #### [Java](service-bus-amqp-java.md)
@@ -71,10 +72,5 @@
 ## [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=service-bus)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

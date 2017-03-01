@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/02/2017
+ms.date: 02/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 8e11b36ee927724d4736f8a235aa97848ee2d271
-ms.openlocfilehash: d0647706ad18b3106de44496e43ea822896215ba
+ms.sourcegitcommit: f4b26aa9a4dd110eafb8f9f8d658cc0f530136ec
+ms.openlocfilehash: 4548d83525dba6024d1892950e3acbc6b857977a
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -179,21 +180,21 @@ Auf Azure Storage-Ressourcen kann über jede Sprache zugegriffen werden, die fü
 * [REST-API für Speicherdienste](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Speicherclientbibliothek für .NET, Windows Phone und Windows-Runtime](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)
-* [Speicherclientbibliothek für Java/Android](/develop/java/)
+* [Speicherclientbibliothek für Java/Android](https://azure.microsoft.com/develop/java/)
 * [Speicherclientbibliothek für Node.js](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [Speicherclientbibliothek für PHP](/develop/php/)
-* [Speicherclientbibliothek für Ruby](/develop/ruby/)
-* [Speicherclientbibliothek für Python](/develop/python/)
+* [Speicherclientbibliothek für PHP](https://azure.microsoft.com/develop/php/)
+* [Speicherclientbibliothek für Ruby](https://azure.microsoft.com/develop/ruby/)
+* [Speicherclientbibliothek für Python](https://azure.microsoft.com/develop/python/)
 * [Storage-Cmdlets für PowerShell 1.0](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### <a name="azure-storage-management-services"></a>Azure Storage-Verwaltungsdienste
-* [Speicherressourcenanbieter – REST-API-Referenz](https://msdn.microsoft.com/library/azure/mt163683.aspx)
-* [Speicherressourcenanbieter – Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx)
-* [Speicherressourcenanbieter – Cmdlets für PowerShell 1.0](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+* [Speicherressourcenanbieter – REST-API-Referenz](/rest/api/storagerp/)
+* [Speicherressourcenanbieter – Clientbibliothek für .NET](/dotnet/api/microsoft.azure.management.storage)
+* [Speicherressourcenanbieter – Cmdlets für PowerShell 1.0](/powershell/storage/)
 * [Storage-Dienstverwaltung – REST-API (klassisch)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### <a name="azure-storage-data-movement-services"></a>Azure Storage-Datenverschiebungsdienste
-* [Import/Export-Storage-Dienst – REST-API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
+* [Import/Export-Storage-Dienst – REST-API](storage-import-export-service.md)
 * [Storage-Datenverschiebung – Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### <a name="tools-and-utilities"></a>Tools und Hilfsprogramme
@@ -248,9 +249,4 @@ Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 * [Gewusst wie: Verwenden von Table Storage mit Python](storage-python-how-to-use-table-storage.md)
 * [Gewusst wie: Verwenden von Queue Storage mit Python](storage-python-how-to-use-queue-storage.md)
 * [Gewusst wie: Verwenden von Azure File Storage mit Python](storage-python-how-to-use-file-storage.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

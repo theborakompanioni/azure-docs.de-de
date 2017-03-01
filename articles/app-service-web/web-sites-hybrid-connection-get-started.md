@@ -4,7 +4,7 @@ description: Herstellen einer Verbindung zwischen einer Web-App in Azure App Ser
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: a46ed26b-df8e-4fc3-8e05-2d002a6ee508
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: cb656dd952e76ee29e102fff531d34a45e4630e4
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -247,9 +248,4 @@ An diesem Punkt können Sie das Serverprojekt erneut veröffentlichen und die ne
 [HCMInstalling]:./media/web-sites-hybrid-connection-get-started/D08HCMInstalling.png
 [HCMInstallComplete]:./media/web-sites-hybrid-connection-get-started/D09HCMInstallComplete.png
 [HCStatusConnected]:./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

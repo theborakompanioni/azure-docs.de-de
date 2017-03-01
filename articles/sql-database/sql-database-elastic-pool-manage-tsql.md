@@ -16,8 +16,8 @@ ms.workload: data-management
 ms.date: 05/27/2016
 ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 637171b775d01e16cec1a7e9ef6fad73875eac69
-ms.openlocfilehash: 4f6c3713c6ca579d6ec24e8f208299f9984e0d00
+ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
+ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
 
 
 ---
@@ -62,14 +62,14 @@ Verwenden Sie die Sicht [sys.database\_service\_objectives](https://msdn.microso
     ON d.database_id = slo.database_id
     WHERE elastic_pool_name = 'MyElasticPool'; 
 
-## <a name="get-resource-usage-data-for-an-elastic"></a>Abrufen der Daten zur Ressourcenauslastung für eine elastische Datenbank
+## <a name="get-resource-usage-data-for-an-elastic-pool"></a>Abrufen der Daten zur Ressourcenauslastung für einen Pool für elastische Datenbanken
 Verwenden Sie die Sicht [sys.elastic\_pool\_resource\_stats](https://msdn.microsoft.com/library/mt280062.aspx), um die Statistik zur Ressourcenauslastung eines elastischen Pools auf einem logischen Server zu untersuchen. Melden Sie sich an der Masterdatenbank an, um die Sicht abzufragen.
 
     SELECT * FROM sys.elastic_pool_resource_stats 
     WHERE elastic_pool_name = 'MyElasticPool'
     ORDER BY end_time DESC;
 
-## <a name="get-resource-usage-for-an-elastic-database"></a>Abrufen der Ressourcenauslastung für eine elastische Datenbank
+## <a name="get-resource-usage-for-a-pooled-database"></a>Abrufen der Ressourcenauslastung für eine gruppierte Datenbank
 Verwenden Sie die Sichten [sys.dm\_ db\_ resource\_stats view](https://msdn.microsoft.com/library/dn800981.aspx) oder [sys.resource \_stats](https://msdn.microsoft.com/library/dn269979.aspx), um die Statistik zur Ressourcenauslastung einer Datenbank in einem elastischen Pool zu untersuchen. Dieser Prozess ähnelt dem Abfragen der Ressourcenauslastung für eine Einzeldatenbank.
 
 ## <a name="next-steps"></a>Nächste Schritte

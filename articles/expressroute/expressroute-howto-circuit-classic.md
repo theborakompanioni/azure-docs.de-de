@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 02/08/2017
 ms.author: ganesr;cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 9a8a72f5255184a1ac571532355c7f7a23d7f7bd
-ms.openlocfilehash: 47be5ec3cf74bc10b0dab289650e29dae8cf0c03
+ms.sourcegitcommit: fe0bff84a5316628d9e465da0d4e62162f1ea4f2
+ms.openlocfilehash: cb67631dbbfb53a0de9b07bc3918bd70751ec41b
 
 
 ---
@@ -32,18 +32,21 @@ ms.openlocfilehash: 47be5ec3cf74bc10b0dab289650e29dae8cf0c03
 
 In diesem Artikel werden Sie durch die Schritte zum Erstellen einer Azure ExpressRoute-Verbindung mithilfe von PowerShell-Cmdlets und des klassischen Bereitstellungsmodells geführt. In diesem Artikel wird auch veranschaulicht, wie Sie den Status prüfen, ein Update durchführen oder eine ExpressRoute-Verbindung löschen oder deren Bereitstellung aufheben.
 
+[!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
+
+
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-### <a name="1-review-the-prerequisites-and-workflow-articles"></a>1. Überprüfen der Voraussetzungen und Workflowartikel
+### <a name="step-1-review-the-prerequisites-and-workflow-articles"></a>Schritt 1: Überprüfen der Voraussetzungen und Workflowartikel
 Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md) gelesen haben.  
 
-### <a name="2-install-the-latest-versions-of-the-azure-powershell-modules"></a>2. Installieren der aktuellen Versionen der Azure PowerShell-Module
+### <a name="step-2-install-the-latest-versions-of-the-azure-powershell-modules"></a>Schritt 2: Installieren der aktuellen Versionen der Azure PowerShell-Module
 Eine Schritt-für-Schritt-Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module erhalten Sie auf der Seite [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
-### <a name="3-log-in-to-your-azure-account-and-select-a-subscription"></a>3. Anmelden bei Ihrem Azure-Konto und Auswählen eines Abonnements
+### <a name="step-3-log-in-to-your-azure-account-and-select-a-subscription"></a>Schritt 3: Anmelden bei Ihrem Azure-Konto und Auswählen eines Abonnements
 1. Führen Sie das folgende Cmdlet in einem Windows PowerShell-Fenster mit erhöhten Rechten aus:
    
         Add-AzureAccount
@@ -56,13 +59,13 @@ Eine Schritt-für-Schritt-Anleitung zum Konfigurieren des Computers für die Ver
         Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
-### <a name="1-import-the-powershell-modules-for-expressroute"></a>1. Importieren der PowerShell-Module für ExpressRoute
+### <a name="step-1-import-the-powershell-modules-for-expressroute"></a>Schritt 1: Importieren der PowerShell-Module für ExpressRoute
  Falls nicht bereits geschehen, müssen Sie die Azure- und ExpressRoute-Module in die PowerShell-Sitzung importieren, um die ExpressRoute-Cmdlets verwenden zu können. Sie importieren die Module aus dem Speicherort, im dem sie auf dem lokalen Computer installiert waren. Je nach der Methode, die Sie verwendet haben, um die Module zu installieren, weicht der Speicherort möglicherweise vom folgenden Beispiel ab. Ändern Sie das Beispiel, sofern erforderlich.  
 
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
     Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Rufen Sie die Liste der unterstützten Anbieter, Standorte und Bandbreiten ab.
+### <a name="step-2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>Schritt 2: Rufen Sie die Liste der unterstützten Anbieter, Standorte und Bandbreiten ab.
 Vor dem Erstellen einer ExpressRoute-Verbindung benötigen Sie die Liste der unterstützten Konnektivitätsanbieter, Standorte und Bandbreitenoptionen.
 
 Das PowerShell-Cmdlet `Get-AzureDedicatedCircuitServiceProvider` gibt diese Informationen zurück, die Sie in späteren Schritten verwenden werden:
@@ -77,7 +80,7 @@ Das PowerShell-Cmdlet `Get-AzureDedicatedCircuitServiceProvider` gibt diese Info
 
 Sie können nun eine ExpressRoute-Verbindung erstellen.         
 
-### <a name="3-create-an-expressroute-circuit"></a>3. Erstellen Sie eine ExpressRoute-Verbindung.
+### <a name="step-3-create-an-expressroute-circuit"></a>Schritt 3: Erstellen Sie eine ExpressRoute-Verbindung.
 Das folgende Beispiel zeigt, wie Sie eine ExpressRoute-Verbindung mit 200 MBit/s über Equinix im Silicon Valley herstellen können. Wenn Sie einen anderen Anbieter und andere Einstellungen verwenden, ersetzen Sie bei Ihrer Anforderung die entsprechenden Informationen.
 
 > [!IMPORTANT]
@@ -103,7 +106,7 @@ Die Antwort enthält den Dienstschlüssel. Ausführliche Beschreibungen aller Pa
 
     get-help new-azurededicatedcircuit -detailed
 
-### <a name="4-list-all-the-expressroute-circuits"></a>4. Auflisten aller ExpressRoute-Verbindungen
+### <a name="step-4-list-all-the-expressroute-circuits"></a>Schritt 4: Auflisten aller ExpressRoute-Verbindungen
 Um eine Liste mit allen von Ihnen erstellten ExpressRoute-Verbindungen abzurufen, können Sie den Befehl `Get-AzureDedicatedCircuit` ausführen:
 
     Get-AzureDedicatedCircuit
@@ -136,7 +139,7 @@ Ausführliche Beschreibungen aller Parameter erhalten Sie, wenn Sie Folgendes au
 
     get-help get-azurededicatedcircuit -detailed
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
+### <a name="step-5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>Schritt 5: Senden Sie den Dienstschlüssel zur Bereitstellung an Ihren Konnektivitätsanbieter.
 *ServiceProviderProvisioningState* enthält Informationen zum aktuellen Zustand der Bereitstellung auf Dienstanbieterseite. *Status* wird der Zustand auf Microsoft-Seite angegeben. Weitere Informationen zu den Bereitstellungszuständen einer Verbindung finden Sie im Artikel [Workflows](expressroute-workflows.md#expressroute-circuit-provisioning-states) .
 
 Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folgenden Zustand auf:
@@ -156,7 +159,7 @@ Eine ExpressRoute-Verbindung muss sich im folgenden Zustand befinden, damit Sie 
     Status                           : Enabled
 
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
+### <a name="step-6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Schritt 6: Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
 So sind Sie informiert, wenn Ihr Anbieter die Verbindung aktiviert hat. Sobald die Verbindung konfiguriert wurde, zeigt *ServiceProviderProvisioningState* wie im folgenden Beispiel den Status *Bereitgestellt* an:
 
     Get-AzureDedicatedCircuit
@@ -170,15 +173,15 @@ So sind Sie informiert, wenn Ihr Anbieter die Verbindung aktiviert hat. Sobald d
     Sku                              : Standard
     Status                           : Enabled
 
-### <a name="7-create-your-routing-configuration"></a>7. Erstellen Sie die Routingkonfiguration.
+### <a name="step-7-create-your-routing-configuration"></a>Schritt 7 Erstellen Sie die Routingkonfiguration.
 Eine detaillierte Anleitung finden Sie auf der Seite [Routingkonfiguration für ExpressRoute-Verbindung (Erstellen und Ändern von Verbindungspeerings)](expressroute-howto-routing-classic.md) .
 
 > [!IMPORTANT]
-> Diese Anweisungen gelten nur für Verbindungen, die über Dienstanbieter erstellt wurden, von denen Layer 2-Konnektivitätsdienste angeboten werden. Wenn Sie einen Dienstanbieter nutzen, der verwaltete Layer 3-Dienste anbietet (meist ein IP VPN, z.B. MPLS), übernimmt Ihr Konnektivitätsanbieter die Konfiguration und Verwaltung des Routings für Sie.
+> Diese Anweisungen gelten nur für Verbindungen, die über Dienstanbieter erstellt wurden, von denen Layer 2-Konnektivitätsdienste angeboten werden. Wenn Sie einen Dienstanbieter nutzen, der verwaltete Layer 3-Dienste anbietet (meist ein IP VPN, z.B. MPLS), übernimmt Ihr Konnektivitätsanbieter die Konfiguration und Verwaltung des Routings für Sie.
 > 
 > 
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
+### <a name="step-8-link-a-virtual-network-to-an-expressroute-circuit"></a>Schritt 8: Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Verbindung. Lesen Sie die Schritt-für-Schritt-Anweisungen unter [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](expressroute-howto-linkvnet-classic.md) . Wenn Sie ein virtuelles Netzwerk für ExpressRoute mithilfe des klassischen Bereitstellungsmodells erstellen möchten, hilft Ihnen die Anleitung unter [Erstellen eines virtuellen Netzwerks für ExpressRoute](expressroute-howto-vnet-portal-classic.md) weiter.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Abrufen des Status einer ExpressRoute-Verbindung
@@ -218,7 +221,7 @@ Sie können Informationen zu einer bestimmten ExpressRoute-Verbindung erhalten, 
     Status                           : Enabled
 
 
-Ausführliche Beschreibungen aller Parameter erhalten Sie, wenn Sie Folgendes ausführen:
+Ausführliche Beschreibungen aller Parameter erhalten Sie, wenn Sie folgendes Beispiel ausführen:
 
     get-help get-azurededicatedcircuit -detailed
 
@@ -256,12 +259,13 @@ Für Ihre Verbindung sind nun die Features des ExpressRoute Premium-Add-Ons akti
 > 
 > 
 
-Beachten Sie Folgendes:
+#### <a name="considerations"></a>Überlegungen
 
 * Sie müssen sicherstellen, dass die Anzahl von virtuellen Netzwerken, die mit der Verbindung verknüpft sind, kleiner als zehn ist, bevor Sie ein Downgrade von Premium auf Standard durchführen. Wenn Sie dies nicht beachten, tritt für die Updateanforderung ein Fehler auf, und Ihnen werden die Premium-Gebühren berechnet.
 * Sie müssen die Verknüpfung für alle virtuellen Netzwerke in anderen geopolitischen Regionen aufheben. Wenn Sie dies nicht beachten, tritt für die Updateanforderung ein Fehler auf, und Ihnen werden die Premium-Gebühren berechnet.
 * Ihre Routentabelle muss für das private Peering weniger als 4.000 Routen aufweisen. Wenn Ihre Routentabelle mehr als 4.000 Routen umfasst, wird die BGP-Sitzung verworfen. Eine erneute Aktivierung ist erst dann wieder möglich, wenn die Anzahl der angekündigten Präfixe unter 4.000 fällt.
 
+#### <a name="disable-the-premium-add-on"></a>Deaktivieren des Premium-Add-Ons
 Für Ihre bereits vorhandene Verbindung können Sie das ExpressRoute Premium-Add-On mit dem folgenden PowerShell-Cmdlet deaktivieren:
 
     Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Standard
@@ -284,6 +288,8 @@ Informationen zu unterstützten Bandbreitenoptionen für Ihren Anbieter finden S
 > Es ist nicht möglich, die Bandbreite einer ExpressRoute-Verbindung ohne Störungen zu reduzieren. Ein Downgrade der Bandbreite erfordert, dass Sie die Bereitstellung der ExpressRoute-Verbindung aufheben und dann eine neue ExpressRoute-Verbindung bereitstellen.
 > 
 > 
+
+#### <a name="resize-a-circuit"></a>Ändern der Größe einer Verbindung
 
 Sobald Sie sich für die benötigte Größe entschieden haben, können Sie den folgenden Befehl verwenden, um die Größe der Verbindung anzupassen.
 
@@ -312,11 +318,14 @@ Wenn beim Erhöhen der Verbindungsbandbreite der folgende Fehler angezeigt wird,
 
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
-Beachten Sie Folgendes:
+
+### <a name="considerations"></a>Überlegungen
 
 * Sie müssen die Verknüpfung aller virtuellen Netzwerke mit der ExpressRoute-Verbindung aufheben, damit dieser Vorgang erfolgreich durchgeführt werden kann. Überprüfen Sie, ob noch virtuelle Netzwerke mit der Verbindung verknüpft sind, falls dieser Vorgang nicht erfolgreich ist.
 * Wenn der Bereitstellungsstatus des ExpressRoute-Verbindungsdienstanbieters **Bereitstellung** oder **Bereitgestellt** lautet, arbeiten Sie mit Ihrem Dienstanbieter zusammen, um die Verbindungsbereitstellung auf Anbieterseite aufzuheben. Microsoft reserviert weiterhin Ressourcen für Sie und stellt Ihnen dies in Rechnung, bis der Dienstanbieter die Aufhebung der Verbindungsbereitstellung abgeschlossen hat und uns benachrichtigt.
 * Wenn der Dienstanbieter die Bereitstellung der Verbindung aufgehoben hat (Bereitstellungsstatus des Dienstanbieters lautet **Nicht bereitgestellt**), können Sie die Verbindung löschen. Damit wird die Abrechnung für die Verbindung beendet.
+
+#### <a name="delete-a-circuit"></a>Löschen einer Verbindung
 
 Sie können die ExpressRoute-Verbindung löschen, indem Sie den folgenden Befehl ausführen:
 
@@ -333,6 +342,6 @@ Führen Sie nach dem Erstellen Ihrer Verbindung folgende Vorgänge aus:
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
