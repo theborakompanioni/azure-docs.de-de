@@ -4,7 +4,7 @@ description: "Handbücher zur Problembehandlung für Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8b4275da-c0b4-4690-824a-48e9d7a1fc6e
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 01862d158f4771989ae6eb3b20fe8e080123a231
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -88,10 +89,5 @@ Im Folgenden finden Sie mögliche Probleme, die bei der Ausführung von Azure Mo
   * Verwenden Sie als Trennzeichen ein Komma "," (Sie können über eine Dienstanfrage die Änderung des CSV-Trennzeichens von einem Komma "," in ein anderes Zeichen anfordern, beispielsweise ein Semikolon ";").
   * Verwenden Sie ausschließlich Kleinbuchstaben für die booleschen Werte "true" und "false".
   * Verwenden Sie eine Datei, die die maximale Größe von 35 MB nicht übersteigt.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

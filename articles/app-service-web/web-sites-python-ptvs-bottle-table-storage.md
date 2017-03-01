@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mithilfe der Python-Tools für Visual Studio
 services: app-service\web
 documentationcenter: python
 author: huguesv
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f075124b-db79-4e51-b394-09187dd6c634
 ms.service: app-service-web
@@ -17,6 +17,7 @@ ms.author: huvalo
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 4aa0e4d036b7031e51abc6ac53872db64c2f90b4
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -190,9 +191,4 @@ Folgen Sie diesen Links, wenn Sie mehr über Python Tools für Visual Studio, Bo
 [Cloud Service-Projekte]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Azure Storage (in englischer Sprache)]: http://azure.microsoft.com/documentation/services/storage/
 [Azure-SDK für Python]: https://github.com/Azure/azure-sdk-for-python
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

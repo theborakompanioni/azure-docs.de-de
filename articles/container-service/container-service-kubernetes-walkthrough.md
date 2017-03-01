@@ -82,7 +82,7 @@ az acs kubernetes install-cli
 Führen Sie nach der Installation von `kubectl` den folgenden Befehl aus, um die Masterkonfiguration des Kubernetes-Clusters in die Datei „~/.kube/config“ herunterzuladen:
 
 ```console
-az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$SERVICE_NAME
+az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
 An diesem Punkt sollte alles bereit sein, um von Ihrem Computer auf den Cluster zuzugreifen. Probieren Sie Folgendes aus:

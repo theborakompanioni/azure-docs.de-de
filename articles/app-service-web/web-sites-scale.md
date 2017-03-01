@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie eine App in Azure App Service zentral hochsk
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: mollybos
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: b7ef8386e974486c2d327d0b042eeabdb9701b7e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -140,9 +141,4 @@ Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Ver
 [ResourceGroup]: ./media/web-sites-scale/scale10ResourceGroup.png
 [ScaleDatabase]: ./media/web-sites-scale/scale11SQLScale.png
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

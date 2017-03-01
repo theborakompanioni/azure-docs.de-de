@@ -2,7 +2,7 @@
 title: High Density-Hosting in Azure App Service | Microsoft-Dokumentation
 description: High Density-Hosting in Azure App Service
 author: btardif
-manager: wpickett
+manager: erikre
 editor: 
 services: app-service\web
 documentationcenter: 
@@ -17,6 +17,7 @@ ms.author: byvinyal
 translationtype: Human Translation
 ms.sourcegitcommit: 0c2677b388f7a88ff88715a05212633565393cc2
 ms.openlocfilehash: 2d5d1d5123ca718b2e7dcdf426b77f91969dc9dc
+ms.lasthandoff: 01/13/2017
 
 
 ---
@@ -152,10 +153,5 @@ Führen Sie zum Konfigurieren des High Density-Hosting für Ihre Apps die folgen
 3. Legen Sie im App Service-Plan das PerSiteScaling-Flag auf TRUE fest.
 4. Neue Apps werden erstellt und diesem App Service-Plan zugewiesen, wobei die **numberOfWorkers**-Eigenschaft auf **1** festgelegt wird. Durch die Konfiguration ergibt sich die höchstmögliche Dichte für diesen Workerpool.
 5. Die Anzahl der Worker kann pro App unabhängig konfiguriert werden, um nach Bedarf zusätzliche Ressourcen zur Verfügung zu stellen. Beispielsweise kann für eine App mit hoher Nutzung für **numberOfWorkers** der Wert **3** festgelegt werden, um mehr Verarbeitungskapazität für die App bereitzustellen, während bei weniger stark genutzten Apps **numberOfWorkers** auf **1** festgelegt wird.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

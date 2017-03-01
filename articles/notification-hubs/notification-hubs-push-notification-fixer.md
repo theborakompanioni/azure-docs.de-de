@@ -4,7 +4,7 @@ description: Richtlinien zum Analysieren allgemeiner Probleme mit Azure Notifica
 services: notification-hubs
 documentationcenter: Mobile
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: b0b067f02f02f722534238891f7412153635df80
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -239,10 +240,5 @@ Ausführlichere Informationen finden Sie hier:
 [EnableTestSend]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx
 [Programmgesteuerter Telemetriezugriff]: http://msdn.microsoft.com/library/azure/dn458823.aspx
 [Telemetriezugriff über APIs – Beispiel]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
