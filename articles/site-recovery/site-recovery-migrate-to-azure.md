@@ -15,9 +15,9 @@ ms.topic: get-started-article
 ms.date: 01/04/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3396818cd177330b7123f3a346b1591a4bcb1e4e
-ms.openlocfilehash: f0edea9c1509b0eb4b2590019610ccc9eb9d5f55
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 2fb457166b4ebe61c11173aa75bdcd2fbce3f03d
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -48,7 +48,7 @@ Sie haben folgende Möglichkeiten:
 
 Zum Migrieren von lokalen Hyper-V-VMs, VMware-VMs und physischen Servern führen Sie fast die gleichen Schritte wie bei der regulären Replikation aus. Sie richten einen Recovery Services-Tresor ein, konfigurieren die erforderlichen Verwaltungsserver (je nachdem, was migriert werden soll), fügen sie dem Tresor hinzu und geben die Replikationseinstellungen an. Sie aktivieren die Replikation für die zu migrierenden Computer und führen ein schnelles Testfailover durch, um sicherzustellen, dass alles wie gewünscht funktioniert.
 
-Nachdem Sie sich vergewissert haben, dass die Replikationsumgebung funktioniert, verwenden Sie ein geplantes oder ungeplantes Failover. Dies richtet sich danach, [was für Ihr Szenario unterstützt wird](site-recovery-failover.md#failover-and-failback). Für die Migration müssen Sie kein Commit für ein Failover durchführen. Wählen Sie stattdessen die Option **Migration abschließen** für jeden Computer, den Sie migrieren möchten. Mit der Aktion **Migration abschließen** wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.
+Nachdem Sie sich vergewissert haben, dass die Replikationsumgebung funktioniert, verwenden Sie ein geplantes oder ungeplantes Failover. Dies richtet sich danach, [was für Ihr Szenario unterstützt wird](site-recovery-failover.md). Für die Migration müssen Sie kein Commit für ein Failover durchführen. Wählen Sie stattdessen die Option **Migration abschließen** für jeden Computer, den Sie migrieren möchten. Mit der Aktion **Migration abschließen** wird der Migrationsprozess abgeschlossen, die Replikation für den Computer wird entfernt, und die Site Recovery-Berechnung von Kosten für den Computer wird beendet.
 
 ![completemigration](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 

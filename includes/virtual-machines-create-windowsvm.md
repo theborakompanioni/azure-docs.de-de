@@ -16,7 +16,7 @@ Auf dem Blatt „Grundlagen“ werden administrative Informationen für den virt
 
 2. Geben Sie einen **Benutzernamen** und ein sicheres **Kennwort** für die Erstellung eines lokalen Kontos auf dem virtuellen Computer ein. Das lokale Konto wird für die Anmeldung bei dem virtuellen Computer sowie für dessen Verwaltung verwendet. Im Beispiel ist _azureuser_ der Benutzername.
 
- Das Kennwort muss 8 bis 123 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines.md/virtual-machines-windows-faq).
+ Das Kennwort muss 8 bis 123 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../articles/virtual-machines/virtual-machines-windows-faq.md).
 
 3. Das **Abonnement** ist optional. Eine häufige Einstellung ist „Nutzungsbasierte Bezahlung“.
 
@@ -50,10 +50,6 @@ Klicken Sie auf **OK**, nachdem Sie alle gewünschten Änderungen vorgenommen ha
 Auf dem Blatt „Zusammenfassung“ werden die auf den vorherigen Blättern angegebenen Einstellungen aufgeführt. Klicken Sie auf **OK**, wenn Sie zum Erstellen des Image bereit sind.
 
  ![Bericht auf dem Blatt „Zusammenfassung“ mit den für den virtuellen Computer angegebenen Einstellungen](./media/virtual-machines-common-portal-create-fqdn/summary-blade-classic.png)
-
-<!--  deleted 2/16/2017 - RABixby
-  * A virtual machine's size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For more information, see [Sizes for virtual machines](../articles/virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-  -->
 
 Nach der Erstellung des virtuellen Computers wird der neue virtuelle Computer unter **Alle Ressourcen** aufgeführt, und im Dashboard wird eine Kachel für den virtuellen Computer angezeigt. Hier werden auch der entsprechende Clouddienst und das Speicherkonto erstellt und aufgelistet. Der virtuelle Computer und der Clouddienst werden automatisch gestartet. Das Verwaltungsportal zeigt ihren Status als **Wird ausgeführt** an.
 

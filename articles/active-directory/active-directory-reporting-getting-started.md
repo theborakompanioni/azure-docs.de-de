@@ -13,10 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/07/2016
-ms.author: dhanyahk
+ms.author: dhanyahk;markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ce0e0ce9004e1b331328fca5830f01b6ce6af6c
+ms.sourcegitcommit: eec9b73cbaccfa50eec6f237e4d1d810c6efa1d9
+ms.openlocfilehash: e5b8ac91914203156bd395d7f462385e9f6dbcb4
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -113,7 +114,7 @@ Aktivieren oder deaktivieren Sie den Bereich „E-Mail-Benachrichtigungen über 
 ### <a name="integrate-with-the-azure-ad-reporting-api"></a>Integrieren in die Azure AD Reporting-API
 Informationen hierzu finden Sie unter [Erste Schritte mit der Azure AD Reporting-API](active-directory-reporting-api-getting-started.md).
 
-### <a name="engage-multifactor-authentication-on-users"></a>Einbinden der mehrstufigen Authentifizierung von Benutzern
+### <a name="engage-multi-factor-authentication-on-users"></a>Einbinden der mehrstufigen Authentifizierung von Benutzern
 Wählen Sie einen Benutzer in einem Bericht aus.
 
 Klicken Sie am unteren Bildschirmrand auf die Schaltfläche "MFA aktivieren".
@@ -139,10 +140,5 @@ Unter der E-Mail-Adresse [aadreportinghelp@microsoft.com](mailto:aadreportinghel
 > Weitere Dokumentationen zu Azure AD Reporting finden Sie unter [Anzeigen von Zugriffs- und Nutzungsberichten](active-directory-view-access-usage-reports.md).
 > 
 > 
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 
