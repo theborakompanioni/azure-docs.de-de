@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: kasing
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 83470aaf607a666a63bae5b9897d0b273e327377
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 54afb2f55ef9ff48448c63bc8ee8e745765f61e6
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -96,15 +97,10 @@ In der folgenden Tabelle werden die Eigenschaften des virtuellen Computers besch
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
 Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-Cmdlets erstellt werden. Informationen zum Erstellen der Richtlinie finden Sie im folgenden Artikel:
 
-* [Erstellen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
+* [Erstellen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md)
 
 ## <a name="apply-the-policy"></a>Anwenden der Richtlinie
 Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informationen zum Anwenden der Richtlinie finden Sie im folgenden Artikel:
 
-* [Erstellen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* [Erstellen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md)
 

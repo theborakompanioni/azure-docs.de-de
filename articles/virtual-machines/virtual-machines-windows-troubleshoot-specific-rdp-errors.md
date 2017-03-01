@@ -17,8 +17,9 @@ ms.topic: support-article
 ms.date: 01/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 5398d262bf1f54c40663d6ee76e8dfb48aa3226b
+ms.sourcegitcommit: 3a4516d267dbedc6fc0a4afda93e052d9798434a
+ms.openlocfilehash: cf1d80f52ac61845083e9c28c0ad3e88a029fc4f
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -107,13 +108,7 @@ Stellen Sie sicher, dass das Konto, das Sie zum Herstellen der Verbindung verwen
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn keiner dieser Fehler aufgetreten ist, und Sie einen unbekannten Fehler beim Herstellen einer Verbindung über RDP haben, finden Sie Informationen im [Handbuch zur Problembehandlung bei Remotedesktopfehlern](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-* [Azure IaaS (Windows) und Diagnoseprogramme](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)
 * Informationen zum Behandeln von Problemen beim Zugreifen auf Anwendungen, die auf einem virtuellen Computer ausgeführt werden, finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Informationen zu Problemen beim Herstellen einer SSH-Verbindung (Secure Shell) mit einem virtuellen Linux-Computer in Azure finden Sie unter [Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
