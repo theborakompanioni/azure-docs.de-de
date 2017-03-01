@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 01/13/2016
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 42ee74ac250e6594616652157fe85a9088f4021a
-ms.openlocfilehash: 0fd7aa8f941adaeb9961fd0e4724161b9fe2eeee
+ms.sourcegitcommit: 1081eb18bd63b1ad580f568201e03258901e4eaf
+ms.openlocfilehash: e926f22b94da30e1d3b790432ffdc229d9f4e609
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -119,7 +120,7 @@ Weitere Möglichkeiten mit verwalteten Datenträgern für Ihren neuen virtuellen
 
 ## <a name="using-unmanaged-disks"></a>Verwenden nicht verwalteter Datenträger 
 
-Virtuelle Computer mit nicht verwalteten Speicherdatenträgern verfügen über nicht verwaltete Speicherkonten. Geben Sie zunächst [az group create](/cli/azure/group#create) ein, um Ihre Ressourcengruppe für alle bereitgestellten Ressourcen zu erstellen:
+VMs, für die nicht verwaltete Speicherdatenträger verwendet werden, verfügen über nicht verwaltete Speicherkonten. Geben Sie zunächst [az group create](/cli/azure/group#create) ein, um Ihre Ressourcengruppe für alle bereitgestellten Ressourcen zu erstellen:
 
 ```azurecli
 az group create --name nativedisks --location westus
@@ -142,7 +143,7 @@ Die Ausgabe sieht wie folgt aus. (Sie können auch eine andere `--output`-Option
 
 ### <a name="create-your-vm"></a>Erstellen Ihres virtuellen Computers 
 
-Nun können Sie Ihren virtuellen Computer und dessen Umgebung erstellen. Ersetzen Sie dabei den Wert `--public-ip-address-dns-name` durch einen eindeutigen Wert. (Der hier angegebene Wert wird möglicherweise bereits verwendet.)
+Nun können Sie Ihren virtuellen Computer und dessen Umgebung erstellen. Verwenden Sie das Flag `--use-unmanaged-disk`, um die VM mit nicht verwalteten Datenträgern zu erstellen. Außerdem wird ein nicht verwaltetes Speicherkonto erstellt. Ersetzen Sie dabei den Wert `--public-ip-address-dns-name` durch einen eindeutigen Wert. (Der hier angegebene Wert wird möglicherweise bereits verwendet.)
 
 ```azurecli
 az vm create \
@@ -153,7 +154,7 @@ az vm create \
 --resource-group nativedisks \
 --location westus \
 --name myVM \
---use-native-disk
+--use-unmanaged-disk
 ```
 
 Die Ausgabe sieht wie folgt aus. Notieren Sie sich entweder den `publicIpAddress`- oder den `fqdn`-Wert, um eine **ssh**-Verbindung mit Ihrem virtuellen Computer herzustellen.
@@ -202,10 +203,5 @@ Der Befehl `az vm create` ermöglicht die schnelle Bereitstellung einer VM – S
 * [Erstellen einer SSH-geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Sie können auch [den Azure-Treiber `docker-machine` mit verschiedenen Befehlen verwenden, um schnell einen virtuellen Linux-Computer als Docker-Host zu erstellen](virtual-machines-linux-docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Bei Verwendung von Java können Sie die [create()](/java/api/com.microsoft.azure.management.compute._virtual_machine)-Methode verwenden.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

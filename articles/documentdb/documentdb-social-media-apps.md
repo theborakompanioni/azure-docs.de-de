@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
-ms.openlocfilehash: 19e8c9de137e10abb563fcd60cf89502dbf94cfd
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: 238c74c020625006384a1b31aef320e1346d9ac4
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -102,7 +103,7 @@ Die Erstellung von Feeds ist nunmehr bloß eine Frage der Erstellung von Dokumen
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Wir könnten einen Stream mit den „neuesten Meldungen“ erstellen, in dem Beiträge nach Erstellungsdatum sortiert sind, oder einen Stream der „beliebtesten Beiträge“ mit den meisten Likes in den letzten 24 Stunden. Wir könnten sogar einen benutzerdefinierten Stream für jeden Benutzer einbauen, der auf einer Logik wie „Follower“ und „Interessen“ basiert und trotzdem immer noch eine Liste von Beiträgen wäre. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald wir eine dieser Listen erhalten, schicken wir mit dem [IN-Operator](documentdb-sql-query.md#where-clause) eine einzelne Abfrage an DocumentDB, um Seiten von Beiträgen gleichzeitig abzurufen.
+Wir könnten einen Stream mit den „neuesten Meldungen“ erstellen, in dem Beiträge nach Erstellungsdatum sortiert sind, oder einen Stream der „beliebtesten Beiträge“ mit den meisten Likes in den letzten 24 Stunden. Wir könnten sogar einen benutzerdefinierten Stream für jeden Benutzer einbauen, der auf einer Logik wie „Follower“ und „Interessen“ basiert und trotzdem immer noch eine Liste von Beiträgen wäre. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald wir eine dieser Listen erhalten, schicken wir mit dem [IN-Operator](documentdb-sql-query.md#WhereClause) eine einzelne Abfrage an DocumentDB, um Seiten von Beiträgen gleichzeitig abzurufen.
 
 Die Feeddatenströme könnten mithilfe von [Azure App Services](https://azure.microsoft.com/services/app-service/)-Hintergrundprozessen erstellt werden: [WebJobs](../app-service-web/web-sites-create-web-jobs.md). Nach der Erstellung eines Beitrags kann die Hintergrundverarbeitung mit [Azure Storage](https://azure.microsoft.com/services/storage/)-[Warteschlangen](../storage/storage-dotnet-how-to-use-queues.md) und WebJobs mithilfe des [Azure WebJobs-SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) ausgelöst werden. Diese Funktionen implementieren die Verteilung der Beiträge innerhalb der Streams, basierend auf unserer eigenen benutzerdefinierten Logik. 
 
@@ -230,10 +231,5 @@ In Wahrheit gibt es keine Patentlösung für diese Art von Szenarios. Vielmehr s
 Weitere Informationen zur Datenmodellierung finden Sie im Artikel [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md) . Wenn Sie an weiteren Anwendungsmöglichkeiten für DocumentDB interessiert sind, lesen Sie [Häufige Anwendungsfälle für DocumentDB](documentdb-use-cases.md).
 
 Oder erfahren Sie mehr über DocumentDB anhand des [DocumentDB-Lernpfads](https://azure.microsoft.com/documentation/learning-paths/documentdb/).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

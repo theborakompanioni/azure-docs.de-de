@@ -17,8 +17,9 @@ ms.topic: hero-article
 ms.date: 12/19/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: d026933869d98c469855e02a6906ed74f8ee03a3
-ms.openlocfilehash: fd1412bcc367472990f645ef7f90ad94def562d6
+ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
+ms.openlocfilehash: 8a3ede8af471e656e830e38e0cf2f3a909fdaadb
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -38,7 +39,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell Folgendes
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](/pricing/free-trial/?WT.mc_id=A261C142F) oder [Visual Studio-Abonnementvorteile aktivieren](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F). 
+* Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/) oder [Visual Studio-Abonnementvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/). 
 
 * Für die Verbindungsherstellung mit Azure muss ein Konto verwendet werden, das der Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement angehört. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
 
@@ -47,7 +48,7 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell Folgendes
 * Sie haben das Tutorial [Erste Schritte mit Azure SQL-Datenbankservern, -Servern, -Datenbanken und -Firewallregeln mit dem Azure-Portal und SQL Server Management Studio](sql-database-get-started.md) oder die entsprechende [PowerShell-Version](sql-database-get-started-powershell.md) abgeschlossen. Arbeiten Sie andernfalls entweder dieses erforderliche Tutorial durch, oder führen Sie das PowerShell-Skript am Ende der [PowerShell-Version](sql-database-get-started-powershell.md) aus, bevor Sie fortfahren.
 
 > [!TIP]
-> Sie können diese Aufgaben auch in einem Einstiegstutorial über das [Azure-Portal](sql-database-get-started-backup-recovery.md) durchführen.
+> Sie können diese Aufgaben auch in einem Einstiegstutorial über das [Azure-Portal](sql-database-get-started-backup-recovery-portal.md) durchführen.
 
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
@@ -114,7 +115,7 @@ In diesem Abschnitt des Tutorials [konfigurieren Sie einen Azure Recovery Servic
 
 
 > [!TIP]
-> Informationen zum Löschen der langfristigen Aufbewahrung von Sicherungen finden Sie unter [Delete long-term retention backups](sql-database-long-term-retention-delete.md) (Löschen der langfristigen Aufbewahrung von Sicherungen).
+> Informationen zum Löschen von Sicherungen mit langfristiger Aufbewahrung finden Sie unter [Manage long-term backup retention using PowerShell](sql-database-manage-long-term-backup-retention-powershell.md) (Verwalten von Sicherungen mit langer Aufbewahrungsdauer per PowerShell).
 
 
 ### <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
@@ -378,9 +379,4 @@ $restoredDbFromLtr
 - Weitere Informationen zu vom Dienst generierten automatischen Sicherungen finden Sie im Artikel zu [automatischen Sicherungen](sql-database-automated-backups.md).
 - Weitere Informationen zur langfristigen Beibehaltung von Sicherungen finden Sie im Artikel zur [langfristigen Beibehaltung von Sicherungen](sql-database-long-term-retention.md).
 - Weitere Informationen zum Wiederherstellen von Daten aus Sicherungen finden Sie im Artikel zur [Wiederherstellung aus einer Sicherung](sql-database-recovery-using-backups.md).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

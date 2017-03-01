@@ -4,7 +4,7 @@ description: Sie erfahren, wie Sie RESTful-API-Aufrufe zum Sichern und Wiederher
 services: app-service
 documentationcenter: 
 author: NKing92
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f94d0aea-edc1-43ab-9b51-ea7375859276
 ms.service: app-service
@@ -17,6 +17,7 @@ ms.author: nicking
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 1ad2911f809a17e4a6c0f2fe9087e1d9eb2da39e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -253,9 +254,4 @@ Senden Sie im Anforderungstext ein JSON-Objekt, das die neue SAS-URL enthält. B
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

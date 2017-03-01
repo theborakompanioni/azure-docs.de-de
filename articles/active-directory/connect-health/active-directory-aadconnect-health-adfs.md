@@ -1,124 +1,129 @@
 ---
-title: Verwenden von Azure AD Connect Health mit Synchronisierung | Microsoft-Dokumentation
-description: "Auf dieser Seite zu Azure AD Connect Health wird erläutert, wie eine Überwachung mit Azure AD Connect für die Synchronisierung durchgeführt wird."
+title: Verwenden von Azure AD Connect Health mit AD FS | Microsoft-Dokumentation
+description: "Dies ist die Azure AD Connect Health-Seite, auf der Sie erfahren, wie Sie Ihre lokale AD FS-Infrastruktur überwachen."
 services: active-directory
 documentationcenter: 
 author: karavar
 manager: samueld
 editor: curtand
-ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
+ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/12/2017
+ms.date: 2/15/2017
 ms.author: vakarand
 translationtype: Human Translation
-ms.sourcegitcommit: 7c320a043322fefea1f58301492d4c5a0567320c
-ms.openlocfilehash: fcea61a09654f41af57969a79fab3aabdba4e19c
+ms.sourcegitcommit: 738f9d5a8af6e1c641ebfab49bd1f01614ecc913
+ms.openlocfilehash: 9e4ba619d37e213b581f7d18d605b99474ad711b
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="using-azure-ad-connect-health-for-sync"></a>Verwenden von Azure AD Connect Health für die Synchronisierung
-Die folgende Dokumentation bezieht sich auf die Überwachung von Azure AD Connect (Sync) mithilfe von Azure AD Connect Health.  Informationen zum Überwachen von AD FS mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
+# <a name="using-azure-ad-connect-health-with-ad-fs"></a>Verwenden von Azure AD Connect Health mit AD FS
+Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
 
-![Azure AD Connect Health für die Synchronisierung](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+## <a name="alerts-for-ad-fs"></a>Warnungen für AD FS
+Im Abschnitt "Azure AD Connect Health-Warnungen" wird eine Liste der aktiven Warnungen angezeigt. Jede Warnung umfasst relevante Informationen, Lösungsschritte und Links zur verwandten Dokumentation.
 
-## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Warnungen für Azure AD Connect Health für die Synchronisierung
-Im Abschnitt mit Azure AD Connect Health-Warnungen für die Synchronisierung wird eine Liste der aktiven Warnungen angezeigt. Jede Warnung umfasst relevante Informationen, Lösungsschritte und Links zur verwandten Dokumentation. Durch Auswahl einer aktiven oder behobenen Warnung wird ein neues Blatt angezeigt. Dieses enthält zusätzliche Informationen, Lösungsschritte und Links zu weiterführender Dokumentation. Sie können außerdem Verlaufsdaten zu bereits behobenen Warnungen anzeigen.
+Sie können auf eine aktive oder gelöste Warnung doppelklicken, um ein neues Blatt mit weiteren Informationen, Schritten zum Lösen der Warnung und Links zu relevanter Dokumentation zu öffnen. Sie können außerdem Verlaufsdaten zu bereits behobenen Warnungen anzeigen.
 
-Durch Auswahl einer Warnung werden zusätzliche Informationen, Lösungsschritte sowie Links zu weiterführender Dokumentation angezeigt.
+![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/alert2.png)
 
-![Azure AD Connect-Synchronisierungsfehler](./media/active-directory-aadconnect-health-sync/alert.png)
+## <a name="usage-analytics-for-ad-fs"></a>Nutzungsanalyse für AD FS
+In der Azure AD Connect Health-Nutzungsanalyse wird der Authentifizierungsdatenverkehr für Ihre Verbundserver analysiert. Sie können auf das Feld „Nutzungsanalyse“ doppelklicken, um das Blatt „Nutzungsanalyse“ zu öffnen, auf dem mehrere Metriken und Gruppierungen angezeigt werden.
 
-### <a name="limited-evaluation-of-alerts"></a>Beschränkte Auswertung von Warnungen
-Wenn Azure AD Connect die Standardkonfiguration NICHT verwendet (z. B. wenn die Attributfilterung von der Standardkonfiguration in eine benutzerdefinierte Konfiguration geändert wird), lädt der Azure AD Connect Health-Agent die Fehlerereignisse im Zusammenhang mit Azure AD Connect nicht hoch.
+> [!NOTE]
+> Um die Nutzungsanalyse mit AD FS verwenden zu können, müssen Sie sicherstellen, dass die AD FS-Überwachung aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren der Überwachung für AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs).
+>
+>
 
-Dies schränkt die Auswertung der Warnungen vom Dienst ein. Ihnen wird im Azure-Portal unter Ihrem Dienst ein Banner angezeigt, das auf diese Bedingung hinweist.
+![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/report1.png)
 
-![Azure AD Connect Health für die Synchronisierung](./media/active-directory-aadconnect-health-sync/banner.png)
+Um zusätzliche Metriken auszuwählen, einen Zeitraum anzugeben oder die Gruppierung zu ändern, klicken Sie mit der rechten Maustaste auf das Diagramm zur Nutzungsanalyse und wählen „Diagramm bearbeiten“. Anschließend können Sie den Zeitraum angeben, eine andere Metrik auswählen und die Gruppierung ändern. Sie können die Verteilung des Authentifizierungsdatenverkehrs basierend auf verschiedenen Metriken anzeigen und jede Metrik über die relevanten Parameter gruppieren. Diese Parameter werden im folgenden Abschnitt beschrieben:
 
-Sie können dies ändern, indem Sie auf „Einstellungen“ klicken und das Hochladen aller Fehlerprotokolle durch den Azure AD Connect Health-Agent erlauben.
+**Metrik : Anforderungen insgesamt**: Gibt die Gesamtzahl von Anforderungen an, die von AD FS-Servern verarbeitet wurden.
 
-![Azure AD Connect Health für die Synchronisierung](./media/active-directory-aadconnect-health-sync/banner2.png)
-
-## <a name="sync-insight"></a>Einblick in die Synchronisierung
-Administratoren möchten häufig wissen, wie lange die Synchronisierung von Änderungen für Azure AD dauert und in welcher Menge Änderungen durchgeführt werden. Mit dieser Funktion kann dies leicht visualisiert werden, indem die unten angegebenen Graphen verwendet werden:   
-
-* Latenz von Synchronisierungsvorgängen
-* Trends bei der Objektänderung
-
-### <a name="sync-latency"></a>Synchronisierungslatenz
-Dieses Feature bietet eine grafische Darstellung des Trends bei Synchronisierungsvorgängen (Import, Export usw.) für Connectors.  So können Sie einerseits schnell und einfach die Latenz bei Ihren Vorgängen überprüfen (sehr nützlich, wenn viele Änderungen durchgeführt werden). Andererseits können Sie Anomalien bei der Latenz aufdecken, die unter Umständen untersucht werden müssen.
-
-![Synchronisierungslatenz](./media/active-directory-aadconnect-health-sync/synclatency02.png)
-
-Standardmäßig wird nur die Latenz des Exportvorgangs für den Azure AD-Connector angezeigt.  Wenn Sie weitere Vorgänge für den Connector oder Vorgänge von anderen Connectors anzeigen möchten, klicken Sie mit der rechten Maustaste auf das Diagramm, wählen „Diagramm bearbeiten“ oder klicken auf die Schaltfläche „Latenzdiagramm bearbeiten“ und wählen den gewünschten Vorgang und die Connectors.
-
-### <a name="sync-object-changes"></a>Änderungen bei Synchronisierungsobjekten
-Dieses Feature bietet eine grafische Darstellung des Trends bei der Anzahl von ausgewerteten und nach Azure AD exportierten Änderungen.  Derzeit ist es schwierig, diese Informationen aus den Synchronisierungsprotokollen zu entnehmen.  Mit diesem Diagramm erhalten Sie nicht nur eine einfachere Möglichkeit zum Überwachen der Anzahl der Änderungen in Ihrer Umgebung, sondern auch einen visuellen Überblick über die aufgetretenen Fehler.
-
-![Synchronisierungslatenz](./media/active-directory-aadconnect-health-sync/syncobjectchanges02.png)
-
-## <a name="object-level-synchronization-error-report-preview"></a>Fehlerbericht zur Synchronisierung auf Objektebene (Vorschau)
-Mit diesem Feature kann ein Bericht zu Synchronisierungsfehlern erstellt werden, die auftreten können, wenn Identitätsdaten zwischen Windows Server AD und Azure AD mit Azure AD Connect synchronisiert werden.
-
-* Der Bericht deckt Fehler ab, die mit dem Synchronisierungsclient aufgezeichnet werden (Azure AD Connect-Version 1.1.281.0 oder höher).
-* Er enthält die Fehler, die beim letzten Synchronisierungsvorgang auf dem Synchronisierungsmodul aufgetreten sind. („Export“ auf den Azure AD-Connector.)
-* Der Azure AD Connect Health-Agent für die Synchronisierung muss über eine ausgehende Verbindung mit den erforderlichen Endpunkten verfügen, damit der Bericht die neuesten Daten enthält.
-* Der Bericht wird **alle 30 Minuten aktualisiert**, indem die Daten verwendet werden, die vom Azure AD Connect Health-Agent für die Synchronisierung hochgeladen werden.
-  Folgende Hauptfunktionen sind verfügbar:
-
-  * Kategorisierung von Fehlern
-  * Liste der Objekte mit Fehler nach Kategorie
-  * Alle Daten zu den Fehlern an einem Ort
-  * Direkter Vergleich von Objekten mit Fehlern aufgrund eines Konflikts
-  * Fehlerbericht-Download als CSV (in Kürze verfügbar)
-
-### <a name="categorization-of-errors"></a>Kategorisierung von Fehlern
-Im Bericht werden die vorhandenen Synchronisierungsfehler nach den folgenden Kategorien unterteilt:
-
-| Kategorie | Beschreibung |
+|Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
 | --- | --- |
-| Doppeltes Attribut |Fehler beim Versuch von Azure AD Connect, Objekte mit doppelten Werten von einem oder mehreren Attributen in Azure AD zu erstellen oder zu aktualisieren, die in einem Mandanten eindeutig sein müssen, z.B. proxyAddresses, UserPrincipalName. |
-| Datenkonflikt |Fehler, wenn beim Soft Match-Vorgang für Objekte keine Übereinstimmung erzielt werden kann und dies zu Synchronisierungsfehlern führt. |
-| Fehler bei der Datenüberprüfung |Fehler aufgrund von ungültigen Daten, z.B. nicht unterstützten Zeichen in kritischen Attributen wie UserPrincipalName, und Formatfehler, die die Überprüfung vor dem Schreiben in Azure AD nicht bestehen. |
-| Großes Attribut |Fehler, wenn mindestens ein Attribut größer als die zulässige Größe, Länge oder Anzahl ist. |
-| Sonstige |Alle anderen Fehler, die nicht in die obigen Kategorien passen. Diese Kategorie wird basierend auf dem Feedback in Unterkategorien unterteilt. |
+| Alle | Zeigt die Gesamtzahl von Anforderungen an, die von allen AD FS-Servern verarbeitet wurden.|
+| Anwendung | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Zielanwendung (vertrauende Seite). Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des gesamten Datenverkehrs auf die verschiedenen Anwendungen anzeigen möchten. |
+|  Server |Gruppiert die Gesamtzahl von Anforderungen basierend auf dem Server, der die Anforderung verarbeitet hat. Diese Gruppierung ist nützlich, um die Lastverteilung für den gesamten Datenverkehr anzuzeigen.
+| In den Arbeitsplatz eingebunden |Gruppiert die Gesamtzahl von Anforderungen danach, ob sie von Geräten stammen, die mit einem Arbeitsbereich verknüpft (bekannt) sind. Diese Gruppierung ist nützlich, wenn auf Ihre Ressourcen über Geräte zugegriffen wird, die der Identitätsinfrastruktur unbekannt sind. |
+|  Authentication Method (Authentifizierungsmethode) | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Authentifizierungsmethode. Diese Gruppierung ist nützlich, wenn Sie wissen möchten, welche Authentifizierungsmethode in der Regel für die Authentifizierung verwendet wird. Folgende Authentifizierungsmethoden sind möglich:  <ol> <li>Integrierte Windows-Authentifizierung (Windows)</li> <li>Formularbasierte Authentifizierung (Forms)</li> <li>Einmaliges Anmelden (SSO)</li> <li>X509-Zertifikatauthentifizierung (Zertifikat)</li> <br>Wenn die Verbundserver die Anforderung mit einem SSO-Cookie empfangen, wird diese Anforderung als SSO-Anforderung eingestuft. In diesen Fällen wird, sofern es sich um ein gültiges Cookie handelt, der Benutzer nicht zur Eingabe von Anmeldeinformationen aufgefordert, sondern erhält nahtlos Zugriff auf die Anwendung. Dieses Verhalten ist üblich, wenn mehrere vertrauende Seiten von den Verbundservern geschützt werden. |
+| Netzwerkadresse | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Netzwerkadresse des Benutzers. Dies kann entweder ein Intranet oder Extranet sein. Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des eingehenden Datenverkehrs für Intranet und Extranet anzeigen möchten. |
 
-![Zusammenfassung des Synchronisierungsfehlerberichts](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![Kategorien des Synchronisierungsfehlerberichts](./media/active-directory-aadconnect-health-sync/errorreport02.png)
 
-### <a name="list-of-objects-with-error-per-category"></a>Liste der Objekte mit Fehler nach Kategorie
-Für die einzelnen Kategorien können Sie jeweils die Liste mit den Objekten anzeigen, die den Fehler in der Kategorie aufweisen.
-![Liste des Synchronisierungsfehlerberichts](./media/active-directory-aadconnect-health-sync/errorreport03.png)
+**Metrik: Anforderungen mit Fehlern gesamt**: Die Gesamtzahl von Anforderungen mit Fehlern, die vom Verbunddienst verarbeitet wurden. (Diese Metrik steht nur in AD FS für Windows Server 2012 R2 zur Verfügung.)
 
-### <a name="error-details"></a>Fehlerdetails
-Die folgenden Daten stehen für jeden Fehler in der ausführlichen Ansicht zur Verfügung:
+|Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
+| --- | --- |
+| Fehlertyp | Zeigt die Anzahl von Fehlern basierend auf den vordefinierten Fehlertypen an. Diese Gruppierung ist nützlich, um die allgemeinen Arten von Fehlern zu verstehen. <ul><li>Falscher Benutzername oder falsches Kennwort: Fehler, die durch einen falschen Benutzernamen oder ein falsches Kennwort ausgelöst werden.</li> <li>„Extranetsperrung“: Fehler durch Anforderungen von einem Benutzer, der für das Extranet gesperrt wurde. </li><li> „Kennwort abgelaufen“: Fehler durch Benutzer, die sich mit einem abgelaufenen Kennwort anmelden.</li><li>„Konto deaktiviert“: Fehler durch Benutzer, die sich mit einem deaktivierten Konto anmelden.</li><li>„Authentifizierung mit Gerät“: Fehler durch Benutzer, bei denen Probleme bei der Geräteauthentifizierung auftreten.</li><li>„Authentifizierung mit Benutzerzertifikat“: Fehler durch Benutzer, bei denen die Authentifizierung aufgrund eines ungültigen Zertifikats nicht möglich ist.</li><li>„MFA“: Fehler durch Benutzer, die sich nicht per Multi-Factor Authentication authentifizieren können.</li><li>„Andere Anmeldeinformationen“: „Ausstellungsautorisierung“: Fehler aufgrund von Autorisierungsproblemen.</li><li>„Ausstellungsdelegierung“: Fehler aufgrund von Problemen bei der Ausstellungsdelegierung.</li><li>„Tokenannahme“: Fehler durch das Ablehnen von externen Identitätsanbietern durch AD FS.</li><li>„Protokoll“: Fehler aufgrund von Protokollproblemen.</li><li>„Unbekannt“: Fängt alle weiteren Fehler ab. Alle anderen Fehler, die nicht in die definierten Kategorien fallen.</li> |
+| Server | Gruppiert die Fehler basierend auf dem Server. Diese Gruppierung ist nützlich, um die Fehlerverteilung auf die Server anzuzeigen. Eine ungleichmäßige Verteilung könnte darauf hinweisen, dass sich ein Server in fehlerhaftem Zustand befindet. |
+| Netzwerkadresse | Gruppiert die Fehler basierend auf der Netzwerkadresse der Anforderungen (Intranet oder Extranet). Diese Gruppierung ist nützlich, um die Art der Anforderungen herauszufinden, für die Fehler auftreten. |
+|  Anwendung | Gruppiert die Fehler basierend auf der Zielanwendung (vertrauende Seite). Mithilfe dieser Gruppierung können Sie anzeigen, für welche Zielanwendung die meisten Fehler auftreten. |
 
-* Bezeichner für das beteiligte *AD-Objekt*
-* Bezeichner für das beteiligte *Azure AD-Objekt* (falls zutreffend)
-* Fehlerbeschreibung und -behebung
-* Verwandte Artikel
+**Metrik: Benutzeranzahl**: Durchschnittliche Anzahl von eindeutigen Benutzern, die aktiv eine Authentifizierung mit AD FS durchführen.
 
-![Details zum Synchronisierungsfehlerbericht](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+|Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
+| --- | --- |
+|Alle |Mit dieser Metrik wird die durchschnittliche Anzahl von Benutzern bereitgestellt, die den Verbunddienst im ausgewählten Zeitraum verwendet haben. Die Benutzer werden nicht gruppiert. <br>Die durchschnittliche Anzahl richtet sich nach dem ausgewählten Zeitraum. |
+| Anwendung |Gruppiert die durchschnittliche Anzahl von Benutzern basierend auf der Zielanwendung (vertrauende Seite). Über diese Gruppierung können Sie anzeigen, wie viele Benutzer welche Anwendung nutzen. |
 
-### <a name="download-the-error-report-as-csv"></a>Fehlerbericht-Download als CSV
-Durch Auswählen der Schaltfläche „Export“ können Sie eine CSV-Datei mit allen Details zu allen Fehlern herunterladen.
+## <a name="performance-monitoring-for-ad-fs"></a>Leistungsüberwachung für AD FS
+Die Azure AD Connect Health-Leistungsüberwachung liefert Überwachungsinformationen zu verschiedenen Metriken. Wenn Sie das Kontrollkästchen aktivieren, wird ein neues Blatt mit ausführlichen Informationen zu den Metriken geöffnet.
+
+![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health/perf1.png)
+
+Wenn Sie die Filteroption oben im Blatt auswählen, können Sie eine Filterung nach Server vornehmen, um Metriken zu einzelnen Servern anzuzeigen. Um Metriken zu ändern, klicken Sie mit der rechten Maustaste auf das Überwachungsdiagramm unterhalb des Überwachungsblatts und klicken dann auf „Diagramm bearbeiten“ (oder wählen Sie die Schaltfläche „Diagramm bearbeiten“). Auf dem dann geöffneten neuen Blatt können Sie in der Dropdownliste zusätzliche Metriken auswählen und einen Zeitbereich für die Anzeige von Leistungsdaten angeben.
+
+## <a name="reports-for-ad-fs"></a>Berichte für AD FS
+Azure AD Connect Health bietet Berichte über die Aktivität und Leistung von AD FS. Mithilfe dieser Berichte können Administratoren Einblicke in Aktivitäten auf ihren AD FS-Servern gewinnen.
+
+### <a name="top-50-users-with-failed-usernamepassword-logins"></a>50 Benutzer mit den meisten fehlgeschlagenen Anmeldungen aufgrund eines falschen Benutzernamens/Kennworts
+Einer der häufigsten Gründe für das Fehlschlagen von Authentifizierungsanforderungen bei einem AD FS-Server ist die Verwendung ungültiger Anmeldeinformationen, d. h. eines falschen Benutzernamens oder Kennworts. Dies passiert Benutzern normalerweise aufgrund von komplexen Kennwörtern, vergessenen Kennwörtern oder Schreibfehlern.
+
+Aber es gibt noch weitere Gründe, die zu einer unerwartet hohen Anzahl von derartigen Anforderungen bei Ihren AD FS-Servern führen können, z.B. von einer Anwendung zwischengespeicherte abgelaufene Benutzeranmeldeinformationen oder ein böswilliger Benutzer, der versucht, sich mit einer Reihe von bekannten Kennwörtern bei einem Konto anzumelden. Diese beiden Beispiele sind plausible Gründe für einen Anstieg der Anforderungsanzahl.
+
+Azure AD Connect Health für AD FS bietet einen Bericht über die 50 Benutzer, bei denen Anmeldeversuche am häufigsten aufgrund ungültiger Benutzernamen oder Kennwörter fehlschlagen. Zur Erstellung dieses Berichts werden die von allen AD FS-Servern in den Farmen generierten Überwachungsereignisse verarbeitet.
+
+![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report1a.png)
+
+In diesem Bericht können Sie ganz einfach auf die folgenden Informationen zugreifen:
+
+* Gesamtanzahl fehlgeschlagener Anforderungen mit falschem Benutzernamen/Kennwort in den letzten 30 Tagen
+* Durchschnittliche Anzahl von Benutzern pro Tag, bei denen die Anmeldung wegen eines ungültigen Benutzernamens/Kennworts fehlschlägt.
+
+Wenn Sie auf diesen Bereich klicken, gelangen Sie zum Hauptberichtblatt, das zusätzliche Details enthält. Dieses Blatt enthält einen Graphen mit Trendinformationen zum Ermitteln einer Baseline für Anforderungen mit falschem Benutzernamen oder Kennwort. Außerdem wird die Liste mit den Top 50 der Benutzer mit Fehlversuchen angegeben.
+
+Der Graph zeigt die folgenden Informationen:
+
+* Gesamtanzahl fehlgeschlagener Anmeldeversuche aufgrund eines ungültigen Benutzernamens/Kennworts pro Tag
+* Gesamtanzahl eindeutiger Benutzer, bei denen die Anmeldung fehlgeschlagen ist, pro Tag.
+* Client-IP-Adresse der letzten Anforderung
+
+![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report3a.png)
+
+Der Bericht enthält die folgenden Informationen:
+
+| Berichtselement | Beschreibung |
+| --- | --- |
+| Benutzer-ID |Die verwendete Benutzer-ID. Dies ist der Wert mit der Eingabe des Benutzers, also in einigen Fällen die Verwendung der falschen Benutzer-ID. |
+| Fehlgeschlagene Anmeldeversuche |Die Gesamtanzahl fehlgeschlagener Anmeldeversuche für die jeweilige Benutzer-ID. Die Tabelle ist nach der höchsten Anzahl fehlgeschlagener Versuche in absteigender Reihenfolge sortiert. |
+| Letzter Fehler |Zeigt den Zeitstempel des letzten Fehlers an. |
+| Letzte Fehler-IP-Adresse |Zeigt die Client-IP-Adresse der letzten fehlerhaften Anforderung an. |
+
+> [!NOTE]
+> Der Bericht wird automatisch alle zwei Stunden mit den neuen gesammelten Informationen aktualisiert. Anmeldeversuche innerhalb der letzten zwei Stunden sind daher unter Umständen nicht im Bericht enthalten.
+>
+>
 
 ## <a name="related-links"></a>Verwandte Links
-* [Troubleshooting Errors during synchronization](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md) (Beheben von Fehlern während der Synchronisierung)
-* [Resilienz bei doppelten Attributen](../connect/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Installieren des Azure AD Connect Health-Agents](active-directory-aadconnect-health-agent-install.md)
 * [Azure AD Connect Health-Vorgänge](active-directory-aadconnect-health-operations.md)
-* [Verwenden von Azure AD Connect Health mit AD FS](active-directory-aadconnect-health-adfs.md)
+* [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md)
 * [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health: Versionsverlauf](active-directory-aadconnect-health-version-history.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

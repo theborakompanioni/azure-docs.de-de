@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/31/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 85fd7b0e867ebe5fff937ff9fc83b688649fcfba
-ms.openlocfilehash: 70feb409d05b26a4d874bad2d1984fda5db32216
+ms.sourcegitcommit: e331e7aab69890637a74382938e22cca56c4d39a
+ms.openlocfilehash: 223dcbb2b54c9b0de384515b185266dc19653191
 
 
 ---
@@ -107,8 +107,8 @@ Gerätedaten sind Daten, die pro Gerät in der IoT Hub-[Identitätsregistrierung
 ## <a name="device-explorer"></a>Geräte-Explorer
 Der [Geräte-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) ist ein Tool, das unter Windows ausgeführt wird und Ihnen das Verwalten von Geräten in der [Identitätsregistrierung](#identity-registry) und das Senden und Empfangen von Nachrichten für Ihre Geräte ermöglicht.
 
-## <a name="device-identities-rest-api"></a>REST-API für Geräteidentitäten
-Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/iothub/iothubresource) können Sie Ihre Geräte, die in der [Identitätsregistrierung](#identity-registry) registriert sind, per REST-API verwalten. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+## <a name="device-identities-rest-api"></a>Geräteidentitäten – REST-API
+Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/iothub/iothubresource) können Sie Ihre Geräte, die in der [Identitätsregistrierung](#identity-registry) registriert sind, mit einer REST-API verwalten. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
 ## <a name="device-identity"></a>Geräteidentität
 Die Geräteidentität ist der eindeutige Bezeichner, der jedem Gerät zugewiesen wird, das in der [Identitätsregistrierung](#identity-registry) registriert ist.
@@ -119,7 +119,7 @@ Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltun
 ## <a name="device-management-patterns"></a>Geräteverwaltungsmuster
 [IoT Hub](#iot-hub) ermöglicht allgemeine Schritte zur Geräteverwaltung, z.B. Neustart, Zurücksetzung auf die Werkseinstellungen und Durchführung von Firmwareupdates auf Ihren Geräten.
 
-## <a name="device-messaging-rest-api"></a>REST-API für Device Messaging
+## <a name="device-messaging-rest-api"></a>Device Messaging – REST-API
 Sie können die [REST-API für Device Messaging](https://docs.microsoft.com/rest/api/iothub/httpruntime) auf einem Gerät nutzen, um D2C-Nachrichten an IoT Hub zu senden und [C2D-Nachrichten](#cloud-to-device) von IoT Hub zu empfangen. Es ist in der Regel ratsam, eines der allgemeinen [Geräte-SDKs](#azure-iot-device-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
 ## <a name="device-provisioning"></a>Gerätebereitstellung
@@ -131,7 +131,7 @@ Ein [Gerätezwilling](iot-hub-devguide-device-twins.md) ist ein JSON-Dokument, m
 ## <a name="device-twin-queries"></a>Gerätezwillingabfragen
 Für [Gerätezwillingabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Gerätezwillingen abzufragen. Sie können diese IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
 
-## <a name="device-twins-rest-api"></a>REST-API für Gerätezwillinge
+## <a name="device-twin-rest-api"></a>REST-API für Gerätezwillinge
 Sie können die [REST-API für Gerätezwillinge](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) am Lösungs-Back-End zur Verwaltung Ihrer Gerätezwillinge verwenden. Mithilfe der API können Sie [Gerätezwillings](#device-twin)eigenschaften abrufen und aktualisieren sowie [direkte Methoden](#direct-method) aufrufen. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
 ## <a name="device-twin-synchronization"></a>Synchronisierung von Gerätezwillingen
@@ -174,7 +174,7 @@ Mit [IoT Hub-Metriken](iot-hub-metrics.md) erhalten Sie Daten zum Zustand von Io
 Die [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) ist eine SQL-ähnliche Sprache, mit der Sie Ihre [Aufträge](#job) und Gerätezwillinge abfragen können.
 
 ## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub-Ressourcenanbieter-REST-API
-Sie können die [IoT Hub-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) verwenden, um die IoT Hubs in Ihrem [Azure-Abonnement](#subscription) zu verwalten und Vorgänge wie das Erstellen, Aktualisieren und Löschen von Hubs durchzuführen.
+Sie können die [IoT Hub-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) verwenden, um die IoT Hub-Instanzen in Ihrem [Azure-Abonnement](#subscription) zu verwalten und Vorgänge wie das Erstellen, Aktualisieren und Löschen von Hubs durchzuführen.
 
 ## <a name="iot-suite"></a>IoT Suite
 Azure IoT Suite kombiniert mehrere Azure IoT-Dienste mit vorkonfigurierten Lösungen. Diese vorkonfigurierten Lösungen ermöglichen Ihnen die schnelle und lückenlose Implementierung gängiger IoT-Szenarien. Weitere Informationen finden Sie unter [Was ist Azure IoT Suite?](../iot-suite/iot-suite-overview.md).
@@ -185,8 +185,8 @@ Der [iothub-explorer](https://github.com/azure/iothub-explorer) ist ein plattfor
 ## <a name="job"></a>Auftrag
 Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). Außerdem nutzt [IoT Hub](#iot-hub) Aufträge zum [Importieren und Exportieren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
 
-## <a name="job-api"></a>Auftrags-API
-Die [Auftrags-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ist eine REST-API und ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrem IoT-Hub ausgeführt werden.
+## <a name="jobs-rest-api"></a>Aufträge-REST-API
+Die [Aufträge-REST-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrer IoT-Hub-Instanz ausgeführt werden.
 
 ## <a name="module"></a>Modul
 Im [Azure IoT Gateway SDK](iot-hub-linux-gateway-sdk-get-started.md) ist ein [Modul](iot-hub-linux-gateway-sdk-get-started.md#azure-iot-gateway-sdk-concepts) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Das Azure IoT Gateway SDK enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.

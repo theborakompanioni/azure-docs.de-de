@@ -15,8 +15,9 @@ ms.workload: data-services
 ms.date: 01/25/2017
 ms.author: cakarst;barbkess
 translationtype: Human Translation
-ms.sourcegitcommit: e4ce651be6e708f284b7ca4dc32bb906ec0f14a9
-ms.openlocfilehash: bba2c3fc1c96f5f8a4bb7f23db8ddab052042539
+ms.sourcegitcommit: 3aa72480898e00cab8ee48e646ea63ade01f347f
+ms.openlocfilehash: 31c7337bdf9dd302ea2f7c5dd0af9d668b23acb2
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -34,7 +35,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 ## <a name="before-you-begin"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Azure Active Directory-Anwendung für die Dienst-zu-Dienst-Authentifizierung. Eine Erstellungsanleitung finden Sie unter [Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+* Azure Active Directory-Anwendung für die Dienst-zu-Dienst-Authentifizierung. Eine Erstellungsanleitung finden Sie unter [Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
 
 >[!NOTE] 
 > Sie benötigen die Client-ID, den Schlüssel und den OAuth2.0-Token-Endpunktwert Ihrer Active Directory-Anwendung, um über SQL Data Warehouse eine Verbindung mit Ihrer Azure Data Lake-Instanz herstellen zu können. Ausführliche Informationen zum Ermitteln dieser Werte finden Sie unter dem oben angegebenen Link.
@@ -231,9 +232,4 @@ Das Laden von Daten ist der erste Schritt auf dem Weg zu einer Data Warehouse-L�
 <!--Other Web references-->
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

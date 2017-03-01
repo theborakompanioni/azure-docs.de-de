@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/16/2016
+ms.date: 02/13/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 003db6e1479be1007dd292555ce5997f1c138809
-ms.openlocfilehash: c5c2742065536805cd032f2d814ad668b8ad3b6e
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: af4343dbe23f314a85c98d7337f42c4b60b03c6a
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -29,7 +30,7 @@ Sie können für jeden HTTP- oder HTTPS-Endpunkt, der über das öffentliche Int
 Es gibt zwei Arten von Webtests:
 
 * [URL-Pingtest](#create): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
-* [Mehrstufiger Webtest](#multi-step-web-tests): Diesen Test erstellen Sie in Visual Studio Ultimate oder Visual Studio Enterprise und laden ihn in das Portal hoch.
+* [Mehrstufiger Webtest](#multi-step-web-tests): Diesen Test erstellen Sie in Visual Studio Enterprise und laden ihn in das Portal hoch.
 
 Sie können bis zu zehn Webtests pro Anwendungsressource erstellen.
 
@@ -78,37 +79,20 @@ In diesen Diagrammen werden die Ergebnisse für alle Webtests dieser Anwendung k
 ## <a name="a-namefailuresaif-you-see-failures"></a><a name="failures"></a>Wenn Sie Fehler finden ...
 Klicken Sie auf einen roten Punkt.
 
-![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/14-availRedDot.png)
+![Auf einen roten Punkt klicken](./media/app-insights-monitor-web-app-availability/open-instance.png)
 
-Oder führen Sie einen Bildlauf nach unten durch, und klicken Sie auf einen Test, bei dem der Erfolg kleiner als 100 % ist.
 
-![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
+Mit einem Webtestergebnis haben Sie folgende Möglichkeiten:
 
-Die Ergebnisse dieses Tests werden geöffnet.
+* Untersuchen Sie die vom Server erhaltene Antwort.
+* Öffnen Sie die von der Server-App gesendeten Telemetriedaten, während die Instanz der fehlgeschlagenen Anforderung verarbeitet wird.
+* Erstellen Sie in Git oder VSTS ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
+* Öffnen Sie das Webtestergebnis in Visual Studio.
 
-![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/16-1test.png)
-
-Der Test wird von verschiedenen Standorten aus ausgeführt. Wählen Sie einen davon aus, bei dem die Ergebnisse bei unter 100 % liegen.
-
-![Auf bestimmten Webtest klicken](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
-
-Scrollen Sie bis zu **Tests mit Fehlern** , und wählen Sie ein Ergebnis aus.
-
-Klicken Sie auf das Ergebnis, um es im Portal auszuwerten und die Fehlerursache festzustellen.
-
-![Ausführungsergebnis des Webtests](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
-
-Alternativ dazu können Sie die Ergebnisdatei herunterladen und in Visual Studio überprüfen.
 
 *Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird.
 
-### <a name="open-the-server-request-and-exceptions"></a>Öffnen der Serveranforderung und Ausnahmen
-
-Über die detaillierten Eigenschaften eines bestimmten Tests können Sie den serverseitigen Bericht der Anforderung sowie andere Ereignisse (etwa Ausnahmen) öffnen.
-
-![Ausführungsergebnis des Webtests](./media/app-insights-monitor-web-app-availability/web-test-linked-to-server-telemetry.png)
-
-Sollten keine verwandten Elemente angezeigt werden, wird möglicherweise gerade ein [Samplingvorgang](app-insights-sampling.md) ausgeführt.
+*Keine verwandten Elemente vorhanden?* Dies kann daran liegen, dass das [„Sampling“](app-insights-sampling.md) (Stichprobenerstellung) aktiv ist.
 
 ## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
@@ -122,7 +106,7 @@ Um einen mehrstufigen Test zu erstellen, zeichnen das Szenario mit Visual Studio
 Beachten Sie, dass Sie keine codierten Funktionen in den Tests verwenden können: Die Szenarioschritte müssen als Skript in der Webtest-Datei enthalten sein.
 
 #### <a name="1-record-a-scenario"></a>1. Aufzeichnen eines Szenarios
-Verwenden Sie Visual Studio Enterprise oder Ultimate, um eine Websitzung aufzuzeichnen.
+Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 
 1. Erstellen Sie ein Webleistungstest-Projekt.
 
@@ -239,7 +223,7 @@ Sie können für Ihre Website einen Auslastungstest durchführen. Wie beim Verf�
 Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 ## <a name="automation"></a>Automation
-* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Webtests](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/) .
+* [Verwenden Sie PowerShell-Skripts zum automatischen Einrichten eines Webtests](app-insights-powershell.md#add-an-availability-test) .
 * Richten Sie einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="questions-problems"></a>Fragen? Probleme?
@@ -291,9 +275,4 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 [diagnostic]: app-insights-diagnostic-search.md
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

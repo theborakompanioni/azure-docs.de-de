@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: luisca
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 26c492ebdb40bef23247487c2f3015ecd9314cb6
+ms.sourcegitcommit: 29c718d0c34d1e2f9d17b285a7270541a9ff15cf
+ms.openlocfilehash: 9afbae9b7c24c72cbb2ef64e693f7a317dc81a46
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -61,7 +62,7 @@ Um dieses Szenario zu aktivieren, gehen Sie im Machine Learning-Empfehlungsdiens
 In der Regel rufen Sie „Get recommendation“ über einen bestimmten Zeitraum auf. Während dieses Zeitraums können Sie die Nutzungsdaten an das Machine Learning-Empfehlungssystem umleiten, damit diese Daten dem angegebenen Modellcontainer hinzugefügt werden. Wenn Sie über ausreichend Nutzungsdaten verfügen, können Sie ein neues Empfehlungsmodell erstellen, das die zusätzlichen Nutzungsdaten integriert. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Visual Studio 2013
+* Visual Studio 2013 oder höher
 * Zugriff auf das Internet 
 * Abonnement für die Empfehlungen-API (https://datamarket.azure.com/dataset/amla/recommendations).
 
@@ -90,10 +91,5 @@ Eine vollständige Beschreibung der APIs finden Sie in der Dokumentation zum Mic
 
 ## <a name="disclaimer"></a>Haftungsausschluss
 Die Beispiel-App ist nicht für die Ausführung in einer Produktionsumgebung gedacht. Der Katalog umfasst nur sehr wenige Daten, die kein sinnvolles Empfehlungsmodell ergeben. Die Daten werden als Beispiel bereitgestellt. 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

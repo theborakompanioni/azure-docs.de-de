@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/31/2017
+ms.date: 2/23/2017
 ms.author: raiye
 translationtype: Human Translation
-ms.sourcegitcommit: 47d5a9173d8791124a3071b090d6db027dba9448
-ms.openlocfilehash: c070fa326688d94ce2cbf4e0471c4afc9d78c93c
+ms.sourcegitcommit: 244471c5e90a0e2d89c34b255f2da077a94f91cf
+ms.openlocfilehash: 1e87486dc7a186c0ab7147719ac47177c87be148
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -50,35 +51,6 @@ Die Bereitstellung des Gastbetriebssystems beginnt am 8. November 2016 und soll 
 ###### <a name="october-23-2016"></a>**23. Oktober 2016**
 Windows Server 2016 wird am 1. November 2016 als Gastbetriebssystemfamilie 5 veröffentlicht und bietet .NET 4.6-Unterstützung .
 
-###### <a name="september-13-2016"></a>**13. September 2016**
-Die Bereitstellung des Gastbetriebssystems September begann am 13. September 2016 und soll voraussichtlich am 13. Oktober 2016 freigegeben werden.
-
-###### <a name="august-9-2016"></a>**9. August 2016**
-Das Rollout des August-Gastbetriebssystems beginnt am 9. August 2016. Die Veröffentlichung ist für den 8. September 2016 geplant. 
-
-###### <a name="july-13-2016"></a>**13. Juli 2016**
-Das Rollout der Juliversion des Gastbetriebssystems beginnt am 13. Juli 2016. Die Veröffentlichung ist für den 12. August 2016 geplant. 
-
-###### <a name="june-15-2016"></a>**15. Juni 2016**
-Das Rollout der Juniversion des Gastbestriebssystems beginnt am 15. Juni 2016. Die Veröffentlichung ist für den 14. Juli 2016 geplant. 
-
-###### <a name="may-17-2016"></a>**17. Mai 2016**
-Der Rollout des Gastbetriebssystems für Mai begann am 17. Mai 2016, und es soll voraussichtlich am 10. Juni 2016 herausgegeben werden. 
-
-###### <a name="april-18-2016"></a>**18. April 2016**
-Der Rollout des Gastbetriebssystems für April beginnt am 18. April 2016 und sollte voraussichtlich am 12. Mai 2016 freigegeben werden. 
-
-###### <a name="march-14-2016"></a>**14. März 2016**
-Der Rollout des Gast-BS März beginnt am 14. März 2016 und sollte voraussichtlich am 8. April 2016 freigegeben werden. 
-
-###### <a name="february-22-2016"></a>**22. Februar 2016**
-Die Bereitstellung des Gastbetriebssystems Februar beginnt am 22. Februar 2016 und soll voraussichtlich am 9. März 2016 freigegeben werden.
-
-###### <a name="january-18-2016"></a>**18. Januar 2016**
-Die Bereitstellung des Gast-BS Januar beginnt am 18. Januar 2016 und soll voraussichtlich am 12. Februar 2016 freigegeben werden.
-
-###### <a name="january-4-2016"></a>**4. Januar 2016**
-Das Gastbetriebssystem November 201511-02 wurde am 4. Januar 2016 für die Bereitstellung veröffentlicht. Diese Version des Betriebssystems wurde nicht als Standardbetriebssystem für automatische Updates festgelegt. Daher nimmt die Bereitstellung des Gastbetriebssystems für die Version November 201511-02 etwas mehr Zeit in Anspruch. 
 
 ## <a name="releases"></a>Releases
 ## <a name="family-5-releases"></a>Releases von Familie 5
@@ -251,10 +223,5 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [patches]: cloud-services-guestos-msrc-releases.md
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

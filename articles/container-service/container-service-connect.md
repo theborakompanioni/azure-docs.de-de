@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2017
+ms.date: 02/21/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2464c91b99d985d7e626f57b2d77a334ee595f43
-ms.openlocfilehash: 813517a26ccbbd9df7e7fb7de36811cdebb84284
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 45d399b72f8d037fb828d9ad22bbd3543847feb3
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,14 +30,11 @@ Die Kubernetes-, DC/OS- und Docker Swarm-Cluster stellen HTTP-Endpunkte lokal be
 
 Für DC/OS und Docker Swarm müssen Sie einen SSH-Tunnel (Secure Shell) zu einem internen System erstellen. Nachdem der Tunnel eingerichtet wurde, können Sie Befehle mit den HTTP-Endpunkten verwenden und die Weboberfläche des Clusters über Ihr lokales System anzeigen. 
 
-> [!NOTE]
-> Die Kubernetes-Unterstützung in Azure Container Service befindet sich derzeit in der Vorschauphase.
->
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Kubernetes-, DC/OS- oder Swarm-Cluster, der [in Azure Container Service bereitgestellt wurde](container-service-deployment.md).
-* SSH-Datei mit passendem privatem Schlüssel für den öffentlichen Schlüssel, der dem Cluster während der Bereitstellung hinzugefügt wurde. Bei diesen Befehlen wird vorausgesetzt, dass sich der private SSH-Schlüssel auf Ihrem Computer unter `$HOME/.ssh/id_rsa` befindet. Weitere Informationen finden Sie in der Anleitung für [OS X und Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) bzw. [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md). Wenn die SSH-Verbindung nicht funktioniert, müssen Sie ggf. [Ihre SSH-Schlüssel zurücksetzen](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
+* SSH-RSA-Datei mit passendem privatem Schlüssel für den öffentlichen Schlüssel, der dem Cluster während der Bereitstellung hinzugefügt wurde. Bei diesen Befehlen wird vorausgesetzt, dass sich der private SSH-Schlüssel auf Ihrem Computer unter `$HOME/.ssh/id_rsa` befindet. Weitere Informationen finden Sie in der Anleitung für [OS X und Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) bzw. [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md). Wenn die SSH-Verbindung nicht funktioniert, müssen Sie ggf. [Ihre SSH-Schlüssel zurücksetzen](../virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md).
 
 ## <a name="connect-to-a-kubernetes-cluster"></a>Herstellen einer Verbindung mit einem Kubernetes-Cluster
 
@@ -47,7 +45,7 @@ Führen Sie diese Schritte aus, um `kubectl` auf Ihrem Computer zu installieren 
 > 
 
 ### <a name="install-kubectl"></a>Installieren von kubectl
-Eine Möglichkeit zum Installieren dieses Tools ist der Befehl `az acs kubernetes install-cli` der Azure-CLI 2.0 (Vorschau). Stellen Sie zum Ausführen dieses Befehls sicher, dass Sie die aktuelle Version von Azure-CLI 2.0 (Vorschau) [installiert](/cli/azure/install-az-cli2) haben und an einem Azure-Konto (`az login`) angemeldet sind.
+Eine Möglichkeit zum Installieren dieses Tools ist der Azure CLI 2.0-Befehl `az acs kubernetes install-cli`. Stellen Sie zum Ausführen dieses Befehls sicher, dass Sie die aktuelle Version von Azure CLI 2.0 [installiert](/cli/azure/install-az-cli2) haben und an einem Azure-Konto (`az login`) angemeldet sind.
 
 ```azurecli
 # Linux or OS X
@@ -57,7 +55,7 @@ az acs kubernetes install-cli [--install-location=/some/directory/kubectl]
 az acs kubernetes install-cli [--install-location=C:\some\directory\kubectl.exe]
 ```
 
-Alternativ hierzu können Sie den Client direkt über die [Übersicht der verschiedenen Releases](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md#downloads-for-v146) herunterladen.
+Alternativ hierzu können Sie den aktuellen Client direkt über die [Übersicht der verschiedenen Kubernetes-Releases](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG.md) herunterladen. Weitere Informationen finden Sie unter [Installing and Setting up kubectl](https://kubernetes.io/docs/user-guide/prereqs/) (Installieren und Einrichten von kubectl).
 
 ### <a name="download-cluster-credentials"></a>Herunterladen von Clusteranmeldeinformationen
 Nachdem `kubectl` installiert wurde, müssen Sie die Clusteranmeldeinformationen auf Ihren Computer kopieren. Eine Möglichkeit zum Abrufen der Anmeldeinformationen ist der Befehl `az acs kubernetes get-credentials`. Übergeben Sie den Namen der Ressourcengruppe und den Namen der Container Service-Ressource:
@@ -128,7 +126,7 @@ Als Erstes ermitteln Sie beim Erstellen eines SSH-Tunnels unter Linux oder OS X 
     **PATH_TO_PRIVATE_KEY** [OPTIONAL] ist der Pfad zum privaten Schlüssel, der zu dem öffentlichen Schlüssel passt, den Sie beim Erstellen des Clusters angegeben haben. Verwenden Sie diese Option mit dem Flag `-i`.
 
     ```bash
-    ssh -fNL PORT:localhost:PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
+    ssh -fNL LOCAL_PORT:localhost:REMOTE_PORT -p 2200 [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com 
     ```
     > [!NOTE]
     > Für die SSH-Verbindung wird Port 2200 und nicht der Standardport 22 verwendet. In einem Cluster mit mehr als einem virtuellen Mastercomputer ist dies der Verbindungsport für den ersten virtuellen Mastercomputer.
@@ -203,7 +201,7 @@ Es gibt mehrere Möglichkeiten, wie Sie SSH-Tunnel unter Windows erstellen könn
 
     ![PuTTY-Ereignisprotokoll](media/putty4.png)
 
-Nachdem Sie den Tunnel für DC/OS konfiguriert haben, können Sie wie folgt auf den zugehörigen Endpunkt zugreifen:
+Nachdem Sie den Tunnel für DC/OS konfiguriert haben, können Sie wie folgt auf die zugehörigen Endpunkte zugreifen:
 
 * DC/OS: `http://localhost/`
 * Marathon: `http://localhost/marathon`
@@ -217,10 +215,5 @@ Bereitstellen und Verwalten von Containern in Ihrem Cluster:
 * [Microsoft Azure Container Service Engine - Kubernetes Walkthrough (Microsoft Azure Container Service-Modul – Exemplarische Vorgehensweise für Kubernetes)](container-service-kubernetes-ui.md)
 * [Verwenden von Azure Container Service und DC/OS](container-service-mesos-marathon-rest.md)
 * [Verwenden von Azure Container Service und Docker Swarm](container-service-docker-swarm.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

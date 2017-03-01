@@ -12,11 +12,12 @@ ms.devlang: R
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/09/2017
+ms.date: 02/28/2017
 ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: 841e70fa3a80bbeb7e2281246bac2f99c0de899f
 ms.openlocfilehash: 169743012b1f50d67d5eafdb279e706719752eb8
+ms.lasthandoff: 11/22/2016
 
 
 ---
@@ -74,10 +75,5 @@ In diesem Artikel haben Sie gelernt, wie Sie einen neuen HDInsight-Cluster mit R
 * [Erste Schritte mit R Server für Hadoop](hdinsight-hadoop-r-server-get-started.md)
 * [Hinzufügen von RStudio Server zu HDInsight (falls nicht bereits während der Clustererstellung hinzugefügt)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [Azure Storage-Optionen für R Server in HDInsight](hdinsight-hadoop-r-server-storage.md)
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

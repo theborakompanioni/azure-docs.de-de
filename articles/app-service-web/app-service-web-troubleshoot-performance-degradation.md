@@ -4,7 +4,7 @@ description: In diesem Artikel erfahren Sie, wie Sie Web-App-Leistungsprobleme i
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: top-support-issue
 keywords: Web-App-Leistung, langsame App, App langsam
@@ -19,6 +19,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
 ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -171,9 +172,4 @@ Dies ist oft die einfachste Methode zum Beheben einmaliger Probleme. Im [Azure-P
  ![Neustart der Web-App zum Beheben von Leistungsproblemen](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 Sie können Ihre Web-App auch mit Azure PowerShell verwalten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

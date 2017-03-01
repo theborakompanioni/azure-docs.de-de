@@ -15,8 +15,9 @@ ms.topic: get-started-article
 ms.date: 02/07/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: c0c33506d134db9fc49bd873e9c95063dd2ab845
-ms.openlocfilehash: d5dcdc94490ff46e39ff5894f6d70d5dcb5dd527
+ms.sourcegitcommit: 6c26fdd11031ab482d12611ca338df5c90a14193
+ms.openlocfilehash: a482e20bdbf60889f93f4532ed042b41ec51b81e
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -95,7 +96,10 @@ Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS
 
 ### <a name="domain-and-ou-filtering"></a>Filterung von Domänen und Organisationseinheiten
 Standardmäßig werden alle Domänen und Organisationseinheiten synchronisiert. Wenn Sie Domänen oder Organisationseinheiten nicht in Azure AD synchronisieren möchten, können Sie diese Domänen und Organisationseinheiten deaktivieren.  
-![Domänen und Organisationseinheiten filtern](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) Diese Seite des Assistenten dient zum Konfigurieren der domänenbasierten und OE-basierten Filterung. Weitere Informationen finden Sie unter [Domain-based filtering](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) (Domänenbasierte Filterung) und [OU-based filtering](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) (OE-basierte Filterung). Bei Verwendung der OE-basierten Filterung werden neue Organisationseinheiten, die später hinzugefügt werden, standardmäßig synchronisiert. Falls neue OEs nicht synchronisiert werden sollen, können Sie dies konfigurieren, nachdem der Assistent die [OE-basierte Filterung](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) abgeschlossen hat.
+![Domänen und Organisationseinheiten filtern](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png)  
+Diese Seite des Assistenten dient zum Konfigurieren der domänenbasierten und OE-basierten Filterung. Wenn Sie Änderungen vornehmen möchten, ist ratsam, vorher die Informationen in den Abschnitten zur [domänenbasierten Filterung](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) und [OE-basierten Filterung](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) zu lesen. Einige OEs sind für die Funktionalität sehr wichtig und sollten nicht deaktiviert werden.
+
+Bei Verwendung der OE-basierten Filterung werden neue Organisationseinheiten, die später hinzugefügt werden, standardmäßig synchronisiert. Falls neue OEs nicht synchronisiert werden sollen, können Sie dies konfigurieren, nachdem der Assistent die [OE-basierte Filterung](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering) abgeschlossen hat.
 
 Wenn Sie die Verwendung der [gruppenbasierten Filterung](#sync-filtering-based-on-groups) planen, sollten Sie sicherstellen, dass die OE mit der Gruppe eingebunden ist und dass dafür nicht die OE-Filterung verwendet wird. Die OE-Filterung wird vor der gruppenbasierten Filterung ausgewertet.
 
@@ -174,8 +178,8 @@ Weitere Informationen finden Sie unter [Verzeichniserweiterungen](active-directo
 ### <a name="enabling-single-sign-on-sso"></a>Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO)
 Das Konfigurieren des einmaligen Anmeldens zur Verwendung mit der Kennwortsynchronisierung oder Passthrough-Authentifizierung ist ein einfacher Prozess, den Sie nur einmal für jede Gesamtstruktur durchführen müssen, die mit Azure AD synchronisiert wird. Die Konfiguration umfasst zwei Schritte:
 
-1.  Erstellen des erforderlichen Computerkontos in Ihrer lokalen Active Directory-Instanz
-2.  Konfigurieren der Intranetzone der Clientcomputer zur Unterstützung des einmaligen Anmeldens
+1.    Erstellen des erforderlichen Computerkontos in Ihrer lokalen Active Directory-Instanz
+2.    Konfigurieren der Intranetzone der Clientcomputer zur Unterstützung des einmaligen Anmeldens
 
 #### <a name="create-the-computer-account-in-active-directory"></a>Erstellen des Computerkontos in Active Directory
 Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Sie Domänenadministrator-Anmeldeinformationen angeben, damit das Computerkonto in jeder Gesamtstruktur erstellt werden kann. Die Anmeldeinformationen werden nur zum Erstellen des Kontos verwendet und nicht für andere Vorgänge gespeichert oder genutzt. Fügen Sie die Anmeldeinformationen einfach wie folgt auf der Seite **Einmaliges Anmelden aktivieren** des Azure AD Connect-Assistenten hinzu:
@@ -189,20 +193,20 @@ Für jede Gesamtstruktur, die in Azure AD Connect hinzugefügt wurde, müssen Si
 Damit der Client in der Intranetzone automatisch angemeldet wird, müssen Sie dafür sorgen, dass zwei URLs Teil der Intranetzone sind. So wird sichergestellt, dass der in die Domäne eingebundene Computer automatisch ein Kerberos-Ticket an Azure AD sendet, wenn eine Verbindung mit dem Unternehmensnetzwerk besteht.
 Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 
-1.  Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
-2.  Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird. Beispiel: Standardrichtlinie der Domäne.
-3.  Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie wie in der folgenden Abbildung dargestellt die Option **Liste der Site zu Zonenzuweisungen**.
-4.  Aktivieren Sie die Richtlinie, und geben Sie die folgenden beiden Elemente in das Dialogfeld ein.
+1.    Öffnen Sie die Gruppenrichtlinien-Verwaltungstools.
+2.    Bearbeiten Sie die Gruppenrichtlinie, die auf alle Benutzer angewendet wird. Beispiel: Standardrichtlinie der Domäne.
+3.    Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie wie in der folgenden Abbildung dargestellt die Option **Liste der Site zu Zonenzuweisungen**.
+4.    Aktivieren Sie die Richtlinie, und geben Sie die folgenden beiden Elemente in das Dialogfeld ein.
 
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+        Wert: `https://autologon.microsoftazuread-sso.com`  
+        Data 1  
+        Wert: `https://aadg.windows.net.nsatc.net`  
+        Data 1
 
-5.  Es sollte in etwa wie folgt aussehen:  
+5.    Es sollte in etwa wie folgt aussehen:  
 ![Intranetzonen](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
 
-6.  Klicken Sie zweimal auf **OK**.
+6.    Klicken Sie zweimal auf **OK**.
 
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurieren des Verbunds mit AD FS
 Das Konfigurieren von AD FS mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:
@@ -313,9 +317,4 @@ Weitere Informationen zu diesen Features, die mit der Installation aktiviert wur
 Weitere Informationen zu folgenden allgemeinen Themen: [Scheduler und Auslösen der Synchronisierung](active-directory-aadconnectsync-feature-scheduler.md).
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

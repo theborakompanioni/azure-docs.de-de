@@ -2,7 +2,7 @@
   
   * Grundlegendes zu Redundanz und Zuverlässigkeit
   * Zustandsbehaftete und zustandslose Anwendungen
-    * [Konfigurieren der zustandslosen App](/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
+    * [Konfigurieren der zustandslosen App](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)
 * Laden von Test-Apps in App Service   
 * App Service-Skalierung – bewährte Methoden
   
@@ -13,9 +13,4 @@
 * Geografische Verteilung
   
   * [Nutzen von Traffic Manager für globale Skalierbarkeit](../articles/traffic-manager/traffic-manager-overview.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

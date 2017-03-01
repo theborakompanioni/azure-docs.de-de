@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2017
+ms.date: 02/09/2017
 ms.author: arramac
 translationtype: Human Translation
-ms.sourcegitcommit: ec72d5df2fc220638773286e76c25b4b013cce63
-ms.openlocfilehash: 4f96f7392442c31888b79d0284b6d2d58d292e86
+ms.sourcegitcommit: 876e0fd12d045bba85d1e30d4abfcb8ce421213a
+ms.openlocfilehash: ed58e623ff74a21df25fc93346e571edec7b40da
 
 
 ---
@@ -134,7 +134,7 @@ In der folgenden Tabelle sind die Unterschiede zwischen der Arbeit mit einer Sam
         <tr>
             <td valign="top"><p>Minimaler Durchsatz</p></td>
             <td valign="top"><p>400 Anforderungseinheiten pro Sekunde</p></td>
-            <td valign="top"><p>10.000 Anforderungseinheiten pro Sekunde</p></td>
+            <td valign="top"><p>2.500 Anforderungseinheiten pro Sekunde</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maximaler Durchsatz</p></td>
@@ -174,11 +174,11 @@ Für dieses Beispiel haben wir `deviceId` ausgewählt, da es (a) möglich ist, d
 
 
 > [!NOTE]
-> Um partitionierte Sammlungen zu erstellen, müssen Sie einen Durchsatzwert von mehr als 10.000 Anforderungseinheiten pro Sekunde angeben. Da der Durchsatz in Vielfachen von 100 angegeben wird, muss dies 10.100 oder höher sein.
+> Um mit dem SDK partitionierte Sammlungen zu erstellen, müssen Sie einen Durchsatzwert von mindestens 10.100 Anforderungseinheiten (RU) pro Sekunde angeben. Zum Festlegen eines Durchsatzwerts zwischen 2.500 und 10.000 für partitionierte Sammlungen müssen Sie vorübergehend das Azure-Portal verwenden, da diese neuen, niedrigeren Werte im SDK noch nicht verfügbar sind.
 > 
 > 
 
-Auf diese Weise wird ein REST-API-Aufruf in DocumentDB durchgeführt, und der Dienst stellt eine Anzahl von Partitionen basierend auf dem angeforderten Durchsatz bereit. Sie können den Durchsatz einer Sammlung ändern, wenn Sie eine höhere Leistung benötigen. Weitere Informationen finden Sie unter [Leistungsstufen](documentdb-performance-levels.md) .
+Auf diese Weise wird ein REST-API-Aufruf in DocumentDB durchgeführt, und der Dienst stellt eine Anzahl von Partitionen basierend auf dem angeforderten Durchsatz bereit. Sie können den Durchsatz einer Sammlung ändern, wenn Sie eine höhere Leistung benötigen. 
 
 ### <a name="reading-and-writing-documents"></a>Lesen und Schreiben von Dokumenten
 Jetzt fügen wir Daten in DocumentDB ein. Nachstehend finden Sie eine Beispielklasse, die eine Geräteanzeige enthält sowie einen Aufruf von CreateDocumentAsync, um ein neues Gerät mit Lesevorgang einer Sammlung hinzuzufügen.
@@ -294,7 +294,7 @@ Wenn eine Anwendung, die eine Sammlung mit nur einer Partition verwendet, einen 
 So führen Sie eine Migration aus einer Sammlung mit nur einer Partition in eine partitionierte Sammlung durch
 
 1. Exportieren Sie Daten aus der Sammlung mit nur einer Partition nach JSON. Weitere Informationen finden Sie unter [Exportieren in eine JSON-Datei](documentdb-import-data.md#export-to-json-file) .
-2. Importieren Sie die Daten in eine partitionierte Sammlung, die mit einer Partitionsschlüsseldefinition erstellt wurde und mehr als 10.000 Anforderungseinheiten pro Sekunde aufweist, wie im nachstehenden Beispiel gezeigt. Weitere Informationen finden Sie unter [Importieren in DocumentDB](documentdb-import-data.md#DocumentDBSeqTarget) .
+2. Importieren Sie die Daten in eine partitionierte Sammlung, die mit einer Partitionsschlüsseldefinition erstellt wurde und einen Durchsatz von mehr als 2.500 Anforderungseinheiten pro Sekunde aufweist, wie im folgenden Beispiel gezeigt. Weitere Informationen finden Sie unter [Importieren in DocumentDB](documentdb-import-data.md#DocumentDBSeqTarget) .
 
 ![Migrieren von Daten in eine partitionierte Sammlung in DocumentDB][3]  
 
@@ -329,7 +329,7 @@ Einen der häufigsten Anwendungsfälle von DocumentDB stellen Protokollierung un
 
 * Wenn Ihr Anwendungsfall eine geringe Rate von Schreibvorgängen umfasst, die sich über längere Zeit ansammeln, und Abfragen nach Zeitstempelbereichen und anderen Filtern durchführen müssen, ist ein Rollup des Zeitstempels, z.B. mit dem Datum als Partitionsschlüssel, ein guter Ansatz. Dadurch können Sie Abfragen über alle Daten für ein Datum von einer einzigen Partition ausführen. 
 * Wenn Ihre Workload schreiblastig ist (im Allgemeinen der häufigere Fall), sollten Sie einen Partitionsschlüssel verwenden, der nicht auf Zeitstempeln basiert, sodass DocumentDB Schreibvorgänge gleichmäßig über eine Anzahl von Partitionen verteilen kann. Hierbei sind Hostname, Prozess-ID, Aktivitäts-ID oder eine andere Eigenschaft mit hoher Kardinalität eine gute Wahl. 
-* Ein dritter Ansatz ist eine Mischung, bei der für jeden Tag/Monat eine Sammlung vorhanden ist und der Partitionsschlüssel eine differenzierte Eigenschaft wie Hostname ist. Dies hat den Vorteil, dass Sie unterschiedliche Leistungsstufen entsprechend dem Zeitfenster festlegen können, z.B. kann die Sammlung für den aktuellen Monat mit höherem Durchsatz bereitgestellt werden, da sie für Lese- und Schreibvorgänge verwendet wird, während in vorherigen Monaten ein geringerer Durchsatz ausreichend war, da nur Lesevorgänge ausgeführt wurden.
+* Ein dritter Ansatz ist eine Mischung, bei der für jeden Tag/Monat eine Sammlung vorhanden ist und der Partitionsschlüssel eine differenzierte Eigenschaft wie Hostname ist. Dies hat den Vorteil, dass Sie unterschiedliche Durchsätze entsprechend dem Zeitfenster festlegen können, z.B. kann die Sammlung für den aktuellen Monat mit höherem Durchsatz bereitgestellt werden, da sie für Lese- und Schreibvorgänge verwendet wird, während in vorherigen Monaten ein geringerer Durchsatz ausreichend war, da nur Lesevorgänge ausgeführt wurden.
 
 ### <a name="partitioning-and-multi-tenancy"></a>Partitionierung und Mehrinstanzenfähigkeit
 Wenn Sie eine mehrinstanzenfähige Anwendung mithilfe von DocumentDB implementieren, gibt es zwei wichtige Muster für die Implementierung von Mandanten mit DocumentDB – einen Partitionsschlüssel pro Mandant und eine Auflistung pro Mandant. Hier sind ihre Vor- und Nachteile auflistet:
@@ -354,6 +354,6 @@ In diesem Artikel haben wir beschrieben, wie Partitionierung in Azure DocumentDB
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

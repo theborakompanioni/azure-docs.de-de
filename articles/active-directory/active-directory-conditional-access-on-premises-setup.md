@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 02d8de2e37af9ccbf79bb77180b0eda0d187eb5c
+ms.sourcegitcommit: f42e31c99bf43e8f034c8d6f4f98d777661c3d81
+ms.openlocfilehash: 204ec83dc1000bb1e10df6fecc303b6ac7795739
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -176,9 +177,6 @@ Diese URL kann auf unterschiedlichste Weise an die Benutzer kommuniziert werden.
 ### <a name="join-a-windows-7-device-using-azure-active-directory-device-registration"></a>Verknüpfen eines Windows 7-Geräts mithilfe der Azure Active Directory-Geräteregistrierung
 Zum Registrieren von in eine Domäne eingebundenen Windows 7-Geräten müssen Sie das Geräteregistrierung-Softwarepaket bereitstellen. Das Softwarepaket heißt „Arbeitsplatzeinbindung für Windows 7“ und steht zum Download auf der [Microsoft Connect-Website](https://connect.microsoft.com/site1164)zur Verfügung. Eine Anleitung zum Verwenden des Pakets finden Sie unter [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md).
 
-### <a name="join-an-android-device-using-azure-active-directory-device-registration"></a>Verknüpfen eines Android-Geräts mithilfe der Azure Active Directory-Geräteregistrierung 
-Im Thema [Azure Authenticator für Android](active-directory-conditional-access-azure-authenticator-app.md) finden Sie Anweisungen zum Installieren der Azure Authenticator-App auf Ihrem Android-Gerät und zum Hinzufügen eines Geschäftskontos. Nach der erfolgreichen Erstellung eines Geschäftskontos auf einem Android-Gerät wird das Gerät per Arbeitsbereich mit der Organisation verknüpft.
-
 ## <a name="verify-registered-devices-are-written-back-to-active-directory"></a>Überprüfen, ob registrierte Geräte nach Active Directory zurückgeschrieben werden
 Sie können mithilfe von "LDP.exe" oder ADSI Edit Geräteobjekte anzeigen und bestätigen, dass diese zurück in Ihr Active Directory-Verzeichnis geschrieben wurden. Beide Tools gehören zum Lieferumfang der Administratortools von Active Directory.
 
@@ -234,10 +232,5 @@ Wenn Benutzer auf Ihre Anwendung jetzt über ein Gerät zugreifen, das nicht unt
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

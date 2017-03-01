@@ -4,7 +4,7 @@ description: "Informieren Sie sich über den Inhalt des Windows Universal Apps S
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 8fa1b701-1c2b-4aec-940c-06c974ef5405
 ms.service: mobile-engagement
@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: ea47cba55c9689e23eb3592ae2559649d3377055
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -40,10 +41,5 @@ Dieser Ordner enthält alle von Mobile Engagement benötigten Ressourcen. Sie k�
 
 ### <a name="overlay-folder"></a>/overlay-Ordner
 * `EngagementPageOverlay.cs` : Die Overlayseite, die für das Hinzufügen der Engagement-Reach-In-App-Benutzeroberfläche zu ihrem untergeordneten Element verantwortlich ist.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

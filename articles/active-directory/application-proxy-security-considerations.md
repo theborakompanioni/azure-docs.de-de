@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: b01d0ddef2271c440cbff1684c85d23dcda9a1de
-ms.openlocfilehash: 75d657412a61de38ab53708a8108d40309de742d
+ms.sourcegitcommit: 67650676117fef834ea819da2fc45ca66ed15493
+ms.openlocfilehash: 1b713e015f48b044c6c9d8ff6a0d8669d4532a9f
 
 
 ---
@@ -54,7 +54,7 @@ Der Azure AD-Anwendungsproxy bietet die folgenden Sicherheitsvorteile:
 * Azure AD Identity Protection mit Intelligence auf Machine Learning-Basis mit Datenfeeds von unserer Digital Crimes Unit und aus dem Microsoft Security Response Center. Zusammen identifizieren wir proaktiv kompromittierte Konten und ermöglichen den Echtzeitschutz vor Anmeldungen mit hohem Risikofaktor. Wir berücksichtigen viele verschiedene Faktoren, z.B. den Zugriff von infizierten Geräten und über Anonymisierungsnetzwerke sowie von ungewöhnlichen und zweifelhaften Standorten.
 * Viele dieser Berichte und Ereignisse sind über eine API zur Integration in Ihre SIEM-Systeme bereits verfügbar.
 * Weitere Informationen zu Azure AD Identity Protection finden Sie unter [Azure Active Directory Identity Protection](https://azure.microsoft.com/en-us/documentation/articles/active-directory-identityprotection).
-
+!
 **Remotezugriff als Dienst:** Sie müssen sich nicht mit dem Warten und Patchen von lokalen Servern beschäftigen.
 
 * Der Azure AD-Anwendungsproxy ist ein Internetskalierungsdienst, der sich in unserem Besitz befindet. So können Sie sicher sein, dass Sie immer die neuesten Sicherheitspatches und -upgrades erhalten. Wir kümmern uns also um die Sicherheit Ihres Netzwerks.
@@ -65,6 +65,12 @@ Die Remotezugriffsdienste von Azure AD werden gemäß den Richtlinien und Standa
 Im Diagramm unten ist dargestellt, wie mit Azure AD der sichere Remotezugriff auf Ihre lokalen Anwendungen ermöglicht wird.
 
  ![Azure AD-Anwendungsproxyconnectors](./media/application-proxy-security-considerations/secure-remote-access.png)
+
+>[!NOTE] 
+>Zur Erhöhung der Sicherheit von Anwendungen, die vom Azure AD-Anwendungsproxy veröffentlicht werden, blockieren wir die Indizierung und Archivierung Ihrer Anwendungen durch Webcrawlerroboter. Jedes Mal, wenn ein Webcrawlerroboter versucht, die robots-Einstellungen für eine veröffentlichte App abzurufen, antwortet der App-Proxy mit einer Datei „robots.txt“, die Folgendes enthält: <br>
+>   _User-agent: *_<br>
+>   _Disallow: /_
+>
 
 ## <a name="components-of-the-azure-ad-app-proxy-solution"></a>Komponenten der Azure AD-Anwendungsproxylösung
 
@@ -141,6 +147,6 @@ Falls Sie Hilfe zur Kommunikation von einer Azure-Webanwendung über einen Clien
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

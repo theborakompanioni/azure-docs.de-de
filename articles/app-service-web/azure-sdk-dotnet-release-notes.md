@@ -3,8 +3,7 @@ title: "Versionshinweise zu Azure SDK für .NET"
 description: "Versionshinweise zu Azure SDK für .NET"
 services: app-service/web
 documentationcenter: 
-author: Juliako
-manager: dwrede
+author: chrissfanos
 editor: 
 ms.assetid: f7724fdc-79b7-4b3c-ab31-6da4679a1264
 ms.service: app-service

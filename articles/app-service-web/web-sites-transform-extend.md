@@ -4,7 +4,7 @@ description: "Verwenden Sie XML Document Transformation-Deklarationen (XDT) zum 
 author: cephalin
 writer: cephalin
 editor: mollybos
-manager: wpickett
+manager: erikre
 services: app-service
 documentationcenter: 
 ms.assetid: b441a286-ef38-4abc-b102-cdb249baf5bc
@@ -18,6 +18,7 @@ ms.author: cephalin
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: abd55399ef780df945a2d643940a71425d085692
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -179,10 +180,5 @@ Es ist möglich, alle privaten (nicht vorinstallierten) Erweiterungen für Ihre 
 <!-- IMAGES -->
 [TransformSitePHPUI]: ./media/web-sites-transform-extend/TransformSitePHPUI.png
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

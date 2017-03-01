@@ -1,3 +1,14 @@
+### <a name="disk-persistence"></a>Dauerhaftigkeit von Datenträgern 
+
+In der folgenden Tabelle sind die unterschiedlichen Zustände für die einzelnen Datenträger einer Azure-VM angegeben. Außerdem ist angegeben, ob die Daten in den einzelnen Zuständen beibehalten werden.
+
+| Datenträger | Starten | Beenden/<br>Zuordnung aufheben | Pause | Neu<br>starten | Herunter-<br>fahren | Löschen | Fehler | Größe ändern | 
+| ---- | ----- | ---- | ---- | ---- | ----  | ------ | ------- | ------ | 
+| Betriebssystemdatenträger | Ja | Ja  | Ja | Ja | Ja  | Nein | Nein  | Ja | 
+| RAM  | Ja | Ja | Ja | Ja | Nein   | Nein | Nein | Nein | 
+| Lokaler temporärer Datenträger | Ja | Nein | Ja | Nein | Nein  | Nein | Nein | Nein | 
+| Angefügter Datenträger | Ja | Ja | Ja | Ja | Ja  | Ja | Ja | Ja | 
+
 ## <a name="about-vhds"></a>Informationen zu VHDs
 
 Die in Azure verwendeten VHDs sind VHD-Dateien, die als Seiten-Blobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Informationen zu Seitenblobs finden Sie unter [Grundlegendes zu Blockblobs und Seitenblobs](/rest/api/storageservices/fileservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Ausführliche Informationen zu Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md).
@@ -47,14 +58,8 @@ Die folgende Tabelle enthält eine Gegenüberstellung von Storage Premium und St
 |    | Azure-Premium-Datenträger | Azure-Standarddatenträger |
 |--- | ------------------ | ------------------- |
 | Datenträgertyp | Solid-State-Laufwerke (SSD) | Festplattenlaufwerke (HDD)  |
-| Übersicht  | SSD-basierte Datenträgerunterstützung mit hoher Leistung und geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads oder zum Hosten unternehmenskritischer Produktionsumgebungen | HDD-basierte, kostengünstige Datenträgerunterstützung für Entwicklungs-/Testszenarien mit virtuellen Computern |
+| Übersicht  | SSD-basierte Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer mit E/A-intensiven Workloads oder zum Hosten unternehmenskritischer Produktionsumgebungen | HDD-basierte, kostengünstige Datenträgerunterstützung für Entwicklungs-/Testszenarien mit virtuellen Computern |
 | Szenario  | Produktionsworkloads und leistungsabhängige Workloads | Entwicklung/Test, nicht kritischer, <br>seltener Zugriff |
 | Datenträgergröße | P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB | Nicht verwaltete Datenträger: 1 GB bis 1 TB <br><br>Verwaltete Datenträger:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB |
 | Max. Durchsatz pro Datenträger | 200 MB/s | 60 MB/s |
 | Max. IOPS pro Datenträger | 5000 IOPS | 500 IOPS |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
-

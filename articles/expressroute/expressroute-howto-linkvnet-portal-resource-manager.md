@@ -4,7 +4,7 @@ description: "In diesem Dokument erhalten Sie einen Überblick über das Verknü
 services: expressroute
 documentationcenter: na
 author: cherylmc
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-resource-manager
 ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2017
+ms.date: 02/08/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 75b7cee2485d1d68fee8dcd65ade84995dcdb9be
-ms.openlocfilehash: aa473abd00fbddb01e50577cea8984c6f3e9a7f3
+ms.sourcegitcommit: b3c0cca9a6d5171b1248b0f463cbbb26641fc5f2
+ms.openlocfilehash: a1a689dbfc35107b52f9b84f74ac8bfac0727a0e
 
 
 ---
@@ -30,7 +30,7 @@ ms.openlocfilehash: aa473abd00fbddb01e50577cea8984c6f3e9a7f3
 > 
 >  
 
-Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNets) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
+Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mit Azure ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und das Azure-Portal. Virtuelle Netzwerke können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören.
 
 **Informationen zu Azure-Bereitstellungsmodellen**
 
@@ -45,85 +45,104 @@ Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNets) mi
   * Vergewissern Sie sich, dass das private Azure-Peering konfiguriert wurde und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft aktiv ist, damit End-to-End-Konnektivität bereitgestellt werden kann.
   * Vergewissern Sie sich, dass ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt wurden. Folgen Sie der Anleitung, um ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) zu erstellen. (Führen Sie nur die Schritte 1 bis 5 aus.)
 
-Sie können bis zu zehn virtuelle Netzwerke mit einer ExpressRoute-Standardverbindung verknüpfen. Alle virtuellen Netzwerke müssen sich in der gleichen geopolitischen Region befinden, wenn Sie eine ExpressRoute-Standardverbindung verwenden. Wenn Sie das ExpressRoute Premium-Add-On aktiviert haben, können Sie virtuelle Netzwerke außerhalb der geopolitischen Region der ExpressRoute-Verbindung oder eine größere Anzahl von virtuellen Netzwerken mit der Express Route-Verbindung verknüpfen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md) .
+* Sie können bis zu zehn virtuelle Netzwerke mit einer ExpressRoute-Standardverbindung verknüpfen. Alle virtuellen Netzwerke müssen sich in der gleichen geopolitischen Region befinden, wenn Sie eine ExpressRoute-Standardverbindung verwenden. 
+
+* Wenn Sie das ExpressRoute-Premium-Add-On aktiviert haben, können Sie virtuelle Netzwerke außerhalb der geopolitischen Region der ExpressRoute-Verbindung oder eine größere Anzahl von virtuellen Netzwerken mit der Express Route-Verbindung verknüpfen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md) .
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in demselben Abonnement und einer Verbindung
 
 ### <a name="to-create-a-connection"></a>So stellen Sie eine Verbindung her
 
+> [!NOTE]
+> BGP-Konfigurationsinformationen werden nicht angezeigt, wenn Ihre Peerings vom Layer 3-Anbieter konfiguriert wurden. Wenn sich Ihre Verbindung im bereitgestellten Zustand befindet, sollten Sie Verbindungen erstellen können.
+>
+
 1. Stellen Sie sicher, dass Ihre ExpressRoute-Verbindung und das private Azure-Peering erfolgreich konfiguriert wurden. Befolgen Sie die Anweisungen unter [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) und [Konfigurieren des Routings](expressroute-howto-routing-arm.md). Ihre ExpressRoute-Verbindung sollte in etwa wie in der folgenden Abbildung dargestellt aussehen:
+
     ![Screenshot einer ExpressRoute-Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
    
-   > [!NOTE]
-   > BGP-Konfigurationsinformationen werden nicht angezeigt, wenn Ihre Peerings vom Layer 3-Anbieter konfiguriert wurden. Wenn sich Ihre Verbindung im bereitgestellten Zustand befindet, sollten Sie Verbindungen erstellen können.
-   > 
-2. Jetzt können Sie damit beginnen, eine Verbindung zum Verknüpfen des virtuellen Netzwerkgateways mit Ihrer ExpressRoute-Verbindung bereitzustellen. Klicken Sie auf **Verbindung** > **Hinzufügen**, um das Blatt **Verbindung hinzufügen** zu öffnen, und konfigurieren Sie dann die Werte. Sehen Sie sich das folgende Referenzbeispiel an:
+2. Jetzt können Sie damit beginnen, eine Verbindung zum Verknüpfen des virtuellen Netzwerkgateways mit Ihrer ExpressRoute-Verbindung bereitzustellen. Klicken Sie auf **Verbindung** > **Hinzufügen**, um das Blatt **Verbindung hinzufügen** zu öffnen, und konfigurieren Sie dann die Werte.
+
     ![Screenshot zum Hinzufügen der Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)  
 
 3. Nachdem die Verbindung erfolgreich konfiguriert wurde, zeigt das Verbindungsobjekt die Daten für die Verbindung an.
+
      ![Screenshot des Verbindungsobjekts](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
 
 ### <a name="to-delete-a-connection"></a>So löschen Sie eine Verbindung
 Sie können eine Verbindung löschen, indem Sie das Symbol **Löschen** auf dem Blatt für Ihre Verbindung auswählen.
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in einem anderen Abonnement und einer Verbindung
-Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die folgende Abbildung zeigt eine einfache schematische Darstellung der Freigabe von Lasten für ExpressRoute-Verbindungen für mehrere Abonnements.
+Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die Abbildung unten zeigt eine einfache schematische Darstellung der Freigabe von Lasten für ExpressRoute-Verbindungen für mehrere Abonnements.
 
-Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören. Jede der Abteilungen innerhalb der Organisation kann ihr eigenes Abonnement zum Bereitstellen von Diensten verwenden, für die Verbindung mit dem lokalen Netzwerk kann jedoch eine einzelne gemeinsam genutzte ExpressRoute-Verbindung verwendet werden. Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Verbindung nutzen.
+![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png)
 
-> [!NOTE]
-> Konnektivitäts- und Bandbreitengebühren für die dedizierte Verbindung werden dem Besitzer der ExpressRoute-Verbindung in Rechnung gestellt. Alle virtuellen Netzwerke verwenden gemeinsam dieselbe Bandbreite.
-> 
-> 
-![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
+- Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören.
+- Jede der Abteilungen innerhalb der Organisation kann ihr eigenes Abonnement zum Bereitstellen von Diensten verwenden, für die Verbindung mit dem lokalen Netzwerk kann jedoch eine einzelne gemeinsam genutzte ExpressRoute-Verbindung verwendet werden.
+- Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Verbindung nutzen.
+
+    > [!NOTE]
+    > Konnektivitäts- und Bandbreitengebühren für die dedizierte Verbindung werden dem Besitzer der ExpressRoute-Verbindung in Rechnung gestellt. Alle virtuellen Netzwerke verwenden gemeinsam dieselbe Bandbreite.
+    > 
+    >
 
 ### <a name="administration"></a>Verwaltung
-Der *Verbindungsbesitzer* ist autorisierter Hauptbenutzer der ExpressRoute-Verbindungsressource. Der Verbindungsbesitzer kann Autorisierungen erstellen, die durch *Verbindungsbenutzer*eingelöst werden können. *Verbindungsbenutzer* sind Besitzer virtueller Netzwerkgateways (die sich nicht in demselben Abonnement wie die ExpressRoute-Verbindung befinden). *Verbindungsbenutzer* können Autorisierungen einlösen (eine Autorisierung für jedes virtuelle Netzwerk).
+Der „Verbindungsbesitzer“ ist autorisierter Hauptbenutzer der ExpressRoute-Verbindungsressource. Der Verbindungsbesitzer kann Autorisierungen erstellen, die durch „Verbindungsbenutzer“ eingelöst werden können. Verbindungsbenutzer sind Besitzer von Gateways des virtuellen Netzwerks (die sich nicht in demselben Abonnement wie die ExpressRoute-Verbindung befinden). Verbindungsbenutzer können Autorisierungen einlösen (eine Autorisierung für jedes virtuelle Netzwerk).
 
-Der *Verbindungsbesitzer* hat die Möglichkeit, Autorisierungen jederzeit zu ändern und aufzuheben. Das Aufheben einer Autorisierung führt dazu, dass alle Verbindungen aus dem Abonnement gelöscht werden, dessen Zugriff aufgehoben wurde.
+Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu ändern und aufzuheben. Das Aufheben einer Autorisierung führt dazu, dass alle Verbindungen aus dem Abonnement gelöscht werden, dessen Zugriff aufgehoben wurde.
 
 ### <a name="circuit-owner-operations"></a>Aktionen als Verbindungsbesitzer
 
-**Erstellen einer Autorisierung**
+#### <a name="creating-an-authorization"></a>Erstellen einer Autorisierung
 
 Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung eines Autorisierungsschlüssels, der von einem Verbindungsbenutzer verwendet werden kann, um dessen virtuelle Netzwerkgateways mit der ExpressRoute-Verbindung zu verbinden. Eine Autorisierung gilt nur für jeweils eine Verbindung.
 
 1. Klicken Sie auf dem Blatt „ExpressRoute“ auf **Autorisierungen**, geben Sie dann einen **Namen** für die Autorisierung ein, und klicken Sie auf **Speichern**.
-![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
+
+    ![Authorizations](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 
 2. Sobald die Konfiguration gespeichert ist, kopieren Sie die **Ressourcen-ID** und den **Autorisierungsschlüssel**.
-![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-**Löschen von Autorisierungen**
+    ![Autorisierungsschlüssel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
-Sie können eine Verbindung löschen, indem Sie das Symbol „Löschen“ auf dem Blatt für Ihre Verbindung auswählen.
+#### <a name="deleting-authorizations"></a>Löschen von Autorisierungen
+
+Sie können eine Verbindung löschen, indem Sie das Symbol **Löschen** auf dem Blatt für Ihre Verbindung auswählen.
 
 ### <a name="circuit-user-operations"></a>Aktionen als Verbindungsbenutzer
 
    > [!NOTE]
    > Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschlüssel vom Verbindungsbesitzer. 
 
-**Einlösen von Verbindungsautorisierungen**
+#### <a name="redeeming-connection-authorizations"></a>Einlösen von Verbindungsautorisierungen
 
-1.  Klicken Sie auf die Schaltfläche **+Neu**.
-    ![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 
-2.  Suchen Sie im Marketplace nach **Verbindung**, wählen Sie sie aus, und klicken Sie auf **Erstellen**.
-    ![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
+Tragen Sie die Details ein, und klicken Sie auf der Registerkarte „Grundlagen“ auf **OK**.
 
-3.  Stellen Sie sicher, dass für den **Verbindungstyp** „ExpressRoute“ festgelegt ist.
+1.    Klicken Sie auf die Schaltfläche **+Neu**.
 
-4.  Tragen Sie die Details ein, und klicken Sie auf der Registerkarte „Grundlagen“ auf **OK**.
-    ![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+    ![Klicken auf "Neu"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 
-5.  Wählen Sie in der Registerkarte **Einstellungen** die Option **Gateway des virtuellen Netzwerks**, und aktivieren Sie das Kontrollkästchen **Autorisierung einlösen**.
+2.    Suchen Sie im Marketplace nach **Verbindung**, wählen Sie sie aus, und klicken Sie auf **Erstellen**.
 
-6.  Geben Sie den **Autorisierungsschlüssel** und **Peerleitungs-URI** ein, und benennen Sie die Verbindung. Klicken Sie auf **OK**.
-    ![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+    ![Suchen von Verbindungen](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 
-7.  Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **OK**.
+3.    Stellen Sie sicher, dass für den **Verbindungstyp** „ExpressRoute“ festgelegt ist.
 
-**Freigeben von Verbindungsautorisierungen**
+
+4.    Tragen Sie die Details ein, und klicken Sie auf dem Blatt „Grundlagen“ auf **OK**.
+
+    ![Blatt "Grundlagen"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+
+5.    Wählen Sie auf dem Blatt **Einstellungen** die Option **Gateway von Virtual Network** aus, und aktivieren Sie das Kontrollkästchen **Autorisierung einlösen**.
+
+6.    Geben Sie den **Autorisierungsschlüssel** und **Peerleitungs-URI** ein, und benennen Sie die Verbindung. Klicken Sie auf **OK**.
+
+    ![Blatt „Einstellungen“](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+
+7. Überprüfen Sie die Informationen auf dem Blatt **Zusammenfassung**, und klicken Sie auf **OK**.
+
+#### <a name="releasing-connection-authorizations"></a>Freigeben von Verbindungsautorisierungen
 
 Sie können eine Autorisierung durch das Löschen der Verbindung freigeben, die die ExpressRoute-Verbindung mit dem virtuellen Netzwerk verknüpft.
 
@@ -132,6 +151,6 @@ Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ]
 
 
 
-<!--HONumber=Feb17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 

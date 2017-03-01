@@ -13,29 +13,30 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/06/2017
+ms.date: 02/06/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 2f0f36e7ffeec52bacc35ac5039cd183976dc3aa
-ms.openlocfilehash: 9c9ab36ac90c3e73a21c7e53a6715cc4503a8e99
+ms.sourcegitcommit: 71476ae63d2394e7edefa10b8c71d15c04190290
+ms.openlocfilehash: 299e06bf6d4bd3af5d6dc7496ba9a947f42c19b7
 
 
 ---
 # <a name="get-started-with-power-bi-embedded-sample"></a>Erste Schritte mit dem Beispiel zu Power BI Embedded
+
 Mit **Microsoft Power BI Embedded**können Sie Power BI-Berichte direkt in webbasierte oder mobile Anwendungen integrieren. Dieser Artikel enthält eine Einführung in das Beispiel für die ersten Schritte mit **Power BI Embedded** .
 
 Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern. Diese Ressourcen sind hilfreich, wenn Sie Power BI-Berichte in die Beispiel-App (und auch in Ihre eigenen Apps) integrieren.
 
 * [Beispiel für eine Dashboard-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
-* [Power BI Embedded-API-Referenz](https://msdn.microsoft.com/library/mt711493.aspx)
+* [Power BI Embedded-API-Referenz](https://msdn.microsoft.com/en-US/library/azure/mt711507.aspx)
 * [Power BI Embedded .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (verfügbar über NuGet)
+* [Beispiel für die Einbettung von JavaScript-Berichten](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
-> [!NOTE]
+> [!NOTE] 
 > Bevor Sie das Beispiel zu den ersten Schritten mit Power BI Embedded konfigurieren und ausführen können, müssen Sie mindestens eine **Arbeitsbereichssammlung** in Ihrem Azure-Abonnement erstellen. Informationen zum Erstellen einer **Arbeitsbereichssammlung** im Azure-Portal finden Sie unter [Erste Schritte mit Power BI Embedded](power-bi-embedded-get-started.md).
->
->
 
 ## <a name="configure-the-sample-app"></a>Konfigurieren der Beispiel-App
+
 Richten wir zunächst Schritt für Schritt die Visual Studio-Entwicklungsumgebung ein, um auf die Komponenten zuzugreifen, die zum Ausführen der Beispiel-App erforderlich sind.
 
 1. Laden Sie das Beispiel [Power BI Embedded – Integrate a report into a web app](http://go.microsoft.com/fwlink/?LinkId=761493) (Integrieren eines Berichts in eine Web-App) von GitHub herunter, und extrahieren Sie die Datei.
@@ -56,23 +57,21 @@ Richten wir zunächst Schritt für Schritt die Visual Studio-Entwicklungsumgebun
 
 Sie sollten in etwa folgende Rückgabe erhalten:
 
-````
+```
 Checking import state... Publishing
 Checking import state... Succeeded
 ```
 
 > [!NOTE]
-> If your PBIX file contains any direct query connections, run option 7 to update the connection strings.
->
->
+> Wenn Ihre PBIX-Datei DirectQuery-Verbindungen enthält, führen Sie Option 7 aus, um die Verbindungszeichenfolgen zu aktualisieren.
 
-At this point, you have a Power BI PBIX report imported into your **Workspace**. Now, let's look at how to run the **Power BI Embedded** get started sample web app.
+Jetzt haben Sie einen Power BI-PBIX-Bericht in Ihren **Arbeitsbereich** importiert. Im nächsten Abschnitt erfahren Sie, wie Sie die Beispiel-Web-App für die ersten Schritte in **Power BI Embedded** ausführen.
 
-## Run the sample web app
-The web app sample is a sample dashboard that renders reports imported into your **Workspace**. Here's how to configure the web app sample.
+## <a name="run-the-sample-web-app"></a>Ausführen der Beispiel-Web-App
+Das Beispiel für die Web-App ist ein Beispieldashboard, das die in den **Arbeitsbereich** importierten Berichte rendert. So konfigurieren Sie das Web-App-Beispiel
 
-1. In the **PowerBI-embedded** Visual Studio solution, right click the **EmbedSample** web application, and choose **Set as StartUp project**.
-2. In **web.config**, in the **EmbedSample** web application, edit the **appSettings**: **AccessKey**, **WorkspaceCollection** name, and **WorkspaceId**.
+1. Klicken Sie in der Visual Studio-Projektmappe **PowerBI-embedded** mit der rechten Maustaste auf die Webanwendung **EmbedSample**, und wählen Sie **Als Startprojekt festlegen** aus.
+2. Bearbeiten Sie in **web.config** in der Webanwendung **EmbedSample** die **appSettings**: **AccessKey**, **WorkspaceCollection**-Name und **WorkspaceId**.
 
     ```
     <appSettings>
@@ -82,37 +81,37 @@ The web app sample is a sample dashboard that renders reports imported into your
         <add key="powerbi:WorkspaceId" value="" />
     </appSettings>
     ```
-3. Run the **EmbedSample** web application.
+3. Führen Sie die Webanwendung **EmbedSample** aus.
 
-Once you run the **EmbedSample** web application, the left navigation panel should contain a **Reports** menu. To view the report you imported, expand **Reports**, and click a report. If you imported the [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547), the sample web app would look like this:
+Nach dem Ausführen der Webanwendung **EmbedSample** enthält der Navigationsbereich auf der linken Seite ein Menü **Berichte**. Erweitern Sie zum Anzeigen des importierten Berichts den Eintrag **Berichte**, und klicken Sie auf einen Bericht. Wenn Sie das [PBIX-Beispiel „Retail Analysis“](http://go.microsoft.com/fwlink/?LinkID=780547) importiert haben, sieht die Beispiel-Web-App wie folgt aus:
 
 ![](media/powerbi-embedded-get-started-sample/power-bi-embedded-sample-left-nav.png)
 
-After you click a report, the **EmbedSample** web application should look something this:
+Nachdem Sie auf einen Bericht geklickt haben, sieht die Webanwendung **EmbedSample** in etwa wie folgt aus:
 
 ![](media/powerbi-embedded-get-started-sample/sample-web-app.png)
 
-## Explore the sample code
-The **Microsoft Power BI Embedded** sample is an example dashboard web app that shows you how to integrate **Power BI** reports into your app. It uses a Model-View-Controller (MVC) design pattern to demonstrate best practices. This section highlights parts of the sample code that you can explore within the **PowerBI-embedded** web app solution. The Model-View-Controller (MVC) pattern separates the modeling of the domain, the presentation, and the actions based on user input into three separate classes: Model, View, and Control. To learn more about MVC, see [Learn About ASP.NET](http://www.asp.net/mvc).
+## <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 
-The **Microsoft Power BI Embedded** sample code is separated as follows. Each section includes the file name in the PowerBI-embedded.sln solution so that you can easily find the code in the sample.
+Bei dem Beispiel für **Microsoft Power BI Embedded** handelt es sich um ein Beispiel für eine Dashboard-Web-App, das zeigt, wie Sie **Power BI-Berichte** in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model-View-Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
+
+Der Beispielcode für **Microsoft Power BI Embedded** ist wie folgt unterteilt. Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
 
 > [!NOTE]
-> This section is a summary of the sample code that shows how the code was written. To view the complete sample, please load the PowerBI-embedded.sln solution in Visual Studio.
->
->
+> Dieser Abschnitt ist eine Zusammenfassung des Beispielcodes, die zeigt, wie der Code geschrieben wurde. Laden Sie die Projektmappe „PowerBI-embedded.sln“ in Visual Studio, um das vollständige Beispiel anzuzeigen.
 
-### Model
-The sample has a **ReportsViewModel** and **ReportViewModel**.
+### <a name="model"></a>Modell
 
-**ReportsViewModel.cs**: Represents Power BI Reports.
+Das Beispiel umfasst ein **ReportsViewModel** und ein **ReportViewModel**.
+
+**ReportsViewModel.cs:** stellt Power BI-Berichte dar.
 
     public class ReportsViewModel
     {
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**: Represents a Power BI Report.
+**ReportViewModel.cs:** stellt einen Power BI-Bericht dar.
 
     public classReportViewModel
     {
@@ -121,24 +120,26 @@ The sample has a **ReportsViewModel** and **ReportViewModel**.
         public string AccessToken { get; set; }
     }
 
-### Connection string
-The connection string must be in the following format:
+### <a name="connection-string"></a>Verbindungszeichenfolge
+
+Die Verbindungszeichenfolge muss folgendes Format aufweisen:
 
 ```
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 ```
 
-Using common server and database attributes will fail. For example: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
+Die Verwendung allgemeiner Server- und Datenbankattribute ist nicht möglich. Zum Beispiel: Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase,
 
-### View
-The **View** manages the display of Power BI **Reports** and a Power BI **Report**.
+### <a name="view"></a>Sicht
 
-**Reports.cshtml**: Iterate over **Model.Reports** to create an **ActionLink**. The **ActionLink** is composed as follows:
+In der **Ansicht** wird die Anzeige von Power BI-**Berichten** und eines einzelnen Power BI-**Berichts** verwaltet.
 
-| Part | Description |
+**Reports.cshtml:** Durchlaufen Sie **Model.Reports**, um einen **ActionLink** zu erstellen. Der **ActionLink** setzt sich wie folgt zusammen:
+
+| Teil | Beschreibung |
 | --- | --- |
-| Title |Name of the Report. |
-| QueryString |A link to the Report ID. |
+| Titel |Der Name des Berichts. |
+| QueryString |Ein Link zur Berichts-ID. |
 
     <div id="reports-nav" class="panel-collapse collapse">
         <div class="panel-body">
@@ -154,7 +155,7 @@ The **View** manages the display of Power BI **Reports** and a Power BI **Report
         </div>
     </div>
 
-Report.cshtml: Set the **Model.AccessToken**, and the Lambda expression for **PowerBIReportFor**.
+„Report.cshtml“: Legen Sie das **Model.AccessToken** und den Lambda-Ausdruck für **PowerBIReportFor** fest.
 
     @model ReportViewModel
 
@@ -165,8 +166,9 @@ Report.cshtml: Set the **Model.AccessToken**, and the Lambda expression for **Po
         @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
     </div>
 
-### Controller
-**DashboardController.cs**: Creates a PowerBIClient passing an **app token**. A JSON Web Token (JWT) is generated from the **Signing Key** to get the **Credentials**. The **Credentials** are used to create an instance of **PowerBIClient**. Once you have an instance of **PowerBIClient**, you can call GetReports() and GetReportsAsync().
+### <a name="controller"></a>Controller
+
+**DashboardController.cs:** erstellt einen PowerBIClient, der ein **App-Token** übergibt. Ein JSON Web Token (JWT) wird auf der Grundlage des **Signaturschlüssels** generiert, um die **Anmeldeinformationen** zu erhalten. Die **Anmeldeinformationen** werden zum Erstellen einer Instanz von **PowerBIClient** verwendet. Sobald Sie über eine Instanz von **PowerBIClient** verfügen, können Sie GetReports() und GetReportsAsync() aufrufen.
 
 CreatePowerBIClient()
 
@@ -219,13 +221,15 @@ Task<ActionResult> Report(string reportId)
         }
     }
 
-### Integrate a report into your app
-Once you have a **Report**, you use an **IFrame** to embed the Power BI **Report**. Here is a code snippet from  powerbi.js in the **Microsoft Power BI Embedded** sample.
+### <a name="integrate-a-report-into-your-app"></a>Integrieren eines Berichts in Ihre App
+
+Sobald Sie über einen **Bericht** verfügen, können Sie den Power BI-**Bericht** per **IFrame** einbetten. Hier sehen Sie einen Codeausschnitt aus „powerbi.js“ im Beispiel für **Microsoft Power BI Embedded**.
 
 ![](media/powerbi-embedded-get-started-sample/power-bi-embedded-iframe-code.png)
 
-## Filter reports embedded in your application
-You can filter an embedded report using a URL syntax. To do this, you add a **$filter** query string parameter with an **eq** operator to your iFrame src url with the filter specified. Here is the filter query syntax:
+## <a name="filter-reports-embedded-in-your-application"></a>Filtern von in die Anwendung eingebetteten Berichten
+
+Sie können einen eingebetteten Bericht mit einer URL-Syntax filtern. Fügen Sie hierfür der iFrame-SRC-URL mit dem angegebenen Filter den Abfragezeichenfolgen-Parameter **$filter** mit dem Operator **eq** hinzu. Dies ist die Syntax der Filterabfrage:
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -234,16 +238,16 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 ```
 
 > [!NOTE]
-> {tableName/fieldName} cannot include spaces or special characters. The {fieldValue} accepts a single categorical value.  
->
->
+> {tableName/fieldName} darf keine Leerzeichen oder Sonderzeichen enthalten. Für {fieldValue} wird ein einzelner Kategoriewert akzeptiert.  
 
-## See also
-* [Common Microsoft Power BI Embedded scenarios](power-bi-embedded-scenarios.md)
-* [Authenticating and authorizing in Power BI Embedded](power-bi-embedded-app-token-flow.md)
+## <a name="see-also"></a>Weitere Informationen
+* [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
+* [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
+
+Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
 
 
 
-<!--HONumber=Jan17_HO1-->
+<!--HONumber=Feb17_HO2-->
 
 
