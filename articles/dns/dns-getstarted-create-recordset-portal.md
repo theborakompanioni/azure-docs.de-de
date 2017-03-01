@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: bfbffe7843bc178cdf289c999925c690ab82e922
-ms.openlocfilehash: b3951106fe2e8607e65bd0ae47fa2ea3346b8ca5
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 2752579b6277a27ca1e932fbd2c402ac3135e80c
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -26,7 +27,8 @@ ms.openlocfilehash: b3951106fe2e8607e65bd0ae47fa2ea3346b8ca5
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-getstarted-create-recordset-portal.md)
 > * [PowerShell](dns-getstarted-create-recordset.md)
-> * [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
+> * [Azure CLI 1.0](dns-getstarted-create-recordset-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-getstarted-create-recordset-cli.md)
 
 Dieser Artikel beschreibt das Erstellen von Einträgen und Eintragssätzen mit dem Azure-Portal. Zu diesem Zweck müssen Sie zunächst Grundlegendes zu DNS-Einträgen und Datensatzgruppen verstehen.
 
@@ -77,9 +79,4 @@ Wenn Sie Ihre Domäne noch nicht delegiert haben, um die neue Zone in Azure DNS 
 Informieren Sie sich, wie Sie [Ihren Domänennamen an die Azure DNS-Namenserver delegieren](dns-domain-delegation.md).
 
 Informationen zur Verwaltung Ihrer Ressourceneintragssätze und Einträge finden Sie unter [So erstellen und verwalten Sie DNS-Einträge und Ressourceneintragssätze mit dem Azure-Portal](dns-operations-recordsets-portal.md).
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

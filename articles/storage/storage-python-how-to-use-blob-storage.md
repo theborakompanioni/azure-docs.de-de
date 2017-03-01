@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 2/24/2017
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: 963bf66d71a5c3eb2bf4ec8449e342ff1da782a8
-ms.openlocfilehash: d54a3d812051869e70102c19674292fe9edbf248
+ms.sourcegitcommit: f0875344b05b7eb8c6f9f6e39c3b864c202e2931
+ms.openlocfilehash: 968814db9496fd410162d482191592c8a56101f0
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -136,16 +137,11 @@ append_blob = append_blob_service.get_blob_to_text('mycontainer', 'myappendblob'
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen von Blobspeichern vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr zu erfahren.
 
-* [Python Developer Center](/develop/python/)
+* [Python Developer Center](https://azure.microsoft.com/develop/python/)
 * [REST-API für Azure-Speicherdienste](http://msdn.microsoft.com/library/azure/dd179355)
 * [Azure Storage-Teamblog]
 * [Microsoft Azure Storage-SDK für Python]
 
 [Azure Storage-Teamblog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage-SDK für Python]: https://github.com/Azure/azure-storage-python
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

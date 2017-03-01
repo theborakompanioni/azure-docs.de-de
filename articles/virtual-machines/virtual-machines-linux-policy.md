@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 04/13/2016
 ms.author: singhkay
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: 3e2db0a87433bd4bb83b8f39cd4d2d61bbcb474f
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 1887b777fbe113d59cffb6ba5409e33ca1380880
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -92,13 +93,8 @@ In der folgenden Tabelle werden die Eigenschaften des virtuellen Computers besch
 | imageVersion |Gibt die Imageversion für die ausgewählte SKU an. |
 
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
-Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-Cmdlets erstellt werden. Informieren Sie sich weiter über das [Erstellen und Zuweisen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy).
+Eine Richtlinie kann problemlos über die REST-API direkt oder über PowerShell-Cmdlets erstellt werden. Informieren Sie sich weiter über das [Erstellen und Zuweisen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md).
 
 ## <a name="apply-the-policy"></a>Anwenden der Richtlinie
-Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informieren Sie sich weiter über das [Erstellen und Zuweisen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md#create-and-assign-a-policy).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+Nach dem Erstellen der Richtlinie müssen Sie sie auf einen definierten Bereich anwenden. Bei dem Bereich kann es sich um ein Abonnement, eine Ressourcengruppe oder die Ressource handeln. Informieren Sie sich weiter über das [Erstellen und Zuweisen einer Richtlinie](../azure-resource-manager/resource-manager-policy.md).
 

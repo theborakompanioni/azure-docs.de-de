@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 02/22/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 4dfd9690f2e3e017ca308649f79a84466d49d844
-ms.openlocfilehash: 91ee5da0885fc0b044150e524757eac659a003a4
+ms.sourcegitcommit: e37f1716b459ea8eb0f2d0a5a12e7a3a8ab2c083
+ms.openlocfilehash: e2ec0cefb6e009f22c3406ccd1570748dc467ed0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -135,7 +136,7 @@ Die Tabelle unten enthält die verschiedenen Risikoereignistypen und den entspre
 | Anmeldungen von anonymen IP-Adressen |Anmeldungen von unbekannten Quellen |
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
 | Anmeldungen von unbekannten Standorten |- |
-| Sperrereignisse |- |
+
 
 Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoereignisse in Azure AD Identity Protection enthalten und daher auch nicht über Identity Protection verfügbar. Diese Berichte sind im klassischen Azure-Portal weiterhin verfügbar. Sie werden jedoch künftig nach und nach durch Risikoereignisse in Identity Protection ersetzt.
 
@@ -149,10 +150,5 @@ Die folgenden Azure AD-Berichte zu anomalen Aktivitäten sind nicht als Risikoer
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

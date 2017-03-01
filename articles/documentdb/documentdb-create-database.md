@@ -2,8 +2,9 @@
 redirect_url: https://azure.microsoft.com/services/documentdb/
 ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
-ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
-ms.openlocfilehash: c5f3881cb477c3cb90adfc53a57ff82a8d312d0f
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: ad15b1695ad4697aebc38ac39723a1dd1647c466
+ms.lasthandoff: 02/23/2017
 
 
 
@@ -19,11 +20,6 @@ Datenbanken müssen nicht über das Portal erstellt werden. Sie können diese au
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald die Datenbank und Sammlung erstellt sind, können Sie mithilfe des Dokument-Explorers im Portal [JSON-Dokumente hinzufügen](documentdb-view-json-document-explorer.md), das DocumentDB-Datenmigrationstool zum [Importieren von Dokumenten](documentdb-import-data.md) in der Sammlung verwenden oder mit einem der [DocumentDB SDKs](documentdb-sdk-dotnet.md) CRUD-Vorgänge ausführen. DocumentDB verfügt über SDKs für .NET, Java, Python, Node.js und JavaScript-API. .NET-Codebeispiele, die das Erstellen, Entfernen, Aktualisieren und Löschen von Dokumenten veranschaulichen, finden Sie unter [.NET-Dokumentbeispiele](documentdb-dotnet-samples.md#document-examples). Informationen zum Arbeiten mit Dokumenten mithilfe des Node.js SDK finden Sie unter [Node.js-Dokumentbeispiele](documentdb-nodejs-samples.md#document-examples). 
 
-Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#executing-sql-queries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](documentdb-sdk-dotnet.md) verwenden. 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
+Wenn eine Sammlung Dokumente enthält, können Sie in [DocumentDB SQL](documentdb-sql-query.md) an den Dokumenten [Abfragen ausführen](documentdb-sql-query.md#ExecutingSqlQueries), indem Sie den [Abfrage-Explorer](documentdb-query-collections-query-explorer.md) im Portal, die [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder eines der [SDKs](documentdb-sdk-dotnet.md) verwenden. 
 
 

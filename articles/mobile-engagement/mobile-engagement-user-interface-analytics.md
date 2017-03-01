@@ -4,7 +4,7 @@ description: Informationen zum Analysieren von Verlaufsdaten zu Ihrer Anwendung 
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 555342e88c912a3f43c578a40dc34933996ade4c
-ms.openlocfilehash: d091163f13e6a3415a8a902734e022b6adab5d5a
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -70,7 +71,7 @@ Die Bindungsübersicht wird in der Mitte in mehrere Karten aufgeteilt, die jewei
 4. Hiermit werden die für die Berechnung verwendeten Werte angegeben.
 5. Dies ist eine Sparkline des Verlaufs der Bindungswerte. Sie können die Werte in der Vergangenheit prüfen, um sich einen umfassenden Einblick in die Entwicklung zu verschaffen.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Konzepte][Link 6]
 * [Handbuch zur Problembehandlung – Dienst][Link 24]
 
@@ -168,9 +169,4 @@ Die Bindungsübersicht wird in der Mitte in mehrere Karten aufgeteilt, die jewei
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

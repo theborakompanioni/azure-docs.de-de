@@ -14,8 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: f4c17d03ff637659a7bc7cde378878d8a4827b80
-ms.openlocfilehash: 175e8620828a2b0a0aff6de0b1a39860ea59514b
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: 67b780d66eac4199b0a2367f575477191542cfa7
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -24,7 +25,8 @@ ms.openlocfilehash: 175e8620828a2b0a0aff6de0b1a39860ea59514b
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-getstarted-create-recordset-portal.md)
 > * [PowerShell](dns-getstarted-create-recordset.md)
-> * [Azure-Befehlszeilenschnittstelle](dns-getstarted-create-recordset-cli.md)
+> * [Azure CLI 1.0](dns-getstarted-create-recordset-cli-nodejs.md)
+> * [Azure CLI 2.0](dns-getstarted-create-recordset-cli.md)
 
 Dieser Artikel beschreibt das Erstellen von Ressourceneinträgen und Ressourceneintragssätzen mit Azure PowerShell.
 
@@ -48,9 +50,9 @@ Wenn Ihr neuer Eintrag den gleichen Namen und Typ besitzt wie ein bereits vorhan
 
 Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzureRmDnsRecordSet`. Beim Erstellen eines Ressourceneintragssatzes müssen Sie den Namen des Ressourceneintragssatzes, die Zone, die Gültigkeitsdauer (TTL), den Eintragstyp und die zu erstellenden Einträge angeben.
 
-Zum Erstellen eines Eintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Namen des Eintrags „"@",“, einschließlich der Anführungszeichen. Dies ist eine allgemeine DNS-Konvention.
+Zum Erstellen eines Eintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Namen des Eintrags „@“, einschließlich der Anführungszeichen. Dies ist eine allgemeine DNS-Konvention.
 
-Im folgenden Beispiel wird in der DNS-Zone „contoso.com“ ein neuer Ressourceneintragssatz mit dem relativen Namen „www“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp ist „A“, und die Gültigkeitsdauer beträgt 3600 Sekunden. Der Ressourceneintragssatz enthält einen einzelnen Eintrag (mit der IP-Adresse 1.2.3.4).
+Im folgenden Beispiel wird in der DNS-Zone „contoso.com“ ein neuer Ressourceneintragssatz mit dem relativen Namen „www“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp ist „A“, und die Gültigkeitsdauer beträgt 3600 Sekunden. Der Ressourceneintragssatz enthält einen einzelnen Eintrag (mit der IP-Adresse&1;.2.3.4).
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "www" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4")
@@ -114,10 +116,5 @@ Erfahren Sie, wie Sie [DNS-Zonen über Azure PowerShell verwalten](dns-operation
 
 Erfahren Sie, wie Sie [DNS-Einträge und Ressourceneintragssätze über Azure PowerShell verwalten](dns-operations-recordsets.md).
 
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
