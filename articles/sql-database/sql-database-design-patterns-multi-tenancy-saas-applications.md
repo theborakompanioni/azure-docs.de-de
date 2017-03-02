@@ -4,7 +4,7 @@ description: "In diesem Artikel werden die Anforderungen und allgemeinen Datenar
 keywords: 
 services: sql-database
 documentationcenter: 
-author: CarlRabeler
+author: srinia
 manager: jhubbard
 editor: 
 ms.assetid: 1dd20c6b-ddbb-40ef-ad34-609d398d008a
@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-design
-ms.date: 11/08/2016
-ms.author: carlrab
+ms.date: 02/01/2017
+ms.author: srinia
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 63f94dc3b648486fe7c2e14661b5f5f02a147149
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: c30f1d879f46805cf802679613089a16dc47ad40
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -90,7 +91,7 @@ Der Grad der Mandantenisolation ist in Abbildung 2 auf der y-Achse dargestellt. 
 
 Abbildung 2: Gängige mehrinstanzenfähige Datenmodelle
 
-Der rechte untere Quadrant in Abbildung 2 zeigt ein Anwendungsmuster, bei dem eine potenziell große gemeinsame eigenständige Datenbank und der Ansatz der gemeinsam genutzten Tabelle (oder eines separaten Schemas) verwendet werden. Dieses Muster eignet sich gut für die gemeinsame Nutzung von Ressourcen, da alle Mandanten die gleichen Datenbankressourcen (CPU, Arbeitsspeicher, Eingabe/Ausgabe) in einer Einzeldatenbank verwenden. Die Mandantenisolation ist jedoch eingeschränkt. Möglicherweise müssen Sie zusätzliche Schritte ausführen, um Mandanten in der Anwendungsschicht voreinander zu schützen. Diese zusätzlichen Schritte können die DevOps-Kosten für die Entwicklung und Verwaltung der Anwendung deutlich erhöhen. Die Skalierbarkeit ist durch den Umfang der Hardware eingeschränkt, die die Datenbank hostet.
+Der untere rechte Quadrant in Abbildung 2 zeigt ein Anwendungsmuster, bei dem eine potenziell große gemeinsame Einzeldatenbank und der Ansatz der gemeinsam genutzten Tabelle (oder eines separaten Schemas) verwendet werden. Dieses Muster eignet sich gut für die gemeinsame Nutzung von Ressourcen, da alle Mandanten die gleichen Datenbankressourcen (CPU, Arbeitsspeicher, Eingabe/Ausgabe) in einer Einzeldatenbank verwenden. Die Mandantenisolation ist jedoch eingeschränkt. Möglicherweise müssen Sie zusätzliche Schritte ausführen, um Mandanten in der Anwendungsschicht voreinander zu schützen. Diese zusätzlichen Schritte können die DevOps-Kosten für die Entwicklung und Verwaltung der Anwendung deutlich erhöhen. Die Skalierbarkeit ist durch den Umfang der Hardware eingeschränkt, die die Datenbank hostet.
 
 Der untere linke Quadrant in Abbildung 2 zeigt mehrere Mandanten, die per Sharding auf mehrere Datenbanken verteilt sind (meist unterschiedliche Hardwareskalierungseinheiten). Jede Datenbank hostet eine Teilmenge von Mandanten, sodass die bei anderen Mustern bestehenden Probleme mit der Skalierbarkeit entfallen. Wenn mehr Kapazität für neue Mandanten erforderlich ist, können die Mandanten leicht in neuen Datenbanken platziert werden, die neuen Hardwareskalierungseinheiten zugeordnet sind. Ressourcen werden jedoch in geringerem Umfang gemeinsam genutzt. Nur Mandanten in denselben Skalierungseinheiten nutzen Ressourcen gemeinsam. Dieser Ansatz stellt nur eine geringfügige Verbesserung in Bezug auf die Mandantenisolation dar, da weiterhin viele Mandanten zusammengefasst werden, ohne dass sie automatisch vor den Aktionen anderer Mandanten geschützt sind. Die Komplexität der Anwendung bleibt somit hoch.
 
@@ -124,7 +125,7 @@ Pools für elastische Datenbanken in SQL-Datenbank kombinieren die Mandantenisol
 | [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md): Sie können Datenverteilungen verwalten und Mandanten Datenbanken zuordnen. | |
 
 ## <a name="shared-models"></a>Modelle mit gemeinsamer Nutzung
-Wie bereits beschrieben, können sich bei Ansätzen mit gemeinsamer Nutzung für die meisten SaaS-Anbieter Probleme mit der Mandantenisolation und Schwierigkeiten bei der Anwendungsentwicklung und -wartung ergeben. Für mehrinstanzenfähige Anwendungen, die einen Dienst direkt für Kunden bereitstellen, hat die Mandantenisolation jedoch ggf. nicht eine so hohe Priorität wie die Minimierung der Kosten. Bei solchen Anwendungen können Mandanten möglicherweise mit hoher Dichte in einer oder mehreren Datenbanken zusammengefasst werden, um die Kosten zu senken. Bei Modellen mit gemeinsamer Datenbanknutzung, bei denen eine eigenständige Datenbank oder mehrere Datenbanken mit Sharding verwendet werden, sind dadurch Effizienzsteigerungen in Bezug auf die gemeinsame Nutzung von Ressourcen und die Gesamtkosten möglich. Azure SQL-Datenbank bietet einige Features, mit denen Kunden die Isolation einrichten können, um die Sicherheit und Verwaltung mit guter Skalierbarkeit auf der Datenebene zu verbessern.
+Wie bereits beschrieben, können sich bei Ansätzen mit gemeinsamer Nutzung für die meisten SaaS-Anbieter Probleme mit der Mandantenisolation und Schwierigkeiten bei der Anwendungsentwicklung und -wartung ergeben. Für mehrinstanzenfähige Anwendungen, die einen Dienst direkt für Kunden bereitstellen, hat die Mandantenisolation jedoch ggf. nicht eine so hohe Priorität wie die Minimierung der Kosten. Bei solchen Anwendungen können Mandanten möglicherweise mit hoher Dichte in einer oder mehreren Datenbanken zusammengefasst werden, um die Kosten zu senken. Bei Modellen mit gemeinsamer Datenbanknutzung, bei denen eine Einzeldatenbank oder mehrere Datenbanken mit Sharding verwendet werden, sind dadurch Effizienzsteigerungen in Bezug auf die gemeinsame Nutzung von Ressourcen und die Gesamtkosten möglich. Azure SQL-Datenbank bietet einige Features, mit denen Kunden die Isolation einrichten können, um die Sicherheit und Verwaltung mit guter Skalierbarkeit auf der Datenebene zu verbessern.
 
 | Anwendungsanforderungen | Funktionen von SQL-Datenbank |
 | --- | --- |
@@ -150,7 +151,7 @@ Erstellen Sie mit einer Beispiel-App, die mit elastischen Pools eine kostengüns
 
 Verwenden Sie die Tools von Azure SQL-Datenbank zum [Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-Nutzen Sie unser Tutorial [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-create-portal.md).  
+Informationen zum Erstellen eines Pools für elastische Datenbanken über das Azure-Portal finden Sie unter [Erstellen eines Pools für elastische Datenbanken](sql-database-elastic-pool-manage-portal.md).  
 
 Erfahren Sie, wie Sie einen [elastischen Pool überwachen und verwalten](sql-database-elastic-pool-manage-portal.md).
 
@@ -160,14 +161,9 @@ Erfahren Sie, wie Sie einen [elastischen Pool überwachen und verwalten](sql-dat
 * [Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 * [Authentication in multitenant apps by using Azure Active Directory and OpenID Connect (Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure Active Directory und OpenID Connect)](../guidance/guidance-multitenant-identity-authenticate.md)
 * [Tailspin-Anwendung „Surveys“](../guidance/guidance-multitenant-identity-tailspin.md)
-* [Schnellstartlösungen](sql-database-solution-quick-starts.md)
+
 
 ## <a name="questions-and-feature-requests"></a>Fragen und Featureanfragen
 Falls Sie Fragen haben, finden Sie uns im [SQL-Datenbank-Forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). Featureanfragen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/)hinzugefügt werden.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e1e30e34e696b499c17656535d71fc6eb0a987ba
-ms.openlocfilehash: ebde5715ff595b8b76d2500e445f4e51a21cce0e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 89a54a83e6708da8e7fd91923c3ef71d8371f8f3
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -254,7 +254,7 @@ Erstellte Wiederherstellungspläne werden auf der Registerkarte **Wiederherstell
 
 ### <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
 1. Wählen Sie auf der Registerkarte **Wiederherstellungspläne** den gewünschten Wiederherstellungsplan aus, und klicken Sie auf **Testfailover**.
-2. Wählen Sie auf der Seite **Testfailover bestätigen** den Eintrag **Kein** aus. Bei Aktivierung dieser Option werden nach einem Failover die virtuellen Computer im Replikat mit keinem Netzwerk verbunden. Es wird getestet, ob das Failover für den virtuellen Computer wie erwartet erfolgt, ohne dass Ihre Netzwerkumgebung für die Replikation getestet wird. Sehen Sie sich an, wie [ein Testfailover ausgeführt wird](site-recovery-failover.md#run-a-test-failover) , um mehr über das Verwenden verschiedener Netzwerkoptionen zu erfahren.
+2. Wählen Sie auf der Seite **Testfailover bestätigen** den Eintrag **Kein** aus. Bei Aktivierung dieser Option werden nach einem Failover die virtuellen Computer im Replikat mit keinem Netzwerk verbunden. Es wird getestet, ob das Failover für den virtuellen Computer wie erwartet erfolgt, ohne dass Ihre Netzwerkumgebung für die Replikation getestet wird. Sehen Sie sich an, wie [ein Testfailover ausgeführt wird](site-recovery-failover.md) , um mehr über das Verwenden verschiedener Netzwerkoptionen zu erfahren.
 3. Der virtuelle Computer für den Test wird auf dem Host erstellt, auf dem auch der replizierte virtuelle Computer vorhanden ist. Er wird der gleichen Cloud hinzugefügt, in der sich der replizierte virtuelle Computer befindet.
 
 ### <a name="run-a-recovery-plan"></a>Ausführen eines Wiederherstellungsplans

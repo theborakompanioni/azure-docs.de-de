@@ -1,6 +1,6 @@
 ---
 title: "Aktivieren der Überwachung für SQL-Datenbanken in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Aktivieren der Überwachung für SQL-Datenbanken“ umsetzen."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Überwachung für SQL-Datenbanken aktivieren** implementieren."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c662a69f2fdbe3bd7848bdcd1eb0f9742f56c8c8
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: d36bb775d0b0fd732562b18787b65600c8fb5fa1
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -29,22 +30,25 @@ Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren vir
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Überwachung für SQL-Datenbanken aktivieren** aus.  Daraufhin wird das Blatt **Überwachung für SQL-Datenbanken aktivieren** geöffnet.
-   ![Enable auditing on SQL databases][1]
+
+   ![Überwachung für SQL-Datenbanken aktivieren][1]
 2. Wählen Sie eine SQL-Datenbank aus, für die die Überwachung aktiviert werden soll. Daraufhin wird das Blatt **Überwachung und Bedrohungserkennung** geöffnet.
+
    ![Überwachung und Bedrohungserkennung][2]
 3. Wählen Sie auf dem Blatt **Überwachung und Bedrohungserkennung** unter **Überwachung** die Option **EIN** aus.
+
    ![Überwachung und Bedrohungserkennung aktivieren][3]
-4. Führen Sie die Schritte in [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](../sql-database/sql-database-threat-detection-get-started.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
+4. Führen Sie die Schritte in [Bedrohungserkennung bei SQL-Datenbank im Azure-Portal](../sql-database/sql-database-threat-detection-portal.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Aktivieren der Überwachung für SQL-Datenbanken“ umsetzen. Weitere Informationen zum Schützen Ihrer SQL-Datenbank finden Sie unter:
 
-* [Sichern der SQL-Datenbank](../sql-database/sql-database-security.md)
+* [Sichern der SQL-Datenbank](../sql-database/sql-database-security-overview.md)
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -60,9 +64,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png
 [2]:./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection.png
 [3]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection-blade.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

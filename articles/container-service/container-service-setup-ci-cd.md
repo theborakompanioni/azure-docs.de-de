@@ -17,8 +17,9 @@ ms.workload: na
 ms.date: 11/14/2016
 ms.author: johnsta
 translationtype: Human Translation
-ms.sourcegitcommit: 831f585a9591338c2f404f7ec031d40937731eab
-ms.openlocfilehash: dcf4c0b67bc7a6596070cdf44644a6c451e3afc1
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: c226d1eecbda09f4538f37d830ce68064e8ce77b
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,7 +30,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine Docker-App mit mehreren Co
 ## <a name="get-started"></a>Erste Schritte
 Sie können diese exemplarische Vorgehensweise unter OS X, Windows oder Linux ausführen.
 - Sie benötigen ein Azure-Abonnement. Wenn Sie keines besitzen, können Sie sich [für ein Konto registrieren](https://azure.microsoft.com/).
-- Installieren Sie die [Azure-Befehlszeilentools](https://github.com/Azure/azure-cli#microsoft-azure-cli-20---preview).
+- Installieren Sie [Azure CLI 2.0](/cli/azure/install-az-cli2).
 
 ## <a name="what-well-create"></a>Erstellte Elemente
 Befassen wir uns mit einigen wichtigen Aspekten der App und dem von uns eingerichteten Bereitstellungsablauf:
@@ -319,7 +320,7 @@ Weitere Schritte, die Sie ausprobieren können:
 ## <a name="clean-up"></a>Bereinigen
 Um die im Zusammenhang mit diesem Tutorial entstehenden Computegebühren zu beschränken, führen Sie den folgenden Befehl aus, und notieren Sie sich die Bereitstellungspipelineressourcen für den ACS-Cluster:
 
-```azurecli 
+```azurecli    
 az container release list --resource-name myacs --resource-group myacs-rg
 ```
 
@@ -345,9 +346,4 @@ Löschen der VSTS-Releasedefinition:
 2. Klicken Sie in der Liste der Releasedefinitionen auf der linken Seite auf das Dropdownmenü neben der zu löschenden Releasedefinition, und wählen Sie **Löschen**.
 
 `![Löschen der VSTS-Releasedefinition](media/container-service-setup-ci-cd/vsts-delete-release-def.png)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

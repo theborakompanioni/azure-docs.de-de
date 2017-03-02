@@ -15,9 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
-ms.openlocfilehash: 0c2ca459a691b353a528edc48f4d13c231a440c4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: 2bd4b44bea641bcfcb576f0ba5d53564277dfe34
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -242,7 +242,7 @@ Es gibt zwei Möglichkeiten, ein Testfailover in Azure auszuführen.
 
 Wenn Sie ein Testfailover durchführen möchten, ohne ein Azure-Netzwerk anzugeben, müssen Sie keine Vorbereitungen treffen.
 
-Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-Netzwerk erstellen, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). Unter [Ausführen eines Testfailovers](site-recovery-failover.md#run-a-test-failover) finden Sie weitere Details.
+Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-Netzwerk erstellen, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). Unter [Ausführen eines Testfailovers](site-recovery-failover.md) finden Sie weitere Details.
 
 Um Ihre Replikation und Netzwerkbereitstellung vollständig zu testen, müssen Sie die Infrastruktur einrichten, damit die replizierte virtuelle Maschine wie erwartet funktioniert. Eine Möglichkeit ist: Richten Sie eine virtuelle Maschine als Domänencontroller mit DNS ein, und replizieren Sie sie in Azure. Verwenden Sie Site Recovery für die Erstellung im Testnetzwerk, indem Sie ein Testfailover ausführen.  Weitere Informationen zu den Überlegungen zum Testfailover für Active Directory finden Sie [hier](site-recovery-active-directory.md#test-failover-considerations).
 

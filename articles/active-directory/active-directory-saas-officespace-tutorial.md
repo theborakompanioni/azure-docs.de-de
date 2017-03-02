@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 02/01/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 01e2bcf3fa32546a7952ddc919f99b46a74755a2
-ms.openlocfilehash: e0933b1a7e19fc70f9c5e81225b296412837385e
+ms.sourcegitcommit: b8f354b34e1a3a581dd2e41df4b80cbdbcd9a705
+ms.openlocfilehash: 3033df7c69a1c4211c906c6f3bdcd7868dedde13
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -27,7 +28,7 @@ Die Integration von OfficeSpace Software in Azure AD bietet die folgenden Vortei
 
 - Sie können in Azure AD steuern, wer auf OfficeSpace Software Zugriff hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei OfficeSpace Software anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
@@ -46,7 +47,7 @@ Um die Azure AD-Integration mit OfficeSpace Software konfigurieren zu können, b
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -61,29 +62,23 @@ Zum Konfigurieren der Integration von OfficeSpace Software in Azure AD müssen S
 
 **Um OfficeSpace Software aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Verwaltungsportals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
-
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Anwendungen][2]
-
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![Anwendungen][3]
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-
-    ![Anwendungen][4]
-
-6. Geben Sie im Suchfeld den Suchbegriff **OfficeSpace Software** ein.
+4. Geben Sie im Suchfeld den Suchbegriff **OfficeSpace Software** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_001.png)
 
-7. Wählen Sie im Ergebnisbereich **OfficeSpace Software** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
+5. Wählen Sie im Ergebnisbereich **OfficeSpace Software** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_0001.png)
 
@@ -105,155 +100,136 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei OfficeSpac
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-Das Ziel dieses Abschnitts ist es, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Azure in Ihrer OfficeSpace Software-Anwendung zu konfigurieren.
-
-Ihre OfficeSpace Software-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute auf der Registerkarte**Attribute**der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: 
-
-![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_01.png)
+In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azure-Verwaltungsportal und konfigurieren das einmalige Anmelden in Ihrer OfficeSpace Software-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in OfficeSpace Software die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite von **OfficeSpace Software** im Menü oben auf **Attribute**.
+1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **OfficeSpace Software** auf **Einmaliges Anmelden**.
+
+    ![Einmaliges Anmelden konfigurieren][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_01.png)
+
+3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für OfficeSpace Software** aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_02.png)
 
-2. Führen Sie im Dialogfeld **SAML-Tokenattribute** für jede Zeile in der folgenden Tabelle die folgenden Schritte aus:
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
+
+    b. Geben Sie im Textfeld **Bezeichner** einen Wert nach folgendem Muster ein: `<company name>.officespacesoftware.com`
+
+    > [!NOTE] 
+    > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Wenden Sie sich an das [Supportteam von OfficeSpace Software](mailto:support@officespacesoftware.com), um diese Werte zu erhalten. 
+
+4. Ihre OfficeSpace Software-Anwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+    
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_03.png)
+
+5. Wählen Sie im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute** den Eintrag **user.mail** als **Benutzerbezeichner** aus, und führen Sie für jede in der folgenden Tabelle aufgeführte Zeile die folgenden Schritte aus:
     
     | Attributname | Attributwert |
     | --- | --- |    
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | user.mail |
     | E-Mail | user.mail |
     | Name | user.displayname |
     | first_name | user.givenname |
     | last_name | user.surname |
 
-    a. Klicken Sie auf **Benutzerattribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_03.png)
-    
-    b. Geben Sie im Textfeld **Attribute Name** den für die Zeile angezeigten Attributnamen ein.
-    
-    c. Geben Sie in der Liste **Attributwert** den für die Zeile angezeigten Attributwert ein.
-    
-    d. Klicken Sie unten auf der Seite auf **Abschließen**
-
-3. Klicken Sie im oberen Menü auf **Schnellstart**.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_04.png) 
-
-4. Klicken Sie im klassischen Portal auf der Anwendungsintegrationsseite für **OfficeSpace Software** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_04.png)
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_05.png)
+    
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+    
+    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    
+    d. Klicken Sie auf **OK**.
 
-5. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei OfficeSpace Software anmelden?** die Option **Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_06.png)
+6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-6. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_06.png)     
+
+7. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_general_300.png)
+
+8. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_07.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.officespace.com/users/sign_in/saml`
+9. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
 
-    b. Klicken Sie auf **Weiter**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_general_400.png)
 
-    > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von OfficeSpace Software](emaiLto:support@officespacesoftware.com), um diesen Wert zu erhalten.
-
-7. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für OfficeSpace Software** auf **Zertifikat herunterladen**, und speichern Sie die Datei auf Ihrem Computer:
+10. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_08.png) 
 
-8. Melden Sie sich in einem anderen Webbrowserfenster beim OfficeSpace Software-Mandanten als Administrator an.
+11. Klicken Sie im Abschnitt mit der **OfficeSpace Software-Konfiguration** auf **OfficeSpace Software konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
 
-9. Navigieren Sie zu **ADMIN**, und klicken Sie auf **Connectors**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_09.png) 
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_10.png)
+
+12. Melden Sie sich in einem anderen Webbrowserfenster beim OfficeSpace Software-Mandanten als Administrator an.
+
+13. Navigieren Sie zu **Einstellungen**, und klicken Sie auf **Connectors**.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_002.png)
 
-10. Klicken Sie auf **SAML-Autorisierung**.
+14. Klicken Sie auf **SAML-Autorisierung**.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_003.png)
 
-11. Führen Sie im Abschnitt **SAML-Autorisierung** die folgenden Schritte aus:
+15. Führen Sie im Abschnitt **SAML-Autorisierung** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_004.png)
 
-    a. Geben Sie im Textfeld **Logout provider url** (Abmeldeanbieter-URL) den Wert für die **Remoteanmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
+    a. Geben Sie im Textfeld für die **Abmeldeanbieter-URL** den Wert für die **Abmelde-URL** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
 
-    b. Geben Sie im Textfeld **Client idp target url** (Ziel-URL für Client-IdP) den Wert für die **Remoteabmelde-URL** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
+    b. Geben Sie im Textfeld für die **Ziel-URL für Client-IdP** den Wert für die **SAML-Dienst-URL für einmaliges Anmelden** aus dem Konfigurationsfenster der Azure AD-Anwendung ein.
 
     c. Kopieren Sie den **Fingerabdruckwert** aus dem heruntergeladenen Zertifikat, und fügen Sie ihn in das Textfeld **Client idp cert fingerprint** (Fingerabdruck des Client-IdP-Zertifikats) ein. 
 
     d. Klicken Sie auf **Einstellungen speichern**.
 
     > [!NOTE]
-    > Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)
-
-12. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
-
-    ![Azure AD – einmaliges Anmelden][10]
-
-13. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+    > Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI) 
   
-    ![Azure AD – einmaliges Anmelden][11]
-
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im klassischen Azure-Portal.
+In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
 
-![Azure AD-Benutzer erstellen][20]
+![Azure AD-Benutzer erstellen][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
+1. Klicken Sie im linken Navigationsbereich des **Azure-Verwaltungsportals** auf das Symbol für **Azure Active Directory**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_09.png) 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_01.png) 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie zum Anzeigen der Liste der Benutzer im Menü oben auf **Benutzer**.
-
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_03.png) 
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_04.png) 
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_05.png) 
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
 
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
 
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    c. Klicken Sie auf **Weiter**.
-
-6.  Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_06.png) 
-
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-
-    e. Klicken Sie auf **Weiter**.
-
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_07.png) 
-
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-officespace-tutorial/create_aaduser_08.png) 
-
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-
-    b. Klicken Sie auf **Fertig stellen**.   
+    d. Klicken Sie auf **Erstellen**. 
 
 
 
@@ -264,7 +240,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugriff auf OfficeSpace Software ein neuer Benutzer erstellt.
 
 > [!NOTE]
-> Wenden Sie sich an das [Supportteam von OfficeSpace Software](emaiLto:support@officespacesoftware.com), wenn Sie einen Benutzer manuell erstellen müssen.
+> Wenden Sie sich an das [Supportteam von OfficeSpace Software](mailto:support@officespacesoftware.com), wenn Sie einen Benutzer manuell erstellen müssen.
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
@@ -275,7 +251,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 **Um Britta Simon OfficeSpace Software zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen** .
+1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
@@ -283,16 +259,20 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-officespace-tutorial/tutorial_officespace_50.png) 
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Benutzer zuweisen][203] 
+    ![Benutzer zuweisen][202] 
 
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-    ![Benutzer zuweisen][205]
-
 
 
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
@@ -316,19 +296,9 @@ Wenn Sie im Zugriffsbereich auf die Kachel „OfficeSpace Software“ klicken, s
 [3]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-officespace-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

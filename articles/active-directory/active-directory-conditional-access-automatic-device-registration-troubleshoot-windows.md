@@ -11,30 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: fe9fad2de3fbb63e51fa14215c6f240977c56c7b
-ms.openlocfilehash: c72cebd04216b4e2bba26dd306354a7cd4e6c49a
+ms.sourcegitcommit: d3688b6a71dcd9964839da3cda35413d00f362d1
+ms.openlocfilehash: 836d43b17515beb565748f28603069c7c6a52fbf
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="troubleshooting-the-auto-registration-of-azure-ad-domain-joined-computers-for-windows-10-and-windows-server-2016"></a>Problembehandlung bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad--windows-10-and-windows-server-2016"></a>Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016
 
 Dieses Thema gilt für die folgenden Clients:
 
--   Windows 10
--   Windows Server 2016
+-    Windows 10
+-    Windows Server 2016
 
-Für andere Windows-Clients finden Sie weitere Informationen unter [Problembehandlung bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md).
+Für andere Windows-Clients finden Sie weitere Informationen unter [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md).
 
 In diesem Thema wird davon ausgegangen, dass Sie die automatische Registrierung von in die Domäne eingebundenen Geräten gemäß der Beschreibung unter [Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory](active-directory-conditional-access-automatic-device-registration-get-started.md) konfiguriert haben, um die folgenden Szenarien zu unterstützen:
 
-1.  [Gerätebasierter bedingter Zugriff](active-directory-conditional-access-automatic-device-registration-setup.md)
+1.    [Gerätebasierter bedingter Zugriff](active-directory-conditional-access-automatic-device-registration-setup.md)
 
-2.  [Unternehmensroaming von Einstellungen](active-directory-windows-enterprise-state-roaming-overview.md)
+2.    [Unternehmensroaming von Einstellungen](active-directory-windows-enterprise-state-roaming-overview.md)
 
-3.  [Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
+3.    [Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 
 
 Dieses Dokument enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme. 
@@ -80,23 +81,23 @@ Dieses Feld zeigt, ob das Gerät bei Azure AD registriert ist. Wenn für den Wer
 
 **Mögliche Ursachen:**
 
-1.  Fehler bei der Authentifizierung des Computers für die Registrierung.
+1.    Fehler bei der Authentifizierung des Computers für die Registrierung.
 
-2.  In der Organisation gibt es einen HTTP-Proxy, der von dem Computer nicht gefunden werden kann.
+2.    In der Organisation gibt es einen HTTP-Proxy, der von dem Computer nicht gefunden werden kann.
 
-3.  Der Computer kann Azure AD für die Authentifizierung oder Azure DRS für die Registrierung nicht erreichen.
+3.    Der Computer kann Azure AD für die Authentifizierung oder Azure DRS für die Registrierung nicht erreichen.
 
-4.  Der Computer befindet sich möglicherweise nicht im internen Unternehmensnetzwerk oder im VPN mit direktem Zugriff auf einen lokalen AD-Domänencontroller.
+4.    Der Computer befindet sich möglicherweise nicht im internen Unternehmensnetzwerk oder im VPN mit direktem Zugriff auf einen lokalen AD-Domänencontroller.
 
-5.  Wenn der Computer über ein TPM verfügt, befindet sich dieses möglicherweise in einem fehlerhaften Zustand.
+5.    Wenn der Computer über ein TPM verfügt, befindet sich dieses möglicherweise in einem fehlerhaften Zustand.
 
-6.  Möglicherweise liegt eine Fehlkonfiguration in Diensten vor, die früher im Dokument aufgeführt wurden und die Sie erneut überprüfen müssen. Typische Beispiele:
+6.    Möglicherweise liegt eine Fehlkonfiguration in Diensten vor, die früher im Dokument aufgeführt wurden und die Sie erneut überprüfen müssen. Typische Beispiele:
 
-    1.  Auf dem Verbundserver sind keine WS-Trust-Endpunkte aktiviert.
+    1.    Auf dem Verbundserver sind keine WS-Trust-Endpunkte aktiviert.
 
-    2.  Ihr Verbundserver lässt möglicherweise keine eingehende Authentifizierung von Computern in Ihrem Netzwerk über die integrierten Windows-Authentifizierung zu.
+    2.    Ihr Verbundserver lässt möglicherweise keine eingehende Authentifizierung von Computern in Ihrem Netzwerk über die integrierten Windows-Authentifizierung zu.
 
-    3.  Es gibt kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD in der Active Directory-Gesamtstruktur verweist, zu der der Computer gehört.
+    3.    Es gibt kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD in der Active Directory-Gesamtstruktur verweist, zu der der Computer gehört.
 
 ---
 
@@ -116,17 +117,12 @@ Dieses Feld zeigt, ob das Gerät bei Azure AD als privates Gerät registriert is
   
 Diese Felder zeigen, dass der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat. Wenn sie den Wert „NO“ aufweisen, gibt es dafür möglicherweise folgende Ursachen:
 
-1.  Dem Gerät wurde bei der Registrierung ein ungültiger Speicherschlüssel (STK) im TPM zugewiesen (prüfen Sie den KeySignTest bei der Ausführung mit erhöhten Rechten).
+1.    Dem Gerät wurde bei der Registrierung ein ungültiger Speicherschlüssel (STK) im TPM zugewiesen (prüfen Sie den KeySignTest bei der Ausführung mit erhöhten Rechten).
 
-2.  Alternative Anmelde-ID.
+2.    Alternative Anmelde-ID.
 
-3.  HTTP-Proxy nicht gefunden.
+3.    HTTP-Proxy nicht gefunden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur automatischen Geräteregistrierung](active-directory-conditional-access-automatic-device-registration-faq.md). 
-
-
-<!--HONumber=Feb17_HO1-->
-
-

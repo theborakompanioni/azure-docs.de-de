@@ -15,14 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: 177b01989ab2f3475cd853d89789b88e02d04be4
-ms.openlocfilehash: 0194ffe54462e1a432ea10e69608e158f9cc54dc
+ms.sourcegitcommit: 47869775365ea517b94cbd5a2eb83c93f4d2b4df
+ms.openlocfilehash: 17b7337ddcfa2671bb3a035de8462e31bfa0c85f
+ms.lasthandoff: 02/15/2017
 
 ---
 
 # <a name="internal-load-balancer-overview"></a>Interner Lastenausgleich (Übersicht)
 
-Im Gegensatz zum Lastenausgleichsmodul mit Internetzugriff leitet das interne Lastenausgleichsmodul (Internal Load Balancer, ILB) Datenverkehr nur an Ressourcen innerhalb des Clouddiensts oder an Ressourcen weiter, die per VPN auf die Azure-Infrastruktur zugreifen. Die Infrastruktur schränkt den Zugriff auf die virtuellen IP-Adressen mit Lastenausgleich eines Clouddiensts oder eines virtuellen Netzwerks ein, sodass diese nie direkt für einen Internetendpunkt verfügbar gemacht werden. Dies ermöglicht die Ausführung interner Branchenanwendungen (LOB-Anwendungen) in Azure und den Zugriff auf diese Anwendungen in der Cloud oder über lokale Ressourcen.
+Im Gegensatz zum Load Balancer mit Internetzugriff leitet der interne Load Balancer (ILB) Datenverkehr nur an Ressourcen innerhalb des Clouddiensts oder an Ressourcen weiter, die per VPN auf die Azure-Infrastruktur zugreifen. Die Infrastruktur schränkt den Zugriff auf die virtuellen IP-Adressen mit Lastenausgleich eines Clouddiensts oder eines virtuellen Netzwerks ein, sodass diese nie direkt für einen Internetendpunkt verfügbar gemacht werden. Dies ermöglicht die Ausführung interner Branchenanwendungen (LOB-Anwendungen) in Azure und den Zugriff auf diese Anwendungen in der Cloud oder über lokale Ressourcen.
 
 ## <a name="why-you-may-need-an-internal-load-balancer"></a>Szenarien, in denen ggf. die Verwendung eines internen Lastenausgleichsmoduls erforderlich ist
 
@@ -83,9 +84,4 @@ Abbildung 4: An den ILB-Endpunkt weitergeleiteter lokaler Netzwerkdatenverkehr
 [Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
 
 [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

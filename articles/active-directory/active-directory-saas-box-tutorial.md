@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: c8254f41006c36509af3626cb14825602e6a4adb
+ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
+ms.openlocfilehash: 6e6dad2dba03bd3339d841c885ab4e60b2dafbd3
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>Tutorial: Azure Active Directory-Integration mit Box
 In diesem Tutorial wird die Integration von Azure und Box erläutert.  
+
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
@@ -30,91 +32,97 @@ Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie Box 
 
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
-1. Aktivieren der Anwendungsintegration für Box
-2. Konfigurieren der einmaligen Anmeldung
-3. Konfigurieren der Benutzer- und Gruppenbereitstellung
-4. Zuweisen von Benutzern
+* Aktivieren der Anwendungsintegration für Box
+* Konfigurieren der einmaligen Anmeldung (SSO)
+* Konfigurieren der Benutzer- und Gruppenbereitstellung
+* Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-box-tutorial/IC769537.png "Scenario")
+![Szenario](./media/active-directory-saas-box-tutorial/IC769537.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-box"></a>Aktivieren der Anwendungsintegration für Box
+## <a name="enable-the-application-integration-for-box"></a>Aktivieren der Anwendungsintegration für Box
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Box aktivieren.
 
-### <a name="to-enable-the-application-integration-for-box-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Box
+**Führen Sie zum Aktivieren der Anwendungsintegration für Box die folgenden Schritte aus:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-box-tutorial/IC700993.png "Active Directory")
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-box-tutorial/IC700994.png "Applications")
+   ![Anwendungen](./media/active-directory-saas-box-tutorial/IC700994.png "Anwendungen")
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-box-tutorial/IC749321.png "Add application")
+   ![Anwendung hinzufügen](./media/active-directory-saas-box-tutorial/IC749321.png "Anwendung hinzufügen")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-box-tutorial/IC749322.png "Add an application from gallerry")
+   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-box-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 6. Geben Sie im **Suchfeld** als Suchbegriff **Box** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-box-tutorial/IC701023.png "Application gallery")
+   ![Anwendungskatalog](./media/active-directory-saas-box-tutorial/IC701023.png "Anwendungskatalog")
 7. Wählen Sie im Ergebnisbereich **Box** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
    ![Box](./media/active-directory-saas-box-tutorial/IC701024.png "Box")
 
-## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
-In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Box zu authentifizieren. Im Rahmen dieses Verfahrens müssen Sie Metadaten auf Box.com hochladen.
+## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren
+In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Box zu authentifizieren. 
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+Im Rahmen dieses Verfahrens müssen Sie Metadaten auf Box.com hochladen.
+
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Box** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769538.png "Configure single sign-on")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769538.png "Einmaliges Anmelden konfigurieren")
 2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Box anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769539.png "Configure single sign-on")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769539.png "Einmaliges Anmelden konfigurieren")
 3. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Box-Mandanten-URL** die URL Ihres Box-Mandanten ein (z.B. https://<mydomainname>.box.com), und klicken Sie auf **Weiter**.
    
-   ![App-URL konfigurieren](./media/active-directory-saas-box-tutorial/IC669826.png "Configure app URL")
+  ![App-URL konfigurieren](./media/active-directory-saas-box-tutorial/IC669826.png "App-URL konfigurieren")
 4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Box** auf **Metadaten herunterladen**, und speichern Sie die Datendatei lokal auf Ihrem Computer.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC669824.png "Configure single sign-on")
+  ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC669824.png "Einmaliges Anmelden konfigurieren")
 5. Leiten Sie die Metadatendatei an das Supportteam von Box weiter. Das Supportteam muss ein einmaliges Anmelden für Sie konfigurieren.
 6. Bestätigen Sie die Konfiguration des einmaligen Anmeldens, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
-   ![Configure single sign-on](./media/active-directory-saas-box-tutorial/IC769540.png "Configure single sign-on")
+  ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-box-tutorial/IC769540.png "Einmaliges Anmelden konfigurieren")
    
-   ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für Box aktivieren.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Box** auf **Benutzerbereitstellung konfigurieren**, um das Dialogfeld **Benutzerbereitstellung konfigurieren** zu öffnen. 
    
-    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769541.png "Enable automatic user provisioning")
+    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769541.png "Automatische Benutzerbereitstellung aktivieren")
 2. Klicken Sie auf der Dialogfeldseite **Benutzerbereitstellung aktivieren für Box** auf **Benutzerbereitstellung aktivieren**. 
    
-    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769544.png "Enable automatic user provisioning")
+    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769544.png "Automatische Benutzerbereitstellung aktivieren")
 3. Stellen Sie auf der Seite **Anmelden, um Zugriff auf Box zu gewähren** die erforderlichen Anmeldeinformationen bereit, und klicken Sie dann auf **Autorisieren**. 
    
-    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769546.png "Enable automatic user provisioning")
+    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769546.png "Automatische Benutzerbereitstellung aktivieren")
 4. Klicken Sie auf **Zugriff gewähren auf Box** , um diesen Vorgang zu autorisieren und zum klassischen Azure-Portal zurückzukehren. 
    
-    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769549.png "Enable automatic user provisioning")
+    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769549.png "Automatische Benutzerbereitstellung aktivieren")
 5. Auf der Seite **Bereitstellungsoptionen** können Sie mit den Kontrollkästchen **Bereitzustellende Objekttypen** auswählen, ob neben Benutzerobjekten auch Gruppenobjekte in Box bereitgestellt werden.  Weitere Informationen finden Sie weiter unter im Abschnitt „Zuweisen von Benutzern und Gruppen“.
 6. Klicken Sie zum Abschließen der Konfiguration auf die Schaltfläche „Abschließen“. 
    
-    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769551.png "Enable automatic user provisioning")
+    ![Automatische Benutzerbereitstellung aktivieren](./media/active-directory-saas-box-tutorial/IC769551.png "Automatische Benutzerbereitstellung aktivieren")
 
-## <a name="assigning-a-test-user"></a>Zuweisen eines Testbenutzers
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+## <a name="assign-a-test-user"></a>Zuweisen eines Testbenutzers
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-box-perform-the-following-steps"></a>So weisen Sie Box Benutzer zu
+**Führen Sie zum Zuweisen von Benutzern in Box folgende Schritte aus:**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Box** auf **Benutzer zuweisen**. 
    
-    ![Benutzer zuweisen](./media/active-directory-saas-box-tutorial/IC769552.png "Assign users")
+    ![Zuweisen von Benutzern](./media/active-directory-saas-box-tutorial/IC769552.png "Zuweisen von Benutzern")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen. 
    
-   ![Ja](./media/active-directory-saas-box-tutorial/IC767830.png "Yes")
+   ![Ja](./media/active-directory-saas-box-tutorial/IC767830.png "Ja")
 
 Nach 10 Minuten können Sie überprüfen, ob das Konto mit Box synchronisiert wurde.
 
@@ -124,13 +132,13 @@ Als ersten Überprüfungsschritt können Sie den Bereitstellungsstatus überprü
 
 Ein erfolgreich abgeschlossener Benutzerbereitstellungszyklus wird durch einen entsprechenden Status angezeigt:
 
-![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769555.png "Integration status")
+![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769555.png "Integrationsstatus")
 
 In Ihrem Box-Mandanten werden synchronisierte Benutzer in der **Verwaltungskonsole** unter **Verwaltete Benutzer** aufgelistet.
 
-![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769556.png "Integration status")
+![Integrationsstatus](./media/active-directory-saas-box-tutorial/IC769556.png "Integrationsstatus")
 
-## <a name="assigning-users-and-groups"></a>Zuweisen von Benutzern und Gruppen
+## <a name="assign-users-and-groups"></a>Zuweisen von Benutzern und Gruppen
 Auf der Registerkarte **Box > Benutzer und Gruppen** im klassischen Azure-Portal können Sie angeben, welchen Benutzern und Gruppen Zugriff auf Box gewährt werden soll. Durch die Zuweisung eines Benutzers oder einer Gruppe geschieht Folgendes:
 
 * Azure AD ermöglicht es dem zugewiesenen Benutzer (entweder durch direkte Zuweisung oder durch eine Gruppenmitgliedschaft), sich bei Box zu authentifizieren. Wenn ein Benutzer nicht zugewiesen ist, lässt Azure AD eine Anmeldung bei Box nicht zu und gibt auf der Azure AD-Anmeldeseite einen Fehler zurück.
@@ -147,10 +155,5 @@ Auf der Registerkarte **Attribute > Einmaliges Anmelden** können Sie konfigurie
 * [Bereitstellung: Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

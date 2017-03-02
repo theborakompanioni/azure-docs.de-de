@@ -1,6 +1,6 @@
 ---
-title: "Überwachung, Diagnose und Problembehandlung von Speicher | Microsoft Docs"
-description: Verwenden Sie Funktionen wie Speicheranalyse, clientseitige Protokollierung und andere Tools von Drittanbietern, um mit Azure-Speicher verbundene Probleme zu erkennen, zu diagnostizieren und zu beheben.
+title: "Überwachung, Diagnose und Problembehandlung in Azure Storage | Microsoft Docs"
+description: Verwenden Sie Features wie Speicheranalyse, clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Storage zu erkennen, zu diagnostizieren und zu beheben.
 services: storage
 documentationcenter: 
 author: jasonnewyork
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 02/16/2017
 ms.author: jahogg
 translationtype: Human Translation
-ms.sourcegitcommit: b0abc4df06849ef2a887a190a8ea306849d40b3d
-ms.openlocfilehash: e7613084c6a7f20913b49b1f3c33bb681897c118
+ms.sourcegitcommit: d755a94bc8c5165480291d891c5feb0cf3b26e75
+ms.openlocfilehash: e6915bf94b56b9c9ff3deb131d18d1d5457f0e85
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -84,8 +85,6 @@ Diese Anleitung zeigt Ihnen, wie Sie Funktionen wie Azure Storage Analytics, cli
 
 ![][1]
 
-*Abbildung 1: Überwachung, Diagnose und Problembehandlung*
-
 Dieser Leitfaden richtet sich in erster Linie an Entwickler von Online-Diensten, die Azure-Speicherdienste verwenden, sowie an IT-Experten, die für die Verwaltung solcher Online-Dienste verantwortlich sind. Mit dieser Anleitung möchten wir:
 
 * Ihnen helfen, die Integrität und Leistungsfähigkeit Ihres Azure-Speicherkontos aufrechtzuerhalten
@@ -106,11 +105,11 @@ Die "[Anhängen]" enthalten Informationen zur Verwendung anderer Tools wie Wires
 ## <a name="a-namemonitoring-your-storage-serviceamonitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Überwachung Ihres Speicherdiensts
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen, oder Prozentsatz der erfolgreichen Dienstanfragen. Eine vollständige Liste der verfügbaren Kennzahlen finden Sie im Thema zu den [Kennzahlen zur Speicheranalyse – Tabellenschema](http://msdn.microsoft.com/library/azure/hh343264.aspx). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](http://go.microsoft.com/fwlink/?LinkId=510865).
 
-Sie können wählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). 
+Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). 
 
 Der Speicherdienst sammelt Metriken nach dem Best-Effort-Prinzip, kann aber nicht jeden Speichervorgang aufzeichnen.
 
-Im Azure-Portal können Sie Metriken wie Verfügbarkeit, Gesamtanfragen und durchschnittliche Latenzzahlen für ein Speicherkonto anzeigen. Zudem wurde eine Benachrichtigungsregel eingerichtet, um einen Administrator zu benachrichtigen, wenn die Verfügbarkeit unter ein bestimmtes Niveau sinkt. Aus der Anzeige dieser Daten ergibt sich als möglicher Untersuchungsbereich der unter 100 Prozent liegende Erfolgsprozentsatz des Tabellenspeicherdiensts. (Weitere Informationen finden Sie im Abschnitt [Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“].)
+Im Azure-Portal können Sie Metriken wie Verfügbarkeit, Gesamtanforderungen und durchschnittliche Latenzzahlen für ein Speicherkonto anzeigen. Zudem wurde eine Benachrichtigungsregel eingerichtet, um einen Administrator zu benachrichtigen, wenn die Verfügbarkeit unter ein bestimmtes Niveau sinkt. Aus der Anzeige dieser Daten ergibt sich als möglicher Untersuchungsbereich der unter 100 Prozent liegende Erfolgsprozentsatz des Tabellenspeicherdiensts. (Weitere Informationen finden Sie im Abschnitt [Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“].)
 
 Sie sollten Ihre Azure-Anwendungen kontinuierlich überwachen, um sicherzustellen, dass sie wie erwartet integer und leistungsfähig sind, durch:
 
@@ -119,7 +118,7 @@ Sie sollten Ihre Azure-Anwendungen kontinuierlich überwachen, um sicherzustelle
 * Aufzeichnung von Stundenmetriken und ihre Verwendung zur Überwachung von Durchschnittswerten wie durchschnittliche Fehlerzahlen und Anfrageraten.
 * Untersuchung potentieller Probleme unter Verwendung von Diagnosetools, entsprechend der Darstellung weiter unten im Abschnitt "[Diagnose von Speicherfehlern]."
 
-Die Diagramme in Abbildung 3 unten illustrieren, wie die Durchschnittsberechnung für die Stundenmetrik Aktivitätsspitzen verstecken kann. Die Stundenmetriken scheinen eine konstante Anfragerate anzuzeigen, während die Minutenmetriken die wirklichen Schwankungen offenbaren.
+Die Diagramme in der folgenden Abbildung illustrieren, wie die Durchschnittsberechnung für die Stundenmetrik Aktivitätsspitzen verstecken kann. Die Stundenmetriken scheinen eine konstante Anfragerate anzuzeigen, während die Minutenmetriken die wirklichen Schwankungen offenbaren.
 
 ![][3]
 
@@ -131,7 +130,7 @@ Sie können das [Azure-Portal](https://portal.azure.com) verwenden, um die Integ
 Das [Azure-Portal](https://portal.azure.com) kann auch Benachrichtigungen zu Vorfällen bereitstellen, die die verschiedenen Azure-Dienste beeinträchtigen.
 Hinweis: Diese Informationen waren bisher, zusammen mit Verlaufsdaten, auf dem [Azure-Dienstdashboard](http://status.azure.com)verfügbar.
 
-Während das [Azure-Portal](https://portal.azure.com) Zustandsinformationen innerhalb der Azure-Rechenzentren (Inside-out-Überwachung) sammelt, könnten Sie auch einen Outside-in-Ansatz in Erwägung ziehen, um synthetische Transaktionen zu generieren, die in regelmäßigen Abständen von mehreren Standorten aus auf Ihre Azure-gehostete Webanwendung zugreifen. Die von [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) und Application Insights für Visual Studio Team Services angebotenen Dienste sind Beispiele für diesen Outside-in-Ansatz. Weitere Informationen zu Application Insights für Visual Studio Team Services finden Sie in[Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services](#appendix-5).
+Während das [Azure-Portal](https://portal.azure.com) Zustandsinformationen innerhalb der Azure-Rechenzentren (Inside-out-Überwachung) sammelt, könnten Sie auch einen Outside-in-Ansatz in Erwägung ziehen, um synthetische Transaktionen zu generieren, die in regelmäßigen Abständen von mehreren Standorten aus auf Ihre in Azure gehostete Webanwendung zugreifen. Die von [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) und Application Insights für Visual Studio Team Services angebotenen Dienste sind Beispiele für diesen Outside-in-Ansatz. Weitere Informationen zu Application Insights für Visual Studio Team Services finden Sie in[Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services](#appendix-5).
 
 ### <a name="a-namemonitoring-capacityamonitoring-capacity"></a><a name="monitoring-capacity"></a>Kapazitätsüberwachung
 Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Blobs in der Regel den größten Teil der gespeicherten Daten ausmachen. (Es ist zum Redaktionszeitpunkt nicht möglich, Speichermetriken zu verwenden, um die Kapazität Ihrer Tabellen und Warteschlangen zu überwachen.) Sie finden diese Daten in der Tabelle **$MetricsCapacityBlob** , wenn Sie die Überwachung für den Blob-Dienst aktiviert haben. Speichermetriken zeichnen diese Daten einmal täglich auf, und Sie können anhand des Wert von **RowKey** bestimmen, ob die Zeile eine Entität enthält, die sich auf Benutzerdaten (Wert **data**) oder Analysedaten (Wert **analytics**) bezieht. Jede gespeicherte Entität enthält Informationen zum verwendeten Speicheranteil (**Capacity**, gemessen in Bytes) sowie zur aktuellen Anzahl von Containern (**ContainerCount**) und Blobs (**ObjectCount**) im Speicherkonto. Weitere Informationen über die in der Tabelle **$MetricsCapacityBlob** gespeicherten Kapazitätsmetriken finden Sie unter [Tabellenschema der Speicher-Analytikmetriken](http://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -148,7 +147,7 @@ Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überw
 
 Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der Verfügbarkeit** **auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
 
-Im [Azure-Portal](https://portal.azure.com)können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwerte unterschreitet.
+Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwert unterschreitet.
 
 Der Abschnitt "[Anleitungen zur Problembehandlung]" in dieser Anleitung beschreibt einige bekannte Speicherdienstprobleme in Verbindung mit der Verfügbarkeit.
 
@@ -161,7 +160,7 @@ Um die Leistung des Speicherdiensts zu überwachen, können Sie die folgenden Me
 
 In der Regel werden Sie unerwartete Veränderungen bei einem dieser Werte überwachen. Sie sind der Indikator für ein Problem, das untersucht werden muss.
 
-Im [Azure-Portal](https://portal.azure.com)können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die Leistungsmetriken für diesen Dienst einen von Ihnen festgelegten Grenzwert über- oder unterschreiten.
+Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die Leistungsmetriken für diesen Dienst einen von Ihnen festgelegten Grenzwert über- oder unterschreiten.
 
 Der Abschnitt "[Anleitungen zur Problembehandlung]" in dieser Anleitung beschreibt einige bekannte Speicherdienstprobleme in Verbindung mit der Verfügbarkeit.
 
@@ -571,11 +570,11 @@ Die folgende Tabelle zeigt eine Muster-Serverprotokollierungsnachricht aus der S
 | Anfragestartzeit | 2014-05-30T06:17:48.4473697Z |
 | Vorgangsart     | GetBlobProperties            |
 | Anfragestatus     | SASAuthorizationError        |
-| HTTP-Statuscode   | 404                          |
+| HTTP-Statuscode   | 404                            |
 | Authentifizierungsart| SAS                          |
 | Dienstart       | Blob                         |
-| Anfrage-URL        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
-| nbsp;              |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
+| Anfrage-URL         | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
+| nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Request ID header  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | Clientanfrage-ID  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -770,7 +769,7 @@ Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vor
 Sie können Microsoft Message Analyzer verwenden, um HTTP- und HTTPS-Datenverkehr ähnlich wie Fiddler und Netzwerkverkehr ähnlich wie Wireshark zu erfassen.
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Konfigurieren einer Web-Rückverfolgungssession mit Microsoft Message Analyzer
-Um mit Microsoft Message Analyzer eine Web-Ablaufverfolgungssitzung für HTTP- und HTTPS-Datenverkehr zu konfigurieren, führen Sie Microsoft Message Analyzer aus, und klicken Sie anschließend im Menü **Datei** auf **Erfassung/Rückverfolgung**. Wählen Sie in der Liste der verfügbaren Rückverfolgungsszenarien **Web-Proxy**aus. Geben Sie anschließend im Bereich **Trace Scenario Configuration** im Textfeld **HostnameFilter** die Namen Ihrer Speicherendpunkte ein. (Sie können diese Namen im [Azure-Portal](https://portal.azure.com) nachschlagen.) Wenn der Name Ihres Azure-Speicherkontos also beispielsweise **contosodata** lautet, fügen Sie im Textfeld **HostnameFilter** Folgendes ein:
+Um mit Microsoft Message Analyzer eine Web-Ablaufverfolgungssitzung für HTTP- und HTTPS-Datenverkehr zu konfigurieren, führen Sie Microsoft Message Analyzer aus, und klicken Sie anschließend im Menü **Datei** auf **Erfassung/Rückverfolgung**. Wählen Sie in der Liste der verfügbaren Rückverfolgungsszenarien **Web-Proxy**aus. Geben Sie anschließend im Bereich **Trace Scenario Configuration** im Textfeld **HostnameFilter** die Namen Ihrer Speicherendpunkte ein. (Sie können diese Namen im [Azure-Portal](https://portal.azure.com) einsehen.) Wenn der Name Ihres Azure-Speicherkontos also beispielsweise **contosodata** lautet, fügen Sie im Textfeld **HostnameFilter** Folgendes ein:
 
 ```
 contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
@@ -890,9 +889,4 @@ Weitere Informationen finden Sie unter [Was ist Application Insights?](../applic
 [8]: ./media/storage-monitoring-diagnosing-troubleshooting/wireshark-screenshot-3.png
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

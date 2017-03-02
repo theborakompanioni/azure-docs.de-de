@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 3dbf57923e104715d34d1131d16acb6bc6c51637
-ms.openlocfilehash: dcf61a8875793bb9e5ed4eda51f9da14366a4fba
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: fba82c5c826da7d1912814b61c5065ca7f726011
+ms.openlocfilehash: c4c2cd8ddcb541b2619f7e1b140222899f15f87c
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -69,7 +69,7 @@ Wenn eine Abfrage mit Fehlern abgeschlossen wird, zeigt der Abfrage-Explorer ein
 ![Screenshot der Abfrage-Explorers – Abfragefehler](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
 ## <a name="run-documentdb-sql-queries-outside-the-portal"></a>Ausführen von DocumentDB-SQL-Abfragen außerhalb des Portals
-Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen für DocumentDB auszuführen. Sie können SQL-Abfragen auch mit der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder den [Client-SDKs](documentdb-sdk-dotnet.md) ausführen. Weitere Informationen zur Verwendung dieser oder anderer Methoden finden Sie unter [Ausführen von SQL-Abfragen](documentdb-sql-query.md#executing-sql-queries)
+Der Abfrage-Explorer im Azure-Portal ist nur eine Möglichkeit, um SQL-Abfragen für DocumentDB auszuführen. Sie können SQL-Abfragen auch mit der [REST-API](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder den [Client-SDKs](documentdb-sdk-dotnet.md) ausführen. Weitere Informationen zur Verwendung dieser oder anderer Methoden finden Sie unter [Ausführen von SQL-Abfragen](documentdb-sql-query.md#ExecutingSqlQueries)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur DocumentDB-SQL-Grammatik, die im Abfrage-Explorer unterstützt wird, finden Sie im Artikel [SQL-Abfrage und SQL-Syntax](documentdb-sql-query.md), oder drucken Sie sich den [Spickzettel für SQL-Abfragen](documentdb-sql-query-cheat-sheet.md) aus.

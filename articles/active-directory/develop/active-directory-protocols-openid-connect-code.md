@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zum Codefluss der OpenID Connect-Authentifizierung in Azure AD | Microsoft-Dokumentation
+title: Grundlegendes zum OpenID Connect-Authentifizierungscodefluss in Azure AD | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Autorisieren des Zugriffs auf Webanwendungen und Web-APIs in Ihrem Mandanten mithilfe von Azure Active Directory und OpenID Connect verwenden.
 services: active-directory
 documentationcenter: .net
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: priyamo
 translationtype: Human Translation
-ms.sourcegitcommit: 06d8cb3ce2fe4419a79a63b76d67cc476d205e08
-ms.openlocfilehash: bd195ee282b6813034ac25e607f64a88cbdedf37
+ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
+ms.openlocfilehash: 2000e2005533d4e4d4c7bba9d5168c395af1499f
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -25,12 +26,37 @@ ms.openlocfilehash: bd195ee282b6813034ac25e607f64a88cbdedf37
 
 OpenID Connect wird für Webanwendungen empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
 
-[!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
+
+[!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
 ## <a name="authentication-flow-using-openid-connect"></a>Authentifizierungsfluss bei OpenID Connect
 Der grundlegende Anmeldevorgang umfasst die folgenden Schritte – sie werden unten jeweils im Detail beschrieben.
 
 ![OpenId Connect-Authentifizierungsfluss](media/active-directory-protocols-openid-connect-code/active-directory-oauth-code-flow-web-app.png)
+
+## <a name="openid-connect-metadata-document"></a>OpenID Connect-Metadatendokument
+
+OpenID Connect beschreibt ein Metadatendokument, das den Großteil der erforderlichen Informationen für die Anmeldung einer App enthält. Hierzu gehören Informationen wie z.B. die zu verwendenden URLs und der Speicherort der öffentlichen Signaturschlüssel des Dienstes. Sie finden das OpenID Connect-Metadatendokument unter:
+
+```
+https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
+```
+Bei den Metadaten handelt es sich um ein einfaches JavaScript Object Notation-Dokument (JSON). Die folgenden Codeausschnitte zeigen Beispiele. Die vollständigen Inhalte der Codeausschnitte werden in der [OpenID Connect-Spezifikation](https://openid.net) beschrieben.
+
+```
+{
+    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "token_endpoint_auth_methods_supported":
+    [
+        "client_secret_post",
+        "private_key_jwt"
+    ],
+    "jwks_uri": "https://login.microsoftonline.com/common/discovery/keys"
+    
+    ...
+}
+```
 
 ## <a name="send-the-sign-in-request"></a>Senden der Anmeldeanforderung
 Wenn die Webanwendung den Benutzer authentifizieren muss, muss sie ihn an den `/authorize` -Endpunkt weiterleiten. Diese Anforderung ähnelt dem ersten Abschnitt des [OAuth 2.0-Autorisierungscodeflusses](active-directory-protocols-oauth-code.md), aber es gibt auch einige wichtige Unterschiede:
@@ -57,7 +83,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parameter |  | Beschreibung |
 | --- | --- | --- |
 | Mandant |erforderlich |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können.  Die zulässigen Werte sind Mandantenbezeichner (also etwa `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder für mandantenunabhängige Token `common`). |
-| client_id |erforderlich |Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im klassischen Azure-Portal. Klicken Sie auf **Active Directory**, wählen Sie das Verzeichnis und dann die Anwendung aus, und klicken Sie auf **Konfigurieren**. |
+| client_id |erforderlich |Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im Azure-Portal. Klicken Sie auf **Azure Active Directory** und auf **App-Registrierungen**, wählen Sie die Anwendung aus, und suchen Sie die Anwendungs-ID auf der Anwendungsseite. |
 | response_type |erforderlich |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten.  Es können auch andere Antworttypen enthalten sein, z. B. `code`. |
 | Bereich |erforderlich |Eine durch Leerzeichen getrennte Liste von Bereichen.  Für OpenID Connect muss der Bereich `openid`enthalten sein, der auf der Zustimmungsbenutzeroberfläche die Anmeldeberechtigung ergibt.  Sie können in diese Anforderung auch andere Bereiche für das Anfordern der Zustimmung aufnehmen. |
 | nonce |erforderlich |Ein Wert in der von der App erzeugten Anforderung, die im resultierenden `id_token`-Element als Anspruch enthalten ist.  Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern.  Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge oder GUID, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
@@ -142,6 +168,16 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 | --- | --- | --- |
 | post_logout_redirect_uri |empfohlen |Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll.  Wenn keine Angabe erfolgt, wird dem Benutzer eine generische Meldung angezeigt. |
 
+## <a name="single-sign-out"></a>Einmaliges Abmelden
+Azure AD verwendet Cookies, um eine Benutzersitzung zu identifizieren. Ihre Webanwendung verwendet möglicherweise auch Cookies zum Verwalten von Sitzungen in Ihrer Anwendung. Wenn ein Benutzer sich zum ersten Mal bei einer Anwendung anmeldet, erstellt Azure AD ein Cookie im Browser des Benutzers. Wenn sich der Benutzer später bei einer anderen Anwendung anmeldet, überprüft Azure AD zuerst das Cookie, um zu bestimmen, ob es für den Benutzer eine gültige Anmeldungssitzung auf dem Azure AD-Endpunkt gibt, anstatt den Benutzer erneut zu authentifizieren.
+
+Wenn sich der Benutzer zum ersten Mal von einer Anwendung abmeldet, löscht Azure AD das Cookie entsprechend aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD für die Authentifizierung verwenden. Um sicherzustellen, dass der Benutzer von allen Anwendungen abgemeldet wird, sendet Azure AD eine HTTP GET-Anforderung an die `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Die Anwendungen müssen auf diese Anforderung antworten, indem sie alle Cookies löschen, mit denen die Sitzung des Benutzers identifiziert wird. Sie können die `LogoutUrl` im Azure-Portal festlegen.
+
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+2. Wählen Sie Ihre Active Directory-Instanz aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken.
+3. Wählen Sie im linken Navigationsbereich **Azure Active Directory**, dann **App Registrierungen** und schließlich Ihre Anwendung aus.
+4. Klicken Sie auf **Eigenschaften**, und suchen Sie das Textfeld **Abmelde-URL**. 
+
 ## <a name="token-acquisition"></a>Tokenbeschaffung
 Viele Web-Apps müssen nicht nur den Benutzer anmelden, sondern auch mithilfe von OAuth im Namen dieses Benutzers auf einen Webdienst zugreifen. Bei diesem Szenario wird OpenID Connect für die Benutzerauthentifizierung verwendet und gleichzeitig ein Autorisierungscode (`authorization_code`) abgerufen, der mithilfe des OAuth-Autorisierungscodeflusses zum Abrufen von Zugriffstoken (`access_tokens`) verwendet werden kann.
 
@@ -200,8 +236,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 Eine Beschreibung der möglichen Fehlercodes und der jeweils empfohlenen Clientaktion finden Sie unter [Fehlercodes beim Autorisierungsendpunktfehler](#error-codes-for-authorization-endpoint-errors).
 
 Nachdem Sie einen Autorisierungs`code` und einen `id_token` erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen.  Zum Anmelden des Benutzers müssen Sie das `id_token` genau wie oben beschrieben überprüfen. Um Zugriffstoken zu erhalten, können Sie die in der [OAuth-Protokolldokumentation](active-directory-protocols-oauth-code.md) im Abschnitt „Fordern Sie ein Zugriffstoken mithilfe des Autorisierungscodes an“ beschriebenen Schritte befolgen.
-
-
-<!--HONumber=Feb17_HO2-->
-
 

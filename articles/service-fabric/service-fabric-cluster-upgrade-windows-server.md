@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2016
+ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 386102ad864d580ce280e3530bce428c532a751c
+ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
+ms.openlocfilehash: 217715ad1657582eb35008b765de6d19bd2a8b0b
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -39,7 +40,7 @@ Dazu müssen Sie die Clusterkonfiguration „fabricClusterAutoupgradeEnabled“ 
 > 
 > 
 
-Sie können Ihren Cluster auf die neue Version aktualisieren, nur, wenn Sie eine Knotenkonfiguration Produktions-Format verwenden, der jeden Service Fabric-Knoten auf einem separaten physischen oder virtuellen Computer zugeordnet ist. Wenn Sie einen Entwicklungscluster mit mehreren Service Fabric-Knoten auf einem physischen oder virtuellen Computer haben, müssen Sie Ihren Cluster auflösen und anschließend mit der neuen Version neu erstellen.
+Sie können Ihren Cluster nur auf die neue Version aktualisieren, wenn Sie eine Knotenkonfiguration im Produktionsformat verwenden, bei der jeder Service Fabric-Knoten einem separaten physischen oder virtuellen Computer zugeordnet ist. Wenn Sie einen Entwicklungscluster mit mehreren Service Fabric-Knoten auf einem physischen oder virtuellen Computer haben, müssen Sie Ihren Cluster auflösen und anschließend mit der neuen Version neu erstellen.
 
 Für das Upgrade Ihres Clusters auf die aktuelle oder eine unterstützte Service Fabric-Version gibt es zwei unterschiedliche Workflows. Einen für Cluster, die über eine Verbindung zum automatischen Herunterladen der aktuellen Version verfügen, und der zweite für Cluster, die nicht über eine Verbindung zum Herunterladen der aktuellen Service Fabric-Version verfügen.
 
@@ -124,8 +125,14 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
 ```
 
 #### <a name="cluster-upgrade-workflow"></a>Workflow für das Upgrade des Clusters
-1. Laden Sie die aktuelle Version des Pakets aus dem Dokument [Service Fabric-Cluster für Windows Server erstellen](service-fabric-cluster-creation-for-windows-server.md) herunter. 
-2. Stellen Sie auf einem Computer mit Administratorzugriffsrechten auf alle Computer, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind, eine Verbindung mit dem Cluster her. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein. 
+1. Führen Sie Get-ServiceFabricClusterUpgrade auf einem der Knoten im Cluster aus, und notieren Sie die TargetCodeVersion.
+2. Führen Sie Folgendes auf einem mit dem Internet verbundenen Computer aus, um alle mit der aktuellen Version für das Upgrade kompatiblen Versionen aufzulisten und das entsprechende Paket über die zugehörigen Downloadlinks herunterzuladen.
+   ```powershell
+   
+    ###### Get list of all upgrade compatible packages
+    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1>
+    ```
+3. Stellen Sie auf einem Computer mit Administratorzugriffsrechten auf alle Computer, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind, eine Verbindung mit dem Cluster her. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein. 
    
     ```powershell
    
@@ -140,7 +147,7 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
         -StoreLocation CurrentUser `
         -StoreName My
     ```
-3. Kopieren Sie das heruntergeladene Paket in den Clusterimagespeicher.
+4. Kopieren Sie das heruntergeladene Paket in den Clusterimagespeicher.
    
     ```powershell
    
@@ -152,7 +159,7 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
 
     ```
 
-1. Registrieren Sie das kopierte Paket. 
+5. Registrieren Sie das kopierte Paket. 
    
     ```powershell
    
@@ -163,7 +170,7 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
    
      ```
-2. Starten Sie ein Clusterupgrade auf eine der verfügbaren Versionen. 
+6. Starten Sie ein Clusterupgrade auf eine der verfügbaren Versionen. 
    
     ```Powershell
    
@@ -184,6 +191,24 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
 
 Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte ausführen wie zuvor.
 
+
+## <a name="cluster-configuration-upgrade"></a>Clusterkonfigurationsupgrade
+Führen Sie für ein Upgrade der Clusterkonfiguration Start-ServiceFabricClusterConfigurationUpgrade aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
+
+```powershell
+
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File> 
+
+```
+
+### <a name="cluster-certificate-config-upgrade-pls-hold-on-till-v55-is-released-because-cluster-cert-upgrade-doesnt-work-till-v55"></a>Clusterzertifikatkonfigurations-Upgrade (PLS HOLD ON TILL v5.5 wurde veröffentlicht, da das Clusterzertifikatupgrade erst ab Version&5;.5 funktioniert)
+Das Clusterzertifikat wird für die Authentifizierung zwischen Clusterknoten verwendet. Daher sollte der Zertifikatrollover mit besonderer Vorsicht ausgeführt werden, da Fehler die Kommunikation zwischen den Clusterknoten blockieren könnten.
+Technisch gesehen werden zwei Optionen unterstützt:
+
+1. Einzelnes Zertifikatupgrade: Der Upgradepfad lautet „Zertifikat A (primär) > Zertifikat B (primär) > Zertifikat C (primär) > ...“. 
+2. Doppeltes Zertifikatupgrade: Der Upgradepfad lautet „Zertifikat A (primär) > Zertifikat A (primär) und B (sekundär) > Zertifikat B (primär) > Zertifikat B (primär) und C (sekundär) > Zertifikat C (primär) > ...“.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die Vorgehensweise zum Anpassen einiger [Customize Service Fabric cluster settings and Fabric Upgrade policy](service-fabric-cluster-fabric-settings.md)
 * Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md)
@@ -191,9 +216,4 @@ Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

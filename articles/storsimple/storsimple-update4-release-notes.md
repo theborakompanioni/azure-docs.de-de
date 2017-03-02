@@ -12,11 +12,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/10/2017
+ms.date: 02/16/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: 1d9b020c6175ba8f47cde5cba0f69a1c8c228479
-ms.openlocfilehash: 48d2274fff2fb1300406f48c8d3e772aefa9933f
+ms.sourcegitcommit: a87a4a8b290318bb9fdd1ae0b5fdce00085f59df
+ms.openlocfilehash: 3fe19196ce6af2aeb52bf941ced1892a9a172d87
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,7 +32,7 @@ Update 4 kann auf alle StorSimple-Geräte angewendet werden, auf denen die GA-Ve
 Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Informationen in den Versionsanmerkungen sorgfältig durch.
 
 > [!IMPORTANT]
-> * Update 4 beinhaltet Updates für Gerätesoftware, USM-Firmware, LSI-Treiber und -Firmware, Datenträgerfirmware, Storport und Spaceport, Sicherheit und andere Betriebssysteme. Es dauert ungefähr 1,5-2 Stunden, dieses Update zu installieren. Wir empfehlen Ihnen die Anwendung dieses Updates, um Ihr Gerät auf dem neuesten Stand zu halten. 
+> * Update 4 beinhaltet Updates für Gerätesoftware, USM-Firmware, LSI-Treiber und -Firmware, Datenträgerfirmware, Storport und Spaceport, Sicherheit und andere Betriebssysteme. Es dauert ungefähr 4 Stunden, dieses Update zu installieren. Wir empfehlen Ihnen die Anwendung dieses Updates, um Ihr Gerät auf dem neuesten Stand zu halten. 
 > * Bei neuen Versionen werden Updates möglicherweise nicht sofort angezeigt, da diese in mehreren Phasen bereitgestellt werden. Warten Sie einige Tage, und suchen Sie dann erneut nach Updates, da diese bald verfügbar werden.
 
 ## <a name="whats-new-in-update-4"></a>Neuerungen in Update 4
@@ -91,10 +92,5 @@ Dieses Update gilt nicht für die StorSimple Cloud Appliance (auch bekannt als d
 ## <a name="next-step"></a>Nächster Schritt
 
 Weitere Informationen zum [Installieren von Update 4](storsimple-install-update-4.md) auf Ihrem StorSimple-Gerät.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

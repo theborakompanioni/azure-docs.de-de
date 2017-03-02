@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 6a01f53ce05aa8084f0a18e56714b1790cfce912
-ms.openlocfilehash: d134b91131321f633471893d9c2d5ffa041aa99c
+ms.sourcegitcommit: c1e28c5ad7fd3236899ac0ffe9f3d43241061897
+ms.openlocfilehash: 5f253c3a10e5bfdfa9fe36912b5ebcbc9abae3eb
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -201,10 +202,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
     a. Geben Sie im Textfeld **Name** einen Namen für Ihre Konfiguration ein (z. B. **SAML 2.0**).
 
-    b. Geben Sie im Textfeld **User Field** den Wert **email** oder **user_id** ein, je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird. 
+    b. Geben Sie im Textfeld **User Field** (Benutzerfeld) den Wert **email** oder **user_name** ein, je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird. 
 
     > [!NOTE] 
-    > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im klassischen Azure-Portal zum Abschnitt **ServiceNow > Attribute > Einmaliges Anmelden**, und weisen Sie dem **nameidentifier**-Attribut das gewünschte Feld zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (z.B. Benutzerprinzipalname) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (z.B. user_id) entsprechen.
+    > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im klassischen Azure-Portal zum Abschnitt **ServiceNow > Attribute > Einmaliges Anmelden**, und weisen Sie dem **nameidentifier**-Attribut das gewünschte Feld zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (z.B. Benutzerprinzipalname) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (z.B. user_name) entsprechen.
 
     c. Kopieren Sie im klassischen Azure AD-Portal den Wert für **Identitätsanbieter-ID**, und fügen Sie ihn in das Textfeld **Identity Provider URL** ein.
 
@@ -359,10 +360,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
    
     d. Im Textfeld **Clock Skew** geben Sie **60** ein.
    
-    e. Geben Sie im Textfeld **User Field** den Wert **email** oder **user_id** ein, je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird.
+    e. Geben Sie im Textfeld **User Field** (Benutzerfeld) den Wert **email** oder **user_name** ein, je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird.
    
     > [!NOTE]
-    > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im klassischen Azure-Portal zum Abschnitt **ServiceNow > Attribute > Einmaliges Anmelden**, und weisen Sie dem **nameidentifier**-Attribut das gewünschte Feld zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (z.B. Benutzerprinzipalname) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (z.B. user_id) entsprechen.
+    > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im klassischen Azure-Portal zum Abschnitt **ServiceNow > Attribute > Einmaliges Anmelden**, und weisen Sie dem **nameidentifier**-Attribut das gewünschte Feld zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (z.B. Benutzerprinzipalname) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (z.B. user_name) entsprechen.
     > 
     > 
    
@@ -516,9 +517,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ServiceNow“ klicken, sollten Sie
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

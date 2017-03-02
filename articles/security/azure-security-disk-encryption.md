@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: d86c39ca96633fc84311a4843deee997df9305a6
-ms.openlocfilehash: 692ee9272224369b8d5f892160bc92d5a30c346c
+ms.sourcegitcommit: 1dd5be3ba3a0fbbb4657a2c0b2ca6757a94cc76a
+ms.openlocfilehash: 1c6b4b45b9e0b018a7cb3f28f7868c89ad0fda61
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -44,23 +45,23 @@ Die Azure Disk Encryption-Lösung unterstützt die folgenden Kundenszenarien:
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
-* Integration in Azure Key Vault
-* VMs im Standard-Tarif: [IaaS-VMs der Serien A, D, DS, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Integration in Azure-Schlüsseltresor
+* Virtuelle Computer im Standard-Tarif: [Virtuelle IaaS-Computer der Serien A, D, DS, G, GS usw.](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Aktivieren der Verschlüsselung auf virtuellen Windows- und Linux-IaaS-Computern
-* Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für Windows-IaaS-VMs
-* Deaktivieren der Verschlüsselung auf Datenlaufwerken für Linux-IaaS-VMs
-* Aktivieren der Verschlüsselung auf IaaS-VMs mit dem Windows-Clientbetriebssystem
+* Deaktivieren der Verschlüsselung auf Betriebssystem- und Datenlaufwerken für virtuelle Windows-IaaS-Computer
+* Deaktivieren der Verschlüsselung auf Datenlaufwerken für virtuelle Linux-IaaS-Computer
+* Aktivieren der Verschlüsselung auf virtuellen IaaS-Computern mit dem Windows-Clientbetriebssystem
 * Aktivieren der Verschlüsselung auf Volumes mit Bereitstellungspfaden
-* Aktivieren der Verschlüsselung auf Linux-VMs, die mithilfe von mdadm mit Datenträgerstriping (RAID) konfiguriert sind
-* Aktivieren der Verschlüsselung auf Linux-VMs mit LVM für Datenträger
+* Aktivieren der Verschlüsselung auf virtuellen Linux-Computern, die mithilfe von mdadm mit Datenträgerstriping (RAID) konfiguriert sind
+* Aktivieren der Verschlüsselung auf virtuellen Linux-Computern mit LVM für Datenträger
 * Aktivieren der Verschlüsselung auf virtuellen Windows-Computern, die mithilfe von Speicherplätzen konfiguriert sind
 * Alle öffentlichen Azure-Regionen werden unterstützt.
 
 Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologien:
 
-* IaaS-VMs im Basic-Tarif
-* Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für Linux-IaaS-VMs
-* IaaS-VMs, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
+* IaaS-VMs des Basic-Tarifs
+* Deaktivieren der Verschlüsselung auf Betriebssystemlaufwerken für virtuelle Linux-IaaS-Computer
+* Virtuelle IaaS-Computer, die mithilfe der klassischen Methode zum Erstellen von virtuellen Computern erstellt werden
 * Integration in den lokalen Schlüsselverwaltungsdienst
 * Azure Files (freigegebenes Dateisystem), Netzwerkdateisystem (NFS), dynamische Volumes und Windows-VMs, die mit softwarebasierten RAID-Systemen konfiguriert sind
 
@@ -348,7 +349,7 @@ Mit Azure Disk Encryption werden die Schlüssel und Geheimnisse in Ihrem Azure-S
 #### <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 Verwenden Sie eine der folgenden Optionen, um einen Schlüsseltresor zu erstellen:
 
-* [Resource Manager-Vorlage „101-Create-KeyVault“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-key-vault/azuredeploy.json)
+* [Resource Manager-Vorlage „101-Key-Vault-Create“](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 * [Azure PowerShell-Cmdlets für den Schlüsseltresor](https://msdn.microsoft.com/library/dn868052.aspx)
 * Azure Resource Manager
 
@@ -1227,9 +1228,4 @@ Sie können diese Anleitung aus dem [TechNet-Katalog](https://gallery.technet.mi
 ## <a name="for-more-information"></a>Weitere Informationen
 [Explore Azure Disk Encryption with Azure PowerShell - Part 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 1)  
 [Explore Azure Disk Encryption with Azure PowerShell - Part 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 2)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

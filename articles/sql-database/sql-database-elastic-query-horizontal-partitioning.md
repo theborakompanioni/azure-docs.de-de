@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 8714d6b06a08428835ed1b2d955b8e97fc42f4b3
+ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
+ms.openlocfilehash: c43b34124fd0ccdbe03ce3d336388cbd3b77ad9a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -52,7 +53,7 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
     [;]
 
 > [!NOTE]
-> Stellen Sie sicher, dass der *\<username\>* kein *"@servername"*-Suffix enthält. 
+> Stellen Sie sicher, dass der *\<username\>* kein *@servername*-Suffix enthält. 
 > 
 > 
 
@@ -149,7 +150,7 @@ Benutzer mit Zugriff auf die externe Tabelle erhalten automatisch Zugriff auf di
 Nachdem Sie die externe Datenquelle und die externen Tabellen definiert haben, können Sie jetzt vollständiges T-SQL in den externen Tabellen verwenden.
 
 ## <a name="example-querying-horizontal-partitioned-databases"></a>Beispiel: Abfragen von horizontal partitionierten Datenbanken
-Die folgende Abfrage führt eine Verknüpfung in drei Richtungen zwischen Lagern, Bestellungen und Auftragspositionen aus. Sie nutzt mehrere Aggregate und einen selektiven Filter. Es wird Folgendes vorausgesetzt: 1.) eine horizontale Partitionierung, 2.) dass für Lager, Aufträge und Auftragspositionen ein Sharding anhand der Spalte „warehouse id“ erfolgt ist, und 3.) dass die elastische Abfrage die Verknüpfungen für die Shards anordnen und den aufwendigen Teil der Abfrage in den Shards parallel verarbeiten kann. 
+Die folgende Abfrage führt eine Verknüpfung in drei Richtungen zwischen Lagern, Bestellungen und Auftragspositionen aus. Sie nutzt mehrere Aggregate und einen selektiven Filter. Es wird Folgendes vorausgesetzt:&1;.) eine horizontale Partitionierung,&2;.) dass für Lager, Aufträge und Auftragspositionen ein Sharding anhand der Spalte „warehouse id“ erfolgt ist, und&3;.) dass die elastische Abfrage die Verknüpfungen für die Shards anordnen und den aufwendigen Teil der Abfrage in den Shards parallel verarbeiten kann. 
 
     select  
          w_id as warehouse,
@@ -191,14 +192,16 @@ Verwenden Sie herkömmliche SQL Server-Verbindungszeichenfolgen, um Ihre Anwendu
 * Die elastische Abfrage führt derzeit keine Shardlöschung durch, wenn Prädikate für Shardingschlüssel ein gefahrloses Ausschließen der Verarbeitung bestimmter Shards zulassen würden.
 * Eine elastische Abfrage funktioniert am besten für Abfragen, in denen der größte Teil der Berechnung in den Shards erfolgt. In der Regel erhalten Sie optimale Abfrageleistung mit benutzerdefinierten Filterprädikaten, die in den Shards oder Verknüpfungen über die Partitionierungsschlüssel ausgewertet werden können, die auf partitionsbezogene Weise auf allen Shards ausgeführt werden können. Für andere Abfragemuster müssen möglicherweise große Mengen von Daten aus den Shards auf den Hauptknoten geladen werden, wodurch Leistungseinbußen auftreten.
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## <a name="next-steps"></a>Nächste Schritte
+
+* Eine Übersicht über elastische Abfragen finden Sie unter [Übersicht über elastische Abfragen in Azure SQL-Datenbank](sql-database-elastic-query-overview.md).
+* Ein Tutorial zur vertikalen Partitionierung finden Sie unter [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
+* Die Syntax und Beispiele für Abfragen von vertikal partitionierten Daten finden Sie unter [Abfragen von vertikal partitionierten Daten](sql-database-elastic-query-vertical-partitioning.md).
+* Ein Tutorial zur horizontalen Partitionierung (Sharding) finden Sie unter [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
+* Unter [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) finden Sie eine gespeicherte Prozedur, mit der eine Transact-SQL-Anweisung für eine einzelne Remoteinstanz von Azure SQL-Datenbank oder für eine Gruppe von Datenbanken ausgeführt wird, die als Shards in einem Schema mit horizontaler Partitionierung dienen.
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

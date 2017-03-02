@@ -15,17 +15,13 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: 5dc7bd506060ec04691abae3054fa3514893e953
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 225896e724717a00057be4c708ce485c8b785d45
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
-> [!div class="op_single_selector"]
-> * [Azure-Portal](sql-database-elastic-jobs-create-and-manage.md)
-> * [PowerShell](sql-database-elastic-jobs-powershell.md)
-> 
-> 
 
 Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorschauversion) können Sie eine Gruppe von Datenbanken definieren, für die Skripts ausgeführt werden sollen. In diesem Artikel wird das Erstellen und Verwalten von **Aufträgen für die elastische Datenbank** mithilfe von PowerShell-Cmdlets veranschaulicht. Weitere Informationen finden Sie unter [Übersicht über Aufträge für die elastische Datenbank](sql-database-elastic-jobs-overview.md). 
 
@@ -72,7 +68,7 @@ In der folgenden Tabelle sind alle Objekttypen von **Aufträgen für die elastis
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Anwendung auf Datenebene </a> Paket für die übergreifende Anwendung für Datenbanken.
+    <td>Paket für <a href="https://msdn.microsoft.com/library/ee210546.aspx">Datenebenenanwendungen</a> für die übergreifende Anwendung für Datenbanken.
 
     </td>
     <td>
@@ -649,9 +645,4 @@ Nach der Erstellung eines DACPACs in Aufträge für die elastische Datenbank kan
 [1]: ./media/sql-database-elastic-jobs-powershell/cmd-prompt.png
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

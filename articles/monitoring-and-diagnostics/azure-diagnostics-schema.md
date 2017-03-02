@@ -1,22 +1,23 @@
 ---
 title: "Liste der Konfigurationsschemaversionen für Azure-Diagnose | Microsoft-Dokumentation"
 description: Wird zum Konfigurieren der Erfassung von Leistungsindikatoren in Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric und Cloud Services verwendet.
-services: multiple
+services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/09/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 2e1bc45b55cd79af8579a5ddaf43cf0db019c92f
+ms.sourcegitcommit: ac1ae46a165baad675c6b2445f91e05694eae6f9
+ms.openlocfilehash: 5d0894430dc915fc46d753a0b672de3b51ce3888
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -39,6 +40,10 @@ Azure-Diagnose wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure M
 |2.6               |1.3                         |"|  
 |2.7               |1.4                         |"|  
 |2.8               |1.5                         |"|  
+|2,9               |1.6                         |"|
+|2.96              |1.7                         |"|
+
+
 
  Version 1.0 der Azure-Diagnose wurde zunächst über ein Plug-In-Modell bereitgestellt. Bei der Installation des Azure SDKs haben Sie also auch die Version der Azure-Diagnose erhalten.  
 
@@ -51,10 +56,5 @@ Azure-Diagnose wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure M
 
 [Konfigurationsschema für Diagnoseversion 1.2](azure-diagnostics-schema-1dot2.md)  
 
-[Konfigurationsschema für Diagnoseversionen 1.3 bis 1.5](azure-diagnostics-schema-1dot3-to-1dot5.md)  
-
-
-
-<!--HONumber=Jan17_HO5-->
-
+[Konfigurationsschema für Diagnose 1.3 und höher](azure-diagnostics-schema-1dot3-and-later.md)  
 

@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 translationtype: Human Translation
-ms.sourcegitcommit: ab139ce55ba293526a3ccfb6bcd6cd5838b383f9
-ms.openlocfilehash: 0be5bb571f3d8fe6d5d9fcde2fe64e9147837445
+ms.sourcegitcommit: 6ac9ccd5510c7cdc8748767281965345a5fa0637
+ms.openlocfilehash: 04294bf682ec2e6cf294ebdb686e1fd58e6c58e4
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -45,7 +46,7 @@ Der Azure Linux-Agent ist bereits in den Images im Azure-Katalog vorinstalliert 
 | Debian |Debian 7.9+, 8.2+ |Im Kernel |Paket: Im Repository unter „waagent“  <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Im Kernel |Paket: Im Repository unter „WALinuxAgent“  <br/>Quellcode: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7+, 7.1+ |Im Kernel |Paket: Im Repository unter „WALinuxAgent“  <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES 11 SP4, SLES 12 SP1 oder höher und <p> SLES für SAP |Im Kernel |Paket: Im [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools)-Repository unter „python-azure-agent“ <br/>Quellcode: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES für SAP<br>11 SP4<br>12 SP1 oder höher|Im Kernel |Paket:<p> Für 11 im [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools)-Repository<br>Für 12 im Modul „Public Cloud“ unter „python-azure-agent“ enthalten<br/>Quellcode: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.1+ |Im Kernel |Paket: Im [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools)-Repository unter „python-azure-agent“ <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04, 14.04, 16.04, 16.10 |Im Kernel |Paket: Im Repository unter „WALinuxAgent“  <br/>Quellcode: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
@@ -88,10 +89,5 @@ SUSE Linux Enterprise Server unter Azure ist eine bewährte Plattform, die hervo
 Engineering und Open Community Governance von Canonical steigern den Erfolg von Ubuntu bei Clients, Servern und Cloud Computing, einschließlich persönlicher Clouddienste für Endkunden. Canonicals Vision einer einheitlichen kostenlosen Plattform in Ubuntu, vom Telefon bis hin zur Cloud, mit einer Reihe kohärenter Schnittstellen für Telefon, Tablet, TV und Desktop macht Ubuntu zur ersten Wahl für vielfältige Institutionen – von öffentlichen Cloudanbietern bis hin zu Herstellern von Unterhaltungselektronik – sowie zu einem Favoriten für individuelle Techniker.
 
 Mit Entwicklern und Engineering Centers überall auf der Welt ist Canonical hervorragend positioniert, um Partnerschaften mit Hardwareherstellern, Inhaltsanbietern und Softwareentwicklern einzugehen, um Ubuntu-Lösungen auf den Markt zu bringen – von PCs bis hin zu Servern und portablen Geräten.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

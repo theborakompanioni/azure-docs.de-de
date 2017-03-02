@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: c844eeb0e01422dac468484a8458f243a2afb87d
+ms.sourcegitcommit: 5be82735c0221d14908af9d02500cc42279e325b
+ms.openlocfilehash: e6bf6bd3c905f077841ef166540337a251b91ad1
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -28,9 +29,9 @@ In dieser exemplarischen Vorgehensweise wird HDInsight Spark für das Durchsuche
 * Die Aufgabe zur **binären Klassifizierung** besteht darin, vorherzusagen, ob ein Trinkgeld für eine Fahrt bezahlt wird. 
 * Die Aufgabe zur **Regression** besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldfunktionen vorherzusagen. 
 
-Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Das Thema behandelt einige der gleichen Aspekte wie im Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md). Es ist jedoch dahingehend „erweitert“, dass außerdem die Kreuzvalidierung zusammen mit Hyperparameter-Sweeping verwendet wird, um präzise Klassifizierungs- und Regressionsmodelle optimal zu trainieren. 
+Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Das Thema behandelt einige der gleichen Aspekte wie im Thema [Durchsuchen von Daten und Modellierung mit Spark](machine-learning-data-science-spark-data-exploration-modeling.md). Es ist jedoch dahingehend „erweitert“, dass außerdem die Kreuzvalidierung mit Hyperparameter-Sweeping verwendet wird, um präzise Klassifizierungs- und Regressionsmodelle optimal zu trainieren. 
 
-**Kreuzvalidierung** ist eine Technik, mit der bewertet wird, wie gut ein Modell, das mit einem bekannten Datensatz trainiert wurde, verallgemeinert, um die Features von Datensätzen vorherzusagen, mit denen es nicht trainiert wurde. Der Grundgedanke hinter dieser Technik ist, dass ein Modell mit bekannten Daten trainiert wird und die Genauigkeit seiner Vorhersagen dann mit einem unabhängigen Datensatz geprüft wird. Eine gängige Implementierung besteht darin, den Datensatz k-fach aufzuteilen und das Modell daraufhin im Roundrobin-Verfahren mit allen Teilmengen außer einer zu trainieren. 
+**Kreuzvalidierung** ist eine Technik, mit der bewertet wird, wie gut ein Modell, das mit einem bekannten Datensatz trainiert wurde, verallgemeinert, um die Features von Datensätzen vorherzusagen, mit denen es nicht trainiert wurde.  Eine gängige Implementierung besteht darin, den Datensatz k-fach aufzuteilen und das Modell daraufhin im Roundrobin-Verfahren mit allen Teilmengen außer einer zu trainieren. Die Fähigkeit des Modells zur genauen Vorhersage bei Tests mit dem unabhängigen Dataset in dieser Teilmenge, die nicht zum Trainieren des Modells verwendet wird, wird bewertet.
 
 Die **Hyperparameteroptimierung** besteht in dem Problem, einen Hyperparametersatz für einen Lernalgorithmus auszuwählen, in der Regel um eine Leistungskennzahl des Algorithmus in Bezug auf einen unabhängigen Datensatz zu optimieren. **Hyperparameter** sind Werte, die außerhalb des Trainingsverfahrens des Modells festgelegt werden müssen. Annahmen über diese Werte können sich auf die Flexibilität und Genauigkeit der Modelle auswirken. Entscheidungsstrukturen umfassen Hyperparameter, wie z.B. die gewünschte Tiefe und Anzahl der Blätter in der Struktur. Support Vector Machines (SVMs) erfordern es, Bedingungen für Abzüge bei Fehlklassifikationen festzulegen. 
 
@@ -50,8 +51,16 @@ Beispiele für die Modellierung mit Kreuzvalidierung und Hyperparameter-Sweeping
 > 
 > 
 
-## <a name="prerequisites"></a>Voraussetzungen
-Sie benötigen ein Azure-Konto und HDInsight Spark. Zum Durcharbeiten dieser exemplarischen Vorgehensweise ist ein Cluster vom Typ HDInsight 3.4 Spark 1.6 erforderlich. Anweisungen zum Erfüllen dieser Anforderungen finden Sie im Thema [Übersicht über Data Science mit Spark in Azure HDInsight](machine-learning-data-science-spark-overview.md). Dieses Thema enthält auch eine Beschreibung der hier verwendeten NYC 2013 Taxi-Daten und eine Anleitung zum Ausführen von Code aus einem Jupyter Notebook im Spark-Cluster. Das Notebook **pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb**, das die Codebeispiele in diesem Thema enthält, ist auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) verfügbar.
+## <a name="setup-spark-clusters-and-notebooks"></a>Einrichtung: Spark-Cluster und Notebooks
+Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise beziehen sich auf HDInsight Spark 1.6. Jupyter-Notebooks werden jedoch für HDInsight Spark 1.6- und Spark 2.0-Cluster bereitgestellt. Eine Beschreibung der Notebooks und Links zu diesen finden Sie in der Datei [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) zu dem GitHub-Repository, das sie enthält. Der hier und in den verknüpften Notebooks zu findende Code ist darüber hinaus generisch und sollte in allen Spark-Clustern funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird. Der Einfachheit halber finden Sie hier die Links zu den Jupyter-Notebooks für Spark 1.6 und 2.0, die im PySpark-Kernel der Jupyter-Notebookserver ausgeführt werden:
+
+### <a name="spark-16-notebooks"></a>Spark 1.6-Notebooks
+
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Themen im Notebook 1 sowie zur Modellentwicklung über die Hyperparameteroptimierung und Kreuzvalidierung.
+
+### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
+
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -191,9 +200,7 @@ Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Da
 In diesem Code und den nachfolgenden Codeausschnitten werden SQL-Magic-Befehle verwendet, um das Beispiel abzufragen, und lokale Magic-Befehle, um die Daten in einem Diagramm darzustellen.
 
 * **SQL magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für „sqlContext“. Mit dem Argument (-o VARIABLE_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
-* Der Befehl **`%%local` magic** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dies ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
-
-Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
+* Der Befehl **`%%local` magic** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dies ist der Hauptknoten des HDInsight-Clusters. In der Regel verwenden Sie die `%%local`-Magic, nachdem die `%%sql -o`-Magic zum Ausführen einer Abfrage verwendet wurde. Durch den Parameter „-o“ wird die Ausgabe der SQL-Abfrage lokal gespeichert. Die `%%local`-Magic löst anschließend den nächsten Satz von Codeausschnitten aus, die lokal auf die Ausgabe der SQL-Abfragen angewendet werden, die lokal gespeichert wurde. Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
 
 Mit dieser Abfrage werden die Fahrten nach der Fahrgastanzahl abgerufen. 
 
@@ -298,15 +305,15 @@ In dieser Codezelle wird die SQL-Abfrage verwendet, um drei Diagramme der Daten 
 ## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>Feature Engineering, Transformation und Datenvorbereitung für die Modellierung
 Dieser Abschnitt enthält den Code für die Prozeduren zum Vorbereiten von Daten für die Verwendung in der ML-Modellierung und deren Beschreibung. Hier erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
 
-* Erstellen eines neuen Features durch Diskretisieren von Stunden in Verkehrszeitbuckets
+* Erstellen eines neuen Features durch Aufteilen von Stunden in Verkehrszeitcontainer
 * Indizieren und One-Hot-Codieren von kategorischen Features
 * Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
 * Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
 * Featureskalierung
 * Zwischenspeichern von Objekten im Arbeitsspeicher
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Erstellen eines neuen Features durch Diskretisieren von Stunden in Verkehrszeitbuckets
-Dieser Code zeigt, wie Sie ein neues Feature durch Diskretisieren von Stunden in Verkehrszeitbuckets erstellen und dann den resultierenden Datenrahmen im Arbeitsspeicher zwischenspeichern. Wo robuste verteilte Datasets (Resilient Distributed Datasets, RDDs) und Datenrahmen wiederholt verwendet werden, führt das Zwischenspeichern zu verbesserten Ausführungszeiten. Folglich werden wir RDDs und Datenrahmen in mehreren Phasen der exemplarischen Vorgehensweise zwischenspeichern.
+### <a name="create-a-new-feature-by-partitioning-traffic-times-into-bins"></a>Erstellen eines neuen Features durch Aufteilen von Verkehrszeit in Container
+Dieser Code zeigt, wie Sie ein neues Feature durch Aufteilen von Stunden in Verkehrszeitcontainer erstellen und dann den resultierenden Datenrahmen im Arbeitsspeicher zwischenspeichern. Das Zwischenspeichern führt zu verbesserten Ausführungszeiten, wenn robuste verteilte Datasets (Resilient Distributed Datasets, RDDs) und Datenrahmen wiederholt verwendet werden Folglich werden wir RDDs und Datenrahmen in mehreren Phasen der exemplarischen Vorgehensweise zwischenspeichern.
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -383,7 +390,7 @@ Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
 Time taken to execute above cell: 3.14 seconds
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
-Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als bezeichneten Punktdatentyp und so codieren, dass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer Klassifizierungsmodelle verwendet werden können. Bezeichnete Punktobjekte sind robuste verteilte Datasets (RDD), die in einer Weise formatiert sind, die von den meisten ML-Algorithmen in MLlib als Eingabedaten benötigt wird. Ein [bezeichneter Punkt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) ist ein lokaler Vektor, entweder dicht oder platzsparend, der mit einer Bezeichnung/Antwort verknüpft ist.
+Dieser Abschnitt enthält Code, der zeigt, wie kategorische Textdaten als bezeichneter Punktdatentyp indiziert und codiert werden. Dies dient zur Vorbereitung auf das Trainieren der logistischen MLlib-Regressions- und anderer Klassifizierungsmodelle. Bezeichnete Punktobjekte sind robuste verteilte Datasets (RDD), die in einer Weise formatiert sind, die von den meisten ML-Algorithmen in MLlib als Eingabedaten benötigt wird. Ein [bezeichneter Punkt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) ist ein lokaler Vektor, entweder dicht oder platzsparend, der mit einer Bezeichnung/Antwort verknüpft ist.
 
 Hier ist der Code angegeben, mit dem Textfeatures für die binäre Klassifizierung indiziert und codiert werden.
 
@@ -432,7 +439,7 @@ Hier ist der Code angegeben, mit dem kategorische Textfeatures für die lineare 
 
 
 ### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
-Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier 75 %) und einen Testteil (hier 25 %) zur Klassifizierung und Regressionsmodellierung.
+Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können. Sie können dann dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier&75; %) und einen Testteil (hier&25; %) zur Klassifizierung und Regressionsmodellierung.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -476,7 +483,7 @@ Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verw
 Time taken to execute above cell: 0.31 seconds
 
 ### <a name="feature-scaling"></a>Featureskalierung
-Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.   
+Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (Stochastic Gradient Descent, SGD) bereitgestellt. SGD ist ein beliebter Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z.B. normalisierte Regressionen oder Support Vector Machines (SVM).   
 
 > [!TIP]
 > Wir haben festgestellt, dass der LinearRegressionWithSGD-Algorithmus für die Featureskalierung zu empfindlich ist.   
@@ -563,7 +570,7 @@ Jeder Codeabschnitt zur Modellerstellung ist in Schritte unterteilt:
 Die Kreuzvalidierung mit Parameter-Sweeping kann auf zweierlei Weise ausgeführt werden:
 
 1. Mithilfe von **allgemeinem** benutzerdefiniertem Code, der auf jeden Algorithmus in MLlib und auf alle Parametersätze in einem Algorithmus angewendet werden kann. 
-2. Mithilfe der **PySpark CrossValidator-Pipelinefunktion**. CrossValidator ist zwar praktisch, weist erfahrungsgemäß aber auch einige Beschränkungen für Spark 1.5.0 auf: 
+2. Mithilfe der **PySpark CrossValidator-Pipelinefunktion**. Beachten Sie, dass CrossValidator für Spark 1.5.0 einige Einschränkungen aufweist: 
    
    * Pipelinemodelle können für die zukünftige Verwendung nicht gespeichert/beibehalten werden.
    * Kann nicht für jeden Parameter in einem Modell verwendet werden.
@@ -983,7 +990,7 @@ Area under ROC = 0.985336538462
 Time taken to execute above cell: 28.13 seconds
 
 ## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>Vorhersage von Trinkgeldbeträgen mit Regressionsmodellen (ohne Kreuzvalidierung)
-Dieser Abschnitt zeigt Ihnen die Verwendung von drei Modellen für die Regressionsaufgabe der Vorhersage des Trinkgeldbetrags, der für eine Taxifahrt gezahlt wird, auf der Basis anderer Trinkgeldfeatures. Die präsentierten Modelle sind:
+Dieser Abschnitt zeigt Ihnen die Verwendung von drei Modellen für die Regressionsaufgabe: Vorhersage des Trinkgeldbetrags, der für eine Taxifahrt gezahlt wird, auf der Basis anderer Trinkgeldfeatures. Die präsentierten Modelle sind:
 
 * Normalisierte lineare Regression
 * Random Forest
@@ -1436,10 +1443,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt haben, können Sie jetzt lernen, wie diese Modelle bewertet und evaluiert werden.
 
 **Modellnutzung:** Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Erste Schritte mit der dynamischen Datenmaskierung für SQL-Datenbanken (Azure-Portal)"
-description: "Einstieg in die dynamische Datenmaskierung für SQL-Datenbanken im Azure-Portal"
+title: "Dynamische Datenmaskierung für Azure SQL-Datenbank | Microsoft Docs"
+description: "Die dynamische Datenmaskierung für SQL-Datenbank schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden."
 services: sql-database
 documentationcenter: 
 author: ronitr
@@ -16,22 +16,22 @@ ms.workload: data-services
 ms.date: 11/22/2016
 ms.author: ronitr; ronmat
 translationtype: Human Translation
-ms.sourcegitcommit: e8513a520d4aa012dcc0ee2ee0dd53828886280d
-ms.openlocfilehash: c28f444fcfc7361f02218b7866e15b77769232e5
+ms.sourcegitcommit: 9a61012ad0ff34e5332618a74494fd56f1f1fa57
+ms.openlocfilehash: 241454dfd89378afd8ae44255bd733d814c995d0
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="get-started-with-sql-database-dynamic-data-masking-azure-portal"></a>Erste Schritte mit der dynamischen Datenmaskierung für SQL-Datenbanken (Azure-Portal)
+# <a name="sql-database-dynamic-data-masking"></a>Dynamische Datenmaskierung für SQL-Datenbank
 
-## <a name="overview"></a>Übersicht
-Die dynamische Datenmaskierung für SQL-Datenbanken schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Die dynamische Datenmaskierung wird für die Version V12 von Azure SQL-Datenbank unterstützt.
+Die dynamische Datenmaskierung für SQL-Datenbank schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. 
 
 Die dynamische Datenmaskierung hilft beim Verhindern des unbefugten Zugriffs auf sensible Daten, indem Kunden festlegen dürfen, welcher Anteil der sensiblen Daten mit minimalen Auswirkungen auf die Anwendungsschicht offengelegt wird. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, ohne dass die Daten in der Datenbank geändert werden.
 
 Ein Servicemitarbeiter in einem Callcenter kann Anrufer beispielsweise anhand mehrerer Ziffern ihrer US-Sozialversicherungsnummer oder Kreditkartennummer identifizieren, wobei diese Datenelemente dem Servicemitarbeiter jedoch nicht vollständig angezeigt werden sollen. Es kann eine Maskierungsregel definiert werden, mit der die US-Sozialversicherungsnummer oder Kreditkartennummer im Resultset einer Abfrage bis auf die letzten vier Ziffern ausgeblendet wird. In einem weiteren Beispiel kann eine entsprechende Datenmaske zum Schutz personenbezogener Daten definiert werden, damit ein Entwickler Produktionsumgebungen zu Problembehandlungszwecken abfragen kann, ohne gegen Vorschriften zu verstoßen.
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>Grundlagen der dynamischen Datenmaskierung für SQL-Datenbanken
-Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Vorgangs „Dynamische Datenmaskierung“ auf Ihrem SQL-Datenbank-Konfigurationsblatt oder auf dem Blatt mit den Einstellungen ein.
+## <a name="sql-database-dynamic-data-masking-basics"></a>Grundlagen der dynamischen Datenmaskierung für SQL-Datenbank
+Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Vorgangs „Dynamische Datenmaskierung“ auf dem Konfigurationsblatt oder auf dem Blatt mit den Einstellungen für Ihre SQL-Datenbank-Instanz ein.
 
 ### <a name="dynamic-data-masking-permissions"></a>Berechtigungen für die dynamische Datenmaskierung
 Die dynamische Datenmaskierung kann von den Rollen "Azure-Datenbankadministrator", "Serveradministrator" oder "Sicherheitsbeauftragter" konfiguriert werden.
@@ -55,44 +55,10 @@ Die dynamische Datenmaskierung kann von den Rollen "Azure-Datenbankadministrator
 ### <a name="recommended-fields-to-mask"></a>Empfohlene Felder für die Maskierung
 Vom DDM-Empfehlungsmodul werden bestimmte Felder Ihrer Datenbank als potenzielle Felder mit vertraulichen Daten angegeben, bei denen es sich um gute Kandidaten für die Maskierung handelt. Auf dem Blatt „Dynamische Datenmaskierung“ im Portal werden die empfohlenen Spalten für Ihre Datenbank angezeigt. Sie können einfach für eine oder mehrere Spalten auf **Maske hinzufügen** und dann auf **Speichern** klicken, um eine Maskierung auf diese Felder anzuwenden.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank im Azure-Portal
-1. Rufen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com)auf.
-2. Navigieren Sie zum Blatt mit den Einstellungen der Datenbank mit den sensiblen Daten, die Sie maskieren möchten.
-3. Klicken Sie auf die Kachel **Dynamische Datenmaskierung**, woraufhin das Konfigurationsblatt **Dynamische Datenmaskierung** geöffnet wird.
-   
-   * Alternativ können Sie nach unten zum Abschnitt **Vorgänge** scrollen und auf **Dynamische Datenmaskierung** klicken.
-     
-     ![Navigationsbereich](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
-4. Auf dem Konfigurationsblatt **Dynamische Datenmaskierung** werden ggf. einige Datenbankspalten angezeigt, die vom Empfehlungsmodul für die Maskierung gekennzeichnet wurden. Klicken Sie zum Akzeptieren der Empfehlungen einfach für eine oder mehrere Spalten auf **Maske hinzufügen**. Es wird basierend auf dem Standardtyp der jeweiligen Spalte eine Maskierung erstellt. Sie können die Maskierungsfunktion ändern, indem Sie auf die Maskierungsregel klicken und das Maskierungsfeldformat in ein anderes Format Ihrer Wahl ändern. Klicken Sie auf **Speichern**, um Ihre Einstellungen zu speichern.
-   
-    ![Navigationsbereich](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
-5. Klicken Sie zum Hinzufügen einer Maskierung für eine beliebige Spalte der Datenbank oben auf dem Konfigurationsblatt **Dynamische Datenmaskierung** auf **Maske hinzufügen**, um das Konfigurationsblatt **Maskierungsregel hinzufügen** zu öffnen.
-   
-    ![Navigationsbereich](./media/sql-database-dynamic-data-masking-get-started/6_ddm_add_mask.png)<br/><br/>
-6. Wählen Sie **Schema**, **Tabelle** und **Spalte** aus, um das Feld zu bestimmen, das maskiert werden soll.
-7. Wählen Sie in der Liste der Kategorien für das Maskieren empfindlicher Daten ein **Maskierungsfeldformat** .
-   
-    ![Navigationsbereich](./media/sql-database-dynamic-data-masking-get-started/7_ddm_mask_field_format.png)<br/><br/>        
-8. Klicken Sie auf dem Datenmaskierungsregel-Blatt auf **Speichern** , um die Gruppe von Maskierungsregeln in der Richtlinie für die dynamische Datenmaskierung zu aktualisieren.
-9. Geben Sie die SQL-Benutzer oder AAD-Identitäten ein, die von der Maskierung ausgeschlossen werden sollen und Zugriff auf die vertraulichen Daten ohne Maskierung haben. Hierbei sollte es sich um eine durch Semikolons getrennte Liste mit Benutzern handeln. Beachten Sie, dass Benutzer mit Administratorrechten immer Zugriff auf die Originaldaten ohne Maskierung haben.
-   
-    ![Navigationsbereich](./media/sql-database-dynamic-data-masking-get-started/8_ddm_excluded_users.png)
-   
-   > [!TIP]
-   > Damit die Anwendungsschicht sensible Daten für die privilegierten Anwendungsbenutzer anzeigen kann, fügen Sie den SQL-Benutzer oder die AAD-Identität hinzu, die von der Anwendung zum Abfragen der Datenbank verwendet wird. Es wird ausdrücklich empfohlen, dass diese Liste nur eine minimale Anzahl von privilegierten Benutzern enthält, um die Anzeige sensibler Daten zu minimieren.
-   > 
-   > 
-10. Klicken Sie auf dem Konfigurationsblatt für die Datenmaskierung auf **Speichern** , um die neue oder aktualisierte Maskierungsrichtlinie zu speichern.
-
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank mithilfe von Powershell-Cmdlets
 Siehe [Azure SQL-Datenbank-Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank mithilfe der REST-API
 Siehe [Vorgänge für Azure SQL-Datenbanken](https://msdn.microsoft.com/library/dn505719.aspx).
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

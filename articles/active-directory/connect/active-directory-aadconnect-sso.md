@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/15/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: a268907eea2862ae2d054f30accfd4d771a7d880
-ms.openlocfilehash: ae97e66b8fb0992550c5a4f1f8418c5cb7e496b5
+ms.sourcegitcommit: e208b2bf861d698901b287458a3969e833540e44
+ms.openlocfilehash: f8f67af3cb6adb333924714bd758609b950845af
+ms.lasthandoff: 02/17/2017
 
 ---
 
@@ -68,6 +69,17 @@ Zunächst versucht ein Benutzer, auf eine Ressource zuzugreifen, die von Azure A
 5.    Azure AD entschlüsselt das Kerberos-Ticket mit dem zuvor freigegebenen Schlüssel. Dann gibt Azure AD entweder ein Token an den Benutzer zurück oder fordert den Benutzer auf, zusätzliche Identitätsnachweise z.B. per Multi-Factor Authentication bereitzustellen – je nachdem, was die Ressource erfordert.
 
 Einmaliges Anmelden ist eine opportunistische Funktion, d.h., wenn die Funktion aus irgendeinem Grund nicht verfügbar ist, können Benutzer einfach wie üblich ihr Kennwort auf der Anmeldeseite eingeben.
+
+## <a name="single-sign-on-sso-prerequisites"></a>Voraussetzungen für das einmalige Anmelden (SSO)
+Wenn Sie „Einmaliges Anmelden“ mit „Passthrough-Authentifizierung“ aktivieren, sind neben den Voraussetzungen für die „Passthrough-Authentifizierung“ keine zusätzlichen Voraussetzungen zu erfüllen.
+
+Wenn Sie „Einmaliges Anmelden“ mit „Kennwortsynchronisierung“ aktivieren und es eine Firewall zwischen Azure AD Connect und Azure AD gibt, stellen Sie Folgendes sicher:
+- Der Azure AD Connect-Server kann mit *.msappproxy.net kommunizieren.
+- Azure AD Connect kann über die unten stehenden Ports HTTPS-Anforderungen an Azure AD senden:
+
+|Protocol|Portnummer|Beschreibung
+| --- | --- | ---
+|HTTPS|9090|    Ermöglicht die SSO-Registrierung (nur für den SSO-Registrierungsprozess erforderlich)
 
 ## <a name="enabling-sso-with-pass-through-authentication-or-password-sync"></a>Aktivieren des einmaligen Anmeldens mit Passthrough-Authentifizierung oder Kennwortsynchronisierung
 Azure AD Connect stellt einen einfachen Prozess zum Aktivieren des einmaligen Anmeldens mit Passthrough-Authentifizierung oder Kennwortsynchronisierung bereit. Stellen Sie sicher, dass Sie in jeder zu synchronisierenden Gesamtstruktur in einer Domäne über Domänenadministratorrechte verfügen, um die Konfiguration der Kerberos-Dienstprinzipalnamen im Computerkonto zu ermöglichen. Der Benutzername und das Kennwort werden nicht in Azure AD Connect oder Azure AD gespeichert und nur für diesen Vorgang verwendet.
@@ -132,9 +144,4 @@ Sofern die Erfolgsüberwachung aktiviert ist, wird jedes Mal, wenn sich ein Benu
       </Query>
     </QueryList>
 ```
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

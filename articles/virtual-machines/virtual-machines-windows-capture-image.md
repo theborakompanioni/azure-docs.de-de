@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 02/15/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 45a45b616b4de005da66562c69eef83f2f48cc79
-ms.openlocfilehash: dc0753faefa59eef42046e0297a58276db086d18
+ms.sourcegitcommit: 7d3b927a1dc111c54efadadac469cf070596dd43
+ms.openlocfilehash: 9e4f80be051b9de05e9bb890259116071dba59c0
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: dc0753faefa59eef42046e0297a58276db086d18
 In diesem Artikel wird gezeigt, wie Sie Azure PowerShell zum Erstellen eines Image von einem generalisierten virtuellen Azure-Computer verwenden. Sie können das Image dann nutzen, um eine andere VM zu erstellen. Das Image umfasst den Betriebssystemdatenträger und die an den virtuellen Computer angefügten Datenträger. Das Image enthält nicht die Ressourcen des virtuellen Netzwerks. Sie müssen diese Ressourcen also einrichten, wenn Sie die neue VM erstellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Sie müssen [die VM bereits generalisiert haben](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Beim Generalisieren einer VM werden u.a. alle persönlichen Kontoinformationen entfernt, und der Computer wird für die Verwendung als Image vorbereitet.
+* Sie müssen [die VM bereits generalisiert haben](virtual-machines-windows-generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Beim Generalisieren einer VM werden u.a. alle persönlichen Kontoinformationen entfernt, und der Computer wird für die Verwendung als Image vorbereitet. Sie können auch einen virtuellen Linux-Computer unter Verwendung von `sudo waagent -deprovision+user` generalisieren und dann mithilfe von PowerShell erfassen. Informationen zur Verwendung der Befehlszeilenschnittstelle zum Erfassen eines virtuellen Computers finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-capture-image.md).
 * Hierfür muss Azure PowerShell Version 1.0.x oder höher installiert sein. Wenn Sie PowerShell noch nicht installiert haben, finden Sie die Installationsschritte unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) .
 
 ## <a name="log-in-to-azure-powershell"></a>Anmelden an Azure PowerShell
@@ -82,10 +83,5 @@ In diesem Artikel wird gezeigt, wie Sie Azure PowerShell zum Erstellen eines Ima
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Jetzt können Sie [eine VM aus dem Image erstellen](virtual-machines-windows-create-vm-generalized.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/02/2016
+ms.date: 02/14/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: e8daf6f37cbbdf1c33d8b66a2b8719458e8bd9f9
-ms.openlocfilehash: 7886f7e7fcf22d38c45e369761730c076ad96d75
+ms.sourcegitcommit: c800f6e7b6bd1e17165146f981e32a8cbb251e3c
+ms.openlocfilehash: 1ef09170f9d5dd28005f70913df2c945f8e4ac12
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -86,7 +87,7 @@ Das Auswählen keiner Werte einer bestimmten Eigenschaft hat dieselbe Wirkung wi
 ### <a name="narrow-your-search"></a>Eingrenzen der Suche
 Beachten Sie, dass die Zahlen rechts neben den Filterwerten anzeigen, wie viele Vorkommen es in der aktuell gefilterten Gruppe gibt. 
 
-In diesem Beispiel ist es klar, dass die Anforderung „Rpt/Employees“ die Mehrzahl der 500-er Fehler ausmacht:
+In diesem Beispiel ist es klar, dass die Anforderung „Rpt/Employees“ die Mehrzahl der&500;-er Fehler ausmacht:
 
 ![Erweitern Sie eine Eigenschaft, und wählen Sie einen Wert](./media/app-insights-diagnostic-search/04-failingReq.png)
 
@@ -137,7 +138,7 @@ Wenn die Anwendung viele Telemetriedaten generiert (und Sie die ASP.NET SDK-Vers
 
 
 ## <a name="create-work-item"></a>Erstellen eines Arbeitselements
-Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in Visual Studio Team Services erstellen. 
+Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in GitHub oder Visual Studio Team Services erstellen. 
 
 ![Klicken Sie auf „Neues Arbeitselement“, bearbeiten Sie die Felder, und klicken Sie dann auf „OK“.](./media/app-insights-diagnostic-search/42.png)
 
@@ -145,7 +146,7 @@ Wenn Sie diesen Vorgang zum ersten Mal ausführen, werden Sie aufgefordert, eine
 
 ![Geben Sie die URL Ihres Team Services-Servers und den Projektnamen ein, und klicken Sie auf „Autorisieren“.](./media/app-insights-diagnostic-search/41.png)
 
-(Sie können auch über „Einstellungen“ > „Arbeitselemente“ auf das Konfigurationsblatt zugreifen.)
+(Sie können den Link auch auf dem Blatt „Arbeitsaufgaben“ konfigurieren.)
 
 ## <a name="save-your-search"></a>Speichern der Suche
 Wenn Sie alle gewünschten Filter festgelegt haben, können Sie die Suche als Favoriten speichern. Wenn Sie mit einem Organisationskonto arbeiten, können Sie wählen, ob Sie sie für andere Teammitglieder freigeben.
@@ -168,7 +169,8 @@ Neben der standardmäßig vom Application Insights SDK gesendeten Telemetriedate
 
 ## <a name="a-namequestionsaq--a"></a><a name="questions"></a>FRAGEN UND ANTWORTEN
 ### <a name="a-namelimitsahow-much-data-is-retained"></a><a name="limits"></a>Wie viele Daten werden beibehalten?
-Bis zu 500 Ereignisse pro Sekunde für jede Anwendung. Ereignisse werden sieben Tage lang aufbewahrt.
+
+Entsprechende Informationen finden Sie unter [Zusammenfassung der Grenzwerte](app-insights-pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Wie kann ich die POST-Daten in meinen Serveranforderungen anzeigen?
 POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrace oder Protokollaufrufe](app-insights-search-diagnostic-logs.md) verwenden. Fügen Sie die POST-Daten in den "message"-Parameter ein. Sie können nicht anhand der Nachricht wie anhand von Eigenschaften filtern, aber dafür ist der Größengrenzwert höher.
@@ -178,9 +180,4 @@ POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrac
 * [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](app-insights-search-diagnostic-logs.md)
 * [Einrichten von Tests der Verfügbarkeit und Reaktionsfähigkeit](app-insights-monitor-web-app-availability.md)
 * [Problembehandlung](app-insights-troubleshoot-faq.md)
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

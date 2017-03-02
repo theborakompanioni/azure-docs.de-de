@@ -1,6 +1,6 @@
 ---
 title: Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft Docs
-description: "Übersicht über die beiden Arten der Kompilierung von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands): im Azure-Portal und mit Windows PowerShell. "
+description: "In diesem Artikel wird das Kompilieren von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands) für Azure Automation beschrieben."
 services: automation
 documentationcenter: na
 author: eslesar
@@ -11,18 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
-ms.date: 12/13/2016
-ms.author: eslesar
+ms.date: 02/07/2017
+ms.author: magoedte; eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: 30c93d801c68e24b45f5fbc119724e0a18076a13
+ms.sourcegitcommit: 146fe63ba2c9efd8b734eb8cc8cb5dee82a94f2a
+ms.openlocfilehash: 97757f2cc78dc02f4efdcb3c09cee7741504448b
+ms.lasthandoff: 02/21/2017
 
 ---
+
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilieren von Konfigurationen in Azure Automation DSC
 
 Sie können DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands) in Azure Automation auf zwei Arten kompilieren: im Azure-Portal und mit Windows PowerShell. Die folgenden Informationen helfen bei der Entscheidung, welche Methode sich in welcher Situation am besten eignet:
 
-### <a name="azure-preview-portal"></a>Azure-Vorschauportal
+### <a name="azure-portal"></a>Azure-Portal
 
 * Einfachste Methode mit interaktiver Benutzeroberfläche
 * Formular zum Bereitstellen von einfachen Parameterwerten
@@ -43,7 +45,7 @@ Wenn Sie sich für eine Kompilierungsmethode entschieden haben, folgen Sie dem j
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Kompilieren einer DSC-Konfiguration mit dem Azure-Portal
 
-1. Klicken Sie in Ihrem Automation-Konto auf **Konfigurationen**.
+1. Klicken Sie in Ihrem Automation-Konto auf **DSC-Konfigurationen**.
 2. Klicken Sie auf eine Konfiguration, um das zugehörige Blatt zu öffnen.
 3. Klicken Sie auf **Kompilieren**.
 4. Wenn die Konfiguration keine Parameter enthält, werden Sie dazu aufgefordert, zu bestätigen, dass Sie die Konfiguration kompilieren möchten. Wenn die Konfiguration Parameter enthält, wird das Blatt **Konfiguration kompilieren** geöffnet, auf dem Sie Parameterwerte angeben können. Weitere Informationen zu Parametern finden Sie im Abschnitt [**Grundlegende Parameter**](#basic-parameters) weiter unten.
@@ -204,7 +206,7 @@ Das folgende Beispiel zeigt eine DSC-Konfiguration, die ein Automation-Anmeldein
 ```powershell
 Configuration CredentialSample
 {
-    $Cred = Get-AzureRmAutomationCredential -Name "SomeCredentialAsset"
+    $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAcct" -Name "SomeCredentialAsset"
 
     Node $AllNodes.NodeName
     {
@@ -239,8 +241,39 @@ $ConfigData = @{
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 ```
 
+## <a name="importing-node-configurations"></a>Importieren von Knotenkonfigurationen
+
+Sie können auch Knotenkonfigurationen (MOF-Dateien) importieren, die Sie außerhalb von Azure kompiliert haben. Ein Vorteil besteht darin, dass diese Knotenkonfigurationen signiert werden können.
+Eine signierte Knotenkonfiguration wird lokal vom DSC-Agent auf einem verwalteten Knoten überprüft, um sicherzustellen, dass die auf den Knoten angewendete Konfiguration von einer autorisierten Quelle stammt.
+
+> [!NOTE]
+> Sie können signierte Konfigurationen in Ihr Azure Automation-Konto importieren, Azure Automation unterstützt aber derzeit nicht das Kompilieren von signierten Konfigurationen.
+
+> [!NOTE]
+> Knotenkonfigurationsdateien dürfen nicht größer als 1 MB sein, damit sie in Azure Automation importiert werden können.
+
+Informationen zum Signieren von Knotenkonfigurationen finden Sie unter https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
+
+### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Importieren von Knotenkonfigurationen im Azure-Portal
+
+1. Klicken Sie in Ihrem Automation-Konto auf **DSC-Knotenkonfigurationen**.
+
+    ![DSC-Knotenkonfigurationen](./media/automation-dsc-compile/node-config.png)
+2. Klicken Sie auf dem Blatt **DSC-Knotenkonfigurationen** auf **Knotenkonfiguration hinzufügen**.
+3. Klicken Sie auf dem Blatt **Importieren** auf das Ordnersymbol neben dem Textfeld **Knotenkonfigurationsdatei**, um eine Knotenkonfigurationsdatei (MOF) auf dem lokalen Computer zu suchen.
+
+    ![Suchen einer lokalen Datei](./media/automation-dsc-compile/import-browse.png)
+4. Geben Sie im Textfeld **Konfigurationsname** einen Namen ein. Dieser Name muss mit dem Namen der Konfiguration übereinstimmen, aus der die Knotenkonfiguration kompiliert wurde.
+5. Klicken Sie auf **OK**.
+
+### <a name="importing-a-node-configuration-with-powershell"></a>Importieren einer Knotenkonfiguration mit PowerShell
+
+Sie können das Cmdlet [Import-AzureRmAutomationDscNodeConfiguration](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.automation/v1.0.12/import-azurermautomationdscnodeconfiguration) verwenden, um eine Knotenkonfiguration in Ihr Automation-Konto zu importieren.
+
+```powershell
+Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"
+```
 
 
-<!--HONumber=Dec16_HO2-->
 
 

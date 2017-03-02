@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/18/2016
+ms.date: 02/27/2016
 ms.author: owend
 translationtype: Human Translation
-ms.sourcegitcommit: 8725687a5700df72026f9154659758b9280872f4
-ms.openlocfilehash: 35247a68588ab8593c40ed0d62f37062350f9aec
+ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
+ms.openlocfilehash: 039ed6f4be9f3e0f6b92e5a9f11e12392912df9d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -79,14 +80,17 @@ In diesem Beispiel werden der Rolle „Benutzer“ die SalesBI-Datenbank ein Ben
 }
 ```
 
+## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+
+Abonnementadministratoren können **Access Control** auf dem Blatt „Steuerung“ verwenden, um Rollen zu konfigurieren. Dies ist nicht identisch mit Serveradministratoren oder Datenbankbenutzern, die wie oben beschrieben auf Server- oder Datenbankebene konfiguriert werden. 
+
+![Access Control im Azure-Portal](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
+
+Rollen gelten für Benutzer oder Konten, die sie zum Ausführen von Aufgaben im Portal oder mithilfe von Azure Resource Manager-Vorlagen benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie auf dem Server noch kein tabellarisches Modell bereitgestellt haben, ist jetzt ein guter Zeitpunkt dafür. Weitere Informationen finden Sie unter [Deploy to Azure Analysis Services](analysis-services-deploy.md) (Bereitstellen in Azure Analysis Services, in englischer Sprache).
 
 Wenn Sie ein Modell auf dem Server bereitgestellt haben, können Sie mithilfe eines Clients oder Browsers eine Verbindung mit diesem herstellen. Weitere Informationen finden Sie unter [Get data from Azure Analysis Services](analysis-services-connect.md) (Abrufen von Daten aus Azure Analysis Services, in englischer Sprache).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

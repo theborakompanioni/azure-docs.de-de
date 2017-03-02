@@ -16,8 +16,9 @@ ms.workload: identity
 ms.date: 01/19/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 89d32955506afdfb9c45c5b0ce3d38d40f012e72
-ms.openlocfilehash: 570a0f0a0c0932a00bbe92b1e137951ceffcd660
+ms.sourcegitcommit: 4dad4bd824f199562cb972c98cfcb452f2823828
+ms.openlocfilehash: b85b10b9504c5efa7ec05b92b544ad777e3abacc
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -167,6 +168,26 @@ Nein, Sie können Exchange ActiveSync derzeit nicht in einer Richtlinie für den
 Derzeit wird der Benutzer unabhängig vom Gerät zur mehrstufigen Authentifizierung aufgefordert.
 
 
+## <a name="what-you-should-avoid-doing"></a>Das sollten Sie vermeiden
+
+Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Konfiguration. Mehr Flexibilität bedeutet jedoch auch, dass Sie jede Konfigurationsrichtlinie vor dem Freigeben sorgfältig prüfen sollten, um unerwünschte Ergebnisse zu vermeiden. Achten Sie in diesem Fall besonders auf Zuweisungen, die sich auf komplette Sätze auswirken, z.B. **alle Benutzer/Gruppen/Cloud-Apps**.
+
+Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
+
+
+**Für alle Benutzer, alle Cloud-Apps:**
+
+- **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
+
+- **Erfordert kompatibles Gerät:** Für Benutzer, die ihre Geräte noch nicht registriert haben, blockiert diese Richtlinie den gesamten Zugriff, einschließlich des Zugriffs auf das Intune-Portal. Wenn Sie ein Administrator ohne registriertes Gerät sind, verhindert diese Richtlinie auch, dass Sie in das Azure-Portal zurückkehren und die Richtlinie ändern können.
+
+- **Erfordert Domänenbeitritt:** Diese Richtlinie blockiert potenziell den Zugriff für alle Benutzer in Ihrer Organisation, wenn Sie noch nicht über in die Domäne eingebundene Geräte verfügen.
+ 
+
+**Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:** 
+
+- **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
+
 
 ## <a name="common-scenarios"></a>Gängige Szenarien
 
@@ -193,9 +214,4 @@ Viele Intune-Kunden nutzen den bedingten Zugriff, um sicherzustellen, dass nur v
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, helfen Ihnen die Informationen unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) weiter.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

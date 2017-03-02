@@ -1,6 +1,6 @@
 ---
-title: "Auflisten von Aufträgen im Azure Import/Export-Dienst | Microsoft Docs"
-description: "Informationen zum Auflisten aller Aufträge des Azure Import/Export-Diensts in einem Abonnement."
+title: "Auflisten aller Azure Import/Export-Aufträge | Microsoft Docs"
+description: "Erfahren Sie, wie Sie alle Aufträge des Azure Import/Export-Diensts in einem Abonnement auflisten."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 65d8912c4eced92206ee1262f3e3307b3162cbd6
+ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
+ms.openlocfilehash: 5bbe99110b86cb15d23eadc48c1ea45bbab13daf
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="enumerating-jobs"></a>Auflisten von Aufträgen
+# <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Auflisten von Aufträgen im Azure Import/Export-Dienst
 Rufen Sie den Vorgang [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) auf, um alle Aufträge in einem Abonnement aufzulisten. `List Jobs` gibt eine Liste der Aufträge sowie die folgenden Attribute zurück:
 
 -   Typ des Auftrags (Import oder Export)
@@ -32,9 +33,4 @@ Rufen Sie den Vorgang [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) 
 
 ## <a name="see-also"></a>Weitere Informationen
  [Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

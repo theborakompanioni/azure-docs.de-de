@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure-Abonnements und Diensteinschränkungen, Kontingente und Einschränkungen"
+title: "Grenzwerte und Kontingente für Azure-Abonnements | Microsoft-Dokumentation"
 description: "Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dies umfasst Informationen zum Erhöhen von Einschränkungen und Höchstwerten."
 services: 
 documentationcenter: 
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 02/17/2017
 ms.author: byvinyal
 translationtype: Human Translation
-ms.sourcegitcommit: 18c8997d8ee77c9c3005aa765a64ae82dce8c70c
-ms.openlocfilehash: fc519c242b2676e20c1b19bfb2b5edae73b0b926
+ms.sourcegitcommit: 4e37d976ab7616674ff4b41111bfe7000444ca54
+ms.openlocfilehash: 2ff41f4a93b0cc7f104fe4703f5b031cfb3252e1
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -60,11 +61,13 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Cloud Services](#cloud-services-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
+* [Data Lake Store](#data-lake-store-limits)
 * [DNS](#dns-limits)
 * [DocumentDB](#documentdb-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Schlüsseltresor](#key-vault-limits)
+* [Log Analytics/Operational Insights](#log-analytics-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
@@ -72,7 +75,6 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [Netzwerk](#networking-limits)
 * [Notification Hubs-Dienst](#notification-hub-service-limits)
-* [Operational Insights](#operational-insights-limits)
 * [Ressourcengruppe](#resource-group-limits)
 * [Scheduler](#scheduler-limits)
 * [Suchen,](#search-limits)
@@ -130,20 +132,23 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 
 ### <a name="storage-limits"></a>Speichergrenzwerte
 Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage/storage-scalability-targets.md).
-
+<!--like # storage accts --> 
 #### <a name="storage-service-limits"></a>Grenzwerte für den Speicherdienst
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-#### <a name="virtual-machine-disk-limits"></a>Grenzwerte für Datenträger virtueller Computer
+<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+#### <a name="virtual-machine-disk-limits"></a>Grenzwerte für Datenträger virtueller Computer 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
 Weitere Informationen finden Sie unter [Größen virtueller Computer](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
-**Standardspeicherkonten**
+#### <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
+
+[!INCLUDE [azure-storage-limits-vm-disks-managed](../includes/azure-storage-limits-vm-disks-managed.md)]
+
+#### <a name="unmanaged-virtual-machine-disks"></a>Nicht verwaltete VM-Datenträger
 
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
-
-**Storage Premium-Konten**
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
@@ -170,7 +175,7 @@ In der folgende Tabelle werden die Grenzwerte für Azure Biztalk Services aufgef
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="documentdb-limits"></a>DocumentDB-Grenzwerte
-DocumentDB ist eine Datenbank für globale Skalierung, in der Durchsatz und Speicher je nach den Anforderungen Ihrer Anwendung skaliert werden können. Wenn Sie Fragen zur Staffelung von DocumentDB haben, senden Sie eine E-Mail an askdocdb@microsoft.com.
+DocumentDB ist eine Datenbank für globale Skalierung, in der Durchsatz und Speicher je nach den Anforderungen Ihrer Anwendung skaliert werden können. Wenn Sie Fragen zur Skalierung von DocumentDB haben, senden Sie eine E-Mail an askdocdb@microsoft.com.
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement-Grenzwerte
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
@@ -222,6 +227,9 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 ### <a name="data-lake-analytics-limits"></a>Grenzwerte für Data Lake Analytics
 [!INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
+### <a name="data-lake-store-limits"></a>Grenzwerte für Data Lake Store
+[!INCLUDE [azure-data-lake-store-limits](../includes/azure-data-lake-store-limits.md)]
+
 ### <a name="stream-analytics-limits"></a>Stream Analytics-Grenzwerte
 [!INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
@@ -234,7 +242,7 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 ### <a name="storsimple-system-limits"></a>StorSimple-Systemgrenzwerte
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
-### <a name="operational-insights-limits"></a>Operational Insights-Grenzwerte
+### <a name="log-analytics-limits"></a>Log Analytics-Grenzwerte
 [!INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
 
 ### <a name="backup-limits"></a>Backup-Grenzwerte
@@ -270,10 +278,5 @@ Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkung
 [Größen virtueller Computer und Clouddienste für Azure](virtual-machines/virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Größen für Cloud Services](cloud-services/cloud-services-sizes-specs.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 

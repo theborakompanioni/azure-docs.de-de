@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: a560aa9cc6c70fd3827f649627466c9071b8ab8b
-ms.openlocfilehash: 39a882a8338ce820c6b9b98f58d1a9db7448c7be
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: 7999398f69ed0ce5129dd38f8e9e1994db25f9a5
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -47,7 +48,7 @@ Advisor ermittelt SQL Server-Instanzen, die vom Erstellen von Pools für elastis
 3. Klicken Sie auf dem Advisor-Dashboard auf die Registerkarte **Kosten**, wählen Sie das Abonnement aus, für das Sie Empfehlungen erhalten möchten, und klicken Sie dann auf **Empfehlungen abrufen**
 
 > [!NOTE]
-> Azure Advisor generiert Empfehlungen für Abonnements, in denen Ihnen die Rolle **Besitzer**, **Mitwirkender** oder **Leser** zugewiesen ist.
+> Für den Zugriff auf die Empfehlungen von Ratgeber müssen Sie Ihr Abonnement zunächst bei Ratgeber **registrieren**. Ein Abonnement wird registriert, wenn ein **Abonnementbesitzer** das Ratgeber-Dashboard startet und auf die Schaltfläche **Abrufen von Empfehlungen** klickt. Dies ist eine **einmalige Aufgabe**. Sobald ein Abonnement registriert wurde, können **Besitzer**, **Mitwirkende** oder **Leser** eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Empfehlungen von Ratgeber zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -57,9 +58,4 @@ Weitere Informationen zu Advisor-Empfehlungen finden Sie in den folgenden Ressou
 -  [Advisor-Empfehlungen für hohe Verfügbarkeit](advisor-cost-recommendations.md)
 -  [Advisor-Empfehlungen zur Sicherheit](advisor-cost-recommendations.md)
 -  [Advisor-Empfehlungen zur Leistung](advisor-cost-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

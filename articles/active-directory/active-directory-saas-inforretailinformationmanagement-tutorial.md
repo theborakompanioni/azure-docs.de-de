@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2017
+ms.date: 02/06/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 9ab2950715850d0c2ee0f398cd44399a5974c1a9
-ms.openlocfilehash: 6a9f414334f4dc078a3c47dac0c71bbf9f2c4158
+ms.sourcegitcommit: ad9c78483af88a85a1b790269231683155760d76
+ms.openlocfilehash: aef560c2b05a80c59743c4cc6d68d6d2c14bdc3f
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -93,7 +94,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Infor Ret
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Infor Retail – Information Management-Testbenutzers](#creating-an-infor-retail---information-management-user)**, um eine Entsprechung von Britta Simon bei Infor Retail – Information Management zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines Infor Retail – Information Management-Testbenutzers](#creating-an-infor-retail---information-management-test-user)**, um eine Entsprechung von Britta Simon bei Infor Retail – Information Management zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -115,9 +116,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden für Azure AD im Azure
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_02.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: `http://<company name>.mingle.infor.com`.
+    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<company name>.mingle.infor.com`
     
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `http://<company name>.mingle.infor.com:443/sp/ACS.saml2`.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<company name>.mingle.infor.com/sp/ACS.saml2`
     
 4. Führen Sie im Abschnitt **Domäne und URLs für Infor Retail – Information Management** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
     
@@ -125,20 +126,20 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden für Azure AD im Azure
 
     a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
 
-    b. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: `https://<company name>.mingle.infor.com/<company code>`.
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.mingle.infor.com/<company code>`
 
     > [!NOTE] 
-    > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit der tatsächlichen Anmelde-URL, dem Bezeichner und der Antwort-URL aktualisieren. Wenden Sie sich an [Support-Team von Infor Retail – Information Management](http://www.infor.com/contact/), um diese Werte zu erhalten.
+    > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL ersetzen. Wenden Sie sich an das [Supportteam von Infor Retail – Information Management](mailto:innovate@infor.com), um diese Werte zu erhalten.
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_04.png)   
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_04.png)     
 
 6. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_300.png)
 
-7. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
+7. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_05.png)
 
@@ -146,11 +147,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden für Azure AD im Azure
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_400.png)
 
-9. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+9. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_06.png) 
 
-10. Wenden Sie sich an das [Supportteam von Infor Retail – Information Management](http://www.infor.com/contact/), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladenen **Metadaten** bereit.
+10. Wenden Sie sich an das [Supportteam von Infor Retail – Information Management](mailto:innovate@infor.com), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie die heruntergeladenen **Metadaten** bereit.
   
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -188,7 +189,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
 ### <a name="creating-an-infor-retail--information-management-test-user"></a>Erstellen eines Testbenutzers in Infor Retail – Information Management
 
-In diesem Abschnitt erstellen Sie eine Benutzerin namens Britta Simon in Infor Retail – Information Management. Fügen Sie mit dem [Supportteam von Infor Retail – Information Management](http://www.infor.com/contact/) die Benutzer zur Infor Retail – Information Management-Plattform hinzu.
+In diesem Abschnitt erstellen Sie eine Benutzerin namens Britta Simon in Infor Retail – Information Management. Fügen Sie mit dem [Supportteam von Infor Retail – Information Management](mailto:innovate@infor.com) die Benutzer zur Infor Retail – Information Management-Plattform hinzu.
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
@@ -250,8 +251,3 @@ Wenn Sie auf die Kachel „Infor Retail – Information Management“ im Zugriff
 [201]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-inforretailinformationmanagement-tutorial/tutorial_general_203.png
-
-
-<!--HONumber=Jan17_HO3-->
-
-

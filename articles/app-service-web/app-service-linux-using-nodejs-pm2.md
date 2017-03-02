@@ -5,7 +5,7 @@ keywords: Azure App Service, Web-App, Nodejs, PM2, Linux, OSS
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: fb420f32-6d74-49c7-992f-0ed5616e66e7
 ms.service: app-service
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a46f52198e956406c2384c45ed4323aff27259a0
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: c4af07e79ae066f916c15aa239cb5dfdd3fef2a8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ Wenn Sie für Web-Apps unter Linux als Anwendungsstapel „Node.js“ festlegen,
 
 ![Festlegen einer Node.js-Startdatei][1]
 
-Dadurch können Sie eine der folgenden Aufgaben ausführen:
+Mithilfe dieser Option können Sie eine der folgenden Aufgaben ausführen:
 
 * Angeben des Startskripts für Ihre Node.js-App (Beispiel: /bin/server.js)
 * Angeben der PM2-Konfigurationsdatei, die für Ihre Node.js-App verwendet werden soll (Beispiel: /foo/process.json)
@@ -60,13 +61,9 @@ Wichtige Hinweise zu dieser Konfiguration:
 * Bei „watch_options“ müssen Sie aufgrund der Bereitstellung des Anwendungsinhalts für „usePolling“ derzeit „true“ angeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Was ist App Service unter Linux](app-service-linux-intro.md)
+* [Was ist App Service unter Linux?](app-service-linux-intro.md)
+* [Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux](app-service-linux-faq.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-nodejs-pm2/nodejs-startup-file.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

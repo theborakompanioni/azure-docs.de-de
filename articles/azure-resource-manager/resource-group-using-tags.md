@@ -12,11 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/15/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: ec80273fd388a435bc0aee9cb2dd49df12535923
-ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
+ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
+ms.openlocfilehash: 2f56314769d90a1f0f9ebb5ece9c8e54b23b8936
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -28,6 +29,10 @@ ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
 > 
 > 
 
+## <a name="ensure-tag-consistency-with-policies"></a>Sicherstellen der Tagkonsistenz mit Richtlinien
+
+Mithilfe von Ressourcenrichtlinien können Sie Standardregeln für Ihre Organisation erstellen. Sie können Richtlinien erstellen, mit denen sichergestellt wird, dass Ressourcen durch die entsprechenden Werte gekennzeichnet werden. Weitere Informationen finden Sie unter [Anwenden von Ressourcenrichtlinien für Tags](resource-manager-policy-tags.md).
+
 ## <a name="templates"></a>Vorlagen
 
 [!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
@@ -38,9 +43,9 @@ ms.openlocfilehash: c5270c56ab6d0a4f200b0707554705d3b7855d32
 ## <a name="powershell"></a>PowerShell
 [!INCLUDE [resource-manager-tag-resources-powershell](../../includes/resource-manager-tag-resources-powershell.md)]
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+## <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Mit Azure CLI 2.0 (Vorschau) können Sie Ressourcen und Ressourcengruppen Tags hinzufügen und Ressourcen anhand von Tag-Werten abfragen.
+Mit Azure CLI 2.0 können Sie Ressourcen und Ressourcengruppen Tags hinzufügen und Ressourcen anhand von Tagwerten abfragen.
 
 Wenn Sie Tags auf eine Ressource oder Ressourcengruppe anwenden, werden die bereits vorhandenen Tags für diese Ressource oder Ressourcengruppe überschrieben. Daher müssen Sie Ihre Vorgehensweise darauf abstimmen, ob für die Ressource oder Ressourcengruppe bereits Tags vorhanden sind, die Sie beibehalten möchten. Mögliche Szenarien:
 
@@ -110,10 +115,5 @@ Wenn Sie die CSV-Nutzungsdatei für Dienste herunterladen, die die Verwendung vo
 * Eine Einführung zur Verwendung der Azure-Befehlszeilenschnittstelle für das Bereitstellen von Ressourcen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](xplat-cli-azure-resource-manager.md).
 * Eine Einführung zum Verwenden des Portals finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](resource-group-portal.md)  
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

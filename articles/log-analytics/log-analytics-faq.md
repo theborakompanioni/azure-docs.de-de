@@ -1,6 +1,6 @@
 ---
 title: "Häufig gestellte Fragen zu Log Analytics | Microsoft Docs"
-description: "Antworten auf häufig gestellte Fragen zum Log Analytics-Dienst."
+description: "Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e24e6f9cc383be77dc631a0dd67db099906dccc0
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: 4695669dc20b4b4b90ccdaf4db06df2cfcba2167
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -90,6 +91,13 @@ Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme bei der Kommunikation mi
 A: Entfernen Sie in SCOM den Computer aus der von OMS verwalteten Liste. Dadurch wird die gesamte Kommunikation über SCOM für diesen Agent beendet. Bei Agents, die direkt mit OMS verbunden sind, können Sie die Kommunikation mit OMS beenden, indem Sie zu „Systemsteuerung > Sicherheit und Einstellungen > **Microsoft Monitoring Agent**“ wechseln.
 Entfernen Sie unter **Azure Log Analytics (OMS)**alle aufgeführten Arbeitsbereiche.
 
+**F: Warum tritt ein Fehler auf, wenn ich versuche, meinen Arbeitsbereich aus einem Azure-Abonnement in ein anderes zu verschieben?**
+
+A: Wenn Sie eine Lösung hinzufügen, erstellt Azure eine Ressource in dem Azure-Abonnement, zu dem der Arbeitsbereich gehört.
+
+In der Regel sind Personen, die das Abonnement hinzufügen, entweder Administratoren oder Mitwirkende für das *Azure-Abonnement*. Administrator oder Mitwirkender im OMS-Portal ist nicht ausreichend, wenn der Benutzer nicht auch über die gleichen Berechtigungen im Azure-Portal für das Azure-Abonnement verfügt.
+
+
 ## <a name="agent-data"></a>Agent-Daten
 **F: Wie viele Daten kann ich über den Agent an Log Analytics senden? Gibt es eine maximale Datenmenge pro Kunde?**  
 a. Im Tarif Free gilt eine tägliche Obergrenze von 500 MB pro Arbeitsbereich. Die Tarife Standard und Premium sehen keine Begrenzung der Datenmenge vor, die hochgeladen werden kann. Als Clouddienst ist OMS so ausgelegt, dass ein automatisches Hochskalieren erfolgt, um das vom Kunden eingehende Datenvolumen zu bewältigen, selbst wenn es sich um mehrere Terabytes pro Tag handelt.
@@ -121,9 +129,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erste Schritte mit Log Analytics](log-analytics-get-started.md). Hier erfahren Sie mehr über Log Analytics und wie Sie binnen Minuten loslegen können.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -1,5 +1,5 @@
 ---
-title: "Erstellen eines Importauftrags für den Azure Import/Export-Dienst | Microsoft-Dokumentation"
+title: "Erstellen eines Importauftrags für Azure Import/Export | Microsoft Docs"
 description: "Es wird beschrieben, wie Sie einen Import für den Microsoft Azure Import/Export-Dienst erstellen."
 author: muralikk
 manager: syadav
@@ -12,15 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2016
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 348757809fb5820e2c5c2d5806ec3c74353f3fc8
+ms.sourcegitcommit: 50fbd0d214c825137c3ac6873be27b9d2d53cee1
+ms.openlocfilehash: 84ba5256c3ee485af9a1a6bccc0571f93c9c0ab7
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="creating-an-import-job"></a>Erstellen eines Importauftrags
+# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Erstellen eines Importauftrags für den Azure Import/Export-Dienst
 
 Zum Erstellen eines Importauftrags für den Microsoft Azure Import/Export-Dienst per REST-API sind die folgenden Schritte erforderlich:
 
@@ -62,9 +63,9 @@ Die Vorbereitung des Laufwerks umfasst Folgendes:
 
 ## <a name="obtaining-your-shipping-location"></a>Beschaffen der Versandadresse
 
-Vor dem Erstellen eines Importauftrags müssen Sie sich die Versandadresse beschaffen, indem Sie den Vorgang [List Locations](/rest/api/storageimportexport/listlocations) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie könne auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.
+Vor dem Erstellen eines Importauftrags müssen Sie sich die Versandadresse beschaffen, indem Sie den Vorgang [List Locations](/rest/api/storageimportexport/listlocations) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie können auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.
 
- Führen Sie die unten angegebenen Schritte aus, um die Versandadresse zu beschaffen:
+ Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen:
 
 -   Ermitteln Sie den Namen des Standorts für Ihr Speicherkonto. Sie finden diesen Wert im Feld **Standort** im **Dashboard** des Azure-Portals für Ihr Speicherkonto, oder Sie können mit dem Vorgang [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) der Dienstverwaltungs-API eine Abfrage durchführen.
 
@@ -75,7 +76,7 @@ Vor dem Erstellen eines Importauftrags müssen Sie sich die Versandadresse besch
 ## <a name="creating-the-import-job"></a>Erstellen des Importauftrags
 Rufen Sie zum Erstellen des Importauftrags den Vorgang [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) auf. Sie müssen die folgenden Informationen angeben:
 
--   Name des Auftrags
+-   Einen Namen für den Auftrag
 
 -   Name des Speicherkontos
 
@@ -105,10 +106,5 @@ Sie müssen die Laufwerke an die Adresse senden, die Sie im vorherigen Schritt e
 Nachdem Sie die Nachverfolgungsnummer erhalten haben, können Sie den Vorgang [Update Job Properties](/api/storageimportexport/jobs#Jobs_Update) aufrufen, um den Namen des Kurierdiensts, die Nachverfolgungsnummer für den Auftrag und die Nummer des Kontos beim Kurierdienst für den Rückversand zu aktualisieren. Optional können Sie auch die Anzahl von Laufwerken und das Versanddatum angeben.
 
 ## <a name="see-also"></a>Weitere Informationen
-[Using the Azure Import-Export Service REST API](storage-import-export-using-the-rest-api.md) (Verwenden der REST-API des Azure Import/Export-Diensts)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
+[Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
 

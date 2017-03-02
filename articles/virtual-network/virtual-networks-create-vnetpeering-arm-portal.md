@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: c19ad7c0c466d178e97e83bb2d46b9905130d00e
-ms.openlocfilehash: a97aff9cb7071edc0b7fd1046bdd10d440d75eab
+ms.sourcegitcommit: c3c3938577f610eba522ba593bfab5e93c70e459
+ms.openlocfilehash: d47a97fb023e2cc3ad4acaa07eb4edfd1f82509e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -120,7 +121,7 @@ Jeder Link in einem VNET-Peering weist die vorherigen Eigenschaften auf. Sie kö
 
 1. Navigieren Sie in einem Browser zu http://portal.azure.com, und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 2. Wenn Sie ein Peering zwischen VNETs erstellen, die über verschiedene Bereitstellungsmodelle im *gleichen* Abonnement bereitgestellt werden, fahren Sie mit Schritt 3 fort. Die Funktion zum Erstellen eines VNET-Peerings zwischen VNETs, die über verschiedene Bereitstellungsmodelle in *unterschiedlichen* Abonnements bereitgestellt werden, ist als **Vorschau** verfügbar. Funktionen in der Vorschau bieten nicht dieselbe Zuverlässigkeit und Vereinbarung zum Servicelevel wie die in der finalen Version veröffentlichten Funktionen. Beim Erstellen eines Peerings zwischen VNETs, die über verschiedene Bereitstellungsmodelle in verschiedenen Abonnements bereitgestellt sind, müssen Sie zuerst die folgenden Aufgaben ausführen:
-    - Registrieren Sie die Vorschaufunktion im Azure-Abonnement durch Eingabe des folgenden Befehls aus PowerShell: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`. Dieser Schritt kann nicht im Portal abgeschlossen werden.
+    - Registrieren Sie die Vorschaufunktion im Azure-Abonnement durch Eingabe der folgenden Befehle aus PowerShell: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` und `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`. Dieser Schritt kann nicht im Portal ausgeführt werden.
     - Führen Sie die Schritte 1 bis 6 im Abschnitt [Abonnementübergreifendes Peering](#x-sub) dieses Artikels aus.
 3. Zum Einrichten des VNET-Peerings in diesem Szenario müssen Sie nur einen Link erstellen, und zwar vom virtuellen Netzwerk im Azure Resource Manager zu einem virtuellen Netzwerk im klassischen Modus. Dies ist also eine Verbindung zwischen **VNET1** und **VNET2**. Klicken Sie im Portal auf **Durchsuchen**, und wählen Sie **Virtuelle Netzwerke** aus.
 4. Wählen Sie auf dem Blatt „Virtuelle Netzwerke“ die Option **VNET1**. Klicken Sie auf **Peerings** und dann auf **Hinzufügen**.
@@ -141,10 +142,5 @@ Jeder Link in einem VNET-Peering weist die vorherigen Eigenschaften auf. Sie kö
 
     ![Löschen2](./media/virtual-networks-create-vnetpeering-arm-portal/figure16.png)
 4. Bei diesem Status können Sie den Link erst dann wieder neu erstellen, wenn sich der Status des Peeringlinks in „Initiiert“ ändert. Es wird empfohlen, beide Links zu entfernen, bevor Sie das VNet-Peering neu erstellen.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 
