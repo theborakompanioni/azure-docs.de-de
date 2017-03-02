@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
 translationtype: Human Translation
-ms.sourcegitcommit: 17b33d3296ffbc65a22bf9a5077282fffdb7b3de
-ms.openlocfilehash: 4a0af9f3f9fab9ff459450eb8658273d4a1bc5dc
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: e14d55ad96187dc8ec6e6aac04463b58280783aa
+ms.lasthandoff: 02/15/2017
 
 ---
 # <a name="logic-apps-pricing-model"></a>Preismodell für Logik-Apps
@@ -27,7 +28,7 @@ Alle in einer Ausführung einer Logik-App-Instanz ausgeführten Aktionen werden 
 ### <a name="what-are-action-executions"></a>Was sind Aktionsausführungen?
 Jeder Schritt einer Logik-App-Definition ist eine Aktion. Beispiele hierfür sind Trigger, Ablaufsteuerungsschritte wie Bedingungen, Bereiche, For-Each-Schleifen und Do-Until-Schleifen, Aufrufe von Connectors und Aufrufe von nativen Aktionen.
 Trigger sind spezielle Aktionen, die für das Instanziieren einer neuen Instanz einer Logik-App beim Auftreten eines bestimmten Ereignisses ausgelegt sind.  Es gibt eine Reihe von verschiedenen Verhalten für Trigger, die sich darauf auswirken können, wie die Logik-App gemessen wird.
-* **Abfragetrigger**: Mit diesem Trigger wird ein Endpunkt fortlaufend abgefragt, bis er eine Nachricht empfängt, die die Kriterien für die Erstellung der Instanz einer Logik-App erfüllt.  Das Abrufintervall kann mit dem Designer für Logik-Apps im Trigger konfiguriert werden.  Jede Abfrageanforderung wird als Aktionsausführung gezählt. Dies gilt auch, wenn keine Instanz einer Logik-App erstellt wird.
+* **Abfragetrigger**: Mit diesem Trigger wird ein Endpunkt fortlaufend abgefragt, bis er eine Nachricht empfängt, die die Kriterien für die Erstellung der Instanz einer Logik-App erfüllt.  Das Abrufintervall kann mit dem Logik-App-Designer im Trigger konfiguriert werden.  Jede Abfrageanforderung wird als Aktionsausführung gezählt. Dies gilt auch, wenn keine Instanz einer Logik-App erstellt wird.
 * **Webhooktrigger** : Dieser Trigger wartet darauf, dass von einem Client eine Anforderung an einen bestimmten Endpunkt gesendet wird.  Jede Anforderung, die an den Webhookendpunkt gesendet wird, wird als eine Aktionsausführung gezählt. Sowohl beim Anforderungstrigger als auch beim HTTP-Webhooktrigger handelt es sich um Webhooktrigger.
 * **Wiederholungstrigger**: Dieser Trigger erstellt eine Instanz der Logik-App basierend auf dem Wiederholungsintervall, das im Trigger konfiguriert ist.  Beispielsweise kann ein Wiederholungstrigger so konfiguriert werden, dass er alle drei Tage oder auch jede Minute ausgeführt wird.
 
@@ -58,10 +59,5 @@ Eine Preisübersicht finden Sie unter [Logik-Apps Preise](https://azure.microsof
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Logik-Apps][whatis]
 * [Erstellen Ihrer ersten Logik-App][create] [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/ [whatis]: logic-apps-what-are-logic-apps.md [create]: logic-apps-create-a-logic-app.md
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

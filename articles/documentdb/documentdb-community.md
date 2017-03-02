@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/23/2017
+ms.date: 02/16/2017
 ms.author: andrl
 translationtype: Human Translation
-ms.sourcegitcommit: 78daa5a75b3414e2761333ea6ad91945596553c8
-ms.openlocfilehash: da69b0e91cd945502ef3631755712772d546227f
+ms.sourcegitcommit: cf163b2809f50daf0273398d6fec50dfc6fd69a2
+ms.openlocfilehash: 96dbc1f5a84f52ab39a3515511c7851bba5fa9a9
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -96,15 +97,20 @@ Sie können über aktuelle DocumentDB-Nachrichten und -Features auf dem Laufende
 ### <a name="recent-and-upcoming-events"></a>Aktuelle und bevorstehende Veranstaltungen
 | Veranstaltungsname | Referent | Ort | Datum | Hashtag |
 | --- | --- | --- | --- | --- |
-| [Wintellect Webinar: An Introduction to Azure DocumentDB](http://www.wintellect.com/software-development-training/register/webinar/30)| [Josh Lane](https://twitter.com/jplane)|Online-|12. Januar 2017, 13 Uhr EST|–|
+|[South Florida Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB](http://www.fladotnet.com/codecamp/Agenda.aspx)| [Santosh Hari](https://twitter.com/_s_hari)|Davie, FL|11. März 2017|[#sflcc](https://twitter.com/search?q=%23sflcc&ref_src=twsrc%5Etfw)|
+|[Orlando Codecamp: NoSQL for .NET developers in under 10 minutes with Azure DocumentDB](http://orlandocodecamp.com/Sessions/Details/20)| [Santosh Hari](https://twitter.com/_s_hari)|Sanford, FL|8. April 2017|[#OrlandoCC](https://twitter.com/hashtag/OrlandoCC?src=hash&ref_src=twsrc%5Etfw)|
+|[Global Azure Bootcamp: Serverless computing in Azure with Azure Functions and DocumentDB](https://www.eventbrite.com/e/2017-global-azure-bootcamp-atlanta-usa-tickets-31817713638)| [Josh Lane](https://twitter.com/jplane)|Atlanta (Georgia, USA)|22. April 2017|[#GlobalAzure](https://twitter.com/hashtag/GlobalAzure?src=hash)|
 
 *Sprechen Sie auf einer Veranstaltung oder organisieren Sie sie? [Lassen Sie uns wissen](mailto:askdocdb@microsoft.com), wie wir Ihnen helfen können.*
 
 ### <a name="previous-events-and-recordings"></a>Bisherige Veranstaltungen und Aufzeichnungen
 | Veranstaltungsname | Referent | Ort | Datum | Aufzeichnung |
 | --- | --- | --- | --- | --- |
-| [Connect(); // 2016](https://connectevent.microsoft.com/) |Kirill Gavrylyuk |New York, NY |16.-18. November 2016 |[Channel 9 Connect(); Videos](https://channel9.msdn.com/Events/Connect) |
-| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) |Santosh Hari |Tallahassee, Florida |3. November 2016 |– |
+|[Ignite Australia: Hello DocumentDB: Azure’s blazing fast, planet-scale NoSQL database](https://msftignite.com.au/sessions/session-details/2115/hello-documentdb-azures-blazing-fast-planetscale-nosql-database-da224) | [Andrew Liu](https://twitter.com/aliuy8)|Queensland, Australien|Mittwoch, 15. Februar 2017|In Kürze verfügbar|
+|[Ignite Australia: A Deep-Dive with Azure DocumentDB: Partitioning, Data Modelling, and Geo Replication](https://msftignite.com.au/sessions/session-details/2116/a-deepdive-with-azure-documentdb-partitioning-data-modelling-and-geo-replication-da335b) | [Andrew Liu](https://twitter.com/aliuy8)|Queensland, Australien|16. Februar 2017|In Kürze verfügbar|
+| Wintellect Webinar: An Introduction to Azure DocumentDB| [Josh Lane](https://twitter.com/jplane)|Online-|12. Januar 2017, 13 Uhr EST|[Azure DocumentDB: Your Cloud-powered, Geo-scaled, NoSQL Superweapon... Hiding in Plain Sight](https://www.youtube.com/watch?v=uVcWgIYtBoc)|
+| [Connect(); // 2016](https://connectevent.microsoft.com/) |[Kirill Gavrylyuk](https://twitter.com/kirillg_msft) |New York, NY |16.-18. November 2016 |[Channel 9 Connect(); Videos](https://channel9.msdn.com/Events/Connect) |
+| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) |[Santosh Hari](https://twitter.com/_s_hari)|Tallahassee, Florida |3. November 2016 |– |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) |DocumentDB-Team |Atlanta (Georgia, USA) |26.-30. September 2016 |[SlideShare-Präsentation](http://www.slideshare.net/aliuy/pass-summit-2016-azure-documentdb-a-deep-dive-into-advanced-features) |
 | [DevTeach](http://devteach.com/) |Ken Cenerelli |Montreal (Kanada) |4.-8. Juli 2016 |[NoSQL, No Problem, Using Azure DocumentDB (NoSQL, Kein Problem, Verwenden von Azure DocumentDB)](http://www.slideshare.net/KenCenerelli) |
 | [Integration und IoT ](http://www.btug.be/events) |Eldert Grootenboer |Kontich, Belgien |30. Juni 2016 |– |
@@ -234,10 +240,5 @@ DocumentDB-Genies sind wichtige Mitglieder der Community, die sich durch ein bei
 | [Matías Quaranta](https://twitter.com/ealsur) |[![Matías Quaranta](./media/documentdb-community/wizard-matias-quaranta.jpg)](https://twitter.com/ealsur) |
 
 Möchten Sie ein DocumentDB-Genie werden? Wenngleich es nicht unbedingt ein bestimmtes Kriterium gibt, das erfüllt sein muss, um ein DocumentDB-Genie zu werden, bewerten wir u. a. den Einfluss der Beiträge des Kandidaten zu Onlineforen wie StackOverflow und MSDN, Wikis, Online-Inhalten, Konferenzen, Benutzergruppen, Podcasts, Websites, Blogs und sozialen Medien sowie Artikeln und Büchern. [Senden uns eine E-Mail](mailto:askdocdb@microsoft.com), um sich selbst oder jemand anderen vorzuschlagen.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

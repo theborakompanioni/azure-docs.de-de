@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/16/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 894f94fdefe081679b1e35183bd4127be35cd33c
+ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
+ms.openlocfilehash: 32d0b45080d57712209e0c5a3e5adf981fb4b66e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -36,10 +37,14 @@ Dies bedeutet Folgendes:
 7. Zusammengefasst: Der einladende Mandant ist *immer* für die MFA der B2B-Zusammenarbeitsbenutzer aus der Partnerorganisation zuständig, nicht die Partnerorganisation (selbst wenn diese über MFA-Funktionen verfügt). In zukünftigen Versionen wird es möglich sein, dass die einladende Organisation den MFA-Funktionen bestimmter Partnerorganisationen vertraut, statt die eigenen MFA-Mechanismen verwenden zu müssen.
 
 ## <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Einrichten der MFA für Benutzer der B2B-Zusammenarbeit
-Um herauszufinden, wie einfach sich die MFA für B2B-Zusammenarbeitsbenutzer einrichten lässt, sehen Sie sich [dieses Video](https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup) an.
+Um herauszufinden, wie einfach sich die MFA für B2B-Zusammenarbeitsbenutzer einrichten lässt, sehen Sie sich das folgende Video an:
 
-## <a name="b2b-collaboration-users-mfa-experience-for-offer-redemption"></a>MFA-Mechanismen für Benutzer der B2B-Zusammenarbeit beim Einlösen von Angeboten
-Sehen Sie sich [dieses Video](https://channel9.msdn.com/Blogs/Azure/MFA-redemption) an, das in einer Animation veranschaulicht, wie die Einlösung von Einladungen funktioniert.
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
+
+## <a name="b2b-users-mfa-experience-for-offer-redemption"></a>MFA-Mechanismen für B2B-Benutzer beim Einlösen von Einladungen
+Sehen Sie sich das folgende Video an, das in einer Animation veranschaulicht, wie das Einlösen von Einladungen funktioniert:
+
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
 ## <a name="mfa-reset-for-b2b-collaboration-users"></a>Zurücksetzen der MFA für B2B-Zusammenarbeitsbenutzer
 Zurzeit kann ein Administrator eine erneute Authentifizierung von B2B-Zusammenarbeitsbenutzern nur mithilfe von PowerShell-Cmdlets anfordern. Daher sollten die folgenden PowerShell-Cmdlets verwendet werden, wenn Sie die Authentifizierungsmethode eines B2B-Zusammenarbeitsbenutzers zurücksetzen möchten.
@@ -85,9 +90,4 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

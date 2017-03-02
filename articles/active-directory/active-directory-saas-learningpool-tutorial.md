@@ -11,20 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 52fec971875bb797b5de679918528c5c472e4182
+ms.sourcegitcommit: 83afd8112cf7835528a1e3e8f30b52d4cf863ae3
+ms.openlocfilehash: c5c530fcc158a75b1f1ba140e364c702350ce975
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool"></a>Tutorial: Azure Active Directory-Integration mit Learningpool
 In diesem Tutorial wird die Integration von Azure und Learningpool erläutert.  
+
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
-* Ein Learningpool-Abonnement, für das das einmalige Anmelden aktiviert ist.
+* Ein Learningpool-Abonnement, für das das einmalige Anmelden (SSO) aktiviert ist
 
 Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie Learningpool zugewiesen haben, mittels einmaligen Anmeldens auf Ihrer Learningpool-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
@@ -35,54 +37,53 @@ Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteine
 3. Konfigurieren der Benutzerbereitstellung
 4. Zuweisen von Benutzern
 
-![Szenario](./media/active-directory-saas-learningpool-tutorial/IC791166.png "Scenario")
+![Szenario](./media/active-directory-saas-learningpool-tutorial/IC791166.png "Szenario")
 
 ## <a name="enabling-the-application-integration-for-learningpool"></a>Aktivieren der Anwendungsintegration für Learningpool
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Learningpool aktivieren.
 
-### <a name="to-enable-the-application-integration-for-learningpool-perform-the-following-steps"></a>Führen Sie zum Aktivieren der Anwendungsintegration für Learningpool die folgenden Schritte aus:
+**Führen Sie zum Aktivieren der Anwendungsintegration für Learningpool die folgenden Schritte aus:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-learningpool-tutorial/IC700993.png "Active Directory")
 2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
-   ![Anwendungen](./media/active-directory-saas-learningpool-tutorial/IC700994.png "Applications")
+   ![Anwendungen](./media/active-directory-saas-learningpool-tutorial/IC700994.png "Anwendungen")
 4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
    
-   ![Anwendung hinzufügen](./media/active-directory-saas-learningpool-tutorial/IC749321.png "Add application")
+   ![Anwendung hinzufügen](./media/active-directory-saas-learningpool-tutorial/IC749321.png "Anwendung hinzufügen")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
-   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-learningpool-tutorial/IC749322.png "Add an application from gallerry")
+   ![Anwendung aus dem Katalog hinzufügen](./media/active-directory-saas-learningpool-tutorial/IC749322.png "Anwendung aus dem Katalog hinzufügen")
 6. Geben Sie im **Suchfeld** als Suchbegriff **Learningpool** ein.
    
-   ![Anwendungskatalog](./media/active-directory-saas-learningpool-tutorial/IC795073.png "Application Gallery")
+   ![Anwendungskatalog](./media/active-directory-saas-learningpool-tutorial/IC795073.png "Anwendungskatalog")
 7. Wählen Sie im Ergebnisbereich **Learningpool** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
    
    ![Learningpool](./media/active-directory-saas-learningpool-tutorial/IC809577.png "Learningpool")
    
-   ## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Learningpool zu authentifizieren.
 
 Die Learningpool-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen.  
 Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 
-![SAML-Tokenattribute](./media/active-directory-saas-learningpool-tutorial/IC795074.png "SAML Token Attributes")
+![SAML-Tokenattribute](./media/active-directory-saas-learningpool-tutorial/IC795074.png "SAML-Tokenattribute")
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Learningpool** im Menü oben auf **Attribute**, um das Dialogfeld **SAML-Tokenattribute** zu öffnen.
    
-   ![Attribute](./media/active-directory-saas-learningpool-tutorial/IC795075.png "Attributes")
-2. Führen Sie zum Hinzufügen der erforderlichen Attributzuordnungen die folgenden Schritte aus:
+   ![Attribute](./media/active-directory-saas-learningpool-tutorial/IC795075.png "Attribute")
+2. So fügen Sie die erforderlichen Attributzuordnungen hinzu:
    
    ### 
    | Attributname | Attributwert |
    | --- | --- |
-   |  | |
-   
    | urn:oid:1.2.840.113556.1.4.221 | User.userprincipalname |
-   | --- | --- |
    |  urn:oid:2.5.4.42 |User.givenname |
    | urn:oid:0.9.2342.19200300.100.1.3 |User.mail |
    | urn:oid:2.5.4.4 |User.surname |
@@ -95,55 +96,50 @@ Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 4. Klicken Sie in Ihrem Browser auf **Zurück**, um erneut das Dialogfeld **Schnellstart** zu öffnen.
 5. Klicken Sie auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795076.png "Configure Singel Sign-On")
+   ![Konfigurieren der einmaligen Anmeldung](./media/active-directory-saas-learningpool-tutorial/IC795076.png "Konfigurieren der einmaligen Anmeldung")
 6. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei Learningpool anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795077.png "Configure Single Sign-On")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795077.png "Einmaliges Anmelden konfigurieren")
 7. Geben Sie auf der Seite **App-URL konfigurieren** im Textfeld für die **Learningpool-Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Learningpool-Anwendung verwendete URL ein (z.B. https://parliament.preview.learningpool.com/auth/shibboleth/index.php), und klicken Sie dann auf **Weiter**.
    
-   ![App-URL konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795078.png "Configure App URL")
+   ![App-URL konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795078.png "App-URL konfigurieren")
 8. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für Learningpool** auf **Metadaten herunterladen**, und speichern Sie die Zertifikatsdatei lokal auf Ihrem Computer.
    
-   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795079.png "Configure Single Sign-On")
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795079.png "Einmaliges Anmelden konfigurieren")
 9. Leiten Sie die Metadatendatei an das Supportteam von Learningpool weiter.
    
-   > [!NOTE]
-   > Das einmalige Anmelden muss vom Supportteam von Learningpool aktiviert werden.
+   >[!NOTE]
+   >Das einmalige Anmelden (SSO) muss vom Supportteam von Learningpool aktiviert werden.
    > 
-   > 
+   
 10. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795080.png "Configure Single Sign-On")
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learningpool-tutorial/IC795080.png "Einmaliges Anmelden konfigurieren")
     
-    ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
 
 Damit sich Azure AD-Benutzer bei Learningpool anmelden können, müssen sie in Learningpool bereitgestellt werden.
 
 Für das Konfigurieren der Benutzerbereitstellung in Learningpool steht kein Aktionselement zur Verfügung.  
 Benutzer müssen vom Supportteam von Learningpool erstellt werden.
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Learningpool-Benutzerkonten oder mithilfe der von Learningpool bereitgestellten APIs erstellen.
-> 
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Learningpool-Benutzerkonten oder mithilfe der von Learningpool bereitgestellten APIs erstellen. 
 > 
 
 ## <a name="assigning-users"></a>Zuweisen von Benutzern
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-learningpool-perform-the-following-steps"></a>So weisen Sie Learningpool Benutzer zu:
+**Führen Sie zum Zuweisen von Benutzern in Learningpool folgende Schritte aus:**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Learningpool** auf **Benutzer zuweisen**.
    
-   ![Benutzer zuweisen](./media/active-directory-saas-learningpool-tutorial/IC795081.png "Assign Users")
+   ![Zuweisen von Benutzern](./media/active-directory-saas-learningpool-tutorial/IC795081.png "Zuweisen von Benutzern")
 3. Wählen Sie den Testbenutzer aus, klicken Sie auf **Zuweisen** und anschließend auf **Ja**, um die Zuweisung zu bestätigen.
    
-   ![Ja](./media/active-directory-saas-learningpool-tutorial/IC767830.png "Yes")
+   ![Ja](./media/active-directory-saas-learningpool-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

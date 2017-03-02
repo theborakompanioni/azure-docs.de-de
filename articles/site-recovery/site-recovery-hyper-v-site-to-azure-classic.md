@@ -1,6 +1,6 @@
 ---
 title: Replizieren von Hyper-V-VMs in Azure im klassischen Azure-Portal | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie virtuelle Hyper-V-Maschinen in Azure mit Azure Site Recovery repliziert werden, wenn Computer nicht in VMM-Clouds verwaltet werden.
+description: Dieser Artikel beschreibt, wie virtuelle Hyper-V-Computer in Azure repliziert werden, wenn die Computer nicht in VMM-Clouds verwaltet werden.
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2016
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
-ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
+ms.sourcegitcommit: a084cecddc2af36ee087b2e0e63a2b18b20f07f0
+ms.openlocfilehash: 0c2ca459a691b353a528edc48f4d13c231a440c4
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,16 +29,9 @@ ms.openlocfilehash: b991b27304a4f65485b30431c5eb29461f60984d
 >
 >
 
-Willkommen beim Azure Site Recovery-Dienst!
-
-Der Azure Site Recovery-Dienst unterstützt Ihre Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR). Site Recovery dient zum Orchestrieren der Replikation von lokalen physischen Servern und virtuellen Computern in die Cloud (Azure) oder in ein sekundäres Datencenter. Wenn es an Ihrem primären Standort zu Ausfällen kommt, wird ein Failover zum sekundären Standort durchgeführt, um die Verfügbarkeit von Apps und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, führen Sie das Failback zum primären Standort durch. Weitere Informationen finden Sie unter [Was ist Azure Site Recovery?](site-recovery-overview.md)
-
-In diesem Artikel erfahren Sie, wie Sie lokale virtuelle Hyper-V-Computer mithilfe von Azure Site Recovery über das Azure-Portal zu Azure replizieren können. In diesem Szenario werden Hyper-V-Server nicht in VMM-Clouds verwaltet.
+In diesem Artikel erfahren Sie, wie Sie lokale virtuelle Hyper-V-Computer mit dem [Azure Site Recovery](site-recovery-overview.md)-Dienst über das Azure-Portal in Azure replizieren. In diesem Szenario werden Hyper-V-Server nicht in VMM-Clouds verwaltet.
 
 Nach der Lektüre dieses Artikels können Sie Kommentare am Ende des Artikels oder technische Fragen im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) veröffentlichen.
-
-
-
 
 
 ## <a name="site-recovery-in-the-azure-portal"></a>Site Recovery im Azure-Portal
@@ -67,7 +61,7 @@ Organisationen benötigen eine BCDR-Strategie, die bestimmt, wie Apps und Daten 
 * Es müssen die unter KB [2961977](https://support.microsoft.com/en-us/kb/2961977 "KB2961977") beschriebenen Fixes ausgeführt werden.
 
 ## <a name="virtual-machine-prerequisites"></a>Voraussetzungen für virtuelle Computer
-Die zu schützenden virtuellen Computer müssen die [Anforderungen für virtuelle Azure-Computer](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+Die zu schützenden virtuellen Computer müssen die [Anforderungen für virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 
 ## <a name="provider-and-agent-prerequisites"></a>Voraussetzungen für Anbieter und Agent
 Im Rahmen der Azure Site Recovery-Bereitstellung werden auf jedem Hyper-V-Server der Azure Site Recovery-Anbieter und der Azure Recovery Services-Agent installiert. Beachten Sie Folgendes:
@@ -283,9 +277,4 @@ Führen Sie das Testfailover wie folgt aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn die Bereitstellung eingerichtet ist und ausgeführt wird, informieren Sie sich über [Failover](site-recovery-failover.md) .
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

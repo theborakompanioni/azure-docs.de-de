@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 01/05/2017
 ms.author: jeffreyr
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 5aa9b594da6b9f386f88c667106c735ed4fd233b
+ms.sourcegitcommit: 407f2631044fb836930093a774f5b718c91f711d
+ms.openlocfilehash: 822941aa3f745e51f653b4274bf0add9c44ff0c8
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -142,7 +143,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definieren von unveränderlichen Datentypen, um Programmierfehler zu verhindern
-Im Idealfall sollte der Compiler Fehler melden, wenn Sie versehentlich Code erzeugen, der den Zustand eines Objekts ändert, das nicht geändert werden darf. Leider ist dies mit dem C#-Compiler nicht möglich. Um potenzielle Programmierfehler zu vermeiden, raten wir Ihnen dringend dazu, die mit Reliable Collections verwendeten Typen als unveränderliche Typen zu definieren. Dazu halten Sie sich an Hauptwerttypen (z. B. Zahlen [Int32, UInt64 usw.], DateTime, Guid, TimeSpan und ähnliche Werte). Natürlich können sie auch String verwenden. Vermeiden Sie im Idealfall Auflistungseigenschaften, da deren Serialisierung und Deserialisierung die Leistung beeinträchtigen kann. Wenn Sie jedoch Auflistungseigenschaften verwenden möchten, raten wir dringend dazu, die .NET-Bibliothek der unveränderlichen Auflistungen (System.Collections.Immutable) zu verwenden. Diese Bibliothek können Sie hier herunterladen: http://nuget.org. Zudem empfehlen wir nach Möglichkeit, Klassen zu versiegeln und schreibgeschützte Felder zu verwenden.
+Im Idealfall sollte der Compiler Fehler melden, wenn Sie versehentlich Code erzeugen, der den Zustand eines Objekts ändert, das nicht geändert werden darf. Leider ist dies mit dem C#-Compiler nicht möglich. Um potenzielle Programmierfehler zu vermeiden, raten wir Ihnen dringend dazu, die mit Reliable Collections verwendeten Typen als unveränderliche Typen zu definieren. Dazu halten Sie sich an Hauptwerttypen (z. B. Zahlen [Int32, UInt64 usw.], DateTime, Guid, TimeSpan und ähnliche Werte). Natürlich können sie auch String verwenden. Vermeiden Sie im Idealfall Auflistungseigenschaften, da deren Serialisierung und Deserialisierung die Leistung beeinträchtigen kann. Wenn Sie jedoch Sammlungseigenschaften verwenden möchten, raten wir dringend dazu, die .NET-Bibliothek mit unveränderlichen Sammlungen ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)) zu verwenden. Diese Bibliothek können Sie hier herunterladen: http://nuget.org. Zudem empfehlen wir nach Möglichkeit, Klassen zu versiegeln und schreibgeschützte Felder zu verwenden.
 
 Der folgende UserInfo-Typ veranschaulicht die Definition eines unveränderlichen Typs mithilfe der oben genannten Empfehlungen.
 
@@ -216,9 +217,4 @@ Bewährte Methoden zur Versionsverwaltung von Datenverträgen finden Sie unter [
 Informationen zum Implementieren von versionstoleranten Datenverträgen finden Sie unter [Versionstolerante Serialisierungsrückrufe](https://msdn.microsoft.com/library/ms733734.aspx).
 
 Weitere Informationen zum Erstellen einer Datenstruktur, zum Interagieren über mehrere Versionen finden Sie unter [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

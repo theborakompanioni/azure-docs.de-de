@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2017
+ms.date: 02/15/2017
 ms.author: mimig
 translationtype: Human Translation
-ms.sourcegitcommit: c65c4021f5d0beda8005abdd375ac51729acf0a8
-ms.openlocfilehash: 8ff246ab7d70bd00ce989d3049e016d692722d18
+ms.sourcegitcommit: abdf0af8a85db19c68a0d74c0477d798c0fd03fc
+ms.openlocfilehash: 8ff2fc6106438e35b93112a6dc97814ba79b06fc
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -78,11 +79,13 @@ offer = new OfferV2(offer, 12000);
 await client.ReplaceOfferAsync(offer);
 ```
 
+## <a name="throughput-faq"></a>Häufig gestellte Fragen zum Durchsatz
+
+**Kann der Durchsatz auf unter 400 RU/s festgelegt werden?**
+
+400 RU/s ist der in DocumentDB verfügbare minimale Durchsatz für Sammlungen mit nur einer Partition (2.500 RU/s ist der minimale Durchsatz für partitionierte Sammlungen). Die Anforderungseinheiten werden in Intervallen von 100 RU/s festgelegt, der Durchsatz kann jedoch nicht auf 100 RU/s oder einen anderen Wert unter 400 RU/s festgelegt werden. Wenn Sie nach einer kostengünstigen Methode zum Entwickeln und Testen von DocumentDB suchen, können Sie den kostenlosen [DocumentDB-Emulator](documentdb-nosql-local-emulator.md) verwenden, der lokal kostenfrei bereitgestellt werden kann. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Bereitstellung und zur weltweiten Skalierung mit DocumentDB finden Sie unter [Partitionieren und Skalieren von Daten in DocumentDB](documentdb-partition-data.md).
-
-
-<!--HONumber=Feb17_HO2-->
-
 
