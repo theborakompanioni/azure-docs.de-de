@@ -17,6 +17,7 @@
 ### [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md)
 ### [Vorlagenfunktionen](resource-group-template-functions.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
+### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
 ### [Erstellen mehrerer Instanzen des Ressourcentyps](resource-group-create-multiple.md)
 ### [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md)
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
@@ -71,8 +72,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

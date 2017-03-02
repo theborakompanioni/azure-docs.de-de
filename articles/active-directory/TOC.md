@@ -9,12 +9,31 @@
 ## [Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md)
 ## [Registrieren für Azure AD Premium](active-directory-get-started-premium.md)
 ## [Zuordnen von Azure-Abonnements](active-directory-how-subscriptions-associated-directory.md)
-## [Verwalten der AD-Lizenzierung](active-directory-licensing-what-is.md)
+## Verwalten der Azure AD-Lizenzierung
+### [Azure-Portal](active-directory-licensing-get-started-azure-portal.md)
+### [Klassisches Portal](active-directory-licensing-what-is.md)
 ## [Beschaffen von Azure für Ihre Organisation](sign-up-organization.md)
 ## [Häufig gestellte Fragen](active-directory-faq.md)
 ## [SaaS-App-Tutorials](active-directory-saas-tutorial-list.md)
 
 # Anleitung
+## Planen und Entwerfen
+### [Bereitstellen einer Hybrididentitätslösung](active-directory-hybrid-identity-design-considerations-overview.md)
+#### Bestimmen der Anforderungen
+##### [Identität](active-directory-hybrid-identity-design-considerations-business-needs.md)
+##### [Verzeichnissynchronisierung](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [Mehrstufige Authentifizierung](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [Strategie zum Identitätslebenszyklus](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [Plan für Datensicherheit](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [Datenschutz](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [Content Management](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [Zugriffssteuerung](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [Reaktion auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+#### Planen des Identitätslebenszyklus
+##### [Aufgaben](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [Strategie für die Einführung](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [Nächste Schritte](active-directory-hybrid-identity-design-considerations-nextsteps.md)
+#### [Vergleich von Tools](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 ## Verwalten von Benutzern
 ### Hinzufügen von Benutzern
 #### [Azure-Portal](active-directory-users-create-azure-portal.md)
@@ -47,17 +66,26 @@
 ### Erstellen erweiterter Regeln
 #### [Azure-Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 #### [Klassisches Portal](active-directory-accessmanagement-groups-with-advanced-rules.md)
+### [Gruppenbasierte Lizenzierung](active-directory-licensing-whatis-azure-portal.md)
+#### [Zuweisen von Lizenzen zu einer Gruppe](active-directory-licensing-group-assignment-azure-portal.md)
+#### [Bestimmen und Beheben von Lizenzproblemen für eine Gruppe](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung](active-directory-licensing-group-migration-azure-portal.md)
+#### [Zusätzliche Szenarien für die Gruppenbasierte Lizenzierung](active-directory-licensing-group-advanced.md)
 ### [Einrichten von Self-Service-Gruppen](active-directory-accessmanagement-self-service-group-management.md)
 ### [Problembehandlung](active-directory-accessmanagement-troubleshooting.md)
 
-## [Anzeigen von Aktivitäts- und Sicherheitsberichten](active-directory-view-access-usage-reports.md)
-### [Azure AD-Berichterstellung](active-directory-reporting-getting-started.md)
-### [HÄUFIG GESTELLTE FRAGEN](active-directory-reporting-faq.md)
+## [Anzeigen von Aktivitätsberichten](active-directory-view-access-usage-reports.md)
+### [Anmeldungen](active-directory-reporting-activity-sign-ins.md)
+### [Überwachungsprotokolle](active-directory-reporting-activity-audit-logs.md)
+### [Gefährdete Benutzer](active-directory-reporting-security-user-at-risk.md)
+### [Riskante Anmeldungen](active-directory-reporting-security-risky-sign-ins.md)
+### [Häufig gestellte Fragen](active-directory-reporting-faq.md)
 ### [Berichtmigration](active-directory-reporting-migration.md)
-
 ### [Bekannte Netzwerke](active-directory-known-networks.md)
 
-### [Anleitung für die Berichterstellung](active-directory-reporting-guide.md)
+### Klassisches Portal
+#### [Azure AD-Berichterstellung](active-directory-reporting-getting-started.md)
+#### [Anleitung für die Berichterstellung](active-directory-reporting-guide.md)
 #### [Preview](active-directory-reporting-azure-portal.md)
 #### [API](active-directory-reporting-api-getting-started.md)
 ##### [Überwachungsreferenz](active-directory-reporting-api-audit-reference.md)
@@ -65,20 +93,18 @@
 ##### [Voraussetzungen](active-directory-reporting-api-prerequisites.md)
 ##### [Anmeldereferenz](active-directory-reporting-api-sign-in-activity-reference.md)
 ##### [Anmeldebeispiele](active-directory-reporting-api-sign-in-activity-samples.md)
-
-
 #### [Überwachen von Ereignissen](active-directory-reporting-audit-events.md)
 #### [Aufbewahrung](active-directory-reporting-retention.md)
 #### [Wartezeiten](active-directory-reporting-latencies.md)
 #### [Notifications](active-directory-reporting-notifications.md)
-### Verstehen von Berichten
-#### [Irreguläre Anmeldung](active-directory-reporting-irregular-sign-in-activity.md)
-#### [Mehrere Fehler](active-directory-reporting-sign-ins-after-multiple-failures.md)
-#### [Verdächtige IP-Adressen](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
-#### [Mehrere Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-#### [Möglicherweise infizierte Geräte](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
-#### [Unbekannte Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md)
-#### [Anomale Anmeldungen](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
+#### Verstehen von Berichten
+##### [Irreguläre Anmeldung](active-directory-reporting-irregular-sign-in-activity.md)
+##### [Mehrere Fehler](active-directory-reporting-sign-ins-after-multiple-failures.md)
+##### [Verdächtige IP-Adressen](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
+##### [Mehrere Regionen](active-directory-reporting-sign-ins-from-multiple-geographies.md)
+##### [Möglicherweise infizierte Geräte](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
+##### [Unbekannte Quellen](active-directory-reporting-sign-ins-from-unknown-sources.md)
+##### [Anomale Anmeldungen](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [Verwalten von Kennwörtern](active-directory-manage-passwords.md)
 ### [Aktualisieren Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md)
@@ -99,9 +125,11 @@
 #### [Problembehandlung](active-directory-passwords-troubleshoot.md)
 
 ## Verwalten von Geräten
+### [Registrieren von Geräten](active-directory-conditional-access-device-registration-overview.md)
+#### [Verwalten der automatischen Registrierung](active-directory-conditional-access-automatic-device-registration.md)
+#### [Einrichtung](active-directory-conditional-access-automatic-device-registration-setup.md)
 ### [Registrieren Ihres Geräts](active-directory-azureadjoin-personal-device.md)
 ### [Registrieren eines Windows 10-Geräts](active-directory-azureadjoin-user-upgrade.md)
-
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [Planen](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [Einrichten der Geräteregistrierung](active-directory-azureadjoin-setup.md)
@@ -176,6 +204,7 @@
 ### [Dokumentbibliothek](active-directory-apps-index.md)
 
 ## Verwalten Ihres Verzeichnisses
+### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Benutzerdefinierte Domänennamen
 #### [Übersicht](active-directory-add-domain-concepts.md)
 #### Hinzufügen Ihres Domänennamens
@@ -249,10 +278,6 @@
 ### [Bedingter Zugriff](active-directory-conditional-access.md)
 #### [Erste Schritte](active-directory-conditional-access-azuread-connected-apps.md)
 #### [Unterstützte Apps](active-directory-conditional-access-supported-apps.md)
-#### [Registrieren von Geräten](active-directory-conditional-access-device-registration-overview.md)
-#### [Verwalten der automatischen Registrierung](active-directory-conditional-access-automatic-device-registration.md)
-##### [Einrichtung](active-directory-conditional-access-automatic-device-registration-setup.md)
-#### [Verwalten der Authenticator-App](active-directory-conditional-access-azure-authenticator-app.md)
 #### [Grundlegendes zu Geräterichtlinien](active-directory-conditional-access-device-policies.md)
 #### [Einrichten des Zugriffs auf verbundene Apps](active-directory-conditional-access-policy-connected-applications.md)
 #### [Lokale Bereitstellung](active-directory-conditional-access-on-premises-setup.md)
@@ -274,27 +299,12 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [Bereitstellen auf Azure-VMs](virtual-networks-windows-server-active-directory-virtual-machines.md)
+## [Bereitstellen von AD DS auf virtuellen Azure-Computern](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Windows Server Active Directory auf Azure-VMs](active-directory-deploying-ws-ad-guidelines.md)
 ### [Replikatdomänencontroller in einem virtuellen Azure-Netzwerk](active-directory-install-replica-active-directory-domain-controller.md)
 ### [Neue Gesamtstruktur in einem virtuellen Azure-Netzwerk](active-directory-new-forest-virtual-machine.md)
 
-## [Bereitstellen einer Hybrididentitätslösung](active-directory-hybrid-identity-design-considerations-overview.md)
-### Bestimmen der Anforderungen
-#### [Identität](active-directory-hybrid-identity-design-considerations-business-needs.md)
-#### [Verzeichnissynchronisierung](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-#### [Mehrstufige Authentifizierung](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-#### [Strategie zum Identitätslebenszyklus](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-### [Plan für Datensicherheit](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-#### [Datenschutz](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-#### [Content Management](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-#### [Zugriffssteuerung](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-#### [Reaktion auf Vorfälle](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
-### Planen des Identitätslebenszyklus
-#### [Aufgaben](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-#### [Strategie für die Einführung](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-### [Nächste Schritte](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-### [Vergleich von Tools](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+
 
 ## [Bereitstellen von AD FS in Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Hohe Verfügbarkeit](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
@@ -323,8 +333,3 @@
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
-
-
-<!--HONumber=Feb17_HO4-->
-
-
