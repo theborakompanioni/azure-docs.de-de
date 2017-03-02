@@ -18,6 +18,7 @@ ms.author: ddove
 translationtype: Human Translation
 ms.sourcegitcommit: 7a702354de137e1bca033146626dad1ca53fd3ed
 ms.openlocfilehash: b644ef0a8da726b2b23a4bfc81516c112be2de2e
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -242,7 +243,7 @@ Die enthaltenen Skriptdateien lauten:
          -ShardMapManagerServerName 'abcdefghij.database.windows.net'
 
    ```         
-5. Führen Sie das Skript „ExecuteSampleSplitMerge.ps1“ aus, um einen Teilungsvorgang auszuführen (die Hälfte der Daten vom ersten Shard auf den zweiten Shard zu verschieben) und dann einen Zusammenführungsvorgang auszuführen (die Daten wieder zurück auf den ersten Shard zu verschieben). Wenn Sie SSL konfiguriert und den http-Endpunkt deaktiviert gelassen haben, stellen Sie sicher, dass Sie stattdessen den https://-Endpunkt verwenden.
+5. Führen Sie das Skript „ExecuteSampleSplitMerge.ps1“ aus, um einen Teilungsvorgang auszuführen (die Hälfte der Daten vom ersten Shard auf den zweiten Shard zu verschieben) und dann einen Zusammenführungsvorgang auszuführen (die Daten wieder zurück auf den ersten Shard zu verschieben). Wenn Sie SSL konfiguriert und den http-Endpunkt deaktiviert gelassen haben, stellen Sie sicher, dass Sie stattdessen den https:// endpunkt verwenden.
    
    Beispiel für eine Befehlszeile:
 
@@ -342,10 +343,5 @@ Wenn Sie keine Anforderungen übermitteln können, wird möglicherweise Folgende
 [3]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/staging.png
 [4]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/upload.png
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
