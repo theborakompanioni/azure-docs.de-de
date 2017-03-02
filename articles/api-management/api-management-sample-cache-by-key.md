@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 24cbe51ef5a453d06e9f70e1e2146479935c5bf5
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -69,7 +70,7 @@ Wenn kein Eintrag im Cache vorhanden ist, der dem Schlüsselwert entspricht, wir
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("userprofile"))">
-        <!— If the userprofile context variable doesn’t exist, make an HTTP request to retrieve it.  -->
+        <!-- If the userprofile context variable doesn’t exist, make an HTTP request to retrieve it.  -->
     </when>
 </choose>
 ```
@@ -114,7 +115,7 @@ Bitte beachten Sie, dass das Abrufen aus dem Cache noch immer eine prozessunabh�
 Als letzten Schritt im Prozess wird die zurückgegebene Antwort mit unseren Benutzerprofilinformationen aktualisiert.
 
 ```xml
-<!—Update response body with user profile-->
+<!-- Update response body with user profile-->
 <find-and-replace
     from='"$userprofile$"'
     to="@((string)context.Variables["userprofile"])" />
@@ -140,7 +141,7 @@ Nachdem Sie alle Schritte miteinander kombiniert haben, ist das Endergebnis eine
         <!-- If we don’t find it in the cache, make a request for it and store it -->
         <choose>
             <when condition="@(!context.Variables.ContainsKey("userprofile"))">
-                <!—Make HTTP request to get user profile -->
+                <!-- Make HTTP request to get user profile -->
                 <send-request
                   mode="new"
                   response-variable-name="userprofileresponse"
@@ -152,12 +153,12 @@ Nachdem Sie alle Schritte miteinander kombiniert haben, ist das Endergebnis eine
                     <set-method>GET</set-method>
                 </send-request>
 
-                <!—Store response body in context variable -->
+                <!-- Store response body in context variable -->
                 <set-variable
                   name="userprofile"
                   value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 
-                <!—Store result in cache -->
+                <!-- Store result in cache -->
                 <cache-store-value
                   key="@("userprofile-" + context.Variables["enduserid"])"
                   value="@((string)context.Variables["userprofile"])"
@@ -167,7 +168,7 @@ Nachdem Sie alle Schritte miteinander kombiniert haben, ist das Endergebnis eine
         <base />
     </inbound>
     <outbound>
-        <!—Update response body with user profile-->
+        <!-- Update response body with user profile-->
         <find-and-replace
               from='"$userprofile$"'
               to="@((string)context.Variables["userprofile"])" />
@@ -280,10 +281,5 @@ Die Freiheit, den Azure API Management-Cache zum Speichern aller Art von Daten z
 
 ## <a name="next-steps"></a>Nächste Schritte
 Bitte geben Sie uns im Disqus-Thread Feedback zu diesem Thema, wenn es weitere Szenarien gibt, die Sie mit diesen Richtlinien erzeugt haben, oder wenn es Szenarien gibt, die Sie erzielen möchten, wobei Sie nicht wissen, wie dies momentan möglich ist.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
