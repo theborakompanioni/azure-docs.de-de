@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie Ihrer App in Azure App Service einen 
 services: app-service
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: jimbe
 tags: top-support-issue
 ms.assetid: 48644a39-107c-45fb-9cd3-c741974ff590
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2016
+ms.date: 01/30/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: e25348cc1aa0ae284f0fcda7f11bdbe42ba1fa0a
+ms.sourcegitcommit: 59565c22ecd42985e8a6b81c4983fc2e87637e36
+ms.openlocfilehash: 589701270770494e4ec4d127a252712249da9f3a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -26,22 +27,12 @@ ms.openlocfilehash: e25348cc1aa0ae284f0fcda7f11bdbe42ba1fa0a
 
 In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen manuell der Web-App, dem Mobile App-Back-End oder der API-App in [Azure App Service](../app-service/app-service-value-prop-what-is.md)zuordnen. 
 
-Ihre App enthält bereits eine eindeutige Unterdomäne von „azurewebsites.net“. Wenn die App beispielsweise den Namen **contoso** hat, lautet der Domänenname **contoso.azurewebsites.net**. Sie können der App aber einen benutzerdefinierten Domänennamen zuordnen, damit die URL, z.B. `www.contoso.com`, Ihre Marke widerspiegelt.
+> [!NOTE] 
+> Sie können immer nur [einen benutzerdefinierten Domänennamen direkt über Azure erwerben](custom-dns-web-site-buydomains-web-app.md).
+>
+>
 
-> [!NOTE]
-> Hilfe hierzu erhalten Sie von den Azure-Experten in den [Azure-Foren](https://azure.microsoft.com/support/forums/). Falls Sie mehr Support benötigen, können Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) besuchen und auf **Support erhalten**klicken.
-> 
-> 
-
-[!INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
-
-## <a name="buy-a-new-custom-domain-in-azure-portal"></a>Erwerben einer neuen benutzerdefinierten Domäne im Azure-Portal
-Falls Sie noch keinen benutzerdefinierten Domänennamen erworben haben, können Sie dies im [Azure-Portal](https://portal.azure.com) direkt in den Einstellungen der App nachholen und dort auch die Verwaltung durchführen. Mit dieser Option ist es einfach, der App eine benutzerdefinierte Domäne zuzuordnen. Dabei spielt es keine Rolle, ob Ihre App [Azure Traffic Manager](web-sites-traffic-manager-custom-domain-name.md) nutzt. 
-
-Eine Anleitung hierzu finden Sie unter [Erwerben eines benutzerdefinierten Domänennamens für App Service](custom-dns-web-site-buydomains-web-app.md).
-
-## <a name="map-a-custom-domain-you-purchased-externally"></a>Externes Zuordnen einer erworbenen benutzerdefinierten Domäne
-Wenn Sie bereits eine benutzerdefinierte Domäne über [Azure DNS](https://azure.microsoft.com/services/dns/) oder von einem Drittanbieter erworben haben, gibt es drei Hauptschritte zum Zuordnen der benutzerdefinierten Domäne zur App:
+Es gibt drei grundlegende Schritte für die Zuordnung der benutzerdefinierten Domäne zu Ihrer App:
 
 1. [*(Nur A-Datensatz)* Rufen Sie die IP-Adresse der App ab](#vip).
 2. [Erstellen Sie die DNS-Einträge, mit denen die Domäne der App zugeordnet wird.](#createdns) 
@@ -52,7 +43,7 @@ Wenn Sie bereits eine benutzerdefinierte Domäne über [Azure DNS](https://azure
    * **Warum:**Damit Ihre App weiß, wie sie auf Anforderungen reagieren soll, die an den benutzerdefinierten Domänennamen gestellt werden.
 4. [Überprüfen Sie die DNS-Verteilung](#verify).
 
-### <a name="types-of-domains-you-can-map"></a>Typen von Domänen, die Sie zuordnen können
+## <a name="types-of-domains-you-can-map"></a>Typen von Domänen, die Sie zuordnen können
 Mit Azure App Service können Sie die folgenden Kategorien von benutzerdefinierten Domänen Ihrer App zuordnen.
 
 * **Stammdomäne:** Der Domänenname, den Sie bei der Domänenregistrierungsstelle reserviert haben (normalerweise durch den Hosteintrag `@` dargestellt). 
@@ -60,7 +51,7 @@ Mit Azure App Service können Sie die folgenden Kategorien von benutzerdefiniert
 * **Unterdomäne** : Jede Domäne unterhalb Ihrer Stammdomäne. Beispiel: **www.contoso.com** (wird durch den Hosteintrag `www` dargestellt).  Sie können verschiedene Unterdomänen derselben Stammdomäne unterschiedlichen Apps in Azure zuordnen.
 * **Platzhalterdomäne** - [Jede Domäne, deren ganz links stehende DNS-Bezeichnung `*`](https://en.wikipedia.org/wiki/Wildcard_DNS_record) lautet (z.B. die Hosteinträge `*` und `*.blogs`). Beispiel: **\*.contoso.com**.
 
-### <a name="types-of-dns-records-you-can-use"></a>Typen von zulässigen DNS-Einträgen
+## <a name="types-of-dns-records-you-can-use"></a>Typen von zulässigen DNS-Einträgen
 Je nach Bedarf können Sie zwei unterschiedliche Arten von DNS-Standardeinträgen verwenden, um Ihre benutzerdefinierte Domäne zuzuordnen: 
 
 * [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) : Ordnet Ihren benutzerdefinierten Domänennamen direkt der virtuellen IP-Adresse der Azure-App zu. 
@@ -207,44 +198,9 @@ Auf dem Blatt **Benutzerdefinierte Domänen** im Azure-Portal (siehe [Schritt 1]
 7. Nach erfolgreicher Überprüfung wird die Schaltfläche **Hostnamen hinzufügen** aktiv, und Sie können den Hostnamen zuweisen. 
 8. Nachdem Azure Ihren neuen benutzerdefinierten Domänennamen konfiguriert hat, können Sie in einem Browser zum benutzerdefinierten Domänennamen navigieren. Der Browser sollte Ihre Azure-App öffnen. Das bedeutet, dass der benutzerdefinierte Domänenname richtig konfiguriert wurde.
 
-## <a name="migrate-an-active-domain-with-no-downtime"></a>Migrieren einer aktiven Domäne ohne Ausfallzeit 
+## <a name="migrate-an-active-domain-name"></a>Migrieren eines aktiven Domänennamens
 
-Wenn Sie eine Livewebsite und deren Domänenname zu App Service migrieren, wird über diesen Domänennamen bereits Livedatenverkehr abgewickelt, und Sie möchten während des Migrationsprozesses natürlich keine Ausfallzeiten bei der DNS-Auflösung. In diesem Fall müssen Sie den Domänennamen bereits im Vorfeld zur Verifizierung der Domäne an Ihre Azure-App binden. Gehen Sie hierzu wie folgt vor:
-
-1. Erstellen Sie zunächst einen TXT-Überprüfungseintrag mit Ihrer DNS-Registrierung, wie unter [Schritt 2. Erstellen von DNS-Einträgen](#createdns) beschrieben.
-Für Ihren zusätzlichen TXT-Eintrag wird die Konvention der Zuordnung von „&lt;*Unterdomäne*>.&lt;*Stammdomäne*>“ zu „&lt;*App-Name*>.azurewebsites.net“ übernommen.
-Die folgende Tabelle enthält einige Beispiele:  
- 
-    <table cellspacing="0" border="1">
-    <tr>
-    <th>FQDN-Beispiel</th>
-    <th>TXT-Host</th>
-    <th>TXT-Wert</th>
-    </tr>
-    <tr>
-    <td>contoso.com (Stammdomäne)</td>
-    <td>awverify.contoso.com</td>
-    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
-    </tr>
-    <tr>
-    <td>www.contoso.com (Unterdomäne)</td>
-    <td>awverify.www.contoso.com</td>
-    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
-    </tr>
-    <tr>
-    <td>\*.contoso.com (Platzhalter)</td>
-    <td>awverify.\*.contoso.com</td>
-    <td>&lt;<i>App-Name</i>>.azurewebsites.net</td>
-    </tr>
-    </table>
-
-2. Fügen Sie anschließend Ihren benutzerdefinierten Domänennamen Ihrer Azure-App hinzu, wie unter [Schritt 3. Aktivieren des benutzerdefinierten Domänennamens für Ihre App](#enable) beschrieben.
-
-    Ihre benutzerdefinierte Domäne ist nun in Ihrer Azure-App aktiviert. Nun müssen Sie nur noch den DNS-Eintrag bei Ihrer Domänenregistrierungsstelle aktualisieren.
-
-3. Aktualisieren Sie abschließend den DNS-Eintrag Ihrer Domäne, sodass dieser auf Ihre Azure-App verweist, wie in [Schritt 2. Erstellen von DNS-Einträgen](#createdns) beschrieben. 
-
-    Der Benutzerdatenverkehr sollte umgehend nach der DNS-Verteilung an Ihre Azure-App umgeleitet werden.
+Wenn der Domänenname, den Sie zuordnen möchten, bereits von einer vorhandenen Website verwendet wird und Sie Ausfallzeiten vermeiden möchten, lesen Sie unter [Migrieren einer aktiven benutzerdefinierten Domäne zu App Service](app-service-custom-domain-name-migrate.md) nach.
 
 <a name="verify"></a>
 
@@ -262,7 +218,7 @@ Es kann nach Abschluss der Konfigurationsschritte einige Zeit dauern, bis die Ä
 Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern, indem Sie [ein SSL-Zertifikat in Azure erwerben](web-sites-purchase-ssl-web-site.md) oder [ein SSL-Zertifikat von einer anderen Stelle verwenden](web-sites-configure-ssl-certificate.md).
 
 > [!NOTE]
-> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](http://go.microsoft.com/fwlink/?LinkId=523751)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
+> Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
 
@@ -272,9 +228,4 @@ Erfahren Sie, wie Sie Ihren benutzerdefinierten Domänennamen mit HTTPS sichern,
 
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

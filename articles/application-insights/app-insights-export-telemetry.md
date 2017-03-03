@@ -11,18 +11,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 02/21/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 7bd26ffdec185a1ebd71fb88383c2ae4cd6d504f
-ms.openlocfilehash: 3b1654355ee84610d25da8b6ad4a66036285faba
+ms.sourcegitcommit: 4df32e7e03f17ec46e46a3f2718d24783424ab9e
+ms.openlocfilehash: fc1f3c7160a4956ed7372a2797c03c2892fbfb65
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
 
-Fortlaufenden Export gibt es beim [Enterprise Preismodell](http://azure.microsoft.com/pricing/details/application-insights/).
+Bei Verwendung des fortlaufenden Exports können zusätzliche Gebühren anfallen. Überprüfen Sie Ihr [Preismodell](http://azure.microsoft.com/pricing/details/application-insights/).
 
 Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen zu dieser Vorgehensweise prüfen:
 
@@ -72,7 +73,7 @@ Klicken Sie auf "Deaktivieren", um den Datenstrom zu beenden. Wenn Sie erneut au
 Um den Datenstrom dauerhaft zu beenden, löschen Sie den Exportvorgang. Dabei werden Ihre Daten nicht aus dem Speicher gelöscht.
 
 #### <a name="cant-add-or-change-an-export"></a>Wer darf einen Export ergänzen oder ändern?
-* Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht "Besitzer", "Mitwirkender" oder "Application Insights-Mitwirkender". [Weitere Informationen zu Rollen][roles]
+* Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht "Besitzer", "Mitwirkender" oder "Application Insights-Mitwirkender". [Weitere Informationen zu Rollen][roles].
 
 ## <a name="a-nameanalyzea-what-events-do-you-get"></a><a name="analyze"></a> Welche Ereignisse werden abgerufen?
 Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen. 
@@ -84,7 +85,7 @@ Andere berechnete Metriken sind nicht enthalten. Wir exportieren z. B. nicht die
 Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md) , die Sie eventuell eingerichtet haben. 
 
 > [!NOTE]
-> **Stichproben**  Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
+> **Stichproben** Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Prozentsatz der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 > 
 > 
 
@@ -158,8 +159,8 @@ Wenn Sie den Schlüssel zu Ihrem Speicher ändern, funktioniert der fortlaufende
 Der fortlaufende Export wird neu gestartet.
 
 ## <a name="export-samples"></a>Export-Beispiele
-* [Codebeispiel: Analysieren von Daten, die aus Application Insights exportiert wurden][exportcode]
-* [Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics][exportasa]
+* [Exportieren in SQL über eine Workerrolle][exportcode]
+* [Exportieren in SQL mit Stream Analytics][exportasa]
 * [Stream Analytics-Beispiel 2](app-insights-export-stream-analytics.md)
 
 Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/services/hdinsight/) -Hadoop-Cluster in der Cloud erwägen. HDInsight bietet eine Vielzahl von Technologien zum Verwalten und Analysieren von Big Data, die zum Verarbeiten von Daten genutzt werden können, die von Application Insights exportiert wurden.
@@ -194,7 +195,7 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 ## <a name="code-samples"></a>Codebeispiele
 * [Analysieren exportierter JSON-Daten mithilfe einer Workerrolle][exportcode]
 * [Stream Analytics-Beispiel](app-insights-export-stream-analytics.md)
-* [Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics][exportasa]
+* [Exportieren in SQL mit Stream Analytics][exportasa]
 * [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](app-insights-export-data-model.md)
 
 <!--Link references-->
@@ -203,10 +204,5 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 [exportasa]: app-insights-code-sample-export-sql-stream-analytics.md
 [roles]: app-insights-resources-roles-access-control.md
 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

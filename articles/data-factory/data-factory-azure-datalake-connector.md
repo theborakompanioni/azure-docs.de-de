@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: b2d1a740782a20a7c6b7b8cec8335a41f16231f5
 ms.openlocfilehash: 5a6a14e5fc8f6915b34f9667c4294a46c8591633
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -593,9 +594,4 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 Abhängig davon, ob die anfängliche Datenverschiebung mit einer großen Menge von Verlaufsdaten oder mit inkrementeller Produktionsdatenlast geplant ist, verfügt Azure Data Factory über Optionen zur Verbesserung der Leistung dieser Aufgaben. Der Parallelitätsparameter ist ein Teil der **Kopieraktivität** und definiert, wie viele unterschiedliche Aktivitätsfenster parallel verarbeitet werden. Der **parallelCopies**-Parameter definiert die Parallelität für die einzelne Aktivitätsausführung. Zur Erzielung des besten Durchsatzes ist es wichtig, beim Entwerfen von Pipelines für die Datenverschiebung mit Azure Data Factory diese Parameter zu berücksichtigen.
 
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

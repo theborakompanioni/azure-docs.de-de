@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
 ms.openlocfilehash: 171a971411546d1421a48f3dceab98fb2b54b25f
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -446,10 +447,5 @@ Hinzufügen der AuthorizationPolicy zum ContentKey, wie [hier](#AddAuthorization
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Thema [Konfigurieren einer Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md) fort.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -1,8 +1,8 @@
 ---
-title: Format der Manifestdatei des Import-/Exportdiensts | Microsoft-Dokumentation
+title: Format der Manifestdateien von Azure Import/Export | Microsoft Docs
 description: Hier finden Sie Informationen zum Format der Laufwerksmanifestdatei, die in einem Import- oder Exportauftrag im Import-/Exportdienst die Zuordnung zwischen Blobs in Azure Blob Storage und einer Datei auf dem Laufwerk beschreibt.
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/23/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: c79d4e4b088bab056459ed4add442acfb0176692
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 2c76120a967aabf546fdb5246478f78e8cf47f94
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="import-export-service-manifest-file-format"></a>Format der Manifestdatei des Import-/Exportdiensts
+# <a name="azure-importexport-service-manifest-file-format"></a>Format der Manifestdateien des Azure Import/Export-Diensts
 Die Laufwerksmanifestdatei beschreibt die Zuordnung zwischen Blobs in Azure Blob Storage und Dateien auf dem Laufwerk, aus denen ein Import- oder Exportauftrag besteht. Für einen Importvorgang wird die Manifestdatei im Rahmen des Prozesses der Laufwerksvorbereitung erstellt und auf dem Laufwerk gespeichert, bevor dieses an das Azure-Rechenzentrum gesendet wird. Während eines Exportvorgangs wird das Manifest vom Azure-Import-/Exportdienst erstellt und auf dem Laufwerk gespeichert.  
   
 Sowohl für Import- als auch für Exportaufträge wird die Laufwerksmanifestdatei auf dem Import- oder Exportlaufwerk gespeichert. Sie wird nicht über einen API-Vorgang an den Dienst übertragen.  
@@ -100,7 +101,7 @@ Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in d
 |`Drive`|Geschachteltes XML-Element|Enthält das Manifest für jedes Laufwerk.|  
 |`DriveId`|String|Der eindeutige Laufwerksbezeichner für das Laufwerk. Der Laufwerksbezeichner lässt sich durch Abfrage des Laufwerks nach der Seriennummer ermitteln. Die Seriennummer des Laufwerks ist üblicherweise auch auf der Außenseite des Laufwerks zu finden. Das `DriveID`-Element muss vor allen `BlobList`-Elementen in der Manifestdatei angezeigt werden.|  
 |`StorageAccountKey`|String|Ist für Importaufträge erforderlich und nur dann, wenn `ContainerSas` nicht angegeben ist. Der Kontoschlüssel für das Azure-Speicherkonto, das dem Auftrag zugeordnet ist.<br /><br /> Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
-|`ContainerSas`|String|Ist für Importaufträge erforderlich und nur dann, wenn `StorageAccountKey` nicht angegeben ist. Die Container-SAS für den Zugriff auf die Blobs, die dem Auftrag zugeordnet sind. Informationen finden Sie unter [Put Job](/rest/api/storageservices/importexport/Put-Job). Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
+|`ContainerSas`|String|Ist für Importaufträge erforderlich und nur dann, wenn `StorageAccountKey` nicht angegeben ist. Die Container-SAS für den Zugriff auf die Blobs, die dem Auftrag zugeordnet sind. Informationen finden Sie unter [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate). Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
 |`ClientCreator`|String|Gibt den Client an, der die XML-Datei erstellt hat. Dieser Wert wird vom Import-/Exportdienst nicht interpretiert.|  
 |`BlobList`|Geschachteltes XML-Element|Enthält eine Liste von Blobs, die zum Import- oder Exportauftrag gehören. Alle Blobs in einer Blobliste verwenden die gleichen Metadaten und Eigenschaften.|  
 |`BlobList/MetadataPath`|String|Optional. Gibt auf dem Datenträger den relativen Pfad zu der Datei mit den Standardmetadaten an, die für die Blobs in der Blobliste für einen Importvorgang festgelegt werden. Diese Metadaten können optional für jedes einzelne Blob überschrieben werden.<br /><br /> Dieses Element wird bei Exportvorgängen vom Manifest ausgelassen.|  
@@ -131,10 +132,5 @@ Die Datenelemente und Attribute des XML-Formats des Laufwerksmanifests sind in d
 |`Blob/PropertiesPath/@Hash`|Attribut, String|Gibt den Base16-codierten MD5-Hash der Eigenschaftendatei des Blobs an.|  
   
 ## <a name="see-also"></a>Weitere Informationen  
-[Speicherimport/-export – REST](/rest/api/storageservices/importexport/Storage-Import-Export-Service-REST-API-Reference)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[Speicherimport/-export – REST](/rest/api/storageimportexport/)
 

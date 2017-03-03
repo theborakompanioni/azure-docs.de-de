@@ -1,5 +1,5 @@
 ---
-title: "Abbrechen und Löschen von Aufträgen des Azure Import/Export-Diensts | Microsoft-Dokumentation"
+title: Abbrechen/reparieren eines Azure Import/Export-Auftrags | Microsoft Docs
 description: "Erfahren Sie, wie Sie Aufträge für den Microsoft Azure Import/Export-Dienst abbrechen und löschen."
 author: muralikk
 manager: syadav
@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 22e37e26fec913a7638c71b2547c38f5efacd10b
-ms.openlocfilehash: 640b814e4280f5cce029bea7324881bbfef4b1a4
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 26e06529cb9354030da32c235d3c4819d46d669d
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="cancelling-and-deleting-jobs"></a>Abbrechen und Löschen von Aufträgen
+# <a name="canceling-and-deleting-azure-importexport-jobs"></a>Abbrechen und Löschen von Azure Import/Export-Aufträgen
 Sie können anfordern, dass ein Auftrag abgebrochen wird, bevor er den Status `Packaging` aufweist. Dazu rufen Sie den [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update)-Vorgang auf und legen das `CancelRequested`-Element auf `true` fest. Der Auftrag wird auf Grundlage der besten Leistung abgebrochen. Wenn Laufwerke gerade Daten übertragen, wird die Datenübertragung möglicherweise auch nach der Abbruchanforderung fortgesetzt.
 
  Ein abgebrochener Auftrag wechselt in den `Completed`-Status, wird 90 Tage lang aufbewahrt und anschließend gelöscht.
@@ -30,9 +31,4 @@ Sie können anfordern, dass ein Auftrag abgebrochen wird, bevor er den Status `P
 
 ## <a name="see-also"></a>Weitere Informationen
  [Verwenden der REST-API des Import/Export-Diensts](storage-import-export-using-the-rest-api.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

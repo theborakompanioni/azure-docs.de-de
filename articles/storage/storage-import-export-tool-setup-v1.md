@@ -1,6 +1,6 @@
 ---
-title: Einrichten des Azure Import/Export-Tools | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für das Import/Export-Tool von Azure einrichten."
+title: Einrichten des Azure Import/Export-Tools, Version&1; | Microsoft Docs
+description: "Erfahren Sie, wie Sie das Tool für die Laufwerkvorbereitung und -reparatur für Azure Import/Export einrichten."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -15,13 +15,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: fbcc295284d060b9a8bc5cf1cb9f8b2fca566db4
-ms.openlocfilehash: 78151092d8987b7513b69e54f9dacb540c5c3278
+ms.sourcegitcommit: 9aca8aad3f268bf21f3bad9fa22821f5d825f99d
+ms.openlocfilehash: 2d30d0da6055a66b60ed5a836dd897a87d564237
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
-# <a name="setting-up-the-azure-import-export-tool"></a>Einrichten des Azure Import/Export-Tools
+# <a name="setting-up-the-azure-importexport-tool"></a>Einrichten des Azure Import/Export-Tools
 Das Import/Export-Tool von Microsoft Azure ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:  
   
 -   Vor dem Erstellen eines Importauftrags können Sie dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Windows Azure-Rechenzentrum senden.  
@@ -260,9 +261,4 @@ Examples:
  [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
  [Reparieren eines Exportauftrags](storage-import-export-tool-repairing-an-export-job-v1.md)   
  [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

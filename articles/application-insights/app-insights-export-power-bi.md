@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 24ccafb4df95e0010416485199e19f81e1ae31aa
 ms.openlocfilehash: 11017c7c0a761569892aebcd085d5d3fb2d67a69
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -88,10 +89,5 @@ Wenn für Ihre Anwendung große Datenmengen gesendet werden, wird ggf. die Funkt
 ## <a name="next-steps"></a>Nächste Schritte
 * [Power BI – Informationen](http://www.powerbi.com/learning/)
 * [Analytics-Tutorial](app-insights-analytics-tour.md)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

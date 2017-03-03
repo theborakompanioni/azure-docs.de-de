@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: cfaccad0a7d81950d80486dcb0d9e6520deab9b3
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -102,10 +103,5 @@ Es gibt verschiedene Methoden zum Reduzieren der Größe zur einfacheren Datenve
 > *Data Mining: Concepts and Techniques*, 3. Auflage, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber und Jian Pei
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

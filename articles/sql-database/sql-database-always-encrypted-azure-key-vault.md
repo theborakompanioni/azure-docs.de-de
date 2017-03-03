@@ -1,6 +1,6 @@
 ---
-title: "Always Encrypted – Schützen von vertraulichen Daten in Azure SQL-Datenbank mithilfe der Datenbankverschlüsselung | Microsoft Docs"
-description: "Schützen Sie vertrauliche Daten in der SQL-Datenbank in wenigen Minuten."
+title: "Always Encrypted: SQL-Datenbank – Azure Key Vault | Microsoft-Dokumentation"
+description: "In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio sichern. Er enthält auch Anweisungen, die zeigen, wie Sie jeden Verschlüsselungsschlüssel in Azure Key Vault speichern."
 keywords: "Verschlüsselung, Verschlüsselungsschlüssel, Cloud-Verschlüsselung"
 services: sql-database
 documentationcenter: 
@@ -17,17 +17,13 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6b4cf5a1c6b764280488b07cf2dc98ecf78fda21
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: a2a738ef1df470e17b805e843a159e0abc23efdf
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted – Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel in Azure Key Vault
-> [!div class="op_single_selector"]
-> * [Azure-Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)
-> * [Windows-Zertifikatspeicher](sql-database-always-encrypted.md)
-> 
-> 
 
 In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenverschlüsselung unter Einsatz des [Always-Encrypted-Assistenten](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) sichern. Er enthält auch Anweisungen, die zeigen, wie Sie jeden Verschlüsselungsschlüssel in Azure Key Vault speichern.
 
@@ -62,7 +58,7 @@ Sie müssen Ihre Clientanwendung aktivieren, um auf den SQL-Datenbank-Dienst zuz
 5. Unter **URL für Anmeldung** und **APP-ID-URI** können Sie einfach eine gültige URL eingeben (z.B. *http://myClientApp*) und dann fortfahren.
 6. Klicken Sie auf **KONFIGURIEREN**.
 7. Kopieren Sie Ihre **CLIENT-ID**. (Sie benötigen diesen Wert später für Ihren Code.)
-8. Wählen Sie im Abschnitt **Schlüssel** in der Dropdownliste **Dauer auswählen** die Option **1 Jahr** aus. (Sie kopieren den Schlüssel, nachdem Sie in Schritt 14 gespeichert haben.)
+8. Wählen Sie im Abschnitt **Schlüssel** in der Dropdownliste **Dauer auswählen** die Option **1 Jahr** aus. (Sie kopieren den Schlüssel nach dem Speichern in Schritt 13.)
 9. Scrollen Sie nach unten, und klicken Sie auf **Anwendung hinzufügen**.
 10. Behalten Sie für **ANZEIGEN** die Festlegung **Microsoft-Apps** bei, und wählen Sie **Microsoft Azure-Dienstverwaltung**. Klicken Sie auf das Häkchen, um fortzufahren.
 11. Wählen Sie in der Dropdownliste **Delegierte Berechtigungen** den Eintrag **Zugriff auf Azure-Dienstverwaltung** aus.
@@ -86,7 +82,7 @@ Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skr
     $subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).SubscriptionId
     Set-AzureRmContext -SubscriptionId $subscriptionId
 
-    New-AzureRmResourceGroup –Name $resourceGroupName –Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
@@ -98,7 +94,7 @@ Sie können schnell einen Schlüsseltresor erstellen, indem Sie das folgende Skr
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie anschließend auf **Neu** > **Daten und Speicher** > **SQL-Datenbank**.
-3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Eine ausführliche Anleitung zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Erstellen einer SQL-Datenbank in wenigen Minuten](sql-database-get-started.md).
+3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Eine ausführliche Anleitung zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
    
     ![Leere Datenbank erstellen](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
@@ -646,10 +642,5 @@ Nach dem Erstellen einer Datenbank, für die Always Encrypted verwendet wird, so
 * [SQL Server-Verschlüsselung](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted-Assistent](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted-Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: 10b40214ad4c7d7bb7999a5abce1c22100b617d8
-ms.openlocfilehash: 83eb96e8e9d1d5ff31d87141fe7270c0db8867bd
+ms.sourcegitcommit: e210fb7ead88a9c7f82a0d0202a1fb31043456e6
+ms.openlocfilehash: f1f963c1401b785b3d4ee007b6ea61f221f9ec4d
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -93,7 +94,7 @@ Unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elasti
 
 Informationen zum Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools finden Sie unter [Migrieren von vorhandenen Datenbanken zu horizontaler Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegungen zum Preis und zur Leistung von Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) sowie im [Tutorial](sql-database-elastic-pool-create-portal.md) zum Erstellen eines neuen Pools.  
+Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegungen zum Preis und zur Leistung von Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md). Informationen zum Erstellen eines neuen Pools finden Sie unter [Erstellen und Verwalten eines Pools für elastische Datenbanken über das Azure-Portal](sql-database-elastic-pool-manage-portal.md).  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -103,10 +104,5 @@ Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegunge
 [2]:./media/sql-database-elastic-scale-introduction/h_versus_vert.png
 [3]:./media/sql-database-elastic-scale-introduction/overview.png
 [4]:./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

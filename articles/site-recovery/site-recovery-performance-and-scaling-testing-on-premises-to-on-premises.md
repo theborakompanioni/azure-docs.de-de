@@ -1,5 +1,5 @@
 ---
-title: "Ergebnisse von Leistungs- und Skalierungstests für die Hyper-V-Replikation vom Typ „lokal zu lokal“ mit Site Recovery | Microsoft Docs"
+title: "Testergebnisse für die Hyper-V-Replikation zwischen Standorten mit Azure Site Recovery | Microsoft-Dokumentation"
 description: "Dieser Artikel bietet Informationen zu Leistungstests für die Replikation zwischen lokalen Standorten mithilfe von Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/01/2016
+ms.date: 01/23/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: b3c35bf129dd1566f3e2084caacc0330b5a6fc32
+ms.sourcegitcommit: 1b95723ec9886835c5967c9efe95b4922390a847
+ms.openlocfilehash: 92b5200016b943c06ef7732344d4136bd3c491b7
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="performance-test-and-scale-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>Ergebnisse von Leistungs- und Skalierungstests für die Hyper-V-Replikation vom Typ „Lokal zu lokal“ mit Site Recovery
+# <a name="test-results-for-on-premises-to-on-premises-hyper-v-replication-with-site-recovery"></a>Testergebnisse für die Hyper-V-Replikation vom Typ „Lokal zu lokal“ mit Site Recovery
 Mit Microsoft Azure Site Recovery können Sie die Replikation virtueller Computer und physischer Server in Azure oder zu einem sekundären lokalen Standort orchestrieren. Dieser Artikel bietet die Ergebnisse unserer Leistungstests beim Replizieren virtueller Hyper-V-Computer zwischen zwei lokalen Rechenzentren.
 
 ## <a name="overview"></a>Übersicht
@@ -71,7 +72,7 @@ Die Menge der E/A-Vorgänge am Wiederherstellungsstandort ist eine Funktion der 
 ![Ergebnisse (sekundär)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744918.png)
 
 ### <a name="effect-of-replication-on-network-utilization"></a>Auswirkung der Replikation auf die Netzwerkauslastung
-Im Schnitt wurden bei aktivierter Komprimierung zwischen primärem Knoten und Wiederherstellungsknoten pro Sekunde etwa 275 MB der verfügbaren Netzwerkbandbreite von 5 GB/s beansprucht.
+Im Schnitt wurden bei aktivierter Komprimierung zwischen primärem Knoten und Wiederherstellungsknoten pro Sekunde etwa 275 MB der verfügbaren Netzwerkbandbreite von 5 GB/s beansprucht.
 
 ![Ergebnisse (Netzwerkauslastung)](./media/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/IC744919.png)
 
@@ -124,11 +125,11 @@ Die Ergebnisse zeigen deutlich, dass Azure Site Recovery in Kombination mit Hype
 
 | Workload | E/A-Größe (KB) | Prozent (Zugriff) | Prozent (Lesen) | Ausstehende E/A-Vorgänge | E/A-Muster |
 | --- | --- | --- | --- | --- | --- |
-| Dateiserver |48163264 |60 % 20 % 5 % 5 % 10 % |80 % 80 % 80 % 80 % 80 % |88888 |Alle 100 % zufällig |
-| SQL Server (Volume 1) SQL Server (Volume 2) |864 |100 % 100 % |70 % 0 % |88 |100 % zufällig 100 % sequenziell |
+| Dateiserver |48163264 |60 %&20; %&5; %&5; %&10; % |80 %&80; %&80; %&80; %&80; % |88888 |Alle 100 % zufällig |
+| SQL Server (Volume 1) SQL Server (Volume 2) |864 |100 %&100; % |70 %&0; % |88 |100 % zufällig&100; % sequenziell |
 | Exchange |32 |100 % |67 % |8 |100 % zufällig |
-| Arbeitsstation/VDI |464 |66 % 34 % |70 % 95 % |11 |Beides 100 % zufällig |
-| Webdateiserver |4864 |33 % 34 % 33 % |95 % 95 % 95 % |888 |Alle 75 % zufällig |
+| Arbeitsstation/VDI |464 |66 %&34; % |70 %&95; % |11 |Beides 100 % zufällig |
+| Webdateiserver |4864 |33 %&34; %&33; % |95 %&95; %&95; % |888 |Alle 75 % zufällig |
 
 ### <a name="virtual-machine-configuration"></a>Konfiguration des virtuellen Computers
 * 470 virtuelle Computer im primären Cluster.
@@ -170,10 +171,4 @@ Der Tabelle fasst die Leistungsmetriken und -indikatoren zusammen, die für die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einrichten von Schutz zwischen zwei lokalen VMM-Standorten](site-recovery-vmm-to-vmm.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

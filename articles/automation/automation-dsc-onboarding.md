@@ -1,5 +1,5 @@
 ---
-title: "Integrieren physischer und virtueller Computer für die Verwaltung durch Azure Automation DSC | Microsoft Docs"
+title: "Integrieren von Computern für die Verwaltung durch Azure Automation DSC | Microsoft-Dokumentation"
 description: "Einrichten von Computern für die Verwaltung mit Azure Automation DSC"
 services: automation
 documentationcenter: dev-center-name
@@ -14,8 +14,9 @@ ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
 translationtype: Human Translation
-ms.sourcegitcommit: 18c6a55f2975305203bf20a040ac29bc9527a124
-ms.openlocfilehash: 0832b5866b49800cc0aecda8f4e473f89b12139b
+ms.sourcegitcommit: e2257730f0c62dbc0313ce7953fc5f953dae8ac3
+ms.openlocfilehash: f81536322ad1bb16e4af326e0b053da47690619c
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -196,7 +197,7 @@ Auf dem Computer, auf dem dieser Befehl ausgeführt wird, muss die neueste Versi
 
 ## <a name="generating-dsc-metaconfigurations"></a>Generieren von DSC-Metakonfigurationen
 
-Sie können eine DSC-Metakonfiguration generieren, um einen beliebigen Computer generisch in Azure Automation DSC zu integrieren. Wird diese angewendet, weist sie den DSC-Agent an, sowohl Informationen von Azure Automation DSC abzurufen als auch Informationen an Azure Automation DSC zu senden. Die DSC-Metakonfigurationen für Azure Automation DSC können sowohl über eine PowerShell DSC-Konfiguration als auch über die Azure Automation PowerShell-Cmdlets generiert werden.
+Sie können eine [DSC-Metakonfiguration](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) generieren, um einen beliebigen Computer generisch in Azure Automation DSC zu integrieren. Wird diese angewendet, weist sie den DSC-Agent an, Informationen von Azure Automation DSC abzurufen und Informationen an Azure Automation DSC zu senden. Die DSC-Metakonfigurationen für Azure Automation DSC können sowohl über eine PowerShell DSC-Konfiguration als auch über die Azure Automation PowerShell-Cmdlets generiert werden.
 
 > [!NOTE]
 > DSC-Metakonfigurationen enthalten die notwendigen geheimen Schlüssel, um einen Computer in ein Automation-Konto für die Verwaltung zu integrieren. Stellen Sie den ordnungsgemäßen Schutz aller von Ihnen generierten DSC-Metakonfigurationen sicher oder löschen Sie diese nach der Verwendung.
@@ -319,7 +320,11 @@ Sie können eine DSC-Metakonfiguration generieren, um einen beliebigen Computer 
 
 3. Geben Sie den Registrierungsschlüssel und die URL für Ihr Automation-Konto sowie die Namen der Computer ein, die integriert werden sollen. Alle anderen Parameter sind optional. Informationen zum Suchen des Registrierungsschlüssels und der Registrierungs-URL für Ihr Automation-Konto finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
 4. Wenn die Computer zwar DSC-Statusinformationen an Azure Automation DSC senden, jedoch keine Konfiguration oder PowerShell-Module abrufen sollen, müssen Sie den **ReportOnly** -Parameter auf „true“ festlegen.
-5. Führen Sie das Skript aus. Ihr Arbeitsverzeichnis sollte nun einen Ordner namens **DscMetaConfigs** mit den PowerShell DSC-Metakonfigurationen der zu integrierenden Computer enthalten.
+5. Führen Sie das Skript aus. Ihr Arbeitsverzeichnis sollte nun einen Ordner namens **DscMetaConfigs** mit den PowerShell DSC-Metakonfigurationen der zu integrierenden Computer (als Administrator) enthalten.
+
+    ```powershell
+    Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
+    ```
 
 ### <a name="using-the-azure-automation-cmdlets"></a>Verwenden der Azure Automation-Cmdlets
 
@@ -338,13 +343,16 @@ Wenn die Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC zu
         ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
         OutputFolder = "$env:UserProfile\Desktop\";
     }
-
     # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     Get-AzureRmAutomationDscOnboardingMetaconfig @Params
-     ```
-
-    Ihr Arbeitsverzeichnis sollte nun einen Ordner namens ***DscMetaConfigs***mit den PowerShell DSC-Metakonfigurationen der zu integrierenden Computer vorhanden sein.
+    ```
+    
+4. Ihr Arbeitsverzeichnis sollte nun einen Ordner namens ***DscMetaConfigs***mit den PowerShell DSC-Metakonfigurationen der zu integrierenden Computer (als Administrator) enthalten.
+    
+    ```powershell
+    Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
+    ```
 
 ## <a name="secure-registration"></a>Sichere Registrierung
 
@@ -384,9 +392,4 @@ Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrier
 * [Azure Automation DSC – Übersicht](automation-dsc-overview.md)
 * [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

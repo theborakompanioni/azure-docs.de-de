@@ -11,11 +11,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 918c2b096b9b6d935c8d5bc2588a978cdf8878cf
-ms.openlocfilehash: 0c4f1489893f464eee1f76e94f2b35650f06e44e
+ms.sourcegitcommit: 90327223d19ffc6697237d697b93fe88e1654e2c
+ms.openlocfilehash: fc668e1b4af662506da6652bbf21bab6cf91b114
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -53,21 +54,21 @@ Nur die folgenden Geräte werden in den Informationen unter BENUTZER aufgeführt
 
 **F: Warum ist ein Gerät, das ich im Azure-Portal oder mit Windows PowerShell gelöscht habe, immer noch als registriert aufgeführt?**
 
-**A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. Wenn Sie das Gerät erneut registrieren möchten, muss dies manuell auf dem Gerät erfolgen. 
+**A:** Dies ist beabsichtigt. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. Wenn Sie das Gerät entfernen und erneut registrieren möchten, muss dies manuell auf dem Gerät erfolgen. 
 
 Für Windows 10 und Windows Server 2016, die in die lokale AD-Domäne eingebunden sind:
 
-1.  Öffnen Sie die Eingabeaufforderung als Administrator.
+1.    Öffnen Sie die Eingabeaufforderung als Administrator.
 
-2.  Geben Sie **dsregcmd.exe /leave** ein.
+2.    Geben Sie **dsregcmd.exe /debug /leave** ein.
 
-3.  Geben Sie **dsregcmd.exe** ein.
+3.    **Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut registriert.** 
 
 Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
-1.  Öffnen Sie die Eingabeaufforderung als Administrator.
-2.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`ein.
-3.  Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`ein.
+1.    Öffnen Sie die Eingabeaufforderung als Administrator.
+2.    Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`ein.
+3.    Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`ein.
 
 ---
 
@@ -75,13 +76,13 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 **A:**
 
--   Wenn unter Windows 10 und Windows Server 2016 wiederholt versucht wird, dasselbe Gerät zu entfernen und erneut hinzuzufügen, können doppelte Einträge auftreten. 
+-    Wenn unter Windows 10 und Windows Server 2016 wiederholt versucht wird, dasselbe Gerät zu entfernen und erneut hinzuzufügen, können doppelte Einträge auftreten. 
 
--   Wenn Sie „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet haben, erstellt jeder Windows-Benutzer, der „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet, einen neuen Gerätedatensatz mit demselben Gerätenamen.
+-    Wenn Sie „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet haben, erstellt jeder Windows-Benutzer, der „Geschäfts-, Schul- oder Unikonto hinzufügen“ verwendet, einen neuen Gerätedatensatz mit demselben Gerätenamen.
 
--   Andere Windows-Plattformen, die mit der automatischen Registrierung in die lokale AD-Domäne eingebunden sind, erstellen einen neuen Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer, der sich beim Gerät anmeldet. 
+-    Andere Windows-Plattformen, die mit der automatischen Registrierung in die lokale AD-Domäne eingebunden sind, erstellen einen neuen Gerätedatensatz mit demselben Gerätenamen für jeden Domänenbenutzer, der sich beim Gerät anmeldet. 
 
--   Ein AADJ-Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
+-    Ein AADJ-Computer, der gelöscht, neu installiert und mit demselben Namen wieder eingebunden wurde, wird als anderer Datensatz mit demselben Gerätenamen angezeigt.
 
 ---
 
@@ -112,13 +113,13 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 **A:** Häufige Ursachen für dieses Szenario:
 
-1.  Ihre Benutzeranmeldeinformationen sind nicht mehr gültig.
+1.    Ihre Benutzeranmeldeinformationen sind nicht mehr gültig.
 
-2.  Ihr Computer kann nicht mit Azure Active Directory kommunizieren. Suchen Sie nach Netzwerkkonnektivitätsproblemen.
+2.    Ihr Computer kann nicht mit Azure Active Directory kommunizieren. Suchen Sie nach Netzwerkkonnektivitätsproblemen.
 
-3.  Die Voraussetzungen für Azure AD Join wurden nicht erfüllt. Stellen Sie sicher, dass Sie die Schritte für [Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-overview.md) befolgt haben.  
+3.    Die Voraussetzungen für Azure AD Join wurden nicht erfüllt. Stellen Sie sicher, dass Sie die Schritte für [Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-overview.md) befolgt haben.  
 
-4.  Für Verbundanmeldungen muss der Verbundserver einen aktiven WS-Trust-Endpunkt unterstützen. 
+4.    Für Verbundanmeldungen muss der Verbundserver einen aktiven WS-Trust-Endpunkt unterstützen. 
 
 ---
 
@@ -134,19 +135,20 @@ Für andere Windows-Plattformen, die in die lokale AD-Domäne eingebunden sind:
 
 ---
 
+**F: Wo finde ich Anweisungen zum Einrichten der automatischen Geräteregistrierung?**
+
+**A:** Detaillierte Anleitungen finden Sie unter [Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+
+---
+
 **F: Wo finde ich Informationen zur Problembehandlung bei der automatischen Geräteregistrierung?**
 
 **A:** Informationen zur Problembehandlung finden Sie unter:
 
-1. [Troubleshooting the auto-registration of Azure AD domain joined computers for Windows 10 and Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md) (Problembehandlung bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016)
+1. [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md)
 
-2. [Troubleshooting the auto-registration of Azure AD domain joined computers for Windows down-level clients](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md) (Problembehandlung bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients)
+2. [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows-legacy.md)
  
 ---
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

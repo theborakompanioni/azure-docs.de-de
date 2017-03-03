@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/01/2016
+ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 7033955fa9c18b2fa1a28d488ad5268d598de287
-ms.openlocfilehash: 94d085ac026a309a457891944931901e9dc2564f
+ms.sourcegitcommit: e90efe810084939280b392c470e14e76d35aff01
+ms.openlocfilehash: e628143db9ceba5e159022d2eefe3e6dd9f4bf22
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -76,6 +77,8 @@ Weitere Informationen zu Client- und Dienstkommunikations-APIs, die mit Naming S
 
 **Imagespeicherdienst**: Jeder Service Fabric-Cluster verfügt über einen Imagespeicherdienst, in dem bereitgestellte Anwendungspakete mit Versionsangabe aufbewahrt werden. Kopieren Sie ein Anwendungspaket in den Imagespeicher, und registrieren Sie anschließend den in diesem Anwendungspaket enthaltenen Anwendungstyp. Erstellen Sie nach der Bereitstellung des Anwendungstyps daraus benannte Anwendungen. Sie können die Registrierung eines Anwendungstyps im Imagespeicherdienst aufheben, wenn alle seine benannten Anwendungen gelöscht wurden.
 
+Weitere Informationen zum Imagespeicherdienst finden Sie unter [Grundlegendes zur ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md).
+
 Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdienst finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md) .
 
 ## <a name="built-in-programming-models"></a>Integrierte Programmiermodelle
@@ -94,10 +97,5 @@ Weitere Informationen zu Service Fabric:
 * [Übersicht über Service Fabric](service-fabric-overview.md)
 * [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
 * [Anwendungsszenarien](service-fabric-application-scenarios.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

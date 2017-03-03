@@ -17,6 +17,7 @@ ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: 8e5dd57f4ff55e350aebce339f9f723cc6ca917b
 ms.openlocfilehash: 2a1e9c6e001280451ae01330ee659d1e27c2d89a
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -94,10 +95,5 @@ Kunden können ihre Ressourcen für Abonnements, Ressourcengruppen, virtuelle Ne
 Weitere Informationen zur Isolierung in Microsoft Azure finden Sie im [Isolierungsabschnitt des Azure-Sicherheitsleitfadens](/azure-security-getting-started/#isolation).
 
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

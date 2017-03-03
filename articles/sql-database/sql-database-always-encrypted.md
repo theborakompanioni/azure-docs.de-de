@@ -1,6 +1,6 @@
 ---
-title: "Always Encrypted – Schützen von vertraulichen Daten in Azure SQL-Datenbank mithilfe der Datenbankverschlüsselung | Microsoft Docs"
-description: "Schützen Sie vertrauliche Daten in der SQL-Datenbank in wenigen Minuten."
+title: "Always Encrypted: Azure SQL-Datenbank – Windows-Zertifikatspeicher | Microsoft-Dokumentation"
+description: "In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenbankverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio (SSMS) sichern. Sie erfahren hier auch, wie Sie Ihre Verschlüsselungsschlüssel im Windows-Zertifikatspeicher speichern."
 keywords: "Verschlüsseln von Daten, SQL-Verschlüsselung, Datenbankverschlüsselung, vertrauliche Daten, Always Encrypted"
 services: sql-database
 documentationcenter: 
@@ -17,17 +17,13 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 66044ef8353e61f0de5afb8c61d91335ecd6dcbb
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: 02ea369d76c1fe7266e9dc0cad2c75e4b5eada6a
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Schützen von vertraulichen Daten in SQL-Datenbank und Speichern der Verschlüsselungsschlüssel im Windows-Zertifikatspeicher
-> [!div class="op_single_selector"]
-> * [Azure-Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)
-> * [Windows-Zertifikatspeicher](sql-database-always-encrypted.md)
-> 
-> 
 
 In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenbankverschlüsselung unter Einsatz des [Always-Encrypted-Assistenten](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) sichern. Sie erfahren hier auch, wie Sie Ihre Verschlüsselungsschlüssel im Windows-Zertifikatspeicher speichern.
 
@@ -54,7 +50,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie auf **Neu** > **Daten und Speicher** > **SQL-Datenbank**.
-3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Ausführliche Anweisungen zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Erstellen einer SQL-Datenbank in wenigen Minuten](sql-database-get-started.md).
+3. Erstellen Sie auf einem neuen oder vorhandenen Server eine **leere** Datenbank mit dem Namen **Clinic**. Ausführliche Anweisungen zum Erstellen einer Datenbank im Azure-Portal finden Sie unter [Ihre erste Azure SQL-Datenbank](sql-database-get-started.md).
    
     ![Leere Datenbank erstellen](./media/sql-database-always-encrypted/create-database.png)
 
@@ -522,10 +518,5 @@ Nach dem Erstellen einer Datenbank, für die Always Encrypted verwendet wird, so
 * [SQL Server-Verschlüsselung](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted Wizard](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

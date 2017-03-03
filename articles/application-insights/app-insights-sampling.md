@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 611f4222b5ab1530658f612de39dd2712f98c250
 ms.openlocfilehash: cbc622a959c402fe25ce9ab026c1ae05f194d884
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -351,10 +352,5 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Filtern](app-insights-api-filtering-sampling.md) erhalten Sie eine strengere Kontrolle über die Sendungen Ihres SDK.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

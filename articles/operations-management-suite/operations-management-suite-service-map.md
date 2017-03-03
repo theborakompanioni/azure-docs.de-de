@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: cf3e083f17bf8b2245373bced5823afd21fe1af9
-ms.openlocfilehash: d2e55846667cccec824e31f648beac1c84fbcf50
+ms.sourcegitcommit: 638410921c6dad72e1bbe0c035243cea70a3deb1
+ms.openlocfilehash: 4bab1ba9c30cee50baeddc06931a3997aac0f33f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -91,7 +92,10 @@ Indem Sie in einem beliebigen Server auf die drei Punkte oben rechts klicken, wi
 ### <a name="showhide-self-links"></a>Selbstverlinkungen ein-/ausblenden
 Über „Selbstverlinkungen einblenden“ wird der Serverknoten mit allen Selbstverlinkungen (TCP-Verbindungen, die bei Prozessen auf dem Server starten und enden) neu gezeichnet.  Wenn Selbstverlinkungen angezeigt werden, ändert sich die Option im Menü zu „Selbstverlinkungen ausblenden“, wodurch Benutzer die Anzeige der Selbstverlinkungen ein- bzw. ausschalten können.
 
+## <a name="computer-summary"></a>Computerzusammenfassung
+Der Computerzusammenfassungsbereich enthält eine Übersicht des Betriebssystems des Servers und der Zahl der Abhängigkeiten zusammen mit einer Vielzahl von Daten aus anderen OMS-Lösungen, einschließlich Leistungsmetriken, Änderungsnachverfolgung, Sicherheit, Updates etc.
 
+![Computerzusammenfassung](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Computer- und Prozesseigenschaften
 In einer Service Map-Zuordnung können Sie Computer und Prozesse auswählen, um zusätzlichen Kontext zu deren Eigenschaften zu erhalten.  Folgende Informationen zu Computern können angezeigt werden: DNS-Name, IPv4-Adressen, CPU- und Arbeitsspeicherkapazität, VM-Typ, Betriebssystemversion, Uhrzeit des letzten Neustarts und die IDs ihrer OMS- und Service Map-Agents.
@@ -106,10 +110,22 @@ Der Übersichtsbereich für einen Prozess bietet zusätzliche Informationen übe
 
 ![Prozessübersicht](media/oms-service-map/process-summary.png)
 
-## <a name="computer-summary"></a>Computerzusammenfassung
-Der Computerzusammenfassungsbereich enthält eine Übersicht des Betriebssystems des Servers und der Zahl der Abhängigkeiten zusammen mit einer Vielzahl von Daten aus anderen OMS-Lösungen, einschließlich Leistungsmetriken, Änderungsnachverfolgung, Sicherheit, Updates etc.
+## <a name="oms-alerts-integration"></a>Integration von OMS-Warnungen
+Service Map ist in OMS-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden.  Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungenbereich werden die Warnungen aufgelistet.
 
-![Computerzusammenfassung](media/oms-service-map/machine-summary.png)
+![Computerwarnungenbereich](media/oms-service-map/machine-alerts.png)
+
+Beachten Sie: Damit Service Map relevante Warnungen anzeigen kann, muss die Warnungsregel so erstellt werden, dass sie für einen bestimmten Computer ausgelöst wird.  So erstellen Sie richtige Warnungen:
+- Beziehen Sie eine Klausel zur Gruppierung nach Computer ein: „by Computer interval 1minute“.
+- Wählen Sie die Warnung auf Basis der Metrikmessung.
+
+![Warnungskonfiguration](media/oms-service-map/alert-configuration.png)
+
+
+## <a name="oms-log-events-integration"></a>Integration von OMS-Protokollereignissen
+Service Map ist in die Protokollsuche integriert, um die Anzahl aller verfügbaren Protokollereignisse für den ausgewählten Server während des ausgewählten Zeitraums anzuzeigen.  Sie können auf eine beliebige Zeile in der Liste der Ereignisanzahl klicken, um zur Protokollsuche zu wechseln und die einzelnen Protokollereignisse anzuzeigen.
+
+![Protokollereignisse](media/oms-service-map/log-events.png)
 
 ## <a name="oms-change-tracking-integration"></a>Integration der OMS-Änderungsnachverfolgung
 Die Integration von Service Map in die Änderungsnachverfolgung erfolgt automatisch, wenn beide Lösungen im OMS-Arbeitsbereich aktiviert und konfiguriert werden.
@@ -138,19 +154,6 @@ Die Integration von Service Map in die Updateverwaltung erfolgt automatisch, wen
 
 Im Computerupdatebereich werden Daten aus der Updateverwaltungslösung von OMS für den ausgewählten Server angezeigt.  Im Bereich wird ggf. für den ausgewählten Zeitraum eine Zusammenfassung fehlender Updates für den Server angezeigt.
 ![Bereich für die Änderungsnachverfolgung auf einem Computer](media/oms-service-map/machine-updates.png)
-
-
-## <a name="oms-alerts-integration"></a>Integration von OMS-Warnungen
-Service Map ist in OMS-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden.  Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungenbereich werden die Warnungen aufgelistet.
-
-![Computerwarnungenbereich](media/oms-service-map/machine-alerts.png)
-
-Beachten Sie: Damit Service Map relevante Warnungen anzeigen kann, muss die Warnungsregel so erstellt werden, dass sie für einen bestimmten Computer ausgelöst wird.  So erstellen Sie richtige Warnungen:
-- Beziehen Sie eine Klausel zur Gruppierung nach Computer ein: „by Computer interval 1minute“.
-- Wählen Sie die Warnung auf Basis der Metrikmessung.
-
-![Warnungskonfiguration](media/oms-service-map/alert-configuration.png)
-
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 Die Computer- und Prozessbestandsdaten von Service Map stehen in Log Analytics zur [Suche](../log-analytics/log-analytics-log-searches.md) zur Verfügung.  Dies kann in verschiedenen Szenarien von Nutzen sein, wie z.B. Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
@@ -251,10 +254,14 @@ Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
 Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
 
 
+## <a name="rest-api"></a>REST-API
+Alle Server-, Prozess- und Abhängigkeitsdaten in Service Map stehen über die [Service Map-REST-API](https://docs.microsoft.com/en-us/rest/api/servicemap/) zur Verfügung.
+
+
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 Wenn Sie den Service Map-Dienst verwenden, sammelt Microsoft automatisch Nutzungs- und Leistungsdaten. Microsoft verwendet diese Daten, um die Qualität, Sicherheit und Integrität des Service Map-Diensts sicherzustellen und zu verbessern. Zu den Daten gehören Informationen zur Konfiguration Ihrer Software, z.B. Betriebssystem und Betriebssystemversion, sowie IP-Adresse, DNS-Name und Name der Arbeitsstation, um exakte und effiziente Funktionen für die Problembehandlung bereitzustellen. Wir erfassen weder Namen noch Adressen oder andere Kontaktinformationen.
 
-Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Datenschutzbestimmungen für Onlinedienste von Microsoft](hhttps://go.microsoft.com/fwlink/?LinkId=512132).
+Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Datenschutzbestimmungen für Onlinedienste von Microsoft](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -263,9 +270,4 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="feedback"></a>Feedback
 Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

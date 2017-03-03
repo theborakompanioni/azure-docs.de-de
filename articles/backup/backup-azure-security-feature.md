@@ -12,11 +12,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2016
+ms.date: 02/17/2017
 ms.author: pajosh
 translationtype: Human Translation
-ms.sourcegitcommit: 276b0e89c41cf4e58c4431969276f0985cbf0427
-ms.openlocfilehash: e5ce6a413f5164a564493eaaefd43f6b2a3aa648
+ms.sourcegitcommit: 5c49de40401235d38142efd60d22b0591752fe75
+ms.openlocfilehash: f17802bf455b82f0b5239356c35024ecde7f1f35
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -29,13 +30,14 @@ Immer mehr Kunden sind mit Sicherheitsproblemen wie Schadsoftware, Ransomware od
 
 > [!NOTE]
 > Die Sicherheitsfunktionen sollten nur aktiviert werden, wenn Sie die folgenden Elemente verwenden: <br/>
-> * **MAB Agent** – ab Version 2.0.9052. Nach der Aktivierung dieser Funktionen sollten Sie auf diese Agent-Version upgraden, um kritische Vorgänge wie „Change Passphrase“ (Passphrase ändern) oder „Stop backup with Delete data“ (Sicherungsabbruch mit Datenlöschung) auszuführen. <br/>
-> * **Azure Backup Server** – ab MAB Agent-Version 2.0.9052 mit Azure Backup Server Update 1 <br/>
-> * **DPM** – Aktivieren Sie für DPM diese Funktionen nicht. Sie werden in Kürze in zukünftigen Updaterollups zur Verfügung stehen, die Aktivierung hat also auf die vorhandene Funktionalität keine Auswirkung. <br/>
+> * **MAB Agent** – ab Version 2.0.9052. Nach der Aktivierung dieser Features sollten Sie auf diese Agent-Version upgraden, um kritische Vorgänge wie „Change Passphrase“ (Passphrase ändern) oder „Stop backup with Delete data“ (Sicherungsabbruch mit Datenlöschung) auszuführen. <br/>
+> * **Azure Backup Server:** ab MAB Agent-Version 2.0.9052 mit Azure Backup Server Update 1 <br/>
+> * **DPM:** ab MAB-Agent-Version 2.0.9052 mit DPM 2012 R2 UR12 oder DPM 2016 UR2 <br/>
 > * **VM-Backup-Funktion von IaaS** – Aktivieren Sie diese Funktionen nicht für IaaS VM Backup. Sie stehen für IaaS VM Backup noch nicht zur Verfügung, die Aktivierung hat also auf IaaS VM Backup keine Auswirkung.
-> * Nach der Aktivierung stehen Ihnen die Sicherheitsfunktionen für alle Microsoft Azure Recovery Services Agent-Computer (MARS) und für alle Server von Azure Backup Server zur Verfügung, die zu dem Tresor registriert sind. <br/>
+> * Diese Features sind nur für den Recovery Services-Tresor verfügbar.
+> * Bei allen neu erstellten Recovery Services-Tresoren sind diese Features standardmäßig aktiviert. Für vorhandene Recovery Services-Tresore müssen die Benutzer diese Features anhand der Schritte im Abschnitt unten aktivieren.
+> * Nach der Aktivierung stehen Ihnen die Sicherheitsfeatures für alle Microsoft Azure Recovery Services-Agent-Computer (MARS) und für alle Server von Azure Backup Server und DPM zur Verfügung, die bei dem Tresor registriert sind. <br/>
 > * Die Aktivierung dieser Einstellung ist eine einmalige Aktion, und die Funktionen können nach der Aktivierung nicht wieder deaktiviert werden. <br/>
-> * Diese Funktion ist nur für den Recovery Services-Tresor verfügbar.
 >
 >
 
@@ -78,6 +80,11 @@ Für Benutzer von **Azure Backup Server **:
 1. Wenn der Server, auf dem die Sicherungen durchgeführt wurden, noch verfügbar ist, schützen Sie die gelöschten Datenquellen erneut, und verwenden Sie die Funktion „Daten wiederherstellen“, um die Wiederherstellung mithilfe aller alten Wiederherstellungspunkte durchzuführen.
 2. Wenn der oben genannte Computer nicht mehr verfügbar ist, befolgen Sie die Schritte unter [Daten von einem anderen Azure Backup-Server wiederherstellen](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server), um diese Daten von einem anderen Server von Azure Backup Server wiederherzustellen.
 
+Für Benutzer von **Data Protection Manager (DPM)**:
+
+1. Wenn der Server, auf dem die Sicherungen durchgeführt wurden, noch verfügbar ist, schützen Sie die gelöschten Datenquellen erneut, und verwenden Sie die Funktion „Daten wiederherstellen“, um die Wiederherstellung mithilfe aller alten Wiederherstellungspunkte durchzuführen.
+2. Wenn der oben genannte Computer nicht mehr verfügbar ist, verwenden Sie [Externen DPM hinzufügen](backup-azure-alternate-dpm-server.md#recover-data-from-another-azure-backup-server), um einen anderen DPM-Server zum Abrufen dieser Daten zu verwenden.
+
 ## <a name="preventing-attacks"></a>Angriffsprävention
 Als Teil dieser Funktion wurden Prüfungen hinzugefügt, mit denen sichergestellt wird, dass bestimmte Vorgänge nur von gültigen Benutzern ausgeführt werden können.
 
@@ -108,9 +115,5 @@ Die in diesem Artikel genannten Sicherheitsfunktionen bieten Abwehrmechanismen g
 * [Erste Schritte mit Azure Recovery Services-Tresor](backup-azure-vms-first-look-arm.md), um diese Funktionen zu aktivieren
 * [Laden Sie den neuesten Azure Recovery Services-Agent herunter](http://aka.ms/azurebackup_agent), um Ihre Windows-Computer und Ihre Sicherungsdaten gegen Angriffe zu schützen.
 * [Laden Sie die neueste Version von Azure Backup Server herunter](https://aka.ms/latest_azurebackupserver), um Ihre Workloads und Sicherungsdaten gegen Angriffe zu schützen.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+* Laden Sie [UR12 für System Center 2012 R2 Data Protection Manager](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) oder [UR2 für System Center 2016 Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) herunter, um Workloads und Ihre Sicherungsdaten vor Angriffen zu schützen
 

@@ -17,6 +17,7 @@ ms.author: bradsev;deguhath
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 99f12dc1ea65d4b9be3249ea5d5c7452f5a8d72e
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -58,7 +59,7 @@ Sie können ein Jupyter-Notebook über das Azure-Portal starten. Suchen Sie den 
 
 ![Cluster-Dashboard und Jupyter-Notebooks](./media/machine-learning-data-science-process-scala-walkthrough/spark-jupyter-on-portal.png)
 
-Sie können auch unter &lt;https://CLUSTERNAME.azurehdinsight.net/jupyter&gt; auf Jupyter Notebooks zuzugreifen. Ersetzen Sie *clustername* durch den Namen Ihres Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Jupyter-Notebooks zuzugreifen.
+Sie können auch unter https://&lt;clustername&gt;.azurehdinsight.net/jupyter. auf Jupyter Notebooks zuzugreifen. Ersetzen Sie *clustername* durch den Namen Ihres Clusters. Sie benötigen das Kennwort für Ihr Administratorkonto, um auf die Jupyter-Notebooks zuzugreifen.
 
 ![Wechseln zu Jupyter-Notebooks mit dem Namen des Clusters](./media/machine-learning-data-science-process-scala-walkthrough/spark-jupyter-notebook.png)
 
@@ -416,7 +417,7 @@ Verwenden Sie für die Indizierung `StringIndexer()`- und für die One-Hot-Codie
 Zeit zum Ausführen der Zelle: 4 Sekunden.
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>Stichprobenerfassung in Dataset und Teilen in Trainings- und Testteile
-Dieser Code erstellt eine zufällige Stichprobe der Daten (in diesem Beispiel 25%). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigt Ihnen der Artikel, wie Sie Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Teilen Sie die Stichprobe als Nächstes zur Klassifizierung und Regressionsmodellierung in einen Trainingsteil (in diesem Beispiel 75%) und einen Testteil (in diesem Beispiel 25%) ein.
+Dieser Code erstellt eine zufällige Stichprobe der Daten (in diesem Beispiel&25;%). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigt Ihnen der Artikel, wie Sie Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Teilen Sie die Stichprobe als Nächstes zur Klassifizierung und Regressionsmodellierung in einen Trainingsteil (in diesem Beispiel&75;%) und einen Testteil (in diesem Beispiel&25;%) ein.
 
 Fügen Sie eine Zufallszahl (zwischen 0 und 1) in jede Zeile (in einer „rand“-Spalte) ein, die zur Auswahl der Kreuzvalidierungsteilmengen während des Trainings verwendet werden kann.
 
@@ -1107,10 +1108,5 @@ Eine Übersicht zu Themen, die Sie durch die Aufgaben führen, die den Data Scie
 [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](data-science-process-walkthroughs.md) beschreibt andere exemplarische End-to-End-Vorgehensweisen, in denen die Schritte im Team Data Science-Prozess für bestimmte Szenarien veranschaulicht werden. Die exemplarischen Vorgehensweisen zeigen auch, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden.
 
 [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](machine-learning-data-science-spark-model-consumption.md) zeigt Ihnen, wie Sie Scala-Code verwenden, um mit in Spark erstellten und im Azure-Blobspeicher gespeicherten Machine Learning-Modellen automatisch neue Datasets zu laden und zu bewerten. Sie können die dortigen Anweisungen befolgen und für eine automatisierte Nutzung einfach den Python-Code durch den Scala-Code in diesem Artikel ersetzen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

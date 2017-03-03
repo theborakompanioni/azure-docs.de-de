@@ -1,6 +1,6 @@
 ---
 
-title: Format der Protokolldateien des Import/Export-Diensts | Microsoft-Dokumentation
+title: Format der Protokolldateien von Azure Import/Export | Microsoft Docs
 description: "Erfahren Sie mehr über das Format der Protokolldateien, die erstellt werden, wenn Schritte für einen Auftrag des Import/Export-Diensts ausgeführt werden."
 author: muralikk
 manager: syadav
@@ -13,22 +13,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: fab36b750ec4ba518fad8392f611cd46d8155985
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 0b402db8c7e6bd4abb5aaf6ded7f539cfec7172e
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="import-export-service-log-file-format"></a>Format der Protokolldateien des Import/Export-Diensts
+# <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  
   
 Es gibt zwei Protokolle, die vom Import/Export-Dienst geschrieben werden können:  
   
 -   Das Fehlerprotokoll wird bei einem Fehler immer generiert.  
   
--   Das ausführliche Protokoll ist standardmäßig nicht aktiviert, kann jedoch aktiviert werden, indem Sie die Eigenschaft `EnableVerboseLog` für einen [Put Job](/rest/api/storageservices/importexport/Put-Job)- oder [Update Job Properties](/rest/api/storageservices/importexport/Update-Job-Properties)-Vorgang festlegen.  
+-   Das ausführliche Protokoll ist standardmäßig nicht aktiviert, kann jedoch aktiviert werden, indem Sie die Eigenschaft `EnableVerboseLog` für einen [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)- oder [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update)-Vorgang festlegen.  
   
 ## <a name="log-file-location"></a>Speicherort der Protokolldatei  
 Protokolle werden in Blockblobs in dem Container oder virtuellen Verzeichnis geschrieben, dass mit der Einstellung `ImportExportStatesPath` angegeben wird, die Sie für einen `Put Job`-Vorgang festlegen können. Der Speicherort, in den die Protokolle geschrieben werden, hängt davon ab, wie die Authentifizierung für den Auftrag angegeben ist und welcher Wert für `ImportExportStatesPath` festgelegt wurde. Die Authentifizierung für den Auftrag kann über einen Speicherkontoschlüssel oder eine Container-SAS (Shared Access Signature) angegeben werden.  
@@ -44,7 +45,7 @@ In der folgenden Tabelle sind die möglichen Optionen dargestellt:
 |Container-SAS|Standardwert|Ein virtuelles Verzeichnis namens `waimportexport` (der Standardname) unter dem Container, der in der SAS angegeben ist.<br /><br /> Beispiel: Wenn die für den Auftrag angegebene SAS `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` ist, wäre der Protokollspeicherort `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`.|  
 |Container-SAS|Vom Benutzer angegebener Wert|Ein virtuelles vom Benutzer benanntes Verzeichnis unter dem Container, der in der SAS angegeben ist.<br /><br /> Beispiel: Wenn die für den Auftrag angegebene SAS `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` ist und das angegebene virtuelle Verzeichnis `mylogblobs` heißt, wäre der Protokollspeicherort `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Sie können die URL für das Fehlerprotokoll und das ausführliche Protokoll durch Aufrufen des [Get Job](/rest/api/storageservices/importexport/Get-Job3)-Vorgangs abrufen. Die Protokolle sind verfügbar, nachdem die Verarbeitung des Laufwerks abgeschlossen wurde.  
+Sie können die URL für das Fehlerprotokoll und das ausführliche Protokoll durch Aufrufen des [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgangs abrufen. Die Protokolle sind verfügbar, nachdem die Verarbeitung des Laufwerks abgeschlossen wurde.  
   
 ## <a name="log-file-format"></a>Protokolldateiformat  
 Das Format für beide Protokolle ist identisch: ein Blob mit XML-Beschreibungen der Ereignisse, die beim Kopieren von Blobs zwischen der Festplatte und dem Kundenkonto aufgetreten sind.  
@@ -358,10 +359,5 @@ Das folgende Fehlerprotokoll für einen Exportauftrag gibt an, dass der Blobinha
 ```
   
 ## <a name="see-also"></a>Weitere Informationen  
-[Speicherimport/-export – REST](/rest/api/storageservices/importexport/Storage-Import-Export-Service-REST-API-Reference)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
+[Speicherimport/-export – REST](/rest/api/storageimportexport/)
 

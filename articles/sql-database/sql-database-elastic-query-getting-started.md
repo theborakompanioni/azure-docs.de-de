@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 05/23/2016
 ms.author: ddove
 translationtype: Human Translation
-ms.sourcegitcommit: bee6dbf8910534b07a77e7fd7dd84edf07cf3dd5
-ms.openlocfilehash: bc475cd1abfa4d9ff6c8afe9647b353054dc201b
+ms.sourcegitcommit: cbd1c7e7d915e8a10d69c7a2f1679835dcee23b7
+ms.openlocfilehash: b64129b77385685b41aac55c52a34e9d0495124e
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -46,7 +47,7 @@ Hier erstellen Sie einen Shardzuordnungs-Manager und mehrere Shards und fügen a
    Im nächsten Abschnitt erstellen wir einen Endpunkt für eine Beispieldatenbank, der umfangreichere Abfragen der Daten über Shards hinweg unterstützt.
 
 ## <a name="create-an-elastic-query-database"></a>Erstellen einer elastischen Datenbankabfrage
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) , und melden Sie sich an.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich an.
 2. Erstellen Sie eine neue Azure SQL-Datenbank auf demselben Server, auf dem sich auch das Shard-Setup befindet. Nennen Sie die Datenbank "ElasticDBQuery".
 
     ![Azure-Portal und -Tarif][3]
@@ -129,7 +130,16 @@ Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion f�
 
 Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+## <a name="next-steps"></a>Nächste Schritte
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Eine Übersicht über elastische Abfragen finden Sie unter [Übersicht über elastische Abfragen in Azure SQL-Datenbank](sql-database-elastic-query-overview.md).
+* Ein Tutorial zur vertikalen Partitionierung finden Sie unter [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
+* Die Syntax und Beispiele für Abfragen von vertikal partitionierten Daten finden Sie unter [Abfragen von vertikal partitionierten Daten](sql-database-elastic-query-vertical-partitioning.md).
+* Die Syntax und Beispiele für Abfragen von horizontal partitionierten Daten finden Sie unter [Abfragen von horizontal partitionierten Daten](sql-database-elastic-query-horizontal-partitioning.md).
+* Unter [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) finden Sie eine gespeicherte Prozedur, mit der eine Transact-SQL-Anweisung für eine einzelne Remoteinstanz von Azure SQL-Datenbank oder für eine Gruppe von Datenbanken ausgeführt wird, die als Shards in einem Schema mit horizontaler Partitionierung dienen.
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-getting-started/cmd-prompt.png
@@ -138,9 +148,4 @@ Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://az
 [4]: ./media/sql-database-elastic-query-getting-started/details.png
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

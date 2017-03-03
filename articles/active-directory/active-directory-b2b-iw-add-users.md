@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/09/2017
+ms.date: 02/16/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: a4e59dfa8a098f63c3173176c4d2675d6a59af00
-ms.openlocfilehash: 5622ab215fd7fea4c24ad00ea7132d12ecabbcd5
+ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
+ms.openlocfilehash: 02a1b163c77f3f7f6853762f442bffa617bd9f52
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -30,9 +31,7 @@ Information-Worker können das [Zugriffspanel für Anwendungen](http://myapps.mi
 ## <a name="information-workers-adding-b2b-collaboration-users-to-an-application"></a>Hinzufügen von B2B-Zusammenarbeitsbenutzern zu einer Anwendung durch Information-Worker
 Weisen Sie als Information-Worker in einer Partnerorganisation B2B-Zusammenarbeitsbenutzer zu einer App hinzu, wie im folgenden Video gezeigt:
 
-  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps]
-
-  Wenn dieses Video nicht eingebettet angezeigt wird, können Sie es [hier](https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps) aufrufen.
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure/information-worker-assign-to-apps/Player]
 
 ## <a name="information-workers-adding-b2b-collaboration-users-to-a-group"></a>Hinzufügen von B2B-Zusammenarbeitsbenutzern zu einer Gruppe durch Information-Worker
 
@@ -56,9 +55,4 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

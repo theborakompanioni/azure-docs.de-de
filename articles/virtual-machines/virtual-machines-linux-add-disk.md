@@ -1,6 +1,6 @@
 ---
-title: "Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer einen persistenten Datenträger hinzufügen."
+title: "Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Ihrem virtuellen Linux-Computer mithilfe von Azure CLI 1.0 und 2.0 einen persistenten Datenträger hinzufügen."
 keywords: "virtueller Linux-Computer,Ressourcendatenträger hinzufügen"
 services: virtual-machines-linux
 documentationcenter: 
@@ -16,14 +16,15 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.date: 02/02/2017
 ms.author: rasquill
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 50a71382982256e98ec821fd63c95fbe5a767963
-ms.openlocfilehash: 91f4ada749c3f37903a8757843b10060b73d95a2
-
+ms.sourcegitcommit: f520ed9cc1a3a7063d5b3ddacf7f0c8174e75a36
+ms.openlocfilehash: 77cbdaaea0eec5265ef005f66dd5efdd8e237022
+ms.lasthandoff: 02/21/2017
 
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
-In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. Zum Hinzufügen eines Datenträgers benötigen Sie die im Resource Manager-Modus (`azure config mode arm`) konfigurierte [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) (CLI).  
+In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an den virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird. 
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
@@ -31,13 +32,15 @@ Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit 
 Für verwaltete Datenträger:
 
 ```azurecli
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk –-new
+az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk \
+  –-new --size-gb 50
 ```
 
 Für nicht verwaltete Datenträger:
 
 ```azurecli
-azure vm disk attach-new myResourceGroup myVM 50
+az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
+  --new --size-gb 50
 ```
 
 ## <a name="attach-a-managed-disk"></a>Anfügen eines verwalteten Datenträgers
@@ -50,17 +53,18 @@ Durch die Verwendung von verwalteten Datenträgern können Sie sich auf Ihre vir
 Wenn Sie nur einen neuen Datenträger für Ihren virtuellen Computer benötigen, können Sie den Befehl `az vm disk attach` verwenden.
 
 ```azurecli
-az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk –-new
+az vm disk attach –g myResourceGroup –-vm-name myVM –-disk myDataDisk \
+  –-new --size-gb 50
 ```
 
 ### <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers 
 
-In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Hierbei müssen Sie die Datenträger-ID finden und diese an den Befehl `az vm disk attach-disk` übergeben. Der folgende Code verwendet einen Datenträger, der mit `az disk create -g myResourceGroup -n myDataDisk --size-gb 50` erstellt wurde.
+In vielen Fällen fügen Sie Datenträger an, die bereits erstellt wurden. Hierbei müssen Sie zunächst die Datenträger-ID suchen und diese an den Befehl `az vm disk attach` übergeben. Im folgenden Beispiel wird ein Datenträger verwendet, der mit `az disk create -g myResourceGroup -n myDataDisk --size-gb 50` erstellt wurde.
 
 ```azurecli
 # find the disk id
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
-az vm disk attach-disk -g myResourceGroup --vm-name myVM --disk $diskId
+az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
 Die Ausgabe sieht in etwa wie folgt aus (Sie können die Option `-o table` bei jedem Befehl zum Formatieren der Ausgabe verwenden):
@@ -96,22 +100,13 @@ Die Ausgabe sieht in etwa wie folgt aus (Sie können die Option `-o table` bei j
 Das Anfügen eines neuen Datenträgers lässt sich schnell erledigen, wenn Sie den Datenträger im gleichen Speicherkonto erstellen können, in dem sich auch Ihr virtueller Computer befindet. Geben Sie `azure vm disk attach-new` ein, um eine neue GB-Festplatte für den virtuellen Computer zu erstellen und anzufügen. Wenn Sie kein Speicherkonto explizit angeben, werden alle von Ihnen erstellten Datenträger im gleichen Speicherkonto platziert, in dem sich auch der Betriebssystemdatenträger befindet. Im folgenden Beispiel wird ein `50`-GB-Datenträger dem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` angefügt.
 
 ```azurecli
-azure vm disk attach-new myResourceGroup myVM 50
-```
-
-Ausgabe
-
-```azurecli
-info:    Executing command vm disk attach-new
-+ Looking up the VM "myVM"
-info:    New data disk location: https://mystorageaccount.blob.core.windows.net/vhds/myVM-20150526-043.vhd
-+ Updating VM "myVM"
-info:    vm disk attach-new command OK
+az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
+  --new --size-gb 50
 ```
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers
 > [!NOTE]
-> In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Sie können die **SSH**-Verbindung von VMs ändern, die mit dem Befehl `azure vm quick-create` erstellt wurden, indem Sie den Befehl `azure vm reset-access` zum vollständigen Zurücksetzen des **SSH**-Zugriffs verwenden, Benutzer hinzufügen oder entfernen oder Dateien für öffentliche Schlüssel zum Sichern des Zugriffs hinzufügen.
+> In diesem Thema wird mit Benutzernamen und Kennwörtern eine Verbindung mit einer VM hergestellt. Informationen zur Verwendung von öffentlichen und privaten Schlüsselpaaren für die Kommunikation mit Ihrer VM finden Sie unter [Verwenden von SSH mit Linux in Azure](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 > 
 > 
 
@@ -348,10 +343,5 @@ Es gibt zwei Methoden, TRIM-Unterstützung auf Ihrem virtuellen Linux-Computer z
 * Beachten Sie, dass der neue Datenträger bei einem Neustart nicht für den virtuellen Computer zur Verfügung steht, sofern Sie diese Informationen nicht in Ihre [fstab-Datei](http://en.wikipedia.org/wiki/Fstab) geschrieben haben.
 * Lesen Sie die Empfehlungen unter [Optimieren virtueller Linux-Computer in Azure](virtual-machines-linux-optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , um sicherzustellen, dass Ihr virtueller Linux-Computer richtig konfiguriert ist.
 * Erweitern Sie die Speicherkapazität durch Hinzufügen zusätzlicher Datenträger, und [konfigurieren Sie RAID](virtual-machines-linux-configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) für zusätzliche Leistung.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

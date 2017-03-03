@@ -19,6 +19,7 @@ ms.author: sedusch
 translationtype: Human Translation
 ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
 ms.openlocfilehash: db6d4de6f88672f2258fdeac8416c795bc0c4613
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -1390,10 +1391,5 @@ Verwenden Sie nicht die Azure Store-Georeplikation. Weitere Informationen erhalt
 Bezüglich aller weiteren allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von VMs mit IBM DB2 für LUW.
 
 Weitere Informationen finden Sie auch im Kapitel [SQL Server für SAP in Azure – Allgemeine Zusammenfassung][dbms-guide-5.8].
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: b3be7f31ac31c656744fb809e3972af0ac4ad4f1
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -76,9 +77,4 @@ Sie können die gewählten Parameter mithilfe einer Visualisierung des rechten A
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [tune-model-hyperparameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

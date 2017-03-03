@@ -17,6 +17,7 @@ ms.author: ilanr9;yijichen;garye
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 0c07495a932c8bfdabb97e8eebe8d99de19fbd15
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -400,10 +401,5 @@ Im folgenden Diagramm ist eine typische Architektur auf Basis von Cortana Intell
 ![End-to-End-Bereitstellungsarchitektur](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
 Weitere Informationen zu den einzelnen Komponenten und zur gesamten Architektur finden Sie unter der „Vorlage für Energielösungen“.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

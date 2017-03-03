@@ -15,6 +15,7 @@
 ### [Schützen des Web-API-Back-Ends mit AAD](api-management-howto-protect-backend-with-aad.md)
 ### [Verbinden mit einem virtuellen Netzwerk](api-management-using-with-vnet.md)
 ### [Herstellen einer Verbindung mit einem internen virtuellen Netzwerk](api-management-using-with-internal-vnet.md)
+### [Integration von Application Gateway in ein internes VNET](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [Gegenseitige Zertifikatauthentifizierung](api-management-howto-mutual-certificates.md)
 ## Konfigurieren von Richtlinien
 ### [Benutzerdefiniertes Caching](api-management-sample-cache-by-key.md)
@@ -24,13 +25,16 @@
 ### [Richtlinienreferenz – Index](api-management-policy-reference.md)
 ### [Übersicht über Richtlinien](api-management-howto-policies.md)
 ### [Verwalten von geheimen Schlüsseln mithilfe von Eigenschaften](api-management-howto-properties.md)
+### [Sichern von APIs über eine Clientzertifikatauthentifizierung](api-management-howto-mutual-certificates-for-clients.md)
 ## Anpassen der Entwickleroberfläche
-### [Anpassen des Entwicklerportals](api-management-customize-portal.md)
+### [Ändern von Seiteninhalt und Layout](api-management-modify-content-layout.md)
+### [Anpassen der Formatierung der Seitenelemente](api-management-customize-styles.md)
+### [Anpassen der Systemseiten mithilfe von Vorlagen](api-management-developer-portal-templates.md)
 ### [Authentifizierung mit AAD](api-management-howto-aad.md)
+### [Authentifizierung mit AAD B2C](api-management-howto-aad-b2c.md)
 ### [Delegierte Authentifizierung](api-management-howto-setup-delegation.md)
 ### [E-Mail-Benachrichtigungen und -Vorlagen](api-management-howto-configure-notifications.md)
 ### [Aktivieren der OAuth-Konsolenunterstützung](api-management-howto-oauth2.md)
-### [Anpassen mithilfe von Vorlagen](api-management-developer-portal-templates.md)
 ## Verwalten in Produktion
 ### [Verwalten von Gruppen](api-management-howto-create-groups.md)
 ### [Bereitstellen für mehrere Azure-Regionen](api-management-howto-deploy-multi-region.md)
@@ -80,9 +84,4 @@
 ## [Bereitstellen von RBAC-ähnlichem Zugriff über die REST-API](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [Einrichten von PostMan zum Aufrufen von API Management-APIs](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [API Management-Plug-In für die SmartBear Ready! -API](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

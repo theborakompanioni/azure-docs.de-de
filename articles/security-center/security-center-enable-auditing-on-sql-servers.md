@@ -1,6 +1,6 @@
 ---
 title: "Aktivieren der Überwachung für SQL-Server in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Aktivieren der Überwachung für SQL-Server“ umsetzen."
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Überwachung für SQL-Server aktivieren** implementieren."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
+ms.date: 02/03/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 2a15377af6f6dee3b9d2b9043f9803923ab3f29b
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 10206327b628358151ad4585b1d962538ea17bcd
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -29,23 +30,26 @@ Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren vir
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
-> 
-> 
+>
+>
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
 1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Überwachung für SQL-Server aktivieren** aus.  Daraufhin wird das Blatt **Überwachung für SQL-Server aktivieren** geöffnet.
-   ![Enable auditing on SQL servers][1]
+
+   ![Überwachung für SQL-Server aktivieren][1]
 2. Wählen Sie einen SQL-Server aus, für den die Überwachung aktiviert werden soll. Daraufhin wird das Blatt **Überwachungseinstellungen** angezeigt.
-   ![Auditing settings][2]
+
+   ![Überwachungseinstellungen][2]
 3. Wählen Sie auf dem Blatt **Überwachungseinstellungen** unter **Überwachung** die Option **EIN** aus.
+
    ![Aktivieren der Überwachungseinstellungen][3]
-4. Führen Sie die Schritte in [Erste Schritte bei der Überwachung von SQL-Datenbank](../sql-database/sql-database-auditing-get-started.md) zum Konfigurieren von Speicher aus, in dem Ihre Überwachungsprotokolle gespeichert werden sollen. Das Speicherkonto des Abonnements für die Datensammlung ist das Standardspeicherkonto.
-5. Führen Sie die Schritte in [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](../sql-database/sql-database-threat-detection-get-started.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
+4. Führen Sie die Schritte in [Überwachen von SQL-Datenbank im Azure-Portal](../sql-database/sql-database-auditing-portal.md) aus, um den Speicher zu konfigurieren, in dem Ihre Überwachungsprotokolle gespeichert werden sollen. Das Speicherkonto des Abonnements für die Datensammlung ist das Standardspeicherkonto.
+5. Führen Sie die Schritte in [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](../sql-database/sql-database-threat-detection.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Aktivieren der Überwachung für SQL-Server“ umsetzen. Weitere Informationen zum Schützen Ihrer SQL-Datenbank finden Sie unter:
 
-* [Sichern der SQL-Datenbank](../sql-database/sql-database-security.md)
+* [Sichern der SQL-Datenbank](../sql-database/sql-database-security-overview.md)
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
@@ -61,9 +65,4 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 [1]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing-on-sql-servers.png
 [2]:./media/security-center-enable-auditing-on-sql-server/enable-auditing.png
 [3]: ./media/security-center-enable-auditing-on-sql-server/auditing-settings-blade.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

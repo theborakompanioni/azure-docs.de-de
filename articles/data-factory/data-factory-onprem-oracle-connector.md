@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: a4b067e732bccb01faa96f23dbfd2ed65b7711a0
 ms.openlocfilehash: 62326da2e801a7c6e01d29e2298bd3552f331647
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -566,9 +567,4 @@ Beim Verschieben von Daten aus Oracle werden die folgenden Zuordnungen zwischen 
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

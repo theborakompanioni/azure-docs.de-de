@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan; annahar
 translationtype: Human Translation
-ms.sourcegitcommit: 5240bfc66ce15f845a511b7f09a5cd6209c8d539
-ms.openlocfilehash: 34cc0fbddadb3860320ae730c2bc9951c735c7f9
+ms.sourcegitcommit: 3fcd6583b415cea6b2151651297c55c93e59c796
+ms.openlocfilehash: b0375a99f5ea3d6af2d3ead382f9a43f1fd285f0
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -155,7 +156,7 @@ Führen Sie die folgenden Schritte aus, um ein VNet-Peering mit PowerShell zu er
         RemoteGateways        : null
         RemoteVirtualNetworkAddressSpace : null
 
-    Nach dem Einrichten des Peerings müssen virtuelle Computer über beide VNETs miteinander kommunizieren können. Standardmäßig ist `AllowVirtualNetworkAccess` auf *TRUE* festgelegt, und das VNET-Peering stellt die passenden ACLs bereit, um die Kommunikation zwischen VNETs zu ermöglichen. Sie können aber trotzdem Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) anwenden, um die Konnektivität zwischen bestimmten Subnetzen oder virtuellen Computern zu blockieren und so eine Feinsteuerung des Zugriffs zwischen den beiden VNETs zu erreichen. Lesen Sie den Artikel [Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-ps.md), um mehr über NSGs zu erfahren.
+    Nach dem Einrichten des Peerings müssen virtuelle Computer über beide VNETs miteinander kommunizieren können. Standardmäßig ist `AllowVirtualNetworkAccess` auf *TRUE* festgelegt, und das VNET-Peering stellt die passenden ACLs bereit, um die Kommunikation zwischen VNETs zu ermöglichen. Sie können aber trotzdem Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) anwenden, um die Konnektivität zwischen bestimmten Subnetzen oder virtuellen Computern zu blockieren und so eine Feinsteuerung des Zugriffs zwischen den beiden VNETs zu erreichen. Weitere Informationen finden Sie im Artikel zu [Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-ps.md).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
@@ -225,7 +226,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe von PowerShell ein abonnemen
 [!INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
 
 1. Wenn Sie ein Peering zwischen VNETs erstellen, die über verschiedene Bereitstellungsmodelle im *gleichen* Abonnement bereitgestellt werden, fahren Sie mit Schritt 2 fort. Die Funktion zum Erstellen eines VNET-Peerings zwischen VNETs, die über verschiedene Bereitstellungsmodelle in *unterschiedlichen* Abonnements bereitgestellt werden, ist als **Vorschau** verfügbar. Funktionen in der Vorschau bieten nicht dieselbe Zuverlässigkeit und Vereinbarung zum Servicelevel wie die in der finalen Version veröffentlichten Funktionen. Beim Erstellen eines Peerings zwischen VNETs, die über verschiedene Bereitstellungsmodelle in verschiedenen Abonnements bereitgestellt sind, müssen Sie zuerst die folgenden Aufgaben ausführen:
-    - Registrieren Sie die Vorschaufunktion im Azure-Abonnement durch Eingabe des folgenden Befehls aus PowerShell: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`
+    - Registrieren Sie die Vorschaufunktion im Azure-Abonnement durch Eingabe der folgenden Befehle aus PowerShell: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` und `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`.
     - Führen Sie die Schritte 1 bis 2 im Abschnitt [Abonnementübergreifendes Peering](#x-sub) dieses Artikels aus.
 2. Lesen Sie das virtuelle Netzwerkobjekt für **VNET1**, das virtuelle Netzwerk von Azure Resource Manager, indem Sie folgenden Befehl eingeben:
 
@@ -235,7 +236,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe von PowerShell ein abonnemen
 
 3. Zum Einrichten des VNET-Peerings in diesem Szenario ist nur ein Link erforderlich, und zwar zwischen **VNET1** und **VNET2**. Für diesen Schritt benötigen Sie die Ressourcen-ID des klassischen VNet. Das Format der Ressourcengruppen-ID sieht wie im folgenden Beispiel aus:
 
-        subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
+           subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ClassicNetwork/virtualNetworks/{VirtualNetworkName}
 
     Achten Sie darauf, SubscriptionID, ResourceGroupName und VirtualNetworkName durch die entsprechenden Namen zu ersetzen.
 
@@ -279,10 +280,5 @@ Führen Sie die folgenden Schritte aus, um mithilfe von PowerShell ein abonnemen
     ```
 
 2. Wenn Sie in einem VNET-Peering einen Link entfernen, wird als Zustand für den Peeringlink *Verbindung getrennt* angezeigt. Bei diesem Status können Sie den Link erst dann wieder neu erstellen, wenn sich der Status des Peeringlinks in *Initiiert* ändert. Es empfiehlt sich, vor dem erneuten Erstellen des VNet-Peerings beide Links zu entfernen.
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

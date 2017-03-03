@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2016
+ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 71da2f8aaa994c8cfc48f968a5275f7f79604251
+ms.sourcegitcommit: 1753096f376d09a1b5f2a6b4731775ef5bf6f5ac
+ms.openlocfilehash: 4f66de2fe4b123e208413ade436bb66b9a03961b
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -28,11 +29,13 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 
 * [Kontingentfehler beim Öffnen einer Datei](#quotaerror)
 * [Geringe Leistung beim Zugriff auf Azure File Storage über Windows oder Linux](#slowboth)
+* [Verfolgen von Lese- und Schreibvorgängen in Azure File Storage](#traceop)
 
 **Windows-Clientprobleme**
 
 * [Geringe Leistung beim Zugriff auf Azure File Storage über Windows 8.1 oder Windows Server 2012 R2](#windowsslow)
 * [Fehler 53 beim Versuch, eine Azure-Dateifreigabe einzubinden](#error53)
+* [Fehler 87: Falscher Parameter bei dem Versuch, eine Azure-Dateifreigabe bereitzustellen](#error87)
 * [„net use“ war erfolgreich, aber die Azure Dateifreigabe wird nicht als im Windows-Explorer eingebunden angezeigt](#netuse)
 * [Mein Speicherkonto enthält „/“, und beim Ausführen des Befehls „net use“ tritt ein Fehler auf](#slashfails)
 * [Meine Anwendung bzw. mein Dienst kann nicht auf das eingebundene Azure Files-Laufwerk zugreifen.](#accessfiledrive)
@@ -41,28 +44,29 @@ Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azur
 **Linux-Clientprobleme**
 
 * [Fehler „You are copying a file to a destination that does not support encryption“ (Sie kopieren eine Datei in ein Ziel, das die Verschlüsselung nicht unterstützt) beim Hochladen/Kopieren von Dateien in Azure Files](#encryption)
-* [Fehler „Host is down“ (Host nicht verfügbar) bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#errorhold)
+* [Zeitweiliger E/A-Fehler „Host nicht verfügbar“ bei vorhandenen Dateifreigaben, oder die Shell hängt beim Ausführen von Listenbefehlen auf dem Einbindungspunkt](#errorhold)
 * [Einbindungsfehler 115 beim Versuch, Azure Files auf der Linux-VM einzubinden](#error15)
 * [Bei der Linux-VM treten zufällige Verzögerungen in Befehlen wie „Is“ auf](#delayproblem)
+* [Fehler 112 – Timeoutfehler](#error112)
+
+**Zugreifen von anderen Anwendungen aus**
+
+* [Kann ich über einen Webauftrag auf die Azure-Dateifreigabe für meine Anwendung verweisen?](#webjobs)
 
 <a id="quotaerror"></a>
 
 ## <a name="quota-error-when-trying-to-open-a-file"></a>Kontingentfehler beim Öffnen einer Datei
 Unter Windows erhalten Sie Fehlermeldungen, die wie folgt aussehen:
 
-**1816 ERROR_NOT_ENOUGH_QUOTA <--> 0xc0000044**
-
-**STATUS_QUOTA_EXCEEDED**
-
-**Das Kontingent reicht für die Verarbeitung dieses Befehls nicht aus**
-
-**Ungültiger Handlewert GetLastError: 53**
+`1816 ERROR_NOT_ENOUGH_QUOTA <--> 0xc0000044`
+`STATUS_QUOTA_EXCEEDED`
+`Not enough quota is available to process this command`
+`Invalid handle value GetLastError: 53`
 
 Unter Linux erhalten Sie Fehlermeldungen, die wie folgt aussehen:
 
-**<filename> [Zugriff verweigert]**
-
-**Datenträgerkontingent überschritten**
+`<filename> [permission denied]`
+`Disk quota exceeded`
 
 ### <a name="cause"></a>Ursache
 Das Problem tritt auf, da Sie die obere Grenze der gleichzeitig geöffneten Handles erreicht haben, die für eine Datei zulässig sind.
@@ -75,7 +79,9 @@ Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige
 ## <a name="slow-performance-when-accessing-file-storage-from-windows-or-linux"></a>Geringe Leistung beim Zugriff auf Azure File Storage über Windows oder Linux
 * Wenn Sie keine bestimmte Anforderung für die Mindest-E/A-Größe haben, empfehlen wir Ihnen für eine optimale Leistung die Verwendung von 1 MB als E/A-Größe.
 * Wenn Sie die endgültige Größe einer Datei kennen, die Sie mit Schreibvorgängen erweitern, und Ihre Software keine Kompatibilitätsprobleme aufweist, wenn das noch nicht geschriebene Fragment in der Datei Nullen enthält, legen Sie die Dateigröße im Voraus fest, anstatt dass jeder Schreibvorgang einen Erweiterungsschreibvorgang darstellt.
-
+* Verwenden Sie die richtige Kopiermethode:
+      * Verwenden Sie AZCopy für Übertragungen zwischen zwei Dateifreigaben. Ausführlichere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy#file-copy).
+      * Verwenden Sie Robocopy zwischen Dateifreigaben auf einem lokalen Computer. Weitere Details finden Sie unter [Multi-threaded robocopy for faster copies](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) (Multithread-Robocopy für schnellere Kopien).
 <a id="windowsslow"></a>
 
 ## <a name="slow-performance-when-accessing-the-file-storage-from-windows-81-or-windows-server-2012-r2"></a>Geringe Leistung beim Zugriff auf Azure File Storage über Windows 8.1 oder Windows Server 2012 R2
@@ -87,14 +93,21 @@ Sie können das folgende Skript ausführen, um zu überprüfen, ob der Hotfix in
 
 Wenn der Hotfix installiert wurde, wird die folgende Ausgabe angezeigt:
 
-**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies**
-
-**{96c345ef-3cac-477b-8fcd-bea1a564241c}    REG_DWORD    0x1**
+`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\Policies`
+`{96c345ef-3cac-477b-8fcd-bea1a564241c}    REG_DWORD    0x1`
 
 > [!NOTE]
 > Bei Windows Server 2012 R2-Images in Azure Marketplace ist der Hotfix KB3114025 ab Dezember 2015 standardmäßig installiert.
 >
 >
+
+<a id="traceop"></a>
+
+### <a name="how-to-trace-the-read-and-write-operations-in-azure-file-storage"></a>Verfolgen von Lese- und Schreibvorgängen in Azure File Storage
+
+[Microsoft Message Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=44226) kann eine Kundenanforderung im Klartext anzeigen. Außerdem gibt es eine deutliche Beziehung zwischen Überweisungsanforderungen und Transaktionen (bei Annahme von SMB anstelle von REST).  Der Nachteil ist, dass Sie dies auf jedem Client ausführen müssen, sodass der Vorgang bei vielen IaaS-VM-Mitarbeitern sehr zeitaufwendig ist.
+
+Wenn Sie Message Analyzer mit ProcMon verwenden, erhalten Sie eine sehr gute Übersicht darüber, welcher App-Code für die Transaktionen verantwortlich ist.
 
 <a id="additional"></a>
 
@@ -128,8 +141,9 @@ Weitere Informationen zur Verwendung von Portqry finden Sie unter [Beschreibung 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 Arbeiten Sie mit Ihrer IT-Organisation zusammen, um den Port 445-Ausgang zu [Azure-IP-Bereichen](https://www.microsoft.com/download/details.aspx?id=41653) zu öffnen.
 
+<a id="error87"></a>
 ### <a name="cause-3"></a>Ursache 3
-„Systemfehler 53“ kann auch auftreten, wenn die NTLMv1-Kommunikation auf dem Client aktiviert ist. Wenn NTLMv1 aktiviert ist, ist der Client weniger sicher. Aus diesem Grund wird die Kommunikation für Azure-Dateien blockiert. Um zu überprüfen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der folgende Registrierungsunterschlüssel auf den Wert 3 festgelegt ist:
+„Systemfehler 53“ oder „Systemfehler 87“ können auch auftreten, wenn die NTLMv1-Kommunikation auf dem Client aktiviert ist. Wenn NTLMv1 aktiviert ist, ist der Client weniger sicher. Aus diesem Grund wird die Kommunikation für Azure-Dateien blockiert. Um zu überprüfen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der folgende Registrierungsunterschlüssel auf den Wert 3 festgelegt ist:
 
 HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel.
 
@@ -232,16 +246,33 @@ Dies kann auftreten, wenn der „mount“-Befehl die Option **serverino** nicht 
 ### <a name="solution"></a>Lösung
 Überprüfen Sie die Option **serverino** in Ihrem Eintrag „/etc/fstab“:
 
-//azureuser.file.core.windows.net/wms/comer on /home/sampledir type cifs (rw,nodev,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X, file_mode=0755,dir_mode=0755,serverino,rsize=65536,wsize=65536,actimeo=1)
+`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,cache=none,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
-Wenn die Option **serverino** nicht vorhanden ist, heben Sie die Einbindung von Azure Files auf, und binden Sie Azure Files erneut ein, wobei die Option **serverino** ausgewählt ist.
+Sie können auch überprüfen, ob diese Option verwendet wird, indem Sie den Befehl **sudo mount | grep cifs** ausführen und die Ausgabe überprüfen:
 
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=none,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+
+Wenn die Option **serverino** nicht vorhanden ist, heben Sie die Einbindung von Azure Files auf, und binden Sie den Dienst mit ausgewählter Option **serverino** wieder ein.
+
+<a id="error112"></a>
+## <a name="error-112---timeout-error"></a>Fehler 112 – Timeoutfehler
+
+Dieser Fehler weist auf Kommunikationsfehler hin, die das erneute Wiederherstellen einer TCP-Verbindung mit dem Server verhindern, wenn die Option zur zeitweiligen Einbindung verwendet wird (dies ist die Standardeinstellung).
+
+### <a name="cause"></a>Ursache
+
+Dieser Fehler kann durch ein Linux-Problem mit der erneuten Herstellung einer Verbindung oder durch andere Probleme verursacht werden, die eine erneute Verbindungsherstellung verhindern – z.B. durch Netzwerkfehler. Durch Festlegen einer ständigen Einbindung wird der Client gezwungen, zu warten, bis eine Verbindung hergestellt oder explizit unterbrochen wurde. Auf diese Weise lassen sich auch Fehler aufgrund von Netzwerktimeouts verhindern. Benutzer sollten sich jedoch darüber im Klaren sein, dass diese Einstellung zu unendlichen Wartevorgängen führen kann, und Verbindungen bei Bedarf anhalten.
+
+### <a name="workaround"></a>Problemumgehung
+
+Das Linux-Problem wurde gelöst, aber noch nicht in Linux-Distributionen portiert. Wenn der Fehler durch das Wiederverbindungsproblem in Linux verursacht wird, kann er durch Verhindern von Leerlaufzuständen vermieden werden. Speichern Sie zu diesem Zweck eine Datei in der Azure-Dateifreigabe, in die maximal alle 30 Sekunden geschrieben wird. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs-/Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindung möglicherweise nicht auslösen.
+
+<a id="webjobs"></a>
+
+## <a name="accessing-from-other-applications"></a>Zugreifen von anderen Anwendungen aus
+### <a name="can-i-reference-the-azure-file-share-for-my-application-through-a-webjob"></a>Kann ich über einen Webauftrag auf die Azure-Dateifreigabe für meine Anwendung verweisen?
+Das Einbinden von SMB-Freigaben in einen AppService-Sandkasten ist nicht möglich. Um dieses Problem zu umgehen, können Sie die Azure-Dateifreigabe als zugeordnetes Laufwerk festlegen und der Anwendung ermöglichen, über einen Laufwerkbuchstaben auf das Laufwerk zuzugreifen.
 ## <a name="learn-more"></a>Weitere Informationen
 * [Erste Schritte mit Azure File Storage unter Windows](storage-dotnet-how-to-use-files.md)
 * [Verwenden von Azure File Storage unter Linux](storage-how-to-use-files-linux.md)
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

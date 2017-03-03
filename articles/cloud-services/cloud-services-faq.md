@@ -17,6 +17,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 8dc7ea843ea316fa4659a8e6575adbfd045f7a70
 ms.openlocfilehash: c169f9ab2eead732ad0fe5579caaa1b4b015732b
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -67,10 +68,5 @@ Für Ihr Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Kernen, die
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Ich kann keine IP in einem Clouddienst mit mehreren VIPs reservieren.
 Stellen Sie zunächst sicher, dass die Instanz des virtuellen Computers, für den Sie die IP reservieren möchten, eingeschaltet ist. Vergewissern Sie sich anschließend, dass Sie reservierte IPs für Staging- und Produktionsbereitstellungen verwenden. **nicht** , während ein Upgrade der Bereitstellung durchgeführt wird.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

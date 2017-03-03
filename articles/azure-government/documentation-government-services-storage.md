@@ -17,6 +17,7 @@ ms.author: ryansoc
 translationtype: Human Translation
 ms.sourcegitcommit: 831334f2b835d00aa3fd22292764b69e85d735a6
 ms.openlocfilehash: a6b61df5884031eb5b53f983b834357bd23a622e
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -82,9 +83,4 @@ Die folgenden Informationen geben Aufschluss über die Abgrenzung von Azure Gove
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

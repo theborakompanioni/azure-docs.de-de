@@ -1,6 +1,6 @@
 ---
 title: "Optimieren der Umgebung mit der SQL Assessment-Lösung in Log Analytics | Microsoft Docs"
-description: "Sie können die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten.."
+description: "Mit Azure Log Analytics können Sie die SQL Assessment-Lösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/17/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 0b0c739f1d89b83c43314d8ace794d26abf10054
+ms.sourcegitcommit: 9ee8f4aafcc35e43c4fcba5a3a72b043dd9fc32c
+ms.openlocfilehash: fc8b2d74737bc334d5c4f27782d4e0d46adbcb18
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -41,7 +42,8 @@ SQL Assessment funktioniert mit allen derzeit unterstützten Versionen von SQL-S
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 * Agents müssen auf Servern installiert werden, auf denen SQL Server installiert ist.
-* Für die SQL Assessment-Lösung muss .NET Framework 4 auf jedem Computer installiert sein, der über einen OMS-Agent verfügt.
+* Für die SQL Assessment-Lösung muss eine unterstützte Version von .NET Framework 4 auf jedem Computer installiert sein, der über einen OMS-Agent verfügt.
+* Zum Installieren der Lösung muss der Benutzer bei Verwendung des Azure-Portals ein Administrator oder Mitwirkender des Azure-Abonnements sein. Außerdem muss der Benutzer Mitglied der Rolle „Mitwirkender“ oder „Administrator“ des OMS-Arbeitsbereichs im OMS-Portal sein.
 * Wenn Sie den Operations Manager-Agent mit SQL Assessment einsetzen möchten, müssen Sie ein ausführendes Operations Manager-Konto verwenden. Weitere Informationen finden Sie unter [Ausführende Operations Manager-Konten für OMS](#operations-manager-run-as-accounts-for-oms) .
 
   > [!NOTE]
@@ -52,8 +54,6 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
 > [!NOTE]
 > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an den OMS-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
->
->
 
 ## <a name="sql-assessment-data-collection-details"></a>Details zur SQL Assessment-Datensammlung
 SQL Assessment erfasst WMI-Daten, Registrierungsdaten, Leistungsdaten und Ergebnisse der dynamischen Verwaltungssicht von SQL Server mithilfe von Agents, die Sie aktiviert haben.
@@ -243,9 +243,4 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Protokollsuche](log-analytics-log-searches.md) , um detaillierte SQL Assessment-Daten und -Empfehlungen anzuzeigen.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

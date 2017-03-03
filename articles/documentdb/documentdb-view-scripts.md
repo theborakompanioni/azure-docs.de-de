@@ -1,6 +1,6 @@
 ---
-title: DocumentDB-Skript-Explorer, ein JavaScript-Editor | Microsoft Docs
-description: "Erfahren Sie mehr über den DocumentDB-Skript-Explorer, ein Azure-Portaltool, das Ihnen die Verwaltung von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z. B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen."
+title: 'Azure DocumentDB-Portaltool: Skript-Explorer | Microsoft Docs'
+description: "Erfahren Sie mehr über den DocumentDB-Skript-Explorer, ein Azure-Portaltool zum Verwalten von serverseitigen DocumentDB-Programmierartefakten, z.B. gespeicherte JavaScript-Prozeduren, Trigger und benutzerdefinierte Funktionen."
 keywords: JavaScript-Editor
 services: documentdb
 author: kirillg
@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2016
+ms.date: 02/14/2017
 ms.author: kirillg
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
+ms.sourcegitcommit: 429687c6e5a196a3b489dc4dd79ae886b7ad9c38
+ms.openlocfilehash: ccff673996d53d2b3b2c177bfb6fff01613b7097
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -25,7 +26,9 @@ ms.openlocfilehash: 70d08de5e7ba775578ea1765ea1c0dda9b04e427
 Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/)-Skript-Explorer, einen JavaScript-Editor im Azure-Portal, der Ihnen die Anzeige von serverseitigen DocumentDB-Programmierartefakten ermöglicht, z.B. gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen. Im Artikel [DocumentDB-serverseitige Programmierung: gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
 
 ## <a name="launch-script-explorer"></a>Starten des Skript-Explorers 
-1. Klicken Sie im Azure-Portal in der Navigationsleiste auf **DocumentDB (NoSQL)**. Wenn **DocumentDB-Konten** nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und dann auf **DocumentDB (NoSQL)**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png). 
+
+    Wenn **NoSQL (DocumentDB)** nicht angezeigt wird, klicken Sie unten auf **Weitere Dienste** und dann auf **NoSQL (DocumentDB)** ![Azure DocumentDB-Symbol](./media/documentdb-query-collections-query-explorer/nosql-documentdb-portal-icon.png).
 2. Klicken Sie im Ressourcenmenü auf **Skript-Explorer**.
    
     ![Screenshot des Skript-Explorer-Befehls](./media/documentdb-view-scripts/scriptexplorercommand.png)
@@ -36,7 +39,8 @@ Dieser Artikel bietet eine Übersicht über den [Microsoft Azure DocumentDB](htt
    
     ![Screenshot des Skript-Explorers mit gefilterten Ergebnissen](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
 
-    > [AZURE.IMPORTANT] Die Filterfunktion vom Skript-Explorer filtert nur aus dem ***aktuell*** geladenen Satz an Skripten und aktualisiert die aktuell ausgewählte Sammlung nicht automatisch.
+    > [!IMPORTANT] 
+    > Die Filterfunktion vom Skript-Explorer filtert nur aus dem ***aktuell*** geladenen Satz an Skripten und aktualisiert die aktuell ausgewählte Sammlung nicht automatisch.
 
 1. Zum Aktualisieren der vom Skript-Explorer geladenen Skriptliste klicken Sie einfach auf den Befehl **Aktualisieren** im oberen Bereich des Blatts.
    
@@ -106,10 +110,5 @@ Der Skript-Explorer im Azure-Portal ist nur eine Möglichkeit, mit gespeicherten
 Im Artikel [Gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen](documentdb-programming.md) erfahren Sie mehr über DocumentDB-serverseitige Programmierung.
 
 Der [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/documentdb/) ist ebenfalls eine hilfreiche Ressource, um mehr über DocumentDB zu erfahren.  
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -1,4 +1,3 @@
-
 ---
 title: Azure Active Directory v2.0 und das OpenID Connect-Protokoll | Microsoft Docs
 description: Erstellen von Webanwendungen mit der Azure AD v2.0-Implementierung des OpenID Connect-Authentifizierungsprotokolls.
@@ -13,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: dastrock
 translationtype: Human Translation
-ms.sourcegitcommit: c579135f798ea0c2a5461fdd7c88244d2d6d78c6
-ms.openlocfilehash: 1d81be4ba596f7bc0ed7d16cb8bb9b375bd1e223
+ms.sourcegitcommit: d24fd29cfe453a12d72998176177018f322e64d8
+ms.openlocfilehash: 4e43304c108fceb7df70fc37898ffcf989beb922
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -199,6 +199,16 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
+## <a name="single-sign-out"></a>Einmaliges Abmelden
+Der v2.0-Endpunkt verwendet Cookies, um eine Benutzersitzung zu identifizieren. Wenn ein Benutzer sich zum ersten Mal bei einer Anwendung anmeldet, erstellt der v2.0-Endpunkt ein Cookie im Browser des Benutzers. Wenn sich der Benutzer anschließend bei einer anderen Anwendung anmeldet, überprüft Azure AD zuerst das Cookie, um zu bestimmen, ob es für den Benutzer eine gültige Anmeldungssitzung auf dem Azure AD v2.0-Endpunkt gibt, anstatt den Benutzer erneut zu authentifizieren.
+
+Wenn sich der Benutzer zum ersten Mal von einer Anwendung abmeldet, löscht der v2.0-Endpunkt das Cookie entsprechend aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die den Azure AD-v2.0-Endpunkt für die Authentifizierung verwenden. Um sicherzustellen, dass der Benutzer von allen Anwendungen abgemeldet wird, sendet der v2.0-Endpunkt eine HTTP GET-Anforderung an die `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Die Anwendungen müssen auf diese Anforderung antworten, indem sie alle Cookies löschen, mit denen die Sitzung des Benutzers identifiziert wird. Sie können die `LogoutUrl` im Azure-Portal festlegen.
+
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+2. Wählen Sie Ihre Active Directory-Instanz aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken.
+3. Wählen Sie im linken Navigationsbereich **Azure Active Directory**, dann **App Registrierungen** und schließlich Ihre Anwendung aus.
+4. Klicken Sie auf **Eigenschaften**, und suchen Sie das Textfeld **Abmelde-URL**. 
+
 ## <a name="protocol-diagram-token-acquisition"></a>Protokolldiagramm – Tokenabruf
 Viele Web-Apps müssen nicht nur den Benutzer anmelden, sondern auch mithilfe von OAuth im Namen dieses Benutzers auf einen Webdienst zugreifen. Dieses Szenario kombiniert OpenID Connect für die Benutzerauthentifizierung und ruft gleichzeitig einen Autorisierungscode ab, der mithilfe des OAuth-Autorisierungscodeflusses Zugriffstoken abrufen kann.
 
@@ -268,10 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 Eine Beschreibung der möglichen Fehlercodes und der jeweils empfohlenen Clientantwort finden Sie unter [Fehlercodes beim Autorisierungsendpunktfehler](#error-codes-for-authorization-endpoint-errors).
 
 Nachdem Sie einen Autorisierungscode und ein ID-Token erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen. Zum Anmelden des Benutzers müssen Sie das ID-Token [genau wie beschrieben](#validate-the-id-token) überprüfen. Zum Abrufen von Zugriffstoken können Sie die in der [OAuth-Protokolldokumentation](active-directory-v2-protocols-oauth-code.md#request-an-access-token) beschriebenen Schritte ausführen.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -11,11 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2017
+ms.date: 02/17/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: df0ab8e6828033b783449e9478a5884355a7f1fe
-ms.openlocfilehash: 453aa0e98e639872184b697ad8ed91d9545e152f
+ms.sourcegitcommit: 4ccd8cbfd0f3742c14a7effd7484d65be21abb63
+ms.openlocfilehash: d4db3d7a0c860c23a3a3ddecab6f79cb6b297a02
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -98,7 +99,7 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 ## <a name="data-rate"></a>Datenrate
 Es gibt drei Möglichkeiten zum Begrenzen des gesendeten Datenvolumens:
 
-* **Tägliche Obergrenze.** Standardmäßig ist diese Einstellung auf 500 GB pro Tag festgelegt. Wenn Ihre App die Obergrenze erreicht, senden wir eine E-Mail und verwerfen Daten bis zum Ende des Tages. Ändern Sie diesen Wert auf dem Blatt für die Datenvolumenverwaltung.
+* **Tägliche Obergrenze.** Die Obergrenze liegt bei 500 GB pro Tag. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Beim Erstellen einer Application Insights-Ressource über das Azure-Portal wird dieser Wert auf die Obergrenze festgelegt. Ändern Sie diese Einstellung mit Bedacht, da das Erreichen der Obergrenze dazu führt, dass für den Rest des Tages Daten verloren gehen. Diese Einstellung können Sie auf dem Blatt „Volumenbegrenzung pro Tag“ ändern, das über das Blatt „Datenverwaltung“ geöffnet wird.
 * **[Stichproben](app-insights-sampling.md).** Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern.
 * Eine **Drosselung** schränkt die Datenrate auf 32.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute). 
 
@@ -117,12 +118,14 @@ Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über 
 ## <a name="to-reduce-your-data-rate"></a>So verringern Sie die Datenrate
 Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
 
-* Senken Sie die tägliche Volumenobergrenze. Der Standardwert ist 500 GB/Tag.
 * Verwenden Sie [Stichproben](app-insights-sampling.md). Diese Technologie verringert die Datenrate, ohne die Metriken zu verzerren und ohne die Navigation zwischen verwandten Elementen bei der Suche zu stören. In Server-Apps arbeitet sie automatisch.
 * [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](app-insights-javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
 * Deaktivieren Sie nicht benötigte Erfassungsmodule durch [Bearbeiten von „ApplicationInsights.config“](app-insights-configuration-with-applicationinsights-config.md). Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
 * Teilen Sie Ihre Telemetrie auf getrennte Instrumentierungsschlüssel auf. 
-* Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs)verwenden. 
+* Aggregieren Sie Metriken vorab. Wenn Sie Ihrer App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs)verwenden.
+* Schließlich können Sie die Volumenobergrenze pro Tag senken. Dadurch werden die erfassten Daten begrenzt, dies führt jedoch auch zu einem Datenverlust für den Rest des Tages. Um diese Einstellung zu ändern, öffnen Sie **Features und Preise**, **Datenverwaltung**.
+
+    ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/app-insights-pricing/daily-cap.png) 
 
 ## <a name="sampling"></a>Stichproben
 Die [Stichprobenerstellung](app-insights-sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln und korrekte Ereigniszahlen zu erhalten. 
@@ -172,10 +175,5 @@ Für vorhandene Anwendungen können noch bis Februar 2017 die alten Tarife verwe
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

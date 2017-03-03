@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 02/16/2017
 ms.author: milanga;juliako;
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0c6f4a020430f464a97b0716dea2a40719c0b064
+ms.sourcegitcommit: 343658944394e7b620bc70aa0d92affada07e91d
+ms.openlocfilehash: 7510c8ab4adadbd7d738ba0b8e2bbdddba8d1048
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -26,7 +27,11 @@ Mit dem **Azure Media-Videovorschau**-Medienprozessor können Sie eine Zusammenf
 
 Der **Azure Media Video Thumbnails** -Medienprozessor befindet sich derzeit in der Vorschauphase.
 
-Dieses Thema enthält Details zur **Azure Media-Videovorschau** und zeigt, wie dieser Prozessor mit dem Media Services SDK für .NET verwendet wird.
+Dieses Thema enthält Details zur **Azure Media-Videovorschau** und zeigt, wie diese mit dem Media Services SDK für .NET verwendet wird.
+
+## <a name="limitations"></a>Einschränkungen
+
+In einigen Fällen, wenn Ihr Video nicht aus unterschiedlichen Szenen besteht, ist die Ausgabe nur eine einzelne Aufnahme.
 
 ## <a name="video-summary-example"></a>Beispiel einer Videozusammenfassung
 Hier sind einige Beispiele für die Fähigkeiten des Azure Media Video Thumbnails-Medienprozessors :
@@ -55,7 +60,7 @@ Die folgende Tabelle beschreibt die Standarddauer, wenn **maxMotionThumbnailInSe
 |  |  |  |
 | --- | --- | --- | --- | --- |
 | Videodauer |d < 3 Minuten |3 Minuten < d < 15 Minuten |
-| Dauer der Miniaturansicht |15 Sekunden (2 bis 3 Szenen) |30 Sekunden (3 bis 5 Szenen) |
+| Dauer der Miniaturansicht |15 Sekunden (2 bis&3; Szenen) |30 Sekunden (3 bis&5; Szenen) |
 
 Die folgende JSON legt verfügbare Parameter fest.
 
@@ -262,10 +267,5 @@ Das folgende Programm zeigt Ihnen, wie Sie folgendes ausführen:
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

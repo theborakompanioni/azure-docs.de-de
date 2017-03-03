@@ -17,6 +17,7 @@ ms.author: vidarmsft
 translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: a0817ac21afb83745ec2cc213fc6029fa395d479
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -301,9 +302,4 @@ Die Kapazitätsplanung besteht aus mindestens zwei wichtigen Prozessen:
 
 ## <a name="summary"></a>Zusammenfassung
 Sie können mithilfe von Azure Site Recovery einen vollständig automatisierten Plan für die Notfallwiederherstellung für eine Dateiserver-VM erstellen, die über Dateifreigaben verfügt, die auf StorSimple gehostet werden. Bei einer Störung können Sie das Failover von überall aus in Sekundenschnelle einleiten und die Anwendung binnen weniger Minuten wieder in Betrieb nehmen.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

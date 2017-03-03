@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: adhurwit
 translationtype: Human Translation
-ms.sourcegitcommit: 09c2332589b1170b411c6f45f4109fb8048887e2
-ms.openlocfilehash: d0edcf7f7e927f817caae1cb7f4519596a09f140
+ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
+ms.openlocfilehash: a8540a541d05d1d8a0afeb2aeb42c77951ebf8c2
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -41,7 +42,7 @@ Die Ausführung von SSMS in Azure RemoteApp entspricht in Bezug auf die Oberflä
 ## <a name="benefits"></a>Vorteile
 Die Verwendung von SSMS in Azure RemoteApp hat viele Vorteile, z. B.:
 
-* Port 1433 von Azure SQL Server muss nicht extern (außerhalb von Azure) verfügbar gemacht werden.
+* Port 1433 von Azure SQL Server muss nicht extern (außerhalb von Azure) verfügbar gemacht werden.
 * Es ist nicht erforderlich, in der Azure SQL Server-Firewall IP-Adressen hinzuzufügen und zu entfernen.
 * Alle Azure RemoteApp-Verbindungen werden per HTTPS über Port 443 mit einem verschlüsselten Remotedesktopprotokoll hergestellt.
 * Es besteht Mehrbenutzerfähigkeit und die Möglichkeit zur Skalierung.
@@ -127,8 +128,3 @@ Das ist erst einmal alles. Viel Spaß!
 [4]: ./media/sql-database-ssms-remoteapp/allowazure.png
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
-
-
-<!--HONumber=Dec16_HO1-->
-
-

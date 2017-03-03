@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 71eb6a2fecbd76c9715b9a556a7ffd31b5b4950e
-ms.openlocfilehash: 6b788b3120565895e908bdfc4c9267e715bc5bec
+ms.sourcegitcommit: b52a475008c9d15912c0b363d76118df74112107
+ms.openlocfilehash: b289b9befc67d01689fa87db955b1a10c210a724
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,7 +36,7 @@ Azure AD Privileged Identity Management ermöglicht Ihnen Folgendes:
 * Abrufen von Berichten zum Administratorzugriffsverlauf und zu Änderungen bei Administratorzuweisungen
 * Aktivieren von Benachrichtigungen zum Zugriff auf eine privilegierte Rolle
 
-Azure AD Privileged Identity Management kann die folgenden integrierten Azure AD-Organisationsrollen verwalten:  
+Azure AD Privileged Identity Management kann u.a. die folgenden integrierten Azure AD-Organisationsrollen verwalten:  
 
 * Globaler Administrator
 * Abrechnungsadministrator
@@ -50,7 +51,7 @@ In der Vergangenheit konnten Sie einen Benutzer über das klassische Azure-Porta
 Im [Azure-Portal](https://portal.azure.com/)können Sie mit der Nutzung von Azure AD Privileged Identity Management beginnen.
 
 > [!NOTE]
-> Sie müssen ein globaler Administrator mit einem Geschäftskonto (wie @yourdomain.com),) und keinem Microsoft-Konto (wie @outlook.com),) sein, um Azure AD Privileged Identity Management für ein Verzeichnis zu aktivieren.
+> Sie müssen ein globaler Administrator mit einem Geschäftskonto (wie @yourdomain.com) und keinem Microsoft-Konto (wie @outlook.com) sein, um Azure AD Privileged Identity Management für ein Verzeichnis zu aktivieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Verzeichnisses an.
 2. Wenn Ihre Organisation über mehr als ein Verzeichnis verfügt, klicken Sie in der oberen rechten Ecke des Azure-Portals auf Ihren Benutzernamen. Wählen Sie das Verzeichnis aus, in dem Sie Azure AD Privileged Identity Management verwenden möchten.
@@ -117,9 +118,4 @@ Vor dem Erreichen der allgemeinen Verfügbarkeit war Azure AD PIM als Vorschauve
 [4]: ./media/active-directory-privileged-identity-management-configure/PIM_RoleActivationSettings.png
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

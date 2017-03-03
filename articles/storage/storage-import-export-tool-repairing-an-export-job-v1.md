@@ -1,8 +1,8 @@
 ---
-title: Reparieren eines Exportauftrags | Microsoft-Dokumentation
+title: Reparieren eines Azure-Exportauftrags | Microsoft Docs
 description: "Erfahren Sie, wie Sie einen Exportauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde."
-author: renashahmsft
-manager: aungoo
+author: muralikk
+manager: syadav
 editor: tysonn
 services: storage
 documentationcenter: 
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2015
-ms.author: renash
+ms.date: 01/23/2017
+ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 78abb839badf99c6251673ee9914955df8c950bc
-ms.openlocfilehash: 61bcbe23f9c747aeb486414fca6c1eb394098d11
+ms.sourcegitcommit: 74182c8c357085f186aaa43adfaef80a083d16bb
+ms.openlocfilehash: 7ae819a662230a7ca7da6f7bc5bbb3b3f940074e
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -82,7 +83,7 @@ Die Kopierprotokolldatei gibt an, dass während des Herunterladens eines der Bl�
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Verwenden von RepairExport zum Überprüfen der Laufwerksinhalt  
 Sie können Azure Import/Export auch mit der **RepairExport**-Option verwenden, um zu überprüfen, ob der Inhalt auf dem Laufwerk richtig ist. Die Manifestdatei auf den einzelnen Exportlaufwerken enthält MD5s für den Inhalt des Laufwerks.  
   
-Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageservices/importexport/Get-Job3)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md).  
+Der Azure Import/Export-Dienst kann die Manifestdateien auch während des Exportvorgangs in ein Speicherkonto speichern. Der Speicherort der Manifestdateien ist nach Abschluss des Auftrags über den [Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate)-Vorgang verfügbar. Weitere Informationen zum Format der Manifestdatei eines Laufwerks finden Sie unter [Format der Manifestdatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md).  
   
 Im folgende Beispiel wird gezeigt, wie Sie das Azure Import/Export-Tool mit den Parametern **/ManifestFile** und **/CopyLogFile** ausführen:  
   
@@ -155,8 +156,4 @@ Alle Komponenten, die die Überprüfung nicht bestehen, werden vom Tool herunter
 [Überprüfen des Auftragsstatus mit Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md)   
 [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)   
 [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
-
-
-<!--HONumber=Dec16_HO2-->
-
 

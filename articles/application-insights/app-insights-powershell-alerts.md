@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 80e2ac4235492d727e2034f37f9a85eb2873625c
 ms.openlocfilehash: f479ae38e446c3404592901c416990ab6e39126b
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -139,9 +140,4 @@ Sie können [Ihre Reaktion auf eine Warnung automatisieren](../monitoring-and-di
 * [Erstellen von Application Insights- und Webtestressourcen aus Vorlagen](app-insights-powershell.md)
 * [Automatisieren der Kopplung der Microsoft Azure-Diagnose mit Application Insights](app-insights-powershell-azure-diagnostics.md)
 * [Automatisieren Ihrer Reaktion auf eine Warnung](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

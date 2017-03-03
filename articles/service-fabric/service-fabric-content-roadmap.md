@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/09/2017
+ms.date: 02/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 6c2464b2f4d16f70c2841faf18e2246c8125b60f
-ms.openlocfilehash: 9421b8545715def823a4bdafd27c261e159fbbab
+ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
+ms.openlocfilehash: 9742523c0a1743ff5982e746aa3c99aed8934499
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -42,7 +43,7 @@ In diesem etwas längeren Microsoft Virtual Academy-Video werden wichtige Kernko
 </a></center>
 
 ## <a name="get-started-and-create-your-first-app"></a>Erste Schritte und Erstellen Ihrer ersten App 
-Mit den Service Fabric-SDKs und -Tools können Sie Apps in Windows-, Linux- oder MacOS-Umgebungen entwickeln und diese Apps in Clustern bereitstellen, die unter Windows oder Linux ausgeführt werden.  Mit den folgenden Leitfäden können Sie eine App innerhalb von wenigen Minuten bereitstellen.  Laden Sie nach dem Ausführen Ihrer ersten Anwendung einige unserer [Beispiel-Apps](http://aka.ms/servicefabricsamples) herunter, und führen Sie sie aus.
+Mit den Service Fabric-SDKs und -Tools können Sie Apps in Windows-, Linux- oder MacOS-Umgebungen entwickeln und diese Apps in Clustern bereitstellen, die unter Windows oder Linux ausgeführt werden.  Mit den folgenden Leitfäden können Sie eine App innerhalb von wenigen Minuten bereitstellen.  Laden Sie nach dem Ausführen Ihrer ersten Anwendung einige unserer [Beispiel-Apps](http://aka.ms/servicefabricsamples) herunter, und führen Sie sie aus. Beginnen Sie insbesondere mit den [Beispielen für erste Schritte](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 
 ### <a name="on-windows"></a>Unter Windows
 Das Service Fabric-SDK enthält ein Add-In für Visual Studio, das Vorlagen und Tools zum Erstellen, Bereitstellen und Debuggen von Service Fabric-Anwendungen bietet. In diesen Themen werden das Erstellen Ihrer ersten Anwendung in Visual Studio und das Ausführen auf dem Entwicklungscomputer ausführlich beschrieben.
@@ -50,7 +51,9 @@ Das Service Fabric-SDK enthält ein Add-In für Visual Studio, das Vorlagen und 
 [Einrichten Ihrer Entwicklungsumgebung](service-fabric-get-started.md)
 [Erstellen Ihrer ersten App (C#)](service-fabric-create-your-first-application-in-visual-studio.md)
 
-Arbeiten Sie diese umfassende [praktische Übung](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) durch, um sich mit dem End-to-End-Entwicklungsablauf für Service Fabric vertraut zu machen.  Informieren Sie sich, wie Sie einen zustandslosen Dienst erstellen, Überwachungs- und Integritätsberichte konfigurieren und ein Anwendungsupgrade durchführen. 
+#### <a name="practical-hands-on-labs"></a>Praktische Hands on Labs
+Arbeiten Sie diese umfassende [praktische Übung, Teil 1](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx) durch, um sich mit dem End-to-End-Entwicklungsablauf für Service Fabric vertraut zu machen.  Informieren Sie sich, wie Sie einen zustandslosen Dienst erstellen, Überwachungs- und Integritätsberichte konfigurieren und ein Anwendungsupgrade durchführen. Bearbeiten Sie anschließend die [praktische Übung, Teil 2](http://aka.ms/sflab2), bei der zustandsbehaftete Dienste behandelt werden.
+
 
 Im folgenden Channel9-Video wird die Erstellung einer C#-App in Visual Studio ausführlich beschrieben:  
 <center><a target="_blank" href="https://channel9.msdn.com/Blogs/Azure/Creating-your-first-Service-Fabric-application-in-Visual-Studio">  
@@ -138,9 +141,4 @@ Das [Reliable Actor](service-fabric-reliable-actors-introduction.md)-Anwendungsf
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-content-roadmap/cluster-imagestore-apptypes.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
 ms.openlocfilehash: 6117b066acff91f249c4aa8afc1e139ebe6054b3
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -84,10 +85,5 @@ Dieses Beispiel zeigt, wie Sie Medienobjekte von Media Services auf Ihren lokale
 
 ## <a name="see-also"></a>Weitere Informationen
 [Bereitstellen von Streaming-Inhalten](media-services-deliver-streaming-content.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

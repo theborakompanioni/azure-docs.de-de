@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: 081e45e0256134d692a2da7333ddbaafc7366eaa
 ms.openlocfilehash: ff07a52f6a503f07f5919b63f345878571742cac
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -48,10 +49,5 @@ Stellen Sie vor dem Ausführen dieses Verfahrens sicher, dass der STS, zu dem di
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 * [Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen](active-directory-application-proxy-native-client.md)
 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

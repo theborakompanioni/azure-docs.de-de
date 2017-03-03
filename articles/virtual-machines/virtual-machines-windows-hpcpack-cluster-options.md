@@ -18,6 +18,7 @@ ms.author: danlep
 translationtype: Human Translation
 ms.sourcegitcommit: a0e80acad4e8db2177e699f90f7296c64b38e718
 ms.openlocfilehash: 5124f9253950b032fa39c805cb355cc8bfb718c5
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -71,10 +72,5 @@ Dieser Artikel konzentriert sich auf Optionen zum Erstellen von HPC Pack-Cluster
 
 ## <a name="create-rdma-clusters-for-mpi-workloads"></a>Erstellen von RDMA-Clustern für MPI-Workloads
 * [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

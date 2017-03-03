@@ -17,6 +17,7 @@ ms.author: garye
 translationtype: Human Translation
 ms.sourcegitcommit: 4ebd5dc2da50db93061e92660c97dcca3866c713
 ms.openlocfilehash: c4adae8125a6780ddb4c7c64baf4df6aae139104
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -43,7 +44,7 @@ Sie können alle diese DataSets für Ihre eigenen Experimente verwenden, indem S
 <tr>
   <td valign=top>Dataset "Adult Census Income Binary Classification"</td>
   <td valign=top>
-Eine Teilmenge der Volkszählungsdatenbank von 1994, die arbeitende Erwachsene (älter als 16 Jahre) mit einem bereinigten Einkommensindex über 100 verwendet.<p> </p><b>Verwendung:</b> Klassifizierung von Personen mithilfe von demografischen Daten für die Vorhersage, ob eine Person mehr als 50.000 pro Jahr verdient.<p> </p><b>Zugrundeliegende Untersuchungen:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Eine Teilmenge der Volkszählungsdatenbank von 1994, die arbeitende Erwachsene (älter als 16 Jahre) mit einem bereinigten Einkommensindex über 100 verwendet.<p> </p><b>Verwendung:</b> Klassifizierung von Personen mithilfe von demografischen Daten für die Vorhersage, ob eine Person mehr als 50.000 pro Jahr verdient.<p> </p><b>Zugrunde liegende Untersuchungen:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=airport-codes-dataset>
@@ -56,7 +57,7 @@ Flughafencodes (USA).<p> </p>Dieses Dataset enthält eine Zeile für jeden Flugh
 <tr>
   <td valign=top>Automobile price data (Raw)</td>
   <td valign=top>
-Informationen zu Automobilen nach Marke und Modell, einschließlich Preis und Merkmalen wie Zylinderanzahl und Verbrauch sowie einer Risikoeinstufung der Versicherung.<p> </p>Die Risikoeinstufung wird anfänglich dem Fahrzeugpreis zugeordnet und dann dem tatsächlichen Risiko in einem Prozess angepasst. Der Wert +3 weist auf ein Fahrzeug mit hohem Risiko hin, während der Wert -3 auf ein voraussichtlich sicheres Fahrzeug hinweist.<p> </p><b>Verwendung:</b> Vorhersage der Risikoeinstufung nach Merkmalen unter Verwendung der Regression oder multivariaten Klassifizierung. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Schlimmer, J. C. (1987). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Informationen zu Automobilen nach Marke und Modell, einschließlich Preis und Merkmalen wie Zylinderanzahl und Verbrauch sowie einer Risikoeinstufung der Versicherung.<p> </p>Die Risikoeinstufung wird anfänglich dem Fahrzeugpreis zugeordnet und dann dem tatsächlichen Risiko in einem Prozess angepasst. Der Wert +3 weist auf ein Fahrzeug mit hohem Risiko hin, während der Wert -3 auf ein voraussichtlich sicheres Fahrzeug hinweist.<p> </p><b>Verwendung:</b> Vorhersage der Risikoeinstufung nach Merkmalen unter Verwendung der Regression oder multivariaten Klassifizierung. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Schlimmer, J. C. (1987). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=bike-rental-uci-dataset>
@@ -77,7 +78,7 @@ UCI Bike Rental-Dataset basierend auf tatsächlichen Daten der Firma Capital Bik
 <tr>
   <td valign=top>Blutspendedaten</td>
   <td valign=top>
-Eine Teilmenge der Daten aus der Blutspendedatenbank des Blood Transfusion Service Centers von Hsin-Chu City, Taiwan.<p> </p>Die Spenderdaten beinhalten die Anzahl der Monate seit der letzten Spende, die Häufigkeit oder Gesamtanzahl der Spenden, der seit der letzten Spende vergangenen Zeit sowie die Menge des gespendeten Bluts.<p> </p><b>Verwendung:</b> Das Ziel ist die Vorhersage über die Klassifizierung, ob der Spender im März 2007 Blut gespendet hat, wobei „1“ auf einen Spender im Zielzeitraum und „0“ auf eine Person hinweist, die nicht gespendet hat. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Yeh, I. C., (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>Yeh, I-Cheng, Yang, King-Jang und Ting, Tao-Ming, „Knowledge discovery on RFM model using Bernoulli sequence“, Expert Systems with Applications, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Eine Teilmenge der Daten aus der Blutspendedatenbank des Blood Transfusion Service Centers von Hsin-Chu City, Taiwan.<p> </p>Die Spenderdaten beinhalten die Anzahl der Monate seit der letzten Spende, die Häufigkeit oder Gesamtanzahl der Spenden, der seit der letzten Spende vergangenen Zeit sowie die Menge des gespendeten Bluts.<p> </p><b>Verwendung:</b> Das Ziel ist die Vorhersage über die Klassifizierung, ob der Spender im März 2007 Blut gespendet hat, wobei „1“ auf einen Spender im Zielzeitraum und „0“ auf eine Person hinweist, die nicht gespendet hat. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Yeh, I. C., (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>Yeh, I-Cheng, Yang, King-Jang und Ting, Tao-Ming, „Knowledge discovery on RFM model using Bernoulli sequence“, Expert Systems with Applications, 2008, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
@@ -91,7 +92,7 @@ Rezensionen zu Büchern bei Amazon, die von Forschern der University of Pennsylv
 <tr>
   <td valign=top>Brustkrebsdaten</td>
   <td valign=top>
-Eines von drei krebsbezogenen DataSets, das vom Onkologieinstitut bereitgestellt wurde, das häufig in Dokumenten zum maschinellen Lernen verwendet wird. Kombiniert Diagnoseinformationen mit Merkmalen der Laboranalyse von über 300 Gewebeproben.<p> </p><b>Verwendung:</b> Klassifizierung des Krebstyps auf Basis von neun Attributen, von denen einige linear, andere kategorisch sind. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Wohlberg, W. H., Street, W. N., & Mangasarian, O. L. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Eines von drei krebsbezogenen DataSets, das vom Onkologieinstitut bereitgestellt wurde, das häufig in Dokumenten zum maschinellen Lernen verwendet wird. Kombiniert Diagnoseinformationen mit Merkmalen der Laboranalyse von über 300 Gewebeproben.<p> </p><b>Verwendung:</b> Klassifizierung des Krebstyps auf Basis von neun Attributen, von denen einige linear, andere kategorisch sind. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Wohlberg, W. H., Street, W. N., & Mangasarian, O. L. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=breast-cancer-features>
@@ -138,7 +139,7 @@ Beschriftungen vom KDD Cup 2009 (Kundenbeziehungsprognose, <a href="http://www.s
 <tr>
   <td valign=top>Daten zur Energieeffizienzregression</td>
   <td valign=top>
-Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäudeformen basieren. Die Gebäude werden anhand von acht Merkmalen wie beispielsweise Verglasungsfläche, Verglasungsflächenverteilung und -ausrichtung unterschieden.<p> </p><b>Verwendung:</b> Verwendung der Regression oder Klassifizierung zur Vorhersage der Energieeffizienzbewertung, die die Grundlage für eine von zwei Realwertantworten darstellt. Für die Multiklassen-Klassifizierung wird die Antwortvariable auf die nächste ganze Zahl gerundet. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Xifara, A. und Tsanas, A. (2012). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäudeformen basieren. Die Gebäude werden anhand von acht Merkmalen wie beispielsweise Verglasungsfläche, Verglasungsflächenverteilung und -ausrichtung unterschieden.<p> </p><b>Verwendung:</b> Verwendung der Regression oder Klassifizierung zur Vorhersage der Energieeffizienzbewertung, die die Grundlage für eine von zwei Realwertantworten darstellt. Für die Multiklassen-Klassifizierung wird die Antwortvariable auf die nächste ganze Zahl gerundet. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Xifara, A. und Tsanas, A. (2012). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=flight-delays-data>
@@ -151,14 +152,14 @@ Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung de
 <tr>
   <td valign=top>Planmäßige Durchführung von Flügen (unformatiert)</td>
   <td valign=top>
-Datensätze zu Ankunft und Abflug von Flügen innerhalb der USA von Oktober 2011.<p> </p><b>Verwendung:</b> Vorhersage von Verspätungen im Flugverkehr. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Vom US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
+Datensätze zu Ankunft und Abflug von Flügen innerhalb der USA von Oktober 2011.<p> </p><b>Verwendung:</b> Vorhersage von Verspätungen im Flugverkehr. <p> </p><b>Zugrunde liegende Untersuchungen:</b> vom US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
   </td>
 </tr>
 
 <tr>
   <td valign=top>Waldbranddaten</td>
   <td valign=top>
-Enthält Wetterdaten (wie Temperatur- und Luftfeuchtigkeitsindizes sowie Windgeschwindigkeit) aus einem Gebiet im Nordosten von Portugal, die mit Datensätzen von Waldbränden kombiniert wurden.<p> </p><b>Verwendung:</b> Dies ist eine schwierige Regressionsaufgabe, bei der die bei Waldbränden verbrannte Fläche vorhergesagt werden soll. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Cortez, P. und Morais, A. (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>[Cortez and Morais, 2007] P. Cortez und A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In: J. Neves, M. F. Santos und J. Machado Hrsg., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 – Portuguese Conference on Artificial Intelligence, Dezember, Guimarães, Portugal, S. 512–523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Verfügbar unter: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
+Enthält Wetterdaten (wie Temperatur- und Luftfeuchtigkeitsindizes sowie Windgeschwindigkeit) aus einem Gebiet im Nordosten von Portugal, die mit Datensätzen von Waldbränden kombiniert wurden.<p> </p><b>Verwendung:</b> Dies ist eine schwierige Regressionsaufgabe, bei der die bei Waldbränden verbrannte Fläche vorhergesagt werden soll. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Cortez, P. und Morais, A. (2008). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>[Cortez and Morais, 2007] P. Cortez und A. Morais. A Data Mining Approach to Predict Forest Fires using Meteorological Data. In: J. Neves, M. F. Santos und J. Machado Hrsg., New Trends in Artificial Intelligence, Proceedings of the 13th EPIA 2007 – Portuguese Conference on Artificial Intelligence, Dezember, Guimarães, Portugal, S. 512–523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Verfügbar unter: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
   </td>
 </tr>
 
@@ -179,7 +180,7 @@ Das Dataset enthält Informationen über Filme, die in Tweets auf Twitter bewert
 <tr>
   <td valign=top>Zwei-Klassen-Daten zu Schwertlilien</td>
   <td valign=top>
-Dies ist wahrscheinlich die bekannteste Datenbank, die in der Literatur zur Mustererkennung gefunden werden kann. Das Dataset ist relativ klein und enthält 50 Proben, die jeweils Blütenblatteinstufungen von drei Unterarten der Schwertlilie enthalten.<p> </p><b>Verwendung:</b> Vorhersage der Schwertlilienart aus diesen Einstufungen.  <p> </p><b>Zugrundeliegende Untersuchungen:</b> Fisher, R. A. (1988). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Dies ist wahrscheinlich die bekannteste Datenbank, die in der Literatur zur Mustererkennung gefunden werden kann. Das Dataset ist relativ klein und enthält 50 Proben, die jeweils Blütenblatteinstufungen von drei Unterarten der Schwertlilie enthalten.<p> </p><b>Verwendung:</b> Vorhersage der Schwertlilienart aus diesen Einstufungen.  <p> </p><b>Zugrunde liegende Untersuchungen:</b> Fisher, R. A. (1988). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr ID=movie-tweets>
@@ -192,47 +193,47 @@ Das Dataset ist eine erweiterte Version des Films Tweetings Datasets. Das Datase
 <tr>
   <td valign=top>Verbrauchsdaten für verschiedene Fahrzeuge</td>
   <td valign=top>
-Dieses DataSet ist eine leicht abgewandelte Version des DataSets, das von der StatLib-Bibliothek der Carnegie Mellon University bereitgestellt wurde. Das Dataset wurde 1983 in der Ausführung der American Statistical Association verwendet.<p> </p>Die Daten listen den Kraftstoffverbrauch für verschiedene Automobile zusammen mit anderen Informationen auf, z. B. Anzahl der Zylinder, Hubraum, Leistung, Gesamtgewicht und Beschleunigung.<p> </p><b>Verwendung:</b> Vorhersage der Kraftstoffeinsparung auf Basis von drei mehrwertigen Attributen und fünf kontinuierlichen Attributen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Dieses DataSet ist eine leicht abgewandelte Version des DataSets, das von der StatLib-Bibliothek der Carnegie Mellon University bereitgestellt wurde. Das Dataset wurde 1983 in der Ausführung der American Statistical Association verwendet.<p> </p>Die Daten listen den Kraftstoffverbrauch für verschiedene Automobile zusammen mit anderen Informationen auf, z. B. Anzahl der Zylinder, Hubraum, Leistung, Gesamtgewicht und Beschleunigung.<p> </p><b>Verwendung:</b> Vorhersage der Kraftstoffeinsparung auf Basis von drei mehrwertigen Attributen und fünf kontinuierlichen Attributen. <p> </p><b>Zugrunde liegende Untersuchungen:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr>
   <td valign=top>Dataset für binäre Klassifizierung der Diabetes bei Pima-Indianern</td>
   <td valign=top>
-Eine Teilmenge der Daten der Datenbank des National Institute of Diabetes and Digestive and Kidney Diseases. Das Dataset wurde gefiltert, um sich auf weibliche Patienten zu konzentrieren, die von den Pima-Indianern abstammen. Die Daten umfassen medizinische Daten wie Zucker- und Insulinspiegel sowie Lebensstilfaktoren.<p> </p><b>Verwendung:</b> Vorhersage einer Diabeteserkrankung für den Patienten (binäre Klassifikation). <p> </p><b>Zugrundeliegende Untersuchungen:</b> Sigillito, V. (1990). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
+Eine Teilmenge der Daten der Datenbank des National Institute of Diabetes and Digestive and Kidney Diseases. Das Dataset wurde gefiltert, um sich auf weibliche Patienten zu konzentrieren, die von den Pima-Indianern abstammen. Die Daten umfassen medizinische Daten wie Zucker- und Insulinspiegel sowie Lebensstilfaktoren.<p> </p><b>Verwendung:</b> Vorhersage einer Diabeteserkrankung für den Patienten (binäre Klassifikation). <p> </p><b>Zugrunde liegende Untersuchungen:</b> Sigillito, V. (1990). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, School of Information and Computer Science  </td>
 </tr>
 
 <tr>
   <td valign=top>Daten zu Restaurantkunden</td>
   <td valign=top>
-Eine Sammlung von Metadaten zu Kunden, einschließlich Demografie und Präferenzen.<p> </p><b>Verwendung:</b> Verwendung dieses Datasets in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information and Computer Science.
+Eine Sammlung von Metadaten zu Kunden, einschließlich Demografie und Präferenzen.<p> </p><b>Verwendung:</b> Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
 <tr>
   <td valign=top>Daten zu Restaurantmerkmalen</td>
   <td valign=top>
-Eine Sammlung von Metadaten zu Restaurants und ihren Merkmalen wie Speisetyp, Stil und Lage.<p> </p><b>Verwendung:</b> Verwendung dieses Datasets in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information and Computer Science.
+Eine Sammlung von Metadaten zu Restaurants und ihren Merkmalen wie Speisetyp, Stil und Lage.<p> </p><b>Verwendung:</b> Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
 <tr>
   <td valign=top>Restaurantbewertungen</td>
   <td valign=top>
-Enthält von Benutzern abgegebene Bewertungen für Restaurants auf einer Skala von 0 bis 2.<p> </p><b>Verwendung:</b> Verwendung dieses Datasets in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information and Computer Science.
+Enthält von Benutzern abgegebene Bewertungen für Restaurants auf einer Skala von 0 bis 2.<p> </p><b>Verwendung:</b> Verwenden Sie dieses Dataset in Kombination mit den anderen beiden Restaurantdatasets, um ein Empfehlungssystem zu trainieren und zu testen. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Bache, K. und Lichman, M. (2013). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
 <tr>
   <td valign=top>Multiklassen-Dataset zur Stahlhärtung</td>
   <td valign=top>
-Dieses Dataset enthält eine Reihe von Datensätzen aus Stahlhärtungsversuchen mit den physikalischen Attributen (Breite, Stärke, Typ) der sich ergebenden Stahltypen.<p> </p><b>Verwendung:</b> Vorhersage eines von zwei numerischen Klassenattributen: Härte oder Belastbarkeit. Sie können auch Korrelationen zwischen den Attributen analysieren.<p> </p>Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Organisationen definiert wurde. Sie suchen nach einer bestimmten „Sorte“ (die Klassenvariable) und möchten die erforderlichen Werte verstehen. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>Ein nützliches Handbuch zu Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Dieses Dataset enthält eine Reihe von Datensätzen aus Stahlhärtungsversuchen mit den physikalischen Attributen (Breite, Stärke, Typ) der sich ergebenden Stahltypen.<p> </p><b>Verwendung:</b> Vorhersage eines von zwei numerischen Klassenattributen: Härte oder Belastbarkeit. Sie können auch Korrelationen zwischen den Attributen analysieren.<p> </p>Die Stahlsorten folgen einem festgelegten Standard, der von SAE und anderen Organisationen definiert wurde. Sie suchen nach einer bestimmten „Sorte“ (die Klassenvariable) und möchten die erforderlichen Werte verstehen. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Sterling, D. und Buntine, W. (NA). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, School of Information and Computer Science  <p> </p>Ein nützliches Handbuch zu Stahlsorten finden Sie hier: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
 <tr>
   <td valign=top>Teleskopdaten</td>
   <td valign=top>
-Datensätze von hochenergetischen Gammapartikelausbrüchen zusammen mit Hintergrundrauschen, die beide mithilfe eines Monte Carlo-Prozesses simuliert wurden.<p> </p>Das Ziel der Simulation war die Optimierung der Genauigkeit von bodengestützten atmosphärischen Tscherenkow-Gamma-Teleskopen mithilfe statistischer Methoden, um zwischen gewünschtem Signal (Tscherenkow-Strahlungsschauer) und Hintergrundrauschen (hadronische Schauer, die durch kosmische Strahlung in der oberen Atmosphäre ausgelöst werden) zu unterscheiden.<p> </p>Die Daten wurden vorverarbeitet, um ein gestrecktes Bündel zu erstellen, bei dem die Längsachse zur Kameramitte ausgerichtet ist. Die Merkmale dieser Ellipse (die häufig als Hillas-Parameter bezeichnet werden) gehören zu den Bildparametern, die zur Unterscheidung verwendet werden können.<p> </p><b>Verwendung:</b> Vorhersage, ob das Bild eines Schauers ein Signal oder Hintergrundrauschen darstellt.<p> </p><b>Hinweise:</b> Eine einfache Klassifizierungsgenauigkeit ist für diese Daten nicht aussagekräftig, da die Klassifizierung eines Hintergrundereignisses als Signal schlechter ist als die Klassifizierung eines Signals als Hintergrundrauschen. Für den Vergleich der verschiedenen Klassifizierer sollte das ROC-Diagramm verwendet werden. Die Wahrscheinlichkeit der Annahme eines Hintergrundereignisses als Signal muss unter einem der folgenden Schwellenwerte liegen: 0,01 , 0,02 , 0,05 , 0,1 oder 0,2.<p> </p>Beachten Sie zudem, dass die Anzahl der Hintergrundereignisse (h, für hadronische Schauer) unterbewertet ist, während bei realen Messungen der Wert „h“ oder die Geräuschklasse die Mehrheit der Ereignisse ausmacht. <p> </p><b>Zugrundeliegende Untersuchungen:</b> Bock, R. K. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information </td>
+Datensätze von hochenergetischen Gammapartikelausbrüchen zusammen mit Hintergrundrauschen, die beide mithilfe eines Monte Carlo-Prozesses simuliert wurden.<p> </p>Das Ziel der Simulation war die Optimierung der Genauigkeit von bodengestützten atmosphärischen Tscherenkow-Gamma-Teleskopen mithilfe statistischer Methoden, um zwischen gewünschtem Signal (Tscherenkow-Strahlungsschauer) und Hintergrundrauschen (hadronische Schauer, die durch kosmische Strahlung in der oberen Atmosphäre ausgelöst werden) zu unterscheiden.<p> </p>Die Daten wurden vorverarbeitet, um ein gestrecktes Bündel zu erstellen, bei dem die Längsachse zur Kameramitte ausgerichtet ist. Die Merkmale dieser Ellipse (die häufig als Hillas-Parameter bezeichnet werden) gehören zu den Bildparametern, die zur Unterscheidung verwendet werden können.<p> </p><b>Verwendung:</b> Vorhersage, ob das Bild eines Schauers ein Signal oder Hintergrundrauschen darstellt.<p> </p><b>Hinweise:</b> Eine einfache Klassifizierungsgenauigkeit ist für diese Daten nicht aussagekräftig, da die Klassifizierung eines Hintergrundereignisses als Signal schlechter ist als die Klassifizierung eines Signals als Hintergrundrauschen. Für den Vergleich der verschiedenen Klassifizierer sollte das ROC-Diagramm verwendet werden. Die Wahrscheinlichkeit der Annahme eines Hintergrundereignisses als Signal muss unter einem der folgenden Schwellenwerte liegen: 0,01 , 0,02 , 0,05 , 0,1 oder 0,2.<p> </p>Beachten Sie zudem, dass die Anzahl der Hintergrundereignisse (h, für hadronische Schauer) unterbewertet ist, während bei realen Messungen der Wert „h“ oder die Geräuschklasse die Mehrheit der Ereignisse ausmacht. <p> </p><b>Zugrunde liegende Untersuchungen:</b> Bock, R. K. (1995). UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, C. A.: University of California, School of Information </td>
 </tr>
 
 <tr ID=weather-dataset>
@@ -305,9 +306,4 @@ Diese Daten stammen aus dem KDD Cup 2010 zur Leistungsbewertung von Schülern (<
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

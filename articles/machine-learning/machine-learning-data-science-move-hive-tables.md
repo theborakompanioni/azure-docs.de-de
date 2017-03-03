@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e29c26a7fbd25d01f2d58dc29a7fd2f34c91307b
 ms.openlocfilehash: 88203f84752d464b63ef31fc77d668cb8b3497e3
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -235,9 +236,4 @@ Sie können *&#60;Name der externen TEXTFILE-Tabelle>* gefahrlos mithilfe der fo
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
 Sie besitzen nun eine einsatzbereite Tabelle mit Daten im ORC-Format.  
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

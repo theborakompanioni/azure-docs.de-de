@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: c10a35e4828e8da427f324ef3c3892e7e24cc72d
-ms.openlocfilehash: ba8fd7ea8979c8c2afbace60a5675b411438d6b4
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -31,7 +32,7 @@ Mit Security Center können Sie die Daten in SQL-Datenbank schützen, indem Sie 
 * Definieren von Richtlinien für die Verschlüsselung und Überwachung in SQL-Datenbank
 * Überwachen der Sicherheit von SQL-Datenbank-Ressourcen in allen Abonnements
 * Schnelles Erkennen und Beheben von Sicherheitsproblemen
-* Integrieren von Warnungen aus der [Bedrohungserkennung von Azure SQL-Datenbank](../sql-database/sql-database-threat-detection-get-started.md)
+* Integrieren von Warnungen aus der [Bedrohungserkennung von Azure SQL-Datenbank](../sql-database/sql-database-threat-detection.md)
 
 Security Center ermöglicht nicht nur den Schutz Ihrer SQL-Datenbank-Ressourcen, sondern stellt auch Möglichkeiten für die Sicherheitsüberwachung und Verwaltung von virtuellen Azure-Computern, Clouddienste, App Services, virtuelle Netzwerke und vieles mehr bereit. Weitere Informationen zu Security Center finden Sie [hier](security-center-intro.md).
 
@@ -79,7 +80,7 @@ Wenn Sie Empfehlungen für Ihre Azure-Ressourcen anzeigen möchten, wählen Sie 
 Wie in der folgenden Abbildung dargestellt, werden in Security Center die SQL-Server angezeigt, für die keine Überwachung und Bedrohungserkennung aktiviert ist. Nachdem Sie die Überwachung aktiviert haben, können Sie Einstellungen für die Bedrohungserkennung und E-Mails zum Empfangen von Sicherheitswarnungen konfigurieren. Die Bedrohungserkennung warnt Sie, wenn anormale Datenbankaktivitäten erkannt werden, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Die Warnungen werden im Security Center-Dashboard angezeigt.
 ![Überwachung und Bedrohungserkennung][5]
 
-Führen Sie die Schritte in [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](../sql-database/sql-database-threat-detection-get-started.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
+Führen Sie die Schritte in [Bedrohungserkennung bei SQL-Datenbank im Azure-Portal](../sql-database/sql-database-threat-detection-portal.md) aus, um die Bedrohungserkennung zu aktivieren und zu konfigurieren und die Liste der E-Mail-Empfänger einzurichten, die bei Erkennung ungewöhnlicher Aktivitäten Sicherheitswarnungen erhalten.
 
 Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheitsempfehlungen](security-center-recommendations.md).
 
@@ -90,7 +91,7 @@ Nachdem Sie die [Sicherheitsrichtlinien](security-center-policies.md) für die R
 Weitere Informationen finden Sie unter [Überwachen der Sicherheitsintegrität](security-center-monitoring.md).
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Verwalten von und Reagieren auf Sicherheitswarnungen
-Security Center erfasst, analysiert und verknüpft Protokolldaten von [Azure SQL-Bedrohungserkennung](../sql-database/sql-database-threat-detection-get-started.md) sowie von anderen Azure-Ressourcen, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
+Security Center erfasst, analysiert und verknüpft Protokolldaten von [Azure SQL-Bedrohungserkennung](../sql-database/sql-database-threat-detection.md) sowie von anderen Azure-Ressourcen, um echte Bedrohungen zu erkennen und falsch positive Ergebnisse zu reduzieren. Eine Liste mit priorisierten Sicherheitswarnungen wird im Security Center zusammen mit den Informationen angezeigt, die Sie zum schnellen Untersuchen des Problems benötigen. Außerdem sind Empfehlungen zum Reagieren auf einen Angriff vorhanden.
 
 Wählen Sie auf dem Blatt „Security Center“ die Kachel **Sicherheitswarnungen** aus, um Warnungen anzuzeigen. Wählen Sie auf dem Blatt **Sicherheitswarnungen** eine Sicherheitswarnung aus, um weitere Informationen zu den Ereignissen zu erhalten, die die Warnung ausgelöst haben, sowie ggf. zu den Schritten, die Sie als Reaktion auf den Angriff ausführen müssen. Lassen Sie uns in diesem Beispiel **Potential SQL injection** (Potenzielle Einschleusung von SQL-Befehlen) auswählen.
 ![Sicherheitswarnungen][7]
@@ -115,9 +116,4 @@ Weitere Informationen finden Sie unter [Verwalten von und Reagieren auf Sicherhe
 [6]: ./media/security-center-sql-database/monitor-health.png
 [7]: ./media/security-center-sql-database/alert.png
 [8]: ./media/security-center-sql-database/sql-injection.png
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

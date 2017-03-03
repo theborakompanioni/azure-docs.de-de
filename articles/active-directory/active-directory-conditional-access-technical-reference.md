@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: a5c84d7ef67c49042eb85965593f44915a666df9
+ms.sourcegitcommit: 00124aa9d0729880bf2314f5c35c1797b7a6827f
+ms.openlocfilehash: 79d844f8fa3d3d0898b642f561df34588e044f9a
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -53,8 +54,8 @@ Regeln für den bedingten Zugriff, die ein Arbeitsplatznetzwerk verwenden, greif
 Optionen zum Festlegen von Arbeitsnetzwerken
 
 1. Konfigurieren Sie vertrauenswürdige IP-Adressbereiche auf der [Konfigurationsseite für die mehrstufige Authentifizierung](../multi-factor-authentication/multi-factor-authentication-whats-next.md). Die Richtlinie für den bedingten Zugriff verwendet die konfigurierten Bereiche für jede Authentifizierungsanfrage und Tokenausstellung zum Auswerten von Regeln. 
-2. Konfigurieren Sie die Verwendung des Anspruchs „innerhalb des Unternehmensnetzwerks“. Diese Option kann mit Verbundverzeichnissen und AD FS verwendet werden. [Erfahren Sie mehr über Ansprüche innerhalb des Unternehmensnetzwerks](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
-3. Konfigurieren Sie öffentliche IP-Adressbereiche. Auf der Registerkarte „Konfigurieren“ für Ihr Verzeichnis können Sie öffentliche IP-Adressen festlegen. Der bedingte Zugriff verwendet diese „arbeitsplatzbasierten“ IP-Adressen, mit denen zusätzlich zu dem auf der MFA-Einstellungsseite angegebenen Limit von 50 IP-Adressen weitere Adressbereiche konfiguriert werden können.
+2. Konfigurieren Sie die Verwendung des Anspruchs „innerhalb des Unternehmensnetzwerks“. Diese Option kann mit Verbundverzeichnissen und AD FS verwendet werden. Weitere Informationen zu den Ansprüchen innerhalb des Unternehmensnetzwerks finden Sie unter [Vertrauenswürdige IPs](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
+
 
 ## <a name="rules-based-on-application-sensitivity"></a>Regeln auf Grundlage der Anwendungsvertraulichkeit
 Regeln werden für jede Anwendung konfiguriert, damit hochwertige Dienste abgesichert werden, ohne den Zugriff auf andere Dienste zu beeinträchtigen. Regeln für den bedingten Zugriff können auf der Registerkarte **Konfigurieren** der Anwendung konfiguriert werden. 
@@ -74,10 +75,5 @@ Regeln, die derzeit angeboten werden:
 ## <a name="related-topics"></a>Verwandte Themen
 * [Sichern des Zugriffs auf Office 365 und andere mit Azure Active Directory verbundene Apps](active-directory-conditional-access.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

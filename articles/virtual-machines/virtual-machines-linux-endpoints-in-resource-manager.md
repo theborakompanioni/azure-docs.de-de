@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: ccdfd0c64b5a784664edaef9c19e272c8e8323e6
 ms.openlocfilehash: 890c1ea7f7039886b1d2de72ea8f4a453a7b8ce2
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -30,10 +31,5 @@ In den folgenden Artikeln finden Sie ausführlichere Informationen zu den hier e
 * [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)  
 * [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)  
 * [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md) 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

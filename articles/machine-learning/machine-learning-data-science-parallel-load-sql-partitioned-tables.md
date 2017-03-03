@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e899487e9445955cea3a9387c73ea7c5dca37ddc
 ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -179,10 +180,5 @@ Das folgende PowerShell-Skript ist ein Beispiel für das parallele Laden von Dat
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Advanced Analytics Process and Technology in Aktion – Beispiel
 Eine umfassende exemplarische Vorgehensweise zur Verwendung des Cortana-Analyseprozesses mit einem öffentlichen DataSet finden Sie unter [Cortana-Analyseprozess in Aktion: Verwenden von SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

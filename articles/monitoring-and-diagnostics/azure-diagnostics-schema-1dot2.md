@@ -1,22 +1,23 @@
 ---
 title: "Konfigurationsschema für die Azure-Diagnose 1.2) | Microsoft-Dokumentation"
 description: NUR relevant, wenn Sie Azure SDK 2.5 mit Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric oder Cloud Services verwenden.
-services: multiple
+services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 02/09/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 8cfb5116d06532b132d5ae9fe54dff1345d6948a
+ms.sourcegitcommit: 66f733d7602a8d26627fcc205f357e7a4a266d11
+ms.openlocfilehash: b76ef954d8a00e190817e3d7f8e2b064210d0357
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -32,7 +33,7 @@ Dieses Schema definiert die möglichen Werte, die Sie verwenden können, um beim
 
  Laden Sie die Schemadefinition für die öffentliche Konfigurationsdatei mit dem folgenden PowerShell-Befehl herunter:  
 
-```  
+```PowerShell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
@@ -204,9 +205,4 @@ Definiert Konfigurationseinstellungen für die Telemetriedaten, die gesammelt we
 |Elementname|Beschreibung|  
 |------------------|-----------------|  
 |**DataSource**|Die Windows-Ereignisprotokolle, die erfasst werden sollen. Erforderliches Attribut:<br /><br /> **name**: Die XPath-Abfrage, die die zu erfassenden Windows-Ereignisse beschreibt. Beispiel:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Zum Erfassen aller Ereignisse geben Sie „*“ ein.|
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

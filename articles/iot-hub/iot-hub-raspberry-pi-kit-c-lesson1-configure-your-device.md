@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 11/28/2016
 ms.author: xshi
 translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: 4fdd8de3a24bf521b8ea13416900e69d24e1b62d
+ms.sourcegitcommit: 5b80d471c78973f8c2f6b1ad4e1240c66f0505ef
+ms.openlocfilehash: 3e34b8202794bc969bf41765ce519d083037ab46
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -80,6 +81,9 @@ Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung.
 > [!NOTE]
 > Es ist wichtig, die Stromversorgung im Kit zu verwenden, die mindestens 2 A liefert. So wird sichergestellt, dass der Raspberry genügend Strom erhält und richtig funktioniert.
 
+## <a name="enable-ssh"></a>Aktivieren von SSH
+Ab der Version vom November 2016 ist bei Raspbian der SSH-Server standardmäßig deaktiviert. Er muss manuell aktiviert werden. Weitere Informationen finden Sie in den [offiziellen Anweisungen](https://www.raspberrypi.org/documentation/remote-access/ssh/). Sie können auch einen Monitor anschließen und zu **Preferences > Raspberry Pi Configuration** (Voreinstellungen > Raspberry Pi-Konfiguration) wechseln, um SSH zu aktivieren.
+
 ## <a name="connect-raspberry-pi-3-to-the-network"></a>Verbinden des Raspberry Pi 3 mit dem Netzwerk
 Sie können den Raspberry Pi mit einem Kabelnetzwerk oder mit einem Drahtlosnetzwerk verbinden. Stellen Sie sicher, dass der Raspberry Pi mit dem gleichen Netzwerk wie der Computer verbunden ist. Beispielsweise können Sie den Raspberry Pi mit dem gleichen Switch verbinden, mit dem der Computer verbunden ist.
 
@@ -113,10 +117,5 @@ In diesem Artikel haben Sie erfahren, wie Sie den Raspberry Pi konfigurieren, in
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Abrufen der Tools](iot-hub-raspberry-pi-kit-c-lesson1-get-the-tools-win32.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

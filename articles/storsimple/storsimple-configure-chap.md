@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 83dc91972ad5fec85e562e45227747568b1fea75
 ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -160,10 +161,5 @@ Mit den folgenden Schritten können Sie überprüfen, ob CHAP verwendet wird.
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur [StorSimple-Sicherheit](storsimple-security.md)
 * Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: bradsev;hangzh;gokuma
 translationtype: Human Translation
 ms.sourcegitcommit: 1796f7a7cd174d7ed6582878d72c59995aac41cb
 ms.openlocfilehash: 995ba0dc3ffd2bc78625db7d1176ca0d5e1611a0
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -196,10 +197,5 @@ Der [Team Data Science-Prozesslebenszyklus](http://aka.ms/datascienceprocess) wi
 
 ## <a name="next-steps"></a>Nächste Schritte
 Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind mit Miniaturansichtsbeschreibungen im Thema [Exemplarische Vorgehensweisen für den Team Data Science-Prozess](data-science-process-walkthroughs.md) aufgeführt und verlinkt.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

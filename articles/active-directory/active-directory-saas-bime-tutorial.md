@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 19adbe15694a6413842b23c27851ce582bfd727e
+ms.sourcegitcommit: bd3dd077bef87a78904ffd5d2be469b6b8bc8959
+ms.openlocfilehash: 7857480d033e4d570aa48569e08bb30846b280f6
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -30,17 +31,18 @@ Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie Bime
 
 Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
-1. Aktivieren der Anwendungsintegration für Bime
-2. Konfigurieren der einmaligen Anmeldung
-3. Konfigurieren der Benutzerbereitstellung
-4. Zuweisen von Benutzern
+* Aktivieren der Anwendungsintegration für Bime
+* Konfigurieren der einmaligen Anmeldung (SSO)
+* Konfigurieren der Benutzerbereitstellung
+* Zuweisen von Benutzern
 
 ![Szenario](./media/active-directory-saas-bime-tutorial/IC775552.png "Szenario")
 
-## <a name="enabling-the-application-integration-for-bime"></a>Aktivieren der Anwendungsintegration für Bime
+## <a name="enable-the-application-integration-for-bime"></a>Aktivieren der Anwendungsintegration für Bime
 In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Bime aktivieren.
 
-### <a name="to-enable-the-application-integration-for-bime-perform-the-following-steps"></a>So aktivieren Sie die Anwendungsintegration für Bime
+**Führen Sie zum Aktivieren der Anwendungsintegration für Bime die folgenden Schritte aus:**
+
 1. Klicken Sie im klassischen Azure-Portal im linken Navigationsbereich auf **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-bime-tutorial/IC700993.png "Active Directory")
@@ -61,13 +63,14 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für Bim
    
    ![Bime](./media/active-directory-saas-bime-tutorial/IC775554.png "Bime")
    
-   ## <a name="configuring-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung
+## <a name="configure-single-sign-on"></a>Configure single sign-on
 
 In diesem Abschnitt wird erläutert, wie Sie es Benutzern mithilfe einer Verbundanmeldung auf Basis des SAML-Protokolls ermöglichen, sich mit ihrem Azure AD-Konto bei Bime zu authentifizieren.  
-Zum Konfigurieren des einmaligen Anmeldens für Bime müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen.  
-Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)(in englischer Sprache) weitere Informationen.
 
-### <a name="to-configure-single-sign-on-perform-the-following-steps"></a>So konfigurieren Sie einmaliges Anmelden
+Zum Konfigurieren des einmaligen Anmeldens (SSO) für Bime müssen Sie einen Fingerabdruckwert aus einem Zertifikat abrufen. Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)weitere Informationen.
+
+**So konfigurieren Sie einmaliges Anmelden**
+
 1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite für **Bime** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bime-tutorial/IC771709.png "Einmaliges Anmelden konfigurieren")
@@ -90,23 +93,24 @@ Falls Sie nicht mit diesem Verfahren vertraut sind, finden Sie unter [How to ret
    
    1. Aktivieren Sie **Enable SAML authentication**.
    2. Kopieren Sie im klassischen Azure-Portal auf der Dialogfeldseite **Einmaliges Anmelden konfigurieren für Bime** den Wert für **Remoteanmelde-URL**, und fügen Sie ihn in das Textfeld **Remoteanmelde-URL** ein.
-   3. Kopieren Sie den Wert für **Fingerabdruck** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck des Zertifikats** ein.  
+   3. Kopieren Sie den Wert für **Fingerabdruck** aus dem exportierten Zertifikat, und fügen Sie ihn in das Textfeld **Fingerabdruck des Zertifikats** ein.       
       
-      > [!TIP]
-      > Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI)
-      > 
+      >[!TIP]
+      >Weitere Informationen finden Sie unter [Abrufen des Fingerabdruckwerts eines Zertifikats](http://youtu.be/YKQF266SAxI). 
       > 
    4. Klicken Sie auf **Speichern**.
 8. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen.
    
    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bime-tutorial/IC775560.png "Einmaliges Anmelden konfigurieren")
    
-   ## <a name="configuring-user-provisioning"></a>Konfigurieren der Benutzerbereitstellung
+## <a name="configure-user-provisioning"></a>Benutzerbereitstellung konfigurieren
 
 Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime bereitgestellt werden.  
-Im Fall von Bime ist die Bereitstellung eine manuelle Aufgabe.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>So konfigurieren Sie die Benutzerbereitstellung
+* Im Fall von Bime ist die Bereitstellung eine manuelle Aufgabe.
+
+**Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
+
 1. Melden Sie sich bei Ihrem **Bime** -Mandanten an.
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Benutzer**.
    
@@ -116,20 +120,19 @@ Im Fall von Bime ist die Bereitstellung eine manuelle Aufgabe.
    ![Benutzer](./media/active-directory-saas-bime-tutorial/IC775562.png "Benutzer")
 4. Führen Sie auf der Dialogfeldseite **User Details** die folgenden Schritte aus:
    
-   ![Benutzerdetails](./media/active-directory-saas-bime-tutorial/IC775563.png "Benutzerdetails")
-   
-   1. Geben Sie den "Vornamen", den "Nachnamen", den "Anmeldenamen" und die "E-Mail-Adresse" eines gültigen AAD-Benutzerkontos ein, das Sie bereitstellen möchten.
-   2. Klicken Sie auf Speichern.
+   ![Benutzerdetails](./media/active-directory-saas-bime-tutorial/IC775563.png "Benutzerdetails")   
+  1. Geben Sie den "Vornamen", den "Nachnamen", den "Anmeldenamen" und die "E-Mail-Adresse" eines gültigen AAD-Benutzerkontos ein, das Sie bereitstellen möchten.
+  2. Klicken Sie auf Speichern.
 
-> [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Bime-Benutzerkonten oder mithilfe der von Bime bereitgestellten APIs erstellen.
-> 
-> 
+>[!NOTE]
+>Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Bime-Benutzerkonten oder mithilfe der von Bime bereitgestellten APIs erstellen.
+>  
 
-## <a name="assigning-users"></a>Zuweisen von Benutzern
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+## <a name="assign-users"></a>Benutzer zuweisen
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
-### <a name="to-assign-users-to-bime-perform-the-following-steps"></a>So weisen Sie Bime Benutzer zu
+**Führen Sie zum Zuweisen von Benutzern in Bime folgende Schritte aus:**
+
 1. Erstellen Sie im klassischen Azure-Portal ein Testkonto.
 2. Klicken Sie auf der Anwendungsintegrationsseite für **Bime** auf **Benutzer zuweisen**.
    
@@ -139,10 +142,5 @@ Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie 
    ![Ja](./media/active-directory-saas-bime-tutorial/IC767830.png "Ja")
 
 Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

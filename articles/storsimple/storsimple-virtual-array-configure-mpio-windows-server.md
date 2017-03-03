@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
 ms.openlocfilehash: 24c2670394c2873b333f41c081a8134710d16d54
+ms.lasthandoff: 01/26/2017
 
 ---
 # <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>Konfigurieren von Multipfad-E/A auf Windows Server-Host für das virtuelle StorSimple-Array
@@ -156,10 +157,5 @@ Nachdem MPIO unter Windows Server konfiguriert wurde, können auf dem StorSimple
    
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [Use the StorSimple Device Manager service to administer your StorSimple Virtual Array (Verwalten des StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts)](storsimple-virtual-array-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

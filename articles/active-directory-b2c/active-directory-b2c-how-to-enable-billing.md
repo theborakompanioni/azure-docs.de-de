@@ -13,8 +13,9 @@ ms.workload: identity
 ms.date: 12/05/2016
 ms.author: joroja
 translationtype: Human Translation
-ms.sourcegitcommit: 10bcd51746315d80cef20592b869dca95eaacb56
-ms.openlocfilehash: a460ef42dafac04088ecdce12f64ee5e19ba77ff
+ms.sourcegitcommit: 43224628d5726ac2fb0e8c27c649421af7ceeee4
+ms.openlocfilehash: 6cf375fbfe265a53591b9987ebd32db6df73fcb4
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -73,8 +74,8 @@ Wenn Sie auf die B2C-Mandantenressource klicken, haben Sie folgende Möglichkeit
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie diese Schritte für die einzelnen B2C-Mandanten ausgeführt haben, wird die Abrechnung für Ihr Azure-Abonnement in Übereinstimmung mit Ihren Azure Direct- bzw. Enterprise Agreement-Details durchgeführt.
-- Überprüfen der Nutzung und Abrechnung im gewählten Azure-Abonnement
-- Überprüfen von ausführlichen täglichen Nutzungsberichten mit der Verwendungsbericht-API (TBD)
+- Überprüfen der Nutzung und Abrechnung im ausgewählten Azure-Abonnement
+- Überprüfen von ausführlichen täglichen Nutzungsberichten mit der [Verwendungsberichts-API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api)
 
 
 
@@ -82,9 +83,4 @@ Nachdem Sie diese Schritte für die einzelnen B2C-Mandanten ausgeführt haben, w
 [gog]: http://google.com/        
 [yah]: http://search.yahoo.com/  
 [msn]: http://search.msn.com/    
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

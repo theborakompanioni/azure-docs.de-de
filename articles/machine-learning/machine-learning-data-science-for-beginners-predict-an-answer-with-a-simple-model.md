@@ -18,6 +18,7 @@ ms.author: cgronlun;garye
 translationtype: Human Translation
 ms.sourcegitcommit: b167b88d227bf239fd5d3676e48e04436f140c34
 ms.openlocfilehash: b82c293065446f9f9016015d68db972d71cecd2f
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -132,9 +133,4 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio](machine-learning-create-experiment.md)
 * [Einführung in Machine Learning in Microsoft Azure](machine-learning-what-is-machine-learning.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -16,14 +16,15 @@ ms.workload: data-management
 ms.date: 10/04/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: e80f41533d82fbb2086d4d766c3ba4a4e34a5032
-ms.openlocfilehash: be569200e4c4a125a275687d82c3204dcfb5b39a
+ms.sourcegitcommit: dbf337a27c43fc6c91f1b061a1938c5471dd36a4
+ms.openlocfilehash: c511a73794a4b1333e149d286ae43c6929d58f75
+ms.lasthandoff: 02/16/2017
 
 
 ---
 # <a name="create-and-manage-an-elastic-pool-with-cx23"></a>Erstellen und Verwalten eines Pools für elastische Datenbanken mit C&#x23;
 
-In diesem Thema wird das Erstellen und Verwalten skalierbarer [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mit [C#](sql-database-elastic-pool-manage-csharp.md) erläutert. Sie können einen Azure-Pool für elastische Datenbanken auch mit dem [Azure-Portal](https://portal.azure.com/), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md) oder der REST-API erstellen und verwalten. Mithilfe von [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) können Sie Datenbanken auch erstellen und in und aus Pools für elastische Datenbanken verschieben.
+In diesem Thema wird das Erstellen und Verwalten skalierbarer [Pools für elastische Datenbanken](sql-database-elastic-pool.md) mit C# erläutert. Sie können einen Azure-Pool für elastische Datenbanken auch mit dem [Azure-Portal](https://portal.azure.com/), mit [PowerShell](sql-database-elastic-pool-manage-powershell.md) oder der REST-API erstellen und verwalten. Mithilfe von [Transact-SQL](sql-database-elastic-pool-manage-tsql.md) können Sie Datenbanken auch erstellen und in und aus Pools für elastische Datenbanken verschieben.
 
 > [!NOTE]
 > Viele neue Funktionen von SQL-Datenbank werden nur bei Verwendung des [Azure Resource Manager-Bereitstellungsmodells](../azure-resource-manager/resource-group-overview.md) unterstützt. Daher wird empfohlen, stets die aktuelle **Azure SQL-Datenbank-Verwaltungsbibliothek für .NET zu verwenden ([Dokumentationen](https://msdn.microsoft.com/library/azure/mt349017.aspx) | [NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql))**. Die älteren [auf dem klassischen Bereitstellungsmodell basierenden Bibliotheken](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Sql) werden nur zum Zweck der Abwärtskompatibilität unterstützt. Daher wird die Verwendung der neueren Resource Manager-basierten Bibliotheken empfohlen.
@@ -303,7 +304,7 @@ Mit dem folgenden PowerShell-Skript werden die Active Directory (AD)-Anwendung u
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-* Ein Pool für elastische Datenbanken. Informationen zum Erstellen eines Pools für elastische Datenbanken finden Sie unter [Erstellen und Verwalten eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-create-csharp.md).
+* Ein Pool für elastische Datenbanken. Informationen zum Erstellen eines Pools für elastische Datenbanken finden Sie unter [Erstellen und Verwalten eines Pools für elastische Datenbanken mit C#](sql-database-elastic-pool-manage-csharp.md).
 * Visual Studio. Eine kostenlose Version von Visual Studio finden Sie auf der Seite [Visual Studio-Downloads](https://www.visualstudio.com/downloads/download-visual-studio-vs) .
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>Verschieben einer Datenbank in einen elastischen Pool
@@ -370,10 +371,5 @@ Rufen Sie die vorhandenen Pooleigenschaften ab. Ändern Sie die Werte, und führ
 *  SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen sowie Informationen zu Datenbankverbindungsfehlern und anderen Probleme finden Sie unter [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme](sql-database-develop-error-messages.md).
 * [APIs für Azure-Ressourcenverwaltung](https://msdn.microsoft.com/library/azure/dn948464.aspx)
 * Informationen zu Pools für elastische Datenbanken finden Sie unter [Wann sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/06/2016
-ms.author: ryanwi;chackdan
+ms.date: 2/02/2017
+ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: 3f7d2861512ba02e3b158db78fbee771da1c788b
-ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
+ms.sourcegitcommit: af121309be44852ee51f34130330533adf19d586
+ms.openlocfilehash: 68474b24519a46db71fe59b5d0574cc4700efccb
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: 0d15e9a68c91c85e6a9250cc31e03e24b32cf7bf
 Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Computern erstellt haben](service-fabric-cluster-creation-for-windows-server.md), können sich Ihre geschäftlichen Anforderungen ändern, sodass Sie Ihrem Cluster ggf. mehrere Knoten hinzufügen bzw. diese daraus entfernen müssen. Dieser Artikel enthält die ausführlichen Schritte, die hierfür erforderlich sind.
 
 ## <a name="add-nodes-to-your-cluster"></a>Hinzufügen von Knoten zum Cluster
-1. Bereiten Sie den (virtuellen) Computer vor, den Sie dem Cluster hinzufügen möchten, indem Sie die Schritte im Abschnitt [Vorbereiten der Computer zur Erfüllung der Voraussetzungen für die Clusterbereitstellung](service-fabric-cluster-creation-for-windows-server.md#preparemachines) ausführen.
+1. Bereiten Sie den (virtuellen) Computer vor, den Sie dem Cluster hinzufügen möchten, indem Sie die Schritte im Abschnitt [Vorbereiten der Computer zur Erfüllung der Voraussetzungen für die Clusterbereitstellung](service-fabric-cluster-creation-for-windows-server.md) ausführen.
 2. Planen Sie, welcher Fehlerdomäne und Upgradedomäne Sie diesen virtuellen bzw. physischen Computer hinzufügen werden.
 3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen bzw. physischen Computer her, den Sie dem Cluster hinzufügen möchten.
 4. [Laden Sie das eigenständige Paket für Service Fabric für Windows Server auf den (virtuellen) Computer herunter](http://go.microsoft.com/fwlink/?LinkId=730690) (bzw. kopieren Sie es), und entzippen Sie das Paket.
@@ -47,7 +48,9 @@ Je nach ausgewählter Zuverlässigkeitsstufe des Clusters können Sie die ersten
 4. Führen Sie *RemoveNode.ps1* in PowerShell aus. Im folgenden Beispiel wird der aktuelle Knoten aus dem Cluster entfernt. *ExistingClientConnectionEndpoint* ist ein Clientverbindungsendpunkt für jeden Knoten, der im Cluster verbleibt. Wählen Sie die IP-Adresse und den Endpunktport von *jedem* **anderen Knoten** im Cluster aus. Dieser **andere Knoten** aktualisiert wiederum die Clusterkonfiguration für den entfernten Knoten. 
 
 ```
+
 .\RemoveNode.ps1 -ExistingClientConnectionEndpoint 182.17.34.50:19000
+
 ```
 
 > [!NOTE]
@@ -57,15 +60,18 @@ Je nach ausgewählter Zuverlässigkeitsstufe des Clusters können Sie die ersten
 
 Ein Knoten kann auch nach dem Entfernen in Abfragen und SFX als ausgefallen angezeigt werden. Dies ist ein bekanntes Problem. Es wird in einer zukünftigen Version behoben. 
 
+
+## <a name="remove-node-types-from-your-cluster"></a>Entfernen von Knotentypen aus dem Cluster
+Das Entfernen eines Knotentyps erfordert besondere Vorsicht. Überprüfen Sie vor dem Entfernen eines Knotentyps gründlich, ob andere Knoten auf den Knotentyp verweisen.
+
+
+## <a name="replace-primary-nodes-of-your-cluster"></a>Ersetzen primärer Knoten im Cluster
+Das Ersetzen primärer Knoten muss für jeden Knoten einzeln ausgeführt werden. Das Entfernen und Hinzufügen in Batches ist nicht möglich.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurationseinstellungen für eigenständige Windows-Cluster](service-fabric-cluster-manifest.md)
-* [Schützen eines eigenständigen Windows-Clusters mithilfe von Windows-Sicherheit](service-fabric-windows-cluster-windows-security.md)
 * [Schützen des eigenständigen Windows-Clusters mit Zertifikaten](service-fabric-windows-cluster-x509-security.md)
 * [Erstellen eines eigenständigen Service Fabric-Clusters mit drei Knoten und Azure-VMs mit Windows Server](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

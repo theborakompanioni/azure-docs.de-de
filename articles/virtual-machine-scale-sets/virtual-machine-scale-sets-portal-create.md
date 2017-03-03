@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 09/15/2016
 ms.author: negat
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 8c4248077626cba2f1ace3c119d301b99247e19f
+ms.sourcegitcommit: 35d4c8593dd9698017df85675395430f345f4e86
+ms.openlocfilehash: 17054073e921708cc0c9392ed1b94e9579a9f940
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -32,26 +33,28 @@ Navigieren Sie zunächst in einem Browser zum [Azure-Portal](https://portal.azur
 
 ![ScaleSetPortalOverview](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalOverview.PNG)
 
-## <a name="create-the-linux-virtual-machine"></a>Erstellen der virtuellen Linux-Maschine
-Nun können Sie die Standardeinstellungen verwenden und den virtuellen Computer schnell erstellen.
+## <a name="create-the-scale-set"></a>Erstellen der Skalierungsgruppe
+Nun können Sie die Standardeinstellungen verwenden und die Skalierungsgruppe schnell erstellen.
 
-* Geben Sie auf dem Blatt `Basics` einen Namen für die Skalierungsgruppe ein. Dieser Name dient als Grundlage für den FQDN des Lastenausgleichs vor der Skalierungsgruppe und muss daher im gesamten Azure-System eindeutig sein.
+* Geben Sie auf dem Blatt `Basics` einen Namen für die Skalierungsgruppe ein. Dieser Name dient als Grundlage für den FQDN des Load Balancers vor der Skalierungsgruppe und muss daher im gesamten Azure-System eindeutig sein.
 * Wählen Sie den gewünschten Betriebssystemtyp aus, geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus. Falls Sie ein Kennwort auswählen, muss es mindestens 12 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie unter den [Anforderungen für Benutzernamen und Kennwörter](../virtual-machines/virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm). Wenn Sie `SSH public key`auswählen, fügen Sie nur Ihren öffentlichen Schlüssel (NICHT Ihren privaten Schlüssel) ein:
 
 ![ScaleSetPortalBasics](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalBasics.PNG)
 
+* Wählen Sie aus, ob die Skalierungsgruppe auf eine einzelne Platzierungsgruppe beschränkt sein soll oder ob sie mehrere Platzierungsgruppen umfassen soll. Wenn Sie festlegen, dass die Skalierungsgruppe mehrere Platzierungsgruppen umfassen kann, ermöglicht dies Skalierungsgruppen mit einem Volumen von über 100 virtuellen Computern (bis zu 1.000) mit bestimmten Einschränkungen. Weitere Informationen finden Sie in [dieser Dokumentation](./virtual-machine-scale-sets-placement-groups.md).
 * Geben Sie den gewünschten Namen und Speicherort für Ihre Ressourcengruppe ein, und klicken Sie anschließend auf `OK`.
-* Geben Sie auf dem Blatt `Virtual machine scale set service settings` die gewünschte Domänennamenbezeichnung ein. (Diese fungiert als Grundlage für den FQDN des Lastenausgleichs vor der Skalierungsgruppe.) Die Bezeichnung muss im gesamten Azure-System eindeutig sein.
+* Geben Sie auf dem Blatt `Virtual machine scale set service settings` die gewünschte Domänennamenbezeichnung ein. (Diese fungiert als Grundlage für den FQDN des Load Balancers vor der Skalierungsgruppe.) Die Bezeichnung muss im gesamten Azure-System eindeutig sein.
 * Wählen Sie das gewünschte Image für den Betriebssystem-Datenträger, die Anzahl von Instanzen und die Computergröße aus.
+* Wählen Sie den gewünschten Datenträgertyp aus: verwaltet oder nicht verwaltet. Weitere Informationen finden Sie in [dieser Dokumentation](./virtual-machine-scale-sets-managed-disks.md). Wenn Sie ausgewählt haben, dass die Skalierungsgruppe mehrere Platzierungsgruppen umfasst, ist diese Option nicht verfügbar, da für Skalierungsgruppen, die mehrere Platzierungsgruppen umfassen, ein verwalteter Datenträger erforderlich ist.
 * Aktivieren oder deaktivieren Sie die automatische Skalierung, und konfigurieren Sie sie gegebenenfalls:
 
 ![ScaleSetPortalService](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalService.PNG)
 
-* Klicken Sie nach Abschluss der Überprüfung auf dem Blatt `Summary` auf `OK`.
-* Klicken Sie abschließend auf dem Blatt `Purchase` auf `Purchase`, um die Bereitstellung der Skalierungsgruppe zu starten.
+* Klicken Sie nach Abschluss der Überprüfung auf dem Blatt `Summary` auf `OK`, um die Bereitstellung der Skalierungsgruppe zu starten.
+
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>Herstellen einer Verbindung mit einem virtuellen Computer in der Skalierungsgruppe
-Navigieren Sie nach dem Bereitstellen Ihrer Skalierungsgruppe zur Registerkarte `Inbound NAT Rules` des Lastenausgleichs für die Skalierungsgruppe:
+Wenn Sie ausgewählt haben, dass sich die Skalierungsgruppe auf eine einzelne Platzierungsgruppe beschränkt, wird die Skalierungsgruppe mit NAT-Regeln bereitgestellt, die so konfiguriert sind, dass Sie einfach und schnell eine Verbindung mit der Skalierungsgruppe herstellen können.(Andernfalls müssen Sie wahrscheinlich im selben Netzwerk, in dem sich die Skalierungsgruppe befindet, eine Jumpbox erstellen, um eine Verbindung mit den virtuellen Computern in der Skalierungsgruppe herzustellen.) Um die virtuellen Computer anzuzeigen, navigieren Sie zur Registerkarte `Inbound NAT Rules` des Load Balancers für die Skalierungsgruppe:
 
 ![ScaleSetPortalNatRules](./media/virtual-machine-scale-sets-portal-create/ScaleSetPortalNatRules.PNG)
 
@@ -67,10 +70,5 @@ In [dieser Dokumentation](virtual-machine-scale-sets-vs-create.md)erfahren Sie, 
 Eine allgemeine Dokumentation finden Sie in der [Dokumentationsübersicht für Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
 
 Allgemeine Informationen finden Sie auf der [Hauptseite für Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
