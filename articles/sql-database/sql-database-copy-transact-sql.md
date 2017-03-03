@@ -18,6 +18,7 @@ ms.tgt_pltfrm: NA
 translationtype: Human Translation
 ms.sourcegitcommit: 60bcd02d24e2084b9020ce56ef6a9f8268c6b1b5
 ms.openlocfilehash: 3ade1f2850b2a67f68e8a4a7f519b7dc7ba1de10
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -79,9 +80,4 @@ Für alle Benutzer werden in der neuen Datenbank die Berechtigungen beibehalten,
 * Informationen zum Verwalten von Benutzern und Anmeldungen beim Kopieren einer Datenbank auf einen anderen logischen Server finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 * [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 * [SQL-Datenbank-Dokumentation](https://azure.microsoft.com/documentation/services/sql-database/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

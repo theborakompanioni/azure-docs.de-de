@@ -17,6 +17,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: b64bafe1a8572369aa7a7e6f0d8b924fc182cd53
 ms.openlocfilehash: 9440474db7eb7e3ae082505f8c95cbcf8c285cdf
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -128,10 +129,5 @@ Prüfen Sie, ob der ausgeführte Container angezeigt wird. Geben Sie `docker-mac
 Bei Interesse können Sie die [Docker-VM-Erweiterung](virtual-machines-linux-dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) für Azure ausprobieren, um den gleichen Vorgang mithilfe der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen auszuführen. 
 
 Weitere Beispiele zum Arbeiten mit Docker finden Sie unter [Working with Docker](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker) (Arbeiten mit Docker) aus der [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect-[Demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). Weitere Schnellstarts aus der HealthClinic.biz-Demo finden Sie unter [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)(Schnellstarts zu Azure-Entwicklungstools).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

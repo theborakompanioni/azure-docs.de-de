@@ -17,6 +17,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 341dcec8c45b380286e2bb96c57afc7740605d16
 ms.openlocfilehash: c4ae1c80b854e84fe94a52e2872bec2c24b4580f
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -177,8 +178,3 @@ Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Sta
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, finden Sie unter [Problembehandlung von SSH-Verbindungen mit einer Azure-VM](virtual-machines-linux-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Hilfestellungen. Konsultieren Sie [Beheben von Anwendungskonnektivitätsproblemen auf einer Linux-VM](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.
 
 Weitere Informationen zu Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-<!--HONumber=Feb17_HO2-->
-
-

@@ -17,6 +17,7 @@ ms.author: spelluru
 translationtype: Human Translation
 ms.sourcegitcommit: 2c41c2df135caaead328d8fe05407cfa75cbcb91
 ms.openlocfilehash: a486fbe46f9892f6f70dcdcf27edbac63728af6e
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -663,9 +664,4 @@ Sie können eine Data Factory mithilfe der Schaltfläche **Verschieben** in der 
 Sie können auch alle zugehörigen Ressourcen (z.B. mit der Data Factory verknüpfte Warnungen) zusammen mit der Data Factory verschieben.
 
 ![Dialogfeld „Ressourcen verschieben“](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

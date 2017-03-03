@@ -18,6 +18,7 @@ ms.author: srinia
 translationtype: Human Translation
 ms.sourcegitcommit: 6453cca9f876e6c363fbed463263c0f9684a3e70
 ms.openlocfilehash: 11b1a6dd9ecaaa3abaf088b1fed73aae783252f5
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -76,10 +77,5 @@ Verwenden Sie die Sichten [sys.dm\_ db\_ resource\_stats view](https://msdn.micr
 Nach dem Erstellen eines elastischen Pools können Sie elastische Datenbanken im Pool mit elastischen Aufträgen verwalten. Elastische Aufträge erleichtern die Ausführung von T-SQL-Skripts für eine beliebige Anzahl von Datenbanken im Pool. Weitere Informationen finden Sie unter [Übersicht über elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md). 
 
 Unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md) finden Sie Informationen zur Verwendung elastischer Datenbanktools für die horizontale Hochskalierung, zum Verschieben von Daten, für die Abfrage oder zum Erstellen von Transaktionen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

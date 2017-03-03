@@ -18,6 +18,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 3c00742d9686b986841d676872cc93b58827a8e8
 ms.openlocfilehash: b87b507118244f0f275f54cd65cea13a92cdaec6
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -591,10 +592,5 @@ azure group delete vmsstestrg1
 * Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
 * Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
 * Sehen Sie sich die Vorlage [Autoscale a VM Scale Set running a Ubuntu/Apache/PHP app](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) (Automatisches Skalieren einer VM-Skalierungsgruppe mit ausgeführter Ubuntu-/Apache-/PHP-App) an: Diese richtet einen LAMP-Stapel ein, um die automatische Skalierungsfunktion von VM-Skalierungsgruppen auszuführen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

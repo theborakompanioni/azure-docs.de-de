@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: b2428f93680c12c76000fa8eb1a7138f72a8efe7
 ms.openlocfilehash: 9d67f089f4aba03e846a8fe020a91b6b1ac6ea48
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -184,9 +185,4 @@ Im Allgemeinen möchten Sie, dass das Upgrade auch dann abgeschlossen wird, wenn
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Starten Sie mit einer [Einführung in den Clusterressourcen-Manager von Service Fabric](service-fabric-cluster-resource-manager-introduction.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -19,6 +19,7 @@ ms.author: sedusch
 translationtype: Human Translation
 ms.sourcegitcommit: 4a9c9b35b1b1740152214193eb5bb5ef951de781
 ms.openlocfilehash: cc75cfa43cd60628d9a4d51827bd14f72715d2b4
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -1074,9 +1075,4 @@ Leistungsmetriken werden in Azure über einen Daemon erfasst. Einige Konfigurati
 Eine vollständige und aktuelle Liste mit bekannten Problemen finden Sie im SAP-Hinweis [1999351], der zusätzliche Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP enthält.
 
 Führen Sie das Konfigurationsskript `Set-AzureRmVMAEMExtension` wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

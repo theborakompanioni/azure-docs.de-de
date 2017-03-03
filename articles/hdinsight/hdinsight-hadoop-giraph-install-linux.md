@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
 ms.openlocfilehash: 699626f24e6f66f4b149feda5eb292e64d4b6647
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -178,10 +179,5 @@ Sobald die Clustererstellung abgeschlossen ist, gehen Sie folgendermaßen vor, u
 * Unter [Installieren und Verwenden von R für HDInsight-Cluster](hdinsight-hadoop-r-scripts-linux.md) finden Sie Anweisungen bezüglich der Clusteranpassung zum Installieren und Verwenden von R in HDInsight Hadoop-Clustern. R ist eine Open-Source-Sprache und -Umgebung für statistische Berechnungen. Sie bietet Hunderte integrierter Statistikfunktionen und eine eigene Programmiersprache, die Aspekte der funktionalen und objektorientierten Programmierung kombiniert. Darüber hinaus werden umfangreiche Grafikfunktionen geboten.
 
 * [Installieren von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md). Verwenden Sie die Clusteranpassung, um Solr in HDInsight Hadoop-Clustern zu installieren. Solr ermöglicht es Ihnen, leistungsstarke Suchvorgänge für gespeicherte Daten durchzuführen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

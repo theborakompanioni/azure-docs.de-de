@@ -17,6 +17,7 @@ ms.author: piyushjo
 translationtype: Human Translation
 ms.sourcegitcommit: 51858d6daca27a75e7f87af507600c7a193c874f
 ms.openlocfilehash: dc5529a9e8f4eba867732f719ca8fff718c00d5a
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -63,10 +64,5 @@ ms.openlocfilehash: dc5529a9e8f4eba867732f719ca8fff718c00d5a
 * Erste Version von Azure Mobile Engagement
 * appId/sdkKey-Konfiguration wird durch die Konfiguration einer Verbindungszeichenfolge ersetzt.
 * Verbesserungen der Sicherheit
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

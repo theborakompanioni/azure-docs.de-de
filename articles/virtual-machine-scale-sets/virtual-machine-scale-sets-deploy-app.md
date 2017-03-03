@@ -18,6 +18,7 @@ ms.author: guybo
 translationtype: Human Translation
 ms.sourcegitcommit: f13545d753690534e0e645af67efcf1b524837eb
 ms.openlocfilehash: dad27b11b5f02ed41826b82882cc5089eb69cb04
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -57,10 +58,5 @@ Die Skalierungsgruppen-VMs werden dann zu einem stabilen Substrat für die Conta
 
 ## <a name="how-do-you-roll-out-an-os-update-across-update-domains"></a>Wie verteilen Sie ein Betriebssystemupdate auf Updatedomänen?
 Nehmen wir an, dass Sie das Betriebssystemimage aktualisieren möchten, während gleichzeitig die VM-Skalierungsgruppe weiter ausgeführt wird. Eine Möglichkeit ist, die VM-Images der einzelnen VMs nacheinander zu aktualisieren. Sie können dazu PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden. Es gibt gesonderte Befehle zum Aktualisieren des VM-Skalierungsgruppenmodells (der Konfigurationsdefinition) und zur Ausgabe von Aufrufen zum „manuellen Upgrade“ auf einzelnen VMs. Das Azure-Dokument [Upgraden einer VM-Skalierungsgruppe](./virtual-machine-scale-sets-upgrade-scale-set.md) bietet auch weitere Informationen zu Optionen zum Ausführen von Betriebssystemupgrades in einer VM-Skalierungsgruppe.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 
