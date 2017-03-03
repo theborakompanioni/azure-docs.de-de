@@ -18,6 +18,7 @@ ms.author: chrande; glenga
 translationtype: Human Translation
 ms.sourcegitcommit: ee94e074c574bc2e6e1a52dbfd6bd0ae102cb342
 ms.openlocfilehash: 0d007bf2a0f5a40fcb7ac6dfe5beff05a4310701
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -118,10 +119,5 @@ Weitere Informationen zu diesen Integrationsdiensten finden Sie auch unter den f
 * [Logic Apps-Livewebcast](http://aka.ms/logicappslive)
 * [Häufig gestellte Fragen zu Microsoft Flow](https://flow.microsoft.com/documentation/frequently-asked-questions/)
 * [Dokumentationsressourcen zu Azure WebJobs](../app-service-web/websites-webjobs-resources.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

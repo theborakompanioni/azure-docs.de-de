@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/02/2017
 ms.author: seanmck
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0f0db912ac3cee02f4268996bf2409440afade86
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -89,10 +90,5 @@ Stellen Sie sicher, dass in Ihrer Projektmappe keine Dienstprojekte als Startpro
 ## <a name="next-steps"></a>Nächste Schritte
 * [Grundlagen und Problembehandlung für Cluster mit Systemintegritätsberichten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
