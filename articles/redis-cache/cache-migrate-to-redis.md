@@ -17,6 +17,7 @@ ms.author: sdanie
 translationtype: Human Translation
 ms.sourcegitcommit: 550b4154f0fe510cb37ec4f8bdef251b06f0b495
 ms.openlocfilehash: e739bb129ea2b280803380f3f9c20ca052b3f122
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -186,10 +187,5 @@ Azure-Redis-Cache verfügt über Anbieter für den ASP.NET-Sitzungszustand und d
 
 ## <a name="next-steps"></a>Nächste Schritte
 In der [Azure Redis Cache-Dokumentation](https://azure.microsoft.com/documentation/services/cache/) finden Sie Tutorials, Beispiele, Videos und vieles mehr.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -17,6 +17,7 @@ ms.author: ashwink
 translationtype: Human Translation
 ms.sourcegitcommit: cc557c7139561345a201fa0cd45c803af3751acd
 ms.openlocfilehash: 25fa8749d4b23d3619829fa179a7c91da311bbd0
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -149,9 +150,4 @@ Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirken
 * Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 * Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen.
   Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

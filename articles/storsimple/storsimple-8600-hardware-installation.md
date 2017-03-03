@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -267,10 +268,5 @@ Das Gerät ist nun für Stromversorgung, Netzwerkzugriff und serielle Verbindung
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können nun [Ihr lokales StorSimple-Gerät bereitstellen und konfigurieren](storsimple-deployment-walkthrough-u2.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

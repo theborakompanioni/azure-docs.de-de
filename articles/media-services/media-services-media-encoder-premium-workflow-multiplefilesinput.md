@@ -17,6 +17,7 @@ ms.author: xpouyat;anilmur;juliako
 translationtype: Human Translation
 ms.sourcegitcommit: bdf41edfa6260749a91bc52ec0a2b62fcae99fb0
 ms.openlocfilehash: c789a5518575706992c8719c1927a8566c504fbb
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -477,9 +478,4 @@ Führen Sie folgende Schritte für die Codierung aus:
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

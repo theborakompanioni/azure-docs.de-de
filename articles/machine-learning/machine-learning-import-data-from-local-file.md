@@ -18,6 +18,7 @@ ms.author: garye;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: fa3de6226b59c4f80e71c55a0aad20c19693642d
 ms.openlocfilehash: ffb12a5a999372951827d31e7e24c6b38473cb35
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -41,9 +42,4 @@ Während des Uploads wird eine Meldung angezeigt, dass die Datei hochgeladen wir
 Sobald Ihre Daten hochgeladen wurden, werden sie in einem Datasetmodul gespeichert und stehen für alle Experimente im Arbeitsbereich zur Verfügung.
 
 Wenn Sie ein Experiment bearbeiten, finden Sie die Datasets, die Sie erstellt haben, in der Modulpalette unter der Liste **Gespeicherte Datasets** in der Liste **Meine Datasets**. Sie können das Dataset in den Experimentbereich ziehen und dort ablegen, wenn Sie es für weitere Analysen und maschinelles Lernen verwenden möchten.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

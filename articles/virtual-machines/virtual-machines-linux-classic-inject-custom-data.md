@@ -18,6 +18,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
 ms.openlocfilehash: c342381d3d1052592c1b771cced104778fe7c84c
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -26,10 +27,5 @@ ms.openlocfilehash: c342381d3d1052592c1b771cced104778fe7c84c
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Informationen zum Verwenden der benutzerdefinierten Skripterweiterung im Resource Manager-Modell finden Sie [hier](virtual-machines-linux-extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-inject-custom-data](../../includes/virtual-machines-common-classic-inject-custom-data.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

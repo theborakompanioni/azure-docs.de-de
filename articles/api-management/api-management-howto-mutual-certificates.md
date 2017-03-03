@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
 ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
+ms.lasthandoff: 01/31/2017
 
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
@@ -151,10 +152,5 @@ Informieren Sie sich im folgenden Video, welche anderen Möglichkeiten zum Absic
 [Next steps]: #next-steps
 
 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

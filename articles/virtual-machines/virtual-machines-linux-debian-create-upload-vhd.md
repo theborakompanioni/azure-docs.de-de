@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
 ms.openlocfilehash: b38edfee4f74ede5fb647001cd64cbe81e941c41
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -94,10 +95,5 @@ Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar, z.B. die [azure
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt mit Ihrer Debian-VHD-Datei neue virtuelle Azure-Computer in Azure erstellen. Wenn Sie die VHD-Datei zum ersten Mal in Azure hochladen, führen Sie die Schritte 2 und 3 in [Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält](virtual-machines-linux-classic-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)aus.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

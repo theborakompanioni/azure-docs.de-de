@@ -17,6 +17,7 @@ ms.author: robb
 translationtype: Human Translation
 ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
 ms.openlocfilehash: 530cbb7b53316324f5bc5bcbe9b1b73b9f0b0f9b
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -81,9 +82,4 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 * Erfahren Sie mehr zu [Azure Automation-Runbooks](../automation/automation-starting-a-runbook.md).
 * Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

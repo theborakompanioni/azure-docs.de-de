@@ -17,6 +17,7 @@ ms.author: v-donglo
 translationtype: Human Translation
 ms.sourcegitcommit: 66fb3dc316ce25aea4dff4add5c25b7f0f56ad7a
 ms.openlocfilehash: ef24162006c508134db3f385e791306495ac4614
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -174,10 +175,5 @@ Um zusätzliche Konten zu verwalten, die Zugriff auf den Arbeitsbereich in Machi
 > Über den Link **v** wird Machine Learning Studio mit dem Microsoft-Konto geöffnet, an dem Sie gerade angemeldet sind. Das Microsoft-Konto, mit dem Sie sich beim klassischen Azure-Portal angemeldet haben, um einen Arbeitsbereich zu erstellen, verfügt nicht automatisch über die Berechtigung zum Öffnen dieses Arbeitsbereichs. Um einen Arbeitsbereich zu öffnen, müssen Sie an dem Microsoft-Konto angemeldet sein, das als Besitzer des Arbeitsbereichs definiert wurde, oder Sie müssen eine Einladung des Besitzers zur Teilnahme am Arbeitsbereich erhalten haben.
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

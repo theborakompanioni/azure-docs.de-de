@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: 0db0af490f03525f4c23c4e9a23e62a1ef9f1c7f
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -111,10 +112,5 @@ Sie müssen einen Testfehler in der Produktionsumgebung überprüfen. Sie erstel
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [StorSimple-Volumes aus einem Sicherungssatz wiederherstellen](storsimple-restore-from-backup-set-u2.md).
 * Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
