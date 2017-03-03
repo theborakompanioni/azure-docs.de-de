@@ -17,6 +17,7 @@ ms.author: ruturajd
 translationtype: Human Translation
 ms.sourcegitcommit: 7688df2aac74d10de7c188ad46f8ab2ec38bbe86
 ms.openlocfilehash: 34c335d17641e9df9b64a7882448afc268e4da7c
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -243,9 +244,4 @@ Ein Failback kann über eine VPN- oder eine ExpressRoute-Verbindung ausgeführt 
 
 * Die ExpressRoute-Verbindung muss in dem virtuellen Azure-Netzwerk eingerichtet werden, zu dem das Failover der Quellcomputer durchgeführt wird und in dem sich die virtuellen Azure-Computer nach dem Failover befinden.
 * Die Daten werden zu einem Azure-Speicherkonto auf einem öffentlichen Endpunkt repliziert. Zu Verwendung einer ExpressRoute-Verbindung richten Sie in ExpressRoute ein öffentliches Peering mit dem Zieldatencenter für die Site Recovery-Replikation ein.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
