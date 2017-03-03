@@ -17,6 +17,7 @@ ms.author: saurse;trinadhk;markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: be6bc58ab856309004904626db166331b29199a8
 ms.openlocfilehash: aa8ccc15971bed76d7ce8fd554e6a0f89d985fb8
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -232,9 +233,4 @@ In diesen Schritten wird folgende Terminologie verwendet:
 * [Azure Backup – Übersicht](http://go.microsoft.com/fwlink/p/?LinkId=222425)
 * [Sichern von virtuellen Azure-Computern](backup-azure-vms-introduction.md)
 * [Sichern von Microsoft-Workloads](backup-azure-dpm-introduction.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

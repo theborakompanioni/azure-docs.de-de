@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: ab8c601d862868018fdffb4cd49e8b26acb878c9
 ms.openlocfilehash: da12e642dc4d41fc74fe7b0f3722090da7818405
+ms.lasthandoff: 02/06/2017
 
 
 ---
@@ -284,9 +285,4 @@ Bei Verwendung der Option „SQL-Abfrage“ werden drei verschiedene Abfragen f�
 
 ## <a name="troubleshooting"></a>Problembehandlung
 * Informationen zum Aktivieren der Protokollierung für die Behandlung von Connectorproblemen finden Sie unter [Vorgehensweise: Aktivieren der ETW-Ablaufverfolgung für Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

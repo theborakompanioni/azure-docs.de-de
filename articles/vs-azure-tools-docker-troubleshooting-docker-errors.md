@@ -17,6 +17,7 @@ ms.author: mlearned
 translationtype: Human Translation
 ms.sourcegitcommit: 649cc1a78f3a9f343533cb18fb7d763e4f9ea196
 ms.openlocfilehash: 89fa04a1107b6abb49aefd68066443717ac9b731
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -146,9 +147,4 @@ Nach dem Deinstallieren und Installieren von Erweiterungen kann der MEF-Cache (M
     ```
 1. Öffnen Sie Visual Studio.
 1. Wiederholen Sie das Szenario.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

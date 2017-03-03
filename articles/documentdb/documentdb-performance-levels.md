@@ -17,6 +17,7 @@ ms.author: mimig
 translationtype: Human Translation
 ms.sourcegitcommit: b9902de45477bb7970da6c8f2234775bdb6edba8
 ms.openlocfilehash: 65f19191bbb736d3b7fbdd94d73f2308ee6dea83
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -178,8 +179,3 @@ Weitere Informationen zu Preisen und der Datenverwaltung mit Azure DocumentDB fi
 2.  [DocumentDB-Preise](https://azure.microsoft.com/pricing/details/documentdb/): Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
 3.  [Anforderungseinheiten](documentdb-request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.
 4.  [Modellieren von Daten in DocumentDB](documentdb-modeling-data.md): Es wird beschrieben, wie Sie Ihre Daten für DocumentDB modellieren.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

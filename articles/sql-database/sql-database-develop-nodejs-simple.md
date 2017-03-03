@@ -18,6 +18,7 @@ ms.author: lbosq
 translationtype: Human Translation
 ms.sourcegitcommit: 1f1c6c89c492d18e0678fa4650b6c5744dc9f7d1
 ms.openlocfilehash: 6c3f6bc00d147bc498a859560ffe4719ecf888bf
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -45,10 +46,5 @@ Auf der [Seite für erste Schritte](sql-database-get-started.md) erhalten Sie In
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Entdecken Sie alle [Funktionen von SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

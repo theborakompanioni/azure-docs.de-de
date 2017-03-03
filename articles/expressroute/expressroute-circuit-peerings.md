@@ -17,6 +17,7 @@ ms.author: cherylmc
 translationtype: Human Translation
 ms.sourcegitcommit: 729c89e26e0c2da3ec88b554645091997dea4552
 ms.openlocfilehash: 1f0406b131957500c303172409cafa6be8fb3228
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -85,10 +86,5 @@ Wenn Sie sich für alle drei Peeringsitzungen entscheiden, müssen Sie über dre
   * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md)
   * [Konfigurieren des Routings (Verbindungspeerings)](expressroute-howto-routing-classic.md)
   * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

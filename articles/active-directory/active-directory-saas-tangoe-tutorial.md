@@ -17,6 +17,7 @@ ms.author: jeedes
 translationtype: Human Translation
 ms.sourcegitcommit: 04a045f41965b093aab71e59cd9b5f328b44de84
 ms.openlocfilehash: bb140097831453d46f6bfef1c9fbe569eefb3020
+ms.lasthandoff: 02/03/2017
 
 
 ---
@@ -243,9 +244,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Tangoe Command Premium Mobile“ k
 [203]: ./media/active-directory-saas-tangoe-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-tangoe-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tangoe-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
