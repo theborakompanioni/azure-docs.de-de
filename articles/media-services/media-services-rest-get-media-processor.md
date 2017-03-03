@@ -17,6 +17,7 @@ ms.author: juliako
 translationtype: Human Translation
 ms.sourcegitcommit: d1d05b46591fe4b72c92c59d357681c8e1cdb336
 ms.openlocfilehash: c208660fc1439ca831ada6c9bb348dbc3eadc18c
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -94,10 +95,5 @@ Antwort:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie sind nun in der Lage, eine Medienprozessorinstanz zu erstellen, und können mit dem Thema [Codieren von Medienobjekten](media-services-rest-get-started.md) fortfahren. Dort lernen Sie, wie Sie Medienobjekte mit dem Media Encoder Standard codieren können.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

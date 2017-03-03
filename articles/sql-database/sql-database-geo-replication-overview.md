@@ -18,6 +18,7 @@ ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: 2c13daf84727a500a2ea6a3dc1d4968c9824e223
 ms.openlocfilehash: 4ed2bfcad36059000b5a8e4bfa5f06bceb56843b
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -130,10 +131,5 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 * Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 * Informationen zum Verwenden automatisierter Sicherungen für die Archivierung finden Sie unter [Datenbankkopie](sql-database-copy.md).
 * Weitere Informationen zu Authentifizierungsanforderungen für einen neuen primären Server und die Datenbank finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

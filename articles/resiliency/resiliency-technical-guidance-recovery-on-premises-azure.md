@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
 ms.openlocfilehash: 9af589d4a899702c7c2dd2e2bcf13d783d715380
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -95,10 +96,5 @@ Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederher
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](resiliency-technical-guidance.md)dienen. Im nächsten Artikel dieser Reihe geht es um die [Wiederherstellung nach Datenbeschädigung oder unbeabsichtigtem Löschen](resiliency-technical-guidance-recovery-data-corruption.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

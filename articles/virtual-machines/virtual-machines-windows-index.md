@@ -18,6 +18,7 @@ ms.author: danlep
 translationtype: Human Translation
 ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
 ms.openlocfilehash: 263b3a1edc94a60e756850b2d917840be87e7a5a
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -163,9 +164,4 @@ Hier finden Sie die gesamte Dokumentation, die Sie zum Erstellen und Verwalten W
 [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)](virtual-machines-windows-classic-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (klassisches Bereitstellungsmodell)](windows/classic/virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
