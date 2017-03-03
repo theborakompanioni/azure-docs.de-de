@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 984adf244596578a3301719e5ac2f68a841153bf
 ms.openlocfilehash: c01b8c174567f745e2803a1498ec0b9a762e94ae
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -437,10 +438,5 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 * Weitere Informationen zu Dienstebenen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md)
 * Weitere Informationen zu elastischen Pools finden Sie unter [Was ist ein elastischer Azure-Pool?](sql-database-elastic-pool.md).
 * Informationen zur Leistung und zu elastischen Pools finden Sie unter [Wann ein elastischer Pool in Frage kommt](sql-database-elastic-pool-guidance.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 
