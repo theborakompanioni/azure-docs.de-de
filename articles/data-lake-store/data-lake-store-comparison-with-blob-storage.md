@@ -17,6 +17,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: ab9c4bc6e2e68a3522bbc3fe23ea33760f03b620
 ms.openlocfilehash: 10926263ee2657dc96fb1873733d349cf0956e92
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -49,10 +50,5 @@ In der Tabelle in diesem Artikel werden die Unterschiede zwischen Azure Data Lak
 ### <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
 * [Erste Schritte mit dem Data Lake-Speicher](data-lake-store-get-started-portal.md)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

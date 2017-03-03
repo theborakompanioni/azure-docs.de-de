@@ -17,6 +17,7 @@ ms.author: trinadhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: e4d94d3f9736378d93e93be6645ed04ade763ca3
 ms.openlocfilehash: d64ca980b82e279e446d2ea279124ae3f54b0f49
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -129,7 +130,7 @@ Sie können eine bedarfsabhängige Sicherung eines virtuellen Computers erstelle
 
 So lösen Sie eine bedarfsabhängige Sicherung eines virtuellen Computers aus
 
-* Klicken Sie auf Dashboard für die Tresorelemente [](backup-azure-manage-vms.md#open-a-vault-item-dashboard)auf **Backup now**(Jetzt sichern).
+* Klicken Sie auf [Dashboard für die Tresorelemente](backup-azure-manage-vms.md#open-a-vault-item-dashboard) auf **Backup now**(Jetzt sichern).
 
     ![Schaltfläche „Jetzt sichern“](./media/backup-azure-manage-vms/backup-now-button.png)
 
@@ -220,9 +221,4 @@ So löschen Sie Sicherungsdaten auf einem virtuellen Computer mit *deaktivierter
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Neuerstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [Einführung: Schützen von Azure-VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md). Informationen zum Überwachen von Ereignissen finden Sie unter [Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern](backup-azure-monitor-vms.md).
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
