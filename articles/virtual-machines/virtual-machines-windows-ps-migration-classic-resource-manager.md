@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: e90036d97451b271451d0ba5845c788ac05d7abf
 ms.openlocfilehash: 4253d60a8a12877a3c5dac073bd06d70d020ccdc
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -270,10 +271,5 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 * Weitere Informationen zur Migration finden Sie unter [Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md).
 * Um weitere Netzwerkressourcen mithilfe von Azure PowerShell zu Resource Manager zu migrieren, verwenden Sie ähnliche Schritte mit [Move-AzureNetworkSecurityGroup](https://msdn.microsoft.com/library/mt786729.aspx), [Move-AzureReservedIP](https://msdn.microsoft.com/library/mt786752.aspx) und [Move-AzureRouteTable](https://msdn.microsoft.com/library/mt786718.aspx).
 * Open Source-Skripts für die Migration von Azure-Ressourcen vom klassischen Bereitstellungsmodell zu Resource Manager finden Sie unter [Communitytools für die Migration zu Azure Resource Manager](virtual-machines-windows-migration-scripts.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

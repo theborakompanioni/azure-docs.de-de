@@ -28,6 +28,20 @@
 ### [Marketplace-App](../app-service-web/web-sites-php-web-site-gallery.md)
 ### [PHP](../app-service-web/app-service-web-php-get-started.md)    
 
+# Typische Beispiele
+## CLI-Beispiele
+### [Erstellen einer Web-App und Bereitstellen von Code über GitHub](./scripts/app-service-cli-deploy-github.md)
+### [Erstellen einer Web-App dauerhafter Bereitstellung über GitHub](./scripts/app-service-cli-continuous-deployment-github.md)
+### [Erstellen einer Web-App und Bereitstellen von Code über ein lokales GitHub-Repository](./scripts/app-service-cli-deploy-local-git.md)
+### [Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung](./scripts/app-service-cli-deploy-staging-environment.md)
+### [Erstellen einer ASP.NET Core-Web-App in einem Docker-Container](./scripts/app-service-cli-linux-docker-aspnetcore.md)
+### [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](./scripts/app-service-cli-configure-custom-domain.md)
+### [Manuelles Skalieren einer Web-App](./scripts/app-service-cli-scale-manual.md)
+### [Weltweites Skalieren einer Web-App mit einer Hochverfügbarkeitsarchitektur](./scripts/app-service-cli-scale-high-availability.md)
+### [Verbinden einer Web-App mit einer SQL­Datenbank](./scripts/app-service-cli-app-service-sql.md)
+### [Verbinden einer Web-App mit einem Speicherkonto](./scripts/app-service-cli-app-service-storage.md)
+### [Überwachen einer Web-App mit Webserverprotokollen](./scripts/app-service-cli-monitor.md)
+
 # Anleitung
 
 ## Planen und Entwerfen
@@ -156,8 +170,3 @@
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=app-service) 
-
-
-<!--HONumber=Jan17_HO3-->
-
-

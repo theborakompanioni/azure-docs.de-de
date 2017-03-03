@@ -14,8 +14,9 @@ ms.workload: identity
 ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: c8c6c105c2142dac1b3df6c26838ba8626161092
-ms.openlocfilehash: c22eb13206e629399c20b02fcaeb422d20ac0b21
+ms.sourcegitcommit: c4d95068b5e6472dbb809e675a47cb9eada7ca66
+ms.openlocfilehash: 112f28517196b3b656611a03ed12a40f2e049174
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -31,8 +32,7 @@ Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microso
 
 Dieses Thema behandelt die Voraussetzungen und die unterstützten Szenarien für die Konfiguration der zertifikatbasierten Authentifizierung auf Android-Geräten für Mandantenbenutzer mit Office 365 Enterprise-, Business-, Education- und US Government-Plänen. 
 
-Dieses Feature ist als Vorversion für Office 365 China-, US Government Defense- und US Government Federal-Pläne verfügbar. 
-
+Dieses Feature ist als Vorversion in Office 365 US Government Defense- und Federal-Plänen verfügbar.
 
 
 ## <a name="office-mobile-applications-support"></a>Unterstützung mobiler Office-Anwendungen
@@ -79,9 +79,4 @@ Wenn Sie die zertifikatbasierte Authentifizierung in Ihrer Umgebung konfiguriere
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

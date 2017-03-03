@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/09/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 8929a1697bf88da82fc027520d0126eaef872840
-ms.openlocfilehash: 488212ad1b43d5e35bf46a334bc7ac8e1acabebc
+ms.sourcegitcommit: c856380534bc43da7f8542842866612b9f705f16
+ms.openlocfilehash: 0e90fd528dcba205a389216c5fcdc862bc8f669d
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -29,7 +30,7 @@ In diesem Thema erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#rebo
 > 
 
 ## <a name="reboot"></a>Neustart
-Auf dem Blatt **Neustart** können Sie einen oder mehrere Knoten Ihres Caches neu starten. Dies ermöglicht das Testen Ihrer Anwendung auf Stabilität im Fall eines Ausfalls.
+Auf dem Blatt **Neustart** können Sie einen oder mehrere Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
 
 ![Neustart](./media/cache-administration/redis-cache-administration-reboot.png)
 
@@ -41,14 +42,14 @@ Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können
 
 ![Neustart](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neustart**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die paar Minuten später wieder online sind.
+Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die gewünschten Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neu starten**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die nur wenige Minuten später wieder online sind.
 
 Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu starten.
 
 * **Master** : Wenn der Masterknoten neu gestartet wird, führt Azure Redis Cache ein Failover auf den Replikatknoten durch, der zum Master hochgestuft wird. Während dieses Failovers gibt es möglicherweise ein kurzes Intervall, in dem keine Verbindungen mit dem Cache aufgebaut werden können.
 * **Untergeordneter Knoten** : Wenn der Slaveknoten neu gestartet wird, hat dies meist keine Auswirkungen auf Cacheclients.
-* **Master und Slave** : Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md)konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass alle Cacheschreibvorgänge verloren gehen, die nach der letzten Sicherung durchgeführt wurden.
-* **Knoten eines Premium-Caches mit aktiviertem Clustering**: Wenn Sie die Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten für die ausgewählten Knoten dem Neustarten von Knoten eines nicht gruppierten Caches.
+* **Master und Slave** : Wenn beide Cacheknoten neu gestartet werden, gehen alle Daten im Cache verloren, und es können erst wieder Verbindungen mit dem Cache hergestellt werden, wenn der primäre Knoten wieder online ist. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Allerdings gehen alle Cacheschreibvorgänge verloren, die nach der letzten Sicherung durchgeführt wurden.
+* **Knoten eines Premium-Caches mit aktiviertem Clustering:** Wenn Sie einen oder mehrere Knoten eines Premium-Caches mit aktiviertem Clustering neu starten, entspricht das Verhalten für die ausgewählten Knoten dem Neustart des oder der entsprechenden Knoten eines nicht gruppierten Caches.
 
 > [!IMPORTANT]
 > Ein Neustart ist nur für Caches im Premium-Tarif verfügbar.
@@ -66,15 +67,15 @@ Die Auswirkungen auf Clientanwendungen hängen von den Knoten ab, die Sie neu st
 Um die Stabilität Ihrer Anwendung bei Ausfall des primären Knotens Ihres Caches zu testen, starten Sie den **Master** -Knoten neu. Um die Stabilität Ihrer Anwendung bei Ausfall des sekundären Knotens Ihres Caches zu testen, starten Sie den **untergeordneten** -Knoten neu. Um die Stabilität Ihrer Anwendung bei Ausfall Ihres gesamten Caches zu testen, starten Sie den **beide** Knoten neu.
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Kann ich den Cache neu starten, um Clientverbindungen zu löschen?
-Ja, wenn Sie den Cache neu starten, werden alle Clientverbindungen gelöscht. Dies kann sinnvoll sein, wenn alle Clientverbindungen belegt sind, z.B. aufgrund eines Logikfehlers oder Fehlers in der Clientanwendung. Jeder Tarif weist verschiedene [Grenzwerte für Clientverbindungen](cache-configure.md#default-redis-server-configuration) für die verschiedenen Größen auf. Sobald diese Grenzwerte erreicht sind, werden keine weiteren Clientverbindungen akzeptiert. Das Neustarten des Caches bietet eine Möglichkeit, alle Clientverbindungen zu löschen.
+Ja, wenn Sie den Cache neu starten, werden alle Clientverbindungen gelöscht. Ein Neustart kann sinnvoll sein, wenn alle Clientverbindungen aufgrund eines Logikfehlers oder eines Fehlers in der Clientanwendung belegt sind. Jeder Tarif weist verschiedene [Grenzwerte für Clientverbindungen](cache-configure.md#default-redis-server-configuration) für die verschiedenen Größen auf. Sobald diese Grenzwerte erreicht sind, werden keine weiteren Clientverbindungen akzeptiert. Das Neustarten des Caches bietet eine Möglichkeit, alle Clientverbindungen zu löschen.
 
 > [!IMPORTANT]
-> Wenn Ihre Clientverbindungen aufgrund eines Logikfehlers oder Fehlers im Clientcode aufgebraucht sind, stellt StackExchange.Redis automatisch wieder eine Verbindung her, nachdem der Redis-Knoten wieder in den Onlinezustand versetzt wurde. Wenn das zugrunde liegende Problem nicht behoben wird, kann es weiterhin passieren, dass die Clientverbindungen aufgebraucht werden.
+> Wenn Sie Ihren Cache neu starten, um Clientverbindungen zu löschen, stellt StackExchange.Redis automatisch wieder eine Verbindung her, sobald der Redis-Knoten wieder online ist. Wenn das zugrunde liegende Problem nicht behoben wird, kann es weiterhin passieren, dass die Clientverbindungen aufgebraucht werden.
 > 
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Gehen beim Neustart Daten aus dem Cache verloren?
-Wenn Sie sowohl den **Master**- als auch den **untergeordneten** Knoten neu starten, gehen alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md)konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Beachten Sie, dass keine Cacheschreibvorgänge verloren gegangen sind, die seit der Sicherung durchgeführt wurden.
+Wenn Sie sowohl den **Master**- als auch den **untergeordneten** Knoten neu starten, gehen alle Daten im Cache (oder im jeweiligen Shard, wenn Sie einen Premium-Cache mit aktiviertem Clustering nutzen) verloren. Wenn Sie [Datenpersistenz](cache-how-to-premium-persistence.md) konfiguriert haben, wird die letzte Sicherung wiederhergestellt, sobald der Cache wieder online ist. Allerdings gehen alle Cacheschreibvorgänge verloren, die nach der Sicherung durchgeführt wurden.
 
 Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verloren, möglicherweise aber doch. Wenn z.B. der Masterknoten neu gestartet und ein Cacheschreibvorgang ausgeführt wird, gehen die Daten des Cacheschreibvorgangs verloren. Ein weiteres Szenario für Datenverlust ist der Fall, in dem Sie einen Knoten neu starten und der andere Knoten aufgrund eines Fehlers gleichzeitig ausfällt. Weitere Informationen zu den möglichen Ursachen für den Datenverlust finden Sie unter [Was ist mit meinen Daten in Redis passiert?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md).
 
@@ -85,7 +86,12 @@ Ja. Anweisungen für PowerShell finden Sie unter [So starten Sie einen Redis-Cac
 Ein Neustart ist nur im Premium-Tarif verfügbar.
 
 ## <a name="schedule-updates"></a>Planen von Updates
-Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihren Cache bestimmen. Wenn das Wartungsfenster angegeben ist, erfolgen alle Redis-Serverupdates in diesem Zeitfenster. Beachten Sie, dass das Wartungsfenster nur für Redis-Serverupdates und nicht für Azure-Updates oder Updates des Betriebssystems der virtuellen Computer gilt, die den Cache hosten.
+Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihren Cache bestimmen. Wenn das Wartungsfenster angegeben ist, erfolgen alle Redis-Serverupdates in diesem Zeitfenster. 
+
+> [!NOTE] 
+> Das Wartungsfenster bezieht sich nur auf Redis-Serverupdates und nicht auf Azure-Updates oder Updates des Betriebssystems der virtuellen Computer, die den Cache hosten.
+> 
+> 
 
 ![Planen von Updates](./media/cache-administration/redis-schedule-updates.png)
 
@@ -117,14 +123,9 @@ Ja, Sie können Ihre geplanten Updates mit den folgenden PowerShell-Cmdlets verw
 * [Remove-AzureRmRedisCachePatchSchedule](https://docs.microsoft.com/powershell/resourcemanager/azurerm.rediscache/v2.5.0/remove-azurermrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>Welche Tarife bieten die Funktionalität zum Planen von Updates?
-Das Planen von Updates ist nur im Premium-Tarif verfügbar.
+Das Feature **Zeitplanaktualisierungen** ist nur im Premium-Tarif verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Entdecken Sie weitere Features des [Azure Redis Cache-Premium-Tarifs](cache-premium-tier-intro.md) .
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

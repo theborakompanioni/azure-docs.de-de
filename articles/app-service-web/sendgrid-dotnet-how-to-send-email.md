@@ -17,13 +17,14 @@ ms.author: team-pi@sendgrid.com
 translationtype: Human Translation
 ms.sourcegitcommit: dc1dac6e590088b45aa7afb87cf2d41027506635
 ms.openlocfilehash: 5ad1d7f026836e90d04d493bd1c0454b83f936ef
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Senden von E-Mails in Azure mit SendGrid
 ## <a name="overview"></a>Übersicht
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in C\#
- geschrieben und verwenden die .NET API. Beschrieben werden die Szenarien **Schreiben einer E-Mail**, **Senden einer E-Mai**l, **Hinzufügen von Anhängen** und **Verwenden von Filtern**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte][Nächste Schritte].
+ geschrieben und verwenden die .NET API. Beschrieben werden die Szenarien **Schreiben einer E-Mail**, **Senden einer E-Mai**l, **Hinzufügen von Anhängen** und **Verwenden von Filtern**. Weitere Informationen zu SendGrid und zum Senden von E-Mails finden Sie im Abschnitt [Nächste Schritte][Next steps].
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Was ist der SendGrid-E-Mail-Dienst?
 SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktionale E-Mail-Übermittlung], Skalierbarkeit und Echtzeitanalysen mit flexiblen APIs bietet, die die benutzerdefinierte Integration erleichtern. Häufige Verwendungsszenarien für SendGrid:
@@ -185,7 +186,7 @@ Sie können Anhänge auch über den **Datenstrom** der Daten hinzufügen. Dazu r
 
 
 ## <a name="how-to-use-apps-to-enable-footers-tracking-and-analytics"></a>Vorgehensweise: Verwenden von Apps zum Aktivieren von Fußzeilen sowie für Nachverfolgung und Analysen
-SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von Apps. Dies sind Einstellungen, die zu einer E-Mail-Nachricht hinzugefügt werden können, um bestimmte Funktionen wie Klickprotokollierung, Google Analytics, Abonnementsverfolgung usw. zu aktivieren. Eine vollständige Liste der Apps finden Sie unter [App-Einstellungen][App-Einstellungen].
+SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von Apps. Dies sind Einstellungen, die zu einer E-Mail-Nachricht hinzugefügt werden können, um bestimmte Funktionen wie Klickprotokollierung, Google Analytics, Abonnementsverfolgung usw. zu aktivieren. Eine vollständige Liste der Apps finden Sie unter [App-Einstellungen][App Settings].
 
 Apps können mithilfe von Methoden, die als Teil der **SendGrid**-Klasse implementiert wurden, auf **SendGrid-E**-Mails angewendet werden.
 
@@ -216,7 +217,7 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
     myMessage.EnableClickTracking(true);
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Vorgehensweise: Zusätzliche SendGrid-Dienste verwenden
-SendGrid bietet webbasierte APIs und Webhooks, die Sie zur Nutzung zusätzlicher SendGrid-Funktionen aus Ihrer Azure-Anwendung einsetzen können. Ausführliche Informationen finden Sie in der [SendGrid-API-Dokumentation][SendGrid-API-Dokumentation].
+SendGrid bietet webbasierte APIs und Webhooks, die Sie zur Nutzung zusätzlicher SendGrid-Funktionen aus Ihrer Azure-Anwendung einsetzen können. Ausführliche Informationen finden Sie in der [SendGrid-API-Dokumentation][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, finden Sie unter diesen Links weitere Informationen.
@@ -225,33 +226,28 @@ Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, f
 * SendGrid-API-Dokumentation: <https://sendgrid.com/docs>
 * Spezielles SendGrid-Angebot für Azure-Kunden: [https://sendgrid.com](https://sendgrid.com)
 
-[Nächste Schritte]: #next-steps
+[Next steps]: #next-steps
 [What is the SendGrid Email Service?]: #whatis
 [Create a SendGrid Account]: #createaccount
 [Reference the SendGrid .NET Class Library]: #reference
 [How to: Create an Email]: #createemail
 [How to: Send an Email]: #sendemail
 [How to: Add an Attachment]: #addattachment
-[Verwenden von Filtern zur Aktivierung von Fußzeilen sowie für Nachverfolgungen und Analysen]: #usefilters
+[How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
 [How to: Use Additional SendGrid Services]: #useservices
 
-[Sonderangebot]: https://www.sendgrid.com/windowsazure.html
+[special offer]: https://www.sendgrid.com/windowsazure.html
 
 [create-new-project]: ./media/sendgrid-dotnet-how-to-send-email/create_new_project.png
 [select-a-template]: ./media/sendgrid-dotnet-how-to-send-email/select_a_template.png
 [SendGrid-NuGet-package]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid_nuget.png
 [azure_app_settings]: ./media/sendgrid-dotnet-how-to-send-email/app_settings.png
 [sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
-[SMTP im Vergleich mit Web-API]: https://sendgrid.com/docs/Integrate/index.html
-[App-Einstellungen]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
-[SendGrid-API-Dokumentation]: https://sendgrid.com/docs
+[SMTP vs. Web API]: https://sendgrid.com/docs/Integrate/index.html
+[App Settings]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
+[SendGrid API documentation]: https://sendgrid.com/docs
 
 [cloudbasierter E-Mail-Dienst]: https://sendgrid.com/email-solutions
 [transaktionale E-Mail-Übermittlung]: https://sendgrid.com/transactional-email
-
-
-
-
-<!--HONumber=Nov16_HO5-->
 
 

@@ -13,8 +13,9 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 translationtype: Human Translation
-ms.sourcegitcommit: 4736be260d3fa0ed7ec402959fd53604f55aceca
-ms.openlocfilehash: 8f0236c8ed237c473ee900feb68a3f86a6165106
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 540c213b1228b11fe3c4f77026d71829d16e04d1
+ms.lasthandoff: 02/27/2017
 
 ---
 # <a name="linux-virtual-machine-documentation"></a>Dokumentation zu virtuellen Linux-Computern
@@ -33,7 +34,7 @@ Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)</h3>
+                        <h3>Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0</h3>
                     </div>
                 </div>
             </div>
@@ -142,10 +143,5 @@ Hier erfahren Sie, wie Sie unter Verwendung einer Linux-Distribution Ihrer Wahl 
     </li>
 </ul>
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

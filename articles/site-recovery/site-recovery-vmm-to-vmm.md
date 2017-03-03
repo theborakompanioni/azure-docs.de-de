@@ -17,6 +17,7 @@ ms.author: raynew
 translationtype: Human Translation
 ms.sourcegitcommit: 7ff27bb866bd9b1f2a24b5c0ff5d83dea2227f49
 ms.openlocfilehash: 70a71bae81d4e499041c140b1d61b621e168ec43
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -443,9 +444,4 @@ In dieser Tabelle ist zusammengefasst, wie Daten in diesem Szenario gespeichert 
 | **Plan für die Wiederherstellung** | Pläne für die Wiederherstellung unterstützen Sie beim Erstellen eines Orchestrierungsplans für das Wiederherstellungs-Rechenzentrum. Sie können die Reihenfolge definieren, in der VMs oder eine Gruppe virtueller Computer am Wiederherstellungsstandort gestartet werden sollen. Außerdem können Sie die Ausführung beliebiger automatisierter Skripts oder manueller Aktionen angeben, die zum Zeitpunkt der Wiederherstellung für jede VM ausgeführt werden. Ein Failover wird in der Regel auf der Ebene des Wiederherstellungsplans ausgelöst, um eine koordinierte Wiederherstellung einzuleiten. | Site Recovery sammelt, verarbeitet und überträgt Metadaten für den Wiederherstellungsplan, einschließlich der Metadaten für virtuelle Computer sowie der Metadaten von Automatisierungsskripts und Hinweisen für manuelle Aktionen. |Die Metadaten werden verwendet, um den Wiederherstellungsplan im Azure-Portal zu erstellen. |Dieses Feature ist ein wesentlicher Bestandteil des Diensts und kann nicht deaktiviert werden. Wenn Sie diese Informationen nicht an Site Recovery senden möchten, erstellen Sie keine Wiederherstellungspläne. |
 | **Netzwerkzuordnung** | Netzwerkinformationen aus dem primären Rechenzentrum werden dem Rechenzentrum für die Wiederherstellung zugeordnet. Wenn VMs am Wiederherstellungsstandort wiederhergestellt werden, hilft die Netzwerkzuordnung beim Herstellen der Netzwerkkonnektivität. |Site Recovery erfasst, verarbeitet und überträgt die Metadaten der logischen Netzwerke für die einzelnen Standorte (primär und Rechenzentrum). |Die Metadaten werden verwendet, um Netzwerkeinstellungen aufzufüllen, damit Sie die Netzwerkinformationen zuordnen können. | Dieses Feature ist ein wesentlicher Bestandteil des Diensts und kann nicht deaktiviert werden. Wenn Sie diese Informationen nicht an Site Recovery senden möchten, verwenden Sie die Netzwerkzuordnung nicht. |
 | **Failover (geplant/ungeplant/Test)** | Bei einem Failover werden VMs in einem VMM-verwalteten Rechenzentrum offline genommen und dafür in einem anderen online geschaltet. Die Failoveraktion wird im Azure-Portal manuell ausgelöst. |Der Anbieter auf dem VMM-Server wird von Site Recovery über das Failoverereignis benachrichtigt und führt über VMM-Schnittstellen eine Failoveraktion auf dem Hyper-V-Host aus. Das tatsächliche Failover einer VM wird von einem Hyper-V-Host zu einem anderen ausgeführt und von Windows Server 2012 oder Windows Server 2012 R2 Hyper-V-Replikat abgewickelt. Site Recovery füllt anhand der gesendeten Informationen den Status der Informationen zur Failoveraktion im Azure-Portal auf. | Dieses Feature ist ein wesentlicher Bestandteil des Diensts und kann nicht deaktiviert werden. Wenn Sie diese Informationen nicht an Site Recovery senden möchten, verwenden Sie das Failover nicht. |
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

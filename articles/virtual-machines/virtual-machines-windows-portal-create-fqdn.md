@@ -18,6 +18,7 @@ ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
 ms.openlocfilehash: e89e5769701f00c6f403bd54cb2b29bcce53bf15
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -32,10 +33,5 @@ Sie können jetzt mithilfe dieses DNS-Namens eine Remoteverbindung mit dem virtu
 Ihr virtueller Computer verfügt nun über eine öffentliche IP und einen DNS-Namen. Als Nächstes können Sie allgemeine Anwendungsframeworks oder Dienste bereitstellen, z.B. IIS, SQL oder SharePoint.
 
 Außerdem können Sie sich ausführlicher [über die Verwendung von Resource Manager informieren](../azure-resource-manager/resource-group-overview.md), um Hinweise zum Erstellen Ihrer Azure-Bereitstellungen zu erhalten.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

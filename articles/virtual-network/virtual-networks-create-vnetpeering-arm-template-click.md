@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: narayan;annahar
 translationtype: Human Translation
-ms.sourcegitcommit: ddfa2998d7e9305891c5a976dff5c2365d5eb1d4
-ms.openlocfilehash: 351b77482c07160fa62155e90dcb8eb280e9087c
+ms.sourcegitcommit: d68c2f496cfdfa52c33243542ee141c44639e5c0
+ms.openlocfilehash: 7b4fda3ffb269c6a9de407bbd9af32d90768504f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -336,7 +337,7 @@ Zum Erstellen eines abonnementübergreifenden VNET-Peerings führen Sie die folg
 Führen Sie die folgenden Schritte aus, um ein Peering zwischen virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen zu erstellen:
 
 1. Wenn Sie ein Peering zwischen VNETs erstellen, die über verschiedene Bereitstellungsmodelle im *gleichen* Abonnement bereitgestellt werden, fahren Sie mit Schritt 2 fort. Die Funktion zum Erstellen eines VNET-Peerings zwischen VNETs, die über verschiedene Bereitstellungsmodelle in *unterschiedlichen* Abonnements bereitgestellt werden, ist als **Vorschau** verfügbar. Funktionen in der Vorschau bieten nicht dieselbe Zuverlässigkeit und Vereinbarung zum Servicelevel wie die in der finalen Version veröffentlichten Funktionen. Beim Erstellen eines Peerings zwischen VNETs, die über verschiedene Bereitstellungsmodelle in verschiedenen Abonnements bereitgestellt sind, müssen Sie zuerst die folgenden Aufgaben ausführen:
-    - Registrieren Sie die Vorschaufunktion im Azure-Abonnement durch Eingabe des folgenden Befehls aus PowerShell: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network`
+    - Registrieren Sie die Vorschaufunktion im Azure-Abonnement durch Eingabe der folgenden Befehle aus PowerShell: `Register-AzureRmProviderFeature -FeatureName AllowClassicCrossSubscriptionPeering -ProviderNamespace Microsoft.Network` und `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network`.
     - Führen Sie die Schritte 1 bis 2 im Abschnitt [Abonnementübergreifendes Peering](#x-sub) dieses Artikels aus.
 2. Im Text weiter unten ist die Definition eines VNet-Peeringlinks zwischen VNET1 und VNET2 für dieses Szenario enthalten. Es ist nur ein Link erforderlich, um ein klassisches virtuelles Netzwerk mit einem virtuellen Azure Resource Manager-Netzwerk zu verknüpfen.
 
@@ -417,10 +418,5 @@ Führen Sie die folgenden Schritte aus, um ein Peering zwischen virtuellen Netzw
         RemoteVirtualNetworkAddressSpace : null
 
     Nach dem Peering zwischen einem klassischen VNet und einem Resource Manager-VNet sollte es möglich sein, Verbindungen von beliebigen virtuellen Computern in VNET1 mit virtuellen Computern in VNET2 zu initiieren (und umgekehrt).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

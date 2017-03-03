@@ -17,6 +17,7 @@ ms.author: curtand
 translationtype: Human Translation
 ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
 ms.openlocfilehash: fee05b9cfb176714e3313ea2e969958bb4cb19f8
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -51,9 +52,4 @@ Im weiteren Verlauf dieses Themas werden die umfassenden Kennwortverwaltungsfunk
 * [Verwalten von Azure AD](active-directory-administer.md)
 * [Erstellen oder Bearbeiten von Benutzern in Azure AD](active-directory-create-users.md)
 * [Verwalten von Gruppen in Azure AD](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -63,6 +63,7 @@
 ### [HDInsight MapReduce-Aktivität](data-factory-map-reduce.md)
 ### [HDInsight-Streamingaktivität](data-factory-hadoop-streaming-activity.md)
 ### [Machine Learning-Batchausführungsaktivität](data-factory-azure-ml-batch-execution-activity.md)
+### [Machine Learning-Ressourcenaktualisierungsaktivität](data-factory-azure-ml-update-resource-activity.md)
 ### [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md)
 ### [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md)
 ### [Benutzerdefinierte .NET-Aktivität](data-factory-use-custom-activities.md)
@@ -99,8 +100,3 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-factory)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=data-factory)
 ## [Anfordern eines Features](https://feedback.azure.com/forums/270578-azure-data-factory)
-
-
-<!--HONumber=Jan17_HO3-->
-
-

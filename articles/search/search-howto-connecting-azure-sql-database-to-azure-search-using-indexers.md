@@ -12,11 +12,12 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 02/15/2017
 ms.author: eugenesh
 translationtype: Human Translation
-ms.sourcegitcommit: 096fcd2a7415da03714f05bb1f29ceac6f186eda
-ms.openlocfilehash: dba7cd466d94cb68896ee9270bc765fe822ca00e
+ms.sourcegitcommit: 0841744b806f3dba38dddee21fb7fe881e07134f
+ms.openlocfilehash: 51c9d9afb6c2ed460abd4c47a6afbc404b97a85e
+ms.lasthandoff: 02/16/2017
 
 ---
 
@@ -203,11 +204,13 @@ Obwohl sich die Verwendung der Richtlinie für die integrierte SQL- Änderungsna
 
 * Alle Einfügungen geben einen Wert für die Spalte an.
 * Alle Updates für ein Element ändern auch den Wert der Spalte.
-* Der Wert dieser Spalte wird bei jeder Änderung erhöht.
+* Der Wert dieser Spalte wird bei jeder Einfügung oder Aktualisierung erhöht.
 * Abfragen mit den folgenden WHERE- und ORDER BY-Klauseln können effizient ausgeführt werden: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`.
 
-Beispielsweise ist eine indizierte **rowversion** -Spalte ein idealer Kandidat für die Spalte mit dem oberen Grenzwert.
-Um diese Richtlinie zu verwenden, erstellen oder aktualisieren Sie die Datenquelle wie folgt:
+> [!IMPORTANT] 
+> Es wird dringend empfohlen, eine Spalte **rowversion** für die Änderungsnachverfolgung zu verwenden. Wenn ein anderer Datentyp verwendet wird, ist nicht sichergestellt, dass bei der Änderungsnachverfolgung alle Änderungen erfasst werden, wenn Transaktionen gleichzeitig mit einer Indexerabfrage ausgeführt werden.
+
+Um eine Richtlinie mit oberem Grenzwert anzuwenden, erstellen oder aktualisieren Sie die Datenquelle wie folgt:
 
     {
         "name" : "myazuresqldatasource",
@@ -216,7 +219,7 @@ Um diese Richtlinie zu verwenden, erstellen oder aktualisieren Sie die Datenquel
         "container" : { "name" : "table or view name" },
         "dataChangeDetectionPolicy" : {
            "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
-           "highWaterMarkColumnName" : "[a row version or last_updated column name]"
+           "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
 
@@ -312,9 +315,4 @@ A: Ja. Allerdings kann zu einem gegebenen Zeitpunkt nur ein Indexer auf einem Kn
 **F:** Wirkt sich die Ausführung eines Indexers auf meine Abfragearbeitsauslastung aus?
 
 A: Ja. Indexer werden auf einem der Knoten im Suchdienst ausgeführt, und die Ressourcen dieses Knotens werden für die Indizierung und das Bearbeiten des Datenverkehrs für Abfragen und andere API-Anforderungen gemeinsam genutzt. Wenn Sie intensive Indizierungs- und Abfragearbeitsauslastungen ausführen und viele 503-Fehler oder zunehmend längere Antwortzeiten auftreten, sollten Sie Ihren Suchdienst skalieren.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

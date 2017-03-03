@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 6d459e37b8b39f5d76c4ec86ebb7351c783b81fb
 ms.openlocfilehash: 64cb4be184e02519a6c496f8639035201ebb60f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -328,10 +329,5 @@ Das folgende Beispiel veranschaulicht die Verwendung von Platzhalterzeichen, die
 * Nach dem Definieren einer Richtlinienregel weisen Sie sie einem Bereich zu. Informationen zur Richtlinienzuweisung finden Sie unter [Zuweisen und Verwalten von Richtlinien](resource-manager-policy-create-assign.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 * Das Richtlinienschema wird unter [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json)veröffentlicht. 
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

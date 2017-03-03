@@ -18,6 +18,7 @@ ms.author: szark
 translationtype: Human Translation
 ms.sourcegitcommit: cb794e5da329173ab4d7c856733e6a0f2c5f7019
 ms.openlocfilehash: 7c53a5b443f8afa89dc7ede39f46d29eb39de6cc
+ms.lasthandoff: 02/13/2017
 
 
 ---
@@ -186,10 +187,5 @@ Der [Azure Linux-Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%
   > 
 
 * Sie müssen den virtuellen Computer anschließend herunterfahren und die virtuelle Festplatte in Azure hochladen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

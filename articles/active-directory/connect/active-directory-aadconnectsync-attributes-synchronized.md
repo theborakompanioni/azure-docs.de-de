@@ -17,6 +17,7 @@ ms.author: markvi;andkjell
 translationtype: Human Translation
 ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
 ms.openlocfilehash: ff5a7091e985629763dde416b17e060236f8f7ad
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -458,10 +459,5 @@ Geräteobjekte werden in Active Directory erstellt. Bei diesen Objekten kann es 
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

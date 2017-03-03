@@ -15,8 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
 translationtype: Human Translation
-ms.sourcegitcommit: 496e00c2b9a0b374450f9a6f9dff5d41c805261c
-ms.openlocfilehash: 591f3440977b1c952b1b360f6d3f221cdbc5a7a7
+ms.sourcegitcommit: 1ce47043f85e30f616c8b22e1107b192d4962d8a
+ms.openlocfilehash: 73c35da427f1e2080ab6fdd086d3168dad495415
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -27,14 +28,14 @@ In diesem Artikel werden das Konfigurieren von Service Map und das Onboarding vo
 
 
 ## <a name="connected-sources"></a>Verbundene Quellen
-In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Service Map unterstützt werden.
+Die Dienstzuordnung ruft ihre Daten vom Microsoft Dependency-Agent ab.  Der Dependency-Agent ist abhängig vom OMS-Agent, da er dessen Verbindungen mit OMS benötigt.  Dies bedeutet, dass auf einem Server zunächst der OMS-Agent installiert und konfiguriert werden muss, bevor der Dependency-Agent installiert werden kann.  In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Service Map unterstützt werden.
 
 | Verbundene Quelle | Unterstützt | Beschreibung |
 |:--|:--|:--|
-| [Windows-Agents](../log-analytics/log-analytics-windows-agents.md) | Ja | Service Map analysiert und erfasst Daten von Windows-Agent-Computern.  <br><br>Zusätzlich zum OMS-Agent erfordern Windows-Agents den Microsoft Dependency-Agent.  Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
-| [Linux-Agents](../log-analytics/log-analytics-linux-agents.md) | Ja | Service Map analysiert und erfasst Daten von Linux-Agent-Computern.  <br><br>Zusätzlich zum OMS-Agent erfordern Linux-Agents den Microsoft Dependency-Agent.  Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
-| [SCOM-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md) | Ja | Service Map analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen System Center Operations Manager-Verwaltungsgruppe (SCOM). <br><br>Es ist keine direkte Verbindung vom SCOM-Agent-Computer zu OMS erforderlich. Die Daten werden von der Verwaltungsgruppe direkt an das OMS-Repository weitergeleitet.|
-| [Azure-Speicherkonto](../log-analytics/log-analytics-azure-storage.md) | Nein | Da Service Map Daten von Agent-Computern erfasst, sind keine Daten aus dem Azure-Speicher zu erfassen. |
+| Windows-Agents | Ja | Service Map analysiert und erfasst Daten von Windows-Agent-Computern.  <br><br>Zusätzlich zum [OMS-Agent](../log-analytics/log-analytics-windows-agents.md) erfordern Windows-Agents den Microsoft Dependency-Agent.  Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| Linux-Agents | Ja | Service Map analysiert und erfasst Daten von Linux-Agent-Computern.  <br><br>Zusätzlich zum [OMS-Agent](../log-analytics/log-analytics-linux-agents.md) erfordern Linux-Agents den Microsoft Dependency-Agent.  Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| SCOM-Verwaltungsgruppe | Ja | Service Map analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe (SCOM)](../log-analytics/log-analytics-om-agents.md). <br><br>Es ist keine direkte Verbindung vom SCOM-Agent-Computer zu OMS erforderlich. Die Daten werden von der Verwaltungsgruppe direkt an das OMS-Repository weitergeleitet.|
+| Azure-Speicherkonto | Nein | Da Service Map Daten von Agent-Computern erfasst, sind keine Daten aus dem Azure-Speicher zu erfassen. |
 
 Beachten Sie, dass Service Map nur 64-Bit-Plattformen unterstützt.
 
@@ -97,10 +98,10 @@ Der Dependency-Agent wird auf Windows-Computern mithilfe von „InstallDependenc
 
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Windows-Computer zu installieren:
 
-1.  Stellen Sie mithilfe der Anweisungen zum direkten Verbinden von Computern mit OMS sicher, dass der OMS-Agent installiert ist.
-2.  Laden Sie den Windows-Agent herunter, und starten Sie ihn mit dem folgenden Befehl: <br>*InstallDependencyAgent-Windows.exe*
-3.  Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
-4.  Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis *C:\Programme\Microsoft Dependency Agent\logs*. 
+1.    Stellen Sie mithilfe der Anweisungen zum direkten Verbinden von Computern mit OMS sicher, dass der OMS-Agent installiert ist.
+2.    Laden Sie den Windows-Agent herunter, und starten Sie ihn mit dem folgenden Befehl: <br>*InstallDependencyAgent-Windows.exe*
+3.    Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
+4.    Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis *C:\Programme\Microsoft Dependency Agent\logs*. 
 
 Der Dependency-Agent für Windows kann von einem Administrator über die Systemsteuerung deinstalliert werden.
 
@@ -112,9 +113,9 @@ Der Dependency-Agent wird auf Linux-Computern mit „InstallDependencyAgent-Linu
  
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Linux-Computer zu installieren:
 
-1.  Stellen Sie mithilfe der Anweisungen unter [Verbinden von Linux-Computern mit Log Analytics  ](https://technet.microsoft.com/library/mt622052.aspx) sicher, dass der OMS-Agent installiert ist. Der OMS-Agent muss vor dem Dependency-Agent für Linux installiert werden.
-2.  Installieren Sie mit Root-Berechtigungen den Dependency-Agent für Linux mit dem folgenden Befehl:<br>*sh InstallDependencyAgent-Linux64.bin*.
-3.  Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis */var/opt/microsoft/dependency-agent/log*.
+1.    Stellen Sie mithilfe der Anweisungen unter [Verbinden von Linux-Computern mit Log Analytics  ](https://technet.microsoft.com/library/mt622052.aspx) sicher, dass der OMS-Agent installiert ist. Der OMS-Agent muss vor dem Dependency-Agent für Linux installiert werden.
+2.    Installieren Sie mit Root-Berechtigungen den Dependency-Agent für Linux mit dem folgenden Befehl:<br>*sh InstallDependencyAgent-Linux64.bin*.
+3.    Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Linux-Agents lautet das Protokollverzeichnis */var/opt/microsoft/dependency-agent/log*.
 
 ### <a name="uninstalling-the-dependency-agent-on-linux"></a>Deinstallieren des Dependency-Agent für Linux
 Wenn Sie den Dependency-Agent unter Linux vollständig deinstallieren möchten, müssen Sie den Agent selbst und den Connector entfernen, der automatisch mit dem Agent installiert wird.  Mit dem folgenden einzelnen Befehl können Sie beide Komponenten deinstallieren:
@@ -142,7 +143,7 @@ Verwenden Sie Optionen aus der folgenden Tabelle zur Installation. Um eine Liste
 
     InstallDependencyAgent-Linux64.bin -help
 
-| Beschreibung des Flags
+| Flag    Beschreibung
 |:--|:--|
 | -s | Führt eine automatische Installation ohne Benutzereingaben aus. |
 | --check | Überprüft Berechtigungen und das Betriebssystem, ohne den Agent zu installieren. |
@@ -177,8 +178,8 @@ Das Dependency-Agent-Management Pack wird im Microsoft-Verwaltungs-Agent ausgef�
   
 Überprüfen Sie mit den folgenden Schritten, ob das Management Pack heruntergeladen wurde:
 
-1.  Suchen Sie in „C:\Programme\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ nach der Datei „Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp“.  
-2.  Wenn die Datei nicht vorhanden ist und der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist, überprüfen Sie, ob sie in SCOM importiert wurde. Überprüfen Sie hierzu „Management Packs“ im Arbeitsbereich „Administration“ der Operations Manager-Konsole.
+1.    Suchen Sie in „C:\Programme\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs“ nach der Datei „Microsoft.IntelligencePacks.ApplicationDependencyMonitor.mp“.  
+2.    Wenn die Datei nicht vorhanden ist und der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist, überprüfen Sie, ob sie in SCOM importiert wurde. Überprüfen Sie hierzu „Management Packs“ im Arbeitsbereich „Administration“ der Operations Manager-Konsole.
 
 Das Service Map-Management Pack schreibt Ereignisse in das Windows-Ereignisprotokoll von Operations Manager.  Das Protokoll kann über das Systemprotokoll, in dem Sie festlegen können, welche Protokolldateien hochgeladen werden sollen, [in OMS gesucht](../log-analytics/log-analytics-log-searches.md) werden.  Wenn Debugereignisse aktiviert sind, werden sie in das Anwendungsereignisprotokoll geschrieben, wobei die Ereignisquelle *ADMConnector* lautet.
 
@@ -198,7 +199,7 @@ Ablaufverfolgungen werden in „C:\Windows\Logs\OpsMgrTrace“ geschrieben.  Mit
 #### <a name="microsoft-dependency-agent"></a>Microsoft Dependency-Agent
 Melden Sie sich mit einem Konto an, das über sudo- oder Root-Berechtigungen verfügt, und führen Sie den folgenden Befehl aus, um Problembehandlungsdaten aus dem Dependency-Agent zu generieren.  Sie können das Flag „--help“ hinzufügen, um zusätzliche Optionen anzuzeigen.
 
-    /opt/microsoft/dependency-agent/scripts/collect-dependency-agent-data.sh
+    /opt/microsoft/dependency-agent/lib/scripts/collect-dependency-agent-data.sh
 
 Das Supportdatenpaket wird unter dem Installationsverzeichnis des Agent in „/var/opt/microsoft/dependency-agent/log“ (wenn der Benutzer über Root-Berechtigungen verfügt) oder im Basisverzeichnis des Benutzers, der das Skript ausführt (wenn der Benutzer nicht über Root-Berechtigungen verfügt), gespeichert.  Mit der Option „--file <filename>“ können Sie das Paket in einem anderen Verzeichnis speichern.
 
@@ -322,9 +323,4 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie nach Bereitstellung und Konfiguration [Service Map verwenden](operations-management-suite-service-map.md) können.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

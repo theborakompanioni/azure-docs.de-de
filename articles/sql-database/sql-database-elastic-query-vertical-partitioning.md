@@ -15,8 +15,10 @@ ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
 translationtype: Human Translation
-ms.sourcegitcommit: 77b8b8960fb0e5e5340b65dae03f95b456832a07
-ms.openlocfilehash: cb649d3f6ead507582f587d112e43a89e659c757
+ms.sourcegitcommit: 430fed27780076738e319dabca4cc9abaed70691
+ms.openlocfilehash: 078784bcdf7a3a6d4423389d2f5ca4ffdb67c89f
+ms.lasthandoff: 02/22/2017
+
 
 
 ---
@@ -49,7 +51,7 @@ Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung 
     [;]
 
 > [!NOTE]
-> Stellen Sie sicher, dass `<username>` kein **"@servername"**-Suffix enthält. 
+> Stellen Sie sicher, dass `<username>` kein **@servername**-Suffix enthält. 
 >
 
 ## <a name="create-external-data-sources"></a>Erstellen externer Datenquellen
@@ -180,18 +182,17 @@ Sie können herkömmliche SQL Server-Verbindungszeichenfolgen verwenden, um Ihre
 * Eine Abfrage für elastische Datenbanken funktioniert am besten für Abfragen, in denen der größte Teil der Berechnung in den Remotedatenbanken erfolgt. In der Regel erhalten Sie optimale Abfrageleistung mit benutzerdefinierten Filterprädikaten, die in den Remotedatenbanken oder Verknüpfungen ausgewertet werden können, die vollständig in der Remotedatenbank ausgeführt werden können. Für andere Abfragemuster müssen möglicherweise große Mengen von Daten aus der Remotedatenbank geladen werden, wodurch Leistungseinbußen auftreten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Abfragen horizontal partitionierter Datenbanken (auch Shartdatenbanken genannt) finden Sie unter [Ausführen von Abfragen über horizontal partitionierte Clouddatenbanken (Sharddatenbanken) hinweg](sql-database-elastic-query-horizontal-partitioning.md).
 
-[!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
+* Eine Übersicht über elastische Abfragen finden Sie unter [Übersicht über elastische Abfragen in Azure SQL-Datenbank](sql-database-elastic-query-overview.md).
+* Ein Tutorial zur vertikalen Partitionierung finden Sie unter [Erste Schritte mit datenbankübergreifenden Abfragen (vertikale Partitionierung)](sql-database-elastic-query-getting-started-vertical.md).
+* Ein Tutorial zur horizontalen Partitionierung (Sharding) finden Sie unter [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
+* Die Syntax und Beispiele für Abfragen von horizontal partitionierten Daten finden Sie unter [Abfragen von horizontal partitionierten Daten](sql-database-elastic-query-horizontal-partitioning.md).
+* Unter [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) finden Sie eine gespeicherte Prozedur, mit der eine Transact-SQL-Anweisung für eine einzelne Remoteinstanz von Azure SQL-Datenbank oder für eine Gruppe von Datenbanken ausgeführt wird, die als Shards in einem Schema mit horizontaler Partitionierung dienen.
+
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-vertical-partitioning/verticalpartitioning.png
 
 
 <!--anchors-->
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

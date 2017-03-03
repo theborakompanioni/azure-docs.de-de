@@ -17,6 +17,7 @@ ms.author: msfussell
 translationtype: Human Translation
 ms.sourcegitcommit: 47b3fffb2d5c24b7473884e490be19ff17b61b61
 ms.openlocfilehash: 97b0cb7a5f04f2c5c547cb4b70d87273aa8f2383
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -302,9 +303,4 @@ Nachdem Sie nun einen Dienst in einem Container bereitgestellt haben, können Si
 
 * [Übersicht über Service Fabric und Container](service-fabric-containers-overview.md)
 * Eine Beispielanwendung finden Sie in den [Codebeispielen zu Service Fabric-Containern auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

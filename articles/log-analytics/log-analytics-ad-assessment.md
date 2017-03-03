@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/02/2017
 ms.author: banders
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 58eee787b54122380b48f1c7a96dbe2e79e4bcef
+ms.sourcegitcommit: e0971ca8064a6e4de272a8d890a6fdc88c0f8cc2
+ms.openlocfilehash: 24e3da0ed3aa04e000a4c88fb7b0745d5b880d0d
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -39,7 +40,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösungen.
 
 * Agents müssen auf Domänencontrollern installiert werden, die Mitglieder der auszuwertenden Domäne sind.
-* Für die Active Directory Assessment-Lösung muss .NET Framework 4 auf jedem Computer installiert sein, der über einen OMS-Agent verfügt.
+* Für die Active Directory Assessment-Lösung muss eine unterstützte Version von .NET Framework 4 (4.5.2 oder höher) auf jedem Computer installiert sein, der über einen OMS-Agent verfügt.
 * Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md)beschriebenen Prozesses die Active Directory Assessment-Lösung Ihrem OMS-Arbeitsbereich hinzu.  Es ist keine weitere Konfiguration erforderlich.
 
   > [!NOTE]
@@ -170,9 +171,4 @@ Nach Ausführung der nächsten geplanten Bewertung – standardmäßig alle 7 Ta
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um detaillierte Daten und Empfehlungen von AD Assessment anzuzeigen.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

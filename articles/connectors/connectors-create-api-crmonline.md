@@ -17,6 +17,7 @@ ms.author: matp
 translationtype: Human Translation
 ms.sourcegitcommit: fa426f474f4efd4023da5dfd9954dacf96f635ab
 ms.openlocfilehash: 99d5379ad1e6965dd9ed88de456cc850d7e40d5a
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -309,9 +310,4 @@ Von den angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes zur�
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

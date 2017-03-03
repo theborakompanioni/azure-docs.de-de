@@ -16,8 +16,9 @@ ms.workload: na
 ms.date: 07/13/2016
 ms.author: masashin
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: ea75a14232c010ebea31273856f21cb0e02067a7
+ms.sourcegitcommit: 066bc9911050c44fe5d8ce2d63bdb0f843e08176
+ms.openlocfilehash: 31dd351ae216e131c092447493ac9f3ae65ba10d
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -27,7 +28,7 @@ ms.openlocfilehash: ea75a14232c010ebea31273856f21cb0e02067a7
 Einige Themen in diesem Leitfaden werden noch diskutiert und können sich unter Umständen ändern. Wir freuen uns auf Ihr Feedback!
 
 ## <a name="overview"></a>Übersicht
-Mit einer sorgfältig entworfenen RESTful-Web-API werden die Ressourcen, Beziehungen und Navigationsschemas definiert, auf die mit Clientanwendungen zugegriffen werden kann. Beim Implementieren und Bereitstellen einer Web-API sollten Sie die physischen Anforderungen der Umgebung  berücksichtigen, in der die Web-API gehostet wird. Außerdem sollten Sie eher darauf achten, wie die Web-API erstellt wurde, als auf die logische Struktur der Daten. In diesem Leitfaden geht es hauptsächlich um die bewährten Methoden zur Implementierung einer Web-API und deren Veröffentlichung, um sie für Clientanwendungen verfügbar zu machen. Sicherheitsaspekte werden separat im Leitfaden zur API-Sicherheit beschrieben. Ausführliche Informationen zum Web-API-Design finden Sie im Leitfaden zum API-Design.
+Mit einer sorgfältig entworfenen RESTful-Web-API werden die Ressourcen, Beziehungen und Navigationsschemas definiert, auf die mit Clientanwendungen zugegriffen werden kann. Beim Implementieren und Bereitstellen einer Web-API sollten Sie die physischen Anforderungen der Umgebung  berücksichtigen, in der die Web-API gehostet wird. Außerdem sollten Sie eher darauf achten, wie die Web-API erstellt wurde, als auf die logische Struktur der Daten. In diesem Leitfaden geht es hauptsächlich um Best Practices zur Implementierung einer Web-API und deren Veröffentlichung, um sie für Clientanwendungen verfügbar zu machen. Sicherheitsaspekte werden separat im Leitfaden zur API-Sicherheit beschrieben. Ausführliche Informationen zum Web-API-Design finden Sie im Leitfaden zum API-Design.
 
 ## <a name="considerations-for-implementing-a-restful-web-api"></a>Aspekte der Implementierung einer RESTful-Web-API
 In den folgenden Abschnitten werden die bewährten Methoden zur Verwendung der ASP.NET-Web-API-Vorlage zum Erstellen einer RESTful-Web-API veranschaulicht. Ausführliche Informationen zur Verwendung der Web-API-Vorlage finden Sie auf der Microsoft-Website unter [Informationen zur ASP.NET-Web-API](http://www.asp.net/web-api).
@@ -1147,9 +1148,4 @@ Anhand dieser Informationen können Sie bestimmen, ob eine bestimmte Web-API ode
 * Auf der Seite [Einrichten von Application Insights für ASP.NET](application-insights/app-insights-asp-net.md) auf der Microsoft-Website werden ausführliche Informationen zum Installieren und Konfigurieren von Application Insights in einem ASP.NET-Web-API-Projekt bereitgestellt.
 * Auf der Seite [Überprüfen von Code mithilfe von Komponententests](https://msdn.microsoft.com/library/dd264975.aspx) der Microsoft-Website werden ausführliche Informationen zum Erstellen und Verwalten von Komponententests mit Visual Studio bereitgestellt.
 * Auf der Seite [Ausführen von Leistungstests für Ihre App](https://msdn.microsoft.com/library/dn250793.aspx) der Microsoft-Website wird beschrieben, wie Sie Visual Studio Ultimate zum Erstellen eines Projekts zum Testen der Webleistung und Auslastung verwenden.
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

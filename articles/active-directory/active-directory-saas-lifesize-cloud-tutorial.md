@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2016
+ms.date: 02/13/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7208f872e28ce53f82cf495030fabb50557bc563
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 8edbee8e554a7818b97669a4bb64b31ada67b1a5
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Lifesize Cloud in Azure Active Director
 Die Integration von Lifesize Cloud in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer auf Lifesize Cloud Zugriff hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Lifesize Cloud anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Lifesize Cloud anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -35,11 +36,10 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Lifesize Cloud konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein SSO-fähiges Lifesize Cloud-Abonnement
+* Ein Lifesize Cloud-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
@@ -52,10 +52,10 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Lifesize Cloud aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+* Hinzufügen von Lifesize Cloud aus dem Katalog
+* Konfigurieren und Testen der einmaligen Anmeldung (SSO) von Azure AD
 
-## <a name="adding-lifesize-cloud-from-the-gallery"></a>Hinzufügen von Lifesize Cloud aus dem Katalog
+## <a name="add-lifesize-cloud-from-the-gallery"></a>Hinzufügen von Lifesize Cloud aus dem Katalog
 Zum Konfigurieren der Integration von Lifesize Cloud in Azure AD müssen Sie Lifesize Cloud aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Lifesize Cloud aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -80,7 +80,7 @@ Zum Konfigurieren der Integration von Lifesize Cloud in Azure AD müssen Sie Lif
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit Lifesize Cloud.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Lifesize Cloud als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Lifesize Cloud muss eine Linkbeziehung eingerichtet werden.
@@ -89,14 +89,14 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Lifesize Cloud müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Lifesize Cloud-Testbenutzers](#creating-a-lifesize-cloud-test-user)**, um eine Entsprechung von Britta Simon in Lifesize Cloud zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Lifesize Cloud-Anwendung.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden (SSO) von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Lifesize Cloud-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Lifesize Cloud die folgenden Schritte aus:**
 
@@ -108,18 +108,14 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_03.png) 
 3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_04.png) 
-   
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern nach folgendem Muster zur Anmeldung bei der Lifesize Cloud-Anwendung verwendet wird: **https://login.lifesizecloud.com/ls/?acs**.
-   
-    b. click **Weiter**
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_04.png)   
+  1. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von Ihren Benutzern nach folgendem Muster zur Anmeldung bei der Lifesize Cloud-Anwendung verwendet wird: **https://login.lifesizecloud.com/ls/?acs**.
+  2. Klicken Sie auf **Weiter**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Lifesize Cloud** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_05.png)
-   
-    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+   ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_05.png)
+   1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+   2. Klicken Sie auf **Weiter**.
 5. Melden Sie sich zum Konfigurieren von SSO für Ihre Anwendung bei der Lifesize Cloud-Anwendung mit Administratorrechten an.
 6. Klicken Sie in der rechten oberen Ecke auf Ihren Namen und dann auf **Erweiterte Einstellungen**.
    
@@ -130,60 +126,56 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 8. Konfigurieren Sie jetzt die folgenden Werte in der SSO-Konfigurationsbenutzeroberfläche.    
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
-   
-    • Kopieren Sie den Wert der Aussteller-URL von Azure AD, und fügen Sie diesen in das Textfeld **Identity Provider Issuer** (Aussteller des Identitätsanbieters) ein.
-   
-    • Kopieren Sie den Wert der Remoteanmelde-URL von Azure AD, und fügen Sie diese in das Textfeld **Anmelde-URL** ein.
-   
-    • Öffnen Sie das heruntergeladene Zertifikat in Editor, und kopieren Sie den Inhalt des Zertifikats mit Ausnahme der Zeilen „Begin Certificate“ und „End Certificate“ in das Textfeld **X.509-Zertifikat**.
-   
-    • Geben Sie in der Zuordnung des SAML-Attributs für das Textfeld **Vorname** den Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
-   
-    • Geben Sie in der Zuordnung des SAML-Attributs für das Textfeld **Nachname** den Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.
-   
-    • Geben Sie in der Zuordnung des SAML-Attributs für das Textfeld **E-Mail** den Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
+  1. Kopieren Sie den Wert der Aussteller-URL von Azure AD, und fügen Sie diesen in das Textfeld für den **Aussteller des Identitätsanbieters** ein. 
+  2. Kopieren Sie den Wert der Remoteanmelde-URL von Azure AD, und fügen Sie diese in das Textfeld **Anmelde-URL** ein.   
+  3. Öffnen Sie das heruntergeladene Zertifikat in Editor, und kopieren Sie den Inhalt des Zertifikats mit Ausnahme der Zeilen „Begin Certificate“ und „End Certificate“ in das Textfeld **X.509-Zertifikat**.
+  4. Geben Sie in der Zuordnung des SAML-Attributs für das Textfeld **Vorname** den Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** ein.
+  5. Geben Sie in der Zuordnung des SAML-Attributs für das Textfeld **Nachname** den Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** ein.
+  6. Geben Sie in der Zuordnung des SAML-Attributs für das Textfeld **E-Mail** den Wert als **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ein.
 9. Um die Konfiguration zu überprüfen, klicken Sie auf die Schaltfläche **Testen**.
    
-   > [!NOTE]
-   > Zum erfolgreichen Testen müssen Sie den Konfigurations-Assistenten in Azure AD abschließen und den Benutzer oder Gruppen, die den Test durchführen können, Zugriff gewähren.
-   > 
-   > 
+   >[!NOTE]
+   >Zum erfolgreichen Testen müssen Sie den Konfigurations-Assistenten in Azure AD abschließen und den Benutzer oder Gruppen, die den Test durchführen können, Zugriff gewähren.
+   >  
 10. Aktivieren Sie SSO, indem Sie auf die Schaltfläche **SSO aktivieren** klicken.
 11. Klicken Sie nun auf die Schaltfläche **Update**, damit alle Einstellungen gespeichert werden. Dadurch wird den Wert RelayState generiert. Kopieren Sie den Wert RelayState, der im Textfeld generiert wurde. Wir benötigen diesen Wert in den nächsten Schritten.
 12. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
     
-    ![Azure AD – einmaliges Anmelden][10]
+   ![Azure AD – einmaliges Anmelden][10]
 13. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
     
     ![Azure AD – einmaliges Anmelden][11]
-14. Melden Sie sich nun im Azure-Verwaltungsportal unter **https://portal.azure.com** mit Administratoranmeldeinformationen an.
-15. Klicken Sie im linken Navigationsbereich auf den Link **Weitere Dienste**.
+    
+**So melden Sie sich beim Azure-Verwaltungsportal an**
+
+1. Melden Sie sich mit Administratoranmeldeinformationen unter **https://portal.azure.com** an.
+2. Klicken Sie im linken Navigationsbereich auf den Link **Weitere Dienste**.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_09.png)
-16. Suchen Sie nach Azure Active Directory, und klicken Sie auf den Link **Azure Active Directory**.
+3. Suchen Sie nach Azure Active Directory, und klicken Sie auf den Link **Azure Active Directory**.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_10.png)
-17. Sie finden alle SaaS-Anwendungen über die Schaltfläche **Unternehmensanwendungen**.
+4. Sie finden alle SaaS-Anwendungen über die Schaltfläche **Unternehmensanwendungen**.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_11.png)
-18. Klicken Sie auf dem nächsten Blatt auf den Link **Alle Anwendungen**.
+5. Klicken Sie auf dem nächsten Blatt auf den Link **Alle Anwendungen**.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_12.png)
-19. Suchen Sie nach der Lifesize-Anwendung, für die Sie RelayState einrichten möchten. 
+6. Suchen Sie nach der Lifesize-Anwendung, für die Sie RelayState einrichten möchten. 
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_13.png)
-20. Klicken Sie nun auf dem Blatt auf den Link **Einmaliges Anmelden**.
+7. Klicken Sie nun auf dem Blatt auf den Link **Einmaliges Anmelden**.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_14.png)
-21. Das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen** wird angezeigt. Aktivieren Sie das Kontrollkästchen.
+8. Das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen** wird angezeigt. Aktivieren Sie das Kontrollkästchen.
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_15.png)
-22. Konfigurieren Sie jetzt RelayState für die Anwendung, die auf der SSO-Konfigurationsseite der Lifesize-Anwendung angezeigt wird. 
+9. Konfigurieren Sie jetzt RelayState für die Anwendung, die auf der SSO-Konfigurationsseite der Lifesize-Anwendung angezeigt wird. 
     
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_16.png)
-23. Speichern Sie die Einstellungen.
+10. Speichern Sie die Einstellungen.
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -200,39 +192,33 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_04.png) 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_05.png) 
+   1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+   2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+   3. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_06.png) 
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.   
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    1. Notieren Sie den Wert von **Neues Kennwort**.
+    2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-lifesize-cloud-test-user"></a>Erstellen eines Lifesize Cloud-Testbenutzers
+### <a name="create-an-lifesize-cloud-test-user"></a>Erstellen eines Lifesize Cloud-Testbenutzers
 In diesem Abschnitt erstellen Sie in Lifesize Cloud einen Benutzer namens Britta Simon. Lifesize Cloud unterstützt die automatische Benutzerbereitstellung. Nach erfolgreicher Authentifizierung bei Azure AD wird der Benutzer automatisch in der Anwendung bereitgestellt. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf Lifesize Cloud gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -253,8 +239,8 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Lifesize Cloud“ klicken, sollten Sie automatisch bei Ihrer Lifesize Cloud-Anwendung angemeldet werden.
 
@@ -279,9 +265,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Lifesize Cloud“ klicken, sollten
 [203]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

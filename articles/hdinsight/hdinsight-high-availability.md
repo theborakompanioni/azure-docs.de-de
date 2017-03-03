@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: a2b32f23381ed1f9912edf6432f029e51bdf1be4
 ms.openlocfilehash: dd28e295df7acead773f9076d790e0e96b66adb9
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -103,9 +104,4 @@ Das Verfahren für das SDK ist ähnlich. Die Erstellung und Bereitstellung eines
 * [Apache ZooKeeper](http://zookeeper.apache.org/)
 * [Herstellen einer Verbindung zu HDInsight-Clustern mit RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 * [Verwenden des HDInsight .NET SDK](hdinsight-provision-clusters.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

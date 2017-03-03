@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: e29c26a7fbd25d01f2d58dc29a7fd2f34c91307b
 ms.openlocfilehash: 72daf5bdce0dfcb2e09869c159eb88ee313be575
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -325,9 +326,4 @@ Die Parameterwerte *startdate* und *enddate* müssen durch die tatsächlichen Da
 Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die im für den Blob ausgewählten Container angezeigt werden – immer eine Datei pro Tag.
 
 Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Informationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

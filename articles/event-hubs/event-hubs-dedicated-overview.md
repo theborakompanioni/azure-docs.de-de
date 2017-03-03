@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/21/2017
 ms.author: sethm;babanisa
 translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 7547ff2f6db375644dccb9db4283d83a9837e826
+ms.sourcegitcommit: 9c1756d2c2c4dd73c60a71b24bfb4606cab289ed
+ms.openlocfilehash: 8e718e74443e3d51dc54edaf667e34875bc67c5d
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -35,11 +36,11 @@ Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von 
 | Herausgeberrichtlinien | – | Ja | Ja |     
 | Verbrauchergruppen | 1 – Standardwert | 20 | 20 |
 | Nachrichtenwiederholung | Ja | Ja | Ja |
-| Maximale Durchsatzeinheiten | 20 | 20 (flexibel bis 100)  | 1 CU≈200 |
+| Maximale Durchsatzeinheiten | 20 | 20 (flexibel bis 100)    | 1 CU≈200 |
 | Brokerverbindungen | 100 enthalten | 1.000 enthalten | 100.000 enthalten |
 | Zusätzliche Brokerverbindungen | – | Ja | Ja |
 | Nachrichtenaufbewahrung | 1 Tag enthalten | 1 Tag enthalten | Bis zu 7 Tage enthalten |
-| Archiv (Vorschau) | –   | Bezahlung pro Stunde | Enthalten |
+| Archiv (Vorschau) | –    | Bezahlung pro Stunde | Enthalten |
 
 ## <a name="benefits-of-event-hubs-dedicated-capacity"></a>Vorteile der Event Hubs Dedicated-Kapazität
 
@@ -60,7 +61,7 @@ Dieser Dienst ist auf große Telemetriebenutzer ausgerichtet und steht Kunden mi
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
-Die Event Hubs Dedicated-Plattform ist für über ein Enterprise Agreement mit CUs unterschiedlicher Größe allgemein verfügbar. Jede CU stellt ungefähr die Entsprechung von 200 Durchsatzeinheiten bereit und wird mit 31 $/Std. berechnet. Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der dedizierte Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
+Die Event Hubs Dedicated-Plattform ist für über ein Enterprise Agreement mit CUs unterschiedlicher Größe allgemein verfügbar. Jede CU stellt ungefähr die Entsprechung von 200 Durchsatzeinheiten bereit. Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der dedizierte Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenden Sie sich an Ihren Microsoft-Vertriebsmitarbeiter oder den Microsoft-Support, um weitere Details zur Dedicated Event Hubs-Kapazität zu erhalten. Weitere Informationen zu Event Hubs finden Sie auch unter den folgenden Links:
@@ -69,9 +70,4 @@ Informationen zu Preisen erhalten Sie unter den folgenden Links:
 
 - [Event Hubs Preise](https://azure.microsoft.com/pricing/details/event-hubs/) Wenden Sie sich an Ihren Microsoft-Vertriebsmitarbeiter oder den Microsoft-Support, um weitere Details zur Dedicated Event Hubs-Kapazität zu erhalten.
 - Unter [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md) finden Sie Preisinformationen und Antworten auf einige häufig gestellte Fragen zu Event Hubs. 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

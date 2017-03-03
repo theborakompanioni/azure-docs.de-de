@@ -15,8 +15,9 @@ ms.workload: integration
 ms.date: 09/01/2016
 ms.author: stepsic
 translationtype: Human Translation
-ms.sourcegitcommit: 7ff7874538f23c8dd8c4aaa789018c77dfe2ab9a
-ms.openlocfilehash: 7923735d9ed382ee8c554e7e0c6b1fb4a22208bb
+ms.sourcegitcommit: 5b1b65e3d1066bea6958fa6461a157ee39fbe7dc
+ms.openlocfilehash: d230450535613e85c607ef120929ea61bc2085bc
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -35,7 +36,7 @@ Um sie zu konfigurieren, müssen Sie einen Dienstprinzipal mit Berechtigungen f�
 
 David Ebbo hat [einen hervorragenden Blogbeitrag](http://blog.davidebbo.com/2014/12/azure-service-principal.html) mit einer Anleitung dieser Einrichtung geschrieben. Folgen Sie den Anweisungen dieses Beitrags, und rufen Sie Ihre **Mandanten-ID**, **Client-ID** und den **geheimen Schlüssel** ab. Diese drei Felder sowie die **Abonnement-ID**sind zum Konfigurieren des Connectors erforderlich.
 
-## <a name="using-the-azure-resource-connector-in-logic-apps-designer"></a>Verwenden des Azure-Ressourcen-Connectors im Logik-App-Designer
+## <a name="using-the-azure-resource-connector-in-logic-app-designer"></a>Verwenden des Azure-Ressourcen-Connectors im Logik-App-Designer
 ### <a name="trigger"></a>Trigger
 Es gibt zwei Trigger, die im Connector unterstützt werden:
 
@@ -106,9 +107,4 @@ Anzeigen der Swagger-REST-API-Referenz unter [Referenz zu Connectors und API-App
 
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

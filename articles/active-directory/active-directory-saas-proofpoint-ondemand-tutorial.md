@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 7aa746b8c6f4b747a7dca0e9bf75e61b2707b7e1
+ms.sourcegitcommit: 7cc133d6289bffbc3b7fc591104bc51ebfc67ddd
+ms.openlocfilehash: 2ea87726b06a0e8ab20515031424bf4e93f45a80
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -35,7 +36,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Um die Azure AD-Integration mit Proofpoint on Demand konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement
-* Ein Proofpoint on Demand-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Proofpoint on Demand-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
 Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
 
@@ -47,8 +48,8 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Proofpoint on Demand aus dem Katalog
-2. Konfigurieren und testen Sie das einmalige Anmelden in Azure AD.
+* Hinzufügen von Proofpoint on Demand aus dem Katalog
+* Konfigurieren und testen Sie das einmalige Anmelden in Azure AD.
 
 ## <a name="add-proofpoint-on-demand-from-the-gallery"></a>Hinzufügen von Proofpoint on Demand aus dem Katalog
 Um die Integration von Proofpoint on Demand in Azure AD zu konfigurieren, müssen Sie Proofpoint on Demand über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -98,29 +99,20 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
 3. Führen Sie auf der Seite **App-Einstellungen konfigurieren** die folgenden Schritte aus:
    
     ![Seite „App-Einstellungen konfigurieren“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_04.png)
-   
-    a. Geben Sie im Feld **ANMELDE-URL** die URL ein, unter der sich Benutzer an Ihrer Proofpoint on Demand-Anwendung anmelden. Verwenden Sie das folgende Muster: **https://\<hostname\>.pphosted.com/ppssamlsp_hostname**.
-   
-    b. Geben Sie im Feld **BEZEICHNER** die URL im folgenden Format ein: **https://\<hostname/>.pphosted.com/ppssamlsp**.
-   
-    c. Geben Sie im Feld **ANTWORT-URL** die URL im folgenden Format ein: **https://\<hostname/>.pphosted.com:portnummer/v1/samlauth/samlconsumer**.
-   
-    d. Klicken Sie auf **Weiter**.
+   1. Geben Sie im Feld **ANMELDE-URL** die URL ein, unter der sich Benutzer an Ihrer Proofpoint on Demand-Anwendung anmelden. Verwenden Sie das folgende Muster: **https://\<hostname\>.pphosted.com/ppssamlsp_hostname**.
+   2. Geben Sie im Feld **BEZEICHNER** die URL im folgenden Format ein: **https://\<hostname/>.pphosted.com/ppssamlsp**.
+   3. Geben Sie im Feld **ANTWORT-URL** die URL im folgenden Format ein: **https://\<hostname/>.pphosted.com:portnummer/v1/samlauth/samlconsumer**.  
+   4. Klicken Sie auf **Weiter**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Proofpoint on Demand** die folgenden Schritte aus:
    
     ![Seite „Einmaliges Anmelden konfigurieren für Proofpoint on Demand“ mit der Schaltfläche „Zertifikat herunterladen“](./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_proofpointondemand_05.png)
-   
-    a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+   1. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.   
+   2. Klicken Sie auf **Weiter**.
 5. Wenden Sie sich an das Supportteam von Proofpoint on Demand, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und stellen Sie dazu Folgendes bereit:
-   
-    • Das heruntergeladene Zertifikat
-   
-    • Die Entitäts-ID
-   
-    • Die SAML-SSO-URL
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
+   * Das heruntergeladene Zertifikat
+   * Die Entitäts-ID
+   * Die SAML-SSO-URL
+6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
    
     ![Kontrollkästchen zur Bestätigung, dass Sie das einmalige Anmelden konfiguriert haben][10]
 7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
@@ -142,34 +134,28 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie unten in der Symbolleiste auf **BENUTZER HINZUFÜGEN**.
    
     ![Schaltfläche „BENUTZER HINZUFÜGEN“](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_04.png)
-5. Führen Sie auf der Seite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Seite „Informationen über diesen Benutzer“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)
-   
-    a. Wählen Sie im Feld **Art des Benutzers** die Option **Neuer Benutzer in Ihrem Unternehmen**.
-   
-    b. Geben Sie in das Feld **BENUTZERNAME** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Seite **Benutzerprofil** die folgenden Schritte aus: ![Seite „Benutzerprofil“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)
-   
-   a. Geben Sie in das Feld **VORNAME** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Feld **NACHNAME** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Feld **ANZEIGENAME** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **ROLLE** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+5. Führen Sie auf der Seite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+    ![Seite „Informationen über diesen Benutzer“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_05.png)   
+   1. Wählen Sie im Feld **Art des Benutzers** die Option **Neuer Benutzer in Ihrem Unternehmen**.
+   2. Geben Sie in das Feld **BENUTZERNAME** den Namen **BrittaSimon** ein.
+   3. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Seite **Benutzerprofil** die folgenden Schritte aus:
+
+  ![Die Seite „Benutzerprofil“ mit ausgefüllten Feldern](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_06.png)   
+   1. Geben Sie in das Feld **VORNAME** den Namen **Britta** ein.  
+   2. Geben Sie in das Feld **NACHNAME** den Namen **Simon** ein.
+   3. Geben Sie in das Feld **ANZEIGENAME** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **ROLLE** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Seite **Temporäres Kennwort abrufen** auf **Erstellen**.
    
-    ![Schaltfläche zum Erstellen eines temporären Kennworts](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
+   ![Schaltfläche zum Erstellen eines temporären Kennworts](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_07.png)
 8. Führen Sie auf der Seite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
-    ![Seite „Vorübergehendes Kennwort abrufen“ mit Kennwortinformationen](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)
-   
-    a. Notieren Sie den Wert des Felds **NEUES KENNWORT**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+   ![Seite „Vorübergehendes Kennwort abrufen“ mit Kennwortinformationen](./media/active-directory-saas-proofpoint-ondemand-tutorial/create_aaduser_08.png)  
+   1. Notieren Sie den Wert des Felds **NEUES KENNWORT**.
+   2. Klicken Sie auf **Fertig stellen**.   
 
 ### <a name="create-a-proofpoint-on-demand-test-user"></a>Erstellen eines Proofpoint on Demand-Testbenutzers
 In diesem Abschnitt erstellen Sie in Proofpoint on Demand einen Benutzer namens Britta Simon. Wenden Sie sich an das Supportteam von Proofpoint on Demand, um Benutzer der Proofpoint on Demand-Plattform hinzufügen zu lassen.
@@ -219,9 +205,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel **Proofpoint on Demand** klicken, sol
 [203]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-proofpoint-ondemand-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

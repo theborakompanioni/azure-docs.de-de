@@ -17,6 +17,7 @@ ms.author: milanga;cenkdin;juliako
 translationtype: Human Translation
 ms.sourcegitcommit: 8e0f0905748923177269b6d5df27be900770fece
 ms.openlocfilehash: a2802dbf1d8a22c33b20dd4e71fcf26d9780f86a
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -77,9 +78,4 @@ Im folgenden Thema wird gezeigt, wie Ihrem AMS-Konto Speicherkonten hinzugefügt
 
 ### <a name="acknowledgments"></a>Danksagungen
 Wir möchten folgenden Personen für ihre Beiträge zur Erstellung dieses Dokuments danken: Cenk Dingiloglu, Milan Gada, Seva Titov.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

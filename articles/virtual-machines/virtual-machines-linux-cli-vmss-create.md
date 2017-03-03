@@ -19,6 +19,7 @@ ms.author: negat
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8950619da3f42bc3c92443a7b9e9f2a97067f9
 ms.openlocfilehash: 8d274127a4e1947e42b5544c3c1f62c4e48dcee9
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -46,10 +47,5 @@ Allgemeine Informationen finden Sie auf der [Hauptseite für Skalierungsgruppen]
 Weitere Dokumente finden Sie auf der [Hauptdokumentationsseite für Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
 
 Wenn Sie Beispiele für Resource Manager-Vorlagen ansehen möchten, die Skalierungsgruppen verwenden, suchen Sie im [Github-Repository für Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates)nach „vmss“.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

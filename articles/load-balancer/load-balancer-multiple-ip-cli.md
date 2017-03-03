@@ -18,6 +18,7 @@ ms.author: annahar
 translationtype: Human Translation
 ms.sourcegitcommit: 394315f81cf694cc2bb3a28b45694361b11e0670
 ms.openlocfilehash: f52a86b01e45a32315b017c2605f7caebb68b006
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -151,9 +152,4 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     ```
 
 13. Abschließend müssen Sie DNS-Ressourceneinträge konfigurieren, um auf die entsprechende Front-End-IP-Adresse des Lastenausgleichs zu verweisen. Sie können Ihre Domänen in Azure DNS hosten. Weitere Informationen zur Verwendung von Azure DNS mit Lastenausgleich finden Sie unter [Verwenden von Azure DNS mit anderen Azure-Diensten](../dns/dns-for-azure-services.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: markgal;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: 9b5cdc89985c43250e082518087d2ef209ff0217
 ms.openlocfilehash: 9574d30b228c9254ef57d0d3253cd5fc841efad4
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -398,9 +399,4 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
 
 ## <a name="next-steps"></a>Nächste Schritte
 Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel für den Schutz von Windows Server: [Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell](backup-client-automation.md). Es gibt auch einen PowerShell-Artikel über das Verwalten von DPM-Sicherungen: [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation.md). Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.  
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -10,27 +10,26 @@ ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
 ms.custom: authentication and authorization
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-management
-ms.date: 06/09/2016
+ms.date: 02/01/2017
 ms.author: thmullan;jackr
 translationtype: Human Translation
-ms.sourcegitcommit: 69faa86ddbc43793146653fc8d8dc2bf35c40aa1
-ms.openlocfilehash: f3a7bcbc80580232f2704087eb529ee9ec8ead46
+ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
+ms.openlocfilehash: b7c6a2bcdf975233d7afe6c20bd886cfcc02de2a
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="securing-your-sql-database"></a>Sichern der SQL-Datenbank
 
-Dieser Artikel beschreibt die Grundlagen zum Sichern der Datenebene einer Anwendung mit der Azure SQL-Datenbank. In diesem Artikel erhalten Sie vor allem die ersten Informationen zu den Ressourcen zum Schützen von Daten, zum Steuern des Zugriffs und für die proaktive Überwachung. Im folgenden Diagramm sind die Sicherheitsebenen dargestellt, die für SQL-Datenbank bereitgestellt werden.
-
-![SQL-Sicherheit und -Konformität](./media/sql-database-security-overview/diagram.png)
+Dieser Artikel beschreibt die Grundlagen zum Sichern der Datenebene einer Anwendung mit der Azure SQL-Datenbank. In diesem Artikel erhalten Sie vor allem die ersten Informationen zu den Ressourcen zum Schützen von Daten, zum Steuern des Zugriffs und für die proaktive Überwachung. 
 
 Eine vollständige Übersicht der für alle Varianten von SQL verfügbaren Sicherheitsfunktionen finden Sie unter [Sicherheitscenter für SQL Server Database Engine und Azure SQL-Datenbank](https://msdn.microsoft.com/library/bb510589). Weitere Informationen finden Sie auch im [technischen Whitepaper zu Sicherheit und Azure SQL-Datenbank](https://download.microsoft.com/download/A/C/3/AC305059-2B3F-4B08-9952-34CDCA8115A9/Security_and_Azure_SQL_Database_White_paper.pdf) (PDF).
 
 ## <a name="protect-data"></a>Schützen von Daten
-SQL-Datenbank schützt Ihre Daten, indem die Verschlüsselung für Daten in Bewegung per [Transport Layer Security](https://support.microsoft.com/en-us/kb/3135244), für ruhende Daten per [Transparent Data Encryption](http://go.microsoft.com/fwlink/?LinkId=526242) und für verwendete Daten per [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) ermöglicht wird. Eine Beschreibung der Nutzung dieser Funktionen zum Schützen von Daten in SQL-Datenbank finden Sie unter [Protecting data within your SQL Database](sql-database-protect-data.md) (Schützen von Daten in Ihrer SQL-Datenbank).
+SQL-Datenbank schützt Ihre Daten, indem die Verschlüsselung für Daten in Bewegung per [Transport Layer Security](https://support.microsoft.com/en-us/kb/3135244), für ruhende Daten per [Transparent Data Encryption](http://go.microsoft.com/fwlink/?LinkId=526242) und für verwendete Daten per [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) ermöglicht wird. 
 
 > [!IMPORTANT]
 >Für alle Verbindungen zur Azure SQL-Datenbank ist eine Verschlüsselung (SSL/TLS) erforderlich, und zwar zu jedem Zeitpunkt während der Übertragung von Daten in und aus der Datenbank. Sie müssen in der Verbindungszeichenfolge Ihrer Anwendung Parameter zum Verschlüsseln der Verbindung angeben und dürfen dem Serverzertifikat *nicht* vertrauen (dies wird für Sie erledigt, wenn Sie die Verbindungszeichenfolge aus dem klassischen Azure-Portal kopieren). Andernfalls wird die Identität des Servers von der Verbindung nicht überprüft und diese ist anfällig für „Man-in-the-Middle“-Angriffe. Für ADO.NET-Treiber beispielsweise lauten diese Parameter für Verbindungszeichenfolgen **Encrypt=True** und **TrustServerCertificate=False**. 
@@ -69,12 +68,10 @@ Die dynamische Datenmaskierung für SQL-Datenbanken schränkt die Offenlegung ve
 SQL-Datenbank schützt Ihre Daten, indem Funktionen für die Überwachung und Bedrohungserkennung bereitgestellt werden. 
 
 ### <a name="auditing"></a>Überwachung
-Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von gesetzlichen Bestimmungen, indem Datenbankereignisse in Ihrem Azure Storage-Konto in einem Überwachungsprotokoll aufgezeichnet werden. Dank der Überwachung können Sie die derzeitigen Datenbankaktivitäten verstehen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing-get-started.md).  
+Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von gesetzlichen Bestimmungen, indem Datenbankereignisse in Ihrem Azure Storage-Konto in einem Überwachungsprotokoll aufgezeichnet werden. Dank der Überwachung können Sie die derzeitigen Datenbankaktivitäten verstehen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).  
 
-### <a name="auditing--threat-detection"></a>Überwachung und Bedrohungserkennung 
-Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von gesetzlichen Bestimmungen, indem Datenbankereignisse in Ihrem Azure Storage-Konto in einem Überwachungsprotokoll aufgezeichnet werden. Dank der Überwachung können Sie die derzeitigen Datenbankaktivitäten verstehen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing-get-started.md).  
- 
-Mit der Bedrohungserkennung wird die Überwachung vervollständigt, indem der Azure SQL-Datenbank-Dienst um eine zusätzliche Security Intelligence-Ebene erweitert wird. Sie ist rund um die Uhr aktiv, um zu lernen, Profile zu erstellen und anomale Datenbankaktivitäten zu erkennen. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken, Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbank-Zugriffsmustern gewarnt. Sie können auf Warnungen reagieren, indem Sie die bereitgestellten informativen und direkt umsetzbaren Anweisungen befolgen. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection-get-started.md).  
+### <a name="threat-detection"></a>Bedrohungserkennung
+Mit der Bedrohungserkennung wird die Überwachung vervollständigt, indem der Azure SQL-Datenbank-Dienst um eine zusätzliche Security Intelligence-Ebene erweitert wird. Sie ist rund um die Uhr aktiv, um zu lernen, Profile zu erstellen und anomale Datenbankaktivitäten zu erkennen. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken, Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbank-Zugriffsmustern gewarnt. Sie können auf Warnungen reagieren, indem Sie die bereitgestellten informativen und direkt umsetzbaren Anweisungen befolgen. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).  
  
 ### <a name="data-masking"></a>Datenmaskierung 
 Die dynamische Datenmaskierung für SQL-Datenbanken schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung werden in Azure SQL-Datenbank automatisch potenziell sensible Daten ermittelt und direkt umsetzbare Empfehlungen bereitgestellt, um diese Felder mit minimalen Auswirkungen auf die Anwendungsschicht zu maskieren. Hierzu werden die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern verborgen, ohne dass die Daten in der Datenbank geändert werden. Weitere Informationen finden Sie unter [Erste Schritte mit der dynamischen Datenmaskierung für SQL-Datenbanken (Azure-Portal)](sql-database-dynamic-data-masking-get-started.md).
@@ -84,12 +81,7 @@ Zusätzlich zu den oben aufgeführten Features und Funktionalitäten, mit denen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Beschreibung der Nutzung von Funktionen zum Schützen von Daten in SQL-Datenbank finden Sie unter [Protecting data within your SQL Database](sql-database-protect-data.md) (Schützen von Daten in Ihrer SQL-Datenbank).
 - Eine Beschreibung der Nutzung von Zugriffssteuerungsfunktionen in SQL-Datenbank finden Sie unter [Steuern des Zugriffs](sql-database-control-access.md).
-- Eine Beschreibung der proaktiven Überwachung finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing-get-started.md) und [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection-get-started.md).
-
-
-
-<!--HONumber=Jan17_HO2-->
-
+- Eine Erörterung zur Datenbanküberwachung finden Sie unter [Überwachung von SQL-Datenbank](sql-database-auditing.md).
+- Eine Erörterung zur Bedrohungserkennung finden Sie unter [Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).
 

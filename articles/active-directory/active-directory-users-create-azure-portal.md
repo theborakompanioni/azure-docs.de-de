@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2016
+ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 7540b90327cf4c88d4e5937b10fcabb3d5b9c4fc
+ms.sourcegitcommit: f0e7890ba4c7ef281558886f8cb8bcc429944f06
+ms.openlocfilehash: 9c0c15c0bf876110fcf9dd01a7930d3b226dfbc4
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -24,17 +25,17 @@ ms.openlocfilehash: 7540b90327cf4c88d4e5937b10fcabb3d5b9c4fc
 > [!div class="op_single_selector"]
 > * [Azure-Portal](active-directory-users-create-azure-portal.md)
 > * [Klassisches Azure-Portal](active-directory-create-users.md)
-> 
-> 
+>
+>
 
-In diesem Artikel wird erläutert, wie Sie Ihrer Organisation in der Azure Active Directory-Vorschau (Azure AD) neue Benutzer hinzufügen. [Was enthält die Vorschauversion?](active-directory-preview-explainer.md)
+In diesem Artikel wird erläutert, wie Sie Ihrer Organisation in der Azure Active Directory-Vorschau (Azure AD) neue Benutzer hinzufügen. [Was bietet die Vorschauversion?](active-directory-preview-explainer.md)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2. Wählen Sie **Weitere Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die EINGABETASTE****.
-   
+
    ![Öffnen der Benutzerverwaltung](./media/active-directory-users-create-azure-portal/create-users-user-management.png)
 3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus, und klicken Sie dann auf **Hinzufügen**.
-   
+
    ![Auswählen des Befehls „Hinzufügen“](./media/active-directory-users-create-azure-portal/create-users-add-command.png)
 4. Geben Sie Details zum Benutzer ein, beispielsweise **Name** und **Benutzername**. Der Domänenteil des Benutzernamens muss entweder der Name der anfänglichen Standarddomänenname „foo.onmicrosoft.com“ oder eine überprüfte, nicht im Verbund konfigurierte Domäne wie z.B. „contoso.com“ sein.
 5. Kopieren oder notieren Sie sich das generierte Benutzerkennwort, damit sie es nach Abschluss des Vorgangs dem Benutzer mitteilen können.
@@ -42,17 +43,11 @@ In diesem Artikel wird erläutert, wie Sie Ihrer Organisation in der Azure Activ
 7. Wählen Sie auf dem Blatt **Benutzer** die Option **Erstellen** aus.
 8. Sorgen Sie für eine sichere Übermittlung des generierten Kennworts an den neuen Benutzer, damit sich dieser anmelden kann.
 
-## <a name="whats-next"></a>Nächste Schritte
+### <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen eines externen Benutzers](active-directory-users-create-external-azure-portal.md)
 * [Zurücksetzen des Kennworts für einen Benutzer im neuen Azure-Portal](active-directory-users-reset-password-azure-portal.md)
 * [Ändern der Arbeitsinformationen für einen Benutzer](active-directory-users-work-info-azure-portal.md)
 * [Verwalten von Benutzerprofilen](active-directory-users-profile-azure-portal.md)
 * [Löschen eines Benutzers in Azure AD](active-directory-users-delete-user-azure-portal.md)
 * [Zuweisen eines Benutzers zu einer Rolle in Azure AD](active-directory-users-assign-role-azure-portal.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

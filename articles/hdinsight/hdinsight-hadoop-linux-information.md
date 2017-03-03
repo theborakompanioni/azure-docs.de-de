@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 1d2d3d9d6c8dee02f2eb96ba20894e1d52541102
 ms.openlocfilehash: 584af73f3f2d428f7551de0b12b498b1a118e5dc
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -283,9 +284,4 @@ Wenn der Cluster bereits eine Version einer Komponente als eigenständige JAR-Da
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -16,8 +16,9 @@ ms.workload: NA
 ms.date: 10/13/2016
 ms.author: sashan
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 8b898e56a9f7f76d7a342c102fb6912408116c5a
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: 164f3affdf0622653a0a7dcc2a5e886ab855ced1
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -98,16 +99,11 @@ Sie müssen sicherstellen, dass Ihre vorhandenen Einstellungen zu Warnungsregeln
 Weitere Informationen zu Datenbankwarnungsregeln finden Sie unter [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) und [Nachverfolgen der Dienstintegrität](../monitoring-and-diagnostics/insights-service-health.md).
 
 ### <a name="enable-auditing"></a>Aktivieren der Überwachung
-Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren. Ein guter Indikator für die Notwendigkeit einer Überwachung ist es, wenn Clientanwendungen sichere Verbindungszeichenfolgen mit dem Muster „*.database.secure.windows.net“ verwenden. Weitere Informationen finden Sie unter [Erste Schritte mit der SQL-Datenbanküberwachung](sql-database-auditing-get-started.md).
+Wenn für den Zugriff auf die Datenbank Überwachung erforderlich ist, müssen Sie nach der Wiederherstellung der Datenbank die Überwachung aktivieren. Ein guter Indikator für die Notwendigkeit einer Überwachung ist es, wenn Clientanwendungen sichere Verbindungszeichenfolgen mit dem Muster „*.database.secure.windows.net“ verwenden. Weitere Informationen finden Sie unter [Datenbanküberwachung](sql-database-auditing.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 * Informationen über Entwurfs- und Wiederherstellungsszenarien für die Geschäftskontinuität finden Sie unter [Szenarien für die Geschäftskontinuität](sql-database-business-continuity.md)
 * Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

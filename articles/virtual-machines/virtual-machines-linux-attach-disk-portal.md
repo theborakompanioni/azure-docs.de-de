@@ -18,6 +18,7 @@ ms.author: cynthn
 translationtype: Human Translation
 ms.sourcegitcommit: cc14f7747c4a24acea434f62b7615d10819bd619
 ms.openlocfilehash: 31d7f4620420839ade1ca58391fad78e94d4e929
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -99,9 +100,4 @@ Folgen Sie den Anweisungen zum Anfügen eines [verwalteten](#use-azure-managed-d
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem der Datenträger hinzugefügt wurde, müssen Sie ihn für die Verwendung vorbereiten. Weitere Informationen finden Sie unter [Initialisieren eines neuen Datenträgers unter Linux](virtual-machines-linux-classic-attach-disk.md#initialize-a-new-data-disk-in-linux).
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 

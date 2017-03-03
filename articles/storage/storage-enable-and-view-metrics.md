@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 02/14/2017
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: c3519943bf60aebc8510b7a7ac577bbe04587bd8
-ms.openlocfilehash: 05f4d8d6e9155f163ef44ef189067427ac606f46
+ms.sourcegitcommit: d7a08bb0f4128eb3915658b41843b35613108a98
+ms.openlocfilehash: d544695654ff136ee25856cb4a0309f882057ebb
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -24,9 +25,9 @@ ms.openlocfilehash: 05f4d8d6e9155f163ef44ef189067427ac606f46
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Übersicht
-Standardmäßig sind für Ihre Speicherdienste keine Speichermetriken aktiviert. Sie können die Überwachung über das [Azure-Portal](https://portal.azure.com), über Windows PowerShell oder programmgesteuert über die Speicherclientbibliothek aktivieren.
+Speichermetriken sind standardmäßig aktiviert, wenn Sie ein neues Speicherkonto erstellen. Sie können die Überwachung über das [Azure-Portal](https://portal.azure.com), über Windows PowerShell oder programmgesteuert über eine der Speicherclientbibliotheken konfigurieren.
 
-Wenn Sie Speichermetriken aktivieren, müssen Sie einen Aufbewahrungszeitraum für die Daten auswählen: Dieser Zeitraum bestimmt, wie lange der Speicherdienst die Metriken beibehält und Speicherplatz abgerechnet wird, der für ihre Speicherung erforderlich ist. Normalerweise sollten Sie einen kürzeren Aufbewahrungszeitraum für minütliche Metriken als für stündliche Metriken auswählen, weil für minütliche Metriken eine erhebliche Menge an zusätzlichem Speicherplatz erforderlich ist. Sie sollten den Aufbewahrungszeitraum so auswählen, dass ausreichend Zeit zum Analysieren der Daten und zum Herunterladen von Metriken verfügbar ist, die Sie für die Offlineanalyse oder zur Berichterstellung verwenden möchten. Denken Sie daran, dass auch für das Herunterladen von Metrikdaten aus Ihrem Speicherkonto Kosten anfallen.
+Sie können einen Aufbewahrungszeitraum für die Metrikdaten festlegen: Dieser Zeitraum bestimmt, wie lange der Speicherdienst die Metriken beibehält und Speicherplatz abgerechnet wird, der für ihre Speicherung erforderlich ist. Normalerweise sollten Sie einen kürzeren Aufbewahrungszeitraum für minütliche Metriken als für stündliche Metriken auswählen, weil für minütliche Metriken eine erhebliche Menge an zusätzlichem Speicherplatz erforderlich ist. Sie sollten den Aufbewahrungszeitraum so auswählen, dass ausreichend Zeit zum Analysieren der Daten und zum Herunterladen von Metriken verfügbar ist, die Sie für die Offlineanalyse oder zur Berichterstellung verwenden möchten. Denken Sie daran, dass auch für das Herunterladen von Metrikdaten aus Ihrem Speicherkonto Kosten anfallen.
 
 ## <a name="how-to-enable-metrics-using-the-azure-portal"></a>Aktivieren von Metriken über das Azure-Portal
 Gehen Sie wie folgt vor, um Metriken im [Azure-Portal](https://portal.azure.com)zu aktivieren:
@@ -111,10 +112,10 @@ Wenn Sie die Metriken zur langfristigen Speicherung oder für eine lokale Analys
 * Schreiben Sie eine benutzerdefinierte Anwendung oder ein benutzerdefiniertes Skript zum Lesen und Speichern der Tabellen.
 
 Zahlreiche Drittanbietertools zum Durchsuchen des Speichers erkennen diese Tabellen und ermöglichen die direkte Anzeige.
-Eine Liste der verfügbaren Tools finden Sie unter [Microsoft Azure-Speicher-Explorer](storage-explorers.md) .
+Eine Liste der verfügbaren Tools finden Sie unter [Azure Storage-Clienttools](storage-explorers.md).
 
 > [!NOTE]
-> Ab Version 0.8.0 des [Microsoft Azure-Speicher-Explorers](http://storageexplorer.com/)können Sie die Tabellen mit Analysemetriken anzeigen und herunterladen.
+> Ab Version 0.8.0 des [Microsoft Azure Storage-Explorers](http://storageexplorer.com/) können Sie die Tabellen mit Analysemetriken anzeigen und herunterladen.
 > 
 > 
 
@@ -149,7 +150,12 @@ In diesen minütlichen Metrikbeispieldaten verwendet der Partitionsschlüssel di
 
 Die Beispieldaten oben zeigen alle Datensätze für eine einzelne Minute (Beginn um 11:00 Uhr). Die Anzahl der QueryEntities-Anforderungen zuzüglich der Anzahl der QueryEntity-Anforderungen zuzüglich der Anzahl der UpdateEntity-Anforderungen ergibt daher den Wert 7. Dies ist die Gesamtsumme, die in der Zeile "user:All" angezeigt wird. Analog können Sie die durchschnittliche End-to-End-Latenz 104,4286 für die Zeile "user:All" ableiten, indem Sie die Berechnung ((143,8 * 5) + 3 + 9)/7 ausführen.
 
-Sie sollten die Einrichtung von Warnungen auf der Überwachungsseite im [Azure-Portal](https://portal.azure.com) in Betracht ziehen, damit Sie mithilfe der Speichermetriken automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden können. Wenn Sie ein Speicher-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Trennzeichen-getrennten Format verwenden, können Sie die Daten mithilfe von Microsoft Excel analysieren. Im Blogbeitrag [Microsoft Azure Storage Explorers](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) (Microsoft Azure-Speicher-Explorer) finden Sie eine Liste der verfügbaren Speicher-Explorer-Tools.
+## <a name="metrics-alerts"></a>Metrikwarnungen
+Sie sollten die Einrichtung von Warnungen im [Azure-Portal](https://portal.azure.com) in Betracht ziehen, damit Sie mithilfe der Speichermetriken automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden. Wenn Sie ein Speicher-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Trennzeichen-getrennten Format verwenden, können Sie die Daten mithilfe von Microsoft Excel analysieren. Eine Liste der verfügbaren Tools für Storage-Explorer finden Sie unter [Microsoft Azure Storage-Explorer](storage-explorers.md). Sie können Warnungen auf dem Blatt **Warnungsregeln** konfigurieren, auf das Sie unter **Überwachung** Speicherkontomenü zugreifen können.
+
+> [!IMPORTANT]
+> Möglicherweise gibt es eine Verzögerung zwischen einem Speicherereignis und der Aufzeichnung der zugehörigen stündlichen oder minütlichen Metrikdaten. Bei Minutenmetriken werden möglicherweise mehrere Minuten von Daten gleichzeitig geschrieben. Dies kann dazu führen, dass Transaktionen früherer Minuten in der Transaktion der aktuellen Minute zusammengeführt werden. In diesem Fall stehen dem Benachrichtigungsdienst möglicherweise nicht alle verfügbaren Metrikdaten für das konfigurierte Warnungsintervall zur Verfügung, sodass Warnungen unerwartet ausgelöst werden können.
+>
 
 ## <a name="accessing-metrics-data-programmatically"></a>Programmgesteuertes Zugreifen auf Metrikdaten
 Das folgende Listing zeigt C#-Beispielcode, der auf die minütlichen Metriken für einen bestimmten Zeitraum von Minuten zugreift und die Ergebnisse in einem Konsolenfenster anzeigt. Er verwendet die Azure Storage-Bibliothek, Version 4, die die Klasse "CloudAnalyticsClient" enthält, durch die der Zugriff auf Metriktabellen im Speicher vereinfacht wird.
@@ -208,9 +214,4 @@ Die von den Metriktabellen verwendete Kapazität ist ebenfalls kostenpflichtig: 
 * In der Kapazitätstabelle für Blobs werden pro Tag zwei Zeilen hinzugefügt (wenn der Benutzer Protokolle abonniert hat): Dies bedeutet, dass die Größe dieser Tabelle pro Tag um ungefähr 300 Bytes zunimmt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](https://msdn.microsoft.com/library/dn782840.aspx)
-
-
-<!--HONumber=Feb17_HO1-->
-
-
+[Aktivieren der Speicherprotokollierung und Zugreifen auf Protokolldaten](/rest/api/storageservices/fileservices/Enabling-Storage-Logging-and-Accessing-Log-Data)

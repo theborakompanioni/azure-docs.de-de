@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2017
+ms.date: 02/15/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 1b12d8ef3bbbfd2688f7bbd47968332e83a35252
-ms.openlocfilehash: 6cb5aee751e89ad1e825fae4fdfd460f1bfd8b6c
+ms.sourcegitcommit: d0d213e2cc52f43c11efd49c51270aa42f8fad36
+ms.openlocfilehash: 6c373adaee553e9eca94a978afc62d453f7db0f8
+ms.lasthandoff: 02/15/2017
 
 
 ---
-# <a name="troubleshooting-the-auto-registration-of-azure-ad-domain-joined-computers-for-windows-down-level-clients"></a>Problembehandlung bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients 
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad-for-windows-down-level-clients"></a>Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für kompatible Windows-Clients 
 
 Dieses Thema gilt nur für die folgenden Clients: 
 
@@ -30,7 +31,7 @@ Dieses Thema gilt nur für die folgenden Clients:
 - Windows Server 2012 R2 
  
 
-Für Windows 10 oder Windows Server 2016 finden Sie weitere Informationen unter [Problembehandlung bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md).
+Für Windows 10 oder Windows Server 2016 finden Sie weitere Informationen unter [Beheben von Problemen bei der automatischen Registrierung von Computern, die in die Azure AD-Domäne eingebunden sind, für Windows 10 und Windows Server 2016](active-directory-conditional-access-automatic-device-registration-troubleshoot-windows.md).
 
 In diesem Thema wird davon ausgegangen, dass Sie die automatische Registrierung von in die Domäne eingebundenen Geräten gemäß der Beschreibung unter [Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory](active-directory-conditional-access-automatic-device-registration-get-started.md) konfiguriert haben.
  
@@ -98,9 +99,4 @@ Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur automatischen Geräteregistrierung](active-directory-conditional-access-automatic-device-registration-faq.md). 
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

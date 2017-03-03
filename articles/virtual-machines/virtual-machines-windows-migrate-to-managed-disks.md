@@ -16,17 +16,20 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e5f2eaa55e92c9a630533a5594e1a659cc2192f1
-ms.openlocfilehash: 390195c8f07430e5fac6d53a77f6bb1aba53b197
+ms.sourcegitcommit: 44c1f6ddac328516d707cfe5d328e02e50652e5b
+ms.openlocfilehash: e66857cf6cc05aae2fa102173a2958564ec936e6
+ms.lasthandoff: 02/16/2017
 
 
 ---
 
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrieren von Azure-VMs zu Managed Disks in Azure
 
-Dank Azure Managed Disks ist es nicht mehr erforderlich, [Speicherkonten](../storage/storage-introduction.md) für Azure-VMs zu verwalten. Sie müssen nur den Typ ([Premium](../storage/storage-premium-storage-performance.md) oder [Standard](../storage/storage-standard-storage.md)) und die benötigte Größe des Datenträgers angeben, der anschließend von Azure erstellt und verwaltet wird. 
+Azure Managed Disks vereinfacht die Speicherverwaltung dadurch, dass die gesonderte Verwaltung von Speicherkonten entfällt.  Sie können auch Ihre vorhandenen Azure-VMs zu Managed Disks migrieren, um von der höheren Zuverlässigkeit von VMs in einer Verfügbarkeitsgruppe zu profitieren. Es wird sichergestellt, dass die Datenträger verschiedener VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Datenträger verschiedener VMs werden automatisch in einer Verfügbarkeitsgruppe in unterschiedlichen Skalierungseinheiten von Speicher (sog. „Stamps“) platziert. Dadurch werden die Auswirkungen des Ausfalls einzelner Speicherskalierungseinheiten eingedämmt, die von Hardware- und Softwarefehlern verursacht werden. Je nach Anforderungen stehen zwei Typen von Speicheroptionen zur Wahl: 
+ 
+- [Verwaltete Premium-Datenträger](../storage/storage-premium-storage.md) sind SSD-basierte (Solid State Drives) Speichermedien, die für virtuelle Computer mit E/A-intensiven Workloads eine hohe Datenträgerleistung mit niedriger Latenz bieten. Durch Migration zu Premium Managed Disks können Sie von der Geschwindigkeit und Leistung dieser Laufwerke profitieren.
 
-Wenn Sie derzeit die Standardspeicheroption für Ihre Datenträger verwenden, migrieren Sie zu Premium Managed Disks, um die Geschwindigkeit und Leistung dieser Datenträger zu nutzen. [Premium Managed Disks](https://docs.microsoft.com/en-us/azure/storage/storage-premium-storage-performance) werden auf SSD-Laufwerken (Solid State Drives) gespeichert, die für virtuelle Computer mit E/A-intensiven Workloads eine hohe Datenträgerleistung mit niedriger Latenz bieten.
+- [Standard Managed Disks](../storage/storage-standard-storage.md) (verwaltete Standard-Datenträger) arbeiten mit HDD-basierten Speichermedien (mit Magnetfestplatten) und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen. 
 
 Sie können in folgenden Szenarien zu Managed Disks migrieren:
 
@@ -40,13 +43,7 @@ Sie können in folgenden Szenarien zu Managed Disks migrieren:
 | Alle VMs in einem VNet aus dem klassischen Bereitstellungsmodell zum Ressourcen-Manager-Bereitstellungsmodell auf verwalteten Datenträgern     | [Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zum Ressourcen-Manager-Bereitstellungsmodell](virtual-machines-windows-ps-migration-classic-resource-manager.md) und dann [Konvertieren eines virtuellen Computers von nicht verwalteten Datenträgern in verwaltete Datenträger](virtual-machines-windows-convert-unmanaged-to-managed-disks.md) | 
 
 
-## <a name="overview-of-managed-disks"></a>Managed Disks (verwaltete Datenträger): Übersicht
 
-Azure Managed Disks vereinfacht die Speicherverwaltung dadurch, dass die gesonderte Verwaltung von Speicherkonten entfällt.  Sie können auch Ihre vorhandenen Azure-VMs zu Managed Disks migrieren, um von der höheren Zuverlässigkeit von VMs in einer Verfügbarkeitsgruppe zu profitieren. Es wird sichergestellt, dass die Datenträger verschiedener VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Datenträger verschiedener VMs werden automatisch in einer Verfügbarkeitsgruppe in unterschiedlichen Skalierungseinheiten von Speicher (sog. „Stamps“) platziert. Dadurch werden die Auswirkungen des Ausfalls einzelner Speicherskalierungseinheiten eingedämmt, die von Hardware- und Softwarefehlern verursacht werden. Je nach Anforderungen stehen zwei Typen von Speicheroptionen zur Wahl: 
- 
-- [Premium Managed Disks](../storage/storage-premium-storage.md) (verwaltete Premium-Datenträger) sind SSD-basierte (Solid State Drives) Speichermedien, die für virtuelle Computer mit E/A-intensiven Workloads eine hohe Datenträgerleistung mit niedriger Latenz bieten. Durch Migration zu Premium Managed Disks können Sie von der Geschwindigkeit und Leistung dieser Laufwerke profitieren.
-
-- [Standard Managed Disks](../storage/storage-standard-storage.md) (verwaltete Standard-Datenträger) arbeiten mit HDD-basierten Speichermedien (mit Magnetfestplatten) und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen. 
 
 
 ## <a name="plan-for-the-conversion-to-managed-disks"></a>Planen der Migration zu Managed Disks
@@ -100,9 +97,4 @@ Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [Managed Disks](../storage/storage-managed-disks-overview.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

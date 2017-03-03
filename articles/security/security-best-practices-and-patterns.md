@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2017
+ms.date: 02/21/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: 0821ec479f21ddcc6dc370070d9a40221054877f
-ms.openlocfilehash: fe1f39df8cafeea4d518a5ee1400652bb499cde1
+ms.sourcegitcommit: e3d01fadc5597efa7beb5ee690470f428ee12b62
+ms.openlocfilehash: 216146ffaa0f2732b2f2369107e80de0bbc4e466
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -31,6 +32,7 @@ Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muste
 * [Best Practices für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
 * [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
 * [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
+* [Azure PaaS – Best Practices] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
 
 Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Wir bieten auch Dienste und Technologien, um Ihre Lösungen in Azure sicherer zu gestalten. Wegen der zahlreichen verfügbaren Optionen möchten viele von Ihnen erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit empfehlen kann.
 
@@ -47,9 +49,4 @@ Für jede bewährte Methode erläutern wir Folgendes:
 * Wie Sie erfahren können, wie Sie die empfohlenen Vorgehensweisen aktivieren
 
 Das Angebot an Artikeln zur Sicherheitsarchitektur von Azure sowie zu bewährten Methoden wird in Zukunft noch erweitert. Themenwünsche können im Diskussionsbereich am Ende dieser Seite geäußert werden.
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

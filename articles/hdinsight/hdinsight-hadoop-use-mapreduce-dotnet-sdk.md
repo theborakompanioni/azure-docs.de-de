@@ -18,6 +18,7 @@ ms.author: jgao
 translationtype: Human Translation
 ms.sourcegitcommit: fcc47e3e054d88fe40c13a0fd9949c315dbfce9b
 ms.openlocfilehash: 1617aebffeec5b385b47a7425f6c849267da68a6
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -142,10 +143,5 @@ In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-C
 * Verwalten von HDInsight Clustern siehe [Verwalten von Hadoop-Clustern in HDInsight](hdinsight-administer-use-portal-linux.md).
 * Grundlegendes zu HDInsight .NET SDK finden Sie unter [HDInsight .NET SDK-Referenz](https://msdn.microsoft.com/library/mt271028.aspx).
 * Weitere Informationen zur nicht interaktiven Authentifizierung bei Azure finden Sie unter [Erstellen von .NET HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

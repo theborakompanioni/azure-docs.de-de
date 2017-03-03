@@ -1,10 +1,10 @@
 ---
-title: Sichern von virtuellen Azure-Computern in einem Recovery Services-Tresor | Microsoft Docs
-description: "Ermitteln, registrieren und sichern Sie Ihre virtuellen Azure-Computer mithilfe dieser Verfahren für das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor."
+title: Sichern von virtuellen Azure-Computern | Microsoft Docs
+description: Ermitteln, registrieren und sichern Sie virtuelle Azure-Computer in einem Recovery Services-Tresor.
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 keywords: Sicherung virtueller Computer; Sichern virtueller Computer; Sicherung und Notfallwiederherstellung; ARM-VM-Sicherung
 ms.assetid: 5c68481d-7be3-4e68-b87c-0961c267053e
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2016
-ms.author: trinadhk; jimpark; markgal;
+ms.date: 2/15/2017
+ms.author: trinadhk;jimpark;markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: ac8df40db8ddcc84a0a6221dddd0f17fecbe6586
-ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
+ms.sourcegitcommit: dca042ce1684b35e6a874075e0de28b9d8766331
+ms.openlocfilehash: 981c8652629e96f482d9a62b70b0f0992517019f
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: e80d4fdb6f189bf46096422602508b0827f41a67
 >
 >
 
-Dieser Artikel beschreibt das Verfahren zum Sichern virtueller (mit Resource Manager oder dem klassischen Modell bereitgestellten) Azure-Computer in einem Recovery Services-Tresor. Beim Sichern von virtuellen Computern macht die Vorbereitung die meiste Arbeit. Bevor Sie einen virtuellen Computer sichern oder schützen können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) zum Vorbereiten der Umgebung auf den Schutz Ihrer VMs schaffen. Wenn Sie die Voraussetzungen geschaffen haben, können Sie den Sicherungsvorgang starten, um Momentaufnahmen Ihres virtuellen Computers zu erstellen.
+Dieser Artikel beschreibt das Verfahren zum Sichern virtueller (mit Resource Manager oder dem klassischen Modell bereitgestellter) Azure-Computer in einem Recovery Services-Tresor. Beim Sichern von virtuellen Computern macht die Vorbereitung die meiste Arbeit. Bevor Sie einen virtuellen Computer sichern oder schützen können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) zum Vorbereiten der Umgebung auf den Schutz Ihrer VMs schaffen. Wenn Sie die Voraussetzungen geschaffen haben, können Sie den Sicherungsvorgang starten, um Momentaufnahmen Ihres virtuellen Computers zu erstellen.
 
 
 [!INCLUDE [learn about backup deployment models](../../includes/backup-deployment-models.md)]
@@ -44,32 +45,57 @@ Falls die erste Sicherung nicht ohnehin in Kürze durchgeführt wird, empfiehlt 
 
 So führen Sie den ersten Sicherungsauftrag aus:
 
-1. Klicken Sie im Tresordashboard auf der Kachel **Sicherung** auf **Virtuelle Azure-Computer**. <br/>
-    ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. Klicken Sie im Tresordashboard auf die Zahl unter **Sicherungselemente**, oder klicken Sie auf die Kachel **Sicherungselemente**. <br/>
+  ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/rs-vault-config-vm-back-up-now-1.png)
 
-    Das Blatt **Sicherungselemente** wird geöffnet.
-2. Klicken Sie auf dem Blatt **Sicherungselemente** mit der rechten Maustaste auf den Tresor, den Sie sichern möchten, und klicken Sie dann auf **Jetzt sichern**.
+  Das Blatt **Sicherungselemente** wird geöffnet.
 
-    ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/back-up-now.png)
+  ![Sicherungselemente](./media/backup-azure-vms-first-look-arm/back-up-items-list.png)
 
-    Der Sicherungsauftrag wird ausgelöst. <br/>
+2. Wählen Sie das Element auf dem Blatt **Sicherungselemente** aus.
 
-    ![Sicherungsauftrag ausgelöst](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
-3. Klicken Sie im Tresordashboard auf der Kachel **Sicherungsaufträge** auf **Virtuelle Azure-Computer**, um zu prüfen, ob die erste Sicherung abgeschlossen wurde.
+  ![Symbol „Einstellungen“](./media/backup-azure-vms-first-look-arm/back-up-items-list-selected.png)
 
-    ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
+  Die Liste **Sicherungselemente** wird geöffnet. <br/>
 
-    Das Blatt „Sicherungsaufträge“ wird geöffnet.
-4. Im Blatt **Sicherungsaufträge** wird der Status aller Aufträge angezeigt.
+  ![Sicherungsauftrag ausgelöst](./media/backup-azure-vms-first-look-arm/backup-items-not-run.png)
 
-    ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
+3. Klicken Sie in der Liste **Sicherungselemente** auf die Auslassungszeichen (**...**), um das Kontextmenü zu öffnen.
 
-   > [!NOTE]
-   > Während des Sicherungsvorgangs löscht die Sicherungserweiterung auf jedem virtuellen Computer alle Schreibvorgänge und erstellt eine konsistente Momentaufnahme.
-   >
-   >
+  ![Kontextmenü](./media/backup-azure-vms-first-look-arm/context-menu.png)
 
-    Wenn der Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
+  Das Kontextmenü wird angezeigt.
+
+  ![Kontextmenü](./media/backup-azure-vms-first-look-arm/context-menu-small.png)
+
+4. Klicken Sie im Kontextmenü auf **Jetzt sichern**.
+
+  ![Kontextmenü](./media/backup-azure-vms-first-look-arm/context-menu-small-backup-now.png)
+
+  Das Blatt „Jetzt sichern“ wird geöffnet.
+
+  ![Blatt „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
+
+5. Klicken Sie auf dem Blatt „Jetzt sichern“ auf das Kalendersymbol, verwenden Sie das Kalendersteuerelement zum Auswählen des letzten Aufbewahrungstags des Wiederherstellungspunkts, und klicken Sie auf **Sicherung**.
+
+  ![Festlegen des letzten Aufbewahrungstags für den Wiederherstellungspunkt für „Jetzt sichern“](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
+
+  Anhand von Bereitstellungsbenachrichtigungen werden Sie darüber informiert, dass der Sicherungsauftrag ausgelöst wurde und dass Sie den Status des Auftrags auf der Seite „Sicherungsaufträge“ überwachen können. Je nach Größe Ihrer VM kann das Erstellen der ersten Sicherung einige Zeit dauern.
+
+6. Klicken Sie im Tresordashboard auf der Kachel **Sicherungsaufträge** auf **In Bearbeitung**, um den Status der ersten Sicherung anzuzeigen oder nachzuverfolgen.
+
+  ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/open-backup-jobs-1.png)
+
+  Das Blatt „Sicherungsaufträge“ wird geöffnet.
+
+  ![Kachel „Sicherungsaufträge“](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view-1.png)
+
+  Im Blatt **Sicherungsaufträge** wird der Status aller Aufträge angezeigt. Überprüfen Sie, ob der Sicherungsvorgang für Ihre VM noch aktiv ist oder beendet wurde. Wenn ein Sicherungsauftrag abgeschlossen ist, lautet der Status *Abgeschlossen*.
+
+  > [!NOTE]
+  > Als Teil des Sicherungsvorgangs gibt der Azure Backup-Dienst einen Befehl an die Sicherungserweiterung auf jeder VM aus, damit alle Schreibvorgänge geleert werden und eine konsistente Momentaufnahme erstellt wird.
+  >
+  >
 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 Wenn beim Sichern des virtuellen Computers Probleme auftreten, finden Sie Hilfe im Artikel [Problembehandlung bei der Sicherung virtueller Azure-Computer](backup-azure-vms-troubleshoot.md) .
@@ -79,9 +105,4 @@ Nachdem Sie Ihren virtuellen Computer geschützt haben, können Sie sich mit den
 
 * [Verwalten und Überwachen Ihrer virtuellen Computer](backup-azure-manage-vms.md)
 * [Wiederherstellen virtueller Computer](backup-azure-arm-restore-vms.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

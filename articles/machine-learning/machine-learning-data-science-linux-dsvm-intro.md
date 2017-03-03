@@ -17,6 +17,7 @@ ms.author: bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: f355ea88f4d14e48d9523a0ac7aff965171bed4b
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -344,10 +345,5 @@ Informieren Sie sich weiter:
 * Informieren Sie sich über die unterschiedlichen Data Science-Tools auf der Data Science VM, indem Sie die in diesem Artikel beschriebenen Tools ausprobieren. Sie können auch *dsvm-more-info* in der Shell auf dem virtuellen Computer ausführen, um eine grundlegende Einführung und Hinweise auf weitere Informationen zu den Tools auf der VM zu erhalten.  
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)systematisch vollständige Analyselösungen erstellen.
 * Öffnen Sie den [Cortana Analytics-Katalog](http://gallery.cortanaanalytics.com) , um Anwendungsbeispiele der Cortana Analytics Suite für die Bereiche Machine Learning und Datenanalysen zu erhalten.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

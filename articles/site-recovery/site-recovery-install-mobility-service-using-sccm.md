@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 1/10/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: da682645640d74485a1caaff82fd0483a0e3f149
-ms.openlocfilehash: 6f10ea05edd3cb5b472b1102946b8da2dd1862d2
+ms.sourcegitcommit: 93ac6629df82b1a5b8d14a1ad289e1e462b49b17
+ms.openlocfilehash: 8883b2d15592ea5e0c286bd6e6fc7c38134326a7
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="automate-mobility-service-installation-using-software-deployment-tools"></a>Automatisieren der Mobility Service-Installation mit Softwarebereitstellungstools
@@ -83,8 +84,10 @@ Dieser Artikel zeigt Ihnen an einem Beispiel, wie System Center Configuration Ma
 | Befehlszeile | install.bat |
 | Programm kann ausgeführt werden | Unabhängig von Benutzeranmeldung |
 9. Wählen Sie auf der nächsten Seite die Zielbetriebssysteme aus. Mobility Service kann nur unter Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 installiert werden.
+
   ![sccm-package-properties-page2](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2.png)   
 10. Klicken Sie zweimal auf „Weiter“, um den Assistenten abzuschließen.
+
 > [!NOTE]
 > Das Skript unterstützt Neuinstallationen von Mobility Service-Agents und Upgrades/Updates bereits installierter Agents.
 
@@ -199,9 +202,4 @@ Informieren Sie sich über andere Möglichkeiten zum Installieren von Mobility S
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt [Schutz](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) für Ihre virtuellen Computer aktivieren.
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

@@ -17,6 +17,7 @@ ms.author: dobett
 translationtype: Human Translation
 ms.sourcegitcommit: 1915044f252984f6d68498837e13c817242542cf
 ms.openlocfilehash: 4f12a4b3ba9c1d0b7ed10cf5d766bcea60205d24
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -65,10 +66,5 @@ Dieses IoT Hub-Entwicklerhandbuch umfasst die folgenden Artikel:
 [devguide-pricing]: iot-hub-devguide-pricing.md
 [lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

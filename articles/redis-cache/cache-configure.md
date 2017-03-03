@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 02/10/2017
+ms.date: 02/14/2017
 ms.author: sdanie
 translationtype: Human Translation
-ms.sourcegitcommit: 1c002b796ed926fb8b0c6cedf3e361816e50b803
-ms.openlocfilehash: d51eeebba7ce2a1ca1005954feb0471f6ad7e05b
+ms.sourcegitcommit: 296a842157e4ecae1b3700e1d22c56852ffc06a2
+ms.openlocfilehash: ad88d998302d264b2a0f607d8408cd12bf833a68
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -24,7 +25,7 @@ ms.openlocfilehash: d51eeebba7ce2a1ca1005954feb0471f6ad7e05b
 In diesem Thema wird beschrieben, wie Sie die Konfiguration für Ihre Azure Redis Cache-Instanzen überprüfen und aktualisieren. Außerdem wird die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen beschrieben.
 
 > [!NOTE]
-> Weitere Informationen zur Konfiguration und Verwendung von Premium-Cache-Features finden Sie unter [Konfigurieren von Persistenz für Azure Redis Cache vom Typ „Premium“](cache-how-to-premium-persistence.md), [Konfigurieren von Clustern für Azure Redis Cache vom Typ „Premium“](cache-how-to-premium-clustering.md) und [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ „Premium“](cache-how-to-premium-vnet.md).
+> Weitere Informationen zur Konfiguration und Verwendung von Premium-Cache-Features finden Sie unter [Konfigurieren von Persistenz](cache-how-to-premium-persistence.md), [Konfigurieren von Clustern](cache-how-to-premium-clustering.md) und [Konfigurieren der Virtual Network-Unterstützung](cache-how-to-premium-vnet.md).
 > 
 > 
 
@@ -110,7 +111,7 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 
 
 ### <a name="access-keys"></a>Zugriffsschlüssel
-Klicken Sie auf **Zugriffsschlüssel** , um die Zugriffsschlüssel für Ihren Cache anzuzeigen oder neu zu generieren. Diese Schlüssel werden von den Clients, die eine Verbindung mit Ihrem Cache herstellen, zusammen mit dem Hostnamen und den Ports aus dem Blatt **Eigenschaften** verwendet.
+Klicken Sie auf **Zugriffsschlüssel** , um die Zugriffsschlüssel für Ihren Cache anzuzeigen oder neu zu generieren. Diese Schlüssel werden von den Clients verwendet, die eine Verbindung mit dem Cache herstellen.
 
 ![Redis Cache: Zugriffsschlüssel](./media/cache-configure/redis-cache-manage-keys.png)
 
@@ -131,18 +132,18 @@ Mit den Einstellungen **maxmemory-policy** und **maxmemory-reserved** auf dem Bl
 
 ![Redis Cache: Maxmemory-Richtlinie](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-**Maxmemory-Richtlinie** können Sie unter den folgenden Entfernungsrichtlinien wählen:
+Unter **Maxmemory-Richtlinie** können Sie eine der folgenden Entfernungsrichtlinien auswählen:
 
-* volatile-lru (Standardeinstellung)
-* allkeys-lru
-* volatile-random
-* allkeys-random
-* volatile-ttl
-* noeviction
+* `volatile-lru`: Dies ist die Standardoption.
+* `allkeys-lru`
+* `volatile-random`
+* `allkeys-random`
+* `volatile-ttl`
+* `noeviction`
 
-Weitere Informationen zu Maxmemory-Richtlinien finden Sie unter [Entfernungsrichtlinien](http://redis.io/topics/lru-cache#eviction-policies).
+Weitere Informationen zu `maxmemory`-Richtlinien finden Sie unter [Eviction policies](http://redis.io/topics/lru-cache#eviction-policies) (Entfernungsrichtlinien).
 
-Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB konfiguriert, die für andere Prozesse als Cacheprozesse reserviert ist, z.B. die Replikation während eines Failovers. Sie kann auch verwendet werden, wenn Sie über ein hohes Fragmentierungsverhältnis verfügen. Mit dem Festlegen dieses Werts können Sie dafür sorgen, dass Sie bei wechselnden Auslastungen eine konsistentere Redis-Servererfahrung erzielen. Dieser Wert sollte für Workloads, die mit hohem Schreibaufwand verbunden sind, höher gewählt werden. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
+Mit der Einstellung **maxmemory-reserved** wird die Arbeitsspeichermenge in MB konfiguriert, die für andere Prozesse als Cacheprozesse reserviert ist, z.B. die Replikation während eines Failovers. Sie kann auch verwendet werden, wenn Sie über ein hohes Fragmentierungsverhältnis verfügen. Mit dem Festlegen dieses Werts können Sie dafür sorgen, dass Sie bei wechselnden Auslastungen eine konsistentere Redis-Servererfahrung erzielen. Für Workloads, die mit hohem Schreibaufwand verbunden sind, sollte ein höherer Wert festgelegt werden. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Speicherung zwischengespeicherter Daten verfügbar.
 
 > [!IMPORTANT]
 > Die Einstellung **maxmemory-reserved** ist nur für Standard- und Premium-Caches verfügbar.
@@ -178,9 +179,9 @@ Weitere Informationen finden Sie auf dem Blatt **Empfehlungen** .
 
 Sie können diese Metriken auf dem Blatt [Redis Cache](cache-how-to-monitor.md#monitoring-charts) in den Abschnitten [Überwachungsdiagramme](cache-how-to-monitor.md#usage-charts) und **Nutzungsdiagramme** überwachen.
 
-Jeder Tarif hat verschiedene Limits für Clientverbindungen, Speicher und Bandbreite. Wenn Ihr Cache über einen längeren Zeitraum maximale Kapazität für diese Metriken erreicht, wird eine Empfehlung erstellt. Weitere Informationen zu den Metriken und Grenzwerten, die vom Tool **Empfehlungen** überprüft werden, finden Sie in der folgenden Tabelle.
+Jeder Tarif hat verschiedene Limits für Clientverbindungen, Speicher und Bandbreite. Wenn Ihr Cache über einen längeren Zeitraum maximale Kapazität für diese Metriken erreicht, wird eine Empfehlung erstellt. Weitere Informationen zu den Metriken und Grenzwerten, die vom Tool **Empfehlungen** überprüft werden, finden Sie in der folgenden Tabelle:
 
-| Redis Cache-Metrik | Weitere Informationen finden Sie unter |
+| Redis Cache-Metrik | Weitere Informationen |
 | --- | --- |
 | Netzwerkbandbreiten-Nutzung |[Cacheleistung – verfügbare Bandbreite](cache-faq.md#cache-performance) |
 | Verbundene Clients |[Standardmäßige Redis-Serverkonfiguration – maxclients](#maxclients) |
@@ -222,9 +223,18 @@ Klicken Sie auf **Redis-Datenpersistenz** zum Aktivieren, Deaktivieren oder Konf
 
 Klicken Sie auf **Aktiviert** , um die Redis-Datenbanksicherung zu aktivieren. Klicken Sie auf **Deaktiviert**, um die Redis-Persistenz zu deaktivieren.
 
-Zum Konfigurieren des Sicherungsintervalls wählen Sie in der Dropdownliste eine **Sicherungshäufigkeit** aus. Zur Auswahl stehen **15 Minuten**, **30 Minuten**, **60 Minuten**, **6 Stunden**, **12 Stunden** und **24 Stunden**. Dieses Intervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet.
+Wählen Sie zum Konfigurieren des Sicherungsintervalls in der Dropdownliste unter **Sicherungshäufigkeit** einen der folgenden Einträge aus. 
 
-Klicken Sie auf **Speicherkonto**, um das Speicherkonto auszuwählen, und wählen Sie entweder den **primären** oder den **sekundären Schlüssel** aus der Dropdownliste **Speicherschlüssel** aus. Sie müssen ein Speicherkonto auswählen, das aus der gleichen Region wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist. Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel erneut aus der Dropdownliste **Speicherschlüssel** auswählen.
+- **15 Minuten**
+- **30 Minuten**
+- **60 Minuten**
+- **6 Stunden**
+- **12 Stunden**
+- **24 Stunden**
+
+Das Sicherungsintervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet.
+
+Klicken Sie auf **Speicherkonto**, um das Speicherkonto auszuwählen, und wählen Sie entweder den **primären** oder den **sekundären Schlüssel** aus der Dropdownliste **Speicherschlüssel** aus. Sie müssen ein Speicherkonto auswählen, das aus der gleichen Region wie der Cache stammt, und wir empfehlen ein **Storage Premium** -Konto, da dieses einen höheren Durchsatz aufweist. Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den gewünschten Schlüssel erneut in der Dropdownliste **Speicherschlüssel** auswählen.
 
 Klicken Sie auf **OK** , um die Persistenzkonfiguration zu speichern.
 
@@ -237,7 +247,7 @@ Klicken Sie auf **OK** , um die Persistenzkonfiguration zu speichern.
 Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Redis-Serverupdates für Ihren Cache bestimmen. 
 
 > [!IMPORTANT]
-> Beachten Sie, dass das Wartungsfenster nur für Redis-Serverupdates und nicht für Azure-Updates oder Updates des Betriebssystems der virtuellen Computer gilt, die den Cache hosten.
+> Das Wartungsfenster bezieht sich nur auf Redis-Serverupdates und nicht auf Azure-Updates oder Updates des Betriebssystems der virtuellen Computer, die den Cache hosten.
 > 
 > 
 
@@ -246,7 +256,7 @@ Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Redis-Serv
 Aktivieren Sie zum Angeben eines Wartungsfensters die Kontrollkästchen der gewünschten Tage, geben Sie jeweils die Startzeit des Wartungsfensters an, und klicken Sie auf **OK**. Beachten Sie, dass die Zeit im Wartungsfenster als UTC angegeben ist. 
 
 > [!IMPORTANT]
-> Das Planen von Updates ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Azure Redis Cache-Verwaltung – Planen von Updates](cache-administration.md#schedule-updates).
+> Die Funktion **Zeitplanaktualisierungen** ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Azure Redis Cache-Verwaltung – Planen von Updates](cache-administration.md#schedule-updates).
 > 
 > 
 
@@ -289,11 +299,11 @@ Mit den Einstellungen im Abschnitt **Verwaltung** können Sie folgende Verwaltun
 > 
 
 ### <a name="importexport"></a>Import/Export
-Import/Export ist ein Vorgang der Azure Redis Cache-Datenverwaltung, bei dem Sie Daten in Azure Redis Cache importieren oder aus Azure Redis Cache exportieren können. Hierzu importieren bzw. exportieren Sie eine Redis Cache-Datenbankmomentaufnahme (RDB) aus einem Premium-Cache in ein Seitenblob in einem Azure-Speicherkonto. So können Sie zwischen verschiedenen Azure Redis Cache-Instanzen migrieren oder den Cache vor der Nutzung mit Daten auffüllen.
+Import/Export ist ein Vorgang der Azure Redis Cache-Datenverwaltung, bei dem Sie Daten in den Cache importieren oder aus dem Cache exportieren können. Hierzu importieren bzw. exportieren Sie eine Momentaufnahme der Redis Cache-Datenbank (RDB) aus einem Premium-Cache in ein Seitenblob in einem Azure Storage-Konto. So können Sie zwischen verschiedenen Azure Redis Cache-Instanzen migrieren oder den Cache vor der Nutzung mit Daten auffüllen.
 
-Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Redis Cache die RDB-Dateien aus dem Azure-Speicher in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
+Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Redis Cache die RDB-Dateien aus Azure Storage in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
 
-Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten als Redis-kompatible RDB-Dateien exportieren. Sie können diese Funktion nutzen, um Daten von einer Azure Redis Cache-Instanz zur anderen oder auf einen anderen Redis-Server zu verschieben. Während des Exportvorgangs wird auf dem virtuellen Computer, von dem die Azure Redis Cache-Serverinstanz gehostet wird, eine temporäre Datei erstellt, und die Datei wird in das angegebene Speicherkonto hochgeladen. Nachdem der Exportvorgang mit dem Status „Erfolg“ oder „Fehler“ abgeschlossen wurde, wird die temporäre Datei gelöscht.
+Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten als Redis-kompatible RDB-Dateien exportieren. Sie können diese Funktion nutzen, um Daten von einer Azure Redis Cache-Instanz zur anderen oder auf einen anderen Redis-Server zu verschieben. Während des Exportvorgangs wird auf dem virtuellen Computer, der die Azure Redis Cache-Serverinstanz hostet, eine temporäre Datei erstellt, die dann in das angegebene Speicherkonto hochgeladen wird. Nachdem der Exportvorgang mit dem Status „Erfolg“ oder „Fehler“ abgeschlossen wurde, wird die temporäre Datei gelöscht.
 
 > [!IMPORTANT]
 > Import/Export ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Importieren und Exportieren von Daten in Azure Redis Cache](cache-how-to-import-export-data.md).
@@ -301,7 +311,7 @@ Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten 
 > 
 
 ### <a name="reboot"></a>Neustart
-Auf dem Blatt **Neustart** können Sie einen oder mehrere Knoten Ihres Caches neu starten. Dies ermöglicht das Testen Ihrer Anwendung auf Stabilität im Fall eines Ausfalls.
+Auf dem Blatt **Neustart** können Sie die Knoten Ihres Caches neu starten. Mit dieser Neustartfunktion können Sie Ihre Anwendung bei einem Ausfall eines Cacheknotens auf Resilienz testen.
 
 ![Neustart](./media/cache-configure/redis-cache-reboot.png)
 
@@ -309,7 +319,7 @@ Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, können
 
 ![Neustart](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Wählen Sie zum Neustarten eines oder mehrerer Knoten Ihres Caches die gewünschten Knoten aus, und klicken Sie anschließend auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neustart**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die paar Minuten später wieder online sind.
+Zum Neustarten eines oder mehrerer Knoten Ihres Caches wählen Sie die gewünschten Knoten aus und klicken auf **Neustart**. Wenn Sie über einen Premium-Cache mit aktiviertem Clustering verfügen, wählen Sie die Shards aus, die neu gestartet werden sollen, und klicken Sie dann auf **Neustart**. Nach einigen Minuten werden die ausgewählten Knoten neu gestartet, die paar Minuten später wieder online sind.
 
 > [!IMPORTANT]
 > Ein Neustart ist nur für Caches im Premium-Tarif verfügbar. Weitere Informationen und Anweisungen finden Sie unter [Azure Redis Cache-Verwaltung – Neustart](cache-administration.md#reboot).
@@ -377,13 +387,13 @@ Neue Azure Redis Cache-Instanzen werden mit den folgenden standardmäßigen Redi
 
 | Einstellung | Standardwert | Beschreibung |
 | --- | --- | --- |
-| Datenbanken |16 |Die Standardanzahl von Datenbanken ist 16, Sie können aber basierend auf dem Tarif eine andere Anzahl konfigurieren.<sup>1</sup> Die Standarddatenbank ist „DB 0“. Sie können mithilfe von `connection.GetDatabase(dbid)` pro Verbindung eine andere Datenbank auswählen. Hierbei steht „dbid“ für eine Zahl zwischen `0` und `databases - 1`. |
-| maxclients |Tarifabhängig<sup>2</sup> |Dies ist die maximale Anzahl von verbundenen Clients, die gleichzeitig zulässig sind. Sobald der Grenzwert erreicht ist, schließt Redis alle neuen Verbindungen und sendet den Fehler „max number of clients reached“ (Maximale Anzahl von Clients erreicht). |
-| maxmemory-policy |volatile-lru |Mit der Einstellung „maxmemory-policy“ wählt Redis aus, was entfernt werden soll, wenn der Wert für „maxmemory“ (Größe des Cacheangebots, die Sie beim Erstellen des Caches ausgewählt haben) erreicht ist. Bei Azure Redis Cache lautet die Standardeinstellung „volatile-lru“. Hierbei werden die Schlüssel anhand eines Ablaufverfahrens mit LRU-Algorithmus entfernt. Diese Einstellung kann im Azure-Portal konfiguriert werden. Weitere Informationen finden Sie unter [maxmemory-policy und maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved). |
-| maxmemory-samples |3 |LRU- und minimale TTL-Algorithmen sind keine präzisen Algorithmen, sondern angenäherte Algorithmen (um Arbeitsspeicher zu sparen). Sie können also auch die Größe der zu prüfenden Stichproben auswählen. Standardmäßig werden von Redis beispielsweise drei Schlüssel geprüft, und es wird der Schlüssel ausgewählt, der vor längerer Zeit verwendet wurde. |
-| lua-time-limit |5.000 |Maximale Ausführungszeit eines Lua-Skripts in Millisekunden. Wenn die maximale Ausführungszeit erreicht wird, wird von Redis protokolliert, dass ein Skript nach der maximal zulässigen Ausführungszeit weiterhin ausgeführt wird. Es wird dann damit begonnen, auf Abfragen mit einem Fehler zu antworten. |
-| lua-event-limit |500 |Dies ist die maximale Größe der Skriptereigniswarteschlange. |
-| client-output-buffer-limit normalclient-output-buffer-limit pubsub |0 0 032mb 8mb 60 |Die Clientausgabepuffer-Grenzwerte können verwendet werden, um die Verbindungstrennung für Clients zu erzwingen, die aus einem bestimmten Grund Daten nicht schnell genug vom Server lesen. (Ein häufiger Grund ist, dass ein Pub/Sub-Client Nachrichten nicht so schnell verarbeiten kann, wie sie von der veröffentlichenden Stelle produziert werden.) Weitere Informationen finden Sie unter [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `databases` |16 |Die Standardanzahl von Datenbanken ist 16, Sie können aber basierend auf dem Tarif eine andere Anzahl konfigurieren.<sup>1</sup> Die Standarddatenbank ist „DB 0“. Sie können mithilfe von `connection.GetDatabase(dbid)` pro Verbindung eine andere Datenbank auswählen. Hierbei steht `dbid` für eine Zahl zwischen `0` und `databases - 1`. |
+| `maxclients` |Tarifabhängig<sup>2</sup> |Dies ist die maximale Anzahl von verbundenen Clients, die gleichzeitig zulässig sind. Sobald der Grenzwert erreicht ist, schließt Redis alle neuen Verbindungen und gibt den Fehler „max number of clients reached“ (Maximale Anzahl von Clients erreicht) zurück. |
+| `maxmemory-policy` |`volatile-lru` |Mit der Einstellung „maxmemory-policy“ wird festgelegt, was in Redis entfernt werden soll, wenn der Wert für `maxmemory` (Größe des Caches, die Sie beim Erstellen des Caches ausgewählt haben) erreicht ist. Bei Azure Redis Cache lautet die Standardeinstellung `volatile-lru`. Hierbei werden die Schlüssel anhand eines Ablaufverfahrens mit LRU-Algorithmus entfernt. Diese Einstellung kann im Azure-Portal konfiguriert werden. Weitere Informationen finden Sie unter [maxmemory-policy und maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved). |
+| `maxmemory-sample` |3 |Zur Einsparung von Arbeitsspeicher sind LRU- und minimale TTL-Algorithmen keine präzisen Algorithmen, sondern angenäherte Algorithmen. Standardmäßig werden von Redis drei Schlüssel geprüft, und es wird der Schlüssel ausgewählt, der vor längerer Zeit verwendet wurde. |
+| `lua-time-limit` |5.000 |Maximale Ausführungszeit eines Lua-Skripts in Millisekunden. Wenn die maximale Ausführungszeit erreicht wird, protokolliert Redis, dass ein Skript nach der maximal zulässigen Ausführungszeit weiterhin ausgeführt wird. Es wird dann damit begonnen, auf Abfragen mit einem Fehler zu antworten. |
+| `lua-event-limit` |500 |Maximale Größe der Skriptereigniswarteschlange. |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Die Clientausgabepuffer-Grenzwerte können verwendet werden, um die Verbindungstrennung für Clients zu erzwingen, die aus einem bestimmten Grund Daten nicht schnell genug vom Server lesen. (Ein häufiger Grund ist, dass ein Pub/Sub-Client Nachrichten nicht so schnell verarbeiten kann, wie sie von der veröffentlichenden Stelle produziert werden.) Weitere Informationen finden Sie unter [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a> 
 <sup>1</sup>Der Grenzwert für `databases` ist für jeden Azure Redis Cache-Tarif unterschiedlich und kann bei der Erstellung des Caches festgelegt werden. Wenn bei der Cacheerstellung keine Einstellung für `databases` angegeben wird, wird der Standardwert (16) verwendet.
@@ -450,7 +460,7 @@ Weitere Informationen zu Redis-Befehlen finden Sie unter [http://redis.io/comman
 > Die Redis-Konsole kann nicht mit VNET, Clustering und anderen Datenbanken als 0 verwendet werden. 
 > 
 > * [VNET](cache-how-to-premium-vnet.md) : Wenn der Cache Teil eines VNET ist, haben nur Clients im VNET Zugriff auf den Cache. Da die Redis-Konsole den Client "Redis-cli.exe" verwendet, der auf virtuellen Computern gehostet wird, die nicht Teil des VNET sind, kann sie keine Verbindung mit dem Cache herstellen.
-> * [Clustering](cache-how-to-premium-clustering.md) : Die Redis-Konsole verwendet den Client "Redis-cli.exe", der Clustering derzeit nicht unterstützt. Das Hilfsprogramm „redis-cli“ in der [unstable-Verzweigung](http://redis.io/download) des Redis-Repositorys auf GitHub implementiert grundlegende Unterstützung, wenn es mit der Option `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) unter [Playing with the cluster](http://redis.io) (Ausprobieren des Clusters) auf [http://redis.io](http://redis.io/topics/cluster-tutorial).
+> * [Clustering:](cache-how-to-premium-clustering.md) Die Redis-Konsole verwendet den Client „Redis-cli.exe“, der Clustering derzeit nicht unterstützt. Das Hilfsprogramm „redis-cli“ in der [unstable-Verzweigung](http://redis.io/download) des Redis-Repositorys auf GitHub implementiert grundlegende Unterstützung, wenn es mit der Option `-c` gestartet wird. Weitere Informationen finden Sie im [Redis Cluster-Tutorial](http://redis.io/topics/cluster-tutorial) unter [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Ausprobieren des Clusters) auf [http://redis.io](http://redis.io).
 > * Die Redis-Konsole stellt jedes Mal, wenn Sie einen Befehl senden, eine neue Verbindung der Datenbank 0 her. Sie können den Befehl `SELECT` nicht verwenden, um eine andere Datenbank auszuwählen, da die Datenbank bei jedem Befehl auf 0 zurückgesetzt wird. Informationen zum Ausführen von Redis-Befehlen, einschließlich des Wechsels zu einer anderen Datenbank, finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands)
 > 
 > 
@@ -473,11 +483,6 @@ Sie können Ihren Cache in ein neues Abonnement verschieben, indem Sie auf **Ver
 Informationen zum Verschieben von Ressourcen zwischen Ressourcengruppen und zwischen Abonnements finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Verwenden von Redis-Befehlen finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
+* Weitere Informationen zum Verwenden von Redis-Befehlen finden Sie unter [Wie führe ich Redis-Befehle aus?](cache-faq.md#how-can-i-run-redis-commands)
 
 

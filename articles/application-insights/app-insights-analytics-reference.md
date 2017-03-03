@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/20/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: f336058fd743b4dfec17eb301a3b28d035ca8d0f
-ms.openlocfilehash: ff9931fa3b549179ed612508ebb3555c21fafd30
+ms.sourcegitcommit: 802086b95b949cf4aa14af044f69e500b31def44
+ms.openlocfilehash: 5241a36fbc7008baad5369452d3332d84335a661
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -27,13 +28,13 @@ Zusätzliche Informationsquellen:
 * Während der Eingabe in Analytics ist viel Referenzmaterial verfügbar. Beginnen Sie einfach mit der Eingabe einer Abfrage, und Sie erhalten Vervollständigungsvorschläge.
 * [Die Seite „Tutorial“](app-insights-analytics-tour.md) bietet eine schrittweise Einführung in die Sprachfunktionen.
 * In der [Kurzübersicht für SQL-Benutzer](https://aka.ms/sql-analytics) finden Sie eine Übersetzung der gängigsten Sprachen.
-* [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo), wenn Ihre App noch keine Daten an Application Insights sendet.
+* [Testen Sie Analytics mit unseren simulierten Daten](https://analytics.applicationinsights.io/demo), wenn Ihre eigene App noch keine Daten an Application Insights sendet.
  
 
 ## <a name="index"></a>Index
 **Let** [let](#let-clause)
 
-**Abfragen und Operatoren** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
+**Abfragen und Operatoren** [count](#count-operator) | [datatable](#datatable-operator) | [distinct](#distinct-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [find](#find-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render directive](#render-directive) | [restrict clause](#restrict-clause) | [sample](#sample-operator) | [sample-distinct](#sample-distinct-operator) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) 
 
 **Aggregationen** [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
@@ -43,9 +44,9 @@ Zusätzliche Informationsquellen:
 
 **Datum und Uhrzeit** [Datums- und Uhrzeitausdrücke](#date-and-time-expressions) | [Datums- und Uhrzeitliterale](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
-**Zeichenfolge** [GUIDs](#guids) | [Verborgene Zeichenfolgenliterale](#obfuscated-string-literals) | [Zeichenfolgenliterale](#string-literals) | [Zeichenfolgenvergleiche](#string-comparisons) | [countof](#countof) | [extract](#extract) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
+**Zeichenfolge** [GUIDs](#guids) | [Verborgene Zeichenfolgenliterale](#obfuscated-string-literals) | [Zeichenfolgenliterale](#string-literals) | [Zeichenfolgenvergleiche](#string-comparisons) | [countof](#countof) | [extract](#extract) | [in, !in](#in) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty)| [parseurl](#parseurl) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [toupper](#toupper)
 
-**Arrays, Objekte und Dynamik** [Array- und Objektliterale](#array-and-object-literals) | [Dynamische Objektfunktionen](#dynamic-object-functions) | [Dynamische Objekte in let-Klauseln](#dynamic-objects-in-let-clauses) | [JSON Path-Ausdrücke](#json-path-expressions) | [Namen](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
+**Arrays, Objekte und Dynamik** [Array- und Objektliterale](#array-and-object-literals) | [Dynamische Objektfunktionen](#dynamic-object-functions) | [Dynamische Objekte in let-Klauseln](#dynamic-objects-in-let-clauses) | [JSON Path-Ausdrücke](#json-path-expressions) | [Namen](#names) | [arraylength](#arraylength) | [extractjson](#extractjson) | [in, !in](#in) | [parsejson](#parsejson) | [range](#range) | [todynamic](#todynamic) | [treepath](#treepath)
 
 ## <a name="let"></a>Let
 ### <a name="let-clause"></a>let-Klausel
@@ -439,7 +440,10 @@ traces
 
 ### <a name="find-operator"></a>find-Operator
 
-    find in (Table1, Table2, Table3) where id=='42'
+    find in (Table1, Table2, Table3) where id=="a string"
+    find in (Table1, Table2, Table3) where id=="a string" project column1, column2
+    find in (Table1, Table2, Table3) where * has "a string"
+    find in (Table1, Table2, Table3) where appName in ("string 1", "string 2", "string 3")
 
 Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
 
@@ -453,6 +457,7 @@ Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
 
 * *Table1* Tabellenname oder Abfrage. Kann eine let-definierte Tabelle, aber keine Funktion sein. Ein Tabellenname bietet eine bessere Leistung als eine Abfrage.
 * *Predicate* Ein boolescher Ausdruck, der für jede Zeile in den angegebenen Tabellen ausgewertet wird.
+ * In Zeichenfolgenvergleichen können Sie „*“ anstelle eines Spaltennamens verwenden.
 * *Column1* Mit der `project`-Option können Sie angeben, welche Spalten in der Ausgabe immer angezeigt werden müssen. 
 
 **Ergebnis**
@@ -1140,7 +1145,7 @@ Fügen Sie zum Abrufen derselben Reihenfolge bei jeder Ausführung der Abfrage e
 Betrachten Sie den [join-Operator](#join-operator) als Alternative.
 
 ### <a name="where-operator"></a>where-Operator
-     requests | where resultCode==200
+     requests | where resultCode=="200"
 
 Filtert eine Tabelle auf die Teilmenge der Zeilen, die ein Prädikat erfüllen.
 
@@ -1183,61 +1188,7 @@ Datensätze, die nicht älter als 1 Stunde sind, aus der Quelle namens „Kusku
 
 Beachten Sie, dass wir den Vergleich zwischen zwei Spalten an das Ende stellen, da der Index nicht genutzt werden kann und ein Scan erzwungen wird.
 
-### <a name="where-in-operator"></a>where-in-Operator
-    requests | where resultCode !in (200, 201)
 
-    requests | where resultCode in (403, 404)
-
-**Syntax**
-
-    T | where col in (listExpression)
-    T | where col !in (listExpression)
-
-**Argumente**
-
-* `col`: Eine Spalte in der Tabelle
-* `listExpression`...: Eine Liste von skalaren Ausdrücken oder ein Ausdruck, der als Liste ausgewertet wird. 
-
-Ein geschachteltes Array wird in eine einzelne Liste vereinfacht. `where x in (dynamic([1,[2,3]]))` wird beispielsweise `where x in (1,2,3)`.
-
-Verwenden Sie `in`, um nur Zeilen einzubeziehen, in denen `col` einem der `expr1...`-Ausdrücke entspricht.
-
-Verwenden Sie `!in`, um nur Zeilen einzubeziehen, in denen `col` keinem der `expr1...`-Ausdrücke entspricht.  
-
-**Beispiele**
-
-```AIQL
-let cities = dynamic(['Dublin','Redmond','Amsterdam']);
-requests | where client_City in (cities) 
-|  summarize count() by client_City
-```
-
-Berechnete Liste:
-
-```AIQL
-let topCities =  toscalar ( // convert single column to value
-   requests
-   | summarize count() by client_City 
-   | top 4 by count_ 
-   | summarize makeset(client_City)) ;
-requests
-| where client_City in (topCities) 
-| summarize count() by client_City;
-```
-
-Verwendung eines Funktionsaufrufs als Listenausdruck:
-
-```AIQL
-let topCities =  (n:int) {toscalar (
-   requests
-   | summarize count() by client_City 
-   | top n by count_ 
-   | summarize makeset(client_City)) };
-requests
-| where client_City in (topCities(3)) 
-| summarize count() by client_City;
-```
- 
 
 ## <a name="aggregations"></a>Aggregationen
 Aggregationen dienen zum Kombinieren von Werten in Gruppen, die im [summarize-Vorgang](#summarize-operator) erstellt werden. In dieser Abfrage ist z.B. dcount() eine Aggregatfunktion:
@@ -2239,8 +2190,8 @@ h"hello"
 | `endswith` |RS ist eine abschließende Teilzeichenfolge von LS |Nein |`"Fabrikam" endswith "kam"` |
 | `!endswith` |RS ist keine abschließende Teilzeichenfolge von LS |Nein |`"Fabrikam" !endswith "ka"` |
 | `matches regex` |LS enthält eine Übereinstimmung für RS |Ja |`"Fabrikam" matches regex "b.*k"` |
-| `in` |Entspricht allen Elementen |Ja |`"abc" in ("123", "345", "abc")` |
-| `!in` |Entspricht keinem Element |Ja |`"bc" !in ("123", "345", "abc")` |
+| [`in`](#in) |Entspricht allen Elementen |Ja |`"abc" in ("123", "345", "abc")` |
+| [`!in`](#in) |Entspricht keinem Element |Ja |`"bc" !in ("123", "345", "abc")` |
 
 Verwenden Sie `has` oder `in`, wenn Sie auf das Vorhandensein eines vollständigen lexikalischen Begriffs hin testen, d.h. ein Symbol oder ein alphanumerisches Wort, begrenzt durch nicht alphanumerische Zeichen oder den Anfang oder das Ende des Felds. `has` ist schneller als `contains`, `startswith` oder `endswith`. Die erste dieser Abfragen wird schneller ausgeführt:
 
@@ -2323,6 +2274,8 @@ extract("^.{2,2}(.{4,4})", 1, Text)
 <a name="notempty"></a>
 <a name="isnotempty"></a>
 <a name="isempty"></a>
+
+
 
 ### <a name="isempty-isnotempty-notempty"></a>isempty, isnotempty, notempty
     isempty("") == true
@@ -2611,8 +2564,8 @@ T
 ### <a name="dynamic-object-functions"></a>Dynamische Objektfunktionen
 |  |  |
 | --- | --- |
-| *value* `in` *array* |TRUE, wenn ein Element von *array* vorhanden ist, das *value* entspricht<br/>`where City in ('London', 'Paris', 'Rome')` |
-| *value* `!in` *array* |TRUE, wenn kein Element von *array* vorhanden ist, das *value* entspricht |
+| [*value* `in` *array*](#in) |*array* enthält *value* |
+| [*value* `!in` *array*](#in) |*array* enthält *value* nicht |
 | [`arraylength(`array`)`](#arraylength) |Null, wenn es sich nicht um ein Array handelt. |
 | [`extractjson(`path,object`)`](#extractjson) |Verwendet den Pfad zum Navigieren in das Objekt. |
 | [`parsejson(`source::`)`](#parsejson) |Wandelt eine JSON-Zeichenfolge in ein dynamisches Objekt um. |
@@ -2631,7 +2584,57 @@ T
     T | project parsejson(list1).a, parsejson(list2).a
 
 
+### <a name="in"></a>in
+    value in (listExpression)
+    value !in (listExpression)
 
+Bestimmt, ob in der Liste ein Element (nicht) vorhanden ist, das dem Wert entspricht. Die Groß-/Kleinschreibung wird beachtet, wenn der Wert eine Zeichenfolge ist.
+
+**Argumente**
+
+* `value`: Ein skalarer Ausdruck.
+* `listExpression`...: Eine Liste von skalaren Ausdrücken oder ein Ausdruck, der als Liste ausgewertet wird. 
+
+Ein geschachteltes Array wird in eine einzelne Liste vereinfacht. `where x in (dynamic([1,[2,3]]))` wird beispielsweise `where x in (1,2,3)`.  
+
+**Beispiele**
+
+```AIQL
+    requests | where client_City in ("London", "Paris", "Rome")
+```
+
+```AIQL
+let cities = dynamic(['Dublin','Redmond','Amsterdam']);
+requests | where client_City in (cities) 
+|  summarize count() by client_City
+```
+
+Berechnete Liste:
+
+```AIQL
+let topCities =  toscalar ( // convert single column to value
+   requests
+   | summarize count() by client_City 
+   | top 4 by count_ 
+   | summarize makeset(client_City)) ;
+requests
+| where client_City in (topCities) 
+| summarize count() by client_City;
+```
+
+Verwendung eines Funktionsaufrufs als Listenausdruck:
+
+```AIQL
+let topCities =  (n:int) {toscalar (
+   requests
+   | summarize count() by client_City 
+   | top n by count_ 
+   | summarize makeset(client_City)) };
+requests
+| where client_City in (topCities(3)) 
+| summarize count() by client_City;
+```
+ 
 
 ### <a name="arraylength"></a>arraylength
 Die Anzahl der Elemente in einem dynamischen Array.
@@ -2833,10 +2836,5 @@ Geben Sie einen Namen mit ['... '] oder [" ... "] an, um andere Zeichen einzubez
 | [where] |Verwenden eines Programmiersprachenschlüsselworts als Name |
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

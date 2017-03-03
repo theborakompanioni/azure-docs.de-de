@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/10/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f4ea5c300699a01fb098e2949f1197fdfebc3701
+ms.sourcegitcommit: 325d92e493f6e011367d2c85b52c92838327101e
+ms.openlocfilehash: 3e09a2069c3342cce78b0d8bcaca310b3de2af08
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -26,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie Heroku in Azure Active Directory (Azure
 Die Integration von Heroku in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Heroku hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Heroku anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Heroku anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -35,11 +36,10 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unte
 Um die Azure AD-Integration mit Heroku konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement
-* Ein Heroku-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Heroku-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
@@ -51,10 +51,10 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.  
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Heroku aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+* Hinzufügen von Heroku aus dem Katalog
+* Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-heroku-from-the-gallery"></a>Hinzufügen von Heroku aus dem Katalog
+## <a name="add-heroku-from-the-gallery"></a>Hinzufügen von Heroku aus dem Katalog
 Zum Konfigurieren der Integration von Heroku in Azure AD müssen Sie Heroku aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Heroku aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -79,7 +79,7 @@ Zum Konfigurieren der Integration von Heroku in Azure AD müssen Sie Heroku aus 
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Heroku basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Heroku als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Heroku muss eine Linkbeziehung eingerichtet werden.  
@@ -87,13 +87,13 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Heroku müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Heroku-Testbenutzers](#creating-an-heroku-test-user)** , um eine Entsprechung von Britta Simon in Heroku zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Heroku-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Heroku die folgenden Schritte aus:**
@@ -108,42 +108,30 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_04.png) 
    
-   > [!NOTE]
-   > Wenn Sie die richtigen Werte für die Anmelde- und Bezeichner-URLs nicht wissen, finden Sie im Abschnitt[Führen Sie die folgenden Schritte aus, um einmaliges Anmelden in Heroku zu aktivieren](#x123)Anweisungen zum Abruf dieser Werte.   
-   > 
-   > 
+   >[!NOTE]
+   >Wenn Sie die richtigen Werte für die Anmelde- und Bezeichner-URLs nicht wissen, finden Sie im Abschnitt[Führen Sie die folgenden Schritte aus, um einmaliges Anmelden in Heroku zu aktivieren](#x123)Anweisungen zum Abruf dieser Werte.   
+   >
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Heroku-Anwendung verwendete URL in folgendem Format ein: **https://sso.heroku.com/saml/\<Unternehmensname\>/init**. 
-
-    b. Geben Sie im Textfeld **Bezeichner** eine URL in folgendem Format ein: **https://sso.heroku.com/saml/\<Unternehmensname\>**.  
-
-    c. Klicken Sie auf **Weiter**.
-
+    1. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Heroku-Anwendung verwendete URL in folgendem Format ein: **https://sso.heroku.com/saml/\<Unternehmensname\>/init**. 
+    2. Geben Sie im Textfeld **Bezeichner** eine URL in folgendem Format ein: **https://sso.heroku.com/saml/\<Unternehmensname\>**.  
+    3. Klicken Sie auf **Weiter**.
 
 1. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Heroku** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_05.png) 
-   
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+    1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+    2. Klicken Sie auf **Weiter**.
 2. Führen Sie die folgenden Schritte aus, um einmaliges Anmelden in Heroku zu aktivieren:
    
-    a. Melden Sie sich als Administrator beim Heroku-Konto an.
-   
-    b. Klicken Sie auf die Registerkarte **Settings** .
-   
-    c. Klicken Sie auf der Seite **Einmaliges Anmelden** auf **Metadaten hochladen**.
-   
-    d. Laden Sie die Metadatendatei hoch, die Sie aus dem klassischen Azure-Portal heruntergeladen haben.
-   
-    e. Wenn das Setup erfolgreich war, wird Administratoren ein Bestätigungsdialogfeld angezeigt. Zudem wird die URL der SSO-Anmeldung für Endbenutzer angezeigt.
-   
-    f. <a name="x123"></a>Kopieren Sie Ihre **Heroku-Anmelde-URL** und Ihre **Heroku-Entitäts-ID**. Wechseln Sie dann im klassischen Azure AD-Portal zurück auf die Seite **App-Einstellungen konfigurieren**, und fügen Sie die Werte in die entsprechenden Textfelder ein.
+    1. Melden Sie sich als Administrator beim Heroku-Konto an.
+    2. Klicken Sie auf die Registerkarte **Settings** .
+    3. Klicken Sie auf der Seite **Einmaliges Anmelden** auf **Metadaten hochladen**.
+    4. Laden Sie die Metadatendatei hoch, die Sie aus dem klassischen Azure-Portal heruntergeladen haben.
+    5. Wenn das Setup erfolgreich war, wird Administratoren ein Bestätigungsdialogfeld angezeigt. Zudem wird die URL der SSO-Anmeldung für Endbenutzer angezeigt.
+    6. <a name="x123"></a>Kopieren Sie Ihre **Heroku-Anmelde-URL** und Ihre **Heroku-Entitäts-ID**. Wechseln Sie dann im klassischen Azure AD-Portal zurück auf die Seite **App-Einstellungen konfigurieren**, und fügen Sie die Werte in die entsprechenden Textfelder ein.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-heroku-tutorial/tutorial_heroku_52.png) 
-
-    g. Klicken Sie auf **Weiter**.
+    7. Klicken Sie auf **Weiter**.
 
 1. Wählen Sie die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
@@ -152,7 +140,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.  
 
 ![Azure AD-Benutzer erstellen][20]
@@ -172,47 +160,36 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-heroku-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
    
    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-heroku-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-heroku-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-heroku-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    1. Notieren Sie den Wert von **Neues Kennwort**.
+    2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-heroku-test-user"></a>Erstellen eines Heroku-Testbenutzers
+### <a name="create-an-heroku-test-user"></a>Erstellen eines Heroku-Testbenutzers
 In diesem Abschnitt erstellen Sie in Heroku einen Benutzer mit dem Namen Britta Simon. Heroku unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ein neuer Benutzer wird erstellt, wenn Sie auf Heroku zugreifen, falls er noch nicht vorhanden ist. Nach der Bereitstellung des Kontos erhält der Endbenutzer eine Verifizierungs-E-Mail, und er muss zur Bestätigung auf den Link klicken.
 
-> [!NOTE]
-> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem Supportteam von Heroku in Verbindung.
-> 
-> 
+>[!NOTE]
+>Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem Supportteam von Heroku in Verbindung.
+>  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Heroku gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -233,8 +210,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.  
+
 Wenn Sie im Zugriffsbereich auf die Kachel „Heroku“ klicken, sollten Sie automatisch bei Ihrer Heroku-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -258,9 +236,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Heroku“ klicken, sollten Sie aut
 [203]: ./media/active-directory-saas-heroku-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-heroku-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-heroku-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

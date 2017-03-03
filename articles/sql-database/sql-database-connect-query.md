@@ -19,6 +19,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
 ms.openlocfilehash: 317193c178c4da283de7d61204aa7b824170d72a
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -77,10 +78,5 @@ Nachdem wir die Verbindung mit der Datenbank hergestellt haben, wird anhand der 
 ## <a name="next-steps"></a>Nächste Schritte
 * Beim Öffnen von SQL-Datenbanken in Visual Studio werden SQL Server Data Tools verwendet. Weitere Informationen finden Sie unter [SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx).
 * Informationen zum Herstellen einer Verbindung mit einer SQL-Datenbank finden Sie unter [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von .NET (C#)](sql-database-develop-dotnet-simple.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

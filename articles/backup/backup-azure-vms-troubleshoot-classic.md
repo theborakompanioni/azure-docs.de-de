@@ -17,6 +17,7 @@ ms.author: trinadhk;markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 2149407ff4e04f6a52a45c419382617810a63633
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -114,9 +115,4 @@ So überprüfen Sie die Version des VM-Agents auf virtuellen Windows-Computern
 
 1. Melden Sie sich beim virtuellen Azure-Computer an, und navigieren Sie zum Ordner *C:\WindowsAzure\Packages*. Dieser Ordner enthält die Datei "WaAppAgent.exe".
 2. Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

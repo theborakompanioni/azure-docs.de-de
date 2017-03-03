@@ -17,6 +17,7 @@ ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: af15b530dd512873e4534fb61d276c8c8c3a196a
 ms.openlocfilehash: 2de70faa090fb3da25fec8f8946e52fcae2677d3
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -355,9 +356,4 @@ Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-fa
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) finden Sie schrittweise Anleitungen zum Erstellen einer Datenpipeline für das Verschieben von Daten aus einem lokalen Datenspeicher in einen Azure-Datenspeicher.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

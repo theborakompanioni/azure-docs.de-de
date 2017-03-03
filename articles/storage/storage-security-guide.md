@@ -17,6 +17,7 @@ ms.author: robinsh
 translationtype: Human Translation
 ms.sourcegitcommit: 9e75c5af6cb6d2f2a25f18269ec6822aa86459fc
 ms.openlocfilehash: 95ea1a9bc8fe80c39ca9f0683855cc3a4e7a77c4
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -533,8 +534,3 @@ Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ress
 * [“System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing” security settings effects in Windows XP and in later versions of Windows („Systemkryptografie: Verwenden von FIPS-kompatiblen Algorithmen für Verschlüsselung, Hashing und Signatur“ – Effekte von Sicherheitseinstellungen in Windows XP und höheren Versionen von Windows)](https://support.microsoft.com/kb/811833)
   
   Dieser Artikel behandelt die Verwendung des FIPS-Modus auf älteren Windows-Computern.
-
-
-<!--HONumber=Feb17_HO1-->
-
-

@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: b759e9936a45f989088de5e89a59371c5ea64e1c
 ms.openlocfilehash: 079a05d16ccebb705f410e25f0ed5762db20ae22
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -94,10 +95,5 @@ Azure SQL-Datenbank ist nicht nur ein Segen für SpectrumNG-Kunden, die sich üb
 * Weitere Informationen zu Webrollen und Workerrollen finden Sie unter [Workerrollen](../fundamentals-introduction-to-azure.md#compute).    
 * Weitere Informationen zu Azure Service Bus finden Sie unter [Azure Service Bus](https://azure.microsoft.com/services/service-bus/).
 * Weitere Informationen zur automatischen Skalierung finden Sie unter [Skalieren von Clouddiensten](../cloud-services/cloud-services-how-to-scale.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

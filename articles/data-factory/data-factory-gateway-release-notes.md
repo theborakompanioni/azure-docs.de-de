@@ -17,6 +17,7 @@ published: true
 translationtype: Human Translation
 ms.sourcegitcommit: db0face48d84680eabd82245bd38bd49b204f9ae
 ms.openlocfilehash: a88b791bad9f71f16700ccc7efdee8ef493478a9
+ms.lasthandoff: 02/13/2017
 
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
@@ -234,9 +235,4 @@ In den folgenden Artikeln finden Sie ausführliche Informationen zum Datenverwal
 ### <a name="1051442"></a>1.0.5144.2
 
 *  Keine Änderungen, die Azure Data Factory-Szenarien betreffen.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

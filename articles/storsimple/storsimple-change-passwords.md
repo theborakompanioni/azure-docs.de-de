@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: eb56cae77722268f42e5126c45ad2878af7db94a
 ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -56,10 +57,5 @@ Das Kennwort für StorSimple Snapshot Manager sollte jetzt aktualisiert sein.
 * Weitere Informationen zur [StorSimple-Sicherheit](storsimple-security.md).
 * Weitere Informationen zum [Ändern Ihrer Gerätekonfiguration](storsimple-modify-device-config.md).
 * Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

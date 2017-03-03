@@ -18,6 +18,7 @@ ms.author: jeffstok
 translationtype: Human Translation
 ms.sourcegitcommit: d1ffb9aba0eb1e17d1efd913f536f6f3997fccbb
 ms.openlocfilehash: 7b635b1810536f5b3eb1371d687e9c355e604e41
+ms.lasthandoff: 02/14/2017
 
 ---
 
@@ -152,10 +153,5 @@ Sie können auch auf Azure Machine Learning-Funktionen bezogene Metriken anzeige
 * **Funktionsereignisse** gibt die Anzahl von Ereignissen in der Anforderung an. Standardmäßig enthält jede Anforderung an einen Machine Learning-Webdienst bis zu 1000 Ereignisse.  
   
     ![Stream Analytics und Machine Learning, Machine Learning-Überwachungsansicht](./media/stream-analytics-machine-learning-integration-tutorial/job-monitor.png)  
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

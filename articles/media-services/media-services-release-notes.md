@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/21/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ccf8374064b6fd5f8d78a082543977072bfb30ee
-ms.openlocfilehash: 3c529328002ad96fb48a9ce96b3918493f88b41f
+ms.sourcegitcommit: 83881cda043fc9f1ef48281e8160a882c1f9bced
+ms.openlocfilehash: 5aa7353e681a16d2032fecaf8a2de50e241ac4ad
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -103,6 +104,12 @@ Reservierte Einheiten für die Codierung wurden umbenannt, um Verwechslungen mit
 Die reservierten Einheiten für die Codierung unter „Basic“, „Standard“ und „Premium“ werden in die reservierten Einheiten S1, S2 und S3 umbenannt.  Kunden, die derzeit reservierte Basic-Einheiten für die Codierung einsetzen, wird im Azure-Portal (und auf der Rechnung) S1 als Bezeichnung angezeigt. Standard und Premium werden mit den Bezeichnungen S2 und S3 aufgeführt. 
 
 ## <a name="a-iddecchanges15adecember-2015-release"></a><a id="dec_changes_15"></a>Version vom Dezember 2015
+
+### <a name="azure-media-encoder-deprecation-announcement"></a>Ankündigung zur Einstellung von Azure Media Encoder
+
+Azure Media Encoder wird in 12 Monaten eingestellt. Beginnen Sie stattdessen mit der Verwendung des [Media Encoder Standard](media-services-media-encoder-standard-formats.md)-Encoders.
+
+### <a name="azure-sdk-for-php"></a>Azure SDK für PHP
 Das Azure SDK-Team hat eine neue Version des [Azure SDK für PHP](http://github.com/Azure/azure-sdk-for-php) -Pakets veröffentlicht, das Updates und neue Features für Microsoft Azure Media Services enthält. Das Azure Media Services SDK für PHP unterstützt jetzt insbesondere die neuesten Features für den [Inhaltsschutz](media-services-content-protection-overview.md) : dynamische Verschlüsselung mit AES und DRM (PlayReady und Widevine) mit und ohne Tokeneinschränkung. Unterstützt wird auch die Skalierung von [Codierungseinheiten](media-services-dotnet-encoding-units.md).
 
 Weitere Informationen finden Sie unter:
@@ -535,10 +542,5 @@ Die folgende Funktion war neu in der November-Version des SDK.
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [Verwalten von Media Services-Medienobjekte über mehrere Speicherkonten]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [Verarbeiten von Media Services-Auftragsbenachrichtigungen]: http://msdn.microsoft.com/library/azure/dn261241.aspx
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

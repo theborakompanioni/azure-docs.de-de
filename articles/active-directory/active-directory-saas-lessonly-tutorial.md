@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2016
+ms.date: 02/14/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 33f4c13930017bdcbaf899b16d32ba84bdfbf9ee
-ms.openlocfilehash: e51deb2cb890669c4800c232e2b781c5f27117f2
+ms.sourcegitcommit: a14be44b66c5e61350785ddfaf5b96125a196103
+ms.openlocfilehash: 242cc7d58acb4af66d7ea5da4502db4ce2b414c6
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -141,7 +142,7 @@ Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     a. Klicken Sie auf **Zertifikat herunterladen**und speichern Sie die Datei auf Ihrem Computer.
    
     b. Klicken Sie auf **Weiter**.
-2. Wenden Sie sich über dev@lessonly.com. Hängen Sie die heruntergeladene Zertifikatsdatei an Ihre E-Mail-Nachricht an und teilen Sie dem Lesson.ly-Team die Metadaten-URLs (Entitäts-ID, Anmelde-URL und Abmelde-URL für SSO) zum Einrichten von SSO auf ihrer Seite mit.
+2. Wenden Sie sich über dev@lessonly.com an das Supportteam von Lesson.ly, um das einmalige Anmelden (SSO) für Ihre Anwendung konfigurieren zu lassen. Hängen Sie die heruntergeladene Zertifikatsdatei an Ihre E-Mail-Nachricht an und teilen Sie dem Lesson.ly-Team die Metadaten-URLs (Entitäts-ID, Anmelde-URL und Abmelde-URL für SSO) zum Einrichten von SSO auf ihrer Seite mit.
 3. Wählen Sie im klassischen Azure-Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
    ![Azure AD – einmaliges Anmelden][10]
@@ -257,9 +258,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Lesson.ly“ klicken, sollten Sie 
 [203]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-lessonly-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO4-->
-
 

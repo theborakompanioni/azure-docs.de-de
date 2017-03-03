@@ -18,6 +18,7 @@ ms.author: adegeo
 translationtype: Human Translation
 ms.sourcegitcommit: 4fa0cdc2ee71d4e499dfc45bac7b690d728b626a
 ms.openlocfilehash: 2649edd4af67e25ce49bf0ced858b7c7e4633290
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -595,10 +596,5 @@ Wenn Sie die Ressourcengruppe beibehalten möchten, können Sie auch nur die Ska
 * Beispiele für Überwachungsfeatures von Azure Monitor finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md)
 * Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
 * Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

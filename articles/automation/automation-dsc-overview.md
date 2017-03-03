@@ -17,6 +17,7 @@ ms.author: magoedte;eslesar
 translationtype: Human Translation
 ms.sourcegitcommit: f0d3a5c1929bb6dafef735ae3f4291e329861cc9
 ms.openlocfilehash: b750878703baf143a2e8247bdd01f358e462e598
+ms.lasthandoff: 02/03/2017
 
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC – Übersicht
@@ -118,10 +119,5 @@ Die folgende Abbildung veranschaulicht detailliert die Prozessschritte im DSC-Le
 * [Azure Automation DSC-Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
 * [Kontinuierliche Bereitstellung für IaaS-VMs mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -15,8 +15,9 @@ ms.workload: storage-backup-recovery
 ms.date: 12/19/2016
 ms.author: pratshar
 translationtype: Human Translation
-ms.sourcegitcommit: c5e80c3cd3caac07e250d296c61fb3813e0000dd
-ms.openlocfilehash: 2c19472c93d097f29692af18063404f3bf28b6bd
+ms.sourcegitcommit: 6e6d05d7a7595e17d026be6a448b2fa2cca9b816
+ms.openlocfilehash: a62fe406af18c9c7d9b58839bfa0d6e785b614ef
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -34,11 +35,11 @@ Für die BCDR-Planung ist es von entscheidender Bedeutung, dass „Recovery Time
 
 Das Failover wird durch ASR ermöglicht. Zuerst werden die angegebenen virtuellen Computer aus dem primären Rechenzentrum in das sekundäre Rechenzentrum oder in Azure (je nach Szenario) kopiert, und anschließend werden die Replikate regelmäßig aktualisiert. Während der Infrastrukturplanung sollte der Netzwerkentwurf als potenzieller Engpass angesehen werden, der verhindern kann, dass Sie Ihre Unternehmensziele in Bezug auf die Werte für RTO und RPO erreichen.  
 
-Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie der virtuelle Computer nach Abschluss des Failovers erreichbar ist. ASR ermöglicht dem Administrator, das Netzwerk auszuwählen, mit dem ein virtueller Computer nach einem Failover verbunden werden soll. Wenn der primäre Standort von einem VMM-Server verwaltet wird, erfolgt dies über Netzwerkzuordnungen. Weitere Informationen finden Sie unter [Vorbereiten für die Netzwerkzuordnung](site-recovery-network-mapping.md) .
+Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie der virtuelle Computer nach Abschluss des Failovers erreichbar ist. ASR ermöglicht dem Administrator, das Netzwerk auszuwählen, mit dem ein virtueller Computer nach einem Failover verbunden werden soll. Wenn der primäre Standort von einem VMM-Server verwaltet wird, erfolgt dies über Netzwerkzuordnungen. Weitere Informationen finden Sie unter [Vorbereiten für die Netzwerkzuordnung](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) .
 
 Beim Entwerfen des Netzwerks für den Wiederherstellungsstandort haben Administratoren zwei Möglichkeiten:
 
-* Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Informationen zum Durchführen des DNS-Updates erhalten Sie [hier](site-recovery-vmm-to-vmm.md#step-7-test-your-deployment). 
+* Verwenden eines anderen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei diesem Szenario erhält der virtuelle Computer nach dem Failover eine neue IP-Adresse, und der Administrator muss ein DNS-Update durchführen. Weitere Informationen finden Sie [hier](site-recovery-test-failover-vmm-to-vmm.md#preparing-infrastructure-for-test-failover).
 * Verwenden des gleichen IP-Adressbereichs für das Netzwerk am Wiederherstellungsstandort. Bei bestimmten Szenarien ziehen es Administratoren vor, die IP-Adressen beizubehalten, die sie am primären Standort verwenden, und zwar auch nach dem Failover. Bei einem normalen Szenario muss ein Administrator die Routen aktualisieren, um den neuen Standort der IP-Adressen anzugeben. Aber bei diesem Szenario, bei dem ein gestrecktes VLAN zwischen dem primären und sekundären Standort bereitgestellt wird, ist das Beibehalten der IP-Adressen für die virtuellen Computer eine attraktive Option. Das Beibehalten der gleichen IP-Adressen vereinfacht den Wiederherstellungsprozess, da alle netzwerkbezogenen Schritte nach dem Failover entfallen.
 
 Wenn Administratoren die Bereitstellung einer Lösung für die Notfallwiederherstellung planen, ist eine der wichtigsten Fragen, wie die Anwendungen nach Abschluss des Failovers erreichbar sind. Moderne Anwendungen sind fast immer zu einem gewissen Grad von Netzwerken abhängig, sodass mit dem physischen Verschieben eines Diensts von einem Standort zum anderen fast immer besondere Netzwerkanforderungen verbunden sind. Es gibt zwei Hauptverfahren, wie dieses Problem bei Lösungen für die Notfallwiederherstellung gelöst wird. Der erste Ansatz besteht in der Verwaltung fester IP-Adressen. Trotz der Verschiebung der Dienste und der Tatsache, dass sich die Hostserver an verschiedenen physischen Standorten befinden, nehmen die Anwendungen die IP-Adresskonfiguration mit sich an den neuen Speicherort. Beim zweiten Ansatz ist eine vollständige Änderung der IP-Adresse während des Übergangs auf den wiederhergestellten Standort erforderlich. Jeder Ansatz verfügt über mehrere Implementierungsvarianten, die unten zusammengefasst sind.
@@ -163,10 +164,5 @@ Nach dem Failover weist die Replikat-VM möglicherweise eine IP-Adresse auf, die
 Im Blogbeitrag [Networking Infrastructure Setup for Microsoft Azure as a Disaster Recovery Site](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) (Einrichten der Netzwerkinfrastruktur für Microsoft Azure als Standort für die Notfallwiederherstellung) wird erläutert, wie die erforderliche Azure-Netzwerkinfrastruktur konfiguriert wird, wenn das Beibehalten der IP-Adressen keine Voraussetzung ist. Zuerst wird die Anwendung beschrieben, und anschließend wird erläutert, wie Sie das Netzwerk lokal und unter Azure einrichten. Am Ende geht es um die Durchführung eines Testfailovers und eines geplanten Failovers.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erfahren Sie](site-recovery-network-mapping.md) , wie Site Recovery Quell- und Zielnetzwerke zuordnet, wenn der primäre Standort mit einem VMM-Server verwaltet wird.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[Erfahren Sie](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) , wie Site Recovery Quell- und Zielnetzwerke zuordnet, wenn der primäre Standort mit einem VMM-Server verwaltet wird.
 

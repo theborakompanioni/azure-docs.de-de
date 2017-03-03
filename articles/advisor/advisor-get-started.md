@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
 translationtype: Human Translation
-ms.sourcegitcommit: 14e9e494d6e824964b9164ff36d9938341e244be
-ms.openlocfilehash: 7adaa1a457e19c66bdc31a01f4e04b7911e58062
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: 8ed18f6f62b6d2895e2470df1c3bdd448ea98210
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -35,7 +36,7 @@ Erfahren Sie, wie Sie im Azure-Portal auf Advisor zugreifen und wie Sie Empfehlu
 4. Um Empfehlungen für eine bestimmte Kategorie zu erhalten, klicken Sie auf eine dieser Registerkarten: **Hohe Verfügbarkeit**, **Sicherheit**, **Leistung** oder **Kosten**.
  
 > [!NOTE]
-> Azure Advisor generiert Empfehlungen für Abonnements, in denen Ihnen die Rolle **Besitzer**, **Mitwirkender** oder **Leser** zugewiesen ist.
+> Für den Zugriff auf die Empfehlungen von Ratgeber müssen Sie Ihr Abonnement zunächst bei Ratgeber **registrieren**. Ein Abonnement wird registriert, wenn ein **Abonnementbesitzer** das Ratgeber-Dashboard startet und auf die Schaltfläche **Abrufen von Empfehlungen** klickt. Dies ist eine **einmalige Aufgabe**. Sobald ein Abonnement registriert wurde, können **Besitzer**, **Mitwirkende** oder **Leser** eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Empfehlungen von Ratgeber zugreifen.
 
   ![Azure Advisor-Dashboard](./media/advisor-overview/advisor-all-tab.png)
 
@@ -78,9 +79,4 @@ Weitere Informationen zu Advisor finden Sie in den folgenden Ressourcen:
 -  [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 -  [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
 -  [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

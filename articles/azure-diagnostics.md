@@ -17,6 +17,7 @@ ms.author: robb
 translationtype: Human Translation
 ms.sourcegitcommit: 7814e02df5c6aa0ea9c38e3a048dd52e39436c3c
 ms.openlocfilehash: 349a7d82a96868f65598597c1db192484da9b34d
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -78,10 +79,5 @@ Erste Schritte finden Sie unter [Überwachen einer Service Fabric-Anwendung](ser
 * Hier erhalten Sie Informationen zur Verwendung von [Leistungsindikatoren in der Azure-Diagnose](cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md).
 * Erlernen Sie das [Weiterleiten von Azure-Diagnoseinformationen an Application Insights](azure-diagnostics-configure-applicationinsights.md).
 * Wenn bei der Diagnose Probleme mit dem Starten oder dem Finden von Daten in Azure Storage-Tabellen auftreten, finden Sie weitere Informationen unter [Problembehandlung mit Azure-Diagnose](azure-diagnostics-troubleshooting.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

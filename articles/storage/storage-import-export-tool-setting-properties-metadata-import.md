@@ -1,5 +1,5 @@
 ---
-title: "Festlegen von Eigenschaften und Metadaten während des Azure Import/Export-Prozesses | Microsoft-Dokumentation"
+title: Festlegen von Eigenschaften und Metadaten mithilfe von Azure Import/Export | Microsoft Docs
 description: "Erfahren Sie, wie Sie für die Zielblobs festzulegende Eigenschaften und Metadaten angeben, wenn Sie das Azure Import/Export-Tool zum Vorbereiten der Laufwerke ausführen."
 author: muralikk
 manager: syadav
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 01/23/2017
 ms.author: muralikk
 translationtype: Human Translation
-ms.sourcegitcommit: 41bc5585f3d9dea2a08dc8a6bc1e4fdf9f0c8fc4
-ms.openlocfilehash: 2f597da2c056a2b4ea2af751e955fafdd7016744
+ms.sourcegitcommit: 8de848b1192ff1c10e0375053c4e03f18c06184e
+ms.openlocfilehash: 26fb4d030341001238e7206c3856597c95d84719
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -25,8 +26,8 @@ ms.openlocfilehash: 2f597da2c056a2b4ea2af751e955fafdd7016744
 
 Wenn Sie das Microsoft Azure Import/Export-Tool zum Vorbereiten der Laufwerke ausführen, können Sie Eigenschaften und Metadaten angeben, die für die Zielblobs festgelegt werden sollen. Folgen Sie diesen Schritten:
 
-1.  Erstellen Sie zum Festlegen von Blobeigenschaften auf dem lokalen Computer eine Textdatei, in der die Eigenschaftsnamen und -werte angegeben werden.
-2.  Erstellen Sie zum Festlegen von Blobmetadaten auf dem lokalen Computer eine Textdatei, in der die Metadatennamen und -werte angegeben werden.
+1.  Erstellen Sie zum Festlegen von Blobeigenschaften auf dem lokalen Computer eine Textdatei mit Eigenschaftsnamen und -werten.
+2.  Erstellen Sie zum Festlegen von Blobmetadaten auf dem lokalen Computer eine Textdatei mit Metadatennamen und -werten.
 3.  Übergeben Sie im Rahmen des Vorgangs `PrepImport` den vollständigen Pfad zu einer oder beiden Dateien an das Azure Import/Export-Tool.
 
 > [!NOTE]
@@ -75,9 +76,4 @@ K:\Temp\FavoriteVideo.ISO,https://mystorageaccount.blob.core.windows.net/favorit
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](storage-import-export-file-format-metadata-and-properties.md)
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

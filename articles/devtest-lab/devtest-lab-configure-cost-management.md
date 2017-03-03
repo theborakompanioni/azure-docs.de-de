@@ -17,6 +17,7 @@ ms.author: tarcher
 translationtype: Human Translation
 ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
 ms.openlocfilehash: b3ad1ead522908d4b41b7cca98d20ac91664998e
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -65,10 +66,5 @@ Diese Schritte könnten Sie als Nächstes ausführen:
 * [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md): Wenn Sie einen virtuellen Computer erstellen, geben Sie eine Basis an. Dabei kann es sich entweder um ein benutzerdefiniertes Image oder ein Marketplace-Image handeln. In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Image aus einer VHD-Datei erstellen.
 * [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md): DevTest Labs unterstützt die Erstellung virtueller Computer auf der Basis von Azure Marketplace-Images. In diesem Artikel erfahren Sie, wie Sie ggf. angeben, welche Azure Marketplace-Images zum Erstellen virtueller Computer in einem Lab verwendet werden können.
 * [Erstellen eines virtuellen Computers in einem Lab](devtest-lab-add-vm-with-artifacts.md): In diesem Artikel wird veranschaulicht, wie Sie einen virtuellen Computer aus einem Basisimage erstellen (entweder aus einem benutzerdefinierten Image oder einem Marketplace-Image), und wie Sie mit Artefakten auf dem virtuellen Computer arbeiten.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

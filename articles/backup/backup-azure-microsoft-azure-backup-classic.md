@@ -18,6 +18,7 @@ ms.author: masaran;trinadhk;pullabhk;markgal
 translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 2d32e8bb650d682684be0e093a9f5dfd9d536a8f
+ms.lasthandoff: 01/27/2017
 
 
 ---
@@ -209,9 +210,4 @@ In den folgenden Artikeln finden Sie zusätzliche Informationen zum Workloadschu
 * [SQL Server-Sicherung](backup-azure-backup-sql.md)
 * [SharePoint Server-Sicherung](backup-azure-backup-sharepoint.md)
 * [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

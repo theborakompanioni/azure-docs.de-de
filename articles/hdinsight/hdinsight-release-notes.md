@@ -13,23 +13,27 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2016
+ms.date: 1/18/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 8a7ca492d846f274019eb228fc027defac0aa390
-ms.openlocfilehash: be590e72e30b4b8cf506a43a9de2e54a0200356d
+ms.sourcegitcommit: e6167db5f9b6c8b2520b1f3c2d443c7497d44552
+ms.openlocfilehash: b3e625852648e15ccde427ec8c5bb8fe0393cb74
+ms.lasthandoff: 02/21/2017
 
 
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Versionshinweise zu Hadoop-Komponenten in Azure HDInsight
 
+> [!IMPORTANT]
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Ende des Lebenszyklus von HDInsight unter Windows](hdinsight-component-versioning.md#hdi-version-32-and-33-nearing-deprecation-date).
+
 ##<a name="notes-for-11182016-release-of-spark-201-on-hdinsight-35"></a>Hinweise zur Version vom 18.11.2016 von Spark 2.0.1 in HDInsight 3.5
 Spark 2.0.1 ist nun für Spark-Cluster verfügbar (HDInsight-Version 3.5).
 
 ## <a name="notes-for-11162016-release-of-r-server-90-on-hdinsight-35-spark-20"></a>Hinweise zur Version vom 16.11.2016 von R Server 9.0 in HDInsight 3.5 (Spark 2.0)
-*   R Server-Cluster enthalten jetzt die Option für zwei Versionen: R Server 9.0 unter HDI 3.5 (Spark 2.0) und R Server 8.0 unter HDI 3.4 (Spark 1.6).
-*   R Server 9.0 unter HDI 3.5 (Spark 2.0) basiert auf R 3.3.2 und enthält neue ScaleR-Datenquellenfunktionen mit den Bezeichnungen RxHiveData und RxParquetData, um Daten für die Analyse mit ScaleR direkt aus Hive und Parquet in Spark DataFrames zu laden. Weitere Informationen finden Sie in der Inlinehilfe zu diesen Funktionen in R über die Befehle ?RxHiveData und ?RxParquetData.
-*   RStudio Server Community Edition wird jetzt standardmäßig (mit Abwahloption) als Teil des Bereitstellungsflows auf dem Blatt „Clusterkonfiguration“ installiert.
+*    R Server-Cluster enthalten jetzt die Option für zwei Versionen: R Server 9.0 unter HDI 3.5 (Spark 2.0) und R Server 8.0 unter HDI 3.4 (Spark 1.6).
+*    R Server 9.0 unter HDI 3.5 (Spark 2.0) basiert auf R 3.3.2 und enthält neue ScaleR-Datenquellenfunktionen mit den Bezeichnungen RxHiveData und RxParquetData, um Daten für die Analyse mit ScaleR direkt aus Hive und Parquet in Spark DataFrames zu laden. Weitere Informationen finden Sie in der Inlinehilfe zu diesen Funktionen in R über die Befehle ?RxHiveData und ?RxParquetData.
+*    RStudio Server Community Edition wird jetzt standardmäßig (mit Abwahloption) als Teil des Bereitstellungsflows auf dem Blatt „Clusterkonfiguration“ installiert.
 
 ## <a name="notes-for-11092016-release-of-spark-20-on-hdinsight"></a>Hinweise zur Version vom 09.11.2016 von Spark 2.0 in HDInsight
 * Spark 2.0-Cluster in HDInsight 3.5 unterstützen jetzt Livy- und Jupyter-Dienste.
@@ -134,7 +138,7 @@ Diese Version enthält die folgenden Updates.
 
 | Titel | Beschreibung | Betroffener Bereich (z. B. Dienst, Komponente oder SDK) | Clustertyp (z.B. Spark, Hadoop, HBase oder Storm) | JIRA (falls zutreffend) |
 | --- | --- | --- | --- | --- |
-| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) |Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version 2.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ. |Tools |Spark |N/V |
+| [HDInsight-Tools für IntelliJ](hdinsight-apache-spark-intellij-tool-plugin.md) |Das IntelliJ IDEA-Plug-In für HDInsight Spark-Cluster ist jetzt in das Azure-Toolkit für IntelliJ integriert. Es unterstützt die Azure SDK-Version&2;.9.1, neuesten Java SDKs und bietet alle Features des eigenständigen HDInsight-Plug-Ins für IntelliJ. |Tools |Spark |N/V |
 | [HDInsight-Tools für Eclipse](hdinsight-apache-spark-eclipse-tool-plugin.md) |Das Azure-Toolkit für Eclipse unterstützt nun HDInsight Spark-Cluster. Es bietet die folgenden Features. <ul><li>Müheloses Erstellen und Schreiben einer Spark-Anwendung in Scala und Java mit erstklassiger Erstellungsunterstützung für IntelliSense, automatische Formatierung, Fehlerüberprüfung usw.</li><li>Lokales Testen der Spark-Anwendung.</li><li>Übermitteln von Aufträgen an HDInsight Spark-Cluster und Abrufen der Ergebnisse.</li><li>Anmelden bei Azure und Zugreifen auf alle Spark-Cluster, die Ihren Azure-Abonnements zugeordnet sind.</li><li>Wechseln zu allen zugeordneten Speicherressourcen Ihres HDInsight Spark-Clusters.</li></ul> |Tools |Spark |N/V |
 
 Ab dieser Version wurde die Patchingrichtlinie für Gastbetriebssysteme für Linux-basierte HDInsight-Cluster geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters.
@@ -1277,7 +1281,7 @@ Weitere Informationen zu den Konfigurationseinstellungen des Arbeitsspeichers, d
 Anmerkung zur Azure PowerShell- und HDInsight SDK-Fehlermeldung: „*Cluster ist nicht für den Zugriff auf HTTP-Dienste konfiguriert*“:
 
 * Dieser Fehler ist ein bekanntes [Kompatibilitätsproblem](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight), das auftritt, wenn sich die Version von HDInsight SDK oder Azure PowerShell von der Clusterversion unterscheidet. Alle ab dem 15.8.2014 erstellten Cluster unterstützen die neue Bereitstellungsfunktion für virtuelle Netzwerke. Diese Funktion wird jedoch von älteren Versionen von HDInsight SDK oder Azure PowerShell nicht korrekt interpretiert. Das Resultat ist ein Fehler bei der Übermittlung mancher Aufträge. Wenn Sie Aufträge mit HDInsight SDK-APIs oder Azure PowerShell-Cmdlets übermitteln (**Use-AzureRmHDInsightCluster** oder **Invoke-AzureRmHDInsightHiveJob**), können diese Vorgänge mit der Fehlermeldung „<clustername>Cluster * wurde nicht für Zugriff auf HTTP-Dienste konfiguriert*“ misslingen. Oder Sie erhalten (abhängig vom Vorgang) andere Fehlermeldungen, z.B. „*Es kann keine Verbindung mit dem Cluster hergestellt werden*“.
-* Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie erhalten das neueste HDInsight SDK über [](http://nuget.codeplex.com/wikipage?title=Getting%20Started) und die Azure PowerShell-Tools unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+* Diese Kompatibilitätsprobleme sind in den neuesten Versionen von HDInsight SDK und Azure PowerShell behoben. Sie sollten daher das HDInsight SDK auf Version 1.3.1.6 oder eine neuere Version und die Azure PowerShell-Tools auf Version 0.8.8 oder eine neuere Version aktualisieren. Sie erhalten das neueste HDInsight SDK über [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) und die Azure PowerShell-Tools unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ## <a name="notes-for-9122014-release-of-hdinsight-31"></a>Hinweise für die HDInsight-Version 3.1 vom 12.9.2014
 * Diese Version basiert auf Hortonworks Data Platform (HDP) 2.1.5. Eine Liste der in dieser Version korrigierten Fehler finden Sie auf der Seite [Fixed in this Release](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html) auf der Hortonworks-Website.
@@ -1523,9 +1527,4 @@ Versionshinweise zu den HDPs (Hortonworks Data Platforms), die von den Versionen
 
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -20,6 +20,7 @@ ms.author: hangzh;bradsev
 translationtype: Human Translation
 ms.sourcegitcommit: 2b7f4b5743945738f801dc26a60d00892c33d809
 ms.openlocfilehash: 91ff5546a954b91585e5ae93f910caffe3b392e1
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -839,9 +840,4 @@ Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Micro
 <!-- Module References -->
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

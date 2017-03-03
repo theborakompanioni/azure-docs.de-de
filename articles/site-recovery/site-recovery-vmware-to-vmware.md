@@ -17,6 +17,7 @@ ms.author: nisoneji
 translationtype: Human Translation
 ms.sourcegitcommit: 3b606aa6dc3b84ed80cd3cc5452bbe1da6c79a8b
 ms.openlocfilehash: cff6ef0c1c49110edc53ec82f88d9875439aab8a
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -197,9 +198,4 @@ Update 1 enthält die folgenden Fehlerbehebungen und neuen Features:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Etwaige Fragen können Sie im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)stellen.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/13/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 3c19c2035b8dc9717dced5164b0214ab8019afd1
+ms.sourcegitcommit: 7bd403bb8569950a5bf4da3bd84905604753cda7
+ms.openlocfilehash: f29128dd156576276014e159afa9050364169c46
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -51,6 +52,8 @@ Die folgenden Administratorrollen sind verfügbar:
   > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Helpdeskadministrator“ identifiziert.
   >
   >
+* **Power BI-Dienstadministrator:** Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft Power BI, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Making It Easier To Administer Power BI](https://powerbi.microsoft.com/en-us/blog/making-it-easier-to-administer-power-bi/) (Einfachere Verwaltung von Power BI).
+* **Administrator für privilegierte Rollen:** Benutzer mit dieser Rolle können Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) verwalten und Rollenzuweisungen für andere Benutzer aktualisieren.
 * **SharePoint-Dienstadministrator**: Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft SharePoint Online, wenn der Dienst vorhanden ist. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US).
 * **[Dienstadministrator:](#service-administrator)** Verwaltet Dienstanforderungen und überwacht die Integrität des Dienstes.
 
@@ -114,6 +117,17 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 6. Geben Sie einen Speicherort aus der Dropdown-Liste **Nutzungsspeicherort** an.
 7. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
+## <a name="deprecated-roles"></a>Veraltete Rollen
+
+Die folgenden Rollen sollten nicht verwendet werden. Sie wurden als veraltet markiert und werden aus Azure AD entfernt.
+
+* Ad-hoc-Lizenzadministrator
+* Benutzererstellung mit E-Mail-Überprüfung
+* Geräteeinbindung
+* Geräte-Manager
+* Gerätebenutzer
+* Geräteeinbindung am Arbeitsplatz
+
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing/billing-add-change-azure-subscription-administrator.md)
 * Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](active-directory-understanding-resource-access.md)
@@ -121,9 +135,4 @@ Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Stand
 * [Verwalten von Benutzern](active-directory-create-users.md)
 * [Verwalten von Kennwörtern](active-directory-manage-passwords.md)
 * [Gruppen verwalten](active-directory-manage-groups.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

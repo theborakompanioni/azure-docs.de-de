@@ -15,8 +15,9 @@ ms.workload: backup-recovery
 ms.date: 2/2/2017
 ms.author: anoopkv
 translationtype: Human Translation
-ms.sourcegitcommit: bb24e1c79f6a77ec157fa05a8a212109ce8ae7ad
-ms.openlocfilehash: 8ea724c49664ca4803b1c91aefb94b490bd3d283
+ms.sourcegitcommit: edf190031e87cc5a433eaa8fb86187b41fc1dd4e
+ms.openlocfilehash: 61db9c89ff84db89323b55990dc1049d636958f7
+ms.lasthandoff: 02/22/2017
 
 ---
 
@@ -28,7 +29,7 @@ ms.openlocfilehash: 8ea724c49664ca4803b1c91aefb94b490bd3d283
 Beim Failback empfiehlt es sich, den Prozessserver in Azure bereitzustellen, wenn die Wartezeit zwischen dem Azure Virtual Network und Ihrem lokalen Netzwerk hoch ist. In diesem Artikel wird beschrieben, wie Sie in Azure ausgeführte Prozessserver einrichten, konfigurieren und verwalten können.
 
 > [!NOTE]
-> Dieser Artikel gilt, wenn Sie **Resource Manager** beim Failover als Bereitstellungsmodell für die virtuellen Computer verwendet haben. Wenn Sie **Klassisch** als Bereitstellungsmodell ausgewählt haben, führen Sie die unter [Verwalten eines in Azure ausgeführten Prozessservers (Klassisch)](./site-recovery-vmware-setup-azure-ps-classic.md) beschriebenen Schritte aus.
+> Dieser Artikel gilt, wenn Sie **Resource Manager** beim Failover als Bereitstellungsmodell für die virtuellen Computer verwendet haben. Wenn Sie als Bereitstellungsmodell **Klassisch** ausgewählt haben, führen Sie die unter [Einrichten und Konfigurieren eines Failbackprozessservers (Klassisch)](./site-recovery-vmware-setup-azure-ps-classic.md) beschriebenen Schritte aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -76,10 +77,5 @@ Beim Failback empfiehlt es sich, den Prozessserver in Azure bereitzustellen, wen
 
 ## <a name="unregistering-the-process-server-running-in-azure-from-a-configuration-server-running-on-premises"></a>Aufheben der Registrierung des Prozessservers (in Azure ausgeführt) beim Konfigurationsserver (lokal ausgeführt)
 
-[!INCLUDE [site-recovery-vmware-upgrade-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
-
-
-
-<!--HONumber=Feb17_HO1-->
-
+[!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 

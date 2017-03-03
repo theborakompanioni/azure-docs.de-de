@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
 translationtype: Human Translation
-ms.sourcegitcommit: 8d370f98a4ef2501afc692af8a19a0625f54b678
-ms.openlocfilehash: a087b74470a8aa0f70b56d74cd97fe0935d35bcd
+ms.sourcegitcommit: e657e901900b4879d649ac82d8de026957a409c2
+ms.openlocfilehash: 36a872e3e5bd3230dcfe2abdab9b4dbf25212cdb
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -31,7 +32,14 @@ Sie können die folgenden Diagnoseprotokoll-Kategorien für Netzwerksicherheitsg
 > [!NOTE]
 > Diagnoseprotokolle sind nur für NSGs verfügbar, die im Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden. Sie können keine Diagnoseprotokollierung für Netzwerksicherheitsgruppen aktivieren, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Zum besseren Verständnis der beiden Modelle lesen Sie den Artikel [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../resource-manager-deployment-model.md) (Azure Resource Manager im Vergleich zur klassischen Bereitstellung: Grundlegendes zu den Bereitstellungsmodellen und zum Status Ihrer Ressourcen).
 
-Aktivitätsprotokollierung (vormals bekannt als Audit oder Betriebsprotokolle) ist für alle Netzwerksicherheitsgruppen unabhängig davon , in welchem Azure-Bereitstellungsmodell sie erstellt wurden, standardmäßig aktiviert. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten: Microsoft.ClassicNetwork/networkSecurityGroups, Microsoft.ClassicNetwork/networkSecurityGroups/securityRules, Microsoft.Network/networkSecurityGroups und Microsoft.Network/networkSecurityGroups/securityRules. Lesen Sie den Artikel [Overview of the Azure Activity Log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) (Übersicht zum Azure-Aktivitätsprotokoll), um weitere Informationen zu Aktivitätsprotokollen zu erhalten. 
+Aktivitätsprotokollierung (vormals bekannt als Audit oder Betriebsprotokolle) ist für alle Netzwerksicherheitsgruppen unabhängig davon , in welchem Azure-Bereitstellungsmodell sie erstellt wurden, standardmäßig aktiviert. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten: 
+
+- Microsoft.ClassicNetwork/networkSecurityGroups 
+- Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
+- Microsoft.Network/networkSecurityGroups
+- Microsoft.Network/networkSecurityGroups/securityRules 
+
+Lesen Sie den Artikel [Overview of the Azure Activity Log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) (Übersicht zum Azure-Aktivitätsprotokoll), um weitere Informationen zu Aktivitätsprotokollen zu erhalten. 
 
 ## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
 
@@ -116,9 +124,4 @@ Dieses Protokoll enthält Informationen über jede Regel, die auf Ressourcen ang
 ## <a name="view-and-analyze-logs"></a>Anzeigen und Analysieren von Protokollen
 
 Lesen Sie den Artikel [Overview of the Azure Activity Log](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zum Azure-Aktivitätsprotokoll), um zu erfahren, wie Sie Aktivitätsprotokolldaten anzeigen. Lesen Sie den Artikel [Overview of Azure Diagnostic Logs](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) (Übersicht zu Azure-Diagnoseprotokollen), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Wenn Sie Diagnosedaten an Log Analytics senden, können Sie mithilfe der Verwaltungslösung für die [Azure-Netzwerksicherheitsgruppen-Analyse](../log-analytics/log-analytics-azure-networking-analytics.md) (Vorschau) verbesserte Einblicke erhalten. 
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

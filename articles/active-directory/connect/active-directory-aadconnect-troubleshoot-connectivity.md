@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 253b7fe3614579d5a9a74d1de21bd2d3efe50d09
 ms.openlocfilehash: bf642e08d92414543f55ddeceff297c886b82882
+ms.lasthandoff: 01/26/2017
 
 
 ---
@@ -196,9 +197,4 @@ Dieser Fehler tritt auf, wenn der Anmelde-Assistent den Proxy nicht erreichen ka
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

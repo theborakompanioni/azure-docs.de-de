@@ -17,6 +17,7 @@ ms.author: jawalte
 translationtype: Human Translation
 ms.sourcegitcommit: 8288ca2e85ec0cd1a1b53862b2d60fcb88e7be4b
 ms.openlocfilehash: c6b8c27299c1bfceb045ee7d82981654f3a446d8
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -102,10 +103,5 @@ VPN Gateway ist in Azure Government allgemein verfügbar. Weitere Informationen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Updates erhalten Sie, indem Sie den <a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government-Blog</a> abonnieren.
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

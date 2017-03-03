@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 0544cb9aaf9ec03c16cc07f2974b6b8d90b3c61d
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -163,10 +164,5 @@ Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponen
 * Informationen zum Behandeln von Problemen mit einer beeinträchtigten oder fehlerhaften Gerätekomponente finden Sie unter [StorSimple-Überwachungsindikatoren](storsimple-monitoring-indicators.md). 
 * Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 * Sollten weiterhin Geräteprobleme auftreten, [wenden Sie sich an den Microsoft-Support](storsimple-contact-microsoft-support.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

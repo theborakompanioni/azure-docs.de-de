@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: f68cf75cb8261ddac3fd56a8718f900bedb51c2b
 ms.openlocfilehash: 7e0f7d8fefad539960436a58a254087a4ebd2f78
+ms.lasthandoff: 02/15/2017
 
 ---
 
@@ -52,8 +53,3 @@ Azure Multi-Factor Authentication lässt sich in Ihre Juniper/Pulse Secure SSL-V
 - [Verbessern der vorhandenen Authentifizierungsinfrastruktur mit der NPS-Erweiterung für Azure Multi-Factor Authentication](multi-factor-authentication-nps-extension.md)
 
 - [Konfigurieren von Azure Multi-Factor Authentication-Einstellungen](multi-factor-authentication-whats-next.md)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

@@ -13,11 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2017
+ms.date: 02/15/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a42e04b6a8b09078986ba0d12c6d07305e8068c6
-ms.openlocfilehash: 15d1a9d819fdf9565e85ccea39a922c608aba917
+ms.sourcegitcommit: 4125a8d930ead541420c83ef5d8aa3ae1ea2a263
+ms.openlocfilehash: 520dc84bfd882d33d32719d5225af91eb124f015
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -406,14 +407,14 @@ Das Aufheben der Registrierung für eine benutzerdefinierte Funktion erfolgt üb
 Obwohl die obigen Codeausschnitte die Registrierung (POST), die Aufhebung der Registrierung (PUT), das Lesen/Auflisten (GET) und die Ausführung (POST) über das [DocumentDB-JavaScript-SDK](https://github.com/Azure/azure-documentdb-js) veranschaulicht haben, können Sie auch die [REST-APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) oder andere [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx) verwenden. 
 
 ## <a name="documents"></a>Dokumente
-Sie können beliebige JSON-Dokumente zu einer Sammlung hinzufügen, sie dort ersetzen, löschen, lesen, aufzählen und abfragen. DocumentDB erfordert weder Schema noch sekundäre Indizes, um die dokumentübergreifende Abfrage in einer Sammlung zu unterstützen.   
+Sie können beliebige JSON-Dokumente zu einer Sammlung hinzufügen, sie dort ersetzen, löschen, lesen, aufzählen und abfragen. DocumentDB erfordert weder Schema noch sekundäre Indizes, um die dokumentübergreifende Abfrage in einer Sammlung zu unterstützen. Die maximale Größe für ein Dokument beträgt standardmäßig 2 MB.   
 
 DocumentDB ist ein ganz und gar offener Datenbankdienst, der keine speziellen Datentypen (z. B. Datum/Uhrzeit) oder bestimmte Codierungen für JSON-Dokumente einführt. Beachten Sie, dass für DocumentDB keine speziellen JSON-Konventionen erforderlich sind, um die Beziehungen zwischen verschiedenen Dokumenten festzuschreiben. Die SQL-Syntax von DocumentDB bietet sehr leistungsstarke hierarchische und relationale Abfrageoperatoren, um Dokumente ohne spezielle Anmerkungen oder die Festschreibung der Beziehungen zwischen Dokumenten mithilfe unterschiedlicher Eigenschaften abzufragen und zu projizieren.  
 
 Wie die anderen Ressourcen können Dokumente mithilfe der REST-APIs oder eines [Client-SDKs](https://msdn.microsoft.com/library/azure/dn781482.aspx)einfach erstellt, ersetzt, gelöscht, gelesen, aufgezählt und abgefragt werden. Durch das Löschen eines Dokuments wird sofort das Kontingent freigegeben, das allen geschachtelten Anhängen entspricht. Der Grad der Lesekonsistenz von Dokumenten folgt der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Dokumenten folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos. 
 
 ## <a name="attachments-and-media"></a>Anhänge und Medien
-DocumentDB gestattet es Ihnen, binäre Blobs/Medien mit DocumentDB oder in einem eigenen Remotemedienspeicher zu speichern. Zudem haben Sie die Möglichkeit, die Metadaten eines Mediums in Form eines speziellen Dokuments, dem sogenannten Anhang, darzustellen. Ein Anhang in DocumentDB ist ein spezielles (JSON-)Dokument, das auf die/den an anderer Stelle gespeicherten Medien/Blob verweist. Ein Anhang ist einfach ein spezielles Dokument, das die Metadaten (z. B. Speicherort, Autor usw.) eines Mediums erfasst, das in einem Remotemedienspeicher gespeichert wird. 
+Mithilfe von DocumentDB können Sie binäre Blobs/Medien entweder mit DocumentDB (maximal 2 GB pro Konto) oder in einem eigenen Remotemedienspeicher speichern. Zudem haben Sie die Möglichkeit, die Metadaten eines Mediums in Form eines speziellen Dokuments, dem sogenannten Anhang, darzustellen. Ein Anhang in DocumentDB ist ein spezielles (JSON-)Dokument, das auf die/den an anderer Stelle gespeicherten Medien/Blob verweist. Ein Anhang ist einfach ein spezielles Dokument, das die Metadaten (z. B. Speicherort, Autor usw.) eines Mediums erfasst, das in einem Remotemedienspeicher gespeichert wird. 
 
 Betrachten Sie eine soziale Leseanwendung, die DocumentDB zum Speichern von Anmerkungen und Metadaten verwendet, einschließlich der Kommentare, Lesezeichen, Bewertungen usw., die einem E-Book für einen bestimmten Benutzer zugeordnet sind.   
 
@@ -460,10 +461,5 @@ Weitere Informationen zum Arbeiten mit Ressourcen mithilfe von HTTP-Befehlen fin
 [1]: media/documentdb-resources/resources1.png
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

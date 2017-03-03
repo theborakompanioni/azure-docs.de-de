@@ -15,8 +15,9 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 translationtype: Human Translation
-ms.sourcegitcommit: a560aa9cc6c70fd3827f649627466c9071b8ab8b
-ms.openlocfilehash: c350134e8cea5771900e2e88b02b572c20e9d5bd
+ms.sourcegitcommit: e7fc6cb4ee4752bb7ed90a8f64edcc7c82ec3a88
+ms.openlocfilehash: d04c209894ab8ee35b92381f9679f68addd64f00
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -58,7 +59,7 @@ Weitere Informationen zu App Services-Empfehlungen finden Sie unter [Bewährte M
 3. Klicken Sie auf dem Advisor-Dashboard auf die Registerkarte **Leistung**, und wählen Sie das Abonnement aus, für das Sie Empfehlungen erhalten möchten.
 
 > [!NOTE]
-> Advisor generiert Empfehlungen für Abonnements, in denen Ihnen die Rolle **Besitzer, Mitwirkender oder Leser** zugewiesen ist.
+> Für den Zugriff auf die Empfehlungen von Ratgeber müssen Sie Ihr Abonnement zunächst bei Ratgeber **registrieren**. Ein Abonnement wird registriert, wenn ein **Abonnementbesitzer** das Ratgeber-Dashboard startet und auf die Schaltfläche **Abrufen von Empfehlungen** klickt. Dies ist eine **einmalige Aufgabe**. Sobald ein Abonnement registriert wurde, können **Besitzer**, **Mitwirkende** oder **Leser** eines Abonnements, einer Ressourcengruppe oder einer bestimmten Ressource auf die Empfehlungen von Ratgeber zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -69,9 +70,4 @@ Weitere Informationen zu Advisor-Empfehlungen finden Sie in den folgenden Ressou
 -  [Advisor-Empfehlungen für hohe Verfügbarkeit](advisor-high-availability-recommendations.md)
 -  [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md)
 -  [Advisor-Empfehlungen zu Kosten](advisor-performance-recommendations.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

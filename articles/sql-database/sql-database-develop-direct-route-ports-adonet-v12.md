@@ -18,6 +18,7 @@ ms.author: sstein
 translationtype: Human Translation
 ms.sourcegitcommit: 1df9f3549db8417445a5a012d31ed662977a9990
 ms.openlocfilehash: 961b8b4eeeb8543c2adec60ff958a7f420c785b5
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -64,10 +65,5 @@ In diesem Abschnitt werden die Moniker erläutert, die auf Produktversionen verw
 * [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
 * [Firewall für die Azure SQL-Datenbank](sql-database-firewall-configure.md)
 * [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

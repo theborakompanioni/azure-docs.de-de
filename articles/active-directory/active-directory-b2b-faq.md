@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/10/2017
+ms.date: 02/16/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0eef684115f9c21ea61502a10576f74cac0ace8e
-ms.openlocfilehash: 2054cb65b5192e08fc64e56f59a456fc911f0829
+ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
+ms.openlocfilehash: 3e92da61128a18c42726f4c3c85cd6e5024a697f
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -72,7 +73,7 @@ Sie können den Zugriff auf das [Azure-Portal](https://portal.azure.com) für Ga
 2. Erstellen Sie eine dynamische Gruppe mit Gastbenutzern: ![](media/active-directory-b2b-faq/group-with-guest-users.png)
 3. Richten Sie eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu sperren, wie im folgenden Video gezeigt.
 
-  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user]
+  >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player]
 
   Wenn dieses Video nicht eingebettet angezeigt wird, können Sie es [hier](https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user) aufrufen.
 
@@ -109,9 +110,4 @@ Weitere Artikel zur Azure AD B2B-Kollaboration:
 * [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
 * [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

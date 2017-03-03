@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2016
+ms.date: 2/17/2017
 ms.author: ryanwi
 translationtype: Human Translation
-ms.sourcegitcommit: 4fb6ef56d694aff967840ab26b75b66a2e799cc1
-ms.openlocfilehash: 977de9160be63a91b5926daa45528e5ee205e448
+ms.sourcegitcommit: 4cde82601758c9f92ab36c692265a8b6c192cbdc
+ms.openlocfilehash: eef19d304ec63d752b6b84c78833af44ca5344d2
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -156,7 +157,7 @@ Im Abschnitt **nodeTypes** werden die Typen der Knoten beschrieben, die in Ihrem
 * *applicationPorts* sind die Ports, die von den Service Fabric-Anwendungen verwendet werden. Dies sollte eine Teilmenge von *ephemeralPorts* und ausreichend sein, um die Endpunktanforderung Ihrer Anwendungen abzudecken. Service Fabric greift hierauf zurück, wenn neue Ports benötigt werden, und öffnet die Firewall für diese Ports. 
 * *reverseProxyEndpointPort* ist ein optionaler Reverseproxy-Endpunkt. Weitere Informationen finden Sie unter [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md). 
 
-### <a name="other-settings"></a>Andere Einstellungen
+### <a name="log-settings"></a>Protokolleinstellungen
 Im Abschnitt **fabricSettings** können Sie die Stammverzeichnisse für die Service Fabric-Daten und -Protokolle festlegen. Sie können diese nur während der erstmaligen Clustererstellung anpassen. Nachfolgend finden Sie einen Codeausschnitt mit diesem Abschnitt als Beispiel.
 
     "fabricSettings": [{
@@ -171,12 +172,19 @@ Im Abschnitt **fabricSettings** können Sie die Stammverzeichnisse für die Serv
 
 Es wird empfohlen, ein Nicht-Betriebssystem-Laufwerk als „FabricDataRoot“ und „FabricLogRoot“ zu verwenden, da dies zur Verhinderung von Betriebssystemabstürzen mehr Zuverlässigkeit bietet. Beachten Sie: Wenn Sie nur das Stammverzeichnis für die Daten anpassen, wird das Stammverzeichnis für die Protokolle genau eine Ebene unterhalb des Stammverzeichnisses für die Daten angesiedelt.
 
+### <a name="stateful-reliable-service-settings"></a>Einstellungen für zustandsbehaftete Reliable Services
+Im Abschnitt **KtlLogger** können Sie die globalen Konfigurationseinstellungen für Reliable Services festlegen. Weitere Informationen zu diesen Einstellungen finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md).
+Im folgenden Beispiel wird gezeigt, wie Sie das freigegebene Transaktionsprotokoll ändern, das als Unterstützung für zuverlässige Sammlungen für zustandsbehaftete Dienste erstellt wird.
+
+    "fabricSettings": [{
+        "name": "KtlLogger",
+        "parameters": [{
+            "name": "SharedLogSizeInMB",
+            "value": "4096"
+        }]
+    }]
+
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Datei „ClusterConfig.JSON“ vollständig entsprechend dem Setup für Ihren eigenständigen Cluster konfiguriert haben, können Sie den Cluster bereitstellen. Dazu befolgen Sie die Anweisungen im Artikel [Erstellen eines eigenständigen Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md), und anschließend [visualisieren Sie den Cluster mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

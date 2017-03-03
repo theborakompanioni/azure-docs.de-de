@@ -45,7 +45,7 @@
 
 ## Datenspeicher 
 ### [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
-### [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+### [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 ### [Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/virtual-machines-windows-attach-disk-ps.md)
 ### [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../virtual-machines/virtual-machines-linux-add-disk.md)
 ### [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../virtual-machines/virtual-machines-windows-snapshot-copy-managed-disk.md)
@@ -100,7 +100,7 @@
 ### [Festlegen und Abrufen von Eigenschaften und Metadaten](storage-properties-metadata.md)
 ## Verwalten
 ### [PowerShell](storage-powershell-guide-full.md)
-### [Azure CLI 2.0 (Vorschau)](storage-azure-cli.md)
+### [Azure CLI 2.0](storage-azure-cli.md)
 ### [Azure CLI 1.0](storage-azure-cli-nodejs.md)
 ### [Azure Automation](automation-manage-storage.md)
 ## Schützen
@@ -219,8 +219,3 @@
 ### [Ruby](https://github.com/Azure/azure-storage-ruby)
 ### [Python](https://github.com/Azure/azure-storage-python)
 ### [iOS](https://github.com/Azure/azure-storage-ios)
-
-
-<!--HONumber=Feb17_HO2-->
-
-

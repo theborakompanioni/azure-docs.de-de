@@ -16,13 +16,14 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: ronitr
 translationtype: Human Translation
-ms.sourcegitcommit: 86bc7d89bb5725add8ba05b6f0978467147fd3ca
-ms.openlocfilehash: d225a6156ea3672ed214f8308d7e944e6ff08576
+ms.sourcegitcommit: 5d51a5ef3387b4c00079547b0f44ffe1f96bd77c
+ms.openlocfilehash: bcc02abb62b21aadb10e62320b02b33c3c244c17
+ms.lasthandoff: 02/17/2017
 
 
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Überwachung
-Die [Tabellenüberwachung von SQL-Datenbank](sql-database-auditing-get-started.md) erfolgt automatisch bei SQL-Clients, die eine TDS-Umleitung unterstützen. Beachten Sie, dass diese Umleitung bei Verwendung der Blobüberwachungsmethode nicht angewendet wird.
+Die [Datenbanküberwachung](sql-database-auditing.md) erfolgt automatisch bei SQL-Clients, die eine TDS-Umleitung unterstützen. Beachten Sie, dass diese Umleitung bei Verwendung der Blobüberwachungsmethode nicht angewendet wird.
 
 ## <a name="a-idsubheading-1adownlevel-clients-support"></a><a id="subheading-1"></a>Unterstützung für kompatible Clients
 Jeder Client, der TDS 7.4 implementiert, sollte auch die Umleitung unterstützen. Zu den Ausnahmen gehören JDBC 4.0, in dem die Umleitungsfunktion nicht vollständig unterstützt wird, und Tedious for Node.JSS, in dem die Umleitungsfunktion nicht implementiert wurde.
@@ -77,9 +78,4 @@ Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
 | Kanada, Osten |40.86.227.82, 40.86.225.194 |
 | Großbritannien, Norden |13.87.101.18, 13.87.100.232 |
 | Großbritannien, Süden 2 |13.87.32.202, 13.87.32.226 |
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

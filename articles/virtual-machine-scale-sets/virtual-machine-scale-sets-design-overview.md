@@ -19,6 +19,7 @@ ms.author: negat
 translationtype: Human Translation
 ms.sourcegitcommit: e869b06935736fae72bd3b5407ebab7c3830098d
 ms.openlocfilehash: de3687a1bf36bf49db400a5660ac631f20b629d0
+ms.lasthandoff: 02/14/2017
 
 
 ---
@@ -56,10 +57,5 @@ Eine Skalierungsgruppe mit vom Benutzer verwalteten Speicherkonten ist derzeit a
 Bei Konfiguration mit Azure Managed Disks kann eine auf einem benutzerdefinierten (oder von Ihnen erstellten) Image basierende Skalierungsgruppe bis zu 100 VMs aufweisen. Wenn die Skalierungsgruppe mit vom Benutzer verwalteten Speicherkonten konfiguriert ist, müssen alle Betriebssystem-Datenträger-VHDs innerhalb eines Speicherkontos erstellt werden. Folglich ist 20 die maximal empfohlene Anzahl von VMs in einer Skalierungsgruppe, die auf einem benutzerdefinierten Image und vom Benutzer verwalteten Speicher basiert. Wenn Sie die Überbereitstellung deaktivieren, können Sie bis zu 40 gehen.
 
 Wenn die Anzahl benötigter virtueller Computer über diese Grenzwerte hinausgeht, müssen Sie mehrere Skalierungsgruppen bereitstellen, wie in dieser [Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)gezeigt.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

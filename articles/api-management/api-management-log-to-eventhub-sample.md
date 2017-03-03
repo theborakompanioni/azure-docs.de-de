@@ -17,6 +17,7 @@ ms.author: apimpm
 translationtype: Human Translation
 ms.sourcegitcommit: 30855c86780e13144dbe0e507397a719d1a1f95d
 ms.openlocfilehash: 588425fdc4a076d4d7ad65e634849f4f77bb9fdd
+ms.lasthandoff: 02/03/2017
 
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Überwachen von APIs mit Azure API Management, Event Hubs und Runscope
@@ -281,9 +282,4 @@ Der Azure API Management-Dienst ist ein idealer Ort zum Erfassen des HTTP-Datenv
   * [Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management](api-management-howto-log-event-hubs.md)
   * [Verweis zu Protokollierungstool](https://msdn.microsoft.com/library/azure/mt592020.aspx)
   * [log-to-eventhub policy reference](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

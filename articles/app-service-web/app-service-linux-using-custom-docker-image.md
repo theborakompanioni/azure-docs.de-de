@@ -5,7 +5,7 @@ keywords: Azure App Service, Web-App, Linux, Docker, Container
 services: app-service
 documentationcenter: 
 author: naziml
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
-ms.author: naziml
+ms.date: 02/16/2017
+ms.author: naziml;wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 54b38c7f8cf685387ac639653d208a00cefbc3fa
-ms.openlocfilehash: f2a03c58ab09ef09ea2fc482a978bf0d9c23f212
+ms.sourcegitcommit: bb4c7ea7adfe1326ae8259782b5de2762c8c2bf5
+ms.openlocfilehash: 7e4aab65feac187b48ccca65b35bb94185323506
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -27,8 +28,8 @@ ms.openlocfilehash: f2a03c58ab09ef09ea2fc482a978bf0d9c23f212
 App Service stellt vordefinierte Anwendungsstapel unter Linux mit Unterstützung für bestimmte Versionen bereit, z.B. PHP 7.0 und Node.js 4.5. In App Service unter Linux werden Docker-Container verwendet, um diese vorab erstellten Anwendungsstapel zu hosten. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel bereitzustellen, der nicht bereits in Azure definiert ist. Benutzerdefinierte Docker-Images können in einem öffentlichen oder privaten Docker-Repository gehostet werden.
 
 
-## <a name="how-to-set-a-custom-docker-image-for-a-new-web-app"></a>Festlegen eines benutzerdefinierten Docker-Image für eine neue Web-App
-Sie können das benutzerdefinierte Docker-Image sowohl für neue als auch für vorhandene Web-Apps festlegen. Klicken Sie beim Erstellen einer neuen Web-App unter Linux im [Azure-Portal](https://portal.azure.com) auf **Container konfigurieren**, um ein benutzerdefiniertes Docker-Image festzulegen:
+## <a name="how-to-set-a-custom-docker-image-for-a-web-app"></a>Festlegen eines benutzerdefinierten Docker-Images für eine Web-App
+Sie können das benutzerdefinierte Docker-Image sowohl für neue als auch für vorhandene Web-Apps festlegen. Klicken Sie beim Erstellen einer Web-App unter Linux im [Azure-Portal](https://portal.azure.com) auf **Container konfigurieren**, um ein benutzerdefiniertes Docker-Image festzulegen:
 
 ![Benutzerdefiniertes Docker-Image für eine neue Web-App unter Linux][1]
 
@@ -53,7 +54,7 @@ So verwenden Sie ein benutzerdefiniertes Docker-Image aus einer privaten Imagere
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Web-App unter Linux, und klicken Sie dann unter **Einstellungen** auf **Docker-Container**.
 
-2.  Wählen Sie **Private Registrierung** als **Imagequelle** aus, und geben Sie dann das **Image und optional den Tagnamen**, die **Server-URL** für die private Registrierung und die Anmeldeinformationen (**Benutzername für Anmeldung** und **Kennwort**) ein. Klicken Sie anschließend auf **Speichern**.
+2.  Klicken Sie unter **Bildquelle** auf **Private Registrierung**. Geben Sie Werte unter **Bild und optional ein Tag** und **Server-URL** für die private Registrierung sowie die Anmeldeinformationen (**Benutzername für Anmeldung** und **Kennwort**) ein. Klicken Sie auf **Speichern**.
 
     ![Konfigurieren des Docker-Image aus der privaten Registrierung][4]
 
@@ -71,9 +72,7 @@ Wenn Sie ein benutzerdefiniertes Docker-Image für Ihre Web-App nutzen, können 
 
 In der letzten Zeile des Befehls erkennen Sie, dass die Umgebungsvariable PORT zur Laufzeit übergeben wird. Beachten Sie, dass in Befehlen die Groß-/Kleinschreibung berücksichtigt wird.
 
-Wenn Sie ein vorhandenes Docker-Image nutzen, das von einer anderen Person erstellt wurde, müssen Sie unter Umständen einen anderen Port als Port 80 für die Anwendung angeben. 
-
-Fügen Sie hierzu eine App-Einstellung mit dem Namen `PORT` und dem für das Image erforderlichen Wert hinzu:
+Wenn Sie ein vorhandenes Docker-Image nutzen, das von einer anderen Person erstellt wurde, müssen Sie unter Umständen einen anderen Port als Port 80 für die Anwendung angeben. Um den Port zu konfigurieren, fügen Sie eine Anwendungseinstellung mit dem Namen `PORT` und dem unten abgebildeten Wert hinzu:
 
 ![Konfigurieren der App-Einstellung PORT für das benutzerdefinierte Docker-Image][6]
 
@@ -104,6 +103,7 @@ Unter den folgenden Links erhalten Sie Informationen zu den ersten Schritten mit
 * [Einführung in App Service unter Linux](./app-service-linux-intro.md)
 * [Erstellen von Web-Apps in App Service unter Linux](./app-service-linux-how-to-create-a-web-app.md)
 * [Verwenden der PM2-Konfiguration für Node.js in Web-Apps unter Linux](./app-service-linux-using-nodejs-pm2.md)
+* [Häufig gestellte Fragen zu Azure App Service-Web-Apps unter Linux](app-service-linux-faq.md)
 
 In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) können Sie Fragen stellen und Antworten auf Probleme erhalten.
 
@@ -116,9 +116,4 @@ In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=win
 [5]: ./media/app-service-linux-using-custom-docker-image/existingapp-configure-builtin.png
 [6]: ./media/app-service-linux-using-custom-docker-image/setting-port.png
 [7]: ./media/app-service-linux-using-custom-docker-image/kudu-docker-logs.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

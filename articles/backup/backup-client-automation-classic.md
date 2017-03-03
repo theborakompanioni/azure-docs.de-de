@@ -18,6 +18,7 @@ ms.author: saurse;markgal;nkolli;trinadhk
 translationtype: Human Translation
 ms.sourcegitcommit: d8289128414bc67a7c064c827a9bec047f6f22bc
 ms.openlocfilehash: 096c119ad116b87b3e27b71ab9a286d2961cf7df
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -605,9 +606,4 @@ Weitere Informationen zu Azure Backup für Windows-Server und -Clients finden Si
 
 * [Einführung in Azure Backup](backup-introduction-to-azure-backup.md)
 * [Sichern von Windows-Servern](backup-configure-vault.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

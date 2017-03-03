@@ -15,8 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: f8ce1215861da2db49f5148400195c4fefb9a01d
+ms.sourcegitcommit: d7144208fc3e6eb1f8d3c43d8b4a5e2bcb225e58
+ms.openlocfilehash: ac0c200abd110262badd04212c82be45cb0f8bfc
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -53,6 +54,31 @@ Oder durch Aufrufen von:
 ``` text
 POST https://management.azure.com/{resourceID of your logic app}/triggers/myendpointtrigger/listCallbackURL?api-version=2015-08-01-preview
 ```
+
+### <a name="changing-http-method-of-the-trigger"></a>Ändern der HTTP-Methode des Triggers
+Standardmäßig erwarten Anforderungstrigger in Logic Apps HTTP POST-Anforderungen. Sie können aber die HTTP-Methode unter `Show advanced options` konfigurieren.
+
+ > [!NOTE]
+ > Es ist nur eine Methode zulässig.
+
+### <a name="relative-trigger-url"></a>Relative Trigger-URL
+Sie können auch den relativen Pfad der Anforderungs-URL anpassen, um Parameter zu übernehmen.
+
+1. Erweitern Sie `Show advanced options` für den **Anforderungstrigger**.
+ - Geben Sie unter `Relative path` Folgendes ein: `customer/{customerId}`.
+
+  ![Relativer URL-Trigger](./media/logic-apps-http-endpoint/relativeurl.png)
+
+2. Aktualisieren Sie die Aktion **Antworten**, um den Parameter zu nutzen.
+ - Daraufhin sollte `customerId` in der Tokenauswahl angezeigt werden.
+ - Aktualisieren Sie den Text der Antwort, damit `Hello {customerId}` zurückgegeben wird.
+
+  ![Relative URL-Antwort](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+
+3. Speichern Sie die Logik-App. Beachten Sie, dass die Anforderungs-URL nach der Änderung den relativen Pfad enthält.
+
+4. Kopieren Sie die neue Anforderungs-URL, und fügen Sie sie in einem neuen Browserfenster ein. Ersetzen Sie `{customerId}` durch `123`, und drücken Sie die EINGABETASTE.
+ - Als Rückgabe sollte `Your customer Id is 123` angezeigt werden.
 
 ### <a name="security-for-the-trigger-url"></a>Sicherheit für die Trigger-URL
 Rückruf-URLs für Logik-Apps werden über eine Shared Access Signature (SAS) generiert.  Die Signatur wird als Abfrageparameter übergeben und muss geprüft werden, bevor die Logik-App ausgelöst wird.  Sie wird durch eine eindeutige Kombination aus einem geheimen Schlüssel pro Logik-App, dem Namen des Triggers und dem ausgeführten Vorgang generiert.  Nur wenn ein Benutzer Zugriff auf den geheimen Logik-App-Schlüssel hat, kann er eine gültige Signatur generieren.
@@ -154,9 +180,4 @@ Diese Funktionalität ist über **API Management**verfügbar:
 [1]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
 [2]: ./media/logic-apps-http-endpoint/manualtrigger.png
 [3]: ./media/logic-apps-http-endpoint/response.png
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

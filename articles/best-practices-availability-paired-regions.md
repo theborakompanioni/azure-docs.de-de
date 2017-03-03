@@ -1,6 +1,6 @@
 ---
 title: "Geschäftskontinuität und Notfallwiederherstellung: Azure Regionspaare | Microsoft-Dokumentation"
-description: "Azure-Regionspaare stellen sicher, dass Anwendungen auch bei Datencenterausfällen stabil laufen."
+description: "Erfahren Sie, wie Azure-Regionspaare sicherstellen, dass Anwendungen auch bei Rechenzentrumsausfällen stabil ausgeführt werden."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,11 +12,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/21/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: 56fe2f8d65379c9e957e46e1f44195b3ad2d0055
-ms.openlocfilehash: 30ec787997c0c622e8ade6eec2b2dcc635a5a664
+ms.sourcegitcommit: 43e0bb0c921be3992321d0a202fce1fa09053f99
+ms.openlocfilehash: 67edd136737e6af372c3c898c34a8bc6681a8c6d
+ms.lasthandoff: 02/21/2017
 
 ---
 
@@ -91,9 +92,4 @@ Wie in Abbildung 2 dargestellt.
 
 ![Daten](./media/best-practices-availability-paired-regions/9Orange.png)
 **Speicherort von Daten** – eine Region befindet sich innerhalb des gleichen Gebiets wie ihr Paar (mit Ausnahme von Brasilien, Süden), um steuerliche und rechtliche Anforderungen an den Speicherort von Daten zu erfüllen.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

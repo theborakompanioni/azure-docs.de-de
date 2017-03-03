@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 02/16/2017
 ms.author: rnagpal
 translationtype: Human Translation
-ms.sourcegitcommit: 855fd05d9addc2e57568067e4d434836ceeed570
-ms.openlocfilehash: 21a5f321bd1a3b45cd87c2c9274139c47562cee7
+ms.sourcegitcommit: 2a04860ea7349798d5786e50dc1d564896341d60
+ms.openlocfilehash: 50f13ae0184e5b9609994d382acc126eb2868271
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -54,7 +55,11 @@ ms.openlocfilehash: 21a5f321bd1a3b45cd87c2c9274139c47562cee7
 Das DocumentDB .NET Core SDK weist Funktionsparität mit der neuesten Version des [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) auf.
 
 > [!NOTE] 
-> Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Eine Vorschauversion des .NET Core SDK, für die UWP-Apps unterstützt werden, ist erhältlich, indem Sie eine E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com) senden.
+> Das DocumentDB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askdocdb@microsoft.com](mailto:askdocdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
+
+### <a name="a-name110110httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore110"></a><a name="1.1.0"/>[1.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.1.0)
+
+Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
 
 ### <a name="a-name100100httpswwwnugetorgpackagesmicrosoftazuredocumentdbcore100"></a><a name="1.0.0"/>[1.0.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/1.0.0)
 
@@ -76,15 +81,11 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.1.0](#1.1.0) |16. Februar 2017 |--- |
 | [1.0.0](#1.0.0) |21. Dezember 2016 |--- |
 | [0.1.0-preview](#0.1.0-preview) |15. November 2016 |31. Dezember 2016 |
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu DocumentDB finden Sie auf der Seite zum Dienst [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) . 
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

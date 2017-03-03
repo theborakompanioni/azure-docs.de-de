@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: trinadhk; jimpark;
 translationtype: Human Translation
-ms.sourcegitcommit: 5e22f3b395a2c8d62caa6ae0abf5f81833b00780
-ms.openlocfilehash: 2018f37b3b3426ba6a066310ddfd65fc31b7eb25
+ms.sourcegitcommit: 7de8d98f24ea01012b8fa3a326e1d4ad3f04099a
+ms.openlocfilehash: 186929c1193f63ecda6fd4851bb66c8430ab99ab
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -100,7 +101,7 @@ Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird 
 Wenn Sie den virtuellen Computer unter dem gleichen Clouddienst mit dem gleichen Namen wie die ursprünglich gesicherte VM wiederhergestellt haben, wird die VM nach der Wiederherstellung weiterhin gesichert. Wenn Sie entweder die VM unter einem anderen Clouddienst wiederhergestellt oder einen anderen Namen für die wiederhergestellte VM angegeben haben, wird sie als neue VM behandelt, und Sie müssen die Sicherung für die wiederhergestellte VM einrichten.
 
 ## <a name="restoring-a-vm-during-azure-datacenter-disaster"></a>Wiederherstellen eines virtuellen Computers während einer Azure-Datencenter-Notfallwiederherstellung
-Mit Azure Backup können gesicherte virtuelle Computer im gekoppelten Datencenter wiederhergestellt werden, falls in dem primären Datencenter, in dem VMs ausgeführt werden, ein Notfall eingetreten ist, und Sie den Sicherungstresor als georedundant konfiguriert haben. Bei solchen Szenarien müssen Sie ein Speicherkonto auswählen, das im gekoppelten Datencenter vorhanden ist – ansonsten ändert sich am Wiederherstellungsprozess nichts. Azure Backup verwendet den Computedienst des gekoppelten georedundanten Datencenters, um den wiederhergestellten virtuellen Computer zu erstellen. 
+Mit Azure Backup können gesicherte virtuelle Computer im gekoppelten Datencenter wiederhergestellt werden, falls in dem primären Datencenter, in dem VMs ausgeführt werden, ein Notfall eingetreten ist, und Sie den Sicherungstresor als georedundant konfiguriert haben. Bei solchen Szenarien müssen Sie ein Speicherkonto auswählen, das im gekoppelten Datencenter vorhanden ist – ansonsten ändert sich am Wiederherstellungsprozess nichts. Azure Backup verwendet den Computedienst des gekoppelten georedundanten Datencenters, um den wiederhergestellten virtuellen Computer zu erstellen. Erfahren Sie mehr über die [Resilienz der Azure-Rechenzentren](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md).
 
 ## <a name="restoring-domain-controller-vms"></a>Wiederherstellen von virtuellen Computern des Domänencontrollers
 Die Sicherung von virtuellen Computern des Domänencontrollers wird in Azure Backup unterstützt. Der Wiederherstellungsvorgang erfordert jedoch besondere Sorgfalt. Der Wiederherstellungsvorgang für virtuelle Computer eines Domänencontrollers in einer Konfiguration mit einem einzelnen Domänencontroller unterscheidet sich stark von der Wiederherstellung von virtuellen Computern in einer Konfiguration mit mehreren Domänencontrollern.
@@ -123,7 +124,7 @@ Hier finden Sie weitere Informationen zum [USN-Rollback-Problem](https://technet
 ## <a name="restoring-vms-with-special-network-configurations"></a>Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen
 Azure Backup unterstützt die Sicherung für die folgenden speziellen Netzwerkkonfigurationen virtueller Computer.
 
-* VMs unter einem Load Balancer (intern und extern)
+* VMs unter Lastenausgleich (intern und extern)
 * VMs mit mehreren reservierten IP-Adressen
 * VMs mit mehreren Netzwerkkarten (NICs)
 
@@ -138,7 +139,7 @@ Bei diesen Konfigurationen müssen bei ihrer Wiederherstellung die folgende Aspe
 Beim Wiederherstellen über die Benutzeroberfläche **müssen Sie stets einen neuen Clouddienst wählen**. Da das Portal während des Wiederherstellungsprozesses nur Pflichtparameter verwendet, geht bei VMs, die über die Benutzeroberfläche wiederhergestellt werden, die spezielle Netzwerkkonfiguration verloren. Dies bedeutet, dass wiederhergestellte VMs herkömmliche VMs sind, die ohne Load Balancer bzw. mehrere NICs oder reservierte IP-Adressen konfiguriert sind.
 
 ### <a name="restoring-from-powershell"></a>Wiederherstellung über PowerShell:
-PowerShell bietet die Möglichkeit, nur die VM-Datenträger aus einer Sicherung wiederherzustellen, ohne den virtuellen Computer zu erstellen. Dies ist hilfreich, wenn virtuelle Computer wiederhergestellt werden, die zuvor erwähnte spezielle Konfigurationen erfordern.
+PowerShell bietet die Möglichkeit, nur die VM-Datenträger aus einer Sicherung wiederherzustellen, ohne den virtuellen Computer zu erstellen. Dies ist hilfreich, wenn virtuelle Computer wiederhergestellt werden, die die oben erwähnten speziellen Konfigurationen erfordern.
 
 Zum vollständigen Wiederherstellen des virtuellen Computers im Anschluss an die Wiederherstellung von Datenträgern gehen Sie so vor:
 
@@ -153,10 +154,5 @@ Zum vollständigen Wiederherstellen des virtuellen Computers im Anschluss an die
 ## <a name="next-steps"></a>Nächste Schritte
 * [Problembehandlung](backup-azure-vms-troubleshoot.md#restore)
 * [Verwalten virtueller Computer](backup-azure-manage-vms.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

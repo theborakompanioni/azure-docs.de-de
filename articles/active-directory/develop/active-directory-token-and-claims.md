@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2017
+ms.date: 02/08/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: ba958d029e5bf1bc914a2dff4b6c09282d578c67
-ms.openlocfilehash: 4612c1f516dca51aea925343f79649761448c05d
+ms.sourcegitcommit: 83bb2090d3a2fbd4fabdcd660c72590557cfcafc
+ms.openlocfilehash: 46702abb229ba0a6512f336cb0aa4e4a75b51771
+ms.lasthandoff: 02/18/2017
 
 
 ---
@@ -74,18 +75,20 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `ver` |Version |Speichert die Versionsnummer des Tokens. <br><br> **JWT-Beispielwert**: <br> `"ver": "1.0"` |
 
 ## <a name="access-tokens"></a>Zugriffstoken
+Bei erfolgreicher Authentifizierung gibt Azure AD ein Zugriffstoken zurück, das für den Zugriff auf geschützte Ressourcen verwendet werden kann. Das Zugriffstoken ist ein Base64-codiertes JSON-Webtoken (JWT), dessen Inhalt überprüft werden kann, indem es in einem Decoder ausgeführt wird.
 
 Wenn Ihre App für den Zugriff auf APIs nur Zugriffstoken *verwendet*, können (und sollten) Sie Zugriffstoken als vollständig intransparent behandeln – sie sind lediglich Zeichenfolgen, die Ihre App in HTTP-Anforderungen an Ressourcen übergeben kann.
 
 Wenn Sie ein Zugriffstoken anfordern, gibt Azure AD auch einige Metadaten zum Zugriffstoken zurück, die von Ihrer App genutzt werden können.  Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt.  Dies ermöglicht Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.
 
-Wenn Ihre App eine in Azure AD geschützte API ist, die in HTTP-Anforderungen Zugriffstoken erwartet, sollten Sie die Token, die Sie erhalten, überprüfen und validieren. Weitere Informationen dazu, wie dies mit .NET funktioniert, finden Sie unter [Schützen einer Web-API mit Bearertoken aus Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
+Wenn Ihre App eine in Azure AD geschützte API ist, die in HTTP-Anforderungen Zugriffstoken erwartet, sollten Sie die Token, die Sie erhalten, überprüfen und validieren. Ihre App sollte das Zugriffstoken vor der Verwendung für den Zugriff auf Ressourcen überprüfen. Weitere Informationen zur Überprüfung finden Sie unter [Überprüfen von Token](#validating-tokens).  
+Weitere Informationen dazu, wie dies mit .NET funktioniert, finden Sie unter [Schützen einer Web-API mit Bearertoken aus Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
 
 ## <a name="refresh-tokens"></a>Aktualisierungstoken
 
 Aktualisierungstoken sind Sicherheitstoken, mit denen Ihre App neue Zugriffstoken in einem OAuth 2.0-Fluss abrufen kann.  Dadurch erhält Ihre App langfristig Zugriff auf Ressourcen im Auftrag eines Benutzers, ohne dass ein Benutzereingriff erforderlich ist.
 
-Aktualisierungstoken bestehen aus mehreren Ressourcen. Das bedeutet, dass sie bei einer Tokenanforderung für eine Ressource empfangen werden, aber bei einer völlig anderen Ressource für Zugriffstoken eingelöst werden können. Legen Sie den `resource`-Parameter in der Anforderung auf die Zielressource fest, um mehrere Ressourcen festzulegen.
+Aktualisierungstoken bestehen aus mehreren Ressourcen.  Das bedeutet, dass ein Aktualisierungstoken, das bei einer Tokenanforderung für eine Ressource empfangen wurde, für Zugriffstoken bei einer völlig anderen Ressource eingelöst werden kann. Legen Sie hierzu den `resource`-Parameter in der Anforderung auf die Zielressource fest.
 
 Der Inhalt von Aktualisierungstoken ist für Ihre App niemals zugänglich. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden.  Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden.  Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung am Azure AD-Tokenendpunkt aus.
 
@@ -93,9 +96,9 @@ Wenn Sie ein Aktualisierungstoken für ein neues Zugriffstoken einlösen, erhalt
 
 ## <a name="validating-tokens"></a>Überprüfen von Token
 
-Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur als auch die Ansprüche des Tokens überprüfen.
+Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur als auch die Ansprüche des Tokens überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie z.B. unter [https://login.windows.net/common/.well-known/openid-configuration](https://login.windows.net/common/.well-known/openid-configuration). Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples) nach einer gewünschten Sprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).  
 
-Wir stellen Bibliotheken und Codebeispiele bereit, die die Tokenüberprüfung veranschaulichen, falls Sie den zugrunde liegenden Prozess nachvollziehen möchten.  Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Sprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken sowie Codebeispiele finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md).
+Wir stellen Bibliotheken und Codebeispiele bereit, die die Tokenüberprüfung veranschaulichen. Die folgenden Informationen werden lediglich für Benutzer bereitgestellt, die den zugrunde liegenden Prozess nachvollziehen möchten.  Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Sprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken sowie Codebeispiele finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md).
 
 #### <a name="validating-the-signature"></a>Überprüfen der Signatur
 
@@ -300,10 +303,4 @@ Neben Ansprüchen enthält das Token eine Versionsnummer in **ver** und **appida
 ## <a name="related-content"></a>Verwandte Inhalte
 * In den [Richtlinienvorgängen](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) und der [Richtlinienentität](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity) von Azure AD Graph finden Sie weitere Informationen zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer über die Azure AD Graph-API.
 * Weitere Informationen und Beispiele zur Verwaltung von Richtlinien über PowerShell-Cmdlets finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Azure AD](../active-directory-configurable-token-lifetimes.md). 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

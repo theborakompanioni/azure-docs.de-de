@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tarcher
 translationtype: Human Translation
-ms.sourcegitcommit: 9bc03ee35436180e7c8639233ca80fb7e7e200f6
-ms.openlocfilehash: e4ce74244ceb7a493d33a1ed2aad8f7a36b96ad9
+ms.sourcegitcommit: bd280fabf22d569f3c4dae9f00f44b08700c8fc4
+ms.openlocfilehash: f034f028b0b1e0011e152b88d304dd54cfbc8320
+ms.lasthandoff: 02/21/2017
 
 
 ---
@@ -68,7 +69,7 @@ Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Rep
 1. Wählen Sie **Hinzufügen+** aus, um Ihr Azure Resource Manager-Vorlagenrepository hinzuzufügen.
 1. Wenn sich das zweite Blatt vom Typ **Repositorys** öffnet, geben Sie die erforderlichen Informationen ein:
     - **Name**: Geben Sie den im Lab verwendeten Repositorynamen ein.
-    - **Git Clone URI** (Git-Klon-URI): Geben Sie die Git-HTTPS-Klon-URL aus GitHub oder Visual Studio Team Services ein.  
+    - **Git-Klon-URL:** Geben Sie die Git-HTTPS-Klon-URL aus GitHub oder Visual Studio Team Services ein.  
     - **Verzweigung**: Geben Sie den Verzweigungsnamen für den Zugriff auf Ihre Azure Resource Manager-Vorlagendefinitionen ein. 
     - **Persönliches Zugriffstoken**: Das persönliche Zugriffstoken ermöglicht den sicheren Zugriff auf Ihr Repository. Wählen Sie ** &lt;Ihr Name> > Mein Profil > Sicherheit > Öffentliches Zugriffstoken** aus, um Ihr Token aus Visual Studio Team Services abzurufen. Um Ihr Token aus GitHub abzurufen, wählen Sie Ihren Avatar und anschließend **Einstellungen > Öffentliches Zugriffstoken** aus. 
     - **Ordnerpfade**: Geben Sie über eines der beiden Eingabefelder den Ordnerpfad ein – entweder zu Ihren Artefaktdefinitionen (erstes Eingabefeld) oder zu Ihren Azure Resource Manager-Vorlagendefinitionen. Der Pfad beginnt mit einem Schrägstrich (/) und wird relativ zu Ihrem Git-Klon URI angegeben.   
@@ -115,8 +116,4 @@ Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde,
 ## <a name="next-steps"></a>Nächste Schritte
 * Nach der Erstellung des virtuellen Computers können Sie auf dem Blatt des virtuellen Computers die Option **Verbinden** auswählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
 * Sehen Sie sich die [Azure Resource Manager-Vorlagen aus dem Katalog mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) an.
-
-
-<!--HONumber=Feb17_HO1-->
-
 

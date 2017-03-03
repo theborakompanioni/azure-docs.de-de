@@ -12,21 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: f4ee988bda72a39719533542fd03a6a357ad941a
+ms.sourcegitcommit: ed2fc2b34ff10acc806daec84986f8db58e713c3
+ms.openlocfilehash: 2112f4b129ff8735955d440341174a44a6a1469c
+ms.lasthandoff: 02/17/2017
 
 
 ---
+
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Tutorial: Azure Active Directory-Integration mit Intralinks
 In diesem Tutorial erfahren Sie, wie Sie Intralinks in Azure Active Directory (Azure AD) integrieren.
 
 Die Integration von Intralinks in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Intralinks hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Intralinks anzumelden (einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Intralinks anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -37,9 +39,8 @@ Um die Azure AD-Integration in Intralinks konfigurieren zu können, benötigen S
 * Ein Azure AD-Abonnement
 * Ein Intralinks-Abonnement, für das einmaliges Anmelden aktiviert ist
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
@@ -55,7 +56,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen
 1. Hinzufügen von Intralinks aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-intralinks-from-the-gallery"></a>Hinzufügen von Intralinks aus dem Katalog
+## <a name="add-intralinks-from-the-gallery"></a>Hinzufügen von Intralinks aus dem Katalog
 Zum Konfigurieren der Integration von Intralinks in Azure AD müssen Sie Intralinks aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Intralinks aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
@@ -80,22 +81,24 @@ Zum Konfigurieren der Integration von Intralinks in Azure AD müssen Sie Intrali
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_02.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Intralinks basierend auf einem Testbenutzer mit dem Namen Britta Simon.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Intralinks als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Intralinks muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in Intralinks als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Intralinks muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Intralinks zuweisen.
+>[!NOTE]
+>Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** in Azure AD als Wert des **Benutzernamens** in Intralinks zuweisen.
+>
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Intralinks müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Intralinks-Testbenutzers](#creating-an-intralinks-test-user)** , um ein Gegenstück zu Britta Simon in Intralinks zu erhalten, das mit ihrer Repräsentation in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Intralinks-Testbenutzers](#creating-an-intralinks-test-user)**, um eine Entsprechung von Britta Simon in Intralinks zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren das einmalige Anmelden in Ihrer Intralinks-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Intralinks die folgenden Schritte aus:**
@@ -110,16 +113,14 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_04.png) 
    
-    a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Intralinks-Anwendung verwendete URL in folgendem Format ein: **https://\<Unternehmensname\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<Azure AD-Mandanten-ID\>/**.
-   
-    b. Klicken Sie auf **Weiter**.
+    1. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Intralinks-Anwendung verwendete URL in folgendem Format ein: **https://\<Unternehmensname\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<Azure AD-Mandanten-ID\>/**.
+    2. Klicken Sie auf **Weiter**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden bei Intralinks konfigurieren** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_05.png)
    
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
+    1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+    2. Klicken Sie auf **Weiter**.
 5. Wenden Sie sich an das Supportteam von Intralinks, um SSO (Single Sign-On, einmaliges Anmelden) für Ihre Anwendung konfigurieren zu lassen, und senden Sie eine E-Mail mit der heruntergeladenen Metadatendatei.
 6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
@@ -128,10 +129,10 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im klas
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
-Wählen Sie in der Benutzerliste **Britta Simon**aus.
+* Wählen Sie in der Benutzerliste **Britta Simon**aus.
 
 ![Azure AD-Benutzer erstellen][20]
 
@@ -149,22 +150,16 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-intralinks-tutorial/create_aaduser_04.png) 
 5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-intralinks-tutorial/create_aaduser_05.png) 
    
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+    1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus. 
+    2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    3. Klicken Sie auf **Weiter**.
 6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-intralinks-tutorial/create_aaduser_06.png) 
    
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.   
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-intralinks-tutorial/create_aaduser_07.png) 
@@ -172,14 +167,13 @@ Wählen Sie in der Benutzerliste **Britta Simon**aus.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-intralinks-tutorial/create_aaduser_08.png) 
    
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    1. Notieren Sie den Wert von **Neues Kennwort**.
+    2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-intralinks-test-user"></a>Erstellen eines Intralinks-Testbenutzers
+### <a name="create-an-intralinks-test-user"></a>Erstellen eines Intralinks-Testbenutzers
 In diesem Abschnitt erstellen Sie in Intralinks einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das Supportteam von Intralinks, um die Benutzer auf der Intralinks-Plattform hinzufügen zu lassen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf Intralinks gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -200,14 +194,13 @@ In diesem Abschnitt ermöglichen Sie für Britta Simon das einmalige Anmelden vo
    
     ![Benutzer zuweisen][205]
 
-### <a name="adding-intralinks-via-or-elite-application"></a>Hinzufügen einer Intralinks VIA- oder Elite-Anwendung
-Intralinks verwendet die gleiche SSO-Identitätsplattform für alle anderen Intralinks-Anwendungen mit Ausnahme der Anwendung Deal Nexus. Wenn Sie also die Verwendung weiterer Intralinks-Anwendungen planen, müssen Sie zuerst mithilfe des oben beschriebenen Verfahrens das einmalige Anmelden für eine primäre Intralinks-Anwendung konfigurieren.
+### <a name="add-intralinks-via-or-elite-application"></a>Hinzufügen einer Intralinks VIA- oder Elite-Anwendung
+Intralinks verwendet die gleiche SSO-Identitätsplattform für alle anderen Intralinks-Anwendungen mit Ausnahme der Anwendung Deal Nexus. Wenn Sie also die Verwendung weiterer Intralinks-Anwendungen planen, müssen Sie zuerst mithilfe des oben beschriebenen Verfahrens das einmalige Anmelden (SSO) für eine primäre Intralinks-Anwendung konfigurieren.
 
 Danach können Sie das unten beschrieben Verfahren verwenden, um weitere Intralinks-Anwendungen zu Ihrem Mandanten hinzuzufügen, die diese primäre Anwendung für das einmalige Anmelden verwenden. 
 
-> [!NOTE]
-> Beachten Sie, dass dieses Feature nur für Kunden mit SKU „Azure AD Premium“ verfügbar ist, nicht für Kunden mit SKU „Free“ oder „Basic“.
-> 
+>[!NOTE]
+>Beachten Sie, dass dieses Feature nur für Kunden mit SKU „Azure AD Premium“ verfügbar ist, nicht für Kunden mit SKU „Free“ oder „Basic“.
 > 
 
 1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
@@ -223,11 +216,11 @@ Danach können Sie das unten beschrieben Verfahren verwenden, um weitere Intrali
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
    
     ![Anwendungen][4]
-6. Klicken Sie im linken Bereich auf die Registerkarte **Benutzerdefiniert** .
+6. Klicken Sie im linken Bereich auf die Registerkarte **Benutzerdefiniert**.
    
     ![Hinzufügen einer Intralinks VIA- oder Elite-Anwendung](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_51.png)
-7. Geben Sie der Anwendung einen geeigneten Namen, beispielsweise **Intralinks Elite** , und klicken Sie auf die Schaltfläche zum Fertigstellen.
-8. Klicken Sie auf die Schaltfläche **Einmaliges Anmelden konfigurieren** .
+7. Geben Sie der Anwendung einen geeigneten Namen, beispielsweise **Intralinks Elite** ein, und klicken Sie auf die Schaltfläche „Fertig stellen“.
+8. Klicken Sie auf die Schaltfläche **Einmaliges Anmelden konfigurieren**.
 9. Wählen Sie die Option **Vorhandenes einmaliges Anmelden** aus.
    
     ![Hinzufügen einer Intralinks VIA- oder Elite-Anwendung](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_52.png)
@@ -235,12 +228,12 @@ Danach können Sie das unten beschrieben Verfahren verwenden, um weitere Intrali
     
     ![Hinzufügen einer Intralinks VIA- oder Elite-Anwendung](./media/active-directory-saas-intralinks-tutorial/tutorial_intralinks_53.png)
     
-    a. Geben Sie im Textfeld „Anmelde-URL“ die von Ihren Benutzern zur Anmeldung bei Ihrer Intralinks-Anwendung verwendete URL in folgendem Format ein: **https://\<Unternehmensname\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<Azure AD-Mandanten-ID\>/**.
+    * Geben Sie im Textfeld „Anmelde-URL“ die von Ihren Benutzern zur Anmeldung bei Ihrer Intralinks-Anwendung verwendete URL in folgendem Format ein: **https://\<Unternehmensname\>.Intralinks.com/?PartnerIdpId=https://sts.windows.net/\<Azure AD-Mandanten-ID\>/**.
 11. Klicken Sie auf **Weiter**.
-12. Weisen Sie die Anwendung Benutzern oder Gruppen zu, wie im Abschnitt **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**
+12. Weisen Sie die Anwendung Benutzern oder Gruppen zu, wie im Abschnitt **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** beschrieben.
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Intralinks“ klicken, sollten Sie automatisch bei Ihrer Intralinks-Anwendung angemeldet werden.
 
@@ -265,9 +258,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Intralinks“ klicken, sollten Sie
 [203]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-intralinks-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

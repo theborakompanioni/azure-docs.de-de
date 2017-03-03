@@ -17,6 +17,7 @@ ms.author: kgremban
 translationtype: Human Translation
 ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
 ms.openlocfilehash: 936e152304dc4a4a3bd95c7bfba071a02a20d0dd
+ms.lasthandoff: 01/30/2017
 
 
 ---
@@ -72,9 +73,4 @@ Weitere Informationen zum Aufbau einer vollständigen Sicherheitsroadmap finden 
 [2]: ../media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ../media/active-directory-identityprotection/29.png
 [4]: ../media/active-directory-conditional-access/conditionalaccess-saas-apps.png
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

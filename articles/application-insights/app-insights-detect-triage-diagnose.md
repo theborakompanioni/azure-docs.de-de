@@ -16,6 +16,7 @@ ms.author: awills
 translationtype: Human Translation
 ms.sourcegitcommit: 9a3df0ad2483471023ebb954d613bc5cad8fb7bf
 ms.openlocfilehash: 1af63c31a8cb7995f64813c12d32b283745c04ed
+ms.lasthandoff: 02/02/2017
 
 
 ---
@@ -228,9 +229,4 @@ Der Einstieg kann auf verschiedene Weise je nach den Eigenschaften Ihrer Anwendu
 * Bereits bereitgestellte Apps, gehostet über [IIS](app-insights-monitor-web-app-availability.md), [J2EE](app-insights-java-live.md) oder [Azure](app-insights-azure.md).
 * [Webseiten:](app-insights-javascript.md) Einzelseiten-App oder gewöhnliche Webseite – eigenständig genutzt oder als Ergänzung zu den Serveroptionen.
 * [Verfügbarkeitstests:](app-insights-monitor-web-app-availability.md) zum Testen Ihrer App über das öffentliche Internet.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

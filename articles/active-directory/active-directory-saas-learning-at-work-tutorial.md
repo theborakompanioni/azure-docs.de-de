@@ -12,21 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2016
+ms.date: 02/03/2017
 ms.author: jeedes
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 6c5f6c015ecec503a3e462edaf421852968907c1
+ms.sourcegitcommit: 6144dd5309128d0069d15b8f6194ad920fb29f6a
+ms.openlocfilehash: f8be19e8c43368cffec7249f7a07217c3252b06a
+ms.lasthandoff: 02/17/2017
 
 
 ---
+
 # <a name="tutorial-azure-active-directory-integration-with-learning-at-work"></a>Tutorial: Azure Active Directory-Integration mit Learning at Work
 In diesem Tutorial erfahren Sie, wie Sie Learning at Work in Azure Active Directory (Azure AD) integrieren.
 
 Diese Integration bietet folgende Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Learning at Work haben soll.
-* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Learning at Work anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Learning at Work anzumelden (einmaliges Anmelden, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
@@ -37,9 +39,8 @@ Um die Azure AD-Integration mit Learning at Work konfigurieren zu können, benö
 * Ein Azure AD-Abonnement
 * Ein SSO-fähiges Learning at Work-Abonnement
 
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
+>[!NOTE]
+>Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden. 
 > 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
@@ -55,7 +56,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 1. Hinzufügen von Learning at Work über den Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-learning-at-work-from-the-gallery"></a>Hinzufügen von Learning at Work über den Katalog
+## <a name="add-learning-at-work-from-the-gallery"></a>Hinzufügen von Learning at Work aus dem Katalog
 Zum Konfigurieren der Integration von Learning at Work in Azure AD müssen Sie Learning at Work über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Führen Sie die folgenden Schritte aus, um Learning at Work über den Katalog hinzuzufügen:**
@@ -80,7 +81,7 @@ Zum Konfigurieren der Integration von Learning at Work in Azure AD müssen Sie L
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/tutorial_learningatwork_06.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in Learning at Work konfiguriert und getestet wird.
 
 Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Learning at Work als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Learning at Work muss eine Linkbeziehung eingerichtet werden.
@@ -89,13 +90,13 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Learning at Work müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 3. **[Erstellen eines Learning at Work-Testbenutzers](#creating-a-predictix-price-reporting-test-user)**, um eine Entsprechung von Britta Simon in Learning at Work zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassischen Portal und konfigurieren es in Ihrer Learning at Work-Anwendung.
 
 **Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Learning at Work zu konfigurieren:**
@@ -110,35 +111,28 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learning-at-work-tutorial/tutorial_learningatwork_04.png) 
    
-    a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Learning at Work-Anwendung verwendete URL in folgendem Format ein: `https://\<company name\>.sabacloud.com/Saba/Web/<company code>`
-   
-    b. Geben Sie im Textfeld **Bezeichner** eine URL in folgendem Format ein: https://<company name>.sabacloud.com/Saba/SAML/sso/alias/<company name>``.
-   
-    c. click **Weiter**
+    1. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern für die Anmeldung bei Ihrer Learning at Work-Anwendung verwendete URL in folgendem Format ein: `https://\<company name\>.sabacloud.com/Saba/Web/<company code>`
+    2. Geben Sie im Textfeld **Bezeichner** die URL nach folgendem Muster ein: `https://<company name>.sabacloud.com/Saba/SAML/sso/alias/<company name>`.
+    3. Klicken Sie auf **Weiter**.
 4. Führen Sie auf der Seite **Einmaliges Anmelden konfigurieren für Learning at Work** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-learning-at-work-tutorial/tutorial_learningatwork_05.png)
    
-    a. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
-   
-    b. Klicken Sie auf **Weiter**.
-5. Wenden Sie sich an das Supportteam von Learning at Work (Saba Cloud), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:
-   
-    • Die heruntergeladene Metadatendatei
-   
-    • Die **Aussteller-URL**
-   
-    • Die **SAML-SSO-URL**
-   
-    • Die **Dienst-URL für einmaliges Abmelden**
-6. Wählen Sie im klassischen Portal die Bestätigung zur Konfiguration der einmaligen Anmeldung aus, und klicken Sie dann auf **Weiter**.
+    1. Klicken Sie auf **Metadaten herunterladen**und speichern Sie die Datei auf Ihrem Computer.
+    2. Klicken Sie auf **Weiter**.
+5. Wenden Sie sich an das Supportteam von Learning at Work (Saba Cloud), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit:  
+     * Die heruntergeladenen Metadaten
+     * Die **Aussteller-URL**
+     * Die **SAML-SSO-URL**
+     * Die **Dienst-URL für einmaliges Abmelden**
+6. Wählen Sie im klassischen Portal die Bestätigung für die Konfiguration des einmaligen Anmeldens aus, und klicken Sie dann auf **Weiter**.
    
     ![Azure AD – einmaliges Anmelden][10]
 7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
    
     ![Azure AD – einmaliges Anmelden][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ![Azure AD-Benutzer erstellen][20]
@@ -155,39 +149,34 @@ In diesem Abschnitt erstellen Sie im klassischen Portal einen Testbenutzer mit d
 4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_04.png) 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:  ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_05.png) 
-   
-    a. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_06.png) 
-   
-   a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-   b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-   c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-   d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-   e. Klicken Sie auf **Weiter**.
+5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_05.png) 
+  
+    1. Wählen Sie als „Benutzertyp“ die Option „Neuer Benutzer in Ihrer Organisation“ aus.
+    2. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
+    3. Klicken Sie auf **Weiter**.
+6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus:
+
+   ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_06.png) 
+   1. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
+   2. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
+   3. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
+   4. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
+   5. Klicken Sie auf **Weiter**.
 7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_07.png) 
 8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-learning-at-work-tutorial/create_aaduser_08.png) 
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    1. Notieren Sie den Wert von **Neues Kennwort**.
+    2. Klicken Sie auf **Fertig stellen**.   
 
-### <a name="creating-an-learning-at-work-test-user"></a>Erstellen eines Learning at Work-Testbenutzers
+### <a name="create-an-learning-at-work-test-user"></a>Erstellen eines Learning at Work-Testbenutzers
 In diesem Abschnitt erstellen Sie in Learning at Work einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom Supportteam von Learning at Work unterstützen.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Learning at Work gewähren.
 
 ![Benutzer zuweisen][200] 
@@ -208,7 +197,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
    
     ![Benutzer zuweisen][205]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Learning at Work“ klicken, sollten Sie automatisch bei Ihrer Learning at Work-Anwendung angemeldet werden.
@@ -234,9 +223,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Learning at Work“ klicken, sollt
 [203]: ./media/active-directory-saas-learning-at-work-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-learning-at-work-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-learning-at-work-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

@@ -3,7 +3,7 @@ title: "Konfigurieren der Georeplikation für eine Azure SQL-Datenbank mit dem A
 description: "Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal"
 services: sql-database
 documentationcenter: 
-author: anosov1960
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: d0b29822-714f-4633-a5ab-fb1a09d43ced
@@ -14,21 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/22/2016
-ms.author: sashan;carlrab
+ms.author: carlrab
 translationtype: Human Translation
-ms.sourcegitcommit: 145cdc5b686692b44d2c3593a128689a56812610
-ms.openlocfilehash: 9faff06ee1856ca6490add759acd3c5f36719853
+ms.sourcegitcommit: 8d988aa55d053d28adcf29aeca749a7b18d56ed4
+ms.openlocfilehash: fe2d2ef731fb94c7e4e8da0e518bcef8c1ada650
+ms.lasthandoff: 02/16/2017
 
 
 ---
-# <a name="configure-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>Konfigurieren der Georeplikation für die Azure SQL-Datenbank mit dem Azure-Portal
-> [!div class="op_single_selector"]
-> * [Übersicht](sql-database-geo-replication-overview.md)
-> * [Azure-Portal](sql-database-geo-replication-portal.md)
-> * [PowerShell](sql-database-geo-replication-powershell.md)
-> * [T-SQL](sql-database-geo-replication-transact-sql.md)
-> 
-> 
+# <a name="configure-active-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank mit dem Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie die aktive Georeplikation für eine SQL-Datenbank mit dem [Azure-Portal](http://portal.azure.com)konfigurieren.
 
@@ -39,7 +33,7 @@ Informationen zum Initiieren eines Failovers mit dem Azure-Portal finden Sie unt
 > 
 > 
 
-Wenn Sie die Georeplikation über das Azure-Portal konfigurieren möchten, benötigen Sie folgende Ressource:
+Wenn Sie die aktive Georeplikation über das Azure-Portal konfigurieren möchten, benötigen Sie folgende Ressource:
 
 * Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
 
@@ -51,7 +45,7 @@ Mit den folgenden Schritten wird eine neue sekundäre Datenbank in einer Partner
 
 Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer oder Mitbesitzer des Abonnements sein.
 
-Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann eine eigenständige Datenbank oder eine Datenbank in einem elastischen Pool sein. Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
+Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Servicelevel. Die sekundäre Datenbank kann eine Einzeldatenbank oder eine Datenbank in einem Pool für elastische Datenbanken sein. Weitere Informationen finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
 Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
 > [!NOTE]
@@ -90,10 +84,5 @@ Dieser Vorgang beendet die Replikation zur sekundären Datenbank dauerhaft und �
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur aktiven Georeplikation finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

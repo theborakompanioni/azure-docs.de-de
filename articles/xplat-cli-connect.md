@@ -19,6 +19,7 @@ ms.author: rasquill
 translationtype: Human Translation
 ms.sourcegitcommit: 3136b8345d0c851c29a9498089da73c8564549d1
 ms.openlocfilehash: 88414392c4ee03e0b140bba0f73e44b6886c4038
+ms.lasthandoff: 01/31/2017
 
 
 ---
@@ -165,9 +166,4 @@ Wenn die mit dem Konto verknüpften Abonnements nur über Active Directory authe
 * Informationen zum Verwenden von Befehlen der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure-CLI-Befehle im Resource Manager-Modus](virtual-machines/azure-cli-arm-commands.md) und unter [Befehle der Azure-Befehlszeilenschnittstelle im Dienstverwaltungsmodus](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 * Wenn Sie weitere Informationen zur Azure-Befehlszeilenschnittstelle erhalten, den Quellcode herunterladen, Probleme melden oder etwas zum Projekt beitragen möchten, besuchen Sie die Webseite [GitHub repository for the Azure CLI](https://github.com/azure/azure-xplat-cli).
 * Wenn Sie Probleme bei der Verwendung der Azure-Befehlszeilenschnittstelle oder Azure haben, besuchen Sie die [Azure-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 
