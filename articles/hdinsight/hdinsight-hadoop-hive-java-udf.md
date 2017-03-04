@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: ec7e5d3229d623ce08a72439317a6a515ee3e373
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -211,10 +212,5 @@ Hive eignet sich besonders für die Arbeit mit Daten in HDInsight. Mitunter wird
 Andere Möglichkeiten zum Arbeiten mit Hive finden Sie unter [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md).
 
 Weitere Informationen zu benutzerdefinierten Hive-Funktionen finden Sie im Abschnitt [Hive Operators and User-Defined Functions](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) (Hive-Operatoren und benutzerdefinierte Funktionen) des Hive-Wikis unter apache.org.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

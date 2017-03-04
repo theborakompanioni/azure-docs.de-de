@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2016
+ms.date: 02/21/2017
 ms.author: bburns
 translationtype: Human Translation
-ms.sourcegitcommit: 0aa9b3ae14f586fc79e6ebee898e794d526c19bd
-ms.openlocfilehash: 4192369f2e7758200131aa85c60d07436f7cbbdc
+ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
+ms.openlocfilehash: 5987b1034fc9c52b13606c469683adff06729984
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,11 +29,8 @@ ms.openlocfilehash: 4192369f2e7758200131aa85c60d07436f7cbbdc
 ## <a name="prerequisites"></a>Voraussetzungen
 In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie mit [Azure Container Service einen Kubernetes-Cluster erstellt haben](container-service-kubernetes-walkthrough.md).
 
-> [!NOTE]
-> Die Kubernetes-Unterstützung in Azure Container Service befindet sich derzeit in der Vorschauphase.
->
 
-Ferner wird angenommen, dass die Azure CLI und Kubectl-Tools installiert sind.
+Außerdem wird angenommen, dass die Tools Azure CLI 2.0 und `kubectl` installiert sind.
 
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `az` installiert ist:
 
@@ -66,76 +64,74 @@ $ az acs kubernetes browse
 Ein Webbrowser sollte geöffnet werden, der für die Kommunikation mit einem sicheren Proxy konfiguriert ist, der Ihren lokalen Computer mit der Kubernetes-Webbenutzeroberfläche verbindet.
 
 ### <a name="create-and-expose-a-service"></a>Erstellen und Bereitstellen eines Diensts
-Auf der Webbenutzeroberfläche von Kubernetes befindet sich im Fenster rechts oben die Schaltfläche „Create“.
+1. Klicken Sie auf der Webbenutzeroberfläche von Kubernetes im Fenster rechts oben auf die Schaltfläche **Create**.
 
-![Kubernetes-Benutzeroberfläche mit Schaltfläche „Erstellen“](media/k8s/create.png)
+    ![Kubernetes-Benutzeroberfläche mit Schaltfläche „Erstellen“](media/k8s/create.png)
 
-Hierüber wird ein Dialogfeld geöffnet, in dem Sie mit dem Erstellen Ihrer Anwendung beginnen können.
-Geben Sie ihr den Namen `hello-nginx`. Verwenden Sie den [`nginx`-Container aus Docker](https://hub.docker.com/_/nginx/), und stellen Sie drei Replikate für diesen Webdienst bereit.
+    Ein Dialogfeld wird geöffnet, in dem Sie mit dem Erstellen Ihrer Anwendung beginnen können.
 
-![Kubernetes-Pod-Dialogfeld „Create“](media/k8s/nginx.png)
+2. Geben Sie ihr den Namen `hello-nginx`. Verwenden Sie den [`nginx`-Container aus Docker](https://hub.docker.com/_/nginx/), und stellen Sie drei Replikate für diesen Webdienst bereit.
 
-Erstellen Sie einen Kubernetes-Dienst des Typs „External“ für einen Lastenausgleich des Datenverkehrs Ihrer drei Replikate.  Wählen Sie „External“ aus, und geben Sie für „Port“ 80 ein.
+    ![Kubernetes-Pod-Dialogfeld „Create“](media/k8s/nginx.png)
 
-![Kubernetes-Dialogfeld für die Diensterstellung](media/k8s/service.png)
+3. Wählen Sie unter **Service** **External** aus, und geben Sie für „Port“ 80 ein.
 
-Klicken Sie abschließend auf die Schaltfläche „Deploy“, um diese Container und Dienste bereitzustellen.
+    Diese Einstellung schafft einen Lastenausgleich für den Datenverkehr zu den drei Replikaten.
 
-![Kubernetes-Schaltfläche „Deploy“](media/k8s/deploy.png)
+    ![Kubernetes-Dialogfeld für die Diensterstellung](media/k8s/service.png)
+
+4. Klicken Sie auf **Deploy**, um diese Container und Dienste bereitzustellen.
+
+    ![Kubernetes-Schaltfläche „Deploy“](media/k8s/deploy.png)
 
 ### <a name="view-your-containers"></a>Anzeigen Ihrer Container
-Nach Klicken auf „Deploy“ wird auf der Benutzeroberfläche eine Ansicht Ihres bereitgestellten Diensts gezeigt:
+Nach Klicken auf **Deploy** wird auf der Benutzeroberfläche eine Ansicht Ihres bereitgestellten Diensts gezeigt:
 
 ![Kubernetes-Status](media/k8s/status.png)
 
-Sie können den Status der einzelnen Kubernetes-Objekte links auf der Benutzeroberfläche anhand des Kreises erkennen. Wen ein Kreis nur teilweise vollständig ist, wird das Objekt noch bereitgestellt. Wenn ein Objekt vollständig bereitgestellt ist, wird ein grünes Häkchen angezeigt:
+Sie können den Status der einzelnen Kubernetes-Objekte links auf der Benutzeroberfläche unter **Pods** anhand des Kreises erkennen. Wen ein Kreis nur teilweise vollständig ist, wird das Objekt noch bereitgestellt. Wenn ein Objekt vollständig bereitgestellt ist, wird ein grünes Häkchen angezeigt:
 
 ![Anzeige des Kubernetes-Bereitstellungsstatus](media/k8s/deployed.png)
 
-Sobald alles ausgeführt wird, können Sie auf einen Ihrer Pods klicken, um Einzelheiten zum ausgeführten Webdienst anzuzeigen.
+Sobald alles ausgeführt wird, klicken Sie auf einen Ihrer Pods, um Einzelheiten zum ausgeführten Webdienst anzuzeigen.
 
 ![Kubernetes-Pods](media/k8s/pods.png)
 
-In der Ansicht eines Pods werden Informationen zu den Containern im Pod sowie zu den von diesen Containern verwendeten CPU- und Arbeitsspeicherressourcen gezeigt:
+In der Ansicht **Pods** werden Informationen zu den Containern im Pod sowie zu den von diesen Containern verwendeten CPU- und Arbeitsspeicherressourcen gezeigt:
 
 ![Kubernetes-Ressourcen](media/k8s/resources.png)
 
 Wenn die Ressourcen nicht angezeigt werden, müssen Sie möglicherweise einige Minuten warten, bis die Überwachungsdaten weitergegeben wurden.
 
-Sie können auch auf den Link „Logs“ klicken, um die Protokolle für Ihren Container anzuzeigen:
+Um die Protokolle für den Container anzuzeigen, klicken Sie auf **View logs**.
 
 ![Kubernetes-Protokolle](media/k8s/logs.png)
 
 ### <a name="viewing-your-service"></a>Anzeigen Ihres Diensts
 Zusätzlich zur Ausführung Ihrer Container hat die Kubernetes-Benutzeroberfläche einen externen `Service` erstellt, der einen Lastenausgleich für den Datenverkehr zu den Containern in Ihrem Cluster bereitstellt.
 
-Klicken Sie im linken Navigationsbereich auf „Services“, um alle Dienste anzuzeigen (es sollte nur einer vorhanden sein).
+Klicken Sie im linken Navigationsbereich auf **Services**, um alle Dienste anzuzeigen (es sollte nur einer vorhanden sein).
 
 ![Kubernetes-Dienste](media/k8s/service-deployed.png)
 
-In dieser Ansicht sollte eine externe IP-Adresse angezeigt werden, die Ihrem Dienst zugeordnet ist.
-Wenn Sie auf diese IP-Adresse klicken, sollte Ihr nginx-Container angezeigt werden, der hinter dem Lastenausgleich ausgeführt wird.
+In dieser Ansicht sollte ein externer Endpunkt (IP-Adresse) angezeigt werden, der Ihrem Dienst zugeordnet ist.
+Wenn Sie auf diese IP-Adresse klicken, sollte Ihr Nginx-Container angezeigt werden, der hinter dem Lastenausgleich ausgeführt wird.
 
 ![nginx-Ansicht](media/k8s/nginx-page.png)
 
 ### <a name="resizing-your-service"></a>Ändern der Größe Ihres Diensts
-Zusätzlich zum Anzeigen der Objekte auf der Benutzeroberfläche können Sie die Kubernetes-API-Objekte auch bearbeiten und aktualisieren.
+Zusätzlich zum Anzeigen der Objekte auf der Benutzeroberfläche können Sie die Kubernetes-API-Objekte bearbeiten und aktualisieren.
 
-Wechseln Sie zunächst zur `Deployment` Ihres Diensts, indem Sie im linken Navigationsbereich auf „Deployments“ klicken.
+Klicken Sie zuerst im linken Navigationsbereich auf **Deployments**, um die Bereitstellung für Ihren Dienst anzuzeigen.
 
-Sobald Sie in dieser Ansicht sind, klicken Sie auf die Replikatgruppe und dann auf der oberen Navigationsleiste auf die Schaltfläche „Edit“:
+Sobald Sie in dieser Ansicht sind, klicken Sie auf die Replikatgruppe und dann in der oberen Navigationsleiste auf **Edit**:
 
 ![Kubernetes-Schaltfläche „Edit“](media/k8s/edit.png)
 
-Ändern Sie das Feld `spec.replicas` in „2“, und klicken Sie auf „Update“.
+Setzen Sie das Feld `spec.replicas` auf `2`, und klicken Sie auf **Update**.
 
 Dadurch sinkt die Anzahl der Replikate um zwei, indem einer Ihrer Pods gelöscht wird.
 
  
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

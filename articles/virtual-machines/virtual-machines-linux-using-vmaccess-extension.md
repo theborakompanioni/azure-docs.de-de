@@ -1,6 +1,6 @@
 ---
-title: "Zurücksetzen des Zugriffs auf Azure-Linux-VMs mit der VMAccess-Erweiterung | Microsoft Docs"
-description: "Zurücksetzen des Zugriffs auf Azure-Linux-VMs mit der VMAccess-Erweiterung."
+title: "Zurücksetzen des Zugriffs mit der VMAccess-Erweiterung und der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation"
+description: "Informationen zum Verwalten von Benutzern und Zurücksetzen des Zugriffs auf virtuellen Linux-Computern mithilfe der VMAccess-Erweiterung und der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)"
 services: virtual-machines-linux
 documentationcenter: 
 author: vlivech
@@ -13,110 +13,209 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 02/16/2017
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: 63cf1a5476a205da2f804fb2f408f4d35860835f
-ms.openlocfilehash: 1225e6e3910d12921208a619c7052521071c55be
+ms.sourcegitcommit: 98646daf5a4d2c9aca7dfc02a36f39d12f749443
+ms.openlocfilehash: 7752b486bda4a68b14ff3e8aaf1a369a649c83b5
+ms.lasthandoff: 02/17/2017
 
 
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension"></a>Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf Azure-Linux-VMs mit der VMAccess-Erweiterung
-Dieser Artikel veranschaulicht die Verwendung der Azure-VMAcesss-Erweiterung zum Überprüfen oder Reparieren eines Datenträgers, Zurücksetzen des Benutzerzugriffs, Verwalten von Benutzerkonten oder Zurücksetzen der SSHD-Konfiguration unter Linux. Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
+# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20-preview"></a>Verwalten von Benutzern, SSH und Überprüfen oder Reparieren von Datenträgern auf virtuellen Azure-Linux-Computern mit der VMAccess-Erweiterung und der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
 
-* Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
-* [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md), angemeldet mit `azure login`
-* Die Azure-Befehlszeilenschnittstelle *muss* im Azure Resource Manager-Modus `azure config mode arm` ausgeführt werden.
+Dieser Artikel veranschaulicht die Verwendung der Azure-VMAcesss-Erweiterung zum Überprüfen oder Reparieren eines Datenträgers, Zurücksetzen des Benutzerzugriffs, Verwalten von Benutzerkonten oder Zurücksetzen der SSHD-Konfiguration unter Linux.
 
-## <a name="quick-commands"></a>Schnellbefehle
-Es gibt zwei Möglichkeiten, VMAccess auf Ihren virtuellen Linux-Computern zu verwenden:
 
-* Verwenden der Azure-Befehlszeilenschnittstelle und der erforderlichen Parameter.
-* Verwenden von JSON-Rohdatendateien, die VMAccess verarbeitet und dann darauf reagiert.
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-Für den Schnellbefehlsabschnitt verwenden wir die `azure vm reset-access` -Methode mit der Azure-Befehlszeilenschnittstelle. Ersetzen Sie in den folgenden Befehlsbeispielen die Werte, die „example“ enthalten, durch die Werte aus Ihrer eigenen Umgebung.
+- [Azure CLI 1.0:](virtual-machines-linux-using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0 (Vorschau):](#ways-to-use-the-vmaccess-extension) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
 
-## <a name="create-a-resource-group-and-linux-vm"></a>Erstellen einer Ressourcengruppe und Linux-VM
-```bash
-azure group create myResourceGroup westus
-```
 
-## <a name="create-a-debian-vm"></a>Erstellen eines virtuellen Debian-Computers
-```azurecli
-azure vm quick-create \
-  -M ~/.ssh/id_rsa.pub \
-  -u myAdminUser \
-  -g myResourceGroup \
-  -l westus \
-  -y Linux \
-  -n myVM \
-  -Q Debian
-```
+## <a name="ways-to-use-the-vmaccess-extension"></a>Verschiedene Verwendungsmöglichkeiten für die VMAccess-Erweiterung
+Es gibt zwei Möglichkeiten, die VMAccess-Erweiterung auf Ihren virtuellen Linux-Computern zu verwenden:
 
-## <a name="reset-root-password"></a>Zurücksetzen des Stammkennworts
-So setzen Sie das Stammkennwort zurück:
+* Verwenden Sie die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) und die erforderlichen Parameter.
+* [Verwenden Sie JSON-Rohdatendateien, die von der VMAccess-Erweiterung verarbeitet](#use-json-files-and-the-vmaccess-extension) und dann verwendet werden können.
+
+Die folgenden Beispiele verwenden [az vm access](/cli/azure/vm/access) mit den geeigneten Parametern. Zum Ausführen dieser Schritte muss die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+
+## <a name="reset-ssh-key"></a>Zurücksetzen des SSH-Schlüssels
+Das folgende Beispiel setzt den SSH-Schlüssel für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:
 
 ```azurecli
-azure vm reset-access \
-  -g myResourceGroup \
-  -n myVM \
-  -u root \
-  -p myNewPassword
+az vm access set-linux-user \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --username azureuser \
+  --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-## <a name="ssh-key-reset"></a>SSH-Schlüsselrücksetzung
-So setzen Sie den SSH-Schlüssel eines Nichtstammbenutzers zurück:
+## <a name="reset-password"></a>Zurücksetzen des Kennworts
+Das folgende Beispiel setzt das Kennwort für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:
 
 ```azurecli
-azure vm reset-access \
-  -g myResourceGroup \
-  -n myVM \
-  -u myAdminUser \
-  -M ~/.ssh/id_rsa.pub
-```
-
-## <a name="create-a-user"></a>Erstellen eines Benutzers
-So erstellen Sie einen Benutzer:
-
-```azurecli
-azure vm reset-access \
-  -g myResourceGroup \
-  -n myVM \
-  -u myAdminUser \
-  -p myAdminUserPassword
-```
-
-## <a name="remove-a-user"></a>Benutzer entfernen
-```azurecli
-azure vm reset-access \
-  -g myResourceGroup \
-  -n myVM \
-  -R myRemovedUser
+az vm access set-linux-user \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --username azureuser \
+  --password myNewPassword
 ```
 
 ## <a name="reset-sshd"></a>Zurücksetzen von SSHD
-So setzen Sie die SSHD-Konfiguration zurück:
+Das folgende Beispiel setzt die SSHD-Konfiguration auf dem virtuellen Computer `myVM` zurück:
 
 ```azurecli
-azure vm reset-access \
-  -g myResourceGroup \
-  -n myVM
-  -r
+az vm access reset-linux-ssh \
+  --resource-group myResourceGroup \
+  --name myVM
+```
+
+## <a name="create-a-user"></a>Erstellen eines Benutzers
+Das folgende Beispiel erstellt einen Benutzer namens `myNewUser` und verwendet dabei einen SSH-Schlüssel zur Authentifizierung auf dem virtuellen Computer `myVM`:
+
+```azurecli
+az vm access set-linux-user \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --username myNewUser \
+  --ssh-key-value ~/.ssh/id_rsa.pub
+```
+
+## <a name="deletes-a-user"></a>Löschen eines Benutzers
+Das folgende Beispiel löscht einen Benutzer namens `myNewUser` vom virtuellen Computer `myVM`:
+
+```azurecli
+az vm access delete-linux-user \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --username myNewUser
 ```
 
 
-## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
-### <a name="vmaccess-defined"></a>VMAccess-definiert:
-Der Datenträger auf Ihrer Linux-VM zeigt Fehler an. Aus irgendeinem Grund haben Sie das Stammkennwort für Ihre Linux-VM zurückgesetzt oder Ihren privaten SSH-Schlüssel versehentlich gelöscht. Wenn dies früher zu Rechenzentrumszeiten geschah, mussten Sie dorthin fahren und den KVM öffnen, um an die Serverkonsole zu gelangen. Stellen Sie sich die Azure-VMAccess-Erweiterung als diesen KVM-Switch vor, mit dem Sie Zugriff auf die Konsole haben, um den Zugriff auf Linux zurückzusetzen oder Wartung auf Datenträgerebene durchzuführen.
+## <a name="use-json-files-and-the-vmaccess-extension"></a>Verwenden von JSON-Dateien und der VMAccess-Erweiterung
+Die folgenden Beispiele verwenden JSON-Rohdatendateien. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#set), um Ihre JSON-Dateien aufzurufen. Diese JSON-Dateien können auch aus Azure-Vorlagen heraus aufgerufen werden. 
 
-Für die ausführliche exemplarische Vorgehensweise verwenden wir die Langform von VMAccess, die unformatierte JSON-Dateien verwendet.  Diese VMAccess-JSON-Dateien können auch aus Azure-Vorlagen heraus aufgerufen werden.
+### <a name="reset-user-access"></a>Zurücksetzen des Benutzerzugriffs
+Wenn Sie den Zugriff auf das Stammverzeichnis Ihres virtuellen Linux-Computers verloren haben, können Sie ein VMAccess-Skript zum Zurücksetzen eines Benutzerkennworts starten.
 
-### <a name="using-vmaccess-to-check-or-repair-the-disk-of-a-linux-vm"></a>Verwenden von VMAccess zum Überprüfen oder Reparieren des Datenträgers einer Linux-VM
-Mit VMAccess können Sie eine FSCK-Prüfung auf dem Datenträger Ihrer Linux-VM ausführen.  Sie können auch eine Überprüfung des Datenträgers und eine Reparatur mithilfe von VMAccess durchführen.
+Um den SSH-Schlüssel eines Benutzers zurückzusetzen, erstellen Sie eine Datei namens `reset_ssh_key.json`, und fügen Sie folgenden Inhalt hinzu:
 
-So überprüfen und reparieren Sie den Datenträger mit diesem VMAccess-Skript:
+```json
+{
+  "username":"azureuser",
+  "ssh_key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZ3S7gGp3rcbKmG2Y4vGZFMuMZCwoUzZNG1vHY7P2XV2x9FfAhy8iGD+lF8UdjFX3t5ebMm6BnnMh8fHwkTRdOt3LDQq8o8ElTBrZaKPxZN2thMZnODs5Hlemb2UX0oRIGRcvWqsd4oJmxsXa/Si98Wa6RHWbc9QZhw80KAcOVhmndZAZAGR+Wq6yslNo5TMOr1/ZyQAook5C4FtcSGn3Y+WczaoGWIxG4ZaWk128g79VIeJcIQqOjPodHvQAhll7qDlItVvBfMOben3GyhYTm7k4YwlEdkONm4yV/UIW0la1rmyztSBQIm9sZmSq44XXgjVmDHNF8UfCZ1ToE4r2SdwTmZv00T2i5faeYnHzxiLPA3Enub7iUo5IdwFArnqad7MO1SY1kLemhX9eFjLWN4mJe56Fu4NiWJkR9APSZQrYeKaqru4KUC68QpVasNJHbuxPSf/PcjF3cjO1+X+4x6L1H5HTPuqUkyZGgDO4ynUHbko4dhlanALcriF7tIfQR9i2r2xOyv5gxJEW/zztGqWma/d4rBoPjnf6tO7rLFHXMt/DVTkAfn5woYtLDwkn5FMyvThRmex3BDf0gujoI1y6cOWLe9Y5geNX0oj+MXg/W0cXAtzSFocstV1PoVqy883hNoeQZ3mIGB3Q0rIUm5d9MA2bMMt31m1g3Sin6EQ== azureuser@myVM"
+}
+```
 
-`disk_check_repair.json`
+Führen Sie das VMAccess-Skript aus mit:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name VMAccessForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 1.4 \
+  --protected-settings reset_ssh_key.json
+```
+
+Um ein Benutzerkennwort zurückzusetzen, erstellen Sie eine Datei namens `reset_user_password.json`, und fügen Sie folgenden Inhalt hinzu:
+
+```json
+{
+  "username":"azureuser",
+  "password":"myNewPassword" 
+}
+```
+
+Führen Sie das VMAccess-Skript aus mit:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name VMAccessForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 1.4 \
+  --protected-settings reset_user_password.json
+```
+
+### <a name="reset-ssh"></a>Zurücksetzen von SSH
+Wenn Sie Änderungen an der SSHD-Konfiguration der Linux-VMs vornehmen und die SSH-Verbindung vor dem Überprüfen der Änderungen schließen, können Sie vielleicht keine SSH-Verbindung mehr herstellen.  Mit VMAccess kann die SSHD-Konfiguration ohne Anmeldung über SSH auf einen als funktionierend bekannten Zustand zurückgesetzt werden.
+
+Um die SSHD-Konfiguration zurückzusetzen, erstellen Sie eine Datei namens `reset_sshd.json`, und fügen Sie folgenden Inhalt hinzu:
+
+```json
+{
+  "reset_ssh": true
+}
+```
+
+Führen Sie das VMAccess-Skript aus mit:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name VMAccessForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 1.4 \
+  --protected-settings reset_sshd.json
+```
+
+### <a name="manage-users"></a>Verwalten von Benutzern
+VMAccess ist ein Python-Skript, mit dem Sie Benutzer auf Ihrer Linux-VM ohne Anmeldung und Verwendung von Sudo- oder Stammkonto verwalten können.
+
+Um einen Benutzer zu erstellen, erstellen Sie eine Datei namens `create_new_user.json`, und fügen Sie folgenden Inhalt hinzu:
+
+```json
+{
+  "username":"myNewUser",
+  "ssh_key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZ3S7gGp3rcbKmG2Y4vGZFMuMZCwoUzZNG1vHY7P2XV2x9FfAhy8iGD+lF8UdjFX3t5ebMm6BnnMh8fHwkTRdOt3LDQq8o8ElTBrZaKPxZN2thMZnODs5Hlemb2UX0oRIGRcvWqsd4oJmxsXa/Si98Wa6RHWbc9QZhw80KAcOVhmndZAZAGR+Wq6yslNo5TMOr1/ZyQAook5C4FtcSGn3Y+WczaoGWIxG4ZaWk128g79VIeJcIQqOjPodHvQAhll7qDlItVvBfMOben3GyhYTm7k4YwlEdkONm4yV/UIW0la1rmyztSBQIm9sZmSq44XXgjVmDHNF8UfCZ1ToE4r2SdwTmZv00T2i5faeYnHzxiLPA3Enub7iUo5IdwFArnqad7MO1SY1kLemhX9eFjLWN4mJe56Fu4NiWJkR9APSZQrYeKaqru4KUC68QpVasNJHbuxPSf/PcjF3cjO1+X+4x6L1H5HTPuqUkyZGgDO4ynUHbko4dhlanALcriF7tIfQR9i2r2xOyv5gxJEW/zztGqWma/d4rBoPjnf6tO7rLFHXMt/DVTkAfn5woYtLDwkn5FMyvThRmex3BDf0gujoI1y6cOWLe9Y5geNX0oj+MXg/W0cXAtzSFocstV1PoVqy883hNoeQZ3mIGB3Q0rIUm5d9MA2bMMt31m1g3Sin6EQ== myNewUser@myVM",
+  "password":"myNewUserPassword"
+}
+```
+
+Führen Sie das VMAccess-Skript aus mit:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name VMAccessForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 1.4 \
+  --protected-settings create_new_user.json
+```
+
+Um einen Benutzer zu löschen, erstellen Sie eine Datei namens `delete_user.json`, und fügen Sie folgenden Inhalt hinzu:
+
+```json
+{
+  "remove_user":"myDeleteUser"
+}
+```
+
+Führen Sie das VMAccess-Skript aus mit:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name VMAccessForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 1.4 \
+  --protected-settings delete_user.json
+```
+
+### <a name="check-or-repair-the-disk"></a>Überprüfen oder Reparieren des Datenträgers
+Mit VMAccess können Sie eine FSCK-Prüfung auf dem Datenträger Ihrer Linux-VM ausführen. Sie können auch eine Überprüfung des Datenträgers und eine Reparatur mithilfe von VMAccess durchführen.
+
+Um den Datenträger mit diesem VMAccess-Skript zu überprüfen und dann zu reparieren, erstellen Sie eine Datei namens `disk_check_repair.json`, und fügen Sie folgenden Inhalt hinzu:
 
 ```json
 {
@@ -128,144 +227,22 @@ So überprüfen und reparieren Sie den Datenträger mit diesem VMAccess-Skript:
 Führen Sie das VMAccess-Skript aus mit:
 
 ```azurecli
-azure vm extension set \
-  myResourceGroup \
-  myVM \
-  VMAccessForLinux \
-  Microsoft.OSTCExtensions * \
-  --private-config-path disk_check_repair.json
-```
-
-### <a name="using-vmaccess-to-reset-user-access-to-linux"></a>Verwendung von VMAccess zum Zurücksetzen des Benutzerzugriffs auf Linux
-Wenn Sie den Zugriff auf das Stammverzeichnis Ihres virtuellen Linux-Computers verloren haben, können Sie ein VMAccess-Skript zum Zurücksetzen des Stammkennworts starten.
-
-Verwenden Sie zum Zurücksetzen des Stammkennworts dieses VMAccess-Skript:
-
-`reset_root_password.json`
-
-```json
-{
-  "username":"root",
-  "password":"myNewPassword",   
-}
-```
-
-Führen Sie das VMAccess-Skript aus mit:
-
-```azurecli
-azure vm extension set \
-  myResourceGroup \
-  myVM \
-  VMAccessForLinux \
-  Microsoft.OSTCExtensions * \
-  --private-config-path reset_root_password.json
-```
-
-Verwenden Sie zum Zurücksetzen des SSH-Schlüssels eines Nichtstammbenutzers dieses VMAccess-Skript:
-
-`reset_ssh_key.json`
-
-```json
-{
-  "username":"myAdminUser",
-  "ssh_key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZ3S7gGp3rcbKmG2Y4vGZFMuMZCwoUzZNG1vHY7P2XV2x9FfAhy8iGD+lF8UdjFX3t5ebMm6BnnMh8fHwkTRdOt3LDQq8o8ElTBrZaKPxZN2thMZnODs5Hlemb2UX0oRIGRcvWqsd4oJmxsXa/Si98Wa6RHWbc9QZhw80KAcOVhmndZAZAGR+Wq6yslNo5TMOr1/ZyQAook5C4FtcSGn3Y+WczaoGWIxG4ZaWk128g79VIeJcIQqOjPodHvQAhll7qDlItVvBfMOben3GyhYTm7k4YwlEdkONm4yV/UIW0la1rmyztSBQIm9sZmSq44XXgjVmDHNF8UfCZ1ToE4r2SdwTmZv00T2i5faeYnHzxiLPA3Enub7iUo5IdwFArnqad7MO1SY1kLemhX9eFjLWN4mJe56Fu4NiWJkR9APSZQrYeKaqru4KUC68QpVasNJHbuxPSf/PcjF3cjO1+X+4x6L1H5HTPuqUkyZGgDO4ynUHbko4dhlanALcriF7tIfQR9i2r2xOyv5gxJEW/zztGqWma/d4rBoPjnf6tO7rLFHXMt/DVTkAfn5woYtLDwkn5FMyvThRmex3BDf0gujoI1y6cOWLe9Y5geNX0oj+MXg/W0cXAtzSFocstV1PoVqy883hNoeQZ3mIGB3Q0rIUm5d9MA2bMMt31m1g3Sin6EQ== myAdminUser@myVM",   
-}
-```
-
-Führen Sie das VMAccess-Skript aus mit:
-
-```azurecli
-azure vm extension set \
-  myResourceGroup \
-  myVM \
-  VMAccessForLinux \
-  Microsoft.OSTCExtensions * \
-  --private-config-path reset_ssh_key.json
-```
-
-### <a name="using-vmaccess-to-manage-user-accounts-on-linux"></a>Verwenden von VMAccess zum Verwalten von Benutzerkonten unter Linux
-VMAccess ist ein Python-Skript, mit dem Sie Benutzer auf Ihrer Linux-VM ohne Anmeldung und Verwendung von Sudo- oder Stammkonto verwalten können.
-
-Verwenden Sie zum Erstellen eines Benutzers dieses VMAccess-Skript:
-
-`create_new_user.json`
-
-```json
-{
-"username":"myNewUser",
-"ssh_key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZ3S7gGp3rcbKmG2Y4vGZFMuMZCwoUzZNG1vHY7P2XV2x9FfAhy8iGD+lF8UdjFX3t5ebMm6BnnMh8fHwkTRdOt3LDQq8o8ElTBrZaKPxZN2thMZnODs5Hlemb2UX0oRIGRcvWqsd4oJmxsXa/Si98Wa6RHWbc9QZhw80KAcOVhmndZAZAGR+Wq6yslNo5TMOr1/ZyQAook5C4FtcSGn3Y+WczaoGWIxG4ZaWk128g79VIeJcIQqOjPodHvQAhll7qDlItVvBfMOben3GyhYTm7k4YwlEdkONm4yV/UIW0la1rmyztSBQIm9sZmSq44XXgjVmDHNF8UfCZ1ToE4r2SdwTmZv00T2i5faeYnHzxiLPA3Enub7iUo5IdwFArnqad7MO1SY1kLemhX9eFjLWN4mJe56Fu4NiWJkR9APSZQrYeKaqru4KUC68QpVasNJHbuxPSf/PcjF3cjO1+X+4x6L1H5HTPuqUkyZGgDO4ynUHbko4dhlanALcriF7tIfQR9i2r2xOyv5gxJEW/zztGqWma/d4rBoPjnf6tO7rLFHXMt/DVTkAfn5woYtLDwkn5FMyvThRmex3BDf0gujoI1y6cOWLe9Y5geNX0oj+MXg/W0cXAtzSFocstV1PoVqy883hNoeQZ3mIGB3Q0rIUm5d9MA2bMMt31m1g3Sin6EQ== myNewUser@myVM",
-"password":"myNewUserPassword",
-}
-```
-
-Führen Sie das VMAccess-Skript aus mit:
-
-```azurecli
-azure vm extension set \
-  myResourceGroup \
-  myVM \
-  VMAccessForLinux \
-  Microsoft.OSTCExtensions * \
-  --private-config-path create_new_user.json
-```
-
-Verwenden Sie zum Löschen eines Benutzers dieses VMAccess-Skript:
-
-`remove_user.json`
-
-```json
-{
-"remove_user":"myDeletedUser",
-}
-```
-
-Führen Sie das VMAccess-Skript aus mit:
-
-```azurecli
-azure vm extension set \
-  myResourceGroup \
-  myVM \
-  VMAccessForLinux \
-  Microsoft.OSTCExtensions * \
-  --private-config-path remove_user.json
-```
-
-### <a name="using-vmaccess-to-reset-the-sshd-configuration"></a>Verwenden von VMAccess beim Zurücksetzen der SSHD-Konfiguration
-Wenn Sie Änderungen an der SSHD-Konfiguration der Linux-VMs vornehmen und die SSH-Verbindung vor dem Überprüfen der Änderungen schließen, können Sie vielleicht keine SSH-Verbindung mehr herstellen.  Mit VMAccess kann die SSHD-Konfiguration ohne Anmeldung über SSH auf einen als funktionierend bekannten Zustand zurückgesetzt werden.
-
-Verwenden Sie zum Zurücksetzen der SSHD-Konfiguration dieses VMAccess-Skript:
-
-`reset_sshd.json`
-
-```json
-{
-  "reset_ssh": true
-}
-```
-
-Führen Sie das VMAccess-Skript aus mit:
-
-```azurecli
-azure vm extension set \
-  myResourceGroup \
-  myVM \
-  VMAccessForLinux \
-  Microsoft.OSTCExtensions * \
-  --private-config-path reset_sshd.json
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name VMAccessForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 1.4 \
+  --protected-settings disk_check_repair.json
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Aktualisierung von Linux mit Azure-VMAccess-Erweiterungen ist eine Methode, Änderungen an einer ausgeführten Linux-VM vorzunehmen.  Sie können auch Tools wie Cloud-Init und Azure-Vorlagen zum Ändern Ihrer Linux-VM beim Start verwenden.
+Die Aktualisierung von Linux mit Azure-VMAccess-Erweiterungen ist eine Methode, Änderungen an einem ausgeführten virtuellen Linux-Computer vorzunehmen. Sie können auch Tools wie Cloud-Init und Azure Resource Manager-Vorlagen verwenden, um Ihren virtuellen Linux-Computer beim Start zu ändern.
 
 [Informationen zu Erweiterungen und Features für virtuelle Computer](virtual-machines-linux-extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Erstellen von Azure Resource Manager-Vorlagen mit Linux-VM-Erweiterungen](virtual-machines-linux-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung](virtual-machines-linux-using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
