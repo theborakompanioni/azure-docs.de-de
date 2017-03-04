@@ -17,6 +17,7 @@ ms.author: tarcher
 translationtype: Human Translation
 ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
 ms.openlocfilehash: 2f31d8bf78d63e207d5f26ad37c5cf7bd2bac5bb
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -43,10 +44,5 @@ Azure DevTest Labs ist ein Dienst, der Entwicklern und Testern dabei hilft, Umge
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Warum DevTest Labs?](devtest-lab-why.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

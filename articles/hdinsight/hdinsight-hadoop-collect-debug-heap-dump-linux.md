@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 93990e342f6bd8fcfe9781bcb021aabfd33e8572
 ms.openlocfilehash: 9c5f3c36cc317a4e3700610799872d35c05d386f
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -130,10 +131,5 @@ Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern
    > 
    > 
 8. Verwenden Sie nach dem Neustart der Dienste die Schaltfläche **Service Actions**, um **Turn Off Maintenance Mode** auszuwählen. Dadurch setzt Ambari das Überwachen auf Warnungen für den Dienst fort.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

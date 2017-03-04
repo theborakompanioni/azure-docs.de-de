@@ -16,6 +16,7 @@ ms.author: markgal;
 translationtype: Human Translation
 ms.sourcegitcommit: fa00142a9e89c5ad2630f688ea9771a1a542c052
 ms.openlocfilehash: e5f89f845302ecb890caa50dd8f86503b29f1154
+ms.lasthandoff: 01/06/2017
 
 
 ---
@@ -93,9 +94,4 @@ Azure Backup Server ist eine Azure Backup-Komponente, die ähnliche Funktionen w
 Wenn Sie sich nicht sicher sind, wo Sie anfangen sollen, beginnen Sie mit dem Artikel [Sichern eines Windows-Servers oder -Clients in Azure mit dem klassischen Bereitstellungsmodell](../backup/backup-configure-vault-classic.md). In diesem Tutorial werden Sie durch die Schritte zum Einrichten eines Sicherungsprojekts auf einem Windows-Server oder -Client geleitet.
 
 Wenn Sie bereits wissen, dass Sie Azure Backup verwenden könnten, sich aber über die Kosten informieren möchten, finden Sie weitere Informationen auf der Seite mit den [Backup-Preisdetails](http://azure.microsoft.com/pricing/details/backup/). Dort finden Sie eine Liste mit häufig gestellten Fragen, die nützliche Informationen liefern. Beachten Sie auch, dass das Dropdownmenü **Region** zwei Azure Government-Regionen umfasst.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

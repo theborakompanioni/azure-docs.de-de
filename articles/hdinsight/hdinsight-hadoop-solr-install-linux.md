@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: e270f3dfdaf248ed40d539fa1d2e69a3930d03c6
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -307,9 +308,4 @@ Weitere Informationen zum Arbeiten mit Solr-Backups und -Wiederherstellungen fin
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

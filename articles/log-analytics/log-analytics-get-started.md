@@ -17,6 +17,7 @@ ms.author: banders
 translationtype: Human Translation
 ms.sourcegitcommit: f75386f970aeb5694d226cfcd569b8c04a253191
 ms.openlocfilehash: 0f418af5728b6a156ebc72fb99a3d16d559654ed
+ms.lasthandoff: 02/10/2017
 
 
 ---
@@ -150,9 +151,4 @@ Sie können optional auch den Arbeitsbereich entfernen, den Sie im Rahmen dieses
 * Informieren Sie sich über das Herstellen einer Verbindung zwischen [Operations Manager-Agents](log-analytics-om-agents.md) und Log Analytics.
 * [Fügen Sie Log Analytics-Lösungen aus dem Lösungskatalog hinzu](log-analytics-add-solutions.md) , um Funktionen hinzuzufügen und Daten zu sammeln.
 * Machen Sie sich mit [Protokollsuchvorgängen](log-analytics-log-searches.md) vertraut, um ausführliche Informationen anzuzeigen, die von Lösungen gesammelt werden.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

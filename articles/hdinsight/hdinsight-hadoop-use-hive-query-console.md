@@ -18,6 +18,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
 ms.openlocfilehash: 0c7f570db388b0ed96479e994a4a2f79e7919b17
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -122,9 +123,4 @@ Wenn Sie mit Tez mit Hive verwenden, finden Sie in den folgenden Dokumenten Info
 
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

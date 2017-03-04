@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: ec470466f006265af5c4ccfddeeba975e6e648b5
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -65,9 +66,4 @@ Da der Clusterressourcen-Manager für das Verschieben von Diensten zuständig is
 * Metriken bestimmen, wie der Clusterressourcen-Manager von Service Fabric den Ressourcenverbrauch und die Kapazität im Cluster verwaltet. Weitere Informationen zu Metriken und deren Konfiguration finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md)
 * Der Clusterressourcen-Manager arbeitet mit den Verwaltungsfunktionen von Service Fabric. Weitere Informationen hierzu finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-management-integration.md)
 * Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -17,6 +17,7 @@ ms.author: tarcher
 translationtype: Human Translation
 ms.sourcegitcommit: f7656382500682898cd3ed6372630afa3c3f6350
 ms.openlocfilehash: d67fa257574d6cb4ad4b18521900374fb51da290
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -134,10 +135,5 @@ Um einen Besitzer zu einem Azure-Abonnement hinzuzufügen, gehen Sie folgenderma
 11. Wenn Sie zum Blatt **Benutzer** zurückkehren, wurde der Benutzer als Besitzer hinzugefügt. Dieser Benutzer ist nun Besitzer aller Labs, die in diesem Abonnement erstellt werden, und sie kann daher die Aufgaben eines Besitzers ausführen. 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

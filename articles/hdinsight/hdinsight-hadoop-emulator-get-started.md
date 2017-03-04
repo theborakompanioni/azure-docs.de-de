@@ -19,6 +19,7 @@ ms.author: nitinme
 translationtype: Human Translation
 ms.sourcegitcommit: 1618ed7971ffef0eae55b73b4bdd04f3f14195ba
 ms.openlocfilehash: a070df78bf95173aa48da60d24d14d08d9be8d9a
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -83,10 +84,5 @@ Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzul
 * [Verwenden von Visual Studio mit der Sandbox von Hortonworks](hdinsight-hadoop-emulator-visual-studio.md)
 * [Learning the ropes of the Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop tutorial - Getting started with HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 
