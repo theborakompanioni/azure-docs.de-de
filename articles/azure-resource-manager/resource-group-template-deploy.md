@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 5b8b293b5b37365088a3df55581be7b7bf76691c
 ms.openlocfilehash: 7bc3421e00215ca4629ea11811c98e581377b24a
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -55,7 +56,7 @@ Diese Befehle dienen zum Erstellen einer Ressourcengruppe und Bereitstellen eine
 1. Melden Sie sich beim Azure-Konto an.
 
    ```powershell
-   Add-AzureRmAccount
+   Login-AzureRmAccount
    ```
 
     Es wird eine Zusammenfassung Ihres Kontos zurückgegeben.
@@ -229,10 +230,5 @@ Bei Verwendung einer externen Parameterdatei können Sie jedoch keine anderen We
 * Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](solution-dev-test-environments.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
 * Eine vierteilige Reihe zum Automatisieren von Bereitstellungen finden Sie unter [Automatisieren von Anwendungsbereitstellungen auf virtuellen Azure-Computern](../virtual-machines/virtual-machines-windows-dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Diese Reihe behandelt die Anwendungsarchitektur, Zugriff und Sicherheit, Verfügbarkeit und Skalierung sowie die Bereitstellung einer Anwendung.
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
