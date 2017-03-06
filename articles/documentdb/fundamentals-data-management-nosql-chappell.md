@@ -4,6 +4,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
 ms.openlocfilehash: 48380d1fd5394cc32b4e868a82f456497bc4a915
+ms.lasthandoff: 02/16/2017
 
 
 
@@ -21,10 +22,5 @@ Wenn dem so ist, haben wir zwei informative Dokumente für Sie:
   * Eine Einführung in die einzelnen NoSQL-Technologien von Azure: DocumentDB, Tabellenspeicher, HBase und HDInsight.
   * Ein Vergleich zwischen den NoSQL-Technologien und Azure SQL-Datenbank. 
   * Verwendung von Azure DocumentDB im Vergleich zu Tabellenspeicher im Vergleich zu HBase im Vergleich zu HDInsight im Vergleich zu SQL-Datenbank.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

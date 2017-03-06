@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie einfach die Ausführung von Web-Apps in App Serv
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 21acd587-b772-4d89-be06-9a7429c33c7a
 ms.service: app-service-web
@@ -15,22 +15,14 @@ ms.topic: hero-article
 ms.date: 01/04/2017
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: 27b5ead5a60b05f84974391954f1f087da63c2e9
+ms.sourcegitcommit: d24e78a826de9fb72e0eedc48877c83e867f70ca
+ms.openlocfilehash: f574612734ff9cef0c717d5a12ee2962ef211178
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="deploy-your-first-php-web-app-to-azure-in-five-minutes"></a>Bereitstellen Ihrer ersten PHP-Web-App für Azure in fünf Minuten
-
-> [!div class="op_single_selector"]
-> * [Erste HTML-Website](app-service-web-get-started-html-cli-nodejs.md)
-> * [Erste .NET-App](app-service-web-get-started-dotnet-cli-nodejs.md)
-> * [Erste PHP-App](app-service-web-get-started-php-cli-nodejs.md)
-> * [Erste Node.js-App](app-service-web-get-started-nodejs-cli-nodejs.md)
-> * [Erste Python-App](app-service-web-get-started-python-cli-nodejs.md)
-> * [Erste Java-App](app-service-web-get-started-java.md)
-> 
-> 
+[!INCLUDE [app-service-web-selector-get-started-nodejs-cli](../../includes/app-service-web-selector-get-started-nodejs-cli.md)]  
 
 In diesem Tutorial erfahren Sie, wie Sie Ihre erste PHP-Web-App für [Azure App Service](../app-service/app-service-value-prop-what-is.md)bereitstellen.
 Mit App Service können Sie Web-Apps, [Mobile App-Back-Ends](/documentation/learning-paths/appservice-mobileapps/) und [API-Apps](../app-service-api/app-service-api-apps-why-best-platform.md) erstellen.
@@ -49,7 +41,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure CLI 1.0:](app-service-web-get-started-php-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](app-service-web-get-started-php.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](app-service-web-get-started-php.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Git](http://www.git-scm.com/downloads).
@@ -128,10 +120,5 @@ Sie können auch weiter mit Ihrer ersten Web-App arbeiten. Beispiel:
 
 * Testen Sie [weitere Methoden zum Bereitstellen Ihres Codes in Azure](web-sites-deploy.md). Wenn Sie eines Ihrer GitHub-Repositorys zur Bereitstellung verwenden möchten, wählen Sie beispielsweise unter **Bereitstellungsoptionen** einfach **GitHub** anstelle von **Lokales Git-Repository** aus.
 * Entwickeln Sie Ihre Azure-App weiter. Authentifizieren Sie Ihre Benutzer. Skalieren Sie die App je nach Bedarf. Richten Sie einige Leistungswarnungen ein. Es sind jeweils nur wenige Klicks erforderlich. Weitere Informationen finden Sie unter [Hinzufügen von Funktionen zu Ihrer ersten Web-App](app-service-web-get-started-2.md).
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

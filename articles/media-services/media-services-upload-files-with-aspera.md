@@ -12,11 +12,12 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2017
+ms.date: 02/22/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: ff87afae1b468bef77947edd9806d330047f2ba6
-ms.openlocfilehash: 3b167db06ee30f7c3483eca30782437c61f8dcc8
+ms.sourcegitcommit: 44fe2f5c0a3f050a93368589d9ea6b8ea3e35d26
+ms.openlocfilehash: 60a35bbda79a45bd0ac24e76b0a20720afe79774
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -117,6 +118,15 @@ Melden Sie sich beim Azure Marketplace an, und gehen Sie anschließend wie hier 
 
     ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
+## <a name="resources"></a>Ressourcen
+
+In diesem Artikel wurden die folgenden Ressourcen erwähnt: 
+
+* [Connect-Browser-Plug-In](http://downloads.asperasoft.com/connect2/)
+* [Connect-Handbuch](http://downloads.asperasoft.com/en/documentation/8)
+* [Aspera-Client](http://downloads.asperasoft.com/en/downloads/2)
+* [Clienthandbuch](http://downloads.asperasoft.com/en/documentation/2)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Jetzt können Sie [Blobs aus einem Speicherkonto in ein AMS-Konto kopieren](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account).
@@ -126,10 +136,5 @@ Jetzt können Sie [Blobs aus einem Speicherkonto in ein AMS-Konto kopieren](medi
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

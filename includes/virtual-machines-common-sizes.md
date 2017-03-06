@@ -92,44 +92,45 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 ## <a name="av2-series"></a>Av2-Serie
 
-| Größe        | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
-|-------------|-----------|--------------|-----------------------|----------------|--------------------|-----------------------|
-| Standard_A1_v2 | 1         | 2            | 10                   | 2              | 2 x&500;              | 1/moderat              |
-| Standard_A2_v2 | 2         | 4            | 20                   | 4              | 4 x&500;              | 2/moderat              |
-| Standard_A4_v2 | 4         | 8            | 40                   | 8              | 8 x&500;              | 4/hoch                  |
-| Standard_A8_v2 | 8         | 16           | 80                   | 16             | 16 x&500;             | 8/hoch                  |
-| Standard_A2m_v2 | 2        | 16           | 20                   | 4              | 4 x&500;              | 2/moderat              |
-| Standard_A4m_v2 | 4        | 32           | 40                   | 8              | 8 x&500;              | 4/hoch                  |
-| Standard_A8m_v2 | 8        | 64           | 80                   | 16             | 16 x&500;             | 8/hoch                  |
-
+| Größe            | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2 x 500                         | 1/moderat                 |
+| Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4/4 x 500                         | 2/moderat                 |
+| Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8/8 x 500                         | 4/hoch                     |
+| Standard_A8_v2  | 8         | 16          | 80             | 8000/160/80                                          | 16/16 x 500                       | 8/hoch                     |
+| Standard_A2m_v2 | 2         | 16          | 20             | 2000/40/20                                           | 4/4 x 500                         | 2/moderat                 |
+| Standard_A4m_v2 | 4         | 32          | 40             | 4000/80/40                                           | 8/8 x 500                         | 4/hoch                     |
+| Standard_A8m_v2 | 8         | 64          | 80             | 8000/160/80                                          | 16/16 x 500                       | 8/hoch                     |
 
 ## <a name="d-series"></a>D-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1 |1 |3,5 |50 |2 |2 x&500; |1/moderat |
-| Standard_D2 |2 |7 |100 |4 |4 x&500; |2/hoch |
-| Standard_D3 |4 |14 |200 |8 |8 x&500; |4/hoch |
-| Standard_D4 |8 |28 |400 |16 |16 x&500; |8/hoch |
-| Standard_D11 |2 |14 |100 |4 |4 x&500; |2/hoch |
-| Standard_D12 |4 |28 |200 |8 |8 x&500; |4/hoch |
-| Standard_D13 |8 |56 |400 |16 |16 x&500; |8/hoch |
-| Standard_D14 |16 |112 |800 |32 |32 x&500; |8/sehr hoch |
 
+| Größe         | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_D1  | 1         | 3,5         | 50             | 3000/46/23                                           | 2/2 x 500                         | 1/moderat                 |
+| Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
+| Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
+| Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
+| Standard_D11 | 2         | 14          | 100            | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
+| Standard_D12 | 4         | 28          | 200            | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
+| Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
+| Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 32/32 x 500                       | 8/sehr hoch                |
 <br>
 
 ## <a name="dv2-series"></a>Dv2-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |3,5 |50 |2 |2 x&500; |1/moderat |
-| Standard_D2_v2 |2 |7 |100 |4 |4 x&500; |2/hoch |
-| Standard_D3_v2 |4 |14 |200 |8 |8 x&500; |4/hoch |
-| Standard_D4_v2 |8 |28 |400 |16 |16 x&500; |8/hoch |
-| Standard_D5_v2 |16 |56 |800 |32 |32 x&500; |8/äußerst hoch |
-| Standard_D11_v2 |2 |14 |100 |4 |4 x&500; |2/hoch |
-| Standard_D12_v2 |4 |28 |200 |8 |8 x&500; |4/hoch |
-| Standard_D13_v2 |8 |56 |400 |16 |16 x&500; |8/hoch |
-| Standard_D14_v2 |16 |112 |800 |32 |32 x&500; |8/äußerst hoch |
-| Standard_D15_v2** |20 |140 |1.000 |40 |40 x&500; |8/äußerst hoch* |
+
+
+| Größe              | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_D1_v2    | 1         | 3,5         | 50             | 3000/46/23                                           | 2/2 x 500                         | 1/moderat                 |
+| Standard_D2_v2    | 2         | 7           | 100            | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
+| Standard_D3_v2    | 4         | 14          | 200            | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
+| Standard_D4_v2    | 8         | 28          | 400            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
+| Standard_D5_v2    | 16        | 56          | 800            | 48000/750/375                                        | 32/32 x 500                       | 8/äußerst hoch           |
+| Standard_D11_v2   | 2         | 14          | 100            | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
+| Standard_D12_v2   | 4         | 28          | 200            | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
+| Standard_D13_v2   | 8         | 56          | 400            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
+| Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 32/32 x 500                       | 8/äußerst hoch           |
+| Standard_D15_v2** | 20        | 140         | 1.000          | 60000/937/468                                        | 40/40 x 500                       | 8/äußerst hoch*          |
 
 *In einigen Regionen stehen für die Größe „Standard_D15_v2“ beschleunigte Netzwerke zur Verfügung. Weitere Informationen zur Verwendung und Verfügbarkeit finden Sie unter [Accelerated Networking befindet sich in der Vorschauphase](https://azure.microsoft.com/updates/accelerated-networking-in-preview/) sowie unter [Accelerated Networking für virtuelle Computer](../articles/virtual-network/virtual-network-accelerated-networking-powershell.md).
 
@@ -138,7 +139,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 <br>
 
 ## <a name="ds-series"></a>DS-Serie*
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3,5 |7 |2 |4.000/32 (43) |3.200/32 |1/moderat |
 | Standard_DS2 |2 |7 |14 |4 |8.000/64 (86) |6.400/64 |2/hoch |
@@ -179,18 +180,18 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 <br>
 
 ## <a name="f-series"></a>F-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_F1 |1 |2 |16 |2 |2 x&500; |1/moderat |
-| Standard_F2 |2 |4 |32 |4 |4 x&500; |2/hoch |
-| Standard_F4 |4 |8 |64 |8 |8 x&500; |4/hoch |
-| Standard_F8 |8 |16 |128 |16 |16 x&500; |8/hoch |
-| Standard_F16 |16 |32 |256 |32 |32 x&500; |8/äußerst hoch |
 
+| Größe         | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 2/2 x 500                         | 1/moderat                 |
+| Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 4/4 x 500                         | 2/hoch                     |
+| Standard_F4  | 4         | 8           | 64             | 12000/187/93                                         | 8/8 x 500                         | 4/hoch                     |
+| Standard_F8  | 8         | 16          | 128            | 24000/375/187                                        | 16/16 x 500                       | 8/hoch                     |
+| Standard_F16 | 16        | 32          | 256            | 48000/750/375                                        | 32/32 x 500                       | 8/äußerst hoch           |
 <br>
 
 ## <a name="fs-series"></a>Fs-Serie*
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |2 |4.000/32 (12) |3.200/48 |1/moderat |
 | Standard_F2s |2 |4 |8 |4 |8.000/64 (24) |6.400/96 |2/hoch |
@@ -205,19 +206,20 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 <br>
 
 ## <a name="g-series"></a>G-Serie
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Max. Datenträger-Datendurchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_G1 |2 |28 |384 |4 |4 x 500 |1/hoch |
-| Standard_G2 |4 |56 |768 |8 |8 x 500 |2/hoch |
-| Standard_G3 |8 |112 |1.536 |16 |16 x 500 |4/sehr hoch |
-| Standard_G4 |16 |224 |3.072 |32 |32 x 500 |8/äußerst hoch |
-| Standard_G5* |32 |448 |6.144 |64 |64 x 500 |8/äußerst hoch |
+
+| Größe         | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Durchsatz lokale Datenträger: IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Netzwerkbandbreite |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_G1  | 2         | 28          | 384            | 6000/93/46                                           | 4/4 x 500                       | 1/hoch                     |
+| Standard_G2  | 4         | 56          | 768            | 12000/187/93                                         | 8/8 x 500                       | 2/hoch                     |
+| Standard_G3  | 8         | 112         | 1.536          | 24000/375/187                                        | 16/16 x 500                     | 4/sehr hoch                |
+| Standard_G4  | 16        | 224         | 3.072          | 48000/750/375                                        | 32/32 x 500                     | 8/äußerst hoch           |
+| Standard_G5* | 32        | 448         | 6.144          | 96000/1500/750                                       | 64/64 x 500                     | 8/äußerst hoch           |
 
 *Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
 
 ## <a name="gs-series"></a>GS-Serie*
-| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache: IOPS / MB/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe | CPU-Kerne | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Datenträgerdurchsatz mit Cache und lokal: IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Netzwerkbandbreite |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_GS1 |2 |28 |56 |4 |10.000/100 (264) |5.000 / 125 |1/hoch |
 | Standard_GS2 |4 |56 |112 |8 |20.000/200 (528) |10.000/250 |2/hoch |
@@ -227,7 +229,7 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
-* Der mit einer VM der GS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. 
+* Der mit einer VM der GS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md). 
 
 **Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
@@ -253,7 +255,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 <br>
 
 
-## <a name="ls-series"></a>Ls-Serie 
+## <a name="ls-series"></a>Ls-Serie* 
 
 Die Ls-Serie ist für Workloads optimiert, für die ein lokaler Speicher mit geringer Wartezeit erforderlich ist, z.B. NoSQL-Datenbanken (z.B. Cassandra, MongoDB, Cloudera und Redis). Die Ls-Reihe bietet bis zu 32 CPU-Kerne unter Verwendung der [Prozessorfamilie Intel® Xeon® E5 v3](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Dies ist die gleiche CPU-Leistung wie bei der G/GS-Serie mit 8 GiB Arbeitsspeicher pro CPU-Kern.  
 
@@ -263,9 +265,13 @@ Die Ls-Serie ist für Workloads optimiert, für die ein lokaler Speicher mit ger
 | Standard_L4s  | 4    | 32   | 678   | 8              | N/V/N/V (0)          | 5.000 / 125                               | 2/hoch       | 
 | Standard_L8s  | 8    | 64   | 1.388 | 16             | N/V/N/V (0)          | 10.000/250                              | 4/sehr hoch  | 
 | Standard_L16s | 16   | 128  | 2.807 | 32             | N/V/N/V (0)          | 20.000/500                              | 8/äußerst hoch | 
-| Standard_L32s | 32   | 256  | 5.630 | 64             | N/V/N/V (0)          | 40.000/1.000                            | 8/äußerst hoch | 
+| Standard_L32s** | 32   | 256  | 5.630 | 64             | N/V/N/V (0)          | 40.000/1.000                            | 8/äußerst hoch | 
  
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes. 
+
+* Der mit einer VM der Ls-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MBit/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/storage/storage-premium-storage.md). 
+
+**Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 
 

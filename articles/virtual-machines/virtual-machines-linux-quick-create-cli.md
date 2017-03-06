@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft Azure
-description: Erstellen Sie einen virtuellen Linux-Computer mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau).
+title: Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0 | Microsoft Azure
+description: Es wird beschrieben, wie Sie einen virtuellen Linux-Computer per Azure CLI 2.0 erstellen.
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -12,28 +12,23 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/13/2016
+ms.date: 01/13/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 1081eb18bd63b1ad580f568201e03258901e4eaf
-ms.openlocfilehash: e926f22b94da30e1d3b790432ffdc229d9f4e609
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 892e3c62a2ad4dc4fd0691874d46bb296e379524
+ms.openlocfilehash: cc51b04c31c02aabf25c9efb1e9cd975077811a4
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="create-a-linux-vm-using-the-azure-cli-20-preview-azpy"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure-CLI 2.0 Preview (az.py)
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Befehls [az vm create](/cli/azure/vm#create) über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) im Handumdrehen einen virtuellen Linux-Computer mit verwalteten Datenträgern und mit Datenträgern in nativen Speicherkonten bereitstellen.
-
-> [!NOTE] 
-> Bei der Vorschauversion der Azure-Befehlszeilenschnittstelle 2.0 handelt es sich um die nächste Generation unserer plattformübergreifenden Befehlszeilenschnittstelle. [Probieren Sie sie aus.](https://docs.microsoft.com/cli/azure/install-az-cli2)
->
-> Wenn Sie einen virtuellen Computer nicht mit der Vorschauversion der Azure-Befehlszeilenschnittstelle 2.0, sondern mit der bereits vorhandenen Azure CLI 1.0 erstellen möchten, lesen Sie unter [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
+# <a name="create-a-linux-vm-using-the-azure-cli-20"></a>Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Befehls [az vm create](/cli/azure/vm#create) per Azure CLI 2.0 im Handumdrehen einen virtuellen Linux-Computer mit verwalteten Datenträgern und mit Datenträgern in nativen Speicherkonten bereitstellen. Sie können diese Schritte auch per [Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 Zum Erstellen eines virtuellen Computers ist Folgendes erforderlich: 
 
 * Azure-Konto ([kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/))
-* Installierte [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2)
+* Installation von [Azure CLI 2.0](/cli/azure/install-az-cli2)
 * Anmeldung bei Ihrem Azure-Konto ([az login](/cli/azure/#login))
 
 (Ein virtueller Linux-Computer kann auch über das [Azure-Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereitgestellt werden.)

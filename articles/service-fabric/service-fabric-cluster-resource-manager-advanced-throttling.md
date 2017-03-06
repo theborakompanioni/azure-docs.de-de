@@ -17,6 +17,7 @@ ms.author: masnider
 translationtype: Human Translation
 ms.sourcegitcommit: dafaf29b6827a6f1c043af3d6bfe62d480d31ad5
 ms.openlocfilehash: 8a8419497bda3f1df523d6aff28028548abc155a
+ms.lasthandoff: 01/07/2017
 
 
 ---
@@ -76,9 +77,4 @@ In den meisten Fällen stellen wir fest, dass Kunden diese Drosselungen verwende
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen darüber, wie der Clusterressourcen-Manager die Auslastung im Cluster verwaltet und verteilt, finden Sie im Artikel zum [Lastenausgleich](service-fabric-cluster-resource-manager-balancing.md)
 * Der Clusterressourcen-Manager bietet zahlreiche Optionen zum Beschreiben des Clusters. Weitere Informationen hierzu finden Sie in diesem Artikel zum [Beschreiben eines Service Fabric-Clusters](service-fabric-cluster-resource-manager-cluster-description.md).
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

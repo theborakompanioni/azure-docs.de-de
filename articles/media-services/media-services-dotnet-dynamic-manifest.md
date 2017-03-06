@@ -17,6 +17,7 @@ ms.author: juliako;cenkdin
 translationtype: Human Translation
 ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
 ms.openlocfilehash: 07239a392438afd9807ce69fba657c27e853a219
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -133,10 +134,5 @@ In den folgenden Beispielen sehen Sie, wie Sie Ihren Streaming-URLs Filter hinzu
 
 ## <a name="see-also"></a>Weitere Informationen
 [Übersicht über dynamische Manifeste](media-services-dynamic-manifest-overview.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

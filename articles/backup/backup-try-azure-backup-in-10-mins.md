@@ -1,5 +1,5 @@
 ---
-title: Sichern von Dateien und Ordnern aus Windows in Azure unter Verwendung des Resource Manager-Bereitstellungsmodells | Microsoft-Dokumentation
+title: Sichern von Windows-Dateien und -Ordnern in Azure (Resource Manager) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie in einer Resource Manager-Bereitstellung Windows-Dateien und -Ordner in Azure sichern.
 services: backup
 documentationcenter: 
@@ -13,12 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 2/10/2017
+ms.date: 2/23/2017
 ms.author: markgal;
 translationtype: Human Translation
-ms.sourcegitcommit: 1a87af9efeb6c00f3c67f2c2d8d8f2e0491d248d
-ms.openlocfilehash: cb464ad823b9123ad0bfa66e0df64a616e3fb5d0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: b188affca609dd5ff3aa0d2cba3ec81c1c91888f
+ms.openlocfilehash: 916a4e837d003a73a1801dd25b8ebfbfdcd86312
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -27,17 +27,6 @@ In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner eines Windows Server-
 
 Falls Sie weitere Informationen zu Azure Backup erhalten möchten, können Sie diese [Übersicht](backup-introduction-to-azure-backup.md)lesen.
 
-Zum Sichern von Dateien und Ordnern in Azure sind die folgenden Aktivitäten erforderlich:
-
-![Schritt 1](./media/backup-try-azure-backup-in-10-mins/step-1.png) Registrieren Sie sich für ein Azure-Abonnement (falls Sie noch keins besitzen).<br>
-![Schritt 2](./media/backup-try-azure-backup-in-10-mins/step-2.png) Erstellen Sie einen Recovery Services-Tresor.<br>
-![Schritt 3](./media/backup-try-azure-backup-in-10-mins/step-3.png) Laden Sie die erforderlichen Dateien herunter.<br>
-![Schritt 4](./media/backup-try-azure-backup-in-10-mins/step-4.png) Installieren und registrieren Sie den Recovery Services-Agent.<br>
-![Schritt 5](./media/backup-try-azure-backup-in-10-mins/step-5.png) Sichern Sie Ihre Dateien und Ordner.
-
-![Sichern Ihres Windows-Computers mit Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
-
-## <a name="get-an-azure-subscription"></a>Erhalten eines Azure-Abonnements
 Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, mit dem Sie auf alle Azure-Dienste zugreifen können.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
@@ -71,6 +60,7 @@ Um Ihre Dateien und Ordner zu sichern, müssen Sie einen Recovery Services-Treso
   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden.
+
 8. Klicken Sie im unteren Bereich des Blatts für den Recovery Services-Tresor auf **Erstellen**.
 
     Die Erstellung des Recovery Services-Tresors kann mehrere Minuten dauern. Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor auch nach mehreren Minuten nicht angezeigt werden, klicken Sie auf **Aktualisieren**.

@@ -17,6 +17,7 @@ ms.author: muralikk
 translationtype: Human Translation
 ms.sourcegitcommit: 48ee2a2bd2ecd2f487748588ef2ad3138dd9983b
 ms.openlocfilehash: a113120381c4e83bd64a41fd30beb138cb1dd5fa
+ms.lasthandoff: 01/18/2017
 
 
 ---
@@ -407,9 +408,4 @@ Das WAImportExport-Tool liest und schreibt Dateien Batch für Batch, wobei ein B
 **XML**: Für jede Festplatte, die Sie mit dem WAImportExport-Tool vorbereiten, erstellt das Tool eine einzelne Journaldatei mit dem Namen „&lt;Laufwerk-ID&gt;.xml“, wobei Laufwerk-ID die Seriennummer des Laufwerks ist, die das Tool aus dem Datenträger liest. Sie benötigen die Journaldateien von allen Ihren Laufwerken, um den Importauftrag im Azure-Portal zu erstellen. Diese Journaldatei kann auch verwendet werden, um die Vorbereitung des Laufwerks nach Unterbrechung des Tools fortzusetzen.
 
 **JRN**: Die Journaldatei mit Suffix „.jrn“ enthält den Status für alle Kopiersitzungen einer Festplatte. Sie enthält außerdem die benötigten Informationen zum Erstellen des Importauftrags. Wenn das WAImportExport-Tool für die Sitzung ausgeführt wird, müssen Sie sowohl eine Journaldatei als auch eine Kopiersitzungs-ID angeben.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: ee3e7103bd647c2d8651ec912fbb764a342781e2
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -120,10 +121,5 @@ Berücksichtigen Sie die geschäftlichen Konsequenzen eines Anwendungsausfalls, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen. Der nächste Artikel in dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: eugenesh
 translationtype: Human Translation
 ms.sourcegitcommit: c98251147bca323d31213a102f607e995b37e0ec
 ms.openlocfilehash: 801a9d0e92a248d2e9843f13cfce74b948cf0d4b
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -796,9 +797,4 @@ Statuscode "204 Kein Inhalt" bei erfolgreicher Antwort.
 <td>Nicht unterstützt; Azure Search unterstützt derzeit nur primitive Typen und Zeichenfolgensammlungen</td>
 </tr>
 </table>
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

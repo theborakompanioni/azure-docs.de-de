@@ -1,5 +1,5 @@
 ---
-title: Testen von Azure Functions | Microsoft Docs
+title: Testen von Azure-Funktionen | Microsoft-Dokumentation
 description: Testen Sie Ihre Azure-Funktionen mithilfe von Postman, cURL und Node.js.
 services: functions
 documentationcenter: na
@@ -17,27 +17,28 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 translationtype: Human Translation
-ms.sourcegitcommit: 3603f58a9df1f0222a75b863ad2c1ab1b6e13fb2
-ms.openlocfilehash: c6868566e513c5cd2c76be3305ca6c9035d58acd
+ms.sourcegitcommit: 811d39a10cee3a602a43b6733d6743959cd02f45
+ms.openlocfilehash: 3795bfa395409fe3850f19cd351371cf07e42b58
+ms.lasthandoff: 02/21/2017
 
 
 ---
-# <a name="testing-azure-functions"></a>Testen von Azure Functions
-## <a name="overview"></a>Übersicht
-Dieses Thema veranschaulicht die verschiedenen Möglichkeiten zum Testen von Funktionen, die folgende allgemeine Ansätze enthalten:
+# <a name="testing-azure-functions"></a>Testen von Azure-Funktionen
 
-+ HTTP-basierte Tools, z.B. cURL, Postman und sogar einen Webbrowser für webbasierte Trigger 
-+ Speicher-Explorer zum Testen von auf Azure Storage basierenden Triggern
-+ Testregisterkarte im Funktionsportal
+Dieses Thema veranschaulicht die verschiedenen Möglichkeiten zum Testen von Funktionen einschließlich Nutzung der folgenden allgemeinen Ansätze:
+
++ HTTP-basierte Tools, z.B. cURL, Postman und sogar einen Webbrowser für webbasierte Trigger
++ Azure-Speicher-Explorer zum Testen von Triggern, die auf Azure Storage basieren
++ Testregisterkarte im Azure Functions-Portal
 + Per Timer ausgelöste Funktion
-+ Testen der Anwendung oder des Frameworks  
++ Testen der Anwendung oder des Frameworks
 
-Alle gezeigten Testmethoden verwenden eine HTTP-Trigger-Funktion, die Eingaben entweder über einen Abfrageparameter oder über den Anforderungstext akzeptiert. Sie erstellen diese Funktion im ersten Abschnitt.
+Alle diese Testmethoden verwenden eine HTTP-Trigger-Funktion, die Eingaben entweder über einen Abfragezeichenfolgen-Parameter oder über den Anforderungstext akzeptiert. Sie erstellen diese Funktion im ersten Abschnitt.
 
 ## <a name="create-a-function-for-testing"></a>Erstellen einer Funktion zum Testen
-In diesem Tutorial verwenden wir hauptsächlich eine leicht abgeänderte Version der Vorlage für die JavaScript-Funktion „HTTPTrigger“, die beim Erstellen einer neuen Funktion verfügbar ist.  Wenn Sie Hilfe zum Erstellen einer neuen Funktion benötigen, finden Sie im [Tutorial „Erstellen Sie Ihre erste Funktion in Azure Functions“](functions-create-first-azure-function.md) entsprechende Informationen.  Wählen Sie beim Erstellen der Testfunktion im [Azure-Portal] einfach die Vorlage für die **JavaScript-Funktion „HTTPTrigger“**.
+In diesem Tutorial verwenden wir hauptsächlich eine leicht abgeänderte Version der Vorlage für die JavaScript-Funktion HttpTrigger, die beim Erstellen einer Funktion verfügbar ist. Wenn Sie Hilfe zum Erstellen einer Funktion benötigen, nutzen Sie dieses [Tutorial](functions-create-first-azure-function.md). Wählen Sie beim Erstellen der Testfunktion im [Azure-Portal] die **HttpTrigger- JavaScript**-Vorlage.
 
-Die Standardvorlage für die Funktion ist im Grunde eine Hello World-Funktion, die den Namen aus dem Anforderungstext oder dem Abfragezeichenfolgen-Parameter `name=<your name>`zurückgibt.  Wir aktualisieren den Code, sodass Sie auch den Namen und eine Adresse als JSON-Inhalte im Anforderungstext bereitstellen können. Die Funktion gibt diese Informationen dann an den Client zurück, wenn sie verfügbar sind.   
+Die Standardvorlage für die Funktion ist im Grunde eine „Hello World“-Funktion, die den Namen aus dem Anforderungstext oder dem Abfragezeichenfolgen-Parameter `name=<your name>` zurückgibt.  Wir aktualisieren den Code, sodass Sie auch den Namen und eine Adresse als JSON-Inhalte im Anforderungstext bereitstellen können. Die Funktion gibt diese Informationen dann an den Client zurück, wenn sie verfügbar sind.   
 
 Aktualisieren Sie die Funktion mit dem folgenden Code, der für Tests verwendet wird:
 
@@ -87,19 +88,19 @@ function ProcessNewUserInformation(context, name, address) {
 Außerhalb des Azure-Portals stehen Ihnen verschiedene Tools zur Verfügung, die Sie zum Auslösen Ihrer Funktionen zum Testen verwenden können. Dazu gehören auf UI und auf Befehlszeilen basierende HTTP-Testtools, Azure-Speicherzugriffstools und sogar ein einfacher Webbrowser.
 
 ### <a name="test-with-a-browser"></a>Testen mit einem Browser
-Der Webbrowser ist eine einfache Möglichkeit zum Auslösen von Funktionen über HTTP. Sie können einen Browser für die GET-Anforderungen verwenden, die keine Textnutzlast erfordern und nur Abfrageparameter verwenden.
+Der Webbrowser ist eine einfache Möglichkeit zum Auslösen von Funktionen über HTTP. Sie können einen Browser für die GET-Anforderungen verwenden, die keine Textnutzlast erfordern und nur Abfragezeichenfolgen-Parameter verwenden.
 
-Kopieren Sie zum Testen der oben definierten Funktion die **Funktions-URL** aus dem Portal. Diese weist folgendes Format auf:
+Kopieren Sie zum Testen der bereits definierten Funktion die **Funktions-URL** aus dem Portal. Sie hat folgendes Format:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Fügen Sie den `name`-Parameter der Abfragezeichenfolge mithilfe eines tatsächlichen Namens für den `<Enter a name here>`-Platzhalter an. 
+Fügen Sie den `name`-Parameter an die Abfragezeichenfolge. Verwenden Sie einen tatsächlichen Namen für den `<Enter a name here>`-Platzhalter.
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
 Fügen Sie die URL in Ihren Browser ein, und Sie sollten eine Antwort ähnlich der folgenden erhalten.
 
-![](./media/functions-test-a-function/browser-test.png)
+![Screenshot der Chrome-Browserregisterkarte mit der Testantwort](./media/functions-test-a-function/browser-test.png)
 
 In diesem Beispiel umschließt der Chrome-Browser die zurückgegebene Zeichenfolge in XML. Andere Browser zeigen einfach den Zeichenfolgenwert an.
 
@@ -127,21 +128,21 @@ Das empfohlene Tool zum Testen der meisten Funktionen ist Postman, das in den Ch
 So testen die Funktion mit einem Anforderungstext in Postman:
 
 1. Starten Sie Postman über die Schaltfläche **Apps** links oben in einem Chrome-Browserfenster.
-2. Kopieren Sie Ihre **Funktions-URL** , und fügen Sie sie in Postman ein. Sie enthält den Abfragezeichenfolgen-Parameter für den Zugriffscode.
+2. Kopieren Sie Ihre **Funktions-URL**, und fügen Sie sie in Postman ein. Sie enthält den Abfragezeichenfolgen-Parameter für den Zugriffscode.
 3. Ändern Sie die HTTP-Methode zu **POST**.
 4. Klicken Sie auf **Text** > **unformatiert**, und fügen Sie einen JSON-Anforderungstext ähnlich dem folgenden hinzu:
-    
+
     ```json
     {
         "name" : "Wes testing with Postman",
-        "address" : "Seattle, W.A. 98101"
+        "address" : "Seattle, WA 98101"
     }
     ```
 5. Klicken Sie auf **Send**.
 
 Die folgende Abbildung zeigt den Test der einfachen Rückgabefunktion in diesem Tutorial.
 
-![](./media/functions-test-a-function/postman-test.png)
+![Screenshot der Postman-Benutzeroberfläche](./media/functions-test-a-function/postman-test.png)
 
 Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine Ausgabe ähnlich der folgenden protokolliert:
 
@@ -155,24 +156,24 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
-### <a name="test-with-curl-from-the-command-line"></a>Testen mit cURL über die Befehlszeile 
-Beim Testen von Software muss häufig nur die Befehlszeile berücksichtigt werden, um Ihre Anwendung zu debuggen. Dies gilt auch für Funktionen. Beachten Sie, dass cURL auf Linux-basierten Systemen standardmäßig verfügbar ist. Unter Windows müssen Sie das [cURL-Tool](https://curl.haxx.se/) erst herunterladen und installieren. 
+### <a name="test-with-curl-from-the-command-line"></a>Testen mit cURL über die Befehlszeile
+Beim Testen von Software muss häufig nur die Befehlszeile berücksichtigt werden, um Ihre Anwendung zu debuggen. Dies gilt auch für das Testen von Funktionen. Beachten Sie, dass cURL auf Linux-basierten Systemen standardmäßig verfügbar ist. Unter Windows müssen Sie das [cURL-Tool](https://curl.haxx.se/) erst herunterladen und installieren.
 
-Kopieren Sie zum Testen der obenstehenden Funktion die **Funktions-URL** aus dem Portal. Diese weist folgendes Format auf:
+Kopieren Sie zum Testen der bereits definierten Funktion die **Funktions-URL** aus dem Portal. Sie hat folgendes Format:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Mit dieser URL wird Ihre Funktion ausgelöst. Wir können dies testen, indem wir mithilfe des cURL-Befehls in der Befehlszeile eine GET-Anforderung (`-G` oder `--get`)-Anforderung für die Funktion senden:
+Dies ist die URL zum Auslösen Ihrer Funktion. Testen Sie dies, indem Sie mithilfe des cURL-Befehls in der Befehlszeile eine GET-Anforderung (`-G` oder `--get`) für die Funktion senden:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Dieses spezielle Beispiel oben erfordert einen Abfragezeichenfolgen-Parameter, der als Daten (`-d`) in den cURL-Befehl übergeben werden kann:
+Dieses spezielle Beispiel erfordert einen Abfragezeichenfolgen-Parameter, der dem cURL-Befehl in Form von Daten (`-d`) übergeben werden kann:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
 
 Führen Sie den Befehl aus, und Sie erhalten die folgende Ausgabe der Funktion in der Befehlszeile:
 
-![](./media/functions-test-a-function/curl-test.png)
+![Screenshot der Ausgabe in der Befehlszeile](./media/functions-test-a-function/curl-test.png)
 
 Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine Ausgabe ähnlich der folgenden protokolliert:
 
@@ -181,35 +182,35 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-a-blob-trigger-using-storage-explorer"></a>Testen eines Blobtriggers mit dem Speicher-Explorer
-Sie können eine Blobtriggerfunktion mit dem [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/)testen.
+### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testen eines Blobtriggers mit dem Speicher-Explorer
+Sie können eine Blobtriggerfunktion mit dem [Azure-Speicher-Explorer](http://storageexplorer.com/) testen.
 
-1. Erstellen Sie im [Azure-Portal] für Ihre Funktionen-App eine neue C#-, F#- oder JavaScript-Blobtriggerfunktion. Legen Sie den zu überwachenden Pfad auf den Namen Ihres Blobcontainers fest. Beispiel:
+1. Erstellen Sie im [Azure-Portal] für Ihre Funktionen-App eine C#-, F#- oder JavaScript-Blobtriggerfunktion. Legen Sie den zu überwachenden Pfad auf den Namen Ihres Blobcontainers fest. Beispiel:
 
         files
 2. Klicken Sie auf die Schaltfläche **+** , um das zu verwendende Speicherkonto auszuwählen oder zu erstellen. Klicken Sie dann auf **Erstellen**.
 3. Erstellen und speichern Sie eine Textdatei mit folgendem Inhalt:
 
         A text file for blob trigger function testing.
-4. Führen Sie den [Microsoft Azure Storage Explorer](http://storageexplorer.com/) aus, und stellen Sie eine Verbindung mit dem Blobcontainer im überwachten Speicherkonto her.
-5. Klicken Sie auf die Schaltfläche **Hochladen** , und laden Sie die Textdatei hoch.
+4. Führen Sie den [Azure-Speicher-Explorer](http://storageexplorer.com/) aus, und stellen Sie eine Verbindung mit dem Blobcontainer im überwachten Speicherkonto her.
+5. Klicken Sie auf **Hochladen**, um die Textdatei hochzuladen.
 
-    ![](./media/functions-test-a-function/azure-storage-explorer-test.png)
+    ![Screenshot des Speicher-Explorers](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
-    Der Standardcode der Blobtriggerfunktion meldet die Verarbeitung des Blobs in den Protokollen:
+Der Standardcode der Blobtriggerfunktion meldet die Verarbeitung des Blobs in den Protokollen:
 
-        2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
-        2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
-        2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
-        2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+    2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
+    2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+    2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
+    2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
 ## <a name="test-a-function-within-functions"></a>Testen einer Funktion innerhalb von Funktionen
 Das Azure Functions-Portal ist so gestaltet, dass Sie per HTTP und per Timer ausgelöste Funktionen testen können. Sie können auch Funktionen zum Auslösen anderer Funktionen erstellen, die Sie testen.
 
 ### <a name="test-with-the-functions-portal-run-button"></a>Testen mit der Schaltfläche „Ausführen“ des Functions-Portals
-Das Portal bietet die Schaltfläche **Ausführen** , mit der Sie einige eingeschränkte Tests durchführen können. Sie können mit der Schaltfläche „Ausführen“ einen Anforderungstext bereitstellen, das Bereitstellen eines Abfragezeichenfolgen-Parameters oder das Aktualisieren von Anforderungsheadern sind jedoch nicht möglich.
+Mit der Schaltfläche **Ausführen** des Portals können Sie einige eingeschränkte Tests durchführen. Sie können mit der Schaltfläche einen Anforderungstext bereitstellen, das Bereitstellen eines Abfragezeichenfolgen-Parameters oder das Aktualisieren von Anforderungsheadern sind jedoch nicht möglich.
 
-Testen Sie die zuvor erstellte HTTP-Triggerfunktion durch das Hinzufügen einer ähnlichen JSON-Zeichenfolge wie der folgenden im Feld **Anforderungstext**, und klicken Sie dann auf die Schaltfläche **Ausführen**.
+Testen Sie die zuvor erstellte HTTP-Triggerfunktion durch das Hinzufügen einer ähnlichen JSON-Zeichenfolge wie der folgenden im Feld **Anforderungstext**. Klicken Sie dann auf die Schaltfläche **Ausführen**.
 
 ```json
 {
@@ -232,43 +233,43 @@ Im Portalfenster **Protokolle** wird während der Ausführung der Funktion eine 
 
 
 ### <a name="test-with-a-timer-trigger"></a>Testen mit einem Trigger mit Timer
-Einige Funktionen können mit den zuvor erwähnten Tools nicht ordnungsgemäß getestet werden. Dies gilt beispielsweise für eine Warteschlangen-Triggerfunktion, die ausgeführt wird, wenn eine Nachricht im [Azure-Warteschlangenspeicher](../storage/storage-dotnet-how-to-use-queues.md)abgelegt wird. Sie können jederzeit Code schreiben, um eine Nachricht in der Warteschlange zu platzieren; ein Beispiel dafür in einem Konsolenprojekt wird unten bereitgestellt. Zum direkten Testen mit Funktionen ist jedoch ein anderer Ansatz möglich.  
+Einige Funktionen können mit den zuvor erwähnten Tools nicht angemessen getestet werden. Dies gilt beispielsweise für eine Warteschlangen-Triggerfunktion, die ausgeführt wird, wenn eine Nachricht im [Azure-Warteschlangenspeicher](../storage/storage-dotnet-how-to-use-queues.md) abgelegt wird. Sie können jederzeit Code schreiben, um eine Nachricht in der Warteschlange zu platzieren; ein Beispiel dafür in einem Konsolenprojekt wird später in diesem Artikel präsentiert. Zum direkten Testen von Funktionen ist jedoch ein anderer Ansatz möglich.  
 
-Sie können einen Trigger mit Timer verwenden, der mit einer Bindung der Warteschlangenausgabe konfiguriert ist. Der Code für den Trigger mit Timer kann die Testnachrichten dann in die Warteschlange schreiben. In diesem Abschnitt wird ein Beispiel schrittweise erläutert.
+Sie können einen Trigger mit Timer verwenden, der mit einer Warteschlangen-Ausgabenbindung konfiguriert ist. Der Code für den Trigger mit Timer kann die Testnachrichten dann in die Warteschlange schreiben. In diesem Abschnitt wird ein Beispiel beschrieben.
 
 Ausführlichere Informationen zur Verwendung von Bindungen mit Azure Functions finden Sie in der [Entwicklerreferenz zu Azure Functions](functions-reference.md).
 
-#### <a name="create-queue-trigger-for-testing"></a>Erstellen des Warteschlangentrigger für den Test
-Um diesen Ansatz zu veranschaulichen, erstellen wir zunächst eine Warteschlangen-Triggerfunktion, die für eine Warteschlange mit dem Namen `queue-newusers`getestet werden soll. Diese Funktion verarbeitet Informationen zu Name und Adresse für einen neuen Benutzer, die im Azure-Warteschlangenspeicher abgelegt werden.
+#### <a name="create-a-queue-trigger-for-testing"></a>Erstellen eines Warteschlangentriggers für den Test
+Um diesen Ansatz zu veranschaulichen, erstellen wir zunächst eine Warteschlangen-Triggerfunktion, die für eine Warteschlange mit dem Namen `queue-newusers` getestet werden soll. Diese Funktion verarbeitet Informationen zu Name und Adresse für einen neuen Benutzer, die im Warteschlangenspeicher abgelegt werden.
 
 > [!NOTE]
-> Wenn Sie den Namen einer anderen Warteschlange verwenden, stellen Sie sicher, dass der angegebene Name den Regeln für das [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx) entspricht.  Andernfalls erhalten Sie den Statuscode „HTTP 400“ (Ungültige Anforderung).
+> Wenn Sie den Namen einer anderen Warteschlange verwenden, stellen Sie sicher, dass der angegebene Name den Regeln für das [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/dd179349.aspx) entspricht. Andernfalls erhalten Sie eine Fehlermeldung.
 >
 >
 
-1. Klicken Sie im [Azure-Portal] für Ihre Functions-App auf **Neue Funktion** > **QueueTrigger – C#**.
-2. Geben Sie den Namen der Warteschlange ein, die von der Warteschlangenfunktion überwacht werden soll.
+1. Klicken Sie im [Azure-Portal] für Ihre Funktionen-App auf **Neue Funktion** > **QueueTrigger - C#**.
+2. Geben Sie den Namen der Warteschlange ein, die von der Warteschlangenfunktion überwacht werden soll:
 
         queue-newusers
-3. Klicken Sie auf die Schaltfläche **+** (hinzufügen), um das zu verwendende Speicherkonto auszuwählen oder zu erstellen. Klicken Sie dann auf **Erstellen**.
+3. Klicken Sie auf die Schaltfläche **+** , um das zu verwendende Speicherkonto auszuwählen oder zu erstellen. Klicken Sie dann auf **Erstellen**.
 4. Lassen Sie dieses Portalbrowserfenster geöffnet, damit Sie die Protokolleinträge für den Standardvorlagencode der Warteschlangenfunktion überwachen können.
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Erstellen eines Triggers mit Timer, um eine Nachricht in der Warteschlange abzulegen
-1. Öffnen Sie das [Azure-Portal] in einem neuen Browserfenster, und navigieren Sie zu Ihrer Function-App.
-2. Klicken Sie auf **Neue Funktion** > **TimerTrigger – C#**. Geben Sie einen Cron-Ausdruck ein, um festzulegen, wie oft der Timercode beim Testen der Warteschlangenfunktion ausgeführt wird. Klicken Sie dann auf **Erstellen**. Wenn Sie möchten, dass der Test alle 30 Sekunden ausgeführt wird, können Sie den folgenden [CRON-Ausdruck](https://wikipedia.org/wiki/Cron#CRON_expression)verwenden:
+1. Öffnen Sie das [Azure-Portal] in einem neuen Browserfenster, und navigieren Sie zu Ihrer Funktionen-App.
+2. Klicken Sie auf **Neue Funktion** > **TimerTrigger – C#**. Geben Sie einen Cron-Ausdruck ein, um festzulegen, wie oft der Timercode Ihre Warteschlangenfunktion testet. Klicken Sie dann auf **Erstellen**. Wenn Sie möchten, dass der Test alle 30 Sekunden ausgeführt wird, können Sie den folgenden [CRON-Ausdruck](https://wikipedia.org/wiki/Cron#CRON_expression)verwenden:
 
         */30 * * * * *
 3. Klicken Sie auf die Registerkarte **Integrieren** für Ihren neuen Trigger mit Timer.
-4. Klicken Sie unter **Ausgabe** auf die Schaltfläche **+ Neue Ausgabe**. Klicken Sie dann auf die Schaltflächen **Warteschlange** und **Auswählen**.
-5. Hinweis: Sie verwenden den Namen des **Warteschlangennachrichtenobjekts** im Code für die Timerfunktion.
+4. Klicken Sie unter **Ausgabe** auf **+ Neue Ausgabe**. Klicken Sie dann auf **Warteschlange** und **Auswählen**.
+5. Notieren Sie den Namen, den Sie für das **Warteschlangennachrichtenobjekt** verwenden. Sie verwenden ihn im Timerfunktionscode.
 
         myQueue
 6. Geben Sie den Namen der Warteschlange ein, an die die Nachricht gesendet wird:
 
         queue-newusers
-7. Klicken Sie auf die Schaltfläche **+** (hinzufügen), um das Speicherkonto auszuwählen, das Sie zuvor mit dem Warteschlangentrigger verwendet haben. Klicken Sie anschließend auf **Save**.
+7. Klicken Sie auf die Schaltfläche **+**, um das Speicherkonto auszuwählen, das Sie zuvor mit dem Warteschlangentrigger verwendet haben. Klicken Sie anschließend auf **Save**.
 8. Klicken Sie auf die Registerkarte **Entwickeln** für Ihren Trigger mit Timer.
-9. Sie können den folgenden Code für die C#-Timerfunktion verwenden, sofern Sie wie oben gezeigt den gleichen Warteschlangennachricht-Objektnamen verwendet haben. Klicken Sie dann auf **Speichern**
+9. Sie können den folgenden Code für die C#-Timerfunktion verwenden, sofern Sie den gleichen Warteschlangennachricht-Objektnamen wie bereits gezeigt verwendet haben. Klicken Sie anschließend auf **Save**.
 
     ```cs
     using System;
@@ -285,7 +286,7 @@ Um diesen Ansatz zu veranschaulichen, erstellen wir zunächst eine Warteschlange
     }
     ```
 
-Die C#-Timerfunktion wird zu diesem Zeitpunkt alle 30 Sekunden ausgeführt, wenn Sie den Cron-Beispielausdruck verwendet haben. Das Protokoll für die Timerfunktion meldet jede Ausführung:
+Die C#-Timerfunktion wird zu diesem Zeitpunkt alle 30 Sekunden ausgeführt, wenn Sie den Cron-Beispielausdruck verwendet haben. Das Protokoll für die Timerfunktion meldet jede Ausführung:
 
     2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
@@ -293,7 +294,7 @@ Die C#-Timerfunktion wird zu diesem Zeitpunkt alle 30 Sekunden ausgeführt, wen
     2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
 
-In Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einzelnen Nachrichten angezeigt:
+Im Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einzelnen Nachrichten angezeigt:
 
     2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
@@ -301,13 +302,13 @@ In Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einz
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 ## <a name="test-a-function-with-code"></a>Testen einer Funktion mit Code
-In einigen Fällen müssen Sie eine externe Anwendung oder ein Framework erstellen, um Ihre Funktionen zu testen.
+Vielleicht müssen Sie eine externe Anwendung oder ein Framework erstellen, um Ihre Funktionen zu testen.
 
-### <a name="test-a-http-trigger-function-with-code-nodejs"></a>Testen einer HTTP-Triggerfunktion mit Code: Node.js
+### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Testen einer HTTP-Triggerfunktion mit Code: Node.js
 Sie können eine Node.js-App verwenden, um eine HTTP-Anforderung zum Testen Ihrer Funktion auszuführen.
 Legen Sie fest:
 
-* Den Host Ihrer Function-App als `host` in den Anforderungsoptionen
+* Den Host Ihrer Funktionen-App in den Anforderungsoptionen als `host`.
 * Den Namen Ihrer Funktion im `path`
 * Ihren Zugriffscode (`<your code>`) im `path`
 
@@ -381,7 +382,7 @@ Wie bereits erwähnt, können Sie einen Warteschlangentrigger testen, indem Sie 
 Zum Testen dieses Codes in einer Konsolen-App müssen Sie folgende Schritte durchführen:
 
 * [Konfigurieren Sie die Speicherverbindungszeichenfolge in der Datei „app.config“](../storage/storage-dotnet-how-to-use-queues.md).
-* Diese Code akzeptiert Name und Adresse für einen neuen Benutzer während der Laufzeit als Befehlszeilenargumente. Übergeben Sie einen `name` und eine `address` als Parameter an die App. Beispiel: `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`
+* Übergeben Sie einen `name` und eine `address` als Parameter an die App. Beispiel: `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Dieser Code akzeptiert Name und Adresse für einen neuen Benutzer während der Laufzeit als Befehlszeilenargumente.)
 
 C#-Beispielcode:
 
@@ -431,7 +432,7 @@ static void Main(string[] args)
 }
 ```
 
-In Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einzelnen Nachrichten angezeigt:
+Im Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einzelnen Nachrichten angezeigt:
 
     2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
@@ -442,9 +443,4 @@ In Browserfenster für die Warteschlangenfunktion wird die Verarbeitung der einz
 <!-- URLs. -->
 
 [Azure-Portal]: https://portal.azure.com
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

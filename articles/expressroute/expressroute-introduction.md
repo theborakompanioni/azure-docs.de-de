@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2017
+ms.date: 02/28/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: 6aed200529f8f21f15d9b77a403f9ef07582d449
-ms.openlocfilehash: 975c8fbc9afdc7b01da85f56a075aa44dade9dde
+ms.sourcegitcommit: 280a17677714a522ca978a6eb6baf3e70f853d7a
+ms.openlocfilehash: 5b0865310076557c8f7ce6f9d9b553950854407c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,7 +36,7 @@ Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Poi
 * Dynamisches Routing zwischen Ihrem Netzwerk und Microsoft mit Protokollen nach Branchenstandard (BGP).
 * Integrierte Redundanz an jedem Peeringort, um eine höhere Zuverlässigkeit zu erzielen.
 * [SLA](https://azure.microsoft.com/support/legal/sla/)zur Verbindungsbetriebszeit.
-* Dienstqualität und Unterstützung für mehrere Klassen von Diensten für spezielle Anwendungen, z. B. Skype for Business.
+* QoS-Unterstützung für Skype for Business.
 
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
 
@@ -108,8 +109,4 @@ Sie können ein Abrechnungsmodell auswählen, das für Sie am besten geeignet is
   * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-portal-resource-manager.md)
   * [Konfigurieren des Routings](expressroute-howto-routing-portal-resource-manager.md)
   * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-portal-resource-manager.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
 

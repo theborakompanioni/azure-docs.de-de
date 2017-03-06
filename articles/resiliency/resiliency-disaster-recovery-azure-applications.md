@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: d0ea8137dcdd72cf09806006bdca4c24d6f1c1de
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -284,10 +285,5 @@ Es gibt verschiedene Techniken, mit denen Sie Notfallwiederherstellungspläne te
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel ist Teil einer Reihe von Artikeln mit Fokus auf [Notfallwiederherstellung und hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-disaster-recovery-high-availability-azure-applications.md). Der vorangegangene Artikel dieser Reihe ist [Hohe Verfügbarkeit für in Microsoft Azure erstellte Anwendungen](resiliency-high-availability-azure-applications.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

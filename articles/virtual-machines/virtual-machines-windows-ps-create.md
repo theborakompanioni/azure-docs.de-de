@@ -13,18 +13,26 @@ ms.topic: get-started-article
 ms.date: 02/14/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: c1262b7708918cbdc8ce35f3e65a47a04797f195
-ms.openlocfilehash: 8a67352a65e755f2177fb4870f34c41440bf90a2
+ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
+ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
+ms.lasthandoff: 02/23/2017
 
 ---
 
 # <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Erstellen einer Windows-VM mit dem Resource Manager und PowerShell
 
-In diesem Artikel ist beschrieben, wie Sie einen virtuellen Azure-Computer, der Windows Server ausführt, sowie die dafür erforderlichen Ressourcen mithilfe von [Resource Manager](../azure-resource-manager/resource-group-overview.md) und PowerShell schnell erstellen. Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen. Die Durchführung dauert etwa 30 Minuten. Ersetzen Sie die Beispielparameterwerte in den Befehlen durch Namen, die für Ihre Umgebung sinnvoll sind.
+In diesem Artikel wird beschrieben, wie Sie einen virtuellen Azure-Computer mit Windows Server sowie die dafür erforderlichen Ressourcen mithilfe von [Resource Manager](../azure-resource-manager/resource-group-overview.md) und Azure PowerShell schnell erstellen.  
+
+Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen. Die Durchführung dauert etwa 30 Minuten. Ersetzen Sie die Beispielparameterwerte in den Befehlen durch Namen, die für Ihre Umgebung sinnvoll sind.
 
 ## <a name="step-1-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
 
 Unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs) erfahren Sie, wie Sie die neueste Version von Azure PowerShell installieren, Ihr Abonnement auswählen und sich bei Ihrem Konto anmelden.
+
+> [!NOTE]
+> Unter Umständen müssen Sie Azure PowerShell neu installieren, um die in diesem Artikel beschriebene Funktionalität zu nutzen. Die Managed Disks-Funktionen sind in Version 3.5 und höher enthalten.
+> 
+> 
 
 ## <a name="step-2-create-a-resource-group"></a>Schritt 2: Erstellen einer Ressourcengruppe
 
@@ -175,10 +183,5 @@ Nachdem Sie nun alle Komponenten eingerichtet haben, können Sie den virtuellen 
 * Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) lesen.
 * Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Nutzen Sie die Vorteile der vorlagenbasierten Erstellung virtueller Computer, indem Sie sich die Informationen unter [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: b92f954680603891ced503a1134791312b5214f0
 ms.openlocfilehash: 77e106d9170fc49d66d322bd9c92bf0e14869259
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -445,10 +446,5 @@ Projekt einchecken und veröffentlichen: Checkt ein vorhandenes Projekt auf Ihre
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

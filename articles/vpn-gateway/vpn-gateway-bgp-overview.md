@@ -18,6 +18,7 @@ ms.author: yushwang
 translationtype: Human Translation
 ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
 ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
+ms.lasthandoff: 02/09/2017
 
 
 ---
@@ -55,10 +56,5 @@ Das folgende Diagramm veranschaulicht ein Beispiel für eine Mehrfachhop-Topolog
 
 ## <a name="next-steps"></a>Nächste Schritte
 Schritte zum Konfigurieren von BGP für standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen finden Sie unter [Konfigurieren von BGP auf Azure VPN Gateways mithilfe von Azure Resource Manager und PowerShell](vpn-gateway-bgp-resource-manager-ps.md) .
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

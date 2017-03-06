@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 6df92e3c43a9e7ae2e13f21b05cbb94088c46516
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -193,10 +194,5 @@ Die mit Azure HDInsight verknüpften Daten werden standardmäßig in Azure Blob 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als [Technischer Leitfaden zur Resilienz in Azure](resiliency-technical-guidance.md)dienen. Der nächste Artikel dieser Reihe ist [Wiederherstellung nach einer regionsweiten Dienstunterbrechung](resiliency-technical-guidance-recovery-loss-azure-region.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

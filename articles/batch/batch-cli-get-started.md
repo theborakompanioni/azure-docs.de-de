@@ -14,13 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 01/23/2017
 ms.author: tamram
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bf22cd3426e936c8d74377f59443e5e1a6834286
-ms.openlocfilehash: a2efffa5e250e02fec1a1834c9256ffef79b9be3
+ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
+ms.openlocfilehash: e4a3f3f3bca06e66f39f5acd8b4571b4a498ed83
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="get-started-with-azure-batch-cli"></a>Erste Schritte mit der Azure Batch-Befehlszeilenschnittstelle
+# <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
+
 Die plattformübergreifende Azure-Befehlszeilenschnittstelle (Azure Command-Line Interface, Azure CLI) ermöglicht die Verwaltung Ihrer Batch-Konten und -Ressourcen wie Pools, Aufträge und Aufgaben in Linux-, Mac- und Windows-Befehlsshells. Mit der Azure-Befehlszeilenschnittstelle können Sie viele der Aufgaben durchführen und skripten, die Sie mit den Batch-APIs, dem Azure-Portal und den Batch PowerShell-Cmdlets durchführen.
 
 Diesem Artikel liegt die Version 0.10.5 der Azure-Befehlszeilenschnittstelle zugrunde.
@@ -270,9 +273,4 @@ Dieser Abschnitt enthält Ressourcen zur Behandlung von Problemen mit der Azure-
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

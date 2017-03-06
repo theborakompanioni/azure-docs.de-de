@@ -4,6 +4,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: d59ebef3cda36ba048b844f0cd2326fff66b4aa5
 ms.openlocfilehash: 4c7b8965b7fe5de7a8ff839be2b9e555bd8d502c
+ms.lasthandoff: 02/17/2017
 
 
 
@@ -56,10 +57,5 @@ Die DocumentDB-Indizierung ist für Speichereffizienz und Mehrinstanzfähigkeit 
 * Herunterladen des Artikels zur [von Schema unabhängigen Indizierung mit Azure DocumentDB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), der auf der 41. internationalen VLDB-Konferenz vom 31.08. bis 04.09.2015 vorgestellt wird.
 * [Abfragen mit DocumentDB-SQL](documentdb-sql-query.md)
 * Weitere Informationen zum Anpassen des DocumentDB-Indexes finden Sie [hier](documentdb-indexing-policies.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

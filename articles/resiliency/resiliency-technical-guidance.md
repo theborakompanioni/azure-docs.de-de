@@ -17,6 +17,7 @@ ms.author: aglick
 translationtype: Human Translation
 ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
 ms.openlocfilehash: 7618f94574fd02d29a55ccbe8723a0228ad64f7f
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -62,10 +63,5 @@ Die Informationen sind in folgende Artikel gegliedert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Dieser Artikel gehört zu einer Reihe von Artikeln, die als technischer Leitfaden zur Resilienz in Azure fungieren. Wenn Sie an anderen Artikeln dieser Serie interessiert sind, ist [Wiederherstellung nach lokalen Fehlern](resiliency-technical-guidance-recovery-local-failures.md)ein guter Einstiegspunkt.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

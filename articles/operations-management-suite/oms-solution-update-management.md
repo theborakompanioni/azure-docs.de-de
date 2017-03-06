@@ -12,12 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 02/28/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: ca1e8b9ef8c7543c2b21441c761b0c309d22f202
-ms.openlocfilehash: e148fbe6e27eef747ad757fea4be038d3b662f87
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: fa9b427afff2c12babde30aa354e59d31c8f5b2c
+ms.openlocfilehash: 219fe64481df2c5c5cbfe622afdab11dcc1b7100
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -39,7 +39,7 @@ Mit der Lösung für die Updateverwaltung in OMS können Sie Updates für Ihre W
 Führen Sie die folgenden Schritte aus, um die Lösung für die Updateverwaltung dem OMS-Arbeitsbereich und Linux-Agents hinzuzufügen. Windows-Agents werden automatisch ohne weitere Konfiguration hinzugefügt.
 
 > [!NOTE]
-> Wenn Sie derzeit diese Lösung aktivieren, werden alle mit dem OMS-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um Runbooks zu unterstützen, die Teil dieser Lösung sind.  Der Computer ist jedoch für keine Hybrid Worker-Gruppen registriert, die Sie in Ihrem Automation-Konto erstellt haben, und Sie können ihn nicht zu einer Hybrid Worker-Gruppe hinzufügen, um eigene Runbooks auszuführen.  Wenn ein Windows-Computer bereits als Hybrid Runbook Worker festgelegt und mit dem OMS-Arbeitsbereich verbunden ist, müssen Sie ihn aus dem OMS-Arbeitsbereich entfernen, bevor Sie die Lösung hinzufügen, um sicherzustellen, dass Ihre Runbooks wie erwartet funktionieren.  
+> Wenn Sie diese Lösung aktivieren, werden alle mit dem OMS-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um Runbooks zu unterstützen, die in dieser Lösung enthalten sind.  Es wird aber keine Registrierung für Hybrid Worker-Gruppen durchgeführt, die Sie in Ihrem Automation-Konto ggf. bereits definiert haben.  Sie kann einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden.  Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.   
 
 1. Fügen Sie mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../log-analytics/log-analytics-add-solutions.md) beschriebenen Verfahrens Ihrem OMS-Arbeitsbereich die Lösung für die Updateverwaltung hinzu.  
 2. Wählen Sie im OMS-Portal die Option **Einstellungen** und dann **Verbundene Quellen**.  Notieren Sie sich die **Arbeitsbereich-ID** und den **Primären Schlüssel** oder **Sekundären Schlüssel**.
