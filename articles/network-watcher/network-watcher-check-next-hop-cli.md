@@ -39,6 +39,8 @@ In diesem Szenario verwenden Sie die Azure CLI, um den Typ und die IP-Adresse de
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen. Ferner wird davon ausgegangen, dass eine Ressourcengruppe mit einem gültigen virtuellen Computer vorhanden ist und verwendet werden kann.
 
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
 ## <a name="scenario"></a>Szenario
 
 In dem in diesem Artikel beschriebenen Szenario wird „Nächster Hop“ verwendet, ein Network Watcher-Feature, mit dem der Typ und die IP-Adresse des nächsten Hops für eine Ressource ermittelt werden können. Weitere Informationen zu „Nächster Hop“ finden Sie unter [Übersicht über „Nächster Hop“](network-watcher-next-hop-overview.md).

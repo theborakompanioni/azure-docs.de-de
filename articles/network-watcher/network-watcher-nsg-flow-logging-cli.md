@@ -33,6 +33,8 @@ ms.lasthandoff: 02/23/2017
 
 Datenflussprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Datenflussprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
 
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+
 ## <a name="enable-network-security-group-flow-logs"></a>Aktivieren von Datenflussprotokollen für Netzwerksicherheitsgruppen
 
 Der Befehl zum Aktivieren von Datenflussprotokollen wird im folgenden Beispiel gezeigt:
