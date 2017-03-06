@@ -1,10 +1,10 @@
 ---
-title: Was sind benutzerdefinierte Routen und IP-Weiterleitung?
-description: "Erfahren Sie, wie benutzerdefinierte Routen (User Defined Routes, UDR) und die IP-Weiterleitung zum Weiterleiten von Datenverkehr an virtuelle Netzwerkgeräte in Azure verwendet werden."
+title: Benutzerdefinierte Routen und IP-Weiterleitung in Azure | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie benutzerdefinierte Routen (User Defined Routes, UDR) und die IP-Weiterleitung zum Weiterleiten von Datenverkehr an virtuelle Netzwerkgeräte in Azure konfigurieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 ms.assetid: c39076c4-11b7-4b46-a904-817503c4b486
 ms.service: virtual-network
@@ -14,13 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d0b8e8ec88c39ce18ddfd6405faa7c11ab73f878
-ms.openlocfilehash: 673ce33f0f0836c3df3854b0e6368a6215ee6f5f
+ms.sourcegitcommit: c9996d2160c4082c18e9022835725c4c7270a248
+ms.openlocfilehash: 555939d6181d43d89a2d355744b74887d41df6ff
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-are-user-defined-routes-and-ip-forwarding"></a>Was sind benutzerdefinierte Routen und IP-Weiterleitung?
+# <a name="user-defined-routes-and-ip-forwarding"></a>Benutzerdefinierte Routen und IP-Weiterleitung
+
 Wenn Sie virtuelle Computer in einem virtuellen Netzwerk (VNet) in Azure hinzufügen, werden Sie feststellen, dass die virtuellen Computer automatisch über das Netzwerk miteinander kommunizieren können. Sie müssen kein Gateway angeben, auch wenn die virtuellen Computer sich in unterschiedlichen Subnetzen befinden. Das gleiche gilt für die Kommunikation zwischen den virtuellen Computern und dem öffentlichen Internet und sogar für das lokale Netzwerk, wenn eine Hybridverbindung zwischen Azure und Ihrem eigenen Rechenzentrum vorhanden ist.
 
 Dieser Kommunikationsfluss ist möglich, weil Azure eine Reihe von Systemrouten verwendet, um den IP-Datenverkehr zu definieren. Mit Systemrouten kann der Kommunikationsfluss in den folgenden Szenarien gesteuert werden:
@@ -53,8 +56,8 @@ Pakete werden über ein TCP/IP-Netzwerk weitergeleitet, das auf einer Routentabe
 | Eigenschaft | Beschreibung | Einschränkungen | Überlegungen |
 | --- | --- | --- | --- |
 | Adresspräfix |Das Ziel-CIDR, das für die Route gilt, z. B. 10.1.0.0/16. |Dies muss ein gültiger CIDR-Bereich sein, der Adressen im öffentlichen Internet, Azure Virtual Network oder lokalen Rechenzentrum repräsentiert. |Stellen Sie sicher, dass das **Adresspräfix** nicht die Adresse der **Adresse des nächsten Hops** enthält. Andernfalls gelangen Ihre Pakete in eine Schleife, die von der Quelle zum nächsten Hop verläuft, ohne dass das Ziel jemals erreicht wird. |
-| Typ des nächsten Hops |Der Azure-Hop-Typ, an den das Paket gesendet werden soll. |Dies muss einer der folgenden Werte sein: <br/> **Virtuelles Netzwerk**. Entspricht dem lokalen virtuellen Netzwerk. Wenn Sie z.B. im gleichen virtuellen Netzwerk über die beiden Subnetze 10.1.0.0/16 und 10.2.0.0/16 verfügen, weist die Route für die einzelnen Subnetze in der Routentabelle für den nächsten Hop den Wert *Virtual Network* auf. <br/> **Gateway des virtuellen Netzwerks**. Entspricht einem Azure S2S-VPN-Gateway. <br/> **Internet**. Entspricht dem Standard-Internet-Gateway der Azure-Infrastruktur. <br/> **Virtuelles Gerät**ausgewählt wurde. Entspricht einem virtuellen Gerät, das Sie Ihrem virtuellen Azure-Netzwerk hinzugefügt haben. <br/> **Keine**. Entspricht einem schwarzen Loch. Pakete, die an ein schwarzes Loch weitergeleitet werden, werden überhaupt nicht weitergeleitet. |Erwägen Sie die Verwendung des Typs **Keine** , um zu verhindern, dass Pakete an ein bestimmtes Ziel fließen. |
-| Adresse des nächsten Hops |Die Adresse des nächsten Hops enthält die IP-Adresse, an die die Pakete weitergeleitet werden sollen. Die Werte für den nächsten Hop dürfen nur für Routen verwendet werden, für die als Typ des nächsten Hops *Virtuelles Gerät*ausgewählt wurde. |Dies muss eine IP-Adresse sein, die im virtuellen Netzwerk, auf das die benutzerdefinierte Route angewendet wird, erreichbar ist. |Wenn die IP-Adresse für eine VM steht, müssen Sie sicherstellen, dass Sie in Azure für die VM die [IP-Weiterleitung](#IP-forwarding) aktivieren. |
+| Typ des nächsten Hops |Der Azure-Hop-Typ, an den das Paket gesendet werden soll. |Dies muss einer der folgenden Werte sein: <br/> **Virtuelles Netzwerk**. Entspricht dem lokalen virtuellen Netzwerk. Wenn Sie z.B. im gleichen virtuellen Netzwerk über die beiden Subnetze 10.1.0.0/16 und 10.2.0.0/16 verfügen, weist die Route für die einzelnen Subnetze in der Routentabelle für den nächsten Hop den Wert *Virtual Network* auf. <br/> **Gateway des virtuellen Netzwerks**. Entspricht einem Azure S2S-VPN-Gateway. <br/> **Internet**. Entspricht dem Standard-Internet-Gateway der Azure-Infrastruktur. <br/> **Virtuelles Gerät**ausgewählt wurde. Entspricht einem virtuellen Gerät, das Sie Ihrem virtuellen Azure-Netzwerk hinzugefügt haben. <br/> **Keine**. Entspricht einem schwarzen Loch. Pakete, die an ein schwarzes Loch weitergeleitet werden, werden überhaupt nicht weitergeleitet. |Erwägen Sie die Verwendung eines **virtuellen Geräts**, um Datenverkehr an eine VM oder die interne IP-Adresse von Azure Load Balancer weiterzuleiten.  Dieser Typ ermöglicht die Angabe einer IP-Adresse wie unten beschrieben. Erwägen Sie die Verwendung des Typs **Keine** , um zu verhindern, dass Pakete an ein bestimmtes Ziel fließen. |
+| Adresse des nächsten Hops |Die Adresse des nächsten Hops enthält die IP-Adresse, an die die Pakete weitergeleitet werden sollen. Die Werte für den nächsten Hop dürfen nur für Routen verwendet werden, für die als Typ des nächsten Hops *Virtuelles Gerät*ausgewählt wurde. |Dies muss eine IP-Adresse sein, die im virtuellen Netzwerk, auf das die benutzerdefinierte Route angewendet wird, erreichbar ist. |Wenn die IP-Adresse für eine VM steht, müssen Sie sicherstellen, dass Sie in Azure für die VM die [IP-Weiterleitung](#IP-forwarding) aktivieren. Wenn die IP-Adresse die interne IP-Adresse von Azure Load Balancer darstellt, sollten Sie sicherstellen, dass Sie über eine übereinstimmende Lastenausgleichsregel für jeden Port verfügen, für den ein Lastenausgleich durchgeführt werden soll.|
 
 In Azure PowerShell haben einige der „NextHopType“-Werte andere Namen:
 
@@ -100,7 +103,7 @@ Wenn Sie über eine ExpressRoute-Verbindung zwischen dem lokalen Netzwerk und Az
 > 
 > 
 
-## <a name="ip-forwarding"></a>SSL-Weiterleitung
+## <a name="ip-forwarding"></a>IP-Weiterleitung
 Wie oben angeführt, ist einer der wichtigsten Gründe für das Erstellen einer benutzerdefinierten Route das Weiterleiten von Datenverkehr an virtuelle Geräte. Ein virtuelles Gerät ist letztlich nur ein virtueller Computer, der eine Anwendung zur Verarbeitung des Netzwerkverkehrs ausführt, z. B. eine Firewall oder ein NAT-Gerät.
 
 Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der nicht an ihn selbst adressiert ist. Damit ein virtueller Computer an andere Ziele gerichteten Datenverkehr empfangen kann, müssen Sie für den virtuellen Computer die IP-Weiterleitung aktivieren. Hierbei handelt es sich um eine Azure-Einstellung, keine Einstellung im Gastbetriebssystem.
@@ -108,10 +111,5 @@ Dieser virtuelle Computer muss eingehenden Datenverkehr empfangen können, der n
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [Routen im Ressourcen-Manager-Bereitstellungsmodell erstellen](virtual-network-create-udr-arm-template.md) und diese Subnetzen zuordnen. 
 * Erfahren Sie, wie Sie [Routen im klassischen Bereitstellungsmodell erstellen](virtual-network-create-udr-classic-ps.md) und diese Subnetzen zuordnen.
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

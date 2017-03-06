@@ -5,7 +5,7 @@ keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, App Services-Pl
 services: app-service
 documentationcenter: 
 author: yochay
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: ae74fc32-969e-4580-8d61-02c922f1f184
 ms.service: app-service
@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 02/10/2016
+ms.date: 02/23/2017
 ms.author: yochayk
 translationtype: Human Translation
-ms.sourcegitcommit: 6adb1dd25c24b18b834dd921c2586ef29d56dc81
-ms.openlocfilehash: d1ab1ab2132d12bf06dbe2504b7d7111ef2ae851
+ms.sourcegitcommit: edb3325414adf876548181243ddfa2d515aeb0b8
+ms.openlocfilehash: 2d830963d3d2adba71a6ca99f79eac0fc8cbfb12
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -25,8 +26,7 @@ ms.openlocfilehash: d1ab1ab2132d12bf06dbe2504b7d7111ef2ae851
 Azure App Service ist ein Clouddienst, der entwickelt wurde, um die praktischen Probleme zu lösen, mit denen Entwickler heutzutage konfrontiert werden.
 App Service zielt darauf ab, einzigartige Entwicklerproduktivität bereitzustellen, ohne Abstriche bei dem Bedürfnis machen zu müssen, die Anwendungen auf Cloudniveau bereitzustellen. 
 
-App Service bietet auch Funktionen und Frameworks zum Erstellen von Branchenanwendungen. Gleichzeitig werden Entwickler durch die mögliche Verwendung der beliebtesten Entwicklungssprachen (Microsoft .NET, Java, PHP, Node.js und Python) unterstützt.
-App Service ermöglicht Entwicklern Folgendes:
+App Service umfasst auch die Features und Frameworks, die zum Erstellen von Branchenanwendungen für Unternehmen benötigt werden. Mit App Service können Sie Apps in den beliebtesten Entwicklungssprachen entwickeln, z.B. Java, PHP, Node.js, Python und den Microsoft .NET-Sprachen. Mit Azure App Service haben Sie folgende Möglichkeiten:
 
 * Erstellen von hochgradig skalierbaren Web-Apps
 * Schnelles Erstellen von Back-Ends für Mobile Apps mit vielen benutzerfreundlichen mobilen Funktionen, z.B. Daten-Back-Ends, Benutzerauthentifizierung und Pushbenachrichtigungen
@@ -46,13 +46,26 @@ Alle App-Typen basieren auf der skalierbaren und flexiblen Web-Apps-Plattform, w
 * **Skalieren der App**: Verwenden Sie eine von vielen Optionen, um Ihren Dienst basierend auf Datenverkehr und Ressourcennutzung automatisch horizontal und vertikal zu skalieren. Konfigurieren Sie private Umgebungen, die für Ihre Apps dediziert sind.   
 * **Verwalten der App**: Nutzen Sie die vielen Debug- und Diagnosefunktionen, um Problemen einen Schritt voraus zu sein und sie effizient zu lösen, entweder in Echtzeit (mit Funktionen wie Selbstkonfiguration und Live-Debuggen) oder im Nachhinein durch Analyse der Protokolle und Speicherabbilder.
 
-Zusammengefasst ermöglichen es die App Service-Funktionen Entwicklern, sich auf ihren Code zu konzentrieren und schnell einen stabilen, hochgradig skalierbaren Produktionszustand zu erreichen. Mit den Funktionen „API-Apps“ und „Logik-Apps“ können Entwickler reale Anwendungen für Unternehmen erstellen, die Barrieren zwischen Unternehmenslösungen und lokalen Lösungen zur Cloudintegration überbrücken.  
+Zusammengefasst ermöglichen es die App Service-Funktionen Entwicklern, sich auf ihren Code zu konzentrieren und schnell einen stabilen und hochgradig skalierbaren Produktionszustand zu erreichen. Mit den Funktionen „API-Apps“ und „Logik-Apps“ können Entwickler reale Anwendungen für Unternehmen erstellen, die Barrieren zwischen Unternehmenslösungen und lokalen Lösungen zur Cloudintegration überbrücken. 
 
-[!INCLUDE [app-service-blueprint-how-app-service-works](../../includes/app-service-blueprint-how-app-service-works.md)]
+## <a name="videos"></a>Videos
+* [Azure App Service-Architektur](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu App Service finden Sie in den folgenden Themen:
+
+* [Was ist Azure App Service?](app-service-value-prop-what-is.md)
+  * [Web App](../app-service-web/app-service-web-overview.md)
+  * [Mobile App](../app-service-mobile/app-service-mobile-value-prop.md)
+  * [API-App](../app-service-api/app-service-api-apps-why-best-platform.md)
+* [Azure App Service-Architektur (Präsentation)](http://www.slideshare.net/maartenba/windows-azure-web-sites-things-they-dont-teach-kids-in-school-comunity-day-2013)
+* [Azure App Service, Cloud Services und Virtual Machines im Vergleich](../app-service-web/choose-web-site-cloud-service-vm.md)
+* [Grundlegendes zu App Service-Plänen](azure-web-sites-web-hosting-plans-in-depth-overview.md)
+* [Einführung in die App Service-Umgebung](../app-service-web/app-service-app-service-environment-intro.md)
+  * [Übung: Erstellen einer App Service-Umgebung](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
+* [Unterstützung für Azure App Service-Entwicklungsstapel](https://azure.microsoft.com/blog/windows-azure-websites-development-stacks-support/)
 
 
-
-
-<!--HONumber=Dec16_HO2-->
 
 

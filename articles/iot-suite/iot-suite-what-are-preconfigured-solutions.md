@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/15/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 7c289437beca78dacc7d3136680c54dde01f3798
-ms.openlocfilehash: fb4b12543ac4910ea9c4789f4ebe5ef0ca5997ae
+ms.sourcegitcommit: a3657f8bb60cd1181740b0700f503b5bd1bd559f
+ms.openlocfilehash: a3847f83af1f28e40572af95ff31f44d2f3d6dc4
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -38,16 +39,17 @@ Sie können nicht nur die Lösungen in Azure bereitstellen und ausführen, sonde
 
 In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeordnet sind:
 
-| Lösung | Datenerfassung | Geräteidentität | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
-| --- | --- | --- | --- | --- | --- |
-| [Remoteüberwachung][lnk-getstarted-preconfigured] |Ja |Ja |Ja |Ja |- |
-| [Vorbeugende Wartung][lnk-predictive-maintenance] |Ja |Ja |Ja |Ja |Ja |
+| Lösung | Datenerfassung | Geräteidentität | Geräteverwaltung | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Remoteüberwachung][lnk-getstarted-preconfigured] |Ja |Ja |Ja |Ja |Ja |- |
+| [Vorbeugende Wartung][lnk-predictive-maintenance] |Ja |Ja |- |Ja |Ja |Ja |
 
 * *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
-* *Geräteidentität:*Verwaltung eindeutiger Identitäten von jedem verbundenen Gerät
-* *Befehl und Steuerung:*Senden von Nachrichten aus der Cloud an ein Gerät, um zu veranlassen, dass das Gerät bestimmte Aktionen ausführt
+* *Geräteidentität:* Verwalten eindeutiger Geräteidentitäten und Steuern des Gerätezugriffs auf die Lösung.
+* *Geräteverwaltung:* Verwalten von Gerätemetadaten und Ausführen von Vorgängen wie Geräteneustarts und Firmwareupgrades.
+* *Befehl und Steuerung:* Senden von Nachrichten aus der Cloud an ein Gerät, um zu veranlassen, dass das Gerät eine Aktion ausführt.
 * *Regeln und Aktionen:*Das Lösung-Back-End verwendet Regeln, um auf bestimmte D2C (Device-to-Cloud)-Daten zu reagieren.
-* *Predictive Analytics:*Die Back-End-Lösung analysiert D2C-Daten, um vorherzusagen, wann bestimmte Aktionen durchgeführt werden sollen. Beispiel: Analysieren von Telemetriedaten eines Flugzeugtriebwerks, um zu bestimmen, wann die Triebwerkwartung erforderlich ist.
+* *Predictive Analytics:* Das Lösungs-Back-End analysiert D2C-Daten, um vorherzusagen, wann bestimmte Aktionen ausgeführt werden sollen. Beispiel: Analysieren von Telemetriedaten eines Flugzeugtriebwerks, um zu bestimmen, wann die Triebwerkwartung erforderlich ist.
 
 ## <a name="remote-monitoring-preconfigured-solution-overview"></a>Übersicht über die vorkonfigurierte Lösung zur Remoteüberwachung
 Die vorkonfigurierte Lösung zur Remoteüberwachung wird in diesem Artikel beschrieben, weil sie zur Veranschaulichung zahlreicher gängiger Entwurfselemente dient, die auch in den anderen vorkonfigurierten Lösungen enthalten sind.
@@ -57,18 +59,36 @@ Im folgenden Diagramm sind die wichtigsten Elemente der Remoteüberwachungslösu
 ![Architektur der vorkonfigurierten Lösung für Remoteüberwachung][img-remote-monitoring-arch]
 
 ## <a name="devices"></a>Geräte
-Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen, werden vier simulierte Geräte in der Lösung vorab bereitgestellt, mit denen ein Kühlgerät simuliert wird. Diese simulierte Geräte verfügen über ein integriertes Temperatur- und Luftfeuchtigkeitsmodell, das Telemetriedaten ausgibt. Diese simulierten Geräte sind zur Veranschaulichung des End-to-End-Datenflusses in der Lösung enthalten. Darüber hinaus bieten sie praktische Telemetriedaten und ein Ziel für Befehle, wenn Sie Back-End-Entwickler sind und die Lösung als Ausgangspunkt für eine benutzerdefinierte Implementierung nutzen.
+Wenn Sie die vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen, werden vier simulierte Geräte in der Lösung vorab bereitgestellt, mit denen ein Kühlgerät simuliert wird. Diese simulierte Geräte verfügen über ein integriertes Temperatur- und Luftfeuchtigkeitsmodell, das Telemetriedaten ausgibt. Die simulierten Geräte sind aus folgenden Gründen enthalten:
+- Sie veranschaulichen den End-to-End-Datenfluss durch die Lösung.
+- Sie sind eine praktische Quelle für Telemetriedaten.
+- Sie bieten ein Ziel für Methoden oder Befehle, wenn Back-End-Entwickler die Lösung als Ausgangspunkt für eine benutzerdefinierte Implementierung nutzen.
 
-Bei der ersten Verbindung eines Geräts mit IoT Hub in der vorkonfigurierten Lösung für die Remoteüberwachung werden in der an den IoT Hub gesendeten Geräteinformationsmeldung die Befehle aufgelistet, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung sind das die folgenden Befehle: 
+Die simulierten Geräte in der Lösung können auf folgende Kommunikation zwischen Cloud und Gerät reagieren:
 
-* *Ping Device*(Gerät pingen): Das Gerät reagiert auf diesen Befehl mit einer Bestätigung. Dies ist hilfreich, um sicherzustellen, dass das Gerät noch aktiv ist und überwacht wird.
+- *Methoden ([direkte Methoden][lnk-direct-methods]):* Eine bidirektionale Kommunikationsmethode, bei der eine umgehende Reaktion des verbundenen Geräts erwartet wird.
+- *Befehle (C2D-Nachrichten):* Eine unidirektionale Kommunikationsmethode, bei der ein Gerät den Befehl aus einer permanenten Warteschlange abruft.
+
+Einen Vergleich dieser unterschiedlichen Konzepte finden Sie im [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance].
+
+Wenn ein Gerät erstmals eine Verbindung mit IoT Hub in der vorkonfigurierten Lösung herstellt, sendet es eine Geräteinformationsmeldung an den Hub, in der die Methoden aufgelistet sind, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung werden von simulierten Geräten folgende Methoden unterstützt:
+
+* *Initiate Firmware Update* (Firmwareupdate initiieren): Diese Methode initiiert auf dem Gerät eine asynchrone Aufgabe, um ein Firmwareupdate auszuführen. Die asynchrone Aufgabe verwendet gemeldete Eigenschaften, um Statusaktualisierungen auf dem Lösungsdashboard bereitzustellen.
+* *Neustart*: Diese Methode bewirkt, dass das simulierte Gerät neu gestartet wird.
+* *FactoryReset*: Diese Methode löst auf dem Gerät eine Zurücksetzung auf die Werkseinstellungen aus.
+
+Wenn ein Gerät erstmals eine Verbindung mit IoT Hub in der vorkonfigurierten Lösung herstellt, sendet es eine Geräteinformationsmeldung an den Hub, in der die Befehle aufgelistet sind, auf die das Gerät reagieren kann. In der vorkonfigurierten Lösung für die Remoteüberwachung werden von simulierten Geräten folgende Befehle unterstützt:
+
+* *Ping Device*(Gerät pingen): Das Gerät reagiert auf diesen Befehl mit einer Bestätigung. Mithilfe dieses Befehls kann überprüft werden, ob das Gerät noch aktiv ist und lauscht.
 * *Start Telemetry*(Telemetrie starten): Weist das Gerät an, mit dem Senden von Telemetriedaten zu beginnen.
 * *Stop Telemetry*(Telemetrie beenden): Weist das Gerät an, das Senden von Telemetriedaten zu beenden.
-* *Change Set Point Temperature*(Festgelegte Punkttemperatur ändern): Steuert die simulierten Temperaturtelemetriewerte, die das Gerät sendet. Dies ist hilfreich beim Testen der Back-End-Logik.
+* *Change Set Point Temperature*(Festgelegte Punkttemperatur ändern): Steuert die simulierten Temperaturtelemetriewerte, die das Gerät sendet. Dieser Befehl ist hilfreich beim Testen der Back-End-Logik.
 * *Diagnostic Telemetry*(Diagnosetelemetrie): Steuert, ob das Gerät die externen Temperaturtelemetriedaten sendet.
-* *Change Device State*(Gerätestatus ändern): Legt die Metadateneigenschaft des Gerätezustands fest, den das Gerät meldet. Dies ist hilfreich beim Testen der Back-End-Logik.
+* *Change Device State*(Gerätestatus ändern): Legt die Metadateneigenschaft des Gerätezustands fest, den das Gerät meldet. Dieser Befehl ist hilfreich beim Testen der Back-End-Logik.
 
-Sie können der Lösung weitere simulierte Geräte hinzufügen, die die gleichen Telemetriedaten ausgeben und auf die gleichen Befehle reagieren. 
+Sie können der Lösung weitere simulierte Geräte hinzufügen, die die gleichen Telemetriedaten ausgeben und auf die gleichen Methoden und Befehle reagieren.
+
+Die Lösung reagiert nicht nur auf Befehle und Methoden, sondern verwendet auch [Gerätezwillinge][lnk-device-twin]. Gerätezwillinge werden von Geräten verwendet, um Eigenschaftswerte an das Lösungs-Back-End zu melden. Das Lösungsdashboard verwendet Gerätezwillinge, um neue gewünschte Eigenschaftswerte für Geräte festzulegen. Während des Firmwareupdates meldet das simulierte Gerät beispielsweise den Status des Updates unter Verwendung gemeldeter Eigenschaften.
 
 ## <a name="iot-hub"></a>IoT Hub
 Bei dieser vorkonfigurierten Lösung entspricht die IoT Hub-Instanz dem *Cloud-Gateway* in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
@@ -77,29 +97,43 @@ Ein IoT Hub empfängt Telemetriedaten von den Geräten an einem Endpunkt. Ein Io
 
 Der IoT Hub macht die empfangenen Telemetriedaten über den dienstseitigen Endpunkt für gelesene Telemetriedaten verfügbar.
 
+Mit der Geräteverwaltungsfunktion von IoT Hub können Sie Ihre Geräteeigenschaften über das Lösungsportal verwalten und Aufträge planen, die beispielsweise folgende Vorgänge ausführen:
+
+- Neustarten von Geräten
+- Ändern von Gerätezuständen
+- Firmwareupdates
+
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Die vorkonfigurierte Lösung verwendet drei [Azure Stream Analytics][lnk-asa]-Aufträge (ASA), um den Telemetriedatenstrom von den Geräten zu filtern:
 
-* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der beim ersten Herstellen einer Verbindung mit einem Gerät oder in Reaktion auf den Befehl **Change device state** (Gerätestatus ändern) geräteregistrierungspezifische Meldungen an die Lösungsgeräteregistrierung (eine DocumentDB-Datenbank) weiterleitet. 
+* *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung (eine DocumentDB-Datenbank) weiterleitet. Die Nachricht wird gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum Ändern des Gerätestatus** **ausgeführt wurde.
 * *Telemetrieauftrag* – Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an den Azure-Blobspeicher und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
-* *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird dieses Ereignis in der Dashboardansicht des Lösungsportals in der Tabelle mit dem Alarmverlauf als neue Zeile angezeigt. Außerdem wird basierend auf den im Lösungsportal in den Ansichten „Regeln“ und „Aktionen“ definierten Einstellungen eine Aktion ausgelöst.
+* *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird das Ereignis in der Dashboardansicht des Lösungsportals als neue Zeile der Alarmverlaufstabelle angezeigt. Diese Regeln können auf der Grundlage der Einstellungen, die im Lösungsportal in den Ansichten **Regeln** und **Aktionen** definiert sind, auch eine Aktion auslösen.
 
 Bei dieser vorkonfigurierten Lösung bilden die ASA-Aufträge einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
 ## <a name="event-processor"></a>Ereignisprozessor
 Bei dieser vorkonfigurierten Lösung bildet der Ereignisprozessor einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
-Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. Die **EventProcessorHost**-Instanz verwendet die **DeviceInfo**-Daten zum Aktualisieren der Gerätedaten in der DocumentDB-Datenbank und die **Regeldaten** zum Aufrufen der Logik-App sowie zum Aktualisieren der Warnungsanzeige im Lösungsportal.
+Die ASA-Aufträge **DeviceInfo** und **Rules** senden ihre Ausgabe an Event Hubs für die Weitergabe an andere Back-End-Dienste. Die Lösung verwendet eine [EventProcessorHost][lnk-event-processor]-Instanz, die in einem [WebJob][lnk-web-job] ausgeführt wird, um die Nachrichten von diesen Event Hubs zu lesen. **EventProcessorHost** verwendet Folgendes:
+- Die Daten vom Typ **DeviceInfo**, um die Gerätedaten in der DocumentDB-Datenbank zu aktualisieren.
+- Die** **Regeldaten, um die Logik-App aufzurufen und die Warnungsanzeige im Lösungsportal zu aktualisieren.
 
-## <a name="device-identity-registry-and-documentdb"></a>Geräteidentitätsregistrierung und DocumentDB
+## <a name="device-identity-registry-device-twin-and-documentdb"></a>Geräteidentitätsregistrierung, Gerätezwilling und DocumentDB
 Jede IoT Hub-Instanz verfügt über eine [Geräteidentitätsregistrierung][lnk-identity-registry] zum Speichern von Geräteschlüsseln. IoT Hub verwendet diese Informationen zum Authentifizieren von Geräten – ein Gerät muss registriert sein und einen gültigen Schlüssel haben, bevor es eine Verbindung mit dem Hub herstellen kann.
 
-Diese Lösung speichert zusätzliche Informationen zu Geräten, beispielsweise ihren Zustand, die unterstützten Befehle und andere Metadaten. Die Lösung verwendet eine DocumentDB-Datenbank zum Speichern dieser lösungsspezifischen Gerätedaten, und das Lösungsportal ruft Daten aus dieser DocumentDB-Datenbank für die Anzeige und Bearbeitung ab.
+Bei einem [Gerätezwilling][lnk-device-twin] handelt es sich um ein von IoT Hub verwaltetes JSON-Dokument. Ein Gerätezwilling enthält Folgendes:
+
+- Gemeldete Eigenschaften, die vom Gerät an den Hub gesendet wurden. Diese Eigenschaften können im Lösungsportal angezeigt werden.
+- Gewünschte Eigenschaften, die an das Gerät gesendet werden sollen. Diese Eigenschaften können im Lösungsportal festgelegt werden.
+- Tags, die nur im Gerätezwilling (und nicht auf dem Gerät) vorhanden sind. Mithilfe dieser Tags können Gerätelisten im Lösungsportal gefiltert werden.
+
+Diese Lösung verwendet Gerätezwillinge zum Verwalten von Gerätemetadaten. Die Lösung verwendet auch eine DocumentDB-Datenbank, um zusätzliche lösungsspezifische Gerätedaten (beispielsweise die von den einzelnen Geräten unterstützten Befehle und den Befehlsverlauf) zu speichern.
 
 Die Lösung muss zudem die Informationen in der Geräteidentitätsregistrierung mit dem Inhalt der DocumentDB-Datenbank synchron halten. **EventProcessorHost** verwendet die Daten aus dem **DeviceInfo**-Datenstromanalyseauftrag zum Verwalten der Synchronisierung.
 
 ## <a name="solution-portal"></a>Lösungsportal
-![Lösungsdashboard][img-dashboard]
+![Lösungsportal][img-dashboard]
 
 Das Lösungsportal ist eine webbasierte Benutzeroberfläche, die in der Cloud als Teil der vorkonfigurierten Lösung bereitgestellt wird. Hiermit haben Sie folgende Möglichkeiten:
 
@@ -107,7 +141,9 @@ Das Lösungsportal ist eine webbasierte Benutzeroberfläche, die in der Cloud al
 * Bereitstellen von neuen Geräten
 * Verwalten und Überwachen von Geräten
 * Senden von Befehlen an bestimmte Geräte
+* Aufrufen von Methoden auf bestimmten Geräten
 * Verwalten von Regeln und Aktionen
+* Planen von Aufträgen, die auf einem einzelnen Gerät oder auf mehreren Geräten ausgeführt werden sollen
 
 Bei dieser vorkonfigurierten Lösung bildet das Lösungsportal einen Teil des **IoT-Lösungs-Back-Ends** und einen Teil der **Verarbeitungsverbindung und Business Connectivity** in der typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
 
@@ -127,9 +163,7 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
+[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
+[lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 

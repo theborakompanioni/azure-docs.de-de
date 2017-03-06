@@ -13,11 +13,12 @@ ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 02/15/2017
+ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: cb0843ec739d11e997794a8217c95696c4e78d23
-ms.openlocfilehash: 70999d615038e7a5a11a623a9eef3e08c09f5eb9
+ms.sourcegitcommit: 3f608b8ae7a7812b939e0d9ab1cb8e19853220fd
+ms.openlocfilehash: 6ed23693c95ce9025576d59fa6df9d640950ada3
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -102,50 +103,93 @@ Wechseln Sie zum Überwachen des Datenimports zurück zum Dashboard des Diensts,
 ## <a name="a-namequery-indexa-query-the-index"></a><a name="query-index"></a> Abfragen des Index
 Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suchexplorer** ist ein in das Portal integriertes Abfragetool. Es stellt ein Suchfeld bereit, mit dem Sie überprüfen können, ob die Suchergebnisse Ihren Erwartungen entsprechen. 
 
-   ![Suchexplorerbefehl][5]
-
 > [!TIP]
 > Die folgenden Schritte werden im [Übersichtsvideo für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138) ab 6:08 vorgeführt.
 >
 
 1. Klicken Sie auf der Befehlsleiste auf **Suchexplorer** .
 
+   ![Suchexplorerbefehl][5]
+
 2. Klicken Sie auf der Befehlsleiste auf **Index ändern**, um zu *realestate-us-sample* zu wechseln.
 
    ![Index- und API-Befehle][6]
 
-3. Klicken Sie auf der Befehlsleiste auf **API-Version festlegen**, um die verfügbaren REST-APIs anzuzeigen. Über Vorschau-APIs erhalten Sie Zugriff auf neue Features, die noch nicht für die Allgemeinheit veröffentlicht wurden. Verwenden Sie die allgemein verfügbare Version (2016-09-01), sofern nichts anderes angegeben ist. 
+3. Klicken Sie auf der Befehlsleiste auf **API-Version festlegen**, um die verfügbaren REST-APIs anzuzeigen. Über Vorschau-APIs erhalten Sie Zugriff auf neue Features, die noch nicht für die Allgemeinheit veröffentlicht wurden. Verwenden Sie für die Abfragen weiter unten die allgemein verfügbare Version (2016-09-01), sofern nichts anderes angegeben ist. 
 
     > [!NOTE]
     > [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) und die [.NET-Bibliothek](search-howto-dotnet-sdk.md#core-scenarios) sind zwar vollständig gleichwertig, der **Suchexplorer** kann jedoch nur REST-Aufrufe verarbeiten. Er akzeptiert sowohl Syntax für [einfache Abfragen](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) als auch für [vollständige Lucene-Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die bei Vorgängen vom Typ [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents) zur Verfügung stehen.
     > 
-    > Der **Suchexplorer** gibt Ergebnisse im JSON-Format zurück. Dieses Format ist sehr ausführlich und in Dokumenten mit einer dichten Struktur nur schwer lesbar. Abhängig von Ihren Dokumenten müssen Sie unter Umständen Code schreiben, um die Suchergebnisse zu verarbeiten und wichtige Elemente zu extrahieren.
 
 4. Geben Sie über die Suchleiste die folgenden Abfragezeichenfolgen ein, und klicken Sie auf **Suchen**.
 
   ![Beispiel für eine Suchabfrage][7]
 
-**`search=seattle`** Der Parameter `search` dient zum Eingeben einer Schlüsselwortsuche. In diesem Fall werden Angebote in King County (Washington) zurückgeben, die „Seattle“ in einem beliebigen durchsuchbaren Feld des Dokuments enthalten.
+**`search=seattle`**
 
-**`search=seattle&facet=beds`** Der Parameter `facet` gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren die Kategorien auf der Anzahl von Schlafzimmern – jeweils mit der Anzahl von Dokumenten oder Treffern. `"beds"` kann als Facet angegeben werden, da das Feld im Index als filterbar und facettierbar markiert ist und die enthaltenen Werte (numerische Werte von 1 bis 5) für die Kategorisierung von Angeboten in Gruppen (Angebote mit drei Schlafzimmern, vier Schlafzimmern...) geeignet ist.  Das Symbol `&` dient zum Anfügen von Suchparametern.
++ Der Parameter `search` dient zum Eingeben eines Schlüsselworts für die Volltextsuche. In diesem Fall werden Angebote in King County (Washington) zurückgeben, die *Seattle* in einem beliebigen durchsuchbaren Feld des Dokuments enthalten. 
 
-**`search=seattle&filter=bed gt 3`** Der Parameter `filter` gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: mehr als drei Schlafzimmer. Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
++ Der **Suchexplorer** gibt Ergebnisse im JSON-Format zurück. Dieses Format ist sehr ausführlich und in Dokumenten mit einer dichten Struktur nur schwer lesbar. Abhängig von Ihren Dokumenten müssen Sie unter Umständen Code schreiben, um die Suchergebnisse zu verarbeiten und wichtige Elemente zu extrahieren. 
 
-**`search=granite countertops&highlight=description`** Treffermarkierungen versehen Text, der dem Schlüsselwort entspricht, mit einer Formatierung (sofern Treffer gefunden werden). Falls Ihr Suchbegriff Teil einer umfangreicheren Beschreibung ist, können Sie ihn mithilfe einer Treffermarkierung hervorheben. In diesem Fall ist der formatierte Ausdruck `"granite countertops"` im Beschreibungsfeld leichter zu erkennen.
++ Dokumente bestehen aus allen Feldern, die im Index als abrufbar gekennzeichnet sind. Klicken Sie zum Anzeigen von Indexattributen im Portal auf der Kachel **Indizes** auf *realestate-us-sample*.
 
-**`search=mice&highlight=description`** Die Volltextsuche sucht nach Wortformen mit ähnlicher Semantik. In diesem Fall wird bei Häusern mit einer Mäuseplage in den Ergebnissen einer Suche nach dem Schlüsselwort „mice“ der Text „mouse“ hervorgehoben. Dank linguistischer Analyse können in den Ergebnissen unterschiedliche Formen des gleichen Worts erscheinen. Azure Search unterstützt 56 Analysen von Lucene und Microsoft. Standardmäßig verwendet Azure Search die Standardanalyse von Lucene. 
+**`search=seattle&$count=true&$top=100`**
 
-**`search=samamish`** Für falsch geschriebene Wörter wie „Samamish“ für das Samammish-Plateau in der Seattle-Region werden bei einer typischen Suche keine Treffer zurückgegeben. Zur Kompensierung von Schreibfehlern können Sie eine Fuzzysuche verwenden, wie im nächsten Beispiel beschrieben.
++ Das `&`-Symbol dient zum Anfügen von Suchparametern. Diese können in beliebiger Reihenfolge angegeben werden. 
 
-**`search=samamish~&queryType=full`** Eine Fuzzysuche wird aktiviert, wenn Sie das `~`-Symbol angeben und den Parser für die vollständige Abfrage verwenden, der die `~`-Syntax interpretiert und ordnungsgemäß analysiert. Standardmäßig wird der schnellere Parser für einfache Abfragen verwendet, Sie können sich jedoch für die Verwendung des Parsers für vollständige Abfragen entscheiden, falls Sie Fuzzysuche, reguläre Ausdrücke, eine NEAR-Suche oder andere erweiterte Abfragetypen benötigen. Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search).
++  Der Parameter `$count=true` gibt die Gesamtanzahl aller zurückgegeben Dokumente zurück. Zur Überprüfung von Filterabfragen können Sie von `$count=true` gemeldete Änderungen überwachen. 
 
-**`search=*`** Bei einer leeren Suche wird alles zurückgegeben. Mit einer leeren Abfrage können Sie beispielsweise die Gesamtanzahl von Dokumenten in Ihrem Index ermitteln oder einen Filter oder eine Facettierung auf den vollständigen Dokumentensatz anwenden, wie im nächsten Abschnitt beschrieben.
++ `$top=100` gibt von allen Dokumenten die 100 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Search die ersten 50 der besten Treffer zurück. Die Menge kann mithilfe von `$top` erhöht oder verringert werden.
 
-**`search=*&filter=geo.distance(location,geography'POINT(-122.13+47.64)')+le+10`** Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Diese Abfrage filtert alle Ergebnisse nach Positionsdaten und gibt Ergebnisse zurück, die weniger als zehn Kilometer von einem bestimmten Punkt (angegeben als Koordinaten mit Breiten-und Längengrad) entfernt sind. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben. 
+**`search=*&facet=city&$top=2`**
 
-Normalerweise werden Filterausdrücke als „$filter“ mit einem `$`-Zeichen angegeben. Lassen Sie im Suchexplorer das `$`-Zeichen weg.
++ `search=*` ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Faceting-Navigationsstruktur alle Städte im Index enthalten soll.
 
-Die Geosuche ist hilfreich, wenn Ihre Suchanwendung über eine Umgebungssuche oder Kartennavigation verfügt. Es ist allerdings keine Volltextsuche. Falls eine Suche nach Städte- oder Ländernamen möglich sein muss, fügen Sie zusätzlich zu den Koordinaten Felder mit Städte- oder Ländernamen hinzu.
++  `facet` gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren die Kategorien auf der Anzahl von Städten. In Azure Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
+
++ `$top=2` gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
+
+**`search=seattle&facet=beds`**
+
++ Bei dieser Abfrage handelt es sich um ein Facet für Betten bei einer Textsuche nach *Seattle*. `"beds"` kann als Facet angegeben werden, da das Feld im Index als filterbar und facettierbar markiert ist und die enthaltenen Werte (numerische Werte von 1 bis 5) für die Kategorisierung von Angeboten in Gruppen (Angebote mit drei Schlafzimmern, vier Schlafzimmern...) geeignet ist. 
+
++ Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
+
+**`search=seattle&$filter=beds gt 3`**
+
++ `filter` gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: mehr als drei Schlafzimmer. 
+
++ Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
+
+**`search=granite countertops&highlight=description`**
+
++ Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer Formatierung versehen (sofern Treffer in einem bestimmten Feld gefunden werden). Falls Ihr Suchbegriff Teil einer umfangreicheren Beschreibung ist, können Sie ihn mithilfe einer Treffermarkierung hervorheben. In diesem Fall ist der formatierte Ausdruck `"granite countertops"` im Beschreibungsfeld leichter zu erkennen.
+
+**`search=mice&highlight=description`**
+
++ Die Volltextsuche sucht nach Wortformen mit ähnlicher Semantik. In diesem Fall wird bei Häusern mit einer Mäuseplage in den Ergebnissen einer Suche nach dem Schlüsselwort „mice“ der Text „mouse“ hervorgehoben. Dank linguistischer Analyse können in den Ergebnissen unterschiedliche Formen des gleichen Worts erscheinen. 
+
++ Azure Search unterstützt 56 Analysen von Lucene und Microsoft. Standardmäßig verwendet Azure Search die Standardanalyse von Lucene. 
+
+**`search=samamish`**
+
++ Für falsch geschriebene Wörter wie „Samamish“ für das Samammish-Plateau in der Seattle-Region werden bei einer typischen Suche keine Treffer zurückgegeben. Zur Kompensierung von Schreibfehlern können Sie eine Fuzzysuche verwenden, wie im nächsten Beispiel beschrieben.
+
+**`search=samamish~&queryType=full`**
+
++ Eine Fuzzysuche wird aktiviert, wenn Sie das `~`-Symbol angeben und den Parser für die vollständige Abfrage verwenden, der die `~`-Syntax interpretiert und ordnungsgemäß analysiert. 
+
++ Die Fuzzysuche ist verfügbar, wenn Sie sich für die Verwendung des Parsers für vollständige Abfragen entscheiden (durch Festlegen von `queryType=full`). Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search).
+
++ Ohne Angabe von `queryType` wird der standardmäßige Parser für einfache Abfragen verwendet. Der Parser für einfache Abfragen ist zwar schneller, Fuzzysuche, reguläre Ausdrücke, NEAR-Suche und andere erweiterte Abfragetypen stehen jedoch nur bei Verwendung der vollständigen Syntax zur Verfügung. 
+
+**`search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`**
+
++ Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben. 
+
++ Die Beispielabfrage filtert alle Ergebnisse nach Positionsdaten und gibt Ergebnisse zurück, die weniger als fünf Kilometer von einem bestimmten Punkt (angegeben als Koordinaten mit Breiten-und Längengrad) entfernt sind. Durch Hinzufügen von `$count` sehen Sie, wie viele Ergebnisse zurückgegeben werden, wenn Sie die Entfernung oder die Koordinaten ändern. 
+
++ Die Geosuche ist hilfreich, wenn Ihre Suchanwendung über eine Umgebungssuche oder Kartennavigation verfügt. Es ist allerdings keine Volltextsuche. Falls eine Suche nach Städte- oder Ländernamen möglich sein muss, fügen Sie zusätzlich zu den Koordinaten Felder mit Städte- oder Ländernamen hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -153,9 +197,9 @@ Die Geosuche ist hilfreich, wenn Ihre Suchanwendung über eine Umgebungssuche od
 
   Klicken Sie zum Anzeigen der einzelnen Komponenten auf dem Dashboard auf die Kachel **Index**, **Indexer** oder **Datenquellen**, um eine Liste mit vorhandenen Objekten anzuzeigen. Weitere Informationen zu Indexbearbeitungen, die keine Neuerstellung erfordern, finden Sie unter [Update Index (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/update-index) (Aktualisieren des Index (Azure Search-REST-API)).
 
-+ Probieren Sie die Tools und Schritte mit anderen Datenquellen aus. Das Beispieldataset `realestate-us-sample` stammt aus einer Azure SQL-Datenbank, die Azure Search durchforsten kann. Neben Azure SQL-Datenbank kann Azure Search auch Azure Table Storage, Blob Storage, SQL Server auf einem virtuellen Azure-Computer sowie DocumentDB durchforsten. Alle diese Datenquellen werden im Assistenten unterstützt. In Code können Sie einen Index problemlos mit einem *Indexer* erstellen und auffüllen.
++ Probieren Sie die Tools und Schritte mit anderen Datenquellen aus. Das Beispieldataset `realestate-us-sample` stammt aus einer Azure SQL-Datenbank, die Azure Search durchforsten kann. Neben Azure SQL-Datenbank kann Azure Search auch Azure Table Storage, Blob Storage, SQL Server auf einem virtuellen Azure-Computer sowie DocumentDB durchforsten und einen Index von darin enthaltenen flachen Datenstrukturen ableiten. Alle diese Datenquellen werden im Assistenten unterstützt. Im Code können Sie einen Index problemlos mithilfe eines *Indexers* auffüllen.
 
-+ Alle anderen Datenquellen werden über ein Pushmodell unterstützt, bei dem Ihr Code neue und geänderte Rowsets per Push im JSON-Format an Ihren Index übermittelt. Weitere Informationen finden Sie unter [Add, Update or Delete Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) (Hinzufügen, Aktualisieren oder Löschen von Dokumenten in Azure Search).
++ Alle Indexer-fremden Datenquellen werden über ein Pushmodell unterstützt, bei dem Ihr Code neue und geänderte Rowsets per Push im JSON-Format an Ihren Index übermittelt. Weitere Informationen finden Sie unter [Add, Update or Delete Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) (Hinzufügen, Aktualisieren oder Löschen von Dokumenten in Azure Search).
 
 Informationen zu anderen Features, die in diesem Artikel erwähnt werden, finden Sie unter den folgenden Links:
 
@@ -175,8 +219,3 @@ Informationen zu anderen Features, die in diesem Artikel erwähnt werden, finden
 [7]: ./media/search-get-started-portal/search-explorer-query2.png
 [8]: ./media/search-get-started-portal/realestate-indexer2.png
 [9]: ./media/search-get-started-portal/import-datasource-sample2.png
-
-
-<!--HONumber=Feb17_HO3-->
-
-
