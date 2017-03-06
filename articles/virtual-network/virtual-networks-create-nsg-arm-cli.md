@@ -1,10 +1,10 @@
 ---
-title: "Erstellen von NSGs im ARM-Modus über die Azure-Befehlszeilenschnittstelle | Microsoft Docs"
-description: "Informationen zum Erstellen und Bereitstellen von NSGs im ARM-Modus über die Azure-Befehlszeilenschnittstelle"
+title: "Erstellen von Netzwerksicherheitsgruppen – Azure CLI 2.0 | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie Netzwerksicherheitsgruppen mit der Azure CLI 2.0 erstellen und bereitstellen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 9ea82c09-f4a6-4268-88bc-fc439db40c48
@@ -13,263 +13,353 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2016
+ms.date: 02/17/2017
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d740926f6e372e46001b5a093c7fb25b47bc4f36
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: e7a8f4cff0889a02ef1f7a4d32fda4e57c5d35b0
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="how-to-create-nsgs-in-the-azure-cli"></a>Erstellen von NSGs in der Azure-Befehlszeilenschnittstelle
+# <a name="create-network-security-groups-using-the-azure-cli-20"></a>Erstellen von Netzwerksicherheitsgruppen mit der Azure CLI 2.0
+
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
+
+## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe 
+
+Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch: 
+
+- [Azure CLI 1.0:](virtual-networks-create-nsg-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell 
+- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie haben auch die Möglichkeit, [NSGs im klassischen Bereitstellungsmodell zu erstellen](virtual-networks-create-nsg-classic-cli.md).
-
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Die folgenden Beispielbefehle für die Azure-Befehlszeilenschnittstelle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem obigen Szenario basiert. Wenn Sie die Befehle so ausführen möchten, wie sie in diesem Dokument angezeigt werden, erstellen Sie zunächst die Testumgebung durch Bereitstellen [dieser Vorlage](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd). Klicken Sie auf **Deploy to Azure** (In Azure bereitstellen), ersetzen Sie bei Bedarf die Standardparameterwerte, und befolgen Sie dann die Anweisungen im Portal.
+Die folgenden Azure CLI 2.0-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde, die auf dem obigen Szenario basiert. 
 
-## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Erstellen der NSG für das Front-End-Subnetz
-Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-FrontEnd* basierend auf dem oben beschriebenen Szenario die folgenden Schritte aus:
+## <a name="create-the-nsg-for-the-frontend-subnet"></a>Erstellen der NSG für das Subnetz `FrontEnd`
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle noch nie verwendet haben, ziehen Sie [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) zurate, und folgen Sie den Anweisungen bis zu dem Punkt, an dem Sie Ihr Azure-Konto und Ihr Abonnement auswählen.
-2. Führen Sie den Befehl **azure config mode** aus, um in den Ressourcen-Manager-Modus zu wechseln, wie unten dargestellt.
-   
-        azure config mode arm
-   
-    Erwartete Ausgabe:
-   
-        info:    New mode is arm
-3. Führen Sie den Befehl **azure network nsg create** aus, um eine NSG zu erstellen.
-   
-        azure network nsg create -g TestRG -l westus -n NSG-FrontEnd
-   
-    Erwartete Ausgabe:
-   
-        info:    Executing command network nsg create
-        info:    Looking up the network security group "NSG-FrontEnd"
-        info:    Creating a network security group "NSG-FrontEnd"
-        info:    Looking up the network security group "NSG-FrontEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd
-        data:    Name                            : NSG-FrontEnd
-        data:    Type                            : Microsoft.Network/networkSecurityGroups
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Security group rules:
-        data:    Name                           Source IP          Source Port  Destination IP  Destination Port  Protocol  Direction  Access  Priority
-        data:    -----------------------------  -----------------  -----------  --------------  ----------------  --------  ---------  ------  --------
-        data:    AllowVnetInBound               VirtualNetwork     *            VirtualNetwork  *                 *         Inbound    Allow   65000   
-        data:    AllowAzureLoadBalancerInBound  AzureLoadBalancer  *            *               *                 *         Inbound    Allow   65001   
-        data:    DenyAllInBound                 *                  *            *               *                 *         Inbound    Deny    65500   
-        data:    AllowVnetOutBound              VirtualNetwork     *            VirtualNetwork  *                 *         Outbound   Allow   65000   
-        data:    AllowInternetOutBound          *                  *            Internet        *                 *         Outbound   Allow   65001   
-        data:    DenyAllOutBound                *                  *            *               *                 *         Outbound   Deny    65500   
-        info:    network nsg create command OK
-   
+Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-FrontEnd* basierend auf dem oben beschriebenen Szenario die folgenden Schritte aus.
+
+1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. 
+
+2. Erstellen Sie eine NSG mit dem Befehl [az network nsg create](/cli/azure/network/nsg#create). 
+
+    ```azurecli
+    az network nsg create \
+    --resource-group testrg \
+    --name NSG-FrontEnd \
+    --location centralus 
+    ```
+
     Parameter:
    
-   * **-g (oder --resource-group)**. Name der Ressourcengruppe, in der die NSG erstellt wird. In diesem Szenario *TestRG*.
-   * **-l (oder --location)**. Azure-Region, in der die neue NSG erstellt wird. In diesem Szenario *westus*.
-   * **-n (oder --name)**. Name der neuen NSG. In diesem Szenario *NSG-FrontEnd*.
-4. Führen Sie den Befehl **azure network nsg rule create** aus, um eine Regel zu erstellen, die den Zugriff auf Port 3389 (RDP) über das Internet zulässt.
-   
-        azure network nsg rule create -g TestRG -a NSG-FrontEnd -n rdp-rule -c Allow -p Tcp -r Inbound -y 100 -f Internet -o * -e * -u 3389
-   
-    Erwartete Ausgabe:
-   
-        info:    Executing command network nsg rule create
-        warn:    Using default direction: Inbound
-        info:    Looking up the network security rule "rdp-rule"
-        info:    Creating a network security rule "rdp-rule"
-        info:    Looking up the network security group "NSG-FrontEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/rdp
-        -rule
-        data:    Name                            : rdp-rule
-        data:    Type                            : Microsoft.Network/networkSecurityGroups/securityRules
-        data:    Provisioning state              : Succeeded
-        data:    Source IP                       : Internet
-        data:    Source Port                     : *
-        data:    Destination IP                  : *
-        data:    Destination Port                : 3389
-        data:    Protocol                        : Tcp
-        data:    Direction                       : Inbound
-        data:    Access                          : Allow
-        data:    Priority                        : 100
-        info:    network nsg rule create command OK
-   
-    Parameter:
-   
-   * **-a (oder --nsg-name)**. Name der NSG, in der die Regel erstellt wird. In diesem Szenario *NSG-FrontEnd*.
-   * **-n (oder --name)**. Name der neuen Regel. In diesem Szenario *rdp-rule*.
-   * **-c (oder --access)**. Zugriffsebene für die Regel (Deny oder Allow).
-   * **-p (oder --protocol)**. Protokoll (Tcp, Udp oder *) für die Regel.
-   * **-r (oder --direction)**. Richtung der Verbindung (Inbound oder Outbound).
-   * **-y (oder --priority)**. Priorität für die Regel.
-   * **-f (oder --source-address-prefix)**. Quelladresspräfix in CIDR oder Verwendung von Standardtags.
-   * **-o (oder --source-port-range)**. Quellport oder Portbereich.
-   * **-e (oder --destination-address-prefix)**. Zieladresspräfix in CIDR oder Verwendung von Standardtags.
-   * **-u (oder --destination-port-range)**. Zielport oder Portbereich.    
-5. Führen Sie den Befehl **azure network nsg rule create** aus, um eine Regel zu erstellen, die den Zugriff auf Port 80 (HTTP) über das Internet zulässt.
-   
-        azure network nsg rule create -g TestRG -a NSG-FrontEnd -n web-rule -c Allow -p Tcp -r Inbound -y 200 -f Internet -o * -e * -u 80
-   
-    Erwartete Ausgabe:
-   
-        info:    Executing command network nsg rule create
-        info:    Looking up the network security rule "web-rule"
-        info:    Creating a network security rule "web-rule"
-        info:    Looking up the network security group "NSG-FrontEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        networkSecurityGroups/NSG-FrontEnd/securityRules/web-rule
-        data:    Name                            : web-rule
-        data:    Type                            : Microsoft.Network/networkSecurityGroups/securityRules
-        data:    Provisioning state              : Succeeded
-        data:    Source IP                       : Internet
-        data:    Source Port                     : *
-        data:    Destination IP                  : *
-        data:    Destination Port                : 80
-        data:    Protocol                        : Tcp
-        data:    Direction                       : Inbound
-        data:    Access                          : Allow
-        data:    Priority                        : 200
-        info:    network nsg rule create command OK
-6. Führen Sie den Befehl **azure network vnet subnet set** aus, um die NSG mit dem Front-End-Subnetz zu verbinden.
-   
-        azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -o NSG-FrontEnd
-   
-    Erwartete Ausgabe:
-   
-        info:    Executing command network vnet subnet set
-        info:    Looking up the subnet "FrontEnd"
-        info:    Looking up the network security group "NSG-FrontEnd"
-        info:    Setting subnet "FrontEnd"
-        info:    Looking up the subnet "FrontEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        virtualNetworks/TestVNet/subnets/FrontEnd
-        data:    Type                            : Microsoft.Network/virtualNetworks/subnets
-        data:    ProvisioningState               : Succeeded
-        data:    Name                            : FrontEnd
-        data:    Address prefix                  : 192.168.1.0/24
-        data:    Network security group          : [object Object]
-        data:    IP configurations:
-        data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNICWeb2/ip
-        Configurations/ipconfig1
-        data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNICWeb1/ip
-        Configurations/ipconfig1
-        data:    
-        info:    network vnet subnet set command OK
+   * `--resource-group`: Name der Ressourcengruppe, in der die NSG erstellt wird. In diesem Szenario *TestRG*.
+   * `--location`: Azure-Region, in der die neue NSG erstellt wird. In diesem Szenario *westus*.
+   * `--name`: Name der neuen NSG. In diesem Szenario *NSG-FrontEnd*.
 
-## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Erstellen der NSG für das Back-End-Subnetz
+    Die erwartete Ausgabe enthält relativ viele Informationen, einschließlich einer Liste aller Standardregeln. Das folgende Beispiel zeigt die Standardregeln mithilfe eines JMESPATH-Abfragefilters mit dem Ausgabeformat `table`:
+
+    ```azurecli
+    az network nsg show \
+    -g testrg \
+    -n nsg-frontend \
+    --query 'defaultSecurityRules[].{Access:access,Desc:description,DestPortRange:destinationPortRange,Direction:direction,Priority:priority}' \
+    -o table
+    ```
+   
+   Ausgabe:
+
+        Access    Desc                                                    DestPortRange    Direction      Priority
+        --------  ------------------------------------------------------  ---------------  -----------  ----------
+        Allow     Allow inbound traffic from all VMs in VNET              *                Inbound           65000
+        Allow     Allow inbound traffic from azure load balancer          *                Inbound           65001
+        Deny      Deny all inbound traffic                                *                Inbound           65500
+        Allow     Allow outbound traffic from all VMs to all VMs in VNET  *                Outbound          65000
+        Allow     Allow outbound traffic from all VMs to Internet         *                Outbound          65001
+        Deny      Deny all outbound traffic                               *                Outbound          65500
+
+
+
+3. Erstellen Sie mit dem Befehl [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Regel, die den Zugriff auf Port 3389 (RDP) über das Internet zulässt.
+
+    > [!NOTE]
+    > Abhängig von der verwendeten Shell müssen Sie möglicherweise das Zeichen `*` in den folgenden Argumenten ändern, damit das Argument vor der Ausführung nicht erweitert wird.
+   
+    ```azurecli
+    az network nsg rule create \
+    --resource-group testrg \
+    --nsg-name NSG-FrontEnd \
+    --name rdp-rule \
+    --access Allow \
+    --protocol Tcp \
+    --direction Inbound \
+    --priority 100 \
+    --source-address-prefix Internet \
+    --source-port-range "*" \
+    --destination-address-prefix "*" \
+    --destination-port-range 3389
+    ```
+   
+    Erwartete Ausgabe:
+   
+    ```json
+    {
+        "access": "Allow",
+        "description": null,
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "3389",
+        "direction": "Inbound",
+        "etag": "W/\"<guid>\"",
+        "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/rdp-rule",
+        "name": "rdp-rule",
+        "priority": 100,
+        "protocol": "Tcp",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "testrg",
+        "sourceAddressPrefix": "Internet",
+        "sourcePortRange": "*"
+    }
+    ```
+
+    Parameter:
+
+    * `--resource-group testrg`: Die zu verwendende Ressourcengruppe. Groß-/Kleinschreibung muss beachtet werden.
+    * `--nsg-name NSG-FrontEnd`: Name der NSG, in der die Regel erstellt wird.
+    * `--name rdp-rule`: Name der neuen Regel.
+    * `--access Allow`: Zugriffsebene für die Regel (Deny oder Allow).
+    * `--protocol Tcp`: Protokoll (TCP, UDP oder *).
+    * `--direction Inbound`: Richtung der Verbindung (Inbound oder Outbound).
+    * `--priority 100`: Priorität für die Regel.
+    * `--source-address-prefix Internet`: Quelladresspräfix in CIDR oder Verwendung von Standardtags.
+    * `--source-port-range "*"`: Quellport oder Portbereich. Port, der die Verbindung geöffnet hat.
+    * `--destination-address-prefix "*"`: Zieladresspräfix in CIDR oder Verwendung von Standardtags.
+    * `--destination-port-range 3389`: Zielport oder Portbereich. Port, der die Verbindungsanforderung empfängt.
+
+
+
+4. Erstellen Sie mit dem Befehl **az network nsg rule create** eine Regel, die den Zugriff auf Port 80 (HTTP) über das Internet zulässt.
+   
+    ```azurecli
+    az network nsg rule create \
+    --resource-group testrg \
+    --nsg-name NSG-FrontEnd \
+    --name web-rule \
+    --access Allow \
+    --protocol Tcp \
+    --direction Inbound \
+    --priority 200 \
+    --source-address-prefix Internet \
+    --source-port-range "*" \
+    --destination-address-prefix "*" \
+    --destination-port-range 80
+    ```
+   
+    Erwartete Ausgabe:
+   
+    ```json
+    {
+        "access": "Allow",
+        "description": null,
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "80",
+        "direction": "Inbound",
+        "etag": "W/\"<guid>\"",
+        "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/web-rule",
+        "name": "web-rule",
+        "priority": 200,
+        "protocol": "Tcp",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "testrg",
+        "sourceAddressPrefix": "Internet",
+        "sourcePortRange": "*"
+    }
+    ```
+
+5. Binden Sie die NSG mit dem Befehl [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) an das Subnetz **FrontEnd**.
+        
+    ```azurecli
+    az network vnet subnet update \
+    > --vnet-name TestVNET \
+    > --name FrontEnd \
+    > --resource-group testrg \
+    > --network-security-group NSG-FrontEnd
+    ```
+   
+    Erwartete Ausgabe:
+   
+    ```json
+    {
+        "addressPrefix": "192.168.1.0/24",
+        "etag": "W/\"<guid>\"",
+        "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/TestVNET/subnets/FrontEnd",
+        "ipConfigurations": [
+            {
+            "etag": null,
+            "id": "/subscriptions/<guid>/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNIC/ipConfigurations/ipconfig1",
+            "name": null,
+            "privateIpAddress": null,
+            "privateIpAllocationMethod": null,
+            "provisioningState": null,
+            "publicIpAddress": null,
+            "resourceGroup": "TestRG",
+            "subnet": null
+            }
+        ],
+        "name": "FrontEnd",
+        "networkSecurityGroup": {
+            "defaultSecurityRules": null,
+            "etag": null,
+            "id": "/subscriptions/<guid>f/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd",
+            "location": null,
+            "name": null,
+            "networkInterfaces": null,
+            "provisioningState": null,
+            "resourceGroup": "testrg",
+            "resourceGuid": null,
+            "securityRules": null,
+            "subnets": null,
+            "tags": null,
+            "type": null
+        },
+        "provisioningState": "Succeeded",
+        "resourceGroup": "testrg",
+        "resourceNavigationLinks": null,
+        "routeTable": null
+    }
+    ```
+
+## <a name="create-the-nsg-for-the-backend-subnet"></a>Erstellen der NSG für das Subnetz `BackEnd`
 Führen Sie zum Erstellen einer NSG mit dem Namen *NSG-BackEnd* basierend auf dem oben beschriebenen Szenario die folgenden Schritte aus.
 
-1. Führen Sie den Befehl **azure network nsg create** aus, um eine NSG zu erstellen.
+1. Erstellen Sie mit **az network nsg create** die NSG `NSG-BackEnd`.
    
-        azure network nsg create -g TestRG -l westus -n NSG-BackEnd
+    ```azurecli
+    az network nsg create \
+    --resource-group testrg \
+    --name NSG-BackEnd \
+    --location centralus
+    ```
+   
+    Wie in Schritt 2 oben ist die erwartete Ausgabe sehr umfangreich und enthält auch Standardregeln.
+   
+2. Erstellen Sie mit dem Befehl **az network nsg rule create** eine Regel, die den Zugriff auf Port 1433 (SQL) über das Subnetz `FrontEnd` zulässt.
+   
+    ```azurecli
+    az network nsg rule create \
+    --resource-group testrg \
+    --nsg-name NSG-BackEnd \
+    --name sql-rule \
+    --access Allow \
+    --protocol Tcp \
+    --direction Inbound \
+    --priority 100 \
+    --source-address-prefix 192.168.1.0/24 \
+    --source-port-range "*" \
+    --destination-address-prefix "*" \
+    --destination-port-range 1433
+    ```
+   
+    Erwartete Ausgabe:
+
+    ```json  
+    {
+    "access": "Allow",
+    "description": null,
+    "destinationAddressPrefix": "*",
+    "destinationPortRange": "1433",
+    "direction": "Inbound",
+    "etag": "W/\"<guid>\"",
+    "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd/securityRules/sql-rule",
+    "name": "sql-rule",
+    "priority": 100,
+    "protocol": "Tcp",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "testrg",
+    "sourceAddressPrefix": "192.168.1.0/24",
+    "sourcePortRange": "*"
+    }
+    ```
+
+3. Erstellen Sie mit dem Befehl **az network nsg rule create** eine Regel, die den Zugriff auf das Internet verweigert.
+   
+    ```azurecli
+    az network nsg rule create \
+    --resource-group testrg \
+    --nsg-name NSG-BackEnd \
+    --name web-rule \
+    --access Deny \
+    --protocol Tcp  \
+    --direction Outbound  \
+    --priority 200 \
+    --source-address-prefix "*" \
+    --source-port-range "*" \
+    --destination-address-prefix "*" \
+    --destination-port-range "*"
+    ```
    
     Erwartete Ausgabe:
    
-        info:    Executing command network nsg create
-        info:    Looking up the network security group "NSG-BackEnd"
-        info:    Creating a network security group "NSG-BackEnd"
-        info:    Looking up the network security group "NSG-BackEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        networkSecurityGroups/NSG-BackEnd
-        data:    Name                            : NSG-BackEnd
-        data:    Type                            : Microsoft.Network/networkSecurityGroups
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Security group rules:
-        data:    Name                           Source IP          Source Port  Destination IP  Destination Port  Protocol  Direction  Access  Priority
-        data:    -----------------------------  -----------------  -----------  --------------  ----------------  --------  ---------  ------  --------
-        data:    AllowVnetInBound               VirtualNetwork     *            VirtualNetwork  *                 *         Inbound    Allow   65000   
-        data:    AllowAzureLoadBalancerInBound  AzureLoadBalancer  *            *               *                 *         Inbound    Allow   65001   
-        data:    DenyAllInBound                 *                  *            *               *                 *         Inbound    Deny    65500   
-        data:    AllowVnetOutBound              VirtualNetwork     *            VirtualNetwork  *                 *         Outbound   Allow   65000   
-        data:    AllowInternetOutBound          *                  *            Internet        *                 *         Outbound   Allow   65001   
-        data:    DenyAllOutBound                *                  *            *               *                 *         Outbound   Deny    65500   
-        info:    network nsg create command OK
-2. Führen Sie den Befehl **azure network nsg rule create** aus, um eine Regel zu erstellen, die den Zugriff auf Port 1433 (SQL) über das Front-End-Subnetz zulässt.
+    ```json
+    {
+    "access": "Deny",
+    "description": null,
+    "destinationAddressPrefix": "*",
+    "destinationPortRange": "*",
+    "direction": "Outbound",
+    "etag": "W/\"<guid>\"",
+    "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd/securityRules/web-rule",
+    "name": "web-rule",
+    "priority": 200,
+    "protocol": "Tcp",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "testrg",
+    "sourceAddressPrefix": "*",
+    "sourcePortRange": "*"
+    }
+    ```
+
+4. Binden Sie die NSG mit dem Befehl **az network vnet subnet set** an das Subnetz `BackEnd`.
    
-        azure network nsg rule create -g TestRG -a NSG-BackEnd -n sql-rule -c Allow -p Tcp -r Inbound -y 100 -f 192.168.1.0/24 -o * -e * -u 1433
+    ```azurecli
+    az network vnet subnet update \
+    --vnet-name TestVNET \
+    --name BackEnd \
+    --resource-group testrg \
+    --network-security-group NSG-BackEnd
+    ```
    
     Erwartete Ausgabe:
    
-        info:    Executing command network nsg rule create
-        info:    Looking up the network security rule "sql-rule"
-        info:    Creating a network security rule "sql-rule"
-        info:    Looking up the network security group "NSG-BackEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        networkSecurityGroups/NSG-BackEnd/securityRules/sql-rule
-        data:    Name                            : sql-rule
-        data:    Type                            : Microsoft.Network/networkSecurityGroups/securityRules
-        data:    Provisioning state              : Succeeded
-        data:    Source IP                       : 192.168.1.0/24
-        data:    Source Port                     : *
-        data:    Destination IP                  : *
-        data:    Destination Port                : 1433
-        data:    Protocol                        : Tcp
-        data:    Direction                       : Inbound
-        data:    Access                          : Allow
-        data:    Priority                        : 100
-        info:    network nsg rule create command OK
-3. Führen Sie den Befehl **azure network nsg rule create** aus, um eine Regel zu erstellen, die den Zugriff über das Internet verweigert.
-   
-        azure network nsg rule create -g TestRG -a NSG-BackEnd -n web-rule -c Deny -p * -r Outbound -y 200 -f * -o * -e Internet -u *
-   
-    Erwartete Ausgabe:
-   
-        info:    Executing command network nsg rule create
-        info:    Looking up the network security rule "web-rule"
-        info:    Creating a network security rule "web-rule"
-        info:    Looking up the network security group "NSG-BackEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        networkSecurityGroups/NSG-BackEnd/securityRules/web-rule
-        data:    Name                            : web-rule
-        data:    Type                            : Microsoft.Network/networkSecurityGroups/securityRules
-        data:    Provisioning state              : Succeeded
-        data:    Source IP                       : *
-        data:    Source Port                     : *
-        data:    Destination IP                  : Internet
-        data:    Destination Port                : *
-        data:    Protocol                        : *
-        data:    Direction                       : Outbound
-        data:    Access                          : Deny
-        data:    Priority                        : 200
-        info:    network nsg rule create command OK
-4. Führen Sie den Befehl **azure network vnet subnet set** aus, um die NSG mit dem Back-End-Subnetz zu verbinden.
-   
-        azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -o NSG-BackEnd
-   
-    Erwartete Ausgabe:
-   
-        info:    Executing command network vnet subnet set
-        info:    Looking up the subnet "BackEnd"
-        info:    Looking up the network security group "NSG-BackEnd"
-        info:    Setting subnet "BackEnd"
-        info:    Looking up the subnet "BackEnd"
-        data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
-        virtualNetworks/TestVNet/subnets/BackEnd
-        data:    Type                            : Microsoft.Network/virtualNetworks/subnets
-        data:    ProvisioningState               : Succeeded
-        data:    Name                            : BackEnd
-        data:    Address prefix                  : 192.168.2.0/24
-        data:    Network security group          : [object Object]
-        data:    IP configurations:
-        data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNICSQL1/ip
-        Configurations/ipconfig1
-        data:      /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/TestNICSQL2/ip
-        Configurations/ipconfig1
-        data:    
-        info:    network vnet subnet set command OK
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
+    ```json
+    {
+    "addressPrefix": "192.168.2.0/24",
+    "etag": "W/\"<guid>\"",
+    "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/TestVNET/subnets/BackEnd",
+    "ipConfigurations": null,
+    "name": "BackEnd",
+    "networkSecurityGroup": {
+        "defaultSecurityRules": null,
+        "etag": null,
+        "id": "/subscriptions/<guid>/resourceGroups/testrg/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd",
+        "location": null,
+        "name": null,
+        "networkInterfaces": null,
+        "provisioningState": null,
+        "resourceGroup": "testrg",
+        "resourceGuid": null,
+        "securityRules": null,
+        "subnets": null,
+        "tags": null,
+        "type": null
+    },
+    "provisioningState": "Succeeded",
+    "resourceGroup": "testrg",
+    "resourceNavigationLinks": null,
+    "routeTable": null
+    }
+    ```
 

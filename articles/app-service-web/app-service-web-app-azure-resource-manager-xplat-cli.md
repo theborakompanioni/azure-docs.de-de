@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
 translationtype: Human Translation
-ms.sourcegitcommit: f595be46983bf07783b529de885d889c18fdb61a
-ms.openlocfilehash: 6f75781af24d1ad4cb6460f0dfd528684aaad57f
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 7a03e1417617453c43edcc3787da10d171359757
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -30,7 +31,7 @@ Version 0.10.5 der plattformübergreifenden Microsoft Azure-Befehlszeilentools w
 Informationen zum Verwalten von Ressourcengruppen finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/xplat-cli-azure-resource-manager.md). 
 
 > [!NOTE] 
-> Probieren Sie auch [Azure CLI 2.0 (Vorschau)](https://github.com/Azure/azure-cli) aus. Dies ist eine Befehlszeilenschnittstelle (CLI) der nächsten Generation, die in Python für das Resource Manager-Bereitstellungsmodell geschrieben wurde.
+> Probieren Sie auch [Azure CLI 2.0](https://github.com/Azure/azure-cli) aus, eine Befehlszeilenschnittstelle (CLI) der nächsten Generation, die in Python für das Resource Manager-Bereitstellungsmodell geschrieben wurde.
 >
 >
 
@@ -120,11 +121,11 @@ Verwenden Sie zum Abrufen einer bestimmten App den Befehl **azure webapp show**.
 ### <a name="configure-an-existing-app"></a>Konfigurieren einer vorhandenen App
 Verwenden Sie zum Ändern der Einstellungen und Konfigurationen einer vorhandenen App den Befehl **azure webapp config set**.
 
-Beispiel 1: Ändern der PHP-Version einer App 
+Beispiel&1;: Ändern der PHP-Version einer App 
 
     azure webapp config set --name ContosoWebApp --resource-group ContosoAzureResourceGroup --phpversion 5.6
 
-Beispiel 2: Hinzufügen oder Ändern von App-Einstellungen
+Beispiel&2;: Hinzufügen oder Ändern von App-Einstellungen
 
     webapp config appsettings set --name ContosoWebApp --resource-group ContosoAzureResourceGroup appsetting1=appsetting1value,appsetting2=appsetting2value
 
@@ -178,9 +179,4 @@ Verwenden Sie zum Löschen von Hostnamenbindungen Folgendes:
 * Informationen zur Unterstützung der Azure Resource Manager-CLI finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/xplat-cli-azure-resource-manager.md).
 * Informationen zur Verwaltung von App Service per PowerShell finden Sie unter [Verwenden von auf Azure Resource Manager basierenden PowerShell-Befehlen zum Verwalten von Azure-Web-Apps](app-service-web-app-azure-resource-manager-powershell.md).
 * Weitere Informationen zu Azure App Service unter Linux finden Sie unter [Introduction to App Service on Linux](app-service-linux-intro.md) (Einführung in App Service unter Linux).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

@@ -1,10 +1,10 @@
 ---
-title: Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs
-description: "Erfahren Sie, wie Sie einen virtuellen Computern mit mehreren Netzwerkkarten (NICs) über das klassische Bereitstellungsmodell mithilfe der Azure-Befehlszeilenschnittstelle erstellen."
+title: "Erstellen einer VM (klassisch) mit mehreren Netzwerkkarten – Azure CLI 1.0 | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie eine VM (klassisch) mit mehreren Netzwerkkarten mithilfe der Azure CLI 1.0 erstellen.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: 
 tags: azure-service-management
 ms.assetid: b436e41e-866c-439f-a7c7-7b4b041725ef
@@ -15,13 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f1a4dc135721a1c2a134806fbae031ee60e23074
-ms.openlocfilehash: 4d9f5f918e8f06dedcce14a880e436f807a5a7b0
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: b62421b7289650818748d0016dccfdf42ef0a768
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli"></a>Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über die Azure-Befehlszeilenschnittstelle
+# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Erstellen einer VM (klassisch) mit mehreren Netzwerkkarten mithilfe der Azure CLI 1.0
+
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
 Sie können virtuelle Computer (VMs) in Azure erstellen und jedem virtuellen Computer mehrere Netzwerkkarten (NICs) zuordnen. Mehrere NICs ermöglichen die Trennung von Datenverkehrstypen für alle NICs. Beispiel: Eine NIC kommuniziert mit dem Internet, während eine andere nur mit internen Ressourcen kommuniziert, für die keine Internetverbindung besteht. Die Möglichkeit, Netzwerkdatenverkehr auf mehreren NICs zu trennen, ist für zahlreiche virtuelle Netzwerkgeräte erforderlich, beispielsweise für Lösungen zur Anwendungsbereitstellung und WAN-Optimierung.
@@ -46,9 +49,9 @@ Die Back-End-VMs sind auf die Erstellung der folgenden Ressourcen angewiesen:
 * **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
 ### <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
-Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh)herunterladen. Schließen Sie die nachstehenden Schritte ab, um das Skript an Ihre Arbeitsumgebung anzupassen.
+Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh) herunterladen. Schließen Sie die nachstehenden Schritte ab, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
-1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites)bereitgestellten Ressourcengruppe.
+1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites) bereitgestellten Ressourcengruppe.
 
     ```azurecli
     location="useast2"
@@ -91,7 +94,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
     ```
 
 ### <a name="step-3---create-vms-with-multiple-nics"></a>Schritt 3: Erstellen von virtuellen Computern mit mehreren Netzwerkschnittstellenkarten
-1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs` -Variablen.
+1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs`-Variablen.
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
@@ -110,7 +113,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
     ipAddress2=$ipAddressPrefix$x
     ```
 
-3. Erstellen Sie den virtuellen Computer. Beachten Sie, dass der `--nic-config` -Parameter verwendet wird, der eine Liste aller Netzwerkkarten mit Namen, Subnetz und IP-Adresse enthält.
+3. Erstellen Sie den virtuellen Computer. Beachten Sie, dass der `--nic-config`-Parameter verwendet wird, der eine Liste aller Netzwerkkarten mit Namen, Subnetz und IP-Adresse enthält.
 
     ```azurecli
     azure vm create $backendCSName $image $username $password \
@@ -140,7 +143,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
 ### <a name="step-4---run-the-script"></a>Schritt 4: Ausführen des Skripts
 Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, um die Back-End-VMs mit mehreren Netzwerkkarten zu erstellen.
 
-1. Speichern Sie Ihr Skript, und führen Sie es im **Bash** -Terminal aus. Anfänglich wird die folgende Ausgabe angezeigt.
+1. Speichern Sie Ihr Skript, und führen Sie es im **Bash**-Terminal aus. Anfänglich wird die folgende Ausgabe angezeigt.
 
         info:    Executing command service create
         info:    Creating cloud service
@@ -186,9 +189,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
         info:    Getting virtual machines
         info:    Adding Data-Disk
         info:    vm disk attach-new command OK
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft Docs"
-description: "Erfahren Sie, wie Sie eine VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle erstellen. | Resource Manager"
+title: "Erstellen einer VM mit einer statischen öffentlichen IP-Adresse – Azure CLI 2.0 | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie eine VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure CLI 2.0 erstellen."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,243 +15,141 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 75dbe164bf0fb4b3aff95954ce619781bbafaa5c
-ms.openlocfilehash: 7395e8596dced14208ac257f9b1f33567a030bd7
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: e7874e7d86f75846c452d9863d5604982e9ce50b
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-vm-with-a-static-public-ip-using-the-azure-cli"></a>Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-20"></a>Erstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe der Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 - [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
 - [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-- [Azure-Befehlszeilenschnittstelle](virtual-network-deploy-static-pip-arm-cli.md)
+- [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md)
+- [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md)
 - [Vorlage](virtual-network-deploy-static-pip-arm-template.md)
 - [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
 
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des klassischen Bereitstellungsmodells empfohlen wird.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des klassischen Bereitstellungsmodells empfohlen wird.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
-[!INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
+## <a name="a-name--createacreate-the-vm"></a><a name = "create"></a>Erstellen der VM
 
-## <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
-Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-cli.sh)herunterladen. Führen Sie die nachstehenden Schritte aus, damit das Skript in Ihrer Umgebung funktionieren kann:
+Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit der [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md) ausführen. Mithilfe der Werte in Anführungszeichen ("") in den folgenden Schritten werden Ressourcen mit Einstellungen aus dem Szenario erstellt. Ersetzen Sie die Werte ggf. durch entsprechende Werte für Ihre Umgebung.
 
-Ändern Sie die Werte der unten angegebenen Variablen basierend auf den Werten, die Sie für die Bereitstellung verwenden möchten. Die folgenden Werte gelten für das in diesem Artikel verwendete Szenario:
-
-```azurecli
-# Set variables for the new resource group
-rgName="IaaSStory"
-location="westus"
-
-# Set variables for VNet
-vnetName="TestVNet"
-vnetPrefix="192.168.0.0/16"
-subnetName="FrontEnd"
-subnetPrefix="192.168.1.0/24"
-
-# Set variables for storage
-stdStorageAccountName="iaasstorystorage"
-
-# Set variables for VM
-vmSize="Standard_A1"
-diskSize=127
-publisher="Canonical"
-offer="UbuntuServer"
-sku="14.04.2-LTS"
-version="latest"
-vmName="WEB1"
-osDiskName="osdisk"
-nicName="NICWEB1"
-privateIPAddress="192.168.1.101"
-username='adminuser'
-password='adminP@ssw0rd'
-pipName="PIPWEB1"
-dnsName="iaasstoryws1"
-```
-
-## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre VM
-Vor dem Erstellen einer virtuellen Maschine benötigen Sie eine Ressourcengruppe, ein VNET, eine öffentliche IP-Adresse und eine Netzwerkschnittstelle für die Verwendung durch die VM.
-
-1. Erstellen Sie eine neue Ressourcengruppe.
+1. Installieren Sie die [Azure CLI 2.0](/cli/azure/install-az-cli2), sofern noch nicht geschehen.
+2. Erstellen Sie ein Paar aus einem öffentlichen und privaten SSH-Schlüssel für Linux-VMs, indem Sie die Schritte im Artikel [Erstellen eines öffentlich-privaten SSH-Schlüsselpaars für virtuelle Linux-Computer](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführen.
+3. Melden Sie sich über eine Befehlsshell mit dem Befehl `az login` an.
+4. Erstellen Sie die VM, indem Sie das folgende Skript auf einem Linux- oder Mac-Computer ausführen. Die öffentliche Azure-IP-Adresse, das virtuelle Netzwerk, die Netzwerkschnittstelle und die VM-Ressourcen müssen sich alle am selben Standort befinden. Wenngleich sich die Ressourcen nicht zwingend in derselben Ressourcengruppe befinden müssen, ist dies im folgenden Skript der Fall.
 
     ```azurecli
-    azure group create $rgName $location
+    #!/bin/sh
+
+    RgName="IaaSStory"
+    Location="westus"
+    az group create --name $RgName --location $Location
+
+    # Create a public IP address resource with a static IP address
+    PipName="PIPWEB1"
+    # Note: The value below must be unique within the azure location it's created in.
+    DnsName="iaasstoryws1"
+
+    az network public-ip create \
+    --name $PipName \
+    --resource-group $RgName \
+    --location $Location \
+
+    # The following option allocates a static public IP address to the resource. If you do not specify it, the address is
+    # allocated dynamically. The address is assigigned to the resource from a pool of IP adresses unique to each Azure regions.
+    # Download and view the file from https://www.microsoft.com/en-us/download/details.aspx?id=41653 to see the ranges for each region.
+    --allocation-method Static \
+
+    --dns-name $DnsName \
+
+    # Create a virtual network with one subnet
+
+    VnetName="TestVNet"
+    VnetPrefix="192.168.0.0/16"
+    SubnetName="FrontEnd"
+    SubnetPrefix="192.168.1.0/24"
+
+    az network vnet create \
+    --name $VnetName \
+    --resource-group $RgName \
+    --location $Location \
+    --address-prefix $VnetPrefix \
+    --subnet-name $SubnetName \
+    --subnet-prefix $SubnetPrefix
+
+    # Create a network interface connected to the VNet with a static private IP address and associate the public IP address
+    # resource to the NIC.
+    NicName="NICWEB1"
+    PrivateIpAddress="192.168.1.101"
+
+    az network nic create \
+    --name $NicName \
+    --resource-group $RgName \
+    --location $Location \
+    --subnet $SubnetName \
+    --vnet-name $VnetName \
+    --private-ip-address $PrivateIpAddress \
+    --public-ip-address $PipName
+
+    # Create a new VM with the NIC
+    VmName="WEB1"
+    
+    # Replace the value for the VmSize variable with a value from the
+    # https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes article.
+    VmSize="Standard_DS1"
+
+    # Replace the value for the OsImage variable value with a value for *urn* from the output returned by entering the
+    # `az vm image list` command. 
+    OsImage="credativ:Debian:8:latest"
+    
+    Username='adminuser'
+    
+    # Replace the following value with the path to your public key file.
+    SshKeyValue="~/.ssh/id_rsa.pub"
+
+    az vm create \
+    --name $VmName \
+    --resource-group $RgName \
+    --image $OsImage \
+    --location $Location \
+    --size $VmSize \
+    --nics $NicName \
+    --admin-username $Username \
+
+    # If creating a Windows VM, remove the next line and you'll be prompted for the password you want to configure for the VM.
+    --ssh-key-value $SshKeyValue
     ```
 
-2. Erstellen Sie das VNET und das Subnetz.
+    Zusätzlich zur VM werden mit dem Skript folgende Komponenten erstellt:
+    - Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - Virtuelles Netzwerk, Subnetz, Netzwerkkarte und öffentliche IP-Adressressourcen. Alternativ können Sie ein *vorhandenes* Netzwerk, ein Subnetz, eine Netzwerkkarte oder öffentliche IP-Adressressourcen verwenden. Um zu erfahren, wie Sie vorhandene Netzwerkressourcen verwenden, statt zusätzliche Ressourcen zu erstellen, geben Sie `az vm create -h` ein.
 
-    ```azurecli
-    azure network vnet create --resource-group $rgName \
-        --name $vnetName \
-        --address-prefixes $vnetPrefix \
-        --location $location
-    azure network vnet subnet create --resource-group $rgName \
-        --vnet-name $vnetName \
-        --name $subnetName \
-        --address-prefix $subnetPrefix
-    ```
+## <a name="a-name--validateavalidate-vm-creation-and-public-ip-address"></a><a name = "validate"></a>Überprüfen der VM-Erstellung und der öffentlichen IP-Adresse
 
-3. Erstellen Sie die öffentliche IP-Ressource.
+1. Geben Sie den Befehl `az resource list --resouce-group IaaSStory --output table` ein, um eine Liste der Ressourcen anzuzeigen, die vom Skript erstellt wurden. Die zurückgegebene Ausgabe sollte fünf Ressourcen umfassen: Netzwerkschnittstelle, Datenträger, öffentliche IP-Adresse, virtuelles Netzwerk und VM.
+2. Geben Sie den Befehl `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table` ein. Beachten Sie in der zurückgegebenen Ausgabe den Wert von **IpAddress**. Beachten Sie außerdem, dass der Wert von **PublicIpAllocationMethod** auf *Static* festgelegt ist.
+3. Bevor Sie den folgenden Befehl ausführen, entfernen Sie die spitzen Klammern (<>), ersetzen Sie *Username* durch den Namen, den Sie im Skript für die Variable **Username** verwendet haben, und ersetzen Sie *ipAddress* durch den Wert für **ipAddress** aus dem letzten Schritt. Führen Sie den folgenden Befehl aus, um eine Verbindung mit der VM herzustellen: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
 
-    ```azurecli
-    azure network public-ip create --resource-group $rgName \
-        --name $pipName \
-        --location $location \
-        --allocation-method Static \
-        --domain-name-label $dnsName
-    ```
+## <a name="a-name-clean-uparemove-the-vm-and-associated-resources"></a><a name= "clean-up"></a>Entfernen der VM und zugehöriger Ressourcen
 
-4. Erstellen Sie die Netzwerkschnittstelle (NIC) für die VM im oben erstellten Subnetz mit der öffentlichen IP-Adresse. Beachten Sie, dass die ersten Befehle zum Abrufen der **ID** des oben erstellten Subnetzes verwendet werden.
+Wenn Sie eine Ressourcengruppe nur zum Ausführen der Schritte in diesem Artikel erstellt haben, können Sie alle Ressourcen entfernen, indem Sie die Ressourcengruppe mit dem Befehl `az group delete -n IaaSStory` löschen.
 
-    ```azurecli
-    subnetId="$(azure network vnet subnet show --resource-group $rgName \
-        --vnet-name $vnetName \
-        --name $subnetName|grep Id)"
+>[!WARNING]
+>Vergewissern Sie sich vor dem Löschen der Ressourcengruppe, dass sich keine weiteren Ressourcen in der Ressourcengruppe befinden als die, die mithilfe des Skripts in diesem Artikel erstellt wurden. Führen Sie den Befehl `az resource list --resouce-group IaaSStory` aus, um die Ressourcen in der Ressourcengruppe anzuzeigen.
 
-    subnetId=${subnetId#*/}
+Es wird empfohlen, die Ressourcen zu löschen, sofern Sie die VM nicht in der Produktion verwenden möchten. Durch die VM, die öffentliche IP-Adresse und die Datenträgerressourcen werden Kosten verursacht, solange sie bereitgestellt sind. 
 
-    azure network nic create --name $nicName \
-        --resource-group $rgName \
-        --location $location \
-        --private-ip-address $privateIPAddress \
-        --subnet-id $subnetId \
-        --public-ip-name $pipName
-    ```
+## <a name="next-steps"></a>Nächste Schritte
 
-   > [!TIP]
-   > Der erste Befehl oben verwendet [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) und die [Zeichenkettenmanipulation](http://tldp.org/LDP/abs/html/string-manipulation.html) (insbesondere Substringentfernung).
-   >
-
-5. Erstellen Sie ein Speicherkonto zum Hosten des VM-Betriebssystemlaufwerks.
-
-    ```azurecli
-    azure storage account create $stdStorageAccountName \
-        --resource-group $rgName \
-        --location $location --type LRS
-    ```
-
-## <a name="step-3---create-the-vm"></a>Schritt 3: Erstellen der VM
-Nachdem nun alle benötigten Ressourcen vorhanden sind, können Sie eine neue VM erstellen.
-
-1. Erstellen Sie den virtuellen Computer.
-
-    ```azurecli
-    azure vm create --resource-group $rgName \
-        --name $vmName \
-        --location $location \
-        --vm-size $vmSize \
-        --subnet-id $subnetId \
-        --nic-names $nicName \
-        --os-type linux \
-        --image-urn $publisher:$offer:$sku:$version \
-        --storage-account-name $stdStorageAccountName \
-        --storage-account-container-name vhds \
-        --os-disk-vhd $osDiskName.vhd \
-        --admin-username $username \
-        --admin-password $password
-    ```
-2. Speichern Sie die Skript-Datei.
-
-## <a name="step-4---run-the-script"></a>Schritt 4: Ausführen des Skripts
-Nachdem Sie die erforderlichen Änderungen vorgenommen und sich mit dem Skript vertraut gemacht haben, können Sie das Skript ausführen.
-
-1. Führen Sie von einer Bash-Konsole das oben angegebene Skript aus.
-
-    ```azurecli
-    sh myscript.sh
-    ```
-
-2. Nach einigen Minuten sollte die unten angegebene Ausgabe angezeigt werden.
-
-        info:    Executing command group create
-        info:    Getting resource group IaaSStory
-        info:    Creating resource group IaaSStory
-        info:    Created resource group IaaSStory
-        data:    Id:                  /subscriptions/[Subscription ID]/resourceGroups/IaaSStory
-        data:    Name:                IaaSStory
-        data:    Location:            westus
-        data:    Provisioning State:  Succeeded
-        data:    Tags: null
-        data:
-        info:    group create command OK
-        info:    Executing command network vnet create
-        info:    Looking up virtual network "TestVNet"
-        info:    Creating virtual network "TestVNet"
-        info:    Loading virtual network state
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/TestVNet
-        data:    Name                            : TestVNet
-        data:    Type                            : Microsoft.Network/virtualNetworks
-        data:    Location                        : westus
-        data:    ProvisioningState               : Succeeded
-        data:    Address prefixes:
-        data:      192.168.0.0/16
-        info:    network vnet create command OK
-        info:    Executing command network vnet subnet create
-        info:    Looking up the subnet "FrontEnd"
-        info:    Creating subnet "FrontEnd"
-        info:    Looking up the subnet "FrontEnd"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
-        data:    Type                            : Microsoft.Network/virtualNetworks/subnets
-        data:    ProvisioningState               : Succeeded
-        data:    Name                            : FrontEnd
-        data:    Address prefix                  : 192.168.1.0/24
-        data:
-        info:    network vnet subnet create command OK
-        info:    Executing command network public-ip create
-        info:    Looking up the public ip "PIPWEB1"
-        info:    Creating public ip address "PIPWEB1"
-        info:    Looking up the public ip "PIPWEB1"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/publicIPAddresses/PIPWEB1
-        data:    Name                            : PIPWEB1
-        data:    Type                            : Microsoft.Network/publicIPAddresses
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Allocation method               : Static
-        data:    Idle timeout                    : 4
-        data:    IP Address                      : 40.78.63.253
-        data:    Domain name label               : iaasstoryws1
-        data:    FQDN                            : iaasstoryws1.westus.cloudapp.azure.com
-        info:    network public-ip create command OK
-        info:    Executing command network nic create
-        info:    Looking up the network interface "NICWEB1"
-        info:    Looking up the public ip "PIPWEB1"
-        info:    Creating network interface "NICWEB1"
-        info:    Looking up the network interface "NICWEB1"
-        data:    Id                              : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/networkInterfaces/NICWEB1
-        data:    Name                            : NICWEB1
-        data:    Type                            : Microsoft.Network/networkInterfaces
-        data:    Location                        : westus
-        data:    Provisioning state              : Succeeded
-        data:    Enable IP forwarding            : false
-        data:    IP configurations:
-        data:      Name                          : NIC-config
-        data:      Provisioning state            : Succeeded
-        data:      Public IP address             : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory/providers/Microsoft.Network/publicIPAddresses/PIPWEB1
-        data:      Private IP address            : 192.168.1.101
-        data:      Private IP Allocation Method  : Static
-        data:      Subnet                        : /subscriptions/[Subscription ID]/resourceGroups/IaaSStory2/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd
-        data:
-        info:    network nic create command OK
-        info:    Executing command storage account create
-        info:    Creating storage account
-        info:    storage account create command OK
-        info:    Executing command vm create
-        info:    Looking up the VM "WEB1"
-        info:    Using the VM Size "Standard_A1"
-        info:    The [OS, Data] Disk or image configuration requires storage account
-        info:    Looking up the storage account iaasstorystorage
-        info:    Looking up the NIC "NICWEB1"
-        info:    Creating VM "WEB1"
-        info:    vm create command OK
-
-
-
-<!--HONumber=Nov16_HO5-->
-
-
+Netzwerkdatenverkehr kann bei der in diesem Artikel erstellten VM ein- oder ausgehen. Sie können innerhalb einer Netzwerksicherheitsgruppe (NSG) Regeln für den eingehenden und ausgehenden Datenverkehr definieren, der von und zur Netzwerkschnittstelle, dem Netzwerk oder beiden Komponenten fließt. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie im Artikel [Übersicht über NSGs](virtual-networks-nsg.md).

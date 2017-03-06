@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer Linux-Umgebung über die Azure-Befehlszeilenschnittstelle 2.0 | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Speicherplatz, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI 2.0 (Preview) von Grund auf neu erstellen."
+title: Erstellen einer Linux-Umgebung mit der Azure CLI 2.0 | Microsoft-Dokumentation
+description: "Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkschnittstellenkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure CLI 2.0 von Grund auf neu erstellen."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 39ce158ae52b978b74161cdadb4b886a7ddbf87a
-ms.openlocfilehash: a00936df023ddbb13f5765f2e78900a68cccdb88
+ms.sourcegitcommit: d4cff286de1abd492ce7276c300b50d71f06345b
+ms.openlocfilehash: f07a326aa2fcd659f69265001293c9ed332bb842
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-complete-linux-environment-by-using-the-azure-cli-20-preview"></a>Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure-CLI 2.0 (Preview)
-In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
+# <a name="create-a-complete-linux-environment-with-the-azure-cli-20"></a>Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 2.0
+In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen. In diesem Artikel wird erläutert, wie Sie die Umgebung mit der Azure CLI-2.0-erstellen. Sie können diese Schritte auch mit der [Azure CLI 1.0](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Wenn Sie wissen, wie das System aufgebaut ist, können Sie es mithilfe von [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)deutlich schneller neu erstellen. Und wenn Sie wissen, wie die einzelnen Komponenten Ihrer Umgebung zusammenwirken, ist die Erstellung von Vorlagen für deren Automatisierung viel einfacher.
 
@@ -34,18 +35,12 @@ Die Umgebung enthält:
 
 ![Grundlegende Umgebung – Übersicht](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-create-cli-complete-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
-
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die grundlegenden Befehlen zum Hochladen eines virtuellen Computers in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)).
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
 
-Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste Version [Azure CLI 2.0](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Erstellen Sie zunächst die Ressourcengruppe mithilfe von [az group create](/cli/azure/group#create). Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `westeurope`:
 
@@ -53,7 +48,7 @@ Erstellen Sie zunächst die Ressourcengruppe mithilfe von [az group create](/cli
 az group create --name myResourceGroup --location westeurope
 ```
 
-Der nächste Schritt ist optional. Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) ist die Verwendung von Azure Managed Disks. Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md). Wenn Sie stattdessen nicht verwaltete Datenträger verwenden möchten, müssen Sie mithilfe von [az storage account create](/cli/azure/storage/account#create) ein Speicherkonto erstellen. Im folgenden Beispiel wird ein Speicherkonto mit dem Namen `mystorageaccount` erstellt. (Der Name des Speicherkontos muss eindeutig sein, geben Sie daher einen eigenen eindeutigen Namen an.)
+Der nächste Schritt ist optional. Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI 2.0 ist die Verwendung von Azure Managed Disks. Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Managed Disks](../storage/storage-managed-disks-overview.md). Wenn Sie stattdessen nicht verwaltete Datenträger verwenden möchten, müssen Sie mithilfe von [az storage account create](/cli/azure/storage/account#create) ein Speicherkonto erstellen. Im folgenden Beispiel wird ein Speicherkonto mit dem Namen `mystorageaccount` erstellt. (Der Name des Speicherkontos muss eindeutig sein, geben Sie daher einen eigenen eindeutigen Namen an.)
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westeurope \
@@ -226,7 +221,7 @@ az group export --name myResourceGroup > myResourceGroup.json
 ## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
 In den folgenden ausführlichen Schritten wird erklärt, was jeder Befehl macht, wenn Sie Ihre Umgebung erstellen. Diese Konzepte helfen Ihnen beim Erstellen Ihrer eigenen benutzerdefinierten Umgebungen für Entwicklung oder Produktion.
 
-Achten Sie darauf, dass Sie die neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
+Achten Sie darauf, dass Sie die neueste Version [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
 
@@ -252,7 +247,7 @@ Standardmäßig erfolgt die Ausgabe in JSON (JavaScript Object Notation). Um bei
 ```
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
-Der nächste Schritt ist optional. Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) ist die Verwendung von Azure Managed Disks. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern weder Vorbereitung und noch einen Speicherort. Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md). Fahren Sie mit [Erstellen eines virtuellen Netzwerks und des Subnetzes](#create-a-virtual-network-and-subnet) fort, wenn Sie Azure Managed Disks verwenden möchten. 
+Der nächste Schritt ist optional. Die Standardaktion beim Erstellen eines virtuellen Computers über die Azure CLI 2.0 ist die Verwendung von Azure Managed Disks. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen zu Azure Managed Disks finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md). Fahren Sie mit [Erstellen eines virtuellen Netzwerks und des Subnetzes](#create-a-virtual-network-and-subnet) fort, wenn Sie Azure Managed Disks verwenden möchten. 
 
 Wenn Sie nicht verwaltete Datenträger verwenden möchten, müssen Sie ein Speicherkonto für Ihre VM-Datenträger und für alle zusätzlichen Datenträger erstellen, die Sie hinzufügen möchten.
 
@@ -1114,9 +1109,4 @@ Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlag
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
