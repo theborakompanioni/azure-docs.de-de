@@ -17,9 +17,9 @@ ms.workload: na
 ms.date: 02/21/2017
 ms.author: dlepow
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 010a9a4a9ad0f6f7584b1c9a54e665557078d25b
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 31aaa122bfca5140dcd22d2a2233c46cd28f27b9
+ms.openlocfilehash: c139fc34d15545ce6a7a91842a3ebdff7c029a01
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -56,9 +56,13 @@ Alle VMs befinden sich in demselben privaten virtuellen Netzwerk, und untereinan
 
 ## <a name="create-the-cluster"></a>Cluster erstellen
 
-Sie können das Azure-Portal zum [Erstellen eines Kubernetes-Clusters](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal) mit Windows-Agentknoten verwenden. 
+Sie können das Azure-Portal zum [Erstellen eines Kubernetes-Clusters](container-service-deployment.md#create-a-cluster-by-using-the-azure-portal) mit Windows-Agentknoten verwenden. Beachten Sie beim Erstellen des Clusters die folgenden Einstellungen:
 
-Wählen Sie im Bereich **Framework configuration** (Framework-Konfiguration) unter **Orchestrator configuration** (Orchestrator-Konfiguration) die Option **Kubernetes – Windows**. 
+* Wählen Sie auf dem Blatt **Grundlagen** in **Orchestrator** die Option **Kubernetes**. 
+* Geben Sie auf dem Blatt **Masterkonfiguration** die Benutzeranmeldeinformationen und Dienstprinzipal-Anmeldeinformationen für die Linux-Masterknoten ein.
+* Wählen Sie auf dem Blatt **Agent-Konfiguration** unter **Betriebssystem** die Option **Windows (Vorschau)**. Geben Sie die Administratoranmeldeinformationen für die Windows-Agent-Knoten ein.
+
+Ausführliche Informationen finden Sie unter [Bereitstellen eines Azure Container Service-Clusters](container-service-deployment.md).
 
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
 
@@ -68,7 +72,7 @@ Verwenden Sie das Befehlszeilentool `kubectl`, um von Ihrem lokalen Computer aus
 
 Nach dem Erstellen des Clusters und dem Herstellen der Verbindung mit `kubectl` können Sie versuchen, eine grundlegende Windows-Web-App zu starten und für den Zugriff über das Internet verfügbar zu machen. In diesem Beispiel geben Sie die Containerressourcen mit einer YAML-Datei an und erstellen sie dann mit `kubctl apply`.
 
-1. Geben Sie `kubectl get nodes` ein, um eine Liste mit Ihren Knoten anzuzeigen.  Geben Sie Folgendes ein, wenn Sie alle Details der Knoten anzeigen möchten:  
+1. Geben Sie `kubectl get nodes` ein, um eine Liste mit Ihren Knoten anzuzeigen. Geben Sie Folgendes ein, wenn Sie alle Details der Knoten anzeigen möchten:  
 
   ```
   kubectl get nodes -o yaml

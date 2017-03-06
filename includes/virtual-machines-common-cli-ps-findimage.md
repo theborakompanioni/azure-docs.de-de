@@ -1,8 +1,8 @@
 
 
-## <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+## <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Verwenden Sie nach dem [Installieren von Azure CLI 2.0 (Vorschau)](https://docs.microsoft.com/cli/azure/install-az-cli2) den Befehl `az vm image list`, um eine zwischengespeicherte Liste mit beliebten VM-Images anzuzeigen. Mit dem Befehl `az vm image list -o table` wird beispielsweise Folgendes angezeigt:
+Verwenden Sie nach dem [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) den Befehl `az vm image list`, um eine zwischengespeicherte Liste mit beliebten VM-Images anzuzeigen. Mit dem Befehl `az vm image list -o table` wird beispielsweise Folgendes angezeigt:
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list

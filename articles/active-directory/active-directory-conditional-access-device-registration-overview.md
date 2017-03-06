@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Geräteregistrierung, Geräteregistrierung aktivieren, Geräteregistrierung und MDM"
 documentationcenter: 
 author: femila
-manager: swadhwa
+manager: femila
 editor: 
 ms.assetid: 1e92c1a2-01b8-4225-950b-373cd601b035
 ms.service: active-directory
@@ -13,11 +13,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2016
+ms.date: 02/22/2017
 ms.author: Markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 98f1b1856a6c457349decefeb277208a3b483bad
+ms.sourcegitcommit: 8df5889bfe2757ef68d0895d140dd44a765a89d0
+ms.openlocfilehash: 06fb59f627ea6aff3916787e321069c6b58c3e10
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -65,7 +66,7 @@ Windows 7- und Windows 8.1-Geräte ermitteln den Geräteregistrierungsdienst, in
 
 Sie müssen einen DNS CNAME-Eintrag erstellen, der auf den A-Eintrag verweist, der Ihrem Azure Active Directory-Geräteregistrierungsdienst zugeordnet ist. Der CNAME-Eintrag muss das bekannte Präfix "enterpriseregistration" verwenden, gefolgt vom UPN-Suffix, das von den Benutzerkonten in Ihrer Organisation verwendet wird. Wenn Ihre Organisation mehrere UPN-Suffixe verwendet, müssen in DNS mehrere CNAME-Einträge erstellt werden.
 
-Wenn Sie beispielsweise in Ihrer Organisation zwei UPN-Suffixe namens @contoso.com und @region.contoso.com, verwenden, erstellen Sie die folgenden DNS-Einträge.
+Wenn Sie beispielsweise in Ihrer Organisation zwei UPN-Suffixe namens @contoso.com und @region.contoso.com verwenden, erstellen Sie die folgenden DNS-Einträge:
 
 | Eintrag | Typ | Adresse |
 | --- | --- | --- |
@@ -89,10 +90,5 @@ Sie können Ihre Windows 7- und Windows 8.1-Geräte, die einer Domäne angehö
 * [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-windows7.md)
 * [Konfigurieren der automatischen Geräteregistrierung für in eine Domäne eingebundene Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 * [Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows 10-Geräte](active-directory-azureadjoin-devices-group-policy.md)
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Backup? | Microsoft Docs
-description: "Mithilfe von Azure Backup und Recovery Services können Sie Daten und Anwendungen von Windows-Servern, Windows-Computern, System Center DPM-Servern oder virtuellen Azure-Computern sichern und wiederherstellen."
+description: "Mithilfe von Azure Backup und Recovery Services können Sie Daten und Anwendungen von Windows-Servern und -Arbeitsstationen, Windows-Computern, System Center DPM-Servern und -Workloads sowie von virtuellen Azure-Computern sichern und wiederherstellen."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,11 +13,12 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/6/2017
+ms.date: 2/23/2017
 ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: bda71281617fa37f7f2a08e238c706dd2a4f5576
-ms.openlocfilehash: 99246e97f096b872e225e8818def059bdc2211c6
+ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
+ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -45,7 +46,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 **Anwendungskonsistente Sicherungen**: Unabhängig davon, ob Sie einen Dateiserver, einen virtuellen Computer oder eine SQL-Datenbank sichern, müssen Sie wissen, dass ein Wiederherstellungspunkt über alle erforderlichen Daten zum Wiederherstellen der Sicherungskopie verfügt. Azure Backup umfasst anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Fixes benötigt werden. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
 
-**Langfristige Aufbewahrung**: Anstatt Sicherungskopien auf Band zu erstellen und das Band dann zur langfristigen Aufbewahrung an einen anderen Ort zu bringen, können Sie Azure für die kurz- und langfristige Aufbewahrung nutzen. Die Zeit, für die Sie Daten in einem Backup- oder Recovery Services-Tresor aufbewahren, wird von Azure nicht begrenzt. Sie können Daten also beliebig lange in einem Tresor aufbewahren. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Informationen zu den möglichen Auswirkungen auf Ihre Sicherungsanforderungen finden Sie im Abschnitt [Sicherung und Aufbewahrung](backup-introduction-to-azure-backup.md#backup-and-retention).  
+**Langfristige Aufbewahrung:** Anstatt Sicherungskopien auf Band zu erstellen und das Band dann an einen anderen Ort zu bringen, können Sie Azure für die kurz- und langfristige Aufbewahrung nutzen. Die Zeit, für die Sie Daten in einem Backup- oder Recovery Services-Tresor aufbewahren, wird von Azure nicht begrenzt. Sie können Daten also beliebig lange in einem Tresor aufbewahren. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Informationen zu den möglichen Auswirkungen auf Ihre Sicherungsanforderungen finden Sie im Abschnitt [Sicherung und Aufbewahrung](backup-introduction-to-azure-backup.md#backup-and-retention).  
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Welche Azure Backup-Komponenten sollte ich verwenden?
 Falls Sie unsicher sind, welche Azure Backup-Komponente für Ihre Anforderungen geeignet ist, helfen Ihnen die Informationen in der folgenden Tabelle weiter. Es ist jeweils angegeben, was Sie mit einer Komponente schützen können. Das Azure-Portal enthält einen Assistenten, der in das Portal integriert ist und Sie bei der Auswahl der Komponente unterstützt, die heruntergeladen und bereitgestellt werden soll. Mit dem Assistenten, der Teil der Erstellung des Recovery Services-Tresors ist, werden Sie schrittweise durch die Auswahl eines Sicherungsziels geführt, und Sie können die zu schützenden Daten oder die Anwendung auswählen.
@@ -112,10 +113,10 @@ Virtuelle Storage Premium-Computer können entweder unter Storage Premium oder i
 Azure Backup schützt virtuelle Computer auf verwalteten Datenträgern. Bei verwalteten Datenträgern entfällt die Verwaltung von Speicherkonten für virtuelle Computer, und die Bereitstellung virtueller Computer wird erheblich vereinfacht.
 
 ### <a name="back-up-managed-disk-vms"></a>Sichern von virtuellen Computer auf verwalteten Datenträgern
-Die Sicherung virtueller Computer auf verwalteten Datenträgern unterscheidet sich nicht von der Sicherung virtueller Resource Manager-Computer. Sie können direkt in der Ansicht des virtuellen Computers oder in der Recovery Services-Tresoransicht sichern. Die Sicherung von virtuellen Computern auf verwalteten Datenträgern wird durch RestorePoint Sammlungen unterstützt, die auf verwalteten Datenträgern basieren. Azure Backup unterstützt keine derzeit keine Sicherung von virtuellen Computern auf verwalteten Datenträgern, die mit Azure Disk Encryption (ADE) verschlüsselt sind.
+Das Sichern virtueller Computer auf verwalteten Datenträgern funktioniert genauso wie das Sichern virtueller Resource Manager-Computer. Im Azure-Portal können Sie den Sicherungsauftrag direkt in der Ansicht des virtuellen Computers oder in der Ansicht des Recovery Services-Tresors konfigurieren. Virtuelle Computer können auf verwalteten Datenträgern über RestorePoint-Sammlungen gesichert werden, die auf verwalteten Datenträgern aufbauen. Das Sichern von virtuellen Computern auf verwalteten Datenträgern mit Azure Disk Encryption (ADE) wird von Azure Backup derzeit nicht unterstützt.
 
 ### <a name="restore-managed-disk-vms"></a>Wiederherstellen von virtuellen Computer auf verwalteten Datenträgern
-Azure Backup ermöglicht Ihnen das Wiederherstellen eines vollständigen virtuellen Computers mit verwalteten Datenträgern oder das Wiederherstellen von verwalteten Datenträgern in einem Resource Manager-Speicherkonto. Während die beim Wiederherstellungsvorgang erstellten Datenträger von Azure verwaltet werden, ist das im Rahmen des Wiederherstellungsvorgangs erstellte Speicherkonto mit anderen Resource Manager-Speicherkonten vergleichbar, und die Verwaltung wird vom Kunden erwartet.
+Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwalteten Datenträgern oder verwaltete Datenträger in einem Resource Manager-Speicherkonto wiederherstellen. Während der Wiederherstellung werden die verwalteten Datenträger von Azure verwaltet. Sie als Kunde verwalten das Speicherkonto, das im Rahmen der Wiederherstellung erstellt wurde.
 
 ## <a name="what-are-the-features-of-each-backup-component"></a>Welche Features haben die einzelnen Backup-Komponenten?
 Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. die Unterstützung verschiedener Features der einzelnen Azure Backup-Komponenten zusammengefasst ist. Weitere Informationen zur Unterstützung bzw. weitere Details sind jeweils unterhalb der Tabelle zu finden.
@@ -137,8 +138,6 @@ Der Azure Backup-Tresor ist das bevorzugte Speicherziel aller Komponenten. Syste
 #### <a name="compression"></a>Komprimierung
 Sicherungen werden komprimiert, um den erforderlichen Speicherplatz zu reduzieren. Die einzige Komponente, für die keine Komprimierung verwendet wird, ist die VM-Erweiterung. Die VM-Erweiterung kopiert alle Sicherungsdaten aus Ihrem Speicherkonto in den Sicherungstresor in der gleichen Region. Die Daten werden unkomprimiert übertragen. Dadurch erhöht sich geringfügig der verwendete Speicherplatz. Unkomprimiert gespeicherte Daten lassen sich im Bedarfsfall allerdings auch schneller wiederherstellen.
 
-#### <a name="incremental-backup"></a>Inkrementelle Sicherung
-Unabhängig vom Zielspeicher (Datenträger, Band, Sicherungstresor) unterstützen alle Komponenten inkrementelle Sicherungen. Mit der inkrementellen Sicherung wird sichergestellt, dass Sicherungen speicher- und zeiteffizient sind, da nur die seit der letzten Sicherung vorgenommenen Änderungen übertragen werden.
 
 #### <a name="disk-deduplication"></a>Datenträgerdeduplizierung
 Sie können die Deduplizierung nutzen, wenn Sie System Center DPM oder Azure Backup Server [auf einem virtuellen Hyper-V-Computer](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) bereitstellen. Windows Server führt die Datendeduplizierung (auf Hostebene) auf den virtuellen Festplatten (VHDs) durch, die als Sicherungsspeicher an den virtuellen Computer angefügt sind.
@@ -147,6 +146,21 @@ Sie können die Deduplizierung nutzen, wenn Sie System Center DPM oder Azure Bac
 > Die Deduplizierung ist in Azure für keine der Backup-Komponenten verfügbar. Wenn System Center DPM und Azure Backup Server in Azure bereitgestellt werden, können an die VM angefügte Speicherdatenträger nicht dedupliziert werden.
 >
 >
+
+### <a name="incremental-backup-explained"></a>Erläuterung der inkrementellen Sicherung
+Die inkrementelle Sicherung wird unabhängig vom Zielspeicher (Datenträger, Band, Sicherungstresor) von allen Azure Backup-Komponenten unterstützt. Mit der inkrementellen Sicherung wird sichergestellt, dass Sicherungen speicher- und zeiteffizient sind, da nur die seit der letzten Sicherung vorgenommenen Änderungen übertragen werden.
+
+#### <a name="comparing-full-differential-and-incremental-backup"></a>Vergleich zwischen vollständiger, differenzieller und inkrementeller Sicherung
+
+Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung variieren je nach Art der Sicherungsmethode. Um die Gesamtkosten der Sicherung möglichst niedrig zu halten, müssen Sie verstehen, welche Sicherungslösung am besten für Sie geeignet ist. Die folgende Abbildung zeigt einen Vergleich zwischen vollständiger, differenzieller und inkrementeller Sicherung. In der Abbildung besteht die Datenquelle A aus zehn Speicherblöcken (A1–A10), die monatlich gesichert werden. Die Blöcke A2, A3, A4 und A9 ändern sich im ersten Monat, der Block A5 ändert sich im nächsten Monat.
+
+![Vergleichsdarstellung von Sicherungsmethoden](./media/backup-introduction-to-azure-backup/backup-method-comparison.png)
+
+Bei der **vollständigen Sicherung** enthält jede Sicherungskopie die gesamte Datenquelle. Die vollständige Sicherung beansprucht bei jeder Übertragung einer Sicherungskopie große Mengen an Netzwerkbandbreite und Speicherplatz.
+
+Bei der **differenziellen Sicherung** werden nur die Blöcke gespeichert, die sich seit der ersten vollständigen Sicherung geändert haben. Das führt zu einer geringeren Netzwerk- und Speicherauslastung. Differenzielle Sicherungen enthalten keine redundanten Kopien von Daten, die sich nicht geändert haben. Da jedoch die Datenblöcke, die sich zwischen Folgesicherungen nicht geändert haben, übertragen und gespeichert werden, sind differenzielle Sicherungen ineffizient. Im zweiten Monat werden die geänderten Blöcke A2, A3, A4 und A9 gesichert. Im dritten Monat werden die gleichen Blöcke erneut gesichert – zusammen mit dem geänderten Block A5. Die geänderten Blöcke werden bis zur nächsten vollständigen Sicherung immer wieder gesichert.
+
+Die **inkrementelle Sicherung** bietet eine hohe Speicher- und Netzwerkeffizienz, da hier nur die Datenblöcke gespeichert werden, die sich seit der vorherigen Sicherung geändert haben. Bei der inkrementellen Sicherung müssen nicht regelmäßig vollständige Sicherungen erstellt werden. In dem Beispiel werden nach der vollständigen Sicherung für den ersten Monat die geänderten Blöcke A2, A3, A4 und A9 als geändert gekennzeichnet und für den zweiten Monat übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen. Hierbei werden weniger Daten bewegt, was sich positiv auf die Auslastung der Speicher- und Netzwerkressourcen auswirkt und zu geringeren Gesamtkosten führt.   
 
 ### <a name="security"></a>Sicherheit
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
@@ -179,7 +193,7 @@ Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselu
 
 Die VM-Erweiterung (auf der IaaS-VM) liest die Daten über das Speichernetzwerk direkt aus dem Azure-Speicherkonto, sodass es nicht erforderlich ist, diesen Datenverkehr zu komprimieren.
 
-Wenn Sie Ihre Daten auf einer System Center DPM- oder Azure Backup Server-Einheit sichern, ist es ratsam, die Daten für den Weg vom primären Server zum Sicherungsserver zu komprimieren. Wenn die Daten vor dem Sichern in DPM oder Azure Backup Server komprimiert werden, wird weniger Bandbreite beansprucht.
+Wenn Sie Daten in einer System Center DPM- oder Azure Backup Server-Instanz sichern, empfiehlt es sich, die Daten auf dem Weg vom primären Server zum Sicherungsserver zu komprimieren. Wenn die Daten vor dem Sichern in DPM oder Azure Backup Server komprimiert werden, wird weniger Bandbreite beansprucht.
 
 #### <a name="network-throttling"></a>Netzwerkdrosselung
 Der Azure Backup-Agent verfügt über die Netzwerkdrosselung, mit der Sie steuern können, wie die Netzwerkbandbreite während der Datenübertragung verwendet wird. Die Drosselung kann hilfreich sein, wenn Sie Daten während der Geschäftszeiten sichern möchten, der Sicherungsprozess aber keine Auswirkung auf den anderen Internetdatenverkehr haben soll. Die Drosselung der Datenübertragung gilt für Sicherungs- und Wiederherstellungsaktivitäten.
@@ -203,8 +217,8 @@ Eine geschützte Instanz ist ein generischer Verweis auf einen Windows-Computer,
 Allgemeine Beispiele für geschützte Instanzen sind virtuelle Computer, Anwendungsserver, Datenbanken und PCs unter Windows. Beispiel:
 
 * Ein virtueller Computer, auf dem die Hyper-V- oder die Azure IaaS-Hypervisor-Fabric ausgeführt wird. Mögliche Gastbetriebssysteme für den virtuellen Computer sind Windows Server und Linux.
-* Ein Anwendungsserver: Dabei kann es sich um einen physischen oder virtuellen Computer handeln, auf dem Windows Server und Workloads mit zu sichernden Daten ausgeführt werden. Gängige Workloads sind Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server, Microsoft Dynamics und die Dateiserverrolle unter Windows Server. Zum Sichern dieser Workloads benötigen Sie System Center Data Protection Manager (DPM) oder Azure Backup Server.
-* Ein PC oder Laptop unter dem Windows-Betriebssystem.
+* Ein Anwendungsserver: Dabei kann es sich um einen physischen oder virtuellen Computer handeln, auf dem Windows Server und Workloads mit zu sichernden Daten ausgeführt werden. Gängige Workloads sind Microsoft SQL Server, Microsoft Exchange Server, Microsoft SharePoint Server und die Dateiserverrolle unter Windows Server. Zum Sichern dieser Workloads benötigen Sie System Center Data Protection Manager (DPM) oder Azure Backup Server.
+* Ein PC, eine Arbeitsstation oder ein Laptop unter dem Windows-Betriebssystem.
 
 
 ## <a name="what-is-the-vault-credential-file"></a>Was ist die Datei mit Tresoranmeldeinformationen?
@@ -213,7 +227,7 @@ Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für
 Sie verwenden die Tresoranmeldeinformationen nur, um die Server oder Computer zu registrieren. Gehen Sie mit den Tresoranmeldeinformationen aber sorgfältig um. Wenn sie verloren gehen oder in den Besitz anderer Personen gelangen, können die Tresoranmeldeinformationen zum Registrieren von anderen Computern für denselben Tresor verwendet werden. Da die Sicherungsdaten mit einer Passphrase verschlüsselt werden, auf die nur Sie Zugriff haben, können vorhandene Sicherungsdaten nicht kompromittiert werden. Tresoranmeldeinformationen laufen nach 48 Stunden ab. Sie können die Tresoranmeldeinformationen des Backup-Tresors zwar so häufig wie gewünscht herunterladen, aber nur die jeweils letzten Anmeldeinformationen können für die Registrierung verwendet werden.
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Wie unterscheidet sich Azure Backup von Azure Site Recovery?
-Azure Backup und Azure Site Recovery ähneln sich, da mit beiden Diensten Daten gesichert und dann wiederhergestellt werden können, aber sie unterscheiden sich in Bezug auf den Hauptzweck.
+Azure Backup und Azure Site Recovery ähneln sich insofern als mit beiden Diensten Daten gesichert und dann wiederhergestellt werden können. Die Dienste bieten jedoch unterschiedliche Nutzenversprechen.
 
 Mit Azure Backup werden Daten lokal und in der Cloud geschützt. Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Beide Dienste sind wichtig, da die Daten im Rahmen Ihrer Notfallwiederherstellungsstrategie sicher und wiederherstellbar gespeichert werden müssen (Backup) *und* Ihre Workloads verfügbar sein müssen (Site Recovery), falls es zu Ausfällen kommen sollte.
 
@@ -240,9 +254,4 @@ Weitere Informationen zum Schützen anderer Workloads finden Sie in diesen Artik
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -15,8 +15,9 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: cabailey
 translationtype: Human Translation
-ms.sourcegitcommit: c40545833da86426d3e71955b8eb8627db3c1e4b
-ms.openlocfilehash: 50a85747a3414e180bcd9129899fef7ffdaebc8d
+ms.sourcegitcommit: 30b30513d5563cf64679e29c4858bf15f65d3a44
+ms.openlocfilehash: 015c997135eae9c936af1a1ec0b0064912baaa04
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -39,8 +40,6 @@ Nutzen Sie dieses Tutorial als Hilfe bei den ersten Schritten mit der Azure-Schl
 > Derzeit können Sie den Azure-Schlüsseltresor nicht im Azure-Portal konfigurieren. Sie müssen stattdessen die Anweisungen für Azure PowerShell verwenden.
 > 
 > 
-
-Die von Ihnen erfassten Protokolle können mithilfe von Log Analytics über die Operations Management Suite visualisiert werden. Weitere Informationen finden Sie unter [Azure Key Vault (Preview) solution in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md)(Azure Key Vault-Lösung (Vorschau) in Log Analytics).
 
 Eine Übersicht über den Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)
 
@@ -254,6 +253,10 @@ Die folgende Tabelle enthält das operationName-Element und den entsprechenden R
 | SecretList |[Auflisten von Geheimnissen in einem Tresor](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
 | SecretListVersions |[Auflisten von Versionen eines Geheimnisses](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
 
+## <a name="a-idloganalyticsause-log-analytics"></a><a id="loganalytics"></a>Verwenden von Log Analytics
+
+Sie können die Azure Key Vault-Lösung in Log Analytics verwenden, um AuditEvent-Protokolle von Azure Key Vault zu überprüfen. Weitere Informationen, z.B. zur Einrichtung, finden Sie unter [Azure Key Vault-Lösung in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md). Dieser Artikel enthält auch eine Anleitung für die Migration von der alten Key Vault-Lösung, die während der Vorschauphase von Log Analytics bereitgestellt wurde. Damit haben Sie Ihre Protokolle zuerst an ein Azure Storage-Konto weitergeleitet und Log Analytics für das Lesen von diesem Konto konfiguriert.
+
 ## <a name="a-idnextanext-steps"></a><a id="next"></a>Nächste Schritte
 Ein Tutorial zur Verwendung von Azure Key Vault in einer Webanwendung finden Sie unter [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md).
 
@@ -262,10 +265,5 @@ Eine Referenz zur Programmierung finden Sie im [Entwicklerhandbuch für den Azur
 Eine Liste der Azure PowerShell 1.0-Cmdlets für Azure Key Vault finden Sie unter [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx)(Azure Key Vault-Cmdlets).
 
 Ein Tutorial zur Schlüsselrotation und Protokollüberwachung mit Azure Key Vault finden Sie unter [Einrichten des Schlüsseltresors mit End-to-End-Schlüsselrotation und Überwachung](key-vault-key-rotation-log-monitoring.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

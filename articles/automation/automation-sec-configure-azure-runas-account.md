@@ -13,11 +13,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/05/2017
+ms.date: 02/24/2017
 ms.author: magoedte
 translationtype: Human Translation
-ms.sourcegitcommit: aec8fd057bd31fc933d19996567437b2a897623b
-ms.openlocfilehash: 889c9a53e3ce454ee9ac9fc0f24b2ff8244e87c6
+ms.sourcegitcommit: 6966befa56dc6a0feff4b8a821bde4e423a2b53a
+ms.openlocfilehash: 97853ce9f78078cc6bbccdfb5c5a06cae49e218c
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -38,16 +39,15 @@ Ein ausführendes Konto und ein klassisches ausführendes Konto ermöglichen Ihn
 
 > [!NOTE]
 > Für das Azure-Feature zum [Integrieren von Warnungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) mit globalen Automation-Runbooks ist ein Automation-Konto erforderlich, das mit einem ausführenden Konto und einem klassischen ausführenden Konto konfiguriert ist. Sie können entweder ein Automation-Konto auswählen, für das bereits ein ausführendes Konto und ein klassisches ausführendes Konto definiert sind, oder ein neues Konto erstellen.
-> 
-> 
+>  
 
-Im Folgenden erfahren Sie, wie Sie das Automation-Konto im Azure-Portal erstellen, ein Automation-Konto mit PowerShell aktualisieren und die Authentifizierung in Ihren Runbooks verwenden.
+Hier erfahren Sie, wie Sie das Automation-Konto über das Azure-Portal erstellen, ein Automation-Konto mit PowerShell aktualisieren, die Kontokonfiguration verwalten und die Authentifizierung in Ihren Runbooks durchführen.
 
 Beachten Sie Folgendes, bevor Sie fortfahren.
 
 1. Die hier beschriebenen Schritte haben keine Auswirkung auf vorhandene Automation-Konten, die bereits im klassischen Bereitstellungsmodell oder Resource Manager-Bereitstellungsmodell erstellt wurden.  
 2. Die hier beschriebenen Schritte funktionieren nur für über das Azure-Portal erstellte Automation-Konten.  Wenn Sie versuchen, ein Konto über das klassische Portal zu erstellen, wird die Konfiguration des ausführenden Kontos nicht repliziert.
-3. Wenn Sie momentan über Runbooks und Assets (d.h. Zeitpläne, Variablen usw.) verfügen, die zuvor zur Verwaltung klassischer Ressourcen erstellt wurden, und diese Runbooks mit dem neuen klassischen ausführenden Konto authentifiziert werden sollen, müssen Sie sie zum neuen Automation-Konto migrieren oder Ihr vorhandenes Konto mit dem unten stehenden PowerShell-Skript aktualisieren.  
+3. Wenn Sie momentan über Runbooks und Assets (Zeitpläne, Variablen usw.) verfügen, die zuvor für die Verwaltung klassischer Ressourcen erstellt wurden, und diese Runbooks mit dem neuen klassischen ausführenden Konto authentifiziert werden sollen, erstellen Sie mithilfe von „Verwalten eines ausführenden Azure-Kontos“ ein klassisches ausführendes Konto, oder aktualisieren Sie Ihr vorhandenes Konto mithilfe des weiter unten bereitgestellten PowerShell-Skripts.  
 4. Zur Authentifizierung mit dem neuen ausführenden Konto und klassischen ausführenden Automation-Konto müssen Sie Ihre vorhandenen Runbooks mit dem folgenden Beispielcode ändern.  **Beachten Sie** , dass das ausführende Konto zur Authentifizierung gegenüber Resource Manager-Ressourcen anhand des zertifikatbasierten Dienstprinzipals dient und das klassische ausführende Konto zur Authentifizierung gegenüber Service Management-Ressourcen mit dem Verwaltungszertifikat.     
 
 ## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Erstellen eines neuen Automation-Kontos über das Azure-Portal
@@ -55,7 +55,6 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal e
 
 > [!NOTE]
 > Der Benutzer, der diese Schritte ausführt, muss ein Mitglied der Rolle „Dienstadministratoren“ oder Co-Administrator des Abonnements sein, das dem Benutzer Zugriff auf das Abonnement gewährt. Zudem muss der Benutzer der Active Directory-Standardinstanz dieses Abonnements als Benutzer hinzugefügt werden. Das Konto muss keiner privilegierten Rolle zugewiesen werden. Benutzer, die vor dem Hinzufügen zur Rolle des Co-Administrators kein Mitglied der Active Directory-Instanz des Abonnements waren, werden der Active Directory-Instanz als Gast hinzugefügt, und ihnen wird auf dem Blatt **Automation-Konto hinzufügen** die Warnung „Sie haben keine Berechtigungen zum Erstellen…“ angezeigt. Benutzer, die zuerst der Rolle des Co-Administrators hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Dies kann im Azure-Portal im Bereich **Azure Active Directory** überprüft werden. Wählen Sie dazu **Benutzer und Gruppen**, **Alle Benutzer** und nach der Auswahl des bestimmten Benutzers die Option **Profil**.  Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.  
-> 
 > 
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
@@ -76,7 +75,7 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal e
    > ![Automation-Konto hinzufügen – Warnung](media/automation-sec-configure-azure-runas-account/create-account-decline-create-runas-msg.png)<br>
    > Wenn der Dienstprinzipal nicht erstellt wird, wird die Rolle „Mitwirkender“ nicht zugewiesen.
    > 
-   > 
+
 7. Während das Automation-Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen.
 
 ### <a name="resources-included"></a>Enthaltene Ressourcen
@@ -84,7 +83,7 @@ Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch versc
 
 | Ressource | Beschreibung |
 | --- | --- |
-| AzureAutomationTutorial-Runbook |Ein PowerShell-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
+| AzureAutomationTutorial-Runbook |Ein grafisches Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
 | AzureAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
 | AzureRunAsCertificate |Ein Zertifikatasset, das während der Erstellung des Automation-Kontos automatisch oder mit dem unten stehenden PowerShell-Skript für ein vorhandenes Konto erstellt wird.  Das Zertifikat ermöglicht die Authentifizierung bei Azure, sodass Sie Azure Resource Manager-Ressourcen über Runbooks verwalten können.  Dieses Zertifikat ist ein Jahr lang gültig. |
 | AzureRunAsConnection |Ein Verbindungsasset, das während der Erstellung des Automation-Kontos automatisch oder mit dem unten stehenden PowerShell-Skript für ein vorhandenes Konto erstellt wird. |
@@ -93,8 +92,8 @@ In der folgenden Tabelle sind die Ressourcen für das klassische ausführende Ko
 
 | Ressource | Beschreibung |
 | --- | --- |
-| AzureClassicAutomationTutorial-Runbook |Ein Beispielrunbook, das alle klassischen VMs in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status ausgibt. |
-| AzureClassicAutomationTutorialScript-Runbook |Ein Beispielrunbook, das alle klassischen VMs in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status ausgibt. |
+| AzureClassicAutomationTutorial-Runbook |Ein grafisches Beispielrunbook, das alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status ausgibt. |
+| AzureClassicAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook, das alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status ausgibt. |
 | AzureClassicRunAsCertificate |Ein automatisch erstelltes Zertifikatasset, das zur Authentifizierung bei Azure verwendet wird, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können.  Dieses Zertifikat ist ein Jahr lang gültig. |
 | AzureClassicRunAsConnection |Ein automatisch erstelltes Verbindungsasset, das zur Authentifizierung bei Azure verwendet wird, sodass Sie klassische Azure-Ressourcen über Runbooks verwalten können. |
 
@@ -126,21 +125,51 @@ Als Nächstes führen wir einen kleinen Test durch, um sicherzustellen, dass Sie
 9. Schließen Sie das Blatt **Ausgabe**, um zum Blatt **Auftragszusammenfassung** zurückzukehren.
 10. Schließen Sie das Blatt **Auftragszusammenfassung** und das entsprechende Runbook-Blatt **AzureClassicAutomationTutorialScript**.
 
+## <a name="managing-azure-run-as-account"></a>Verwalten eines ausführenden Azure-Kontos
+Während der Lebensdauer Ihres Automation-Kontos müssen Sie das Zertifikat erneuern, bevor es abläuft. Falls der Verdacht besteht, dass das Konto kompromittiert wurde, können Sie das ausführende Konto löschen und neu erstellen.  In diesem Abschnitt erfahren Sie, wie Sie dazu vorgehen müssen.  
+
+### <a name="certificate-renewal"></a>Zertifikaterneuerung
+Das für das ausführende Azure-Konto erstellte Zertifikat ist ab dem Erstellungsdatum ein Jahr lang gültig und kann innerhalb des Gültigkeitszeitraums jederzeit erneuert werden.  Wenn Sie das Zertifikat erneuern, bleibt das alte gültige Zertifikat erhalten, um Runbooks, die sich ggf. noch in der Warteschlange befinden oder aktiv ausgeführt werden und das ausführende Konto für die Authentifizierung verwenden, nicht zu beeinträchtigen.  Das Zertifikat bleibt bis zum Ablaufdatum erhalten.     
+
+1. Öffnen Sie das Automation-Konto im Azure-Portal.  
+2. Wählen Sie auf dem Blatt des Automation-Kontos im Bereich mit den Kontoeigenschaften unter dem Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten** aus.<br><br> ![Eigenschaftenbereich des Automation-Kontos](media/automation-sec-configure-azure-runas-account/automation-account-properties-pane.png)<br><br>
+3. Wählen Sie auf dem Eigenschaftenblatt **Ausführende Konten** entweder das ausführende Konto oder das klassische ausführende Konto aus, für das Sie das Zertifikat erneuern möchten, und klicken Sie anschließend auf dem Eigenschaftenblatt für das ausgewählte Konto auf **Zertifikat erneuern**.<br><br> ![Erneuern des Zertifikats für das ausführende Konto](media/automation-sec-configure-azure-runas-account/automation-account-renew-runas-certificate.png)<br><br> Sie werden gefragt, ob Sie fortfahren möchten.  
+4. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
+
+### <a name="delete-run-as-account"></a>Löschen des ausführenden Azure-Kontos
+Die folgende Anleitung beschreibt, wie Sie Ihr ausführendes Azure oder Ihr klassisches ausführendes Konto löschen und neu erstellen.  Das Automation-Konto bleibt bei dieser Aktion erhalten.  Nach dem Löschen des ausführenden Kontos oder des klassischen ausführenden Kontos können Sie es über das Portal neu erstellen.  
+
+1. Öffnen Sie das Automation-Konto im Azure-Portal.  
+2. Wählen Sie auf dem Blatt des Automation-Kontos im Bereich mit den Kontoeigenschaften unter dem Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten** aus.
+3. Wählen Sie auf dem Eigenschaftenblatt **Ausführende Konten** entweder das ausführende Konto oder das klassische ausführende Konto aus, das Sie löschen möchten, und klicken Sie anschließend auf dem Eigenschaftenblatt für das ausgewählte Konto auf **Löschen**.<br><br> ![Löschen des ausführenden Azure-Kontos](media/automation-sec-configure-azure-runas-account/automation-account-delete-runas.png)<br><br>  Sie werden gefragt, ob Sie fortfahren möchten.
+4. Während das Konto gelöscht wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.  Nach Abschluss des Löschvorgangs können Sie das Konto neu erstellen, indem Sie auf dem Eigenschaftenblatt **Ausführende Konten** die Erstellungsoption für **Ausführendes Azure-Konto** auswählen.<br><br> ![Neuerstellen des ausführenden Automation-Kontos](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)<br> 
+
+### <a name="misconfiguration"></a>Fehlkonfiguration
+Damit das ausführende Konto oder das klassische ausführende Konto einwandfrei funktioniert, dürfen bestimmte erforderliche Konfigurationselemente nicht gelöscht bzw. müssen bei der anfänglichen Einrichtung ordnungsgemäß erstellt werden. Beispiele für solche Elemente oder unzulässige Vorgänge wären etwa:
+
+* Zertifikatasset 
+* Verbindungsasset 
+* Entfernung des ausführenden Kontos aus der Rolle „Mitwirkender“
+* Dienstprinzipal oder Anwendung in Azure AD
+
+Automation erkennt diese Änderungen und weist Sie mit dem Status **Unvollständig** auf dem Eigenschaftenblatt **Ausführende Konten** für das Konto darauf hin.<br><br> ![Statusmeldung mit Hinweis auf ein unvollständiges ausführendes Konto](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config.png)<br><br>Wenn Sie das ausführende Konto auswählen, wird im Eigenschaftenbereich des Kontos die folgende Warnung angezeigt:<br><br> ![Warnmeldung mit Hinweis auf ein unvollständiges ausführendes Konto](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config-msg.png)<br>  
+Falls Ihr ausführendes Konto falsch konfiguriert ist, können Sie dieses Problem schnell beheben, indem Sie das ausführende Konto löschen und neu erstellen.   
+
 ## <a name="update-an-automation-account-using-powershell"></a>Aktualisieren eines Automation-Kontos mit PowerShell
 Wenn Folgendes zutrifft, können Sie Ihr vorhandenes Automation-Konto mit PowerShell aktualisieren:
 
 1. Sie haben ein Automation-Konto erstellt, die Erstellung des ausführenden Kontos jedoch abgelehnt.
-2. Sie haben bereits ein Automation-Konto zum Verwalten von Resource Manager-Ressourcen und möchten es aktualisieren, um das ausführende Konto für die Runbook-Authentifizierung einzuschließen.
-3. Sie haben bereits ein Automation-Konto zum Verwalten klassischer Ressourcen und möchten es zur Verwendung des klassischen ausführenden Kontos aktualisieren, anstatt ein neues Konto zu erstellen und Ihre Runbooks und Assets zu diesem Konto zu migrieren.   
+2. Sie müssen ein Automation-Konto in der Azure Government-Cloud erstellen.
+3. Sie haben bereits ein Automation-Konto zum Verwalten von Resource Manager-Ressourcen und möchten es aktualisieren, um das ausführende Konto für die Runbook-Authentifizierung einzuschließen.
+4. Sie haben bereits ein Automation-Konto zum Verwalten klassischer Ressourcen und möchten es zur Verwendung des klassischen ausführenden Kontos aktualisieren, anstatt ein neues Konto zu erstellen und Ihre Runbooks und Assets zu diesem Konto zu migrieren.   
 
 Stellen Sie vor dem Fortfahren Folgendes sicher:
 
-1. Sie haben [Windows Management Framework (WMF) 4.0](https://www.microsoft.com/download/details.aspx?id=40855) heruntergeladen und installiert, wenn Sie Windows 7 ausführen.   
-    Wenn Sie Windows Server 2012 R2, Windows Server 2012, Windows 2008 R2, Windows 8.1 oder Windows 7 SP1 verwenden, ist [Windows Management Framework 5.0](https://www.microsoft.com/download/details.aspx?id=50395) zur Installation verfügbar.
-2. Azure PowerShell 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+1. Zum Ausführen dieses Skripts wird Windows 10 oder Windows Server 2016 benötigt, und die Azure Resource Manager-Module ab Version 2.01 müssen installiert sein.  Unter älteren Windows-Versionen wird das Skript nicht unterstützt.  
+2. Azure PowerShell ab Version 1.0. Informationen zu dieser Version und ihrer Installation finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 3. Sie haben ein Automation-Konto erstellt.  Dieses Konto wird in den beiden unten stehenden Skripts als Wert für die Parameter „-AutomationAccountName“ und „-ApplicationDisplayName“ verwendet.
 
-Wählen Sie zum Ermitteln der Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* (erforderliche Parameter für die Skripts) im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto und anschließend die Option **Alle Einstellungen** aus.  Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  Die Werte werden auf dem Blatt **Eigenschaften** angezeigt.<br> ![Automation-Konto – Eigenschaften](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+Wählen Sie zum Ermitteln der Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* (erforderliche Parameter für die Skripts) im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto und anschließend die Option **Alle Einstellungen** aus.  Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  Die Werte werden auf dem Blatt **Eigenschaften** angezeigt.<br><br> ![Automation-Konto – Eigenschaften](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ### <a name="create-run-as-account-powershell-script"></a>PowerShell-Skript zum Erstellen des ausführenden Kontos
 Das unten stehende PowerShell-Skript konfiguriert Folgendes:
@@ -172,9 +201,18 @@ Folgen Sie zum Ausführen des Skripts den unten stehenden Schritten.
    
         [Parameter(Mandatory=$false)]
         [int] $NoOfMonthsUntilExpired = 12
+
+        [Parameter(Mandatory=$True)]
+        [ValidateSet("AzureCloud","AzureUSGovernment")]
+        [string]$Environment="AzureCloud"
         )
    
-        Login-AzureRmAccount
+        #Check to see which cloud environment to sign into.
+        Switch ($Environment)
+        {
+          "AzureCloud" {Login-AzureRmAccount}
+          "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
+        }
         Import-Module AzureRM.Resources
         Select-AzureRmSubscription -SubscriptionId $SubscriptionId
    
@@ -195,9 +233,9 @@ Folgen Sie zum Ausführen des Skripts den unten stehenden Schritten.
         $KeyCredential.StartDate = $CurrentDate
         $KeyCredential.EndDate= $EndDate
         $KeyCredential.KeyId = $KeyId
-        $KeyCredential.Type = "AsymmetricX509Cert"
-        $KeyCredential.Usage = "Verify"
-        $KeyCredential.Value = $KeyValue
+        #$KeyCredential.Type = "AsymmetricX509Cert"
+        #$KeyCredential.Usage = "Verify"
+        $KeyCredential.CertValue = $KeyValue
    
         # Use Key credentials
         $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $ApplicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $keyCredential
@@ -229,8 +267,9 @@ Folgen Sie zum Ausführen des Skripts den unten stehenden Schritten.
         Remove-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -Force -ErrorAction SilentlyContinue
         $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
         New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
+
 2. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** mit erhöhten Benutzerrechten.
-3. Navigieren Sie über die PowerShell-Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält, und führen Sie das Skript aus. Ändern Sie dabei die Werte für die Parameter *–ResourceGroup*, *-AutomationAccountName*, *-ApplicationDisplayName*, *-SubscriptionId* und *-CertPlainPassword*.<br>
+3. Navigieren Sie über die PowerShell-Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält, und führen Sie das Skript aus. Ändern Sie dabei die Werte für die Parameter *–ResourceGroup*, *-AutomationAccountName*, *-ApplicationDisplayName*, *-SubscriptionId*, *-CertPlainPassword* und *-Environment*.<br>
    
    > [!NOTE]
    > Nach dem Ausführen des Skripts werden Sie aufgefordert, sich gegenüber Azure zu authentifizieren. Sie müssen sich mit einem Konto anmelden, das ein Mitglied der Rolle „Abonnement-Administratoren“ und Co-Admin des Abonnements ist.
@@ -241,7 +280,7 @@ Folgen Sie zum Ausführen des Skripts den unten stehenden Schritten.
         -AutomationAccountName <NameofAutomationAccount> `
         -ApplicationDisplayName <DisplayNameofAutomationAccount> `
         -SubscriptionId <SubscriptionId> `
-        -CertPlainPassword "<StrongPassword>"  
+        -CertPlainPassword "<StrongPassword>" -Environment <valid values are AzureCloud or AzureUSGovernment>  
    <br>
 
 Nachdem das Skript erfolgreich ausgeführt wurde, können Sie den unten stehenden [Beispielcode](#sample-code-to-authenticate-with-resource-manager-resources) zum Authentifizieren gegenüber Resource Manager-Ressourcen und Überprüfen der Anmeldeinformationen verwenden.
@@ -307,6 +346,7 @@ Das Skript erstellt ein selbstsigniertes Verwaltungszertifikat und speichert es 
         Write-Host -ForegroundColor red "Please upload the cert $CertPathCer to the Management store by following the steps below."
         Write-Host -ForegroundColor red "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates."
         Write-Host -ForegroundColor red "Then click Upload and upload the certificate $CertPathCer"
+
 2. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** mit erhöhten Benutzerrechten.  
 3. Navigieren Sie über die PowerShell-Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält, und führen Sie das Skript aus. Ändern Sie dabei die Werte für die Parameter *–ResourceGroup*, *-AutomationAccountName*, *-ApplicationDisplayName*, *-SubscriptionId* und *-CertPlainPassword*.<br>
    
@@ -333,7 +373,7 @@ Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunb
        # Get the connection "AzureRunAsConnection "
        $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-       "Logging in to Azure..."
+       "Signing in to Azure..."
        Add-AzureRmAccount `
          -ServicePrincipal `
          -TenantId $servicePrincipalConnection.TenantId `
@@ -354,7 +394,7 @@ Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunb
     }
 
 
-Das Skript enthält zwei zusätzliche Codezeilen, um Verweise auf einen Abonnementkontext zu unterstützen und so die problemlose Verwendung mehrerer Abonnements zu ermöglichen. Ein Variablenasset namens „SubscriptionId“ enthält die ID des Abonnements, und nach der Cmdlet-Anweisung „Add-AzureRmAccount“ wird das [Set-AzureRmContext-Cmdlet](https://msdn.microsoft.com/library/mt619263.aspx) mit dem Parametersatz *-SubscriptionId*angegeben. Sollte der Variablenname zu allgemein sein, können Sie den Namen der Variablen mit einem Präfix versehen oder eine andere Namenskonvention anwenden, um einen aussagekräftigeren Variablennamen zu erhalten. Alternativ können Sie anstelle von „-SubscriptionId“ auch den Parametersatz „-SubscriptionName“ mit einem entsprechenden Variablenasset verwenden.  
+Das Skript enthält zwei zusätzliche Codezeilen, um Verweise auf einen Abonnementkontext zu unterstützen und so die problemlose Verwendung mehrerer Abonnements zu ermöglichen. Ein Variablenasset namens „SubscriptionId“ enthält die ID des Abonnements, und nach der Cmdlet-Anweisung „Add-AzureRmAccount“ wird das [Set-AzureRmContext-Cmdlet](https://msdn.microsoft.com/library/mt619263.aspx) mit dem Parametersatz *-SubscriptionId*angegeben. Sollte der Variablenname zu allgemein sein, können Sie den Namen der Variablen mit einem Präfix versehen oder eine andere Namenskonvention anwenden, um einen aussagekräftigeren Variablennamen zu erhalten. Alternativ können Sie anstelle von „-SubscriptionId“ auch den Parametersatz „-SubscriptionName“ mit einem entsprechenden Variablenasset verwenden.    
 
 Beachten Sie das zur Authentifizierung im Runbook verwendete Cmdlet – **Add-AzureRmAccount**verwendet den Parametersatz *ServicePrincipalCertificate* .  Die Authentifizierung wird nicht mit Anmeldeinformationen vorgenommen, sondern mit einem Dienstprinzipalzertifikat.  
 
@@ -390,10 +430,5 @@ Sie können den unten stehenden aktualisierten Beispielcode aus dem Beispielrunb
 * Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
 * Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
 * Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

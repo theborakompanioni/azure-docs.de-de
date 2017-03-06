@@ -18,6 +18,7 @@ ms.author: jehollan
 translationtype: Human Translation
 ms.sourcegitcommit: c0edbe421050ad46f6d31fd6416df4b344b233ad
 ms.openlocfilehash: 2c24699f6253fc7952b331ebcce4b937f1c83603
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -151,9 +152,4 @@ Im Anschluss finden Sie Details zur den weiteren Schritten mit Logik-Apps und un
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/logic-apps-create-a-logic-app.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

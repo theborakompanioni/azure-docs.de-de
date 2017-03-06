@@ -19,6 +19,7 @@ ROBOTS: NOINDEX, NOFOLLOW
 translationtype: Human Translation
 ms.sourcegitcommit: 9a5416b1c26d1e8eaecec0ada79d357f32ca5ab1
 ms.openlocfilehash: c318d7133e26ec3a39d6fc97b0693b44d742d456
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -290,10 +291,5 @@ Glückwunsch! Sie wissen nun, wie Azure DocumentDB mit Azure Search unter Verwen
 
 * Weitere Informationen zu Azure DocumentDB finden Sie auf der [Seite zum DocumentDB-Dienst](https://azure.microsoft.com/services/documentdb/).
 * Weitere Informationen zu Azure Search finden Sie auf der [Seite des Search-Diensts](https://azure.microsoft.com/services/search/).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 02/22/2017
 ms.author: rogardle
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: b9be92498f9daf1d2f964cc689bacb2358b237be
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 716a6f4507b05b8a8548cd34f8227e8366a91645
+ms.openlocfilehash: 17a4ab1920e020ddf453e9b42319ba260e9700a5
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -31,15 +31,16 @@ Azure Container Service ermöglicht eine schnelle Bereitstellung beliebter Open-
 
 Sie können einen Azure Container Service-Cluster auch mit [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) oder den Azure Container Service-APIs bereitstellen.
 
+Hintergrundinformationen finden Sie in der [Einführung in Azure Container Service](container-service-intro.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Azure-Abonnement](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935): Falls Sie noch über kein Azure-Abonnement verfügen, können Sie sich für eine **kostenlose Testversion**registrieren.
+* [Azure-Abonnement](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935): Falls Sie noch über kein Azure-Abonnement verfügen, können Sie sich für eine **kostenlose Testversion**registrieren. 
 
 * **Öffentlicher SSH-RSA-Schlüssel**: Bei der Bereitstellung über das Portal oder eine der Azure-Schnellstartvorlagen müssen Sie den öffentlichen Schlüssel angeben, der zur Authentifizierung für virtuelle Azure Container Service-Computer verwendet werden soll. Informationen zum Erstellen von Secure Shell (SSH)-RSA-Schlüsseln finden Sie in den Anleitungen für [OS X und Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) oder für [Windows](../virtual-machines/virtual-machines-linux-ssh-from-windows.md). 
 
-* **Client-ID und Clientgeheimnis des Dienstprinzipals** (nur Kubernetes): Weitere Informationen und Anleitungen zum Erstellen eines Dienstprinzipals finden Sie unter [Informationen zum Dienstprinzipal für einen Kubernetes-Cluster](container-service-kubernetes-service-principal.md).
+* **Client-ID und Clientgeheimnis des Dienstprinzipals** (nur Kubernetes): Weitere Informationen und Anleitungen zum Erstellen eines Azure Active Directory-Dienstprinzipals finden Sie unter [Informationen zum Dienstprinzipal für einen Kubernetes-Cluster](container-service-kubernetes-service-principal.md).
 
 
 
@@ -48,63 +49,61 @@ Sie können einen Azure Container Service-Cluster auch mit [Azure CLI 2.0](conta
 
     ![Azure Container Service im Marketplace](media/container-service-deployment/acs-portal1.png)  <br />
 
-2. Wählen Sie **Azure Container Service**, und klicken Sie auf **Erstellen**.
+2. Klicken Sie auf **Azure Container Service** und anschließend auf **Erstellen**.
 
-    ![Erstellen eines Containerdiensts](media/container-service-deployment/acs-portal2.png)  <br />
+3. Geben Sie auf dem Blatt **Grundeinstellungen** die folgenden Informationen ein:
 
-3. Geben Sie Folgendes ein:
-
-    * **Benutzername**: Dies ist der Benutzername, der für ein Konto auf jedem virtuellen Computer und in jeder Skalierungsgruppe für virtuelle Computer im Azure Container Service-Cluster verwendet wird.
+    * **Orchestrator**: Wählen Sie einen der Containerorchestratoren aus, um ihn im Cluster bereitzustellen.
+        * **DC/OS**: Ein DC/OS-Cluster wird bereitgestellt.
+        * **Swarm**: Ein Docker Swarm-Cluster wird bereitgestellt.
+        * **Kubernetes**: Ein Kubernetes-Cluster wird bereitgestellt.
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. Die bewährte Methode besteht darin, für jede Bereitstellung eine neue Ressourcengruppe zu verwenden.
-    * **Standort**: Wählen Sie eine Azure-Region für die Azure Container Service-Bereitstellung aus.
-    * **Öffentlicher SSH-RSA-Schlüssel**: Fügen Sie den öffentlichen Schlüssel hinzu, der für die Authentifizierung gegenüber virtuellen Azure Container Service-Computern verwendet werden soll. Es ist wichtig, dass dieser Schlüssel keine Zeilenumbrüche enthält und das Präfix `ssh-rsa` aufweist. Das Postfix `username@domain` ist optional. Der Schlüssel sollte in etwa wie folgt aussehen: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
-
-4. Klicken Sie auf **OK** , um den Vorgang fortzusetzen.
-
+    * **Ressourcengruppe**: Geben Sie den Namen einer neuen Ressourcengruppe für die Bereitstellung ein.
+    * **Standort**: Wählen Sie eine Azure-Region für die Azure Container Service-Bereitstellung aus. Informationen zur Verfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+    
     ![Grundlegende Einstellungen](media/container-service-deployment/acs-portal3.png)  <br />
+    
+    Klicken Sie auf **OK** , um den Vorgang fortzusetzen.
 
-5. Wählen Sie auf dem Blatt **Framework configuration** (Framework-Konfiguration) eine **Orchestrator configuration** (Orchestratorkonfiguration) aus. Die Optionen lauten:
+4. Geben Sie auf dem Blatt **Masterkonfiguration** die folgenden Einstellungen für den oder die Linux-Hauptknoten im Cluster ein. (Einige Einstellungen sind orchestratorspezifisch.)
 
-  * **DC/OS**: Ein DC/OS-Cluster wird bereitgestellt.
-  * **Swarm**: Ein Docker Swarm-Cluster wird bereitgestellt.
-  * **Kubernetes**: Ein Kubernetes-Cluster wird bereitgestellt.
-
-
-6. Klicken Sie auf **OK** , um den Vorgang fortzusetzen.
-
-    ![Wählen Sie einen Orchestrator aus.](media/container-service-deployment/acs-portal4-new.png)  <br />
-
-7. Wenn **Kubernetes** in der Dropdownliste ausgewählt wird, müssen Sie die Client-ID (auch als „appId“ bezeichnet) und das Clientgeheimnis (Kennwort) des Dienstprinzipals eingeben. Weitere Informationen finden Sie im Artikel zum [Dienstprinzipal für einen Kubernetes-Cluster](container-service-kubernetes-service-principal.md).
-
-    ![Geben Sie einen Dienstprinzipal für Kubernetes ein.](media/container-service-deployment/acs-portal10.png)  <br />
-
-7. Geben Sie auf dem Blatt mit den Einstellungen für **Azure Container Service** die folgenden Informationen ein:
-
+    * **Master DNS name** (Master-DNS-Name): Das Präfix, das zum Erstellen eines eindeutigen vollqualifizierten Domänennamens (Fully Qualified Domain Name, FQDN) für den Master verwendet wird. Der Master-FQDN hat folgendes Format: *Präfix*mgmt.*Standort*.cloudapp.azure.com.
+    * **Benutzername**: Der Benutzername für ein Konto auf jedem der virtuellen Linux-Computer im Cluster.
+    * **Öffentlicher SSH-RSA-Schlüssel**: Fügen Sie den öffentlichen Schlüssel hinzu, der für die Authentifizierung gegenüber den virtuellen Linux-Computern verwendet werden soll. Es ist wichtig, dass dieser Schlüssel keine Zeilenumbrüche enthält und das Präfix `ssh-rsa` aufweist. Das Postfix `username@domain` ist optional. Der Schlüssel sollte in etwa wie folgt aussehen: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. 
+    * **Dienstprinzipal**: Geben Sie bei Verwendung des Kubernetes-Orchestrators eine **Client-ID des Dienstprinzipals** (auch App-ID genannt) für Azure Active Directory und ein **Clientgeheimnis des Dienstprinzipals** (Kennwort) ein. Weitere Informationen finden Sie im Artikel zum [Dienstprinzipal für einen Kubernetes-Cluster](container-service-kubernetes-service-principal.md).
     * **Masteranzahl**: Die Anzahl von Mastern im Cluster.
-    * **Agent-Anzahl**: Für Docker Swarm und Kubernets ist dieser Wert die anfängliche Anzahl von Agents in der Agent-Skalierungsgruppe. Für DC/OS ist dies die anfängliche Anzahl von Agents in einer privaten Skalierungsgruppe. Darüber hinaus wird für DC/OS eine öffentliche Skalierungsgruppe mit einer vorbestimmten Anzahl von Agents erstellt. Die Anzahl der Agents in dieser öffentlichen Skalierungsgruppe wird in Abhängigkeit davon ermittelt, wie viele Master im Cluster erstellt wurden: ein öffentlicher Agent für einen Master und zwei öffentliche Agents für drei oder fünf Master.
+    * **VM diagnostics** (VM-Diagnose): Bei einigen Orchestratoren können Sie die VM-Diagnose für die Master aktivieren.
+
+    ![Masterkonfiguration](media/container-service-deployment/acs-portal4.png)  <br />
+
+    Klicken Sie auf **OK** , um den Vorgang fortzusetzen.
+
+5. Geben Sie auf dem Blatt **Agent-Konfiguration** die folgenden Informationen ein:
+
+    * **Agent-Anzahl**: Für Docker Swarm und Kubernets ist dieser Wert die anfängliche Anzahl von Agents in der Agent-Skalierungsgruppe. Für DC/OS ist dies die anfängliche Anzahl von Agents in einer privaten Skalierungsgruppe. Darüber hinaus wird für DC/OS eine öffentliche Skalierungsgruppe mit einer vorbestimmten Anzahl von Agents erstellt. Die Anzahl von Agents in dieser öffentlichen Skalierungsgruppe wird durch die Anzahl von Mastern im Cluster bestimmt (ein öffentlicher Agent für einen Master und zwei öffentliche Agents für drei oder fünf Master).
     * **Größe der virtuellen Agent-Computer**: Die Größe der virtuellen Agent-Computer.
-    * **DNS-Präfix**: Ein weltweit eindeutiger Name, der als Präfix für wichtige Teile des vollqualifizierten Domänennamens für den Dienst verwendet wird.
-    * **VM diagnostics** (VM-Diagnose): Für einige Orchestratoren können Sie die VM-Diagnose aktivieren.
+    * **Betriebssystem**: Diese Einstellung steht momentan nur bei Verwendung des Kubernetes-Orchestrators zur Verfügung. Wählen Sie für die Agents entweder eine Linux-Distribution oder ein Windows Server-Betriebssystem aus. Diese Einstellung bestimmt, ob Ihr Cluster Linux- oder Windows-Container-Apps ausführen kann. 
 
-8. Klicken Sie auf **OK** , um den Vorgang fortzusetzen.
+        > [!NOTE]
+        > Die Unterstützung von Windows-Containern befindet sich für Kubernetes-Cluster in der Vorschauphase. Bei DC/OS- und Swarm-Clustern werden in Azure Container Service derzeit nur Linux-Agents unterstützt.
 
-    ![Container Service-Einstellungen](media/container-service-deployment/acs-portal5.png)  <br />
+    * **Agent-Anmeldeinformationen**: Geben Sie bei Verwendung des Windows-Betriebssystems einen Administratorbenutzernamen** **und ein Administratorkennwort** **für die virtuellen Agent-Computer ein. 
 
-9. Klicken Sie nach Abschluss der Dienstüberprüfung auf **OK** .
+    ![Agent-Konfiguration](media/container-service-deployment/acs-portal5.png)  <br />
+
+    Klicken Sie auf **OK** , um den Vorgang fortzusetzen.
+
+6. Klicken Sie nach Abschluss der Dienstüberprüfung auf **OK**.
 
     ![Überprüfen](media/container-service-deployment/acs-portal6.png)  <br />
 
-10. Überprüfen Sie die Bedingungen. Klicken Sie auf **Kaufen**, um den Bereitstellungsprozess zu starten.
-
-    ![Purchase](media/container-service-deployment/acs-portal7.png)  <br />
+7. Überprüfen Sie die Bedingungen. Klicken Sie auf **Erstellen**, um den Bereitstellungsprozess zu starten.
 
     Falls Sie die Bereitstellung im Azure-Portal angeheftet haben, wird der Bereitstellungsstatus angezeigt.
 
     ![Bereitstellungsstatus](media/container-service-deployment/acs-portal8.png)  <br />
 
 Die Bereitstellung kann einige Minuten in Anspruch nehmen. Danach ist der Azure Container Service-Cluster bereit für die Verwendung.
-
 
 
 ## <a name="create-a-cluster-by-using-a-quickstart-template"></a>Erstellen eines Clusters mit einer Schnellstartvorlage
@@ -115,7 +114,7 @@ Führen Sie zum Bereitstellen eines Clusters mithilfe einer Vorlage und von Azur
 > [!NOTE] 
 > In einem Windows-System können Sie ähnliche Schritte zum Bereitstellen einer Vorlage mithilfe von Azure PowerShell verwenden. Die Schritte dazu sind weiter unten in diesem Abschnitt beschrieben. Sie können eine Vorlage auch über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md) oder mithilfe anderer Methoden bereitstellen.
 
-1. Wählen Sie zum Bereitstellen eines DC/OS-, Docker Swarm- oder Kubernetes-Clusters in GitHub eine der verfügbaren Schnellstartvorlagen aus. Unten ist eine unvollständige Liste angegeben. Beachten Sie, dass die DC/OS- und Swarm-Vorlagen mit Ausnahme der standardmäßigen Orchestrator-Auswahl identisch sind.
+1. Wählen Sie zum Bereitstellen eines DC/OS-, Docker Swarm- oder Kubernetes-Clusters in GitHub eine der verfügbaren Schnellstartvorlagen aus. Unten ist eine unvollständige Liste angegeben. Die DC/OS- und Swarm-Vorlagen sind mit Ausnahme der standardmäßigen Orchestratorauswahl identisch.
 
     * [DC/OS-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)
     * [Swarm-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
@@ -187,16 +186,16 @@ Sie können eine Azure Container Service-Clustervorlage auch mit PowerShell bere
     New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
     ```
 
-5. Nach dem Erstellen einer Ressourcengruppe können Sie Ihren Cluster mit dem folgenden Befehl erstellen. Der URI der gewünschten Vorlage wird für den Parameter `-TemplateUri` festgelegt. Beim Ausführen dieses Befehls werden Sie von PowerShell aufgefordert, Parameterwerte für die Bereitstellung einzugeben.
+5. Nach dem Erstellen einer Ressourcengruppe können Sie Ihren Cluster mit dem folgenden Befehl erstellen. Der URI der gewünschten Vorlage wird mit dem Parameter `-TemplateUri` festgelegt. Beim Ausführen dieses Befehls werden Sie von PowerShell aufgefordert, Parameterwerte für die Bereitstellung einzugeben.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
     ```
 
 #### <a name="provide-template-parameters"></a>Eingeben von Vorlagenparametern
-Wenn Sie mit PowerShell vertraut sind, wissen Sie, dass Sie die für ein Cmdlet verfügbaren Parameter durchlaufen können, indem Sie ein Minuszeichen (-) eingeben und die TAB-TASTE drücken. Dieselbe Funktionalität gilt auch für Parameter, die Sie in der Vorlage definieren. Sobald Sie den Vorlagennamen eingeben, ruft das Cmdlet die Vorlage ab, analysiert die Parameter und fügt die Vorlagenparameter dynamisch dem Befehl hinzu. Auf diese Weise wird das Angeben der Vorlagenparameterwerte stark vereinfacht. Wenn Sie einen erforderlichen Parameterwert vergessen haben, fordert PowerShell Sie zur Angabe des Werts auf.
+Wenn Sie mit PowerShell vertraut sind, wissen Sie, dass Sie die für ein Cmdlet verfügbaren Parameter durchlaufen können, indem Sie ein Minuszeichen (-) eingeben und die TAB-TASTE drücken. Dieselbe Funktionalität gilt auch für Parameter, die Sie in der Vorlage definieren. Sobald Sie den Vorlagennamen eingeben, ruft das Cmdlet die Vorlage ab, analysiert die Parameter und fügt die Vorlagenparameter dynamisch dem Befehl hinzu. Das vereinfacht die Angabe der Vorlagenparameterwerte. Wenn Sie einen erforderlichen Parameterwert vergessen haben, fordert PowerShell Sie zur Angabe des Werts auf.
 
-Unten ist der vollständige Befehl mit Parametern angegeben. Sie können Ihre eigenen Werte für die Namen der Ressourcen angeben.
+Im Anschluss ist der vollständige Befehl mit Parametern angegeben. Geben Sie für die Namen der Ressourcen Ihre eigenen Werte an.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....

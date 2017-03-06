@@ -17,6 +17,7 @@ ms.author: larryfr
 translationtype: Human Translation
 ms.sourcegitcommit: ccd1dffda19718a434fc09bb74a536714799740a
 ms.openlocfilehash: 0c288989a2b1662bcbec6fd2c74dffaefedc82b8
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -127,10 +128,5 @@ Nachdem Sie sich mit der Verwendung der Tez-Ansicht vertraut gemacht haben, erfa
 Ausführliche technische Informationen zu Tez finden Sie auf der [Seite zu Tez bei Hortonworks](http://hortonworks.com/hadoop/tez/).
 
 Weitere Informationen zur Verwendung von Ambari mit HDInsight finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

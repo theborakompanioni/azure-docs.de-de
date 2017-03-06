@@ -38,8 +38,4 @@ sql-database-service-tiers.md
 | Max. gleichzeitige Sitzungen | 30000| 30000| 30000| 30000| 30000| 30000 |
 |||||||
 
-\* Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und enthält nicht den von Protokolldateien belegten Speicherplatz.
-
-<!--HONumber=Feb17_HO2-->
-
-
+\* Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Daten in der Datenbank.

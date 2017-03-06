@@ -17,6 +17,7 @@ ms.author: harikm
 translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
 ms.openlocfilehash: 012bfc7d8431e2edb2b1056fb465421fad58193a
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -397,10 +398,5 @@ Wir freuen uns darauf, von Ihnen zu hören!
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wir empfehlen Ihnen den [MyDriving-Referenzleitfaden](http://aka.ms/mydrivingdocs), bei dem es sich um eine umfassende Beschreibung des Systemdesigns und der dazugehörigen Komponenten handelt.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

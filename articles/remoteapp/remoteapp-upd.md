@@ -16,6 +16,7 @@ ms.author: mbaldwin
 translationtype: Human Translation
 ms.sourcegitcommit: dd281ead7d2c06af98ea0baea31d897b5be0d9d7
 ms.openlocfilehash: 04d8031a4c5f06d56afc1d08d4a4fa5fb50f8a25
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -145,10 +146,5 @@ Sie können Ihre Anmeldeinformationen außerdem wie folgt speichern:
 
 
 So können Sie das Parameter „-Credential“ im New-PSDrive-Cmdlet überspringen.
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

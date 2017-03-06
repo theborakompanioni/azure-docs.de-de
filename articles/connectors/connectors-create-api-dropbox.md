@@ -18,6 +18,7 @@ ms.author: deonhe
 translationtype: Human Translation
 ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
 ms.openlocfilehash: a8ecad3552f35c02c07fe33aa8531fb462b27002
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -355,10 +356,5 @@ Von den oben angegebenen Aktionen und Triggern können folgende HTTP-Statuscodes
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

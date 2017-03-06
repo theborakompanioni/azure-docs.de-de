@@ -11,12 +11,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/24/2017
+ms.date: 02/28/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 13ff55ff06d0afd5e29ce85e7cc8e1c7e0a12a6c
-ms.openlocfilehash: b2e82cffa9c258d99dc26346851ebfc016d09839
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 05b642949205d7698fbcf791a5d2f06528ff239e
+ms.openlocfilehash: e827bddfa0bcc1c1e46d06c6856033e77859c7fb
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -35,16 +35,23 @@ Es gibt noch weitere Themen, die für Sie unter Umständen von Interesse sind:
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
 ## <a name="a-nameidea-step-1-add-the-application-insights-sdk"></a><a name="ide"></a> Schritt 1: Hinzufügen des Application Insights SDK
-Achten Sie bei einem neuen Projekt darauf, dass Application Insights ausgewählt ist, wenn Sie in Visual Studio ein neues Projekt erstellen.
 
-![Screenshot des neuen ASP.NET-Projekts](./media/app-insights-asp-net/appinsights-01-vsnewp1.png)
-
-Klicken Sie bei einem vorhandenen Projekt im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie die Option **Application Insights-Telemetrie hinzufügen...** oder **Application Insights konfigurieren**.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Web-App-Projekt, und klicken Sie auf **Hinzufügen** > **Application Insights-Telemetrie** oder **Application Insights konfigurieren**.
 
 ![Screenshot des Projektmappen-Explorers mit Hervorhebung von „Application Insights-Telemetrie hinzufügen“](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
-> [!NOTE]
-> Befolgen Sie bei Verwendung eines ASP.NET Core-Projekts [diese Anleitung zum Bearbeiten einiger Codezeilen](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started#add-application-insights-instrumentation-code-to-startupcs).
+(Visual Studio 2015 enthält im Dialogfeld „Neues Projekt“ auch eine Option zum Hinzufügen von Application Insights.)
+
+Fahren Sie mit der Seite für die Application Insights-Konfiguration fort:
+
+![Screenshot der Seite „App bei Application Insights registrieren“](./media/app-insights-asp-net/visual-studio-register-dialog.png)
+
+1. Wählen Sie das Konto und das Abonnement aus, das Sie zum Zugreifen auf Azure verwenden.
+2. Wählen Sie die Ressource in Azure aus, über die Sie die Daten Ihrer App anzeigen möchten. Normalerweise erstellen Sie eine separate Ressource für jede App. Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchten, klicken Sie auf **Einstellungen konfigurieren**. Ressourcengruppen werden zum Steuern das Zugriffs auf die Daten verwendet. Wenn Sie über mehrere Apps verfügen, die einen Teil desselben Systems bilden, können Sie die dazugehörigen Application Insights-Daten in derselben Ressourcengruppe anordnen.
+3. Bis zu einem bestimmten Volumen von Telemetrie ist Application Insights kostenlos. Sie können die Obergrenze auf dieses Volumen festlegen, um das Anfallen von Gebühren zu verhindern. Nach der Erstellung der Ressource können Sie Ihre Auswahl im Portal ändern, indem Sie **Features und Preise** > **Datenverwaltung** > **Volumenbegrenzung pro Tag** öffnen.
+4. Klicken Sie auf **Registrieren**, um den Prozess zu starten und Application Insights für Ihre Web-App zu konfigurieren. Die Telemetriedaten werden an das [Azure-Portal](https://portal.azure.com) gesendet – sowohl während des Debuggens als auch nach dem Veröffentlichen Ihrer App.
+5. Alternativ dazu können Sie das Application Insights SDK auch einfach Ihrer App hinzufügen. In diesem Fall werden die Telemetriedaten in Visual Studio angezeigt, während Sie debuggen. Sie können später zu dieser Konfigurationsseite zurückkehren oder warten, bis Sie Ihre App bereitgestellt haben, und die [Telemetrie zur Laufzeit aktivieren](app-insights-monitor-performance-live-website-now.md).
+
 
 ## <a name="a-nameruna-step-2-run-your-app"></a><a name="run"></a> Schritt 2: Ausführen der App
 Führen Sie Ihre App mit F5 aus. Öffnen Sie verschiedene Seiten, um Telemetriedaten zu generieren.

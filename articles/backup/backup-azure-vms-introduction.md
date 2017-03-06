@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: markgal;trinadhk
 translationtype: Human Translation
-ms.sourcegitcommit: a4045fc0fc6e2c263da06ed31a590714e80fb4d4
-ms.openlocfilehash: ac13b82c885720fa6d3d127b8e8dbbace5b09ef5
+ms.sourcegitcommit: d7a2b9c13b2c3372ba2e83f726c7bf5cc7e98c02
+ms.openlocfilehash: 4fae07988dea260776368162c03374d83bc55664
+ms.lasthandoff: 02/17/2017
 
 
 ---
@@ -32,6 +33,11 @@ Nachdem die Momentaufnahme erstellt wurde, werden die Daten vom Azure Backup-Die
 ![Architektur der Sicherung von virtuellen Azure-Computern](./media/backup-azure-vms-introduction/vmbackup-architecture.png)
 
 Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
+
+> [!NOTE]
+> Azure Backup berücksichtigt bei der Durchführung der Sicherung keine temporären Datenträger, die dem virtuellen Computer angefügt sind. Erfahren Sie mehr über [temporäre Datenträger](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
+>
+>
 
 ### <a name="data-consistency"></a>Datenkonsistenz
 Das Sichern und Wiederherstellen unternehmenskritischer Daten wird dadurch erschwert, dass die Daten während der Ausführung der Anwendungen gesichert werden müssen, von denen die Daten generiert werden. Hierfür bietet Azure Backup anwendungskonsistente Sicherungen für Microsoft-Workloads mithilfe des Volumeschattenkopie-Diensts, um sicherzustellen, dass die Daten ordnungsgemäß in den Speicher geschrieben werden.
@@ -91,6 +97,10 @@ Obgleich ein Großteil der Sicherungszeit für das Lesen und Kopieren von Daten 
 * Die Zeit, die zum [Installieren oder Aktualisieren der Sicherungserweiterung](backup-azure-vms.md)benötigt wird.
 * Zeit für Momentaufnahme: Die zum Auslösen einer Momentaufnahme erforderliche Zeit. Momentaufnahmen werden kurz vor der geplanten Sicherungszeit ausgelöst.
 * Wartezeit in der Warteschlange. Da der Backup-Dienst Sicherungen von mehreren Kunden verarbeitet, werden die Sicherungsdaten der Momentaufnahme möglicherweise nicht sofort in die Sicherung oder in den Recovery Services-Tresor kopiert. Zu Spitzenzeiten kann die Wartezeit aufgrund der Anzahl zu verarbeiteter Sicherungen bis zu acht Stunden betragen. Die Gesamtdauer der VM-Sicherung wird jedoch bei täglichen Sicherungsrichtlinien weniger als 24 Stunden betragen.
+* Die Datenübertragungszeit ist die Zeit, die der Sicherungsdienst zum Berechnen von inkrementellen Änderungen aus der vorherigen Sicherung und der Übertragung dieser Änderungen in den Tresorspeicher benötigt.
+
+### <a name="why-am-i-observing-longer15-hours-backup-time"></a>Warum stelle ich eine längere Sicherungszeit fest (>&15; Stunden)?
+Die Sicherung besteht aus zwei Phasen: Erstellen der Momentaufnahme und Übertragen der Momentaufnahme in den Tresor. In der zweiten Phase, der Übertragung von Daten in den Tresor, um die Nutzung des zur Sicherung verwendeten Speichers zu optimieren, übertragen wir nur inkrementelle Änderungen aus der vorherigen Momentaufnahme. Um dies zu erreichen, wird die Prüfsumme der Blöcke berechnet, und wenn ein Block geändert wird, wird er zum Senden an den Tresor gekennzeichnet. Auch hier wird der Block näher untersucht, um festzustellen, ob die Menge der zu übertragenden Daten minimiert werden kann, und alle geänderten Blöcke werden zusammengefügt und an den Tresor gesendet. Bei einigen Legacyanwendungen wurde beobachtet, dass Schreibvorgänge von Anwendungen im Hinblick auf den Speicher nicht optimal sind, da es sich um kleine und fragmentierte Schreibvorgänge handelt. Darum nimmt das Verarbeiten von Daten, die von diesen Anwendungen geschrieben wurden, zusätzliche Zeit in Anspruch. Der von Azure empfohlene Anwendungsschreibblock für Anwendungen, die von virtuellen Computern ausgeführt werden, ist mindestens 8KB groß. Wenn Ihre Anwendung einen Block von weniger als 8KB verwendet, wird die Sicherungsleistung beeinträchtigt, da dies außerhalb der Azure-Empfehlungen liegt. Wir empfehlen Ihnen, sich über die [Optimierung von Anwendungen für eine optimale Leistung mit Azure-Speicher](../storage/storage-premium-storage-performance.md) zu informieren und herauszufinden, ob Sie Ihre Anwendung so optimieren können, dass sie optimal schreibt, um die Sicherungsleistung zu verbessern. Dieser Artikel berücksichtigt zwar in erster Linie Storage Premium, doch gilt er auch für Datenträger mit Standardspeicher.
 
 ## <a name="total-restore-time"></a>Gesamtzeit der Wiederherstellung
 Ein Wiederherstellungsvorgang umfasst zwei zentrale Teilvorgänge: das Kopieren von Daten aus dem Tresor in das ausgewählte Kundenspeicherkonto und das Erstellen des virtuellen Computers. Das Kopieren von Daten aus dem Tresor hängt vom internen Speicherort von Sicherungen in Azure sowie vom Speicherort des Kundenspeicherkontos ab. Die Dauer des Datenkopiervorgangs hängt von folgenden Faktoren ab:
@@ -138,9 +148,4 @@ Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möch
 * [Verwalten der Sicherung virtueller Computer](backup-azure-manage-vms.md)
 * [Wiederherstellen virtueller Computer](backup-azure-restore-vms.md)
 * [Problembehandlung bei der Sicherung virtueller Computer](backup-azure-vms-troubleshoot.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

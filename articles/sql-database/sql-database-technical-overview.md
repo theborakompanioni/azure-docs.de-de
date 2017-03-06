@@ -17,8 +17,9 @@ ms.workload: data-management
 ms.date: 12/20/2016
 ms.author: shkurhek
 translationtype: Human Translation
-ms.sourcegitcommit: ae230c012a17eb73c8993a32197c844c6abaa2a4
-ms.openlocfilehash: c99f16e7aa6ea6fe82f7a115b4642025a05bb241
+ms.sourcegitcommit: ae493fbb3690e80eef4b37e0315d1715a924e568
+ms.openlocfilehash: 7c70c737fb41e8c1c5a339462fa77a8bc7318f7e
+ms.lasthandoff: 02/22/2017
 
 ---
 # <a name="what-is-sql-database-introduction-to-sql-database"></a>Was ist SQL Database? Einführung in SQL-Datenbank
@@ -43,7 +44,7 @@ Sie können weiterhin flexibel vorgehen – unabhängig davon, ob Sie sich für 
 Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und elastischen Pools vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Sie verwenden die [integrierten Leistungsüberwachungs-](sql-database-performance.md) und [Warntools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen, die auf [Datenbanktransaktionseinheiten (DTUs) für Einzeldatenbanken und elastischen DTUs (eDTUs) für elastische Pools](sql-database-what-is-a-dtu.md) basieren. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Ausführliche Informationen finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md) .
 
 ## <a name="keep-your-app-and-business-running"></a>Aufrechterhalten von App-Ausführung und Geschäftskontinuität
-Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](http://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jeder SQL-Datenbank nutzen Sie die integrierte Sicherheit, Fehlertoleranz und den [Schutz von Daten](sql-database-automated-backups.md), die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. In der SQL-Datenbank bietet jede Dienstebene einen umfassenden Satz von Funktionen für Geschäftskontinuität und Optionen, die sicherstellen, dass Sie den Betrieb aufnehmen können und dieser nicht unterbrochen wird. Über die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md) können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Sie können die [langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md) konfigurieren, um Sicherungen bis zu zehn Jahre lang in einem sicheren Tresor zu speichern. Wenn es im Datencenter, in dem Ihre Datenbank gehostet wird, außerdem zu einem Ausfall kommt, können Sie Ihre Datenbanken aus [georedundanten Kopien kürzlich erfolgter Sicherungen](sql-database-recovery-using-backups.md) wiederherstellen. Darüber hinaus können Sie bei Bedarf [georedundante lesbare Replikate](sql-database-geo-replication-overview.md) in einer oder mehreren Regionen konfigurieren, um bei einem Ausfall eines Rechenzentrums ein schnelles Failover zu ermöglichen. Sie können diese Replikate auch verwenden, um eine schnellere Leseleistung in unterschiedlichen geografischen Regionen zu erzielen oder [Anwendungsupgrades ohne Ausfallzeit](sql-database-manage-application-rolling-upgrade.md) durchzuführen. 
+Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](http://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jeder SQL-Datenbank nutzen Sie die integrierte Sicherheit, Fehlertoleranz und den [Schutz von Daten](sql-database-automated-backups.md), die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. In der SQL-Datenbank bietet jede Dienstebene einen umfassenden Satz von Funktionen für Geschäftskontinuität und Optionen, die sicherstellen, dass Sie den Betrieb aufnehmen können und dieser nicht unterbrochen wird. Über die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md) können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Sie können die [langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md) konfigurieren, um Sicherungen bis zu zehn Jahre lang in einem sicheren Tresor zu speichern. Ferner können Sie bei einem Ausfall des Datencenters, in dem Ihre Datenbanken gehostet werden, Ihre Datenbanken aus [georedundanten Kopien kürzlich durchgeführter Sicherungen](sql-database-recovery-using-backups.md) wiederherstellen. Darüber hinaus können Sie bei Bedarf [georedundante lesbare Replikate](sql-database-geo-replication-overview.md) in einer oder mehreren Regionen konfigurieren, um bei einem Ausfall eines Rechenzentrums ein schnelles Failover zu ermöglichen. Sie können diese Replikate auch verwenden, um eine schnellere Leseleistung in unterschiedlichen geografischen Regionen zu erzielen oder [Anwendungsupgrades ohne Ausfallzeit](sql-database-manage-application-rolling-upgrade.md) durchzuführen. 
 
 ![SQL-Datenbank-Georeplikation](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
@@ -59,9 +60,4 @@ Nachdem Sie eine Einführung in SQL-Datenbank gelesen und die Frage „Was ist S
 * Erfahren Sie mehr über [elastische Pools](sql-database-elastic-pool.md).
 * Beginnen Sie mit dem [Erstellen einer ersten Azure SQL-Datenbank](sql-database-get-started.md).
 * Erstellen Sie Ihre erste App in C#, Java, Node.js, PHP, Python oder Ruby: [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

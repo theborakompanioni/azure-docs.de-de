@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/12/2017
+ms.date: 02/27/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 279990a67ae260b09d056fd84a12160150eb4539
-ms.openlocfilehash: 37409ad3f50cdd4a7a384c96a57a35ef8c83fb8f
-
+ms.sourcegitcommit: cfaade8249a643b77f3d7fdf466eb5ba38143f18
+ms.openlocfilehash: 4cde035f75bfa3c448f12e9ebf2896b9a54a6873
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-ssh-with-hdinsight-hadoop-from-windows-linux-unix-or-os-x"></a>Verwenden von SSH mit HDInsight (Hadoop) unter Windows, Linux, Unix oder OS X
+# <a name="use-ssh-with-hdinsight-hadoop-from-bash-on-windows-10-linux-unix-or-os-x"></a>Verwenden von SSH mit HDInsight (Hadoop) unter Bash on Windows 10, Linux, Unix oder OS X
 
 > [!div class="op_single_selector"]
 > * [PuTTY (Windows)](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -42,13 +43,11 @@ Viele Betriebssysteme stellen SSH-Clientfunktionen über die Befehlszeilen-Hilfs
 * __ssh__: Ein allgemeiner SSH-Client zum Einrichten einer Befehlszeilen-Remotesitzung und zum Erstellen von Tunneln.
 * __scp__: Ein Hilfsprogramm, das Dateien unter Verwendung des SSH-Protokolls zwischen lokalen Systemen und Remotesystemen kopiert.
 
-Vor Windows 10 Anniversary Edition wurde von Windows kein SSH-Client bereitgestellt. Diese Windows-Version enthält das Entwicklerfeature „Bash unter Windows 10“ und stellt somit `ssh`, `scp` und andere Linux-Befehle bereit. Weitere Informationen zur Verwendung von Bash unter Windows 10 finden Sie unter [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) (Bash unter Ubuntu unter Windows).
+Windows 10 Anniversary Edition enthält Bash als Entwicklerfeature. Sie stellt `ssh`, `scp` und andere Linux-Befehle bereit. Weitere Informationen zur Verwendung von Bash unter Windows 10 finden Sie unter [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) (Bash unter Ubuntu unter Windows).
 
 Windows-Benutzern ohne Zugriff auf Bash unter Windows 10 können wir folgende SSH-Clients empfehlen:
 
 * [Git für Windows](https://git-for-windows.github.io/): Stellt die Befehlszeilen-Hilfsprogramme `ssh` und `scp` bereit.
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/): Stellt einen grafischen SSH-Client bereit.
-* [MobaXterm](http://mobaxterm.mobatek.net/): Stellt einen grafischen SSH-Client bereit.
 * [Cygwin](https://cygwin.com/): Stellt die Befehlszeilen-Hilfsprogramme `ssh` und `scp` bereit.
 
 > [!NOTE]
@@ -64,7 +63,7 @@ Wenn Sie die Kryptografie mit öffentlichem Schlüssel verwenden möchten, müss
 
 * Der **private Schlüssel** wird dem HDInsight-Cluster bei der Anmeldung über einen SSH-Client präsentiert, um Ihre Identität zu bestätigen. Bewahren Sie diesen privaten Schlüssel sicher auf. Geben Sie ihn nicht weiter.
 
-    Durch Erstellen einer Passphrase für den privaten Schlüssel können Sie die Sicherheit noch weiter erhöhen. Diese Passphrase muss angegeben werden, damit der Schlüssel verwendet werden kann.
+    Durch Erstellen einer Passphrase für den privaten Schlüssel können Sie die Sicherheit noch weiter erhöhen. Wenn Sie eine Passphrase verwenden, müssen Sie diese bei der Authentifizierung mit SSH eingeben.
 
 ### <a name="create-a-public-and-private-key"></a>Erstellen eines öffentlichen und eines privaten Schlüssels
 
@@ -115,7 +114,7 @@ Weitere Informationen zum Konfigurieren von SSH im Rahmen der Clustererstellung 
 
 Es ist zwar möglich, einem Cluster nach der Erstellung weitere SSH-Benutzer hinzuzufügen, dies wird jedoch nicht empfohlen.
 
-* Die neuen SSH-Benutzer müssen jedem Knoten im Cluster manuell hinzugefügt werden.
+* Neue SSH-Benutzer müssen jedem Knoten im Cluster hinzugefügt werden.
 
 * Neue SSH-Benutzer haben den gleichen Zugriff auf HDInsight wie Standardbenutzer. Der Zugriff auf Daten oder Aufträge in HDInsight kann nicht auf der Grundlage des SSH-Benutzerkontos eingeschränkt werden.
 
@@ -147,7 +146,7 @@ Wenn Sie zum Schutz des SSH-Kontos einen öffentlichen Schlüssel verwenden, mü
 
 ### <a name="connect-to-other-nodes"></a>Herstellen einer Verbindung mit anderen Knoten
 
-Auf die Workerknoten und die Zookeeper-Knoten kann von außerhalb des Clusters nicht direkt zugegriffen werden. Der Zugriff ist jedoch über die Haupt- oder Edgeknoten des Clusters möglich. Im Anschluss finden Sie die allgemeinen Schritte hierfür:
+Auf die Workerknoten und die Zookeeper-Knoten kann von außerhalb des Clusters nicht direkt zugegriffen werden. Der Zugriff ist jedoch über die Haupt- oder Edgeknoten des Clusters möglich. Im Anschluss finden Sie die allgemeinen Schritte zum Verbinden mit anderen Knoten:
 
 1. Herstellen einer SSH-Verbindung mit einem Haupt- oder Edgeknoten:
 
@@ -196,7 +195,7 @@ Wenn Sie Ihr Benutzerkonto mithilfe eines SSH-Schlüssels authentifizieren, muss
 
 Bei [in die Domäne eingebundenem HDInsight](hdinsight-domain-joined-introduction.md) wird Kerberos mit Hadoop in HDInsight integriert. Da der SSH-Benutzer kein Active Directory-Domänenbenutzer ist, können Hadoop-Befehle für dieses Benutzerkonto erst nach erfolgter Active Directory-Authentifizierung ausgeführt werden. Gehen Sie wie folgt vor, um Ihre SSH-Sitzung mit Active Directory zu authentifizieren:
 
-1. Stellen Sie eine Verbindung mit einem in die Domäne eingebundenen HDInsight-Cluster her. Verwenden Sie dabei die SSH, wie im Abschnitt [Herstellen einer Verbindung mit HDInsight](#connect) gezeigt. Mit dem folgenden Befehl wird beispielsweise unter Verwendung eines SSH-Kontos namens __sshuser__ eine Verbindung mit einem HDInsight-Cluster namens __myhdi__ hergestellt:
+1. Stellen Sie per SSH eine Verbindung mit einem in die Domäne eingebundenen HDInsight-Cluster her. Mit dem folgenden Befehl wird beispielsweise unter Verwendung eines SSH-Kontos namens __sshuser__ eine Verbindung mit einem HDInsight-Cluster namens __myhdi__ hergestellt:
 
         ssh sshuser@myhdi-ssh.azurehdinsight.net
 
@@ -212,7 +211,7 @@ Nach erfolgter Authentifizierung mithilfe des Befehls `kinit` können Sie Hadoop
 
 ## <a name="a-idtunnelassh-tunneling"></a><a id="tunnel"></a>SSH-Tunnel
 
-SSH kann auch zum Tunneln lokaler Anforderungen wie etwa Webanforderungen zum HDInsight-Cluster verwendet werden. Die Anforderung wird dann an die angeforderte Ressource weitergeleitet, als ob sie vom Stammknoten des HDInsight-Clusters stammen würde.
+SSH kann auch zum Tunneln lokaler Anforderungen wie etwa Webanforderungen zum HDInsight-Cluster verwendet werden. Die Anforderung wird an den Cluster weitergeleitet und dann innerhalb des Clusters aufgelöst.
 
 > [!IMPORTANT]
 > Ein SSH-Tunnel ist für manche Hadoop-Dienste eine Voraussetzung für den Zugriff auf die Webbenutzeroberfläche. Auf die Benutzeroberfläche des Auftragsverlaufs und des Ressourcen-Managers kann beispielsweise nur über einen SSH-Tunnel zugegriffen werden.
@@ -228,9 +227,4 @@ Nachdem Sie jetzt wissen, wie die Authentifizierung mithilfe eines SSH-Schlüsse
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

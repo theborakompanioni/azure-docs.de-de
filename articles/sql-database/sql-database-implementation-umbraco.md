@@ -18,6 +18,7 @@ ms.author: carlrab
 translationtype: Human Translation
 ms.sourcegitcommit: 187954f3ddafdbc17e341ce41f5b109cb95f8a24
 ms.openlocfilehash: 774d5ac6f3d5d9d97120ab895157677e4a92bb05
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -129,10 +130,5 @@ Seitdem Umbraco sich für Azure als Cloudpartner entschieden hat, konnte das Unt
 * Weiter Informationen zur Sicherung und Wiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).    
 * Weitere Informationen zur Überwachung von Pools finden Sie unter [Überwachen von Pools](sql-database-elastic-pool-manage-portal.md).    
 * Weitere Informationen zu Umbraco-as-a-Service finden Sie unter [Umbraco](https://umbraco.com/cloud).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

@@ -17,6 +17,7 @@ ms.author: rodend;karlku;tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: adae9827bbdb5f72b9e0fb4a1792fe54b9324706
 ms.openlocfilehash: 9f4f0ce9e389fa560345c77502db8e225827f054
+ms.lasthandoff: 01/10/2017
 
 
 ---
@@ -250,10 +251,5 @@ Das [Azure Security Center](../security-center/security-center-intro.md) bietet 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nachdem Sie sich mit der Abonnementgovernance vertraut gemacht haben, ist es an der Zeit, diese Empfehlungen in der Praxis zu erleben. Informationen finden Sie unter [Beispiele für das Implementieren eines Azure-Unternehmensgerüsts](resource-manager-subscription-examples.md).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 
