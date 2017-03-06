@@ -12,15 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/15/2017
+ms.date: 02/25/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: d3a122d7d26635e13281b1cba450937519ed4be6
-
+ms.sourcegitcommit: 20afeb3ba290ddf728d2b52c076c7a57fadc77c6
+ms.openlocfilehash: 4014bf0217e25ea9bc8473ef2383279e5eb79b87
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="getting-started-with-the-mfa-server-mobile-app-web-service"></a>Erste Schritte mit dem Webdienst der mobilen App für den MFA-Server
+# <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Aktivieren der Mobile App-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
+
 Die Microsoft Authenticator-App bietet eine zusätzliche Out-of-Band-Überprüfungsoption. Anstelle eines automatischen Telefonanrufs oder einer SMS sendet Azure Multi-Factor Authentication bei der Benutzeranmeldung eine Pushbenachrichtigung an die Microsoft Authenticator-App auf dem Smartphone oder Tablet des Benutzers. Der Benutzer tippt in der App einfach auf **Überprüfen** (oder gibt eine PIN ein und tippt auf „Authentifizieren“), um sich anzumelden. 
 
 Die Verwendung einer mobilen App für die Prüfung in zwei Schritten empfiehlt sich, wenn kein zuverlässiges Mobilfunknetz zur Verfügung steht. Bei Verwendung als OAuth-Token-Generator benötigt die App keine Netzwerk- oder Internetverbindung. 
@@ -99,9 +101,4 @@ Nachdem Sie den Webdienst der mobilen App installiert haben, müssen Sie den Azu
 5. Geben Sie die URL für das virtuelle Verzeichnis ein, das bei der Installation von „Azure Multi-Factor AuthenticationMobileAppWebServiceSetup“ erstellt wurde. Ein Kontoname kann in das Eingabefeld eingegeben werden. Dieser Firmenname wird in der mobilen App angezeigt. Wenn Sie das Feld leer lassen, wird der Name des Anbieters für mehrstufige Authentifizierung angezeigt, der im klassischen Azure-Portal erstellt wurde.
 
 <center>![Einrichtung](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

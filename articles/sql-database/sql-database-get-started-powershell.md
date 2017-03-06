@@ -14,11 +14,12 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: powershell
 ms.workload: data-management
-ms.date: 12/09/2016
+ms.date: 02/23/2016
 ms.author: sstein
 translationtype: Human Translation
-ms.sourcegitcommit: 93efe1a08149e7c027830b03a9e426ac5a05b27b
-ms.openlocfilehash: cf626be4914168d3ed3caae7f959a79324487b4e
+ms.sourcegitcommit: 78d9194f50bcdc4b0db7871f2480f59b26cfa8f6
+ms.openlocfilehash: 7b7273edfa33f297cb5dc30ef380b6a737787b33
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -58,27 +59,14 @@ Nach Abschluss dieses Tutorials verfügen Sie über eine Beispieldatenbank und e
 
 * Sie müssen mit einem Konto angemeldet sein, das über die Rolle „Besitzer“ oder „Mitwirkender“ für das Abonnement verfügt. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).
 
-* Sie benötigen die BACPAC-Datei der AdventureWorksLT-Beispieldatei in Azure Blob Storage.
-
-### <a name="download-the-adventureworkslt-sample-database-bacpac-file-and-save-it-in-azure-blob-storage"></a>Herunterladen der BACPAC-Datei der AdventureWorksLT-Beispieldatenbank und Speichern der Datei in Azure Blob Storage
-
-In diesem Tutorial wird durch Importieren einer BACPAC-Datei aus Azure Storage eine neue AdventureWorksLT-Datenbank erstellt. Der erste Schritt besteht darin, eine Kopie der Datei „AdventureWorksLT.bacpac“ abzurufen und in Blob Storage hochzuladen.
-In den folgenden Schritten wird die Beispieldatenbank für den Import vorbereitet:
-
-1. [Laden Sie die Datei „AdventureWorksLT.bacpac“ herunter](https://sqldbbacpacs.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac), und speichern Sie sie mit der Dateierweiterung „.bacpac“.
-2. [Erstellen Sie ein Speicherkonto](../storage/storage-create-storage-account.md#create-a-storage-account) (Sie können es mit den Standardeinstellungen erstellen).
-3. Erstellen Sie einen neuen **Container**, indem Sie zum Speicherkonto navigieren, **BLOBs** auswählen und dann auf **+ Container** klicken.
-4. Laden Sie die BACPAC-Datei in den Blob-Container in Ihrem Speicherkonto hoch. Sie können die Schaltfläche **Upload** am oberen Rand der Seite „Container“ oder [AzCopy](../storage/storage-use-azcopy.md#blob-upload) verwenden. 
-5. Nachdem Sie die Datei „AdventureWorksLT.bacpac“ gespeichert haben, benötigen Sie die URL und den Speicherkontoschlüssel für den Import-Codeausschnitt an späterer Stelle dieses Tutorials. 
-   * Wählen Sie die BACPAC-Datei aus, und kopieren Sie die URL. Die URL sieht in etwa wie folgt aus: https://{storage-account-name}.blob.core.windows.net/{container-name}/AdventureWorksLT.bacpac. Klicken Sie auf der Seite „Speicherkonto“ auf **Zugriffsschlüssel**, und kopieren Sie den Schlüssel mit der Bezeichnung **key1**.
-
-
 [!INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
 
 ## <a name="create-a-new-logical-sql-server-using-azure-powershell"></a>Erstellen eines neuen logischen SQL-Servers mit Azure PowerShell
 
 Sie benötigen eine Ressourcengruppe, die den Server enthält. Der erste Schritt besteht daher darin, entweder eine neue Ressourcengruppe und einen neuen Server zu erstellen ([New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/new-azurermresourcegroup), [New-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqlserver)) oder Verweise auf eine vorhandene Ressourcengruppe und einen vorhandenen Server abzurufen ([Get-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.3.0/get-azurermresourcegroup), [Get-AzureRmSqlServer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqlserver)).
+
+
 Die folgenden Codeausschnitte erstellen eine Ressourcengruppe und einen Azure SQL-Server, sofern diese noch nicht vorhanden sind:
 
 Den Code zum Abrufen einer Liste der gültigen Azure-Speicherorte und das Zeichenfolgenformat finden Sie weiter unten im Abschnitt [Hilfscodeausschnitte](#helper-snippets).
@@ -178,6 +166,25 @@ else
    Write-host "Server firewall rule $serverFirewallRuleName already exists:"
 }
 $myFirewallRule
+
+# Allow Azure services to access the server
+$serverFirewallRuleName2 = "allowAzureServices"
+$serverFirewallStartIp2 = "0.0.0.0"
+$serverFirewallEndIp2 = "0.0.0.0"
+
+$myFirewallRule2 = Get-AzureRmSqlServerFirewallRule -FirewallRuleName $serverFirewallRuleName2 -ServerName $serverName -ResourceGroupName $serverResourceGroupName -ea SilentlyContinue
+
+if(!$myFirewallRule2)
+{
+   Write-host "Creating server firewall rule: $serverFirewallRuleName2"
+   $myFirewallRule2 = New-AzureRmSqlServerFirewallRule -ResourceGroupName $serverResourceGroupName -ServerName $serverName -FirewallRuleName $serverFirewallRuleName2 -StartIpAddress $serverFirewallStartIp2 -EndIpAddress $serverFirewallEndIp2
+}
+else
+{
+   Write-host "Server firewall rule $serverFirewallRuleName2 already exists:"
+}
+$myFirewallRule2
+
 ```
 
 
@@ -217,8 +224,8 @@ $connection.Close()
 
 ## <a name="create-new-adventureworkslt-sample-database-using-azure-powershell"></a>Erstellen einer neuer AdventureWorksLT-Beispieldatenbank mit Azure PowerShell
 
-Der folgende Codeausschnitt importiert mithilfe des Cmdlets [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqldatabaseimport) eine BACPAC-Datei der AdventureWorksLT-Beispieldatenbank. Die BACPAC-Datei befindet sich in Azure Blob Storage. Nachdem Sie das Import-Cmdlet ausgeführt haben, können Sie den Status des Importvorgangs mit dem Cmdlet [Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabaseimportexportstatus) überwachen.
-„$storageUri“ ist die URL-Eigenschaft der BACPAC-Datei, die Sie zuvor in das Portal hochgeladen haben, und sollte in etwa wie folgt lauten: https://{storage-account}.blob.core.windows.net/{container}/AdventureWorksLT.bacpac
+Der folgende Codeausschnitt importiert mithilfe des Cmdlets [New-AzureRmSqlDatabaseImport](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/new-azurermsqldatabaseimport) eine BACPAC-Datei der AdventureWorksLT-Beispieldatenbank. Die BACPAC-Datei befindet sich in einem öffentlichen, schreibgeschützten Azure-Blobspeicherkonto. Nachdem Sie das Import-Cmdlet ausgeführt haben, können Sie den Status des Importvorgangs mit dem Cmdlet [Get-AzureRmSqlDatabaseImportExportStatus](https://docs.microsoft.com/powershell/resourcemanager/azurerm.sql/v2.3.0/get-azurermsqldatabaseimportexportstatus) überwachen.
+
 
 ```
 #$resourceGroupName = "{resource-group-name}"
@@ -228,9 +235,9 @@ $databaseName = "AdventureWorksLT"
 $databaseEdition = "Basic"
 $databaseServiceLevel = "Basic"
 
-$storageKeyType = "StorageAccessKey"
-$storageUri = "{storage-uri}" # URL of bacpac file you uploaded to your storage account
-$storageKey = "{storage-key}" # key1 in the Access keys setting of your storage account
+$storageKeyType = "SharedAccessKey"
+$storageUri = "https://sqldbtutorial.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac"
+$storageKey = "?"
 
 $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -StorageKeytype $storageKeyType -StorageKey $storageKey -StorageUri $storageUri -AdministratorLogin $serverAdmin -AdministratorLoginPassword $securePassword -Edition $databaseEdition -ServiceObjectiveName $databaseServiceLevel -DatabaseMaxSizeBytes 5000000
 
@@ -348,10 +355,14 @@ $myDatabaseName = "AdventureWorksLT"
 $myDatabaseEdition = "Basic"
 $myDatabaseServiceLevel = "Basic"
 
-$myStorageKeyType = "StorageAccessKey"
-# Get these values from your Azure storage account:
-$myStorageUri = "{http://your-storage-account.blob.core.windows.net/your-container/AdventureWorksLT.bacpac}"
-$myStorageKey = "{your-storage-key}"
+
+# Storage account details for locating
+# and accessing the sample .bacpac 
+# Do Not Edit for this tutorial
+$myStorageKeyType = "SharedAccessKey"
+$myStorageUri = "https://sqldbtutorial.blob.core.windows.net/bacpacs/AdventureWorksLT.bacpac"
+$myStorageKey = "?"
+
 
 
 # Create new, or get existing resource group
@@ -415,9 +426,8 @@ Write-Host "Server location: " $myServer.Location
 Write-Host "Server version: " $myServer.ServerVersion
 Write-Host "Server administrator login: " $myServer.SqlAdministratorLogin
 
-
-# Create or update server firewall rule
-#######################################
+# Create or update server firewall rules
+########################################
 
 $serverFirewallRuleName = $myServerFirewallRuleName
 $serverFirewallStartIp = $myServerFirewallStartIp
@@ -435,6 +445,24 @@ else
    Write-host "Server firewall rule $serverFirewallRuleName already exists:"
 }
 $myFirewallRule
+
+# Allows Azure services to access the server
+$serverFirewallRuleName2 = "allowAzureServices"
+$serverFirewallStartIp2 = "0.0.0.0"
+$serverFirewallEndIp2 = "0.0.0.0"
+
+$myFirewallRule2 = Get-AzureRmSqlServerFirewallRule -FirewallRuleName $serverFirewallRuleName2 -ServerName $serverName -ResourceGroupName $serverResourceGroupName -ea SilentlyContinue
+
+if(!$myFirewallRule2)
+{
+   Write-host "Creating server firewall rule: $serverFirewallRuleName2"
+   $myFirewallRule2 = New-AzureRmSqlServerFirewallRule -ResourceGroupName $serverResourceGroupName -ServerName $serverName -FirewallRuleName $serverFirewallRuleName2 -StartIpAddress $serverFirewallStartIp2 -EndIpAddress $serverFirewallEndIp2
+}
+else
+{
+   Write-host "Server firewall rule $serverFirewallRuleName2 already exists:"
+}
+$myFirewallRule2
 
 
 # Connect to the server and master database
@@ -577,9 +605,4 @@ Nachdem Sie dieses Tutorial zu den ersten Schritten abgeschlossen und eine Daten
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 [Was ist SQL Database?](sql-database-technical-overview.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

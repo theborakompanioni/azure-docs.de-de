@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 02/06/2017
 ms.author: raynew
 translationtype: Human Translation
-ms.sourcegitcommit: e34b10aec5ee4316c8e2ffc03e1714dc6753e4d1
-ms.openlocfilehash: 96504042c4fb6a83c4ab2c35c20a8264d7db85bb
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
+ms.openlocfilehash: d315c5ed186c24236c860df1ad1b79d55c9a4d57
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -61,7 +61,7 @@ Lokal benötigen Sie Folgendes:
 | --- | --- |
 | **VMM** |Sie benötigen mindestens einen VMM-Server, der als physischer oder virtueller eigenständiger Server oder als virtueller Cluster bereitgestellt wird. <br/><br/>Auf dem VMM-Server sollte System Center 2012 R2 mit den neuesten kumulativen Updates ausgeführt werden.<br/><br/>Sie benötigen mindestens eine Cloud, die auf dem VMM-Server konfiguriert ist.<br/><br/>Die Quellcloud, die Sie schützen möchten, muss mindestens eine VMM-Hostgruppe enthalten.<br/><br/>Weitere Informationen zum Einrichten von VMM-Clouds finden Sie unter [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx) (Exemplarische Vorgehensweise: Erstellen privater Clouds mit System Center 2012 SP1 VMM) im Blog von Keith Mayer. |
 | **Hyper-V** |Sie benötigen mindestens einen Hyper-V-Hostserver oder Cluster in der VMM-Cloud. Der Hostserver benötigt mindestens eine VM. <br/><br/>Auf dem Hyper-V-Hostserver muss mindestens **Windows Server 2012 R2** mit der Hyper-V-Rolle oder **Microsoft Hyper-V Server 2012 R2** ausgeführt werden, und die neuesten Updates müssen installiert sein.<br/><br/>Alle Hyper-V-Server, die zu schützende VMs enthalten, müssen sich in einer VMM-Cloud befinden.<br/><br/>Wenn Sie Hyper-V in einem Cluster ausführen, wird der Clusterbroker nicht automatisch erstellt, wenn Sie einen Cluster mit statischen IP-Adressen verwenden. Sie müssen den Clusterbroker manuell konfigurieren. [hier](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters) . |
-| **Geschützte Computer** |Die zu schützenden virtuellen Computer müssen den [Anforderungen für Azure](site-recovery-best-practices.md#azure-virtual-machine-requirements)entsprechen. |
+| **Geschützte Computer** | Die zu schützenden virtuellen Computer müssen den [Anforderungen für Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)entsprechen. |
 
 ## <a name="network-mapping-prerequisites"></a>Voraussetzungen für die Netzwerkzuordnung
 Wenn Sie virtuelle Computer in Azure schützen, wird eine Netzwerkzuordnung zwischen VM-Netzwerken auf dem Quell-VMM-Server und den Azure-Zielnetzwerken erstellt, um Folgendes zu ermöglichen:
@@ -74,6 +74,12 @@ Wenn Sie eine Netzwerkzuordnung bereitstellen möchten, benötigen Sie Folgendes
 
 * Die virtuellen Computer, die Sie auf dem VMM-Quellserver schützen möchten, sollten mit einem VM-Netzwerk verbunden sein. Dieses Netzwerk sollte mit einem logischen Netzwerk verbunden sein, das der Cloud zugeordnet ist.
 * Ein Azure-Netzwerk, mit dem replizierte virtuelle Computer nach einem Failover eine Verbindung herstellen können. Dieses Netzwerk wählen Sie zum Zeitpunkt des Failovers aus. Das Netzwerk sollte sich in derselben Region wie Ihr Azure Site Recovery-Abonnement befinden.
+
+
+Bereiten Sie Netzwerke in VMM vor:
+
+   * [Richten Sie logische Netzwerke ein](https://technet.microsoft.com/library/jj721568.aspx).
+   * [Richten Sie VM-Netzwerke ein](https://technet.microsoft.com/library/jj721575.aspx).
 
 
 ## <a name="step-1-create-a-site-recovery-vault"></a>Schritt 1: Erstellen eines Site Recovery-Tresors
@@ -247,7 +253,7 @@ Wenn das Zielnetzwerk mehrere Subnetze enthält und eines dieser Subnetze densel
 ## <a name="step-8-enable-protection-for-virtual-machines"></a>Schritt 8: Aktivieren des Schutzes für virtuelle Computer
 Nach der korrekten Konfiguration von Servern, Clouds und Netzwerken können Sie den Schutz für die virtuellen Computer in der Cloud aktivieren. Beachten Sie Folgendes:
 
-* Die virtuellen Computer müssen die [Azure-Anforderungen](site-recovery-best-practices.md#azure-virtual-machine-requirements)erfüllen.
+* Die virtuellen Computer müssen die [Azure-Anforderungen](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)erfüllen.
 * Um den Schutz zu aktivieren, müssen die Eigenschaften "Betriebssystem" und "Betriebssystem-Datenträger" für den virtuellen Computer gesetzt sein. Sie können diese Eigenschaften setzen, wenn Sie den virtuellen Computer in VMM mithilfe einer Vorlage für virtuelle Computer erstellen. Außerdem können Sie diese Eigenschaften für vorhandene virtuelle Computer auf den Registerkarten **Allgemein** und **Hardwarekonfiguration** in den Eigenschaften der virtuellen Computer festlegen. Falls diese Eigenschaften in VMM nicht angezeigt werden, sollten Sie sie dennoch im Azure Site Recovery-Portal konfigurieren können.
 
     ![Erstellen eines virtuellen Computers](./media/site-recovery-vmm-to-azure-classic/enable-new.png)
@@ -316,7 +322,7 @@ Es gibt zwei Möglichkeiten, ein Testfailover in Azure auszuführen.
 * **Testfailover ohne Azure-Netzwerk**: Bei dieser Art von Testfailover wird überprüft, ob die virtuelle Maschine in Azure richtig hochgefahren wird. Der virtuelle Computer wird nach einem Failover mit keinem Azure-Netzwerk verbunden.
 * **Testfailover mit einem Azure-Netzwerk**: Bei dieser Art von Failover wird überprüft, ob die gesamte Replikationsumgebung wie erwartet hochgefahren wird und die betreffenden virtuellen Computer mit dem angegebenen Azure-Zielnetzwerk verbunden werden. Bei der Subnetzverarbeitung wird für das Testfailover das Subnetz des virtuellen Testcomputers basierend auf dem Subnetz des virtuellen Replikatcomputers festgelegt. Dies unterscheidet sich von der regulären Replikation, bei der das Subnetz des virtuellen Replikatcomputers auf dem Subnetz des virtuellen Quellcomputers basiert.
 
-Wenn Sie ein Testfailover für einen virtuellen Computer, der für den Schutz in Azure aktiviert ist, ohne Angabe eines Azure-Zielnetzwerks durchführen möchten, müssen Sie nichts vorbereiten. Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-Netzwerk erstellen, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). Unter [Ausführen eines Testfailovers](site-recovery-failover.md#run-a-test-failover) finden Sie weitere Details.
+Wenn Sie ein Testfailover für einen virtuellen Computer, der für den Schutz in Azure aktiviert ist, ohne Angabe eines Azure-Zielnetzwerks durchführen möchten, müssen Sie nichts vorbereiten. Für ein Testfailover mit einem Azure-Zielnetzwerk müssen Sie ein neues Azure-Netzwerk erstellen, das von Ihrem Azure-Produktionsnetzwerk isoliert ist (Standardverhalten bei der Erstellung eines neuen Netzwerks in Azure). Unter [Ausführen eines Testfailovers](site-recovery-failover.md) finden Sie weitere Details.
 
 Sie müssen außerdem die Infrastruktur so einrichten, dass die replizierte virtuelle Maschine erwartungsgemäß funktioniert. So kann beispielsweise ein virtueller Computer mit Domänencontroller und DNS mithilfe von Azure Site Recovery zu Azure repliziert und mittels Testfailover im Testnetzwerk erstellt werden. Unter [Überlegungen zum Testfailover für Active Directory](site-recovery-active-directory.md#test-failover-considerations) finden Sie weitere Details.
 

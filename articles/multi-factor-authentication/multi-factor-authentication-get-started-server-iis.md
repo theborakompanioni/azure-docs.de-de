@@ -1,5 +1,5 @@
 ---
-title: IIS-Authentifizierung und Azure Multi-Factor Authentication-Server
+title: IIS-Authentifizierung und Azure MFA-Server | Microsoft-Dokumentation
 description: "Dies ist die Azure Multi-Factor Authentication-Seite, die bei der Bereitstellung der IIS-Authentifizierung und des Azure Multi-Factor Authentication-Servers Unterstützung bietet."
 services: multi-factor-authentication
 documentationcenter: 
@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/16/2017
+ms.date: 02/26/2017
 ms.author: kgremban
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 999361daa2faebe3e88cab0b6085a938d6f40e9d
-ms.openlocfilehash: 6f1e4d5f8e86b621d2bfc446583324163424dc60
-ms.lasthandoff: 02/17/2017
-
+ms.sourcegitcommit: e4ef137656c12cf6495a00450eed308ac6a8a872
+ms.openlocfilehash: 71ba44c00036b3ed45518f58fa534a1767ab8c34
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="iis-authentication"></a>IIS-Authentifizierung
+# <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers für IIS-Web-Apps
+
 Verwenden Sie den Bereich „IIS-Authentifizierung“ des Azure Multi-Factor Authentication-Servers (MFA), um die IIS-Authentifizierung für die Integration mit Microsoft IIS-Webanwendungen zu aktivieren und zu konfigurieren. Vom Azure MFA-Server wird ein Plug-In installiert, mit dem an den IIS-Webserver gesendete Anforderungen gefiltert werden können, um Azure Multi-Factor Authentication hinzuzufügen. Das IIS-Plug-In bietet Unterstützung für die formularbasierte Authentifizierung und die integrierte Windows-HTTP-Authentifizierung. Vertrauenswürdige IP-Adressen können auch konfiguriert werden, um interne IP-Adressen der zweistufigen Authentifizierung auszunehmen.
 
 ![IIS-Authentifizierung](./media/multi-factor-authentication-get-started-server-iis/iis.png)

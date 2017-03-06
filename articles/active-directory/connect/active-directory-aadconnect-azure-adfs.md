@@ -13,15 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/03/2016
+ms.date: 02/27/2017
 ms.author: anandy;billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 28b5da6098316f8fbe84966e0dac88f5b7d2cb1d
-ms.openlocfilehash: 6cf809dd6d3c74d1459179f9b16ae9dbfec99757
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 7a7ac3f34860cedb05e9e4423ca7878b2ed5913a
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="ad-fs-deployment-in-azure"></a>AD FS-Bereitstellung in Azure
+# <a name="deloying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche hohe Verfügbarkeit mit wenig Aufwand erzielt werden.
 Die Bereitstellung von AD FS in Azure hat mehrere Vorteile, von denen hier einige aufgeführt sind:
 
@@ -209,7 +210,7 @@ So wird sichergestellt, dass die gesamte Kommunikation mit „fs.contoso.com“ 
 ### <a name="7----configuring-the-web-application-proxy-server"></a>7.    Konfigurieren des Webanwendungsproxy-Servers
 **7.1.    Konfigurieren der Webanwendungsproxy-Server für die Verbindung mit AD FS-Servern**
 
-Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\etc\hosts“, um sicherzustellen, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen. Beachten Sie, dass der Distinguished Name (DN) der Verbunddienstname sein sollte, z.B. „fs.contoso.com“. Der IP-Eintrag sollte der IP-Adresse (in diesem Beispiel 10.3.0.8) des ILB entsprechen.
+Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\etc\hosts“, um sicherzustellen, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen. Beachten Sie, dass der Distinguished Name (DN) der Verbunddienstname sein sollte, z.B. „fs.contoso.com“. Der IP-Eintrag sollte der IP-Adresse (in diesem Beispiel&10;.3.0.8) des ILB entsprechen.
 
 **7.2.    Installieren der Webanwendungsproxy-Rolle**
 
@@ -353,10 +354,5 @@ Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstelle
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
 * [Azure AD Connect und Verbund](active-directory-aadconnectfed-whatis.md)
 * [Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-
-
-
-
-<!--HONumber=Dec16_HO3-->
 
 
