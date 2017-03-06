@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2016
+ms.date: 02/15/2017
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f86a70a5207f19063e9992325c8f8d696ca7823e
+ms.sourcegitcommit: 9e1bcba086a9f70c689a5d7d7713a8ecdc764492
+ms.openlocfilehash: 8248e0a02cb0775a87f0c8130e53b98f8bcfe581
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -25,7 +26,7 @@ ms.openlocfilehash: f86a70a5207f19063e9992325c8f8d696ca7823e
 ## <a name="introduction"></a>Einführung
 [Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] von Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte Lösung für die *Remoteüberwachung* stellt eine Verbindung mit Ihren Geräten her und überwacht die Geräte. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und Verbessern der Geschäftsergebnisse verwenden, indem Sie Prozesse so einrichten, dass sie automatisch auf diesen Datenstrom reagieren.
 
-Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der Lösung für die Remoteüberwachung kennen. Sie können auf einen Großteil dieser Features über das Lösungsdashboard zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
+Dieses Tutorial zeigt, wie Sie eine vorkonfigurierte Lösung für die Remoteüberwachung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der vorkonfigurierten Lösung kennen. Sie können auf einen Großteil dieser Funktionen über das Lösungsdashboard zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
 
 ![Lösungsdashboard der vorkonfigurierten Lösung für die Remoteüberwachung][img-dashboard]
 
@@ -53,28 +54,68 @@ Im Dashboard werden die folgenden Informationen angezeigt:
 * Auf der Karte werden die Standorte der einzelnen Geräte angezeigt, die mit der Lösung verbunden sind. Beim ersten Ausführen der Lösung sind vier simulierte Geräte vorhanden. Die simulierten Geräte werden als Azure WebJobs implementiert, und für die Lösung wird die Bing Maps-API verwendet, um Informationen zu Karte darzustellen.
 * Im Bereich **Telemetrieverlauf** werden Telemetriedaten zur Luftfeuchtigkeit und Temperatur von einem ausgewählten Gerät nahezu in Echtzeit dargestellt und zusammengefasste Daten angezeigt, z. B. die maximale, minimale und durchschnittliche Luftfeuchtigkeit.
 * Im Bereich **Alarmverlauf** werden die letzten Alarmereignisse für die Fälle angezeigt, in denen ein Telemetriewert einen Schwellenwert überschritten hat. Sie können zusätzlich zu den Beispielen, die von der vorkonfigurierten Lösung erstellt werden, auch eigene Alarme definieren.
+* Im Bereich der **Aufträge** werden Informationen zu geplanten Aufträgen angezeigt. Auf der Seite für **Verwaltungsaufträge** können Sie Ihre eigenen Aufträge planen.
 
 ## <a name="view-the-device-list"></a>Anzeigen der Geräteliste
-Die Geräteliste enthält alle registrierten Geräte in der Lösung. Sie können Gerätemetadaten anzeigen und bearbeiten, Geräte hinzufügen oder entfernen und Befehle an Geräte übermitteln.
+Die *Geräteliste* zeigt alle registrierten Geräte in der Lösung an. In der Geräteliste können Sie Gerätemetadaten anzeigen und bearbeiten, Geräte hinzufügen oder entfernen und Methoden auf Geräten aufrufen.
 
-1. Klicken Sie im linken Menü auf **Geräte** , um die *Geräteliste* für diese Lösung anzuzeigen.
+1. Klicken Sie im linken Menü auf **Geräte**, um die Geräteliste für diese Lösung anzuzeigen.
    
    ![Geräteliste im Dashboard][img-devicelist]
-2. Die Geräteliste zeigt, dass es vier simulierte Geräte gibt, die im Rahmen des Bereitstellungsprozesses erstellt werden.
-3. Klicken Sie auf ein Gerät in der Geräteliste, um die Gerätedetails anzuzeigen.
+2. Die Geräteliste zeigt anfänglich vier simulierte Geräte an, die im Rahmen des Bereitstellungsprozesses erstellt werden. Sie können der Lösung zusätzliche simulierte und physische Geräte hinzufügen.
+3. Sie können anpassen, welche Informationen in der Geräteliste angezeigt werden, indem Sie auf den **-Spalten-Editor** klicken. Sie können Spalten hinzufügen und entfernen, die gemeldete Eigenschaften und Tagwerte enthalten. Sie können Spalten auch neu anordnen und umbenennen:
+   
+   ![Spalten-Editor im Dashboard][img-columneditor]
+4. Klicken Sie auf ein Gerät in der Geräteliste, um die Gerätedetails anzuzeigen.
    
    ![Gerätedetails im Dashboard][img-devicedetails]
 
-Der Bereich **Gerätedetails** enthält drei Abschnitte:
+Der Bereich mit den **Gerätedetails** enthält sechs Abschnitte:
 
-* Im Abschnitt **Aktionen** sind die Aktionen aufgeführt, die Sie auf dem Gerät durchführen können. Wenn Sie das Gerät deaktivieren, ist es nicht mehr zulässig, dass Telemetriedaten gesendet oder Befehle empfangen werden. Wenn Sie ein Gerät deaktivieren, können Sie es wieder aktivieren. Sie können eine Regel hinzufügen, die dem Gerät zugeordnet ist und einen Alarm auslöst, wenn ein Telemetriewert einen Schwellenwert überschreitet. Sie können auch einen Befehl an ein Gerät senden. Wenn ein Gerät zum ersten Mal die Verbindung herstellt, teilt es der Lösung die Befehle mit, auf die es reagieren kann.
-* Im Abschnitt **Geräteeigenschaften** sind die Metadaten des Geräts aufgeführt. Einige dieser Metadaten stammen vom Gerät selbst (z.B. der Hersteller), und einige werden von der Lösung generiert (z.B. der Erstellungszeitpunkt). Sie können die Metadaten des Geräts hier bearbeiten.
-* Im Abschnitt **Authentifizierungsschlüssel** sind die Schlüssel aufgeführt, die vom Gerät für die Authentifizierung beim Gerät verwendet werden können.
+* Eine Auflistung von Links, mit denen Sie das Gerätesymbol anpassen, das Gerät deaktivieren, eine Regel hinzufügen, eine Methode aufrufen oder einen Befehl senden können. Einen Vergleich dieser Befehle (C2D-Nachrichten) und Methoden (direkte Methoden) finden Sie im [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance].
+* Im Abschnitt zu **Gerätezwilling – Tags** können Sie Tagwerte für das Gerät bearbeiten. Sie können die Tagwerte in der Geräteliste anzeigen und Tagwerte zum Filtern der Geräteliste verwenden.
+* Im Abschnitt zu **Gerätezwilling – Gewünschte Eigenschaften** legen Sie die Eigenschaftswerte fest, die an das Gerät gesendet werden.
+* Im Abschnitt zu **Gerätezwilling – Gemeldete Eigenschaften** können Sie die Eigenschaftswerte anzeigen, die vom Gerät gesendet werden.
+* Im Abschnitt mit den **Geräteeigenschaften** werden Informationen aus der Identitätsregistrierung angezeigt, z. B. Geräte-ID und Authentifizierungsschlüssel.
+* Der Bereich über **kürzlich ausgeführte Aufträge** zeigt Informationen zu allen Aufträgen an, die vor Kurzem von diesem Gerät ausgeführt wurden.
+
+## <a name="customize-the-device-icon"></a>Anpassen des Gerätesymbols
+
+Sie können das Gerätesymbol in der Geräteliste im Bereich mit den **Gerätedetails** wie folgt anpassen:
+
+1. Klicken Sie auf das Stiftsymbol, um den Bereich **Bild bearbeiten** für ein Gerät zu öffnen:
+   
+   ![Editor zum Öffnen des Gerätebilds][img-startimageedit]
+2. Laden Sie ein neues Bild hoch oder verwenden Sie eines der vorhandenen Bilder, und klicken Sie auf **Speichern**:
+   
+   ![Editor zum Bearbeiten des Gerätebilds][img-imageedit]
+3. Das ausgewählte Bild wird jetzt in der **Symbol**-Spalte für das Gerät angezeigt.
+
+> [!NOTE]
+> Das Bild wird im Blob-Speicher gespeichert. Ein Tag im Gerätezwilling enthält einen Link zu dem Bild im Blob-Speicher.
+> 
+> 
+
+## <a name="invoke-a-method-on-a-device"></a>Aufrufen einer Methode auf einem Gerät
+Über den Bereich mit den **Gerätedetails** können Sie Methoden auf dem Gerät aufrufen. Wenn ein Gerät zum ersten Mal gestartet wird, sendet es Informationen zu den unterstützten Methoden an die Lösung.
+
+1. Klicken Sie im Bereich mit den **Gerätedetails** für das ausgewählte Gerät auf **Methoden**:
+   
+   ![Gerätemethoden im Dashboard][img-devicemethods]
+2. Wählen Sie in der Methodenliste **Neu starten**.
+3. Klicken Sie auf die **Aufrufmethode**.
+4. Im Methodenverlauf können Sie den Status des Methodenaufrufs prüfen.
+   
+   ![Methodenstatus im Dashboard][img-pingmethod]
+
+Die Lösung verfolgt den Status jeder einzelnen Methode, die gesendet wird. Wenn das Gerät die Methode abgeschlossen hat, wird ein neuer Eintrag in der Tabelle zum Methodenverlauf angezeigt.
+
+Manche Methoden starten asynchrone Aufträge auf dem Gerät. So startet z. B. die **InitiateFirmwareUpdate**-Methode eine asynchrone Aufgabe, um das Update auszuführen. Das Gerät verwendet gemeldete Eigenschaften, um über den Status des Firmwareupdates zu berichten.
 
 ## <a name="send-a-command-to-a-device"></a>Senden eines Befehls an ein Gerät
-Im Detailbereich zu einem Gerät werden alle Befehle angezeigt, die von einem bestimmten Gerät unterstützt werden. Außerdem können Sie hier Befehle an ein Gerät senden. Wenn ein Gerät zum ersten Mal gestartet wird, sendet es Informationen zu den unterstützten Befehlen an die Lösung.
+Über den Bereich mit den **Gerätedetails** können Sie Befehle an das Gerät senden. Wenn ein Gerät zum ersten Mal gestartet wird, sendet es Informationen zu den unterstützten Befehlen an die Lösung.
 
-1. Klicken Sie im Bereich mit den Gerätedetails für das ausgewählte Gerät auf **Befehle** .
+1. Klicken Sie im Bereich mit den **Gerätedetails** für das ausgewählte Gerät auf **Befehle**:
    
    ![Gerätebefehle im Dashboard][img-devicecommands]
 2. Wählen Sie in der Befehlsliste **PingDevice** aus.
@@ -86,12 +127,12 @@ Im Detailbereich zu einem Gerät werden alle Befehle angezeigt, die von einem be
 Die Lösung verfolgt den Status jedes einzelnen Befehls, der gesendet wird. Zunächst lautet das Ergebnis **Ausstehend**. Wenn das Gerät meldet, dass es den Befehl ausgeführt hat, wird der Status in **Erfolgreich**geändert.
 
 ## <a name="add-a-new-simulated-device"></a>Hinzufügen eines neuen simulierten Geräts
-Bei der Bereitstellung der vorkonfigurierten Lösung stellen Sie automatisch die vier Beispielgeräte bereit, die in der Geräteliste angezeigt werden. Dies sind *simulierte Geräte* , die in einem Azure WebJob ausgeführt werden. Simulierte Geräte erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Geräte bereitstellen müssen. Falls Sie für ein echtes Gerät eine Verbindung mit der Lösung herstellen möchten, hilft Ihnen das Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm] weiter.
+Bei der Bereitstellung der vorkonfigurierten Lösung stellen Sie automatisch vier Beispielgeräte bereit, die in der Geräteliste angezeigt werden. Dies sind *simulierte Geräte* , die in einem Azure WebJob ausgeführt werden. Simulierte Geräte erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Geräte bereitstellen müssen. Falls Sie für ein echtes Gerät eine Verbindung mit der Lösung herstellen möchten, hilft Ihnen das Tutorial [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung][lnk-connect-rm] weiter.
 
 Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein simuliertes Gerät hinzufügen:
 
 1. Navigieren Sie zurück zur Geräteliste.
-2. Klicken Sie in der unteren linken Ecke auf **+ Gerät hinzufügen** , um ein Gerät hinzuzufügen.
+2. Klicken Sie in der unteren linken Ecke auf **+ Gerät hinzufügen**, um ein Gerät hinzuzufügen.
    
    ![Gerät der vorkonfigurierten Lösung hinzufügen][img-adddevice]
 3. Klicken Sie auf der Kachel **Simuliertes Gerät** auf **Neues hinzufügen**.
@@ -111,19 +152,60 @@ Die folgenden Schritte verdeutlichen, wie Sie der Lösung ein simuliertes Gerät
    
     ![Telemetrie von neuem Gerät anzeigen][img-runningnew-2]
 
-## <a name="edit-the-device-metadata"></a>Bearbeiten der Metadaten des Geräts
-Wenn für ein Gerät zum ersten Mal eine Verbindung mit der Lösung hergestellt wird, werden seine Metadaten an die Lösung gesendet. Wenn Sie die Gerätemetadaten im Lösungsdashboard bearbeiten, werden die neuen Metadatenwerte an das Gerät gesendet, und die neuen Werte werden in der DocumentDB-Datenbank der Lösung gespeichert. Weitere Informationen finden Sie unter [Geräteidentitätsregistrierung und DocumentDB][lnk-devicemetadata].
+## <a name="device-properties"></a>Geräteeigenschaften
+Die per Remoteüberwachung vorkonfigurierte Lösung verwendet [Gerätezwillinge][lnk-device-twin] zum Synchronisieren von Gerätemetadaten zwischen Geräten und dem Lösungs-Back-End. Ein Gerätezwilling ist ein in IoT Hub gespeichertes JSON-Dokument, das Eigenschaftswerte für ein einzelnes Gerät speichert. Geräte senden regelmäßig Metadaten als *gemeldete Eigenschaften* zum Speichern im Gerätezwilling an das Lösungs-Back-End. Das Lösungs-Back-End kann *gewünschte Eigenschaften* im Gerätezwilling festlegen, um Aktualisierungen von Metadaten an Geräte zu senden. Die gemeldeten Eigenschaften zeigen die neuesten vom Gerät gesendeten Metadatenwerte an. Weitere Informationen finden Sie im Abschnitt zu [Geräteidentitätsregistrierung, Gerätezwilling und DocumentDB][lnk-devicemetadata].
+
+> [!NOTE]
+> Die Lösung verwendet außerdem eine DocumentDB-Datenbank zum Speichern von gerätespezifischen Daten zu Befehlen und Methoden.
+> 
+> 
 
 1. Navigieren Sie zurück zur Geräteliste.
-2. Wählen Sie das neue Gerät in der **Geräteliste** aus, und klicken Sie dann auf **Bearbeiten**, um die **Geräteeigenschaften** zu bearbeiten:
+2. Wählen Sie das neue Gerät in der **Geräteliste** aus, und klicken Sie dann auf **Bearbeiten**, um **Gerätezwilling – Gewünschte Eigenschaften** zu bearbeiten:
    
-   ![Gerätemetadaten bearbeiten][img-editdevice]
-3. Scrollen Sie nach unten, und nehmen Sie eine Änderung an den Breiten- und Längengradwerten vor. Klicken Sie anschließend auf **Änderungen in Geräteregistrierung speichern**.
+   ![Bearbeiten gewünschter Geräteeigenschaften][img-editdevice]
+3. Wählen Sie für den **Namen der gewünschten Eigenschaft** die Option **Breitengrad** aus und legen Sie den Wert **47.639521** fest. Klicken Sie anschließend auf **Änderungen in Geräteregistrierung speichern**:
    
-    ![Gerätemetadaten bearbeiten][img-editdevice2]
-4. Navigieren Sie zurück zum Dashboard. Sie sehen, dass sich die Position des Geräts in der Karte geändert hat:
+    ![Bearbeiten gewünschter Geräteeigenschaft][img-editdevice2]
+4. Im Bereich **Gerätedetails** wird der neue Breitengrad anfänglich als gewünschte Eigenschaft, und der alte Breitengrad als gemeldete Eigenschaft angezeigt:
    
-    ![Gerätemetadaten bearbeiten][img-editdevice3]
+    ![Anzeigen einer gemeldeten Eigenschaft][img-editdevice3]
+5. Derzeit verarbeiten simulierte Geräte in der vorkonfigurierten Lösung nur die gewünschten Eigenschaften **Desired.Config.TemperatureMeanValue** und **Desired.Config.TelemetryInterval**. Ein echtes Gerät sollte alle Eigenschaften aus dem IoT Hub lesen, die Änderungen an der Konfiguration vornehmen und die neuen Werte als gemeldete Eigenschaften an den Hub berichten.
+
+Im Bereich **Gerätedetails** können Sie **Gerätezwilling – Tags** ebenso bearbeiten wie **Gerätezwilling – Gewünschte Eigenschaften**. Im Gegensatz zu gewünschten Eigenschaften werden Tags jedoch nicht mit dem Gerät synchronisiert. Tags sind nur im Gerätezwilling und im IoT Hub vorhanden. Tags sind nützlich beim Erstellen von benutzerdefinierten Filtern in der Geräteliste.
+
+## <a name="sort-the-device-list"></a>Sortieren der Geräteliste
+
+Sie können die Geräteliste sortieren, indem Sie auf eine Spaltenüberschrift klicken. Beim ersten Klick sortieren Sie die Liste in aufsteigender Reihenfolge, beim zweiten Klick in absteigender Reihenfolge:
+
+![Sortieren der Geräteliste][img-sortdevices]
+
+## <a name="filter-the-device-list"></a>Filtern der Geräteliste
+
+In der Geräteliste können Sie Filter erstellen, speichern und erneut laden, um eine benutzerdefinierte Liste der Geräte anzuzeigen, die mit Ihrem Hub verbunden sind. So erstellen Sie einen Filter:
+
+1. Klicken Sie über der Geräteliste auf das Symbol zum Bearbeiten des Filters:
+   
+   ![Öffnen des Filtereditors][img-editfiltericon]
+2. Fügen Sie im **Filtereditor**die Felder, Operatoren und Werte zum Filtern der Geräteliste hinzu. Sie können mehrere Klauseln hinzufügen, um Ihren Filter zu verfeinern. Klicken Sie auf **Filter**, um den Filter anzuwenden:
+   
+   ![Erstellen eines Filters][img-filtereditor]
+3. In diesem Beispiel wird die Liste nach Hersteller und Modellnummer gefiltert:
+   
+   ![Gefilterte Liste][img-filterelist]
+4. Um den Filter mit einem benutzerdefinierten Namen zu speichern, klicken Sie auf das Symbol **Speichern als**:
+   
+   ![Speichern eines Filters][img-savefilter]
+5. Um einen Filter zuvor gespeicherten Filter erneut anzuwenden, klicken Sie auf das Symbol **Gespeicherten Filter öffnen**:
+   
+   ![Öffnen eines Filters][img-openfilter]
+
+Sie können Filter auf Grundlage von Geräte-ID, Gerätestatus, gewünschten Eigenschaften, gemeldeten Eigenschaften und Tags erstellen.
+
+> [!NOTE]
+> Im **Filtereditor** können Sie die **Erweiterte Ansicht** zum direkten Bearbeiten des Abfragetexts verwenden.
+> 
+> 
 
 ## <a name="add-a-rule-for-the-new-device"></a>Hinzufügen einer Regel für das neue Gerät
 Es sind keine Regeln für das neue Gerät vorhanden, das Sie gerade hinzugefügt haben. In diesem Abschnitt fügen Sie eine Regel hinzu, mit der ein Alarm ausgelöst wird, wenn die vom neuen Gerät gemeldete Temperatur 47 Grad übersteigt. Beachten Sie vor dem Beginn, dass im Dashboard unter dem Telemetriedatenverlauf für das neue Gerät zu sehen ist, dass die Gerätetemperatur 45 Grad nicht überschritten hat.
@@ -133,7 +215,7 @@ Es sind keine Regeln für das neue Gerät vorhanden, das Sie gerade hinzugefügt
 3. Erstellen Sie eine Regel, bei der **Temperature** als Datenfeld und **AlarmTemp** als Ausgabe verwendet wird, wenn die Temperatur 47 Grad überschreitet:
    
     ![Geräteregel hinzufügen][img-adddevicerule]
-4. Klicken Sie auf **Regeln speichern und anzeigen** , um die Änderungen zu speichern.
+4. Klicken Sie auf **Regeln speichern und anzeigen**, um die Änderungen zu speichern.
 5. Klicken Sie im Bereich mit den Gerätedetails für das neue Gerät auf **Befehle** .
    
    ![Geräteregel hinzufügen][img-adddevicerule2]
@@ -155,14 +237,55 @@ Es sind keine Regeln für das neue Gerät vorhanden, das Sie gerade hinzugefügt
 > 
 > 
 
-## <a name="other-features"></a>Andere Funktionen
-Mit dem Lösungsportal können Sie nach Geräten mit bestimmten Merkmalen wie z. B. einer Modellnummer suchen:
-
-![Nach Gerät suchen][img-search]
-
+## <a name="disable-and-remove-devices"></a>Deaktivieren und Entfernen von Geräten
 Sie können ein Gerät deaktivieren, und nachdem es deaktiviert wurde, können Sie es entfernen:
 
 ![Gerät deaktivieren und entfernen][img-disable]
+
+## <a name="run-jobs"></a>Ausführen von Aufträgen
+Sie können Aufträge planen, um Massenvorgänge auf Ihren Geräten auszuführen. Sie erstellen einen Auftrag für eine Geräteliste. Diese Liste kann all Ihre Geräte enthalten oder eine gefilterte Liste sein, die Sie mit den [Filtertools](#filter-the-device-list) in der Geräteliste erstellt haben. Ein Auftrag kann eine Methode auf jedem Gerät in der Liste ausführen oder den Gerätezwilling für jedes Gerät in der Geräteliste aktualisieren.
+
+### <a name="create-a-job-to-invoke-a-method"></a>Erstellen eines Auftrags zum Aufrufen einer Methode
+
+Die folgenden Schritte veranschaulichen, wie Sie einen Auftrag erstellen, der auf jedem Gerät in einer Liste die Firmware-Update-Methode aufruft. Die Methode wird nur auf Geräten aufgerufen, die die Methode unterstützen:
+
+1. Verwenden Sie die Filtertools in der Geräteliste, um eine Geräteliste für den Empfang des Firmwareupdates zu erstellen:
+   
+   ![Öffnen des Filtereditors][img-editfiltericon]
+2. Klicken Sie in der gefilterten Liste auf **Auftragsplaner**:
+   
+   ![Öffnen des Auftragsplaners][img-clickjobscheduler]
+3. Klicken Sie im Bereich **Auftragsplaner** auf die **Aufrufmethode**.
+4. Geben Sie auf der Seite zur **Aufrufmethode** dann die Details der aufzurufenden Methode ein, und klicken Sie dann auf **Zeitplan**:
+   
+   ![Konfigurieren des Methodenauftrags][img-invokemethodjob]
+
+Die **InitiateFirmwareUpdate**-Methode startet eine asynchrone Aufgabe auf dem Gerät und wird dann sofort zurückgegeben. Das Firmwareupgrade verwendet dann die gemeldeten Eigenschaften, um während dessen Ausführung Berichte über den Updatevorgang zu erstellen.
+
+### <a name="create-a-job-to-edit-the-device-twin"></a>Erstellen einen Auftrags zum Bearbeiten des Gerätezwillings
+
+Die folgenden Schritte veranschaulichen, wie Sie einen Auftrag erstellen, der auf jedem Gerät in einer Liste den Gerätezwilling bearbeitet:
+
+1. Verwenden Sie die Filtertools in der Geräteliste, um eine Geräteliste für den Empfang der Änderungen am Gerätezwilling zu erstellen:
+   
+   ![Öffnen des Filtereditors][img-editfiltericon]
+2. Klicken Sie in der gefilterten Liste auf **Auftragsplaner**:
+   
+   ![Öffnen des Auftragsplaners][img-clickjobscheduler]
+3. Klicken Sie im Bereich **Auftrag planen** auf die Option zum **Bearbeiten des Gerätezwillings**.
+4. Geben Sie auf der Seite zum **Bearbeiten des Gerätezwillings** die Details der **gewünschten Eigenschaften** und **Tags**, die Sie bearbeiten möchten, ein und klicken Sie dann auf **Zeitplan**:
+   
+   ![Konfigurieren des Methodenauftrags][img-edittwinjob]
+
+### <a name="monitor-the-job"></a>Überwachen des Auftrags
+Sie können den Status der geplanten Aufträge auf der Seite für **Verwaltungsaufträge** überwachen. In den **Auftragsdetails** werden Informationen zum ausgewählten Auftrag angezeigt:
+   
+   ![Anzeigen des Auftragsstatus][img-jobstatus]
+
+Sie können Informationen zu Aufträgen auch auf dem **Dashboard** anzeigen:
+   
+   ![Anzeigen von Aufträgen auf dem Dashboard][img-jobdashboard]
+
 
 ## <a name="behind-the-scenes"></a>Abläufe im Hintergrund
 Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden vom Bereitstellungsprozess mehrere Ressourcen im gewählten Azure-Abonnement erstellt. Sie können diese Ressourcen im Azure-[Portal][lnk-portal] anzeigen. Der Bereitstellungsprozess erstellt eine **Ressourcengruppe** mit einem Namen basierend auf dem Namen, den Sie für Ihre vorkonfigurierte Lösung wählen:
@@ -196,7 +319,9 @@ Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und könn
 [img-devicelist]: media/iot-suite-getstarted-preconfigured-solutions/devicelist.png
 [img-devicedetails]: media/iot-suite-getstarted-preconfigured-solutions/devicedetails.png
 [img-devicecommands]: media/iot-suite-getstarted-preconfigured-solutions/devicecommands.png
+[img-devicemethods]: media/iot-suite-getstarted-preconfigured-solutions/devicemethods.png
 [img-pingcommand]: media/iot-suite-getstarted-preconfigured-solutions/pingcommand.png
+[img-pingmethod]: media/iot-suite-getstarted-preconfigured-solutions/pingmethod.png
 [img-adddevice]: media/iot-suite-getstarted-preconfigured-solutions/adddevice.png
 [img-addnew]: media/iot-suite-getstarted-preconfigured-solutions/addnew.png
 [img-definedevice]: media/iot-suite-getstarted-preconfigured-solutions/definedevice.png
@@ -212,8 +337,21 @@ Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und könn
 [img-adddevicerule4]: media/iot-suite-getstarted-preconfigured-solutions/addrule4.png
 [img-actions]: media/iot-suite-getstarted-preconfigured-solutions/actions.png
 [img-portal]: media/iot-suite-getstarted-preconfigured-solutions/portal.png
-[img-search]: media/iot-suite-getstarted-preconfigured-solutions/solutionportal_07.png
 [img-disable]: media/iot-suite-getstarted-preconfigured-solutions/solutionportal_08.png
+[img-columneditor]: media/iot-suite-getstarted-preconfigured-solutions/columneditor.png
+[img-startimageedit]: media/iot-suite-getstarted-preconfigured-solutions/imagedit1.png
+[img-imageedit]: media/iot-suite-getstarted-preconfigured-solutions/imagedit2.png
+[img-sortdevices]: media/iot-suite-getstarted-preconfigured-solutions/sortdevices.png
+[img-editfiltericon]: media/iot-suite-getstarted-preconfigured-solutions/editfiltericon.png
+[img-filtereditor]: media/iot-suite-getstarted-preconfigured-solutions/filtereditor.png
+[img-filterelist]: media/iot-suite-getstarted-preconfigured-solutions/filteredlist.png
+[img-savefilter]: media/iot-suite-getstarted-preconfigured-solutions/savefilter.png
+[img-openfilter]:  media/iot-suite-getstarted-preconfigured-solutions/openfilter.png
+[img-clickjobscheduler]: media/iot-suite-getstarted-preconfigured-solutions/clickscheduler.png
+[img-invokemethodjob]: media/iot-suite-getstarted-preconfigured-solutions/invokemethodjob.png
+[img-edittwinjob]: media/iot-suite-getstarted-preconfigured-solutions/edittwinjob.png
+[img-jobstatus]: media/iot-suite-getstarted-preconfigured-solutions/jobstatus.png
+[img-jobdashboard]: media/iot-suite-getstarted-preconfigured-solutions/jobdashboard.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
@@ -221,14 +359,10 @@ Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und könn
 [lnk-logic-apps]: https://azure.microsoft.com/documentation/services/app-service/logic/
 [lnk-portal]: http://portal.azure.com/
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
-[lnk-devicemetadata]: iot-suite-what-are-preconfigured-solutions.md#device-identity-registry-and-documentdb
+[lnk-devicemetadata]: iot-suite-what-are-preconfigured-solutions.md#device-identity-registry-device-twin-and-documentdb
 [lnk-logicapptutorial]: iot-suite-logic-apps-tutorial.md
 [lnk-rm-walkthrough]: iot-suite-remote-monitoring-sample-walkthrough.md
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+[lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
+[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
