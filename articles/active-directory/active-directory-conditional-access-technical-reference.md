@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2017
+ms.date: 03/01/2017
 ms.author: markvi
 translationtype: Human Translation
-ms.sourcegitcommit: 00124aa9d0729880bf2314f5c35c1797b7a6827f
-ms.openlocfilehash: 79d844f8fa3d3d0898b642f561df34588e044f9a
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 4296bbc7123f6571ad564351612864a6315d8abf
+ms.openlocfilehash: 450f3e001a0bc4a45fea4c4f0a81e676e9a80cc4
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -24,16 +24,19 @@ ms.lasthandoff: 02/17/2017
 ## <a name="services-enabled-with-conditional-access"></a>Dienste mit aktiviertem bedingtem Zugriff
 Bedingte Zugriffsregeln werden über verschiedene Arten von Azure AD-Anwendungen hinweg unterstützt. Diese Liste enthält:
 
-* Verbundanwendungen aus dem Azure AD-Anwendungskatalog
-* Kennwort-SSO-Anwendungen aus dem Azure AD-Anwendungskatalog
+
 * Beim Azure-Anwendungsproxy registrierte Anwendungen
-* Entwickelte branchenspezifische und mehrinstanzenfähige Anwendungen, die bei Azure AD registriert sind
-* Visual Studio Online
 * Azure RemoteApp
+* Entwickelte branchenspezifische und mehrinstanzenfähige Anwendungen, die bei Azure AD registriert sind
 * Dynamics CRM
+* Verbundanwendungen aus dem Azure AD-Anwendungskatalog
 * Microsoft Office 365 Yammer
 * Microsoft Office 365 Exchange Online
 * Microsoft Office 365 SharePoint Online (einschließlich OneDrive for Business)
+* Microsoft Power BI 
+* Kennwort-SSO-Anwendungen aus dem Azure AD-Anwendungskatalog
+* Visual Studio Online
+
 
 ## <a name="enable-access-rules"></a>Aktivieren von Zugriffsregeln
 Jede Regel kann auf Anwendungsbasis aktiviert oder deaktiviert werden. Wenn Regeln auf **ON** festgelegt sind, sind sie aktiviert und werden für Benutzer durchgesetzt, die auf die Anwendung zugreifen. Wenn sie auf **OFF** festgelegt sind, werden sie nicht verwendet und haben keine Auswirkungen auf den Anmeldevorgang der Benutzer.

@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 2a9075f4c9f10d05df3b275a39b3629d4ffd095f
-ms.openlocfilehash: 5254ea3f072402e2fa4cffcdc23b2e9eae2aad57
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 006d8e10acd6b4b756c0b78988176f71c3802080
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -59,7 +60,7 @@ Wenn Sie Abhängigkeiten definieren, können Sie Ressourcenanbieter-Namespace un
 ]
 ``` 
 
-Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von „dependsOn“ zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist „dependsOn“ nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im „dependsOn“-Element definiert waren. Bei Verwenden von „dependsOn“ beeinträchtigen Sie möglicherweise die Bereitstellungszeit, da der Resource Manager zwei Ressourcen, die eine Abhängigkeit aufweisen, nicht parallel bereitstellt. Um Beziehungen zwischen Ressourcen zu dokumentieren, sollten Sie die [Ressourcenverknüpfung](resource-group-link-resources.md) nutzen.
+Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von „dependsOn“ zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist „dependsOn“ nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im „dependsOn“-Element definiert waren. Bei Verwenden von „dependsOn“ beeinträchtigen Sie möglicherweise die Bereitstellungszeit, da der Resource Manager zwei Ressourcen, die eine Abhängigkeit aufweisen, nicht parallel bereitstellt. Um Beziehungen zwischen Ressourcen zu dokumentieren, sollten Sie die [Ressourcenverknüpfung](/rest/api/resources/resourcelinks) nutzen.
 
 ## <a name="child-resources"></a>Untergeordnete Ressourcen
 Mit der resources-Eigenschaft können Sie untergeordnete Ressourcen angeben, die mit der definierten Ressource verknüpft sind. Untergeordnete Ressourcen können nur mit fünf Ebenen definiert werden. Es ist wichtig zu beachten, dass keine implizite Abhängigkeit zwischen einer untergeordneten Ressource und der übergeordneten Ressource erstellt wird. Wenn die untergeordnete Ressource nach der übergeordneten Ressource bereitgestellt werden muss, müssen Sie diese Abhängigkeit explizit mit der dependsOn-Eigenschaft angeben. 
@@ -158,10 +159,5 @@ Informationen zur Bewertung der Bereitstellungsreihenfolge und zur Behebung von 
 * Informationen zur Behebung von Abhängigkeiten während der Bereitstellung finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md). 
 * Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

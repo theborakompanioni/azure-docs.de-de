@@ -16,9 +16,9 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 translationtype: Human Translation
-ms.sourcegitcommit: 941e6885ac26184ee011a34968aec29b120ed7dd
-ms.openlocfilehash: 98339ecadfdd31754e422a3c42c5d9f3842b16cb
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: 82d40c30c92f5da090e7ec4e2f25ead3908cc603
+ms.openlocfilehash: 4437ed8a1d32b1d56a48b88051189daab35f02ac
+ms.lasthandoff: 03/02/2017
 
 ---
 
@@ -30,7 +30,7 @@ Stellen Sie vor dem Ausführen dieses Skripts sicher, dass über den Befehl `az 
 
 Dieses Beispiel wird in einer Bash-Shell ausgeführt. Optionen zum Ausführen von Azure CLI-Skripts unter Windows finden Sie unter [Verwenden der Azure CLI unter Windows](../virtual-machines-windows-cli-options.md).
 
-## <a name="create-vm-with-network-load-balancer"></a>Erstellen einer VM mit Netzwerklastenausgleich
+## <a name="sample-script"></a>Beispielskript
 
 [!code-azurecli[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-windows-vm-nlb.sh "Schnelles Erstellen einer VM")]
 
@@ -52,7 +52,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) | Erstellt ein virtuelles Azure-Netzwerk und ein Subnetz. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) | Erstellt eine öffentliche IP-Adresse mit einer statischen IP-Adresse und zugeordnetem DNS-Namen. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Erstellt einen Azure Network Load Balancer (NLB). |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Erstellt einen NLB-Test. Mithilfe eines NLB-Tests wird jede VM in der NLG-Gruppe überwacht. Falls eine VM nicht verfügbar ist, wird der Datenverkehr nicht an diese VM geroutet. |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Erstellt einen NLB-Test. Mithilfe eines NLB-Tests wird jede VM in der NLB-Gruppe überwacht. Falls eine VM nicht verfügbar ist, wird der Datenverkehr nicht an diese VM geroutet. |
 | [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Erstellt eine NLB-Regel. In diesem Beispiel wird eine Regel für den Port 80 erstellt. Wenn HTTP-Datenverkehr beim NLB eingeht, wird dieser an Port 80 einer der VMs in der NLB-Gruppe geroutet. |
 | [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | Erstellt eine NLB-Regel für die Netzwerkadressübersetzung (NAT).  Mithilfe von NAT-Regeln wird ein NLB-Port einem Port auf einer VM zugeordnet. In diesem Beispiel wird eine NAT-Regel für den SSH-Datenverkehr an jede VM in der NLB-Gruppe erstellt.  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) | Erstellt eine Netzwerksicherheitsgruppe (NSG), die als Sicherheitsgrenze zwischen dem Internet und dem virtuellen Computer fungiert. |

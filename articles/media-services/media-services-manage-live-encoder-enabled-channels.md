@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;anilmur
 translationtype: Human Translation
-ms.sourcegitcommit: ef9c1d5511889cf78421d24f9c5902bf188890c7
-ms.openlocfilehash: 35db86988cf3d62401d6caecc7214411ddc2c498
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 138598ce20459b7d4975c6640b28e9a999de30cd
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: 35db86988cf3d62401d6caecc7214411ddc2c498
 In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarbeitung von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von **Kanälen** empfangen werden können:
 
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können folgende Liveencoder verwenden, die Smooth Streaming mit Mehrfachbitrate ausgeben: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
   
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
@@ -161,19 +162,8 @@ Professionelle Sendeanstalten arbeiten in der Regel mit lokalen High-End-Liveenc
     * Mono, Stereo
 * Zu den empfohlenen Sendeencodern gehören:
   
-  * Ateme AM2102
-  * Ericsson AVP2000
-  * eVertz 3480
-  * Ericsson RX8200
   * Imagine Communications Selenio ENC 1
   * Imagine Communications Selenio ENC 2
-  * AdTec EN-30
-  * AdTec EN-91P
-  * AdTec EN-100
-  * Harmonic ProStream 1000
-  * Thor H-2 4HD-EM
-  * eVertz 7880 SLKE
-  * Cisco Spinnaker
   * Elemental Live
 
 #### <a name="a-idsinglebitratertmpasingle-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>Single-Bitrate-RTMP
@@ -194,7 +184,6 @@ Professionelle Sendeanstalten arbeiten in der Regel mit lokalen High-End-Liveenc
 * Zu den empfohlenen Encodern gehören:
 * Telestream Wirecast
 * Flash Media Live Encoder
-* Tricaster
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Fragmentiertes Single-Bitrate-MP4 (Smooth Streaming)
 Typisches Anwendungsbeispiel:
@@ -428,10 +417,5 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 
