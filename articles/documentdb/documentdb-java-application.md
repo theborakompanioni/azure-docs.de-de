@@ -18,6 +18,7 @@ ms.author: denlee
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: d8abb90b19fd3b79324209a2418c414e3b6bb301
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -761,9 +762,4 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 22. Informationen zum Bereitstellen Ihres Projekts auf einer Azure-Website finden Sie unter [Schritt 6: Bereitstellen der Anwendung auf Azure-Websites](#Deploy).
 
 [1]: media/documentdb-java-application/keys.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
