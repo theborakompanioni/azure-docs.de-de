@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: f6160c560b951c1355bf956a392dda5b41ac9cd7
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -28,44 +29,38 @@ Die erste Aufgabe besteht darin, eine administrative Gruppe in Ihrem Azure Activ
 
 > [!NOTE]
 > Sie verfügen nicht über Domänenadministrator- oder Unternehmensadministratorberechtigungen in der verwalteten Domäne, die mithilfe der Azure AD Domain Services erstellt wurde. In verwalteten Domänen sind diese Berechtigungen durch den Dienst reserviert und stehen Benutzern innerhalb des Mandanten nicht zur Verfügung. Sie können jedoch die in dieser Konfigurationsaufgabe verwendete spezielle Administratorgruppe verwenden, um einige privilegierte Vorgänge auszuführen. Zu diesen Vorgängen gehört das Einbinden von Computern in die Domäne, die Mitgliedschaft in der Administratorgruppe auf der Domäne beigetretenen Computern, das Konfigurieren von Gruppenrichtlinien usw.
-> 
-> 
+>
+>
 
 In dieser Konfigurationsaufgabe erstellen Sie die administrative Gruppe und fügen ihr mindestens einen Verzeichnisbenutzer hinzu. Führen Sie die folgenden Schritte durch, um die Administratorgruppe für die Azure Active Directory Domain Services zu erstellen:
 
 1. Navigieren Sie zum **klassischen Azure-Portal** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
 2. Wählen Sie den Knoten **Active Directory** im linken Bereich aus.
 3. Wählen Sie den Azure AD-Mandanten (Verzeichnis) aus, für den Sie die Azure AD Domain Services aktivieren möchten. Sie können für jedes Azure AD-Verzeichnis nur eine Domäne erstellen.
-   
+
     ![Auswählen des Azure AD-Verzeichnisses](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
 4. Klicken Sie auf die Registerkarte **Gruppen** .
 5. Klicken Sie im Aufgabenbereich am unteren Rand der Seite auf **Gruppe hinzufügen** , um Ihrem Verzeichnis eine Gruppe hinzuzufügen.
-   
+
     ![Schaltfläche „Gruppe hinzufügen“](./media/active-directory-domain-services-getting-started/add-group-button.png)
 6. Erstellen Sie eine Gruppe mit dem Namen **AAD DC Administrators**. Legen Sie für **GRUPPENTYP** die Option **Sicherheit** fest.
-   
+
    > [!WARNING]
    > Sie müssen eine Gruppe mit exakt diesem Namen erstellen, um den Zugriff innerhalb der mit Azure AD Domain Services verwalteten Domäne zu aktivieren.
-   > 
-   > 
-   
+   >
+   >
+
     ![Erstellen der Administratorgruppe](./media/active-directory-domain-services-getting-started/create-admin-group.png)
 7. Fügen Sie eine Beschreibung für diese Gruppe hinzu, damit andere Benutzer innerhalb Ihres Azure AD-Mandanten wissen, dass diese Gruppe zum Erteilen von Administratorberechtigungen innerhalb der Azure Active Directory Domain Services verwendet wird.
 8. Nachdem die Gruppe erstellt wurde, klicken Sie auf den Namen der Gruppe, um deren Eigenschaften anzuzeigen. Klicken Sie im unteren Bereich auf die Schaltfläche **Mitglieder hinzufügen** , um Benutzer als Mitglieder dieser Gruppe hinzuzufügen.
-   
+
     ![Schaltfläche „Gruppenmitglieder hinzufügen“](./media/active-directory-domain-services-getting-started/add-group-members-button.png)
 9. Wählen Sie im Dialogfeld **Mitglieder hinzufügen** die Benutzer aus, die Mitglieder dieser Gruppe werden sollen, und wählen Sie das Häkchen aus, wenn Sie fertig sind.
-   
+
     ![Hinzufügen von Benutzern zur Administratorgruppe](./media/active-directory-domain-services-getting-started/add-group-members.png)
 
 <br>
 
 ## <a name="task-2-create-or-select-an-azure-virtual-network"></a>Aufgabe 2: Erstellen oder Auswählen eines virtuellen Azure-Netzwerks
 Die nächste Konfigurationsaufgabe besteht darin, [ein virtuelles Azure-Netzwerk zu erstellen oder auszuwählen](active-directory-ds-getting-started-vnet.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

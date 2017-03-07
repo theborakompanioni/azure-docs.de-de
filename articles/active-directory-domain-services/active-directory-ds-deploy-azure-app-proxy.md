@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 5121a810badcaa9c66a9f5d85bd83b9f522b9665
 ms.openlocfilehash: 449499ebed1b455af012ec97976d04604a320941
+ms.lasthandoff: 02/07/2017
 
 
 ---
@@ -104,7 +105,7 @@ Aktivieren Sie einmaliges Anmelden bei Ihren Anwendungen über die integrierte W
 
 
 ### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Aktivieren der ressourcenbasierten eingeschränkten Kerberos-Delegierung für den Azure AD-Anwendungsproxy-Connector
-Der Azure-Anwendungsproxy-Connector sollte für die eingeschränkte Kerberos-Delegierung (KCD) konfiguriert werden, damit er Benutzeridentitäten in der verwalteten Domäne annehmen kann. In einer verwalteten Azure AD Domain Services-Domäne besitzen Sie keine Domänenadministratorberechtigungen. Aus diesem Grund **kann die herkömmliche KCD auf Kontoebene in einer verwalteten Domäne nicht konfiguriert werden**. 
+Der Azure-Anwendungsproxy-Connector sollte für die eingeschränkte Kerberos-Delegierung (KCD) konfiguriert werden, damit er Benutzeridentitäten in der verwalteten Domäne annehmen kann. In einer verwalteten Azure AD Domain Services-Domäne besitzen Sie keine Domänenadministratorberechtigungen. Aus diesem Grund **kann die herkömmliche KCD auf Kontoebene in einer verwalteten Domäne nicht konfiguriert werden**.
 
 Verwenden Sie die ressourcenbasierte KCD entsprechend der Beschreibung in diesem [Artikel](active-directory-ds-enable-kcd.md).
 
@@ -130,9 +131,4 @@ Wenn Sie mehrere Anwendungsproxy-Connectors in Ihrer verwalteten Domäne bereitg
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
 * [Konfigurieren der eingeschränkten Kerberos-Delegierung in einer verwalteten Domäne](active-directory-ds-enable-kcd.md)
 * [Übersicht über die eingeschränkte Kerberos-Delegierung](https://technet.microsoft.com/library/jj553400.aspx)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 
