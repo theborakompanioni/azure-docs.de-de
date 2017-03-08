@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/13/2016
 ms.author: padmavc
 translationtype: Human Translation
-ms.sourcegitcommit: 91eb30aaa1ab3891d8e97d48a9a0fe9fa9b2b82b
-ms.openlocfilehash: 3130104427b2a1873690617c6d726375c89876cf
+ms.sourcegitcommit: 2aa32d692da81dc34fafbc9cb6ea72a806f31e5c
+ms.openlocfilehash: a4068c70a01f80086ff3fb55f8e101c7dce95dea
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -79,8 +80,8 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 | Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
 | Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
 | Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
-| Status | AS2-Nachrichtenstatus. Success = gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert; Success = gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und MDN empfangen oder gesendet; Failed = fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert; Pending = gute AS2-Nachricht empfangen oder gesendet, MDN ist konfiguriert und eine Funktionsbestätigung wird erwartet |
-| Ack | MDN-Nachrichtenstatus |
+| Status | AS2-Nachrichtenstatus <br>Erfolg = Gute AS2-Nachricht empfangen oder gesendet, keine MDN konfiguriert <br>Erfolg = Gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und empfangen oder MDN gesendet <br>Fehler = Fehlerhafte AS2-Nachricht empfangen, keine MDN konfiguriert <br>Ausstehend = Gute AS2-Nachricht empfangen oder gesendet, MDN konfiguriert und Funktionsbestätigung erwartet |
+| Ack | MDN-Nachrichtenstatus <br>Akzeptiert = Positive MDN empfangen oder gesendet <br>Ausstehend = Warten auf Empfangen oder Senden einer MDN <br>Abgelehnt = Negative MDN empfangen oder gesendet <br>Nicht erforderlich = MDN ist in der Vereinbarung nicht konfiguriert |
 | Richtung | Richtung der AS2-Nachricht |
 | Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logik-App |
 | Nachrichten-ID |  AS2-Nachrichten-ID aus den Headern der AS2-Nachricht |
@@ -93,8 +94,8 @@ Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden G
 | Sender | Der in den Empfangseinstellungen konfigurierte Gastpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Hostpartner |
 | Receiver | Der in den Empfangseinstellungen konfigurierte Hostpartner oder der in den Sendeeinstellungen für eine AS2-Vereinbarung konfigurierte Gastpartner |
 | Logik-App | Logik-App, in der die AS2-Aktionen konfiguriert sind |
-| Status | X12-Nachrichtenstatus. Success = gute X12-Nachricht empfangen oder gesendet, keine Funktionsbestätigung konfiguriert; Success = gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und empfangen oder gesendet; Failed = fehlerhafte X12-Nachricht empfangen oder gesendet; Pending = gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und wird erwartet |
-| Ack | Status der Funktionsbestätigung (997).  Accepted = positive Funktionsbestätigung empfangen oder gesendet; Rejected = negative Funktionsbestätigung empfangen oder gesendet; Pending = Funktionsbestätigung wird erwartet, wurde jedoch nicht empfangen; Pending = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden |
+| Status | X12-Nachrichtenstatus <br>Erfolg = Gute X12-Nachricht empfangen oder gesendet, keine Funktionsbestätigung konfiguriert <br>Erfolg = Gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und empfangen oder Funktionsbestätigung gesendet <br>Fehler = Fehlerhafte X12-Nachricht empfangen oder gesendet <br>Ausstehend = Gute X12-Nachricht empfangen oder gesendet, Funktionsbestätigung konfiguriert und Funktionsbestätigung erwartet. |
+| Ack | Status der Funktionsbestätigung (997) <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet <br>Ausstehend = Eine Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden <br>Nicht erforderlich = Funktionsbestätigung ist nicht konfiguriert |
 | Richtung | Richtung der X12-Nachricht |
 | Korrelations-ID | ID zum Korrelieren aller Trigger und Aktionen innerhalb einer Logik-App |
 | Msg type |  EDI-X12-Nachrichtentyp |
@@ -130,9 +131,4 @@ Auf der Suchseite können Sie eine Abfrage erstellen. Bei der Suche können Sie 
 [AS2-Nachverfolgungsschema](logic-apps-track-integration-account-as2-tracking-schemas.md "Learn about AS2 Tracking Schema")    
 [X12-Nachverfolgungsschema](logic-apps-track-integration-account-x12-tracking-schema.md "Learn about X12 Tracking Schema")  
 [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

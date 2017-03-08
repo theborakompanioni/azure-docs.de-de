@@ -16,8 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: f9ea0d14a99a7881b816606058e5ad72a0fef499
-ms.openlocfilehash: 01adbd43c5c77c3a80c5141e06a2ab14a49b8454
+ms.sourcegitcommit: bd67dc463daee2d7763e722f079930d8712fe478
+ms.openlocfilehash: 81a08a3cbd14c4a61efe68d9dd9fcd032dd1e1cd
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -97,14 +98,13 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
 Mit dem `Set-AzureRmVMCustomScriptExtension`-Befehl können Sie die benutzerdefinierte Skripterweiterung einem vorhandenen virtuellen Computer bereitstellen. Weitere Informationen finden Sie unter [Set-AzureRmVMCustomScriptExtension](https://docs.microsoft.com/en-us/powershell/resourcemanager/azurerm.compute/v2.1.0/set-azurermvmcustomscriptextension).
-
 ```powershell
 Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
--VMName myVM `
--Location myLocation `
--FileUri myURL `
--Run 'myScript.ps1' `
--Name DemoScriptExtension
+    -VMName myVM `
+    -Location myLocation `
+    -FileUri myURL `
+    -Run 'myScript.ps1' `
+    -Name DemoScriptExtension
 ```
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
@@ -118,25 +118,35 @@ Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myE
 ```
 
 Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis auf dem virtuellen Zielcomputer protokolliert.
-
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```
 
-Das Skript selbst wird in das folgende Verzeichnis auf dem virtuellen Zielcomputer heruntergeladen.
-
+Die angegebenen Dateien werden in das folgende Verzeichnis auf dem virtuellen Zielcomputer heruntergeladen.
 ```cmd
-C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads
+C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
+Hierbei ist `<n>` eine dezimale Ganzzahl, die sich zwischen verschiedenen Ausführungen der Erweiterung ändern kann.  Der Wert `1.*` entspricht dem tatsächlichen aktuellen `typeHandlerVersion`-Wert der Erweiterung.  Das tatsächliche Verzeichnis könnte z.B. folgendermaßen lauten: `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+
+Beim Ausführen des Befehls `commandToExecute` legt die Erweiterung dieses Verzeichnis (z.B. `...\Downloads\2`) als aktuelles Arbeitsverzeichnis fest. Dies ermöglicht die Verwendung relativer Pfade, um die heruntergeladenen Dateien mithilfe der `fileURIs`-Eigenschaft aufzufinden. Beispiele hierfür finden Sie in der unten stehenden Tabelle.
+
+Da sich der absolute Downloadpfad im Lauf der Zeit ändern kann, empfiehlt es sich, in der Zeichenfolge `commandToExecute` nach Möglichkeit relative Pfade zu Skripts und Dateien zu verwenden. Beispiel:
+```json
+    "commandToExecute": "powershell.exe . . . -File './scripts/myscript.ps1'"
+```
+
+Pfadinformationen nach dem ersten URI-Segment werden für Dateien beibehalten, die über die `fileUris`-Eigenschaftenliste heruntergeladen werden.  Wie in der Tabelle unten gezeigt, werden heruntergeladene Dateien zu Unterverzeichnissen für den Download zugeordnet, um die Struktur der `fileUris`-Werte widerzuspiegeln.  
+
+#### <a name="examples-of-downloaded-files"></a>Beispiele für heruntergeladene Dateien
+
+| URI in „fileUris“ | Relativer Speicherort für Downloads | Absoluter Speicherort für Downloads* |
+| ---- | ------- |:--- |
+| `https://someAcct.blob.core.windows.net/aContainer/scripts/myscript.ps1` | `./scripts/myscript.ps1` |`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\scripts\myscript.ps1`  |
+| `https://someAcct.blob.core.windows.net/aContainer/topLevel.ps1` | `./topLevel.ps1` | `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2\topLevel.ps1` |
+
+\* Wie oben bereits erwähnt, ändern sich absolute Verzeichnispfade während der Lebensdauer eines virtuellen Computers, nicht jedoch innerhalb einer einzelnen Ausführung der CustomScript-Erweiterung.
 
 ### <a name="support"></a>Support
 
-Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/en-us/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/en-us/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/en-us/support/faq/).
-
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
+Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im MSDN Azure-Forum oder im Stack Overflow-Forum (https://azure.microsoft.com/en-us/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/en-us/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/en-us/support/faq/).
 
