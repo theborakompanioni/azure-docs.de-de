@@ -17,6 +17,7 @@ ms.author: priyamo
 translationtype: Human Translation
 ms.sourcegitcommit: f48df694e6ac20a11f92faebeeec273745fbfaed
 ms.openlocfilehash: 53e9fd58e72d83db32fa1fab937b4618cd4cd159
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -34,9 +35,4 @@ Azure Active Directory macht mandantenspezifische und allgemeine (mandantenunabh
 * Der mandantenunabhängige Endpunkt befindet sich unter `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. Bei dieser Endpunktadresse wird anstelle eines Mandantendomänennamens oder einer ID das Wort **common** verwendet.
 
 Informationen zu den Verbundmetadaten-Dokumenten, die von Azure AD veröffentlicht werden, finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
-
-
-
-<!--HONumber=Feb17_HO4-->
-
 
