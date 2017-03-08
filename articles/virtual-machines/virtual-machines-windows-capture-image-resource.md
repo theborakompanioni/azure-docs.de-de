@@ -13,15 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/27/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: 12b2d12c5152c6e9b8f2e8c78fbbd6663cb24e45
+ms.sourcegitcommit: 0f6bd85668533ee79700caead2edc6bc6c7d70de
+ms.openlocfilehash: 45383cb3b8238d72bf9ba398a22fe0a005941c3f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="how-to-capture-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
+# <a name="capture-a-managed-image-of-a-generalized-vm-in-azure"></a>Erfassen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
 Eine verwaltete Imageressource kann aus einem generalisierten virtuellen Computer erstellt werden, der entweder als verwalteter Datenträger oder als nicht verwalteter Datenträger in einem Speicherkonto gespeichert ist. Mit diesem Image können dann mehrere virtuelle Computer erstellt werden, die verwaltete Datenträger zum Speichern verwenden. 
 
@@ -39,13 +40,14 @@ Eine verwaltete Imageressource kann aus einem generalisierten virtuellen Compute
 4. Wählen Sie **Image** aus den Ergebnissen.
 5. Klicken Sie auf dem Blatt **Image** auf **Erstellen**.
 6. Geben Sie unter **Name** einen Namen für das Image ein.
+7. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement in der Dropdownliste **Abonnement** aus.
 7. Unter **Ressourcengruppe** wählen Sie entweder **Neu erstellen** aus und geben einen Namen ein, oder Sie wählen die Option **Aus vorhandenen** und dann aus der Dropdownliste eine Ressourcengruppe aus.
 8. Wählen Sie unter **Speicherort** den Speicherort Ihrer Ressourcengruppe aus.
 9. Unter **Betriebssystemtyp** wählen Sie den Typ des Betriebssystems, entweder Windows oder Linux.
 11. Klicken Sie unter **Speicherblob** auf **Durchsuchen**, um die VHD im Azure-Speicher zu suchen.
 12. Wählen Sie unter **Kontotyp** den Typ „Standard_LRS“ oder „Premium_LRS“. Standard verwendet Festplattenlaufwerke, Premium Solid-State Drives. Beide Typen verwenden lokal redundanten Speicher.
 13. Wählen Sie unter **Datenträgercaching** die geeignete Datenträgercachingoption. Die Optionen sind **Kein**, **Schreibgeschützt** und **Lesen/Schreiben**.
-14. Optional: Sie können dem Image auch einen vorhandenen Datenträger für Daten hinzufügen.  
+14. Optional: Sie können dem Image auch einen vorhandenen Datenträger für Daten hinzufügen, indem Sie auf **+ Datenträger hinzufügen** klicken.  
 15. Klicken Sie nach Abschluss der Auswahl auf **Erstellen**.
 16. Nachdem das Image erstellt wurde, wird es in der von Ihnen ausgewählten Ressourcengruppe in der Liste der Ressourcen als **Image** angezeigt.
 
@@ -171,10 +173,5 @@ Sie können ein verwaltetes Image auch aus einer Momentaufnahme der VHD eines ge
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Jetzt können Sie [einen virtuellen Computer aus dem generalisierten verwalteten Image erstellen](virtual-machines-windows-create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

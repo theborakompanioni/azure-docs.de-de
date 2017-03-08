@@ -15,8 +15,9 @@ ums.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: aaa69e2e4fed314e8bc363f60e7538b12bb3a56d
-ms.openlocfilehash: ca7f05534113752f3607268c15a9fe3e0e2982e0
+ms.sourcegitcommit: 9c27ea02ae341197a70d2b399cf8d534d79c9e4c
+ms.openlocfilehash: 001cc873960733bfe3e37fad95dbac29872ba00a
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -62,11 +63,9 @@ Der Dienst „Azure-Protokollintegration“ sammelt Telemetriedaten des Computer
 
        Replace the Cloud with any of the following
        AzureCloud
-       AzureChinaCloud
        AzureUSGovernment
-       AzureGermanCloud
 
-       Note that at this time, an Azlog integrator only supports integrating logs from one cloud that you choose to integrate.
+       Note that at this time, an Azlog integrator only supports integrating logs from a cloud that you choose to integrate.
 
 ## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>Integrieren von Azure-VM-Protokollen aus Ihren Azure-Diagnose-Speicherkonten
 1. Überprüfen Sie die oben angegebenen Voraussetzungen, um sicherzustellen, dass Ihr WAD-Speicherkonto Protokolle erfasst, und fahren Sie dann mit der Azure-Protokollintegration fort. Führen Sie die folgenden Schritte nicht aus, wenn Ihr WAD-Speicherkonto keine Protokolle erfasst.
@@ -99,7 +98,7 @@ Sollten die Ereignisse immer noch nicht angezeigt werden, führen Sie die folgen
 2. Stellen Sie eine Verbindung mit dem Speicherkonto her, das mithilfe des Befehls **azlog source add**hinzugefügt wurde.
 3. Navigieren Sie im Microsoft Azure-Speicher-Explorer zur Tabelle **WADWindowsEventLogsTable** , und überprüfen Sie, ob die Tabelle Daten enthält. Falls nicht, ist die Diagnose auf dem virtuellen Computer nicht ordnungsgemäß konfiguriert.
 
-## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Integrieren von Azure-Überwachungsprotokollen und Security Center-Warnungen
+## <a name="integrate-azure-activity-logs-and-security-center-alerts"></a>Integrieren von Azure-Aktivitätsprotokollen und Security Center-Warnungen
 1. Öffnen Sie die Eingabeaufforderung, und wechseln Sie mit **cd** zu **c:\Programme\Microsoft Azure Log Integration**.
 2. Führen Sie den folgenden Befehl aus:
 
@@ -128,7 +127,19 @@ Sollten die Ereignisse immer noch nicht angezeigt werden, führen Sie die folgen
    * **c:\Users\azlog\AzureSecurityCenterJsonLD**
 6. Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Ja nach verwendetem SIEM-Produkt benötigen Sie unter Umständen einige Feldzuordnungen.
 
-Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+## <a name="integrate-azure-active-directory-audit-logs"></a>Integrieren von Azure Active Directory-Überwachungsprotokollen
+1. Öffnen Sie die Eingabeaufforderung, und wechseln Sie mit **cd** zu **c:\Programme\Microsoft Azure Log Integration**.
+2. Führen Sie folgenden Befehl aus: .\AZLOG.exe authorizedirectoryreader <TenantID> – Beispiel: 
+
+.\AZLOG.exe authorizedirectoryreader ba2c0023-d24b-4f4e-92b1-48c4469999
+
+3. Überprüfen Sie die folgenden Ordner, um sicherzustellen, dass die JSON-Dateien des Azure Active Directory-Überwachungsprotokolls erstellt wurden: 
+* **C:\Users\azlog\AzureActiveDirectoryJson**   
+* **C:\Users\azlog\AzureActiveDirectoryJsonLD**
+
+4. Verweisen Sie für den Standardconnector für die SIEM-Dateiweiterleitung auf den richtigen Ordner, um die Daten an die SIEM-Instanz zu übermitteln. Ja nach verwendetem SIEM-Produkt benötigen Sie unter Umständen einige Feldzuordnungen.
+
+Wenn während der Installation und Konfiguration Probleme auftreten, öffnen Sie eine [Supportanfrage](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request), und wählen Sie „Protokollintegration“ als den Dienst aus, für den Sie Support anfordern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure Storage integrieren. Weitere Informationen finden Sie in den folgenden Artikeln:
@@ -139,9 +150,4 @@ In diesem Tutorial haben Sie gelernt, wie Sie die Azure-Protokollintegration ins
 * [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
 * [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau)](../security-center/security-center-integrating-alerts-with-log-integration.md) : In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
 * [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) (Neue Features für Azure-Diagnose und Azure-Überwachungsprotokolle): In diesem Blogbeitrag werden Azure-Überwachungsprotokolle und andere Features vorgestellt, mit denen Sie sich einen Einblick in die Vorgänge Ihrer Azure-Ressourcen verschaffen können.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

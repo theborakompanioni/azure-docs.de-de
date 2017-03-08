@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 5a46b53f42fce7577485517e9d345cf2ad3f0926
-ms.openlocfilehash: d4d0a221d531c4f6eda7bb6410fbc4dcebf5074b
+ms.sourcegitcommit: 58e8474a9cafdad06c2968a7317e0c30474b5069
+ms.openlocfilehash: 5021a0aa554978fbb5543024400986715227de0b
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="about-h-series-and-compute-intensive-a-series-vms"></a>Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe
+# <a name="about-h-series-and-compute-intensive-a-series-vms-for-windows"></a>Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe für Windows
 Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung der neueren H-Reihe von Azure und der älteren Instanzen A8, A9, A10 und A11, die auch als *rechenintensive* Instanzen bezeichnet werden. Dieser Artikel konzentriert sich auf das Verwenden dieser Instanzen für virtuelle Windows-Computer. Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar.
 
 Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -63,10 +65,5 @@ Weitere Informationen und Prüflisten zur Verwendung rechenintensiver Instanzen 
 * Informationen zu Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Informationen zu den ersten Schritten bei der Bereitstellung und Verwendung rechenintensiver Instanzen mit HPC Pack unter Windows finden Sie unter [Einrichten eines Windows RDMA-Clusters mit HPC Pack zum Ausführen von MPI-Anwendungen](virtual-machines-windows-classic-hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Informationen zur Verwendung rechenintensiver Instanzen zum Ausführen von MPI-Anwendungen mit Azure Batch finden Sie unter [Verwendung von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Azure Batch](../batch/batch-mpi.md).
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 
