@@ -16,9 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
 translationtype: Human Translation
-ms.sourcegitcommit: 2de3e6d205dd126e1c3d9606ea1419669056d7f1
-ms.openlocfilehash: 51c6801fe99060b3f1f36dbf675b55b56d465e59
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: e6aedc1fae5d05d841e5af2f250fe17061ed6f0a
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -38,7 +38,7 @@ Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 200
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Für einige Funktionen des Network Watcher-Agents muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Ohne die Fähigkeit, ausgehende Verbindungen herzustellen, treten bei einigen Funktionen des Network Watcher-Agents möglicherweise Fehler auf, oder sie sind nicht verfügbar. Weitere Informationen finden Sie in der [Dokumentation zu Network Watcher](https://review.docs.microsoft.com/en-us/azure/network-watcher/).
+Für einige Funktionen des Network Watcher-Agents muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Ohne die Fähigkeit, ausgehende Verbindungen herzustellen, treten bei einigen Features des Network Watcher-Agents möglicherweise Fehler auf, oder sie sind nicht verfügbar. Weitere Informationen finden Sie in der [Dokumentation zu Network Watcher](../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
