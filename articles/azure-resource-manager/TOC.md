@@ -36,8 +36,6 @@
 ### [REST-API](resource-manager-rest-api.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
-### [Verknüpfen von zugehörigen Ressourcen](resource-group-link-resources.md)
-### [Azure-Ressourcen-Explorer](resource-manager-resource-explorer.md)
 ## Steuern des Zugriffs
 ### [Erstellen des Dienstprinzipals mit PowerShell](resource-group-authenticate-service-principal.md)
 ### [Erstellen des Dienstprinzipals über die Azure-Befehlszeilenschnittstelle](resource-group-authenticate-service-principal-cli.md)
