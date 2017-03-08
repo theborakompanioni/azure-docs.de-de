@@ -40,7 +40,7 @@ ms.lasthandoff: 02/28/2017
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
-## <a name="a-name--createacreate-the-vm"></a><a name = "create"></a>Erstellen der VM
+## <a name = "create"></a>Erstellen der VM
 
 Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit der [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md) ausführen. Mithilfe der Werte in Anführungszeichen ("") in den folgenden Schritten werden Ressourcen mit Einstellungen aus dem Szenario erstellt. Ersetzen Sie die Werte ggf. durch entsprechende Werte für Ihre Umgebung.
 
@@ -135,13 +135,13 @@ Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit d
     - Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - Virtuelles Netzwerk, Subnetz, Netzwerkkarte und öffentliche IP-Adressressourcen. Alternativ können Sie ein *vorhandenes* Netzwerk, ein Subnetz, eine Netzwerkkarte oder öffentliche IP-Adressressourcen verwenden. Um zu erfahren, wie Sie vorhandene Netzwerkressourcen verwenden, statt zusätzliche Ressourcen zu erstellen, geben Sie `az vm create -h` ein.
 
-## <a name="a-name--validateavalidate-vm-creation-and-public-ip-address"></a><a name = "validate"></a>Überprüfen der VM-Erstellung und der öffentlichen IP-Adresse
+## <a name = "validate"></a>Überprüfen der VM-Erstellung und der öffentlichen IP-Adresse
 
 1. Geben Sie den Befehl `az resource list --resouce-group IaaSStory --output table` ein, um eine Liste der Ressourcen anzuzeigen, die vom Skript erstellt wurden. Die zurückgegebene Ausgabe sollte fünf Ressourcen umfassen: Netzwerkschnittstelle, Datenträger, öffentliche IP-Adresse, virtuelles Netzwerk und VM.
 2. Geben Sie den Befehl `az network public-ip show --name PIPWEB1 --resource-group IaaSStory --output table` ein. Beachten Sie in der zurückgegebenen Ausgabe den Wert von **IpAddress**. Beachten Sie außerdem, dass der Wert von **PublicIpAllocationMethod** auf *Static* festgelegt ist.
 3. Bevor Sie den folgenden Befehl ausführen, entfernen Sie die spitzen Klammern (<>), ersetzen Sie *Username* durch den Namen, den Sie im Skript für die Variable **Username** verwendet haben, und ersetzen Sie *ipAddress* durch den Wert für **ipAddress** aus dem letzten Schritt. Führen Sie den folgenden Befehl aus, um eine Verbindung mit der VM herzustellen: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
 
-## <a name="a-name-clean-uparemove-the-vm-and-associated-resources"></a><a name= "clean-up"></a>Entfernen der VM und zugehöriger Ressourcen
+## <a name= "clean-up"></a>Entfernen der VM und zugehöriger Ressourcen
 
 Wenn Sie eine Ressourcengruppe nur zum Ausführen der Schritte in diesem Artikel erstellt haben, können Sie alle Ressourcen entfernen, indem Sie die Ressourcengruppe mit dem Befehl `az group delete -n IaaSStory` löschen.
 

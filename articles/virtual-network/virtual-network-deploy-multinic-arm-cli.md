@@ -33,7 +33,7 @@ ms.lasthandoff: 02/28/2017
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md).  Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des [klassischen Bereitstellungsmodells](virtual-network-deploy-multinic-classic-cli.md) empfohlen wird.
 >
 
-## <a name="a-namecreateacreate-the-vm"></a><a name="create"></a>Erstellen der VM
+## <a name="create"></a>Erstellen der VM
 
 Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit der [Azure CLI 1.0](virtual-network-deploy-multinic-cli-nodejs.md) ausführen. Mithilfe der Werte in Anführungszeichen ("") in den folgenden Schritten werden Ressourcen mit Einstellungen aus dem Szenario erstellt. Ersetzen Sie die Werte ggf. durch entsprechende Werte für Ihre Umgebung.
 
@@ -163,14 +163,14 @@ Sie können diese Aufgabe mithilfe der Azure CLI 2.0 (dieser Artikel) oder mit d
     - Ein einzelner verwalteter Premium-Datenträger. Dies ist die Standardeinstellung, aber Sie können auch einen anderen Datenträgertyp für die Erstellung auswählen. Ausführliche Informationen finden Sie im Artikel [Erstellen einer Linux-VM mithilfe der Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - Ein virtuelles Netzwerk mit zwei Subnetzen und einer einzigen öffentlichen IP-Adresse. Alternativ können Sie ein *vorhandenes* Netzwerk, ein Subnetz, eine Netzwerkkarte oder öffentliche IP-Adressressourcen verwenden. Um zu erfahren, wie Sie vorhandene Netzwerkressourcen verwenden, statt zusätzliche Ressourcen zu erstellen, geben Sie `az vm create -h` ein.
 
-## <a name="a-name--validateavalidate-vm-creation-and-nics"></a><a name = "validate"></a>Überprüfen von VM-Erstellung und NICs
+## <a name = "validate"></a>Überprüfen von VM-Erstellung und NICs
 
 1. Geben Sie den Befehl `az resource list --resouce-group Multi-NIC-VM --output table` ein, um eine Liste der Ressourcen anzuzeigen, die vom Skript erstellt wurden. Die zurückgegebene Ausgabe sollte sechs Ressourcen umfassen: zwei Netzwerkkarten, einen Datenträger, eine öffentliche IP-Adresse, ein virtuelles Netzwerk und eine VM.
 2. Geben Sie den Befehl `az network public-ip show --name PIP-WEB --resource-group Multi-NIC-VM --output table` ein. Beachten Sie in der zurückgegebenen Ausgabe den Wert von **IpAddress**. Beachten Sie außerdem, dass der Wert von **PublicIpAllocationMethod** auf *Static* festgelegt ist.
 3. Bevor Sie den folgenden Befehl ausführen, entfernen Sie die spitzen Klammern (<>), ersetzen Sie *Username* durch den Namen, den Sie im Skript für die Variable **Username** verwendet haben, und ersetzen Sie *ipAddress* durch den Wert für **ipAddress** aus dem letzten Schritt. Führen Sie den folgenden Befehl aus, um eine Verbindung mit der VM herzustellen: `ssh -i ~/.ssh/azure_id_rsa <Username>@<ipAddress>`. 
 4. Führen Sie nach der Verbindungsherstellung mit der VM den Befehl `sudo ifconfig` aus, um die Schnittstellen *eth0* und *eth1* anzuzeigen. Jeder Netzwerkkarte wurden durch die Azure-DHCP-Server die im Skript angegebenen statischen privaten IP-Adressen zugewiesen. Die IP- und MAC-Adressen, die den Netzwerkkarten zugewiesen werden, ändern sich erst beim Löschen der VM. Es wird empfohlen, die IP-Adressen innerhalb eines Betriebssystems nicht zu ändern, da dies die Konnektivität des Computers deaktivieren kann. Öffentliche IP-Adressen werden im Betriebssystem nicht angezeigt, da sie per NAT über die Azure-Infrastruktur von der und in die private IP-Adresse übersetzt werden.
 
-## <a name="a-name-clean-uparemove-the-vm-and-associated-resources"></a><a name= "clean-up"></a>Entfernen der VM und zugehöriger Ressourcen
+## <a name= "clean-up"></a>Entfernen der VM und zugehöriger Ressourcen
 
 Wenn Sie eine Ressourcengruppe nur zum Ausführen der Schritte in diesem Artikel erstellt haben, können Sie alle Ressourcen entfernen, indem Sie die Ressourcengruppe mit dem Befehl `az group delete --name Multi-NIC-VM` löschen.
 

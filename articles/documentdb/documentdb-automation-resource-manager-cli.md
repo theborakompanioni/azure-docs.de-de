@@ -51,7 +51,7 @@ Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-o
 * Führen Sie „az documentdb -h“ aus, um eine vollständige Liste der verfügbaren Befehle zu erhalten, oder besuchen Sie die [Referenzseite][az-documentdb-ref].
 * Führen Sie „az documentdb <command> -h“ aus, um eine Liste mit Details zu den erforderlichen und optionalen Parametern für jeden Befehl zu erhalten.
 
-## <a name="a-idcreate-documentdb-account-clia-create-a-documentdb-database-account"></a><a id="create-documentdb-account-cli"></a> Erstellen eines DocumentDB-Datenbankkontos
+## <a id="create-documentdb-account-cli"></a> Erstellen eines DocumentDB-Datenbankkontos
 
 Mit diesem Befehl können Sie ein DocumentDB-Datenbankkonto erstellen. Konfigurieren Sie das neue Datenbankkonto entweder mit einer einzelnen Region oder mit [mehreren Regionen][scaling-globally] mit einer bestimmten [Konsistenzrichtlinie](documentdb-consistency-levels.md). 
 
@@ -93,7 +93,7 @@ Beispiele:
 ### <a name="notes"></a>Hinweise
 * Bei den Standorten muss es sich um Regionen handeln, in denen DocumentDB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
-## <a name="a-idupdate-documentdb-account-clia-update-a-documentdb-database-account"></a><a id="update-documentdb-account-cli"></a> Aktualisieren eines DocumentDB-Datenbankkontos
+## <a id="update-documentdb-account-cli"></a> Aktualisieren eines DocumentDB-Datenbankkontos
 
 Mit diesem Befehl können Sie die Eigenschaften Ihres DocumentDB-Datenbankkontos aktualisieren. Hierzu gehören z.B. die Konsistenzrichtlinie und die Standorte, in denen das Datenbankkonto vorhanden ist.
 
@@ -128,7 +128,7 @@ Beispiele:
     az documentdb update -g rg-test -n docdb-test --ip-range-filter "13.91.6.132,13.91.6.1/24"
     az documentdb update -g rg-test -n docdb-test --default-consistency-level BoundedStaleness --max-interval 10 --max-staleness-prefix 200
 
-## <a name="a-idadd-remove-region-documentdb-account-clia-addremove-region-from-a-documentdb-database-account"></a><a id="add-remove-region-documentdb-account-cli"></a>Hinzufügen/Entfernen einer Region zu bzw. aus einem DocumentDB-Datenbankkonto
+## <a id="add-remove-region-documentdb-account-cli"></a>Hinzufügen/Entfernen einer Region zu bzw. aus einem DocumentDB-Datenbankkonto
 
 Um eine oder mehrere Regionen zu Ihrem vorhandenen DocumentDB-Datenbankkonto hinzuzufügen oder daraus zu entfernen, verwenden Sie den Befehl [update](#update-documentdb-account-cli) mit dem Flag `--locations`. Das Beispiel unten zeigt, wie Sie ein neues Konto erstellen und danach Regionen zu diesem Konto hinzufügen oder daraus entfernen.
 
@@ -138,7 +138,7 @@ Beispiel:
     az documentdb update -g rg-test -n docdb-test --locations "East US"=0 "North Europe"=1 "South Central US"=2
 
 
-## <a name="a-iddelete-documentdb-account-clia-delete-a-documentdb-database-account"></a><a id="delete-documentdb-account-cli"></a> Löschen eines DocumentDB-Datenbankkontos
+## <a id="delete-documentdb-account-cli"></a> Löschen eines DocumentDB-Datenbankkontos
 
 Mit diesem Befehl können Sie ein DocumentDB-Datenbankkonto löschen.
 
@@ -152,7 +152,7 @@ Beispiel:
 
     az documentdb delete -g rg-test -n docdb-test
 
-## <a name="a-idget-documentdb-properties-clia-get-properties-of-a-documentdb-database-account"></a><a id="get-documentdb-properties-cli"></a> Abrufen der Eigenschaften eines DocumentDB-Datenbankkontos
+## <a id="get-documentdb-properties-cli"></a> Abrufen der Eigenschaften eines DocumentDB-Datenbankkontos
 
 Mit diesem Befehl können Sie die Eigenschaften eines vorhandenen DocumentDB-Datenbankkontos abrufen.
 
@@ -166,7 +166,7 @@ Beispiel:
 
     az documentdb show -g rg-test -n docdb-test
 
-## <a name="a-idlist-account-keys-clia-list-account-keys"></a><a id="list-account-keys-cli"></a> Auflisten von Kontoschlüsseln
+## <a id="list-account-keys-cli"></a> Auflisten von Kontoschlüsseln
 
 Wenn Sie ein DocumentDB-Konto erstellen, generiert der Dienst zwei Hauptzugriffsschlüssel, die für die Authentifizierung verwendet werden können, wenn der Zugriff auf das DocumentDB-Konto erfolgt. Durch Bereitstellen von zwei Zugriffsschlüsseln ermöglicht DocumentDB Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Zugriffs auf das DocumentDB-Konto. Schreibgeschützte Schlüssel für die Authentifizierung von schreibgeschützten Vorgängen sind ebenfalls verfügbar. Es gibt zwei Lese-Schreib-Schlüssel (primär und sekundär) und zwei schreibgeschützte Schlüssel (primär und sekundär).
 
@@ -180,7 +180,7 @@ Beispiel:
 
     az documentdb list-keys -g rg-test -n docdb-test
 
-## <a name="a-idregenerate-account-key-clia-regenerate-account-key"></a><a id="regenerate-account-key-cli"></a> Erneutes Generieren eines Kontoschlüssels
+## <a id="regenerate-account-key-cli"></a> Erneutes Generieren eines Kontoschlüssels
 
 Sie sollten regelmäßig die Zugriffsschlüssel für Ihr DocumentDB-Konto ändern, um dafür zu sorgen, dass Ihre Verbindungen möglichst sicher sind. Zwei Zugriffsschlüssel werden zugewiesen, damit Sie Verbindungen zum DocumentDB-Konto mit einem Zugriffsschlüssel aufrechterhalten können, während Sie den anderen Zugriffsschlüssel neu generieren.
 
@@ -196,7 +196,7 @@ Beispiel:
 
     az documentdb regenerate-key -g rg-test -n docdb-test --key-kind secondary
 
-## <a name="a-idmodify-failover-priority-clia-modify-failover-priority-of-a-documentdb-database-account"></a><a id="modify-failover-priority-cli"></a> Ändern der Failoverpriorität eines DocumentDB-Datenbankkontos
+## <a id="modify-failover-priority-cli"></a> Ändern der Failoverpriorität eines DocumentDB-Datenbankkontos
 
 Bei Datenbankkonten mit mehreren Regionen können Sie die Failoverpriorität der verschiedenen Regionen ändern, in denen das DocumentDB-Datenbankkonto vorhanden ist. Weitere Informationen zum Failover in Ihrem DocumentDB-Datenbankkonto finden Sie unter [Globale Verteilung von Daten mit DocumentDB][distribute-data-globally].
 

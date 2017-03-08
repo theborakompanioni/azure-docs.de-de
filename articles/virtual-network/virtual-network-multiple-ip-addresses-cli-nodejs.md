@@ -32,7 +32,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Ber
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name="a-name--createacreate-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
+## <a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
 Sie können diese Aufgabe mithilfe der Azure CLI 1.0 (dieser Artikel) oder mit der [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md) ausführen. In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielhaft ein virtueller Computer mit mehreren IP-Adressen erstellt werden kann. Sie können die Variablennamen und IP-Adresstypen an Ihren Implementierungsbedarf anpassen.
 
@@ -122,7 +122,7 @@ Sie können diese Aufgabe mithilfe der Azure CLI 1.0 (dieser Artikel) oder mit d
     ```
 8. Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers hinzu. Führen Sie dazu die Schritte für Ihr Betriebssystem im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus.
 
-## <a name="a-nameaddaadd-ip-addresses-to-a-vm"></a><a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
+## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
 Sie können zu einer vorhandenen NIC zusätzliche private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. Die Beispiele bauen auf dem in diesem Artikel beschriebenen [Szenario](#Scenario) auf.
 
