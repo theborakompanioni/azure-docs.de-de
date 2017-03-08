@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie von einer App Service-Umgebung aus eine siche
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 2783e9c84684a52fb9b85074eabc490c24b6eb9a
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 0b6d3a47dc429c469b37c2c74f546cfeca580358
+ms.lasthandoff: 03/01/2017
 
 
 ---
 # <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus
 ## <a name="overview"></a>Übersicht
-Da eine App Service-Umgebung immer **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** in einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen mit anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk erfolgen.  Infolge einer im Juni 2016 vorgenommenen Änderung können ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.  
+Da eine App Service-Umgebung immer **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk erfolgen.  Infolge einer im Juni 2016 vorgenommenen Änderung können ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.  
 
 Beispielsweise kann ein SQL Server auf einem Cluster virtueller Computer ausgeführt werden, wenn Port 1433 gesperrt ist.  Der Endpunkt kann durch eine ACL geschützt werden, um nur den Zugriff von anderen Ressourcen im selben virtuellen Netzwerk aus zuzulassen.  
 
@@ -48,7 +49,7 @@ Eine gängige SQL Server-Konfiguration verfügt über einen Endpunkt, der an Por
 
 Es gibt zwei Ansätze zum Einschränken des Datenverkehrs zu diesem Endpunkt:
 
-* [Zugriffssteuerungslisten für Netzwerke][NetworkAccessControlLists] (Netzwerk-ACLs)
+* [Netzwerk-Zugriffssteuerungslisten][NetworkAccessControlLists] (Netzwerk-ACLs)
 * [Netzwerksicherheitsgruppen][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Einschränken des Zugriffs mit einer Netzwerk-ACL
@@ -88,7 +89,7 @@ Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentat
 
 Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Einführung in die App Service-Umgebung][IntroToAppServiceEnvironment].
 
-Details zum Steuern des eingehenden Datenverkehrs in Ihre App Service-Umgebung finden Sie unter [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung][ControlInboundASE]
+Details zum Steuern des eingehenden Datenverkehrs in Ihre App Service-Umgebung finden Sie unter [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung][ControlInboundASE].
 
 Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure App Service][AzureAppService].
 
@@ -111,9 +112,4 @@ Weitere Informationen zur Azure App Service-Plattform finden Sie unter [Azure Ap
 [SqlServerEndpoint]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/SqlServerEndpoint01.png
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png 
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -1,6 +1,7 @@
+
 ---
 title: Linux VM-Agent und Erweiterungen in Azure | Microsoft-Dokumentation
-description: "Bietet eine Übersicht über den Agent und die Erweiterungen sowie die Installation des Agents unter Verwendung des klassischen Bereitstellungsmodells."
+description: "Hier finden Sie eine Übersicht über den Agent und die Erweiterungen sowie die Installation des Agents unter Verwendung des klassischen Bereitstellungsmodells auf einer Linux-VM."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -13,23 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/23/2016
+ms.date: 03/02/2017
 ms.author: rasquill
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 746ed119239d5a0a71a0663e81d9c5b259354419
-ms.openlocfilehash: 383e32eca05888c8bf08f80a413c0b64a9b4fb46
+ms.sourcegitcommit: 4e96285a093dffd43d78071f33cc28763be24804
+ms.openlocfilehash: 96a188344cd75d2e4a097fde9df09e9c302ea679
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="about-the-virtual-machine-agent-and-extensions"></a>Informationen zum Agent und zu Erweiterungen für virtuelle Computer
-> [!IMPORTANT] 
+# <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>Informationen zum VM-Agent und zu Erweiterungen für Linux
+> [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Informationen zu VM-Agents und -Erweiterungen bei Verwendung von Resource Manager finden Sie [hier](virtual-machines-linux-extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../includes/virtual-machines-common-classic-agents-and-extensions.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

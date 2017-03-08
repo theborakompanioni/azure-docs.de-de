@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f73cbfec2ce2e41589b84997891ff0b60266c9b2
-ms.openlocfilehash: 10a10e138c9c8ed8c15136bf1d6565edc57758b5
-
+ms.sourcegitcommit: f3b1593a80e6eedc08005988d485a317951efd33
+ms.openlocfilehash: ad2beff5bbc6aaa18247939ccfe310460f9ccdee
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="about-h-series-and-compute-intensive-a-series-vms"></a>Informationen zu virtuellen Computern der H-Serie und der rechenintensiven A-Serie
+# <a name="about-h-series-and-compute-intensive-a-series-vms-for-linux"></a>Informationen zu virtuellen Computern der H-Reihe und der rechenintensiven A-Reihe für Linux
 Hier finden Sie Hintergrundinformationen und einige Überlegungen zur Verwendung der neueren Azure H-Serie und der älteren Größen A8, A9, A10 und A11, die auch als *rechenintensive* Instanzen bezeichnet werden. Dieser Artikel konzentriert sich auf die Verwendung dieser Größen für virtuelle Linux-Computer. Dieser Artikel ist auch für [virtuelle Windows-Computer](virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)verfügbar. 
 
 Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -128,10 +129,5 @@ done
 * Ausführliche Informationen zu Verfügbarkeit und Preisen rechenintensiver Größen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux).
 * Informationen zu Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Informationen zu ersten Schritten bei der Bereitstellung und Verwendung rechenintensiver Größen mit RDMA unter Linux finden Sie unter [Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen](virtual-machines-linux-classic-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

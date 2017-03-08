@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: fc8cb82e952a05b161f00ef9ebfbd4852d3987d4
+ms.sourcegitcommit: c859b789b564ee79022823e8d796775f58eeeccd
+ms.openlocfilehash: 7acd58989da14ea49374e86edb0dba5762557d79
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="upload-a-specialized-vhd-to-azure-to-use-for-creating-a-new-vm"></a>Hochladen einer spezialisierten VHD in Azure zur Erstellung eines neuen virtuellen Computers
+# <a name="how-to-upload-a-specialized-vhd-to-create-a-vm-in-azure"></a>Hochladen einer spezialisierten VHD zum Erstellen einer VM in Azure
 
 Auf einer spezialisierten VHD werden die Benutzerkonten, Anwendungen und andere Zustandsdaten Ihres ursprünglichen virtuellen Computers beibehalten. Sie können eine spezialisierte VHD in Azure hochladen und sie zum Erstellen eines virtuellen Computers verwenden, der Managed Disks oder ein nicht verwaltetes Speicherkonto nutzt. Wir empfehlen die Verwendung von [Managed Disks](../storage/storage-managed-disks-overview.md), damit Sie die vereinfachte Verwaltung und weitere Features von Managed Disks nutzen können.
 
@@ -39,7 +41,7 @@ Auf einer spezialisierten VHD werden die Benutzerkonten, Anwendungen und andere 
 * Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-Wenn Sie PowerShell verwenden, stellen Sie sicher, dass Sie über die neueste Version des AzureRM.Compute-PowerShell-Moduls verfügen. Führen Sie den folgenden Befehl aus, um es zu installieren.
+Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -321,9 +323,4 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Nächste Schritte
 Melden Sie sich beim neuen virtuellen Computer an, wechseln Sie zum virtuellen Computer im [Portal](https://portal.azure.com), klicken Sie auf **Verbinden**, und öffnen Sie die Remotedesktop-RDP-Datei. Verwenden Sie die Kontoanmeldeinformationen des ursprünglichen virtuellen Computers für die Anmeldung bei Ihrem neuen virtuellen Computer. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

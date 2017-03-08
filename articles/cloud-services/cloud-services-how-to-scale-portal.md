@@ -12,35 +12,41 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/27/2017
 ms.author: adegeo
 translationtype: Human Translation
-ms.sourcegitcommit: 0b404af5b638ec2d543ce98b562b7df538652f70
-ms.openlocfilehash: 1f6fd5b4e10e2f94256f5a3dac7609265b1f2cc4
-
+ms.sourcegitcommit: 51338924f5c8eff4234c7d57f7efc0619316bb38
+ms.openlocfilehash: 157a5130755f2092d044f3361e4fb5bc3a7a1053
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="how-to-auto-scale-a-cloud-service"></a>Automatisches Skalieren eines Clouddiensts
+
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurieren der automatischen Skalierung für einen Clouddienst im Portal
 > [!div class="op_single_selector"]
 > * [Azure-Portal](cloud-services-how-to-scale-portal.md)
 > * [Klassisches Azure-Portal](cloud-services-how-to-scale.md)
-> 
-> 
 
 Bedingungen können für eine Clouddienst-Workerrolle festgelegt werden, die ein horizontales Herunter- oder Hochskalieren auslösen. Die Bedingungen für die Rolle können auf der CPU, dem Datenträger oder der Netzwerklast der Rolle basieren. Sie können auch eine Bedingung basierend auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource festlegen.
 
 > [!NOTE]
 > Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer (klassisch) direkt erstellen, wird er in einem Clouddienst gehostet. Sie können einen standardmäßigen virtuellen Computer skalieren, indem Sie ihn einer [Verfügbarkeitsgruppe](../virtual-machines/virtual-machines-windows-classic-configure-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) zuordnen und manuell aktivieren oder deaktivieren.
-> 
-> 
 
 ## <a name="considerations"></a>Überlegungen
 Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfiguriert wird:
 
-* Die Skalierung ist abhängig von der Kernspeichernutzung. Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Wenn als Grenzwert für Ihr Abonnement beispielsweise zwanzig Kerne festgelegt sind, und Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md) .
+* Die Skalierung ist abhängig von der Kernspeichernutzung.
+
+    Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Nehmen Sie z.B. an, Ihr Abonnement sei auf 20 Kerne begrenzt. Wenn Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
+
 * Sie können basierend auf einem Schwellenwert für die Nachrichtenwarteschlange skalieren. Weitere Informationen über die Verwendung von Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/storage-dotnet-how-to-use-queues.md).
+
 * Sie können auch andere Ressourcen skalieren, die Ihrem Abonnement zugeordnet sind.
+
 * Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
+
+> [!WARNING]
+> Automatische Skalierung funktioniert nur mit klassischen Azure Storage-Konten. Sie funktioniert nicht mit Azure Resource Manager-Speicherkonten.
+
 
 ## <a name="where-scale-is-located"></a>Aufrufen der Funktion für die Skalierung
 Nachdem Sie Ihren Clouddienst ausgewählt haben, sollte das Blatt für den Clouddienst angezeigt werden.
@@ -90,7 +96,7 @@ Das Profil legt die Mindest- und Höchstanzahl von Instanzen für die Skalierung
 Nachdem Sie das Profil konfiguriert haben, wählen Sie unten auf dem Profilblatt die Schaltfläche **OK** aus.
 
 #### <a name="rule"></a>Regel
-Regeln werden zu einem Profil hinzugefügt und stellen eine Bedingung dar, die die Skalierung auslöst. 
+Regeln werden einem Profil hinzugefügt und stellen eine Bedingung dar, die die Skalierung auslöst. 
 
 Der Trigger der Regel basiert auf einer Metrik des Clouddiensts (CPU-Auslastung, Datenträgeraktivität oder Netzwerkaktivität), der Sie einen bedingten Wert hinzufügen können. Darüber hinaus kann der Trigger auch auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource basieren.
 
@@ -103,17 +109,12 @@ Navigieren Sie zu [Skalierungseinstellungen](#where-scale-is-located), und legen
 
 ![Clouddienst-Skalierungseinstellungen mit Profil und Regel](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-Dadurch wird die automatische Skalierung von der Rolle entfernt. Danach können Sie die Anzahl der Instanzen direkt angeben. 
+Durch diese Einstellung wird die automatische Skalierung von der Rolle entfernt. Danach können Sie die Anzahl der Instanzen direkt angeben. 
 
 1. Die Skalierungsoption (manuell oder automatisch).
 2. Eine Schieberegler für die Rolleninstanz, um die Instanzen festzulegen, auf die skaliert werden soll.
 3. Instanzen der Rolle, auf die skaliert werden soll.
 
 Nachdem Sie die Skalierungseinstellungen konfiguriert haben, wählen Sie oben das Symbol **Speichern** aus.
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

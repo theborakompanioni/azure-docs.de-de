@@ -1,7 +1,7 @@
 ---
-title: "Änderungsnachverfolgungslösung in Log Analytics | Microsoft Docs"
-description: "Mit der Lösung zur Nachverfolgung von Konfigurationsänderungen in Log Analytics können Sie ganz einfach Änderungen an Software und Windows-Diensten identifizieren, die in Ihrer Umgebung vorgenommen werden. Durch das Feststellen solcher Konfigurationsänderungen können Sie Betriebsprobleme einfacher lokalisieren."
-services: operations-management-suite
+title: "Nachverfolgen von Änderungen mit Azure Log Analytics | Microsoft Docs"
+description: "Mit der Change Tracking-Lösung in Log Analytics können Sie Änderungen an Software und Windows-Diensten in Ihrer Umgebung ganz einfach identifizieren."
+services: log-analytics
 documentationcenter: 
 author: bandersmsft
 manager: carmonm
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a66cdb9825cfc3935d534afaf3f6f0cf5d5fb5a
-ms.openlocfilehash: d4226882ded34a79f7e227886a396db0e927bad2
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 3953a83b20ee2d1ca0035b31824ca167e92f4864
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="change-tracking-solution-in-log-analytics"></a>Änderungsnachverfolgungslösung in Log Analytics
+# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung
+
 Dieser Artikel unterstützt Sie bei der einfachen Erkennung von Änderungen an Ihrer Umgebung mithilfe der Änderungsnachverfolgungslösung in Log Analytics. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows-Dateien, an Windows-Diensten und an Linux-Daemons nach. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
 
 Sie installieren die Lösung, um den Typ des installierten Agents zu aktualisieren. Änderungen an installierter Software, Windows-Diensten und Linux-Daemons auf den überwachten Servern werden gelesen, und di Daten werden Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mithilfe der Informationen im Change Tracking-Dashboard können Sie ganz leicht die Änderungen erkennen, die in Ihrer Serverinfrastruktur vorgenommen wurden.
@@ -90,9 +93,4 @@ Sie können Änderungen an Ihrer Infrastruktur anzeigen und dann Einzelheiten f�
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie die [Protokollsuche in Log Analytics](log-analytics-log-searches.md) , um ausführliche Daten zur Änderungsnachverfolgung anzuzeigen.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

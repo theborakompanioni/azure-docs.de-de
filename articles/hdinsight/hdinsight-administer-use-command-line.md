@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2016
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a8115205c674221ee3dc46b0c3149c64081135b8
+ms.sourcegitcommit: 53973b27ae6531d5c4eaceb862ca5bd2bc5f9249
+ms.openlocfilehash: dec07803397ec5df17dfb57703e276ba071e942a
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -26,7 +27,7 @@ ms.openlocfilehash: a8115205c674221ee3dc46b0c3149c64081135b8
 
 Hier erfahren Sie, wie Sie mit der [Azure-Befehlszeilenschnittstelle](../xplat-cli-install.md) Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux.
 
-In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit HDInsight behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-CLI finden Sie unter [Installieren und Konfigurieren der Azure-CLI][azure-command-line-tools].
+In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit HDInsight behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle][azure-command-line-tools].
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
@@ -87,9 +88,9 @@ So ändern Sie die Hadoop-Clustergröße:
 Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluster auszuführen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
-* [Verwalten von HDInsight-Clustern mit Azure PowerShell][hdinsight-admin-powershell]
+* [Verwalten von HDInsight mit Azure PowerShell][hdinsight-admin-powershell]
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
-* [Verwenden der Azure-Befehlszeilentools][azure-command-line-tools]
+* [Verwenden der Azure-Befehlszeilenschnittstelle][azure-command-line-tools]
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 [azure-create-storageaccount]: ../storage-create-storage-account.md
@@ -106,9 +107,4 @@ Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluste
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "Auflisten und Anzeigen von Clustern"
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

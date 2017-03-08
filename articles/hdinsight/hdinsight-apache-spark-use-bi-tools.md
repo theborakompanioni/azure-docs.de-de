@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2017
+ms.date: 02/27/2017
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: a3bdeb6fea306babc9358134c37044843b9bdd1c
-ms.openlocfilehash: e31c947ee275d34b1f59909fb009ce5a73b42785
+ms.sourcegitcommit: de252e1d2945f236a4192c5737ed8ec88a6f7444
+ms.openlocfilehash: 9ec5d45a38aefe24454f8673d5754d65b3800c17
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -30,6 +31,10 @@ Hier erfahren Sie, wie Sie Apache Spark in Azure HDInsight für folgende Aufgabe
 
 Dieses Tutorial steht auch als Jupyter Notebook für einen Spark-Cluster (Linux) zur Verfügung, den Sie in HDInsight erstellen. In der Notebook-Umgebung können Sie die Python-Ausschnitte direkt im Notebook ausführen. Wenn Sie das Tutorial innerhalb eines Notebooks ausführen möchten, erstellen Sie einen Spark-Cluster, starten Sie ein Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`), und führen Sie dann das Notebook **Use BI tools with Apache Spark on HDInsight.ipynb** im Ordner **Python** aus.
 
+> [!NOTE]
+> Die in diesem Artikel beschriebenen Verbindungen mit BI-Tools werden unter Spark 2.1 in der Vorschau von Azure HDInsight 3.6 nicht unterstützt. Nur die Spark-Versionen 1.6 und 2.0 (HDInsight 3.4 bzw. 3.5) werden unterstützt.
+>
+
 **Voraussetzungen:**
 
 Sie benötigen Folgendes:
@@ -39,7 +44,7 @@ Sie benötigen Folgendes:
 * Ein Computer mit installiertem Microsoft Spark-ODBC-Treiber (erforderlich für die Zusammenarbeit von Spark auf HDInsight mit Tableau). Sie können den Treiber [hier](http://go.microsoft.com/fwlink/?LinkId=616229)installieren.
 * BI-Tools wie [Power BI](http://www.powerbi.com/) oder [Tableau Desktop](http://www.tableau.com/products/desktop). Eine kostenlose Preview-Version von Power BI können Sie unter [http://www.powerbi.com/](http://www.powerbi.com/)abonnieren.
 
-## <a name="a-namehivetableasave-raw-data-as-a-hive-table"></a><a name="hivetable"></a>Speichern von Rohdaten als Hive-Tabelle
+## <a name="hivetable"></a>Speichern von Rohdaten als Hive-Tabelle
 In diesem Abschnitt verwenden wir das [Jupyter](https://jupyter.org) Notebook, das einem Apache Spark-Cluster in HDInsight zugeordnet ist, zum Ausführen von Aufträgen, bei denen Ihre Beispielrohdaten verarbeitet und dann als Hive-Tabelle gespeichert werden. Die Beispieldaten sind in einer CSV-Datei (hvac.csv) enthalten, die standardmäßig auf allen Clustern verfügbar ist.
 
 Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten Abschnitt eine Verbindung mit der Hive-Tabelle herstellen. Hierzu verwenden wir BI-Tools wie Power BI und Tableau.
@@ -105,7 +110,7 @@ Nachdem Ihre Daten als Hive-Tabelle gespeichert wurden, können wir im nächsten
         SELECT * FROM hvac LIMIT 10
 2. Sie können jetzt das Notebook herunterfahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 
-## <a name="a-namepowerbiause-power-bi-to-analyze-data-in-the-hive-table"></a><a name="powerbi"></a>Verwenden von Power BI zum Analysieren von Daten in der Hive-Tabelle
+## <a name="powerbi"></a>Verwenden von Power BI zum Analysieren von Daten in der Hive-Tabelle
 Nachdem Sie die Daten als Hive-Tabelle gespeichert haben, können Sie Power BI verwenden, um eine Verbindung mit den Daten herzustellen und die Daten zu visualisieren. So können Sie Berichte, Dashboards usw. erstellen.
 
 1. Melden Sie sich bei [Power BI](http://www.powerbi.com/) an.
@@ -134,7 +139,7 @@ Nachdem Sie die Daten als Hive-Tabelle gespeichert haben, können Sie Power BI v
 
    Sie können für ein Dataset beliebig viele Visualisierungen hinzufügen und im Dashboard anheften, um eine Momentaufnahme Ihrer Daten zu erhalten. Außerdem sind Spark-Cluster unter HDInsight per Direktverbindung mit Power BI verbunden. Dies bedeutet, dass Power BI immer über die aktuellsten Daten aus Ihrem Cluster verfügt, sodass Sie keine Aktualisierungen für das Dataset einplanen müssen.
 
-## <a name="a-nametableauause-tableau-desktop-to-analyze-data-in-the-hive-table"></a><a name="tableau"></a>Verwenden von Tableau Desktop zum Analysieren von Daten in der Hive-Tabelle
+## <a name="tableau"></a>Verwenden von Tableau Desktop zum Analysieren von Daten in der Hive-Tabelle
 
 > [!NOTE]
 > Dieser Abschnitt gilt nur für Spark 1.5.2-Cluster, die in Azure HDInsight erstellt wurden.
@@ -171,7 +176,7 @@ Nachdem Sie die Daten als Hive-Tabelle gespeichert haben, können Sie Power BI v
     ![Visualisierung](./media/hdinsight-apache-spark-use-bi-tools/hdispark.tableau.final.visual.png "Visualisierung")
 9. Klicken Sie auf **Speichern** , um das Arbeitsblatt zu speichern. Sie können Dashboards erstellen und ein oder mehrere Blätter hinzufügen.
 
-## <a name="a-nameseealsoasee-also"></a><a name="seealso"></a>Weitere Informationen
+## <a name="seealso"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](hdinsight-apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarios
@@ -206,9 +211,4 @@ Nachdem Sie die Daten als Hive-Tabelle gespeichert haben, können Sie Power BI v
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

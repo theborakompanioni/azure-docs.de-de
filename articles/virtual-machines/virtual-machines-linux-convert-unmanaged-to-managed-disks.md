@@ -1,6 +1,6 @@
 ---
 title: "Durchführen der Konvertierung von nicht verwalteten zu verwalteten Datenträgern für eine Linux-VM in Azure | Microsoft-Dokumentation"
-description: "Konvertieren einer VM von nicht verwalteten Datenträgern zu verwalteten Azure-Datenträgern per Azure CLI 2.0 (Vorschau)"
+description: "Konvertieren einer VM von nicht verwalteten Datenträgern zu verwalteten Azure-Datenträgern mithilfe von Azure CLI 2.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: ef59fc785847f09706a565dc0a0471f8c08e7955
-ms.openlocfilehash: 71e0bfb230cc0c385a09243fa195e918bbade865
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: 937b22dd9ad26211b006326b39cafe9c5da4e8bd
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -98,9 +99,4 @@ Für alle VMs in der Verfügbarkeitsgruppe muss die Zuordnung aufgehoben werden,
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über Managed Disks](../storage/storage-managed-disks-overview.md).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

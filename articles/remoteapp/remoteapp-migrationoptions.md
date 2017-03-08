@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: mbaldwin
 translationtype: Human Translation
-ms.sourcegitcommit: 7c75fd870efb93bcf6c69ccf8a8ea9b56288c749
-ms.openlocfilehash: 0744b317f595786b91afce3c9e9d59f64ceef25d
+ms.sourcegitcommit: 801eef31e4a06fd1b89ddf504d643d9dcfcdcbdc
+ms.openlocfilehash: 99e6f4c1be6fa73db05fc4635fa5c34a579af588
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -61,6 +62,21 @@ Erfahren Sie mehr über [Citrix XenApp Express](http://now.citrix.com/remoteapp)
 ### <a name="citrix-service-provider-program"></a>**Citrix Service Provider-Programm**
 Das Citrix Service Provider-Programm erleichtert Dienstanbietern das Bereitstellen der Einfachheit des virtuellen Cloud Computings für kleine- und mittelständische Unternehmen, denen die gewünschten Dienste in einem einfachen nutzungsbasierten Zahlungsmodell angeboten werden. Citrix-Dienstanbieter bauen ihr Microsoft SPLA-Geschäft aus und erhöhen ihre Investitionen in die RDS-Plattform für alle Geräte. Sie bieten ortsunabhängigen Zugriff, eine sehr umfassende Anwendungsunterstützung, eine funktionsreiche Umgebung sowie mehr Sicherheit und Skalierbarkeit. Citrix-Dienstanbieter ziehen wiederum weitere Abonnenten an, steigern die Zufriedenheit der Kunden und senken ihre Betriebskosten. [Erfahren Sie mehr](http://www.citrix.com/products/service-providers.html), oder [finden Sie einen Partner](https://www.citrix.com/buy/partnerlocator.html).
 
+### <a name="frame"></a>Frame
+
+IT-Organisationen in Wirtschaft und Regierung, verwaltete Dienstanbieter und führende Softwarehersteller nutzen Frame für das Erstellen und Verwalten ihrer sicheren softwarebezogenen Arbeitsbereiche in der Cloud. Für kleine wie große Organisationen vereinfacht Frame den Benutzerzugriff auf Windows-Anwendungen über beliebige Browser von jedem Gerät aus. Die Frame-Plattform enthält alles, was ein Administrator zum Bereitstellen von Anwendungen aus der Cloud benötigt, einschließlich der Azure-Infrastruktur und der RDS-Lizenzen (die Nutzung eigener Azure-Konten und Lizenzen ist optional). 
+
+Weitere Informationen zu [Frame in Azure](https://www.fra.me/ara) 
+
+Hauptstandort: San Mateo, Kalifornien, USA
+
+Wirkungsbereich: weltweit
+
+Microsoft-Partner: Ja
+
+1-480-269-4668
+
+
 ### <a name="microsoft-hosted-service-provider"></a>**Von Microsoft gehostete Dienstanbieter**
 Hostingpartner bieten meist einen vollständig verwalteten gehosteten Windows-Desktop- und Anwendungsdienst. Dies kann Folgendes umfassen: Das Verwalten der Azure-Ressourcen, Betriebssysteme, Anwendungen und des Helpdesks unter Verwendung der Lizenzverträge des Partners mit Microsoft und anderer Softwareanbieter sowie einen Lizenzvertrag für Dienstanbieter, der den Weiterverkauf von SALs (Subscriber Access Licenses, Abonnentenzugriffslizenzen) erlaubt. Es folgen Details und Kontaktinformationen zu einigen Hostern, die sich auf das Unterstützen von Kunden bei ihrer Azure RemoteApp-Migration spezialisiert haben. Sehen Sie sich die [aktuelle Liste gehosteter Dienstanbieter an](http://aka.ms/rdsonazurecertified), die den Lernpfad und die Bewertung „RDS in IaaS“ durchlaufen haben.  
 
@@ -86,7 +102,7 @@ Azure RemoteApp-Migrationslösungen: Ja, [erfahren Sie mehr](https://www.aspex.b
 * Web: [http://cloud.aspex.be/contact-ara-0](http://cloud.aspex.be/contact-ara-0)
 
 #### <a name="conexlink-platform-name-mycloudit"></a>**Conexlink (Plattformname: MyCloudIT)**
-[MyCloudIT](http://www.mycloudit.com) ist eine Automatisierungsplattform für IT-Unternehmen zum Vereinfachen, Optimieren und Skalieren der Migration und Bereitstellung von Remotedesktops, Remoteanwendungen und Infrastruktur in der Microsoft Azure-Cloud. 
+[MyCloudIT](https://mycloudit.com) ist eine Automatisierungsplattform für IT-Unternehmen zum Vereinfachen, Optimieren und Skalieren der Migration und Bereitstellung von Remotedesktops, Remoteanwendungen und Infrastruktur in der Microsoft Azure-Cloud. 
 
 Die MyCloudIT-Plattform reduziert die Bereitstellungszeit um 95%, die Azure-Kosten um 30% und ermöglicht über einige wenige Tastenanschläge das Verlagern der gesamten IT-Infrastruktur des Kunden in die Cloud. Partner können jetzt Kunden in einem globalen Dashboard verwalten, Endbenutzer weltweit wie nie zuvor betreuen und den Umsatz steigern, und zwar ohne zusätzlichen Verwaltungsaufwand oder umfangreiche Azure-Schulungen.  
 
@@ -208,10 +224,5 @@ Brauchen Sie für Ihre Entscheidung noch Hilfe, oder haben Sie weitere Fragen? V
 1. Senden Sie eine E-Mail an [arainfo@microsoft.com](mailto:arainfo@microsoft.com).
 2. Kontaktieren Sie den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Öffnen Sie einen [Vorgang beim Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 3. Rufen Sie uns an. [Suchen Sie die Telefonnummer eines Vertriebsmitarbeiters in Ihrer Nähe](https://azure.microsoft.com/overview/sales-number/).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

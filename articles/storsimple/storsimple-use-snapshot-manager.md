@@ -4,7 +4,7 @@ description: "Beschreibt die Benutzeroberfläche des StorSimple Snapshot Manager
 services: storsimple
 documentationcenter: NA
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/25/2016
+ms.date: 02/27/2017
 ms.author: v-sharos
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 88abde99af417f325c12aa2f8790d711fd7fd533
+ms.sourcegitcommit: 7651a2ba6c206bb39d7cf8839f6f0f828fb3bc16
+ms.openlocfilehash: 25265349cb8cb47e93b7bea7103f1d06878a6158
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="storsimple-snapshot-manager-user-interface"></a>Benutzeroberfläche des StorSimple Snapshot Managers
+# <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Verwenden der Benutzeroberfläche des StorSimple Snapshot Managers zum Verwalten von Sicherungsaufträgen und Sicherungskatalog
+
 ## <a name="overview"></a>Übersicht
 Der StorSimple Snapshot Manager verfügt über eine intuitive Benutzeroberfläche, über die Sie Sicherungen erstellen und verwalten können. Dieses Tutorial bietet eine Einführung in die Benutzeroberfläche und erläutert, wie die einzelnen Komponenten verwendet werden. Eine ausführliche Beschreibung des StorSimple Snapshot Managers finden Sie unter [Was ist der StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
 
@@ -448,10 +451,5 @@ In den folgenden Tabellen werden die Tastenkombinationen für die einzelnen Knot
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [Verwenden von StorSimple Snapshot Manager zum Verwalten der StorSimple-Lösung](storsimple-snapshot-manager-admin.md).
 * Erfahren Sie, wie Sie [mit dem StorSimple Snapshot Manager Verbindungen mit Geräten herstellen und diese verwalten](storsimple-snapshot-manager-manage-devices.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

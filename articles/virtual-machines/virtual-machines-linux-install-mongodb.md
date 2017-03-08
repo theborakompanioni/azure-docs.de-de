@@ -1,6 +1,6 @@
 ---
-title: Installieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 (Vorschau) | Microsoft Docs
-description: Informationen zum Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 (Vorschau)
+title: Installieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 | Microsoft Docs
+description: Informationen zum Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,29 +15,22 @@ ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 16e6a02e9b40643aaa1393f5736d5a28049a086f
-ms.openlocfilehash: 9e4b5b8aa877b8a2197d402957028c2bb7b5cf49
-ms.lasthandoff: 02/15/2017
+ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
+ms.openlocfilehash: c3be1b3459e10281bdbe949b0d303d117d48979f
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-20-preview"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 (Vorschau)
-[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. In diesem Artikel wird erläutert, wie Sie mit dem Resource Manager-Bereitstellungsmodell MongoDB auf einem virtuellen Linux-Computer in Azure installieren und konfigurieren. Hier finden Sie Beispiele mit Informationen zu den folgenden Schritten:
+# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
+[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. In diesem Artikel wird das Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 beschrieben. Sie können diese Schritte auch mit [Azure CLI 1.0](virtual-machines-linux-install-mongodb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Hier finden Sie Beispiele mit Informationen zu den folgenden Schritten:
 
 * [Manuelles Installieren und Konfigurieren einer einfachen MongoDB-Instanz](#manually-install-and-configure-mongodb-on-a-vm)
 * [Erstellen einer einfachen MongoDB-Instanz mithilfe einer Resource Manager-Vorlage](#create-basic-mongodb-instance-on-centos-using-a-template)
 * [Erstellen eines komplexen MongoDB-Shardclusters mit Replikatgruppen mithilfe einer Resource Manager-Vorlage](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
 
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-install-mongodb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- Azure CLI 2.0 (Vorschau): Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
-
-
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Manuelles Installieren und Konfigurieren von MongoDB auf einem virtuellen Computer
-Für MongoDB stehen [Installationsanweisungen](https://docs.mongodb.com/manual/administration/install-on-linux/) für Linux-Distributionen zur Verfügung, u.a. für Red Hat/CentOS, SUSE, Ubuntu und Debian. Das folgende Beispiel erstellt mit einem unter `~/.ssh/id_rsa.pub` gespeicherten SSH-Schlüssel einen virtuellen `CentOS`-Computer: Zum Erstellen dieser Umgebung benötigen Sie die installierte neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) und müssen mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Für MongoDB stehen [Installationsanweisungen](https://docs.mongodb.com/manual/administration/install-on-linux/) für Linux-Distributionen zur Verfügung, u.a. für Red Hat/CentOS, SUSE, Ubuntu und Debian. Das folgende Beispiel erstellt mit einem unter `~/.ssh/id_rsa.pub` gespeicherten SSH-Schlüssel einen virtuellen `CentOS`-Computer: Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Erstellen Sie mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `West US`:
 
@@ -134,7 +127,7 @@ Sie können mithilfe der folgenden Azure-Schnellstartvorlage von Github eine ein
 
 * [Basic MongoDB instance on CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) (Einfache MongoDB-Instanz unter CentOS) – https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-Zum Erstellen dieser Umgebung benötigen Sie die installierte neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) und müssen mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `West US`:
+Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `West US`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -194,7 +187,7 @@ Sie können mithilfe der folgenden Azure-Schnellstartvorlage von Github einen ko
 > [!WARNING]
 > Für die Bereitstellung dieses komplexen MongoDB-Shardclusters sind mehr als 20 Kerne erforderlich. Dies ist in der Regel die Standardanzahl von Kernen pro Region für ein Abonnement. Stellen Sie eine Azure-Supportanfrage zum Erhöhen der Kernanzahl.
 
-Zum Erstellen dieser Umgebung benötigen Sie die installierte neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) und müssen mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `West US`:
+Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen `myResourceGroup` am Standort `West US`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus

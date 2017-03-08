@@ -4,7 +4,7 @@ description: "Hier erfahren Sie, wie Sie eine Supportanfrage erstellen und eine 
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 2ebc20fe-f490-4749-8e43-c9fac86f1676
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli;anbacker
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ce19be3454c08bbc041b5f6929c4ad56ffe9b7ea
-ms.openlocfilehash: 5f8124371391f7e2e59bbea474bef1da77686e0c
+ms.sourcegitcommit: 6b0e763769564eaa191c78df05c008150c9a363f
+ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
+# <a name="contact-microsoft-support-for-your-storsimple"></a>Wenden Sie sich an den Microsoft Support für StorSimple
 Wenn Probleme mit Ihrer Microsoft Azure StorSimple-Lösung auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In einer Onlinesitzung mit dem Supporttechniker müssen Sie darüber hinaus eine Supportsitzung auf Ihrem StorSimple-Gerät starten. In diesem Artikel wird Folgendes beschrieben:
 
 * Erstellen einer Supportanfrage
@@ -91,10 +93,5 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 > Sie können den Supportzugriff deaktivieren, indem Sie `Disable-HcsSupportAccess` deaktivieren. Das StorSimple-Gerät versucht acht Stunden nach dem Initiieren der Sitzung ebenfalls, den Supportzugriff zu deaktivieren. Es wird empfohlen, die Anmeldeinformationen für das StorSimple-Gerät nach dem Initiieren einer Supportsitzung zu ändern.
 > 
 > 
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: klam
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: cd25b99d8d94d57638806317ef35d850adcad17b
-ms.openlocfilehash: fc1129efaf03d9d96804146294f5ad4e105d7411
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: 17486fd41b471356648656b65ca66e1234313d4c
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="logic-app-templates"></a>Logik-App-Vorlagen
+# <a name="configure-a-workflow-using-a-pre-built-template-or-pattern-to-get-started-quickly"></a>Konfigurieren eines Workflows mithilfe einer vorgefertigten Vorlage oder eines Musters für den schnellen Einstieg
+
 ## <a name="what-are-logic-app-templates"></a>Verwenden von Logik-App-Vorlagen
 Eine Logik-App-Vorlage ist eine vorgefertigte Logik-App, mit der Sie schnell mit dem Erstellen Ihrer eigenen Workflows beginnen können. 
 
@@ -67,10 +70,5 @@ Wenn Sie Ihre Vorlage geladen und alle gewünschten Änderungen vorgenommen habe
  ![](../../includes/media/app-service-logic-templates/template6.png)  
 
 Wenn Sie weitere Informationen über das Hinzufügen weiterer Schritte zu einer vorhandenen Logik-App-Vorlage oder das Bearbeiten im Allgemeinen wünschen, können Sie unter [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)mehr erfahren.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

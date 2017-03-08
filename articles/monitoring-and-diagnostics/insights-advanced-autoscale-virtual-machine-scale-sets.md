@@ -12,11 +12,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2016
+ms.date: 02/22/2016
 ms.author: ashwink
 translationtype: Human Translation
-ms.sourcegitcommit: 8c9c9dea1248205aa6303e11e1166d5d38786c1b
-ms.openlocfilehash: 0e0fe444ef6eab96b134ad042d41a54b436f3aec
+ms.sourcegitcommit: b521c3bb99c9a6980df46eacec4e1ebe72fb01a1
+ms.openlocfilehash: 00f6a7af021029d1795071c930e05f200578fa14
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -243,6 +244,8 @@ Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalier
 ## <a name="next-steps"></a>Nächste Schritte
 Über die folgenden Links können Sie auf weitere Informationen zur automatischen Skalierung zugreifen.
 
+[Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+
 [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md)
 
 [Empfohlene Methoden für die automatische Skalierung](insights-autoscale-best-practices.md)
@@ -252,9 +255,4 @@ Sie haben eine Einstellung für die automatische Skalierung für eine VM-Skalier
 [Verwalten der automatischen Skalierung über die CLI](insights-cli-samples.md#autoscale)
 
 [Konfigurieren von Webhook- und E-Mail-Benachrichtigungen für die automatische Skalierung](insights-autoscale-to-webhook-email.md)
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

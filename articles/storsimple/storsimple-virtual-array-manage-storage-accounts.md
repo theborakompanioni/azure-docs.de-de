@@ -4,7 +4,7 @@ description: "Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-G
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 6df75f229b95de99fb7f97714336fdc857e672eb
+ms.sourcegitcommit: 4b5c86314bde2acb7d5723909f89691bf7ed8b98
+ms.openlocfilehash: 6bb07bc1e3ab439352b444016167541eca54f788
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
+# <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
 
 ## <a name="overview"></a>Übersicht
 Der Abschnitt **Konfiguration** des StorSimple-Geräte-Manager-Dienstblatts Ihres StorSimple Virtual Array enthält die globalen Dienstparameter, die im StorSimple-Manager-Dienst erstellt werden können. Diese Parameter können für alle mit dem Dienst verbundenen Geräte angewendet werden und umfassen Folgendes:
@@ -150,10 +151,5 @@ Um den StorSimple-Geräte-Manager-Dienst über die Änderung zu informieren, mü
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [Ihr StorSimple Virtual Array verwalten](storsimple-ova-web-ui-admin.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

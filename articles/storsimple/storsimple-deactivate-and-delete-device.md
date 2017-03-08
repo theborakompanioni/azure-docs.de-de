@@ -4,7 +4,7 @@ description: "Beschreibt, wie ein StorSimple-Gerät aus dem Dienst entfernt wird
 services: storsimple
 documentationcenter: 
 author: SharS
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 155cda38-c5ae-45dc-b7e8-6444494afc9e
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2016
+ms.date: 02/27/2017
 ms.author: anbacker
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 014d4faeb478690168b44f88e7a0bda2b406cd4b
+ms.sourcegitcommit: 80fde4dfe7de89dffd39242d94fe46f68e41d611
+ms.openlocfilehash: 833dee54ef9de46c50e9e760594359baf4f89b5e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deactivate-and-delete-a-storsimple-device"></a>Deaktivieren und Löschen eines StorSimple-Geräts
+# <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>Deaktivieren und Löschen von Geräten der StorSimple 8000-Serie über den StorSimple Manager-Dienst
 ## <a name="overview"></a>Übersicht
 Möglicherweise möchten Sie ein StorSimple-Gerät außer Betrieb nehmen (z. B. weil Sie es ersetzen oder aufrüsten möchten oder weil Sie StorSimple nicht mehr verwenden). Wenn dies der Fall ist, müssen Sie das Gerät deaktivieren, bevor Sie es löschen können. Das Deaktivieren trennt die Verbindung zwischen dem Gerät und dem entsprechenden StorSimple Manager-Dienst. In diesem Tutorial wird erläutert, wie ein StorSimple-Gerät aus dem Dienst entfernt wird, indem es zuerst deaktiviert und anschließend gelöscht wird. 
 
@@ -93,10 +95,5 @@ Beim Deaktivieren werden die folgenden Aktionen ausgeführt:
 * Um das deaktivierte Gerät mit den Werkseinstellungen wiederherzustellen, wechseln Sie zu [Zurücksetzen des Geräts auf die Standardwerkseinstellungen](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 * Um technische Unterstützung zu erhalten, [kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md).
 * Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md). 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

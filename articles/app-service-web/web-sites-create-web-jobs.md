@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Hintergrundaufgaben in Azure-Web-Apps ausfü
 services: app-service
 documentationcenter: 
 author: tdykstra
-manager: wpickett
+manager: erikre
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 11/27/2016
 ms.author: tdykstra
 translationtype: Human Translation
-ms.sourcegitcommit: 10320f338d902ffefd8a98fd59f3e8fb22682b00
-ms.openlocfilehash: 578575877fc706076ac2fdf034cb1ac0e92b16ef
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 5d0d46447c3e0a3a1047e2bbedd44bbd46dd7f1b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -32,7 +33,7 @@ Das Azure WebJobs-SDK vereinfacht zahlreiche WebJobs-Programmieraufgaben. Weiter
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="a-nameacceptablefilesaacceptable-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>Akzeptable Dateitypen für Skripts oder Programme
+## <a name="acceptablefiles"></a>Akzeptable Dateitypen für Skripts oder Programme
 Die folgenden Dateitypen werden akzeptiert:
 
 * .cmd, .bat, .exe (bei Verwendung von windows cmd)
@@ -43,7 +44,7 @@ Die folgenden Dateitypen werden akzeptiert:
 * .js (bei Verwendung von node)
 * .jar (bei Verwendung von Java)
 
-## <a name="a-namecreateondemandacreate-an-on-demand-webjob-in-the-portal"></a><a name="CreateOnDemand"></a>Erstellen eines bedarfsgesteuerten Webauftrags im Portal
+## <a name="CreateOnDemand"></a>Erstellen eines bedarfsgesteuerten Webauftrags im Portal
 1. Klicken Sie auf dem Blatt **Web-App** im [Azure-Portal](https://portal.azure.com) auf **Alle Einstellungen > WebJobs**, um das Blatt **WebJobs** anzuzeigen.
    
     ![Webauftrag, Blatt](./media/web-sites-create-web-jobs/wjblade.png)
@@ -60,7 +61,7 @@ Die folgenden Dateitypen werden akzeptiert:
    
     ![Webauftrag ausführen](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="a-namecreatecontinuousacreate-a-continuously-running-webjob"></a><a name="CreateContinuous"></a>Erstellen eines kontinuierlich ausgeführten Webauftrags
+## <a name="CreateContinuous"></a>Erstellen eines kontinuierlich ausgeführten Webauftrags
 1. Führen Sie zum Erstellen eines kontinuierlich ausgeführten WebJobs dieselben Schritte wie zum Erstellen eines einmalig ausgeführten WebJobs aus, wählen Sie im Feld **Informationen zur Ausführung** jedoch **Kontinuierlich** aus.
 2. Klicken Sie zum Starten oder Beenden eines kontinuierlich ausgeführten WebJobs in der Liste mit der rechten Maustaste auf den WebJob, und klicken Sie dann auf **Starten** oder **Beenden**.
 
@@ -71,7 +72,7 @@ Die folgenden Dateitypen werden akzeptiert:
 > 
 > 
 
-## <a name="a-namecreatescheduledcronacreate-a-scheduled-webjob-using-a-cron-expression"></a><a name="CreateScheduledCRON"></a>Erstellen eines geplanten WebJobs mithilfe eines CRON-Ausdrucks
+## <a name="CreateScheduledCRON"></a>Erstellen eines geplanten WebJobs mithilfe eines CRON-Ausdrucks
 Diese Technik ist in Web-Apps im Basic-, Standard- oder Premium-Modus verfügbar und erfordert die Aktivierung der Einstellung **Immer aktiviert** für die Anwendung.
 
 Damit ein bedarfsgesteuerter WebJob in einen geplanten WebJob wird, muss lediglich eine `settings.job` -Datei im Stamm der WebJob Zip-Datei eingefügt werden. Diese JSON-Datei sollte eine `schedule` -Eigenschaft mit einem [CRON-Ausdruck](https://en.wikipedia.org/wiki/Cron)wie im Beispiel unten enthalten.
@@ -95,7 +96,7 @@ Weitere Beispiele für CRON-Zeitpläne:
 
 **Hinweis:** Wenn Sie einen WebJob aus Visual Studio bereitstellen, sollten Sie für die Eigenschaften der Datei `settings.job` die Option „Kopieren wenn neuer“ auswählen.
 
-## <a name="a-namecreatescheduledacreate-a-scheduled-webjob-using-the-azure-scheduler"></a><a name="CreateScheduled"></a>Erstellen eines geplanten WebJobs mithilfe von Azure Scheduler
+## <a name="CreateScheduled"></a>Erstellen eines geplanten WebJobs mithilfe von Azure Scheduler
 Bei dem folgenden alternativen Verfahren wird Azure Scheduler genutzt. In diesem Fall muss WebJob über keine direkten Kenntnis des Zeitplans verfügen. Azure Scheduler wird stattdessen so konfiguriert, dass der WebJob nach einem Zeitplan ausgelöst wird. 
 
 Das Azure-Portal bietet noch nicht die Möglichkeit, einen geplanten WebJob zu erstellen. Bis diese Funktion implementiert wurde, können Sie hierfür das [klassische Portal](http://manage.windowsazure.com) verwenden.
@@ -133,7 +134,7 @@ Das Azure-Portal bietet noch nicht die Möglichkeit, einen geplanten WebJob zu e
     
     ![Auftragsliste][WebJobsListWithSeveralJobs]
 
-### <a name="a-nameschedulerascheduled-jobs-and-azure-scheduler"></a><a name="Scheduler"></a>Geplante Aufträge und Azure Scheduler
+### <a name="Scheduler"></a>Geplante Aufträge und Azure Scheduler
 Geplante Aufträge können auf den Seiten im Azure Scheduler des [klassischen Portals](http://manage.windowsazure.com)weiter konfiguriert werden.
 
 1. Klicken Sie auf der Seite **WebJobs** auf den Link Zeitplan des Auftrags, um zur Azure Scheduler-Portalseite zu navigieren. 
@@ -146,7 +147,7 @@ Geplante Aufträge können auf den Seiten im Azure Scheduler des [klassischen Po
    
     ![Seite "Auftragsaktion" im Scheduler][JobActionPageInScheduler]
 
-## <a name="a-nameviewjobhistoryaview-the-job-history"></a><a name="ViewJobHistory"></a>Anzeigen des Auftragsverlaufs
+## <a name="ViewJobHistory"></a>Anzeigen des Auftragsverlaufs
 1. Klicken Sie zum Anzeigen des Ausführungsverlaufs eines Auftrags (einschließlich der mit dem WebJobs SDK erstellten Aufträge) auf dem Blatt „WebJobs“ in der Spalte **Protokolle** auf den zugehörigen Link. (Sie können das Zwischenablagesymbol verwenden, um die URL der Protokolldateiseite in die Zwischenablage zu kopieren, wenn Sie dies wünschen.)
    
     ![Link "Protokolle"](./media/web-sites-create-web-jobs/wjbladelogslink.png)
@@ -167,15 +168,15 @@ Geplante Aufträge können auf den Seiten im Azure Scheduler des [klassischen Po
    
     Wenn Sie auf einen dieser Links klicken, werden Sie zur Seite WebJob Details für den ausgewählten Auftrag weitergeleitet.
 
-## <a name="a-namewhpnotesanotes"></a><a name="WHPNotes"></a>Hinweise
+## <a name="WHPNotes"></a>Hinweise
 * Web-Apps im kostenlosen Modus können nach 20 Minuten ablaufen, wenn keine Anforderungen bei der scm-Website (Bereitstellung) eingehen und das Web-App-Portal in Azure nicht geöffnet ist. Dieses Verhalten wird durch Anforderungen bei der tatsächlichen Website nicht zurückgesetzt.
 * Code für einen fortlaufenden Auftrag muss zur Ausführung in einer Endlosschleife geschrieben sein.
 * Kontinuierliche Aufträge werden nur dann fortlaufend ausgeführt, wenn die Web-App aktiv ist.
 * In den Modi "Basic" und "Standard" ist das Feature "Immer aktiviert" verfügbar. Ist es aktiviert, wird verhindert, dass Web-Apps in den Leerlauf wechseln.
 * Ein Debugging kann nur für kontinuierlich ausgeführte Webaufträge ausgeführt werden. Für geplante oder bei Bedarf ausgeführte Webaufträge wird Debugging nicht unterstützt.
 
-## <a name="a-namenextstepsanext-steps"></a><a name="NextSteps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Empfohlene Ressourcen für Azure-WebJobs][WebJobsRecommendedResources].
+## <a name="NextSteps"></a>Nächste Schritte
+Weitere Informationen finden Sie unter [Empfohlene Ressourcen für Azure WebJobs][WebJobsRecommendedResources].
 
 [PSonWebJobs]:http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]:http://go.microsoft.com/fwlink/?LinkId=390226
@@ -203,10 +204,5 @@ Weitere Informationen finden Sie unter [Empfohlene Ressourcen für Azure-WebJobs
 [LinkToScheduler]: ./media/web-sites-create-web-jobs/31LinkToScheduler.png
 [SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

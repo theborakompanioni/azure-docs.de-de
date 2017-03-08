@@ -17,8 +17,9 @@ ms.topic: article
 ms.date: 12/21/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 10419c0e76ea647c0ef9e15f4cd0e514795a858e
-ms.openlocfilehash: 0191d6d84476b367e6cad6775738305e534c96a8
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: c17b96fa5d37a8cfbb0b6a5c026891cb84523fac
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -49,7 +50,7 @@ Lesen Sie weiter, falls Sie ausführlichere Schritte und Erläuterungen zur Prob
 Sie können die Anmeldeinformationen oder die SSH-Konfiguration mithilfe einer der folgenden Methoden zurücksetzen:
 
 * [Azure-Portal](#use-the-azure-portal): Ermöglicht das schnelle Zurücksetzen der SSH-Konfiguration oder des SSH-Schlüssels, falls die Azure-Tools nicht installiert sind.
-* [Azure-Befehlszeilenschnittstelle 1.0:](#use-the-azure-cli-10) Wenn Sie bereits eine Befehlszeile geöffnet haben, können Sie die SSH-Konfiguration oder Anmeldeinformationen schnell zurücksetzen. Sie können für diesen Schritt auch die [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](#use-the-azure-cli-20-preview) verwenden.
+* [Azure CLI 2.0:](#use-the-azure-cli-20) Wenn Sie bereits eine Befehlszeile geöffnet haben, können Sie die SSH-Konfiguration oder Anmeldeinformationen schnell zurücksetzen. Sie können auch [Azure CLI 1.0](#use-the-azure-cli-10) verwenden.
 * [VMAccessForLinux-Erweiterung in Azure](#use-the-vmaccess-extension): Erstellen und verwenden Sie JSON-Definitionsdateien wieder, um die SSH-Konfiguration oder Benutzeranmeldeinformationen zurückzusetzen.
 
 Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtuellen Computer erneut herzustellen. Sollte sich immer noch keine Verbindung herstellen lassen, versuchen Sie es mit dem nächsten Schritt.
@@ -69,42 +70,8 @@ Um die Anmeldeinformationen eines vorhandenen Benutzers zurückzusetzen, wählen
 
 Über dieses Menü können Sie auch einen Benutzer mit sudo-Berechtigungen auf dem virtuellen Computer erstellen. Geben Sie einen neuen Benutzernamen sowie ein Kennwort oder einen SSH-Schlüssel ein, und klicken Sie dann auf die Schaltfläche **Zurücksetzen**.
 
-## <a name="use-the-azure-cli-10"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0
-Falls noch nicht geschehen, [installieren Sie die Azure-Befehlszeilenschnittstelle 1.0, und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../xplat-cli-install.md). Vergewissern Sie sich wie folgt, dass Sie den Resource Manager-Modus verwenden:
-
-```azurecli
-azure config mode arm
-```
-
-Wenn Sie ein benutzerdefiniertes Linux-Datenträgerimage erstellt und hochgeladen haben, stellen Sie sicher, dass [Microsoft Azure Linux Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Version 2.0.5 oder höher installiert ist. Bei virtuellen Computern, die über Images aus dem Katalog erstellt wurde, ist diese Zugriffserweiterung bereits installiert und konfiguriert.
-
-### <a name="reset-ssh-configuration"></a>Zurücksetzen der SSH-Konfiguration
-Die SSHD-Konfiguration selbst kann fehlerhaft sein, oder beim Dienst ist ein Fehler aufgetreten. Sie können SSHD zurücksetzen, um sicherzustellen, dass die SSH-Konfiguration gültig ist. Das Zurücksetzen von SSHD sollte der erste Schritt bei der Problembehandlung sein.
-
-Das folgende Beispiel setzt SSHD auf einem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` zurück. Verwenden Sie folgendermaßen Ihre eigenen Namen für den virtuellen Computer und die Ressourcengruppe:
-
-```azurecli
-azure vm reset-access --resource-group myResourceGroup --name myVM \
-    --reset-ssh
-```
-
-### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
-Wenn SSHD ordnungsgemäß funktioniert, können Sie das Kennwort für einen bestimmten Benutzer zurücksetzen. Das folgende Beispiel setzt auf dem virtuellen Computer `myVM` in `myResourceGroup` die Anmeldeinformationen für den Benutzer `myUsername` auf den in `myPassword` angegebenen Wert zurück. Verwenden Sie Ihre eigenen Werte wie folgt:
-
-```azurecli
-azure vm reset-access --resource-group myResourceGroup --name myVM \
-     --user-name myUsername --password myPassword
-```
-
-Wenn Sie die SSH-Schlüsselauthentifizierung verwenden, können Sie den SSH-Schlüssel für einen bestimmten Benutzer zurücksetzen. Das folgende Beispiel aktualisiert den in `~/.ssh/id_rsa.pub` gespeicherten SSH-Schlüssel für den Benutzer namens `myUsername` auf dem virtuellen Computer `myVM` in `myResourceGroup`. Verwenden Sie Ihre eigenen Werte wie folgt:
-
-```azurecli
-azure vm reset-access --resource-group myResourceGroup --name myVM \
-    --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
-```
-
-## <a name="use-the-azure-cli-20-preview"></a>Verwenden der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
-Wenn nicht bereits geschehen, installieren Sie die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
+## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+Wenn nicht bereits geschehen, installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
 
 Wenn Sie ein benutzerdefiniertes Linux-Datenträgerimage erstellt und hochgeladen haben, stellen Sie sicher, dass [Microsoft Azure Linux Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Version 2.0.5 oder höher installiert ist. Bei virtuellen Computern, die über Images aus dem Katalog erstellt wurde, ist diese Zugriffserweiterung bereits installiert und konfiguriert.
 
@@ -122,7 +89,6 @@ Wenn Sie die SSH-Schlüsselauthentifizierung verwenden, können Sie den SSH-Schl
 az vm access set-linux-user --resource-group myResourceGroup --name myVM \
     --username myUsername --ssh-key-value ~/.ssh/id_rsa.pub
 ```
-
 
 ## <a name="use-the-vmaccess-extension"></a>Verwenden der Erweiterung VMAccess
 Die VM-Zugriffserweiterung für Linux liest eine JSON-Datei, die die auszuführenden Aktionen definiert. Zu diesen Aktionen gehört das Zurücksetzen von SSHD, das Zurücksetzen eines SSH-Schlüssels und das Hinzufügen eines Benutzers. Sie verwenden weiterhin die Azure-Befehlszeilenschnittstelle, um die VM-Zugriffserweiterung aufzurufen, aber Sie können die JSON-Dateien bei Bedarf VM-übergreifend wiederverwenden. Auf diese Weise können Sie ein Repository mit JSON-Dateien erstellen, die für verschiedene Szenarien aufgerufen werden können.
@@ -169,6 +135,40 @@ azure vm extension set myResourceGroup myVM \
     --private-config-path PrivateConf.json
 ```
 
+## <a name="use-the-azure-cli-10"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0
+Falls noch nicht geschehen, [installieren Sie die Azure-Befehlszeilenschnittstelle 1.0, und stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../xplat-cli-install.md). Vergewissern Sie sich wie folgt, dass Sie den Resource Manager-Modus verwenden:
+
+```azurecli
+azure config mode arm
+```
+
+Wenn Sie ein benutzerdefiniertes Linux-Datenträgerimage erstellt und hochgeladen haben, stellen Sie sicher, dass [Microsoft Azure Linux Agent](virtual-machines-linux-agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Version 2.0.5 oder höher installiert ist. Bei virtuellen Computern, die über Images aus dem Katalog erstellt wurde, ist diese Zugriffserweiterung bereits installiert und konfiguriert.
+
+### <a name="reset-ssh-configuration"></a>Zurücksetzen der SSH-Konfiguration
+Die SSHD-Konfiguration selbst kann fehlerhaft sein, oder beim Dienst ist ein Fehler aufgetreten. Sie können SSHD zurücksetzen, um sicherzustellen, dass die SSH-Konfiguration gültig ist. Das Zurücksetzen von SSHD sollte der erste Schritt bei der Problembehandlung sein.
+
+Das folgende Beispiel setzt SSHD auf einem virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` zurück. Verwenden Sie folgendermaßen Ihre eigenen Namen für den virtuellen Computer und die Ressourcengruppe:
+
+```azurecli
+azure vm reset-access --resource-group myResourceGroup --name myVM \
+    --reset-ssh
+```
+
+### <a name="reset-ssh-credentials-for-a-user"></a>Zurücksetzen von SSH-Anmeldeinformationen für einen Benutzer
+Wenn SSHD ordnungsgemäß funktioniert, können Sie das Kennwort für einen bestimmten Benutzer zurücksetzen. Das folgende Beispiel setzt auf dem virtuellen Computer `myVM` in `myResourceGroup` die Anmeldeinformationen für den Benutzer `myUsername` auf den in `myPassword` angegebenen Wert zurück. Verwenden Sie Ihre eigenen Werte wie folgt:
+
+```azurecli
+azure vm reset-access --resource-group myResourceGroup --name myVM \
+     --user-name myUsername --password myPassword
+```
+
+Wenn Sie die SSH-Schlüsselauthentifizierung verwenden, können Sie den SSH-Schlüssel für einen bestimmten Benutzer zurücksetzen. Das folgende Beispiel aktualisiert den in `~/.ssh/id_rsa.pub` gespeicherten SSH-Schlüssel für den Benutzer namens `myUsername` auf dem virtuellen Computer `myVM` in `myResourceGroup`. Verwenden Sie Ihre eigenen Werte wie folgt:
+
+```azurecli
+azure vm reset-access --resource-group myResourceGroup --name myVM \
+    --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
+```
+
 
 ## <a name="restart-a-vm"></a>Neustarten eines virtuellen Computers
 Wenn Sie die SSH-Konfiguration und Benutzeranmeldeinformationen zurückgesetzt haben oder dabei ein Fehler aufgetreten ist, können Sie den virtuellen Computer neu starten, um zugrunde liegende Computeprobleme zu beheben.
@@ -185,7 +185,7 @@ Das folgende Beispiel startet den virtuellen Computer mit dem Namen `myVM` in de
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 Im folgenden Beispiel wird mit [az vm restart](/cli/azure/vm#restart) der virtuelle Computer `myVM` in der Ressourcengruppe `myResourceGroup` neu gestartet. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
@@ -213,7 +213,7 @@ Das folgende Beispiel stellt den virtuellen Computer mit dem Namen `myVM` in der
 azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="azure-cli-20-preview"></a>Azure CLI 2.0 (Vorschau)
+### <a name="azure-cli-20"></a>Azure CLI 2.0
 Im folgenden Beispiel wird mit [az vm redeploy](/cli/azure/vm#redeploy) die Bereitstellung des virtuellen Computers `myVM` in der Ressourcengruppe `myResourceGroup` erneuert. Verwenden Sie Ihre eigenen Werte wie folgt:
 
 ```azurecli
@@ -244,10 +244,5 @@ Führen Sie die folgenden Schritte aus, um die häufigsten SSH-Verbindungsfehler
 * Wenn Sie nach Ausführung der Schritte immer noch nicht keine SSH-Verbindung mit Ihrem virtuellen Computer herstellen können, finden Sie unter [Ausführliche Schritte zur Problembehandlung bei SSH](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weitere Hinweise, damit Sie das Problem lösen können.
 * Weitere Informationen zur Problembehandlung beim Anwendungszugriff finden Sie unter [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](virtual-machines-linux-troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Weitere Informationen zur Problembehandlung bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden, finden Sie unter [Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für Linux-basierte virtuelle Computer](virtual-machines-linux-classic-reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

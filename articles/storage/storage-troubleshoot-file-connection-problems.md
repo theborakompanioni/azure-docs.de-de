@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: genli
 translationtype: Human Translation
-ms.sourcegitcommit: 1753096f376d09a1b5f2a6b4731775ef5bf6f5ac
-ms.openlocfilehash: 4f66de2fe4b123e208413ade436bb66b9a03961b
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: 7aa2a60f2a02e0f9d837b5b1cecc03709f040898
+ms.openlocfilehash: cce72f374e2cc6f1a42428d9f8e1f3ab8be50f7b
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -246,13 +246,15 @@ Dies kann auftreten, wenn der „mount“-Befehl die Option **serverino** nicht 
 ### <a name="solution"></a>Lösung
 Überprüfen Sie die Option **serverino** in Ihrem Eintrag „/etc/fstab“:
 
-`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,cache=none,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//azureuser.file.core.windows.net/cifs        /cifs   cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 Sie können auch überprüfen, ob diese Option verwendet wird, indem Sie den Befehl **sudo mount | grep cifs** ausführen und die Ausgabe überprüfen:
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=none,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777,dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 Wenn die Option **serverino** nicht vorhanden ist, heben Sie die Einbindung von Azure Files auf, und binden Sie den Dienst mit ausgewählter Option **serverino** wieder ein.
+
+Ein weiterer Grund für langsame Leistung könnte deaktiviertes Caching sein. Um zu überprüfen, ob das Caching aktiviert ist, suchen Sie nach „cache=“.  *cache=none* gibt an, dass das Caching deaktiviert ist. Stellen Sie die Freigabe erneut bereit, entweder mit dem Standardbereitstellungsbefehl oder explizit durch das Hinzufügen der Option **cache=strict** zum Bereitstellungsbefehl, um sicherzustellen, dass das Standardcaching oder der Cachingmodus „strict“ aktiviert ist.
 
 <a id="error112"></a>
 ## <a name="error-112---timeout-error"></a>Fehler 112 – Timeoutfehler
@@ -263,9 +265,10 @@ Dieser Fehler weist auf Kommunikationsfehler hin, die das erneute Wiederherstell
 
 Dieser Fehler kann durch ein Linux-Problem mit der erneuten Herstellung einer Verbindung oder durch andere Probleme verursacht werden, die eine erneute Verbindungsherstellung verhindern – z.B. durch Netzwerkfehler. Durch Festlegen einer ständigen Einbindung wird der Client gezwungen, zu warten, bis eine Verbindung hergestellt oder explizit unterbrochen wurde. Auf diese Weise lassen sich auch Fehler aufgrund von Netzwerktimeouts verhindern. Benutzer sollten sich jedoch darüber im Klaren sein, dass diese Einstellung zu unendlichen Wartevorgängen führen kann, und Verbindungen bei Bedarf anhalten.
 
+
 ### <a name="workaround"></a>Problemumgehung
 
-Das Linux-Problem wurde gelöst, aber noch nicht in Linux-Distributionen portiert. Wenn der Fehler durch das Wiederverbindungsproblem in Linux verursacht wird, kann er durch Verhindern von Leerlaufzuständen vermieden werden. Speichern Sie zu diesem Zweck eine Datei in der Azure-Dateifreigabe, in die maximal alle 30 Sekunden geschrieben wird. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs-/Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindung möglicherweise nicht auslösen.
+Das Linux-Problem wurde gelöst, aber noch nicht in Linux-Distributionen portiert. Wenn der Fehler durch das Wiederverbindungsproblem in Linux verursacht wird, kann er durch Verhindern von Leerlaufzuständen vermieden werden. Speichern Sie zu diesem Zweck eine Datei in der Azure-Dateifreigabe, in die maximal alle 30 Sekunden geschrieben wird. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs-/Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindung möglicherweise nicht auslösen. Dies ist die Liste häufig verwendeter Linux-Kernel, die über diese und andere Korrekturen eine erneute Verbindung verfügen: 4.4.40+, 4.8.16+, 4.9.1+
 
 <a id="webjobs"></a>
 

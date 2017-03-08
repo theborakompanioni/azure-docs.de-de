@@ -4,7 +4,7 @@ description: "Informationen zum Überwachen und Verwalten von Datendiagrammen zu
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 835cc39ebe7cc3a6ee8fafdaad6a36ebb301a615
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -131,10 +132,5 @@ Der Abschnitt "Dashboard" der Benutzeroberfläche erlaubt Kunden das Erstellen a
 [Link 31]: ../mobile-engagement-how-tos-schedule-campaign.md
 [Link 32]: ../mobile-engagement-how-tos-text-view.md
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

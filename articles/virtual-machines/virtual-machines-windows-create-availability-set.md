@@ -16,13 +16,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 204fa369dd6db618ec5340317188681b0a2988e3
-ms.openlocfilehash: f7562c2bb6ad354ece3aa3c51fdaabad8e878fa9
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: a221f3bc9e058a46e46edf8f7177d21151ae3595
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
+# <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>Erhöhen der VM-Verfügbarkeit durch Erstellen einer Azure-Verfügbarkeitsgruppe 
 Verfügbarkeitsgruppen bieten Redundanz für Ihre Anwendung. Wir empfehlen die Gruppierung von mindestens zwei virtuellen Computern in einer Verfügbarkeitsgruppe. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der Azure-SLA zugesicherte Verfügbarkeit von 99,95 % eingehalten wird. Weitere Informationen finden Sie unter [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
@@ -94,10 +95,5 @@ Weitere Informationen finden Sie unter [New-AzureRmAvailabilitySet](/powershell/
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erweitern Sie den Speicher für Ihren virtuellen Computer, indem Sie einen zusätzlichen [Datenträger](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hinzufügen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

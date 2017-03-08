@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
 translationtype: Human Translation
-ms.sourcegitcommit: a1b492b7884deb2d0d4f255af0737e1633606384
-ms.openlocfilehash: 0a016d88b8d7a800bf726e4f582deeaaf3bc6ad6
+ms.sourcegitcommit: 3629280101a6c8c53dacf9f80c09becf1db53f03
+ms.openlocfilehash: e4331c6d5a07e6450c1fdde43d4c226e9a06de54
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -36,7 +37,7 @@ In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat für Ihre **[Azure Ap
 > 
 > 
 
-## <a name="a-namebkmkoverviewaoverview"></a><a name="bkmk_Overview"></a>Übersicht
+## <a name="bkmk_Overview"></a>Übersicht
 > [!NOTE]
 > Versuchen Sie nicht, den Kauf eines SSL-Zertifikats mithilfe eines Abonnements durchzuführen, dem keine aktive Kreditkarte zugeordnet ist. Dadurch kann das Abonnement deaktiviert werden. 
 > 
@@ -47,7 +48,7 @@ Wenn Sie HTTPS für eine benutzerdefinierte Domäne wie contoso.com aktivieren m
 
 Bevor Sie ein SSL-Zertifikat anfordern, müssen Sie zuerst festlegen, welche Domänennamen durch das Zertifikat geschützt werden. Davon hängt ab, welchen Typ von Zertifikat Sie benötigen. Wenn Sie lediglich einen einzelnen Domänennamen wie „contoso.com“ oder „www.contoso.com“ schützen müssen, reicht ein Standardzertifikat (Basic) aus. Wenn Sie mehrere Domänennamen sichern müssen – z.B. contoso.com, www.contoso.com und mail.contoso.com –, können Sie ein **[Platzhalterzertifikat](http://en.wikipedia.org/wiki/Wildcard_certificate)** anfordern.
 
-## <a name="a-namebkmkpurchasecertastep-0-place-an-ssl-certificate-order"></a><a name="bkmk_purchasecert"></a>Schritt 0: Bestellen eines SSL-Zertifikats
+## <a name="bkmk_purchasecert"></a>Schritt 0: Bestellen eines SSL-Zertifikats
 In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat Ihrer Wahl bestellen.
 
 1. Klicken Sie im **[Azure-Portal](https://portal.azure.com/)** auf „Durchsuchen“, geben Sie „App Service-Zertifikate“ in die Suchleiste ein, wählen Sie „App Service-Zertifikate“ aus dem Suchergebnis aus, und klicken Sie auf „Hinzufügen“. 
@@ -83,7 +84,7 @@ In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat Ihrer Wahl bestellen.
 > 
 > 
 
-## <a name="a-namebkmkstorekeyvaultastep-1-store-the-certificate-in-azure-key-vault"></a><a name="bkmk_StoreKeyVault"></a>Schritt 1: Speichern des Zertifikats in Azure Key Vault
+## <a name="bkmk_StoreKeyVault"></a>Schritt 1: Speichern des Zertifikats in Azure Key Vault
 In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat, das Sie erworben haben, im Azure Key Vault Ihrer Wahl speichern.
 
 1. Nachdem Sie das SSL-Zertifikat erworben haben, müssen Sie manuell das Ressourcenblatt **App Service-Zertifikate** öffnen, indem Sie es erneut aufrufen (siehe Schritt 1 oben).   
@@ -104,7 +105,7 @@ In diesem Schritt erfahren Sie, wie Sie ein SSL-Zertifikat, das Sie erworben hab
    
     Damit ist der Schritt zum Speichern des Zertifikats, das Sie erworben haben, im Azure Key Vault Ihrer Wahl abgeschlossen. Nach dem Aktualisieren des Blatts sollte auch diesen Schritt ein grünes Häkchen markieren.
 
-## <a name="a-namebkmkverifyownershipastep-2-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>Schritt 2: Überprüfen des Domänenbesitzes
+## <a name="bkmk_VerifyOwnership"></a>Schritt 2: Überprüfen des Domänenbesitzes
 In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes für ein SSL-Zertifikat ausführen, das Sie gerade bestellt haben. 
 
 1. Klicken Sie auf **Schritt 2: Überprüfen** auf dem Blatt **Zertifikatkonfiguration**. Drei Typen von Domänenüberprüfungen werden von App Service-Zertifikaten unterstützt.
@@ -121,14 +122,23 @@ In diesem Schritt erfahren Sie, wie Sie die Überprüfung des Domänenbesitzes f
      * Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **„E-Mail erneut senden“** .
    * **Manuelle Überprüfung**    
      
-      **Überprüfung des DNS-TXT-Eintrags**
-        
-        * Erstellen Sie mithilfe des DNS-Managers einen TXT-Eintrag in der Unterdomäne **DZC** mit einem Wert, der dem **Domänenüberprüfungstoken** entspricht.
+      **HTML-Webseitenüberprüfung (funktioniert nur mit Standardzertifikat-SKU)**
+
+        * Erstellen der HTML-Datei **starfield.html**
+        * Der Inhalt dieser Datei sollte genau dem Namen des Domänenüberprüfungstokens entsprechen. (Sie können das Token auf dem Blatt mit dem Domänenüberprüfungsstatus kopieren.)
+        * Laden Sie diese Datei in das Stammverzeichnis des Webservers, der Ihre Domäne hostet, in **/.well-known/pki-validation/starfield.html** hoch.
         * Klicken Sie auf **„Aktualisieren“** , um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
           
-          Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen **\*.contosocertdemo.com** oder **\*.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **cAGgQrKc** auszuführen, müssen Sie einen TXT-Eintrag auf dzc.contosocertdemo.com mit dem Wert **cAGgQrKc** erstellen.     
+          Wenn Sie beispielsweise ein Standardzertifikat für **contosocertdemo.com** mit dem Domänenüberprüfungstoken **tgjgthq8d11ttaeah97s3fr2sh** kaufen und anschließend eine Webanforderung an **http://contosocertdemo.com/.well-known/pki-validation/starfield.html** durchgeführt wird, sollte **tgjgthq8d11ttaeah97s3fr2sh** zurückgeben werden.
 
-## <a name="a-namebkmkassigncertificateastep-3-assign-certificate-to-app-service-app"></a><a name="bkmk_AssignCertificate"></a>Schritt 3: Zuweisen des Zertifikats zur App Service-App
+      **Überprüfung des DNS-TXT-Eintrags**
+        
+        * Erstellen Sie mithilfe des DNS-Managers einen TXT-Eintrag in der Unterdomäne **@** mit einem Wert, der dem **Domänenüberprüfungstoken** entspricht.
+        * Klicken Sie auf **„Aktualisieren“** , um den Zertifikatsstatus nach Abschluss der Überprüfung zu aktualisieren. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+          
+          Um beispielsweise die Validierung für ein Platzhalterzertifikat mit dem Hostnamen **\*.contosocertdemo.com** oder **\*.subdomain.contosocertdemo.com** und dem Domänenüberprüfungstoken **tgjgthq8d11ttaeah97s3fr2sh** durchzuführen, müssen Sie einen TXT-Eintrag auf **contosocertdemo.com** mit dem Wert **tgjgthq8d11ttaeah97s3fr2sh** erstellen.     
+
+## <a name="bkmk_AssignCertificate"></a>Schritt 3: Zuweisen des Zertifikats zur App Service-App
 In diesem Schritt erfahren Sie, wie Sie dieses neu erworbene Zertifikat Ihren App Service-Apps zuweisen. 
 
 > [!NOTE]
@@ -163,7 +173,7 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
 1. Ändern Sie mit den von der Domänennamen-Registrierungsstelle bereitgestellten Tools den A-Datensatz für den benutzerdefinierten Domänennamen, sodass dieser auf die im vorherigen Schritt genannte IP-Adresse verweist.
    Sie sollten jetzt in der Lage sein, Ihre App über HTTPS:// anstelle von HTTP:// zu erreichen. Sie können damit überprüfen, ob das Zertifikat richtig konfiguriert wurde.
 
-## <a name="a-namebkmkrekeyarekey-and-sync-the-certificate"></a><a name="bkmk_Rekey"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
+## <a name="bkmk_Rekey"></a>Erneute Schlüsselerstellung für das Zertifikat und Synchronisierung
 1. Wenn Sie jemals erneut einen Schlüssel für Ihr Zertifikat erstellen müssen, wählen Sie aus Sicherheitsgründen einfach die Option **Erstellung neuer Schlüssel und Synchronisierung** auf dem Blatt **Zertifikateigenschaften** aus. 
 2. Klicken Sie auf die Schaltfläche **„Erneute Schlüsselerstellung“** , um den Prozess zu initiieren. Dieser Prozess kann 1 bis 10 Minuten in Anspruch nehmen. 
    
@@ -185,10 +195,5 @@ Wenn Sie **IP-basiertes SSL** ausgewählt haben und Ihre benutzerdefinierte Dom�
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 > 
 > 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

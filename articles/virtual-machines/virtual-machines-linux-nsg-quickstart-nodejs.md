@@ -14,8 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: b29b7fc56e1797d9daa33ff18df0fe5590b12612
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: 33c658bc15ee266d519a2ca403d2fc0d057b36fd
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -27,7 +28,7 @@ In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuel
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0 (Vorschau):](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -83,10 +84,5 @@ In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr
 * [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 * [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

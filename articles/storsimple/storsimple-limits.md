@@ -12,15 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/30/2017
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d81b20ca17ddf723dcc11148f7b44e763dde100b
-ms.openlocfilehash: 1af0f36ce1161b35a2f75d74774ed145c8bc9328
-
+ms.sourcegitcommit: dd9e7f672a9f991fd06530a968a3369b752148a2
+ms.openlocfilehash: 3e4f7bfd117696ddb25156e027e29c0d21f27804
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="storsimple-system-limits"></a>StorSimple-Systemeinschränkungen
+# <a name="what-are-storsimple-8000-series-system-limits"></a>Welche Systemeinschränkungen gelten für die StorSimple 8000-Serie?
 ## <a name="overview"></a>Übersicht
 StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es gibt jedoch einige Einschränkungen, die Sie bei Planung, Bereitstellung und Betrieb Ihrer StorSimple-Lösung beachten sollten. Die folgende Tabelle enthält eine Beschreibung dieser Einschränkungen sowie einige Empfehlungen, damit Sie Ihre StorSimple-Lösung optimal nutzen können.
 
@@ -56,10 +57,5 @@ StorSimple bietet skalierbaren und flexiblen Speicher für Ihr Rechenzentrum. Es
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [StorSimple-Systemanforderungen](storsimple-system-requirements.md). 
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

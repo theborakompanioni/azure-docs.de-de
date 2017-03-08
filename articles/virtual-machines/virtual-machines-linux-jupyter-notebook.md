@@ -15,13 +15,14 @@ ms.devlang: python
 ms.topic: article
 ms.date: 11/10/2015
 ms.author: crwilcox
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e33a3314fc127673a8bf7659b72bd91e1a2d1712
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: ad53cb9bb58064aeed49cb05fdcb936e408346d2
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="jupyter-notebook-on-azure"></a>Jupyter Notebook in Azure
+# <a name="creating-an-azure-vm-installing-jupyter-and-running-a-jupyter-notebook-on-azure"></a>Erstellen einer Azure-VM, Installieren von Jupyter und Ausführen eines Jupyter-Notebooks in Azure
 Das [Jupyter-Projekt](http://jupyter.org), früher das [IPython-Projekt](http://ipython.org), bietet eine Sammlung von Tools für wissenschaftliche Berechnungen mithilfe leistungsstarker interaktiver Shells, die Codeausführung mit der Erstellung eines Live-Berechnungsdokuments vereinen. Diese Notebook-Dateien enthalten beliebigen Text, mathematische Formeln, Eingabecode, Ergebnisse, Grafiken, Videos und beliebige andere Medientypen, die in modernen Webbrowsern angezeigt werden können. Jupyter Notebook ist eine hervorragende Wahl, ganz gleich, ob Sie Python-Anfänger sind und die Sprache in einer interessanten und interaktiven Umgebung erlernen möchten, oder ob Sie ernsthafte parallele und technische Berechnungen durchführen möchten.
 
 ![Screenshot](./media/virtual-machines-linux-jupyter-notebook/ipy-notebook-spectral.png): Analysieren der Struktur einer Tonaufnahme mithilfe von SciPy- und Matplotlib-Paketen.
@@ -38,7 +39,7 @@ Zunächst müssen Sie einen virtuellen Computer (VM) erstellen, der in Azure aus
 Dieser virtuelle Computer ist ein komplettes Betriebssystem in der Cloud und wird für die Ausführung von Jupyter Notebook verwendet. Azure unterstützt sowohl virtuelle Linux- als auch virtuelle Windows-Computer. Daher wird die Einrichtung von Jupyter für beide virtuelle Computertypen erläutert.
 
 ### <a name="create-a-linux-vm-and-open-a-port-for-jupyter"></a>Erstellen eines virtuellen Linux-Computers und Öffnen eines Ports für Jupyter
-Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen, um einen virtuellen Computer der *Ubuntu*-Distribution zu erstellen. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser*aus.
+Befolgen Sie die [hier][portal-vm-linux] aufgeführten Anweisungen zum Erstellen eines virtuellen Computers mit der *Ubuntu*-Distribution. In diesem Lernprogramm wird Ubuntu Server 14.04 LTS verwendet. Wir gehen vom Standardbenutzernamen *azureuser*aus.
 
 Nachdem der virtuelle Computer bereitgestellt wurde, muss eine Sicherheitsregel für die Netzwerksicherheitsgruppe geöffnet werden.  Wechseln Sie im Azure-Portal zu **Netzwerksicherheitsgruppen** , und öffnen Sie die Registerkarte für die Sicherheitsgruppe, die Ihrem virtuellen Computer entspricht. Sie müssen eine Regel für die Sicherheit eingehender Verbindungen mit den folgenden Einstellungen hinzufügen: **TCP** für das Protokoll, **\*** für den (öffentlichen) Quellport und **9999** für den (privaten) Zielport.
 
@@ -172,22 +173,17 @@ Dieses Paradigma der Mischung aus modernem Web und Live-Berechnungen bietet zahl
 * Für die Bereitstellung von "ausführbaren Arbeiten", die Forschungsergebnisse auf eine Weise präsentieren, die von anderen sofort nachvollzogen, validiert und erweitert werden können.
 * Als Plattform für gemeinschaftliche Berechnungen: Mehrere Benutzer können sich bei einem Notebook-Server anmelden und eine Live-Berechnungssitzung gemeinsam nutzen.
 
-Im IPython-Quellcode- [Repository][Repository] finden Sie ein vollständiges Verzeichnis mit Notebook-Beispielen, die Sie herunterladen und anschließend auf Ihrem eigenen virtuellen Jupyter-Computer in Azure ausprobieren können.  Laden Sie einfach die `.ipynb` -Dateien von der Website herunter, und laden Sie die Dateien auf das Dashboard Ihrer Notebook-Azure-VM hoch(oder laden Sie sie direkt in die VM herunter).
+Im IPython-Quellcode-[Repository][repository] finden Sie ein ganzes Verzeichnis mit Notebook-Beispielen, die Sie herunterladen und anschließend auf Ihrem eigenen virtuellen Jupyter-Computer in Azure ausprobieren können.  Laden Sie einfach die `.ipynb` -Dateien von der Website herunter, und laden Sie die Dateien auf das Dashboard Ihrer Notebook-Azure-VM hoch(oder laden Sie sie direkt in die VM herunter).
 
 ## <a name="conclusion"></a>Zusammenfassung
 Jupyter Notebook bietet eine leistungsstarke Schnittstelle für die interaktive Nutzung des Funktionsumfangs des Python-Ökosystems in Azure.  Die Notebooks decken ein breites Spektrum von Anwendungsfällen ab, inklusive Erkundung und Erlernen von Python, Datenanalyse und -Darstellung, Simulation und parallele Berechnungen. Die resultierenden Notebook-Dokumente enthalten eine komplette Aufzeichnung aller ausgeführten Berechnungen und können an andere Jupyter-Benutzer weitergegeben werden.  Jupyter Notebook kann als lokale Anwendung verwendet werden, eignet sich jedoch vor allem ideal für Cloudbereitstellungen in Azure.
 
-Die Kernfunktionen von Jupyter sind auch in Visual Studio über die [Python-Tools für Visual Studio][Python Tools for Visual Studio] (PTVS) verfügbar. PTVS ist ein kostenloses Open Source-Plug-In von Microsoft und verwandelt Visual Studio in eine umfangreiche Python-Entwicklungsumgebung mit einem modernen Editor inklusive IntelliSense, Debugging, Profilerstellung und Integration für parallele Berechnungen.
+Die Kernfunktionen von Jupyter sind auch in Visual Studio über die [Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS) verfügbar. PTVS ist ein kostenloses Open Source-Plug-In von Microsoft und verwandelt Visual Studio in eine umfangreiche Python-Entwicklungsumgebung mit einem modernen Editor inklusive IntelliSense, Debugging, Profilerstellung und Integration für parallele Berechnungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie im [Python Developer Center](/develop/python/).
 
 [portal-vm-linux]: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
-[Repository]: https://github.com/ipython/ipython
+[repository]: https://github.com/ipython/ipython
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

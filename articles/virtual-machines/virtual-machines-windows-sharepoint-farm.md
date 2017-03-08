@@ -1,6 +1,6 @@
 ---
-title: Erstellen von SharePoint-Serverfarmen | Microsoft Docs
-description: Erstellen Sie schnell eine neue SharePoint 2013- oder SharePoint 2016-Farm in Azure.
+title: Erstellen von SharePoint-Serverfarmen in Azure | Microsoft Docs
+description: Erstellen Sie schnell eine neue SharePoint 2013- oder SharePoint 2016-Farm in Azure mithilfe des Marketplace im Azure-Portal.
 services: virtual-machines-windows
 documentationcenter: 
 author: JoeDavies-MSFT
@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2016
 ms.author: josephd
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0f8bc125855bc5a5b67fde5b0b742c73b5da7610
-ms.openlocfilehash: 7c0746840dd45229dac491b03925349e6d9a44de
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: b668e32bf00ec32c7ffa77594bd1fb07440cf1ac
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-sharepoint-server-farms"></a>Erstellen von SharePoint-Serverfarmen
+# <a name="create-sharepoint-server-farms-using-the-azure-portal-marketplace"></a>Erstellen von SharePoint-Serverfarmen mithilfe des Marketplace im Azure-Portal
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -83,9 +85,4 @@ Auf der SharePoint-Website für die Zentraladministration können Sie eigene Web
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Lernen Sie weitere Konfigurationen von [SharePoint](https://technet.microsoft.com/library/dn635309.aspx) in Azure-Infrastrukturdiensten kennen.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

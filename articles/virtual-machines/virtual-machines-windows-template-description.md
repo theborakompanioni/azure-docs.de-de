@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
-ms.openlocfilehash: 5c43e6c646928ef17e1bf2e5b9bce90f9038d5d0
+ms.sourcegitcommit: debdb8a16c8cfd6a137bd2a7c3b82cfdbedb0d8c
+ms.openlocfilehash: 9f3923092e0731b6bc75e9f28d152b1f50ca0848
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -173,7 +174,7 @@ Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
 - REST-API: [Auflisten aller Ressourcenanbieter](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell: [Get-AzureRmResourceProvider](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.Resources/v3.1.0/Get-AzureRmResourceProvider?redirectedfrom=msdn)
-- Azure CLI 2.0 (Vorschau): [az provider show](https://docs.microsoft.com/cli/azure/provider#show)
+- Azure CLI 2.0: [az provider show](https://docs.microsoft.com/cli/azure/provider#show)
 
 ## <a name="parameters-and-variables"></a>Parameter und Variablen
 
@@ -481,7 +482,7 @@ Sie können den Status der installierten Erweiterungen über die Erweiterungsein
 
 ![Abrufen des Erweiterungsstatus](./media/virtual-machines-windows-template-description/virtual-machines-show-extensions.png)
 
-Sie können die Erweiterungsinformationen auch abrufen, indem Sie den PowerShell-Befehl **Get-AzureRmVMExtension**, den Azure CLI 2.0-Befehl (Vorschau) **vm extension get** oder die REST-API **Get extension information** (Erweiterungsinformationen abrufen) verwenden.
+Sie können die Erweiterungsinformationen auch abrufen, indem Sie den PowerShell-Befehl **Get-AzureRmVMExtension**, den Azure CLI 2.0-Befehl **vm extension get** oder die REST-API **Get extension information** (Erweiterungsinformationen abrufen) verwenden.
 
 ## <a name="deployments"></a>Bereitstellungen
 
@@ -498,8 +499,3 @@ Es ist kein Problem, dieselbe Vorlage zum Erstellen von Ressourcen oder Aktualis
 - Erstellen Sie Ihre eigene Vorlage: [Erstellen von Azure Resource Manager-Vorlagen](../resource-group-authoring-templates.md).
 - Stellen Sie die Vorlagen bereit, die Sie erstellt haben: [Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage](virtual-machines-windows-ps-template.md).
 - Informationen zur Verwaltung der erstellten VM finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md).
-
-
-<!--HONumber=Feb17_HO3-->
-
-

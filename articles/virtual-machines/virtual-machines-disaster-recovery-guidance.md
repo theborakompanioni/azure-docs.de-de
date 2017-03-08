@@ -1,5 +1,5 @@
 ---
-title: Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer | Microsoft Docs
+title: "Notfallwiederherstellungsszenarien für Azure-VMs | Microsoft Docs"
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer.
 services: virtual-machines
 documentationcenter: 
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: kmouss;aglick
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: e1c0a6c0b375d9f1fbc331736f6bed73c2232048
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a70f30f380bf110271cb597d8755611da5d2d78c
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-virtual-machines"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
+# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).
@@ -76,10 +78,5 @@ Informationen zum Sichern von VMs finden Sie unter [Sichern von virtuellen Azure
 Informationen zur Verwendung von Azure Site Recovery zum Orchestrieren und Automatisieren des Schutzes Ihrer physischen (und virtuellen) Windows- und Linux-Computer, die auf VMWare- und Hyper-V-VMs ausgeführt werden, finden Sie unter [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/).
 
 Wenden Sie sich an den [Kundensupport](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls die Anweisungen nicht klar sein sollten oder Microsoft die Schritte für Sie ausführen soll.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

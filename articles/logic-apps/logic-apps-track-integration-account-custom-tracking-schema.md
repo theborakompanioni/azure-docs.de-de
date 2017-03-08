@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: a3bb9851d0f7e6f40f456f7989ae949fb38549e0
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: 9a663a4e79c30b97e6390b7ff7f83deec131384a
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="custom-tracking-schemas"></a>Benutzerdefinierte Nachverfolgungsschemas
-Sie können ein benutzerdefiniertes Nachverfolgungsschema in Ihrem Azure-Integrationskonto als Unterstützung bei der Überwachung von B2B-Transaktionen (Business-to-Business) verwenden.
+# <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>Aktivieren der Nachverfolgung zur vollständigen End-to-End-Überwachung von Workflows
+Es gibt eine integrierte Nachverfolgung, die Sie für die verschiedenen Teile des B2B-Workflows aktivieren können, z.B. für die Überwachung von AS2- oder X12-Nachrichten. Wenn Sie Workflows erstellen, die eine Logik-App, BizTalk Server, SQL Server oder andere Ebenen enthalten, dann können Sie die benutzerdefinierte Nachverfolgung aktivieren, bei der Ereignisse vom Anfang bis zum Ende des Workflows protokolliert werden. 
+
+Dieses Thema enthält benutzerdefinierten Code, den Sie in den Ebenen außerhalb Ihrer Logik-App verwenden können. 
 
 ## <a name="custom-tracking-schema"></a>Benutzerdefiniertes Nachverfolgungsschema
 ````java
@@ -84,9 +88,4 @@ Informationen zu B2B-Protokollnachverfolgungsschemas finden Sie unter:
 * Weitere Informationen zum [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md)   
 * Weitere Informationen zum [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
 * Weitere Informationen zum [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
