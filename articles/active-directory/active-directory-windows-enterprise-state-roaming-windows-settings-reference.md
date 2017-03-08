@@ -4,7 +4,7 @@ description: "Vollständige Liste mit allen Einstellungen, für die unter Window
 services: active-directory
 keywords: Enterprise State Roaming, Windows-Cloud
 documentationcenter: 
-author: markvi
+author: MarkusVi
 manager: femila
 editor: curtand
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
@@ -18,6 +18,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 9b88b18e32e6a5ef6c0a0195e649fe2862583a0b
 ms.openlocfilehash: c2c50ff6e92cf42a7d309afafb01210c4edabbe0
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -164,9 +165,4 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 * [Roaming von Einstellungen und Daten – Häufig gestellte Fragen](active-directory-windows-enterprise-state-roaming-faqs.md)
 * [Gruppenrichtlinien- und MDM-Einstellungen für Einstellungssynchronisierung](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 * [Problembehandlung](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

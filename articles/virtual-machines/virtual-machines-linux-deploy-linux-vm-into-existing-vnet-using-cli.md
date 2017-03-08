@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von virtuellen Linux-Computern in einem vorhandenen Netzwerk mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) in einem vorhandenen Netzwerk bereitstellen.
+title: Bereitstellen von virtuellen Linux-Computern in einem vorhandenen Netzwerk mit der Azure CLI 2.0 | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie virtuelle Linux-Computer mit der Azure CLI 2.0 in einem vorhandenen Netzwerk bereitstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,31 +16,27 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 34e9b401444aeec233d846a6b52f4a452c54cdaf
-ms.openlocfilehash: 106571bf36454ab20e75cb4ee42b2aca787a9d5a
+ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
+ms.openlocfilehash: c56ad780a1d67102d23c84a18c712ae48cec1eb6
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="deploy-a-linux-vm-into-an-existing-virtual-network-using-the-azure-cli-20-preview"></a>Bereitstellen von virtuellen Linux-Computern in einem vorhandenen Netzwerk mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+# <a name="deploy-a-linux-vm-into-an-existing-virtual-network"></a>Bereitstellen eines virtuellen Linux-Computers in einem vorhandenen virtuellen Netzwerk
 
-Dieser Artikel veranschaulicht, wie Sie die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) verwenden, um einen virtuellen Computer in einem vorhandenen virtuellen Netzwerk bereitzustellen. Folgende Anforderungen müssen erfüllt sein:
+Dieser Artikel veranschaulicht, wie Sie die Azure CLI 2.0 verwenden, um einen virtuellen Computer in einem vorhandenen virtuellen Netzwerk bereitzustellen. Folgende Anforderungen müssen erfüllt sein:
 
 - [ein Azure-Konto](https://azure.microsoft.com/pricing/free-trial/)
 - [Dateien mit den öffentlichen und privaten SSH-Schlüsseln](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+Sie können diese Schritte auch mit der [Azure CLI 1.0](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die Befehle beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)).
 
-Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste Version [Azure CLI 2.0](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myVnet` und `myVM` verwendet.
 
@@ -62,7 +58,7 @@ az vm create \
 
 Azure-Ressourcen wie virtuelle Netzwerke und Netzwerksicherheitsgruppen sollten statische und langlebige Ressourcen sein, die nur selten bereitgestellt werden. Sobald ein virtuelles Netzwerk bereitgestellt wurde, kann es von neuen Bereitstellungen ohne Nebenwirkungen auf die Infrastruktur wiederverwendet werden. Stellen Sie sich ein virtuelles Netzwerk als traditionellen Hardwarenetzwerkswitch vor – Sie müssen nicht bei jeder Bereitstellung einen neuen Hardwarenetzwerkswitch konfigurieren. Mit einem ordnungsgemäß konfigurierten virtuellen Netzwerk können Sie immer wieder neue Server in diesem Netzwerk bereitstellen und müssen während der Lebensdauer des Netzwerks nur wenige oder gar keine Änderungen vornehmen.
 
-Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Zum Erstellen dieser benutzerdefinierten Umgebung benötigen Sie die installierte neueste Version [Azure CLI 2.0](/cli/azure/install-az-cli2) und müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myVnet` und `myVM` verwendet.
 
@@ -149,7 +145,7 @@ az network nic create \
 
 Wir verfügen jetzt über ein virtuelles Netzwerk, ein Subnetz und eine Netzwerksicherheitsgruppe, die als Firewall fungiert. Letztere schützt unser Subnetz, indem sämtlicher eingehender Datenverkehr mit Ausnahme von Port 22 für SSH blockiert wird. Die VM kann nun innerhalb dieser bestehenden Netzwerkinfrastruktur bereitgestellt werden.
 
-Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#create). Weitere Informationen zu den Flags, die mit der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) zur Bereitstellung eines vollständigen virtuellen Computers verwendet werden, finden Sie unter [Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure-CLI](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Erstellen Sie den virtuellen Computer mit [az vm create](/cli/azure/vm#create). Weitere Informationen zu den Flags, die mit der Azure CLI 2.0 zur Bereitstellung eines vollständigen virtuellen Computers verwendet werden, finden Sie unter [Erstellen einer vollständigen Linux-Umgebung mithilfe der Azure CLI](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Im folgenden Beispiel wird ein virtueller Computer erstellt, der Azure Managed Disks verwendet. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../storage/storage-managed-disks-overview.md). Wenn Sie nicht verwaltete Datenträger verwenden möchten, finden Sie weitere Informationen im obigen Zusatzhinweis.
 
@@ -178,9 +174,4 @@ Weitere Informationen zu verschiedenen Methoden zum Erstellen von virtuellen Com
 * [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Direktes Erstellen einer benutzerdefinierten Umgebung für einen virtuellen Linux-Computer über Azure-CLI-Befehle](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Erstellen einer Linux-VM in Azure mithilfe von Vorlagen](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

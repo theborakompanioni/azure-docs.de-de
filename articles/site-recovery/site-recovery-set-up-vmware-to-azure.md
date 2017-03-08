@@ -17,6 +17,7 @@ ms.author: anoopkv
 translationtype: Human Translation
 ms.sourcegitcommit: eccc927550aef4c9cd71ffad64d2eddedb74326e
 ms.openlocfilehash: 18627223bdb4f0986f07f17233ce7daf29cb7dd9
+ms.lasthandoff: 02/13/2017
 
 ---
 
@@ -34,7 +35,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits erstellt ha
 - Ein dediziertes Konto in VMware vCenter, das für die [automatische Ermittlung](./site-recovery-vmware-to-azure.md#vmware-account-permissions) verwendet werden kann
 - Einen virtuellen Computer, auf dem der Konfigurationsserver installiert wird
 
-### <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
+## <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
 Die Konfigurationsserversoftware muss auf einem hoch verfügbaren virtuellen VMware-Computer bereitgestellt werden. Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -97,9 +98,4 @@ Klicken Sie auf **+vCenter**, um eine Verbindung mit einem VMware vCenter Server
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Einrichten Ihrer Zielumgebung](./site-recovery-prepare-target-vmware-to-azure.md) in Azure
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -22,8 +22,3 @@
 # Ressourcen
 ##[Azure AD Connect Health – FAQ](active-directory-aadconnect-health-faq.md)
 
-
-
-<!--HONumber=Feb17_HO3-->
-
-

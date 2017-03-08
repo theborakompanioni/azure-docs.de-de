@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: cynthn
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: ccde5cf9a45c79cfd441633722960007aad46088
-ms.openlocfilehash: fe00166c443d8db678ec46cfd8b66c327176ddcf
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: bc2a8803bdc875e9f62d9263b16cdbb5cc70ecbf
+ms.lasthandoff: 03/01/2017
 
 
 ---
 
-# <a name="migrate-from-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrieren von AWS und anderen Plattformen zu Managed Disks in Azure
+# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrieren von Amazon Web Services (AWS) und anderen Plattformen zu Managed Disks in Azure
 
 Sie können VHD-Dateien aus AWS oder lokalen Virtualisierungslösungen in Azure hochladen, um VMs zu erstellen, die Managed Disks nutzen. Dank Azure Managed Disks ist es nicht mehr erforderlich, Speicherkonten für Azure IaaS-VMs zu verwalten. Sie müssen nur den Typ (Premium oder Standard) und die benötigte Größe des Datenträgers angeben, der anschließend von Azure erstellt und verwaltet wird. 
 
@@ -101,9 +103,4 @@ Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Bevor Sie eine VHD in Azure hochladen, befolgen Sie die Anweisungen unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](virtual-machines-windows-prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

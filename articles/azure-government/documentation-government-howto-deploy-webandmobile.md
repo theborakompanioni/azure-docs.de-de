@@ -15,8 +15,9 @@ ms.workload: azure-government
 ms.date: 01/03/2016
 ms.author: sdubeymsft
 translationtype: Human Translation
-ms.sourcegitcommit: 40e2eea5c1a11dadb232c6ac7c224ca5fc847c02
-ms.openlocfilehash: 9a5efdd4c94c7cfc7a63c478f1f5b8124a8cb5c6
+ms.sourcegitcommit: 1cb57e5156dab976599ddfa9a58f26ca8ef1ee0e
+ms.openlocfilehash: 159c891dedb66dfaa238981b395b4bba074c5716
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -25,7 +26,7 @@ Dieser Artikel beschreibt, wie Azure App Service-Apps (API-Apps, Web-Apps, mobil
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Informationen zum Installieren und Konfigurieren von Visual Studio 2015 und Azure SDK finden Sie unter [Voraussetzungen für Visual Studio] (../app-service-api/app-service-api-dotnet-get-started.md#prerequisites).
-* Führen Sie [diese Anweisungen] (documentation-government-manage-subscriptions.md#connecting-via-visual-studio) aus, um Visual Studio für die Verbindung mit einem Azure Government-Konto zu konfigurieren.
+* Führen Sie [diese Anweisungen] (documentation-government-manage-subscriptions.md) aus, um Visual Studio für die Verbindung mit einem Azure Government-Konto zu konfigurieren.
 
 ## <a name="open-app-project-in-visual-studio"></a>Öffnen des App-Projekts in Visual Studio
 * Öffnen Sie die App-Lösung bzw. das App-Projekt in Visual Studio, erstellen Sie anhand [dieser Anweisungen] (../app-service-web/web-sites-dotnet-get-started.md#create-a-web-application) ein Projekt, oder laden Sie die Beispiel-App gemäß [dieser Schritte] (../app-service-api/app-service-api-dotnet-get-started.md#download-the-sample-application) herunter.
@@ -42,9 +43,4 @@ Dieser Artikel beschreibt, wie Azure App Service-Apps (API-Apps, Web-Apps, mobil
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen und Updates erhalten Sie, indem Sie den [Microsoft Azure Government-Blog](https://blogs.msdn.microsoft.com/azuregov/) abonnieren.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

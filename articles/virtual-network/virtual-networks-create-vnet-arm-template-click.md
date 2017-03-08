@@ -1,10 +1,10 @@
 ---
-title: Erstellen eines virtuellen Netzwerks mit einer Resource Manager-Vorlage | Microsoft Docs
-description: Erfahren Sie, wie Sie ein virtuelles Netzwerk mit einer Vorlage erstellen | Ressourcen-Manager.
+title: Erstellen eines virtuellen Netzwerks | Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie ein virtuelles Netzwerk mit einer Azure Resource Manager-Vorlage erstellen.
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: carmonm
+manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 69530861-2f97-4a6e-b336-a7baf2690044
@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c934f78e514230958fad8b2aa9be4d2e56a3a835
-ms.openlocfilehash: be3fbc2c14be06cac2b9213ee2da58545e34fc0e
+ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
+ms.openlocfilehash: 1e1ca336987082e06f172f7eb89036c64d1fec37
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-virtual-network-using-a-template"></a>Erstellen eines virtuellen Netzwerks mithilfe einer Vorlage
+# <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Erstellen eines virtuellen Netzwerks mit einer Azure Resource Manager-Vorlage
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
@@ -241,9 +243,4 @@ Informieren Sie sich, wie folgende Verbindungen hergestellt werden:
 - Eine Verbindung eines virtuellen Computers (VM) mit einem virtuellen Netzwerk. Lesen Sie hierzu den Artikel [Erstellen eines virtuellen Windows-Computers](../virtual-machines/virtual-machines-windows-hero-tutorial.md) oder [Erstellen eines virtuellen Linux-Computers](../virtual-machines/virtual-machines-linux-quick-create-portal.md). Anstatt gemäß den Schritten in den Artikeln ein VNet und ein Subnetz zu erstellen, können Sie für die Verbindung mit der VM auch ein vorhandenes VNet und Subnetz auswählen.
 - Eine Verbindung des virtuellen Netzwerks mit anderen virtuellen Netzwerken. Lesen Sie hierzu den Artikel [Konfigurieren einer VNet-zu-VNet-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 - Eine Verbindung des virtuellen Netzwerks mit einem lokalen Netzwerk. Verwenden Sie hierfür ein Site-to-Site-VPN oder eine ExpressRoute-Verbindung. Informationen zur Vorgehensweise finden Sie in den Artikeln [Add a Site-to-Site connection to a VNet with an existing VPN gateway connection](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) (Hinzufügen einer Site-to-Site-Verbindung zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung) und [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-linkvnet-arm.md).
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

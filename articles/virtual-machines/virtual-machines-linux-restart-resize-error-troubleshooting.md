@@ -1,5 +1,5 @@
 ---
-title: "Probleme beim Neustart oder Ändern der Größe eines virtuellen Computers | Microsoft-Dokumentation"
+title: "Probleme beim Neustart oder Ändern der Größe eines virtuellen Computers in Azure | Microsoft Docs"
 description: "Problembehandlung von Ressourcen-Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure"
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: 
@@ -15,13 +15,15 @@ ms.devlang: na
 ms.workload: required
 ms.date: 01/10/2017
 ms.author: delhan
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 0782000e87bed0d881be5238c1b91f89a970682c
-ms.openlocfilehash: f237c5ffe9e95d538959e2d622bb643c9986f0d2
+ms.sourcegitcommit: 38930edfc470a5c40ef1ccd73f4fa2353f84b2bf
+ms.openlocfilehash: 663783fbdf1d59cc72babe87ba2a769706e7fd80
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="troubleshoot-resource-manager-deployment-issues-with-restarting-or-resizing-an-existing-linux-virtual-machine-in-azure"></a>Problembehandlung von Ressourcen-Manager-Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure
+# <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-linux-vm-in-azure"></a>Behandeln von Bereitstellungsproblemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Linux-Computers in Azure
 Wenn Sie versuchen, einen beendeten virtuellen Azure-Computer zu starten oder die Größe eines vorhandenen virtuellen Azure-Computers zu ändern, tritt häufig ein Zuordnungsfehler auf. Dieser Fehler tritt auf, wenn in dem Cluster oder der Region keine Ressourcen verfügbar sind, oder wenn die angeforderte Größe des virtuellen Computers nicht unterstützt werden kann.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -64,10 +66,5 @@ Die Anforderung zur Größenänderung des virtuellen Computers muss im Originalc
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn beim Erstellen eines neuen virtuellen Linux-Computers in Azure Probleme auftreten, finden Sie Informationen unter [Behandeln von Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure](virtual-machines-linux-troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

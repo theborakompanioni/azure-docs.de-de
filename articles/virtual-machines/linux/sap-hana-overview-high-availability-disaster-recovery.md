@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 1a133d7710b1790241c0ff774c2fd40e86b64268
-ms.openlocfilehash: f0248ce46991d23c2f5bb0f1c8bf212207b7ad5f
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: 661733edbabd61b42bfb44b4ed107b1e757c2e28
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)
+# <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) 
 
 Hohe Verfügbarkeit und Notfallwiederherstellung sind wichtige Aspekte bei der Ausführung Ihrer unternehmenskritischen Server mit SAP HANA in Azure (große Instanzen). Es ist wichtig, dass Sie mit SAP, Ihrem Systemintegrator oder Microsoft zusammenarbeiten, um die richtige Strategie für hohe Verfügbarkeit bzw. die Notfallwiederherstellung zu implementieren. Außerdem ist es wichtig, die Werte für RPO (Recovery Point Objective) und die RTO (Recovery Time Objective) zu berücksichtigen, die für Ihre Umgebung gelten.
 
@@ -593,9 +595,4 @@ Deleting the HANA snapshot with command: "./hdbsql -n localhost -i 01 -U SCADMIN
 HANA snapshot deletion successfully.
 ```
 Sie können anhand dieses Beispiels erkennen, wie das Skript die Erstellung der HANA-Momentaufnahme aufzeichnet. Bei horizontaler Skalierung wird dieser Prozess auf dem Masterknoten ausgelöst. Der Masterknoten löst die synchrone Erstellung der Momentaufnahmen auf allen Workerknoten aus. Dann wird die Speichermomentaufnahme erstellt. Nach erfolgreicher Erstellung der Speichermomentaufnahmen wird die HANA-Momentaufnahme gelöscht.
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

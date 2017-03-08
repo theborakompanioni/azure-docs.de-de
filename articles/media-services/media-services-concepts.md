@@ -12,18 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/25/2017
 ms.author: juliako
 translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: d94b3c59ba23220f7cb377ada8fa2231eaa9838b
+ms.sourcegitcommit: 672d1518e22c5ab5595fb5c7c708f584e80b68e9
+ms.openlocfilehash: c6117296c8bd12e3bb8f276709bc4d4c2aa81719
+ms.lasthandoff: 02/27/2017
 
 
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
 
-## <a name="a-idassetsaassets-and-storage"></a><a id="assets"></a>Medienobjekte und Speicher
+## <a id="assets"></a>Medienobjekte und Speicher
 ### <a name="assets"></a>Objekte
 Ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/operations/asset) enthält digitale Dateien (z.B. Video, Audio, Bilder, Sammlungen von Miniaturansichten, Textspuren und Untertiteldateien) sowie die Metadaten zu diesen Dateien. Nachdem die digitalen Dateien in ein Medienobjekt geladen wurden, können Sie in den Codierungs- und Streaming-Workflows der Media Services verwendet werden.
 
@@ -67,7 +68,7 @@ Ein BLOB-Container dient zur Gruppierung eines Satzes von BLOBs. BLOB-Container 
 > 
 > 
 
-### <a name="a-idlocatorsalocators"></a><a id="locators"></a>Locator
+### <a id="locators"></a>Locator
 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Anhand einer Zugriffsrichtlinie werden die Berechtigungen eines Clients und die Dauer definiert, für die der Client auf eine bestimmte Ressource zugreifen kann. Locator können eine n:1-Beziehung mit einer Zugriffsrichtlinie aufweisen, wobei verschiedene Locator verschiedenen Clients verschiedene Startzeiten und Verbindungstypen bereitstellen können, wobei alle dieselben Berechtigungen und Einstellungen für die Dauer verwenden; aufgrund einer Einschränkung der Richtlinie für den gemeinsamen Zugriff, die von Azure Storage Services festgelegt wird, können jedoch nicht mehr als fünf eindeutige Locator mit einem bestimmten Medienobjekt gleichzeitig verknüpft sein. 
 
 Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator, die zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) oder für den progressiven Download von Medien verwendet werden, und SAS-URL-Locator, die zum Hochladen oder Herunterladen von Mediendateien auf/von Azure Storage verwendet werden. 
@@ -82,7 +83,7 @@ Ein [Auftrag](https://https://docs.microsoft.com/rest/api/media/operations/job) 
 
 Ein Auftrag enthält Metadaten zur auszuführenden Verarbeitung. Jeder Auftrag enthält eine oder mehrere [Aufgaben](https://docs.microsoft.com/rest/api/media/operations/task). Diese geben eine unteilbare Verarbeitungsaufgabe, die zugehörigen Eingabe- und Ausgabemedienobjekte, einen Medienprozessor und die zugehörigen Einstellungen an. Aufgaben innerhalb eines Auftrags können verkettet werden, wobei das Ausgabemedienobjekt als Eingabemedienobjekt für die nächste Aufgabe dient. Auf diese Weise kann ein Auftrag die gesamten Verarbeitungsschritte für eine Medienpräsentation umfassen.
 
-## <a name="a-idencodingaencoding"></a><a id="encoding"></a>Codieren
+## <a id="encoding"></a>Codieren
 Azure Media Services bietet verschiedene Optionen für die Codierung von Medien in der Cloud.
 
 Bei Verwendung von Media Services ist es wichtig, den Unterschied zwischen Codecs und Dateiformaten zu kennen.
@@ -112,13 +113,13 @@ Beim Erstellen des Kanals können Sie die Erfassungs-URL und die Vorschau-URL er
 
 Jedes Media Services-Konto kann mehrere Kanäle, mehrere Programme und mehrere StreamingEndpoints enthalten. Je nach den Anforderungen an Bandbreite und Sicherheit können StreamingEndpoint-Dienste einem oder mehreren Kanälen zugeordnet werden. Jeder StreamingEndpoint kann von jedem Kanal abrufen.
 
-### <a name="program"></a>Programm
-Mit einem [Programm](https://docs.microsoft.com/rest/api/media/operations/program) können Sie die Veröffentlichung und Speicherung von Segmenten in einem Livestream steuern. Kanäle verwalten Programme. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Stream von Inhalten aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist.
+### <a name="program-event"></a>Programm (Ereignis)
+Mit einem [Programm (Ereignis)](https://docs.microsoft.com/rest/api/media/operations/program) können Sie die Veröffentlichung und Speicherung von Segmenten in einem Livestream steuern. Die Programme (Ereignisse) werden von den Kanälen verwaltet. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Stream von Inhalten aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist.
 Über die Eigenschaft **ArchiveWindowLength** können Sie die Anzahl der Stunden festlegen, für die Sie den aufgezeichneten Inhalt für das Programm beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden.
 
-ArchiveWindowLength bestimmt außerdem die maximale Dauer, für die Clients von der aktuellen Liveposition aus rückwärts suchen können. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Durch den Wert dieser Eigenschaft wird außerdem festgelegt, wie lange Clientmanifeste wachsen können.
+ArchiveWindowLength bestimmt außerdem die maximale Dauer, für die Clients von der aktuellen Liveposition aus rückwärts suchen können. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
 
-Jedes Programm ist mit einem Medienobjekt verknüpft. Zum Veröffentlichen des Programms müssen Sie einen Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
+Jedes Programm (Ereignis) ist mit einem Medienobjekt verknüpft. Zum Veröffentlichen des Programms müssen Sie einen Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
 
 Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, 6 Stunden eines Programms zu archivieren, jedoch nur die letzten 10 Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von 6 Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Programm wird auf die Archivierung von 10 Minuten festgelegt. Dieses Programm wird veröffentlicht.
 
@@ -152,7 +153,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 [Schützen mit DRM](media-services-protect-with-drm.md)
 
 ## <a name="delivering"></a>Übermitteln
-### <a name="a-iddynamicpackagingadynamic-packaging"></a><a id="dynamic_packaging"></a>Dynamische Paketerstellung
+### <a id="dynamic_packaging"></a>Dynamische Paketerstellung
 Bei der Arbeit mit Media Services empfiehlt es sich, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren.
 
 ### <a name="streaming-endpoint"></a>Streamingendpunkt
@@ -223,10 +224,5 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

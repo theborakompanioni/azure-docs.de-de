@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: adegeo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 090374b057a62251e40ccc41f60f61e84e08a03f
-ms.openlocfilehash: ff137ead5e3490a129b36c959040d3571bff7669
+ms.sourcegitcommit: 3f1fdddcf382026e25ac6bca0b835e560152be9f
+ms.openlocfilehash: 98b302c26867d2fb2ade296e6983306266fa6f63
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="automatic-scaling-and-virtual-machine-scale-sets"></a>Automatische Skalierung und Skalierungsgruppen für virtuelle Computer
+# <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>Verwenden von automatischer Skalierung und VM-Skalierungsgruppen
 Bei der automatischen Skalierung virtueller Computer in einer Skalierungsgruppe werden je nach Leistungsbedarf Computer in der Gruppe erstellt oder wieder gelöscht. Wenn das Arbeitsvolumen zunimmt, benötigt eine Anwendung unter Umständen zusätzliche Ressourcen, um ihre Aufgaben effizient auszuführen.
 
 Die automatische Skalierung ist ein automatisierter Prozess, der den Verwaltungsaufwand erleichtert. Dank des geringeren Aufwands müssen Sie nicht ständig die Systemleistung überwachen oder Entscheidungen für die Ressourcenverwaltung treffen. Die Skalierung ist ein elastischer Prozess. Bei zunehmender Auslastung können weitere Ressourcen hinzugefügt und bei geringerem Bedarf wieder entfernt werden, um die Kosten gering zu halten, ohne die Leistung zu beeinträchtigen.
@@ -220,10 +222,5 @@ Ein Beispiel der Einrichtung der automatischen Skalierung im Azure-Portal finden
 * Informationen zu Benachrichtigungsfeatures finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
 * Informationen zur Verwendung von Überwachungsprotokollen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
 * Erfahren Sie mehr über [erweiterte Szenarien für die automatische Skalierung](virtual-machine-scale-sets-advanced-autoscale.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

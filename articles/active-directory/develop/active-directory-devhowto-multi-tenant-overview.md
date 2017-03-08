@@ -17,6 +17,7 @@ ms.author: skwan;bryanla
 translationtype: Human Translation
 ms.sourcegitcommit: 7d6525f4614c6301f0ddb621b0483da70842a71b
 ms.openlocfilehash: 8daad095d80b244f53b4ee94c48ae9421172f062
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -25,7 +26,7 @@ Wenn Sie vielen Organisationen eine Software-as-a-Service-Anwendung anbieten, k�
 
 Wenn Sie eine vorhandene Anwendung haben, die über ein eigenes Kontosystem verfügt oder andere Arten von Anmeldungen über andere Cloudanbieter unterstützt, müssen Sie für das Hinzufügen einer Azure AD-Anmeldung von einem beliebigen Mandanten nur folgende Schritte ausführen: Registrieren Ihrer App, Hinzufügen von Anmeldecode über OAuth2, OpenID Connect oder SAML und Einbinden einer Schaltfläche „Bei Microsoft anmelden“ in die Anwendung. Klicken Sie auf die unten angegebene Schaltfläche, um weitere Informationen zum Branding Ihrer Anwendung zu erhalten.
 
-[![Anmeldeschaltfläche][AAD-Anmeldung]][AAD-App-Branding]
+[![Sign in button][AAD-Sign-In]][AAD-App-Branding]
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit der Erstellung einer Anwendung für einen Mandanten für Azure AD bereits vertraut sind.  Besuchen Sie andernfalls die [Startseite des Entwicklerhandbuchs][AAD-Dev-Guide], und nutzen Sie unsere Schnellstartanleitungen.
 
@@ -60,7 +61,7 @@ Die Anmeldeantwort an die Anwendung enthält dann ein Token, das den Benutzer da
 
 Wie bereits erwähnt, sollte von mehrinstanzenfähigen Anwendungen auch eine einheitliche Anmeldeoberfläche für Benutzer bereitgestellt werden, die die Brandingrichtlinien für Azure AD-Anwendungen erfüllt. Klicken Sie auf die unten angegebene Schaltfläche, um weitere Informationen zum Branding Ihrer Anwendung zu erhalten.
 
-[![Anmeldeschaltfläche][AAD-Anmeldung]][AAD-App-Branding]
+[![Sign in button][AAD-Sign-In]][AAD-App-Branding]
 
 Wir sehen uns nun die Nutzung des Endpunkts „/common“ und Ihre Codeimplementierung genauer an.
 
@@ -235,10 +236,5 @@ Verwenden Sie den unten angezeigten Kommentarabschnitt, um uns Feedback zu sende
 
 
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

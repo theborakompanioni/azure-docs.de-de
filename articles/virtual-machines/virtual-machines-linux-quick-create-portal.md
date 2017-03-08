@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 1/17/2016
+ms.date: 1/17/2017
 ms.author: iainfou
 translationtype: Human Translation
 ms.sourcegitcommit: beff4fb41ed46b016088734054e7a7897fed1a30
 ms.openlocfilehash: 7287b87b1e50e28de06a5363a1f35bd7ac34d51c
+ms.lasthandoff: 02/15/2017
 
 
 ---
@@ -103,10 +104,5 @@ Sie haben nun schnell eine Linux-VM zum Testen und für Demonstrationszwecke ers
 * [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Erstellen einer geschützten Linux-VM mit einer Azure-Vorlage](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

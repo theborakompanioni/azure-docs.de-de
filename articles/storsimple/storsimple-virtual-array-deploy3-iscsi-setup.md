@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
 translationtype: Human Translation
-ms.sourcegitcommit: fd73672f97b4c16e49b2fad5e53042764f5793ca
-ms.openlocfilehash: 3eb5f21eed1c583587cf7642db4e70102c818348
+ms.sourcegitcommit: d72ff7449a87dfa9223b7c5e77446de23502eb84
+ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="deploy-storsimple-virtual-array--set-up-your-virtual-device-as-an-iscsi-server"></a>Bereitstellen von StorSimple Virtual Array – Einrichten des virtuellen Geräts als iSCSI-Server
+# <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
 ![Prozessablauf für iSCSI-Setup](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
@@ -86,7 +87,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
       > Stellen Sie beim Beitritt Ihres iSCSI-Servers zu einer Domäne sicher, dass sich Ihr virtuelles Array in seiner eigenen Organisationseinheit für Microsoft Azure Active Directory befindet und keine Gruppenrichtlinienobjekte darauf angewendet sind.
       > 
       > 
-   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png) beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
+   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
       
        ![Anmeldeinformationen](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. Klicken Sie auf **Übernehmen**. Die Geräteeinstellungen werden angewendet und überprüft.
@@ -96,7 +97,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
    
     Auf der Seite **Webproxy** :
    
-   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://Host-IP-Adresse* oder FDQN:*Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
+   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://*Host-IP-Adresse oder FDQN*:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
    2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
    3. Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
    4. Klicken Sie auf **Übernehmen**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
@@ -244,10 +245,5 @@ Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines 
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-
-
-
-<!--HONumber=Nov16_HO4-->
 
 

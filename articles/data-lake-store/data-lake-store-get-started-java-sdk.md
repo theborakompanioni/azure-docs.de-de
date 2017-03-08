@@ -15,8 +15,9 @@ ms.workload: big-data
 ms.date: 12/23/2016
 ms.author: nitinme
 translationtype: Human Translation
-ms.sourcegitcommit: 091fadce064086d82b833f8e44edfbba125d3e6b
-ms.openlocfilehash: cb5babdd8fea3615d8aa27f05a07c3b489f3faa4
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 3e4302e7c5b54a46994eccaa8cf9ecbb0a84446d
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -50,7 +51,7 @@ In diesem Tutorial verwenden wir einen geheimen Clientschlüssel der Azure AD-An
 2. Abrufen der Client-ID, des geheimen Schlüssels und des Token-Endpunkts für die Azure AD-Webanwendung
 3. Konfigurieren des Zugriffs für die Azure AD-Webanwendung auf die Data Lake Store-Datei bzw. den Data Lake Store-Ordner, auf die bzw. auf den Sie über die zu erstellende Java-Anwendung zugreifen möchten.
 
-Eine entsprechende Anleitung finden Sie unter [Erstellen einer Active Directory-Anwendung](data-lake-store-authenticate-using-active-directory.md#create-an-active-directory-application).
+Eine entsprechende Anleitung finden Sie unter [Erstellen einer Active Directory-Anwendung](data-lake-store-authenticate-using-active-directory.md).
 
 Token können mit Azure Active Directory auch auf andere Weise abgerufen werden. So können Sie einen Authentifizierungsmechanismus wählen, der für Ihr Szenario geeignet ist. Dabei kann es sich beispielsweise um eine in einem Browser ausgeführte Anwendung, um eine als Desktopanwendung verteilte Anwendung oder um eine Serveranwendung handeln, die lokal oder auf einem virtuellen Azure-Computer ausgeführt wird. Außerdem haben Sie die Wahl zwischen verschiedenen Arten von Anmeldeinformationen. Hierzu zählen etwa Kennwörter, Zertifikate und die zweistufige Authentifizierung. Darüber hinaus können Sie mit Azure Active Directory Ihre lokalen Active Directory-Benutzer mit der Cloud synchronisieren. Ausführlichere Informationen finden Sie unter [Authentifizierungsszenarien für Azure Active Directory](../active-directory/active-directory-authentication-scenarios.md). 
 
@@ -158,10 +159,5 @@ Für dateibezogene Lese- und Schreibvorgänge werden standardmäßige Java-Daten
 * [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

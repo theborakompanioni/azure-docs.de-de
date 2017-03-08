@@ -4,7 +4,7 @@ description: "Erläutert, wie das Gerät für die Remoteverwaltung konfiguriert 
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 923377aa-f451-4656-87de-5e95a34a6a2a
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 64f6f245b86d9194a52e40ed226de9960a36f3f9
-ms.openlocfilehash: 63bdf5e5cecbb473a18965e311be06abc72cacc7
+ms.sourcegitcommit: 5760c4a381a10fd1619b0239dd38e41d88f495e5
+ms.openlocfilehash: b916173e127394d3ea06eded36285bdbbf884b12
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-remotely-to-your-storsimple-device"></a>Herstellen einer Remoteverbindung mit dem StorSimple-Gerät
+# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Herstellen einer Remoteverbindung mit Geräten der StorSimple 8000-Serie
+
 ## <a name="overview"></a>Übersicht
 Sie können Windows PowerShell-Remoting zum Herstellen einer Verbindung mit dem StorSimple-Gerät verwenden. Wenn Sie auf diese Weise eine Verbindung herstellen, wird kein Menü angezeigt. (Sie sehen nur ein Menü, wenn Sie zum Verbinden die serielle Konsole auf dem Gerät verwenden.) Mit Windows PowerShell-Remoting stellen Sie eine Verbindung mit einem bestimmten Runspace her. Sie können zudem die Anzeigesprache angeben. 
 
@@ -233,10 +236,5 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr zur [Verwendung von Windows PowerShell zum Verwalten Ihres StorSimple-Geräts](storsimple-windows-powershell-administration.md).
 * Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

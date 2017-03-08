@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/07/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: f7589fa62dcfedc6f99439f453a40f999ff8d845
-ms.openlocfilehash: aa1e59a38b37c5e78b61ad7fe10f7c8461b7fe1d
+ms.sourcegitcommit: d31d4c390d5e03c8b206284c3ae75defed2a38af
+ms.openlocfilehash: 83bedb42e8e685f5ea65e160ab7bfe128236ef82
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -49,7 +50,6 @@ Falls Ihre Proxyeinstellung keinen direkten Azure-Speicherzugriff ermöglicht, �
 Fügen Sie beim Hinzufügen der Quelle die Abonnement-ID ( **subscriptionid** ) an den Anzeigenamen an.
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
-
 Der XML-Code des Ereignisses enthält die folgenden Metadaten – einschließlich der Abonnement-ID:
 
 ![Ereignis-XML][1]
@@ -65,7 +65,7 @@ Fehler
 ### <a name="when-running-command-azlog-authorize-why-do-i-get-the-following-error"></a>Warum tritt beim Ausführen des Befehls **azlog authorize**der folgende Fehler auf?
 Fehler
 
-  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com' with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.* (Warnung beim Erstellen der Rollenzuweisung: Autorisierungsfehler. Client „janedo@microsoft.com“ mit der Objekt-ID „fe9e03e4-4dad-4328-910f-fd24a9660bd2“ hat keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/70d95299-d689-4c97-b971-0d8ff000000“.)
+  *Warning creating Role Assignment - AuthorizationFailed: The client janedo@microsoft.com with object id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2' does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/70d95299-d689-4c97-b971-0d8ff0000000'.* (Warnung beim Erstellen der Rollenzuweisung: Autorisierungsfehler. Client „janedo@microsoft.com“ mit der Objekt-ID „fe9e03e4-4dad-4328-910f-fd24a9660bd2“ hat keine Berechtigung zum Ausführen der Aktion „Microsoft.Authorization/roleAssignments/write“ über Bereich „/subscriptions/70d95299-d689-4c97-b971-0d8ff000000“.)
 
 Der Befehl **azlog authorize** weist dem mit **Azlog createazureid** erstellten Azure AD-Dienstprinzipal für die angegebenen Abonnements die Rolle „Leser“ zu. Handelt es sich bei der Azure-Anmeldung nicht um einen Co-Administrator oder Besitzer des Abonnements, tritt ein Fehler mit einem Hinweis auf eine nicht erfolgreiche Autorisierung auf. Für diesen Vorgang wird die in Azure verfügbare rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) des Co-Administrators oder Besitzers benötigt.
 
@@ -104,13 +104,9 @@ In der folgenden Beispielkonfiguration werden lediglich Ereignisse mit den Ereig
 
 Vergewissern Sie sich nach dem Vornehmen von Änderungen im Speicherkonto, dass die richtigen Ereignisse erfasst werden.
 
-Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an [AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com)
+Wenn während der Installation und Konfiguration Probleme auftreten, öffnen Sie eine [Supportanfrage](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request), und wählen Sie „Protokollintegration“ als den Dienst aus, für den Sie Support anfordern.
+
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

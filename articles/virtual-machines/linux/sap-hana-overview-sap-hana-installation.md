@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 3827e74433a859e65071a1041c5ed6c8253db8df
-ms.openlocfilehash: be17b2de227ef6d93f8d326ff060c3c4788eb622
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: 0d998b5347a9da6dd209b0ba106792ab5c34164d
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="install-sap-hana-on-sap-hana-on-azure-large-instances"></a>Installieren von SAP HANA in Azure (große Instanzen)
+# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)
 
 Die Installation von SAP HANA liegt in Ihrer Verantwortung und kann unmittelbar nach der Übergabe eines Servers für SAP HANA in Azure (große Instanzen) erfolgen. Beachten Sie, dass gemäß einer SAP-Richtlinie die Installation von SAP HANA durch einen zertifizierten SAP HANA-Installationsbeauftragen durchgeführt werden muss, also durch eine Person, die die Zertifizierungsprüfung „Certified SAP Technology Associate – SAP HANA Installation“ bestanden hat, oder durch einen von SAP zertifizierten Systemintegrator (SI).
 
@@ -80,10 +82,5 @@ SAP reagiert sehr empfindlich auf Zeitunterschiede bei den verschiedenen Kompone
 
 Bei SAP HANA in Azure (große Instanzen) gilt die in Azure erfolgende Zeitsynchronisierung nicht für die Compute-Einheiten in „Große Instanz“-Stapeln. Dies gilt nicht für die native Ausführung von SAP-Anwendungen in Azure (auf VMs), da Azure sichergestellt, dass die Uhrzeit eines Systems ordnungsgemäß synchronisiert wird. Deshalb muss ein getrennter Zeitserver eingerichtet werden, der von auf Azure-VMs ausgeführten SAP-Anwendungsservern und den SAP HANA-Datenbankinstanzen verwendet werden kann, die in HANA (große Instanzen) ausgeführt werden. Der Speicherinfrastruktur in „Große Instanz“-Stapeln wird mit NTP-Servern zeitlich synchronisiert.
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

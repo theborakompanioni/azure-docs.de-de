@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren von Benutze
 services: app-service\mobile
 documentationcenter: xamarin
 author: adrianhall
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: adrianha
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 30fac48cbacb26b03ce430987997c38c68368385
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,9 +28,9 @@ ms.openlocfilehash: 65c8ff42c9c34eb51cb26153eff9b45aa0926838
 In diesem Thema wird die Authentifizierung von Benutzern einer mobilen App Service-App über Ihre Clientanwendung veranschaulicht. In diesem Tutorial fügen Sie dem Xamarin Forms-Schnellstartprojekt durch Verwenden eines von App Service unterstützten Identitätsanbieters eine Authentifizierungsfunktion hinzu. Nach der erfolgreichen Authentifizierung und Autorisierung durch Ihre mobile App wird die Benutzer-ID angezeigt, und Sie erhalten Zugriff auf beschränkte Tabellendaten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Wir empfehlen Ihnen, zuerst das Tutorial [Erstellen einer Xamarin Forms-App][1] durchzuarbeiten, um für dieses Tutorial das bestmögliche Ergebnis zu erzielen. Nach Abschluss dieses Tutorials verfügen Sie über ein Xamarin Forms-Projekt, bei dem es sich um eine TodoList-App für mehrere Plattformen handelt.
+Wir empfehlen Ihnen, zuerst das Tutorial [Erstellen einer Xamarin.Forms-App][1] durchzuarbeiten, um für dieses Tutorial das bestmögliche Ergebnis zu erzielen. Nach Abschluss dieses Tutorials verfügen Sie über ein Xamarin Forms-Projekt, bei dem es sich um eine TodoList-App für mehrere Plattformen handelt.
 
-Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Authentifizierungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps][2].
+Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Authentifizierungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Arbeiten Sie mit dem .NET-Back-End-Server SDK für Azure Mobile Apps][2].
 
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Services
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -38,7 +39,7 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Hinzufügen der Authentifizierung zur portablen Klassenbibliothek
-Mobile Apps verwendet die [LoginAsync][3]-Erweiterungsmethode auf dem [MobileServiceClient][4], um für einen Benutzer die Anmeldung mit der App Service-Authentifizierung durchzuführen. In diesem Beispiel wird ein vom Server verwalteter Authentifizierungsfluss verwendet, bei dem in der App die Anmeldeoberfläche des Anbieters angezeigt wird. Weitere Informationen finden Sie unter [Vom Server verwaltete Authentifizierung][5]. Sie können stattdessen auch die [Vom Client verwaltete Authentifizierung][6] verwenden, um in Ihrer Produktions-App eine bessere Benutzeroberfläche bereitzustellen.
+Mobile Apps verwendet die [LoginAsync][3]-Erweiterungsmethode auf dem [MobileServiceClient][4], um für einen Benutzer die Anmeldung mit der App Service-Authentifizierung durchzuführen. In diesem Beispiel wird ein vom Server verwalteter Authentifizierungsfluss verwendet, bei dem in der App die Anmeldeoberfläche des Anbieters angezeigt wird. Weitere Informationen finden Sie unter [Vom Server verwaltete Authentifizierung][5]. Sie können stattdessen auch die [vom Client verwaltete Authentifizierung][6] verwenden, um in Ihrer Produktions-App eine bessere Benutzeroberfläche bereitzustellen.
 
 Für die Authentifizierung mit einem Xamarin Forms-Projekt definieren Sie in der portablen Klassenbibliothek für die App eine **IAuthenticate**-Schnittstelle. Fügen Sie anschließend der Benutzeroberfläche, die in der portablen Klassenbibliothek definiert ist, die Schaltfläche **Anmelden** hinzu. Diese Schaltfläche wird zum Starten der Authentifizierung verwendet. Nach der erfolgreichen Authentifizierung werden die Daten aus dem mobilen App-Back-End geladen.
 
@@ -307,7 +308,7 @@ Nachdem Sie dieses einfache Tutorial zur Authentifizierung abgeschlossen haben, 
 
 * [Hinzufügen von Pushbenachrichtigungen zur App](app-service-mobile-xamarin-forms-get-started-push.md)
   
-   Hier erfahren Sie, wie Sie Ihrer App die Unterstützung von Pushbenachrichtigungen hinzufügen und Ihr Mobile App-Back-End für die Verwendung von Azure Notification Hubs zum Senden von Pushbenachrichtigungen konfigurieren.
+  Hier erfahren Sie, wie Sie Ihrer App die Unterstützung von Pushbenachrichtigungen hinzufügen und Ihr Mobile App-Back-End für die Verwendung von Azure Notification Hubs zum Senden von Pushbenachrichtigungen konfigurieren.
 * [Aktivieren der Offlinesynchronisierung für Ihre App](app-service-mobile-xamarin-forms-get-started-offline-data.md)
   
   Erfahren Sie, wie Sie mithilfe eines Mobile App-Back-Ends Ihrer App Offlineunterstützung hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (Anzeigen, Hinzufügen und Ändern von Daten) auch ohne Netzwerkverbindung.
@@ -322,9 +323,4 @@ Nachdem Sie dieses einfache Tutorial zur Authentifizierung abgeschlossen haben, 
 [5]: app-service-mobile-dotnet-how-to-use-client-library.md#serverflow
 [6]: app-service-mobile-dotnet-how-to-use-client-library.md#clientflow
 [7]: https://msdn.microsoft.com/library/azure/jj730936(v=azure.10).aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

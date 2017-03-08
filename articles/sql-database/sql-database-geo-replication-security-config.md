@@ -18,10 +18,12 @@ ms.author: sashan
 translationtype: Human Translation
 ms.sourcegitcommit: 2b55b6b4475abdbc1985d8ac370b3b612b77eb0e
 ms.openlocfilehash: ae06e6855a11f91ce18e3b12698b3d01e23a6a2c
+ms.lasthandoff: 01/07/2017
 
 
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover 
+
 > [!NOTE]
 > [Die aktive Georeplikation](sql-database-geo-replication-overview.md) ist jetzt für alle Datenbanken in allen Diensttarifen verfügbar.
 >  
@@ -101,10 +103,5 @@ Der letzte Schritt besteht darin, auf dem oder den Zielservern die Anmeldungen m
 * Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 * Informationen zur Verwendung und Konfiguration der aktiven Georeplikation finden Sie unter [aktiven Georeplikation](sql-database-geo-replication-overview.md)
 * Informationen zur Verwendung der Geowiederherstellung finden Sie unter [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

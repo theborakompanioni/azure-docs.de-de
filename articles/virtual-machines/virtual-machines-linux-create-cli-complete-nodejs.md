@@ -1,6 +1,6 @@
 
 ---
-title: "Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle 1.0 | Microsoft Docs"
+title: "Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0 | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkschnittstellenkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle 1.0 von Grund auf neu erstellen."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -17,12 +17,13 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 0dee2c3b92adc4098a51014dd7379aa3d53c1627
-ms.openlocfilehash: 8c051aca8aa9eb0ebbd55098917218f6f874c1be
+ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
+ms.openlocfilehash: 03356c0499c595f73221d05d941233de5f01f357
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-complete-linux-environment-by-using-the-azure-cli-10"></a>Erstellen einer vollständigen Linux-Umgebung über die Azure-Befehlszeilenschnittstelle 1.0
+# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0
 In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
 
 Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Wenn Sie wissen, wie das System aufgebaut ist, können Sie es mithilfe von [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)deutlich schneller neu erstellen. Und wenn Sie wissen, wie die einzelnen Komponenten Ihrer Umgebung zusammenwirken, ist die Erstellung von Vorlagen für deren Automatisierung viel einfacher.
@@ -42,7 +43,7 @@ Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0 (Vorschau):](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -1292,9 +1293,4 @@ Möglicherweise möchten Sie [weitere Informationen zum Bereitstellen von Vorlag
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können jetzt beginnen, mit mehreren Netzwerkkomponenten und VMs zu arbeiten. Sie können diese Beispielumgebung nutzen, um Ihre Anwendung mithilfe der hier eingeführten zentralen Komponenten zu erstellen.
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Überwachen Ihrer Logik-Apps in Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Ergebnisse Ihrer Logik-Apps überprüfen können."
+title: "Aktivieren von Protokollierung und Warnungen, Überprüfen des Ausführungsverlaufs, Nachverfolgen von Ein- und Ausgaben – Azure Logic Apps | Microsoft Docs"
+description: "Überwachen des Status Ihrer Logik-App-Workflows durch das Protokollieren und Nachverfolgen und das Anzeigen von Verlauf und Diagnosen"
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: jehollan
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9c74b25a2ac5e2088a841d97920035376b7f3f11
-ms.openlocfilehash: db3684fc5cc4ae7933454a02d8440d1eb4948828
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: d6840be7afc05d8d563215e370c59cf41a206e4f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="monitor-your-logic-apps"></a>Überwachen von Logik-Apps
-Nach dem [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md)können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen.  Sie können auch Dienste wie Azure-Diagnose und Azure-Warnungen einrichten, um Ereignisse in Echtzeit zu überwachen und in bestimmten Situationen benachrichtigt zu werden (beispielsweise, wenn innerhalb einer Stunde mehr als fünf Ausführungen nicht erfolgreich waren).
+# <a name="check-the-performance-and-start-diagnostic-logging-and-alerts-of-your-workflows-in-logic-apps"></a>Überprüfen der Leistung und Starten von Diagnoseprotokollen und Warnungen für Ihre Workflows in Logic Apps
+Nach dem [Erstellen einer Logik-App](../logic-apps/logic-apps-create-a-logic-app.md) können Sie den vollständigen Verlauf ihrer Ausführung im Azure-Portal einsehen.  Sie können auch Dienste wie Azure-Diagnose und Azure-Warnungen einrichten, um Ereignisse in Echtzeit zu überwachen und in bestimmten Situationen benachrichtigt zu werden (beispielsweise, wenn innerhalb einer Stunde mehr als fünf Ausführungen nicht erfolgreich waren).
 
 ## <a name="monitor-in-the-azure-portal"></a>Überwachen im Azure-Portal
 Wählen Sie zum Anzeigen des Verlaufs **Durchsuchen** und dann **Logic Apps**. Eine Liste mit allen Logik-Apps Ihres Abonnements wird angezeigt.  Wählen Sie die zu überwachende Logik-App aus.  Daraufhin erscheint eine Liste mit allen Aktionen und Triggern, die für diese Logik-App aufgetreten sind.
@@ -137,10 +139,5 @@ Sie können diese Telemetrie aus dem Event Hub oder dem Speicher auch in anderen
 * [Allgemeine Beispiele und Szenarien für Logik-Apps](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Erstellen einer Bereitstellungsvorlage für Logik-Apps](../logic-apps/logic-apps-create-deploy-template.md)
 * [Unternehmensintegrationsfeatures](../logic-apps/logic-apps-enterprise-integration-overview.md)
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

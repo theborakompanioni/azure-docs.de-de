@@ -4,7 +4,7 @@ description: "Beschreibt die neuen Features sowie Probleme und Problemumgehungen
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/18/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4d3609ae1ea5fba89a9c0222586f578fdaeea757
+ms.sourcegitcommit: 0e31079494eb709a3333d6c8735f47f8406fea05
+ms.openlocfilehash: 846ff5124be258580c060bfe64bab1a4ccd31202
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="storsimple-8000-series-update-3-release-notes"></a>Versionsanmerkungen zu Update 3 der StorSimple 8000-Serie
+# <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Versionshinweise zu Update 3 für Geräte der StorSimple 8000-Serie
+
 ## <a name="overview"></a>Übersicht
 Die folgenden Versionsanmerkungen beschreiben die neuen Features und weisen auf wichtige offene Punkte bei Update 3 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind. 
 
@@ -90,10 +93,5 @@ Dieses Update gilt nicht für die StorSimple Cloud Appliance (auch bekannt als d
 
 ## <a name="next-step"></a>Nächster Schritt
 Erfahren Sie, wie Sie [Update 3 auf Ihrem StorSimple-Gerät installieren](storsimple-install-update-3.md) .
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

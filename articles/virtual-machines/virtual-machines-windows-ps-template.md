@@ -1,25 +1,30 @@
-<properties
-  pageTitle="Erstellen eines virtuellen Computers mit einer Resource Manager-Vorlage | Microsoft Docs"
-  description="Verwenden Sie eine Resource Manager-Vorlage und PowerShell, um ganz einfach einen neuen virtuellen Windows-Computer zu erstellen."
-  services="virtual-machines-windows" 
-  documentationcenter=""
-  author="davidmu1"
-  manager="timlt"
-  editor=""
-  tags="azure-resource-manager"/>
+---
+title: Erstellen einer Windows-VM mithilfe einer Vorlage in Azure | Microsoft Docs
+description: Verwenden Sie eine Resource Manager-Vorlage und PowerShell, um ganz einfach einen neuen virtuellen Windows-Computer zu erstellen.
+services: virtual-machines-windows
+documentationcenter: 
+author: davidmu1
+manager: timlt
+editor: 
+tags: azure-resource-manager
+ms.assetid: 19129d61-8c04-4aa9-a01f-361a09466805
+ms.service: virtual-machines-windows
+ms.workload: na
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 01/06/2017
+ms.author: davidmu
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: 32e30b44c2f7cfa9c1069190fdc53dbe6e9f4cd5
+ms.openlocfilehash: c1c301b5687cf35e93698a66fac7103b0cc90aed
+ms.lasthandoff: 03/01/2017
 
-<tags
-  ms.assetid="19129d61-8c04-4aa9-a01f-361a09466805"
-  ms.service="virtual-machines-windows"
-  ms.workload="na"
-  ms.tgt_pltfrm="vm-windows"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.date="01/06/2017"
-  ms.author="davidmu"/>
 
+---
 
-# <a name="create-a-windows-virtual-machine-with-a-resource-manager-template"></a>Erstellen Sie einen virtuellen Windows-Computer mit einer Resource Manager-Vorlage
+# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Erstellen eines virtuellen Windows-Computer mit einer Resource Manager-Vorlage
 
 In diesem Artikel wird gezeigt, wie Sie eine Azure Resource Manager-Vorlage mithilfe von PowerShell bereitstellen. Mit dieser [Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json) wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit einem einzelnen Subnetz bereitgestellt.
 
@@ -95,10 +100,5 @@ DeploymentDebugLogLevel :
 ## <a name="next-steps"></a>Nächste Schritte
 * Falls bei der Bereitstellung Probleme aufgetreten sind, sollten Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) lesen.
 * Informationen zur Verwaltung des erstellten virtuellen Computers finden Sie unter [Verwalten von virtuellen Computern mit Azure Resource Manager und PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

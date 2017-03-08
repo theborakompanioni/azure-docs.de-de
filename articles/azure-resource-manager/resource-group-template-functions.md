@@ -17,6 +17,7 @@ ms.author: tomfitz
 translationtype: Human Translation
 ms.sourcegitcommit: 33e6b9ba880f56d967b49d0b89e61d1b531e8376
 ms.openlocfilehash: 1d8cb6894399a7863392a7f11bde69d75d4685c3
+ms.lasthandoff: 02/16/2017
 
 
 ---
@@ -721,7 +722,7 @@ Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
         }
      },
      "variables": {
-         "combinedarray": "[concat(parameters('firstarray'), parameters('secondarray'))]
+         "combinedarray": "[concat(parameters('firstarray'), parameters('secondarray'))]"
      }
 
 
@@ -1217,10 +1218,5 @@ Das folgende Beispiel zeigt ein Abrufen der subscription-Funktion im Abschnitt �
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](resource-group-linked-templates.md)
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md)
 * Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](resource-group-template-deploy.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

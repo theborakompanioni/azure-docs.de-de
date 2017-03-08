@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie mit Access Control-Datensätzen (Acce
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: 1a93ef9c3418da64302d251203fd195708437931
+ms.sourcegitcommit: 94a25f63887aea4eb71420dbd7ddc536e9f8d644
+ms.openlocfilehash: 2ce65aa4efba735305208f7a6d761bc2814d1b8f
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-access-control-records-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Access Control-Datensätzen für das StorSimple Virtual Array
+# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Access Control-Datensätzen für StorSimple Virtual Array
 
 ## <a name="overview"></a>Übersicht
 
@@ -127,10 +129,5 @@ Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Lesen Sie sich die weiteren Informationen zum [Hinzufügen von Volumes und Konfigurieren von ACRs](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume) durch.
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

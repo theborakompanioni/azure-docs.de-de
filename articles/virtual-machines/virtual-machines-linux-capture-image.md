@@ -1,6 +1,6 @@
 ---
-title: Erfassen eines virtuellen Linux-Computers mit der Azure CLI 2.0 (Vorschau) | Microsoft-Dokumentation
-description: "Erfassen und Generalisieren eines Images eines Linux-basierten virtuellen Azure-Computers mit verwalteten Datenträgern, die mit der Azure CLI 2.0 (Vorschau) erstellt wurden"
+title: Erfassen virtueller Linux-Computer mit Azure CLI 2.0 | Microsoft Docs
+description: "Erfassen und Generalisieren eines Images eines Linux-basierten virtuellen Azure-Computers mit verwalteten Datenträgern, die mit Azure CLI 2.0 erstellt wurden"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -16,29 +16,25 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 4620ace217e8e3d733129f69a793d3e2f9e989b2
-ms.openlocfilehash: 64b829de4389ba6aa46dc51afd0cff3f40265d68
+ms.sourcegitcommit: 93abc8b1b14f58b0d0be52517a2b63dfe2dc32fb
+ms.openlocfilehash: c72f576d992c9adfa83b9744672397045833c43f
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="how-to-generalize-and-capture-a-linux-virtual-machine-using-the-azure-cli-20-preview"></a>Generalisieren und Erfassen eines virtuellen Linux-Computers mithilfe der Azure CLI 2.0 (Vorschau)
-Zum Wiederverwenden von virtuellen Computern (VMs), die in Azure bereitgestellt und konfiguriert wurden, erfassen Sie ein Image des virtuellen Computers. Der Prozess umfasst auch das Verallgemeinern des virtuellen Computers zum Entfernen persönlicher Kontoinformationen, bevor Sie neue virtuelle Computer aus dem Image bereitstellen. In diesem Artikel wird erläutert, wie Sie mithilfe der verwalteten Azure-Datenträger ein Image eines virtuellen Computers mit der Azure CLI 2.0 (Vorschau) für einen virtuellen Computer erfassen. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+# <a name="how-to-generalize-and-capture-a-linux-virtual-machine"></a>Generalisieren und Erfassen eines virtuellen Linux-Computers
+Zum Wiederverwenden von virtuellen Computern (VMs), die in Azure bereitgestellt und konfiguriert wurden, erfassen Sie ein Image des virtuellen Computers. Der Prozess umfasst auch das Verallgemeinern des virtuellen Computers zum Entfernen persönlicher Kontoinformationen, bevor Sie neue virtuelle Computer aus dem Image bereitstellen. Dieser Artikel erläutert, wie Sie mithilfe von Azure CLI 2.0 ein VM-Image für einen virtuellen Computer erfassen, der Azure Managed Disks verwendet. Diese Datenträger werden von der Azure-Plattform verarbeitet und erfordern keine Vorbereitung und keinen Speicherort zur Aufbewahrung. Weitere Informationen finden Sie in der [Übersicht über Azure Managed Disks](../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). In diesem Artikel wird erläutert, wie Sie mithilfe von Azure CLI 2.0 einen virtuellen Linux-Computer erfassen. Sie können diese Schritte auch mit [Azure CLI 1.0](virtual-machines-linux-capture-image-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 > [!TIP]
 > Wenn Sie eine Kopie Ihrer vorhandenen Linux-VM mit spezialisiertem Zustand für das Sichern oder Debuggen erstellen möchten, finden Sie unter [Erstellen einer Kopie eines virtuellen Linux-Computers, der in Azure ausgeführt wird](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) entsprechende Anweisungen. Wenn Sie eine Linux-VHD aus einer lokalen VM hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-capture-image-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau) – Azure Managed Disks:](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * **Im Resource Manager-Bereitstellungsmodell erstellte Azure-VM**: Wenn Sie keine Linux-VM erstellt haben, können Sie das [Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), die [Befehlszeilenschnittstelle](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Resource Manager-Vorlagen](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dazu verwenden. Konfigurieren Sie die VM den Anforderungen entsprechend. Sie können beispielsweise [Datenträger hinzufügen](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), Updates einspielen und Anwendungen installieren. 
 
-Zudem muss die neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die grundlegenden Befehle zum Erstellen eines Images eines virtuellen Linux-Computers in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-steps)). Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myVM` und `myImage` verwendet.
@@ -95,7 +91,7 @@ Zur Vorbereitung des virtuellen Computers für das Verallgemeinern heben Sie die
 4. Geben Sie nach Abschluss des Befehls **exit** ein. Dieser Schritt schließt den SSH-Client.
 
 ## <a name="step-2-capture-the-vm"></a>Schritt 2: Erfassen der VM
-Verwenden Sie die Azure CLI 2.0 (Vorschau) zum Verallgemeinern und Erfassen des virtuellen Computers. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. **myResourceGroup**, **myVnet** und **myVM**.
+Verwenden Sie Azure CLI 2.0 zum Generalisieren und Erfassen des virtuellen Computers. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. **myResourceGroup**, **myVnet** und **myVM**.
 
 1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli//azure/vm#deallocate) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung für den virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` aufgehoben:
    
@@ -153,14 +149,10 @@ az vm show --resource-group myResourceGroup --name myVM --show-details
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können mehrere virtuelle Computer aus dem Image des virtuellen Quellcomputers erstellen. Falls Sie Änderungen an Ihrem Image vornehmen müssen: 
 
-- Schalten Sie die Quell-VM-Ressource ein.
+- Erstellen Sie einen virtuellen Computer aus Ihrem Image.
 - Nehmen Sie sämtliche Updates oder Änderungen an der Konfiguration vor.
-- Führen Sie erneut die Schritte zum Aufheben der Bereitstellung, zum Aufheben der Zuordnung, zum Verallgemeinern und zum Erfassen des virtuellen Computers aus. 
+- Führen Sie erneut die Schritte zum Aufheben der Bereitstellung, zum Aufheben der Zuordnung, zum Generalisieren und zum Erstellen eines Images aus.
+- Verwenden Sie dieses neue Image für zukünftige Bereitstellungen. Löschen Sie bei Bedarf das ursprüngliche Image.
 
-Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der CLI finden Sie unter [Azure CLI 2.0 (Vorschau)](/cli/azure/overview).
-
-
-
-<!--HONumber=Feb17_HO2-->
-
+Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der Befehlszeilenschnittstelle finden Sie unter [Azure CLI 2.0](/cli/azure/overview).
 

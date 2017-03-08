@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: guybo
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 038259ad4e1c7c6623426f9476ea96d02043fbf9
+ms.sourcegitcommit: 657a249af1840e7bf0711d5ebbe6169258f085b1
+ms.openlocfilehash: 91553d6d3dad76ed256efed7182f0855f0ad10e5
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="deploy-virtual-machine-scale-set-using-visual-studio"></a>Bereitstellen einer VM-Skalierungsgruppe in Visual Studio
+# <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Erstellen einer VM-Skalierungsgruppe mit Visual Studio
 In diesem Artikel erfahren Sie, wie eine Azure-VM-Skalierungsgruppe über eine Visual Studio-Ressourcengruppenbereitstellung bereitgestellt wird.
 
 [Azure-VM-Skalierungsgruppen](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) sind eine Azure Compute-Ressource zur Bereitstellung und Verwaltung einer Auflistung ähnlicher virtueller Computer mit einfach integrierten Optionen für automatische Skalierung und Lastenausgleich. Sie können VM-Skalierungsgruppen über [ARM-Vorlagen (Azure-Ressourcen-Manager)](https://github.com/Azure/azure-quickstart-templates)bereitstellen. ARM-Vorlagen können mithilfe der Azure-Befehlszeilenschnittstelle, mit PowerShell, REST und auch direkt über Visual Studio bereitgestellt werden. Visual Studio bietet eine Reihe von Beispielvorlagen, die als Teil eines Azure-Projekts zur Ressourcengruppenbereitstellung bereitgestellt werden können.
@@ -95,9 +97,4 @@ Nachdem Sie VM-Skalierungsgruppen erfolgreich über Visual Studio bereitgestellt
 [edit_parameters]: ./media/virtual-machine-scale-sets-vs-create/8-EditParameter.png
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

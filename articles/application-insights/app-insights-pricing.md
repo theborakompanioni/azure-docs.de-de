@@ -33,7 +33,7 @@ Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gern
 
 ## <a name="the-pricing-plans"></a>Die Tarife
 
-Aktuelle Preise in Ihrer Währung finden Sie auf der [Application Insights-Seite mit Preisen] [ pricing].
+Aktuelle Preise in Ihrer Währung finden Sie auf der [Application Insights-Seite mit Preisen][pricing].
 
 ### <a name="basic-plan"></a>Basic-Tarif
 

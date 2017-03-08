@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 8651566079a0875e1a3a549d4bf1dbbc6ac7ce21
-ms.openlocfilehash: 410159ad7b5abc5eb3cb1a212895eda7ac225323
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: fb670dd7296f329fc280cf9f2c2adba2df44c07c
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -47,7 +48,7 @@ Beim Erstellen eines virtuellen Computers aus der `azure-cli` können Sie über 
 
 ## <a name="creating-a-vm-with-a-managed-disk"></a>Erstellen eines virtuellen Computers mit einem verwalteten Datenträger
 
-Das folgende Beispiel erfordert die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau), die Sie [hier installieren] können.
+Das folgende Beispiel erfordert Azure CLI 2.0, die Sie [hier installieren] können.
 
 Erstellen Sie zuerst eine Ressourcengruppe für die Verwaltung der Ressourcen:
 
@@ -238,10 +239,5 @@ Wir erläutern Storage Service Encryption (SSE) und beschreiben, und wie Sie die
 
 ## <a name="storage-limits"></a>Speichergrenzwerte
 * [Grenzwerte für den Speicherdienst](../azure-subscription-service-limits.md#storage-limits)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: b78c42b14005b9bcedbc29216541495fd19c64a5
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: e9c9cfda4dda1ec3f1b002016118bd49d540e90a
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="as2-tracking-schemas"></a>AS2-Nachverfolgungsschemas
+# <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>Starten oder Aktivieren der Nachverfolgung von AS2-Nachrichten und MDNs für die Überwachung von Erfolgs-, Fehler- und Nachrichteneigenschaften
 Sie können diese AS2-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto als Unterstützung bei der Überwachung von B2B-Transaktionen (Business-to-Buiness) verwenden:
 
 * AS2-Nachrichten-Nachverfolgungsschema
@@ -136,9 +138,4 @@ Sie können diese AS2-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 * Informieren Sie sich über das [benutzerdefinierte B2B-Nachverfolgungsschema](logic-apps-track-integration-account-custom-tracking-schema.md).   
 * Informieren Sie sich über das [X12-Nachverfolgungsschema](logic-apps-track-integration-account-x12-tracking-schema.md).   
 * Informieren Sie sich über das [Nachverfolgen von B2B-Nachrichten im Operations Management Suite-Portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

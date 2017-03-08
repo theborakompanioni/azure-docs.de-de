@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -29,7 +30,7 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 * Die Azure Active Directory Domain Services **können nicht in virtuellen Netzwerken aktiviert werden, die mit Azure Resource Manager erstellt wurden**.
 * Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassischen virtuellen Netzwerk verbinden, in dem die Azure AD Domain Services aktiviert sind. Danach können Sie die Azure AD Domain Services im Resource Manager-basierten virtuellen Netzwerk verwenden. Weitere Informationen finden Sie im Abschnitt [Netzwerkkonnektivität](active-directory-ds-networking.md#network-connectivity).
 * **Regionale virtuelle Netzwerke**: Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, sollten Sie sicherstellen, dass es sich um ein regionales virtuelles Netzwerk handelt.
-  
+
   * Virtuelle Netzwerke, die den Vorgängermechanismus der Affinitätsgruppen verwenden, können nicht mit den Azure Active Directory Domain Services eingesetzt werden.
   * [Migrieren Sie ältere virtuelle Netzwerke zu regionalen virtuellen Netzwerken](../virtual-network/virtual-networks-migrate-to-regional-vnet.md), um die Azure AD Domain Services zu verwenden.
 
@@ -45,8 +46,8 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 
 > [!WARNING]
 > Nach dem Aktivieren des Diensts können Sie keine Domänendienste in ein anderes virtuelles Netzwerk verschieben.
-> 
-> 
+>
+>
 
 ## <a name="network-security-groups-and-subnet-design"></a>Netzwerksicherheitsgruppen und Subnetzentwurf
 Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
@@ -61,8 +62,8 @@ Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.m
 
 > [!WARNING]
 > Wenn Sie eine NSG einem Subnetz zuordnen, für das die Azure AD Domain Services aktiviert sind, kann es passieren, dass die Domäne von Microsoft nicht mehr gewartet und verwaltet werden kann. Darüber hinaus wird die Synchronisierung zwischen Ihrem Azure AD-Mandanten und der verwalteten Domäne beeinträchtigt. **Die Vereinbarung zum Servicelevel (SLA) gilt nicht für Bereitstellungen, bei denen eine NSG auf das Subnetz angewendet wurde, mit der das Aktualisieren und Verwalten Ihrer Domäne durch die Azure AD Domain Services blockiert wird.**
-> 
-> 
+>
+>
 
 ### <a name="ports-required-for-azure-ad-domain-services"></a>Erforderliche Ports für die Azure AD Domain Services
 Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verwaltete Domäne zu verwalten und zu warten. Stellen Sie sicher, dass diese Ports nicht für das Subnetz blockiert sind, in dem Sie Ihre verwaltete Domäne aktiviert haben.
@@ -92,14 +93,14 @@ Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassis
 
 ### <a name="network-connection-options"></a>Netzwerkverbindungsoptionen
 * **VNet-zu-VNet-Verbindungen mithilfe von Site-to-Site-VPN-Verbindungen**: Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines virtuellen Netzwerks mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen.
-  
+
     ![Verbindung von virtuellen Netzwerken per VPN-Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
-  
+
     [Weitere Informationen – Verbinden von virtuellen Netzwerken per VPN-Gateway](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * **VNet-zu-VNet-Verbindungen per Peering in virtuellen Netzwerken**: Das Peering in virtuellen Netzwerken ist ein Mechanismus, mit dem zwei virtuelle Netzwerke in derselben Region über das Azure-Backbonenetzwerk verbunden werden. Nach dem Peering werden die beiden virtuellen Netzwerke für alle Verbindungszwecke als einzelnes Element angezeigt. Sie werden zwar weiterhin als separate Ressourcen verwaltet, virtuelle Computer in diesen virtuellen Netzwerken können aber über private IP-Adressen direkt miteinander kommunizieren.
-  
+
     ![Verbindung von virtuellen Netzwerken per Peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
-  
+
     [Weitere Informationen – Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md)
 
 <br>
@@ -108,10 +109,4 @@ Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassis
 * [Peering in virtuellen Azure-Netzwerken](../virtual-network/virtual-network-peering-overview.md)
 * [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure-Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

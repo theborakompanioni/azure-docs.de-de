@@ -1,7 +1,7 @@
 ---
 
-title: Verwenden eines virtuellen Linux-Computers zur Problembehandlung mithilfe von Azure CLI 2.0 (Vorschau) | Microsoft Docs
-description: "Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe der Azure-Befehlszeilenschnittstelle 1.0 den Betriebssystemdatenträger mit einer Wiederherstellungs-VM verbinden."
+title: Verwenden eines virtuellen Linux-Computers zur Problembehandlung mithilfe von Azure CLI 2.0 | Microsoft Docs
+description: "Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Sie mithilfe von Azure CLI 2.0 den Betriebssystemdatenträger mit einer Wiederherstellungs-VM verbinden."
 services: virtual-machines-linux
 documentationCenter: 
 authors: iainfoulds
@@ -15,22 +15,15 @@ ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: c4dd7f0cc0a5f7ca42554da95ef215a5a6ae0dbc
-ms.openlocfilehash: 8157e6fd3c4e01d0f99acedfc119fd65879c4979
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 3a3086ed1509bb9e72896b0e4e1bcc89a56b8e03
+ms.lasthandoff: 02/27/2017
 
 
 ---
 
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-cli-20-preview"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe von Azure CLI 2.0 (Vorschau)
-Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie mithilfe von Azure CLI 2.0 (Vorschau) eine Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM hergestellt werden kann, um Fehler zu beheben, und wie dann die ursprüngliche VM neu erstellt wird.
-
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#recovery-process-overview) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe von Azure CLI 2.0
+Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie mithilfe von Azure CLI 2.0 eine Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM hergestellt werden kann, um Fehler zu beheben, und wie dann die ursprüngliche VM neu erstellt wird. Sie können diese Schritte auch mit [Azure CLI 1.0](virtual-machines-linux-troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess
@@ -42,7 +35,7 @@ Der Problembehebungsprozess sieht wie folgt aus:
 4. Heben Sie die Bereitstellung auf, und trennen Sie die virtuelle Festplatte von der Problembehebungs-VM.
 5. Erstellen Sie eine VM mithilfe der ursprünglichen virtuellen Festplatte.
 
-Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
+Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
 

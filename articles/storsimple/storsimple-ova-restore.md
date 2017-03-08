@@ -4,7 +4,7 @@ description: Erfahren Sie mehr dazu, wie Sie eine Sicherung des StorSimple Virtu
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 4d0deb8c-e3c7-4bc4-b89d-9881041960cb
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: 1b2156f2768e02be8030d91352422bd935fa7543
+ms.sourcegitcommit: 840deacac773846a9c57d9437cb6f331cd8fcecb
+ms.openlocfilehash: 5ec5cab591907ccc5d9139da2ba149325daf8422
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="restore-from-a-backup-of-your-storsimple-virtual-array"></a>Wiederherstellen aus einer Sicherung des StorSimple Virtual Array
+# <a name="restore-from-a-backup-set-of-shares-and-volumes-on-your-storsimple-virtual-array"></a>Wiederherstellen von einem Sicherungssatz von Freigaben und Volumes auf Ihrem StorSimple Virtual Array
+
 ## <a name="overview"></a>Übersicht
 Dieser Artikel bezieht sich auf das Microsoft Azure StorSimple Virtual Array (auch als „lokales virtuelles StorSimple-Gerät“ oder „virtuelles StorSimple-Gerät“ bezeichnet) mit der Version vom März 2016 (allgemeine Verfügbarkeit) oder höher. In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie die Wiederherstellung aus einem Sicherungssatz Ihrer Freigaben oder Volumes auf dem StorSimple Virtual Array durchführen. Im Artikel wird auch ausführlich beschrieben, wie die Wiederherstellung auf Elementebene auf Ihrem StorSimple Virtual Array funktioniert, wenn dies als Dateiserver konfiguriert ist.
 
@@ -104,10 +107,5 @@ In diesem Video wird gezeigt, wie Sie Freigaben erstellen, Freigaben sichern und
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 44be67cd5c59a57cafd244ce0a49a6fadf44bdda
 ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
+ms.lasthandoff: 01/25/2017
 
 
 ---
@@ -30,7 +31,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
 3. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](active-directory-ds-getting-started.md)aus.
 4. Ein **Zertifikat, das zum Aktivieren von sicherem LDAP verwendet werden kann**
-   
+
    * **Empfehlung:** Beziehen Sie ein Zertifikat von einer vertrauenswürdigen öffentlichen Zertifizierungsstelle. Diese Konfigurationsoption bietet mehr Sicherheit.
    * Alternativ kann können Sie [ein selbstsigniertes Zertifikat erstellen](#task-1---obtain-a-certificate-for-secure-ldap). Das Verfahren dafür wird weiter unten in diesem Artikel beschrieben.
 
@@ -47,8 +48,8 @@ Erwerben Sie ein gültiges Zertifikat, das den folgenden Richtlinien entspricht,
 
 > [!NOTE]
 > **Unternehmenszertifizierungsstellen:** Die Verwendung sicherer LDAP-Zertifikate, die von der Unternehmenszertifizierungsstelle Ihrer Organisation ausgestellt wurden, wird derzeit von Azure AD Domain Services nicht unterstützt. Diese Einschränkung gilt, da der Dienst Ihre Unternehmenszertifizierungsstelle nicht als vertrauenswürdige Stammzertifizierungsstelle betrachtet. Die Unterstützung von Unternehmenszertifizierungsstellen wird voraussichtlich später hinzugefügt. Falls Sie unbedingt Zertifikate verwenden müssen, die von Ihrer Unternehmenszertifizierungsstelle ausgestellt wurden, [wenden Sie sich an uns](active-directory-ds-contact-us.md), um Unterstützung zu erhalten.
-> 
-> 
+>
+>
 
 <br>
 
@@ -65,8 +66,8 @@ Stellen Sie beim Anfordern des Zertifikats sicher, dass alle Anforderungen erfü
 
 > [!NOTE]
 > Die Clientcomputer, die über sicheres LDAP eine Verbindung mit der verwalteten Domäne herstellen sollen, müssen dem Aussteller des Zertifikats für sicheres LDAP vertrauen.
-> 
-> 
+>
+>
 
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>Option B: Erstellen eines selbstsignierten Zertifikats für sicheres LDAP
 Wenn Sie voraussichtlich kein Zertifikat einer öffentlichen Zertifizierungsstelle verwenden, können Sie ein selbstsigniertes Zertifikat für sicheres LDAP erstellen.
@@ -176,8 +177,8 @@ Führen Sie die folgenden Konfigurationsschritte aus, um sicheres LDAP zu aktivi
 
    > [!NOTE]
    > Es dauert ungefähr 10 bis 15 Minuten, bis sicheres LDAP für die verwaltete Domäne aktiviert ist. Wenn das bereitgestellte Zertifikat für sicheres LDAP nicht den erforderlichen Kriterien entspricht, wird LDAPS nicht für Ihr Verzeichnis aktiviert, und Sie sehen einen Fehler. Mögliche Fehlerursachen wären etwa ein falscher Domänenname oder ein bereits abgelaufenes oder bald ablaufendes Zertifikat.
-   > 
-   > 
+   >
+   >
 
 9. Wenn sicheres LDAP für Ihre verwaltete Domäne erfolgreich aktiviert wurde, wird die Meldung **Ausstehend** nicht mehr angezeigt. Sie sehen dann den Fingerabdruck des Zertifikats.
 
@@ -233,9 +234,4 @@ Das ist schon alles. Sie können jetzt über das Internet und sicheres LDAP eine
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Verwalten von Gruppenrichtlinien in einer durch Azure Active Directory Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

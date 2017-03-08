@@ -12,16 +12,17 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2016
+ms.date: 02/23/2017
 ms.author: larryfr
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 8c07f0da21eab0c90ad9608dfaeb29dd4a01a6b7
-ms.openlocfilehash: 18545981a21736d9673ce19ae2325ba5e4a67ff6
-
+ms.sourcegitcommit: d391c5c6289aa63e969f63f189eb5db680883f0a
+ms.openlocfilehash: b8c5e53ed5fe86ed099e37644d405080477f8c27
+ms.lasthandoff: 03/01/2017
 
 ---
 
-# <a name="add-additional-azure-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Azure-Speicherkonten zu HDInsight
+# <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
 Erfahren Sie, wie Sie Skriptaktionen verwenden, um einem vorhandenen HDInsight-Cluster mit dem Linux-Betriebssystem zusätzliche Azure-Speicherkonten hinzuzufügen.
 
@@ -44,7 +45,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 * Es wird überprüft, ob das Speicherkonto vorhanden ist und mit dem Schlüssel darauf zugegriffen werden kann.
 
-* Der Schlüssel wird mit den Clusteranmeldeinformationen verschlüsselt. Dadurch wird verhindert, dass HDInsight-Benutzer den Speicherkontoschlüssel von Ambari aus problemlos extrahieren und verwenden können.
+* Der Schlüssel wird mit den Clusteranmeldeinformationen verschlüsselt.
 
 * Das Speicherkonto wird der core-site.xml-Datei hinzugefügt.
 
@@ -74,9 +75,9 @@ Ersetzen Sie bei Verwendung der Informationen im Anpassungsdokument ggf. URIs in
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Speicherkonten werden im Azure-Portal oder in Tools nicht angezeigt
 
-Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal den Eintrag __Speicherkonten__ unter __Eigenschaften__ wählen, werden keine Speicherkonten angezeigt, die über diese Skriptaktion hinzugefügt wurden. Azure PowerShell und Azure-CLI zeigen das zusätzliche Speicherkonto ebenfalls nicht an.
+Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal den Eintrag __Speicherkonten__ unter __Eigenschaften__ auswählen, werden keine Speicherkonten angezeigt, die über diese Skriptaktion hinzugefügt wurden. Azure PowerShell und Azure CLI zeigen das zusätzliche Speicherkonto ebenfalls nicht an.
 
-Dies liegt daran, dass das Skript nur die core-site.xml-Konfiguration für den Cluster ändert. Diese Informationen werden aktuell nicht verwendet, wenn Sie die Clusterinformationen mit APIs der Azure-Verwaltung abrufen.
+Die Speicherinformationen werden nicht angezeigt, da das Skript nur die core-site.xml-Konfiguration für den Cluster ändert. Diese Informationen werden nicht verwendet, wenn Sie die Clusterinformationen mit Azure-Verwaltungs-APIs abrufen.
 
 Verwenden Sie die Ambari-REST-API, um Speicherkontoinformationen anzuzeigen, die dem Cluster mit diesem Skript hinzugefügt wurden. Der folgende Befehl zeigt die Verwendung von [cURL (http://curl.haxx.se/)](http://curl.haxx.se/) und [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) zum Abrufen und Analysieren von JSON-Daten aus Ambari:
 
@@ -96,13 +97,11 @@ Dieser Text ist ein Beispiel für einen verschlüsselten Schlüssel, der zum Zug
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>Zugriff auf den Speicher ist nach dem Ändern des Schlüssels nicht möglich
 
-Wenn Sie den Schlüssel für ein Speicherkonto ändern, kann HDInsight nicht mehr auf das Speicherkonto zugreifen.
+Wenn Sie den Schlüssel für ein Speicherkonto ändern, kann HDInsight nicht mehr auf das Speicherkonto zugreifen. HDInsight verwendet eine zwischengespeicherte Kopie des Schlüssels in der Datei „core-site.xml“ für den Cluster. Diese zwischengespeicherte Kopie muss mit dem neuen Schlüssel aktualisiert werden.
 
-Dies liegt daran, dass der in „core-site.xml“ gespeicherte Schlüssel für den Cluster der alte Schlüssel ist.
+Das erneute Ausführen der Skriptaktion aktualisiert den Schlüssel __nicht__, da das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn bereits ein Eintrag vorhanden ist, werden keine Änderungen vorgenommen.
 
-Erneutes Ausführen der Skriptaktion aktualisiert den Schlüssel __nicht__, weil das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn dies der Fall ist, nimmt es keine Änderungen vor.
-
-Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speicherkonto entfernen. Gehen Sie dazu in folgenden Schritten vor:
+Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speicherkonto entfernen. Führen Sie die folgenden Schritte aus, um den vorhandenen Eintrag zu entfernen:
 
 1. Öffnen Sie in einem Webbrowser die Ambari-Webbenutzeroberfläche für Ihren HDInsight-Cluster. Der URI lautet https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie __CLUSTERNAME__ durch den Namen Ihres Clusters.
 
@@ -131,9 +130,4 @@ Wenn das Speicherkonto sich in einer anderen Region als der HDInsight-Cluster be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie gelernt, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Speicherkonten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+Sie haben gelernt, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Speicherkonten hinzufügen. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).

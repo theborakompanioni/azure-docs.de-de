@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 6e0da01df8ac5fd3cdb6b4e42dfbc08fab7d9615
 ms.openlocfilehash: 5931d532a0790f1570d1d99687611231aafc7596
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -40,27 +41,27 @@ Nachdem Sie die AD-Verwaltungstools auf dem in die Domäne eingebundenen virtuel
 
 > [!NOTE]
 > Nur Mitglieder der Gruppe „AAD DC Administrators“ verfügen über die erforderlichen Berechtigungen zum Erstellen einer benutzerdefinierten Organisationseinheit. Stellen Sie darum sicher, dass Sie ein Benutzer dieser Gruppe sind, bevor Sie die folgenden Schritte ausführen.
-> 
-> 
+>
+>
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Daraufhin werden die auf dem virtuellen Computer installierten AD-Verwaltungstools angezeigt.
-   
+
     ![Auf dem Server installierte Verwaltungstools](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. Klicken Sie auf **Active Directory-Verwaltungscenter**.
-   
+
     ![Active Directory-Verwaltungscenter](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 3. Klicken Sie im linken Bereich auf den Domänennamen (z.B. „contoso100.com“), um die Domäne anzuzeigen.
-   
+
     ![ADAC – Domäne anzeigen](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 4. Klicken Sie auf der rechten Seite im Bereich **Aufgaben** unter dem Knoten für den Domänennamen auf **Neu**. In diesem Beispiel klicken Sie rechts im Bereich **Aufgaben** unter dem Knoten „contoso100(local)“ auf **Neu**.
-   
+
     ![ADAC – neue Organisationseinheit](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 5. Die Option zum Erstellen einer Organisationseinheit wird angezeigt. Klicken Sie auf **Organisationseinheit**, um das Dialogfeld **Organisationseinheit erstellen** zu öffnen.
 6. Geben Sie im Dialogfeld **Organisationseinheit erstellen** einen **Namen** für die neue Organisationseinheit an. Geben Sie eine kurze Beschreibung für die Organisationseinheit an. Sie können auch im Feld **Verwaltet von** für die Organisationseinheit Angaben hinterlegen. Klicken Sie auf **OK**, um die benutzerdefinierte Organisationseinheit zu erstellen.
-   
+
     ![ADAC – Dialogfeld „Organisationseinheit erstellen“](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 7. Die neu erstellte Organisationseinheit wird jetzt im Active Directory-Verwaltungscenter (AD Administrative Center, ADAC) angezeigt.
-   
+
     ![ADAC – Organisationseinheit erstellt](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
 ## <a name="permissionssecurity-for-newly-created-ous"></a>Berechtigungen und Sicherheit für neu erstellte Organisationseinheiten
@@ -73,18 +74,12 @@ Nach dem Erstellen einer benutzerdefinierten Organisationseinheit können Sie in
 
 > [!WARNING]
 > Benutzerkonten, Gruppen, Dienstkonten und Computerobjekte, die Sie in benutzerdefinierten Organisationseinheiten erstellen, stehen in Ihrem Azure AD-Mandanten nicht zur Verfügung. Anders ausgedrückt: Diese Objekte können also mit der Azure AD Graph-API oder in der Azure AD-Benutzeroberfläche angezeigt werden. Sie stehen nur in Ihrer durch Azure AD Domain Services verwalteten Domäne zur Verfügung.
-> 
-> 
+>
+>
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Konfigurieren von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory-Verwaltungscenter: Erste Schritte](https://technet.microsoft.com/library/dd560651.aspx)
 * [Schrittweise Anleitung zu Dienstkonten](https://technet.microsoft.com/library/dd548356.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

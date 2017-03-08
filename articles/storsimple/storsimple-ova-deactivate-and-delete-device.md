@@ -4,7 +4,7 @@ description: "Beschreibt, wie ein StorSimple-Gerät aus dem Dienst entfernt wird
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: bf5ddb32-da4b-446f-ab91-215e9020e1c8
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 87aa287acff47ae471830ef09bf674e2c97abddd
+ms.sourcegitcommit: d2008fa396405de99c527a84831a6544cdc0fc1d
+ms.openlocfilehash: d62b484150a6786f0a6abbff1ca2c172e1ad43db
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivieren und Löschen eines StorSimple Virtual Array
+# <a name="deactivate-and-delete-a-storsimple-virtual-array-via-storsimple-manager"></a>Deaktivieren und Löschen eines StorSimple Virtual Array mit StorSimple Manager
 ## <a name="overview"></a>Übersicht
 Wenn Sie ein StorSimple Virtual Array deaktivieren, trennen Sie die Verbindung zwischen dem Gerät und dem entsprechenden StorSimple Manager-Dienst. Die Deaktivierung ist ein ENDGÜLTIGER Vorgang und kann nicht rückgängig gemacht werden. Ein deaktiviertes Gerät kann nicht wieder für den StorSimple Manager-Dienst registriert werden.
 
@@ -85,10 +87,5 @@ Führen Sie die folgenden Schritte aus, um das Gerät zu löschen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Verwenden des StorSimple Manager-Diensts finden Sie unter [Verwalten Ihres StorSimple Virtual Array mithilfe des StorSimple Manager-Diensts](storsimple-ova-manager-service-administration.md). 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

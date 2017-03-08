@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 62d1a275252b17ae2b9870b281e1dd91239cae5f
-
+ms.sourcegitcommit: 8eeeef0bb33b5b8ed265532d160829c076190fc4
+ms.openlocfilehash: 91c4550f9caadc790d1b6aea8f037e2089ebec3c
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="access-and-security-in-azure-resource-manager-templates"></a>Zugriff und Sicherheit in Azure Resource Manager-Vorlagen
+# <a name="access-and-security-in-azure-resource-manager-templates-for-windows-vms"></a>Zugriff und Sicherheit in Azure Resource Manager-Vorlagen für Windows-VMs
+
 Auf in Azure gehostete Anwendungen muss in der Regel über das Internet oder über eine VPN-/ExpressRoute-Verbindung mit Azure zugegriffen werden. Im Rahmen des Music Store-Anwendungsbeispiels wird die Website im Internet mit einer öffentlichen IP-Adresse verfügbar gemacht. Nach Einrichtung des Zugriffs müssen die Verbindungen mit der Anwendung sowie der Zugriff auf die Ressourcen des virtuellen Computers geschützt werden. Diese Zugriffssicherheit wird mithilfe einer Netzwerksicherheitsgruppe erreicht. 
 
 In diesem Dokument erfahren Sie, wie die Music Store-Anwendung in der Azure Resource Manager-Beispielvorlage geschützt wird. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie hier – [Music Store Deployment on Windows (Music Store-Bereitstellung unter Windows)](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
@@ -139,10 +141,5 @@ Ausführliche Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Was 
 <hr>
 
 [Schritt 3: Verfügbarkeit und Skalierung in Azure Resource Manager-Vorlagen](virtual-machines-windows-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

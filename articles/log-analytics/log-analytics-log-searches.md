@@ -1,5 +1,5 @@
 ---
-title: Protokollsuchen in Log Analytics | Microsoft Docs
+title: Suchen von Daten mithilfe der Protokollsuchen in Azure Log Analytics | Microsoft Docs
 description: "Protokollsuchen ermöglichen Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung."
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 3e1810850651cff4680ea558178ebf92aeac4faa
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: d4935af0647f0629cca327a7e87c29f1252af382
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="log-searches-in-log-analytics"></a>Protokollsuchen in Log Analytics
+# <a name="find-data-using-log-searches"></a>Suchen von Daten mithilfe der Protokollsuche
+
 Der Kern von Log Analytics ist die Protokollsuchfunktion, die Ihnen das Kombinieren und Korrelieren beliebiger Computerdaten aus mehreren Quellen in Ihrer Umgebung ermöglicht. Lösungen werden auch von der Protokollsuche beim Bereitstellen von Metriken unterstützt, die eine Pivotierung in Bezug auf einen bestimmten Problembereich bieten.
 
 Auf der Seite Search können Sie eine Abfrage erstellen und die Ergebnisse dann bei der Suche anhand von Facetsteuerelementen filtern. Sie können auch erweiterte Abfragen zum Transformieren, Filtern und Berichten für Ihre Ergebnisse erstellen.
@@ -439,7 +442,7 @@ Type=Perf  CounterName="% Processor Time"  InstanceName="_Total" | Measure Avg(C
 
 Wenn Sie mit Microsoft System Center – Operations Manager vertraut sind, können Sie sich den "Where"-Befehl in der Management Pack-Terminologie denken. Wenn das Beispiel eine Regel wäre, wäre der erste Teil der Abfrage die Datenquelle und der "Where"-Befehl wäre die Bedingungserkennung.
 
-Sie können die Abfrage als Kachel in **Mein Dashboard**verwenden, als eine Art Überwachung, wenn die CPUs des Computers stark ausgelastet sind. Weitere Informationen zu Dashboards finden Sie unter [Erstellen eines benutzerdefinierten Dashboards in Log Analytics](log-analytics-dashboards.md). Sie können Dashboards auch mithilfe der mobilen App erstellen und verwenden. Weitere Informationen finden Sie im Artikel zur [mobilen OMS-App ](http://www.windowsphone.com/en-us/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865). In den unteren beiden Kacheln der folgenden Abbildung bekommen Sie den Monitor als Liste und als Zahl angezeigt. Im Wesentlichen sollte die Zahl immer 0 (null) sein und die Liste leer. Andernfalls könnte es eine Warnungsbedingung geben. Bei Bedarf können sie  die Abfrage auch nutzen, um einen Blick auf überlastete Computer zu werden.
+Sie können die Abfrage als Kachel in **Mein Dashboard**verwenden, als eine Art Überwachung, wenn die CPUs des Computers stark ausgelastet sind. Weitere Informationen zu Dashboards finden Sie unter [Erstellen eines benutzerdefinierten Dashboards in Log Analytics](log-analytics-dashboards.md). Sie können Dashboards auch mithilfe der mobilen App erstellen und verwenden. Weitere Informationen finden Sie im Artikel zur [mobilen OMS-App ](http://www.windowsphone.com/en-us/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865). In den unteren beiden Kacheln der folgenden Abbildung bekommen Sie den Monitor als Liste und als Zahl angezeigt. Im Wesentlichen sollte die Zahl immer&0; (null) sein und die Liste leer. Andernfalls könnte es eine Warnungsbedingung geben. Bei Bedarf können sie  die Abfrage auch nutzen, um einen Blick auf überlastete Computer zu werden.
 
 !["mobile dashboard" ("mobiles Dashboard")](./media/log-analytics-log-searches/oms-search-mobile.png)
 
@@ -574,9 +577,4 @@ Weitere Informationen zu Protokollsuchen finden Sie hier:
 
 * Verwenden Sie [benutzerdefinierte Felder in Log Analytics](log-analytics-custom-fields.md) , um Protokollsuchen zu erweitern.
 * Lesen Sie sich die [Referenz zur Log Analytics-Suche](log-analytics-search-reference.md) durch, um sich über alle Suchfelder und Facetten zu informieren, die in Log Analytics verfügbar sind.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

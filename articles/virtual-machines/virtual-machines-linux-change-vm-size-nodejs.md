@@ -15,13 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2016
 ms.author: mwasson
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e7ca3b709bf2f09227b1607e4956ce021eab414a
-ms.openlocfilehash: ab52f1a4f568a7ef3c281e16636f61a063cda519
-
+ms.sourcegitcommit: b93844d55cf1c41e1e388d7bbaa3fedf88113423
+ms.openlocfilehash: bf28993330619a25fcf0bc79055be0d7453c2be4
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="how-to-resize-a-linux-vm"></a>So ändern Sie die Größe eines virtuellen Linux-Computers
+# <a name="resize-a-linux-vm-with-the-azure-cli-10"></a>Ändern der Größe einer Linux-VM mit Azure CLI 1.0
+
 ## <a name="overview"></a>Übersicht
 Nachdem Sie einen virtuellen Computer (VM) bereitstellen, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Dies ist möglicherweise der Fall, falls die neue Größe auf dem Hardwarecluster nicht verfügbar ist, auf dem die VM gehostet wird.
 
@@ -33,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie die Größe eines virtuellen Linux-C
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#resize-a-linux-vm): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0 (Vorschau):](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="resize-a-linux-vm"></a>Ändern der Größe eines virtuellen Linux-Computers
@@ -79,9 +81,4 @@ Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um z
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]: virtual-machines-linux-sizes.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

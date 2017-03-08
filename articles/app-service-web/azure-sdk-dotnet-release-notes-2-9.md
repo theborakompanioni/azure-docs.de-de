@@ -14,8 +14,9 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako;mikhegn
 translationtype: Human Translation
-ms.sourcegitcommit: b0bbde6828ed556eef8063a56a35b325fee1865c
-ms.openlocfilehash: 4ba7d6c43a5e0893366669e7511d8e1cfe149b81
+ms.sourcegitcommit: 71c5a4f1b816fdcfe7ef267c20e6ed42e6cc51e6
+ms.openlocfilehash: 3c3fb275a7c980f71a3a30e6875b9515321bad99
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -42,6 +43,10 @@ Mit dieser Version wurden keine grundlegenden Änderungen für Azure SDK 2.9 ein
 ### <a name="windows-server-2016-virtual-machines"></a>Virtuelle Windows Server 2016-Computer
 
 - Visual Studio unterstützt jetzt die Bereitstellung von Cloud Services auf virtuellen Computern der Betriebssystemfamilie 5 (Windows Server 2016). Für vorhandene Clouddienste können Sie Ihre Einstellungen so ändern, dass sie für die neue Betriebssystemfamilie geeignet sind. Wenn Sie neue Clouddienste erstellen und .NET 4.6 oder höher verwenden, wird für den Dienst standardmäßig die Betriebssystemfamilie 5 genutzt.  Weitere Informationen finden Sie [hier](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/) in der Tabelle zur Unterstützung der Gastbetriebssystemfamilien.
+
+#### <a name="known-issues"></a>Bekannte Probleme
+
+- Mit dem Azure .NET SDK 2.9.6 wurde eine Einschränkung eingeführt, die die Bereitstellung von Projekten verhindert, die nicht unterstützte .NET Framework-Versionen (z.B. .NET 4.6) auf einer BS-Familie < 5 verwenden. Eine Problemumgehung wird [hier](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) bereitgestellt.
 
  
 ### <a name="azure-in-role-cache"></a>Azure In-Role Cache 
@@ -86,10 +91,5 @@ Neu in dieser Version ist die [Key Vault](../azure-resource-manager/resource-man
 
 ## <a name="see-also"></a>Siehe auch
 [Ankündigungsbeitrag zu Azure SDK 2.9 (in englischer Sprache)](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

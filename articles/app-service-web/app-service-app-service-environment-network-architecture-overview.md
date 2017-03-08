@@ -4,7 +4,7 @@ description: "Übersicht über die Architektur der Netzwerktopologie von App Ser
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 4a5fdbc73f5d30c8dacfb8f7039bf70a450ea251
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: b2afe86d8774b449a257312d4e60b5f6125336ca
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -44,7 +45,7 @@ App Service-Umgebungen kommunizieren auch mit SQL-Datenbank- und Azure-Speicherr
 
 Da eine App Service-Umgebung in einem Subnetz bereitgestellt wird, können Netzwerksicherheitsgruppen zum Steuern des in das Subnetz eingehenden Datenverkehrs verwendet werden.  Ausführliche Informationen zum Steuern des eingehenden Datenverkehrs in eine App Service-Umgebung finden Sie im folgenden [Artikel][controllinginboundtraffic].
 
-Details zum Zulassen ausgehender Internetverbindungen aus einer App Service-Umgebung finden Sie im folgenden Artikel über das Arbeiten mit [Express Route][ExpressRoute].  Der gleiche in diesem Artikel beschriebene Ansatz gilt beim Arbeiten mit Standort-zu-Standort-Verbindungen und Verwenden der Tunnelerzwingung.
+Details zum Zulassen ausgehender Internetverbindungen aus einer App Service-Umgebung finden Sie im folgenden Artikel über das Arbeiten mit [ExpressRoute][ExpressRoute].  Der gleiche in diesem Artikel beschriebene Ansatz gilt beim Arbeiten mit Standort-zu-Standort-Verbindungen und Verwenden der Tunnelerzwingung.
 
 ## <a name="outbound-network-addresses"></a>Ausgehende Netzwerkadressen
 Wenn eine App Service-Umgebung ausgehende Aufrufe ausführt, ist den ausgehenden Aufrufen stets eine IP-Adresse zugeordnet.  Die spezifische verwendete IP-Adresse hängt davon ab, ob sich der Endpunkt innerhalb oder außerhalb der virtuellen Netzwerktopologie befindet.
@@ -84,7 +85,7 @@ Alle Artikel und Anleitungen zu App Service-Umgebungen stehen in der [Dokumentat
 
 Einzelheiten zu von App Service-Umgebungen verwendeten eingehenden Ports und zum Verwenden von Sicherheitsgruppen zum Steuern von eingehendem Datenverkehr finden Sie [hier][controllinginboundtraffic].
 
-Details zur Verwendung von benutzerdefinierten Routen zum Gewähren des ausgehenden Internetzugriffs auf App Service-Umgebungen finden Sie in diesem [Artikel][ExpressRoute]. 
+Details zur Verwendung von benutzerdefinierten Routen zum Gewähren des ausgehenden Internetzugriffs auf App Service-Umgebungen finden Sie in [diesem Artikel][ExpressRoute]. 
 
 <!-- LINKS -->
 [virtualnetwork]: http://azure.microsoft.com/services/virtual-network/
@@ -96,10 +97,5 @@ Details zur Verwendung von benutzerdefinierten Routen zum Gewähren des ausgehen
 [OutboundIPAddress]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundIPAddress-1.png
 [OutboundNetworkAddresses]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundNetworkAddresses-1.png
 [CallsBetweenAppServiceEnvironments]: ./media/app-service-app-service-environment-network-architecture-overview/CallsBetweenEnvironments-1.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

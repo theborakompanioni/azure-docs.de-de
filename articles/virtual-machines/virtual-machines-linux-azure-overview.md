@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: squillace
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 50f3c56daaa28b1f28e201ec0502a91804313e5f
-ms.openlocfilehash: 111a80548982a1dab529d9dd6fb46eb759b7f908
-ms.lasthandoff: 02/22/2017
-
+ms.sourcegitcommit: 652c4c51d67b8914885406e631e7233694a8a1d8
+ms.openlocfilehash: e46490a75b0b759e94ba8b090f394d0ba3366dc4
+ms.lasthandoff: 03/01/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
@@ -36,7 +36,7 @@ Damit Ihre Bereitstellung die Qualifikation für unsere VM-Vereinbarung zum Serv
 
 ## <a name="managed-disks"></a>Verwaltete Datenträger
 
-Der Managed Disks-Dienst erledigt die Erstellungs- und Verwaltungsaufgaben in Ihrem Azure Storage-Konto im Hintergrund und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzen des Speicherkontos machen müssen. Sie geben einfach die Datenträgergröße und die Leistungsstufe (Standard/Premium) an und überlassen Azure die Erstellung und Verwaltung der Datenträger. So müssen Sie sich selbst beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. Wenn Sie neue virtuelle Computer erstellen, [verwenden Sie die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder das Azure-Portal, um virtuelle Computer mit verwalteten Datenträgern für Betriebssystem und Daten zu erstellen. Wenn Sie bereits über virtuelle Computer mit nicht verwalteten Datenträgern verfügen, können Sie [Ihre virtuellen Computer für die Verwendung mit verwalteten Datenträgern konvertieren](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Der Managed Disks-Dienst erledigt die Erstellungs- und Verwaltungsaufgaben in Ihrem Azure Storage-Konto im Hintergrund und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzen des Speicherkontos machen müssen. Sie geben einfach die Datenträgergröße und die Leistungsstufe (Standard/Premium) an und überlassen Azure die Erstellung und Verwaltung der Datenträger. So müssen Sie sich selbst beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. Wenn Sie neue virtuelle Computer erstellen, [verwenden Sie Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder das Azure-Portal, um virtuelle Computer mit verwalteten Datenträgern für Betriebssystem und Daten zu erstellen. Wenn Sie bereits über virtuelle Computer mit nicht verwalteten Datenträgern verfügen, können Sie [Ihre virtuellen Computer für die Verwendung mit verwalteten Datenträgern konvertieren](virtual-machines-linux-convert-unmanaged-to-managed-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
  
 Darüber hinaus können Sie Ihre benutzerdefinierten Images in einem einzelnen Speicherkonto pro Azure-Region verwalten und mit diesen Hunderte von virtuellen Computern im gleichen Abonnement erstellen. Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Verwaltete Datenträger – Übersicht](../storage/storage-managed-disks-overview.md).
  
@@ -80,29 +80,18 @@ Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch 
 ## <a name="partners"></a>Partner
 Microsoft arbeitet eng mit Partnern zusammen, um sicherzustellen, dass die verfügbaren Images für die Azure-Laufzeit aktualisiert und optimiert sind.  Weitere Informationen zu unseren Partnern finden Sie auf den jeweiligen Marketplace-Seiten unten.
 
-[Linux auf von Azure unterstützten Distributionen](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-SUSE: [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-
-Red Hat: [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
-
-Canonical: [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
-
-Debian: [Azure Marketplace – Debian 8 „Jessie“](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-
-FreeBSD: [Azure Marketplace – FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
-
-CoreOS: [Azure Marketplace – CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
-
-RancherOS: [Azure Marketplace – RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
-
-Bitnami: [Bitnami-Bibliothek für Azure](https://azure.bitnami.com/)
-
-Mesosphere: [Azure Marketplace – Mesosphere DC/OS on Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
-
-Docker: [Azure Marketplace – Azure Container Service mit Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
-
-Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
+* [Linux auf von Azure unterstützten Distributionen](virtual-machines-linux-endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* SUSE: [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
+* Red Hat: [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Canonical: [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
+* Debian: [Azure Marketplace – Debian 8 „Jessie“](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
+* FreeBSD: [Azure Marketplace – FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
+* CoreOS: [Azure Marketplace – CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
+* RancherOS: [Azure Marketplace – RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
+* Bitnami: [Bitnami-Bibliothek für Azure](https://azure.bitnami.com/)
+* Mesosphere: [Azure Marketplace – Mesosphere DC/OS on Azure](https://azure.microsoft.com/marketplace/partners/mesosphere/dcosdcos/)
+* Docker: [Azure Marketplace – Azure Container Service mit Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
+* Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azure.microsoft.com/marketplace/partners/cloudbees/jenkins-platformjenkins-platform/)
 
 ## <a name="getting-setup-on-azure"></a>Erste Schritte mit Azure
 Um mit der Verwendung von Azure zu beginnen, benötigen Sie ein Azure-Konto, die installierte Azure-Befehlszeilenschnittstelle und ein Paar aus öffentlichen und privaten SSH-Schlüsseln.
@@ -111,7 +100,7 @@ Um mit der Verwendung von Azure zu beginnen, benötigen Sie ein Azure-Konto, die
 Der erste Schritt zur Verwendung der Azure-Cloud besteht darin, sich für ein Azure-Konto zu registrieren.  Besuchen Sie die Seite [Erstellen eines kostenlosen Azure-Kontos](https://azure.microsoft.com/pricing/free-trial/) , um zu beginnen.
 
 ### <a name="install-the-cli"></a>Installieren der Befehlszeilenschnittstelle
-Mit Ihrem neuen Azure-Konto können Sie sofort mit dem Azure-Portal loslegen, einem webbasierten Verwaltungsbereich.  Um die Azure-Cloud über die Befehlszeile zu verwalten, installieren Sie die `azure-cli`.  Installieren Sie die [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install) auf Ihrem Mac oder Ihrer Linux-Arbeitsstation.
+Mit Ihrem neuen Azure-Konto können Sie sofort mit dem Azure-Portal loslegen, einem webbasierten Verwaltungsbereich.  Um die Azure-Cloud über die Befehlszeile zu verwalten, installieren Sie die `azure-cli`.  Installieren Sie [Azure CLI 2.0](/cli/azure/install) auf Ihrer Mac- oder Linux-Arbeitsstation.
 
 ### <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 Jetzt verfügen Sie über ein Azure-Konto, das Azure-Webportal und die Azure-Befehlszeilenschnittstelle.  Der nächste Schritt besteht darin, ein SSH-Schlüsselpaar zu erstellen, um über SSH eine Verbindung mit Linux herzustellen, ohne ein Kennwort zu verwenden.  [Erstellen Sie SSH-Schlüssel unter Linux und Mac](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), um Anmeldungen ohne Kennwort und eine höhere Sicherheit zu ermöglichen.

@@ -13,11 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 02/06/2017
+ms.date: 02/28/2017
 ms.author: asaxton
 translationtype: Human Translation
-ms.sourcegitcommit: 71476ae63d2394e7edefa10b8c71d15c04190290
-ms.openlocfilehash: 299e06bf6d4bd3af5d6dc7496ba9a947f42c19b7
+ms.sourcegitcommit: 02b905b12344f23e0eb3b8d0a1969bf7c491119e
+ms.openlocfilehash: 0f7412d9ed3cacb043a5cf3f21d6109eeeeb074c
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -27,7 +28,7 @@ Mit **Microsoft Power BI Embedded**können Sie Power BI-Berichte direkt in webba
 
 Bevor wir fortfahren, sollten Sie die folgenden Ressourcen speichern. Diese Ressourcen sind hilfreich, wenn Sie Power BI-Berichte in die Beispiel-App (und auch in Ihre eigenen Apps) integrieren.
 
-* [Beispiel für eine Dashboard-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Beispiel für eine Arbeitsbereichs-Web-App](http://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI Embedded-API-Referenz](https://msdn.microsoft.com/en-US/library/azure/mt711507.aspx)
 * [Power BI Embedded .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (verfügbar über NuGet)
 * [Beispiel für die Einbettung von JavaScript-Berichten](https://microsoft.github.io/PowerBI-JavaScript/demo)
@@ -68,7 +69,7 @@ Checking import state... Succeeded
 Jetzt haben Sie einen Power BI-PBIX-Bericht in Ihren **Arbeitsbereich** importiert. Im nächsten Abschnitt erfahren Sie, wie Sie die Beispiel-Web-App für die ersten Schritte in **Power BI Embedded** ausführen.
 
 ## <a name="run-the-sample-web-app"></a>Ausführen der Beispiel-Web-App
-Das Beispiel für die Web-App ist ein Beispieldashboard, das die in den **Arbeitsbereich** importierten Berichte rendert. So konfigurieren Sie das Web-App-Beispiel
+Das Beispiel für die Web-App ist eine Beispielanwendung, die die in den **Arbeitsbereich** importierten Berichte rendert. So konfigurieren Sie das Web-App-Beispiel
 
 1. Klicken Sie in der Visual Studio-Projektmappe **PowerBI-embedded** mit der rechten Maustaste auf die Webanwendung **EmbedSample**, und wählen Sie **Als Startprojekt festlegen** aus.
 2. Bearbeiten Sie in **web.config** in der Webanwendung **EmbedSample** die **appSettings**: **AccessKey**, **WorkspaceCollection**-Name und **WorkspaceId**.
@@ -93,7 +94,7 @@ Nachdem Sie auf einen Bericht geklickt haben, sieht die Webanwendung **EmbedSamp
 
 ## <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 
-Bei dem Beispiel für **Microsoft Power BI Embedded** handelt es sich um ein Beispiel für eine Dashboard-Web-App, das zeigt, wie Sie **Power BI-Berichte** in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model-View-Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
+Bei dem Beispiel für **Microsoft Power BI Embedded** handelt es sich um ein Beispiel für eine Web-App, das zeigt, wie Sie **Power BI**-Berichte in Ihre App integrieren. Dabei werden die bewährten Methoden anhand eines MVC-Entwurfsmusters (Model-View-Controller) veranschaulicht. In diesem Abschnitt werden Teile des Beispielcodes hervorgehoben, die Sie innerhalb der Web-App-Projektmappe **PowerBI-embedded** untersuchen können. Das MVC-Muster (Model-View-Controller) trennt die Modellierung der Domäne, die Präsentation und die Aktionen basierend auf der Benutzereingabe in drei separate Klassen: „Model“, „View“ und „Control“. Weitere Informationen zu MVC finden Sie unter [Learn About ASP.NET](http://www.asp.net/mvc) (Informationen zu ASP.NET).
 
 Der Beispielcode für **Microsoft Power BI Embedded** ist wie folgt unterteilt. Jeder Abschnitt enthält den Dateinamen in der Projektmappe „PowerBI-embedded.sln“, damit Sie den Code im Beispiel leicht finden können.
 
@@ -241,13 +242,8 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > {tableName/fieldName} darf keine Leerzeichen oder Sonderzeichen enthalten. Für {fieldValue} wird ein einzelner Kategoriewert akzeptiert.  
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)
-* [Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)
 
+[Häufige Microsoft Power BI Embedded-Szenarios](power-bi-embedded-scenarios.md)  
+[Authentifizieren und Autorisieren in Power BI Embedded](power-bi-embedded-app-token-flow.md)  
 Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

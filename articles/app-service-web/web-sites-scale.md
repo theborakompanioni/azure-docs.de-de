@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: b7ef8386e974486c2d327d0b042eeabdb9701b7e
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: bc0fe3341bc5b698032c56dec836b942ce7fa8be
+ms.openlocfilehash: 3ca6156369bf4ae530a91520e86166592181511a
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -116,9 +116,9 @@ Je nach Preisstufe stehen die folgenden entwicklungsbezogenen Funktionen zur Ver
 * Informationen zu den Best Practices für Azure App Service, einschließlich dem Aufbau einer skalierbaren, robusten Architektur, finden Sie unter [Best Practices: Azure App Service-Web-Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx).
 * Videos zum Skalieren von App Service-Apps finden Sie in den folgenden Ressourcen:
   
-  * [Wann sollte man Azure-Websites skalieren? - Mit Stefan Schackow](/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
-  * [Automatisches Skalieren von Azure-Websites, CPU-abhängig oder geplant - Mit Stefan Schackow](/documentation/videos/auto-scaling-azure-web-sites/)
-  * [Wie sollte man Azure-Websites skalieren? - Mit Stefan Schackow](/documentation/videos/how-azure-web-sites-scale/)
+  * [Wann sollte man Azure-Websites skalieren? - Mit Stefan Schackow](https://azure.microsoft.com/en-us/resources/videos/azure-web-sites-free-vs-standard-scaling/)
+  * [Automatisches Skalieren von Azure-Websites, CPU-abhängig oder geplant - Mit Stefan Schackow](https://azure.microsoft.com/en-us/resources/videos/auto-scaling-azure-web-sites/)
+  * [Wie sollte man Azure-Websites skalieren? - Mit Stefan Schackow](https://azure.microsoft.com/en-us/resources/videos/how-azure-web-sites-scale/)
 
 <!-- LINKS -->
 [vmsizes]:/pricing/details/app-service/

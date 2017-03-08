@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 02/24/2017
 ms.author: bwren
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 920b5feee8e94af5b98e8dffc127da4085bac597
+ms.sourcegitcommit: c6e2ecebf6cd1b246c155c158d12d4d83bd1feda
+ms.openlocfilehash: bda2da933accb769bae4c9b420ae330014fc2ba0
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -70,8 +71,8 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 
 | Abfrage | Beschreibung |
 |:--- |:--- |
-| Type=IISLog |Alle IIS-Protokolldatensätze. |
-| Type=IISLog EventLevelName=error |Alle Windows-Ereignisse mit dem Schweregrad „error“. |
+| Type=W3CIISLog |Alle IIS-Protokolldatensätze. |
+| Type=W3CIISLog scStatus=500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |
 | Type=W3CIISLog &#124; Measure count() by cIP |Anzahl der IIS-Protokolleinträge nach Client-IP-Adresse. |
 | Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |Anzahl der IIS-Protokolleinträge nach URL für den Host www.contoso.com. |
 | Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |Gesamtzahl an Bytes, die von jedem IIS-Computer empfangen wurden. |
@@ -80,10 +81,5 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 * Konfigurieren Sie Log Analytics für die Sammlung von Daten aus anderen [Datenquellen](log-analytics-data-sources.md) zur Analyse.
 * Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 * Konfigurieren Sie Warnungen in Log Analytics, sodass Sie proaktiv benachrichtigt werden, wenn in IIS-Protokollen wichtige Probleme gefunden werden.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

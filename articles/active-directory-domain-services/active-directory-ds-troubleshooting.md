@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: a7cf17e7c84ca6ec69b8a88b78bb0bbc91db0b5b
 ms.openlocfilehash: 30248b5f00aaf2d81db79b5a690760f816384723
+ms.lasthandoff: 12/28/2016
 
 
 ---
@@ -155,9 +156,4 @@ Um das Benutzerkonto vollständig aus Ihrer verwalteten Domäne zu entfernen, l�
 
 ## <a name="contact-us"></a>So erreichen Sie uns
 Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](active-directory-ds-contact-us.md).
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

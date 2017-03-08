@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 359653f29adc538a4fe2f2143e8132bdd9a9d15b
+ms.lasthandoff: 02/11/2017
 
 
 ---
@@ -82,10 +83,4 @@ Azure RemoteApp ermöglicht dem Administrator von Contoso die Erstellung einer i
 ![Azure RemoteApp](./media/active-directory-domain-services-scenarios/azure-remoteapp.png)
 
 Weitere Informationen zu diesem Bereitstellungsszenario finden Sie im Remotedesktopdienste-Blog im Artikel [Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)(Verlagern von Workloads mit Azure RemoteApp und Azure AD Domain Services).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

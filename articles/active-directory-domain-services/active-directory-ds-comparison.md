@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 1c4045bd9b705ab3e909a06035f27b85635fdf36
 ms.openlocfilehash: 3d83a919d8e7bc59bd51e226c56ff2bb42c87955
+ms.lasthandoff: 02/08/2017
 
 
 ---
@@ -109,8 +110,8 @@ Es gibt Anwendungsfälle, bei denen möglicherweise einige der Funktionen einer 
 
 > [!NOTE]
 > Sie stellen möglicherweise fest, dass für Ihre Anwendungsfälle eine DIY-Option besser geeignet ist. Wir würden uns über [Ihr Feedback](active-directory-ds-contact-us.md) freuen, damit wir besser verstehen, welche Features Sie benötigen, um sich in Zukunft für die Azure AD Domain Services zu entscheiden. Dieses Feedback hilft uns dabei, den Dienst weiter zu verbessern und an die Anforderungen Ihrer Bereitstellungen und Anwendungsfälle anzupassen.
-> 
-> 
+>
+>
 
 Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx) veröffentlicht, um DIY-Installationen zu vereinfachen.
 
@@ -118,10 +119,4 @@ Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directo
 * [Features: Azure AD Domain Services](active-directory-ds-features.md)
 * [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
 * [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 01/23/2017
 ms.author: TomSh
 translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 62b5469d06974dfbe1b243091d34e1141416c971
+ms.sourcegitcommit: 4652795b8bef910b4e5eb83ef836e7b75621ab8a
+ms.openlocfilehash: bbea6700f7abc7822c3530f151c224cb59104cb1
+ms.lasthandoff: 02/23/2017
 
 
 ---
@@ -43,8 +44,8 @@ Wenn Sie Fragen zur Azure-Protokollintegration haben, senden Sie eine E-Mail an 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde die Azure-Protokollintegration vorgestellt. Weitere Informationen zur Azure-Protokollintegration und den unterstützten Protokolltypen finden Sie hier:
 
-* [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure-Protokollintegration für Azure-Protokolle [Vorschau]): Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration im Download Center.
-* [Get started with Azure log integration](security-azure-log-integration-get-started.md) (Erste Schritte mit der Azure-Protokollintegration): In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure Storage sowie Azure-Überwachungsprotokolle und Azure Security Center-Warnungen integrieren.
+* [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324) (Microsoft Azure-Protokoll-Integration für Azure-Protokolle (Vorschau)): Download Center für Details, Systemanforderungen und Installationsanweisungen für die Azure-Protokollintegration.
+* [Erste Schritte mit der Azure-Protokollintegration:](security-azure-log-integration-get-started.md) In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure-WAD-Speicher sowie Azure-Aktivitätsprotokolle, Azure Security Center-Warnungen und Azure Active Directory-Überwachungsprotokolle integrieren.
 * [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) (Konfigurationsschritte für Partner): In diesem Blogbeitrag erfahren Sie, wie die Azure-Protokollintegration für die Partnerlösungen Splunk, HP ArcSight und IBM QRadar konfiguriert wird.
 * [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) (Häufig gestellte Fragen zur Azure-Protokollintegration): Hier finden Sie Antworten auf häufig gestellte Fragen zur Azure-Protokollintegration.
 * [Integrieren von Security Center-Warnungen mithilfe der Azure-Protokollintegration (Vorschau)](../security-center/security-center-integrating-alerts-with-log-integration.md) : In diesem Dokument erfahren Sie, wie Sie Azure Security Center-Warnungen sowie von der Azure-Diagnose und Azure-Überwachungsprotokollen erfasste Sicherheitsereignisse virtueller Computer mit Ihrer Protokollanalyse- oder SIEM-Lösung synchronisieren.
@@ -52,9 +53,4 @@ In diesem Dokument wurde die Azure-Protokollintegration vorgestellt. Weitere Inf
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

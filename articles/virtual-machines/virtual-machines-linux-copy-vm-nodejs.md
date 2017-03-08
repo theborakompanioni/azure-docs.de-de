@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Kopie Ihres virtuellen Azure-Computers unter Linux | Microsoft Docs
-description: Erfahren Sie, wie Sie eine Kopie eines virtuellen Azure-Computers unter Linux im Resource Manager-Bereitstellungsmodell erstellen.
+title: Erstellen einer Kopie des virtuellen Linux-Computers mithilfe von Azure CLI 1.0 | Microsoft Docs
+description: Erfahren Sie, wie Sie mithilfe von Azure CLI 1.0 eine Kopie eines virtuellen Azure-Computers unter Linux im Resource Manager-Bereitstellungsmodell erstellen.
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: fc5d84768213f1c9358bfcffd77868c25b6c24a4
-ms.openlocfilehash: 9920e86a00793928bdfae5bc4e9dac161ed56ad0
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: e85094fbb63b5cf0c5f3b080e047dbc3b8561a26
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure"></a>Erstellen einer Kopie eines virtuellen Linux-Computers, der in Azure ausgeführt wird
+# <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Erstellen einer Kopie eines virtuellen Linux-Computers, der in Azure ausgeführt wird, mithilfe von Azure CLI 1.0
 In diesem Artikel erfahren Sie, wie Sie eine Kopie des virtuellen Azure-Computers (VM) unter Linux im Resource Manager-Bereitstellungsmodell erstellen können. Kopieren Sie zuerst die Datenträger für das Betriebssystem und die Daten in einen neuen Container, richten Sie dann die Netzwerkressourcen ein, und erstellen Sie den neuen virtuellen Computer.
 
 Sie können auch [einen virtuellen Computer aus einem benutzerdefinierten Datenträgerimage hochladen und erstellen](virtual-machines-linux-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -29,7 +30,7 @@ Sie können auch [einen virtuellen Computer aus einem benutzerdefinierten Datent
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - Azure-CLI 1.0: Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0 (Vorschau):](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie mit den Schritten beginnen:
@@ -112,10 +113,5 @@ azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Verwendung der Azure-CLI für die Verwaltung des neuen virtuellen Computers finden Sie unter [Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus](azure-cli-arm-commands.md).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2016
+ms.date: 02/22/2017
 ms.author: jgao
 translationtype: Human Translation
-ms.sourcegitcommit: f9b191a68fe19f30aa157fd01f33afb0a4f1e279
-ms.openlocfilehash: 37114071cb9c3da187e8d96d7a49680ee828832a
+ms.sourcegitcommit: c8abf308c20968f184a80b20dc40185b1631105d
+ms.openlocfilehash: 903004ae83d86ddcda13c6f2fce708e71ffa729b
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -40,20 +41,17 @@ Mitunter möchten Sie die Konfigurationsdateien bearbeiten, die im Folgenden auf
 * webhcat-site.xml
 * yarn-site.xml
 
-Die Cluster können die Änderungen aufgrund des Re-Imagings nicht beibehalten. Weitere Informationen zum Re-Imaging finden Sie unter [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)(Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades). Um die Änderungen für die Laufzeit des Clusters beizubehalten, können Sie während des Erstellungsprozesses die HDInsight-Clusteranpassung nutzen. Dies ist die empfohlene Methode zum Ändern der Konfiguration eines Clusters, die über die Neustartereignisse des Azure-Reimaging hinweg beibehalten werden. Diese Konfigurationsänderungen werden vor dem Starten des Diensts angewendet, sodass Dienste nicht neu gestartet werden müssen. 
-
 Es gibt drei Methoden zum Verwenden von Bootstrap:
 
 * Mithilfe von Azure PowerShell
-  
-    [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 * Verwenden von .NET SDK
 * Verwenden von Azure Resource Manager-Vorlagen
+
+[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 Informationen zum Installieren zusätzlicher Komponenten in HDInsight-Clustern während ihrer Erstellung finden Sie unter:
 
 * [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
-* [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen | Azure](hdinsight-hadoop-customize-cluster.md)
 
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 Der folgende PowerShell-Code passt eine Hive-Konfiguration an:
@@ -74,8 +72,8 @@ Der folgende PowerShell-Code passt eine Hive-Konfiguration an:
         -Location $location `
         -ClusterSizeInNodes $clusterSizeInNodes `
         -ClusterType Hadoop `
-        -OSType Windows `
-        -Version "3.2" `
+        -OSType Linux `
+        -Version "3.5" `
         -HttpCredential $httpCredential `
         -Config $config 
 
@@ -84,7 +82,7 @@ Ein vollständiges funktionierendes PowerShell-Skript finden Sie in [Anhang A](#
 **So überprüfen Sie die Änderung:**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie im linken Bereich auf **Durchsuchen**, und klicken Sie dann auf **HDInsight-Cluster**.
+2. Klicken Sie im linken Menü auf **HDInsight-Cluster**. Klicken Sie zuerst auf **Weitere Dienste**, falls die Option nicht angezeigt wird.
 3. Klicken Sie auf den Cluster, den Sie gerade mit dem PowerShell-Skript erstellt haben.
 4. Klicken Sie oben im Blatt auf **Dashboard** , um die Ambari-Benutzeroberfläche zu öffnen.
 5. Klicken Sie im linken Menü auf **Hive** .
@@ -244,7 +242,7 @@ Dieses PowerShell-Skript erstellt einen HDInsight-Cluster und passt eine Hive-Ei
         -ClusterSizeInNodes 1 `
         -ClusterType Hadoop `
         -OSType Linux `
-        -Version "3.2" `
+        -Version "3.5" `
         -HttpCredential $httpCredential `
         -SshCredential $sshCredential `
         -Config $config
@@ -255,9 +253,4 @@ Dieses PowerShell-Skript erstellt einen HDInsight-Cluster und passt eine Hive-Ei
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 
     #endregion
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

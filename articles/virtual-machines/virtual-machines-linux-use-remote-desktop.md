@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 95a79ccb83d5a3ba386d5db2fd47f3887a03fa8a
-ms.openlocfilehash: 4abb2fa6591c0e014e8d9563f69f9586e081e7b2
+ms.sourcegitcommit: 1aeb983730f732a021b828c658cc741f8659c487
+ms.openlocfilehash: 01a19f1070c1096b41599705bba246bd0cc45d09
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -27,10 +28,10 @@ Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befeh
 ## <a name="prerequisites"></a>Voraussetzungen
 Für diesen Artikel ist ein vorhandener virtueller Linux-Computer in Azure erforderlich. Wenn Sie eine VM erstellen müssen, verwenden Sie eine der folgenden Methoden:
 
-- Die [Azure-CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Azure-CLI 2.0 (Preview)](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI 2.0](virtual-machines-linux-quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Azure CLI 1.0](virtual-machines-linux-quick-create-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - Das [Azure-Portal](virtual-machines-linux-quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Ferner muss die neueste Version von [Azure-CLI 1.0](../xplat-cli-install.md) oder [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen bei einem [aktiven Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) angemeldet sein.
+Ferner muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) oder [Azure CLI 1.0](../xplat-cli-install.md) installiert sein, und Sie müssen bei einem [aktiven Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) angemeldet sein.
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -69,16 +70,7 @@ Legen Sie ein Kennwort für Ihr Benutzerkonto fest, wenn Sie aktuell nur einen S
 sudo passwd ops
 ```
 
-Beenden Sie die SSH-Sitzung mit Ihrem virtuellen Linux-Computer. Verwenden Sie die Azure-CLI auf dem lokalen Computer, um eine Regel für eine Netzwerksicherheitsgruppe für die Zulassung von Remotedesktop-Datenverkehr zu erstellen. Das folgende Beispiel verwendet die Azure-CLI 1.0, um eine Regel mit dem Namen `myNetworkSecurityGroupRule` innerhalb von `myNetworkSecurityGroup` zu erstellen, um Verkehr an TCP-Port 3389 zuzulassen:
-
-```azurecli
-azure network nsg rule create --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-    --protocol tcp --direction inbound --priority 1010 \
-    --destination-port-range 3389 --access allow
-```
-
-Alternativ können Sie [az network nsg rule create](/cli/azure/network/nsg/rule#create) für die Azure-CLI 2.0 (Preview) verwenden:
+Beenden Sie die SSH-Sitzung mit Ihrem virtuellen Linux-Computer. Verwenden Sie die Azure-CLI auf dem lokalen Computer, um eine Regel für eine Netzwerksicherheitsgruppe für die Zulassung von Remotedesktop-Datenverkehr zu erstellen. Verwenden Sie [az network nsg rule create](/cli/azure/network/nsg/rule#create) mit Azure CLI 2.0. Im folgenden Beispiel wird eine Regel namens `myNetworkSecurityGroupRule` in `myNetworkSecurityGroup` erstellt, um Datenverkehr an TCP-Port 3389 zuzulassen:
     
 ```azurecli
 az network nsg rule create --resource-group myResourceGroup \
@@ -87,6 +79,15 @@ az network nsg rule create --resource-group myResourceGroup \
     --source-address-prefix '*' --source-port-range '*' \
     --destination-address-prefix '*' --destination-port-range 3389 \
     --access allow
+```
+
+Sie können auch Azure CLI 1.0 verwenden:
+
+```azurecli
+azure network nsg rule create --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
+    --protocol tcp --direction inbound --priority 1010 \
+    --destination-port-range 3389 --access allow
 ```
 
 Stellen Sie mithilfe Ihres bevorzugten Remotedesktopclients eine Verbindung mit Ihrem virtuellen Linux-Computer her.
@@ -149,16 +150,7 @@ Um zuzulassen, dass Remotedesktop-Datenverkehr Ihren virtuellen Linux-Computer e
 
 In den folgenden Beispielen wird eine Netzwerksicherheitgsgruppen-Regel mit dem Namen `myNetworkSecurityGroupRule` erstellt, damit Datenverkehr am `tcp`-Port `3389` zugelassen (`allow`) wird.
 
-- Verwenden der Azure-CLI 1.0:
-
-    ```azurecli
-    azure network nsg rule create --resource-group myResourceGroup \
-        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
-        --protocol tcp --direction inbound --priority 1010 \
-        --destination-port-range 3389 --access allow
-    ```
-
-- Alternativ können Sie [az network nsg rule create](/cli/azure/network/nsg/rule#create) für die Azure-CLI 2.0 (Preview) verwenden:
+- Verwenden Sie [az network nsg rule create](/cli/azure/network/nsg/rule#create) mit Azure CLI 2.0:
     
     ```azurecli
     az network nsg rule create --resource-group myResourceGroup \
@@ -169,6 +161,14 @@ In den folgenden Beispielen wird eine Netzwerksicherheitgsgruppen-Regel mit dem 
         --access allow
     ```
 
+- Sie können auch Azure CLI 1.0 verwenden:
+
+    ```azurecli
+    azure network nsg rule create --resource-group myResourceGroup \
+        --nsg-name myNetworkSecurityGroup --name myNetworkSecurityGroupRule \
+        --protocol tcp --direction inbound --priority 1010 \
+        --destination-port-range 3389 --access allow
+    ```
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Herstellen einer Verbindung mit dem virtuellen Linux-Computer mithilfe eines Remotedesktopclients
 Öffnen Sie Ihren lokalen Remotedesktopclient, und stellen Sie eine Verbindung mit der IP-Adresse oder dem DNS-Namen Ihres virtuellen Linux-Computers her. Geben Sie den Benutzernamen und das Kennwort des Benutzerkontos für Ihren virtuellen Computer wie folgt ein:
@@ -215,10 +215,5 @@ Wenn Sie in Ihrem Remotedesktopclient keine Antwort empfangen und keine Ereignis
 Weitere Informationen zum Erstellen und Verwenden von SSH-Schlüsseln mit virtuellen Linux-Computern finden Sie unter [Erstellen von SSH-Schlüsseln für virtuelle Linux-Computer in Azure](virtual-machines-linux-mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Informationen zum Verwenden von SSH unter Windows finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows](virtual-machines-linux-ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
