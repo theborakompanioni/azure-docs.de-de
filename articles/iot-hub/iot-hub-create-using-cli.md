@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines IoT Hubs mit der Azure CLI (az.py) | Microsoft-Dokumentation
-description: "So erstellen Sie einen Azure IoT Hub mithilfe der plattformübergreifenden Azure CLI 2.0 (Vorschau) (az.py)."
+description: "Erstellen eines Azure IoT Hubs mithilfe der plattformübergreifenden Azure CLI 2.0 (az.py)"
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -12,31 +12,32 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: 39c8c4944ef19379dc04e04a717ab60d305593c4
-ms.openlocfilehash: c52d9a5fadf494cc066bee773543c9d67bb8334b
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 4f512601cebcfce7bfac47ed440c96fcb2c91b5f
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-an-iot-hub-using-the-azure-cli-20-preview"></a>Erstellen eines IoT Hubs mit der Azure CLI 2.0 (Vorschau)
+# <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Erstellen eines IoT Hubs mit der Azure CLI 2.0
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>Einführung
 
-Sie können die Azure CLI 2.0 (Vorschau) (az.py) verwenden, um Azure IoT Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Artikel wird beschrieben, wie Sie über die Azure CLI 2.0 (Vorschau) (az.py) einen IoT Hub erstellen.
+Sie können die Azure CLI 2.0 (az.py) verwenden, um Azure IoT Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Artikel wird beschrieben, wie Sie über die Azure CLI 2.0 (az.py) einen IoT Hub erstellen.
 
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 * [Azure CLI (azure.js)](iot-hub-create-using-cli-nodejs.md): die Befehlszeilenschnittstelle für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-* Azure CLI 2.0 (Vorschau) (az.py): die Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell wie in diesem Artikel beschrieben
+* Azure CLI 2.0 (az.py): die Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell, wie in diesem Artikel beschrieben
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Ein aktives Azure-Konto. Wenn Sie kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
-* [Azure CLI 2.0 (Vorschau)][lnk-CLI-install]
+* Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
+* [Azure CLI 2.0][lnk-CLI-install].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Anmelden und Festlegen Ihres Azure-Kontos
 
@@ -62,16 +63,16 @@ Melden Sie sich bei Ihrem Azure-Konto an, und konfigurieren Sie die Azure CLI f�
     az account set --subscription {your subscription name or id}
     ```
 
-3. Bevor Sie IoT-Ressourcen bereitstellen können, müssen Sie den IoT-Anbieter registrieren. Führen Sie den folgenden [Befehl aus, um den IoT-Anbieter zu registrieren][lnk-az-register-command]:
-    
-    ```azurecli
-    az provider register -namespace "Microsoft.Devices"
-    ```
-
-4. Möglicherweise müssen Sie die _IoT-Komponente_ der Azure CLI installieren. Führen Sie den folgenden [Befehl aus, um die IoT-Komponente hinzuzufügen][lnk-az-addcomponent-command]:
+3. Installieren Sie die _IoT-Komponente_ der Azure CLI. Führen Sie den folgenden [Befehl aus, um die IoT-Komponente hinzuzufügen][lnk-az-addcomponent-command]:
     
     ```azurecli
     az component update --add iot
+    ```
+
+4. Bevor Sie IoT-Ressourcen bereitstellen können, müssen Sie den IoT-Anbieter registrieren. Führen Sie den folgenden [Befehl aus, um den IoT-Anbieter zu registrieren][lnk-az-register-command]:
+    
+    ```azurecli
+    az provider register -namespace Microsoft.Devices
     ```
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
@@ -81,7 +82,7 @@ Verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe, und fügen Sie
 1. Wenn Sie einen IoT Hub erstellen, müssen Sie ihn in einer Ressourcengruppe erstellen. Verwenden Sie entweder eine vorhandene Ressourcengruppe, oder führen Sie den folgenden [Befehl zum Erstellen einer Ressourcengruppe aus][lnk-az-resource-command]:
     
     ```azurecli
-     az resource group create --name {your resource group name} --location westus
+     az group create --name {your resource group name} --location westus
     ```
 
     > [!TIP]
@@ -113,17 +114,17 @@ az resource delete --name {your iot hub name} --resource-group {your resource gr
 Führen Sie den folgenden Befehl aus, um eine Ressourcengruppe und alle zugehörigen Ressourcen zu löschen:
 
 ```azurecli
-az resource group delete --name {your resource group name}
+az group delete --name {your resource group name}
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Entwickeln für IoT Hub finden Sie unter:
+Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 
 * [IoT Hub-Entwicklerhandbuch][lnk-devguide]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Verwenden des Azure-Portals zur Verwaltung von IoT Hub][lnk-portal]
+* [Verwenden des Azure-Portals zum Verwalten von IoT Hub][lnk-portal]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -137,9 +138,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-portal]: iot-hub-create-through-portal.md 
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

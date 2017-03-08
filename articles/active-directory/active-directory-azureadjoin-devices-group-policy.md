@@ -3,7 +3,7 @@ title: "Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für W
 description: "Erklärt, wie Gruppenrichtlinien konfiguriert werden müssen, damit Geräte durch Domänenbeitritt ins Unternehmensnetzwerk eingebunden werden können."
 services: active-directory
 documentationcenter: 
-author: markvi
+author: MarkusVi
 manager: femila
 editor: 
 tags: azure-classic-portal
@@ -18,6 +18,7 @@ ms.author: markvi
 translationtype: Human Translation
 ms.sourcegitcommit: 7d141adf04cfb99e57c63ba62de4a7dad9ab8326
 ms.openlocfilehash: 290645b920bc4a83c610e80266854450b6e1509a
+ms.lasthandoff: 12/22/2016
 
 
 ---
@@ -63,10 +64,5 @@ Befolgen Sie für die Bereitstellung die Schritte in [Konfigurieren der automati
 * [Weitere Informationen zu Verwendungsszenarios für Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Benutzererfahrungen beim Verknüpfen von in die Domäne eingebundenen Windows 10-Geräten mit Azure AD](active-directory-azureadjoin-devices-group-policy.md)
 * [Einrichten von Azure AD Join](active-directory-azureadjoin-setup.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
 
 

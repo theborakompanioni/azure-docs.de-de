@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: bb500d4705c3b67de6b9b31fa5311967beffffc2
-ms.openlocfilehash: df5c0475245c6ad1f632b08e5fdbf64374893d67
-ms.lasthandoff: 01/27/2017
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: 902c6ae45e7809e2847c9e45a35803f40c0b0ff3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -39,8 +39,8 @@ Wählen Sie eine der Aufgaben aus, und klicken Sie auf **Weiter** , um fortzufah
 
 > [!IMPORTANT]
 > Solange der Installations-Assistent geöffnet ist, werden alle Vorgänge im Synchronisierungsmodul angehalten. Stellen Sie sicher, dass Sie den Installations-Assistenten schließen, sobald Sie Ihre Konfigurationsänderungen abgeschlossen haben.
-> 
-> 
+>
+>
 
 ## <a name="view-current-configuration"></a>Aktuelle Konfiguration anzeigen
 Über diese Option erhalten Sie eine Schnellansicht Ihrer aktuell konfigurierten Optionen.
@@ -82,7 +82,7 @@ Um den Status zu ändern, wählen Sie diese Option aus, und aktivieren bzw. deak
 ## <a name="change-user-sign-in"></a>Benutzeranmeldung ändern
 Mit dieser Option können Sie von der Kennwortsynchronisierung zum Verbund oder umgekehrt wechseln. Ein Wechsel zu **Nicht konfigurieren**ist nicht möglich.
 
-Weitere Informationen zu dieser Option finden Sie unter [Benutzeranmeldung](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method).
+Weitere Informationen zu dieser Option finden Sie unter [Benutzeranmeldung](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu dem von Azure AD Connect verwendeten Konfigurationsmodell finden Sie unter [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)(Grundlegendes zur deklarativen Bereitstellung).
@@ -91,5 +91,4 @@ Weitere Informationen zu dieser Option finden Sie unter [Benutzeranmeldung](acti
 
 * [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-
 

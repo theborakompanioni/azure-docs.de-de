@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: robb
 translationtype: Human Translation
-ms.sourcegitcommit: 09b2847586eec50d8512ec5eabdc05a11d8b238a
-ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
+ms.sourcegitcommit: 3693b90509646fd7292861979cd7c2d1c0100d68
+ms.openlocfilehash: 30e92d17a99a0c751397e448108d488aefdd557a
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -24,8 +25,8 @@ ms.openlocfilehash: da4dc84501ca6b0c5a2d23e885196167be9c61ad
 # <a name="overview-of-azure-monitor"></a>Übersicht über Azure Monitor
 Dieser Artikel enthält eine konzeptionelle Übersicht über das Überwachen von Azure-Ressourcen. Es enthält Verweise auf Informationen zu bestimmten Ressourcentypen.  Allgemeine Informationen zur Überwachung Ihrer Anwendung aus einer Nicht-Azure-basierten Perspektive finden Sie unter [Anleitung zur Überwachung und Diagnose](../best-practices-monitoring.md).
 
-Ein Video mit einer exemplarischen Vorgehensweise für Azure Monitor steht unter  
-[Get Started with Azure Monitor](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor) (Erste Schritte mit Azure Monitor) zur Verfügung. Ein weiteres Video, in dem ein Szenario zur Verwendung von Azure Monitor erläutert wird, ist unter [Explore Microsoft Azure monitoring and diagnostics](https://channel9.msdn.com/events/Ignite/2016/BRK2234) (Erkunden der Microsoft Azure-Überwachung und -Diagnose) verfügbar.  
+Ein Video mit einer exemplarischen Vorgehensweise für Azure Monitor finden Sie unter  
+[Get Started with Azure Monitor](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor) (Erste Schritte mit Azure Monitor). Ein weiteres Video, in dem ein Szenario zur Verwendung von Azure Monitor erläutert wird, ist unter [Explore Microsoft Azure monitoring and diagnostics](https://channel9.msdn.com/events/Ignite/2016/BRK2234) (Erkunden der Microsoft Azure-Überwachung und -Diagnose) verfügbar.  
 
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
 
@@ -113,7 +114,7 @@ Beispiele:
 * Senden der Daten an Event Hubs, um sie an Drittanbietertools weiterleiten und Echtzeitanalysen durchführen zu können
 
 ### <a name="automate"></a>Automatisieren
-Sie können die Überwachungsdaten nutzen, um Ereignisse oder sogar ganze Prozesse auszulösen. Beispiele:
+Sie können die Überwachungsdaten nutzen, um Warnungen, Ereignisse oder sogar ganze Prozesse auszulösen. Beispiele:
 
 * Verwenden der Daten, um Compute-Instanzen je nach Anwendungslast automatisch horizontal hoch- oder herunterzuskalieren
 * Senden von E-Mails, wenn eine Metrik einen vorgegebenen Schwellenwert überschreitet
@@ -145,9 +146,4 @@ Weitere Informationen
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) : Diagnostizieren Sie Probleme mit Ihrer App Service-Web-App.
 * [Problembehandlung für Azure Storage](../storage/storage-e2e-troubleshooting.md) : Lösen Sie Probleme mit Storage-Blobs, Tabellen oder Warteschlangen.
 * [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) und die [Operations Management Suite](https://www.microsoft.com/oms/)
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2016
+ms.date: 02/28/2017
 ms.author: seguler
 translationtype: Human Translation
-ms.sourcegitcommit: bc97472a07ac4c27c60fbe2cb803f2360a3362c4
-ms.openlocfilehash: 7faa219c7c21c768419f6c5e98712a0f0f471924
+ms.sourcegitcommit: af3ba5a4d1bd457f19038b9917ce55920e5e882b
+ms.openlocfilehash: 7d97e0f8be183c8858520d795ac28b7ad63a6dae
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.openlocfilehash: 7faa219c7c21c768419f6c5e98712a0f0f471924
 [!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
 
 ## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge im Microsoft Azure File Storage-Dienst ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit dem Microsoft Azure File Storage-Dienst vertraut sind, sind die in den folgenden Abschnitten erläuterten Konzepte sehr hilfreich zum besseren Verständnis der Beispiele.
+In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge im Microsoft Azure File Storage-Dienst ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit dem Microsoft Azure File Storage-Dienst vertraut sind, helfen die in den folgenden Abschnitten erläuterten Konzepte beim besseren Verständnis der Beispiele.
 
 [!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
@@ -50,8 +51,8 @@ Install-Package wastorage
 Fügen Sie die folgenden include-Anweisungen am Anfang der C++-Datei hinzu, um die Stellen anzugeben, an denen Sie die Azure Storage-APIs zum Zugriff auf Dateien verwenden möchten:
 
 ```cpp
-#include "was/storage_account.h"
-#include "was/file.h"
+#include <was/storage_account.h>
+#include <was/file.h>
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Einrichten einer Azure-Speicherverbindungszeichenfolge
@@ -132,7 +133,7 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
 ## <a name="how-to-create-a-directory"></a>Erstellen eines Verzeichnisses
-Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit dem Azure-Dateispeicherdienst können Sie so viele Verzeichnisse erstellen, wie in Ihrem Konto zugelassen sind. Der unten stehende Code erstellt ein Verzeichnis namens **my-sample-directory** im Stammverzeichnis sowie ein Unterverzeichnis namens **my-sample-subdirectory**.
+Sie können zudem den Speicher organisieren, indem Sie Dateien in Unterverzeichnissen ablegen, anstatt alle Dateien im Stammverzeichnis zu speichern. Mit Azure File Storage können Sie so viele Verzeichnisse erstellen, wie in Ihrem Konto zugelassen sind. Der unten stehende Code erstellt ein Verzeichnis namens **my-sample-directory** im Stammverzeichnis sowie ein Unterverzeichnis namens **my-sample-subdirectory**.
 
 ```cpp
 // Retrieve a reference to a directory
@@ -174,7 +175,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="how-to-download-a-file"></a>Herunterladen einer Datei
-Zum Herunterladen von Dateien rufen Sie zuerst einen Dateiverweis ab und rufen dann die **download_to_stream**-Methode auf, um den Dateiinhalt in ein Datenstromobjekt zu übertragen, das Sie dann dauerhaft in einer lokalen Datei speichern können. Alternativ können Sie die **download_to_file**-Methode verwenden, um den Inhalt einer Datei in eine lokale Datei herunterzuladen. Sie können die **download_text**-Methode verwenden, um den Inhalt einer Datei als Textzeichenfolge herunterzuladen.
+Zum Herunterladen von Dateien rufen Sie zuerst einen Dateiverweis ab und dann die **download_to_stream**-Methode auf, um den Dateiinhalt in ein Datenstromobjekt zu übertragen, das Sie dann dauerhaft in einer lokalen Datei speichern können. Alternativ können Sie die **download_to_file**-Methode verwenden, um den Inhalt einer Datei in eine lokale Datei herunterzuladen. Sie können die **download_text**-Methode verwenden, um den Inhalt einer Datei als Textzeichenfolge herunterzuladen.
 
 Das folgende Beispiel verwendet die Methoden **download_to_stream** und **download_text**, um das Herunterladen der Dateien zu veranschaulichen, die in den vorherigen Abschnitten erstellt wurden.
 
@@ -354,12 +355,8 @@ Weitere Informationen zum Erstellen und Verwenden von Shared Access Signatures f
 Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
 * [Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)
+* [Beispiele für den Azure Storage File-Dienst in C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure-Speicher-Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

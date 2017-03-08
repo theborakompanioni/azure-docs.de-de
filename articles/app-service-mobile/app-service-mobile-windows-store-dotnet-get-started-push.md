@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Azure Mobile App Service-Apps und Azure Noti
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: ysxu
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
 translationtype: Human Translation
-ms.sourcegitcommit: 78976e591d2eaacb286465b1ad0926a04143cecc
-ms.openlocfilehash: 6cb3033b302e2506252707856e4ce676bf576c77
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 5e71ecc6539179efdcfa6bfc4567bddaa96a59d9
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -28,7 +29,7 @@ In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [Windows-Schnellstartpr
 
 Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Erweiterungspaket für Pushbenachrichtigungen hinzufügen. Weitere Informationen finden Sie unter [Arbeiten mit dem .NET Back-End-Server SDK für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="a-nameconfigure-hubaconfigure-a-notification-hub"></a><a name="configure-hub"></a>Konfigurieren eines Notification Hubs
+## <a name="configure-hub"></a>Konfigurieren eines Notification Hubs
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrieren der App für Pushbenachrichtigungen
@@ -53,10 +54,10 @@ Sie müssen die App an den Windows Store übermitteln und anschließend das Serv
 ## <a name="configure-the-backend-to-send-push-notifications"></a>Konfigurieren des Back-Ends zum Senden von Pushbenachrichtigungen
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a name="a-idupdate-serviceaupdate-the-server-to-send-push-notifications"></a><a id="update-service"></a>Aktualisieren des Servers zum Senden von Pushbenachrichtigungen
-Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp – entweder [.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs):
+## <a id="update-service"></a>Aktualisieren des Servers zum Senden von Pushbenachrichtigungen
+Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp &mdash; entweder [.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs).
 
-### <a name="a-namedotnetanet-backend-project"></a><a name="dotnet"></a>.NET-Back-End-Projekt
+### <a name="dotnet"></a>.NET-Back-End-Projekt
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie auf **NuGet-Pakete verwalten**. Suchen Sie „Microsoft.Azure.Mobile.NotificationHubs“, und klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Clientbibliothek installiert.
 2. Erweitern Sie **Controller**, öffnen Sie „TodoItemController.cs“, und fügen Sie die folgenden using-Anweisungen hinzu:
 
@@ -100,7 +101,7 @@ Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp – entweder
     Dieser Code weist das Benachrichtigungshub an, nach dem Einfügen eines neuen Elements eine Pushbenachrichtigung zu senden.
 4. Veröffentlichen Sie das Serverprojekt erneut.
 
-### <a name="a-namenodejsanodejs-backend-project"></a><a name="nodejs"></a>Node.js-Back-End-Projekt
+### <a name="nodejs"></a>Node.js-Back-End-Projekt
 1. Falls nicht bereits geschehen, [laden Sie das Schnellstartprojekt herunter](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), oder verwenden Sie den [Online-Editor im Azure-Portal](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
 2. Ersetzen Sie den bestehenden Code in der Datei „todoitem.js“ durch den folgenden Code:
 
@@ -147,7 +148,7 @@ Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp – entweder
     Damit wird eine WNS-Popupbenachrichtigung gesendet, die „item.text“ enthält, wenn ein neues Todo-Element eingefügt wird.
 3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
 
-## <a name="a-idupdate-appaadd-push-notifications-to-your-app"></a><a id="update-app"></a>Hinzufügen von Pushbenachrichtigungen zur App
+## <a id="update-app"></a>Hinzufügen von Pushbenachrichtigungen zur App
 Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert werden. Wenn Sie die Authentifizierung bereits aktiviert haben, achten Sie darauf, dass sich der Benutzer anmeldet, bevor die Registrierung für Pushbenachrichtigungen ausgeführt wird.
 
 1. Öffnen Sie die Projektdatei **App.xaml.cs**, und fügen Sie die folgenden `using`-Anweisungen hinzu:
@@ -179,33 +180,28 @@ Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert we
     Dadurch wird sichergestellt, dass der kurzlebige ChannelURI-Wert bei jedem Anwendungsstart registriert wird.
 4. Erstellen Sie Ihr UWP-App-Projekt erneut. Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
-## <a name="a-idtestatest-push-notifications-in-your-app"></a><a id="test"></a>Testen von Pushbenachrichtigungen in der App
+## <a id="test"></a>Testen von Pushbenachrichtigungen in der App
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a name="a-idmoreanext-steps"></a><a id="more"></a>Nächste Schritte
+## <a id="more"></a>Nächste Schritte
 Informieren Sie sich ausführlicher über Pushbenachrichtigungen:
 
 * [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
   : Mithilfe von Vorlagen können Sie flexibel plattformübergreifende Pushvorgänge und lokalisierte Pushvorgänge senden. Hier erfahren Sie, wie Sie Vorlagen registrieren.
 * [Azure Notification Hubs - Diagnosis guidelines](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-   (Azure Notification Hubs – Diagnoserichtlinien): Benachrichtigungen können aus unterschiedlichen Gründen verloren gehen oder nicht bei Geräten ankommen. In diesem Thema wird gezeigt, wie Sie die Grundursache von Pushbenachrichtigungsfehlern analysieren und ermitteln.
+  (Azure Notification Hubs – Diagnoserichtlinien): Benachrichtigungen können aus unterschiedlichen Gründen verloren gehen oder nicht bei Geräten ankommen. In diesem Thema wird gezeigt, wie Sie die Grundursache von Pushbenachrichtigungsfehlern analysieren und ermitteln.
 
 Sie können mit einem der folgenden Tutorials fortfahren:
 
 * [Hinzufügen von Authentifizierung zur App](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-   Hier erhalten Sie Informationen zur Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+  Hier erhalten Sie Informationen zur Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
 * [Aktivieren der Offlinesynchronisierung für Ihre App](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-   Erfahren Sie, wie Sie mithilfe eines Mobile App-Back-Ends Ihrer App Offlineunterstützung hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das Anzeigen, Hinzufügen oder Ändern von Daten), auch wenn keine Netzwerkverbindung besteht.
+  Erfahren Sie, wie Sie mithilfe eines Mobile App-Back-Ends Ihrer App Offlineunterstützung hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das Anzeigen, Hinzufügen oder Ändern von Daten), auch wenn keine Netzwerkverbindung besteht.
 
 <!-- Anchors. -->
 
 <!-- URLs. -->
-[Azure-Portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

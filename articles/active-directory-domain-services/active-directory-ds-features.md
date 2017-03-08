@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2017
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
 ms.openlocfilehash: 34f84de82cbd6c15bd62abedd05e0eff6ce2dc2f
+ms.lasthandoff: 01/28/2017
 
 
 ---
@@ -39,9 +40,4 @@ Die folgenden Features sind in Domänen verfügbar, die in Azure AD Domain Servi
 * **Verfügbar in mehreren Azure-Regionen:** Informationen zu den Azure-Regionen, in denen Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/) .
 * **Hohe Verfügbarkeit:** Azure AD Domain Services bieten eine hohe Verfügbarkeit für Ihre Domäne. Durch dieses Feature wird eine höhere Dienstverfügbarkeit und Stabilität bei Fehlern gewährleistet. Die integrierte Integritätsüberwachung bietet eine automatische Wiederherstellung nach Fehlern durch das Einrichten neuer Instanzen zum Ersetzen fehlerhafter Instanzen und zum Bereitstellen eines fortlaufenden Diensts für Ihre Domäne.
 * **Verwendung vertrauter Verwaltungstools:** Sie können vertraute Windows Server Active Directory-Verwaltungstools wie das Active Directory-Verwaltungscenter oder Active Directory-PowerShell zur Verwaltung von Domänen einsetzen, um Domänen zu verwalten.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

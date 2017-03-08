@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: e9d7e1b5976719c07de78b01408b2546b4fec297
-ms.openlocfilehash: 217715ad1657582eb35008b765de6d19bd2a8b0b
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: 3d7e28c1cd221d704cf9cfec66da535e079fb472
+ms.openlocfilehash: 30044abc0d7d42b11ddd210dfb9ea3eadb94dda6
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -125,14 +125,8 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
 ```
 
 #### <a name="cluster-upgrade-workflow"></a>Workflow für das Upgrade des Clusters
-1. Führen Sie Get-ServiceFabricClusterUpgrade auf einem der Knoten im Cluster aus, und notieren Sie die TargetCodeVersion.
-2. Führen Sie Folgendes auf einem mit dem Internet verbundenen Computer aus, um alle mit der aktuellen Version für das Upgrade kompatiblen Versionen aufzulisten und das entsprechende Paket über die zugehörigen Downloadlinks herunterzuladen.
-   ```powershell
-   
-    ###### Get list of all upgrade compatible packages
-    Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1>
-    ```
-3. Stellen Sie auf einem Computer mit Administratorzugriffsrechten auf alle Computer, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind, eine Verbindung mit dem Cluster her. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein. 
+1. Laden Sie die aktuelle Version des Pakets aus dem Dokument [Service Fabric-Cluster für Windows Server erstellen](service-fabric-cluster-creation-for-windows-server.md) herunter.
+2. Stellen Sie auf einem Computer mit Administratorzugriffsrechten auf alle Computer, die als Knoten in der Clusterkonfigurationsdatei aufgeführt sind, eine Verbindung mit dem Cluster her. Der Computer, auf dem dieses Skript ausgeführt wird, muss nicht Teil des Clusters sein. 
    
     ```powershell
    
@@ -147,7 +141,7 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
         -StoreLocation CurrentUser `
         -StoreName My
     ```
-4. Kopieren Sie das heruntergeladene Paket in den Clusterimagespeicher.
+3. Kopieren Sie das heruntergeladene Paket in den Clusterimagespeicher.
    
     ```powershell
    
@@ -159,7 +153,7 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
 
     ```
 
-5. Registrieren Sie das kopierte Paket. 
+4. Registrieren Sie das kopierte Paket. 
    
     ```powershell
    
@@ -170,7 +164,7 @@ und starten Sie ein Konfigurationsupgrade. Nutzungsdetails finden Sie in den Inf
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
    
      ```
-6. Starten Sie ein Clusterupgrade auf eine der verfügbaren Versionen. 
+5. Starten Sie ein Clusterupgrade auf eine der verfügbaren Versionen. 
    
     ```Powershell
    
@@ -200,13 +194,6 @@ Führen Sie für ein Upgrade der Clusterkonfiguration Start-ServiceFabricCluster
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File> 
 
 ```
-
-### <a name="cluster-certificate-config-upgrade-pls-hold-on-till-v55-is-released-because-cluster-cert-upgrade-doesnt-work-till-v55"></a>Clusterzertifikatkonfigurations-Upgrade (PLS HOLD ON TILL v5.5 wurde veröffentlicht, da das Clusterzertifikatupgrade erst ab Version&5;.5 funktioniert)
-Das Clusterzertifikat wird für die Authentifizierung zwischen Clusterknoten verwendet. Daher sollte der Zertifikatrollover mit besonderer Vorsicht ausgeführt werden, da Fehler die Kommunikation zwischen den Clusterknoten blockieren könnten.
-Technisch gesehen werden zwei Optionen unterstützt:
-
-1. Einzelnes Zertifikatupgrade: Der Upgradepfad lautet „Zertifikat A (primär) > Zertifikat B (primär) > Zertifikat C (primär) > ...“. 
-2. Doppeltes Zertifikatupgrade: Der Upgradepfad lautet „Zertifikat A (primär) > Zertifikat A (primär) und B (sekundär) > Zertifikat B (primär) > Zertifikat B (primär) und C (sekundär) > Zertifikat C (primär) > ...“.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

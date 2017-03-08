@@ -4,7 +4,7 @@ description: "Es wird beschrieben, wie Sie mit Access Control-Datensätzen (Acce
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 11252938-5b97-4178-8c37-f58eaa3d00b1
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 037da7a5647f5b3d2b0cf1364fab050406be3b62
+ms.sourcegitcommit: f45d8e2b848e930a790e7bf38c2b09fbdaaf2fab
+ms.openlocfilehash: 30b6aedd9b4b7913f6862b34582f3ae96c9eae5f
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="use-the-storsimple-manager-service-to-manage-access-control-records-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple Manager-Diensts zum Verwalten von Access Control-Datensätzen für das StorSimple Virtual Array
+# <a name="use-storsimple-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Verwenden von StorSimple Manager zum Verwalten von Access Control-Datensätzen für StorSimple Virtual Array
+
 ## <a name="overview"></a>Übersicht
 Mit Access Control-Datensätzen (Access Control Records, ACRs) können Sie angeben, welche Hosts eine Verbindung mit einem Volume im StorSimple Virtual Array (auch als lokales virtuelles StorSimple-Gerät bezeichnet) herstellen können. ACRs sind auf ein bestimmtes Volume festgelegt. Sie enthalten die qualifizierten iSCSI-Namen (IQN) der Hosts. Wenn ein Host versucht, eine Verbindung mit einem Volume herzustellen, überprüft das Gerät den ACR zu diesem Volume anhand des IQN-Namens. Bei einer Übereinstimmung wird eine Verbindung hergestellt. Im Abschnitt mit den **Zugriffssteuerungsdatensätzen** auf der Seite **Konfigurieren** werden alle Zugriffssteuerungsdatensätze zu den IQNs der Hosts angezeigt.
 
@@ -102,11 +105,6 @@ Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu 
 4. Klicken Sie auf das Häkchensymbol  ![Häkchensymbol](./media/storsimple-ova-manage-acrs/check-icon.png). Die tabellarische Auflistung wird mit dem gelöschten Eintrag aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie sich die weiteren Informationen zum [Hinzufügen von Volumes und Konfigurieren von ACRs](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)durch.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
+* Lesen Sie sich die weiteren Informationen zum [Hinzufügen von Volumes und Konfigurieren von ACRs](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume) durch.
 
 

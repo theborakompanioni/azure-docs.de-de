@@ -17,6 +17,7 @@ ms.author: billmath
 translationtype: Human Translation
 ms.sourcegitcommit: 67b832253619afe789a4dfdb95893e8c0ae62bee
 ms.openlocfilehash: 17890fddf948ddc0e89a9107ac5fe65223cd05e1
+ms.lasthandoff: 01/30/2017
 
 ---
 
@@ -40,6 +41,7 @@ Die Passthrough-Authentifizierung kann über Azure AD Connect konfiguriert werde
 >Umgebungen mit mehreren Gesamtstrukturen können unterstützt werden, wenn Vertrauensstellungen zwischen den Gesamtstrukturen bestehen und das Namensuffixrouting ordnungsgemäß konfiguriert ist.
 
 ## <a name="supported-clients-in-the-preview"></a>Unterstützte Clients in der Vorschau
+
 Die Passthrough-Authentifizierung ist in browserbasierten Clients und Office-Clients möglich, die [moderne Authentifizierungsmechanismen](https://aka.ms/modernauthga) unterstützen. Im Fall von Clients, die eine solche Unterstützung nicht bieten, wie z.B. ältere Office-Clients oder Exchange Active Sync (also native E-Mail-Clients auf mobilen Geräten), wird Kunden empfohlen, die entsprechende äquivalente Methode zur modernen Authentifizierung zu verwenden. Dadurch wird diesen Clients nicht nur die Passthrough-Authentifizierung ermöglicht, sondern auch die Anwendung eines bedingten Zugriffs, beispielsweise durch Multi-Factor Authentication.
 
 Für Windows 10 in Azure AD wird die Passthrough-Authentifizierung zurzeit nicht unterstützt. Kunden können jedoch für die älteren Clients zusätzlich die Kennwortsynchronisierung als automatisches Fallback für Windows 10 verwenden.
@@ -154,9 +156,4 @@ Im Folgenden finden Sie weitere Fehler, die auf dem Azure AD-Anmeldebildschirm a
 |AADSTS80004|Der an den Connector übergebene Benutzername war ungültig.|Stellen Sie sicher, dass der Benutzer den richtigen Benutzernamen für die Anmeldung verwendet.
 |AADSTS80005|Bei der Überprüfung ist eine unvorhersehbare WebException aufgetreten.|Dieser Fehler ist ein vorübergehendes Problem. Wiederholen Sie die Anforderung. Sollte der Fehler weiter auftreten, wenden Sie sich an den Microsoft-Support.
 |AADSTS80007|Bei der Kommunikation mit Active Directory ist ein Fehler aufgetreten.|Suchen Sie in den Connectorprotokollen nach weiteren Informationen, und überprüfen Sie, ob Active Directory erwartungsgemäß funktioniert.
-
-
-
-<!--HONumber=Jan17_HO5-->
-
 

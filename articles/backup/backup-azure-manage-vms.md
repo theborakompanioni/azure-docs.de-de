@@ -150,7 +150,7 @@ Mit der Beibehaltung der Wiederherstellungspunkte im Speicher sind Kosten verbun
 
 So beenden Sie den Schutz für einen virtuellen Computer
 
-1. Klicken Sie auf dem Dashboard für die Tresorelemente [](backup-azure-manage-vms.md#open-a-vault-item-dashboard)auf **Sicherung beenden**.
+1. Klicken Sie auf dem [Dashboard für die Tresorelemente](backup-azure-manage-vms.md#open-a-vault-item-dashboard)auf **Sicherung beenden**.
 
     ![Schaltfläche „Sicherung beenden“](./media/backup-azure-manage-vms/stop-backup-button.png)
 
@@ -177,7 +177,7 @@ Wenn beim Beenden des Schutzes für den virtuellen Computer die Option **Sicheru
 
 So setzen Sie den Schutz für den virtuellen Computer fort
 
-1. Klicken Sie auf dem Dashboard für die Tresorelemente [](backup-azure-manage-vms.md#open-a-vault-item-dashboard)auf **Sicherung fortsetzen**.
+1. Klicken Sie auf dem [Dashboard für die Tresorelemente](backup-azure-manage-vms.md#open-a-vault-item-dashboard) auf **Sicherung fortsetzen**.
 
     ![Schutz fortsetzen](./media/backup-azure-manage-vms/resume-backup-button.png)
 
@@ -202,7 +202,7 @@ Beim folgenden Verfahren wird davon ausgegangen, dass der Sicherungsauftrag für
 
 So löschen Sie Sicherungsdaten auf einem virtuellen Computer mit *deaktivierter Sicherung*:
 
-1. Klicken Sie auf dem Dashboard für die Tresorelemente [](backup-azure-manage-vms.md#open-a-vault-item-dashboard)auf **Sicherung löschen**.
+1. Klicken Sie auf dem [Dashboard für die Tresorelemente](backup-azure-manage-vms.md#open-a-vault-item-dashboard)auf **Sicherung löschen**.
 
     ![VM-Typ](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 

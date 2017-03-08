@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: marsma
 translationtype: Human Translation
-ms.sourcegitcommit: cedc76bc46137a5d53fd76c0fdb6ff2db79566a4
-ms.openlocfilehash: 05e999d62d3ffdde708c9898807e79fabcff992e
+ms.sourcegitcommit: a8b570cfbab594e1a21417e081eaf6d34a4659d0
+ms.openlocfilehash: 40f10b1cb860ca0c018cc3589417c54588269b0c
+ms.lasthandoff: 02/28/2017
 
 
 ---
@@ -36,6 +37,10 @@ Für ein Blob kann eine beliebige Anzahl von Momentaufnahmen vorhanden sein. Mom
 Wenn Sie eine Momentaufnahme eines Blobs erstellen, werden seine Systemeigenschaften mit denselben Werten in die Momentaufnahme kopiert. Die Metadaten des Basisblobs werden auch in die Momentaufnahme kopiert, sofern Sie beim Erstellen keine separaten Metadaten für die Momentaufnahme angeben.
 
 Dem Basis-Blob zugeordnete Leases wirken sich nicht auf die Momentaufnahme aus. Sie können für eine Momentaufnahme keine Lease abrufen.
+
+Für das Speichern der aktuellen Informationen und des Status eines VM-Datenträgers wird eine VHD-Datei verwendet. Sie können einen Datenträger vom virtuellen Computer trennen oder die VM herunterfahren und dann eine Momentaufnahme der VHD-Datei erstellen. Sie können diese Momentaufnahmedatei später verwenden, um die VHD-Datei zu diesem Zeitpunkt abzurufen und den virtuellen Computer neu zu erstellen.
+
+Wenn Storage Service Encryption (SSE) für das Speicherkonto aktiviert ist, in dem sich das Blob befindet, werden Momentaufnahmen des Blobs im Ruhezustand verschlüsselt.
 
 ## <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 Das folgende Codebeispiel zeigt, wie Sie eine Momentaufnahme in .NET erstellen. In diesem Beispiel werden separate Metadaten für die Momentaufnahme angegeben, wenn sie erstellt wird.
@@ -163,10 +168,5 @@ In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keine
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Beispiele zur Verwendung von Blobspeicher finden Sie unter [Azure-Codebeispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Sie können eine Beispielanwendung herunterladen und ausführen oder den Code auf GitHub durchsuchen.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

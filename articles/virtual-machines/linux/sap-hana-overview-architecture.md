@@ -13,13 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 42a2f5488bac192311cd0652286e45a2280032f2
-ms.openlocfilehash: 8bb2c8138d5f5ef76490e5439ba2427cbaf9b33d
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a412304c33d915be6e30c6b748c8431a9c7e9f34
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Übersicht und Architektur von SAP HANA auf Azure (große Instanzen)
+# <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen) 
 Dies ist ein fünfteiliges Handbuch zur Architektur und technischen Bereitstellung, das Ihnen Informationen zur Bereitstellung von SAP auf dem neuen SAP HANA in Azure (große Instanzen) bietet. Es ist nicht umfassend, und bestimmte Details im Zusammenhang mit dem Setup von SAP-Lösungen werden nicht behandelt. Stattdessen bietet es wertvolle Informationen, um Sie bei Ihrer erstmaligen Bereitstellung und bei laufenden Vorgängen zu unterstützen. Verwenden Sie es nicht als Ersatz für die SAP-Dokumentation zur Installation von SAP HANA (oder für die zahlreichen SAP-Supporthinweise, die sich mit dem Thema befassen). Darüber hinaus enthält es Details zur Installation von SAP HANA in Azure (große Instanzen).
 
 
@@ -358,10 +360,5 @@ Die obige Abbildung zeigt, wie die verschiedenen Azure-VNETs in beiden Regionen 
 > [!IMPORTANT] 
 > Wenn mehrere ExpressRoute-Verbindungen verwendet werden, sollten die Einstellungen „AS Path prepending“ und „Local Preference BGP“ verwendet werden, um ein ordnungsgemäßes Routing des Datenverkehrs sicherzustellen.
 
-
-
-
-
-<!--HONumber=Jan17_HO1-->
 
 

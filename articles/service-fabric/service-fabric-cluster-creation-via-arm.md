@@ -12,11 +12,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/08/2016
+ms.date: 02/22/2017
 ms.author: chackdan
 translationtype: Human Translation
-ms.sourcegitcommit: eddca02c4fba88aee667216568beecc76ea65d7c
-ms.openlocfilehash: 22e2e2ff15daa390a952b465f937e890169b95a8
+ms.sourcegitcommit: b80ee30379e9aac207cfe420cae17da57ea123a5
+ms.openlocfilehash: 9159f40fed17e52e6576efa1ea7e8a2dee98728e
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -339,7 +340,7 @@ In diesem Abschnitt werden die Ausgaben der vorherigen PowerShell-Befehle in ein
 Resource Manager-Beispielvorlagen stehen im [Azure-Schnellstart-Vorlagenkatalog auf GitHub][azure-quickstart-templates] zur Verfügung. Diese Vorlagen können als Ausgangspunkt für Ihre Clustervorlage verwendet werden.
 
 ### <a name="create-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
-In diesem Leitfaden werden die Beispielvorlage für einen [Sicherheitscluster mit&5; Knoten][service-fabric-secure-cluster-5-node-1-nodetype-wad] und die zugehörigen Vorlagenparameter verwendet. Laden Sie `azuredeploy.json` und `azuredeploy.parameters.json` auf Ihren Computer herunter, und öffnen Sie beide Dateien in einem Texteditor.
+In diesem Leitfaden werden die Beispielvorlage für einen [Sicherheitscluster mit&5; Knoten][service-fabric-secure-cluster-5-node-1-nodetype] und die zugehörigen Vorlagenparameter verwendet. Laden Sie `azuredeploy.json` und `azuredeploy.parameters.json` auf Ihren Computer herunter, und öffnen Sie beide Dateien in einem Texteditor.
 
 ### <a name="add-certificates"></a>Hinzufügen von Zertifikaten
 Um Zertifikate einer Resource Manager-Vorlage für einen Cluster hinzuzufügen, verweisen Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln. Es empfiehlt sich, die Schlüsseltresorwerte in einer Parameterdatei für die Resource Manager-Vorlage zu speichern. Dadurch ist die Resource Manager-Vorlagendatei wiederverwendbar und enthält keine spezifischen Werte für eine bestimmte Bereitstellung.
@@ -667,7 +668,7 @@ Ja. Denken Sie jedoch daran, die URL von Service Fabric Explorer Ihrer Cluster(w
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 [sf-aad-ps-script-download]:http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
 [azure-quickstart-templates]: https://github.com/Azure/azure-quickstart-templates
-[service-fabric-secure-cluster-5-node-1-nodetype-wad]: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype-wad/
+[service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
 
@@ -679,9 +680,4 @@ Ja. Denken Sie jedoch daran, die URL von Service Fabric Explorer Ihrer Cluster(w
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

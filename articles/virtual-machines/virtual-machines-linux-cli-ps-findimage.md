@@ -15,20 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/15/2017
 ms.author: rasquill
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: dc0797927d75a06117d72f52d7065927e65678b4
-ms.openlocfilehash: 76d6288832b50d187c729afaee9118923517eb94
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: e9be064425ae6b9048098333cc664310e7128314
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="select-linux-vm-images-with-the-azure-cli"></a>Auswählen von Linux-VM-Images mit der Azure-CLI
+# <a name="how-to-find-linux-vm-images-with-the-azure-cli"></a>Suchen von Linux-VM-Images mit der Azure-CLI
 In diesem Thema wird beschrieben wie Sie Herausgeber, Angebote, SKUs und Versionen für jeden Ort finden, an dem Sie etwas bereitstellen möchten. 
 
 
-## <a name="use-azure-cli-20-preview"></a>Verwenden der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+## <a name="use-azure-cli-20"></a>Verwenden der Azure CLI 2.0
 
-Verwenden Sie nach dem [Installieren von Azure CLI 2.0 (Vorschau)](https://docs.microsoft.com/cli/azure/install-az-cli2) den Befehl `az vm image list`, um eine zwischengespeicherte Liste mit beliebten VM-Images anzuzeigen. Mit dem Befehl `az vm image list -o table` wird beispielsweise Folgendes angezeigt:
+Verwenden Sie nach dem [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) den Befehl `az vm image list`, um eine zwischengespeicherte Liste mit beliebten VM-Images anzuzeigen. Mit dem Befehl `az vm image list -o table` wird beispielsweise Folgendes angezeigt:
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -48,7 +49,7 @@ CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:
 
 ### <a name="finding-all-current-images"></a>Suchen nach allen aktuellen Images
 
-Verwenden Sie zum Abrufen der aktuellen Liste mit allen Images den Befehl `az vm image list` mit der Option `--all`. Anders als bei den Azure CLI 1.0-Befehlen werden mit dem Befehl `az vm image list --all` standardmäßig alle Images in **westus** zurückgegeben (sofern Sie nicht ein bestimmtes `--location`-Argument angeben). Es dauert also etwas, bis die Ausführung des Befehls `--all` abgeschlossen ist. Wenn Sie eine interaktive Untersuchung durchführen möchten, können Sie `az vm image list --all > allImages.json` verwenden. Mit diesem Befehl wird eine Liste mit allen Images zurückgegeben, die in Azure derzeit verfügbar sind, und für die lokale Nutzung als Datei gespeichert. 
+Verwenden Sie zum Abrufen der aktuellen Liste mit allen Images den Befehl `az vm image list` mit der Option `--all`. Anders als bei den Azure CLI 1.0-Befehlen werden mit dem Befehl `az vm image list --all` standardmäßig alle Images in **westus** zurückgegeben (sofern Sie nicht ein bestimmtes `--location`-Argument angeben). Es dauert also eine Weile, bis die Ausführung des Befehls `--all` abgeschlossen ist. Wenn Sie eine interaktive Untersuchung durchführen möchten, können Sie `az vm image list --all > allImages.json` verwenden. Mit diesem Befehl wird eine Liste mit allen Images zurückgegeben, die in Azure derzeit verfügbar sind, und für die lokale Nutzung als Datei gespeichert. 
 
 Sie können eine von mehreren Optionen angeben, um die Suche bei Bedarf auf einen bestimmten Standort, ein Angebot, einen Herausgeber oder eine SKU zu beschränken. Wenn Sie keinen Standort angeben, werden die Werte für **westus** zurückgegeben.
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -65,28 +66,28 @@ Sie können die [Remote Server Administration Tools (RSAT)](http://social.techne
 Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstools auf dem virtuellen Computer zu installieren, der der Domäne beigetreten ist. Weitere Informationen zum Installieren und Verwenden der Remoteserver-Verwaltungstools finden Sie in TechNet im Artikel [Bereitstellen der Remoteserver-Verwaltungstools](https://technet.microsoft.com/library/hh831501.aspx).
 
 1. Wechseln Sie im klassischen Azure-Portal zum Knoten **Virtuelle Computer** . Wählen Sie den virtuellen Computer aus, den Sie in Aufgabe 1 erstellt haben, und klicken Sie auf der Befehlsleiste im unteren Fensterbereich auf **Verbinden** .
-   
+
     ![Verbindung mit virtuellem Windows-Computer herstellen](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 2. Sie werden aufgefordert, eine Datei mit der Erweiterung „.rdp“ zu öffnen oder zu speichern. Diese wird zum Herstellen der Verbindung mit dem virtuellen Computer verwendet. Warten Sie, bis der Download abgeschlossen ist, und klicken Sie dann auf die Datei, um sie zu öffnen.
 3. Verwenden Sie bei der Anmeldeaufforderung die Anmeldeinformationen eines Benutzers, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. In unserem Fall verwenden wir zum Beispiel verwenden wir 'bob@domainservicespreview.onmicrosoft.com'.
 4. Öffnen Sie auf dem Startbildschirm den **Server-Manager**. Klicken Sie im mittleren Bereich des Server-Manager-Fensters auf **Rollen und Features hinzufügen** .
-   
+
     ![Server-Manager auf dem virtuellen Computer starten](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 5. Klicken Sie auf der Seite **Vorbereitung** des **Assistenten zum Hinzufügen von Rollen und Funktionen** auf **Weiter**.
-   
+
     ![Seite „Vorbereitung“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
 6. Behalten Sie auf der Seite **Installationstyp** die Aktivierung der Option **Rollenbasierte oder featurebasierte Installation** bei, und klicken Sie auf **Weiter**.
-   
+
     ![Seite „Installationstyp“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
 7. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer im Serverpool aus, und klicken Sie auf **Weiter**.
-   
+
     ![Seite „Serverauswahl“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
 8. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**. Überspringen Sie diese Seite, da in diesem Beispiel keine Rollen auf dem Server installiert werden.
 9. Erweitern Sie auf der Seite **Features** den Knoten **Remoteserver-Verwaltungstools** und dann durch den Knoten **Rollenverwaltungstools**. Wählen Sie in der Liste mit den Rollenverwaltungstools das Feature **AD DS- und AD LDS-Tools** aus.
-   
+
     ![Seite „Features“](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
 10. Klicken Sie auf der Seite **Bestätigung** auf **Installieren**, um die AD- und AD LDS-Tools auf dem virtuellen Computer zu installieren. Wenn die Installation des Features erfolgreich abgeschlossen wurde, klicken Sie auf **Schließen**, um den Assistenten zum **Hinzufügen von Rollen und Funktionen** zu beenden.
-    
+
     ![Bestätigungsseite](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>Aufgabe 3: Verbindungsherstellung und Erkunden der verwalteten Domäne
@@ -94,23 +95,23 @@ Nachdem die AD-Verwaltungstools nun auf dem virtuellen Computer installiert sind
 
 > [!NOTE]
 > Sie müssen der Administratorengruppe für AAD-Domänencontroller angehören, um die verwaltete Domäne verwalten zu können.
-> 
-> 
+>
+>
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Daraufhin werden die auf dem virtuellen Computer installierten AD-Verwaltungstools angezeigt.
-   
+
     ![Auf dem Server installierte Verwaltungstools](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. Klicken Sie auf **Active Directory-Verwaltungscenter**.
-   
+
     ![Active Directory-Verwaltungscenter](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 3. Klicken Sie im linken Bereich auf den Domänennamen (beispielsweise „contoso100.com“), um die Domäne zu erkunden. Beachten Sie die beiden Container „AADDC Computers“ und „AADDC Users“.
-   
+
     ![ADAC – Domäne anzeigen](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
 4. Klicken Sie auf den Container **AADDC Users** , um alle Benutzer und Gruppen anzuzeigen, die zur verwalteten Domäne gehören. In diesem Container sollten Benutzerkonten und Gruppen Ihres Azure AD-Mandanten angezeigt werden. Beachten Sie, dass der Container in diesem Beispiel ein Benutzerkonto für den Benutzer „Bob“ und eine Gruppe namens „AAD DC Administrators“ enthält.
-   
+
     ![ADAC – Domänenbenutzer](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
 5. Klicken Sie auf den Container **AADDC Computers** , um die Computer anzuzeigen, die dieser verwalteten Domäne beigetreten sind. Es sollte ein Eintrag für den aktuellen virtuellen Computer angezeigt werden, der der Domäne beigetreten ist. Computerkonten für alle Computer, die der von den Azure AD-Domänendiensten verwalteten Domäne beigetreten sind, werden im Container „AADDC Computers“ gespeichert.
-   
+
     ![ADAC – der Domäne beigetretene Computer](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)
 
 <br>
@@ -119,10 +120,4 @@ Nachdem die AD-Verwaltungstools nun auf dem virtuellen Computer installiert sind
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](active-directory-ds-getting-started.md)
 * [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Bereitstellen der Remoteserver-Verwaltungstools](https://technet.microsoft.com/library/hh831501.aspx)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -15,8 +15,9 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: db3d95cf7efd1caebb9e568ba729b9cbc30e5b78
-ms.openlocfilehash: 22001eec6402054239c9215a686512bd74d9bb9f
+ms.sourcegitcommit: e762497c67e04aa4186094a203796278355de36f
+ms.openlocfilehash: 5da58eebde8ea0d615514755af1c378d16f60bfc
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -30,8 +31,8 @@ Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwer
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-- [Azure CLI 1.0:](#create-supporting-resources) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](virtual-machines-linux-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+- [Azure-CLI 1.0](#create-supporting-resources): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
+- [Azure CLI 2.0:](virtual-machines-linux-multiple-nics.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="create-supporting-resources"></a>Erstellen von unterstützenden Ressourcen
@@ -141,10 +142,5 @@ Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkar
 Überprüfen Sie die [Linux-VM-Größen](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 
 
 Denken Sie daran, dass Sie einem vorhandenen virtuellen Computer keine weiteren Netzwerkkarten hinzufügen können. Sie müssen alle Netzwerkkarten während der Bereitstellung des virtuellen Computers erstellen. Planen Sie Ihre Bereitstellungen sorgfältig, um sicherzustellen, dass Sie die erforderliche Netzwerkkonnektivität von Anfang an einberechnen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

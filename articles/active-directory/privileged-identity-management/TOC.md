@@ -25,8 +25,3 @@
 # Verwandte Themen
 ## [Azure Active Directory](/azure/active-directory/)
 ## [Rollenbasierte Zugriffssteuerung](../role-based-access-control-what-is.md)
-
-
-<!--HONumber=Jan17_HO4-->
-
-

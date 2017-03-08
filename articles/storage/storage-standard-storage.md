@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 02/18/2017
 ms.author: yuemlu
 translationtype: Human Translation
-ms.sourcegitcommit: 3a353bc874c1827f8a0fc85352894ad96cff16b5
-ms.openlocfilehash: e6ee3ea5e59e402d69ad255d2210d7092786c9d1
+ms.sourcegitcommit: 36fa9cd757b27347c08f80657bab8a06789a3c2f
+ms.openlocfilehash: c208f44045ba414be2034f577435ae02ea4456cf
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -32,7 +33,7 @@ Standarddatenträger für virtuelle Azure-Computer können in zwei Varianten ers
 
 **Nicht verwaltete Datenträger:** Bei dieser ursprünglichen Methode verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 64 TB erreicht werden.
 
-[**Azure Managed Disks**:](storage-managed-disks-overview.md) Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium oder Standard) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Das erledigt Azure für Sie.
+[**Azure Managed Disks**:](storage-managed-disks-overview.md) Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium oder Standard) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Dies erledigt Azure für Sie.
 
 Grundsätzlich stehen Ihnen zwar beide Arten von Datenträgern zur Verfügung, wir empfehlen jedoch die Verwendung von Managed Disks, da Sie bei dieser Variante von zahlreichen Features profitieren.
 
@@ -41,7 +42,7 @@ Informationen zu den ersten Schritten mit Azure-Standardspeicher finden Sie unte
 Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden Sie in den folgenden Artikeln:
 
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
-* [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
+* [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
 
 ## <a name="standard-storage-features"></a>Features von Standardspeicher 
 
@@ -133,10 +134,10 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 Ausführliche Informationen zu den Preisen für Standardspeicher, Virtual Machines und Managed Disks finden Sie unter den folgenden Links:
 
 * [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
-* [Preise für Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* [Preisgestaltung für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Preise für Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks)
 
-## <a name="azure-backup-service-support"></a>Unterstützung des Azure Backup-Diensts 
+## <a name="azure-backup-service-support"></a>Azure Backup-Dienst – Unterstützung 
 
 Virtuelle Azure-Computer mit nicht verwalteten Datenträgern können mithilfe von Azure Backup gesichert werden. [Weitere Informationen](../backup/backup-azure-vms-first-look-arm.md)
 
@@ -152,9 +153,4 @@ Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet wer
 
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/virtual-machines-linux-quick-create-cli.md)
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+* [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../virtual-machines/virtual-machines-linux-quick-create-cli.md)

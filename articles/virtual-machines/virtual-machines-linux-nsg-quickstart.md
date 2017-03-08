@@ -1,6 +1,6 @@
 ---
 title: "Öffnen von Ports für einen virtuellen Linux-Computer mit Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie für Ihren virtuellen Linux-Computer mithilfe von Azure Resource Manager-Bereitstellungsmodell und Azure CLI 2.0 (Vorschau) einen Port öffnen oder einen Endpunkt erstellen."
+description: "Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und Azure CLI 2.0 für Ihren virtuellen Linux-Computer einen Port öffnen oder einen Endpunkt erstellen."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,24 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 12/8/2016
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 652a8a0dcb3216e9b762b85de56673beda74edc4
-ms.openlocfilehash: aae141307a0ea68f0d9e481cf22a9055216c98c0
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: bb5065d0b541c7f8a51cd4c508b2d5455cc82957
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-20"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer in Azure mithilfe von Version 2.0 der Azure-Befehlszeilenschnittstelle
-In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 (Vorschau) einen Port für einen virtuellen Computer öffnen.
-
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+# <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-with-the-azure-cli-20"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer in Azure mithilfe von Azure CLI 2.0
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure CLI 2.0 einen Port für einen virtuellen Computer öffnen. Sie können diese Schritte auch mit [Azure CLI 1.0](virtual-machines-linux-nsg-quickstart-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
-Um eine Netzwerksicherheitsgruppe und Regeln erstellen zu können, muss die neueste Version von [Azure CLI 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen sich mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto anmelden.
+Um eine Netzwerksicherheitsgruppe und Regeln erstellen zu können, muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `myNetworkSecurityGroup` und `myVnet` verwendet.
 
@@ -80,10 +74,5 @@ In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr
 * [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
 * [Übersicht über Azure Resource Manager für Load Balancer](../load-balancer/load-balancer-arm.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 70a03b39eb49ed96b649e63f6f2c728147ebddec
+ms.sourcegitcommit: b046dcb32e6796f4e66009361783fa95936794b8
+ms.openlocfilehash: 662fbbdda2c6d4d7da2c7c94dabb984a6bfc7296
+ms.lasthandoff: 02/23/2017
 
 ---
 
@@ -38,7 +39,7 @@ Unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](ht
 
 **Nach der Erstellung eines Microsoft Azure-Abonnements und eines Kontos:**
 
-1. Laden Sie [Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409)herunter, und installieren Sie sie.
+1. Laden Sie die aktuelle Version von [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/latest) herunter, und installieren Sie sie.
 2. Starten Sie die Windows PowerShell Integrated Scripting Environment (ISE): Wechseln Sie auf dem lokalen Computer zum Menü **Start** . Geben Sie **Verwaltung** ein, und klicken Sie darauf, um diese auszuführen. Klicken Sie im Fenster **Verwaltung** mit der rechten Maustaste auf **Windows PowerShell ISE**, und klicken Sie dann auf **Als Administrator ausführen**.
 3. Klicken Sie in **Windows PowerShell ISE** auf **Datei** > **Neu**, um eine neue Skriptdatei zu erstellen.
 4. Jetzt erhalten Sie ein einfaches Skript, das grundlegende PowerShell-Befehle für den Zugriff auf Azure Storage veranschaulicht. Sie werden zunächst vom Skript zur Eingabe Ihrer Anmeldeinformationen für das Azure-Konto aufgefordert, damit Ihr Azure-Konto zur lokalen PowerShell-Umgebung hinzugefügt werden kann. Dann legt das Skript das standardmäßige Azure-Abonnement fest und erstellt ein neues Speicherkonto in Azure. Als Nächstes erstellt das Skript in diesem neuen Speicherkonto einen neuen Container und lädt eine vorhandene Image-Datei (Blob) in diesen Container hoch. Nachdem das Skript alle Blobs in diesem Container aufgelistet hat, erstellt es ein neues Zielverzeichnis auf dem lokalen Computer und lädt dann die Image-Datei herunter.
@@ -847,9 +848,4 @@ In diesem Handbuch haben Sie erfahren, wie Sie Azure Storage mit Azure PowerShel
 [How to manage Shared Access Signature (SAS) and Stored Access Policy]: #sas
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

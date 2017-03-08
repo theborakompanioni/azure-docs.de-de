@@ -1,5 +1,5 @@
 ---
-title: "Ändern der Größe eines virtuellen Linux-Computers über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation"
+title: "Ändern der Größe eines virtuellen Linux-Computers mithilfe von Azure CLI 2.0 | Microsoft Docs"
 description: "So skalieren Sie einen virtuellen Linux-Computer zentral hoch oder herunter, indem Sie die VM-Größe ändern."
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,23 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b95ab7b023dddc77231a59151b0c2d44cf968b6e
-ms.openlocfilehash: fb2adcfafca35c35d0b526c30d242927b3ef58fe
-
+ms.sourcegitcommit: 1a218c8b9a1119ed284bc55071eed2a082122802
+ms.openlocfilehash: 78efd3d80f066d6b182b142564dbd0a7a9e01431
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="how-to-resize-a-linux-vm"></a>So ändern Sie die Größe eines virtuellen Linux-Computers
-Nachdem Sie einen virtuellen Computer (VM) bereitstellen, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Sie müssen die Zuordnung aufheben, wenn die gewünschte Größe in dem Hardwarecluster nicht verfügbar ist, in dem der virtuelle Computer gehostet wird. In diesem Artikel wird erläutert, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) die Größe eines virtuellen Linux-Computers ändern.
+
+# <a name="resize-a-linux-vm-with-the-azure-cli-20"></a>Ändern der Größe einer Linux-VM mit Azure CLI 2.0
+
+Nachdem Sie einen virtuellen Computer (VM) bereitstellen, können Sie ihn zentral hoch- oder herunterskalieren, indem Sie die [VM-Größe][vm-sizes] ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Sie müssen die Zuordnung aufheben, wenn die gewünschte Größe in dem Hardwarecluster nicht verfügbar ist, in dem der virtuelle Computer gehostet wird. 
 
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-- [Azure CLI 1.0:](virtual-machines-linux-change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#resize-a-linux-vm) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
+- [Azure-CLI 1.0](#resize-a-linux-vm): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
+- [Azure CLI 2.0:](virtual-machines-linux-change-vm-size.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
-## <a name="resize-a-linux-vm"></a>Ändern der Größe eines virtuellen Linux-Computers
-Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
+
+
+Zum Ändern der Größe eines virtuellen Computers muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 1. Zeigen Sie mit [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) die Liste der verfügbaren VM-Größen in dem Hardwarecluster an, in dem der virtuelle Computer gehostet wird. Das folgende Beispiel listet VM-Größen für den virtuellen Computer `myVM` in der Region der Ressourcengruppe `myResourceGroup` auf:
    
@@ -65,9 +69,4 @@ Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um z
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]: virtual-machines-linux-sizes.md
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

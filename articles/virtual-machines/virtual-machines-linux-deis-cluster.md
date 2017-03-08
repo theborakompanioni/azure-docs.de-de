@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/24/2015
 ms.author: hbai
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 550db52c2b77ad651b4edad2922faf0f951df617
-ms.openlocfilehash: 8e69e791128710e640cba0c9edfbbadc0ea70ef5
+ms.sourcegitcommit: fa842efd99718be7fa9eaf8aac8030c32cbceeec
+ms.openlocfilehash: a972ab1671e55a94fa1dc2060f220d2e85787e35
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="deploy-a-3-node-deis-cluster"></a>Bereitstellen eines Deis-Clusters mit drei Knoten
+# <a name="deploy-and-configure-a-3-node-deis-cluster-in-azure"></a>Bereitstellen und Konfigurieren eines Drei-Knoten-Deis-Clusters in Azure
 Dieser Artikel führt Sie durch die Bereitstellung eines [Deis](http://deis.io/) -Clusters in Azure. Er umfasst alle Schritte von der Erstellung der erforderlichen Zertifikate bis zur Bereitstellung und Skalierung der Beispielanwendung **Go** im neu bereitgestellten Cluster.
 
 Das folgende Diagramm zeigt die Architektur des bereitgestellten Systems. Der Systemadministrator verwaltet den Cluster mit Ddeis-Tools wie **deis** und **deisctl**. Die Verbindungen werden über einen Azure-Load Balancer hergestellt, der die Verbindungen auf einen der Mitgliedsknoten im Cluster weiterleitet. Der Clientzugriff auf bereitgestellte Anwendungen erfolgt ebenfalls über den Load Balancer. In diesem Fall leitet der Load Balancer den Datenverkehr an ein Router-Netz weiter, in dem der Datenverkehr zu entsprechenden im Cluster gehosteten Docker-Containern weitergeleitet wird.
@@ -251,9 +253,4 @@ In diesem Artikel wurden Sie durch alle Schritte der Bereitstellung eines neuen 
 [azure-command-line-tools]: ../xplat-cli-install.md
 [resource-group-overview]: ../azure-resource-manager/resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

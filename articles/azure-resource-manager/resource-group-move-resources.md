@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 01/31/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
-ms.openlocfilehash: a7771c2cee3f2820db014a4e5e8620442eea3dd1
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: c8e130f8adbad040fd06fde89156ca6201d18ea6
+ms.openlocfilehash: 5d85602de4eb4cd4ddadc31a83dac34d3487f54d
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -81,7 +81,6 @@ Derzeit ermöglichen die folgenden Dienste das Verschieben in eine neue Ressourc
 * CDN
 * Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Cognitive Services
-* Container Service
 * Content Moderator
 * Datenkatalog
 * Data Factory
@@ -128,6 +127,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Application Gateway
 * Application Insights
 * BizTalk Services
+* Container Service
 * ExpressRoute
 * DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS

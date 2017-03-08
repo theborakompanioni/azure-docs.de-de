@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: robmcm
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: f72b59c0b3091cd2b8ad12f8d94e09364d9b65cd
+ms.sourcegitcommit: 5ea7095e12b6194556d3cd0baa43ccfed1e087ee
+ms.openlocfilehash: 3adbef0d22673d6cd872f583903d0c73469d4fa1
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -68,7 +69,7 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** a
         azure site show {app-name}
 
 > [!NOTE] 
-> Die Befehle der [Azure CLI 2.0 (Vorschau)](https://github.com/Azure/azure-cli), die den oben genannten entsprechen, sind:
+> Die Befehle von [Azure CLI 2.0](https://github.com/Azure/azure-cli), die den oben genannten entsprechen, sind:
 >
 >
 
@@ -203,10 +204,5 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

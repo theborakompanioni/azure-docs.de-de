@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
 translationtype: Human Translation
-ms.sourcegitcommit: cce15fa7042b29de055a62b1b7a6efa4d0539acf
-ms.openlocfilehash: fd73f2eae7f89c237a6a2ff75c6022cb0684e613
+ms.sourcegitcommit: 67d4fee2fc59651903d4c02d1fce84c7b81e5da1
+ms.openlocfilehash: 9a97a5a3fe8937d51c9e196df2929edac67a25ec
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -34,7 +35,7 @@ In diesem Artikel wird das Bereitstellen eines virtuellen Computer in einem vorh
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0 (Vorschau):](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0](virtual-machines-linux-deploy-linux-vm-into-existing-vnet-using-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
@@ -166,9 +167,4 @@ Mithilfe der CLI-Flags zum Aufruf vorhandener Ressourcen weisen wir Azure an, di
 * [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Direktes Erstellen einer benutzerdefinierten Umgebung für einen virtuellen Linux-Computer über Azure-CLI-Befehle](virtual-machines-linux-create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Erstellen einer Linux-VM in Azure mithilfe von Vorlagen](virtual-machines-linux-create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2016
 ms.author: kasing
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 915320ed4a7d9e86a7a9b29dff5c0addfb95f4c0
+ms.sourcegitcommit: 0a888f945a39a8bb88a730a226af6ec21d133f44
+ms.openlocfilehash: 0075160ea9c0dae991fc2344c46d216a8203bec3
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="vertically-scale-azure-virtual-machines-with-azure-automation"></a>Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation
+# <a name="how-to-vertically-scale-virtual-machines-with-azure-automation"></a>Vertikales Skalieren von virtuellen Computern mit Azure Automation
 Als vertikale Skalierung wird der Vorgang bezeichnet, die Ressourcen eines Computers als Reaktion auf die Workload zu erhöhen oder zu verringern. In Azure kann dies erreicht werden, indem die Größe des virtuellen Computers geändert wird. Dies kann in folgenden Szenarien hilfreich sein:
 
 * Wenn der virtuelle Computer nicht häufig verwendet wird, können Sie ihn auf eine kleinere Größe skalieren, um die monatlichen Kosten zu senken.
@@ -82,17 +84,12 @@ Stellen Sie sicher, dass Sie den Webhook kopieren, bevor Sie das Dialogfeld für
 3. Wählen Sie „Warnung hinzufügen“ aus.
 4. Wählen Sie die Metrik aus, bei der die Warnung ausgelöst wird.
 5. Wählen Sie die Bedingung aus, bei deren Erfüllung die Warnung ausgelöst wird.
-6. Wählen Sie einen Schwellenwert aus, bei dem die Bedingung aus Schritt 5 erfüllt ist.
+6. Wählen Sie einen Schwellenwert aus, bei dem die Bedingung aus Schritt 5 erfüllt sein soll.
 7. Wählen Sie den Zeitraum aus, in dem der Überwachungsdienst auf die Bedingung und die Schwellenwerte aus den Schritten 5 und 6 prüft.
 8. Fügen Sie den Webhook ein, den Sie im vorherigen Abschnitt kopiert haben.
 
 ![Hinzufügen einer Warnung zu VM 1](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
 
 ![Hinzufügen einer Warnung zu VM 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

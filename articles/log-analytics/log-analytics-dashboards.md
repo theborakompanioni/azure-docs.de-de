@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines benutzerdefinierten Dashboards in Log Analytics | Microsoft Docs
-description: "In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen einen zentralen Überblick über Ihre Umgebung zu ermöglichen."
+title: Erstellen eines benutzerdefinierten Dashboards in Azure Log Analytics | Microsoft Docs
+description: "In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen eine zentrale Übersicht über Ihre Umgebung zu ermöglichen."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: afd1e5359edbdfdbd4a8afaac139f5877b306c2b
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: a8c9766bf066a7f0dfd28ebb4e41bf0eaf3f05bd
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="create-a-custom-dashboard-in-log-analytics"></a>Erstellen eines benutzerdefinierten Dashboards in Log Analytics
+# <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Erstellen eines benutzerdefinierten Dashboards für die Verwendung in Log Analytics
 In diesem Leitfaden wird beschrieben, wie in Log Analytics-Dashboards alle gespeicherten Protokollsuchvorgänge visualisiert werden können, um Ihnen eine zentrale Übersicht über Ihre Umgebung zu ermöglichen.
 
 ![Beispiel-Dashboard](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
@@ -83,9 +85,4 @@ Navigieren Sie zum Entfernen einer Kachel zur Ansicht „Mein Dashboard“, und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erstellen Sie [Warnungen](log-analytics-alerts.md) in Log Analytics, um Benachrichtigungen zu generieren und Probleme zu beheben.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

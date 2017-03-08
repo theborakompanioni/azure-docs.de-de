@@ -1,6 +1,6 @@
 ---
-title: "Hochladen eines benutzerdefinierten Linux-Datenträgers mit der Azure CLI 2.0 (Vorschau) | Microsoft Docs"
-description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mithilfe des Resource Manager-Bereitstellungsmodells und der Azure CLI 2.0 (Vorschau), und laden Sie sie in Azure hoch.
+title: "Hochladen eines benutzerdefinierten Linux-Datenträgers mithilfe von Azure CLI 2.0 | Microsoft Docs"
+description: Erstellen Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mithilfe des Resource Manager-Bereitstellungsmodells und Azure CLI 2.0, und laden Sie sie in Azure hoch.
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -16,26 +16,19 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 25ca54a6514b281417ac71a89dac167c94137b18
-ms.openlocfilehash: bbb9a2cd2123a29507f21c11b536ae81368cf8a7
+ms.sourcegitcommit: 374b2601857b3983bcd7b2f2e11d22b187fe7105
+ms.openlocfilehash: 732ebaaf5bf16c02cfc2185d9e7138daf74c71dd
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-by-using-the-azure-cli-20-preview"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe der Azure CLI 2.0 (Vorschau)
-In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem Resource Manager-Bereitstellungsmodell in Azure hochladen und virtuelle Linux-Computer aus diesem benutzerdefinierten Datenträger erstellen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
-
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#quick-commands) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
-
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI 2.0
+In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit Azure CLI 2.0 in Azure hochladen und virtuelle Linux-Computer aus diesem benutzerdefinierten Datenträger erstellen. Sie können diese Schritte auch mit [Azure CLI 1.0](virtual-machines-linux-upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen. Dadurch können Sie eine Linux-Distribution installieren und konfigurieren und die VHD dann zur schnellen Erstellung virtueller Azure-Computer (Azure-VMs) verwenden.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die grundlegenden Befehle zum Hochladen einer VHD in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#requirements)).
 
-Achten Sie darauf, dass Sie die neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
+Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `mystorageaccount` und `mydisks`.
 
@@ -100,9 +93,9 @@ Erstellen Sie nun Ihren virtuellen Computer mit [az vm create](/cli/azure/vm#cre
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --os-type linux \
+    --name myVM --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
+    --attach-os-disk https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
 ```
 
 ### <a name="unmanaged-disks"></a>Nicht verwaltete Datenträger
@@ -112,7 +105,8 @@ Um einen virtuellen Computer mit nicht verwalteten Datenträgern zu erstellen, g
 az vm create --resource-group myResourceGroup --location westus \
     --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://mystorageaccount.blob.core.windows.net/mydisk/myDisks.vhd
+    --image https://mystorageaccount.blob.core.windows.net/mydisk/myDisks.vhd \
+    --use-unmanaged-disk
 ```
 
 Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuellen Datenträger hochgeladen haben. Sie müssen außerdem alle erforderlichen Zusatzparameter für den **az vm create**-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die Befehlszeilenschnittstelle](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
@@ -133,7 +127,7 @@ Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:
   * Erstellen eines Speicherkontos und eines Containers für den benutzerdefinierten Datenträger und die erstellten virtuellen Computer
   * Nachdem Sie alle virtuellen Computer erstellt haben, können Sie den Datenträger problemlos löschen.
 
-Achten Sie darauf, dass Sie die neueste [Azure-CLI 2.0 (Preview)](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
+Achten Sie darauf, dass Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sind.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `mystorageaccount` und `mydisks`.
 
@@ -221,9 +215,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-vm-from-custom-disk"></a>Erstellen von virtuellen Computern aus benutzerdefinierten Datenträgern
-Sie können auch hier für das Erstellen eines virtuellen Computers Azure Managed Disks oder nicht verwaltete Datenträger verwenden. Geben Sie in beiden Fällen den URI für den verwalteten oder nicht verwalteten Datenträger an, wenn Sie einen virtuellen Computer erstellen. Stellen Sie bei nicht verwalteten Datenträgern sicher, dass das Zielspeicherkonto dem Speicherkonto entspricht, in dem Ihr benutzerdefinierter Datenträger gespeichert ist. Sie können Ihren virtuellen Computer mithilfe der Azure 2.0-Vorschau oder einer Resource Manager-JSON-Vorlage erstellen.
+Sie können auch hier für das Erstellen eines virtuellen Computers Azure Managed Disks oder nicht verwaltete Datenträger verwenden. Geben Sie in beiden Fällen den URI für den verwalteten oder nicht verwalteten Datenträger an, wenn Sie einen virtuellen Computer erstellen. Stellen Sie bei nicht verwalteten Datenträgern sicher, dass das Zielspeicherkonto dem Speicherkonto entspricht, in dem Ihr benutzerdefinierter Datenträger gespeichert ist. Sie können Ihren virtuellen Computer mithilfe von Azure CLI 2.0 oder einer Resource Manager-JSON-Vorlage erstellen.
 
-### <a name="azure-cli-20-preview---azure-managed-disks"></a>Azure CLI 2.0 (Vorschau) – Azure Managed Disks
+### <a name="azure-cli-20---azure-managed-disks"></a>Azure CLI 2.0 – Azure Managed Disks
 Um einen virtuellen Computer aus Ihrer VHD zu erstellen, konvertieren Sie zuerst die VHD mit [az disk create](/cli/azure/disk/create) in einen verwalteten Datenträger. Das folgende Beispiel erstellt den verwalteten Datenträger `myManagedDisk` aus der VHD, die Sie in Ihr benanntes Speicherkonto und den Container hochgeladen haben:
 
 ```azurecli
@@ -250,12 +244,12 @@ Erstellen Sie nun Ihren virtuellen Computer mit [az vm create](/cli/azure/vm#cre
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
-    --name myVM --storage-account mystorageaccount --os-type linux \
+    --name myVM --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
+    --attach-os-disk https://vhdstoragezw9.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/my_image-osDisk.vhd
 ```
 
-### <a name="azure-20-preview---unmanaged-disks"></a>Azure 2.0 (Vorschau) – nicht verwaltete Datenträger
+### <a name="azure-20---unmanaged-disks"></a>Azure 2.0 – nicht verwaltete Datenträger
 Um einen virtuellen Computer mit nicht verwalteten Datenträgern zu erstellen, geben Sie den URI des Datenträgers (`--image`) in [az vm create](/cli/azure/vm#create) an. Das folgende Beispiel erstellt einen virtuellen Computer namens `myVM` und verwendet dabei den zuvor hochgeladenen Datenträger:
 
 Geben Sie den Parameter `--image` im Befehl [az vm create](/cli/azure/vm#create) an, um auf Ihren benutzerdefinierten Datenträger zu verweisen. Stellen Sie sicher, dass `--storage-account` dem Speicherkonto entspricht, in dem Ihr benutzerdefinierter Datenträger gespeichert ist. Sie müssen nicht den gleichen Container verwenden wie der benutzerdefinierte Datenträger, um Ihre virtuellen Computer zu speichern. Stellen Sie sicher, dass Sie jegliche weiteren Container auf die gleiche Weise erstellen, wie in den vorherigen Schritten beschrieben, bevor Sie Ihren benutzerdefinierten Datenträger hochladen.
@@ -266,7 +260,8 @@ Das folgende Beispiel erstellt den virtuellen Computer `myVM` aus Ihrem benutzer
 az vm create --resource-group myResourceGroup --location westus \
     --name myVM --storage-account mystorageaccount --os-type linux \
     --admin-username azureuser --ssh-key-value ~/.ssh/id_rsa.pub \
-    --image https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
+    --image https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd \
+    --use-unmanaged-disk
 ```
 
 Sie müssen alle erforderlichen Zusatzparameter für den **az vm create**-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören Benutzername und SSH-Schlüssel.
@@ -312,10 +307,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../azure-resource-manager/resource-group-overview.md)beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](virtual-machines-linux-add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](virtual-machines-linux-nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

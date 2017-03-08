@@ -4,7 +4,7 @@ description: "In diesem Tutorial wird gezeigt, wie Sie eine PHP-Web-App (Laravel
 services: app-service\web
 documentationcenter: php
 author: cephalin
-manager: wpickett
+manager: erikre
 editor: 
 tags: mysql
 ms.assetid: cb73859d-48aa-470a-b486-d984746d6d26
@@ -16,8 +16,9 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
 translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: cddcfcc816a2af74fbdd68e4e1031051c42b45a7
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 487fde71fb28d5ee4666be208d3acfc0de27bed9
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -43,7 +44,7 @@ Sie können die hier erlernten Dinge auf andere PHP-Web-Apps anwenden, die Sie u
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 - [Azure CLI 1.0:](app-service-web-php-get-started-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](app-service-web-php-get-started.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Azure CLI 2.0:](app-service-web-php-get-started.md) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [PHP 7.0](http://php.net/downloads.php)
@@ -80,7 +81,7 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
         cd <app_name>
         php artisan serve
    
-    Sie sollten jetzt in einem Browser zu http://localhost:8000 navigieren und den Laravel-Begrüßungsbildschirm sehen können.
+    Sie sollten jetzt in einem Browser zu „ http://localhost:8000 “ navigieren und den Laravel-Begrüßungsbildschirm sehen können.
    
     ![Lokales Testen der PHP-App (Laravel) vor der Bereitstellung in Azure](./media/app-service-web-php-get-started/laravel-splash-screen.png)
 
@@ -274,10 +275,5 @@ Informieren Sie sich darüber, wie Sie Ihrer App Daten hinzufügen, indem Sie [i
 * [Konfigurieren von PHP in Azure App Service-Web-Apps](web-sites-php-configure.md)
 * [Konvertieren von WordPress in Multisite in Azure App Service](web-sites-php-convert-wordpress-multisite.md)
 * [Leistungsstarkes WordPress in Azure App Service](web-sites-php-enterprise-wordpress.md)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

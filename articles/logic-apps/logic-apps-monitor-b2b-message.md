@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: padmavc
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 52fa2ceb13e6c14d0dd4ba72a76328a2a9356bab
-ms.openlocfilehash: 79acdf2c29c3520fc38adf6270bcae68e87aac18
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: dc760b4c08d0e1afff3bc1276f6ed2367d67629e
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="monitor-b2b-messages"></a>Überwachen von B2B-Nachrichten
+# <a name="start-or-enable-logging-of-as2-x12-and-edifact-messages-to-monitor-success-errors-and-message-properties"></a>Starten oder Aktivieren der Protokollierung von AS2-, X12- und EDIFACT-Nachrichten für die Überwachung von Erfolgs-, Fehler- und Nachrichteneigenschaften
 
-Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden Geschäftsprozessen oder Anwendungen. Mit der Beziehung wird eine Vereinbarung zwischen Geschäftsprozessen definiert. Nachdem die Kommunikation hergestellt wurde, können Sie eine Nachrichtenüberwachung einrichten, um zu prüfen, ob die Kommunikation wie erwartet funktioniert.
-Um mehr Details und Debugfunktionen zu erhalten, können Sie für Ihr Integrationskonto die Diagnose einrichten.
+Die B2B-Kommunikation umfasst den Nachrichtenaustausch zwischen zwei laufenden Geschäftsprozessen oder Anwendungen. Mit der Beziehung wird eine Vereinbarung zwischen Geschäftsprozessen definiert. Nachdem die Kommunikation hergestellt wurde, können Sie eine Nachrichtenüberwachung einrichten, um zu prüfen, ob die Kommunikation wie erwartet funktioniert. Um mehr Details und Debugfunktionen zu erhalten, können Sie für Ihr Integrationskonto die Diagnose einrichten.
 
 Die Nachverfolgung von Nachrichten ist für diese B2B-Protokolle verfügbar: AS2, X12 und EDIFACT. 
 
@@ -94,10 +95,5 @@ Wir unterstützen diese Nachverfolgung von Schematypen, die mit Ausnahme des Typ
 [Nachverfolgen von B2B-Nachrichten im OMS-Portal](logic-apps-track-b2b-messages-omsportal.md "Nachverfolgen von B2B-Nachrichten im OMS-Portal")
 
 [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

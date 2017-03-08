@@ -15,9 +15,9 @@ ms.topic: hero-article
 ms.date: 2/21/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: f438db1d0129dfb0e2eaa00146147084cd8c11b6
-ms.openlocfilehash: 179e8cf928d83a3a66ed3489173e4c28a2bc9d4f
-ms.lasthandoff: 03/01/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4e444deaa84c7f02608f4910e31f7033df51a73b
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -309,7 +309,7 @@ ASRDeploymentPlanner.exe **-Operation** GetThroughput **-Directory**  E:\vCenter
 
 **To meet RPO 90% of the time** (Erreichung des RPO-Werts in 90% der Fälle): Wenn Sie aufgrund der Breitbandpreise oder aus einem anderen Grund nicht die Bandbreite bereitstellen können, die zur Erreichung des gewünschten RPO-Werts in 100% der Fälle erforderlich ist, können Sie auch eine geringere Menge an Bandbreite bereitstellen, mit der der gewünschte RPO-Wert in 90% der Fälle erreicht wird. Zum besseren Verständnis der Auswirkungen, die mit der Bereitstellung dieser geringeren Bandbreite verbunden sind, enthält der Bericht eine Was-wäre-wenn-Analyse zu Anzahl und Dauer der zu erwartenden RPO-Verstöße.
 
-**Achieved Throughput** (Erzielter Durchsatz): Dies ist der Durchsatz von dem Server, auf dem Sie den GetThroughput-Befehl ausgeführt haben, zu der Microsoft Azure-Region, in der sich das Azure Storage-Konto befindet. Hier wird der geschätzte Durchsatz angegeben, der erreicht werden kann, wenn Sie die kompatiblen virtuellen Computer mit Azure Site Recovery schützen. Voraussetzung hierfür ist, dass die Speicher- und Netzwerkmerkmale Ihres Konfigurations- bzw. Prozessservers weiterhin mit den Merkmalen des Servers übereinstimmen, auf dem Sie das Tool ausgeführt haben. Der erzielte Durchsatz ist der Durchsatz von dem Server, auf dem Sie den GetThroughput-Befehl ausgeführt haben, zu der Microsoft Azure-Region, in der sich das Azure Storage-Konto befindet. Hier wird der geschätzte Durchsatz angegeben, der erreicht werden kann, wenn Sie die kompatiblen virtuellen Computer mit Azure Site Recovery schützen. Voraussetzung hierfür ist, dass die Speicher- und Netzwerkmerkmale Ihres Konfigurations- bzw. Prozessservers weiterhin mit den Merkmalen des Servers übereinstimmen, auf dem Sie das Tool ausgeführt haben.
+**Achieved Throughput** (Erzielter Durchsatz): Dies ist der Durchsatz von dem Server, auf dem Sie den GetThroughput-Befehl ausgeführt haben, zu der Microsoft Azure-Region, in der sich das Azure Storage-Konto befindet. Hier wird der geschätzte Durchsatz angegeben, der erreicht werden kann, wenn Sie die kompatiblen virtuellen Computer mit Azure Site Recovery schützen. Voraussetzung hierfür ist, dass die Speicher- und Netzwerkmerkmale Ihres Konfigurations- bzw. Prozessservers weiterhin mit den Merkmalen des Servers übereinstimmen, auf dem Sie das Tool ausgeführt haben.    
 
 Für die Replikation sollten Sie die Bandbreite bereitstellen, die empfohlen wird, um den RPO-Wert in 100% der Fälle zu erreichen. Auch nach der Bereitstellung der passenden Bandbreite sollten Sie Folgendes überprüfen, wenn vom Tool kein Anstieg des erzielten Durchsatzes gemeldet wird:
 

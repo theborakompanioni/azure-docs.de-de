@@ -15,9 +15,9 @@ ms.workload: integration
 ms.date: 10/18/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: d7144208fc3e6eb1f8d3c43d8b4a5e2bcb225e58
-ms.openlocfilehash: ac0c200abd110262badd04212c82be45cb0f8bfc
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 6964ff18532ccf4b67eecfe12122bc16819a7b4b
+ms.openlocfilehash: 9b2e0797317c6e0268e8ae90f4091fea96c78726
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -33,7 +33,7 @@ Es gibt drei Arten von Triggern, die Anforderungen erhalten können:
 Im weiteren Verlauf des Artikels verwenden wir **request** als Beispiel, wobei sämtliche Prinzipien auch genauso für die anderen beiden Triggerarten gelten.
 
 ## <a name="adding-a-trigger-to-your-definition"></a>Hinzufügen eines Triggers zur Definition
-Im ersten Schritt wird der Definition Ihrer Logik-App ein Trigger hinzugefügt, der eingehende Anforderungen empfangen kann.  Sie können im Designer nach „HTTP-Anforderung“ suchen, um die Trigger-Karte hinzuzufügen. Sie können ein JSON-Schema für den Anforderungstext definieren, sodass der Designer Token generiert, mit denen Sie Daten analysieren und vom manuellen Trigger durch den Workflow übergeben können.  Empfohlen wird die Verwendung eines Tools wie z. B. [jsonschema.net](http://jsonschema.net), um ein JSON-Schema aus einer Beispieltextnutzlast zu generieren.
+Im ersten Schritt wird der Definition Ihrer Logik-App ein Trigger hinzugefügt, der eingehende Anforderungen empfangen kann.  Sie können im Designer nach „HTTP-Anforderung“ suchen, um die Trigger-Karte hinzuzufügen. Sie können ein JSON-Schema für den Anforderungstext definieren, sodass der Designer Token generiert, mit denen Sie Daten analysieren und vom manuellen Trigger durch den Workflow übergeben können. Wenn Sie nicht bereits über ein Schema verfügen, wählen Sie `Use sample payload to generate schema` aus, um ein JSON-Schema aus einer Beispielnutzlast zu generieren.
 
 ![Anforderungstriggerkarte][2]
 

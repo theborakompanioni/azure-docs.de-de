@@ -13,50 +13,105 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/21/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 26c58ae4c509cb768807875ecdf96e9a24d6a472
-ms.openlocfilehash: 8393b8ce2b373e8ff33454a61c944a5f8f7a8168
+ms.sourcegitcommit: 783082db6a3d763067a0e661970d6d2b61264803
+ms.openlocfilehash: d580732116666d3d304744d90721c05a1fb3462b
+ms.lasthandoff: 02/23/2017
 
 
 ---
 # <a name="attach-a-data-disk-to-a-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde
-> [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Modells. Wenn Sie das neue Portal verwenden möchten, lesen Sie die Informationen unter [Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+<!--
+Refernce article:
+    If you want to use the new portal, see [How to attach a data disk to a Windows VM in the Azure portal](virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+-->
 
-Wenn Sie einen zusätzlichen Datenträger benötigen, können Sie einen leeren Datenträger oder einen vorhandenen Datenträger mit Daten an einen virtuellen Computer anfügen. In beiden Fällen sind die Datenträger VHD-Dateien, die sich in einem Azure-Speicherkonto befinden. Einen neuen Datenträger müssen Sie nach dem Anfügen außerdem noch initialisieren, damit er durch einen virtuellen Windows-Computer genutzt werden kann.
+In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger, die mit dem klassischen Bereitstellungsmodell erstellt wurden, an einen virtuellen Windows-Computer anfügen.
 
-Weitere Detailinformationen zu Datenträgern finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Sie können auch [einen Datenträger an eine Linux-VM im Azure-Portal anfügen](virtual-machines-linux-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-[!INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
+Bevor Sie einen Datenträger anfügen, lesen Sie diese Tipps:
 
-## <a name="initialize-the-disk"></a>Datenträger initialisieren
-1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen finden Sie unter [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird][logon].
+* Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+* Für die Verwendung von Premium-Speicher benötigen Sie einen virtuellen Computer der DS- oder GS-Serie. Sie können Datenträger aus Premium- und aus Standard-Speicherkonten für diese virtuellen Computer verwenden. Premium-Speicher ist in bestimmten Regionen verfügbar. Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+* Neue Datenträger werden von Azure beim Anfügen automatisch erstellt. Sie müssen den Datenträger also nicht manuell erstellen.
+
+Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](virtual-machines-windows-attach-disk-ps.md).
+
+> [!IMPORTANT]
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+
+## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Wählen Sie den virtuellen Computer unter den Ressourcen aus, die im Dashboard aufgeführt werden.
+3. Klicken Sie im linken Bereich unter **Einstellungen** auf **Datenträger**.
+
+    ![Öffnen der Datenträgereinstellungen](./media/virtual-machines-windows-classic-attach-disk/virtualmachinedisks.png)
+
+Folgen Sie den Anweisungen zum Anfügen eines [neuen](#option-1-attach-a-new-disk) oder eines [vorhandenen](#option-2-attach-an-existing-disk) Datenträgers.
+
+## <a name="option-1-attach-and-initialize-a-new-disk"></a>Option 1: Anfügen und Initialisieren eines neuen Datenträgers
+
+1. Klicken Sie auf dem Blatt **Datenträger** auf **Neuen anfügen**.
+2. Überprüfen und aktualisieren Sie nach Bedarf die Standardeinstellungen, und klicken Sie anschließend auf **OK**.
+
+   ![Überprüfen der Datenträgereinstellungen](./media/virtual-machines-windows-classic-attach-disk/attach-new.png)
+
+3. Nachdem der Datenträger von Azure erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
+
+### <a name="initialize-a-new-data-disk"></a>Initialisieren eines neuen Datenträgers
+
+1. Stellen Sie eine Verbindung mit dem virtuellen Computer her. Anweisungen dazu finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](virtual-machines-windows-connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 2. Öffnen Sie den **Server-Manager**, nachdem Sie sich auf dem virtuellen Computer angemeldet haben. Klicken Sie im linken Bereich auf **Datei- und Speicherdienste**.
-   
-    ![Server-Manager öffnen](./media/virtual-machines-windows-classic-attach-disk/fileandstorageservices.png)
-3. Erweitern Sie das Menü, und wählen Sie **Datenträger**.
-4. Im Abschnitt **Datenträger** werden die Datenträger aufgelistet. In den meisten Fällen sind darin Datenträger 0, Datenträger 1 und Datenträger 2 enthalten. Datenträger 0 ist der Betriebssystemdatenträger. Bei Datenträger 1 handelt es sich um den temporären Datenträger, und Datenträger 2 ist der Datenträger, den Sie gerade an den virtuellen Computer angefügt haben. Für den neuen Datenträger wird die Partition als **Unbekannt** aufgelistet. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen Sie **Initialisieren** aus.
-5. Sie werden darüber informiert, dass alle Daten gelöscht werden, wenn der Datenträger initialisiert wird. Klicken Sie auf **Ja** , um die Warnung zu bestätigen und den Datenträger zu initialisieren. Wenn dies abgeschlossen ist, wird die Partition als **GPT**aufgelistet. Klicken Sie erneut mit der rechten Maustaste auf den Datenträger, und wählen Sie **Neues Volume**.
-6. Schließen Sie den Assistenten unter Verwendung der angegebenen Standardwerte ab. Sobald der Assistent fertig ist, wird ein neues Volume im Bereich **Volumes** aufgelistet. Der Datenträger ist jetzt online und zum Speichern von Daten bereit.
-   
-   ![Volume erfolgreich initialisiert](./media/virtual-machines-windows-classic-attach-disk/newvolumecreated.png)
 
-> [!NOTE]
-> Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-> 
-> 
+    ![Server-Manager öffnen](./media/virtual-machines-windows-classic-attach-disk/fileandstorageservices.png)
+
+3. Wählen Sie **Datenträger** aus.
+4. Im Abschnitt **Datenträger** werden die Datenträger aufgelistet. In den meisten Fällen verfügt ein virtueller Computer über die Datenträger 0, 1 und 2. Datenträger 0 ist der Betriebssystemdatenträger. Bei Datenträger 1 handelt es sich um den temporären Datenträger, und Datenträger 2 ist der Datenträger, den Sie gerade an den virtuellen Computer angefügt haben. Für den Datenträger für Daten wird die Partition als **Unbekannt** aufgeführt.
+
+ Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen Sie **Initialisieren** aus.
+
+5. Sie werden darüber informiert, dass alle Daten gelöscht werden, wenn der Datenträger initialisiert wird. Klicken Sie auf **Ja** , um die Warnung zu bestätigen und den Datenträger zu initialisieren. Wenn dieser Vorgang abgeschlossen ist, wird die Partition als **GPT** aufgeführt. Klicken Sie erneut mit der rechten Maustaste auf den Datenträger, und wählen Sie **Neues Volume**.
+
+6. Schließen Sie den Assistenten unter Verwendung der angegebenen Standardwerte ab. Sobald der Assistent fertig ist, wird ein neues Volume im Bereich **Volumes** aufgelistet. Der Datenträger ist jetzt online und zum Speichern von Daten bereit.
+
+    ![Volume erfolgreich initialisiert](./media/virtual-machines-windows-classic-attach-disk/newdiskafterinitialization.png)
+
+## <a name="option-2-attach-an-existing-disk"></a>Option 2: Anfügen eines vorhandenen Datenträgers
+1. Klicken Sie auf dem Blatt **Datenträger** auf **Vorhandenen anfügen**.
+2. Klicken Sie unter **Vorhandenen Datenträger anfügen** auf **Speicherort**.
+
+   ![Anfügen eines vorhandenen Datenträgers](./media/virtual-machines-windows-classic-attach-disk/attachexistingdisksettings.png)
+3. Wählen Sie unter **Speicherkonten**das Konto und den Container aus, der die VHD-Datei enthält.
+
+   ![Suchen nach VHD-Dateien](./media/virtual-machines-windows-classic-attach-disk/existdiskstorageaccountandcontainer.png)
+
+4. Wählen Sie die VHD-Datei aus.
+5. Die ausgewählte Datei wird unter **Vorhandenen Datenträger anfügen** und dort unter **VHD-Datei** angezeigt. Klicken Sie auf **OK**.
+6. Nachdem der Datenträger von Azure an den virtuellen Computer angefügt wurde, wird er in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
+
+## <a name="use-trim-with-standard-storage"></a>Verwenden von TRIM mit dem Standardspeicher
+
+Wenn Sie den Standardspeicher (HDD) verwenden, sollten Sie TRIM aktivieren. Mit TRIM werden ungenutzte Blöcke auf dem Datenträger verworfen, sodass nur der Speicher in Rechnung gestellt wird, den Sie tatsächlich verwenden. Die Verwendung von TRIM kann Kosten sparen, da dabei auch ungenutzte Blöcke entfernt werden, die beim Löschen großer Dateien entstehen.
+
+Sie können den folgenden Befehl ausführen, um die TRIM-Einstellung zu überprüfen. Öffnen Sie eine Eingabeaufforderung auf dem virtuellen Windows-Computer, und geben Sie Folgendes ein:
+
+```
+fsutil behavior query DisableDeleteNotify
+```
+
+Wenn „0“ zurückgegeben wird, ist TRIM ordnungsgemäß aktiviert. Wenn „1“ zurückgegeben wird, führen Sie den folgenden Befehl aus, um TRIM zu aktivieren:
+```
+fsutil behavior set DisableDeleteNotify 0
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+Wenn Ihre Anwendung das Laufwerk „D:“ für die Datenspeicherung verwenden muss, können Sie [den Laufwerkbuchstaben des temporären Windows-Datenträgers ändern](virtual-machines-windows-classic-change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-[Trennen eines Datenträgers von einem virtuellen Computer unter Windows](virtual-machines-windows-classic-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-
 [Informationen zu Datenträgern und VHDs für virtuelle Computer](virtual-machines-linux-about-disks-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-[logon]: virtual-machines-windows-classic-connect-logon.md
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

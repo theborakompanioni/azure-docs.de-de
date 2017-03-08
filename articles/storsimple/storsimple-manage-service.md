@@ -4,7 +4,7 @@ description: "Erläutert das Erstellen und Löschen des StorSimple Manager-Diens
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: byronr
+manager: timlt
 editor: 
 ms.assetid: bc1d5650-275c-42ed-bc77-cdb596f85943
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/05/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f507eb6986f7c62965dc00673ee5ebe38e70f1d7
-ms.openlocfilehash: 1858fa9e1223d0938bb1eb6195c42fb1ec3b007d
+ms.sourcegitcommit: 99fab8eafe4e17f50db8e7e33637001be03abe7b
+ms.openlocfilehash: 0cb356910b858bf231dfadffa1d4561df1977af0
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="deploy-the-storsimple-manager-service"></a>Bereitstellen des StorSimple Manager-Diensts
+# <a name="deploy-the-storsimple-manager-service-in-the-azure-classic-portal"></a>Bereitstellen des StorSimple Manager-Diensts im klassischen Azure-Portal
+
 ## <a name="overview"></a>Übersicht
 Der StorSimple Manager-Dienst wird in Microsoft Azure ausgeführt. Er stellt Verbindungen mit mehreren StorSimple-Geräten her. Nachdem Sie den Dienst erstellt haben, können Sie ihn zum Verwalten der Geräte über das in einem Browser ausgeführte klassische Microsoft Azure-Portal verwenden. So können Sie alle Geräte, die mit den StorSimple Manager-Dienst verbunden sind, von einem zentralen Standort aus überwachen und damit den Verwaltungsaufwand minimieren.
 
@@ -99,9 +102,4 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 * Weitere Informationen zum [StorSimple-Bereitstellungsprozess](storsimple-deployment-walkthrough-u2.md)
 * Weitere Informationen über das [Verwalten des StorSimple-Speicherkontos](storsimple-manage-storage-accounts.md)
 * Weitere Informationen über das [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

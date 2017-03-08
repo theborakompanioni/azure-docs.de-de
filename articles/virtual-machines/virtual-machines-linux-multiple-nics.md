@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines virtuellen Linux-Computers mit mehreren Netzwerkkarten mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen."
+title: Erstellen eines virtuellen Linux-Computers mit mehreren Netzwerkkarten mithilfe von Azure CLI 2.0 | Microsoft Docs
+description: "Erfahren Sie, wie Sie mithilfe von Azure CLI 2.0 oder mithilfe von Resource Manager-Vorlagen einen virtuellen Linux-Computer mit mehreren angefügten Netzwerkkarten erstellen."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,27 +15,23 @@ ms.workload: infrastructure
 ms.date: 02/10/2017
 ms.author: iainfou
 translationtype: Human Translation
-ms.sourcegitcommit: 368c79b001495e0fb000a4b280023b2299256435
-ms.openlocfilehash: a854a15a9119f289344a75638d1042ee6779bb46
+ms.sourcegitcommit: 7f3abdd63e43713d9d1f7ff28e44efc08167fddb
+ms.openlocfilehash: e50f9ce362177a2aff8da5b1d516973c41d1149e
+ms.lasthandoff: 02/27/2017
 
 
 ---
-# <a name="create-a-linux-vm-with-multiple-nics-using-the-azure-cli-20-preview"></a>Erstellen eines virtuellen Linux-Computers mit mehreren Netzwerkkarten mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+# <a name="create-a-linux-vm-with-multiple-nics"></a>Erstellen eines virtuellen Linux-Computers mit mehreren Netzwerkkarten
 Sie können einen virtuellen Computer in Azure erstellen, an den mehrere Netzwerkkarten angefügt werden. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. Dieser Artikel bietet Informationen zu Schnellbefehlen zum Erstellen eines virtuellen Computers, an den mehrere Netzwerkkarten angefügt werden. Ausführliche Informationen hierzu sowie zum Erstellen von mehreren Netzwerkkarten in Ihren eigenen Bash-Skripts finden Sie in den Informationen zum [Bereitstellen eines virtuellen Computers mit mehreren Netzwerkkarten](../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Verschiedene [VM-Größen](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
+
+In diesem Artikel erfahren Sie, wie Sie eine VM mit mehreren Netzwerkkarten mithilfe von Azure CLI 2.0 erstellen. Sie können diese Schritte auch mit [Azure CLI 1.0](virtual-machines-linux-multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 > [!WARNING]
 > Das Anfügen der Netzwerkkarten muss während der Erstellung des virtuellen Computers erfolgen – Sie können keine Netzwerkkarten an einen vorhandenen virtuellen Computer anfügen. Sie können [einen virtuellen Computer basierend auf dem bzw. den ursprünglichen virtuellen Datenträgern erstellen](virtual-machines-linux-copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) und beim Bereitstellen des virtuellen Computers mehrere Netzwerkkarten erstellen.
 
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-- [Azure CLI 1.0:](virtual-machines-linux-multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-- [Azure CLI 2.0 (Vorschau):](#create-supporting-resources) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
-
-
 ## <a name="create-supporting-resources"></a>Erstellen von unterstützenden Ressourcen
-Installieren Sie die neueste [Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
+Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu den Beispielparameternamen zählen `myResourceGroup`, `mystorageaccount` und `myVM`.
 
@@ -120,10 +116,5 @@ Ein vollständiges Beispiel finden Sie unter [Erstellen von mehreren Netzwerkkar
 Überprüfen Sie die [Linux-VM-Größen](virtual-machines-linux-sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 
 
 Denken Sie daran, dass Sie einem vorhandenen virtuellen Computer keine weiteren Netzwerkkarten hinzufügen können. Sie müssen alle Netzwerkkarten während der Bereitstellung des virtuellen Computers erstellen. Planen Sie Ihre Bereitstellungen sorgfältig, um sicherzustellen, dass Sie die erforderliche Netzwerkkonnektivität von Anfang an einberechnen.
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -1,11 +1,11 @@
 ---
-title: Informationen zu Partnern und Enterprise Integration Pack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Partner mit dem Enterprise Integration Pack und Logik-Apps verwenden
+title: "Erstellen von Partnern für B2B-Nachrichten (Business-to-Business) – Azure Logic Apps | Microsoft Docs"
+description: "Erfahren Sie, wie Sie Ihrem Integrationskonto mit dem Enterprise Integration Pack und Logic Apps Partner hinzufügen."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: msftman
+author: MandiOhlinger
 manager: anneta
-editor: cgronlun
+editor: 
 ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.service: logic-apps
 ms.workload: integration
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: estfan
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2549531d21c8e15e5bbb4321c4119e6aaac53e96
-ms.openlocfilehash: de12b83c811dcdd93ed691ddade9d748383110df
+ms.sourcegitcommit: 5913c81088724ef946ae147f4f3154fa6aefd22e
+ms.openlocfilehash: 2a886d1eaf1253b55d8c95786139a2bbdc6f145e
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="partners-in-b2b-scenarios"></a>Partner in B2B-Szenarien
+# <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>Hinzufügen oder Aktualisieren von Partnern in B2B-Vereinbarungen in Ihrem Workflow
 
 Partner sind Entitäten, die an B2B-Transaktionen (Business-To-Business) teilnehmen und gegenseitig Nachrichten austauschen. Bevor Sie Partner erstellen können, die Sie und eine andere Organisation in diesen Transaktionen darstellen, müssen Sie Informationen abstimmen, die zum Identifizieren und Überprüfen der gegenseitig gesendeten Nachrichten dienen. Sobald Sie diese Details abgestimmt haben und bereit sind, Ihre Geschäftsbeziehung zu starten, können Sie in Ihrem Integrationskonto Partner erstellen, die beiden Parteien darstellen.
 
@@ -89,10 +91,5 @@ Die Empfangs- und Sendeeinstellungen orientieren sich am Hostpartner. Die Empfan
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md "Informationen zu Vereinbarungen zur Unternehmensintegration")  
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

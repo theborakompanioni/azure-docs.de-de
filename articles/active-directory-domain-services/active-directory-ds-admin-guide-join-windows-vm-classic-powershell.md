@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: fdc53ee24c623218e218cdda1c24dffbbec50bc5
 ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
+ms.lasthandoff: 01/05/2017
 
 
 ---
@@ -24,15 +25,15 @@ ms.openlocfilehash: e7c7e9504985fa98185286ee9a28cec80fb87df6
 > [!div class="op_single_selector"]
 > * [Klassisches Azure-Portal – Windows](active-directory-ds-admin-guide-join-windows-vm.md)
 > * [PowerShell – Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-> 
-> 
+>
+>
 
 <br>
 
 > [!IMPORTANT]
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Die Azure AD-Domänendienste unterstützen das Resource Manager-Modell derzeit nicht.
-> 
-> 
+>
+>
 
 Diese Schritte zeigen, wie Sie eine Reihe von Azure PowerShell-Befehlen anpassen, mit denen ein Windows-basierter virtueller Azure-Computer mit einem Bausteinansatz erstellt und vorab konfiguriert wird. Mithilfe dieser Schritte können Sie einen Windows-basierten virtuellen Azure-Computer erstellen und in eine durch die Azure AD-Domänendienste verwaltete Domäne einbinden.
 
@@ -156,10 +157,4 @@ Hier ist das vollständige Beispielskript zur Erstellung des virtuellen Windows-
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
-
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

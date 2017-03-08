@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/20/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 9c43a831768684c6458d5f62557c8a06b2c5ca6b
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -30,8 +31,8 @@ Die einzelnen Schritte unterscheiden sich in Abhängigkeit davon, ob Ihre Organi
 > [!div class="op_single_selector"]
 > * [Auf die Cloud beschränkter Azure AD-Mandant](active-directory-ds-getting-started-password-sync.md)
 > * [Synchronisierter Azure AD-Mandant](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-> 
-> 
+>
+>
 
 <br>
 
@@ -47,8 +48,8 @@ Empfohlene Version: **1.1.281.0** – veröffentlicht am 7. September 2016.
 
 > [!WARNING]
 > Sie müssen die neueste empfohlene Version von Azure AD Connect installieren, um ältere Anmeldeinformationen zu aktivieren (erforderlich für NTLM- und Kerberos-Authentifizierung) und Ihren Azure AD-Mandanten zu synchronisieren. Diese Funktionalität ist in früheren Versionen von Azure AD Connect oder im DirSync-Legacytool nicht verfügbar.
-> 
-> 
+>
+>
 
 Installationshinweise für Azure AD Connect finden Sie im folgenden Artikel: [Erste Schritte mit Azure AD Connect](../active-directory/active-directory-aadconnect.md)
 
@@ -78,10 +79,4 @@ Je nach Größe Ihres Verzeichnisses (Anzahl von Benutzern, Gruppen usw.) nimmt 
 * [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Einbinden eines virtuellen Windows-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in eine verwaltete Domäne der Azure AD-Domänendienste](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

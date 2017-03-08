@@ -4,7 +4,7 @@ description: "Beschreibt, wie PCMs, Batterien, Controllermodule, EBOD-Controller
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: e8087ba7-0b66-4f59-8988-e53aad52ee21
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/11/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 50df20f1f84f570cec1261e14028f3a700871dac
+ms.sourcegitcommit: f2d197264f066a23468db80686444bd24f6d796f
+ms.openlocfilehash: ae37f49916445a9486457af61aa9bf8bc1d7eb87
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="storsimple-hardware-component-replacement"></a>Austauschen von StorSimple-Hardwarekomponenten
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Ersetzen einer Hardwarekomponente auf Geräten der StorSimple 8000-Serie
+
 ## <a name="overview"></a>Übersicht
 In den Tutorials zum Austausch von Hardwarekomponenten werden die Hardwarekomponenten Ihres Microsoft Azure StorSimple-Gerät der Serie 8000 sowie die erforderlichen Schritte zum Ausbauen und Austauschen dieser Komponenten erläutert. Dieser Artikel beschreibt die Sicherheitssymbole und enthält Verweise auf die ausführlichen Tutorials. Darüber hinaus sind die austauschbaren Komponenten aufgeführt.
 
@@ -67,7 +70,7 @@ Die wesentlichen Hardwarekomponenten des Geräts sind in der folgenden Tabelle z
 |:--- |:--- |:--- |:--- |
 | Gehäuse |1 |Nein |[Austauschen des Gehäuses des StorSimple-Geräts](storsimple-chassis-replacement.md) |
 | Primäre Controller |2 |Ja |[Austauschen eines Controllermoduls eines StorSimple-Geräts](storsimple-controller-replacement.md) |
-| Module für Stromversorgung und Kühlung (PCMs) mit 764 W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
+| Module für Stromversorgung und Kühlung (PCMs) mit&764; W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
 | Pufferbatterie |2 |Ja |[Austauschen des Pufferbatteriemoduls eines StorSimple-Geräts](storsimple-battery-replacement.md) |
 | Festplattenlaufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-disk-drive-replacement.md) |
 
@@ -79,7 +82,7 @@ Das primäre Gehäuse und das EBOD-Gehäuse unterscheiden sich bei den E/A-Modul
 |:--- |:--- |:--- |:--- |
 | Gehäuse |1 |Nein |[Austauschen des Gehäuses des StorSimple-Geräts](storsimple-chassis-replacement.md) |
 | EBOD-Controller |2 |Ja |[Austauschen des EBOD-Controllers eines StorSimple-Geräts](storsimple-ebod-controller-replacement.md) |
-| Module für Stromversorgung und Kühlung (PCMs) mit 580 W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
+| Module für Stromversorgung und Kühlung (PCMs) mit&580; W |2 |Ja |[Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-power-cooling-module-replacement.md) |
 | Festplattenlaufwerke |12 |Ja |[Austauschen eines Festplattenlaufwerks im StorSimple-Gerät](storsimple-disk-drive-replacement.md) |
 
 **Tabelle 2** Hardwarekomponenten im EBOD-Gehäuse
@@ -122,8 +125,8 @@ Sowohl das primäre Gehäuse als auch das EBOD-Gehäuse haben Laufwerksträgermo
 Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät verfügbar:
 
 * Gehäuse (einschließlich des integrierten Bedienfelds)
-* PCM mit 764 W, Wechselstrom
-* PCM mit 580 W, Wechselstrom
+* PCM mit&764; W, Wechselstrom
+* PCM mit&580; W, Wechselstrom
 * Festplattenlaufwerk mit Laufwerkträgermodul
 * Controllermodul
 * EBOD-Controllermodul
@@ -134,10 +137,5 @@ Die folgenden FRUs (Field Replaceable Units) sind für Ihr StorSimple-Gerät ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die [Sicherheitsinformationen](storsimple-safety.md) vollständig, bevor Sie versuchen, eine StorSimple-Hardwarekomponente auszutauschen.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

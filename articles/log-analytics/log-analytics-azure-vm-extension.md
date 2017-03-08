@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: richrund
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c6190a5a5aba325b15aef97610c804f5441ef7ad
-ms.openlocfilehash: cab40991e5b0628f422b9eb91130d8135c1434f1
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: 3bb103a8def2e1c56695169568c2d3c64b7f291f
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="connect-azure-virtual-machines-to-log-analytics"></a>Verbinden von virtuellen Azure-Computern mit Log Analytics
+# <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>Verbinden von virtuellen Azure-Computern mit Log Analytics mithilfe eines Log Analytics-Agents
+
 Die empfohlene Methode zum Erfassen von Protokollen und Metriken für Windows- und Linux-Computer ist die Installation des Log Analytics-Agents.
 
 Die einfachste Möglichkeit für die Installation des Log Analytics-Agents auf virtuellen Azure-Computern stellt die Log Analytics-VM-Erweiterung dar.  Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
@@ -34,8 +37,8 @@ Wenn die Erfassung von Protokolldaten auf Agentbasis erfolgt, müssen Sie [Daten
 
 > [!IMPORTANT]
 > Wenn Sie Log Analytics so konfiguriert haben, dass Protokolldaten mithilfe von [Azure-Diagnose](log-analytics-azure-storage.md) indiziert werden, und Sie den Agent für das Erfassen derselben Protokolle konfigurieren, werden diese Protokolle doppelt erfasst. Ihnen werden dann beide Datenquellen in Rechnung gestellt. Wenn der Agent installiert ist, sollten Sie die Protokolldaten ausschließlich mit dem Agent sammeln. Konfigurieren Sie in diesem Fall nicht Log Analytics für das Sammeln von Daten aus Azure-Diagnose.
-> 
-> 
+>
+>
 
 Es stehen drei einfache Methoden zur Verfügung, um die VM-Erweiterung Log Analytics zu aktivieren:
 
@@ -400,10 +403,4 @@ Für Computer, die nicht in Azure ausgeführt werden, können Sie den Log Analyt
 
 * [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md)
 * [Verbinden von Linux-Computern mit Log Analytics](log-analytics-linux-agents.md)
-
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

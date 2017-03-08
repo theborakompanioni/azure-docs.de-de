@@ -36,15 +36,8 @@
 ### [Docker Swarm – Continuous Integration](container-service-docker-swarm-setup-ci-cd.md)
 # Referenz
 ## [Azure CLI 2.0](/cli/azure/acs)
-## [PowerShell](/powershell/resourcemanager/azurerm.compute/v2.3.0/azurerm.compute)
-## [.NET](/dotnet/api/microsoft.azure.management.compute.models)
 ## [REST](/rest/api/compute/containerservices)
 # Ressourcen
 ## [Regionale Verfügbarkeit](https://azure.microsoft.com/regions/services/)
 ## [Preise](https://azure.microsoft.com/pricing/details/container-service/)
 ## [Dienstupdates](https://azure.microsoft.com/en-us/updates/?product=container-service&updatetype=&platform=)
-
-
-<!--HONumber=Feb17_HO4-->
-
-

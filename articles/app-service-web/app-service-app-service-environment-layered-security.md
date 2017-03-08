@@ -4,7 +4,7 @@ description: Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Se
 services: app-service
 documentationcenter: 
 author: stefsch
-manager: wpickett
+manager: erikre
 editor: 
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.service: app-service
@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 35f87789bd374a6170e38dfb462fd928babd55a3
+ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
+ms.openlocfilehash: 0fb02c13f99a8f4a46e0142c20da3b152c809b6b
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -39,8 +40,8 @@ Um zu ermitteln, welche Netzwerksicherheitsregeln erforderlich sind, müssen Sie
 
 Da [Netzwerksicherheitsgruppen][NetworkSecurityGroups] auf Subnetze angewendet und App Service-Umgebungen in Subnetzen bereitgestellt werden, gelten die Regeln einer Netzwerksicherheitsgruppe für **alle** Apps, die in der jeweiligen App Service-Umgebung ausgeführt werden.  Betrachten Sie die Beispielarchitektur für diesen Artikel: Sobald eine Netzwerksicherheitsgruppe auf das Subnetz angewendet wird, das „apiase“ enthält, werden alle Apps, die in der App Service-Umgebung „apiase“ ausgeführt werden, durch den gleichen Satz Sicherheitsregeln geschützt. 
 
-* **Ermitteln der ausgehenden IP-Adressen von Aufruffunktionen für den Upstream:** Wie lauten die IP-Adressen der Aufruffunktionen für den Upstream?  Diesen Adressen muss in der Netzwerksicherheitsgruppe explizit Zugriff gewährt werden.  Da Aufrufe zwischen App Service-Umgebungen als „Internetaufrufe“ betrachtet werden, muss der ausgehenden IP-Adresse, die jeder der App Service-Upstreamumgebungen zugewiesen ist, in der Netzwerksicherheitsgruppe Zugriff auf das Subnetz „apiase“ gewährt werden.   Weitere Informationen zum Ermitteln der ausgehenden IP-Adresse für Apps, die in einer App Service-Umgebung ausgeführt werden, finden Sie im Artikel [Übersicht über die Netzwerkarchitektur von App Service-Umgebungen][NetworkArchitecture].
-* **Muss die Back-End-API-App sich selbst aufrufen?**   Ein Aspekt, der nicht selten übersehen wird, ist ein Szenario, in dem die Back-End-Anwendung sich selbst aufrufen muss.  Wenn sich die Back-End-API-Anwendung in einer App Service-Umgebung selbst aufrufen muss, wird auch dies als „Internetaufruf“ behandelt.  In der Beispielarchitektur muss zu diesem Zweck auch der Zugriff von der ausgehenden IP-Adresse der App Service-Umgebung „apiase“ gewährt werden.
+* **Ermitteln der ausgehenden IP-Adressen von Aufruffunktionen für den Upstream:** Wie lauten die IP-Adressen der Aufruffunktionen für den Upstream?  Diesen Adressen muss in der Netzwerksicherheitsgruppe explizit Zugriff gewährt werden.  Da Aufrufe zwischen App Service-Umgebungen als „Internetaufrufe“ betrachtet werden, muss der ausgehenden IP-Adresse, die jeder der App Service-Upstreamumgebungen zugewiesen ist, in der Netzwerksicherheitsgruppe Zugriff auf das Subnetz „apiase“ gewährt werden.   Weitere Informationen zum Ermitteln der ausgehenden IP-Adresse für Apps, die in einer App Service-Umgebung ausgeführt werden, finden Sie im Artikel [Übersicht über die Netzwerkarchitektur][NetworkArchitecture].
+* **Muss die Back-End-API-App sich selbst aufrufen?**  Ein Aspekt, der nicht selten übersehen wird, ist ein Szenario, in dem die Back-End-Anwendung sich selbst aufrufen muss.  Wenn sich die Back-End-API-Anwendung in einer App Service-Umgebung selbst aufrufen muss, wird auch dies als „Internetaufruf“ behandelt.  In der Beispielarchitektur muss zu diesem Zweck auch der Zugriff von der ausgehenden IP-Adresse der App Service-Umgebung „apiase“ gewährt werden.
 
 ## <a name="setting-up-the-network-security-group"></a>Einrichten der Netzwerksicherheitsgruppe
 Sobald die ausgehenden IP-Adressen bekannt sind, besteht der nächste Schritt darin, eine Netzwerksicherheitsgruppe zu erstellen und einzurichten.  Netzwerksicherheitsgruppen können sowohl für Resource Manager-basierte virtuelle Netzwerke als auch für klassische virtuelle Netzwerke erstellt werden.  Die folgenden Beispiele veranschaulichen das Erstellen und Konfigurieren einer NSG in einem klassischen virtuellen Netzwerk mit PowerShell.
@@ -110,9 +111,4 @@ In App Service-Umgebungen verwendete [Netzwerkports][InboundTraffic]
 <!-- IMAGES -->
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]:  ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

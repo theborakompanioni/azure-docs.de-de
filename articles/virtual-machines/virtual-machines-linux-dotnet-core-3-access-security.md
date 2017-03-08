@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 59e3402fbeb6356c164a9a7a80728ec06ca7e141
-
+ms.sourcegitcommit: 2fd9fd50be79e8af239101147e5ae0a39eb2dc07
+ms.openlocfilehash: 7cef940b26003578a3b08c453ed4f91d3e617b2e
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="access-and-security-in-azure-resource-manager-templates"></a>Zugriff und Sicherheit in Azure Resource Manager-Vorlagen
+# <a name="access-and-security-in-azure-resource-manager-templates-for-linux-vms"></a>Zugriff und Sicherheit in Azure Resource Manager-Vorlagen für Linux-VMs
+
 Auf in Azure gehostete Anwendungen muss in der Regel über das Internet oder über eine VPN-/ExpressRoute-Verbindung mit Azure zugegriffen werden. Im Rahmen des Music Store-Anwendungsbeispiels wird die Website im Internet mit einer öffentlichen IP-Adresse verfügbar gemacht. Nach Einrichtung des Zugriffs müssen die Verbindungen mit der Anwendung sowie der Zugriff auf die Ressourcen des virtuellen Computers geschützt werden. Diese Zugriffssicherheit wird mithilfe einer Netzwerksicherheitsgruppe erreicht. 
 
 In diesem Dokument erfahren Sie, wie die Music Store-Anwendung in der Azure Resource Manager-Beispielvorlage geschützt wird. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie [hier](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux). 
@@ -137,10 +139,5 @@ Ausführliche Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Was 
 <hr>
 
 [Schritt 3: Verfügbarkeit und Skalierung in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-4-availability-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO5-->
 
 

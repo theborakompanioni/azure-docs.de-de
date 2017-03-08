@@ -1,5 +1,5 @@
 ---
-title: "Verwenden von Blob Storage für IIS und Table Storage für Ereignisse | Microsoft Docs"
+title: "Verwenden von Blob Storage für IIS und Table Storage für Ereignisse in Azure Log Analytics | Microsoft Docs"
 description: "Log Analytics kann die Protokolle für Azure-Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen."
 services: log-analytics
 documentationcenter: 
@@ -12,15 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 79f5bad314b230df27c73fb7e60e173778c96865
-ms.openlocfilehash: da31e1ceebfecf766828fa761b01f4e346cd13aa
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: b40d7c0acd8cc6a672f25489b745561c24501482
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="using-blob-storage-for-iis-and-table-storage-for-events"></a>Verwenden von Blob Storage für IIS und Table Storage für Ereignisse
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Log Analytics
+
 Log Analytics kann die Protokolle für die folgenden Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen:
 
 * Service Fabric-Cluster (Vorschau)
@@ -193,9 +196,4 @@ Das Skript verwendet Cmdlets für klassische virtuelle Computer.
 * [Sammeln von Protokollen und Metriken für Azure-Dienste](log-analytics-azure-storage.md) für unterstützte Azure-Dienste.
 * [Aktivieren Sie Lösungen](log-analytics-add-solutions.md) , um Einblick in die Daten bereitzustellen.
 * [Erstellen Sie Suchabfragen](log-analytics-log-searches.md) , um die Daten zu analysieren.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2016
+ms.date: 03/06/2017
 ms.author: maheshu
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: c70e80c413d0637f956c43686df29b8073daaa3b
+ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
+ms.openlocfilehash: 2e78382b4cbfe7623eec1b2cd32a9eaea61e4709
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -61,8 +62,8 @@ Die Litware Corporation hat [Azure AD Connect](../active-directory/active-direct
 
 > [!NOTE]
 > **Die Kennwortsynchronisierung für Hybridorganisationen ist für die Verwendung von Azure AD-Domänendiensten verpflichtend**. Dies liegt daran, dass die Anmeldeinformationen der Benutzer in der von den Azure AD-Domänendiensten bereitgestellten verwalteten Domäne erforderlich sind, um diese Benutzer mithilfe von NTLM- oder Kerberos-Authentifizierungsverfahren authentifizieren zu können.
-> 
-> 
+>
+>
 
 ![Azure AD-Domänendienste für Litware Corporation](./media/active-directory-domain-services-overview/aadds-overview-synced-tenant.png)
 
@@ -82,10 +83,4 @@ Mit Azure AD-Domänendiensten kommen Sie in den Genuss der folgenden Vorteile:
 * **Integration:** Die Azure AD-Domänendienste sind tief in Ihren Azure AD-Mandanten integriert. Sie können Azure AD jetzt als integriertes cloudbasiertes Unternehmensverzeichnis nutzen, das sowohl die Anforderungen Ihrer modernen Anwendungen als auch die Anforderungen von traditionellen verzeichnisorientierten Anwendungen erfüllt.
 * **Kompatibel:** Die Azure AD-Domänendienste basieren auf der bewährten, für Unternehmen konzipierten Infrastruktur von Windows Server Active Directory. Aus diesem Grund sind Ihre Anwendungen in höherem Maße mit Windows Server Active Directory-Features kompatibel. Derzeit sind nicht alle in Windows Server AD verfügbaren Features in den Azure AD-Domänendiensten verfügbar. Die verfügbaren Features sind aber mit den entsprechenden Windows Server AD-Features kompatibel, die Sie in Ihrer lokalen Infrastruktur nutzen. LDAP, Kerberos, NTLM, Gruppenrichtlinie und Domänenbeitritt sind ausgereifte Features, die über mehrere Windows Server-Versionen hinweg getestet und optimiert wurde.
 * **Kosteneffektivität:** Mit Azure AD-Domänendiensten können Sie den Infrastruktur- und Verwaltungsaufwand vermeiden, der mit der Verwaltung der Identitätsinfrastruktur zur Unterstützung herkömmlicher verzeichnisorientierter Anwendungen verbunden ist. Sie können diese Anwendungen auf die Azure-Infrastrukturdienste verlagern und von höheren Einsparungen bei den Betriebskosten profitieren.
-
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

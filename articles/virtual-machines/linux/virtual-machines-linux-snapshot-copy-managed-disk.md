@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 2/6/2017
 ms.author: rasquill
 translationtype: Human Translation
-ms.sourcegitcommit: 673b979520b0e6fd4d0b0c00d2be26c41d112677
-ms.openlocfilehash: f99effa72070bb8acd35fa95b1ea3219d64ace46
+ms.sourcegitcommit: 6fda4b6e77104b6022b86010b53b46ae5df1b82e
+ms.openlocfilehash: 8bc6ac01f1592d371abbb2df3ff6ecf4ee2a993c
+ms.lasthandoff: 02/27/2017
 
 
 ---
@@ -24,12 +25,12 @@ Erstellen Sie eine Momentaufnahme eines verwalteten Datenträgers für die Siche
 
 Informationen zu Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/managed-disks/). <!--Add link to topic or blog post that explains managed disks. -->
 
-Sie können eine Momentaufnahme des verwalteten Datenträgers entweder im Azure-Portal oder über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau) erstellen.
+Sie können eine Momentaufnahme des verwalteten Datenträgers im Azure-Portal oder mithilfe von Azure CLI 2.0 erstellen.
 
-## <a name="use-azure-cli-20-preview-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme über die Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)
+## <a name="use-azure-cli-20-to-take-a-snapshot"></a>Erstellen einer Momentaufnahme mithilfe von Azure CLI 2.0
 
 > [!NOTE] 
-> Für das folgende Beispiel muss die Azure-Befehlszeilenschnittstelle 2.0 installiert sein, und Sie müssen bei Ihrem Azure-Konto angemeldet sein.
+> Für das folgende Beispiel muss Azure CLI 2.0 installiert sein, und Sie müssen bei Ihrem Azure-Konto angemeldet sein.
 
 Die folgenden Schritte zeigen, wie Sie mithilfe des Befehls `az snapshot create` mit dem `--source-disk`-Parameter eine Momentaufnahme eines verwalteten Betriebssystemdatenträgers erstellen. Beim folgenden Beispiel wird davon ausgegangen, dass ein virtueller Computer namens `myVM` vorhanden ist, der mit einem verwalteten Betriebssystemdatenträger in der Ressourcengruppe `myResourceGroup` erstellt wurde.
 
@@ -80,10 +81,5 @@ Die Ausgabe sollte ungefähr wie folgt aussehen:
 
 Wenn Sie vorhaben, die Momentaufnahme zum Erstellen eines verwalteten Datenträgers zu nutzen und an eine VM anzufügen, die hohe Leistung benötigt, verwenden Sie den Parameter `--sku Premium_LRS` mit dem Cmdlet `az snapshot create`. Dadurch wird die Momentaufnahme so erstellt, dass sie als verwalteter Premium-Datenträger gespeichert wird. Verwaltete Premium-Datenträger bieten eine bessere Leistung, da es sich um SSDs (Solid-State Drives) handelt. Allerdings sind sie auch teurer als Standard-Datenträger (HDDs).
 
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

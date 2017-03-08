@@ -4,7 +4,7 @@ description: "Dieses Thema erläutert Folgendes: Einschalten eines neuen StorSim
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
@@ -12,15 +12,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/23/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 5943276236d239e8ee2eba302f52e9445203564d
+ms.sourcegitcommit: 6bfbb0b5eaae3fb3ce45d719ea1d3dec48ed0467
+ms.openlocfilehash: 359aaa1af6765270d9fe0f449007fcb4323b0ad4
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="turn-your-storsimple-device-on-or-off"></a>Ein- und Ausschalten von StorSimple-Geräten
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Ein- und Ausschalten von Geräten der StorSimple 8000-Serie
 ## <a name="overview"></a>Übersicht
 Im Rahmen des normalen Systembetriebs ist es nicht erforderlich, ein Microsoft Azure StorSimple-Gerät herunterzufahren. Möglicherweise müssen Sie jedoch ein neues Gerät oder ein Gerät, das heruntergefahren werden musste, einschalten. Im Allgemeinen müssen Sie Geräte herunterfahren, wenn Sie fehlerhafte Hardware austauschen, eine Einheit physisch verschieben oder ein Gerät außer Betrieb nehmen müssen. Dieses Tutorial beschreibt das erforderliche Verfahren zum Einschalten und Herunterfahren von StorSimple-Geräten in verschiedenen Szenarien.
 
@@ -187,10 +189,5 @@ Nachdem Sie auf Windows PowerShell für StorSimple oder das klassische Azure-Por
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Kontaktieren Sie den Microsoft-Support](storsimple-contact-microsoft-support.md) , wenn beim Einschalten oder Herunterfahren eines StorSimple-Geräts Probleme auftreten.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

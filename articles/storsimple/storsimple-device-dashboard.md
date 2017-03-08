@@ -4,7 +4,7 @@ description: "Beschreibt das Dashboard des StorSimple Manager-Geräts und erläu
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 6c213969-a385-461f-b698-78ef5b8a79cc
 ms.service: storsimple
@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 29a9477c740acca2bd0e220c554fda9a6f515998
+ms.sourcegitcommit: 182d7b2bd4d9f663b545684f2bc2a02d06952b61
+ms.openlocfilehash: 0d8035b9608ca3bac3d4822c7c755b81c96d481e
+ms.lasthandoff: 02/28/2017
 
 
 ---
-# <a name="use-the-storsimple-manager-device-dashboard"></a>Verwenden des StorSimple Manager-Gerätedashboards
+# <a name="use-the-device-dashboard-in-storsimple-manager-service"></a>Verwenden des Gerätedashboards des StorSimple Manager-Diensts  
+
 ## <a name="overview"></a>Übersicht
 Das StorSimple Manager-Gerätedashboard bietet Ihnen einen Überblick über die Informationen für ein bestimmtes StorSimple-Gerät, wodurch es sich deutlich vom Dienstdashboard unterscheidet, das Ihnen Informationen zu allen Geräten bietet, die in Ihrer Microsoft Azure StorSimple-Lösung enthalten sind.
 
@@ -81,10 +84,5 @@ Möglicherweise benötigen Sie den Ziel-IQN des Geräts, wenn Sie das Challenge 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [StorSimple Manager-Dienstdashboard](storsimple-service-dashboard.md).
 * Erfahren Sie mehr zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-manager-service-administration.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

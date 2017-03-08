@@ -15,8 +15,9 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 130100a4f1710a7820c8e9793db73144d7d68808
-ms.openlocfilehash: 26b1f0708b3705297b9a35cce0692d3503b03246
+ms.sourcegitcommit: a5cce0da15941e91cbe74cdd1e0306ebd8db362c
+ms.openlocfilehash: d228ceb1a99e8fe11b59e6372b60bbfc93adac27
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -38,10 +39,10 @@ SSE verschlüsselt die Daten, wenn sie in Azure Storage geschrieben werden, und 
 
 Storage Service Encryption – SSE-Dateivorschau steht jetzt zum Verschlüsseln Ihrer Daten in File Storage zur Verfügung. Sie befindet sich derzeit in der Vorschauphase. Nachfolgend sehen Sie eine Liste der Regionen, in denen SSE für File Storage verfügbar ist.
 
-Zur Teilnahme an der SSE-Dateivorschau wenden Sie sich an ssdiscussions@microsoft.com.
+Zur Teilnahme an der SSE-Dateivorschau wenden Sie sich an ssediscussions@microsoft.com.
 
 Weitere Informationen erhalten Sie in den FAQ.
-Verfügbarkeit für File Storage: Storage Service Encryption für File Storage ist derzeit in der Region Ostasien verfügbar.
+Verfügbarkeit für File Storage: Storage Service Encryption für File Storage ist derzeit in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Osten 2“ verfügbar.
 
 
 Melden Sie sich zum Aktivieren oder Deaktivieren der Speicherdienstverschlüsselung für ein Speicherkonto beim [Azure-Portal](https://azure.portal.com) an, und wählen Sie ein Speicherkonto aus. Suchen Sie auf dem Blatt „Einstellungen“ nach dem Abschnitt mit dem Blobdienst, und klicken Sie auf „Verschlüsselung“.
@@ -198,10 +199,5 @@ A: Bitte wenden Sie sich in allen Angelegenheiten, die Storage Service Encryptio
 
 ## <a name="next-steps"></a>Nächste Schritte
 Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

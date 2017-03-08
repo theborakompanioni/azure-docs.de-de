@@ -15,13 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: saurabh
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: e9258143cae9d9f8ba1f357617e2c45cf8487ab9
-ms.openlocfilehash: 2bd7efaaf45267ccdad390354ea98fafff1a6cb5
+ms.sourcegitcommit: 855ecb73854e20eb52f343e5d190cbcbaa9ad080
+ms.openlocfilehash: 85adb953254496e969fb8d459a0c79592708c835
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="create-a-windows-virtual-machine-with-monitoring-and-diagnostics-using-azure-resource-manager-template"></a>Erstellen eines virtuellen Windows-Computers mit Überwachung und Diagnose mithilfe von Azure-Ressourcen-Manager-Vorlagen
+# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen
 Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure-Ressourcen-Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](virtual-machines-windows-extensions-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.  
 
 ## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Hinzufügen der Azure-Diagnoseerweiterung zur VM-Ressourcendefinition
@@ -167,10 +169,5 @@ Jede WADMetrics-Tabelle enthält die folgenden Spalten:
 * Eine vollständige Beispielvorlage für einen virtuellen Windows-Computer mit Diagnoseerweiterung finden Sie unter [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
 * Stellen Sie die Resource Manager-Vorlage über [Azure PowerShell](virtual-machines-windows-ps-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder die [Azure-Befehlszeile](virtual-machines-linux-cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bereit.
 * Weitere Informationen zum [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

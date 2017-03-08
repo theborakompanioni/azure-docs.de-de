@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie das Failover für das StorSimple Virtual Arr
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: timlt
 editor: 
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
@@ -12,14 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2016
+ms.date: 02/27/2017
 ms.author: alkohli
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: c78eda33a64d630ba18aba6a174db372eb41dde9
-ms.openlocfilehash: d31f10f660dc05290363825c089664a70ecdd037
+ms.sourcegitcommit: 01acc0a5a6db7695d04d3adbf843826da5288025
+ms.openlocfilehash: 30b0aaa27be46ed581f56176fa3385273ff101c0
+ms.lasthandoff: 03/01/2017
 
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt die Notfallwiederherstellung für Ihr Microsoft Azure StorSimple Virtual Array sowie die ausführlichen Schritte für ein Failover auf ein anderes virtuelles Array. Durch ein Failover können Sie Ihre Daten von einem *Quellgerät* im Datencenter auf ein *Zielgerät* verschieben. Das Zielgerät kann sich am gleichen Speicherort oder einem anderen geografischen Ort befinden. Das Gerätefailover gilt für das gesamte Gerät. Während des Failovers gehen die Clouddaten für das Quellgerät in den Besitz des Zielgeräts über.
@@ -178,10 +180,5 @@ Wenn StorSimple-Geräte direkt vor einem Notfall registriert wurden, müssen die
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr darüber, wie Sie das [StorSimple Virtual Array mit der lokalen Webbenutzeroberfläche verwalten](storsimple-ova-web-ui-admin.md).
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 
