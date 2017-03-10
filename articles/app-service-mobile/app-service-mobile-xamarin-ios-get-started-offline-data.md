@@ -3,7 +3,7 @@ title: "Aktivieren der Offlinesynchronisierung für Ihre Azure Mobile App (Xamar
 description: Erfahren Sie, wie Sie mobile App Service-Apps verwenden, um Offlinedaten in Ihrer Xamarin iOS-Anwendung zwischenzuspeichern und zu synchronisieren.
 documentationcenter: xamarin
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 services: app-service\mobile
 ms.assetid: 828a287c-5d58-4540-9527-1309ebb0f32b
@@ -38,7 +38,7 @@ Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit e
 2. Öffnen Sie die Datei „QSTodoService.cs“, und heben Sie die Auskommentierung der `#define OFFLINE_SYNC_ENABLED`-Definition auf.
 3. Erstellen Sie die Client-App erneut, und führen Sie sie aus. Die App funktioniert genauso wie vor dem Aktivieren der Offlinesynchronisierung. Allerdings wird die lokale Datenbank jetzt mit Daten aufgefüllt, die in einem Offlineszenario verwendet werden können.
 
-## <a name="a-nameupdate-syncaupdate-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>Aktualisieren der App zur Trennung der Verbindung mit dem Back-End
+## <a name="update-sync"></a>Aktualisieren der App zur Trennung der Verbindung mit dem Back-End
 In diesem Abschnitt trennen Sie die Verbindung mit Ihrem Mobile App-Back-End, um ein Offlineszenario zu simulieren. Wenn Sie Datenelemente hinzufügen, teilt Ihnen der Ausnahmehandler mit, dass sich die App im Offlinemodus befindet. In diesem Zustand werden neue Elemente im lokalen Speicher hinzugefügt. Sie werden mit dem Back-End für die mobile App synchronisiert, sobald nach dem Wiederherstellen der Verbindung der nächste Push ausgeführt wird.
 
 1. Bearbeiten Sie „QSToDoService.cs“ im freigegebenen Projekt. Ändern Sie die Variable **applicationURL** so, dass Sie auf eine ungültige URL verweist:
@@ -52,7 +52,7 @@ In diesem Abschnitt trennen Sie die Verbindung mit Ihrem Mobile App-Back-End, um
 5. (Optional) Wenn Sie Visual Studio auf einem PC installiert haben, öffnen Sie **Server-Explorer**. Navigieren Sie in **Azure**-> **SQL-Datenbanken** zu Ihrer Datenbank. Klicken Sie mit der rechten Maustaste auf Ihre Datenbank, und wählen Sie **In SQL Server-Objekt-Explorer öffnen**aus. Jetzt können nach Ihrer SQL-Datenbanktabelle und seinen Inhalten suchen. Stellen Sie sicher, dass die Daten in der Back-End-Datenbank nicht geändert wurden.
 6. (Optional) Verwenden Sie ein REST-Tool wie Fiddler oder Postman, um Ihr mobiles Back-End mit einer GET-Abfrage in Form von `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`abzufragen.
 
-## <a name="a-nameupdate-online-appaupdate-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>Aktualisieren der App zum erneuten Verbinden des mobilen App-Back-Ends
+## <a name="update-online-app"></a>Aktualisieren der App zum erneuten Verbinden des mobilen App-Back-Ends
 In diesem Abschnitt verbinden Sie die App erneut mit dem mobilen App-Back-End. Dies simuliert, dass die App von einem Offlinestatus in einen Onlinestatus mit dem mobilen App-Back-End wechselt.   Wenn Sie die Netzwerkunterbrechung durch Deaktivieren der Netzwerkkonnektivität simuliert haben, sind keine Codeänderungen erforderlich.
 Aktivieren Sie das Netzwerk erneut.  Beim ersten Ausführen der Anwendung wird die `RefreshDataAsync`-Methode aufgerufen. Dadurch wird wiederum `SyncAsync` aufgerufen, um den lokalen Speicher mit der Back-End-Datenbank zu synchronisieren.
 

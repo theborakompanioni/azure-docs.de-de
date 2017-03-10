@@ -17,6 +17,7 @@ ms.author: alkohli
 translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 715720d22b58ddd3d0e5042de151219e49549c5e
+ms.lasthandoff: 12/08/2016
 
 
 ---
@@ -91,7 +92,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr virtuelles Sto
    
     Auf der Seite **Webproxy** :
    
-   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://*Host-IP-Adresse oder FDQN*:Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
+   1. Geben Sie die **Webproxy-URL** in diesem Format an: *http://Host-IP-Adresse* oder FDQN *Portnummer*. Beachten Sie, dass HTTPS-URLs nicht unterstützt werden.
    2. Geben Sie unter **Authentifizierung** die Option **Einfach** oder **Keine** an.
    3. Wenn Sie die Authentifizierung verwenden, müssen Sie auch einen **Benutzernamen** und ein **Kennwort** angeben.
    4. Klicken Sie auf **Übernehmen**. Die konfigurierten Webproxyeinstellungen werden überprüft und angewendet.
@@ -242,10 +243,5 @@ Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines 
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 

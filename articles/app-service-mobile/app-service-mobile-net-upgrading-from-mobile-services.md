@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung auf e
 services: app-service\mobile
 documentationcenter: 
 author: adrianhall
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -44,7 +44,7 @@ Die Aktualisierung auf das neue [Mobile Apps-SDK](https://www.nuget.org/packages
 * Unterstützung für andere ASP.NET-Projekttypen und -Routen. Sie können jetzt MVC- und Web-API-Controller in demselben Projekt wie Ihr mobiles Back-End-Projekt hosten.
 * Unterstützung für neue App Service-Authentifizierungsfeatures, die Ihnen die Verwendung einer gemeinsamen Authentifizierungskonfiguration über Web-Apps und mobile Apps hinweg ermöglichen.
 
-## <a name="a-nameoverviewabasic-upgrade-overview"></a><a name="overview"></a>Übersicht über grundlegende Upgrades
+## <a name="overview"></a>Übersicht über grundlegende Upgrades
 In vielen Fällen erfolgt das Upgrade einfach durch den Wechsel zum neuen Mobile Apps-Server-SDK und einer erneuten Veröffentlichung Ihres Codes für eine neue Mobile Apps-Instanz. Es gibt jedoch einige Szenarien, die eine zusätzliche Konfiguration erfordern, beispielsweise erweiterte Authentifizierungsszenarien und das Arbeiten mit geplanten Aufträgen. Diese Fälle werden in den nachstehenden Abschnitten beschrieben.
 
 > [!TIP]
@@ -63,7 +63,7 @@ Der vollständige Überblick über den Upgradevorgang sieht wie folgt aus:
 3. Veröffentlichen einer neuen Version Ihrer Clientanwendung
 4. (Optional) Löschen der ursprünglichen migrierten Instanz
 
-## <a name="a-namemobile-app-versionacreating-a-second-application-instance"></a><a name="mobile-app-version"></a>Erstellen einer zweiten Anwendungsinstanz
+## <a name="mobile-app-version"></a>Erstellen einer zweiten Anwendungsinstanz
 Der erste Schritt beim Upgrade besteht darin, die Mobile App-Ressource zum Hosten der neuen Version Ihrer Anwendung zu erstellen. Wenn Sie bereits einen vorhandenen mobilen Dienst migriert haben, sollten Sie diese Version im gleichen Hostingplan erstellen. Öffnen Sie das [Azure-Portal] , und navigieren Sie zur migrierten Anwendung. Notieren Sie sich den App Service-Plan, in dem diese ausgeführt wird.
 
 Als Nächstes erstellen Sie die zweite Anwendungsinstanz anhand der [Anleitung zum Erstellen eines .NET-Back-Ends](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Wenn Sie zur Auswahl Ihres App Service-Plans oder „Hostingplans“ aufgefordert werden, wählen Sie den Plan der migrierten Anwendung aus.
@@ -215,7 +215,7 @@ Auf ähnliche Weise erfolgt die Protokollierung jetzt über das standardmäßige
     ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
     traceWriter.Info("Hello, World");  
 
-## <a name="a-nameauthenticationaauthentication-considerations"></a><a name="authentication"></a>Überlegungen zur Authentifizierung
+## <a name="authentication"></a>Überlegungen zur Authentifizierung
 Die Authentifizierungskomponenten von Mobile Services wurden jetzt in das App Service-Feature „Authentifizierung/Autorisierung“ verschoben. Weitere Informationen zum Aktivieren dieses Features für Ihre Website finden Sie im Thema [Hinzufügen von Authentifizierung zu Ihrer mobilen App](app-service-mobile-ios-get-started-users.md) .
 
 Für einige Anbieter, z. B. AAD, Facebook und Google, sollten Sie die vorhandene Registrierung aus der kopierten Anwendung nutzen können. Sie müssen lediglich zum Portal des Identitätsanbieters navigieren und eine neue Umleitungs-URL zur Registrierung hinzufügen. Anschließend konfigurieren Sie „App Service-Authentifizierung/Autorisierung“ mit der Client-ID und dem geheimen Schlüssel.
@@ -238,7 +238,7 @@ Wenn Ihre App Abhängigkeiten von Benutzer-IDs nutzt, ist es wichtig, nach Mögl
 ### <a name="custom-authentication"></a>Benutzerdefinierte Authentifizierung
 Wenn Ihre Anwendung eine benutzerdefinierte Lösung für die Authentifizierung verwendet, sollten Sie sicherstellen, dass die aktualisierte Website Zugriff auf das System hat. Befolgen Sie die neuen Anweisungen für die benutzerdefinierte Authentifizierung in der [Übersicht über das .NET Server-SDK] , um Ihre Lösung zu integrieren. Beachten Sie, dass die benutzerdefinierten Authentifizierungskomponenten noch in der Vorschauversion vorliegen.
 
-## <a name="a-nameupdating-clientsaupdating-clients"></a><a name="updating-clients"></a>Aktualisieren von Clients
+## <a name="updating-clients"></a>Aktualisieren von Clients
 Sobald Sie über ein betriebsbereites Mobile App-Back-End verfügen, können Sie an einer neuen Version Ihrer Clientanwendung arbeiten, die dieses nutzt. Mobile Apps enthält außerdem eine neue Version der Client-SDKs. Wie bei dem oben beschriebenen Serverupgrade müssen Sie vor der Installation der Mobile Apps-Versionen alle Verweise auf die Mobile Services-SDKs entfernen.
 
 Einer der wichtigsten Unterschiede zwischen den Versionen ist, dass die Konstruktoren keinen Anwendungsschlüssel mehr benötigen. Sie brauchen jetzt nur noch die URL der mobilen App zu übergeben. Bei den .NET-Clients lautet der `MobileServiceClient`-Konstruktor z. B. nun:

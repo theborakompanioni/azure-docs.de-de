@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Azure App Service zum Senden von Pushbenachrichti
 services: app-service\mobile
 documentationcenter: xamarin
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.service: app-service-mobile
@@ -120,7 +120,7 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 
 Ihre App kann Pushbenachrichtigungen nun unterstützen.
 
-## <a name="a-nametestatest-push-notifications-in-your-app"></a><a name="test"></a>Testen von Pushbenachrichtigungen in der App
+## <a name="test"></a>Testen von Pushbenachrichtigungen in der App
 1. Klicken Sie auf die Schaltfläche **Ausführen**, um das Projekt zu erstellen. Starten Sie die App auf einem iOS-fähigen Gerät, und klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
    
    > [!NOTE]

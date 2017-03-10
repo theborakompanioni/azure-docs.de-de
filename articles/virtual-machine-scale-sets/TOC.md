@@ -4,6 +4,7 @@
 # Erste Schritte
 ## [Erstellen einer Skalierungsgruppe im Portal](virtual-machine-scale-sets-portal-create.md)
 ## [Erstellen einer Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle](virtual-machine-scale-sets-linux-create-cli.md)
+## [Erstellen einer Skalierungsgruppe mithilfe einer Resource Manager-Vorlage](virtual-machine-scale-sets-mvss-start.md)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -46,8 +47,3 @@
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
-
-
-<!--HONumber=Feb17_HO3-->
-
-

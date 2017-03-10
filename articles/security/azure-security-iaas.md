@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 03/06/2017
 ms.author: barclayn
 translationtype: Human Translation
-ms.sourcegitcommit: 3451bdde3be60df0f1e1ed977f23db65d39f535f
-ms.openlocfilehash: 8416de09a4a3c2cdf9c73b9f79e8df9e292514ca
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 774feff39bee6f34b1fb292f130d8240ec070c81
+ms.lasthandoff: 03/07/2017
 
 
 
@@ -194,8 +195,6 @@ Für Umgebungen, die von der Produktionsumgebung getrennt gehostet werden, gibt 
 
 **Installieren Sie die aktuellsten Sicherheitsupdates:** Zu den ersten von den Kunden in Azure verschobenen Workloads zählen Labore und Systeme mit externer Anbindung. Wenn Sie virtuelle Computer in Azure hosten, die wiederum Anwendungen oder Dienste hosten, die im Internet zugänglich gemacht werden müssen, müssen Sie beim Patching aufmerksam sein. Denken Sie daran, dass dies über ein Patching des Betriebssystems hinausgeht. Ungepatchte Sicherheitsrisiken in Drittanbieter-Anwendungen können ebenfalls zu Problemen führen, die mit einer guten Patchverwaltung leicht hätten vermieden werden können.
 
-Weitere Informationen zur Patchingverwaltung in Azure IaaS finden Sie unter [Bewährte Methoden für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md).
-
 **Bereitstellen und Testen einer Sicherungslösung**
 
 Genau wie Sicherheitsupdates müssen auch Sicherungen so behandelt werden wie alle anderen Vorgänge. Dies gilt für alle Systeme in Ihrer Produktionsumgebung, die sich bis in die Cloud erstreckt. Test- und Entwicklungssysteme müssen Sicherungsstrategien verfolgen, die dieselben Wiederherstellungsfunktionalitäten bieten, an die sich die Benutzer auf Basis ihrer Erfahrung mit lokalen Umgebungen gewöhnt haben.
@@ -243,9 +242,4 @@ Der folgende Screenshot zeigt ein Beispiel für die Art von Informationen, die v
 * [Blog des Azure-Sicherheitsteams](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 * [Sicherheit in Azure – bewährte Methoden und Muster](security-best-practices-and-patterns.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

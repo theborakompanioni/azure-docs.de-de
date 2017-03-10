@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/13/2016
 ms.author: ganesr
 translationtype: Human Translation
-ms.sourcegitcommit: 4acb64838288d36f0dc1b1eb9736b00faef21a0c
-ms.openlocfilehash: df4b11210aca695a04abf145b6efd9e98c870b67
+ms.sourcegitcommit: ec5e547b88bedd50f451997616c7d72b0b1b4bd4
+ms.openlocfilehash: 66c06ab6beb5e1de9cba25382834f4f9f209fa2f
+ms.lasthandoff: 12/14/2016
 
 
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit"></a>Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Azure-Portal – Resource Manager](expressroute-howto-routing-portal-resource-manager.md)
-> * [PowerShell – Resource Manager](expressroute-howto-routing-arm.md)
-> * [PowerShell – klassisch](expressroute-howto-routing-classic.md)
+> * [Resource Manager – Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Resource Manager – PowerShell](expressroute-howto-routing-arm.md)
+> * [Klassisch – PowerShell](expressroute-howto-routing-classic.md)
+> * [Video – Privates Peering](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video – Öffentliches Peering](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video – Microsoft-Peering](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > 
 > 
 
@@ -306,10 +310,5 @@ Nächster Schritt: [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](ex
 
 * Weitere Informationen zu Workflows finden Sie unter [ExpressRoute-Workflows](expressroute-workflows.md).
 * Weitere Informationen zum Verbindungspeering finden Sie unter [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md).
-
-
-
-
-<!--HONumber=Dec16_HO1-->
 
 

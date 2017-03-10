@@ -1,5 +1,5 @@
 ---
-title: Geplante Ereignisse mit dem Azure-Metadatadienst | Microsoft-Dokumentation
+title: Geplante Ereignisse mit dem Azure-Metadatendienst | Microsoft-Dokumentation
 description: "Reagieren Sie auf für Ihren virtuellen Computer weitreichende Ereignisse, ehe sie auftreten."
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: 
@@ -16,54 +16,51 @@ ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
 translationtype: Human Translation
-ms.sourcegitcommit: c7f552825f3230a924da6e5e7285e8fa7fa42842
-ms.openlocfilehash: 541709ca17b96f8334e67dbdbbd9a10eefffa06b
+ms.sourcegitcommit: bb4f7c4977de290e6e148bbb1ae8b28791360f96
+ms.openlocfilehash: 1a385de3c00b9288d9e1245f04969a9099bf5b45
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="azure-metadata-service---scheduled-events"></a>Azure-Metadatadienst: Geplante Ereignisse
+# <a name="azure-metadata-service---scheduled-events-preview"></a>Azure-Metadatendienst: Geplante Ereignisse (Vorschau)
 
-Der Azure-Metadatadienst ermöglicht Ihnen das Ermitteln von Informationen zu Ihrem in Azure gehosteten virtuellen Computer. „Geplante Ereignisse“, eine der verfügbar gemachten Kategorien, liefert Informationen zu anstehenden Ereignissen (z.B. Neustart), damit sich Ihre Anwendung darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für sämtliche Typen virtueller Azure-Computer zur Verfügung, einschließlich PaaS und IaaS. Der Dienst räumt Ihrem virtuellen Computer Zeit ein, vorbeugende Maßnahmen zu ergreifen und die Auswirkungen eines Ereignisses zu minimieren. Ihr Dienst kann beispielsweise, um Unterbrechungen zu vermeiden, Sitzungen ausgleichen, eine neue übergeordnete Instanz wählen oder Daten kopieren, nachdem erkannt wurde, dass bei einer Instanz ein Neustart geplant ist.
+> [!NOTE] 
+> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen] (https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
+>
 
+„Geplante Ereignisse“ ist einer der untergeordneten Dienste des Azure-Metadatendiensts, der Informationen zu anstehenden Ereignissen (z.B. Neustart) liefert, damit sich Ihre Anwendung darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für sämtliche Arten virtueller Azure-Computer zur Verfügung, einschließlich PaaS und IaaS. „Geplante Ereignisse“ räumt Ihrem virtuellen Computer Zeit ein, vorbeugende Maßnahmen zu ergreifen und die Auswirkungen eines Ereignisses zu minimieren. 
 
 
 ## <a name="introduction---why-scheduled-events"></a>Einführung: Gründe für geplante Ereignisse
 
-Mithilfe geplanter Ereignisse können Sie anstehende Ereignisse ermitteln, die sich ggf. auf die Verfügbarkeit Ihres virtuellen Computers auswirken, und proaktive Maßnahmen ergreifen, um die Auswirkungen auf Ihren Dienst zu begrenzen.
-Workloads mit mehreren Instanzen, die Replikationstechniken zur Statusverwaltung verwenden, sind ggf. anfällig für Ausfälle, die auf mehreren Instanzen auftreten. Solche Ausfälle können zu aufwendigen Aufgaben (z.B. Neuerstellung von Indizes) oder sogar zu einem Replikatsverlust führen.
-In vielen Fällen wird die allgemeine Dienstverfügbarkeit durch eine ordnungsgemäße Herunterfahrsequenz verbessert. Beispiel: Abschließen (oder Abbrechen) laufender Transaktionen, Neuzuweisen anderer Aufgaben zu anderen VMs im Cluster (manuelles Failover), Entfernen des virtuellen Computers aus dem Pool mit Lastenausgleich.
-Es gibt Fälle, bei denen eine Benachrichtigung eines Administrators über ein anstehendes Ereignis oder sogar die bloße Protokollierung eines Ereignisses die Wartbarkeit von Anwendungen verbessern kann, die in der Cloud gehostet werden.
-
-Der Azure-Metadatadienst zeigt geplante Ereignisse in den folgenden Anwendungsfällen an:
--   Von der Plattform ausgelöste Wartung mit weitreichenden Auswirkungen (Beispiel: Einspielen des Hostbetriebssystems)
--   Von der Plattform ausgelöste Wartung mit nicht weitreichenden Auswirkungen (Beispiel: direkte VM-Migration)
--   Interaktive Aufrufe (z.B. Neustart oder Neubereitstellung einer VM durch den Benutzer)
-
+Mit geplanten Ereignissen können Sie Maßnahmen ergreifen, um Auswirkungen auf Ihren Dienst zu begrenzen. Workloads mit mehreren Instanzen, die Replikationstechniken zur Statusverwaltung verwenden, sind ggf. anfällig für Ausfälle, die auf mehreren Instanzen auftreten. Solche Ausfälle können zu aufwendigen Aufgaben (z.B. Neuerstellung von Indizes) oder sogar zu einem Replikatsverlust führen. In vielen Fällen wird die allgemeine Dienstverfügbarkeit durch eine ordnungsgemäße Herunterfahrsequenz verbessert. Beispiel: Abschließen (oder Abbrechen) laufender Transaktionen, Neuzuweisen anderer Aufgaben zu anderen VMs im Cluster (manuelles Failover), Entfernen des virtuellen Computers aus dem Pool mit Lastenausgleich. Es gibt Fälle, bei denen eine Benachrichtigung eines Administrators über ein anstehendes Ereignis oder sogar die bloße Protokollierung eines Ereignisses die Wartbarkeit von Anwendungen verbessern kann, die in der Cloud gehostet werden.
+Der Azure-Metadatendienst zeigt geplante Ereignisse in den folgenden Anwendungsfällen an:
+-    Von der Plattform ausgelöste Wartungsaktionen (Beispiel: Rollout des Hostbetriebssystems)
+-    Vom Benutzer ausgelöste Aufrufe (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
 
 
 ## <a name="scheduled-events---the-basics"></a>Geplante Ereignisse: Grundlagen  
 
-Der Azure-Metadatadienst macht Informationen zu ausgeführten virtuellen Computern (VMs) mithilfe eines REST-Endpunkts innerhalb einer VM verfügbar. Die Informationen sind über eine nicht routbare IP-Adresse verfügbar, die außerhalb der VM nicht verfügbar gemacht wird.
+Der Azure-Metadatendienst macht Informationen zu ausgeführten virtuellen Computern (VMs) mithilfe eines REST-Endpunkts innerhalb einer VM verfügbar. Die Informationen sind über eine nicht routbare IP-Adresse verfügbar, die außerhalb der VM nicht verfügbar gemacht wird.
 
-### <a name="scope"></a>Umfang 
-Geplante Ereignisse werden allen virtuellen Computern in einem Clouddienst oder allen virtuellen Computern in einer Verfügbarkeitsgruppe angezeigt. Daher sollten Sie das Feld **Ressourcen** in einem Ereignis überprüfen, um zu bestimmen, welche VMs betroffen sein werden.
+### <a name="scope"></a>Umfang
+Geplante Ereignisse werden allen virtuellen Computern in einem Clouddienst oder allen virtuellen Computern in einer Verfügbarkeitsgruppe angezeigt. Daher sollten Sie das Feld **Ressourcen** in einem Ereignis überprüfen, um zu bestimmen, welche VMs betroffen sein werden. 
 
 ### <a name="discover-the-endpoint"></a>Ermitteln des Endpunkts
-In Fällen, in denen ein virtueller Computer innerhalb eines virtuellen Netzwerks (VNet) erstellt wird, ist der Metadatendienst über die folgende nicht routbaren IP-Adresse verfügbar: 169.254.169.254
-
-In Fällen, in denen ein virtueller Computer für Clouddienste (PaaS) verwendet wird, kann der Endpunkt des Metadatendiensts mithilfe der Registrierung ermittelt werden.
-
-    {HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure\DeploymentManagement}
+Wenn ein virtueller Computer innerhalb eines virtuellen Netzwerks (VNet) erstellt wurde, ist der Metadatendienst über die nicht routingfähige IP-Adresse 169.254.169.254 verfügbar. In den Standardszenarien für Clouddienste und klassische virtuelle Computer ist eine zusätzliche Logik erforderlich, um den zu verwendenden Endpunkt zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie den [Hostendpunkt ermitteln] (https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="versioning"></a>Versionsverwaltung 
-Der Metadatendienst nutzt eine API mit Versionsangabe im folgenden Format: http://{IP-Adresse}/metadata/{Version}/scheduledevents Es wird empfohlen, dass der Dienst die neueste Version nutzt, die Sie unter dieser Adresse finden: http://{IP-Adresse}/metadata/latest/scheduledevents
+Der Metadatendienst nutzt eine API mit Versionsangabe im folgenden Format: http://{ip}/metadata/{version}/scheduledevents. Es wird empfohlen, dass der Dienst die neueste Version nutzt, die Sie unter dieser Adresse finden: http://{ip}/metadata/latest/scheduledevents.
 
 ### <a name="using-headers"></a>Verwenden von Headern
 Zum Abfragen des Metadatendiensts müssen Sie den folgenden Header angeben: *Metadata: true*. 
 
 ### <a name="enable-scheduled-events"></a>Aktivieren geplanter Ereignisse
-Wenn Sie geplante Ereignisse erstmals aufrufen, aktiviert Azure dieses Feature für Ihren virtuellen Computer implizit. Daher ist beim ersten Aufruf eine um bis zu einer Minute verzögerte Antwort zu erwarten. 
+Wenn Sie geplante Ereignisse erstmals aufrufen, aktiviert Azure dieses Feature für Ihren virtuellen Computer implizit. Daher ist beim ersten Aufruf eine um bis zu zwei Minuten verzögerte Antwort zu erwarten.
 
+### <a name="testing-your-logic-with-user-initiated-operations"></a>Testen der Logik mit vom Benutzer initiierten Vorgängen
+Um die Logik zu testen, können Sie das Azure-Portal, eine Azure-API, die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden, um Vorgänge zu initiieren, die zu geplanten Ereignissen führen. Der Neustart eines virtuellen Computers führt zu einem geplanten Ereignis, dessen Ereignistyp „Reboot“ entspricht. Die erneute Bereitstellung eines virtuellen Computers führt zu einem geplanten Ereignis, dessen Ereignistyp „Redeploy“ entspricht.
+In beiden Fällen dauert der vom Benutzer initiierte Vorgang länger, da geplante Ereignisse einer Anwendung mehr Zeit für ein ordnungsgemäßes Herunterfahren einräumen. 
 
 ## <a name="using-the-api"></a>Verwenden der API
 
@@ -76,10 +73,11 @@ Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet,
 Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereignissen: 
 
     {
+     "DocumentIncarnation":{IncarnationID},
      "Events":[
           {
                 "EventId":{eventID},
-                "EventType":"Reboot" | "Redeploy" | "Pause",
+                "EventType":"Reboot" | "Redeploy" | "Freeze",
                 "ResourceType":"VirtualMachine",
                 "Resources":[{resourceName}],
                 "EventStatus":"Scheduled" | "Started",
@@ -89,7 +87,7 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
     }
 
 EventType: Erfasst die erwartete Auswirkung auf den virtuellen Computer. Dabei gilt:
-- Pause: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Es gibt keine Auswirkungen auf Arbeitsspeicher, geöffnete Dateien oder Netzwerkverbindungen.
+- Freeze: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Es gibt keine Auswirkungen auf Arbeitsspeicher, geöffnete Dateien oder Netzwerkverbindungen.
 - Reboot: Der Neustart des virtuellen Computers ist geplant (der Arbeitsspeicher wird geleert).
 - Redeploy: Das Verschieben des virtuellen Computers auf einen anderen Knoten ist geplant (der kurzlebige Datenträger geht verloren). 
 
@@ -102,7 +100,7 @@ Sobald Sie von einem anstehenden Ereignis erfahren und Ihre Logik für ein ordnu
 
 ## <a name="powershell-sample"></a>PowerShell-Beispiel 
 
-Im folgende Beispiel wird der Metadatenserver auf geplante Ereignisse überprüft, die vor dem Bestätigen im Anwendungsereignisprotokoll aufgezeichnet werden.
+Das folgende Beispiel überprüft den Metadatenserver auf geplante Ereignisse und zeichnet diese vor dem Bestätigen im Anwendungsereignisprotokoll auf.
 
 ```PowerShell
 $localHostIP = "169.254.169.254"
@@ -136,7 +134,7 @@ for ($eventIdx=0; $eventIdx -lt $scheduledEventsResponse.Events.Length ; $eventI
 
 
 ## <a name="c-sample"></a>C\#-Beispiel 
-Der folgende Code gilt für einen Client, der APIs für die Kommunikation mit dem Metadatendienst verfügbar macht.
+Das folgende Codebeispiel gilt für einen Client, der APIs für die Kommunikation mit dem Metadatendienst verfügbar macht.
 ```csharp
    public class ScheduledEventsClient
     {
@@ -304,9 +302,4 @@ if __name__ == '__main__':
 ```
 ## <a name="next-steps"></a>Nächste Schritte 
 [Geplante Wartung für virtuelle Computer in Azure](./virtual-machines-linux-planned-maintenance.md)
-
-
-
-<!--HONumber=Jan17_HO1-->
-
 

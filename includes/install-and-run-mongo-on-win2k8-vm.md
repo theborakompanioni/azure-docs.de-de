@@ -90,17 +90,12 @@ Diese schrittweise Anleitung erläutert die Installation und Ausführung von Mon
 [MongoWindowsSvcOptions]: http://www.mongodb.org/display/DOCS/Windows+Service
 
 
-[Bild1]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall1.png
-[Bild2]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall2.png
-[Bild3]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall3.png
-[Bild4]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall4.png
-[Bild5]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall5.png
-[Bild6]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall6.png
-[Bild7]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint.png
-[Bild8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
-[Bild9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
-
-
-<!--HONumber=Nov16_HO3-->
-
-
+[Image1]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall1.png
+[Image2]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall2.png
+[Image3]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall3.png
+[Image4]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall4.png
+[Image5]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall5.png
+[Image6]: ./media/install-and-run-mongo-on-win2k8-vm/WinFirewall6.png
+[Image7]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint.png
+[Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
+[Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png

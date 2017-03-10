@@ -4,7 +4,7 @@ description: "Hier erfahren Sie, wie Sie das Mobile Apps-Feature in Azure App Se
 services: app-service\mobile
 documentationcenter: android
 author: ysxu
-manager: erikre
+manager: adrianha
 editor: 
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
@@ -17,6 +17,7 @@ ms.author: yuaxu
 translationtype: Human Translation
 ms.sourcegitcommit: 817626dd3fc87db61280075b80cedf8b9ed77684
 ms.openlocfilehash: e638495c10742388804e75f3277c50cf1e20c6a6
+ms.lasthandoff: 12/13/2016
 
 
 ---
@@ -26,10 +27,10 @@ ms.openlocfilehash: e638495c10742388804e75f3277c50cf1e20c6a6
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial verwenden Sie einen unterstützten Identitätsanbieter, um dem Aufgabenlisten-Schnellstartprojekt unter Android eine Authentifizierung hinzuzufügen. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit Mobile Apps] auf, das Sie zuerst abschließen müssen.
 
-## <a name="a-nameregisteraregister-your-app-for-authentication-and-configure-azure-app-service"></a><a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von Azure App Service
+## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von Azure App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="a-namepermissionsarestrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
+## <a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 * Öffnen Sie in Android Studio das Projekt, das Sie im Tutorial [Erste Schritte mit Mobile Apps] erstellt haben. Klicken Sie im Menü **Ausführen** auf **App ausführen**. Vergewissern Sie sich, dass nach dem Start der App ein Ausnahmefehler mit dem Statuscode 401 (nicht autorisiert) ausgelöst wird.
@@ -41,7 +42,7 @@ Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des 
 ## <a name="add-authentication-to-the-app"></a>Hinzufügen von Authentifizierung zur App
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
-## <a name="a-namecache-tokensacache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>Zwischenspeichern von Authentifizierungstoken auf dem Client
+## <a name="cache-tokens"></a>Zwischenspeichern von Authentifizierungstoken auf dem Client
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -63,9 +64,4 @@ Nachdem Sie dieses einfache Tutorial zur Authentifizierung abgeschlossen haben, 
 
 <!-- URLs. -->
 [Erste Schritte mit Mobile Apps]: app-service-mobile-android-get-started.md
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

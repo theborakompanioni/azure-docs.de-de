@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/06/2017
 ms.author: terrylan
 translationtype: Human Translation
-ms.sourcegitcommit: e3d01fadc5597efa7beb5ee690470f428ee12b62
-ms.openlocfilehash: 216146ffaa0f2732b2f2369107e80de0bbc4e466
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -29,7 +29,6 @@ Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muste
 * [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](azure-security-identity-management-best-practices.md)
 * [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
 * [Azure IaaS Security Best Practices (Bewährte Methoden für die Azure IaaS-Sicherheit)] (azure-security-iaas.md)
-* [Best Practices für Softwareupdates in Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
 * [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
 * [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 * [Azure PaaS – Best Practices] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)

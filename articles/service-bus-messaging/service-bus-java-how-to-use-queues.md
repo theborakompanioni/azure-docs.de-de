@@ -14,8 +14,9 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: sethm
 translationtype: Human Translation
-ms.sourcegitcommit: 43197f7402795c37fa7ed43658bc3b8858a41080
-ms.openlocfilehash: 8568978a558b09220eff14a13ccefb3e60c18e87
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 9780fa4461e32a4518c1b6ef019161a01fffecb3
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -190,15 +191,10 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Ausgabe der **
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, finden Sie weitere Informationen unter [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions].
 
-Weitere Informationen finden Sie im [Java Developer Center](/develop/java/).
+Weitere Informationen finden Sie im [Java Developer Center](https://azure.microsoft.com/develop/java/).
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[BrokeredMessage]: https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage
-
-
-
-<!--HONumber=Feb17_HO3-->
-
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 

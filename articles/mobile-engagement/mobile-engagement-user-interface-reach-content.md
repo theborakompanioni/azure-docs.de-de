@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie den eindeutigen Inhalt der verschiedenen Kam
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
-manager: dwrede
+manager: erikre
 editor: 
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
@@ -15,8 +15,9 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 626db03a7b858d060b01332a67f0b491066a6625
+ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
+ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -104,7 +105,7 @@ Jedes Vorkommen des Musters {deviceid} wird automatisch durch die Kennung des Ge
   * Beispiel: MeineOrdnerDaten.txt
 
 ### <a name="build-a-tracking-url"></a>Erstellen einer Nachverfolgungs-URL:
-* Im Abschnitt "Einstellungen" der Dokumentation zur Benutzeroberfläche finden Sie Anweisungen zum Erstellen einer Nachverfolgungs-URL, mit deren Hilfe Benutzer eine Ihrer anderen Anwendungen herunterladen können.
+* Im Abschnitt "Einstellungen" der <UI Documentation> Dokumentation zur Benutzeroberfläche finden Sie Anweisungen zum Erstellen einer Nachverfolgungs-URL, mit deren Hilfe Benutzer eine Ihrer anderen Anwendungen herunterladen können.
 
 ### <a name="define-the-texts-of-your-announcement"></a>Festlegen der Texte Ihrer Ankündigung
 Füllen Sie den Titel, Inhalt und die Schaltflächentexte Ihrer Ankündigung aus. Sie können eine Zielgruppe einer künftigen Kampagne basierend auf dem Feedback zur Reichweite dazu adressieren, wie Benutzer auf diese Kampagne geantwortet haben. Die Zielgruppenadressierung kann basieren auf dem Feedback, dass diese Kampagne einfach nur per Push übertragen, beantwortet, umgesetzt oder beendet wurde.
@@ -237,10 +238,5 @@ Ein Kachelpushvorgang ist die MPNS-Version (Microsoft Push Notification Service,
 [Link 27]: mobile-engagement-user-interface-reach-campaign.md
 [Link 28]: mobile-engagement-user-interface-reach-criterion.md
 [Link 29]: mobile-engagement-user-interface-reach-content.md
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
