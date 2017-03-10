@@ -17,6 +17,7 @@ ms.author: mandia
 translationtype: Human Translation
 ms.sourcegitcommit: 71f9dd111ebdbe885f33d162b2ea320dfaa167bb
 ms.openlocfilehash: 589b95fdd05478305fa8ef629fc6758bdd716da6
+ms.lasthandoff: 11/17/2016
 
 
 ---
@@ -50,7 +51,7 @@ Eine Sicherungskopie kann jederzeit erstellt werden und ist komplett benutzerges
 
 [Planen einer Sicherung](#backupschedule)
 
-#### <a name="a-namebackupnowaon-demand-backup"></a><a name="backupnow"></a>Bedarfsgesteuerte Sicherung
+#### <a name="backupnow"></a>Bedarfsgesteuerte Sicherung
 1. Wählen Sie im klassischen Azure-Portal zuerst **BizTalk Services**und dann den BizTalk Service aus, den Sie sichern möchten.
 2. Wählen Sie auf der Registerkarte **Dashboard** unten auf der Seite **Sichern**.
 3. Geben Sie einen Namen für die Sicherung ein. Beispiel: *myBizTalkService*BU*Date*.
@@ -58,7 +59,7 @@ Eine Sicherungskopie kann jederzeit erstellt werden und ist komplett benutzerges
 
 Sobald die Sicherung abgeschlossen ist, wird im Speicherkonto ein Container mit dem von Ihnen eingegebenen Sicherungsnamen erstellt. Dieser Container enthält die Sicherungskonfiguration Ihres BizTalk Service.
 
-#### <a name="a-namebackupscheduleaschedule-a-backup"></a><a name="backupschedule"></a>Planen einer Sicherung
+#### <a name="backupschedule"></a>Planen einer Sicherung
 1. Klicken Sie im klassischen Azure-Portal auf **BizTalk Services**, wählen Sie den Namen des BizTalk Service aus, für den Sie die Sicherung planen möchten, und klicken Sie anschließend auf die Registerkarte **Konfigurieren**.
 2. Stellen Sie den **Sicherungsstatus** auf **Automatisch** ein. 
 3. Wählen Sie das **Speicherkonto** zum Speichern der Sicherung aus, geben Sie unter **Häufigkeit** an, wie oft Sicherungen erstellt werden sollen, und unter **Aufbewahrung in Tagen** deren Aufbewahrungszeit:
@@ -79,7 +80,7 @@ Wenn auf dem BizTalk Service-Dashboard der Status **Fehler** angezeigt wird:
 
 Über den Link werden die Vorgangsprotokolle der Verwaltungsdienste geöffnet, die Sie bei der Behebung von Problemen unterstützen. Siehe [BizTalk Services: Fehlerbehebung mit Vorgangsprotokollen](http://go.microsoft.com/fwlink/p/?LinkId=391211).
 
-## <a name="restore"></a>Wiederherstellen
+## <a name="restore"></a>Restore
 Sie können eine Sicherung über das klassische Azure-Portal oder über die [REST-API zum Wiederherstellen von BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=325582)wiederherstellen. Dieser Abschnitt enthält die Schritte zur Wiederherstellung über das klassische Portal.
 
 #### <a name="before-restoring-a-backup"></a>Vor dem Wiederherstellen einer Sicherung
@@ -109,7 +110,7 @@ Sie können eine Sicherung über das klassische Azure-Portal oder über die [RES
 
 Wenn die Wiederherstellung erfolgreich abgeschlossen wurde, wird auf der Seite "BizTalk Services" im klassischen Azure-Portal ein neuer BizTalk Service im angehaltenen Status angezeigt.
 
-### <a name="a-namepostrestoreaafter-restoring-a-backup"></a><a name="postrestore"></a>Nach dem Wiederherstellen einer Sicherungskopie
+### <a name="postrestore"></a>Nach dem Wiederherstellen einer Sicherungskopie
 BizTalk Services werden immer im Status **Angehalten** wiederhergestellt. In diesem Status können Sie vor Inbetriebnahme der neuen Umgebung beliebige Konfigurationsänderungen vornehmen. Beispiele:
 
 * Wenn Sie BizTalk Service-Anwendungen mithilfe des Azure BizTalk Services SDK erstellt haben, müssen Sie eventuell die ACS-Anmeldeinformationen (Access Control Service, Zugriffssteuerungsdienst) in diesen Anwendungen aktualisieren, damit diese in der wiederhergestellten Umgebung funktionieren.
@@ -206,13 +207,8 @@ Um Azure BizTalk Services im klassischen Azure-Portal zu erstellen, lesen Sie [K
 * [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
-[Wiederherstellen]: ./media/biztalk-backup-restore/restore-ui.png
+[Restore]: ./media/biztalk-backup-restore/restore-ui.png
 [AutomaticBU]: ./media/biztalk-backup-restore/AutomaticBU.png
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
