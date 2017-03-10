@@ -1,10 +1,10 @@
 ---
-title: "Optimieren der Umgebung mit der System Center Operations Manager-Bewertungslösung in Log Analytics | Microsoft-Dokumentation"
+title: Optimieren Ihrer System Center Operations Manager-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
 description: "Sie können die System Center Operations Manager-Bewertungslösung verwenden, um die Risiken und die Integrität Ihrer Serverumgebungen in regelmäßigen Abständen zu bewerten."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2016
+ms.date: 02/27/2017
 ms.author: banders
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 45ba55083ecca1995e343dc1da1497df43f70e10
-ms.openlocfilehash: 90fb374e8c1712b5fc1e94979999da6a8c400f68
+ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
+ms.openlocfilehash: f812ff8fb2b32f89e24d640e0eae8f2da9858a18
+ms.lasthandoff: 02/28/2017
 
 
 ---
 
-# <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution-in-log-analytics"></a>Optimieren der Umgebung mit der System Center Operations Manager-Bewertungslösung (Vorschau) in Log Analytics
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>Optimieren Ihrer Umgebung mit der System Center Operations Manager-Bewertungslösung (Vorschau)
 
-Sie können die System Center Operations Manager-Bewertungslösung verwenden, um die Risiken und die Integrität Ihrer System Center Operations Manager-Serverumgebungen in regelmäßigen Abständen zu bewerten. Dieser Artikel unterstützt Sie beim Installieren, Konfigurieren und Verwenden der Lösung, sodass Sie bei potenziellen Problemen korrigierende Maßnahmen ergreifen können. 
+Sie können die System Center Operations Manager-Bewertungslösung verwenden, um die Risiken und die Integrität Ihrer System Center Operations Manager-Serverumgebungen in regelmäßigen Abständen zu bewerten. Dieser Artikel unterstützt Sie beim Installieren, Konfigurieren und Verwenden der Lösung, sodass Sie bei potenziellen Problemen korrigierende Maßnahmen ergreifen können.
 
 Die Lösung bietet eine priorisierte Liste von Empfehlungen, die spezifisch für Ihre bereitgestellte Serverinfrastruktur gelten. Die Empfehlungen sind in vier Schwerpunktbereiche eingeteilt, mit deren Hilfe Sie die Risiken schnell einschätzen und korrigierende Maßnahmen ergreifen können.
 
@@ -43,12 +45,17 @@ Die Lösung kann mit Microsoft System Operations Manager 2012 R2 und 2012 SP1 ve
 
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-- Ein Operations Manager-Verwaltungsserver aus einer Verwaltungsgruppe muss für die Verbindung mit OMS konfiguriert werden. Informationen zum Verbinden des Operations Manager-Verwaltungsservers mit OMS finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md#connecting-operations-manager-to-oms).
-    - Wenn Sie mit der OMS-verwalteten Computergruppe mehrere Verwaltungsserver in einer Verwaltungsgruppe überwachen, stellen Sie sicher, dass die Bewertung für die Ausführung auf einem Verwaltungsserver konfiguriert ist. Weitere Informationen finden Sie unter [Konfigurieren der Bewertungsregel](#configure-the-assessment-rule).
-- Bevor Sie eine Assessment-Lösung in OMS verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md).
-- Wenn Sie den Operations Manager-Agent mit der System Center Operations Manager-Bewertung einsetzen möchten, müssen Sie ein ausführendes Operations Manager-Konto verwenden. Weitere Informationen finden Sie unter [Ausführende Operations Manager-Konten für OMS](#operations-manager-run-as-accounts-for-oms).
-    >[!NOTE]
-    Nachdem Sie die Lösung hinzugefügt haben, wird die Datei „AdvisorAssessment.exe“ dem SCOM-Server hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an den OMS-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
+ - Bevor Sie eine Assessment-Lösung in OMS verwenden können, müssen Sie die Lösung installieren. Weitere Informationen zum Installieren von Lösungen finden Sie unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md).
+
+ - Nach dem Hinzufügen der Lösung zum Arbeitsbereich zeigt die Kachel der System Center Operations Manager-Bewertung auf dem Dashboard die Nachricht an, dass zusätzliche Konfigurationsschritte erforderlich sind. Klicken Sie auf die Kachel, und führen Sie die auf der Seite erwähnten Konfigurationsschritte aus.
+
+ ![Dashboardkachel von System Center Operations Manager](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
+
+ Die Konfiguration von System Center Operations Manager kann durch das Skript erfolgen, indem die auf der Konfigurationsseite der Lösung in OMS aufgeführten Schritte ausgeführt werden.
+
+ Um die Bewertung stattdessen über die SCOM-Konsole zu konfigurieren, führen Sie die unten aufgeführten Schritte in der gleichen Reihenfolge aus.
+1. [Festlegen des ausführenden Kontos für System Center Operations Manager-Bewertung](#operations-manager-run-as-accounts-for-oms)  
+2. [Konfigurieren der System Center Operations Manager-Bewertungsregel](#configure-the-assessment-rule)
 
 # <a name="system-center-operations-manager-assessment-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Bewertung
 
@@ -58,7 +65,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden für die System Center Ope
 
 | Plattform | Direkt-Agent | SCOM-Agent | Azure Storage | SCOM erforderlich? | Daten von SCOM-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |  ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![Ja](./media/log-analytics-scom-assessment/oms-bullet-green.png)  | ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![Ja](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | sieben Tage |
+| Windows |  ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![Ja](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![Nein](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | sieben Tage |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>Ausführende Operations Manager-Konten für OMS
 
@@ -73,7 +80,11 @@ Verwenden Sie die folgenden Informationen, um das ausführende Operations Manage
 3. Erstellen Sie das ausführende Konto, indem Sie über den Assistenten ein Windows-Konto erstellen. Das zu verwendende Konto muss die folgenden Voraussetzungen erfüllen:
 
     >[!NOTE]
-    Das ausführende Konto muss die folgenden Anforderungen erfüllen: - Es muss Domänenkontomitglied der lokalen Administratorgruppe auf allen Servern in der Umgebung sein (alle Operations Manager-Rollen – Management Server, OpsMgr-Datenbank, Data Warehouse, Berichterstellung, Webkonsole, Gateway). - Ihm muss die Operation Manager-Administratorrolle für die Verwaltungsgruppe zugewiesen sein, die bewertet wird. - Ihm muss die SysAdmin-Rolle auf allen Computern mit SQL Server oder in allen SQL Server-Instanzen zugewiesen sein, die von Operations Manager verwendet werden.
+    Das ausführende Konto muss folgende Anforderungen erfüllen:
+    - Ein Domänenkontoelement der lokalen Administratorgruppe auf allen Servern in der Umgebung (alle Operations Manager-Rollen – Verwaltungsserver, OpsMgr-Datenbank, Data Warehouse, Berichterstellung, Webkonsole, Gateway)
+    - Operations Manager-Administratorrolle für die Verwaltungsgruppe, die bewertet wird
+    - Führen Sie das [Skript](#sql-script-to-grant-granular-permissions-to-the-run-as-account) aus, um dem Konto differenzierte Berechtigungen für die von Operations Manager verwendete SQL-Instanz zu gewähren.
+      Hinweis: Wenn dieses Konto bereits über Systemadministratorrechte verfügt, überspringen Sie die Ausführung des Skripts.
 
 4. Wählen Sie unter **Verteilungssicherheit** die Option **More secure** (Höhere Sicherheit).
 5. Geben Sie den Verwaltungsserver an, auf dem das Konto verteilt wird.
@@ -82,7 +93,7 @@ Verwenden Sie die folgenden Informationen, um das ausführende Operations Manage
 5. Der Profilname sollte wie folgt lauten: *Microsoft System Center Advisor SCOM Assessment Run As Profile* (Ausführendes Profil für Microsoft System Center Advisor-SCOM-Bewertung).
 6. Klicken Sie mit der rechten Maustaste, aktualisieren Sie die Eigenschaften, und fügen Sie das in Schritt 3 erstellte ausführende Konto hinzu.
 
-### <a name="sql-script-granting-permissions-to-the-run-as-account"></a>SQL-Skript, das dem ausführenden Konto Berechtigungen erteilt
+### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>SQL-Skript, das dem ausführenden Konto differenzierte Berechtigungen erteilt
 
 Führen Sie das folgende SQL-Skript aus, um dem ausführenden Konto in der von Operations Manager verwendeten SQL-Instanz die erforderlichen Berechtigungen zu gewähren.
 
@@ -144,8 +155,8 @@ Die Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung de
 1. Suchen Sie in der Operations Manager-Konsole im Arbeitsbereich **Erstellung** im Bereich **Regeln** die Regel *Microsoft System Center Advisor SCOM Assessment Run Assessment Rule* (Microsoft System Center Advisor-SCOM-Bewertungsregel für die Ausführung der Bewertung).
 2. Wählen Sie in den Suchergebnissen die Regel aus, die den Text *Typ: Verwaltungsserver* enthält.
 3. Klicken Sie mit der rechten Maustaste auf die Regel, und klicken Sie dann auf **Außerkraftsetzungen** > **Für ein bestimmtes Objekt der Klasse: Verwaltungsserver**.
-4.  Wählen Sie in der Liste der verfügbaren Verwaltungsserver den Verwaltungsserver aus, auf dem die Regel ausgeführt werden soll.
-5.  Stellen Sie sicher, dass Sie für den Parameterwert **Aktiviert** den Außerkraftsetzungswert in **True** ändern.  
+4.    Wählen Sie in der Liste der verfügbaren Verwaltungsserver den Verwaltungsserver aus, auf dem die Regel ausgeführt werden soll.
+5.    Stellen Sie sicher, dass Sie für den Parameterwert **Aktiviert** den Außerkraftsetzungswert in **True** ändern.  
     ![Außerkraftsetzungsparameter](./media/log-analytics-scom-assessment/rule.png)
 
 Konfigurieren Sie mit dem folgenden Verfahren im gleichen Fenster die Häufigkeit für die Ausführung.
@@ -232,7 +243,7 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Überprüfen, ob Empfehlungen ignoriert werden
 
-1. Nach Ausführung der nächsten geplanten Bewertung (standardmäßig alle 7 Tage) werden die angegebenen Empfehlungen als „Ignoriert“ gekennzeichnet und nicht auf dem Bewertungsdashboard angezeigt.
+1. Nach Ausführung der nächsten geplanten Bewertung (standardmäßig alle&7; Tage) werden die angegebenen Empfehlungen als „Ignoriert“ gekennzeichnet und nicht auf dem Bewertungsdashboard angezeigt.
 2. Sie können folgende Protokollsuchabfragen verwenden, um alle ignorierten Empfehlungen aufzulisten.
 
     ```
@@ -277,9 +288,4 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Durchsuchen von Protokollen](log-analytics-log-searches.md), um detaillierte System Center Operations Manager-Bewertungsdaten und -empfehlungen anzuzeigen.
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

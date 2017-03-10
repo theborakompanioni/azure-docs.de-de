@@ -14,9 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/31/2016
 ms.author: mattrow
+redirect_url: /azure/service-fabric/service-fabric-diagnostics-overview
 translationtype: Human Translation
 ms.sourcegitcommit: c9730b553e59d12b8720bbf3a06cc956912e27de
 ms.openlocfilehash: c920a206d6f3288f6cba0d2658d556749fc4d574
+ms.lasthandoff: 01/12/2017
 
 
 ---
@@ -51,10 +53,5 @@ Weitere Informationen zu vorhandenen Diagnosefunktionen von Service Fabric:
 
 * [Diagnose für Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 * [Diagnose für Reliable Services](service-fabric-reliable-services-diagnostics.md)
-
-
-
-
-<!--HONumber=Jan17_HO2-->
 
 

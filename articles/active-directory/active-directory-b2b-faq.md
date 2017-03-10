@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 02/16/2017
+ms.date: 03/07/2017
 ms.author: sasubram
 translationtype: Human Translation
-ms.sourcegitcommit: 0c07c842ba8c6214d6746b0361af7b416069a6f5
-ms.openlocfilehash: 3e92da61128a18c42726f4c3c85cd6e5024a697f
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 0abe257f3c1c2f35c92fa5f382e9778217f01159
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -41,9 +41,6 @@ Mithilfe der B2B-Einladungs-APIs können Sie nahezu jedes Element des Einladungs
 
 ### <a name="can-the-invited-external-user-leave-the-organization-to-which-he-was-invited"></a>Kann der eingeladene externe Benutzer die Organisation verlassen, zu der er eingeladen wurde?
 Diese Funktionalität ist in dieser aktualisierten öffentlichen Vorschau derzeit nicht verfügbar.
-
-### <a name="can-i-use-my-microsoft-account-johncontosomicrosoftacctcom-to-sign-in-to-resources"></a>Kann ich mein Microsoft-Konto (John@contosomicrosoftacct.com) verwenden, um mich an Ressourcen anzumelden?
-In dieser aktualisierten öffentlichen Vorschau ist es nicht möglich, sich mit einem Microsoft-Konto anzumelden. Wenn Sie über ein nicht standardmäßiges Microsoft-Kontosuffix verfügen (z.B. für Unternehmens-E-Mails wie @contoso.com),, wird für Sie ein Azure Active Directory-Mandant erstellt.
 
 ### <a name="now-that-multi-factor-authentication-mfa-is-available-for-guest-users-can-they-also-reset-their-mfa-method"></a>Die Multi-Factor Authentication (MFA) ist jetzt für Gastbenutzer verfügbar – können diese Benutzer ihre MFA-Methode zurücksetzen?
 Ja, dies funktioniert auf die gleiche Weise wie für normale Benutzer.

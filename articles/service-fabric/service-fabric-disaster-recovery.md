@@ -12,11 +12,12 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/29/2016
+ms.date: 03/01/2017
 ms.author: seanmck
 translationtype: Human Translation
-ms.sourcegitcommit: 6dc2a6dbf4b26363f1ad714baec8d48045aa97b6
-ms.openlocfilehash: 81d818afb1a15db646a20b4001493d9df7e24d27
+ms.sourcegitcommit: 6d8f489ac053db4898741671df73b6abfabeb0dd
+ms.openlocfilehash: 73f5413fb7dd0ca179bf5012478a453963e996a1
+ms.lasthandoff: 12/14/2016
 
 
 ---
@@ -41,7 +42,7 @@ Sie können das Layout Ihres Clusters in Fehlerdomänen mithilfe der von [Servic
 > 
 
 ### <a name="geographic-distribution"></a>Geografische Verteilung
-Es gibt derzeit [weltweit 30 Azure-Regionen][azure-regions]. Einige weitere sind bereits angekündigt. Eine einzelne Region kann ein oder mehrere physische Rechenzentren enthalten, was u. a. von der Nachfrage und der Verfügbarkeit geeigneter Standorte abhängt. Beachten Sie jedoch, dass auch in Regionen mit mehreren physische Rechenzentren es keine Garantie gibt, dass die VMs in Ihrem Cluster gleichmäßig auf diese physischen Standorte verteilt sind. Derzeit werden sogar alle VMs für einen bestimmten Cluster an einem einzelnen physischen Standort bereitgestellt.
+Es gibt derzeit [weltweit&30; Azure-Regionen][azure-regions]. Einige weitere sind bereits angekündigt. Eine einzelne Region kann ein oder mehrere physische Rechenzentren enthalten, was u. a. von der Nachfrage und der Verfügbarkeit geeigneter Standorte abhängt. Beachten Sie jedoch, dass auch in Regionen mit mehreren physische Rechenzentren es keine Garantie gibt, dass die VMs in Ihrem Cluster gleichmäßig auf diese physischen Standorte verteilt sind. Derzeit werden sogar alle VMs für einen bestimmten Cluster an einem einzelnen physischen Standort bereitgestellt.
 
 ## <a name="dealing-with-failures"></a>Umgang mit Ausfällen
 Es gibt verschiedene Arten von Ausfällen, die sich auf Ihren Cluster auswirken können. Für jeden gibt es eine eigene Abhilfemöglichkeit. Wir sehen uns diese in der Reihenfolge der Wahrscheinlichkeit ihres Auftretens an.
@@ -67,7 +68,7 @@ Systemdienste können auch einen Quorumverlust erleiden, wobei die Auswirkung sp
 #### <a name="minimizing-the-risk-of-quorum-loss"></a>Minimieren des Risikos eines Quorumverlusts
 Sie können das Risiko eines Quorumverlusts minimieren, indem Sie die Zielgröße des Replikatsatzes für Ihren Dienst erhöhen. Hilfreich ist es, sich die Anzahl der benötigten Replikate als Anzahl nicht verfügbarer Knoten vorzustellen, die Sie auf einmal tolerieren können, während diese für Schreibvorgänge verfügbar bleiben. Dabei ist zu bedenken, dass Knoten zusätzlich zu Hardwareausfällen durch Anwendungs- oder Clusterupgrades vorübergehend nicht verfügbar sein können.
 
-Sehen Sie sich die folgenden Beispiele unter der Annahme an, dass Sie Ihre Dienste mit dem „MinReplicaSetSize“-Wert 3 konfiguriert haben, dem niedrigsten für Produktionsdienste empfohlenen Wert. Beim „TargetReplicaSetSize“-Wert 3 (ein primäres und zwei sekundäre Replikate) führt ein Hardwarefehler während eines Upgrades (zwei Replikate ausgefallen) zum Quorumverlust, woraufhin Ihr Dienst schreibgeschützt wird. Wenn Sie alternativ über 5 Replikate verfügen, können Sie zwei Ausfälle während des Upgrades überstehen (drei Replikate ausgefallen), da die verbleibenden 2 Replikate weiter mit dem Mindestreplikatsatz ein Quorum bilden können.
+Sehen Sie sich die folgenden Beispiele unter der Annahme an, dass Sie Ihre Dienste mit dem „MinReplicaSetSize“-Wert&3; konfiguriert haben, dem niedrigsten für Produktionsdienste empfohlenen Wert. Beim „TargetReplicaSetSize“-Wert&3; (ein primäres und zwei sekundäre Replikate) führt ein Hardwarefehler während eines Upgrades (zwei Replikate ausgefallen) zum Quorumverlust, woraufhin Ihr Dienst schreibgeschützt wird. Wenn Sie alternativ über&5; Replikate verfügen, können Sie zwei Ausfälle während des Upgrades überstehen (drei Replikate ausgefallen), da die verbleibenden&2; Replikate weiter mit dem Mindestreplikatsatz ein Quorum bilden können.
 
 ### <a name="data-center-outages-or-destruction"></a>Rechenzentrumsausfälle oder -zerstörung
 In seltenen Fällen können physische Rechenzentren aufgrund eines Ausfalls des Stroms oder der Netzwerkverbindung vorübergehend nicht verfügbar sein. In diesen Fällen sind auch Ihre Service Fabric-Cluster und -Anwendungen nicht verfügbar, aber Ihre Daten bleiben erhalten. Für in Azure ausgeführte Cluster können Sie aktuelle Informationen zu Ausfällen auf der [Azure-Statusseite][azure-status-dashboard] nachlesen.
@@ -94,6 +95,7 @@ Als Ursache von Datenverlust sind Codefehler in Diensten, Benutzerfehler und Sic
   * [Checkliste für die Verfügbarkeit](../best-practices-availability-checklist.md)
   * [Ausführen von Notfallwiederherstellungsverfahren](../sql-database/sql-database-disaster-recovery-drills.md)
   * [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen][dr-ha-guide]
+* Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 <!-- External links -->
 
@@ -106,9 +108,4 @@ Als Ursache von Datenverlust sind Codefehler in Diensten, Benutzerfehler und Sic
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

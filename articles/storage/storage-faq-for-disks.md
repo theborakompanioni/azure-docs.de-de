@@ -3,8 +3,8 @@ title: "Häufig gestellte Fragen (FAQ) zu Azure-IaaS-VM-Datenträgern | Microsof
 description: "Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern und Premium-Datenträgern (verwaltet und nicht verwaltet)"
 services: storage
 documentationcenter: 
-author: ramankumarlive
-manager: aungoo-msft
+author: robinsh
+manager: timlt
 editor: tysonn
 ms.assetid: e2a20625-6224-4187-8401-abadc8f1de91
 ms.service: storage
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
-ms.author: ramankum
+ms.date: 02/23/2017
+ms.author: robinsh
 translationtype: Human Translation
-ms.sourcegitcommit: 0746c954e669bd739b8ecfcddaf287cb5172877f
-ms.openlocfilehash: 95b627738726f3c108fff38bfeda413303b2c718
+ms.sourcegitcommit: 61610078ad5cefd513fdb758aec45d7489704817
+ms.openlocfilehash: b4cb40d81613c16558be1e0e2c10dbfa0265a6b7
+ms.lasthandoff: 02/24/2017
 
 
 ---
@@ -120,6 +121,48 @@ Ja.
 
 Azure Managed Disks unterstützt momentan nur lokal redundanten Speicher (LRS).
 
+## <a name="managed-disks-and-port-8443"></a>Managed Disks und Port 8443
+
+**Warum müssen Kunden die Sperre für ausgehenden Datenverkehr an Port 8443 für virtuelle Computer aufheben, die Azure Managed Disks verwenden?**
+
+Der Azure-VM-Agent verwendet Port 8443, um den Status jeder VM-Erweiterung an die Azure-Plattform zu melden. Wenn die Sperre dieses Ports nicht aufgehoben ist, kann der VM-Agent diese Status nicht melden. Weitere Informationen zum VM-Agent finden Sie unter [Übersicht über den Agent für virtuelle Azure-Computer](../virtual-machines/virtual-machines-windows-agent-user-guide.md).
+
+**Was passiert, wenn ein virtueller Computer mit Erweiterungen bereitgestellt wird und die Sperre für den Port nicht aufgehoben wurde?**
+
+Die Bereitstellung führt zu einem Fehler. 
+
+**Was passiert, wenn ein virtueller Computer ohne Erweiterungen bereitgestellt und die Sperre für den Port nicht aufgehoben wurde?**
+
+Dies wirkt sich nicht auf die Bereitstellung aus. 
+
+**Was passiert, wenn eine Erweiterung auf einem virtuellen Computer installiert wird, der bereits bereitgestellt ist und ausgeführt wird, und die Sperre für Port 8443 auf diesem virtuellen Computer nicht aufgehoben wurde?**
+
+Die Erweiterung wird nicht erfolgreich bereitgestellt. Der Status der Erweiterung ist unbekannt. 
+
+**Was passiert, wenn eine ARM-Vorlage zum Bereitstellen mehrerer virtueller Computer verwendet wird, auf denen Port 8443 gesperrt ist – einer der virtuellen Computer verfügt über Erweiterungen und ein zweiter ist vom ersten abhängig?**
+
+Der erste virtuelle Computer wird als fehlerhafte Bereitstellung angezeigt, da die Erweiterungen nicht erfolgreich bereitgestellt wurden. Der zweite virtuelle Computer wird nicht bereitgestellt. 
+
+**Gilt die Anforderung, dass die Sperre des Ports aufgehoben sein muss, für alle VM-Erweiterungen?**
+
+Ja.
+
+**Muss die Sperre für eingehende und ausgehende Verbindungen an Port 8443 aufgehoben werden?**
+
+Nein. Es muss nur die Sperre für ausgehende Verbindungen an Port 8443 aufgehoben werden. 
+
+**Ist die Aufhebung der Sperre für ausgehende Verbindungen an Port 8443 für die gesamte Lebensdauer des virtuellen Computers erforderlich?**
+
+Ja.
+
+**Wirkt sich die Aufhebung der Sperre für diesen Port auf die Leistung des virtuellen Computers aus?**
+
+Nein.
+
+**Gibt es ein Datum, an dem dieses Problem voraussichtlich behoben sein wird, damit ich die Sperre für Port 8443 nicht mehr aufheben muss?**
+
+Ja, dies ist bis Ende Mai 2017 geplant.
+
 ## <a name="premium-disks--both-managed-and-unmanaged"></a>Premium-Datenträger (verwaltet und nicht verwaltet)
 
 **Kann ich sowohl Premium- als auch Standarddatenträger anfügen, wenn ein virtueller Computer eine Größenserie mit Storage Premium-Unterstützung (beispielsweise DSv2) verwendet?** 
@@ -151,8 +194,3 @@ Bei der lokalen SSD handelt es sich um einen temporären Speicher, der in einem 
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, und wir helfen Ihnen dabei, eine Antwort zu finden. Sie können in den Kommentaren am Ende dieses Artikels oder im [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata) auf MSDN eine Frage stellen und sich mit dem Azure Storage-Team und anderen Communitymitgliedern über den Artikel austauschen.
 
 Featurevorschläge und Ideen können über das [Azure Storage-Feedbackforum](https://feedback.azure.com/forums/217298-storage) eingereicht werden.
-
-
-<!--HONumber=Feb17_HO2-->
-
-

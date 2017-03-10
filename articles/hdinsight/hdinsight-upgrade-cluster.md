@@ -4,8 +4,9 @@ description: Erfahren Sie, wie sie von einem Windows-basierten HDInsight-Cluster
 services: hdinsight
 documentationcenter: 
 author: bhanupr
+manager: asadk
 editor: bhanupr
-ms.assetid: 
+ms.assetid: 60eb573c-e639-4815-9fc6-ea8b106d8dbc
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -16,6 +17,7 @@ ms.author: bhanupr
 translationtype: Human Translation
 ms.sourcegitcommit: 8c59375290e410c34ba25d4e5d8e8f9f8de0cafe
 ms.openlocfilehash: ceb5f5c639633d7118a057927b236b51b54f8fa7
+ms.lasthandoff: 02/04/2017
 
 
 ---
@@ -40,21 +42,16 @@ Der Workflow für ein Upgrade eines HDInsight-Clusters ist wie folgt.
 
 Nachdem Sie überprüft haben, dass alles wie erwartet funktioniert, planen Sie für die Migration eine Ausfallzeit ein. Führen Sie während dieser Ausfallzeit die folgenden Aktionen durch:
 
-1.  Sichern Sie alle Daten, die vorübergehend lokal auf dem Clusterknoten gespeichert sind. zum Beispiel direkt auf einem Hauptknoten gespeicherte Daten.
-2.  Löschen Sie den vorhandenen Cluster.
-3.  Erstellen Sie einen Cluster im gleichen VNET-Subnetz mit der aktuellen (oder einer unterstützten) HDI-Version, die den gleichen Standarddatenspeicher wie der vorherige Cluster verwendet. Dadurch wird dem neuen Cluster ermöglicht, weiterhin mit Ihren vorhandenen Produktionsdaten zu arbeiten.
-4.  Importieren Sie alle vorübergehenden Daten, die Sie gesichert haben.
-5.  Starten Sie Aufträge/Verarbeiten Sie weiterhin mithilfe des neuen Clusters.
+1.    Sichern Sie alle Daten, die vorübergehend lokal auf dem Clusterknoten gespeichert sind. zum Beispiel direkt auf einem Hauptknoten gespeicherte Daten.
+2.    Löschen Sie den vorhandenen Cluster.
+3.    Erstellen Sie einen Cluster im gleichen VNET-Subnetz mit der aktuellen (oder einer unterstützten) HDI-Version, die den gleichen Standarddatenspeicher wie der vorherige Cluster verwendet. Dadurch wird dem neuen Cluster ermöglicht, weiterhin mit Ihren vorhandenen Produktionsdaten zu arbeiten.
+4.    Importieren Sie alle vorübergehenden Daten, die Sie gesichert haben.
+5.    Starten Sie Aufträge/Verarbeiten Sie weiterhin mithilfe des neuen Clusters.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie, wie Sie Linux-basierte HDInsight-Cluster erstellen](hdinsight-hadoop-provision-linux-clusters.md)
 * [Verbinden zu einem Linux-basierten Cluster mithilfe von SSH auf einem Windows-Client](hdinsight-hadoop-linux-use-ssh-windows.md)
 * [Verbinden zu einem Linux-basierten Cluster mithilfe von SSH auf einem Linux-, Unix- oder Mac-Client](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Verwalten eines Linux-basierten Clusters mithilfe von Ambari](hdinsight-hadoop-manage-ambari.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

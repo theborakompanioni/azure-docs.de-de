@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Logik-App-Definitionen | Microsoft-Dokumentation
-description: "Erfahren Sie, wie die JSON-Definition für Logik-Apps geschrieben wird."
+title: "Definieren von Workflows per JSON-Code – Azure Logic Apps | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie Workflowdefinitionen per JSON-Code für Logik-Apps schreiben."
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,22 +12,27 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: dc8c9eac941f133bcb3a9807334075bfba15de46
-ms.openlocfilehash: 08b59b7aaa28339c4168e736105fdbe7295f5255
+ms.sourcegitcommit: e94837bf79e42602e2f72cda747ea629eed45a20
+ms.openlocfilehash: 920940d8ebe23d24216d3e886bd8ae58be12ce34
+ms.lasthandoff: 03/01/2017
 
 
 ---
-# <a name="author-logic-app-definitions"></a>Erstellen von Logik-App-Definitionen
-In diesem Thema wird veranschaulicht, wie Sie [Azure-Logik-App-Definitionen](logic-apps-what-are-logic-apps.md) verwenden. Dabei handelt es sich um eine einfache, deklarative JSON-Sprache. Machen Sie sich zunächst [mit dem Erstellen neuer Logik-Apps](logic-apps-create-a-logic-app.md) vertraut, falls Sie dies noch nicht getan haben. Sie können auch [das umfassende MSDN-Referenzmaterial zur Definitionssprache](http://aka.ms/logicappsdocs) lesen.
+# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code
 
-## <a name="several-steps-that-repeat-over-a-list"></a>Wiederholt ausgeführte Schritte in einer Liste
-Nutzen Sie den [Foreach-Typ](logic-apps-loops-and-scopes.md) , um ein Array für bis zu 10.000 Elemente zu wiederholen und für jedes eine Aktion auszuführen.
+Sie können Workflowdefinitionen für [Azure Logic Apps](logic-apps-what-are-logic-apps.md) erstellen, indem Sie die einfache, deklarative JSON-Sprache verwenden. Falls Sie dies noch nicht getan haben, sollten Sie sich zuerst darüber informieren, wie Sie [Ihre erste Logik-App mit dem Logik-App-Designer erstellen](logic-apps-create-a-logic-app.md). Sehen Sie sich auch die [vollständige Referenz zur Definitionssprache für Workflows](http://aka.ms/logicappsdocs) an.
 
-## <a name="a-failure-handling-step-if-something-goes-wrong"></a>Ein Schritt zur Fehlerbehandlung, falls Fehler auftreten
-Üblicherweise möchten Sie einen *Korrekturschritt* schreiben können – Logik, die **ausschließlich dann ausgeführt wird**, wenn einer oder mehrere Ihrer Aufrufe fehlschlagen. In diesem Beispiel rufen wir Daten von unterschiedlichen Stellen ab, aber wenn der Aufruf fehlschlägt, soll irgendwo eine Nachricht hinterlassen werden, um den Fehler später ermitteln zu können:  
+## <a name="repeat-steps-over-a-list"></a>Wiederholen von Schritten für eine Liste
+
+Verwenden Sie den [foreach-Typ](logic-apps-loops-and-scopes.md), um ein Array zu durchlaufen, das über bis zu 10.000 Elemente verfügt, und für jedes Element eine Aktion durchzuführen.
+
+## <a name="handle-failures-if-something-goes-wrong"></a>Behandeln von Fehlern
+
+Normalerweise ist es ratsam, einen *Korrekturschritt* einzubauen – Logik, die *ausschließlich dann ausgeführt wird*, wenn einer oder mehrere Ihrer Aufrufe fehlschlagen. In diesem Beispiel werden Daten von verschiedenen Orten abgerufen. Falls der Aufruf nicht erfolgreich ist, soll eine Nachricht hinterlegt werden (per POST), damit wir den Fehler später nachverfolgen können:  
 
 ```
 {
@@ -60,12 +65,13 @@ Nutzen Sie den [Foreach-Typ](logic-apps-loops-and-scopes.md) , um ein Array für
 }
 ```
 
-Sie können mit der Eigenschaft `runAfter` festlegen, dass `postToErrorMessageQueue` erst ausgeführt wird, wenn `readData` als **fehlerhaft** gekennzeichnet wird.  Dies könnte auch eine Liste von möglichen Werten sein. `runAfter` könnte `["Succeeded", "Failed"]` lauten.
+Um anzugeben, dass `postToErrorMessageQueue` erst nach dem Eintreten von `Failed` für `readData` ausgeführt wird, verwenden Sie die `runAfter`-Eigenschaft. Beispielsweise können Sie eine Liste mit möglichen Werten angeben, sodass `runAfter` auf `["Succeeded", "Failed"]` festgelegt werden kann.
 
-Nachdem Sie den Fehler nun behoben haben, wird der Lauf nicht länger als **fehlerhaft**gekennzeichnet. Wie Sie hier sehen können, ist dieser Lauf als **Erfolgreich** gekennzeichnet, obwohl ein Schritt fehlgeschlagen ist, da ich den Schritt zur Behebung dieses Fehlers geschrieben habe.
+Da der Fehler in diesem Beispiel jetzt behandelt wird, kennzeichnen wir die Ausführung nicht mehr als `Failed`. Weil wir den Schritt zum Behandeln des Fehlers in diesem Beispiel hinzugefügt haben, gilt für die Ausführung `Succeeded`, auch wenn ein Schritt fehlgeschlagen ist (`Failed`).
 
-## <a name="two-or-more-steps-that-execute-in-parallel"></a>Zwei (oder mehr) Schritte, die parallel ausgeführt werden
-Um mehrere Aktionen parallel auszuführen, muss die Eigenschaft `runAfter` der Laufzeit entsprechen. 
+## <a name="execute-two-or-more-steps-in-parallel"></a>Gleichzeitiges Ausführen von zwei oder mehr Schritten
+
+Um mehrere Aktionen parallel auszuführen, muss die `runAfter`-Eigenschaft zur Laufzeit gleich festgelegt sein. 
 
 ```
 {
@@ -104,14 +110,13 @@ Um mehrere Aktionen parallel auszuführen, muss die Eigenschaft `runAfter` der L
 }
 ```
 
-Wie Sie im obigen Beispiel sehen können, sollen `branch1` und `branch2` nach `readData` ausgeführt werden. Daher werden beide dieser Verzweigungen parallel ausgeführt:
+In diesem Beispiel ist für `branch1` und `branch2` die Ausführung nach `readData` festgelegt. Beide Verzweigungen werden also parallel ausgeführt. Der Zeitstempel für die beiden Verzweigungen ist identisch.
 
 ![Parallel](media/logic-apps-author-definitions/parallel.png)
 
-Wie Sie sehen, ist der Zeitstempel für die beiden Verzweigungen identisch. 
-
 ## <a name="join-two-parallel-branches"></a>Verknüpfen von zwei parallelen Verzweigungen
-Sie können zwei Aktionen, die parallel ausgeführt werden sollen, verknüpfen, indem Sie der Eigenschaft `runAfter` wie oben gezeigt Elemente hinzufügen.
+
+Sie können zwei Aktionen verknüpfen, die parallel ausgeführt werden sollen, indem Sie der `runAfter`-Eigenschaft wie im vorherigen Beispiel Elemente hinzufügen.
 
 ```
 {
@@ -182,8 +187,9 @@ Sie können zwei Aktionen, die parallel ausgeführt werden sollen, verknüpfen, 
 
 ![Parallel](media/logic-apps-author-definitions/join.png)
 
-## <a name="mapping-items-in-a-list-to-some-different-configuration"></a>Zuordnen von Elementen in einer Liste zu einer anderen Konfiguration
-Nehmen wir als Nächstes an, dass abhängig vom Wert einer Eigenschaft völlig unterschiedliche Inhalte abgerufen werden sollen. Wir können eine Zuordnung von Werten zu Zielen als Parameter erstellen:  
+## <a name="map-list-items-to-a-different-configuration"></a>Zuordnen von Listenelementen zu einer anderen Konfiguration
+
+Als Nächstes nehmen wir an, dass wir basierend auf dem Wert einer Eigenschaft unterschiedlichen Inhalt abrufen möchten. Wir können eine Zuordnung von Werten zu Zielen als Parameter erstellen:  
 
 ```
 {
@@ -234,14 +240,19 @@ Nehmen wir als Nächstes an, dass abhängig vom Wert einer Eigenschaft völlig u
 }
 ```
 
-In diesem Fall rufen wir zunächst eine Liste von Artikeln ab. Im zweiten Schritt wird dann in einer Zuordnung abgefragt, von welcher URL der Inhalt abgerufen werden soll, und zwar basierend auf der Kategorie, die als Parameter definiert wurde. 
+In diesem Fall rufen wir zuerst eine Liste mit Artikeln ab. Basierend auf der Kategorie, die als Parameter definiert wurde, wird im zweiten Schritt eine Zuordnung verwendet, um die URL zum Abrufen des Inhalts zu ermitteln.
 
-Hierbei sollten Sie auf zwei Dinge achten: Erstens dient die [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) -Funktion dazu, zu überprüfen, ob die Kategorie mit einer der bekannten definierten Kategorien übereinstimmt. Zweitens können wir, sobald wir die Kategorie haben, das Element mithilfe eckiger Klammern aus der Zuordnung abrufen: `parameters[...]`. 
+Beachten Sie hierbei Folgendes: 
 
-## <a name="working-with-strings"></a>Arbeiten mit Zeichenfolgen
-Es gibt verschiedene Funktionen, die zum Ändern von Zeichenfolgen verwendet werden können. Sehen wir uns ein Beispiel mit einer Zeichenfolge an, die an ein System übergeben werden soll. In diesem Fall sind wir aber nicht sicher, ob die Zeichencodierung ordnungsgemäß verarbeitet wird. Eine Möglichkeit besteht darin, diese Zeichenfolge mit "base64" zu codieren. Allerdings werden zur Vermeidung von Escapezeichen in einer URL einige Zeichen ersetzt. 
+*    Mit der Funktion [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) wird überprüft, ob die Kategorie einer bekannten definierten Kategorie entspricht.
 
-Wir wollen außerdem eine Teilzeichenfolge des Namens des Auftrag, da die ersten fünf Zeichen nicht verwendet werden.
+*    Nach dem Erhalt der Kategorie können wir das Element mithilfe von eckigen Klammern aus der Zuordnung abrufen: `parameters[...]`.
+
+## <a name="process-strings"></a>Verarbeiten von Zeichenfolgen
+
+Sie können verschiedene Funktionen verwenden, um Zeichenfolgen zu bearbeiten. Angenommen, wir möchten eine Zeichenfolge an ein System übergeben, sind aber nicht sicher, ob die Zeichencodierung richtig durchgeführt wird. Eine Möglichkeit besteht darin, diese Zeichenfolge mit "base64" zu codieren. Allerdings werden zur Vermeidung von Escapezeichen in einer URL einige Zeichen ersetzt. 
+
+Außerdem möchten wir eine Teilzeichenfolge des Auftragsnamens verwenden, da die ersten fünf Zeichen nicht verwendet werden.
 
 ```
 {
@@ -275,17 +286,23 @@ Wir wollen außerdem eine Teilzeichenfolge des Namens des Auftrag, da die ersten
 }
 ```
 
-Gehen Sie von innen nach außen vor:
+Wir gehen von innen nach außen vor:
 
-1. Rufen Sie die [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) des Namens des Auftraggebers ab. Damit wird die Gesamtanzahl der Zeichen zurückgegeben.
-2. Ziehen Sie fünf ab (da wir eine kürzere Zeichenfolge wollen).
-3. Verwenden Sie die [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring) . Beginnen Sie bei Index `5` , und fahren Sie mit dem Rest der Zeichenfolge fort.
-4. Wandeln Sie diese Teilzeichenfolge in eine [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) -Zeichenfolge um.
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) Sie alle der `+`-Zeichen durch `-`.
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) Sie alle der `/`-Zeichen durch `_`.
+1. Rufen Sie [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) für den Namen des Auftraggebers ab, damit wir die Gesamtzahl von Zeichen erhalten.
 
-## <a name="working-with-date-times"></a>Arbeiten mit Zeitangaben
-Zeitangaben sind insbesondere dann nützlich, wenn Sie versuchen, Daten aus einer Datenquelle abzurufen, die **Trigger**grundsätzlich nicht unterstützt.  Sie können Zeitangaben auch verwenden, um zu ermitteln, wie lange die einzelnen Schritte dauern. 
+2. Ziehen Sie fünf ab, da wir eine kürzere Zeichenfolge verwenden möchten.
+
+3. Verwenden Sie das [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring)-Element. Beginnen Sie bei Index `5` , und fahren Sie mit dem Rest der Zeichenfolge fort.
+
+4. Wandeln Sie diese Teilzeichenfolge in eine [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64)-Zeichenfolge um.
+
+5. Ersetzen Sie mit [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) alle `+`-Zeichen durch `-`-Zeichen.
+
+6. Ersetzen Sie mit [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) alle `/`-Zeichen durch `_`-Zeichen.
+
+## <a name="work-with-date-times"></a>Verwenden von Zeitangaben
+
+Zeitangaben sind insbesondere dann nützlich, wenn Sie versuchen, Daten aus einer Datenquelle abzurufen, die *Trigger* standardmäßig nicht unterstützt. Sie können Zeitangaben auch verwenden, um zu ermitteln, wie lange die einzelnen Schritte dauern.
 
 ```
 {
@@ -337,16 +354,20 @@ Zeitangaben sind insbesondere dann nützlich, wenn Sie versuchen, Daten aus eine
 }
 ```
 
-In diesem Fall extrahieren wir die `startTime` des vorherigen Schritts. Dann rufen wir die aktuelle Uhrzeit ab und ziehen eine Sekunde ab: [`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) (Sie können auch andere Zeiteinheiten wie `minutes` oder `hours` verwenden). Abschließend können wir diese beiden Werte vergleichen. Wenn der erste kleiner ist als der zweite, bedeutet dies, dass mehr als eine Sekunde verstrichen ist, seit der Auftrag erteilt wurde. 
+In diesem Beispiel extrahieren wir den `startTime`-Wert aus dem vorherigen Schritt. Anschließend rufen wir die aktuelle Uhrzeit ab und subtrahieren eine Sekunde:
 
-Beachten Sie außerdem, dass Zeichenfolgenformatierer zum Formatieren von Datumsangaben verwendet werden können: In der Abfragezeichenfolge verwende ich [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) , um das RFC1123-Format zu erhalten. Alle Datumsformate [sind im MSDN dokumentiert](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). 
+[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
 
-## <a name="using-deployment-time-parameters-for-different-environments"></a>Verwenden von Parametern zur Bereitstellungszeit für unterschiedliche Umgebungen
-Üblicherweise verfügen Sie über einen Bereitstellungslebenszyklus mit einer Entwicklungsumgebung, einer Stagingumgebung und einer Produktionsumgebung. In all diesen Umgebungen können Sie dieselbe Definition, aber beispielsweise unterschiedliche Datenbanken verwenden. Ebenso sollten Sie dieselbe Definition übergreifend in vielen verschiedenen Regionen verwenden, um eine hohe Verfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten jedoch mit der Datenbank der betreffenden Region kommunizieren. 
+Sie können auch andere Zeiteinheiten verwenden, z.B. `minutes` oder `hours`. Abschließend können wir diese beiden Werte vergleichen. Wenn der erste Wert kleiner als der zweite Wert ist, bedeutet dies, dass mehr als eine Sekunde verstrichen ist, seit der Auftrag erteilt wurde.
 
-Beachten Sie, dass sich dies von der Verwendung anderer Parameter zur *Laufzeit* unterscheidet. Dazu sollten Sie die `trigger()`-Funktion verwenden, wie oben beschrieben. 
+Zum Formatieren von Datumsangaben können wir Zeichenfolgenformatierer verwenden. Zum Abrufen von RFC1123 verwenden wir beispielsweise [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). Informationen zur Datumsformatierung finden Sie im Artikel zur [Workflow Definition Language](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) (Definitionssprache für Workflows).
 
-Sie können mit einer sehr einfachen Definition wie dieser beginnen:
+## <a name="deployment-parameters-for-different-environments"></a>Bereitstellungsparameter für unterschiedliche Umgebungen
+
+Bereitstellungslebenszyklen verfügen normalerweise über eine Entwicklungsumgebung, eine Stagingumgebung und eine Produktionsumgebung. In all diesen Umgebungen können Sie beispielsweise die gleiche Definition, aber unterschiedliche Datenbanken verwenden. Ebenso können Sie die gleiche Definition übergreifend in verschiedenen Regionen verwenden, um eine hohe Verfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten aber mit der Datenbank der betreffenden Region kommunizieren.
+Dieses Szenario unterscheidet sich von der Verwendung von Parametern zur *Laufzeit*, wo Sie stattdessen wie im vorherigen Beispiel die Funktion `trigger()` verwenden sollten.
+
+Sie können mit einer einfachen Definition wie im folgenden Beispiel beginnen:
 
 ```
 {
@@ -375,7 +396,7 @@ Sie können mit einer sehr einfachen Definition wie dieser beginnen:
 }
 ```
 
-In der tatsächlichen `PUT`-Anforderung für die Logik-App können Sie dann den `uri`-Parameter angeben. Da es keinen Standardwert mehr gibt, ist dieser Parameter für die Logik-App-Nutzlast erforderlich:
+In der tatsächlichen `PUT`-Anforderung für die Logik-App können Sie den Parameter `uri` angeben. Da kein Standardwert mehr vorhanden ist, ist für die Nutzlast der Logik-App dieser Parameter erforderlich:
 
 ```
 {
@@ -393,13 +414,7 @@ In der tatsächlichen `PUT`-Anforderung für die Logik-App können Sie dann den 
 }
 ``` 
 
-In den einzelnen Umgebungen können Sie dann einen anderen Wert für den `connection` -Parameter angeben. 
+In den einzelnen Umgebungen können Sie einen anderen Wert für den `connection`-Parameter angeben. 
 
 In der [REST-API-Dokumentation](https://msdn.microsoft.com/library/azure/mt643787.aspx) finden Sie Informationen dazu, welche Möglichkeiten Sie zum Erstellen und Verwalten von Logik-Apps haben. 
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
