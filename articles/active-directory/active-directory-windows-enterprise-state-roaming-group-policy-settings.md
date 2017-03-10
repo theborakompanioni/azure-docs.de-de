@@ -5,7 +5,7 @@ description: "Enthält Informationen zu Gruppenrichtlinien- und MDM-Einstellunge
 services: active-directory
 keywords: "Was sind Gruppenrichtlinien- und MDM-Einstellungen für Enterprise State Roaming, Enterprise State Roaming, Windows-Cloud"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: femila
 editor: curtand
 ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252

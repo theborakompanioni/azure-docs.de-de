@@ -4,7 +4,7 @@ description: "Enthält Antworten auf einige Fragen, die für IT-Administratoren 
 services: active-directory
 keywords: "Enterprise State Roaming-Einstellungen, Windows-Cloud, Häufig gestellte Fragen zu Enterprise State Roaming"
 documentationcenter: 
-author: ningtan
+author: tanning
 manager: swadhwa
 editor: curtand
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
