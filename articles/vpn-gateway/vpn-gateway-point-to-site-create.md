@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/17/2017
+ms.date: 03/02/2017
 ms.author: cherylmc
 translationtype: Human Translation
-ms.sourcegitcommit: cf72197aba2c6e6c7a51f96d1161cf1fbe88a0c5
-ms.openlocfilehash: 149f3daf1f61f459b0a0834c0f112574510d5259
-ms.lasthandoff: 02/18/2017
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 3ff2dcba568ed7ff83154cb6e1f1861ffb32a0d2
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -56,7 +56,7 @@ Die Konfiguration einer P2S-Verbindung ist in vier Abschnitte unterteilt. Dabei 
 * **Abschnitt 3** : Exportieren und Installieren der Clientzertifikate
 * **Abschnitt 4** : Konfigurieren des VPN-Clients
 
-## <a name="a-namevnetvpnasection-1---create-a-virtual-network-and-a-vpn-gateway"></a><a name="vnetvpn"></a>Abschnitt 1: Erstellen eines virtuellen Netzwerks und eines VPN-Gateways
+## <a name="vnetvpn"></a>Abschnitt 1: Erstellen eines virtuellen Netzwerks und eines VPN-Gateways
 ### <a name="part-1-create-a-virtual-network"></a>Teil 1: Erstellen eines virtuellen Netzwerks
 1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an. Bei diesen Schritten wird das klassische Portal und nicht das Azure-Portal verwendet. Derzeit ist es nicht möglich, eine P2S-Verbindung mit dem Azure-Portal zu erstellen.
 2. Klicken Sie unten links auf dem Bildschirm auf **Neu**. Klicken Sie im Navigationsbereich auf **Network Services** und dann auf **Virtual Network**. Klicken Sie auf **Custom Create** , um den Konfigurationsassistenten zu starten.
@@ -87,7 +87,7 @@ Der Gatewaytyp muss als dynamisch konfiguriert werden. Gateways mit statischem R
 1. Klicken Sie im klassischen Azure-Portal auf der Seite **Netzwerke** auf das virtuelle Netzwerk, das Sie erstellt haben, und navigieren Sie zur Seite **Dashboard**.
 2. Klicken Sie unten auf der Seite **Dashboard** auf **Gateway erstellen**. Es wird eine Meldung mit der folgenden Frage angezeigt: **Möchten Sie ein Gateway für das virtuelle Netzwerk „VNet1“ erstellen?**. Klicken Sie auf **Ja** , um mit der Erstellung des Gateways zu beginnen. Die Gatewayerstellung kann bis zu 45 Minuten dauern.
 
-## <a name="a-namegenerateasection-2---generate-and-upload-certificates"></a><a name="generate"></a>Abschnitt 2: Generieren und Hochladen von Zertifikaten
+## <a name="generate"></a>Abschnitt 2: Generieren und Hochladen von Zertifikaten
 Zertifikate werden zur Authentifizierung von VPN-Clients für P2S-VPNs verwendet. Sie können ein Stammzertifikat verwenden, das mit einer Unternehmenszertifikatlösung generiert wurde, oder Sie können ein selbstsigniertes Zertifikat verwenden. Sie können bis zu 20 Stammzertifikate in Azure hochladen. Nach dem Hochladen der CER-Datei kann Azure die darin enthaltenen Informationen verwenden, um Clients zu authentifizieren, für die ein Clientzertifikat installiert ist. Das Clientzertifikat muss mit demselben Zertifikat generiert werden, für das die CER-Datei steht.
 
 In diesem Abschnitt führen Sie Folgendes aus:
@@ -96,35 +96,48 @@ In diesem Abschnitt führen Sie Folgendes aus:
 * Hochladen der CER-Datei nach Azure
 * Generieren von Clientzertifikaten
 
-### <a name="a-namerootapart-1-obtain-the-cer-file-for-the-root-certificate"></a><a name="root"></a>Teil 1: Beschaffen der CER-Datei für ein Stammzertifikat
-Wenn Sie ein Unternehmenszertifikatsystem verwenden, müssen Sie die CER-Datei für das Stammzertifikat beschaffen, das Sie verwenden möchten. In [Teil 3](#createclientcert)generieren Sie die Clientzertifikate aus dem Stammzertifikat.
+### <a name="root"></a>Teil 1: Beschaffen der CER-Datei für ein Stammzertifikat
+Bei einer Unternehmenslösung können Sie Ihre vorhandene Zertifikatkette verwenden. Rufen Sie die CER-Datei für das Stammzertifikat, das Sie verwenden möchten.
 
-Wenn Sie keine Unternehmenszertifikatlösung verwenden, müssen Sie ein selbstsigniertes Stammzertifikat generieren. Schritte für Windows 10 finden Sie unter [Arbeiten mit selbstsignierten Stammzertifikaten für P2S-Konfigurationen](vpn-gateway-certificates-point-to-site.md). Im Artikel werden die Schritte zur Verwendung von makecert zum Generieren eines selbstsignierten Zertifikats und anschließenden Exportieren der CER-Datei beschrieben.
+Wenn Sie keine Unternehmenszertifikatlösung verwenden, müssen Sie ein selbstsigniertes Stammzertifikat generieren. Verwenden Sie MakeCert, um ein selbstsigniertes Zertifikat zu erstellen, das die erforderlichen Felder für die P2S-Authentifizierung enthält. Im Thema zum [Erstellen eines selbstsignierten Stammzertifikats für P2S-Verbindungen](vpn-gateway-certificates-point-to-site.md) sind die Schritte zum Erstellen eines selbstsignierten Stammzertifikats erläutert. Uns ist bekannt, dass MakeCert veraltet ist. Derzeit ist dies jedoch die unterstützte Lösung.
 
-### <a name="a-nameuploadapart-2-upload-the-root-certificate-cer-file-to-the-azure-classic-portal"></a><a name="upload"></a>Teil 2: Hochladen der CER-Stammzertifikatdatei in das klassische Azure-Portal
+>[!NOTE]
+>Sie können zwar auch PowerShell zum Erstellen von selbstsignierten Zertifikaten verwenden, aber das von PowerShell generierte Zertifikat enthält nicht die für Point-to-Site-Verbindungen (P2S) benötigten Felder.
+>
+
+
+#### <a name="to-obtain-the-cer-file-from-a-self-signed-root-certificate"></a>So erhalten Sie die CER-Datei aus einem selbstsignierten Stammzertifikat
+
+1. Um eine CER-Datei aus einem selbstsignierten Stammzertifikat zu generieren, öffnen Sie **certmgr.msc**, und suchen Sie das erstellte Stammzertifikat. Das Zertifikat befindet sich in der Regel unter „Certificates-Current User/ Personal/Certificates“ und trägt den bei der Erstellung vergebenen Namen. Klicken Sie mit der rechten Maustaste auf das selbstsignierte Stammzertifikat, klicken Sie auf **Alle Aufgaben** und dann auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent**geöffnet.
+2. Klicken Sie im Assistenten auf **Weiter**, wählen Sie **Nein, privaten Schlüssel nicht exportieren** aus, und klicken Sie dann auf **Weiter**.
+3. Wählen Sie auf der Seite **Dateiformat für den Export** die Option **Base-64-codiert X.509 (.CER)** aus. Klicken Sie auf **Weiter**.
+4. Wählen Sie unter **Zu exportierende Datei** die Option **Durchsuchen** aus, um zu dem Speicherort zu wechseln, an den das Zertifikat exportiert werden soll. Geben Sie unter **Dateiname**einen Namen für die Zertifikatdatei ein. Klicken Sie auf **Weiter**.
+5. Klicken Sie auf **Fertig stellen** , um das Zertifikat zu exportieren.
+
+### <a name="upload"></a>Teil 2: Hochladen der CER-Stammzertifikatdatei in das klassische Azure-Portal
 Fügen Sie Azure ein vertrauenswürdiges Zertifikat hinzu. Wenn Sie Azure eine Base64-codierte x.509-Datei (CER-Datei) hinzufügen, weisen Sie Azure dadurch an, dem Stammzertifikat zu vertrauen, das die Datei darstellt.
 
 1. Klicken Sie im klassischen Azure-Portal auf der Seite **Zertifikate** für Ihr virtuelles Netzwerk auf **Ein Stammzertifikat hochladen**.
 2. Suchen Sie auf der Seite **Zertifikat hochladen** nach der CER-Datei für das Stammzertifikat, und klicken Sie dann auf das Häkchen.
 
-### <a name="a-namecreateclientcertapart-3-generate-a-client-certificate"></a><a name="createclientcert"></a>Teil 3: Generieren eines Clientzertifikats
+### <a name="createclientcert"></a>Teil 3: Generieren eines Clientzertifikats
 Generieren Sie als Nächstes die Clientzertifikate. Sie können entweder ein eindeutiges Zertifikat für jeden Client generieren, mit dem eine Verbindung hergestellt wird, oder Sie können dasselbe Zertifikat für mehrere Clients verwenden. Der Vorteil beim Generieren von eindeutigen Clientzertifikaten besteht darin, dass Sie bei Bedarf ein einzelnes Zertifikat widerrufen können. Falls überall dasselbe Clientzertifikat verwendet wird und Sie das Zertifikat für einen Client widerrufen müssen, müssen Sie sonst neue Zertifikate für alle Clients generieren und installieren, die das Zertifikat für die Authentifizierung verwenden.
 
 ####<a name="enterprise-certificate"></a>Unternehmenszertifikat
-- Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format 'name@yourdomain.com', (anstatt des Formats „Domänenname\Benutzername“).
+- Generieren Sie bei Verwendung einer Unternehmenszertifikatlösung ein Clientzertifikat mit dem gängigen Name-Wert-Format „name@yourdomain.com“ (anstatt des Formats „Domänenname\Benutzername“).
 - Stellen Sie sicher, dass das von Ihnen ausgestellte Clientzertifikat auf der Zertifikatvorlage „User“ basiert, das als ersten Eintrag in der Nutzungsliste „Client Authentication“ enthält, anstatt „Smart Card Logon“ usw. Sie können das Zertifikat überprüfen, indem Sie auf das Clientzertifikat doppelklicken und **Details > Erweiterte Schlüsselverwendung** anzeigen.
 
 ####<a name="self-signed-certificate"></a>Selbstsigniertes Zertifikat 
 Wenn Sie ein selbstsigniertes Zertifikat verwenden, helfen Ihnen die Informationen zum Generieren eines Clientzertifikats unter [Arbeiten mit selbstsignierten Stammzertifikaten für P2S-Konfigurationen](vpn-gateway-certificates-point-to-site.md) weiter.
 
-## <a name="a-nameinstallclientcertasection-3---export-and-install-the-client-certificate"></a><a name="installclientcert"></a>Abschnitt 3: Exportieren und Installieren des Clientzertifikats
+## <a name="installclientcert"></a>Abschnitt 3: Exportieren und Installieren des Clientzertifikats
 Installieren Sie auf jedem Computer, den Sie mit dem virtuellen Netzwerk verbinden möchten, ein Clientzertifikat. Ein Clientzertifikat wird für die Authentifizierung benötigt. Sie können die Installation des Clientzertifikats automatisieren oder manuell durchführen. In den folgenden Schritten wird das manuelle Exportieren und Installieren des Clientzertifikats beschrieben.
 
 1. Sie können *certmgr.msc*zum Exportieren eines Clientzertifikats verwenden. Klicken Sie mit der rechten Maustaste auf das Clientzertifikat, das Sie exportieren möchten, klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**.
 2. Exportieren Sie das Clientzertifikat mit dem privaten Schlüssel. Dies ist eine *PFX* -Datei. Vergessen Sie nicht, sich das Kennwort (Schlüssel) zu notieren oder zu merken, das Sie für dieses Zertifikat festgelegt haben.
 3. Kopieren Sie die *PFX* -Datei auf den Clientcomputer. Doppelklicken Sie auf dem Clientcomputer auf die *PFX* -Datei, um sie zu installieren. Geben Sie das Kennwort ein, wenn Sie dazu aufgefordert werden. Ändern Sie den Speicherort der Installation nicht.
 
-## <a name="a-namevpnclientconfigasection-4---configure-your-vpn-client"></a><a name="vpnclientconfig"></a>Abschnitt 4: Konfigurieren Ihres VPN-Clients
+## <a name="vpnclientconfig"></a>Abschnitt 4: Konfigurieren Ihres VPN-Clients
 Zum Herstellen einer Verbindung mit dem virtuellen Netzwerk müssen Sie auch einen VPN-Client konfigurieren. Der Client benötigt sowohl ein Clientzertifikat als auch die richtige VPN-Clientkonfiguration, um eine Verbindung herstellen zu können. Führen Sie die folgenden Schritte in der richtigen Reihenfolge aus, um einen VPN-Client zu konfigurieren.
 
 ### <a name="part-1-create-the-vpn-client-configuration-package"></a>Teil 1: Erstellen des VPN-Clientkonfigurationspakets
@@ -173,7 +186,7 @@ Beispiel:
         Default Gateway.................:
         NetBIOS over Tcpip..............: Enabled
 
-## <a name="a-namefaqapoint-to-site-faq"></a><a name="faq"></a>Point-to-Site – Häufig gestellte Fragen
+## <a name="faq"></a>Point-to-Site – Häufig gestellte Fragen
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 

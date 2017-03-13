@@ -25,7 +25,7 @@ ms.lasthandoff: 03/01/2017
 ## <a name="overview"></a>Übersicht
 Web Application Firewalls wie [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) (im [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) verfügbar) dienen zum Schützen Ihrer Webanwendungen, indem eingehender Webdatenverkehr untersucht wird, um Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS- und andere Angriffe zu blockieren. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Zusammen mit der von App Service-Umgebungen bereitgestellten Isolierung und zusätzlichen Skalierung ergibt sich dadurch eine ideale Umgebung für das Hosten geschäftswichtiger Webanwendungen, die böswilligen Anforderungen abwehren und hohe Datenverkehrsvolumen bewältigen müssen.
 
-+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
+[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Einrichtung
 Für dieses Dokument konfigurieren wir unsere App Service-Umgebung hinter mehreren Barracuda WAF-Instanzen mit Lastenausgleich, sodass nur Datenverkehr von der WAF die App Service-Umgebung erreichen kann und kein Zugriff aus der DMZ möglich ist. Außerdem haben wir Azure Traffic Manager unseren Barracuda WAF-Instanzen für den Lastenausgleich von Azure-Datencentern und Regionen vorgelagert. Ein allgemeines Diagramm der Einrichtung wird nachstehend gezeigt.

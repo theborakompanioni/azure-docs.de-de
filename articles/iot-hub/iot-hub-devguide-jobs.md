@@ -15,8 +15,9 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: 8245c9d86d7a37bfb12c06b1cb2cbe9dae01d653
-ms.openlocfilehash: c919105d2047e2a931433d2f30a7fa41192d7908
+ms.sourcegitcommit: eac5027f39d15e355d1c9f60a31ded567272d5fa
+ms.openlocfilehash: b94ceac2298509817020b32b65125c5f767d8089
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -59,14 +60,22 @@ Es folgen die HTTP 1.1-Anforderungsdetails zum Ausführen einer [direkten Method
         cloudToDeviceMethod: {
             methodName: '<methodName>',
             payload: <payload>,                 
-            timeoutInSeconds: methodTimeoutInSeconds 
+            responseTimeoutInSeconds: methodTimeoutInSeconds 
         },
-        queryCondition: '<queryOrDevices>', // if the queryOrDevices parameter is a string
-        deviceIds: '<queryOrDevices>',      // if the queryOrDevices parameter is an array
+        queryCondition: '<queryOrDevices>', // query condition
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
     ```
+Die Abfragebedingung kann auch wie unten dargestellt für eine einzelne Geräte-ID oder eine Liste mit Geräte-IDs gelten.
+
+**Beispiele**
+```
+queryCondition = "deviceId = 'MyDevice1'"
+queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
+queryCondition = "deviceId IN ['MyDevice1']
+```
+Im Artikel zur [IoT Hub-Abfragesprache][lnk-query] wird die IoT Hub-Abfragesprache ausführlicher erläutert.
 
 ## <a name="jobs-to-update-device-twin-properties"></a>Aufträge zum Aktualisieren der Eigenschaften von Gerätezwillingen
 Es folgen die HTTP 1.1-Anforderungsdetails zum Aktualisieren von Eigenschaften von Gerätezwillingen mithilfe eines Auftrags:
@@ -82,8 +91,7 @@ Es folgen die HTTP 1.1-Anforderungsdetails zum Aktualisieren von Eigenschaften v
         jobId: '<jobId>',
         type: 'scheduleTwinUpdate', 
         updateTwin: <patch>                 // Valid JSON object
-        queryCondition: '<queryOrDevices>', // if the queryOrDevices parameter is a string
-        deviceIds: '<queryOrDevices>',      // if the queryOrDevices parameter is an array
+        queryCondition: '<queryOrDevices>', // query condition
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
     }
@@ -138,7 +146,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
 * Unter [Drosselung und Kontingente][lnk-quotas] werden die Kontingente für den IoT Hub-Dienst und das Drosselungsverhalten beschrieben, die bei Verwendung des Diensts zu erwarten sind.
-* Unter [Azure IoT device and service SDKs][lnk-sdks] (Azure IoT SDKs für Geräte und Dienste) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+* Unter [Azure IoT SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
 * Unter [Referenz – Abfragesprache für Zwillinge und Aufträge][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
@@ -159,9 +167,4 @@ Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möcht
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

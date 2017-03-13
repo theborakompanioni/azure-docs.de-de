@@ -16,8 +16,9 @@ ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: 31157645006b24e9ed6ee9187c355310356615a7
-ms.openlocfilehash: 7d9dbf3af8e7d84d470bf6f42e2d2be01c5cb27d
+ms.sourcegitcommit: 21d2c20a3ac8dc4fee0680028d6c004c80a3ae38
+ms.openlocfilehash: 2835e4e8be2a11b659118f836d53c84a2c021263
+ms.lasthandoff: 03/02/2017
 
 
 ---
@@ -83,7 +84,7 @@ Sie haben drei Möglichkeiten, um Daten in ein Machine Learning Studio-Experimen
 
 Weitere Informationen zu den unterstützten Dateiformaten finden Sie unter [Importieren von Trainingsdaten in Machine Learning Studio](machine-learning-data-science-import-data.md).
 
-#### <a name="a-idmodulelimitahow-large-can-the-data-set-be-for-my-modules"></a><a id="ModuleLimit"></a>Wie groß können Datasets für meine Module sein?
+#### <a id="ModuleLimit"></a>Wie groß können Datasets für meine Module sein?
 Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen Datasets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn ein Modul mehrere Eingaben akzeptiert, entspricht der Wert von 10 GB der Summe aller Eingabegrößen. Sie können auch Teile größerer Datasets übernehmen, indem Sie Abfragen aus Hive oder Azure SQL-Datenbank verwenden, oder Sie können die Vorverarbeitung per Lernen nach Anzahl vor der Erfassung nutzen.  
 
 Die folgenden Typen von Daten können während der Featurenormalisierung in größere Datasets erweitert werden und sind auf weniger als 10 GB beschränkt:
@@ -101,7 +102,7 @@ Die folgenden Module sind auf Datasets mit einer Größe von unter 10 GB beschr�
 * Module, bei denen die Größe der Ausgabedaten die der Eingabedaten überschreiten kann, z.B. Join oder Feature-Hashing.
 * Kreuzvalidierung, Tune Model Hyperparameters, Ordinal Regression und One-vs-All Multiclass, wenn eine sehr große Anzahl von Iterationen durchgeführt wird.
 
-#### <a name="a-iduploadlimitawhat-are-the-limits-for-data-upload"></a><a id="UploadLimit"></a>Was sind die Limits für Datenuploads?
+#### <a id="UploadLimit"></a>Was sind die Limits für Datenuploads?
 Laden Sie die Daten für Datasets, die größer als einige GB sind, in Azure Storage oder Azure SQL-Datenbank hoch, oder verwenden Sie Azure HDInsight, anstatt die Daten direkt aus einer lokalen Datei hochzuladen.
 
 **Können Daten von Amazon S3 gelesen werden?**
@@ -429,7 +430,11 @@ Wir empfehlen Ihnen, mit dem Tarif Standard S1 zu beginnen und die Nutzung Ihres
 
 **In welchen Regionen sind die neuen Pläne verfügbar?**
 
-Informationen zur regionalen Verfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+Die neuen Abrechnungspläne sind in den drei Produktionsregionen verfügbar, in denen wir die neuen Webdienste unterstützen:
+
+* USA (Mitte/Süden)
+* Westeuropa
+* Südostasien
 
 **Ich verfüge über Webdienste in mehreren Regionen. Benötige ich einen Plan für jede Region?**
 
@@ -464,7 +469,13 @@ Ja. Klassische Webdienste sind in Azure Machine Learning weiterhin verfügbar.
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Azure Machine Learning – Free- und Standard-Tarif
 **Was ist im Free-Tarif von Azure Machine Learning inbegriffen?**
 
-Der Free-Tarif von Azure Machine Learning soll Ihnen eine detaillierte Einführung in Azure Machine Learning Studio ermöglichen. Hierzu benötigen Sie für die Anmeldung nur ein Microsoft-Konto. Der Free-Tarif umfasst den kostenlosen Zugriff auf einen Azure Machine Learning Studio-Arbeitsbereich pro [Microsoft-Konto](https://www.microsoft.com/account/default.aspx). In diesem Tarif können Sie bis zu 10 GB Speicher nutzen und Modelle als Staging-APIs operationalisieren. Workloads werden im Free-Tarif nicht durch eine SLA abgedeckt und sind lediglich für Entwicklungszwecke und die private Nutzung vorgesehen. Workloads im Free-Tarif können nicht auf Daten zugreifen, indem sie eine Verbindung mit einem lokalen Server herstellen, auf dem SQL Server ausgeführt wird.
+Der Free-Tarif von Azure Machine Learning soll Ihnen eine detaillierte Einführung in Azure Machine Learning Studio ermöglichen. Hierzu benötigen Sie für die Anmeldung nur ein Microsoft-Konto. Der Free-Tarif umfasst den kostenlosen Zugriff auf einen Azure Machine Learning Studio-Arbeitsbereich pro [Microsoft-Konto](https://www.microsoft.com/account/default.aspx). In diesem Tarif können Sie bis zu 10 GB Speicher nutzen und Modelle als Staging-APIs operationalisieren. Workloads werden im Free-Tarif nicht durch eine SLA abgedeckt und sind lediglich für Entwicklungszwecke und die private Nutzung vorgesehen. 
+
+Arbeitsbereiche im Free-Tarif weisen die folgenden Einschränkungen auf:
+
+* Workloads können nicht auf Daten zugreifen, indem sie eine Verbindung mit einem lokalen Server herstellen, auf dem SQL Server ausgeführt wird.
+* Sie können keine neuen Resource Manager-basierten Webdienste bereitstellen.
+
 
 **Was ist im Standard-Tarif und den Plänen von Azure Machine Learning inbegriffen?**
 
@@ -546,9 +557,4 @@ Der Machine Learning-Dienst ist ein mehrinstanzenfähiger Dienst. Die eigentlich
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [python]: https://msdn.microsoft.com/library/azure/CDB56F95-7F4C-404D-BDE7-5BB972E6F232
 [counts]: https://msdn.microsoft.com/library/azure/dn913056.aspx
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

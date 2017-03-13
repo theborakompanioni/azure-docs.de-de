@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2017
+ms.date: 03/03/2017
 ms.author: osamam
 translationtype: Human Translation
-ms.sourcegitcommit: 409f22dcc352aae1af9100bb7a30120ea861009b
-ms.openlocfilehash: 4acca777cb5e34719c9b8ccef09bd04b82f74ce6
+ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
+ms.openlocfilehash: e678062429605db34c1e6c835841aaf2508d81a3
+ms.lasthandoff: 03/03/2017
 
 
 ---
@@ -161,6 +162,9 @@ Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwe
 | Indien, Süden |12076:51019 |
 | Indien, Westen |12076:51018 |
 | Indien, Mitte |12076:51017 |
+| **Korea** | |
+| Korea, Süden |12076:51028 |
+| Korea, Mitte |12076:51029 |
 
 Alle Routen, die von Microsoft angekündigt werden, werden mit dem entsprechenden Communitywert gekennzeichnet. 
 
@@ -212,10 +216,5 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
   * [Erstellen einer ExpressRoute-Verbindung für das klassische Bereitstellungsmodell](expressroute-howto-circuit-classic.md) oder [Erstellen und Ändern einer ExpressRoute-Verbindung mit Azure Resource Manager](expressroute-howto-circuit-arm.md)
   * [Konfigurieren des Routings für das klassische Bereitstellungsmodell](expressroute-howto-routing-classic.md) oder [Konfigurieren des Routings für das Resource Manager-Bereitstellungsmodell](expressroute-howto-routing-arm.md)
   * [Verknüpfen eines klassischen VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md) oder [Verknüpfen eines Resource Manager-VNET mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-arm.md)
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

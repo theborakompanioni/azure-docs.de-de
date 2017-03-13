@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 12/15/2016
+ms.date: 02/13/2017
 ms.author: ruturajd
 translationtype: Human Translation
-ms.sourcegitcommit: e650439b4bfd468c4bd7b236b80ce7361de1c6ac
-ms.openlocfilehash: 972a3e88d15be656fd8cd3d51b7e507c7cbb49d5
+ms.sourcegitcommit: c4fb25880584add0832464d9049dc6c78059c48b
+ms.openlocfilehash: 39e91dea775cf03f726db29f27f30142b69f9dfe
+ms.lasthandoff: 02/22/2017
 
 
 ---
@@ -29,14 +30,33 @@ Wenn der Schutz wiederhergestellt wurde und die geschützten virtuellen Computer
 
 Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)veröffentlichen.
 
+Sie können sich auch dieses Video ansehen, um einen kurzen Überblick zu erhalten.
+> [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
+
+Lesen Sie sich die hier angegebenen Informationen zum gesamten Failbackprozess durch.
+
 ## <a name="pre-requisites"></a>Voraussetzungen
 Im Anschluss finden Sie einige Schritte und Aspekte, die bei der Vorbereitung des erneuten Schützens ausgeführt bzw. berücksichtigt werden müssen.
 
-### <a name="reprotect-needs-a-s2s-vpn-or-an-express-route-to-replicate-data-back-to-on-premises"></a>Für erneutes Schützen wird eine S2S-VPN- oder eine ExpressRoute-Verbindung benötigt, um Daten wieder an die lokale Umgebung zu replizieren.
-Wenn die Replikation von lokal nach Azure über das Internet oder über eine ExpressRoute-Verbindung mit öffentlichem Peering erfolgen kann, muss für das erneute Schützen und das Failback ein S2S-VPN zum Replizieren von Daten eingerichtet werden. Das Netzwerk muss so bereitgestellt werden, dass die virtuellen Computer in Azure, für die ein Failover durchgeführt wurde, den lokalen Konfigurationsserver erreichen können. Sie können im Azure-Netzwerk des virtuellen Computers, für den ein Failover durchgeführt wurde, auch einen Prozessserver bereitstellen. Dieser muss dann ebenfalls mit dem lokalen Konfigurationsserver kommunizieren können.
+* Wenn die virtuellen Computer, für die Sie das Failback ausführen möchten, von einem vCenter-Server verwaltet werden, müssen Sie sicherstellen, dass auf den vCenter-Servern die erforderlichen Berechtigungen für die Ermittlung von virtuellen Computern (VMs) vorhanden sind. [Weitere Informationen](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)
+* Wenn auf einem lokalen virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Ausführen des erneuten Schutzes ein Fehler auf. Sie können die Momentaufnahmen vor dem Fortfahren mit dem erneuten Schutz löschen.
+* Vor dem Ausführen des Failbacks müssen Sie zwei zusätzliche Komponenten erstellen:
+  * **Erstellen eines Prozessservers**. Der Prozessserver wird zum Empfangen der Daten vom geschützten virtuellen Computer in Azure und zum Senden der lokalen Daten verwendet. Dies erfordert ein Netzwerk mit geringer Latenz zwischen dem Prozessserver und dem geschützten virtuellen Computer. Daher kann sich der Prozessserver lokal (bei Verwendung einer ExpressRoute-Verbindung) oder in Azure befinden, wenn Sie ein VPN verwenden.
+  * **Erstellen eines Masterzielservers:** Der Masterzielserver empfängt Failbackdaten. Auf dem von Ihnen lokal erstellten Verwaltungsserver ist standardmäßig ein Masterzielserver installiert. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u. U. einen separaten Masterzielserver für das Failback erstellen. 
+        * [Ein virtueller Linux-Computer benötigt einen Linux-Masterzielserver](site-recovery-how-to-install-linux-master-target.md). 
+        * Ein virtueller Windows-Computer benötigt ein Windows-Masterziel. Sie können den lokalen PS+MT-Computer verwenden.
+* Der Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, andernfalls ist das Failback nicht erfolgreich. Daher stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Servers ausführen. Im Notfall müssen Sie ihn mit der gleichen IP-Adresse wiederherstellen, damit das Failback funktioniert.
+* Stellen Sie sicher, dass Sie die Einstellung „disk.enableUUID=true“ in den Konfigurationsparametern der Masterziel-VM in VMware festlegen. Wenn diese Zeile nicht vorhanden ist, fügen Sie sie hinzu. Dies ist erforderlich, um eine konsistente UUID der VMDK-Datei bereitzustellen, damit sie ordnungsgemäß bereitgestellt wird.
+* **Für den Masterzielserver kann kein speicherbezogener vMotion-Vorgang ausgeführt werden**. Dadurch kann ein Fehler beim Failback auftreten. Der virtuelle Computer wird nicht gestartet, da die Datenträger nicht für ihn verfügbar gemacht werden.
+* Sie benötigen ein neues Laufwerk, das zum Masterzielserver hinzugefügt wurde. Dieses Laufwerk wird als Aufbewahrungslaufwerk bezeichnet. Fügen Sie einen neuen Datenträger hinzu, und formatieren Sie das Laufwerk.
+* Für das Masterziel gelten andere Voraussetzungen, die unter [Allgemeine Überprüfungen nach der Installation des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-master-target) aufgeführt sind.
 
-### <a name="process-server-is-needed-to-replicate-the-data-from-source-vms-to-on-premises"></a>Zum Replizieren der Daten von virtuellen Quellcomputern an die lokale Umgebung wird ein Prozessserver benötigt.
-<!-- Read more about a process server here.!todo -->
+
+### <a name="why-do-i-need-a-s2s-vpn-or-an-expressroute-to-replicate-data-back-to-on-premises"></a>Warum wird eine S2S-VPN- oder ExpressRoute-Verbindung benötigt, um Daten wieder in der lokalen Umgebung zu replizieren?
+Wenn die Replikation von lokal nach Azure über das Internet oder über eine ExpressRoute-Verbindung mit öffentlichem Peering erfolgen kann, muss für das erneute Schützen und das Failback ein S2S-VPN zum Replizieren von Daten eingerichtet werden. **Das Netzwerk muss so bereitgestellt werden, dass die virtuellen Computer in Azure, für die ein Failover durchgeführt wurde, den lokalen Konfigurationsserver erreichen können (per Ping)**. Sie können im Azure-Netzwerk des virtuellen Computers, für den ein Failover durchgeführt wurde, auch einen Prozessserver bereitstellen. Dieser muss dann ebenfalls mit dem lokalen Konfigurationsserver kommunizieren können.
+
+### <a name="when-should-i-install-a-process-server-in-azure"></a>Wann sollte in Azure ein Prozessserver installiert werden?
+
 
 Die virtuellen Azure-Computer, die Sie erneut schützen möchten, senden die Replikationsdaten an einen Prozessserver. Ihr Netzwerk muss so eingerichtet sein, dass der Prozessserver über den virtuellen Azure-Computer erreichbar ist.
 
@@ -55,14 +75,17 @@ Sie können einen Prozessserver in Azure bereitstellen oder den vorhandenen Proz
 
 Beachten Sie, dass die Replikation nur über ein S2S-VPN oder über das private Peering Ihres ExpressRoute-Netzwerks erfolgt. Vergewissern Sie sich, dass für diesen Netzwerkkanal genügend Bandbreite zur Verfügung steht.
 
-### <a name="ports-to-be-opened-on-different-machines-so-that-all-the-components-can-communicate"></a>Ports, die auf verschiedenen Computern geöffnet sein müssen, damit alle Komponenten kommunizieren können
+Weitere Informationen zur Installation eines Azure-Prozessservers finden Sie in [diesem Artikel](site-recovery-vmware-setup-azure-ps-resource-manager.md).
+
+### <a name="what-are-the-different-ports-to-be-open-on-different-components-so-that-reprotect-can-work"></a>Welche einzelnen Ports müssen auf den verschiedenen Komponenten geöffnet sein, damit das erneute Schützen funktioniert?
 
 ![Failover-Failback alle Ports](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
-### <a name="master-target-needs-to-be-available-on-premises-to-receive-data-from-process-server"></a>Das Masterziel muss lokal verfügbar sein, um Daten vom Prozessserver empfangen zu können.
+### <a name="which-master-target-server-to-use-for-reprotect"></a>Welcher Masterzielserver sollte für das erneute Schützen verwendet werden?
 Ein Masterzielserver muss lokal vorhanden sein, um die Daten vom Prozessserver empfangen und in die VMDK-Datei des lokalen virtuellen Computers schreiben zu können. Wenn Sie virtuelle Windows-Computer schützen, benötigen Sie einen Windows-Masterzielserver und können den lokalen Prozessserver und das Masterziel wiederverwenden <!-- !todo component -->. Bei virtuellen Linux-Computern muss ein zusätzliches lokales Linux-Masterziel eingerichtet werden.
 
-Unter den folgenden Links finden Sie jeweils eine ausführliche Anleitung zum Installieren eines Masterzielservers:
+
+Unter den folgenden Links finden Sie jeweils eine Anleitung zum Installieren eines Masterzielservers:
 
 * [Installieren eines Windows-Masterzielservers](site-recovery-vmware-to-azure.md#run-site-recovery-unified-setup)
 * [Installieren eines Linux-Masterzielservers](site-recovery-how-to-install-linux-master-target.md)
@@ -76,21 +99,21 @@ Unter den folgenden Links finden Sie jeweils eine ausführliche Anleitung zum In
     
 * **Für den Masterzielserver kann kein speicherbezogener vMotion-Vorgang ausgeführt werden**. Dadurch kann ein Fehler beim Failback auftreten. Der virtuelle Computer wird nicht gestartet, da die Datenträger nicht für ihn verfügbar gemacht werden.
 
-* Dem vorhandenen Masterzielserver muss ein neues Laufwerk hinzugefügt werden. Dieses Laufwerk wird als Aufbewahrungslaufwerk bezeichnet. Fügen Sie einen neuen Datenträger hinzu, und formatieren Sie das Laufwerk. Das Aufbewahrungslaufwerk wird verwendet, um die Zeitpunkte festzuhalten, wenn von der VM zurück auf den lokalen Standort repliziert wird. Einige der Kriterien eines Aufbewahrungslaufwerks sind nachstehend beschrieben. Ohne diese wird das Laufwerk nicht für den Masterzielserver aufgelistet.
+* Dem vorhandenen Windows-Masterzielserver muss ein neues Laufwerk hinzugefügt werden. Dieses Laufwerk wird als Aufbewahrungslaufwerk bezeichnet. Fügen Sie einen neuen Datenträger hinzu, und formatieren Sie das Laufwerk. Das Aufbewahrungslaufwerk wird verwendet, um die Zeitpunkte festzuhalten, wenn von der VM zurück auf den lokalen Standort repliziert wird. Einige der Kriterien eines Aufbewahrungslaufwerks sind nachstehend beschrieben. Ohne diese wird das Laufwerk nicht für den Masterzielserver aufgelistet.
    
-   a. Das Volume darf nicht für andere Zwecke (Ziel für die Replikation usw.) verwendet werden.
+   * Das Volume darf nicht für andere Zwecke (Ziel für die Replikation usw.) verwendet werden.
 
-   b. Das Volume darf sich nicht im Sperrmodus befinden.
+   * Das Volume darf sich nicht im Sperrmodus befinden.
 
-   c. Bei dem Volume darf es sich nicht um ein Cachevolume handeln. (Die Masterzielserver-Installation darf auf diesem Volume nicht vorhanden sein. Das Volume für die benutzerdefinierte Prozessserver- und Masterzielserver-Installation kann für das Aufbewahrungsvolume nicht ausgewählt werden. Das hier installierte Prozessserver- und Masterzielserver-Volume ist ein Cachevolume des Masterzielservers.)
+   * Bei dem Volume darf es sich nicht um ein Cachevolume handeln. (Die Masterzielserver-Installation darf auf diesem Volume nicht vorhanden sein. Das Volume für die benutzerdefinierte Prozessserver- und Masterzielserver-Installation kann für das Aufbewahrungsvolume nicht ausgewählt werden. Das hier installierte Prozessserver- und Masterzielserver-Volume ist ein Cachevolume des Masterzielservers.)
 
-   d. Der Dateisystemtyp für das Volume darf nicht FAT oder FAT32 lauten.
+   * Der Dateisystemtyp für das Volume darf nicht FAT oder FAT32 lauten.
 
-   e. Die Volumekapazität muss größer als&0; sein.
+   * Die Volumekapazität muss größer als&0; sein.
 
-   e. Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
+   * Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
 
-   f. Das Standardaufbewahrungsvolume für Linux ist „/mnt/retention“.
+   * Das Standardaufbewahrungsvolume für Linux ist „/mnt/retention“.
 
 * Ein virtueller Linux-Computer, für den ein Failover ausgeführt wurde, benötigt einen Linux-Masterzielserver. Ein virtueller Windows-Computer, für den ein Failover ausgeführt wurde, benötigt einen Windows-Masterzielserver.
 
@@ -98,23 +121,36 @@ Unter den folgenden Links finden Sie jeweils eine ausführliche Anleitung zum In
 
 * Legen Sie den Parameter „disk.EnableUUID“ für den virtuellen Masterzielcomputer über die vCenter-Eigenschaften auf „True“ fest, um ihn zu aktivieren. <!-- !todo Needs link. -->
 
+* An das Masterziel sollte mindestens ein VMFS-Datenspeicher angefügt sein. Wenn keiner vorhanden ist, ist die Datenspeichereingabe auf der Seite für das erneute Schützen leer, und Sie können den Vorgang nicht fortsetzen.
 
+* Auf den Datenträgern des Masterzielservers können keine Momentaufnahmen enthalten sein. Wenn Momentaufnahmen vorhanden sind, schlägt das erneute Schützen bzw. das Failback fehl.
 
-### <a name="failback-policy"></a>Failbackrichtlinie
-Sie werden eine Failbackrichtlinie benötigen, um zurück auf den lokalen Standort zu replizieren. Diese Richtlinie wird automatisch erstellt, wenn Sie eine vorwärts gerichtete Richtlinie erstellen. Beachten Sie Folgendes:
+* Das Masterziel kann nicht über einen Paravirtual-SCSI-Controller verfügen. Es kann nur ein LSI Logic-Controller verwendet werden. Ohne LSI Logic-Controller schlägt das erneute Schützen fehl.
 
-1. Diese Richtlinie wird während der Erstellung automatisch dem Konfigurationsserver zugeordnet.
-2. Diese Richtlinie kann nicht bearbeitet werden.
-3. Sie ist auf folgende Werte festgelegt: RPO-Schwellenwert = 15 Min., Aufbewahrungszeitraum des Wiederherstellungspunkts = 24 Stunden, Momentaufnahmehäufigkeit für Anwendungskonsistenz = 60 Min. ![](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
+<!--
+### Failback policy
+To replicate back to on-premises, you will need a failback policy. This policy get automatically created when you create a forward direction policy. Note that
 
+1. This policy gets auto associated with the configuration server during creation.
+2. This policy is not editable.
+3. The set values of the policy are (RPO Threshold = 15 Mins, Recovery Point Retention = 24 Hours, App Consistency Snapshot Frequency = 60 Mins)
+   ![](./media/site-recovery-failback-azure-to-vmware-new/failback-policy.png)
 
+-->
 
 ## <a name="steps-to-reprotect"></a>Schritte zum erneuten Schützen
+
+Stellen Sie vor dem erneuten Schützen sicher, dass Sie den [Prozessserver](site-recovery-vmware-setup-azure-ps-resource-manager.md) in Azure und das lokale Windows- bzw. [Linux-Masterziel](site-recovery-how-to-install-linux-master-target.md) installiert haben.
+
+> [!NOTE]
+> Nachdem eine VM in Azure gestartet wurde, dauert es eine Weile, bis der Agent auf dem Konfigurationsserver registriert wird (bis zu 15 Minuten). Während dieses Zeitraums schlägt das erneute Schützen fehl, und in der Fehlermeldung wird angegeben, dass der Agent nicht installiert ist. Warten Sie einige Minuten, und versuchen Sie dann noch einmal, das erneute Schützen durchzuführen.
+ 
+ 
 
 1. Wählen Sie im Tresor unter den replizierten Elementen den virtuellen Computer aus, für den ein Failover ausgeführt wurde, und klicken Sie mit der rechten Maustaste, um **Erneut schützen** auszuwählen. Sie können auch auf den Computer klicken und „reprotect“ (Erneut schützen) aus den Befehlsschaltflächen auswählen.
 2. Auf dem Blatt können Sie sehen, dass die Schutzrichtung „Azure auf lokal“ bereits ausgewählt ist.
 3. Wählen Sie unter **Masterzielserver** und **Prozessserver** den lokalen Masterzielserver und den Prozessserver aus.
-4. Wählen Sie den **Datenspeicher** aus, in dem die Datenträger lokal wiederhergestellt werden sollen. Diese Option wird verwendet, wenn der lokale virtuelle Computer gelöscht wird und neue Datenträger erstellt werden müssen. Diese Option wird ignoriert, wenn die Datenträger bereits vorhanden sind. Sie müssen jedoch immer noch einen Wert angeben.
+4. Wählen Sie den **Datenspeicher** aus, in dem die Datenträger lokal wiederhergestellt werden sollen. Diese Option wird verwendet, wenn der lokale virtuelle Computer gelöscht wird und neue Datenträger erstellt werden müssen. Diese Option wird ignoriert, wenn die Datenträger bereits vorhanden sind. Sie müssen aber trotzdem einen Wert angeben.
 5. Wählen Sie das Aufbewahrungslaufwerk. 
 6. Die Failbackrichtlinie wird automatisch ausgewählt.
 7. Nachdem Sie auf **OK** geklickt haben, um den erneuten Schutz zu starten, beginnt ein Auftrag mit der Replikation des virtuellen Computers von Azure zum lokalen Standort. Sie können den Fortschritt auf der Registerkarte **Aufträge** nachverfolgen.
@@ -126,8 +162,7 @@ Sie können den erneuten Schutz auch auf einer Wiederherstellungsplanebene ausf�
 
 > [!NOTE]
 > Eine Replikationsgruppe muss mithilfe desselben Masterzielservers erneut geschützt werden. Replikationsgruppen können nicht gleichzeitig erneut geschützt werden, wenn Sie dafür verschiedene Masterzielserver verwenden.
-> 
-> 
+ 
 
 Nach erfolgreicher Wiederherstellung des Schutzes befindet sich der virtuelle Computer wieder in einem geschützten Zustand.
 
@@ -135,12 +170,15 @@ Nach erfolgreicher Wiederherstellung des Schutzes befindet sich der virtuelle Co
 
 Sobald sich der virtuelle Computer in einem geschützten Zustand befindet, können Sie ein Failback initiieren. Durch das Failback wird der virtuelle Computer in Azure heruntergefahren und lokal gestartet. Dadurch ergibt sich eine kurze Ausfallzeit für die Anwendung. Führen Sie das Failback daher zu einer Zeit aus, zu der dies kein Problem darstellt.
 
-[Schritte zum Initiieren eines Failbacks des virtuellen Computers](site-recovery-how-to-failback-v2a.md#steps-to-failback)
+[Schritte zum Initiieren eines Failbacks des virtuellen Computers](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-failback)
 
 ## <a name="common-issues"></a>Häufige Probleme 
 
-
-
-<!--HONumber=Feb17_HO2-->
-
-
+* Wenn Ihre virtuellen Computer mit einer Vorlage erstellt wurden, sollten Sie vor dem Schützen sicherstellen, dass jede VM über eine eindeutige UUID für die Datenträger verfügt. Wenn für die UUID der lokalen VM ein Konflikt mit der ID des Masterziels besteht (weil beide mit der gleichen Vorlage erstellt wurden), schlägt das erneute Schützen fehl. Sie müssen ein anderes Masterziel bereitstellen, das nicht mit der gleichen Vorlage erstellt wurde.
+* Wenn Sie die vCenter-Ermittlung schreibgeschützter Benutzer ausführen und virtuelle Computer schützen, funktioniert das Failover. Während des erneuten Schützens schlägt dies fehl, da die Datenspeicher nicht ermittelt werden können. Das Symptom dafür ist, dass Sie die Datenspeicher beim während des erneuten Schützens nicht sehen. Zum Beheben dieses Problems können Sie die vCenter-Anmeldeinformationen mit einem entsprechenden Konto aktualisieren, das über die erforderlichen Berechtigungen verfügt, und den Auftrag wiederholen. Weitere Informationen finden Sie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access).
+* Wenn Sie ein Failback für einen virtuellen Linux-Computer durchführen und ihn lokal ausführen, sehen Sie, dass das Netzwerk-Manager-Paket auf dem Computer deinstalliert wurde. Der Grund für die Deinstallation ist, dass beim Wiederherstellen des virtuellen Computers in Azure das Netzwerk-Manager-Paket entfernt wird.
+* Wenn ein virtueller Linux-Computer mit einer statischen IP-Adresse konfiguriert ist und ein Failover zu Azure ausgeführt wird, wird die IP-Adresse über DHCP abgerufen. Nach dem Failover zurück zum lokalen Standort verwendet der virtuelle Computer weiterhin DHCP zum Abrufen der IP-Adresse. Melden Sie sich ggf. manuell am Computer an, und setzen Sie die IP-Adresse auf die statische Adresse zurück. Eine Windows-VM kann ihre statische IP wiederbeschaffen.
+* Wenn Sie die kostenlose Edition ESXi 5.5 oder die kostenlose Edition vSphere 6 Hypervisor verwenden, wäre das Failover erfolgreich, das Failback jedoch nicht. Sie müssen auf die Evaluierungslizenz eines der Programme aktualisieren, um das Failback zu aktivieren.
+* Wenn der Konfigurationsserver auf dem Prozessserver nicht erreichbar ist, können Sie Konnektivität mit dem Konfigurationsserver mit dem Telnet-Befehl an den Konfigurationsservercomputer an Port 443 überprüfen. Sie können auch versuchen, den Konfigurationsserver auf dem Prozessservercomputer zu pingen. Ein Prozessserver sollte auch einen Takt aufweisen, wenn er mit dem Konfigurationsserver verbunden ist.
+* Wenn Sie versuchen, ein Failback auf einen alternativen vCenter-Computer durchzuführen, stellen Sie sicher, dass sowohl Ihr neuer vCenter-Computer als auch der Masterzielserver erkannt werden. Als typisches Symptom sind die Datenspeicher im Dialogfeld **Erneut schützen** nicht zugänglich oder sichtbar.
+* Für einen als physischen lokalen Computer geschützten WS&2008; R2 SP1-Computer kann kein Failback von Azure auf lokale Standorte ausgeführt werden.

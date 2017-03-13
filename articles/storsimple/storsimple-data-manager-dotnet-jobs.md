@@ -17,6 +17,7 @@ ms.author: vidarmsft
 translationtype: Human Translation
 ms.sourcegitcommit: 37f795fe59496b0267120537115cf56d44cc5325
 ms.openlocfilehash: 60cde851a466a5b4b0752908f11272eedb246b0a
+ms.lasthandoff: 12/23/2016
 
 ---
 
@@ -177,9 +178,4 @@ Führen Sie die folgenden Schritte aus, um .NET für das Starten eines Datentran
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Use StorSimple Data Manager UI to transform your data (Verwenden der StorSimple Data Manager-UI zum Transformieren von Daten) ](storsimple-data-manager-ui.md).
-
-
-
-<!--HONumber=Dec16_HO4-->
-
 

@@ -15,12 +15,13 @@ ms.workload: na
 ms.date: 02/06/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: 9852981e530cd147c2d34ac2ede251b58a167a0a
-ms.openlocfilehash: a688c392434be5a27f5691c2d89ad934e435a3c9
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 841257fe74dad05d6a25ec35a62e415d6c1917b4
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="handling-security-incident-in-azure-security-center"></a>Behandeln von Sicherheitswarnungen in Azure Security Center
+# <a name="handling-security-incidents-in-azure-security-center"></a>Behandeln von Sicherheitsincidents in Azure Security Center
 Das Selektieren und Untersuchen von Sicherheitswarnungen kann auch für sehr erfahrene Sicherheitsanalysten zeitaufwändig sein, und häufig ist nur schwer zu erkennen, wo überhaupt begonnen werden soll. Mithilfe von [Analysen](security-center-detection-capabilities.md) zum Verknüpfen der Informationen der einzelnen [Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) kann Security Center Ihnen eine zentrale Übersicht über einen Angriffsversuch und alle zugehörigen Warnungen bieten. So können Sie schnell überblicken, welche Aktionen der Angreifer unternommen hat und welche Ressourcen betroffen sind.
 
 In diesem Dokument wird beschrieben, wie Sie die Sicherheitswarnungsfunktionen in Security Center verwenden, um die Behandlung von Sicherheitsvorfällen zu unterstützen.
@@ -61,9 +62,4 @@ In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/)(Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

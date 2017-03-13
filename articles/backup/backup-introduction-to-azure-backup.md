@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Backup? | Microsoft Docs
-description: "Mithilfe von Azure Backup und Recovery Services können Sie Daten und Anwendungen von Windows-Servern und -Arbeitsstationen, Windows-Computern, System Center DPM-Servern und -Workloads sowie von virtuellen Azure-Computern sichern und wiederherstellen."
+description: "Mithilfe von Azure Backup können Sie Daten und Workloads auf Windows Server-Computern, Windows-Arbeitsstationen, System Center DPM-Servern und virtuellen Azure-Computern sichern und wiederherstellen."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -13,16 +13,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/23/2017
+ms.date: 2/27/2017
 ms.author: markgal;trinadhk
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 39ad8e07659a228e4a4b861cc98e9f3e830aaab0
-ms.openlocfilehash: 63d3d95300f3d2353471b8ca4923f3bf682464bb
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: bafcd7f23a2a90a1cfdcd9286c20a09bd7a316b7
+ms.openlocfilehash: c9fd621ca2d4440b4a8c90e2fd8ab7924f4dbce8
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="what-is-azure-backup"></a>Was ist Azure Backup?
+# <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Backup-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
 
 [Video mit einem Überblick über Azure Backup](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
@@ -94,17 +95,15 @@ In der folgende Tabellen sind die Azure Backup-Komponenten angegeben, die über 
 | Azure IaaS-VM-Sicherung |Ja |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
-Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
+Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../storage/storage-premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
-Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort im Storage Premium-Konto. Der Stagingspeicherort namens „AzureBackup-“ entspricht der Gesamtdatengröße der Premium-Datenträger, die an den virtuellen Computer angefügt sind. Überprüfen Sie, ob unter dem Speicherkonto ausreichend freier Speicherplatz für einen temporären Stagingspeicherort vorhanden ist. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets).
+Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe des Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Speicherkonto ausreichend freier Speicherplatz für den temporären Statingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../storage/storage-premium-storage.md#premium-storage-scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Ändern oder bearbeiten Sie den Stagingspeicherort nicht.
 >
 >
-
-Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../storage/storage-premium-storage.md#pricing-and-billing).
 
 ### <a name="restore-premium-storage-vms"></a>Wiederherstellen virtueller Storage Premium-Computer
 Virtuelle Storage Premium-Computer können entweder unter Storage Premium oder in einem normalen Speicher wiederhergestellt werden. In der Regel wird der Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf Storage Premium wiederhergestellt. Unter Umständen ist es jedoch kostengünstiger, den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers auf dem Standardspeicher wiederherzustellen. Diese Art der Wiederherstellung ist möglich, wenn Sie einen Teil der Dateien des virtuellen Computers benötigen.

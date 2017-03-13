@@ -13,18 +13,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 12/19/2016
 ms.author: bradsev;garye
 translationtype: Human Translation
-ms.sourcegitcommit: 701c54bac16cbf208fd655fd72f2d4acfc0ba891
-ms.openlocfilehash: 89856f6509d0d2e2e472a61db70b9b04dc1ac7b7
+ms.sourcegitcommit: a6bc79b2cb5b73109cddd6cf57caeba754b52e2e
+ms.openlocfilehash: afecdde0cbc0bcbe0932b23dc1a8e067d02ded12
+ms.lasthandoff: 12/20/2016
 
 
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Importieren von Trainingsdaten aus verschiedenen Onlinedatenquellen mit dem „Import Data“-Modul in Azure Machine Learning Studio
-
-[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
-
 In diesem Artikel werden die Unterstützung des Importierens von Onlinedaten aus verschiedenen Datenquellen und die erforderlichen Informationen zum Verschieben von Daten aus diesen Quellen in ein Azure Machine Learning-Experiment beschrieben.
 
 > [!NOTE]
@@ -34,8 +32,10 @@ In diesem Artikel werden die Unterstützung des Importierens von Onlinedaten aus
 
 <!-- -->
 
+[!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
+
 ## <a name="introduction"></a>Einführung
-Sie können in Azure Machine Learning Studio auf Daten aus einer von mehreren Onlinedatenquellen zugreifen, während Ihr Experiment mithilfe des Moduls [Import Data][import-data] ausgeführt wird:
+Mithilfe des Moduls [Import Data][import-data] können Sie auf Daten aus einer von mehreren Onlinedatenquellen zugreifen, während Ihr Experiment in [Azure Machine Learning Studio](https://studio.azureml.net/Home) ausgeführt wird:
 
 * Web-URL über HTTP
 * Hadoop über HiveQL
@@ -45,7 +45,7 @@ Sie können in Azure Machine Learning Studio auf Daten aus einer von mehreren On
 * Lokale SQL Server-Datenbank
 * Datenfeedanbieter (derzeit OData)
 
-Der Workflow für Ihre Experimente in Azure Machine Learning Studio besteht aus dem Ziehen und Ablegen von Komponenten auf die Canvas. Für den Zugriff auf Onlinedatenquellen fügen Sie Ihrem Experiment das Modul [Import Data][import-data] hinzu, wählen **Data source** (Datenquelle) aus und geben dann die für den Zugriff auf die Daten erforderlichen Parameter an. In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschrieben. Diese Tabelle enthält auch die unterstützten Dateiformate und die Parameter für den Zugriff auf die Daten.
+Für den Zugriff auf Onlinedatenquellen in Ihrem Studio-Experiment fügen Sie Ihrem Experiment das Modul [Import Data][import-data] hinzu, wählen **Data source** (Datenquelle) aus und geben dann die für den Zugriff auf die Daten erforderlichen Parameter an. In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschrieben. Diese Tabelle enthält auch die unterstützten Dateiformate und die Parameter für den Zugriff auf die Daten.
 
 Hinweis: Da auf diese Trainingsdaten zugegriffen wird, während das Experiment läuft, stehen sie nur in diesem Experiment zur Verfügung. Im Vergleich dazu stehen Daten, die in Datasetmodulen gespeichert sind, allen Experimente in Ihrem Arbeitsbereich zur Verfügung.
 
@@ -53,7 +53,7 @@ Hinweis: Da auf diese Trainingsdaten zugegriffen wird, während das Experiment l
 > Derzeit können die Module [Import Data][import-data] und [Export Data][export-data] Daten nur in Azure-Speicher lesen und schreiben, der mit dem klassischen Bereitstellungsmodell erstellt wurde. Das heißt, dass der neue Azure Blob Storage-Kontotyp, der eine „heiße“ oder „kalte“ Speicherzugriffsebene bietet, noch nicht unterstützt wird. 
 > 
 > Im Allgemeinen sollten Azure-Speicherkonten, die Sie ggf. erstellt haben, bevor diese Dienstoption verfügbar war, nicht betroffen sein. 
-> Wenn Sie ein neues Konto erstellen müssen, wählen Sie **Klassisch** als Bereitstellungsmodus, oder verwenden Sie Resource Manager, und wählen Sie für **Kontoart** die Option **Allgemein** anstelle von **Blobspeicher**. 
+> Wenn Sie ein neues Konto erstellen müssen, wählen Sie **Klassisch** als Bereitstellungsmodell, oder verwenden Sie Resource Manager, und wählen Sie für **Kontoart** die Option **Allgemein** anstelle von **Blobspeicher**. 
 > 
 > Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../storage/storage-blob-storage-tiers.md).
 > 
@@ -80,9 +80,4 @@ Das **Import Data** -Modul von Azure Machine Learning unterstützt die folgenden
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C/
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

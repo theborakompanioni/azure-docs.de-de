@@ -12,23 +12,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2016
+ms.date: 12/13/2016
 ms.author: jeannt
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: cfaa14eb1dd8d958c210f95997d291aba79c5da7
+ms.sourcegitcommit: 80bede0dc3ad3934d63feabb946744aeb45f334d
+ms.openlocfilehash: f239a2a270df00cecbe263fa61b84af06af817db
+ms.lasthandoff: 12/15/2016
 
 
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Analysieren der Kundenabwanderung mithilfe von Microsoft Azure Machine Learning
 ## <a name="overview"></a>Übersicht
-Dieses Thema bietet eine Referenzimplementierung eines Projekts zur Analyse der Kundenabwanderung, das in Azure Machine Learning Studio erstellt wird. Es wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
+Dieser Artikel bietet eine Referenzimplementierung eines Projekts zur Analyse der Kundenabwanderung, das in Azure Machine Learning erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
 
 ### <a name="acknowledgements"></a>Danksagung
 Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
-> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) unter [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5).
+> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1).
 > 
 > 
 
@@ -250,9 +251,4 @@ Dieses Feedback hilft uns dabei, die Qualität der von uns veröffentlichten Whi
 [8]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-8.png
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

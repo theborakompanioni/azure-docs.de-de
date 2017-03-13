@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte in Azure AD NodeJS | Microsoft Docs
+title: Erste Schritte in Azure AD Node.js | Microsoft-Dokumentation
 description: "In diesem Thema erfahren Sie, wie Sie eine Node.js-REST-Web-API erstellen, die für die Authentifizierung in Azure AD integriert wird."
 services: active-directory
 documentationcenter: nodejs
@@ -15,90 +15,101 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 translationtype: Human Translation
-ms.sourcegitcommit: 3e0bb32a6c60011d71606c896cc506f430bc3c27
-ms.openlocfilehash: 8096a0f8c3797d7945a274e79ed253896a0fdab2
+ms.sourcegitcommit: 682f6d0919df20cd3643abf04e1d5192be116399
+ms.openlocfilehash: f20c2c2c37692d439ca8e023cf9d5a48cd42c973
+ms.lasthandoff: 02/24/2017
 
 
 ---
-# <a name="getting-started-with-web-api-for-node"></a>Erste Schritte mit der Web-API für Node.js
+# <a name="get-started-with-web-apis-for-nodejs"></a>Erste Schritte mit Web-APIs für Node.js
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-**Passport** ist eine Authentifizierungs-Middleware für Node.js. Das äußerst flexible und modular aufgebaute Passport kann unauffällig in jede Express- oder Restify-basierte Webanwendung integriert werden. Ein umfassender Satz an Strategien unterstützt die Authentifizierung mittels eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Anwendungen. Wir haben eine Strategie für Microsoft Azure Active Directory entwickelt. Dieses Modul installieren Sie nun und fügen dann das Microsoft Azure Active Directory-Plug-In `passport-azure-ad` hinzu.
+*Passport* ist eine Authentifizierungs-Middleware für Node.js. Passport ist flexibel und modular aufgebaut und kann unauffällig in jede Express- oder Restify-basierte Webanwendung integriert werden. Ein umfassender Satz an Strategien unterstützt die Authentifizierung mithilfe eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Anwendungen. Wir haben eine Strategie für Microsoft Azure Active Directory (Azure AD) entwickelt. Dieses Modul installieren Sie nun und fügen dann das Microsoft Azure Active Directory-Plug-In `passport-azure-ad` hinzu.
 
-Dazu müssen Sie folgende Schritte ausführen:
+Gehen Sie hierzu wie folgt vor:
 
-1. Registrieren einer Anwendung in Azure AD
-2. Richten Sie Ihre App für die Verwendung des azure-ad-passport-Plug-Ins von Passport ein.
-3. Konfigurieren einer Clientanwendung für den Aufruf der Web-API „To Do List“
+1. Registrieren Sie eine Anwendung in Azure AD.
+2. Richten Sie Ihre App für die Verwendung des `passport-azure-ad`-Plug-Ins von Passport ein.
+3. Konfigurieren Sie eine Clientanwendung für den Aufruf der Web-API „To Do List“.
 
 Der Code für dieses Tutorial wird [auf GitHub](https://github.com/Azure-Samples/active-directory-node-webapi)verwaltet.
 
 > [!NOTE]
-> Dieser Artikel behandelt nicht das Implementieren der Anmeldung, Registrierung und Profilverwaltung mit Azure AD B2C.  Er konzentriert sich auf das Aufrufen von Web-APIs aufrufen, nachdem der Benutzer bereits authentifiziert wurde.  Sie sollten zunächst das Dokument [Gewusst wie: Integration mit Azure Active Directory](active-directory-how-to-integrate.md) lesen (sofern noch nicht geschehen), um mehr über die Grundlagen von Azure Active Directory zu erfahren.
-> 
-> 
+> In diesem Artikel wird das Implementieren der Anmeldung, Registrierung oder Profilverwaltung mit Azure AD B2C nicht behandelt. Er konzentriert sich auf das Aufrufen von Web-APIs aufrufen, nachdem der Benutzer bereits authentifiziert wurde.  Wir empfehlen Ihnen, zunächst das Dokument [Gewusst wie: Integration mit Azure Active Directory](active-directory-how-to-integrate.md) zu lesen, um mehr über die Grundlagen von Azure Active Directory zu erfahren.
+>
+>
 
-Der vollständige Quellcode dieses funktionsfähigen Beispiels ist auf GitHub unter einer MIT-Lizenz veröffentlicht. Sie können diesen Code gerne klonen oder sogar abwandeln sowie Feedback und Pull-Anforderungen senden.
+Der vollständige Quellcode dieses funktionsfähigen Beispiels wurde auf GitHub unter einer MIT-Lizenz veröffentlicht. Sie können diesen Code gerne klonen oder sogar abwandeln sowie Feedback und Pullanforderungen (Pull Requests) senden.
 
 ## <a name="about-nodejs-modules"></a>Informationen zu Node.js-Modulen
-In dieser exemplarischen Vorgehensweise werden Node.js-Module verwendet. Module sind ladbare JavaScript-Pakete, die bestimmte Funktionen für die Anwendung bieten. In der Regel installieren Sie Module mithilfe des NPM-Befehlszeilenprogramms Node.js im Installationsverzeichnis von NPM, wobei jedoch einige Module, z. B. das HTTP-Modul, im Hauptpaket von Node.js enthalten sind.
-Installierte Module werden im Verzeichnis „node_modules“ im Stammverzeichnis Ihres Node.js-Installationsverzeichnisses gespeichert. Jedes Modul im Verzeichnis „node_modules“ enthält ein eigenes „node_modules“-Verzeichnis mit allen Modulen, von denen es abhängig ist, wobei jedes erforderliche Modul wiederum über ein eigenes „node_modules“-Verzeichnis verfügt. Diese rekursive Verzeichnisstruktur stellt die Abhängigkeitskette dar.
+In dieser exemplarischen Vorgehensweise verwenden wir Node.js-Module. Module sind ladbare JavaScript-Pakete, die bestimmte Funktionen für die Anwendung bieten. Normalerweise installieren Sie Module, indem Sie das NPM-Befehlszeilentool von Node.js im NPM-Installationsverzeichnis verwenden. Einige Module, z.B. das HTTP-Modul, sind aber im Node.js-Kernpaket enthalten.
 
-Die Struktur der Abhängigkeitskette erfordert zwar mehr Speicher, sie stellt aber sicher, dass alle Abhängigkeiten erfüllt sind und dass die bei der Entwicklung verwendeten Modulversionen auch in der Produktion verwendet werden. Dadurch wird das Verhalten der in der Produktion verwendeten Anwendung berechenbarer und Versionsprobleme, die sich auf die Benutzer auswirken, werden verhindert.
+Installierte Module werden im Verzeichnis **node_modules** im Stammverzeichnis Ihres Node.js-Installationsverzeichnisses gespeichert. Jedes Modul im Verzeichnis **node_modules** enthält wiederum ein eigenes **node_modules**-Verzeichnis mit allen Modulen, von denen es abhängig ist. Zudem verfügt jedes erforderliche Modul über das Verzeichnis **node_modules**. Diese rekursive Verzeichnisstruktur stellt die Abhängigkeitskette dar.
 
-## <a name="1-register-a-azure-ad-tenant"></a>1. Registrieren eines Azure AD-Mandanten
-Zur Verwendung dieses Beispiels benötigen Sie einen Azure Active Directory-Mandanten. Wenn Sie nicht wissen, was ein Mandant ist oder wie Sie einen erhalten, lesen Sie [Gewusst wie: Erhalten eines Azure AD-Mandanten](active-directory-howto-tenant.md).
+Diese Struktur mit einer Abhängigkeitskette führt zu einem größeren Platzbedarf für die Anwendung. Gleichzeitig wird hiermit aber auch sichergestellt, dass alle Abhängigkeiten erfüllt werden und dass die Version der Module, die während der Entwicklung verwendet wird, auch in der Produktion zum Einsatz kommt. Dadurch wird das Verhalten der in der Produktion verwendeten Anwendung berechenbarer und Versionsprobleme, die sich auf die Benutzer auswirken, werden verhindert.
 
-## <a name="2-create-an-application"></a>2. Erstellen einer Anwendung
-Nun müssen Sie eine App in Ihrem Verzeichnis erstellen, sodass Azure AD die Informationen erhält, die für die sichere Kommunikation mit Ihrer App erforderlich sind.  Die Client-App und die Web-API werden in diesem Fall durch eine einzige **Anwendungs-ID** dargestellt, da sie zusammen eine logische App bilden.  Befolgen Sie zum Erstellen einer App [diese Anweisungen](active-directory-how-applications-are-added.md). Bei der Erstellung einer Branchen-App sind unter Umständen diese [zusätzlichen Anweisungen](../active-directory-applications-guiding-developers-for-lob-applications.md)nützlich.
+## <a name="step-1-register-an-azure-ad-tenant"></a>Schritt 1: Registrieren eines Azure AD-Mandanten
+Für die Verwendung dieses Beispiels benötigen Sie einen Azure Active Directory-Mandanten. Wenn Sie nicht wissen, was ein Mandant ist oder wie Sie einen erhalten, helfen Ihnen die Informationen unter [Einrichten eines Azure Active Directory-Mandanten](active-directory-howto-tenant.md) weiter.
 
-Führen Sie folgende Schritte aus:
+## <a name="step-2-create-an-application"></a>Schritt 2: Erstellen einer Anwendung
+Als Nächstes erstellen Sie eine App in Ihrem Verzeichnis, damit Azure AD die Informationen erhält, die für die sichere Kommunikation mit Ihrer App erforderlich sind.  In diesem Fall werden die Client-App und die Web-API durch eine einzelne **Anwendungs-ID** dargestellt, da sie zusammen eine logische App bilden.  Befolgen Sie zum Erstellen einer App [diese Anweisungen](active-directory-how-applications-are-added.md). Bei der Erstellung einer Branchen-App sind unter Umständen diese [zusätzlichen Anweisungen](../active-directory-applications-guiding-developers-for-lob-applications.md) nützlich.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie oben auf der Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
-3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
-4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen**.
-5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
-  * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
-  * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Der Standardwert des Beispielcodes lautet `https://localhost:8080`.
-  * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung.  Üblicherweise wird `https://<tenant-domain>/<app-name>` verwendet, zum Beispiel: `https://contoso.onmicrosoft.com/my-first-aad-app`
-6. Nach Abschluss der Registrierung weist AAD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
-7. Erstellen Sie auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und kopieren Sie ihn.  Sie benötigen ihn später.
+Gehen Sie wie folgt vor, um eine Anwendung zu erstellen:
 
-## <a name="3-download-nodejs-for-your-platform"></a>3. Herunterladen der Datei „node.js“ für Ihre Plattform
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+
+2. Wählen Sie Ihr Konto im oberen Menü aus. Wählen Sie in der **Verzeichnisliste** anschließend den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
+
+3. Wählen Sie im Menü auf der linken Seite die Option **Weitere Dienste** und dann **Azure Active Directory**.
+
+4. Wählen Sie **App-Registrierungen** und dann **Hinzufügen** aus.
+
+5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine **Webanwendung und/oder Web-API**.
+
+      * Am **Namen** der Anwendung sollten die Endbenutzer die Funktion der Anwendung ablesen können.
+
+      * Die **Anmelde-URL** ist die Basis-URL Ihrer Anwendung.  Die Standard-URL des Beispielcodes lautet `https://localhost:8080`.
+
+      * Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Standardmäßig wird `https://<tenant-domain>/<app-name>` verwendet, z.B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+
+6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
+
+7. Erstellen Sie auf der Seite **Einstellungen** einen **Schlüssel** für Ihre Anwendung, und kopieren Sie ihn an einen zugänglichen Ort. Sie benötigen ihn in Kürze.
+
+## <a name="step-3-download-nodejs-for-your-platform"></a>Schritt 3: Herunterladen von „Node.js“ für Ihre Plattform
 Für die Verwendung dieses Beispiels benötigen Sie eine funktionsfähige Installation von Node.js.
 
 Installieren Sie Node.js von [http://nodejs.org](http://nodejs.org).
 
-## <a name="4-install-mongodb-on-to-your-platform"></a>4. Installieren von MongoDB auf Ihrer Plattform
-Für die Verwendung dieses Beispiels benötigen Sie eine funktionsfähige Installation von MongoDB. Durch die Verwendung von MongoDB bleibt die REST-API über Serverinstanzen hinweg persistent.
+## <a name="step-4-install-mongodb-on-your-platform"></a>Schritt 4: Installieren von MongoDB auf Ihrer Plattform
+Für die Verwendung dieses Beispiels benötigen Sie eine funktionsfähige Installation von MongoDB. Sie verwenden MongoDB, um die REST-API über Serverinstanzen hinweg persistent zu machen.
 
 Installieren Sie MongoDB von [http://mongodb.org](http://www.mongodb.org).
 
 > [!NOTE]
-> In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie die Standardinstallation und die Standardserverendpunkte für MongoDB verwenden. Zum Zeitpunkt der Erstellung dieses Artikels bedeutet dies: mongodb://localhost
-> 
-> 
+> In dieser exemplarischen Vorgehensweise wird davon ausgegangen, dass Sie die Standardinstallation und die Standardserverendpunkte für MongoDB verwenden. Zum Zeitpunkt der Erstellung dieses Artikels ist dies „mongodb://localhost“.
+>
+>
 
-## <a name="5-install-the-restify-modules-in-to-your-web-api"></a>5. Installieren der Restify-Module in Ihrer Web-API
-Zur Erstellung der REST-API verwenden Sie Restify. Restify ist ein einfaches und flexibles, von Express abgeleitetes Node.js-Anwendungsframework mit einem umfassenden Funktionssatz für die Erstellung von REST-APIs für Connect.
+## <a name="step-5-install-the-restify-modules-in-your-web-api"></a>Schritt 5: Installieren der Restify-Module in Ihrer Web-API
+Wir verwenden Restify zum Erstellen unserer REST-API. Restify ist ein einfaches und flexibles Node.js-Anwendungsframework, das von Express abgeleitet ist. Er verfügt über eine Reihe robuster Funktionen für die Erstellung von REST-APIs für Connect.
 
 ### <a name="install-restify"></a>Installieren von Restify
-Wechseln Sie an der Befehlszeile zum Verzeichnis „azuread“. Falls das Verzeichnis **azuread** nicht vorhanden ist, erstellen Sie es.
+1. Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread**. Falls das Verzeichnis **azuread** nicht vorhanden ist, erstellen Sie es.
 
-`cd azuread - or- mkdir azuread; cd azuread`
+        `cd azuread - or- mkdir azuread; cd azuread`
 
-Geben Sie folgenden Befehl ein:
+2. Geben Sie folgenden Befehl ein:
 
-`npm install restify`
+    `npm install restify`
 
-Mit diesem Befehl wird Restify installiert.
+    Mit diesem Befehl wird Restify installiert.
 
-#### <a name="did-you-get-an-error"></a>BEI EINEM FEHLER
-Bei Verwendung von npm wird in einigen Betriebssystemen ein Fehler zu „EPERM, chmod '/usr/local/bin/..'“ angezeigt, gefolgt von der Aufforderung, das Konto als Administrator auszuführen. Verwenden Sie in diesem Fall den Befehl sudo, um npm mit einer höheren Berechtigungsstufe auszuführen.
+#### <a name="did-you-get-an-error"></a>Bei einem Fehler
+Beim Verwenden von NPM erhalten Sie für einige Betriebssysteme einen Fehler der Art **Error: EPERM, chmod '/usr/local/bin/..'**, und es wird vorgeschlagen, es mit der Ausführung des Kontos als Administrator zu versuchen. Verwenden Sie in diesem Fall den Befehl „sudo“, um NPM mit einer höheren Berechtigungsstufe auszuführen.
 
-#### <a name="did-you-get-an-error-regarding-dtrace"></a>BEI EINEM FEHLER ZU DTRACE
-Bei der Installation von Restify erhalten Sie eventuell einen Fehler wie den Folgenden:
+#### <a name="did-you-get-an-error-regarding-dtrace"></a>Haben Sie einen DTRACE-Fehler erhalten?
+Bei der Installation von Restify erhalten Sie unter Umständen folgenden Fehler:
 
 ```Shell
 clang: error: no such file or directory: 'HD/azuread/node_modules/restify/node_modules/dtrace-provider/libusdt'
@@ -116,9 +127,7 @@ gyp ERR! node-gyp -v v0.10.0
 gyp ERR! not ok
 npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
-
-
-Restify stellt einen leistungsstarken Mechanismus zum Verfolgen von REST-Aufrufen mit DTrace bereit. Unter vielen Betriebssystemen steht DTrace jedoch nicht zur Verfügung. Sie können diese Fehler ignorieren.
+Restify stellt einen leistungsstarken Mechanismus zum Verfolgen von REST-Aufrufen mit DTrace bereit. Unter vielen Betriebssystemen ist DTrace aber nicht verfügbar. Sie können diese Fehler ignorieren.
 
 Die Ausgabe dieses Befehls sollte ungefähr wie folgt aussehen:
 
@@ -144,38 +153,42 @@ Die Ausgabe dieses Befehls sollte ungefähr wie folgt aussehen:
     └── bunyan@0.22.0 (mv@0.0.5)
 
 
-## <a name="6-install-passportjs-in-to-your-web-api"></a>6. Installieren von „Passport.js“ in Ihrer Web-API
-[Passport](http://passportjs.org/) ist eine Authentifizierungs-Middleware für Node.js. Das äußerst flexible und modular aufgebaute Passport kann unauffällig in jede Express- oder Restify-basierte Webanwendung integriert werden. Ein umfassender Satz an Strategien unterstützt die Authentifizierung mittels eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Anwendungen. Wir haben eine Strategie für Azure Active Directory entwickelt. Dieses Modul installieren Sie nun und fügen dann das Plug-in für die Azure Active Directory-Strategie hinzu.
+## <a name="step-6-install-passportjs-in-your-web-api"></a>Schritt 6: Installieren von Passport.js in Ihrer Web-API
+[Passport](http://passportjs.org/) ist eine Authentifizierungs-Middleware für Node.js. Passport ist flexibel und modular aufgebaut und kann unauffällig in jede Express- oder Restify-basierte Webanwendung integriert werden. Ein umfassender Satz an Strategien unterstützt die Authentifizierung mithilfe eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Anwendungen.
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis „azuread“.
+Wir haben eine Strategie für Azure Active Directory entwickelt. Wir installieren dieses Modul und fügen dann das Plug-In für die Azure Active Directory-Strategie hinzu.
 
-Geben Sie für die Installation von passport.js den folgenden Befehl ein.
+1. Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread**.
 
-`npm install passport`
+2. Geben Sie für die Installation von Passport.js den folgenden Befehl ein:
 
-Die Ausgabe dieses Befehls sollte ungefähr wie folgt aussehen:
+    `npm install passport`
 
-    passport@0.1.17 node_modules\passport
-    ├── pause@0.0.1
-    └── pkginfo@0.2.3
+    Die Ausgabe des Befehls sollte in etwa wie folgt aussehen:
 
-## <a name="7-add-passport-azure-ad-to-your-web-api"></a>7. Hinzufügen von Passport-Azure-AD zu Ihrer Web-API
-Als Nächstes fügen wir die OAuth-Strategie mit passport-azuread hinzu, einer Gruppe von Strategien, die Azure Active Directory mit Passport verbinden. Wir verwenden diese Strategie für Bearertoken in diesem Rest-API-Beispiel.
+``
+        passport@0.1.17 node_modules\passport
+        ├── pause@0.0.1
+        └── pkginfo@0.2.3
+``
+
+## <a name="step-7-add-passport-azure-ad-to-your-web-api"></a>Schritt 7: Hinzufügen von Passport-Azure-AD zu Ihrer Web-API
+Als Nächstes fügen Sie die OAuth-Strategie hinzu. Hierzu verwenden Sie `passport-azure-ad` (Gruppe von Strategien, mit denen Azure Active Directory mit Passport verbunden wird). Wir verwenden diese Strategie für Bearertoken in diesem REST-API-Beispiel.
 
 > [!NOTE]
-> OAuth2 bietet zwar ein Framework, in dem alle bekannten Tokentypen ausgegeben werden können, allerdings findet hiervon meist nur ein eingeschränkter Tokensatz Anwendung. Für den Schutz von Endpunkten sind dies in der Regel Bearer-Tokens. Bearer-Tokens sind die in OAuth2 am häufigsten ausgegebenen Tokens, und viele Implementierungen gehen sogar davon aus, dass nur dieser Tokentyp ausgestellt wird.
-> 
-> 
+> OAuth2 bietet zwar ein Framework, in dem alle bekannten Tokentypen ausgestellt werden können, aber es werden meist nur bestimmte Tokentypen verwendet. Bearertoken sind die am häufigsten verwendeten Token zum Schützen von Endpunkten. Diese Tokentypen werden in OAuth2 am häufigsten ausgestellt. Bei vielen Implementierungen wird davon ausgegangen, dass Bearertoken der einzige ausgestellte Tokentyp sind.
+>
+>
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis "azuread".
+Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread**.
 
-Geben Sie für die Installation des Passport.js-Moduls "passport-azure-ad" den folgenden Befehl ein:
+Geben Sie für die Installation des `passport-azure-ad module` von Passport.js den folgenden Befehl ein:
 
 `npm install passport-azure-ad`
 
 Die Ausgabe dieses Befehls sollte ungefähr wie folgt aussehen:
 
-    ``
+
     passport-azure-ad@1.0.0 node_modules/passport-azure-ad
     ├── xtend@4.0.0
     ├── xmldom@0.1.19
@@ -191,241 +204,239 @@ Die Ausgabe dieses Befehls sollte ungefähr wie folgt aussehen:
 
 
 
-## <a name="8-add-mongodb-modules-to-your-web-api"></a>8. Hinzufügen der MongoDB-Module zu Ihrer Web-API
-Als Datenspeicher verwenden wir MongoDB. Daher müssen wir sowohl das weit verbreitete Plug-in Mongoose installieren, mit dem Modelle und Schemas verwaltet werden, als auch den Datenbanktreiber für MongoDB, der ebenfalls MongoDB heißt.
+## <a name="step-8-add-mongodb-modules-to-your-web-api"></a>Schritt 8: Hinzufügen der MongoDB-Module zu Ihrer Web-API
+Wir verwenden MongoDB als Datenspeicher. Aus diesem Grund müssen wir das häufig genutzte Plug-In mit dem Namen Mongoose zum Verwalten von Modellen und Schemas installieren. Wir müssen auch den Datenbanktreiber für MongoDB (ebenfalls als MongoDB bezeichnet) installieren.
 
-* `npm install mongoose`
+ `npm install mongoose`
 
-## <a name="9--install-additional-modules"></a>9.  Installieren zusätzlicher Module
+## <a name="step-9-install-additional-modules"></a>Schritt 9: Installieren zusätzlicher Module
 Nun installieren Sie alle weiteren erforderlichen Module.
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+1. Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen.
 
-`cd azuread`
+    `cd azuread`
 
-Geben Sie zur Installation der folgenden Module im Verzeichnis „node_modules“ die folgenden Befehle ein:
+2. Geben Sie zum Installieren dieser Module im Verzeichnis **node_modules** die folgenden Befehle ein:
 
-* `npm install assert-plus`
-* `npm install bunyan`
-* `npm update`
+    * `npm install assert-plus`
+    * `npm install bunyan`
+    * `npm update`
 
-## <a name="10-create-a-serverjs-with-your-dependencies"></a>10. Erstellen der Datei „server.js“ mit Ihren Abhängigkeiten
-Der größte Teil der Funktionalität unseres Web-API-Servers wird in der Datei „server.js“ bereitgestellt. Sie fügen den größten Teil des Codes dieser Datei hinzu. Für Produktionszwecke würden Sie die Funktionalität auf kleinere Dateien aufteilen und so zum Beispiel Routen und Controller getrennt behandeln. Zu Demonstrationszwecken packen wir die gesamte Funktionalität hier aber nur in die Datei „server.js“.
+## <a name="step-10-create-a-serverjs-with-your-dependencies"></a>Schritt 10: Erstellen der Datei „server.js“ mit Ihren Abhängigkeiten
+Die Datei „server.js“ enthält den Großteil der Funktionalität für unseren API-Server. Sie fügen den größten Teil unseres Codes dieser Datei hinzu. Für Produktionszwecke empfehlen wir Ihnen, die Funktionalität auf kleinere Dateien aufzuteilen und so beispielsweise Routen und Controller getrennt zu behandeln. In dieser Demonstration verwenden wir „server.js“ für diese Funktionalität.
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+1. Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen.
 
-`cd azuread`
+    `cd azuread`
 
-Erstellen Sie eine `server.js` -Datei in Ihrem bevorzugten Editor, und fügen Sie ihr die folgenden Informationen hinzu:
+2. Erstellen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie ihr dann die folgenden Informationen hinzu:
 
-```Javascript
-    'use strict';
+    ```Javascript
+        'use strict';
 
-    /**
-     * Module dependencies.
-     */
+        /**
+         * Module dependencies.
+         */
 
-    var fs = require('fs');
-    var path = require('path');
-    var util = require('util');
-    var assert = require('assert-plus');
-    var bunyan = require('bunyan');
-    var getopt = require('posix-getopt');
-    var mongoose = require('mongoose/');
-    var restify = require('restify');
-    var passport = require('passport');
-  var BearerStrategy = require('passport-azure-ad').BearerStrategy;
-```
+        var fs = require('fs');
+        var path = require('path');
+        var util = require('util');
+        var assert = require('assert-plus');
+        var bunyan = require('bunyan');
+        var getopt = require('posix-getopt');
+        var mongoose = require('mongoose/');
+        var restify = require('restify');
+        var passport = require('passport');
+      var BearerStrategy = require('passport-azure-ad').BearerStrategy;
+    ```
 
-Speichern Sie die Datei. Wir werden schon bald wieder auf diese Datei zurückkommen.
+3. Speichern Sie die Datei. Wir werden schon bald wieder auf diese Datei zurückkommen.
 
-## <a name="11-create-a-config-file-to-store-your-azure-ad-settings"></a>11. Erstellen einer Konfigurationsdatei für die Azure AD-Einstellungen
-Diese Codedatei übergibt Ihre Konfigurationsparameter aus dem Azure Active Directory-Portal an Passport.js. Sie haben diese Konfigurationswerte erstellt, als Sie die Web-API im ersten Teil dieser exemplarischen Vorgehensweise zum Portal hinzufügten. Sie erfahren nun, welche Werte Sie für diese Parameter eingeben, nachdem Sie den Code kopiert haben.
+## <a name="step-11-create-a-config-file-to-store-your-azure-ad-settings"></a>Schritt 11: Erstellen einer Konfigurationsdatei für die Azure AD-Einstellungen
+Diese Codedatei übergibt Ihre Konfigurationsparameter aus dem Azure Active Directory-Portal an Passport.js. Sie haben diese Konfigurationswerte erstellt, als Sie die Web-API im ersten Teil dieser exemplarischen Vorgehensweise dem Portal hinzugefügt haben. Welche Werte Sie für diese Parameter eingeben sollen, erfahren Sie, nachdem Sie den Code kopiert haben.
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+1. Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen.
 
-`cd azuread`
+    `cd azuread`
 
-Erstellen Sie eine `config.js` -Datei in Ihrem bevorzugten Editor, und fügen Sie ihr die folgenden Informationen hinzu:
+2. Erstellen Sie die Datei `config.js` in Ihrem bevorzugten Editor, und fügen Sie ihr dann die folgenden Informationen hinzu:
 
-```Javascript
- exports.creds = {
-     mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
-     clientID: 'your client ID',
-     audience: 'your application URL',
-    // you cannot have users from multiple tenants sign in to your server unless you use the common endpoint
-  // example: https://login.microsoftonline.com/common/.well-known/openid-configuration
-     identityMetadata: 'https://login.microsoftonline.com/<your tenant id>/.well-known/openid-configuration',
-     validateIssuer: true, // if you have validation on, you cannot have users from multiple tenants sign in to your server
-     passReqToCallback: false,
-     loggingLevel: 'info' // valid are 'info', 'warn', 'error'. Error always goes to stderr in Unix.
+    ```Javascript
+         exports.creds = {
+             mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
+             clientID: 'your client ID',
+             audience: 'your application URL',
+            // you cannot have users from multiple tenants sign in to your server unless you use the common endpoint
+          // example: https://login.microsoftonline.com/common/.well-known/openid-configuration
+             identityMetadata: 'https://login.microsoftonline.com/<your tenant id>/.well-known/openid-configuration',
+             validateIssuer: true, // if you have validation on, you cannot have users from multiple tenants sign in to your server
+             passReqToCallback: false,
+             loggingLevel: 'info' // valid are 'info', 'warn', 'error'. Error always goes to stderr in Unix.
 
- };
+         };
+    ```
+3. Speichern Sie die Datei .
 
+## <a name="step-12-add-configuration-values-to-your-serverjs-file"></a>Schritt 12: Hinzufügen von Konfigurationswerten zur Datei „server.js“
+Diese Werte müssen aus der Konfigurationsdatei gelesen werden, die Sie übergreifend für die Anwendung erstellt haben. Fügen Sie die Konfigurationsdatei in der Anwendung hierzu als erforderliche Ressource hinzu. Anschließend legen wir die globalen Variablen so fest, dass sie mit den Variablen im Dokument „config.js“ übereinstimmen.
 
-```
-Speichern Sie die Datei.
+1. Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen.
 
-## <a name="12-add-configuration-to-your-serverjs-file"></a>12. Hinzufügen der Konfiguration zur Datei „server.js“
-Diese Werte müssen für die gesamte Anwendung aus der eben erstellten Konfigurationsdatei gelesen werden. Dazu fügen wir die .config-Datei einfach als erforderliche Ressource zur Anwendung hinzu. Danach legen wir für die globalen Variablen die im Dokument config.js angegebenen Werte fest.
+    `cd azuread`
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+2. Öffnen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie ihr dann die folgenden Informationen hinzu:
 
-`cd azuread`
+    ```Javascript
+    var config = require('./config');
+    ```
+3. Fügen Sie der Datei `server.js` dann einen neuen Abschnitt mit dem folgenden Code hinzu:
 
-Öffnen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie ihr die folgenden Informationen hinzu:
+    ```Javascript
+    var options = {
+        // The URL of the metadata document for your app. We will put the keys for token validation from the URL found in the jwks_uri tag of the in the metadata.
+        identityMetadata: config.creds.identityMetadata,
+        clientID: config.creds.clientID,
+        validateIssuer: config.creds.validateIssuer,
+        audience: config.creds.audience,
+        passReqToCallback: config.creds.passReqToCallback,
+        loggingLevel: config.creds.loggingLevel
 
-```Javascript
-var config = require('./config');
-```
-Fügen Sie der Datei `server.js` dann einen neuen Abschnitt mit dem folgenden Code hinzu:
+    };
 
-```Javascript
-var options = {
-    // The URL of the metadata document for your app. We will put the keys for token validation from the URL found in the jwks_uri tag of the in the metadata.
-    identityMetadata: config.creds.identityMetadata,
-    clientID: config.creds.clientID,
-    validateIssuer: config.creds.validateIssuer,
-    audience: config.creds.audience,
-    passReqToCallback: config.creds.passReqToCallback,
-    loggingLevel: config.creds.loggingLevel
+    // Array to hold logged in users and the current logged in user (owner).
+    var users = [];
+    var owner = null;
 
-};
+    // Our logger.
+    var log = bunyan.createLogger({
+        name: 'Azure Active Directory Bearer Sample',
+             streams: [
+            {
+                stream: process.stderr,
+                level: "error",
+                name: "error"
+            },
+            {
+                stream: process.stdout,
+                level: "warn",
+                name: "console"
+            }, ]
+    });
 
-// array to hold logged in users and the current logged in user (owner)
-var users = [];
-var owner = null;
+      // If the logging level is specified, switch to it.
+      if (config.creds.loggingLevel) { log.levels("console", config.creds.loggingLevel); }
 
-// Our logger
-var log = bunyan.createLogger({
-    name: 'Azure Active Directory Bearer Sample',
-         streams: [
-        {
-            stream: process.stderr,
-            level: "error",
-            name: "error"
-        },
-        {
-            stream: process.stdout,
-            level: "warn",
-            name: "console"
-        }, ]
-});
+    // MongoDB setup.
+    // Set up some configuration.
+    var serverPort = process.env.PORT || 8080;
+    var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
+    ```
 
-  // if logging level specified, switch to it.
-  if (config.creds.loggingLevel) { log.levels("console", config.creds.loggingLevel); }
+4. Speichern Sie die Datei .
 
-// MongoDB setup
-// Setup some configuration
-var serverPort = process.env.PORT || 8080;
-var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
-```
-
-Speichern Sie die Datei.
-
-## <a name="13-add-the-mongodb-model-and-schema-information-using-moongoose"></a>13. Hinzufügen der Modell- und Schemainformationen von MongoDB mithilfe von Moongoose
+## <a name="step-13-add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Schritt 13: Hinzufügen der Modell- und Schemainformationen von MongoDB mithilfe von Mongoose
 Die vorangegangenen Vorbereitungen werden nun, da wir diese drei Dateien zu einem REST-API-Dienst kombinieren, Früchte tragen.
 
-In dieser exemplarischen Vorgehensweise verwenden wir MongoDB zum Speichern unserer Aufgaben, wie in ***Schritt 4*** beschrieben.
+In dieser exemplarischen Vorgehensweise verwenden wir MongoDB zum Speichern unserer Aufgaben, wie unter Schritt 4 beschrieben.
 
-Wie Sie sich bestimmt noch von der Datei `config.js` entsinnen, die wir in ***Schritt 11*** erstellt haben, nannten wir die Datenbank `tasklist`, denn dies war die Zeichenfolge, die wir am Ende der Verbindungs-URL „mogoose_auth_local“ eingegeben haben. Sie müssen diese Datenbank nicht im Voraus in MongoDB erstellen, denn sie wird, wenn sie noch nicht vorhanden ist, automatisch bei der ersten Ausführung der Serveranwendung erstellt.
+In der Datei `config.js`, die wir in Schritt 11 erstellt haben, haben wir der Datenbank den Namen `tasklist` gegeben, denn dies war die Zeichenfolge, die wir am Ende der Verbindungs-URL **mongoose_auth_local** eingegeben haben. Sie müssen diese Datenbank nicht vorab in MongoDB erstellen. Stattdessen wird sie von MongoDB für uns bei der ersten Ausführung unserer Serveranwendung erstellt (sofern die Datenbank nicht bereits vorhanden ist).
 
-Nachdem der Server nun weiß, welche MongoDB-Datenbank er verwenden soll, müssen wir weiteren Code schreiben, der Modell und Schema der Serveraufgaben erstellt.
+Nachdem der Server nun weiß, welche MongoDB-Datenbank er verwenden soll, müssen wir weiteren Code schreiben, mit dem Modell und Schema der Serveraufgaben erstellt werden.
 
-#### <a name="discussion-of-the-model"></a>Beschreibung des Modells
-Unsere Schemamodell ist sehr einfach: Sie können es nach Bedarf erweitern.
+### <a name="discussion-of-the-model"></a>Beschreibung des Modells
+Hierbei handelt es sich um ein einfaches Schemamodell. Sie können es nach Bedarf erweitern.
 
-NAME – Der Name des Benutzers, der der Aufgabe zugeordnet ist. Eine ***Zeichenfolge***
+NAME: Der Name der Person, die der Aufgabe zugewiesen ist. Dies ist eine **Zeichenfolge**.
 
-TASK – Die Aufgabe selbst. Eine ***Zeichenfolge***
+TASK: Die eigentliche Aufgabe. Dies ist eine **Zeichenfolge**.
 
-DATE – Das Datum, an dem die Aufgabe fällig ist. Ein ***DATUM/ZEIT***-Wert
+DATE: Das Datum, an dem die Aufgabe fällig ist. Ein **DATETIME**-Wert.
 
-COMPLETED – Gibt an, ob die Aufgabe abgeschlossen ist. Ein ***BOOLESCHER*** Wert
+COMPLETED: Gibt an, ob die Aufgabe abgeschlossen wurde. Ein **BOOLESCHER** Wert.
 
-#### <a name="creating-the-schema-in-the-code"></a>Erstellen des Schemas im Code
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+### <a name="creating-the-schema-in-the-code"></a>Erstellen des Schemas im Code
+1. Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen.
 
-`cd azuread`
+    `cd azuread`
 
-Öffnen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie ihr nach dem Konfigurationseintrag die folgenden Informationen hinzu:
+2. Öffnen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie ihr nach dem Konfigurationseintrag dann die folgenden Informationen hinzu:
 
-```Javascript
-// Connect to MongoDB
-global.db = mongoose.connect(serverURI);
-var Schema = mongoose.Schema;
-log.info('MongoDB Schema loaded');
+    ```Javascript
+    // Connect to MongoDB.
+    global.db = mongoose.connect(serverURI);
+    var Schema = mongoose.Schema;
+    log.info('MongoDB Schema loaded');
 
-// Here we create a schema to store our tasks and users. Pretty simple schema for now.
-var TaskSchema = new Schema({
-    owner: String,
-    task: String,
-    completed: Boolean,
-    date: Date
-});
+    // Here we create a schema to store our tasks and users. It's a fairly simple schema for now.
+    var TaskSchema = new Schema({
+        owner: String,
+        task: String,
+        completed: Boolean,
+        date: Date
+    });
 
-// Use the schema to register a model
-mongoose.model('Task', TaskSchema);
-var Task = mongoose.model('Task');
-```
-Wie Sie dem Code entnehmen können, erstellen wir zunächst unser Schema und danach ein Modellobjekt, das wir im gesamten Code zum Speichern der Daten verwenden, wenn wir die ***Routen*** definieren.
+    // Use the schema to register a model.
+    mongoose.model('Task', TaskSchema);
+    var Task = mongoose.model('Task');
+    ```
+Wie im Code zu sehen ist, erstellen wir zuerst das Schema. Anschließend erstellen wir ein Modellobjekt, das wir zum Speichern unserer Daten im gesamten Code verwenden, wenn wir unsere **Routen** definieren.
 
-## <a name="14-add-our-routes-for-our-task-rest-api-server"></a>14. Hinzufügen der Routen für den Task-REST-API-Server
-Nachdem das Datenbankmodell erstellt ist, fügen wir die Routen hinzu, die wir für die REST-API-Server benötigen.
+## <a name="step-14-add-our-routes-for-our-task-rest-api-server"></a>Schritt 14: Hinzufügen der Routen für den Aufgaben-REST-API-Server
+Nachdem das Datenbankmodell erstellt ist, fügen wir die Routen hinzu, die wir für den REST-API-Server benötigen.
 
 ### <a name="about-routes-in-restify"></a>Routen in Restify
-Routen funktionieren in Restify auf genau dieselbe Weise wie im Express-Stack. Sie definieren die Routen mit den URIs, die die Client-Anwendungen Ihrer Erwartung nach aufrufen werden. In der Regel werden Routen in einer separaten Datei definiert. Für die Zwecke dieser Demonstration fügen wir sie jedoch der Datei „server.js“ hinzu. Wenn Sie das Beispiel für Produktionszwecke verwenden möchten, empfehlen wir Ihnen, die Routen in einer eigenen Datei zu definieren.
+Routen funktionieren in Restify genauso wie im Express-Stapel. Sie definieren die Routen mit den URIs, die die Client-Anwendungen Ihrer Erwartung nach aufrufen werden. In der Regel werden Routen in einer separaten Datei definiert. Für die Zwecke dieser Demonstration fügen wir die Routen aber der Datei „server.js“ hinzu. Wenn Sie das Beispiel für Produktionszwecke verwenden möchten, empfehlen wir Ihnen, die Routen in einer eigenen Datei zu definieren.
 
-Hier ein typisches Muster für eine Restify-Route:
+Ein typisches Muster für eine Restify-Route lautet:
 
 ```Javascript
 function createObject(req, res, next) {
 
-// do work on Object
+// Do work on object.
 
  _object.name = req.params.object; // passed value is in req.params under object
 
  ///...
 
-return next(); // keep the server going
+return next(); // Keep the server going.
 }
 
 ....
 
-server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
+server.post('/service/:add/:object', createObject); // Calls createObject on routes that match this.
 
 ```
 
 
-Dies ist das einfachste Muster. Restify (und Express) bieten weitaus tiefere Funktionalität wie das Definieren von Anwendungstypen und Ausführen komplexer Weiterleitungen über mehrere Endpunkte. Für unsere Zwecke halten wir diese Routen sehr einfach.
+Dies ist das einfachste Muster. Restify (und Express) bieten weitaus tiefere Funktionalität, z.B. das Definieren von Anwendungstypen und Bereitstellen von komplexen Weiterleitungen über mehrere Endpunkte. Für unsere Zwecke halten wir diese Routen möglichst einfach.
 
-### <a name="1-add-default-routes-to-our-server"></a>1. Hinzufügen von Standardrouten zum Server
+### <a name="add-default-routes-to-our-server"></a>Hinzufügen von Standardrouten zum Server
 Nachfolgend fügen Sie die CRUD-Routen (Create (Erstellen), Retrieve (Abrufen), Update (Aktualisieren) und Delete (Löschen)) hinzu.
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+1. Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen:
 
-`cd azuread`
+    `cd azuread`
 
-Öffnen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie ihr nach den zuvor erfolgten Datenbankeinträgen die folgenden Informationen hinzu:
+2. Öffnen Sie die Datei `server.js` in Ihrem bevorzugten Editor, und fügen Sie dann unterhalb Ihrer vorherigen Datenbankeinträge die folgenden Informationen hinzu:
 
 ```Javascript
 
 /**
  *
- * APIs for our REST Task server
+ * APIs for our REST Task server.
  */
 
-// Create a task
+// Create a task.
 
 function createTask(req, res, next) {
 
-    // Resitify currently has a bug which doesn't allow you to set default headers
-    // This headers comply with CORS and allow us to mongodbServer our response to any origin
+    // Restify currently has a bug which doesn't allow you to set default headers.
+    // These headers comply with CORS and allow us to mongodbServer our response to any origin.
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // Create a new task model, fill it up and save it to Mongodb
+    // Create a new task model, fill it, and save it to Mongodb.
     var _task = new Task();
 
     if (!req.params.task) {
@@ -453,7 +464,7 @@ function createTask(req, res, next) {
 }
 
 
-// Delete a task by name
+// Delete a task by name.
 
 function removeTask(req, res, next) {
 
@@ -474,7 +485,7 @@ function removeTask(req, res, next) {
     });
 }
 
-// Delete all tasks
+// Delete all tasks.
 
 function removeAll(req, res, next) {
     Task.remove();
@@ -483,7 +494,7 @@ function removeAll(req, res, next) {
 }
 
 
-// Get a specific task based on name
+// Get a specific task based on name.
 
 function getTask(req, res, next) {
 
@@ -506,8 +517,8 @@ function getTask(req, res, next) {
 /// Simple returns the list of TODOs that were loaded.
 
 function listTasks(req, res, next) {
-    // Resitify currently has a bug which doesn't allow you to set default headers
-    // This headers comply with CORS and allow us to mongodbServer our response to any origin
+    // Restify currently has a bug which doesn't allow you to set default headers.
+    // These headers comply with CORS and allow us to mongodbServer our response to any origin.
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -527,7 +538,7 @@ function listTasks(req, res, next) {
         }
 
         if (!data.length) {
-            log.warn(err, "There is no tasks in the database. Did you initalize the database as stated in the README?");
+            log.warn(err, "There is no tasks in the database. Did you initialize the database as stated in the README?");
         }
 
         if (!owner) {
@@ -544,10 +555,10 @@ function listTasks(req, res, next) {
 
 ```
 
-### <a name="2-next-lets-add-some-error-handling-in-our-apis"></a>2. Fügen wir unseren APIs nun noch einen Fehlerbehandlungsmechanismus hinzu:
+### <a name="add-error-handling-in-our-apis"></a>Hinzufügen der Fehlerbehandlung in den APIs
 ```
 
-///--- Errors for communicating something interesting back to the client
+///--- Errors for communicating something interesting back to the client.
 
 function MissingTaskError() {
     restify.RestError.call(this, {
@@ -594,14 +605,14 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ```
 
 
-## <a name="15-create-your-server"></a>15. Erstellen des Servers
-Unsere Datenbank ist definiert, die Routen sind erstellt, nun müssen wir nur noch die Serverinstanz hinzufügen, die unsere Aufrufe verwaltet.
+## <a name="step-15-create-your-server"></a>Schritt 15: Erstellen des Servers
+Wir haben unsere Datenbank definiert, und unsere Routen sind vorhanden. Als Letztes müssen wir nur noch die Serverinstanz zum Verwalten unserer Aufrufe hinzufügen.
 
-Restify (und Express) bieten für einen REST-API-Server sehr viele Möglichkeiten der Anpassung, jedoch verwenden wir für unsere Zwecke auch hier nur die grundlegenden Einstellungen.
+In Restify (und Express) haben Sie für einen REST-API-Server sehr viele Anpassungsmöglichkeiten, aber wir verwenden für unsere Zwecke auch hier nur die grundlegenden Einstellungen.
 
 ```Javascript
 /**
- * Our Server
+ * Our server.
  */
 
 
@@ -610,44 +621,44 @@ var server = restify.createServer({
     version: "2.0.1"
 });
 
-// Ensure we don't drop data on uploads
+// Ensure we don't drop data on uploads.
 server.pre(restify.pre.pause());
 
-// Clean up sloppy paths like //todo//////1//
+// Clean up sloppy paths like //todo//////1//.
 server.pre(restify.pre.sanitizePath());
 
-// Handles annoying user agents (curl)
+// Handle annoying user agents (curl).
 server.pre(restify.pre.userAgentConnection());
 
-// Set a per request bunyan logger (with requestid filled in)
+// Set a per request bunyan logger (with requestid filled in).
 server.use(restify.requestLogger());
 
-// Allow 5 requests/second by IP, and burst to 10
+// Allow five requests per second by IP, and burst to 10.
 server.use(restify.throttle({
     burst: 10,
     rate: 5,
     ip: true,
 }));
 
-// Use the common stuff you probably want
+// Use the common stuff you probably want.
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.dateParser());
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser({
     mapParams: true
-})); // Allows for JSON mapping to REST
+})); // Allow for JSON mapping to REST.
 ```
 
-## <a name="16-adding-the-routes-to-the-server-without-authentication-for-now"></a>16. Hinzufügen der Routen zum Server (vorläufig ohne Authentifizierung)
+## <a name="step-16-add-the-routes-to-the-server-without-authentication-for-now"></a>Schritt 16: Hinzufügen der Routen zum Server (vorläufig ohne Authentifizierung)
 ```Javascript
-/// Now the real handlers. Here we just CRUD
+/// Now the real handlers. Here we just CRUD.
 /**
 /*
-/* Each of these handlers are protected by our OIDCBearerStrategy by invoking 'oidc-bearer'
-/* in the pasport.authenticate() method. We set 'session: false' as REST is stateless and
-/* we don't need to maintain session state. You can experiement removing API protection
-/* by removing the passport.authenticate() method like so:
+/* Each of these handlers is protected by our OIDCBearerStrategy by invoking 'oidc-bearer'.
+/* In the pasport.authenticate() method. We set 'session: false' because REST is stateless and
+/* we don't need to maintain session state. You can experiment with removing API protection
+/* by removing the passport.authenticate() method as follows:
 /*
 /* server.get('/tasks', listTasks);
 /*
@@ -665,7 +676,7 @@ server.del('/tasks', removeAll, function respond(req, res, next) {
 res.send(204);
 next();
 });
-// Register a default '/' handler
+// Register a default '/' handler.
 server.get('/', function root(req, res, next) {
 var routes = [
 'GET /',
@@ -690,151 +701,150 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 });
 ```
 
-## <a name="17-before-we-add-oauth-support-lets-run-the-server"></a>17. Ausführen des Servers vor dem Hinzufügen der OAuth-Unterstützung
+## <a name="step-17-run-the-server-before-adding-oauth-support"></a>Schritt 17: Ausführen des Servers (vor dem Hinzufügen der OAuth-Unterstützung)
 Testen Sie den Server vor dem Hinzufügen der Authentifizierung.
 
-Am einfachsten geht das, indem Sie "curl" an einer Befehlszeile verwenden. Dazu benötigen wir aber ein einfaches Dienstprogramm, mit dem die Ausgabe als JSON analysiert werden kann. Installieren Sie dazu das Tool JSON (dieses Tool wird von allen nachfolgenden Beispielen verwendet).
+Am einfachsten können Sie Ihren Server testen, indem Sie „curl“ an einer Befehlszeile verwenden. Hierzu benötigen wir aber ein Hilfsprogramm, mit dem die Ausgabe als JSON-Code analysiert werden kann.
 
-`$npm install -g jsontool`
+1. Installieren Sie das folgende JSON-Tool (es wird in allen folgenden Beispielen verwendet):
 
-Dadurch wird das Tool JSON global installiert. Jetzt können wir uns dem Server zuwenden:
+    `$npm install -g jsontool`
 
-Vergewissern Sie sich zunächst, dass Ihre MonogoDB-Instanz ausgeführt wird.
+    Dadurch wird das Tool JSON global installiert. Jetzt können wir uns dem Server zuwenden:
 
-`$sudo mongod`
+2. Vergewissern Sie sich zuerst, dass die MongoDB-Instanz ausgeführt wird:
 
-Wechseln Sie danach zum Verzeichnis, und beginnen Sie mit dem Curling.
+    `$sudo mongod`
 
-`$ cd azuread`
-`$ node server.js`
+3. Wechseln Sie danach zum Verzeichnis, und beginnen Sie mit dem „Curling“:
 
-`$ curl -isS http://127.0.0.1:8080 | json`
+    `$ cd azuread`
+    `$ node server.js`
 
-```Shell
-HTTP/1.1 200 OK
-Connection: close
-Content-Type: application/json
-Content-Length: 171
-Date: Tue, 14 Jul 2015 05:43:38 GMT
-[
-"GET /",
-"POST /tasks/:owner/:task",
-"POST /tasks (for JSON body)",
-"GET /tasks",
-"PUT /tasks/:owner",
-"GET /tasks/:owner",
-"DELETE /tasks/:owner/:task"
-]
-```
+    `$ curl -isS http://127.0.0.1:8080 | json`
 
-Nun können Sie wie folgt eine Aufgabe hinzufügen:
+    ```Shell
+    HTTP/1.1 200 OK
+    Connection: close
+    Content-Type: application/json
+    Content-Length: 171
+    Date: Tue, 14 Jul 2015 05:43:38 GMT
+    [
+    "GET /",
+    "POST /tasks/:owner/:task",
+    "POST /tasks (for JSON body)",
+    "GET /tasks",
+    "PUT /tasks/:owner",
+    "GET /tasks/:owner",
+    "DELETE /tasks/:owner/:task"
+    ]
+    ```
 
-`$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
+4. Nun können Sie wie folgt eine Aufgabe hinzufügen:
 
-Die Antwort sollte wie folgt lauten:
+    `$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
 
-```Shell
-HTTP/1.1 201 Created
-Connection: close
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Headers: X-Requested-With
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 5
-Date: Tue, 04 Feb 2014 01:02:26 GMT
-Hello
-```
-Brandons Aufgaben können wir nun beispielsweise wie folgt auflisten:
+    Die Antwort sollte wie folgt lauten:
 
-`$ curl -isS http://127.0.0.1:8080/tasks/brandon/`
+        ```Shell
+        HTTP/1.1 201 Created
+        Connection: close
+        Access-Control-Allow-Origin: *
+        Access-Control-Allow-Headers: X-Requested-With
+        Content-Type: application/x-www-form-urlencoded
+        Content-Length: 5
+        Date: Tue, 04 Feb 2014 01:02:26 GMT
+        Hello
+        ```
+    Brandons Aufgaben können wir nun beispielsweise wie folgt auflisten:
 
-Wenn all dies funktioniert, können wir OAuth zum REST-API-Server hinzufügen.
+        `$ curl -isS http://127.0.0.1:8080/tasks/brandon/`
 
-**Sie verfügen über einen REST-API-Server mit MongoDB.**
+Wenn all dies funktioniert, können wir OAuth dem REST-API-Server hinzufügen.
 
-## <a name="18-add-authentication-to-our-rest-api-server"></a>18. Hinzufügen der Authentifizierung zum REST-API-Server
-Nachdem unsere REST-API nun ordnungsgemäß funktioniert (herzlichen Glückwunsch im übrigen), wollen wir sie mit Azure AD integrieren, um sie dort nutzen zu können.
+Sie verfügen über einen REST-API-Server mit MongoDB.
 
-Wechseln Sie an der Befehlszeile zum Verzeichnis **azuread** , sofern noch nicht geschehen:
+## <a name="step-18-add-authentication-to-our-rest-api-server"></a>Schritt 18: Hinzufügen der Authentifizierung zum REST-API-Server
+Nachdem wir nun über eine ausgeführte REST-API verfügen, können wir sie für die Nutzung mit Azure AD einrichten.
+
+Wechseln Sie an der Befehlszeile zum Ordner **azuread**, sofern noch nicht geschehen.
 
 `cd azuread`
 
-### <a name="1-use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>1: Verwenden von "OIDCBearerStrategy" (in "passport-azure-ad" enthalten)
+### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Verwenden von „OIDCBearerStrategy“ (in „passport-azure-ad“ enthalten)
 Bisher haben wir einen normalen REST-TODO-Server ohne jegliche Autorisierung erstellt. Jetzt beginnen wir damit, dies zusammenzusetzen.
 
-Zunächst müssen wir darauf hinweisen, dass wir Passport verwenden möchten. Fügen Sie diesen Hinweis direkt nach der sonstigen Serverkonfiguration ein:
+1. Zunächst müssen wir darauf hinweisen, dass wir Passport verwenden möchten. Fügen Sie diesen Hinweis direkt nach der sonstigen Serverkonfiguration ein:
+
+    ```Javascript
+            // Let's start using Passport.js.
+
+            server.use(passport.initialize()); // Starts passport.
+            server.use(passport.session()); // Provides session support.
+    ```
+    > [!TIP]
+    > Für das Schreiben von APIs empfehlen wir Ihnen, die Daten immer mit einem eindeutigen Element aus dem Token zu verknüpfen, das der Benutzer nicht spoofen kann. Wenn dieser Server TODO-Elemente speichert, speichert er sie basierend auf der Objekt-ID des Benutzers im Token (Aufruf per „token.oid“), die wir in das Feld „owner“ aufnehmen. So wird sichergestellt, dass nur dieser Benutzer auf seine TODO-Elemente zugreifen kann. Es ist keine Offenlegung in der API von „owner“ vorgesehen. Also kann ein externer Benutzer die TODO-Elemente von anderen auch dann anfordern, wenn eine Authentifizierung durchgeführt wurde.                    
+
+2. Verwenden Sie als Nächstes die zu `passport-azure-ad` gehörende Bearerstrategie. Sehen Sie sich zuerst einmal den Code an. Der Rest wird in Kürze beschrieben. Fügen Sie diesen Code nach dem Code ein, den Sie weiter oben hinzugefügt haben:
 
 ```Javascript
-// Let's start using Passport.js
+    /**
+    /*
+    /* Calling the OIDCBearerStrategy and managing users.
+    /*
+    /* Passport pattern provides the need to manage users and info tokens
+    /* with a FindorCreate() method that must be provided by the implementor.
+    /* Here we just auto-register any user and implement a FindById().
+    /* You'll want to do something smarter.
+    **/
 
-server.use(passport.initialize()); // Starts passport
-server.use(passport.session()); // Provides session support
-```
-
-> [!TIP]
-> Beim Schreiben von APIs sollten Sie die Daten immer mit einem eindeutigen Element aus dem Token verknüpfen, das der Benutzer nicht spoofen kann. Wenn dieser Server TODO-Elemente speichert, speichert er sie entsprechend der Objekt-ID des Benutzers im Token (wird "token.sub" genannt), die wir in das Feld "owner" aufnehmen. Dadurch wird sichergestellt, dass nur dieser Benutzer auf seine TODOs zugreifen kann und dass sonst niemand auf die eingegebenen TODOs zugreifen kann. Es ist keine Offenlegung in den APIs von "owner" vorgesehen, also kann ein externer Benutzer TODOs von anderen anfordern, selbst wenn eine Authentifizierung erfolgt ist.
-> 
-> 
-
-Als Nächstes verwenden wir die Strategie "Bearer", die zu "passport-azure-ad" gehört. Sehen wir uns jetzt nur den Code an, den ich kurz erläutern werde. Fügen Sie ihn nach dem ein, was Sie weiter oben hinzugefügt haben:
-
-```Javascript
-/**
-/*
-/* Calling the OIDCBearerStrategy and managing users
-/*
-/* Passport pattern provides the need to manage users and info tokens
-/* with a FindorCreate() method that must be provided by the implementor.
-/* Here we just autoregister any user and implement a FindById().
-/* You'll want to do something smarter.
-**/
-
-var findById = function(id, fn) {
-    for (var i = 0, len = users.length; i < len; i++) {
-        var user = users[i];
-        if (user.sub === id) {
-            log.info('Found user: ', user);
-            return fn(null, user);
+    var findById = function(id, fn) {
+        for (var i = 0, len = users.length; i < len; i++) {
+            var user = users[i];
+            if (user.sub === id) {
+                log.info('Found user: ', user);
+                return fn(null, user);
+            }
         }
-    }
-    return fn(null, null);
-};
+        return fn(null, null);
+    };
 
 
-var bearerStrategy = new BearerStrategy(options,
-    function(token, done) {
-        log.info('verifying the user');
-        log.info(token, 'was the token retreived');
-        findById(token.sub, function(err, user) {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
-                // "Auto-registration"
-                log.info('User was added automatically as they were new. Their sub is: ', token.sub);
-                users.push(token);
+    var bearerStrategy = new BearerStrategy(options,
+        function(token, done) {
+            log.info('verifying the user');
+            log.info(token, 'was the token retreived');
+            findById(token.sub, function(err, user) {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    // "Auto-registration"
+                    log.info('User was added automatically as they were new. Their sub is: ', token.sub);
+                    users.push(token);
+                    owner = token.sub;
+                    return done(null, token);
+                }
                 owner = token.sub;
-                return done(null, token);
-            }
-            owner = token.sub;
-            return done(null, user, token);
-        });
-    }
-);
+                return done(null, user, token);
+            });
+        }
+    );
 
-passport.use(bearerStrategy);
+    passport.use(bearerStrategy);
 ```
 
-Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook usw.), das beim Schreiben aller Strategien eingehalten wird. Beim Betrachten der Strategie sehen Sie, dass ein function()-Element übergeben wird, das Token- und done-Elemente als Parameter aufweist. Die Strategie kehrt wieder an den Ausgangspunkt zurück, sobald die gesamte Arbeit abgeschlossen ist. Sobald dies der Fall ist, speichern wir den Benutzer und das Token, damit wir beides nicht mehr erfragen müssen.
+Passport verwendet ein ähnliches Muster für alle Strategien (Twitter, Facebook usw.), das beim Schreiben aller Strategien eingehalten wird. Beim Betrachten der Strategie sehen Sie, dass eine Funktion übergeben wird, die token- und done-Elemente als Parameter aufweist. Die Strategie kehrt wieder an den Ausgangspunkt zurück, sobald die Arbeit abgeschlossen ist. Wenn dies der Fall ist, speichern wir den Benutzer und das Token, damit wir beides nicht mehr erfragen müssen.
 
 > [!IMPORTANT]
-> Der obige Code erfasst alle Benutzer, die sich an unserem Server authentifizieren. Dies wird als automatische Registrierung bezeichnet. Bei Produktionsservern müssten die Benutzer zunächst einen Registrierungsprozess durchlaufen, den Sie festlegen. Dies ist normalerweise das Muster, das Sie bei Consumer-Apps finden, die es Ihnen ermöglichen, sich bei Facebook zu registrieren, aber dann dazu auffordern, zusätzliche Informationen anzugeben. Wenn dies nicht ein Befehlszeilenprogramm wäre, könnten wir einfach die E-Mail aus dem Tokenobjekt extrahieren, das zurückgegeben wird, und dann dazu auffordern, zusätzliche Informationen einzugeben. Da es sich um einen Testserver handelt, fügen wir sie einfach der Datenbank im Arbeitsspeicher hinzu.
-> 
-> 
+> Der obige Code erfasst alle Benutzer, die sich an unserem Server authentifizieren. Dies wird als automatische Registrierung bezeichnet. Für Produktionsserver empfehlen wir, Benutzern den Zugriff nur zu erlauben, nachdem sie einen von Ihnen festgelegten Registrierungsprozess durchlaufen haben. Dies ist normalerweise das Muster, das Sie bei Consumer-Apps finden. Es ermöglicht Ihnen, sich bei Facebook zu registrieren, aber dann werden Sie aufgefordert, zusätzliche Informationen anzugeben. Wenn dies kein Befehlszeilenprogramm wäre, könnten wir die E-Mail aus dem Tokenobjekt extrahieren, das zurückgegeben wird, und dann Benutzer dazu auffordern, zusätzliche Informationen einzugeben. Da es sich um einen Testserver handelt, fügen wir sie einfach der Datenbank im Arbeitsspeicher hinzu.
+>
+>
 
-### <a name="2-finally-protect-some-endpoints"></a>2. Schützen einiger Endpunkte
+### <a name="protect-some-endpoints"></a>Schützen einiger Endpunkte
 Endpunkte schützen Sie mit dem Aufruf `passport.authenticate()`. Darin geben Sie das Protokoll an, das Sie verwenden möchten.
 
-Wir aber wollen nun unsere Route so bearbeiten, dass etwas Interessanteres geschieht:
+Wir bearbeiten nun die Route, um das Ergebnis des Servercodes interessanter zu gestalten.
 
 ```Javascript
 server.get('/tasks', passport.authenticate('oauth-bearer', {
@@ -872,49 +882,44 @@ next();
 });
 ```
 
-## <a name="19-run-your-server-application-again-and-ensure-it-rejects-you"></a>19. Erneutes Ausführen der Serveranwendung, wobei Sie nun abgelehnt werden sollten
-Führen wir `curl` erneut aus, um festzustellen, ob unsere Endpunkte nun durch OAuth2 geschützt sind. Dies machen wir auf jeden Fall, bevor einer unserer Client-SDKs an diesen Endpunkten ausgeführt wird. Die zurückgegebenen Header sollte uns bereits zeigen, dass wir auf dem richtigen Weg sind.
+## <a name="step-19-run-your-server-application-again-and-ensure-it-rejects-you"></a>Schritt 19: Erneutes Ausführen der Serveranwendung, wobei Sie nun abgelehnt werden sollten
+Wir führen `curl` erneut aus, um festzustellen, ob unsere Endpunkte nun durch OAuth2 geschützt sind. Wir führen diesen Test durch, bevor eines unserer Client-SDKs an diesen Endpunkten ausgeführt wird. Die zurückgegebenen Header sollten bereits zeigen, dass wir uns auf dem richtigen Weg befinden.
 
-Vergewissern Sie sich zunächst, dass die monogoDB-Instanz ausgeführt wird:
+1. Vergewissern Sie sich zuerst, dass die MongoDB-Instanz ausgeführt wird:
 
-  $sudo mongod
+    `$sudo mongod`
 
-Wechseln Sie danach zum Verzeichnis, und beginnen Sie mit dem Curling.
+2. Wechseln Sie danach zum Verzeichnis, und beginnen Sie mit dem „Curling“.
 
-  $ cd azuread $ node server.js
+      `$ cd azuread`
+      `$ node server.js`
 
-Probieren Sie es mit einem einfachen POST:
+3. Probieren Sie es mit einem einfachen POST.
 
-`$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
+    `$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
 
-```Shell
-HTTP/1.1 401 Unauthorized
-Connection: close
-WWW-Authenticate: Bearer realm="Users"
-Date: Tue, 14 Jul 2015 05:45:03 GMT
-Transfer-Encoding: chunked
-```
+    ```Shell
+    HTTP/1.1 401 Unauthorized
+    Connection: close
+    WWW-Authenticate: Bearer realm="Users"
+    Date: Tue, 14 Jul 2015 05:45:03 GMT
+    Transfer-Encoding: chunked
+    ```
 
-401 ist die Antwort, nach der Sie hier suchen, denn sie gibt an, dass die Passportebene eine Umleitung an den Autorisierungsendpunkt versucht, also genau das, was Sie wollen.
+In diesem Fall möchten Sie eine 401-Antwort erhalten. Mit dieser Antwort wird angegeben, dass die Passportebene versucht, eine Umleitung an den autorisierten Endpunkt durchzuführen. Dies ist genau das, was wir erreichen möchten.
 
-## <a name="congratulations-you-have-a-rest-api-service-using-oauth2"></a>Glückwunsch! Sie haben einen REST-API-Dienst erstellt, der OAuth2 verwendet!
-Sie haben nun mit diesem Server alles getan, was noch ohne einem OAuth2-konformen Client geht. Für alle weiteren Schritte müssen Sie die nächste exemplarische Vorgehensweise durchführen.
+## <a name="next-steps"></a>Nächste Schritte
+Sie haben für diesen Server nun alle Schritte ausgeführt, die ohne einen OAuth2-kompatiblen Client möglich sind. Für alle weiteren Schritte müssen Sie die nächste exemplarische Vorgehensweise durchführen.
 
-Wenn Sie lediglich wissen wollten, wie eine REST-API mit Restify und OAuth2 implementiert wird, haben Sie bereits mehr als genug Code zur Weiterentwicklung Ihres Diensts und Erweiterung dieses Beispiels.
+Sie haben gelernt, wie Sie eine REST-API mit Restify und OAuth2 implementieren. Außerdem verfügen Sie über mehr als genug Code zum Weiterentwickeln Ihres Diensts und können auf diesem Beispiel aufbauen.
 
-Wenn Sie Ihren Weg auf den Spuren von ADAL weiterverfolgen möchten, bieten wir Ihnen hier weitere unterstützte ADAL-Clients an, die wir Ihnen sehr für Ihre Arbeit empfehlen können:
+Wenn Sie Ihren Weg auf den Spuren von ADAL weiterverfolgen möchten, bieten wir Ihnen hier weitere unterstützte ADAL-Clients an, die wir Ihnen für Ihre Arbeit empfehlen können.
 
-Klonen Sie einfach hinunter zu Ihrem Entwicklungscomputer und führen Sie die Konfiguration aus, wie in der exemplarischen Vorgehensweise beschrieben.
+Erstellen Sie einem Klon auf Ihrem Entwicklungscomputer, und führen Sie die Konfiguration wie in der exemplarischen Vorgehensweise beschrieben durch.
 
 [ADAL für iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios)
 
 [ADAL für Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android)
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

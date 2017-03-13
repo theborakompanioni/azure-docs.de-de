@@ -1,9 +1,33 @@
 ---
-title: Create Azure container registry - portal | Microsoft Docs description: Get started creating and managing Azure container registries with the Azure portal services: container-registry documentationcenter: '' author: stevelas manager: balans editor: dlepow tags: ''keywords: ''
+title: "Erstellen einer privaten Docker-Registrierung – Azure-Portal | Microsoft-Dokumentation"
+description: Erste Schritte beim Erstellen und Verwalten von privaten Docker-Containerregistrierungen mit dem Azure-Portal
+services: container-registry
+documentationcenter: 
+author: stevelas
+manager: balans
+editor: dlepow
+tags: 
+keywords: 
+ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1
+ms.service: container-registry
+ms.devlang: na
+ms.topic: get-started-article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 11/14/2016
+ms.author: stevelas
+ms.custom: H1Hack27Feb2017
+translationtype: Human Translation
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 33944d34ce695e1729b761a7f762e24a6dce70a2
+ms.lasthandoff: 03/06/2017
 
-ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1 ms.service: container-registry ms.devlang: na ms.topic: get-started-article ms.tgt_pltfrm: na ms.workload: na ms.date: 11/14/2016 ms.author: stevelas ---# Create a container registry using the Azure portal Use the Azure portal to create a container registry and manage its settings. Sie können Containerregistrierungen auch mit den [Azure CLI 2.0-Befehlen](container-registry-get-started-azure-cli.md) oder programmgesteuert mit der [REST-API](https://go.microsoft.com/fwlink/p/?linkid=834376) für die Containerregistrierung erstellen und verwalten.
+---
 
-Hintergrundinformationen und Konzepte finden Sie unter [Was ist die Azure-Containerregistrierung?](container-registry-intro.md).
+# <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>Erstellen einer privaten Docker-Containerregistrierung mit dem Azure-Portal
+Verwenden Sie das Azure-Portal, um eine Containerregistrierung zu erstellen und die dazugehörigen Einstellungen zu verwalten. Sie können Containerregistrierungen auch mit den [Azure CLI 2.0-Befehlen](container-registry-get-started-azure-cli.md) oder programmgesteuert mit der [REST-API](https://go.microsoft.com/fwlink/p/?linkid=834376) für die Containerregistrierung erstellen und verwalten.
+
+Hintergrundinformationen und Konzepte finden Sie in der [Übersicht](container-registry-intro.md).
 
 
 > [!NOTE]
@@ -28,10 +52,10 @@ Hintergrundinformationen und Konzepte finden Sie unter [Was ist die Azure-Contai
    
     d. **Administratorbenutzer**: Bei Bedarf können Sie einem Administratorbenutzer Zugriff auf die Registrierung gewähren. Sie können diese Einstellung ändern, nachdem Sie die Registrierung erstellt haben.
    
-   > [!IMPORTANT]
-   > Neben der Gewährung des Zugriffs über ein Administratorbenutzerkonto unterstützen Containerregistrierungen die Authentifizierung anhand von Azure Active Directory-Dienstprinzipalen. Weitere Informationen und Beschreibungen von Aspekten finden Sie unter [Authenticate with a container registry](container-registry-authentication.md) (Authentifizieren mit einer Containerregistrierung).
-   
-
+    > [!IMPORTANT]
+    > Neben der Gewährung des Zugriffs über ein Administratorbenutzerkonto unterstützen Containerregistrierungen die Authentifizierung anhand von Azure Active Directory-Dienstprinzipalen. Weitere Informationen und Beschreibungen von Aspekten finden Sie unter [Authenticate with a container registry](container-registry-authentication.md) (Authentifizieren mit einer Containerregistrierung).
+    >
+    
     e. **Speicherkonto**: Verwenden Sie die Standardeinstellung, um ein [Speicherkonto](../storage/storage-introduction.md) zu erstellen, oder wählen Sie ein vorhandenes Speicherkonto an demselben Standort aus. Storage Premium wird derzeit nicht unterstützt.
 
 
@@ -52,6 +76,7 @@ Nach dem Erstellen der Registrierung können Sie im Portal über das Blatt **Con
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Freigeben Ihres ersten Image mit der Docker CLI](container-registry-get-started-docker-cli.md)
+
 
 
 
