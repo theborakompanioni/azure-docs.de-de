@@ -16,9 +16,9 @@ ms.topic: get-started-article
 ms.date: 02/28/2017
 ms.author: joflore
 translationtype: Human Translation
-ms.sourcegitcommit: d391aeacd5a755c3d344a359cae130788d1a5402
-ms.openlocfilehash: 02c7cd73951b7af83760ee10be4bb8f2da142283
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c40fca54b02f2673194ab16c41314f1e50be12be
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -80,13 +80,10 @@ Führen Sie die folgenden Schritte aus, um die Richtlinie für das Zurücksetzen
 
    ![][003]
 
-5. Scrollen Sie unterhalb der Registerkarte **Konfigurieren** bis zum Abschnitt **Richtlinie zum Zurücksetzen des Benutzerkennworts**.  Hier können Sie alle Aspekte der Richtlinie zum Zurücksetzen von Benutzerkennwörtern für ein vorgegebenes Verzeichnis konfigurieren. *Wenn die Registerkarte „Konfigurieren“ nicht angezeigt wird, sollten Sie sicherstellen, dass Sie sich für Azure Active Directory Premium oder Basic registriert und dem für das Konfigurieren dieser Funktion verwendeten Administratorkonto eine **Lizenz zugewiesen** haben.*  
+5. Scrollen Sie unterhalb der Registerkarte **Konfigurieren** bis zum Abschnitt **Richtlinie zum Zurücksetzen des Benutzerkennworts**.  Hier können Sie alle Aspekte der Richtlinie zum Zurücksetzen von Benutzerkennwörtern für ein vorgegebenes Verzeichnis konfigurieren. *Falls die Registerkarte „Konfigurieren“ nicht angezeigt wird, vergewissern Sie sich, dass Sie sich für Azure Active Directory Premium oder Basic registriert und dem Administratorkonto, das zum Konfigurieren des Features verwendet wird, eine __Lizenz zugewiesen__ haben.*  
 
    > [!NOTE]
    > **Die von Ihnen festgelegte Richtlinie gilt nur für Endbenutzer in Ihrer Organisation, nicht für Administratoren**. Aus Sicherheitsgründen steuert Microsoft die Richtlinie zum Zurücksetzen von Administratorkennwörtern. Für die aktuelle Richtlinie für Administratoren sind zwei Abfragen erforderlich: Mobiltelefon und E-Mail-Adresse.
-
-   >
-   >
 
    ![][004]
 6. Legen Sie zum Konfigurieren der Richtlinie für das Zurücksetzen von Benutzerkennwörtern den Umschalter **Benutzer sind für das Zurücksetzen des Kennworts aktiviert** auf **Ja** fest.  Es werden verschiedene weitere Steuerelemente angezeigt, mit deren Hilfe Sie die Funktionsweise dieses Features in Ihrem Verzeichnis konfigurieren können.  Passen Sie die Kennwortzurücksetzung nach Ihren Anforderungen an.  Wenn Sie mehr über die verschiedenen Steuerelemente zum Anpassen der Richtlinie für die Kennwortzurücksetzung wissen möchten, lesen Sie den Artikel [Anpassen: Azure AD-Kennwortverwaltung](active-directory-passwords-customize.md).
@@ -264,13 +261,19 @@ Sie können die erfolgreiche Installation des Diensts auch überprüfen, indem S
   ![][023]
 
 ### <a name="step-3-configure-your-firewall"></a>Schritt 3: Konfigurieren der Firewall
-Nachdem Sie das Kennwortrückschreiben aktiviert haben, müssen Sie sicherstellen, dass der Computer, auf dem Azure AD Connect ausgeführt wird, eine Verbindung mit Microsoft-Clouddiensten herstellen und somit Anforderungen zum Kennwortrückschreiben empfangen kann. Dieser Schritt beinhaltet die Aktualisierung von Verbindungsregeln in Ihren Netzwerkgeräten (Proxyserver, Firewalls usw.), um ausgehende Verbindungen mit bestimmten URLs und IP-Adressen von Microsoft über bestimmte Netzwerkports zuzulassen. Diese Änderungen variieren je nach Version des Azure AD Connect-Tools. Weitere Informationen finden Sie unter [Funktionsweise der Kennwortrückschreibung](active-directory-passwords-learn-more.md#how-password-writeback-works) und [Sicherheitsmodell für die Kennwortrückschreibung](active-directory-passwords-learn-more.md#password-writeback-security-model).
+Nachdem Sie das Kennwortrückschreiben aktiviert haben, müssen Sie sicherstellen, dass der Computer, auf dem Azure AD Connect ausgeführt wird, eine Verbindung mit Microsoft-Clouddiensten herstellen und somit Anforderungen zum Kennwortrückschreiben empfangen kann. Dieser Schritt beinhaltet die Aktualisierung von Verbindungsregeln in Ihren Netzwerkgeräten (Proxyserver, Firewalls usw.), um ausgehende Verbindungen mit bestimmten [URLs und IP-Adressen von Microsoft](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2?ui=en-US&rs=en-US&ad=US) über bestimmte Netzwerkports zuzulassen. Diese Änderungen variieren je nach Version des Azure AD Connect-Tools. Weitere Informationen finden Sie unter [Funktionsweise der Kennwortrückschreibung](active-directory-passwords-learn-more.md#how-password-writeback-works) und [Sicherheitsmodell für die Kennwortrückschreibung](active-directory-passwords-learn-more.md#password-writeback-security-model).
 
 #### <a name="why-do-i-need-to-do-this"></a>Weshalb ist dieser Schritt erforderlich?
 
 Damit das Kennwortrückschreiben korrekt funktioniert, muss der Computer, auf dem Azure AD Connect ausgeführt wird, ausgehende HTTPS-Verbindungen mit **.servicebus.windows.net* und bestimmten von Azure verwendeten IP-Adressen herstellen können. Diese IP-Adressen sind in der Liste [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Adressbereiche für Microsoft Azure-Datencenter) definiert.
 
-Azure AD Connect-Toolversionen 1.0.8667.0 und höher:
+Azure AD Connect-Tool ab **1.1.439.0** (neueste Version):
+
+- Die neueste Version des Azure AD Connect-Tools benötigt **ausgehenden HTTPS-Zugriff** auf Folgendes:
+    - *passwordreset.microsoftonline.com*
+    - *servicbus.windows.net*
+
+Für die Azure AD Connect-Toolversionen **1.0.8667.0** bis **1.1.380.0** gilt Folgendes:
 
 - **Option 1:** Zulassen aller ausgehenden HTTPS-Verbindungen über Port 443 (anhand der URL oder IP-Adresse)
     - Verwendung dieser Option:
@@ -298,6 +301,9 @@ Azure AD Connect-Toolversionen 1.0.8667.0 und höher:
 > Wenn Sie mit einer Azure AD Connect-Version vor 1.0.8667.0 arbeiten, empfiehlt Microsoft dringend, auf die [neueste Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) zu aktualisieren, die eine Reihe von Verbesserungen für das Rückschreiben im Netzwerk enthält und die Konfiguration vereinfacht.
 
 Nachdem die Netzwerkgeräte konfiguriert wurden, starten Sie den Computer neu, auf dem das Azure AD Connect-Tool ausgeführt wird.
+
+#### <a name="idle-connections-on-azure-ad-connect-114390-and-up"></a>Leerlaufverbindungen in Azure AD Connect (ab&1;.1.439.0)
+Das Azure AD Connect-Tool sendet regelmäßig Pings/Keep-Alives an ServiceBus-Endpunkte, um die Verbindungen aufrechtzuerhalten. Falls das Tool erkennt, dass zu viele Verbindungen getrennt werden, verkürzt es automatisch das Pingintervall für den Endpunkt. Das kleinstmögliche Pingintervall beträgt 60 Sekunden. **Wir empfehlen jedoch dringend, bei Proxys/Firewalls Leerlaufverbindungen mit einer Dauer von mindestens zwei bis drei Minuten zuzulassen.** \*Bei älteren Versionen wird ein Zeitraum von mindestens vier Minuten empfohlen.
 
 ### <a name="step-4-set-up-the-appropriate-active-directory-permissions"></a>Schritt 4: Einrichten der geeigneten Active Directory-Berechtigungen
 Bei der anfänglichen Konfiguration mit dem Konfigurations-Assistenten wird ein Konto X eingerichtet. Für jede Gesamtstruktur, die Benutzer enthält, deren Kennwörter zurückgesetzt werden, müssen X die Berechtigungen **Kennwort zurücksetzen**, **Kennwort ändern**, **Schreibzugriff** für `lockoutTime` und **Schreibzugriff** für `pwdLastSet` sowie die erweiterten Rechte für das Stammobjekt jeder Domäne in dieser Gesamtstruktur erteilt werden. Die Rechte müssen hierbei so festgelegt werden, dass sie an alle Benutzerobjekte vererbt werden.  
