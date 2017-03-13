@@ -12,11 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/14/2016
+ms.date: 02/24/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 4572913c2bc732c31f38021f9d3ccc34417de875
-ms.openlocfilehash: be4361af8f3f3024ab7f12114760f6f58e77deaf
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: b0c3c5dfd695b28b75bf44c9f835b34966413a9a
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -29,7 +30,7 @@ Die Überprüfung in zwei Schritten ist standardmäßig für globale Administrat
 Ein Azure Multi-Factor Authentication-Anbieter ist erforderlich, um das SDK herunterzuladen.
 
 > [!IMPORTANT]
-> Erstellen Sie zum Herunterladen des SDK einen Azure MFA-Anbieter, wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen.  Wenn Sie zu diesem Zweck einen Azure Multi-Factor Authentication-Anbieter erstellen und bereits über Lizenzen verfügen, sollten Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer** erstellen. Verknüpfen Sie den Anbieter anschließend mit dem Verzeichnis, in dem die Lizenzen für Azure MFA, Azure AD Premium oder EMS enthalten sind.  So wird sichergestellt, dass nur Kosten berechnet werden, wenn die Anzahl eindeutiger Benutzer, die das SDK verwenden, die Anzahl Ihrer Lizenzen übersteigt.
+> Erstellen Sie zum Herunterladen des SDK einen Azure MFA-Anbieter, wenn Sie über Azure MFA-, AAD Premium- oder EMS-Lizenzen verfügen.  Wenn Sie zu diesem Zweck einen Azure Multi-Factor Authentication-Anbieter erstellen und bereits über Lizenzen verfügen, sollten Sie den Anbieter mit dem Modell **Pro aktiviertem Benutzer** erstellen. Verknüpfen Sie den Anbieter anschließend mit dem Verzeichnis, in dem die Lizenzen für Azure MFA, Azure AD Premium oder EMS enthalten sind.  Diese Konfiguration stellt sicher, dass nur Kosten berechnet werden, wenn die Anzahl eindeutiger Benutzer, die die Überprüfung in zwei Schritten verwenden, die Anzahl Ihrer Lizenzen übersteigt.
 
 ## <a name="create-a-multi-factor-auth-provider"></a>Erstellen eines Anbieters für mehrstufige Authentifizierung
 Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authentication-Anbieter zu erstellen.
@@ -46,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authenticati
    ![MFA-Anbieter erstellen](./media/multi-factor-authentication-get-started-auth-provider/authprovider4.png)
 7. Füllen Sie die folgenden Felder aus, und wählen Sie **Erstellen**.
    1. **Name** : Der Name des Multi-Factor Authentication-Anbieters
-   2. **Nutzungsmodell**: Gibt an, ob Einzelbenutzer oder die Zahlung pro Überprüfung aktiviert werden soll. Wählen Sie eine der beiden Optionen:
+   2. **Nutzungsmodell:** Sie können eine dieser beiden Optionen wählen:
       * Pro Authentifizierung: Ein Kaufmodell, bei dem die Kosten pro Authentifizierung berechnet werden. Wird in der Regel für Szenarien verwendet, in denen Azure Multi-Factor Authentication in einer kundenorientierten Anwendung verwendet wird.
       * Pro aktiviertem Benutzer: Ein Kaufmodell, bei dem die Kosten pro aktiviertem Benutzer berechnet werden. Wird in der Regel für den Mitarbeiterzugriff auf Anwendungen wie Office 365 verwendet. Wählen Sie diese Option, wenn Sie über einige Benutzer verfügen, die bereits für Azure MFA lizenziert sind.
    3. **Verzeichnis** : Der Azure Active Directory-Mandant, dem der Multi-Factor Authentication-Anbieter zugeordnet ist. Bedenken Sie dabei Folgendes:
@@ -56,10 +57,5 @@ Führen Sie die folgenden Schritte aus, um einen Azure Multi-Factor Authenticati
         ![MFA-Anbieter erstellen](./media/multi-factor-authentication-get-started-auth-provider/authprovider5.png)
 8. Nach dem Klicken auf „Erstellen“ wird der Multi-Factor Authentication-Anbieter erstellt und die folgende Meldung angezeigt: **Der Anbieter für Multi-Factor Authentication wurde erstellt**. Klicken Sie auf **OK**.
    ![MFA-Anbieter erstellen](./media/multi-factor-authentication-get-started-auth-provider/authprovider6.png)
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

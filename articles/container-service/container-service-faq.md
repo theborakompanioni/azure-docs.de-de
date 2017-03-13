@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/03/2017
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: c28391b752c071161796421aee63402899d2a0a4
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: c11adbe77131d4e0337ccd926da03041042c3703
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="frequently-asked-questions-azure-container-service"></a>Häufig gestellte Fragen: Azure Container Service
+# <a name="container-service-frequently-asked-questions"></a>Häufig gestellte Fragen zu Container Service
 
 
 ## <a name="orchestrators"></a>Orchestratoren
@@ -82,6 +83,17 @@ DNSnamePrefix.AzureRegion.cloudapp.azure.net
 ```
 
 Häufig verwendete URLs für Ihren Cluster finden Sie im Azure-Portal, im Azure-Ressourcen-Explorer und in anderen Azure-Tools.
+
+### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Woher weiß ich, welche Orchestratorversion in meinem Cluster ausgeführt wird?
+
+* DC/OS: Siehe [Mesosphere-Dokumentation](https://support.mesosphere.com/hc/en-us/articles/207719793-How-to-get-the-DCOS-version-from-the-command-line-)
+* Docker Swarm: Führen Sie `docker version` aus.
+* Kubernetes: Führen Sie `kubectl version` aus.
+
+
+### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Wie aktualisiere ich den Orchestrator nach der Bereitstellung?
+
+Derzeit stellt Azure Container Service keine Tools zum Aktualisieren der in Ihrem Cluster bereitgestellten Orchestratorversion zur Verfügung. Wenn Container Service eine höhere Version unterstützt, können Sie einen neuen Cluster bereitstellen. Eine andere Möglichkeit besteht darin, einen Cluster direkt mithilfe orchestratorspezifischer Tools (sofern verfügbar) zu aktualisieren. Ein Beispiel finden Sie im Artikel zu [DC/OS-Upgrades](https://dcos.io/docs/1.8/administration/upgrading/).
  
 ### <a name="where-do-i-find-the-ssh-connection-string-to-my-cluster"></a>Wo finde ich die SSH-Verbindungszeichenfolge für meinen Cluster?
 

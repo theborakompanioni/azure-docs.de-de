@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Azure-VM mit PowerShell | Microsoft Docs
-description: "Verwenden Sie Azure PowerShell und Azure Resource Manager, um ohne großen Aufwand einen neuen virtuellen Computer mit Windows Server zu erstellen."
+description: "Verwenden Sie Azure PowerShell und Azure Resource Manager, um ohne großen Aufwand einen virtuellen Computer mit Windows Server zu erstellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -10,20 +10,20 @@ tags: azure-resource-manager
 ms.assetid: 14fe9ca9-e228-4d3b-a5d8-3101e9478f6e
 ms.service: virtual-machines-windows
 ms.topic: get-started-article
-ms.date: 02/14/2017
+ms.date: 03/07/2017
 ms.author: davidmu
 translationtype: Human Translation
-ms.sourcegitcommit: 8d8dfb9b165d82e8567f6b5577d46d562f9f8db3
-ms.openlocfilehash: 89e306d3e3312531878da088575c7429a941d34f
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 3de1e04c3ce1d6d465c5a54bc9db676639709371
+ms.lasthandoff: 03/08/2017
 
 ---
 
-# <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Erstellen einer Windows-VM mit dem Resource Manager und PowerShell
+# <a name="create-a-windows-vm-using-azure-resource-manager-and-powershell"></a>Erstellen eines virtuellen Windows-Computers mit Azure Resource Manager und PowerShell
 
-In diesem Artikel wird beschrieben, wie Sie einen virtuellen Azure-Computer mit Windows Server sowie die dafür erforderlichen Ressourcen mithilfe von [Resource Manager](../azure-resource-manager/resource-group-overview.md) und Azure PowerShell schnell erstellen.  
+In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) und Azure PowerShell schnell einen virtuellen Azure-Computer mit Windows Server sowie die dafür erforderlichen Ressourcen erstellen.  
 
-Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen. Die Durchführung dauert etwa 30 Minuten. Ersetzen Sie die Beispielparameterwerte in den Befehlen durch Namen, die für Ihre Umgebung sinnvoll sind.
+Alle in diesem Artikel beschriebenen Schritte sind erforderlich, um einen virtuellen Computer zu erstellen. Das Kopieren, Einfügen und Ausführen der Befehle dauert etwa zehn Minuten.
 
 ## <a name="step-1-install-azure-powershell"></a>Schritt 1: Installieren von Azure PowerShell
 
@@ -79,7 +79,7 @@ Derzeit können Sie beim Erstellen eines virtuellen Computers zwischen der Verwe
 
 ## <a name="step-4-create-a-virtual-network"></a>Schritt 4: Erstellen eines virtuellen Netzwerks
 
-Alle virtuellen Computer sind Teil eines [virtuellen Netzwerks](../virtual-network/virtual-networks-overview.md).
+Alle virtuellen Computer sind Teil eines [virtuellen Netzwerks](virtual-machines-windows-network-overview.md).
 
 1. Erstellen Sie ein Subnetz für das virtuelle Netzwerk. Mit diesem Befehl wird ein Subnetz mit dem Namen **mySubnet** mit dem Adresspräfix 10.0.0.0/24 erstellt.
    

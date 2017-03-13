@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2017
+ms.date: 03/01/2017
 ms.author: rogardle
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 45d399b72f8d037fb828d9ad22bbd3543847feb3
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 31897e11abfe70ed08381f0d13c6bdabe56c28ed
+ms.openlocfilehash: 05ff751255000220be3b59d013b6106473e4732b
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="connect-to-an-azure-container-service-cluster"></a>Verbinden mit einem Azure Container Service-Cluster
+# <a name="make-a-remote-connection-to-a-kuburnetes-dcos-or-docker-swarm-cluster"></a>Herstellen einer Remoteverbindung mit einem Kubernetes-, DC/OS- oder Docker Swarm-Cluster
 Nach dem Erstellen eines Azure Container Service-Clusters müssen Sie eine Verbindung mit dem Cluster herstellen, um Workloads bereitzustellen und zu verwalten. In diesem Artikel wird beschrieben, wie Sie von einem Remotecomputer aus eine Verbindung mit dem virtuellen Mastercomputer des Clusters herstellen. 
 
 Die Kubernetes-, DC/OS- und Docker Swarm-Cluster stellen HTTP-Endpunkte lokal bereit. Für Kubernetes wird dieser Endpunkt auf sichere Weise im Internet verfügbar gemacht, und Sie können darauf zugreifen, indem Sie das Befehlszeilentool `kubectl` auf einem Computer mit Internetverbindung ausführen. 

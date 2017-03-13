@@ -125,7 +125,7 @@ Sie müssen möglicherweise mehr erledigen, als in der CaffeOnSpark-Dokumentatio
 - Legen Sie die kompilierten Caffe-Bibliotheken im Blobspeicher ab, und kopieren Sie diese Bibliotheken später mithilfe von Skriptaktionen auf alle Knoten, um zusätzliche Kompilierungszeit zu vermeiden.
 
 
-### <a name="troubleshooting-an-ant-buildexception-has-occured-exec-returned-2"></a>Problembehandlung: An Ant BuildException has occured: exec returned: 2
+### <a name="troubleshooting-an-ant-buildexception-has-occured-exec-returned-2"></a>Problembehandlung: „An Ant BuildException has occured: exec returned: 2“
 
 Beim ersten Versuch, CaffeOnSpark zu erstellen, wird manchmal Folgendes zurückgegeben:
 

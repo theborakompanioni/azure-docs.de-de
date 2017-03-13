@@ -1,6 +1,6 @@
 ---
-title: Docker-Images in der Azure-Containerregistrierung | Microsoft-Dokumentation
-description: "Push- und Pullübertragung von Docker-Images an eine Azure-Containerregistrierung mit der Docker CLI"
+title: "Pushübertragung des Docker-Images an eine private Azure-Registrierung | Microsoft-Dokumentation"
+description: "Push- und Pullübertragung von Docker-Images an eine private Containerregistrierung in Azure mit der Docker CLI"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -16,16 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2a381431acb6436ddd8e13c69b05423a33cd4fa6
-ms.openlocfilehash: 1e70f41dd15b0243fb8edd137710ac555821434e
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
+ms.openlocfilehash: e778c09991da73cd5064532119d92bff36f0a00e
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="push-your-first-image-to-a-container-registry-using-the-docker-cli"></a>Übertragen des ersten Image in eine Containerregistrierung mit der Docker CLI
+# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
 Eine Azure-Containerregistrierung speichert und verwaltet private [Docker](http://hub.docker.com)-Containerimages. Dies ähnelt der Art und Weise, wie [Docker Hub](https://hub.docker.com/) öffentliche Docker-Images speichert. Für Ihre Containerregistrierung verwenden Sie die [Docker-Befehlszeilenschnittstelle](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) für die Vorgänge [Anmeldung](https://docs.docker.com/engine/reference/commandline/login/), [Push](https://docs.docker.com/engine/reference/commandline/push/), [Pull](https://docs.docker.com/engine/reference/commandline/pull/) und andere Vorgänge. 
 
-Weitere Hintergrundinformationen und Konzepte finden Sie unter [Was ist die Azure-Containerregistrierung?](container-registry-intro.md).
+Weitere Hintergrundinformationen und Konzepte finden Sie in der [Übersicht](container-registry-intro.md).
 
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: "Ausschließen des Datenträgers vom Schutz per Azure Site Recovery | Microsoft-Dokumentation"
-description: "Es wird beschrieben, warum und wie Sie VM-Datenträger von der Replikation für „VMware zu Azure“ und „Hyper-V zu Azure“ ausschließen können."
+title: "Ausschließen von Datenträgern vom Schutz per Azure Site Recovery | Microsoft-Dokumentation"
+description: "Es wird beschrieben, warum und wie Sie VM-Datenträger von der Replikation für die Szenarien „VMware auf Azure“ und „Hyper-V auf Azure“ ausschließen können."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -15,127 +15,129 @@ ms.topic: hero-article
 ms.date: 1/24/2017
 ms.author: nisoneji
 translationtype: Human Translation
-ms.sourcegitcommit: af0d66d92ca542f415de779fb638db166ba5f26a
-ms.openlocfilehash: 5e0527fb0a41d8892c9e22d6d6d2f252972e69d0
-ms.lasthandoff: 02/17/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 66832a5d3f10f370ad486269c566fc948fd72234
+ms.lasthandoff: 03/07/2017
 
 
 ---
-#<a name="exclude-disk-from-replication"></a>Ausschließen des Datenträgers aus der Replikation
-In diesem Artikel wird beschrieben, wie Sie Datenträger aus der Replikation ausschließen, um die verbrauchte Replikationsbandbreite oder die von den Datenträgern genutzten zielseitigen Ressourcen zu optimieren. Dieses Feature wird für die Szenarien „VMware zu Azure“ und „Hyper-V zu Azure“ unterstützt.
+# <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
+In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden. Dieses Feature wird für die Szenarien „VMware auf Azure“ und „Hyper-V auf Azure“ unterstützt.
 
-##<a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
-Standardmäßig werden alle Datenträger auf einem Computer repliziert. Der Mobilitätsdienst muss bei einer Replikation von **VMware zu Azure** vor der Aktivierung der Replikation manuell auf dem Computer installiert werden, um einen Datenträger von der Replikation auszuschließen.
+Standardmäßig werden alle Datenträger auf einem Computer repliziert. Sie müssen den Mobilitätsdienst bei einer Replikation von VMware in Azure vor der Aktivierung der Replikation manuell auf dem Computer installieren, um einen Datenträger von der Replikation auszuschließen.
 
 
 ## <a name="why-exclude-disks-from-replication"></a>Gründe für das Ausschließen von Datenträgern von der Replikation
 Das Ausschließen von Datenträgern von der Replikation ist häufig aus folgenden Gründen erforderlich:
 
-1. Die auf dem ausgeschlossenen Datenträger verarbeiteten Daten sind nicht wichtig oder müssen nicht repliziert werden.
+- Die auf dem ausgeschlossenen Datenträger verarbeiteten Daten sind nicht wichtig oder müssen nicht repliziert werden.
 
-2. Es können Speicher- und Netzwerkressourcen gespart werden, indem diese Daten nicht repliziert werden.
+- Sie können Speicher- und Netzwerkressourcen sparen, indem Sie diese Daten nicht replizieren.
 
-##<a name="what-are-the-typical-scenarios"></a>Was sind die typischen Szenarien?
-Es gibt einige bestimmte Beispiele für Datenänderungen, die einfach identifiziert werden können und gute Kandidaten für den Ausschluss sind, z.B. Schreibvorgänge in Auslagerungsdateien, tempdb-Schreibvorgänge für Microsoft SQL Server usw. Je nach Workload und Speichersubsystem kann in der Auslagerungsdatei eine beträchtliche Menge an Datenänderungen registriert werden. Wenn diese Daten vom primären Standort in Azure repliziert werden, ist der Ressourcenaufwand sehr hoch. Daher kann die Replikation einer VM mit einem einzelnen virtuellen Datenträger, der sowohl das Betriebssystem als auch die Auslagerungsdatei enthält, wie folgt optimiert werden:
+## <a name="what-are-the-typical-scenarios"></a>Was sind die typischen Szenarien?
+Sie können spezifische Beispiele für Datenänderungen ermitteln, die hervorragend für den Ausschluss geeignet sind. Zu den Beispielen können Schreibvorgänge in einer Auslagerungsdatei (pagefile.sys) und Schreibvorgänge in der tempdb-Datei von Microsoft SQL Server gehören. Je nach Workload und Speichersubsystem kann in der Auslagerungsdatei eine beträchtliche Menge an Datenänderungen registriert werden. Wenn diese Daten vom primären Standort in Azure repliziert werden, ist der Ressourcenaufwand sehr hoch. Daher können Sie die folgenden Schritte zum Optimieren der Replikation eines virtuellen Computers mit einem einzelnen virtuellen Datenträger ausführen, der das Betriebssystem und die Auslagerungsdatei enthält:
 
-1. Aufteilen des einzelnen virtuellen Datenträgers auf zwei virtuelle Datenträger – einer mit dem Betriebssystem und einer mit der Auslagerungsdatei
-2. Ausschließen des Datenträgers mit der Auslagerungsdatei von der Replikation
+1. Unterteilen Sie den einzelnen virtuellen Datenträger in zwei virtuelle Datenträger. Ein virtueller Datenträger enthält das Betriebssystem und der andere die Auslagerungsdatei.
+2. Schließen Sie den Datenträger mit der Auslagerungsdatei von der Replikation aus.
 
-Ebenso können Sie wie folgt eine Optimierung erreichen, wenn sich Microsoft SQL Server mit tempdb und die Systemdatenbankdatei auf demselben Datenträger befinden:
+Sie können dementsprechend anhand der folgenden Schritte einen Datenträger optimieren, der sowohl die tempdb-Datei als auch die Systemdatenbankdatei von Microsoft SQL Server enthält:
 
-1. Verwenden von zwei unterschiedlichen Datenträgern für die Systemdatenbank und tempdb
-2. Ausschließen des tempdb-Datenträgers von der Replikation
+1. Bewahren Sie die Systemdatenbank und die tempdb-Datei auf zwei unterschiedlichen Datenträgern auf.
+2. Schließen Sie den tempdb-Datenträger von der Replikation aus.
 
-##<a name="how-to-exclude-disk-from-replication"></a>Wie kann ein Datenträger von der Replikation ausgeschlossen werden?
+## <a name="how-to-exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 
-###<a name="vmware-to-azure"></a>VMware zu Azure
-Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-vmware-to-azure.md#enable-replication), um eine VM über das Azure Site Recovery-Portal zu schützen. Schritt 4 von „Replikation aktivieren“ enthält eine Spalte für den **ZU REPLIZIERENDEN DATENTRÄGER**, die verwendet werden kann, um den Datenträger aus der Replikation auszuschließen. Standardmäßig sind alle Datenträger ausgewählt. Deaktivieren Sie den Datenträger, den Sie von der Replikation ausschließen möchten, und führen Sie die Schritte zum Aktivieren der Replikation aus. 
+### <a name="vmware-to-azure"></a>VMware zu Azure
+Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-vmware-to-azure.md#enable-replication), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
 
-![Replikation aktivieren](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
-    
-    
+![Ausschließen von Datenträgern von der Replikation und Aktivieren der Replikation für Failbacks von VMware auf Azure](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
+
+
 >[!NOTE]
-> 
+>
 > * Sie können nur Datenträger ausschließen, auf denen der Mobilitätsdienst bereits installiert ist. Sie müssen den Mobilitätsdienst manuell installieren, da dieser nur nach Aktivierung der Replikation mithilfe des Pushmechanismus installiert wird.
-> * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Betriebssystem- oder dynamische Datenträger können nicht ausgeschlossen werden.
+> * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Sie können kein Betriebssystem und keine dynamischen Datenträger ausschließen.
 > * Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen oder entfernen. Wenn Sie einen Datenträger hinzufügen oder entfernen möchten, müssen Sie den Schutz für den Computer deaktivieren und anschließend wieder aktivieren.
-> * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie ihn nach dem Failover in Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
-> * Windows-VM: Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback durchgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf dem virtuellen Azure-Computer erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in den erneuten Schutz vom lokalen Standort nach Azure einbezogen werden.
-> * Linux-VM: Für Datenträger, die Sie manuell in Azure erstellen, wird ein Failback durchgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei direkt in Azure erstellen, wird für alle fünf ein Failback ausgeführt. Sie können keine Datenträger von einem Failback ausschließen, die manuell erstellt wurden.
-> 
+> * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie den Datenträger nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
+> * Virtueller Windows-Computer: Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback durchgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in den erneuten Schutz vom lokalen Standort auf Azure einbezogen werden.
+> * Virtueller Linux-Computer: Für Datenträger, die Sie manuell in Azure erstellen, wird ein Failback durchgeführt. Wenn Sie beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, wird für alle fünf ein Failback ausgeführt. Sie können keine Datenträger von einem Failback ausschließen, die manuell erstellt wurden.
+>
 
-###<a name="hyper-v-to-azure"></a>Hyper-V in Azure
-Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-hyper-v-site-to-azure.md#step-6-enable-replication), um eine VM über das Azure Site Recovery-Portal zu schützen. Schritt 4 von „Replikation aktivieren“ enthält eine Spalte für den **ZU REPLIZIERENDEN DATENTRÄGER**, die verwendet werden kann, um Datenträger aus der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie den Datenträger, den Sie von der Replikation ausschließen möchten, und führen Sie die Schritte zum Aktivieren der Replikation aus. 
+### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
+Folgen Sie dem Workflow für [Replikation aktivieren](site-recovery-hyper-v-site-to-azure.md#step-6-enable-replication), um einen virtuellen Computer über das Azure Site Recovery-Portal zu schützen. Verwenden Sie im vierten Schritt des Workflows die Spalte **DISK TO REPLICATE** (ZU REPLIZIERENDER DATENTRÄGER), um Datenträger von der Replikation auszuschließen. Standardmäßig sind alle Datenträger für die Replikation ausgewählt. Deaktivieren Sie das Kontrollkästchen der Datenträger, die Sie von der Replikation ausschließen möchten, und führen Sie dann die Schritte zum Aktivieren der Replikation aus.
 
-![Replikation aktivieren](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
-    
+![Ausschließen von Datenträgern von der Replikation und Aktivieren der Replikation für Failbacks von Hyper-V auf Azure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+
 >[!NOTE]
-> 
-> * Nur Basisdatenträger können von der Replikation ausgeschlossen werden. Der Betriebssystemdatenträger kann nicht ausgeschlossen werden, und es wird davon abgeraten, dynamische Datenträger auszuschließen. ASR kann nicht ermitteln, ob es sich bei einer VHD des virtuellen Gastcomputers um einen Basisdatenträger oder um einen dynamischen Datenträger handelt.  Wenn keiner der abhängigen dynamischen Volumedatenträger ausgeschlossen wird, tritt bei geschützten dynamischen Datenträgern auf einem virtuellen Failovercomputer ein Fehler auf, und auf die Daten des Datenträgers kann nicht zugegriffen werden.    
+>
+> * Sie können nur Basisdatenträger von der Replikation ausschließen. Sie können keine Betriebssystemdatenträger ausschließen. Es wird empfohlen, keine dynamischen Datenträger auszuschließen. Azure Site Recovery kann nicht feststellen, welche virtuelle Festplatte (VHD) auf dem virtuellen Gastcomputer die Basisfestplatte und welche die dynamische Festplatte ist.  Wenn kein abhängiger dynamischer Volumedatenträger ausgeschlossen wird, wird der geschützte dynamische Datenträger auf einem virtuellen Failovercomputer zu einem fehlerhaften Datenträger, und die Daten auf diesem Datenträger können nicht aufgerufen werden.
 > * Nach Aktivierung der Replikation können Sie keine Datenträger für die Replikation hinzufügen oder entfernen. Wenn Sie einen Datenträger hinzufügen oder entfernen möchten, müssen Sie den Schutz für den virtuellen Computer deaktivieren und anschließend wieder aktivieren.
-> * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie ihn nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
-> * Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback durchgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf dem virtuellen Azure-Computer erstellen, wird nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback von Azure zu Hyper-V ausgeführt. Manuell erstellte Datenträger können nicht in das Failback oder in die umgekehrte Replikation von Hyper-V zu Azure einbezogen werden.
- 
+> * Wenn Sie einen Datenträger ausschließen, der für den Betrieb einer Anwendung erforderlich ist, müssen Sie den Datenträger nach dem Failover auf Azure manuell in Azure erstellen, damit die replizierte Anwendung ausgeführt werden kann. Alternativ können Sie Azure Automation in einen Wiederherstellungsplan integrieren, um den Datenträger während des Failovers des Computers zu erstellen.
+> * Für Datenträger, die Sie manuell in Azure erstellen, wird kein Failback durchgeführt. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, wird nur für drei Datenträger, für die das Failover ausgeführt wurde, ein Failback von Azure auf Hyper-V durchgeführt. Manuell erstellte Datenträger können nicht in das Failback oder in die umgekehrte Replikation von Hyper-V in Azure einbezogen werden.
 
 
-##<a name="end-to-end-scenarios-of-exclude-disks"></a>End-to-End-Szenarien zum Ausschließen von Datenträgern
-Hier werden zwei Szenarien beschrieben, um die Funktion zum Ausschließen von Datenträgern genauer zu erläutern.
 
-1. tempdb-Datenträger von SQL Server
-2. Datenträger mit Auslagerungsdatei
+## <a name="end-to-end-scenarios-of-exclude-disks"></a>End-to-End-Szenarien zum Ausschließen von Datenträgern
+Betrachten wir zwei Szenarien, damit Sie sich besser mit der Funktion zum Ausschließen von Datenträgern vertraut machen können:
 
-###<a name="excluding-the-sql-server-tempdb-disk"></a>Ausschließen des tempdb-Datenträgers von SQL Server
+- tempdb-Datenträger von SQL Server
+- Datenträger für Auslagerungsdatei (pagefile.sys)
+
+### <a name="exclude-the-sql-server-tempdb-disk"></a>Ausschließen des tempdb-Datenträgers von SQL Server
 Angenommen, Sie verwenden einen virtuellen SQL Server-Computer mit einer tempdb, der ausgeschlossen werden kann.
 
-Name der VM: SalesDB-Datenträger auf der Quell-VM:
+Der Name des virtuellen Datenträgers lautet „SalesDB“.
+
+Folgende Datenträger befinden sich auf dem virtuellen Quellcomputer:
 
 
-**Name des Datenträgers** | **Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
 DB-Disk1| Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
-DB-Disk2 (Datenträger aus Schutz ausgeschlossen) | Disk2 | E:\ | Temporäre Dateien
-DB-Disk3 (Datenträger aus Schutz ausgeschlossen) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad F:\MSSQL\Data\) --> Notieren Sie sich den Ordnerpfad vor dem Failover.
+DB-Disk2 (Datenträger von Schutz ausgeschlossen) | Disk2 | E:\ | Temporäre Dateien
+DB-Disk3 (Datenträger von Schutz ausgeschlossen) | Disk3 | F:\ | SQL-tempdb-Datenbank (Ordnerpfad: F:\MSSQL\Data\) </br /> </br />Notieren Sie sich den Ordnerpfad vor dem Failover.
 DB-Disk4 | Disk4 |G:\ |Benutzerdatenbank&2;
 
-Da die Datenänderungen auf zwei Datenträgern auf der VM temporärer Art sind, schließen Sie beim Schützen der SalesDB-VM „Disk2“ und „Disk3“ von der Replikation aus. Diese Datenträger werden von Azure Site Recovery dann nicht repliziert, und beim Failover sind sie auf der Failover-VM in Azure nicht vorhanden.
+Zwei der Datenträger des virtuellen Computers verfügen über temporäre Datenänderungen. Schützen Sie daher zwar den virtuellen Computer „SalesDB“, aber schließen Sie Disk2 und Disk3 von der Replikation aus. Azure Site Recovery repliziert diese Datenträger nicht. Bei einem Failover sind diese Datenträger nicht auf dem virtuellen Failovercomputer in Azure vorhanden.
 
-Datenträger auf der Azure-VM nach einem Failover:
+Folgende Datenträger befinden sich nach einem Failover auf dem virtuellen Azure-Computer:
 
-**Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | ---
 DISK0 |    C:\ | Betriebssystem-Datenträger
-Disk1 |    E:\ | Temporäre Speicherung [Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.]
+Disk1 |    E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
 Disk2 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
 Disk3 | G:\ | Benutzerdatenbank&2;
 
-Da „Disk2“ und „Disk3“ aus der SalesDB-VM ausgeschlossen wurden, ist „E:“ der erste Laufwerkbuchstabe aus der verfügbaren Liste. Azure weist „E:“ einem temporären Speichervolume zu. Für alle replizierten Datenträger bleibt der Laufwerkbuchstabe gleich.
+Da „Disk2“ und „Disk3“ vom virtuellen SalesDB-Computer ausgeschlossen wurden, ist „E:“ der erste verfügbare Laufwerkbuchstabe. Azure weist „E:“ dem temporären Speichervolume zu. Für alle replizierten Datenträger bleiben die Laufwerkbuchstaben unverändert.
 
-Datenträger „Disk3“, der als SQL-tempdb-Datenträger gedient hat (tempdb-Ordnerpfad F:\MSSQL\Data\) und von der Replikation ausgeschlossen war, ist nicht auf der Failover-VM verfügbar. Daher befindet sich der SQL-Dienst im Status „Beendet“ und benötigt den Pfad „F:\MSSQL\Data“.
+Disk3, der Datenträger für SQL-tempdb-Datenträger (tempdb-Ordnerpfad: F:\MSSQL\Data\), wurde von der Replikation ausgeschlossen. Der Datenträger ist nicht auf dem virtuellen Failovercomputer verfügbar. Daher befindet sich der SQL-Dienst im Status „Beendet“ und benötigt den Pfad „F:\MSSQL\Data“.
 
-Es gibt zwei Möglichkeiten, wie Sie diesen Pfad erstellen können.
+Es gibt zwei Möglichkeiten, um diesen Pfad zu erstellen:
 
-1. Fügen Sie einen neuen Datenträger hinzu, und weisen Sie den tempdb-Ordnerpfad zu.
-2. Verwenden Sie einen vorhandenen temporären Speicherdatenträger für den tempdb-Ordnerpfad.
+- Fügen Sie einen neuen Datenträger hinzu, und weisen Sie den tempdb-Ordnerpfad zu.
+- Verwenden Sie einen vorhandenen temporären Speicherdatenträger für den tempdb-Ordnerpfad.
 
-####<a name="add-a-new-disk"></a>Hinzufügen eines neuen Datenträgers:
+#### <a name="add-a-new-disk"></a>Hinzufügen eines neuen Datenträgers:
 
 1. Notieren Sie sich vor dem Failover den SQL-Pfad für „tempdb.mdf“ und „tempdb.ldf“.
-2. Fügen Sie der Failover-VM über das Azure-Portal einen neuen Datenträger hinzu, der mindestens die gleiche Größe wie der SQL-tempdb-Quelldatenträger (Disk3) hat.
-3. Melden Sie sich an der Azure-VM an. Initialisieren Sie über die Konsole für die Datenträgerverwaltung (diskmgmt.msc) den neu hinzugefügten Datenträger, und formatieren Sie sie.
+2. Fügen Sie dem virtuellen Failovercomputer über das Azure-Portal einen neuen Datenträger hinzu, der mindestens die gleiche Größe wie der SQL-tempdb-Quelldatenträger (Disk3) hat.
+3. Melden Sie sich beim virtuellen Azure-Computer an. Initialisieren Sie über die Konsole für die Datenträgerverwaltung (diskmgmt.msc) den neu hinzugefügten Datenträger, und formatieren Sie sie.
 4. Weisen Sie den gleichen Laufwerkbuchstaben zu, der für den SQL-tempdb-Datenträger verwendet wurde (F:).
-5. Erstellen Sie auf dem Volume „F:“ den tempdb-Ordner (F:\MSSQL\Data).
+5. Erstellen Sie auf dem Volume „F:“ einen tempdb-Ordner (F:\MSSQL\Data).
 6. Starten Sie den SQL-Dienst über die Dienstkonsole.
 
-####<a name="use-existing-temporary-storage-disk-for-sql-tempdb-folder-path"></a>Verwenden Sie einen vorhandenen temporären Speicherdatenträger für den SQL-tempdb-Ordnerpfad:
+#### <a name="use-an-existing-temporary-storage-disk-for-the-sql-tempdb-folder-path"></a>Verwenden Sie einen vorhandenen temporären Speicherdatenträger für den SQL-tempdb-Ordnerpfad:
 
-1. Öffnen Sie eine Befehlszeilenkonsole.
-2. Führen Sie SQL Server im Wiederherstellungsmodus über die Befehlszeilenkonsole aus.
+1. Öffnen Sie eine Eingabeaufforderung.
+2. Führen Sie SQL Server im Wiederherstellungsmodus über die Eingabeaufforderung aus.
 
         Net start MSSQLSERVER /f / T3608
 
-3. Führen Sie den folgenden sqlcmd-Befehl aus, um den tempdb-Pfad in einen neuen Pfad zu ändern.
+3. Führen Sie den folgenden sqlcmd-Befehl aus, um den tempdb-Pfad in den neuen Pfad zu ändern.
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
         USE master;        
@@ -157,41 +159,41 @@ Es gibt zwei Möglichkeiten, wie Sie diesen Pfad erstellen können.
 
 Lesen Sie sich die folgenden Informationen zu Azure-Richtlinien für temporäre Speicherdatenträger durch:
 
-* Using SSDs in Azure VMs to store SQL Server TempDB and Buffer Pool Extensions (Verwenden von SSDs in Azure-VMs zum Speichern von SQL Server-TempDB- und Pufferpoolerweiterungen)
-* Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern
+* [Using SSDs in Azure VMs to store SQL Server TempDB and Buffer Pool Extensions](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) (Verwenden von SSDs in Azure-VMs zum Speichern von SQL Server-TempDB- und Pufferpoolerweiterungen)
+* [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)
 
-###<a name="failback-from-azure-to-on-premises"></a>Failback (von Azure zu lokal)
-Als Nächstes wird beschrieben, wie die Replikation für alle Datenträger verläuft, wenn Sie ein Failover von Azure zu Ihrem lokalen VMware- oder Hyper-V-Host durchführen. Datenträger, die Sie in Azure manuell erstellen, werden nicht repliziert. Wenn Sie also beispielsweise ein Failover für drei Datenträger ausführen und zwei Datenträger direkt auf dem virtuellen Azure-Computer erstellen, wird nur für die drei Datenträger, für die das Failover ausgeführt wurde, ein Failback ausgeführt. Manuell erstellte Datenträger können nicht in das Failback oder in den erneuten Schutz von lokal nach Azure einbezogen werden. Außerdem werden keine temporären Speicherdatenträger lokal repliziert.
+### <a name="failback-from-azure-to-an-on-premises-host"></a>Failback (von Azure auf einen lokalen Host)
+Als Nächstes werden die Datenträger beschrieben, die repliziert werden, wenn Sie ein Failover von Azure auf Ihren lokalen VMware- oder Hyper-V-Host durchführen. Datenträger, die Sie in Azure manuell erstellen, werden nicht repliziert. Wenn Sie also beispielsweise ein Failover für drei Datenträger durchführen und zwei Datenträger direkt auf virtuellen Azure-Computern erstellen, erfolgt nur für die drei Datenträger, für die das Failover durchgeführt wurde, ein Failback. Manuell erstellte Datenträger können nicht in das Failback oder in den erneuten Schutz vom lokalen Standort auf Azure einbezogen werden. Außerdem werden keine temporären Speicherdatenträger auf lokalen Hosts repliziert.
 
-####<a name="failback-to-original-location-recovery-olr"></a>Failback zur Wiederherstellung am ursprünglichen Speicherort (Original Location Recovery, OLR)
+#### <a name="failback-to-original-location-recovery"></a>Failback zur Wiederherstellung am ursprünglichen Speicherort
 
-Azure-VM-Datenträgerkonfiguration im obigen Beispiel:
+Im vorherigen Beispiel lautet die Datenträgerkonfiguration des virtuellen Azure-Computers folgendermaßen:
 
-**Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger** 
---- | --- | --- 
+**Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+--- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
-Disk1 |    E:\ | Temporäre Speicherung [Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.]
+Disk1 |    E:\ | Temporäre Speicherung</br /> </br />Azure fügt diesen Datenträger hinzu und weist den ersten verfügbaren Laufwerkbuchstaben zu.
 Disk2 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
 Disk3 |    G:\ | Benutzerdatenbank&2;
 
 
-####<a name="vmware-to-azure"></a>VMware zu Azure
-Wenn das Failback zum ursprünglichen Standort durchgeführt wird, umfasst die Failback-VM-Datenträgerkonfiguration den ausgeschlossenen Datenträger nicht. Dies bedeutet, dass die Datenträger, die für „VMware zu Azure“ ausgeschlossen wurden, auf der Failback-VM nicht verfügbar sind. 
+#### <a name="vmware-to-azure"></a>VMware zu Azure
+Wenn das Failback auf den ursprünglichen Standort durchgeführt wird, enthält die Datenträgerkonfiguration des virtuellen Failbackcomputers keine ausgeschlossenen Datenträger. Datenträger, die für „VMware auf Azure“ ausgeschlossen wurden, sind daher auf dem virtuellen Failbackcomputer nicht verfügbar.
 
-Datenträger auf der VMWare-VM (ursprünglicher Speicherort) nach dem geplanten Failover von Azure zur lokalen VMware-Instanz:
+Datenträger auf dem virtuellen VMWare-Computer (ursprünglicher Speicherort) nach dem geplanten Failover von Azure auf die lokale VMware-Instanz:
 
-**Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger** 
---- | --- | --- 
+**Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+--- | --- | ---
 DISK0 | C:\ | Betriebssystem-Datenträger
 Disk1 |    D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
 Disk2 |    G:\ | Benutzerdatenbank&2;
 
-####<a name="hyper-v-to-azure"></a>Hyper-V in Azure
-Beim Failback zum ursprünglichen Speicherort bleibt die Failback-VM-Datenträgerkonfiguration mit der Datenträgerkonfiguration für die ursprüngliche VM für Hyper-V identisch. Dies bedeutet, dass die Datenträger, die für „Hyper-V-Standort zu Azure“ ausgeschlossen wurden, auf der Failback-VM verfügbar sind.
+#### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
+Beim Failback auf den ursprünglichen Speicherort bleibt die Datenträgerkonfiguration des virtuellen Failbackcomputers mit der Datenträgerkonfiguration für den ursprünglichen virtuellen Computer für Hyper-V identisch. Datenträger, die für „Hyper-V auf Azure“ ausgeschlossen wurden, sind daher auf dem virtuellen Failbackcomputer nicht verfügbar.
 
-Datenträger auf der Hyper-V-VM (ursprünglicher Speicherort) nach dem geplanten Failover von Azure zur lokalen Hyper-V-Instanz:
+Datenträger auf dem virtuellen Hyper-V-Computer (ursprünglicher Speicherort) nach dem geplanten Failover von Azure auf die lokale Hyper-V-Instanz:
 
-**Name des Datenträgers** | **Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |    C:\ | Betriebssystem-Datenträger
 DB-Disk1 | Disk1 | D:\ | SQL-Systemdatenbank und Benutzerdatenbank&1;
@@ -200,70 +202,71 @@ DB-Disk3 (ausgeschlossener Datenträger) | Disk3 | F:\ | SQL-tempdb-Datenbank (O
 DB-Disk4 | Disk4 | G:\ | Benutzerdatenbank&2;
 
 
-####<a name="exclude-paging-file-disk"></a>Datenträger mit Auslagerungsdatei ausschließen
+#### <a name="exclude-the-paging-file-pagefilesys-disk"></a>Ausschließen des Datenträgers der Auslagerungsdatei (pagefile.sys)
 
 Angenommen, Sie verwenden einen virtuellen Computer mit einem Datenträger für die Auslagerungsdatei, der ausgeschlossen werden kann.
-Es gibt zwei Fälle:
+Es gibt zwei Fälle.
 
-####<a name="case-1-pagefile-is-configured-on-the-d-drive"></a>Fall 1: Auslagerungsdatei wurde auf dem Laufwerk „D:“ konfiguriert
-Datenträgerkonfiguration:
+#### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Fall 1: Die Auslagerungsdatei ist auf Laufwerk „D:“ konfiguriert.
+Die Datenträgerkonfiguration:
 
 
-**Name des Datenträgers** | **Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
 DB-Disk1 (Datenträger aus Schutz ausgeschlossen) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Benutzerdaten 1
 DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
-Einstellungen der Auslagerungsdatei auf der Quell-VM:
+Die Einstellungen der Auslagerungsdatei auf dem virtuellen Quellcomputer:
 
-![Replikation aktivieren](./media/site-recovery-exclude-disk/pagefile-on-d-drive-sourceVM.png)
-    
+![Einstellungen der Auslagerungsdatei auf dem virtuellen Quellcomputer](./media/site-recovery-exclude-disk/pagefile-on-d-drive-sourceVM.png)
 
-Datenträger auf der Azure-VM nach dem Failover der VM von „VMware zu Azure“ oder „Hyper-V zu Azure“:
-**Name des Datenträgers** | **Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+
+Datenträger auf dem virtuellen Azure-Computer nach einem Failover des virtuellen Computers von VMware auf Azure oder von Hyper-V auf Azure:
+
+**Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
-DB-Disk1 | Disk1 | D:\ | Temporäre Speicherung –> pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Temporäre Speicherung</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Benutzerdaten 1
 DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
-Da Disk1 (D:) ausgeschlossen wurde, ist „D:“ der erste Laufwerkbuchstabe der verfügbaren Liste, und von Azure wird „D:“ als Laufwerkbuchstabe für das Volume für die temporäre Speicherung zugewiesen.  Da „D:“ auf der Azure-VM verfügbar ist, bleibt die Einstellung der Auslagerungsdatei für die VM gleich.
+Da „Disk1 (D:)“ ausgeschlossen wurde, ist „D:“ der erste verfügbare Laufwerkbuchstabe. Azure weist „D:“ dem temporären Speichervolume zu. Da „D:“ auf dem virtuellen Azure-Computer verfügbar ist, bleibt die Einstellung der Auslagerungsdatei des virtuellen Computers identisch.
 
-Einstellungen der Auslagerungsdatei auf der Azure-VM:
+Die Einstellungen der Auslagerungsdatei auf dem virtuellen Azure-Computer:
 
-![Replikation aktivieren](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
+![Einstellungen der Auslagerungsdatei auf dem virtuellen Azure-Computer](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-####<a name="case-2-pagefile-file-is-configured-on-any-other-driveother-than-d-drive"></a>Fall 2: Auslagerungsdatei ist auf einem anderen Laufwerk konfiguriert (nicht auf Laufwerk „D:“)
+#### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Fall 2: Die Auslagerungsdatei ist auf einem anderen Laufwerk konfiguriert (nicht auf Laufwerk „D:“).
 
-Konfiguration des VM-Quelldatenträgers:
+Die Datenträgerkonfiguration des virtuellen Quellcomputers:
 
-**Name des Datenträgers** | **Datenträger mit Gastbetriebssystem** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Name des Datenträgers** | **Gastbetriebssystemdatenträger** | **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Betriebssystem-Datenträger
-DB-Disk1 (Datenträger aus Schutz ausgeschlossen) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (Datenträger von Schutz ausgeschlossen) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Benutzerdaten 1
 DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
-Einstellungen der Auslagerungsdatei auf der lokalen VM:
+Die Einstellungen der Auslagerungsdatei auf dem lokalen virtuellen Computer:
 
-![Replikation aktivieren](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
+![Einstellungen der Auslagerungsdatei auf dem lokalen virtuellen Computer](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
 
-Datenträger auf der Azure-VM nach dem Failover der VM von VMware/Hyper-V zu Azure:
+Datenträger auf dem virtuellen Azure-Computer nach einem Failover des virtuellen Computers von VMware oder Hyper-V auf Azure:
 
-**Name des Datenträgers**| **Datenträger mit Gastbetriebssystem**| **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
+**Name des Datenträgers**| **Gastbetriebssystemdatenträger**| **Laufwerkbuchstabe** | **Datentyp auf dem Datenträger**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Betriebssystem-Datenträger
-DB-Disk1 | Disk1 | D:\ | Temporäre Speicherung –> pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Temporäre Speicherung</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Benutzerdaten 1
 DB-Disk3 | Disk3 | F:\ | Benutzerdaten 2
 
-Da „D:“ der erste in der Liste verfügbare Laufwerkbuchstabe ist, weist Azure dem Volume für die temporäre Speicherung „D:“ zu. Für alle replizierten Datenträger bleibt der Laufwerkbuchstabe gleich. Da der Datenträger „G:“ nicht verfügbar ist, wird das Laufwerk „C:“ für die Auslagerungsdatei verwendet.
+Da „D:“ der erste verfügbare Laufwerkbuchstabe ist, weist Azure dem Volume für die temporäre Speicherung „D:“ zu. Für alle replizierten Datenträger bleibt der Laufwerkbuchstabe gleich. Da der Datenträger „G:“ nicht verfügbar ist, verwendet das System das Laufwerk „C:“ für die Auslagerungsdatei.
 
-Einstellungen der Auslagerungsdatei auf der Azure-VM:
+Die Einstellungen der Auslagerungsdatei auf dem virtuellen Azure-Computer:
 
-![Replikation aktivieren](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
+![Einstellungen der Auslagerungsdatei auf dem virtuellen Azure-Computer](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem die Bereitstellung eingerichtet wurde und ausgeführt wird, können Sie sich über die unterschiedlichen Failoverarten [informieren](site-recovery-failover.md) .

@@ -13,16 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2016
+ms.date: 03/01/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: 5919c477502767a32c535ace4ae4e9dffae4f44b
-ms.openlocfilehash: 9077746d8ffe968504f1dde90ed5f76dd1facc19
+ms.sourcegitcommit: 00f6b2e60c20eb27771d9d54df63f930ee88a55a
+ms.openlocfilehash: 7427c8126ab73a851bc696d4925366b3b714616d
+ms.lasthandoff: 03/02/2017
 
 
 ---
 # <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Gewusst wie: Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
-Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) zu starten. Zuerst stellen Sie eine Verbindung mit dem virtuellen Computer her, und dann melden Sie sich an.
+Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zuerst stellen Sie eine Verbindung mit dem virtuellen Computer her, und dann melden Sie sich an.
+
+Wenn Sie von einem Mac eine Verbindung mit einem virtuellen Windows-Computer herstellen möchten, müssen Sie einen RDP-Client für Mac installieren, etwa [Microsoft-Remotedesktop](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/)an, falls Sie dies noch nicht getan haben.
@@ -42,10 +45,5 @@ Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedes
 
 ## <a name="next-steps"></a>Nächste Schritte
 Falls beim Herstellen der Verbindung Probleme auftreten, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen](virtual-machines-windows-troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)weiter. Dieser Artikel führt Sie durch die Diagnose und Behebung von häufigen Problemen.
-
-
-
-
-<!--HONumber=Nov16_HO2-->
 
 

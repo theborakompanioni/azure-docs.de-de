@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 03/06/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: 1460a3e6b3d225a507e5da51dcc66810862ee2de
-ms.openlocfilehash: 4001c2d9bf2a635d7189ae46a855e347b93185c8
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: eed360b6c996d1901b40f3d1fcf4b8ff859da573
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -92,10 +93,10 @@ Sie können alle Ressourcenanbieter mit dem folgenden PowerShell-Cmdlet abrufen:
 Get-AzureRmResourceProvider -ListAvailable
 ```
 
-Mit der Azure-Befehlszeilenschnittstelle rufen Sie alle Ressourcenanbieter mit dem folgenden Befehl ab:
+Mit der Azure-Befehlszeilenschnittstelle 2.0 rufen Sie alle Ressourcenanbieter mit dem folgenden Befehl ab:
 
 ```azurecli
-azure provider list
+az provider list
 ```
 
 In der zurückgegebenen Liste können Sie den gewünschten Ressourcenanbieter auswählen.
@@ -106,10 +107,10 @@ Fügen Sie dem Befehl den Anbieternamespace hinzu, um Details zu einem Ressource
 (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 ```
 
-Mit der Azure-Befehlszeilenschnittstelle rufen Sie die unterstützten Ressourcentypen, Standorte und API-Versionen für „Microsoft.Compute“ mit dem folgenden Befehl ab:
+Mit der Azure-Befehlszeilenschnittstelle 2.0 rufen Sie die unterstützten Ressourcentypen, Standorte und API-Versionen für „Microsoft.Compute“ mit dem folgenden Befehl ab:
 
 ```azurecli
-azure provider show Microsoft.Compute --json > c:\Azure\compute.json
+az provider show --namespace Microsoft.Compute
 ```
 
 Weitere Informationen finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für den Ressourcen-Manager](resource-manager-supported-services.md).
@@ -214,10 +215,10 @@ Verwenden Sie das folgende PowerShell-Cmdlet, um alle Ressourcen mit einem Tagwe
 Find-AzureRmResource -TagName costCenter -TagValue Finance
 ```
 
-Oder führen Sie den folgenden Azure-CLI-Befehl aus:
+Oder führen Sie den folgenden Befehl der Azure CLI 2.0 aus:
 
 ```azurecli
-azure resource list -t costCenter=Finance --json
+az resource list --tag costCenter=Finance
 ```
 
 Sie haben auch die Möglichkeit, Ressourcen mit Tags über das Azure-Portal anzuzeigen.
@@ -343,9 +344,4 @@ Hier sehen Sie eine Videodemonstration dieser Übersicht:
 
 
 [powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

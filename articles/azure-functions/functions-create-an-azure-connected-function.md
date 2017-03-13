@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/23/2017
-ms.author: rachelap@microsoft.com
+ms.date: 03/01/2017
+ms.author: rachelap; glenga
 translationtype: Human Translation
-ms.sourcegitcommit: a8f6d111a010666bf4aaaf05e061381cc8fffed0
-ms.openlocfilehash: 634781189459f26e2ffa42b25a2ffb229d3371d4
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 4bea7f73871f8bfc755f30b9ef41a1960893152e
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -125,7 +126,7 @@ Nachdem der Warteschlange jetzt Nachrichten hinzugefügt werden, können Sie ein
 
     ![Hinzufügen einer Bindung an eine Azure Storage-Tabelle](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab.png) 
 
-2. Geben Sie `TableItem` als **Tabellenname** und `functionbindings` als **Tabellenparametername** ein, und wählen Sie eine **Speicherkontoverbindung** aus, oder erstellen Sie eine neue Verbindung. Klicken Sie anschließend auf **Speichern**.
+2. Geben Sie `functionbindings` als **Tabellenname** und `myTable` als **Tabellenparametername** ein, und wählen Sie eine **Speicherkontoverbindung** aus, oder erstellen Sie eine neue Verbindung. Klicken Sie anschließend auf **Speichern**.
 
     ![Konfigurieren der Speichertabellenbindung](./media/functions-create-an-azure-connected-function/functionsbindingsdemo2-integrate-tab2.png)
    
@@ -180,7 +181,7 @@ Nachdem der Warteschlange jetzt Nachrichten hinzugefügt werden, können Sie ein
 [!INCLUDE [More binding information](../../includes/functions-bindings-next-steps.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
+Weitere Informationen zu Azure Functions finden Sie in den folgenden Themen:
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
@@ -190,10 +191,5 @@ Weitere Informationen zu Azure Functions finden Sie in diesen Themen.
   Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans. 
 
 [!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

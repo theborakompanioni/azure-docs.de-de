@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/12/2017
+ms.date: 03/03/2017
 ms.author: yurid
 translationtype: Human Translation
-ms.sourcegitcommit: fc82aaf3300a8d40fe00a2ae4dc008ccee6e2a66
-ms.openlocfilehash: 66cdc1fbe5afea4790e5c8ef34b4fcf2d7e89d84
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bd2291129a1a61f69e83cb76748d00b9ede6eb6f
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -33,38 +34,38 @@ Sie können Sicherheitsrichtlinien für jedes Abonnement oder jede Ressourcengru
 
 1. Klicken Sie auf dem Security Center-Dashboard auf die Kachel **Richtlinie** .
 2. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Richtlinie pro Abonnement oder Ressourcengruppe festlegen** , das geöffnet wird, das Abonnement aus, für das Sie die Sicherheitsrichtlinie aktivieren möchten. Wenn Sie die Sicherheitsrichtlinie nicht für das gesamte Abonnement, sondern nur für eine Ressourcengruppe aktivieren möchten, scrollen Sie zum nächsten Abschnitt, in dem das Einrichten von Sicherheitsrichtlinien für Ressourcengruppen erläutert wird.
-   
+
     ![Definieren von Richtlinien](./media/security-center-policies/security-center-policies-fig1-ga.png)
 3. Das Blatt **Sicherheitsrichtlinie** für das ausgewählte Abonnement wird mit einer Reihe von Optionen geöffnet. Die Optionen sind im folgenden Screenshot dargestellt:
-   
+
     ![Aktivieren von Datensammlung](./media/security-center-policies/security-center-policies-fig2-ga.png)
-   
+
     Auf diesem Blatt stehen folgende Optionen zur Verfügung:
-   
+
    * **Präventionsrichtlinie**: Verwenden Sie diese Option, um Richtlinien auf Abonnement- oder Ressourcengruppenebene zu konfigurieren.  
    * **E-Mail-Benachrichtigung**: Verwenden Sie diese Option zum Konfigurieren einer E-Mail-Benachrichtigung, die beim ersten täglichen Auftreten einer Warnung und für Warnungen mit hohem Schweregrad gesendet wird. E-Mail-Optionen können nur für Abonnementrichtlinien konfiguriert werden. Weitere Informationen zum Konfigurieren einer E-Mail-Benachrichtigung finden Sie unter [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md) .
-   * **Tarif**: Verwenden Sie diese Option, um für die Tarifauswahl ein Upgrade durchzuführen. Weitere Informationen zu den Preisoptionen finden Sie auf der [Security Center-Seite](https://azure.microsoft.com/pricing/details/security-center/) .
+   * **Tarif**: Verwenden Sie diese Option, um für die Tarifauswahl ein Upgrade durchzuführen. Weitere Informationen zu den Preisoptionen finden Sie auf der [Security Center-Seite](security-center-pricing.md).
 4. Stellen Sie sicher, dass die Option **Datensammlung für virtuelle Computer** auf **Ein** festgelegt ist. Diese Option aktiviert automatische Protokollsammlung für vorhandene und neue Ressourcen.
-   
+
    > [!NOTE]
    > Es empfiehlt sich, die Datensammlung für Ihre gesamten Abonnements zu aktivieren, damit die Sicherheitsüberwachung für alle vorhandenen und neuen virtuellen Computer verfügbar ist. Wird Datensammlung aktiviert, wird der Überwachungs-Agent installiert. Wenn Sie die Datensammlung von diesem Standort momentan nicht aktivieren möchten, können Sie dies später über die Ansichten **Integrität** und **Empfehlungen** nachholen. Sie können die Datensammlung auch nur für das Abonnement oder für ausgewählte virtuelle Computer aktivieren. Weitere Informationen zu den unterstützten virtuellen Computern finden Sie unter [Azure Security Center – häufig gestellte Fragen](security-center-faq.md) .
-   > 
-   > 
+   >
+   >
 5. Wenn das Speicherkonto noch nicht konfiguriert wurde, wird unter Umständen eine Warnung wie im folgenden Screenshot angezeigt, sobald Sie die Option **Sicherheitsrichtlinie** öffnen. Wenn Sie kein Speicherkonto für die einzelnen Regionen auswählen, wird ein Speicherkonto für Sie erstellt.
-   
+
     ![Speicherauswahl](./media/security-center-policies/security-center-policies-fig2.png)
 6. Sollte diese Warnung angezeigt werden, klicken Sie auf die angegebene Option und wählen die Region aus, wie im folgenden Screenshot zu sehen:
-   
+
     ![Speicherauswahl](./media/security-center-policies/security-center-policies-fig3-ga.png)
 7. Wählen Sie für jede Region, in der Sie virtuelle Computer ausführen, ein Speicherkonto aus, in dem Daten gespeichert werden, die von diesen virtuellen Computern gesammelt wurden. Dies macht es einfach, Daten zu Datenschutz- und Datenhoheitszwecken in demselben geografischen Gebiet zu speichern. Nachdem Sie entschieden haben, welche Region verwendet werden soll, wählen Sie die Region und dann das Speicherkonto aus.
 8. Klicken Sie auf dem Blatt **Speicherkonten auswählen** auf **OK**.
-   
+
    > [!NOTE]
    > Bei Bedarf können Sie Daten für virtuelle Computer in verschiedenen Regionen unter einem zentralen Speicherkonto aggregieren. Weitere Informationen hierzu finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) .
-   > 
-   > 
+   >
+   >
 9. Klicken Sie auf dem Blatt **Sicherheitsrichtlinie** auf **Ein**, um die Sicherheitsempfehlungen zu aktivieren, die Sie für dieses Abonnement verwenden möchten. Klicken Sie auf **Präventionsrichtlinie** , um Optionen wie im folgenden Screenshot anzuzeigen:
-   
+
     ![Auswählen der Sicherheitsrichtlinien](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
 
 Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
@@ -72,7 +73,7 @@ Die folgende Tabelle gibt Aufschluss über die einzelnen Optionen:
 | Richtlinie | Zustand „Ein“ |
 | --- | --- |
 | Systemupdates |Ruft eine tägliche Liste mit verfügbaren Sicherheitsupdates und kritischen Updates von Windows Update oder Windows Server Update Services ab. Die abgerufene Liste richtet sich nach dem Dienst, der für den virtuellen Computer konfiguriert wurde. Darin wird empfohlen, die fehlenden Updates anzuwenden. Bei Linux-Systemen wird für die Richtlinie das von der Distribution bereitgestellte Paketverwaltungssystem genutzt, um Pakete mit verfügbaren Updates zu ermitteln. Außerdem werden Sicherheitsupdates und kritische Updates für [Azure Cloud Services](../cloud-services/cloud-services-how-to-configure.md)-VMs ermittelt. |
-| Sicherheitsrisiken des Betriebssystems |Führt eine tägliche Analyse von Betriebssystemkonfigurationen durch, um Probleme zu ermitteln, die mit einer Anfälligkeit des virtuellen Computers für Angriffe verbunden sind. Außerdem werden in der Richtlinie Konfigurationsänderungen empfohlen, um diesen Sicherheitsrisiken zu begegnen. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) . |
+| Sicherheitsrisiken des Betriebssystems |Führt eine tägliche Analyse von Betriebssystemkonfigurationen durch, um Probleme zu ermitteln, die mit einer Anfälligkeit des virtuellen Computers für Angriffe verbunden sind. Außerdem werden in der Richtlinie Konfigurationsänderungen empfohlen, um diesen Sicherheitsrisiken zu begegnen. Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) . (Zu diesem Zeitpunkt wird Windows Server 2016 nicht vollständig unterstützt.) |
 | Endpoint Protection |Empfiehlt die Bereitstellung von Endpoint Protection für alle virtuellen Windows-Computer, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. |
 | Datenträgerverschlüsselung |Empfiehlt die Aktivierung der Datenträgerverschlüsselung auf allen virtuellen Computern, um den Datenschutz im Ruhezustand zu optimieren. |
 | Netzwerksicherheitsgruppen |Empfiehlt die Konfiguration von [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) , um den eingehenden und ausgehenden Datenverkehr für VMs mit öffentlichen Endpunkten zu steuern. Netzwerksicherheitsgruppen, die für ein Subnetz konfiguriert sind, werden für alle Netzwerkschnittstellen der virtuellen Computer übernommen, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine Netzwerksicherheitsgruppe konfiguriert wurde, bewertet diese Richtlinie Sicherheitsregeln für eingehende Daten, um Regeln zu identifizieren, die eingehenden Datenverkehr zulassen. |
@@ -95,8 +96,8 @@ Nach dem Auswählen der Ressourcengruppe wird das Blatt **Sicherheitsrichtlinie*
 
 > [!NOTE]
 > Bei einem Konflikt zwischen der Richtlinie auf Abonnementebene und der Richtlinie auf Ressourcengruppenebene hat die Richtlinie auf Ressourcengruppenebene Vorrang.
-> 
-> 
+>
+>
 
 ## <a name="see-also"></a>Siehe auch
 In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure Security Center konfigurieren können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
@@ -107,10 +108,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md). Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Enthält häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
-
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 

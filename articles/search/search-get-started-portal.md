@@ -16,9 +16,9 @@ ms.tgt_pltfrm: na
 ms.date: 02/22/2017
 ms.author: heidist
 translationtype: Human Translation
-ms.sourcegitcommit: 3f608b8ae7a7812b939e0d9ab1cb8e19853220fd
-ms.openlocfilehash: 6ed23693c95ce9025576d59fa6df9d640950ada3
-ms.lasthandoff: 02/24/2017
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: 7945ee77be8a09dcac9ddd6b338bdd542ec18540
+ms.lasthandoff: 03/08/2017
 
 
 ---
@@ -35,11 +35,13 @@ Diese codefreie Einführung erleichtert Ihnen den Einstieg mit vordefinierten Da
 
 **Voraussichtliche Dauer:** Etwa 15 Minuten (länger, falls noch eine Konto- oder Dienstregistrierung erforderlich ist). 
 
-Alternativ können Sie sich eine sechsminütige Demo der Schritte in diesem Tutorial ansehen (etwa ab der dritten Minute [dieses Übersichtsvideos für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138)).
+Oder setzen Sie sich anhand einer [codebasierten Einführung in die Programmierung von Azure Search in .NET](search-howto-dotnet-sdk.md) detailliert mit der Thematik auseinander.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Tutorials wird vorausgesetzt, dass Sie über ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) und über einen [Azure Search-Dienst](search-create-service-portal.md) verfügen. 
+
+Wenn Sie nicht sofort einen Dienst bereitstellen möchten, können Sie sich eine sechsminütige Demo der Schritte in diesem Tutorial ansehen (etwa ab der dritten Minute [dieses Übersichtsvideos für Azure Search](https://channel9.msdn.com/Events/Connect/2016/138)).
 
 ## <a name="find-your-service"></a>Suchen nach dem Dienst
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
@@ -57,7 +59,7 @@ Viele Kunden beginnen mit dem kostenlosen Dienst (Free). Diese Version ist auf d
 > ![Kacheln für Indexer und Datenquellen][1]
 >
 
-## <a name="a-namecreate-indexa-create-an-index-and-load-data"></a><a name="create-index"></a> Erstellen eines Index und Laden von Daten
+## <a name="create-index"></a> Erstellen eines Index und Laden von Daten
 Suchabfragen durchlaufen einen *Index* mit durchsuchbaren Daten, Metadaten und Konstrukten, die zur Optimierung bestimmter Suchverhaltensweisen verwendet werden.
 
 Um diese Aufgabe über das Portal durchführen zu können, verwenden wir ein integriertes Dataset, das über den **Datenimport-Assistenten** mit einem Indexer durchforstet werden kann. 
@@ -100,7 +102,7 @@ Wechseln Sie zum Überwachen des Datenimports zurück zum Dashboard des Diensts,
 
    ![Statusmeldung des Indexers][4]
 
-## <a name="a-namequery-indexa-query-the-index"></a><a name="query-index"></a> Abfragen des Index
+## <a name="query-index"></a> Abfragen des Index
 Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suchexplorer** ist ein in das Portal integriertes Abfragetool. Es stellt ein Suchfeld bereit, mit dem Sie überprüfen können, ob die Suchergebnisse Ihren Erwartungen entsprechen. 
 
 > [!TIP]

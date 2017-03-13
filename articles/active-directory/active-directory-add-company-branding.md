@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2017
+ms.date: 03/03/2017
 ms.author: curtand
 translationtype: Human Translation
-ms.sourcegitcommit: e4896c1a3adf76477899336f1ff1ee215cc7c9aa
-ms.openlocfilehash: 6a20f75dbb2c914b1239adb5ba10189a7193584c
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 1ec1a20dec318153923afd6a0875545d1e102f29
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -133,6 +134,10 @@ Wenn Ihre bevorzugte Sprache Deutsch ist, erhalten Sie das Standardbannerlogo un
 
 Während Sie technisch gesehen einen anderen Satz für jede von Azure AD unterstützte Sprache konfigurieren könnten, empfehlen wir, dass die Anzahl der Varianten aus Wartungs- und Leistungsgründen so klein wie möglich bleibt.
 
+> [!IMPORTANT]
+> Yammer zeigt die Anmeldeseite mit Azure AD-Branding erst, wenn sich der Benutzer angemeldet hat. Der Benutzer sieht zunächst die allgemeine Office 365-Anmeldeseite und anschließend die Seite mit Branding.   
+ 
+ 
 **Führen Sie die folgenden Schritte aus, um Ihrem Verzeichnis Unternehmensbranding hinzuzufügen:**
 
 1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator des Verzeichnisses an, das Sie anpassen möchten.
@@ -148,7 +153,7 @@ Es kann bis zu einer Stunde dauern, bis Neuerungen angezeigt werden, die Sie am 
 
 1. Melden Sie sich am [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator des Verzeichnisses an, das Sie anpassen möchten.
 2. Wählen Sie das Verzeichnis, das Sie anpassen möchten.
-3. Klicken Sie in der Symbolleiste oben auf **Konfigurieren**.
+fs3. Klicken Sie in der Symbolleiste oben auf **Konfigurieren**.
 4. Klicken Sie auf **Branding anpassen**.
 5. Klicken Sie auf **Brandingeinstellungen für eine bestimmte Sprache hinzufügen**.
 6. Wählen Sie die Sprache, für die Sie das Logo anpassen möchten, und klicken Sie dann auf **Weiter**.
@@ -221,9 +226,4 @@ Einige anpassbare Elemente in Azure AD dienen mehreren Verwendungszwecken. Sie k
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 

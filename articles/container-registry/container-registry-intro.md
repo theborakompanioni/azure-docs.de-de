@@ -1,5 +1,5 @@
 ---
-title: Private Docker-Containerregistrierung in Azure | Microsoft-Dokumentation
+title: Private Docker-Containerregistrierungen in Azure | Microsoft-Dokumentation
 description: "Enthält eine Einführung in den Dienst „Azure-Containerregistrierung“ und die Bereitstellung von cloudbasierten, verwalteten, privaten Docker-Registrierungen."
 services: container-registry
 documentationcenter: 
@@ -16,12 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2016
 ms.author: stevelas
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: f299cff22d00a1c765a32838647818d18f3df85d
-ms.openlocfilehash: 44bfd57feecc45e037717a35b64dd8e4bfb6a1b3
+ms.sourcegitcommit: 0433e22dc7722ef9c8edfaf949dbd9a9d8645e67
+ms.openlocfilehash: 69d1750f13b5507268229b29a392c38662c0f5f0
+ms.lasthandoff: 03/02/2017
 
 ---
-# <a name="what-is-azure-container-registry"></a>Was ist die Azure-Containerregistrierung?
+# <a name="introduction-to-private-docker-container-registries"></a>Einführung in private Docker-Containerregistrierungen
 > [!NOTE]
 > Die Containerregistrierung befindet sich derzeit in der Vorschauphase.
 
@@ -68,9 +70,4 @@ Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine 
 * [Freigeben Ihres ersten Image mit der Docker CLI](container-registry-get-started-docker-cli.md)
 * Informationen zum Erstellen eines Continuous Integration- und Bereitstellungsworkflows mithilfe von Visual Studio Team Services, Azure Container Service und der Azure-Containerregistrierung finden Sie in [diesem Tutorial](../container-service/container-service-setup-ci-cd.md).
 * Informationen zum Einrichten Ihrer privaten Docker-Registrierung in Azure (ohne öffentlichen Endpunkt) finden Sie unter [Bereitstellen einer privaten Docker-Registrierung in Azure](../virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

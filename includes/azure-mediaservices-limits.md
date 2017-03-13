@@ -4,20 +4,20 @@
 | Ressource | Standardlimit | 
 | --- | --- | 
 | Azure Media Services (AMS)-Konten in einem einzelnen Abonnement | 25 (feststehend) |
-| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1, S2)<br/>10 (S3) <sup>1</sup> | 
-| Aufträge pro AMS-Konto | 50.000<sup>2</sup> |
+| Reservierte Einheiten für Medien (Media Reserved Units; RUs) pro AMS-Konto |25 (S1, S2)<br/>10 (S3) <sup>(1)</sup> | 
+| Aufträge pro AMS-Konto | 50,000<sup>(2)</sup> |
 | Verkettete Aufgaben pro Auftrag | 30 (feststehend) |
 | Objekte pro AMS-Konto | 1.000.000|
 | Objekte pro Aufgabe | 50 |
 | Objekte pro Auftrag | 100 |
-| Eindeutige Locators, die einem Objekt gleichzeitig zugeordnet sind | 5<sup>4</sup> |
+| Eindeutige Locators, die einem Objekt gleichzeitig zugeordnet sind | 5<sup>(4)</sup> |
 | Livekanäle pro AMS-Konto  |5|
 | Programme im angehaltenen Zustand pro Kanal  |50|
 | Programme im ausgeführten Zustand pro Kanal  |3|
 | Streamingendpunkte im ausgeführten Zustand pro AMS-Konto|2|
 | Streamingeinheiten pro Streamingendpunkt  |10 |
-| Speicherkonten | 1.000<sup>5</sup> (feststehend) |
-| Richtlinien | 1,000,000<sup>6</sup> |
+| Speicherkonten | 1.000<sup>(5)</sup> (feststehend) |
+| Richtlinien | 1,000,000<sup>(6)</sup> |
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>7</sup> |
   
 <sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar.
@@ -44,8 +44,3 @@ Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 |S1    | 325|
 |S2    | 640|
 |S3    | 260|
-
-
-<!--HONumber=Feb17_HO2-->
-
-

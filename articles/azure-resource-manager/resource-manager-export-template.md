@@ -12,11 +12,12 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/20/2016
+ms.date: 03/03/2017
 ms.author: tomfitz
 translationtype: Human Translation
-ms.sourcegitcommit: e841c21a15c47108cbea356172bffe766003a145
-ms.openlocfilehash: 4f1e8850aee2cc9578ce80ceb4a5eecf121c4c60
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: f8512229ee30fee6315d8ba167f1716e40f79b3e
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -36,7 +37,7 @@ In diesem Tutorial melden Sie sich beim Azure-Portal an, erstellen ein Speicherk
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Speicher** > **Speicherkonto**.
    
       ![Speicher erstellen](./media/resource-manager-export-template/create-storage.png)
-2. Erstellen Sie ein Speicherkonto mit dem Namen **storage**, gefolgt von Ihren Initialen und dem Datum. Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Sollte der Name bereits verwendet werden, erscheint eine entsprechende Fehlermeldung. Verwenden Sie eine andere Variante. Erstellen Sie eine neue Ressourcengruppe namens **ExportGroup**. Sie können für die anderen Eigenschaften die Standardwerte verwenden. Klicken Sie auf **Erstellen**.
+2. Erstellen Sie ein Speicherkonto mit dem Namen **storage**, gefolgt von Ihren Initialen und dem Datum. Der Name des Speicherkontos muss innerhalb von Azure eindeutig sein. Sollte der Name bereits verwendet werden, erscheint eine entsprechende Fehlermeldung. Verwenden Sie eine andere Variante. Wählen Sie für die Ressourcengruppe **Neu erstellen** aus, und geben Sie ihr den Namen **ExportGroup**. Sie können für die anderen Eigenschaften die Standardwerte verwenden. Klicken Sie auf **Erstellen**.
    
       ![Werte für Speicher angeben](./media/resource-manager-export-template/provide-storage-values.png)
 
@@ -57,6 +58,7 @@ Die Bereitstellung kann etwas dauern. Nach Abschluss der Bereitstellung enthält
    1. **Vorlage** : Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
    2. **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie bei der ersten Bereitstellung angegeben haben. Diese Werte können aber geändert werden, wenn Sie die Vorlage erneut bereitstellen.
    3. **CLI** : Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
+   3. **CLI 2.0:** Eine Skriptdatei der Azure-Befehlszeilenschnittstelle, die Sie zum Bereitstellen der Vorlage verwenden können.
    4. **PowerShell** : Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
    5. **.NET** : Eine .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
    6. **Ruby** : Eine Ruby-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
@@ -67,48 +69,49 @@ Die Bereitstellung kann etwas dauern. Nach Abschluss der Bereitstellung enthält
       
       Wir sehen uns die Vorlage nun genauer an. Die Vorlage sollte in etwa wie folgt aussehen:
       
-        {
-      
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-            "name": {
-              "type": "String"
-            },
-            "accountType": {
-              "type": "String"
-            },
-            "location": {
-              "type": "String"
-            },
-            "encryptionEnabled": {
-              "defaultValue": false,
-              "type": "Bool"
-            }
+      ```json
+      {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "name": {
+            "type": "String"
           },
-          "resources": [
-            {
-              "type": "Microsoft.Storage/storageAccounts",
-              "sku": {
-                "name": "[parameters('accountType')]"
-              },
-              "kind": "Storage",
-              "name": "[parameters('name')]",
-              "apiVersion": "2016-01-01",
-              "location": "[parameters('location')]",
-              "properties": {
-                "encryption": {
-                  "services": {
-                    "blob": {
-                      "enabled": "[parameters('encryptionEnabled')]"
-                    }
-                  },
-                  "keySource": "Microsoft.Storage"
-                }
+          "accountType": {
+            "type": "String"
+          },
+          "location": {
+            "type": "String"
+          },
+          "encryptionEnabled": {
+            "defaultValue": false,
+            "type": "Bool"
+          }
+        },
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+              "name": "[parameters('accountType')]"
+            },
+            "kind": "Storage",
+            "name": "[parameters('name')]",
+            "apiVersion": "2016-01-01",
+            "location": "[parameters('location')]",
+            "properties": {
+              "encryption": {
+                "services": {
+                  "blob": {
+                    "enabled": "[parameters('encryptionEnabled')]"
+                  }
+                },
+                "keySource": "Microsoft.Storage"
               }
             }
-          ]
-        }
+          }
+        ]
+      }
+      ```
 
 Dies ist die Vorlage, die zum Erstellen Ihres Speicherkontos verwendet wurde. Beachten Sie, dass sie Parameter enthält, mit denen Sie unterschiedliche Arten von Speicherkonten bereitstellen können. Weitere Informationen zur Struktur einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md). Unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md)finden Sie eine vollständige Liste mit den Funktionen, die Sie in einer Vorlage verwenden können.
 
@@ -144,25 +147,29 @@ Um den aktuellen Zustand der Ressourcengruppe abzurufen, exportieren Sie eine Vo
    
      Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Wenn die Ressourcengruppe wie in diesem Artikel gezeigt nur das Speicherkonto und das virtuelle Netzwerk enthält, wird kein Fehler angezeigt. Falls Sie andere Ressourcentypen erstellt haben, wird aber unter Umständen ein Fehler mit dem Hinweis angezeigt, dass ein Problem mit dem Export besteht. Informationen zum Umgang mit diesen Problemen finden Sie im Abschnitt [Beheben von Exportproblemen](#fix-export-issues) .
 2. Es werden wieder die sechs Dateien angezeigt, die Sie zum erneuten Bereitstellen der Lösung verwenden können. Dieses Mal sieht die Vorlage allerdings etwas anders aus. Diese Vorlage verfügt nur über zwei Parameter: einen für den Speicherkontonamen und einen für den Namen des virtuellen Netzwerks.
-   
-        "parameters": {
-          "virtualNetworks_VNET_name": {
-            "defaultValue": "VNET",
-            "type": "String"
-          },
-          "storageAccounts_storagetf05092016_name": {
-            "defaultValue": "storagetf05092016",
-            "type": "String"
-          }
-        },
+
+  ```json
+  "parameters": {
+    "virtualNetworks_VNET_name": {
+      "defaultValue": "VNET",
+      "type": "String"
+    },
+    "storageAccounts_storagetf05092016_name": {
+      "defaultValue": "storagetf05092016",
+      "type": "String"
+    }
+  },
+  ```
    
      Resource Manager hat die Vorlagen, die Sie während der Bereitstellung verwendet haben, nicht abgerufen. Stattdessen wurde basierend auf der aktuellen Konfiguration der Ressourcen eine neue Vorlage generiert. Der Standort des Speicherkontos und der Replikationswert werden von der Vorlage beispielsweise wie folgt festgelegt:
-   
-        "location": "northeurope",
-        "tags": {},
-        "properties": {
-            "accountType": "Standard_RAGRS"
-        },
+
+  ```json 
+  "location": "northeurope",
+  "tags": {},
+  "properties": {
+    "accountType": "Standard_RAGRS"
+  },
+  ```
 3. Die Arbeit mit dieser Vorlage kann auf unterschiedliche Weise fortgesetzt werden: Sie können die Vorlage herunterladen und lokal mit einem JSON-Editor bearbeiten. Alternativ können Sie die Vorlage in Ihrer Bibliothek speichern und über das Portal bearbeiten.
    
      Wenn Sie mit einem JSON-Editor wie [VS Code](resource-manager-vs-code.md) oder [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vertraut sind, möchten Sie die Vorlage unter Umständen lieber herunterladen und den vertrauten Editor verwenden. Falls Sie über keinen JSON-Editor verfügen, bearbeiten Sie die Vorlage wahrscheinlich lieber über das Portal. In weiteren Verlauf dieses Themas wird davon ausgegangen, dass Sie die Vorlage in Ihrer Bibliothek im Portal gespeichert haben. Für die Vorlage müssen jedoch in beiden Fällen (also sowohl bei der lokalen Bearbeitung mit einem JSON-Editor als auch bei der Bearbeitung über das Portal) die gleichen Syntaxänderungen vorgenommen werden.
@@ -197,81 +204,90 @@ In diesem Abschnitt werden der exportierten Vorlage Parameter hinzugefügt, um d
    
      ![Bearbeiten der Vorlage](./media/resource-manager-export-template/edit-template.png)
 3. Um die Übergabe der Werte zu ermöglichen, die Sie unter Umständen bei der Bereitstellung angeben möchten, muss der Abschnitt **parameters** durch neue Parameterdefinitionen ersetzt werden. Beachten Sie die Werte von **allowedValues** für **storageAccount_accountType**. Falls Sie versehentlich einen ungültigen Wert angeben, wird dieser Fehler vor dem Start der Bereitstellung erkannt. Beachten Sie außerdem, dass Sie nur ein Präfix für den Namen des Speicherkontos angeben und das Präfix auf 11 Zeichen beschränkt ist. Durch die Beschränkung auf 11 Zeichen wird sichergestellt, dass der vollständige Name die maximal zulässige Zeichenanzahl für ein Speicherkonto nicht überschreitet. Das Präfix ermöglicht die Verwendung einer Benennungskonvention für Speicherkonten. Die Vorgehensweise zum Erstellen eines eindeutigen Namens wird im nächsten Schritt erläutert.
-   
-        "parameters": {
-          "storageAccount_prefix": {
-            "type": "string",
-            "maxLength": 11
-          },
-          "storageAccount_accountType": {
-            "defaultValue": "Standard_RAGRS",
-            "type": "string",
-            "allowedValues": [
-              "Standard_LRS",
-              "Standard_ZRS",
-              "Standard_GRS",
-              "Standard_RAGRS",
-              "Premium_LRS"
-            ]
-          },
-          "virtualNetwork_name": {
-            "type": "string"
-          },
-          "addressPrefix": {
-            "defaultValue": "10.0.0.0/16",
-            "type": "string"
-          },
-          "subnetName": {
-            "defaultValue": "subnet-1",
-            "type": "string"
-          },
-          "subnetAddressPrefix": {
-            "defaultValue": "10.0.0.0/24",
-            "type": "string"
-          }
-        },
+
+  ```json
+  "parameters": {
+    "storageAccount_prefix": {
+      "type": "string",
+      "maxLength": 11
+    },
+    "storageAccount_accountType": {
+      "defaultValue": "Standard_RAGRS",
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ]
+    },
+    "virtualNetwork_name": {
+      "type": "string"
+    },
+    "addressPrefix": {
+      "defaultValue": "10.0.0.0/16",
+      "type": "string"
+    },
+    "subnetName": {
+      "defaultValue": "subnet-1",
+      "type": "string"
+    },
+    "subnetAddressPrefix": {
+      "defaultValue": "10.0.0.0/24",
+      "type": "string"
+    }
+  },
+  ```
+
 4. Der Abschnitt **variables** der Vorlage ist momentan noch leer. Im Abschnitt **variables** können Sie Werte erstellen, die die Syntax der restlichen Vorlage vereinfachen. Ersetzen Sie diesen Abschnitt durch eine neue Variablendefinition. Die Variable **storageAccount_name** verkettet das Präfix aus dem Parameter zu einer eindeutigen Zeichenfolge, die auf der Grundlage des Bezeichners der Ressourcengruppe generiert wird. Dadurch müssen Sie sich beim Angeben eines Parameterwerts keinen eindeutigen Namen mehr ausdenken.
-   
-        "variables": {
-          "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
-        },
+
+  ```json
+  "variables": {
+    "storageAccount_name": "[concat(parameters('storageAccount_prefix'), uniqueString(resourceGroup().id))]"
+  },
+  ```
+
 5. Zur Verwendung der Parameter und Variablen in den Ressourcendefinitionen muss der Abschnitt **resources** durch neue Ressourcendefinitionen ersetzt werden. Abgesehen von dem Wert, der der Ressourceneigenschaft zugewiesen wird, hat sich an den Ressourcendefinitionen nicht viel geändert. Die Eigenschaften entsprechen den Eigenschaften aus der exportierten Vorlage. Anstelle von hartcodierten Werten werden den Parameterwerten allerdings Eigenschaften zugewiesen. Mithilfe des Ausdrucks **resourceGroup().location** wird der Ort der Ressourcen auf den Ort der Ressourcengruppe festgelegt. Als Referenz für die Variable, die für den Namen des Speicherkontos erstellt wurde, wird der Ausdruck **variables** verwendet.
-   
-        "resources": [
+
+  ```json
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('virtualNetwork_name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('addressPrefix')]"
+          ]
+        },
+        "subnets": [
           {
-            "type": "Microsoft.Network/virtualNetworks",
-            "name": "[parameters('virtualNetwork_name')]",
-            "apiVersion": "2015-06-15",
-            "location": "[resourceGroup().location]",
+            "name": "[parameters('subnetName')]",
             "properties": {
-              "addressSpace": {
-                "addressPrefixes": [
-                  "[parameters('addressPrefix')]"
-                ]
-              },
-              "subnets": [
-                {
-                  "name": "[parameters('subnetName')]",
-                  "properties": {
-                    "addressPrefix": "[parameters('subnetAddressPrefix')]"
-                  }
-                }
-              ]
-            },
-            "dependsOn": []
-          },
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccount_name')]",
-            "apiVersion": "2015-06-15",
-            "location": "[resourceGroup().location]",
-            "tags": {},
-            "properties": {
-                "accountType": "[parameters('storageAccount_accountType')]"
-            },
-            "dependsOn": []
+              "addressPrefix": "[parameters('subnetAddressPrefix')]"
+            }
           }
         ]
+      },
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccount_name')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {
+        "accountType": "[parameters('storageAccount_accountType')]"
+      },
+      "dependsOn": []
+    }
+  ]
+  ```
+
 6. Wählen Sie **OK** aus, wenn Sie mit der Bearbeitung der Vorlage fertig sind.
 7. Wählen Sie **Speichern** aus, um die Änderungen an der Vorlage zu speichern.
    
@@ -286,7 +302,7 @@ Wenn Sie anstelle der Portalbibliothek heruntergeladene Dateien verwenden, müss
 
 Ersetzen Sie den Inhalt der JSON-Parameterdatei durch Folgendes:
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
@@ -304,7 +320,7 @@ Ersetzen Sie den Inhalt der JSON-Parameterdatei durch Folgendes:
 Die aktualisierte Parameterdatei stellt nur Werte für Parameter bereit, die über keinen Standardwert verfügen. Sie können auch Werte für andere Parameter angeben, wenn Sie nicht den Standardwert verwenden möchten.
 
 ## <a name="fix-export-issues"></a>Beheben von Exportproblemen
-Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Vom Resource Manager werden einige bestimmte Ressourcentypen nicht exportiert, um die Offenlegung vertraulicher Daten zu verhindern. Wenn Sie in Ihrer Websitekonfiguration beispielsweise über eine Verbindungszeichenfolge verfügen, möchten Sie vermutlich nicht, dass sie in einer exportierten Vorlage explizit angezeigt wird. Sie können dieses Problem beheben, indem Sie die fehlenden Ressourcen der Vorlage manuell erneut hinzufügen.
+Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Vom Resource Manager werden einige bestimmte Ressourcentypen nicht exportiert, um die Offenlegung vertraulicher Daten zu verhindern. Wenn Sie in Ihrer Websitekonfiguration beispielsweise über eine Verbindungszeichenfolge verfügen, möchten Sie vermutlich nicht, dass sie in einer exportierten Vorlage explizit angezeigt wird. Beheben Sie dieses Problem, indem Sie die fehlenden Ressourcen der Vorlage manuell erneut hinzufügen.
 
 > [!NOTE]
 > Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren, anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in einer einzelnen Vorlage nicht definiert sind.
@@ -324,7 +340,7 @@ Dieses Thema enthält allgemeine Korrekturen.
 ### <a name="connection-string"></a>Verbindungszeichenfolge
 Fügen Sie in der Websiteressource eine Definition für die Verbindungszeichenfolge der Datenbank hinzu:
 
-```
+```json
 {
   "type": "Microsoft.Web/sites",
   ...
@@ -350,7 +366,7 @@ Fügen Sie in der Websiteressource eine Definition für die Verbindungszeichenfo
 ### <a name="web-site-extension"></a>Websiteerweiterung
 Fügen Sie in der Websiteressource eine Definition für den zu installierenden Code hinzu:
 
-```
+```json
 {
   "type": "Microsoft.Web/sites",
   ...
@@ -382,7 +398,7 @@ Beispiele für VM-Erweiterungen finden Sie unter [Konfigurationsbeispiele für W
 ### <a name="virtual-network-gateway"></a>Gateway des virtuellen Netzwerks
 Fügen Sie einen Ressourcentyp für das Gateway des virtuellen Netzwerks hinzu.
 
-```
+```json
 {
   "type": "Microsoft.Network/virtualNetworkGateways",
   "name": "[parameters('<gateway-name>')]",
@@ -417,7 +433,7 @@ Fügen Sie einen Ressourcentyp für das Gateway des virtuellen Netzwerks hinzu.
 ### <a name="local-network-gateway"></a>Lokales Netzwerkgateway
 Fügen Sie einen Ressourcentyp für das lokale Netzwerkgateway hinzu.
 
-```
+```json
 {
     "type": "Microsoft.Network/localNetworkGateways",
     "name": "[parameters('<local-network-gateway-name>')]",
@@ -434,7 +450,7 @@ Fügen Sie einen Ressourcentyp für das lokale Netzwerkgateway hinzu.
 ### <a name="connection"></a>Verbindung
 Fügen Sie einen Ressourcentyp für die Verbindung hinzu.
 
-```
+```json
 {
     "apiVersion": "2015-06-15",
     "name": "[parameters('<connection-name>')]",
@@ -461,10 +477,5 @@ Glückwunsch! Sie haben gelernt, wie Sie eine Vorlage aus Ressourcen exportieren
 * Eine Vorlage kann mithilfe von [PowerShell](resource-group-template-deploy.md), mit der [Azure-Befehlszeilenschnittstelle](resource-group-template-deploy-cli.md) oder per [REST-API](resource-group-template-deploy-rest.md) bereitgestellt werden.
 * Informationen zum Exportieren einer Vorlage mithilfe von PowerShell finden Sie unter [Verwenden von Windows PowerShell mit Azure Resource Manager](powershell-azure-resource-manager.md).
 * Informationen zum Exportieren einer Vorlage mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md).
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
