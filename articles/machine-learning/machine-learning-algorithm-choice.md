@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/09/2016
+ms.date: 12/12/2016
 ms.author: garye
 translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f2593e5ddebdc3a44559f16739dc9a13881afcb2
+ms.sourcegitcommit: 265bb284d23e42c16c84a718c402b1bc6f6a30f9
+ms.openlocfilehash: c5521c3a02e36fa388e4da90faf4d8b9fa219356
+ms.lasthandoff: 12/19/2016
 
 
 ---
@@ -175,7 +176,7 @@ Neuronale Netzwerke sind vom Gehirn inspirierte Lernalgorithmen, die [mehrklassi
 Diese hohe Leistung gibt es jedoch nicht umsonst. Das Training neuronaler Netzwerke kann sehr lange dauern, insbesondere bei großen Datasets mit vielen Merkmalen. Sie verfügen außerdem über mehr Parameter als die meisten Algorithmen, was bedeutet, dass "Parameter Sweeping" die Trainingsdauer extrem verlängert.
 Und für die Streber, die [ihre eigene Netzwerkstruktur spezifizieren](http://go.microsoft.com/fwlink/?LinkId=402867)möchten, sind die Möglichkeiten geradezu unerschöpflich.
 
-## <a name="boundaries-learned-by-neural-networks6"></a>![Von neuronalen Netzwerken gelernte Grenzen][6]
+![Von neuronalen Netzwerken gelernte Grenzen][6]
 ***Die von neuronalen Netzwerken gelernten Grenzen können komplex und unregelmäßig sein.***
 
 Das [Two-Class Averaged Perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) (zweiklassiges, gemitteltes Perzeptron) ist die neuronale Netzwerkantwort auf in den Himmel schießende Trainingsdauern. Er verwendet eine Netzwerkstruktur, die lineare Klassengrenzen liefert. Nach heutigen Standards ist es geradezu primitiv, aber es funktioniert schon sehr lange robust und ist klein genug, um schnell zu lernen.
@@ -217,7 +218,14 @@ Es gibt auch einen [mehrklassigen One-vs-All-Ensemble-Klassifizierer](https://ms
 
 Azure Machine Learning umfasst außerdem Zugriff auf ein leistungsfähiges Machine Learning-Framework namens [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
 VW widersetzt sich einer Kategorisierung, weil es sowohl Klassifizierungs- als auch Regressionsprobleme lernen und sogar von teilweise bezeichnungslosen Daten lernen kann. Sie können es so konfigurieren, dass es jeden einer Anzahl von Lernalgorithmen, Verlustfunktionen und Optimierungsalgorithmen verwendet. Es wurde von Grund auf unter den Aspekten Effizienz, Parallelität und extreme Schnelligkeit entwickelt. Es verarbeitet unglaublich große Merkmalsgruppen, ohne einen nennenswerten Aufwand zu zeigen.
-Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Formel 1-Wagen in einem Feld aus Stockcar-Algorithmen. Nicht jedes Problem eignet sich für den Einsatz von VW, aber wenn sich Ihres eignet, kann es durchaus den zeitlichen Aufwand lohnen, sich mit der Schnittstelle auseinanderzusetzen. Es steht auch als [eigenständiger Open Source-Code](https://github.com/JohnLangford/vowpal_wabbit) in mehreren Sprachen zur Verfügung.
+Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Formel&1;-Wagen in einem Feld aus Stockcar-Algorithmen. Nicht jedes Problem eignet sich für den Einsatz von VW, aber wenn sich Ihres eignet, kann es durchaus den zeitlichen Aufwand lohnen, sich mit der Schnittstelle auseinanderzusetzen. Es steht auch als [eigenständiger Open Source-Code](https://github.com/JohnLangford/vowpal_wabbit) in mehreren Sprachen zur Verfügung.
+
+## <a name="more-help-with-algorithms"></a>Weitere Hilfe zu Algorithmen
+* Eine herunterladbare Infografik, die Algorithmen beschreibt und Beispiele enthält, finden Sie unter [Herunterladbare Infografik: Grundlagen des maschinellen Lernens mit Algorithmusbeispielen](machine-learning-basics-infographic-with-algorithm-examples.md).
+* Eine in Kategorien unterteilte Liste aller in Azure Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modell initialisieren][initialize-model].
+* Eine vollständige alphabetische Liste aller in Azure Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
+* Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich einen Überblick über die Azure Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](machine-learning-studio-overview-diagram.md).
+
 
 <!-- Media -->
 
@@ -231,9 +239,4 @@ Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Forme
 [8]: ./media/machine-learning-algorithm-choice/image8.png
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 
