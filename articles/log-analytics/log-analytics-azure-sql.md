@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL-Analyselösung in Log Analytics | Microsoft-Dokumentation"
-description: "Die Azure SQL-Analyselösung hilft Ihnen bei der Verwaltung Ihrer Azure SQL-Datenbanken."
+title: "Azure SQL Analytics-Lösung in Log Analytics | Microsoft-Dokumentation"
+description: "Die Azure SQL Analytics-Lösung hilft Ihnen bei der Verwaltung Ihrer Azure SQL-Datenbanken."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -23,7 +23,7 @@ ms.lasthandoff: 02/23/2017
 ---
 
 
-# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen der Azure SQL-Datenbank mithilfe von Azure SQL-Analysen (Vorschau) in Log Analytics
+# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
 Die Azure SQL-Überwachungslösung in Azure Log Analytics erfasst und visualisiert wichtige SQL Azure-Leistungsmetriken. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. Zudem können Sie Azure SQL-Datenbank und Kennzahlen für Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und visuell darstellen. Die Lösung hilft Ihnen außerdem beim Erkennen von Problemen auf jeder Stufe Ihres Anwendungsstapels.  Sie verwendet [Azure-Diagnosemetriken](log-analytics-azure-storage.md) zusammen mit Log Analytics-Ansichten, um Daten zu allen Azure SQL-Datenbanken und Pools für elastische Datenbanken in einem einzelnen Log Analytics-Arbeitsbereich darzustellen.
 
@@ -58,9 +58,9 @@ Führen Sie die folgenden Schritte aus, um die Azure SQL-Überwachungslösung Ih
 2. Klicken Sie im Azure-Portal auf **Neu** (das Symbol +), und wählen Sie dann in der Liste der Ressourcen **Überwachung und Verwaltung** aus.  
     ![Überwachung und Verwaltung](./media/log-analytics-azure-sql/monitoring-management.png)
 3. Klicken Sie in der Liste **Überwachung und Verwaltung** auf **See all** (Alle anzeigen).
-4. Klicken Sie in der Liste **Empfohlen** auf **Weitere Informationen**, suchen Sie in der neuen Liste **Azure SQL-Analysen (Vorschau)**, und wählen Sie dann diese Option aus.  
-    ![Azure SQL-Analyselösung](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. Klicken Sie auf dem Blatt **Azure SQL-Analysen (Vorschau)** auf **Erstellen**.  
+4. Klicken Sie in der Liste **Empfohlen** auf **Weitere Informationen**, suchen Sie in der neuen Liste **Azure SQL Analytics (Vorschau)**, und wählen Sie dann diese Option aus.  
+    ![Azure SQL Analytics-Lösung](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
+5. Klicken Sie auf dem Blatt **Azure SQL Analytics (Vorschau)** auf **Erstellen**.  
     ![Erstellen](./media/log-analytics-azure-sql/portal-create.png)
 6. Wählen Sie auf dem Blatt **Neue Lösung erstellen** den Arbeitsbereich aus, dem Sie die Lösung hinzufügen möchten, und klicken Sie dann auf **Erstellen**.  
     ![Zu Arbeitsbereich hinzufügen](./media/log-analytics-azure-sql/add-to-workspace.png)
@@ -82,23 +82,23 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
-Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL-Analysen“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Die Kachel zeigt die Anzahl der Azure SQL-Datenbanken und der Pools für elastische SQL Azure-Datenbanken, mit denen die Lösung verbunden ist.
+Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Die Kachel zeigt die Anzahl der Azure SQL-Datenbanken und der Pools für elastische SQL Azure-Datenbanken, mit denen die Lösung verbunden ist.
 
-![Kachel „Azure SQL-Analysen“](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
+![Kachel „Azure SQL Analytics“](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
 ### <a name="viewing-azure-sql-monitoring-data"></a>Anzeigen der Daten der Azure SQL-Überwachung
 
-Klicken Sie auf die Kachel **Azure SQL-Überwachung**, um das Dashboard „Azure SQL-Analysen“ zu öffnen. Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind bis zu zehn Einträge enthalten, die die Spaltenkriterien für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, indem Sie unten in der Spalte auf **Alle anzeigen** oder auf die Spaltenüberschrift klicken.
+Klicken Sie auf die Kachel **Azure SQL-Überwachung**, um das Dashboard „Azure SQL Analytics“ zu öffnen. Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind bis zu zehn Einträge enthalten, die die Spaltenkriterien für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, indem Sie unten in der Spalte auf **Alle anzeigen** oder auf die Spaltenüberschrift klicken.
 
 Lesen Sie mehr über [SQL-Datenbankoptionen und -leistung für Dienstebenen](../sql-database/sql-database-service-tiers.md).
 
 
 
-![Azure SQL-Analysedashboard](./media/log-analytics-azure-sql/azure-sql-dash-01.png)
+![Azure SQL Analytics-Dashboard](./media/log-analytics-azure-sql/azure-sql-dash-01.png)
 
 
 
-![Azure SQL-Analysedashboard](./media/log-analytics-azure-sql/azure-sql-dash-02.png)
+![Azure SQL Analytics-Dashboard](./media/log-analytics-azure-sql/azure-sql-dash-02.png)
 
 | Spalte | Beschreibung |
 | --- | --- |
@@ -127,7 +127,7 @@ Die Lösung enthält einige *warnungsbasierte Abfragen*, wie oben gezeigt, die S
 
 1. Wechseln Sie zum [OMS-Portal](http://mms.microsoft.com/), und melden Sie sich an.
 2. Öffnen Sie den Arbeitsbereich, den Sie für die Lösung konfiguriert haben.
-3. Klicken Sie auf der Seite „Übersicht“ auf die Kachel **Azure SQL-Analysen (Vorschau)**.
+3. Klicken Sie auf der Seite „Übersicht“ auf die Kachel **Azure SQL Analytics (Vorschau)**.
 4. Führen Sie einen Bildlauf nach rechts durch, und klicken Sie auf eine Abfrage, um mit dem Erstellen einer Warnung zu beginnen.  
 ![Warnungsabfrage](./media/log-analytics-azure-sql/alert-query.png)
 5. Klicken Sie in der Protokollsuche auf **Warnung**.  
