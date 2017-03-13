@@ -19,8 +19,8 @@ Führen Sie das Cmdlet auf beiden Controllern aus.
 
 Wenn Sie sichergestellt haben, dass die Verbindung vorhanden ist, und dieses Problem weiter besteht, wenden Sie sich an den Microsoft Support, um die nächsten Schritte durchzuführen.
 
+**Was ist zu tun, wenn beim Aktualisieren Ihres Geräts auf Update 4 ein Fehler auftritt und auf beiden Controllern Update 4 ausgeführt wird?**
 
+Ab Update 4 gilt: Wenn auf beiden Controllern die gleiche Softwareversion ausgeführt wird und ein Updatefehler auftritt, wechseln die Controller nicht in den Wiederherstellungsmodus. Dieser Fall kann eintreten, wenn der Gerätesoftware-Hotfix (Update erster Ordnung) erfolgreich auf beide Controller angewendet wurde, aber die Anwendung anderer Hotfixes (zweiter und dritter Ordnung) noch aussteht. Ab Update 4 wechseln die Controller nur dann in den Wiederherstellungsmodus, wenn auf den beiden Controllern unterschiedliche Softwareversionen ausgeführt werden. 
 
-<!--HONumber=Nov16_HO3-->
-
-
+Sollte beim Benutzer ein Updatefehler auftreten, wenn auf beiden Controllern Update 4 ausgeführt wird, empfiehlt es sich, den Updatevorgang nach einer Wartezeit von mehreren Minuten erneut auszuführen. Besteht das Problem weiterhin, sollte sich der Benutzer an den Support von Microsoft wenden.
