@@ -12,11 +12,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2016
+ms.date: 12/15/2016
 ms.author: dobett
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: 05ccc7f419a420cb80f9fd71d5c59912468eb8f8
+ms.sourcegitcommit: 2e4220bedcb0091342fd9386669d523d4da04d1c
+ms.openlocfilehash: 312e9081c8597f59c32e99d594f2e729410986d8
+ms.lasthandoff: 12/16/2016
 
 
 ---
@@ -53,7 +54,7 @@ Für dieses Lernprogramm benötigen Sie Folgendes:
 In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Erste Schritte mit IoT Hub] erstellt haben, um C2D-Nachrichten von IoT Hub zu empfangen.
 
 1. Öffnen Sie die Datei „SimulatedDevice.js“ mit einem Text-Editor.
-2. Ändern Sie die **connectCallback** -Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete** -Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback** -Funktion sieht folgendermaßen aus:
+2. Ändern Sie die **connectCallback** -Funktion, sodass sie von IoT Hub gesendete Nachrichten verarbeitet. In diesem Beispiel ruft das Gerät immer die **complete** -Funktion auf, um IoT Hub mitzuteilen, dass sie die Nachricht verarbeitet hat. Die neue Version der **connectCallback**-Funktion sieht wie der folgende Codeausschnitt aus:
    
     ```
     var connectCallback = function (err) {
@@ -78,7 +79,7 @@ In diesem Abschnitt ändern Sie die simulierte Geräte-App, die Sie in [Erste Sc
     ```
    
    > [!NOTE]
-   > Wenn Sie anstelle von MQTT oder AMQP den HTTP-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTP-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [Entwicklungsleitfaden für IoT Hub][IoT Hub developer guide - C2D].
+   > Wenn Sie anstelle von MQTT oder AMQP den HTTP-Transport verwenden, prüft die **DeviceClient**-Instanz nur selten (weniger als alle 25 Minuten), ob Nachrichten von IoT Hub vorliegen. Weitere Informationen zu den Unterschieden zwischen der MQTT-, AMQP- und HTTP-Unterstützung sowie zur IoT Hub-Drosselung finden Sie im [IoT Hub-Entwicklerhandbuch][IoT Hub developer guide - C2D].
    > 
    > 
 
@@ -95,7 +96,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die C2D-Nachrichten
     ```
     npm install azure-iothub --save
     ```
-3. Erstellen Sie mithilfe eines Text-Editors die neue Datei **SendCloudToDeviceMessage.js** im Ordner **sendcloudtodevicemessage**.
+3. Erstellen Sie mithilfe eines Text-Editors die Datei **SendCloudToDeviceMessage.js** im Ordner **sendcloudtodevicemessage**.
 4. Fügen Sie am Anfang der Datei **SendCloudToDeviceMessage.js** die folgenden `require`-Anweisungen hinzu:
    
     ```
@@ -179,7 +180,7 @@ In diesem Lernprogramm haben Sie gelernt, wie Cloud-zu-Gerät-Nachrichten gesend
 
 Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite].
 
-Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub].
+Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [IoT Hub-Entwicklerhandbuch].
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-node-node-c2d/receivec2d.png
@@ -189,16 +190,11 @@ Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [En
 
 [Erste Schritte mit IoT Hub]: iot-hub-node-node-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Entwicklungsleitfaden für IoT Hub]: iot-hub-devguide.md
+[IoT Hub-Entwicklerhandbuch]: iot-hub-devguide.md
 [Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure-Portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 
