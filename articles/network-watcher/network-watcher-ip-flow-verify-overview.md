@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: 2c25854795b6c577dff38af26543d915f8482240
-ms.openlocfilehash: 0ae12529c48976c7852c7a562cb3f165c29c9d5f
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: bf015f8f646ecce6821379affd4d041329967fc8
+ms.lasthandoff: 03/04/2017
 
 ---
 
@@ -29,8 +29,7 @@ Die IP-Datenflussüberprüfung nutzt als Ziel eine Netzwerkschnittstelle eines v
 
 Es muss in jeder Region, in der Sie die IP-Datenflussüberprüfung ausführen möchten, eine Instanz von Network Watcher erstellt werden. Network Watcher ist ein regionaler Dienst, der nur für Ressourcen in derselben Region ausgeführt werden kann. Dies hat jedoch keine Auswirkungen auf die Ergebnisse der IP-Datenflussüberprüfung, da trotzdem die Route zurückgegeben wird, die der Netzwerkschnittstelle zugeordnet ist.
 
-> [!NOTE]
-> Network Watcher befindet sich derzeit in der Vorschau. Um die Features von Network Watcher zu verwenden, muss das [Feature registriert werden](network-watcher-create.md#register-the-preview-capability).
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 ![1][1]
 

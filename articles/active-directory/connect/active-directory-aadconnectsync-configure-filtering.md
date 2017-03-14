@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: d5c8972e539ace9440a166eaed6c95fe93e2792a
-ms.openlocfilehash: 792e6c0d70a4786535174fa9c5f863a72da41143
-ms.lasthandoff: 02/22/2017
+ms.sourcegitcommit: fa9e86552f61693b953f636bff3cd9d869feba23
+ms.openlocfilehash: 14c179d76664876695f2974de44e6bc000942184
+ms.lasthandoff: 03/02/2017
 
 ---
 
@@ -45,7 +45,7 @@ Da bei der Filterung viele Objekte gleichzeitig entfernt werden können, sollten
 
 Um das versehentliche Löschen von vielen Objekten zu verhindern, ist das Feature zum [Verhindern versehentlicher Löschungen](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) standardmäßig aktiviert. Wenn Sie aufgrund einer Filterung viele Objekte löschen (standardmäßig&500;), müssen Sie die Schritte in diesem Artikel ausführen, damit die Löschvorgänge auch für Azure AD gelten.
 
-Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), eine Änderung an der Filterkonfiguration vornehmen und die Synchronisierung von Kennwörtern verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](active-directory-aadconnectsync-implement-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
+Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), eine Änderung an der Filterkonfiguration vornehmen und die Synchronisierung von Kennwörtern verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
 
 Wenn **Benutzerobjekte** in Azure AD aufgrund eines Filterungsfehlers versehentlich gelöscht wurden, können Sie die Benutzerobjekte in Azure AD neu erstellen, indem Sie Ihre Filterkonfigurationen entfernen. Anschließend können Sie Ihre Verzeichnisse erneut synchronisieren. Mit dieser Aktion werden die Benutzer aus dem Papierkorb in Azure AD wiederhergestellt. Das Löschen anderer Objekttypen kann jedoch nicht rückgängig gemacht werden. Wenn Sie beispielsweise eine Sicherheitsgruppe versehentlich löschen, die als Zugriffssteuerungsliste (ACL) für eine Ressource verwendet wurde, können die Gruppe und die zugehörigen ACLs nicht wiederhergestellt werden.
 

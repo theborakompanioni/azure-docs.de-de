@@ -15,9 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 translationtype: Human Translation
-ms.sourcegitcommit: d2a65104743d9497debdc85c134fd1a06114c514
-ms.openlocfilehash: 0ecc959a3376dc7cb0320a43b425f9cdd7897216
-ms.lasthandoff: 02/23/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 3408fa87794c47b48fb64c579fc5191aec73a333
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -32,8 +32,7 @@ ms.lasthandoff: 02/23/2017
 
 Mithilfe der Paketerfassung von Network Watcher können Sie Sitzungen erfassen, um den eingehenden und ausgehenden Datenverkehr eines virtuellen Computers nachzuverfolgen. Für die Erfassungssitzung werden Filter bereitgestellt, um sicherzustellen, dass nur der gewünschte Datenverkehr erfasst wird. Mithilfe der Paketerfassung können Sie Netzwerkanomalien sowohl reaktiv als auch proaktiv diagnostizieren. Weitere Verwendungszwecke sind das Erfassen von Netzwerkstatistiken, das Gewinnen von Informationen zu Netzwerkangriffen, das Debuggen der Kommunikation zwischen Client und Server und vieles mehr. Durch die Möglichkeit zur Remoteauslösung von Paketerfassungen erleichtert diese Funktion die manuelle Ausführung einer Paketerfassung auf dem gewünschten Computer. So sparen Sie wertvolle Zeit.
 
-> [!IMPORTANT]
-> Die Paketerfassung erfordert die VM-Erweiterung `AzureNetworkWatcherExtension`. Informationen zur Installation der Erweiterung auf einem virtuellen Windows-Computer finden Sie unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/virtual-machines-windows-extensions-nwa.md) und für eine Linux-VM unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/virtual-machines-linux-extensions-nwa.md).
+[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derzeit für die Paketerfassung verfügbar sind.
 
@@ -48,7 +47,9 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 
 In diesem Szenario rufen Sie die Network Watcher-Rest-API auf, um die IP-Datenflussüberprüfung auszuführen. ARMClient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Create an Azure Network Watcher instance](network-watcher-create.md) (Erstellen einer Azure Network Watcher-Instanz) bereits ausgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+
+> Die Paketerfassung erfordert eine VM-Erweiterung `AzureNetworkWatcherExtension`. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/virtual-machines-windows-extensions-nwa.md) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/virtual-machines-linux-extensions-nwa.md).
 
 ## <a name="log-in-with-armclient"></a>Anmelden mit ARMClient
 

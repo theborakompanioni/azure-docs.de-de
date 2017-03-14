@@ -15,9 +15,9 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: 665dc43f9861baeef6fa61968a9dc873ce1dfdbf
-ms.lasthandoff: 02/28/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: dcb58fb00cfaa891825930cf5c34c9dab1c15dec
+ms.lasthandoff: 03/04/2017
 
 
 ---
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/28/2017
 
 Die Registerkarte „Metaverse Search“ ist nützlich für die Behandlung von Datenproblemen. In der oberen Hälfte können Sie eine auf einer Kombination von Attributen basierende Abfrage erstellen. Wenn Sie mit Ihrer Abfrage zufrieden sind, klicken Sie auf **Suchen**. Das Ergebnis wird im unteren Raster angezeigt. Mit **Spalteneinstellungen**können Sie auswählen, welche Spalten sichtbar sein sollen.
 
-Wählen Sie in den Suchergebnissen ein Objekt und **Eigenschaften** aus, um die [Metaverse-Objekteigenschaften](active-directory-aadconnectsync-service-manager-ui-connectors.md#metaverse-object-properties)anzuzeigen.
+Wählen Sie in den Suchergebnissen ein Objekt und **Eigenschaften** aus, um die [Metaverse-Objekteigenschaften](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md#metaverse-object-properties)anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
