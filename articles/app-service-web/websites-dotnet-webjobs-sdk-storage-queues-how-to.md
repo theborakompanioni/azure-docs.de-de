@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: fcbd9e10e4cc336dc6ea37f84201249e14b1af91
 ms.openlocfilehash: 5110a86c3cc25ada27ddba9b0caef68e4509aa73
@@ -69,7 +69,7 @@ Die Anleitung umfasst die folgenden Themen:
 * [Behandeln von Fehlern und Konfigurieren von Timeouts](#errors)
 * [Nächste Schritte](#nextsteps)
 
-## <a name="a-idtriggera-how-to-trigger-a-function-when-a-queue-message-is-received"></a><a id="trigger"></a> Auslösen einer Funktion, wenn eine Warteschlangennachricht empfangen wird
+## <a id="trigger"></a> Auslösen einer Funktion, wenn eine Warteschlangennachricht empfangen wird
 Zum Schreiben einer Funktion, die das WebJobs-SDK aufruft, wenn eine Warteschlangennachricht empfangen wird, verwenden Sie das `QueueTrigger` -Attribut. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Warteschlange angibt. Sie können den [Warteschlangennamen auch dynamisch festlegen](#config).
 
 ### <a name="string-queue-messages"></a>Zeichenfolgen-Warteschlangennachrichten
@@ -115,7 +115,7 @@ Async-Funktion können, wie in der folgenden Abbildung dargestellt, über ein [A
             await blobInput.CopyToAsync(blobOutput, 4096, token);
         }
 
-### <a name="a-idqtattributetypesa-types-the-queuetrigger-attribute-works-with"></a><a id="qtattributetypes"></a> Typen, mit denen das QueueTrigger-Attribut arbeitet
+### <a id="qtattributetypes"></a> Typen, mit denen das QueueTrigger-Attribut arbeitet
 Sie können `QueueTrigger` mit den folgenden Typen verwenden:
 
 * `string`
@@ -123,20 +123,20 @@ Sie können `QueueTrigger` mit den folgenden Typen verwenden:
 * `byte[]`
 * `CloudQueueMessage`
 
-### <a name="a-idpollinga-polling-algorithm"></a><a id="polling"></a> Abrufalgorithmus
+### <a id="polling"></a> Abrufalgorithmus
 Das SDK implementiert einen zufälligen exponentiellen Backoffalgorithmus, um die Auswirkungen des Abfragens von Warteschlangen im Leerlauf auf Speichertransaktionskosten zu reduzieren.  Wenn eine Nachricht gefunden wird, wartet das SDK zwei Sekunden und prüft dann, ob eine andere Meldung vorhanden ist. Wenn keine Nachricht gefunden wird, wartet es ungefähr vier Sekunden vor dem erneuten Versuch. Nach aufeinander folgenden fehlgeschlagenen Versuchen, eine Warteschlangennachricht abzurufen, erhöht sich die Wartezeit immer mehr, bis die maximale Wartezeit, standardmäßig eine Minute, erreicht ist. [Die maximale Wartezeit ist konfigurierbar.](#config)
 
-### <a name="a-idinstancesa-multiple-instances"></a><a id="instances"></a> Mehrere Instanzen
+### <a id="instances"></a> Mehrere Instanzen
 Wenn Ihre Web-App auf mehreren Instanzen ausgeführt wird, wird ein kontinuierlicher WebJob auf allen Computern ausgeführt, und jeder Computer wartet auf Auslöser und versucht, Funktionen auszuführen. Mit dem WebJobs SDK-Trigger für Warteschlangen wird automatisch verhindert, dass eine Funktion Warteschlangenmeldungen mehrfach verarbeitet. Daher müssen keine idempotenten Funktionen geschrieben werden. Wenn Sie jedoch sicherstellen möchten, dass nur eine Instanz einer Funktion ausgeführt wird, auch wenn mehrere Instanzen der Host-Web-App vorhanden sind, können Sie das `Singleton`-Attribut verwenden.
 
-### <a name="a-idparallela-parallel-execution"></a><a id="parallel"></a> Parallele Ausführung
+### <a id="parallel"></a> Parallele Ausführung
 Wenn mehrere Funktionen unterschiedliche Warteschlangen überwachen, ruft das SDK diese parallel auf, wenn Nachrichten gleichzeitig empfangen werden.
 
 Das Gleiche gilt auch, wenn mehrere Nachrichten für eine einzige Warteschlange empfangen werden. Das SDK ruft standardmäßig jeweils einen Batch von 16 Warteschlangennachrichten auf und führt die Funktion, die diese verarbeitet, parallel aus. [Die Batchgröße ist konfigurierbar](#config). Wenn die zu verarbeitende Anzahl die Hälfte der Batchgröße erreicht, ruft das SDK einen weiteren Batch ab und beginnt mit der Verarbeitung dieser Nachrichten. Aus diesem Grund beträgt die maximale Anzahl der pro Funktion verarbeiteten Nachrichten die 1,5-fache Batchgröße. Dieser Grenzwert gilt separat für jede Funktion, die ein `QueueTrigger` -Attribut aufweist.
 
 Wenn keine parallele Ausführung für in einer Warteschlange empfangene Nachrichten erfolgen soll, können Sie die Batchgröße auf „1“ festlegen. Siehe dazu auch **More control over Queue processing** (in englischer Sprache) im Blog zum [Azure WebJobs SDK 1.1.0 RTM](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/).
 
-### <a name="a-idqueuemetadataaget-queue-or-queue-message-metadata"></a><a id="queuemetadata"></a>Abrufen von Warteschlangen oder Metadaten zu Warteschlangennachrichten
+### <a id="queuemetadata"></a>Abrufen von Warteschlangen oder Metadaten zu Warteschlangennachrichten
 Sie können die folgenden Nachrichteneigenschaften abrufen, indem Sie Parameter zur Methodensignatur hinzufügen:
 
 * `DateTimeOffset` expirationTime
@@ -188,7 +188,7 @@ Nachfolgend finden Sie ein Beispielprotokoll, das vom Beispielcode geschrieben w
         queue endpoint=https://contosoads.queue.core.windows.net/
         queueTrigger=Hello world!
 
-### <a name="a-idgracefulagraceful-shutdown"></a><a id="graceful"></a>Ordnungsgemäßes Herunterfahren
+### <a id="graceful"></a>Ordnungsgemäßes Herunterfahren
 Eine Funktion, die in einem fortlaufenden Webauftrag ausgeführt wird, kann einen `CancellationToken` -Parameter akzeptieren, über den das Betriebssystem die Möglichkeit hat, die Funktion zu benachrichtigen, wenn der Webauftrag beendet wird. Sie können diese Benachrichtigung verwenden, um sicherzustellen, dass die Funktion nicht auf eine Weise unerwartet beendet wird, die die Daten in einem inkonsistenten Zustand hinterlässt.
 
 Das folgende Beispiel zeigt, wie Sie in einer Funktion nach einer bevorstehenden Beendigung eines Webauftrags suchen.
@@ -214,7 +214,7 @@ Das folgende Beispiel zeigt, wie Sie in einer Funktion nach einer bevorstehenden
 
 Weitere Informationen finden Sie unter [Ordnungsgemäßes Herunterfahren von WebJobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
-## <a name="a-idcreatequeuea-how-to-create-a-queue-message-while-processing-a-queue-message"></a><a id="createqueue"></a> Erstellen einer Warteschlangennachricht, während eine Warteschlangennachricht verarbeitet wird
+## <a id="createqueue"></a> Erstellen einer Warteschlangennachricht, während eine Warteschlangennachricht verarbeitet wird
 Um eine Funktion zu schreiben, die eine neue Warteschlangennachricht erstellt, verwenden Sie das `Queue` -Attribut. Wie bei `QueueTrigger`übergeben Sie den Warteschlangennamen als Zeichenfolge, oder Sie [legen den Warteschlangennamen dynamisch fest](#config).
 
 ### <a name="string-queue-messages"></a>Zeichenfolgen-Warteschlangennachrichten
@@ -265,7 +265,7 @@ Sie können das `Queue` -Attribut für die folgenden Parametertypen verwenden:
 * `IAsyncCollector`
 * `CloudQueue` (zum manuellen Erstellen von Nachrichten, die die Azure Storage-API direkt verwenden)
 
-### <a name="a-idibinderause-webjobs-sdk-attributes-in-the-body-of-a-function"></a><a id="ibinder"></a> Verwenden von WebJobs-SDK-Attributen im Hauptteil einer Funktion
+### <a id="ibinder"></a> Verwenden von WebJobs-SDK-Attributen im Hauptteil einer Funktion
 Wenn Sie weitere Aufgaben in Ihrer Funktion vor der Verwendung eines Attributs des WebJobs-SDK erledigen möchten, wie z. B. `Queue`, `Blob` oder `Table`, können Sie die `IBinder`-Schnittstelle verwenden.
 
 Im folgenden Beispiel wird aus einer Nachricht der Eingabewarteschlange eine neue Nachricht mit dem gleichen Inhalt in einer Ausgabewarteschlange erstellt. Der Name der Ausgabewarteschlangenname wird durch Code im Text der Funktion festgelegt.
@@ -282,7 +282,7 @@ Im folgenden Beispiel wird aus einer Nachricht der Eingabewarteschlange eine neu
 
 Die `IBinder`-Schnittstelle kann auch mit den Attributen `Table` und `Blob` verwendet werden.
 
-## <a name="a-idblobsa-how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a><a id="blobs"></a> Lesen und Schreiben von Blobs und Tabellen beim Verarbeiten einer Warteschlangennachricht
+## <a id="blobs"></a> Lesen und Schreiben von Blobs und Tabellen beim Verarbeiten einer Warteschlangennachricht
 Mithilfe der Attribute `Blob` und `Table` können Sie Blobs und Tabellen lesen und schreiben. Die Beispiele in diesem Abschnitt gelten für Blobs. Codebeispiele, die zeigen, wie Sie Prozesse auslösen, wenn Blobs erstellt oder aktualisiert werden, finden Sie unter [Verwenden von Azure Blob Storage mit dem WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md). Codebeispiele für das Lesen und Schreiben von Tabellen finden Sie unter [Verwenden von Azure Table Storage mit dem WebJobs SDK](websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>Zeichenfolge-Warteschlangennachrichten, die Blobvorgänge auslösen
@@ -311,7 +311,7 @@ Im folgenden Beispiel wird ein `CloudBlockBlob`-Objekt zum Löschen eines Blobs 
             blobToDelete.Delete();
         }
 
-### <a name="a-idpocoblobsa-poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a><a id="pocoblobs"></a> POCO-Warteschlangennachrichten [(Plain Old CLR Object)](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a id="pocoblobs"></a> POCO-Warteschlangennachrichten [(Plain Old CLR Object)](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Für POCO-Objekte, die als JSON in der Warteschlangennachricht gespeichert werden, können Sie Platzhalter verwenden, die Eigenschaften des Objekts im `blobPath`-Parameter des `Queue`-Attributs benennen. Sie können auch [Metadateneigenschaftennamen](#queuemetadata) der Warteschlange als Platzhalter verwenden.
 
 Das folgende Beispiel kopiert ein Blob in ein neues Blob mit einer anderen Erweiterung. Die Warteschlangennachricht ist ein `BlobInformation`-Objekt, das die Eigenschaften `BlobName` und `BlobNameWithoutExtension` enthält. Die Eigenschaftsnamen dienen als Platzhalter im Blobpfad für die `Blob` -Attribute.
@@ -332,7 +332,7 @@ Das SDK verwendet das [Newtonsoft.Json NuGet-Paket](http://www.nuget.org/package
 
 Wenn Sie an Ihrer Funktion vor dem Binden eines Blobs an ein Objekt einige Änderungen vornehmen müssen, können Sie das Attribut im Text der Funktion verwenden, [wie zuvor für das Queue-Attribut beschrieben](#ibinder).
 
-### <a name="a-idblobattributetypesa-types-you-can-use-the-blob-attribute-with"></a><a id="blobattributetypes"></a> Typen, mit denen das Blob-Attribut arbeitet
+### <a id="blobattributetypes"></a> Typen, mit denen das Blob-Attribut arbeitet
 Das `Blob` -Attribut kann mit den folgenden Typen verwendet werden:
 
 * `Stream` (Lesen oder Schreiben, wird mit dem FileAccess-Konstruktorparameter angegeben)
@@ -347,7 +347,7 @@ Das `Blob` -Attribut kann mit den folgenden Typen verwendet werden:
 * `CloudBlockBlob` (Lesen oder Schreiben)
 * `CloudPageBlob` (Lesen oder Schreiben)
 
-## <a name="a-idpoisona-how-to-handle-poison-messages"></a><a id="poison"></a> Behandlung von nicht verarbeitbaren Nachrichten
+## <a id="poison"></a> Behandlung von nicht verarbeitbaren Nachrichten
 Nachrichten, deren Inhalt bewirkt, dass bei einer Funktion ein Fehler auftritt, werden als *nicht verarbeitbare Nachrichten*bezeichnet. Wenn bei der Funktion ein Fehler auftritt, wird die Warteschlangennachricht nicht gelöscht, sondern schließlich erneut aufgegriffen, wodurch verursacht wird, dass der Zyklus wiederholt wird. Das SDK kann den Zyklus nach einer begrenzten Anzahl von Iterationen automatisch unterbrechen, oder Sie können dies manuell vornehmen.
 
 ### <a name="automatic-poison-message-handling"></a>Automatische Behandlung von nicht verarbeitbaren Nachrichten
@@ -394,14 +394,14 @@ Sie können die Anzahl der Auswahlvorgänge einer Nachricht für die Verarbeitun
             }
         }
 
-## <a name="a-idconfiga-how-to-set-configuration-options"></a><a id="config"></a> Festlegen von Konfigurationsoptionen
+## <a id="config"></a> Festlegen von Konfigurationsoptionen
 Sie können den `JobHostConfiguration` -Typ verwenden, um die folgenden Konfigurationsoptionen festzulegen:
 
 * Festlegen der SDK-Verbindungszeichenfolgen im Code
 * Konfigurieren Sie `QueueTrigger`-Einstellungen, wie z. B. die maximale Anzahl für das Entfernen aus der Warteschlange.
 * Rufen Sie Warteschlangennamen aus der Konfiguration ab.
 
-### <a name="a-idsetconnstraset-sdk-connection-strings-in-code"></a><a id="setconnstr"></a>Festlegen von SDK-Verbindungszeichenfolgen im Code
+### <a id="setconnstr"></a>Festlegen von SDK-Verbindungszeichenfolgen im Code
 Durch Festlegen der SDK-Verbindungszeichenfolgen im Code können Sie Ihre eigenen Verbindungszeichenfolgennamen in Konfigurationsdateien oder Umgebungsvariablen verwenden, wie im folgenden Beispiel gezeigt.
 
         static void Main(string[] args)
@@ -423,7 +423,7 @@ Durch Festlegen der SDK-Verbindungszeichenfolgen im Code können Sie Ihre eigene
             host.RunAndBlock();
         }
 
-### <a name="a-idconfigqueueaconfigure-queuetrigger--settings"></a><a id="configqueue"></a>Konfigurieren von QueueTrigger-Einstellungen
+### <a id="configqueue"></a>Konfigurieren von QueueTrigger-Einstellungen
 Sie können die folgenden Einstellungen konfigurieren, die für die Verarbeitung von Warteschlangennachrichten gelten:
 
 * Die maximale Anzahl von Warteschlangennachrichten, die gleichzeitig abgerufen werden, um parallel ausgeführt zu werden (der Standardwert ist 16).
@@ -442,7 +442,7 @@ Das folgende Beispiel zeigt, wie diese Einstellungen konfiguriert werden können
             host.RunAndBlock();
         }
 
-### <a name="a-idsetnamesincodeaset-values-for-webjobs-sdk-constructor-parameters-in-code"></a><a id="setnamesincode"></a>Festlegen von Werten für WebJobs-SDK-Konstruktorparametern im Code
+### <a id="setnamesincode"></a>Festlegen von Werten für WebJobs-SDK-Konstruktorparametern im Code
 Mitunter möchten Sie einen Warteschlangennamen, einen Blobnamen oder Container oder einen Tabellennamen im Code angeben, anstatt ihn hart zu codieren. Sie möchten z. B. den Warteschlangennamen für `QueueTrigger` in einer Datei oder Umgebungsvariablen angeben.
 
 Möglich wird dies, indem Sie ein `NameResolver`-Objekts an den `JobHostConfiguration`-Typ übergeben. Sie fügen in Konstruktorparametern von WebJobs-SDK-Attributen spezielle Platzhalter hinzu, die von Prozentzeichen (%) umgeben werden, und Ihr `NameResolver` -Code gibt die tatsächlichen Werte an, die anstelle dieser Platzhalter verwendet werden sollen.
@@ -476,7 +476,7 @@ Sie übergeben die `NameResolver`-Klasse an das `JobHost`-Objekt, wie im folgend
 
 **Hinweis:** Warteschlangen-, Tabellen- und Blobnamen werden bei jedem Aufruf einer Funktion aufgelöst, doch Blobcontainernamen werden nur beim Starten der Anwendung aufgelöst. Der Blobcontainername kann nicht geändert werden, während der Auftrag ausgeführt wird.
 
-## <a name="a-idmanualahow-to-trigger-a-function-manually"></a><a id="manual"></a>Manuelles Auslösen einer Funktion
+## <a id="manual"></a>Manuelles Auslösen einer Funktion
 Zum manuellen Auslösen einer Funktion verwenden Sie die Methode `Call` oder `CallAsync` für das `JobHost`-Objekt und das `NoAutomaticTrigger`-Attribut für die Funktion, wie im folgenden Beispiel gezeigt.
 
         public class Program
@@ -498,7 +498,7 @@ Zum manuellen Auslösen einer Funktion verwenden Sie die Methode `Call` oder `Ca
             }
         }
 
-## <a name="a-idlogsahow-to-write-logs"></a><a id="logs"></a>Schreiben von Protokollen
+## <a id="logs"></a>Schreiben von Protokollen
 Das Dashboard zeigt Protokolle an zwei Stellen: auf der Seite für den Webauftrag und auf der Seite für eines bestimmten Webauftragsaufrufs.
 
 ![Protokolle auf Webauftragsseiten](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
@@ -558,7 +558,7 @@ In einer Azure-Tabelle sehen die Protokolle `Console.Out` und `Console.Error` wi
 
 Wenn Sie Ihren eigenen Logger anschließen möchten, finden Sie entsprechende Informationen in [diesem Beispiel](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Program.cs).
 
-## <a name="a-iderrorsahow-to-handle-errors-and-configure-timeouts"></a><a id="errors"></a>Behandeln von Fehlern und Konfigurieren von Timeouts
+## <a id="errors"></a>Behandeln von Fehlern und Konfigurieren von Timeouts
 Das WebJobs-SDK enthält außerdem ein [Timeout](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs) -Attribut, mit dem Sie festlegen können, dass eine Funktion abgebrochen wird, wenn sie nicht innerhalb einer bestimmten Zeitspanne abgeschlossen wird. Und wenn eine Warnung ausgelöst werden soll, wenn innerhalb einer bestimmten Zeitspanne zu viele Fehler auftreten, können Sie das `ErrorTrigger` -Attribut verwenden. Hier ein [Beispiel für das ErrorTrigger-Attribut](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Error-Monitoring).
 
 ```
@@ -577,6 +577,6 @@ public static void ErrorMonitor(
 
 Sie können zudem Funktionen dynamisch deaktivieren und aktivieren, um festzulegen, ob sie ausgelöst werden können. Dazu verwenden Sie einen Konfigurationsschalter, bei dem es sich um eine App-Einstellung oder einen Umgebungsvariablennamen handeln kann. Beispielcode finden Sie im `Disable`-Attribut im [Repository mit WebJobs SDK-Beispielen](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs).
 
-## <a name="a-idnextstepsa-next-steps"></a><a id="nextsteps"></a> Nächste Schritte
+## <a id="nextsteps"></a> Nächste Schritte
 In dieser Anleitung wurden Codebeispiele bereitgestellt, in denen veranschaulicht wird, wie häufige Szenarien für das Arbeiten mit Azure-Warteschlangen behandelt werden. Weitere Informationen zur Verwendung von Azure WebJobs und dem WebJobs-SDK finden Sie unter [Empfohlene Ressourcen für Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
 

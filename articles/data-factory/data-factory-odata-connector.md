@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 03/13/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 4521a236bfc13e6aca7e13e7400c11d353bc3a66
 ms.openlocfilehash: 9c385adfa3da73bef2d05352049d1f71aa5c5847
+ms.lasthandoff: 12/09/2016
 
 
 ---
@@ -51,6 +52,7 @@ Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein A
 
 **Mit OData verknüpfter Dienst**. Bei diesem Beispiel wird die anonyma Authentifizierung verwendet. Informationen zu den verwendbaren Authentifizierungstypen finden Sie im Abschnitt [Mit OData verknüpfter Dienst](#odata-linked-service-properties).
 
+```json
     {
         "name": "ODataLinkedService",
            "properties":
@@ -63,10 +65,11 @@ Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein A
                }
            }
     }
-
+```
 
 **Mit Azure Storage verknüpfter Dienst**
 
+```json
     {
           "name": "AzureStorageLinkedService",
         "properties": {
@@ -76,11 +79,13 @@ Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein A
             }
           }
     }
+```
 
 **OData-Eingabedataset:**
 
 Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
 
+```json
     {
         "name": "ODataDataset",
         "properties":
@@ -104,6 +109,7 @@ Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst m
             }
         }
     }
+```
 
 Die Angabe von **path** in der Datasetdefinition ist optional.
 
@@ -111,6 +117,7 @@ Die Angabe von **path** in der Datasetdefinition ist optional.
 
 Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "interval": 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
 
+```json
     {
         "name": "AzureBlobODataDataSet",
         "properties": {
@@ -164,13 +171,14 @@ Daten werden stündlich in ein neues Blob geschrieben ("frequency": "hour", "int
             }
         }
     }
-
+```
 
 
 **Pipeline mit Kopieraktivität**
 
 Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **RelationalSource** und der Typ **sink** auf **BlobSink** festgelegt. Die SQL-Abfrage für die **query** -Eigenschaft wählt die letzten (neuesten) Daten aus der OData-Quelle aus.
 
+```json
     {
         "name": "CopyODataToBlob",
         "properties": {
@@ -214,7 +222,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
             "end": "2016-02-03T19:00:00Z"
         }
     }
-
+```
 
 Die Angabe von **query** in der Pipelinedefinition ist optional. Die **URL** , die der Data Factory-Dienst zum Abrufen der Daten verwendet, ergibt sich aus: URL, die im verknüpften Dienst (erforderlich) angegeben wurde + im Dataset (optional) angegebener Pfad + Abfrage in der Pipeline (optional).
 
@@ -232,6 +240,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen OData-Dienst verwenden soll. Geben Sie diesen nur an, wenn Sie Daten aus einer lokalen OData-Quelle kopieren. |Nein |
 
 ### <a name="using-basic-authentication"></a>Verwenden der Standardauthentifizierung
+```json
     {
         "name": "inputLinkedService",
         "properties":
@@ -246,8 +255,10 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
            }
        }
     }
+```
 
 ### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
+```json
     {
         "name": "ODataLinkedService",
            "properties":
@@ -260,8 +271,10 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
            }
        }
     }
+```
 
 ### <a name="using-windows-authentication-accessing-on-premises-odata-source"></a>Verwenden der Windows-Authentifizierung für den Zugriff auf lokale OData-Quellen
+```json
     {
         "name": "inputLinkedService",
         "properties":
@@ -277,8 +290,10 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
            }
        }
     }
+```
 
 ### <a name="using-oauth-authentication-accessing-cloud-odata-source"></a>Verwenden der OAuth-Authentifizierung für den Zugriff auf eine cloudbasierte OData-Quelle
+```json
     {
         "name": "inputLinkedService",
         "properties":
@@ -286,12 +301,13 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
             "type": "OData",
                "typeProperties":
             {
-               "url": "<endpoint of cloud OData source e.g. https://<tenant>.crm.dynamics.com/XRMServices/2011/OrganizationData.svc">",
+               "url": "<endpoint of cloud OData source e.g. https://<tenant>.crm.dynamics.com/XRMServices/2011/OrganizationData.svc>",
                "authenticationType": "OAuth",
                "authorizedCredential": "<auto generated by clicking the Authorize button on UI>"
            }
        }
     }
+```
 
 ## <a name="odata-dataset-type-properties"></a>Eigenschaften des Datasettyps „OData“
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -329,9 +345,4 @@ Beim Verschieben von Daten aus OData-Datenspeichern werden die OData-Datentypen 
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

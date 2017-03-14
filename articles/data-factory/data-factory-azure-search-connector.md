@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2016
+ms.date: 03/08/2017
 ms.author: jingwang
 translationtype: Human Translation
 ms.sourcegitcommit: 55c988bf74ff0f2e519e895a735dc68f3dc99855
 ms.openlocfilehash: e2deed13106db9467eef181f25a0a226034df5a2
+ms.lasthandoff: 12/21/2016
 
 ---
 
@@ -37,11 +38,11 @@ Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen 
 
 Dieses Beispiel zeigt Folgendes:
 
-1.  Einen verknüpften Dienst des Typs [AzureSearch](#azure-search-linked-service-properties).
-2.  Einen verknüpften Dienst des Typs [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)
-3.  Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties).
-4.  Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSearchIndex](#azure-search-index-dataset-properties).
-4.  Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) und [AzureSearchIndexSink](#azure-search-index-sink-properties) verwendet.
+1.    Einen verknüpften Dienst des Typs [AzureSearch](#azure-search-linked-service-properties).
+2.    Einen verknüpften Dienst des Typs [OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties)
+3.    Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties).
+4.    Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureSearchIndex](#azure-search-index-dataset-properties).
+4.    Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) und [AzureSearchIndexSink](#azure-search-index-sink-properties) verwendet.
 
 In diesem Beispiel werden Zeitreihendaten aus einer lokalen SQL Server-Datenbank stündlich in den Azure Search-Index kopiert. Die in diesem Beispiel verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
 
@@ -52,13 +53,13 @@ Als Erstes richten Sie das Datenverwaltungsgateway auf Ihrem lokalen Computer ei
 ```JSON
 {
     "name": "AzureSearchLinkedService",
-    "properties": {
+       "properties": {
         "type": "AzureSearch",
-        "typeProperties": {
+           "typeProperties": {
             "url": "https://<service>.search.windows.net",
             "key": "<AdminKey>"
         }
-    }
+       }
 }
 ```
 
@@ -118,7 +119,7 @@ In diesem Beispiel werden Daten in einen Azure Search-Index namens **Produkte** 
     "properties": {
         "type": "AzureSearchIndex",
         "linkedServiceName": "AzureSearchLinkedService",
-        "typeProperties" : {
+         "typeProperties" : {
             "indexName": "products",
         },
         "availability": {
@@ -327,9 +328,4 @@ Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-cop
 Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
 * [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität.
-
-
-
-<!--HONumber=Dec16_HO3-->
-
 

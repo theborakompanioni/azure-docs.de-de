@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
-ms.author: tdykstra
+ms.author: glenga
 translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: b4a64bbccabf0e7b0e7aec659d066883139c8207
@@ -32,7 +32,7 @@ Bei dieser Beispielanwendung handelt es sich um ein Bulletin Board für Werbung.
 
 Diese Beispielanwendung funktioniert mit [Azure-Warteschlangen](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) und [Azure-Blobs](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage). Das Tutorial zeigt, wie Sie die Anwendung in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) und [Azure SQL-Datenbank](http://msdn.microsoft.com/library/azure/ee336279) bereitstellen.
 
-## <a name="a-idprerequisitesaprerequisites"></a><a id="prerequisites"></a>Voraussetzungen
+## <a id="prerequisites"></a>Voraussetzungen
 In diesem Tutorial wird vorausgesetzt, dass Sie mit der Arbeit mit [ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) -Projekten in Visual Studio vertraut sind.
 
 Das Tutorial wurde für Visual Studio 2013 geschrieben. Falls Sie noch nicht über Visual Studio verfügen, wird die Anwendung zusammen mit dem Azure SDK für .NET installiert.
@@ -49,7 +49,7 @@ Das Tutorial kann mit Visual Studio 2015 verwendet werden. Bevor Sie die Anwend
 >
 >
 
-## <a name="a-idlearnawhat-youll-learn"></a><a id="learn"></a>Sie lernen Folgendes
+## <a id="learn"></a>Sie lernen Folgendes
 Dieses Lernprogramm beschreibt die folgenden Aufgaben:
 
 * Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK.
@@ -59,7 +59,7 @@ Dieses Lernprogramm beschreibt die folgenden Aufgaben:
 * Hochladen von Dateien und Speicherung der Dateien im Azure-Blob-Dienst.
 * Verwenden des Azure WebJobs SDK für die Arbeit mit Azure-Speicher-Warteschlangen und -Blobs.
 
-## <a name="a-idcontosoadsaapplication-architecture"></a><a id="contosoads"></a>Anwendungsarchitektur
+## <a id="contosoads"></a>Anwendungsarchitektur
 Die Beispielanwendung verwendet das [warteschlangenorientierte Arbeitsmuster](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) , um die CPU-intensive Last der Erstellung von Miniaturbildern an einen Back-End-Prozess auszulagern.
 
 Die Anwendung speichert Werbungen in einer SQL-Datenbank und verwendet Entity Framework Code First, um Tabellen zu erstellen und auf Daten zuzugreifen. Pro Werbung werden in der Datenbank zwei URLs gespeichert, eine für das Bild in voller Größe und eine für die Miniaturansicht.
@@ -74,7 +74,7 @@ Wenn ein Benutzer ein Bild hochlädt, speichert die Web-App das Bild in einem [A
 
 Die Anleitungen in diesem Tutorial gelten für das Azure SDK für .NET 2.7.1 oder höher.
 
-## <a name="a-idstorageacreate-an-azure-storage-account"></a><a id="storage"></a>Erstellen eines Azure-Speicherkontos
+## <a id="storage"></a>Erstellen eines Azure-Speicherkontos
 Azure-Speicherkonten bieten Ressourcen zum Speichern von Warteschlangen- und Blobdaten in der Cloud. Das WebJobs-SDK verwendet das Speicherkonto außerdem zum Speichern von Protokollierungsdaten für das Dashboard.
 
 In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für Anwendungsdaten und Protokolldaten sowie für Test- und Produktionsdaten erstellen. In diesem Tutorial verwenden wir nur ein einziges Konto.
@@ -100,7 +100,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     ![Neues Speicherkonto](./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png)
 
-## <a name="a-iddownloadadownload-the-application"></a><a id="download"></a>Herunterladen der Anwendung
+## <a id="download"></a>Herunterladen der Anwendung
 1. Laden Sie die [abgeschlossene Lösung](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)herunter und entzippen Sie das Archiv.
 2. Starten Sie Visual Studio.
 3. Wählen Sie im Menü **Datei** die Option **Öffnen > Projekt/Projektmappe**, navigieren Sie zu dem Verzeichnis, in dem Sie die Projektmappe gespeichert haben, und öffnen Sie die Projektmappendatei.
@@ -109,7 +109,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
     Standardmäßig stellt Visual Studio den Inhalt des NuGet-Pakets automatisch wieder her, das nicht in der *.zip* -Datei enthalten war. Wenn die Pakete nicht wiederhergestellt werden, installieren Sie diese manuell, indem Sie das Dialogfeld **NuGet-Pakete verwalten** öffnen und oben rechts auf **Wiederherstellen** klicken.
 5. Vergewissern Sie sich im **Projektmappen-Explorer**, dass **ContosoAdsWeb** als Startprojekt ausgewählt ist.
 
-## <a name="a-idconfigurestorageaconfigure-the-application-to-use-your-storage-account"></a><a id="configurestorage"></a>Konfigurieren der Anwendung zur Verwendung Ihres Speicherkontos
+## <a id="configurestorage"></a>Konfigurieren der Anwendung zur Verwendung Ihres Speicherkontos
 1. Öffnen Sie die Datei *Web.config* für das ContosoAdsWeb-Projekt.
 
     Die Datei enthält eine SQL-Verbindungszeichenfolge und eine Azure-Speicher-Verbindungszeichenfolge für die Arbeit mit Blobs und Warteschlangen.
@@ -153,7 +153,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 7. Ersetzen Sie beide Speicher-Verbindungszeichenfolgen mit der Verbindungszeichenfolge, die Sie zuvor kopiert haben.
 8. Speichern Sie die Änderungen.
 
-## <a name="a-idrunarun-the-application-locally"></a><a id="run"></a>Lokales Ausführen der Anwendung
+## <a id="run"></a>Lokales Ausführen der Anwendung
 1. Starten Sie das Web-Front-End der Anwendung mit STRG+F5.
 
     Die Startseite wird in Ihrem Standardbrowser geöffnet. (Das Webprojekt wird ausgeführt, da es als Startprojekt konfiguriert ist.)
@@ -183,7 +183,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
 Sie haben die Anwendung auf Ihrem lokalen Computer ausgeführt und eine SQL Server-Datenbank auf Ihrem Computer verwendet. Die Anwendung verwendet jedoch Warteschlangen und Blobs in der Cloud. Im folgenden Abschnitt werden Sie die Anwendung in der Cloud ausführen und eine Cloud-Datenbank sowie Cloud-Blobs und -Warteschlangen verwenden.  
 
-## <a name="a-idrunincloudarun-the-application-in-the-cloud"></a><a id="runincloud"></a>Ausführen der Anwendung in der Cloud
+## <a id="runincloud"></a>Ausführen der Anwendung in der Cloud
 Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 
 * Führen Sie Bereitstellung in den Web-Apps durch. Visual Studio erstellt automatisch eine neue Web-App in App Service sowie die SQL-Datenbankinstanz.
@@ -308,7 +308,7 @@ In diesem Abschnitt verwenden Sie den **Server-Explorer** zum Festlegen der Verb
 >
 >
 
-## <a name="a-idcreateacreate-the-application-from-scratch"></a><a id="create"></a>Erstellen der Anwendung von Grund auf
+## <a id="create"></a>Erstellen der Anwendung von Grund auf
 In diesem Abschnitt werden Sie die folgenden Aufgaben ausführen:
 
 * Erstellen Sie eine Visual Studio-Lösung mit einem Webprojekt.
@@ -407,7 +407,7 @@ Um Dateien einem Projekt oder einem Ordner hinzuzufügen, klicken Sie mit der re
 
 Sie können die Anwendung nun anhand der zuvor in diesem Lernprogramm beschriebenen Prozedur erstellen, ausführen und bereitstellen. Zuvor müssen Sie jedoch den Webauftrag anhalten, der immer noch in der ersten Web-App ausgeführt wird, in der Sie ihn bereitgestellt haben. Andernfalls verarbeitet dieser Webauftrag Warteschlangen-Nachrichten, die lokal oder von der in einer neuen Web-App ausgeführten App erstellt wurden, da alle Komponenten dasselbe Speicherkonto verwenden.
 
-## <a name="a-idcodeareview-the-application-code"></a><a id="code"></a>Überprüfen des Anwendungscodes
+## <a id="code"></a>Überprüfen des Anwendungscodes
 Die folgenden Abschnitte beschreiben den Code für die Arbeit mit dem WebJobs SDK und Azure-Speicher-Blobs und Warteschlangen.
 
 > [!NOTE]
@@ -636,7 +636,7 @@ Ein `<input>` -Element weist den Browser an, ein Dateiauswahl-Dialogfeld zu öff
 
         <input type="file" name="imageFile" accept="image/*" class="form-control fileupload" />
 
-### <a name="a-idprogramcsacontosoadswebjob---programcs"></a><a id="programcs"></a>ContosoAdsWebJob - "Program.cs"
+### <a id="programcs"></a>ContosoAdsWebJob - "Program.cs"
 Wenn der Webauftrag startet, ruft die `Main`-Methode die `JobHost.RunAndBlock`-Methode im Webaufträge-SDK auf, mit der Ausführung der ausgelösten Funktionen im aktuellen Thread zu beginnen.
 
         static void Main(string[] args)
@@ -645,7 +645,7 @@ Wenn der Webauftrag startet, ruft die `Main`-Methode die `JobHost.RunAndBlock`-M
             host.RunAndBlock();
         }
 
-### <a name="a-idgeneratethumbnailacontosoadswebjob---functionscs---generatethumbnail-method"></a><a id="generatethumbnail"></a>ContosoAdsWebJob – "Functions.cs" – GenerateThumbnail-Methode
+### <a id="generatethumbnail"></a>ContosoAdsWebJob – "Functions.cs" – GenerateThumbnail-Methode
 Das WebJobs SDK ruft diese Methode auf, wenn eine Warteschlangen-Nachricht empfangen wird. Die Methode gibt eine Miniaturansicht zurück und legt die URL der Miniaturansicht in der Datenbank ab.
 
         public static void GenerateThumbnail(
