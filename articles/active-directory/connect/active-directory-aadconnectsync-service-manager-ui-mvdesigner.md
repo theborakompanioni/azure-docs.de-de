@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect-Synchronisierung: Synchronization Service Manager-Benutzeroberfläche | Microsoft Docs"
+title: Azure AD Connect MV Designer | Microsoft Docs
 description: "Verstehen Sie die Registerkarte „Metaverse Designer“, im Synchronization Service Manager für Azure AD Connect."
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/27/2017
 ms.author: billmath
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 610dab0af17f927d86b677f647acd0dfe2569583
-ms.openlocfilehash: a86e9f4a5c0be1486dcbd802ba30c5affe19b729
-
+ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
+ms.openlocfilehash: 0315e4323ce76bae0fcd09a72201603cfde0608e
+ms.lasthandoff: 02/28/2017
 
 ---
-# <a name="azure-ad-connect-sync-synchronization-service-manager"></a>Azure AD Connect-Synchronisierung: Synchronization Service Manager
+# <a name="sync-service-manager-metavese-designer"></a>Sync Service Manager – Metaverse Designer
 
 ![Synchronization Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvdesigner.png)
 
@@ -30,9 +31,4 @@ Für die meisten Kunden gibt es hier nichts zu konfigurieren.
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .
 
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

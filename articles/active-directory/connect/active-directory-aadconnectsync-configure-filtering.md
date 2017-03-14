@@ -12,12 +12,12 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 02/21/2017
 ms.author: billmath
 translationtype: Human Translation
-ms.sourcegitcommit: 0b5bdb5036024cc0e05b3845e0073b2ea66a0a73
-ms.openlocfilehash: 9f615c3936cf3207ace787dd7293f94d2b760149
-ms.lasthandoff: 02/21/2017
+ms.sourcegitcommit: d5c8972e539ace9440a166eaed6c95fe93e2792a
+ms.openlocfilehash: 792e6c0d70a4786535174fa9c5f863a72da41143
+ms.lasthandoff: 02/22/2017
 
 ---
 
@@ -200,7 +200,7 @@ Lesen Sie dieses Beispiel wie folgt: **(department = IT) OR (department = Sales 
 
 In den folgenden Beispielen und Schritten verwenden Sie das Benutzerobjekt als Beispiel, aber Sie können es für alle Objekttypen nutzen.
 
-In den folgenden Beispielen beginnen die Rangfolgenwerte bei 500. Mit diesem Wert wird sichergestellt, dass diese Regeln nach den standardmäßigen Regeln (niedrigere Rangfolge, höherer numerischer Wert) ausgewertet werden.
+In den folgenden Beispielen beginnen die Rangfolgenwerte bei 50. Dies kann eine beliebige nicht verwendete Zahl sein, die jedoch kleiner als 100 sein sollte.
 
 #### <a name="negative-filtering-do-not-sync-these"></a>Negative Filterung („keine Synchronisierung“)
 Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert), bei denen **extensionAttribute15** den Wert **NoSync** hat.
@@ -208,7 +208,7 @@ Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
-4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User DoNotSyncFilter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 500), und klicken Sie auf **Weiter**.  
+4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User DoNotSyncFilter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 50), und klicken Sie auf **Weiter**.  
    ![Eingehend 1 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
 5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** die Option **ExtensionAttribute15** aus. Stellen Sie sicher, dass der **Operator** auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **NoSync** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
    ![Eingehend 2 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
@@ -218,7 +218,7 @@ Im folgenden Beispiel werden alle Benutzer herausgefiltert (nicht synchronisiert
 8. Um die Konfiguration abzuschließen, müssen Sie eine **vollständige Synchronisierung** durchführen. Fahren Sie mit dem Abschnitt [Anwenden und Überprüfen von Änderungen](#apply-and-verify-changes) fort.
 
 #### <a name="positive-filtering-only-sync-these"></a>Positive Filterung („ausschließliche Synchronisierung“)
-Das Ausdrücken der positiven Filterung kann mit mehr Aufwand verbunden sein. Sie müssen hierbei nämlich auch Objekte berücksichtigen, bei denen die Synchronisierung nicht offensichtlich ist, z.B. Konferenzräume.
+Das Ausdrücken der positiven Filterung kann mit mehr Aufwand verbunden sein. Sie müssen hierbei nämlich auch Objekte berücksichtigen, bei denen die Synchronisierung nicht offensichtlich ist, z.B. Konferenzräume. Sie überschreiben auch den Standardfilter in der vordefinierten Regel **Ein von AD – Benutzerverknüpfung**. Achten Sie beim Erstellen eines benutzerdefinierten Filters darauf, keine wichtigen Systemobjekte, Replikationskonfliktobjekte, speziellen Postfächer und Dienstkonten für Azure AD Connect einzuschließen.
 
 Die positive Filterung erfordert zwei Synchronisierungsregeln. Sie benötigen eine Regel (oder mehrere) mit dem richtigen Bereich der zu synchronisierenden Objekte. Darüber hinaus benötigen Sie eine zweite Catchall-Synchronisierungsregel, die alle Objekte herausfiltert, die noch nicht als ein zu synchronisierendes Objekt identifiziert wurden.
 
@@ -227,7 +227,7 @@ Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das d
 1. Melden Sie sich bei dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, mit einem Konto an, das Mitglied der Sicherheitsgruppe **ADSyncAdmins** ist.
 2. Starten Sie den **Synchronisierungsregel-Editor** über das **Startmenü**.
 3. Stellen Sie sicher, dass **Eingehend** ausgewählt ist, und klicken Sie auf **Neue Regel hinzufügen**.
-4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Sales sync*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 501), und klicken Sie auf **Weiter**.  
+4. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Sales sync*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 51), und klicken Sie auf **Weiter**.  
    ![Eingehend 4 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
 5. Klicken Sie in **Scoping filter** (Bereichsfilter) auf **Gruppe hinzufügen** und dann auf **Klausel hinzufügen**. Wählen Sie in **Attribut** den Wert **department** aus. Stellen Sie sicher, dass der Operator auf **EQUAL** festgelegt ist, und geben Sie dann den Wert **Sales** in das Feld **Wert** ein. Klicken Sie auf **Weiter**.  
    ![Eingehend 5 Bereich](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
@@ -235,7 +235,7 @@ Im folgenden Beispiel werden nur Benutzerobjekte synchronisiert, bei denen das d
 7. Klicken Sie auf **Transformation hinzufügen**, und wählen Sie **Konstante** als **FlowType** und **cloudFiltered** als **Zielattribut** aus. Geben Sie **False** im Feld **Quelle** ein. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.  
    ![Eingehend 6 Transformation](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
    Dies ist ein Sonderfall, in dem cloudFiltered explizit auf **FALSE** festgelegt wird.
-8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 600). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.  
+8. Wir müssen jetzt die Synchronisierungsregel „catch-all“ erstellen, die alles abdeckt. Geben Sie der Regel einen aussagekräftigen Namen, z.B. *In from AD – User Catch-all filter*. Wählen Sie die richtige Gesamtstruktur und anschließend **Benutzer** für **CS object type** (CS-Objekttyp) und **Person** für **MV object type** (MV-Objekttyp) aus. Wählen Sie als **Verknüpfungstyp** die Option **Join** aus. Geben Sie unter **Rangfolge** einen Wert ein, der zurzeit noch von keiner anderen Synchronisierungsregel verwendet wird (z.B. 99). Sie haben einen Rangfolgewert ausgewählt, der höher (niedrigere Rangfolge) als der für die vorherige Synchronisierungsregel ist. Sie haben aber auch Platz gelassen, sodass Sie später noch weitere Filterregeln für die Synchronisierung hinzufügen können, wenn Sie zusätzliche Abteilungen synchronisieren möchten. Klicken Sie auf **Weiter**.  
    ![Eingehend 7 Beschreibung](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
 9. Lassen Sie **Scoping filter** leer, und klicken Sie auf **Next**. Ein leerer Filter gibt an, dass die Regel nicht auf alle Objekte angewendet wird.
 10. Lassen Sie **Join rules** (Joinregeln) leer, und klicken Sie dann auf **Next**.
