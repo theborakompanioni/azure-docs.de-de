@@ -15,21 +15,22 @@ ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
 translationtype: Human Translation
-ms.sourcegitcommit: a243e4f64b6cd0bf7b0776e938150a352d424ad1
-ms.openlocfilehash: e1bb89ba369818d7ba0e92a54a4712033f648187
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: ecc6f4a1a8cbb07d9f610e8f6fb5ca66b7532513
+ms.lasthandoff: 03/07/2017
 
 
 ---
 # <a name="get-started-with-device-management-node"></a>Erste Schritte mit der Geräteverwaltung (Node)
 ## <a name="introduction"></a>Einführung
-IoT-Cloudanwendungen können Primitive (d.h. die Gerätezwillingsmethode und die direkte Methode) in Azure IoT Hub verwenden, um Geräteverwaltungsaktionen auf Geräten per Remotezugriff zu starten und zu überwachen.  Dieser Artikel enthält Informationen dazu, wie eine IoT-Cloudanwendung und ein Gerät zusammen verwendet werden können, um einen Remoteneustart des Geräts mit IoT Hub zu initiieren und zu überwachen.
+IoT-Cloudanwendungen können Primitive (d.h. die Gerätezwillingsmethode und die direkte Methode) in Azure IoT Hub verwenden, um Geräteverwaltungsaktionen auf Geräten per Remotezugriff zu starten und zu überwachen. Dieser Artikel enthält Informationen dazu, wie eine IoT-Cloudanwendung und ein Gerät zusammen verwendet werden können, um einen Remoteneustart des Geräts mit IoT Hub zu initiieren und zu überwachen.
 
 Verwenden Sie für den Remotestart und die Remoteüberwachung von Geräteverwaltungsaktionen auf Ihren Geräten von einer cloudbasierten Back-End-App aus Azure IoT Hub-Grundtypen, z.B. die [Gerätezwillingsmethode][lnk-devtwin] und [direkte Methoden][lnk-c2dmethod]. In diesem Tutorial wird veranschaulicht, wie eine Back-End-App und ein Gerät zusammen verwendet werden können, damit Sie einen Remoteneustart des Geräts von IoT Hub aus initiieren und überwachen können.
 
 Sie verwenden eine direkte Methode, um Geräteverwaltungsaktionen (wie Neustarts, Zurücksetzen auf Werkseinstellungen und Firmwareaktualisierung) von einer Back-End-App aus in der Cloud zu initiieren. Das Gerät ist für Folgendes verantwortlich:
 
 * Verarbeiten der von IoT Hub gesendeten Methodenanforderung
-* Initiieren der entsprechenden gerätespezifischen Aktion auf dem Gerät
+* Initiieren der entsprechenden gerätespezifischen Aktion auf dem Gerät.
 * Senden von Statusupdates über die gemeldeten Eigenschaften an IoT Hub
 
 Sie können eine Back-End-App in der Cloud verwenden, um Gerätezwillingsabfragen auszuführen und Berichte zum Status der Geräteverwaltungsaktionen zu erstellen.
@@ -37,8 +38,8 @@ Sie können eine Back-End-App in der Cloud verwenden, um Gerätezwillingsabfrage
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Verwenden des Azure-Portals zum Erstellen einer IoT Hub-Instanz und einer Geräteidentität im IoT Hub
-* Erstellen einer simulierten Geräte-App, die eine direkte Methode aufweist, die den Neustart ermöglicht und von der Cloud aufgerufen werden kann
-* Erstellen einer Node.js-Konsolenanwendung, die über Ihre IoT Hub-Instanz eine direkte Neustartmethode in der simulierten Geräte-App aufruft
+* Erstellen Sie eine simulierte Geräte-App, die eine direkte Methode enthält, die das Gerät neu startet. Direkte Methoden werden aus der Cloud aufgerufen.
+* Erstellen einer .NET-Konsolenanwendung, die über Ihre IoT Hub-Instanz eine direkte Neustartmethode in der simulierten Geräte-App aufruft
 
 Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
@@ -62,7 +63,7 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
 * Auslösen eines simulierten Geräteneustarts
 * Verwenden der gemeldeten Eigenschaften, um Gerätezwillingsabfragen zu ermöglichen, die Geräte und den Zeitpunkt ihres letzten Neustarts ermitteln
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -72,7 +73,7 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Erstellen Sie mit einem Text-Editor im Ordner **manageddevice** die neue Datei **dmpatterns_getstarted_device.js**.
+3. Erstellen Sie mit einem Text-Editor im Ordner **manageddevice** die Datei **dmpatterns_getstarted_device.js**.
 4. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_device.js** die folgenden require-Anweisungen ein:
    
     ```
@@ -141,13 +142,14 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
     });
     ```
 8. Speichern und schließen Sie die Datei **dmpatterns_getstarted_device.js**.
-   
-   [AZURE.NOTE] Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Transient Fault Handling (Behandeln vorübergehender Fehler)][lnk-transient-faults] beschrieben.
+
+> [!NOTE]
+> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. einen exponentiellen Backoff), wie im MSDN-Artikel zum [Transient Fault Handling (Behandeln vorübergehender Fehler)][lnk-transient-faults] beschrieben.
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Auslösen eines Remoteneustarts auf dem Gerät über eine direkte Methode
-In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die mit einer direkten Methode einen Remoteneustart auf einem Gerät initiiert und mithilfe von Gerätezwillingsabfragen den letzten Neustartzeitpunkt für dieses Gerät abruft.
+In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die einen Remoteneustart auf einem Gerät über eine direkte Methode auslöst. Die App verwendet Gerätezwillingsabfragen, um den Zeitpunkt des letzten Neustarts bei diesem Gerät zu ermitteln.
 
-1. Erstellen Sie einen neuen leeren Ordner mit dem Namen **triggerrebootondevice**.  Erstellen Sie im Ordner **triggerrebootondevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen leeren Ordner mit dem Namen **triggerrebootondevice**.  Erstellen Sie im Ordner **triggerrebootondevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
@@ -157,7 +159,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die mit einer direk
     ```
     npm install azure-iothub --save
     ```
-3. Erstellen Sie mit einem Text-Editor im Ordner **triggerrebootondevice** die neue Datei **dmpatterns_getstarted_service.js**.
+3. Erstellen Sie mit einem Text-Editor im Ordner **triggerrebootondevice** die Datei **dmpatterns_getstarted_service.js**.
 4. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_service.js** die folgenden require-Anweisungen ein:
    
     ```
@@ -240,13 +242,13 @@ Sie können die Apps nun ausführen.
 3. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
 
 ## <a name="customize-and-extend-the-device-management-actions"></a>Anpassen und Erweitern der Geräteverwaltungsaktionen
-Ihre IoT-Lösungen können die festgelegten Geräteverwaltungsmuster erweitern oder benutzerdefinierte Muster ermöglichen. Dazu werden die Primitiven für die Gerätezwillingsmethode oder die direkte Methode verwendet. Andere Beispiele für Geräteverwaltungsaktionen sind das Zurücksetzen auf die Werkseinstellungen, Firmware- und Softwareaktualisierungen, Energieverwaltung, Netzwerk- und Konnektivitätsverwaltung und Datenverschlüsselung.
+Ihre IoT-Lösungen können die festgelegten Geräteverwaltungsmuster erweitern oder benutzerdefinierte Muster ermöglichen. Dazu werden die Grundtypen für die Gerätezwillings- oder die C2D-Methode verwendet. Andere Beispiele für Geräteverwaltungsaktionen sind das Zurücksetzen auf die Werkseinstellungen, Firmware- und Softwareaktualisierungen, Energieverwaltung, Netzwerk- und Konnektivitätsverwaltung und Datenverschlüsselung.
 
 ## <a name="device-maintenance-windows"></a>Gerätewartungsfenster
 In der Regel konfigurieren Sie die Ausführung von Aktionen für Geräte so, dass Unterbrechungen und Ausfallzeiten auf ein Minimum beschränkt sind.  Bei Gerätewartungsfenstern handelt es sich um ein häufig verwendetes Muster zum Festlegen des Zeitpunkts, zu dem ein Gerät seine Konfiguration aktualisieren soll. Ihre Back-End-Lösungen können die gewünschten Eigenschaften des Gerätezwillings verwenden, um auf Ihrem Gerät eine Richtlinie zur Aktivierung eines Wartungsfensters festzulegen und zu aktivieren. Wenn ein Gerät die Wartungsfensterrichtlinie erhält, kann es mithilfe der gemeldeten Eigenschaft des Gerätezwillings den Richtlinienstatus melden. Die Back-End-App kann dann mithilfe von Gerätezwillingsabfragen die Konformität von Geräten und den einzelnen Richtlinien sicherstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine direkte Methode zum Auslösen eines Remoteneustarts auf einem Gerät und die gemeldeten Eigenschaften zum Melden des letzten Neustartzeitpunkts des Geräts verwendet. Darüber hinaus haben Sie den Gerätezwilling abgefragt, um den letzten Neustartzeitpunkt des Geräts aus der Cloud zu ermitteln.
+In diesem Tutorial haben Sie eine direkte Methode zum Auslösen eines Remoteneustarts auf einem Gerät verwendet. Sie haben die gemeldeten Eigenschaften zum Melden des letzten Neustartzeitpunkts des Geräts verwendet. Darüber hinaus haben Sie den Gerätezwilling abgefragt, um den letzten Neustartzeitpunkt des Geräts aus der Cloud zu ermitteln.
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie unter:
 
@@ -273,9 +275,4 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Ers
 [lnk-devtwin]: iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: iot-hub-devguide-direct-methods.md
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-
-
-
-<!--HONumber=Dec16_HO1-->
-
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2017
+ms.date: 03/06/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 5ec4b964066687b506686709c3dc5ed5b402fbaf
-ms.openlocfilehash: 8045f9d927e9c877573085eb43eaadcd60f96a67
-ms.lasthandoff: 02/09/2017
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: a09fc0052538316a37a9ff07dfddd89de00cb499
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -52,9 +52,17 @@ Sie benötigen für die Verwendung eines SSH-Tunnels für Webdatenverkehr Folgen
   > [!NOTE]
   > Wenn Sie einen anderen SSH-Client als `ssh` oder PuTTY verwenden möchten, finden Sie Informationen zum Herstellen eines SSH-Tunnels in der Dokumentation zu Ihrem Client.
 
-* Einen Webbrowser, der für die Verwendung eines SOCKS-Proxys konfiguriert werden kann.
+* Einen Webbrowser, der für die Verwendung eines SOCKS5-Proxys konfiguriert werden kann.
 
-## <a name="a-nameusesshacreate-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
+    > [!WARNING]
+    > Die in Windows integrierte SOCKS-Proxy-Unterstützung unterstützt nicht SOCKS5 und funktioniert nicht mit den Schritten in diesem Dokument. Die folgenden Browser basieren auf Windows-Proxyeinstellungen und funktionieren derzeit nicht mit den Schritten in diesem Dokument:
+    > 
+    > * Microsoft Edge
+    > * Microsoft Internet Explorer
+    >
+    > Google Chrome basiert auch auf den Windows-Proxyeinstellungen. Allerdings können Sie Erweiterungen installieren, die SOCKS5 unterstützen. Wir empfehlen [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
+
+## <a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
 
 Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie **USERNAME** durch einen SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** durch den Namen des HDInsight-Clusters.
 
@@ -77,7 +85,7 @@ Wenn Sie den Cluster mit einem SSH-Schlüssel konfiguriert haben, müssen Sie un
 
 Nach Abschluss des Befehls wird der an den lokalen Port 9876 des lokalen Computers gesendete Datenverkehr über SSL (Secure Sockets Layer) an den Hauptknoten des Clusters weitergeleitet, der dann seinen Ursprung darstellt.
 
-## <a name="a-nameuseputtyacreate-a-tunnel-using-putty"></a><a name="useputty"></a>Erstellen von Tunneln mit PuTTY
+## <a name="useputty"></a>Erstellen von Tunneln mit PuTTY
 
 Führen Sie die folgenden Schritte aus, um einen SSH-Tunnel mithilfe von PuTTY zu erstellen.
 
@@ -101,8 +109,8 @@ Führen Sie die folgenden Schritte aus, um einen SSH-Tunnel mithilfe von PuTTY z
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Verwenden des Tunnels im Browser
 
-> [!NOTE]
-> Für die Schritte in diesem Abschnitt wird der Firefox-Browser verwendet, der für Linux, Unix, Macintosh OS X und Windows-Systeme frei verfügbar ist. Andere moderne Browser, die die Verwendung eines SOCKS-Proxys unterstützen, funktionieren ebenfalls.
+> [!IMPORTANT]
+> Die Schritte in diesem Abschnitt verwenden den Mozilla FireFox-Browser, da dieser auf allen Plattformen die gleichen Proxyeinstellungen bietet. Andere moderne Browser wie z.B. Google Chrome erfordern möglicherweise eine Erweiterung wie z.B. FoxyProxy, um mit dem Tunnel zu arbeiten.
 
 1. Konfigurieren Sie den Browser so, dass er **localhost** sowie den Port verwendet, den Sie bei der Erstellung des Tunnels als **SOCKS v5**-Proxy verwendet haben. Die Firefox-Einstellungen sollten wie folgt aussehen. Wenn Sie einen anderen Port als 9876 verwenden, ändern Sie den Port entsprechend:
    
@@ -145,6 +153,7 @@ Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu üb
    > 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie erfahren haben, wie Sie einen SSH-Tunnel erstellen und verwenden, finden Sie in den folgenden Ressourcen Informationen zum Überwachen und Verwalten des Clusters mithilfe von Ambari:
 
 * [Verwalten von HDInsight-Clustern mit Ambari](hdinsight-hadoop-manage-ambari.md)

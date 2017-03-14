@@ -14,9 +14,9 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: awills
 translationtype: Human Translation
-ms.sourcegitcommit: 13c524cdc5ef0d9e70820cc3dac8d747e5bb5845
-ms.openlocfilehash: 12e832b8e0d0509f5b59d588b43f062fb07ddcde
-ms.lasthandoff: 02/11/2017
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: ca96cd4ddf1be5ab70475d40fa65e73d248fd67b
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -101,8 +101,8 @@ Lassen Sie uns nur Anforderungen prüfen, die einen bestimmten Ergebniscode zur�
 Der `where` -Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige Punkte:
 
 * `and`, `or`: Boolesche Operatoren
-* `==`, `<>`: Gleich und ungleich
-* `=~`, `!=`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
+* `==`, `<>`, `!=`: Gleich und ungleich
+* `=~`, `!~`: Zeichenfolge ohne Beachtung der Groß-/Kleinschreibung, gleich und ungleich Es gibt viele weitere Zeichenfolgenvergleichsoperatoren.
 
 Erfahren Sie mehr über [skalare Ausdrücke](app-insights-analytics-reference.md#scalars).
 

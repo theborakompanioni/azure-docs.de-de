@@ -13,11 +13,12 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 03/02/2017
 ms.author: larryfr
 translationtype: Human Translation
-ms.sourcegitcommit: 1ddfbd3b8d9ca695b08739c7f0716a8e8de82725
-ms.openlocfilehash: cb94febf8f58eda3c56755d60fd49e3dd265d3c3
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 257138fddc75b39985ba974b1314e978a554b1e2
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -42,13 +43,18 @@ In diesem Dokument erfahren Sie, wie Sie C# mit Hive und Pig verwenden.
 
   * Visual Studio 2015
 
+  * Visual Studio 2017
+
 * Hadoop in HDInsight-Cluster – unter [Bereitstellen eines HDInsight-Clusters](hdinsight-provision-clusters.md) werden die Schritte zum Erstellen eines Clusters beschrieben
 
-* Hadoop-Tools für Visual Studio – unter [Erste Schritte mit HDInsight Hadoop-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) werden die Schritte zum Installieren und Konfigurieren der Tools beschrieben
+* Hadoop Tools für Visual Studio oder Data Lake Tools für Visual Studio. unter [Erste Schritte mit HDInsight Hadoop-Tools für Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) werden die Schritte zum Installieren und Konfigurieren der Tools beschrieben
+
+    > [!NOTE]
+    > Data Lake-Tools sind in Visual Studio 2017 installiert, durch Auswählen der Workload __Azure-Entwicklung__ während der Installation.
 
 ## <a name="net-on-hdinsight"></a>.NET in HDInsight
 
-Die .NET CLR (Common Language Runtime) und Frameworks sind standardmäßig auf Windows-basierten HDInsight-Clustern installiert. Dies ermöglicht Ihnen die Verwendung von C#-Anwendungen mit Hive- und Pig-Streaming (Daten werden zwischen Hive/Pig und der C#-Anwendung über "stdout/stdin" übergeben).
+Die .NET CLR (Common Language Runtime) und Frameworks sind standardmäßig auf Windows-basierten HDInsight-Clustern installiert. Die .NET CLR ermöglicht Ihnen die Verwendung von C#-Anwendungen mit Hive- und Pig-Streaming (Daten werden zwischen Hive/Pig und der C#-Anwendung über „stdout/stdin“ übergeben).
 
 > [!NOTE]
 > Die Ausführung von .NET Framework-UDFs auf Linux-basierten HDInsight-Clustern wird derzeit nicht unterstützt.
@@ -56,15 +62,15 @@ Die .NET CLR (Common Language Runtime) und Frameworks sind standardmäßig auf W
 
 ## <a name="net-and-streaming"></a>.NET und Streaming
 
-Beim Streaming übergeben Hive und Pig Daten über "stdout" an externe Anwendungen und empfangen die Ergebnisse über "stdin". Für C#-Anwendungen wird dies am einfachsten über `Console.ReadLine()` und `Console.WriteLine()` erreicht.
+Beim Streaming übergeben Hive und Pig Daten über "stdout" an externe Anwendungen und empfangen die Ergebnisse über "stdin". Verwenden Sie für C#-Anwendungen `Console.ReadLine()` und `Console.WriteLine()`.
 
-Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsolenanwendung** für Ihre C#-Projekte verwendet werden.
+Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsolen-App (.NET Framework)** für Ihre C#-Projekte verwendet werden.
 
 ## <a name="hive-and-c35"></a>Hive and C&#35;
 
 ### <a name="create-the-c-project"></a>Erstellen des C#-Projekts
 
-1. Öffnen Sie Visual Studio, und erstellen Sie eine neue Projektmappe. Wählen Sie als Projekttyp **Konsolenanwendung** aus, und geben Sie dem neuen Projekt den Namen **HiveCSharp**.
+1. Öffnen Sie Visual Studio, und erstellen Sie eine Lösung. Wählen Sie als Projekttyp **Konsolen-App (.NET Framework)** aus, und geben Sie dem neuen Projekt den Namen **HiveCSharp**.
 
 2. Ersetzen Sie den Inhalt von **Program.cs** durch den folgenden Code:
 
@@ -131,7 +137,7 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
 
     ![Anzeige des Speicherkontos für den Cluster im Server-Explorer ](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-5. Doppelklicken Sie auf **Standardcontainer** für den Cluster. Es wird ein neues Fenster geöffnet, das die Inhalte des Standardcontainers anzeigt.
+5. Doppelklicken Sie auf **Standardcontainer** für den Cluster, um den Inhalt des Standardcontainers anzuzeigen.
 6. Klicken Sie auf das Symbol für den Upload, und navigieren Sie dann zum Ordner **bin\debug** für das Projekt **HiveCSharp**. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **OK**.
 
     ![Symbol für den Upload](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
@@ -146,7 +152,7 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
 
 3. Klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Anwendung **HiveCSharp** bereitgestellt haben, und wählen Sie dann **Hive-Abfrage schreiben**.
 
-4. Verwenden Sie für die Hive-Abfrage den folgenden Code:
+4. Verwenden Sie für die Hive-Abfrage den folgenden Text:
 
     ```hiveql
     add file wasbs:///HiveCSharp.exe;
@@ -158,7 +164,7 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
     ORDER BY clientid LIMIT 50;
     ```
 
-    Mit diesem Code werden die Felder `clientid`, `devicemake` und `devicemodel` aus `hivesampletable` ausgewählt und an die Anwendung "HiveCSharp.exe" übergeben. Die Abfrage erwartet, dass die Anwendung drei Felder zurückgibt, die als `clientid`, `phoneLabel` und `phoneHash` gespeichert werden. Darüber hinaus wird bei der Abfrage davon ausgegangen, dass sich "HiveCSharp.exe" im Stamm des standardmäßigen Speichercontainers (`add file wasbs:///HiveCSharp.exe`) befindet.
+    Mit dieser Abfrage werden die Felder `clientid`, `devicemake` und `devicemodel` aus `hivesampletable` ausgewählt und an die Anwendung HiveCSharp.exe übergeben. Die Abfrage erwartet, dass die Anwendung drei Felder zurückgibt, die als `clientid`, `phoneLabel` und `phoneHash` gespeichert werden. Darüber hinaus wird bei der Abfrage davon ausgegangen, dass sich "HiveCSharp.exe" im Stamm des standardmäßigen Speichercontainers (`add file wasbs:///HiveCSharp.exe`) befindet.
 
 5. Klicken Sie auf **Senden**, um den Auftrag an den HDInsight-Cluster zu übermitteln. Das Fenster **Hive-Auftrag – Zusammenfassung** wird geöffnet.
 
@@ -168,7 +174,7 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
 
 ### <a name="create-the-c-project"></a>Erstellen des C#-Projekts
 
-1. Öffnen Sie Visual Studio, und erstellen Sie eine neue Projektmappe. Wählen Sie als Projekttyp **Konsolenanwendung** aus, und geben Sie dem neuen Projekt den Namen **PigUDF**.
+1. Öffnen Sie Visual Studio, und erstellen Sie eine Lösung. Wählen Sie als Projekttyp **Konsolenanwendung** aus, und geben Sie dem neuen Projekt den Namen **PigUDF**.
 
 2. Ersetzen Sie den Inhalt der Datei **Program.cs** durch den folgenden Code:
 
@@ -201,7 +207,7 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
     }
     ```
 
-    Diese Anwendung analysiert mit Pig gesendete Zeilen und formatiert Zeilen neu, die mit `java.lang.Exception`beginnen.
+    Diese Anwendung analysiert mit Pig gesendete Zeilen und formatiert Zeilen neu, die mit `java.lang.Exception` beginnen.
 
 3. Speichern Sie **Program.cs**, und erstellen Sie dann das Projekt neu.
 
@@ -220,9 +226,9 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
         cd %PIG_HOME%
         bin\pig
 
-    Es wird eine `grunt>` -Eingabeaufforderung angezeigt.
+    Eine `grunt>`-Eingabeaufforderung wird angezeigt.
     
-3. Geben Sie den folgenden Code in, um einen einfachen Pig-Auftrag über die .NET Framework-Anwendung auszuführen:
+3. Geben Sie folgendes ein, um einen Pig-Auftrag über die .NET Framework-Anwendung auszuführen:
 
         DEFINE streamer `pigudf.exe` SHIP('pigudf.exe');
         LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
@@ -235,7 +241,7 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
     > [!NOTE]
     > Der Anwendungsname, der für das Streaming verwendet wird, muss bei der Aliaserstellung mit \` (Gravis) und bei der Verwendung mit `SHIP` von ' (einfaches Anführungszeichen) umschlossen werden.
 
-4. Nach Eingabe der letzten Zeile sollte der Auftrag gestartet werden. Die Ausgabe sollte ähnliche Ergebnisse wie diese liefern:
+4. Nach Eingabe der letzten Zeile sollte der Auftrag gestartet werden. Eine Ausgabe ähnlich folgendem Text wird zurückgegeben:
 
         (2012-02-03 20:11:56 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
         (2012-02-03 20:11:56 SampleClass5 [DEBUG] detail for id 1976092771)
@@ -247,14 +253,9 @@ Da Hive und Pig die Anwendung zur Laufzeit aufrufen, sollte die Vorlage **Konsol
 
 In diesem Dokument haben Sie erfahren, wie Sie eine .NET Framework-Anwendung über Hive und Pig in HDInsight verwenden. Informationen zur Verwendung von Python mit Hive und Pig finden Sie unter [Verwenden von Python mit Hive und Pig in HDInsight](hdinsight-python.md).
 
-Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie Informationen zur Verwenudng von MapReduce finden Sie in diesen Themen:
+Informationen zu anderen Möglichkeiten der Verwendung von Pig und Hive sowie Informationen zur Verwendung von MapReduce finden Sie in diesen Dokumenten:
 
 * [Verwenden von Hive mit HDInsight](hdinsight-use-hive.md)
 * [Verwenden von Pig mit HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

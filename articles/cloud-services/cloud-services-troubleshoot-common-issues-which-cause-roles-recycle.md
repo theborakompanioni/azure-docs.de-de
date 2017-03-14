@@ -16,8 +16,9 @@ ms.workload: tbd
 ms.date: 11/30/2016
 ms.author: v-six
 translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 00b09be636a01872070a1bec5f0f19885496bbcc
+ms.sourcegitcommit: 7c28fda22a08ea40b15cf69351e1b0aff6bd0a95
+ms.openlocfilehash: 47a9736fd6498d15305fb2296446c61e709ad0b8
+ms.lasthandoff: 03/07/2017
 
 
 ---
@@ -55,7 +56,7 @@ Wenn die Anwendung die Azure-Diagnose verwendet, muss Ihre Dienstkonfigurationsd
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  Wenn Sie Ihre Anwendung mit den Azure-Tools für Microsoft Visual Studio entwickeln, können Sie diesen Wert mithilfe der [Eigenschaftenseiten](https://msdn.microsoft.com/library/ee405486) festlegen.
+  Wenn Sie Ihre Anwendung mit den Azure-Tools für Microsoft Visual Studio entwickeln, können Sie diesen Wert mithilfe der Eigenschaftenseiten festlegen.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Das exportierte Zertifikat enthält keinen privaten Schlüssel.
 Um eine Webrolle unter SSL auszuführen, müssen Sie sicherstellen, dass das exportierte Verwaltungszertifikat den privaten Schlüssel enthält. Wenn Sie zum Exportieren des Zertifikats den *Windows-Zertifikat-Manager* verwenden, aktivieren Sie für die Option **Privaten Schlüssel exportieren** unbedingt **Ja**. Das Zertifikat muss im PFX-Format exportiert werden. Dies ist das einzige derzeit unterstützte Format.
@@ -69,9 +70,4 @@ Informieren Sie sich in der [Blogreihe von Kevin Williamson](http://blogs.msdn.c
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

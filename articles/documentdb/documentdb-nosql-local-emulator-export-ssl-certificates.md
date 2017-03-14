@@ -1,5 +1,5 @@
 ---
-title: Exportieren der DocumentDB-Emulatorzertifikate | Microsoft Docs
+title: Exportieren der DocumentDB-Emulatorzertifikate | Microsoft-Dokumentation
 description: "Wenn Sie in Sprachen und Laufzeiten entwickeln, die nicht den Windows-Zertifikatspeicher verwenden, müssen Sie die SSL-Zertifikate exportieren und verwalten. Dieser Artikel bietet Schrittanleitungen dafür."
 services: documentdb
 documentationcenter: 
@@ -15,14 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2017
 ms.author: tvoellm
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 224897c09073fe36c7d4f9f8c965212c25297271
-ms.openlocfilehash: 3f89e192052bb633190610a4dffbefb930dbc01c
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 5f2fd8810041d47be2ef0b21e1487426a643d541
+ms.lasthandoff: 03/07/2017
 
 
 ---
 
-# <a name="export-the-documentdb-emulator-certificates"></a>Exportieren der DocumentDB-Emulatorzertifikate
+# <a name="export-the-documentdb-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportieren Sie die DocumentDB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js
 
 [**Emulator herunterladen**](https://aka.ms/documentdb-emulator)
 
@@ -89,9 +91,4 @@ Das [Node.js SDK (ab Version 1.10.1)](https://docs.microsoft.com/en-us/azure/doc
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu DocumentDB finden Sie unter [Einführung in Azure DocumentDB](documentdb-introduction.md).
 * Um mit dem Entwickeln mithilfe des DocumentDB-Emulators zu beginnen, laden Sie eins der [unterstützten DocumentDB SDKs](documentdb-sdk-dotnet.md) herunter.
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

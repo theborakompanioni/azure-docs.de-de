@@ -1,5 +1,5 @@
 ---
-title: Arbeiten mit Geodaten in Azure DocumentDB | Microsoft Docs
+title: Arbeiten mit Geodaten in Azure DocumentDB | Microsoft-Dokumentation
 description: "Grundlegendes zum Erstellen, Indizieren und Abfragen räumlicher Objekte mit Azure DocumentDB."
 services: documentdb
 documentationcenter: 
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/16/2016
 ms.author: arramac
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 2d833a559b72569983340972ba3b905b9e42e61d
-ms.openlocfilehash: f78c0fc1959f72164508af9d8945744b67fac68b
+ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
+ms.openlocfilehash: 60219a9c78884e01fcf46e18ac03e2a955787bc5
+ms.lasthandoff: 03/07/2017
 
 
 ---
-# <a name="working-with-geospatial-data-in-azure-documentdb"></a>Arbeiten mit Geodaten in Azure DocumentDB
+# <a name="working-with-geospatial-and-geojson-location-data-in-documentdb"></a>Arbeiten mit Geodaten und GeoJSON-Standortdaten in DocumentDB
 Dieser Artikel bietet eine Einführung in die Funktionalität für Geodaten in [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
 * Wie werden Geodaten in Azure DocumentDB gespeichert?
@@ -48,7 +50,7 @@ Ein **Punkt** kennzeichnet eine einzelne Position im Raum. In Geodaten stellt ei
 > [!NOTE]
 > Die GeoJSON-Spezifikation gibt zuerst den Längengrad und dann den Breitengrad an. Wie in anderen Kartenprogrammen sind Längen- und Breitengrade Winkel, die in Grad dargestellt werden. Längengradwerte werden ab dem Nullmeridian gemessen und betragen von -180 bis +180 Grad. Breitengradwerte werden ab dem Äquator gemessen und betragen von -90,0 bis +90,0 Grad. 
 > 
-> DocumentDB interpretiert Koordinaten gemäß der Darstellung durch das WGS 84-Referenzsystem. Nachstehend finden Sie weitere Informationen zu Koordinatenreferenzsystemen.
+> DocumentDB interpretiert Koordinaten gemäß der Darstellung durch das WGS&84;-Referenzsystem. Nachstehend finden Sie weitere Informationen zu Koordinatenreferenzsystemen.
 > 
 > 
 
@@ -387,10 +389,5 @@ Nachdem Sie die ersten Schritte mit räumlichen Daten in DocumentDB ausgeführt 
 * Praktisches Arbeiten mit Abfragen von Geodaten im [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
 * Weitere Informationen zu [DocumentDB-Abfragen](documentdb-sql-query.md)
 * Weitere Informationen zu [DocumentDB-Indizierungsrichtlinien](documentdb-indexing-policies.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

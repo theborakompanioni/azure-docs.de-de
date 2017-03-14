@@ -1,6 +1,6 @@
 ---
 title: "Verwenden von MongoChef für MongoDB mit Azure DocumentDB | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB verwenden (jetzt als Vorschau verfügbar)."
+description: "Erfahren Sie, wie Sie MongoChef mit einem DocumentDB: API für MongoDB-Konto verwenden."
 keywords: MongoChef
 services: documentdb
 author: AndrewHoh
@@ -13,30 +13,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2016
+ms.date: 03/06/2017
 ms.author: anhoh
 translationtype: Human Translation
-ms.sourcegitcommit: a6aadaae2a9400dc62ab277d89d9a9657833b1b7
-ms.openlocfilehash: 26035ac7827eba384268dde266db2ac13cc30f40
+ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
+ms.openlocfilehash: eb5a10e414a4dcce50b34a54d0e56fd5f7a16737
+ms.lasthandoff: 03/08/2017
 
 
 ---
-# <a name="use-mongochef-with-a-documentdb-account-with-protocol-support-for-mongodb"></a>Verwenden von MongoChef mit einem DocumentDB-Konto mit Protokollunterstützung für MongoDB
-Voraussetzungen für das Herstellen einer Verbindung mit einem Azure DocumentDB-Konto mit Protokollunterstützung für MongoDB mithilfe von MongoChef:
+# <a name="use-mongochef-with-a-documentdb-api-for-mongodb-account"></a>Verwenden von MongoChef mit einem DocumentDB: API für MongoDB-Konto
+
+Zur Verbindung mit Azure DocumentDB: API für MongoDB-Konto, müssen Sie Folgendes durchführen:
 
 * Herunterladen und Installieren von [MongoChef](http://3t.io/mongochef)
-* Informationen zur [Verbindungszeichenfolge](documentdb-connect-mongodb-account.md) für das DocumentDB-Konto mit Protokollunterstützung für MongoDB
+* Über Informationen zur [Verbindungszeichenfolge](documentdb-connect-mongodb-account.md) für DocumentDB: API für MongoDB verfügen
 
 ## <a name="create-the-connection-in-mongochef"></a>Erstellen der Verbindung in MongoChef
-Führen Sie die folgenden Schritte aus, um dem Verbindungs-Manager von MongoChef Ihr DocumentDB-Konto mit Protokollunterstützung für MongoDB hinzuzufügen.
+Führen Sie die folgenden Schritte aus, um dem Verbindungs-Manager von MongoChef Ihr DocumentDB: API für MongoDB-Konto hinzuzufügen.
 
-1. Rufen Sie anhand der [hier](documentdb-connect-mongodb-account.md)bereitgestellten Anweisungen die Verbindungsinformationen für Ihr DocumentDB-Konto mit Protokollunterstützung für MongoDB ab.
+1. Rufen Sie anhand der [hier](documentdb-connect-mongodb-account.md)bereitgestellten Anweisungen die Verbindungsinformationen für Ihr DocumentDB: API für MongoDB ab.
 
     ![Screenshot des Blatts „Verbindungszeichenfolge“](./media/documentdb-mongodb-mongochef/ConnectionStringBlade.png)
 2. Klicken Sie auf **Connect** (Verbinden), um den Verbindungs-Manager zu öffnen, und klicken Sie anschließend auf **New Connection** (Neue Verbindung).
 
     ![Screenshot des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectionManager.png)
-3. Geben Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **Server** den Host (FQDN) des DocumentDB-Kontos mit Protokollunterstützung für MongoDB sowie den Port ein.
+3. Geben Sie im Fenster **Neue Verbindung** auf der Registerkarte **Server** den Host (FQDN) des DocumentDB: API für MongoDB sowie den Port ein.
 
     ![Screenshot der Registerkarte „Server“ des Verbindungs-Managers von MongoChef](./media/documentdb-mongodb-mongochef/ConnectionManagerServerTab.png)
 4. Wählen Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **Authentication** (Authentifizierung) den Authentifizierungsmodus **Standard (MONGODB-CR or SCARM-SHA-1)** (Standard [MONGODB-CR oder SCARM-SHA-1]) aus, und geben Sie Benutzername und Kennwort ein.  Übernehmen Sie den Standardwert für Authentifizierungs-DB („admin“), oder geben Sie einen eigenen Wert ein.
@@ -114,10 +116,5 @@ Führen Sie die folgenden Schritte aus, um Datenbanken, Sammlungen und Dokumente
     ![Screenshot der MongoChef-Abfrageergebnisse](./media/documentdb-mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Untersuchen Sie DocumentDB mit Protokollunterstützung für MongoDB anhand von [Beispielen](documentdb-mongodb-samples.md).
-
-
-
-<!--HONumber=Jan17_HO4-->
-
+* Weitere Informationen über DocumentDB: API für MongoDB finden Sie unter [Beispiele](documentdb-mongodb-samples.md).
 
