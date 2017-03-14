@@ -35,9 +35,9 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |---|---|---|---|---|
 |qpu_metric|QPU|Count|Durchschnitt|QPU. Bereich: 0–100 für S1, 0–200 für S2 und 0–400 für S4|
 |memory_metric|Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeicher. Bereich: 0–25 GB für S1, 0–50 GB für S2 und 0–100 GB für S4|
-|TotalConnectionRequests|Total Connection Requests (Gesamtanzahl von Verbindungsanforderungen)|Count|Durchschnitt|Gesamtanzahl von Verbindungsanforderungen. Dies sind erhaltene Anforderungen.|
-|SuccessfullConnectionsPerSec|Successful Connections Per Sec (Erfolgreiche Verbindungen pro Sekunde)|Anzahl pro Sekunde|Durchschnitt|Rate der erfolgreichen Verbindungsabschlüsse|
-|TotalConnectionFailures|Total Connection Failures (Gesamtanzahl von Verbindungsfehlern)|Count|Durchschnitt|Gesamtanzahl von fehlerhaften Verbindungsversuchen|
+|TotalConnectionRequests|Total Connection Requests (Verbindungsanforderungen gesamt)|Count|Durchschnitt|Gesamtanzahl von Verbindungsanforderungen. Dies sind erhaltene Anforderungen.|
+|SuccessfullConnectionsPerSec|Successful Connections Per Sec (Erfolgreiche Verbindungen/Sek.)|Anzahl pro Sekunde|Durchschnitt|Rate der erfolgreichen Verbindungsabschlüsse|
+|TotalConnectionFailures|Total Connection Failures (Verbindungsfehler gesamt)|Count|Durchschnitt|Gesamtanzahl von fehlerhaften Verbindungsversuchen|
 |CurrentUserSessions|Aktuelle Benutzersitzungen|Count|Durchschnitt|Aktuelle Anzahl von eingerichteten Benutzersitzungen|
 |QueryPoolBusyThreads|Ausgelastete Abfragepoolthreads|Count|Durchschnitt|Anzahl von ausgelasteten Threads im Abfragethreadpool|
 |CommandPoolJobQueueLength|Warteschlangenlänge für Aufträge im Befehlspool|Count|Durchschnitt|Gibt die Anzahl von Aufträgen in der Warteschlange des Befehlsthreadpools an.|
@@ -51,7 +51,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |SuccessfulRequests|Successful Gateway Requests (Erfolgreiche Gatewayanforderungen)|Count|Gesamt|Anzahl von erfolgreichen Gatewayanforderungen|
 |UnauthorizedRequests|Unauthorized Gateway Requests (Nicht autorisierte Gatewayanforderungen)|Count|Gesamt|Anzahl von nicht autorisierten Gatewayanforderungen|
 |FailedRequests|Failed Gateway Requests (Fehlgeschlagene Gatewayanforderungen)|Count|Gesamt|Anzahl von Fehlern bei Gatewayanforderungen|
-|OtherRequests|Other Gateway Requests (Andere Gatewayanforderungen)|Count|Gesamt|Anzahl von anderen Gatewayanforderungen|
+|OtherRequests|Other Gateway Requests (Sonstige Gatewayanforderungen)|Count|Gesamt|Anzahl von anderen Gatewayanforderungen|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -303,12 +303,12 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|
 |---|---|---|---|---|
-|d2c.telemetry.Ingress.allProtocol|Telemetry message send attempts (Versuche zum Senden von Telemetrienachrichten)|Count|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|
+|d2c.telemetry.Ingress.allProtocol|Telemetry message send attempts (Sendeversuche für Telemetrienachrichten)|Count|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|
 |d2c.telemetry.ingress.success|Telemetry messages sent (Gesendete Telemetrienachrichten)|Count|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die erfolgreich an Ihren IoT Hub gesendet wurden|
 |c2d.commands.egress.complete.success|Commands completed (Abgeschlossene Befehle)|Count|Gesamt|Anzahl von Befehlen von der Cloud an das Gerät, die vom Gerät erfolgreich abgeschlossen wurden|
 |c2d.commands.egress.abandon.success|Commands abandoned (Abgebrochene Befehle)|Count|Gesamt|Anzahl von Befehlen von der Cloud an das Gerät, die vom Gerät abgebrochen wurden|
 |c2d.commands.egress.reject.success|Commands rejected (Abgelehnte Befehle)|Count|Gesamt|Anzahl von Befehlen von der Cloud an das Gerät, die vom Gerät abgelehnt wurden|
-|devices.totalDevices|Total devices (Gesamtanzahl von Geräten)|Count|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|
+|devices.totalDevices|Total devices (Geräte gesamt)|Count|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|
 |devices.connectedDevices.allProtocol|Verbundene Geräte|Count|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|
 |d2c.telemetry.egress.success|Telemetry messages delivered (Übermittelte Telemetrienachrichten)|Count|Gesamt|Erfolgreich auf Endpunkte geschriebene Nachrichten (Häufigkeit gesamt)|
 |d2c.telemetry.egress.dropped|Dropped messages (Gelöschte Nachrichten)|Count|Gesamt|Gibt die Anzahl von Nachrichten an, die gelöscht wurden, weil sich keine Routenübereinstimmung ergeben hat und die Fallbackroute deaktiviert war.|
