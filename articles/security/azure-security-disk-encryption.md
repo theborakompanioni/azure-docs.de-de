@@ -15,9 +15,9 @@ ms.workload: na
 ms.date: 01/30/2017
 ms.author: kakhan
 translationtype: Human Translation
-ms.sourcegitcommit: 1dd5be3ba3a0fbbb4657a2c0b2ca6757a94cc76a
-ms.openlocfilehash: 1c6b4b45b9e0b018a7cb3f28f7868c89ad0fda61
-ms.lasthandoff: 02/16/2017
+ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
+ms.openlocfilehash: 10cc114451da7e73726772da4159776e76f5b8c9
+ms.lasthandoff: 03/09/2017
 
 
 ---
@@ -139,7 +139,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 > Azure Disk Encryption wird für die folgenden Linux-Server-Versionen unterstützt: Ubuntu, CentOS, SUSE und SUSE Linux Enterprise Server (SLES) sowie Red Hat Enterprise Linux.
 
 > [!NOTE]
-> Die Verschlüsselung von Linux-Betriebssystemdatenträgern wird derzeit für die folgenden Linux-Distributionen unterstützt: RHEL 7.2, CentOS 7.2n und Ubuntu 16.04.
+> Die Verschlüsselung von Linux-Betriebssystemdatenträgern wird derzeit für die folgenden Linux-Distributionen unterstützt: RHEL 7.2, RHEL 7.3, CentOS 7.2n und Ubuntu 16.04.
 >
 > Alle Ressourcen (z.B. Ihr Schlüsseltresor, Ihr Speicherkonto, Ihre VM) müssen derselben Azure-Region und demselben Abonnement angehören.
 
@@ -537,7 +537,7 @@ Führen Sie die folgenden Schritte aus, um die Verschlüsselung auf einem vorhan
  ```
 
 ### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-in-azure"></a>Aktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen IaaS-Linux-Computer in Azure
-Sie können die Datenträgerverschlüsselung auf einer vorhandenen oder ausgeführten virtuellen IaaS-Linux-VM in Azure aktivieren, indem Sie die [Resource Manager-Vorlage](https://github.com/Azure/azure-quick-start-templates/tree/master/201-encrypt-running-linux-vm) verwenden.
+Sie können die Datenträgerverschlüsselung auf einer vorhandenen oder ausgeführten virtuellen IaaS-Linux-VM in Azure aktivieren, indem Sie die [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) verwenden.
 
 1. Klicken Sie in der Azure-Schnellstartvorlage auf **In Azure bereitstellen**, geben Sie die Verschlüsselungskonfiguration auf dem Blatt **Parameter** ein, und klicken Sie dann auf **OK**.
 

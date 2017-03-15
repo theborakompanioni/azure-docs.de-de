@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Bereitstellen von Azure-Logik-Apps in Visual Studio | Microsoft-Dokumentation
-description: Erstellen Sie Visual Studio-Projekte zum Entwerfen, Erstellen und Bereitstellen von Logik-Apps in Azure.
+title: "Erstellen und Bereitstellen von Logik-Apps in Visual Studio – Azure Logic Apps | Microsoft-Dokumentation"
+description: Erstellen Sie Visual Studio-Projekte zum Entwerfen, Erstellen und Bereitstellen von Azure Logic Apps.
 author: jeffhollan
 manager: anneta
 editor: 
@@ -12,17 +12,21 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: jehollan
 translationtype: Human Translation
-ms.sourcegitcommit: bbee0bae5a20375f0de8adaedadd682dc051fb64
-ms.openlocfilehash: d1b0ca953e5ee40129f00b78ad1a46514270d448
-
+ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
+ms.openlocfilehash: 5dfff8620d66eca0d54763efbc5702e4b4d122d1
+ms.lasthandoff: 03/14/2017
 
 ---
-# <a name="build-and-deploy-azure-logic-apps-in-visual-studio"></a>Erstellen und Bereitstellen von Azure-Logik-Apps in Visual Studio
 
-Logik-Apps lassen sich zwar hervorragend über das [Azure-Portal](https://portal.azure.com/) entwerfen und verwalten, für die Erstellung und Bereitstellung von Logik-Apps empfiehlt sich aber unter Umständen die Verwendung von Visual Studio. Visual Studio bietet umfassende Tools zum Erstellen von Logik-Apps mithilfe des Designers für Logik-Apps, zum Konfigurieren von Bereitstellungs- und Automatisierungsvorlagen sowie zum Bereitstellen in einer beliebigen Umgebung.
+# <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Entwerfen, Erstellen und Bereitstellen von Azure Logic Apps in Visual Studio
+
+Azure Logic Apps lassen sich zwar hervorragend über das [Azure-Portal](https://portal.azure.com/) erstellen und verwalten, für das Entwerfen, die Erstellung und die Bereitstellung von Logik-Apps empfiehlt sich aber unter Umständen die Verwendung von Visual Studio. Visual Studio bietet umfassende Tools zum Erstellen von Logik-Apps mithilfe des Logik-Apps-Designers, zum Konfigurieren von Bereitstellungs- und Automatisierungsvorlagen sowie zum Bereitstellen in einer beliebigen Umgebung. 
+
+Eine Einführung in Azure Logic Apps finden Sie im Tutorial [Erstellen Ihrer ersten Logik-App über das Azure-Portal](logic-apps-create-a-logic-app.md).
 
 ## <a name="installation-steps"></a>Installationsschritte
 
@@ -39,7 +43,7 @@ Führen Sie zum Installieren und Konfigurieren der Visual Studio-Tools für Azur
 
 Gehen Sie nach der Installation der erforderlichen Komponenten wie folgt vor:
 
-1. Öffnen Sie Visual Studio 2015. Wählen Sie im Menü **Extras** die Option **Erweiterungen und Updates** aus.
+1. Öffnen Sie Visual Studio. Wählen Sie im Menü **Extras** die Option **Erweiterungen und Updates** aus.
 2. Erweitern Sie die Kategorie **Online**, um eine Onlinesuche durchzuführen.
 3. Navigieren Sie zu **Logic Apps** (oder suchen Sie danach), um **Azure Logic Apps-Tools für Visual Studio** zu finden.
 4. Klicken Sie auf **Herunterladen**, um die Erweiterung herunterzuladen und zu installieren.
@@ -69,7 +73,7 @@ Nach Abschluss der Installation können Sie das Azure-Ressourcengruppenprojekt m
 
     ![Bereitstellungsdatei](./media/logic-apps-deploy-from-vs/deployment.png)
 
-## <a name="create-your-logic-app-in-logic-app-designer"></a>Erstellen Ihrer Logik-App im Designer für Logik-Apps
+## <a name="create-your-logic-app-with-logic-app-designer"></a>Erstellen Ihrer Logik-App mit Logik-App-Designer
 
 Wenn Sie über ein Azure-Ressourcengruppenprojekt mit einer Logik-App verfügen, können Sie in Visual Studio den Designer für Logik-Apps öffnen, um Ihren Workflow zu erstellen. 
 
@@ -156,7 +160,7 @@ Sie können Ihre Logik-App jederzeit über **Datei** > **Speichern** speichern. 
 
 Falls Ihre Logik-App beim Speichern einen Fehler enthält, wird dieser im Visual Studio-Fenster **Ausgaben** angezeigt.
 
-## <a name="deploy-your-logic-app"></a>Bereitstellen Ihrer Logik-App
+## <a name="deploy-your-logic-app-from-visual-studio"></a>Bereitstellen Ihrer Logik-App von Visual Studio aus
 
 Nachdem Sie Ihre App konfiguriert haben, können Sie sie in nur wenigen Schritten direkt über Visual Studio bereitstellen. 
 
@@ -201,13 +205,8 @@ Wenn Sie über ein vorhandenes Ressourcengruppenprojekt verfügen, können Sie I
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung in Azure Logic Apps finden Sie im Tutorial [Erstellen Ihrer ersten Logik-App](logic-apps-create-a-logic-app.md).
+* [Verwalten von Azure Logic Apps mit dem Cloud-Explorer von Visual Studio](logic-apps-manage-from-vs.md)
 * [Anzeigen allgemeiner Beispiele und Szenarien](logic-apps-examples-and-scenarios.md)
 * [Automatisieren von Geschäftsprozessen mit Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694)
 * [Integrieren Ihrer Systeme in Azure Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
 
