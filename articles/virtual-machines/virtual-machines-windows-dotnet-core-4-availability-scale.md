@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9f944edcafb55634c9338bc8dd518a5f032f56e0
-ms.openlocfilehash: e714a7e941b25dfb0926934a3dff387363f306d8
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: b321683b2080e5af3a112791eae416e03dee0080
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="availability-and-scale-in-azure-resource-manager-templates"></a>Verfügbarkeit und Skalierung in Azure Resource Manager-Vorlagen
+# <a name="availability-and-scale-in-azure-resource-manager-templates-for-windows-vms"></a>Verfügbarkeit und Skalierung in Azure Resource Manager-Vorlagen für Windows-VMs
+
 Bei der Verfügbarkeit und Skalierung geht es um die Betriebszeit und die Erfüllung des jeweiligen Bedarfs. Wenn für eine Anwendung eine Betriebszeit von 99,9% erforderlich ist, muss sie über eine Architektur verfügen, in der mehrere Computeressourcen gleichzeitig genutzt werden können. Im Gegensatz zu einer einzelnen Website umfasst eine Konfiguration mit einem höheren Verfügbarkeitsgrad beispielsweise mehrere Instanzen derselben Website mit einer vorgeschalteten Lastenausgleichstechnologie. In dieser Konfiguration kann eine Instanz der Anwendung zu Wartungszwecken außer Betrieb genommen werden, während die anderen Instanzen weiter ausgeführt werden. Mit der Skalierung wird erreicht, dass Anwendungen den jeweiligen Bedarf erfüllen können. Bei einer Anwendung mit Lastenausgleich kann diese durch das Hinzufügen oder Entfernen von Instanzen aus dem Pool je nach Bedarf skaliert werden.
 
 In diesem Dokument wird erläutert, wie die Music Store-Beispielbereitstellung in Bezug auf die Verfügbarkeit und Skalierung konfiguriert wird. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie hier – [Music Store Deployment on Windows (Music Store-Bereitstellung unter Windows)](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
@@ -249,10 +252,5 @@ Weitere Informationen zur Verwendung der Kopierfunktion finden Sie unter [Erstel
 <hr>
 
 [Schritt 4: Anwendungsbereitstellung mit Azure Resource Manager-Vorlagen](virtual-machines-windows-dotnet-core-5-app-deployment.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -1,5 +1,5 @@
 ---
-title: Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung | Microsoft Docs
+title: "Azure RBAC – Problembehandlung | Microsoft-Dokumentation"
 description: "Hilfe bei Problemen oder Fragen zu Ressourcen für die rollenbasierte Zugriffsteuerung."
 services: azure-portal
 documentationcenter: na
@@ -12,19 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 03/02/2017
 ms.author: kgremban
 translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: a6fd242b89e6a7cd61be6ceadf15852e9ef61a8a
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: 32b335d8a1f84348ab28bcc081cc42fd79fb08fc
+ms.lasthandoff: 03/04/2017
 
 
 ---
 # <a name="role-based-access-control-troubleshooting"></a>Behandlung von Problemen bei der rollenbasierten Zugriffssteuerung
-## <a name="introduction"></a>Einführung
-[rollenbasierte Zugriffssteuerung](role-based-access-control-configure.md) ist eine leistungsstarke Funktion, mit der Sie Zugriffsberechtigungen für Azure-Ressourcen differenziert steuern können. Gewähren Sie einem bestimmten Benutzer einfach und sicher Zugriff auf genau die Ressourcen, die er benötigt. In einigen Fällen kann das Ressourcen-Modell für Azure-Ressourcen jedoch kompliziert sein, und es ist nicht immer leicht ersichtlich, wofür Sie Berechtigungen vergeben.
 
-In diesem Dokument erhalten Sie ausführliche Informationen über die Nutzung einiger der Rollen im Azure-Portal. Diese drei Rollen decken alle Ressourcentypen ab:
+In diesem Dokument werden häufig gestellte Fragen über bestimmte Zugriffsrechte, die mit Rollen erteilt werden, beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
 
 * Besitzer  
 * Mitwirkender  
@@ -36,7 +35,7 @@ Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunkt
 ### <a name="write-access-capabilities"></a>Schreibzugriff
 Wenn Sie einem Benutzer schreibgeschützten Zugriff für eine einzelne Web-App gewähren, sind einige Features deaktiviert, von denen Sie das unter Umständen nicht erwartet haben. Die folgenden Verwaltungsfunktionen erfordern **Schreibzugriff** auf eine Web-App (entweder als Mitwirkender oder Besitzer) und stehen nicht zur Verfügung, wenn der Benutzer nur über Lesezugriff für die Web-App verfügt.
 
-* Befehle (z. B. starten, anhalten)
+* Befehle (z.B. starten, anhalten usw.)
 * Änderung von Einstellungen wie allgemeine Konfigurationen, Skalierungseinstellungen, Sicherungseinstellungen und Überwachungseinstellungen
 * Zugriff auf Anmeldedaten für die Veröffentlichung oder andere geheime Schlüssel wie App- und Verbindungseinstellungen
 * Streamingprotokolle
@@ -95,10 +94,5 @@ Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrato
 * [Integrierte Rollen:](role-based-access-built-in-roles.md)Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
 * [Benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihrer Zugriffsanforderungen erstellen.
 * [Erstellen eines Verlaufsbericht über Zugriffsänderungen](role-based-access-control-access-change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

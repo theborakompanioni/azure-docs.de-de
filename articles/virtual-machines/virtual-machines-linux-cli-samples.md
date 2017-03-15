@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2017
+ms.date: 02/28/2017
 ms.author: nepeters
 translationtype: Human Translation
-ms.sourcegitcommit: 5a73094c90b2a7400a664a827e07d5ada2184952
-ms.openlocfilehash: 372f6413903fbf7344871a136ffcddcadfc81782
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
+ms.openlocfilehash: ea2124e01753b914ebd1691e5d89091ac5cd5859
+ms.lasthandoff: 03/04/2017
 
 
 ---
-# <a name="azure-virtual-machine-cli-samples"></a>Azure CLI-Beispiele für virtuelle Computer
+# <a name="azure-cli-samples-for-linux-virtual-machines"></a>Azure CLI-Beispiele für Linux-VMs
 
 Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI erstellt wurden.
 
@@ -36,9 +36,11 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 | [Erstellen einer VM und Ausführen eines Konfigurationsskripts](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Erstellt einen virtuellen Computer und verwendet die benutzerdefinierte Azure-Skripterweiterung zum Installieren von NGINX. |
 | [Erstellen eines virtuellen Computers mit WordPress](./scripts/virtual-machines-linux-cli-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Erstellt einen virtuellen Computer und verwendet die benutzerdefinierte Azure-Skripterweiterung zum Installieren von WordPress. |
 |**Netzwerk-VMs**||
-| [Sicherer Netzwerkdatenverkehr zwischen virtuellen Computern](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Erstellt zwei virtuelle Computer, alle zugehörigen Ressourcen sowie eine interne und eine externe Netzwerksicherheitsgruppe (NSG). |
+| [Sichern des Netzwerkdatenverkehrs zwischen virtuellen Computern](./scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Erstellt zwei virtuelle Computer, alle zugehörigen Ressourcen sowie eine interne und eine externe Netzwerksicherheitsgruppe (NSG). |
 |**Überwachen virtueller Computer**||
 | [Überwachen einer VM mit der Operations Management Suite](./scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Erstellt einen virtuellen Computer, installiert den OMS-Agent (Operations Management Suite) und registriert die VM in einem OMS-Arbeitsbereich.  |
+|**Neustarten virtueller Computer**||
+| [Neustarten von VMs](./scripts/virtual-machines-linux-cli-sample-restart-by-tag.md) | Erstellt VMs und startet diese neu. |
 |**Problembehandlung bei virtuellen Computern**||
 | [Problembehandlung bei einem Betriebssystem-Datenträger eines virtuellen Computers](./scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Bindet einen Betriebssystem-Datenträger eines virtuellen Computers als Datenträger für Daten auf einem zweiten virtuellen Computer ein. |
 | | |

@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 87a3d4fc849cee5d9abed1e4c32a9da583ea9516
-ms.openlocfilehash: 1ccde46c7adafdaa4a9efca450a3dd2efde8413a
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: b86bfcbd8b49dfcf383c48d57f237f2433bf20d6
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-infrastructure-naming-guidelines"></a>Benennungsrichtlinien für die Azure-Infrastruktur
+# <a name="azure-infrastructure-naming-guidelines-for-linux-vms"></a>Benennungsrichtlinien für die Azure-Infrastruktur für Linux-VMs 
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel wird erläutert, wie Sie Benennungskonventionen für all Ihre verschiedenen Azure-Ressourcen entwickeln, sodass Sie einen logischen und leicht erkennbaren Satz an Ressourcen für Ihre gesamte Umgebung erstellen können.
@@ -103,10 +106,5 @@ Für die Benennung von Speicherkonten gelten spezielle Regeln. Sie können nur K
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

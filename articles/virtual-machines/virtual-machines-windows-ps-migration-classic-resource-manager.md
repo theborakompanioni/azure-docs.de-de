@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e90036d97451b271451d0ba5845c788ac05d7abf
-ms.openlocfilehash: 4253d60a8a12877a3c5dac073bd06d70d020ccdc
-ms.lasthandoff: 02/10/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 30faf4b99414e5f7b5131c231b4dccf3a7272d25
+ms.lasthandoff: 03/06/2017
 
 
 ---
@@ -49,7 +49,10 @@ Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Az
 
 <br>
 
-## <a name="step-3-set-your-subscription-and-sign-up-for-migration"></a>Schritt 3: Festlegen Ihres Abonnements und Registrieren für die Migration
+## <a name="step-3-ensure-that-you-are-co-administrator-for-the-subscription-in-azure-classic-portal"></a>Schritt 3: Stellen Sie sicher, dass Sie Co-Administrator für das Abonnement im klassischen Azure-Portal sind
+Um diese Migration durchführen zu können, müssen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) als Co-Administrator für das Abonnement hinzugefügt werden. Dies ist auch erforderlich, wenn Sie im [Azure-Portal](https://portal.azure.com) bereits als Besitzer hinzugefügt wurden. Versuchen Sie, [einen Co-Administrator für das Abonnement im klassischen Azure-Portal hinzuzufügen](../billing/billing-add-change-azure-subscription-administrator.md), um herauszufinden, ob Sie Co-Administrator für das Abonnement sind. Wenn Sie keinen Co-Administrator hinzufügen können, wenden Sie sich bitte an einen Dienstadministrator oder Co-Administrator für das Abonnement, um sich hinzufügen zu lassen.   
+
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Schritt 4: Festlegen Ihres Abonnements und Registrieren für die Migration
 Starten Sie zunächst eine PowerShell-Eingabeaufforderung. Für die Migration müssen Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager einrichten.
 
 Melden Sie sich an Ihrem Konto für das Resource Manager-Modell an.
@@ -111,7 +114,7 @@ Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. In diesem Beispie
 
 <br>
 
-## <a name="step-4-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Schritt 4: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
+## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Schritt 5: Sicherstellen, dass Sie über genügend Kerne in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
 Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von Kernen in Azure Resource Manager überprüfen. Weitere Informationen zu Kernkontingenten finden Sie unter [Grenzwerte und Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager). 
 
 In diesem Beispiel wird die Verfügbarkeit in der Region **USA, Westen** geprüft. Ersetzen Sie den Regionsnamen im Beispiel durch den Namen Ihrer eigenen Region. 
@@ -120,7 +123,7 @@ In diesem Beispiel wird die Verfügbarkeit in der Region **USA, Westen** geprüf
 Get-AzureRmVMUsage -Location "West US"
 ```
 
-## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>Schritt 5: Ausführen von Befehlen zum Migrieren Ihrer IaaS-Ressourcen
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Schritt 6: Ausführen von Befehlen zum Migrieren Ihrer IaaS-Ressourcen
 > [!NOTE]
 > Alle hier beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 > 

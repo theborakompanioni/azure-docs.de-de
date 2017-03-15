@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: b4fb534cf18fd17f636e88cc31d6c997a9f09e45
-ms.openlocfilehash: e72afd857025773b3aadc3de124b4e79ec6cd512
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 495ee4a14e779099f828db0c08068bc3772cd7d4
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-deployment-with-azure-resource-manager-templates"></a>Anwendungsbereitstellung mit Azure Resource Manager-Vorlagen
+# <a name="application-deployment-with-azure-resource-manager-templates-for-windows-vms"></a>Anwendungsbereitstellung mit Azure Resource Manager-Vorlagen für Windows-VMs
+
 Nachdem Sie alle Infrastrukturanforderungen ermittelt und in einer Bereitstellungsvorlage berücksichtigt haben, muss die eigentliche Anwendungsbereitstellung durchgeführt werden. In diesem Kontext meint „Anwendungsbereitstellung“ das Installieren der eigentlichen Anwendungsbinärdateien auf Azure-Ressourcen. Für das Music Store-Beispiel müssen .Net Core und IIS auf jedem virtuellen Computer installiert und konfiguriert werden. Die Music Store-Binärdateien müssen auf jedem virtuellen Computer installiert und die Music Store-Datenbank muss vorab erstellt werden.
 
 In diesem Dokument erfahren Sie, wie Sie mithilfe von VM-Erweiterungen die Anwendungsbereitstellung und -konfiguration auf virtuellen Azure-Computern automatisieren können. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie hier – [Music Store Deployment on Windows (Music Store-Bereitstellung unter Windows)](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
@@ -124,10 +127,5 @@ Weitere Informationen zum Verwenden der benutzerdefinierten Skripterweiterung fi
 <hr>
 
 [Sehen Sie sich weitere Azure Resource Manager-Vorlagen an.](https://github.com/Azure/azure-quickstart-templates)
-
-
-
-
-<!--HONumber=Feb17_HO2-->
 
 

@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 84b64fd79da641987d5346d90bb77bde154b58c4
-ms.openlocfilehash: a519c101e24a340078adcfde3e5733db71630aea
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 1faab292ec93c2138eed2efd977a0bdecbb4574b
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="azure-networking-infrastructure-guidelines"></a>Richtlinien für die Azure-Netzwerkinfrastruktur
+# <a name="azure-networking-infrastructure-guidelines-for-linux-vms"></a>Richtlinien für die Azure-Netzwerkinfrastruktur für Linux-VMs
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel werden die erforderlichen Planungsschritte für virtuelle Netzwerke in Azure sowie die Verbindungen zwischen vorhandenen lokalen Umgebungen erläutert.
@@ -102,10 +105,5 @@ Ebenso wie eine lokale physische Netzwerkinfrastruktur können auch virtuelle Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

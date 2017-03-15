@@ -15,13 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2016
 ms.author: nepeters
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: bd214be3aec3fbfa70fe579447f1e00f17a354c7
-ms.openlocfilehash: e3840e6f688d586650d877a854ee81035ce39b48
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 764ef15f631166bf720c846aa3b4f4b6936054d9
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="application-architecture-with-azure-resource-manager-templates"></a>Anwendungsarchitektur mit Azure Resource Manager-Vorlagen
+# <a name="application-architecture-with-azure-resource-manager-templates-for-linux-vms"></a>Anwendungsarchitektur mit Azure Resource Manager-Vorlagen für Linux-VMs
+
 Beim Entwickeln einer Azure Resource Manager-Bereitstellung müssen Computeanforderungen Azure-Ressourcen und -Diensten zugeordnet werden. Wenn eine Anwendung aus mehreren HTTP-Endpunkten, einer Datenbank und einem Cachedienst für Daten besteht, müssen die Azure-Ressourcen, auf denen diese Komponenten gehostet werden, rationalisiert werden. Die Music Store-Beispielanwendung enthält beispielsweise eine Webanwendung, die auf einem virtuellen Computer gehostet wird, sowie eine SQL-Datenbank, die in Azure SQL-Datenbank gehostet wird. 
 
 In diesem Dokument erfahren Sie, wie die Music Store-Computeressourcen in der Azure Resource Manager-Beispielvorlage konfiguriert werden. Alle Abhängigkeiten und individuellen Konfigurationen werden hervorgehoben. Stellen Sie am besten vorab eine Instanz der Lösung in Ihrem Azure-Abonnement bereit, und orientieren Sie sich an der Azure Resource Manager-Vorlage. Die vollständige Vorlage finden Sie unter [Music Store Deployment on Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)(Music Store-Bereitstellung unter Ubuntu). 
@@ -270,10 +273,5 @@ Weitere Informationen zum Bereitstellen von Azure SQL-Datenbank finden Sie unter
 <hr>
 
 [Schritt 2: Zugriff und Sicherheit in Azure Resource Manager-Vorlagen](virtual-machines-linux-dotnet-core-3-access-security.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

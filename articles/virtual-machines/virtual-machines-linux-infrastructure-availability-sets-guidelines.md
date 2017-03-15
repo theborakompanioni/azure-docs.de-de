@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: iainfou
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 233116deaaaf2ac62981453b05c4a5254e836806
-ms.openlocfilehash: 0c31fb1d02e26491de8d1076d074a2021906999f
-ms.lasthandoff: 01/31/2017
+ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
+ms.openlocfilehash: 09246da2e04a15770a999703eb3e4dca7d8ae0dc
+ms.lasthandoff: 03/06/2017
 
 
 ---
-# <a name="azure-availability-sets-guidelines"></a>Richtlinien für Azure-Verfügbarkeitsgruppen
+# <a name="azure-availability-sets-guidelines-for-linux-vms"></a>Richtlinien für Azure-Verfügbarkeitsgruppen für Linux-VMs
+
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
 In diesem Artikel werden die erforderlichen Planungsschritte für Verfügbarkeitsgruppen erläutert, sodass sichergestellt ist, dass auf Ihre Anwendung bei geplanten oder ungeplanten Ereignissen zugegriffen werden kann.
@@ -43,7 +45,9 @@ In Azure können virtuelle Computer (VMs) in einer logischen Gruppierung, die al
 
 Anwendungen sollten sich nicht auf einem einzelnen virtuellen Computer befinden. Eine Verfügbarkeitsgruppe, die einen einzelnen virtuellen Computer enthält, bietet keinen Schutz vor geplanten und ungeplanten Ereignissen innerhalb der Azure Platform. Die [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) erfordert mindestens zwei virtuelle Computer in einer Verfügbarkeitsgruppe, um die Verteilung der virtuellen Computer in der zugrunde liegenden Infrastruktur zu ermöglichen.
 
-Die zugrunde liegende Infrastruktur in Azure ist in Updatedomänen und Fehlerdomänen unterteilt. Diese Domänen werden durch die Hosts definiert, die einen gemeinsamen Aktualisierungszyklus oder eine ähnliche physische Infrastruktur wie Stromversorgung und Netzwerk aufweisen. Azure verteilt Ihre virtuellen Computer automatisch in einer Verfügbarkeitsgruppe über Domänen hinweg, um Verfügbarkeit und Fehlertoleranz zu gewährleisten. Abhängig von der Größe der Anwendung und der Anzahl der virtuellen Computer in einer Verfügbarkeitsgruppe können Sie die Anzahl der Domänen anpassen, die Sie verwenden möchten. Informieren Sie sich über das [Verwalten von Verfügbarkeit und die Verwendung von Update- und Fehlerdomänen](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Die zugrunde liegende Infrastruktur in Azure ist in mehrere Hardwarecluster unterteilt. Jeder Hardwarecluster kann einen Bereich von VM-Größen unterstützen. Eine Verfügbarkeitsgruppe kann zu einem Zeitpunkt nur auf einem einzelnen Hardwarecluster gehostet werden. Der Bereich der VM-Größen, die in einer einzelnen Verfügbarkeitsgruppe vorhanden sein können, ist deshalb auf den Bereich der VM-Größen beschränkt, die vom Hardwarecluster unterstützt werden. Der Hardwarecluster für die Verfügbarkeitsgruppe wird ausgewählt, wenn der erste virtuelle Computer in der Verfügbarkeitsgruppe bereitgestellt wird, oder wenn der erste virtuelle Computer in einer Verfügbarkeitsgruppe gestartet wird, bei der sich derzeit alle virtuellen Computer im Zustand „Beendet (Zuordnung aufgehoben)“ befinden. Der folgende CLI-Befehl kann verwendet werden, um den Bereich der VM-Größen zu bestimmen, die für eine Verfügbarkeitsgruppe verfügbar sind: „azure vm sizes --vm-name \<string\>“
+
+Jeder Hardwarecluster ist in mehrere Updatedomänen und Fehlerdomänen unterteilt. Diese Domänen werden durch die Hosts definiert, die einen gemeinsamen Aktualisierungszyklus oder eine ähnliche physische Infrastruktur wie Stromversorgung und Netzwerk aufweisen. Azure verteilt Ihre virtuellen Computer automatisch in einer Verfügbarkeitsgruppe über Domänen hinweg, um Verfügbarkeit und Fehlertoleranz zu gewährleisten. Abhängig von der Größe der Anwendung und der Anzahl der virtuellen Computer in einer Verfügbarkeitsgruppe können Sie die Anzahl der Domänen anpassen, die Sie verwenden möchten. Informieren Sie sich über das [Verwalten von Verfügbarkeit und die Verwendung von Update- und Fehlerdomänen](virtual-machines-linux-manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Beim Entwerfen der Anwendungsinfrastruktur sollten Sie auch die Anwendungsebenen planen, die Sie verwenden möchten. Gruppieren Sie virtuelle Computer, die demselben Zweck dienen, in einer Verfügbarkeitsgruppe, z.B. in einer Verfügbarkeitsgruppe für virtuelle Front-End-Computer mit Nginx oder Apache. Erstellen Sie eine separate Verfügbarkeitsgruppe für Ihre virtuellen Back-End-Computer mit MongoDB oder MySQL. Dadurch soll gewährleistet werden, dass jede Komponente der Anwendung durch eine Verfügbarkeitsgruppe geschützt ist und mindestens eine Instanz immer ausgeführt wird.
 

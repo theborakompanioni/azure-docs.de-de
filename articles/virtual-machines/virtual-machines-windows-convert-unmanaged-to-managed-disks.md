@@ -16,9 +16,9 @@ ms.topic: article
 ms.date: 02/22/2017
 ms.author: cynthn
 translationtype: Human Translation
-ms.sourcegitcommit: e25eaee75b1637447447ace88c2bf1d9aed83880
-ms.openlocfilehash: 484cc6419150b84ee6ed7d2c92960a4d0202e10b
-ms.lasthandoff: 02/27/2017
+ms.sourcegitcommit: 59798ae9412a7550c94f8fa67c39f504aad8d00c
+ms.openlocfilehash: 3867c57d40a218c80403578d30cb999bf9f6cd38
+ms.lasthandoff: 03/01/2017
 
 
 ---
@@ -48,17 +48,6 @@ Sie können einen nicht verwalteten virtuellen Computer, der im Resource Manager
 2.    Kopieren Sie die Betriebssystem-VHD in ein Speicherkonto, das nie für SSE aktiviert war. Verwenden Sie [AzCopy](../storage/storage-use-azcopy.md) zum Kopieren des Datenträgers in ein anderes Speicherkonto: `AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:myVhd.vhd`
 3.    Erstellen Sie einen virtuellen Computer, der verwaltete Datenträger verwendet, und fügen Sie diese VHD-Datei während der Erstellung als Betriebssystemdatenträger hinzu.
 
-
-## <a name="before-you-begin"></a>Voraussetzungen
-Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.
-
-```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
-```
-Weitere Informationen finden Sie unter [Azure PowerShell Versioning](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/#azure-powershell-versioning) (Azure PowerShell-Versionsverwaltung).
-
-
-
 ## <a name="convert-vms-in-an-availability-set-to-managed-disks-in-a-managed-availability-set"></a>Konvertieren von virtuellen Computern in einer Verfügbarkeitsgruppe in verwaltete Datenträger in einer verwalteten Verfügbarkeitsgruppe
 
 Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in einer Verfügbarkeitsgruppe befinden, müssen Sie zuerst für die Verfügbarkeitsgruppe die Konvertierung in eine verwaltete Verfügbarkeitsgruppe durchführen.
@@ -87,7 +76,7 @@ foreach($vmInfo in $avSet.VirtualMachinesReferences)
 ## <a name="convert-existing-azure-vms-to-managed-disks-of-the-same-storage-type"></a>Migrieren vorhandener virtueller Azure-Computer zur Verwendung verwalteter Datenträger desselben Speichertyps
 
 > [!IMPORTANT]
-> Nach Durchführung des folgenden Verfahrens ist ein einzelnes Blockblob vorhanden, das im Standardcontainer „/vhds“ verbleibt. Der Name der Datei lautet „VMName.xxxxxxx.status“. Achten Sie darauf, dass Sie dieses verbleibende Statusobjekt nicht löschen. Dieses Problem wird in Kürze behoben sein.
+> Nach Abschluss des folgenden Verfahrens ist ein einzelnes Blob vorhanden, das im /vhds-Standardcontainer verbleibt. Der Name der Datei lautet „VMName.xxxxxxx.status“. Diese Datei wird von Azure nur erstellt, wenn Sie [VM-Erweiterungen](virtual-machines-windows-classic-agents-and-extensions.md) auf dem virtuellen Computer installiert haben. Achten Sie darauf, dass Sie dieses verbleibende Statusobjekt nicht löschen. Dieses Problem wird in Kürze behoben sein.
 
 In diesem Abschnitt wird beschrieben, wie Sie Ihre vorhandenen virtuellen Azure-Computer aus nicht verwalteten Datenträgern in Speicherkonten in verwaltete Datenträger konvertieren, wenn Sie denselben Speichertyp verwenden. Sie können diesen Prozess verwenden, um von nicht verwalteten Premium-Datenträgern (SDD) auf verwaltete Premium-Datenträger oder von nicht verwalteten Standard-Datenträgern (HDD) auf verwaltete Standard-Datenträger umzustellen. 
 
@@ -149,7 +138,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihre vorhandenen virtuellen Azure-Comp
 1. Beenden Sie den virtuellen Computer (freigeben):
 
     ```powershell
-    Stop-AzureRmVM -ResourceGroupName $resourceGroupName -VMName $vmName -Force
+    Stop-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -Force
     ```
 2.  Aktualisieren Sie alle Datenträger auf Storage Premium:
 
@@ -168,7 +157,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihre vorhandenen virtuellen Azure-Comp
 1. Starten Sie den virtuellen Computer.
 
     ```powershell
-    Start-AzureRmVM -ResourceGroupName $resourceGroupName -VMName $vmName
+    Start-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
     ```
     
 Sie können auch eine Mischung von Datenträgern besitzen, die Standard- und Premium-Speicher verwenden.

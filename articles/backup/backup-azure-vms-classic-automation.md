@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Azure Backup mit PowerShell bereitstellen und
 services: backup
 documentationcenter: 
 author: markgalioto
-manager: cfreeman
+manager: carmonm
 editor: 
 ms.assetid: 2e24b1d9-4375-4049-a28d-e3bc01152f32
 ms.service: backup
@@ -14,13 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: markgal;trinadhk;jimpark
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 9cf1faabe3ea12af0ee5fd8a825975e30947b03a
-ms.openlocfilehash: ad7fb6f05a40cced28555521049f85ad59fb9878
+ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
+ms.openlocfilehash: aa1934447b53b725a08cebb47da9171a136b76ff
+ms.lasthandoff: 03/02/2017
 
 
 ---
-# <a name="deploy-and-manage-backup-for-azure-vms-using-powershell"></a>Bereitstellen und Verwalten von Sicherungen für Azure-VMs mit PowerShell
+# <a name="use-azurermbackup-cmdlets-to-back-up-virtual-machines"></a>Verwenden von AzureRM.Backup-Cmdlets zum Sichern virtueller Computer
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](backup-azure-vms-automation.md)
 > * [Klassisch](backup-azure-vms-classic-automation.md)
@@ -350,9 +352,4 @@ Wenn Sie der Berichtsausgabe Diagrammfunktionen hinzufügen möchten, erfahren S
 
 ## <a name="next-steps"></a>Nächste Schritte
 Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel für den Schutz von Windows Server: [Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell](backup-client-automation-classic.md). Es gibt auch einen PowerShell-Artikel über das Verwalten von DPM-Sicherungen: [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation-classic.md). Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

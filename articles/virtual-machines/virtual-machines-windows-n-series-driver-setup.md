@@ -15,13 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: danlep
+ms.custom: H1Hack27Feb2017
 translationtype: Human Translation
-ms.sourcegitcommit: 4bf470737f961219250c37d890ed81eb62409626
-ms.openlocfilehash: feb9370f0241fd860749d32f5db5842cb18463f1
+ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
+ms.openlocfilehash: 57d7475db8183cfaad017fc934210d0481868d5f
+ms.lasthandoff: 03/03/2017
 
 
 ---
-# <a name="set-up-gpu-drivers-for-n-series-vms"></a>Einrichten von GPU-Treibern für virtuelle Computer der N-Serie
+# <a name="set-up-gpu-drivers-for-n-series-windows-vms"></a>Einrichten von GPU-Treibern für virtuelle Windows-Computer der N-Serie
 Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit Windows Server nutzen zu können. Dieser Artikel ist auch für [virtuelle Linux-Computer](virtual-machines-linux-n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verfügbar.
 
 Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [Größen für virtuelle Computer](virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -61,16 +63,11 @@ Führen Sie zum Abfragen des GPU-Gerätestatus das mit dem Treiber installierte 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu den NVIDIA-GPUs auf virtuellen Computern der N-Serie finden Sie unter:
+* Weitere Informationen zu den NVIDIA GPUs auf der N-Serie VMs finden Sie unter:
     * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (für virtuelle Azure NC-Computer)
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (für virtuelle Azure NV-Computer)
 
 * Entwickler, die GPU-beschleunigte Anwendungen für die NVIDIA Tesla-GPUs erstellen, können auch das [CUDA Toolkit 8](https://developer.nvidia.com/cuda-downloads) herunterladen und installieren.
 
-
-
-
-
-<!--HONumber=Dec16_HO2-->
 
 
